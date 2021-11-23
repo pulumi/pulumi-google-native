@@ -28,6 +28,8 @@ type LookupAutoscalingPolicyArgs struct {
 
 type LookupAutoscalingPolicyResult struct {
 	BasicAlgorithm BasicAutoscalingAlgorithmResponse `pulumi:"basicAlgorithm"`
+	// Optional. The labels to associate with this autoscaling policy. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with an autoscaling policy.
+	Labels map[string]string `pulumi:"labels"`
 	// The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
 	Name string `pulumi:"name"`
 	// Optional. Describes how the autoscaler will operate for secondary workers.
@@ -71,6 +73,11 @@ func (o LookupAutoscalingPolicyResultOutput) ToLookupAutoscalingPolicyResultOutp
 
 func (o LookupAutoscalingPolicyResultOutput) BasicAlgorithm() BasicAutoscalingAlgorithmResponseOutput {
 	return o.ApplyT(func(v LookupAutoscalingPolicyResult) BasicAutoscalingAlgorithmResponse { return v.BasicAlgorithm }).(BasicAutoscalingAlgorithmResponseOutput)
+}
+
+// Optional. The labels to associate with this autoscaling policy. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with an autoscaling policy.
+func (o LookupAutoscalingPolicyResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAutoscalingPolicyResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}

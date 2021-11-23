@@ -908,6 +908,286 @@ func (o AddonsConfigResponsePtrOutput) NetworkPolicyConfig() NetworkPolicyConfig
 	}).(NetworkPolicyConfigResponsePtrOutput)
 }
 
+// Specifies options for controlling advanced machine features.
+type AdvancedMachineFeatures struct {
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore *string `pulumi:"threadsPerCore"`
+}
+
+// AdvancedMachineFeaturesInput is an input type that accepts AdvancedMachineFeaturesArgs and AdvancedMachineFeaturesOutput values.
+// You can construct a concrete instance of `AdvancedMachineFeaturesInput` via:
+//
+//          AdvancedMachineFeaturesArgs{...}
+type AdvancedMachineFeaturesInput interface {
+	pulumi.Input
+
+	ToAdvancedMachineFeaturesOutput() AdvancedMachineFeaturesOutput
+	ToAdvancedMachineFeaturesOutputWithContext(context.Context) AdvancedMachineFeaturesOutput
+}
+
+// Specifies options for controlling advanced machine features.
+type AdvancedMachineFeaturesArgs struct {
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore pulumi.StringPtrInput `pulumi:"threadsPerCore"`
+}
+
+func (AdvancedMachineFeaturesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (i AdvancedMachineFeaturesArgs) ToAdvancedMachineFeaturesOutput() AdvancedMachineFeaturesOutput {
+	return i.ToAdvancedMachineFeaturesOutputWithContext(context.Background())
+}
+
+func (i AdvancedMachineFeaturesArgs) ToAdvancedMachineFeaturesOutputWithContext(ctx context.Context) AdvancedMachineFeaturesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdvancedMachineFeaturesOutput)
+}
+
+func (i AdvancedMachineFeaturesArgs) ToAdvancedMachineFeaturesPtrOutput() AdvancedMachineFeaturesPtrOutput {
+	return i.ToAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i AdvancedMachineFeaturesArgs) ToAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) AdvancedMachineFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdvancedMachineFeaturesOutput).ToAdvancedMachineFeaturesPtrOutputWithContext(ctx)
+}
+
+// AdvancedMachineFeaturesPtrInput is an input type that accepts AdvancedMachineFeaturesArgs, AdvancedMachineFeaturesPtr and AdvancedMachineFeaturesPtrOutput values.
+// You can construct a concrete instance of `AdvancedMachineFeaturesPtrInput` via:
+//
+//          AdvancedMachineFeaturesArgs{...}
+//
+//  or:
+//
+//          nil
+type AdvancedMachineFeaturesPtrInput interface {
+	pulumi.Input
+
+	ToAdvancedMachineFeaturesPtrOutput() AdvancedMachineFeaturesPtrOutput
+	ToAdvancedMachineFeaturesPtrOutputWithContext(context.Context) AdvancedMachineFeaturesPtrOutput
+}
+
+type advancedMachineFeaturesPtrType AdvancedMachineFeaturesArgs
+
+func AdvancedMachineFeaturesPtr(v *AdvancedMachineFeaturesArgs) AdvancedMachineFeaturesPtrInput {
+	return (*advancedMachineFeaturesPtrType)(v)
+}
+
+func (*advancedMachineFeaturesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (i *advancedMachineFeaturesPtrType) ToAdvancedMachineFeaturesPtrOutput() AdvancedMachineFeaturesPtrOutput {
+	return i.ToAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i *advancedMachineFeaturesPtrType) ToAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) AdvancedMachineFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdvancedMachineFeaturesPtrOutput)
+}
+
+// Specifies options for controlling advanced machine features.
+type AdvancedMachineFeaturesOutput struct{ *pulumi.OutputState }
+
+func (AdvancedMachineFeaturesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (o AdvancedMachineFeaturesOutput) ToAdvancedMachineFeaturesOutput() AdvancedMachineFeaturesOutput {
+	return o
+}
+
+func (o AdvancedMachineFeaturesOutput) ToAdvancedMachineFeaturesOutputWithContext(ctx context.Context) AdvancedMachineFeaturesOutput {
+	return o
+}
+
+func (o AdvancedMachineFeaturesOutput) ToAdvancedMachineFeaturesPtrOutput() AdvancedMachineFeaturesPtrOutput {
+	return o.ToAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (o AdvancedMachineFeaturesOutput) ToAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) AdvancedMachineFeaturesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AdvancedMachineFeatures) *AdvancedMachineFeatures {
+		return &v
+	}).(AdvancedMachineFeaturesPtrOutput)
+}
+
+// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+func (o AdvancedMachineFeaturesOutput) ThreadsPerCore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AdvancedMachineFeatures) *string { return v.ThreadsPerCore }).(pulumi.StringPtrOutput)
+}
+
+type AdvancedMachineFeaturesPtrOutput struct{ *pulumi.OutputState }
+
+func (AdvancedMachineFeaturesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (o AdvancedMachineFeaturesPtrOutput) ToAdvancedMachineFeaturesPtrOutput() AdvancedMachineFeaturesPtrOutput {
+	return o
+}
+
+func (o AdvancedMachineFeaturesPtrOutput) ToAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) AdvancedMachineFeaturesPtrOutput {
+	return o
+}
+
+func (o AdvancedMachineFeaturesPtrOutput) Elem() AdvancedMachineFeaturesOutput {
+	return o.ApplyT(func(v *AdvancedMachineFeatures) AdvancedMachineFeatures {
+		if v != nil {
+			return *v
+		}
+		var ret AdvancedMachineFeatures
+		return ret
+	}).(AdvancedMachineFeaturesOutput)
+}
+
+// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+func (o AdvancedMachineFeaturesPtrOutput) ThreadsPerCore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdvancedMachineFeatures) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadsPerCore
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies options for controlling advanced machine features.
+type AdvancedMachineFeaturesResponse struct {
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore string `pulumi:"threadsPerCore"`
+}
+
+// AdvancedMachineFeaturesResponseInput is an input type that accepts AdvancedMachineFeaturesResponseArgs and AdvancedMachineFeaturesResponseOutput values.
+// You can construct a concrete instance of `AdvancedMachineFeaturesResponseInput` via:
+//
+//          AdvancedMachineFeaturesResponseArgs{...}
+type AdvancedMachineFeaturesResponseInput interface {
+	pulumi.Input
+
+	ToAdvancedMachineFeaturesResponseOutput() AdvancedMachineFeaturesResponseOutput
+	ToAdvancedMachineFeaturesResponseOutputWithContext(context.Context) AdvancedMachineFeaturesResponseOutput
+}
+
+// Specifies options for controlling advanced machine features.
+type AdvancedMachineFeaturesResponseArgs struct {
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore pulumi.StringInput `pulumi:"threadsPerCore"`
+}
+
+func (AdvancedMachineFeaturesResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdvancedMachineFeaturesResponse)(nil)).Elem()
+}
+
+func (i AdvancedMachineFeaturesResponseArgs) ToAdvancedMachineFeaturesResponseOutput() AdvancedMachineFeaturesResponseOutput {
+	return i.ToAdvancedMachineFeaturesResponseOutputWithContext(context.Background())
+}
+
+func (i AdvancedMachineFeaturesResponseArgs) ToAdvancedMachineFeaturesResponseOutputWithContext(ctx context.Context) AdvancedMachineFeaturesResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdvancedMachineFeaturesResponseOutput)
+}
+
+func (i AdvancedMachineFeaturesResponseArgs) ToAdvancedMachineFeaturesResponsePtrOutput() AdvancedMachineFeaturesResponsePtrOutput {
+	return i.ToAdvancedMachineFeaturesResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AdvancedMachineFeaturesResponseArgs) ToAdvancedMachineFeaturesResponsePtrOutputWithContext(ctx context.Context) AdvancedMachineFeaturesResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdvancedMachineFeaturesResponseOutput).ToAdvancedMachineFeaturesResponsePtrOutputWithContext(ctx)
+}
+
+// AdvancedMachineFeaturesResponsePtrInput is an input type that accepts AdvancedMachineFeaturesResponseArgs, AdvancedMachineFeaturesResponsePtr and AdvancedMachineFeaturesResponsePtrOutput values.
+// You can construct a concrete instance of `AdvancedMachineFeaturesResponsePtrInput` via:
+//
+//          AdvancedMachineFeaturesResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AdvancedMachineFeaturesResponsePtrInput interface {
+	pulumi.Input
+
+	ToAdvancedMachineFeaturesResponsePtrOutput() AdvancedMachineFeaturesResponsePtrOutput
+	ToAdvancedMachineFeaturesResponsePtrOutputWithContext(context.Context) AdvancedMachineFeaturesResponsePtrOutput
+}
+
+type advancedMachineFeaturesResponsePtrType AdvancedMachineFeaturesResponseArgs
+
+func AdvancedMachineFeaturesResponsePtr(v *AdvancedMachineFeaturesResponseArgs) AdvancedMachineFeaturesResponsePtrInput {
+	return (*advancedMachineFeaturesResponsePtrType)(v)
+}
+
+func (*advancedMachineFeaturesResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdvancedMachineFeaturesResponse)(nil)).Elem()
+}
+
+func (i *advancedMachineFeaturesResponsePtrType) ToAdvancedMachineFeaturesResponsePtrOutput() AdvancedMachineFeaturesResponsePtrOutput {
+	return i.ToAdvancedMachineFeaturesResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *advancedMachineFeaturesResponsePtrType) ToAdvancedMachineFeaturesResponsePtrOutputWithContext(ctx context.Context) AdvancedMachineFeaturesResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdvancedMachineFeaturesResponsePtrOutput)
+}
+
+// Specifies options for controlling advanced machine features.
+type AdvancedMachineFeaturesResponseOutput struct{ *pulumi.OutputState }
+
+func (AdvancedMachineFeaturesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdvancedMachineFeaturesResponse)(nil)).Elem()
+}
+
+func (o AdvancedMachineFeaturesResponseOutput) ToAdvancedMachineFeaturesResponseOutput() AdvancedMachineFeaturesResponseOutput {
+	return o
+}
+
+func (o AdvancedMachineFeaturesResponseOutput) ToAdvancedMachineFeaturesResponseOutputWithContext(ctx context.Context) AdvancedMachineFeaturesResponseOutput {
+	return o
+}
+
+func (o AdvancedMachineFeaturesResponseOutput) ToAdvancedMachineFeaturesResponsePtrOutput() AdvancedMachineFeaturesResponsePtrOutput {
+	return o.ToAdvancedMachineFeaturesResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AdvancedMachineFeaturesResponseOutput) ToAdvancedMachineFeaturesResponsePtrOutputWithContext(ctx context.Context) AdvancedMachineFeaturesResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AdvancedMachineFeaturesResponse) *AdvancedMachineFeaturesResponse {
+		return &v
+	}).(AdvancedMachineFeaturesResponsePtrOutput)
+}
+
+// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+func (o AdvancedMachineFeaturesResponseOutput) ThreadsPerCore() pulumi.StringOutput {
+	return o.ApplyT(func(v AdvancedMachineFeaturesResponse) string { return v.ThreadsPerCore }).(pulumi.StringOutput)
+}
+
+type AdvancedMachineFeaturesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AdvancedMachineFeaturesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdvancedMachineFeaturesResponse)(nil)).Elem()
+}
+
+func (o AdvancedMachineFeaturesResponsePtrOutput) ToAdvancedMachineFeaturesResponsePtrOutput() AdvancedMachineFeaturesResponsePtrOutput {
+	return o
+}
+
+func (o AdvancedMachineFeaturesResponsePtrOutput) ToAdvancedMachineFeaturesResponsePtrOutputWithContext(ctx context.Context) AdvancedMachineFeaturesResponsePtrOutput {
+	return o
+}
+
+func (o AdvancedMachineFeaturesResponsePtrOutput) Elem() AdvancedMachineFeaturesResponseOutput {
+	return o.ApplyT(func(v *AdvancedMachineFeaturesResponse) AdvancedMachineFeaturesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AdvancedMachineFeaturesResponse
+		return ret
+	}).(AdvancedMachineFeaturesResponseOutput)
+}
+
+// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+func (o AdvancedMachineFeaturesResponsePtrOutput) ThreadsPerCore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdvancedMachineFeaturesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ThreadsPerCore
+	}).(pulumi.StringPtrOutput)
+}
+
 // Configuration for returning group information from authenticators.
 type AuthenticatorGroupsConfig struct {
 	// Whether this cluster should return group membership lookups during authentication using a group of security groups.
@@ -4508,8 +4788,6 @@ type ClusterUpdate struct {
 	DesiredAddonsConfig *AddonsConfig `pulumi:"desiredAddonsConfig"`
 	// AuthenticatorGroupsConfig specifies the config for the cluster security groups settings.
 	DesiredAuthenticatorGroupsConfig *AuthenticatorGroupsConfig `pulumi:"desiredAuthenticatorGroupsConfig"`
-	// The desired Autopilot configuration for the cluster.
-	DesiredAutopilot *Autopilot `pulumi:"desiredAutopilot"`
 	// The desired configuration options for the Binary Authorization feature.
 	DesiredBinaryAuthorization *BinaryAuthorization `pulumi:"desiredBinaryAuthorization"`
 	// Cluster-level autoscaling configuration.
@@ -4524,6 +4802,8 @@ type ClusterUpdate struct {
 	DesiredDefaultSnatStatus *DefaultSnatStatus `pulumi:"desiredDefaultSnatStatus"`
 	// DNSConfig contains clusterDNS config for this cluster.
 	DesiredDnsConfig *DNSConfig `pulumi:"desiredDnsConfig"`
+	// The desired GCFS config for the cluster
+	DesiredGcfsConfig *GcfsConfig `pulumi:"desiredGcfsConfig"`
 	// The desired Identity Service component configuration.
 	DesiredIdentityServiceConfig *IdentityServiceConfig `pulumi:"desiredIdentityServiceConfig"`
 	// The desired image type for the node pool. NOTE: Set the "desired_node_pool" field as well.
@@ -4599,8 +4879,6 @@ type ClusterUpdateArgs struct {
 	DesiredAddonsConfig AddonsConfigPtrInput `pulumi:"desiredAddonsConfig"`
 	// AuthenticatorGroupsConfig specifies the config for the cluster security groups settings.
 	DesiredAuthenticatorGroupsConfig AuthenticatorGroupsConfigPtrInput `pulumi:"desiredAuthenticatorGroupsConfig"`
-	// The desired Autopilot configuration for the cluster.
-	DesiredAutopilot AutopilotPtrInput `pulumi:"desiredAutopilot"`
 	// The desired configuration options for the Binary Authorization feature.
 	DesiredBinaryAuthorization BinaryAuthorizationPtrInput `pulumi:"desiredBinaryAuthorization"`
 	// Cluster-level autoscaling configuration.
@@ -4615,6 +4893,8 @@ type ClusterUpdateArgs struct {
 	DesiredDefaultSnatStatus DefaultSnatStatusPtrInput `pulumi:"desiredDefaultSnatStatus"`
 	// DNSConfig contains clusterDNS config for this cluster.
 	DesiredDnsConfig DNSConfigPtrInput `pulumi:"desiredDnsConfig"`
+	// The desired GCFS config for the cluster
+	DesiredGcfsConfig GcfsConfigPtrInput `pulumi:"desiredGcfsConfig"`
 	// The desired Identity Service component configuration.
 	DesiredIdentityServiceConfig IdentityServiceConfigPtrInput `pulumi:"desiredIdentityServiceConfig"`
 	// The desired image type for the node pool. NOTE: Set the "desired_node_pool" field as well.
@@ -4710,11 +4990,6 @@ func (o ClusterUpdateOutput) DesiredAuthenticatorGroupsConfig() AuthenticatorGro
 	return o.ApplyT(func(v ClusterUpdate) *AuthenticatorGroupsConfig { return v.DesiredAuthenticatorGroupsConfig }).(AuthenticatorGroupsConfigPtrOutput)
 }
 
-// The desired Autopilot configuration for the cluster.
-func (o ClusterUpdateOutput) DesiredAutopilot() AutopilotPtrOutput {
-	return o.ApplyT(func(v ClusterUpdate) *Autopilot { return v.DesiredAutopilot }).(AutopilotPtrOutput)
-}
-
 // The desired configuration options for the Binary Authorization feature.
 func (o ClusterUpdateOutput) DesiredBinaryAuthorization() BinaryAuthorizationPtrOutput {
 	return o.ApplyT(func(v ClusterUpdate) *BinaryAuthorization { return v.DesiredBinaryAuthorization }).(BinaryAuthorizationPtrOutput)
@@ -4748,6 +5023,11 @@ func (o ClusterUpdateOutput) DesiredDefaultSnatStatus() DefaultSnatStatusPtrOutp
 // DNSConfig contains clusterDNS config for this cluster.
 func (o ClusterUpdateOutput) DesiredDnsConfig() DNSConfigPtrOutput {
 	return o.ApplyT(func(v ClusterUpdate) *DNSConfig { return v.DesiredDnsConfig }).(DNSConfigPtrOutput)
+}
+
+// The desired GCFS config for the cluster
+func (o ClusterUpdateOutput) DesiredGcfsConfig() GcfsConfigPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *GcfsConfig { return v.DesiredGcfsConfig }).(GcfsConfigPtrOutput)
 }
 
 // The desired Identity Service component configuration.
@@ -7818,6 +8098,286 @@ func (o GcePersistentDiskCsiDriverConfigResponsePtrOutput) Elem() GcePersistentD
 // Whether the Compute Engine PD CSI driver is enabled for this cluster.
 func (o GcePersistentDiskCsiDriverConfigResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GcePersistentDiskCsiDriverConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// GcfsConfig contains configurations of Google Container File System.
+type GcfsConfig struct {
+	// Whether to use GCFS.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// GcfsConfigInput is an input type that accepts GcfsConfigArgs and GcfsConfigOutput values.
+// You can construct a concrete instance of `GcfsConfigInput` via:
+//
+//          GcfsConfigArgs{...}
+type GcfsConfigInput interface {
+	pulumi.Input
+
+	ToGcfsConfigOutput() GcfsConfigOutput
+	ToGcfsConfigOutputWithContext(context.Context) GcfsConfigOutput
+}
+
+// GcfsConfig contains configurations of Google Container File System.
+type GcfsConfigArgs struct {
+	// Whether to use GCFS.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (GcfsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcfsConfig)(nil)).Elem()
+}
+
+func (i GcfsConfigArgs) ToGcfsConfigOutput() GcfsConfigOutput {
+	return i.ToGcfsConfigOutputWithContext(context.Background())
+}
+
+func (i GcfsConfigArgs) ToGcfsConfigOutputWithContext(ctx context.Context) GcfsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcfsConfigOutput)
+}
+
+func (i GcfsConfigArgs) ToGcfsConfigPtrOutput() GcfsConfigPtrOutput {
+	return i.ToGcfsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GcfsConfigArgs) ToGcfsConfigPtrOutputWithContext(ctx context.Context) GcfsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcfsConfigOutput).ToGcfsConfigPtrOutputWithContext(ctx)
+}
+
+// GcfsConfigPtrInput is an input type that accepts GcfsConfigArgs, GcfsConfigPtr and GcfsConfigPtrOutput values.
+// You can construct a concrete instance of `GcfsConfigPtrInput` via:
+//
+//          GcfsConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GcfsConfigPtrInput interface {
+	pulumi.Input
+
+	ToGcfsConfigPtrOutput() GcfsConfigPtrOutput
+	ToGcfsConfigPtrOutputWithContext(context.Context) GcfsConfigPtrOutput
+}
+
+type gcfsConfigPtrType GcfsConfigArgs
+
+func GcfsConfigPtr(v *GcfsConfigArgs) GcfsConfigPtrInput {
+	return (*gcfsConfigPtrType)(v)
+}
+
+func (*gcfsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcfsConfig)(nil)).Elem()
+}
+
+func (i *gcfsConfigPtrType) ToGcfsConfigPtrOutput() GcfsConfigPtrOutput {
+	return i.ToGcfsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gcfsConfigPtrType) ToGcfsConfigPtrOutputWithContext(ctx context.Context) GcfsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcfsConfigPtrOutput)
+}
+
+// GcfsConfig contains configurations of Google Container File System.
+type GcfsConfigOutput struct{ *pulumi.OutputState }
+
+func (GcfsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcfsConfig)(nil)).Elem()
+}
+
+func (o GcfsConfigOutput) ToGcfsConfigOutput() GcfsConfigOutput {
+	return o
+}
+
+func (o GcfsConfigOutput) ToGcfsConfigOutputWithContext(ctx context.Context) GcfsConfigOutput {
+	return o
+}
+
+func (o GcfsConfigOutput) ToGcfsConfigPtrOutput() GcfsConfigPtrOutput {
+	return o.ToGcfsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GcfsConfigOutput) ToGcfsConfigPtrOutputWithContext(ctx context.Context) GcfsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcfsConfig) *GcfsConfig {
+		return &v
+	}).(GcfsConfigPtrOutput)
+}
+
+// Whether to use GCFS.
+func (o GcfsConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GcfsConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GcfsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GcfsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcfsConfig)(nil)).Elem()
+}
+
+func (o GcfsConfigPtrOutput) ToGcfsConfigPtrOutput() GcfsConfigPtrOutput {
+	return o
+}
+
+func (o GcfsConfigPtrOutput) ToGcfsConfigPtrOutputWithContext(ctx context.Context) GcfsConfigPtrOutput {
+	return o
+}
+
+func (o GcfsConfigPtrOutput) Elem() GcfsConfigOutput {
+	return o.ApplyT(func(v *GcfsConfig) GcfsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GcfsConfig
+		return ret
+	}).(GcfsConfigOutput)
+}
+
+// Whether to use GCFS.
+func (o GcfsConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcfsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// GcfsConfig contains configurations of Google Container File System.
+type GcfsConfigResponse struct {
+	// Whether to use GCFS.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GcfsConfigResponseInput is an input type that accepts GcfsConfigResponseArgs and GcfsConfigResponseOutput values.
+// You can construct a concrete instance of `GcfsConfigResponseInput` via:
+//
+//          GcfsConfigResponseArgs{...}
+type GcfsConfigResponseInput interface {
+	pulumi.Input
+
+	ToGcfsConfigResponseOutput() GcfsConfigResponseOutput
+	ToGcfsConfigResponseOutputWithContext(context.Context) GcfsConfigResponseOutput
+}
+
+// GcfsConfig contains configurations of Google Container File System.
+type GcfsConfigResponseArgs struct {
+	// Whether to use GCFS.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GcfsConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcfsConfigResponse)(nil)).Elem()
+}
+
+func (i GcfsConfigResponseArgs) ToGcfsConfigResponseOutput() GcfsConfigResponseOutput {
+	return i.ToGcfsConfigResponseOutputWithContext(context.Background())
+}
+
+func (i GcfsConfigResponseArgs) ToGcfsConfigResponseOutputWithContext(ctx context.Context) GcfsConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcfsConfigResponseOutput)
+}
+
+func (i GcfsConfigResponseArgs) ToGcfsConfigResponsePtrOutput() GcfsConfigResponsePtrOutput {
+	return i.ToGcfsConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GcfsConfigResponseArgs) ToGcfsConfigResponsePtrOutputWithContext(ctx context.Context) GcfsConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcfsConfigResponseOutput).ToGcfsConfigResponsePtrOutputWithContext(ctx)
+}
+
+// GcfsConfigResponsePtrInput is an input type that accepts GcfsConfigResponseArgs, GcfsConfigResponsePtr and GcfsConfigResponsePtrOutput values.
+// You can construct a concrete instance of `GcfsConfigResponsePtrInput` via:
+//
+//          GcfsConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GcfsConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToGcfsConfigResponsePtrOutput() GcfsConfigResponsePtrOutput
+	ToGcfsConfigResponsePtrOutputWithContext(context.Context) GcfsConfigResponsePtrOutput
+}
+
+type gcfsConfigResponsePtrType GcfsConfigResponseArgs
+
+func GcfsConfigResponsePtr(v *GcfsConfigResponseArgs) GcfsConfigResponsePtrInput {
+	return (*gcfsConfigResponsePtrType)(v)
+}
+
+func (*gcfsConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcfsConfigResponse)(nil)).Elem()
+}
+
+func (i *gcfsConfigResponsePtrType) ToGcfsConfigResponsePtrOutput() GcfsConfigResponsePtrOutput {
+	return i.ToGcfsConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *gcfsConfigResponsePtrType) ToGcfsConfigResponsePtrOutputWithContext(ctx context.Context) GcfsConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcfsConfigResponsePtrOutput)
+}
+
+// GcfsConfig contains configurations of Google Container File System.
+type GcfsConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GcfsConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcfsConfigResponse)(nil)).Elem()
+}
+
+func (o GcfsConfigResponseOutput) ToGcfsConfigResponseOutput() GcfsConfigResponseOutput {
+	return o
+}
+
+func (o GcfsConfigResponseOutput) ToGcfsConfigResponseOutputWithContext(ctx context.Context) GcfsConfigResponseOutput {
+	return o
+}
+
+func (o GcfsConfigResponseOutput) ToGcfsConfigResponsePtrOutput() GcfsConfigResponsePtrOutput {
+	return o.ToGcfsConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GcfsConfigResponseOutput) ToGcfsConfigResponsePtrOutputWithContext(ctx context.Context) GcfsConfigResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcfsConfigResponse) *GcfsConfigResponse {
+		return &v
+	}).(GcfsConfigResponsePtrOutput)
+}
+
+// Whether to use GCFS.
+func (o GcfsConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GcfsConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GcfsConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GcfsConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcfsConfigResponse)(nil)).Elem()
+}
+
+func (o GcfsConfigResponsePtrOutput) ToGcfsConfigResponsePtrOutput() GcfsConfigResponsePtrOutput {
+	return o
+}
+
+func (o GcfsConfigResponsePtrOutput) ToGcfsConfigResponsePtrOutputWithContext(ctx context.Context) GcfsConfigResponsePtrOutput {
+	return o
+}
+
+func (o GcfsConfigResponsePtrOutput) Elem() GcfsConfigResponseOutput {
+	return o.ApplyT(func(v *GcfsConfigResponse) GcfsConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GcfsConfigResponse
+		return ret
+	}).(GcfsConfigResponseOutput)
+}
+
+// Whether to use GCFS.
+func (o GcfsConfigResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcfsConfigResponse) *bool {
 		if v == nil {
 			return nil
 		}
@@ -12519,6 +13079,286 @@ func (o MaintenanceWindowResponsePtrOutput) RecurringWindow() RecurringTimeWindo
 	}).(RecurringTimeWindowResponsePtrOutput)
 }
 
+// ManagedPrometheusConfig defines the configuration for Google Cloud Managed Service for Prometheus.
+type ManagedPrometheusConfig struct {
+	// Enable Managed Collection.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ManagedPrometheusConfigInput is an input type that accepts ManagedPrometheusConfigArgs and ManagedPrometheusConfigOutput values.
+// You can construct a concrete instance of `ManagedPrometheusConfigInput` via:
+//
+//          ManagedPrometheusConfigArgs{...}
+type ManagedPrometheusConfigInput interface {
+	pulumi.Input
+
+	ToManagedPrometheusConfigOutput() ManagedPrometheusConfigOutput
+	ToManagedPrometheusConfigOutputWithContext(context.Context) ManagedPrometheusConfigOutput
+}
+
+// ManagedPrometheusConfig defines the configuration for Google Cloud Managed Service for Prometheus.
+type ManagedPrometheusConfigArgs struct {
+	// Enable Managed Collection.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ManagedPrometheusConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedPrometheusConfig)(nil)).Elem()
+}
+
+func (i ManagedPrometheusConfigArgs) ToManagedPrometheusConfigOutput() ManagedPrometheusConfigOutput {
+	return i.ToManagedPrometheusConfigOutputWithContext(context.Background())
+}
+
+func (i ManagedPrometheusConfigArgs) ToManagedPrometheusConfigOutputWithContext(ctx context.Context) ManagedPrometheusConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedPrometheusConfigOutput)
+}
+
+func (i ManagedPrometheusConfigArgs) ToManagedPrometheusConfigPtrOutput() ManagedPrometheusConfigPtrOutput {
+	return i.ToManagedPrometheusConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedPrometheusConfigArgs) ToManagedPrometheusConfigPtrOutputWithContext(ctx context.Context) ManagedPrometheusConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedPrometheusConfigOutput).ToManagedPrometheusConfigPtrOutputWithContext(ctx)
+}
+
+// ManagedPrometheusConfigPtrInput is an input type that accepts ManagedPrometheusConfigArgs, ManagedPrometheusConfigPtr and ManagedPrometheusConfigPtrOutput values.
+// You can construct a concrete instance of `ManagedPrometheusConfigPtrInput` via:
+//
+//          ManagedPrometheusConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ManagedPrometheusConfigPtrInput interface {
+	pulumi.Input
+
+	ToManagedPrometheusConfigPtrOutput() ManagedPrometheusConfigPtrOutput
+	ToManagedPrometheusConfigPtrOutputWithContext(context.Context) ManagedPrometheusConfigPtrOutput
+}
+
+type managedPrometheusConfigPtrType ManagedPrometheusConfigArgs
+
+func ManagedPrometheusConfigPtr(v *ManagedPrometheusConfigArgs) ManagedPrometheusConfigPtrInput {
+	return (*managedPrometheusConfigPtrType)(v)
+}
+
+func (*managedPrometheusConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedPrometheusConfig)(nil)).Elem()
+}
+
+func (i *managedPrometheusConfigPtrType) ToManagedPrometheusConfigPtrOutput() ManagedPrometheusConfigPtrOutput {
+	return i.ToManagedPrometheusConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *managedPrometheusConfigPtrType) ToManagedPrometheusConfigPtrOutputWithContext(ctx context.Context) ManagedPrometheusConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedPrometheusConfigPtrOutput)
+}
+
+// ManagedPrometheusConfig defines the configuration for Google Cloud Managed Service for Prometheus.
+type ManagedPrometheusConfigOutput struct{ *pulumi.OutputState }
+
+func (ManagedPrometheusConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedPrometheusConfig)(nil)).Elem()
+}
+
+func (o ManagedPrometheusConfigOutput) ToManagedPrometheusConfigOutput() ManagedPrometheusConfigOutput {
+	return o
+}
+
+func (o ManagedPrometheusConfigOutput) ToManagedPrometheusConfigOutputWithContext(ctx context.Context) ManagedPrometheusConfigOutput {
+	return o
+}
+
+func (o ManagedPrometheusConfigOutput) ToManagedPrometheusConfigPtrOutput() ManagedPrometheusConfigPtrOutput {
+	return o.ToManagedPrometheusConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedPrometheusConfigOutput) ToManagedPrometheusConfigPtrOutputWithContext(ctx context.Context) ManagedPrometheusConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedPrometheusConfig) *ManagedPrometheusConfig {
+		return &v
+	}).(ManagedPrometheusConfigPtrOutput)
+}
+
+// Enable Managed Collection.
+func (o ManagedPrometheusConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedPrometheusConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ManagedPrometheusConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedPrometheusConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedPrometheusConfig)(nil)).Elem()
+}
+
+func (o ManagedPrometheusConfigPtrOutput) ToManagedPrometheusConfigPtrOutput() ManagedPrometheusConfigPtrOutput {
+	return o
+}
+
+func (o ManagedPrometheusConfigPtrOutput) ToManagedPrometheusConfigPtrOutputWithContext(ctx context.Context) ManagedPrometheusConfigPtrOutput {
+	return o
+}
+
+func (o ManagedPrometheusConfigPtrOutput) Elem() ManagedPrometheusConfigOutput {
+	return o.ApplyT(func(v *ManagedPrometheusConfig) ManagedPrometheusConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedPrometheusConfig
+		return ret
+	}).(ManagedPrometheusConfigOutput)
+}
+
+// Enable Managed Collection.
+func (o ManagedPrometheusConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedPrometheusConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// ManagedPrometheusConfig defines the configuration for Google Cloud Managed Service for Prometheus.
+type ManagedPrometheusConfigResponse struct {
+	// Enable Managed Collection.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ManagedPrometheusConfigResponseInput is an input type that accepts ManagedPrometheusConfigResponseArgs and ManagedPrometheusConfigResponseOutput values.
+// You can construct a concrete instance of `ManagedPrometheusConfigResponseInput` via:
+//
+//          ManagedPrometheusConfigResponseArgs{...}
+type ManagedPrometheusConfigResponseInput interface {
+	pulumi.Input
+
+	ToManagedPrometheusConfigResponseOutput() ManagedPrometheusConfigResponseOutput
+	ToManagedPrometheusConfigResponseOutputWithContext(context.Context) ManagedPrometheusConfigResponseOutput
+}
+
+// ManagedPrometheusConfig defines the configuration for Google Cloud Managed Service for Prometheus.
+type ManagedPrometheusConfigResponseArgs struct {
+	// Enable Managed Collection.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ManagedPrometheusConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedPrometheusConfigResponse)(nil)).Elem()
+}
+
+func (i ManagedPrometheusConfigResponseArgs) ToManagedPrometheusConfigResponseOutput() ManagedPrometheusConfigResponseOutput {
+	return i.ToManagedPrometheusConfigResponseOutputWithContext(context.Background())
+}
+
+func (i ManagedPrometheusConfigResponseArgs) ToManagedPrometheusConfigResponseOutputWithContext(ctx context.Context) ManagedPrometheusConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedPrometheusConfigResponseOutput)
+}
+
+func (i ManagedPrometheusConfigResponseArgs) ToManagedPrometheusConfigResponsePtrOutput() ManagedPrometheusConfigResponsePtrOutput {
+	return i.ToManagedPrometheusConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ManagedPrometheusConfigResponseArgs) ToManagedPrometheusConfigResponsePtrOutputWithContext(ctx context.Context) ManagedPrometheusConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedPrometheusConfigResponseOutput).ToManagedPrometheusConfigResponsePtrOutputWithContext(ctx)
+}
+
+// ManagedPrometheusConfigResponsePtrInput is an input type that accepts ManagedPrometheusConfigResponseArgs, ManagedPrometheusConfigResponsePtr and ManagedPrometheusConfigResponsePtrOutput values.
+// You can construct a concrete instance of `ManagedPrometheusConfigResponsePtrInput` via:
+//
+//          ManagedPrometheusConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ManagedPrometheusConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToManagedPrometheusConfigResponsePtrOutput() ManagedPrometheusConfigResponsePtrOutput
+	ToManagedPrometheusConfigResponsePtrOutputWithContext(context.Context) ManagedPrometheusConfigResponsePtrOutput
+}
+
+type managedPrometheusConfigResponsePtrType ManagedPrometheusConfigResponseArgs
+
+func ManagedPrometheusConfigResponsePtr(v *ManagedPrometheusConfigResponseArgs) ManagedPrometheusConfigResponsePtrInput {
+	return (*managedPrometheusConfigResponsePtrType)(v)
+}
+
+func (*managedPrometheusConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedPrometheusConfigResponse)(nil)).Elem()
+}
+
+func (i *managedPrometheusConfigResponsePtrType) ToManagedPrometheusConfigResponsePtrOutput() ManagedPrometheusConfigResponsePtrOutput {
+	return i.ToManagedPrometheusConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *managedPrometheusConfigResponsePtrType) ToManagedPrometheusConfigResponsePtrOutputWithContext(ctx context.Context) ManagedPrometheusConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedPrometheusConfigResponsePtrOutput)
+}
+
+// ManagedPrometheusConfig defines the configuration for Google Cloud Managed Service for Prometheus.
+type ManagedPrometheusConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedPrometheusConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedPrometheusConfigResponse)(nil)).Elem()
+}
+
+func (o ManagedPrometheusConfigResponseOutput) ToManagedPrometheusConfigResponseOutput() ManagedPrometheusConfigResponseOutput {
+	return o
+}
+
+func (o ManagedPrometheusConfigResponseOutput) ToManagedPrometheusConfigResponseOutputWithContext(ctx context.Context) ManagedPrometheusConfigResponseOutput {
+	return o
+}
+
+func (o ManagedPrometheusConfigResponseOutput) ToManagedPrometheusConfigResponsePtrOutput() ManagedPrometheusConfigResponsePtrOutput {
+	return o.ToManagedPrometheusConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ManagedPrometheusConfigResponseOutput) ToManagedPrometheusConfigResponsePtrOutputWithContext(ctx context.Context) ManagedPrometheusConfigResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedPrometheusConfigResponse) *ManagedPrometheusConfigResponse {
+		return &v
+	}).(ManagedPrometheusConfigResponsePtrOutput)
+}
+
+// Enable Managed Collection.
+func (o ManagedPrometheusConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ManagedPrometheusConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ManagedPrometheusConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedPrometheusConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedPrometheusConfigResponse)(nil)).Elem()
+}
+
+func (o ManagedPrometheusConfigResponsePtrOutput) ToManagedPrometheusConfigResponsePtrOutput() ManagedPrometheusConfigResponsePtrOutput {
+	return o
+}
+
+func (o ManagedPrometheusConfigResponsePtrOutput) ToManagedPrometheusConfigResponsePtrOutputWithContext(ctx context.Context) ManagedPrometheusConfigResponsePtrOutput {
+	return o
+}
+
+func (o ManagedPrometheusConfigResponsePtrOutput) Elem() ManagedPrometheusConfigResponseOutput {
+	return o.ApplyT(func(v *ManagedPrometheusConfigResponse) ManagedPrometheusConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedPrometheusConfigResponse
+		return ret
+	}).(ManagedPrometheusConfigResponseOutput)
+}
+
+// Enable Managed Collection.
+func (o ManagedPrometheusConfigResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedPrometheusConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Master is the configuration for components on master.
 type Master struct {
 }
@@ -14349,6 +15189,8 @@ func (o MonitoringComponentConfigResponsePtrOutput) EnableComponents() pulumi.St
 type MonitoringConfig struct {
 	// Monitoring components configuration
 	ComponentConfig *MonitoringComponentConfig `pulumi:"componentConfig"`
+	// Enable Google Cloud Managed Service for Prometheus in the cluster.
+	ManagedPrometheusConfig *ManagedPrometheusConfig `pulumi:"managedPrometheusConfig"`
 }
 
 // MonitoringConfigInput is an input type that accepts MonitoringConfigArgs and MonitoringConfigOutput values.
@@ -14366,6 +15208,8 @@ type MonitoringConfigInput interface {
 type MonitoringConfigArgs struct {
 	// Monitoring components configuration
 	ComponentConfig MonitoringComponentConfigPtrInput `pulumi:"componentConfig"`
+	// Enable Google Cloud Managed Service for Prometheus in the cluster.
+	ManagedPrometheusConfig ManagedPrometheusConfigPtrInput `pulumi:"managedPrometheusConfig"`
 }
 
 func (MonitoringConfigArgs) ElementType() reflect.Type {
@@ -14451,6 +15295,11 @@ func (o MonitoringConfigOutput) ComponentConfig() MonitoringComponentConfigPtrOu
 	return o.ApplyT(func(v MonitoringConfig) *MonitoringComponentConfig { return v.ComponentConfig }).(MonitoringComponentConfigPtrOutput)
 }
 
+// Enable Google Cloud Managed Service for Prometheus in the cluster.
+func (o MonitoringConfigOutput) ManagedPrometheusConfig() ManagedPrometheusConfigPtrOutput {
+	return o.ApplyT(func(v MonitoringConfig) *ManagedPrometheusConfig { return v.ManagedPrometheusConfig }).(ManagedPrometheusConfigPtrOutput)
+}
+
 type MonitoringConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (MonitoringConfigPtrOutput) ElementType() reflect.Type {
@@ -14485,10 +15334,22 @@ func (o MonitoringConfigPtrOutput) ComponentConfig() MonitoringComponentConfigPt
 	}).(MonitoringComponentConfigPtrOutput)
 }
 
+// Enable Google Cloud Managed Service for Prometheus in the cluster.
+func (o MonitoringConfigPtrOutput) ManagedPrometheusConfig() ManagedPrometheusConfigPtrOutput {
+	return o.ApplyT(func(v *MonitoringConfig) *ManagedPrometheusConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedPrometheusConfig
+	}).(ManagedPrometheusConfigPtrOutput)
+}
+
 // MonitoringConfig is cluster monitoring configuration.
 type MonitoringConfigResponse struct {
 	// Monitoring components configuration
 	ComponentConfig MonitoringComponentConfigResponse `pulumi:"componentConfig"`
+	// Enable Google Cloud Managed Service for Prometheus in the cluster.
+	ManagedPrometheusConfig ManagedPrometheusConfigResponse `pulumi:"managedPrometheusConfig"`
 }
 
 // MonitoringConfigResponseInput is an input type that accepts MonitoringConfigResponseArgs and MonitoringConfigResponseOutput values.
@@ -14506,6 +15367,8 @@ type MonitoringConfigResponseInput interface {
 type MonitoringConfigResponseArgs struct {
 	// Monitoring components configuration
 	ComponentConfig MonitoringComponentConfigResponseInput `pulumi:"componentConfig"`
+	// Enable Google Cloud Managed Service for Prometheus in the cluster.
+	ManagedPrometheusConfig ManagedPrometheusConfigResponseInput `pulumi:"managedPrometheusConfig"`
 }
 
 func (MonitoringConfigResponseArgs) ElementType() reflect.Type {
@@ -14591,6 +15454,11 @@ func (o MonitoringConfigResponseOutput) ComponentConfig() MonitoringComponentCon
 	return o.ApplyT(func(v MonitoringConfigResponse) MonitoringComponentConfigResponse { return v.ComponentConfig }).(MonitoringComponentConfigResponseOutput)
 }
 
+// Enable Google Cloud Managed Service for Prometheus in the cluster.
+func (o MonitoringConfigResponseOutput) ManagedPrometheusConfig() ManagedPrometheusConfigResponseOutput {
+	return o.ApplyT(func(v MonitoringConfigResponse) ManagedPrometheusConfigResponse { return v.ManagedPrometheusConfig }).(ManagedPrometheusConfigResponseOutput)
+}
+
 type MonitoringConfigResponsePtrOutput struct{ *pulumi.OutputState }
 
 func (MonitoringConfigResponsePtrOutput) ElementType() reflect.Type {
@@ -14623,6 +15491,16 @@ func (o MonitoringConfigResponsePtrOutput) ComponentConfig() MonitoringComponent
 		}
 		return &v.ComponentConfig
 	}).(MonitoringComponentConfigResponsePtrOutput)
+}
+
+// Enable Google Cloud Managed Service for Prometheus in the cluster.
+func (o MonitoringConfigResponsePtrOutput) ManagedPrometheusConfig() ManagedPrometheusConfigResponsePtrOutput {
+	return o.ApplyT(func(v *MonitoringConfigResponse) *ManagedPrometheusConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ManagedPrometheusConfig
+	}).(ManagedPrometheusConfigResponsePtrOutput)
 }
 
 // NetworkConfig reports the relative names of network & subnetwork.
@@ -15828,6 +16706,8 @@ func (o NetworkTagsOutput) Tags() pulumi.StringArrayOutput {
 type NodeConfig struct {
 	// A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
 	Accelerators []AcceleratorConfig `pulumi:"accelerators"`
+	// Advanced features for the Compute Engine VM.
+	AdvancedMachineFeatures *AdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	//  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
 	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
@@ -15836,6 +16716,8 @@ type NodeConfig struct {
 	DiskType *string `pulumi:"diskType"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
 	EphemeralStorageConfig *EphemeralStorageConfig `pulumi:"ephemeralStorageConfig"`
+	// GCFS (Google Container File System) configs.
+	GcfsConfig *GcfsConfig `pulumi:"gcfsConfig"`
 	// Enable or disable gvnic on the node pool.
 	Gvnic *VirtualNIC `pulumi:"gvnic"`
 	// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
@@ -15893,6 +16775,8 @@ type NodeConfigInput interface {
 type NodeConfigArgs struct {
 	// A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
 	Accelerators AcceleratorConfigArrayInput `pulumi:"accelerators"`
+	// Advanced features for the Compute Engine VM.
+	AdvancedMachineFeatures AdvancedMachineFeaturesPtrInput `pulumi:"advancedMachineFeatures"`
 	//  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
 	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
@@ -15901,6 +16785,8 @@ type NodeConfigArgs struct {
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
 	EphemeralStorageConfig EphemeralStorageConfigPtrInput `pulumi:"ephemeralStorageConfig"`
+	// GCFS (Google Container File System) configs.
+	GcfsConfig GcfsConfigPtrInput `pulumi:"gcfsConfig"`
 	// Enable or disable gvnic on the node pool.
 	Gvnic VirtualNICPtrInput `pulumi:"gvnic"`
 	// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
@@ -16026,6 +16912,11 @@ func (o NodeConfigOutput) Accelerators() AcceleratorConfigArrayOutput {
 	return o.ApplyT(func(v NodeConfig) []AcceleratorConfig { return v.Accelerators }).(AcceleratorConfigArrayOutput)
 }
 
+// Advanced features for the Compute Engine VM.
+func (o NodeConfigOutput) AdvancedMachineFeatures() AdvancedMachineFeaturesPtrOutput {
+	return o.ApplyT(func(v NodeConfig) *AdvancedMachineFeatures { return v.AdvancedMachineFeatures }).(AdvancedMachineFeaturesPtrOutput)
+}
+
 //  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 func (o NodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
@@ -16044,6 +16935,11 @@ func (o NodeConfigOutput) DiskType() pulumi.StringPtrOutput {
 // Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
 func (o NodeConfigOutput) EphemeralStorageConfig() EphemeralStorageConfigPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *EphemeralStorageConfig { return v.EphemeralStorageConfig }).(EphemeralStorageConfigPtrOutput)
+}
+
+// GCFS (Google Container File System) configs.
+func (o NodeConfigOutput) GcfsConfig() GcfsConfigPtrOutput {
+	return o.ApplyT(func(v NodeConfig) *GcfsConfig { return v.GcfsConfig }).(GcfsConfigPtrOutput)
 }
 
 // Enable or disable gvnic on the node pool.
@@ -16180,6 +17076,16 @@ func (o NodeConfigPtrOutput) Accelerators() AcceleratorConfigArrayOutput {
 	}).(AcceleratorConfigArrayOutput)
 }
 
+// Advanced features for the Compute Engine VM.
+func (o NodeConfigPtrOutput) AdvancedMachineFeatures() AdvancedMachineFeaturesPtrOutput {
+	return o.ApplyT(func(v *NodeConfig) *AdvancedMachineFeatures {
+		if v == nil {
+			return nil
+		}
+		return v.AdvancedMachineFeatures
+	}).(AdvancedMachineFeaturesPtrOutput)
+}
+
 //  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 func (o NodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeConfig) *string {
@@ -16218,6 +17124,16 @@ func (o NodeConfigPtrOutput) EphemeralStorageConfig() EphemeralStorageConfigPtrO
 		}
 		return v.EphemeralStorageConfig
 	}).(EphemeralStorageConfigPtrOutput)
+}
+
+// GCFS (Google Container File System) configs.
+func (o NodeConfigPtrOutput) GcfsConfig() GcfsConfigPtrOutput {
+	return o.ApplyT(func(v *NodeConfig) *GcfsConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GcfsConfig
+	}).(GcfsConfigPtrOutput)
 }
 
 // Enable or disable gvnic on the node pool.
@@ -16422,6 +17338,8 @@ func (o NodeConfigPtrOutput) WorkloadMetadataConfig() WorkloadMetadataConfigPtrO
 
 // Subset of NodeConfig message that has defaults.
 type NodeConfigDefaults struct {
+	// GCFS (Google Container File System, a.k.a Riptide) options.
+	GcfsConfig *GcfsConfig `pulumi:"gcfsConfig"`
 }
 
 // NodeConfigDefaultsInput is an input type that accepts NodeConfigDefaultsArgs and NodeConfigDefaultsOutput values.
@@ -16437,6 +17355,8 @@ type NodeConfigDefaultsInput interface {
 
 // Subset of NodeConfig message that has defaults.
 type NodeConfigDefaultsArgs struct {
+	// GCFS (Google Container File System, a.k.a Riptide) options.
+	GcfsConfig GcfsConfigPtrInput `pulumi:"gcfsConfig"`
 }
 
 func (NodeConfigDefaultsArgs) ElementType() reflect.Type {
@@ -16517,6 +17437,11 @@ func (o NodeConfigDefaultsOutput) ToNodeConfigDefaultsPtrOutputWithContext(ctx c
 	}).(NodeConfigDefaultsPtrOutput)
 }
 
+// GCFS (Google Container File System, a.k.a Riptide) options.
+func (o NodeConfigDefaultsOutput) GcfsConfig() GcfsConfigPtrOutput {
+	return o.ApplyT(func(v NodeConfigDefaults) *GcfsConfig { return v.GcfsConfig }).(GcfsConfigPtrOutput)
+}
+
 type NodeConfigDefaultsPtrOutput struct{ *pulumi.OutputState }
 
 func (NodeConfigDefaultsPtrOutput) ElementType() reflect.Type {
@@ -16541,8 +17466,20 @@ func (o NodeConfigDefaultsPtrOutput) Elem() NodeConfigDefaultsOutput {
 	}).(NodeConfigDefaultsOutput)
 }
 
+// GCFS (Google Container File System, a.k.a Riptide) options.
+func (o NodeConfigDefaultsPtrOutput) GcfsConfig() GcfsConfigPtrOutput {
+	return o.ApplyT(func(v *NodeConfigDefaults) *GcfsConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GcfsConfig
+	}).(GcfsConfigPtrOutput)
+}
+
 // Subset of NodeConfig message that has defaults.
 type NodeConfigDefaultsResponse struct {
+	// GCFS (Google Container File System, a.k.a Riptide) options.
+	GcfsConfig GcfsConfigResponse `pulumi:"gcfsConfig"`
 }
 
 // NodeConfigDefaultsResponseInput is an input type that accepts NodeConfigDefaultsResponseArgs and NodeConfigDefaultsResponseOutput values.
@@ -16558,6 +17495,8 @@ type NodeConfigDefaultsResponseInput interface {
 
 // Subset of NodeConfig message that has defaults.
 type NodeConfigDefaultsResponseArgs struct {
+	// GCFS (Google Container File System, a.k.a Riptide) options.
+	GcfsConfig GcfsConfigResponseInput `pulumi:"gcfsConfig"`
 }
 
 func (NodeConfigDefaultsResponseArgs) ElementType() reflect.Type {
@@ -16638,6 +17577,11 @@ func (o NodeConfigDefaultsResponseOutput) ToNodeConfigDefaultsResponsePtrOutputW
 	}).(NodeConfigDefaultsResponsePtrOutput)
 }
 
+// GCFS (Google Container File System, a.k.a Riptide) options.
+func (o NodeConfigDefaultsResponseOutput) GcfsConfig() GcfsConfigResponseOutput {
+	return o.ApplyT(func(v NodeConfigDefaultsResponse) GcfsConfigResponse { return v.GcfsConfig }).(GcfsConfigResponseOutput)
+}
+
 type NodeConfigDefaultsResponsePtrOutput struct{ *pulumi.OutputState }
 
 func (NodeConfigDefaultsResponsePtrOutput) ElementType() reflect.Type {
@@ -16662,10 +17606,22 @@ func (o NodeConfigDefaultsResponsePtrOutput) Elem() NodeConfigDefaultsResponseOu
 	}).(NodeConfigDefaultsResponseOutput)
 }
 
+// GCFS (Google Container File System, a.k.a Riptide) options.
+func (o NodeConfigDefaultsResponsePtrOutput) GcfsConfig() GcfsConfigResponsePtrOutput {
+	return o.ApplyT(func(v *NodeConfigDefaultsResponse) *GcfsConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.GcfsConfig
+	}).(GcfsConfigResponsePtrOutput)
+}
+
 // Parameters that describe the nodes in a cluster.
 type NodeConfigResponse struct {
 	// A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
 	Accelerators []AcceleratorConfigResponse `pulumi:"accelerators"`
+	// Advanced features for the Compute Engine VM.
+	AdvancedMachineFeatures AdvancedMachineFeaturesResponse `pulumi:"advancedMachineFeatures"`
 	//  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 	BootDiskKmsKey string `pulumi:"bootDiskKmsKey"`
 	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
@@ -16674,6 +17630,8 @@ type NodeConfigResponse struct {
 	DiskType string `pulumi:"diskType"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
 	EphemeralStorageConfig EphemeralStorageConfigResponse `pulumi:"ephemeralStorageConfig"`
+	// GCFS (Google Container File System) configs.
+	GcfsConfig GcfsConfigResponse `pulumi:"gcfsConfig"`
 	// Enable or disable gvnic on the node pool.
 	Gvnic VirtualNICResponse `pulumi:"gvnic"`
 	// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
@@ -16731,6 +17689,8 @@ type NodeConfigResponseInput interface {
 type NodeConfigResponseArgs struct {
 	// A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
 	Accelerators AcceleratorConfigResponseArrayInput `pulumi:"accelerators"`
+	// Advanced features for the Compute Engine VM.
+	AdvancedMachineFeatures AdvancedMachineFeaturesResponseInput `pulumi:"advancedMachineFeatures"`
 	//  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 	BootDiskKmsKey pulumi.StringInput `pulumi:"bootDiskKmsKey"`
 	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
@@ -16739,6 +17699,8 @@ type NodeConfigResponseArgs struct {
 	DiskType pulumi.StringInput `pulumi:"diskType"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
 	EphemeralStorageConfig EphemeralStorageConfigResponseInput `pulumi:"ephemeralStorageConfig"`
+	// GCFS (Google Container File System) configs.
+	GcfsConfig GcfsConfigResponseInput `pulumi:"gcfsConfig"`
 	// Enable or disable gvnic on the node pool.
 	Gvnic VirtualNICResponseInput `pulumi:"gvnic"`
 	// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
@@ -16864,6 +17826,11 @@ func (o NodeConfigResponseOutput) Accelerators() AcceleratorConfigResponseArrayO
 	return o.ApplyT(func(v NodeConfigResponse) []AcceleratorConfigResponse { return v.Accelerators }).(AcceleratorConfigResponseArrayOutput)
 }
 
+// Advanced features for the Compute Engine VM.
+func (o NodeConfigResponseOutput) AdvancedMachineFeatures() AdvancedMachineFeaturesResponseOutput {
+	return o.ApplyT(func(v NodeConfigResponse) AdvancedMachineFeaturesResponse { return v.AdvancedMachineFeatures }).(AdvancedMachineFeaturesResponseOutput)
+}
+
 //  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 func (o NodeConfigResponseOutput) BootDiskKmsKey() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeConfigResponse) string { return v.BootDiskKmsKey }).(pulumi.StringOutput)
@@ -16882,6 +17849,11 @@ func (o NodeConfigResponseOutput) DiskType() pulumi.StringOutput {
 // Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
 func (o NodeConfigResponseOutput) EphemeralStorageConfig() EphemeralStorageConfigResponseOutput {
 	return o.ApplyT(func(v NodeConfigResponse) EphemeralStorageConfigResponse { return v.EphemeralStorageConfig }).(EphemeralStorageConfigResponseOutput)
+}
+
+// GCFS (Google Container File System) configs.
+func (o NodeConfigResponseOutput) GcfsConfig() GcfsConfigResponseOutput {
+	return o.ApplyT(func(v NodeConfigResponse) GcfsConfigResponse { return v.GcfsConfig }).(GcfsConfigResponseOutput)
 }
 
 // Enable or disable gvnic on the node pool.
@@ -17018,6 +17990,16 @@ func (o NodeConfigResponsePtrOutput) Accelerators() AcceleratorConfigResponseArr
 	}).(AcceleratorConfigResponseArrayOutput)
 }
 
+// Advanced features for the Compute Engine VM.
+func (o NodeConfigResponsePtrOutput) AdvancedMachineFeatures() AdvancedMachineFeaturesResponsePtrOutput {
+	return o.ApplyT(func(v *NodeConfigResponse) *AdvancedMachineFeaturesResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.AdvancedMachineFeatures
+	}).(AdvancedMachineFeaturesResponsePtrOutput)
+}
+
 //  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 func (o NodeConfigResponsePtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeConfigResponse) *string {
@@ -17056,6 +18038,16 @@ func (o NodeConfigResponsePtrOutput) EphemeralStorageConfig() EphemeralStorageCo
 		}
 		return &v.EphemeralStorageConfig
 	}).(EphemeralStorageConfigResponsePtrOutput)
+}
+
+// GCFS (Google Container File System) configs.
+func (o NodeConfigResponsePtrOutput) GcfsConfig() GcfsConfigResponsePtrOutput {
+	return o.ApplyT(func(v *NodeConfigResponse) *GcfsConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.GcfsConfig
+	}).(GcfsConfigResponsePtrOutput)
 }
 
 // Enable or disable gvnic on the node pool.
@@ -26848,6 +27840,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigPtrInput)(nil)).Elem(), AddonsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigResponseInput)(nil)).Elem(), AddonsConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigResponsePtrInput)(nil)).Elem(), AddonsConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AdvancedMachineFeaturesInput)(nil)).Elem(), AdvancedMachineFeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AdvancedMachineFeaturesPtrInput)(nil)).Elem(), AdvancedMachineFeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AdvancedMachineFeaturesResponseInput)(nil)).Elem(), AdvancedMachineFeaturesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AdvancedMachineFeaturesResponsePtrInput)(nil)).Elem(), AdvancedMachineFeaturesResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticatorGroupsConfigInput)(nil)).Elem(), AuthenticatorGroupsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticatorGroupsConfigPtrInput)(nil)).Elem(), AuthenticatorGroupsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticatorGroupsConfigResponseInput)(nil)).Elem(), AuthenticatorGroupsConfigResponseArgs{})
@@ -26933,6 +27929,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GcePersistentDiskCsiDriverConfigPtrInput)(nil)).Elem(), GcePersistentDiskCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcePersistentDiskCsiDriverConfigResponseInput)(nil)).Elem(), GcePersistentDiskCsiDriverConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcePersistentDiskCsiDriverConfigResponsePtrInput)(nil)).Elem(), GcePersistentDiskCsiDriverConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcfsConfigInput)(nil)).Elem(), GcfsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcfsConfigPtrInput)(nil)).Elem(), GcfsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcfsConfigResponseInput)(nil)).Elem(), GcfsConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcfsConfigResponsePtrInput)(nil)).Elem(), GcfsConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpFilestoreCsiDriverConfigInput)(nil)).Elem(), GcpFilestoreCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpFilestoreCsiDriverConfigPtrInput)(nil)).Elem(), GcpFilestoreCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpFilestoreCsiDriverConfigResponseInput)(nil)).Elem(), GcpFilestoreCsiDriverConfigResponseArgs{})
@@ -26993,6 +27993,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowPtrInput)(nil)).Elem(), MaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowResponseInput)(nil)).Elem(), MaintenanceWindowResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowResponsePtrInput)(nil)).Elem(), MaintenanceWindowResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedPrometheusConfigInput)(nil)).Elem(), ManagedPrometheusConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedPrometheusConfigPtrInput)(nil)).Elem(), ManagedPrometheusConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedPrometheusConfigResponseInput)(nil)).Elem(), ManagedPrometheusConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedPrometheusConfigResponsePtrInput)(nil)).Elem(), ManagedPrometheusConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MasterInput)(nil)).Elem(), MasterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MasterPtrInput)(nil)).Elem(), MasterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MasterAuthInput)(nil)).Elem(), MasterAuthArgs{})
@@ -27172,6 +28176,10 @@ func init() {
 	pulumi.RegisterOutputType(AddonsConfigPtrOutput{})
 	pulumi.RegisterOutputType(AddonsConfigResponseOutput{})
 	pulumi.RegisterOutputType(AddonsConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(AdvancedMachineFeaturesOutput{})
+	pulumi.RegisterOutputType(AdvancedMachineFeaturesPtrOutput{})
+	pulumi.RegisterOutputType(AdvancedMachineFeaturesResponseOutput{})
+	pulumi.RegisterOutputType(AdvancedMachineFeaturesResponsePtrOutput{})
 	pulumi.RegisterOutputType(AuthenticatorGroupsConfigOutput{})
 	pulumi.RegisterOutputType(AuthenticatorGroupsConfigPtrOutput{})
 	pulumi.RegisterOutputType(AuthenticatorGroupsConfigResponseOutput{})
@@ -27257,6 +28265,10 @@ func init() {
 	pulumi.RegisterOutputType(GcePersistentDiskCsiDriverConfigPtrOutput{})
 	pulumi.RegisterOutputType(GcePersistentDiskCsiDriverConfigResponseOutput{})
 	pulumi.RegisterOutputType(GcePersistentDiskCsiDriverConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(GcfsConfigOutput{})
+	pulumi.RegisterOutputType(GcfsConfigPtrOutput{})
+	pulumi.RegisterOutputType(GcfsConfigResponseOutput{})
+	pulumi.RegisterOutputType(GcfsConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GcpFilestoreCsiDriverConfigOutput{})
 	pulumi.RegisterOutputType(GcpFilestoreCsiDriverConfigPtrOutput{})
 	pulumi.RegisterOutputType(GcpFilestoreCsiDriverConfigResponseOutput{})
@@ -27317,6 +28329,10 @@ func init() {
 	pulumi.RegisterOutputType(MaintenanceWindowPtrOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowResponseOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowResponsePtrOutput{})
+	pulumi.RegisterOutputType(ManagedPrometheusConfigOutput{})
+	pulumi.RegisterOutputType(ManagedPrometheusConfigPtrOutput{})
+	pulumi.RegisterOutputType(ManagedPrometheusConfigResponseOutput{})
+	pulumi.RegisterOutputType(ManagedPrometheusConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(MasterOutput{})
 	pulumi.RegisterOutputType(MasterPtrOutput{})
 	pulumi.RegisterOutputType(MasterAuthOutput{})

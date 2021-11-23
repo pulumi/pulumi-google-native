@@ -10,6 +10,434 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type LoggingConfigLogActionStatesItem string
+
+const (
+	// Default value. This value is unused.
+	LoggingConfigLogActionStatesItemLoggableActionStateUnspecified = LoggingConfigLogActionStatesItem("LOGGABLE_ACTION_STATE_UNSPECIFIED")
+	// `LoggableAction` is completed successfully. `SUCCEEDED` actions are logged as INFO.
+	LoggingConfigLogActionStatesItemSucceeded = LoggingConfigLogActionStatesItem("SUCCEEDED")
+	// `LoggableAction` is terminated in an error state. `FAILED` actions are logged as ERROR.
+	LoggingConfigLogActionStatesItemFailed = LoggingConfigLogActionStatesItem("FAILED")
+)
+
+func (LoggingConfigLogActionStatesItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingConfigLogActionStatesItem)(nil)).Elem()
+}
+
+func (e LoggingConfigLogActionStatesItem) ToLoggingConfigLogActionStatesItemOutput() LoggingConfigLogActionStatesItemOutput {
+	return pulumi.ToOutput(e).(LoggingConfigLogActionStatesItemOutput)
+}
+
+func (e LoggingConfigLogActionStatesItem) ToLoggingConfigLogActionStatesItemOutputWithContext(ctx context.Context) LoggingConfigLogActionStatesItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(LoggingConfigLogActionStatesItemOutput)
+}
+
+func (e LoggingConfigLogActionStatesItem) ToLoggingConfigLogActionStatesItemPtrOutput() LoggingConfigLogActionStatesItemPtrOutput {
+	return e.ToLoggingConfigLogActionStatesItemPtrOutputWithContext(context.Background())
+}
+
+func (e LoggingConfigLogActionStatesItem) ToLoggingConfigLogActionStatesItemPtrOutputWithContext(ctx context.Context) LoggingConfigLogActionStatesItemPtrOutput {
+	return LoggingConfigLogActionStatesItem(e).ToLoggingConfigLogActionStatesItemOutputWithContext(ctx).ToLoggingConfigLogActionStatesItemPtrOutputWithContext(ctx)
+}
+
+func (e LoggingConfigLogActionStatesItem) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LoggingConfigLogActionStatesItem) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LoggingConfigLogActionStatesItem) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e LoggingConfigLogActionStatesItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type LoggingConfigLogActionStatesItemOutput struct{ *pulumi.OutputState }
+
+func (LoggingConfigLogActionStatesItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingConfigLogActionStatesItem)(nil)).Elem()
+}
+
+func (o LoggingConfigLogActionStatesItemOutput) ToLoggingConfigLogActionStatesItemOutput() LoggingConfigLogActionStatesItemOutput {
+	return o
+}
+
+func (o LoggingConfigLogActionStatesItemOutput) ToLoggingConfigLogActionStatesItemOutputWithContext(ctx context.Context) LoggingConfigLogActionStatesItemOutput {
+	return o
+}
+
+func (o LoggingConfigLogActionStatesItemOutput) ToLoggingConfigLogActionStatesItemPtrOutput() LoggingConfigLogActionStatesItemPtrOutput {
+	return o.ToLoggingConfigLogActionStatesItemPtrOutputWithContext(context.Background())
+}
+
+func (o LoggingConfigLogActionStatesItemOutput) ToLoggingConfigLogActionStatesItemPtrOutputWithContext(ctx context.Context) LoggingConfigLogActionStatesItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoggingConfigLogActionStatesItem) *LoggingConfigLogActionStatesItem {
+		return &v
+	}).(LoggingConfigLogActionStatesItemPtrOutput)
+}
+
+func (o LoggingConfigLogActionStatesItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o LoggingConfigLogActionStatesItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LoggingConfigLogActionStatesItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o LoggingConfigLogActionStatesItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LoggingConfigLogActionStatesItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LoggingConfigLogActionStatesItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type LoggingConfigLogActionStatesItemPtrOutput struct{ *pulumi.OutputState }
+
+func (LoggingConfigLogActionStatesItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingConfigLogActionStatesItem)(nil)).Elem()
+}
+
+func (o LoggingConfigLogActionStatesItemPtrOutput) ToLoggingConfigLogActionStatesItemPtrOutput() LoggingConfigLogActionStatesItemPtrOutput {
+	return o
+}
+
+func (o LoggingConfigLogActionStatesItemPtrOutput) ToLoggingConfigLogActionStatesItemPtrOutputWithContext(ctx context.Context) LoggingConfigLogActionStatesItemPtrOutput {
+	return o
+}
+
+func (o LoggingConfigLogActionStatesItemPtrOutput) Elem() LoggingConfigLogActionStatesItemOutput {
+	return o.ApplyT(func(v *LoggingConfigLogActionStatesItem) LoggingConfigLogActionStatesItem {
+		if v != nil {
+			return *v
+		}
+		var ret LoggingConfigLogActionStatesItem
+		return ret
+	}).(LoggingConfigLogActionStatesItemOutput)
+}
+
+func (o LoggingConfigLogActionStatesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LoggingConfigLogActionStatesItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LoggingConfigLogActionStatesItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// LoggingConfigLogActionStatesItemInput is an input type that accepts LoggingConfigLogActionStatesItemArgs and LoggingConfigLogActionStatesItemOutput values.
+// You can construct a concrete instance of `LoggingConfigLogActionStatesItemInput` via:
+//
+//          LoggingConfigLogActionStatesItemArgs{...}
+type LoggingConfigLogActionStatesItemInput interface {
+	pulumi.Input
+
+	ToLoggingConfigLogActionStatesItemOutput() LoggingConfigLogActionStatesItemOutput
+	ToLoggingConfigLogActionStatesItemOutputWithContext(context.Context) LoggingConfigLogActionStatesItemOutput
+}
+
+var loggingConfigLogActionStatesItemPtrType = reflect.TypeOf((**LoggingConfigLogActionStatesItem)(nil)).Elem()
+
+type LoggingConfigLogActionStatesItemPtrInput interface {
+	pulumi.Input
+
+	ToLoggingConfigLogActionStatesItemPtrOutput() LoggingConfigLogActionStatesItemPtrOutput
+	ToLoggingConfigLogActionStatesItemPtrOutputWithContext(context.Context) LoggingConfigLogActionStatesItemPtrOutput
+}
+
+type loggingConfigLogActionStatesItemPtr string
+
+func LoggingConfigLogActionStatesItemPtr(v string) LoggingConfigLogActionStatesItemPtrInput {
+	return (*loggingConfigLogActionStatesItemPtr)(&v)
+}
+
+func (*loggingConfigLogActionStatesItemPtr) ElementType() reflect.Type {
+	return loggingConfigLogActionStatesItemPtrType
+}
+
+func (in *loggingConfigLogActionStatesItemPtr) ToLoggingConfigLogActionStatesItemPtrOutput() LoggingConfigLogActionStatesItemPtrOutput {
+	return pulumi.ToOutput(in).(LoggingConfigLogActionStatesItemPtrOutput)
+}
+
+func (in *loggingConfigLogActionStatesItemPtr) ToLoggingConfigLogActionStatesItemPtrOutputWithContext(ctx context.Context) LoggingConfigLogActionStatesItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(LoggingConfigLogActionStatesItemPtrOutput)
+}
+
+// LoggingConfigLogActionStatesItemArrayInput is an input type that accepts LoggingConfigLogActionStatesItemArray and LoggingConfigLogActionStatesItemArrayOutput values.
+// You can construct a concrete instance of `LoggingConfigLogActionStatesItemArrayInput` via:
+//
+//          LoggingConfigLogActionStatesItemArray{ LoggingConfigLogActionStatesItemArgs{...} }
+type LoggingConfigLogActionStatesItemArrayInput interface {
+	pulumi.Input
+
+	ToLoggingConfigLogActionStatesItemArrayOutput() LoggingConfigLogActionStatesItemArrayOutput
+	ToLoggingConfigLogActionStatesItemArrayOutputWithContext(context.Context) LoggingConfigLogActionStatesItemArrayOutput
+}
+
+type LoggingConfigLogActionStatesItemArray []LoggingConfigLogActionStatesItem
+
+func (LoggingConfigLogActionStatesItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoggingConfigLogActionStatesItem)(nil)).Elem()
+}
+
+func (i LoggingConfigLogActionStatesItemArray) ToLoggingConfigLogActionStatesItemArrayOutput() LoggingConfigLogActionStatesItemArrayOutput {
+	return i.ToLoggingConfigLogActionStatesItemArrayOutputWithContext(context.Background())
+}
+
+func (i LoggingConfigLogActionStatesItemArray) ToLoggingConfigLogActionStatesItemArrayOutputWithContext(ctx context.Context) LoggingConfigLogActionStatesItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigLogActionStatesItemArrayOutput)
+}
+
+type LoggingConfigLogActionStatesItemArrayOutput struct{ *pulumi.OutputState }
+
+func (LoggingConfigLogActionStatesItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoggingConfigLogActionStatesItem)(nil)).Elem()
+}
+
+func (o LoggingConfigLogActionStatesItemArrayOutput) ToLoggingConfigLogActionStatesItemArrayOutput() LoggingConfigLogActionStatesItemArrayOutput {
+	return o
+}
+
+func (o LoggingConfigLogActionStatesItemArrayOutput) ToLoggingConfigLogActionStatesItemArrayOutputWithContext(ctx context.Context) LoggingConfigLogActionStatesItemArrayOutput {
+	return o
+}
+
+func (o LoggingConfigLogActionStatesItemArrayOutput) Index(i pulumi.IntInput) LoggingConfigLogActionStatesItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoggingConfigLogActionStatesItem {
+		return vs[0].([]LoggingConfigLogActionStatesItem)[vs[1].(int)]
+	}).(LoggingConfigLogActionStatesItemOutput)
+}
+
+type LoggingConfigLogActionsItem string
+
+const (
+	// Default value. This value is unused.
+	LoggingConfigLogActionsItemLoggableActionUnspecified = LoggingConfigLogActionsItem("LOGGABLE_ACTION_UNSPECIFIED")
+	// Finding objects to transfer e.g. listing objects of the source bucket.
+	LoggingConfigLogActionsItemFind = LoggingConfigLogActionsItem("FIND")
+	// Deleting objects at source or destination.
+	LoggingConfigLogActionsItemDelete = LoggingConfigLogActionsItem("DELETE")
+	// Copying objects from source to destination.
+	LoggingConfigLogActionsItemCopy = LoggingConfigLogActionsItem("COPY")
+)
+
+func (LoggingConfigLogActionsItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingConfigLogActionsItem)(nil)).Elem()
+}
+
+func (e LoggingConfigLogActionsItem) ToLoggingConfigLogActionsItemOutput() LoggingConfigLogActionsItemOutput {
+	return pulumi.ToOutput(e).(LoggingConfigLogActionsItemOutput)
+}
+
+func (e LoggingConfigLogActionsItem) ToLoggingConfigLogActionsItemOutputWithContext(ctx context.Context) LoggingConfigLogActionsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(LoggingConfigLogActionsItemOutput)
+}
+
+func (e LoggingConfigLogActionsItem) ToLoggingConfigLogActionsItemPtrOutput() LoggingConfigLogActionsItemPtrOutput {
+	return e.ToLoggingConfigLogActionsItemPtrOutputWithContext(context.Background())
+}
+
+func (e LoggingConfigLogActionsItem) ToLoggingConfigLogActionsItemPtrOutputWithContext(ctx context.Context) LoggingConfigLogActionsItemPtrOutput {
+	return LoggingConfigLogActionsItem(e).ToLoggingConfigLogActionsItemOutputWithContext(ctx).ToLoggingConfigLogActionsItemPtrOutputWithContext(ctx)
+}
+
+func (e LoggingConfigLogActionsItem) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LoggingConfigLogActionsItem) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LoggingConfigLogActionsItem) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e LoggingConfigLogActionsItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type LoggingConfigLogActionsItemOutput struct{ *pulumi.OutputState }
+
+func (LoggingConfigLogActionsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingConfigLogActionsItem)(nil)).Elem()
+}
+
+func (o LoggingConfigLogActionsItemOutput) ToLoggingConfigLogActionsItemOutput() LoggingConfigLogActionsItemOutput {
+	return o
+}
+
+func (o LoggingConfigLogActionsItemOutput) ToLoggingConfigLogActionsItemOutputWithContext(ctx context.Context) LoggingConfigLogActionsItemOutput {
+	return o
+}
+
+func (o LoggingConfigLogActionsItemOutput) ToLoggingConfigLogActionsItemPtrOutput() LoggingConfigLogActionsItemPtrOutput {
+	return o.ToLoggingConfigLogActionsItemPtrOutputWithContext(context.Background())
+}
+
+func (o LoggingConfigLogActionsItemOutput) ToLoggingConfigLogActionsItemPtrOutputWithContext(ctx context.Context) LoggingConfigLogActionsItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoggingConfigLogActionsItem) *LoggingConfigLogActionsItem {
+		return &v
+	}).(LoggingConfigLogActionsItemPtrOutput)
+}
+
+func (o LoggingConfigLogActionsItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o LoggingConfigLogActionsItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LoggingConfigLogActionsItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o LoggingConfigLogActionsItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LoggingConfigLogActionsItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LoggingConfigLogActionsItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type LoggingConfigLogActionsItemPtrOutput struct{ *pulumi.OutputState }
+
+func (LoggingConfigLogActionsItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingConfigLogActionsItem)(nil)).Elem()
+}
+
+func (o LoggingConfigLogActionsItemPtrOutput) ToLoggingConfigLogActionsItemPtrOutput() LoggingConfigLogActionsItemPtrOutput {
+	return o
+}
+
+func (o LoggingConfigLogActionsItemPtrOutput) ToLoggingConfigLogActionsItemPtrOutputWithContext(ctx context.Context) LoggingConfigLogActionsItemPtrOutput {
+	return o
+}
+
+func (o LoggingConfigLogActionsItemPtrOutput) Elem() LoggingConfigLogActionsItemOutput {
+	return o.ApplyT(func(v *LoggingConfigLogActionsItem) LoggingConfigLogActionsItem {
+		if v != nil {
+			return *v
+		}
+		var ret LoggingConfigLogActionsItem
+		return ret
+	}).(LoggingConfigLogActionsItemOutput)
+}
+
+func (o LoggingConfigLogActionsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LoggingConfigLogActionsItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LoggingConfigLogActionsItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// LoggingConfigLogActionsItemInput is an input type that accepts LoggingConfigLogActionsItemArgs and LoggingConfigLogActionsItemOutput values.
+// You can construct a concrete instance of `LoggingConfigLogActionsItemInput` via:
+//
+//          LoggingConfigLogActionsItemArgs{...}
+type LoggingConfigLogActionsItemInput interface {
+	pulumi.Input
+
+	ToLoggingConfigLogActionsItemOutput() LoggingConfigLogActionsItemOutput
+	ToLoggingConfigLogActionsItemOutputWithContext(context.Context) LoggingConfigLogActionsItemOutput
+}
+
+var loggingConfigLogActionsItemPtrType = reflect.TypeOf((**LoggingConfigLogActionsItem)(nil)).Elem()
+
+type LoggingConfigLogActionsItemPtrInput interface {
+	pulumi.Input
+
+	ToLoggingConfigLogActionsItemPtrOutput() LoggingConfigLogActionsItemPtrOutput
+	ToLoggingConfigLogActionsItemPtrOutputWithContext(context.Context) LoggingConfigLogActionsItemPtrOutput
+}
+
+type loggingConfigLogActionsItemPtr string
+
+func LoggingConfigLogActionsItemPtr(v string) LoggingConfigLogActionsItemPtrInput {
+	return (*loggingConfigLogActionsItemPtr)(&v)
+}
+
+func (*loggingConfigLogActionsItemPtr) ElementType() reflect.Type {
+	return loggingConfigLogActionsItemPtrType
+}
+
+func (in *loggingConfigLogActionsItemPtr) ToLoggingConfigLogActionsItemPtrOutput() LoggingConfigLogActionsItemPtrOutput {
+	return pulumi.ToOutput(in).(LoggingConfigLogActionsItemPtrOutput)
+}
+
+func (in *loggingConfigLogActionsItemPtr) ToLoggingConfigLogActionsItemPtrOutputWithContext(ctx context.Context) LoggingConfigLogActionsItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(LoggingConfigLogActionsItemPtrOutput)
+}
+
+// LoggingConfigLogActionsItemArrayInput is an input type that accepts LoggingConfigLogActionsItemArray and LoggingConfigLogActionsItemArrayOutput values.
+// You can construct a concrete instance of `LoggingConfigLogActionsItemArrayInput` via:
+//
+//          LoggingConfigLogActionsItemArray{ LoggingConfigLogActionsItemArgs{...} }
+type LoggingConfigLogActionsItemArrayInput interface {
+	pulumi.Input
+
+	ToLoggingConfigLogActionsItemArrayOutput() LoggingConfigLogActionsItemArrayOutput
+	ToLoggingConfigLogActionsItemArrayOutputWithContext(context.Context) LoggingConfigLogActionsItemArrayOutput
+}
+
+type LoggingConfigLogActionsItemArray []LoggingConfigLogActionsItem
+
+func (LoggingConfigLogActionsItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoggingConfigLogActionsItem)(nil)).Elem()
+}
+
+func (i LoggingConfigLogActionsItemArray) ToLoggingConfigLogActionsItemArrayOutput() LoggingConfigLogActionsItemArrayOutput {
+	return i.ToLoggingConfigLogActionsItemArrayOutputWithContext(context.Background())
+}
+
+func (i LoggingConfigLogActionsItemArray) ToLoggingConfigLogActionsItemArrayOutputWithContext(ctx context.Context) LoggingConfigLogActionsItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigLogActionsItemArrayOutput)
+}
+
+type LoggingConfigLogActionsItemArrayOutput struct{ *pulumi.OutputState }
+
+func (LoggingConfigLogActionsItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoggingConfigLogActionsItem)(nil)).Elem()
+}
+
+func (o LoggingConfigLogActionsItemArrayOutput) ToLoggingConfigLogActionsItemArrayOutput() LoggingConfigLogActionsItemArrayOutput {
+	return o
+}
+
+func (o LoggingConfigLogActionsItemArrayOutput) ToLoggingConfigLogActionsItemArrayOutputWithContext(ctx context.Context) LoggingConfigLogActionsItemArrayOutput {
+	return o
+}
+
+func (o LoggingConfigLogActionsItemArrayOutput) Index(i pulumi.IntInput) LoggingConfigLogActionsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoggingConfigLogActionsItem {
+		return vs[0].([]LoggingConfigLogActionsItem)[vs[1].(int)]
+	}).(LoggingConfigLogActionsItemOutput)
+}
+
 type NotificationConfigEventTypesItem string
 
 const (
@@ -566,6 +994,12 @@ func (in *transferJobStatusPtr) ToTransferJobStatusPtrOutputWithContext(ctx cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigLogActionStatesItemInput)(nil)).Elem(), LoggingConfigLogActionStatesItem("LOGGABLE_ACTION_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigLogActionStatesItemPtrInput)(nil)).Elem(), LoggingConfigLogActionStatesItem("LOGGABLE_ACTION_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigLogActionStatesItemArrayInput)(nil)).Elem(), LoggingConfigLogActionStatesItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigLogActionsItemInput)(nil)).Elem(), LoggingConfigLogActionsItem("LOGGABLE_ACTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigLogActionsItemPtrInput)(nil)).Elem(), LoggingConfigLogActionsItem("LOGGABLE_ACTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigLogActionsItemArrayInput)(nil)).Elem(), LoggingConfigLogActionsItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigEventTypesItemInput)(nil)).Elem(), NotificationConfigEventTypesItem("EVENT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigEventTypesItemPtrInput)(nil)).Elem(), NotificationConfigEventTypesItem("EVENT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigEventTypesItemArrayInput)(nil)).Elem(), NotificationConfigEventTypesItemArray{})
@@ -573,6 +1007,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigPayloadFormatPtrInput)(nil)).Elem(), NotificationConfigPayloadFormat("PAYLOAD_FORMAT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobStatusInput)(nil)).Elem(), TransferJobStatus("STATUS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobStatusPtrInput)(nil)).Elem(), TransferJobStatus("STATUS_UNSPECIFIED"))
+	pulumi.RegisterOutputType(LoggingConfigLogActionStatesItemOutput{})
+	pulumi.RegisterOutputType(LoggingConfigLogActionStatesItemPtrOutput{})
+	pulumi.RegisterOutputType(LoggingConfigLogActionStatesItemArrayOutput{})
+	pulumi.RegisterOutputType(LoggingConfigLogActionsItemOutput{})
+	pulumi.RegisterOutputType(LoggingConfigLogActionsItemPtrOutput{})
+	pulumi.RegisterOutputType(LoggingConfigLogActionsItemArrayOutput{})
 	pulumi.RegisterOutputType(NotificationConfigEventTypesItemOutput{})
 	pulumi.RegisterOutputType(NotificationConfigEventTypesItemPtrOutput{})
 	pulumi.RegisterOutputType(NotificationConfigEventTypesItemArrayOutput{})

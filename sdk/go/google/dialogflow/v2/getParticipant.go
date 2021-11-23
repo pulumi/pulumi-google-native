@@ -28,6 +28,8 @@ type LookupParticipantArgs struct {
 }
 
 type LookupParticipantResult struct {
+	// Optional. Key-value filters on the metadata of documents returned by article suggestion. If specified, article suggestion only returns suggested documents that match all filters in their Document.metadata. Multiple values for a metadata key should be concatenated by comma. For example, filters to match all documents that have 'US' or 'CA' in their market metadata values and 'agent' in their user metadata values will be ```documents_metadata_filters { key: "market" value: "US,CA" } documents_metadata_filters { key: "user" value: "agent" }```
+	DocumentsMetadataFilters map[string]string `pulumi:"documentsMetadataFilters"`
 	// Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
 	Name string `pulumi:"name"`
 	// Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
@@ -68,6 +70,11 @@ func (o LookupParticipantResultOutput) ToLookupParticipantResultOutput() LookupP
 
 func (o LookupParticipantResultOutput) ToLookupParticipantResultOutputWithContext(ctx context.Context) LookupParticipantResultOutput {
 	return o
+}
+
+// Optional. Key-value filters on the metadata of documents returned by article suggestion. If specified, article suggestion only returns suggested documents that match all filters in their Document.metadata. Multiple values for a metadata key should be concatenated by comma. For example, filters to match all documents that have 'US' or 'CA' in their market metadata values and 'agent' in their user metadata values will be ```documents_metadata_filters { key: "market" value: "US,CA" } documents_metadata_filters { key: "user" value: "agent" }```
+func (o LookupParticipantResultOutput) DocumentsMetadataFilters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupParticipantResult) map[string]string { return v.DocumentsMetadataFilters }).(pulumi.StringMapOutput)
 }
 
 // Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.

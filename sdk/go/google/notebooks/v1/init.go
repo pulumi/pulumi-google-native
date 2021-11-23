@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InstanceIamPolicy{}
 	case "google-native:notebooks/v1:Runtime":
 		r = &Runtime{}
+	case "google-native:notebooks/v1:RuntimeIamPolicy":
+		r = &RuntimeIamPolicy{}
 	case "google-native:notebooks/v1:Schedule":
 		r = &Schedule{}
 	default:

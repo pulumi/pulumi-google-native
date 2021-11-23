@@ -49,6 +49,8 @@ type LookupServiceResult struct {
 	Name string `pulumi:"name"`
 	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
 	Network string `pulumi:"network"`
+	// Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+	NetworkConfig NetworkConfigResponse `pulumi:"networkConfig"`
 	// The TCP port at which the metastore service is reached. Default: 9083.
 	Port int `pulumi:"port"`
 	// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
@@ -151,6 +153,11 @@ func (o LookupServiceResultOutput) Name() pulumi.StringOutput {
 // Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
 func (o LookupServiceResultOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+func (o LookupServiceResultOutput) NetworkConfig() NetworkConfigResponseOutput {
+	return o.ApplyT(func(v LookupServiceResult) NetworkConfigResponse { return v.NetworkConfig }).(NetworkConfigResponseOutput)
 }
 
 // The TCP port at which the metastore service is reached. Default: 9083.

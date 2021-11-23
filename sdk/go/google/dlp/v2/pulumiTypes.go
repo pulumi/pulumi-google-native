@@ -12483,6 +12483,8 @@ func (o GooglePrivacyDlpV2HybridOptionsResponsePtrOutput) TableOptions() GoogleP
 type GooglePrivacyDlpV2InfoType struct {
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
 	Name *string `pulumi:"name"`
+	// Optional version name for this InfoType.
+	Version *string `pulumi:"version"`
 }
 
 // GooglePrivacyDlpV2InfoTypeInput is an input type that accepts GooglePrivacyDlpV2InfoTypeArgs and GooglePrivacyDlpV2InfoTypeOutput values.
@@ -12500,6 +12502,8 @@ type GooglePrivacyDlpV2InfoTypeInput interface {
 type GooglePrivacyDlpV2InfoTypeArgs struct {
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Optional version name for this InfoType.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (GooglePrivacyDlpV2InfoTypeArgs) ElementType() reflect.Type {
@@ -12610,6 +12614,11 @@ func (o GooglePrivacyDlpV2InfoTypeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InfoType) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Optional version name for this InfoType.
+func (o GooglePrivacyDlpV2InfoTypeOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2InfoType) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 type GooglePrivacyDlpV2InfoTypePtrOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2InfoTypePtrOutput) ElementType() reflect.Type {
@@ -12641,6 +12650,16 @@ func (o GooglePrivacyDlpV2InfoTypePtrOutput) Name() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional version name for this InfoType.
+func (o GooglePrivacyDlpV2InfoTypePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2InfoType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12886,6 +12905,8 @@ func (o GooglePrivacyDlpV2InfoTypeLimitResponseArrayOutput) Index(i pulumi.IntIn
 type GooglePrivacyDlpV2InfoTypeResponse struct {
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
 	Name string `pulumi:"name"`
+	// Optional version name for this InfoType.
+	Version string `pulumi:"version"`
 }
 
 // GooglePrivacyDlpV2InfoTypeResponseInput is an input type that accepts GooglePrivacyDlpV2InfoTypeResponseArgs and GooglePrivacyDlpV2InfoTypeResponseOutput values.
@@ -12903,6 +12924,8 @@ type GooglePrivacyDlpV2InfoTypeResponseInput interface {
 type GooglePrivacyDlpV2InfoTypeResponseArgs struct {
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
 	Name pulumi.StringInput `pulumi:"name"`
+	// Optional version name for this InfoType.
+	Version pulumi.StringInput `pulumi:"version"`
 }
 
 func (GooglePrivacyDlpV2InfoTypeResponseArgs) ElementType() reflect.Type {
@@ -12960,6 +12983,11 @@ func (o GooglePrivacyDlpV2InfoTypeResponseOutput) ToGooglePrivacyDlpV2InfoTypeRe
 // Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
 func (o GooglePrivacyDlpV2InfoTypeResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InfoTypeResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional version name for this InfoType.
+func (o GooglePrivacyDlpV2InfoTypeResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2InfoTypeResponse) string { return v.Version }).(pulumi.StringOutput)
 }
 
 type GooglePrivacyDlpV2InfoTypeResponseArrayOutput struct{ *pulumi.OutputState }
@@ -20453,6 +20481,8 @@ type GooglePrivacyDlpV2PrimitiveTransformation struct {
 	RedactConfig *GooglePrivacyDlpV2RedactConfig `pulumi:"redactConfig"`
 	// Replace with a specified value.
 	ReplaceConfig *GooglePrivacyDlpV2ReplaceValueConfig `pulumi:"replaceConfig"`
+	// Replace with a value randomly drawn (with replacement) from a dictionary.
+	ReplaceDictionaryConfig *GooglePrivacyDlpV2ReplaceDictionaryConfig `pulumi:"replaceDictionaryConfig"`
 	// Replace with infotype
 	ReplaceWithInfoTypeConfig *GooglePrivacyDlpV2ReplaceWithInfoTypeConfig `pulumi:"replaceWithInfoTypeConfig"`
 	// Time extraction
@@ -20490,6 +20520,8 @@ type GooglePrivacyDlpV2PrimitiveTransformationArgs struct {
 	RedactConfig GooglePrivacyDlpV2RedactConfigPtrInput `pulumi:"redactConfig"`
 	// Replace with a specified value.
 	ReplaceConfig GooglePrivacyDlpV2ReplaceValueConfigPtrInput `pulumi:"replaceConfig"`
+	// Replace with a value randomly drawn (with replacement) from a dictionary.
+	ReplaceDictionaryConfig GooglePrivacyDlpV2ReplaceDictionaryConfigPtrInput `pulumi:"replaceDictionaryConfig"`
 	// Replace with infotype
 	ReplaceWithInfoTypeConfig GooglePrivacyDlpV2ReplaceWithInfoTypeConfigPtrInput `pulumi:"replaceWithInfoTypeConfig"`
 	// Time extraction
@@ -20637,6 +20669,13 @@ func (o GooglePrivacyDlpV2PrimitiveTransformationOutput) ReplaceConfig() GoogleP
 	}).(GooglePrivacyDlpV2ReplaceValueConfigPtrOutput)
 }
 
+// Replace with a value randomly drawn (with replacement) from a dictionary.
+func (o GooglePrivacyDlpV2PrimitiveTransformationOutput) ReplaceDictionaryConfig() GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2PrimitiveTransformation) *GooglePrivacyDlpV2ReplaceDictionaryConfig {
+		return v.ReplaceDictionaryConfig
+	}).(GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput)
+}
+
 // Replace with infotype
 func (o GooglePrivacyDlpV2PrimitiveTransformationOutput) ReplaceWithInfoTypeConfig() GooglePrivacyDlpV2ReplaceWithInfoTypeConfigPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2PrimitiveTransformation) *GooglePrivacyDlpV2ReplaceWithInfoTypeConfig {
@@ -20765,6 +20804,16 @@ func (o GooglePrivacyDlpV2PrimitiveTransformationPtrOutput) ReplaceConfig() Goog
 	}).(GooglePrivacyDlpV2ReplaceValueConfigPtrOutput)
 }
 
+// Replace with a value randomly drawn (with replacement) from a dictionary.
+func (o GooglePrivacyDlpV2PrimitiveTransformationPtrOutput) ReplaceDictionaryConfig() GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2PrimitiveTransformation) *GooglePrivacyDlpV2ReplaceDictionaryConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ReplaceDictionaryConfig
+	}).(GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput)
+}
+
 // Replace with infotype
 func (o GooglePrivacyDlpV2PrimitiveTransformationPtrOutput) ReplaceWithInfoTypeConfig() GooglePrivacyDlpV2ReplaceWithInfoTypeConfigPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2PrimitiveTransformation) *GooglePrivacyDlpV2ReplaceWithInfoTypeConfig {
@@ -20805,6 +20854,8 @@ type GooglePrivacyDlpV2PrimitiveTransformationResponse struct {
 	RedactConfig GooglePrivacyDlpV2RedactConfigResponse `pulumi:"redactConfig"`
 	// Replace with a specified value.
 	ReplaceConfig GooglePrivacyDlpV2ReplaceValueConfigResponse `pulumi:"replaceConfig"`
+	// Replace with a value randomly drawn (with replacement) from a dictionary.
+	ReplaceDictionaryConfig GooglePrivacyDlpV2ReplaceDictionaryConfigResponse `pulumi:"replaceDictionaryConfig"`
 	// Replace with infotype
 	ReplaceWithInfoTypeConfig GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponse `pulumi:"replaceWithInfoTypeConfig"`
 	// Time extraction
@@ -20842,6 +20893,8 @@ type GooglePrivacyDlpV2PrimitiveTransformationResponseArgs struct {
 	RedactConfig GooglePrivacyDlpV2RedactConfigResponseInput `pulumi:"redactConfig"`
 	// Replace with a specified value.
 	ReplaceConfig GooglePrivacyDlpV2ReplaceValueConfigResponseInput `pulumi:"replaceConfig"`
+	// Replace with a value randomly drawn (with replacement) from a dictionary.
+	ReplaceDictionaryConfig GooglePrivacyDlpV2ReplaceDictionaryConfigResponseInput `pulumi:"replaceDictionaryConfig"`
 	// Replace with infotype
 	ReplaceWithInfoTypeConfig GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseInput `pulumi:"replaceWithInfoTypeConfig"`
 	// Time extraction
@@ -20936,6 +20989,13 @@ func (o GooglePrivacyDlpV2PrimitiveTransformationResponseOutput) ReplaceConfig()
 	return o.ApplyT(func(v GooglePrivacyDlpV2PrimitiveTransformationResponse) GooglePrivacyDlpV2ReplaceValueConfigResponse {
 		return v.ReplaceConfig
 	}).(GooglePrivacyDlpV2ReplaceValueConfigResponseOutput)
+}
+
+// Replace with a value randomly drawn (with replacement) from a dictionary.
+func (o GooglePrivacyDlpV2PrimitiveTransformationResponseOutput) ReplaceDictionaryConfig() GooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2PrimitiveTransformationResponse) GooglePrivacyDlpV2ReplaceDictionaryConfigResponse {
+		return v.ReplaceDictionaryConfig
+	}).(GooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput)
 }
 
 // Replace with infotype
@@ -21665,7 +21725,7 @@ func (o GooglePrivacyDlpV2ProximityResponseOutput) WindowBefore() pulumi.IntOutp
 	return o.ApplyT(func(v GooglePrivacyDlpV2ProximityResponse) int { return v.WindowBefore }).(pulumi.IntOutput)
 }
 
-// Publish findings of a DlpJob to Cloud Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Cloud Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Cloud Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
+// Publish findings of a DlpJob to Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
 type GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog struct {
 }
 
@@ -21680,7 +21740,7 @@ type GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogInput interface {
 	ToGooglePrivacyDlpV2PublishFindingsToCloudDataCatalogOutputWithContext(context.Context) GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogOutput
 }
 
-// Publish findings of a DlpJob to Cloud Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Cloud Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Cloud Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
+// Publish findings of a DlpJob to Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
 type GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogArgs struct {
 }
 
@@ -21737,7 +21797,7 @@ func (i *googlePrivacyDlpV2PublishFindingsToCloudDataCatalogPtrType) ToGooglePri
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogPtrOutput)
 }
 
-// Publish findings of a DlpJob to Cloud Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Cloud Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Cloud Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
+// Publish findings of a DlpJob to Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
 type GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogOutput) ElementType() reflect.Type {
@@ -21786,7 +21846,7 @@ func (o GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogPtrOutput) Elem() Goo
 	}).(GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogOutput)
 }
 
-// Publish findings of a DlpJob to Cloud Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Cloud Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Cloud Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
+// Publish findings of a DlpJob to Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
 type GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponse struct {
 }
 
@@ -21801,7 +21861,7 @@ type GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseInput interface 
 	ToGooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseOutputWithContext(context.Context) GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseOutput
 }
 
-// Publish findings of a DlpJob to Cloud Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Cloud Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Cloud Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
+// Publish findings of a DlpJob to Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
 type GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseArgs struct {
 }
 
@@ -21817,7 +21877,7 @@ func (i GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseArgs) ToGoogl
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseOutput)
 }
 
-// Publish findings of a DlpJob to Cloud Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Cloud Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Cloud Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
+// Publish findings of a DlpJob to Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
 type GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseOutput) ElementType() reflect.Type {
@@ -24261,6 +24321,203 @@ func (o GooglePrivacyDlpV2RegexResponsePtrOutput) Pattern() pulumi.StringPtrOutp
 		}
 		return &v.Pattern
 	}).(pulumi.StringPtrOutput)
+}
+
+// Replace each input value with a value randomly selected from the dictionary.
+type GooglePrivacyDlpV2ReplaceDictionaryConfig struct {
+	// A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
+	WordList *GooglePrivacyDlpV2WordList `pulumi:"wordList"`
+}
+
+// GooglePrivacyDlpV2ReplaceDictionaryConfigInput is an input type that accepts GooglePrivacyDlpV2ReplaceDictionaryConfigArgs and GooglePrivacyDlpV2ReplaceDictionaryConfigOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2ReplaceDictionaryConfigInput` via:
+//
+//          GooglePrivacyDlpV2ReplaceDictionaryConfigArgs{...}
+type GooglePrivacyDlpV2ReplaceDictionaryConfigInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2ReplaceDictionaryConfigOutput() GooglePrivacyDlpV2ReplaceDictionaryConfigOutput
+	ToGooglePrivacyDlpV2ReplaceDictionaryConfigOutputWithContext(context.Context) GooglePrivacyDlpV2ReplaceDictionaryConfigOutput
+}
+
+// Replace each input value with a value randomly selected from the dictionary.
+type GooglePrivacyDlpV2ReplaceDictionaryConfigArgs struct {
+	// A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
+	WordList GooglePrivacyDlpV2WordListPtrInput `pulumi:"wordList"`
+}
+
+func (GooglePrivacyDlpV2ReplaceDictionaryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2ReplaceDictionaryConfig)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2ReplaceDictionaryConfigArgs) ToGooglePrivacyDlpV2ReplaceDictionaryConfigOutput() GooglePrivacyDlpV2ReplaceDictionaryConfigOutput {
+	return i.ToGooglePrivacyDlpV2ReplaceDictionaryConfigOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2ReplaceDictionaryConfigArgs) ToGooglePrivacyDlpV2ReplaceDictionaryConfigOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ReplaceDictionaryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ReplaceDictionaryConfigOutput)
+}
+
+func (i GooglePrivacyDlpV2ReplaceDictionaryConfigArgs) ToGooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput() GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput {
+	return i.ToGooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2ReplaceDictionaryConfigArgs) ToGooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ReplaceDictionaryConfigOutput).ToGooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutputWithContext(ctx)
+}
+
+// GooglePrivacyDlpV2ReplaceDictionaryConfigPtrInput is an input type that accepts GooglePrivacyDlpV2ReplaceDictionaryConfigArgs, GooglePrivacyDlpV2ReplaceDictionaryConfigPtr and GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2ReplaceDictionaryConfigPtrInput` via:
+//
+//          GooglePrivacyDlpV2ReplaceDictionaryConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GooglePrivacyDlpV2ReplaceDictionaryConfigPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput() GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput
+	ToGooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutputWithContext(context.Context) GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput
+}
+
+type googlePrivacyDlpV2ReplaceDictionaryConfigPtrType GooglePrivacyDlpV2ReplaceDictionaryConfigArgs
+
+func GooglePrivacyDlpV2ReplaceDictionaryConfigPtr(v *GooglePrivacyDlpV2ReplaceDictionaryConfigArgs) GooglePrivacyDlpV2ReplaceDictionaryConfigPtrInput {
+	return (*googlePrivacyDlpV2ReplaceDictionaryConfigPtrType)(v)
+}
+
+func (*googlePrivacyDlpV2ReplaceDictionaryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2ReplaceDictionaryConfig)(nil)).Elem()
+}
+
+func (i *googlePrivacyDlpV2ReplaceDictionaryConfigPtrType) ToGooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput() GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput {
+	return i.ToGooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googlePrivacyDlpV2ReplaceDictionaryConfigPtrType) ToGooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput)
+}
+
+// Replace each input value with a value randomly selected from the dictionary.
+type GooglePrivacyDlpV2ReplaceDictionaryConfigOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2ReplaceDictionaryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2ReplaceDictionaryConfig)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2ReplaceDictionaryConfigOutput) ToGooglePrivacyDlpV2ReplaceDictionaryConfigOutput() GooglePrivacyDlpV2ReplaceDictionaryConfigOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ReplaceDictionaryConfigOutput) ToGooglePrivacyDlpV2ReplaceDictionaryConfigOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ReplaceDictionaryConfigOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ReplaceDictionaryConfigOutput) ToGooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput() GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput {
+	return o.ToGooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2ReplaceDictionaryConfigOutput) ToGooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2ReplaceDictionaryConfig) *GooglePrivacyDlpV2ReplaceDictionaryConfig {
+		return &v
+	}).(GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput)
+}
+
+// A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
+func (o GooglePrivacyDlpV2ReplaceDictionaryConfigOutput) WordList() GooglePrivacyDlpV2WordListPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2ReplaceDictionaryConfig) *GooglePrivacyDlpV2WordList { return v.WordList }).(GooglePrivacyDlpV2WordListPtrOutput)
+}
+
+type GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2ReplaceDictionaryConfig)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput) ToGooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput() GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput) ToGooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput) Elem() GooglePrivacyDlpV2ReplaceDictionaryConfigOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2ReplaceDictionaryConfig) GooglePrivacyDlpV2ReplaceDictionaryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2ReplaceDictionaryConfig
+		return ret
+	}).(GooglePrivacyDlpV2ReplaceDictionaryConfigOutput)
+}
+
+// A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
+func (o GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput) WordList() GooglePrivacyDlpV2WordListPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2ReplaceDictionaryConfig) *GooglePrivacyDlpV2WordList {
+		if v == nil {
+			return nil
+		}
+		return v.WordList
+	}).(GooglePrivacyDlpV2WordListPtrOutput)
+}
+
+// Replace each input value with a value randomly selected from the dictionary.
+type GooglePrivacyDlpV2ReplaceDictionaryConfigResponse struct {
+	// A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
+	WordList GooglePrivacyDlpV2WordListResponse `pulumi:"wordList"`
+}
+
+// GooglePrivacyDlpV2ReplaceDictionaryConfigResponseInput is an input type that accepts GooglePrivacyDlpV2ReplaceDictionaryConfigResponseArgs and GooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2ReplaceDictionaryConfigResponseInput` via:
+//
+//          GooglePrivacyDlpV2ReplaceDictionaryConfigResponseArgs{...}
+type GooglePrivacyDlpV2ReplaceDictionaryConfigResponseInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput() GooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput
+	ToGooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutputWithContext(context.Context) GooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput
+}
+
+// Replace each input value with a value randomly selected from the dictionary.
+type GooglePrivacyDlpV2ReplaceDictionaryConfigResponseArgs struct {
+	// A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
+	WordList GooglePrivacyDlpV2WordListResponseInput `pulumi:"wordList"`
+}
+
+func (GooglePrivacyDlpV2ReplaceDictionaryConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2ReplaceDictionaryConfigResponse)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2ReplaceDictionaryConfigResponseArgs) ToGooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput() GooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput {
+	return i.ToGooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2ReplaceDictionaryConfigResponseArgs) ToGooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput)
+}
+
+// Replace each input value with a value randomly selected from the dictionary.
+type GooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2ReplaceDictionaryConfigResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput) ToGooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput() GooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput) ToGooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput {
+	return o
+}
+
+// A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
+func (o GooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput) WordList() GooglePrivacyDlpV2WordListResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2ReplaceDictionaryConfigResponse) GooglePrivacyDlpV2WordListResponse {
+		return v.WordList
+	}).(GooglePrivacyDlpV2WordListResponseOutput)
 }
 
 // Replace each input value with a given `Value`.
@@ -32397,6 +32654,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2RegexPtrInput)(nil)).Elem(), GooglePrivacyDlpV2RegexArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2RegexResponseInput)(nil)).Elem(), GooglePrivacyDlpV2RegexResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2RegexResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2RegexResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ReplaceDictionaryConfigInput)(nil)).Elem(), GooglePrivacyDlpV2ReplaceDictionaryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ReplaceDictionaryConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2ReplaceDictionaryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ReplaceDictionaryConfigResponseInput)(nil)).Elem(), GooglePrivacyDlpV2ReplaceDictionaryConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ReplaceValueConfigInput)(nil)).Elem(), GooglePrivacyDlpV2ReplaceValueConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ReplaceValueConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2ReplaceValueConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ReplaceValueConfigResponseInput)(nil)).Elem(), GooglePrivacyDlpV2ReplaceValueConfigResponseArgs{})
@@ -32815,6 +33075,9 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2RegexPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2RegexResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2RegexResponsePtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2ReplaceDictionaryConfigOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ReplaceValueConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ReplaceValueConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ReplaceValueConfigResponseOutput{})

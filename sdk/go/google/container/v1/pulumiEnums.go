@@ -688,6 +688,342 @@ func (in *clusterUpdateDesiredPrivateIpv6GoogleAccessPtr) ToClusterUpdateDesired
 	return pulumi.ToOutputWithContext(ctx, in).(ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput)
 }
 
+// cluster_dns indicates which in-cluster DNS provider should be used.
+type DNSConfigClusterDns string
+
+const (
+	// Default value
+	DNSConfigClusterDnsProviderUnspecified = DNSConfigClusterDns("PROVIDER_UNSPECIFIED")
+	// Use GKE default DNS provider(kube-dns) for DNS resolution.
+	DNSConfigClusterDnsPlatformDefault = DNSConfigClusterDns("PLATFORM_DEFAULT")
+	// Use CloudDNS for DNS resolution.
+	DNSConfigClusterDnsCloudDns = DNSConfigClusterDns("CLOUD_DNS")
+)
+
+func (DNSConfigClusterDns) ElementType() reflect.Type {
+	return reflect.TypeOf((*DNSConfigClusterDns)(nil)).Elem()
+}
+
+func (e DNSConfigClusterDns) ToDNSConfigClusterDnsOutput() DNSConfigClusterDnsOutput {
+	return pulumi.ToOutput(e).(DNSConfigClusterDnsOutput)
+}
+
+func (e DNSConfigClusterDns) ToDNSConfigClusterDnsOutputWithContext(ctx context.Context) DNSConfigClusterDnsOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DNSConfigClusterDnsOutput)
+}
+
+func (e DNSConfigClusterDns) ToDNSConfigClusterDnsPtrOutput() DNSConfigClusterDnsPtrOutput {
+	return e.ToDNSConfigClusterDnsPtrOutputWithContext(context.Background())
+}
+
+func (e DNSConfigClusterDns) ToDNSConfigClusterDnsPtrOutputWithContext(ctx context.Context) DNSConfigClusterDnsPtrOutput {
+	return DNSConfigClusterDns(e).ToDNSConfigClusterDnsOutputWithContext(ctx).ToDNSConfigClusterDnsPtrOutputWithContext(ctx)
+}
+
+func (e DNSConfigClusterDns) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DNSConfigClusterDns) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DNSConfigClusterDns) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DNSConfigClusterDns) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DNSConfigClusterDnsOutput struct{ *pulumi.OutputState }
+
+func (DNSConfigClusterDnsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DNSConfigClusterDns)(nil)).Elem()
+}
+
+func (o DNSConfigClusterDnsOutput) ToDNSConfigClusterDnsOutput() DNSConfigClusterDnsOutput {
+	return o
+}
+
+func (o DNSConfigClusterDnsOutput) ToDNSConfigClusterDnsOutputWithContext(ctx context.Context) DNSConfigClusterDnsOutput {
+	return o
+}
+
+func (o DNSConfigClusterDnsOutput) ToDNSConfigClusterDnsPtrOutput() DNSConfigClusterDnsPtrOutput {
+	return o.ToDNSConfigClusterDnsPtrOutputWithContext(context.Background())
+}
+
+func (o DNSConfigClusterDnsOutput) ToDNSConfigClusterDnsPtrOutputWithContext(ctx context.Context) DNSConfigClusterDnsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DNSConfigClusterDns) *DNSConfigClusterDns {
+		return &v
+	}).(DNSConfigClusterDnsPtrOutput)
+}
+
+func (o DNSConfigClusterDnsOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DNSConfigClusterDnsOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DNSConfigClusterDns) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DNSConfigClusterDnsOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DNSConfigClusterDnsOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DNSConfigClusterDns) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DNSConfigClusterDnsPtrOutput struct{ *pulumi.OutputState }
+
+func (DNSConfigClusterDnsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DNSConfigClusterDns)(nil)).Elem()
+}
+
+func (o DNSConfigClusterDnsPtrOutput) ToDNSConfigClusterDnsPtrOutput() DNSConfigClusterDnsPtrOutput {
+	return o
+}
+
+func (o DNSConfigClusterDnsPtrOutput) ToDNSConfigClusterDnsPtrOutputWithContext(ctx context.Context) DNSConfigClusterDnsPtrOutput {
+	return o
+}
+
+func (o DNSConfigClusterDnsPtrOutput) Elem() DNSConfigClusterDnsOutput {
+	return o.ApplyT(func(v *DNSConfigClusterDns) DNSConfigClusterDns {
+		if v != nil {
+			return *v
+		}
+		var ret DNSConfigClusterDns
+		return ret
+	}).(DNSConfigClusterDnsOutput)
+}
+
+func (o DNSConfigClusterDnsPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DNSConfigClusterDnsPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DNSConfigClusterDns) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DNSConfigClusterDnsInput is an input type that accepts DNSConfigClusterDnsArgs and DNSConfigClusterDnsOutput values.
+// You can construct a concrete instance of `DNSConfigClusterDnsInput` via:
+//
+//          DNSConfigClusterDnsArgs{...}
+type DNSConfigClusterDnsInput interface {
+	pulumi.Input
+
+	ToDNSConfigClusterDnsOutput() DNSConfigClusterDnsOutput
+	ToDNSConfigClusterDnsOutputWithContext(context.Context) DNSConfigClusterDnsOutput
+}
+
+var dnsconfigClusterDnsPtrType = reflect.TypeOf((**DNSConfigClusterDns)(nil)).Elem()
+
+type DNSConfigClusterDnsPtrInput interface {
+	pulumi.Input
+
+	ToDNSConfigClusterDnsPtrOutput() DNSConfigClusterDnsPtrOutput
+	ToDNSConfigClusterDnsPtrOutputWithContext(context.Context) DNSConfigClusterDnsPtrOutput
+}
+
+type dnsconfigClusterDnsPtr string
+
+func DNSConfigClusterDnsPtr(v string) DNSConfigClusterDnsPtrInput {
+	return (*dnsconfigClusterDnsPtr)(&v)
+}
+
+func (*dnsconfigClusterDnsPtr) ElementType() reflect.Type {
+	return dnsconfigClusterDnsPtrType
+}
+
+func (in *dnsconfigClusterDnsPtr) ToDNSConfigClusterDnsPtrOutput() DNSConfigClusterDnsPtrOutput {
+	return pulumi.ToOutput(in).(DNSConfigClusterDnsPtrOutput)
+}
+
+func (in *dnsconfigClusterDnsPtr) ToDNSConfigClusterDnsPtrOutputWithContext(ctx context.Context) DNSConfigClusterDnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DNSConfigClusterDnsPtrOutput)
+}
+
+// cluster_dns_scope indicates the scope of access to cluster DNS records.
+type DNSConfigClusterDnsScope string
+
+const (
+	// Default value, will be inferred as cluster scope.
+	DNSConfigClusterDnsScopeDnsScopeUnspecified = DNSConfigClusterDnsScope("DNS_SCOPE_UNSPECIFIED")
+	// DNS records are accessible from within the VPC.
+	DNSConfigClusterDnsScopeVpcScope = DNSConfigClusterDnsScope("VPC_SCOPE")
+)
+
+func (DNSConfigClusterDnsScope) ElementType() reflect.Type {
+	return reflect.TypeOf((*DNSConfigClusterDnsScope)(nil)).Elem()
+}
+
+func (e DNSConfigClusterDnsScope) ToDNSConfigClusterDnsScopeOutput() DNSConfigClusterDnsScopeOutput {
+	return pulumi.ToOutput(e).(DNSConfigClusterDnsScopeOutput)
+}
+
+func (e DNSConfigClusterDnsScope) ToDNSConfigClusterDnsScopeOutputWithContext(ctx context.Context) DNSConfigClusterDnsScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DNSConfigClusterDnsScopeOutput)
+}
+
+func (e DNSConfigClusterDnsScope) ToDNSConfigClusterDnsScopePtrOutput() DNSConfigClusterDnsScopePtrOutput {
+	return e.ToDNSConfigClusterDnsScopePtrOutputWithContext(context.Background())
+}
+
+func (e DNSConfigClusterDnsScope) ToDNSConfigClusterDnsScopePtrOutputWithContext(ctx context.Context) DNSConfigClusterDnsScopePtrOutput {
+	return DNSConfigClusterDnsScope(e).ToDNSConfigClusterDnsScopeOutputWithContext(ctx).ToDNSConfigClusterDnsScopePtrOutputWithContext(ctx)
+}
+
+func (e DNSConfigClusterDnsScope) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DNSConfigClusterDnsScope) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DNSConfigClusterDnsScope) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DNSConfigClusterDnsScope) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DNSConfigClusterDnsScopeOutput struct{ *pulumi.OutputState }
+
+func (DNSConfigClusterDnsScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DNSConfigClusterDnsScope)(nil)).Elem()
+}
+
+func (o DNSConfigClusterDnsScopeOutput) ToDNSConfigClusterDnsScopeOutput() DNSConfigClusterDnsScopeOutput {
+	return o
+}
+
+func (o DNSConfigClusterDnsScopeOutput) ToDNSConfigClusterDnsScopeOutputWithContext(ctx context.Context) DNSConfigClusterDnsScopeOutput {
+	return o
+}
+
+func (o DNSConfigClusterDnsScopeOutput) ToDNSConfigClusterDnsScopePtrOutput() DNSConfigClusterDnsScopePtrOutput {
+	return o.ToDNSConfigClusterDnsScopePtrOutputWithContext(context.Background())
+}
+
+func (o DNSConfigClusterDnsScopeOutput) ToDNSConfigClusterDnsScopePtrOutputWithContext(ctx context.Context) DNSConfigClusterDnsScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DNSConfigClusterDnsScope) *DNSConfigClusterDnsScope {
+		return &v
+	}).(DNSConfigClusterDnsScopePtrOutput)
+}
+
+func (o DNSConfigClusterDnsScopeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DNSConfigClusterDnsScopeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DNSConfigClusterDnsScope) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DNSConfigClusterDnsScopeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DNSConfigClusterDnsScopeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DNSConfigClusterDnsScope) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DNSConfigClusterDnsScopePtrOutput struct{ *pulumi.OutputState }
+
+func (DNSConfigClusterDnsScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DNSConfigClusterDnsScope)(nil)).Elem()
+}
+
+func (o DNSConfigClusterDnsScopePtrOutput) ToDNSConfigClusterDnsScopePtrOutput() DNSConfigClusterDnsScopePtrOutput {
+	return o
+}
+
+func (o DNSConfigClusterDnsScopePtrOutput) ToDNSConfigClusterDnsScopePtrOutputWithContext(ctx context.Context) DNSConfigClusterDnsScopePtrOutput {
+	return o
+}
+
+func (o DNSConfigClusterDnsScopePtrOutput) Elem() DNSConfigClusterDnsScopeOutput {
+	return o.ApplyT(func(v *DNSConfigClusterDnsScope) DNSConfigClusterDnsScope {
+		if v != nil {
+			return *v
+		}
+		var ret DNSConfigClusterDnsScope
+		return ret
+	}).(DNSConfigClusterDnsScopeOutput)
+}
+
+func (o DNSConfigClusterDnsScopePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DNSConfigClusterDnsScopePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DNSConfigClusterDnsScope) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DNSConfigClusterDnsScopeInput is an input type that accepts DNSConfigClusterDnsScopeArgs and DNSConfigClusterDnsScopeOutput values.
+// You can construct a concrete instance of `DNSConfigClusterDnsScopeInput` via:
+//
+//          DNSConfigClusterDnsScopeArgs{...}
+type DNSConfigClusterDnsScopeInput interface {
+	pulumi.Input
+
+	ToDNSConfigClusterDnsScopeOutput() DNSConfigClusterDnsScopeOutput
+	ToDNSConfigClusterDnsScopeOutputWithContext(context.Context) DNSConfigClusterDnsScopeOutput
+}
+
+var dnsconfigClusterDnsScopePtrType = reflect.TypeOf((**DNSConfigClusterDnsScope)(nil)).Elem()
+
+type DNSConfigClusterDnsScopePtrInput interface {
+	pulumi.Input
+
+	ToDNSConfigClusterDnsScopePtrOutput() DNSConfigClusterDnsScopePtrOutput
+	ToDNSConfigClusterDnsScopePtrOutputWithContext(context.Context) DNSConfigClusterDnsScopePtrOutput
+}
+
+type dnsconfigClusterDnsScopePtr string
+
+func DNSConfigClusterDnsScopePtr(v string) DNSConfigClusterDnsScopePtrInput {
+	return (*dnsconfigClusterDnsScopePtr)(&v)
+}
+
+func (*dnsconfigClusterDnsScopePtr) ElementType() reflect.Type {
+	return dnsconfigClusterDnsScopePtrType
+}
+
+func (in *dnsconfigClusterDnsScopePtr) ToDNSConfigClusterDnsScopePtrOutput() DNSConfigClusterDnsScopePtrOutput {
+	return pulumi.ToOutput(in).(DNSConfigClusterDnsScopePtrOutput)
+}
+
+func (in *dnsconfigClusterDnsScopePtr) ToDNSConfigClusterDnsScopePtrOutputWithContext(ctx context.Context) DNSConfigClusterDnsScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DNSConfigClusterDnsScopePtrOutput)
+}
+
 // Denotes the state of etcd encryption.
 type DatabaseEncryptionState string
 
@@ -2843,6 +3179,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterUpdateDesiredDatapathProviderPtrInput)(nil)).Elem(), ClusterUpdateDesiredDatapathProvider("DATAPATH_PROVIDER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterUpdateDesiredPrivateIpv6GoogleAccessInput)(nil)).Elem(), ClusterUpdateDesiredPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrInput)(nil)).Elem(), ClusterUpdateDesiredPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DNSConfigClusterDnsInput)(nil)).Elem(), DNSConfigClusterDns("PROVIDER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DNSConfigClusterDnsPtrInput)(nil)).Elem(), DNSConfigClusterDns("PROVIDER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DNSConfigClusterDnsScopeInput)(nil)).Elem(), DNSConfigClusterDnsScope("DNS_SCOPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DNSConfigClusterDnsScopePtrInput)(nil)).Elem(), DNSConfigClusterDnsScope("DNS_SCOPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseEncryptionStateInput)(nil)).Elem(), DatabaseEncryptionState("UNKNOWN"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseEncryptionStatePtrInput)(nil)).Elem(), DatabaseEncryptionState("UNKNOWN"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingComponentConfigEnableComponentsItemInput)(nil)).Elem(), LoggingComponentConfigEnableComponentsItem("COMPONENT_UNSPECIFIED"))
@@ -2877,6 +3217,10 @@ func init() {
 	pulumi.RegisterOutputType(ClusterUpdateDesiredDatapathProviderPtrOutput{})
 	pulumi.RegisterOutputType(ClusterUpdateDesiredPrivateIpv6GoogleAccessOutput{})
 	pulumi.RegisterOutputType(ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput{})
+	pulumi.RegisterOutputType(DNSConfigClusterDnsOutput{})
+	pulumi.RegisterOutputType(DNSConfigClusterDnsPtrOutput{})
+	pulumi.RegisterOutputType(DNSConfigClusterDnsScopeOutput{})
+	pulumi.RegisterOutputType(DNSConfigClusterDnsScopePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseEncryptionStateOutput{})
 	pulumi.RegisterOutputType(DatabaseEncryptionStatePtrOutput{})
 	pulumi.RegisterOutputType(LoggingComponentConfigEnableComponentsItemOutput{})

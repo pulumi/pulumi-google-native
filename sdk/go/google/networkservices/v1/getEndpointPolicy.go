@@ -27,7 +27,7 @@ type LookupEndpointPolicyArgs struct {
 }
 
 type LookupEndpointPolicyResult struct {
-	// Optional. This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints. Refer to Authorization. If this field is not specified, authorization is disabled(no authz checks) for this endpoint. Applicable only when EndpointPolicyType is SIDECAR_PROXY.
+	// Optional. This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints. Refer to Authorization. If this field is not specified, authorization is disabled(no authz checks) for this endpoint.
 	AuthorizationPolicy string `pulumi:"authorizationPolicy"`
 	// Optional. A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints. More specifically, it is applied to the outgoing traffic from the proxy to the endpoint. This is typically used for sidecar model where the proxy identifies itself as endpoint to the control plane, with the connection between sidecar and endpoint requiring authentication. If this field is not set, authentication is disabled(open). Applicable only when EndpointPolicyType is SIDECAR_PROXY.
 	ClientTlsPolicy string `pulumi:"clientTlsPolicy"`
@@ -84,7 +84,7 @@ func (o LookupEndpointPolicyResultOutput) ToLookupEndpointPolicyResultOutputWith
 	return o
 }
 
-// Optional. This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints. Refer to Authorization. If this field is not specified, authorization is disabled(no authz checks) for this endpoint. Applicable only when EndpointPolicyType is SIDECAR_PROXY.
+// Optional. This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints. Refer to Authorization. If this field is not specified, authorization is disabled(no authz checks) for this endpoint.
 func (o LookupEndpointPolicyResultOutput) AuthorizationPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEndpointPolicyResult) string { return v.AuthorizationPolicy }).(pulumi.StringOutput)
 }

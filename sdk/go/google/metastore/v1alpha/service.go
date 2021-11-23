@@ -37,6 +37,8 @@ type Service struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
 	Network pulumi.StringOutput `pulumi:"network"`
+	// Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+	NetworkConfig NetworkConfigResponseOutput `pulumi:"networkConfig"`
 	// The TCP port at which the metastore service is reached. Default: 9083.
 	Port pulumi.IntOutput `pulumi:"port"`
 	// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
@@ -110,6 +112,8 @@ type serviceArgs struct {
 	Name *string `pulumi:"name"`
 	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
 	Network *string `pulumi:"network"`
+	// Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+	NetworkConfig *NetworkConfig `pulumi:"networkConfig"`
 	// The TCP port at which the metastore service is reached. Default: 9083.
 	Port    *int    `pulumi:"port"`
 	Project *string `pulumi:"project"`
@@ -138,6 +142,8 @@ type ServiceArgs struct {
 	Name pulumi.StringPtrInput
 	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
 	Network pulumi.StringPtrInput
+	// Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+	NetworkConfig NetworkConfigPtrInput
 	// The TCP port at which the metastore service is reached. Default: 9083.
 	Port    pulumi.IntPtrInput
 	Project pulumi.StringPtrInput

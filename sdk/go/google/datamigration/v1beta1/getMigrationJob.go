@@ -45,7 +45,7 @@ type LookupMigrationJobResult struct {
 	Error StatusResponse `pulumi:"error"`
 	// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	Labels map[string]string `pulumi:"labels"`
-	// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
+	// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
 	Name string `pulumi:"name"`
 	// The current migration job phase.
 	Phase string `pulumi:"phase"`
@@ -145,7 +145,7 @@ func (o LookupMigrationJobResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupMigrationJobResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
+// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
 func (o LookupMigrationJobResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigrationJobResult) string { return v.Name }).(pulumi.StringOutput)
 }

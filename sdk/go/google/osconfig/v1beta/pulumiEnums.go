@@ -1209,10 +1209,12 @@ type RecurringScheduleFrequency string
 const (
 	// Invalid. A frequency must be specified.
 	RecurringScheduleFrequencyFrequencyUnspecified = RecurringScheduleFrequency("FREQUENCY_UNSPECIFIED")
-	// Indicates that the frequency should be expressed in terms of weeks.
+	// Indicates that the frequency of recurrence should be expressed in terms of weeks.
 	RecurringScheduleFrequencyWeekly = RecurringScheduleFrequency("WEEKLY")
-	// Indicates that the frequency should be expressed in terms of months.
+	// Indicates that the frequency of recurrence should be expressed in terms of months.
 	RecurringScheduleFrequencyMonthly = RecurringScheduleFrequency("MONTHLY")
+	// Indicates that the frequency of recurrence should be expressed in terms of days.
+	RecurringScheduleFrequencyDaily = RecurringScheduleFrequency("DAILY")
 )
 
 func (RecurringScheduleFrequency) ElementType() reflect.Type {

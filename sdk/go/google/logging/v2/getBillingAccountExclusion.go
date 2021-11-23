@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets the description of an exclusion.
+// Gets the description of an exclusion in the _Default sink.
 func LookupBillingAccountExclusion(ctx *pulumi.Context, args *LookupBillingAccountExclusionArgs, opts ...pulumi.InvokeOption) (*LookupBillingAccountExclusionResult, error) {
 	var rv LookupBillingAccountExclusionResult
 	err := ctx.Invoke("google-native:logging/v2:getBillingAccountExclusion", args, &rv, opts...)

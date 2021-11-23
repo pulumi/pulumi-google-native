@@ -16,16 +16,24 @@ import (
 type WorkerPool struct {
 	pulumi.CustomResourceState
 
+	// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Time at which the request to create the `WorkerPool` was received.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Time at which the request to delete the `WorkerPool` was received.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig NetworkConfigResponseOutput `pulumi:"networkConfig"`
 	// `WorkerPool` state.
 	State pulumi.StringOutput `pulumi:"state"`
+	// A unique identifier for the `WorkerPool`.
+	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Time at which the request to update the `WorkerPool` was received.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Worker configuration for the `WorkerPool`.
@@ -74,7 +82,11 @@ func (WorkerPoolState) ElementType() reflect.Type {
 }
 
 type workerPoolArgs struct {
-	Location *string `pulumi:"location"`
+	// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	Annotations map[string]string `pulumi:"annotations"`
+	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
+	DisplayName *string `pulumi:"displayName"`
+	Location    *string `pulumi:"location"`
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig *NetworkConfig `pulumi:"networkConfig"`
 	Project       *string        `pulumi:"project"`
@@ -85,7 +97,11 @@ type workerPoolArgs struct {
 
 // The set of arguments for constructing a WorkerPool resource.
 type WorkerPoolArgs struct {
-	Location pulumi.StringPtrInput
+	// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	Annotations pulumi.StringMapInput
+	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
+	DisplayName pulumi.StringPtrInput
+	Location    pulumi.StringPtrInput
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig NetworkConfigPtrInput
 	Project       pulumi.StringPtrInput

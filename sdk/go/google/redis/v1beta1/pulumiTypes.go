@@ -372,7 +372,7 @@ type MaintenanceScheduleResponse struct {
 	CanReschedule bool `pulumi:"canReschedule"`
 	// The end time of any upcoming scheduled maintenance for this instance.
 	EndTime string `pulumi:"endTime"`
-	// The time deadline any schedule start time cannot go beyond, including reschedule.
+	// The deadline that the maintenance schedule start time can not go beyond, including reschedule.
 	ScheduleDeadlineTime string `pulumi:"scheduleDeadlineTime"`
 	// The start time of any upcoming scheduled maintenance for this instance.
 	StartTime string `pulumi:"startTime"`
@@ -395,7 +395,7 @@ type MaintenanceScheduleResponseArgs struct {
 	CanReschedule pulumi.BoolInput `pulumi:"canReschedule"`
 	// The end time of any upcoming scheduled maintenance for this instance.
 	EndTime pulumi.StringInput `pulumi:"endTime"`
-	// The time deadline any schedule start time cannot go beyond, including reschedule.
+	// The deadline that the maintenance schedule start time can not go beyond, including reschedule.
 	ScheduleDeadlineTime pulumi.StringInput `pulumi:"scheduleDeadlineTime"`
 	// The start time of any upcoming scheduled maintenance for this instance.
 	StartTime pulumi.StringInput `pulumi:"startTime"`
@@ -489,7 +489,7 @@ func (o MaintenanceScheduleResponseOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v MaintenanceScheduleResponse) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
-// The time deadline any schedule start time cannot go beyond, including reschedule.
+// The deadline that the maintenance schedule start time can not go beyond, including reschedule.
 func (o MaintenanceScheduleResponseOutput) ScheduleDeadlineTime() pulumi.StringOutput {
 	return o.ApplyT(func(v MaintenanceScheduleResponse) string { return v.ScheduleDeadlineTime }).(pulumi.StringOutput)
 }
@@ -543,7 +543,7 @@ func (o MaintenanceScheduleResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The time deadline any schedule start time cannot go beyond, including reschedule.
+// The deadline that the maintenance schedule start time can not go beyond, including reschedule.
 func (o MaintenanceScheduleResponsePtrOutput) ScheduleDeadlineTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MaintenanceScheduleResponse) *string {
 		if v == nil {
@@ -560,6 +560,481 @@ func (o MaintenanceScheduleResponsePtrOutput) StartTime() pulumi.StringPtrOutput
 			return nil
 		}
 		return &v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Node specific properties.
+type NodeInfoResponse struct {
+	// Location of the node.
+	Zone string `pulumi:"zone"`
+}
+
+// NodeInfoResponseInput is an input type that accepts NodeInfoResponseArgs and NodeInfoResponseOutput values.
+// You can construct a concrete instance of `NodeInfoResponseInput` via:
+//
+//          NodeInfoResponseArgs{...}
+type NodeInfoResponseInput interface {
+	pulumi.Input
+
+	ToNodeInfoResponseOutput() NodeInfoResponseOutput
+	ToNodeInfoResponseOutputWithContext(context.Context) NodeInfoResponseOutput
+}
+
+// Node specific properties.
+type NodeInfoResponseArgs struct {
+	// Location of the node.
+	Zone pulumi.StringInput `pulumi:"zone"`
+}
+
+func (NodeInfoResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeInfoResponse)(nil)).Elem()
+}
+
+func (i NodeInfoResponseArgs) ToNodeInfoResponseOutput() NodeInfoResponseOutput {
+	return i.ToNodeInfoResponseOutputWithContext(context.Background())
+}
+
+func (i NodeInfoResponseArgs) ToNodeInfoResponseOutputWithContext(ctx context.Context) NodeInfoResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeInfoResponseOutput)
+}
+
+// NodeInfoResponseArrayInput is an input type that accepts NodeInfoResponseArray and NodeInfoResponseArrayOutput values.
+// You can construct a concrete instance of `NodeInfoResponseArrayInput` via:
+//
+//          NodeInfoResponseArray{ NodeInfoResponseArgs{...} }
+type NodeInfoResponseArrayInput interface {
+	pulumi.Input
+
+	ToNodeInfoResponseArrayOutput() NodeInfoResponseArrayOutput
+	ToNodeInfoResponseArrayOutputWithContext(context.Context) NodeInfoResponseArrayOutput
+}
+
+type NodeInfoResponseArray []NodeInfoResponseInput
+
+func (NodeInfoResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeInfoResponse)(nil)).Elem()
+}
+
+func (i NodeInfoResponseArray) ToNodeInfoResponseArrayOutput() NodeInfoResponseArrayOutput {
+	return i.ToNodeInfoResponseArrayOutputWithContext(context.Background())
+}
+
+func (i NodeInfoResponseArray) ToNodeInfoResponseArrayOutputWithContext(ctx context.Context) NodeInfoResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeInfoResponseArrayOutput)
+}
+
+// Node specific properties.
+type NodeInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (NodeInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeInfoResponse)(nil)).Elem()
+}
+
+func (o NodeInfoResponseOutput) ToNodeInfoResponseOutput() NodeInfoResponseOutput {
+	return o
+}
+
+func (o NodeInfoResponseOutput) ToNodeInfoResponseOutputWithContext(ctx context.Context) NodeInfoResponseOutput {
+	return o
+}
+
+// Location of the node.
+func (o NodeInfoResponseOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeInfoResponse) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+type NodeInfoResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeInfoResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeInfoResponse)(nil)).Elem()
+}
+
+func (o NodeInfoResponseArrayOutput) ToNodeInfoResponseArrayOutput() NodeInfoResponseArrayOutput {
+	return o
+}
+
+func (o NodeInfoResponseArrayOutput) ToNodeInfoResponseArrayOutputWithContext(ctx context.Context) NodeInfoResponseArrayOutput {
+	return o
+}
+
+func (o NodeInfoResponseArrayOutput) Index(i pulumi.IntInput) NodeInfoResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeInfoResponse {
+		return vs[0].([]NodeInfoResponse)[vs[1].(int)]
+	}).(NodeInfoResponseOutput)
+}
+
+// Configuration of the persistence functionality.
+type PersistenceConfig struct {
+	// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+	PersistenceMode *PersistenceConfigPersistenceMode `pulumi:"persistenceMode"`
+	// Optional. Period between RDB snapshots. Snapshots will be attempted every period starting from the provided snapshot start time. For example, a start time of 01/01/2033 06:45 and SIX_HOURS snapshot period will do nothing until 01/01/2033, and then trigger snapshots every day at 06:45, 12:45, 18:45, and 00:45 the next day, and so on. If not provided, TWENTY_FOUR_HOURS will be used as default.
+	RdbSnapshotPeriod *PersistenceConfigRdbSnapshotPeriod `pulumi:"rdbSnapshotPeriod"`
+	// Optional. Date and time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used.
+	RdbSnapshotStartTime *string `pulumi:"rdbSnapshotStartTime"`
+}
+
+// PersistenceConfigInput is an input type that accepts PersistenceConfigArgs and PersistenceConfigOutput values.
+// You can construct a concrete instance of `PersistenceConfigInput` via:
+//
+//          PersistenceConfigArgs{...}
+type PersistenceConfigInput interface {
+	pulumi.Input
+
+	ToPersistenceConfigOutput() PersistenceConfigOutput
+	ToPersistenceConfigOutputWithContext(context.Context) PersistenceConfigOutput
+}
+
+// Configuration of the persistence functionality.
+type PersistenceConfigArgs struct {
+	// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+	PersistenceMode PersistenceConfigPersistenceModePtrInput `pulumi:"persistenceMode"`
+	// Optional. Period between RDB snapshots. Snapshots will be attempted every period starting from the provided snapshot start time. For example, a start time of 01/01/2033 06:45 and SIX_HOURS snapshot period will do nothing until 01/01/2033, and then trigger snapshots every day at 06:45, 12:45, 18:45, and 00:45 the next day, and so on. If not provided, TWENTY_FOUR_HOURS will be used as default.
+	RdbSnapshotPeriod PersistenceConfigRdbSnapshotPeriodPtrInput `pulumi:"rdbSnapshotPeriod"`
+	// Optional. Date and time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used.
+	RdbSnapshotStartTime pulumi.StringPtrInput `pulumi:"rdbSnapshotStartTime"`
+}
+
+func (PersistenceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PersistenceConfig)(nil)).Elem()
+}
+
+func (i PersistenceConfigArgs) ToPersistenceConfigOutput() PersistenceConfigOutput {
+	return i.ToPersistenceConfigOutputWithContext(context.Background())
+}
+
+func (i PersistenceConfigArgs) ToPersistenceConfigOutputWithContext(ctx context.Context) PersistenceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PersistenceConfigOutput)
+}
+
+func (i PersistenceConfigArgs) ToPersistenceConfigPtrOutput() PersistenceConfigPtrOutput {
+	return i.ToPersistenceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PersistenceConfigArgs) ToPersistenceConfigPtrOutputWithContext(ctx context.Context) PersistenceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PersistenceConfigOutput).ToPersistenceConfigPtrOutputWithContext(ctx)
+}
+
+// PersistenceConfigPtrInput is an input type that accepts PersistenceConfigArgs, PersistenceConfigPtr and PersistenceConfigPtrOutput values.
+// You can construct a concrete instance of `PersistenceConfigPtrInput` via:
+//
+//          PersistenceConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type PersistenceConfigPtrInput interface {
+	pulumi.Input
+
+	ToPersistenceConfigPtrOutput() PersistenceConfigPtrOutput
+	ToPersistenceConfigPtrOutputWithContext(context.Context) PersistenceConfigPtrOutput
+}
+
+type persistenceConfigPtrType PersistenceConfigArgs
+
+func PersistenceConfigPtr(v *PersistenceConfigArgs) PersistenceConfigPtrInput {
+	return (*persistenceConfigPtrType)(v)
+}
+
+func (*persistenceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PersistenceConfig)(nil)).Elem()
+}
+
+func (i *persistenceConfigPtrType) ToPersistenceConfigPtrOutput() PersistenceConfigPtrOutput {
+	return i.ToPersistenceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *persistenceConfigPtrType) ToPersistenceConfigPtrOutputWithContext(ctx context.Context) PersistenceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PersistenceConfigPtrOutput)
+}
+
+// Configuration of the persistence functionality.
+type PersistenceConfigOutput struct{ *pulumi.OutputState }
+
+func (PersistenceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PersistenceConfig)(nil)).Elem()
+}
+
+func (o PersistenceConfigOutput) ToPersistenceConfigOutput() PersistenceConfigOutput {
+	return o
+}
+
+func (o PersistenceConfigOutput) ToPersistenceConfigOutputWithContext(ctx context.Context) PersistenceConfigOutput {
+	return o
+}
+
+func (o PersistenceConfigOutput) ToPersistenceConfigPtrOutput() PersistenceConfigPtrOutput {
+	return o.ToPersistenceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PersistenceConfigOutput) ToPersistenceConfigPtrOutputWithContext(ctx context.Context) PersistenceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PersistenceConfig) *PersistenceConfig {
+		return &v
+	}).(PersistenceConfigPtrOutput)
+}
+
+// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+func (o PersistenceConfigOutput) PersistenceMode() PersistenceConfigPersistenceModePtrOutput {
+	return o.ApplyT(func(v PersistenceConfig) *PersistenceConfigPersistenceMode { return v.PersistenceMode }).(PersistenceConfigPersistenceModePtrOutput)
+}
+
+// Optional. Period between RDB snapshots. Snapshots will be attempted every period starting from the provided snapshot start time. For example, a start time of 01/01/2033 06:45 and SIX_HOURS snapshot period will do nothing until 01/01/2033, and then trigger snapshots every day at 06:45, 12:45, 18:45, and 00:45 the next day, and so on. If not provided, TWENTY_FOUR_HOURS will be used as default.
+func (o PersistenceConfigOutput) RdbSnapshotPeriod() PersistenceConfigRdbSnapshotPeriodPtrOutput {
+	return o.ApplyT(func(v PersistenceConfig) *PersistenceConfigRdbSnapshotPeriod { return v.RdbSnapshotPeriod }).(PersistenceConfigRdbSnapshotPeriodPtrOutput)
+}
+
+// Optional. Date and time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used.
+func (o PersistenceConfigOutput) RdbSnapshotStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PersistenceConfig) *string { return v.RdbSnapshotStartTime }).(pulumi.StringPtrOutput)
+}
+
+type PersistenceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PersistenceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PersistenceConfig)(nil)).Elem()
+}
+
+func (o PersistenceConfigPtrOutput) ToPersistenceConfigPtrOutput() PersistenceConfigPtrOutput {
+	return o
+}
+
+func (o PersistenceConfigPtrOutput) ToPersistenceConfigPtrOutputWithContext(ctx context.Context) PersistenceConfigPtrOutput {
+	return o
+}
+
+func (o PersistenceConfigPtrOutput) Elem() PersistenceConfigOutput {
+	return o.ApplyT(func(v *PersistenceConfig) PersistenceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PersistenceConfig
+		return ret
+	}).(PersistenceConfigOutput)
+}
+
+// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+func (o PersistenceConfigPtrOutput) PersistenceMode() PersistenceConfigPersistenceModePtrOutput {
+	return o.ApplyT(func(v *PersistenceConfig) *PersistenceConfigPersistenceMode {
+		if v == nil {
+			return nil
+		}
+		return v.PersistenceMode
+	}).(PersistenceConfigPersistenceModePtrOutput)
+}
+
+// Optional. Period between RDB snapshots. Snapshots will be attempted every period starting from the provided snapshot start time. For example, a start time of 01/01/2033 06:45 and SIX_HOURS snapshot period will do nothing until 01/01/2033, and then trigger snapshots every day at 06:45, 12:45, 18:45, and 00:45 the next day, and so on. If not provided, TWENTY_FOUR_HOURS will be used as default.
+func (o PersistenceConfigPtrOutput) RdbSnapshotPeriod() PersistenceConfigRdbSnapshotPeriodPtrOutput {
+	return o.ApplyT(func(v *PersistenceConfig) *PersistenceConfigRdbSnapshotPeriod {
+		if v == nil {
+			return nil
+		}
+		return v.RdbSnapshotPeriod
+	}).(PersistenceConfigRdbSnapshotPeriodPtrOutput)
+}
+
+// Optional. Date and time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used.
+func (o PersistenceConfigPtrOutput) RdbSnapshotStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PersistenceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RdbSnapshotStartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration of the persistence functionality.
+type PersistenceConfigResponse struct {
+	// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+	PersistenceMode string `pulumi:"persistenceMode"`
+	// The next time that a snapshot attempt is scheduled to occur.
+	RdbNextSnapshotTime string `pulumi:"rdbNextSnapshotTime"`
+	// Optional. Period between RDB snapshots. Snapshots will be attempted every period starting from the provided snapshot start time. For example, a start time of 01/01/2033 06:45 and SIX_HOURS snapshot period will do nothing until 01/01/2033, and then trigger snapshots every day at 06:45, 12:45, 18:45, and 00:45 the next day, and so on. If not provided, TWENTY_FOUR_HOURS will be used as default.
+	RdbSnapshotPeriod string `pulumi:"rdbSnapshotPeriod"`
+	// Optional. Date and time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used.
+	RdbSnapshotStartTime string `pulumi:"rdbSnapshotStartTime"`
+}
+
+// PersistenceConfigResponseInput is an input type that accepts PersistenceConfigResponseArgs and PersistenceConfigResponseOutput values.
+// You can construct a concrete instance of `PersistenceConfigResponseInput` via:
+//
+//          PersistenceConfigResponseArgs{...}
+type PersistenceConfigResponseInput interface {
+	pulumi.Input
+
+	ToPersistenceConfigResponseOutput() PersistenceConfigResponseOutput
+	ToPersistenceConfigResponseOutputWithContext(context.Context) PersistenceConfigResponseOutput
+}
+
+// Configuration of the persistence functionality.
+type PersistenceConfigResponseArgs struct {
+	// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+	PersistenceMode pulumi.StringInput `pulumi:"persistenceMode"`
+	// The next time that a snapshot attempt is scheduled to occur.
+	RdbNextSnapshotTime pulumi.StringInput `pulumi:"rdbNextSnapshotTime"`
+	// Optional. Period between RDB snapshots. Snapshots will be attempted every period starting from the provided snapshot start time. For example, a start time of 01/01/2033 06:45 and SIX_HOURS snapshot period will do nothing until 01/01/2033, and then trigger snapshots every day at 06:45, 12:45, 18:45, and 00:45 the next day, and so on. If not provided, TWENTY_FOUR_HOURS will be used as default.
+	RdbSnapshotPeriod pulumi.StringInput `pulumi:"rdbSnapshotPeriod"`
+	// Optional. Date and time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used.
+	RdbSnapshotStartTime pulumi.StringInput `pulumi:"rdbSnapshotStartTime"`
+}
+
+func (PersistenceConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PersistenceConfigResponse)(nil)).Elem()
+}
+
+func (i PersistenceConfigResponseArgs) ToPersistenceConfigResponseOutput() PersistenceConfigResponseOutput {
+	return i.ToPersistenceConfigResponseOutputWithContext(context.Background())
+}
+
+func (i PersistenceConfigResponseArgs) ToPersistenceConfigResponseOutputWithContext(ctx context.Context) PersistenceConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PersistenceConfigResponseOutput)
+}
+
+func (i PersistenceConfigResponseArgs) ToPersistenceConfigResponsePtrOutput() PersistenceConfigResponsePtrOutput {
+	return i.ToPersistenceConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PersistenceConfigResponseArgs) ToPersistenceConfigResponsePtrOutputWithContext(ctx context.Context) PersistenceConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PersistenceConfigResponseOutput).ToPersistenceConfigResponsePtrOutputWithContext(ctx)
+}
+
+// PersistenceConfigResponsePtrInput is an input type that accepts PersistenceConfigResponseArgs, PersistenceConfigResponsePtr and PersistenceConfigResponsePtrOutput values.
+// You can construct a concrete instance of `PersistenceConfigResponsePtrInput` via:
+//
+//          PersistenceConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PersistenceConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToPersistenceConfigResponsePtrOutput() PersistenceConfigResponsePtrOutput
+	ToPersistenceConfigResponsePtrOutputWithContext(context.Context) PersistenceConfigResponsePtrOutput
+}
+
+type persistenceConfigResponsePtrType PersistenceConfigResponseArgs
+
+func PersistenceConfigResponsePtr(v *PersistenceConfigResponseArgs) PersistenceConfigResponsePtrInput {
+	return (*persistenceConfigResponsePtrType)(v)
+}
+
+func (*persistenceConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PersistenceConfigResponse)(nil)).Elem()
+}
+
+func (i *persistenceConfigResponsePtrType) ToPersistenceConfigResponsePtrOutput() PersistenceConfigResponsePtrOutput {
+	return i.ToPersistenceConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *persistenceConfigResponsePtrType) ToPersistenceConfigResponsePtrOutputWithContext(ctx context.Context) PersistenceConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PersistenceConfigResponsePtrOutput)
+}
+
+// Configuration of the persistence functionality.
+type PersistenceConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (PersistenceConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PersistenceConfigResponse)(nil)).Elem()
+}
+
+func (o PersistenceConfigResponseOutput) ToPersistenceConfigResponseOutput() PersistenceConfigResponseOutput {
+	return o
+}
+
+func (o PersistenceConfigResponseOutput) ToPersistenceConfigResponseOutputWithContext(ctx context.Context) PersistenceConfigResponseOutput {
+	return o
+}
+
+func (o PersistenceConfigResponseOutput) ToPersistenceConfigResponsePtrOutput() PersistenceConfigResponsePtrOutput {
+	return o.ToPersistenceConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PersistenceConfigResponseOutput) ToPersistenceConfigResponsePtrOutputWithContext(ctx context.Context) PersistenceConfigResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PersistenceConfigResponse) *PersistenceConfigResponse {
+		return &v
+	}).(PersistenceConfigResponsePtrOutput)
+}
+
+// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+func (o PersistenceConfigResponseOutput) PersistenceMode() pulumi.StringOutput {
+	return o.ApplyT(func(v PersistenceConfigResponse) string { return v.PersistenceMode }).(pulumi.StringOutput)
+}
+
+// The next time that a snapshot attempt is scheduled to occur.
+func (o PersistenceConfigResponseOutput) RdbNextSnapshotTime() pulumi.StringOutput {
+	return o.ApplyT(func(v PersistenceConfigResponse) string { return v.RdbNextSnapshotTime }).(pulumi.StringOutput)
+}
+
+// Optional. Period between RDB snapshots. Snapshots will be attempted every period starting from the provided snapshot start time. For example, a start time of 01/01/2033 06:45 and SIX_HOURS snapshot period will do nothing until 01/01/2033, and then trigger snapshots every day at 06:45, 12:45, 18:45, and 00:45 the next day, and so on. If not provided, TWENTY_FOUR_HOURS will be used as default.
+func (o PersistenceConfigResponseOutput) RdbSnapshotPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v PersistenceConfigResponse) string { return v.RdbSnapshotPeriod }).(pulumi.StringOutput)
+}
+
+// Optional. Date and time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used.
+func (o PersistenceConfigResponseOutput) RdbSnapshotStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v PersistenceConfigResponse) string { return v.RdbSnapshotStartTime }).(pulumi.StringOutput)
+}
+
+type PersistenceConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PersistenceConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PersistenceConfigResponse)(nil)).Elem()
+}
+
+func (o PersistenceConfigResponsePtrOutput) ToPersistenceConfigResponsePtrOutput() PersistenceConfigResponsePtrOutput {
+	return o
+}
+
+func (o PersistenceConfigResponsePtrOutput) ToPersistenceConfigResponsePtrOutputWithContext(ctx context.Context) PersistenceConfigResponsePtrOutput {
+	return o
+}
+
+func (o PersistenceConfigResponsePtrOutput) Elem() PersistenceConfigResponseOutput {
+	return o.ApplyT(func(v *PersistenceConfigResponse) PersistenceConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PersistenceConfigResponse
+		return ret
+	}).(PersistenceConfigResponseOutput)
+}
+
+// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+func (o PersistenceConfigResponsePtrOutput) PersistenceMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PersistenceConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PersistenceMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The next time that a snapshot attempt is scheduled to occur.
+func (o PersistenceConfigResponsePtrOutput) RdbNextSnapshotTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PersistenceConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RdbNextSnapshotTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Period between RDB snapshots. Snapshots will be attempted every period starting from the provided snapshot start time. For example, a start time of 01/01/2033 06:45 and SIX_HOURS snapshot period will do nothing until 01/01/2033, and then trigger snapshots every day at 06:45, 12:45, 18:45, and 00:45 the next day, and so on. If not provided, TWENTY_FOUR_HOURS will be used as default.
+func (o PersistenceConfigResponsePtrOutput) RdbSnapshotPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PersistenceConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RdbSnapshotPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Date and time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used.
+func (o PersistenceConfigResponsePtrOutput) RdbSnapshotStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PersistenceConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RdbSnapshotStartTime
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1097,6 +1572,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenancePolicyResponsePtrInput)(nil)).Elem(), MaintenancePolicyResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceScheduleResponseInput)(nil)).Elem(), MaintenanceScheduleResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceScheduleResponsePtrInput)(nil)).Elem(), MaintenanceScheduleResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeInfoResponseInput)(nil)).Elem(), NodeInfoResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeInfoResponseArrayInput)(nil)).Elem(), NodeInfoResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PersistenceConfigInput)(nil)).Elem(), PersistenceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PersistenceConfigPtrInput)(nil)).Elem(), PersistenceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PersistenceConfigResponseInput)(nil)).Elem(), PersistenceConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PersistenceConfigResponsePtrInput)(nil)).Elem(), PersistenceConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TimeOfDayInput)(nil)).Elem(), TimeOfDayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TimeOfDayResponseInput)(nil)).Elem(), TimeOfDayResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TlsCertificateResponseInput)(nil)).Elem(), TlsCertificateResponseArgs{})
@@ -1111,6 +1592,12 @@ func init() {
 	pulumi.RegisterOutputType(MaintenancePolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(MaintenanceScheduleResponseOutput{})
 	pulumi.RegisterOutputType(MaintenanceScheduleResponsePtrOutput{})
+	pulumi.RegisterOutputType(NodeInfoResponseOutput{})
+	pulumi.RegisterOutputType(NodeInfoResponseArrayOutput{})
+	pulumi.RegisterOutputType(PersistenceConfigOutput{})
+	pulumi.RegisterOutputType(PersistenceConfigPtrOutput{})
+	pulumi.RegisterOutputType(PersistenceConfigResponseOutput{})
+	pulumi.RegisterOutputType(PersistenceConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(TimeOfDayOutput{})
 	pulumi.RegisterOutputType(TimeOfDayResponseOutput{})
 	pulumi.RegisterOutputType(TlsCertificateResponseOutput{})

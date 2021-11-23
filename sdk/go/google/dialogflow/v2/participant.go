@@ -17,6 +17,8 @@ import (
 type Participant struct {
 	pulumi.CustomResourceState
 
+	// Optional. Key-value filters on the metadata of documents returned by article suggestion. If specified, article suggestion only returns suggested documents that match all filters in their Document.metadata. Multiple values for a metadata key should be concatenated by comma. For example, filters to match all documents that have 'US' or 'CA' in their market metadata values and 'agent' in their user metadata values will be ```documents_metadata_filters { key: "market" value: "US,CA" } documents_metadata_filters { key: "user" value: "agent" }```
+	DocumentsMetadataFilters pulumi.StringMapOutput `pulumi:"documentsMetadataFilters"`
 	// Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
@@ -67,8 +69,10 @@ func (ParticipantState) ElementType() reflect.Type {
 }
 
 type participantArgs struct {
-	ConversationId string  `pulumi:"conversationId"`
-	Location       *string `pulumi:"location"`
+	ConversationId string `pulumi:"conversationId"`
+	// Optional. Key-value filters on the metadata of documents returned by article suggestion. If specified, article suggestion only returns suggested documents that match all filters in their Document.metadata. Multiple values for a metadata key should be concatenated by comma. For example, filters to match all documents that have 'US' or 'CA' in their market metadata values and 'agent' in their user metadata values will be ```documents_metadata_filters { key: "market" value: "US,CA" } documents_metadata_filters { key: "user" value: "agent" }```
+	DocumentsMetadataFilters map[string]string `pulumi:"documentsMetadataFilters"`
+	Location                 *string           `pulumi:"location"`
 	// Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -81,7 +85,9 @@ type participantArgs struct {
 // The set of arguments for constructing a Participant resource.
 type ParticipantArgs struct {
 	ConversationId pulumi.StringInput
-	Location       pulumi.StringPtrInput
+	// Optional. Key-value filters on the metadata of documents returned by article suggestion. If specified, article suggestion only returns suggested documents that match all filters in their Document.metadata. Multiple values for a metadata key should be concatenated by comma. For example, filters to match all documents that have 'US' or 'CA' in their market metadata values and 'agent' in their user metadata values will be ```documents_metadata_filters { key: "market" value: "US,CA" } documents_metadata_filters { key: "user" value: "agent" }```
+	DocumentsMetadataFilters pulumi.StringMapInput
+	Location                 pulumi.StringPtrInput
 	// Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

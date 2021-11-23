@@ -1379,13 +1379,13 @@ func (o BasisResponsePtrOutput) ResourceUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type Binding struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role *string `pulumi:"role"`
 }
 
@@ -1400,13 +1400,13 @@ type BindingInput interface {
 	ToBindingOutputWithContext(context.Context) BindingOutput
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -1447,7 +1447,7 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
 func (BindingOutput) ElementType() reflect.Type {
@@ -1462,17 +1462,17 @@ func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOu
 	return o
 }
 
-// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 func (o BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -1497,13 +1497,13 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 	}).(BindingOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingResponse struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
 }
 
@@ -1518,13 +1518,13 @@ type BindingResponseInput interface {
 	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingResponseArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringInput `pulumi:"role"`
 }
 
@@ -1565,7 +1565,7 @@ func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingResponseOutput struct{ *pulumi.OutputState }
 
 func (BindingResponseOutput) ElementType() reflect.Type {
@@ -1580,17 +1580,17 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 func (o BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -1617,8 +1617,8 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 
 // Message encapsulating build provenance details.
 type BuildDetails struct {
-	// In-toto Provenance representation as defined in spec.
-	IntotoProvenance *InTotoProvenance `pulumi:"intotoProvenance"`
+	// In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
+	IntotoStatement *InTotoStatement `pulumi:"intotoStatement"`
 	// The actual provenance
 	Provenance *BuildProvenance `pulumi:"provenance"`
 	// Serialized JSON representation of the provenance, used in generating the `BuildSignature` in the corresponding Result. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.
@@ -1638,8 +1638,8 @@ type BuildDetailsInput interface {
 
 // Message encapsulating build provenance details.
 type BuildDetailsArgs struct {
-	// In-toto Provenance representation as defined in spec.
-	IntotoProvenance InTotoProvenancePtrInput `pulumi:"intotoProvenance"`
+	// In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
+	IntotoStatement InTotoStatementPtrInput `pulumi:"intotoStatement"`
 	// The actual provenance
 	Provenance BuildProvenancePtrInput `pulumi:"provenance"`
 	// Serialized JSON representation of the provenance, used in generating the `BuildSignature` in the corresponding Result. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.
@@ -1724,9 +1724,9 @@ func (o BuildDetailsOutput) ToBuildDetailsPtrOutputWithContext(ctx context.Conte
 	}).(BuildDetailsPtrOutput)
 }
 
-// In-toto Provenance representation as defined in spec.
-func (o BuildDetailsOutput) IntotoProvenance() InTotoProvenancePtrOutput {
-	return o.ApplyT(func(v BuildDetails) *InTotoProvenance { return v.IntotoProvenance }).(InTotoProvenancePtrOutput)
+// In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
+func (o BuildDetailsOutput) IntotoStatement() InTotoStatementPtrOutput {
+	return o.ApplyT(func(v BuildDetails) *InTotoStatement { return v.IntotoStatement }).(InTotoStatementPtrOutput)
 }
 
 // The actual provenance
@@ -1763,14 +1763,14 @@ func (o BuildDetailsPtrOutput) Elem() BuildDetailsOutput {
 	}).(BuildDetailsOutput)
 }
 
-// In-toto Provenance representation as defined in spec.
-func (o BuildDetailsPtrOutput) IntotoProvenance() InTotoProvenancePtrOutput {
-	return o.ApplyT(func(v *BuildDetails) *InTotoProvenance {
+// In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
+func (o BuildDetailsPtrOutput) IntotoStatement() InTotoStatementPtrOutput {
+	return o.ApplyT(func(v *BuildDetails) *InTotoStatement {
 		if v == nil {
 			return nil
 		}
-		return v.IntotoProvenance
-	}).(InTotoProvenancePtrOutput)
+		return v.IntotoStatement
+	}).(InTotoStatementPtrOutput)
 }
 
 // The actual provenance
@@ -1795,8 +1795,8 @@ func (o BuildDetailsPtrOutput) ProvenanceBytes() pulumi.StringPtrOutput {
 
 // Message encapsulating build provenance details.
 type BuildDetailsResponse struct {
-	// In-toto Provenance representation as defined in spec.
-	IntotoProvenance InTotoProvenanceResponse `pulumi:"intotoProvenance"`
+	// In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
+	IntotoStatement InTotoStatementResponse `pulumi:"intotoStatement"`
 	// The actual provenance
 	Provenance BuildProvenanceResponse `pulumi:"provenance"`
 	// Serialized JSON representation of the provenance, used in generating the `BuildSignature` in the corresponding Result. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.
@@ -1816,8 +1816,8 @@ type BuildDetailsResponseInput interface {
 
 // Message encapsulating build provenance details.
 type BuildDetailsResponseArgs struct {
-	// In-toto Provenance representation as defined in spec.
-	IntotoProvenance InTotoProvenanceResponseInput `pulumi:"intotoProvenance"`
+	// In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
+	IntotoStatement InTotoStatementResponseInput `pulumi:"intotoStatement"`
 	// The actual provenance
 	Provenance BuildProvenanceResponseInput `pulumi:"provenance"`
 	// Serialized JSON representation of the provenance, used in generating the `BuildSignature` in the corresponding Result. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.
@@ -1902,9 +1902,9 @@ func (o BuildDetailsResponseOutput) ToBuildDetailsResponsePtrOutputWithContext(c
 	}).(BuildDetailsResponsePtrOutput)
 }
 
-// In-toto Provenance representation as defined in spec.
-func (o BuildDetailsResponseOutput) IntotoProvenance() InTotoProvenanceResponseOutput {
-	return o.ApplyT(func(v BuildDetailsResponse) InTotoProvenanceResponse { return v.IntotoProvenance }).(InTotoProvenanceResponseOutput)
+// In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
+func (o BuildDetailsResponseOutput) IntotoStatement() InTotoStatementResponseOutput {
+	return o.ApplyT(func(v BuildDetailsResponse) InTotoStatementResponse { return v.IntotoStatement }).(InTotoStatementResponseOutput)
 }
 
 // The actual provenance
@@ -1941,14 +1941,14 @@ func (o BuildDetailsResponsePtrOutput) Elem() BuildDetailsResponseOutput {
 	}).(BuildDetailsResponseOutput)
 }
 
-// In-toto Provenance representation as defined in spec.
-func (o BuildDetailsResponsePtrOutput) IntotoProvenance() InTotoProvenanceResponsePtrOutput {
-	return o.ApplyT(func(v *BuildDetailsResponse) *InTotoProvenanceResponse {
+// In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
+func (o BuildDetailsResponsePtrOutput) IntotoStatement() InTotoStatementResponsePtrOutput {
+	return o.ApplyT(func(v *BuildDetailsResponse) *InTotoStatementResponse {
 		if v == nil {
 			return nil
 		}
-		return &v.IntotoProvenance
-	}).(InTotoProvenanceResponsePtrOutput)
+		return &v.IntotoStatement
+	}).(InTotoStatementResponsePtrOutput)
 }
 
 // The actual provenance
@@ -11349,10 +11349,8 @@ type FileOccurrence struct {
 	FilesLicenseInfo []string `pulumi:"filesLicenseInfo"`
 	// Uniquely identify any element in an SPDX document which may be referenced by other elements
 	Id *string `pulumi:"id"`
-	// This field provides a place for the SPDX file creator to record any relevant background references or analysis that went in to arriving at the Concluded License for a file
-	LicenseComments *string `pulumi:"licenseComments"`
 	// This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
-	LicenseConcluded *string `pulumi:"licenseConcluded"`
+	LicenseConcluded *License `pulumi:"licenseConcluded"`
 	// This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
 	Notice *string `pulumi:"notice"`
 }
@@ -11382,10 +11380,8 @@ type FileOccurrenceArgs struct {
 	FilesLicenseInfo pulumi.StringArrayInput `pulumi:"filesLicenseInfo"`
 	// Uniquely identify any element in an SPDX document which may be referenced by other elements
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// This field provides a place for the SPDX file creator to record any relevant background references or analysis that went in to arriving at the Concluded License for a file
-	LicenseComments pulumi.StringPtrInput `pulumi:"licenseComments"`
 	// This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
-	LicenseConcluded pulumi.StringPtrInput `pulumi:"licenseConcluded"`
+	LicenseConcluded LicensePtrInput `pulumi:"licenseConcluded"`
 	// This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
 	Notice pulumi.StringPtrInput `pulumi:"notice"`
 }
@@ -11498,14 +11494,9 @@ func (o FileOccurrenceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FileOccurrence) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// This field provides a place for the SPDX file creator to record any relevant background references or analysis that went in to arriving at the Concluded License for a file
-func (o FileOccurrenceOutput) LicenseComments() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FileOccurrence) *string { return v.LicenseComments }).(pulumi.StringPtrOutput)
-}
-
 // This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
-func (o FileOccurrenceOutput) LicenseConcluded() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FileOccurrence) *string { return v.LicenseConcluded }).(pulumi.StringPtrOutput)
+func (o FileOccurrenceOutput) LicenseConcluded() LicensePtrOutput {
+	return o.ApplyT(func(v FileOccurrence) *License { return v.LicenseConcluded }).(LicensePtrOutput)
 }
 
 // This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
@@ -11597,24 +11588,14 @@ func (o FileOccurrencePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// This field provides a place for the SPDX file creator to record any relevant background references or analysis that went in to arriving at the Concluded License for a file
-func (o FileOccurrencePtrOutput) LicenseComments() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FileOccurrence) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LicenseComments
-	}).(pulumi.StringPtrOutput)
-}
-
 // This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
-func (o FileOccurrencePtrOutput) LicenseConcluded() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FileOccurrence) *string {
+func (o FileOccurrencePtrOutput) LicenseConcluded() LicensePtrOutput {
+	return o.ApplyT(func(v *FileOccurrence) *License {
 		if v == nil {
 			return nil
 		}
 		return v.LicenseConcluded
-	}).(pulumi.StringPtrOutput)
+	}).(LicensePtrOutput)
 }
 
 // This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
@@ -11639,10 +11620,8 @@ type FileOccurrenceResponse struct {
 	Copyright string `pulumi:"copyright"`
 	// This field contains the license information actually found in the file, if any
 	FilesLicenseInfo []string `pulumi:"filesLicenseInfo"`
-	// This field provides a place for the SPDX file creator to record any relevant background references or analysis that went in to arriving at the Concluded License for a file
-	LicenseComments string `pulumi:"licenseComments"`
 	// This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
-	LicenseConcluded string `pulumi:"licenseConcluded"`
+	LicenseConcluded LicenseResponse `pulumi:"licenseConcluded"`
 	// This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
 	Notice string `pulumi:"notice"`
 }
@@ -11670,10 +11649,8 @@ type FileOccurrenceResponseArgs struct {
 	Copyright pulumi.StringInput `pulumi:"copyright"`
 	// This field contains the license information actually found in the file, if any
 	FilesLicenseInfo pulumi.StringArrayInput `pulumi:"filesLicenseInfo"`
-	// This field provides a place for the SPDX file creator to record any relevant background references or analysis that went in to arriving at the Concluded License for a file
-	LicenseComments pulumi.StringInput `pulumi:"licenseComments"`
 	// This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
-	LicenseConcluded pulumi.StringInput `pulumi:"licenseConcluded"`
+	LicenseConcluded LicenseResponseInput `pulumi:"licenseConcluded"`
 	// This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
 	Notice pulumi.StringInput `pulumi:"notice"`
 }
@@ -11781,14 +11758,9 @@ func (o FileOccurrenceResponseOutput) FilesLicenseInfo() pulumi.StringArrayOutpu
 	return o.ApplyT(func(v FileOccurrenceResponse) []string { return v.FilesLicenseInfo }).(pulumi.StringArrayOutput)
 }
 
-// This field provides a place for the SPDX file creator to record any relevant background references or analysis that went in to arriving at the Concluded License for a file
-func (o FileOccurrenceResponseOutput) LicenseComments() pulumi.StringOutput {
-	return o.ApplyT(func(v FileOccurrenceResponse) string { return v.LicenseComments }).(pulumi.StringOutput)
-}
-
 // This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
-func (o FileOccurrenceResponseOutput) LicenseConcluded() pulumi.StringOutput {
-	return o.ApplyT(func(v FileOccurrenceResponse) string { return v.LicenseConcluded }).(pulumi.StringOutput)
+func (o FileOccurrenceResponseOutput) LicenseConcluded() LicenseResponseOutput {
+	return o.ApplyT(func(v FileOccurrenceResponse) LicenseResponse { return v.LicenseConcluded }).(LicenseResponseOutput)
 }
 
 // This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
@@ -11870,24 +11842,14 @@ func (o FileOccurrenceResponsePtrOutput) FilesLicenseInfo() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
-// This field provides a place for the SPDX file creator to record any relevant background references or analysis that went in to arriving at the Concluded License for a file
-func (o FileOccurrenceResponsePtrOutput) LicenseComments() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FileOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LicenseComments
-	}).(pulumi.StringPtrOutput)
-}
-
 // This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
-func (o FileOccurrenceResponsePtrOutput) LicenseConcluded() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FileOccurrenceResponse) *string {
+func (o FileOccurrenceResponsePtrOutput) LicenseConcluded() LicenseResponsePtrOutput {
+	return o.ApplyT(func(v *FileOccurrenceResponse) *LicenseResponse {
 		if v == nil {
 			return nil
 		}
 		return &v.LicenseConcluded
-	}).(pulumi.StringPtrOutput)
+	}).(LicenseResponsePtrOutput)
 }
 
 // This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
@@ -15479,10 +15441,14 @@ func (o InTotoProvenanceResponsePtrOutput) Recipe() RecipeResponsePtrOutput {
 
 // Spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement The serialized InTotoStatement will be stored as Envelope.payload. Envelope.payloadType is always "application/vnd.in-toto+json".
 type InTotoStatement struct {
-	// "https://in-toto.io/Provenance/v0.1" for InTotoProvenance.
-	PredicateType *string           `pulumi:"predicateType"`
-	Provenance    *InTotoProvenance `pulumi:"provenance"`
-	Subject       []Subject         `pulumi:"subject"`
+	// "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
+	PredicateType *string `pulumi:"predicateType"`
+	// provenance is a predicate of type intotoprovenance
+	Provenance *InTotoProvenance `pulumi:"provenance"`
+	// slsa_provenance is a predicate of type slsaProvenance
+	SlsaProvenance *SlsaProvenance `pulumi:"slsaProvenance"`
+	// subject is the subjects of the intoto statement
+	Subject []Subject `pulumi:"subject"`
 	// Always "https://in-toto.io/Statement/v0.1".
 	Type *string `pulumi:"type"`
 }
@@ -15500,10 +15466,14 @@ type InTotoStatementInput interface {
 
 // Spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement The serialized InTotoStatement will be stored as Envelope.payload. Envelope.payloadType is always "application/vnd.in-toto+json".
 type InTotoStatementArgs struct {
-	// "https://in-toto.io/Provenance/v0.1" for InTotoProvenance.
-	PredicateType pulumi.StringPtrInput    `pulumi:"predicateType"`
-	Provenance    InTotoProvenancePtrInput `pulumi:"provenance"`
-	Subject       SubjectArrayInput        `pulumi:"subject"`
+	// "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
+	PredicateType pulumi.StringPtrInput `pulumi:"predicateType"`
+	// provenance is a predicate of type intotoprovenance
+	Provenance InTotoProvenancePtrInput `pulumi:"provenance"`
+	// slsa_provenance is a predicate of type slsaProvenance
+	SlsaProvenance SlsaProvenancePtrInput `pulumi:"slsaProvenance"`
+	// subject is the subjects of the intoto statement
+	Subject SubjectArrayInput `pulumi:"subject"`
 	// Always "https://in-toto.io/Statement/v0.1".
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -15586,15 +15556,22 @@ func (o InTotoStatementOutput) ToInTotoStatementPtrOutputWithContext(ctx context
 	}).(InTotoStatementPtrOutput)
 }
 
-// "https://in-toto.io/Provenance/v0.1" for InTotoProvenance.
+// "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
 func (o InTotoStatementOutput) PredicateType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InTotoStatement) *string { return v.PredicateType }).(pulumi.StringPtrOutput)
 }
 
+// provenance is a predicate of type intotoprovenance
 func (o InTotoStatementOutput) Provenance() InTotoProvenancePtrOutput {
 	return o.ApplyT(func(v InTotoStatement) *InTotoProvenance { return v.Provenance }).(InTotoProvenancePtrOutput)
 }
 
+// slsa_provenance is a predicate of type slsaProvenance
+func (o InTotoStatementOutput) SlsaProvenance() SlsaProvenancePtrOutput {
+	return o.ApplyT(func(v InTotoStatement) *SlsaProvenance { return v.SlsaProvenance }).(SlsaProvenancePtrOutput)
+}
+
+// subject is the subjects of the intoto statement
 func (o InTotoStatementOutput) Subject() SubjectArrayOutput {
 	return o.ApplyT(func(v InTotoStatement) []Subject { return v.Subject }).(SubjectArrayOutput)
 }
@@ -15628,7 +15605,7 @@ func (o InTotoStatementPtrOutput) Elem() InTotoStatementOutput {
 	}).(InTotoStatementOutput)
 }
 
-// "https://in-toto.io/Provenance/v0.1" for InTotoProvenance.
+// "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
 func (o InTotoStatementPtrOutput) PredicateType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InTotoStatement) *string {
 		if v == nil {
@@ -15638,6 +15615,7 @@ func (o InTotoStatementPtrOutput) PredicateType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// provenance is a predicate of type intotoprovenance
 func (o InTotoStatementPtrOutput) Provenance() InTotoProvenancePtrOutput {
 	return o.ApplyT(func(v *InTotoStatement) *InTotoProvenance {
 		if v == nil {
@@ -15647,6 +15625,17 @@ func (o InTotoStatementPtrOutput) Provenance() InTotoProvenancePtrOutput {
 	}).(InTotoProvenancePtrOutput)
 }
 
+// slsa_provenance is a predicate of type slsaProvenance
+func (o InTotoStatementPtrOutput) SlsaProvenance() SlsaProvenancePtrOutput {
+	return o.ApplyT(func(v *InTotoStatement) *SlsaProvenance {
+		if v == nil {
+			return nil
+		}
+		return v.SlsaProvenance
+	}).(SlsaProvenancePtrOutput)
+}
+
+// subject is the subjects of the intoto statement
 func (o InTotoStatementPtrOutput) Subject() SubjectArrayOutput {
 	return o.ApplyT(func(v *InTotoStatement) []Subject {
 		if v == nil {
@@ -15668,10 +15657,14 @@ func (o InTotoStatementPtrOutput) Type() pulumi.StringPtrOutput {
 
 // Spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement The serialized InTotoStatement will be stored as Envelope.payload. Envelope.payloadType is always "application/vnd.in-toto+json".
 type InTotoStatementResponse struct {
-	// "https://in-toto.io/Provenance/v0.1" for InTotoProvenance.
-	PredicateType string                   `pulumi:"predicateType"`
-	Provenance    InTotoProvenanceResponse `pulumi:"provenance"`
-	Subject       []SubjectResponse        `pulumi:"subject"`
+	// "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
+	PredicateType string `pulumi:"predicateType"`
+	// provenance is a predicate of type intotoprovenance
+	Provenance InTotoProvenanceResponse `pulumi:"provenance"`
+	// slsa_provenance is a predicate of type slsaProvenance
+	SlsaProvenance SlsaProvenanceResponse `pulumi:"slsaProvenance"`
+	// subject is the subjects of the intoto statement
+	Subject []SubjectResponse `pulumi:"subject"`
 	// Always "https://in-toto.io/Statement/v0.1".
 	Type string `pulumi:"type"`
 }
@@ -15689,10 +15682,14 @@ type InTotoStatementResponseInput interface {
 
 // Spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement The serialized InTotoStatement will be stored as Envelope.payload. Envelope.payloadType is always "application/vnd.in-toto+json".
 type InTotoStatementResponseArgs struct {
-	// "https://in-toto.io/Provenance/v0.1" for InTotoProvenance.
-	PredicateType pulumi.StringInput            `pulumi:"predicateType"`
-	Provenance    InTotoProvenanceResponseInput `pulumi:"provenance"`
-	Subject       SubjectResponseArrayInput     `pulumi:"subject"`
+	// "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
+	PredicateType pulumi.StringInput `pulumi:"predicateType"`
+	// provenance is a predicate of type intotoprovenance
+	Provenance InTotoProvenanceResponseInput `pulumi:"provenance"`
+	// slsa_provenance is a predicate of type slsaProvenance
+	SlsaProvenance SlsaProvenanceResponseInput `pulumi:"slsaProvenance"`
+	// subject is the subjects of the intoto statement
+	Subject SubjectResponseArrayInput `pulumi:"subject"`
 	// Always "https://in-toto.io/Statement/v0.1".
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -15775,15 +15772,22 @@ func (o InTotoStatementResponseOutput) ToInTotoStatementResponsePtrOutputWithCon
 	}).(InTotoStatementResponsePtrOutput)
 }
 
-// "https://in-toto.io/Provenance/v0.1" for InTotoProvenance.
+// "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
 func (o InTotoStatementResponseOutput) PredicateType() pulumi.StringOutput {
 	return o.ApplyT(func(v InTotoStatementResponse) string { return v.PredicateType }).(pulumi.StringOutput)
 }
 
+// provenance is a predicate of type intotoprovenance
 func (o InTotoStatementResponseOutput) Provenance() InTotoProvenanceResponseOutput {
 	return o.ApplyT(func(v InTotoStatementResponse) InTotoProvenanceResponse { return v.Provenance }).(InTotoProvenanceResponseOutput)
 }
 
+// slsa_provenance is a predicate of type slsaProvenance
+func (o InTotoStatementResponseOutput) SlsaProvenance() SlsaProvenanceResponseOutput {
+	return o.ApplyT(func(v InTotoStatementResponse) SlsaProvenanceResponse { return v.SlsaProvenance }).(SlsaProvenanceResponseOutput)
+}
+
+// subject is the subjects of the intoto statement
 func (o InTotoStatementResponseOutput) Subject() SubjectResponseArrayOutput {
 	return o.ApplyT(func(v InTotoStatementResponse) []SubjectResponse { return v.Subject }).(SubjectResponseArrayOutput)
 }
@@ -15817,7 +15821,7 @@ func (o InTotoStatementResponsePtrOutput) Elem() InTotoStatementResponseOutput {
 	}).(InTotoStatementResponseOutput)
 }
 
-// "https://in-toto.io/Provenance/v0.1" for InTotoProvenance.
+// "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
 func (o InTotoStatementResponsePtrOutput) PredicateType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InTotoStatementResponse) *string {
 		if v == nil {
@@ -15827,6 +15831,7 @@ func (o InTotoStatementResponsePtrOutput) PredicateType() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// provenance is a predicate of type intotoprovenance
 func (o InTotoStatementResponsePtrOutput) Provenance() InTotoProvenanceResponsePtrOutput {
 	return o.ApplyT(func(v *InTotoStatementResponse) *InTotoProvenanceResponse {
 		if v == nil {
@@ -15836,6 +15841,17 @@ func (o InTotoStatementResponsePtrOutput) Provenance() InTotoProvenanceResponseP
 	}).(InTotoProvenanceResponsePtrOutput)
 }
 
+// slsa_provenance is a predicate of type slsaProvenance
+func (o InTotoStatementResponsePtrOutput) SlsaProvenance() SlsaProvenanceResponsePtrOutput {
+	return o.ApplyT(func(v *InTotoStatementResponse) *SlsaProvenanceResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.SlsaProvenance
+	}).(SlsaProvenanceResponsePtrOutput)
+}
+
+// subject is the subjects of the intoto statement
 func (o InTotoStatementResponsePtrOutput) Subject() SubjectResponseArrayOutput {
 	return o.ApplyT(func(v *InTotoStatementResponse) []SubjectResponse {
 		if v == nil {
@@ -16372,6 +16388,324 @@ func (o LayerResponseArrayOutput) Index(i pulumi.IntInput) LayerResponseOutput {
 	}).(LayerResponseOutput)
 }
 
+// License information: https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
+type License struct {
+	// Comments
+	Comments *string `pulumi:"comments"`
+	// Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+	Expression *string `pulumi:"expression"`
+}
+
+// LicenseInput is an input type that accepts LicenseArgs and LicenseOutput values.
+// You can construct a concrete instance of `LicenseInput` via:
+//
+//          LicenseArgs{...}
+type LicenseInput interface {
+	pulumi.Input
+
+	ToLicenseOutput() LicenseOutput
+	ToLicenseOutputWithContext(context.Context) LicenseOutput
+}
+
+// License information: https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
+type LicenseArgs struct {
+	// Comments
+	Comments pulumi.StringPtrInput `pulumi:"comments"`
+	// Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+}
+
+func (LicenseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*License)(nil)).Elem()
+}
+
+func (i LicenseArgs) ToLicenseOutput() LicenseOutput {
+	return i.ToLicenseOutputWithContext(context.Background())
+}
+
+func (i LicenseArgs) ToLicenseOutputWithContext(ctx context.Context) LicenseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseOutput)
+}
+
+func (i LicenseArgs) ToLicensePtrOutput() LicensePtrOutput {
+	return i.ToLicensePtrOutputWithContext(context.Background())
+}
+
+func (i LicenseArgs) ToLicensePtrOutputWithContext(ctx context.Context) LicensePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseOutput).ToLicensePtrOutputWithContext(ctx)
+}
+
+// LicensePtrInput is an input type that accepts LicenseArgs, LicensePtr and LicensePtrOutput values.
+// You can construct a concrete instance of `LicensePtrInput` via:
+//
+//          LicenseArgs{...}
+//
+//  or:
+//
+//          nil
+type LicensePtrInput interface {
+	pulumi.Input
+
+	ToLicensePtrOutput() LicensePtrOutput
+	ToLicensePtrOutputWithContext(context.Context) LicensePtrOutput
+}
+
+type licensePtrType LicenseArgs
+
+func LicensePtr(v *LicenseArgs) LicensePtrInput {
+	return (*licensePtrType)(v)
+}
+
+func (*licensePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**License)(nil)).Elem()
+}
+
+func (i *licensePtrType) ToLicensePtrOutput() LicensePtrOutput {
+	return i.ToLicensePtrOutputWithContext(context.Background())
+}
+
+func (i *licensePtrType) ToLicensePtrOutputWithContext(ctx context.Context) LicensePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicensePtrOutput)
+}
+
+// License information: https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
+type LicenseOutput struct{ *pulumi.OutputState }
+
+func (LicenseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*License)(nil)).Elem()
+}
+
+func (o LicenseOutput) ToLicenseOutput() LicenseOutput {
+	return o
+}
+
+func (o LicenseOutput) ToLicenseOutputWithContext(ctx context.Context) LicenseOutput {
+	return o
+}
+
+func (o LicenseOutput) ToLicensePtrOutput() LicensePtrOutput {
+	return o.ToLicensePtrOutputWithContext(context.Background())
+}
+
+func (o LicenseOutput) ToLicensePtrOutputWithContext(ctx context.Context) LicensePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v License) *License {
+		return &v
+	}).(LicensePtrOutput)
+}
+
+// Comments
+func (o LicenseOutput) Comments() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v License) *string { return v.Comments }).(pulumi.StringPtrOutput)
+}
+
+// Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+func (o LicenseOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v License) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+type LicensePtrOutput struct{ *pulumi.OutputState }
+
+func (LicensePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**License)(nil)).Elem()
+}
+
+func (o LicensePtrOutput) ToLicensePtrOutput() LicensePtrOutput {
+	return o
+}
+
+func (o LicensePtrOutput) ToLicensePtrOutputWithContext(ctx context.Context) LicensePtrOutput {
+	return o
+}
+
+func (o LicensePtrOutput) Elem() LicenseOutput {
+	return o.ApplyT(func(v *License) License {
+		if v != nil {
+			return *v
+		}
+		var ret License
+		return ret
+	}).(LicenseOutput)
+}
+
+// Comments
+func (o LicensePtrOutput) Comments() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *License) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Comments
+	}).(pulumi.StringPtrOutput)
+}
+
+// Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+func (o LicensePtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *License) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// License information: https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
+type LicenseResponse struct {
+	// Comments
+	Comments string `pulumi:"comments"`
+	// Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+	Expression string `pulumi:"expression"`
+}
+
+// LicenseResponseInput is an input type that accepts LicenseResponseArgs and LicenseResponseOutput values.
+// You can construct a concrete instance of `LicenseResponseInput` via:
+//
+//          LicenseResponseArgs{...}
+type LicenseResponseInput interface {
+	pulumi.Input
+
+	ToLicenseResponseOutput() LicenseResponseOutput
+	ToLicenseResponseOutputWithContext(context.Context) LicenseResponseOutput
+}
+
+// License information: https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
+type LicenseResponseArgs struct {
+	// Comments
+	Comments pulumi.StringInput `pulumi:"comments"`
+	// Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+	Expression pulumi.StringInput `pulumi:"expression"`
+}
+
+func (LicenseResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LicenseResponse)(nil)).Elem()
+}
+
+func (i LicenseResponseArgs) ToLicenseResponseOutput() LicenseResponseOutput {
+	return i.ToLicenseResponseOutputWithContext(context.Background())
+}
+
+func (i LicenseResponseArgs) ToLicenseResponseOutputWithContext(ctx context.Context) LicenseResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseResponseOutput)
+}
+
+func (i LicenseResponseArgs) ToLicenseResponsePtrOutput() LicenseResponsePtrOutput {
+	return i.ToLicenseResponsePtrOutputWithContext(context.Background())
+}
+
+func (i LicenseResponseArgs) ToLicenseResponsePtrOutputWithContext(ctx context.Context) LicenseResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseResponseOutput).ToLicenseResponsePtrOutputWithContext(ctx)
+}
+
+// LicenseResponsePtrInput is an input type that accepts LicenseResponseArgs, LicenseResponsePtr and LicenseResponsePtrOutput values.
+// You can construct a concrete instance of `LicenseResponsePtrInput` via:
+//
+//          LicenseResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type LicenseResponsePtrInput interface {
+	pulumi.Input
+
+	ToLicenseResponsePtrOutput() LicenseResponsePtrOutput
+	ToLicenseResponsePtrOutputWithContext(context.Context) LicenseResponsePtrOutput
+}
+
+type licenseResponsePtrType LicenseResponseArgs
+
+func LicenseResponsePtr(v *LicenseResponseArgs) LicenseResponsePtrInput {
+	return (*licenseResponsePtrType)(v)
+}
+
+func (*licenseResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LicenseResponse)(nil)).Elem()
+}
+
+func (i *licenseResponsePtrType) ToLicenseResponsePtrOutput() LicenseResponsePtrOutput {
+	return i.ToLicenseResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *licenseResponsePtrType) ToLicenseResponsePtrOutputWithContext(ctx context.Context) LicenseResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseResponsePtrOutput)
+}
+
+// License information: https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
+type LicenseResponseOutput struct{ *pulumi.OutputState }
+
+func (LicenseResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LicenseResponse)(nil)).Elem()
+}
+
+func (o LicenseResponseOutput) ToLicenseResponseOutput() LicenseResponseOutput {
+	return o
+}
+
+func (o LicenseResponseOutput) ToLicenseResponseOutputWithContext(ctx context.Context) LicenseResponseOutput {
+	return o
+}
+
+func (o LicenseResponseOutput) ToLicenseResponsePtrOutput() LicenseResponsePtrOutput {
+	return o.ToLicenseResponsePtrOutputWithContext(context.Background())
+}
+
+func (o LicenseResponseOutput) ToLicenseResponsePtrOutputWithContext(ctx context.Context) LicenseResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LicenseResponse) *LicenseResponse {
+		return &v
+	}).(LicenseResponsePtrOutput)
+}
+
+// Comments
+func (o LicenseResponseOutput) Comments() pulumi.StringOutput {
+	return o.ApplyT(func(v LicenseResponse) string { return v.Comments }).(pulumi.StringOutput)
+}
+
+// Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+func (o LicenseResponseOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v LicenseResponse) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+type LicenseResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LicenseResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LicenseResponse)(nil)).Elem()
+}
+
+func (o LicenseResponsePtrOutput) ToLicenseResponsePtrOutput() LicenseResponsePtrOutput {
+	return o
+}
+
+func (o LicenseResponsePtrOutput) ToLicenseResponsePtrOutputWithContext(ctx context.Context) LicenseResponsePtrOutput {
+	return o
+}
+
+func (o LicenseResponsePtrOutput) Elem() LicenseResponseOutput {
+	return o.ApplyT(func(v *LicenseResponse) LicenseResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LicenseResponse
+		return ret
+	}).(LicenseResponseOutput)
+}
+
+// Comments
+func (o LicenseResponsePtrOutput) Comments() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LicenseResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Comments
+	}).(pulumi.StringPtrOutput)
+}
+
+// Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+func (o LicenseResponsePtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LicenseResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
 // An occurrence of a particular package installation found within a system's filesystem. e.g. glibc was found in /var/lib/dpkg/status
 type Location struct {
 	// The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
@@ -16606,6 +16940,224 @@ func (o LocationResponseArrayOutput) Index(i pulumi.IntInput) LocationResponseOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LocationResponse {
 		return vs[0].([]LocationResponse)[vs[1].(int)]
 	}).(LocationResponseOutput)
+}
+
+// Material is a material used in the generation of the provenance
+type Material struct {
+	// digest is a map from a hash algorithm (e.g. sha256) to the value in the material
+	Digest map[string]string `pulumi:"digest"`
+	// uri is the uri of the material
+	Uri *string `pulumi:"uri"`
+}
+
+// MaterialInput is an input type that accepts MaterialArgs and MaterialOutput values.
+// You can construct a concrete instance of `MaterialInput` via:
+//
+//          MaterialArgs{...}
+type MaterialInput interface {
+	pulumi.Input
+
+	ToMaterialOutput() MaterialOutput
+	ToMaterialOutputWithContext(context.Context) MaterialOutput
+}
+
+// Material is a material used in the generation of the provenance
+type MaterialArgs struct {
+	// digest is a map from a hash algorithm (e.g. sha256) to the value in the material
+	Digest pulumi.StringMapInput `pulumi:"digest"`
+	// uri is the uri of the material
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (MaterialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Material)(nil)).Elem()
+}
+
+func (i MaterialArgs) ToMaterialOutput() MaterialOutput {
+	return i.ToMaterialOutputWithContext(context.Background())
+}
+
+func (i MaterialArgs) ToMaterialOutputWithContext(ctx context.Context) MaterialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaterialOutput)
+}
+
+// MaterialArrayInput is an input type that accepts MaterialArray and MaterialArrayOutput values.
+// You can construct a concrete instance of `MaterialArrayInput` via:
+//
+//          MaterialArray{ MaterialArgs{...} }
+type MaterialArrayInput interface {
+	pulumi.Input
+
+	ToMaterialArrayOutput() MaterialArrayOutput
+	ToMaterialArrayOutputWithContext(context.Context) MaterialArrayOutput
+}
+
+type MaterialArray []MaterialInput
+
+func (MaterialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Material)(nil)).Elem()
+}
+
+func (i MaterialArray) ToMaterialArrayOutput() MaterialArrayOutput {
+	return i.ToMaterialArrayOutputWithContext(context.Background())
+}
+
+func (i MaterialArray) ToMaterialArrayOutputWithContext(ctx context.Context) MaterialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaterialArrayOutput)
+}
+
+// Material is a material used in the generation of the provenance
+type MaterialOutput struct{ *pulumi.OutputState }
+
+func (MaterialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Material)(nil)).Elem()
+}
+
+func (o MaterialOutput) ToMaterialOutput() MaterialOutput {
+	return o
+}
+
+func (o MaterialOutput) ToMaterialOutputWithContext(ctx context.Context) MaterialOutput {
+	return o
+}
+
+// digest is a map from a hash algorithm (e.g. sha256) to the value in the material
+func (o MaterialOutput) Digest() pulumi.StringMapOutput {
+	return o.ApplyT(func(v Material) map[string]string { return v.Digest }).(pulumi.StringMapOutput)
+}
+
+// uri is the uri of the material
+func (o MaterialOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Material) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type MaterialArrayOutput struct{ *pulumi.OutputState }
+
+func (MaterialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Material)(nil)).Elem()
+}
+
+func (o MaterialArrayOutput) ToMaterialArrayOutput() MaterialArrayOutput {
+	return o
+}
+
+func (o MaterialArrayOutput) ToMaterialArrayOutputWithContext(ctx context.Context) MaterialArrayOutput {
+	return o
+}
+
+func (o MaterialArrayOutput) Index(i pulumi.IntInput) MaterialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Material {
+		return vs[0].([]Material)[vs[1].(int)]
+	}).(MaterialOutput)
+}
+
+// Material is a material used in the generation of the provenance
+type MaterialResponse struct {
+	// digest is a map from a hash algorithm (e.g. sha256) to the value in the material
+	Digest map[string]string `pulumi:"digest"`
+	// uri is the uri of the material
+	Uri string `pulumi:"uri"`
+}
+
+// MaterialResponseInput is an input type that accepts MaterialResponseArgs and MaterialResponseOutput values.
+// You can construct a concrete instance of `MaterialResponseInput` via:
+//
+//          MaterialResponseArgs{...}
+type MaterialResponseInput interface {
+	pulumi.Input
+
+	ToMaterialResponseOutput() MaterialResponseOutput
+	ToMaterialResponseOutputWithContext(context.Context) MaterialResponseOutput
+}
+
+// Material is a material used in the generation of the provenance
+type MaterialResponseArgs struct {
+	// digest is a map from a hash algorithm (e.g. sha256) to the value in the material
+	Digest pulumi.StringMapInput `pulumi:"digest"`
+	// uri is the uri of the material
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (MaterialResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaterialResponse)(nil)).Elem()
+}
+
+func (i MaterialResponseArgs) ToMaterialResponseOutput() MaterialResponseOutput {
+	return i.ToMaterialResponseOutputWithContext(context.Background())
+}
+
+func (i MaterialResponseArgs) ToMaterialResponseOutputWithContext(ctx context.Context) MaterialResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaterialResponseOutput)
+}
+
+// MaterialResponseArrayInput is an input type that accepts MaterialResponseArray and MaterialResponseArrayOutput values.
+// You can construct a concrete instance of `MaterialResponseArrayInput` via:
+//
+//          MaterialResponseArray{ MaterialResponseArgs{...} }
+type MaterialResponseArrayInput interface {
+	pulumi.Input
+
+	ToMaterialResponseArrayOutput() MaterialResponseArrayOutput
+	ToMaterialResponseArrayOutputWithContext(context.Context) MaterialResponseArrayOutput
+}
+
+type MaterialResponseArray []MaterialResponseInput
+
+func (MaterialResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MaterialResponse)(nil)).Elem()
+}
+
+func (i MaterialResponseArray) ToMaterialResponseArrayOutput() MaterialResponseArrayOutput {
+	return i.ToMaterialResponseArrayOutputWithContext(context.Background())
+}
+
+func (i MaterialResponseArray) ToMaterialResponseArrayOutputWithContext(ctx context.Context) MaterialResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaterialResponseArrayOutput)
+}
+
+// Material is a material used in the generation of the provenance
+type MaterialResponseOutput struct{ *pulumi.OutputState }
+
+func (MaterialResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaterialResponse)(nil)).Elem()
+}
+
+func (o MaterialResponseOutput) ToMaterialResponseOutput() MaterialResponseOutput {
+	return o
+}
+
+func (o MaterialResponseOutput) ToMaterialResponseOutputWithContext(ctx context.Context) MaterialResponseOutput {
+	return o
+}
+
+// digest is a map from a hash algorithm (e.g. sha256) to the value in the material
+func (o MaterialResponseOutput) Digest() pulumi.StringMapOutput {
+	return o.ApplyT(func(v MaterialResponse) map[string]string { return v.Digest }).(pulumi.StringMapOutput)
+}
+
+// uri is the uri of the material
+func (o MaterialResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v MaterialResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type MaterialResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MaterialResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MaterialResponse)(nil)).Elem()
+}
+
+func (o MaterialResponseArrayOutput) ToMaterialResponseArrayOutput() MaterialResponseArrayOutput {
+	return o
+}
+
+func (o MaterialResponseArrayOutput) ToMaterialResponseArrayOutputWithContext(ctx context.Context) MaterialResponseArrayOutput {
+	return o
+}
+
+func (o MaterialResponseArrayOutput) Index(i pulumi.IntInput) MaterialResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MaterialResponse {
+		return vs[0].([]MaterialResponse)[vs[1].(int)]
+	}).(MaterialResponseOutput)
 }
 
 // Other properties of the build.
@@ -17435,6 +17987,1402 @@ func (o PackagePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// PackageInfoNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+type PackageInfoNote struct {
+	// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
+	Analyzed *bool `pulumi:"analyzed"`
+	// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
+	Attribution *string `pulumi:"attribution"`
+	// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
+	Checksum *string `pulumi:"checksum"`
+	// Identify the copyright holders of the package, as well as any dates present
+	Copyright *string `pulumi:"copyright"`
+	// A more detailed description of the package
+	DetailedDescription *string `pulumi:"detailedDescription"`
+	// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
+	DownloadLocation *string `pulumi:"downloadLocation"`
+	// ExternalRef
+	ExternalRefs []ExternalRef `pulumi:"externalRefs"`
+	// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
+	FilesLicenseInfo []string `pulumi:"filesLicenseInfo"`
+	// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+	HomePage *string `pulumi:"homePage"`
+	// List the licenses that have been declared by the authors of the package
+	LicenseDeclared *License `pulumi:"licenseDeclared"`
+	// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
+	Originator *string `pulumi:"originator"`
+	// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+	PackageType *string `pulumi:"packageType"`
+	// A short description of the package
+	SummaryDescription *string `pulumi:"summaryDescription"`
+	// Identify the actual distribution source for the package/directory identified in the SPDX file
+	Supplier *string `pulumi:"supplier"`
+	// Identify the full name of the package as given by the Package Originator
+	Title *string `pulumi:"title"`
+	// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
+	VerificationCode *string `pulumi:"verificationCode"`
+	// Identify the version of the package
+	Version *string `pulumi:"version"`
+}
+
+// PackageInfoNoteInput is an input type that accepts PackageInfoNoteArgs and PackageInfoNoteOutput values.
+// You can construct a concrete instance of `PackageInfoNoteInput` via:
+//
+//          PackageInfoNoteArgs{...}
+type PackageInfoNoteInput interface {
+	pulumi.Input
+
+	ToPackageInfoNoteOutput() PackageInfoNoteOutput
+	ToPackageInfoNoteOutputWithContext(context.Context) PackageInfoNoteOutput
+}
+
+// PackageInfoNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+type PackageInfoNoteArgs struct {
+	// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
+	Analyzed pulumi.BoolPtrInput `pulumi:"analyzed"`
+	// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
+	Attribution pulumi.StringPtrInput `pulumi:"attribution"`
+	// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
+	Checksum pulumi.StringPtrInput `pulumi:"checksum"`
+	// Identify the copyright holders of the package, as well as any dates present
+	Copyright pulumi.StringPtrInput `pulumi:"copyright"`
+	// A more detailed description of the package
+	DetailedDescription pulumi.StringPtrInput `pulumi:"detailedDescription"`
+	// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
+	DownloadLocation pulumi.StringPtrInput `pulumi:"downloadLocation"`
+	// ExternalRef
+	ExternalRefs ExternalRefArrayInput `pulumi:"externalRefs"`
+	// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
+	FilesLicenseInfo pulumi.StringArrayInput `pulumi:"filesLicenseInfo"`
+	// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+	HomePage pulumi.StringPtrInput `pulumi:"homePage"`
+	// List the licenses that have been declared by the authors of the package
+	LicenseDeclared LicensePtrInput `pulumi:"licenseDeclared"`
+	// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
+	Originator pulumi.StringPtrInput `pulumi:"originator"`
+	// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+	PackageType pulumi.StringPtrInput `pulumi:"packageType"`
+	// A short description of the package
+	SummaryDescription pulumi.StringPtrInput `pulumi:"summaryDescription"`
+	// Identify the actual distribution source for the package/directory identified in the SPDX file
+	Supplier pulumi.StringPtrInput `pulumi:"supplier"`
+	// Identify the full name of the package as given by the Package Originator
+	Title pulumi.StringPtrInput `pulumi:"title"`
+	// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
+	VerificationCode pulumi.StringPtrInput `pulumi:"verificationCode"`
+	// Identify the version of the package
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (PackageInfoNoteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageInfoNote)(nil)).Elem()
+}
+
+func (i PackageInfoNoteArgs) ToPackageInfoNoteOutput() PackageInfoNoteOutput {
+	return i.ToPackageInfoNoteOutputWithContext(context.Background())
+}
+
+func (i PackageInfoNoteArgs) ToPackageInfoNoteOutputWithContext(ctx context.Context) PackageInfoNoteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageInfoNoteOutput)
+}
+
+func (i PackageInfoNoteArgs) ToPackageInfoNotePtrOutput() PackageInfoNotePtrOutput {
+	return i.ToPackageInfoNotePtrOutputWithContext(context.Background())
+}
+
+func (i PackageInfoNoteArgs) ToPackageInfoNotePtrOutputWithContext(ctx context.Context) PackageInfoNotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageInfoNoteOutput).ToPackageInfoNotePtrOutputWithContext(ctx)
+}
+
+// PackageInfoNotePtrInput is an input type that accepts PackageInfoNoteArgs, PackageInfoNotePtr and PackageInfoNotePtrOutput values.
+// You can construct a concrete instance of `PackageInfoNotePtrInput` via:
+//
+//          PackageInfoNoteArgs{...}
+//
+//  or:
+//
+//          nil
+type PackageInfoNotePtrInput interface {
+	pulumi.Input
+
+	ToPackageInfoNotePtrOutput() PackageInfoNotePtrOutput
+	ToPackageInfoNotePtrOutputWithContext(context.Context) PackageInfoNotePtrOutput
+}
+
+type packageInfoNotePtrType PackageInfoNoteArgs
+
+func PackageInfoNotePtr(v *PackageInfoNoteArgs) PackageInfoNotePtrInput {
+	return (*packageInfoNotePtrType)(v)
+}
+
+func (*packageInfoNotePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PackageInfoNote)(nil)).Elem()
+}
+
+func (i *packageInfoNotePtrType) ToPackageInfoNotePtrOutput() PackageInfoNotePtrOutput {
+	return i.ToPackageInfoNotePtrOutputWithContext(context.Background())
+}
+
+func (i *packageInfoNotePtrType) ToPackageInfoNotePtrOutputWithContext(ctx context.Context) PackageInfoNotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageInfoNotePtrOutput)
+}
+
+// PackageInfoNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+type PackageInfoNoteOutput struct{ *pulumi.OutputState }
+
+func (PackageInfoNoteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageInfoNote)(nil)).Elem()
+}
+
+func (o PackageInfoNoteOutput) ToPackageInfoNoteOutput() PackageInfoNoteOutput {
+	return o
+}
+
+func (o PackageInfoNoteOutput) ToPackageInfoNoteOutputWithContext(ctx context.Context) PackageInfoNoteOutput {
+	return o
+}
+
+func (o PackageInfoNoteOutput) ToPackageInfoNotePtrOutput() PackageInfoNotePtrOutput {
+	return o.ToPackageInfoNotePtrOutputWithContext(context.Background())
+}
+
+func (o PackageInfoNoteOutput) ToPackageInfoNotePtrOutputWithContext(ctx context.Context) PackageInfoNotePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageInfoNote) *PackageInfoNote {
+		return &v
+	}).(PackageInfoNotePtrOutput)
+}
+
+// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
+func (o PackageInfoNoteOutput) Analyzed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *bool { return v.Analyzed }).(pulumi.BoolPtrOutput)
+}
+
+// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
+func (o PackageInfoNoteOutput) Attribution() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *string { return v.Attribution }).(pulumi.StringPtrOutput)
+}
+
+// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
+func (o PackageInfoNoteOutput) Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *string { return v.Checksum }).(pulumi.StringPtrOutput)
+}
+
+// Identify the copyright holders of the package, as well as any dates present
+func (o PackageInfoNoteOutput) Copyright() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *string { return v.Copyright }).(pulumi.StringPtrOutput)
+}
+
+// A more detailed description of the package
+func (o PackageInfoNoteOutput) DetailedDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *string { return v.DetailedDescription }).(pulumi.StringPtrOutput)
+}
+
+// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
+func (o PackageInfoNoteOutput) DownloadLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *string { return v.DownloadLocation }).(pulumi.StringPtrOutput)
+}
+
+// ExternalRef
+func (o PackageInfoNoteOutput) ExternalRefs() ExternalRefArrayOutput {
+	return o.ApplyT(func(v PackageInfoNote) []ExternalRef { return v.ExternalRefs }).(ExternalRefArrayOutput)
+}
+
+// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
+func (o PackageInfoNoteOutput) FilesLicenseInfo() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PackageInfoNote) []string { return v.FilesLicenseInfo }).(pulumi.StringArrayOutput)
+}
+
+// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+func (o PackageInfoNoteOutput) HomePage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *string { return v.HomePage }).(pulumi.StringPtrOutput)
+}
+
+// List the licenses that have been declared by the authors of the package
+func (o PackageInfoNoteOutput) LicenseDeclared() LicensePtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *License { return v.LicenseDeclared }).(LicensePtrOutput)
+}
+
+// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
+func (o PackageInfoNoteOutput) Originator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *string { return v.Originator }).(pulumi.StringPtrOutput)
+}
+
+// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+func (o PackageInfoNoteOutput) PackageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *string { return v.PackageType }).(pulumi.StringPtrOutput)
+}
+
+// A short description of the package
+func (o PackageInfoNoteOutput) SummaryDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *string { return v.SummaryDescription }).(pulumi.StringPtrOutput)
+}
+
+// Identify the actual distribution source for the package/directory identified in the SPDX file
+func (o PackageInfoNoteOutput) Supplier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *string { return v.Supplier }).(pulumi.StringPtrOutput)
+}
+
+// Identify the full name of the package as given by the Package Originator
+func (o PackageInfoNoteOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
+func (o PackageInfoNoteOutput) VerificationCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *string { return v.VerificationCode }).(pulumi.StringPtrOutput)
+}
+
+// Identify the version of the package
+func (o PackageInfoNoteOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type PackageInfoNotePtrOutput struct{ *pulumi.OutputState }
+
+func (PackageInfoNotePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PackageInfoNote)(nil)).Elem()
+}
+
+func (o PackageInfoNotePtrOutput) ToPackageInfoNotePtrOutput() PackageInfoNotePtrOutput {
+	return o
+}
+
+func (o PackageInfoNotePtrOutput) ToPackageInfoNotePtrOutputWithContext(ctx context.Context) PackageInfoNotePtrOutput {
+	return o
+}
+
+func (o PackageInfoNotePtrOutput) Elem() PackageInfoNoteOutput {
+	return o.ApplyT(func(v *PackageInfoNote) PackageInfoNote {
+		if v != nil {
+			return *v
+		}
+		var ret PackageInfoNote
+		return ret
+	}).(PackageInfoNoteOutput)
+}
+
+// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
+func (o PackageInfoNotePtrOutput) Analyzed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Analyzed
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
+func (o PackageInfoNotePtrOutput) Attribution() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Attribution
+	}).(pulumi.StringPtrOutput)
+}
+
+// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
+func (o PackageInfoNotePtrOutput) Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identify the copyright holders of the package, as well as any dates present
+func (o PackageInfoNotePtrOutput) Copyright() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Copyright
+	}).(pulumi.StringPtrOutput)
+}
+
+// A more detailed description of the package
+func (o PackageInfoNotePtrOutput) DetailedDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DetailedDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
+func (o PackageInfoNotePtrOutput) DownloadLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DownloadLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// ExternalRef
+func (o PackageInfoNotePtrOutput) ExternalRefs() ExternalRefArrayOutput {
+	return o.ApplyT(func(v *PackageInfoNote) []ExternalRef {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalRefs
+	}).(ExternalRefArrayOutput)
+}
+
+// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
+func (o PackageInfoNotePtrOutput) FilesLicenseInfo() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PackageInfoNote) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FilesLicenseInfo
+	}).(pulumi.StringArrayOutput)
+}
+
+// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+func (o PackageInfoNotePtrOutput) HomePage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HomePage
+	}).(pulumi.StringPtrOutput)
+}
+
+// List the licenses that have been declared by the authors of the package
+func (o PackageInfoNotePtrOutput) LicenseDeclared() LicensePtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *License {
+		if v == nil {
+			return nil
+		}
+		return v.LicenseDeclared
+	}).(LicensePtrOutput)
+}
+
+// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
+func (o PackageInfoNotePtrOutput) Originator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Originator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+func (o PackageInfoNotePtrOutput) PackageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PackageType
+	}).(pulumi.StringPtrOutput)
+}
+
+// A short description of the package
+func (o PackageInfoNotePtrOutput) SummaryDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SummaryDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identify the actual distribution source for the package/directory identified in the SPDX file
+func (o PackageInfoNotePtrOutput) Supplier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Supplier
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identify the full name of the package as given by the Package Originator
+func (o PackageInfoNotePtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
+func (o PackageInfoNotePtrOutput) VerificationCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VerificationCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identify the version of the package
+func (o PackageInfoNotePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+// PackageInfoNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+type PackageInfoNoteResponse struct {
+	// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
+	Analyzed bool `pulumi:"analyzed"`
+	// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
+	Attribution string `pulumi:"attribution"`
+	// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
+	Checksum string `pulumi:"checksum"`
+	// Identify the copyright holders of the package, as well as any dates present
+	Copyright string `pulumi:"copyright"`
+	// A more detailed description of the package
+	DetailedDescription string `pulumi:"detailedDescription"`
+	// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
+	DownloadLocation string `pulumi:"downloadLocation"`
+	// ExternalRef
+	ExternalRefs []ExternalRefResponse `pulumi:"externalRefs"`
+	// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
+	FilesLicenseInfo []string `pulumi:"filesLicenseInfo"`
+	// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+	HomePage string `pulumi:"homePage"`
+	// List the licenses that have been declared by the authors of the package
+	LicenseDeclared LicenseResponse `pulumi:"licenseDeclared"`
+	// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
+	Originator string `pulumi:"originator"`
+	// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+	PackageType string `pulumi:"packageType"`
+	// A short description of the package
+	SummaryDescription string `pulumi:"summaryDescription"`
+	// Identify the actual distribution source for the package/directory identified in the SPDX file
+	Supplier string `pulumi:"supplier"`
+	// Identify the full name of the package as given by the Package Originator
+	Title string `pulumi:"title"`
+	// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
+	VerificationCode string `pulumi:"verificationCode"`
+	// Identify the version of the package
+	Version string `pulumi:"version"`
+}
+
+// PackageInfoNoteResponseInput is an input type that accepts PackageInfoNoteResponseArgs and PackageInfoNoteResponseOutput values.
+// You can construct a concrete instance of `PackageInfoNoteResponseInput` via:
+//
+//          PackageInfoNoteResponseArgs{...}
+type PackageInfoNoteResponseInput interface {
+	pulumi.Input
+
+	ToPackageInfoNoteResponseOutput() PackageInfoNoteResponseOutput
+	ToPackageInfoNoteResponseOutputWithContext(context.Context) PackageInfoNoteResponseOutput
+}
+
+// PackageInfoNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+type PackageInfoNoteResponseArgs struct {
+	// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
+	Analyzed pulumi.BoolInput `pulumi:"analyzed"`
+	// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
+	Attribution pulumi.StringInput `pulumi:"attribution"`
+	// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
+	Checksum pulumi.StringInput `pulumi:"checksum"`
+	// Identify the copyright holders of the package, as well as any dates present
+	Copyright pulumi.StringInput `pulumi:"copyright"`
+	// A more detailed description of the package
+	DetailedDescription pulumi.StringInput `pulumi:"detailedDescription"`
+	// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
+	DownloadLocation pulumi.StringInput `pulumi:"downloadLocation"`
+	// ExternalRef
+	ExternalRefs ExternalRefResponseArrayInput `pulumi:"externalRefs"`
+	// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
+	FilesLicenseInfo pulumi.StringArrayInput `pulumi:"filesLicenseInfo"`
+	// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+	HomePage pulumi.StringInput `pulumi:"homePage"`
+	// List the licenses that have been declared by the authors of the package
+	LicenseDeclared LicenseResponseInput `pulumi:"licenseDeclared"`
+	// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
+	Originator pulumi.StringInput `pulumi:"originator"`
+	// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+	PackageType pulumi.StringInput `pulumi:"packageType"`
+	// A short description of the package
+	SummaryDescription pulumi.StringInput `pulumi:"summaryDescription"`
+	// Identify the actual distribution source for the package/directory identified in the SPDX file
+	Supplier pulumi.StringInput `pulumi:"supplier"`
+	// Identify the full name of the package as given by the Package Originator
+	Title pulumi.StringInput `pulumi:"title"`
+	// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
+	VerificationCode pulumi.StringInput `pulumi:"verificationCode"`
+	// Identify the version of the package
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (PackageInfoNoteResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageInfoNoteResponse)(nil)).Elem()
+}
+
+func (i PackageInfoNoteResponseArgs) ToPackageInfoNoteResponseOutput() PackageInfoNoteResponseOutput {
+	return i.ToPackageInfoNoteResponseOutputWithContext(context.Background())
+}
+
+func (i PackageInfoNoteResponseArgs) ToPackageInfoNoteResponseOutputWithContext(ctx context.Context) PackageInfoNoteResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageInfoNoteResponseOutput)
+}
+
+func (i PackageInfoNoteResponseArgs) ToPackageInfoNoteResponsePtrOutput() PackageInfoNoteResponsePtrOutput {
+	return i.ToPackageInfoNoteResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PackageInfoNoteResponseArgs) ToPackageInfoNoteResponsePtrOutputWithContext(ctx context.Context) PackageInfoNoteResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageInfoNoteResponseOutput).ToPackageInfoNoteResponsePtrOutputWithContext(ctx)
+}
+
+// PackageInfoNoteResponsePtrInput is an input type that accepts PackageInfoNoteResponseArgs, PackageInfoNoteResponsePtr and PackageInfoNoteResponsePtrOutput values.
+// You can construct a concrete instance of `PackageInfoNoteResponsePtrInput` via:
+//
+//          PackageInfoNoteResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PackageInfoNoteResponsePtrInput interface {
+	pulumi.Input
+
+	ToPackageInfoNoteResponsePtrOutput() PackageInfoNoteResponsePtrOutput
+	ToPackageInfoNoteResponsePtrOutputWithContext(context.Context) PackageInfoNoteResponsePtrOutput
+}
+
+type packageInfoNoteResponsePtrType PackageInfoNoteResponseArgs
+
+func PackageInfoNoteResponsePtr(v *PackageInfoNoteResponseArgs) PackageInfoNoteResponsePtrInput {
+	return (*packageInfoNoteResponsePtrType)(v)
+}
+
+func (*packageInfoNoteResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PackageInfoNoteResponse)(nil)).Elem()
+}
+
+func (i *packageInfoNoteResponsePtrType) ToPackageInfoNoteResponsePtrOutput() PackageInfoNoteResponsePtrOutput {
+	return i.ToPackageInfoNoteResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *packageInfoNoteResponsePtrType) ToPackageInfoNoteResponsePtrOutputWithContext(ctx context.Context) PackageInfoNoteResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageInfoNoteResponsePtrOutput)
+}
+
+// PackageInfoNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+type PackageInfoNoteResponseOutput struct{ *pulumi.OutputState }
+
+func (PackageInfoNoteResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageInfoNoteResponse)(nil)).Elem()
+}
+
+func (o PackageInfoNoteResponseOutput) ToPackageInfoNoteResponseOutput() PackageInfoNoteResponseOutput {
+	return o
+}
+
+func (o PackageInfoNoteResponseOutput) ToPackageInfoNoteResponseOutputWithContext(ctx context.Context) PackageInfoNoteResponseOutput {
+	return o
+}
+
+func (o PackageInfoNoteResponseOutput) ToPackageInfoNoteResponsePtrOutput() PackageInfoNoteResponsePtrOutput {
+	return o.ToPackageInfoNoteResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PackageInfoNoteResponseOutput) ToPackageInfoNoteResponsePtrOutputWithContext(ctx context.Context) PackageInfoNoteResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageInfoNoteResponse) *PackageInfoNoteResponse {
+		return &v
+	}).(PackageInfoNoteResponsePtrOutput)
+}
+
+// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
+func (o PackageInfoNoteResponseOutput) Analyzed() pulumi.BoolOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) bool { return v.Analyzed }).(pulumi.BoolOutput)
+}
+
+// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
+func (o PackageInfoNoteResponseOutput) Attribution() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) string { return v.Attribution }).(pulumi.StringOutput)
+}
+
+// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
+func (o PackageInfoNoteResponseOutput) Checksum() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) string { return v.Checksum }).(pulumi.StringOutput)
+}
+
+// Identify the copyright holders of the package, as well as any dates present
+func (o PackageInfoNoteResponseOutput) Copyright() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) string { return v.Copyright }).(pulumi.StringOutput)
+}
+
+// A more detailed description of the package
+func (o PackageInfoNoteResponseOutput) DetailedDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) string { return v.DetailedDescription }).(pulumi.StringOutput)
+}
+
+// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
+func (o PackageInfoNoteResponseOutput) DownloadLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) string { return v.DownloadLocation }).(pulumi.StringOutput)
+}
+
+// ExternalRef
+func (o PackageInfoNoteResponseOutput) ExternalRefs() ExternalRefResponseArrayOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) []ExternalRefResponse { return v.ExternalRefs }).(ExternalRefResponseArrayOutput)
+}
+
+// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
+func (o PackageInfoNoteResponseOutput) FilesLicenseInfo() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) []string { return v.FilesLicenseInfo }).(pulumi.StringArrayOutput)
+}
+
+// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+func (o PackageInfoNoteResponseOutput) HomePage() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) string { return v.HomePage }).(pulumi.StringOutput)
+}
+
+// List the licenses that have been declared by the authors of the package
+func (o PackageInfoNoteResponseOutput) LicenseDeclared() LicenseResponseOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) LicenseResponse { return v.LicenseDeclared }).(LicenseResponseOutput)
+}
+
+// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
+func (o PackageInfoNoteResponseOutput) Originator() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) string { return v.Originator }).(pulumi.StringOutput)
+}
+
+// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+func (o PackageInfoNoteResponseOutput) PackageType() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) string { return v.PackageType }).(pulumi.StringOutput)
+}
+
+// A short description of the package
+func (o PackageInfoNoteResponseOutput) SummaryDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) string { return v.SummaryDescription }).(pulumi.StringOutput)
+}
+
+// Identify the actual distribution source for the package/directory identified in the SPDX file
+func (o PackageInfoNoteResponseOutput) Supplier() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) string { return v.Supplier }).(pulumi.StringOutput)
+}
+
+// Identify the full name of the package as given by the Package Originator
+func (o PackageInfoNoteResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
+// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
+func (o PackageInfoNoteResponseOutput) VerificationCode() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) string { return v.VerificationCode }).(pulumi.StringOutput)
+}
+
+// Identify the version of the package
+func (o PackageInfoNoteResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type PackageInfoNoteResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PackageInfoNoteResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PackageInfoNoteResponse)(nil)).Elem()
+}
+
+func (o PackageInfoNoteResponsePtrOutput) ToPackageInfoNoteResponsePtrOutput() PackageInfoNoteResponsePtrOutput {
+	return o
+}
+
+func (o PackageInfoNoteResponsePtrOutput) ToPackageInfoNoteResponsePtrOutputWithContext(ctx context.Context) PackageInfoNoteResponsePtrOutput {
+	return o
+}
+
+func (o PackageInfoNoteResponsePtrOutput) Elem() PackageInfoNoteResponseOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) PackageInfoNoteResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PackageInfoNoteResponse
+		return ret
+	}).(PackageInfoNoteResponseOutput)
+}
+
+// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
+func (o PackageInfoNoteResponsePtrOutput) Analyzed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Analyzed
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
+func (o PackageInfoNoteResponsePtrOutput) Attribution() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Attribution
+	}).(pulumi.StringPtrOutput)
+}
+
+// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
+func (o PackageInfoNoteResponsePtrOutput) Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identify the copyright holders of the package, as well as any dates present
+func (o PackageInfoNoteResponsePtrOutput) Copyright() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Copyright
+	}).(pulumi.StringPtrOutput)
+}
+
+// A more detailed description of the package
+func (o PackageInfoNoteResponsePtrOutput) DetailedDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DetailedDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
+func (o PackageInfoNoteResponsePtrOutput) DownloadLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DownloadLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// ExternalRef
+func (o PackageInfoNoteResponsePtrOutput) ExternalRefs() ExternalRefResponseArrayOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) []ExternalRefResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalRefs
+	}).(ExternalRefResponseArrayOutput)
+}
+
+// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
+func (o PackageInfoNoteResponsePtrOutput) FilesLicenseInfo() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FilesLicenseInfo
+	}).(pulumi.StringArrayOutput)
+}
+
+// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+func (o PackageInfoNoteResponsePtrOutput) HomePage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HomePage
+	}).(pulumi.StringPtrOutput)
+}
+
+// List the licenses that have been declared by the authors of the package
+func (o PackageInfoNoteResponsePtrOutput) LicenseDeclared() LicenseResponsePtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *LicenseResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.LicenseDeclared
+	}).(LicenseResponsePtrOutput)
+}
+
+// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
+func (o PackageInfoNoteResponsePtrOutput) Originator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Originator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+func (o PackageInfoNoteResponsePtrOutput) PackageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PackageType
+	}).(pulumi.StringPtrOutput)
+}
+
+// A short description of the package
+func (o PackageInfoNoteResponsePtrOutput) SummaryDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SummaryDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identify the actual distribution source for the package/directory identified in the SPDX file
+func (o PackageInfoNoteResponsePtrOutput) Supplier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Supplier
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identify the full name of the package as given by the Package Originator
+func (o PackageInfoNoteResponsePtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
+func (o PackageInfoNoteResponsePtrOutput) VerificationCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VerificationCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identify the version of the package
+func (o PackageInfoNoteResponsePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+// PackageInfoOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+type PackageInfoOccurrence struct {
+	// A place for the SPDX file creator to record any general comments about the package being described
+	Comment *string `pulumi:"comment"`
+	// Provide the actual file name of the package, or path of the directory being treated as a package
+	Filename *string `pulumi:"filename"`
+	// Uniquely identify any element in an SPDX document which may be referenced by other elements
+	Id *string `pulumi:"id"`
+	// package or alternative values, if the governing license cannot be determined
+	LicenseConcluded *License `pulumi:"licenseConcluded"`
+	// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
+	SourceInfo *string `pulumi:"sourceInfo"`
+}
+
+// PackageInfoOccurrenceInput is an input type that accepts PackageInfoOccurrenceArgs and PackageInfoOccurrenceOutput values.
+// You can construct a concrete instance of `PackageInfoOccurrenceInput` via:
+//
+//          PackageInfoOccurrenceArgs{...}
+type PackageInfoOccurrenceInput interface {
+	pulumi.Input
+
+	ToPackageInfoOccurrenceOutput() PackageInfoOccurrenceOutput
+	ToPackageInfoOccurrenceOutputWithContext(context.Context) PackageInfoOccurrenceOutput
+}
+
+// PackageInfoOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+type PackageInfoOccurrenceArgs struct {
+	// A place for the SPDX file creator to record any general comments about the package being described
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// Provide the actual file name of the package, or path of the directory being treated as a package
+	Filename pulumi.StringPtrInput `pulumi:"filename"`
+	// Uniquely identify any element in an SPDX document which may be referenced by other elements
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// package or alternative values, if the governing license cannot be determined
+	LicenseConcluded LicensePtrInput `pulumi:"licenseConcluded"`
+	// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
+	SourceInfo pulumi.StringPtrInput `pulumi:"sourceInfo"`
+}
+
+func (PackageInfoOccurrenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageInfoOccurrence)(nil)).Elem()
+}
+
+func (i PackageInfoOccurrenceArgs) ToPackageInfoOccurrenceOutput() PackageInfoOccurrenceOutput {
+	return i.ToPackageInfoOccurrenceOutputWithContext(context.Background())
+}
+
+func (i PackageInfoOccurrenceArgs) ToPackageInfoOccurrenceOutputWithContext(ctx context.Context) PackageInfoOccurrenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageInfoOccurrenceOutput)
+}
+
+func (i PackageInfoOccurrenceArgs) ToPackageInfoOccurrencePtrOutput() PackageInfoOccurrencePtrOutput {
+	return i.ToPackageInfoOccurrencePtrOutputWithContext(context.Background())
+}
+
+func (i PackageInfoOccurrenceArgs) ToPackageInfoOccurrencePtrOutputWithContext(ctx context.Context) PackageInfoOccurrencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageInfoOccurrenceOutput).ToPackageInfoOccurrencePtrOutputWithContext(ctx)
+}
+
+// PackageInfoOccurrencePtrInput is an input type that accepts PackageInfoOccurrenceArgs, PackageInfoOccurrencePtr and PackageInfoOccurrencePtrOutput values.
+// You can construct a concrete instance of `PackageInfoOccurrencePtrInput` via:
+//
+//          PackageInfoOccurrenceArgs{...}
+//
+//  or:
+//
+//          nil
+type PackageInfoOccurrencePtrInput interface {
+	pulumi.Input
+
+	ToPackageInfoOccurrencePtrOutput() PackageInfoOccurrencePtrOutput
+	ToPackageInfoOccurrencePtrOutputWithContext(context.Context) PackageInfoOccurrencePtrOutput
+}
+
+type packageInfoOccurrencePtrType PackageInfoOccurrenceArgs
+
+func PackageInfoOccurrencePtr(v *PackageInfoOccurrenceArgs) PackageInfoOccurrencePtrInput {
+	return (*packageInfoOccurrencePtrType)(v)
+}
+
+func (*packageInfoOccurrencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PackageInfoOccurrence)(nil)).Elem()
+}
+
+func (i *packageInfoOccurrencePtrType) ToPackageInfoOccurrencePtrOutput() PackageInfoOccurrencePtrOutput {
+	return i.ToPackageInfoOccurrencePtrOutputWithContext(context.Background())
+}
+
+func (i *packageInfoOccurrencePtrType) ToPackageInfoOccurrencePtrOutputWithContext(ctx context.Context) PackageInfoOccurrencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageInfoOccurrencePtrOutput)
+}
+
+// PackageInfoOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+type PackageInfoOccurrenceOutput struct{ *pulumi.OutputState }
+
+func (PackageInfoOccurrenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageInfoOccurrence)(nil)).Elem()
+}
+
+func (o PackageInfoOccurrenceOutput) ToPackageInfoOccurrenceOutput() PackageInfoOccurrenceOutput {
+	return o
+}
+
+func (o PackageInfoOccurrenceOutput) ToPackageInfoOccurrenceOutputWithContext(ctx context.Context) PackageInfoOccurrenceOutput {
+	return o
+}
+
+func (o PackageInfoOccurrenceOutput) ToPackageInfoOccurrencePtrOutput() PackageInfoOccurrencePtrOutput {
+	return o.ToPackageInfoOccurrencePtrOutputWithContext(context.Background())
+}
+
+func (o PackageInfoOccurrenceOutput) ToPackageInfoOccurrencePtrOutputWithContext(ctx context.Context) PackageInfoOccurrencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageInfoOccurrence) *PackageInfoOccurrence {
+		return &v
+	}).(PackageInfoOccurrencePtrOutput)
+}
+
+// A place for the SPDX file creator to record any general comments about the package being described
+func (o PackageInfoOccurrenceOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoOccurrence) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// Provide the actual file name of the package, or path of the directory being treated as a package
+func (o PackageInfoOccurrenceOutput) Filename() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoOccurrence) *string { return v.Filename }).(pulumi.StringPtrOutput)
+}
+
+// Uniquely identify any element in an SPDX document which may be referenced by other elements
+func (o PackageInfoOccurrenceOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoOccurrence) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// package or alternative values, if the governing license cannot be determined
+func (o PackageInfoOccurrenceOutput) LicenseConcluded() LicensePtrOutput {
+	return o.ApplyT(func(v PackageInfoOccurrence) *License { return v.LicenseConcluded }).(LicensePtrOutput)
+}
+
+// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
+func (o PackageInfoOccurrenceOutput) SourceInfo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoOccurrence) *string { return v.SourceInfo }).(pulumi.StringPtrOutput)
+}
+
+type PackageInfoOccurrencePtrOutput struct{ *pulumi.OutputState }
+
+func (PackageInfoOccurrencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PackageInfoOccurrence)(nil)).Elem()
+}
+
+func (o PackageInfoOccurrencePtrOutput) ToPackageInfoOccurrencePtrOutput() PackageInfoOccurrencePtrOutput {
+	return o
+}
+
+func (o PackageInfoOccurrencePtrOutput) ToPackageInfoOccurrencePtrOutputWithContext(ctx context.Context) PackageInfoOccurrencePtrOutput {
+	return o
+}
+
+func (o PackageInfoOccurrencePtrOutput) Elem() PackageInfoOccurrenceOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrence) PackageInfoOccurrence {
+		if v != nil {
+			return *v
+		}
+		var ret PackageInfoOccurrence
+		return ret
+	}).(PackageInfoOccurrenceOutput)
+}
+
+// A place for the SPDX file creator to record any general comments about the package being described
+func (o PackageInfoOccurrencePtrOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrence) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Comment
+	}).(pulumi.StringPtrOutput)
+}
+
+// Provide the actual file name of the package, or path of the directory being treated as a package
+func (o PackageInfoOccurrencePtrOutput) Filename() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrence) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Filename
+	}).(pulumi.StringPtrOutput)
+}
+
+// Uniquely identify any element in an SPDX document which may be referenced by other elements
+func (o PackageInfoOccurrencePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrence) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// package or alternative values, if the governing license cannot be determined
+func (o PackageInfoOccurrencePtrOutput) LicenseConcluded() LicensePtrOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrence) *License {
+		if v == nil {
+			return nil
+		}
+		return v.LicenseConcluded
+	}).(LicensePtrOutput)
+}
+
+// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
+func (o PackageInfoOccurrencePtrOutput) SourceInfo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrence) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceInfo
+	}).(pulumi.StringPtrOutput)
+}
+
+// PackageInfoOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+type PackageInfoOccurrenceResponse struct {
+	// A place for the SPDX file creator to record any general comments about the package being described
+	Comment string `pulumi:"comment"`
+	// Provide the actual file name of the package, or path of the directory being treated as a package
+	Filename string `pulumi:"filename"`
+	// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+	HomePage string `pulumi:"homePage"`
+	// package or alternative values, if the governing license cannot be determined
+	LicenseConcluded LicenseResponse `pulumi:"licenseConcluded"`
+	// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+	PackageType string `pulumi:"packageType"`
+	// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
+	SourceInfo string `pulumi:"sourceInfo"`
+	// A short description of the package
+	SummaryDescription string `pulumi:"summaryDescription"`
+	// Identify the full name of the package as given by the Package Originator
+	Title string `pulumi:"title"`
+	// Identify the version of the package
+	Version string `pulumi:"version"`
+}
+
+// PackageInfoOccurrenceResponseInput is an input type that accepts PackageInfoOccurrenceResponseArgs and PackageInfoOccurrenceResponseOutput values.
+// You can construct a concrete instance of `PackageInfoOccurrenceResponseInput` via:
+//
+//          PackageInfoOccurrenceResponseArgs{...}
+type PackageInfoOccurrenceResponseInput interface {
+	pulumi.Input
+
+	ToPackageInfoOccurrenceResponseOutput() PackageInfoOccurrenceResponseOutput
+	ToPackageInfoOccurrenceResponseOutputWithContext(context.Context) PackageInfoOccurrenceResponseOutput
+}
+
+// PackageInfoOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+type PackageInfoOccurrenceResponseArgs struct {
+	// A place for the SPDX file creator to record any general comments about the package being described
+	Comment pulumi.StringInput `pulumi:"comment"`
+	// Provide the actual file name of the package, or path of the directory being treated as a package
+	Filename pulumi.StringInput `pulumi:"filename"`
+	// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+	HomePage pulumi.StringInput `pulumi:"homePage"`
+	// package or alternative values, if the governing license cannot be determined
+	LicenseConcluded LicenseResponseInput `pulumi:"licenseConcluded"`
+	// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+	PackageType pulumi.StringInput `pulumi:"packageType"`
+	// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
+	SourceInfo pulumi.StringInput `pulumi:"sourceInfo"`
+	// A short description of the package
+	SummaryDescription pulumi.StringInput `pulumi:"summaryDescription"`
+	// Identify the full name of the package as given by the Package Originator
+	Title pulumi.StringInput `pulumi:"title"`
+	// Identify the version of the package
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (PackageInfoOccurrenceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageInfoOccurrenceResponse)(nil)).Elem()
+}
+
+func (i PackageInfoOccurrenceResponseArgs) ToPackageInfoOccurrenceResponseOutput() PackageInfoOccurrenceResponseOutput {
+	return i.ToPackageInfoOccurrenceResponseOutputWithContext(context.Background())
+}
+
+func (i PackageInfoOccurrenceResponseArgs) ToPackageInfoOccurrenceResponseOutputWithContext(ctx context.Context) PackageInfoOccurrenceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageInfoOccurrenceResponseOutput)
+}
+
+func (i PackageInfoOccurrenceResponseArgs) ToPackageInfoOccurrenceResponsePtrOutput() PackageInfoOccurrenceResponsePtrOutput {
+	return i.ToPackageInfoOccurrenceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PackageInfoOccurrenceResponseArgs) ToPackageInfoOccurrenceResponsePtrOutputWithContext(ctx context.Context) PackageInfoOccurrenceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageInfoOccurrenceResponseOutput).ToPackageInfoOccurrenceResponsePtrOutputWithContext(ctx)
+}
+
+// PackageInfoOccurrenceResponsePtrInput is an input type that accepts PackageInfoOccurrenceResponseArgs, PackageInfoOccurrenceResponsePtr and PackageInfoOccurrenceResponsePtrOutput values.
+// You can construct a concrete instance of `PackageInfoOccurrenceResponsePtrInput` via:
+//
+//          PackageInfoOccurrenceResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PackageInfoOccurrenceResponsePtrInput interface {
+	pulumi.Input
+
+	ToPackageInfoOccurrenceResponsePtrOutput() PackageInfoOccurrenceResponsePtrOutput
+	ToPackageInfoOccurrenceResponsePtrOutputWithContext(context.Context) PackageInfoOccurrenceResponsePtrOutput
+}
+
+type packageInfoOccurrenceResponsePtrType PackageInfoOccurrenceResponseArgs
+
+func PackageInfoOccurrenceResponsePtr(v *PackageInfoOccurrenceResponseArgs) PackageInfoOccurrenceResponsePtrInput {
+	return (*packageInfoOccurrenceResponsePtrType)(v)
+}
+
+func (*packageInfoOccurrenceResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PackageInfoOccurrenceResponse)(nil)).Elem()
+}
+
+func (i *packageInfoOccurrenceResponsePtrType) ToPackageInfoOccurrenceResponsePtrOutput() PackageInfoOccurrenceResponsePtrOutput {
+	return i.ToPackageInfoOccurrenceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *packageInfoOccurrenceResponsePtrType) ToPackageInfoOccurrenceResponsePtrOutputWithContext(ctx context.Context) PackageInfoOccurrenceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageInfoOccurrenceResponsePtrOutput)
+}
+
+// PackageInfoOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+type PackageInfoOccurrenceResponseOutput struct{ *pulumi.OutputState }
+
+func (PackageInfoOccurrenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageInfoOccurrenceResponse)(nil)).Elem()
+}
+
+func (o PackageInfoOccurrenceResponseOutput) ToPackageInfoOccurrenceResponseOutput() PackageInfoOccurrenceResponseOutput {
+	return o
+}
+
+func (o PackageInfoOccurrenceResponseOutput) ToPackageInfoOccurrenceResponseOutputWithContext(ctx context.Context) PackageInfoOccurrenceResponseOutput {
+	return o
+}
+
+func (o PackageInfoOccurrenceResponseOutput) ToPackageInfoOccurrenceResponsePtrOutput() PackageInfoOccurrenceResponsePtrOutput {
+	return o.ToPackageInfoOccurrenceResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PackageInfoOccurrenceResponseOutput) ToPackageInfoOccurrenceResponsePtrOutputWithContext(ctx context.Context) PackageInfoOccurrenceResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageInfoOccurrenceResponse) *PackageInfoOccurrenceResponse {
+		return &v
+	}).(PackageInfoOccurrenceResponsePtrOutput)
+}
+
+// A place for the SPDX file creator to record any general comments about the package being described
+func (o PackageInfoOccurrenceResponseOutput) Comment() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoOccurrenceResponse) string { return v.Comment }).(pulumi.StringOutput)
+}
+
+// Provide the actual file name of the package, or path of the directory being treated as a package
+func (o PackageInfoOccurrenceResponseOutput) Filename() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoOccurrenceResponse) string { return v.Filename }).(pulumi.StringOutput)
+}
+
+// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+func (o PackageInfoOccurrenceResponseOutput) HomePage() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoOccurrenceResponse) string { return v.HomePage }).(pulumi.StringOutput)
+}
+
+// package or alternative values, if the governing license cannot be determined
+func (o PackageInfoOccurrenceResponseOutput) LicenseConcluded() LicenseResponseOutput {
+	return o.ApplyT(func(v PackageInfoOccurrenceResponse) LicenseResponse { return v.LicenseConcluded }).(LicenseResponseOutput)
+}
+
+// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+func (o PackageInfoOccurrenceResponseOutput) PackageType() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoOccurrenceResponse) string { return v.PackageType }).(pulumi.StringOutput)
+}
+
+// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
+func (o PackageInfoOccurrenceResponseOutput) SourceInfo() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoOccurrenceResponse) string { return v.SourceInfo }).(pulumi.StringOutput)
+}
+
+// A short description of the package
+func (o PackageInfoOccurrenceResponseOutput) SummaryDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoOccurrenceResponse) string { return v.SummaryDescription }).(pulumi.StringOutput)
+}
+
+// Identify the full name of the package as given by the Package Originator
+func (o PackageInfoOccurrenceResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoOccurrenceResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
+// Identify the version of the package
+func (o PackageInfoOccurrenceResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoOccurrenceResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type PackageInfoOccurrenceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PackageInfoOccurrenceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PackageInfoOccurrenceResponse)(nil)).Elem()
+}
+
+func (o PackageInfoOccurrenceResponsePtrOutput) ToPackageInfoOccurrenceResponsePtrOutput() PackageInfoOccurrenceResponsePtrOutput {
+	return o
+}
+
+func (o PackageInfoOccurrenceResponsePtrOutput) ToPackageInfoOccurrenceResponsePtrOutputWithContext(ctx context.Context) PackageInfoOccurrenceResponsePtrOutput {
+	return o
+}
+
+func (o PackageInfoOccurrenceResponsePtrOutput) Elem() PackageInfoOccurrenceResponseOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrenceResponse) PackageInfoOccurrenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PackageInfoOccurrenceResponse
+		return ret
+	}).(PackageInfoOccurrenceResponseOutput)
+}
+
+// A place for the SPDX file creator to record any general comments about the package being described
+func (o PackageInfoOccurrenceResponsePtrOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Comment
+	}).(pulumi.StringPtrOutput)
+}
+
+// Provide the actual file name of the package, or path of the directory being treated as a package
+func (o PackageInfoOccurrenceResponsePtrOutput) Filename() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Filename
+	}).(pulumi.StringPtrOutput)
+}
+
+// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+func (o PackageInfoOccurrenceResponsePtrOutput) HomePage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HomePage
+	}).(pulumi.StringPtrOutput)
+}
+
+// package or alternative values, if the governing license cannot be determined
+func (o PackageInfoOccurrenceResponsePtrOutput) LicenseConcluded() LicenseResponsePtrOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrenceResponse) *LicenseResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.LicenseConcluded
+	}).(LicenseResponsePtrOutput)
+}
+
+// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+func (o PackageInfoOccurrenceResponsePtrOutput) PackageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PackageType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
+func (o PackageInfoOccurrenceResponsePtrOutput) SourceInfo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceInfo
+	}).(pulumi.StringPtrOutput)
+}
+
+// A short description of the package
+func (o PackageInfoOccurrenceResponsePtrOutput) SummaryDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SummaryDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identify the full name of the package as given by the Package Originator
+func (o PackageInfoOccurrenceResponsePtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identify the version of the package
+func (o PackageInfoOccurrenceResponsePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
 // This message wraps a location affected by a vulnerability and its associated fix (if one is available).
 type PackageIssue struct {
 	// The location of the vulnerability.
@@ -17690,1307 +19638,6 @@ func (o PackageIssueResponseArrayOutput) Index(i pulumi.IntInput) PackageIssueRe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PackageIssueResponse {
 		return vs[0].([]PackageIssueResponse)[vs[1].(int)]
 	}).(PackageIssueResponseOutput)
-}
-
-// PackageNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-type PackageNote struct {
-	// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
-	Analyzed *bool `pulumi:"analyzed"`
-	// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
-	Attribution *string `pulumi:"attribution"`
-	// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
-	Checksum *string `pulumi:"checksum"`
-	// Identify the copyright holders of the package, as well as any dates present
-	Copyright *string `pulumi:"copyright"`
-	// A more detailed description of the package
-	DetailedDescription *string `pulumi:"detailedDescription"`
-	// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
-	DownloadLocation *string `pulumi:"downloadLocation"`
-	// ExternalRef
-	ExternalRefs []ExternalRef `pulumi:"externalRefs"`
-	// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
-	FilesLicenseInfo []string `pulumi:"filesLicenseInfo"`
-	// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
-	HomePage *string `pulumi:"homePage"`
-	// List the licenses that have been declared by the authors of the package
-	LicenseDeclared *string `pulumi:"licenseDeclared"`
-	// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
-	Originator *string `pulumi:"originator"`
-	// A short description of the package
-	SummaryDescription *string `pulumi:"summaryDescription"`
-	// Identify the actual distribution source for the package/directory identified in the SPDX file
-	Supplier *string `pulumi:"supplier"`
-	// Identify the full name of the package as given by the Package Originator
-	Title *string `pulumi:"title"`
-	// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
-	VerificationCode *string `pulumi:"verificationCode"`
-	// Identify the version of the package
-	Version *string `pulumi:"version"`
-}
-
-// PackageNoteInput is an input type that accepts PackageNoteArgs and PackageNoteOutput values.
-// You can construct a concrete instance of `PackageNoteInput` via:
-//
-//          PackageNoteArgs{...}
-type PackageNoteInput interface {
-	pulumi.Input
-
-	ToPackageNoteOutput() PackageNoteOutput
-	ToPackageNoteOutputWithContext(context.Context) PackageNoteOutput
-}
-
-// PackageNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-type PackageNoteArgs struct {
-	// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
-	Analyzed pulumi.BoolPtrInput `pulumi:"analyzed"`
-	// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
-	Attribution pulumi.StringPtrInput `pulumi:"attribution"`
-	// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
-	Checksum pulumi.StringPtrInput `pulumi:"checksum"`
-	// Identify the copyright holders of the package, as well as any dates present
-	Copyright pulumi.StringPtrInput `pulumi:"copyright"`
-	// A more detailed description of the package
-	DetailedDescription pulumi.StringPtrInput `pulumi:"detailedDescription"`
-	// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
-	DownloadLocation pulumi.StringPtrInput `pulumi:"downloadLocation"`
-	// ExternalRef
-	ExternalRefs ExternalRefArrayInput `pulumi:"externalRefs"`
-	// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
-	FilesLicenseInfo pulumi.StringArrayInput `pulumi:"filesLicenseInfo"`
-	// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
-	HomePage pulumi.StringPtrInput `pulumi:"homePage"`
-	// List the licenses that have been declared by the authors of the package
-	LicenseDeclared pulumi.StringPtrInput `pulumi:"licenseDeclared"`
-	// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
-	Originator pulumi.StringPtrInput `pulumi:"originator"`
-	// A short description of the package
-	SummaryDescription pulumi.StringPtrInput `pulumi:"summaryDescription"`
-	// Identify the actual distribution source for the package/directory identified in the SPDX file
-	Supplier pulumi.StringPtrInput `pulumi:"supplier"`
-	// Identify the full name of the package as given by the Package Originator
-	Title pulumi.StringPtrInput `pulumi:"title"`
-	// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
-	VerificationCode pulumi.StringPtrInput `pulumi:"verificationCode"`
-	// Identify the version of the package
-	Version pulumi.StringPtrInput `pulumi:"version"`
-}
-
-func (PackageNoteArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PackageNote)(nil)).Elem()
-}
-
-func (i PackageNoteArgs) ToPackageNoteOutput() PackageNoteOutput {
-	return i.ToPackageNoteOutputWithContext(context.Background())
-}
-
-func (i PackageNoteArgs) ToPackageNoteOutputWithContext(ctx context.Context) PackageNoteOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageNoteOutput)
-}
-
-func (i PackageNoteArgs) ToPackageNotePtrOutput() PackageNotePtrOutput {
-	return i.ToPackageNotePtrOutputWithContext(context.Background())
-}
-
-func (i PackageNoteArgs) ToPackageNotePtrOutputWithContext(ctx context.Context) PackageNotePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageNoteOutput).ToPackageNotePtrOutputWithContext(ctx)
-}
-
-// PackageNotePtrInput is an input type that accepts PackageNoteArgs, PackageNotePtr and PackageNotePtrOutput values.
-// You can construct a concrete instance of `PackageNotePtrInput` via:
-//
-//          PackageNoteArgs{...}
-//
-//  or:
-//
-//          nil
-type PackageNotePtrInput interface {
-	pulumi.Input
-
-	ToPackageNotePtrOutput() PackageNotePtrOutput
-	ToPackageNotePtrOutputWithContext(context.Context) PackageNotePtrOutput
-}
-
-type packageNotePtrType PackageNoteArgs
-
-func PackageNotePtr(v *PackageNoteArgs) PackageNotePtrInput {
-	return (*packageNotePtrType)(v)
-}
-
-func (*packageNotePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PackageNote)(nil)).Elem()
-}
-
-func (i *packageNotePtrType) ToPackageNotePtrOutput() PackageNotePtrOutput {
-	return i.ToPackageNotePtrOutputWithContext(context.Background())
-}
-
-func (i *packageNotePtrType) ToPackageNotePtrOutputWithContext(ctx context.Context) PackageNotePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageNotePtrOutput)
-}
-
-// PackageNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-type PackageNoteOutput struct{ *pulumi.OutputState }
-
-func (PackageNoteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PackageNote)(nil)).Elem()
-}
-
-func (o PackageNoteOutput) ToPackageNoteOutput() PackageNoteOutput {
-	return o
-}
-
-func (o PackageNoteOutput) ToPackageNoteOutputWithContext(ctx context.Context) PackageNoteOutput {
-	return o
-}
-
-func (o PackageNoteOutput) ToPackageNotePtrOutput() PackageNotePtrOutput {
-	return o.ToPackageNotePtrOutputWithContext(context.Background())
-}
-
-func (o PackageNoteOutput) ToPackageNotePtrOutputWithContext(ctx context.Context) PackageNotePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageNote) *PackageNote {
-		return &v
-	}).(PackageNotePtrOutput)
-}
-
-// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
-func (o PackageNoteOutput) Analyzed() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PackageNote) *bool { return v.Analyzed }).(pulumi.BoolPtrOutput)
-}
-
-// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
-func (o PackageNoteOutput) Attribution() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageNote) *string { return v.Attribution }).(pulumi.StringPtrOutput)
-}
-
-// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
-func (o PackageNoteOutput) Checksum() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageNote) *string { return v.Checksum }).(pulumi.StringPtrOutput)
-}
-
-// Identify the copyright holders of the package, as well as any dates present
-func (o PackageNoteOutput) Copyright() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageNote) *string { return v.Copyright }).(pulumi.StringPtrOutput)
-}
-
-// A more detailed description of the package
-func (o PackageNoteOutput) DetailedDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageNote) *string { return v.DetailedDescription }).(pulumi.StringPtrOutput)
-}
-
-// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
-func (o PackageNoteOutput) DownloadLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageNote) *string { return v.DownloadLocation }).(pulumi.StringPtrOutput)
-}
-
-// ExternalRef
-func (o PackageNoteOutput) ExternalRefs() ExternalRefArrayOutput {
-	return o.ApplyT(func(v PackageNote) []ExternalRef { return v.ExternalRefs }).(ExternalRefArrayOutput)
-}
-
-// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
-func (o PackageNoteOutput) FilesLicenseInfo() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PackageNote) []string { return v.FilesLicenseInfo }).(pulumi.StringArrayOutput)
-}
-
-// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
-func (o PackageNoteOutput) HomePage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageNote) *string { return v.HomePage }).(pulumi.StringPtrOutput)
-}
-
-// List the licenses that have been declared by the authors of the package
-func (o PackageNoteOutput) LicenseDeclared() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageNote) *string { return v.LicenseDeclared }).(pulumi.StringPtrOutput)
-}
-
-// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
-func (o PackageNoteOutput) Originator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageNote) *string { return v.Originator }).(pulumi.StringPtrOutput)
-}
-
-// A short description of the package
-func (o PackageNoteOutput) SummaryDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageNote) *string { return v.SummaryDescription }).(pulumi.StringPtrOutput)
-}
-
-// Identify the actual distribution source for the package/directory identified in the SPDX file
-func (o PackageNoteOutput) Supplier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageNote) *string { return v.Supplier }).(pulumi.StringPtrOutput)
-}
-
-// Identify the full name of the package as given by the Package Originator
-func (o PackageNoteOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageNote) *string { return v.Title }).(pulumi.StringPtrOutput)
-}
-
-// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
-func (o PackageNoteOutput) VerificationCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageNote) *string { return v.VerificationCode }).(pulumi.StringPtrOutput)
-}
-
-// Identify the version of the package
-func (o PackageNoteOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageNote) *string { return v.Version }).(pulumi.StringPtrOutput)
-}
-
-type PackageNotePtrOutput struct{ *pulumi.OutputState }
-
-func (PackageNotePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PackageNote)(nil)).Elem()
-}
-
-func (o PackageNotePtrOutput) ToPackageNotePtrOutput() PackageNotePtrOutput {
-	return o
-}
-
-func (o PackageNotePtrOutput) ToPackageNotePtrOutputWithContext(ctx context.Context) PackageNotePtrOutput {
-	return o
-}
-
-func (o PackageNotePtrOutput) Elem() PackageNoteOutput {
-	return o.ApplyT(func(v *PackageNote) PackageNote {
-		if v != nil {
-			return *v
-		}
-		var ret PackageNote
-		return ret
-	}).(PackageNoteOutput)
-}
-
-// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
-func (o PackageNotePtrOutput) Analyzed() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PackageNote) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Analyzed
-	}).(pulumi.BoolPtrOutput)
-}
-
-// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
-func (o PackageNotePtrOutput) Attribution() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNote) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Attribution
-	}).(pulumi.StringPtrOutput)
-}
-
-// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
-func (o PackageNotePtrOutput) Checksum() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNote) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Checksum
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identify the copyright holders of the package, as well as any dates present
-func (o PackageNotePtrOutput) Copyright() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNote) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Copyright
-	}).(pulumi.StringPtrOutput)
-}
-
-// A more detailed description of the package
-func (o PackageNotePtrOutput) DetailedDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNote) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DetailedDescription
-	}).(pulumi.StringPtrOutput)
-}
-
-// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
-func (o PackageNotePtrOutput) DownloadLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNote) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DownloadLocation
-	}).(pulumi.StringPtrOutput)
-}
-
-// ExternalRef
-func (o PackageNotePtrOutput) ExternalRefs() ExternalRefArrayOutput {
-	return o.ApplyT(func(v *PackageNote) []ExternalRef {
-		if v == nil {
-			return nil
-		}
-		return v.ExternalRefs
-	}).(ExternalRefArrayOutput)
-}
-
-// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
-func (o PackageNotePtrOutput) FilesLicenseInfo() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *PackageNote) []string {
-		if v == nil {
-			return nil
-		}
-		return v.FilesLicenseInfo
-	}).(pulumi.StringArrayOutput)
-}
-
-// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
-func (o PackageNotePtrOutput) HomePage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNote) *string {
-		if v == nil {
-			return nil
-		}
-		return v.HomePage
-	}).(pulumi.StringPtrOutput)
-}
-
-// List the licenses that have been declared by the authors of the package
-func (o PackageNotePtrOutput) LicenseDeclared() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNote) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LicenseDeclared
-	}).(pulumi.StringPtrOutput)
-}
-
-// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
-func (o PackageNotePtrOutput) Originator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNote) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Originator
-	}).(pulumi.StringPtrOutput)
-}
-
-// A short description of the package
-func (o PackageNotePtrOutput) SummaryDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNote) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SummaryDescription
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identify the actual distribution source for the package/directory identified in the SPDX file
-func (o PackageNotePtrOutput) Supplier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNote) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Supplier
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identify the full name of the package as given by the Package Originator
-func (o PackageNotePtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNote) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Title
-	}).(pulumi.StringPtrOutput)
-}
-
-// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
-func (o PackageNotePtrOutput) VerificationCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNote) *string {
-		if v == nil {
-			return nil
-		}
-		return v.VerificationCode
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identify the version of the package
-func (o PackageNotePtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNote) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Version
-	}).(pulumi.StringPtrOutput)
-}
-
-// PackageNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-type PackageNoteResponse struct {
-	// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
-	Analyzed bool `pulumi:"analyzed"`
-	// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
-	Attribution string `pulumi:"attribution"`
-	// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
-	Checksum string `pulumi:"checksum"`
-	// Identify the copyright holders of the package, as well as any dates present
-	Copyright string `pulumi:"copyright"`
-	// A more detailed description of the package
-	DetailedDescription string `pulumi:"detailedDescription"`
-	// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
-	DownloadLocation string `pulumi:"downloadLocation"`
-	// ExternalRef
-	ExternalRefs []ExternalRefResponse `pulumi:"externalRefs"`
-	// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
-	FilesLicenseInfo []string `pulumi:"filesLicenseInfo"`
-	// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
-	HomePage string `pulumi:"homePage"`
-	// List the licenses that have been declared by the authors of the package
-	LicenseDeclared string `pulumi:"licenseDeclared"`
-	// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
-	Originator string `pulumi:"originator"`
-	// A short description of the package
-	SummaryDescription string `pulumi:"summaryDescription"`
-	// Identify the actual distribution source for the package/directory identified in the SPDX file
-	Supplier string `pulumi:"supplier"`
-	// Identify the full name of the package as given by the Package Originator
-	Title string `pulumi:"title"`
-	// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
-	VerificationCode string `pulumi:"verificationCode"`
-	// Identify the version of the package
-	Version string `pulumi:"version"`
-}
-
-// PackageNoteResponseInput is an input type that accepts PackageNoteResponseArgs and PackageNoteResponseOutput values.
-// You can construct a concrete instance of `PackageNoteResponseInput` via:
-//
-//          PackageNoteResponseArgs{...}
-type PackageNoteResponseInput interface {
-	pulumi.Input
-
-	ToPackageNoteResponseOutput() PackageNoteResponseOutput
-	ToPackageNoteResponseOutputWithContext(context.Context) PackageNoteResponseOutput
-}
-
-// PackageNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-type PackageNoteResponseArgs struct {
-	// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
-	Analyzed pulumi.BoolInput `pulumi:"analyzed"`
-	// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
-	Attribution pulumi.StringInput `pulumi:"attribution"`
-	// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
-	Checksum pulumi.StringInput `pulumi:"checksum"`
-	// Identify the copyright holders of the package, as well as any dates present
-	Copyright pulumi.StringInput `pulumi:"copyright"`
-	// A more detailed description of the package
-	DetailedDescription pulumi.StringInput `pulumi:"detailedDescription"`
-	// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
-	DownloadLocation pulumi.StringInput `pulumi:"downloadLocation"`
-	// ExternalRef
-	ExternalRefs ExternalRefResponseArrayInput `pulumi:"externalRefs"`
-	// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
-	FilesLicenseInfo pulumi.StringArrayInput `pulumi:"filesLicenseInfo"`
-	// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
-	HomePage pulumi.StringInput `pulumi:"homePage"`
-	// List the licenses that have been declared by the authors of the package
-	LicenseDeclared pulumi.StringInput `pulumi:"licenseDeclared"`
-	// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
-	Originator pulumi.StringInput `pulumi:"originator"`
-	// A short description of the package
-	SummaryDescription pulumi.StringInput `pulumi:"summaryDescription"`
-	// Identify the actual distribution source for the package/directory identified in the SPDX file
-	Supplier pulumi.StringInput `pulumi:"supplier"`
-	// Identify the full name of the package as given by the Package Originator
-	Title pulumi.StringInput `pulumi:"title"`
-	// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
-	VerificationCode pulumi.StringInput `pulumi:"verificationCode"`
-	// Identify the version of the package
-	Version pulumi.StringInput `pulumi:"version"`
-}
-
-func (PackageNoteResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PackageNoteResponse)(nil)).Elem()
-}
-
-func (i PackageNoteResponseArgs) ToPackageNoteResponseOutput() PackageNoteResponseOutput {
-	return i.ToPackageNoteResponseOutputWithContext(context.Background())
-}
-
-func (i PackageNoteResponseArgs) ToPackageNoteResponseOutputWithContext(ctx context.Context) PackageNoteResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageNoteResponseOutput)
-}
-
-func (i PackageNoteResponseArgs) ToPackageNoteResponsePtrOutput() PackageNoteResponsePtrOutput {
-	return i.ToPackageNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PackageNoteResponseArgs) ToPackageNoteResponsePtrOutputWithContext(ctx context.Context) PackageNoteResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageNoteResponseOutput).ToPackageNoteResponsePtrOutputWithContext(ctx)
-}
-
-// PackageNoteResponsePtrInput is an input type that accepts PackageNoteResponseArgs, PackageNoteResponsePtr and PackageNoteResponsePtrOutput values.
-// You can construct a concrete instance of `PackageNoteResponsePtrInput` via:
-//
-//          PackageNoteResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PackageNoteResponsePtrInput interface {
-	pulumi.Input
-
-	ToPackageNoteResponsePtrOutput() PackageNoteResponsePtrOutput
-	ToPackageNoteResponsePtrOutputWithContext(context.Context) PackageNoteResponsePtrOutput
-}
-
-type packageNoteResponsePtrType PackageNoteResponseArgs
-
-func PackageNoteResponsePtr(v *PackageNoteResponseArgs) PackageNoteResponsePtrInput {
-	return (*packageNoteResponsePtrType)(v)
-}
-
-func (*packageNoteResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PackageNoteResponse)(nil)).Elem()
-}
-
-func (i *packageNoteResponsePtrType) ToPackageNoteResponsePtrOutput() PackageNoteResponsePtrOutput {
-	return i.ToPackageNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *packageNoteResponsePtrType) ToPackageNoteResponsePtrOutputWithContext(ctx context.Context) PackageNoteResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageNoteResponsePtrOutput)
-}
-
-// PackageNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-type PackageNoteResponseOutput struct{ *pulumi.OutputState }
-
-func (PackageNoteResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PackageNoteResponse)(nil)).Elem()
-}
-
-func (o PackageNoteResponseOutput) ToPackageNoteResponseOutput() PackageNoteResponseOutput {
-	return o
-}
-
-func (o PackageNoteResponseOutput) ToPackageNoteResponseOutputWithContext(ctx context.Context) PackageNoteResponseOutput {
-	return o
-}
-
-func (o PackageNoteResponseOutput) ToPackageNoteResponsePtrOutput() PackageNoteResponsePtrOutput {
-	return o.ToPackageNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PackageNoteResponseOutput) ToPackageNoteResponsePtrOutputWithContext(ctx context.Context) PackageNoteResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageNoteResponse) *PackageNoteResponse {
-		return &v
-	}).(PackageNoteResponsePtrOutput)
-}
-
-// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
-func (o PackageNoteResponseOutput) Analyzed() pulumi.BoolOutput {
-	return o.ApplyT(func(v PackageNoteResponse) bool { return v.Analyzed }).(pulumi.BoolOutput)
-}
-
-// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
-func (o PackageNoteResponseOutput) Attribution() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageNoteResponse) string { return v.Attribution }).(pulumi.StringOutput)
-}
-
-// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
-func (o PackageNoteResponseOutput) Checksum() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageNoteResponse) string { return v.Checksum }).(pulumi.StringOutput)
-}
-
-// Identify the copyright holders of the package, as well as any dates present
-func (o PackageNoteResponseOutput) Copyright() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageNoteResponse) string { return v.Copyright }).(pulumi.StringOutput)
-}
-
-// A more detailed description of the package
-func (o PackageNoteResponseOutput) DetailedDescription() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageNoteResponse) string { return v.DetailedDescription }).(pulumi.StringOutput)
-}
-
-// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
-func (o PackageNoteResponseOutput) DownloadLocation() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageNoteResponse) string { return v.DownloadLocation }).(pulumi.StringOutput)
-}
-
-// ExternalRef
-func (o PackageNoteResponseOutput) ExternalRefs() ExternalRefResponseArrayOutput {
-	return o.ApplyT(func(v PackageNoteResponse) []ExternalRefResponse { return v.ExternalRefs }).(ExternalRefResponseArrayOutput)
-}
-
-// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
-func (o PackageNoteResponseOutput) FilesLicenseInfo() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PackageNoteResponse) []string { return v.FilesLicenseInfo }).(pulumi.StringArrayOutput)
-}
-
-// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
-func (o PackageNoteResponseOutput) HomePage() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageNoteResponse) string { return v.HomePage }).(pulumi.StringOutput)
-}
-
-// List the licenses that have been declared by the authors of the package
-func (o PackageNoteResponseOutput) LicenseDeclared() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageNoteResponse) string { return v.LicenseDeclared }).(pulumi.StringOutput)
-}
-
-// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
-func (o PackageNoteResponseOutput) Originator() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageNoteResponse) string { return v.Originator }).(pulumi.StringOutput)
-}
-
-// A short description of the package
-func (o PackageNoteResponseOutput) SummaryDescription() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageNoteResponse) string { return v.SummaryDescription }).(pulumi.StringOutput)
-}
-
-// Identify the actual distribution source for the package/directory identified in the SPDX file
-func (o PackageNoteResponseOutput) Supplier() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageNoteResponse) string { return v.Supplier }).(pulumi.StringOutput)
-}
-
-// Identify the full name of the package as given by the Package Originator
-func (o PackageNoteResponseOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageNoteResponse) string { return v.Title }).(pulumi.StringOutput)
-}
-
-// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
-func (o PackageNoteResponseOutput) VerificationCode() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageNoteResponse) string { return v.VerificationCode }).(pulumi.StringOutput)
-}
-
-// Identify the version of the package
-func (o PackageNoteResponseOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageNoteResponse) string { return v.Version }).(pulumi.StringOutput)
-}
-
-type PackageNoteResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PackageNoteResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PackageNoteResponse)(nil)).Elem()
-}
-
-func (o PackageNoteResponsePtrOutput) ToPackageNoteResponsePtrOutput() PackageNoteResponsePtrOutput {
-	return o
-}
-
-func (o PackageNoteResponsePtrOutput) ToPackageNoteResponsePtrOutputWithContext(ctx context.Context) PackageNoteResponsePtrOutput {
-	return o
-}
-
-func (o PackageNoteResponsePtrOutput) Elem() PackageNoteResponseOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) PackageNoteResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PackageNoteResponse
-		return ret
-	}).(PackageNoteResponseOutput)
-}
-
-// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
-func (o PackageNoteResponsePtrOutput) Analyzed() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Analyzed
-	}).(pulumi.BoolPtrOutput)
-}
-
-// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
-func (o PackageNoteResponsePtrOutput) Attribution() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Attribution
-	}).(pulumi.StringPtrOutput)
-}
-
-// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
-func (o PackageNoteResponsePtrOutput) Checksum() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Checksum
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identify the copyright holders of the package, as well as any dates present
-func (o PackageNoteResponsePtrOutput) Copyright() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Copyright
-	}).(pulumi.StringPtrOutput)
-}
-
-// A more detailed description of the package
-func (o PackageNoteResponsePtrOutput) DetailedDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DetailedDescription
-	}).(pulumi.StringPtrOutput)
-}
-
-// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
-func (o PackageNoteResponsePtrOutput) DownloadLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DownloadLocation
-	}).(pulumi.StringPtrOutput)
-}
-
-// ExternalRef
-func (o PackageNoteResponsePtrOutput) ExternalRefs() ExternalRefResponseArrayOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) []ExternalRefResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ExternalRefs
-	}).(ExternalRefResponseArrayOutput)
-}
-
-// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
-func (o PackageNoteResponsePtrOutput) FilesLicenseInfo() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.FilesLicenseInfo
-	}).(pulumi.StringArrayOutput)
-}
-
-// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
-func (o PackageNoteResponsePtrOutput) HomePage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.HomePage
-	}).(pulumi.StringPtrOutput)
-}
-
-// List the licenses that have been declared by the authors of the package
-func (o PackageNoteResponsePtrOutput) LicenseDeclared() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LicenseDeclared
-	}).(pulumi.StringPtrOutput)
-}
-
-// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
-func (o PackageNoteResponsePtrOutput) Originator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Originator
-	}).(pulumi.StringPtrOutput)
-}
-
-// A short description of the package
-func (o PackageNoteResponsePtrOutput) SummaryDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SummaryDescription
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identify the actual distribution source for the package/directory identified in the SPDX file
-func (o PackageNoteResponsePtrOutput) Supplier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Supplier
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identify the full name of the package as given by the Package Originator
-func (o PackageNoteResponsePtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Title
-	}).(pulumi.StringPtrOutput)
-}
-
-// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
-func (o PackageNoteResponsePtrOutput) VerificationCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.VerificationCode
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identify the version of the package
-func (o PackageNoteResponsePtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Version
-	}).(pulumi.StringPtrOutput)
-}
-
-// PackageOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-type PackageOccurrence struct {
-	// A place for the SPDX file creator to record any general comments about the package being described
-	Comment *string `pulumi:"comment"`
-	// Provide the actual file name of the package, or path of the directory being treated as a package
-	Filename *string `pulumi:"filename"`
-	// Uniquely identify any element in an SPDX document which may be referenced by other elements
-	Id *string `pulumi:"id"`
-	// This field provides a place for the SPDX file creator to record any relevant background information or analysis that went in to arriving at the Concluded License for a package
-	LicenseComments *string `pulumi:"licenseComments"`
-	// package or alternative values, if the governing license cannot be determined
-	LicenseConcluded *string `pulumi:"licenseConcluded"`
-	// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
-	SourceInfo *string `pulumi:"sourceInfo"`
-}
-
-// PackageOccurrenceInput is an input type that accepts PackageOccurrenceArgs and PackageOccurrenceOutput values.
-// You can construct a concrete instance of `PackageOccurrenceInput` via:
-//
-//          PackageOccurrenceArgs{...}
-type PackageOccurrenceInput interface {
-	pulumi.Input
-
-	ToPackageOccurrenceOutput() PackageOccurrenceOutput
-	ToPackageOccurrenceOutputWithContext(context.Context) PackageOccurrenceOutput
-}
-
-// PackageOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-type PackageOccurrenceArgs struct {
-	// A place for the SPDX file creator to record any general comments about the package being described
-	Comment pulumi.StringPtrInput `pulumi:"comment"`
-	// Provide the actual file name of the package, or path of the directory being treated as a package
-	Filename pulumi.StringPtrInput `pulumi:"filename"`
-	// Uniquely identify any element in an SPDX document which may be referenced by other elements
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// This field provides a place for the SPDX file creator to record any relevant background information or analysis that went in to arriving at the Concluded License for a package
-	LicenseComments pulumi.StringPtrInput `pulumi:"licenseComments"`
-	// package or alternative values, if the governing license cannot be determined
-	LicenseConcluded pulumi.StringPtrInput `pulumi:"licenseConcluded"`
-	// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
-	SourceInfo pulumi.StringPtrInput `pulumi:"sourceInfo"`
-}
-
-func (PackageOccurrenceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PackageOccurrence)(nil)).Elem()
-}
-
-func (i PackageOccurrenceArgs) ToPackageOccurrenceOutput() PackageOccurrenceOutput {
-	return i.ToPackageOccurrenceOutputWithContext(context.Background())
-}
-
-func (i PackageOccurrenceArgs) ToPackageOccurrenceOutputWithContext(ctx context.Context) PackageOccurrenceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageOccurrenceOutput)
-}
-
-func (i PackageOccurrenceArgs) ToPackageOccurrencePtrOutput() PackageOccurrencePtrOutput {
-	return i.ToPackageOccurrencePtrOutputWithContext(context.Background())
-}
-
-func (i PackageOccurrenceArgs) ToPackageOccurrencePtrOutputWithContext(ctx context.Context) PackageOccurrencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageOccurrenceOutput).ToPackageOccurrencePtrOutputWithContext(ctx)
-}
-
-// PackageOccurrencePtrInput is an input type that accepts PackageOccurrenceArgs, PackageOccurrencePtr and PackageOccurrencePtrOutput values.
-// You can construct a concrete instance of `PackageOccurrencePtrInput` via:
-//
-//          PackageOccurrenceArgs{...}
-//
-//  or:
-//
-//          nil
-type PackageOccurrencePtrInput interface {
-	pulumi.Input
-
-	ToPackageOccurrencePtrOutput() PackageOccurrencePtrOutput
-	ToPackageOccurrencePtrOutputWithContext(context.Context) PackageOccurrencePtrOutput
-}
-
-type packageOccurrencePtrType PackageOccurrenceArgs
-
-func PackageOccurrencePtr(v *PackageOccurrenceArgs) PackageOccurrencePtrInput {
-	return (*packageOccurrencePtrType)(v)
-}
-
-func (*packageOccurrencePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PackageOccurrence)(nil)).Elem()
-}
-
-func (i *packageOccurrencePtrType) ToPackageOccurrencePtrOutput() PackageOccurrencePtrOutput {
-	return i.ToPackageOccurrencePtrOutputWithContext(context.Background())
-}
-
-func (i *packageOccurrencePtrType) ToPackageOccurrencePtrOutputWithContext(ctx context.Context) PackageOccurrencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageOccurrencePtrOutput)
-}
-
-// PackageOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-type PackageOccurrenceOutput struct{ *pulumi.OutputState }
-
-func (PackageOccurrenceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PackageOccurrence)(nil)).Elem()
-}
-
-func (o PackageOccurrenceOutput) ToPackageOccurrenceOutput() PackageOccurrenceOutput {
-	return o
-}
-
-func (o PackageOccurrenceOutput) ToPackageOccurrenceOutputWithContext(ctx context.Context) PackageOccurrenceOutput {
-	return o
-}
-
-func (o PackageOccurrenceOutput) ToPackageOccurrencePtrOutput() PackageOccurrencePtrOutput {
-	return o.ToPackageOccurrencePtrOutputWithContext(context.Background())
-}
-
-func (o PackageOccurrenceOutput) ToPackageOccurrencePtrOutputWithContext(ctx context.Context) PackageOccurrencePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageOccurrence) *PackageOccurrence {
-		return &v
-	}).(PackageOccurrencePtrOutput)
-}
-
-// A place for the SPDX file creator to record any general comments about the package being described
-func (o PackageOccurrenceOutput) Comment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageOccurrence) *string { return v.Comment }).(pulumi.StringPtrOutput)
-}
-
-// Provide the actual file name of the package, or path of the directory being treated as a package
-func (o PackageOccurrenceOutput) Filename() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageOccurrence) *string { return v.Filename }).(pulumi.StringPtrOutput)
-}
-
-// Uniquely identify any element in an SPDX document which may be referenced by other elements
-func (o PackageOccurrenceOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageOccurrence) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// This field provides a place for the SPDX file creator to record any relevant background information or analysis that went in to arriving at the Concluded License for a package
-func (o PackageOccurrenceOutput) LicenseComments() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageOccurrence) *string { return v.LicenseComments }).(pulumi.StringPtrOutput)
-}
-
-// package or alternative values, if the governing license cannot be determined
-func (o PackageOccurrenceOutput) LicenseConcluded() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageOccurrence) *string { return v.LicenseConcluded }).(pulumi.StringPtrOutput)
-}
-
-// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
-func (o PackageOccurrenceOutput) SourceInfo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageOccurrence) *string { return v.SourceInfo }).(pulumi.StringPtrOutput)
-}
-
-type PackageOccurrencePtrOutput struct{ *pulumi.OutputState }
-
-func (PackageOccurrencePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PackageOccurrence)(nil)).Elem()
-}
-
-func (o PackageOccurrencePtrOutput) ToPackageOccurrencePtrOutput() PackageOccurrencePtrOutput {
-	return o
-}
-
-func (o PackageOccurrencePtrOutput) ToPackageOccurrencePtrOutputWithContext(ctx context.Context) PackageOccurrencePtrOutput {
-	return o
-}
-
-func (o PackageOccurrencePtrOutput) Elem() PackageOccurrenceOutput {
-	return o.ApplyT(func(v *PackageOccurrence) PackageOccurrence {
-		if v != nil {
-			return *v
-		}
-		var ret PackageOccurrence
-		return ret
-	}).(PackageOccurrenceOutput)
-}
-
-// A place for the SPDX file creator to record any general comments about the package being described
-func (o PackageOccurrencePtrOutput) Comment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageOccurrence) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Comment
-	}).(pulumi.StringPtrOutput)
-}
-
-// Provide the actual file name of the package, or path of the directory being treated as a package
-func (o PackageOccurrencePtrOutput) Filename() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageOccurrence) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Filename
-	}).(pulumi.StringPtrOutput)
-}
-
-// Uniquely identify any element in an SPDX document which may be referenced by other elements
-func (o PackageOccurrencePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageOccurrence) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// This field provides a place for the SPDX file creator to record any relevant background information or analysis that went in to arriving at the Concluded License for a package
-func (o PackageOccurrencePtrOutput) LicenseComments() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageOccurrence) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LicenseComments
-	}).(pulumi.StringPtrOutput)
-}
-
-// package or alternative values, if the governing license cannot be determined
-func (o PackageOccurrencePtrOutput) LicenseConcluded() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageOccurrence) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LicenseConcluded
-	}).(pulumi.StringPtrOutput)
-}
-
-// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
-func (o PackageOccurrencePtrOutput) SourceInfo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageOccurrence) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SourceInfo
-	}).(pulumi.StringPtrOutput)
-}
-
-// PackageOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-type PackageOccurrenceResponse struct {
-	// A place for the SPDX file creator to record any general comments about the package being described
-	Comment string `pulumi:"comment"`
-	// Provide the actual file name of the package, or path of the directory being treated as a package
-	Filename string `pulumi:"filename"`
-	// This field provides a place for the SPDX file creator to record any relevant background information or analysis that went in to arriving at the Concluded License for a package
-	LicenseComments string `pulumi:"licenseComments"`
-	// package or alternative values, if the governing license cannot be determined
-	LicenseConcluded string `pulumi:"licenseConcluded"`
-	// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
-	SourceInfo string `pulumi:"sourceInfo"`
-}
-
-// PackageOccurrenceResponseInput is an input type that accepts PackageOccurrenceResponseArgs and PackageOccurrenceResponseOutput values.
-// You can construct a concrete instance of `PackageOccurrenceResponseInput` via:
-//
-//          PackageOccurrenceResponseArgs{...}
-type PackageOccurrenceResponseInput interface {
-	pulumi.Input
-
-	ToPackageOccurrenceResponseOutput() PackageOccurrenceResponseOutput
-	ToPackageOccurrenceResponseOutputWithContext(context.Context) PackageOccurrenceResponseOutput
-}
-
-// PackageOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-type PackageOccurrenceResponseArgs struct {
-	// A place for the SPDX file creator to record any general comments about the package being described
-	Comment pulumi.StringInput `pulumi:"comment"`
-	// Provide the actual file name of the package, or path of the directory being treated as a package
-	Filename pulumi.StringInput `pulumi:"filename"`
-	// This field provides a place for the SPDX file creator to record any relevant background information or analysis that went in to arriving at the Concluded License for a package
-	LicenseComments pulumi.StringInput `pulumi:"licenseComments"`
-	// package or alternative values, if the governing license cannot be determined
-	LicenseConcluded pulumi.StringInput `pulumi:"licenseConcluded"`
-	// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
-	SourceInfo pulumi.StringInput `pulumi:"sourceInfo"`
-}
-
-func (PackageOccurrenceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PackageOccurrenceResponse)(nil)).Elem()
-}
-
-func (i PackageOccurrenceResponseArgs) ToPackageOccurrenceResponseOutput() PackageOccurrenceResponseOutput {
-	return i.ToPackageOccurrenceResponseOutputWithContext(context.Background())
-}
-
-func (i PackageOccurrenceResponseArgs) ToPackageOccurrenceResponseOutputWithContext(ctx context.Context) PackageOccurrenceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageOccurrenceResponseOutput)
-}
-
-func (i PackageOccurrenceResponseArgs) ToPackageOccurrenceResponsePtrOutput() PackageOccurrenceResponsePtrOutput {
-	return i.ToPackageOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PackageOccurrenceResponseArgs) ToPackageOccurrenceResponsePtrOutputWithContext(ctx context.Context) PackageOccurrenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageOccurrenceResponseOutput).ToPackageOccurrenceResponsePtrOutputWithContext(ctx)
-}
-
-// PackageOccurrenceResponsePtrInput is an input type that accepts PackageOccurrenceResponseArgs, PackageOccurrenceResponsePtr and PackageOccurrenceResponsePtrOutput values.
-// You can construct a concrete instance of `PackageOccurrenceResponsePtrInput` via:
-//
-//          PackageOccurrenceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PackageOccurrenceResponsePtrInput interface {
-	pulumi.Input
-
-	ToPackageOccurrenceResponsePtrOutput() PackageOccurrenceResponsePtrOutput
-	ToPackageOccurrenceResponsePtrOutputWithContext(context.Context) PackageOccurrenceResponsePtrOutput
-}
-
-type packageOccurrenceResponsePtrType PackageOccurrenceResponseArgs
-
-func PackageOccurrenceResponsePtr(v *PackageOccurrenceResponseArgs) PackageOccurrenceResponsePtrInput {
-	return (*packageOccurrenceResponsePtrType)(v)
-}
-
-func (*packageOccurrenceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PackageOccurrenceResponse)(nil)).Elem()
-}
-
-func (i *packageOccurrenceResponsePtrType) ToPackageOccurrenceResponsePtrOutput() PackageOccurrenceResponsePtrOutput {
-	return i.ToPackageOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *packageOccurrenceResponsePtrType) ToPackageOccurrenceResponsePtrOutputWithContext(ctx context.Context) PackageOccurrenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageOccurrenceResponsePtrOutput)
-}
-
-// PackageOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-type PackageOccurrenceResponseOutput struct{ *pulumi.OutputState }
-
-func (PackageOccurrenceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PackageOccurrenceResponse)(nil)).Elem()
-}
-
-func (o PackageOccurrenceResponseOutput) ToPackageOccurrenceResponseOutput() PackageOccurrenceResponseOutput {
-	return o
-}
-
-func (o PackageOccurrenceResponseOutput) ToPackageOccurrenceResponseOutputWithContext(ctx context.Context) PackageOccurrenceResponseOutput {
-	return o
-}
-
-func (o PackageOccurrenceResponseOutput) ToPackageOccurrenceResponsePtrOutput() PackageOccurrenceResponsePtrOutput {
-	return o.ToPackageOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PackageOccurrenceResponseOutput) ToPackageOccurrenceResponsePtrOutputWithContext(ctx context.Context) PackageOccurrenceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageOccurrenceResponse) *PackageOccurrenceResponse {
-		return &v
-	}).(PackageOccurrenceResponsePtrOutput)
-}
-
-// A place for the SPDX file creator to record any general comments about the package being described
-func (o PackageOccurrenceResponseOutput) Comment() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageOccurrenceResponse) string { return v.Comment }).(pulumi.StringOutput)
-}
-
-// Provide the actual file name of the package, or path of the directory being treated as a package
-func (o PackageOccurrenceResponseOutput) Filename() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageOccurrenceResponse) string { return v.Filename }).(pulumi.StringOutput)
-}
-
-// This field provides a place for the SPDX file creator to record any relevant background information or analysis that went in to arriving at the Concluded License for a package
-func (o PackageOccurrenceResponseOutput) LicenseComments() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageOccurrenceResponse) string { return v.LicenseComments }).(pulumi.StringOutput)
-}
-
-// package or alternative values, if the governing license cannot be determined
-func (o PackageOccurrenceResponseOutput) LicenseConcluded() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageOccurrenceResponse) string { return v.LicenseConcluded }).(pulumi.StringOutput)
-}
-
-// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
-func (o PackageOccurrenceResponseOutput) SourceInfo() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageOccurrenceResponse) string { return v.SourceInfo }).(pulumi.StringOutput)
-}
-
-type PackageOccurrenceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PackageOccurrenceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PackageOccurrenceResponse)(nil)).Elem()
-}
-
-func (o PackageOccurrenceResponsePtrOutput) ToPackageOccurrenceResponsePtrOutput() PackageOccurrenceResponsePtrOutput {
-	return o
-}
-
-func (o PackageOccurrenceResponsePtrOutput) ToPackageOccurrenceResponsePtrOutputWithContext(ctx context.Context) PackageOccurrenceResponsePtrOutput {
-	return o
-}
-
-func (o PackageOccurrenceResponsePtrOutput) Elem() PackageOccurrenceResponseOutput {
-	return o.ApplyT(func(v *PackageOccurrenceResponse) PackageOccurrenceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PackageOccurrenceResponse
-		return ret
-	}).(PackageOccurrenceResponseOutput)
-}
-
-// A place for the SPDX file creator to record any general comments about the package being described
-func (o PackageOccurrenceResponsePtrOutput) Comment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Comment
-	}).(pulumi.StringPtrOutput)
-}
-
-// Provide the actual file name of the package, or path of the directory being treated as a package
-func (o PackageOccurrenceResponsePtrOutput) Filename() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Filename
-	}).(pulumi.StringPtrOutput)
-}
-
-// This field provides a place for the SPDX file creator to record any relevant background information or analysis that went in to arriving at the Concluded License for a package
-func (o PackageOccurrenceResponsePtrOutput) LicenseComments() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LicenseComments
-	}).(pulumi.StringPtrOutput)
-}
-
-// package or alternative values, if the governing license cannot be determined
-func (o PackageOccurrenceResponsePtrOutput) LicenseConcluded() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LicenseConcluded
-	}).(pulumi.StringPtrOutput)
-}
-
-// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
-func (o PackageOccurrenceResponsePtrOutput) SourceInfo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SourceInfo
-	}).(pulumi.StringPtrOutput)
 }
 
 // This represents a particular package that is distributed over various channels. e.g. glibc (aka libc6) is distributed by many, at various versions.
@@ -20160,6 +20807,8 @@ func (o RelatedUrlResponseArrayOutput) Index(i pulumi.IntInput) RelatedUrlRespon
 
 // RelationshipNote represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
 type RelationshipNote struct {
+	// The type of relationship between the source and target SPDX elements
+	Type *RelationshipNoteType `pulumi:"type"`
 }
 
 // RelationshipNoteInput is an input type that accepts RelationshipNoteArgs and RelationshipNoteOutput values.
@@ -20175,6 +20824,8 @@ type RelationshipNoteInput interface {
 
 // RelationshipNote represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
 type RelationshipNoteArgs struct {
+	// The type of relationship between the source and target SPDX elements
+	Type RelationshipNoteTypePtrInput `pulumi:"type"`
 }
 
 func (RelationshipNoteArgs) ElementType() reflect.Type {
@@ -20255,6 +20906,11 @@ func (o RelationshipNoteOutput) ToRelationshipNotePtrOutputWithContext(ctx conte
 	}).(RelationshipNotePtrOutput)
 }
 
+// The type of relationship between the source and target SPDX elements
+func (o RelationshipNoteOutput) Type() RelationshipNoteTypePtrOutput {
+	return o.ApplyT(func(v RelationshipNote) *RelationshipNoteType { return v.Type }).(RelationshipNoteTypePtrOutput)
+}
+
 type RelationshipNotePtrOutput struct{ *pulumi.OutputState }
 
 func (RelationshipNotePtrOutput) ElementType() reflect.Type {
@@ -20279,8 +20935,20 @@ func (o RelationshipNotePtrOutput) Elem() RelationshipNoteOutput {
 	}).(RelationshipNoteOutput)
 }
 
+// The type of relationship between the source and target SPDX elements
+func (o RelationshipNotePtrOutput) Type() RelationshipNoteTypePtrOutput {
+	return o.ApplyT(func(v *RelationshipNote) *RelationshipNoteType {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(RelationshipNoteTypePtrOutput)
+}
+
 // RelationshipNote represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
 type RelationshipNoteResponse struct {
+	// The type of relationship between the source and target SPDX elements
+	Type string `pulumi:"type"`
 }
 
 // RelationshipNoteResponseInput is an input type that accepts RelationshipNoteResponseArgs and RelationshipNoteResponseOutput values.
@@ -20296,6 +20964,8 @@ type RelationshipNoteResponseInput interface {
 
 // RelationshipNote represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
 type RelationshipNoteResponseArgs struct {
+	// The type of relationship between the source and target SPDX elements
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (RelationshipNoteResponseArgs) ElementType() reflect.Type {
@@ -20376,6 +21046,11 @@ func (o RelationshipNoteResponseOutput) ToRelationshipNoteResponsePtrOutputWithC
 	}).(RelationshipNoteResponsePtrOutput)
 }
 
+// The type of relationship between the source and target SPDX elements
+func (o RelationshipNoteResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RelationshipNoteResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 type RelationshipNoteResponsePtrOutput struct{ *pulumi.OutputState }
 
 func (RelationshipNoteResponsePtrOutput) ElementType() reflect.Type {
@@ -20400,6 +21075,16 @@ func (o RelationshipNoteResponsePtrOutput) Elem() RelationshipNoteResponseOutput
 	}).(RelationshipNoteResponseOutput)
 }
 
+// The type of relationship between the source and target SPDX elements
+func (o RelationshipNoteResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RelationshipNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // RelationshipOccurrence represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
 type RelationshipOccurrence struct {
 	// A place for the SPDX file creator to record any general comments about the relationship
@@ -20408,8 +21093,6 @@ type RelationshipOccurrence struct {
 	Source *string `pulumi:"source"`
 	// Also referred to as SPDXRef-B The target SPDC element (file, package, etc) In cases where there are "known unknowns", the use of the keyword NOASSERTION can be used The keywords NONE can be used to indicate that an SPDX element (package/file/snippet) has no other elements connected by some relationship to it
 	Target *string `pulumi:"target"`
-	// The type of relationship between the source and target SPDX elements
-	Type *RelationshipOccurrenceType `pulumi:"type"`
 }
 
 // RelationshipOccurrenceInput is an input type that accepts RelationshipOccurrenceArgs and RelationshipOccurrenceOutput values.
@@ -20431,8 +21114,6 @@ type RelationshipOccurrenceArgs struct {
 	Source pulumi.StringPtrInput `pulumi:"source"`
 	// Also referred to as SPDXRef-B The target SPDC element (file, package, etc) In cases where there are "known unknowns", the use of the keyword NOASSERTION can be used The keywords NONE can be used to indicate that an SPDX element (package/file/snippet) has no other elements connected by some relationship to it
 	Target pulumi.StringPtrInput `pulumi:"target"`
-	// The type of relationship between the source and target SPDX elements
-	Type RelationshipOccurrenceTypePtrInput `pulumi:"type"`
 }
 
 func (RelationshipOccurrenceArgs) ElementType() reflect.Type {
@@ -20528,11 +21209,6 @@ func (o RelationshipOccurrenceOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RelationshipOccurrence) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
-// The type of relationship between the source and target SPDX elements
-func (o RelationshipOccurrenceOutput) Type() RelationshipOccurrenceTypePtrOutput {
-	return o.ApplyT(func(v RelationshipOccurrence) *RelationshipOccurrenceType { return v.Type }).(RelationshipOccurrenceTypePtrOutput)
-}
-
 type RelationshipOccurrencePtrOutput struct{ *pulumi.OutputState }
 
 func (RelationshipOccurrencePtrOutput) ElementType() reflect.Type {
@@ -20585,16 +21261,6 @@ func (o RelationshipOccurrencePtrOutput) Target() pulumi.StringPtrOutput {
 		}
 		return v.Target
 	}).(pulumi.StringPtrOutput)
-}
-
-// The type of relationship between the source and target SPDX elements
-func (o RelationshipOccurrencePtrOutput) Type() RelationshipOccurrenceTypePtrOutput {
-	return o.ApplyT(func(v *RelationshipOccurrence) *RelationshipOccurrenceType {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(RelationshipOccurrenceTypePtrOutput)
 }
 
 // RelationshipOccurrence represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
@@ -21579,6 +22245,1881 @@ func (o ResourceResponsePtrOutput) Uri() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+// SlsaBuilder encapsulates the identity of the builder of this provenance.
+type SlsaBuilder struct {
+	// id is the id of the slsa provenance builder
+	Id *string `pulumi:"id"`
+}
+
+// SlsaBuilderInput is an input type that accepts SlsaBuilderArgs and SlsaBuilderOutput values.
+// You can construct a concrete instance of `SlsaBuilderInput` via:
+//
+//          SlsaBuilderArgs{...}
+type SlsaBuilderInput interface {
+	pulumi.Input
+
+	ToSlsaBuilderOutput() SlsaBuilderOutput
+	ToSlsaBuilderOutputWithContext(context.Context) SlsaBuilderOutput
+}
+
+// SlsaBuilder encapsulates the identity of the builder of this provenance.
+type SlsaBuilderArgs struct {
+	// id is the id of the slsa provenance builder
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (SlsaBuilderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsaBuilder)(nil)).Elem()
+}
+
+func (i SlsaBuilderArgs) ToSlsaBuilderOutput() SlsaBuilderOutput {
+	return i.ToSlsaBuilderOutputWithContext(context.Background())
+}
+
+func (i SlsaBuilderArgs) ToSlsaBuilderOutputWithContext(ctx context.Context) SlsaBuilderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaBuilderOutput)
+}
+
+func (i SlsaBuilderArgs) ToSlsaBuilderPtrOutput() SlsaBuilderPtrOutput {
+	return i.ToSlsaBuilderPtrOutputWithContext(context.Background())
+}
+
+func (i SlsaBuilderArgs) ToSlsaBuilderPtrOutputWithContext(ctx context.Context) SlsaBuilderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaBuilderOutput).ToSlsaBuilderPtrOutputWithContext(ctx)
+}
+
+// SlsaBuilderPtrInput is an input type that accepts SlsaBuilderArgs, SlsaBuilderPtr and SlsaBuilderPtrOutput values.
+// You can construct a concrete instance of `SlsaBuilderPtrInput` via:
+//
+//          SlsaBuilderArgs{...}
+//
+//  or:
+//
+//          nil
+type SlsaBuilderPtrInput interface {
+	pulumi.Input
+
+	ToSlsaBuilderPtrOutput() SlsaBuilderPtrOutput
+	ToSlsaBuilderPtrOutputWithContext(context.Context) SlsaBuilderPtrOutput
+}
+
+type slsaBuilderPtrType SlsaBuilderArgs
+
+func SlsaBuilderPtr(v *SlsaBuilderArgs) SlsaBuilderPtrInput {
+	return (*slsaBuilderPtrType)(v)
+}
+
+func (*slsaBuilderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SlsaBuilder)(nil)).Elem()
+}
+
+func (i *slsaBuilderPtrType) ToSlsaBuilderPtrOutput() SlsaBuilderPtrOutput {
+	return i.ToSlsaBuilderPtrOutputWithContext(context.Background())
+}
+
+func (i *slsaBuilderPtrType) ToSlsaBuilderPtrOutputWithContext(ctx context.Context) SlsaBuilderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaBuilderPtrOutput)
+}
+
+// SlsaBuilder encapsulates the identity of the builder of this provenance.
+type SlsaBuilderOutput struct{ *pulumi.OutputState }
+
+func (SlsaBuilderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsaBuilder)(nil)).Elem()
+}
+
+func (o SlsaBuilderOutput) ToSlsaBuilderOutput() SlsaBuilderOutput {
+	return o
+}
+
+func (o SlsaBuilderOutput) ToSlsaBuilderOutputWithContext(ctx context.Context) SlsaBuilderOutput {
+	return o
+}
+
+func (o SlsaBuilderOutput) ToSlsaBuilderPtrOutput() SlsaBuilderPtrOutput {
+	return o.ToSlsaBuilderPtrOutputWithContext(context.Background())
+}
+
+func (o SlsaBuilderOutput) ToSlsaBuilderPtrOutputWithContext(ctx context.Context) SlsaBuilderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SlsaBuilder) *SlsaBuilder {
+		return &v
+	}).(SlsaBuilderPtrOutput)
+}
+
+// id is the id of the slsa provenance builder
+func (o SlsaBuilderOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlsaBuilder) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type SlsaBuilderPtrOutput struct{ *pulumi.OutputState }
+
+func (SlsaBuilderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SlsaBuilder)(nil)).Elem()
+}
+
+func (o SlsaBuilderPtrOutput) ToSlsaBuilderPtrOutput() SlsaBuilderPtrOutput {
+	return o
+}
+
+func (o SlsaBuilderPtrOutput) ToSlsaBuilderPtrOutputWithContext(ctx context.Context) SlsaBuilderPtrOutput {
+	return o
+}
+
+func (o SlsaBuilderPtrOutput) Elem() SlsaBuilderOutput {
+	return o.ApplyT(func(v *SlsaBuilder) SlsaBuilder {
+		if v != nil {
+			return *v
+		}
+		var ret SlsaBuilder
+		return ret
+	}).(SlsaBuilderOutput)
+}
+
+// id is the id of the slsa provenance builder
+func (o SlsaBuilderPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SlsaBuilder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// SlsaBuilder encapsulates the identity of the builder of this provenance.
+type SlsaBuilderResponse struct {
+}
+
+// SlsaBuilderResponseInput is an input type that accepts SlsaBuilderResponseArgs and SlsaBuilderResponseOutput values.
+// You can construct a concrete instance of `SlsaBuilderResponseInput` via:
+//
+//          SlsaBuilderResponseArgs{...}
+type SlsaBuilderResponseInput interface {
+	pulumi.Input
+
+	ToSlsaBuilderResponseOutput() SlsaBuilderResponseOutput
+	ToSlsaBuilderResponseOutputWithContext(context.Context) SlsaBuilderResponseOutput
+}
+
+// SlsaBuilder encapsulates the identity of the builder of this provenance.
+type SlsaBuilderResponseArgs struct {
+}
+
+func (SlsaBuilderResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsaBuilderResponse)(nil)).Elem()
+}
+
+func (i SlsaBuilderResponseArgs) ToSlsaBuilderResponseOutput() SlsaBuilderResponseOutput {
+	return i.ToSlsaBuilderResponseOutputWithContext(context.Background())
+}
+
+func (i SlsaBuilderResponseArgs) ToSlsaBuilderResponseOutputWithContext(ctx context.Context) SlsaBuilderResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaBuilderResponseOutput)
+}
+
+func (i SlsaBuilderResponseArgs) ToSlsaBuilderResponsePtrOutput() SlsaBuilderResponsePtrOutput {
+	return i.ToSlsaBuilderResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SlsaBuilderResponseArgs) ToSlsaBuilderResponsePtrOutputWithContext(ctx context.Context) SlsaBuilderResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaBuilderResponseOutput).ToSlsaBuilderResponsePtrOutputWithContext(ctx)
+}
+
+// SlsaBuilderResponsePtrInput is an input type that accepts SlsaBuilderResponseArgs, SlsaBuilderResponsePtr and SlsaBuilderResponsePtrOutput values.
+// You can construct a concrete instance of `SlsaBuilderResponsePtrInput` via:
+//
+//          SlsaBuilderResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SlsaBuilderResponsePtrInput interface {
+	pulumi.Input
+
+	ToSlsaBuilderResponsePtrOutput() SlsaBuilderResponsePtrOutput
+	ToSlsaBuilderResponsePtrOutputWithContext(context.Context) SlsaBuilderResponsePtrOutput
+}
+
+type slsaBuilderResponsePtrType SlsaBuilderResponseArgs
+
+func SlsaBuilderResponsePtr(v *SlsaBuilderResponseArgs) SlsaBuilderResponsePtrInput {
+	return (*slsaBuilderResponsePtrType)(v)
+}
+
+func (*slsaBuilderResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SlsaBuilderResponse)(nil)).Elem()
+}
+
+func (i *slsaBuilderResponsePtrType) ToSlsaBuilderResponsePtrOutput() SlsaBuilderResponsePtrOutput {
+	return i.ToSlsaBuilderResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *slsaBuilderResponsePtrType) ToSlsaBuilderResponsePtrOutputWithContext(ctx context.Context) SlsaBuilderResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaBuilderResponsePtrOutput)
+}
+
+// SlsaBuilder encapsulates the identity of the builder of this provenance.
+type SlsaBuilderResponseOutput struct{ *pulumi.OutputState }
+
+func (SlsaBuilderResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsaBuilderResponse)(nil)).Elem()
+}
+
+func (o SlsaBuilderResponseOutput) ToSlsaBuilderResponseOutput() SlsaBuilderResponseOutput {
+	return o
+}
+
+func (o SlsaBuilderResponseOutput) ToSlsaBuilderResponseOutputWithContext(ctx context.Context) SlsaBuilderResponseOutput {
+	return o
+}
+
+func (o SlsaBuilderResponseOutput) ToSlsaBuilderResponsePtrOutput() SlsaBuilderResponsePtrOutput {
+	return o.ToSlsaBuilderResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SlsaBuilderResponseOutput) ToSlsaBuilderResponsePtrOutputWithContext(ctx context.Context) SlsaBuilderResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SlsaBuilderResponse) *SlsaBuilderResponse {
+		return &v
+	}).(SlsaBuilderResponsePtrOutput)
+}
+
+type SlsaBuilderResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SlsaBuilderResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SlsaBuilderResponse)(nil)).Elem()
+}
+
+func (o SlsaBuilderResponsePtrOutput) ToSlsaBuilderResponsePtrOutput() SlsaBuilderResponsePtrOutput {
+	return o
+}
+
+func (o SlsaBuilderResponsePtrOutput) ToSlsaBuilderResponsePtrOutputWithContext(ctx context.Context) SlsaBuilderResponsePtrOutput {
+	return o
+}
+
+func (o SlsaBuilderResponsePtrOutput) Elem() SlsaBuilderResponseOutput {
+	return o.ApplyT(func(v *SlsaBuilderResponse) SlsaBuilderResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SlsaBuilderResponse
+		return ret
+	}).(SlsaBuilderResponseOutput)
+}
+
+// Indicates that the builder claims certain fields in this message to be complete.
+type SlsaCompleteness struct {
+	// If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe.
+	Arguments *bool `pulumi:"arguments"`
+	// If true, the builder claims that recipe.environment is claimed to be complete.
+	Environment *bool `pulumi:"environment"`
+	// If true, the builder claims that materials are complete, usually through some controls to prevent network access. Sometimes called "hermetic".
+	Materials *bool `pulumi:"materials"`
+}
+
+// SlsaCompletenessInput is an input type that accepts SlsaCompletenessArgs and SlsaCompletenessOutput values.
+// You can construct a concrete instance of `SlsaCompletenessInput` via:
+//
+//          SlsaCompletenessArgs{...}
+type SlsaCompletenessInput interface {
+	pulumi.Input
+
+	ToSlsaCompletenessOutput() SlsaCompletenessOutput
+	ToSlsaCompletenessOutputWithContext(context.Context) SlsaCompletenessOutput
+}
+
+// Indicates that the builder claims certain fields in this message to be complete.
+type SlsaCompletenessArgs struct {
+	// If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe.
+	Arguments pulumi.BoolPtrInput `pulumi:"arguments"`
+	// If true, the builder claims that recipe.environment is claimed to be complete.
+	Environment pulumi.BoolPtrInput `pulumi:"environment"`
+	// If true, the builder claims that materials are complete, usually through some controls to prevent network access. Sometimes called "hermetic".
+	Materials pulumi.BoolPtrInput `pulumi:"materials"`
+}
+
+func (SlsaCompletenessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsaCompleteness)(nil)).Elem()
+}
+
+func (i SlsaCompletenessArgs) ToSlsaCompletenessOutput() SlsaCompletenessOutput {
+	return i.ToSlsaCompletenessOutputWithContext(context.Background())
+}
+
+func (i SlsaCompletenessArgs) ToSlsaCompletenessOutputWithContext(ctx context.Context) SlsaCompletenessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaCompletenessOutput)
+}
+
+func (i SlsaCompletenessArgs) ToSlsaCompletenessPtrOutput() SlsaCompletenessPtrOutput {
+	return i.ToSlsaCompletenessPtrOutputWithContext(context.Background())
+}
+
+func (i SlsaCompletenessArgs) ToSlsaCompletenessPtrOutputWithContext(ctx context.Context) SlsaCompletenessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaCompletenessOutput).ToSlsaCompletenessPtrOutputWithContext(ctx)
+}
+
+// SlsaCompletenessPtrInput is an input type that accepts SlsaCompletenessArgs, SlsaCompletenessPtr and SlsaCompletenessPtrOutput values.
+// You can construct a concrete instance of `SlsaCompletenessPtrInput` via:
+//
+//          SlsaCompletenessArgs{...}
+//
+//  or:
+//
+//          nil
+type SlsaCompletenessPtrInput interface {
+	pulumi.Input
+
+	ToSlsaCompletenessPtrOutput() SlsaCompletenessPtrOutput
+	ToSlsaCompletenessPtrOutputWithContext(context.Context) SlsaCompletenessPtrOutput
+}
+
+type slsaCompletenessPtrType SlsaCompletenessArgs
+
+func SlsaCompletenessPtr(v *SlsaCompletenessArgs) SlsaCompletenessPtrInput {
+	return (*slsaCompletenessPtrType)(v)
+}
+
+func (*slsaCompletenessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SlsaCompleteness)(nil)).Elem()
+}
+
+func (i *slsaCompletenessPtrType) ToSlsaCompletenessPtrOutput() SlsaCompletenessPtrOutput {
+	return i.ToSlsaCompletenessPtrOutputWithContext(context.Background())
+}
+
+func (i *slsaCompletenessPtrType) ToSlsaCompletenessPtrOutputWithContext(ctx context.Context) SlsaCompletenessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaCompletenessPtrOutput)
+}
+
+// Indicates that the builder claims certain fields in this message to be complete.
+type SlsaCompletenessOutput struct{ *pulumi.OutputState }
+
+func (SlsaCompletenessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsaCompleteness)(nil)).Elem()
+}
+
+func (o SlsaCompletenessOutput) ToSlsaCompletenessOutput() SlsaCompletenessOutput {
+	return o
+}
+
+func (o SlsaCompletenessOutput) ToSlsaCompletenessOutputWithContext(ctx context.Context) SlsaCompletenessOutput {
+	return o
+}
+
+func (o SlsaCompletenessOutput) ToSlsaCompletenessPtrOutput() SlsaCompletenessPtrOutput {
+	return o.ToSlsaCompletenessPtrOutputWithContext(context.Background())
+}
+
+func (o SlsaCompletenessOutput) ToSlsaCompletenessPtrOutputWithContext(ctx context.Context) SlsaCompletenessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SlsaCompleteness) *SlsaCompleteness {
+		return &v
+	}).(SlsaCompletenessPtrOutput)
+}
+
+// If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe.
+func (o SlsaCompletenessOutput) Arguments() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SlsaCompleteness) *bool { return v.Arguments }).(pulumi.BoolPtrOutput)
+}
+
+// If true, the builder claims that recipe.environment is claimed to be complete.
+func (o SlsaCompletenessOutput) Environment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SlsaCompleteness) *bool { return v.Environment }).(pulumi.BoolPtrOutput)
+}
+
+// If true, the builder claims that materials are complete, usually through some controls to prevent network access. Sometimes called "hermetic".
+func (o SlsaCompletenessOutput) Materials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SlsaCompleteness) *bool { return v.Materials }).(pulumi.BoolPtrOutput)
+}
+
+type SlsaCompletenessPtrOutput struct{ *pulumi.OutputState }
+
+func (SlsaCompletenessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SlsaCompleteness)(nil)).Elem()
+}
+
+func (o SlsaCompletenessPtrOutput) ToSlsaCompletenessPtrOutput() SlsaCompletenessPtrOutput {
+	return o
+}
+
+func (o SlsaCompletenessPtrOutput) ToSlsaCompletenessPtrOutputWithContext(ctx context.Context) SlsaCompletenessPtrOutput {
+	return o
+}
+
+func (o SlsaCompletenessPtrOutput) Elem() SlsaCompletenessOutput {
+	return o.ApplyT(func(v *SlsaCompleteness) SlsaCompleteness {
+		if v != nil {
+			return *v
+		}
+		var ret SlsaCompleteness
+		return ret
+	}).(SlsaCompletenessOutput)
+}
+
+// If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe.
+func (o SlsaCompletenessPtrOutput) Arguments() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SlsaCompleteness) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Arguments
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, the builder claims that recipe.environment is claimed to be complete.
+func (o SlsaCompletenessPtrOutput) Environment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SlsaCompleteness) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Environment
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, the builder claims that materials are complete, usually through some controls to prevent network access. Sometimes called "hermetic".
+func (o SlsaCompletenessPtrOutput) Materials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SlsaCompleteness) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Materials
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates that the builder claims certain fields in this message to be complete.
+type SlsaCompletenessResponse struct {
+	// If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe.
+	Arguments bool `pulumi:"arguments"`
+	// If true, the builder claims that recipe.environment is claimed to be complete.
+	Environment bool `pulumi:"environment"`
+	// If true, the builder claims that materials are complete, usually through some controls to prevent network access. Sometimes called "hermetic".
+	Materials bool `pulumi:"materials"`
+}
+
+// SlsaCompletenessResponseInput is an input type that accepts SlsaCompletenessResponseArgs and SlsaCompletenessResponseOutput values.
+// You can construct a concrete instance of `SlsaCompletenessResponseInput` via:
+//
+//          SlsaCompletenessResponseArgs{...}
+type SlsaCompletenessResponseInput interface {
+	pulumi.Input
+
+	ToSlsaCompletenessResponseOutput() SlsaCompletenessResponseOutput
+	ToSlsaCompletenessResponseOutputWithContext(context.Context) SlsaCompletenessResponseOutput
+}
+
+// Indicates that the builder claims certain fields in this message to be complete.
+type SlsaCompletenessResponseArgs struct {
+	// If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe.
+	Arguments pulumi.BoolInput `pulumi:"arguments"`
+	// If true, the builder claims that recipe.environment is claimed to be complete.
+	Environment pulumi.BoolInput `pulumi:"environment"`
+	// If true, the builder claims that materials are complete, usually through some controls to prevent network access. Sometimes called "hermetic".
+	Materials pulumi.BoolInput `pulumi:"materials"`
+}
+
+func (SlsaCompletenessResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsaCompletenessResponse)(nil)).Elem()
+}
+
+func (i SlsaCompletenessResponseArgs) ToSlsaCompletenessResponseOutput() SlsaCompletenessResponseOutput {
+	return i.ToSlsaCompletenessResponseOutputWithContext(context.Background())
+}
+
+func (i SlsaCompletenessResponseArgs) ToSlsaCompletenessResponseOutputWithContext(ctx context.Context) SlsaCompletenessResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaCompletenessResponseOutput)
+}
+
+func (i SlsaCompletenessResponseArgs) ToSlsaCompletenessResponsePtrOutput() SlsaCompletenessResponsePtrOutput {
+	return i.ToSlsaCompletenessResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SlsaCompletenessResponseArgs) ToSlsaCompletenessResponsePtrOutputWithContext(ctx context.Context) SlsaCompletenessResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaCompletenessResponseOutput).ToSlsaCompletenessResponsePtrOutputWithContext(ctx)
+}
+
+// SlsaCompletenessResponsePtrInput is an input type that accepts SlsaCompletenessResponseArgs, SlsaCompletenessResponsePtr and SlsaCompletenessResponsePtrOutput values.
+// You can construct a concrete instance of `SlsaCompletenessResponsePtrInput` via:
+//
+//          SlsaCompletenessResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SlsaCompletenessResponsePtrInput interface {
+	pulumi.Input
+
+	ToSlsaCompletenessResponsePtrOutput() SlsaCompletenessResponsePtrOutput
+	ToSlsaCompletenessResponsePtrOutputWithContext(context.Context) SlsaCompletenessResponsePtrOutput
+}
+
+type slsaCompletenessResponsePtrType SlsaCompletenessResponseArgs
+
+func SlsaCompletenessResponsePtr(v *SlsaCompletenessResponseArgs) SlsaCompletenessResponsePtrInput {
+	return (*slsaCompletenessResponsePtrType)(v)
+}
+
+func (*slsaCompletenessResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SlsaCompletenessResponse)(nil)).Elem()
+}
+
+func (i *slsaCompletenessResponsePtrType) ToSlsaCompletenessResponsePtrOutput() SlsaCompletenessResponsePtrOutput {
+	return i.ToSlsaCompletenessResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *slsaCompletenessResponsePtrType) ToSlsaCompletenessResponsePtrOutputWithContext(ctx context.Context) SlsaCompletenessResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaCompletenessResponsePtrOutput)
+}
+
+// Indicates that the builder claims certain fields in this message to be complete.
+type SlsaCompletenessResponseOutput struct{ *pulumi.OutputState }
+
+func (SlsaCompletenessResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsaCompletenessResponse)(nil)).Elem()
+}
+
+func (o SlsaCompletenessResponseOutput) ToSlsaCompletenessResponseOutput() SlsaCompletenessResponseOutput {
+	return o
+}
+
+func (o SlsaCompletenessResponseOutput) ToSlsaCompletenessResponseOutputWithContext(ctx context.Context) SlsaCompletenessResponseOutput {
+	return o
+}
+
+func (o SlsaCompletenessResponseOutput) ToSlsaCompletenessResponsePtrOutput() SlsaCompletenessResponsePtrOutput {
+	return o.ToSlsaCompletenessResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SlsaCompletenessResponseOutput) ToSlsaCompletenessResponsePtrOutputWithContext(ctx context.Context) SlsaCompletenessResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SlsaCompletenessResponse) *SlsaCompletenessResponse {
+		return &v
+	}).(SlsaCompletenessResponsePtrOutput)
+}
+
+// If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe.
+func (o SlsaCompletenessResponseOutput) Arguments() pulumi.BoolOutput {
+	return o.ApplyT(func(v SlsaCompletenessResponse) bool { return v.Arguments }).(pulumi.BoolOutput)
+}
+
+// If true, the builder claims that recipe.environment is claimed to be complete.
+func (o SlsaCompletenessResponseOutput) Environment() pulumi.BoolOutput {
+	return o.ApplyT(func(v SlsaCompletenessResponse) bool { return v.Environment }).(pulumi.BoolOutput)
+}
+
+// If true, the builder claims that materials are complete, usually through some controls to prevent network access. Sometimes called "hermetic".
+func (o SlsaCompletenessResponseOutput) Materials() pulumi.BoolOutput {
+	return o.ApplyT(func(v SlsaCompletenessResponse) bool { return v.Materials }).(pulumi.BoolOutput)
+}
+
+type SlsaCompletenessResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SlsaCompletenessResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SlsaCompletenessResponse)(nil)).Elem()
+}
+
+func (o SlsaCompletenessResponsePtrOutput) ToSlsaCompletenessResponsePtrOutput() SlsaCompletenessResponsePtrOutput {
+	return o
+}
+
+func (o SlsaCompletenessResponsePtrOutput) ToSlsaCompletenessResponsePtrOutputWithContext(ctx context.Context) SlsaCompletenessResponsePtrOutput {
+	return o
+}
+
+func (o SlsaCompletenessResponsePtrOutput) Elem() SlsaCompletenessResponseOutput {
+	return o.ApplyT(func(v *SlsaCompletenessResponse) SlsaCompletenessResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SlsaCompletenessResponse
+		return ret
+	}).(SlsaCompletenessResponseOutput)
+}
+
+// If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe.
+func (o SlsaCompletenessResponsePtrOutput) Arguments() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SlsaCompletenessResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Arguments
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, the builder claims that recipe.environment is claimed to be complete.
+func (o SlsaCompletenessResponsePtrOutput) Environment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SlsaCompletenessResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Environment
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, the builder claims that materials are complete, usually through some controls to prevent network access. Sometimes called "hermetic".
+func (o SlsaCompletenessResponsePtrOutput) Materials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SlsaCompletenessResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Materials
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Other properties of the build.
+type SlsaMetadata struct {
+	// The timestamp of when the build completed.
+	BuildFinishedOn *string `pulumi:"buildFinishedOn"`
+	// Identifies the particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis. The value SHOULD be globally unique, per in-toto Provenance spec.
+	BuildInvocationId *string `pulumi:"buildInvocationId"`
+	// The timestamp of when the build started.
+	BuildStartedOn *string `pulumi:"buildStartedOn"`
+	// Indicates that the builder claims certain fields in this message to be complete.
+	Completeness *SlsaCompleteness `pulumi:"completeness"`
+	// If true, the builder claims that running the recipe on materials will produce bit-for-bit identical output.
+	Reproducible *bool `pulumi:"reproducible"`
+}
+
+// SlsaMetadataInput is an input type that accepts SlsaMetadataArgs and SlsaMetadataOutput values.
+// You can construct a concrete instance of `SlsaMetadataInput` via:
+//
+//          SlsaMetadataArgs{...}
+type SlsaMetadataInput interface {
+	pulumi.Input
+
+	ToSlsaMetadataOutput() SlsaMetadataOutput
+	ToSlsaMetadataOutputWithContext(context.Context) SlsaMetadataOutput
+}
+
+// Other properties of the build.
+type SlsaMetadataArgs struct {
+	// The timestamp of when the build completed.
+	BuildFinishedOn pulumi.StringPtrInput `pulumi:"buildFinishedOn"`
+	// Identifies the particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis. The value SHOULD be globally unique, per in-toto Provenance spec.
+	BuildInvocationId pulumi.StringPtrInput `pulumi:"buildInvocationId"`
+	// The timestamp of when the build started.
+	BuildStartedOn pulumi.StringPtrInput `pulumi:"buildStartedOn"`
+	// Indicates that the builder claims certain fields in this message to be complete.
+	Completeness SlsaCompletenessPtrInput `pulumi:"completeness"`
+	// If true, the builder claims that running the recipe on materials will produce bit-for-bit identical output.
+	Reproducible pulumi.BoolPtrInput `pulumi:"reproducible"`
+}
+
+func (SlsaMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsaMetadata)(nil)).Elem()
+}
+
+func (i SlsaMetadataArgs) ToSlsaMetadataOutput() SlsaMetadataOutput {
+	return i.ToSlsaMetadataOutputWithContext(context.Background())
+}
+
+func (i SlsaMetadataArgs) ToSlsaMetadataOutputWithContext(ctx context.Context) SlsaMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaMetadataOutput)
+}
+
+func (i SlsaMetadataArgs) ToSlsaMetadataPtrOutput() SlsaMetadataPtrOutput {
+	return i.ToSlsaMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i SlsaMetadataArgs) ToSlsaMetadataPtrOutputWithContext(ctx context.Context) SlsaMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaMetadataOutput).ToSlsaMetadataPtrOutputWithContext(ctx)
+}
+
+// SlsaMetadataPtrInput is an input type that accepts SlsaMetadataArgs, SlsaMetadataPtr and SlsaMetadataPtrOutput values.
+// You can construct a concrete instance of `SlsaMetadataPtrInput` via:
+//
+//          SlsaMetadataArgs{...}
+//
+//  or:
+//
+//          nil
+type SlsaMetadataPtrInput interface {
+	pulumi.Input
+
+	ToSlsaMetadataPtrOutput() SlsaMetadataPtrOutput
+	ToSlsaMetadataPtrOutputWithContext(context.Context) SlsaMetadataPtrOutput
+}
+
+type slsaMetadataPtrType SlsaMetadataArgs
+
+func SlsaMetadataPtr(v *SlsaMetadataArgs) SlsaMetadataPtrInput {
+	return (*slsaMetadataPtrType)(v)
+}
+
+func (*slsaMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SlsaMetadata)(nil)).Elem()
+}
+
+func (i *slsaMetadataPtrType) ToSlsaMetadataPtrOutput() SlsaMetadataPtrOutput {
+	return i.ToSlsaMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *slsaMetadataPtrType) ToSlsaMetadataPtrOutputWithContext(ctx context.Context) SlsaMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaMetadataPtrOutput)
+}
+
+// Other properties of the build.
+type SlsaMetadataOutput struct{ *pulumi.OutputState }
+
+func (SlsaMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsaMetadata)(nil)).Elem()
+}
+
+func (o SlsaMetadataOutput) ToSlsaMetadataOutput() SlsaMetadataOutput {
+	return o
+}
+
+func (o SlsaMetadataOutput) ToSlsaMetadataOutputWithContext(ctx context.Context) SlsaMetadataOutput {
+	return o
+}
+
+func (o SlsaMetadataOutput) ToSlsaMetadataPtrOutput() SlsaMetadataPtrOutput {
+	return o.ToSlsaMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o SlsaMetadataOutput) ToSlsaMetadataPtrOutputWithContext(ctx context.Context) SlsaMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SlsaMetadata) *SlsaMetadata {
+		return &v
+	}).(SlsaMetadataPtrOutput)
+}
+
+// The timestamp of when the build completed.
+func (o SlsaMetadataOutput) BuildFinishedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlsaMetadata) *string { return v.BuildFinishedOn }).(pulumi.StringPtrOutput)
+}
+
+// Identifies the particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis. The value SHOULD be globally unique, per in-toto Provenance spec.
+func (o SlsaMetadataOutput) BuildInvocationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlsaMetadata) *string { return v.BuildInvocationId }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of when the build started.
+func (o SlsaMetadataOutput) BuildStartedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlsaMetadata) *string { return v.BuildStartedOn }).(pulumi.StringPtrOutput)
+}
+
+// Indicates that the builder claims certain fields in this message to be complete.
+func (o SlsaMetadataOutput) Completeness() SlsaCompletenessPtrOutput {
+	return o.ApplyT(func(v SlsaMetadata) *SlsaCompleteness { return v.Completeness }).(SlsaCompletenessPtrOutput)
+}
+
+// If true, the builder claims that running the recipe on materials will produce bit-for-bit identical output.
+func (o SlsaMetadataOutput) Reproducible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SlsaMetadata) *bool { return v.Reproducible }).(pulumi.BoolPtrOutput)
+}
+
+type SlsaMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (SlsaMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SlsaMetadata)(nil)).Elem()
+}
+
+func (o SlsaMetadataPtrOutput) ToSlsaMetadataPtrOutput() SlsaMetadataPtrOutput {
+	return o
+}
+
+func (o SlsaMetadataPtrOutput) ToSlsaMetadataPtrOutputWithContext(ctx context.Context) SlsaMetadataPtrOutput {
+	return o
+}
+
+func (o SlsaMetadataPtrOutput) Elem() SlsaMetadataOutput {
+	return o.ApplyT(func(v *SlsaMetadata) SlsaMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret SlsaMetadata
+		return ret
+	}).(SlsaMetadataOutput)
+}
+
+// The timestamp of when the build completed.
+func (o SlsaMetadataPtrOutput) BuildFinishedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SlsaMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BuildFinishedOn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identifies the particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis. The value SHOULD be globally unique, per in-toto Provenance spec.
+func (o SlsaMetadataPtrOutput) BuildInvocationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SlsaMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BuildInvocationId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of when the build started.
+func (o SlsaMetadataPtrOutput) BuildStartedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SlsaMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BuildStartedOn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates that the builder claims certain fields in this message to be complete.
+func (o SlsaMetadataPtrOutput) Completeness() SlsaCompletenessPtrOutput {
+	return o.ApplyT(func(v *SlsaMetadata) *SlsaCompleteness {
+		if v == nil {
+			return nil
+		}
+		return v.Completeness
+	}).(SlsaCompletenessPtrOutput)
+}
+
+// If true, the builder claims that running the recipe on materials will produce bit-for-bit identical output.
+func (o SlsaMetadataPtrOutput) Reproducible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SlsaMetadata) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Reproducible
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Other properties of the build.
+type SlsaMetadataResponse struct {
+	// The timestamp of when the build completed.
+	BuildFinishedOn string `pulumi:"buildFinishedOn"`
+	// Identifies the particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis. The value SHOULD be globally unique, per in-toto Provenance spec.
+	BuildInvocationId string `pulumi:"buildInvocationId"`
+	// The timestamp of when the build started.
+	BuildStartedOn string `pulumi:"buildStartedOn"`
+	// Indicates that the builder claims certain fields in this message to be complete.
+	Completeness SlsaCompletenessResponse `pulumi:"completeness"`
+	// If true, the builder claims that running the recipe on materials will produce bit-for-bit identical output.
+	Reproducible bool `pulumi:"reproducible"`
+}
+
+// SlsaMetadataResponseInput is an input type that accepts SlsaMetadataResponseArgs and SlsaMetadataResponseOutput values.
+// You can construct a concrete instance of `SlsaMetadataResponseInput` via:
+//
+//          SlsaMetadataResponseArgs{...}
+type SlsaMetadataResponseInput interface {
+	pulumi.Input
+
+	ToSlsaMetadataResponseOutput() SlsaMetadataResponseOutput
+	ToSlsaMetadataResponseOutputWithContext(context.Context) SlsaMetadataResponseOutput
+}
+
+// Other properties of the build.
+type SlsaMetadataResponseArgs struct {
+	// The timestamp of when the build completed.
+	BuildFinishedOn pulumi.StringInput `pulumi:"buildFinishedOn"`
+	// Identifies the particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis. The value SHOULD be globally unique, per in-toto Provenance spec.
+	BuildInvocationId pulumi.StringInput `pulumi:"buildInvocationId"`
+	// The timestamp of when the build started.
+	BuildStartedOn pulumi.StringInput `pulumi:"buildStartedOn"`
+	// Indicates that the builder claims certain fields in this message to be complete.
+	Completeness SlsaCompletenessResponseInput `pulumi:"completeness"`
+	// If true, the builder claims that running the recipe on materials will produce bit-for-bit identical output.
+	Reproducible pulumi.BoolInput `pulumi:"reproducible"`
+}
+
+func (SlsaMetadataResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsaMetadataResponse)(nil)).Elem()
+}
+
+func (i SlsaMetadataResponseArgs) ToSlsaMetadataResponseOutput() SlsaMetadataResponseOutput {
+	return i.ToSlsaMetadataResponseOutputWithContext(context.Background())
+}
+
+func (i SlsaMetadataResponseArgs) ToSlsaMetadataResponseOutputWithContext(ctx context.Context) SlsaMetadataResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaMetadataResponseOutput)
+}
+
+func (i SlsaMetadataResponseArgs) ToSlsaMetadataResponsePtrOutput() SlsaMetadataResponsePtrOutput {
+	return i.ToSlsaMetadataResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SlsaMetadataResponseArgs) ToSlsaMetadataResponsePtrOutputWithContext(ctx context.Context) SlsaMetadataResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaMetadataResponseOutput).ToSlsaMetadataResponsePtrOutputWithContext(ctx)
+}
+
+// SlsaMetadataResponsePtrInput is an input type that accepts SlsaMetadataResponseArgs, SlsaMetadataResponsePtr and SlsaMetadataResponsePtrOutput values.
+// You can construct a concrete instance of `SlsaMetadataResponsePtrInput` via:
+//
+//          SlsaMetadataResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SlsaMetadataResponsePtrInput interface {
+	pulumi.Input
+
+	ToSlsaMetadataResponsePtrOutput() SlsaMetadataResponsePtrOutput
+	ToSlsaMetadataResponsePtrOutputWithContext(context.Context) SlsaMetadataResponsePtrOutput
+}
+
+type slsaMetadataResponsePtrType SlsaMetadataResponseArgs
+
+func SlsaMetadataResponsePtr(v *SlsaMetadataResponseArgs) SlsaMetadataResponsePtrInput {
+	return (*slsaMetadataResponsePtrType)(v)
+}
+
+func (*slsaMetadataResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SlsaMetadataResponse)(nil)).Elem()
+}
+
+func (i *slsaMetadataResponsePtrType) ToSlsaMetadataResponsePtrOutput() SlsaMetadataResponsePtrOutput {
+	return i.ToSlsaMetadataResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *slsaMetadataResponsePtrType) ToSlsaMetadataResponsePtrOutputWithContext(ctx context.Context) SlsaMetadataResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaMetadataResponsePtrOutput)
+}
+
+// Other properties of the build.
+type SlsaMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (SlsaMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsaMetadataResponse)(nil)).Elem()
+}
+
+func (o SlsaMetadataResponseOutput) ToSlsaMetadataResponseOutput() SlsaMetadataResponseOutput {
+	return o
+}
+
+func (o SlsaMetadataResponseOutput) ToSlsaMetadataResponseOutputWithContext(ctx context.Context) SlsaMetadataResponseOutput {
+	return o
+}
+
+func (o SlsaMetadataResponseOutput) ToSlsaMetadataResponsePtrOutput() SlsaMetadataResponsePtrOutput {
+	return o.ToSlsaMetadataResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SlsaMetadataResponseOutput) ToSlsaMetadataResponsePtrOutputWithContext(ctx context.Context) SlsaMetadataResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SlsaMetadataResponse) *SlsaMetadataResponse {
+		return &v
+	}).(SlsaMetadataResponsePtrOutput)
+}
+
+// The timestamp of when the build completed.
+func (o SlsaMetadataResponseOutput) BuildFinishedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v SlsaMetadataResponse) string { return v.BuildFinishedOn }).(pulumi.StringOutput)
+}
+
+// Identifies the particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis. The value SHOULD be globally unique, per in-toto Provenance spec.
+func (o SlsaMetadataResponseOutput) BuildInvocationId() pulumi.StringOutput {
+	return o.ApplyT(func(v SlsaMetadataResponse) string { return v.BuildInvocationId }).(pulumi.StringOutput)
+}
+
+// The timestamp of when the build started.
+func (o SlsaMetadataResponseOutput) BuildStartedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v SlsaMetadataResponse) string { return v.BuildStartedOn }).(pulumi.StringOutput)
+}
+
+// Indicates that the builder claims certain fields in this message to be complete.
+func (o SlsaMetadataResponseOutput) Completeness() SlsaCompletenessResponseOutput {
+	return o.ApplyT(func(v SlsaMetadataResponse) SlsaCompletenessResponse { return v.Completeness }).(SlsaCompletenessResponseOutput)
+}
+
+// If true, the builder claims that running the recipe on materials will produce bit-for-bit identical output.
+func (o SlsaMetadataResponseOutput) Reproducible() pulumi.BoolOutput {
+	return o.ApplyT(func(v SlsaMetadataResponse) bool { return v.Reproducible }).(pulumi.BoolOutput)
+}
+
+type SlsaMetadataResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SlsaMetadataResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SlsaMetadataResponse)(nil)).Elem()
+}
+
+func (o SlsaMetadataResponsePtrOutput) ToSlsaMetadataResponsePtrOutput() SlsaMetadataResponsePtrOutput {
+	return o
+}
+
+func (o SlsaMetadataResponsePtrOutput) ToSlsaMetadataResponsePtrOutputWithContext(ctx context.Context) SlsaMetadataResponsePtrOutput {
+	return o
+}
+
+func (o SlsaMetadataResponsePtrOutput) Elem() SlsaMetadataResponseOutput {
+	return o.ApplyT(func(v *SlsaMetadataResponse) SlsaMetadataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SlsaMetadataResponse
+		return ret
+	}).(SlsaMetadataResponseOutput)
+}
+
+// The timestamp of when the build completed.
+func (o SlsaMetadataResponsePtrOutput) BuildFinishedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SlsaMetadataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BuildFinishedOn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identifies the particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis. The value SHOULD be globally unique, per in-toto Provenance spec.
+func (o SlsaMetadataResponsePtrOutput) BuildInvocationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SlsaMetadataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BuildInvocationId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of when the build started.
+func (o SlsaMetadataResponsePtrOutput) BuildStartedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SlsaMetadataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BuildStartedOn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates that the builder claims certain fields in this message to be complete.
+func (o SlsaMetadataResponsePtrOutput) Completeness() SlsaCompletenessResponsePtrOutput {
+	return o.ApplyT(func(v *SlsaMetadataResponse) *SlsaCompletenessResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Completeness
+	}).(SlsaCompletenessResponsePtrOutput)
+}
+
+// If true, the builder claims that running the recipe on materials will produce bit-for-bit identical output.
+func (o SlsaMetadataResponsePtrOutput) Reproducible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SlsaMetadataResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Reproducible
+	}).(pulumi.BoolPtrOutput)
+}
+
+// SlsaProvenance is the slsa provenance as defined by the slsa spec.
+type SlsaProvenance struct {
+	// builder is the builder of this provenance
+	Builder *SlsaBuilder `pulumi:"builder"`
+	// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset or null is equivalent to empty.
+	Materials []Material `pulumi:"materials"`
+	// metadata is the metadata of the provenance
+	Metadata *SlsaMetadata `pulumi:"metadata"`
+	// Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible).
+	Recipe *SlsaRecipe `pulumi:"recipe"`
+}
+
+// SlsaProvenanceInput is an input type that accepts SlsaProvenanceArgs and SlsaProvenanceOutput values.
+// You can construct a concrete instance of `SlsaProvenanceInput` via:
+//
+//          SlsaProvenanceArgs{...}
+type SlsaProvenanceInput interface {
+	pulumi.Input
+
+	ToSlsaProvenanceOutput() SlsaProvenanceOutput
+	ToSlsaProvenanceOutputWithContext(context.Context) SlsaProvenanceOutput
+}
+
+// SlsaProvenance is the slsa provenance as defined by the slsa spec.
+type SlsaProvenanceArgs struct {
+	// builder is the builder of this provenance
+	Builder SlsaBuilderPtrInput `pulumi:"builder"`
+	// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset or null is equivalent to empty.
+	Materials MaterialArrayInput `pulumi:"materials"`
+	// metadata is the metadata of the provenance
+	Metadata SlsaMetadataPtrInput `pulumi:"metadata"`
+	// Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible).
+	Recipe SlsaRecipePtrInput `pulumi:"recipe"`
+}
+
+func (SlsaProvenanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsaProvenance)(nil)).Elem()
+}
+
+func (i SlsaProvenanceArgs) ToSlsaProvenanceOutput() SlsaProvenanceOutput {
+	return i.ToSlsaProvenanceOutputWithContext(context.Background())
+}
+
+func (i SlsaProvenanceArgs) ToSlsaProvenanceOutputWithContext(ctx context.Context) SlsaProvenanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaProvenanceOutput)
+}
+
+func (i SlsaProvenanceArgs) ToSlsaProvenancePtrOutput() SlsaProvenancePtrOutput {
+	return i.ToSlsaProvenancePtrOutputWithContext(context.Background())
+}
+
+func (i SlsaProvenanceArgs) ToSlsaProvenancePtrOutputWithContext(ctx context.Context) SlsaProvenancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaProvenanceOutput).ToSlsaProvenancePtrOutputWithContext(ctx)
+}
+
+// SlsaProvenancePtrInput is an input type that accepts SlsaProvenanceArgs, SlsaProvenancePtr and SlsaProvenancePtrOutput values.
+// You can construct a concrete instance of `SlsaProvenancePtrInput` via:
+//
+//          SlsaProvenanceArgs{...}
+//
+//  or:
+//
+//          nil
+type SlsaProvenancePtrInput interface {
+	pulumi.Input
+
+	ToSlsaProvenancePtrOutput() SlsaProvenancePtrOutput
+	ToSlsaProvenancePtrOutputWithContext(context.Context) SlsaProvenancePtrOutput
+}
+
+type slsaProvenancePtrType SlsaProvenanceArgs
+
+func SlsaProvenancePtr(v *SlsaProvenanceArgs) SlsaProvenancePtrInput {
+	return (*slsaProvenancePtrType)(v)
+}
+
+func (*slsaProvenancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SlsaProvenance)(nil)).Elem()
+}
+
+func (i *slsaProvenancePtrType) ToSlsaProvenancePtrOutput() SlsaProvenancePtrOutput {
+	return i.ToSlsaProvenancePtrOutputWithContext(context.Background())
+}
+
+func (i *slsaProvenancePtrType) ToSlsaProvenancePtrOutputWithContext(ctx context.Context) SlsaProvenancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaProvenancePtrOutput)
+}
+
+// SlsaProvenance is the slsa provenance as defined by the slsa spec.
+type SlsaProvenanceOutput struct{ *pulumi.OutputState }
+
+func (SlsaProvenanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsaProvenance)(nil)).Elem()
+}
+
+func (o SlsaProvenanceOutput) ToSlsaProvenanceOutput() SlsaProvenanceOutput {
+	return o
+}
+
+func (o SlsaProvenanceOutput) ToSlsaProvenanceOutputWithContext(ctx context.Context) SlsaProvenanceOutput {
+	return o
+}
+
+func (o SlsaProvenanceOutput) ToSlsaProvenancePtrOutput() SlsaProvenancePtrOutput {
+	return o.ToSlsaProvenancePtrOutputWithContext(context.Background())
+}
+
+func (o SlsaProvenanceOutput) ToSlsaProvenancePtrOutputWithContext(ctx context.Context) SlsaProvenancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SlsaProvenance) *SlsaProvenance {
+		return &v
+	}).(SlsaProvenancePtrOutput)
+}
+
+// builder is the builder of this provenance
+func (o SlsaProvenanceOutput) Builder() SlsaBuilderPtrOutput {
+	return o.ApplyT(func(v SlsaProvenance) *SlsaBuilder { return v.Builder }).(SlsaBuilderPtrOutput)
+}
+
+// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset or null is equivalent to empty.
+func (o SlsaProvenanceOutput) Materials() MaterialArrayOutput {
+	return o.ApplyT(func(v SlsaProvenance) []Material { return v.Materials }).(MaterialArrayOutput)
+}
+
+// metadata is the metadata of the provenance
+func (o SlsaProvenanceOutput) Metadata() SlsaMetadataPtrOutput {
+	return o.ApplyT(func(v SlsaProvenance) *SlsaMetadata { return v.Metadata }).(SlsaMetadataPtrOutput)
+}
+
+// Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible).
+func (o SlsaProvenanceOutput) Recipe() SlsaRecipePtrOutput {
+	return o.ApplyT(func(v SlsaProvenance) *SlsaRecipe { return v.Recipe }).(SlsaRecipePtrOutput)
+}
+
+type SlsaProvenancePtrOutput struct{ *pulumi.OutputState }
+
+func (SlsaProvenancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SlsaProvenance)(nil)).Elem()
+}
+
+func (o SlsaProvenancePtrOutput) ToSlsaProvenancePtrOutput() SlsaProvenancePtrOutput {
+	return o
+}
+
+func (o SlsaProvenancePtrOutput) ToSlsaProvenancePtrOutputWithContext(ctx context.Context) SlsaProvenancePtrOutput {
+	return o
+}
+
+func (o SlsaProvenancePtrOutput) Elem() SlsaProvenanceOutput {
+	return o.ApplyT(func(v *SlsaProvenance) SlsaProvenance {
+		if v != nil {
+			return *v
+		}
+		var ret SlsaProvenance
+		return ret
+	}).(SlsaProvenanceOutput)
+}
+
+// builder is the builder of this provenance
+func (o SlsaProvenancePtrOutput) Builder() SlsaBuilderPtrOutput {
+	return o.ApplyT(func(v *SlsaProvenance) *SlsaBuilder {
+		if v == nil {
+			return nil
+		}
+		return v.Builder
+	}).(SlsaBuilderPtrOutput)
+}
+
+// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset or null is equivalent to empty.
+func (o SlsaProvenancePtrOutput) Materials() MaterialArrayOutput {
+	return o.ApplyT(func(v *SlsaProvenance) []Material {
+		if v == nil {
+			return nil
+		}
+		return v.Materials
+	}).(MaterialArrayOutput)
+}
+
+// metadata is the metadata of the provenance
+func (o SlsaProvenancePtrOutput) Metadata() SlsaMetadataPtrOutput {
+	return o.ApplyT(func(v *SlsaProvenance) *SlsaMetadata {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(SlsaMetadataPtrOutput)
+}
+
+// Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible).
+func (o SlsaProvenancePtrOutput) Recipe() SlsaRecipePtrOutput {
+	return o.ApplyT(func(v *SlsaProvenance) *SlsaRecipe {
+		if v == nil {
+			return nil
+		}
+		return v.Recipe
+	}).(SlsaRecipePtrOutput)
+}
+
+// SlsaProvenance is the slsa provenance as defined by the slsa spec.
+type SlsaProvenanceResponse struct {
+	// builder is the builder of this provenance
+	Builder SlsaBuilderResponse `pulumi:"builder"`
+	// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset or null is equivalent to empty.
+	Materials []MaterialResponse `pulumi:"materials"`
+	// metadata is the metadata of the provenance
+	Metadata SlsaMetadataResponse `pulumi:"metadata"`
+	// Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible).
+	Recipe SlsaRecipeResponse `pulumi:"recipe"`
+}
+
+// SlsaProvenanceResponseInput is an input type that accepts SlsaProvenanceResponseArgs and SlsaProvenanceResponseOutput values.
+// You can construct a concrete instance of `SlsaProvenanceResponseInput` via:
+//
+//          SlsaProvenanceResponseArgs{...}
+type SlsaProvenanceResponseInput interface {
+	pulumi.Input
+
+	ToSlsaProvenanceResponseOutput() SlsaProvenanceResponseOutput
+	ToSlsaProvenanceResponseOutputWithContext(context.Context) SlsaProvenanceResponseOutput
+}
+
+// SlsaProvenance is the slsa provenance as defined by the slsa spec.
+type SlsaProvenanceResponseArgs struct {
+	// builder is the builder of this provenance
+	Builder SlsaBuilderResponseInput `pulumi:"builder"`
+	// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset or null is equivalent to empty.
+	Materials MaterialResponseArrayInput `pulumi:"materials"`
+	// metadata is the metadata of the provenance
+	Metadata SlsaMetadataResponseInput `pulumi:"metadata"`
+	// Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible).
+	Recipe SlsaRecipeResponseInput `pulumi:"recipe"`
+}
+
+func (SlsaProvenanceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsaProvenanceResponse)(nil)).Elem()
+}
+
+func (i SlsaProvenanceResponseArgs) ToSlsaProvenanceResponseOutput() SlsaProvenanceResponseOutput {
+	return i.ToSlsaProvenanceResponseOutputWithContext(context.Background())
+}
+
+func (i SlsaProvenanceResponseArgs) ToSlsaProvenanceResponseOutputWithContext(ctx context.Context) SlsaProvenanceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaProvenanceResponseOutput)
+}
+
+func (i SlsaProvenanceResponseArgs) ToSlsaProvenanceResponsePtrOutput() SlsaProvenanceResponsePtrOutput {
+	return i.ToSlsaProvenanceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SlsaProvenanceResponseArgs) ToSlsaProvenanceResponsePtrOutputWithContext(ctx context.Context) SlsaProvenanceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaProvenanceResponseOutput).ToSlsaProvenanceResponsePtrOutputWithContext(ctx)
+}
+
+// SlsaProvenanceResponsePtrInput is an input type that accepts SlsaProvenanceResponseArgs, SlsaProvenanceResponsePtr and SlsaProvenanceResponsePtrOutput values.
+// You can construct a concrete instance of `SlsaProvenanceResponsePtrInput` via:
+//
+//          SlsaProvenanceResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SlsaProvenanceResponsePtrInput interface {
+	pulumi.Input
+
+	ToSlsaProvenanceResponsePtrOutput() SlsaProvenanceResponsePtrOutput
+	ToSlsaProvenanceResponsePtrOutputWithContext(context.Context) SlsaProvenanceResponsePtrOutput
+}
+
+type slsaProvenanceResponsePtrType SlsaProvenanceResponseArgs
+
+func SlsaProvenanceResponsePtr(v *SlsaProvenanceResponseArgs) SlsaProvenanceResponsePtrInput {
+	return (*slsaProvenanceResponsePtrType)(v)
+}
+
+func (*slsaProvenanceResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SlsaProvenanceResponse)(nil)).Elem()
+}
+
+func (i *slsaProvenanceResponsePtrType) ToSlsaProvenanceResponsePtrOutput() SlsaProvenanceResponsePtrOutput {
+	return i.ToSlsaProvenanceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *slsaProvenanceResponsePtrType) ToSlsaProvenanceResponsePtrOutputWithContext(ctx context.Context) SlsaProvenanceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaProvenanceResponsePtrOutput)
+}
+
+// SlsaProvenance is the slsa provenance as defined by the slsa spec.
+type SlsaProvenanceResponseOutput struct{ *pulumi.OutputState }
+
+func (SlsaProvenanceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsaProvenanceResponse)(nil)).Elem()
+}
+
+func (o SlsaProvenanceResponseOutput) ToSlsaProvenanceResponseOutput() SlsaProvenanceResponseOutput {
+	return o
+}
+
+func (o SlsaProvenanceResponseOutput) ToSlsaProvenanceResponseOutputWithContext(ctx context.Context) SlsaProvenanceResponseOutput {
+	return o
+}
+
+func (o SlsaProvenanceResponseOutput) ToSlsaProvenanceResponsePtrOutput() SlsaProvenanceResponsePtrOutput {
+	return o.ToSlsaProvenanceResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SlsaProvenanceResponseOutput) ToSlsaProvenanceResponsePtrOutputWithContext(ctx context.Context) SlsaProvenanceResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SlsaProvenanceResponse) *SlsaProvenanceResponse {
+		return &v
+	}).(SlsaProvenanceResponsePtrOutput)
+}
+
+// builder is the builder of this provenance
+func (o SlsaProvenanceResponseOutput) Builder() SlsaBuilderResponseOutput {
+	return o.ApplyT(func(v SlsaProvenanceResponse) SlsaBuilderResponse { return v.Builder }).(SlsaBuilderResponseOutput)
+}
+
+// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset or null is equivalent to empty.
+func (o SlsaProvenanceResponseOutput) Materials() MaterialResponseArrayOutput {
+	return o.ApplyT(func(v SlsaProvenanceResponse) []MaterialResponse { return v.Materials }).(MaterialResponseArrayOutput)
+}
+
+// metadata is the metadata of the provenance
+func (o SlsaProvenanceResponseOutput) Metadata() SlsaMetadataResponseOutput {
+	return o.ApplyT(func(v SlsaProvenanceResponse) SlsaMetadataResponse { return v.Metadata }).(SlsaMetadataResponseOutput)
+}
+
+// Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible).
+func (o SlsaProvenanceResponseOutput) Recipe() SlsaRecipeResponseOutput {
+	return o.ApplyT(func(v SlsaProvenanceResponse) SlsaRecipeResponse { return v.Recipe }).(SlsaRecipeResponseOutput)
+}
+
+type SlsaProvenanceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SlsaProvenanceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SlsaProvenanceResponse)(nil)).Elem()
+}
+
+func (o SlsaProvenanceResponsePtrOutput) ToSlsaProvenanceResponsePtrOutput() SlsaProvenanceResponsePtrOutput {
+	return o
+}
+
+func (o SlsaProvenanceResponsePtrOutput) ToSlsaProvenanceResponsePtrOutputWithContext(ctx context.Context) SlsaProvenanceResponsePtrOutput {
+	return o
+}
+
+func (o SlsaProvenanceResponsePtrOutput) Elem() SlsaProvenanceResponseOutput {
+	return o.ApplyT(func(v *SlsaProvenanceResponse) SlsaProvenanceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SlsaProvenanceResponse
+		return ret
+	}).(SlsaProvenanceResponseOutput)
+}
+
+// builder is the builder of this provenance
+func (o SlsaProvenanceResponsePtrOutput) Builder() SlsaBuilderResponsePtrOutput {
+	return o.ApplyT(func(v *SlsaProvenanceResponse) *SlsaBuilderResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Builder
+	}).(SlsaBuilderResponsePtrOutput)
+}
+
+// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset or null is equivalent to empty.
+func (o SlsaProvenanceResponsePtrOutput) Materials() MaterialResponseArrayOutput {
+	return o.ApplyT(func(v *SlsaProvenanceResponse) []MaterialResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Materials
+	}).(MaterialResponseArrayOutput)
+}
+
+// metadata is the metadata of the provenance
+func (o SlsaProvenanceResponsePtrOutput) Metadata() SlsaMetadataResponsePtrOutput {
+	return o.ApplyT(func(v *SlsaProvenanceResponse) *SlsaMetadataResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Metadata
+	}).(SlsaMetadataResponsePtrOutput)
+}
+
+// Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible).
+func (o SlsaProvenanceResponsePtrOutput) Recipe() SlsaRecipeResponsePtrOutput {
+	return o.ApplyT(func(v *SlsaProvenanceResponse) *SlsaRecipeResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Recipe
+	}).(SlsaRecipeResponsePtrOutput)
+}
+
+// Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
+type SlsaRecipe struct {
+	// Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
+	Arguments map[string]string `pulumi:"arguments"`
+	// Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
+	DefinedInMaterial *string `pulumi:"definedInMaterial"`
+	// String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
+	EntryPoint *string `pulumi:"entryPoint"`
+	// Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Depending on the recipe Type, the structure may be different.
+	Environment map[string]string `pulumi:"environment"`
+	// URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
+	Type *string `pulumi:"type"`
+}
+
+// SlsaRecipeInput is an input type that accepts SlsaRecipeArgs and SlsaRecipeOutput values.
+// You can construct a concrete instance of `SlsaRecipeInput` via:
+//
+//          SlsaRecipeArgs{...}
+type SlsaRecipeInput interface {
+	pulumi.Input
+
+	ToSlsaRecipeOutput() SlsaRecipeOutput
+	ToSlsaRecipeOutputWithContext(context.Context) SlsaRecipeOutput
+}
+
+// Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
+type SlsaRecipeArgs struct {
+	// Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
+	Arguments pulumi.StringMapInput `pulumi:"arguments"`
+	// Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
+	DefinedInMaterial pulumi.StringPtrInput `pulumi:"definedInMaterial"`
+	// String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
+	EntryPoint pulumi.StringPtrInput `pulumi:"entryPoint"`
+	// Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Depending on the recipe Type, the structure may be different.
+	Environment pulumi.StringMapInput `pulumi:"environment"`
+	// URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (SlsaRecipeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsaRecipe)(nil)).Elem()
+}
+
+func (i SlsaRecipeArgs) ToSlsaRecipeOutput() SlsaRecipeOutput {
+	return i.ToSlsaRecipeOutputWithContext(context.Background())
+}
+
+func (i SlsaRecipeArgs) ToSlsaRecipeOutputWithContext(ctx context.Context) SlsaRecipeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaRecipeOutput)
+}
+
+func (i SlsaRecipeArgs) ToSlsaRecipePtrOutput() SlsaRecipePtrOutput {
+	return i.ToSlsaRecipePtrOutputWithContext(context.Background())
+}
+
+func (i SlsaRecipeArgs) ToSlsaRecipePtrOutputWithContext(ctx context.Context) SlsaRecipePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaRecipeOutput).ToSlsaRecipePtrOutputWithContext(ctx)
+}
+
+// SlsaRecipePtrInput is an input type that accepts SlsaRecipeArgs, SlsaRecipePtr and SlsaRecipePtrOutput values.
+// You can construct a concrete instance of `SlsaRecipePtrInput` via:
+//
+//          SlsaRecipeArgs{...}
+//
+//  or:
+//
+//          nil
+type SlsaRecipePtrInput interface {
+	pulumi.Input
+
+	ToSlsaRecipePtrOutput() SlsaRecipePtrOutput
+	ToSlsaRecipePtrOutputWithContext(context.Context) SlsaRecipePtrOutput
+}
+
+type slsaRecipePtrType SlsaRecipeArgs
+
+func SlsaRecipePtr(v *SlsaRecipeArgs) SlsaRecipePtrInput {
+	return (*slsaRecipePtrType)(v)
+}
+
+func (*slsaRecipePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SlsaRecipe)(nil)).Elem()
+}
+
+func (i *slsaRecipePtrType) ToSlsaRecipePtrOutput() SlsaRecipePtrOutput {
+	return i.ToSlsaRecipePtrOutputWithContext(context.Background())
+}
+
+func (i *slsaRecipePtrType) ToSlsaRecipePtrOutputWithContext(ctx context.Context) SlsaRecipePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaRecipePtrOutput)
+}
+
+// Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
+type SlsaRecipeOutput struct{ *pulumi.OutputState }
+
+func (SlsaRecipeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsaRecipe)(nil)).Elem()
+}
+
+func (o SlsaRecipeOutput) ToSlsaRecipeOutput() SlsaRecipeOutput {
+	return o
+}
+
+func (o SlsaRecipeOutput) ToSlsaRecipeOutputWithContext(ctx context.Context) SlsaRecipeOutput {
+	return o
+}
+
+func (o SlsaRecipeOutput) ToSlsaRecipePtrOutput() SlsaRecipePtrOutput {
+	return o.ToSlsaRecipePtrOutputWithContext(context.Background())
+}
+
+func (o SlsaRecipeOutput) ToSlsaRecipePtrOutputWithContext(ctx context.Context) SlsaRecipePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SlsaRecipe) *SlsaRecipe {
+		return &v
+	}).(SlsaRecipePtrOutput)
+}
+
+// Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
+func (o SlsaRecipeOutput) Arguments() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SlsaRecipe) map[string]string { return v.Arguments }).(pulumi.StringMapOutput)
+}
+
+// Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
+func (o SlsaRecipeOutput) DefinedInMaterial() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlsaRecipe) *string { return v.DefinedInMaterial }).(pulumi.StringPtrOutput)
+}
+
+// String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
+func (o SlsaRecipeOutput) EntryPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlsaRecipe) *string { return v.EntryPoint }).(pulumi.StringPtrOutput)
+}
+
+// Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Depending on the recipe Type, the structure may be different.
+func (o SlsaRecipeOutput) Environment() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SlsaRecipe) map[string]string { return v.Environment }).(pulumi.StringMapOutput)
+}
+
+// URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
+func (o SlsaRecipeOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlsaRecipe) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type SlsaRecipePtrOutput struct{ *pulumi.OutputState }
+
+func (SlsaRecipePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SlsaRecipe)(nil)).Elem()
+}
+
+func (o SlsaRecipePtrOutput) ToSlsaRecipePtrOutput() SlsaRecipePtrOutput {
+	return o
+}
+
+func (o SlsaRecipePtrOutput) ToSlsaRecipePtrOutputWithContext(ctx context.Context) SlsaRecipePtrOutput {
+	return o
+}
+
+func (o SlsaRecipePtrOutput) Elem() SlsaRecipeOutput {
+	return o.ApplyT(func(v *SlsaRecipe) SlsaRecipe {
+		if v != nil {
+			return *v
+		}
+		var ret SlsaRecipe
+		return ret
+	}).(SlsaRecipeOutput)
+}
+
+// Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
+func (o SlsaRecipePtrOutput) Arguments() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SlsaRecipe) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Arguments
+	}).(pulumi.StringMapOutput)
+}
+
+// Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
+func (o SlsaRecipePtrOutput) DefinedInMaterial() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SlsaRecipe) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefinedInMaterial
+	}).(pulumi.StringPtrOutput)
+}
+
+// String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
+func (o SlsaRecipePtrOutput) EntryPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SlsaRecipe) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EntryPoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Depending on the recipe Type, the structure may be different.
+func (o SlsaRecipePtrOutput) Environment() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SlsaRecipe) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Environment
+	}).(pulumi.StringMapOutput)
+}
+
+// URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
+func (o SlsaRecipePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SlsaRecipe) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
+type SlsaRecipeResponse struct {
+	// Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
+	Arguments map[string]string `pulumi:"arguments"`
+	// Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
+	DefinedInMaterial string `pulumi:"definedInMaterial"`
+	// String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
+	EntryPoint string `pulumi:"entryPoint"`
+	// Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Depending on the recipe Type, the structure may be different.
+	Environment map[string]string `pulumi:"environment"`
+	// URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
+	Type string `pulumi:"type"`
+}
+
+// SlsaRecipeResponseInput is an input type that accepts SlsaRecipeResponseArgs and SlsaRecipeResponseOutput values.
+// You can construct a concrete instance of `SlsaRecipeResponseInput` via:
+//
+//          SlsaRecipeResponseArgs{...}
+type SlsaRecipeResponseInput interface {
+	pulumi.Input
+
+	ToSlsaRecipeResponseOutput() SlsaRecipeResponseOutput
+	ToSlsaRecipeResponseOutputWithContext(context.Context) SlsaRecipeResponseOutput
+}
+
+// Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
+type SlsaRecipeResponseArgs struct {
+	// Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
+	Arguments pulumi.StringMapInput `pulumi:"arguments"`
+	// Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
+	DefinedInMaterial pulumi.StringInput `pulumi:"definedInMaterial"`
+	// String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
+	EntryPoint pulumi.StringInput `pulumi:"entryPoint"`
+	// Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Depending on the recipe Type, the structure may be different.
+	Environment pulumi.StringMapInput `pulumi:"environment"`
+	// URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (SlsaRecipeResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsaRecipeResponse)(nil)).Elem()
+}
+
+func (i SlsaRecipeResponseArgs) ToSlsaRecipeResponseOutput() SlsaRecipeResponseOutput {
+	return i.ToSlsaRecipeResponseOutputWithContext(context.Background())
+}
+
+func (i SlsaRecipeResponseArgs) ToSlsaRecipeResponseOutputWithContext(ctx context.Context) SlsaRecipeResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaRecipeResponseOutput)
+}
+
+func (i SlsaRecipeResponseArgs) ToSlsaRecipeResponsePtrOutput() SlsaRecipeResponsePtrOutput {
+	return i.ToSlsaRecipeResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SlsaRecipeResponseArgs) ToSlsaRecipeResponsePtrOutputWithContext(ctx context.Context) SlsaRecipeResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaRecipeResponseOutput).ToSlsaRecipeResponsePtrOutputWithContext(ctx)
+}
+
+// SlsaRecipeResponsePtrInput is an input type that accepts SlsaRecipeResponseArgs, SlsaRecipeResponsePtr and SlsaRecipeResponsePtrOutput values.
+// You can construct a concrete instance of `SlsaRecipeResponsePtrInput` via:
+//
+//          SlsaRecipeResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SlsaRecipeResponsePtrInput interface {
+	pulumi.Input
+
+	ToSlsaRecipeResponsePtrOutput() SlsaRecipeResponsePtrOutput
+	ToSlsaRecipeResponsePtrOutputWithContext(context.Context) SlsaRecipeResponsePtrOutput
+}
+
+type slsaRecipeResponsePtrType SlsaRecipeResponseArgs
+
+func SlsaRecipeResponsePtr(v *SlsaRecipeResponseArgs) SlsaRecipeResponsePtrInput {
+	return (*slsaRecipeResponsePtrType)(v)
+}
+
+func (*slsaRecipeResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SlsaRecipeResponse)(nil)).Elem()
+}
+
+func (i *slsaRecipeResponsePtrType) ToSlsaRecipeResponsePtrOutput() SlsaRecipeResponsePtrOutput {
+	return i.ToSlsaRecipeResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *slsaRecipeResponsePtrType) ToSlsaRecipeResponsePtrOutputWithContext(ctx context.Context) SlsaRecipeResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsaRecipeResponsePtrOutput)
+}
+
+// Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
+type SlsaRecipeResponseOutput struct{ *pulumi.OutputState }
+
+func (SlsaRecipeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsaRecipeResponse)(nil)).Elem()
+}
+
+func (o SlsaRecipeResponseOutput) ToSlsaRecipeResponseOutput() SlsaRecipeResponseOutput {
+	return o
+}
+
+func (o SlsaRecipeResponseOutput) ToSlsaRecipeResponseOutputWithContext(ctx context.Context) SlsaRecipeResponseOutput {
+	return o
+}
+
+func (o SlsaRecipeResponseOutput) ToSlsaRecipeResponsePtrOutput() SlsaRecipeResponsePtrOutput {
+	return o.ToSlsaRecipeResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SlsaRecipeResponseOutput) ToSlsaRecipeResponsePtrOutputWithContext(ctx context.Context) SlsaRecipeResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SlsaRecipeResponse) *SlsaRecipeResponse {
+		return &v
+	}).(SlsaRecipeResponsePtrOutput)
+}
+
+// Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
+func (o SlsaRecipeResponseOutput) Arguments() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SlsaRecipeResponse) map[string]string { return v.Arguments }).(pulumi.StringMapOutput)
+}
+
+// Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
+func (o SlsaRecipeResponseOutput) DefinedInMaterial() pulumi.StringOutput {
+	return o.ApplyT(func(v SlsaRecipeResponse) string { return v.DefinedInMaterial }).(pulumi.StringOutput)
+}
+
+// String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
+func (o SlsaRecipeResponseOutput) EntryPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v SlsaRecipeResponse) string { return v.EntryPoint }).(pulumi.StringOutput)
+}
+
+// Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Depending on the recipe Type, the structure may be different.
+func (o SlsaRecipeResponseOutput) Environment() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SlsaRecipeResponse) map[string]string { return v.Environment }).(pulumi.StringMapOutput)
+}
+
+// URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
+func (o SlsaRecipeResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SlsaRecipeResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type SlsaRecipeResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SlsaRecipeResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SlsaRecipeResponse)(nil)).Elem()
+}
+
+func (o SlsaRecipeResponsePtrOutput) ToSlsaRecipeResponsePtrOutput() SlsaRecipeResponsePtrOutput {
+	return o
+}
+
+func (o SlsaRecipeResponsePtrOutput) ToSlsaRecipeResponsePtrOutputWithContext(ctx context.Context) SlsaRecipeResponsePtrOutput {
+	return o
+}
+
+func (o SlsaRecipeResponsePtrOutput) Elem() SlsaRecipeResponseOutput {
+	return o.ApplyT(func(v *SlsaRecipeResponse) SlsaRecipeResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SlsaRecipeResponse
+		return ret
+	}).(SlsaRecipeResponseOutput)
+}
+
+// Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
+func (o SlsaRecipeResponsePtrOutput) Arguments() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SlsaRecipeResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Arguments
+	}).(pulumi.StringMapOutput)
+}
+
+// Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
+func (o SlsaRecipeResponsePtrOutput) DefinedInMaterial() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SlsaRecipeResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DefinedInMaterial
+	}).(pulumi.StringPtrOutput)
+}
+
+// String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
+func (o SlsaRecipeResponsePtrOutput) EntryPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SlsaRecipeResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EntryPoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Depending on the recipe Type, the structure may be different.
+func (o SlsaRecipeResponsePtrOutput) Environment() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SlsaRecipeResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Environment
+	}).(pulumi.StringMapOutput)
+}
+
+// URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
+func (o SlsaRecipeResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SlsaRecipeResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -22766,10 +25307,12 @@ func (o StorageSourceResponsePtrOutput) Object() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Subject refers to the subject of the intoto statement
 type Subject struct {
-	// "": ""
+	// "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
 	Digest map[string]string `pulumi:"digest"`
-	Name   *string           `pulumi:"name"`
+	// name is the name of the Subject used here
+	Name *string `pulumi:"name"`
 }
 
 // SubjectInput is an input type that accepts SubjectArgs and SubjectOutput values.
@@ -22783,10 +25326,12 @@ type SubjectInput interface {
 	ToSubjectOutputWithContext(context.Context) SubjectOutput
 }
 
+// Subject refers to the subject of the intoto statement
 type SubjectArgs struct {
-	// "": ""
+	// "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
 	Digest pulumi.StringMapInput `pulumi:"digest"`
-	Name   pulumi.StringPtrInput `pulumi:"name"`
+	// name is the name of the Subject used here
+	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (SubjectArgs) ElementType() reflect.Type {
@@ -22826,6 +25371,7 @@ func (i SubjectArray) ToSubjectArrayOutputWithContext(ctx context.Context) Subje
 	return pulumi.ToOutputWithContext(ctx, i).(SubjectArrayOutput)
 }
 
+// Subject refers to the subject of the intoto statement
 type SubjectOutput struct{ *pulumi.OutputState }
 
 func (SubjectOutput) ElementType() reflect.Type {
@@ -22840,11 +25386,12 @@ func (o SubjectOutput) ToSubjectOutputWithContext(ctx context.Context) SubjectOu
 	return o
 }
 
-// "": ""
+// "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
 func (o SubjectOutput) Digest() pulumi.StringMapOutput {
 	return o.ApplyT(func(v Subject) map[string]string { return v.Digest }).(pulumi.StringMapOutput)
 }
 
+// name is the name of the Subject used here
 func (o SubjectOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Subject) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -22869,10 +25416,12 @@ func (o SubjectArrayOutput) Index(i pulumi.IntInput) SubjectOutput {
 	}).(SubjectOutput)
 }
 
+// Subject refers to the subject of the intoto statement
 type SubjectResponse struct {
-	// "": ""
+	// "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
 	Digest map[string]string `pulumi:"digest"`
-	Name   string            `pulumi:"name"`
+	// name is the name of the Subject used here
+	Name string `pulumi:"name"`
 }
 
 // SubjectResponseInput is an input type that accepts SubjectResponseArgs and SubjectResponseOutput values.
@@ -22886,10 +25435,12 @@ type SubjectResponseInput interface {
 	ToSubjectResponseOutputWithContext(context.Context) SubjectResponseOutput
 }
 
+// Subject refers to the subject of the intoto statement
 type SubjectResponseArgs struct {
-	// "": ""
+	// "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
 	Digest pulumi.StringMapInput `pulumi:"digest"`
-	Name   pulumi.StringInput    `pulumi:"name"`
+	// name is the name of the Subject used here
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (SubjectResponseArgs) ElementType() reflect.Type {
@@ -22929,6 +25480,7 @@ func (i SubjectResponseArray) ToSubjectResponseArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(SubjectResponseArrayOutput)
 }
 
+// Subject refers to the subject of the intoto statement
 type SubjectResponseOutput struct{ *pulumi.OutputState }
 
 func (SubjectResponseOutput) ElementType() reflect.Type {
@@ -22943,11 +25495,12 @@ func (o SubjectResponseOutput) ToSubjectResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-// "": ""
+// "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
 func (o SubjectResponseOutput) Digest() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SubjectResponse) map[string]string { return v.Digest }).(pulumi.StringMapOutput)
 }
 
+// name is the name of the Subject used here
 func (o SubjectResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SubjectResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -25795,10 +28348,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LayerArrayInput)(nil)).Elem(), LayerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LayerResponseInput)(nil)).Elem(), LayerResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LayerResponseArrayInput)(nil)).Elem(), LayerResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LicenseInput)(nil)).Elem(), LicenseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LicensePtrInput)(nil)).Elem(), LicenseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LicenseResponseInput)(nil)).Elem(), LicenseResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LicenseResponsePtrInput)(nil)).Elem(), LicenseResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocationInput)(nil)).Elem(), LocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocationArrayInput)(nil)).Elem(), LocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocationResponseInput)(nil)).Elem(), LocationResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocationResponseArrayInput)(nil)).Elem(), LocationResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaterialInput)(nil)).Elem(), MaterialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaterialArrayInput)(nil)).Elem(), MaterialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaterialResponseInput)(nil)).Elem(), MaterialResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaterialResponseArrayInput)(nil)).Elem(), MaterialResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataInput)(nil)).Elem(), MetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataPtrInput)(nil)).Elem(), MetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataResponseInput)(nil)).Elem(), MetadataResponseArgs{})
@@ -25809,18 +28370,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NonCompliantFileResponseArrayInput)(nil)).Elem(), NonCompliantFileResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageInput)(nil)).Elem(), PackageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PackagePtrInput)(nil)).Elem(), PackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageInfoNoteInput)(nil)).Elem(), PackageInfoNoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageInfoNotePtrInput)(nil)).Elem(), PackageInfoNoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageInfoNoteResponseInput)(nil)).Elem(), PackageInfoNoteResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageInfoNoteResponsePtrInput)(nil)).Elem(), PackageInfoNoteResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageInfoOccurrenceInput)(nil)).Elem(), PackageInfoOccurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageInfoOccurrencePtrInput)(nil)).Elem(), PackageInfoOccurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageInfoOccurrenceResponseInput)(nil)).Elem(), PackageInfoOccurrenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageInfoOccurrenceResponsePtrInput)(nil)).Elem(), PackageInfoOccurrenceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageIssueInput)(nil)).Elem(), PackageIssueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageIssueArrayInput)(nil)).Elem(), PackageIssueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageIssueResponseInput)(nil)).Elem(), PackageIssueResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageIssueResponseArrayInput)(nil)).Elem(), PackageIssueResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PackageNoteInput)(nil)).Elem(), PackageNoteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PackageNotePtrInput)(nil)).Elem(), PackageNoteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PackageNoteResponseInput)(nil)).Elem(), PackageNoteResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PackageNoteResponsePtrInput)(nil)).Elem(), PackageNoteResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PackageOccurrenceInput)(nil)).Elem(), PackageOccurrenceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PackageOccurrencePtrInput)(nil)).Elem(), PackageOccurrenceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PackageOccurrenceResponseInput)(nil)).Elem(), PackageOccurrenceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PackageOccurrenceResponsePtrInput)(nil)).Elem(), PackageOccurrenceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageResponseInput)(nil)).Elem(), PackageResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageResponsePtrInput)(nil)).Elem(), PackageResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PgpSignedAttestationInput)(nil)).Elem(), PgpSignedAttestationArgs{})
@@ -25851,6 +28412,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePtrInput)(nil)).Elem(), ResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceResponseInput)(nil)).Elem(), ResourceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceResponsePtrInput)(nil)).Elem(), ResourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlsaBuilderInput)(nil)).Elem(), SlsaBuilderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlsaBuilderPtrInput)(nil)).Elem(), SlsaBuilderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlsaBuilderResponseInput)(nil)).Elem(), SlsaBuilderResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlsaBuilderResponsePtrInput)(nil)).Elem(), SlsaBuilderResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlsaCompletenessInput)(nil)).Elem(), SlsaCompletenessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlsaCompletenessPtrInput)(nil)).Elem(), SlsaCompletenessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlsaCompletenessResponseInput)(nil)).Elem(), SlsaCompletenessResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlsaCompletenessResponsePtrInput)(nil)).Elem(), SlsaCompletenessResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlsaMetadataInput)(nil)).Elem(), SlsaMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlsaMetadataPtrInput)(nil)).Elem(), SlsaMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlsaMetadataResponseInput)(nil)).Elem(), SlsaMetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlsaMetadataResponsePtrInput)(nil)).Elem(), SlsaMetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlsaProvenanceInput)(nil)).Elem(), SlsaProvenanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlsaProvenancePtrInput)(nil)).Elem(), SlsaProvenanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlsaProvenanceResponseInput)(nil)).Elem(), SlsaProvenanceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlsaProvenanceResponsePtrInput)(nil)).Elem(), SlsaProvenanceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlsaRecipeInput)(nil)).Elem(), SlsaRecipeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlsaRecipePtrInput)(nil)).Elem(), SlsaRecipeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlsaRecipeResponseInput)(nil)).Elem(), SlsaRecipeResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlsaRecipeResponsePtrInput)(nil)).Elem(), SlsaRecipeResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceInput)(nil)).Elem(), SourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourcePtrInput)(nil)).Elem(), SourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceResponseInput)(nil)).Elem(), SourceResponseArgs{})
@@ -26089,10 +28670,18 @@ func init() {
 	pulumi.RegisterOutputType(LayerArrayOutput{})
 	pulumi.RegisterOutputType(LayerResponseOutput{})
 	pulumi.RegisterOutputType(LayerResponseArrayOutput{})
+	pulumi.RegisterOutputType(LicenseOutput{})
+	pulumi.RegisterOutputType(LicensePtrOutput{})
+	pulumi.RegisterOutputType(LicenseResponseOutput{})
+	pulumi.RegisterOutputType(LicenseResponsePtrOutput{})
 	pulumi.RegisterOutputType(LocationOutput{})
 	pulumi.RegisterOutputType(LocationArrayOutput{})
 	pulumi.RegisterOutputType(LocationResponseOutput{})
 	pulumi.RegisterOutputType(LocationResponseArrayOutput{})
+	pulumi.RegisterOutputType(MaterialOutput{})
+	pulumi.RegisterOutputType(MaterialArrayOutput{})
+	pulumi.RegisterOutputType(MaterialResponseOutput{})
+	pulumi.RegisterOutputType(MaterialResponseArrayOutput{})
 	pulumi.RegisterOutputType(MetadataOutput{})
 	pulumi.RegisterOutputType(MetadataPtrOutput{})
 	pulumi.RegisterOutputType(MetadataResponseOutput{})
@@ -26103,18 +28692,18 @@ func init() {
 	pulumi.RegisterOutputType(NonCompliantFileResponseArrayOutput{})
 	pulumi.RegisterOutputType(PackageOutput{})
 	pulumi.RegisterOutputType(PackagePtrOutput{})
+	pulumi.RegisterOutputType(PackageInfoNoteOutput{})
+	pulumi.RegisterOutputType(PackageInfoNotePtrOutput{})
+	pulumi.RegisterOutputType(PackageInfoNoteResponseOutput{})
+	pulumi.RegisterOutputType(PackageInfoNoteResponsePtrOutput{})
+	pulumi.RegisterOutputType(PackageInfoOccurrenceOutput{})
+	pulumi.RegisterOutputType(PackageInfoOccurrencePtrOutput{})
+	pulumi.RegisterOutputType(PackageInfoOccurrenceResponseOutput{})
+	pulumi.RegisterOutputType(PackageInfoOccurrenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(PackageIssueOutput{})
 	pulumi.RegisterOutputType(PackageIssueArrayOutput{})
 	pulumi.RegisterOutputType(PackageIssueResponseOutput{})
 	pulumi.RegisterOutputType(PackageIssueResponseArrayOutput{})
-	pulumi.RegisterOutputType(PackageNoteOutput{})
-	pulumi.RegisterOutputType(PackageNotePtrOutput{})
-	pulumi.RegisterOutputType(PackageNoteResponseOutput{})
-	pulumi.RegisterOutputType(PackageNoteResponsePtrOutput{})
-	pulumi.RegisterOutputType(PackageOccurrenceOutput{})
-	pulumi.RegisterOutputType(PackageOccurrencePtrOutput{})
-	pulumi.RegisterOutputType(PackageOccurrenceResponseOutput{})
-	pulumi.RegisterOutputType(PackageOccurrenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(PackageResponseOutput{})
 	pulumi.RegisterOutputType(PackageResponsePtrOutput{})
 	pulumi.RegisterOutputType(PgpSignedAttestationOutput{})
@@ -26145,6 +28734,26 @@ func init() {
 	pulumi.RegisterOutputType(ResourcePtrOutput{})
 	pulumi.RegisterOutputType(ResourceResponseOutput{})
 	pulumi.RegisterOutputType(ResourceResponsePtrOutput{})
+	pulumi.RegisterOutputType(SlsaBuilderOutput{})
+	pulumi.RegisterOutputType(SlsaBuilderPtrOutput{})
+	pulumi.RegisterOutputType(SlsaBuilderResponseOutput{})
+	pulumi.RegisterOutputType(SlsaBuilderResponsePtrOutput{})
+	pulumi.RegisterOutputType(SlsaCompletenessOutput{})
+	pulumi.RegisterOutputType(SlsaCompletenessPtrOutput{})
+	pulumi.RegisterOutputType(SlsaCompletenessResponseOutput{})
+	pulumi.RegisterOutputType(SlsaCompletenessResponsePtrOutput{})
+	pulumi.RegisterOutputType(SlsaMetadataOutput{})
+	pulumi.RegisterOutputType(SlsaMetadataPtrOutput{})
+	pulumi.RegisterOutputType(SlsaMetadataResponseOutput{})
+	pulumi.RegisterOutputType(SlsaMetadataResponsePtrOutput{})
+	pulumi.RegisterOutputType(SlsaProvenanceOutput{})
+	pulumi.RegisterOutputType(SlsaProvenancePtrOutput{})
+	pulumi.RegisterOutputType(SlsaProvenanceResponseOutput{})
+	pulumi.RegisterOutputType(SlsaProvenanceResponsePtrOutput{})
+	pulumi.RegisterOutputType(SlsaRecipeOutput{})
+	pulumi.RegisterOutputType(SlsaRecipePtrOutput{})
+	pulumi.RegisterOutputType(SlsaRecipeResponseOutput{})
+	pulumi.RegisterOutputType(SlsaRecipeResponsePtrOutput{})
 	pulumi.RegisterOutputType(SourceOutput{})
 	pulumi.RegisterOutputType(SourcePtrOutput{})
 	pulumi.RegisterOutputType(SourceResponseOutput{})

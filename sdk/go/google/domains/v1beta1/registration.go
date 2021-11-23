@@ -34,7 +34,7 @@ type Registration struct {
 	ManagementSettings ManagementSettingsResponseOutput `pulumi:"managementSettings"`
 	// Name of the `Registration` resource, in the format `projects/*/locations/*/registrations/`.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Pending contact settings for the `Registration`. Updates to the `contact_settings` field that change its `registrant_contact` or `privacy` fields require email confirmation by the `registrant_contact` before taking effect. This field is set only if there are pending updates to the `contact_settings` that have not yet been confirmed. To confirm the changes, the `registrant_contact` must follow the instructions in the email they receive.
+	// Pending contact settings for the `Registration`. Updates to the `contact_settings` field that change its `registrant_contact` or `privacy` fields require email confirmation by the `registrant_contact` before taking effect. This field is set only if there are pending updates to the `contact_settings` that have not been confirmed. To confirm the changes, the `registrant_contact` must follow the instructions in the email they receive.
 	PendingContactSettings ContactSettingsResponseOutput `pulumi:"pendingContactSettings"`
 	// The state of the `Registration`
 	State pulumi.StringOutput `pulumi:"state"`
@@ -106,7 +106,7 @@ type registrationArgs struct {
 	// Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
 	ManagementSettings *ManagementSettings `pulumi:"managementSettings"`
 	Project            *string             `pulumi:"project"`
-	// When true, only validation will be performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
+	// When true, only validation is performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
 	ValidateOnly *bool `pulumi:"validateOnly"`
 	// Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.
 	YearlyPrice Money `pulumi:"yearlyPrice"`
@@ -130,7 +130,7 @@ type RegistrationArgs struct {
 	// Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
 	ManagementSettings ManagementSettingsPtrInput
 	Project            pulumi.StringPtrInput
-	// When true, only validation will be performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
+	// When true, only validation is performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
 	ValidateOnly pulumi.BoolPtrInput
 	// Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.
 	YearlyPrice MoneyInput

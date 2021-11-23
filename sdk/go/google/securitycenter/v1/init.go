@@ -21,8 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:securitycenter/v1:MuteConfig":
+		r = &MuteConfig{}
 	case "google-native:securitycenter/v1:NotificationConfig":
 		r = &NotificationConfig{}
+	case "google-native:securitycenter/v1:OrganizationMuteConfig":
+		r = &OrganizationMuteConfig{}
 	case "google-native:securitycenter/v1:OrganizationSourceIamPolicy":
 		r = &OrganizationSourceIamPolicy{}
 	case "google-native:securitycenter/v1:Source":

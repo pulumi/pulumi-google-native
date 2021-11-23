@@ -12,7 +12,7 @@ import (
 
 // Settings specific to keys that can be used by Android apps.
 type GoogleCloudRecaptchaenterpriseV1AndroidKeySettings struct {
-	// If set to true, it means allowed_package_names will not be enforced.
+	// If set to true, allowed_package_names are not enforced.
 	AllowAllPackageNames *bool `pulumi:"allowAllPackageNames"`
 	// Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
 	AllowedPackageNames []string `pulumi:"allowedPackageNames"`
@@ -31,7 +31,7 @@ type GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsInput interface {
 
 // Settings specific to keys that can be used by Android apps.
 type GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs struct {
-	// If set to true, it means allowed_package_names will not be enforced.
+	// If set to true, allowed_package_names are not enforced.
 	AllowAllPackageNames pulumi.BoolPtrInput `pulumi:"allowAllPackageNames"`
 	// Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
 	AllowedPackageNames pulumi.StringArrayInput `pulumi:"allowedPackageNames"`
@@ -115,7 +115,7 @@ func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsOutput) ToGoogleCloudR
 	}).(GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput)
 }
 
-// If set to true, it means allowed_package_names will not be enforced.
+// If set to true, allowed_package_names are not enforced.
 func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsOutput) AllowAllPackageNames() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1AndroidKeySettings) *bool { return v.AllowAllPackageNames }).(pulumi.BoolPtrOutput)
 }
@@ -149,7 +149,7 @@ func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput) Elem() Goog
 	}).(GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsOutput)
 }
 
-// If set to true, it means allowed_package_names will not be enforced.
+// If set to true, allowed_package_names are not enforced.
 func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput) AllowAllPackageNames() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1AndroidKeySettings) *bool {
 		if v == nil {
@@ -171,7 +171,7 @@ func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput) AllowedPack
 
 // Settings specific to keys that can be used by Android apps.
 type GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse struct {
-	// If set to true, it means allowed_package_names will not be enforced.
+	// If set to true, allowed_package_names are not enforced.
 	AllowAllPackageNames bool `pulumi:"allowAllPackageNames"`
 	// Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
 	AllowedPackageNames []string `pulumi:"allowedPackageNames"`
@@ -190,7 +190,7 @@ type GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseInput interface {
 
 // Settings specific to keys that can be used by Android apps.
 type GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseArgs struct {
-	// If set to true, it means allowed_package_names will not be enforced.
+	// If set to true, allowed_package_names are not enforced.
 	AllowAllPackageNames pulumi.BoolInput `pulumi:"allowAllPackageNames"`
 	// Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
 	AllowedPackageNames pulumi.StringArrayInput `pulumi:"allowedPackageNames"`
@@ -274,7 +274,7 @@ func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseOutput) ToGoog
 	}).(GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponsePtrOutput)
 }
 
-// If set to true, it means allowed_package_names will not be enforced.
+// If set to true, allowed_package_names are not enforced.
 func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseOutput) AllowAllPackageNames() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse) bool { return v.AllowAllPackageNames }).(pulumi.BoolOutput)
 }
@@ -310,7 +310,7 @@ func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponsePtrOutput) Ele
 	}).(GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseOutput)
 }
 
-// If set to true, it means allowed_package_names will not be enforced.
+// If set to true, allowed_package_names are not enforced.
 func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponsePtrOutput) AllowAllPackageNames() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse) *bool {
 		if v == nil {
@@ -332,7 +332,7 @@ func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponsePtrOutput) All
 
 // Settings specific to keys that can be used by iOS apps.
 type GoogleCloudRecaptchaenterpriseV1IOSKeySettings struct {
-	// If set to true, it means allowed_bundle_ids will not be enforced.
+	// If set to true, allowed_bundle_ids are not enforced.
 	AllowAllBundleIds *bool `pulumi:"allowAllBundleIds"`
 	// iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
 	AllowedBundleIds []string `pulumi:"allowedBundleIds"`
@@ -351,7 +351,7 @@ type GoogleCloudRecaptchaenterpriseV1IOSKeySettingsInput interface {
 
 // Settings specific to keys that can be used by iOS apps.
 type GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs struct {
-	// If set to true, it means allowed_bundle_ids will not be enforced.
+	// If set to true, allowed_bundle_ids are not enforced.
 	AllowAllBundleIds pulumi.BoolPtrInput `pulumi:"allowAllBundleIds"`
 	// iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
 	AllowedBundleIds pulumi.StringArrayInput `pulumi:"allowedBundleIds"`
@@ -435,7 +435,7 @@ func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsOutput) ToGoogleCloudRecap
 	}).(GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput)
 }
 
-// If set to true, it means allowed_bundle_ids will not be enforced.
+// If set to true, allowed_bundle_ids are not enforced.
 func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsOutput) AllowAllBundleIds() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1IOSKeySettings) *bool { return v.AllowAllBundleIds }).(pulumi.BoolPtrOutput)
 }
@@ -469,7 +469,7 @@ func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput) Elem() GoogleCl
 	}).(GoogleCloudRecaptchaenterpriseV1IOSKeySettingsOutput)
 }
 
-// If set to true, it means allowed_bundle_ids will not be enforced.
+// If set to true, allowed_bundle_ids are not enforced.
 func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput) AllowAllBundleIds() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1IOSKeySettings) *bool {
 		if v == nil {
@@ -491,7 +491,7 @@ func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput) AllowedBundleId
 
 // Settings specific to keys that can be used by iOS apps.
 type GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse struct {
-	// If set to true, it means allowed_bundle_ids will not be enforced.
+	// If set to true, allowed_bundle_ids are not enforced.
 	AllowAllBundleIds bool `pulumi:"allowAllBundleIds"`
 	// iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
 	AllowedBundleIds []string `pulumi:"allowedBundleIds"`
@@ -510,7 +510,7 @@ type GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseInput interface {
 
 // Settings specific to keys that can be used by iOS apps.
 type GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseArgs struct {
-	// If set to true, it means allowed_bundle_ids will not be enforced.
+	// If set to true, allowed_bundle_ids are not enforced.
 	AllowAllBundleIds pulumi.BoolInput `pulumi:"allowAllBundleIds"`
 	// iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
 	AllowedBundleIds pulumi.StringArrayInput `pulumi:"allowedBundleIds"`
@@ -594,7 +594,7 @@ func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseOutput) ToGoogleCl
 	}).(GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponsePtrOutput)
 }
 
-// If set to true, it means allowed_bundle_ids will not be enforced.
+// If set to true, allowed_bundle_ids are not enforced.
 func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseOutput) AllowAllBundleIds() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse) bool { return v.AllowAllBundleIds }).(pulumi.BoolOutput)
 }
@@ -628,7 +628,7 @@ func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponsePtrOutput) Elem() 
 	}).(GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseOutput)
 }
 
-// If set to true, it means allowed_bundle_ids will not be enforced.
+// If set to true, allowed_bundle_ids are not enforced.
 func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponsePtrOutput) AllowAllBundleIds() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse) *bool {
 		if v == nil {
@@ -972,8 +972,8 @@ func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsResponsePtrOutput) Testing
 type GoogleCloudRecaptchaenterpriseV1WebKeySettings struct {
 	// If set to true, it means allowed_domains will not be enforced.
 	AllowAllDomains *bool `pulumi:"allowAllDomains"`
-	// Whether this key can be used on AMP (Accelerated Mobile Pages) websites. This can only be set for the SCORE integration type.
-	AllowAmpTraffic bool `pulumi:"allowAmpTraffic"`
+	// If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.
+	AllowAmpTraffic *bool `pulumi:"allowAmpTraffic"`
 	// Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: 'example.com' or 'subdomain.example.com'
 	AllowedDomains []string `pulumi:"allowedDomains"`
 	// Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE.
@@ -997,8 +997,8 @@ type GoogleCloudRecaptchaenterpriseV1WebKeySettingsInput interface {
 type GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs struct {
 	// If set to true, it means allowed_domains will not be enforced.
 	AllowAllDomains pulumi.BoolPtrInput `pulumi:"allowAllDomains"`
-	// Whether this key can be used on AMP (Accelerated Mobile Pages) websites. This can only be set for the SCORE integration type.
-	AllowAmpTraffic pulumi.BoolInput `pulumi:"allowAmpTraffic"`
+	// If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.
+	AllowAmpTraffic pulumi.BoolPtrInput `pulumi:"allowAmpTraffic"`
 	// Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: 'example.com' or 'subdomain.example.com'
 	AllowedDomains pulumi.StringArrayInput `pulumi:"allowedDomains"`
 	// Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE.
@@ -1090,9 +1090,9 @@ func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsOutput) AllowAllDomains() 
 	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1WebKeySettings) *bool { return v.AllowAllDomains }).(pulumi.BoolPtrOutput)
 }
 
-// Whether this key can be used on AMP (Accelerated Mobile Pages) websites. This can only be set for the SCORE integration type.
-func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsOutput) AllowAmpTraffic() pulumi.BoolOutput {
-	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1WebKeySettings) bool { return v.AllowAmpTraffic }).(pulumi.BoolOutput)
+// If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.
+func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsOutput) AllowAmpTraffic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1WebKeySettings) *bool { return v.AllowAmpTraffic }).(pulumi.BoolPtrOutput)
 }
 
 // Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: 'example.com' or 'subdomain.example.com'
@@ -1148,13 +1148,13 @@ func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrOutput) AllowAllDomains
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether this key can be used on AMP (Accelerated Mobile Pages) websites. This can only be set for the SCORE integration type.
+// If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.
 func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrOutput) AllowAmpTraffic() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1WebKeySettings) *bool {
 		if v == nil {
 			return nil
 		}
-		return &v.AllowAmpTraffic
+		return v.AllowAmpTraffic
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -1192,7 +1192,7 @@ func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrOutput) IntegrationType
 type GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse struct {
 	// If set to true, it means allowed_domains will not be enforced.
 	AllowAllDomains bool `pulumi:"allowAllDomains"`
-	// Whether this key can be used on AMP (Accelerated Mobile Pages) websites. This can only be set for the SCORE integration type.
+	// If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.
 	AllowAmpTraffic bool `pulumi:"allowAmpTraffic"`
 	// Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: 'example.com' or 'subdomain.example.com'
 	AllowedDomains []string `pulumi:"allowedDomains"`
@@ -1217,7 +1217,7 @@ type GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponseInput interface {
 type GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponseArgs struct {
 	// If set to true, it means allowed_domains will not be enforced.
 	AllowAllDomains pulumi.BoolInput `pulumi:"allowAllDomains"`
-	// Whether this key can be used on AMP (Accelerated Mobile Pages) websites. This can only be set for the SCORE integration type.
+	// If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.
 	AllowAmpTraffic pulumi.BoolInput `pulumi:"allowAmpTraffic"`
 	// Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: 'example.com' or 'subdomain.example.com'
 	AllowedDomains pulumi.StringArrayInput `pulumi:"allowedDomains"`
@@ -1310,7 +1310,7 @@ func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponseOutput) AllowAllDo
 	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse) bool { return v.AllowAllDomains }).(pulumi.BoolOutput)
 }
 
-// Whether this key can be used on AMP (Accelerated Mobile Pages) websites. This can only be set for the SCORE integration type.
+// If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.
 func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponseOutput) AllowAmpTraffic() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse) bool { return v.AllowAmpTraffic }).(pulumi.BoolOutput)
 }
@@ -1366,7 +1366,7 @@ func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponsePtrOutput) AllowAl
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether this key can be used on AMP (Accelerated Mobile Pages) websites. This can only be set for the SCORE integration type.
+// If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.
 func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponsePtrOutput) AllowAmpTraffic() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse) *bool {
 		if v == nil {

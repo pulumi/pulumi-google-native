@@ -869,7 +869,7 @@ func (in *instanceBackendTypePtr) ToInstanceBackendTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceBackendTypePtrOutput)
 }
 
-// The database engine type and version. The **databaseVersion** field cannot be changed after instance creation. * **MySQL instances**: MYSQL_8_0, MYSQL_5_7 (default), or MYSQL_5_6. * **PostgreSQL instances**: POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13 (default). * **SQL Server instances**: SQLSERVER_2019_STANDARD, SQLSERVER_2019_ENTERPRISE, SQLSERVER_2019_EXPRESS, or SQLSERVER_2019_WEB, SQLSERVER_2017_STANDARD (default), SQLSERVER_2017_ENTERPRISE, SQLSERVER_2017_EXPRESS, or SQLSERVER_2017_WEB.
+// The database engine type and version. The **databaseVersion** field cannot be changed after instance creation.
 type InstanceDatabaseVersion string
 
 const (
@@ -901,8 +901,14 @@ const (
 	InstanceDatabaseVersionPostgres12 = InstanceDatabaseVersion("POSTGRES_12")
 	// The database version is MySQL 8.
 	InstanceDatabaseVersionMysql80 = InstanceDatabaseVersion("MYSQL_8_0")
+	// The database major version is MySQL 8.0 and the minor version is 18.
+	InstanceDatabaseVersionMysql8018 = InstanceDatabaseVersion("MYSQL_8_0_18")
+	// The database major version is MySQL 8.0 and the minor version is 26.
+	InstanceDatabaseVersionMysql8026 = InstanceDatabaseVersion("MYSQL_8_0_26")
 	// The database version is PostgreSQL 13.
 	InstanceDatabaseVersionPostgres13 = InstanceDatabaseVersion("POSTGRES_13")
+	// The database version is PostgreSQL 14.
+	InstanceDatabaseVersionPostgres14 = InstanceDatabaseVersion("POSTGRES_14")
 	// The database version is SQL Server 2019 Standard.
 	InstanceDatabaseVersionSqlserver2019Standard = InstanceDatabaseVersion("SQLSERVER_2019_STANDARD")
 	// The database version is SQL Server 2019 Enterprise.
@@ -1070,13 +1076,13 @@ func (in *instanceDatabaseVersionPtr) ToInstanceDatabaseVersionPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceDatabaseVersionPtrOutput)
 }
 
-// The instance type. This can be one of the following: * **CLOUD_SQL_INSTANCE**: A Cloud SQL instance that is not replicating from a primary instance. * **ON_PREMISES_INSTANCE**: An instance running on the customer's premises. * **READ_REPLICA_INSTANCE**: A Cloud SQL instance configured as a read-replica.
+// The instance type.
 type InstanceInstanceType string
 
 const (
 	// This is an unknown Cloud SQL instance type.
 	InstanceInstanceTypeSqlInstanceTypeUnspecified = InstanceInstanceType("SQL_INSTANCE_TYPE_UNSPECIFIED")
-	// A regular Cloud SQL instance.
+	// A regular Cloud SQL instance that is not replicating from a primary instance.
 	InstanceInstanceTypeCloudSqlInstance = InstanceInstanceType("CLOUD_SQL_INSTANCE")
 	// An instance running on the customer's premises that is not managed by Cloud SQL.
 	InstanceInstanceTypeOnPremisesInstance = InstanceInstanceType("ON_PREMISES_INSTANCE")
@@ -1241,7 +1247,7 @@ func (in *instanceInstanceTypePtr) ToInstanceInstanceTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceInstanceTypePtrOutput)
 }
 
-// The current serving state of the Cloud SQL instance. This can be one of the following: * **SQL_INSTANCE_STATE_UNSPECIFIED**: The state of the instance is unknown. * **RUNNABLE**: The instance is running, or has been stopped by owner. * **SUSPENDED**: The instance is not available, for example due to problems with billing. * **PENDING_DELETE**: The instance is being deleted. * **PENDING_CREATE**: The instance is being created. * **MAINTENANCE**: The instance is down for maintenance. * **FAILED**: The instance creation failed.
+// The current serving state of the Cloud SQL instance.
 type InstanceStateEnum string
 
 const (
@@ -1259,7 +1265,7 @@ const (
 	InstanceStateEnumMaintenance = InstanceStateEnum("MAINTENANCE")
 	// The creation of the instance failed or a fatal error occurred during maintenance.
 	InstanceStateEnumFailed = InstanceStateEnum("FAILED")
-	// The instance is under maintenance operations and the database is available.
+	// Deprecated
 	InstanceStateEnumOnlineMaintenance = InstanceStateEnum("ONLINE_MAINTENANCE")
 )
 
@@ -1977,6 +1983,173 @@ func (in *maintenanceWindowUpdateTrackPtr) ToMaintenanceWindowUpdateTrackPtrOutp
 
 func (in *maintenanceWindowUpdateTrackPtr) ToMaintenanceWindowUpdateTrackPtrOutputWithContext(ctx context.Context) MaintenanceWindowUpdateTrackPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MaintenanceWindowUpdateTrackPtrOutput)
+}
+
+// The complexity of the password.
+type PasswordValidationPolicyComplexity string
+
+const (
+	// Complexity check is not specified.
+	PasswordValidationPolicyComplexityComplexityUnspecified = PasswordValidationPolicyComplexity("COMPLEXITY_UNSPECIFIED")
+	// A combination of lowercase, uppercase, numeric, and non-alphanumeric characters.
+	PasswordValidationPolicyComplexityComplexityDefault = PasswordValidationPolicyComplexity("COMPLEXITY_DEFAULT")
+)
+
+func (PasswordValidationPolicyComplexity) ElementType() reflect.Type {
+	return reflect.TypeOf((*PasswordValidationPolicyComplexity)(nil)).Elem()
+}
+
+func (e PasswordValidationPolicyComplexity) ToPasswordValidationPolicyComplexityOutput() PasswordValidationPolicyComplexityOutput {
+	return pulumi.ToOutput(e).(PasswordValidationPolicyComplexityOutput)
+}
+
+func (e PasswordValidationPolicyComplexity) ToPasswordValidationPolicyComplexityOutputWithContext(ctx context.Context) PasswordValidationPolicyComplexityOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PasswordValidationPolicyComplexityOutput)
+}
+
+func (e PasswordValidationPolicyComplexity) ToPasswordValidationPolicyComplexityPtrOutput() PasswordValidationPolicyComplexityPtrOutput {
+	return e.ToPasswordValidationPolicyComplexityPtrOutputWithContext(context.Background())
+}
+
+func (e PasswordValidationPolicyComplexity) ToPasswordValidationPolicyComplexityPtrOutputWithContext(ctx context.Context) PasswordValidationPolicyComplexityPtrOutput {
+	return PasswordValidationPolicyComplexity(e).ToPasswordValidationPolicyComplexityOutputWithContext(ctx).ToPasswordValidationPolicyComplexityPtrOutputWithContext(ctx)
+}
+
+func (e PasswordValidationPolicyComplexity) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PasswordValidationPolicyComplexity) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PasswordValidationPolicyComplexity) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PasswordValidationPolicyComplexity) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PasswordValidationPolicyComplexityOutput struct{ *pulumi.OutputState }
+
+func (PasswordValidationPolicyComplexityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PasswordValidationPolicyComplexity)(nil)).Elem()
+}
+
+func (o PasswordValidationPolicyComplexityOutput) ToPasswordValidationPolicyComplexityOutput() PasswordValidationPolicyComplexityOutput {
+	return o
+}
+
+func (o PasswordValidationPolicyComplexityOutput) ToPasswordValidationPolicyComplexityOutputWithContext(ctx context.Context) PasswordValidationPolicyComplexityOutput {
+	return o
+}
+
+func (o PasswordValidationPolicyComplexityOutput) ToPasswordValidationPolicyComplexityPtrOutput() PasswordValidationPolicyComplexityPtrOutput {
+	return o.ToPasswordValidationPolicyComplexityPtrOutputWithContext(context.Background())
+}
+
+func (o PasswordValidationPolicyComplexityOutput) ToPasswordValidationPolicyComplexityPtrOutputWithContext(ctx context.Context) PasswordValidationPolicyComplexityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PasswordValidationPolicyComplexity) *PasswordValidationPolicyComplexity {
+		return &v
+	}).(PasswordValidationPolicyComplexityPtrOutput)
+}
+
+func (o PasswordValidationPolicyComplexityOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PasswordValidationPolicyComplexityOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PasswordValidationPolicyComplexity) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PasswordValidationPolicyComplexityOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PasswordValidationPolicyComplexityOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PasswordValidationPolicyComplexity) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PasswordValidationPolicyComplexityPtrOutput struct{ *pulumi.OutputState }
+
+func (PasswordValidationPolicyComplexityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PasswordValidationPolicyComplexity)(nil)).Elem()
+}
+
+func (o PasswordValidationPolicyComplexityPtrOutput) ToPasswordValidationPolicyComplexityPtrOutput() PasswordValidationPolicyComplexityPtrOutput {
+	return o
+}
+
+func (o PasswordValidationPolicyComplexityPtrOutput) ToPasswordValidationPolicyComplexityPtrOutputWithContext(ctx context.Context) PasswordValidationPolicyComplexityPtrOutput {
+	return o
+}
+
+func (o PasswordValidationPolicyComplexityPtrOutput) Elem() PasswordValidationPolicyComplexityOutput {
+	return o.ApplyT(func(v *PasswordValidationPolicyComplexity) PasswordValidationPolicyComplexity {
+		if v != nil {
+			return *v
+		}
+		var ret PasswordValidationPolicyComplexity
+		return ret
+	}).(PasswordValidationPolicyComplexityOutput)
+}
+
+func (o PasswordValidationPolicyComplexityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PasswordValidationPolicyComplexityPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PasswordValidationPolicyComplexity) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PasswordValidationPolicyComplexityInput is an input type that accepts PasswordValidationPolicyComplexityArgs and PasswordValidationPolicyComplexityOutput values.
+// You can construct a concrete instance of `PasswordValidationPolicyComplexityInput` via:
+//
+//          PasswordValidationPolicyComplexityArgs{...}
+type PasswordValidationPolicyComplexityInput interface {
+	pulumi.Input
+
+	ToPasswordValidationPolicyComplexityOutput() PasswordValidationPolicyComplexityOutput
+	ToPasswordValidationPolicyComplexityOutputWithContext(context.Context) PasswordValidationPolicyComplexityOutput
+}
+
+var passwordValidationPolicyComplexityPtrType = reflect.TypeOf((**PasswordValidationPolicyComplexity)(nil)).Elem()
+
+type PasswordValidationPolicyComplexityPtrInput interface {
+	pulumi.Input
+
+	ToPasswordValidationPolicyComplexityPtrOutput() PasswordValidationPolicyComplexityPtrOutput
+	ToPasswordValidationPolicyComplexityPtrOutputWithContext(context.Context) PasswordValidationPolicyComplexityPtrOutput
+}
+
+type passwordValidationPolicyComplexityPtr string
+
+func PasswordValidationPolicyComplexityPtr(v string) PasswordValidationPolicyComplexityPtrInput {
+	return (*passwordValidationPolicyComplexityPtr)(&v)
+}
+
+func (*passwordValidationPolicyComplexityPtr) ElementType() reflect.Type {
+	return passwordValidationPolicyComplexityPtrType
+}
+
+func (in *passwordValidationPolicyComplexityPtr) ToPasswordValidationPolicyComplexityPtrOutput() PasswordValidationPolicyComplexityPtrOutput {
+	return pulumi.ToOutput(in).(PasswordValidationPolicyComplexityPtrOutput)
+}
+
+func (in *passwordValidationPolicyComplexityPtr) ToPasswordValidationPolicyComplexityPtrOutputWithContext(ctx context.Context) PasswordValidationPolicyComplexityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PasswordValidationPolicyComplexityPtrOutput)
 }
 
 // The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**: The instance is on, and remains so even in the absence of connection requests. * **NEVER**: The instance is off; it is not activated, even if a connection request arrives.
@@ -2852,6 +3025,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IpMappingTypePtrInput)(nil)).Elem(), IpMappingType("SQL_IP_ADDRESS_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowUpdateTrackInput)(nil)).Elem(), MaintenanceWindowUpdateTrack("SQL_UPDATE_TRACK_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowUpdateTrackPtrInput)(nil)).Elem(), MaintenanceWindowUpdateTrack("SQL_UPDATE_TRACK_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PasswordValidationPolicyComplexityInput)(nil)).Elem(), PasswordValidationPolicyComplexity("COMPLEXITY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PasswordValidationPolicyComplexityPtrInput)(nil)).Elem(), PasswordValidationPolicyComplexity("COMPLEXITY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingsActivationPolicyInput)(nil)).Elem(), SettingsActivationPolicy("SQL_ACTIVATION_POLICY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingsActivationPolicyPtrInput)(nil)).Elem(), SettingsActivationPolicy("SQL_ACTIVATION_POLICY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingsAvailabilityTypeInput)(nil)).Elem(), SettingsAvailabilityType("SQL_AVAILABILITY_TYPE_UNSPECIFIED"))
@@ -2885,6 +3060,8 @@ func init() {
 	pulumi.RegisterOutputType(IpMappingTypePtrOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowUpdateTrackOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowUpdateTrackPtrOutput{})
+	pulumi.RegisterOutputType(PasswordValidationPolicyComplexityOutput{})
+	pulumi.RegisterOutputType(PasswordValidationPolicyComplexityPtrOutput{})
 	pulumi.RegisterOutputType(SettingsActivationPolicyOutput{})
 	pulumi.RegisterOutputType(SettingsActivationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(SettingsAvailabilityTypeOutput{})

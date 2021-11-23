@@ -1934,6 +1934,8 @@ const (
 	SchedulerAcceleratorConfigTypeNvidiaTeslaP4 = SchedulerAcceleratorConfigType("NVIDIA_TESLA_P4")
 	// Nvidia Tesla T4 GPU.
 	SchedulerAcceleratorConfigTypeNvidiaTeslaT4 = SchedulerAcceleratorConfigType("NVIDIA_TESLA_T4")
+	// Nvidia Tesla A100 GPU.
+	SchedulerAcceleratorConfigTypeNvidiaTeslaA100 = SchedulerAcceleratorConfigType("NVIDIA_TESLA_A100")
 	// TPU v2.
 	SchedulerAcceleratorConfigTypeTpuV2 = SchedulerAcceleratorConfigType("TPU_V2")
 	// TPU v3.

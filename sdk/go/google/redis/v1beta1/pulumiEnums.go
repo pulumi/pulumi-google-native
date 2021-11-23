@@ -18,7 +18,7 @@ const (
 	InstanceConnectModeConnectModeUnspecified = InstanceConnectMode("CONNECT_MODE_UNSPECIFIED")
 	// Connect via direct peering to the Memorystore for Redis hosted service.
 	InstanceConnectModeDirectPeering = InstanceConnectMode("DIRECT_PEERING")
-	// Connect your Memorystore for Redis instance using Private Services Access. Private services access provides an IP address range for multiple Google Cloud services, including Memorystore.
+	// Connect your Memorystore for Redis instance using Private Service Access. Private services access provides an IP address range for multiple Google Cloud services, including Memorystore.
 	InstanceConnectModePrivateServiceAccess = InstanceConnectMode("PRIVATE_SERVICE_ACCESS")
 )
 
@@ -177,6 +177,175 @@ func (in *instanceConnectModePtr) ToInstanceConnectModePtrOutput() InstanceConne
 
 func (in *instanceConnectModePtr) ToInstanceConnectModePtrOutputWithContext(ctx context.Context) InstanceConnectModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceConnectModePtrOutput)
+}
+
+// Optional. Read replica mode. Can only be specified when trying to create the instance.
+type InstanceReadReplicasMode string
+
+const (
+	// If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
+	InstanceReadReplicasModeReadReplicasModeUnspecified = InstanceReadReplicasMode("READ_REPLICAS_MODE_UNSPECIFIED")
+	// If disabled, read endpoint will not be provided and the instance cannot scale up or down the number of replicas.
+	InstanceReadReplicasModeReadReplicasDisabled = InstanceReadReplicasMode("READ_REPLICAS_DISABLED")
+	// If enabled, read endpoint will be provided and the instance can scale up and down the number of replicas. Not valid for basic tier.
+	InstanceReadReplicasModeReadReplicasEnabled = InstanceReadReplicasMode("READ_REPLICAS_ENABLED")
+)
+
+func (InstanceReadReplicasMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceReadReplicasMode)(nil)).Elem()
+}
+
+func (e InstanceReadReplicasMode) ToInstanceReadReplicasModeOutput() InstanceReadReplicasModeOutput {
+	return pulumi.ToOutput(e).(InstanceReadReplicasModeOutput)
+}
+
+func (e InstanceReadReplicasMode) ToInstanceReadReplicasModeOutputWithContext(ctx context.Context) InstanceReadReplicasModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(InstanceReadReplicasModeOutput)
+}
+
+func (e InstanceReadReplicasMode) ToInstanceReadReplicasModePtrOutput() InstanceReadReplicasModePtrOutput {
+	return e.ToInstanceReadReplicasModePtrOutputWithContext(context.Background())
+}
+
+func (e InstanceReadReplicasMode) ToInstanceReadReplicasModePtrOutputWithContext(ctx context.Context) InstanceReadReplicasModePtrOutput {
+	return InstanceReadReplicasMode(e).ToInstanceReadReplicasModeOutputWithContext(ctx).ToInstanceReadReplicasModePtrOutputWithContext(ctx)
+}
+
+func (e InstanceReadReplicasMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InstanceReadReplicasMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InstanceReadReplicasMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e InstanceReadReplicasMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type InstanceReadReplicasModeOutput struct{ *pulumi.OutputState }
+
+func (InstanceReadReplicasModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceReadReplicasMode)(nil)).Elem()
+}
+
+func (o InstanceReadReplicasModeOutput) ToInstanceReadReplicasModeOutput() InstanceReadReplicasModeOutput {
+	return o
+}
+
+func (o InstanceReadReplicasModeOutput) ToInstanceReadReplicasModeOutputWithContext(ctx context.Context) InstanceReadReplicasModeOutput {
+	return o
+}
+
+func (o InstanceReadReplicasModeOutput) ToInstanceReadReplicasModePtrOutput() InstanceReadReplicasModePtrOutput {
+	return o.ToInstanceReadReplicasModePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceReadReplicasModeOutput) ToInstanceReadReplicasModePtrOutputWithContext(ctx context.Context) InstanceReadReplicasModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceReadReplicasMode) *InstanceReadReplicasMode {
+		return &v
+	}).(InstanceReadReplicasModePtrOutput)
+}
+
+func (o InstanceReadReplicasModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o InstanceReadReplicasModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceReadReplicasMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o InstanceReadReplicasModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceReadReplicasModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceReadReplicasMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceReadReplicasModePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceReadReplicasModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceReadReplicasMode)(nil)).Elem()
+}
+
+func (o InstanceReadReplicasModePtrOutput) ToInstanceReadReplicasModePtrOutput() InstanceReadReplicasModePtrOutput {
+	return o
+}
+
+func (o InstanceReadReplicasModePtrOutput) ToInstanceReadReplicasModePtrOutputWithContext(ctx context.Context) InstanceReadReplicasModePtrOutput {
+	return o
+}
+
+func (o InstanceReadReplicasModePtrOutput) Elem() InstanceReadReplicasModeOutput {
+	return o.ApplyT(func(v *InstanceReadReplicasMode) InstanceReadReplicasMode {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceReadReplicasMode
+		return ret
+	}).(InstanceReadReplicasModeOutput)
+}
+
+func (o InstanceReadReplicasModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceReadReplicasModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InstanceReadReplicasMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// InstanceReadReplicasModeInput is an input type that accepts InstanceReadReplicasModeArgs and InstanceReadReplicasModeOutput values.
+// You can construct a concrete instance of `InstanceReadReplicasModeInput` via:
+//
+//          InstanceReadReplicasModeArgs{...}
+type InstanceReadReplicasModeInput interface {
+	pulumi.Input
+
+	ToInstanceReadReplicasModeOutput() InstanceReadReplicasModeOutput
+	ToInstanceReadReplicasModeOutputWithContext(context.Context) InstanceReadReplicasModeOutput
+}
+
+var instanceReadReplicasModePtrType = reflect.TypeOf((**InstanceReadReplicasMode)(nil)).Elem()
+
+type InstanceReadReplicasModePtrInput interface {
+	pulumi.Input
+
+	ToInstanceReadReplicasModePtrOutput() InstanceReadReplicasModePtrOutput
+	ToInstanceReadReplicasModePtrOutputWithContext(context.Context) InstanceReadReplicasModePtrOutput
+}
+
+type instanceReadReplicasModePtr string
+
+func InstanceReadReplicasModePtr(v string) InstanceReadReplicasModePtrInput {
+	return (*instanceReadReplicasModePtr)(&v)
+}
+
+func (*instanceReadReplicasModePtr) ElementType() reflect.Type {
+	return instanceReadReplicasModePtrType
+}
+
+func (in *instanceReadReplicasModePtr) ToInstanceReadReplicasModePtrOutput() InstanceReadReplicasModePtrOutput {
+	return pulumi.ToOutput(in).(InstanceReadReplicasModePtrOutput)
+}
+
+func (in *instanceReadReplicasModePtr) ToInstanceReadReplicasModePtrOutputWithContext(ctx context.Context) InstanceReadReplicasModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(InstanceReadReplicasModePtrOutput)
 }
 
 // Required. The service tier of the instance.
@@ -517,6 +686,348 @@ func (in *instanceTransitEncryptionModePtr) ToInstanceTransitEncryptionModePtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceTransitEncryptionModePtrOutput)
 }
 
+// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+type PersistenceConfigPersistenceMode string
+
+const (
+	// Not set.
+	PersistenceConfigPersistenceModePersistenceModeUnspecified = PersistenceConfigPersistenceMode("PERSISTENCE_MODE_UNSPECIFIED")
+	// Persistence is disabled for the instance, and any existing snapshots are deleted.
+	PersistenceConfigPersistenceModeDisabled = PersistenceConfigPersistenceMode("DISABLED")
+	// RDB based Persistence is enabled.
+	PersistenceConfigPersistenceModeRdb = PersistenceConfigPersistenceMode("RDB")
+)
+
+func (PersistenceConfigPersistenceMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*PersistenceConfigPersistenceMode)(nil)).Elem()
+}
+
+func (e PersistenceConfigPersistenceMode) ToPersistenceConfigPersistenceModeOutput() PersistenceConfigPersistenceModeOutput {
+	return pulumi.ToOutput(e).(PersistenceConfigPersistenceModeOutput)
+}
+
+func (e PersistenceConfigPersistenceMode) ToPersistenceConfigPersistenceModeOutputWithContext(ctx context.Context) PersistenceConfigPersistenceModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PersistenceConfigPersistenceModeOutput)
+}
+
+func (e PersistenceConfigPersistenceMode) ToPersistenceConfigPersistenceModePtrOutput() PersistenceConfigPersistenceModePtrOutput {
+	return e.ToPersistenceConfigPersistenceModePtrOutputWithContext(context.Background())
+}
+
+func (e PersistenceConfigPersistenceMode) ToPersistenceConfigPersistenceModePtrOutputWithContext(ctx context.Context) PersistenceConfigPersistenceModePtrOutput {
+	return PersistenceConfigPersistenceMode(e).ToPersistenceConfigPersistenceModeOutputWithContext(ctx).ToPersistenceConfigPersistenceModePtrOutputWithContext(ctx)
+}
+
+func (e PersistenceConfigPersistenceMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PersistenceConfigPersistenceMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PersistenceConfigPersistenceMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PersistenceConfigPersistenceMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PersistenceConfigPersistenceModeOutput struct{ *pulumi.OutputState }
+
+func (PersistenceConfigPersistenceModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PersistenceConfigPersistenceMode)(nil)).Elem()
+}
+
+func (o PersistenceConfigPersistenceModeOutput) ToPersistenceConfigPersistenceModeOutput() PersistenceConfigPersistenceModeOutput {
+	return o
+}
+
+func (o PersistenceConfigPersistenceModeOutput) ToPersistenceConfigPersistenceModeOutputWithContext(ctx context.Context) PersistenceConfigPersistenceModeOutput {
+	return o
+}
+
+func (o PersistenceConfigPersistenceModeOutput) ToPersistenceConfigPersistenceModePtrOutput() PersistenceConfigPersistenceModePtrOutput {
+	return o.ToPersistenceConfigPersistenceModePtrOutputWithContext(context.Background())
+}
+
+func (o PersistenceConfigPersistenceModeOutput) ToPersistenceConfigPersistenceModePtrOutputWithContext(ctx context.Context) PersistenceConfigPersistenceModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PersistenceConfigPersistenceMode) *PersistenceConfigPersistenceMode {
+		return &v
+	}).(PersistenceConfigPersistenceModePtrOutput)
+}
+
+func (o PersistenceConfigPersistenceModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PersistenceConfigPersistenceModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PersistenceConfigPersistenceMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PersistenceConfigPersistenceModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PersistenceConfigPersistenceModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PersistenceConfigPersistenceMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PersistenceConfigPersistenceModePtrOutput struct{ *pulumi.OutputState }
+
+func (PersistenceConfigPersistenceModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PersistenceConfigPersistenceMode)(nil)).Elem()
+}
+
+func (o PersistenceConfigPersistenceModePtrOutput) ToPersistenceConfigPersistenceModePtrOutput() PersistenceConfigPersistenceModePtrOutput {
+	return o
+}
+
+func (o PersistenceConfigPersistenceModePtrOutput) ToPersistenceConfigPersistenceModePtrOutputWithContext(ctx context.Context) PersistenceConfigPersistenceModePtrOutput {
+	return o
+}
+
+func (o PersistenceConfigPersistenceModePtrOutput) Elem() PersistenceConfigPersistenceModeOutput {
+	return o.ApplyT(func(v *PersistenceConfigPersistenceMode) PersistenceConfigPersistenceMode {
+		if v != nil {
+			return *v
+		}
+		var ret PersistenceConfigPersistenceMode
+		return ret
+	}).(PersistenceConfigPersistenceModeOutput)
+}
+
+func (o PersistenceConfigPersistenceModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PersistenceConfigPersistenceModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PersistenceConfigPersistenceMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PersistenceConfigPersistenceModeInput is an input type that accepts PersistenceConfigPersistenceModeArgs and PersistenceConfigPersistenceModeOutput values.
+// You can construct a concrete instance of `PersistenceConfigPersistenceModeInput` via:
+//
+//          PersistenceConfigPersistenceModeArgs{...}
+type PersistenceConfigPersistenceModeInput interface {
+	pulumi.Input
+
+	ToPersistenceConfigPersistenceModeOutput() PersistenceConfigPersistenceModeOutput
+	ToPersistenceConfigPersistenceModeOutputWithContext(context.Context) PersistenceConfigPersistenceModeOutput
+}
+
+var persistenceConfigPersistenceModePtrType = reflect.TypeOf((**PersistenceConfigPersistenceMode)(nil)).Elem()
+
+type PersistenceConfigPersistenceModePtrInput interface {
+	pulumi.Input
+
+	ToPersistenceConfigPersistenceModePtrOutput() PersistenceConfigPersistenceModePtrOutput
+	ToPersistenceConfigPersistenceModePtrOutputWithContext(context.Context) PersistenceConfigPersistenceModePtrOutput
+}
+
+type persistenceConfigPersistenceModePtr string
+
+func PersistenceConfigPersistenceModePtr(v string) PersistenceConfigPersistenceModePtrInput {
+	return (*persistenceConfigPersistenceModePtr)(&v)
+}
+
+func (*persistenceConfigPersistenceModePtr) ElementType() reflect.Type {
+	return persistenceConfigPersistenceModePtrType
+}
+
+func (in *persistenceConfigPersistenceModePtr) ToPersistenceConfigPersistenceModePtrOutput() PersistenceConfigPersistenceModePtrOutput {
+	return pulumi.ToOutput(in).(PersistenceConfigPersistenceModePtrOutput)
+}
+
+func (in *persistenceConfigPersistenceModePtr) ToPersistenceConfigPersistenceModePtrOutputWithContext(ctx context.Context) PersistenceConfigPersistenceModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PersistenceConfigPersistenceModePtrOutput)
+}
+
+// Optional. Period between RDB snapshots. Snapshots will be attempted every period starting from the provided snapshot start time. For example, a start time of 01/01/2033 06:45 and SIX_HOURS snapshot period will do nothing until 01/01/2033, and then trigger snapshots every day at 06:45, 12:45, 18:45, and 00:45 the next day, and so on. If not provided, TWENTY_FOUR_HOURS will be used as default.
+type PersistenceConfigRdbSnapshotPeriod string
+
+const (
+	// Not set.
+	PersistenceConfigRdbSnapshotPeriodSnapshotPeriodUnspecified = PersistenceConfigRdbSnapshotPeriod("SNAPSHOT_PERIOD_UNSPECIFIED")
+	// Snapshot every 1 hour.
+	PersistenceConfigRdbSnapshotPeriodOneHour = PersistenceConfigRdbSnapshotPeriod("ONE_HOUR")
+	// Snapshot every 6 hours.
+	PersistenceConfigRdbSnapshotPeriodSixHours = PersistenceConfigRdbSnapshotPeriod("SIX_HOURS")
+	// Snapshot every 12 hours.
+	PersistenceConfigRdbSnapshotPeriodTwelveHours = PersistenceConfigRdbSnapshotPeriod("TWELVE_HOURS")
+	// Snapshot every 24 horus.
+	PersistenceConfigRdbSnapshotPeriodTwentyFourHours = PersistenceConfigRdbSnapshotPeriod("TWENTY_FOUR_HOURS")
+)
+
+func (PersistenceConfigRdbSnapshotPeriod) ElementType() reflect.Type {
+	return reflect.TypeOf((*PersistenceConfigRdbSnapshotPeriod)(nil)).Elem()
+}
+
+func (e PersistenceConfigRdbSnapshotPeriod) ToPersistenceConfigRdbSnapshotPeriodOutput() PersistenceConfigRdbSnapshotPeriodOutput {
+	return pulumi.ToOutput(e).(PersistenceConfigRdbSnapshotPeriodOutput)
+}
+
+func (e PersistenceConfigRdbSnapshotPeriod) ToPersistenceConfigRdbSnapshotPeriodOutputWithContext(ctx context.Context) PersistenceConfigRdbSnapshotPeriodOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PersistenceConfigRdbSnapshotPeriodOutput)
+}
+
+func (e PersistenceConfigRdbSnapshotPeriod) ToPersistenceConfigRdbSnapshotPeriodPtrOutput() PersistenceConfigRdbSnapshotPeriodPtrOutput {
+	return e.ToPersistenceConfigRdbSnapshotPeriodPtrOutputWithContext(context.Background())
+}
+
+func (e PersistenceConfigRdbSnapshotPeriod) ToPersistenceConfigRdbSnapshotPeriodPtrOutputWithContext(ctx context.Context) PersistenceConfigRdbSnapshotPeriodPtrOutput {
+	return PersistenceConfigRdbSnapshotPeriod(e).ToPersistenceConfigRdbSnapshotPeriodOutputWithContext(ctx).ToPersistenceConfigRdbSnapshotPeriodPtrOutputWithContext(ctx)
+}
+
+func (e PersistenceConfigRdbSnapshotPeriod) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PersistenceConfigRdbSnapshotPeriod) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PersistenceConfigRdbSnapshotPeriod) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PersistenceConfigRdbSnapshotPeriod) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PersistenceConfigRdbSnapshotPeriodOutput struct{ *pulumi.OutputState }
+
+func (PersistenceConfigRdbSnapshotPeriodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PersistenceConfigRdbSnapshotPeriod)(nil)).Elem()
+}
+
+func (o PersistenceConfigRdbSnapshotPeriodOutput) ToPersistenceConfigRdbSnapshotPeriodOutput() PersistenceConfigRdbSnapshotPeriodOutput {
+	return o
+}
+
+func (o PersistenceConfigRdbSnapshotPeriodOutput) ToPersistenceConfigRdbSnapshotPeriodOutputWithContext(ctx context.Context) PersistenceConfigRdbSnapshotPeriodOutput {
+	return o
+}
+
+func (o PersistenceConfigRdbSnapshotPeriodOutput) ToPersistenceConfigRdbSnapshotPeriodPtrOutput() PersistenceConfigRdbSnapshotPeriodPtrOutput {
+	return o.ToPersistenceConfigRdbSnapshotPeriodPtrOutputWithContext(context.Background())
+}
+
+func (o PersistenceConfigRdbSnapshotPeriodOutput) ToPersistenceConfigRdbSnapshotPeriodPtrOutputWithContext(ctx context.Context) PersistenceConfigRdbSnapshotPeriodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PersistenceConfigRdbSnapshotPeriod) *PersistenceConfigRdbSnapshotPeriod {
+		return &v
+	}).(PersistenceConfigRdbSnapshotPeriodPtrOutput)
+}
+
+func (o PersistenceConfigRdbSnapshotPeriodOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PersistenceConfigRdbSnapshotPeriodOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PersistenceConfigRdbSnapshotPeriod) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PersistenceConfigRdbSnapshotPeriodOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PersistenceConfigRdbSnapshotPeriodOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PersistenceConfigRdbSnapshotPeriod) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PersistenceConfigRdbSnapshotPeriodPtrOutput struct{ *pulumi.OutputState }
+
+func (PersistenceConfigRdbSnapshotPeriodPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PersistenceConfigRdbSnapshotPeriod)(nil)).Elem()
+}
+
+func (o PersistenceConfigRdbSnapshotPeriodPtrOutput) ToPersistenceConfigRdbSnapshotPeriodPtrOutput() PersistenceConfigRdbSnapshotPeriodPtrOutput {
+	return o
+}
+
+func (o PersistenceConfigRdbSnapshotPeriodPtrOutput) ToPersistenceConfigRdbSnapshotPeriodPtrOutputWithContext(ctx context.Context) PersistenceConfigRdbSnapshotPeriodPtrOutput {
+	return o
+}
+
+func (o PersistenceConfigRdbSnapshotPeriodPtrOutput) Elem() PersistenceConfigRdbSnapshotPeriodOutput {
+	return o.ApplyT(func(v *PersistenceConfigRdbSnapshotPeriod) PersistenceConfigRdbSnapshotPeriod {
+		if v != nil {
+			return *v
+		}
+		var ret PersistenceConfigRdbSnapshotPeriod
+		return ret
+	}).(PersistenceConfigRdbSnapshotPeriodOutput)
+}
+
+func (o PersistenceConfigRdbSnapshotPeriodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PersistenceConfigRdbSnapshotPeriodPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PersistenceConfigRdbSnapshotPeriod) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PersistenceConfigRdbSnapshotPeriodInput is an input type that accepts PersistenceConfigRdbSnapshotPeriodArgs and PersistenceConfigRdbSnapshotPeriodOutput values.
+// You can construct a concrete instance of `PersistenceConfigRdbSnapshotPeriodInput` via:
+//
+//          PersistenceConfigRdbSnapshotPeriodArgs{...}
+type PersistenceConfigRdbSnapshotPeriodInput interface {
+	pulumi.Input
+
+	ToPersistenceConfigRdbSnapshotPeriodOutput() PersistenceConfigRdbSnapshotPeriodOutput
+	ToPersistenceConfigRdbSnapshotPeriodOutputWithContext(context.Context) PersistenceConfigRdbSnapshotPeriodOutput
+}
+
+var persistenceConfigRdbSnapshotPeriodPtrType = reflect.TypeOf((**PersistenceConfigRdbSnapshotPeriod)(nil)).Elem()
+
+type PersistenceConfigRdbSnapshotPeriodPtrInput interface {
+	pulumi.Input
+
+	ToPersistenceConfigRdbSnapshotPeriodPtrOutput() PersistenceConfigRdbSnapshotPeriodPtrOutput
+	ToPersistenceConfigRdbSnapshotPeriodPtrOutputWithContext(context.Context) PersistenceConfigRdbSnapshotPeriodPtrOutput
+}
+
+type persistenceConfigRdbSnapshotPeriodPtr string
+
+func PersistenceConfigRdbSnapshotPeriodPtr(v string) PersistenceConfigRdbSnapshotPeriodPtrInput {
+	return (*persistenceConfigRdbSnapshotPeriodPtr)(&v)
+}
+
+func (*persistenceConfigRdbSnapshotPeriodPtr) ElementType() reflect.Type {
+	return persistenceConfigRdbSnapshotPeriodPtrType
+}
+
+func (in *persistenceConfigRdbSnapshotPeriodPtr) ToPersistenceConfigRdbSnapshotPeriodPtrOutput() PersistenceConfigRdbSnapshotPeriodPtrOutput {
+	return pulumi.ToOutput(in).(PersistenceConfigRdbSnapshotPeriodPtrOutput)
+}
+
+func (in *persistenceConfigRdbSnapshotPeriodPtr) ToPersistenceConfigRdbSnapshotPeriodPtrOutputWithContext(ctx context.Context) PersistenceConfigRdbSnapshotPeriodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PersistenceConfigRdbSnapshotPeriodPtrOutput)
+}
+
 // Required. The day of week that maintenance updates occur.
 type WeeklyMaintenanceWindowDay string
 
@@ -699,18 +1210,30 @@ func (in *weeklyMaintenanceWindowDayPtr) ToWeeklyMaintenanceWindowDayPtrOutputWi
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConnectModeInput)(nil)).Elem(), InstanceConnectMode("CONNECT_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConnectModePtrInput)(nil)).Elem(), InstanceConnectMode("CONNECT_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReadReplicasModeInput)(nil)).Elem(), InstanceReadReplicasMode("READ_REPLICAS_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReadReplicasModePtrInput)(nil)).Elem(), InstanceReadReplicasMode("READ_REPLICAS_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTierInput)(nil)).Elem(), InstanceTier("TIER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTierPtrInput)(nil)).Elem(), InstanceTier("TIER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTransitEncryptionModeInput)(nil)).Elem(), InstanceTransitEncryptionMode("TRANSIT_ENCRYPTION_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTransitEncryptionModePtrInput)(nil)).Elem(), InstanceTransitEncryptionMode("TRANSIT_ENCRYPTION_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PersistenceConfigPersistenceModeInput)(nil)).Elem(), PersistenceConfigPersistenceMode("PERSISTENCE_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PersistenceConfigPersistenceModePtrInput)(nil)).Elem(), PersistenceConfigPersistenceMode("PERSISTENCE_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PersistenceConfigRdbSnapshotPeriodInput)(nil)).Elem(), PersistenceConfigRdbSnapshotPeriod("SNAPSHOT_PERIOD_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PersistenceConfigRdbSnapshotPeriodPtrInput)(nil)).Elem(), PersistenceConfigRdbSnapshotPeriod("SNAPSHOT_PERIOD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*WeeklyMaintenanceWindowDayInput)(nil)).Elem(), WeeklyMaintenanceWindowDay("DAY_OF_WEEK_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*WeeklyMaintenanceWindowDayPtrInput)(nil)).Elem(), WeeklyMaintenanceWindowDay("DAY_OF_WEEK_UNSPECIFIED"))
 	pulumi.RegisterOutputType(InstanceConnectModeOutput{})
 	pulumi.RegisterOutputType(InstanceConnectModePtrOutput{})
+	pulumi.RegisterOutputType(InstanceReadReplicasModeOutput{})
+	pulumi.RegisterOutputType(InstanceReadReplicasModePtrOutput{})
 	pulumi.RegisterOutputType(InstanceTierOutput{})
 	pulumi.RegisterOutputType(InstanceTierPtrOutput{})
 	pulumi.RegisterOutputType(InstanceTransitEncryptionModeOutput{})
 	pulumi.RegisterOutputType(InstanceTransitEncryptionModePtrOutput{})
+	pulumi.RegisterOutputType(PersistenceConfigPersistenceModeOutput{})
+	pulumi.RegisterOutputType(PersistenceConfigPersistenceModePtrOutput{})
+	pulumi.RegisterOutputType(PersistenceConfigRdbSnapshotPeriodOutput{})
+	pulumi.RegisterOutputType(PersistenceConfigRdbSnapshotPeriodPtrOutput{})
 	pulumi.RegisterOutputType(WeeklyMaintenanceWindowDayOutput{})
 	pulumi.RegisterOutputType(WeeklyMaintenanceWindowDayPtrOutput{})
 }

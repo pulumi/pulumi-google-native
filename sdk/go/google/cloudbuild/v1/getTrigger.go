@@ -40,6 +40,8 @@ type LookupTriggerResult struct {
 	Description string `pulumi:"description"`
 	// If true, the trigger will never automatically execute a build.
 	Disabled bool `pulumi:"disabled"`
+	// Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+	EventType string `pulumi:"eventType"`
 	// Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
 	Filename string `pulumi:"filename"`
 	// A Common Expression Language string.
@@ -134,6 +136,11 @@ func (o LookupTriggerResultOutput) Description() pulumi.StringOutput {
 // If true, the trigger will never automatically execute a build.
 func (o LookupTriggerResultOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupTriggerResult) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+func (o LookupTriggerResultOutput) EventType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTriggerResult) string { return v.EventType }).(pulumi.StringOutput)
 }
 
 // Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).

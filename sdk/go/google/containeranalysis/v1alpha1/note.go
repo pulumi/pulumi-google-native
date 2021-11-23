@@ -49,7 +49,7 @@ type Note struct {
 	// A note describing an SPDX File.
 	SpdxFile FileNoteResponseOutput `pulumi:"spdxFile"`
 	// A note describing an SPDX Package.
-	SpdxPackage PackageNoteResponseOutput `pulumi:"spdxPackage"`
+	SpdxPackage PackageInfoNoteResponseOutput `pulumi:"spdxPackage"`
 	// A note describing a relationship between SPDX elements.
 	SpdxRelationship RelationshipNoteResponseOutput `pulumi:"spdxRelationship"`
 	// The time this note was last updated. This field can be used as a filter in list requests.
@@ -132,7 +132,7 @@ type noteArgs struct {
 	// A note describing an SPDX File.
 	SpdxFile *FileNote `pulumi:"spdxFile"`
 	// A note describing an SPDX Package.
-	SpdxPackage *PackageNote `pulumi:"spdxPackage"`
+	SpdxPackage *PackageInfoNote `pulumi:"spdxPackage"`
 	// A note describing a relationship between SPDX elements.
 	SpdxRelationship *RelationshipNote `pulumi:"spdxRelationship"`
 	// A note describing an upgrade.
@@ -176,7 +176,7 @@ type NoteArgs struct {
 	// A note describing an SPDX File.
 	SpdxFile FileNotePtrInput
 	// A note describing an SPDX Package.
-	SpdxPackage PackageNotePtrInput
+	SpdxPackage PackageInfoNotePtrInput
 	// A note describing a relationship between SPDX elements.
 	SpdxRelationship RelationshipNotePtrInput
 	// A note describing an upgrade.

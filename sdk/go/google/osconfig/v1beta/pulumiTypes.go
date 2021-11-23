@@ -10239,6 +10239,8 @@ func (o TimeZoneResponsePtrOutput) Version() pulumi.StringPtrOutput {
 type WeekDayOfMonth struct {
 	// A day of the week.
 	DayOfWeek WeekDayOfMonthDayOfWeek `pulumi:"dayOfWeek"`
+	// Optional. Represents the number of days before or after the given week day of month that the patch deployment is scheduled for. For example if `week_ordinal` and `day_of_week` values point to the second day of the month and this `day_offset` value is set to `3`, the patch deployment takes place three days after the second Tuesday of the month. If this value is negative, for example -5, the patches are deployed five days before before the second Tuesday of the month. Allowed values are in range [-30, 30].
+	DayOffset *int `pulumi:"dayOffset"`
 	// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
 	WeekOrdinal int `pulumi:"weekOrdinal"`
 }
@@ -10258,6 +10260,8 @@ type WeekDayOfMonthInput interface {
 type WeekDayOfMonthArgs struct {
 	// A day of the week.
 	DayOfWeek WeekDayOfMonthDayOfWeekInput `pulumi:"dayOfWeek"`
+	// Optional. Represents the number of days before or after the given week day of month that the patch deployment is scheduled for. For example if `week_ordinal` and `day_of_week` values point to the second day of the month and this `day_offset` value is set to `3`, the patch deployment takes place three days after the second Tuesday of the month. If this value is negative, for example -5, the patches are deployed five days before before the second Tuesday of the month. Allowed values are in range [-30, 30].
+	DayOffset pulumi.IntPtrInput `pulumi:"dayOffset"`
 	// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
 	WeekOrdinal pulumi.IntInput `pulumi:"weekOrdinal"`
 }
@@ -10345,6 +10349,11 @@ func (o WeekDayOfMonthOutput) DayOfWeek() WeekDayOfMonthDayOfWeekOutput {
 	return o.ApplyT(func(v WeekDayOfMonth) WeekDayOfMonthDayOfWeek { return v.DayOfWeek }).(WeekDayOfMonthDayOfWeekOutput)
 }
 
+// Optional. Represents the number of days before or after the given week day of month that the patch deployment is scheduled for. For example if `week_ordinal` and `day_of_week` values point to the second day of the month and this `day_offset` value is set to `3`, the patch deployment takes place three days after the second Tuesday of the month. If this value is negative, for example -5, the patches are deployed five days before before the second Tuesday of the month. Allowed values are in range [-30, 30].
+func (o WeekDayOfMonthOutput) DayOffset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WeekDayOfMonth) *int { return v.DayOffset }).(pulumi.IntPtrOutput)
+}
+
 // Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
 func (o WeekDayOfMonthOutput) WeekOrdinal() pulumi.IntOutput {
 	return o.ApplyT(func(v WeekDayOfMonth) int { return v.WeekOrdinal }).(pulumi.IntOutput)
@@ -10384,6 +10393,16 @@ func (o WeekDayOfMonthPtrOutput) DayOfWeek() WeekDayOfMonthDayOfWeekPtrOutput {
 	}).(WeekDayOfMonthDayOfWeekPtrOutput)
 }
 
+// Optional. Represents the number of days before or after the given week day of month that the patch deployment is scheduled for. For example if `week_ordinal` and `day_of_week` values point to the second day of the month and this `day_offset` value is set to `3`, the patch deployment takes place three days after the second Tuesday of the month. If this value is negative, for example -5, the patches are deployed five days before before the second Tuesday of the month. Allowed values are in range [-30, 30].
+func (o WeekDayOfMonthPtrOutput) DayOffset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WeekDayOfMonth) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DayOffset
+	}).(pulumi.IntPtrOutput)
+}
+
 // Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
 func (o WeekDayOfMonthPtrOutput) WeekOrdinal() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WeekDayOfMonth) *int {
@@ -10398,6 +10417,8 @@ func (o WeekDayOfMonthPtrOutput) WeekOrdinal() pulumi.IntPtrOutput {
 type WeekDayOfMonthResponse struct {
 	// A day of the week.
 	DayOfWeek string `pulumi:"dayOfWeek"`
+	// Optional. Represents the number of days before or after the given week day of month that the patch deployment is scheduled for. For example if `week_ordinal` and `day_of_week` values point to the second day of the month and this `day_offset` value is set to `3`, the patch deployment takes place three days after the second Tuesday of the month. If this value is negative, for example -5, the patches are deployed five days before before the second Tuesday of the month. Allowed values are in range [-30, 30].
+	DayOffset int `pulumi:"dayOffset"`
 	// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
 	WeekOrdinal int `pulumi:"weekOrdinal"`
 }
@@ -10417,6 +10438,8 @@ type WeekDayOfMonthResponseInput interface {
 type WeekDayOfMonthResponseArgs struct {
 	// A day of the week.
 	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
+	// Optional. Represents the number of days before or after the given week day of month that the patch deployment is scheduled for. For example if `week_ordinal` and `day_of_week` values point to the second day of the month and this `day_offset` value is set to `3`, the patch deployment takes place three days after the second Tuesday of the month. If this value is negative, for example -5, the patches are deployed five days before before the second Tuesday of the month. Allowed values are in range [-30, 30].
+	DayOffset pulumi.IntInput `pulumi:"dayOffset"`
 	// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
 	WeekOrdinal pulumi.IntInput `pulumi:"weekOrdinal"`
 }
@@ -10504,6 +10527,11 @@ func (o WeekDayOfMonthResponseOutput) DayOfWeek() pulumi.StringOutput {
 	return o.ApplyT(func(v WeekDayOfMonthResponse) string { return v.DayOfWeek }).(pulumi.StringOutput)
 }
 
+// Optional. Represents the number of days before or after the given week day of month that the patch deployment is scheduled for. For example if `week_ordinal` and `day_of_week` values point to the second day of the month and this `day_offset` value is set to `3`, the patch deployment takes place three days after the second Tuesday of the month. If this value is negative, for example -5, the patches are deployed five days before before the second Tuesday of the month. Allowed values are in range [-30, 30].
+func (o WeekDayOfMonthResponseOutput) DayOffset() pulumi.IntOutput {
+	return o.ApplyT(func(v WeekDayOfMonthResponse) int { return v.DayOffset }).(pulumi.IntOutput)
+}
+
 // Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
 func (o WeekDayOfMonthResponseOutput) WeekOrdinal() pulumi.IntOutput {
 	return o.ApplyT(func(v WeekDayOfMonthResponse) int { return v.WeekOrdinal }).(pulumi.IntOutput)
@@ -10541,6 +10569,16 @@ func (o WeekDayOfMonthResponsePtrOutput) DayOfWeek() pulumi.StringPtrOutput {
 		}
 		return &v.DayOfWeek
 	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Represents the number of days before or after the given week day of month that the patch deployment is scheduled for. For example if `week_ordinal` and `day_of_week` values point to the second day of the month and this `day_offset` value is set to `3`, the patch deployment takes place three days after the second Tuesday of the month. If this value is negative, for example -5, the patches are deployed five days before before the second Tuesday of the month. Allowed values are in range [-30, 30].
+func (o WeekDayOfMonthResponsePtrOutput) DayOffset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WeekDayOfMonthResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.DayOffset
+	}).(pulumi.IntPtrOutput)
 }
 
 // Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.

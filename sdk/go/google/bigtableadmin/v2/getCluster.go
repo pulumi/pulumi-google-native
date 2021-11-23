@@ -27,6 +27,8 @@ type LookupClusterArgs struct {
 }
 
 type LookupClusterResult struct {
+	// Configuration for this cluster.
+	ClusterConfig ClusterConfigResponse `pulumi:"clusterConfig"`
 	// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
 	DefaultStorageType string `pulumi:"defaultStorageType"`
 	// Immutable. The encryption configuration for CMEK-protected clusters.
@@ -72,6 +74,11 @@ func (o LookupClusterResultOutput) ToLookupClusterResultOutput() LookupClusterRe
 
 func (o LookupClusterResultOutput) ToLookupClusterResultOutputWithContext(ctx context.Context) LookupClusterResultOutput {
 	return o
+}
+
+// Configuration for this cluster.
+func (o LookupClusterResultOutput) ClusterConfig() ClusterConfigResponseOutput {
+	return o.ApplyT(func(v LookupClusterResult) ClusterConfigResponse { return v.ClusterConfig }).(ClusterConfigResponseOutput)
 }
 
 // Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.

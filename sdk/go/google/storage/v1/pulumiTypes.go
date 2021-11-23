@@ -765,6 +765,324 @@ func (o BucketAccessControlResponseArrayOutput) Index(i pulumi.IntInput) BucketA
 	}).(BucketAccessControlResponseOutput)
 }
 
+// The bucket's Autoclass configuration.
+type BucketAutoclass struct {
+	// Whether or not Autoclass is enabled on this bucket
+	Enabled *bool `pulumi:"enabled"`
+	// A date and time in RFC 3339 format representing the instant at which "enabled" was last toggled.
+	ToggleTime *string `pulumi:"toggleTime"`
+}
+
+// BucketAutoclassInput is an input type that accepts BucketAutoclassArgs and BucketAutoclassOutput values.
+// You can construct a concrete instance of `BucketAutoclassInput` via:
+//
+//          BucketAutoclassArgs{...}
+type BucketAutoclassInput interface {
+	pulumi.Input
+
+	ToBucketAutoclassOutput() BucketAutoclassOutput
+	ToBucketAutoclassOutputWithContext(context.Context) BucketAutoclassOutput
+}
+
+// The bucket's Autoclass configuration.
+type BucketAutoclassArgs struct {
+	// Whether or not Autoclass is enabled on this bucket
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// A date and time in RFC 3339 format representing the instant at which "enabled" was last toggled.
+	ToggleTime pulumi.StringPtrInput `pulumi:"toggleTime"`
+}
+
+func (BucketAutoclassArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketAutoclass)(nil)).Elem()
+}
+
+func (i BucketAutoclassArgs) ToBucketAutoclassOutput() BucketAutoclassOutput {
+	return i.ToBucketAutoclassOutputWithContext(context.Background())
+}
+
+func (i BucketAutoclassArgs) ToBucketAutoclassOutputWithContext(ctx context.Context) BucketAutoclassOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketAutoclassOutput)
+}
+
+func (i BucketAutoclassArgs) ToBucketAutoclassPtrOutput() BucketAutoclassPtrOutput {
+	return i.ToBucketAutoclassPtrOutputWithContext(context.Background())
+}
+
+func (i BucketAutoclassArgs) ToBucketAutoclassPtrOutputWithContext(ctx context.Context) BucketAutoclassPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketAutoclassOutput).ToBucketAutoclassPtrOutputWithContext(ctx)
+}
+
+// BucketAutoclassPtrInput is an input type that accepts BucketAutoclassArgs, BucketAutoclassPtr and BucketAutoclassPtrOutput values.
+// You can construct a concrete instance of `BucketAutoclassPtrInput` via:
+//
+//          BucketAutoclassArgs{...}
+//
+//  or:
+//
+//          nil
+type BucketAutoclassPtrInput interface {
+	pulumi.Input
+
+	ToBucketAutoclassPtrOutput() BucketAutoclassPtrOutput
+	ToBucketAutoclassPtrOutputWithContext(context.Context) BucketAutoclassPtrOutput
+}
+
+type bucketAutoclassPtrType BucketAutoclassArgs
+
+func BucketAutoclassPtr(v *BucketAutoclassArgs) BucketAutoclassPtrInput {
+	return (*bucketAutoclassPtrType)(v)
+}
+
+func (*bucketAutoclassPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketAutoclass)(nil)).Elem()
+}
+
+func (i *bucketAutoclassPtrType) ToBucketAutoclassPtrOutput() BucketAutoclassPtrOutput {
+	return i.ToBucketAutoclassPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketAutoclassPtrType) ToBucketAutoclassPtrOutputWithContext(ctx context.Context) BucketAutoclassPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketAutoclassPtrOutput)
+}
+
+// The bucket's Autoclass configuration.
+type BucketAutoclassOutput struct{ *pulumi.OutputState }
+
+func (BucketAutoclassOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketAutoclass)(nil)).Elem()
+}
+
+func (o BucketAutoclassOutput) ToBucketAutoclassOutput() BucketAutoclassOutput {
+	return o
+}
+
+func (o BucketAutoclassOutput) ToBucketAutoclassOutputWithContext(ctx context.Context) BucketAutoclassOutput {
+	return o
+}
+
+func (o BucketAutoclassOutput) ToBucketAutoclassPtrOutput() BucketAutoclassPtrOutput {
+	return o.ToBucketAutoclassPtrOutputWithContext(context.Background())
+}
+
+func (o BucketAutoclassOutput) ToBucketAutoclassPtrOutputWithContext(ctx context.Context) BucketAutoclassPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketAutoclass) *BucketAutoclass {
+		return &v
+	}).(BucketAutoclassPtrOutput)
+}
+
+// Whether or not Autoclass is enabled on this bucket
+func (o BucketAutoclassOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketAutoclass) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// A date and time in RFC 3339 format representing the instant at which "enabled" was last toggled.
+func (o BucketAutoclassOutput) ToggleTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketAutoclass) *string { return v.ToggleTime }).(pulumi.StringPtrOutput)
+}
+
+type BucketAutoclassPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketAutoclassPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketAutoclass)(nil)).Elem()
+}
+
+func (o BucketAutoclassPtrOutput) ToBucketAutoclassPtrOutput() BucketAutoclassPtrOutput {
+	return o
+}
+
+func (o BucketAutoclassPtrOutput) ToBucketAutoclassPtrOutputWithContext(ctx context.Context) BucketAutoclassPtrOutput {
+	return o
+}
+
+func (o BucketAutoclassPtrOutput) Elem() BucketAutoclassOutput {
+	return o.ApplyT(func(v *BucketAutoclass) BucketAutoclass {
+		if v != nil {
+			return *v
+		}
+		var ret BucketAutoclass
+		return ret
+	}).(BucketAutoclassOutput)
+}
+
+// Whether or not Autoclass is enabled on this bucket
+func (o BucketAutoclassPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BucketAutoclass) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A date and time in RFC 3339 format representing the instant at which "enabled" was last toggled.
+func (o BucketAutoclassPtrOutput) ToggleTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketAutoclass) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ToggleTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The bucket's Autoclass configuration.
+type BucketAutoclassResponse struct {
+	// Whether or not Autoclass is enabled on this bucket
+	Enabled bool `pulumi:"enabled"`
+	// A date and time in RFC 3339 format representing the instant at which "enabled" was last toggled.
+	ToggleTime string `pulumi:"toggleTime"`
+}
+
+// BucketAutoclassResponseInput is an input type that accepts BucketAutoclassResponseArgs and BucketAutoclassResponseOutput values.
+// You can construct a concrete instance of `BucketAutoclassResponseInput` via:
+//
+//          BucketAutoclassResponseArgs{...}
+type BucketAutoclassResponseInput interface {
+	pulumi.Input
+
+	ToBucketAutoclassResponseOutput() BucketAutoclassResponseOutput
+	ToBucketAutoclassResponseOutputWithContext(context.Context) BucketAutoclassResponseOutput
+}
+
+// The bucket's Autoclass configuration.
+type BucketAutoclassResponseArgs struct {
+	// Whether or not Autoclass is enabled on this bucket
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// A date and time in RFC 3339 format representing the instant at which "enabled" was last toggled.
+	ToggleTime pulumi.StringInput `pulumi:"toggleTime"`
+}
+
+func (BucketAutoclassResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketAutoclassResponse)(nil)).Elem()
+}
+
+func (i BucketAutoclassResponseArgs) ToBucketAutoclassResponseOutput() BucketAutoclassResponseOutput {
+	return i.ToBucketAutoclassResponseOutputWithContext(context.Background())
+}
+
+func (i BucketAutoclassResponseArgs) ToBucketAutoclassResponseOutputWithContext(ctx context.Context) BucketAutoclassResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketAutoclassResponseOutput)
+}
+
+func (i BucketAutoclassResponseArgs) ToBucketAutoclassResponsePtrOutput() BucketAutoclassResponsePtrOutput {
+	return i.ToBucketAutoclassResponsePtrOutputWithContext(context.Background())
+}
+
+func (i BucketAutoclassResponseArgs) ToBucketAutoclassResponsePtrOutputWithContext(ctx context.Context) BucketAutoclassResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketAutoclassResponseOutput).ToBucketAutoclassResponsePtrOutputWithContext(ctx)
+}
+
+// BucketAutoclassResponsePtrInput is an input type that accepts BucketAutoclassResponseArgs, BucketAutoclassResponsePtr and BucketAutoclassResponsePtrOutput values.
+// You can construct a concrete instance of `BucketAutoclassResponsePtrInput` via:
+//
+//          BucketAutoclassResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type BucketAutoclassResponsePtrInput interface {
+	pulumi.Input
+
+	ToBucketAutoclassResponsePtrOutput() BucketAutoclassResponsePtrOutput
+	ToBucketAutoclassResponsePtrOutputWithContext(context.Context) BucketAutoclassResponsePtrOutput
+}
+
+type bucketAutoclassResponsePtrType BucketAutoclassResponseArgs
+
+func BucketAutoclassResponsePtr(v *BucketAutoclassResponseArgs) BucketAutoclassResponsePtrInput {
+	return (*bucketAutoclassResponsePtrType)(v)
+}
+
+func (*bucketAutoclassResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketAutoclassResponse)(nil)).Elem()
+}
+
+func (i *bucketAutoclassResponsePtrType) ToBucketAutoclassResponsePtrOutput() BucketAutoclassResponsePtrOutput {
+	return i.ToBucketAutoclassResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *bucketAutoclassResponsePtrType) ToBucketAutoclassResponsePtrOutputWithContext(ctx context.Context) BucketAutoclassResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketAutoclassResponsePtrOutput)
+}
+
+// The bucket's Autoclass configuration.
+type BucketAutoclassResponseOutput struct{ *pulumi.OutputState }
+
+func (BucketAutoclassResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketAutoclassResponse)(nil)).Elem()
+}
+
+func (o BucketAutoclassResponseOutput) ToBucketAutoclassResponseOutput() BucketAutoclassResponseOutput {
+	return o
+}
+
+func (o BucketAutoclassResponseOutput) ToBucketAutoclassResponseOutputWithContext(ctx context.Context) BucketAutoclassResponseOutput {
+	return o
+}
+
+func (o BucketAutoclassResponseOutput) ToBucketAutoclassResponsePtrOutput() BucketAutoclassResponsePtrOutput {
+	return o.ToBucketAutoclassResponsePtrOutputWithContext(context.Background())
+}
+
+func (o BucketAutoclassResponseOutput) ToBucketAutoclassResponsePtrOutputWithContext(ctx context.Context) BucketAutoclassResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketAutoclassResponse) *BucketAutoclassResponse {
+		return &v
+	}).(BucketAutoclassResponsePtrOutput)
+}
+
+// Whether or not Autoclass is enabled on this bucket
+func (o BucketAutoclassResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v BucketAutoclassResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// A date and time in RFC 3339 format representing the instant at which "enabled" was last toggled.
+func (o BucketAutoclassResponseOutput) ToggleTime() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketAutoclassResponse) string { return v.ToggleTime }).(pulumi.StringOutput)
+}
+
+type BucketAutoclassResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BucketAutoclassResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketAutoclassResponse)(nil)).Elem()
+}
+
+func (o BucketAutoclassResponsePtrOutput) ToBucketAutoclassResponsePtrOutput() BucketAutoclassResponsePtrOutput {
+	return o
+}
+
+func (o BucketAutoclassResponsePtrOutput) ToBucketAutoclassResponsePtrOutputWithContext(ctx context.Context) BucketAutoclassResponsePtrOutput {
+	return o
+}
+
+func (o BucketAutoclassResponsePtrOutput) Elem() BucketAutoclassResponseOutput {
+	return o.ApplyT(func(v *BucketAutoclassResponse) BucketAutoclassResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BucketAutoclassResponse
+		return ret
+	}).(BucketAutoclassResponseOutput)
+}
+
+// Whether or not Autoclass is enabled on this bucket
+func (o BucketAutoclassResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BucketAutoclassResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A date and time in RFC 3339 format representing the instant at which "enabled" was last toggled.
+func (o BucketAutoclassResponsePtrOutput) ToggleTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketAutoclassResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ToggleTime
+	}).(pulumi.StringPtrOutput)
+}
+
 // The bucket's billing configuration.
 type BucketBilling struct {
 	// When set to true, Requester Pays is enabled for this bucket.
@@ -8324,6 +8642,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketAccessControlProjectTeamResponsePtrInput)(nil)).Elem(), BucketAccessControlProjectTeamResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketAccessControlResponseInput)(nil)).Elem(), BucketAccessControlResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketAccessControlResponseArrayInput)(nil)).Elem(), BucketAccessControlResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketAutoclassInput)(nil)).Elem(), BucketAutoclassArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketAutoclassPtrInput)(nil)).Elem(), BucketAutoclassArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketAutoclassResponseInput)(nil)).Elem(), BucketAutoclassResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketAutoclassResponsePtrInput)(nil)).Elem(), BucketAutoclassResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketBillingInput)(nil)).Elem(), BucketBillingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketBillingPtrInput)(nil)).Elem(), BucketBillingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketBillingResponseInput)(nil)).Elem(), BucketBillingResponseArgs{})
@@ -8425,6 +8747,10 @@ func init() {
 	pulumi.RegisterOutputType(BucketAccessControlProjectTeamResponsePtrOutput{})
 	pulumi.RegisterOutputType(BucketAccessControlResponseOutput{})
 	pulumi.RegisterOutputType(BucketAccessControlResponseArrayOutput{})
+	pulumi.RegisterOutputType(BucketAutoclassOutput{})
+	pulumi.RegisterOutputType(BucketAutoclassPtrOutput{})
+	pulumi.RegisterOutputType(BucketAutoclassResponseOutput{})
+	pulumi.RegisterOutputType(BucketAutoclassResponsePtrOutput{})
 	pulumi.RegisterOutputType(BucketBillingOutput{})
 	pulumi.RegisterOutputType(BucketBillingPtrOutput{})
 	pulumi.RegisterOutputType(BucketBillingResponseOutput{})

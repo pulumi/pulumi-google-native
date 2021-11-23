@@ -10,6 +10,388 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Spec for App Dev Experience Feature.
+type AppDevExperienceFeatureSpec struct {
+}
+
+// AppDevExperienceFeatureSpecInput is an input type that accepts AppDevExperienceFeatureSpecArgs and AppDevExperienceFeatureSpecOutput values.
+// You can construct a concrete instance of `AppDevExperienceFeatureSpecInput` via:
+//
+//          AppDevExperienceFeatureSpecArgs{...}
+type AppDevExperienceFeatureSpecInput interface {
+	pulumi.Input
+
+	ToAppDevExperienceFeatureSpecOutput() AppDevExperienceFeatureSpecOutput
+	ToAppDevExperienceFeatureSpecOutputWithContext(context.Context) AppDevExperienceFeatureSpecOutput
+}
+
+// Spec for App Dev Experience Feature.
+type AppDevExperienceFeatureSpecArgs struct {
+}
+
+func (AppDevExperienceFeatureSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppDevExperienceFeatureSpec)(nil)).Elem()
+}
+
+func (i AppDevExperienceFeatureSpecArgs) ToAppDevExperienceFeatureSpecOutput() AppDevExperienceFeatureSpecOutput {
+	return i.ToAppDevExperienceFeatureSpecOutputWithContext(context.Background())
+}
+
+func (i AppDevExperienceFeatureSpecArgs) ToAppDevExperienceFeatureSpecOutputWithContext(ctx context.Context) AppDevExperienceFeatureSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDevExperienceFeatureSpecOutput)
+}
+
+func (i AppDevExperienceFeatureSpecArgs) ToAppDevExperienceFeatureSpecPtrOutput() AppDevExperienceFeatureSpecPtrOutput {
+	return i.ToAppDevExperienceFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AppDevExperienceFeatureSpecArgs) ToAppDevExperienceFeatureSpecPtrOutputWithContext(ctx context.Context) AppDevExperienceFeatureSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDevExperienceFeatureSpecOutput).ToAppDevExperienceFeatureSpecPtrOutputWithContext(ctx)
+}
+
+// AppDevExperienceFeatureSpecPtrInput is an input type that accepts AppDevExperienceFeatureSpecArgs, AppDevExperienceFeatureSpecPtr and AppDevExperienceFeatureSpecPtrOutput values.
+// You can construct a concrete instance of `AppDevExperienceFeatureSpecPtrInput` via:
+//
+//          AppDevExperienceFeatureSpecArgs{...}
+//
+//  or:
+//
+//          nil
+type AppDevExperienceFeatureSpecPtrInput interface {
+	pulumi.Input
+
+	ToAppDevExperienceFeatureSpecPtrOutput() AppDevExperienceFeatureSpecPtrOutput
+	ToAppDevExperienceFeatureSpecPtrOutputWithContext(context.Context) AppDevExperienceFeatureSpecPtrOutput
+}
+
+type appDevExperienceFeatureSpecPtrType AppDevExperienceFeatureSpecArgs
+
+func AppDevExperienceFeatureSpecPtr(v *AppDevExperienceFeatureSpecArgs) AppDevExperienceFeatureSpecPtrInput {
+	return (*appDevExperienceFeatureSpecPtrType)(v)
+}
+
+func (*appDevExperienceFeatureSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppDevExperienceFeatureSpec)(nil)).Elem()
+}
+
+func (i *appDevExperienceFeatureSpecPtrType) ToAppDevExperienceFeatureSpecPtrOutput() AppDevExperienceFeatureSpecPtrOutput {
+	return i.ToAppDevExperienceFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *appDevExperienceFeatureSpecPtrType) ToAppDevExperienceFeatureSpecPtrOutputWithContext(ctx context.Context) AppDevExperienceFeatureSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDevExperienceFeatureSpecPtrOutput)
+}
+
+// Spec for App Dev Experience Feature.
+type AppDevExperienceFeatureSpecOutput struct{ *pulumi.OutputState }
+
+func (AppDevExperienceFeatureSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppDevExperienceFeatureSpec)(nil)).Elem()
+}
+
+func (o AppDevExperienceFeatureSpecOutput) ToAppDevExperienceFeatureSpecOutput() AppDevExperienceFeatureSpecOutput {
+	return o
+}
+
+func (o AppDevExperienceFeatureSpecOutput) ToAppDevExperienceFeatureSpecOutputWithContext(ctx context.Context) AppDevExperienceFeatureSpecOutput {
+	return o
+}
+
+func (o AppDevExperienceFeatureSpecOutput) ToAppDevExperienceFeatureSpecPtrOutput() AppDevExperienceFeatureSpecPtrOutput {
+	return o.ToAppDevExperienceFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AppDevExperienceFeatureSpecOutput) ToAppDevExperienceFeatureSpecPtrOutputWithContext(ctx context.Context) AppDevExperienceFeatureSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppDevExperienceFeatureSpec) *AppDevExperienceFeatureSpec {
+		return &v
+	}).(AppDevExperienceFeatureSpecPtrOutput)
+}
+
+type AppDevExperienceFeatureSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AppDevExperienceFeatureSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppDevExperienceFeatureSpec)(nil)).Elem()
+}
+
+func (o AppDevExperienceFeatureSpecPtrOutput) ToAppDevExperienceFeatureSpecPtrOutput() AppDevExperienceFeatureSpecPtrOutput {
+	return o
+}
+
+func (o AppDevExperienceFeatureSpecPtrOutput) ToAppDevExperienceFeatureSpecPtrOutputWithContext(ctx context.Context) AppDevExperienceFeatureSpecPtrOutput {
+	return o
+}
+
+func (o AppDevExperienceFeatureSpecPtrOutput) Elem() AppDevExperienceFeatureSpecOutput {
+	return o.ApplyT(func(v *AppDevExperienceFeatureSpec) AppDevExperienceFeatureSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AppDevExperienceFeatureSpec
+		return ret
+	}).(AppDevExperienceFeatureSpecOutput)
+}
+
+// Spec for App Dev Experience Feature.
+type AppDevExperienceFeatureSpecResponse struct {
+}
+
+// AppDevExperienceFeatureSpecResponseInput is an input type that accepts AppDevExperienceFeatureSpecResponseArgs and AppDevExperienceFeatureSpecResponseOutput values.
+// You can construct a concrete instance of `AppDevExperienceFeatureSpecResponseInput` via:
+//
+//          AppDevExperienceFeatureSpecResponseArgs{...}
+type AppDevExperienceFeatureSpecResponseInput interface {
+	pulumi.Input
+
+	ToAppDevExperienceFeatureSpecResponseOutput() AppDevExperienceFeatureSpecResponseOutput
+	ToAppDevExperienceFeatureSpecResponseOutputWithContext(context.Context) AppDevExperienceFeatureSpecResponseOutput
+}
+
+// Spec for App Dev Experience Feature.
+type AppDevExperienceFeatureSpecResponseArgs struct {
+}
+
+func (AppDevExperienceFeatureSpecResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppDevExperienceFeatureSpecResponse)(nil)).Elem()
+}
+
+func (i AppDevExperienceFeatureSpecResponseArgs) ToAppDevExperienceFeatureSpecResponseOutput() AppDevExperienceFeatureSpecResponseOutput {
+	return i.ToAppDevExperienceFeatureSpecResponseOutputWithContext(context.Background())
+}
+
+func (i AppDevExperienceFeatureSpecResponseArgs) ToAppDevExperienceFeatureSpecResponseOutputWithContext(ctx context.Context) AppDevExperienceFeatureSpecResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDevExperienceFeatureSpecResponseOutput)
+}
+
+func (i AppDevExperienceFeatureSpecResponseArgs) ToAppDevExperienceFeatureSpecResponsePtrOutput() AppDevExperienceFeatureSpecResponsePtrOutput {
+	return i.ToAppDevExperienceFeatureSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AppDevExperienceFeatureSpecResponseArgs) ToAppDevExperienceFeatureSpecResponsePtrOutputWithContext(ctx context.Context) AppDevExperienceFeatureSpecResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDevExperienceFeatureSpecResponseOutput).ToAppDevExperienceFeatureSpecResponsePtrOutputWithContext(ctx)
+}
+
+// AppDevExperienceFeatureSpecResponsePtrInput is an input type that accepts AppDevExperienceFeatureSpecResponseArgs, AppDevExperienceFeatureSpecResponsePtr and AppDevExperienceFeatureSpecResponsePtrOutput values.
+// You can construct a concrete instance of `AppDevExperienceFeatureSpecResponsePtrInput` via:
+//
+//          AppDevExperienceFeatureSpecResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AppDevExperienceFeatureSpecResponsePtrInput interface {
+	pulumi.Input
+
+	ToAppDevExperienceFeatureSpecResponsePtrOutput() AppDevExperienceFeatureSpecResponsePtrOutput
+	ToAppDevExperienceFeatureSpecResponsePtrOutputWithContext(context.Context) AppDevExperienceFeatureSpecResponsePtrOutput
+}
+
+type appDevExperienceFeatureSpecResponsePtrType AppDevExperienceFeatureSpecResponseArgs
+
+func AppDevExperienceFeatureSpecResponsePtr(v *AppDevExperienceFeatureSpecResponseArgs) AppDevExperienceFeatureSpecResponsePtrInput {
+	return (*appDevExperienceFeatureSpecResponsePtrType)(v)
+}
+
+func (*appDevExperienceFeatureSpecResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppDevExperienceFeatureSpecResponse)(nil)).Elem()
+}
+
+func (i *appDevExperienceFeatureSpecResponsePtrType) ToAppDevExperienceFeatureSpecResponsePtrOutput() AppDevExperienceFeatureSpecResponsePtrOutput {
+	return i.ToAppDevExperienceFeatureSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *appDevExperienceFeatureSpecResponsePtrType) ToAppDevExperienceFeatureSpecResponsePtrOutputWithContext(ctx context.Context) AppDevExperienceFeatureSpecResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDevExperienceFeatureSpecResponsePtrOutput)
+}
+
+// Spec for App Dev Experience Feature.
+type AppDevExperienceFeatureSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (AppDevExperienceFeatureSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppDevExperienceFeatureSpecResponse)(nil)).Elem()
+}
+
+func (o AppDevExperienceFeatureSpecResponseOutput) ToAppDevExperienceFeatureSpecResponseOutput() AppDevExperienceFeatureSpecResponseOutput {
+	return o
+}
+
+func (o AppDevExperienceFeatureSpecResponseOutput) ToAppDevExperienceFeatureSpecResponseOutputWithContext(ctx context.Context) AppDevExperienceFeatureSpecResponseOutput {
+	return o
+}
+
+func (o AppDevExperienceFeatureSpecResponseOutput) ToAppDevExperienceFeatureSpecResponsePtrOutput() AppDevExperienceFeatureSpecResponsePtrOutput {
+	return o.ToAppDevExperienceFeatureSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AppDevExperienceFeatureSpecResponseOutput) ToAppDevExperienceFeatureSpecResponsePtrOutputWithContext(ctx context.Context) AppDevExperienceFeatureSpecResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppDevExperienceFeatureSpecResponse) *AppDevExperienceFeatureSpecResponse {
+		return &v
+	}).(AppDevExperienceFeatureSpecResponsePtrOutput)
+}
+
+type AppDevExperienceFeatureSpecResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AppDevExperienceFeatureSpecResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppDevExperienceFeatureSpecResponse)(nil)).Elem()
+}
+
+func (o AppDevExperienceFeatureSpecResponsePtrOutput) ToAppDevExperienceFeatureSpecResponsePtrOutput() AppDevExperienceFeatureSpecResponsePtrOutput {
+	return o
+}
+
+func (o AppDevExperienceFeatureSpecResponsePtrOutput) ToAppDevExperienceFeatureSpecResponsePtrOutputWithContext(ctx context.Context) AppDevExperienceFeatureSpecResponsePtrOutput {
+	return o
+}
+
+func (o AppDevExperienceFeatureSpecResponsePtrOutput) Elem() AppDevExperienceFeatureSpecResponseOutput {
+	return o.ApplyT(func(v *AppDevExperienceFeatureSpecResponse) AppDevExperienceFeatureSpecResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AppDevExperienceFeatureSpecResponse
+		return ret
+	}).(AppDevExperienceFeatureSpecResponseOutput)
+}
+
+// State for App Dev Exp Feature.
+type AppDevExperienceFeatureStateResponse struct {
+	// Status of subcomponent that detects configured Service Mesh resources.
+	NetworkingInstallSucceeded StatusResponse `pulumi:"networkingInstallSucceeded"`
+}
+
+// AppDevExperienceFeatureStateResponseInput is an input type that accepts AppDevExperienceFeatureStateResponseArgs and AppDevExperienceFeatureStateResponseOutput values.
+// You can construct a concrete instance of `AppDevExperienceFeatureStateResponseInput` via:
+//
+//          AppDevExperienceFeatureStateResponseArgs{...}
+type AppDevExperienceFeatureStateResponseInput interface {
+	pulumi.Input
+
+	ToAppDevExperienceFeatureStateResponseOutput() AppDevExperienceFeatureStateResponseOutput
+	ToAppDevExperienceFeatureStateResponseOutputWithContext(context.Context) AppDevExperienceFeatureStateResponseOutput
+}
+
+// State for App Dev Exp Feature.
+type AppDevExperienceFeatureStateResponseArgs struct {
+	// Status of subcomponent that detects configured Service Mesh resources.
+	NetworkingInstallSucceeded StatusResponseInput `pulumi:"networkingInstallSucceeded"`
+}
+
+func (AppDevExperienceFeatureStateResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppDevExperienceFeatureStateResponse)(nil)).Elem()
+}
+
+func (i AppDevExperienceFeatureStateResponseArgs) ToAppDevExperienceFeatureStateResponseOutput() AppDevExperienceFeatureStateResponseOutput {
+	return i.ToAppDevExperienceFeatureStateResponseOutputWithContext(context.Background())
+}
+
+func (i AppDevExperienceFeatureStateResponseArgs) ToAppDevExperienceFeatureStateResponseOutputWithContext(ctx context.Context) AppDevExperienceFeatureStateResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDevExperienceFeatureStateResponseOutput)
+}
+
+func (i AppDevExperienceFeatureStateResponseArgs) ToAppDevExperienceFeatureStateResponsePtrOutput() AppDevExperienceFeatureStateResponsePtrOutput {
+	return i.ToAppDevExperienceFeatureStateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AppDevExperienceFeatureStateResponseArgs) ToAppDevExperienceFeatureStateResponsePtrOutputWithContext(ctx context.Context) AppDevExperienceFeatureStateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDevExperienceFeatureStateResponseOutput).ToAppDevExperienceFeatureStateResponsePtrOutputWithContext(ctx)
+}
+
+// AppDevExperienceFeatureStateResponsePtrInput is an input type that accepts AppDevExperienceFeatureStateResponseArgs, AppDevExperienceFeatureStateResponsePtr and AppDevExperienceFeatureStateResponsePtrOutput values.
+// You can construct a concrete instance of `AppDevExperienceFeatureStateResponsePtrInput` via:
+//
+//          AppDevExperienceFeatureStateResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AppDevExperienceFeatureStateResponsePtrInput interface {
+	pulumi.Input
+
+	ToAppDevExperienceFeatureStateResponsePtrOutput() AppDevExperienceFeatureStateResponsePtrOutput
+	ToAppDevExperienceFeatureStateResponsePtrOutputWithContext(context.Context) AppDevExperienceFeatureStateResponsePtrOutput
+}
+
+type appDevExperienceFeatureStateResponsePtrType AppDevExperienceFeatureStateResponseArgs
+
+func AppDevExperienceFeatureStateResponsePtr(v *AppDevExperienceFeatureStateResponseArgs) AppDevExperienceFeatureStateResponsePtrInput {
+	return (*appDevExperienceFeatureStateResponsePtrType)(v)
+}
+
+func (*appDevExperienceFeatureStateResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppDevExperienceFeatureStateResponse)(nil)).Elem()
+}
+
+func (i *appDevExperienceFeatureStateResponsePtrType) ToAppDevExperienceFeatureStateResponsePtrOutput() AppDevExperienceFeatureStateResponsePtrOutput {
+	return i.ToAppDevExperienceFeatureStateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *appDevExperienceFeatureStateResponsePtrType) ToAppDevExperienceFeatureStateResponsePtrOutputWithContext(ctx context.Context) AppDevExperienceFeatureStateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDevExperienceFeatureStateResponsePtrOutput)
+}
+
+// State for App Dev Exp Feature.
+type AppDevExperienceFeatureStateResponseOutput struct{ *pulumi.OutputState }
+
+func (AppDevExperienceFeatureStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppDevExperienceFeatureStateResponse)(nil)).Elem()
+}
+
+func (o AppDevExperienceFeatureStateResponseOutput) ToAppDevExperienceFeatureStateResponseOutput() AppDevExperienceFeatureStateResponseOutput {
+	return o
+}
+
+func (o AppDevExperienceFeatureStateResponseOutput) ToAppDevExperienceFeatureStateResponseOutputWithContext(ctx context.Context) AppDevExperienceFeatureStateResponseOutput {
+	return o
+}
+
+func (o AppDevExperienceFeatureStateResponseOutput) ToAppDevExperienceFeatureStateResponsePtrOutput() AppDevExperienceFeatureStateResponsePtrOutput {
+	return o.ToAppDevExperienceFeatureStateResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AppDevExperienceFeatureStateResponseOutput) ToAppDevExperienceFeatureStateResponsePtrOutputWithContext(ctx context.Context) AppDevExperienceFeatureStateResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppDevExperienceFeatureStateResponse) *AppDevExperienceFeatureStateResponse {
+		return &v
+	}).(AppDevExperienceFeatureStateResponsePtrOutput)
+}
+
+// Status of subcomponent that detects configured Service Mesh resources.
+func (o AppDevExperienceFeatureStateResponseOutput) NetworkingInstallSucceeded() StatusResponseOutput {
+	return o.ApplyT(func(v AppDevExperienceFeatureStateResponse) StatusResponse { return v.NetworkingInstallSucceeded }).(StatusResponseOutput)
+}
+
+type AppDevExperienceFeatureStateResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AppDevExperienceFeatureStateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppDevExperienceFeatureStateResponse)(nil)).Elem()
+}
+
+func (o AppDevExperienceFeatureStateResponsePtrOutput) ToAppDevExperienceFeatureStateResponsePtrOutput() AppDevExperienceFeatureStateResponsePtrOutput {
+	return o
+}
+
+func (o AppDevExperienceFeatureStateResponsePtrOutput) ToAppDevExperienceFeatureStateResponsePtrOutputWithContext(ctx context.Context) AppDevExperienceFeatureStateResponsePtrOutput {
+	return o
+}
+
+func (o AppDevExperienceFeatureStateResponsePtrOutput) Elem() AppDevExperienceFeatureStateResponseOutput {
+	return o.ApplyT(func(v *AppDevExperienceFeatureStateResponse) AppDevExperienceFeatureStateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AppDevExperienceFeatureStateResponse
+		return ret
+	}).(AppDevExperienceFeatureStateResponseOutput)
+}
+
+// Status of subcomponent that detects configured Service Mesh resources.
+func (o AppDevExperienceFeatureStateResponsePtrOutput) NetworkingInstallSucceeded() StatusResponsePtrOutput {
+	return o.ApplyT(func(v *AppDevExperienceFeatureStateResponse) *StatusResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.NetworkingInstallSucceeded
+	}).(StatusResponsePtrOutput)
+}
+
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
 type AuditConfig struct {
 	// The configuration for logging of each type of permission.
@@ -446,13 +828,13 @@ func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConf
 	}).(AuditLogConfigResponseOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type Binding struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role *string `pulumi:"role"`
 }
 
@@ -467,13 +849,13 @@ type BindingInput interface {
 	ToBindingOutputWithContext(context.Context) BindingOutput
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -514,7 +896,7 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
 func (BindingOutput) ElementType() reflect.Type {
@@ -529,17 +911,17 @@ func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOu
 	return o
 }
 
-// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 func (o BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -564,13 +946,13 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 	}).(BindingOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingResponse struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
 }
 
@@ -585,13 +967,13 @@ type BindingResponseInput interface {
 	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingResponseArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringInput `pulumi:"role"`
 }
 
@@ -632,7 +1014,7 @@ func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingResponseOutput struct{ *pulumi.OutputState }
 
 func (BindingResponseOutput) ElementType() reflect.Type {
@@ -647,17 +1029,17 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 func (o BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -684,6 +1066,8 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 
 // CommonFeatureSpec contains Hub-wide configuration information
 type CommonFeatureSpec struct {
+	// Appdevexperience specific spec.
+	Appdevexperience *AppDevExperienceFeatureSpec `pulumi:"appdevexperience"`
 	// Multicluster Ingress-specific spec.
 	Multiclusteringress *MultiClusterIngressFeatureSpec `pulumi:"multiclusteringress"`
 }
@@ -701,6 +1085,8 @@ type CommonFeatureSpecInput interface {
 
 // CommonFeatureSpec contains Hub-wide configuration information
 type CommonFeatureSpecArgs struct {
+	// Appdevexperience specific spec.
+	Appdevexperience AppDevExperienceFeatureSpecPtrInput `pulumi:"appdevexperience"`
 	// Multicluster Ingress-specific spec.
 	Multiclusteringress MultiClusterIngressFeatureSpecPtrInput `pulumi:"multiclusteringress"`
 }
@@ -783,6 +1169,11 @@ func (o CommonFeatureSpecOutput) ToCommonFeatureSpecPtrOutputWithContext(ctx con
 	}).(CommonFeatureSpecPtrOutput)
 }
 
+// Appdevexperience specific spec.
+func (o CommonFeatureSpecOutput) Appdevexperience() AppDevExperienceFeatureSpecPtrOutput {
+	return o.ApplyT(func(v CommonFeatureSpec) *AppDevExperienceFeatureSpec { return v.Appdevexperience }).(AppDevExperienceFeatureSpecPtrOutput)
+}
+
 // Multicluster Ingress-specific spec.
 func (o CommonFeatureSpecOutput) Multiclusteringress() MultiClusterIngressFeatureSpecPtrOutput {
 	return o.ApplyT(func(v CommonFeatureSpec) *MultiClusterIngressFeatureSpec { return v.Multiclusteringress }).(MultiClusterIngressFeatureSpecPtrOutput)
@@ -812,6 +1203,16 @@ func (o CommonFeatureSpecPtrOutput) Elem() CommonFeatureSpecOutput {
 	}).(CommonFeatureSpecOutput)
 }
 
+// Appdevexperience specific spec.
+func (o CommonFeatureSpecPtrOutput) Appdevexperience() AppDevExperienceFeatureSpecPtrOutput {
+	return o.ApplyT(func(v *CommonFeatureSpec) *AppDevExperienceFeatureSpec {
+		if v == nil {
+			return nil
+		}
+		return v.Appdevexperience
+	}).(AppDevExperienceFeatureSpecPtrOutput)
+}
+
 // Multicluster Ingress-specific spec.
 func (o CommonFeatureSpecPtrOutput) Multiclusteringress() MultiClusterIngressFeatureSpecPtrOutput {
 	return o.ApplyT(func(v *CommonFeatureSpec) *MultiClusterIngressFeatureSpec {
@@ -824,6 +1225,8 @@ func (o CommonFeatureSpecPtrOutput) Multiclusteringress() MultiClusterIngressFea
 
 // CommonFeatureSpec contains Hub-wide configuration information
 type CommonFeatureSpecResponse struct {
+	// Appdevexperience specific spec.
+	Appdevexperience AppDevExperienceFeatureSpecResponse `pulumi:"appdevexperience"`
 	// Multicluster Ingress-specific spec.
 	Multiclusteringress MultiClusterIngressFeatureSpecResponse `pulumi:"multiclusteringress"`
 }
@@ -841,6 +1244,8 @@ type CommonFeatureSpecResponseInput interface {
 
 // CommonFeatureSpec contains Hub-wide configuration information
 type CommonFeatureSpecResponseArgs struct {
+	// Appdevexperience specific spec.
+	Appdevexperience AppDevExperienceFeatureSpecResponseInput `pulumi:"appdevexperience"`
 	// Multicluster Ingress-specific spec.
 	Multiclusteringress MultiClusterIngressFeatureSpecResponseInput `pulumi:"multiclusteringress"`
 }
@@ -923,6 +1328,11 @@ func (o CommonFeatureSpecResponseOutput) ToCommonFeatureSpecResponsePtrOutputWit
 	}).(CommonFeatureSpecResponsePtrOutput)
 }
 
+// Appdevexperience specific spec.
+func (o CommonFeatureSpecResponseOutput) Appdevexperience() AppDevExperienceFeatureSpecResponseOutput {
+	return o.ApplyT(func(v CommonFeatureSpecResponse) AppDevExperienceFeatureSpecResponse { return v.Appdevexperience }).(AppDevExperienceFeatureSpecResponseOutput)
+}
+
 // Multicluster Ingress-specific spec.
 func (o CommonFeatureSpecResponseOutput) Multiclusteringress() MultiClusterIngressFeatureSpecResponseOutput {
 	return o.ApplyT(func(v CommonFeatureSpecResponse) MultiClusterIngressFeatureSpecResponse { return v.Multiclusteringress }).(MultiClusterIngressFeatureSpecResponseOutput)
@@ -952,6 +1362,16 @@ func (o CommonFeatureSpecResponsePtrOutput) Elem() CommonFeatureSpecResponseOutp
 	}).(CommonFeatureSpecResponseOutput)
 }
 
+// Appdevexperience specific spec.
+func (o CommonFeatureSpecResponsePtrOutput) Appdevexperience() AppDevExperienceFeatureSpecResponsePtrOutput {
+	return o.ApplyT(func(v *CommonFeatureSpecResponse) *AppDevExperienceFeatureSpecResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Appdevexperience
+	}).(AppDevExperienceFeatureSpecResponsePtrOutput)
+}
+
 // Multicluster Ingress-specific spec.
 func (o CommonFeatureSpecResponsePtrOutput) Multiclusteringress() MultiClusterIngressFeatureSpecResponsePtrOutput {
 	return o.ApplyT(func(v *CommonFeatureSpecResponse) *MultiClusterIngressFeatureSpecResponse {
@@ -964,6 +1384,8 @@ func (o CommonFeatureSpecResponsePtrOutput) Multiclusteringress() MultiClusterIn
 
 // CommonFeatureState contains Hub-wide Feature status information.
 type CommonFeatureStateResponse struct {
+	// Appdevexperience specific state.
+	Appdevexperience AppDevExperienceFeatureStateResponse `pulumi:"appdevexperience"`
 	// The "running state" of the Feature in this Hub.
 	State FeatureStateResponse `pulumi:"state"`
 }
@@ -981,6 +1403,8 @@ type CommonFeatureStateResponseInput interface {
 
 // CommonFeatureState contains Hub-wide Feature status information.
 type CommonFeatureStateResponseArgs struct {
+	// Appdevexperience specific state.
+	Appdevexperience AppDevExperienceFeatureStateResponseInput `pulumi:"appdevexperience"`
 	// The "running state" of the Feature in this Hub.
 	State FeatureStateResponseInput `pulumi:"state"`
 }
@@ -1063,6 +1487,11 @@ func (o CommonFeatureStateResponseOutput) ToCommonFeatureStateResponsePtrOutputW
 	}).(CommonFeatureStateResponsePtrOutput)
 }
 
+// Appdevexperience specific state.
+func (o CommonFeatureStateResponseOutput) Appdevexperience() AppDevExperienceFeatureStateResponseOutput {
+	return o.ApplyT(func(v CommonFeatureStateResponse) AppDevExperienceFeatureStateResponse { return v.Appdevexperience }).(AppDevExperienceFeatureStateResponseOutput)
+}
+
 // The "running state" of the Feature in this Hub.
 func (o CommonFeatureStateResponseOutput) State() FeatureStateResponseOutput {
 	return o.ApplyT(func(v CommonFeatureStateResponse) FeatureStateResponse { return v.State }).(FeatureStateResponseOutput)
@@ -1090,6 +1519,16 @@ func (o CommonFeatureStateResponsePtrOutput) Elem() CommonFeatureStateResponseOu
 		var ret CommonFeatureStateResponse
 		return ret
 	}).(CommonFeatureStateResponseOutput)
+}
+
+// Appdevexperience specific state.
+func (o CommonFeatureStateResponsePtrOutput) Appdevexperience() AppDevExperienceFeatureStateResponsePtrOutput {
+	return o.ApplyT(func(v *CommonFeatureStateResponse) *AppDevExperienceFeatureStateResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Appdevexperience
+	}).(AppDevExperienceFeatureStateResponsePtrOutput)
 }
 
 // The "running state" of the Feature in this Hub.
@@ -1979,7 +2418,172 @@ func (o MultiClusterIngressFeatureSpecResponsePtrOutput) ConfigMembership() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Status specifies state for the subcomponent.
+type StatusResponse struct {
+	// Code specifies AppDevExperienceFeature's subcomponent ready state.
+	Code string `pulumi:"code"`
+	// Description is populated if Code is Failed, explaining why it has failed.
+	Description string `pulumi:"description"`
+}
+
+// StatusResponseInput is an input type that accepts StatusResponseArgs and StatusResponseOutput values.
+// You can construct a concrete instance of `StatusResponseInput` via:
+//
+//          StatusResponseArgs{...}
+type StatusResponseInput interface {
+	pulumi.Input
+
+	ToStatusResponseOutput() StatusResponseOutput
+	ToStatusResponseOutputWithContext(context.Context) StatusResponseOutput
+}
+
+// Status specifies state for the subcomponent.
+type StatusResponseArgs struct {
+	// Code specifies AppDevExperienceFeature's subcomponent ready state.
+	Code pulumi.StringInput `pulumi:"code"`
+	// Description is populated if Code is Failed, explaining why it has failed.
+	Description pulumi.StringInput `pulumi:"description"`
+}
+
+func (StatusResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
+}
+
+func (i StatusResponseArgs) ToStatusResponseOutput() StatusResponseOutput {
+	return i.ToStatusResponseOutputWithContext(context.Background())
+}
+
+func (i StatusResponseArgs) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput)
+}
+
+func (i StatusResponseArgs) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return i.ToStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (i StatusResponseArgs) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput).ToStatusResponsePtrOutputWithContext(ctx)
+}
+
+// StatusResponsePtrInput is an input type that accepts StatusResponseArgs, StatusResponsePtr and StatusResponsePtrOutput values.
+// You can construct a concrete instance of `StatusResponsePtrInput` via:
+//
+//          StatusResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type StatusResponsePtrInput interface {
+	pulumi.Input
+
+	ToStatusResponsePtrOutput() StatusResponsePtrOutput
+	ToStatusResponsePtrOutputWithContext(context.Context) StatusResponsePtrOutput
+}
+
+type statusResponsePtrType StatusResponseArgs
+
+func StatusResponsePtr(v *StatusResponseArgs) StatusResponsePtrInput {
+	return (*statusResponsePtrType)(v)
+}
+
+func (*statusResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
+}
+
+func (i *statusResponsePtrType) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return i.ToStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *statusResponsePtrType) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusResponsePtrOutput)
+}
+
+// Status specifies state for the subcomponent.
+type StatusResponseOutput struct{ *pulumi.OutputState }
+
+func (StatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
+}
+
+func (o StatusResponseOutput) ToStatusResponseOutput() StatusResponseOutput {
+	return o
+}
+
+func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
+	return o
+}
+
+func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return o.ToStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatusResponse) *StatusResponse {
+		return &v
+	}).(StatusResponsePtrOutput)
+}
+
+// Code specifies AppDevExperienceFeature's subcomponent ready state.
+func (o StatusResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v StatusResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Description is populated if Code is Failed, explaining why it has failed.
+func (o StatusResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v StatusResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+type StatusResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StatusResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
+}
+
+func (o StatusResponsePtrOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return o
+}
+
+func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return o
+}
+
+func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
+	return o.ApplyT(func(v *StatusResponse) StatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StatusResponse
+		return ret
+	}).(StatusResponseOutput)
+}
+
+// Code specifies AppDevExperienceFeature's subcomponent ready state.
+func (o StatusResponsePtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// Description is populated if Code is Failed, explaining why it has failed.
+func (o StatusResponsePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AppDevExperienceFeatureSpecInput)(nil)).Elem(), AppDevExperienceFeatureSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppDevExperienceFeatureSpecPtrInput)(nil)).Elem(), AppDevExperienceFeatureSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppDevExperienceFeatureSpecResponseInput)(nil)).Elem(), AppDevExperienceFeatureSpecResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppDevExperienceFeatureSpecResponsePtrInput)(nil)).Elem(), AppDevExperienceFeatureSpecResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppDevExperienceFeatureStateResponseInput)(nil)).Elem(), AppDevExperienceFeatureStateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppDevExperienceFeatureStateResponsePtrInput)(nil)).Elem(), AppDevExperienceFeatureStateResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseInput)(nil)).Elem(), AuditConfigResponseArgs{})
@@ -2009,6 +2613,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MultiClusterIngressFeatureSpecPtrInput)(nil)).Elem(), MultiClusterIngressFeatureSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MultiClusterIngressFeatureSpecResponseInput)(nil)).Elem(), MultiClusterIngressFeatureSpecResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MultiClusterIngressFeatureSpecResponsePtrInput)(nil)).Elem(), MultiClusterIngressFeatureSpecResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponseInput)(nil)).Elem(), StatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponsePtrInput)(nil)).Elem(), StatusResponseArgs{})
+	pulumi.RegisterOutputType(AppDevExperienceFeatureSpecOutput{})
+	pulumi.RegisterOutputType(AppDevExperienceFeatureSpecPtrOutput{})
+	pulumi.RegisterOutputType(AppDevExperienceFeatureSpecResponseOutput{})
+	pulumi.RegisterOutputType(AppDevExperienceFeatureSpecResponsePtrOutput{})
+	pulumi.RegisterOutputType(AppDevExperienceFeatureStateResponseOutput{})
+	pulumi.RegisterOutputType(AppDevExperienceFeatureStateResponsePtrOutput{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -2038,4 +2650,6 @@ func init() {
 	pulumi.RegisterOutputType(MultiClusterIngressFeatureSpecPtrOutput{})
 	pulumi.RegisterOutputType(MultiClusterIngressFeatureSpecResponseOutput{})
 	pulumi.RegisterOutputType(MultiClusterIngressFeatureSpecResponsePtrOutput{})
+	pulumi.RegisterOutputType(StatusResponseOutput{})
+	pulumi.RegisterOutputType(StatusResponsePtrOutput{})
 }

@@ -266,11 +266,13 @@ func (o FileShareConfigResponseArrayOutput) Index(i pulumi.IntInput) FileShareCo
 
 // Network configuration for the instance.
 type NetworkConfig struct {
+	// The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
+	ConnectMode *NetworkConfigConnectMode `pulumi:"connectMode"`
 	// Internet protocol versions for which the instance has IP addresses assigned. For this version, only MODE_IPV4 is supported.
 	Modes []NetworkConfigModesItem `pulumi:"modes"`
 	// The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected.
 	Network *string `pulumi:"network"`
-	// A /29 CIDR block in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
+	// Optional, reserved_ip_range can have one of the following two types of values. * CIDR range value when using DIRECT_PEERING connect mode. * [Allocated IP address range](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address) when using PRIVATE_SERVICE_ACCESS connect mode. When the name of an allocated IP address range is specified, it must be one of the ranges associated with the private service access connection. When specified as a direct CIDR value, it must be a /29 CIDR block for Basic tier or a /24 CIDR block for High Scale or Enterprise tier in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/24. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
 	ReservedIpRange *string `pulumi:"reservedIpRange"`
 }
 
@@ -287,11 +289,13 @@ type NetworkConfigInput interface {
 
 // Network configuration for the instance.
 type NetworkConfigArgs struct {
+	// The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
+	ConnectMode NetworkConfigConnectModePtrInput `pulumi:"connectMode"`
 	// Internet protocol versions for which the instance has IP addresses assigned. For this version, only MODE_IPV4 is supported.
 	Modes NetworkConfigModesItemArrayInput `pulumi:"modes"`
 	// The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected.
 	Network pulumi.StringPtrInput `pulumi:"network"`
-	// A /29 CIDR block in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
+	// Optional, reserved_ip_range can have one of the following two types of values. * CIDR range value when using DIRECT_PEERING connect mode. * [Allocated IP address range](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address) when using PRIVATE_SERVICE_ACCESS connect mode. When the name of an allocated IP address range is specified, it must be one of the ranges associated with the private service access connection. When specified as a direct CIDR value, it must be a /29 CIDR block for Basic tier or a /24 CIDR block for High Scale or Enterprise tier in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/24. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
 	ReservedIpRange pulumi.StringPtrInput `pulumi:"reservedIpRange"`
 }
 
@@ -347,6 +351,11 @@ func (o NetworkConfigOutput) ToNetworkConfigOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
+func (o NetworkConfigOutput) ConnectMode() NetworkConfigConnectModePtrOutput {
+	return o.ApplyT(func(v NetworkConfig) *NetworkConfigConnectMode { return v.ConnectMode }).(NetworkConfigConnectModePtrOutput)
+}
+
 // Internet protocol versions for which the instance has IP addresses assigned. For this version, only MODE_IPV4 is supported.
 func (o NetworkConfigOutput) Modes() NetworkConfigModesItemArrayOutput {
 	return o.ApplyT(func(v NetworkConfig) []NetworkConfigModesItem { return v.Modes }).(NetworkConfigModesItemArrayOutput)
@@ -357,7 +366,7 @@ func (o NetworkConfigOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
-// A /29 CIDR block in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
+// Optional, reserved_ip_range can have one of the following two types of values. * CIDR range value when using DIRECT_PEERING connect mode. * [Allocated IP address range](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address) when using PRIVATE_SERVICE_ACCESS connect mode. When the name of an allocated IP address range is specified, it must be one of the ranges associated with the private service access connection. When specified as a direct CIDR value, it must be a /29 CIDR block for Basic tier or a /24 CIDR block for High Scale or Enterprise tier in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/24. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
 func (o NetworkConfigOutput) ReservedIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *string { return v.ReservedIpRange }).(pulumi.StringPtrOutput)
 }
@@ -384,13 +393,15 @@ func (o NetworkConfigArrayOutput) Index(i pulumi.IntInput) NetworkConfigOutput {
 
 // Network configuration for the instance.
 type NetworkConfigResponse struct {
+	// The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
+	ConnectMode string `pulumi:"connectMode"`
 	// IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or IPv6 addresses in the format `{block1}:{block2}:{block3}:{block4}:{block5}:{block6}:{block7}:{block8}`.
 	IpAddresses []string `pulumi:"ipAddresses"`
 	// Internet protocol versions for which the instance has IP addresses assigned. For this version, only MODE_IPV4 is supported.
 	Modes []string `pulumi:"modes"`
 	// The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected.
 	Network string `pulumi:"network"`
-	// A /29 CIDR block in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
+	// Optional, reserved_ip_range can have one of the following two types of values. * CIDR range value when using DIRECT_PEERING connect mode. * [Allocated IP address range](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address) when using PRIVATE_SERVICE_ACCESS connect mode. When the name of an allocated IP address range is specified, it must be one of the ranges associated with the private service access connection. When specified as a direct CIDR value, it must be a /29 CIDR block for Basic tier or a /24 CIDR block for High Scale or Enterprise tier in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/24. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
 	ReservedIpRange string `pulumi:"reservedIpRange"`
 }
 
@@ -407,13 +418,15 @@ type NetworkConfigResponseInput interface {
 
 // Network configuration for the instance.
 type NetworkConfigResponseArgs struct {
+	// The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
+	ConnectMode pulumi.StringInput `pulumi:"connectMode"`
 	// IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or IPv6 addresses in the format `{block1}:{block2}:{block3}:{block4}:{block5}:{block6}:{block7}:{block8}`.
 	IpAddresses pulumi.StringArrayInput `pulumi:"ipAddresses"`
 	// Internet protocol versions for which the instance has IP addresses assigned. For this version, only MODE_IPV4 is supported.
 	Modes pulumi.StringArrayInput `pulumi:"modes"`
 	// The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected.
 	Network pulumi.StringInput `pulumi:"network"`
-	// A /29 CIDR block in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
+	// Optional, reserved_ip_range can have one of the following two types of values. * CIDR range value when using DIRECT_PEERING connect mode. * [Allocated IP address range](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address) when using PRIVATE_SERVICE_ACCESS connect mode. When the name of an allocated IP address range is specified, it must be one of the ranges associated with the private service access connection. When specified as a direct CIDR value, it must be a /29 CIDR block for Basic tier or a /24 CIDR block for High Scale or Enterprise tier in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/24. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
 	ReservedIpRange pulumi.StringInput `pulumi:"reservedIpRange"`
 }
 
@@ -469,6 +482,11 @@ func (o NetworkConfigResponseOutput) ToNetworkConfigResponseOutputWithContext(ct
 	return o
 }
 
+// The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
+func (o NetworkConfigResponseOutput) ConnectMode() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkConfigResponse) string { return v.ConnectMode }).(pulumi.StringOutput)
+}
+
 // IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or IPv6 addresses in the format `{block1}:{block2}:{block3}:{block4}:{block5}:{block6}:{block7}:{block8}`.
 func (o NetworkConfigResponseOutput) IpAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) []string { return v.IpAddresses }).(pulumi.StringArrayOutput)
@@ -484,7 +502,7 @@ func (o NetworkConfigResponseOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.Network }).(pulumi.StringOutput)
 }
 
-// A /29 CIDR block in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
+// Optional, reserved_ip_range can have one of the following two types of values. * CIDR range value when using DIRECT_PEERING connect mode. * [Allocated IP address range](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address) when using PRIVATE_SERVICE_ACCESS connect mode. When the name of an allocated IP address range is specified, it must be one of the ranges associated with the private service access connection. When specified as a direct CIDR value, it must be a /29 CIDR block for Basic tier or a /24 CIDR block for High Scale or Enterprise tier in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/24. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
 func (o NetworkConfigResponseOutput) ReservedIpRange() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.ReservedIpRange }).(pulumi.StringOutput)
 }

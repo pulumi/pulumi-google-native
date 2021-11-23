@@ -53,6 +53,8 @@ type LookupOrganizationResult struct {
 	LastModifiedAt string `pulumi:"lastModifiedAt"`
 	// Name of the Apigee organization.
 	Name string `pulumi:"name"`
+	// Configuration for the Portals settings.
+	PortalDisabled bool `pulumi:"portalDisabled"`
 	// Project ID associated with the Apigee organization.
 	Project string `pulumi:"project"`
 	// Properties defined in the Apigee organization profile.
@@ -166,6 +168,11 @@ func (o LookupOrganizationResultOutput) LastModifiedAt() pulumi.StringOutput {
 // Name of the Apigee organization.
 func (o LookupOrganizationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Configuration for the Portals settings.
+func (o LookupOrganizationResultOutput) PortalDisabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) bool { return v.PortalDisabled }).(pulumi.BoolOutput)
 }
 
 // Project ID associated with the Apigee organization.
