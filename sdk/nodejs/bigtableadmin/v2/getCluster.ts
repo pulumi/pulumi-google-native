@@ -31,6 +31,10 @@ export interface GetClusterArgs {
 
 export interface GetClusterResult {
     /**
+     * Configuration for this cluster.
+     */
+    readonly clusterConfig: outputs.bigtableadmin.v2.ClusterConfigResponse;
+    /**
      * Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
      */
     readonly defaultStorageType: string;

@@ -119,7 +119,7 @@ export interface GetInstanceResult {
      */
     readonly noRemoveDataDisk: boolean;
     /**
-     * Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
+     * Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
      */
     readonly postStartupScript: string;
     /**
@@ -139,7 +139,7 @@ export interface GetInstanceResult {
      */
     readonly serviceAccountScopes: string[];
     /**
-     * Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+     * Optional. Shielded VM configuration. [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
      */
     readonly shieldedInstanceConfig: outputs.notebooks.v1.ShieldedInstanceConfigResponse;
     /**

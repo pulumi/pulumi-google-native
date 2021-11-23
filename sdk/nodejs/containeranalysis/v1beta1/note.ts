@@ -93,7 +93,7 @@ export class Note extends pulumi.CustomResource {
      */
     public readonly relatedUrl!: pulumi.Output<outputs.containeranalysis.v1beta1.RelatedUrlResponse[]>;
     /**
-     * A note describing SPDX Document which represents SBOM.
+     * A note describing a software bill of materials.
      */
     public readonly sbom!: pulumi.Output<outputs.containeranalysis.v1beta1.DocumentNoteResponse>;
     /**
@@ -101,15 +101,15 @@ export class Note extends pulumi.CustomResource {
      */
     public readonly shortDescription!: pulumi.Output<string>;
     /**
-     * A note describing SPDX File.
+     * A note describing an SPDX File.
      */
     public readonly spdxFile!: pulumi.Output<outputs.containeranalysis.v1beta1.FileNoteResponse>;
     /**
-     * A note describing SPDX Package.
+     * A note describing an SPDX Package.
      */
-    public readonly spdxPackage!: pulumi.Output<outputs.containeranalysis.v1beta1.PackageNoteResponse>;
+    public readonly spdxPackage!: pulumi.Output<outputs.containeranalysis.v1beta1.PackageInfoNoteResponse>;
     /**
-     * A note describing SPDX Relationship.
+     * A note describing an SPDX File.
      */
     public readonly spdxRelationship!: pulumi.Output<outputs.containeranalysis.v1beta1.RelationshipNoteResponse>;
     /**
@@ -239,7 +239,7 @@ export interface NoteArgs {
      */
     relatedUrl?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1beta1.RelatedUrlArgs>[]>;
     /**
-     * A note describing SPDX Document which represents SBOM.
+     * A note describing a software bill of materials.
      */
     sbom?: pulumi.Input<inputs.containeranalysis.v1beta1.DocumentNoteArgs>;
     /**
@@ -247,15 +247,15 @@ export interface NoteArgs {
      */
     shortDescription?: pulumi.Input<string>;
     /**
-     * A note describing SPDX File.
+     * A note describing an SPDX File.
      */
     spdxFile?: pulumi.Input<inputs.containeranalysis.v1beta1.FileNoteArgs>;
     /**
-     * A note describing SPDX Package.
+     * A note describing an SPDX Package.
      */
-    spdxPackage?: pulumi.Input<inputs.containeranalysis.v1beta1.PackageNoteArgs>;
+    spdxPackage?: pulumi.Input<inputs.containeranalysis.v1beta1.PackageInfoNoteArgs>;
     /**
-     * A note describing SPDX Relationship.
+     * A note describing an SPDX File.
      */
     spdxRelationship?: pulumi.Input<inputs.containeranalysis.v1beta1.RelationshipNoteArgs>;
     /**

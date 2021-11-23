@@ -28,11 +28,11 @@ export const BuildOptionsLogging = {
      */
     LoggingUnspecified: "LOGGING_UNSPECIFIED",
     /**
-     * Cloud Logging and Cloud Storage logging are enabled.
+     * Build logs are stored in Cloud Logging and Cloud Storage.
      */
     Legacy: "LEGACY",
     /**
-     * Only Cloud Storage logging is enabled.
+     * Build logs are stored in Cloud Storage.
      */
     GcsOnly: "GCS_ONLY",
     /**
@@ -40,7 +40,7 @@ export const BuildOptionsLogging = {
      */
     StackdriverOnly: "STACKDRIVER_ONLY",
     /**
-     * Only Cloud Logging is enabled. Note that logs for both the Cloud Console UI and Cloud SDK are based on Cloud Storage logs, so neither will provide logs if this option is chosen.
+     * Build logs are stored in Cloud Logging. Selecting this option will not allow [logs streaming](https://cloud.google.com/sdk/gcloud/reference/builds/log).
      */
     CloudLoggingOnly: "CLOUD_LOGGING_ONLY",
     /**
@@ -238,6 +238,34 @@ export const PullRequestFilterCommentControl = {
  * Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
  */
 export type PullRequestFilterCommentControl = (typeof PullRequestFilterCommentControl)[keyof typeof PullRequestFilterCommentControl];
+
+export const TriggerEventType = {
+    /**
+     * EVENT_TYPE_UNSPECIFIED event_types are ignored.
+     */
+    EventTypeUnspecified: "EVENT_TYPE_UNSPECIFIED",
+    /**
+     * REPO corresponds to the supported VCS integrations.
+     */
+    Repo: "REPO",
+    /**
+     * WEBHOOK corresponds to webhook triggers.
+     */
+    Webhook: "WEBHOOK",
+    /**
+     * PUBSUB corresponds to pubsub triggers.
+     */
+    Pubsub: "PUBSUB",
+    /**
+     * MANUAL corresponds to manual-only invoked triggers.
+     */
+    Manual: "MANUAL",
+} as const;
+
+/**
+ * Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+ */
+export type TriggerEventType = (typeof TriggerEventType)[keyof typeof TriggerEventType];
 
 export const WebhookConfigState = {
     /**

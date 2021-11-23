@@ -179,6 +179,10 @@ export interface GetClusterResult {
      */
     readonly nodeIpv4CidrSize: number;
     /**
+     * Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
+     */
+    readonly nodePoolDefaults: outputs.container.v1.NodePoolDefaultsResponse;
+    /**
      * The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
      */
     readonly nodePools: outputs.container.v1.NodePoolResponse[];

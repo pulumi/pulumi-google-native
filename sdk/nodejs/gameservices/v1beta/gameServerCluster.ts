@@ -36,10 +36,6 @@ export class GameServerCluster extends pulumi.CustomResource {
     }
 
     /**
-     * Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
-     */
-    public readonly allocationPriority!: pulumi.Output<string>;
-    /**
      * The state of the Kubernetes cluster, this will be available if 'view' is set to `FULL` in the relevant List/Get/Preview request.
      */
     public /*out*/ readonly clusterState!: pulumi.Output<outputs.gameservices.v1beta.KubernetesClusterStateResponse>;
@@ -89,7 +85,6 @@ export class GameServerCluster extends pulumi.CustomResource {
             if ((!args || args.realmId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'realmId'");
             }
-            inputs["allocationPriority"] = args ? args.allocationPriority : undefined;
             inputs["connectionInfo"] = args ? args.connectionInfo : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
@@ -103,7 +98,6 @@ export class GameServerCluster extends pulumi.CustomResource {
             inputs["createTime"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["allocationPriority"] = undefined /*out*/;
             inputs["clusterState"] = undefined /*out*/;
             inputs["connectionInfo"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
@@ -124,10 +118,6 @@ export class GameServerCluster extends pulumi.CustomResource {
  * The set of arguments for constructing a GameServerCluster resource.
  */
 export interface GameServerClusterArgs {
-    /**
-     * Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
-     */
-    allocationPriority?: pulumi.Input<enums.gameservices.v1beta.GameServerClusterAllocationPriority>;
     /**
      * The game server cluster connection information. This information is used to manage game server clusters.
      */

@@ -125,7 +125,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly noRemoveDataDisk!: pulumi.Output<boolean>;
     /**
-     * Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
+     * Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
      */
     public readonly postStartupScript!: pulumi.Output<string>;
     /**
@@ -145,7 +145,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly serviceAccountScopes!: pulumi.Output<string[]>;
     /**
-     * Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+     * Optional. Shielded VM configuration. [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
      */
     public readonly shieldedInstanceConfig!: pulumi.Output<outputs.notebooks.v1.ShieldedInstanceConfigResponse>;
     /**
@@ -353,7 +353,7 @@ export interface InstanceArgs {
      */
     noRemoveDataDisk?: pulumi.Input<boolean>;
     /**
-     * Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
+     * Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
      */
     postStartupScript?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
@@ -370,7 +370,7 @@ export interface InstanceArgs {
      */
     serviceAccountScopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+     * Optional. Shielded VM configuration. [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
      */
     shieldedInstanceConfig?: pulumi.Input<inputs.notebooks.v1.ShieldedInstanceConfigArgs>;
     /**

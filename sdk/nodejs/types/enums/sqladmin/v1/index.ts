@@ -184,9 +184,25 @@ export const InstanceDatabaseVersion = {
      */
     Postgres12: "POSTGRES_12",
     /**
+     * The database version is MySQL 8.
+     */
+    Mysql80: "MYSQL_8_0",
+    /**
+     * The database major version is MySQL 8.0 and the minor version is 18.
+     */
+    Mysql8018: "MYSQL_8_0_18",
+    /**
+     * The database major version is MySQL 8.0 and the minor version is 26.
+     */
+    Mysql8026: "MYSQL_8_0_26",
+    /**
      * The database version is PostgreSQL 13.
      */
     Postgres13: "POSTGRES_13",
+    /**
+     * The database version is PostgreSQL 14.
+     */
+    Postgres14: "POSTGRES_14",
     /**
      * The database version is SQL Server 2019 Standard.
      */
@@ -206,7 +222,7 @@ export const InstanceDatabaseVersion = {
 } as const;
 
 /**
- * The database engine type and version. The **databaseVersion** field cannot be changed after instance creation. * **MySQL instances**: MYSQL_8_0, MYSQL_5_7 (default), or MYSQL_5_6. * **PostgreSQL instances**: POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13 (default). * **SQL Server instances**: SQLSERVER_2019_STANDARD, SQLSERVER_2019_ENTERPRISE, SQLSERVER_2019_EXPRESS, or SQLSERVER_2019_WEB, SQLSERVER_2017_STANDARD (default), SQLSERVER_2017_ENTERPRISE, SQLSERVER_2017_EXPRESS, or SQLSERVER_2017_WEB.
+ * The database engine type and version. The **databaseVersion** field cannot be changed after instance creation.
  */
 export type InstanceDatabaseVersion = (typeof InstanceDatabaseVersion)[keyof typeof InstanceDatabaseVersion];
 
@@ -216,7 +232,7 @@ export const InstanceInstanceType = {
      */
     SqlInstanceTypeUnspecified: "SQL_INSTANCE_TYPE_UNSPECIFIED",
     /**
-     * A regular Cloud SQL instance.
+     * A regular Cloud SQL instance that is not replicating from a primary instance.
      */
     CloudSqlInstance: "CLOUD_SQL_INSTANCE",
     /**
@@ -230,7 +246,7 @@ export const InstanceInstanceType = {
 } as const;
 
 /**
- * The instance type. This can be one of the following: * **CLOUD_SQL_INSTANCE**: A Cloud SQL instance that is not replicating from a primary instance. * **ON_PREMISES_INSTANCE**: An instance running on the customer's premises. * **READ_REPLICA_INSTANCE**: A Cloud SQL instance configured as a read-replica.
+ * The instance type.
  */
 export type InstanceInstanceType = (typeof InstanceInstanceType)[keyof typeof InstanceInstanceType];
 
@@ -264,13 +280,13 @@ export const InstanceState = {
      */
     Failed: "FAILED",
     /**
-     * The instance is under maintenance operations and the database is available.
+     * Deprecated
      */
     OnlineMaintenance: "ONLINE_MAINTENANCE",
 } as const;
 
 /**
- * The current serving state of the Cloud SQL instance. This can be one of the following: * **SQL_INSTANCE_STATE_UNSPECIFIED**: The state of the instance is unknown. * **RUNNABLE**: The instance is running, or has been stopped by owner. * **SUSPENDED**: The instance is not available, for example due to problems with billing. * **PENDING_DELETE**: The instance is being deleted. * **PENDING_CREATE**: The instance is being created. * **MAINTENANCE**: The instance is down for maintenance. * **FAILED**: The instance creation failed.
+ * The current serving state of the Cloud SQL instance.
  */
 export type InstanceState = (typeof InstanceState)[keyof typeof InstanceState];
 
@@ -346,6 +362,22 @@ export const MaintenanceWindowUpdateTrack = {
  * Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
  */
 export type MaintenanceWindowUpdateTrack = (typeof MaintenanceWindowUpdateTrack)[keyof typeof MaintenanceWindowUpdateTrack];
+
+export const PasswordValidationPolicyComplexity = {
+    /**
+     * Complexity check is not specified.
+     */
+    ComplexityUnspecified: "COMPLEXITY_UNSPECIFIED",
+    /**
+     * A combination of lowercase, uppercase, numeric, and non-alphanumeric characters.
+     */
+    ComplexityDefault: "COMPLEXITY_DEFAULT",
+} as const;
+
+/**
+ * The complexity of the password.
+ */
+export type PasswordValidationPolicyComplexity = (typeof PasswordValidationPolicyComplexity)[keyof typeof PasswordValidationPolicyComplexity];
 
 export const SettingsActivationPolicy = {
     /**

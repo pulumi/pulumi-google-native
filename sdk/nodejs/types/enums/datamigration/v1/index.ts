@@ -228,7 +228,7 @@ export const MigrationJobState = {
      */
     Creating: "CREATING",
     /**
-     * The migration job is created, not started and is fully editable.
+     * The migration job is created and not started.
      */
     NotStarted: "NOT_STARTED",
     /**

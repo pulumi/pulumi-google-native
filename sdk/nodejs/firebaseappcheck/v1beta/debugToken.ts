@@ -64,6 +64,9 @@ export class DebugToken extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
+            if ((!args || args.token === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'token'");
+            }
             inputs["appId"] = args ? args.appId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -98,5 +101,5 @@ export interface DebugTokenArgs {
     /**
      * Input only. Immutable. The secret token itself. Must be provided during creation, and must be a UUID4, case insensitive. This field is immutable once set, and cannot be provided during an UpdateDebugToken request. You can, however, delete this debug token using DeleteDebugToken to revoke it. For security reasons, this field will never be populated in any response.
      */
-    token?: pulumi.Input<string>;
+    token: pulumi.Input<string>;
 }

@@ -8,11 +8,11 @@ export const GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge = {
      */
     TestingChallengeUnspecified: "TESTING_CHALLENGE_UNSPECIFIED",
     /**
-     * Challenge requests for this key will always return a nocaptcha, which does not require a solution.
+     * Challenge requests for this key always return a nocaptcha, which does not require a solution.
      */
     Nocaptcha: "NOCAPTCHA",
     /**
-     * Challenge requests for this key will always return an unsolvable challenge.
+     * Challenge requests for this key always return an unsolvable challenge.
      */
     UnsolvableChallenge: "UNSOLVABLE_CHALLENGE",
 } as const;

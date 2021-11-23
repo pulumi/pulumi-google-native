@@ -59,6 +59,10 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly jobId!: pulumi.Output<string>;
     /**
+     * It's only effect when the job is in QUEUED state. If it's positive, it indicates the job's position in the job scheduler. It's 0 when the job is already scheduled.
+     */
+    public /*out*/ readonly jobPosition!: pulumi.Output<string>;
+    /**
      * Optional. One or more labels that you can add, to organize your jobs. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
@@ -112,6 +116,7 @@ export class Job extends pulumi.CustomResource {
             inputs["createTime"] = undefined /*out*/;
             inputs["endTime"] = undefined /*out*/;
             inputs["errorMessage"] = undefined /*out*/;
+            inputs["jobPosition"] = undefined /*out*/;
             inputs["startTime"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         } else {
@@ -120,6 +125,7 @@ export class Job extends pulumi.CustomResource {
             inputs["errorMessage"] = undefined /*out*/;
             inputs["etag"] = undefined /*out*/;
             inputs["jobId"] = undefined /*out*/;
+            inputs["jobPosition"] = undefined /*out*/;
             inputs["labels"] = undefined /*out*/;
             inputs["predictionInput"] = undefined /*out*/;
             inputs["predictionOutput"] = undefined /*out*/;

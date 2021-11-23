@@ -75,6 +75,10 @@ export interface GetServiceResult {
      */
     readonly network: string;
     /**
+     * Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+     */
+    readonly networkConfig: outputs.metastore.v1beta.NetworkConfigResponse;
+    /**
      * The TCP port at which the metastore service is reached. Default: 9083.
      */
     readonly port: number;

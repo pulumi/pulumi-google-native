@@ -38,6 +38,10 @@ export class Participant extends pulumi.CustomResource {
     }
 
     /**
+     * Optional. Key-value filters on the metadata of documents returned by article suggestion. If specified, article suggestion only returns suggested documents that match all filters in their Document.metadata. Multiple values for a metadata key should be concatenated by comma. For example, filters to match all documents that have 'US' or 'CA' in their market metadata values and 'agent' in their user metadata values will be ``` documents_metadata_filters { key: "market" value: "US,CA" } documents_metadata_filters { key: "user" value: "agent" } ```
+     */
+    public readonly documentsMetadataFilters!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
      */
     public readonly name!: pulumi.Output<string>;
@@ -65,12 +69,14 @@ export class Participant extends pulumi.CustomResource {
                 throw new Error("Missing required property 'conversationId'");
             }
             inputs["conversationId"] = args ? args.conversationId : undefined;
+            inputs["documentsMetadataFilters"] = args ? args.documentsMetadataFilters : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["obfuscatedExternalUserId"] = args ? args.obfuscatedExternalUserId : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["role"] = args ? args.role : undefined;
         } else {
+            inputs["documentsMetadataFilters"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["obfuscatedExternalUserId"] = undefined /*out*/;
             inputs["role"] = undefined /*out*/;
@@ -87,6 +93,10 @@ export class Participant extends pulumi.CustomResource {
  */
 export interface ParticipantArgs {
     conversationId: pulumi.Input<string>;
+    /**
+     * Optional. Key-value filters on the metadata of documents returned by article suggestion. If specified, article suggestion only returns suggested documents that match all filters in their Document.metadata. Multiple values for a metadata key should be concatenated by comma. For example, filters to match all documents that have 'US' or 'CA' in their market metadata values and 'agent' in their user metadata values will be ``` documents_metadata_filters { key: "market" value: "US,CA" } documents_metadata_filters { key: "user" value: "agent" } ```
+     */
+    documentsMetadataFilters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
      * Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.

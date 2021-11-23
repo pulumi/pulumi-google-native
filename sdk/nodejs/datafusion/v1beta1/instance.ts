@@ -65,6 +65,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * If the instance state is DISABLED, the reason for disabling the instance.
+     */
+    public /*out*/ readonly disabledReason!: pulumi.Output<string[]>;
+    /**
      * Display name for an instance.
      */
     public readonly displayName!: pulumi.Output<string>;
@@ -152,6 +156,9 @@ export class Instance extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instanceId'");
+            }
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
@@ -176,6 +183,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
             inputs["apiEndpoint"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
+            inputs["disabledReason"] = undefined /*out*/;
             inputs["gcsBucket"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["p4ServiceAccount"] = undefined /*out*/;
@@ -192,6 +200,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["cryptoKeyConfig"] = undefined /*out*/;
             inputs["dataprocServiceAccount"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
+            inputs["disabledReason"] = undefined /*out*/;
             inputs["displayName"] = undefined /*out*/;
             inputs["enableRbac"] = undefined /*out*/;
             inputs["enableStackdriverLogging"] = undefined /*out*/;
@@ -259,7 +268,7 @@ export interface InstanceArgs {
      * Option to enable Stackdriver Monitoring.
      */
     enableStackdriverMonitoring?: pulumi.Input<boolean>;
-    instanceId?: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * The resource labels for instance to use to annotate any related underlying resources such as Compute Engine VMs. The character '=' is not allowed to be used within the labels.
      */

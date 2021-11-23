@@ -8,7 +8,9 @@ import * as utilities from "../../utilities";
 export * from "./backup";
 export * from "./getBackup";
 export * from "./getInstance";
+export * from "./getSnapshot";
 export * from "./instance";
+export * from "./snapshot";
 
 // Export enums:
 export * from "../../types/enums/file/v1";
@@ -16,6 +18,7 @@ export * from "../../types/enums/file/v1";
 // Import resources to register:
 import { Backup } from "./backup";
 import { Instance } from "./instance";
+import { Snapshot } from "./snapshot";
 
 const _module = {
     version: utilities.getVersion(),
@@ -25,6 +28,8 @@ const _module = {
                 return new Backup(name, <any>undefined, { urn })
             case "google-native:file/v1:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "google-native:file/v1:Snapshot":
+                return new Snapshot(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

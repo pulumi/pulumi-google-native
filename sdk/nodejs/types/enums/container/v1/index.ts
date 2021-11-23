@@ -86,6 +86,42 @@ export const ClusterUpdateDesiredPrivateIpv6GoogleAccess = {
  */
 export type ClusterUpdateDesiredPrivateIpv6GoogleAccess = (typeof ClusterUpdateDesiredPrivateIpv6GoogleAccess)[keyof typeof ClusterUpdateDesiredPrivateIpv6GoogleAccess];
 
+export const DNSConfigClusterDns = {
+    /**
+     * Default value
+     */
+    ProviderUnspecified: "PROVIDER_UNSPECIFIED",
+    /**
+     * Use GKE default DNS provider(kube-dns) for DNS resolution.
+     */
+    PlatformDefault: "PLATFORM_DEFAULT",
+    /**
+     * Use CloudDNS for DNS resolution.
+     */
+    CloudDns: "CLOUD_DNS",
+} as const;
+
+/**
+ * cluster_dns indicates which in-cluster DNS provider should be used.
+ */
+export type DNSConfigClusterDns = (typeof DNSConfigClusterDns)[keyof typeof DNSConfigClusterDns];
+
+export const DNSConfigClusterDnsScope = {
+    /**
+     * Default value, will be inferred as cluster scope.
+     */
+    DnsScopeUnspecified: "DNS_SCOPE_UNSPECIFIED",
+    /**
+     * DNS records are accessible from within the VPC.
+     */
+    VpcScope: "VPC_SCOPE",
+} as const;
+
+/**
+ * cluster_dns_scope indicates the scope of access to cluster DNS records.
+ */
+export type DNSConfigClusterDnsScope = (typeof DNSConfigClusterDnsScope)[keyof typeof DNSConfigClusterDnsScope];
+
 export const DatabaseEncryptionState = {
     /**
      * Should never be set

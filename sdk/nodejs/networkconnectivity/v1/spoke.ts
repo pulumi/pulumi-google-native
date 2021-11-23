@@ -44,7 +44,7 @@ export class Spoke extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Immutable. The URI of the hub that this spoke is attached to.
+     * Immutable. The name of the hub that this spoke is attached to.
      */
     public readonly hub!: pulumi.Output<string>;
     /**
@@ -87,10 +87,13 @@ export class Spoke extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: SpokeArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: SpokeArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.spokeId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'spokeId'");
+            }
             inputs["description"] = args ? args.description : undefined;
             inputs["hub"] = args ? args.hub : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -135,7 +138,7 @@ export interface SpokeArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Immutable. The URI of the hub that this spoke is attached to.
+     * Immutable. The name of the hub that this spoke is attached to.
      */
     hub?: pulumi.Input<string>;
     /**
@@ -161,5 +164,5 @@ export interface SpokeArgs {
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
-    spokeId?: pulumi.Input<string>;
+    spokeId: pulumi.Input<string>;
 }

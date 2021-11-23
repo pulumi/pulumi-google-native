@@ -55,7 +55,7 @@ export interface GetConnectionProfileResult {
      */
     readonly mysql: outputs.datamigration.v1.MySqlConnectionProfileResponse;
     /**
-     * The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{instance}.
+     * The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
      */
     readonly name: string;
     /**

@@ -257,15 +257,15 @@ export type GoogleCloudDialogflowV2IntentTrainingPhraseType = (typeof GoogleClou
 
 export const GoogleCloudDialogflowV2NotificationConfigMessageFormat = {
     /**
-     * If it is unspeified, PROTO will be used.
+     * If it is unspecified, PROTO will be used.
      */
     MessageFormatUnspecified: "MESSAGE_FORMAT_UNSPECIFIED",
     /**
-     * Pubsub message will be serialized proto.
+     * Pub/Sub message will be serialized proto.
      */
     Proto: "PROTO",
     /**
-     * Pubsub message will be json.
+     * Pub/Sub message will be json.
      */
     Json: "JSON",
 } as const;
@@ -312,6 +312,10 @@ export const GoogleCloudDialogflowV2SuggestionFeatureType = {
      * Run FAQ model.
      */
     Faq: "FAQ",
+    /**
+     * Run smart reply model.
+     */
+    SmartReply: "SMART_REPLY",
 } as const;
 
 /**

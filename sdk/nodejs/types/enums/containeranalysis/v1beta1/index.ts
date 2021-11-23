@@ -244,6 +244,10 @@ export const DiscoveryAnalysisKind = {
      * This represents an SPDX File.
      */
     SpdxFile: "SPDX_FILE",
+    /**
+     * This represents an SPDX Relationship.
+     */
+    SpdxRelationship: "SPDX_RELATIONSHIP",
 } as const;
 
 /**
@@ -499,11 +503,11 @@ export const PgpSignedAttestationContentType = {
  */
 export type PgpSignedAttestationContentType = (typeof PgpSignedAttestationContentType)[keyof typeof PgpSignedAttestationContentType];
 
-export const RelationshipOccurrenceType = {
+export const RelationshipNoteType = {
     /**
      * Unspecified
      */
-    TypeUnspecified: "TYPE_UNSPECIFIED",
+    RelationshipTypeUnspecified: "RELATIONSHIP_TYPE_UNSPECIFIED",
     /**
      * Is to be used when SPDXRef-DOCUMENT describes SPDXRef-A
      */
@@ -681,7 +685,7 @@ export const RelationshipOccurrenceType = {
 /**
  * The type of relationship between the source and target SPDX elements
  */
-export type RelationshipOccurrenceType = (typeof RelationshipOccurrenceType)[keyof typeof RelationshipOccurrenceType];
+export type RelationshipNoteType = (typeof RelationshipNoteType)[keyof typeof RelationshipNoteType];
 
 export const VersionKind = {
     /**

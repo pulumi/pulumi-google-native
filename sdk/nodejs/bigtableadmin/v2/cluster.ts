@@ -36,6 +36,10 @@ export class Cluster extends pulumi.CustomResource {
     }
 
     /**
+     * Configuration for this cluster.
+     */
+    public readonly clusterConfig!: pulumi.Output<outputs.bigtableadmin.v2.ClusterConfigResponse>;
+    /**
      * Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
      */
     public readonly defaultStorageType!: pulumi.Output<string>;
@@ -80,6 +84,7 @@ export class Cluster extends pulumi.CustomResource {
             if ((!args || args.serveNodes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serveNodes'");
             }
+            inputs["clusterConfig"] = args ? args.clusterConfig : undefined;
             inputs["clusterId"] = args ? args.clusterId : undefined;
             inputs["defaultStorageType"] = args ? args.defaultStorageType : undefined;
             inputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
@@ -90,6 +95,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["serveNodes"] = args ? args.serveNodes : undefined;
             inputs["state"] = undefined /*out*/;
         } else {
+            inputs["clusterConfig"] = undefined /*out*/;
             inputs["defaultStorageType"] = undefined /*out*/;
             inputs["encryptionConfig"] = undefined /*out*/;
             inputs["location"] = undefined /*out*/;
@@ -108,6 +114,10 @@ export class Cluster extends pulumi.CustomResource {
  * The set of arguments for constructing a Cluster resource.
  */
 export interface ClusterArgs {
+    /**
+     * Configuration for this cluster.
+     */
+    clusterConfig?: pulumi.Input<inputs.bigtableadmin.v2.ClusterConfigArgs>;
     clusterId: pulumi.Input<string>;
     /**
      * Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.

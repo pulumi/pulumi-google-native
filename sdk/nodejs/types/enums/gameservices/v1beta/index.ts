@@ -88,7 +88,7 @@ export const ConditionIam = {
      */
     Attribution: "ATTRIBUTION",
     /**
-     * Any of the security realms in the IAMContext (go/security-realms). When used with IN, the condition indicates "any of the request's realms match one of the given values; with NOT_IN, "none of the realms match any of the given values". Note that a value can be: - 'self' (i.e., allow connections from clients that are in the same security realm, which is currently but not guaranteed to be campus-sized) - 'self:metro' (i.e., clients that are in the same metro) - 'self:cloud-region' (i.e., allow connections from clients that are in the same cloud region) - 'guardians' (i.e., allow connections from its guardian realms. See go/security-realms-glossary#guardian for more information.) - a realm (e.g., 'campus-abc') - a realm group (e.g., 'realms-for-borg-cell-xx', see: go/realm-groups) A match is determined by a realm group membership check performed by a RealmAclRep object (go/realm-acl-howto). It is not permitted to grant access based on the *absence* of a realm, so realm conditions can only be used in a "positive" context (e.g., ALLOW/IN or DENY/NOT_IN).
+     * Any of the security realms in the IAMContext (go/security-realms). When used with IN, the condition indicates "any of the request's realms match one of the given values; with NOT_IN, "none of the realms match any of the given values". Note that a value can be: - 'self' (i.e., allow connections from clients that are in the same security realm, which is currently but not guaranteed to be campus-sized) - 'self:metro' (i.e., clients that are in the same metro) - 'self:cloud-region' (i.e., allow connections from clients that are in the same cloud region) - 'self:prod-region' (i.e., allow connections from clients that are in the same prod region) - 'guardians' (i.e., allow connections from its guardian realms. See go/security-realms-glossary#guardian for more information.) - a realm (e.g., 'campus-abc') - a realm group (e.g., 'realms-for-borg-cell-xx', see: go/realm-groups) A match is determined by a realm group membership check performed by a RealmAclRep object (go/realm-acl-howto). It is not permitted to grant access based on the *absence* of a realm, so realm conditions can only be used in a "positive" context (e.g., ALLOW/IN or DENY/NOT_IN).
      */
     SecurityRealm: "SECURITY_REALM",
     /**
@@ -186,34 +186,6 @@ export const DataAccessOptionsLogMode = {
 } as const;
 
 export type DataAccessOptionsLogMode = (typeof DataAccessOptionsLogMode)[keyof typeof DataAccessOptionsLogMode];
-
-export const GameServerClusterAllocationPriority = {
-    /**
-     * The default allocation priority. `PRIORITY_UNSPECIFIED` is the lowest possible priority.
-     */
-    PriorityUnspecified: "PRIORITY_UNSPECIFIED",
-    /**
-     * Priority 1, the highest priority.
-     */
-    P1: "P1",
-    /**
-     * Priority 2.
-     */
-    P2: "P2",
-    /**
-     * Priority 3.
-     */
-    P3: "P3",
-    /**
-     * Priority 4.
-     */
-    P4: "P4",
-} as const;
-
-/**
- * Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
- */
-export type GameServerClusterAllocationPriority = (typeof GameServerClusterAllocationPriority)[keyof typeof GameServerClusterAllocationPriority];
 
 export const RuleAction = {
     /**

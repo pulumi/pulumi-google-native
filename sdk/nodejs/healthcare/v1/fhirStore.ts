@@ -69,6 +69,10 @@ export class FhirStore extends pulumi.CustomResource {
      */
     public readonly streamConfigs!: pulumi.Output<outputs.healthcare.v1.StreamConfigResponse[]>;
     /**
+     * Configuration for how to validate incoming FHIR resources against configured profiles.
+     */
+    public readonly validationConfig!: pulumi.Output<outputs.healthcare.v1.ValidationConfigResponse>;
+    /**
      * Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
      */
     public readonly version!: pulumi.Output<string>;
@@ -98,6 +102,7 @@ export class FhirStore extends pulumi.CustomResource {
             inputs["notificationConfig"] = args ? args.notificationConfig : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["streamConfigs"] = args ? args.streamConfigs : undefined;
+            inputs["validationConfig"] = args ? args.validationConfig : undefined;
             inputs["version"] = args ? args.version : undefined;
             inputs["name"] = undefined /*out*/;
         } else {
@@ -109,6 +114,7 @@ export class FhirStore extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["notificationConfig"] = undefined /*out*/;
             inputs["streamConfigs"] = undefined /*out*/;
+            inputs["validationConfig"] = undefined /*out*/;
             inputs["version"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -154,6 +160,10 @@ export interface FhirStoreArgs {
      * A list of streaming configs that configure the destinations of streaming export for every resource mutation in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next resource mutation is streamed to the new location in addition to the existing ones. When a location is removed from the list, the server stops streaming to that location. Before adding a new config, you must add the required [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor) role to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/iam/docs/service-accounts). Some lag (typically on the order of dozens of seconds) is expected before the results show up in the streaming destination.
      */
     streamConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.v1.StreamConfigArgs>[]>;
+    /**
+     * Configuration for how to validate incoming FHIR resources against configured profiles.
+     */
+    validationConfig?: pulumi.Input<inputs.healthcare.v1.ValidationConfigArgs>;
     /**
      * Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
      */

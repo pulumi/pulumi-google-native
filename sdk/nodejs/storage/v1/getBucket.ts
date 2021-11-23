@@ -41,6 +41,10 @@ export interface GetBucketResult {
      */
     readonly acl: outputs.storage.v1.BucketAccessControlResponse[];
     /**
+     * The bucket's Autoclass configuration.
+     */
+    readonly autoclass: outputs.storage.v1.BucketAutoclassResponse;
+    /**
      * The bucket's billing configuration.
      */
     readonly billing: outputs.storage.v1.BucketBillingResponse;

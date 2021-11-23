@@ -81,7 +81,7 @@ export interface GetOccurrenceResult {
      */
     readonly resource: outputs.containeranalysis.v1beta1.ResourceResponse;
     /**
-     * Describes a specific SPDX Document.
+     * Describes a specific software bill of materials document.
      */
     readonly sbom: outputs.containeranalysis.v1beta1.DocumentOccurrenceResponse;
     /**
@@ -91,7 +91,7 @@ export interface GetOccurrenceResult {
     /**
      * Describes a specific SPDX Package.
      */
-    readonly spdxPackage: outputs.containeranalysis.v1beta1.PackageOccurrenceResponse;
+    readonly spdxPackage: outputs.containeranalysis.v1beta1.PackageInfoOccurrenceResponse;
     /**
      * Describes a specific SPDX Relationship.
      */

@@ -1812,6 +1812,7 @@ export const RegionCommitmentType = {
     GeneralPurposeE2: "GENERAL_PURPOSE_E2",
     GeneralPurposeN2: "GENERAL_PURPOSE_N2",
     GeneralPurposeN2d: "GENERAL_PURPOSE_N2D",
+    GeneralPurposeT2d: "GENERAL_PURPOSE_T2D",
     MemoryOptimized: "MEMORY_OPTIMIZED",
     TypeUnspecified: "TYPE_UNSPECIFIED",
 } as const;
