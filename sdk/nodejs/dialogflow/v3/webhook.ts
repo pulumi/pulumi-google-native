@@ -68,7 +68,7 @@ export class Webhook extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: WebhookArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.agentId === undefined) && !opts.urn) {
@@ -77,27 +77,27 @@ export class Webhook extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            inputs["agentId"] = args ? args.agentId : undefined;
-            inputs["disabled"] = args ? args.disabled : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["genericWebService"] = args ? args.genericWebService : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["serviceDirectory"] = args ? args.serviceDirectory : undefined;
-            inputs["timeout"] = args ? args.timeout : undefined;
+            resourceInputs["agentId"] = args ? args.agentId : undefined;
+            resourceInputs["disabled"] = args ? args.disabled : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["genericWebService"] = args ? args.genericWebService : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["serviceDirectory"] = args ? args.serviceDirectory : undefined;
+            resourceInputs["timeout"] = args ? args.timeout : undefined;
         } else {
-            inputs["disabled"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["genericWebService"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["serviceDirectory"] = undefined /*out*/;
-            inputs["timeout"] = undefined /*out*/;
+            resourceInputs["disabled"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["genericWebService"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["serviceDirectory"] = undefined /*out*/;
+            resourceInputs["timeout"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Webhook.__pulumiType, name, inputs, opts);
+        super(Webhook.__pulumiType, name, resourceInputs, opts);
     }
 }
 

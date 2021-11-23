@@ -88,44 +88,44 @@ export class Task extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: TaskArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.queueId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'queueId'");
             }
-            inputs["appEngineHttpRequest"] = args ? args.appEngineHttpRequest : undefined;
-            inputs["dispatchDeadline"] = args ? args.dispatchDeadline : undefined;
-            inputs["httpRequest"] = args ? args.httpRequest : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["queueId"] = args ? args.queueId : undefined;
-            inputs["responseView"] = args ? args.responseView : undefined;
-            inputs["scheduleTime"] = args ? args.scheduleTime : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["dispatchCount"] = undefined /*out*/;
-            inputs["firstAttempt"] = undefined /*out*/;
-            inputs["lastAttempt"] = undefined /*out*/;
-            inputs["responseCount"] = undefined /*out*/;
-            inputs["view"] = undefined /*out*/;
+            resourceInputs["appEngineHttpRequest"] = args ? args.appEngineHttpRequest : undefined;
+            resourceInputs["dispatchDeadline"] = args ? args.dispatchDeadline : undefined;
+            resourceInputs["httpRequest"] = args ? args.httpRequest : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["queueId"] = args ? args.queueId : undefined;
+            resourceInputs["responseView"] = args ? args.responseView : undefined;
+            resourceInputs["scheduleTime"] = args ? args.scheduleTime : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["dispatchCount"] = undefined /*out*/;
+            resourceInputs["firstAttempt"] = undefined /*out*/;
+            resourceInputs["lastAttempt"] = undefined /*out*/;
+            resourceInputs["responseCount"] = undefined /*out*/;
+            resourceInputs["view"] = undefined /*out*/;
         } else {
-            inputs["appEngineHttpRequest"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["dispatchCount"] = undefined /*out*/;
-            inputs["dispatchDeadline"] = undefined /*out*/;
-            inputs["firstAttempt"] = undefined /*out*/;
-            inputs["httpRequest"] = undefined /*out*/;
-            inputs["lastAttempt"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["responseCount"] = undefined /*out*/;
-            inputs["scheduleTime"] = undefined /*out*/;
-            inputs["view"] = undefined /*out*/;
+            resourceInputs["appEngineHttpRequest"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["dispatchCount"] = undefined /*out*/;
+            resourceInputs["dispatchDeadline"] = undefined /*out*/;
+            resourceInputs["firstAttempt"] = undefined /*out*/;
+            resourceInputs["httpRequest"] = undefined /*out*/;
+            resourceInputs["lastAttempt"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["responseCount"] = undefined /*out*/;
+            resourceInputs["scheduleTime"] = undefined /*out*/;
+            resourceInputs["view"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Task.__pulumiType, name, inputs, opts);
+        super(Task.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -93,7 +93,7 @@ export class Config extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ConfigArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.apiConfigId === undefined) && !opts.urn) {
@@ -102,40 +102,40 @@ export class Config extends pulumi.CustomResource {
             if ((!args || args.apiId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'apiId'");
             }
-            inputs["apiConfigId"] = args ? args.apiConfigId : undefined;
-            inputs["apiId"] = args ? args.apiId : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["gatewayConfig"] = args ? args.gatewayConfig : undefined;
-            inputs["gatewayServiceAccount"] = args ? args.gatewayServiceAccount : undefined;
-            inputs["grpcServices"] = args ? args.grpcServices : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["managedServiceConfigs"] = args ? args.managedServiceConfigs : undefined;
-            inputs["openapiDocuments"] = args ? args.openapiDocuments : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["serviceConfigId"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["apiConfigId"] = args ? args.apiConfigId : undefined;
+            resourceInputs["apiId"] = args ? args.apiId : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["gatewayConfig"] = args ? args.gatewayConfig : undefined;
+            resourceInputs["gatewayServiceAccount"] = args ? args.gatewayServiceAccount : undefined;
+            resourceInputs["grpcServices"] = args ? args.grpcServices : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["managedServiceConfigs"] = args ? args.managedServiceConfigs : undefined;
+            resourceInputs["openapiDocuments"] = args ? args.openapiDocuments : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["serviceConfigId"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["gatewayConfig"] = undefined /*out*/;
-            inputs["gatewayServiceAccount"] = undefined /*out*/;
-            inputs["grpcServices"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["managedServiceConfigs"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["openapiDocuments"] = undefined /*out*/;
-            inputs["serviceConfigId"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["gatewayConfig"] = undefined /*out*/;
+            resourceInputs["gatewayServiceAccount"] = undefined /*out*/;
+            resourceInputs["grpcServices"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["managedServiceConfigs"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["openapiDocuments"] = undefined /*out*/;
+            resourceInputs["serviceConfigId"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Config.__pulumiType, name, inputs, opts);
+        super(Config.__pulumiType, name, resourceInputs, opts);
     }
 }
 

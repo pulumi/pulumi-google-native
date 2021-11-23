@@ -103,7 +103,7 @@ export class Certificate extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: CertificateArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.caPoolId === undefined) && !opts.urn) {
@@ -112,47 +112,47 @@ export class Certificate extends pulumi.CustomResource {
             if ((!args || args.lifetime === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'lifetime'");
             }
-            inputs["caPoolId"] = args ? args.caPoolId : undefined;
-            inputs["certificateId"] = args ? args.certificateId : undefined;
-            inputs["certificateTemplate"] = args ? args.certificateTemplate : undefined;
-            inputs["config"] = args ? args.config : undefined;
-            inputs["issuingCertificateAuthorityId"] = args ? args.issuingCertificateAuthorityId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["lifetime"] = args ? args.lifetime : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["pemCsr"] = args ? args.pemCsr : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["subjectMode"] = args ? args.subjectMode : undefined;
-            inputs["validateOnly"] = args ? args.validateOnly : undefined;
-            inputs["certificateDescription"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["issuerCertificateAuthority"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["pemCertificate"] = undefined /*out*/;
-            inputs["pemCertificateChain"] = undefined /*out*/;
-            inputs["revocationDetails"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["caPoolId"] = args ? args.caPoolId : undefined;
+            resourceInputs["certificateId"] = args ? args.certificateId : undefined;
+            resourceInputs["certificateTemplate"] = args ? args.certificateTemplate : undefined;
+            resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["issuingCertificateAuthorityId"] = args ? args.issuingCertificateAuthorityId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["lifetime"] = args ? args.lifetime : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["pemCsr"] = args ? args.pemCsr : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["subjectMode"] = args ? args.subjectMode : undefined;
+            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
+            resourceInputs["certificateDescription"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["issuerCertificateAuthority"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pemCertificate"] = undefined /*out*/;
+            resourceInputs["pemCertificateChain"] = undefined /*out*/;
+            resourceInputs["revocationDetails"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["certificateDescription"] = undefined /*out*/;
-            inputs["certificateTemplate"] = undefined /*out*/;
-            inputs["config"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["issuerCertificateAuthority"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["lifetime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["pemCertificate"] = undefined /*out*/;
-            inputs["pemCertificateChain"] = undefined /*out*/;
-            inputs["pemCsr"] = undefined /*out*/;
-            inputs["revocationDetails"] = undefined /*out*/;
-            inputs["subjectMode"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["certificateDescription"] = undefined /*out*/;
+            resourceInputs["certificateTemplate"] = undefined /*out*/;
+            resourceInputs["config"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["issuerCertificateAuthority"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["lifetime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pemCertificate"] = undefined /*out*/;
+            resourceInputs["pemCertificateChain"] = undefined /*out*/;
+            resourceInputs["pemCsr"] = undefined /*out*/;
+            resourceInputs["revocationDetails"] = undefined /*out*/;
+            resourceInputs["subjectMode"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Certificate.__pulumiType, name, inputs, opts);
+        super(Certificate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

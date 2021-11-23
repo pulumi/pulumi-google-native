@@ -88,7 +88,7 @@ export class Pipeline extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: PipelineArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.displayName === undefined) && !opts.urn) {
@@ -100,36 +100,36 @@ export class Pipeline extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["pipelineSources"] = args ? args.pipelineSources : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["scheduleInfo"] = args ? args.scheduleInfo : undefined;
-            inputs["schedulerServiceAccountEmail"] = args ? args.schedulerServiceAccountEmail : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["workload"] = args ? args.workload : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["jobCount"] = undefined /*out*/;
-            inputs["lastUpdateTime"] = undefined /*out*/;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["pipelineSources"] = args ? args.pipelineSources : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["scheduleInfo"] = args ? args.scheduleInfo : undefined;
+            resourceInputs["schedulerServiceAccountEmail"] = args ? args.schedulerServiceAccountEmail : undefined;
+            resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["workload"] = args ? args.workload : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["jobCount"] = undefined /*out*/;
+            resourceInputs["lastUpdateTime"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["jobCount"] = undefined /*out*/;
-            inputs["lastUpdateTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["pipelineSources"] = undefined /*out*/;
-            inputs["scheduleInfo"] = undefined /*out*/;
-            inputs["schedulerServiceAccountEmail"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
-            inputs["workload"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["jobCount"] = undefined /*out*/;
+            resourceInputs["lastUpdateTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pipelineSources"] = undefined /*out*/;
+            resourceInputs["scheduleInfo"] = undefined /*out*/;
+            resourceInputs["schedulerServiceAccountEmail"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["workload"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Pipeline.__pulumiType, name, inputs, opts);
+        super(Pipeline.__pulumiType, name, resourceInputs, opts);
     }
 }
 

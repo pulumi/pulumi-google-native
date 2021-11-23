@@ -88,7 +88,7 @@ export class PatchDeployment extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: PatchDeploymentArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.instanceFilter === undefined) && !opts.urn) {
@@ -103,36 +103,36 @@ export class PatchDeployment extends pulumi.CustomResource {
             if ((!args || args.recurringSchedule === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'recurringSchedule'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["duration"] = args ? args.duration : undefined;
-            inputs["instanceFilter"] = args ? args.instanceFilter : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["oneTimeSchedule"] = args ? args.oneTimeSchedule : undefined;
-            inputs["patchConfig"] = args ? args.patchConfig : undefined;
-            inputs["patchDeploymentId"] = args ? args.patchDeploymentId : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["recurringSchedule"] = args ? args.recurringSchedule : undefined;
-            inputs["rollout"] = args ? args.rollout : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["lastExecuteTime"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["duration"] = args ? args.duration : undefined;
+            resourceInputs["instanceFilter"] = args ? args.instanceFilter : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["oneTimeSchedule"] = args ? args.oneTimeSchedule : undefined;
+            resourceInputs["patchConfig"] = args ? args.patchConfig : undefined;
+            resourceInputs["patchDeploymentId"] = args ? args.patchDeploymentId : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["recurringSchedule"] = args ? args.recurringSchedule : undefined;
+            resourceInputs["rollout"] = args ? args.rollout : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["lastExecuteTime"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["duration"] = undefined /*out*/;
-            inputs["instanceFilter"] = undefined /*out*/;
-            inputs["lastExecuteTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["oneTimeSchedule"] = undefined /*out*/;
-            inputs["patchConfig"] = undefined /*out*/;
-            inputs["recurringSchedule"] = undefined /*out*/;
-            inputs["rollout"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["duration"] = undefined /*out*/;
+            resourceInputs["instanceFilter"] = undefined /*out*/;
+            resourceInputs["lastExecuteTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["oneTimeSchedule"] = undefined /*out*/;
+            resourceInputs["patchConfig"] = undefined /*out*/;
+            resourceInputs["recurringSchedule"] = undefined /*out*/;
+            resourceInputs["rollout"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(PatchDeployment.__pulumiType, name, inputs, opts);
+        super(PatchDeployment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -73,7 +73,7 @@ export class ServiceLevelObjective extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ServiceLevelObjectiveArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.serviceId === undefined) && !opts.urn) {
@@ -85,30 +85,30 @@ export class ServiceLevelObjective extends pulumi.CustomResource {
             if ((!args || args.v3Id1 === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'v3Id1'");
             }
-            inputs["calendarPeriod"] = args ? args.calendarPeriod : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["goal"] = args ? args.goal : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["rollingPeriod"] = args ? args.rollingPeriod : undefined;
-            inputs["serviceId"] = args ? args.serviceId : undefined;
-            inputs["serviceLevelIndicator"] = args ? args.serviceLevelIndicator : undefined;
-            inputs["serviceLevelObjectiveId"] = args ? args.serviceLevelObjectiveId : undefined;
-            inputs["userLabels"] = args ? args.userLabels : undefined;
-            inputs["v3Id"] = args ? args.v3Id : undefined;
-            inputs["v3Id1"] = args ? args.v3Id1 : undefined;
+            resourceInputs["calendarPeriod"] = args ? args.calendarPeriod : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["goal"] = args ? args.goal : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["rollingPeriod"] = args ? args.rollingPeriod : undefined;
+            resourceInputs["serviceId"] = args ? args.serviceId : undefined;
+            resourceInputs["serviceLevelIndicator"] = args ? args.serviceLevelIndicator : undefined;
+            resourceInputs["serviceLevelObjectiveId"] = args ? args.serviceLevelObjectiveId : undefined;
+            resourceInputs["userLabels"] = args ? args.userLabels : undefined;
+            resourceInputs["v3Id"] = args ? args.v3Id : undefined;
+            resourceInputs["v3Id1"] = args ? args.v3Id1 : undefined;
         } else {
-            inputs["calendarPeriod"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["goal"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["rollingPeriod"] = undefined /*out*/;
-            inputs["serviceLevelIndicator"] = undefined /*out*/;
-            inputs["userLabels"] = undefined /*out*/;
+            resourceInputs["calendarPeriod"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["goal"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["rollingPeriod"] = undefined /*out*/;
+            resourceInputs["serviceLevelIndicator"] = undefined /*out*/;
+            resourceInputs["userLabels"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ServiceLevelObjective.__pulumiType, name, inputs, opts);
+        super(ServiceLevelObjective.__pulumiType, name, resourceInputs, opts);
     }
 }
 

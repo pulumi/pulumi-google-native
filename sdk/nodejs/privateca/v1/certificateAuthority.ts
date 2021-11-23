@@ -113,7 +113,7 @@ export class CertificateAuthority extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: CertificateAuthorityArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.caPoolId === undefined) && !opts.urn) {
@@ -134,51 +134,51 @@ export class CertificateAuthority extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["caPoolId"] = args ? args.caPoolId : undefined;
-            inputs["certificateAuthorityId"] = args ? args.certificateAuthorityId : undefined;
-            inputs["config"] = args ? args.config : undefined;
-            inputs["gcsBucket"] = args ? args.gcsBucket : undefined;
-            inputs["keySpec"] = args ? args.keySpec : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["lifetime"] = args ? args.lifetime : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["subordinateConfig"] = args ? args.subordinateConfig : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["accessUrls"] = undefined /*out*/;
-            inputs["caCertificateDescriptions"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["deleteTime"] = undefined /*out*/;
-            inputs["expireTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["pemCaCertificates"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["tier"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["caPoolId"] = args ? args.caPoolId : undefined;
+            resourceInputs["certificateAuthorityId"] = args ? args.certificateAuthorityId : undefined;
+            resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["gcsBucket"] = args ? args.gcsBucket : undefined;
+            resourceInputs["keySpec"] = args ? args.keySpec : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["lifetime"] = args ? args.lifetime : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["subordinateConfig"] = args ? args.subordinateConfig : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["accessUrls"] = undefined /*out*/;
+            resourceInputs["caCertificateDescriptions"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deleteTime"] = undefined /*out*/;
+            resourceInputs["expireTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pemCaCertificates"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["tier"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["accessUrls"] = undefined /*out*/;
-            inputs["caCertificateDescriptions"] = undefined /*out*/;
-            inputs["config"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["deleteTime"] = undefined /*out*/;
-            inputs["expireTime"] = undefined /*out*/;
-            inputs["gcsBucket"] = undefined /*out*/;
-            inputs["keySpec"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["lifetime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["pemCaCertificates"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["subordinateConfig"] = undefined /*out*/;
-            inputs["tier"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["accessUrls"] = undefined /*out*/;
+            resourceInputs["caCertificateDescriptions"] = undefined /*out*/;
+            resourceInputs["config"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deleteTime"] = undefined /*out*/;
+            resourceInputs["expireTime"] = undefined /*out*/;
+            resourceInputs["gcsBucket"] = undefined /*out*/;
+            resourceInputs["keySpec"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["lifetime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pemCaCertificates"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["subordinateConfig"] = undefined /*out*/;
+            resourceInputs["tier"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(CertificateAuthority.__pulumiType, name, inputs, opts);
+        super(CertificateAuthority.__pulumiType, name, resourceInputs, opts);
     }
 }
 

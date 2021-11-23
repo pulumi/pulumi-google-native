@@ -81,7 +81,7 @@ export class Provider extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ProviderArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.workloadIdentityPoolId === undefined) && !opts.urn) {
@@ -90,34 +90,34 @@ export class Provider extends pulumi.CustomResource {
             if ((!args || args.workloadIdentityPoolProviderId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workloadIdentityPoolProviderId'");
             }
-            inputs["attributeCondition"] = args ? args.attributeCondition : undefined;
-            inputs["attributeMapping"] = args ? args.attributeMapping : undefined;
-            inputs["aws"] = args ? args.aws : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["disabled"] = args ? args.disabled : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["oidc"] = args ? args.oidc : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["workloadIdentityPoolId"] = args ? args.workloadIdentityPoolId : undefined;
-            inputs["workloadIdentityPoolProviderId"] = args ? args.workloadIdentityPoolProviderId : undefined;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["attributeCondition"] = args ? args.attributeCondition : undefined;
+            resourceInputs["attributeMapping"] = args ? args.attributeMapping : undefined;
+            resourceInputs["aws"] = args ? args.aws : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disabled"] = args ? args.disabled : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["oidc"] = args ? args.oidc : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["workloadIdentityPoolId"] = args ? args.workloadIdentityPoolId : undefined;
+            resourceInputs["workloadIdentityPoolProviderId"] = args ? args.workloadIdentityPoolProviderId : undefined;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
-            inputs["attributeCondition"] = undefined /*out*/;
-            inputs["attributeMapping"] = undefined /*out*/;
-            inputs["aws"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["disabled"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["oidc"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["attributeCondition"] = undefined /*out*/;
+            resourceInputs["attributeMapping"] = undefined /*out*/;
+            resourceInputs["aws"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["disabled"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["oidc"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Provider.__pulumiType, name, inputs, opts);
+        super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }
 

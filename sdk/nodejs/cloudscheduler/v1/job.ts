@@ -100,45 +100,45 @@ export class Job extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: JobArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["appEngineHttpTarget"] = args ? args.appEngineHttpTarget : undefined;
-            inputs["attemptDeadline"] = args ? args.attemptDeadline : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["httpTarget"] = args ? args.httpTarget : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["pubsubTarget"] = args ? args.pubsubTarget : undefined;
-            inputs["retryConfig"] = args ? args.retryConfig : undefined;
-            inputs["schedule"] = args ? args.schedule : undefined;
-            inputs["timeZone"] = args ? args.timeZone : undefined;
-            inputs["lastAttemptTime"] = undefined /*out*/;
-            inputs["scheduleTime"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["userUpdateTime"] = undefined /*out*/;
+            resourceInputs["appEngineHttpTarget"] = args ? args.appEngineHttpTarget : undefined;
+            resourceInputs["attemptDeadline"] = args ? args.attemptDeadline : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["httpTarget"] = args ? args.httpTarget : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["pubsubTarget"] = args ? args.pubsubTarget : undefined;
+            resourceInputs["retryConfig"] = args ? args.retryConfig : undefined;
+            resourceInputs["schedule"] = args ? args.schedule : undefined;
+            resourceInputs["timeZone"] = args ? args.timeZone : undefined;
+            resourceInputs["lastAttemptTime"] = undefined /*out*/;
+            resourceInputs["scheduleTime"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["userUpdateTime"] = undefined /*out*/;
         } else {
-            inputs["appEngineHttpTarget"] = undefined /*out*/;
-            inputs["attemptDeadline"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["httpTarget"] = undefined /*out*/;
-            inputs["lastAttemptTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["pubsubTarget"] = undefined /*out*/;
-            inputs["retryConfig"] = undefined /*out*/;
-            inputs["schedule"] = undefined /*out*/;
-            inputs["scheduleTime"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["timeZone"] = undefined /*out*/;
-            inputs["userUpdateTime"] = undefined /*out*/;
+            resourceInputs["appEngineHttpTarget"] = undefined /*out*/;
+            resourceInputs["attemptDeadline"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["httpTarget"] = undefined /*out*/;
+            resourceInputs["lastAttemptTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pubsubTarget"] = undefined /*out*/;
+            resourceInputs["retryConfig"] = undefined /*out*/;
+            resourceInputs["schedule"] = undefined /*out*/;
+            resourceInputs["scheduleTime"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["timeZone"] = undefined /*out*/;
+            resourceInputs["userUpdateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Job.__pulumiType, name, inputs, opts);
+        super(Job.__pulumiType, name, resourceInputs, opts);
     }
 }
 

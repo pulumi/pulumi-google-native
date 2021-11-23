@@ -102,50 +102,50 @@ export class ManagedZone extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: ManagedZoneArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["clientOperationId"] = args ? args.clientOperationId : undefined;
-            inputs["cloudLoggingConfig"] = args ? args.cloudLoggingConfig : undefined;
-            inputs["creationTime"] = args ? args.creationTime : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["dnsName"] = args ? args.dnsName : undefined;
-            inputs["dnssecConfig"] = args ? args.dnssecConfig : undefined;
-            inputs["forwardingConfig"] = args ? args.forwardingConfig : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["nameServerSet"] = args ? args.nameServerSet : undefined;
-            inputs["nameServers"] = args ? args.nameServers : undefined;
-            inputs["peeringConfig"] = args ? args.peeringConfig : undefined;
-            inputs["privateVisibilityConfig"] = args ? args.privateVisibilityConfig : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["reverseLookupConfig"] = args ? args.reverseLookupConfig : undefined;
-            inputs["serviceDirectoryConfig"] = args ? args.serviceDirectoryConfig : undefined;
-            inputs["visibility"] = args ? args.visibility : undefined;
+            resourceInputs["clientOperationId"] = args ? args.clientOperationId : undefined;
+            resourceInputs["cloudLoggingConfig"] = args ? args.cloudLoggingConfig : undefined;
+            resourceInputs["creationTime"] = args ? args.creationTime : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dnsName"] = args ? args.dnsName : undefined;
+            resourceInputs["dnssecConfig"] = args ? args.dnssecConfig : undefined;
+            resourceInputs["forwardingConfig"] = args ? args.forwardingConfig : undefined;
+            resourceInputs["id"] = args ? args.id : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nameServerSet"] = args ? args.nameServerSet : undefined;
+            resourceInputs["nameServers"] = args ? args.nameServers : undefined;
+            resourceInputs["peeringConfig"] = args ? args.peeringConfig : undefined;
+            resourceInputs["privateVisibilityConfig"] = args ? args.privateVisibilityConfig : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["reverseLookupConfig"] = args ? args.reverseLookupConfig : undefined;
+            resourceInputs["serviceDirectoryConfig"] = args ? args.serviceDirectoryConfig : undefined;
+            resourceInputs["visibility"] = args ? args.visibility : undefined;
         } else {
-            inputs["cloudLoggingConfig"] = undefined /*out*/;
-            inputs["creationTime"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["dnsName"] = undefined /*out*/;
-            inputs["dnssecConfig"] = undefined /*out*/;
-            inputs["forwardingConfig"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["nameServerSet"] = undefined /*out*/;
-            inputs["nameServers"] = undefined /*out*/;
-            inputs["peeringConfig"] = undefined /*out*/;
-            inputs["privateVisibilityConfig"] = undefined /*out*/;
-            inputs["reverseLookupConfig"] = undefined /*out*/;
-            inputs["serviceDirectoryConfig"] = undefined /*out*/;
-            inputs["visibility"] = undefined /*out*/;
+            resourceInputs["cloudLoggingConfig"] = undefined /*out*/;
+            resourceInputs["creationTime"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["dnsName"] = undefined /*out*/;
+            resourceInputs["dnssecConfig"] = undefined /*out*/;
+            resourceInputs["forwardingConfig"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["nameServerSet"] = undefined /*out*/;
+            resourceInputs["nameServers"] = undefined /*out*/;
+            resourceInputs["peeringConfig"] = undefined /*out*/;
+            resourceInputs["privateVisibilityConfig"] = undefined /*out*/;
+            resourceInputs["reverseLookupConfig"] = undefined /*out*/;
+            resourceInputs["serviceDirectoryConfig"] = undefined /*out*/;
+            resourceInputs["visibility"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ManagedZone.__pulumiType, name, inputs, opts);
+        super(ManagedZone.__pulumiType, name, resourceInputs, opts);
     }
 }
 

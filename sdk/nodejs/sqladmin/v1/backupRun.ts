@@ -105,50 +105,50 @@ export class BackupRun extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: BackupRunArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.instance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            inputs["backupKind"] = args ? args.backupKind : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["diskEncryptionConfiguration"] = args ? args.diskEncryptionConfiguration : undefined;
-            inputs["diskEncryptionStatus"] = args ? args.diskEncryptionStatus : undefined;
-            inputs["endTime"] = args ? args.endTime : undefined;
-            inputs["enqueuedTime"] = args ? args.enqueuedTime : undefined;
-            inputs["error"] = args ? args.error : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["instance"] = args ? args.instance : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["startTime"] = args ? args.startTime : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["windowStartTime"] = args ? args.windowStartTime : undefined;
+            resourceInputs["backupKind"] = args ? args.backupKind : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["diskEncryptionConfiguration"] = args ? args.diskEncryptionConfiguration : undefined;
+            resourceInputs["diskEncryptionStatus"] = args ? args.diskEncryptionStatus : undefined;
+            resourceInputs["endTime"] = args ? args.endTime : undefined;
+            resourceInputs["enqueuedTime"] = args ? args.enqueuedTime : undefined;
+            resourceInputs["error"] = args ? args.error : undefined;
+            resourceInputs["id"] = args ? args.id : undefined;
+            resourceInputs["instance"] = args ? args.instance : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["selfLink"] = args ? args.selfLink : undefined;
+            resourceInputs["startTime"] = args ? args.startTime : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["windowStartTime"] = args ? args.windowStartTime : undefined;
         } else {
-            inputs["backupKind"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["diskEncryptionConfiguration"] = undefined /*out*/;
-            inputs["diskEncryptionStatus"] = undefined /*out*/;
-            inputs["endTime"] = undefined /*out*/;
-            inputs["enqueuedTime"] = undefined /*out*/;
-            inputs["error"] = undefined /*out*/;
-            inputs["instance"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["location"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["startTime"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
-            inputs["windowStartTime"] = undefined /*out*/;
+            resourceInputs["backupKind"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["diskEncryptionConfiguration"] = undefined /*out*/;
+            resourceInputs["diskEncryptionStatus"] = undefined /*out*/;
+            resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["enqueuedTime"] = undefined /*out*/;
+            resourceInputs["error"] = undefined /*out*/;
+            resourceInputs["instance"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["startTime"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["windowStartTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(BackupRun.__pulumiType, name, inputs, opts);
+        super(BackupRun.__pulumiType, name, resourceInputs, opts);
     }
 }
 

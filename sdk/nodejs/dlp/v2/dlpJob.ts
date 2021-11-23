@@ -85,40 +85,40 @@ export class DlpJob extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: DlpJobArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["inspectJob"] = args ? args.inspectJob : undefined;
-            inputs["jobId"] = args ? args.jobId : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["riskJob"] = args ? args.riskJob : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["endTime"] = undefined /*out*/;
-            inputs["errors"] = undefined /*out*/;
-            inputs["inspectDetails"] = undefined /*out*/;
-            inputs["jobTriggerName"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["riskDetails"] = undefined /*out*/;
-            inputs["startTime"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
+            resourceInputs["inspectJob"] = args ? args.inspectJob : undefined;
+            resourceInputs["jobId"] = args ? args.jobId : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["riskJob"] = args ? args.riskJob : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["errors"] = undefined /*out*/;
+            resourceInputs["inspectDetails"] = undefined /*out*/;
+            resourceInputs["jobTriggerName"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["riskDetails"] = undefined /*out*/;
+            resourceInputs["startTime"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["endTime"] = undefined /*out*/;
-            inputs["errors"] = undefined /*out*/;
-            inputs["inspectDetails"] = undefined /*out*/;
-            inputs["jobTriggerName"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["riskDetails"] = undefined /*out*/;
-            inputs["startTime"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["errors"] = undefined /*out*/;
+            resourceInputs["inspectDetails"] = undefined /*out*/;
+            resourceInputs["jobTriggerName"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["riskDetails"] = undefined /*out*/;
+            resourceInputs["startTime"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(DlpJob.__pulumiType, name, inputs, opts);
+        super(DlpJob.__pulumiType, name, resourceInputs, opts);
     }
 }
 

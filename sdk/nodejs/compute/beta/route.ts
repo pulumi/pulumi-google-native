@@ -124,57 +124,57 @@ export class Route extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: RouteArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["description"] = args ? args.description : undefined;
-            inputs["destRange"] = args ? args.destRange : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["nextHopGateway"] = args ? args.nextHopGateway : undefined;
-            inputs["nextHopIlb"] = args ? args.nextHopIlb : undefined;
-            inputs["nextHopInstance"] = args ? args.nextHopInstance : undefined;
-            inputs["nextHopIp"] = args ? args.nextHopIp : undefined;
-            inputs["nextHopNetwork"] = args ? args.nextHopNetwork : undefined;
-            inputs["nextHopVpnTunnel"] = args ? args.nextHopVpnTunnel : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["asPaths"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["nextHopInterconnectAttachment"] = undefined /*out*/;
-            inputs["nextHopPeering"] = undefined /*out*/;
-            inputs["routeType"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["warnings"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["destRange"] = args ? args.destRange : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["nextHopGateway"] = args ? args.nextHopGateway : undefined;
+            resourceInputs["nextHopIlb"] = args ? args.nextHopIlb : undefined;
+            resourceInputs["nextHopInstance"] = args ? args.nextHopInstance : undefined;
+            resourceInputs["nextHopIp"] = args ? args.nextHopIp : undefined;
+            resourceInputs["nextHopNetwork"] = args ? args.nextHopNetwork : undefined;
+            resourceInputs["nextHopVpnTunnel"] = args ? args.nextHopVpnTunnel : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["asPaths"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["nextHopInterconnectAttachment"] = undefined /*out*/;
+            resourceInputs["nextHopPeering"] = undefined /*out*/;
+            resourceInputs["routeType"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["warnings"] = undefined /*out*/;
         } else {
-            inputs["asPaths"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["destRange"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["network"] = undefined /*out*/;
-            inputs["nextHopGateway"] = undefined /*out*/;
-            inputs["nextHopIlb"] = undefined /*out*/;
-            inputs["nextHopInstance"] = undefined /*out*/;
-            inputs["nextHopInterconnectAttachment"] = undefined /*out*/;
-            inputs["nextHopIp"] = undefined /*out*/;
-            inputs["nextHopNetwork"] = undefined /*out*/;
-            inputs["nextHopPeering"] = undefined /*out*/;
-            inputs["nextHopVpnTunnel"] = undefined /*out*/;
-            inputs["priority"] = undefined /*out*/;
-            inputs["routeType"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["tags"] = undefined /*out*/;
-            inputs["warnings"] = undefined /*out*/;
+            resourceInputs["asPaths"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["destRange"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["network"] = undefined /*out*/;
+            resourceInputs["nextHopGateway"] = undefined /*out*/;
+            resourceInputs["nextHopIlb"] = undefined /*out*/;
+            resourceInputs["nextHopInstance"] = undefined /*out*/;
+            resourceInputs["nextHopInterconnectAttachment"] = undefined /*out*/;
+            resourceInputs["nextHopIp"] = undefined /*out*/;
+            resourceInputs["nextHopNetwork"] = undefined /*out*/;
+            resourceInputs["nextHopPeering"] = undefined /*out*/;
+            resourceInputs["nextHopVpnTunnel"] = undefined /*out*/;
+            resourceInputs["priority"] = undefined /*out*/;
+            resourceInputs["routeType"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["tags"] = undefined /*out*/;
+            resourceInputs["warnings"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Route.__pulumiType, name, inputs, opts);
+        super(Route.__pulumiType, name, resourceInputs, opts);
     }
 }
 

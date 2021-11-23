@@ -69,7 +69,7 @@ export class FolderContact extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: FolderContactArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.email === undefined) && !opts.urn) {
@@ -78,25 +78,25 @@ export class FolderContact extends pulumi.CustomResource {
             if ((!args || args.folderId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'folderId'");
             }
-            inputs["email"] = args ? args.email : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["languageTag"] = args ? args.languageTag : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["notificationCategorySubscriptions"] = args ? args.notificationCategorySubscriptions : undefined;
-            inputs["validateTime"] = args ? args.validateTime : undefined;
-            inputs["validationState"] = args ? args.validationState : undefined;
+            resourceInputs["email"] = args ? args.email : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["languageTag"] = args ? args.languageTag : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["notificationCategorySubscriptions"] = args ? args.notificationCategorySubscriptions : undefined;
+            resourceInputs["validateTime"] = args ? args.validateTime : undefined;
+            resourceInputs["validationState"] = args ? args.validationState : undefined;
         } else {
-            inputs["email"] = undefined /*out*/;
-            inputs["languageTag"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["notificationCategorySubscriptions"] = undefined /*out*/;
-            inputs["validateTime"] = undefined /*out*/;
-            inputs["validationState"] = undefined /*out*/;
+            resourceInputs["email"] = undefined /*out*/;
+            resourceInputs["languageTag"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["notificationCategorySubscriptions"] = undefined /*out*/;
+            resourceInputs["validateTime"] = undefined /*out*/;
+            resourceInputs["validationState"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(FolderContact.__pulumiType, name, inputs, opts);
+        super(FolderContact.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -56,23 +56,23 @@ export class Schema extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: SchemaArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["definition"] = args ? args.definition : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["schemaId"] = args ? args.schemaId : undefined;
-            inputs["type"] = args ? args.type : undefined;
+            resourceInputs["definition"] = args ? args.definition : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["schemaId"] = args ? args.schemaId : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
         } else {
-            inputs["definition"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
+            resourceInputs["definition"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Schema.__pulumiType, name, inputs, opts);
+        super(Schema.__pulumiType, name, resourceInputs, opts);
     }
 }
 

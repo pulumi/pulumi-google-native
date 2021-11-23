@@ -116,54 +116,54 @@ export class Conversation extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: ConversationArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["agentId"] = args ? args.agentId : undefined;
-            inputs["callMetadata"] = args ? args.callMetadata : undefined;
-            inputs["conversationId"] = args ? args.conversationId : undefined;
-            inputs["dataSource"] = args ? args.dataSource : undefined;
-            inputs["expireTime"] = args ? args.expireTime : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["languageCode"] = args ? args.languageCode : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["medium"] = args ? args.medium : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["startTime"] = args ? args.startTime : undefined;
-            inputs["ttl"] = args ? args.ttl : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["dialogflowIntents"] = undefined /*out*/;
-            inputs["duration"] = undefined /*out*/;
-            inputs["latestAnalysis"] = undefined /*out*/;
-            inputs["runtimeAnnotations"] = undefined /*out*/;
-            inputs["transcript"] = undefined /*out*/;
-            inputs["turnCount"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["agentId"] = args ? args.agentId : undefined;
+            resourceInputs["callMetadata"] = args ? args.callMetadata : undefined;
+            resourceInputs["conversationId"] = args ? args.conversationId : undefined;
+            resourceInputs["dataSource"] = args ? args.dataSource : undefined;
+            resourceInputs["expireTime"] = args ? args.expireTime : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["languageCode"] = args ? args.languageCode : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["medium"] = args ? args.medium : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["startTime"] = args ? args.startTime : undefined;
+            resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["dialogflowIntents"] = undefined /*out*/;
+            resourceInputs["duration"] = undefined /*out*/;
+            resourceInputs["latestAnalysis"] = undefined /*out*/;
+            resourceInputs["runtimeAnnotations"] = undefined /*out*/;
+            resourceInputs["transcript"] = undefined /*out*/;
+            resourceInputs["turnCount"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["agentId"] = undefined /*out*/;
-            inputs["callMetadata"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["dataSource"] = undefined /*out*/;
-            inputs["dialogflowIntents"] = undefined /*out*/;
-            inputs["duration"] = undefined /*out*/;
-            inputs["expireTime"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["languageCode"] = undefined /*out*/;
-            inputs["latestAnalysis"] = undefined /*out*/;
-            inputs["medium"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["runtimeAnnotations"] = undefined /*out*/;
-            inputs["startTime"] = undefined /*out*/;
-            inputs["transcript"] = undefined /*out*/;
-            inputs["ttl"] = undefined /*out*/;
-            inputs["turnCount"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["agentId"] = undefined /*out*/;
+            resourceInputs["callMetadata"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["dataSource"] = undefined /*out*/;
+            resourceInputs["dialogflowIntents"] = undefined /*out*/;
+            resourceInputs["duration"] = undefined /*out*/;
+            resourceInputs["expireTime"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["languageCode"] = undefined /*out*/;
+            resourceInputs["latestAnalysis"] = undefined /*out*/;
+            resourceInputs["medium"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["runtimeAnnotations"] = undefined /*out*/;
+            resourceInputs["startTime"] = undefined /*out*/;
+            resourceInputs["transcript"] = undefined /*out*/;
+            resourceInputs["ttl"] = undefined /*out*/;
+            resourceInputs["turnCount"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Conversation.__pulumiType, name, inputs, opts);
+        super(Conversation.__pulumiType, name, resourceInputs, opts);
     }
 }
 

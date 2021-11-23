@@ -138,63 +138,63 @@ export class Job extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: JobArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["clientRequestId"] = args ? args.clientRequestId : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["createdFromSnapshotId"] = args ? args.createdFromSnapshotId : undefined;
-            inputs["currentState"] = args ? args.currentState : undefined;
-            inputs["currentStateTime"] = args ? args.currentStateTime : undefined;
-            inputs["environment"] = args ? args.environment : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["jobMetadata"] = args ? args.jobMetadata : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["pipelineDescription"] = args ? args.pipelineDescription : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["replaceJobId"] = args ? args.replaceJobId : undefined;
-            inputs["replacedByJobId"] = args ? args.replacedByJobId : undefined;
-            inputs["requestedState"] = args ? args.requestedState : undefined;
-            inputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
-            inputs["stageStates"] = args ? args.stageStates : undefined;
-            inputs["startTime"] = args ? args.startTime : undefined;
-            inputs["steps"] = args ? args.steps : undefined;
-            inputs["stepsLocation"] = args ? args.stepsLocation : undefined;
-            inputs["tempFiles"] = args ? args.tempFiles : undefined;
-            inputs["transformNameMapping"] = args ? args.transformNameMapping : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["view"] = args ? args.view : undefined;
+            resourceInputs["clientRequestId"] = args ? args.clientRequestId : undefined;
+            resourceInputs["createTime"] = args ? args.createTime : undefined;
+            resourceInputs["createdFromSnapshotId"] = args ? args.createdFromSnapshotId : undefined;
+            resourceInputs["currentState"] = args ? args.currentState : undefined;
+            resourceInputs["currentStateTime"] = args ? args.currentStateTime : undefined;
+            resourceInputs["environment"] = args ? args.environment : undefined;
+            resourceInputs["id"] = args ? args.id : undefined;
+            resourceInputs["jobMetadata"] = args ? args.jobMetadata : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["pipelineDescription"] = args ? args.pipelineDescription : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["replaceJobId"] = args ? args.replaceJobId : undefined;
+            resourceInputs["replacedByJobId"] = args ? args.replacedByJobId : undefined;
+            resourceInputs["requestedState"] = args ? args.requestedState : undefined;
+            resourceInputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
+            resourceInputs["stageStates"] = args ? args.stageStates : undefined;
+            resourceInputs["startTime"] = args ? args.startTime : undefined;
+            resourceInputs["steps"] = args ? args.steps : undefined;
+            resourceInputs["stepsLocation"] = args ? args.stepsLocation : undefined;
+            resourceInputs["tempFiles"] = args ? args.tempFiles : undefined;
+            resourceInputs["transformNameMapping"] = args ? args.transformNameMapping : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["view"] = args ? args.view : undefined;
         } else {
-            inputs["clientRequestId"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["createdFromSnapshotId"] = undefined /*out*/;
-            inputs["currentState"] = undefined /*out*/;
-            inputs["currentStateTime"] = undefined /*out*/;
-            inputs["environment"] = undefined /*out*/;
-            inputs["jobMetadata"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["location"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["pipelineDescription"] = undefined /*out*/;
-            inputs["project"] = undefined /*out*/;
-            inputs["replaceJobId"] = undefined /*out*/;
-            inputs["replacedByJobId"] = undefined /*out*/;
-            inputs["requestedState"] = undefined /*out*/;
-            inputs["satisfiesPzs"] = undefined /*out*/;
-            inputs["stageStates"] = undefined /*out*/;
-            inputs["startTime"] = undefined /*out*/;
-            inputs["steps"] = undefined /*out*/;
-            inputs["stepsLocation"] = undefined /*out*/;
-            inputs["tempFiles"] = undefined /*out*/;
-            inputs["transformNameMapping"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
+            resourceInputs["clientRequestId"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["createdFromSnapshotId"] = undefined /*out*/;
+            resourceInputs["currentState"] = undefined /*out*/;
+            resourceInputs["currentStateTime"] = undefined /*out*/;
+            resourceInputs["environment"] = undefined /*out*/;
+            resourceInputs["jobMetadata"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pipelineDescription"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["replaceJobId"] = undefined /*out*/;
+            resourceInputs["replacedByJobId"] = undefined /*out*/;
+            resourceInputs["requestedState"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
+            resourceInputs["stageStates"] = undefined /*out*/;
+            resourceInputs["startTime"] = undefined /*out*/;
+            resourceInputs["steps"] = undefined /*out*/;
+            resourceInputs["stepsLocation"] = undefined /*out*/;
+            resourceInputs["tempFiles"] = undefined /*out*/;
+            resourceInputs["transformNameMapping"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Job.__pulumiType, name, inputs, opts);
+        super(Job.__pulumiType, name, resourceInputs, opts);
     }
 }
 

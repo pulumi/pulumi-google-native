@@ -137,62 +137,62 @@ export class Occurrence extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: OccurrenceArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["attestation"] = args ? args.attestation : undefined;
-            inputs["buildDetails"] = args ? args.buildDetails : undefined;
-            inputs["compliance"] = args ? args.compliance : undefined;
-            inputs["deployment"] = args ? args.deployment : undefined;
-            inputs["derivedImage"] = args ? args.derivedImage : undefined;
-            inputs["discovered"] = args ? args.discovered : undefined;
-            inputs["dsseAttestation"] = args ? args.dsseAttestation : undefined;
-            inputs["envelope"] = args ? args.envelope : undefined;
-            inputs["installation"] = args ? args.installation : undefined;
-            inputs["noteName"] = args ? args.noteName : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["remediation"] = args ? args.remediation : undefined;
-            inputs["resource"] = args ? args.resource : undefined;
-            inputs["resourceUrl"] = args ? args.resourceUrl : undefined;
-            inputs["sbom"] = args ? args.sbom : undefined;
-            inputs["spdxFile"] = args ? args.spdxFile : undefined;
-            inputs["spdxPackage"] = args ? args.spdxPackage : undefined;
-            inputs["spdxRelationship"] = args ? args.spdxRelationship : undefined;
-            inputs["upgrade"] = args ? args.upgrade : undefined;
-            inputs["vulnerabilityDetails"] = args ? args.vulnerabilityDetails : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["attestation"] = args ? args.attestation : undefined;
+            resourceInputs["buildDetails"] = args ? args.buildDetails : undefined;
+            resourceInputs["compliance"] = args ? args.compliance : undefined;
+            resourceInputs["deployment"] = args ? args.deployment : undefined;
+            resourceInputs["derivedImage"] = args ? args.derivedImage : undefined;
+            resourceInputs["discovered"] = args ? args.discovered : undefined;
+            resourceInputs["dsseAttestation"] = args ? args.dsseAttestation : undefined;
+            resourceInputs["envelope"] = args ? args.envelope : undefined;
+            resourceInputs["installation"] = args ? args.installation : undefined;
+            resourceInputs["noteName"] = args ? args.noteName : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["remediation"] = args ? args.remediation : undefined;
+            resourceInputs["resource"] = args ? args.resource : undefined;
+            resourceInputs["resourceUrl"] = args ? args.resourceUrl : undefined;
+            resourceInputs["sbom"] = args ? args.sbom : undefined;
+            resourceInputs["spdxFile"] = args ? args.spdxFile : undefined;
+            resourceInputs["spdxPackage"] = args ? args.spdxPackage : undefined;
+            resourceInputs["spdxRelationship"] = args ? args.spdxRelationship : undefined;
+            resourceInputs["upgrade"] = args ? args.upgrade : undefined;
+            resourceInputs["vulnerabilityDetails"] = args ? args.vulnerabilityDetails : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["attestation"] = undefined /*out*/;
-            inputs["buildDetails"] = undefined /*out*/;
-            inputs["compliance"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["deployment"] = undefined /*out*/;
-            inputs["derivedImage"] = undefined /*out*/;
-            inputs["discovered"] = undefined /*out*/;
-            inputs["dsseAttestation"] = undefined /*out*/;
-            inputs["envelope"] = undefined /*out*/;
-            inputs["installation"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["noteName"] = undefined /*out*/;
-            inputs["remediation"] = undefined /*out*/;
-            inputs["resource"] = undefined /*out*/;
-            inputs["resourceUrl"] = undefined /*out*/;
-            inputs["sbom"] = undefined /*out*/;
-            inputs["spdxFile"] = undefined /*out*/;
-            inputs["spdxPackage"] = undefined /*out*/;
-            inputs["spdxRelationship"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
-            inputs["upgrade"] = undefined /*out*/;
-            inputs["vulnerabilityDetails"] = undefined /*out*/;
+            resourceInputs["attestation"] = undefined /*out*/;
+            resourceInputs["buildDetails"] = undefined /*out*/;
+            resourceInputs["compliance"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deployment"] = undefined /*out*/;
+            resourceInputs["derivedImage"] = undefined /*out*/;
+            resourceInputs["discovered"] = undefined /*out*/;
+            resourceInputs["dsseAttestation"] = undefined /*out*/;
+            resourceInputs["envelope"] = undefined /*out*/;
+            resourceInputs["installation"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["noteName"] = undefined /*out*/;
+            resourceInputs["remediation"] = undefined /*out*/;
+            resourceInputs["resource"] = undefined /*out*/;
+            resourceInputs["resourceUrl"] = undefined /*out*/;
+            resourceInputs["sbom"] = undefined /*out*/;
+            resourceInputs["spdxFile"] = undefined /*out*/;
+            resourceInputs["spdxPackage"] = undefined /*out*/;
+            resourceInputs["spdxRelationship"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["upgrade"] = undefined /*out*/;
+            resourceInputs["vulnerabilityDetails"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Occurrence.__pulumiType, name, inputs, opts);
+        super(Occurrence.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -62,7 +62,7 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: AutoscalingPolicyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.id === undefined) && !opts.urn) {
@@ -71,25 +71,25 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
             if ((!args || args.workerConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workerConfig'");
             }
-            inputs["basicAlgorithm"] = args ? args.basicAlgorithm : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["secondaryWorkerConfig"] = args ? args.secondaryWorkerConfig : undefined;
-            inputs["workerConfig"] = args ? args.workerConfig : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["basicAlgorithm"] = args ? args.basicAlgorithm : undefined;
+            resourceInputs["id"] = args ? args.id : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["secondaryWorkerConfig"] = args ? args.secondaryWorkerConfig : undefined;
+            resourceInputs["workerConfig"] = args ? args.workerConfig : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         } else {
-            inputs["basicAlgorithm"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["secondaryWorkerConfig"] = undefined /*out*/;
-            inputs["workerConfig"] = undefined /*out*/;
+            resourceInputs["basicAlgorithm"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["secondaryWorkerConfig"] = undefined /*out*/;
+            resourceInputs["workerConfig"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AutoscalingPolicy.__pulumiType, name, inputs, opts);
+        super(AutoscalingPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

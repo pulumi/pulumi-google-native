@@ -56,26 +56,26 @@ export class CustomClass extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: CustomClassArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.customClassId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'customClassId'");
             }
-            inputs["customClassId"] = args ? args.customClassId : undefined;
-            inputs["items"] = args ? args.items : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
+            resourceInputs["customClassId"] = args ? args.customClassId : undefined;
+            resourceInputs["items"] = args ? args.items : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
         } else {
-            inputs["customClassId"] = undefined /*out*/;
-            inputs["items"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["customClassId"] = undefined /*out*/;
+            resourceInputs["items"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(CustomClass.__pulumiType, name, inputs, opts);
+        super(CustomClass.__pulumiType, name, resourceInputs, opts);
     }
 }
 

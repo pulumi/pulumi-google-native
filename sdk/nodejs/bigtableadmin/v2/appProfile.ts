@@ -64,7 +64,7 @@ export class AppProfile extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: AppProfileArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.appProfileId === undefined) && !opts.urn) {
@@ -73,26 +73,26 @@ export class AppProfile extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            inputs["appProfileId"] = args ? args.appProfileId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["ignoreWarnings"] = args ? args.ignoreWarnings : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["multiClusterRoutingUseAny"] = args ? args.multiClusterRoutingUseAny : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["singleClusterRouting"] = args ? args.singleClusterRouting : undefined;
+            resourceInputs["appProfileId"] = args ? args.appProfileId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["ignoreWarnings"] = args ? args.ignoreWarnings : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["multiClusterRoutingUseAny"] = args ? args.multiClusterRoutingUseAny : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["singleClusterRouting"] = args ? args.singleClusterRouting : undefined;
         } else {
-            inputs["description"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["multiClusterRoutingUseAny"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["singleClusterRouting"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["multiClusterRoutingUseAny"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["singleClusterRouting"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AppProfile.__pulumiType, name, inputs, opts);
+        super(AppProfile.__pulumiType, name, resourceInputs, opts);
     }
 }
 

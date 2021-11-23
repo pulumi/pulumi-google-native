@@ -79,7 +79,7 @@ export class ChannelPartnerLink extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ChannelPartnerLinkArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -91,29 +91,29 @@ export class ChannelPartnerLink extends pulumi.CustomResource {
             if ((!args || args.resellerCloudIdentityId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resellerCloudIdentityId'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["linkState"] = args ? args.linkState : undefined;
-            inputs["resellerCloudIdentityId"] = args ? args.resellerCloudIdentityId : undefined;
-            inputs["channelPartnerCloudIdentityInfo"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["inviteLinkUri"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["publicId"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["linkState"] = args ? args.linkState : undefined;
+            resourceInputs["resellerCloudIdentityId"] = args ? args.resellerCloudIdentityId : undefined;
+            resourceInputs["channelPartnerCloudIdentityInfo"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["inviteLinkUri"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["publicId"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["channelPartnerCloudIdentityInfo"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["inviteLinkUri"] = undefined /*out*/;
-            inputs["linkState"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["publicId"] = undefined /*out*/;
-            inputs["resellerCloudIdentityId"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["channelPartnerCloudIdentityInfo"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["inviteLinkUri"] = undefined /*out*/;
+            resourceInputs["linkState"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["publicId"] = undefined /*out*/;
+            resourceInputs["resellerCloudIdentityId"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ChannelPartnerLink.__pulumiType, name, inputs, opts);
+        super(ChannelPartnerLink.__pulumiType, name, resourceInputs, opts);
     }
 }
 

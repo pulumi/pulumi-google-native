@@ -100,45 +100,45 @@ export class SslCertificate extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: SslCertificateArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["certificate"] = args ? args.certificate : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["managed"] = args ? args.managed : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["privateKey"] = args ? args.privateKey : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["selfManaged"] = args ? args.selfManaged : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["expireTime"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["region"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["selfLinkWithId"] = undefined /*out*/;
-            inputs["subjectAlternativeNames"] = undefined /*out*/;
+            resourceInputs["certificate"] = args ? args.certificate : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["managed"] = args ? args.managed : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["privateKey"] = args ? args.privateKey : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["selfManaged"] = args ? args.selfManaged : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["expireTime"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["subjectAlternativeNames"] = undefined /*out*/;
         } else {
-            inputs["certificate"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["expireTime"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["managed"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["privateKey"] = undefined /*out*/;
-            inputs["region"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["selfLinkWithId"] = undefined /*out*/;
-            inputs["selfManaged"] = undefined /*out*/;
-            inputs["subjectAlternativeNames"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
+            resourceInputs["certificate"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["expireTime"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["managed"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["privateKey"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["selfManaged"] = undefined /*out*/;
+            resourceInputs["subjectAlternativeNames"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(SslCertificate.__pulumiType, name, inputs, opts);
+        super(SslCertificate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

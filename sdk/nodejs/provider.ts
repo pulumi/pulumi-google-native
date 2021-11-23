@@ -31,20 +31,20 @@ export class Provider extends pulumi.ProviderResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            inputs["appendUserAgent"] = (args ? args.appendUserAgent : undefined) ?? utilities.getEnv("GOOGLE_APPEND_USER_AGENT");
-            inputs["disablePartnerName"] = pulumi.output((args ? args.disablePartnerName : undefined) ?? <any>utilities.getEnvBoolean("GOOGLE_DISABLE_PARTNER_NAME")).apply(JSON.stringify);
-            inputs["partnerName"] = (args ? args.partnerName : undefined) ?? utilities.getEnv("GOOGLE_PARTNER_NAME");
-            inputs["project"] = (args ? args.project : undefined) ?? utilities.getEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT");
-            inputs["region"] = (args ? args.region : undefined) ?? utilities.getEnv("GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION");
-            inputs["zone"] = (args ? args.zone : undefined) ?? utilities.getEnv("GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE");
+            resourceInputs["appendUserAgent"] = (args ? args.appendUserAgent : undefined) ?? utilities.getEnv("GOOGLE_APPEND_USER_AGENT");
+            resourceInputs["disablePartnerName"] = pulumi.output((args ? args.disablePartnerName : undefined) ?? utilities.getEnvBoolean("GOOGLE_DISABLE_PARTNER_NAME")).apply(JSON.stringify);
+            resourceInputs["partnerName"] = (args ? args.partnerName : undefined) ?? utilities.getEnv("GOOGLE_PARTNER_NAME");
+            resourceInputs["project"] = (args ? args.project : undefined) ?? utilities.getEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT");
+            resourceInputs["region"] = (args ? args.region : undefined) ?? utilities.getEnv("GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION");
+            resourceInputs["zone"] = (args ? args.zone : undefined) ?? utilities.getEnv("GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE");
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Provider.__pulumiType, name, inputs, opts);
+        super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }
 

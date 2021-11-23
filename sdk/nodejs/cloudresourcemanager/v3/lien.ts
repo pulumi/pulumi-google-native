@@ -67,27 +67,27 @@ export class Lien extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: LienArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["origin"] = args ? args.origin : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["reason"] = args ? args.reason : undefined;
-            inputs["restrictions"] = args ? args.restrictions : undefined;
+            resourceInputs["createTime"] = args ? args.createTime : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["origin"] = args ? args.origin : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["reason"] = args ? args.reason : undefined;
+            resourceInputs["restrictions"] = args ? args.restrictions : undefined;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["origin"] = undefined /*out*/;
-            inputs["parent"] = undefined /*out*/;
-            inputs["reason"] = undefined /*out*/;
-            inputs["restrictions"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["origin"] = undefined /*out*/;
+            resourceInputs["parent"] = undefined /*out*/;
+            resourceInputs["reason"] = undefined /*out*/;
+            resourceInputs["restrictions"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Lien.__pulumiType, name, inputs, opts);
+        super(Lien.__pulumiType, name, resourceInputs, opts);
     }
 }
 

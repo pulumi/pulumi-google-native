@@ -60,7 +60,7 @@ export class Snapshot extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: SnapshotArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.snapshotId === undefined) && !opts.urn) {
@@ -69,23 +69,23 @@ export class Snapshot extends pulumi.CustomResource {
             if ((!args || args.subscription === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subscription'");
             }
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["snapshotId"] = args ? args.snapshotId : undefined;
-            inputs["subscription"] = args ? args.subscription : undefined;
-            inputs["expireTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["topic"] = undefined /*out*/;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
+            resourceInputs["subscription"] = args ? args.subscription : undefined;
+            resourceInputs["expireTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["topic"] = undefined /*out*/;
         } else {
-            inputs["expireTime"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["topic"] = undefined /*out*/;
+            resourceInputs["expireTime"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["topic"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Snapshot.__pulumiType, name, inputs, opts);
+        super(Snapshot.__pulumiType, name, resourceInputs, opts);
     }
 }
 

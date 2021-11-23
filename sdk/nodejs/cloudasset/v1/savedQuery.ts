@@ -77,7 +77,7 @@ export class SavedQuery extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: SavedQueryArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.savedQueryId === undefined) && !opts.urn) {
@@ -89,31 +89,31 @@ export class SavedQuery extends pulumi.CustomResource {
             if ((!args || args.v1Id1 === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'v1Id1'");
             }
-            inputs["content"] = args ? args.content : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["savedQueryId"] = args ? args.savedQueryId : undefined;
-            inputs["v1Id"] = args ? args.v1Id : undefined;
-            inputs["v1Id1"] = args ? args.v1Id1 : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["creator"] = undefined /*out*/;
-            inputs["lastUpdateTime"] = undefined /*out*/;
-            inputs["lastUpdater"] = undefined /*out*/;
+            resourceInputs["content"] = args ? args.content : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["savedQueryId"] = args ? args.savedQueryId : undefined;
+            resourceInputs["v1Id"] = args ? args.v1Id : undefined;
+            resourceInputs["v1Id1"] = args ? args.v1Id1 : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["creator"] = undefined /*out*/;
+            resourceInputs["lastUpdateTime"] = undefined /*out*/;
+            resourceInputs["lastUpdater"] = undefined /*out*/;
         } else {
-            inputs["content"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["creator"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["lastUpdateTime"] = undefined /*out*/;
-            inputs["lastUpdater"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["content"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["creator"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["lastUpdateTime"] = undefined /*out*/;
+            resourceInputs["lastUpdater"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(SavedQuery.__pulumiType, name, inputs, opts);
+        super(SavedQuery.__pulumiType, name, resourceInputs, opts);
     }
 }
 

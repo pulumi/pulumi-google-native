@@ -56,7 +56,7 @@ export class Override extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: OverrideArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.environmentId === undefined) && !opts.urn) {
@@ -65,20 +65,20 @@ export class Override extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            inputs["apiProxy"] = args ? args.apiProxy : undefined;
-            inputs["environmentId"] = args ? args.environmentId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["samplingConfig"] = args ? args.samplingConfig : undefined;
+            resourceInputs["apiProxy"] = args ? args.apiProxy : undefined;
+            resourceInputs["environmentId"] = args ? args.environmentId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["samplingConfig"] = args ? args.samplingConfig : undefined;
         } else {
-            inputs["apiProxy"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["samplingConfig"] = undefined /*out*/;
+            resourceInputs["apiProxy"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["samplingConfig"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Override.__pulumiType, name, inputs, opts);
+        super(Override.__pulumiType, name, resourceInputs, opts);
     }
 }
 

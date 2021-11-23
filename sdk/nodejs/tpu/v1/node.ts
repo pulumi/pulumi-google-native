@@ -113,7 +113,7 @@ export class Node extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: NodeArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.acceleratorType === undefined) && !opts.urn) {
@@ -122,49 +122,49 @@ export class Node extends pulumi.CustomResource {
             if ((!args || args.tensorflowVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tensorflowVersion'");
             }
-            inputs["acceleratorType"] = args ? args.acceleratorType : undefined;
-            inputs["cidrBlock"] = args ? args.cidrBlock : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["health"] = args ? args.health : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["nodeId"] = args ? args.nodeId : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["schedulingConfig"] = args ? args.schedulingConfig : undefined;
-            inputs["tensorflowVersion"] = args ? args.tensorflowVersion : undefined;
-            inputs["useServiceNetworking"] = args ? args.useServiceNetworking : undefined;
-            inputs["apiVersion"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["healthDescription"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["networkEndpoints"] = undefined /*out*/;
-            inputs["serviceAccount"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["symptoms"] = undefined /*out*/;
+            resourceInputs["acceleratorType"] = args ? args.acceleratorType : undefined;
+            resourceInputs["cidrBlock"] = args ? args.cidrBlock : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["health"] = args ? args.health : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["nodeId"] = args ? args.nodeId : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["schedulingConfig"] = args ? args.schedulingConfig : undefined;
+            resourceInputs["tensorflowVersion"] = args ? args.tensorflowVersion : undefined;
+            resourceInputs["useServiceNetworking"] = args ? args.useServiceNetworking : undefined;
+            resourceInputs["apiVersion"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["healthDescription"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["networkEndpoints"] = undefined /*out*/;
+            resourceInputs["serviceAccount"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["symptoms"] = undefined /*out*/;
         } else {
-            inputs["acceleratorType"] = undefined /*out*/;
-            inputs["apiVersion"] = undefined /*out*/;
-            inputs["cidrBlock"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["health"] = undefined /*out*/;
-            inputs["healthDescription"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["network"] = undefined /*out*/;
-            inputs["networkEndpoints"] = undefined /*out*/;
-            inputs["schedulingConfig"] = undefined /*out*/;
-            inputs["serviceAccount"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["symptoms"] = undefined /*out*/;
-            inputs["tensorflowVersion"] = undefined /*out*/;
-            inputs["useServiceNetworking"] = undefined /*out*/;
+            resourceInputs["acceleratorType"] = undefined /*out*/;
+            resourceInputs["apiVersion"] = undefined /*out*/;
+            resourceInputs["cidrBlock"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["health"] = undefined /*out*/;
+            resourceInputs["healthDescription"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["network"] = undefined /*out*/;
+            resourceInputs["networkEndpoints"] = undefined /*out*/;
+            resourceInputs["schedulingConfig"] = undefined /*out*/;
+            resourceInputs["serviceAccount"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["symptoms"] = undefined /*out*/;
+            resourceInputs["tensorflowVersion"] = undefined /*out*/;
+            resourceInputs["useServiceNetworking"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Node.__pulumiType, name, inputs, opts);
+        super(Node.__pulumiType, name, resourceInputs, opts);
     }
 }
 

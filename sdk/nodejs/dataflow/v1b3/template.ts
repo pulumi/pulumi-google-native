@@ -63,7 +63,7 @@ export class Template extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: TemplateArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.gcsPath === undefined) && !opts.urn) {
@@ -72,26 +72,26 @@ export class Template extends pulumi.CustomResource {
             if ((!args || args.jobName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'jobName'");
             }
-            inputs["environment"] = args ? args.environment : undefined;
-            inputs["gcsPath"] = args ? args.gcsPath : undefined;
-            inputs["jobName"] = args ? args.jobName : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["parameters"] = args ? args.parameters : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["metadata"] = undefined /*out*/;
-            inputs["runtimeMetadata"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["templateType"] = undefined /*out*/;
+            resourceInputs["environment"] = args ? args.environment : undefined;
+            resourceInputs["gcsPath"] = args ? args.gcsPath : undefined;
+            resourceInputs["jobName"] = args ? args.jobName : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["parameters"] = args ? args.parameters : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["metadata"] = undefined /*out*/;
+            resourceInputs["runtimeMetadata"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["templateType"] = undefined /*out*/;
         } else {
-            inputs["metadata"] = undefined /*out*/;
-            inputs["runtimeMetadata"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["templateType"] = undefined /*out*/;
+            resourceInputs["metadata"] = undefined /*out*/;
+            resourceInputs["runtimeMetadata"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["templateType"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Template.__pulumiType, name, inputs, opts);
+        super(Template.__pulumiType, name, resourceInputs, opts);
     }
 }
 

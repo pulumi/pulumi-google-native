@@ -88,7 +88,7 @@ export class Workload extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: WorkloadArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.complianceRegime === undefined) && !opts.urn) {
@@ -100,37 +100,37 @@ export class Workload extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            inputs["billingAccount"] = args ? args.billingAccount : undefined;
-            inputs["complianceRegime"] = args ? args.complianceRegime : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["externalId"] = args ? args.externalId : undefined;
-            inputs["kmsSettings"] = args ? args.kmsSettings : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["provisionedResourcesParent"] = args ? args.provisionedResourcesParent : undefined;
-            inputs["resourceSettings"] = args ? args.resourceSettings : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["resources"] = undefined /*out*/;
+            resourceInputs["billingAccount"] = args ? args.billingAccount : undefined;
+            resourceInputs["complianceRegime"] = args ? args.complianceRegime : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["externalId"] = args ? args.externalId : undefined;
+            resourceInputs["kmsSettings"] = args ? args.kmsSettings : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["provisionedResourcesParent"] = args ? args.provisionedResourcesParent : undefined;
+            resourceInputs["resourceSettings"] = args ? args.resourceSettings : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["resources"] = undefined /*out*/;
         } else {
-            inputs["billingAccount"] = undefined /*out*/;
-            inputs["complianceRegime"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["kmsSettings"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["provisionedResourcesParent"] = undefined /*out*/;
-            inputs["resourceSettings"] = undefined /*out*/;
-            inputs["resources"] = undefined /*out*/;
+            resourceInputs["billingAccount"] = undefined /*out*/;
+            resourceInputs["complianceRegime"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["kmsSettings"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["provisionedResourcesParent"] = undefined /*out*/;
+            resourceInputs["resourceSettings"] = undefined /*out*/;
+            resourceInputs["resources"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Workload.__pulumiType, name, inputs, opts);
+        super(Workload.__pulumiType, name, resourceInputs, opts);
     }
 }
 

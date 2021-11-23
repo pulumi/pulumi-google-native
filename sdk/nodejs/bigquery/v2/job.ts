@@ -77,33 +77,33 @@ export class Job extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: JobArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["configuration"] = args ? args.configuration : undefined;
-            inputs["jobReference"] = args ? args.jobReference : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["source"] = args ? args.source : undefined;
-            inputs["etag"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["statistics"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["userEmail"] = undefined /*out*/;
+            resourceInputs["configuration"] = args ? args.configuration : undefined;
+            resourceInputs["jobReference"] = args ? args.jobReference : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["statistics"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["userEmail"] = undefined /*out*/;
         } else {
-            inputs["configuration"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["jobReference"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["statistics"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["userEmail"] = undefined /*out*/;
+            resourceInputs["configuration"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["jobReference"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["statistics"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["userEmail"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Job.__pulumiType, name, inputs, opts);
+        super(Job.__pulumiType, name, resourceInputs, opts);
     }
 }
 

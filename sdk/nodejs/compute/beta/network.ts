@@ -88,39 +88,39 @@ export class Network extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: NetworkArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["autoCreateSubnetworks"] = args ? args.autoCreateSubnetworks : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["mtu"] = args ? args.mtu : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["routingConfig"] = args ? args.routingConfig : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["gatewayIPv4"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["peerings"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["subnetworks"] = undefined /*out*/;
+            resourceInputs["autoCreateSubnetworks"] = args ? args.autoCreateSubnetworks : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["mtu"] = args ? args.mtu : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["routingConfig"] = args ? args.routingConfig : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["gatewayIPv4"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["peerings"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["subnetworks"] = undefined /*out*/;
         } else {
-            inputs["autoCreateSubnetworks"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["gatewayIPv4"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["mtu"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["peerings"] = undefined /*out*/;
-            inputs["routingConfig"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["subnetworks"] = undefined /*out*/;
+            resourceInputs["autoCreateSubnetworks"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["gatewayIPv4"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["mtu"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["peerings"] = undefined /*out*/;
+            resourceInputs["routingConfig"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["subnetworks"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Network.__pulumiType, name, inputs, opts);
+        super(Network.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -69,32 +69,32 @@ export class Taxonomy extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: TaxonomyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            inputs["activatedPolicyTypes"] = args ? args.activatedPolicyTypes : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["name"] = undefined /*out*/;
-            inputs["policyTagCount"] = undefined /*out*/;
-            inputs["taxonomyTimestamps"] = undefined /*out*/;
+            resourceInputs["activatedPolicyTypes"] = args ? args.activatedPolicyTypes : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["policyTagCount"] = undefined /*out*/;
+            resourceInputs["taxonomyTimestamps"] = undefined /*out*/;
         } else {
-            inputs["activatedPolicyTypes"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["policyTagCount"] = undefined /*out*/;
-            inputs["taxonomyTimestamps"] = undefined /*out*/;
+            resourceInputs["activatedPolicyTypes"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["policyTagCount"] = undefined /*out*/;
+            resourceInputs["taxonomyTimestamps"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Taxonomy.__pulumiType, name, inputs, opts);
+        super(Taxonomy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -64,33 +64,33 @@ export class ResourceRecordSet extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ResourceRecordSetArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.managedZone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'managedZone'");
             }
-            inputs["clientOperationId"] = args ? args.clientOperationId : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
-            inputs["managedZone"] = args ? args.managedZone : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["rrdatas"] = args ? args.rrdatas : undefined;
-            inputs["signatureRrdatas"] = args ? args.signatureRrdatas : undefined;
-            inputs["ttl"] = args ? args.ttl : undefined;
-            inputs["type"] = args ? args.type : undefined;
+            resourceInputs["clientOperationId"] = args ? args.clientOperationId : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
+            resourceInputs["managedZone"] = args ? args.managedZone : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["rrdatas"] = args ? args.rrdatas : undefined;
+            resourceInputs["signatureRrdatas"] = args ? args.signatureRrdatas : undefined;
+            resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
         } else {
-            inputs["kind"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["rrdatas"] = undefined /*out*/;
-            inputs["signatureRrdatas"] = undefined /*out*/;
-            inputs["ttl"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["rrdatas"] = undefined /*out*/;
+            resourceInputs["signatureRrdatas"] = undefined /*out*/;
+            resourceInputs["ttl"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ResourceRecordSet.__pulumiType, name, inputs, opts);
+        super(ResourceRecordSet.__pulumiType, name, resourceInputs, opts);
     }
 }
 

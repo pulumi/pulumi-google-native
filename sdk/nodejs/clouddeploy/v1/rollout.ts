@@ -110,7 +110,7 @@ export class Rollout extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: RolloutArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.deliveryPipelineId === undefined) && !opts.urn) {
@@ -125,51 +125,51 @@ export class Rollout extends pulumi.CustomResource {
             if ((!args || args.targetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targetId'");
             }
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["deliveryPipelineId"] = args ? args.deliveryPipelineId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["releaseId"] = args ? args.releaseId : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["rolloutId"] = args ? args.rolloutId : undefined;
-            inputs["targetId"] = args ? args.targetId : undefined;
-            inputs["validateOnly"] = args ? args.validateOnly : undefined;
-            inputs["approvalState"] = undefined /*out*/;
-            inputs["approveTime"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["deployEndTime"] = undefined /*out*/;
-            inputs["deployStartTime"] = undefined /*out*/;
-            inputs["deployingBuild"] = undefined /*out*/;
-            inputs["enqueueTime"] = undefined /*out*/;
-            inputs["failureReason"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["uid"] = undefined /*out*/;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["deliveryPipelineId"] = args ? args.deliveryPipelineId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["releaseId"] = args ? args.releaseId : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["rolloutId"] = args ? args.rolloutId : undefined;
+            resourceInputs["targetId"] = args ? args.targetId : undefined;
+            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
+            resourceInputs["approvalState"] = undefined /*out*/;
+            resourceInputs["approveTime"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deployEndTime"] = undefined /*out*/;
+            resourceInputs["deployStartTime"] = undefined /*out*/;
+            resourceInputs["deployingBuild"] = undefined /*out*/;
+            resourceInputs["enqueueTime"] = undefined /*out*/;
+            resourceInputs["failureReason"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
         } else {
-            inputs["annotations"] = undefined /*out*/;
-            inputs["approvalState"] = undefined /*out*/;
-            inputs["approveTime"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["deployEndTime"] = undefined /*out*/;
-            inputs["deployStartTime"] = undefined /*out*/;
-            inputs["deployingBuild"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["enqueueTime"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["failureReason"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["targetId"] = undefined /*out*/;
-            inputs["uid"] = undefined /*out*/;
+            resourceInputs["annotations"] = undefined /*out*/;
+            resourceInputs["approvalState"] = undefined /*out*/;
+            resourceInputs["approveTime"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deployEndTime"] = undefined /*out*/;
+            resourceInputs["deployStartTime"] = undefined /*out*/;
+            resourceInputs["deployingBuild"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["enqueueTime"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["failureReason"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["targetId"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Rollout.__pulumiType, name, inputs, opts);
+        super(Rollout.__pulumiType, name, resourceInputs, opts);
     }
 }
 

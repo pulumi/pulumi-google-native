@@ -76,34 +76,34 @@ export class DataSource extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: DataSourceArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            inputs["disableModifications"] = args ? args.disableModifications : undefined;
-            inputs["disableServing"] = args ? args.disableServing : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["indexingServiceAccounts"] = args ? args.indexingServiceAccounts : undefined;
-            inputs["itemsVisibility"] = args ? args.itemsVisibility : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["operationIds"] = args ? args.operationIds : undefined;
-            inputs["shortName"] = args ? args.shortName : undefined;
+            resourceInputs["disableModifications"] = args ? args.disableModifications : undefined;
+            resourceInputs["disableServing"] = args ? args.disableServing : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["indexingServiceAccounts"] = args ? args.indexingServiceAccounts : undefined;
+            resourceInputs["itemsVisibility"] = args ? args.itemsVisibility : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["operationIds"] = args ? args.operationIds : undefined;
+            resourceInputs["shortName"] = args ? args.shortName : undefined;
         } else {
-            inputs["disableModifications"] = undefined /*out*/;
-            inputs["disableServing"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["indexingServiceAccounts"] = undefined /*out*/;
-            inputs["itemsVisibility"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["operationIds"] = undefined /*out*/;
-            inputs["shortName"] = undefined /*out*/;
+            resourceInputs["disableModifications"] = undefined /*out*/;
+            resourceInputs["disableServing"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["indexingServiceAccounts"] = undefined /*out*/;
+            resourceInputs["itemsVisibility"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["operationIds"] = undefined /*out*/;
+            resourceInputs["shortName"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(DataSource.__pulumiType, name, inputs, opts);
+        super(DataSource.__pulumiType, name, resourceInputs, opts);
     }
 }
 

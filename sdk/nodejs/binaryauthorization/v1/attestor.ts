@@ -60,28 +60,28 @@ export class Attestor extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: AttestorArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.attestorId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'attestorId'");
             }
-            inputs["attestorId"] = args ? args.attestorId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["userOwnedGrafeasNote"] = args ? args.userOwnedGrafeasNote : undefined;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["attestorId"] = args ? args.attestorId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["userOwnedGrafeasNote"] = args ? args.userOwnedGrafeasNote : undefined;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["description"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
-            inputs["userOwnedGrafeasNote"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["userOwnedGrafeasNote"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Attestor.__pulumiType, name, inputs, opts);
+        super(Attestor.__pulumiType, name, resourceInputs, opts);
     }
 }
 

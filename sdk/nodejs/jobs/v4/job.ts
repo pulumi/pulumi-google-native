@@ -160,7 +160,7 @@ export class Job extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: JobArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.company === undefined) && !opts.urn) {
@@ -178,72 +178,72 @@ export class Job extends pulumi.CustomResource {
             if ((!args || args.title === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
-            inputs["addresses"] = args ? args.addresses : undefined;
-            inputs["applicationInfo"] = args ? args.applicationInfo : undefined;
-            inputs["company"] = args ? args.company : undefined;
-            inputs["compensationInfo"] = args ? args.compensationInfo : undefined;
-            inputs["customAttributes"] = args ? args.customAttributes : undefined;
-            inputs["degreeTypes"] = args ? args.degreeTypes : undefined;
-            inputs["department"] = args ? args.department : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["employmentTypes"] = args ? args.employmentTypes : undefined;
-            inputs["incentives"] = args ? args.incentives : undefined;
-            inputs["jobBenefits"] = args ? args.jobBenefits : undefined;
-            inputs["jobEndTime"] = args ? args.jobEndTime : undefined;
-            inputs["jobLevel"] = args ? args.jobLevel : undefined;
-            inputs["jobStartTime"] = args ? args.jobStartTime : undefined;
-            inputs["languageCode"] = args ? args.languageCode : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["postingExpireTime"] = args ? args.postingExpireTime : undefined;
-            inputs["postingPublishTime"] = args ? args.postingPublishTime : undefined;
-            inputs["postingRegion"] = args ? args.postingRegion : undefined;
-            inputs["processingOptions"] = args ? args.processingOptions : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["promotionValue"] = args ? args.promotionValue : undefined;
-            inputs["qualifications"] = args ? args.qualifications : undefined;
-            inputs["requisitionId"] = args ? args.requisitionId : undefined;
-            inputs["responsibilities"] = args ? args.responsibilities : undefined;
-            inputs["tenantId"] = args ? args.tenantId : undefined;
-            inputs["title"] = args ? args.title : undefined;
-            inputs["companyDisplayName"] = undefined /*out*/;
-            inputs["derivedInfo"] = undefined /*out*/;
-            inputs["postingCreateTime"] = undefined /*out*/;
-            inputs["postingUpdateTime"] = undefined /*out*/;
+            resourceInputs["addresses"] = args ? args.addresses : undefined;
+            resourceInputs["applicationInfo"] = args ? args.applicationInfo : undefined;
+            resourceInputs["company"] = args ? args.company : undefined;
+            resourceInputs["compensationInfo"] = args ? args.compensationInfo : undefined;
+            resourceInputs["customAttributes"] = args ? args.customAttributes : undefined;
+            resourceInputs["degreeTypes"] = args ? args.degreeTypes : undefined;
+            resourceInputs["department"] = args ? args.department : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["employmentTypes"] = args ? args.employmentTypes : undefined;
+            resourceInputs["incentives"] = args ? args.incentives : undefined;
+            resourceInputs["jobBenefits"] = args ? args.jobBenefits : undefined;
+            resourceInputs["jobEndTime"] = args ? args.jobEndTime : undefined;
+            resourceInputs["jobLevel"] = args ? args.jobLevel : undefined;
+            resourceInputs["jobStartTime"] = args ? args.jobStartTime : undefined;
+            resourceInputs["languageCode"] = args ? args.languageCode : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["postingExpireTime"] = args ? args.postingExpireTime : undefined;
+            resourceInputs["postingPublishTime"] = args ? args.postingPublishTime : undefined;
+            resourceInputs["postingRegion"] = args ? args.postingRegion : undefined;
+            resourceInputs["processingOptions"] = args ? args.processingOptions : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["promotionValue"] = args ? args.promotionValue : undefined;
+            resourceInputs["qualifications"] = args ? args.qualifications : undefined;
+            resourceInputs["requisitionId"] = args ? args.requisitionId : undefined;
+            resourceInputs["responsibilities"] = args ? args.responsibilities : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["title"] = args ? args.title : undefined;
+            resourceInputs["companyDisplayName"] = undefined /*out*/;
+            resourceInputs["derivedInfo"] = undefined /*out*/;
+            resourceInputs["postingCreateTime"] = undefined /*out*/;
+            resourceInputs["postingUpdateTime"] = undefined /*out*/;
         } else {
-            inputs["addresses"] = undefined /*out*/;
-            inputs["applicationInfo"] = undefined /*out*/;
-            inputs["company"] = undefined /*out*/;
-            inputs["companyDisplayName"] = undefined /*out*/;
-            inputs["compensationInfo"] = undefined /*out*/;
-            inputs["customAttributes"] = undefined /*out*/;
-            inputs["degreeTypes"] = undefined /*out*/;
-            inputs["department"] = undefined /*out*/;
-            inputs["derivedInfo"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["employmentTypes"] = undefined /*out*/;
-            inputs["incentives"] = undefined /*out*/;
-            inputs["jobBenefits"] = undefined /*out*/;
-            inputs["jobEndTime"] = undefined /*out*/;
-            inputs["jobLevel"] = undefined /*out*/;
-            inputs["jobStartTime"] = undefined /*out*/;
-            inputs["languageCode"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["postingCreateTime"] = undefined /*out*/;
-            inputs["postingExpireTime"] = undefined /*out*/;
-            inputs["postingPublishTime"] = undefined /*out*/;
-            inputs["postingRegion"] = undefined /*out*/;
-            inputs["postingUpdateTime"] = undefined /*out*/;
-            inputs["processingOptions"] = undefined /*out*/;
-            inputs["promotionValue"] = undefined /*out*/;
-            inputs["qualifications"] = undefined /*out*/;
-            inputs["requisitionId"] = undefined /*out*/;
-            inputs["responsibilities"] = undefined /*out*/;
-            inputs["title"] = undefined /*out*/;
+            resourceInputs["addresses"] = undefined /*out*/;
+            resourceInputs["applicationInfo"] = undefined /*out*/;
+            resourceInputs["company"] = undefined /*out*/;
+            resourceInputs["companyDisplayName"] = undefined /*out*/;
+            resourceInputs["compensationInfo"] = undefined /*out*/;
+            resourceInputs["customAttributes"] = undefined /*out*/;
+            resourceInputs["degreeTypes"] = undefined /*out*/;
+            resourceInputs["department"] = undefined /*out*/;
+            resourceInputs["derivedInfo"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["employmentTypes"] = undefined /*out*/;
+            resourceInputs["incentives"] = undefined /*out*/;
+            resourceInputs["jobBenefits"] = undefined /*out*/;
+            resourceInputs["jobEndTime"] = undefined /*out*/;
+            resourceInputs["jobLevel"] = undefined /*out*/;
+            resourceInputs["jobStartTime"] = undefined /*out*/;
+            resourceInputs["languageCode"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["postingCreateTime"] = undefined /*out*/;
+            resourceInputs["postingExpireTime"] = undefined /*out*/;
+            resourceInputs["postingPublishTime"] = undefined /*out*/;
+            resourceInputs["postingRegion"] = undefined /*out*/;
+            resourceInputs["postingUpdateTime"] = undefined /*out*/;
+            resourceInputs["processingOptions"] = undefined /*out*/;
+            resourceInputs["promotionValue"] = undefined /*out*/;
+            resourceInputs["qualifications"] = undefined /*out*/;
+            resourceInputs["requisitionId"] = undefined /*out*/;
+            resourceInputs["responsibilities"] = undefined /*out*/;
+            resourceInputs["title"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Job.__pulumiType, name, inputs, opts);
+        super(Job.__pulumiType, name, resourceInputs, opts);
     }
 }
 

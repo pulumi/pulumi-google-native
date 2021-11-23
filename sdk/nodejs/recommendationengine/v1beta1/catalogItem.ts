@@ -73,7 +73,7 @@ export class CatalogItem extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: CatalogItemArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.catalogId === undefined) && !opts.urn) {
@@ -88,30 +88,30 @@ export class CatalogItem extends pulumi.CustomResource {
             if ((!args || args.title === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
-            inputs["catalogId"] = args ? args.catalogId : undefined;
-            inputs["categoryHierarchies"] = args ? args.categoryHierarchies : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["itemAttributes"] = args ? args.itemAttributes : undefined;
-            inputs["itemGroupId"] = args ? args.itemGroupId : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["productMetadata"] = args ? args.productMetadata : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["title"] = args ? args.title : undefined;
+            resourceInputs["catalogId"] = args ? args.catalogId : undefined;
+            resourceInputs["categoryHierarchies"] = args ? args.categoryHierarchies : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["id"] = args ? args.id : undefined;
+            resourceInputs["itemAttributes"] = args ? args.itemAttributes : undefined;
+            resourceInputs["itemGroupId"] = args ? args.itemGroupId : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["productMetadata"] = args ? args.productMetadata : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["title"] = args ? args.title : undefined;
         } else {
-            inputs["categoryHierarchies"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["itemAttributes"] = undefined /*out*/;
-            inputs["itemGroupId"] = undefined /*out*/;
-            inputs["productMetadata"] = undefined /*out*/;
-            inputs["tags"] = undefined /*out*/;
-            inputs["title"] = undefined /*out*/;
+            resourceInputs["categoryHierarchies"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["itemAttributes"] = undefined /*out*/;
+            resourceInputs["itemGroupId"] = undefined /*out*/;
+            resourceInputs["productMetadata"] = undefined /*out*/;
+            resourceInputs["tags"] = undefined /*out*/;
+            resourceInputs["title"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(CatalogItem.__pulumiType, name, inputs, opts);
+        super(CatalogItem.__pulumiType, name, resourceInputs, opts);
     }
 }
 

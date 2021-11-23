@@ -89,44 +89,44 @@ export class FhirStore extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: FhirStoreArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            inputs["datasetId"] = args ? args.datasetId : undefined;
-            inputs["defaultSearchHandlingStrict"] = args ? args.defaultSearchHandlingStrict : undefined;
-            inputs["disableReferentialIntegrity"] = args ? args.disableReferentialIntegrity : undefined;
-            inputs["disableResourceVersioning"] = args ? args.disableResourceVersioning : undefined;
-            inputs["enableUpdateCreate"] = args ? args.enableUpdateCreate : undefined;
-            inputs["fhirStoreId"] = args ? args.fhirStoreId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["notificationConfig"] = args ? args.notificationConfig : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["searchConfig"] = args ? args.searchConfig : undefined;
-            inputs["streamConfigs"] = args ? args.streamConfigs : undefined;
-            inputs["validationConfig"] = args ? args.validationConfig : undefined;
-            inputs["version"] = args ? args.version : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["datasetId"] = args ? args.datasetId : undefined;
+            resourceInputs["defaultSearchHandlingStrict"] = args ? args.defaultSearchHandlingStrict : undefined;
+            resourceInputs["disableReferentialIntegrity"] = args ? args.disableReferentialIntegrity : undefined;
+            resourceInputs["disableResourceVersioning"] = args ? args.disableResourceVersioning : undefined;
+            resourceInputs["enableUpdateCreate"] = args ? args.enableUpdateCreate : undefined;
+            resourceInputs["fhirStoreId"] = args ? args.fhirStoreId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["searchConfig"] = args ? args.searchConfig : undefined;
+            resourceInputs["streamConfigs"] = args ? args.streamConfigs : undefined;
+            resourceInputs["validationConfig"] = args ? args.validationConfig : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         } else {
-            inputs["defaultSearchHandlingStrict"] = undefined /*out*/;
-            inputs["disableReferentialIntegrity"] = undefined /*out*/;
-            inputs["disableResourceVersioning"] = undefined /*out*/;
-            inputs["enableUpdateCreate"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["notificationConfig"] = undefined /*out*/;
-            inputs["searchConfig"] = undefined /*out*/;
-            inputs["streamConfigs"] = undefined /*out*/;
-            inputs["validationConfig"] = undefined /*out*/;
-            inputs["version"] = undefined /*out*/;
+            resourceInputs["defaultSearchHandlingStrict"] = undefined /*out*/;
+            resourceInputs["disableReferentialIntegrity"] = undefined /*out*/;
+            resourceInputs["disableResourceVersioning"] = undefined /*out*/;
+            resourceInputs["enableUpdateCreate"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["notificationConfig"] = undefined /*out*/;
+            resourceInputs["searchConfig"] = undefined /*out*/;
+            resourceInputs["streamConfigs"] = undefined /*out*/;
+            resourceInputs["validationConfig"] = undefined /*out*/;
+            resourceInputs["version"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(FhirStore.__pulumiType, name, inputs, opts);
+        super(FhirStore.__pulumiType, name, resourceInputs, opts);
     }
 }
 

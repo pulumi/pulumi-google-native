@@ -83,7 +83,7 @@ export class CanaryEvaluation extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: CanaryEvaluationArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.control === undefined) && !opts.urn) {
@@ -107,32 +107,32 @@ export class CanaryEvaluation extends pulumi.CustomResource {
             if ((!args || args.treatment === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'treatment'");
             }
-            inputs["control"] = args ? args.control : undefined;
-            inputs["endTime"] = args ? args.endTime : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["metricLabels"] = args ? args.metricLabels : undefined;
-            inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["startTime"] = args ? args.startTime : undefined;
-            inputs["treatment"] = args ? args.treatment : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["verdict"] = undefined /*out*/;
+            resourceInputs["control"] = args ? args.control : undefined;
+            resourceInputs["endTime"] = args ? args.endTime : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["metricLabels"] = args ? args.metricLabels : undefined;
+            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["startTime"] = args ? args.startTime : undefined;
+            resourceInputs["treatment"] = args ? args.treatment : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["verdict"] = undefined /*out*/;
         } else {
-            inputs["control"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["endTime"] = undefined /*out*/;
-            inputs["metricLabels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["startTime"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["treatment"] = undefined /*out*/;
-            inputs["verdict"] = undefined /*out*/;
+            resourceInputs["control"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["metricLabels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["startTime"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["treatment"] = undefined /*out*/;
+            resourceInputs["verdict"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(CanaryEvaluation.__pulumiType, name, inputs, opts);
+        super(CanaryEvaluation.__pulumiType, name, resourceInputs, opts);
     }
 }
 

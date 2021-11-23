@@ -120,60 +120,60 @@ export class Service extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ServiceArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.serviceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
             }
-            inputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
-            inputs["hiveMetastoreConfig"] = args ? args.hiveMetastoreConfig : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
-            inputs["metadataIntegration"] = args ? args.metadataIntegration : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["networkConfig"] = args ? args.networkConfig : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["releaseChannel"] = args ? args.releaseChannel : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["serviceId"] = args ? args.serviceId : undefined;
-            inputs["tier"] = args ? args.tier : undefined;
-            inputs["artifactGcsUri"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["endpointUri"] = undefined /*out*/;
-            inputs["metadataManagementActivity"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["stateMessage"] = undefined /*out*/;
-            inputs["uid"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
+            resourceInputs["hiveMetastoreConfig"] = args ? args.hiveMetastoreConfig : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
+            resourceInputs["metadataIntegration"] = args ? args.metadataIntegration : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["releaseChannel"] = args ? args.releaseChannel : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["serviceId"] = args ? args.serviceId : undefined;
+            resourceInputs["tier"] = args ? args.tier : undefined;
+            resourceInputs["artifactGcsUri"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["endpointUri"] = undefined /*out*/;
+            resourceInputs["metadataManagementActivity"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stateMessage"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["artifactGcsUri"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["encryptionConfig"] = undefined /*out*/;
-            inputs["endpointUri"] = undefined /*out*/;
-            inputs["hiveMetastoreConfig"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["maintenanceWindow"] = undefined /*out*/;
-            inputs["metadataIntegration"] = undefined /*out*/;
-            inputs["metadataManagementActivity"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["network"] = undefined /*out*/;
-            inputs["networkConfig"] = undefined /*out*/;
-            inputs["port"] = undefined /*out*/;
-            inputs["releaseChannel"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["stateMessage"] = undefined /*out*/;
-            inputs["tier"] = undefined /*out*/;
-            inputs["uid"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["artifactGcsUri"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["encryptionConfig"] = undefined /*out*/;
+            resourceInputs["endpointUri"] = undefined /*out*/;
+            resourceInputs["hiveMetastoreConfig"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["maintenanceWindow"] = undefined /*out*/;
+            resourceInputs["metadataIntegration"] = undefined /*out*/;
+            resourceInputs["metadataManagementActivity"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["network"] = undefined /*out*/;
+            resourceInputs["networkConfig"] = undefined /*out*/;
+            resourceInputs["port"] = undefined /*out*/;
+            resourceInputs["releaseChannel"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stateMessage"] = undefined /*out*/;
+            resourceInputs["tier"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Service.__pulumiType, name, inputs, opts);
+        super(Service.__pulumiType, name, resourceInputs, opts);
     }
 }
 

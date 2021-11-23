@@ -62,24 +62,24 @@ export class Brand extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: BrandArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["applicationTitle"] = args ? args.applicationTitle : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["supportEmail"] = args ? args.supportEmail : undefined;
-            inputs["name"] = undefined /*out*/;
-            inputs["orgInternalOnly"] = undefined /*out*/;
+            resourceInputs["applicationTitle"] = args ? args.applicationTitle : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["supportEmail"] = args ? args.supportEmail : undefined;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["orgInternalOnly"] = undefined /*out*/;
         } else {
-            inputs["applicationTitle"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["orgInternalOnly"] = undefined /*out*/;
-            inputs["supportEmail"] = undefined /*out*/;
+            resourceInputs["applicationTitle"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["orgInternalOnly"] = undefined /*out*/;
+            resourceInputs["supportEmail"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Brand.__pulumiType, name, inputs, opts);
+        super(Brand.__pulumiType, name, resourceInputs, opts);
     }
 }
 

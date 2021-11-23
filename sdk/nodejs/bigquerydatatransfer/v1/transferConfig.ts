@@ -108,52 +108,52 @@ export class TransferConfig extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: TransferConfigArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["authorizationCode"] = args ? args.authorizationCode : undefined;
-            inputs["dataRefreshWindowDays"] = args ? args.dataRefreshWindowDays : undefined;
-            inputs["dataSourceId"] = args ? args.dataSourceId : undefined;
-            inputs["destinationDatasetId"] = args ? args.destinationDatasetId : undefined;
-            inputs["disabled"] = args ? args.disabled : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["emailPreferences"] = args ? args.emailPreferences : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["notificationPubsubTopic"] = args ? args.notificationPubsubTopic : undefined;
-            inputs["params"] = args ? args.params : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["schedule"] = args ? args.schedule : undefined;
-            inputs["scheduleOptions"] = args ? args.scheduleOptions : undefined;
-            inputs["serviceAccountName"] = args ? args.serviceAccountName : undefined;
-            inputs["versionInfo"] = args ? args.versionInfo : undefined;
-            inputs["datasetRegion"] = undefined /*out*/;
-            inputs["nextRunTime"] = undefined /*out*/;
-            inputs["ownerInfo"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["authorizationCode"] = args ? args.authorizationCode : undefined;
+            resourceInputs["dataRefreshWindowDays"] = args ? args.dataRefreshWindowDays : undefined;
+            resourceInputs["dataSourceId"] = args ? args.dataSourceId : undefined;
+            resourceInputs["destinationDatasetId"] = args ? args.destinationDatasetId : undefined;
+            resourceInputs["disabled"] = args ? args.disabled : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["emailPreferences"] = args ? args.emailPreferences : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["notificationPubsubTopic"] = args ? args.notificationPubsubTopic : undefined;
+            resourceInputs["params"] = args ? args.params : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["schedule"] = args ? args.schedule : undefined;
+            resourceInputs["scheduleOptions"] = args ? args.scheduleOptions : undefined;
+            resourceInputs["serviceAccountName"] = args ? args.serviceAccountName : undefined;
+            resourceInputs["versionInfo"] = args ? args.versionInfo : undefined;
+            resourceInputs["datasetRegion"] = undefined /*out*/;
+            resourceInputs["nextRunTime"] = undefined /*out*/;
+            resourceInputs["ownerInfo"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["dataRefreshWindowDays"] = undefined /*out*/;
-            inputs["dataSourceId"] = undefined /*out*/;
-            inputs["datasetRegion"] = undefined /*out*/;
-            inputs["destinationDatasetId"] = undefined /*out*/;
-            inputs["disabled"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["emailPreferences"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["nextRunTime"] = undefined /*out*/;
-            inputs["notificationPubsubTopic"] = undefined /*out*/;
-            inputs["ownerInfo"] = undefined /*out*/;
-            inputs["params"] = undefined /*out*/;
-            inputs["schedule"] = undefined /*out*/;
-            inputs["scheduleOptions"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["dataRefreshWindowDays"] = undefined /*out*/;
+            resourceInputs["dataSourceId"] = undefined /*out*/;
+            resourceInputs["datasetRegion"] = undefined /*out*/;
+            resourceInputs["destinationDatasetId"] = undefined /*out*/;
+            resourceInputs["disabled"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["emailPreferences"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["nextRunTime"] = undefined /*out*/;
+            resourceInputs["notificationPubsubTopic"] = undefined /*out*/;
+            resourceInputs["ownerInfo"] = undefined /*out*/;
+            resourceInputs["params"] = undefined /*out*/;
+            resourceInputs["schedule"] = undefined /*out*/;
+            resourceInputs["scheduleOptions"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(TransferConfig.__pulumiType, name, inputs, opts);
+        super(TransferConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 

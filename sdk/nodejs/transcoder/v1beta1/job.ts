@@ -104,47 +104,47 @@ export class Job extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: JobArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["config"] = args ? args.config : undefined;
-            inputs["inputUri"] = args ? args.inputUri : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["outputUri"] = args ? args.outputUri : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["templateId"] = args ? args.templateId : undefined;
-            inputs["ttlAfterCompletionDays"] = args ? args.ttlAfterCompletionDays : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["endTime"] = undefined /*out*/;
-            inputs["failureDetails"] = undefined /*out*/;
-            inputs["failureReason"] = undefined /*out*/;
-            inputs["originUri"] = undefined /*out*/;
-            inputs["progress"] = undefined /*out*/;
-            inputs["startTime"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["inputUri"] = args ? args.inputUri : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["outputUri"] = args ? args.outputUri : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["templateId"] = args ? args.templateId : undefined;
+            resourceInputs["ttlAfterCompletionDays"] = args ? args.ttlAfterCompletionDays : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["failureDetails"] = undefined /*out*/;
+            resourceInputs["failureReason"] = undefined /*out*/;
+            resourceInputs["originUri"] = undefined /*out*/;
+            resourceInputs["progress"] = undefined /*out*/;
+            resourceInputs["startTime"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
-            inputs["config"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["endTime"] = undefined /*out*/;
-            inputs["failureDetails"] = undefined /*out*/;
-            inputs["failureReason"] = undefined /*out*/;
-            inputs["inputUri"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["originUri"] = undefined /*out*/;
-            inputs["outputUri"] = undefined /*out*/;
-            inputs["priority"] = undefined /*out*/;
-            inputs["progress"] = undefined /*out*/;
-            inputs["startTime"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["templateId"] = undefined /*out*/;
-            inputs["ttlAfterCompletionDays"] = undefined /*out*/;
+            resourceInputs["config"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["failureDetails"] = undefined /*out*/;
+            resourceInputs["failureReason"] = undefined /*out*/;
+            resourceInputs["inputUri"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["originUri"] = undefined /*out*/;
+            resourceInputs["outputUri"] = undefined /*out*/;
+            resourceInputs["priority"] = undefined /*out*/;
+            resourceInputs["progress"] = undefined /*out*/;
+            resourceInputs["startTime"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["templateId"] = undefined /*out*/;
+            resourceInputs["ttlAfterCompletionDays"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Job.__pulumiType, name, inputs, opts);
+        super(Job.__pulumiType, name, resourceInputs, opts);
     }
 }
 

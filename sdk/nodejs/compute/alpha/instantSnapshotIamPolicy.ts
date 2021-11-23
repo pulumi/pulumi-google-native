@@ -70,33 +70,33 @@ export class InstantSnapshotIamPolicy extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: InstantSnapshotIamPolicyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.resource === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resource'");
             }
-            inputs["auditConfigs"] = args ? args.auditConfigs : undefined;
-            inputs["bindings"] = args ? args.bindings : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["iamOwned"] = args ? args.iamOwned : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["resource"] = args ? args.resource : undefined;
-            inputs["rules"] = args ? args.rules : undefined;
-            inputs["version"] = args ? args.version : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["auditConfigs"] = args ? args.auditConfigs : undefined;
+            resourceInputs["bindings"] = args ? args.bindings : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["iamOwned"] = args ? args.iamOwned : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["resource"] = args ? args.resource : undefined;
+            resourceInputs["rules"] = args ? args.rules : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
         } else {
-            inputs["auditConfigs"] = undefined /*out*/;
-            inputs["bindings"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["iamOwned"] = undefined /*out*/;
-            inputs["rules"] = undefined /*out*/;
-            inputs["version"] = undefined /*out*/;
+            resourceInputs["auditConfigs"] = undefined /*out*/;
+            resourceInputs["bindings"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["iamOwned"] = undefined /*out*/;
+            resourceInputs["rules"] = undefined /*out*/;
+            resourceInputs["version"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(InstantSnapshotIamPolicy.__pulumiType, name, inputs, opts);
+        super(InstantSnapshotIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

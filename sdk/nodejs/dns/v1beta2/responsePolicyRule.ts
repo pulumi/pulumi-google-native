@@ -62,31 +62,31 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ResponsePolicyRuleArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.responsePolicy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'responsePolicy'");
             }
-            inputs["behavior"] = args ? args.behavior : undefined;
-            inputs["clientOperationId"] = args ? args.clientOperationId : undefined;
-            inputs["dnsName"] = args ? args.dnsName : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
-            inputs["localData"] = args ? args.localData : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["responsePolicy"] = args ? args.responsePolicy : undefined;
-            inputs["ruleName"] = args ? args.ruleName : undefined;
+            resourceInputs["behavior"] = args ? args.behavior : undefined;
+            resourceInputs["clientOperationId"] = args ? args.clientOperationId : undefined;
+            resourceInputs["dnsName"] = args ? args.dnsName : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
+            resourceInputs["localData"] = args ? args.localData : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["responsePolicy"] = args ? args.responsePolicy : undefined;
+            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
         } else {
-            inputs["behavior"] = undefined /*out*/;
-            inputs["dnsName"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["localData"] = undefined /*out*/;
-            inputs["ruleName"] = undefined /*out*/;
+            resourceInputs["behavior"] = undefined /*out*/;
+            resourceInputs["dnsName"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["localData"] = undefined /*out*/;
+            resourceInputs["ruleName"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ResponsePolicyRule.__pulumiType, name, inputs, opts);
+        super(ResponsePolicyRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

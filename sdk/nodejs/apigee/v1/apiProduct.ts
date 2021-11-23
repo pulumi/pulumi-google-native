@@ -105,51 +105,51 @@ export class ApiProduct extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ApiProductArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            inputs["apiResources"] = args ? args.apiResources : undefined;
-            inputs["approvalType"] = args ? args.approvalType : undefined;
-            inputs["attributes"] = args ? args.attributes : undefined;
-            inputs["createdAt"] = args ? args.createdAt : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["environments"] = args ? args.environments : undefined;
-            inputs["graphqlOperationGroup"] = args ? args.graphqlOperationGroup : undefined;
-            inputs["lastModifiedAt"] = args ? args.lastModifiedAt : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["operationGroup"] = args ? args.operationGroup : undefined;
-            inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["proxies"] = args ? args.proxies : undefined;
-            inputs["quota"] = args ? args.quota : undefined;
-            inputs["quotaInterval"] = args ? args.quotaInterval : undefined;
-            inputs["quotaTimeUnit"] = args ? args.quotaTimeUnit : undefined;
-            inputs["scopes"] = args ? args.scopes : undefined;
+            resourceInputs["apiResources"] = args ? args.apiResources : undefined;
+            resourceInputs["approvalType"] = args ? args.approvalType : undefined;
+            resourceInputs["attributes"] = args ? args.attributes : undefined;
+            resourceInputs["createdAt"] = args ? args.createdAt : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["environments"] = args ? args.environments : undefined;
+            resourceInputs["graphqlOperationGroup"] = args ? args.graphqlOperationGroup : undefined;
+            resourceInputs["lastModifiedAt"] = args ? args.lastModifiedAt : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["operationGroup"] = args ? args.operationGroup : undefined;
+            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["proxies"] = args ? args.proxies : undefined;
+            resourceInputs["quota"] = args ? args.quota : undefined;
+            resourceInputs["quotaInterval"] = args ? args.quotaInterval : undefined;
+            resourceInputs["quotaTimeUnit"] = args ? args.quotaTimeUnit : undefined;
+            resourceInputs["scopes"] = args ? args.scopes : undefined;
         } else {
-            inputs["apiResources"] = undefined /*out*/;
-            inputs["approvalType"] = undefined /*out*/;
-            inputs["attributes"] = undefined /*out*/;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["environments"] = undefined /*out*/;
-            inputs["graphqlOperationGroup"] = undefined /*out*/;
-            inputs["lastModifiedAt"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["operationGroup"] = undefined /*out*/;
-            inputs["proxies"] = undefined /*out*/;
-            inputs["quota"] = undefined /*out*/;
-            inputs["quotaInterval"] = undefined /*out*/;
-            inputs["quotaTimeUnit"] = undefined /*out*/;
-            inputs["scopes"] = undefined /*out*/;
+            resourceInputs["apiResources"] = undefined /*out*/;
+            resourceInputs["approvalType"] = undefined /*out*/;
+            resourceInputs["attributes"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["environments"] = undefined /*out*/;
+            resourceInputs["graphqlOperationGroup"] = undefined /*out*/;
+            resourceInputs["lastModifiedAt"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["operationGroup"] = undefined /*out*/;
+            resourceInputs["proxies"] = undefined /*out*/;
+            resourceInputs["quota"] = undefined /*out*/;
+            resourceInputs["quotaInterval"] = undefined /*out*/;
+            resourceInputs["quotaTimeUnit"] = undefined /*out*/;
+            resourceInputs["scopes"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ApiProduct.__pulumiType, name, inputs, opts);
+        super(ApiProduct.__pulumiType, name, resourceInputs, opts);
     }
 }
 

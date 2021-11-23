@@ -52,19 +52,19 @@ export class Service extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: ServiceArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["producerProjectId"] = args ? args.producerProjectId : undefined;
-            inputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["producerProjectId"] = args ? args.producerProjectId : undefined;
+            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
         } else {
-            inputs["producerProjectId"] = undefined /*out*/;
-            inputs["serviceName"] = undefined /*out*/;
+            resourceInputs["producerProjectId"] = undefined /*out*/;
+            resourceInputs["serviceName"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Service.__pulumiType, name, inputs, opts);
+        super(Service.__pulumiType, name, resourceInputs, opts);
     }
 }
 

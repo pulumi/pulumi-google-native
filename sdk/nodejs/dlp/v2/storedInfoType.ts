@@ -57,28 +57,28 @@ export class StoredInfoType extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: StoredInfoTypeArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.config === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'config'");
             }
-            inputs["config"] = args ? args.config : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["storedInfoTypeId"] = args ? args.storedInfoTypeId : undefined;
-            inputs["currentVersion"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["pendingVersions"] = undefined /*out*/;
+            resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["storedInfoTypeId"] = args ? args.storedInfoTypeId : undefined;
+            resourceInputs["currentVersion"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pendingVersions"] = undefined /*out*/;
         } else {
-            inputs["currentVersion"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["pendingVersions"] = undefined /*out*/;
+            resourceInputs["currentVersion"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pendingVersions"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(StoredInfoType.__pulumiType, name, inputs, opts);
+        super(StoredInfoType.__pulumiType, name, resourceInputs, opts);
     }
 }
 

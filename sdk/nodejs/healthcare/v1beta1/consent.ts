@@ -84,7 +84,7 @@ export class Consent extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ConsentArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.consentArtifact === undefined) && !opts.urn) {
@@ -102,36 +102,36 @@ export class Consent extends pulumi.CustomResource {
             if ((!args || args.userId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            inputs["consentArtifact"] = args ? args.consentArtifact : undefined;
-            inputs["consentStoreId"] = args ? args.consentStoreId : undefined;
-            inputs["datasetId"] = args ? args.datasetId : undefined;
-            inputs["expireTime"] = args ? args.expireTime : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["policies"] = args ? args.policies : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["ttl"] = args ? args.ttl : undefined;
-            inputs["userId"] = args ? args.userId : undefined;
-            inputs["revisionCreateTime"] = undefined /*out*/;
-            inputs["revisionId"] = undefined /*out*/;
+            resourceInputs["consentArtifact"] = args ? args.consentArtifact : undefined;
+            resourceInputs["consentStoreId"] = args ? args.consentStoreId : undefined;
+            resourceInputs["datasetId"] = args ? args.datasetId : undefined;
+            resourceInputs["expireTime"] = args ? args.expireTime : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["policies"] = args ? args.policies : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["revisionCreateTime"] = undefined /*out*/;
+            resourceInputs["revisionId"] = undefined /*out*/;
         } else {
-            inputs["consentArtifact"] = undefined /*out*/;
-            inputs["expireTime"] = undefined /*out*/;
-            inputs["metadata"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["policies"] = undefined /*out*/;
-            inputs["revisionCreateTime"] = undefined /*out*/;
-            inputs["revisionId"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["ttl"] = undefined /*out*/;
-            inputs["userId"] = undefined /*out*/;
+            resourceInputs["consentArtifact"] = undefined /*out*/;
+            resourceInputs["expireTime"] = undefined /*out*/;
+            resourceInputs["metadata"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["policies"] = undefined /*out*/;
+            resourceInputs["revisionCreateTime"] = undefined /*out*/;
+            resourceInputs["revisionId"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["ttl"] = undefined /*out*/;
+            resourceInputs["userId"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Consent.__pulumiType, name, inputs, opts);
+        super(Consent.__pulumiType, name, resourceInputs, opts);
     }
 }
 

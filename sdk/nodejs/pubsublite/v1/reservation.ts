@@ -51,25 +51,25 @@ export class Reservation extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ReservationArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.reservationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'reservationId'");
             }
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["reservationId"] = args ? args.reservationId : undefined;
-            inputs["throughputCapacity"] = args ? args.throughputCapacity : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["reservationId"] = args ? args.reservationId : undefined;
+            resourceInputs["throughputCapacity"] = args ? args.throughputCapacity : undefined;
         } else {
-            inputs["name"] = undefined /*out*/;
-            inputs["throughputCapacity"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["throughputCapacity"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Reservation.__pulumiType, name, inputs, opts);
+        super(Reservation.__pulumiType, name, resourceInputs, opts);
     }
 }
 

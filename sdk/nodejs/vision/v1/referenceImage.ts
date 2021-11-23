@@ -56,7 +56,7 @@ export class ReferenceImage extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ReferenceImageArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.productId === undefined) && !opts.urn) {
@@ -65,22 +65,22 @@ export class ReferenceImage extends pulumi.CustomResource {
             if ((!args || args.uri === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'uri'");
             }
-            inputs["boundingPolys"] = args ? args.boundingPolys : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["productId"] = args ? args.productId : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["referenceImageId"] = args ? args.referenceImageId : undefined;
-            inputs["uri"] = args ? args.uri : undefined;
+            resourceInputs["boundingPolys"] = args ? args.boundingPolys : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["productId"] = args ? args.productId : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["referenceImageId"] = args ? args.referenceImageId : undefined;
+            resourceInputs["uri"] = args ? args.uri : undefined;
         } else {
-            inputs["boundingPolys"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["uri"] = undefined /*out*/;
+            resourceInputs["boundingPolys"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["uri"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ReferenceImage.__pulumiType, name, inputs, opts);
+        super(ReferenceImage.__pulumiType, name, resourceInputs, opts);
     }
 }
 

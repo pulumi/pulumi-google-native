@@ -99,53 +99,53 @@ export class NodeGroup extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: NodeGroupArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.initialNodeCount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'initialNodeCount'");
             }
-            inputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
-            inputs["locationHint"] = args ? args.locationHint : undefined;
-            inputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
-            inputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["nodeTemplate"] = args ? args.nodeTemplate : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["shareSettings"] = args ? args.shareSettings : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["selfLinkWithId"] = undefined /*out*/;
-            inputs["size"] = undefined /*out*/;
+            resourceInputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
+            resourceInputs["locationHint"] = args ? args.locationHint : undefined;
+            resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
+            resourceInputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nodeTemplate"] = args ? args.nodeTemplate : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["shareSettings"] = args ? args.shareSettings : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["size"] = undefined /*out*/;
         } else {
-            inputs["autoscalingPolicy"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["locationHint"] = undefined /*out*/;
-            inputs["maintenancePolicy"] = undefined /*out*/;
-            inputs["maintenanceWindow"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["nodeTemplate"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["selfLinkWithId"] = undefined /*out*/;
-            inputs["shareSettings"] = undefined /*out*/;
-            inputs["size"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["zone"] = undefined /*out*/;
+            resourceInputs["autoscalingPolicy"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["locationHint"] = undefined /*out*/;
+            resourceInputs["maintenancePolicy"] = undefined /*out*/;
+            resourceInputs["maintenanceWindow"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["nodeTemplate"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["shareSettings"] = undefined /*out*/;
+            resourceInputs["size"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["zone"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(NodeGroup.__pulumiType, name, inputs, opts);
+        super(NodeGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

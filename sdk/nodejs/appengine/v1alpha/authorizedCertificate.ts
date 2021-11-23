@@ -77,35 +77,35 @@ export class AuthorizedCertificate extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: AuthorizedCertificateArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.appId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            inputs["appId"] = args ? args.appId : undefined;
-            inputs["certificateRawData"] = args ? args.certificateRawData : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["domainMappingsCount"] = undefined /*out*/;
-            inputs["domainNames"] = undefined /*out*/;
-            inputs["expireTime"] = undefined /*out*/;
-            inputs["managedCertificate"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["visibleDomainMappings"] = undefined /*out*/;
+            resourceInputs["appId"] = args ? args.appId : undefined;
+            resourceInputs["certificateRawData"] = args ? args.certificateRawData : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["domainMappingsCount"] = undefined /*out*/;
+            resourceInputs["domainNames"] = undefined /*out*/;
+            resourceInputs["expireTime"] = undefined /*out*/;
+            resourceInputs["managedCertificate"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["visibleDomainMappings"] = undefined /*out*/;
         } else {
-            inputs["certificateRawData"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["domainMappingsCount"] = undefined /*out*/;
-            inputs["domainNames"] = undefined /*out*/;
-            inputs["expireTime"] = undefined /*out*/;
-            inputs["managedCertificate"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["visibleDomainMappings"] = undefined /*out*/;
+            resourceInputs["certificateRawData"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["domainMappingsCount"] = undefined /*out*/;
+            resourceInputs["domainNames"] = undefined /*out*/;
+            resourceInputs["expireTime"] = undefined /*out*/;
+            resourceInputs["managedCertificate"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["visibleDomainMappings"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AuthorizedCertificate.__pulumiType, name, inputs, opts);
+        super(AuthorizedCertificate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

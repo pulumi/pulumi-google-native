@@ -120,55 +120,55 @@ export class Firewall extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: FirewallArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["allowed"] = args ? args.allowed : undefined;
-            inputs["denied"] = args ? args.denied : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["destinationRanges"] = args ? args.destinationRanges : undefined;
-            inputs["direction"] = args ? args.direction : undefined;
-            inputs["disabled"] = args ? args.disabled : undefined;
-            inputs["logConfig"] = args ? args.logConfig : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["sourceRanges"] = args ? args.sourceRanges : undefined;
-            inputs["sourceServiceAccounts"] = args ? args.sourceServiceAccounts : undefined;
-            inputs["sourceTags"] = args ? args.sourceTags : undefined;
-            inputs["targetServiceAccounts"] = args ? args.targetServiceAccounts : undefined;
-            inputs["targetTags"] = args ? args.targetTags : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["allowed"] = args ? args.allowed : undefined;
+            resourceInputs["denied"] = args ? args.denied : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["destinationRanges"] = args ? args.destinationRanges : undefined;
+            resourceInputs["direction"] = args ? args.direction : undefined;
+            resourceInputs["disabled"] = args ? args.disabled : undefined;
+            resourceInputs["logConfig"] = args ? args.logConfig : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["sourceRanges"] = args ? args.sourceRanges : undefined;
+            resourceInputs["sourceServiceAccounts"] = args ? args.sourceServiceAccounts : undefined;
+            resourceInputs["sourceTags"] = args ? args.sourceTags : undefined;
+            resourceInputs["targetServiceAccounts"] = args ? args.targetServiceAccounts : undefined;
+            resourceInputs["targetTags"] = args ? args.targetTags : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
         } else {
-            inputs["allowed"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["denied"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["destinationRanges"] = undefined /*out*/;
-            inputs["direction"] = undefined /*out*/;
-            inputs["disabled"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["logConfig"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["network"] = undefined /*out*/;
-            inputs["priority"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["selfLinkWithId"] = undefined /*out*/;
-            inputs["sourceRanges"] = undefined /*out*/;
-            inputs["sourceServiceAccounts"] = undefined /*out*/;
-            inputs["sourceTags"] = undefined /*out*/;
-            inputs["targetServiceAccounts"] = undefined /*out*/;
-            inputs["targetTags"] = undefined /*out*/;
+            resourceInputs["allowed"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["denied"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["destinationRanges"] = undefined /*out*/;
+            resourceInputs["direction"] = undefined /*out*/;
+            resourceInputs["disabled"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["logConfig"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["network"] = undefined /*out*/;
+            resourceInputs["priority"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["sourceRanges"] = undefined /*out*/;
+            resourceInputs["sourceServiceAccounts"] = undefined /*out*/;
+            resourceInputs["sourceTags"] = undefined /*out*/;
+            resourceInputs["targetServiceAccounts"] = undefined /*out*/;
+            resourceInputs["targetTags"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Firewall.__pulumiType, name, inputs, opts);
+        super(Firewall.__pulumiType, name, resourceInputs, opts);
     }
 }
 

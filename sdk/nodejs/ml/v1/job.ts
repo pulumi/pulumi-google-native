@@ -99,45 +99,45 @@ export class Job extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: JobArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.jobId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'jobId'");
             }
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["jobId"] = args ? args.jobId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["predictionInput"] = args ? args.predictionInput : undefined;
-            inputs["predictionOutput"] = args ? args.predictionOutput : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["trainingInput"] = args ? args.trainingInput : undefined;
-            inputs["trainingOutput"] = args ? args.trainingOutput : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["endTime"] = undefined /*out*/;
-            inputs["errorMessage"] = undefined /*out*/;
-            inputs["jobPosition"] = undefined /*out*/;
-            inputs["startTime"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["jobId"] = args ? args.jobId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["predictionInput"] = args ? args.predictionInput : undefined;
+            resourceInputs["predictionOutput"] = args ? args.predictionOutput : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["trainingInput"] = args ? args.trainingInput : undefined;
+            resourceInputs["trainingOutput"] = args ? args.trainingOutput : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["errorMessage"] = undefined /*out*/;
+            resourceInputs["jobPosition"] = undefined /*out*/;
+            resourceInputs["startTime"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["endTime"] = undefined /*out*/;
-            inputs["errorMessage"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["jobId"] = undefined /*out*/;
-            inputs["jobPosition"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["predictionInput"] = undefined /*out*/;
-            inputs["predictionOutput"] = undefined /*out*/;
-            inputs["startTime"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["trainingInput"] = undefined /*out*/;
-            inputs["trainingOutput"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["errorMessage"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["jobId"] = undefined /*out*/;
+            resourceInputs["jobPosition"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["predictionInput"] = undefined /*out*/;
+            resourceInputs["predictionOutput"] = undefined /*out*/;
+            resourceInputs["startTime"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["trainingInput"] = undefined /*out*/;
+            resourceInputs["trainingOutput"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Job.__pulumiType, name, inputs, opts);
+        super(Job.__pulumiType, name, resourceInputs, opts);
     }
 }
 

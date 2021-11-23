@@ -88,38 +88,38 @@ export class TypeProvider extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: TypeProviderArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["collectionOverrides"] = args ? args.collectionOverrides : undefined;
-            inputs["credential"] = args ? args.credential : undefined;
-            inputs["customCertificateAuthorityRoots"] = args ? args.customCertificateAuthorityRoots : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["descriptorUrl"] = args ? args.descriptorUrl : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["options"] = args ? args.options : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["insertTime"] = undefined /*out*/;
-            inputs["operation"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["collectionOverrides"] = args ? args.collectionOverrides : undefined;
+            resourceInputs["credential"] = args ? args.credential : undefined;
+            resourceInputs["customCertificateAuthorityRoots"] = args ? args.customCertificateAuthorityRoots : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["descriptorUrl"] = args ? args.descriptorUrl : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["options"] = args ? args.options : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["insertTime"] = undefined /*out*/;
+            resourceInputs["operation"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         } else {
-            inputs["collectionOverrides"] = undefined /*out*/;
-            inputs["credential"] = undefined /*out*/;
-            inputs["customCertificateAuthorityRoots"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["descriptorUrl"] = undefined /*out*/;
-            inputs["insertTime"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["operation"] = undefined /*out*/;
-            inputs["options"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["collectionOverrides"] = undefined /*out*/;
+            resourceInputs["credential"] = undefined /*out*/;
+            resourceInputs["customCertificateAuthorityRoots"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["descriptorUrl"] = undefined /*out*/;
+            resourceInputs["insertTime"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["operation"] = undefined /*out*/;
+            resourceInputs["options"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(TypeProvider.__pulumiType, name, inputs, opts);
+        super(TypeProvider.__pulumiType, name, resourceInputs, opts);
     }
 }
 

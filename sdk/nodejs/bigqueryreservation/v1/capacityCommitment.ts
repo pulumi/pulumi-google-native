@@ -77,35 +77,35 @@ export class CapacityCommitment extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: CapacityCommitmentArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["capacityCommitmentId"] = args ? args.capacityCommitmentId : undefined;
-            inputs["enforceSingleAdminProjectPerOrg"] = args ? args.enforceSingleAdminProjectPerOrg : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["plan"] = args ? args.plan : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["renewalPlan"] = args ? args.renewalPlan : undefined;
-            inputs["slotCount"] = args ? args.slotCount : undefined;
-            inputs["commitmentEndTime"] = undefined /*out*/;
-            inputs["commitmentStartTime"] = undefined /*out*/;
-            inputs["failureStatus"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["capacityCommitmentId"] = args ? args.capacityCommitmentId : undefined;
+            resourceInputs["enforceSingleAdminProjectPerOrg"] = args ? args.enforceSingleAdminProjectPerOrg : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["plan"] = args ? args.plan : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["renewalPlan"] = args ? args.renewalPlan : undefined;
+            resourceInputs["slotCount"] = args ? args.slotCount : undefined;
+            resourceInputs["commitmentEndTime"] = undefined /*out*/;
+            resourceInputs["commitmentStartTime"] = undefined /*out*/;
+            resourceInputs["failureStatus"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
-            inputs["commitmentEndTime"] = undefined /*out*/;
-            inputs["commitmentStartTime"] = undefined /*out*/;
-            inputs["failureStatus"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["plan"] = undefined /*out*/;
-            inputs["renewalPlan"] = undefined /*out*/;
-            inputs["slotCount"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["commitmentEndTime"] = undefined /*out*/;
+            resourceInputs["commitmentStartTime"] = undefined /*out*/;
+            resourceInputs["failureStatus"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["plan"] = undefined /*out*/;
+            resourceInputs["renewalPlan"] = undefined /*out*/;
+            resourceInputs["slotCount"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(CapacityCommitment.__pulumiType, name, inputs, opts);
+        super(CapacityCommitment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

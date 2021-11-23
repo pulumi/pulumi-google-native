@@ -72,31 +72,31 @@ export class Queue extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: QueueArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["appEngineRoutingOverride"] = args ? args.appEngineRoutingOverride : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["rateLimits"] = args ? args.rateLimits : undefined;
-            inputs["retryConfig"] = args ? args.retryConfig : undefined;
-            inputs["stackdriverLoggingConfig"] = args ? args.stackdriverLoggingConfig : undefined;
-            inputs["purgeTime"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["appEngineRoutingOverride"] = args ? args.appEngineRoutingOverride : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["rateLimits"] = args ? args.rateLimits : undefined;
+            resourceInputs["retryConfig"] = args ? args.retryConfig : undefined;
+            resourceInputs["stackdriverLoggingConfig"] = args ? args.stackdriverLoggingConfig : undefined;
+            resourceInputs["purgeTime"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
-            inputs["appEngineRoutingOverride"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["purgeTime"] = undefined /*out*/;
-            inputs["rateLimits"] = undefined /*out*/;
-            inputs["retryConfig"] = undefined /*out*/;
-            inputs["stackdriverLoggingConfig"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["appEngineRoutingOverride"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["purgeTime"] = undefined /*out*/;
+            resourceInputs["rateLimits"] = undefined /*out*/;
+            resourceInputs["retryConfig"] = undefined /*out*/;
+            resourceInputs["stackdriverLoggingConfig"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Queue.__pulumiType, name, inputs, opts);
+        super(Queue.__pulumiType, name, resourceInputs, opts);
     }
 }
 

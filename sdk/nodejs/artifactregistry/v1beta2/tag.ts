@@ -51,7 +51,7 @@ export class Tag extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: TagArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.packageId === undefined) && !opts.urn) {
@@ -60,21 +60,21 @@ export class Tag extends pulumi.CustomResource {
             if ((!args || args.repositoryId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'repositoryId'");
             }
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["packageId"] = args ? args.packageId : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["repositoryId"] = args ? args.repositoryId : undefined;
-            inputs["tagId"] = args ? args.tagId : undefined;
-            inputs["version"] = args ? args.version : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["packageId"] = args ? args.packageId : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["repositoryId"] = args ? args.repositoryId : undefined;
+            resourceInputs["tagId"] = args ? args.tagId : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
         } else {
-            inputs["name"] = undefined /*out*/;
-            inputs["version"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["version"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Tag.__pulumiType, name, inputs, opts);
+        super(Tag.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -65,25 +65,25 @@ export class AndroidApp extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: AndroidAppArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["appId"] = args ? args.appId : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["packageName"] = args ? args.packageName : undefined;
-            inputs["project"] = args ? args.project : undefined;
+            resourceInputs["appId"] = args ? args.appId : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["packageName"] = args ? args.packageName : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
         } else {
-            inputs["appId"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["packageName"] = undefined /*out*/;
-            inputs["project"] = undefined /*out*/;
+            resourceInputs["appId"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["packageName"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AndroidApp.__pulumiType, name, inputs, opts);
+        super(AndroidApp.__pulumiType, name, resourceInputs, opts);
     }
 }
 

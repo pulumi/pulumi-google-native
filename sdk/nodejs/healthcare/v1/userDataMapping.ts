@@ -68,7 +68,7 @@ export class UserDataMapping extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: UserDataMappingArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.consentStoreId === undefined) && !opts.urn) {
@@ -83,28 +83,28 @@ export class UserDataMapping extends pulumi.CustomResource {
             if ((!args || args.userId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            inputs["consentStoreId"] = args ? args.consentStoreId : undefined;
-            inputs["dataId"] = args ? args.dataId : undefined;
-            inputs["datasetId"] = args ? args.datasetId : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["resourceAttributes"] = args ? args.resourceAttributes : undefined;
-            inputs["userId"] = args ? args.userId : undefined;
-            inputs["archiveTime"] = undefined /*out*/;
-            inputs["archived"] = undefined /*out*/;
+            resourceInputs["consentStoreId"] = args ? args.consentStoreId : undefined;
+            resourceInputs["dataId"] = args ? args.dataId : undefined;
+            resourceInputs["datasetId"] = args ? args.datasetId : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["resourceAttributes"] = args ? args.resourceAttributes : undefined;
+            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["archiveTime"] = undefined /*out*/;
+            resourceInputs["archived"] = undefined /*out*/;
         } else {
-            inputs["archiveTime"] = undefined /*out*/;
-            inputs["archived"] = undefined /*out*/;
-            inputs["dataId"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["resourceAttributes"] = undefined /*out*/;
-            inputs["userId"] = undefined /*out*/;
+            resourceInputs["archiveTime"] = undefined /*out*/;
+            resourceInputs["archived"] = undefined /*out*/;
+            resourceInputs["dataId"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["resourceAttributes"] = undefined /*out*/;
+            resourceInputs["userId"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(UserDataMapping.__pulumiType, name, inputs, opts);
+        super(UserDataMapping.__pulumiType, name, resourceInputs, opts);
     }
 }
 

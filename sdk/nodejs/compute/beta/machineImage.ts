@@ -100,48 +100,48 @@ export class MachineImage extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: MachineImageArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.sourceInstance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceInstance'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["guestFlush"] = args ? args.guestFlush : undefined;
-            inputs["machineImageEncryptionKey"] = args ? args.machineImageEncryptionKey : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["sourceDiskEncryptionKeys"] = args ? args.sourceDiskEncryptionKeys : undefined;
-            inputs["sourceInstance"] = args ? args.sourceInstance : undefined;
-            inputs["storageLocations"] = args ? args.storageLocations : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["satisfiesPzs"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["sourceInstanceProperties"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["totalStorageBytes"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["guestFlush"] = args ? args.guestFlush : undefined;
+            resourceInputs["machineImageEncryptionKey"] = args ? args.machineImageEncryptionKey : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["sourceDiskEncryptionKeys"] = args ? args.sourceDiskEncryptionKeys : undefined;
+            resourceInputs["sourceInstance"] = args ? args.sourceInstance : undefined;
+            resourceInputs["storageLocations"] = args ? args.storageLocations : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["sourceInstanceProperties"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["totalStorageBytes"] = undefined /*out*/;
         } else {
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["guestFlush"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["machineImageEncryptionKey"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["satisfiesPzs"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["sourceDiskEncryptionKeys"] = undefined /*out*/;
-            inputs["sourceInstance"] = undefined /*out*/;
-            inputs["sourceInstanceProperties"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["storageLocations"] = undefined /*out*/;
-            inputs["totalStorageBytes"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["guestFlush"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["machineImageEncryptionKey"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["sourceDiskEncryptionKeys"] = undefined /*out*/;
+            resourceInputs["sourceInstance"] = undefined /*out*/;
+            resourceInputs["sourceInstanceProperties"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["storageLocations"] = undefined /*out*/;
+            resourceInputs["totalStorageBytes"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(MachineImage.__pulumiType, name, inputs, opts);
+        super(MachineImage.__pulumiType, name, resourceInputs, opts);
     }
 }
 

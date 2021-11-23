@@ -92,44 +92,44 @@ export class Router extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: RouterArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["bgp"] = args ? args.bgp : undefined;
-            inputs["bgpPeers"] = args ? args.bgpPeers : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["encryptedInterconnectRouter"] = args ? args.encryptedInterconnectRouter : undefined;
-            inputs["interfaces"] = args ? args.interfaces : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["nats"] = args ? args.nats : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["bgp"] = args ? args.bgp : undefined;
+            resourceInputs["bgpPeers"] = args ? args.bgpPeers : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["encryptedInterconnectRouter"] = args ? args.encryptedInterconnectRouter : undefined;
+            resourceInputs["interfaces"] = args ? args.interfaces : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nats"] = args ? args.nats : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         } else {
-            inputs["bgp"] = undefined /*out*/;
-            inputs["bgpPeers"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["encryptedInterconnectRouter"] = undefined /*out*/;
-            inputs["interfaces"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["nats"] = undefined /*out*/;
-            inputs["network"] = undefined /*out*/;
-            inputs["region"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["bgp"] = undefined /*out*/;
+            resourceInputs["bgpPeers"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["encryptedInterconnectRouter"] = undefined /*out*/;
+            resourceInputs["interfaces"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["nats"] = undefined /*out*/;
+            resourceInputs["network"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Router.__pulumiType, name, inputs, opts);
+        super(Router.__pulumiType, name, resourceInputs, opts);
     }
 }
 

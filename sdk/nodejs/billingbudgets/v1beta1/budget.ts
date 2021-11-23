@@ -73,7 +73,7 @@ export class Budget extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: BudgetArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.amount === undefined) && !opts.urn) {
@@ -82,27 +82,27 @@ export class Budget extends pulumi.CustomResource {
             if ((!args || args.billingAccountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'billingAccountId'");
             }
-            inputs["allUpdatesRule"] = args ? args.allUpdatesRule : undefined;
-            inputs["amount"] = args ? args.amount : undefined;
-            inputs["billingAccountId"] = args ? args.billingAccountId : undefined;
-            inputs["budgetFilter"] = args ? args.budgetFilter : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["thresholdRules"] = args ? args.thresholdRules : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["allUpdatesRule"] = args ? args.allUpdatesRule : undefined;
+            resourceInputs["amount"] = args ? args.amount : undefined;
+            resourceInputs["billingAccountId"] = args ? args.billingAccountId : undefined;
+            resourceInputs["budgetFilter"] = args ? args.budgetFilter : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["thresholdRules"] = args ? args.thresholdRules : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         } else {
-            inputs["allUpdatesRule"] = undefined /*out*/;
-            inputs["amount"] = undefined /*out*/;
-            inputs["budgetFilter"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["thresholdRules"] = undefined /*out*/;
+            resourceInputs["allUpdatesRule"] = undefined /*out*/;
+            resourceInputs["amount"] = undefined /*out*/;
+            resourceInputs["budgetFilter"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["thresholdRules"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Budget.__pulumiType, name, inputs, opts);
+        super(Budget.__pulumiType, name, resourceInputs, opts);
     }
 }
 

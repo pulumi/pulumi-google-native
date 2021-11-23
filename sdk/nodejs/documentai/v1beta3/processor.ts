@@ -76,33 +76,33 @@ export class Processor extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: ProcessorArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["defaultProcessorVersion"] = args ? args.defaultProcessorVersion : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["name"] = undefined /*out*/;
-            inputs["processEndpoint"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["createTime"] = args ? args.createTime : undefined;
+            resourceInputs["defaultProcessorVersion"] = args ? args.defaultProcessorVersion : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["processEndpoint"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["defaultProcessorVersion"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["kmsKeyName"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["processEndpoint"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["defaultProcessorVersion"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["kmsKeyName"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["processEndpoint"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Processor.__pulumiType, name, inputs, opts);
+        super(Processor.__pulumiType, name, resourceInputs, opts);
     }
 }
 

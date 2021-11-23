@@ -81,7 +81,7 @@ export class WorkflowTemplate extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: WorkflowTemplateArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.id === undefined) && !opts.urn) {
@@ -93,33 +93,33 @@ export class WorkflowTemplate extends pulumi.CustomResource {
             if ((!args || args.placement === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'placement'");
             }
-            inputs["dagTimeout"] = args ? args.dagTimeout : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["jobs"] = args ? args.jobs : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["parameters"] = args ? args.parameters : undefined;
-            inputs["placement"] = args ? args.placement : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["version"] = args ? args.version : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["dagTimeout"] = args ? args.dagTimeout : undefined;
+            resourceInputs["id"] = args ? args.id : undefined;
+            resourceInputs["jobs"] = args ? args.jobs : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["parameters"] = args ? args.parameters : undefined;
+            resourceInputs["placement"] = args ? args.placement : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["dagTimeout"] = undefined /*out*/;
-            inputs["jobs"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["parameters"] = undefined /*out*/;
-            inputs["placement"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
-            inputs["version"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["dagTimeout"] = undefined /*out*/;
+            resourceInputs["jobs"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["parameters"] = undefined /*out*/;
+            resourceInputs["placement"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["version"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(WorkflowTemplate.__pulumiType, name, inputs, opts);
+        super(WorkflowTemplate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

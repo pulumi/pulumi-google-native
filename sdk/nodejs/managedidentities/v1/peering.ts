@@ -76,7 +76,7 @@ export class Peering extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: PeeringArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.authorizedNetwork === undefined) && !opts.urn) {
@@ -88,30 +88,30 @@ export class Peering extends pulumi.CustomResource {
             if ((!args || args.peeringId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'peeringId'");
             }
-            inputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
-            inputs["domainResource"] = args ? args.domainResource : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["peeringId"] = args ? args.peeringId : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["statusMessage"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
+            resourceInputs["domainResource"] = args ? args.domainResource : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["peeringId"] = args ? args.peeringId : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["statusMessage"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["authorizedNetwork"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["domainResource"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["statusMessage"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["authorizedNetwork"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["domainResource"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["statusMessage"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Peering.__pulumiType, name, inputs, opts);
+        super(Peering.__pulumiType, name, resourceInputs, opts);
     }
 }
 

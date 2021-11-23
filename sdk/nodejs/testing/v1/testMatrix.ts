@@ -99,7 +99,7 @@ export class TestMatrix extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: TestMatrixArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.environmentMatrix === undefined) && !opts.urn) {
@@ -111,39 +111,39 @@ export class TestMatrix extends pulumi.CustomResource {
             if ((!args || args.testSpecification === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'testSpecification'");
             }
-            inputs["clientInfo"] = args ? args.clientInfo : undefined;
-            inputs["environmentMatrix"] = args ? args.environmentMatrix : undefined;
-            inputs["failFast"] = args ? args.failFast : undefined;
-            inputs["flakyTestAttempts"] = args ? args.flakyTestAttempts : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["resultStorage"] = args ? args.resultStorage : undefined;
-            inputs["testSpecification"] = args ? args.testSpecification : undefined;
-            inputs["invalidMatrixDetails"] = undefined /*out*/;
-            inputs["outcomeSummary"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["testExecutions"] = undefined /*out*/;
-            inputs["testMatrixId"] = undefined /*out*/;
-            inputs["timestamp"] = undefined /*out*/;
+            resourceInputs["clientInfo"] = args ? args.clientInfo : undefined;
+            resourceInputs["environmentMatrix"] = args ? args.environmentMatrix : undefined;
+            resourceInputs["failFast"] = args ? args.failFast : undefined;
+            resourceInputs["flakyTestAttempts"] = args ? args.flakyTestAttempts : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["resultStorage"] = args ? args.resultStorage : undefined;
+            resourceInputs["testSpecification"] = args ? args.testSpecification : undefined;
+            resourceInputs["invalidMatrixDetails"] = undefined /*out*/;
+            resourceInputs["outcomeSummary"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["testExecutions"] = undefined /*out*/;
+            resourceInputs["testMatrixId"] = undefined /*out*/;
+            resourceInputs["timestamp"] = undefined /*out*/;
         } else {
-            inputs["clientInfo"] = undefined /*out*/;
-            inputs["environmentMatrix"] = undefined /*out*/;
-            inputs["failFast"] = undefined /*out*/;
-            inputs["flakyTestAttempts"] = undefined /*out*/;
-            inputs["invalidMatrixDetails"] = undefined /*out*/;
-            inputs["outcomeSummary"] = undefined /*out*/;
-            inputs["project"] = undefined /*out*/;
-            inputs["resultStorage"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["testExecutions"] = undefined /*out*/;
-            inputs["testMatrixId"] = undefined /*out*/;
-            inputs["testSpecification"] = undefined /*out*/;
-            inputs["timestamp"] = undefined /*out*/;
+            resourceInputs["clientInfo"] = undefined /*out*/;
+            resourceInputs["environmentMatrix"] = undefined /*out*/;
+            resourceInputs["failFast"] = undefined /*out*/;
+            resourceInputs["flakyTestAttempts"] = undefined /*out*/;
+            resourceInputs["invalidMatrixDetails"] = undefined /*out*/;
+            resourceInputs["outcomeSummary"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["resultStorage"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["testExecutions"] = undefined /*out*/;
+            resourceInputs["testMatrixId"] = undefined /*out*/;
+            resourceInputs["testSpecification"] = undefined /*out*/;
+            resourceInputs["timestamp"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(TestMatrix.__pulumiType, name, inputs, opts);
+        super(TestMatrix.__pulumiType, name, resourceInputs, opts);
     }
 }
 

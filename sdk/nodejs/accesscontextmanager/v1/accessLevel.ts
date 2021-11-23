@@ -64,29 +64,29 @@ export class AccessLevel extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: AccessLevelArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.accessPolicyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accessPolicyId'");
             }
-            inputs["accessPolicyId"] = args ? args.accessPolicyId : undefined;
-            inputs["basic"] = args ? args.basic : undefined;
-            inputs["custom"] = args ? args.custom : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["title"] = args ? args.title : undefined;
+            resourceInputs["accessPolicyId"] = args ? args.accessPolicyId : undefined;
+            resourceInputs["basic"] = args ? args.basic : undefined;
+            resourceInputs["custom"] = args ? args.custom : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["title"] = args ? args.title : undefined;
         } else {
-            inputs["basic"] = undefined /*out*/;
-            inputs["custom"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["title"] = undefined /*out*/;
+            resourceInputs["basic"] = undefined /*out*/;
+            resourceInputs["custom"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["title"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AccessLevel.__pulumiType, name, inputs, opts);
+        super(AccessLevel.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -88,7 +88,7 @@ export class EndpointPolicy extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: EndpointPolicyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.endpointMatcher === undefined) && !opts.urn) {
@@ -100,37 +100,37 @@ export class EndpointPolicy extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["authorizationPolicy"] = args ? args.authorizationPolicy : undefined;
-            inputs["clientTlsPolicy"] = args ? args.clientTlsPolicy : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["endpointMatcher"] = args ? args.endpointMatcher : undefined;
-            inputs["endpointPolicyId"] = args ? args.endpointPolicyId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["serverTlsPolicy"] = args ? args.serverTlsPolicy : undefined;
-            inputs["trafficPortSelector"] = args ? args.trafficPortSelector : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["authorizationPolicy"] = args ? args.authorizationPolicy : undefined;
+            resourceInputs["clientTlsPolicy"] = args ? args.clientTlsPolicy : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["endpointMatcher"] = args ? args.endpointMatcher : undefined;
+            resourceInputs["endpointPolicyId"] = args ? args.endpointPolicyId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["serverTlsPolicy"] = args ? args.serverTlsPolicy : undefined;
+            resourceInputs["trafficPortSelector"] = args ? args.trafficPortSelector : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["authorizationPolicy"] = undefined /*out*/;
-            inputs["clientTlsPolicy"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["endpointMatcher"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["serverTlsPolicy"] = undefined /*out*/;
-            inputs["trafficPortSelector"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["authorizationPolicy"] = undefined /*out*/;
+            resourceInputs["clientTlsPolicy"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["endpointMatcher"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["serverTlsPolicy"] = undefined /*out*/;
+            resourceInputs["trafficPortSelector"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(EndpointPolicy.__pulumiType, name, inputs, opts);
+        super(EndpointPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

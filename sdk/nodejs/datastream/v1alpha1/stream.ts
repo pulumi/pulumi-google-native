@@ -93,7 +93,7 @@ export class Stream extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: StreamArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.destinationConfig === undefined) && !opts.urn) {
@@ -108,42 +108,42 @@ export class Stream extends pulumi.CustomResource {
             if ((!args || args.streamId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'streamId'");
             }
-            inputs["backfillAll"] = args ? args.backfillAll : undefined;
-            inputs["backfillNone"] = args ? args.backfillNone : undefined;
-            inputs["customerManagedEncryptionKey"] = args ? args.customerManagedEncryptionKey : undefined;
-            inputs["destinationConfig"] = args ? args.destinationConfig : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["force"] = args ? args.force : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["sourceConfig"] = args ? args.sourceConfig : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["streamId"] = args ? args.streamId : undefined;
-            inputs["validateOnly"] = args ? args.validateOnly : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["errors"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["backfillAll"] = args ? args.backfillAll : undefined;
+            resourceInputs["backfillNone"] = args ? args.backfillNone : undefined;
+            resourceInputs["customerManagedEncryptionKey"] = args ? args.customerManagedEncryptionKey : undefined;
+            resourceInputs["destinationConfig"] = args ? args.destinationConfig : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["force"] = args ? args.force : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["sourceConfig"] = args ? args.sourceConfig : undefined;
+            resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["streamId"] = args ? args.streamId : undefined;
+            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["errors"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["backfillAll"] = undefined /*out*/;
-            inputs["backfillNone"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["customerManagedEncryptionKey"] = undefined /*out*/;
-            inputs["destinationConfig"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["errors"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["sourceConfig"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["backfillAll"] = undefined /*out*/;
+            resourceInputs["backfillNone"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["customerManagedEncryptionKey"] = undefined /*out*/;
+            resourceInputs["destinationConfig"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["errors"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["sourceConfig"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Stream.__pulumiType, name, inputs, opts);
+        super(Stream.__pulumiType, name, resourceInputs, opts);
     }
 }
 

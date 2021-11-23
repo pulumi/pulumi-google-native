@@ -62,7 +62,7 @@ export class OrganizationSourceIamPolicy extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: OrganizationSourceIamPolicyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
@@ -71,23 +71,23 @@ export class OrganizationSourceIamPolicy extends pulumi.CustomResource {
             if ((!args || args.sourceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceId'");
             }
-            inputs["auditConfigs"] = args ? args.auditConfigs : undefined;
-            inputs["bindings"] = args ? args.bindings : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["sourceId"] = args ? args.sourceId : undefined;
-            inputs["updateMask"] = args ? args.updateMask : undefined;
-            inputs["version"] = args ? args.version : undefined;
+            resourceInputs["auditConfigs"] = args ? args.auditConfigs : undefined;
+            resourceInputs["bindings"] = args ? args.bindings : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["sourceId"] = args ? args.sourceId : undefined;
+            resourceInputs["updateMask"] = args ? args.updateMask : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
         } else {
-            inputs["auditConfigs"] = undefined /*out*/;
-            inputs["bindings"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["version"] = undefined /*out*/;
+            resourceInputs["auditConfigs"] = undefined /*out*/;
+            resourceInputs["bindings"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["version"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(OrganizationSourceIamPolicy.__pulumiType, name, inputs, opts);
+        super(OrganizationSourceIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

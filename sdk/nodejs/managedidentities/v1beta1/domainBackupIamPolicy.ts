@@ -58,7 +58,7 @@ export class DomainBackupIamPolicy extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: DomainBackupIamPolicyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.backupId === undefined) && !opts.urn) {
@@ -67,21 +67,21 @@ export class DomainBackupIamPolicy extends pulumi.CustomResource {
             if ((!args || args.domainId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'domainId'");
             }
-            inputs["backupId"] = args ? args.backupId : undefined;
-            inputs["bindings"] = args ? args.bindings : undefined;
-            inputs["domainId"] = args ? args.domainId : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["version"] = args ? args.version : undefined;
+            resourceInputs["backupId"] = args ? args.backupId : undefined;
+            resourceInputs["bindings"] = args ? args.bindings : undefined;
+            resourceInputs["domainId"] = args ? args.domainId : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
         } else {
-            inputs["bindings"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["version"] = undefined /*out*/;
+            resourceInputs["bindings"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["version"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(DomainBackupIamPolicy.__pulumiType, name, inputs, opts);
+        super(DomainBackupIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

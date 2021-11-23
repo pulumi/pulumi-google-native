@@ -125,62 +125,62 @@ export class Intent extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: IntentArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            inputs["action"] = args ? args.action : undefined;
-            inputs["defaultResponsePlatforms"] = args ? args.defaultResponsePlatforms : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["endInteraction"] = args ? args.endInteraction : undefined;
-            inputs["events"] = args ? args.events : undefined;
-            inputs["inputContextNames"] = args ? args.inputContextNames : undefined;
-            inputs["intentView"] = args ? args.intentView : undefined;
-            inputs["isFallback"] = args ? args.isFallback : undefined;
-            inputs["languageCode"] = args ? args.languageCode : undefined;
-            inputs["liveAgentHandoff"] = args ? args.liveAgentHandoff : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["messages"] = args ? args.messages : undefined;
-            inputs["mlDisabled"] = args ? args.mlDisabled : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["outputContexts"] = args ? args.outputContexts : undefined;
-            inputs["parameters"] = args ? args.parameters : undefined;
-            inputs["parentFollowupIntentName"] = args ? args.parentFollowupIntentName : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["resetContexts"] = args ? args.resetContexts : undefined;
-            inputs["trainingPhrases"] = args ? args.trainingPhrases : undefined;
-            inputs["webhookState"] = args ? args.webhookState : undefined;
-            inputs["followupIntentInfo"] = undefined /*out*/;
-            inputs["rootFollowupIntentName"] = undefined /*out*/;
+            resourceInputs["action"] = args ? args.action : undefined;
+            resourceInputs["defaultResponsePlatforms"] = args ? args.defaultResponsePlatforms : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["endInteraction"] = args ? args.endInteraction : undefined;
+            resourceInputs["events"] = args ? args.events : undefined;
+            resourceInputs["inputContextNames"] = args ? args.inputContextNames : undefined;
+            resourceInputs["intentView"] = args ? args.intentView : undefined;
+            resourceInputs["isFallback"] = args ? args.isFallback : undefined;
+            resourceInputs["languageCode"] = args ? args.languageCode : undefined;
+            resourceInputs["liveAgentHandoff"] = args ? args.liveAgentHandoff : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["messages"] = args ? args.messages : undefined;
+            resourceInputs["mlDisabled"] = args ? args.mlDisabled : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["outputContexts"] = args ? args.outputContexts : undefined;
+            resourceInputs["parameters"] = args ? args.parameters : undefined;
+            resourceInputs["parentFollowupIntentName"] = args ? args.parentFollowupIntentName : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["resetContexts"] = args ? args.resetContexts : undefined;
+            resourceInputs["trainingPhrases"] = args ? args.trainingPhrases : undefined;
+            resourceInputs["webhookState"] = args ? args.webhookState : undefined;
+            resourceInputs["followupIntentInfo"] = undefined /*out*/;
+            resourceInputs["rootFollowupIntentName"] = undefined /*out*/;
         } else {
-            inputs["action"] = undefined /*out*/;
-            inputs["defaultResponsePlatforms"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["endInteraction"] = undefined /*out*/;
-            inputs["events"] = undefined /*out*/;
-            inputs["followupIntentInfo"] = undefined /*out*/;
-            inputs["inputContextNames"] = undefined /*out*/;
-            inputs["isFallback"] = undefined /*out*/;
-            inputs["liveAgentHandoff"] = undefined /*out*/;
-            inputs["messages"] = undefined /*out*/;
-            inputs["mlDisabled"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["outputContexts"] = undefined /*out*/;
-            inputs["parameters"] = undefined /*out*/;
-            inputs["parentFollowupIntentName"] = undefined /*out*/;
-            inputs["priority"] = undefined /*out*/;
-            inputs["resetContexts"] = undefined /*out*/;
-            inputs["rootFollowupIntentName"] = undefined /*out*/;
-            inputs["trainingPhrases"] = undefined /*out*/;
-            inputs["webhookState"] = undefined /*out*/;
+            resourceInputs["action"] = undefined /*out*/;
+            resourceInputs["defaultResponsePlatforms"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["endInteraction"] = undefined /*out*/;
+            resourceInputs["events"] = undefined /*out*/;
+            resourceInputs["followupIntentInfo"] = undefined /*out*/;
+            resourceInputs["inputContextNames"] = undefined /*out*/;
+            resourceInputs["isFallback"] = undefined /*out*/;
+            resourceInputs["liveAgentHandoff"] = undefined /*out*/;
+            resourceInputs["messages"] = undefined /*out*/;
+            resourceInputs["mlDisabled"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["outputContexts"] = undefined /*out*/;
+            resourceInputs["parameters"] = undefined /*out*/;
+            resourceInputs["parentFollowupIntentName"] = undefined /*out*/;
+            resourceInputs["priority"] = undefined /*out*/;
+            resourceInputs["resetContexts"] = undefined /*out*/;
+            resourceInputs["rootFollowupIntentName"] = undefined /*out*/;
+            resourceInputs["trainingPhrases"] = undefined /*out*/;
+            resourceInputs["webhookState"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Intent.__pulumiType, name, inputs, opts);
+        super(Intent.__pulumiType, name, resourceInputs, opts);
     }
 }
 

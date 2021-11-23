@@ -127,62 +127,62 @@ export class VpnTunnel extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: VpnTunnelArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["ikeVersion"] = args ? args.ikeVersion : undefined;
-            inputs["localTrafficSelector"] = args ? args.localTrafficSelector : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["peerExternalGateway"] = args ? args.peerExternalGateway : undefined;
-            inputs["peerExternalGatewayInterface"] = args ? args.peerExternalGatewayInterface : undefined;
-            inputs["peerGcpGateway"] = args ? args.peerGcpGateway : undefined;
-            inputs["peerIp"] = args ? args.peerIp : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["remoteTrafficSelector"] = args ? args.remoteTrafficSelector : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["router"] = args ? args.router : undefined;
-            inputs["sharedSecret"] = args ? args.sharedSecret : undefined;
-            inputs["sharedSecretHash"] = args ? args.sharedSecretHash : undefined;
-            inputs["targetVpnGateway"] = args ? args.targetVpnGateway : undefined;
-            inputs["vpnGateway"] = args ? args.vpnGateway : undefined;
-            inputs["vpnGatewayInterface"] = args ? args.vpnGatewayInterface : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["detailedStatus"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["ikeVersion"] = args ? args.ikeVersion : undefined;
+            resourceInputs["localTrafficSelector"] = args ? args.localTrafficSelector : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["peerExternalGateway"] = args ? args.peerExternalGateway : undefined;
+            resourceInputs["peerExternalGatewayInterface"] = args ? args.peerExternalGatewayInterface : undefined;
+            resourceInputs["peerGcpGateway"] = args ? args.peerGcpGateway : undefined;
+            resourceInputs["peerIp"] = args ? args.peerIp : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["remoteTrafficSelector"] = args ? args.remoteTrafficSelector : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["router"] = args ? args.router : undefined;
+            resourceInputs["sharedSecret"] = args ? args.sharedSecret : undefined;
+            resourceInputs["sharedSecretHash"] = args ? args.sharedSecretHash : undefined;
+            resourceInputs["targetVpnGateway"] = args ? args.targetVpnGateway : undefined;
+            resourceInputs["vpnGateway"] = args ? args.vpnGateway : undefined;
+            resourceInputs["vpnGatewayInterface"] = args ? args.vpnGatewayInterface : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["detailedStatus"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         } else {
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["detailedStatus"] = undefined /*out*/;
-            inputs["ikeVersion"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["localTrafficSelector"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["peerExternalGateway"] = undefined /*out*/;
-            inputs["peerExternalGatewayInterface"] = undefined /*out*/;
-            inputs["peerGcpGateway"] = undefined /*out*/;
-            inputs["peerIp"] = undefined /*out*/;
-            inputs["region"] = undefined /*out*/;
-            inputs["remoteTrafficSelector"] = undefined /*out*/;
-            inputs["router"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["sharedSecret"] = undefined /*out*/;
-            inputs["sharedSecretHash"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["targetVpnGateway"] = undefined /*out*/;
-            inputs["vpnGateway"] = undefined /*out*/;
-            inputs["vpnGatewayInterface"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["detailedStatus"] = undefined /*out*/;
+            resourceInputs["ikeVersion"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["localTrafficSelector"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["peerExternalGateway"] = undefined /*out*/;
+            resourceInputs["peerExternalGatewayInterface"] = undefined /*out*/;
+            resourceInputs["peerGcpGateway"] = undefined /*out*/;
+            resourceInputs["peerIp"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["remoteTrafficSelector"] = undefined /*out*/;
+            resourceInputs["router"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["sharedSecret"] = undefined /*out*/;
+            resourceInputs["sharedSecretHash"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["targetVpnGateway"] = undefined /*out*/;
+            resourceInputs["vpnGateway"] = undefined /*out*/;
+            resourceInputs["vpnGatewayInterface"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(VpnTunnel.__pulumiType, name, inputs, opts);
+        super(VpnTunnel.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -172,7 +172,7 @@ export class Product extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ProductArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.branchId === undefined) && !opts.urn) {
@@ -187,82 +187,82 @@ export class Product extends pulumi.CustomResource {
             if ((!args || args.title === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
-            inputs["attributes"] = args ? args.attributes : undefined;
-            inputs["audience"] = args ? args.audience : undefined;
-            inputs["availability"] = args ? args.availability : undefined;
-            inputs["availableQuantity"] = args ? args.availableQuantity : undefined;
-            inputs["availableTime"] = args ? args.availableTime : undefined;
-            inputs["branchId"] = args ? args.branchId : undefined;
-            inputs["brands"] = args ? args.brands : undefined;
-            inputs["catalogId"] = args ? args.catalogId : undefined;
-            inputs["categories"] = args ? args.categories : undefined;
-            inputs["collectionMemberIds"] = args ? args.collectionMemberIds : undefined;
-            inputs["colorInfo"] = args ? args.colorInfo : undefined;
-            inputs["conditions"] = args ? args.conditions : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["expireTime"] = args ? args.expireTime : undefined;
-            inputs["fulfillmentInfo"] = args ? args.fulfillmentInfo : undefined;
-            inputs["gtin"] = args ? args.gtin : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["images"] = args ? args.images : undefined;
-            inputs["languageCode"] = args ? args.languageCode : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["materials"] = args ? args.materials : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["patterns"] = args ? args.patterns : undefined;
-            inputs["priceInfo"] = args ? args.priceInfo : undefined;
-            inputs["primaryProductId"] = args ? args.primaryProductId : undefined;
-            inputs["productId"] = args ? args.productId : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["promotions"] = args ? args.promotions : undefined;
-            inputs["publishTime"] = args ? args.publishTime : undefined;
-            inputs["rating"] = args ? args.rating : undefined;
-            inputs["retrievableFields"] = args ? args.retrievableFields : undefined;
-            inputs["sizes"] = args ? args.sizes : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["title"] = args ? args.title : undefined;
-            inputs["ttl"] = args ? args.ttl : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["uri"] = args ? args.uri : undefined;
-            inputs["variants"] = undefined /*out*/;
+            resourceInputs["attributes"] = args ? args.attributes : undefined;
+            resourceInputs["audience"] = args ? args.audience : undefined;
+            resourceInputs["availability"] = args ? args.availability : undefined;
+            resourceInputs["availableQuantity"] = args ? args.availableQuantity : undefined;
+            resourceInputs["availableTime"] = args ? args.availableTime : undefined;
+            resourceInputs["branchId"] = args ? args.branchId : undefined;
+            resourceInputs["brands"] = args ? args.brands : undefined;
+            resourceInputs["catalogId"] = args ? args.catalogId : undefined;
+            resourceInputs["categories"] = args ? args.categories : undefined;
+            resourceInputs["collectionMemberIds"] = args ? args.collectionMemberIds : undefined;
+            resourceInputs["colorInfo"] = args ? args.colorInfo : undefined;
+            resourceInputs["conditions"] = args ? args.conditions : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["expireTime"] = args ? args.expireTime : undefined;
+            resourceInputs["fulfillmentInfo"] = args ? args.fulfillmentInfo : undefined;
+            resourceInputs["gtin"] = args ? args.gtin : undefined;
+            resourceInputs["id"] = args ? args.id : undefined;
+            resourceInputs["images"] = args ? args.images : undefined;
+            resourceInputs["languageCode"] = args ? args.languageCode : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["materials"] = args ? args.materials : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["patterns"] = args ? args.patterns : undefined;
+            resourceInputs["priceInfo"] = args ? args.priceInfo : undefined;
+            resourceInputs["primaryProductId"] = args ? args.primaryProductId : undefined;
+            resourceInputs["productId"] = args ? args.productId : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["promotions"] = args ? args.promotions : undefined;
+            resourceInputs["publishTime"] = args ? args.publishTime : undefined;
+            resourceInputs["rating"] = args ? args.rating : undefined;
+            resourceInputs["retrievableFields"] = args ? args.retrievableFields : undefined;
+            resourceInputs["sizes"] = args ? args.sizes : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["title"] = args ? args.title : undefined;
+            resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["uri"] = args ? args.uri : undefined;
+            resourceInputs["variants"] = undefined /*out*/;
         } else {
-            inputs["attributes"] = undefined /*out*/;
-            inputs["audience"] = undefined /*out*/;
-            inputs["availability"] = undefined /*out*/;
-            inputs["availableQuantity"] = undefined /*out*/;
-            inputs["availableTime"] = undefined /*out*/;
-            inputs["brands"] = undefined /*out*/;
-            inputs["categories"] = undefined /*out*/;
-            inputs["collectionMemberIds"] = undefined /*out*/;
-            inputs["colorInfo"] = undefined /*out*/;
-            inputs["conditions"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["expireTime"] = undefined /*out*/;
-            inputs["fulfillmentInfo"] = undefined /*out*/;
-            inputs["gtin"] = undefined /*out*/;
-            inputs["images"] = undefined /*out*/;
-            inputs["languageCode"] = undefined /*out*/;
-            inputs["materials"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["patterns"] = undefined /*out*/;
-            inputs["priceInfo"] = undefined /*out*/;
-            inputs["primaryProductId"] = undefined /*out*/;
-            inputs["promotions"] = undefined /*out*/;
-            inputs["publishTime"] = undefined /*out*/;
-            inputs["rating"] = undefined /*out*/;
-            inputs["retrievableFields"] = undefined /*out*/;
-            inputs["sizes"] = undefined /*out*/;
-            inputs["tags"] = undefined /*out*/;
-            inputs["title"] = undefined /*out*/;
-            inputs["ttl"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
-            inputs["uri"] = undefined /*out*/;
-            inputs["variants"] = undefined /*out*/;
+            resourceInputs["attributes"] = undefined /*out*/;
+            resourceInputs["audience"] = undefined /*out*/;
+            resourceInputs["availability"] = undefined /*out*/;
+            resourceInputs["availableQuantity"] = undefined /*out*/;
+            resourceInputs["availableTime"] = undefined /*out*/;
+            resourceInputs["brands"] = undefined /*out*/;
+            resourceInputs["categories"] = undefined /*out*/;
+            resourceInputs["collectionMemberIds"] = undefined /*out*/;
+            resourceInputs["colorInfo"] = undefined /*out*/;
+            resourceInputs["conditions"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["expireTime"] = undefined /*out*/;
+            resourceInputs["fulfillmentInfo"] = undefined /*out*/;
+            resourceInputs["gtin"] = undefined /*out*/;
+            resourceInputs["images"] = undefined /*out*/;
+            resourceInputs["languageCode"] = undefined /*out*/;
+            resourceInputs["materials"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["patterns"] = undefined /*out*/;
+            resourceInputs["priceInfo"] = undefined /*out*/;
+            resourceInputs["primaryProductId"] = undefined /*out*/;
+            resourceInputs["promotions"] = undefined /*out*/;
+            resourceInputs["publishTime"] = undefined /*out*/;
+            resourceInputs["rating"] = undefined /*out*/;
+            resourceInputs["retrievableFields"] = undefined /*out*/;
+            resourceInputs["sizes"] = undefined /*out*/;
+            resourceInputs["tags"] = undefined /*out*/;
+            resourceInputs["title"] = undefined /*out*/;
+            resourceInputs["ttl"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["uri"] = undefined /*out*/;
+            resourceInputs["variants"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Product.__pulumiType, name, inputs, opts);
+        super(Product.__pulumiType, name, resourceInputs, opts);
     }
 }
 

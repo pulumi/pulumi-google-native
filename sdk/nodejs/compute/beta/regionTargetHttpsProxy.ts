@@ -108,52 +108,52 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: RegionTargetHttpsProxyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["authorizationPolicy"] = args ? args.authorizationPolicy : undefined;
-            inputs["certificateMap"] = args ? args.certificateMap : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["httpFilters"] = args ? args.httpFilters : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["proxyBind"] = args ? args.proxyBind : undefined;
-            inputs["quicOverride"] = args ? args.quicOverride : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["serverTlsPolicy"] = args ? args.serverTlsPolicy : undefined;
-            inputs["sslCertificates"] = args ? args.sslCertificates : undefined;
-            inputs["sslPolicy"] = args ? args.sslPolicy : undefined;
-            inputs["urlMap"] = args ? args.urlMap : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["authorizationPolicy"] = args ? args.authorizationPolicy : undefined;
+            resourceInputs["certificateMap"] = args ? args.certificateMap : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["httpFilters"] = args ? args.httpFilters : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["proxyBind"] = args ? args.proxyBind : undefined;
+            resourceInputs["quicOverride"] = args ? args.quicOverride : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["serverTlsPolicy"] = args ? args.serverTlsPolicy : undefined;
+            resourceInputs["sslCertificates"] = args ? args.sslCertificates : undefined;
+            resourceInputs["sslPolicy"] = args ? args.sslPolicy : undefined;
+            resourceInputs["urlMap"] = args ? args.urlMap : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         } else {
-            inputs["authorizationPolicy"] = undefined /*out*/;
-            inputs["certificateMap"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["httpFilters"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["proxyBind"] = undefined /*out*/;
-            inputs["quicOverride"] = undefined /*out*/;
-            inputs["region"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["serverTlsPolicy"] = undefined /*out*/;
-            inputs["sslCertificates"] = undefined /*out*/;
-            inputs["sslPolicy"] = undefined /*out*/;
-            inputs["urlMap"] = undefined /*out*/;
+            resourceInputs["authorizationPolicy"] = undefined /*out*/;
+            resourceInputs["certificateMap"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["httpFilters"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["proxyBind"] = undefined /*out*/;
+            resourceInputs["quicOverride"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["serverTlsPolicy"] = undefined /*out*/;
+            resourceInputs["sslCertificates"] = undefined /*out*/;
+            resourceInputs["sslPolicy"] = undefined /*out*/;
+            resourceInputs["urlMap"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(RegionTargetHttpsProxy.__pulumiType, name, inputs, opts);
+        super(RegionTargetHttpsProxy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

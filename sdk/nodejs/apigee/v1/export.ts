@@ -82,7 +82,7 @@ export class Export extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ExportArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.datastoreName === undefined) && !opts.urn) {
@@ -97,35 +97,35 @@ export class Export extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            inputs["csvDelimiter"] = args ? args.csvDelimiter : undefined;
-            inputs["datastoreName"] = args ? args.datastoreName : undefined;
-            inputs["dateRange"] = args ? args.dateRange : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["environmentId"] = args ? args.environmentId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["outputFormat"] = args ? args.outputFormat : undefined;
-            inputs["created"] = undefined /*out*/;
-            inputs["error"] = undefined /*out*/;
-            inputs["executionTime"] = undefined /*out*/;
-            inputs["self"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["updated"] = undefined /*out*/;
+            resourceInputs["csvDelimiter"] = args ? args.csvDelimiter : undefined;
+            resourceInputs["datastoreName"] = args ? args.datastoreName : undefined;
+            resourceInputs["dateRange"] = args ? args.dateRange : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["environmentId"] = args ? args.environmentId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["outputFormat"] = args ? args.outputFormat : undefined;
+            resourceInputs["created"] = undefined /*out*/;
+            resourceInputs["error"] = undefined /*out*/;
+            resourceInputs["executionTime"] = undefined /*out*/;
+            resourceInputs["self"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["updated"] = undefined /*out*/;
         } else {
-            inputs["created"] = undefined /*out*/;
-            inputs["datastoreName"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["error"] = undefined /*out*/;
-            inputs["executionTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["self"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["updated"] = undefined /*out*/;
+            resourceInputs["created"] = undefined /*out*/;
+            resourceInputs["datastoreName"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["error"] = undefined /*out*/;
+            resourceInputs["executionTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["self"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["updated"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Export.__pulumiType, name, inputs, opts);
+        super(Export.__pulumiType, name, resourceInputs, opts);
     }
 }
 

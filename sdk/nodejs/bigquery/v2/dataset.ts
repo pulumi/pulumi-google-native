@@ -110,50 +110,50 @@ export class Dataset extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: DatasetArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["access"] = args ? args.access : undefined;
-            inputs["datasetReference"] = args ? args.datasetReference : undefined;
-            inputs["defaultEncryptionConfiguration"] = args ? args.defaultEncryptionConfiguration : undefined;
-            inputs["defaultPartitionExpirationMs"] = args ? args.defaultPartitionExpirationMs : undefined;
-            inputs["defaultTableExpirationMs"] = args ? args.defaultTableExpirationMs : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["friendlyName"] = args ? args.friendlyName : undefined;
-            inputs["isCaseInsensitive"] = args ? args.isCaseInsensitive : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["creationTime"] = undefined /*out*/;
-            inputs["defaultCollation"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["lastModifiedTime"] = undefined /*out*/;
-            inputs["satisfiesPZS"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["access"] = args ? args.access : undefined;
+            resourceInputs["datasetReference"] = args ? args.datasetReference : undefined;
+            resourceInputs["defaultEncryptionConfiguration"] = args ? args.defaultEncryptionConfiguration : undefined;
+            resourceInputs["defaultPartitionExpirationMs"] = args ? args.defaultPartitionExpirationMs : undefined;
+            resourceInputs["defaultTableExpirationMs"] = args ? args.defaultTableExpirationMs : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["friendlyName"] = args ? args.friendlyName : undefined;
+            resourceInputs["isCaseInsensitive"] = args ? args.isCaseInsensitive : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["creationTime"] = undefined /*out*/;
+            resourceInputs["defaultCollation"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["lastModifiedTime"] = undefined /*out*/;
+            resourceInputs["satisfiesPZS"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         } else {
-            inputs["access"] = undefined /*out*/;
-            inputs["creationTime"] = undefined /*out*/;
-            inputs["datasetReference"] = undefined /*out*/;
-            inputs["defaultCollation"] = undefined /*out*/;
-            inputs["defaultEncryptionConfiguration"] = undefined /*out*/;
-            inputs["defaultPartitionExpirationMs"] = undefined /*out*/;
-            inputs["defaultTableExpirationMs"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["friendlyName"] = undefined /*out*/;
-            inputs["isCaseInsensitive"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["lastModifiedTime"] = undefined /*out*/;
-            inputs["location"] = undefined /*out*/;
-            inputs["satisfiesPZS"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["access"] = undefined /*out*/;
+            resourceInputs["creationTime"] = undefined /*out*/;
+            resourceInputs["datasetReference"] = undefined /*out*/;
+            resourceInputs["defaultCollation"] = undefined /*out*/;
+            resourceInputs["defaultEncryptionConfiguration"] = undefined /*out*/;
+            resourceInputs["defaultPartitionExpirationMs"] = undefined /*out*/;
+            resourceInputs["defaultTableExpirationMs"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["friendlyName"] = undefined /*out*/;
+            resourceInputs["isCaseInsensitive"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["lastModifiedTime"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["satisfiesPZS"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Dataset.__pulumiType, name, inputs, opts);
+        super(Dataset.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -70,7 +70,7 @@ export class Subscription extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: SubscriptionArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.developerId === undefined) && !opts.urn) {
@@ -79,26 +79,26 @@ export class Subscription extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            inputs["apiproduct"] = args ? args.apiproduct : undefined;
-            inputs["developerId"] = args ? args.developerId : undefined;
-            inputs["endTime"] = args ? args.endTime : undefined;
-            inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["startTime"] = args ? args.startTime : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["lastModifiedAt"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["apiproduct"] = args ? args.apiproduct : undefined;
+            resourceInputs["developerId"] = args ? args.developerId : undefined;
+            resourceInputs["endTime"] = args ? args.endTime : undefined;
+            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["startTime"] = args ? args.startTime : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["lastModifiedAt"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         } else {
-            inputs["apiproduct"] = undefined /*out*/;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["endTime"] = undefined /*out*/;
-            inputs["lastModifiedAt"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["startTime"] = undefined /*out*/;
+            resourceInputs["apiproduct"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["lastModifiedAt"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["startTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Subscription.__pulumiType, name, inputs, opts);
+        super(Subscription.__pulumiType, name, resourceInputs, opts);
     }
 }
 

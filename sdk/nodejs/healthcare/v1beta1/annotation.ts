@@ -68,7 +68,7 @@ export class Annotation extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: AnnotationArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.annotationStoreId === undefined) && !opts.urn) {
@@ -77,28 +77,28 @@ export class Annotation extends pulumi.CustomResource {
             if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            inputs["annotationSource"] = args ? args.annotationSource : undefined;
-            inputs["annotationStoreId"] = args ? args.annotationStoreId : undefined;
-            inputs["customData"] = args ? args.customData : undefined;
-            inputs["datasetId"] = args ? args.datasetId : undefined;
-            inputs["imageAnnotation"] = args ? args.imageAnnotation : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["resourceAnnotation"] = args ? args.resourceAnnotation : undefined;
-            inputs["textAnnotation"] = args ? args.textAnnotation : undefined;
+            resourceInputs["annotationSource"] = args ? args.annotationSource : undefined;
+            resourceInputs["annotationStoreId"] = args ? args.annotationStoreId : undefined;
+            resourceInputs["customData"] = args ? args.customData : undefined;
+            resourceInputs["datasetId"] = args ? args.datasetId : undefined;
+            resourceInputs["imageAnnotation"] = args ? args.imageAnnotation : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["resourceAnnotation"] = args ? args.resourceAnnotation : undefined;
+            resourceInputs["textAnnotation"] = args ? args.textAnnotation : undefined;
         } else {
-            inputs["annotationSource"] = undefined /*out*/;
-            inputs["customData"] = undefined /*out*/;
-            inputs["imageAnnotation"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["resourceAnnotation"] = undefined /*out*/;
-            inputs["textAnnotation"] = undefined /*out*/;
+            resourceInputs["annotationSource"] = undefined /*out*/;
+            resourceInputs["customData"] = undefined /*out*/;
+            resourceInputs["imageAnnotation"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["resourceAnnotation"] = undefined /*out*/;
+            resourceInputs["textAnnotation"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Annotation.__pulumiType, name, inputs, opts);
+        super(Annotation.__pulumiType, name, resourceInputs, opts);
     }
 }
 

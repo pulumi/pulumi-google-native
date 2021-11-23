@@ -72,7 +72,7 @@ export class Cluster extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ClusterArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.clusterId === undefined) && !opts.urn) {
@@ -84,29 +84,29 @@ export class Cluster extends pulumi.CustomResource {
             if ((!args || args.serveNodes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serveNodes'");
             }
-            inputs["clusterConfig"] = args ? args.clusterConfig : undefined;
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["defaultStorageType"] = args ? args.defaultStorageType : undefined;
-            inputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["serveNodes"] = args ? args.serveNodes : undefined;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["clusterConfig"] = args ? args.clusterConfig : undefined;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["defaultStorageType"] = args ? args.defaultStorageType : undefined;
+            resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["serveNodes"] = args ? args.serveNodes : undefined;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
-            inputs["clusterConfig"] = undefined /*out*/;
-            inputs["defaultStorageType"] = undefined /*out*/;
-            inputs["encryptionConfig"] = undefined /*out*/;
-            inputs["location"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["serveNodes"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["clusterConfig"] = undefined /*out*/;
+            resourceInputs["defaultStorageType"] = undefined /*out*/;
+            resourceInputs["encryptionConfig"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["serveNodes"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Cluster.__pulumiType, name, inputs, opts);
+        super(Cluster.__pulumiType, name, resourceInputs, opts);
     }
 }
 

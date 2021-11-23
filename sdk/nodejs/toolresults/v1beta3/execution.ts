@@ -79,37 +79,37 @@ export class Execution extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ExecutionArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.historyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'historyId'");
             }
-            inputs["completionTime"] = args ? args.completionTime : undefined;
-            inputs["creationTime"] = args ? args.creationTime : undefined;
-            inputs["dimensionDefinitions"] = args ? args.dimensionDefinitions : undefined;
-            inputs["executionId"] = args ? args.executionId : undefined;
-            inputs["historyId"] = args ? args.historyId : undefined;
-            inputs["outcome"] = args ? args.outcome : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["specification"] = args ? args.specification : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["testExecutionMatrixId"] = args ? args.testExecutionMatrixId : undefined;
+            resourceInputs["completionTime"] = args ? args.completionTime : undefined;
+            resourceInputs["creationTime"] = args ? args.creationTime : undefined;
+            resourceInputs["dimensionDefinitions"] = args ? args.dimensionDefinitions : undefined;
+            resourceInputs["executionId"] = args ? args.executionId : undefined;
+            resourceInputs["historyId"] = args ? args.historyId : undefined;
+            resourceInputs["outcome"] = args ? args.outcome : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["specification"] = args ? args.specification : undefined;
+            resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["testExecutionMatrixId"] = args ? args.testExecutionMatrixId : undefined;
         } else {
-            inputs["completionTime"] = undefined /*out*/;
-            inputs["creationTime"] = undefined /*out*/;
-            inputs["dimensionDefinitions"] = undefined /*out*/;
-            inputs["executionId"] = undefined /*out*/;
-            inputs["outcome"] = undefined /*out*/;
-            inputs["specification"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["testExecutionMatrixId"] = undefined /*out*/;
+            resourceInputs["completionTime"] = undefined /*out*/;
+            resourceInputs["creationTime"] = undefined /*out*/;
+            resourceInputs["dimensionDefinitions"] = undefined /*out*/;
+            resourceInputs["executionId"] = undefined /*out*/;
+            resourceInputs["outcome"] = undefined /*out*/;
+            resourceInputs["specification"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["testExecutionMatrixId"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Execution.__pulumiType, name, inputs, opts);
+        super(Execution.__pulumiType, name, resourceInputs, opts);
     }
 }
 

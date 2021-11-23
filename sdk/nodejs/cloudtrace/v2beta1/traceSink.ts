@@ -56,25 +56,25 @@ export class TraceSink extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: TraceSinkArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.outputConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'outputConfig'");
             }
-            inputs["name"] = args ? args.name : undefined;
-            inputs["outputConfig"] = args ? args.outputConfig : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["writerIdentity"] = undefined /*out*/;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["outputConfig"] = args ? args.outputConfig : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["writerIdentity"] = undefined /*out*/;
         } else {
-            inputs["name"] = undefined /*out*/;
-            inputs["outputConfig"] = undefined /*out*/;
-            inputs["writerIdentity"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["outputConfig"] = undefined /*out*/;
+            resourceInputs["writerIdentity"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(TraceSink.__pulumiType, name, inputs, opts);
+        super(TraceSink.__pulumiType, name, resourceInputs, opts);
     }
 }
 

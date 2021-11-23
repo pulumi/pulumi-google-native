@@ -106,7 +106,7 @@ export class Step extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: StepArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.executionId === undefined) && !opts.urn) {
@@ -115,46 +115,46 @@ export class Step extends pulumi.CustomResource {
             if ((!args || args.historyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'historyId'");
             }
-            inputs["completionTime"] = args ? args.completionTime : undefined;
-            inputs["creationTime"] = args ? args.creationTime : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["deviceUsageDuration"] = args ? args.deviceUsageDuration : undefined;
-            inputs["dimensionValue"] = args ? args.dimensionValue : undefined;
-            inputs["executionId"] = args ? args.executionId : undefined;
-            inputs["hasImages"] = args ? args.hasImages : undefined;
-            inputs["historyId"] = args ? args.historyId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["multiStep"] = args ? args.multiStep : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["outcome"] = args ? args.outcome : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["runDuration"] = args ? args.runDuration : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["stepId"] = args ? args.stepId : undefined;
-            inputs["testExecutionStep"] = args ? args.testExecutionStep : undefined;
-            inputs["toolExecutionStep"] = args ? args.toolExecutionStep : undefined;
+            resourceInputs["completionTime"] = args ? args.completionTime : undefined;
+            resourceInputs["creationTime"] = args ? args.creationTime : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["deviceUsageDuration"] = args ? args.deviceUsageDuration : undefined;
+            resourceInputs["dimensionValue"] = args ? args.dimensionValue : undefined;
+            resourceInputs["executionId"] = args ? args.executionId : undefined;
+            resourceInputs["hasImages"] = args ? args.hasImages : undefined;
+            resourceInputs["historyId"] = args ? args.historyId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["multiStep"] = args ? args.multiStep : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["outcome"] = args ? args.outcome : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["runDuration"] = args ? args.runDuration : undefined;
+            resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["stepId"] = args ? args.stepId : undefined;
+            resourceInputs["testExecutionStep"] = args ? args.testExecutionStep : undefined;
+            resourceInputs["toolExecutionStep"] = args ? args.toolExecutionStep : undefined;
         } else {
-            inputs["completionTime"] = undefined /*out*/;
-            inputs["creationTime"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["deviceUsageDuration"] = undefined /*out*/;
-            inputs["dimensionValue"] = undefined /*out*/;
-            inputs["hasImages"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["multiStep"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["outcome"] = undefined /*out*/;
-            inputs["runDuration"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["stepId"] = undefined /*out*/;
-            inputs["testExecutionStep"] = undefined /*out*/;
-            inputs["toolExecutionStep"] = undefined /*out*/;
+            resourceInputs["completionTime"] = undefined /*out*/;
+            resourceInputs["creationTime"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["deviceUsageDuration"] = undefined /*out*/;
+            resourceInputs["dimensionValue"] = undefined /*out*/;
+            resourceInputs["hasImages"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["multiStep"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["outcome"] = undefined /*out*/;
+            resourceInputs["runDuration"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stepId"] = undefined /*out*/;
+            resourceInputs["testExecutionStep"] = undefined /*out*/;
+            resourceInputs["toolExecutionStep"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Step.__pulumiType, name, inputs, opts);
+        super(Step.__pulumiType, name, resourceInputs, opts);
     }
 }
 

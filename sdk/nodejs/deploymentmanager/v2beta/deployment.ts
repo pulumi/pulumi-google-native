@@ -88,41 +88,41 @@ export class Deployment extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: DeploymentArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["createPolicy"] = args ? args.createPolicy : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["preview"] = args ? args.preview : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["target"] = args ? args.target : undefined;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["insertTime"] = undefined /*out*/;
-            inputs["manifest"] = undefined /*out*/;
-            inputs["operation"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["update"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["createPolicy"] = args ? args.createPolicy : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["id"] = args ? args.id : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["preview"] = args ? args.preview : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["target"] = args ? args.target : undefined;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["insertTime"] = undefined /*out*/;
+            resourceInputs["manifest"] = undefined /*out*/;
+            resourceInputs["operation"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["update"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["description"] = undefined /*out*/;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["insertTime"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["manifest"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["operation"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["target"] = undefined /*out*/;
-            inputs["update"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["insertTime"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["manifest"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["operation"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["target"] = undefined /*out*/;
+            resourceInputs["update"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Deployment.__pulumiType, name, inputs, opts);
+        super(Deployment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

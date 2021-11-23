@@ -144,67 +144,67 @@ export class Snapshot extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: SnapshotArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["chainName"] = args ? args.chainName : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["guestFlush"] = args ? args.guestFlush : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["locationHint"] = args ? args.locationHint : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["snapshotEncryptionKey"] = args ? args.snapshotEncryptionKey : undefined;
-            inputs["sourceDisk"] = args ? args.sourceDisk : undefined;
-            inputs["sourceDiskEncryptionKey"] = args ? args.sourceDiskEncryptionKey : undefined;
-            inputs["storageLocations"] = args ? args.storageLocations : undefined;
-            inputs["autoCreated"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["diskSizeGb"] = undefined /*out*/;
-            inputs["downloadBytes"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["labelFingerprint"] = undefined /*out*/;
-            inputs["licenseCodes"] = undefined /*out*/;
-            inputs["licenses"] = undefined /*out*/;
-            inputs["satisfiesPzs"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["sourceDiskId"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["storageBytes"] = undefined /*out*/;
-            inputs["storageBytesStatus"] = undefined /*out*/;
-            inputs["userLicenses"] = undefined /*out*/;
+            resourceInputs["chainName"] = args ? args.chainName : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["guestFlush"] = args ? args.guestFlush : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["locationHint"] = args ? args.locationHint : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["snapshotEncryptionKey"] = args ? args.snapshotEncryptionKey : undefined;
+            resourceInputs["sourceDisk"] = args ? args.sourceDisk : undefined;
+            resourceInputs["sourceDiskEncryptionKey"] = args ? args.sourceDiskEncryptionKey : undefined;
+            resourceInputs["storageLocations"] = args ? args.storageLocations : undefined;
+            resourceInputs["autoCreated"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["diskSizeGb"] = undefined /*out*/;
+            resourceInputs["downloadBytes"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["labelFingerprint"] = undefined /*out*/;
+            resourceInputs["licenseCodes"] = undefined /*out*/;
+            resourceInputs["licenses"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["sourceDiskId"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["storageBytes"] = undefined /*out*/;
+            resourceInputs["storageBytesStatus"] = undefined /*out*/;
+            resourceInputs["userLicenses"] = undefined /*out*/;
         } else {
-            inputs["autoCreated"] = undefined /*out*/;
-            inputs["chainName"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["diskSizeGb"] = undefined /*out*/;
-            inputs["downloadBytes"] = undefined /*out*/;
-            inputs["guestFlush"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["labelFingerprint"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["licenseCodes"] = undefined /*out*/;
-            inputs["licenses"] = undefined /*out*/;
-            inputs["locationHint"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["satisfiesPzs"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["snapshotEncryptionKey"] = undefined /*out*/;
-            inputs["sourceDisk"] = undefined /*out*/;
-            inputs["sourceDiskEncryptionKey"] = undefined /*out*/;
-            inputs["sourceDiskId"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["storageBytes"] = undefined /*out*/;
-            inputs["storageBytesStatus"] = undefined /*out*/;
-            inputs["storageLocations"] = undefined /*out*/;
-            inputs["userLicenses"] = undefined /*out*/;
+            resourceInputs["autoCreated"] = undefined /*out*/;
+            resourceInputs["chainName"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["diskSizeGb"] = undefined /*out*/;
+            resourceInputs["downloadBytes"] = undefined /*out*/;
+            resourceInputs["guestFlush"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["labelFingerprint"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["licenseCodes"] = undefined /*out*/;
+            resourceInputs["licenses"] = undefined /*out*/;
+            resourceInputs["locationHint"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["snapshotEncryptionKey"] = undefined /*out*/;
+            resourceInputs["sourceDisk"] = undefined /*out*/;
+            resourceInputs["sourceDiskEncryptionKey"] = undefined /*out*/;
+            resourceInputs["sourceDiskId"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["storageBytes"] = undefined /*out*/;
+            resourceInputs["storageBytesStatus"] = undefined /*out*/;
+            resourceInputs["storageLocations"] = undefined /*out*/;
+            resourceInputs["userLicenses"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Snapshot.__pulumiType, name, inputs, opts);
+        super(Snapshot.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -84,37 +84,37 @@ export class Queue extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: QueueArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["appEngineHttpTarget"] = args ? args.appEngineHttpTarget : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["pullTarget"] = args ? args.pullTarget : undefined;
-            inputs["rateLimits"] = args ? args.rateLimits : undefined;
-            inputs["retryConfig"] = args ? args.retryConfig : undefined;
-            inputs["taskTtl"] = args ? args.taskTtl : undefined;
-            inputs["tombstoneTtl"] = args ? args.tombstoneTtl : undefined;
-            inputs["purgeTime"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["stats"] = undefined /*out*/;
+            resourceInputs["appEngineHttpTarget"] = args ? args.appEngineHttpTarget : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["pullTarget"] = args ? args.pullTarget : undefined;
+            resourceInputs["rateLimits"] = args ? args.rateLimits : undefined;
+            resourceInputs["retryConfig"] = args ? args.retryConfig : undefined;
+            resourceInputs["taskTtl"] = args ? args.taskTtl : undefined;
+            resourceInputs["tombstoneTtl"] = args ? args.tombstoneTtl : undefined;
+            resourceInputs["purgeTime"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stats"] = undefined /*out*/;
         } else {
-            inputs["appEngineHttpTarget"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["pullTarget"] = undefined /*out*/;
-            inputs["purgeTime"] = undefined /*out*/;
-            inputs["rateLimits"] = undefined /*out*/;
-            inputs["retryConfig"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["stats"] = undefined /*out*/;
-            inputs["taskTtl"] = undefined /*out*/;
-            inputs["tombstoneTtl"] = undefined /*out*/;
+            resourceInputs["appEngineHttpTarget"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pullTarget"] = undefined /*out*/;
+            resourceInputs["purgeTime"] = undefined /*out*/;
+            resourceInputs["rateLimits"] = undefined /*out*/;
+            resourceInputs["retryConfig"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stats"] = undefined /*out*/;
+            resourceInputs["taskTtl"] = undefined /*out*/;
+            resourceInputs["tombstoneTtl"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Queue.__pulumiType, name, inputs, opts);
+        super(Queue.__pulumiType, name, resourceInputs, opts);
     }
 }
 

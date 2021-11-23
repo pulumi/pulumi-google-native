@@ -96,7 +96,7 @@ export class App extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: AppArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.developerId === undefined) && !opts.urn) {
@@ -105,39 +105,39 @@ export class App extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            inputs["apiProducts"] = args ? args.apiProducts : undefined;
-            inputs["appFamily"] = args ? args.appFamily : undefined;
-            inputs["appId"] = args ? args.appId : undefined;
-            inputs["attributes"] = args ? args.attributes : undefined;
-            inputs["callbackUrl"] = args ? args.callbackUrl : undefined;
-            inputs["developerId"] = args ? args.developerId : undefined;
-            inputs["keyExpiresIn"] = args ? args.keyExpiresIn : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["scopes"] = args ? args.scopes : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["credentials"] = undefined /*out*/;
-            inputs["lastModifiedAt"] = undefined /*out*/;
+            resourceInputs["apiProducts"] = args ? args.apiProducts : undefined;
+            resourceInputs["appFamily"] = args ? args.appFamily : undefined;
+            resourceInputs["appId"] = args ? args.appId : undefined;
+            resourceInputs["attributes"] = args ? args.attributes : undefined;
+            resourceInputs["callbackUrl"] = args ? args.callbackUrl : undefined;
+            resourceInputs["developerId"] = args ? args.developerId : undefined;
+            resourceInputs["keyExpiresIn"] = args ? args.keyExpiresIn : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["scopes"] = args ? args.scopes : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["credentials"] = undefined /*out*/;
+            resourceInputs["lastModifiedAt"] = undefined /*out*/;
         } else {
-            inputs["apiProducts"] = undefined /*out*/;
-            inputs["appFamily"] = undefined /*out*/;
-            inputs["appId"] = undefined /*out*/;
-            inputs["attributes"] = undefined /*out*/;
-            inputs["callbackUrl"] = undefined /*out*/;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["credentials"] = undefined /*out*/;
-            inputs["developerId"] = undefined /*out*/;
-            inputs["keyExpiresIn"] = undefined /*out*/;
-            inputs["lastModifiedAt"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["scopes"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["apiProducts"] = undefined /*out*/;
+            resourceInputs["appFamily"] = undefined /*out*/;
+            resourceInputs["appId"] = undefined /*out*/;
+            resourceInputs["attributes"] = undefined /*out*/;
+            resourceInputs["callbackUrl"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["credentials"] = undefined /*out*/;
+            resourceInputs["developerId"] = undefined /*out*/;
+            resourceInputs["keyExpiresIn"] = undefined /*out*/;
+            resourceInputs["lastModifiedAt"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["scopes"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(App.__pulumiType, name, inputs, opts);
+        super(App.__pulumiType, name, resourceInputs, opts);
     }
 }
 

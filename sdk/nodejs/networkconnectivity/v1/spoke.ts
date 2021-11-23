@@ -88,44 +88,44 @@ export class Spoke extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: SpokeArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.spokeId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'spokeId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["hub"] = args ? args.hub : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["linkedInterconnectAttachments"] = args ? args.linkedInterconnectAttachments : undefined;
-            inputs["linkedRouterApplianceInstances"] = args ? args.linkedRouterApplianceInstances : undefined;
-            inputs["linkedVpnTunnels"] = args ? args.linkedVpnTunnels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["spokeId"] = args ? args.spokeId : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["uniqueId"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["hub"] = args ? args.hub : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["linkedInterconnectAttachments"] = args ? args.linkedInterconnectAttachments : undefined;
+            resourceInputs["linkedRouterApplianceInstances"] = args ? args.linkedRouterApplianceInstances : undefined;
+            resourceInputs["linkedVpnTunnels"] = args ? args.linkedVpnTunnels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["spokeId"] = args ? args.spokeId : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["uniqueId"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["hub"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["linkedInterconnectAttachments"] = undefined /*out*/;
-            inputs["linkedRouterApplianceInstances"] = undefined /*out*/;
-            inputs["linkedVpnTunnels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["uniqueId"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["hub"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["linkedInterconnectAttachments"] = undefined /*out*/;
+            resourceInputs["linkedRouterApplianceInstances"] = undefined /*out*/;
+            resourceInputs["linkedVpnTunnels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["uniqueId"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Spoke.__pulumiType, name, inputs, opts);
+        super(Spoke.__pulumiType, name, resourceInputs, opts);
     }
 }
 

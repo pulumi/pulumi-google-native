@@ -108,49 +108,49 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: GlobalNetworkEndpointGroupArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["appEngine"] = args ? args.appEngine : undefined;
-            inputs["cloudFunction"] = args ? args.cloudFunction : undefined;
-            inputs["cloudRun"] = args ? args.cloudRun : undefined;
-            inputs["defaultPort"] = args ? args.defaultPort : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["networkEndpointType"] = args ? args.networkEndpointType : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["subnetwork"] = args ? args.subnetwork : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["region"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["size"] = undefined /*out*/;
-            inputs["zone"] = undefined /*out*/;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["appEngine"] = args ? args.appEngine : undefined;
+            resourceInputs["cloudFunction"] = args ? args.cloudFunction : undefined;
+            resourceInputs["cloudRun"] = args ? args.cloudRun : undefined;
+            resourceInputs["defaultPort"] = args ? args.defaultPort : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["networkEndpointType"] = args ? args.networkEndpointType : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["size"] = undefined /*out*/;
+            resourceInputs["zone"] = undefined /*out*/;
         } else {
-            inputs["annotations"] = undefined /*out*/;
-            inputs["appEngine"] = undefined /*out*/;
-            inputs["cloudFunction"] = undefined /*out*/;
-            inputs["cloudRun"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["defaultPort"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["network"] = undefined /*out*/;
-            inputs["networkEndpointType"] = undefined /*out*/;
-            inputs["region"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["size"] = undefined /*out*/;
-            inputs["subnetwork"] = undefined /*out*/;
-            inputs["zone"] = undefined /*out*/;
+            resourceInputs["annotations"] = undefined /*out*/;
+            resourceInputs["appEngine"] = undefined /*out*/;
+            resourceInputs["cloudFunction"] = undefined /*out*/;
+            resourceInputs["cloudRun"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["defaultPort"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["network"] = undefined /*out*/;
+            resourceInputs["networkEndpointType"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["size"] = undefined /*out*/;
+            resourceInputs["subnetwork"] = undefined /*out*/;
+            resourceInputs["zone"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(GlobalNetworkEndpointGroup.__pulumiType, name, inputs, opts);
+        super(GlobalNetworkEndpointGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

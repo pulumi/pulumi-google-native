@@ -73,29 +73,29 @@ export class IosApp extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: IosAppArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["appId"] = args ? args.appId : undefined;
-            inputs["appStoreId"] = args ? args.appStoreId : undefined;
-            inputs["bundleId"] = args ? args.bundleId : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["teamId"] = args ? args.teamId : undefined;
+            resourceInputs["appId"] = args ? args.appId : undefined;
+            resourceInputs["appStoreId"] = args ? args.appStoreId : undefined;
+            resourceInputs["bundleId"] = args ? args.bundleId : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["teamId"] = args ? args.teamId : undefined;
         } else {
-            inputs["appId"] = undefined /*out*/;
-            inputs["appStoreId"] = undefined /*out*/;
-            inputs["bundleId"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["project"] = undefined /*out*/;
-            inputs["teamId"] = undefined /*out*/;
+            resourceInputs["appId"] = undefined /*out*/;
+            resourceInputs["appStoreId"] = undefined /*out*/;
+            resourceInputs["bundleId"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["teamId"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(IosApp.__pulumiType, name, inputs, opts);
+        super(IosApp.__pulumiType, name, resourceInputs, opts);
     }
 }
 

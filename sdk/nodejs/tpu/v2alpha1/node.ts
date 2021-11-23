@@ -121,7 +121,7 @@ export class Node extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: NodeArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.acceleratorType === undefined) && !opts.urn) {
@@ -130,53 +130,53 @@ export class Node extends pulumi.CustomResource {
             if ((!args || args.runtimeVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'runtimeVersion'");
             }
-            inputs["acceleratorType"] = args ? args.acceleratorType : undefined;
-            inputs["cidrBlock"] = args ? args.cidrBlock : undefined;
-            inputs["dataDisks"] = args ? args.dataDisks : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["health"] = args ? args.health : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["networkConfig"] = args ? args.networkConfig : undefined;
-            inputs["nodeId"] = args ? args.nodeId : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["runtimeVersion"] = args ? args.runtimeVersion : undefined;
-            inputs["schedulingConfig"] = args ? args.schedulingConfig : undefined;
-            inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["apiVersion"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["healthDescription"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["networkEndpoints"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["symptoms"] = undefined /*out*/;
+            resourceInputs["acceleratorType"] = args ? args.acceleratorType : undefined;
+            resourceInputs["cidrBlock"] = args ? args.cidrBlock : undefined;
+            resourceInputs["dataDisks"] = args ? args.dataDisks : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["health"] = args ? args.health : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
+            resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
+            resourceInputs["nodeId"] = args ? args.nodeId : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["runtimeVersion"] = args ? args.runtimeVersion : undefined;
+            resourceInputs["schedulingConfig"] = args ? args.schedulingConfig : undefined;
+            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["apiVersion"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["healthDescription"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["networkEndpoints"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["symptoms"] = undefined /*out*/;
         } else {
-            inputs["acceleratorType"] = undefined /*out*/;
-            inputs["apiVersion"] = undefined /*out*/;
-            inputs["cidrBlock"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["dataDisks"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["health"] = undefined /*out*/;
-            inputs["healthDescription"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["metadata"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["networkConfig"] = undefined /*out*/;
-            inputs["networkEndpoints"] = undefined /*out*/;
-            inputs["runtimeVersion"] = undefined /*out*/;
-            inputs["schedulingConfig"] = undefined /*out*/;
-            inputs["serviceAccount"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["symptoms"] = undefined /*out*/;
-            inputs["tags"] = undefined /*out*/;
+            resourceInputs["acceleratorType"] = undefined /*out*/;
+            resourceInputs["apiVersion"] = undefined /*out*/;
+            resourceInputs["cidrBlock"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["dataDisks"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["health"] = undefined /*out*/;
+            resourceInputs["healthDescription"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["metadata"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["networkConfig"] = undefined /*out*/;
+            resourceInputs["networkEndpoints"] = undefined /*out*/;
+            resourceInputs["runtimeVersion"] = undefined /*out*/;
+            resourceInputs["schedulingConfig"] = undefined /*out*/;
+            resourceInputs["serviceAccount"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["symptoms"] = undefined /*out*/;
+            resourceInputs["tags"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Node.__pulumiType, name, inputs, opts);
+        super(Node.__pulumiType, name, resourceInputs, opts);
     }
 }
 

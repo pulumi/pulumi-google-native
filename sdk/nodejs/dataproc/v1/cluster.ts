@@ -77,7 +77,7 @@ export class Cluster extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ClusterArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.clusterName === undefined) && !opts.urn) {
@@ -86,31 +86,31 @@ export class Cluster extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["actionOnFailedPrimaryWorkers"] = args ? args.actionOnFailedPrimaryWorkers : undefined;
-            inputs["clusterName"] = args ? args.clusterName : undefined;
-            inputs["config"] = args ? args.config : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["clusterUuid"] = undefined /*out*/;
-            inputs["metrics"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["statusHistory"] = undefined /*out*/;
+            resourceInputs["actionOnFailedPrimaryWorkers"] = args ? args.actionOnFailedPrimaryWorkers : undefined;
+            resourceInputs["clusterName"] = args ? args.clusterName : undefined;
+            resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["clusterUuid"] = undefined /*out*/;
+            resourceInputs["metrics"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["statusHistory"] = undefined /*out*/;
         } else {
-            inputs["clusterName"] = undefined /*out*/;
-            inputs["clusterUuid"] = undefined /*out*/;
-            inputs["config"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["metrics"] = undefined /*out*/;
-            inputs["project"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["statusHistory"] = undefined /*out*/;
+            resourceInputs["clusterName"] = undefined /*out*/;
+            resourceInputs["clusterUuid"] = undefined /*out*/;
+            resourceInputs["config"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["metrics"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["statusHistory"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Cluster.__pulumiType, name, inputs, opts);
+        super(Cluster.__pulumiType, name, resourceInputs, opts);
     }
 }
 

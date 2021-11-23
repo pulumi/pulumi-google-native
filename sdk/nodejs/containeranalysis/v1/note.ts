@@ -121,58 +121,58 @@ export class Note extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: NoteArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.noteId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'noteId'");
             }
-            inputs["attestation"] = args ? args.attestation : undefined;
-            inputs["build"] = args ? args.build : undefined;
-            inputs["compliance"] = args ? args.compliance : undefined;
-            inputs["deployment"] = args ? args.deployment : undefined;
-            inputs["discovery"] = args ? args.discovery : undefined;
-            inputs["dsseAttestation"] = args ? args.dsseAttestation : undefined;
-            inputs["expirationTime"] = args ? args.expirationTime : undefined;
-            inputs["image"] = args ? args.image : undefined;
-            inputs["longDescription"] = args ? args.longDescription : undefined;
-            inputs["noteId"] = args ? args.noteId : undefined;
-            inputs["package"] = args ? args.package : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["relatedNoteNames"] = args ? args.relatedNoteNames : undefined;
-            inputs["relatedUrl"] = args ? args.relatedUrl : undefined;
-            inputs["shortDescription"] = args ? args.shortDescription : undefined;
-            inputs["upgrade"] = args ? args.upgrade : undefined;
-            inputs["vulnerability"] = args ? args.vulnerability : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["attestation"] = args ? args.attestation : undefined;
+            resourceInputs["build"] = args ? args.build : undefined;
+            resourceInputs["compliance"] = args ? args.compliance : undefined;
+            resourceInputs["deployment"] = args ? args.deployment : undefined;
+            resourceInputs["discovery"] = args ? args.discovery : undefined;
+            resourceInputs["dsseAttestation"] = args ? args.dsseAttestation : undefined;
+            resourceInputs["expirationTime"] = args ? args.expirationTime : undefined;
+            resourceInputs["image"] = args ? args.image : undefined;
+            resourceInputs["longDescription"] = args ? args.longDescription : undefined;
+            resourceInputs["noteId"] = args ? args.noteId : undefined;
+            resourceInputs["package"] = args ? args.package : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["relatedNoteNames"] = args ? args.relatedNoteNames : undefined;
+            resourceInputs["relatedUrl"] = args ? args.relatedUrl : undefined;
+            resourceInputs["shortDescription"] = args ? args.shortDescription : undefined;
+            resourceInputs["upgrade"] = args ? args.upgrade : undefined;
+            resourceInputs["vulnerability"] = args ? args.vulnerability : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["attestation"] = undefined /*out*/;
-            inputs["build"] = undefined /*out*/;
-            inputs["compliance"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["deployment"] = undefined /*out*/;
-            inputs["discovery"] = undefined /*out*/;
-            inputs["dsseAttestation"] = undefined /*out*/;
-            inputs["expirationTime"] = undefined /*out*/;
-            inputs["image"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["longDescription"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["package"] = undefined /*out*/;
-            inputs["relatedNoteNames"] = undefined /*out*/;
-            inputs["relatedUrl"] = undefined /*out*/;
-            inputs["shortDescription"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
-            inputs["upgrade"] = undefined /*out*/;
-            inputs["vulnerability"] = undefined /*out*/;
+            resourceInputs["attestation"] = undefined /*out*/;
+            resourceInputs["build"] = undefined /*out*/;
+            resourceInputs["compliance"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deployment"] = undefined /*out*/;
+            resourceInputs["discovery"] = undefined /*out*/;
+            resourceInputs["dsseAttestation"] = undefined /*out*/;
+            resourceInputs["expirationTime"] = undefined /*out*/;
+            resourceInputs["image"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["longDescription"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["package"] = undefined /*out*/;
+            resourceInputs["relatedNoteNames"] = undefined /*out*/;
+            resourceInputs["relatedUrl"] = undefined /*out*/;
+            resourceInputs["shortDescription"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["upgrade"] = undefined /*out*/;
+            resourceInputs["vulnerability"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Note.__pulumiType, name, inputs, opts);
+        super(Note.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -68,7 +68,7 @@ export class Environment extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: EnvironmentArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.agentId === undefined) && !opts.urn) {
@@ -80,27 +80,27 @@ export class Environment extends pulumi.CustomResource {
             if ((!args || args.versionConfigs === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'versionConfigs'");
             }
-            inputs["agentId"] = args ? args.agentId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["testCasesConfig"] = args ? args.testCasesConfig : undefined;
-            inputs["versionConfigs"] = args ? args.versionConfigs : undefined;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["agentId"] = args ? args.agentId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["testCasesConfig"] = args ? args.testCasesConfig : undefined;
+            resourceInputs["versionConfigs"] = args ? args.versionConfigs : undefined;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["description"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["testCasesConfig"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
-            inputs["versionConfigs"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["testCasesConfig"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["versionConfigs"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Environment.__pulumiType, name, inputs, opts);
+        super(Environment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -57,7 +57,7 @@ export class Alias extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: AliasArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.environmentId === undefined) && !opts.urn) {
@@ -72,27 +72,27 @@ export class Alias extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            inputs["alias"] = args ? args.alias : undefined;
-            inputs["contentType"] = args ? args.contentType : undefined;
-            inputs["data"] = args ? args.data : undefined;
-            inputs["environmentId"] = args ? args.environmentId : undefined;
-            inputs["extensions"] = args ? args.extensions : undefined;
-            inputs["format"] = args ? args.format : undefined;
-            inputs["ignoreExpiryValidation"] = args ? args.ignoreExpiryValidation : undefined;
-            inputs["ignoreNewlineValidation"] = args ? args.ignoreNewlineValidation : undefined;
-            inputs["keystoreId"] = args ? args.keystoreId : undefined;
-            inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["certsInfo"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
+            resourceInputs["alias"] = args ? args.alias : undefined;
+            resourceInputs["contentType"] = args ? args.contentType : undefined;
+            resourceInputs["data"] = args ? args.data : undefined;
+            resourceInputs["environmentId"] = args ? args.environmentId : undefined;
+            resourceInputs["extensions"] = args ? args.extensions : undefined;
+            resourceInputs["format"] = args ? args.format : undefined;
+            resourceInputs["ignoreExpiryValidation"] = args ? args.ignoreExpiryValidation : undefined;
+            resourceInputs["ignoreNewlineValidation"] = args ? args.ignoreNewlineValidation : undefined;
+            resourceInputs["keystoreId"] = args ? args.keystoreId : undefined;
+            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["certsInfo"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         } else {
-            inputs["alias"] = undefined /*out*/;
-            inputs["certsInfo"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
+            resourceInputs["alias"] = undefined /*out*/;
+            resourceInputs["certsInfo"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Alias.__pulumiType, name, inputs, opts);
+        super(Alias.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -69,7 +69,7 @@ export class Domain extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: DomainArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.domainName === undefined) && !opts.urn) {
@@ -81,26 +81,26 @@ export class Domain extends pulumi.CustomResource {
             if ((!args || args.siteId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            inputs["domainName"] = args ? args.domainName : undefined;
-            inputs["domainRedirect"] = args ? args.domainRedirect : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["site"] = args ? args.site : undefined;
-            inputs["siteId"] = args ? args.siteId : undefined;
-            inputs["provisioning"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["domainName"] = args ? args.domainName : undefined;
+            resourceInputs["domainRedirect"] = args ? args.domainRedirect : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["site"] = args ? args.site : undefined;
+            resourceInputs["siteId"] = args ? args.siteId : undefined;
+            resourceInputs["provisioning"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["domainName"] = undefined /*out*/;
-            inputs["domainRedirect"] = undefined /*out*/;
-            inputs["provisioning"] = undefined /*out*/;
-            inputs["site"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["domainName"] = undefined /*out*/;
+            resourceInputs["domainRedirect"] = undefined /*out*/;
+            resourceInputs["provisioning"] = undefined /*out*/;
+            resourceInputs["site"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Domain.__pulumiType, name, inputs, opts);
+        super(Domain.__pulumiType, name, resourceInputs, opts);
     }
 }
 

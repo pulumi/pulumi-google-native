@@ -108,54 +108,54 @@ export class Device extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: DeviceArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.registryId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'registryId'");
             }
-            inputs["blocked"] = args ? args.blocked : undefined;
-            inputs["config"] = args ? args.config : undefined;
-            inputs["credentials"] = args ? args.credentials : undefined;
-            inputs["gatewayConfig"] = args ? args.gatewayConfig : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["logLevel"] = args ? args.logLevel : undefined;
-            inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["registryId"] = args ? args.registryId : undefined;
-            inputs["lastConfigAckTime"] = undefined /*out*/;
-            inputs["lastConfigSendTime"] = undefined /*out*/;
-            inputs["lastErrorStatus"] = undefined /*out*/;
-            inputs["lastErrorTime"] = undefined /*out*/;
-            inputs["lastEventTime"] = undefined /*out*/;
-            inputs["lastHeartbeatTime"] = undefined /*out*/;
-            inputs["lastStateTime"] = undefined /*out*/;
-            inputs["numId"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["blocked"] = args ? args.blocked : undefined;
+            resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["credentials"] = args ? args.credentials : undefined;
+            resourceInputs["gatewayConfig"] = args ? args.gatewayConfig : undefined;
+            resourceInputs["id"] = args ? args.id : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["logLevel"] = args ? args.logLevel : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["registryId"] = args ? args.registryId : undefined;
+            resourceInputs["lastConfigAckTime"] = undefined /*out*/;
+            resourceInputs["lastConfigSendTime"] = undefined /*out*/;
+            resourceInputs["lastErrorStatus"] = undefined /*out*/;
+            resourceInputs["lastErrorTime"] = undefined /*out*/;
+            resourceInputs["lastEventTime"] = undefined /*out*/;
+            resourceInputs["lastHeartbeatTime"] = undefined /*out*/;
+            resourceInputs["lastStateTime"] = undefined /*out*/;
+            resourceInputs["numId"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
-            inputs["blocked"] = undefined /*out*/;
-            inputs["config"] = undefined /*out*/;
-            inputs["credentials"] = undefined /*out*/;
-            inputs["gatewayConfig"] = undefined /*out*/;
-            inputs["lastConfigAckTime"] = undefined /*out*/;
-            inputs["lastConfigSendTime"] = undefined /*out*/;
-            inputs["lastErrorStatus"] = undefined /*out*/;
-            inputs["lastErrorTime"] = undefined /*out*/;
-            inputs["lastEventTime"] = undefined /*out*/;
-            inputs["lastHeartbeatTime"] = undefined /*out*/;
-            inputs["lastStateTime"] = undefined /*out*/;
-            inputs["logLevel"] = undefined /*out*/;
-            inputs["metadata"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["numId"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["blocked"] = undefined /*out*/;
+            resourceInputs["config"] = undefined /*out*/;
+            resourceInputs["credentials"] = undefined /*out*/;
+            resourceInputs["gatewayConfig"] = undefined /*out*/;
+            resourceInputs["lastConfigAckTime"] = undefined /*out*/;
+            resourceInputs["lastConfigSendTime"] = undefined /*out*/;
+            resourceInputs["lastErrorStatus"] = undefined /*out*/;
+            resourceInputs["lastErrorTime"] = undefined /*out*/;
+            resourceInputs["lastEventTime"] = undefined /*out*/;
+            resourceInputs["lastHeartbeatTime"] = undefined /*out*/;
+            resourceInputs["lastStateTime"] = undefined /*out*/;
+            resourceInputs["logLevel"] = undefined /*out*/;
+            resourceInputs["metadata"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["numId"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Device.__pulumiType, name, inputs, opts);
+        super(Device.__pulumiType, name, resourceInputs, opts);
     }
 }
 

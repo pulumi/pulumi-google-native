@@ -55,7 +55,7 @@ export class Resourcefile extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ResourcefileArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.environmentId === undefined) && !opts.urn) {
@@ -67,22 +67,22 @@ export class Resourcefile extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["contentType"] = args ? args.contentType : undefined;
-            inputs["data"] = args ? args.data : undefined;
-            inputs["environmentId"] = args ? args.environmentId : undefined;
-            inputs["extensions"] = args ? args.extensions : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["type"] = args ? args.type : undefined;
+            resourceInputs["contentType"] = args ? args.contentType : undefined;
+            resourceInputs["data"] = args ? args.data : undefined;
+            resourceInputs["environmentId"] = args ? args.environmentId : undefined;
+            resourceInputs["extensions"] = args ? args.extensions : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
         } else {
-            inputs["contentType"] = undefined /*out*/;
-            inputs["data"] = undefined /*out*/;
-            inputs["extensions"] = undefined /*out*/;
+            resourceInputs["contentType"] = undefined /*out*/;
+            resourceInputs["data"] = undefined /*out*/;
+            resourceInputs["extensions"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Resourcefile.__pulumiType, name, inputs, opts);
+        super(Resourcefile.__pulumiType, name, resourceInputs, opts);
     }
 }
 

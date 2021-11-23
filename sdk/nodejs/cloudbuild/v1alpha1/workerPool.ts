@@ -84,35 +84,35 @@ export class WorkerPool extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: WorkerPoolArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["regions"] = args ? args.regions : undefined;
-            inputs["workerConfig"] = args ? args.workerConfig : undefined;
-            inputs["workerCount"] = args ? args.workerCount : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["deleteTime"] = undefined /*out*/;
-            inputs["serviceAccountEmail"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["regions"] = args ? args.regions : undefined;
+            resourceInputs["workerConfig"] = args ? args.workerConfig : undefined;
+            resourceInputs["workerCount"] = args ? args.workerCount : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deleteTime"] = undefined /*out*/;
+            resourceInputs["serviceAccountEmail"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["deleteTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["project"] = undefined /*out*/;
-            inputs["regions"] = undefined /*out*/;
-            inputs["serviceAccountEmail"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
-            inputs["workerConfig"] = undefined /*out*/;
-            inputs["workerCount"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deleteTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["regions"] = undefined /*out*/;
+            resourceInputs["serviceAccountEmail"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["workerConfig"] = undefined /*out*/;
+            resourceInputs["workerCount"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(WorkerPool.__pulumiType, name, inputs, opts);
+        super(WorkerPool.__pulumiType, name, resourceInputs, opts);
     }
 }
 

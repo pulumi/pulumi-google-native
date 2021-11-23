@@ -95,7 +95,7 @@ export class Entitlement extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: EntitlementArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -107,39 +107,39 @@ export class Entitlement extends pulumi.CustomResource {
             if ((!args || args.offer === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'offer'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["associationInfo"] = args ? args.associationInfo : undefined;
-            inputs["commitmentSettings"] = args ? args.commitmentSettings : undefined;
-            inputs["customerId"] = args ? args.customerId : undefined;
-            inputs["offer"] = args ? args.offer : undefined;
-            inputs["parameters"] = args ? args.parameters : undefined;
-            inputs["purchaseOrderId"] = args ? args.purchaseOrderId : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["provisionedService"] = undefined /*out*/;
-            inputs["provisioningState"] = undefined /*out*/;
-            inputs["suspensionReasons"] = undefined /*out*/;
-            inputs["trialSettings"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["associationInfo"] = args ? args.associationInfo : undefined;
+            resourceInputs["commitmentSettings"] = args ? args.commitmentSettings : undefined;
+            resourceInputs["customerId"] = args ? args.customerId : undefined;
+            resourceInputs["offer"] = args ? args.offer : undefined;
+            resourceInputs["parameters"] = args ? args.parameters : undefined;
+            resourceInputs["purchaseOrderId"] = args ? args.purchaseOrderId : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["provisionedService"] = undefined /*out*/;
+            resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["suspensionReasons"] = undefined /*out*/;
+            resourceInputs["trialSettings"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["associationInfo"] = undefined /*out*/;
-            inputs["commitmentSettings"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["offer"] = undefined /*out*/;
-            inputs["parameters"] = undefined /*out*/;
-            inputs["provisionedService"] = undefined /*out*/;
-            inputs["provisioningState"] = undefined /*out*/;
-            inputs["purchaseOrderId"] = undefined /*out*/;
-            inputs["suspensionReasons"] = undefined /*out*/;
-            inputs["trialSettings"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["associationInfo"] = undefined /*out*/;
+            resourceInputs["commitmentSettings"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["offer"] = undefined /*out*/;
+            resourceInputs["parameters"] = undefined /*out*/;
+            resourceInputs["provisionedService"] = undefined /*out*/;
+            resourceInputs["provisioningState"] = undefined /*out*/;
+            resourceInputs["purchaseOrderId"] = undefined /*out*/;
+            resourceInputs["suspensionReasons"] = undefined /*out*/;
+            resourceInputs["trialSettings"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Entitlement.__pulumiType, name, inputs, opts);
+        super(Entitlement.__pulumiType, name, resourceInputs, opts);
     }
 }
 

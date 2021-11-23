@@ -132,61 +132,61 @@ export class Interconnect extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: InterconnectArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["adminEnabled"] = args ? args.adminEnabled : undefined;
-            inputs["customerName"] = args ? args.customerName : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["interconnectType"] = args ? args.interconnectType : undefined;
-            inputs["linkType"] = args ? args.linkType : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["nocContactEmail"] = args ? args.nocContactEmail : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["requestedLinkCount"] = args ? args.requestedLinkCount : undefined;
-            inputs["circuitInfos"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["expectedOutages"] = undefined /*out*/;
-            inputs["googleIpAddress"] = undefined /*out*/;
-            inputs["googleReferenceId"] = undefined /*out*/;
-            inputs["interconnectAttachments"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["operationalStatus"] = undefined /*out*/;
-            inputs["peerIpAddress"] = undefined /*out*/;
-            inputs["provisionedLinkCount"] = undefined /*out*/;
-            inputs["satisfiesPzs"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["adminEnabled"] = args ? args.adminEnabled : undefined;
+            resourceInputs["customerName"] = args ? args.customerName : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["interconnectType"] = args ? args.interconnectType : undefined;
+            resourceInputs["linkType"] = args ? args.linkType : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nocContactEmail"] = args ? args.nocContactEmail : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["requestedLinkCount"] = args ? args.requestedLinkCount : undefined;
+            resourceInputs["circuitInfos"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["expectedOutages"] = undefined /*out*/;
+            resourceInputs["googleIpAddress"] = undefined /*out*/;
+            resourceInputs["googleReferenceId"] = undefined /*out*/;
+            resourceInputs["interconnectAttachments"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["operationalStatus"] = undefined /*out*/;
+            resourceInputs["peerIpAddress"] = undefined /*out*/;
+            resourceInputs["provisionedLinkCount"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
-            inputs["adminEnabled"] = undefined /*out*/;
-            inputs["circuitInfos"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["customerName"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["expectedOutages"] = undefined /*out*/;
-            inputs["googleIpAddress"] = undefined /*out*/;
-            inputs["googleReferenceId"] = undefined /*out*/;
-            inputs["interconnectAttachments"] = undefined /*out*/;
-            inputs["interconnectType"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["linkType"] = undefined /*out*/;
-            inputs["location"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["nocContactEmail"] = undefined /*out*/;
-            inputs["operationalStatus"] = undefined /*out*/;
-            inputs["peerIpAddress"] = undefined /*out*/;
-            inputs["provisionedLinkCount"] = undefined /*out*/;
-            inputs["requestedLinkCount"] = undefined /*out*/;
-            inputs["satisfiesPzs"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["adminEnabled"] = undefined /*out*/;
+            resourceInputs["circuitInfos"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["customerName"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["expectedOutages"] = undefined /*out*/;
+            resourceInputs["googleIpAddress"] = undefined /*out*/;
+            resourceInputs["googleReferenceId"] = undefined /*out*/;
+            resourceInputs["interconnectAttachments"] = undefined /*out*/;
+            resourceInputs["interconnectType"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["linkType"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["nocContactEmail"] = undefined /*out*/;
+            resourceInputs["operationalStatus"] = undefined /*out*/;
+            resourceInputs["peerIpAddress"] = undefined /*out*/;
+            resourceInputs["provisionedLinkCount"] = undefined /*out*/;
+            resourceInputs["requestedLinkCount"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Interconnect.__pulumiType, name, inputs, opts);
+        super(Interconnect.__pulumiType, name, resourceInputs, opts);
     }
 }
 

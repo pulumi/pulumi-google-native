@@ -64,29 +64,29 @@ export class ServicePerimeter extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ServicePerimeterArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.accessPolicyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accessPolicyId'");
             }
-            inputs["accessPolicyId"] = args ? args.accessPolicyId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["perimeterType"] = args ? args.perimeterType : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["title"] = args ? args.title : undefined;
+            resourceInputs["accessPolicyId"] = args ? args.accessPolicyId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["perimeterType"] = args ? args.perimeterType : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["title"] = args ? args.title : undefined;
         } else {
-            inputs["description"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["perimeterType"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["title"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["perimeterType"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["title"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ServicePerimeter.__pulumiType, name, inputs, opts);
+        super(ServicePerimeter.__pulumiType, name, resourceInputs, opts);
     }
 }
 

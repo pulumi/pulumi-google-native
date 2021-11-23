@@ -63,7 +63,7 @@ export class OrganizationReplay extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: OrganizationReplayArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.config === undefined) && !opts.urn) {
@@ -72,22 +72,22 @@ export class OrganizationReplay extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            inputs["config"] = args ? args.config : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["name"] = undefined /*out*/;
-            inputs["resultsSummary"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["resultsSummary"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
-            inputs["config"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["resultsSummary"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["config"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["resultsSummary"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(OrganizationReplay.__pulumiType, name, inputs, opts);
+        super(OrganizationReplay.__pulumiType, name, resourceInputs, opts);
     }
 }
 

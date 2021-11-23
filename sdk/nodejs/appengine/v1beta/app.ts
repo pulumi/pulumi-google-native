@@ -100,44 +100,44 @@ export class App extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: AppArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["authDomain"] = args ? args.authDomain : undefined;
-            inputs["databaseType"] = args ? args.databaseType : undefined;
-            inputs["defaultCookieExpiration"] = args ? args.defaultCookieExpiration : undefined;
-            inputs["dispatchRules"] = args ? args.dispatchRules : undefined;
-            inputs["featureSettings"] = args ? args.featureSettings : undefined;
-            inputs["gcrDomain"] = args ? args.gcrDomain : undefined;
-            inputs["iap"] = args ? args.iap : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            inputs["servingStatus"] = args ? args.servingStatus : undefined;
-            inputs["codeBucket"] = undefined /*out*/;
-            inputs["defaultBucket"] = undefined /*out*/;
-            inputs["defaultHostname"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["authDomain"] = args ? args.authDomain : undefined;
+            resourceInputs["databaseType"] = args ? args.databaseType : undefined;
+            resourceInputs["defaultCookieExpiration"] = args ? args.defaultCookieExpiration : undefined;
+            resourceInputs["dispatchRules"] = args ? args.dispatchRules : undefined;
+            resourceInputs["featureSettings"] = args ? args.featureSettings : undefined;
+            resourceInputs["gcrDomain"] = args ? args.gcrDomain : undefined;
+            resourceInputs["iap"] = args ? args.iap : undefined;
+            resourceInputs["id"] = args ? args.id : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            resourceInputs["servingStatus"] = args ? args.servingStatus : undefined;
+            resourceInputs["codeBucket"] = undefined /*out*/;
+            resourceInputs["defaultBucket"] = undefined /*out*/;
+            resourceInputs["defaultHostname"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         } else {
-            inputs["authDomain"] = undefined /*out*/;
-            inputs["codeBucket"] = undefined /*out*/;
-            inputs["databaseType"] = undefined /*out*/;
-            inputs["defaultBucket"] = undefined /*out*/;
-            inputs["defaultCookieExpiration"] = undefined /*out*/;
-            inputs["defaultHostname"] = undefined /*out*/;
-            inputs["dispatchRules"] = undefined /*out*/;
-            inputs["featureSettings"] = undefined /*out*/;
-            inputs["gcrDomain"] = undefined /*out*/;
-            inputs["iap"] = undefined /*out*/;
-            inputs["location"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["serviceAccount"] = undefined /*out*/;
-            inputs["servingStatus"] = undefined /*out*/;
+            resourceInputs["authDomain"] = undefined /*out*/;
+            resourceInputs["codeBucket"] = undefined /*out*/;
+            resourceInputs["databaseType"] = undefined /*out*/;
+            resourceInputs["defaultBucket"] = undefined /*out*/;
+            resourceInputs["defaultCookieExpiration"] = undefined /*out*/;
+            resourceInputs["defaultHostname"] = undefined /*out*/;
+            resourceInputs["dispatchRules"] = undefined /*out*/;
+            resourceInputs["featureSettings"] = undefined /*out*/;
+            resourceInputs["gcrDomain"] = undefined /*out*/;
+            resourceInputs["iap"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["serviceAccount"] = undefined /*out*/;
+            resourceInputs["servingStatus"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(App.__pulumiType, name, inputs, opts);
+        super(App.__pulumiType, name, resourceInputs, opts);
     }
 }
 

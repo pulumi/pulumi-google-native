@@ -76,33 +76,33 @@ export class TargetTcpProxy extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: TargetTcpProxyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["proxyBind"] = args ? args.proxyBind : undefined;
-            inputs["proxyHeader"] = args ? args.proxyHeader : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["service"] = args ? args.service : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["proxyBind"] = args ? args.proxyBind : undefined;
+            resourceInputs["proxyHeader"] = args ? args.proxyHeader : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         } else {
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["proxyBind"] = undefined /*out*/;
-            inputs["proxyHeader"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["service"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["proxyBind"] = undefined /*out*/;
+            resourceInputs["proxyHeader"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["service"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(TargetTcpProxy.__pulumiType, name, inputs, opts);
+        super(TargetTcpProxy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

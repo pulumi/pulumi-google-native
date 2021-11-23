@@ -164,7 +164,7 @@ export class Instance extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
@@ -176,74 +176,74 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.tier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tier'");
             }
-            inputs["alternativeLocationId"] = args ? args.alternativeLocationId : undefined;
-            inputs["authEnabled"] = args ? args.authEnabled : undefined;
-            inputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
-            inputs["connectMode"] = args ? args.connectMode : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
-            inputs["memorySizeGb"] = args ? args.memorySizeGb : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["persistenceConfig"] = args ? args.persistenceConfig : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["readReplicasMode"] = args ? args.readReplicasMode : undefined;
-            inputs["redisConfigs"] = args ? args.redisConfigs : undefined;
-            inputs["redisVersion"] = args ? args.redisVersion : undefined;
-            inputs["replicaCount"] = args ? args.replicaCount : undefined;
-            inputs["reservedIpRange"] = args ? args.reservedIpRange : undefined;
-            inputs["tier"] = args ? args.tier : undefined;
-            inputs["transitEncryptionMode"] = args ? args.transitEncryptionMode : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["currentLocationId"] = undefined /*out*/;
-            inputs["host"] = undefined /*out*/;
-            inputs["maintenanceSchedule"] = undefined /*out*/;
-            inputs["nodes"] = undefined /*out*/;
-            inputs["persistenceIamIdentity"] = undefined /*out*/;
-            inputs["port"] = undefined /*out*/;
-            inputs["readEndpoint"] = undefined /*out*/;
-            inputs["readEndpointPort"] = undefined /*out*/;
-            inputs["serverCaCerts"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["statusMessage"] = undefined /*out*/;
+            resourceInputs["alternativeLocationId"] = args ? args.alternativeLocationId : undefined;
+            resourceInputs["authEnabled"] = args ? args.authEnabled : undefined;
+            resourceInputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
+            resourceInputs["connectMode"] = args ? args.connectMode : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
+            resourceInputs["memorySizeGb"] = args ? args.memorySizeGb : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["persistenceConfig"] = args ? args.persistenceConfig : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["readReplicasMode"] = args ? args.readReplicasMode : undefined;
+            resourceInputs["redisConfigs"] = args ? args.redisConfigs : undefined;
+            resourceInputs["redisVersion"] = args ? args.redisVersion : undefined;
+            resourceInputs["replicaCount"] = args ? args.replicaCount : undefined;
+            resourceInputs["reservedIpRange"] = args ? args.reservedIpRange : undefined;
+            resourceInputs["tier"] = args ? args.tier : undefined;
+            resourceInputs["transitEncryptionMode"] = args ? args.transitEncryptionMode : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["currentLocationId"] = undefined /*out*/;
+            resourceInputs["host"] = undefined /*out*/;
+            resourceInputs["maintenanceSchedule"] = undefined /*out*/;
+            resourceInputs["nodes"] = undefined /*out*/;
+            resourceInputs["persistenceIamIdentity"] = undefined /*out*/;
+            resourceInputs["port"] = undefined /*out*/;
+            resourceInputs["readEndpoint"] = undefined /*out*/;
+            resourceInputs["readEndpointPort"] = undefined /*out*/;
+            resourceInputs["serverCaCerts"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["statusMessage"] = undefined /*out*/;
         } else {
-            inputs["alternativeLocationId"] = undefined /*out*/;
-            inputs["authEnabled"] = undefined /*out*/;
-            inputs["authorizedNetwork"] = undefined /*out*/;
-            inputs["connectMode"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["currentLocationId"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["host"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["location"] = undefined /*out*/;
-            inputs["maintenancePolicy"] = undefined /*out*/;
-            inputs["maintenanceSchedule"] = undefined /*out*/;
-            inputs["memorySizeGb"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["nodes"] = undefined /*out*/;
-            inputs["persistenceConfig"] = undefined /*out*/;
-            inputs["persistenceIamIdentity"] = undefined /*out*/;
-            inputs["port"] = undefined /*out*/;
-            inputs["readEndpoint"] = undefined /*out*/;
-            inputs["readEndpointPort"] = undefined /*out*/;
-            inputs["readReplicasMode"] = undefined /*out*/;
-            inputs["redisConfigs"] = undefined /*out*/;
-            inputs["redisVersion"] = undefined /*out*/;
-            inputs["replicaCount"] = undefined /*out*/;
-            inputs["reservedIpRange"] = undefined /*out*/;
-            inputs["serverCaCerts"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["statusMessage"] = undefined /*out*/;
-            inputs["tier"] = undefined /*out*/;
-            inputs["transitEncryptionMode"] = undefined /*out*/;
+            resourceInputs["alternativeLocationId"] = undefined /*out*/;
+            resourceInputs["authEnabled"] = undefined /*out*/;
+            resourceInputs["authorizedNetwork"] = undefined /*out*/;
+            resourceInputs["connectMode"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["currentLocationId"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["host"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["maintenancePolicy"] = undefined /*out*/;
+            resourceInputs["maintenanceSchedule"] = undefined /*out*/;
+            resourceInputs["memorySizeGb"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["nodes"] = undefined /*out*/;
+            resourceInputs["persistenceConfig"] = undefined /*out*/;
+            resourceInputs["persistenceIamIdentity"] = undefined /*out*/;
+            resourceInputs["port"] = undefined /*out*/;
+            resourceInputs["readEndpoint"] = undefined /*out*/;
+            resourceInputs["readEndpointPort"] = undefined /*out*/;
+            resourceInputs["readReplicasMode"] = undefined /*out*/;
+            resourceInputs["redisConfigs"] = undefined /*out*/;
+            resourceInputs["redisVersion"] = undefined /*out*/;
+            resourceInputs["replicaCount"] = undefined /*out*/;
+            resourceInputs["reservedIpRange"] = undefined /*out*/;
+            resourceInputs["serverCaCerts"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["statusMessage"] = undefined /*out*/;
+            resourceInputs["tier"] = undefined /*out*/;
+            resourceInputs["transitEncryptionMode"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Instance.__pulumiType, name, inputs, opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

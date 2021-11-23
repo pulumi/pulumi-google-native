@@ -100,45 +100,45 @@ export class UrlMap extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: UrlMapArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["defaultRouteAction"] = args ? args.defaultRouteAction : undefined;
-            inputs["defaultService"] = args ? args.defaultService : undefined;
-            inputs["defaultUrlRedirect"] = args ? args.defaultUrlRedirect : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["headerAction"] = args ? args.headerAction : undefined;
-            inputs["hostRules"] = args ? args.hostRules : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["pathMatchers"] = args ? args.pathMatchers : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["tests"] = args ? args.tests : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["region"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["defaultRouteAction"] = args ? args.defaultRouteAction : undefined;
+            resourceInputs["defaultService"] = args ? args.defaultService : undefined;
+            resourceInputs["defaultUrlRedirect"] = args ? args.defaultUrlRedirect : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["headerAction"] = args ? args.headerAction : undefined;
+            resourceInputs["hostRules"] = args ? args.hostRules : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["pathMatchers"] = args ? args.pathMatchers : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["tests"] = args ? args.tests : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         } else {
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["defaultRouteAction"] = undefined /*out*/;
-            inputs["defaultService"] = undefined /*out*/;
-            inputs["defaultUrlRedirect"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["headerAction"] = undefined /*out*/;
-            inputs["hostRules"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["pathMatchers"] = undefined /*out*/;
-            inputs["region"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["tests"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["defaultRouteAction"] = undefined /*out*/;
+            resourceInputs["defaultService"] = undefined /*out*/;
+            resourceInputs["defaultUrlRedirect"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["headerAction"] = undefined /*out*/;
+            resourceInputs["hostRules"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pathMatchers"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["tests"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(UrlMap.__pulumiType, name, inputs, opts);
+        super(UrlMap.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -108,52 +108,52 @@ export class ServiceAttachment extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ServiceAttachmentArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["connectionPreference"] = args ? args.connectionPreference : undefined;
-            inputs["consumerAcceptLists"] = args ? args.consumerAcceptLists : undefined;
-            inputs["consumerRejectLists"] = args ? args.consumerRejectLists : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["enableProxyProtocol"] = args ? args.enableProxyProtocol : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["natSubnets"] = args ? args.natSubnets : undefined;
-            inputs["producerForwardingRule"] = args ? args.producerForwardingRule : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["targetService"] = args ? args.targetService : undefined;
-            inputs["connectedEndpoints"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["pscServiceAttachmentId"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["connectionPreference"] = args ? args.connectionPreference : undefined;
+            resourceInputs["consumerAcceptLists"] = args ? args.consumerAcceptLists : undefined;
+            resourceInputs["consumerRejectLists"] = args ? args.consumerRejectLists : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableProxyProtocol"] = args ? args.enableProxyProtocol : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["natSubnets"] = args ? args.natSubnets : undefined;
+            resourceInputs["producerForwardingRule"] = args ? args.producerForwardingRule : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["targetService"] = args ? args.targetService : undefined;
+            resourceInputs["connectedEndpoints"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["pscServiceAttachmentId"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         } else {
-            inputs["connectedEndpoints"] = undefined /*out*/;
-            inputs["connectionPreference"] = undefined /*out*/;
-            inputs["consumerAcceptLists"] = undefined /*out*/;
-            inputs["consumerRejectLists"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["enableProxyProtocol"] = undefined /*out*/;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["natSubnets"] = undefined /*out*/;
-            inputs["producerForwardingRule"] = undefined /*out*/;
-            inputs["pscServiceAttachmentId"] = undefined /*out*/;
-            inputs["region"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["targetService"] = undefined /*out*/;
+            resourceInputs["connectedEndpoints"] = undefined /*out*/;
+            resourceInputs["connectionPreference"] = undefined /*out*/;
+            resourceInputs["consumerAcceptLists"] = undefined /*out*/;
+            resourceInputs["consumerRejectLists"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["enableProxyProtocol"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["natSubnets"] = undefined /*out*/;
+            resourceInputs["producerForwardingRule"] = undefined /*out*/;
+            resourceInputs["pscServiceAttachmentId"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["targetService"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ServiceAttachment.__pulumiType, name, inputs, opts);
+        super(ServiceAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -62,28 +62,28 @@ export class ResponsePolicy extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: ResponsePolicyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["clientOperationId"] = args ? args.clientOperationId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["gkeClusters"] = args ? args.gkeClusters : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
-            inputs["networks"] = args ? args.networks : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["responsePolicyName"] = args ? args.responsePolicyName : undefined;
+            resourceInputs["clientOperationId"] = args ? args.clientOperationId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["gkeClusters"] = args ? args.gkeClusters : undefined;
+            resourceInputs["id"] = args ? args.id : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
+            resourceInputs["networks"] = args ? args.networks : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["responsePolicyName"] = args ? args.responsePolicyName : undefined;
         } else {
-            inputs["description"] = undefined /*out*/;
-            inputs["gkeClusters"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["networks"] = undefined /*out*/;
-            inputs["responsePolicyName"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["gkeClusters"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["networks"] = undefined /*out*/;
+            resourceInputs["responsePolicyName"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ResponsePolicy.__pulumiType, name, inputs, opts);
+        super(ResponsePolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

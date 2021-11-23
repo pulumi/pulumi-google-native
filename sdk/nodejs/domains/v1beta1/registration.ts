@@ -93,7 +93,7 @@ export class Registration extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: RegistrationArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.contactSettings === undefined) && !opts.urn) {
@@ -105,42 +105,42 @@ export class Registration extends pulumi.CustomResource {
             if ((!args || args.yearlyPrice === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'yearlyPrice'");
             }
-            inputs["contactNotices"] = args ? args.contactNotices : undefined;
-            inputs["contactSettings"] = args ? args.contactSettings : undefined;
-            inputs["dnsSettings"] = args ? args.dnsSettings : undefined;
-            inputs["domainName"] = args ? args.domainName : undefined;
-            inputs["domainNotices"] = args ? args.domainNotices : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["managementSettings"] = args ? args.managementSettings : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["validateOnly"] = args ? args.validateOnly : undefined;
-            inputs["yearlyPrice"] = args ? args.yearlyPrice : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["expireTime"] = undefined /*out*/;
-            inputs["issues"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["pendingContactSettings"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["supportedPrivacy"] = undefined /*out*/;
+            resourceInputs["contactNotices"] = args ? args.contactNotices : undefined;
+            resourceInputs["contactSettings"] = args ? args.contactSettings : undefined;
+            resourceInputs["dnsSettings"] = args ? args.dnsSettings : undefined;
+            resourceInputs["domainName"] = args ? args.domainName : undefined;
+            resourceInputs["domainNotices"] = args ? args.domainNotices : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["managementSettings"] = args ? args.managementSettings : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
+            resourceInputs["yearlyPrice"] = args ? args.yearlyPrice : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["expireTime"] = undefined /*out*/;
+            resourceInputs["issues"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pendingContactSettings"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["supportedPrivacy"] = undefined /*out*/;
         } else {
-            inputs["contactSettings"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["dnsSettings"] = undefined /*out*/;
-            inputs["domainName"] = undefined /*out*/;
-            inputs["expireTime"] = undefined /*out*/;
-            inputs["issues"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["managementSettings"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["pendingContactSettings"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["supportedPrivacy"] = undefined /*out*/;
+            resourceInputs["contactSettings"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["dnsSettings"] = undefined /*out*/;
+            resourceInputs["domainName"] = undefined /*out*/;
+            resourceInputs["expireTime"] = undefined /*out*/;
+            resourceInputs["issues"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["managementSettings"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pendingContactSettings"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["supportedPrivacy"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Registration.__pulumiType, name, inputs, opts);
+        super(Registration.__pulumiType, name, resourceInputs, opts);
     }
 }
 

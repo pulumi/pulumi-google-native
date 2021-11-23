@@ -51,23 +51,23 @@ export class Tenant extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: TenantArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.externalId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'externalId'");
             }
-            inputs["externalId"] = args ? args.externalId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
+            resourceInputs["externalId"] = args ? args.externalId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
         } else {
-            inputs["externalId"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["externalId"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Tenant.__pulumiType, name, inputs, opts);
+        super(Tenant.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -77,38 +77,38 @@ export class CertificateTemplate extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: CertificateTemplateArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.certificateTemplateId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'certificateTemplateId'");
             }
-            inputs["certificateTemplateId"] = args ? args.certificateTemplateId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["identityConstraints"] = args ? args.identityConstraints : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["passthroughExtensions"] = args ? args.passthroughExtensions : undefined;
-            inputs["predefinedValues"] = args ? args.predefinedValues : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["certificateTemplateId"] = args ? args.certificateTemplateId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["identityConstraints"] = args ? args.identityConstraints : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["passthroughExtensions"] = args ? args.passthroughExtensions : undefined;
+            resourceInputs["predefinedValues"] = args ? args.predefinedValues : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["identityConstraints"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["passthroughExtensions"] = undefined /*out*/;
-            inputs["predefinedValues"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["identityConstraints"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["passthroughExtensions"] = undefined /*out*/;
+            resourceInputs["predefinedValues"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(CertificateTemplate.__pulumiType, name, inputs, opts);
+        super(CertificateTemplate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

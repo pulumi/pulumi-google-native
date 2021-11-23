@@ -73,7 +73,7 @@ export class Datastore extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: DatastoreArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.displayName === undefined) && !opts.urn) {
@@ -82,27 +82,27 @@ export class Datastore extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            inputs["datastoreConfig"] = args ? args.datastoreConfig : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["targetType"] = args ? args.targetType : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["lastUpdateTime"] = undefined /*out*/;
-            inputs["org"] = undefined /*out*/;
-            inputs["self"] = undefined /*out*/;
+            resourceInputs["datastoreConfig"] = args ? args.datastoreConfig : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["targetType"] = args ? args.targetType : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["lastUpdateTime"] = undefined /*out*/;
+            resourceInputs["org"] = undefined /*out*/;
+            resourceInputs["self"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["datastoreConfig"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["lastUpdateTime"] = undefined /*out*/;
-            inputs["org"] = undefined /*out*/;
-            inputs["self"] = undefined /*out*/;
-            inputs["targetType"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["datastoreConfig"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["lastUpdateTime"] = undefined /*out*/;
+            resourceInputs["org"] = undefined /*out*/;
+            resourceInputs["self"] = undefined /*out*/;
+            resourceInputs["targetType"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Datastore.__pulumiType, name, inputs, opts);
+        super(Datastore.__pulumiType, name, resourceInputs, opts);
     }
 }
 

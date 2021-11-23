@@ -121,7 +121,7 @@ export class Job extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: JobArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.placement === undefined) && !opts.urn) {
@@ -130,53 +130,53 @@ export class Job extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["hadoopJob"] = args ? args.hadoopJob : undefined;
-            inputs["hiveJob"] = args ? args.hiveJob : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["pigJob"] = args ? args.pigJob : undefined;
-            inputs["placement"] = args ? args.placement : undefined;
-            inputs["prestoJob"] = args ? args.prestoJob : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["pysparkJob"] = args ? args.pysparkJob : undefined;
-            inputs["reference"] = args ? args.reference : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["scheduling"] = args ? args.scheduling : undefined;
-            inputs["sparkJob"] = args ? args.sparkJob : undefined;
-            inputs["sparkRJob"] = args ? args.sparkRJob : undefined;
-            inputs["sparkSqlJob"] = args ? args.sparkSqlJob : undefined;
-            inputs["done"] = undefined /*out*/;
-            inputs["driverControlFilesUri"] = undefined /*out*/;
-            inputs["driverOutputResourceUri"] = undefined /*out*/;
-            inputs["jobUuid"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["statusHistory"] = undefined /*out*/;
-            inputs["yarnApplications"] = undefined /*out*/;
+            resourceInputs["hadoopJob"] = args ? args.hadoopJob : undefined;
+            resourceInputs["hiveJob"] = args ? args.hiveJob : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["pigJob"] = args ? args.pigJob : undefined;
+            resourceInputs["placement"] = args ? args.placement : undefined;
+            resourceInputs["prestoJob"] = args ? args.prestoJob : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["pysparkJob"] = args ? args.pysparkJob : undefined;
+            resourceInputs["reference"] = args ? args.reference : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["scheduling"] = args ? args.scheduling : undefined;
+            resourceInputs["sparkJob"] = args ? args.sparkJob : undefined;
+            resourceInputs["sparkRJob"] = args ? args.sparkRJob : undefined;
+            resourceInputs["sparkSqlJob"] = args ? args.sparkSqlJob : undefined;
+            resourceInputs["done"] = undefined /*out*/;
+            resourceInputs["driverControlFilesUri"] = undefined /*out*/;
+            resourceInputs["driverOutputResourceUri"] = undefined /*out*/;
+            resourceInputs["jobUuid"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["statusHistory"] = undefined /*out*/;
+            resourceInputs["yarnApplications"] = undefined /*out*/;
         } else {
-            inputs["done"] = undefined /*out*/;
-            inputs["driverControlFilesUri"] = undefined /*out*/;
-            inputs["driverOutputResourceUri"] = undefined /*out*/;
-            inputs["hadoopJob"] = undefined /*out*/;
-            inputs["hiveJob"] = undefined /*out*/;
-            inputs["jobUuid"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["pigJob"] = undefined /*out*/;
-            inputs["placement"] = undefined /*out*/;
-            inputs["prestoJob"] = undefined /*out*/;
-            inputs["pysparkJob"] = undefined /*out*/;
-            inputs["reference"] = undefined /*out*/;
-            inputs["scheduling"] = undefined /*out*/;
-            inputs["sparkJob"] = undefined /*out*/;
-            inputs["sparkRJob"] = undefined /*out*/;
-            inputs["sparkSqlJob"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["statusHistory"] = undefined /*out*/;
-            inputs["yarnApplications"] = undefined /*out*/;
+            resourceInputs["done"] = undefined /*out*/;
+            resourceInputs["driverControlFilesUri"] = undefined /*out*/;
+            resourceInputs["driverOutputResourceUri"] = undefined /*out*/;
+            resourceInputs["hadoopJob"] = undefined /*out*/;
+            resourceInputs["hiveJob"] = undefined /*out*/;
+            resourceInputs["jobUuid"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["pigJob"] = undefined /*out*/;
+            resourceInputs["placement"] = undefined /*out*/;
+            resourceInputs["prestoJob"] = undefined /*out*/;
+            resourceInputs["pysparkJob"] = undefined /*out*/;
+            resourceInputs["reference"] = undefined /*out*/;
+            resourceInputs["scheduling"] = undefined /*out*/;
+            resourceInputs["sparkJob"] = undefined /*out*/;
+            resourceInputs["sparkRJob"] = undefined /*out*/;
+            resourceInputs["sparkSqlJob"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["statusHistory"] = undefined /*out*/;
+            resourceInputs["yarnApplications"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Job.__pulumiType, name, inputs, opts);
+        super(Job.__pulumiType, name, resourceInputs, opts);
     }
 }
 

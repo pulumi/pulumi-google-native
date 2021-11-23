@@ -60,28 +60,28 @@ export class Subscription extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: SubscriptionArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.subscriptionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subscriptionId'");
             }
-            inputs["ackDeadlineSeconds"] = args ? args.ackDeadlineSeconds : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["pushConfig"] = args ? args.pushConfig : undefined;
-            inputs["subscriptionId"] = args ? args.subscriptionId : undefined;
-            inputs["topic"] = args ? args.topic : undefined;
+            resourceInputs["ackDeadlineSeconds"] = args ? args.ackDeadlineSeconds : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["pushConfig"] = args ? args.pushConfig : undefined;
+            resourceInputs["subscriptionId"] = args ? args.subscriptionId : undefined;
+            resourceInputs["topic"] = args ? args.topic : undefined;
         } else {
-            inputs["ackDeadlineSeconds"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["pushConfig"] = undefined /*out*/;
-            inputs["topic"] = undefined /*out*/;
+            resourceInputs["ackDeadlineSeconds"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pushConfig"] = undefined /*out*/;
+            resourceInputs["topic"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Subscription.__pulumiType, name, inputs, opts);
+        super(Subscription.__pulumiType, name, resourceInputs, opts);
     }
 }
 

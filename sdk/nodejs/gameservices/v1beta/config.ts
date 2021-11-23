@@ -72,7 +72,7 @@ export class Config extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ConfigArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.configId === undefined) && !opts.urn) {
@@ -81,30 +81,30 @@ export class Config extends pulumi.CustomResource {
             if ((!args || args.gameServerDeploymentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'gameServerDeploymentId'");
             }
-            inputs["configId"] = args ? args.configId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["fleetConfigs"] = args ? args.fleetConfigs : undefined;
-            inputs["gameServerDeploymentId"] = args ? args.gameServerDeploymentId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["scalingConfigs"] = args ? args.scalingConfigs : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["configId"] = args ? args.configId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["fleetConfigs"] = args ? args.fleetConfigs : undefined;
+            resourceInputs["gameServerDeploymentId"] = args ? args.gameServerDeploymentId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["scalingConfigs"] = args ? args.scalingConfigs : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["fleetConfigs"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["scalingConfigs"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["fleetConfigs"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["scalingConfigs"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Config.__pulumiType, name, inputs, opts);
+        super(Config.__pulumiType, name, resourceInputs, opts);
     }
 }
 

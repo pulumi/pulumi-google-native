@@ -104,7 +104,7 @@ export class Experiment extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ExperimentArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.agentId === undefined) && !opts.urn) {
@@ -116,46 +116,46 @@ export class Experiment extends pulumi.CustomResource {
             if ((!args || args.environmentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'environmentId'");
             }
-            inputs["agentId"] = args ? args.agentId : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["definition"] = args ? args.definition : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["endTime"] = args ? args.endTime : undefined;
-            inputs["environmentId"] = args ? args.environmentId : undefined;
-            inputs["experimentLength"] = args ? args.experimentLength : undefined;
-            inputs["lastUpdateTime"] = args ? args.lastUpdateTime : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["result"] = args ? args.result : undefined;
-            inputs["rolloutConfig"] = args ? args.rolloutConfig : undefined;
-            inputs["rolloutFailureReason"] = args ? args.rolloutFailureReason : undefined;
-            inputs["rolloutState"] = args ? args.rolloutState : undefined;
-            inputs["startTime"] = args ? args.startTime : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["variantsHistory"] = args ? args.variantsHistory : undefined;
+            resourceInputs["agentId"] = args ? args.agentId : undefined;
+            resourceInputs["createTime"] = args ? args.createTime : undefined;
+            resourceInputs["definition"] = args ? args.definition : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["endTime"] = args ? args.endTime : undefined;
+            resourceInputs["environmentId"] = args ? args.environmentId : undefined;
+            resourceInputs["experimentLength"] = args ? args.experimentLength : undefined;
+            resourceInputs["lastUpdateTime"] = args ? args.lastUpdateTime : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["result"] = args ? args.result : undefined;
+            resourceInputs["rolloutConfig"] = args ? args.rolloutConfig : undefined;
+            resourceInputs["rolloutFailureReason"] = args ? args.rolloutFailureReason : undefined;
+            resourceInputs["rolloutState"] = args ? args.rolloutState : undefined;
+            resourceInputs["startTime"] = args ? args.startTime : undefined;
+            resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["variantsHistory"] = args ? args.variantsHistory : undefined;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["definition"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["endTime"] = undefined /*out*/;
-            inputs["experimentLength"] = undefined /*out*/;
-            inputs["lastUpdateTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["result"] = undefined /*out*/;
-            inputs["rolloutConfig"] = undefined /*out*/;
-            inputs["rolloutFailureReason"] = undefined /*out*/;
-            inputs["rolloutState"] = undefined /*out*/;
-            inputs["startTime"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["variantsHistory"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["definition"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["experimentLength"] = undefined /*out*/;
+            resourceInputs["lastUpdateTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["result"] = undefined /*out*/;
+            resourceInputs["rolloutConfig"] = undefined /*out*/;
+            resourceInputs["rolloutFailureReason"] = undefined /*out*/;
+            resourceInputs["rolloutState"] = undefined /*out*/;
+            resourceInputs["startTime"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["variantsHistory"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Experiment.__pulumiType, name, inputs, opts);
+        super(Experiment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

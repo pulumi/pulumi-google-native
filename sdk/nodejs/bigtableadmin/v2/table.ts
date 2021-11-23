@@ -64,7 +64,7 @@ export class Table extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: TableArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
@@ -73,26 +73,26 @@ export class Table extends pulumi.CustomResource {
             if ((!args || args.tableId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tableId'");
             }
-            inputs["columnFamilies"] = args ? args.columnFamilies : undefined;
-            inputs["granularity"] = args ? args.granularity : undefined;
-            inputs["initialSplits"] = args ? args.initialSplits : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["tableId"] = args ? args.tableId : undefined;
-            inputs["clusterStates"] = undefined /*out*/;
-            inputs["restoreInfo"] = undefined /*out*/;
+            resourceInputs["columnFamilies"] = args ? args.columnFamilies : undefined;
+            resourceInputs["granularity"] = args ? args.granularity : undefined;
+            resourceInputs["initialSplits"] = args ? args.initialSplits : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["tableId"] = args ? args.tableId : undefined;
+            resourceInputs["clusterStates"] = undefined /*out*/;
+            resourceInputs["restoreInfo"] = undefined /*out*/;
         } else {
-            inputs["clusterStates"] = undefined /*out*/;
-            inputs["columnFamilies"] = undefined /*out*/;
-            inputs["granularity"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["restoreInfo"] = undefined /*out*/;
+            resourceInputs["clusterStates"] = undefined /*out*/;
+            resourceInputs["columnFamilies"] = undefined /*out*/;
+            resourceInputs["granularity"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["restoreInfo"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Table.__pulumiType, name, inputs, opts);
+        super(Table.__pulumiType, name, resourceInputs, opts);
     }
 }
 

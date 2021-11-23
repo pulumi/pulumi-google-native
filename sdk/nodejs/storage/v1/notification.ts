@@ -76,38 +76,38 @@ export class Notification extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: NotificationArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.bucket === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            inputs["bucket"] = args ? args.bucket : undefined;
-            inputs["customAttributes"] = args ? args.customAttributes : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["eventTypes"] = args ? args.eventTypes : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
-            inputs["objectNamePrefix"] = args ? args.objectNamePrefix : undefined;
-            inputs["payloadFormat"] = args ? args.payloadFormat : undefined;
-            inputs["provisionalUserProject"] = args ? args.provisionalUserProject : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["topic"] = args ? args.topic : undefined;
-            inputs["userProject"] = args ? args.userProject : undefined;
+            resourceInputs["bucket"] = args ? args.bucket : undefined;
+            resourceInputs["customAttributes"] = args ? args.customAttributes : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["eventTypes"] = args ? args.eventTypes : undefined;
+            resourceInputs["id"] = args ? args.id : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
+            resourceInputs["objectNamePrefix"] = args ? args.objectNamePrefix : undefined;
+            resourceInputs["payloadFormat"] = args ? args.payloadFormat : undefined;
+            resourceInputs["provisionalUserProject"] = args ? args.provisionalUserProject : undefined;
+            resourceInputs["selfLink"] = args ? args.selfLink : undefined;
+            resourceInputs["topic"] = args ? args.topic : undefined;
+            resourceInputs["userProject"] = args ? args.userProject : undefined;
         } else {
-            inputs["customAttributes"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["eventTypes"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["objectNamePrefix"] = undefined /*out*/;
-            inputs["payloadFormat"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["topic"] = undefined /*out*/;
+            resourceInputs["customAttributes"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["eventTypes"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["objectNamePrefix"] = undefined /*out*/;
+            resourceInputs["payloadFormat"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["topic"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Notification.__pulumiType, name, inputs, opts);
+        super(Notification.__pulumiType, name, resourceInputs, opts);
     }
 }
 

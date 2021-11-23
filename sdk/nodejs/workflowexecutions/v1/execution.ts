@@ -83,39 +83,39 @@ export class Execution extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ExecutionArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.workflowId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workflowId'");
             }
-            inputs["argument"] = args ? args.argument : undefined;
-            inputs["callLogLevel"] = args ? args.callLogLevel : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["workflowId"] = args ? args.workflowId : undefined;
-            inputs["endTime"] = undefined /*out*/;
-            inputs["error"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["result"] = undefined /*out*/;
-            inputs["startTime"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["workflowRevisionId"] = undefined /*out*/;
+            resourceInputs["argument"] = args ? args.argument : undefined;
+            resourceInputs["callLogLevel"] = args ? args.callLogLevel : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["workflowId"] = args ? args.workflowId : undefined;
+            resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["error"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["result"] = undefined /*out*/;
+            resourceInputs["startTime"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["workflowRevisionId"] = undefined /*out*/;
         } else {
-            inputs["argument"] = undefined /*out*/;
-            inputs["callLogLevel"] = undefined /*out*/;
-            inputs["endTime"] = undefined /*out*/;
-            inputs["error"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["result"] = undefined /*out*/;
-            inputs["startTime"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["workflowRevisionId"] = undefined /*out*/;
+            resourceInputs["argument"] = undefined /*out*/;
+            resourceInputs["callLogLevel"] = undefined /*out*/;
+            resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["error"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["result"] = undefined /*out*/;
+            resourceInputs["startTime"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["workflowRevisionId"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Execution.__pulumiType, name, inputs, opts);
+        super(Execution.__pulumiType, name, resourceInputs, opts);
     }
 }
 

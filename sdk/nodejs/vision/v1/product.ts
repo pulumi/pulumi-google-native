@@ -64,28 +64,28 @@ export class Product extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: ProductArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["productCategory"] = args ? args.productCategory : undefined;
-            inputs["productId"] = args ? args.productId : undefined;
-            inputs["productLabels"] = args ? args.productLabels : undefined;
-            inputs["project"] = args ? args.project : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["productCategory"] = args ? args.productCategory : undefined;
+            resourceInputs["productId"] = args ? args.productId : undefined;
+            resourceInputs["productLabels"] = args ? args.productLabels : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
         } else {
-            inputs["description"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["productCategory"] = undefined /*out*/;
-            inputs["productLabels"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["productCategory"] = undefined /*out*/;
+            resourceInputs["productLabels"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Product.__pulumiType, name, inputs, opts);
+        super(Product.__pulumiType, name, resourceInputs, opts);
     }
 }
 

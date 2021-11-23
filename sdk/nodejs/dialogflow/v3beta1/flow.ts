@@ -72,7 +72,7 @@ export class Flow extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: FlowArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.agentId === undefined) && !opts.urn) {
@@ -81,30 +81,30 @@ export class Flow extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            inputs["agentId"] = args ? args.agentId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["eventHandlers"] = args ? args.eventHandlers : undefined;
-            inputs["languageCode"] = args ? args.languageCode : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["nluSettings"] = args ? args.nluSettings : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["transitionRouteGroups"] = args ? args.transitionRouteGroups : undefined;
-            inputs["transitionRoutes"] = args ? args.transitionRoutes : undefined;
+            resourceInputs["agentId"] = args ? args.agentId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["eventHandlers"] = args ? args.eventHandlers : undefined;
+            resourceInputs["languageCode"] = args ? args.languageCode : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nluSettings"] = args ? args.nluSettings : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["transitionRouteGroups"] = args ? args.transitionRouteGroups : undefined;
+            resourceInputs["transitionRoutes"] = args ? args.transitionRoutes : undefined;
         } else {
-            inputs["description"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["eventHandlers"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["nluSettings"] = undefined /*out*/;
-            inputs["transitionRouteGroups"] = undefined /*out*/;
-            inputs["transitionRoutes"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["eventHandlers"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["nluSettings"] = undefined /*out*/;
+            resourceInputs["transitionRouteGroups"] = undefined /*out*/;
+            resourceInputs["transitionRoutes"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Flow.__pulumiType, name, inputs, opts);
+        super(Flow.__pulumiType, name, resourceInputs, opts);
     }
 }
 

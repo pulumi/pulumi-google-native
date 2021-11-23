@@ -150,72 +150,72 @@ export class Config extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ConfigArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            inputs["apis"] = args ? args.apis : undefined;
-            inputs["authentication"] = args ? args.authentication : undefined;
-            inputs["backend"] = args ? args.backend : undefined;
-            inputs["billing"] = args ? args.billing : undefined;
-            inputs["configVersion"] = args ? args.configVersion : undefined;
-            inputs["context"] = args ? args.context : undefined;
-            inputs["control"] = args ? args.control : undefined;
-            inputs["customError"] = args ? args.customError : undefined;
-            inputs["documentation"] = args ? args.documentation : undefined;
-            inputs["endpoints"] = args ? args.endpoints : undefined;
-            inputs["enums"] = args ? args.enums : undefined;
-            inputs["http"] = args ? args.http : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["logging"] = args ? args.logging : undefined;
-            inputs["logs"] = args ? args.logs : undefined;
-            inputs["metrics"] = args ? args.metrics : undefined;
-            inputs["monitoredResources"] = args ? args.monitoredResources : undefined;
-            inputs["monitoring"] = args ? args.monitoring : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["producerProjectId"] = args ? args.producerProjectId : undefined;
-            inputs["quota"] = args ? args.quota : undefined;
-            inputs["serviceName"] = args ? args.serviceName : undefined;
-            inputs["systemParameters"] = args ? args.systemParameters : undefined;
-            inputs["systemTypes"] = args ? args.systemTypes : undefined;
-            inputs["title"] = args ? args.title : undefined;
-            inputs["types"] = args ? args.types : undefined;
-            inputs["usage"] = args ? args.usage : undefined;
-            inputs["sourceInfo"] = undefined /*out*/;
+            resourceInputs["apis"] = args ? args.apis : undefined;
+            resourceInputs["authentication"] = args ? args.authentication : undefined;
+            resourceInputs["backend"] = args ? args.backend : undefined;
+            resourceInputs["billing"] = args ? args.billing : undefined;
+            resourceInputs["configVersion"] = args ? args.configVersion : undefined;
+            resourceInputs["context"] = args ? args.context : undefined;
+            resourceInputs["control"] = args ? args.control : undefined;
+            resourceInputs["customError"] = args ? args.customError : undefined;
+            resourceInputs["documentation"] = args ? args.documentation : undefined;
+            resourceInputs["endpoints"] = args ? args.endpoints : undefined;
+            resourceInputs["enums"] = args ? args.enums : undefined;
+            resourceInputs["http"] = args ? args.http : undefined;
+            resourceInputs["id"] = args ? args.id : undefined;
+            resourceInputs["logging"] = args ? args.logging : undefined;
+            resourceInputs["logs"] = args ? args.logs : undefined;
+            resourceInputs["metrics"] = args ? args.metrics : undefined;
+            resourceInputs["monitoredResources"] = args ? args.monitoredResources : undefined;
+            resourceInputs["monitoring"] = args ? args.monitoring : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["producerProjectId"] = args ? args.producerProjectId : undefined;
+            resourceInputs["quota"] = args ? args.quota : undefined;
+            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["systemParameters"] = args ? args.systemParameters : undefined;
+            resourceInputs["systemTypes"] = args ? args.systemTypes : undefined;
+            resourceInputs["title"] = args ? args.title : undefined;
+            resourceInputs["types"] = args ? args.types : undefined;
+            resourceInputs["usage"] = args ? args.usage : undefined;
+            resourceInputs["sourceInfo"] = undefined /*out*/;
         } else {
-            inputs["apis"] = undefined /*out*/;
-            inputs["authentication"] = undefined /*out*/;
-            inputs["backend"] = undefined /*out*/;
-            inputs["billing"] = undefined /*out*/;
-            inputs["configVersion"] = undefined /*out*/;
-            inputs["context"] = undefined /*out*/;
-            inputs["control"] = undefined /*out*/;
-            inputs["customError"] = undefined /*out*/;
-            inputs["documentation"] = undefined /*out*/;
-            inputs["endpoints"] = undefined /*out*/;
-            inputs["enums"] = undefined /*out*/;
-            inputs["http"] = undefined /*out*/;
-            inputs["logging"] = undefined /*out*/;
-            inputs["logs"] = undefined /*out*/;
-            inputs["metrics"] = undefined /*out*/;
-            inputs["monitoredResources"] = undefined /*out*/;
-            inputs["monitoring"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["producerProjectId"] = undefined /*out*/;
-            inputs["quota"] = undefined /*out*/;
-            inputs["sourceInfo"] = undefined /*out*/;
-            inputs["systemParameters"] = undefined /*out*/;
-            inputs["systemTypes"] = undefined /*out*/;
-            inputs["title"] = undefined /*out*/;
-            inputs["types"] = undefined /*out*/;
-            inputs["usage"] = undefined /*out*/;
+            resourceInputs["apis"] = undefined /*out*/;
+            resourceInputs["authentication"] = undefined /*out*/;
+            resourceInputs["backend"] = undefined /*out*/;
+            resourceInputs["billing"] = undefined /*out*/;
+            resourceInputs["configVersion"] = undefined /*out*/;
+            resourceInputs["context"] = undefined /*out*/;
+            resourceInputs["control"] = undefined /*out*/;
+            resourceInputs["customError"] = undefined /*out*/;
+            resourceInputs["documentation"] = undefined /*out*/;
+            resourceInputs["endpoints"] = undefined /*out*/;
+            resourceInputs["enums"] = undefined /*out*/;
+            resourceInputs["http"] = undefined /*out*/;
+            resourceInputs["logging"] = undefined /*out*/;
+            resourceInputs["logs"] = undefined /*out*/;
+            resourceInputs["metrics"] = undefined /*out*/;
+            resourceInputs["monitoredResources"] = undefined /*out*/;
+            resourceInputs["monitoring"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["producerProjectId"] = undefined /*out*/;
+            resourceInputs["quota"] = undefined /*out*/;
+            resourceInputs["sourceInfo"] = undefined /*out*/;
+            resourceInputs["systemParameters"] = undefined /*out*/;
+            resourceInputs["systemTypes"] = undefined /*out*/;
+            resourceInputs["title"] = undefined /*out*/;
+            resourceInputs["types"] = undefined /*out*/;
+            resourceInputs["usage"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Config.__pulumiType, name, inputs, opts);
+        super(Config.__pulumiType, name, resourceInputs, opts);
     }
 }
 

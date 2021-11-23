@@ -148,7 +148,7 @@ export class Version extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: VersionArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.modelId === undefined) && !opts.urn) {
@@ -160,66 +160,66 @@ export class Version extends pulumi.CustomResource {
             if ((!args || args.runtimeVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'runtimeVersion'");
             }
-            inputs["acceleratorConfig"] = args ? args.acceleratorConfig : undefined;
-            inputs["autoScaling"] = args ? args.autoScaling : undefined;
-            inputs["container"] = args ? args.container : undefined;
-            inputs["deploymentUri"] = args ? args.deploymentUri : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["explanationConfig"] = args ? args.explanationConfig : undefined;
-            inputs["framework"] = args ? args.framework : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["machineType"] = args ? args.machineType : undefined;
-            inputs["manualScaling"] = args ? args.manualScaling : undefined;
-            inputs["modelId"] = args ? args.modelId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["packageUris"] = args ? args.packageUris : undefined;
-            inputs["predictionClass"] = args ? args.predictionClass : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["pythonVersion"] = args ? args.pythonVersion : undefined;
-            inputs["requestLoggingConfig"] = args ? args.requestLoggingConfig : undefined;
-            inputs["routes"] = args ? args.routes : undefined;
-            inputs["runtimeVersion"] = args ? args.runtimeVersion : undefined;
-            inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["errorMessage"] = undefined /*out*/;
-            inputs["isDefault"] = undefined /*out*/;
-            inputs["lastMigrationModelId"] = undefined /*out*/;
-            inputs["lastMigrationTime"] = undefined /*out*/;
-            inputs["lastUseTime"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["acceleratorConfig"] = args ? args.acceleratorConfig : undefined;
+            resourceInputs["autoScaling"] = args ? args.autoScaling : undefined;
+            resourceInputs["container"] = args ? args.container : undefined;
+            resourceInputs["deploymentUri"] = args ? args.deploymentUri : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["explanationConfig"] = args ? args.explanationConfig : undefined;
+            resourceInputs["framework"] = args ? args.framework : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["machineType"] = args ? args.machineType : undefined;
+            resourceInputs["manualScaling"] = args ? args.manualScaling : undefined;
+            resourceInputs["modelId"] = args ? args.modelId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["packageUris"] = args ? args.packageUris : undefined;
+            resourceInputs["predictionClass"] = args ? args.predictionClass : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["pythonVersion"] = args ? args.pythonVersion : undefined;
+            resourceInputs["requestLoggingConfig"] = args ? args.requestLoggingConfig : undefined;
+            resourceInputs["routes"] = args ? args.routes : undefined;
+            resourceInputs["runtimeVersion"] = args ? args.runtimeVersion : undefined;
+            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["errorMessage"] = undefined /*out*/;
+            resourceInputs["isDefault"] = undefined /*out*/;
+            resourceInputs["lastMigrationModelId"] = undefined /*out*/;
+            resourceInputs["lastMigrationTime"] = undefined /*out*/;
+            resourceInputs["lastUseTime"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
-            inputs["acceleratorConfig"] = undefined /*out*/;
-            inputs["autoScaling"] = undefined /*out*/;
-            inputs["container"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["deploymentUri"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["errorMessage"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["explanationConfig"] = undefined /*out*/;
-            inputs["framework"] = undefined /*out*/;
-            inputs["isDefault"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["lastMigrationModelId"] = undefined /*out*/;
-            inputs["lastMigrationTime"] = undefined /*out*/;
-            inputs["lastUseTime"] = undefined /*out*/;
-            inputs["machineType"] = undefined /*out*/;
-            inputs["manualScaling"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["packageUris"] = undefined /*out*/;
-            inputs["predictionClass"] = undefined /*out*/;
-            inputs["pythonVersion"] = undefined /*out*/;
-            inputs["requestLoggingConfig"] = undefined /*out*/;
-            inputs["routes"] = undefined /*out*/;
-            inputs["runtimeVersion"] = undefined /*out*/;
-            inputs["serviceAccount"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["acceleratorConfig"] = undefined /*out*/;
+            resourceInputs["autoScaling"] = undefined /*out*/;
+            resourceInputs["container"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deploymentUri"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["errorMessage"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["explanationConfig"] = undefined /*out*/;
+            resourceInputs["framework"] = undefined /*out*/;
+            resourceInputs["isDefault"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["lastMigrationModelId"] = undefined /*out*/;
+            resourceInputs["lastMigrationTime"] = undefined /*out*/;
+            resourceInputs["lastUseTime"] = undefined /*out*/;
+            resourceInputs["machineType"] = undefined /*out*/;
+            resourceInputs["manualScaling"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["packageUris"] = undefined /*out*/;
+            resourceInputs["predictionClass"] = undefined /*out*/;
+            resourceInputs["pythonVersion"] = undefined /*out*/;
+            resourceInputs["requestLoggingConfig"] = undefined /*out*/;
+            resourceInputs["routes"] = undefined /*out*/;
+            resourceInputs["runtimeVersion"] = undefined /*out*/;
+            resourceInputs["serviceAccount"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Version.__pulumiType, name, inputs, opts);
+        super(Version.__pulumiType, name, resourceInputs, opts);
     }
 }
 

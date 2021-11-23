@@ -64,27 +64,27 @@ export class Group extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: GroupArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["filter"] = args ? args.filter : undefined;
-            inputs["isCluster"] = args ? args.isCluster : undefined;
-            inputs["parentName"] = args ? args.parentName : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["validateOnly"] = args ? args.validateOnly : undefined;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["filter"] = args ? args.filter : undefined;
+            resourceInputs["isCluster"] = args ? args.isCluster : undefined;
+            resourceInputs["parentName"] = args ? args.parentName : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         } else {
-            inputs["displayName"] = undefined /*out*/;
-            inputs["filter"] = undefined /*out*/;
-            inputs["isCluster"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["parentName"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["filter"] = undefined /*out*/;
+            resourceInputs["isCluster"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["parentName"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Group.__pulumiType, name, inputs, opts);
+        super(Group.__pulumiType, name, resourceInputs, opts);
     }
 }
 

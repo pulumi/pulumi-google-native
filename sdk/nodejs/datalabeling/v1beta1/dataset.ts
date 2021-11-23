@@ -77,35 +77,35 @@ export class Dataset extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: DatasetArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["lastMigrateTime"] = args ? args.lastMigrateTime : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["blockingResources"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["dataItemCount"] = undefined /*out*/;
-            inputs["inputConfigs"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["lastMigrateTime"] = args ? args.lastMigrateTime : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["blockingResources"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["dataItemCount"] = undefined /*out*/;
+            resourceInputs["inputConfigs"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         } else {
-            inputs["blockingResources"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["dataItemCount"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["inputConfigs"] = undefined /*out*/;
-            inputs["lastMigrateTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["blockingResources"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["dataItemCount"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["inputConfigs"] = undefined /*out*/;
+            resourceInputs["lastMigrateTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Dataset.__pulumiType, name, inputs, opts);
+        super(Dataset.__pulumiType, name, resourceInputs, opts);
     }
 }
 

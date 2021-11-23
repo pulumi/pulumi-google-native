@@ -129,7 +129,7 @@ export class Organization extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: OrganizationArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.analyticsRegion === undefined) && !opts.urn) {
@@ -141,55 +141,55 @@ export class Organization extends pulumi.CustomResource {
             if ((!args || args.runtimeType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'runtimeType'");
             }
-            inputs["addonsConfig"] = args ? args.addonsConfig : undefined;
-            inputs["analyticsRegion"] = args ? args.analyticsRegion : undefined;
-            inputs["attributes"] = args ? args.attributes : undefined;
-            inputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
-            inputs["billingType"] = args ? args.billingType : undefined;
-            inputs["customerName"] = args ? args.customerName : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["portalDisabled"] = args ? args.portalDisabled : undefined;
-            inputs["properties"] = args ? args.properties : undefined;
-            inputs["runtimeDatabaseEncryptionKeyName"] = args ? args.runtimeDatabaseEncryptionKeyName : undefined;
-            inputs["runtimeType"] = args ? args.runtimeType : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["caCertificate"] = undefined /*out*/;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["environments"] = undefined /*out*/;
-            inputs["expiresAt"] = undefined /*out*/;
-            inputs["lastModifiedAt"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["project"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["addonsConfig"] = args ? args.addonsConfig : undefined;
+            resourceInputs["analyticsRegion"] = args ? args.analyticsRegion : undefined;
+            resourceInputs["attributes"] = args ? args.attributes : undefined;
+            resourceInputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
+            resourceInputs["billingType"] = args ? args.billingType : undefined;
+            resourceInputs["customerName"] = args ? args.customerName : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["portalDisabled"] = args ? args.portalDisabled : undefined;
+            resourceInputs["properties"] = args ? args.properties : undefined;
+            resourceInputs["runtimeDatabaseEncryptionKeyName"] = args ? args.runtimeDatabaseEncryptionKeyName : undefined;
+            resourceInputs["runtimeType"] = args ? args.runtimeType : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["caCertificate"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["environments"] = undefined /*out*/;
+            resourceInputs["expiresAt"] = undefined /*out*/;
+            resourceInputs["lastModifiedAt"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
-            inputs["addonsConfig"] = undefined /*out*/;
-            inputs["analyticsRegion"] = undefined /*out*/;
-            inputs["attributes"] = undefined /*out*/;
-            inputs["authorizedNetwork"] = undefined /*out*/;
-            inputs["billingType"] = undefined /*out*/;
-            inputs["caCertificate"] = undefined /*out*/;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["customerName"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["environments"] = undefined /*out*/;
-            inputs["expiresAt"] = undefined /*out*/;
-            inputs["lastModifiedAt"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["portalDisabled"] = undefined /*out*/;
-            inputs["project"] = undefined /*out*/;
-            inputs["properties"] = undefined /*out*/;
-            inputs["runtimeDatabaseEncryptionKeyName"] = undefined /*out*/;
-            inputs["runtimeType"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
+            resourceInputs["addonsConfig"] = undefined /*out*/;
+            resourceInputs["analyticsRegion"] = undefined /*out*/;
+            resourceInputs["attributes"] = undefined /*out*/;
+            resourceInputs["authorizedNetwork"] = undefined /*out*/;
+            resourceInputs["billingType"] = undefined /*out*/;
+            resourceInputs["caCertificate"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["customerName"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["environments"] = undefined /*out*/;
+            resourceInputs["expiresAt"] = undefined /*out*/;
+            resourceInputs["lastModifiedAt"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["portalDisabled"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["properties"] = undefined /*out*/;
+            resourceInputs["runtimeDatabaseEncryptionKeyName"] = undefined /*out*/;
+            resourceInputs["runtimeType"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Organization.__pulumiType, name, inputs, opts);
+        super(Organization.__pulumiType, name, resourceInputs, opts);
     }
 }
 

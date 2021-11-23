@@ -61,27 +61,27 @@ export class IngressRule extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: IngressRuleArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.appId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            inputs["action"] = args ? args.action : undefined;
-            inputs["appId"] = args ? args.appId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["sourceRange"] = args ? args.sourceRange : undefined;
+            resourceInputs["action"] = args ? args.action : undefined;
+            resourceInputs["appId"] = args ? args.appId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["sourceRange"] = args ? args.sourceRange : undefined;
         } else {
-            inputs["action"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["priority"] = undefined /*out*/;
-            inputs["sourceRange"] = undefined /*out*/;
+            resourceInputs["action"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["priority"] = undefined /*out*/;
+            resourceInputs["sourceRange"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(IngressRule.__pulumiType, name, inputs, opts);
+        super(IngressRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

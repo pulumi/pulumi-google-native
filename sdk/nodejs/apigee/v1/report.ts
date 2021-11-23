@@ -132,7 +132,7 @@ export class Report extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ReportArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.metrics === undefined) && !opts.urn) {
@@ -141,57 +141,57 @@ export class Report extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            inputs["chartType"] = args ? args.chartType : undefined;
-            inputs["comments"] = args ? args.comments : undefined;
-            inputs["dimensions"] = args ? args.dimensions : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["filter"] = args ? args.filter : undefined;
-            inputs["fromTime"] = args ? args.fromTime : undefined;
-            inputs["limit"] = args ? args.limit : undefined;
-            inputs["metrics"] = args ? args.metrics : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["offset"] = args ? args.offset : undefined;
-            inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["properties"] = args ? args.properties : undefined;
-            inputs["sortByCols"] = args ? args.sortByCols : undefined;
-            inputs["sortOrder"] = args ? args.sortOrder : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["timeUnit"] = args ? args.timeUnit : undefined;
-            inputs["toTime"] = args ? args.toTime : undefined;
-            inputs["topk"] = args ? args.topk : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["environment"] = undefined /*out*/;
-            inputs["lastModifiedAt"] = undefined /*out*/;
-            inputs["lastViewedAt"] = undefined /*out*/;
-            inputs["organization"] = undefined /*out*/;
+            resourceInputs["chartType"] = args ? args.chartType : undefined;
+            resourceInputs["comments"] = args ? args.comments : undefined;
+            resourceInputs["dimensions"] = args ? args.dimensions : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["filter"] = args ? args.filter : undefined;
+            resourceInputs["fromTime"] = args ? args.fromTime : undefined;
+            resourceInputs["limit"] = args ? args.limit : undefined;
+            resourceInputs["metrics"] = args ? args.metrics : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["offset"] = args ? args.offset : undefined;
+            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["properties"] = args ? args.properties : undefined;
+            resourceInputs["sortByCols"] = args ? args.sortByCols : undefined;
+            resourceInputs["sortOrder"] = args ? args.sortOrder : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["timeUnit"] = args ? args.timeUnit : undefined;
+            resourceInputs["toTime"] = args ? args.toTime : undefined;
+            resourceInputs["topk"] = args ? args.topk : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["environment"] = undefined /*out*/;
+            resourceInputs["lastModifiedAt"] = undefined /*out*/;
+            resourceInputs["lastViewedAt"] = undefined /*out*/;
+            resourceInputs["organization"] = undefined /*out*/;
         } else {
-            inputs["chartType"] = undefined /*out*/;
-            inputs["comments"] = undefined /*out*/;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["dimensions"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["environment"] = undefined /*out*/;
-            inputs["filter"] = undefined /*out*/;
-            inputs["fromTime"] = undefined /*out*/;
-            inputs["lastModifiedAt"] = undefined /*out*/;
-            inputs["lastViewedAt"] = undefined /*out*/;
-            inputs["limit"] = undefined /*out*/;
-            inputs["metrics"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["offset"] = undefined /*out*/;
-            inputs["organization"] = undefined /*out*/;
-            inputs["properties"] = undefined /*out*/;
-            inputs["sortByCols"] = undefined /*out*/;
-            inputs["sortOrder"] = undefined /*out*/;
-            inputs["tags"] = undefined /*out*/;
-            inputs["timeUnit"] = undefined /*out*/;
-            inputs["toTime"] = undefined /*out*/;
-            inputs["topk"] = undefined /*out*/;
+            resourceInputs["chartType"] = undefined /*out*/;
+            resourceInputs["comments"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["dimensions"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["environment"] = undefined /*out*/;
+            resourceInputs["filter"] = undefined /*out*/;
+            resourceInputs["fromTime"] = undefined /*out*/;
+            resourceInputs["lastModifiedAt"] = undefined /*out*/;
+            resourceInputs["lastViewedAt"] = undefined /*out*/;
+            resourceInputs["limit"] = undefined /*out*/;
+            resourceInputs["metrics"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["offset"] = undefined /*out*/;
+            resourceInputs["organization"] = undefined /*out*/;
+            resourceInputs["properties"] = undefined /*out*/;
+            resourceInputs["sortByCols"] = undefined /*out*/;
+            resourceInputs["sortOrder"] = undefined /*out*/;
+            resourceInputs["tags"] = undefined /*out*/;
+            resourceInputs["timeUnit"] = undefined /*out*/;
+            resourceInputs["toTime"] = undefined /*out*/;
+            resourceInputs["topk"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Report.__pulumiType, name, inputs, opts);
+        super(Report.__pulumiType, name, resourceInputs, opts);
     }
 }
 
