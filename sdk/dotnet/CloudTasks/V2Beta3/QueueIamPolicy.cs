@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta3
     public partial class QueueIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
-        /// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+        /// Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.
         /// </summary>
         [Output("bindings")]
         public Output<ImmutableArray<Outputs.BindingResponse>> Bindings { get; private set; } = null!;
@@ -84,7 +84,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta3
         private InputList<Inputs.BindingArgs>? _bindings;
 
         /// <summary>
-        /// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+        /// Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.
         /// </summary>
         public InputList<Inputs.BindingArgs> Bindings
         {

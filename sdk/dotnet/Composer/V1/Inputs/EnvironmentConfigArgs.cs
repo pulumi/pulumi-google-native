@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
         public Input<Inputs.EncryptionConfigArgs>? EncryptionConfig { get; set; }
 
         /// <summary>
+        /// Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        [Input("environmentSize")]
+        public Input<Pulumi.GoogleNative.Composer.V1.EnvironmentConfigEnvironmentSize>? EnvironmentSize { get; set; }
+
+        /// <summary>
         /// The configuration used for the Kubernetes Engine cluster.
         /// </summary>
         [Input("nodeConfig")]
@@ -58,10 +64,16 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
         public Input<Inputs.WebServerConfigArgs>? WebServerConfig { get; set; }
 
         /// <summary>
-        /// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        /// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
         /// </summary>
         [Input("webServerNetworkAccessControl")]
         public Input<Inputs.WebServerNetworkAccessControlArgs>? WebServerNetworkAccessControl { get; set; }
+
+        /// <summary>
+        /// Optional. The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. The GKE cluster runs Airflow scheduler, web server and workers workloads. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        [Input("workloadsConfig")]
+        public Input<Inputs.WorkloadsConfigArgs>? WorkloadsConfig { get; set; }
 
         public EnvironmentConfigArgs()
         {

@@ -89,6 +89,12 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         public Output<string> EncryptionState { get; private set; } = null!;
 
         /// <summary>
+        /// Attributes specific to Endpoint Verification devices.
+        /// </summary>
+        [Output("endpointVerificationSpecificAttributes")]
+        public Output<Outputs.EndpointVerificationSpecificAttributesResponse> EndpointVerificationSpecificAttributes { get; private set; } = null!;
+
+        /// <summary>
         /// IMEI number of device if GSM device; empty otherwise.
         /// </summary>
         [Output("imei")]

@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         public Output<Outputs.GridLayoutResponse> GridLayout { get; private set; } = null!;
 
         /// <summary>
+        /// Labels applied to the dashboard
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
         /// The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
         /// </summary>
         [Output("mosaicLayout")]
@@ -125,6 +131,18 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         /// </summary>
         [Input("gridLayout")]
         public Input<Inputs.GridLayoutArgs>? GridLayout { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Labels applied to the dashboard
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         /// <summary>
         /// The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.

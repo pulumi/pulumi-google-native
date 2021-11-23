@@ -73,6 +73,10 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         /// </summary>
         public readonly Outputs.GridLayoutResponse GridLayout;
         /// <summary>
+        /// Labels applied to the dashboard
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Labels;
+        /// <summary>
         /// The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
         /// </summary>
         public readonly Outputs.MosaicLayoutResponse MosaicLayout;
@@ -95,6 +99,8 @@ namespace Pulumi.GoogleNative.Monitoring.V1
 
             Outputs.GridLayoutResponse gridLayout,
 
+            ImmutableDictionary<string, string> labels,
+
             Outputs.MosaicLayoutResponse mosaicLayout,
 
             string name,
@@ -105,6 +111,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1
             DisplayName = displayName;
             Etag = etag;
             GridLayout = gridLayout;
+            Labels = labels;
             MosaicLayout = mosaicLayout;
             Name = name;
             RowLayout = rowLayout;

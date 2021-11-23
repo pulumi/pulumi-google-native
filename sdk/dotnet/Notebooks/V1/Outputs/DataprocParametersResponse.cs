@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
     public sealed class DataprocParametersResponse
     {
         /// <summary>
-        /// URI for cluster used to run Dataproc execution. Format: 'projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}
+        /// URI for cluster used to run Dataproc execution. Format: `projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}`
         /// </summary>
         public readonly string Cluster;
 

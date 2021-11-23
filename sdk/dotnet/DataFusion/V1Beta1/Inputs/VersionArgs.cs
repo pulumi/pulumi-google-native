@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1.Inputs
         public Input<bool>? DefaultVersion { get; set; }
 
         /// <summary>
+        /// Type represents the release availability of the version
+        /// </summary>
+        [Input("type")]
+        public Input<Pulumi.GoogleNative.DataFusion.V1Beta1.VersionType>? Type { get; set; }
+
+        /// <summary>
         /// The version number of the Data Fusion instance, such as '6.0.1.0'.
         /// </summary>
         [Input("versionNumber")]

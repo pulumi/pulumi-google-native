@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
     public sealed class PrivateEnvironmentConfigResponse
     {
         /// <summary>
+        /// Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork.
+        /// </summary>
+        public readonly string CloudComposerConnectionSubnetwork;
+        /// <summary>
         /// Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
         /// </summary>
         public readonly string CloudComposerNetworkIpv4CidrBlock;
@@ -51,6 +55,8 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
 
         [OutputConstructor]
         private PrivateEnvironmentConfigResponse(
+            string cloudComposerConnectionSubnetwork,
+
             string cloudComposerNetworkIpv4CidrBlock,
 
             string cloudComposerNetworkIpv4ReservedRange,
@@ -67,6 +73,7 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
 
             string webServerIpv4ReservedRange)
         {
+            CloudComposerConnectionSubnetwork = cloudComposerConnectionSubnetwork;
             CloudComposerNetworkIpv4CidrBlock = cloudComposerNetworkIpv4CidrBlock;
             CloudComposerNetworkIpv4ReservedRange = cloudComposerNetworkIpv4ReservedRange;
             CloudSqlIpv4CidrBlock = cloudSqlIpv4CidrBlock;

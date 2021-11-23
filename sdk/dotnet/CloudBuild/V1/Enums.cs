@@ -66,11 +66,11 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// </summary>
         public static BuildOptionsLogging LoggingUnspecified { get; } = new BuildOptionsLogging("LOGGING_UNSPECIFIED");
         /// <summary>
-        /// Cloud Logging and Cloud Storage logging are enabled.
+        /// Build logs are stored in Cloud Logging and Cloud Storage.
         /// </summary>
         public static BuildOptionsLogging Legacy { get; } = new BuildOptionsLogging("LEGACY");
         /// <summary>
-        /// Only Cloud Storage logging is enabled.
+        /// Build logs are stored in Cloud Storage.
         /// </summary>
         public static BuildOptionsLogging GcsOnly { get; } = new BuildOptionsLogging("GCS_ONLY");
         /// <summary>
@@ -78,7 +78,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// </summary>
         public static BuildOptionsLogging StackdriverOnly { get; } = new BuildOptionsLogging("STACKDRIVER_ONLY");
         /// <summary>
-        /// Only Cloud Logging is enabled. Note that logs for both the Cloud Console UI and Cloud SDK are based on Cloud Storage logs, so neither will provide logs if this option is chosen.
+        /// Build logs are stored in Cloud Logging. Selecting this option will not allow [logs streaming](https://cloud.google.com/sdk/gcloud/reference/builds/log).
         /// </summary>
         public static BuildOptionsLogging CloudLoggingOnly { get; } = new BuildOptionsLogging("CLOUD_LOGGING_ONLY");
         /// <summary>
@@ -468,6 +468,55 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is PullRequestFilterCommentControl other && Equals(other);
         public bool Equals(PullRequestFilterCommentControl other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+    /// </summary>
+    [EnumType]
+    public readonly struct TriggerEventType : IEquatable<TriggerEventType>
+    {
+        private readonly string _value;
+
+        private TriggerEventType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// EVENT_TYPE_UNSPECIFIED event_types are ignored.
+        /// </summary>
+        public static TriggerEventType EventTypeUnspecified { get; } = new TriggerEventType("EVENT_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// REPO corresponds to the supported VCS integrations.
+        /// </summary>
+        public static TriggerEventType Repo { get; } = new TriggerEventType("REPO");
+        /// <summary>
+        /// WEBHOOK corresponds to webhook triggers.
+        /// </summary>
+        public static TriggerEventType Webhook { get; } = new TriggerEventType("WEBHOOK");
+        /// <summary>
+        /// PUBSUB corresponds to pubsub triggers.
+        /// </summary>
+        public static TriggerEventType Pubsub { get; } = new TriggerEventType("PUBSUB");
+        /// <summary>
+        /// MANUAL corresponds to manual-only invoked triggers.
+        /// </summary>
+        public static TriggerEventType Manual { get; } = new TriggerEventType("MANUAL");
+
+        public static bool operator ==(TriggerEventType left, TriggerEventType right) => left.Equals(right);
+        public static bool operator !=(TriggerEventType left, TriggerEventType right) => !left.Equals(right);
+
+        public static explicit operator string(TriggerEventType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TriggerEventType other && Equals(other);
+        public bool Equals(TriggerEventType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

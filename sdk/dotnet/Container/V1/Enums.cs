@@ -176,6 +176,84 @@ namespace Pulumi.GoogleNative.Container.V1
     }
 
     /// <summary>
+    /// cluster_dns indicates which in-cluster DNS provider should be used.
+    /// </summary>
+    [EnumType]
+    public readonly struct DNSConfigClusterDns : IEquatable<DNSConfigClusterDns>
+    {
+        private readonly string _value;
+
+        private DNSConfigClusterDns(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value
+        /// </summary>
+        public static DNSConfigClusterDns ProviderUnspecified { get; } = new DNSConfigClusterDns("PROVIDER_UNSPECIFIED");
+        /// <summary>
+        /// Use GKE default DNS provider(kube-dns) for DNS resolution.
+        /// </summary>
+        public static DNSConfigClusterDns PlatformDefault { get; } = new DNSConfigClusterDns("PLATFORM_DEFAULT");
+        /// <summary>
+        /// Use CloudDNS for DNS resolution.
+        /// </summary>
+        public static DNSConfigClusterDns CloudDns { get; } = new DNSConfigClusterDns("CLOUD_DNS");
+
+        public static bool operator ==(DNSConfigClusterDns left, DNSConfigClusterDns right) => left.Equals(right);
+        public static bool operator !=(DNSConfigClusterDns left, DNSConfigClusterDns right) => !left.Equals(right);
+
+        public static explicit operator string(DNSConfigClusterDns value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DNSConfigClusterDns other && Equals(other);
+        public bool Equals(DNSConfigClusterDns other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// cluster_dns_scope indicates the scope of access to cluster DNS records.
+    /// </summary>
+    [EnumType]
+    public readonly struct DNSConfigClusterDnsScope : IEquatable<DNSConfigClusterDnsScope>
+    {
+        private readonly string _value;
+
+        private DNSConfigClusterDnsScope(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value, will be inferred as cluster scope.
+        /// </summary>
+        public static DNSConfigClusterDnsScope DnsScopeUnspecified { get; } = new DNSConfigClusterDnsScope("DNS_SCOPE_UNSPECIFIED");
+        /// <summary>
+        /// DNS records are accessible from within the VPC.
+        /// </summary>
+        public static DNSConfigClusterDnsScope VpcScope { get; } = new DNSConfigClusterDnsScope("VPC_SCOPE");
+
+        public static bool operator ==(DNSConfigClusterDnsScope left, DNSConfigClusterDnsScope right) => left.Equals(right);
+        public static bool operator !=(DNSConfigClusterDnsScope left, DNSConfigClusterDnsScope right) => !left.Equals(right);
+
+        public static explicit operator string(DNSConfigClusterDnsScope value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DNSConfigClusterDnsScope other && Equals(other);
+        public bool Equals(DNSConfigClusterDnsScope other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Denotes the state of etcd encryption.
     /// </summary>
     [EnumType]

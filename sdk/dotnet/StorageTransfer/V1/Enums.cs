@@ -8,6 +8,86 @@ using Pulumi;
 namespace Pulumi.GoogleNative.StorageTransfer.V1
 {
     [EnumType]
+    public readonly struct LoggingConfigLogActionStatesItem : IEquatable<LoggingConfigLogActionStatesItem>
+    {
+        private readonly string _value;
+
+        private LoggingConfigLogActionStatesItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value. This value is unused.
+        /// </summary>
+        public static LoggingConfigLogActionStatesItem LoggableActionStateUnspecified { get; } = new LoggingConfigLogActionStatesItem("LOGGABLE_ACTION_STATE_UNSPECIFIED");
+        /// <summary>
+        /// `LoggableAction` is completed successfully. `SUCCEEDED` actions are logged as INFO.
+        /// </summary>
+        public static LoggingConfigLogActionStatesItem Succeeded { get; } = new LoggingConfigLogActionStatesItem("SUCCEEDED");
+        /// <summary>
+        /// `LoggableAction` is terminated in an error state. `FAILED` actions are logged as ERROR.
+        /// </summary>
+        public static LoggingConfigLogActionStatesItem Failed { get; } = new LoggingConfigLogActionStatesItem("FAILED");
+
+        public static bool operator ==(LoggingConfigLogActionStatesItem left, LoggingConfigLogActionStatesItem right) => left.Equals(right);
+        public static bool operator !=(LoggingConfigLogActionStatesItem left, LoggingConfigLogActionStatesItem right) => !left.Equals(right);
+
+        public static explicit operator string(LoggingConfigLogActionStatesItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is LoggingConfigLogActionStatesItem other && Equals(other);
+        public bool Equals(LoggingConfigLogActionStatesItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct LoggingConfigLogActionsItem : IEquatable<LoggingConfigLogActionsItem>
+    {
+        private readonly string _value;
+
+        private LoggingConfigLogActionsItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value. This value is unused.
+        /// </summary>
+        public static LoggingConfigLogActionsItem LoggableActionUnspecified { get; } = new LoggingConfigLogActionsItem("LOGGABLE_ACTION_UNSPECIFIED");
+        /// <summary>
+        /// Finding objects to transfer e.g. listing objects of the source bucket.
+        /// </summary>
+        public static LoggingConfigLogActionsItem Find { get; } = new LoggingConfigLogActionsItem("FIND");
+        /// <summary>
+        /// Deleting objects at source or destination.
+        /// </summary>
+        public static LoggingConfigLogActionsItem Delete { get; } = new LoggingConfigLogActionsItem("DELETE");
+        /// <summary>
+        /// Copying objects from source to destination.
+        /// </summary>
+        public static LoggingConfigLogActionsItem Copy { get; } = new LoggingConfigLogActionsItem("COPY");
+
+        public static bool operator ==(LoggingConfigLogActionsItem left, LoggingConfigLogActionsItem right) => left.Equals(right);
+        public static bool operator !=(LoggingConfigLogActionsItem left, LoggingConfigLogActionsItem right) => !left.Equals(right);
+
+        public static explicit operator string(LoggingConfigLogActionsItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is LoggingConfigLogActionsItem other && Equals(other);
+        public bool Equals(LoggingConfigLogActionsItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
     public readonly struct NotificationConfigEventTypesItem : IEquatable<NotificationConfigEventTypesItem>
     {
         private readonly string _value;

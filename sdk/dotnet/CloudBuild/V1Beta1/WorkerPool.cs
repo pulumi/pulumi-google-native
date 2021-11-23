@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Beta1
     public partial class WorkerPool : Pulumi.CustomResource
     {
         /// <summary>
+        /// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        /// </summary>
+        [Output("annotations")]
+        public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
+
+        /// <summary>
         /// Time at which the request to create the `WorkerPool` was received.
         /// </summary>
         [Output("createTime")]
@@ -27,6 +33,18 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Beta1
         /// </summary>
         [Output("deleteTime")]
         public Output<string> DeleteTime { get; private set; } = null!;
+
+        /// <summary>
+        /// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
         /// The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
@@ -45,6 +63,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Beta1
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// A unique identifier for the `WorkerPool`.
+        /// </summary>
+        [Output("uid")]
+        public Output<string> Uid { get; private set; } = null!;
 
         /// <summary>
         /// Time at which the request to update the `WorkerPool` was received.
@@ -103,6 +127,24 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Beta1
 
     public sealed class WorkerPoolArgs : Pulumi.ResourceArgs
     {
+        [Input("annotations")]
+        private InputMap<string>? _annotations;
+
+        /// <summary>
+        /// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        /// </summary>
+        public InputMap<string> Annotations
+        {
+            get => _annotations ?? (_annotations = new InputMap<string>());
+            set => _annotations = value;
+        }
+
+        /// <summary>
+        /// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
         [Input("location")]
         public Input<string>? Location { get; set; }
 

@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1Beta.Outputs
         /// </summary>
         public readonly string Column;
         /// <summary>
-        /// The length in bytes of text in this character group, e.g. digits of a number, string length, or AST (abstract syntax tree) node.
+        /// The number of bytes of source code making up this stack trace element.
         /// </summary>
         public readonly string Length;
         /// <summary>

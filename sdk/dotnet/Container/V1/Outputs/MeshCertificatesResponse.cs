@@ -16,9 +16,15 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
     [OutputType]
     public sealed class MeshCertificatesResponse
     {
+        /// <summary>
+        /// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+        /// </summary>
+        public readonly bool EnableCertificates;
+
         [OutputConstructor]
-        private MeshCertificatesResponse()
+        private MeshCertificatesResponse(bool enableCertificates)
         {
+            EnableCertificates = enableCertificates;
         }
     }
 }

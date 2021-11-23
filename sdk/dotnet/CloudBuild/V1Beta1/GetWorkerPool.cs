@@ -63,6 +63,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Beta1
     public sealed class GetWorkerPoolResult
     {
         /// <summary>
+        /// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Annotations;
+        /// <summary>
         /// Time at which the request to create the `WorkerPool` was received.
         /// </summary>
         public readonly string CreateTime;
@@ -70,6 +74,14 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Beta1
         /// Time at which the request to delete the `WorkerPool` was received.
         /// </summary>
         public readonly string DeleteTime;
+        /// <summary>
+        /// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
+        /// </summary>
+        public readonly string DisplayName;
+        /// <summary>
+        /// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+        /// </summary>
+        public readonly string Etag;
         /// <summary>
         /// The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
         /// </summary>
@@ -83,6 +95,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Beta1
         /// </summary>
         public readonly string State;
         /// <summary>
+        /// A unique identifier for the `WorkerPool`.
+        /// </summary>
+        public readonly string Uid;
+        /// <summary>
         /// Time at which the request to update the `WorkerPool` was received.
         /// </summary>
         public readonly string UpdateTime;
@@ -93,9 +109,15 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Beta1
 
         [OutputConstructor]
         private GetWorkerPoolResult(
+            ImmutableDictionary<string, string> annotations,
+
             string createTime,
 
             string deleteTime,
+
+            string displayName,
+
+            string etag,
 
             string name,
 
@@ -103,15 +125,21 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Beta1
 
             string state,
 
+            string uid,
+
             string updateTime,
 
             Outputs.WorkerConfigResponse workerConfig)
         {
+            Annotations = annotations;
             CreateTime = createTime;
             DeleteTime = deleteTime;
+            DisplayName = displayName;
+            Etag = etag;
             Name = name;
             NetworkConfig = networkConfig;
             State = state;
+            Uid = uid;
             UpdateTime = updateTime;
             WorkerConfig = workerConfig;
         }

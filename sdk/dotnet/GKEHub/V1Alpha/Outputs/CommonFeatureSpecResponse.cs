@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
     public sealed class CommonFeatureSpecResponse
     {
         /// <summary>
+        /// Appdevexperience specific spec.
+        /// </summary>
+        public readonly Outputs.AppDevExperienceFeatureSpecResponse Appdevexperience;
+        /// <summary>
         /// Cloud Audit Logging-specific spec.
         /// </summary>
         public readonly Outputs.CloudAuditLoggingFeatureSpecResponse Cloudauditlogging;
@@ -27,10 +31,13 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
 
         [OutputConstructor]
         private CommonFeatureSpecResponse(
+            Outputs.AppDevExperienceFeatureSpecResponse appdevexperience,
+
             Outputs.CloudAuditLoggingFeatureSpecResponse cloudauditlogging,
 
             Outputs.MultiClusterIngressFeatureSpecResponse multiclusteringress)
         {
+            Appdevexperience = appdevexperience;
             Cloudauditlogging = cloudauditlogging;
             Multiclusteringress = multiclusteringress;
         }

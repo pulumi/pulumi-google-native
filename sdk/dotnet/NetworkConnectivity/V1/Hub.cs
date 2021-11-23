@@ -72,7 +72,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Hub(string name, HubArgs? args = null, CustomResourceOptions? options = null)
+        public Hub(string name, HubArgs args, CustomResourceOptions? options = null)
             : base("google-native:networkconnectivity/v1:Hub", name, args ?? new HubArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -115,8 +115,8 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("hubId")]
-        public Input<string>? HubId { get; set; }
+        [Input("hubId", required: true)]
+        public Input<string> HubId { get; set; } = null!;
 
         [Input("labels")]
         private InputMap<string>? _labels;

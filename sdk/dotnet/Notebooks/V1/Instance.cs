@@ -149,7 +149,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public Output<bool> NoRemoveDataDisk { get; private set; } = null!;
 
         /// <summary>
-        /// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
+        /// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
         /// </summary>
         [Output("postStartupScript")]
         public Output<string> PostStartupScript { get; private set; } = null!;
@@ -179,7 +179,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public Output<ImmutableArray<string>> ServiceAccountScopes { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+        /// Optional. Shielded VM configuration. [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
         /// </summary>
         [Output("shieldedInstanceConfig")]
         public Output<Outputs.ShieldedInstanceConfigResponse> ShieldedInstanceConfig { get; private set; } = null!;
@@ -404,7 +404,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public Input<bool>? NoRemoveDataDisk { get; set; }
 
         /// <summary>
-        /// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
+        /// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
         /// </summary>
         [Input("postStartupScript")]
         public Input<string>? PostStartupScript { get; set; }
@@ -437,7 +437,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         }
 
         /// <summary>
-        /// Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+        /// Optional. Shielded VM configuration. [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
         /// </summary>
         [Input("shieldedInstanceConfig")]
         public Input<Inputs.ShieldedInstanceConfigArgs>? ShieldedInstanceConfig { get; set; }

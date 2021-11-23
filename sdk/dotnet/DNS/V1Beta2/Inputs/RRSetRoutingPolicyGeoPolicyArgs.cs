@@ -12,18 +12,6 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
 
     public sealed class RRSetRoutingPolicyGeoPolicyArgs : Pulumi.ResourceArgs
     {
-        [Input("failovers")]
-        private InputList<Inputs.RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs>? _failovers;
-
-        /// <summary>
-        /// If the health check for the primary target for a geo location returns an unhealthy status, the failover target is returned instead. This failover configuration is not mandatory. If a failover is not provided, the primary target won't be healthchecked, and it returns the primarily configured rrdata irrespective of whether it is healthy or not.
-        /// </summary>
-        public InputList<Inputs.RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs> Failovers
-        {
-            get => _failovers ?? (_failovers = new InputList<Inputs.RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs>());
-            set => _failovers = value;
-        }
-
         [Input("items")]
         private InputList<Inputs.RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs>? _items;
 

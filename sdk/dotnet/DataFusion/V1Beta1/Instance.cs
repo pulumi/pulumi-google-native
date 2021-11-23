@@ -59,6 +59,12 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// If the instance state is DISABLED, the reason for disabling the instance.
+        /// </summary>
+        [Output("disabledReason")]
+        public Output<ImmutableArray<string>> DisabledReason { get; private set; } = null!;
+
+        /// <summary>
         /// Display name for an instance.
         /// </summary>
         [Output("displayName")]
@@ -283,8 +289,8 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         [Input("enableStackdriverMonitoring")]
         public Input<bool>? EnableStackdriverMonitoring { get; set; }
 
-        [Input("instanceId")]
-        public Input<string>? InstanceId { get; set; }
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
 
         [Input("labels")]
         private InputMap<string>? _labels;

@@ -70,6 +70,12 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public Input<Inputs.GooglePrivacyDlpV2ReplaceValueConfigArgs>? ReplaceConfig { get; set; }
 
         /// <summary>
+        /// Replace with a value randomly drawn (with replacement) from a dictionary.
+        /// </summary>
+        [Input("replaceDictionaryConfig")]
+        public Input<Inputs.GooglePrivacyDlpV2ReplaceDictionaryConfigArgs>? ReplaceDictionaryConfig { get; set; }
+
+        /// <summary>
         /// Replace with infotype
         /// </summary>
         [Input("replaceWithInfoTypeConfig")]

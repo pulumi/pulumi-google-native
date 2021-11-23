@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1.Outputs
         /// </summary>
         public readonly string EndTime;
         /// <summary>
-        /// The time deadline any schedule start time cannot go beyond, including reschedule.
+        /// The deadline that the maintenance schedule start time can not go beyond, including reschedule.
         /// </summary>
         public readonly string ScheduleDeadlineTime;
         /// <summary>

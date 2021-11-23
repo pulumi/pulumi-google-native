@@ -15,6 +15,9 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
     [GoogleNativeResourceType("google-native:dns/v1beta2:ManagedZone")]
     public partial class ManagedZone : Pulumi.CustomResource
     {
+        [Output("cloudLoggingConfig")]
+        public Output<Outputs.ManagedZoneCloudLoggingConfigResponse> CloudLoggingConfig { get; private set; } = null!;
+
         /// <summary>
         /// The time that this resource was created on the server. This is in RFC3339 text format. Output only.
         /// </summary>
@@ -149,6 +152,9 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
     {
         [Input("clientOperationId")]
         public Input<string>? ClientOperationId { get; set; }
+
+        [Input("cloudLoggingConfig")]
+        public Input<Inputs.ManagedZoneCloudLoggingConfigArgs>? CloudLoggingConfig { get; set; }
 
         /// <summary>
         /// The time that this resource was created on the server. This is in RFC3339 text format. Output only.

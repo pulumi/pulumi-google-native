@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// Time at which the Connectors Platform add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
+        /// Time at which the Connectors Platform add-on expires in milliseconds since epoch. If unspecified, the add-on will never expire.
         /// </summary>
         public readonly string ExpiresAt;
 

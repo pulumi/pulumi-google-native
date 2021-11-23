@@ -109,7 +109,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         /// </summary>
         public readonly Outputs.ResourceResponse Resource;
         /// <summary>
-        /// Describes a specific SPDX Document.
+        /// Describes a specific software bill of materials document.
         /// </summary>
         public readonly Outputs.DocumentOccurrenceResponse Sbom;
         /// <summary>
@@ -119,7 +119,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         /// <summary>
         /// Describes a specific SPDX Package.
         /// </summary>
-        public readonly Outputs.PackageOccurrenceResponse SpdxPackage;
+        public readonly Outputs.PackageInfoOccurrenceResponse SpdxPackage;
         /// <summary>
         /// Describes a specific SPDX Relationship.
         /// </summary>
@@ -165,7 +165,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
 
             Outputs.FileOccurrenceResponse spdxFile,
 
-            Outputs.PackageOccurrenceResponse spdxPackage,
+            Outputs.PackageInfoOccurrenceResponse spdxPackage,
 
             Outputs.RelationshipOccurrenceResponse spdxRelationship,
 

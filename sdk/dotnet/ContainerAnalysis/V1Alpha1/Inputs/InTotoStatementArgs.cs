@@ -16,16 +16,29 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     public sealed class InTotoStatementArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// "https://in-toto.io/Provenance/v0.1" for InTotoProvenance.
+        /// "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
         /// </summary>
         [Input("predicateType")]
         public Input<string>? PredicateType { get; set; }
 
+        /// <summary>
+        /// provenance is a predicate of type intotoprovenance
+        /// </summary>
         [Input("provenance")]
         public Input<Inputs.InTotoProvenanceArgs>? Provenance { get; set; }
 
+        /// <summary>
+        /// slsa_provenance is a predicate of type slsaProvenance
+        /// </summary>
+        [Input("slsaProvenance")]
+        public Input<Inputs.SlsaProvenanceArgs>? SlsaProvenance { get; set; }
+
         [Input("subject")]
         private InputList<Inputs.SubjectArgs>? _subject;
+
+        /// <summary>
+        /// subject is the subjects of the intoto statement
+        /// </summary>
         public InputList<Inputs.SubjectArgs> Subject
         {
             get => _subject ?? (_subject = new InputList<Inputs.SubjectArgs>());

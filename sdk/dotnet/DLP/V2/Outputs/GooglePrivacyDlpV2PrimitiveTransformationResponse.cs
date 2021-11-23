@@ -53,6 +53,10 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2ReplaceValueConfigResponse ReplaceConfig;
         /// <summary>
+        /// Replace with a value randomly drawn (with replacement) from a dictionary.
+        /// </summary>
+        public readonly Outputs.GooglePrivacyDlpV2ReplaceDictionaryConfigResponse ReplaceDictionaryConfig;
+        /// <summary>
         /// Replace with infotype
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponse ReplaceWithInfoTypeConfig;
@@ -81,6 +85,8 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
 
             Outputs.GooglePrivacyDlpV2ReplaceValueConfigResponse replaceConfig,
 
+            Outputs.GooglePrivacyDlpV2ReplaceDictionaryConfigResponse replaceDictionaryConfig,
+
             Outputs.GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponse replaceWithInfoTypeConfig,
 
             Outputs.GooglePrivacyDlpV2TimePartConfigResponse timePartConfig)
@@ -94,6 +100,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
             FixedSizeBucketingConfig = fixedSizeBucketingConfig;
             RedactConfig = redactConfig;
             ReplaceConfig = replaceConfig;
+            ReplaceDictionaryConfig = replaceDictionaryConfig;
             ReplaceWithInfoTypeConfig = replaceWithInfoTypeConfig;
             TimePartConfig = timePartConfig;
         }

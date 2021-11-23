@@ -131,7 +131,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// <summary>
         /// Describes a specific SPDX Package.
         /// </summary>
-        public readonly Outputs.PackageOccurrenceResponse SpdxPackage;
+        public readonly Outputs.PackageInfoOccurrenceResponse SpdxPackage;
         /// <summary>
         /// Describes a specific relationship between SPDX elements.
         /// </summary>
@@ -187,7 +187,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
 
             Outputs.FileOccurrenceResponse spdxFile,
 
-            Outputs.PackageOccurrenceResponse spdxPackage,
+            Outputs.PackageInfoOccurrenceResponse spdxPackage,
 
             Outputs.RelationshipOccurrenceResponse spdxRelationship,
 

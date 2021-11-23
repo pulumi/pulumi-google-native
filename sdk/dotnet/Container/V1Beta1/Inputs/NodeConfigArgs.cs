@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         }
 
         /// <summary>
+        /// Advanced features for the Compute Engine VM.
+        /// </summary>
+        [Input("advancedMachineFeatures")]
+        public Input<Inputs.AdvancedMachineFeaturesArgs>? AdvancedMachineFeatures { get; set; }
+
+        /// <summary>
         ///  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         /// </summary>
         [Input("bootDiskKmsKey")]
@@ -50,6 +56,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         /// </summary>
         [Input("ephemeralStorageConfig")]
         public Input<Inputs.EphemeralStorageConfigArgs>? EphemeralStorageConfig { get; set; }
+
+        /// <summary>
+        /// GCFS (Google Container File System) configs.
+        /// </summary>
+        [Input("gcfsConfig")]
+        public Input<Inputs.GcfsConfigArgs>? GcfsConfig { get; set; }
 
         /// <summary>
         /// Enable or disable gvnic on the node pool.

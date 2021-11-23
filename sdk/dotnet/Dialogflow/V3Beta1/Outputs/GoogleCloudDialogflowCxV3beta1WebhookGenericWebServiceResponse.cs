@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
     public sealed class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse
     {
         /// <summary>
+        /// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile &lt;(printf "\nsubjectAltName='DNS:www.example.com'")
+        /// </summary>
+        public readonly ImmutableArray<string> AllowedCaCerts;
+        /// <summary>
         /// The password for HTTP Basic authentication.
         /// </summary>
         public readonly string Password;
@@ -35,6 +39,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
 
         [OutputConstructor]
         private GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse(
+            ImmutableArray<string> allowedCaCerts,
+
             string password,
 
             ImmutableDictionary<string, string> requestHeaders,
@@ -43,6 +49,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
 
             string username)
         {
+            AllowedCaCerts = allowedCaCerts;
             Password = password;
             RequestHeaders = requestHeaders;
             Uri = uri;

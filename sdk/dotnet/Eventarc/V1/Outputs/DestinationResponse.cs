@@ -20,11 +20,19 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Outputs
         /// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
         /// </summary>
         public readonly Outputs.CloudRunResponse CloudRun;
+        /// <summary>
+        /// A GKE service capable of receiving events. The service should be running in the same project of the trigger.
+        /// </summary>
+        public readonly Outputs.GKEResponse Gke;
 
         [OutputConstructor]
-        private DestinationResponse(Outputs.CloudRunResponse cloudRun)
+        private DestinationResponse(
+            Outputs.CloudRunResponse cloudRun,
+
+            Outputs.GKEResponse gke)
         {
             CloudRun = cloudRun;
+            Gke = gke;
         }
     }
 }

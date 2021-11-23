@@ -21,6 +21,12 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Optional version name for this InfoType.
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
         public GooglePrivacyDlpV2InfoTypeArgs()
         {
         }

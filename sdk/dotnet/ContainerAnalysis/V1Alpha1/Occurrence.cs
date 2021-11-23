@@ -128,7 +128,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// Describes a specific SPDX Package.
         /// </summary>
         [Output("spdxPackage")]
-        public Output<Outputs.PackageOccurrenceResponse> SpdxPackage { get; private set; } = null!;
+        public Output<Outputs.PackageInfoOccurrenceResponse> SpdxPackage { get; private set; } = null!;
 
         /// <summary>
         /// Describes a specific relationship between SPDX elements.
@@ -296,7 +296,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// Describes a specific SPDX Package.
         /// </summary>
         [Input("spdxPackage")]
-        public Input<Inputs.PackageOccurrenceArgs>? SpdxPackage { get; set; }
+        public Input<Inputs.PackageInfoOccurrenceArgs>? SpdxPackage { get; set; }
 
         /// <summary>
         /// Describes a specific relationship between SPDX elements.

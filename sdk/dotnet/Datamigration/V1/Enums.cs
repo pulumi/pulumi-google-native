@@ -413,7 +413,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// </summary>
         public static MigrationJobState Creating { get; } = new MigrationJobState("CREATING");
         /// <summary>
-        /// The migration job is created, not started and is fully editable.
+        /// The migration job is created and not started.
         /// </summary>
         public static MigrationJobState NotStarted { get; } = new MigrationJobState("NOT_STARTED");
         /// <summary>

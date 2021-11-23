@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
         /// </summary>
         public readonly string CooldownPeriod;
         /// <summary>
+        /// Optional. Spark Standalone autoscaling configuration
+        /// </summary>
+        public readonly Outputs.SparkStandaloneAutoscalingConfigResponse SparkStandaloneConfig;
+        /// <summary>
         /// Optional. YARN autoscaling configuration.
         /// </summary>
         public readonly Outputs.BasicYarnAutoscalingConfigResponse YarnConfig;
@@ -29,9 +33,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
         private BasicAutoscalingAlgorithmResponse(
             string cooldownPeriod,
 
+            Outputs.SparkStandaloneAutoscalingConfigResponse sparkStandaloneConfig,
+
             Outputs.BasicYarnAutoscalingConfigResponse yarnConfig)
         {
             CooldownPeriod = cooldownPeriod;
+            SparkStandaloneConfig = sparkStandaloneConfig;
             YarnConfig = yarnConfig;
         }
     }

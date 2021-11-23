@@ -33,12 +33,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         [Input("target")]
         public Input<string>? Target { get; set; }
 
-        /// <summary>
-        /// The type of relationship between the source and target SPDX elements
-        /// </summary>
-        [Input("type")]
-        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.RelationshipOccurrenceType>? Type { get; set; }
-
         public RelationshipOccurrenceArgs()
         {
         }

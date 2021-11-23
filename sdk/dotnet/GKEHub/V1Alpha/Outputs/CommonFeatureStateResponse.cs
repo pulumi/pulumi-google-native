@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
     public sealed class CommonFeatureStateResponse
     {
         /// <summary>
+        /// Appdevexperience specific state.
+        /// </summary>
+        public readonly Outputs.AppDevExperienceFeatureStateResponse Appdevexperience;
+        /// <summary>
         /// Service Mesh-specific state.
         /// </summary>
         public readonly Outputs.ServiceMeshFeatureStateResponse Servicemesh;
@@ -27,10 +31,13 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
 
         [OutputConstructor]
         private CommonFeatureStateResponse(
+            Outputs.AppDevExperienceFeatureStateResponse appdevexperience,
+
             Outputs.ServiceMeshFeatureStateResponse servicemesh,
 
             Outputs.FeatureStateResponse state)
         {
+            Appdevexperience = appdevexperience;
             Servicemesh = servicemesh;
             State = state;
         }

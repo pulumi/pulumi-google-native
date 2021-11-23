@@ -15,6 +15,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// </summary>
     public sealed class NodeConfigDefaultsArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// GCFS (Google Container File System, a.k.a Riptide) options.
+        /// </summary>
+        [Input("gcfsConfig")]
+        public Input<Inputs.GcfsConfigArgs>? GcfsConfig { get; set; }
+
         public NodeConfigDefaultsArgs()
         {
         }

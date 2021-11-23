@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1
     {
         public readonly Outputs.BasicAutoscalingAlgorithmResponse BasicAlgorithm;
         /// <summary>
+        /// Optional. The labels to associate with this autoscaling policy. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with an autoscaling policy.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Labels;
+        /// <summary>
         /// The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
         /// </summary>
         public readonly string Name;
@@ -80,6 +84,8 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         private GetAutoscalingPolicyResult(
             Outputs.BasicAutoscalingAlgorithmResponse basicAlgorithm,
 
+            ImmutableDictionary<string, string> labels,
+
             string name,
 
             Outputs.InstanceGroupAutoscalingPolicyConfigResponse secondaryWorkerConfig,
@@ -87,6 +93,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
             Outputs.InstanceGroupAutoscalingPolicyConfigResponse workerConfig)
         {
             BasicAlgorithm = basicAlgorithm;
+            Labels = labels;
             Name = name;
             SecondaryWorkerConfig = secondaryWorkerConfig;
             WorkerConfig = workerConfig;

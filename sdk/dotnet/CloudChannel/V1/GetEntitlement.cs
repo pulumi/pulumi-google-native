@@ -83,7 +83,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         /// </summary>
         public readonly string Offer;
         /// <summary>
-        /// Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
+        /// Extended entitlement parameters. When creating an entitlement, valid parameter names and values are defined in the Offer.parameter_definitions. The response may include the following output-only Parameters: - assigned_units: The number of licenses assigned to users. - max_units: The maximum assignable units for a flexible offer. - num_units: The total commitment for commitment-based offers.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudChannelV1ParameterResponse> Parameters;
         /// <summary>

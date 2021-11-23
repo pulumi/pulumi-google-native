@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
     public partial class Cluster : Pulumi.CustomResource
     {
         /// <summary>
+        /// Configuration for this cluster.
+        /// </summary>
+        [Output("clusterConfig")]
+        public Output<Outputs.ClusterConfigResponse> ClusterConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
         /// </summary>
         [Output("defaultStorageType")]
@@ -96,6 +102,12 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
 
     public sealed class ClusterArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configuration for this cluster.
+        /// </summary>
+        [Input("clusterConfig")]
+        public Input<Inputs.ClusterConfigArgs>? ClusterConfig { get; set; }
+
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
