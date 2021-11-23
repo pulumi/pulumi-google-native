@@ -80,6 +80,10 @@ var resourceNameByPathOverrides = map[string]string{
 	"v1beta1/folders/{foldersId}/locations/{locationsId}/replays":             "FolderReplay",
 	"v1beta1/organizations/{organizationsId}/locations/{locationsId}/replays": "OrganizationReplay",
 
+	// Security Center.
+	"v1/folders/{foldersId}/muteConfigs":             "",
+	"v1/organizations/{organizationsId}/muteConfigs": "OrganizationMuteConfig",
+
 	// Storage.
 	"b/{bucket}/o": "BucketObject",
 }
