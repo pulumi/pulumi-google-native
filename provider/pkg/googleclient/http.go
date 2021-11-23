@@ -111,7 +111,9 @@ func (c *GoogleClient) RequestWithTimeout(method, rawurl string, body map[string
 		return nil, err
 	}
 
-	debugResp, _ := httputil.DumpResponse(res, true)
+	// TODO: Re-enable response dump when https://github.com/golang/go/issues/49366 fix
+	// propagates to our current Go version.
+	debugResp, _ := httputil.DumpResponse(res, false)
 	logging.V(9).Infof(responseFormat, res.Request.Method, res.Request.URL, prettyPrintJsonLines(debugResp))
 
 	if err := googleapi.CheckResponse(res); err != nil {
@@ -191,7 +193,9 @@ func (c *GoogleClient) UploadWithTimeout(method, rawurl string, metadata map[str
 		return nil, err
 	}
 
-	debugResp, _ := httputil.DumpResponse(res, true)
+	// TODO: Re-enable response dump when https://github.com/golang/go/issues/49366 fix
+	// propagates to our current Go version.
+	debugResp, _ := httputil.DumpResponse(res, false)
 	logging.V(9).Infof(responseFormat, res.Request.Method, res.Request.URL, prettyPrintJsonLines(debugResp))
 
 	if err := googleapi.CheckResponse(res); err != nil {
