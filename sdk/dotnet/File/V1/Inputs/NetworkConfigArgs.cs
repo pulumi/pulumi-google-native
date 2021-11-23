@@ -15,6 +15,12 @@ namespace Pulumi.GoogleNative.File.V1.Inputs
     /// </summary>
     public sealed class NetworkConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
+        /// </summary>
+        [Input("connectMode")]
+        public Input<Pulumi.GoogleNative.File.V1.NetworkConfigConnectMode>? ConnectMode { get; set; }
+
         [Input("modes")]
         private InputList<Pulumi.GoogleNative.File.V1.NetworkConfigModesItem>? _modes;
 
@@ -34,7 +40,7 @@ namespace Pulumi.GoogleNative.File.V1.Inputs
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// A /29 CIDR block in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
+        /// Optional, reserved_ip_range can have one of the following two types of values. * CIDR range value when using DIRECT_PEERING connect mode. * [Allocated IP address range](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address) when using PRIVATE_SERVICE_ACCESS connect mode. When the name of an allocated IP address range is specified, it must be one of the ranges associated with the private service access connection. When specified as a direct CIDR value, it must be a /29 CIDR block for Basic tier or a /24 CIDR block for High Scale or Enterprise tier in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/24. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
         /// </summary>
         [Input("reservedIpRange")]
         public Input<string>? ReservedIpRange { get; set; }

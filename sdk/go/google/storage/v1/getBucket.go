@@ -32,6 +32,8 @@ type LookupBucketArgs struct {
 type LookupBucketResult struct {
 	// Access controls on the bucket.
 	Acl []BucketAccessControlResponse `pulumi:"acl"`
+	// The bucket's Autoclass configuration.
+	Autoclass BucketAutoclassResponse `pulumi:"autoclass"`
 	// The bucket's billing configuration.
 	Billing BucketBillingResponse `pulumi:"billing"`
 	// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
@@ -127,6 +129,11 @@ func (o LookupBucketResultOutput) ToLookupBucketResultOutputWithContext(ctx cont
 // Access controls on the bucket.
 func (o LookupBucketResultOutput) Acl() BucketAccessControlResponseArrayOutput {
 	return o.ApplyT(func(v LookupBucketResult) []BucketAccessControlResponse { return v.Acl }).(BucketAccessControlResponseArrayOutput)
+}
+
+// The bucket's Autoclass configuration.
+func (o LookupBucketResultOutput) Autoclass() BucketAutoclassResponseOutput {
+	return o.ApplyT(func(v LookupBucketResult) BucketAutoclassResponse { return v.Autoclass }).(BucketAutoclassResponseOutput)
 }
 
 // The bucket's billing configuration.

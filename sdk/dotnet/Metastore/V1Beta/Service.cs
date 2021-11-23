@@ -82,6 +82,12 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
+        /// Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+        /// </summary>
+        [Output("networkConfig")]
+        public Output<Outputs.NetworkConfigResponse> NetworkConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The TCP port at which the metastore service is reached. Default: 9083.
         /// </summary>
         [Output("port")]
@@ -218,6 +224,12 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
+
+        /// <summary>
+        /// Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+        /// </summary>
+        [Input("networkConfig")]
+        public Input<Inputs.NetworkConfigArgs>? NetworkConfig { get; set; }
 
         /// <summary>
         /// The TCP port at which the metastore service is reached. Default: 9083.

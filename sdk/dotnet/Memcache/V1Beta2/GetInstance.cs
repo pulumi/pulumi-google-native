@@ -111,7 +111,7 @@ namespace Pulumi.GoogleNative.Memcache.V1Beta2
         /// </summary>
         public readonly int NodeCount;
         /// <summary>
-        /// Optional: User defined parameters to apply to the memcached process on each node.
+        /// User defined parameters to apply to the memcached process on each node.
         /// </summary>
         public readonly Outputs.MemcacheParametersResponse Parameters;
         /// <summary>

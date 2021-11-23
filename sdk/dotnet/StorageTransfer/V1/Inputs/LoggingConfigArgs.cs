@@ -21,6 +21,30 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         [Input("enableOnpremGcsTransferLogs")]
         public Input<bool>? EnableOnpremGcsTransferLogs { get; set; }
 
+        [Input("logActionStates")]
+        private InputList<Pulumi.GoogleNative.StorageTransfer.V1.LoggingConfigLogActionStatesItem>? _logActionStates;
+
+        /// <summary>
+        /// States in which `log_actions` are logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+        /// </summary>
+        public InputList<Pulumi.GoogleNative.StorageTransfer.V1.LoggingConfigLogActionStatesItem> LogActionStates
+        {
+            get => _logActionStates ?? (_logActionStates = new InputList<Pulumi.GoogleNative.StorageTransfer.V1.LoggingConfigLogActionStatesItem>());
+            set => _logActionStates = value;
+        }
+
+        [Input("logActions")]
+        private InputList<Pulumi.GoogleNative.StorageTransfer.V1.LoggingConfigLogActionsItem>? _logActions;
+
+        /// <summary>
+        /// Actions to be logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+        /// </summary>
+        public InputList<Pulumi.GoogleNative.StorageTransfer.V1.LoggingConfigLogActionsItem> LogActions
+        {
+            get => _logActions ?? (_logActions = new InputList<Pulumi.GoogleNative.StorageTransfer.V1.LoggingConfigLogActionsItem>());
+            set => _logActions = value;
+        }
+
         public LoggingConfigArgs()
         {
         }

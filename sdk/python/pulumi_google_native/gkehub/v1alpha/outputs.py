@@ -11,8 +11,11 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'AppDevExperienceFeatureSpecResponse',
+    'AppDevExperienceFeatureStateResponse',
     'AuditConfigResponse',
     'AuditLogConfigResponse',
+    'AuthorityResponse',
     'BindingResponse',
     'CloudAuditLoggingFeatureSpecResponse',
     'CommonFeatureSpecResponse',
@@ -20,12 +23,73 @@ __all__ = [
     'ExprResponse',
     'FeatureResourceStateResponse',
     'FeatureStateResponse',
+    'GkeClusterResponse',
+    'KubernetesMetadataResponse',
+    'KubernetesResourceResponse',
+    'MembershipEndpointResponse',
+    'MembershipStateResponse',
+    'MultiCloudClusterResponse',
     'MultiClusterIngressFeatureSpecResponse',
+    'OnPremClusterResponse',
+    'ResourceManifestResponse',
+    'ResourceOptionsResponse',
     'ServiceMeshAnalysisMessageBaseResponse',
     'ServiceMeshAnalysisMessageResponse',
     'ServiceMeshFeatureStateResponse',
     'ServiceMeshTypeResponse',
+    'StatusResponse',
 ]
+
+@pulumi.output_type
+class AppDevExperienceFeatureSpecResponse(dict):
+    """
+    Spec for App Dev Experience Feature.
+    """
+    def __init__(__self__):
+        """
+        Spec for App Dev Experience Feature.
+        """
+        pass
+
+
+@pulumi.output_type
+class AppDevExperienceFeatureStateResponse(dict):
+    """
+    State for App Dev Exp Feature.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkingInstallSucceeded":
+            suggest = "networking_install_succeeded"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppDevExperienceFeatureStateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppDevExperienceFeatureStateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppDevExperienceFeatureStateResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 networking_install_succeeded: 'outputs.StatusResponse'):
+        """
+        State for App Dev Exp Feature.
+        :param 'StatusResponse' networking_install_succeeded: Status of subcomponent that detects configured Service Mesh resources.
+        """
+        pulumi.set(__self__, "networking_install_succeeded", networking_install_succeeded)
+
+    @property
+    @pulumi.getter(name="networkingInstallSucceeded")
+    def networking_install_succeeded(self) -> 'outputs.StatusResponse':
+        """
+        Status of subcomponent that detects configured Service Mesh resources.
+        """
+        return pulumi.get(self, "networking_install_succeeded")
+
 
 @pulumi.output_type
 class AuditConfigResponse(dict):
@@ -130,19 +194,95 @@ class AuditLogConfigResponse(dict):
 
 
 @pulumi.output_type
+class AuthorityResponse(dict):
+    """
+    Authority encodes how Google will recognize identities from this Membership. See the workload identity documentation for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProvider":
+            suggest = "identity_provider"
+        elif key == "oidcJwks":
+            suggest = "oidc_jwks"
+        elif key == "workloadIdentityPool":
+            suggest = "workload_identity_pool"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthorityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthorityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthorityResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identity_provider: str,
+                 issuer: str,
+                 oidc_jwks: str,
+                 workload_identity_pool: str):
+        """
+        Authority encodes how Google will recognize identities from this Membership. See the workload identity documentation for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+        :param str identity_provider: An identity provider that reflects the `issuer` in the workload identity pool.
+        :param str issuer: Optional. A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and be a valid URL with length <2000 characters. If set, then Google will allow valid OIDC tokens from this issuer to authenticate within the workload_identity_pool. OIDC discovery will be performed on this URI to validate tokens from the issuer. Clearing `issuer` disables Workload Identity. `issuer` cannot be directly modified; it must be cleared (and Workload Identity disabled) before using a new issuer (and re-enabling Workload Identity).
+        :param str oidc_jwks: Optional. OIDC verification keys for this Membership in JWKS format (RFC 7517). When this field is set, OIDC discovery will NOT be performed on `issuer`, and instead OIDC tokens will be validated using this field.
+        :param str workload_identity_pool: The name of the workload identity pool in which `issuer` will be recognized. There is a single Workload Identity Pool per Hub that is shared between all Memberships that belong to that Hub. For a Hub hosted in {PROJECT_ID}, the workload pool format is `{PROJECT_ID}.hub.id.goog`, although this is subject to change in newer versions of this API.
+        """
+        pulumi.set(__self__, "identity_provider", identity_provider)
+        pulumi.set(__self__, "issuer", issuer)
+        pulumi.set(__self__, "oidc_jwks", oidc_jwks)
+        pulumi.set(__self__, "workload_identity_pool", workload_identity_pool)
+
+    @property
+    @pulumi.getter(name="identityProvider")
+    def identity_provider(self) -> str:
+        """
+        An identity provider that reflects the `issuer` in the workload identity pool.
+        """
+        return pulumi.get(self, "identity_provider")
+
+    @property
+    @pulumi.getter
+    def issuer(self) -> str:
+        """
+        Optional. A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and be a valid URL with length <2000 characters. If set, then Google will allow valid OIDC tokens from this issuer to authenticate within the workload_identity_pool. OIDC discovery will be performed on this URI to validate tokens from the issuer. Clearing `issuer` disables Workload Identity. `issuer` cannot be directly modified; it must be cleared (and Workload Identity disabled) before using a new issuer (and re-enabling Workload Identity).
+        """
+        return pulumi.get(self, "issuer")
+
+    @property
+    @pulumi.getter(name="oidcJwks")
+    def oidc_jwks(self) -> str:
+        """
+        Optional. OIDC verification keys for this Membership in JWKS format (RFC 7517). When this field is set, OIDC discovery will NOT be performed on `issuer`, and instead OIDC tokens will be validated using this field.
+        """
+        return pulumi.get(self, "oidc_jwks")
+
+    @property
+    @pulumi.getter(name="workloadIdentityPool")
+    def workload_identity_pool(self) -> str:
+        """
+        The name of the workload identity pool in which `issuer` will be recognized. There is a single Workload Identity Pool per Hub that is shared between all Memberships that belong to that Hub. For a Hub hosted in {PROJECT_ID}, the workload pool format is `{PROJECT_ID}.hub.id.goog`, although this is subject to change in newer versions of this API.
+        """
+        return pulumi.get(self, "workload_identity_pool")
+
+
+@pulumi.output_type
 class BindingResponse(dict):
     """
-    Associates `members` with a `role`.
+    Associates `members`, or principals, with a `role`.
     """
     def __init__(__self__, *,
                  condition: 'outputs.ExprResponse',
                  members: Sequence[str],
                  role: str):
         """
-        Associates `members` with a `role`.
-        :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
-        :param str role: Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Associates `members`, or principals, with a `role`.
+        :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        :param Sequence[str] members: Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "members", members)
@@ -152,7 +292,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def condition(self) -> 'outputs.ExprResponse':
         """
-        The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         """
         return pulumi.get(self, "condition")
 
@@ -160,7 +300,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         """
         return pulumi.get(self, "members")
 
@@ -168,7 +308,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def role(self) -> str:
         """
-        Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
 
@@ -218,15 +358,26 @@ class CommonFeatureSpecResponse(dict):
     CommonFeatureSpec contains Hub-wide configuration information
     """
     def __init__(__self__, *,
+                 appdevexperience: 'outputs.AppDevExperienceFeatureSpecResponse',
                  cloudauditlogging: 'outputs.CloudAuditLoggingFeatureSpecResponse',
                  multiclusteringress: 'outputs.MultiClusterIngressFeatureSpecResponse'):
         """
         CommonFeatureSpec contains Hub-wide configuration information
+        :param 'AppDevExperienceFeatureSpecResponse' appdevexperience: Appdevexperience specific spec.
         :param 'CloudAuditLoggingFeatureSpecResponse' cloudauditlogging: Cloud Audit Logging-specific spec.
         :param 'MultiClusterIngressFeatureSpecResponse' multiclusteringress: Multicluster Ingress-specific spec.
         """
+        pulumi.set(__self__, "appdevexperience", appdevexperience)
         pulumi.set(__self__, "cloudauditlogging", cloudauditlogging)
         pulumi.set(__self__, "multiclusteringress", multiclusteringress)
+
+    @property
+    @pulumi.getter
+    def appdevexperience(self) -> 'outputs.AppDevExperienceFeatureSpecResponse':
+        """
+        Appdevexperience specific spec.
+        """
+        return pulumi.get(self, "appdevexperience")
 
     @property
     @pulumi.getter
@@ -251,15 +402,26 @@ class CommonFeatureStateResponse(dict):
     CommonFeatureState contains Hub-wide Feature status information.
     """
     def __init__(__self__, *,
+                 appdevexperience: 'outputs.AppDevExperienceFeatureStateResponse',
                  servicemesh: 'outputs.ServiceMeshFeatureStateResponse',
                  state: 'outputs.FeatureStateResponse'):
         """
         CommonFeatureState contains Hub-wide Feature status information.
+        :param 'AppDevExperienceFeatureStateResponse' appdevexperience: Appdevexperience specific state.
         :param 'ServiceMeshFeatureStateResponse' servicemesh: Service Mesh-specific state.
         :param 'FeatureStateResponse' state: The "running state" of the Feature in this Hub.
         """
+        pulumi.set(__self__, "appdevexperience", appdevexperience)
         pulumi.set(__self__, "servicemesh", servicemesh)
         pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def appdevexperience(self) -> 'outputs.AppDevExperienceFeatureStateResponse':
+        """
+        Appdevexperience specific state.
+        """
+        return pulumi.get(self, "appdevexperience")
 
     @property
     @pulumi.getter
@@ -417,6 +579,405 @@ class FeatureStateResponse(dict):
 
 
 @pulumi.output_type
+class GkeClusterResponse(dict):
+    """
+    GkeCluster contains information specific to GKE clusters.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterMissing":
+            suggest = "cluster_missing"
+        elif key == "resourceLink":
+            suggest = "resource_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GkeClusterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GkeClusterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GkeClusterResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_missing: bool,
+                 resource_link: str):
+        """
+        GkeCluster contains information specific to GKE clusters.
+        :param bool cluster_missing: If cluster_missing is set then it denotes that the GKE cluster no longer exists in the GKE Control Plane.
+        :param str resource_link: Immutable. Self-link of the GCP resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
+        """
+        pulumi.set(__self__, "cluster_missing", cluster_missing)
+        pulumi.set(__self__, "resource_link", resource_link)
+
+    @property
+    @pulumi.getter(name="clusterMissing")
+    def cluster_missing(self) -> bool:
+        """
+        If cluster_missing is set then it denotes that the GKE cluster no longer exists in the GKE Control Plane.
+        """
+        return pulumi.get(self, "cluster_missing")
+
+    @property
+    @pulumi.getter(name="resourceLink")
+    def resource_link(self) -> str:
+        """
+        Immutable. Self-link of the GCP resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
+        """
+        return pulumi.get(self, "resource_link")
+
+
+@pulumi.output_type
+class KubernetesMetadataResponse(dict):
+    """
+    KubernetesMetadata provides informational metadata for Memberships representing Kubernetes clusters.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kubernetesApiServerVersion":
+            suggest = "kubernetes_api_server_version"
+        elif key == "memoryMb":
+            suggest = "memory_mb"
+        elif key == "nodeCount":
+            suggest = "node_count"
+        elif key == "nodeProviderId":
+            suggest = "node_provider_id"
+        elif key == "updateTime":
+            suggest = "update_time"
+        elif key == "vcpuCount":
+            suggest = "vcpu_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KubernetesMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KubernetesMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KubernetesMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kubernetes_api_server_version: str,
+                 memory_mb: int,
+                 node_count: int,
+                 node_provider_id: str,
+                 update_time: str,
+                 vcpu_count: int):
+        """
+        KubernetesMetadata provides informational metadata for Memberships representing Kubernetes clusters.
+        :param str kubernetes_api_server_version: Kubernetes API server version string as reported by `/version`.
+        :param int memory_mb: The total memory capacity as reported by the sum of all Kubernetes nodes resources, defined in MB.
+        :param int node_count: Node count as reported by Kubernetes nodes resources.
+        :param str node_provider_id: Node providerID as reported by the first node in the list of nodes on the Kubernetes endpoint. On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP), the node_count will be zero and the node_provider_id will be empty.
+        :param str update_time: The time at which these details were last updated. This update_time is different from the Membership-level update_time since EndpointDetails are updated internally for API consumers.
+        :param int vcpu_count: vCPU count as reported by Kubernetes nodes resources.
+        """
+        pulumi.set(__self__, "kubernetes_api_server_version", kubernetes_api_server_version)
+        pulumi.set(__self__, "memory_mb", memory_mb)
+        pulumi.set(__self__, "node_count", node_count)
+        pulumi.set(__self__, "node_provider_id", node_provider_id)
+        pulumi.set(__self__, "update_time", update_time)
+        pulumi.set(__self__, "vcpu_count", vcpu_count)
+
+    @property
+    @pulumi.getter(name="kubernetesApiServerVersion")
+    def kubernetes_api_server_version(self) -> str:
+        """
+        Kubernetes API server version string as reported by `/version`.
+        """
+        return pulumi.get(self, "kubernetes_api_server_version")
+
+    @property
+    @pulumi.getter(name="memoryMb")
+    def memory_mb(self) -> int:
+        """
+        The total memory capacity as reported by the sum of all Kubernetes nodes resources, defined in MB.
+        """
+        return pulumi.get(self, "memory_mb")
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> int:
+        """
+        Node count as reported by Kubernetes nodes resources.
+        """
+        return pulumi.get(self, "node_count")
+
+    @property
+    @pulumi.getter(name="nodeProviderId")
+    def node_provider_id(self) -> str:
+        """
+        Node providerID as reported by the first node in the list of nodes on the Kubernetes endpoint. On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP), the node_count will be zero and the node_provider_id will be empty.
+        """
+        return pulumi.get(self, "node_provider_id")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The time at which these details were last updated. This update_time is different from the Membership-level update_time since EndpointDetails are updated internally for API consumers.
+        """
+        return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="vcpuCount")
+    def vcpu_count(self) -> int:
+        """
+        vCPU count as reported by Kubernetes nodes resources.
+        """
+        return pulumi.get(self, "vcpu_count")
+
+
+@pulumi.output_type
+class KubernetesResourceResponse(dict):
+    """
+    KubernetesResource contains the YAML manifests and configuration for Membership Kubernetes resources in the cluster. After CreateMembership or UpdateMembership, these resources should be re-applied in the cluster.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectResources":
+            suggest = "connect_resources"
+        elif key == "membershipCrManifest":
+            suggest = "membership_cr_manifest"
+        elif key == "membershipResources":
+            suggest = "membership_resources"
+        elif key == "resourceOptions":
+            suggest = "resource_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KubernetesResourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KubernetesResourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KubernetesResourceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connect_resources: Sequence['outputs.ResourceManifestResponse'],
+                 membership_cr_manifest: str,
+                 membership_resources: Sequence['outputs.ResourceManifestResponse'],
+                 resource_options: 'outputs.ResourceOptionsResponse'):
+        """
+        KubernetesResource contains the YAML manifests and configuration for Membership Kubernetes resources in the cluster. After CreateMembership or UpdateMembership, these resources should be re-applied in the cluster.
+        :param Sequence['ResourceManifestResponse'] connect_resources: The Kubernetes resources for installing the GKE Connect agent This field is only populated in the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership. It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the caller should make a UpdateMembership call with an empty field mask.
+        :param str membership_cr_manifest: Input only. The YAML representation of the Membership CR. This field is ignored for GKE clusters where Hub can read the CR directly. Callers should provide the CR that is currently present in the cluster during CreateMembership or UpdateMembership, or leave this field empty if none exists. The CR manifest is used to validate the cluster has not been registered with another Membership.
+        :param Sequence['ResourceManifestResponse'] membership_resources: Additional Kubernetes resources that need to be applied to the cluster after Membership creation, and after every update. This field is only populated in the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership. It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the caller should make a UpdateMembership call with an empty field mask.
+        :param 'ResourceOptionsResponse' resource_options: Optional. Options for Kubernetes resource generation.
+        """
+        pulumi.set(__self__, "connect_resources", connect_resources)
+        pulumi.set(__self__, "membership_cr_manifest", membership_cr_manifest)
+        pulumi.set(__self__, "membership_resources", membership_resources)
+        pulumi.set(__self__, "resource_options", resource_options)
+
+    @property
+    @pulumi.getter(name="connectResources")
+    def connect_resources(self) -> Sequence['outputs.ResourceManifestResponse']:
+        """
+        The Kubernetes resources for installing the GKE Connect agent This field is only populated in the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership. It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the caller should make a UpdateMembership call with an empty field mask.
+        """
+        return pulumi.get(self, "connect_resources")
+
+    @property
+    @pulumi.getter(name="membershipCrManifest")
+    def membership_cr_manifest(self) -> str:
+        """
+        Input only. The YAML representation of the Membership CR. This field is ignored for GKE clusters where Hub can read the CR directly. Callers should provide the CR that is currently present in the cluster during CreateMembership or UpdateMembership, or leave this field empty if none exists. The CR manifest is used to validate the cluster has not been registered with another Membership.
+        """
+        return pulumi.get(self, "membership_cr_manifest")
+
+    @property
+    @pulumi.getter(name="membershipResources")
+    def membership_resources(self) -> Sequence['outputs.ResourceManifestResponse']:
+        """
+        Additional Kubernetes resources that need to be applied to the cluster after Membership creation, and after every update. This field is only populated in the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership. It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the caller should make a UpdateMembership call with an empty field mask.
+        """
+        return pulumi.get(self, "membership_resources")
+
+    @property
+    @pulumi.getter(name="resourceOptions")
+    def resource_options(self) -> 'outputs.ResourceOptionsResponse':
+        """
+        Optional. Options for Kubernetes resource generation.
+        """
+        return pulumi.get(self, "resource_options")
+
+
+@pulumi.output_type
+class MembershipEndpointResponse(dict):
+    """
+    MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gkeCluster":
+            suggest = "gke_cluster"
+        elif key == "kubernetesMetadata":
+            suggest = "kubernetes_metadata"
+        elif key == "kubernetesResource":
+            suggest = "kubernetes_resource"
+        elif key == "multiCloudCluster":
+            suggest = "multi_cloud_cluster"
+        elif key == "onPremCluster":
+            suggest = "on_prem_cluster"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MembershipEndpointResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MembershipEndpointResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MembershipEndpointResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gke_cluster: 'outputs.GkeClusterResponse',
+                 kubernetes_metadata: 'outputs.KubernetesMetadataResponse',
+                 kubernetes_resource: 'outputs.KubernetesResourceResponse',
+                 multi_cloud_cluster: 'outputs.MultiCloudClusterResponse',
+                 on_prem_cluster: 'outputs.OnPremClusterResponse'):
+        """
+        MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
+        :param 'GkeClusterResponse' gke_cluster: Optional. Specific information for a GKE-on-GCP cluster.
+        :param 'KubernetesMetadataResponse' kubernetes_metadata: Useful Kubernetes-specific metadata.
+        :param 'KubernetesResourceResponse' kubernetes_resource: Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
+        :param 'MultiCloudClusterResponse' multi_cloud_cluster: Optional. Specific information for a GKE Multi-Cloud cluster.
+        :param 'OnPremClusterResponse' on_prem_cluster: Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
+        """
+        pulumi.set(__self__, "gke_cluster", gke_cluster)
+        pulumi.set(__self__, "kubernetes_metadata", kubernetes_metadata)
+        pulumi.set(__self__, "kubernetes_resource", kubernetes_resource)
+        pulumi.set(__self__, "multi_cloud_cluster", multi_cloud_cluster)
+        pulumi.set(__self__, "on_prem_cluster", on_prem_cluster)
+
+    @property
+    @pulumi.getter(name="gkeCluster")
+    def gke_cluster(self) -> 'outputs.GkeClusterResponse':
+        """
+        Optional. Specific information for a GKE-on-GCP cluster.
+        """
+        return pulumi.get(self, "gke_cluster")
+
+    @property
+    @pulumi.getter(name="kubernetesMetadata")
+    def kubernetes_metadata(self) -> 'outputs.KubernetesMetadataResponse':
+        """
+        Useful Kubernetes-specific metadata.
+        """
+        return pulumi.get(self, "kubernetes_metadata")
+
+    @property
+    @pulumi.getter(name="kubernetesResource")
+    def kubernetes_resource(self) -> 'outputs.KubernetesResourceResponse':
+        """
+        Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
+        """
+        return pulumi.get(self, "kubernetes_resource")
+
+    @property
+    @pulumi.getter(name="multiCloudCluster")
+    def multi_cloud_cluster(self) -> 'outputs.MultiCloudClusterResponse':
+        """
+        Optional. Specific information for a GKE Multi-Cloud cluster.
+        """
+        return pulumi.get(self, "multi_cloud_cluster")
+
+    @property
+    @pulumi.getter(name="onPremCluster")
+    def on_prem_cluster(self) -> 'outputs.OnPremClusterResponse':
+        """
+        Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
+        """
+        return pulumi.get(self, "on_prem_cluster")
+
+
+@pulumi.output_type
+class MembershipStateResponse(dict):
+    """
+    MembershipState describes the state of a Membership resource.
+    """
+    def __init__(__self__, *,
+                 code: str):
+        """
+        MembershipState describes the state of a Membership resource.
+        :param str code: The current state of the Membership resource.
+        """
+        pulumi.set(__self__, "code", code)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        The current state of the Membership resource.
+        """
+        return pulumi.get(self, "code")
+
+
+@pulumi.output_type
+class MultiCloudClusterResponse(dict):
+    """
+    MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterMissing":
+            suggest = "cluster_missing"
+        elif key == "resourceLink":
+            suggest = "resource_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MultiCloudClusterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MultiCloudClusterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MultiCloudClusterResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_missing: bool,
+                 resource_link: str):
+        """
+        MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
+        :param bool cluster_missing: If cluster_missing is set then it denotes that API(gkemulticloud.googleapis.com) resource for this GKE Multi-Cloud cluster no longer exists.
+        :param str resource_link: Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
+        """
+        pulumi.set(__self__, "cluster_missing", cluster_missing)
+        pulumi.set(__self__, "resource_link", resource_link)
+
+    @property
+    @pulumi.getter(name="clusterMissing")
+    def cluster_missing(self) -> bool:
+        """
+        If cluster_missing is set then it denotes that API(gkemulticloud.googleapis.com) resource for this GKE Multi-Cloud cluster no longer exists.
+        """
+        return pulumi.get(self, "cluster_missing")
+
+    @property
+    @pulumi.getter(name="resourceLink")
+    def resource_link(self) -> str:
+        """
+        Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
+        """
+        return pulumi.get(self, "resource_link")
+
+
+@pulumi.output_type
 class MultiClusterIngressFeatureSpecResponse(dict):
     """
     **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
@@ -453,6 +1014,173 @@ class MultiClusterIngressFeatureSpecResponse(dict):
         Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
         """
         return pulumi.get(self, "config_membership")
+
+
+@pulumi.output_type
+class OnPremClusterResponse(dict):
+    """
+    OnPremCluster contains information specific to GKE On-Prem clusters.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adminCluster":
+            suggest = "admin_cluster"
+        elif key == "clusterMissing":
+            suggest = "cluster_missing"
+        elif key == "resourceLink":
+            suggest = "resource_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OnPremClusterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OnPremClusterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OnPremClusterResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 admin_cluster: bool,
+                 cluster_missing: bool,
+                 resource_link: str):
+        """
+        OnPremCluster contains information specific to GKE On-Prem clusters.
+        :param bool admin_cluster: Immutable. Whether the cluster is an admin cluster.
+        :param bool cluster_missing: If cluster_missing is set then it denotes that API(gkeonprem.googleapis.com) resource for this GKE On-Prem cluster no longer exists.
+        :param str resource_link: Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+        """
+        pulumi.set(__self__, "admin_cluster", admin_cluster)
+        pulumi.set(__self__, "cluster_missing", cluster_missing)
+        pulumi.set(__self__, "resource_link", resource_link)
+
+    @property
+    @pulumi.getter(name="adminCluster")
+    def admin_cluster(self) -> bool:
+        """
+        Immutable. Whether the cluster is an admin cluster.
+        """
+        return pulumi.get(self, "admin_cluster")
+
+    @property
+    @pulumi.getter(name="clusterMissing")
+    def cluster_missing(self) -> bool:
+        """
+        If cluster_missing is set then it denotes that API(gkeonprem.googleapis.com) resource for this GKE On-Prem cluster no longer exists.
+        """
+        return pulumi.get(self, "cluster_missing")
+
+    @property
+    @pulumi.getter(name="resourceLink")
+    def resource_link(self) -> str:
+        """
+        Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+        """
+        return pulumi.get(self, "resource_link")
+
+
+@pulumi.output_type
+class ResourceManifestResponse(dict):
+    """
+    ResourceManifest represents a single Kubernetes resource to be applied to the cluster.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterScoped":
+            suggest = "cluster_scoped"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceManifestResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceManifestResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceManifestResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_scoped: bool,
+                 manifest: str):
+        """
+        ResourceManifest represents a single Kubernetes resource to be applied to the cluster.
+        :param bool cluster_scoped: Whether the resource provided in the manifest is `cluster_scoped`. If unset, the manifest is assumed to be namespace scoped. This field is used for REST mapping when applying the resource in a cluster.
+        :param str manifest: YAML manifest of the resource.
+        """
+        pulumi.set(__self__, "cluster_scoped", cluster_scoped)
+        pulumi.set(__self__, "manifest", manifest)
+
+    @property
+    @pulumi.getter(name="clusterScoped")
+    def cluster_scoped(self) -> bool:
+        """
+        Whether the resource provided in the manifest is `cluster_scoped`. If unset, the manifest is assumed to be namespace scoped. This field is used for REST mapping when applying the resource in a cluster.
+        """
+        return pulumi.get(self, "cluster_scoped")
+
+    @property
+    @pulumi.getter
+    def manifest(self) -> str:
+        """
+        YAML manifest of the resource.
+        """
+        return pulumi.get(self, "manifest")
+
+
+@pulumi.output_type
+class ResourceOptionsResponse(dict):
+    """
+    ResourceOptions represent options for Kubernetes resource generation.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectVersion":
+            suggest = "connect_version"
+        elif key == "v1beta1Crd":
+            suggest = "v1beta1_crd"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connect_version: str,
+                 v1beta1_crd: bool):
+        """
+        ResourceOptions represent options for Kubernetes resource generation.
+        :param str connect_version: Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.
+        :param bool v1beta1_crd: Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
+        """
+        pulumi.set(__self__, "connect_version", connect_version)
+        pulumi.set(__self__, "v1beta1_crd", v1beta1_crd)
+
+    @property
+    @pulumi.getter(name="connectVersion")
+    def connect_version(self) -> str:
+        """
+        Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.
+        """
+        return pulumi.get(self, "connect_version")
+
+    @property
+    @pulumi.getter(name="v1beta1Crd")
+    def v1beta1_crd(self) -> bool:
+        """
+        Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
+        """
+        return pulumi.get(self, "v1beta1_crd")
 
 
 @pulumi.output_type
@@ -677,5 +1405,38 @@ class ServiceMeshTypeResponse(dict):
         A human-readable name for the message type. e.g. "InternalError", "PodMissingProxy". This should be the same for all messages of the same type. (This corresponds to the `name` field in open-source Istio.)
         """
         return pulumi.get(self, "display_name")
+
+
+@pulumi.output_type
+class StatusResponse(dict):
+    """
+    Status specifies state for the subcomponent.
+    """
+    def __init__(__self__, *,
+                 code: str,
+                 description: str):
+        """
+        Status specifies state for the subcomponent.
+        :param str code: Code specifies AppDevExperienceFeature's subcomponent ready state.
+        :param str description: Description is populated if Code is Failed, explaining why it has failed.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        Code specifies AppDevExperienceFeature's subcomponent ready state.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Description is populated if Code is Failed, explaining why it has failed.
+        """
+        return pulumi.get(self, "description")
 
 

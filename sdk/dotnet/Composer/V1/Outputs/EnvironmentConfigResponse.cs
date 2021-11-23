@@ -33,6 +33,10 @@ namespace Pulumi.GoogleNative.Composer.V1.Outputs
         /// </summary>
         public readonly Outputs.EncryptionConfigResponse EncryptionConfig;
         /// <summary>
+        /// Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        public readonly string EnvironmentSize;
+        /// <summary>
         /// The Kubernetes Engine cluster used to run this environment.
         /// </summary>
         public readonly string GkeCluster;
@@ -57,9 +61,13 @@ namespace Pulumi.GoogleNative.Composer.V1.Outputs
         /// </summary>
         public readonly Outputs.WebServerConfigResponse WebServerConfig;
         /// <summary>
-        /// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        /// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
         /// </summary>
         public readonly Outputs.WebServerNetworkAccessControlResponse WebServerNetworkAccessControl;
+        /// <summary>
+        /// Optional. The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. The GKE cluster runs Airflow scheduler, web server and workers workloads. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        public readonly Outputs.WorkloadsConfigResponse WorkloadsConfig;
 
         [OutputConstructor]
         private EnvironmentConfigResponse(
@@ -70,6 +78,8 @@ namespace Pulumi.GoogleNative.Composer.V1.Outputs
             Outputs.DatabaseConfigResponse databaseConfig,
 
             Outputs.EncryptionConfigResponse encryptionConfig,
+
+            string environmentSize,
 
             string gkeCluster,
 
@@ -83,12 +93,15 @@ namespace Pulumi.GoogleNative.Composer.V1.Outputs
 
             Outputs.WebServerConfigResponse webServerConfig,
 
-            Outputs.WebServerNetworkAccessControlResponse webServerNetworkAccessControl)
+            Outputs.WebServerNetworkAccessControlResponse webServerNetworkAccessControl,
+
+            Outputs.WorkloadsConfigResponse workloadsConfig)
         {
             AirflowUri = airflowUri;
             DagGcsPrefix = dagGcsPrefix;
             DatabaseConfig = databaseConfig;
             EncryptionConfig = encryptionConfig;
+            EnvironmentSize = environmentSize;
             GkeCluster = gkeCluster;
             NodeConfig = nodeConfig;
             NodeCount = nodeCount;
@@ -96,6 +109,7 @@ namespace Pulumi.GoogleNative.Composer.V1.Outputs
             SoftwareConfig = softwareConfig;
             WebServerConfig = webServerConfig;
             WebServerNetworkAccessControl = webServerNetworkAccessControl;
+            WorkloadsConfig = workloadsConfig;
         }
     }
 }

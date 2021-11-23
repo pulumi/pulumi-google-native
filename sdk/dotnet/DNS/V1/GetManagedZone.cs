@@ -62,6 +62,7 @@ namespace Pulumi.GoogleNative.DNS.V1
     [OutputType]
     public sealed class GetManagedZoneResult
     {
+        public readonly Outputs.ManagedZoneCloudLoggingConfigResponse CloudLoggingConfig;
         /// <summary>
         /// The time that this resource was created on the server. This is in RFC3339 text format. Output only.
         /// </summary>
@@ -122,6 +123,8 @@ namespace Pulumi.GoogleNative.DNS.V1
 
         [OutputConstructor]
         private GetManagedZoneResult(
+            Outputs.ManagedZoneCloudLoggingConfigResponse cloudLoggingConfig,
+
             string creationTime,
 
             string description,
@@ -152,6 +155,7 @@ namespace Pulumi.GoogleNative.DNS.V1
 
             string visibility)
         {
+            CloudLoggingConfig = cloudLoggingConfig;
             CreationTime = creationTime;
             Description = description;
             DnsName = dnsName;

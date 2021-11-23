@@ -16,16 +16,24 @@ __all__ = ['WorkerPoolArgs', 'WorkerPool']
 class WorkerPoolArgs:
     def __init__(__self__, *,
                  worker_pool_id: pulumi.Input[str],
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['NetworkConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  worker_config: Optional[pulumi.Input['WorkerConfigArgs']] = None):
         """
         The set of arguments for constructing a WorkerPool resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        :param pulumi.Input[str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
         :param pulumi.Input['NetworkConfigArgs'] network_config: Network configuration for the `WorkerPool`.
         :param pulumi.Input['WorkerConfigArgs'] worker_config: Worker configuration for the `WorkerPool`.
         """
         pulumi.set(__self__, "worker_pool_id", worker_pool_id)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if network_config is not None:
@@ -43,6 +51,30 @@ class WorkerPoolArgs:
     @worker_pool_id.setter
     def worker_pool_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "worker_pool_id", value)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter
@@ -92,6 +124,8 @@ class WorkerPool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -104,6 +138,8 @@ class WorkerPool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        :param pulumi.Input[str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
         :param pulumi.Input[pulumi.InputType['NetworkConfigArgs']] network_config: Network configuration for the `WorkerPool`.
         :param pulumi.Input[pulumi.InputType['WorkerConfigArgs']] worker_config: Worker configuration for the `WorkerPool`.
         """
@@ -132,6 +168,8 @@ class WorkerPool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -149,6 +187,8 @@ class WorkerPool(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkerPoolArgs.__new__(WorkerPoolArgs)
 
+            __props__.__dict__["annotations"] = annotations
+            __props__.__dict__["display_name"] = display_name
             __props__.__dict__["location"] = location
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["project"] = project
@@ -158,8 +198,10 @@ class WorkerPool(pulumi.CustomResource):
             __props__.__dict__["worker_pool_id"] = worker_pool_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None
+            __props__.__dict__["etag"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None
+            __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
         super(WorkerPool, __self__).__init__(
             'google-native:cloudbuild/v1beta1:WorkerPool',
@@ -183,14 +225,26 @@ class WorkerPool(pulumi.CustomResource):
 
         __props__ = WorkerPoolArgs.__new__(WorkerPoolArgs)
 
+        __props__.__dict__["annotations"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["delete_time"] = None
+        __props__.__dict__["display_name"] = None
+        __props__.__dict__["etag"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network_config"] = None
         __props__.__dict__["state"] = None
+        __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["worker_config"] = None
         return WorkerPool(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        """
+        return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter(name="createTime")
@@ -207,6 +261,22 @@ class WorkerPool(pulumi.CustomResource):
         Time at which the request to delete the `WorkerPool` was received.
         """
         return pulumi.get(self, "delete_time")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+        """
+        return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter
@@ -231,6 +301,14 @@ class WorkerPool(pulumi.CustomResource):
         `WorkerPool` state.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> pulumi.Output[str]:
+        """
+        A unique identifier for the `WorkerPool`.
+        """
+        return pulumi.get(self, "uid")
 
     @property
     @pulumi.getter(name="updateTime")

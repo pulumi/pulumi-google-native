@@ -52,6 +52,10 @@ export class Dashboard extends pulumi.CustomResource {
      */
     public readonly gridLayout!: pulumi.Output<outputs.monitoring.v1.GridLayoutResponse>;
     /**
+     * Labels applied to the dashboard
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
      */
     public readonly mosaicLayout!: pulumi.Output<outputs.monitoring.v1.MosaicLayoutResponse>;
@@ -82,6 +86,7 @@ export class Dashboard extends pulumi.CustomResource {
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["gridLayout"] = args ? args.gridLayout : undefined;
+            inputs["labels"] = args ? args.labels : undefined;
             inputs["mosaicLayout"] = args ? args.mosaicLayout : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -92,6 +97,7 @@ export class Dashboard extends pulumi.CustomResource {
             inputs["displayName"] = undefined /*out*/;
             inputs["etag"] = undefined /*out*/;
             inputs["gridLayout"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
             inputs["mosaicLayout"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["rowLayout"] = undefined /*out*/;
@@ -123,6 +129,10 @@ export interface DashboardArgs {
      * Content is arranged with a basic layout that re-flows a simple list of informational elements like widgets or tiles.
      */
     gridLayout?: pulumi.Input<inputs.monitoring.v1.GridLayoutArgs>;
+    /**
+     * Labels applied to the dashboard
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
      */

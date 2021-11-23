@@ -26,7 +26,7 @@ __all__ = [
     'GrafeasV1beta1VulnerabilityDetailsEffectiveSeverity',
     'LayerDirective',
     'PgpSignedAttestationContentType',
-    'RelationshipOccurrenceType',
+    'RelationshipNoteType',
     'VersionKind',
     'VulnerabilitySeverity',
 ]
@@ -250,6 +250,10 @@ class DiscoveryAnalysisKind(str, Enum):
     SPDX_FILE = "SPDX_FILE"
     """
     This represents an SPDX File.
+    """
+    SPDX_RELATIONSHIP = "SPDX_RELATIONSHIP"
+    """
+    This represents an SPDX Relationship.
     """
 
 
@@ -487,11 +491,11 @@ class PgpSignedAttestationContentType(str, Enum):
     """
 
 
-class RelationshipOccurrenceType(str, Enum):
+class RelationshipNoteType(str, Enum):
     """
     The type of relationship between the source and target SPDX elements
     """
-    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    RELATIONSHIP_TYPE_UNSPECIFIED = "RELATIONSHIP_TYPE_UNSPECIFIED"
     """
     Unspecified
     """

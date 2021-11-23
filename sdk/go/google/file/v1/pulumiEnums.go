@@ -26,6 +26,8 @@ const (
 	InstanceTierBasicSsd = InstanceTier("BASIC_SSD")
 	// HIGH_SCALE instances offer expanded capacity and performance scaling capabilities.
 	InstanceTierHighScaleSsd = InstanceTier("HIGH_SCALE_SSD")
+	// ENTERPRISE instances offer the features and availability needed for mission-critical workloads.
+	InstanceTierEnterprise = InstanceTier("ENTERPRISE")
 )
 
 func (InstanceTier) ElementType() reflect.Type {
@@ -183,6 +185,175 @@ func (in *instanceTierPtr) ToInstanceTierPtrOutput() InstanceTierPtrOutput {
 
 func (in *instanceTierPtr) ToInstanceTierPtrOutputWithContext(ctx context.Context) InstanceTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceTierPtrOutput)
+}
+
+// The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
+type NetworkConfigConnectMode string
+
+const (
+	// Not set.
+	NetworkConfigConnectModeConnectModeUnspecified = NetworkConfigConnectMode("CONNECT_MODE_UNSPECIFIED")
+	// Connect via direct peering to the Filestore service.
+	NetworkConfigConnectModeDirectPeering = NetworkConfigConnectMode("DIRECT_PEERING")
+	// Connect to your Filestore instance using Private Service Access. Private services access provides an IP address range for multiple Google Cloud services, including Filestore.
+	NetworkConfigConnectModePrivateServiceAccess = NetworkConfigConnectMode("PRIVATE_SERVICE_ACCESS")
+)
+
+func (NetworkConfigConnectMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkConfigConnectMode)(nil)).Elem()
+}
+
+func (e NetworkConfigConnectMode) ToNetworkConfigConnectModeOutput() NetworkConfigConnectModeOutput {
+	return pulumi.ToOutput(e).(NetworkConfigConnectModeOutput)
+}
+
+func (e NetworkConfigConnectMode) ToNetworkConfigConnectModeOutputWithContext(ctx context.Context) NetworkConfigConnectModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NetworkConfigConnectModeOutput)
+}
+
+func (e NetworkConfigConnectMode) ToNetworkConfigConnectModePtrOutput() NetworkConfigConnectModePtrOutput {
+	return e.ToNetworkConfigConnectModePtrOutputWithContext(context.Background())
+}
+
+func (e NetworkConfigConnectMode) ToNetworkConfigConnectModePtrOutputWithContext(ctx context.Context) NetworkConfigConnectModePtrOutput {
+	return NetworkConfigConnectMode(e).ToNetworkConfigConnectModeOutputWithContext(ctx).ToNetworkConfigConnectModePtrOutputWithContext(ctx)
+}
+
+func (e NetworkConfigConnectMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkConfigConnectMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkConfigConnectMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NetworkConfigConnectMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NetworkConfigConnectModeOutput struct{ *pulumi.OutputState }
+
+func (NetworkConfigConnectModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkConfigConnectMode)(nil)).Elem()
+}
+
+func (o NetworkConfigConnectModeOutput) ToNetworkConfigConnectModeOutput() NetworkConfigConnectModeOutput {
+	return o
+}
+
+func (o NetworkConfigConnectModeOutput) ToNetworkConfigConnectModeOutputWithContext(ctx context.Context) NetworkConfigConnectModeOutput {
+	return o
+}
+
+func (o NetworkConfigConnectModeOutput) ToNetworkConfigConnectModePtrOutput() NetworkConfigConnectModePtrOutput {
+	return o.ToNetworkConfigConnectModePtrOutputWithContext(context.Background())
+}
+
+func (o NetworkConfigConnectModeOutput) ToNetworkConfigConnectModePtrOutputWithContext(ctx context.Context) NetworkConfigConnectModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkConfigConnectMode) *NetworkConfigConnectMode {
+		return &v
+	}).(NetworkConfigConnectModePtrOutput)
+}
+
+func (o NetworkConfigConnectModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NetworkConfigConnectModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkConfigConnectMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NetworkConfigConnectModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkConfigConnectModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkConfigConnectMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NetworkConfigConnectModePtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkConfigConnectModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkConfigConnectMode)(nil)).Elem()
+}
+
+func (o NetworkConfigConnectModePtrOutput) ToNetworkConfigConnectModePtrOutput() NetworkConfigConnectModePtrOutput {
+	return o
+}
+
+func (o NetworkConfigConnectModePtrOutput) ToNetworkConfigConnectModePtrOutputWithContext(ctx context.Context) NetworkConfigConnectModePtrOutput {
+	return o
+}
+
+func (o NetworkConfigConnectModePtrOutput) Elem() NetworkConfigConnectModeOutput {
+	return o.ApplyT(func(v *NetworkConfigConnectMode) NetworkConfigConnectMode {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkConfigConnectMode
+		return ret
+	}).(NetworkConfigConnectModeOutput)
+}
+
+func (o NetworkConfigConnectModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkConfigConnectModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NetworkConfigConnectMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NetworkConfigConnectModeInput is an input type that accepts NetworkConfigConnectModeArgs and NetworkConfigConnectModeOutput values.
+// You can construct a concrete instance of `NetworkConfigConnectModeInput` via:
+//
+//          NetworkConfigConnectModeArgs{...}
+type NetworkConfigConnectModeInput interface {
+	pulumi.Input
+
+	ToNetworkConfigConnectModeOutput() NetworkConfigConnectModeOutput
+	ToNetworkConfigConnectModeOutputWithContext(context.Context) NetworkConfigConnectModeOutput
+}
+
+var networkConfigConnectModePtrType = reflect.TypeOf((**NetworkConfigConnectMode)(nil)).Elem()
+
+type NetworkConfigConnectModePtrInput interface {
+	pulumi.Input
+
+	ToNetworkConfigConnectModePtrOutput() NetworkConfigConnectModePtrOutput
+	ToNetworkConfigConnectModePtrOutputWithContext(context.Context) NetworkConfigConnectModePtrOutput
+}
+
+type networkConfigConnectModePtr string
+
+func NetworkConfigConnectModePtr(v string) NetworkConfigConnectModePtrInput {
+	return (*networkConfigConnectModePtr)(&v)
+}
+
+func (*networkConfigConnectModePtr) ElementType() reflect.Type {
+	return networkConfigConnectModePtrType
+}
+
+func (in *networkConfigConnectModePtr) ToNetworkConfigConnectModePtrOutput() NetworkConfigConnectModePtrOutput {
+	return pulumi.ToOutput(in).(NetworkConfigConnectModePtrOutput)
+}
+
+func (in *networkConfigConnectModePtr) ToNetworkConfigConnectModePtrOutputWithContext(ctx context.Context) NetworkConfigConnectModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NetworkConfigConnectModePtrOutput)
 }
 
 type NetworkConfigModesItem string
@@ -737,6 +908,8 @@ func (in *nfsExportOptionsSquashModePtr) ToNfsExportOptionsSquashModePtrOutputWi
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTierInput)(nil)).Elem(), InstanceTier("TIER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTierPtrInput)(nil)).Elem(), InstanceTier("TIER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigConnectModeInput)(nil)).Elem(), NetworkConfigConnectMode("CONNECT_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigConnectModePtrInput)(nil)).Elem(), NetworkConfigConnectMode("CONNECT_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigModesItemInput)(nil)).Elem(), NetworkConfigModesItem("ADDRESS_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigModesItemPtrInput)(nil)).Elem(), NetworkConfigModesItem("ADDRESS_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigModesItemArrayInput)(nil)).Elem(), NetworkConfigModesItemArray{})
@@ -746,6 +919,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportOptionsSquashModePtrInput)(nil)).Elem(), NfsExportOptionsSquashMode("SQUASH_MODE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(InstanceTierOutput{})
 	pulumi.RegisterOutputType(InstanceTierPtrOutput{})
+	pulumi.RegisterOutputType(NetworkConfigConnectModeOutput{})
+	pulumi.RegisterOutputType(NetworkConfigConnectModePtrOutput{})
 	pulumi.RegisterOutputType(NetworkConfigModesItemOutput{})
 	pulumi.RegisterOutputType(NetworkConfigModesItemPtrOutput{})
 	pulumi.RegisterOutputType(NetworkConfigModesItemArrayOutput{})

@@ -93,7 +93,7 @@ class OrganizationRoleStage(str, Enum):
     """
     DISABLED = "DISABLED"
     """
-    This role is disabled and will not contribute permissions to any members it is granted to in policies.
+    This role is disabled and will not contribute permissions to any principals it is granted to in policies.
     """
     EAP = "EAP"
     """
@@ -123,7 +123,7 @@ class RoleStage(str, Enum):
     """
     DISABLED = "DISABLED"
     """
-    This role is disabled and will not contribute permissions to any members it is granted to in policies.
+    This role is disabled and will not contribute permissions to any principals it is granted to in policies.
     """
     EAP = "EAP"
     """

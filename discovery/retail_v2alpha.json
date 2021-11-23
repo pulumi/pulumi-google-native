@@ -133,7 +133,7 @@
                       "type": "string"
                     },
                     "deviceType": {
-                      "description": "The device type context for completion suggestions. It is useful to apply different suggestions on different device types, e.g. DESKTOP, MOBILE. If it is empty, the suggestions are across all device types. Supported formats: * UNKNOWN_DEVICE_TYPE * DESKTOP * MOBILE * A customized string starts with OTHER_, e.g. OTHER_IPHONE.",
+                      "description": "The device type context for completion suggestions. It is useful to apply different suggestions on different device types, e.g. `DESKTOP`, `MOBILE`. If it is empty, the suggestions are across all device types. Supported formats: * `UNKNOWN_DEVICE_TYPE` * `DESKTOP` * `MOBILE` * A customized string starts with `OTHER_`, e.g. `OTHER_IPHONE`.",
                       "location": "query",
                       "type": "string"
                     },
@@ -346,6 +346,34 @@
                           "path": "v2alpha/{+product}:addFulfillmentPlaces",
                           "request": {
                             "$ref": "GoogleCloudRetailV2alphaAddFulfillmentPlacesRequest"
+                          },
+                          "response": {
+                            "$ref": "GoogleLongrunningOperation"
+                          },
+                          "scopes": [
+                            "https://www.googleapis.com/auth/cloud-platform"
+                          ]
+                        },
+                        "addLocalInventories": {
+                          "description": "Updates local inventory information for a Product at a list of places, while respecting the last update timestamps of each inventory field. This process is asynchronous and does not require the Product to exist before updating inventory information. If the request is valid, the update will be enqueued and processed downstream. As a consequence, when a response is returned, updates are not immediately manifested in the Product queried by GetProduct or ListProducts. Store inventory information can only be modified using this method. CreateProduct and UpdateProduct has no effect on local inventories. This feature is only available for users who have Retail Search enabled. Please submit a form [here](https://cloud.google.com/contact) to contact Cloud sales if you are interested in using Retail Search.",
+                          "flatPath": "v2alpha/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/branches/{branchesId}/products/{productsId}:addLocalInventories",
+                          "httpMethod": "POST",
+                          "id": "retail.projects.locations.catalogs.branches.products.addLocalInventories",
+                          "parameterOrder": [
+                            "product"
+                          ],
+                          "parameters": {
+                            "product": {
+                              "description": "Required. Full resource name of Product, such as `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`. If the caller does not have permission to access the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned.",
+                              "location": "path",
+                              "pattern": "^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/branches/[^/]+/products/.*$",
+                              "required": true,
+                              "type": "string"
+                            }
+                          },
+                          "path": "v2alpha/{+product}:addLocalInventories",
+                          "request": {
+                            "$ref": "GoogleCloudRetailV2alphaAddLocalInventoriesRequest"
                           },
                           "response": {
                             "$ref": "GoogleLongrunningOperation"
@@ -584,6 +612,34 @@
                             "https://www.googleapis.com/auth/cloud-platform"
                           ]
                         },
+                        "removeLocalInventories": {
+                          "description": "Remove local inventory information for a Product at a list of places at a removal timestamp. This process is asynchronous. If the request is valid, the removal will be enqueued and processed downstream. As a consequence, when a response is returned, removals are not immediately manifested in the Product queried by GetProduct or ListProducts. Store inventory information can only be removed using this method. CreateProduct and UpdateProduct has no effect on local inventories. This feature is only available for users who have Retail Search enabled. Please submit a form [here](https://cloud.google.com/contact) to contact Cloud sales if you are interested in using Retail Search.",
+                          "flatPath": "v2alpha/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/branches/{branchesId}/products/{productsId}:removeLocalInventories",
+                          "httpMethod": "POST",
+                          "id": "retail.projects.locations.catalogs.branches.products.removeLocalInventories",
+                          "parameterOrder": [
+                            "product"
+                          ],
+                          "parameters": {
+                            "product": {
+                              "description": "Required. Full resource name of Product, such as `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`. If the caller does not have permission to access the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned.",
+                              "location": "path",
+                              "pattern": "^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/branches/[^/]+/products/.*$",
+                              "required": true,
+                              "type": "string"
+                            }
+                          },
+                          "path": "v2alpha/{+product}:removeLocalInventories",
+                          "request": {
+                            "$ref": "GoogleCloudRetailV2alphaRemoveLocalInventoriesRequest"
+                          },
+                          "response": {
+                            "$ref": "GoogleLongrunningOperation"
+                          },
+                          "scopes": [
+                            "https://www.googleapis.com/auth/cloud-platform"
+                          ]
+                        },
                         "setInventory": {
                           "description": "Updates inventory information for a Product while respecting the last update timestamps of each inventory field. This process is asynchronous and does not require the Product to exist before updating fulfillment information. If the request is valid, the update will be enqueued and processed downstream. As a consequence, when a response is returned, updates are not immediately manifested in the Product queried by GetProduct or ListProducts. When inventory is updated with CreateProduct and UpdateProduct, the specified inventory field value(s) will overwrite any existing value(s) while ignoring the last update time for this field. Furthermore, the last update time for the specified inventory fields will be overwritten to the time of the CreateProduct or UpdateProduct request. If no inventory fields are set in CreateProductRequest.product, then any pre-existing inventory information for this product will be used. If no inventory fields are set in UpdateProductRequest.set_mask, then any existing inventory information will be preserved. Pre-existing inventory information can only be updated with SetInventory, AddFulfillmentPlaces, and RemoveFulfillmentPlaces. This feature is only available for users who have Retail Search enabled. Please submit a form [here](https://cloud.google.com/contact) to contact cloud sales if you are interested in using Retail Search.",
                           "flatPath": "v2alpha/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/branches/{branchesId}/products/{productsId}:setInventory",
@@ -758,7 +814,7 @@
                       ],
                       "parameters": {
                         "placement": {
-                          "description": "Required. The resource name of the search engine placement, such as `projects/*/locations/global/catalogs/default_catalog/placements/default_search`. This field is used to identify the set of models that will be used to make the search. We currently support one placement with the following ID: * `default_search`.",
+                          "description": "Required. The resource name of the search engine placement, such as `projects/*/locations/global/catalogs/default_catalog/placements/default_search`. This field is used to identify the serving configuration name and the set of models that will be used to make the search.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/placements/[^/]+$",
                           "required": true,
@@ -1012,7 +1068,7 @@
       }
     }
   },
-  "revision": "20210930",
+  "revision": "20211116",
   "rootUrl": "https://retail.googleapis.com/",
   "schemas": {
     "GoogleApiHttpBody": {
@@ -1172,7 +1228,7 @@
       "type": "object"
     },
     "GoogleCloudRetailV2AddFulfillmentPlacesResponse": {
-      "description": "Response of the RemoveFulfillmentPlacesRequest. Currently empty because there is no meaningful response populated from the AddFulfillmentPlaces method.",
+      "description": "Response of the AddFulfillmentPlacesRequest. Currently empty because there is no meaningful response populated from the AddFulfillmentPlaces method.",
       "id": "GoogleCloudRetailV2AddFulfillmentPlacesResponse",
       "properties": {},
       "type": "object"
@@ -1374,7 +1430,7 @@
           "type": "boolean"
         },
         "placeIds": {
-          "description": "Required. The IDs for this type, such as the store IDs for \"pickup-in-store\" or the region IDs for \"same-day-delivery\" to be added for this type. Duplicate IDs will be automatically ignored. At least 1 value is required, and a maximum of 2000 values are allowed. Each value must be a string with a length limit of 10 characters, matching the pattern [a-zA-Z0-9_-]+, such as \"store1\" or \"REGION-2\". Otherwise, an INVALID_ARGUMENT error is returned. If the total number of place IDs exceeds 2000 for this type after adding, then the update will be rejected.",
+          "description": "Required. The IDs for this type, such as the store IDs for \"pickup-in-store\" or the region IDs for \"same-day-delivery\" to be added for this type. Duplicate IDs will be automatically ignored. At least 1 value is required, and a maximum of 2000 values are allowed. Each value must be a string with a length limit of 10 characters, matching the pattern `[a-zA-Z0-9_-]+`, such as \"store1\" or \"REGION-2\". Otherwise, an INVALID_ARGUMENT error is returned. If the total number of place IDs exceeds 2000 for this type after adding, then the update will be rejected.",
           "items": {
             "type": "string"
           },
@@ -1388,8 +1444,48 @@
       "type": "object"
     },
     "GoogleCloudRetailV2alphaAddFulfillmentPlacesResponse": {
-      "description": "Response of the RemoveFulfillmentPlacesRequest. Currently empty because there is no meaningful response populated from the AddFulfillmentPlaces method.",
+      "description": "Response of the AddFulfillmentPlacesRequest. Currently empty because there is no meaningful response populated from the AddFulfillmentPlaces method.",
       "id": "GoogleCloudRetailV2alphaAddFulfillmentPlacesResponse",
+      "properties": {},
+      "type": "object"
+    },
+    "GoogleCloudRetailV2alphaAddLocalInventoriesMetadata": {
+      "description": "Metadata related to the progress of the AddLocalInventories operation. Currently empty because there is no meaningful metadata populated from the AddLocalInventories method.",
+      "id": "GoogleCloudRetailV2alphaAddLocalInventoriesMetadata",
+      "properties": {},
+      "type": "object"
+    },
+    "GoogleCloudRetailV2alphaAddLocalInventoriesRequest": {
+      "description": "Request message for AddLocalInventories method.",
+      "id": "GoogleCloudRetailV2alphaAddLocalInventoriesRequest",
+      "properties": {
+        "addMask": {
+          "description": "Indicates which inventory fields in the provided list of LocalInventory to update. The field is updated to the provided value. If a field is set while the place does not have a previous local inventory, the local inventory at that store is created. If a field is set while the value of that field is not provided, the original field value, if it exists, is deleted. If the mask is not set or set with empty paths, all inventory fields will be updated. If an unsupported or unknown field is provided, an INVALID_ARGUMENT error is returned and the entire update will be ignored.",
+          "format": "google-fieldmask",
+          "type": "string"
+        },
+        "addTime": {
+          "description": "The time when the inventory updates are issued. Used to prevent out-of-order updates on local inventory fields. If not provided, the internal system time will be used.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "allowMissing": {
+          "description": "If set to true, and the Product is not found, the local inventory will still be processed and retained for at most 1 day and processed once the Product is created. If set to false, a NOT_FOUND error is returned if the Product is not found.",
+          "type": "boolean"
+        },
+        "localInventories": {
+          "description": "Required. A list of inventory information at difference places. Each place is identified by its place ID. At most 1000 inventories are allowed per request.",
+          "items": {
+            "$ref": "GoogleCloudRetailV2alphaLocalInventory"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudRetailV2alphaAddLocalInventoriesResponse": {
+      "description": "Response of the AddLocalInventories API. Currently empty because there is no meaningful response populated from the AddLocalInventories method.",
+      "id": "GoogleCloudRetailV2alphaAddLocalInventoriesResponse",
       "properties": {},
       "type": "object"
     },
@@ -1604,12 +1700,6 @@
       },
       "type": "object"
     },
-    "GoogleCloudRetailV2alphaEnrollSolutionMetadata": {
-      "description": "Metadata related to the EnrollSolution method. This will be returned by the google.longrunning.Operation.metadata field.",
-      "id": "GoogleCloudRetailV2alphaEnrollSolutionMetadata",
-      "properties": {},
-      "type": "object"
-    },
     "GoogleCloudRetailV2alphaExportErrorsConfig": {
       "description": "Configuration of destination for Export related errors.",
       "id": "GoogleCloudRetailV2alphaExportErrorsConfig",
@@ -1679,7 +1769,7 @@
       "id": "GoogleCloudRetailV2alphaFulfillmentInfo",
       "properties": {
         "placeIds": {
-          "description": "The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern [a-zA-Z0-9_-]+, such as \"store1\" or \"REGION-2\". Otherwise, an INVALID_ARGUMENT error is returned.",
+          "description": "The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern `[a-zA-Z0-9_-]+`, such as \"store1\" or \"REGION-2\". Otherwise, an INVALID_ARGUMENT error is returned.",
           "items": {
             "type": "string"
           },
@@ -1857,7 +1947,7 @@
           "type": "string"
         },
         "requestId": {
-          "description": "Unique identifier provided by client, within the ancestor dataset scope. Ensures idempotency and used for request deduplication. Server-generated if unspecified. Up to 128 characters long and must match the pattern: \"[a-zA-Z0-9_]+\". This is returned as Operation.name in ImportMetadata. Only supported when ImportProductsRequest.reconciliation_mode is set to `FULL`.",
+          "description": "Unique identifier provided by client, within the ancestor dataset scope. Ensures idempotency and used for request deduplication. Server-generated if unspecified. Up to 128 characters long and must match the pattern: `[a-zA-Z0-9_]+`. This is returned as Operation.name in ImportMetadata. Only supported when ImportProductsRequest.reconciliation_mode is set to `FULL`.",
           "type": "string"
         },
         "updateMask": {
@@ -1991,6 +2081,28 @@
       },
       "type": "object"
     },
+    "GoogleCloudRetailV2alphaLocalInventory": {
+      "description": "The inventory information at a place (e.g. a store) identified by a place ID.",
+      "id": "GoogleCloudRetailV2alphaLocalInventory",
+      "properties": {
+        "attributes": {
+          "additionalProperties": {
+            "$ref": "GoogleCloudRetailV2alphaCustomAttribute"
+          },
+          "description": "Additional local inventory attributes, for example, store name, promotion tags, etc. * At most 5 values are allowed. Otherwise, an INVALID_ARGUMENT error is returned. * The key must be a UTF-8 encoded string with a length limit of 10 characters. * The key must match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or KEY_1_LIKE_THIS. * The attribute values must be of the same type (text or number). * The max number of values per attribute is 10. * For text values, the length limit is 10 UTF-8 characters. * The attribute does not support search. The `searchable` field should be unset or set to false.",
+          "type": "object"
+        },
+        "placeId": {
+          "description": "The place ID for the current set of inventory information.",
+          "type": "string"
+        },
+        "priceInfo": {
+          "$ref": "GoogleCloudRetailV2alphaPriceInfo",
+          "description": "Product price and cost information. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371)."
+        }
+      },
+      "type": "object"
+    },
     "GoogleCloudRetailV2alphaMerchantCenterLink": {
       "description": "Represents a link between a Merchant Center account and a branch. Once a link is established, products from the linked merchant center account will be streamed to the linked branch.",
       "id": "GoogleCloudRetailV2alphaMerchantCenterLink",
@@ -2000,7 +2112,7 @@
           "type": "string"
         },
         "destinations": {
-          "description": "String representing the destination to import for, all if left empty. List of possible values can be found here. [https://support.google.com/merchants/answer/7501026] List of allowed string values: \"shopping-ads\", \"buy-on-google-listings\", \"display-ads\", \"local-inventory -ads\", \"free-listings\", \"free-local-listings\" NOTE: The string values are case sensitive.",
+          "description": "String representing the destination to import for, all if left empty. List of possible values can be found here. [https://support.google.com/merchants/answer/7501026] List of allowed string values: \"Shopping_ads\", \"Buy_on_google_listings\", \"Display_ads\", \"Local_inventory _ads\", \"Free_listings\", \"Free_local_listings\" NOTE: The string values are case sensitive.",
           "items": {
             "type": "string"
           },
@@ -2181,7 +2293,7 @@
           "additionalProperties": {
             "$ref": "GoogleCloudRetailV2alphaCustomAttribute"
           },
-          "description": "Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ \"vendor\": {\"text\": [\"vendor123\", \"vendor456\"]}, \"lengths_cm\": {\"numbers\":[2.3, 15.4]}, \"heights_cm\": {\"numbers\":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: a-zA-Z0-9*. For example, key0LikeThis or KEY_1_LIKE_THIS.",
+          "description": "Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ \"vendor\": {\"text\": [\"vendor123\", \"vendor456\"]}, \"lengths_cm\": {\"numbers\":[2.3, 15.4]}, \"heights_cm\": {\"numbers\":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or KEY_1_LIKE_THIS.",
           "type": "object"
         },
         "audience": {
@@ -2349,7 +2461,7 @@
           "type": "string"
         },
         "ttl": {
-          "description": "Input only. The TTL (time to live) of the product. If it is set, expire_time is set as current timestamp plus ttl. The derived expire_time is returned in the output and ttl is left blank when retrieving the Product. If it is set, the product is not available for SearchService.Search after current timestamp plus ttl. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts.",
+          "description": "Input only. The TTL (time to live) of the product. If it is set, it must be a non-negative value, and expire_time is set as current timestamp plus ttl. The derived expire_time is returned in the output and ttl is left blank when retrieving the Product. If it is set, the product is not available for SearchService.Search after current timestamp plus ttl. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts.",
           "format": "google-duration",
           "type": "string"
         },
@@ -2438,7 +2550,7 @@
       "id": "GoogleCloudRetailV2alphaProductLevelConfig",
       "properties": {
         "ingestionProductType": {
-          "description": "The type of Products allowed to be ingested into the catalog. Acceptable values are: * `primary` (default): You can only ingest Product.Type.PRIMARY Products. This means Product.primary_product_id can only be empty or set to the same value as Product.id. * `variant`: You can only ingest Product.Type.VARIANT Products. This means Product.primary_product_id cannot be empty. If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned. If this field is `variant` and merchant_center_product_id_field is `itemGroupId`, an INVALID_ARGUMENT error is returned. See [Using product levels](https://cloud.google.com/retail/recommendations-ai/docs/catalog#product-levels) for more details.",
+          "description": "The type of Products allowed to be ingested into the catalog. Acceptable values are: * `primary` (default): You can ingest Products of all types. When ingesting a Product, its type will default to Product.Type.PRIMARY if unset. * `variant`: You can only ingest Product.Type.VARIANT Products. This means Product.primary_product_id cannot be empty. If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned. If this field is `variant` and merchant_center_product_id_field is `itemGroupId`, an INVALID_ARGUMENT error is returned. See [Using product levels](https://cloud.google.com/retail/recommendations-ai/docs/catalog#product-levels) for more details.",
           "type": "string"
         },
         "merchantCenterProductIdField": {
@@ -2453,7 +2565,7 @@
       "id": "GoogleCloudRetailV2alphaPromotion",
       "properties": {
         "promotionId": {
-          "description": "ID of the promotion. For example, \"free gift\". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: a-zA-Z*. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).",
+          "description": "ID of the promotion. For example, \"free gift\". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).",
           "type": "string"
         }
       },
@@ -2601,7 +2713,7 @@
           "type": "boolean"
         },
         "placeIds": {
-          "description": "Required. The IDs for this type, such as the store IDs for \"pickup-in-store\" or the region IDs for \"same-day-delivery\", to be removed for this type. At least 1 value is required, and a maximum of 2000 values are allowed. Each value must be a string with a length limit of 10 characters, matching the pattern [a-zA-Z0-9_-]+, such as \"store1\" or \"REGION-2\". Otherwise, an INVALID_ARGUMENT error is returned.",
+          "description": "Required. The IDs for this type, such as the store IDs for \"pickup-in-store\" or the region IDs for \"same-day-delivery\", to be removed for this type. At least 1 value is required, and a maximum of 2000 values are allowed. Each value must be a string with a length limit of 10 characters, matching the pattern `[a-zA-Z0-9_-]+`, such as \"store1\" or \"REGION-2\". Otherwise, an INVALID_ARGUMENT error is returned.",
           "items": {
             "type": "string"
           },
@@ -2625,13 +2737,48 @@
       "properties": {},
       "type": "object"
     },
+    "GoogleCloudRetailV2alphaRemoveLocalInventoriesMetadata": {
+      "description": "Metadata related to the progress of the RemoveLocalInventories operation. Currently empty because there is no meaningful metadata populated from the RemoveLocalInventories method.",
+      "id": "GoogleCloudRetailV2alphaRemoveLocalInventoriesMetadata",
+      "properties": {},
+      "type": "object"
+    },
+    "GoogleCloudRetailV2alphaRemoveLocalInventoriesRequest": {
+      "description": "Request message for RemoveLocalInventories method.",
+      "id": "GoogleCloudRetailV2alphaRemoveLocalInventoriesRequest",
+      "properties": {
+        "allowMissing": {
+          "description": "If set to true, and the Product is not found, the local inventory removal request will still be processed and retained for at most 1 day and processed once the Product is created. If set to false, a NOT_FOUND error is returned if the Product is not found.",
+          "type": "boolean"
+        },
+        "placeIds": {
+          "description": "Required. A list of place IDs to have their inventory deleted. At most 1000 place IDs are allowed per request.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "removeTime": {
+          "description": "The time when the inventory deletions are issued. Used to prevent out-of-order updates and deletions on local inventory fields. If not provided, the internal system time will be used.",
+          "format": "google-datetime",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudRetailV2alphaRemoveLocalInventoriesResponse": {
+      "description": "Response of the RemoveLocalInventories API. Currently empty because there is no meaningful response populated from the RemoveLocalInventories method.",
+      "id": "GoogleCloudRetailV2alphaRemoveLocalInventoriesResponse",
+      "properties": {},
+      "type": "object"
+    },
     "GoogleCloudRetailV2alphaSearchRequest": {
       "description": "Request message for SearchService.Search method.",
       "id": "GoogleCloudRetailV2alphaSearchRequest",
       "properties": {
         "boostSpec": {
           "$ref": "GoogleCloudRetailV2alphaSearchRequestBoostSpec",
-          "description": "Boost specification to boost certain products. See more details at this [user guide](https://cloud.google.com/retail/docs/boosting)."
+          "description": "Boost specification to boost certain products. See more details at this [user guide](https://cloud.google.com/retail/docs/boosting). Notice that if both ServingConfig.boost_control_ids and [SearchRequest.boost_spec] are set, the boost conditions from both places are evaluated. If a search request matches multiple boost conditions, the final boost score is equal to the sum of the boost scores from all matched boost conditions."
         },
         "branch": {
           "description": "The branch resource name, such as `projects/*/locations/global/catalogs/default_catalog/branches/0`. Use \"default_branch\" as the branch ID or leave this field empty, to search products under the default branch.",
@@ -2707,12 +2854,26 @@
           ],
           "type": "string"
         },
+        "searchMode": {
+          "description": "The search mode of the search request. If not specified, a single search request triggers both product search and faceted search.",
+          "enum": [
+            "SEARCH_MODE_UNSPECIFIED",
+            "PRODUCT_SEARCH_ONLY",
+            "FACETED_SEARCH_ONLY"
+          ],
+          "enumDescriptions": [
+            "Default value. In this case both product search and faceted search will be performed. Both [SearchResponse.SearchResult] and [SearchResponse.Facet] will be returned.",
+            "Only product search will be performed. The faceted search will be disabled. Only [SearchResponse.SearchResult] will be returned. [SearchResponse.Facet] will not be returned, even if SearchRequest.facet_specs or SearchRequest.dynamic_facet_spec is set.",
+            "Only faceted search will be performed. The product search will be disabled. When in this mode, one or both of SearchRequest.facet_spec and SearchRequest.dynamic_facet_spec should be set. Otherwise, an INVALID_ARGUMENT error is returned. Only [SearchResponse.Facet] will be returned. [SearchResponse.SearchResult] will not be returned."
+          ],
+          "type": "string"
+        },
         "userInfo": {
           "$ref": "GoogleCloudRetailV2alphaUserInfo",
           "description": "User information."
         },
         "variantRollupKeys": {
-          "description": "The keys to fetch and rollup the matching variant Products attributes. The attributes from all the matching variant Products are merged and de-duplicated. Notice that rollup variant Products attributes will lead to extra query latency. Maximum number of keys is 10. For FulfillmentInfo, a fulfillment type and a fulfillment ID must be provided in the format of \"fulfillmentType.fulfillmentId\". E.g., in \"pickupInStore.store123\", \"pickupInStore\" is fulfillment type and \"store123\" is the store ID. Supported keys are: * colorFamilies * price * originalPrice * discount * attributes.key, where key is any key in the Product.attributes map. * pickupInStore.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type \"pickup-in-store\". * shipToStore.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type \"ship-to-store\". * sameDayDelivery.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type \"same-day-delivery\". * nextDayDelivery.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type \"next-day-delivery\". * customFulfillment1.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type \"custom-type-1\". * customFulfillment2.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type \"custom-type-2\". * customFulfillment3.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type \"custom-type-3\". * customFulfillment4.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type \"custom-type-4\". * customFulfillment5.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type \"custom-type-5\". If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned.",
+          "description": "The keys to fetch and rollup the matching variant Products attributes. The attributes from all the matching variant Products are merged and de-duplicated. Notice that rollup variant Products attributes will lead to extra query latency. Maximum number of keys is 10. For FulfillmentInfo, a fulfillment type and a fulfillment ID must be provided in the format of \"fulfillmentType.fulfillmentId\". E.g., in \"pickupInStore.store123\", \"pickupInStore\" is fulfillment type and \"store123\" is the store ID. Supported keys are: * colorFamilies * price * originalPrice * discount * inventory(place_id,price) * inventory(place_id,attributes.key), where key is any key in the Product.inventories.attributes map. * attributes.key, where key is any key in the Product.attributes map. * pickupInStore.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type \"pickup-in-store\". * shipToStore.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type \"ship-to-store\". * sameDayDelivery.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type \"same-day-delivery\". * nextDayDelivery.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type \"next-day-delivery\". * customFulfillment1.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type \"custom-type-1\". * customFulfillment2.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type \"custom-type-2\". * customFulfillment3.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type \"custom-type-3\". * customFulfillment4.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type \"custom-type-4\". * customFulfillment5.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type \"custom-type-5\". If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned.",
           "items": {
             "type": "string"
           },
@@ -2822,7 +2983,7 @@
           "type": "array"
         },
         "key": {
-          "description": "Required. Supported textual and numerical facet keys in Product object, over which the facet values are computed. Facet key is case-sensitive. Allowed facet keys when FacetKey.query is not specified: * textual_field = * \"brands\" * \"categories\" * \"genders\" * \"ageGroups\" * \"availability\" * \"colorFamilies\" * \"colors\" * \"sizes\" * \"materials\" * \"patterns\" * \"conditions\" * \"attributes.key\" * \"pickupInStore\" * \"shipToStore\" * \"sameDayDelivery\" * \"nextDayDelivery\" * \"customFulfillment1\" * \"customFulfillment2\" * \"customFulfillment3\" * \"customFulfillment4\" * \"customFulfillment5\" * numerical_field = * \"price\" * \"discount\" * \"rating\" * \"ratingCount\" * \"attributes.key\"",
+          "description": "Required. Supported textual and numerical facet keys in Product object, over which the facet values are computed. Facet key is case-sensitive. Allowed facet keys when FacetKey.query is not specified: * textual_field = * \"brands\" * \"categories\" * \"genders\" * \"ageGroups\" * \"availability\" * \"colorFamilies\" * \"colors\" * \"sizes\" * \"materials\" * \"patterns\" * \"conditions\" * \"attributes.key\" * \"pickupInStore\" * \"shipToStore\" * \"sameDayDelivery\" * \"nextDayDelivery\" * \"customFulfillment1\" * \"customFulfillment2\" * \"customFulfillment3\" * \"customFulfillment4\" * \"customFulfillment5\" * \"inventory(place_id,attributes.key)\" * numerical_field = * \"price\" * \"discount\" * \"rating\" * \"ratingCount\" * \"attributes.key\" * \"inventory(place_id,price)\" * \"inventory(place_id,attributes.key)\"",
           "type": "string"
         },
         "orderBy": {
@@ -3247,7 +3408,7 @@
       "type": "object"
     },
     "GoogleCloudRetailV2betaAddFulfillmentPlacesResponse": {
-      "description": "Response of the RemoveFulfillmentPlacesRequest. Currently empty because there is no meaningful response populated from the AddFulfillmentPlaces method.",
+      "description": "Response of the AddFulfillmentPlacesRequest. Currently empty because there is no meaningful response populated from the AddFulfillmentPlaces method.",
       "id": "GoogleCloudRetailV2betaAddFulfillmentPlacesResponse",
       "properties": {},
       "type": "object"

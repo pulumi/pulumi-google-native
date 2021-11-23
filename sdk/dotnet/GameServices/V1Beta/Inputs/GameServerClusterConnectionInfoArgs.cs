@@ -22,12 +22,6 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta.Inputs
         public Input<Inputs.GkeClusterReferenceArgs>? GkeClusterReference { get; set; }
 
         /// <summary>
-        /// Reference to a Kubernetes cluster registered through GKE Hub. See https://cloud.google.com/anthos/multicluster-management/ for more information about registering Kubernetes clusters.
-        /// </summary>
-        [Input("gkeHubClusterReference")]
-        public Input<Inputs.GkeHubClusterReferenceArgs>? GkeHubClusterReference { get; set; }
-
-        /// <summary>
         /// Namespace designated on the game server cluster where the Agones game server instances will be created. Existence of the namespace will be validated during creation.
         /// </summary>
         [Input("namespace")]

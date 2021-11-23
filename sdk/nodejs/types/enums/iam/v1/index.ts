@@ -84,7 +84,7 @@ export const OrganizationRoleStage = {
      */
     Deprecated: "DEPRECATED",
     /**
-     * This role is disabled and will not contribute permissions to any members it is granted to in policies.
+     * This role is disabled and will not contribute permissions to any principals it is granted to in policies.
      */
     Disabled: "DISABLED",
     /**
@@ -116,7 +116,7 @@ export const RoleStage = {
      */
     Deprecated: "DEPRECATED",
     /**
-     * This role is disabled and will not contribute permissions to any members it is granted to in policies.
+     * This role is disabled and will not contribute permissions to any principals it is granted to in policies.
      */
     Disabled: "DISABLED",
     /**

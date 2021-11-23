@@ -648,7 +648,7 @@ func (o GoogleCloudRetailV2ColorInfoResponsePtrOutput) Colors() pulumi.StringArr
 
 // Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods.
 type GoogleCloudRetailV2FulfillmentInfo struct {
-	// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
+	// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern `[a-zA-Z0-9_-]+`, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
 	PlaceIds []string `pulumi:"placeIds"`
 	// The fulfillment type, including commonly used types (such as pickup in store and same day delivery), and custom types. Customers have to map custom types to their display names before rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-day-delivery" * "next-day-delivery" * "custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5" If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned.
 	Type *string `pulumi:"type"`
@@ -667,7 +667,7 @@ type GoogleCloudRetailV2FulfillmentInfoInput interface {
 
 // Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods.
 type GoogleCloudRetailV2FulfillmentInfoArgs struct {
-	// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
+	// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern `[a-zA-Z0-9_-]+`, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
 	PlaceIds pulumi.StringArrayInput `pulumi:"placeIds"`
 	// The fulfillment type, including commonly used types (such as pickup in store and same day delivery), and custom types. Customers have to map custom types to their display names before rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-day-delivery" * "next-day-delivery" * "custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5" If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned.
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -725,7 +725,7 @@ func (o GoogleCloudRetailV2FulfillmentInfoOutput) ToGoogleCloudRetailV2Fulfillme
 	return o
 }
 
-// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
+// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern `[a-zA-Z0-9_-]+`, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
 func (o GoogleCloudRetailV2FulfillmentInfoOutput) PlaceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2FulfillmentInfo) []string { return v.PlaceIds }).(pulumi.StringArrayOutput)
 }
@@ -757,7 +757,7 @@ func (o GoogleCloudRetailV2FulfillmentInfoArrayOutput) Index(i pulumi.IntInput) 
 
 // Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods.
 type GoogleCloudRetailV2FulfillmentInfoResponse struct {
-	// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
+	// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern `[a-zA-Z0-9_-]+`, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
 	PlaceIds []string `pulumi:"placeIds"`
 	// The fulfillment type, including commonly used types (such as pickup in store and same day delivery), and custom types. Customers have to map custom types to their display names before rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-day-delivery" * "next-day-delivery" * "custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5" If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned.
 	Type string `pulumi:"type"`
@@ -776,7 +776,7 @@ type GoogleCloudRetailV2FulfillmentInfoResponseInput interface {
 
 // Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods.
 type GoogleCloudRetailV2FulfillmentInfoResponseArgs struct {
-	// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
+	// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern `[a-zA-Z0-9_-]+`, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
 	PlaceIds pulumi.StringArrayInput `pulumi:"placeIds"`
 	// The fulfillment type, including commonly used types (such as pickup in store and same day delivery), and custom types. Customers have to map custom types to their display names before rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-day-delivery" * "next-day-delivery" * "custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5" If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -834,7 +834,7 @@ func (o GoogleCloudRetailV2FulfillmentInfoResponseOutput) ToGoogleCloudRetailV2F
 	return o
 }
 
-// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
+// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern `[a-zA-Z0-9_-]+`, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
 func (o GoogleCloudRetailV2FulfillmentInfoResponseOutput) PlaceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2FulfillmentInfoResponse) []string { return v.PlaceIds }).(pulumi.StringArrayOutput)
 }
@@ -1953,7 +1953,7 @@ func (o GoogleCloudRetailV2PriceInfoResponsePtrOutput) PriceRange() GoogleCloudR
 
 // Product captures all metadata information of items to be recommended or searched.
 type GoogleCloudRetailV2ProductResponse struct {
-	// Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: a-zA-Z0-9*. For example, key0LikeThis or KEY_1_LIKE_THIS.
+	// Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or KEY_1_LIKE_THIS.
 	Attributes map[string]string `pulumi:"attributes"`
 	// The target group associated with a given audience (e.g. male, veterans, car owners, musicians, etc.) of the product.
 	Audience GoogleCloudRetailV2AudienceResponse `pulumi:"audience"`
@@ -2009,7 +2009,7 @@ type GoogleCloudRetailV2ProductResponse struct {
 	Tags []string `pulumi:"tags"`
 	// Product title. This field must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [title](https://support.google.com/merchants/answer/6324415). Schema.org property [Product.name](https://schema.org/name).
 	Title string `pulumi:"title"`
-	// Input only. The TTL (time to live) of the product. If it is set, expire_time is set as current timestamp plus ttl. The derived expire_time is returned in the output and ttl is left blank when retrieving the Product. If it is set, the product is not available for SearchService.Search after current timestamp plus ttl. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts.
+	// Input only. The TTL (time to live) of the product. If it is set, it must be a non-negative value, and expire_time is set as current timestamp plus ttl. The derived expire_time is returned in the output and ttl is left blank when retrieving the Product. If it is set, the product is not available for SearchService.Search after current timestamp plus ttl. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts.
 	Ttl string `pulumi:"ttl"`
 	// Immutable. The type of the product. Default to Catalog.product_level_config.ingestion_product_type if unset.
 	Type string `pulumi:"type"`
@@ -2032,7 +2032,7 @@ type GoogleCloudRetailV2ProductResponseInput interface {
 
 // Product captures all metadata information of items to be recommended or searched.
 type GoogleCloudRetailV2ProductResponseArgs struct {
-	// Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: a-zA-Z0-9*. For example, key0LikeThis or KEY_1_LIKE_THIS.
+	// Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or KEY_1_LIKE_THIS.
 	Attributes pulumi.StringMapInput `pulumi:"attributes"`
 	// The target group associated with a given audience (e.g. male, veterans, car owners, musicians, etc.) of the product.
 	Audience GoogleCloudRetailV2AudienceResponseInput `pulumi:"audience"`
@@ -2088,7 +2088,7 @@ type GoogleCloudRetailV2ProductResponseArgs struct {
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// Product title. This field must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [title](https://support.google.com/merchants/answer/6324415). Schema.org property [Product.name](https://schema.org/name).
 	Title pulumi.StringInput `pulumi:"title"`
-	// Input only. The TTL (time to live) of the product. If it is set, expire_time is set as current timestamp plus ttl. The derived expire_time is returned in the output and ttl is left blank when retrieving the Product. If it is set, the product is not available for SearchService.Search after current timestamp plus ttl. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts.
+	// Input only. The TTL (time to live) of the product. If it is set, it must be a non-negative value, and expire_time is set as current timestamp plus ttl. The derived expire_time is returned in the output and ttl is left blank when retrieving the Product. If it is set, the product is not available for SearchService.Search after current timestamp plus ttl. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts.
 	Ttl pulumi.StringInput `pulumi:"ttl"`
 	// Immutable. The type of the product. Default to Catalog.product_level_config.ingestion_product_type if unset.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -2150,7 +2150,7 @@ func (o GoogleCloudRetailV2ProductResponseOutput) ToGoogleCloudRetailV2ProductRe
 	return o
 }
 
-// Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: a-zA-Z0-9*. For example, key0LikeThis or KEY_1_LIKE_THIS.
+// Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or KEY_1_LIKE_THIS.
 func (o GoogleCloudRetailV2ProductResponseOutput) Attributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2ProductResponse) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
 }
@@ -2292,7 +2292,7 @@ func (o GoogleCloudRetailV2ProductResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2ProductResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
-// Input only. The TTL (time to live) of the product. If it is set, expire_time is set as current timestamp plus ttl. The derived expire_time is returned in the output and ttl is left blank when retrieving the Product. If it is set, the product is not available for SearchService.Search after current timestamp plus ttl. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts.
+// Input only. The TTL (time to live) of the product. If it is set, it must be a non-negative value, and expire_time is set as current timestamp plus ttl. The derived expire_time is returned in the output and ttl is left blank when retrieving the Product. If it is set, the product is not available for SearchService.Search after current timestamp plus ttl. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts.
 func (o GoogleCloudRetailV2ProductResponseOutput) Ttl() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2ProductResponse) string { return v.Ttl }).(pulumi.StringOutput)
 }
@@ -2334,7 +2334,7 @@ func (o GoogleCloudRetailV2ProductResponseArrayOutput) Index(i pulumi.IntInput) 
 
 // Promotion information.
 type GoogleCloudRetailV2Promotion struct {
-	// ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: a-zA-Z*. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
+	// ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
 	PromotionId *string `pulumi:"promotionId"`
 }
 
@@ -2351,7 +2351,7 @@ type GoogleCloudRetailV2PromotionInput interface {
 
 // Promotion information.
 type GoogleCloudRetailV2PromotionArgs struct {
-	// ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: a-zA-Z*. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
+	// ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
 	PromotionId pulumi.StringPtrInput `pulumi:"promotionId"`
 }
 
@@ -2407,7 +2407,7 @@ func (o GoogleCloudRetailV2PromotionOutput) ToGoogleCloudRetailV2PromotionOutput
 	return o
 }
 
-// ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: a-zA-Z*. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
+// ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
 func (o GoogleCloudRetailV2PromotionOutput) PromotionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2Promotion) *string { return v.PromotionId }).(pulumi.StringPtrOutput)
 }
@@ -2434,7 +2434,7 @@ func (o GoogleCloudRetailV2PromotionArrayOutput) Index(i pulumi.IntInput) Google
 
 // Promotion information.
 type GoogleCloudRetailV2PromotionResponse struct {
-	// ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: a-zA-Z*. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
+	// ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
 	PromotionId string `pulumi:"promotionId"`
 }
 
@@ -2451,7 +2451,7 @@ type GoogleCloudRetailV2PromotionResponseInput interface {
 
 // Promotion information.
 type GoogleCloudRetailV2PromotionResponseArgs struct {
-	// ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: a-zA-Z*. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
+	// ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
 	PromotionId pulumi.StringInput `pulumi:"promotionId"`
 }
 
@@ -2507,7 +2507,7 @@ func (o GoogleCloudRetailV2PromotionResponseOutput) ToGoogleCloudRetailV2Promoti
 	return o
 }
 
-// ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: a-zA-Z*. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
+// ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
 func (o GoogleCloudRetailV2PromotionResponseOutput) PromotionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2PromotionResponse) string { return v.PromotionId }).(pulumi.StringOutput)
 }

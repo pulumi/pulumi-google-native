@@ -87,7 +87,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// </summary>
         public readonly Outputs.MySqlConnectionProfileResponse Mysql;
         /// <summary>
-        /// The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{instance}.
+        /// The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
         /// </summary>
         public readonly string Name;
         /// <summary>

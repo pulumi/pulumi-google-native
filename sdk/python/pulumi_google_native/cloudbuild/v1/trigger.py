@@ -22,6 +22,7 @@ class TriggerArgs:
                  build: Optional[pulumi.Input['BuildArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
+                 event_type: Optional[pulumi.Input['TriggerEventType']] = None,
                  filename: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  git_file_source: Optional[pulumi.Input['GitFileSourceArgs']] = None,
@@ -46,6 +47,7 @@ class TriggerArgs:
         :param pulumi.Input['BuildArgs'] build: Contents of the build template.
         :param pulumi.Input[str] description: Human-readable description of this trigger.
         :param pulumi.Input[bool] disabled: If true, the trigger will never automatically execute a build.
+        :param pulumi.Input['TriggerEventType'] event_type: Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
         :param pulumi.Input[str] filename: Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
         :param pulumi.Input[str] filter: A Common Expression Language string.
         :param pulumi.Input['GitFileSourceArgs'] git_file_source: The file source describing the local or remote Build template.
@@ -73,6 +75,8 @@ class TriggerArgs:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if event_type is not None:
+            pulumi.set(__self__, "event_type", event_type)
         if filename is not None:
             pulumi.set(__self__, "filename", filename)
         if filter is not None:
@@ -176,6 +180,18 @@ class TriggerArgs:
     @disabled.setter
     def disabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="eventType")
+    def event_type(self) -> Optional[pulumi.Input['TriggerEventType']]:
+        """
+        Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+        """
+        return pulumi.get(self, "event_type")
+
+    @event_type.setter
+    def event_type(self, value: Optional[pulumi.Input['TriggerEventType']]):
+        pulumi.set(self, "event_type", value)
 
     @property
     @pulumi.getter
@@ -386,6 +402,7 @@ class Trigger(pulumi.CustomResource):
                  build: Optional[pulumi.Input[pulumi.InputType['BuildArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
+                 event_type: Optional[pulumi.Input['TriggerEventType']] = None,
                  filename: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  git_file_source: Optional[pulumi.Input[pulumi.InputType['GitFileSourceArgs']]] = None,
@@ -415,6 +432,7 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BuildArgs']] build: Contents of the build template.
         :param pulumi.Input[str] description: Human-readable description of this trigger.
         :param pulumi.Input[bool] disabled: If true, the trigger will never automatically execute a build.
+        :param pulumi.Input['TriggerEventType'] event_type: Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
         :param pulumi.Input[str] filename: Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
         :param pulumi.Input[str] filter: A Common Expression Language string.
         :param pulumi.Input[pulumi.InputType['GitFileSourceArgs']] git_file_source: The file source describing the local or remote Build template.
@@ -460,6 +478,7 @@ class Trigger(pulumi.CustomResource):
                  build: Optional[pulumi.Input[pulumi.InputType['BuildArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
+                 event_type: Optional[pulumi.Input['TriggerEventType']] = None,
                  filename: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  git_file_source: Optional[pulumi.Input[pulumi.InputType['GitFileSourceArgs']]] = None,
@@ -495,6 +514,7 @@ class Trigger(pulumi.CustomResource):
             __props__.__dict__["build"] = build
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled
+            __props__.__dict__["event_type"] = event_type
             __props__.__dict__["filename"] = filename
             __props__.__dict__["filter"] = filter
             __props__.__dict__["git_file_source"] = git_file_source
@@ -544,6 +564,7 @@ class Trigger(pulumi.CustomResource):
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["disabled"] = None
+        __props__.__dict__["event_type"] = None
         __props__.__dict__["filename"] = None
         __props__.__dict__["filter"] = None
         __props__.__dict__["git_file_source"] = None
@@ -608,6 +629,14 @@ class Trigger(pulumi.CustomResource):
         If true, the trigger will never automatically execute a build.
         """
         return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter(name="eventType")
+    def event_type(self) -> pulumi.Output[str]:
+        """
+        Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+        """
+        return pulumi.get(self, "event_type")
 
     @property
     @pulumi.getter

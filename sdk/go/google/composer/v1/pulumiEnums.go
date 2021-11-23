@@ -10,6 +10,177 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+type EnvironmentConfigEnvironmentSize string
+
+const (
+	// The size of the environment is unspecified.
+	EnvironmentConfigEnvironmentSizeEnvironmentSizeUnspecified = EnvironmentConfigEnvironmentSize("ENVIRONMENT_SIZE_UNSPECIFIED")
+	// The environment size is small.
+	EnvironmentConfigEnvironmentSizeEnvironmentSizeSmall = EnvironmentConfigEnvironmentSize("ENVIRONMENT_SIZE_SMALL")
+	// The environment size is medium.
+	EnvironmentConfigEnvironmentSizeEnvironmentSizeMedium = EnvironmentConfigEnvironmentSize("ENVIRONMENT_SIZE_MEDIUM")
+	// The environment size is large.
+	EnvironmentConfigEnvironmentSizeEnvironmentSizeLarge = EnvironmentConfigEnvironmentSize("ENVIRONMENT_SIZE_LARGE")
+)
+
+func (EnvironmentConfigEnvironmentSize) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigEnvironmentSize)(nil)).Elem()
+}
+
+func (e EnvironmentConfigEnvironmentSize) ToEnvironmentConfigEnvironmentSizeOutput() EnvironmentConfigEnvironmentSizeOutput {
+	return pulumi.ToOutput(e).(EnvironmentConfigEnvironmentSizeOutput)
+}
+
+func (e EnvironmentConfigEnvironmentSize) ToEnvironmentConfigEnvironmentSizeOutputWithContext(ctx context.Context) EnvironmentConfigEnvironmentSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(EnvironmentConfigEnvironmentSizeOutput)
+}
+
+func (e EnvironmentConfigEnvironmentSize) ToEnvironmentConfigEnvironmentSizePtrOutput() EnvironmentConfigEnvironmentSizePtrOutput {
+	return e.ToEnvironmentConfigEnvironmentSizePtrOutputWithContext(context.Background())
+}
+
+func (e EnvironmentConfigEnvironmentSize) ToEnvironmentConfigEnvironmentSizePtrOutputWithContext(ctx context.Context) EnvironmentConfigEnvironmentSizePtrOutput {
+	return EnvironmentConfigEnvironmentSize(e).ToEnvironmentConfigEnvironmentSizeOutputWithContext(ctx).ToEnvironmentConfigEnvironmentSizePtrOutputWithContext(ctx)
+}
+
+func (e EnvironmentConfigEnvironmentSize) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EnvironmentConfigEnvironmentSize) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EnvironmentConfigEnvironmentSize) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e EnvironmentConfigEnvironmentSize) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type EnvironmentConfigEnvironmentSizeOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigEnvironmentSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigEnvironmentSize)(nil)).Elem()
+}
+
+func (o EnvironmentConfigEnvironmentSizeOutput) ToEnvironmentConfigEnvironmentSizeOutput() EnvironmentConfigEnvironmentSizeOutput {
+	return o
+}
+
+func (o EnvironmentConfigEnvironmentSizeOutput) ToEnvironmentConfigEnvironmentSizeOutputWithContext(ctx context.Context) EnvironmentConfigEnvironmentSizeOutput {
+	return o
+}
+
+func (o EnvironmentConfigEnvironmentSizeOutput) ToEnvironmentConfigEnvironmentSizePtrOutput() EnvironmentConfigEnvironmentSizePtrOutput {
+	return o.ToEnvironmentConfigEnvironmentSizePtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentConfigEnvironmentSizeOutput) ToEnvironmentConfigEnvironmentSizePtrOutputWithContext(ctx context.Context) EnvironmentConfigEnvironmentSizePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigEnvironmentSize) *EnvironmentConfigEnvironmentSize {
+		return &v
+	}).(EnvironmentConfigEnvironmentSizePtrOutput)
+}
+
+func (o EnvironmentConfigEnvironmentSizeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o EnvironmentConfigEnvironmentSizeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EnvironmentConfigEnvironmentSize) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o EnvironmentConfigEnvironmentSizeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentConfigEnvironmentSizeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EnvironmentConfigEnvironmentSize) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentConfigEnvironmentSizePtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigEnvironmentSizePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfigEnvironmentSize)(nil)).Elem()
+}
+
+func (o EnvironmentConfigEnvironmentSizePtrOutput) ToEnvironmentConfigEnvironmentSizePtrOutput() EnvironmentConfigEnvironmentSizePtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigEnvironmentSizePtrOutput) ToEnvironmentConfigEnvironmentSizePtrOutputWithContext(ctx context.Context) EnvironmentConfigEnvironmentSizePtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigEnvironmentSizePtrOutput) Elem() EnvironmentConfigEnvironmentSizeOutput {
+	return o.ApplyT(func(v *EnvironmentConfigEnvironmentSize) EnvironmentConfigEnvironmentSize {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentConfigEnvironmentSize
+		return ret
+	}).(EnvironmentConfigEnvironmentSizeOutput)
+}
+
+func (o EnvironmentConfigEnvironmentSizePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentConfigEnvironmentSizePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *EnvironmentConfigEnvironmentSize) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// EnvironmentConfigEnvironmentSizeInput is an input type that accepts EnvironmentConfigEnvironmentSizeArgs and EnvironmentConfigEnvironmentSizeOutput values.
+// You can construct a concrete instance of `EnvironmentConfigEnvironmentSizeInput` via:
+//
+//          EnvironmentConfigEnvironmentSizeArgs{...}
+type EnvironmentConfigEnvironmentSizeInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigEnvironmentSizeOutput() EnvironmentConfigEnvironmentSizeOutput
+	ToEnvironmentConfigEnvironmentSizeOutputWithContext(context.Context) EnvironmentConfigEnvironmentSizeOutput
+}
+
+var environmentConfigEnvironmentSizePtrType = reflect.TypeOf((**EnvironmentConfigEnvironmentSize)(nil)).Elem()
+
+type EnvironmentConfigEnvironmentSizePtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigEnvironmentSizePtrOutput() EnvironmentConfigEnvironmentSizePtrOutput
+	ToEnvironmentConfigEnvironmentSizePtrOutputWithContext(context.Context) EnvironmentConfigEnvironmentSizePtrOutput
+}
+
+type environmentConfigEnvironmentSizePtr string
+
+func EnvironmentConfigEnvironmentSizePtr(v string) EnvironmentConfigEnvironmentSizePtrInput {
+	return (*environmentConfigEnvironmentSizePtr)(&v)
+}
+
+func (*environmentConfigEnvironmentSizePtr) ElementType() reflect.Type {
+	return environmentConfigEnvironmentSizePtrType
+}
+
+func (in *environmentConfigEnvironmentSizePtr) ToEnvironmentConfigEnvironmentSizePtrOutput() EnvironmentConfigEnvironmentSizePtrOutput {
+	return pulumi.ToOutput(in).(EnvironmentConfigEnvironmentSizePtrOutput)
+}
+
+func (in *environmentConfigEnvironmentSizePtr) ToEnvironmentConfigEnvironmentSizePtrOutputWithContext(ctx context.Context) EnvironmentConfigEnvironmentSizePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(EnvironmentConfigEnvironmentSizePtrOutput)
+}
+
 // The current state of the environment.
 type EnvironmentStateEnum string
 
@@ -186,8 +357,12 @@ func (in *environmentStateEnumPtr) ToEnvironmentStateEnumPtrOutputWithContext(ct
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigEnvironmentSizeInput)(nil)).Elem(), EnvironmentConfigEnvironmentSize("ENVIRONMENT_SIZE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigEnvironmentSizePtrInput)(nil)).Elem(), EnvironmentConfigEnvironmentSize("ENVIRONMENT_SIZE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentStateEnumInput)(nil)).Elem(), EnvironmentStateEnum("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentStateEnumPtrInput)(nil)).Elem(), EnvironmentStateEnum("STATE_UNSPECIFIED"))
+	pulumi.RegisterOutputType(EnvironmentConfigEnvironmentSizeOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigEnvironmentSizePtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentStateEnumOutput{})
 	pulumi.RegisterOutputType(EnvironmentStateEnumPtrOutput{})
 }

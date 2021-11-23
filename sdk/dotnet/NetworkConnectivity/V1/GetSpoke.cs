@@ -71,7 +71,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Immutable. The URI of the hub that this spoke is attached to.
+        /// Immutable. The name of the hub that this spoke is attached to.
         /// </summary>
         public readonly string Hub;
         /// <summary>

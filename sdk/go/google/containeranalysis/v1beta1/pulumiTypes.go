@@ -1845,13 +1845,13 @@ func (o BasisResponsePtrOutput) ResourceUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type Binding struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role *string `pulumi:"role"`
 }
 
@@ -1866,13 +1866,13 @@ type BindingInput interface {
 	ToBindingOutputWithContext(context.Context) BindingOutput
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -1913,7 +1913,7 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
 func (BindingOutput) ElementType() reflect.Type {
@@ -1928,17 +1928,17 @@ func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOu
 	return o
 }
 
-// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 func (o BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -1963,13 +1963,13 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 	}).(BindingOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingResponse struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
 }
 
@@ -1984,13 +1984,13 @@ type BindingResponseInput interface {
 	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingResponseArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringInput `pulumi:"role"`
 }
 
@@ -2031,7 +2031,7 @@ func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingResponseOutput struct{ *pulumi.OutputState }
 
 func (BindingResponseOutput) ElementType() reflect.Type {
@@ -2046,17 +2046,17 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 func (o BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -9794,10 +9794,8 @@ type FileOccurrence struct {
 	FilesLicenseInfo []string `pulumi:"filesLicenseInfo"`
 	// Uniquely identify any element in an SPDX document which may be referenced by other elements
 	Id *string `pulumi:"id"`
-	// This field provides a place for the SPDX file creator to record any relevant background references or analysis that went in to arriving at the Concluded License for a file
-	LicenseComments *string `pulumi:"licenseComments"`
 	// This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
-	LicenseConcluded *string `pulumi:"licenseConcluded"`
+	LicenseConcluded *License `pulumi:"licenseConcluded"`
 	// This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
 	Notice *string `pulumi:"notice"`
 }
@@ -9827,10 +9825,8 @@ type FileOccurrenceArgs struct {
 	FilesLicenseInfo pulumi.StringArrayInput `pulumi:"filesLicenseInfo"`
 	// Uniquely identify any element in an SPDX document which may be referenced by other elements
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// This field provides a place for the SPDX file creator to record any relevant background references or analysis that went in to arriving at the Concluded License for a file
-	LicenseComments pulumi.StringPtrInput `pulumi:"licenseComments"`
 	// This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
-	LicenseConcluded pulumi.StringPtrInput `pulumi:"licenseConcluded"`
+	LicenseConcluded LicensePtrInput `pulumi:"licenseConcluded"`
 	// This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
 	Notice pulumi.StringPtrInput `pulumi:"notice"`
 }
@@ -9943,14 +9939,9 @@ func (o FileOccurrenceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FileOccurrence) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// This field provides a place for the SPDX file creator to record any relevant background references or analysis that went in to arriving at the Concluded License for a file
-func (o FileOccurrenceOutput) LicenseComments() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FileOccurrence) *string { return v.LicenseComments }).(pulumi.StringPtrOutput)
-}
-
 // This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
-func (o FileOccurrenceOutput) LicenseConcluded() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FileOccurrence) *string { return v.LicenseConcluded }).(pulumi.StringPtrOutput)
+func (o FileOccurrenceOutput) LicenseConcluded() LicensePtrOutput {
+	return o.ApplyT(func(v FileOccurrence) *License { return v.LicenseConcluded }).(LicensePtrOutput)
 }
 
 // This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
@@ -10042,24 +10033,14 @@ func (o FileOccurrencePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// This field provides a place for the SPDX file creator to record any relevant background references or analysis that went in to arriving at the Concluded License for a file
-func (o FileOccurrencePtrOutput) LicenseComments() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FileOccurrence) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LicenseComments
-	}).(pulumi.StringPtrOutput)
-}
-
 // This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
-func (o FileOccurrencePtrOutput) LicenseConcluded() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FileOccurrence) *string {
+func (o FileOccurrencePtrOutput) LicenseConcluded() LicensePtrOutput {
+	return o.ApplyT(func(v *FileOccurrence) *License {
 		if v == nil {
 			return nil
 		}
 		return v.LicenseConcluded
-	}).(pulumi.StringPtrOutput)
+	}).(LicensePtrOutput)
 }
 
 // This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
@@ -10084,10 +10065,8 @@ type FileOccurrenceResponse struct {
 	Copyright string `pulumi:"copyright"`
 	// This field contains the license information actually found in the file, if any
 	FilesLicenseInfo []string `pulumi:"filesLicenseInfo"`
-	// This field provides a place for the SPDX file creator to record any relevant background references or analysis that went in to arriving at the Concluded License for a file
-	LicenseComments string `pulumi:"licenseComments"`
 	// This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
-	LicenseConcluded string `pulumi:"licenseConcluded"`
+	LicenseConcluded LicenseResponse `pulumi:"licenseConcluded"`
 	// This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
 	Notice string `pulumi:"notice"`
 }
@@ -10115,10 +10094,8 @@ type FileOccurrenceResponseArgs struct {
 	Copyright pulumi.StringInput `pulumi:"copyright"`
 	// This field contains the license information actually found in the file, if any
 	FilesLicenseInfo pulumi.StringArrayInput `pulumi:"filesLicenseInfo"`
-	// This field provides a place for the SPDX file creator to record any relevant background references or analysis that went in to arriving at the Concluded License for a file
-	LicenseComments pulumi.StringInput `pulumi:"licenseComments"`
 	// This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
-	LicenseConcluded pulumi.StringInput `pulumi:"licenseConcluded"`
+	LicenseConcluded LicenseResponseInput `pulumi:"licenseConcluded"`
 	// This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
 	Notice pulumi.StringInput `pulumi:"notice"`
 }
@@ -10226,14 +10203,9 @@ func (o FileOccurrenceResponseOutput) FilesLicenseInfo() pulumi.StringArrayOutpu
 	return o.ApplyT(func(v FileOccurrenceResponse) []string { return v.FilesLicenseInfo }).(pulumi.StringArrayOutput)
 }
 
-// This field provides a place for the SPDX file creator to record any relevant background references or analysis that went in to arriving at the Concluded License for a file
-func (o FileOccurrenceResponseOutput) LicenseComments() pulumi.StringOutput {
-	return o.ApplyT(func(v FileOccurrenceResponse) string { return v.LicenseComments }).(pulumi.StringOutput)
-}
-
 // This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
-func (o FileOccurrenceResponseOutput) LicenseConcluded() pulumi.StringOutput {
-	return o.ApplyT(func(v FileOccurrenceResponse) string { return v.LicenseConcluded }).(pulumi.StringOutput)
+func (o FileOccurrenceResponseOutput) LicenseConcluded() LicenseResponseOutput {
+	return o.ApplyT(func(v FileOccurrenceResponse) LicenseResponse { return v.LicenseConcluded }).(LicenseResponseOutput)
 }
 
 // This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
@@ -10315,24 +10287,14 @@ func (o FileOccurrenceResponsePtrOutput) FilesLicenseInfo() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
-// This field provides a place for the SPDX file creator to record any relevant background references or analysis that went in to arriving at the Concluded License for a file
-func (o FileOccurrenceResponsePtrOutput) LicenseComments() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FileOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LicenseComments
-	}).(pulumi.StringPtrOutput)
-}
-
 // This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
-func (o FileOccurrenceResponsePtrOutput) LicenseConcluded() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FileOccurrenceResponse) *string {
+func (o FileOccurrenceResponsePtrOutput) LicenseConcluded() LicenseResponsePtrOutput {
+	return o.ApplyT(func(v *FileOccurrenceResponse) *LicenseResponse {
 		if v == nil {
 			return nil
 		}
 		return &v.LicenseConcluded
-	}).(pulumi.StringPtrOutput)
+	}).(LicenseResponsePtrOutput)
 }
 
 // This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
@@ -15822,6 +15784,324 @@ func (o LayerResponseArrayOutput) Index(i pulumi.IntInput) LayerResponseOutput {
 	}).(LayerResponseOutput)
 }
 
+// License information: https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
+type License struct {
+	// Comments
+	Comments *string `pulumi:"comments"`
+	// Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+	Expression *string `pulumi:"expression"`
+}
+
+// LicenseInput is an input type that accepts LicenseArgs and LicenseOutput values.
+// You can construct a concrete instance of `LicenseInput` via:
+//
+//          LicenseArgs{...}
+type LicenseInput interface {
+	pulumi.Input
+
+	ToLicenseOutput() LicenseOutput
+	ToLicenseOutputWithContext(context.Context) LicenseOutput
+}
+
+// License information: https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
+type LicenseArgs struct {
+	// Comments
+	Comments pulumi.StringPtrInput `pulumi:"comments"`
+	// Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+}
+
+func (LicenseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*License)(nil)).Elem()
+}
+
+func (i LicenseArgs) ToLicenseOutput() LicenseOutput {
+	return i.ToLicenseOutputWithContext(context.Background())
+}
+
+func (i LicenseArgs) ToLicenseOutputWithContext(ctx context.Context) LicenseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseOutput)
+}
+
+func (i LicenseArgs) ToLicensePtrOutput() LicensePtrOutput {
+	return i.ToLicensePtrOutputWithContext(context.Background())
+}
+
+func (i LicenseArgs) ToLicensePtrOutputWithContext(ctx context.Context) LicensePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseOutput).ToLicensePtrOutputWithContext(ctx)
+}
+
+// LicensePtrInput is an input type that accepts LicenseArgs, LicensePtr and LicensePtrOutput values.
+// You can construct a concrete instance of `LicensePtrInput` via:
+//
+//          LicenseArgs{...}
+//
+//  or:
+//
+//          nil
+type LicensePtrInput interface {
+	pulumi.Input
+
+	ToLicensePtrOutput() LicensePtrOutput
+	ToLicensePtrOutputWithContext(context.Context) LicensePtrOutput
+}
+
+type licensePtrType LicenseArgs
+
+func LicensePtr(v *LicenseArgs) LicensePtrInput {
+	return (*licensePtrType)(v)
+}
+
+func (*licensePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**License)(nil)).Elem()
+}
+
+func (i *licensePtrType) ToLicensePtrOutput() LicensePtrOutput {
+	return i.ToLicensePtrOutputWithContext(context.Background())
+}
+
+func (i *licensePtrType) ToLicensePtrOutputWithContext(ctx context.Context) LicensePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicensePtrOutput)
+}
+
+// License information: https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
+type LicenseOutput struct{ *pulumi.OutputState }
+
+func (LicenseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*License)(nil)).Elem()
+}
+
+func (o LicenseOutput) ToLicenseOutput() LicenseOutput {
+	return o
+}
+
+func (o LicenseOutput) ToLicenseOutputWithContext(ctx context.Context) LicenseOutput {
+	return o
+}
+
+func (o LicenseOutput) ToLicensePtrOutput() LicensePtrOutput {
+	return o.ToLicensePtrOutputWithContext(context.Background())
+}
+
+func (o LicenseOutput) ToLicensePtrOutputWithContext(ctx context.Context) LicensePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v License) *License {
+		return &v
+	}).(LicensePtrOutput)
+}
+
+// Comments
+func (o LicenseOutput) Comments() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v License) *string { return v.Comments }).(pulumi.StringPtrOutput)
+}
+
+// Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+func (o LicenseOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v License) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+type LicensePtrOutput struct{ *pulumi.OutputState }
+
+func (LicensePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**License)(nil)).Elem()
+}
+
+func (o LicensePtrOutput) ToLicensePtrOutput() LicensePtrOutput {
+	return o
+}
+
+func (o LicensePtrOutput) ToLicensePtrOutputWithContext(ctx context.Context) LicensePtrOutput {
+	return o
+}
+
+func (o LicensePtrOutput) Elem() LicenseOutput {
+	return o.ApplyT(func(v *License) License {
+		if v != nil {
+			return *v
+		}
+		var ret License
+		return ret
+	}).(LicenseOutput)
+}
+
+// Comments
+func (o LicensePtrOutput) Comments() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *License) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Comments
+	}).(pulumi.StringPtrOutput)
+}
+
+// Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+func (o LicensePtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *License) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// License information: https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
+type LicenseResponse struct {
+	// Comments
+	Comments string `pulumi:"comments"`
+	// Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+	Expression string `pulumi:"expression"`
+}
+
+// LicenseResponseInput is an input type that accepts LicenseResponseArgs and LicenseResponseOutput values.
+// You can construct a concrete instance of `LicenseResponseInput` via:
+//
+//          LicenseResponseArgs{...}
+type LicenseResponseInput interface {
+	pulumi.Input
+
+	ToLicenseResponseOutput() LicenseResponseOutput
+	ToLicenseResponseOutputWithContext(context.Context) LicenseResponseOutput
+}
+
+// License information: https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
+type LicenseResponseArgs struct {
+	// Comments
+	Comments pulumi.StringInput `pulumi:"comments"`
+	// Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+	Expression pulumi.StringInput `pulumi:"expression"`
+}
+
+func (LicenseResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LicenseResponse)(nil)).Elem()
+}
+
+func (i LicenseResponseArgs) ToLicenseResponseOutput() LicenseResponseOutput {
+	return i.ToLicenseResponseOutputWithContext(context.Background())
+}
+
+func (i LicenseResponseArgs) ToLicenseResponseOutputWithContext(ctx context.Context) LicenseResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseResponseOutput)
+}
+
+func (i LicenseResponseArgs) ToLicenseResponsePtrOutput() LicenseResponsePtrOutput {
+	return i.ToLicenseResponsePtrOutputWithContext(context.Background())
+}
+
+func (i LicenseResponseArgs) ToLicenseResponsePtrOutputWithContext(ctx context.Context) LicenseResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseResponseOutput).ToLicenseResponsePtrOutputWithContext(ctx)
+}
+
+// LicenseResponsePtrInput is an input type that accepts LicenseResponseArgs, LicenseResponsePtr and LicenseResponsePtrOutput values.
+// You can construct a concrete instance of `LicenseResponsePtrInput` via:
+//
+//          LicenseResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type LicenseResponsePtrInput interface {
+	pulumi.Input
+
+	ToLicenseResponsePtrOutput() LicenseResponsePtrOutput
+	ToLicenseResponsePtrOutputWithContext(context.Context) LicenseResponsePtrOutput
+}
+
+type licenseResponsePtrType LicenseResponseArgs
+
+func LicenseResponsePtr(v *LicenseResponseArgs) LicenseResponsePtrInput {
+	return (*licenseResponsePtrType)(v)
+}
+
+func (*licenseResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LicenseResponse)(nil)).Elem()
+}
+
+func (i *licenseResponsePtrType) ToLicenseResponsePtrOutput() LicenseResponsePtrOutput {
+	return i.ToLicenseResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *licenseResponsePtrType) ToLicenseResponsePtrOutputWithContext(ctx context.Context) LicenseResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseResponsePtrOutput)
+}
+
+// License information: https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
+type LicenseResponseOutput struct{ *pulumi.OutputState }
+
+func (LicenseResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LicenseResponse)(nil)).Elem()
+}
+
+func (o LicenseResponseOutput) ToLicenseResponseOutput() LicenseResponseOutput {
+	return o
+}
+
+func (o LicenseResponseOutput) ToLicenseResponseOutputWithContext(ctx context.Context) LicenseResponseOutput {
+	return o
+}
+
+func (o LicenseResponseOutput) ToLicenseResponsePtrOutput() LicenseResponsePtrOutput {
+	return o.ToLicenseResponsePtrOutputWithContext(context.Background())
+}
+
+func (o LicenseResponseOutput) ToLicenseResponsePtrOutputWithContext(ctx context.Context) LicenseResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LicenseResponse) *LicenseResponse {
+		return &v
+	}).(LicenseResponsePtrOutput)
+}
+
+// Comments
+func (o LicenseResponseOutput) Comments() pulumi.StringOutput {
+	return o.ApplyT(func(v LicenseResponse) string { return v.Comments }).(pulumi.StringOutput)
+}
+
+// Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+func (o LicenseResponseOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v LicenseResponse) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+type LicenseResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LicenseResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LicenseResponse)(nil)).Elem()
+}
+
+func (o LicenseResponsePtrOutput) ToLicenseResponsePtrOutput() LicenseResponsePtrOutput {
+	return o
+}
+
+func (o LicenseResponsePtrOutput) ToLicenseResponsePtrOutputWithContext(ctx context.Context) LicenseResponsePtrOutput {
+	return o
+}
+
+func (o LicenseResponsePtrOutput) Elem() LicenseResponseOutput {
+	return o.ApplyT(func(v *LicenseResponse) LicenseResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LicenseResponse
+		return ret
+	}).(LicenseResponseOutput)
+}
+
+// Comments
+func (o LicenseResponsePtrOutput) Comments() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LicenseResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Comments
+	}).(pulumi.StringPtrOutput)
+}
+
+// Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+func (o LicenseResponsePtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LicenseResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
 // This corresponds to an in-toto link.
 type Link struct {
 	// ByProducts are data generated as part of a software supply chain step, but are not the actual result of the step.
@@ -16649,6 +16929,1402 @@ func (o PackagePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// PackageInfoNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+type PackageInfoNote struct {
+	// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
+	Analyzed *bool `pulumi:"analyzed"`
+	// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
+	Attribution *string `pulumi:"attribution"`
+	// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
+	Checksum *string `pulumi:"checksum"`
+	// Identify the copyright holders of the package, as well as any dates present
+	Copyright *string `pulumi:"copyright"`
+	// A more detailed description of the package
+	DetailedDescription *string `pulumi:"detailedDescription"`
+	// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
+	DownloadLocation *string `pulumi:"downloadLocation"`
+	// ExternalRef
+	ExternalRefs []ExternalRef `pulumi:"externalRefs"`
+	// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
+	FilesLicenseInfo []string `pulumi:"filesLicenseInfo"`
+	// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+	HomePage *string `pulumi:"homePage"`
+	// List the licenses that have been declared by the authors of the package
+	LicenseDeclared *License `pulumi:"licenseDeclared"`
+	// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
+	Originator *string `pulumi:"originator"`
+	// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+	PackageType *string `pulumi:"packageType"`
+	// A short description of the package
+	SummaryDescription *string `pulumi:"summaryDescription"`
+	// Identify the actual distribution source for the package/directory identified in the SPDX file
+	Supplier *string `pulumi:"supplier"`
+	// Identify the full name of the package as given by the Package Originator
+	Title *string `pulumi:"title"`
+	// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
+	VerificationCode *string `pulumi:"verificationCode"`
+	// Identify the version of the package
+	Version *string `pulumi:"version"`
+}
+
+// PackageInfoNoteInput is an input type that accepts PackageInfoNoteArgs and PackageInfoNoteOutput values.
+// You can construct a concrete instance of `PackageInfoNoteInput` via:
+//
+//          PackageInfoNoteArgs{...}
+type PackageInfoNoteInput interface {
+	pulumi.Input
+
+	ToPackageInfoNoteOutput() PackageInfoNoteOutput
+	ToPackageInfoNoteOutputWithContext(context.Context) PackageInfoNoteOutput
+}
+
+// PackageInfoNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+type PackageInfoNoteArgs struct {
+	// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
+	Analyzed pulumi.BoolPtrInput `pulumi:"analyzed"`
+	// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
+	Attribution pulumi.StringPtrInput `pulumi:"attribution"`
+	// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
+	Checksum pulumi.StringPtrInput `pulumi:"checksum"`
+	// Identify the copyright holders of the package, as well as any dates present
+	Copyright pulumi.StringPtrInput `pulumi:"copyright"`
+	// A more detailed description of the package
+	DetailedDescription pulumi.StringPtrInput `pulumi:"detailedDescription"`
+	// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
+	DownloadLocation pulumi.StringPtrInput `pulumi:"downloadLocation"`
+	// ExternalRef
+	ExternalRefs ExternalRefArrayInput `pulumi:"externalRefs"`
+	// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
+	FilesLicenseInfo pulumi.StringArrayInput `pulumi:"filesLicenseInfo"`
+	// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+	HomePage pulumi.StringPtrInput `pulumi:"homePage"`
+	// List the licenses that have been declared by the authors of the package
+	LicenseDeclared LicensePtrInput `pulumi:"licenseDeclared"`
+	// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
+	Originator pulumi.StringPtrInput `pulumi:"originator"`
+	// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+	PackageType pulumi.StringPtrInput `pulumi:"packageType"`
+	// A short description of the package
+	SummaryDescription pulumi.StringPtrInput `pulumi:"summaryDescription"`
+	// Identify the actual distribution source for the package/directory identified in the SPDX file
+	Supplier pulumi.StringPtrInput `pulumi:"supplier"`
+	// Identify the full name of the package as given by the Package Originator
+	Title pulumi.StringPtrInput `pulumi:"title"`
+	// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
+	VerificationCode pulumi.StringPtrInput `pulumi:"verificationCode"`
+	// Identify the version of the package
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (PackageInfoNoteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageInfoNote)(nil)).Elem()
+}
+
+func (i PackageInfoNoteArgs) ToPackageInfoNoteOutput() PackageInfoNoteOutput {
+	return i.ToPackageInfoNoteOutputWithContext(context.Background())
+}
+
+func (i PackageInfoNoteArgs) ToPackageInfoNoteOutputWithContext(ctx context.Context) PackageInfoNoteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageInfoNoteOutput)
+}
+
+func (i PackageInfoNoteArgs) ToPackageInfoNotePtrOutput() PackageInfoNotePtrOutput {
+	return i.ToPackageInfoNotePtrOutputWithContext(context.Background())
+}
+
+func (i PackageInfoNoteArgs) ToPackageInfoNotePtrOutputWithContext(ctx context.Context) PackageInfoNotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageInfoNoteOutput).ToPackageInfoNotePtrOutputWithContext(ctx)
+}
+
+// PackageInfoNotePtrInput is an input type that accepts PackageInfoNoteArgs, PackageInfoNotePtr and PackageInfoNotePtrOutput values.
+// You can construct a concrete instance of `PackageInfoNotePtrInput` via:
+//
+//          PackageInfoNoteArgs{...}
+//
+//  or:
+//
+//          nil
+type PackageInfoNotePtrInput interface {
+	pulumi.Input
+
+	ToPackageInfoNotePtrOutput() PackageInfoNotePtrOutput
+	ToPackageInfoNotePtrOutputWithContext(context.Context) PackageInfoNotePtrOutput
+}
+
+type packageInfoNotePtrType PackageInfoNoteArgs
+
+func PackageInfoNotePtr(v *PackageInfoNoteArgs) PackageInfoNotePtrInput {
+	return (*packageInfoNotePtrType)(v)
+}
+
+func (*packageInfoNotePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PackageInfoNote)(nil)).Elem()
+}
+
+func (i *packageInfoNotePtrType) ToPackageInfoNotePtrOutput() PackageInfoNotePtrOutput {
+	return i.ToPackageInfoNotePtrOutputWithContext(context.Background())
+}
+
+func (i *packageInfoNotePtrType) ToPackageInfoNotePtrOutputWithContext(ctx context.Context) PackageInfoNotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageInfoNotePtrOutput)
+}
+
+// PackageInfoNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+type PackageInfoNoteOutput struct{ *pulumi.OutputState }
+
+func (PackageInfoNoteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageInfoNote)(nil)).Elem()
+}
+
+func (o PackageInfoNoteOutput) ToPackageInfoNoteOutput() PackageInfoNoteOutput {
+	return o
+}
+
+func (o PackageInfoNoteOutput) ToPackageInfoNoteOutputWithContext(ctx context.Context) PackageInfoNoteOutput {
+	return o
+}
+
+func (o PackageInfoNoteOutput) ToPackageInfoNotePtrOutput() PackageInfoNotePtrOutput {
+	return o.ToPackageInfoNotePtrOutputWithContext(context.Background())
+}
+
+func (o PackageInfoNoteOutput) ToPackageInfoNotePtrOutputWithContext(ctx context.Context) PackageInfoNotePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageInfoNote) *PackageInfoNote {
+		return &v
+	}).(PackageInfoNotePtrOutput)
+}
+
+// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
+func (o PackageInfoNoteOutput) Analyzed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *bool { return v.Analyzed }).(pulumi.BoolPtrOutput)
+}
+
+// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
+func (o PackageInfoNoteOutput) Attribution() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *string { return v.Attribution }).(pulumi.StringPtrOutput)
+}
+
+// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
+func (o PackageInfoNoteOutput) Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *string { return v.Checksum }).(pulumi.StringPtrOutput)
+}
+
+// Identify the copyright holders of the package, as well as any dates present
+func (o PackageInfoNoteOutput) Copyright() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *string { return v.Copyright }).(pulumi.StringPtrOutput)
+}
+
+// A more detailed description of the package
+func (o PackageInfoNoteOutput) DetailedDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *string { return v.DetailedDescription }).(pulumi.StringPtrOutput)
+}
+
+// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
+func (o PackageInfoNoteOutput) DownloadLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *string { return v.DownloadLocation }).(pulumi.StringPtrOutput)
+}
+
+// ExternalRef
+func (o PackageInfoNoteOutput) ExternalRefs() ExternalRefArrayOutput {
+	return o.ApplyT(func(v PackageInfoNote) []ExternalRef { return v.ExternalRefs }).(ExternalRefArrayOutput)
+}
+
+// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
+func (o PackageInfoNoteOutput) FilesLicenseInfo() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PackageInfoNote) []string { return v.FilesLicenseInfo }).(pulumi.StringArrayOutput)
+}
+
+// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+func (o PackageInfoNoteOutput) HomePage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *string { return v.HomePage }).(pulumi.StringPtrOutput)
+}
+
+// List the licenses that have been declared by the authors of the package
+func (o PackageInfoNoteOutput) LicenseDeclared() LicensePtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *License { return v.LicenseDeclared }).(LicensePtrOutput)
+}
+
+// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
+func (o PackageInfoNoteOutput) Originator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *string { return v.Originator }).(pulumi.StringPtrOutput)
+}
+
+// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+func (o PackageInfoNoteOutput) PackageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *string { return v.PackageType }).(pulumi.StringPtrOutput)
+}
+
+// A short description of the package
+func (o PackageInfoNoteOutput) SummaryDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *string { return v.SummaryDescription }).(pulumi.StringPtrOutput)
+}
+
+// Identify the actual distribution source for the package/directory identified in the SPDX file
+func (o PackageInfoNoteOutput) Supplier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *string { return v.Supplier }).(pulumi.StringPtrOutput)
+}
+
+// Identify the full name of the package as given by the Package Originator
+func (o PackageInfoNoteOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
+func (o PackageInfoNoteOutput) VerificationCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *string { return v.VerificationCode }).(pulumi.StringPtrOutput)
+}
+
+// Identify the version of the package
+func (o PackageInfoNoteOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoNote) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type PackageInfoNotePtrOutput struct{ *pulumi.OutputState }
+
+func (PackageInfoNotePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PackageInfoNote)(nil)).Elem()
+}
+
+func (o PackageInfoNotePtrOutput) ToPackageInfoNotePtrOutput() PackageInfoNotePtrOutput {
+	return o
+}
+
+func (o PackageInfoNotePtrOutput) ToPackageInfoNotePtrOutputWithContext(ctx context.Context) PackageInfoNotePtrOutput {
+	return o
+}
+
+func (o PackageInfoNotePtrOutput) Elem() PackageInfoNoteOutput {
+	return o.ApplyT(func(v *PackageInfoNote) PackageInfoNote {
+		if v != nil {
+			return *v
+		}
+		var ret PackageInfoNote
+		return ret
+	}).(PackageInfoNoteOutput)
+}
+
+// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
+func (o PackageInfoNotePtrOutput) Analyzed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Analyzed
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
+func (o PackageInfoNotePtrOutput) Attribution() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Attribution
+	}).(pulumi.StringPtrOutput)
+}
+
+// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
+func (o PackageInfoNotePtrOutput) Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identify the copyright holders of the package, as well as any dates present
+func (o PackageInfoNotePtrOutput) Copyright() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Copyright
+	}).(pulumi.StringPtrOutput)
+}
+
+// A more detailed description of the package
+func (o PackageInfoNotePtrOutput) DetailedDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DetailedDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
+func (o PackageInfoNotePtrOutput) DownloadLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DownloadLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// ExternalRef
+func (o PackageInfoNotePtrOutput) ExternalRefs() ExternalRefArrayOutput {
+	return o.ApplyT(func(v *PackageInfoNote) []ExternalRef {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalRefs
+	}).(ExternalRefArrayOutput)
+}
+
+// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
+func (o PackageInfoNotePtrOutput) FilesLicenseInfo() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PackageInfoNote) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FilesLicenseInfo
+	}).(pulumi.StringArrayOutput)
+}
+
+// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+func (o PackageInfoNotePtrOutput) HomePage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HomePage
+	}).(pulumi.StringPtrOutput)
+}
+
+// List the licenses that have been declared by the authors of the package
+func (o PackageInfoNotePtrOutput) LicenseDeclared() LicensePtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *License {
+		if v == nil {
+			return nil
+		}
+		return v.LicenseDeclared
+	}).(LicensePtrOutput)
+}
+
+// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
+func (o PackageInfoNotePtrOutput) Originator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Originator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+func (o PackageInfoNotePtrOutput) PackageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PackageType
+	}).(pulumi.StringPtrOutput)
+}
+
+// A short description of the package
+func (o PackageInfoNotePtrOutput) SummaryDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SummaryDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identify the actual distribution source for the package/directory identified in the SPDX file
+func (o PackageInfoNotePtrOutput) Supplier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Supplier
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identify the full name of the package as given by the Package Originator
+func (o PackageInfoNotePtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
+func (o PackageInfoNotePtrOutput) VerificationCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VerificationCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identify the version of the package
+func (o PackageInfoNotePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+// PackageInfoNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+type PackageInfoNoteResponse struct {
+	// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
+	Analyzed bool `pulumi:"analyzed"`
+	// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
+	Attribution string `pulumi:"attribution"`
+	// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
+	Checksum string `pulumi:"checksum"`
+	// Identify the copyright holders of the package, as well as any dates present
+	Copyright string `pulumi:"copyright"`
+	// A more detailed description of the package
+	DetailedDescription string `pulumi:"detailedDescription"`
+	// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
+	DownloadLocation string `pulumi:"downloadLocation"`
+	// ExternalRef
+	ExternalRefs []ExternalRefResponse `pulumi:"externalRefs"`
+	// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
+	FilesLicenseInfo []string `pulumi:"filesLicenseInfo"`
+	// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+	HomePage string `pulumi:"homePage"`
+	// List the licenses that have been declared by the authors of the package
+	LicenseDeclared LicenseResponse `pulumi:"licenseDeclared"`
+	// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
+	Originator string `pulumi:"originator"`
+	// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+	PackageType string `pulumi:"packageType"`
+	// A short description of the package
+	SummaryDescription string `pulumi:"summaryDescription"`
+	// Identify the actual distribution source for the package/directory identified in the SPDX file
+	Supplier string `pulumi:"supplier"`
+	// Identify the full name of the package as given by the Package Originator
+	Title string `pulumi:"title"`
+	// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
+	VerificationCode string `pulumi:"verificationCode"`
+	// Identify the version of the package
+	Version string `pulumi:"version"`
+}
+
+// PackageInfoNoteResponseInput is an input type that accepts PackageInfoNoteResponseArgs and PackageInfoNoteResponseOutput values.
+// You can construct a concrete instance of `PackageInfoNoteResponseInput` via:
+//
+//          PackageInfoNoteResponseArgs{...}
+type PackageInfoNoteResponseInput interface {
+	pulumi.Input
+
+	ToPackageInfoNoteResponseOutput() PackageInfoNoteResponseOutput
+	ToPackageInfoNoteResponseOutputWithContext(context.Context) PackageInfoNoteResponseOutput
+}
+
+// PackageInfoNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+type PackageInfoNoteResponseArgs struct {
+	// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
+	Analyzed pulumi.BoolInput `pulumi:"analyzed"`
+	// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
+	Attribution pulumi.StringInput `pulumi:"attribution"`
+	// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
+	Checksum pulumi.StringInput `pulumi:"checksum"`
+	// Identify the copyright holders of the package, as well as any dates present
+	Copyright pulumi.StringInput `pulumi:"copyright"`
+	// A more detailed description of the package
+	DetailedDescription pulumi.StringInput `pulumi:"detailedDescription"`
+	// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
+	DownloadLocation pulumi.StringInput `pulumi:"downloadLocation"`
+	// ExternalRef
+	ExternalRefs ExternalRefResponseArrayInput `pulumi:"externalRefs"`
+	// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
+	FilesLicenseInfo pulumi.StringArrayInput `pulumi:"filesLicenseInfo"`
+	// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+	HomePage pulumi.StringInput `pulumi:"homePage"`
+	// List the licenses that have been declared by the authors of the package
+	LicenseDeclared LicenseResponseInput `pulumi:"licenseDeclared"`
+	// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
+	Originator pulumi.StringInput `pulumi:"originator"`
+	// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+	PackageType pulumi.StringInput `pulumi:"packageType"`
+	// A short description of the package
+	SummaryDescription pulumi.StringInput `pulumi:"summaryDescription"`
+	// Identify the actual distribution source for the package/directory identified in the SPDX file
+	Supplier pulumi.StringInput `pulumi:"supplier"`
+	// Identify the full name of the package as given by the Package Originator
+	Title pulumi.StringInput `pulumi:"title"`
+	// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
+	VerificationCode pulumi.StringInput `pulumi:"verificationCode"`
+	// Identify the version of the package
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (PackageInfoNoteResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageInfoNoteResponse)(nil)).Elem()
+}
+
+func (i PackageInfoNoteResponseArgs) ToPackageInfoNoteResponseOutput() PackageInfoNoteResponseOutput {
+	return i.ToPackageInfoNoteResponseOutputWithContext(context.Background())
+}
+
+func (i PackageInfoNoteResponseArgs) ToPackageInfoNoteResponseOutputWithContext(ctx context.Context) PackageInfoNoteResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageInfoNoteResponseOutput)
+}
+
+func (i PackageInfoNoteResponseArgs) ToPackageInfoNoteResponsePtrOutput() PackageInfoNoteResponsePtrOutput {
+	return i.ToPackageInfoNoteResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PackageInfoNoteResponseArgs) ToPackageInfoNoteResponsePtrOutputWithContext(ctx context.Context) PackageInfoNoteResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageInfoNoteResponseOutput).ToPackageInfoNoteResponsePtrOutputWithContext(ctx)
+}
+
+// PackageInfoNoteResponsePtrInput is an input type that accepts PackageInfoNoteResponseArgs, PackageInfoNoteResponsePtr and PackageInfoNoteResponsePtrOutput values.
+// You can construct a concrete instance of `PackageInfoNoteResponsePtrInput` via:
+//
+//          PackageInfoNoteResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PackageInfoNoteResponsePtrInput interface {
+	pulumi.Input
+
+	ToPackageInfoNoteResponsePtrOutput() PackageInfoNoteResponsePtrOutput
+	ToPackageInfoNoteResponsePtrOutputWithContext(context.Context) PackageInfoNoteResponsePtrOutput
+}
+
+type packageInfoNoteResponsePtrType PackageInfoNoteResponseArgs
+
+func PackageInfoNoteResponsePtr(v *PackageInfoNoteResponseArgs) PackageInfoNoteResponsePtrInput {
+	return (*packageInfoNoteResponsePtrType)(v)
+}
+
+func (*packageInfoNoteResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PackageInfoNoteResponse)(nil)).Elem()
+}
+
+func (i *packageInfoNoteResponsePtrType) ToPackageInfoNoteResponsePtrOutput() PackageInfoNoteResponsePtrOutput {
+	return i.ToPackageInfoNoteResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *packageInfoNoteResponsePtrType) ToPackageInfoNoteResponsePtrOutputWithContext(ctx context.Context) PackageInfoNoteResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageInfoNoteResponsePtrOutput)
+}
+
+// PackageInfoNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+type PackageInfoNoteResponseOutput struct{ *pulumi.OutputState }
+
+func (PackageInfoNoteResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageInfoNoteResponse)(nil)).Elem()
+}
+
+func (o PackageInfoNoteResponseOutput) ToPackageInfoNoteResponseOutput() PackageInfoNoteResponseOutput {
+	return o
+}
+
+func (o PackageInfoNoteResponseOutput) ToPackageInfoNoteResponseOutputWithContext(ctx context.Context) PackageInfoNoteResponseOutput {
+	return o
+}
+
+func (o PackageInfoNoteResponseOutput) ToPackageInfoNoteResponsePtrOutput() PackageInfoNoteResponsePtrOutput {
+	return o.ToPackageInfoNoteResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PackageInfoNoteResponseOutput) ToPackageInfoNoteResponsePtrOutputWithContext(ctx context.Context) PackageInfoNoteResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageInfoNoteResponse) *PackageInfoNoteResponse {
+		return &v
+	}).(PackageInfoNoteResponsePtrOutput)
+}
+
+// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
+func (o PackageInfoNoteResponseOutput) Analyzed() pulumi.BoolOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) bool { return v.Analyzed }).(pulumi.BoolOutput)
+}
+
+// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
+func (o PackageInfoNoteResponseOutput) Attribution() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) string { return v.Attribution }).(pulumi.StringOutput)
+}
+
+// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
+func (o PackageInfoNoteResponseOutput) Checksum() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) string { return v.Checksum }).(pulumi.StringOutput)
+}
+
+// Identify the copyright holders of the package, as well as any dates present
+func (o PackageInfoNoteResponseOutput) Copyright() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) string { return v.Copyright }).(pulumi.StringOutput)
+}
+
+// A more detailed description of the package
+func (o PackageInfoNoteResponseOutput) DetailedDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) string { return v.DetailedDescription }).(pulumi.StringOutput)
+}
+
+// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
+func (o PackageInfoNoteResponseOutput) DownloadLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) string { return v.DownloadLocation }).(pulumi.StringOutput)
+}
+
+// ExternalRef
+func (o PackageInfoNoteResponseOutput) ExternalRefs() ExternalRefResponseArrayOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) []ExternalRefResponse { return v.ExternalRefs }).(ExternalRefResponseArrayOutput)
+}
+
+// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
+func (o PackageInfoNoteResponseOutput) FilesLicenseInfo() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) []string { return v.FilesLicenseInfo }).(pulumi.StringArrayOutput)
+}
+
+// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+func (o PackageInfoNoteResponseOutput) HomePage() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) string { return v.HomePage }).(pulumi.StringOutput)
+}
+
+// List the licenses that have been declared by the authors of the package
+func (o PackageInfoNoteResponseOutput) LicenseDeclared() LicenseResponseOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) LicenseResponse { return v.LicenseDeclared }).(LicenseResponseOutput)
+}
+
+// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
+func (o PackageInfoNoteResponseOutput) Originator() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) string { return v.Originator }).(pulumi.StringOutput)
+}
+
+// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+func (o PackageInfoNoteResponseOutput) PackageType() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) string { return v.PackageType }).(pulumi.StringOutput)
+}
+
+// A short description of the package
+func (o PackageInfoNoteResponseOutput) SummaryDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) string { return v.SummaryDescription }).(pulumi.StringOutput)
+}
+
+// Identify the actual distribution source for the package/directory identified in the SPDX file
+func (o PackageInfoNoteResponseOutput) Supplier() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) string { return v.Supplier }).(pulumi.StringOutput)
+}
+
+// Identify the full name of the package as given by the Package Originator
+func (o PackageInfoNoteResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
+// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
+func (o PackageInfoNoteResponseOutput) VerificationCode() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) string { return v.VerificationCode }).(pulumi.StringOutput)
+}
+
+// Identify the version of the package
+func (o PackageInfoNoteResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoNoteResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type PackageInfoNoteResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PackageInfoNoteResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PackageInfoNoteResponse)(nil)).Elem()
+}
+
+func (o PackageInfoNoteResponsePtrOutput) ToPackageInfoNoteResponsePtrOutput() PackageInfoNoteResponsePtrOutput {
+	return o
+}
+
+func (o PackageInfoNoteResponsePtrOutput) ToPackageInfoNoteResponsePtrOutputWithContext(ctx context.Context) PackageInfoNoteResponsePtrOutput {
+	return o
+}
+
+func (o PackageInfoNoteResponsePtrOutput) Elem() PackageInfoNoteResponseOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) PackageInfoNoteResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PackageInfoNoteResponse
+		return ret
+	}).(PackageInfoNoteResponseOutput)
+}
+
+// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
+func (o PackageInfoNoteResponsePtrOutput) Analyzed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Analyzed
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
+func (o PackageInfoNoteResponsePtrOutput) Attribution() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Attribution
+	}).(pulumi.StringPtrOutput)
+}
+
+// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
+func (o PackageInfoNoteResponsePtrOutput) Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identify the copyright holders of the package, as well as any dates present
+func (o PackageInfoNoteResponsePtrOutput) Copyright() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Copyright
+	}).(pulumi.StringPtrOutput)
+}
+
+// A more detailed description of the package
+func (o PackageInfoNoteResponsePtrOutput) DetailedDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DetailedDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
+func (o PackageInfoNoteResponsePtrOutput) DownloadLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DownloadLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// ExternalRef
+func (o PackageInfoNoteResponsePtrOutput) ExternalRefs() ExternalRefResponseArrayOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) []ExternalRefResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalRefs
+	}).(ExternalRefResponseArrayOutput)
+}
+
+// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
+func (o PackageInfoNoteResponsePtrOutput) FilesLicenseInfo() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FilesLicenseInfo
+	}).(pulumi.StringArrayOutput)
+}
+
+// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+func (o PackageInfoNoteResponsePtrOutput) HomePage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HomePage
+	}).(pulumi.StringPtrOutput)
+}
+
+// List the licenses that have been declared by the authors of the package
+func (o PackageInfoNoteResponsePtrOutput) LicenseDeclared() LicenseResponsePtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *LicenseResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.LicenseDeclared
+	}).(LicenseResponsePtrOutput)
+}
+
+// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
+func (o PackageInfoNoteResponsePtrOutput) Originator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Originator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+func (o PackageInfoNoteResponsePtrOutput) PackageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PackageType
+	}).(pulumi.StringPtrOutput)
+}
+
+// A short description of the package
+func (o PackageInfoNoteResponsePtrOutput) SummaryDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SummaryDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identify the actual distribution source for the package/directory identified in the SPDX file
+func (o PackageInfoNoteResponsePtrOutput) Supplier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Supplier
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identify the full name of the package as given by the Package Originator
+func (o PackageInfoNoteResponsePtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
+func (o PackageInfoNoteResponsePtrOutput) VerificationCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VerificationCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identify the version of the package
+func (o PackageInfoNoteResponsePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+// PackageInfoOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+type PackageInfoOccurrence struct {
+	// A place for the SPDX file creator to record any general comments about the package being described
+	Comment *string `pulumi:"comment"`
+	// Provide the actual file name of the package, or path of the directory being treated as a package
+	Filename *string `pulumi:"filename"`
+	// Uniquely identify any element in an SPDX document which may be referenced by other elements
+	Id *string `pulumi:"id"`
+	// package or alternative values, if the governing license cannot be determined
+	LicenseConcluded *License `pulumi:"licenseConcluded"`
+	// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
+	SourceInfo *string `pulumi:"sourceInfo"`
+}
+
+// PackageInfoOccurrenceInput is an input type that accepts PackageInfoOccurrenceArgs and PackageInfoOccurrenceOutput values.
+// You can construct a concrete instance of `PackageInfoOccurrenceInput` via:
+//
+//          PackageInfoOccurrenceArgs{...}
+type PackageInfoOccurrenceInput interface {
+	pulumi.Input
+
+	ToPackageInfoOccurrenceOutput() PackageInfoOccurrenceOutput
+	ToPackageInfoOccurrenceOutputWithContext(context.Context) PackageInfoOccurrenceOutput
+}
+
+// PackageInfoOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+type PackageInfoOccurrenceArgs struct {
+	// A place for the SPDX file creator to record any general comments about the package being described
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// Provide the actual file name of the package, or path of the directory being treated as a package
+	Filename pulumi.StringPtrInput `pulumi:"filename"`
+	// Uniquely identify any element in an SPDX document which may be referenced by other elements
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// package or alternative values, if the governing license cannot be determined
+	LicenseConcluded LicensePtrInput `pulumi:"licenseConcluded"`
+	// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
+	SourceInfo pulumi.StringPtrInput `pulumi:"sourceInfo"`
+}
+
+func (PackageInfoOccurrenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageInfoOccurrence)(nil)).Elem()
+}
+
+func (i PackageInfoOccurrenceArgs) ToPackageInfoOccurrenceOutput() PackageInfoOccurrenceOutput {
+	return i.ToPackageInfoOccurrenceOutputWithContext(context.Background())
+}
+
+func (i PackageInfoOccurrenceArgs) ToPackageInfoOccurrenceOutputWithContext(ctx context.Context) PackageInfoOccurrenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageInfoOccurrenceOutput)
+}
+
+func (i PackageInfoOccurrenceArgs) ToPackageInfoOccurrencePtrOutput() PackageInfoOccurrencePtrOutput {
+	return i.ToPackageInfoOccurrencePtrOutputWithContext(context.Background())
+}
+
+func (i PackageInfoOccurrenceArgs) ToPackageInfoOccurrencePtrOutputWithContext(ctx context.Context) PackageInfoOccurrencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageInfoOccurrenceOutput).ToPackageInfoOccurrencePtrOutputWithContext(ctx)
+}
+
+// PackageInfoOccurrencePtrInput is an input type that accepts PackageInfoOccurrenceArgs, PackageInfoOccurrencePtr and PackageInfoOccurrencePtrOutput values.
+// You can construct a concrete instance of `PackageInfoOccurrencePtrInput` via:
+//
+//          PackageInfoOccurrenceArgs{...}
+//
+//  or:
+//
+//          nil
+type PackageInfoOccurrencePtrInput interface {
+	pulumi.Input
+
+	ToPackageInfoOccurrencePtrOutput() PackageInfoOccurrencePtrOutput
+	ToPackageInfoOccurrencePtrOutputWithContext(context.Context) PackageInfoOccurrencePtrOutput
+}
+
+type packageInfoOccurrencePtrType PackageInfoOccurrenceArgs
+
+func PackageInfoOccurrencePtr(v *PackageInfoOccurrenceArgs) PackageInfoOccurrencePtrInput {
+	return (*packageInfoOccurrencePtrType)(v)
+}
+
+func (*packageInfoOccurrencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PackageInfoOccurrence)(nil)).Elem()
+}
+
+func (i *packageInfoOccurrencePtrType) ToPackageInfoOccurrencePtrOutput() PackageInfoOccurrencePtrOutput {
+	return i.ToPackageInfoOccurrencePtrOutputWithContext(context.Background())
+}
+
+func (i *packageInfoOccurrencePtrType) ToPackageInfoOccurrencePtrOutputWithContext(ctx context.Context) PackageInfoOccurrencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageInfoOccurrencePtrOutput)
+}
+
+// PackageInfoOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+type PackageInfoOccurrenceOutput struct{ *pulumi.OutputState }
+
+func (PackageInfoOccurrenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageInfoOccurrence)(nil)).Elem()
+}
+
+func (o PackageInfoOccurrenceOutput) ToPackageInfoOccurrenceOutput() PackageInfoOccurrenceOutput {
+	return o
+}
+
+func (o PackageInfoOccurrenceOutput) ToPackageInfoOccurrenceOutputWithContext(ctx context.Context) PackageInfoOccurrenceOutput {
+	return o
+}
+
+func (o PackageInfoOccurrenceOutput) ToPackageInfoOccurrencePtrOutput() PackageInfoOccurrencePtrOutput {
+	return o.ToPackageInfoOccurrencePtrOutputWithContext(context.Background())
+}
+
+func (o PackageInfoOccurrenceOutput) ToPackageInfoOccurrencePtrOutputWithContext(ctx context.Context) PackageInfoOccurrencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageInfoOccurrence) *PackageInfoOccurrence {
+		return &v
+	}).(PackageInfoOccurrencePtrOutput)
+}
+
+// A place for the SPDX file creator to record any general comments about the package being described
+func (o PackageInfoOccurrenceOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoOccurrence) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// Provide the actual file name of the package, or path of the directory being treated as a package
+func (o PackageInfoOccurrenceOutput) Filename() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoOccurrence) *string { return v.Filename }).(pulumi.StringPtrOutput)
+}
+
+// Uniquely identify any element in an SPDX document which may be referenced by other elements
+func (o PackageInfoOccurrenceOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoOccurrence) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// package or alternative values, if the governing license cannot be determined
+func (o PackageInfoOccurrenceOutput) LicenseConcluded() LicensePtrOutput {
+	return o.ApplyT(func(v PackageInfoOccurrence) *License { return v.LicenseConcluded }).(LicensePtrOutput)
+}
+
+// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
+func (o PackageInfoOccurrenceOutput) SourceInfo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoOccurrence) *string { return v.SourceInfo }).(pulumi.StringPtrOutput)
+}
+
+type PackageInfoOccurrencePtrOutput struct{ *pulumi.OutputState }
+
+func (PackageInfoOccurrencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PackageInfoOccurrence)(nil)).Elem()
+}
+
+func (o PackageInfoOccurrencePtrOutput) ToPackageInfoOccurrencePtrOutput() PackageInfoOccurrencePtrOutput {
+	return o
+}
+
+func (o PackageInfoOccurrencePtrOutput) ToPackageInfoOccurrencePtrOutputWithContext(ctx context.Context) PackageInfoOccurrencePtrOutput {
+	return o
+}
+
+func (o PackageInfoOccurrencePtrOutput) Elem() PackageInfoOccurrenceOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrence) PackageInfoOccurrence {
+		if v != nil {
+			return *v
+		}
+		var ret PackageInfoOccurrence
+		return ret
+	}).(PackageInfoOccurrenceOutput)
+}
+
+// A place for the SPDX file creator to record any general comments about the package being described
+func (o PackageInfoOccurrencePtrOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrence) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Comment
+	}).(pulumi.StringPtrOutput)
+}
+
+// Provide the actual file name of the package, or path of the directory being treated as a package
+func (o PackageInfoOccurrencePtrOutput) Filename() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrence) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Filename
+	}).(pulumi.StringPtrOutput)
+}
+
+// Uniquely identify any element in an SPDX document which may be referenced by other elements
+func (o PackageInfoOccurrencePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrence) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// package or alternative values, if the governing license cannot be determined
+func (o PackageInfoOccurrencePtrOutput) LicenseConcluded() LicensePtrOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrence) *License {
+		if v == nil {
+			return nil
+		}
+		return v.LicenseConcluded
+	}).(LicensePtrOutput)
+}
+
+// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
+func (o PackageInfoOccurrencePtrOutput) SourceInfo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrence) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceInfo
+	}).(pulumi.StringPtrOutput)
+}
+
+// PackageInfoOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+type PackageInfoOccurrenceResponse struct {
+	// A place for the SPDX file creator to record any general comments about the package being described
+	Comment string `pulumi:"comment"`
+	// Provide the actual file name of the package, or path of the directory being treated as a package
+	Filename string `pulumi:"filename"`
+	// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+	HomePage string `pulumi:"homePage"`
+	// package or alternative values, if the governing license cannot be determined
+	LicenseConcluded LicenseResponse `pulumi:"licenseConcluded"`
+	// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+	PackageType string `pulumi:"packageType"`
+	// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
+	SourceInfo string `pulumi:"sourceInfo"`
+	// A short description of the package
+	SummaryDescription string `pulumi:"summaryDescription"`
+	// Identify the full name of the package as given by the Package Originator
+	Title string `pulumi:"title"`
+	// Identify the version of the package
+	Version string `pulumi:"version"`
+}
+
+// PackageInfoOccurrenceResponseInput is an input type that accepts PackageInfoOccurrenceResponseArgs and PackageInfoOccurrenceResponseOutput values.
+// You can construct a concrete instance of `PackageInfoOccurrenceResponseInput` via:
+//
+//          PackageInfoOccurrenceResponseArgs{...}
+type PackageInfoOccurrenceResponseInput interface {
+	pulumi.Input
+
+	ToPackageInfoOccurrenceResponseOutput() PackageInfoOccurrenceResponseOutput
+	ToPackageInfoOccurrenceResponseOutputWithContext(context.Context) PackageInfoOccurrenceResponseOutput
+}
+
+// PackageInfoOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+type PackageInfoOccurrenceResponseArgs struct {
+	// A place for the SPDX file creator to record any general comments about the package being described
+	Comment pulumi.StringInput `pulumi:"comment"`
+	// Provide the actual file name of the package, or path of the directory being treated as a package
+	Filename pulumi.StringInput `pulumi:"filename"`
+	// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+	HomePage pulumi.StringInput `pulumi:"homePage"`
+	// package or alternative values, if the governing license cannot be determined
+	LicenseConcluded LicenseResponseInput `pulumi:"licenseConcluded"`
+	// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+	PackageType pulumi.StringInput `pulumi:"packageType"`
+	// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
+	SourceInfo pulumi.StringInput `pulumi:"sourceInfo"`
+	// A short description of the package
+	SummaryDescription pulumi.StringInput `pulumi:"summaryDescription"`
+	// Identify the full name of the package as given by the Package Originator
+	Title pulumi.StringInput `pulumi:"title"`
+	// Identify the version of the package
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (PackageInfoOccurrenceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageInfoOccurrenceResponse)(nil)).Elem()
+}
+
+func (i PackageInfoOccurrenceResponseArgs) ToPackageInfoOccurrenceResponseOutput() PackageInfoOccurrenceResponseOutput {
+	return i.ToPackageInfoOccurrenceResponseOutputWithContext(context.Background())
+}
+
+func (i PackageInfoOccurrenceResponseArgs) ToPackageInfoOccurrenceResponseOutputWithContext(ctx context.Context) PackageInfoOccurrenceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageInfoOccurrenceResponseOutput)
+}
+
+func (i PackageInfoOccurrenceResponseArgs) ToPackageInfoOccurrenceResponsePtrOutput() PackageInfoOccurrenceResponsePtrOutput {
+	return i.ToPackageInfoOccurrenceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PackageInfoOccurrenceResponseArgs) ToPackageInfoOccurrenceResponsePtrOutputWithContext(ctx context.Context) PackageInfoOccurrenceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageInfoOccurrenceResponseOutput).ToPackageInfoOccurrenceResponsePtrOutputWithContext(ctx)
+}
+
+// PackageInfoOccurrenceResponsePtrInput is an input type that accepts PackageInfoOccurrenceResponseArgs, PackageInfoOccurrenceResponsePtr and PackageInfoOccurrenceResponsePtrOutput values.
+// You can construct a concrete instance of `PackageInfoOccurrenceResponsePtrInput` via:
+//
+//          PackageInfoOccurrenceResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PackageInfoOccurrenceResponsePtrInput interface {
+	pulumi.Input
+
+	ToPackageInfoOccurrenceResponsePtrOutput() PackageInfoOccurrenceResponsePtrOutput
+	ToPackageInfoOccurrenceResponsePtrOutputWithContext(context.Context) PackageInfoOccurrenceResponsePtrOutput
+}
+
+type packageInfoOccurrenceResponsePtrType PackageInfoOccurrenceResponseArgs
+
+func PackageInfoOccurrenceResponsePtr(v *PackageInfoOccurrenceResponseArgs) PackageInfoOccurrenceResponsePtrInput {
+	return (*packageInfoOccurrenceResponsePtrType)(v)
+}
+
+func (*packageInfoOccurrenceResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PackageInfoOccurrenceResponse)(nil)).Elem()
+}
+
+func (i *packageInfoOccurrenceResponsePtrType) ToPackageInfoOccurrenceResponsePtrOutput() PackageInfoOccurrenceResponsePtrOutput {
+	return i.ToPackageInfoOccurrenceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *packageInfoOccurrenceResponsePtrType) ToPackageInfoOccurrenceResponsePtrOutputWithContext(ctx context.Context) PackageInfoOccurrenceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageInfoOccurrenceResponsePtrOutput)
+}
+
+// PackageInfoOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+type PackageInfoOccurrenceResponseOutput struct{ *pulumi.OutputState }
+
+func (PackageInfoOccurrenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageInfoOccurrenceResponse)(nil)).Elem()
+}
+
+func (o PackageInfoOccurrenceResponseOutput) ToPackageInfoOccurrenceResponseOutput() PackageInfoOccurrenceResponseOutput {
+	return o
+}
+
+func (o PackageInfoOccurrenceResponseOutput) ToPackageInfoOccurrenceResponseOutputWithContext(ctx context.Context) PackageInfoOccurrenceResponseOutput {
+	return o
+}
+
+func (o PackageInfoOccurrenceResponseOutput) ToPackageInfoOccurrenceResponsePtrOutput() PackageInfoOccurrenceResponsePtrOutput {
+	return o.ToPackageInfoOccurrenceResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PackageInfoOccurrenceResponseOutput) ToPackageInfoOccurrenceResponsePtrOutputWithContext(ctx context.Context) PackageInfoOccurrenceResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageInfoOccurrenceResponse) *PackageInfoOccurrenceResponse {
+		return &v
+	}).(PackageInfoOccurrenceResponsePtrOutput)
+}
+
+// A place for the SPDX file creator to record any general comments about the package being described
+func (o PackageInfoOccurrenceResponseOutput) Comment() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoOccurrenceResponse) string { return v.Comment }).(pulumi.StringOutput)
+}
+
+// Provide the actual file name of the package, or path of the directory being treated as a package
+func (o PackageInfoOccurrenceResponseOutput) Filename() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoOccurrenceResponse) string { return v.Filename }).(pulumi.StringOutput)
+}
+
+// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+func (o PackageInfoOccurrenceResponseOutput) HomePage() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoOccurrenceResponse) string { return v.HomePage }).(pulumi.StringOutput)
+}
+
+// package or alternative values, if the governing license cannot be determined
+func (o PackageInfoOccurrenceResponseOutput) LicenseConcluded() LicenseResponseOutput {
+	return o.ApplyT(func(v PackageInfoOccurrenceResponse) LicenseResponse { return v.LicenseConcluded }).(LicenseResponseOutput)
+}
+
+// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+func (o PackageInfoOccurrenceResponseOutput) PackageType() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoOccurrenceResponse) string { return v.PackageType }).(pulumi.StringOutput)
+}
+
+// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
+func (o PackageInfoOccurrenceResponseOutput) SourceInfo() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoOccurrenceResponse) string { return v.SourceInfo }).(pulumi.StringOutput)
+}
+
+// A short description of the package
+func (o PackageInfoOccurrenceResponseOutput) SummaryDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoOccurrenceResponse) string { return v.SummaryDescription }).(pulumi.StringOutput)
+}
+
+// Identify the full name of the package as given by the Package Originator
+func (o PackageInfoOccurrenceResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoOccurrenceResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
+// Identify the version of the package
+func (o PackageInfoOccurrenceResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoOccurrenceResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type PackageInfoOccurrenceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PackageInfoOccurrenceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PackageInfoOccurrenceResponse)(nil)).Elem()
+}
+
+func (o PackageInfoOccurrenceResponsePtrOutput) ToPackageInfoOccurrenceResponsePtrOutput() PackageInfoOccurrenceResponsePtrOutput {
+	return o
+}
+
+func (o PackageInfoOccurrenceResponsePtrOutput) ToPackageInfoOccurrenceResponsePtrOutputWithContext(ctx context.Context) PackageInfoOccurrenceResponsePtrOutput {
+	return o
+}
+
+func (o PackageInfoOccurrenceResponsePtrOutput) Elem() PackageInfoOccurrenceResponseOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrenceResponse) PackageInfoOccurrenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PackageInfoOccurrenceResponse
+		return ret
+	}).(PackageInfoOccurrenceResponseOutput)
+}
+
+// A place for the SPDX file creator to record any general comments about the package being described
+func (o PackageInfoOccurrenceResponsePtrOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Comment
+	}).(pulumi.StringPtrOutput)
+}
+
+// Provide the actual file name of the package, or path of the directory being treated as a package
+func (o PackageInfoOccurrenceResponsePtrOutput) Filename() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Filename
+	}).(pulumi.StringPtrOutput)
+}
+
+// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+func (o PackageInfoOccurrenceResponsePtrOutput) HomePage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HomePage
+	}).(pulumi.StringPtrOutput)
+}
+
+// package or alternative values, if the governing license cannot be determined
+func (o PackageInfoOccurrenceResponsePtrOutput) LicenseConcluded() LicenseResponsePtrOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrenceResponse) *LicenseResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.LicenseConcluded
+	}).(LicenseResponsePtrOutput)
+}
+
+// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+func (o PackageInfoOccurrenceResponsePtrOutput) PackageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PackageType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
+func (o PackageInfoOccurrenceResponsePtrOutput) SourceInfo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceInfo
+	}).(pulumi.StringPtrOutput)
+}
+
+// A short description of the package
+func (o PackageInfoOccurrenceResponsePtrOutput) SummaryDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SummaryDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identify the full name of the package as given by the Package Originator
+func (o PackageInfoOccurrenceResponsePtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identify the version of the package
+func (o PackageInfoOccurrenceResponsePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
 // This message wraps a location affected by a vulnerability and its associated fix (if one is available).
 type PackageIssue struct {
 	// The location of the vulnerability.
@@ -16892,1307 +18568,6 @@ func (o PackageIssueResponseArrayOutput) Index(i pulumi.IntInput) PackageIssueRe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PackageIssueResponse {
 		return vs[0].([]PackageIssueResponse)[vs[1].(int)]
 	}).(PackageIssueResponseOutput)
-}
-
-// PackageNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-type PackageNote struct {
-	// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
-	Analyzed *bool `pulumi:"analyzed"`
-	// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
-	Attribution *string `pulumi:"attribution"`
-	// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
-	Checksum *string `pulumi:"checksum"`
-	// Identify the copyright holders of the package, as well as any dates present
-	Copyright *string `pulumi:"copyright"`
-	// A more detailed description of the package
-	DetailedDescription *string `pulumi:"detailedDescription"`
-	// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
-	DownloadLocation *string `pulumi:"downloadLocation"`
-	// ExternalRef
-	ExternalRefs []ExternalRef `pulumi:"externalRefs"`
-	// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
-	FilesLicenseInfo []string `pulumi:"filesLicenseInfo"`
-	// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
-	HomePage *string `pulumi:"homePage"`
-	// List the licenses that have been declared by the authors of the package
-	LicenseDeclared *string `pulumi:"licenseDeclared"`
-	// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
-	Originator *string `pulumi:"originator"`
-	// A short description of the package
-	SummaryDescription *string `pulumi:"summaryDescription"`
-	// Identify the actual distribution source for the package/directory identified in the SPDX file
-	Supplier *string `pulumi:"supplier"`
-	// Identify the full name of the package as given by the Package Originator
-	Title *string `pulumi:"title"`
-	// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
-	VerificationCode *string `pulumi:"verificationCode"`
-	// Identify the version of the package
-	Version *string `pulumi:"version"`
-}
-
-// PackageNoteInput is an input type that accepts PackageNoteArgs and PackageNoteOutput values.
-// You can construct a concrete instance of `PackageNoteInput` via:
-//
-//          PackageNoteArgs{...}
-type PackageNoteInput interface {
-	pulumi.Input
-
-	ToPackageNoteOutput() PackageNoteOutput
-	ToPackageNoteOutputWithContext(context.Context) PackageNoteOutput
-}
-
-// PackageNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-type PackageNoteArgs struct {
-	// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
-	Analyzed pulumi.BoolPtrInput `pulumi:"analyzed"`
-	// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
-	Attribution pulumi.StringPtrInput `pulumi:"attribution"`
-	// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
-	Checksum pulumi.StringPtrInput `pulumi:"checksum"`
-	// Identify the copyright holders of the package, as well as any dates present
-	Copyright pulumi.StringPtrInput `pulumi:"copyright"`
-	// A more detailed description of the package
-	DetailedDescription pulumi.StringPtrInput `pulumi:"detailedDescription"`
-	// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
-	DownloadLocation pulumi.StringPtrInput `pulumi:"downloadLocation"`
-	// ExternalRef
-	ExternalRefs ExternalRefArrayInput `pulumi:"externalRefs"`
-	// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
-	FilesLicenseInfo pulumi.StringArrayInput `pulumi:"filesLicenseInfo"`
-	// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
-	HomePage pulumi.StringPtrInput `pulumi:"homePage"`
-	// List the licenses that have been declared by the authors of the package
-	LicenseDeclared pulumi.StringPtrInput `pulumi:"licenseDeclared"`
-	// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
-	Originator pulumi.StringPtrInput `pulumi:"originator"`
-	// A short description of the package
-	SummaryDescription pulumi.StringPtrInput `pulumi:"summaryDescription"`
-	// Identify the actual distribution source for the package/directory identified in the SPDX file
-	Supplier pulumi.StringPtrInput `pulumi:"supplier"`
-	// Identify the full name of the package as given by the Package Originator
-	Title pulumi.StringPtrInput `pulumi:"title"`
-	// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
-	VerificationCode pulumi.StringPtrInput `pulumi:"verificationCode"`
-	// Identify the version of the package
-	Version pulumi.StringPtrInput `pulumi:"version"`
-}
-
-func (PackageNoteArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PackageNote)(nil)).Elem()
-}
-
-func (i PackageNoteArgs) ToPackageNoteOutput() PackageNoteOutput {
-	return i.ToPackageNoteOutputWithContext(context.Background())
-}
-
-func (i PackageNoteArgs) ToPackageNoteOutputWithContext(ctx context.Context) PackageNoteOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageNoteOutput)
-}
-
-func (i PackageNoteArgs) ToPackageNotePtrOutput() PackageNotePtrOutput {
-	return i.ToPackageNotePtrOutputWithContext(context.Background())
-}
-
-func (i PackageNoteArgs) ToPackageNotePtrOutputWithContext(ctx context.Context) PackageNotePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageNoteOutput).ToPackageNotePtrOutputWithContext(ctx)
-}
-
-// PackageNotePtrInput is an input type that accepts PackageNoteArgs, PackageNotePtr and PackageNotePtrOutput values.
-// You can construct a concrete instance of `PackageNotePtrInput` via:
-//
-//          PackageNoteArgs{...}
-//
-//  or:
-//
-//          nil
-type PackageNotePtrInput interface {
-	pulumi.Input
-
-	ToPackageNotePtrOutput() PackageNotePtrOutput
-	ToPackageNotePtrOutputWithContext(context.Context) PackageNotePtrOutput
-}
-
-type packageNotePtrType PackageNoteArgs
-
-func PackageNotePtr(v *PackageNoteArgs) PackageNotePtrInput {
-	return (*packageNotePtrType)(v)
-}
-
-func (*packageNotePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PackageNote)(nil)).Elem()
-}
-
-func (i *packageNotePtrType) ToPackageNotePtrOutput() PackageNotePtrOutput {
-	return i.ToPackageNotePtrOutputWithContext(context.Background())
-}
-
-func (i *packageNotePtrType) ToPackageNotePtrOutputWithContext(ctx context.Context) PackageNotePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageNotePtrOutput)
-}
-
-// PackageNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-type PackageNoteOutput struct{ *pulumi.OutputState }
-
-func (PackageNoteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PackageNote)(nil)).Elem()
-}
-
-func (o PackageNoteOutput) ToPackageNoteOutput() PackageNoteOutput {
-	return o
-}
-
-func (o PackageNoteOutput) ToPackageNoteOutputWithContext(ctx context.Context) PackageNoteOutput {
-	return o
-}
-
-func (o PackageNoteOutput) ToPackageNotePtrOutput() PackageNotePtrOutput {
-	return o.ToPackageNotePtrOutputWithContext(context.Background())
-}
-
-func (o PackageNoteOutput) ToPackageNotePtrOutputWithContext(ctx context.Context) PackageNotePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageNote) *PackageNote {
-		return &v
-	}).(PackageNotePtrOutput)
-}
-
-// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
-func (o PackageNoteOutput) Analyzed() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PackageNote) *bool { return v.Analyzed }).(pulumi.BoolPtrOutput)
-}
-
-// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
-func (o PackageNoteOutput) Attribution() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageNote) *string { return v.Attribution }).(pulumi.StringPtrOutput)
-}
-
-// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
-func (o PackageNoteOutput) Checksum() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageNote) *string { return v.Checksum }).(pulumi.StringPtrOutput)
-}
-
-// Identify the copyright holders of the package, as well as any dates present
-func (o PackageNoteOutput) Copyright() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageNote) *string { return v.Copyright }).(pulumi.StringPtrOutput)
-}
-
-// A more detailed description of the package
-func (o PackageNoteOutput) DetailedDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageNote) *string { return v.DetailedDescription }).(pulumi.StringPtrOutput)
-}
-
-// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
-func (o PackageNoteOutput) DownloadLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageNote) *string { return v.DownloadLocation }).(pulumi.StringPtrOutput)
-}
-
-// ExternalRef
-func (o PackageNoteOutput) ExternalRefs() ExternalRefArrayOutput {
-	return o.ApplyT(func(v PackageNote) []ExternalRef { return v.ExternalRefs }).(ExternalRefArrayOutput)
-}
-
-// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
-func (o PackageNoteOutput) FilesLicenseInfo() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PackageNote) []string { return v.FilesLicenseInfo }).(pulumi.StringArrayOutput)
-}
-
-// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
-func (o PackageNoteOutput) HomePage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageNote) *string { return v.HomePage }).(pulumi.StringPtrOutput)
-}
-
-// List the licenses that have been declared by the authors of the package
-func (o PackageNoteOutput) LicenseDeclared() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageNote) *string { return v.LicenseDeclared }).(pulumi.StringPtrOutput)
-}
-
-// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
-func (o PackageNoteOutput) Originator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageNote) *string { return v.Originator }).(pulumi.StringPtrOutput)
-}
-
-// A short description of the package
-func (o PackageNoteOutput) SummaryDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageNote) *string { return v.SummaryDescription }).(pulumi.StringPtrOutput)
-}
-
-// Identify the actual distribution source for the package/directory identified in the SPDX file
-func (o PackageNoteOutput) Supplier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageNote) *string { return v.Supplier }).(pulumi.StringPtrOutput)
-}
-
-// Identify the full name of the package as given by the Package Originator
-func (o PackageNoteOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageNote) *string { return v.Title }).(pulumi.StringPtrOutput)
-}
-
-// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
-func (o PackageNoteOutput) VerificationCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageNote) *string { return v.VerificationCode }).(pulumi.StringPtrOutput)
-}
-
-// Identify the version of the package
-func (o PackageNoteOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageNote) *string { return v.Version }).(pulumi.StringPtrOutput)
-}
-
-type PackageNotePtrOutput struct{ *pulumi.OutputState }
-
-func (PackageNotePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PackageNote)(nil)).Elem()
-}
-
-func (o PackageNotePtrOutput) ToPackageNotePtrOutput() PackageNotePtrOutput {
-	return o
-}
-
-func (o PackageNotePtrOutput) ToPackageNotePtrOutputWithContext(ctx context.Context) PackageNotePtrOutput {
-	return o
-}
-
-func (o PackageNotePtrOutput) Elem() PackageNoteOutput {
-	return o.ApplyT(func(v *PackageNote) PackageNote {
-		if v != nil {
-			return *v
-		}
-		var ret PackageNote
-		return ret
-	}).(PackageNoteOutput)
-}
-
-// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
-func (o PackageNotePtrOutput) Analyzed() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PackageNote) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Analyzed
-	}).(pulumi.BoolPtrOutput)
-}
-
-// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
-func (o PackageNotePtrOutput) Attribution() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNote) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Attribution
-	}).(pulumi.StringPtrOutput)
-}
-
-// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
-func (o PackageNotePtrOutput) Checksum() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNote) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Checksum
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identify the copyright holders of the package, as well as any dates present
-func (o PackageNotePtrOutput) Copyright() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNote) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Copyright
-	}).(pulumi.StringPtrOutput)
-}
-
-// A more detailed description of the package
-func (o PackageNotePtrOutput) DetailedDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNote) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DetailedDescription
-	}).(pulumi.StringPtrOutput)
-}
-
-// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
-func (o PackageNotePtrOutput) DownloadLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNote) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DownloadLocation
-	}).(pulumi.StringPtrOutput)
-}
-
-// ExternalRef
-func (o PackageNotePtrOutput) ExternalRefs() ExternalRefArrayOutput {
-	return o.ApplyT(func(v *PackageNote) []ExternalRef {
-		if v == nil {
-			return nil
-		}
-		return v.ExternalRefs
-	}).(ExternalRefArrayOutput)
-}
-
-// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
-func (o PackageNotePtrOutput) FilesLicenseInfo() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *PackageNote) []string {
-		if v == nil {
-			return nil
-		}
-		return v.FilesLicenseInfo
-	}).(pulumi.StringArrayOutput)
-}
-
-// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
-func (o PackageNotePtrOutput) HomePage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNote) *string {
-		if v == nil {
-			return nil
-		}
-		return v.HomePage
-	}).(pulumi.StringPtrOutput)
-}
-
-// List the licenses that have been declared by the authors of the package
-func (o PackageNotePtrOutput) LicenseDeclared() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNote) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LicenseDeclared
-	}).(pulumi.StringPtrOutput)
-}
-
-// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
-func (o PackageNotePtrOutput) Originator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNote) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Originator
-	}).(pulumi.StringPtrOutput)
-}
-
-// A short description of the package
-func (o PackageNotePtrOutput) SummaryDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNote) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SummaryDescription
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identify the actual distribution source for the package/directory identified in the SPDX file
-func (o PackageNotePtrOutput) Supplier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNote) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Supplier
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identify the full name of the package as given by the Package Originator
-func (o PackageNotePtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNote) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Title
-	}).(pulumi.StringPtrOutput)
-}
-
-// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
-func (o PackageNotePtrOutput) VerificationCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNote) *string {
-		if v == nil {
-			return nil
-		}
-		return v.VerificationCode
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identify the version of the package
-func (o PackageNotePtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNote) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Version
-	}).(pulumi.StringPtrOutput)
-}
-
-// PackageNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-type PackageNoteResponse struct {
-	// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
-	Analyzed bool `pulumi:"analyzed"`
-	// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
-	Attribution string `pulumi:"attribution"`
-	// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
-	Checksum string `pulumi:"checksum"`
-	// Identify the copyright holders of the package, as well as any dates present
-	Copyright string `pulumi:"copyright"`
-	// A more detailed description of the package
-	DetailedDescription string `pulumi:"detailedDescription"`
-	// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
-	DownloadLocation string `pulumi:"downloadLocation"`
-	// ExternalRef
-	ExternalRefs []ExternalRefResponse `pulumi:"externalRefs"`
-	// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
-	FilesLicenseInfo []string `pulumi:"filesLicenseInfo"`
-	// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
-	HomePage string `pulumi:"homePage"`
-	// List the licenses that have been declared by the authors of the package
-	LicenseDeclared string `pulumi:"licenseDeclared"`
-	// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
-	Originator string `pulumi:"originator"`
-	// A short description of the package
-	SummaryDescription string `pulumi:"summaryDescription"`
-	// Identify the actual distribution source for the package/directory identified in the SPDX file
-	Supplier string `pulumi:"supplier"`
-	// Identify the full name of the package as given by the Package Originator
-	Title string `pulumi:"title"`
-	// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
-	VerificationCode string `pulumi:"verificationCode"`
-	// Identify the version of the package
-	Version string `pulumi:"version"`
-}
-
-// PackageNoteResponseInput is an input type that accepts PackageNoteResponseArgs and PackageNoteResponseOutput values.
-// You can construct a concrete instance of `PackageNoteResponseInput` via:
-//
-//          PackageNoteResponseArgs{...}
-type PackageNoteResponseInput interface {
-	pulumi.Input
-
-	ToPackageNoteResponseOutput() PackageNoteResponseOutput
-	ToPackageNoteResponseOutputWithContext(context.Context) PackageNoteResponseOutput
-}
-
-// PackageNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-type PackageNoteResponseArgs struct {
-	// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
-	Analyzed pulumi.BoolInput `pulumi:"analyzed"`
-	// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
-	Attribution pulumi.StringInput `pulumi:"attribution"`
-	// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
-	Checksum pulumi.StringInput `pulumi:"checksum"`
-	// Identify the copyright holders of the package, as well as any dates present
-	Copyright pulumi.StringInput `pulumi:"copyright"`
-	// A more detailed description of the package
-	DetailedDescription pulumi.StringInput `pulumi:"detailedDescription"`
-	// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
-	DownloadLocation pulumi.StringInput `pulumi:"downloadLocation"`
-	// ExternalRef
-	ExternalRefs ExternalRefResponseArrayInput `pulumi:"externalRefs"`
-	// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
-	FilesLicenseInfo pulumi.StringArrayInput `pulumi:"filesLicenseInfo"`
-	// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
-	HomePage pulumi.StringInput `pulumi:"homePage"`
-	// List the licenses that have been declared by the authors of the package
-	LicenseDeclared pulumi.StringInput `pulumi:"licenseDeclared"`
-	// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
-	Originator pulumi.StringInput `pulumi:"originator"`
-	// A short description of the package
-	SummaryDescription pulumi.StringInput `pulumi:"summaryDescription"`
-	// Identify the actual distribution source for the package/directory identified in the SPDX file
-	Supplier pulumi.StringInput `pulumi:"supplier"`
-	// Identify the full name of the package as given by the Package Originator
-	Title pulumi.StringInput `pulumi:"title"`
-	// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
-	VerificationCode pulumi.StringInput `pulumi:"verificationCode"`
-	// Identify the version of the package
-	Version pulumi.StringInput `pulumi:"version"`
-}
-
-func (PackageNoteResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PackageNoteResponse)(nil)).Elem()
-}
-
-func (i PackageNoteResponseArgs) ToPackageNoteResponseOutput() PackageNoteResponseOutput {
-	return i.ToPackageNoteResponseOutputWithContext(context.Background())
-}
-
-func (i PackageNoteResponseArgs) ToPackageNoteResponseOutputWithContext(ctx context.Context) PackageNoteResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageNoteResponseOutput)
-}
-
-func (i PackageNoteResponseArgs) ToPackageNoteResponsePtrOutput() PackageNoteResponsePtrOutput {
-	return i.ToPackageNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PackageNoteResponseArgs) ToPackageNoteResponsePtrOutputWithContext(ctx context.Context) PackageNoteResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageNoteResponseOutput).ToPackageNoteResponsePtrOutputWithContext(ctx)
-}
-
-// PackageNoteResponsePtrInput is an input type that accepts PackageNoteResponseArgs, PackageNoteResponsePtr and PackageNoteResponsePtrOutput values.
-// You can construct a concrete instance of `PackageNoteResponsePtrInput` via:
-//
-//          PackageNoteResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PackageNoteResponsePtrInput interface {
-	pulumi.Input
-
-	ToPackageNoteResponsePtrOutput() PackageNoteResponsePtrOutput
-	ToPackageNoteResponsePtrOutputWithContext(context.Context) PackageNoteResponsePtrOutput
-}
-
-type packageNoteResponsePtrType PackageNoteResponseArgs
-
-func PackageNoteResponsePtr(v *PackageNoteResponseArgs) PackageNoteResponsePtrInput {
-	return (*packageNoteResponsePtrType)(v)
-}
-
-func (*packageNoteResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PackageNoteResponse)(nil)).Elem()
-}
-
-func (i *packageNoteResponsePtrType) ToPackageNoteResponsePtrOutput() PackageNoteResponsePtrOutput {
-	return i.ToPackageNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *packageNoteResponsePtrType) ToPackageNoteResponsePtrOutputWithContext(ctx context.Context) PackageNoteResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageNoteResponsePtrOutput)
-}
-
-// PackageNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-type PackageNoteResponseOutput struct{ *pulumi.OutputState }
-
-func (PackageNoteResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PackageNoteResponse)(nil)).Elem()
-}
-
-func (o PackageNoteResponseOutput) ToPackageNoteResponseOutput() PackageNoteResponseOutput {
-	return o
-}
-
-func (o PackageNoteResponseOutput) ToPackageNoteResponseOutputWithContext(ctx context.Context) PackageNoteResponseOutput {
-	return o
-}
-
-func (o PackageNoteResponseOutput) ToPackageNoteResponsePtrOutput() PackageNoteResponsePtrOutput {
-	return o.ToPackageNoteResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PackageNoteResponseOutput) ToPackageNoteResponsePtrOutputWithContext(ctx context.Context) PackageNoteResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageNoteResponse) *PackageNoteResponse {
-		return &v
-	}).(PackageNoteResponsePtrOutput)
-}
-
-// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
-func (o PackageNoteResponseOutput) Analyzed() pulumi.BoolOutput {
-	return o.ApplyT(func(v PackageNoteResponse) bool { return v.Analyzed }).(pulumi.BoolOutput)
-}
-
-// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
-func (o PackageNoteResponseOutput) Attribution() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageNoteResponse) string { return v.Attribution }).(pulumi.StringOutput)
-}
-
-// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
-func (o PackageNoteResponseOutput) Checksum() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageNoteResponse) string { return v.Checksum }).(pulumi.StringOutput)
-}
-
-// Identify the copyright holders of the package, as well as any dates present
-func (o PackageNoteResponseOutput) Copyright() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageNoteResponse) string { return v.Copyright }).(pulumi.StringOutput)
-}
-
-// A more detailed description of the package
-func (o PackageNoteResponseOutput) DetailedDescription() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageNoteResponse) string { return v.DetailedDescription }).(pulumi.StringOutput)
-}
-
-// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
-func (o PackageNoteResponseOutput) DownloadLocation() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageNoteResponse) string { return v.DownloadLocation }).(pulumi.StringOutput)
-}
-
-// ExternalRef
-func (o PackageNoteResponseOutput) ExternalRefs() ExternalRefResponseArrayOutput {
-	return o.ApplyT(func(v PackageNoteResponse) []ExternalRefResponse { return v.ExternalRefs }).(ExternalRefResponseArrayOutput)
-}
-
-// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
-func (o PackageNoteResponseOutput) FilesLicenseInfo() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PackageNoteResponse) []string { return v.FilesLicenseInfo }).(pulumi.StringArrayOutput)
-}
-
-// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
-func (o PackageNoteResponseOutput) HomePage() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageNoteResponse) string { return v.HomePage }).(pulumi.StringOutput)
-}
-
-// List the licenses that have been declared by the authors of the package
-func (o PackageNoteResponseOutput) LicenseDeclared() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageNoteResponse) string { return v.LicenseDeclared }).(pulumi.StringOutput)
-}
-
-// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
-func (o PackageNoteResponseOutput) Originator() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageNoteResponse) string { return v.Originator }).(pulumi.StringOutput)
-}
-
-// A short description of the package
-func (o PackageNoteResponseOutput) SummaryDescription() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageNoteResponse) string { return v.SummaryDescription }).(pulumi.StringOutput)
-}
-
-// Identify the actual distribution source for the package/directory identified in the SPDX file
-func (o PackageNoteResponseOutput) Supplier() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageNoteResponse) string { return v.Supplier }).(pulumi.StringOutput)
-}
-
-// Identify the full name of the package as given by the Package Originator
-func (o PackageNoteResponseOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageNoteResponse) string { return v.Title }).(pulumi.StringOutput)
-}
-
-// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
-func (o PackageNoteResponseOutput) VerificationCode() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageNoteResponse) string { return v.VerificationCode }).(pulumi.StringOutput)
-}
-
-// Identify the version of the package
-func (o PackageNoteResponseOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageNoteResponse) string { return v.Version }).(pulumi.StringOutput)
-}
-
-type PackageNoteResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PackageNoteResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PackageNoteResponse)(nil)).Elem()
-}
-
-func (o PackageNoteResponsePtrOutput) ToPackageNoteResponsePtrOutput() PackageNoteResponsePtrOutput {
-	return o
-}
-
-func (o PackageNoteResponsePtrOutput) ToPackageNoteResponsePtrOutputWithContext(ctx context.Context) PackageNoteResponsePtrOutput {
-	return o
-}
-
-func (o PackageNoteResponsePtrOutput) Elem() PackageNoteResponseOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) PackageNoteResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PackageNoteResponse
-		return ret
-	}).(PackageNoteResponseOutput)
-}
-
-// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
-func (o PackageNoteResponsePtrOutput) Analyzed() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Analyzed
-	}).(pulumi.BoolPtrOutput)
-}
-
-// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
-func (o PackageNoteResponsePtrOutput) Attribution() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Attribution
-	}).(pulumi.StringPtrOutput)
-}
-
-// Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
-func (o PackageNoteResponsePtrOutput) Checksum() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Checksum
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identify the copyright holders of the package, as well as any dates present
-func (o PackageNoteResponsePtrOutput) Copyright() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Copyright
-	}).(pulumi.StringPtrOutput)
-}
-
-// A more detailed description of the package
-func (o PackageNoteResponsePtrOutput) DetailedDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DetailedDescription
-	}).(pulumi.StringPtrOutput)
-}
-
-// This section identifies the download Universal Resource Locator (URL), or a specific location within a version control system (VCS) for the package at the time that the SPDX file was created
-func (o PackageNoteResponsePtrOutput) DownloadLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DownloadLocation
-	}).(pulumi.StringPtrOutput)
-}
-
-// ExternalRef
-func (o PackageNoteResponsePtrOutput) ExternalRefs() ExternalRefResponseArrayOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) []ExternalRefResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ExternalRefs
-	}).(ExternalRefResponseArrayOutput)
-}
-
-// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
-func (o PackageNoteResponsePtrOutput) FilesLicenseInfo() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.FilesLicenseInfo
-	}).(pulumi.StringArrayOutput)
-}
-
-// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
-func (o PackageNoteResponsePtrOutput) HomePage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.HomePage
-	}).(pulumi.StringPtrOutput)
-}
-
-// List the licenses that have been declared by the authors of the package
-func (o PackageNoteResponsePtrOutput) LicenseDeclared() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LicenseDeclared
-	}).(pulumi.StringPtrOutput)
-}
-
-// If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
-func (o PackageNoteResponsePtrOutput) Originator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Originator
-	}).(pulumi.StringPtrOutput)
-}
-
-// A short description of the package
-func (o PackageNoteResponsePtrOutput) SummaryDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SummaryDescription
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identify the actual distribution source for the package/directory identified in the SPDX file
-func (o PackageNoteResponsePtrOutput) Supplier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Supplier
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identify the full name of the package as given by the Package Originator
-func (o PackageNoteResponsePtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Title
-	}).(pulumi.StringPtrOutput)
-}
-
-// This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
-func (o PackageNoteResponsePtrOutput) VerificationCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.VerificationCode
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identify the version of the package
-func (o PackageNoteResponsePtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageNoteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Version
-	}).(pulumi.StringPtrOutput)
-}
-
-// PackageOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-type PackageOccurrence struct {
-	// A place for the SPDX file creator to record any general comments about the package being described
-	Comment *string `pulumi:"comment"`
-	// Provide the actual file name of the package, or path of the directory being treated as a package
-	Filename *string `pulumi:"filename"`
-	// Uniquely identify any element in an SPDX document which may be referenced by other elements
-	Id *string `pulumi:"id"`
-	// This field provides a place for the SPDX file creator to record any relevant background information or analysis that went in to arriving at the Concluded License for a package
-	LicenseComments *string `pulumi:"licenseComments"`
-	// package or alternative values, if the governing license cannot be determined
-	LicenseConcluded *string `pulumi:"licenseConcluded"`
-	// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
-	SourceInfo *string `pulumi:"sourceInfo"`
-}
-
-// PackageOccurrenceInput is an input type that accepts PackageOccurrenceArgs and PackageOccurrenceOutput values.
-// You can construct a concrete instance of `PackageOccurrenceInput` via:
-//
-//          PackageOccurrenceArgs{...}
-type PackageOccurrenceInput interface {
-	pulumi.Input
-
-	ToPackageOccurrenceOutput() PackageOccurrenceOutput
-	ToPackageOccurrenceOutputWithContext(context.Context) PackageOccurrenceOutput
-}
-
-// PackageOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-type PackageOccurrenceArgs struct {
-	// A place for the SPDX file creator to record any general comments about the package being described
-	Comment pulumi.StringPtrInput `pulumi:"comment"`
-	// Provide the actual file name of the package, or path of the directory being treated as a package
-	Filename pulumi.StringPtrInput `pulumi:"filename"`
-	// Uniquely identify any element in an SPDX document which may be referenced by other elements
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// This field provides a place for the SPDX file creator to record any relevant background information or analysis that went in to arriving at the Concluded License for a package
-	LicenseComments pulumi.StringPtrInput `pulumi:"licenseComments"`
-	// package or alternative values, if the governing license cannot be determined
-	LicenseConcluded pulumi.StringPtrInput `pulumi:"licenseConcluded"`
-	// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
-	SourceInfo pulumi.StringPtrInput `pulumi:"sourceInfo"`
-}
-
-func (PackageOccurrenceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PackageOccurrence)(nil)).Elem()
-}
-
-func (i PackageOccurrenceArgs) ToPackageOccurrenceOutput() PackageOccurrenceOutput {
-	return i.ToPackageOccurrenceOutputWithContext(context.Background())
-}
-
-func (i PackageOccurrenceArgs) ToPackageOccurrenceOutputWithContext(ctx context.Context) PackageOccurrenceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageOccurrenceOutput)
-}
-
-func (i PackageOccurrenceArgs) ToPackageOccurrencePtrOutput() PackageOccurrencePtrOutput {
-	return i.ToPackageOccurrencePtrOutputWithContext(context.Background())
-}
-
-func (i PackageOccurrenceArgs) ToPackageOccurrencePtrOutputWithContext(ctx context.Context) PackageOccurrencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageOccurrenceOutput).ToPackageOccurrencePtrOutputWithContext(ctx)
-}
-
-// PackageOccurrencePtrInput is an input type that accepts PackageOccurrenceArgs, PackageOccurrencePtr and PackageOccurrencePtrOutput values.
-// You can construct a concrete instance of `PackageOccurrencePtrInput` via:
-//
-//          PackageOccurrenceArgs{...}
-//
-//  or:
-//
-//          nil
-type PackageOccurrencePtrInput interface {
-	pulumi.Input
-
-	ToPackageOccurrencePtrOutput() PackageOccurrencePtrOutput
-	ToPackageOccurrencePtrOutputWithContext(context.Context) PackageOccurrencePtrOutput
-}
-
-type packageOccurrencePtrType PackageOccurrenceArgs
-
-func PackageOccurrencePtr(v *PackageOccurrenceArgs) PackageOccurrencePtrInput {
-	return (*packageOccurrencePtrType)(v)
-}
-
-func (*packageOccurrencePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PackageOccurrence)(nil)).Elem()
-}
-
-func (i *packageOccurrencePtrType) ToPackageOccurrencePtrOutput() PackageOccurrencePtrOutput {
-	return i.ToPackageOccurrencePtrOutputWithContext(context.Background())
-}
-
-func (i *packageOccurrencePtrType) ToPackageOccurrencePtrOutputWithContext(ctx context.Context) PackageOccurrencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageOccurrencePtrOutput)
-}
-
-// PackageOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-type PackageOccurrenceOutput struct{ *pulumi.OutputState }
-
-func (PackageOccurrenceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PackageOccurrence)(nil)).Elem()
-}
-
-func (o PackageOccurrenceOutput) ToPackageOccurrenceOutput() PackageOccurrenceOutput {
-	return o
-}
-
-func (o PackageOccurrenceOutput) ToPackageOccurrenceOutputWithContext(ctx context.Context) PackageOccurrenceOutput {
-	return o
-}
-
-func (o PackageOccurrenceOutput) ToPackageOccurrencePtrOutput() PackageOccurrencePtrOutput {
-	return o.ToPackageOccurrencePtrOutputWithContext(context.Background())
-}
-
-func (o PackageOccurrenceOutput) ToPackageOccurrencePtrOutputWithContext(ctx context.Context) PackageOccurrencePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageOccurrence) *PackageOccurrence {
-		return &v
-	}).(PackageOccurrencePtrOutput)
-}
-
-// A place for the SPDX file creator to record any general comments about the package being described
-func (o PackageOccurrenceOutput) Comment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageOccurrence) *string { return v.Comment }).(pulumi.StringPtrOutput)
-}
-
-// Provide the actual file name of the package, or path of the directory being treated as a package
-func (o PackageOccurrenceOutput) Filename() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageOccurrence) *string { return v.Filename }).(pulumi.StringPtrOutput)
-}
-
-// Uniquely identify any element in an SPDX document which may be referenced by other elements
-func (o PackageOccurrenceOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageOccurrence) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// This field provides a place for the SPDX file creator to record any relevant background information or analysis that went in to arriving at the Concluded License for a package
-func (o PackageOccurrenceOutput) LicenseComments() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageOccurrence) *string { return v.LicenseComments }).(pulumi.StringPtrOutput)
-}
-
-// package or alternative values, if the governing license cannot be determined
-func (o PackageOccurrenceOutput) LicenseConcluded() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageOccurrence) *string { return v.LicenseConcluded }).(pulumi.StringPtrOutput)
-}
-
-// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
-func (o PackageOccurrenceOutput) SourceInfo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageOccurrence) *string { return v.SourceInfo }).(pulumi.StringPtrOutput)
-}
-
-type PackageOccurrencePtrOutput struct{ *pulumi.OutputState }
-
-func (PackageOccurrencePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PackageOccurrence)(nil)).Elem()
-}
-
-func (o PackageOccurrencePtrOutput) ToPackageOccurrencePtrOutput() PackageOccurrencePtrOutput {
-	return o
-}
-
-func (o PackageOccurrencePtrOutput) ToPackageOccurrencePtrOutputWithContext(ctx context.Context) PackageOccurrencePtrOutput {
-	return o
-}
-
-func (o PackageOccurrencePtrOutput) Elem() PackageOccurrenceOutput {
-	return o.ApplyT(func(v *PackageOccurrence) PackageOccurrence {
-		if v != nil {
-			return *v
-		}
-		var ret PackageOccurrence
-		return ret
-	}).(PackageOccurrenceOutput)
-}
-
-// A place for the SPDX file creator to record any general comments about the package being described
-func (o PackageOccurrencePtrOutput) Comment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageOccurrence) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Comment
-	}).(pulumi.StringPtrOutput)
-}
-
-// Provide the actual file name of the package, or path of the directory being treated as a package
-func (o PackageOccurrencePtrOutput) Filename() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageOccurrence) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Filename
-	}).(pulumi.StringPtrOutput)
-}
-
-// Uniquely identify any element in an SPDX document which may be referenced by other elements
-func (o PackageOccurrencePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageOccurrence) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// This field provides a place for the SPDX file creator to record any relevant background information or analysis that went in to arriving at the Concluded License for a package
-func (o PackageOccurrencePtrOutput) LicenseComments() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageOccurrence) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LicenseComments
-	}).(pulumi.StringPtrOutput)
-}
-
-// package or alternative values, if the governing license cannot be determined
-func (o PackageOccurrencePtrOutput) LicenseConcluded() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageOccurrence) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LicenseConcluded
-	}).(pulumi.StringPtrOutput)
-}
-
-// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
-func (o PackageOccurrencePtrOutput) SourceInfo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageOccurrence) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SourceInfo
-	}).(pulumi.StringPtrOutput)
-}
-
-// PackageOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-type PackageOccurrenceResponse struct {
-	// A place for the SPDX file creator to record any general comments about the package being described
-	Comment string `pulumi:"comment"`
-	// Provide the actual file name of the package, or path of the directory being treated as a package
-	Filename string `pulumi:"filename"`
-	// This field provides a place for the SPDX file creator to record any relevant background information or analysis that went in to arriving at the Concluded License for a package
-	LicenseComments string `pulumi:"licenseComments"`
-	// package or alternative values, if the governing license cannot be determined
-	LicenseConcluded string `pulumi:"licenseConcluded"`
-	// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
-	SourceInfo string `pulumi:"sourceInfo"`
-}
-
-// PackageOccurrenceResponseInput is an input type that accepts PackageOccurrenceResponseArgs and PackageOccurrenceResponseOutput values.
-// You can construct a concrete instance of `PackageOccurrenceResponseInput` via:
-//
-//          PackageOccurrenceResponseArgs{...}
-type PackageOccurrenceResponseInput interface {
-	pulumi.Input
-
-	ToPackageOccurrenceResponseOutput() PackageOccurrenceResponseOutput
-	ToPackageOccurrenceResponseOutputWithContext(context.Context) PackageOccurrenceResponseOutput
-}
-
-// PackageOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-type PackageOccurrenceResponseArgs struct {
-	// A place for the SPDX file creator to record any general comments about the package being described
-	Comment pulumi.StringInput `pulumi:"comment"`
-	// Provide the actual file name of the package, or path of the directory being treated as a package
-	Filename pulumi.StringInput `pulumi:"filename"`
-	// This field provides a place for the SPDX file creator to record any relevant background information or analysis that went in to arriving at the Concluded License for a package
-	LicenseComments pulumi.StringInput `pulumi:"licenseComments"`
-	// package or alternative values, if the governing license cannot be determined
-	LicenseConcluded pulumi.StringInput `pulumi:"licenseConcluded"`
-	// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
-	SourceInfo pulumi.StringInput `pulumi:"sourceInfo"`
-}
-
-func (PackageOccurrenceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PackageOccurrenceResponse)(nil)).Elem()
-}
-
-func (i PackageOccurrenceResponseArgs) ToPackageOccurrenceResponseOutput() PackageOccurrenceResponseOutput {
-	return i.ToPackageOccurrenceResponseOutputWithContext(context.Background())
-}
-
-func (i PackageOccurrenceResponseArgs) ToPackageOccurrenceResponseOutputWithContext(ctx context.Context) PackageOccurrenceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageOccurrenceResponseOutput)
-}
-
-func (i PackageOccurrenceResponseArgs) ToPackageOccurrenceResponsePtrOutput() PackageOccurrenceResponsePtrOutput {
-	return i.ToPackageOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PackageOccurrenceResponseArgs) ToPackageOccurrenceResponsePtrOutputWithContext(ctx context.Context) PackageOccurrenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageOccurrenceResponseOutput).ToPackageOccurrenceResponsePtrOutputWithContext(ctx)
-}
-
-// PackageOccurrenceResponsePtrInput is an input type that accepts PackageOccurrenceResponseArgs, PackageOccurrenceResponsePtr and PackageOccurrenceResponsePtrOutput values.
-// You can construct a concrete instance of `PackageOccurrenceResponsePtrInput` via:
-//
-//          PackageOccurrenceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PackageOccurrenceResponsePtrInput interface {
-	pulumi.Input
-
-	ToPackageOccurrenceResponsePtrOutput() PackageOccurrenceResponsePtrOutput
-	ToPackageOccurrenceResponsePtrOutputWithContext(context.Context) PackageOccurrenceResponsePtrOutput
-}
-
-type packageOccurrenceResponsePtrType PackageOccurrenceResponseArgs
-
-func PackageOccurrenceResponsePtr(v *PackageOccurrenceResponseArgs) PackageOccurrenceResponsePtrInput {
-	return (*packageOccurrenceResponsePtrType)(v)
-}
-
-func (*packageOccurrenceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PackageOccurrenceResponse)(nil)).Elem()
-}
-
-func (i *packageOccurrenceResponsePtrType) ToPackageOccurrenceResponsePtrOutput() PackageOccurrenceResponsePtrOutput {
-	return i.ToPackageOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *packageOccurrenceResponsePtrType) ToPackageOccurrenceResponsePtrOutputWithContext(ctx context.Context) PackageOccurrenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageOccurrenceResponsePtrOutput)
-}
-
-// PackageOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
-type PackageOccurrenceResponseOutput struct{ *pulumi.OutputState }
-
-func (PackageOccurrenceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PackageOccurrenceResponse)(nil)).Elem()
-}
-
-func (o PackageOccurrenceResponseOutput) ToPackageOccurrenceResponseOutput() PackageOccurrenceResponseOutput {
-	return o
-}
-
-func (o PackageOccurrenceResponseOutput) ToPackageOccurrenceResponseOutputWithContext(ctx context.Context) PackageOccurrenceResponseOutput {
-	return o
-}
-
-func (o PackageOccurrenceResponseOutput) ToPackageOccurrenceResponsePtrOutput() PackageOccurrenceResponsePtrOutput {
-	return o.ToPackageOccurrenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PackageOccurrenceResponseOutput) ToPackageOccurrenceResponsePtrOutputWithContext(ctx context.Context) PackageOccurrenceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageOccurrenceResponse) *PackageOccurrenceResponse {
-		return &v
-	}).(PackageOccurrenceResponsePtrOutput)
-}
-
-// A place for the SPDX file creator to record any general comments about the package being described
-func (o PackageOccurrenceResponseOutput) Comment() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageOccurrenceResponse) string { return v.Comment }).(pulumi.StringOutput)
-}
-
-// Provide the actual file name of the package, or path of the directory being treated as a package
-func (o PackageOccurrenceResponseOutput) Filename() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageOccurrenceResponse) string { return v.Filename }).(pulumi.StringOutput)
-}
-
-// This field provides a place for the SPDX file creator to record any relevant background information or analysis that went in to arriving at the Concluded License for a package
-func (o PackageOccurrenceResponseOutput) LicenseComments() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageOccurrenceResponse) string { return v.LicenseComments }).(pulumi.StringOutput)
-}
-
-// package or alternative values, if the governing license cannot be determined
-func (o PackageOccurrenceResponseOutput) LicenseConcluded() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageOccurrenceResponse) string { return v.LicenseConcluded }).(pulumi.StringOutput)
-}
-
-// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
-func (o PackageOccurrenceResponseOutput) SourceInfo() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageOccurrenceResponse) string { return v.SourceInfo }).(pulumi.StringOutput)
-}
-
-type PackageOccurrenceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PackageOccurrenceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PackageOccurrenceResponse)(nil)).Elem()
-}
-
-func (o PackageOccurrenceResponsePtrOutput) ToPackageOccurrenceResponsePtrOutput() PackageOccurrenceResponsePtrOutput {
-	return o
-}
-
-func (o PackageOccurrenceResponsePtrOutput) ToPackageOccurrenceResponsePtrOutputWithContext(ctx context.Context) PackageOccurrenceResponsePtrOutput {
-	return o
-}
-
-func (o PackageOccurrenceResponsePtrOutput) Elem() PackageOccurrenceResponseOutput {
-	return o.ApplyT(func(v *PackageOccurrenceResponse) PackageOccurrenceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PackageOccurrenceResponse
-		return ret
-	}).(PackageOccurrenceResponseOutput)
-}
-
-// A place for the SPDX file creator to record any general comments about the package being described
-func (o PackageOccurrenceResponsePtrOutput) Comment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Comment
-	}).(pulumi.StringPtrOutput)
-}
-
-// Provide the actual file name of the package, or path of the directory being treated as a package
-func (o PackageOccurrenceResponsePtrOutput) Filename() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Filename
-	}).(pulumi.StringPtrOutput)
-}
-
-// This field provides a place for the SPDX file creator to record any relevant background information or analysis that went in to arriving at the Concluded License for a package
-func (o PackageOccurrenceResponsePtrOutput) LicenseComments() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LicenseComments
-	}).(pulumi.StringPtrOutput)
-}
-
-// package or alternative values, if the governing license cannot be determined
-func (o PackageOccurrenceResponsePtrOutput) LicenseConcluded() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LicenseConcluded
-	}).(pulumi.StringPtrOutput)
-}
-
-// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
-func (o PackageOccurrenceResponsePtrOutput) SourceInfo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageOccurrenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SourceInfo
-	}).(pulumi.StringPtrOutput)
 }
 
 // This represents a particular package that is distributed over various channels. E.g., glibc (aka libc6) is distributed by many, at various versions.
@@ -19248,6 +19623,8 @@ func (o RelatedUrlResponseArrayOutput) Index(i pulumi.IntInput) RelatedUrlRespon
 
 // RelationshipNote represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
 type RelationshipNote struct {
+	// The type of relationship between the source and target SPDX elements
+	Type *RelationshipNoteType `pulumi:"type"`
 }
 
 // RelationshipNoteInput is an input type that accepts RelationshipNoteArgs and RelationshipNoteOutput values.
@@ -19263,6 +19640,8 @@ type RelationshipNoteInput interface {
 
 // RelationshipNote represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
 type RelationshipNoteArgs struct {
+	// The type of relationship between the source and target SPDX elements
+	Type RelationshipNoteTypePtrInput `pulumi:"type"`
 }
 
 func (RelationshipNoteArgs) ElementType() reflect.Type {
@@ -19343,6 +19722,11 @@ func (o RelationshipNoteOutput) ToRelationshipNotePtrOutputWithContext(ctx conte
 	}).(RelationshipNotePtrOutput)
 }
 
+// The type of relationship between the source and target SPDX elements
+func (o RelationshipNoteOutput) Type() RelationshipNoteTypePtrOutput {
+	return o.ApplyT(func(v RelationshipNote) *RelationshipNoteType { return v.Type }).(RelationshipNoteTypePtrOutput)
+}
+
 type RelationshipNotePtrOutput struct{ *pulumi.OutputState }
 
 func (RelationshipNotePtrOutput) ElementType() reflect.Type {
@@ -19367,8 +19751,20 @@ func (o RelationshipNotePtrOutput) Elem() RelationshipNoteOutput {
 	}).(RelationshipNoteOutput)
 }
 
+// The type of relationship between the source and target SPDX elements
+func (o RelationshipNotePtrOutput) Type() RelationshipNoteTypePtrOutput {
+	return o.ApplyT(func(v *RelationshipNote) *RelationshipNoteType {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(RelationshipNoteTypePtrOutput)
+}
+
 // RelationshipNote represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
 type RelationshipNoteResponse struct {
+	// The type of relationship between the source and target SPDX elements
+	Type string `pulumi:"type"`
 }
 
 // RelationshipNoteResponseInput is an input type that accepts RelationshipNoteResponseArgs and RelationshipNoteResponseOutput values.
@@ -19384,6 +19780,8 @@ type RelationshipNoteResponseInput interface {
 
 // RelationshipNote represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
 type RelationshipNoteResponseArgs struct {
+	// The type of relationship between the source and target SPDX elements
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (RelationshipNoteResponseArgs) ElementType() reflect.Type {
@@ -19464,6 +19862,11 @@ func (o RelationshipNoteResponseOutput) ToRelationshipNoteResponsePtrOutputWithC
 	}).(RelationshipNoteResponsePtrOutput)
 }
 
+// The type of relationship between the source and target SPDX elements
+func (o RelationshipNoteResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RelationshipNoteResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 type RelationshipNoteResponsePtrOutput struct{ *pulumi.OutputState }
 
 func (RelationshipNoteResponsePtrOutput) ElementType() reflect.Type {
@@ -19488,6 +19891,16 @@ func (o RelationshipNoteResponsePtrOutput) Elem() RelationshipNoteResponseOutput
 	}).(RelationshipNoteResponseOutput)
 }
 
+// The type of relationship between the source and target SPDX elements
+func (o RelationshipNoteResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RelationshipNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // RelationshipOccurrence represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
 type RelationshipOccurrence struct {
 	// A place for the SPDX file creator to record any general comments about the relationship
@@ -19496,8 +19909,6 @@ type RelationshipOccurrence struct {
 	Source *string `pulumi:"source"`
 	// Also referred to as SPDXRef-B The target SPDC element (file, package, etc) In cases where there are "known unknowns", the use of the keyword NOASSERTION can be used The keywords NONE can be used to indicate that an SPDX element (package/file/snippet) has no other elements connected by some relationship to it
 	Target *string `pulumi:"target"`
-	// The type of relationship between the source and target SPDX elements
-	Type *RelationshipOccurrenceType `pulumi:"type"`
 }
 
 // RelationshipOccurrenceInput is an input type that accepts RelationshipOccurrenceArgs and RelationshipOccurrenceOutput values.
@@ -19519,8 +19930,6 @@ type RelationshipOccurrenceArgs struct {
 	Source pulumi.StringPtrInput `pulumi:"source"`
 	// Also referred to as SPDXRef-B The target SPDC element (file, package, etc) In cases where there are "known unknowns", the use of the keyword NOASSERTION can be used The keywords NONE can be used to indicate that an SPDX element (package/file/snippet) has no other elements connected by some relationship to it
 	Target pulumi.StringPtrInput `pulumi:"target"`
-	// The type of relationship between the source and target SPDX elements
-	Type RelationshipOccurrenceTypePtrInput `pulumi:"type"`
 }
 
 func (RelationshipOccurrenceArgs) ElementType() reflect.Type {
@@ -19616,11 +20025,6 @@ func (o RelationshipOccurrenceOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RelationshipOccurrence) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
-// The type of relationship between the source and target SPDX elements
-func (o RelationshipOccurrenceOutput) Type() RelationshipOccurrenceTypePtrOutput {
-	return o.ApplyT(func(v RelationshipOccurrence) *RelationshipOccurrenceType { return v.Type }).(RelationshipOccurrenceTypePtrOutput)
-}
-
 type RelationshipOccurrencePtrOutput struct{ *pulumi.OutputState }
 
 func (RelationshipOccurrencePtrOutput) ElementType() reflect.Type {
@@ -19673,16 +20077,6 @@ func (o RelationshipOccurrencePtrOutput) Target() pulumi.StringPtrOutput {
 		}
 		return v.Target
 	}).(pulumi.StringPtrOutput)
-}
-
-// The type of relationship between the source and target SPDX elements
-func (o RelationshipOccurrencePtrOutput) Type() RelationshipOccurrenceTypePtrOutput {
-	return o.ApplyT(func(v *RelationshipOccurrence) *RelationshipOccurrenceType {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(RelationshipOccurrenceTypePtrOutput)
 }
 
 // RelationshipOccurrence represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
@@ -23653,6 +24047,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LayerArrayInput)(nil)).Elem(), LayerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LayerResponseInput)(nil)).Elem(), LayerResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LayerResponseArrayInput)(nil)).Elem(), LayerResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LicenseInput)(nil)).Elem(), LicenseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LicensePtrInput)(nil)).Elem(), LicenseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LicenseResponseInput)(nil)).Elem(), LicenseResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LicenseResponsePtrInput)(nil)).Elem(), LicenseResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LinkInput)(nil)).Elem(), LinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LinkPtrInput)(nil)).Elem(), LinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LinkResponseInput)(nil)).Elem(), LinkResponseArgs{})
@@ -23663,18 +24061,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LocationResponseArrayInput)(nil)).Elem(), LocationResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageInput)(nil)).Elem(), PackageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PackagePtrInput)(nil)).Elem(), PackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageInfoNoteInput)(nil)).Elem(), PackageInfoNoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageInfoNotePtrInput)(nil)).Elem(), PackageInfoNoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageInfoNoteResponseInput)(nil)).Elem(), PackageInfoNoteResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageInfoNoteResponsePtrInput)(nil)).Elem(), PackageInfoNoteResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageInfoOccurrenceInput)(nil)).Elem(), PackageInfoOccurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageInfoOccurrencePtrInput)(nil)).Elem(), PackageInfoOccurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageInfoOccurrenceResponseInput)(nil)).Elem(), PackageInfoOccurrenceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageInfoOccurrenceResponsePtrInput)(nil)).Elem(), PackageInfoOccurrenceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageIssueInput)(nil)).Elem(), PackageIssueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageIssueArrayInput)(nil)).Elem(), PackageIssueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageIssueResponseInput)(nil)).Elem(), PackageIssueResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageIssueResponseArrayInput)(nil)).Elem(), PackageIssueResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PackageNoteInput)(nil)).Elem(), PackageNoteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PackageNotePtrInput)(nil)).Elem(), PackageNoteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PackageNoteResponseInput)(nil)).Elem(), PackageNoteResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PackageNoteResponsePtrInput)(nil)).Elem(), PackageNoteResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PackageOccurrenceInput)(nil)).Elem(), PackageOccurrenceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PackageOccurrencePtrInput)(nil)).Elem(), PackageOccurrenceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PackageOccurrenceResponseInput)(nil)).Elem(), PackageOccurrenceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PackageOccurrenceResponsePtrInput)(nil)).Elem(), PackageOccurrenceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageResponseInput)(nil)).Elem(), PackageResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageResponsePtrInput)(nil)).Elem(), PackageResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PgpSignedAttestationInput)(nil)).Elem(), PgpSignedAttestationArgs{})
@@ -23931,6 +24329,10 @@ func init() {
 	pulumi.RegisterOutputType(LayerArrayOutput{})
 	pulumi.RegisterOutputType(LayerResponseOutput{})
 	pulumi.RegisterOutputType(LayerResponseArrayOutput{})
+	pulumi.RegisterOutputType(LicenseOutput{})
+	pulumi.RegisterOutputType(LicensePtrOutput{})
+	pulumi.RegisterOutputType(LicenseResponseOutput{})
+	pulumi.RegisterOutputType(LicenseResponsePtrOutput{})
 	pulumi.RegisterOutputType(LinkOutput{})
 	pulumi.RegisterOutputType(LinkPtrOutput{})
 	pulumi.RegisterOutputType(LinkResponseOutput{})
@@ -23941,18 +24343,18 @@ func init() {
 	pulumi.RegisterOutputType(LocationResponseArrayOutput{})
 	pulumi.RegisterOutputType(PackageOutput{})
 	pulumi.RegisterOutputType(PackagePtrOutput{})
+	pulumi.RegisterOutputType(PackageInfoNoteOutput{})
+	pulumi.RegisterOutputType(PackageInfoNotePtrOutput{})
+	pulumi.RegisterOutputType(PackageInfoNoteResponseOutput{})
+	pulumi.RegisterOutputType(PackageInfoNoteResponsePtrOutput{})
+	pulumi.RegisterOutputType(PackageInfoOccurrenceOutput{})
+	pulumi.RegisterOutputType(PackageInfoOccurrencePtrOutput{})
+	pulumi.RegisterOutputType(PackageInfoOccurrenceResponseOutput{})
+	pulumi.RegisterOutputType(PackageInfoOccurrenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(PackageIssueOutput{})
 	pulumi.RegisterOutputType(PackageIssueArrayOutput{})
 	pulumi.RegisterOutputType(PackageIssueResponseOutput{})
 	pulumi.RegisterOutputType(PackageIssueResponseArrayOutput{})
-	pulumi.RegisterOutputType(PackageNoteOutput{})
-	pulumi.RegisterOutputType(PackageNotePtrOutput{})
-	pulumi.RegisterOutputType(PackageNoteResponseOutput{})
-	pulumi.RegisterOutputType(PackageNoteResponsePtrOutput{})
-	pulumi.RegisterOutputType(PackageOccurrenceOutput{})
-	pulumi.RegisterOutputType(PackageOccurrencePtrOutput{})
-	pulumi.RegisterOutputType(PackageOccurrenceResponseOutput{})
-	pulumi.RegisterOutputType(PackageOccurrenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(PackageResponseOutput{})
 	pulumi.RegisterOutputType(PackageResponsePtrOutput{})
 	pulumi.RegisterOutputType(PgpSignedAttestationOutput{})

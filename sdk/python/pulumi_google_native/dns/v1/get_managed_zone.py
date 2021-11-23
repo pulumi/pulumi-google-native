@@ -18,7 +18,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetManagedZoneResult:
-    def __init__(__self__, creation_time=None, description=None, dns_name=None, dnssec_config=None, forwarding_config=None, kind=None, labels=None, name=None, name_server_set=None, name_servers=None, peering_config=None, private_visibility_config=None, reverse_lookup_config=None, service_directory_config=None, visibility=None):
+    def __init__(__self__, cloud_logging_config=None, creation_time=None, description=None, dns_name=None, dnssec_config=None, forwarding_config=None, kind=None, labels=None, name=None, name_server_set=None, name_servers=None, peering_config=None, private_visibility_config=None, reverse_lookup_config=None, service_directory_config=None, visibility=None):
+        if cloud_logging_config and not isinstance(cloud_logging_config, dict):
+            raise TypeError("Expected argument 'cloud_logging_config' to be a dict")
+        pulumi.set(__self__, "cloud_logging_config", cloud_logging_config)
         if creation_time and not isinstance(creation_time, str):
             raise TypeError("Expected argument 'creation_time' to be a str")
         pulumi.set(__self__, "creation_time", creation_time)
@@ -64,6 +67,11 @@ class GetManagedZoneResult:
         if visibility and not isinstance(visibility, str):
             raise TypeError("Expected argument 'visibility' to be a str")
         pulumi.set(__self__, "visibility", visibility)
+
+    @property
+    @pulumi.getter(name="cloudLoggingConfig")
+    def cloud_logging_config(self) -> 'outputs.ManagedZoneCloudLoggingConfigResponse':
+        return pulumi.get(self, "cloud_logging_config")
 
     @property
     @pulumi.getter(name="creationTime")
@@ -189,6 +197,7 @@ class AwaitableGetManagedZoneResult(GetManagedZoneResult):
         if False:
             yield self
         return GetManagedZoneResult(
+            cloud_logging_config=self.cloud_logging_config,
             creation_time=self.creation_time,
             description=self.description,
             dns_name=self.dns_name,
@@ -224,6 +233,7 @@ def get_managed_zone(client_operation_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dns/v1:getManagedZone', __args__, opts=opts, typ=GetManagedZoneResult).value
 
     return AwaitableGetManagedZoneResult(
+        cloud_logging_config=__ret__.cloud_logging_config,
         creation_time=__ret__.creation_time,
         description=__ret__.description,
         dns_name=__ret__.dns_name,

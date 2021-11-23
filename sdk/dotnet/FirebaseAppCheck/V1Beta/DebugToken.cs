@@ -99,8 +99,8 @@ namespace Pulumi.GoogleNative.FirebaseAppCheck.V1Beta
         /// <summary>
         /// Input only. Immutable. The secret token itself. Must be provided during creation, and must be a UUID4, case insensitive. This field is immutable once set, and cannot be provided during an UpdateDebugToken request. You can, however, delete this debug token using DeleteDebugToken to revoke it. For security reasons, this field will never be populated in any response.
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        [Input("token", required: true)]
+        public Input<string> Token { get; set; } = null!;
 
         public DebugTokenArgs()
         {

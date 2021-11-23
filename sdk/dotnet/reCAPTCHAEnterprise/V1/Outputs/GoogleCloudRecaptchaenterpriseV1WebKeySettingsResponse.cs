@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Outputs
         /// </summary>
         public readonly bool AllowAllDomains;
         /// <summary>
-        /// Whether this key can be used on AMP (Accelerated Mobile Pages) websites. This can only be set for the SCORE integration type.
+        /// If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.
         /// </summary>
         public readonly bool AllowAmpTraffic;
         /// <summary>

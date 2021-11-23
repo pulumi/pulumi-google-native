@@ -667,14 +667,14 @@ func (o AuthorizationLoggingOptionsResponseOutput) PermissionType() pulumi.Strin
 	return o.ApplyT(func(v AuthorizationLoggingOptionsResponse) string { return v.PermissionType }).(pulumi.StringOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type Binding struct {
 	BindingId *string `pulumi:"bindingId"`
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role *string `pulumi:"role"`
 }
 
@@ -689,14 +689,14 @@ type BindingInput interface {
 	ToBindingOutputWithContext(context.Context) BindingOutput
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingArgs struct {
 	BindingId pulumi.StringPtrInput `pulumi:"bindingId"`
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -737,7 +737,7 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
 func (BindingOutput) ElementType() reflect.Type {
@@ -756,17 +756,17 @@ func (o BindingOutput) BindingId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Binding) *string { return v.BindingId }).(pulumi.StringPtrOutput)
 }
 
-// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 func (o BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -791,14 +791,14 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 	}).(BindingOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingResponse struct {
 	BindingId string `pulumi:"bindingId"`
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
 }
 
@@ -813,14 +813,14 @@ type BindingResponseInput interface {
 	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingResponseArgs struct {
 	BindingId pulumi.StringInput `pulumi:"bindingId"`
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringInput `pulumi:"role"`
 }
 
@@ -861,7 +861,7 @@ func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingResponseOutput struct{ *pulumi.OutputState }
 
 func (BindingResponseOutput) ElementType() reflect.Type {
@@ -880,17 +880,17 @@ func (o BindingResponseOutput) BindingId() pulumi.StringOutput {
 	return o.ApplyT(func(v BindingResponse) string { return v.BindingId }).(pulumi.StringOutput)
 }
 
-// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 func (o BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -2570,8 +2570,6 @@ func (o FleetConfigResponseArrayOutput) Index(i pulumi.IntInput) FleetConfigResp
 type GameServerClusterConnectionInfo struct {
 	// Reference to the GKE cluster where the game servers are installed.
 	GkeClusterReference *GkeClusterReference `pulumi:"gkeClusterReference"`
-	// Reference to a Kubernetes cluster registered through GKE Hub. See https://cloud.google.com/anthos/multicluster-management/ for more information about registering Kubernetes clusters.
-	GkeHubClusterReference *GkeHubClusterReference `pulumi:"gkeHubClusterReference"`
 	// Namespace designated on the game server cluster where the Agones game server instances will be created. Existence of the namespace will be validated during creation.
 	Namespace *string `pulumi:"namespace"`
 }
@@ -2591,8 +2589,6 @@ type GameServerClusterConnectionInfoInput interface {
 type GameServerClusterConnectionInfoArgs struct {
 	// Reference to the GKE cluster where the game servers are installed.
 	GkeClusterReference GkeClusterReferencePtrInput `pulumi:"gkeClusterReference"`
-	// Reference to a Kubernetes cluster registered through GKE Hub. See https://cloud.google.com/anthos/multicluster-management/ for more information about registering Kubernetes clusters.
-	GkeHubClusterReference GkeHubClusterReferencePtrInput `pulumi:"gkeHubClusterReference"`
 	// Namespace designated on the game server cluster where the Agones game server instances will be created. Existence of the namespace will be validated during creation.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 }
@@ -2680,11 +2676,6 @@ func (o GameServerClusterConnectionInfoOutput) GkeClusterReference() GkeClusterR
 	return o.ApplyT(func(v GameServerClusterConnectionInfo) *GkeClusterReference { return v.GkeClusterReference }).(GkeClusterReferencePtrOutput)
 }
 
-// Reference to a Kubernetes cluster registered through GKE Hub. See https://cloud.google.com/anthos/multicluster-management/ for more information about registering Kubernetes clusters.
-func (o GameServerClusterConnectionInfoOutput) GkeHubClusterReference() GkeHubClusterReferencePtrOutput {
-	return o.ApplyT(func(v GameServerClusterConnectionInfo) *GkeHubClusterReference { return v.GkeHubClusterReference }).(GkeHubClusterReferencePtrOutput)
-}
-
 // Namespace designated on the game server cluster where the Agones game server instances will be created. Existence of the namespace will be validated during creation.
 func (o GameServerClusterConnectionInfoOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GameServerClusterConnectionInfo) *string { return v.Namespace }).(pulumi.StringPtrOutput)
@@ -2724,16 +2715,6 @@ func (o GameServerClusterConnectionInfoPtrOutput) GkeClusterReference() GkeClust
 	}).(GkeClusterReferencePtrOutput)
 }
 
-// Reference to a Kubernetes cluster registered through GKE Hub. See https://cloud.google.com/anthos/multicluster-management/ for more information about registering Kubernetes clusters.
-func (o GameServerClusterConnectionInfoPtrOutput) GkeHubClusterReference() GkeHubClusterReferencePtrOutput {
-	return o.ApplyT(func(v *GameServerClusterConnectionInfo) *GkeHubClusterReference {
-		if v == nil {
-			return nil
-		}
-		return v.GkeHubClusterReference
-	}).(GkeHubClusterReferencePtrOutput)
-}
-
 // Namespace designated on the game server cluster where the Agones game server instances will be created. Existence of the namespace will be validated during creation.
 func (o GameServerClusterConnectionInfoPtrOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GameServerClusterConnectionInfo) *string {
@@ -2748,8 +2729,6 @@ func (o GameServerClusterConnectionInfoPtrOutput) Namespace() pulumi.StringPtrOu
 type GameServerClusterConnectionInfoResponse struct {
 	// Reference to the GKE cluster where the game servers are installed.
 	GkeClusterReference GkeClusterReferenceResponse `pulumi:"gkeClusterReference"`
-	// Reference to a Kubernetes cluster registered through GKE Hub. See https://cloud.google.com/anthos/multicluster-management/ for more information about registering Kubernetes clusters.
-	GkeHubClusterReference GkeHubClusterReferenceResponse `pulumi:"gkeHubClusterReference"`
 	// Namespace designated on the game server cluster where the Agones game server instances will be created. Existence of the namespace will be validated during creation.
 	Namespace string `pulumi:"namespace"`
 }
@@ -2769,8 +2748,6 @@ type GameServerClusterConnectionInfoResponseInput interface {
 type GameServerClusterConnectionInfoResponseArgs struct {
 	// Reference to the GKE cluster where the game servers are installed.
 	GkeClusterReference GkeClusterReferenceResponseInput `pulumi:"gkeClusterReference"`
-	// Reference to a Kubernetes cluster registered through GKE Hub. See https://cloud.google.com/anthos/multicluster-management/ for more information about registering Kubernetes clusters.
-	GkeHubClusterReference GkeHubClusterReferenceResponseInput `pulumi:"gkeHubClusterReference"`
 	// Namespace designated on the game server cluster where the Agones game server instances will be created. Existence of the namespace will be validated during creation.
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 }
@@ -2860,13 +2837,6 @@ func (o GameServerClusterConnectionInfoResponseOutput) GkeClusterReference() Gke
 	}).(GkeClusterReferenceResponseOutput)
 }
 
-// Reference to a Kubernetes cluster registered through GKE Hub. See https://cloud.google.com/anthos/multicluster-management/ for more information about registering Kubernetes clusters.
-func (o GameServerClusterConnectionInfoResponseOutput) GkeHubClusterReference() GkeHubClusterReferenceResponseOutput {
-	return o.ApplyT(func(v GameServerClusterConnectionInfoResponse) GkeHubClusterReferenceResponse {
-		return v.GkeHubClusterReference
-	}).(GkeHubClusterReferenceResponseOutput)
-}
-
 // Namespace designated on the game server cluster where the Agones game server instances will be created. Existence of the namespace will be validated during creation.
 func (o GameServerClusterConnectionInfoResponseOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v GameServerClusterConnectionInfoResponse) string { return v.Namespace }).(pulumi.StringOutput)
@@ -2904,16 +2874,6 @@ func (o GameServerClusterConnectionInfoResponsePtrOutput) GkeClusterReference() 
 		}
 		return &v.GkeClusterReference
 	}).(GkeClusterReferenceResponsePtrOutput)
-}
-
-// Reference to a Kubernetes cluster registered through GKE Hub. See https://cloud.google.com/anthos/multicluster-management/ for more information about registering Kubernetes clusters.
-func (o GameServerClusterConnectionInfoResponsePtrOutput) GkeHubClusterReference() GkeHubClusterReferenceResponsePtrOutput {
-	return o.ApplyT(func(v *GameServerClusterConnectionInfoResponse) *GkeHubClusterReferenceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.GkeHubClusterReference
-	}).(GkeHubClusterReferenceResponsePtrOutput)
 }
 
 // Namespace designated on the game server cluster where the Agones game server instances will be created. Existence of the namespace will be validated during creation.
@@ -3203,286 +3163,6 @@ func (o GkeClusterReferenceResponsePtrOutput) Cluster() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Cluster
-	}).(pulumi.StringPtrOutput)
-}
-
-// GkeHubClusterReference represents a reference to a Kubernetes cluster registered through GKE Hub.
-type GkeHubClusterReference struct {
-	// The full or partial name of a GKE Hub membership, using one of the following forms: * `https://gkehub.googleapis.com/v1beta1/projects/{project_id}/locations/global/memberships/{membership_id}` * `projects/{project_id}/locations/global/memberships/{membership_id}` * `{membership_id}` If project is not specified, the project of the GameServerCluster resource is used to generate the full name of the GKE Hub membership.
-	Membership *string `pulumi:"membership"`
-}
-
-// GkeHubClusterReferenceInput is an input type that accepts GkeHubClusterReferenceArgs and GkeHubClusterReferenceOutput values.
-// You can construct a concrete instance of `GkeHubClusterReferenceInput` via:
-//
-//          GkeHubClusterReferenceArgs{...}
-type GkeHubClusterReferenceInput interface {
-	pulumi.Input
-
-	ToGkeHubClusterReferenceOutput() GkeHubClusterReferenceOutput
-	ToGkeHubClusterReferenceOutputWithContext(context.Context) GkeHubClusterReferenceOutput
-}
-
-// GkeHubClusterReference represents a reference to a Kubernetes cluster registered through GKE Hub.
-type GkeHubClusterReferenceArgs struct {
-	// The full or partial name of a GKE Hub membership, using one of the following forms: * `https://gkehub.googleapis.com/v1beta1/projects/{project_id}/locations/global/memberships/{membership_id}` * `projects/{project_id}/locations/global/memberships/{membership_id}` * `{membership_id}` If project is not specified, the project of the GameServerCluster resource is used to generate the full name of the GKE Hub membership.
-	Membership pulumi.StringPtrInput `pulumi:"membership"`
-}
-
-func (GkeHubClusterReferenceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GkeHubClusterReference)(nil)).Elem()
-}
-
-func (i GkeHubClusterReferenceArgs) ToGkeHubClusterReferenceOutput() GkeHubClusterReferenceOutput {
-	return i.ToGkeHubClusterReferenceOutputWithContext(context.Background())
-}
-
-func (i GkeHubClusterReferenceArgs) ToGkeHubClusterReferenceOutputWithContext(ctx context.Context) GkeHubClusterReferenceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GkeHubClusterReferenceOutput)
-}
-
-func (i GkeHubClusterReferenceArgs) ToGkeHubClusterReferencePtrOutput() GkeHubClusterReferencePtrOutput {
-	return i.ToGkeHubClusterReferencePtrOutputWithContext(context.Background())
-}
-
-func (i GkeHubClusterReferenceArgs) ToGkeHubClusterReferencePtrOutputWithContext(ctx context.Context) GkeHubClusterReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GkeHubClusterReferenceOutput).ToGkeHubClusterReferencePtrOutputWithContext(ctx)
-}
-
-// GkeHubClusterReferencePtrInput is an input type that accepts GkeHubClusterReferenceArgs, GkeHubClusterReferencePtr and GkeHubClusterReferencePtrOutput values.
-// You can construct a concrete instance of `GkeHubClusterReferencePtrInput` via:
-//
-//          GkeHubClusterReferenceArgs{...}
-//
-//  or:
-//
-//          nil
-type GkeHubClusterReferencePtrInput interface {
-	pulumi.Input
-
-	ToGkeHubClusterReferencePtrOutput() GkeHubClusterReferencePtrOutput
-	ToGkeHubClusterReferencePtrOutputWithContext(context.Context) GkeHubClusterReferencePtrOutput
-}
-
-type gkeHubClusterReferencePtrType GkeHubClusterReferenceArgs
-
-func GkeHubClusterReferencePtr(v *GkeHubClusterReferenceArgs) GkeHubClusterReferencePtrInput {
-	return (*gkeHubClusterReferencePtrType)(v)
-}
-
-func (*gkeHubClusterReferencePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GkeHubClusterReference)(nil)).Elem()
-}
-
-func (i *gkeHubClusterReferencePtrType) ToGkeHubClusterReferencePtrOutput() GkeHubClusterReferencePtrOutput {
-	return i.ToGkeHubClusterReferencePtrOutputWithContext(context.Background())
-}
-
-func (i *gkeHubClusterReferencePtrType) ToGkeHubClusterReferencePtrOutputWithContext(ctx context.Context) GkeHubClusterReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GkeHubClusterReferencePtrOutput)
-}
-
-// GkeHubClusterReference represents a reference to a Kubernetes cluster registered through GKE Hub.
-type GkeHubClusterReferenceOutput struct{ *pulumi.OutputState }
-
-func (GkeHubClusterReferenceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GkeHubClusterReference)(nil)).Elem()
-}
-
-func (o GkeHubClusterReferenceOutput) ToGkeHubClusterReferenceOutput() GkeHubClusterReferenceOutput {
-	return o
-}
-
-func (o GkeHubClusterReferenceOutput) ToGkeHubClusterReferenceOutputWithContext(ctx context.Context) GkeHubClusterReferenceOutput {
-	return o
-}
-
-func (o GkeHubClusterReferenceOutput) ToGkeHubClusterReferencePtrOutput() GkeHubClusterReferencePtrOutput {
-	return o.ToGkeHubClusterReferencePtrOutputWithContext(context.Background())
-}
-
-func (o GkeHubClusterReferenceOutput) ToGkeHubClusterReferencePtrOutputWithContext(ctx context.Context) GkeHubClusterReferencePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GkeHubClusterReference) *GkeHubClusterReference {
-		return &v
-	}).(GkeHubClusterReferencePtrOutput)
-}
-
-// The full or partial name of a GKE Hub membership, using one of the following forms: * `https://gkehub.googleapis.com/v1beta1/projects/{project_id}/locations/global/memberships/{membership_id}` * `projects/{project_id}/locations/global/memberships/{membership_id}` * `{membership_id}` If project is not specified, the project of the GameServerCluster resource is used to generate the full name of the GKE Hub membership.
-func (o GkeHubClusterReferenceOutput) Membership() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GkeHubClusterReference) *string { return v.Membership }).(pulumi.StringPtrOutput)
-}
-
-type GkeHubClusterReferencePtrOutput struct{ *pulumi.OutputState }
-
-func (GkeHubClusterReferencePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GkeHubClusterReference)(nil)).Elem()
-}
-
-func (o GkeHubClusterReferencePtrOutput) ToGkeHubClusterReferencePtrOutput() GkeHubClusterReferencePtrOutput {
-	return o
-}
-
-func (o GkeHubClusterReferencePtrOutput) ToGkeHubClusterReferencePtrOutputWithContext(ctx context.Context) GkeHubClusterReferencePtrOutput {
-	return o
-}
-
-func (o GkeHubClusterReferencePtrOutput) Elem() GkeHubClusterReferenceOutput {
-	return o.ApplyT(func(v *GkeHubClusterReference) GkeHubClusterReference {
-		if v != nil {
-			return *v
-		}
-		var ret GkeHubClusterReference
-		return ret
-	}).(GkeHubClusterReferenceOutput)
-}
-
-// The full or partial name of a GKE Hub membership, using one of the following forms: * `https://gkehub.googleapis.com/v1beta1/projects/{project_id}/locations/global/memberships/{membership_id}` * `projects/{project_id}/locations/global/memberships/{membership_id}` * `{membership_id}` If project is not specified, the project of the GameServerCluster resource is used to generate the full name of the GKE Hub membership.
-func (o GkeHubClusterReferencePtrOutput) Membership() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GkeHubClusterReference) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Membership
-	}).(pulumi.StringPtrOutput)
-}
-
-// GkeHubClusterReference represents a reference to a Kubernetes cluster registered through GKE Hub.
-type GkeHubClusterReferenceResponse struct {
-	// The full or partial name of a GKE Hub membership, using one of the following forms: * `https://gkehub.googleapis.com/v1beta1/projects/{project_id}/locations/global/memberships/{membership_id}` * `projects/{project_id}/locations/global/memberships/{membership_id}` * `{membership_id}` If project is not specified, the project of the GameServerCluster resource is used to generate the full name of the GKE Hub membership.
-	Membership string `pulumi:"membership"`
-}
-
-// GkeHubClusterReferenceResponseInput is an input type that accepts GkeHubClusterReferenceResponseArgs and GkeHubClusterReferenceResponseOutput values.
-// You can construct a concrete instance of `GkeHubClusterReferenceResponseInput` via:
-//
-//          GkeHubClusterReferenceResponseArgs{...}
-type GkeHubClusterReferenceResponseInput interface {
-	pulumi.Input
-
-	ToGkeHubClusterReferenceResponseOutput() GkeHubClusterReferenceResponseOutput
-	ToGkeHubClusterReferenceResponseOutputWithContext(context.Context) GkeHubClusterReferenceResponseOutput
-}
-
-// GkeHubClusterReference represents a reference to a Kubernetes cluster registered through GKE Hub.
-type GkeHubClusterReferenceResponseArgs struct {
-	// The full or partial name of a GKE Hub membership, using one of the following forms: * `https://gkehub.googleapis.com/v1beta1/projects/{project_id}/locations/global/memberships/{membership_id}` * `projects/{project_id}/locations/global/memberships/{membership_id}` * `{membership_id}` If project is not specified, the project of the GameServerCluster resource is used to generate the full name of the GKE Hub membership.
-	Membership pulumi.StringInput `pulumi:"membership"`
-}
-
-func (GkeHubClusterReferenceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GkeHubClusterReferenceResponse)(nil)).Elem()
-}
-
-func (i GkeHubClusterReferenceResponseArgs) ToGkeHubClusterReferenceResponseOutput() GkeHubClusterReferenceResponseOutput {
-	return i.ToGkeHubClusterReferenceResponseOutputWithContext(context.Background())
-}
-
-func (i GkeHubClusterReferenceResponseArgs) ToGkeHubClusterReferenceResponseOutputWithContext(ctx context.Context) GkeHubClusterReferenceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GkeHubClusterReferenceResponseOutput)
-}
-
-func (i GkeHubClusterReferenceResponseArgs) ToGkeHubClusterReferenceResponsePtrOutput() GkeHubClusterReferenceResponsePtrOutput {
-	return i.ToGkeHubClusterReferenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GkeHubClusterReferenceResponseArgs) ToGkeHubClusterReferenceResponsePtrOutputWithContext(ctx context.Context) GkeHubClusterReferenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GkeHubClusterReferenceResponseOutput).ToGkeHubClusterReferenceResponsePtrOutputWithContext(ctx)
-}
-
-// GkeHubClusterReferenceResponsePtrInput is an input type that accepts GkeHubClusterReferenceResponseArgs, GkeHubClusterReferenceResponsePtr and GkeHubClusterReferenceResponsePtrOutput values.
-// You can construct a concrete instance of `GkeHubClusterReferenceResponsePtrInput` via:
-//
-//          GkeHubClusterReferenceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GkeHubClusterReferenceResponsePtrInput interface {
-	pulumi.Input
-
-	ToGkeHubClusterReferenceResponsePtrOutput() GkeHubClusterReferenceResponsePtrOutput
-	ToGkeHubClusterReferenceResponsePtrOutputWithContext(context.Context) GkeHubClusterReferenceResponsePtrOutput
-}
-
-type gkeHubClusterReferenceResponsePtrType GkeHubClusterReferenceResponseArgs
-
-func GkeHubClusterReferenceResponsePtr(v *GkeHubClusterReferenceResponseArgs) GkeHubClusterReferenceResponsePtrInput {
-	return (*gkeHubClusterReferenceResponsePtrType)(v)
-}
-
-func (*gkeHubClusterReferenceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GkeHubClusterReferenceResponse)(nil)).Elem()
-}
-
-func (i *gkeHubClusterReferenceResponsePtrType) ToGkeHubClusterReferenceResponsePtrOutput() GkeHubClusterReferenceResponsePtrOutput {
-	return i.ToGkeHubClusterReferenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *gkeHubClusterReferenceResponsePtrType) ToGkeHubClusterReferenceResponsePtrOutputWithContext(ctx context.Context) GkeHubClusterReferenceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GkeHubClusterReferenceResponsePtrOutput)
-}
-
-// GkeHubClusterReference represents a reference to a Kubernetes cluster registered through GKE Hub.
-type GkeHubClusterReferenceResponseOutput struct{ *pulumi.OutputState }
-
-func (GkeHubClusterReferenceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GkeHubClusterReferenceResponse)(nil)).Elem()
-}
-
-func (o GkeHubClusterReferenceResponseOutput) ToGkeHubClusterReferenceResponseOutput() GkeHubClusterReferenceResponseOutput {
-	return o
-}
-
-func (o GkeHubClusterReferenceResponseOutput) ToGkeHubClusterReferenceResponseOutputWithContext(ctx context.Context) GkeHubClusterReferenceResponseOutput {
-	return o
-}
-
-func (o GkeHubClusterReferenceResponseOutput) ToGkeHubClusterReferenceResponsePtrOutput() GkeHubClusterReferenceResponsePtrOutput {
-	return o.ToGkeHubClusterReferenceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GkeHubClusterReferenceResponseOutput) ToGkeHubClusterReferenceResponsePtrOutputWithContext(ctx context.Context) GkeHubClusterReferenceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GkeHubClusterReferenceResponse) *GkeHubClusterReferenceResponse {
-		return &v
-	}).(GkeHubClusterReferenceResponsePtrOutput)
-}
-
-// The full or partial name of a GKE Hub membership, using one of the following forms: * `https://gkehub.googleapis.com/v1beta1/projects/{project_id}/locations/global/memberships/{membership_id}` * `projects/{project_id}/locations/global/memberships/{membership_id}` * `{membership_id}` If project is not specified, the project of the GameServerCluster resource is used to generate the full name of the GKE Hub membership.
-func (o GkeHubClusterReferenceResponseOutput) Membership() pulumi.StringOutput {
-	return o.ApplyT(func(v GkeHubClusterReferenceResponse) string { return v.Membership }).(pulumi.StringOutput)
-}
-
-type GkeHubClusterReferenceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GkeHubClusterReferenceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GkeHubClusterReferenceResponse)(nil)).Elem()
-}
-
-func (o GkeHubClusterReferenceResponsePtrOutput) ToGkeHubClusterReferenceResponsePtrOutput() GkeHubClusterReferenceResponsePtrOutput {
-	return o
-}
-
-func (o GkeHubClusterReferenceResponsePtrOutput) ToGkeHubClusterReferenceResponsePtrOutputWithContext(ctx context.Context) GkeHubClusterReferenceResponsePtrOutput {
-	return o
-}
-
-func (o GkeHubClusterReferenceResponsePtrOutput) Elem() GkeHubClusterReferenceResponseOutput {
-	return o.ApplyT(func(v *GkeHubClusterReferenceResponse) GkeHubClusterReferenceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GkeHubClusterReferenceResponse
-		return ret
-	}).(GkeHubClusterReferenceResponseOutput)
-}
-
-// The full or partial name of a GKE Hub membership, using one of the following forms: * `https://gkehub.googleapis.com/v1beta1/projects/{project_id}/locations/global/memberships/{membership_id}` * `projects/{project_id}/locations/global/memberships/{membership_id}` * `{membership_id}` If project is not specified, the project of the GameServerCluster resource is used to generate the full name of the GKE Hub membership.
-func (o GkeHubClusterReferenceResponsePtrOutput) Membership() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GkeHubClusterReferenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Membership
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4719,7 +4399,7 @@ func (o ScalingConfigResponseArrayOutput) Index(i pulumi.IntInput) ScalingConfig
 	}).(ScalingConfigResponseOutput)
 }
 
-// The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration
+// The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. ```start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration```
 type Schedule struct {
 	// The duration for the cron job event. The duration of the event is effective after the cron job's start time.
 	CronJobDuration *string `pulumi:"cronJobDuration"`
@@ -4742,7 +4422,7 @@ type ScheduleInput interface {
 	ToScheduleOutputWithContext(context.Context) ScheduleOutput
 }
 
-// The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration
+// The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. ```start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration```
 type ScheduleArgs struct {
 	// The duration for the cron job event. The duration of the event is effective after the cron job's start time.
 	CronJobDuration pulumi.StringPtrInput `pulumi:"cronJobDuration"`
@@ -4791,7 +4471,7 @@ func (i ScheduleArray) ToScheduleArrayOutputWithContext(ctx context.Context) Sch
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduleArrayOutput)
 }
 
-// The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration
+// The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. ```start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration```
 type ScheduleOutput struct{ *pulumi.OutputState }
 
 func (ScheduleOutput) ElementType() reflect.Type {
@@ -4846,7 +4526,7 @@ func (o ScheduleArrayOutput) Index(i pulumi.IntInput) ScheduleOutput {
 	}).(ScheduleOutput)
 }
 
-// The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration
+// The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. ```start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration```
 type ScheduleResponse struct {
 	// The duration for the cron job event. The duration of the event is effective after the cron job's start time.
 	CronJobDuration string `pulumi:"cronJobDuration"`
@@ -4869,7 +4549,7 @@ type ScheduleResponseInput interface {
 	ToScheduleResponseOutputWithContext(context.Context) ScheduleResponseOutput
 }
 
-// The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration
+// The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. ```start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration```
 type ScheduleResponseArgs struct {
 	// The duration for the cron job event. The duration of the event is effective after the cron job's start time.
 	CronJobDuration pulumi.StringInput `pulumi:"cronJobDuration"`
@@ -4918,7 +4598,7 @@ func (i ScheduleResponseArray) ToScheduleResponseArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduleResponseArrayOutput)
 }
 
-// The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration
+// The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. ```start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration```
 type ScheduleResponseOutput struct{ *pulumi.OutputState }
 
 func (ScheduleResponseOutput) ElementType() reflect.Type {
@@ -5021,10 +4701,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterReferencePtrInput)(nil)).Elem(), GkeClusterReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterReferenceResponseInput)(nil)).Elem(), GkeClusterReferenceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterReferenceResponsePtrInput)(nil)).Elem(), GkeClusterReferenceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GkeHubClusterReferenceInput)(nil)).Elem(), GkeHubClusterReferenceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GkeHubClusterReferencePtrInput)(nil)).Elem(), GkeHubClusterReferenceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GkeHubClusterReferenceResponseInput)(nil)).Elem(), GkeHubClusterReferenceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GkeHubClusterReferenceResponsePtrInput)(nil)).Elem(), GkeHubClusterReferenceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterStateResponseInput)(nil)).Elem(), KubernetesClusterStateResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterStateResponsePtrInput)(nil)).Elem(), KubernetesClusterStateResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LabelSelectorInput)(nil)).Elem(), LabelSelectorArgs{})
@@ -5094,10 +4770,6 @@ func init() {
 	pulumi.RegisterOutputType(GkeClusterReferencePtrOutput{})
 	pulumi.RegisterOutputType(GkeClusterReferenceResponseOutput{})
 	pulumi.RegisterOutputType(GkeClusterReferenceResponsePtrOutput{})
-	pulumi.RegisterOutputType(GkeHubClusterReferenceOutput{})
-	pulumi.RegisterOutputType(GkeHubClusterReferencePtrOutput{})
-	pulumi.RegisterOutputType(GkeHubClusterReferenceResponseOutput{})
-	pulumi.RegisterOutputType(GkeHubClusterReferenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterStateResponseOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterStateResponsePtrOutput{})
 	pulumi.RegisterOutputType(LabelSelectorOutput{})

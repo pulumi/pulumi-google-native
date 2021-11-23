@@ -36,6 +36,8 @@ type LookupJobResult struct {
 	Etag string `pulumi:"etag"`
 	// The user-specified id of the job.
 	JobId string `pulumi:"jobId"`
+	// It's only effect when the job is in QUEUED state. If it's positive, it indicates the job's position in the job scheduler. It's 0 when the job is already scheduled.
+	JobPosition string `pulumi:"jobPosition"`
 	// Optional. One or more labels that you can add, to organize your jobs. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
 	Labels map[string]string `pulumi:"labels"`
 	// Input parameters to create a prediction job.
@@ -107,6 +109,11 @@ func (o LookupJobResultOutput) Etag() pulumi.StringOutput {
 // The user-specified id of the job.
 func (o LookupJobResultOutput) JobId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.JobId }).(pulumi.StringOutput)
+}
+
+// It's only effect when the job is in QUEUED state. If it's positive, it indicates the job's position in the job scheduler. It's 0 when the job is already scheduled.
+func (o LookupJobResultOutput) JobPosition() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobResult) string { return v.JobPosition }).(pulumi.StringOutput)
 }
 
 // Optional. One or more labels that you can add, to organize your jobs. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.

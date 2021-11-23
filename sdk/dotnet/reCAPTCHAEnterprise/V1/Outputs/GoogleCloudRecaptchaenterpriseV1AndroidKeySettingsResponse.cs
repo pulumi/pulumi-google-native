@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Outputs
     public sealed class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse
     {
         /// <summary>
-        /// If set to true, it means allowed_package_names will not be enforced.
+        /// If set to true, allowed_package_names are not enforced.
         /// </summary>
         public readonly bool AllowAllPackageNames;
         /// <summary>

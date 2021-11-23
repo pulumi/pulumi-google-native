@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2.Outputs
         /// </summary>
         public readonly string Privacy;
         /// <summary>
-        /// The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+        /// The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant receives an email confirmation that they must complete within 15 days to avoid domain suspension.*
         /// </summary>
         public readonly Outputs.ContactResponse RegistrantContact;
         /// <summary>

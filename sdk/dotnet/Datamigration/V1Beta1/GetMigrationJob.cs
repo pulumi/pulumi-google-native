@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
+        /// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
         /// </summary>
         public readonly string Name;
         /// <summary>

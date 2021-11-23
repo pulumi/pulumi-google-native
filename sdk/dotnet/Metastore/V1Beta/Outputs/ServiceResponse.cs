@@ -61,6 +61,10 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta.Outputs
         /// </summary>
         public readonly string Network;
         /// <summary>
+        /// Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+        /// </summary>
+        public readonly Outputs.NetworkConfigResponse NetworkConfig;
+        /// <summary>
         /// The TCP port at which the metastore service is reached. Default: 9083.
         /// </summary>
         public readonly int Port;
@@ -113,6 +117,8 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta.Outputs
 
             string network,
 
+            Outputs.NetworkConfigResponse networkConfig,
+
             int port,
 
             string releaseChannel,
@@ -138,6 +144,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta.Outputs
             MetadataManagementActivity = metadataManagementActivity;
             Name = name;
             Network = network;
+            NetworkConfig = networkConfig;
             Port = port;
             ReleaseChannel = releaseChannel;
             State = state;

@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public Input<string>? CooldownPeriod { get; set; }
 
         /// <summary>
+        /// Optional. Spark Standalone autoscaling configuration
+        /// </summary>
+        [Input("sparkStandaloneConfig")]
+        public Input<Inputs.SparkStandaloneAutoscalingConfigArgs>? SparkStandaloneConfig { get; set; }
+
+        /// <summary>
         /// Optional. YARN autoscaling configuration.
         /// </summary>
         [Input("yarnConfig")]

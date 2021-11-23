@@ -20,11 +20,13 @@ class FunctionArgs:
                  build_environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  build_worker_pool: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 docker_repository: Optional[pulumi.Input[str]] = None,
                  entry_point: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  event_trigger: Optional[pulumi.Input['EventTriggerArgs']] = None,
                  https_trigger: Optional[pulumi.Input['HttpsTriggerArgs']] = None,
                  ingress_settings: Optional[pulumi.Input['FunctionIngressSettings']] = None,
+                 kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  max_instances: Optional[pulumi.Input[int]] = None,
@@ -49,11 +51,13 @@ class FunctionArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] build_environment_variables: Build environment variables that shall be available during build time.
         :param pulumi.Input[str] build_worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (`service-@gcf-admin-robot.iam.gserviceaccount.com`) must be granted the role Cloud Build Custom Workers Builder (`roles/cloudbuild.customworkers.builder`) in the project.
         :param pulumi.Input[str] description: User-provided description of a function.
+        :param pulumi.Input[str] docker_repository: User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. If unspecified and the deployment is eligible to use Artifact Registry, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
         :param pulumi.Input[str] entry_point: The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: Environment variables that shall be available during function execution.
         :param pulumi.Input['EventTriggerArgs'] event_trigger: A source that fires events in response to a condition in another service.
         :param pulumi.Input['HttpsTriggerArgs'] https_trigger: An HTTPS endpoint type of source that can be triggered via URL.
         :param pulumi.Input['FunctionIngressSettings'] ingress_settings: The ingress settings for the function, controlling what traffic can reach it.
+        :param pulumi.Input[str] kms_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`. If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. The following service accounts need to be granted the role 'Cloud KMS CryptoKey Encrypter/Decrypter (roles/cloudkms.cryptoKeyEncrypterDecrypter)' on the Key/KeyRing/Project/Organization (least access preferred). 1. Google Cloud Functions service account (service-{project_number}@gcf-admin-robot.iam.gserviceaccount.com) - Required to protect the function's image. 2. Google Storage service account (service-{project_number}@gs-project-accounts.iam.gserviceaccount.com) - Required to protect the function's source code. If this service account does not exist, deploying a function without a KMS key or retrieving the service agent name provisions it. For more information, see https://cloud.google.com/storage/docs/projects#service-agents and https://cloud.google.com/storage/docs/getting-service-agent#gsutil. Google Cloud Functions delegates access to service agents to protect function resources in internal projects that are not accessible by the end user.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this Cloud Function.
         :param pulumi.Input[int] max_instances: The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
         :param pulumi.Input[int] min_instances: A lower bound for the number function instances that may coexist at a given time.
@@ -79,6 +83,8 @@ class FunctionArgs:
             pulumi.set(__self__, "build_worker_pool", build_worker_pool)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if docker_repository is not None:
+            pulumi.set(__self__, "docker_repository", docker_repository)
         if entry_point is not None:
             pulumi.set(__self__, "entry_point", entry_point)
         if environment_variables is not None:
@@ -89,6 +95,8 @@ class FunctionArgs:
             pulumi.set(__self__, "https_trigger", https_trigger)
         if ingress_settings is not None:
             pulumi.set(__self__, "ingress_settings", ingress_settings)
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -175,6 +183,18 @@ class FunctionArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="dockerRepository")
+    def docker_repository(self) -> Optional[pulumi.Input[str]]:
+        """
+        User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. If unspecified and the deployment is eligible to use Artifact Registry, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+        """
+        return pulumi.get(self, "docker_repository")
+
+    @docker_repository.setter
+    def docker_repository(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "docker_repository", value)
+
+    @property
     @pulumi.getter(name="entryPoint")
     def entry_point(self) -> Optional[pulumi.Input[str]]:
         """
@@ -233,6 +253,18 @@ class FunctionArgs:
     @ingress_settings.setter
     def ingress_settings(self, value: Optional[pulumi.Input['FunctionIngressSettings']]):
         pulumi.set(self, "ingress_settings", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`. If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. The following service accounts need to be granted the role 'Cloud KMS CryptoKey Encrypter/Decrypter (roles/cloudkms.cryptoKeyEncrypterDecrypter)' on the Key/KeyRing/Project/Organization (least access preferred). 1. Google Cloud Functions service account (service-{project_number}@gcf-admin-robot.iam.gserviceaccount.com) - Required to protect the function's image. 2. Google Storage service account (service-{project_number}@gs-project-accounts.iam.gserviceaccount.com) - Required to protect the function's source code. If this service account does not exist, deploying a function without a KMS key or retrieving the service agent name provisions it. For more information, see https://cloud.google.com/storage/docs/projects#service-agents and https://cloud.google.com/storage/docs/getting-service-agent#gsutil. Google Cloud Functions delegates access to service agents to protect function resources in internal projects that are not accessible by the end user.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_name", value)
 
     @property
     @pulumi.getter
@@ -454,11 +486,13 @@ class Function(pulumi.CustomResource):
                  build_environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  build_worker_pool: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 docker_repository: Optional[pulumi.Input[str]] = None,
                  entry_point: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  event_trigger: Optional[pulumi.Input[pulumi.InputType['EventTriggerArgs']]] = None,
                  https_trigger: Optional[pulumi.Input[pulumi.InputType['HttpsTriggerArgs']]] = None,
                  ingress_settings: Optional[pulumi.Input['FunctionIngressSettings']] = None,
+                 kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  max_instances: Optional[pulumi.Input[int]] = None,
@@ -487,11 +521,13 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] build_environment_variables: Build environment variables that shall be available during build time.
         :param pulumi.Input[str] build_worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (`service-@gcf-admin-robot.iam.gserviceaccount.com`) must be granted the role Cloud Build Custom Workers Builder (`roles/cloudbuild.customworkers.builder`) in the project.
         :param pulumi.Input[str] description: User-provided description of a function.
+        :param pulumi.Input[str] docker_repository: User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. If unspecified and the deployment is eligible to use Artifact Registry, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
         :param pulumi.Input[str] entry_point: The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: Environment variables that shall be available during function execution.
         :param pulumi.Input[pulumi.InputType['EventTriggerArgs']] event_trigger: A source that fires events in response to a condition in another service.
         :param pulumi.Input[pulumi.InputType['HttpsTriggerArgs']] https_trigger: An HTTPS endpoint type of source that can be triggered via URL.
         :param pulumi.Input['FunctionIngressSettings'] ingress_settings: The ingress settings for the function, controlling what traffic can reach it.
+        :param pulumi.Input[str] kms_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`. If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. The following service accounts need to be granted the role 'Cloud KMS CryptoKey Encrypter/Decrypter (roles/cloudkms.cryptoKeyEncrypterDecrypter)' on the Key/KeyRing/Project/Organization (least access preferred). 1. Google Cloud Functions service account (service-{project_number}@gcf-admin-robot.iam.gserviceaccount.com) - Required to protect the function's image. 2. Google Storage service account (service-{project_number}@gs-project-accounts.iam.gserviceaccount.com) - Required to protect the function's source code. If this service account does not exist, deploying a function without a KMS key or retrieving the service agent name provisions it. For more information, see https://cloud.google.com/storage/docs/projects#service-agents and https://cloud.google.com/storage/docs/getting-service-agent#gsutil. Google Cloud Functions delegates access to service agents to protect function resources in internal projects that are not accessible by the end user.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this Cloud Function.
         :param pulumi.Input[int] max_instances: The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
         :param pulumi.Input[int] min_instances: A lower bound for the number function instances that may coexist at a given time.
@@ -537,11 +573,13 @@ class Function(pulumi.CustomResource):
                  build_environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  build_worker_pool: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 docker_repository: Optional[pulumi.Input[str]] = None,
                  entry_point: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  event_trigger: Optional[pulumi.Input[pulumi.InputType['EventTriggerArgs']]] = None,
                  https_trigger: Optional[pulumi.Input[pulumi.InputType['HttpsTriggerArgs']]] = None,
                  ingress_settings: Optional[pulumi.Input['FunctionIngressSettings']] = None,
+                 kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  max_instances: Optional[pulumi.Input[int]] = None,
@@ -576,11 +614,13 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["build_environment_variables"] = build_environment_variables
             __props__.__dict__["build_worker_pool"] = build_worker_pool
             __props__.__dict__["description"] = description
+            __props__.__dict__["docker_repository"] = docker_repository
             __props__.__dict__["entry_point"] = entry_point
             __props__.__dict__["environment_variables"] = environment_variables
             __props__.__dict__["event_trigger"] = event_trigger
             __props__.__dict__["https_trigger"] = https_trigger
             __props__.__dict__["ingress_settings"] = ingress_settings
+            __props__.__dict__["kms_key_name"] = kms_key_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["max_instances"] = max_instances
@@ -632,11 +672,13 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["build_name"] = None
         __props__.__dict__["build_worker_pool"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["docker_repository"] = None
         __props__.__dict__["entry_point"] = None
         __props__.__dict__["environment_variables"] = None
         __props__.__dict__["event_trigger"] = None
         __props__.__dict__["https_trigger"] = None
         __props__.__dict__["ingress_settings"] = None
+        __props__.__dict__["kms_key_name"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["max_instances"] = None
         __props__.__dict__["min_instances"] = None
@@ -707,6 +749,14 @@ class Function(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="dockerRepository")
+    def docker_repository(self) -> pulumi.Output[str]:
+        """
+        User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. If unspecified and the deployment is eligible to use Artifact Registry, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+        """
+        return pulumi.get(self, "docker_repository")
+
+    @property
     @pulumi.getter(name="entryPoint")
     def entry_point(self) -> pulumi.Output[str]:
         """
@@ -745,6 +795,14 @@ class Function(pulumi.CustomResource):
         The ingress settings for the function, controlling what traffic can reach it.
         """
         return pulumi.get(self, "ingress_settings")
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> pulumi.Output[str]:
+        """
+        Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`. If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. The following service accounts need to be granted the role 'Cloud KMS CryptoKey Encrypter/Decrypter (roles/cloudkms.cryptoKeyEncrypterDecrypter)' on the Key/KeyRing/Project/Organization (least access preferred). 1. Google Cloud Functions service account (service-{project_number}@gcf-admin-robot.iam.gserviceaccount.com) - Required to protect the function's image. 2. Google Storage service account (service-{project_number}@gs-project-accounts.iam.gserviceaccount.com) - Required to protect the function's source code. If this service account does not exist, deploying a function without a KMS key or retrieving the service agent name provisions it. For more information, see https://cloud.google.com/storage/docs/projects#service-agents and https://cloud.google.com/storage/docs/getting-service-agent#gsutil. Google Cloud Functions delegates access to service agents to protect function resources in internal projects that are not accessible by the end user.
+        """
+        return pulumi.get(self, "kms_key_name")
 
     @property
     @pulumi.getter

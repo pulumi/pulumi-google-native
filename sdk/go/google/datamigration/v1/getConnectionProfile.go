@@ -39,7 +39,7 @@ type LookupConnectionProfileResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// A MySQL database connection profile.
 	Mysql MySqlConnectionProfileResponse `pulumi:"mysql"`
-	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{instance}.
+	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
 	Name string `pulumi:"name"`
 	// A PostgreSQL database connection profile.
 	Postgresql PostgreSqlConnectionProfileResponse `pulumi:"postgresql"`
@@ -114,7 +114,7 @@ func (o LookupConnectionProfileResultOutput) Mysql() MySqlConnectionProfileRespo
 	return o.ApplyT(func(v LookupConnectionProfileResult) MySqlConnectionProfileResponse { return v.Mysql }).(MySqlConnectionProfileResponseOutput)
 }
 
-// The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{instance}.
+// The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
 func (o LookupConnectionProfileResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionProfileResult) string { return v.Name }).(pulumi.StringOutput)
 }

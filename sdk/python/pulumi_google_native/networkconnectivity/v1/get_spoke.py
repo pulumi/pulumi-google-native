@@ -73,7 +73,7 @@ class GetSpokeResult:
     @pulumi.getter
     def hub(self) -> str:
         """
-        Immutable. The URI of the hub that this spoke is attached to.
+        Immutable. The name of the hub that this spoke is attached to.
         """
         return pulumi.get(self, "hub")
 

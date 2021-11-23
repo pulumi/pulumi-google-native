@@ -832,6 +832,286 @@ func (o AddonsConfigResponsePtrOutput) NetworkPolicyConfig() NetworkPolicyConfig
 	}).(NetworkPolicyConfigResponsePtrOutput)
 }
 
+// Specifies options for controlling advanced machine features.
+type AdvancedMachineFeatures struct {
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore *string `pulumi:"threadsPerCore"`
+}
+
+// AdvancedMachineFeaturesInput is an input type that accepts AdvancedMachineFeaturesArgs and AdvancedMachineFeaturesOutput values.
+// You can construct a concrete instance of `AdvancedMachineFeaturesInput` via:
+//
+//          AdvancedMachineFeaturesArgs{...}
+type AdvancedMachineFeaturesInput interface {
+	pulumi.Input
+
+	ToAdvancedMachineFeaturesOutput() AdvancedMachineFeaturesOutput
+	ToAdvancedMachineFeaturesOutputWithContext(context.Context) AdvancedMachineFeaturesOutput
+}
+
+// Specifies options for controlling advanced machine features.
+type AdvancedMachineFeaturesArgs struct {
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore pulumi.StringPtrInput `pulumi:"threadsPerCore"`
+}
+
+func (AdvancedMachineFeaturesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (i AdvancedMachineFeaturesArgs) ToAdvancedMachineFeaturesOutput() AdvancedMachineFeaturesOutput {
+	return i.ToAdvancedMachineFeaturesOutputWithContext(context.Background())
+}
+
+func (i AdvancedMachineFeaturesArgs) ToAdvancedMachineFeaturesOutputWithContext(ctx context.Context) AdvancedMachineFeaturesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdvancedMachineFeaturesOutput)
+}
+
+func (i AdvancedMachineFeaturesArgs) ToAdvancedMachineFeaturesPtrOutput() AdvancedMachineFeaturesPtrOutput {
+	return i.ToAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i AdvancedMachineFeaturesArgs) ToAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) AdvancedMachineFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdvancedMachineFeaturesOutput).ToAdvancedMachineFeaturesPtrOutputWithContext(ctx)
+}
+
+// AdvancedMachineFeaturesPtrInput is an input type that accepts AdvancedMachineFeaturesArgs, AdvancedMachineFeaturesPtr and AdvancedMachineFeaturesPtrOutput values.
+// You can construct a concrete instance of `AdvancedMachineFeaturesPtrInput` via:
+//
+//          AdvancedMachineFeaturesArgs{...}
+//
+//  or:
+//
+//          nil
+type AdvancedMachineFeaturesPtrInput interface {
+	pulumi.Input
+
+	ToAdvancedMachineFeaturesPtrOutput() AdvancedMachineFeaturesPtrOutput
+	ToAdvancedMachineFeaturesPtrOutputWithContext(context.Context) AdvancedMachineFeaturesPtrOutput
+}
+
+type advancedMachineFeaturesPtrType AdvancedMachineFeaturesArgs
+
+func AdvancedMachineFeaturesPtr(v *AdvancedMachineFeaturesArgs) AdvancedMachineFeaturesPtrInput {
+	return (*advancedMachineFeaturesPtrType)(v)
+}
+
+func (*advancedMachineFeaturesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (i *advancedMachineFeaturesPtrType) ToAdvancedMachineFeaturesPtrOutput() AdvancedMachineFeaturesPtrOutput {
+	return i.ToAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i *advancedMachineFeaturesPtrType) ToAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) AdvancedMachineFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdvancedMachineFeaturesPtrOutput)
+}
+
+// Specifies options for controlling advanced machine features.
+type AdvancedMachineFeaturesOutput struct{ *pulumi.OutputState }
+
+func (AdvancedMachineFeaturesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (o AdvancedMachineFeaturesOutput) ToAdvancedMachineFeaturesOutput() AdvancedMachineFeaturesOutput {
+	return o
+}
+
+func (o AdvancedMachineFeaturesOutput) ToAdvancedMachineFeaturesOutputWithContext(ctx context.Context) AdvancedMachineFeaturesOutput {
+	return o
+}
+
+func (o AdvancedMachineFeaturesOutput) ToAdvancedMachineFeaturesPtrOutput() AdvancedMachineFeaturesPtrOutput {
+	return o.ToAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (o AdvancedMachineFeaturesOutput) ToAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) AdvancedMachineFeaturesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AdvancedMachineFeatures) *AdvancedMachineFeatures {
+		return &v
+	}).(AdvancedMachineFeaturesPtrOutput)
+}
+
+// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+func (o AdvancedMachineFeaturesOutput) ThreadsPerCore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AdvancedMachineFeatures) *string { return v.ThreadsPerCore }).(pulumi.StringPtrOutput)
+}
+
+type AdvancedMachineFeaturesPtrOutput struct{ *pulumi.OutputState }
+
+func (AdvancedMachineFeaturesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (o AdvancedMachineFeaturesPtrOutput) ToAdvancedMachineFeaturesPtrOutput() AdvancedMachineFeaturesPtrOutput {
+	return o
+}
+
+func (o AdvancedMachineFeaturesPtrOutput) ToAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) AdvancedMachineFeaturesPtrOutput {
+	return o
+}
+
+func (o AdvancedMachineFeaturesPtrOutput) Elem() AdvancedMachineFeaturesOutput {
+	return o.ApplyT(func(v *AdvancedMachineFeatures) AdvancedMachineFeatures {
+		if v != nil {
+			return *v
+		}
+		var ret AdvancedMachineFeatures
+		return ret
+	}).(AdvancedMachineFeaturesOutput)
+}
+
+// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+func (o AdvancedMachineFeaturesPtrOutput) ThreadsPerCore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdvancedMachineFeatures) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadsPerCore
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies options for controlling advanced machine features.
+type AdvancedMachineFeaturesResponse struct {
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore string `pulumi:"threadsPerCore"`
+}
+
+// AdvancedMachineFeaturesResponseInput is an input type that accepts AdvancedMachineFeaturesResponseArgs and AdvancedMachineFeaturesResponseOutput values.
+// You can construct a concrete instance of `AdvancedMachineFeaturesResponseInput` via:
+//
+//          AdvancedMachineFeaturesResponseArgs{...}
+type AdvancedMachineFeaturesResponseInput interface {
+	pulumi.Input
+
+	ToAdvancedMachineFeaturesResponseOutput() AdvancedMachineFeaturesResponseOutput
+	ToAdvancedMachineFeaturesResponseOutputWithContext(context.Context) AdvancedMachineFeaturesResponseOutput
+}
+
+// Specifies options for controlling advanced machine features.
+type AdvancedMachineFeaturesResponseArgs struct {
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore pulumi.StringInput `pulumi:"threadsPerCore"`
+}
+
+func (AdvancedMachineFeaturesResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdvancedMachineFeaturesResponse)(nil)).Elem()
+}
+
+func (i AdvancedMachineFeaturesResponseArgs) ToAdvancedMachineFeaturesResponseOutput() AdvancedMachineFeaturesResponseOutput {
+	return i.ToAdvancedMachineFeaturesResponseOutputWithContext(context.Background())
+}
+
+func (i AdvancedMachineFeaturesResponseArgs) ToAdvancedMachineFeaturesResponseOutputWithContext(ctx context.Context) AdvancedMachineFeaturesResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdvancedMachineFeaturesResponseOutput)
+}
+
+func (i AdvancedMachineFeaturesResponseArgs) ToAdvancedMachineFeaturesResponsePtrOutput() AdvancedMachineFeaturesResponsePtrOutput {
+	return i.ToAdvancedMachineFeaturesResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AdvancedMachineFeaturesResponseArgs) ToAdvancedMachineFeaturesResponsePtrOutputWithContext(ctx context.Context) AdvancedMachineFeaturesResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdvancedMachineFeaturesResponseOutput).ToAdvancedMachineFeaturesResponsePtrOutputWithContext(ctx)
+}
+
+// AdvancedMachineFeaturesResponsePtrInput is an input type that accepts AdvancedMachineFeaturesResponseArgs, AdvancedMachineFeaturesResponsePtr and AdvancedMachineFeaturesResponsePtrOutput values.
+// You can construct a concrete instance of `AdvancedMachineFeaturesResponsePtrInput` via:
+//
+//          AdvancedMachineFeaturesResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AdvancedMachineFeaturesResponsePtrInput interface {
+	pulumi.Input
+
+	ToAdvancedMachineFeaturesResponsePtrOutput() AdvancedMachineFeaturesResponsePtrOutput
+	ToAdvancedMachineFeaturesResponsePtrOutputWithContext(context.Context) AdvancedMachineFeaturesResponsePtrOutput
+}
+
+type advancedMachineFeaturesResponsePtrType AdvancedMachineFeaturesResponseArgs
+
+func AdvancedMachineFeaturesResponsePtr(v *AdvancedMachineFeaturesResponseArgs) AdvancedMachineFeaturesResponsePtrInput {
+	return (*advancedMachineFeaturesResponsePtrType)(v)
+}
+
+func (*advancedMachineFeaturesResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdvancedMachineFeaturesResponse)(nil)).Elem()
+}
+
+func (i *advancedMachineFeaturesResponsePtrType) ToAdvancedMachineFeaturesResponsePtrOutput() AdvancedMachineFeaturesResponsePtrOutput {
+	return i.ToAdvancedMachineFeaturesResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *advancedMachineFeaturesResponsePtrType) ToAdvancedMachineFeaturesResponsePtrOutputWithContext(ctx context.Context) AdvancedMachineFeaturesResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdvancedMachineFeaturesResponsePtrOutput)
+}
+
+// Specifies options for controlling advanced machine features.
+type AdvancedMachineFeaturesResponseOutput struct{ *pulumi.OutputState }
+
+func (AdvancedMachineFeaturesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdvancedMachineFeaturesResponse)(nil)).Elem()
+}
+
+func (o AdvancedMachineFeaturesResponseOutput) ToAdvancedMachineFeaturesResponseOutput() AdvancedMachineFeaturesResponseOutput {
+	return o
+}
+
+func (o AdvancedMachineFeaturesResponseOutput) ToAdvancedMachineFeaturesResponseOutputWithContext(ctx context.Context) AdvancedMachineFeaturesResponseOutput {
+	return o
+}
+
+func (o AdvancedMachineFeaturesResponseOutput) ToAdvancedMachineFeaturesResponsePtrOutput() AdvancedMachineFeaturesResponsePtrOutput {
+	return o.ToAdvancedMachineFeaturesResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AdvancedMachineFeaturesResponseOutput) ToAdvancedMachineFeaturesResponsePtrOutputWithContext(ctx context.Context) AdvancedMachineFeaturesResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AdvancedMachineFeaturesResponse) *AdvancedMachineFeaturesResponse {
+		return &v
+	}).(AdvancedMachineFeaturesResponsePtrOutput)
+}
+
+// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+func (o AdvancedMachineFeaturesResponseOutput) ThreadsPerCore() pulumi.StringOutput {
+	return o.ApplyT(func(v AdvancedMachineFeaturesResponse) string { return v.ThreadsPerCore }).(pulumi.StringOutput)
+}
+
+type AdvancedMachineFeaturesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AdvancedMachineFeaturesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdvancedMachineFeaturesResponse)(nil)).Elem()
+}
+
+func (o AdvancedMachineFeaturesResponsePtrOutput) ToAdvancedMachineFeaturesResponsePtrOutput() AdvancedMachineFeaturesResponsePtrOutput {
+	return o
+}
+
+func (o AdvancedMachineFeaturesResponsePtrOutput) ToAdvancedMachineFeaturesResponsePtrOutputWithContext(ctx context.Context) AdvancedMachineFeaturesResponsePtrOutput {
+	return o
+}
+
+func (o AdvancedMachineFeaturesResponsePtrOutput) Elem() AdvancedMachineFeaturesResponseOutput {
+	return o.ApplyT(func(v *AdvancedMachineFeaturesResponse) AdvancedMachineFeaturesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AdvancedMachineFeaturesResponse
+		return ret
+	}).(AdvancedMachineFeaturesResponseOutput)
+}
+
+// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+func (o AdvancedMachineFeaturesResponsePtrOutput) ThreadsPerCore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdvancedMachineFeaturesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ThreadsPerCore
+	}).(pulumi.StringPtrOutput)
+}
+
 // Configuration for returning group information from authenticators.
 type AuthenticatorGroupsConfig struct {
 	// Whether this cluster should return group membership lookups during authentication using a group of security groups.
@@ -4152,8 +4432,6 @@ type ClusterUpdate struct {
 	DesiredAddonsConfig *AddonsConfig `pulumi:"desiredAddonsConfig"`
 	// The desired authenticator groups config for the cluster.
 	DesiredAuthenticatorGroupsConfig *AuthenticatorGroupsConfig `pulumi:"desiredAuthenticatorGroupsConfig"`
-	// The desired Autopilot configuration for the cluster.
-	DesiredAutopilot *Autopilot `pulumi:"desiredAutopilot"`
 	// The desired configuration options for the Binary Authorization feature.
 	DesiredBinaryAuthorization *BinaryAuthorization `pulumi:"desiredBinaryAuthorization"`
 	// Cluster-level autoscaling configuration.
@@ -4164,6 +4442,10 @@ type ClusterUpdate struct {
 	DesiredDatapathProvider *ClusterUpdateDesiredDatapathProvider `pulumi:"desiredDatapathProvider"`
 	// The desired status of whether to disable default sNAT for this cluster.
 	DesiredDefaultSnatStatus *DefaultSnatStatus `pulumi:"desiredDefaultSnatStatus"`
+	// DNSConfig contains clusterDNS config for this cluster.
+	DesiredDnsConfig *DNSConfig `pulumi:"desiredDnsConfig"`
+	// The desired GCFS config for the cluster
+	DesiredGcfsConfig *GcfsConfig `pulumi:"desiredGcfsConfig"`
 	// The desired image type for the node pool. NOTE: Set the "desired_node_pool" field as well.
 	DesiredImageType *string `pulumi:"desiredImageType"`
 	// The desired config of Intra-node visibility.
@@ -4227,8 +4509,6 @@ type ClusterUpdateArgs struct {
 	DesiredAddonsConfig AddonsConfigPtrInput `pulumi:"desiredAddonsConfig"`
 	// The desired authenticator groups config for the cluster.
 	DesiredAuthenticatorGroupsConfig AuthenticatorGroupsConfigPtrInput `pulumi:"desiredAuthenticatorGroupsConfig"`
-	// The desired Autopilot configuration for the cluster.
-	DesiredAutopilot AutopilotPtrInput `pulumi:"desiredAutopilot"`
 	// The desired configuration options for the Binary Authorization feature.
 	DesiredBinaryAuthorization BinaryAuthorizationPtrInput `pulumi:"desiredBinaryAuthorization"`
 	// Cluster-level autoscaling configuration.
@@ -4239,6 +4519,10 @@ type ClusterUpdateArgs struct {
 	DesiredDatapathProvider ClusterUpdateDesiredDatapathProviderPtrInput `pulumi:"desiredDatapathProvider"`
 	// The desired status of whether to disable default sNAT for this cluster.
 	DesiredDefaultSnatStatus DefaultSnatStatusPtrInput `pulumi:"desiredDefaultSnatStatus"`
+	// DNSConfig contains clusterDNS config for this cluster.
+	DesiredDnsConfig DNSConfigPtrInput `pulumi:"desiredDnsConfig"`
+	// The desired GCFS config for the cluster
+	DesiredGcfsConfig GcfsConfigPtrInput `pulumi:"desiredGcfsConfig"`
 	// The desired image type for the node pool. NOTE: Set the "desired_node_pool" field as well.
 	DesiredImageType pulumi.StringPtrInput `pulumi:"desiredImageType"`
 	// The desired config of Intra-node visibility.
@@ -4322,11 +4606,6 @@ func (o ClusterUpdateOutput) DesiredAuthenticatorGroupsConfig() AuthenticatorGro
 	return o.ApplyT(func(v ClusterUpdate) *AuthenticatorGroupsConfig { return v.DesiredAuthenticatorGroupsConfig }).(AuthenticatorGroupsConfigPtrOutput)
 }
 
-// The desired Autopilot configuration for the cluster.
-func (o ClusterUpdateOutput) DesiredAutopilot() AutopilotPtrOutput {
-	return o.ApplyT(func(v ClusterUpdate) *Autopilot { return v.DesiredAutopilot }).(AutopilotPtrOutput)
-}
-
 // The desired configuration options for the Binary Authorization feature.
 func (o ClusterUpdateOutput) DesiredBinaryAuthorization() BinaryAuthorizationPtrOutput {
 	return o.ApplyT(func(v ClusterUpdate) *BinaryAuthorization { return v.DesiredBinaryAuthorization }).(BinaryAuthorizationPtrOutput)
@@ -4350,6 +4629,16 @@ func (o ClusterUpdateOutput) DesiredDatapathProvider() ClusterUpdateDesiredDatap
 // The desired status of whether to disable default sNAT for this cluster.
 func (o ClusterUpdateOutput) DesiredDefaultSnatStatus() DefaultSnatStatusPtrOutput {
 	return o.ApplyT(func(v ClusterUpdate) *DefaultSnatStatus { return v.DesiredDefaultSnatStatus }).(DefaultSnatStatusPtrOutput)
+}
+
+// DNSConfig contains clusterDNS config for this cluster.
+func (o ClusterUpdateOutput) DesiredDnsConfig() DNSConfigPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *DNSConfig { return v.DesiredDnsConfig }).(DNSConfigPtrOutput)
+}
+
+// The desired GCFS config for the cluster
+func (o ClusterUpdateOutput) DesiredGcfsConfig() GcfsConfigPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *GcfsConfig { return v.DesiredGcfsConfig }).(GcfsConfigPtrOutput)
 }
 
 // The desired image type for the node pool. NOTE: Set the "desired_node_pool" field as well.
@@ -5302,6 +5591,362 @@ func (o ConsumptionMeteringConfigResponsePtrOutput) Enabled() pulumi.BoolPtrOutp
 		}
 		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// DNSConfig contains the desired set of options for configuring clusterDNS.
+type DNSConfig struct {
+	// cluster_dns indicates which in-cluster DNS provider should be used.
+	ClusterDns *DNSConfigClusterDns `pulumi:"clusterDns"`
+	// cluster_dns_domain is the suffix used for all cluster service records.
+	ClusterDnsDomain *string `pulumi:"clusterDnsDomain"`
+	// cluster_dns_scope indicates the scope of access to cluster DNS records.
+	ClusterDnsScope *DNSConfigClusterDnsScope `pulumi:"clusterDnsScope"`
+}
+
+// DNSConfigInput is an input type that accepts DNSConfigArgs and DNSConfigOutput values.
+// You can construct a concrete instance of `DNSConfigInput` via:
+//
+//          DNSConfigArgs{...}
+type DNSConfigInput interface {
+	pulumi.Input
+
+	ToDNSConfigOutput() DNSConfigOutput
+	ToDNSConfigOutputWithContext(context.Context) DNSConfigOutput
+}
+
+// DNSConfig contains the desired set of options for configuring clusterDNS.
+type DNSConfigArgs struct {
+	// cluster_dns indicates which in-cluster DNS provider should be used.
+	ClusterDns DNSConfigClusterDnsPtrInput `pulumi:"clusterDns"`
+	// cluster_dns_domain is the suffix used for all cluster service records.
+	ClusterDnsDomain pulumi.StringPtrInput `pulumi:"clusterDnsDomain"`
+	// cluster_dns_scope indicates the scope of access to cluster DNS records.
+	ClusterDnsScope DNSConfigClusterDnsScopePtrInput `pulumi:"clusterDnsScope"`
+}
+
+func (DNSConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DNSConfig)(nil)).Elem()
+}
+
+func (i DNSConfigArgs) ToDNSConfigOutput() DNSConfigOutput {
+	return i.ToDNSConfigOutputWithContext(context.Background())
+}
+
+func (i DNSConfigArgs) ToDNSConfigOutputWithContext(ctx context.Context) DNSConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DNSConfigOutput)
+}
+
+func (i DNSConfigArgs) ToDNSConfigPtrOutput() DNSConfigPtrOutput {
+	return i.ToDNSConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DNSConfigArgs) ToDNSConfigPtrOutputWithContext(ctx context.Context) DNSConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DNSConfigOutput).ToDNSConfigPtrOutputWithContext(ctx)
+}
+
+// DNSConfigPtrInput is an input type that accepts DNSConfigArgs, DNSConfigPtr and DNSConfigPtrOutput values.
+// You can construct a concrete instance of `DNSConfigPtrInput` via:
+//
+//          DNSConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type DNSConfigPtrInput interface {
+	pulumi.Input
+
+	ToDNSConfigPtrOutput() DNSConfigPtrOutput
+	ToDNSConfigPtrOutputWithContext(context.Context) DNSConfigPtrOutput
+}
+
+type dnsconfigPtrType DNSConfigArgs
+
+func DNSConfigPtr(v *DNSConfigArgs) DNSConfigPtrInput {
+	return (*dnsconfigPtrType)(v)
+}
+
+func (*dnsconfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DNSConfig)(nil)).Elem()
+}
+
+func (i *dnsconfigPtrType) ToDNSConfigPtrOutput() DNSConfigPtrOutput {
+	return i.ToDNSConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dnsconfigPtrType) ToDNSConfigPtrOutputWithContext(ctx context.Context) DNSConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DNSConfigPtrOutput)
+}
+
+// DNSConfig contains the desired set of options for configuring clusterDNS.
+type DNSConfigOutput struct{ *pulumi.OutputState }
+
+func (DNSConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DNSConfig)(nil)).Elem()
+}
+
+func (o DNSConfigOutput) ToDNSConfigOutput() DNSConfigOutput {
+	return o
+}
+
+func (o DNSConfigOutput) ToDNSConfigOutputWithContext(ctx context.Context) DNSConfigOutput {
+	return o
+}
+
+func (o DNSConfigOutput) ToDNSConfigPtrOutput() DNSConfigPtrOutput {
+	return o.ToDNSConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DNSConfigOutput) ToDNSConfigPtrOutputWithContext(ctx context.Context) DNSConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DNSConfig) *DNSConfig {
+		return &v
+	}).(DNSConfigPtrOutput)
+}
+
+// cluster_dns indicates which in-cluster DNS provider should be used.
+func (o DNSConfigOutput) ClusterDns() DNSConfigClusterDnsPtrOutput {
+	return o.ApplyT(func(v DNSConfig) *DNSConfigClusterDns { return v.ClusterDns }).(DNSConfigClusterDnsPtrOutput)
+}
+
+// cluster_dns_domain is the suffix used for all cluster service records.
+func (o DNSConfigOutput) ClusterDnsDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DNSConfig) *string { return v.ClusterDnsDomain }).(pulumi.StringPtrOutput)
+}
+
+// cluster_dns_scope indicates the scope of access to cluster DNS records.
+func (o DNSConfigOutput) ClusterDnsScope() DNSConfigClusterDnsScopePtrOutput {
+	return o.ApplyT(func(v DNSConfig) *DNSConfigClusterDnsScope { return v.ClusterDnsScope }).(DNSConfigClusterDnsScopePtrOutput)
+}
+
+type DNSConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DNSConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DNSConfig)(nil)).Elem()
+}
+
+func (o DNSConfigPtrOutput) ToDNSConfigPtrOutput() DNSConfigPtrOutput {
+	return o
+}
+
+func (o DNSConfigPtrOutput) ToDNSConfigPtrOutputWithContext(ctx context.Context) DNSConfigPtrOutput {
+	return o
+}
+
+func (o DNSConfigPtrOutput) Elem() DNSConfigOutput {
+	return o.ApplyT(func(v *DNSConfig) DNSConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DNSConfig
+		return ret
+	}).(DNSConfigOutput)
+}
+
+// cluster_dns indicates which in-cluster DNS provider should be used.
+func (o DNSConfigPtrOutput) ClusterDns() DNSConfigClusterDnsPtrOutput {
+	return o.ApplyT(func(v *DNSConfig) *DNSConfigClusterDns {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterDns
+	}).(DNSConfigClusterDnsPtrOutput)
+}
+
+// cluster_dns_domain is the suffix used for all cluster service records.
+func (o DNSConfigPtrOutput) ClusterDnsDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DNSConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterDnsDomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// cluster_dns_scope indicates the scope of access to cluster DNS records.
+func (o DNSConfigPtrOutput) ClusterDnsScope() DNSConfigClusterDnsScopePtrOutput {
+	return o.ApplyT(func(v *DNSConfig) *DNSConfigClusterDnsScope {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterDnsScope
+	}).(DNSConfigClusterDnsScopePtrOutput)
+}
+
+// DNSConfig contains the desired set of options for configuring clusterDNS.
+type DNSConfigResponse struct {
+	// cluster_dns indicates which in-cluster DNS provider should be used.
+	ClusterDns string `pulumi:"clusterDns"`
+	// cluster_dns_domain is the suffix used for all cluster service records.
+	ClusterDnsDomain string `pulumi:"clusterDnsDomain"`
+	// cluster_dns_scope indicates the scope of access to cluster DNS records.
+	ClusterDnsScope string `pulumi:"clusterDnsScope"`
+}
+
+// DNSConfigResponseInput is an input type that accepts DNSConfigResponseArgs and DNSConfigResponseOutput values.
+// You can construct a concrete instance of `DNSConfigResponseInput` via:
+//
+//          DNSConfigResponseArgs{...}
+type DNSConfigResponseInput interface {
+	pulumi.Input
+
+	ToDNSConfigResponseOutput() DNSConfigResponseOutput
+	ToDNSConfigResponseOutputWithContext(context.Context) DNSConfigResponseOutput
+}
+
+// DNSConfig contains the desired set of options for configuring clusterDNS.
+type DNSConfigResponseArgs struct {
+	// cluster_dns indicates which in-cluster DNS provider should be used.
+	ClusterDns pulumi.StringInput `pulumi:"clusterDns"`
+	// cluster_dns_domain is the suffix used for all cluster service records.
+	ClusterDnsDomain pulumi.StringInput `pulumi:"clusterDnsDomain"`
+	// cluster_dns_scope indicates the scope of access to cluster DNS records.
+	ClusterDnsScope pulumi.StringInput `pulumi:"clusterDnsScope"`
+}
+
+func (DNSConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DNSConfigResponse)(nil)).Elem()
+}
+
+func (i DNSConfigResponseArgs) ToDNSConfigResponseOutput() DNSConfigResponseOutput {
+	return i.ToDNSConfigResponseOutputWithContext(context.Background())
+}
+
+func (i DNSConfigResponseArgs) ToDNSConfigResponseOutputWithContext(ctx context.Context) DNSConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DNSConfigResponseOutput)
+}
+
+func (i DNSConfigResponseArgs) ToDNSConfigResponsePtrOutput() DNSConfigResponsePtrOutput {
+	return i.ToDNSConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DNSConfigResponseArgs) ToDNSConfigResponsePtrOutputWithContext(ctx context.Context) DNSConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DNSConfigResponseOutput).ToDNSConfigResponsePtrOutputWithContext(ctx)
+}
+
+// DNSConfigResponsePtrInput is an input type that accepts DNSConfigResponseArgs, DNSConfigResponsePtr and DNSConfigResponsePtrOutput values.
+// You can construct a concrete instance of `DNSConfigResponsePtrInput` via:
+//
+//          DNSConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type DNSConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToDNSConfigResponsePtrOutput() DNSConfigResponsePtrOutput
+	ToDNSConfigResponsePtrOutputWithContext(context.Context) DNSConfigResponsePtrOutput
+}
+
+type dnsconfigResponsePtrType DNSConfigResponseArgs
+
+func DNSConfigResponsePtr(v *DNSConfigResponseArgs) DNSConfigResponsePtrInput {
+	return (*dnsconfigResponsePtrType)(v)
+}
+
+func (*dnsconfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DNSConfigResponse)(nil)).Elem()
+}
+
+func (i *dnsconfigResponsePtrType) ToDNSConfigResponsePtrOutput() DNSConfigResponsePtrOutput {
+	return i.ToDNSConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *dnsconfigResponsePtrType) ToDNSConfigResponsePtrOutputWithContext(ctx context.Context) DNSConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DNSConfigResponsePtrOutput)
+}
+
+// DNSConfig contains the desired set of options for configuring clusterDNS.
+type DNSConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (DNSConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DNSConfigResponse)(nil)).Elem()
+}
+
+func (o DNSConfigResponseOutput) ToDNSConfigResponseOutput() DNSConfigResponseOutput {
+	return o
+}
+
+func (o DNSConfigResponseOutput) ToDNSConfigResponseOutputWithContext(ctx context.Context) DNSConfigResponseOutput {
+	return o
+}
+
+func (o DNSConfigResponseOutput) ToDNSConfigResponsePtrOutput() DNSConfigResponsePtrOutput {
+	return o.ToDNSConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o DNSConfigResponseOutput) ToDNSConfigResponsePtrOutputWithContext(ctx context.Context) DNSConfigResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DNSConfigResponse) *DNSConfigResponse {
+		return &v
+	}).(DNSConfigResponsePtrOutput)
+}
+
+// cluster_dns indicates which in-cluster DNS provider should be used.
+func (o DNSConfigResponseOutput) ClusterDns() pulumi.StringOutput {
+	return o.ApplyT(func(v DNSConfigResponse) string { return v.ClusterDns }).(pulumi.StringOutput)
+}
+
+// cluster_dns_domain is the suffix used for all cluster service records.
+func (o DNSConfigResponseOutput) ClusterDnsDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v DNSConfigResponse) string { return v.ClusterDnsDomain }).(pulumi.StringOutput)
+}
+
+// cluster_dns_scope indicates the scope of access to cluster DNS records.
+func (o DNSConfigResponseOutput) ClusterDnsScope() pulumi.StringOutput {
+	return o.ApplyT(func(v DNSConfigResponse) string { return v.ClusterDnsScope }).(pulumi.StringOutput)
+}
+
+type DNSConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DNSConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DNSConfigResponse)(nil)).Elem()
+}
+
+func (o DNSConfigResponsePtrOutput) ToDNSConfigResponsePtrOutput() DNSConfigResponsePtrOutput {
+	return o
+}
+
+func (o DNSConfigResponsePtrOutput) ToDNSConfigResponsePtrOutputWithContext(ctx context.Context) DNSConfigResponsePtrOutput {
+	return o
+}
+
+func (o DNSConfigResponsePtrOutput) Elem() DNSConfigResponseOutput {
+	return o.ApplyT(func(v *DNSConfigResponse) DNSConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DNSConfigResponse
+		return ret
+	}).(DNSConfigResponseOutput)
+}
+
+// cluster_dns indicates which in-cluster DNS provider should be used.
+func (o DNSConfigResponsePtrOutput) ClusterDns() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DNSConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterDns
+	}).(pulumi.StringPtrOutput)
+}
+
+// cluster_dns_domain is the suffix used for all cluster service records.
+func (o DNSConfigResponsePtrOutput) ClusterDnsDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DNSConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterDnsDomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// cluster_dns_scope indicates the scope of access to cluster DNS records.
+func (o DNSConfigResponsePtrOutput) ClusterDnsScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DNSConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterDnsScope
+	}).(pulumi.StringPtrOutput)
 }
 
 // Time window specified for daily maintenance operations.
@@ -6754,6 +7399,286 @@ func (o GcePersistentDiskCsiDriverConfigResponsePtrOutput) Elem() GcePersistentD
 // Whether the Compute Engine PD CSI driver is enabled for this cluster.
 func (o GcePersistentDiskCsiDriverConfigResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GcePersistentDiskCsiDriverConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// GcfsConfig contains configurations of Google Container File System (image streaming).
+type GcfsConfig struct {
+	// Whether to use GCFS.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// GcfsConfigInput is an input type that accepts GcfsConfigArgs and GcfsConfigOutput values.
+// You can construct a concrete instance of `GcfsConfigInput` via:
+//
+//          GcfsConfigArgs{...}
+type GcfsConfigInput interface {
+	pulumi.Input
+
+	ToGcfsConfigOutput() GcfsConfigOutput
+	ToGcfsConfigOutputWithContext(context.Context) GcfsConfigOutput
+}
+
+// GcfsConfig contains configurations of Google Container File System (image streaming).
+type GcfsConfigArgs struct {
+	// Whether to use GCFS.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (GcfsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcfsConfig)(nil)).Elem()
+}
+
+func (i GcfsConfigArgs) ToGcfsConfigOutput() GcfsConfigOutput {
+	return i.ToGcfsConfigOutputWithContext(context.Background())
+}
+
+func (i GcfsConfigArgs) ToGcfsConfigOutputWithContext(ctx context.Context) GcfsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcfsConfigOutput)
+}
+
+func (i GcfsConfigArgs) ToGcfsConfigPtrOutput() GcfsConfigPtrOutput {
+	return i.ToGcfsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GcfsConfigArgs) ToGcfsConfigPtrOutputWithContext(ctx context.Context) GcfsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcfsConfigOutput).ToGcfsConfigPtrOutputWithContext(ctx)
+}
+
+// GcfsConfigPtrInput is an input type that accepts GcfsConfigArgs, GcfsConfigPtr and GcfsConfigPtrOutput values.
+// You can construct a concrete instance of `GcfsConfigPtrInput` via:
+//
+//          GcfsConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GcfsConfigPtrInput interface {
+	pulumi.Input
+
+	ToGcfsConfigPtrOutput() GcfsConfigPtrOutput
+	ToGcfsConfigPtrOutputWithContext(context.Context) GcfsConfigPtrOutput
+}
+
+type gcfsConfigPtrType GcfsConfigArgs
+
+func GcfsConfigPtr(v *GcfsConfigArgs) GcfsConfigPtrInput {
+	return (*gcfsConfigPtrType)(v)
+}
+
+func (*gcfsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcfsConfig)(nil)).Elem()
+}
+
+func (i *gcfsConfigPtrType) ToGcfsConfigPtrOutput() GcfsConfigPtrOutput {
+	return i.ToGcfsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gcfsConfigPtrType) ToGcfsConfigPtrOutputWithContext(ctx context.Context) GcfsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcfsConfigPtrOutput)
+}
+
+// GcfsConfig contains configurations of Google Container File System (image streaming).
+type GcfsConfigOutput struct{ *pulumi.OutputState }
+
+func (GcfsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcfsConfig)(nil)).Elem()
+}
+
+func (o GcfsConfigOutput) ToGcfsConfigOutput() GcfsConfigOutput {
+	return o
+}
+
+func (o GcfsConfigOutput) ToGcfsConfigOutputWithContext(ctx context.Context) GcfsConfigOutput {
+	return o
+}
+
+func (o GcfsConfigOutput) ToGcfsConfigPtrOutput() GcfsConfigPtrOutput {
+	return o.ToGcfsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GcfsConfigOutput) ToGcfsConfigPtrOutputWithContext(ctx context.Context) GcfsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcfsConfig) *GcfsConfig {
+		return &v
+	}).(GcfsConfigPtrOutput)
+}
+
+// Whether to use GCFS.
+func (o GcfsConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GcfsConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GcfsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GcfsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcfsConfig)(nil)).Elem()
+}
+
+func (o GcfsConfigPtrOutput) ToGcfsConfigPtrOutput() GcfsConfigPtrOutput {
+	return o
+}
+
+func (o GcfsConfigPtrOutput) ToGcfsConfigPtrOutputWithContext(ctx context.Context) GcfsConfigPtrOutput {
+	return o
+}
+
+func (o GcfsConfigPtrOutput) Elem() GcfsConfigOutput {
+	return o.ApplyT(func(v *GcfsConfig) GcfsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GcfsConfig
+		return ret
+	}).(GcfsConfigOutput)
+}
+
+// Whether to use GCFS.
+func (o GcfsConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcfsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// GcfsConfig contains configurations of Google Container File System (image streaming).
+type GcfsConfigResponse struct {
+	// Whether to use GCFS.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GcfsConfigResponseInput is an input type that accepts GcfsConfigResponseArgs and GcfsConfigResponseOutput values.
+// You can construct a concrete instance of `GcfsConfigResponseInput` via:
+//
+//          GcfsConfigResponseArgs{...}
+type GcfsConfigResponseInput interface {
+	pulumi.Input
+
+	ToGcfsConfigResponseOutput() GcfsConfigResponseOutput
+	ToGcfsConfigResponseOutputWithContext(context.Context) GcfsConfigResponseOutput
+}
+
+// GcfsConfig contains configurations of Google Container File System (image streaming).
+type GcfsConfigResponseArgs struct {
+	// Whether to use GCFS.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GcfsConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcfsConfigResponse)(nil)).Elem()
+}
+
+func (i GcfsConfigResponseArgs) ToGcfsConfigResponseOutput() GcfsConfigResponseOutput {
+	return i.ToGcfsConfigResponseOutputWithContext(context.Background())
+}
+
+func (i GcfsConfigResponseArgs) ToGcfsConfigResponseOutputWithContext(ctx context.Context) GcfsConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcfsConfigResponseOutput)
+}
+
+func (i GcfsConfigResponseArgs) ToGcfsConfigResponsePtrOutput() GcfsConfigResponsePtrOutput {
+	return i.ToGcfsConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GcfsConfigResponseArgs) ToGcfsConfigResponsePtrOutputWithContext(ctx context.Context) GcfsConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcfsConfigResponseOutput).ToGcfsConfigResponsePtrOutputWithContext(ctx)
+}
+
+// GcfsConfigResponsePtrInput is an input type that accepts GcfsConfigResponseArgs, GcfsConfigResponsePtr and GcfsConfigResponsePtrOutput values.
+// You can construct a concrete instance of `GcfsConfigResponsePtrInput` via:
+//
+//          GcfsConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GcfsConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToGcfsConfigResponsePtrOutput() GcfsConfigResponsePtrOutput
+	ToGcfsConfigResponsePtrOutputWithContext(context.Context) GcfsConfigResponsePtrOutput
+}
+
+type gcfsConfigResponsePtrType GcfsConfigResponseArgs
+
+func GcfsConfigResponsePtr(v *GcfsConfigResponseArgs) GcfsConfigResponsePtrInput {
+	return (*gcfsConfigResponsePtrType)(v)
+}
+
+func (*gcfsConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcfsConfigResponse)(nil)).Elem()
+}
+
+func (i *gcfsConfigResponsePtrType) ToGcfsConfigResponsePtrOutput() GcfsConfigResponsePtrOutput {
+	return i.ToGcfsConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *gcfsConfigResponsePtrType) ToGcfsConfigResponsePtrOutputWithContext(ctx context.Context) GcfsConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcfsConfigResponsePtrOutput)
+}
+
+// GcfsConfig contains configurations of Google Container File System (image streaming).
+type GcfsConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GcfsConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcfsConfigResponse)(nil)).Elem()
+}
+
+func (o GcfsConfigResponseOutput) ToGcfsConfigResponseOutput() GcfsConfigResponseOutput {
+	return o
+}
+
+func (o GcfsConfigResponseOutput) ToGcfsConfigResponseOutputWithContext(ctx context.Context) GcfsConfigResponseOutput {
+	return o
+}
+
+func (o GcfsConfigResponseOutput) ToGcfsConfigResponsePtrOutput() GcfsConfigResponsePtrOutput {
+	return o.ToGcfsConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GcfsConfigResponseOutput) ToGcfsConfigResponsePtrOutputWithContext(ctx context.Context) GcfsConfigResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcfsConfigResponse) *GcfsConfigResponse {
+		return &v
+	}).(GcfsConfigResponsePtrOutput)
+}
+
+// Whether to use GCFS.
+func (o GcfsConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GcfsConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GcfsConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GcfsConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcfsConfigResponse)(nil)).Elem()
+}
+
+func (o GcfsConfigResponsePtrOutput) ToGcfsConfigResponsePtrOutput() GcfsConfigResponsePtrOutput {
+	return o
+}
+
+func (o GcfsConfigResponsePtrOutput) ToGcfsConfigResponsePtrOutputWithContext(ctx context.Context) GcfsConfigResponsePtrOutput {
+	return o
+}
+
+func (o GcfsConfigResponsePtrOutput) Elem() GcfsConfigResponseOutput {
+	return o.ApplyT(func(v *GcfsConfigResponse) GcfsConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GcfsConfigResponse
+		return ret
+	}).(GcfsConfigResponseOutput)
+}
+
+// Whether to use GCFS.
+func (o GcfsConfigResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcfsConfigResponse) *bool {
 		if v == nil {
 			return nil
 		}
@@ -11590,6 +12515,8 @@ func (o MaxPodsConstraintResponsePtrOutput) MaxPodsPerNode() pulumi.StringPtrOut
 
 // Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
 type MeshCertificates struct {
+	// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+	EnableCertificates *bool `pulumi:"enableCertificates"`
 }
 
 // MeshCertificatesInput is an input type that accepts MeshCertificatesArgs and MeshCertificatesOutput values.
@@ -11605,6 +12532,8 @@ type MeshCertificatesInput interface {
 
 // Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
 type MeshCertificatesArgs struct {
+	// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+	EnableCertificates pulumi.BoolPtrInput `pulumi:"enableCertificates"`
 }
 
 func (MeshCertificatesArgs) ElementType() reflect.Type {
@@ -11685,6 +12614,11 @@ func (o MeshCertificatesOutput) ToMeshCertificatesPtrOutputWithContext(ctx conte
 	}).(MeshCertificatesPtrOutput)
 }
 
+// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+func (o MeshCertificatesOutput) EnableCertificates() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MeshCertificates) *bool { return v.EnableCertificates }).(pulumi.BoolPtrOutput)
+}
+
 type MeshCertificatesPtrOutput struct{ *pulumi.OutputState }
 
 func (MeshCertificatesPtrOutput) ElementType() reflect.Type {
@@ -11709,8 +12643,20 @@ func (o MeshCertificatesPtrOutput) Elem() MeshCertificatesOutput {
 	}).(MeshCertificatesOutput)
 }
 
+// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+func (o MeshCertificatesPtrOutput) EnableCertificates() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MeshCertificates) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableCertificates
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
 type MeshCertificatesResponse struct {
+	// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+	EnableCertificates bool `pulumi:"enableCertificates"`
 }
 
 // MeshCertificatesResponseInput is an input type that accepts MeshCertificatesResponseArgs and MeshCertificatesResponseOutput values.
@@ -11726,6 +12672,8 @@ type MeshCertificatesResponseInput interface {
 
 // Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
 type MeshCertificatesResponseArgs struct {
+	// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+	EnableCertificates pulumi.BoolInput `pulumi:"enableCertificates"`
 }
 
 func (MeshCertificatesResponseArgs) ElementType() reflect.Type {
@@ -11806,6 +12754,11 @@ func (o MeshCertificatesResponseOutput) ToMeshCertificatesResponsePtrOutputWithC
 	}).(MeshCertificatesResponsePtrOutput)
 }
 
+// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+func (o MeshCertificatesResponseOutput) EnableCertificates() pulumi.BoolOutput {
+	return o.ApplyT(func(v MeshCertificatesResponse) bool { return v.EnableCertificates }).(pulumi.BoolOutput)
+}
+
 type MeshCertificatesResponsePtrOutput struct{ *pulumi.OutputState }
 
 func (MeshCertificatesResponsePtrOutput) ElementType() reflect.Type {
@@ -11828,6 +12781,16 @@ func (o MeshCertificatesResponsePtrOutput) Elem() MeshCertificatesResponseOutput
 		var ret MeshCertificatesResponse
 		return ret
 	}).(MeshCertificatesResponseOutput)
+}
+
+// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+func (o MeshCertificatesResponsePtrOutput) EnableCertificates() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MeshCertificatesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableCertificates
+	}).(pulumi.BoolPtrOutput)
 }
 
 // MonitoringComponentConfig is cluster monitoring component configuration.
@@ -12398,6 +13361,8 @@ type NetworkConfig struct {
 	DatapathProvider *NetworkConfigDatapathProvider `pulumi:"datapathProvider"`
 	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
 	DefaultSnatStatus *DefaultSnatStatus `pulumi:"defaultSnatStatus"`
+	// DNSConfig contains clusterDNS config for this cluster.
+	DnsConfig *DNSConfig `pulumi:"dnsConfig"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 	EnableIntraNodeVisibility *bool `pulumi:"enableIntraNodeVisibility"`
 	// Whether L4ILB Subsetting is enabled for this cluster.
@@ -12423,6 +13388,8 @@ type NetworkConfigArgs struct {
 	DatapathProvider NetworkConfigDatapathProviderPtrInput `pulumi:"datapathProvider"`
 	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
 	DefaultSnatStatus DefaultSnatStatusPtrInput `pulumi:"defaultSnatStatus"`
+	// DNSConfig contains clusterDNS config for this cluster.
+	DnsConfig DNSConfigPtrInput `pulumi:"dnsConfig"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 	EnableIntraNodeVisibility pulumi.BoolPtrInput `pulumi:"enableIntraNodeVisibility"`
 	// Whether L4ILB Subsetting is enabled for this cluster.
@@ -12519,6 +13486,11 @@ func (o NetworkConfigOutput) DefaultSnatStatus() DefaultSnatStatusPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *DefaultSnatStatus { return v.DefaultSnatStatus }).(DefaultSnatStatusPtrOutput)
 }
 
+// DNSConfig contains clusterDNS config for this cluster.
+func (o NetworkConfigOutput) DnsConfig() DNSConfigPtrOutput {
+	return o.ApplyT(func(v NetworkConfig) *DNSConfig { return v.DnsConfig }).(DNSConfigPtrOutput)
+}
+
 // Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 func (o NetworkConfigOutput) EnableIntraNodeVisibility() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *bool { return v.EnableIntraNodeVisibility }).(pulumi.BoolPtrOutput)
@@ -12578,6 +13550,16 @@ func (o NetworkConfigPtrOutput) DefaultSnatStatus() DefaultSnatStatusPtrOutput {
 	}).(DefaultSnatStatusPtrOutput)
 }
 
+// DNSConfig contains clusterDNS config for this cluster.
+func (o NetworkConfigPtrOutput) DnsConfig() DNSConfigPtrOutput {
+	return o.ApplyT(func(v *NetworkConfig) *DNSConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DnsConfig
+	}).(DNSConfigPtrOutput)
+}
+
 // Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 func (o NetworkConfigPtrOutput) EnableIntraNodeVisibility() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NetworkConfig) *bool {
@@ -12614,6 +13596,8 @@ type NetworkConfigResponse struct {
 	DatapathProvider string `pulumi:"datapathProvider"`
 	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
 	DefaultSnatStatus DefaultSnatStatusResponse `pulumi:"defaultSnatStatus"`
+	// DNSConfig contains clusterDNS config for this cluster.
+	DnsConfig DNSConfigResponse `pulumi:"dnsConfig"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 	EnableIntraNodeVisibility bool `pulumi:"enableIntraNodeVisibility"`
 	// Whether L4ILB Subsetting is enabled for this cluster.
@@ -12643,6 +13627,8 @@ type NetworkConfigResponseArgs struct {
 	DatapathProvider pulumi.StringInput `pulumi:"datapathProvider"`
 	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
 	DefaultSnatStatus DefaultSnatStatusResponseInput `pulumi:"defaultSnatStatus"`
+	// DNSConfig contains clusterDNS config for this cluster.
+	DnsConfig DNSConfigResponseInput `pulumi:"dnsConfig"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 	EnableIntraNodeVisibility pulumi.BoolInput `pulumi:"enableIntraNodeVisibility"`
 	// Whether L4ILB Subsetting is enabled for this cluster.
@@ -12743,6 +13729,11 @@ func (o NetworkConfigResponseOutput) DefaultSnatStatus() DefaultSnatStatusRespon
 	return o.ApplyT(func(v NetworkConfigResponse) DefaultSnatStatusResponse { return v.DefaultSnatStatus }).(DefaultSnatStatusResponseOutput)
 }
 
+// DNSConfig contains clusterDNS config for this cluster.
+func (o NetworkConfigResponseOutput) DnsConfig() DNSConfigResponseOutput {
+	return o.ApplyT(func(v NetworkConfigResponse) DNSConfigResponse { return v.DnsConfig }).(DNSConfigResponseOutput)
+}
+
 // Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 func (o NetworkConfigResponseOutput) EnableIntraNodeVisibility() pulumi.BoolOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) bool { return v.EnableIntraNodeVisibility }).(pulumi.BoolOutput)
@@ -12810,6 +13801,16 @@ func (o NetworkConfigResponsePtrOutput) DefaultSnatStatus() DefaultSnatStatusRes
 		}
 		return &v.DefaultSnatStatus
 	}).(DefaultSnatStatusResponsePtrOutput)
+}
+
+// DNSConfig contains clusterDNS config for this cluster.
+func (o NetworkConfigResponsePtrOutput) DnsConfig() DNSConfigResponsePtrOutput {
+	return o.ApplyT(func(v *NetworkConfigResponse) *DNSConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.DnsConfig
+	}).(DNSConfigResponsePtrOutput)
 }
 
 // Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
@@ -13464,12 +14465,16 @@ func (o NetworkPolicyResponsePtrOutput) Provider() pulumi.StringPtrOutput {
 type NodeConfig struct {
 	// A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
 	Accelerators []AcceleratorConfig `pulumi:"accelerators"`
+	// Advanced features for the Compute Engine VM.
+	AdvancedMachineFeatures *AdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	//  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
 	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
 	DiskType *string `pulumi:"diskType"`
+	// Google Container File System (image streaming) configs.
+	GcfsConfig *GcfsConfig `pulumi:"gcfsConfig"`
 	// Enable or disable gvnic in the node pool.
 	Gvnic *VirtualNIC `pulumi:"gvnic"`
 	// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
@@ -13525,12 +14530,16 @@ type NodeConfigInput interface {
 type NodeConfigArgs struct {
 	// A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
 	Accelerators AcceleratorConfigArrayInput `pulumi:"accelerators"`
+	// Advanced features for the Compute Engine VM.
+	AdvancedMachineFeatures AdvancedMachineFeaturesPtrInput `pulumi:"advancedMachineFeatures"`
 	//  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
 	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Google Container File System (image streaming) configs.
+	GcfsConfig GcfsConfigPtrInput `pulumi:"gcfsConfig"`
 	// Enable or disable gvnic in the node pool.
 	Gvnic VirtualNICPtrInput `pulumi:"gvnic"`
 	// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
@@ -13654,6 +14663,11 @@ func (o NodeConfigOutput) Accelerators() AcceleratorConfigArrayOutput {
 	return o.ApplyT(func(v NodeConfig) []AcceleratorConfig { return v.Accelerators }).(AcceleratorConfigArrayOutput)
 }
 
+// Advanced features for the Compute Engine VM.
+func (o NodeConfigOutput) AdvancedMachineFeatures() AdvancedMachineFeaturesPtrOutput {
+	return o.ApplyT(func(v NodeConfig) *AdvancedMachineFeatures { return v.AdvancedMachineFeatures }).(AdvancedMachineFeaturesPtrOutput)
+}
+
 //  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 func (o NodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
@@ -13667,6 +14681,11 @@ func (o NodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
 // Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
 func (o NodeConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+// Google Container File System (image streaming) configs.
+func (o NodeConfigOutput) GcfsConfig() GcfsConfigPtrOutput {
+	return o.ApplyT(func(v NodeConfig) *GcfsConfig { return v.GcfsConfig }).(GcfsConfigPtrOutput)
 }
 
 // Enable or disable gvnic in the node pool.
@@ -13798,6 +14817,16 @@ func (o NodeConfigPtrOutput) Accelerators() AcceleratorConfigArrayOutput {
 	}).(AcceleratorConfigArrayOutput)
 }
 
+// Advanced features for the Compute Engine VM.
+func (o NodeConfigPtrOutput) AdvancedMachineFeatures() AdvancedMachineFeaturesPtrOutput {
+	return o.ApplyT(func(v *NodeConfig) *AdvancedMachineFeatures {
+		if v == nil {
+			return nil
+		}
+		return v.AdvancedMachineFeatures
+	}).(AdvancedMachineFeaturesPtrOutput)
+}
+
 //  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 func (o NodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeConfig) *string {
@@ -13826,6 +14855,16 @@ func (o NodeConfigPtrOutput) DiskType() pulumi.StringPtrOutput {
 		}
 		return v.DiskType
 	}).(pulumi.StringPtrOutput)
+}
+
+// Google Container File System (image streaming) configs.
+func (o NodeConfigPtrOutput) GcfsConfig() GcfsConfigPtrOutput {
+	return o.ApplyT(func(v *NodeConfig) *GcfsConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GcfsConfig
+	}).(GcfsConfigPtrOutput)
 }
 
 // Enable or disable gvnic in the node pool.
@@ -14018,16 +15057,300 @@ func (o NodeConfigPtrOutput) WorkloadMetadataConfig() WorkloadMetadataConfigPtrO
 	}).(WorkloadMetadataConfigPtrOutput)
 }
 
+// Subset of NodeConfig message that has defaults.
+type NodeConfigDefaults struct {
+	// GCFS (Google Container File System, a.k.a Riptide) options.
+	GcfsConfig *GcfsConfig `pulumi:"gcfsConfig"`
+}
+
+// NodeConfigDefaultsInput is an input type that accepts NodeConfigDefaultsArgs and NodeConfigDefaultsOutput values.
+// You can construct a concrete instance of `NodeConfigDefaultsInput` via:
+//
+//          NodeConfigDefaultsArgs{...}
+type NodeConfigDefaultsInput interface {
+	pulumi.Input
+
+	ToNodeConfigDefaultsOutput() NodeConfigDefaultsOutput
+	ToNodeConfigDefaultsOutputWithContext(context.Context) NodeConfigDefaultsOutput
+}
+
+// Subset of NodeConfig message that has defaults.
+type NodeConfigDefaultsArgs struct {
+	// GCFS (Google Container File System, a.k.a Riptide) options.
+	GcfsConfig GcfsConfigPtrInput `pulumi:"gcfsConfig"`
+}
+
+func (NodeConfigDefaultsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeConfigDefaults)(nil)).Elem()
+}
+
+func (i NodeConfigDefaultsArgs) ToNodeConfigDefaultsOutput() NodeConfigDefaultsOutput {
+	return i.ToNodeConfigDefaultsOutputWithContext(context.Background())
+}
+
+func (i NodeConfigDefaultsArgs) ToNodeConfigDefaultsOutputWithContext(ctx context.Context) NodeConfigDefaultsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigDefaultsOutput)
+}
+
+func (i NodeConfigDefaultsArgs) ToNodeConfigDefaultsPtrOutput() NodeConfigDefaultsPtrOutput {
+	return i.ToNodeConfigDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i NodeConfigDefaultsArgs) ToNodeConfigDefaultsPtrOutputWithContext(ctx context.Context) NodeConfigDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigDefaultsOutput).ToNodeConfigDefaultsPtrOutputWithContext(ctx)
+}
+
+// NodeConfigDefaultsPtrInput is an input type that accepts NodeConfigDefaultsArgs, NodeConfigDefaultsPtr and NodeConfigDefaultsPtrOutput values.
+// You can construct a concrete instance of `NodeConfigDefaultsPtrInput` via:
+//
+//          NodeConfigDefaultsArgs{...}
+//
+//  or:
+//
+//          nil
+type NodeConfigDefaultsPtrInput interface {
+	pulumi.Input
+
+	ToNodeConfigDefaultsPtrOutput() NodeConfigDefaultsPtrOutput
+	ToNodeConfigDefaultsPtrOutputWithContext(context.Context) NodeConfigDefaultsPtrOutput
+}
+
+type nodeConfigDefaultsPtrType NodeConfigDefaultsArgs
+
+func NodeConfigDefaultsPtr(v *NodeConfigDefaultsArgs) NodeConfigDefaultsPtrInput {
+	return (*nodeConfigDefaultsPtrType)(v)
+}
+
+func (*nodeConfigDefaultsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeConfigDefaults)(nil)).Elem()
+}
+
+func (i *nodeConfigDefaultsPtrType) ToNodeConfigDefaultsPtrOutput() NodeConfigDefaultsPtrOutput {
+	return i.ToNodeConfigDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i *nodeConfigDefaultsPtrType) ToNodeConfigDefaultsPtrOutputWithContext(ctx context.Context) NodeConfigDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigDefaultsPtrOutput)
+}
+
+// Subset of NodeConfig message that has defaults.
+type NodeConfigDefaultsOutput struct{ *pulumi.OutputState }
+
+func (NodeConfigDefaultsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeConfigDefaults)(nil)).Elem()
+}
+
+func (o NodeConfigDefaultsOutput) ToNodeConfigDefaultsOutput() NodeConfigDefaultsOutput {
+	return o
+}
+
+func (o NodeConfigDefaultsOutput) ToNodeConfigDefaultsOutputWithContext(ctx context.Context) NodeConfigDefaultsOutput {
+	return o
+}
+
+func (o NodeConfigDefaultsOutput) ToNodeConfigDefaultsPtrOutput() NodeConfigDefaultsPtrOutput {
+	return o.ToNodeConfigDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (o NodeConfigDefaultsOutput) ToNodeConfigDefaultsPtrOutputWithContext(ctx context.Context) NodeConfigDefaultsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeConfigDefaults) *NodeConfigDefaults {
+		return &v
+	}).(NodeConfigDefaultsPtrOutput)
+}
+
+// GCFS (Google Container File System, a.k.a Riptide) options.
+func (o NodeConfigDefaultsOutput) GcfsConfig() GcfsConfigPtrOutput {
+	return o.ApplyT(func(v NodeConfigDefaults) *GcfsConfig { return v.GcfsConfig }).(GcfsConfigPtrOutput)
+}
+
+type NodeConfigDefaultsPtrOutput struct{ *pulumi.OutputState }
+
+func (NodeConfigDefaultsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeConfigDefaults)(nil)).Elem()
+}
+
+func (o NodeConfigDefaultsPtrOutput) ToNodeConfigDefaultsPtrOutput() NodeConfigDefaultsPtrOutput {
+	return o
+}
+
+func (o NodeConfigDefaultsPtrOutput) ToNodeConfigDefaultsPtrOutputWithContext(ctx context.Context) NodeConfigDefaultsPtrOutput {
+	return o
+}
+
+func (o NodeConfigDefaultsPtrOutput) Elem() NodeConfigDefaultsOutput {
+	return o.ApplyT(func(v *NodeConfigDefaults) NodeConfigDefaults {
+		if v != nil {
+			return *v
+		}
+		var ret NodeConfigDefaults
+		return ret
+	}).(NodeConfigDefaultsOutput)
+}
+
+// GCFS (Google Container File System, a.k.a Riptide) options.
+func (o NodeConfigDefaultsPtrOutput) GcfsConfig() GcfsConfigPtrOutput {
+	return o.ApplyT(func(v *NodeConfigDefaults) *GcfsConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GcfsConfig
+	}).(GcfsConfigPtrOutput)
+}
+
+// Subset of NodeConfig message that has defaults.
+type NodeConfigDefaultsResponse struct {
+	// GCFS (Google Container File System, a.k.a Riptide) options.
+	GcfsConfig GcfsConfigResponse `pulumi:"gcfsConfig"`
+}
+
+// NodeConfigDefaultsResponseInput is an input type that accepts NodeConfigDefaultsResponseArgs and NodeConfigDefaultsResponseOutput values.
+// You can construct a concrete instance of `NodeConfigDefaultsResponseInput` via:
+//
+//          NodeConfigDefaultsResponseArgs{...}
+type NodeConfigDefaultsResponseInput interface {
+	pulumi.Input
+
+	ToNodeConfigDefaultsResponseOutput() NodeConfigDefaultsResponseOutput
+	ToNodeConfigDefaultsResponseOutputWithContext(context.Context) NodeConfigDefaultsResponseOutput
+}
+
+// Subset of NodeConfig message that has defaults.
+type NodeConfigDefaultsResponseArgs struct {
+	// GCFS (Google Container File System, a.k.a Riptide) options.
+	GcfsConfig GcfsConfigResponseInput `pulumi:"gcfsConfig"`
+}
+
+func (NodeConfigDefaultsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeConfigDefaultsResponse)(nil)).Elem()
+}
+
+func (i NodeConfigDefaultsResponseArgs) ToNodeConfigDefaultsResponseOutput() NodeConfigDefaultsResponseOutput {
+	return i.ToNodeConfigDefaultsResponseOutputWithContext(context.Background())
+}
+
+func (i NodeConfigDefaultsResponseArgs) ToNodeConfigDefaultsResponseOutputWithContext(ctx context.Context) NodeConfigDefaultsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigDefaultsResponseOutput)
+}
+
+func (i NodeConfigDefaultsResponseArgs) ToNodeConfigDefaultsResponsePtrOutput() NodeConfigDefaultsResponsePtrOutput {
+	return i.ToNodeConfigDefaultsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i NodeConfigDefaultsResponseArgs) ToNodeConfigDefaultsResponsePtrOutputWithContext(ctx context.Context) NodeConfigDefaultsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigDefaultsResponseOutput).ToNodeConfigDefaultsResponsePtrOutputWithContext(ctx)
+}
+
+// NodeConfigDefaultsResponsePtrInput is an input type that accepts NodeConfigDefaultsResponseArgs, NodeConfigDefaultsResponsePtr and NodeConfigDefaultsResponsePtrOutput values.
+// You can construct a concrete instance of `NodeConfigDefaultsResponsePtrInput` via:
+//
+//          NodeConfigDefaultsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type NodeConfigDefaultsResponsePtrInput interface {
+	pulumi.Input
+
+	ToNodeConfigDefaultsResponsePtrOutput() NodeConfigDefaultsResponsePtrOutput
+	ToNodeConfigDefaultsResponsePtrOutputWithContext(context.Context) NodeConfigDefaultsResponsePtrOutput
+}
+
+type nodeConfigDefaultsResponsePtrType NodeConfigDefaultsResponseArgs
+
+func NodeConfigDefaultsResponsePtr(v *NodeConfigDefaultsResponseArgs) NodeConfigDefaultsResponsePtrInput {
+	return (*nodeConfigDefaultsResponsePtrType)(v)
+}
+
+func (*nodeConfigDefaultsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeConfigDefaultsResponse)(nil)).Elem()
+}
+
+func (i *nodeConfigDefaultsResponsePtrType) ToNodeConfigDefaultsResponsePtrOutput() NodeConfigDefaultsResponsePtrOutput {
+	return i.ToNodeConfigDefaultsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *nodeConfigDefaultsResponsePtrType) ToNodeConfigDefaultsResponsePtrOutputWithContext(ctx context.Context) NodeConfigDefaultsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigDefaultsResponsePtrOutput)
+}
+
+// Subset of NodeConfig message that has defaults.
+type NodeConfigDefaultsResponseOutput struct{ *pulumi.OutputState }
+
+func (NodeConfigDefaultsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeConfigDefaultsResponse)(nil)).Elem()
+}
+
+func (o NodeConfigDefaultsResponseOutput) ToNodeConfigDefaultsResponseOutput() NodeConfigDefaultsResponseOutput {
+	return o
+}
+
+func (o NodeConfigDefaultsResponseOutput) ToNodeConfigDefaultsResponseOutputWithContext(ctx context.Context) NodeConfigDefaultsResponseOutput {
+	return o
+}
+
+func (o NodeConfigDefaultsResponseOutput) ToNodeConfigDefaultsResponsePtrOutput() NodeConfigDefaultsResponsePtrOutput {
+	return o.ToNodeConfigDefaultsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o NodeConfigDefaultsResponseOutput) ToNodeConfigDefaultsResponsePtrOutputWithContext(ctx context.Context) NodeConfigDefaultsResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeConfigDefaultsResponse) *NodeConfigDefaultsResponse {
+		return &v
+	}).(NodeConfigDefaultsResponsePtrOutput)
+}
+
+// GCFS (Google Container File System, a.k.a Riptide) options.
+func (o NodeConfigDefaultsResponseOutput) GcfsConfig() GcfsConfigResponseOutput {
+	return o.ApplyT(func(v NodeConfigDefaultsResponse) GcfsConfigResponse { return v.GcfsConfig }).(GcfsConfigResponseOutput)
+}
+
+type NodeConfigDefaultsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NodeConfigDefaultsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeConfigDefaultsResponse)(nil)).Elem()
+}
+
+func (o NodeConfigDefaultsResponsePtrOutput) ToNodeConfigDefaultsResponsePtrOutput() NodeConfigDefaultsResponsePtrOutput {
+	return o
+}
+
+func (o NodeConfigDefaultsResponsePtrOutput) ToNodeConfigDefaultsResponsePtrOutputWithContext(ctx context.Context) NodeConfigDefaultsResponsePtrOutput {
+	return o
+}
+
+func (o NodeConfigDefaultsResponsePtrOutput) Elem() NodeConfigDefaultsResponseOutput {
+	return o.ApplyT(func(v *NodeConfigDefaultsResponse) NodeConfigDefaultsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NodeConfigDefaultsResponse
+		return ret
+	}).(NodeConfigDefaultsResponseOutput)
+}
+
+// GCFS (Google Container File System, a.k.a Riptide) options.
+func (o NodeConfigDefaultsResponsePtrOutput) GcfsConfig() GcfsConfigResponsePtrOutput {
+	return o.ApplyT(func(v *NodeConfigDefaultsResponse) *GcfsConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.GcfsConfig
+	}).(GcfsConfigResponsePtrOutput)
+}
+
 // Parameters that describe the nodes in a cluster.
 type NodeConfigResponse struct {
 	// A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
 	Accelerators []AcceleratorConfigResponse `pulumi:"accelerators"`
+	// Advanced features for the Compute Engine VM.
+	AdvancedMachineFeatures AdvancedMachineFeaturesResponse `pulumi:"advancedMachineFeatures"`
 	//  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 	BootDiskKmsKey string `pulumi:"bootDiskKmsKey"`
 	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
 	DiskSizeGb int `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
 	DiskType string `pulumi:"diskType"`
+	// Google Container File System (image streaming) configs.
+	GcfsConfig GcfsConfigResponse `pulumi:"gcfsConfig"`
 	// Enable or disable gvnic in the node pool.
 	Gvnic VirtualNICResponse `pulumi:"gvnic"`
 	// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
@@ -14083,12 +15406,16 @@ type NodeConfigResponseInput interface {
 type NodeConfigResponseArgs struct {
 	// A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
 	Accelerators AcceleratorConfigResponseArrayInput `pulumi:"accelerators"`
+	// Advanced features for the Compute Engine VM.
+	AdvancedMachineFeatures AdvancedMachineFeaturesResponseInput `pulumi:"advancedMachineFeatures"`
 	//  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 	BootDiskKmsKey pulumi.StringInput `pulumi:"bootDiskKmsKey"`
 	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
 	DiskSizeGb pulumi.IntInput `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
 	DiskType pulumi.StringInput `pulumi:"diskType"`
+	// Google Container File System (image streaming) configs.
+	GcfsConfig GcfsConfigResponseInput `pulumi:"gcfsConfig"`
 	// Enable or disable gvnic in the node pool.
 	Gvnic VirtualNICResponseInput `pulumi:"gvnic"`
 	// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
@@ -14212,6 +15539,11 @@ func (o NodeConfigResponseOutput) Accelerators() AcceleratorConfigResponseArrayO
 	return o.ApplyT(func(v NodeConfigResponse) []AcceleratorConfigResponse { return v.Accelerators }).(AcceleratorConfigResponseArrayOutput)
 }
 
+// Advanced features for the Compute Engine VM.
+func (o NodeConfigResponseOutput) AdvancedMachineFeatures() AdvancedMachineFeaturesResponseOutput {
+	return o.ApplyT(func(v NodeConfigResponse) AdvancedMachineFeaturesResponse { return v.AdvancedMachineFeatures }).(AdvancedMachineFeaturesResponseOutput)
+}
+
 //  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 func (o NodeConfigResponseOutput) BootDiskKmsKey() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeConfigResponse) string { return v.BootDiskKmsKey }).(pulumi.StringOutput)
@@ -14225,6 +15557,11 @@ func (o NodeConfigResponseOutput) DiskSizeGb() pulumi.IntOutput {
 // Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
 func (o NodeConfigResponseOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeConfigResponse) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+// Google Container File System (image streaming) configs.
+func (o NodeConfigResponseOutput) GcfsConfig() GcfsConfigResponseOutput {
+	return o.ApplyT(func(v NodeConfigResponse) GcfsConfigResponse { return v.GcfsConfig }).(GcfsConfigResponseOutput)
 }
 
 // Enable or disable gvnic in the node pool.
@@ -14356,6 +15693,16 @@ func (o NodeConfigResponsePtrOutput) Accelerators() AcceleratorConfigResponseArr
 	}).(AcceleratorConfigResponseArrayOutput)
 }
 
+// Advanced features for the Compute Engine VM.
+func (o NodeConfigResponsePtrOutput) AdvancedMachineFeatures() AdvancedMachineFeaturesResponsePtrOutput {
+	return o.ApplyT(func(v *NodeConfigResponse) *AdvancedMachineFeaturesResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.AdvancedMachineFeatures
+	}).(AdvancedMachineFeaturesResponsePtrOutput)
+}
+
 //  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 func (o NodeConfigResponsePtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeConfigResponse) *string {
@@ -14384,6 +15731,16 @@ func (o NodeConfigResponsePtrOutput) DiskType() pulumi.StringPtrOutput {
 		}
 		return &v.DiskType
 	}).(pulumi.StringPtrOutput)
+}
+
+// Google Container File System (image streaming) configs.
+func (o NodeConfigResponsePtrOutput) GcfsConfig() GcfsConfigResponsePtrOutput {
+	return o.ApplyT(func(v *NodeConfigResponse) *GcfsConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.GcfsConfig
+	}).(GcfsConfigResponsePtrOutput)
 }
 
 // Enable or disable gvnic in the node pool.
@@ -16226,6 +17583,286 @@ func (o NodePoolAutoscalingResponsePtrOutput) MinNodeCount() pulumi.IntPtrOutput
 		}
 		return &v.MinNodeCount
 	}).(pulumi.IntPtrOutput)
+}
+
+// Subset of Nodepool message that has defaults.
+type NodePoolDefaults struct {
+	// Subset of NodeConfig message that has defaults.
+	NodeConfigDefaults *NodeConfigDefaults `pulumi:"nodeConfigDefaults"`
+}
+
+// NodePoolDefaultsInput is an input type that accepts NodePoolDefaultsArgs and NodePoolDefaultsOutput values.
+// You can construct a concrete instance of `NodePoolDefaultsInput` via:
+//
+//          NodePoolDefaultsArgs{...}
+type NodePoolDefaultsInput interface {
+	pulumi.Input
+
+	ToNodePoolDefaultsOutput() NodePoolDefaultsOutput
+	ToNodePoolDefaultsOutputWithContext(context.Context) NodePoolDefaultsOutput
+}
+
+// Subset of Nodepool message that has defaults.
+type NodePoolDefaultsArgs struct {
+	// Subset of NodeConfig message that has defaults.
+	NodeConfigDefaults NodeConfigDefaultsPtrInput `pulumi:"nodeConfigDefaults"`
+}
+
+func (NodePoolDefaultsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolDefaults)(nil)).Elem()
+}
+
+func (i NodePoolDefaultsArgs) ToNodePoolDefaultsOutput() NodePoolDefaultsOutput {
+	return i.ToNodePoolDefaultsOutputWithContext(context.Background())
+}
+
+func (i NodePoolDefaultsArgs) ToNodePoolDefaultsOutputWithContext(ctx context.Context) NodePoolDefaultsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolDefaultsOutput)
+}
+
+func (i NodePoolDefaultsArgs) ToNodePoolDefaultsPtrOutput() NodePoolDefaultsPtrOutput {
+	return i.ToNodePoolDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolDefaultsArgs) ToNodePoolDefaultsPtrOutputWithContext(ctx context.Context) NodePoolDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolDefaultsOutput).ToNodePoolDefaultsPtrOutputWithContext(ctx)
+}
+
+// NodePoolDefaultsPtrInput is an input type that accepts NodePoolDefaultsArgs, NodePoolDefaultsPtr and NodePoolDefaultsPtrOutput values.
+// You can construct a concrete instance of `NodePoolDefaultsPtrInput` via:
+//
+//          NodePoolDefaultsArgs{...}
+//
+//  or:
+//
+//          nil
+type NodePoolDefaultsPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolDefaultsPtrOutput() NodePoolDefaultsPtrOutput
+	ToNodePoolDefaultsPtrOutputWithContext(context.Context) NodePoolDefaultsPtrOutput
+}
+
+type nodePoolDefaultsPtrType NodePoolDefaultsArgs
+
+func NodePoolDefaultsPtr(v *NodePoolDefaultsArgs) NodePoolDefaultsPtrInput {
+	return (*nodePoolDefaultsPtrType)(v)
+}
+
+func (*nodePoolDefaultsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolDefaults)(nil)).Elem()
+}
+
+func (i *nodePoolDefaultsPtrType) ToNodePoolDefaultsPtrOutput() NodePoolDefaultsPtrOutput {
+	return i.ToNodePoolDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolDefaultsPtrType) ToNodePoolDefaultsPtrOutputWithContext(ctx context.Context) NodePoolDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolDefaultsPtrOutput)
+}
+
+// Subset of Nodepool message that has defaults.
+type NodePoolDefaultsOutput struct{ *pulumi.OutputState }
+
+func (NodePoolDefaultsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolDefaults)(nil)).Elem()
+}
+
+func (o NodePoolDefaultsOutput) ToNodePoolDefaultsOutput() NodePoolDefaultsOutput {
+	return o
+}
+
+func (o NodePoolDefaultsOutput) ToNodePoolDefaultsOutputWithContext(ctx context.Context) NodePoolDefaultsOutput {
+	return o
+}
+
+func (o NodePoolDefaultsOutput) ToNodePoolDefaultsPtrOutput() NodePoolDefaultsPtrOutput {
+	return o.ToNodePoolDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolDefaultsOutput) ToNodePoolDefaultsPtrOutputWithContext(ctx context.Context) NodePoolDefaultsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolDefaults) *NodePoolDefaults {
+		return &v
+	}).(NodePoolDefaultsPtrOutput)
+}
+
+// Subset of NodeConfig message that has defaults.
+func (o NodePoolDefaultsOutput) NodeConfigDefaults() NodeConfigDefaultsPtrOutput {
+	return o.ApplyT(func(v NodePoolDefaults) *NodeConfigDefaults { return v.NodeConfigDefaults }).(NodeConfigDefaultsPtrOutput)
+}
+
+type NodePoolDefaultsPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolDefaultsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolDefaults)(nil)).Elem()
+}
+
+func (o NodePoolDefaultsPtrOutput) ToNodePoolDefaultsPtrOutput() NodePoolDefaultsPtrOutput {
+	return o
+}
+
+func (o NodePoolDefaultsPtrOutput) ToNodePoolDefaultsPtrOutputWithContext(ctx context.Context) NodePoolDefaultsPtrOutput {
+	return o
+}
+
+func (o NodePoolDefaultsPtrOutput) Elem() NodePoolDefaultsOutput {
+	return o.ApplyT(func(v *NodePoolDefaults) NodePoolDefaults {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolDefaults
+		return ret
+	}).(NodePoolDefaultsOutput)
+}
+
+// Subset of NodeConfig message that has defaults.
+func (o NodePoolDefaultsPtrOutput) NodeConfigDefaults() NodeConfigDefaultsPtrOutput {
+	return o.ApplyT(func(v *NodePoolDefaults) *NodeConfigDefaults {
+		if v == nil {
+			return nil
+		}
+		return v.NodeConfigDefaults
+	}).(NodeConfigDefaultsPtrOutput)
+}
+
+// Subset of Nodepool message that has defaults.
+type NodePoolDefaultsResponse struct {
+	// Subset of NodeConfig message that has defaults.
+	NodeConfigDefaults NodeConfigDefaultsResponse `pulumi:"nodeConfigDefaults"`
+}
+
+// NodePoolDefaultsResponseInput is an input type that accepts NodePoolDefaultsResponseArgs and NodePoolDefaultsResponseOutput values.
+// You can construct a concrete instance of `NodePoolDefaultsResponseInput` via:
+//
+//          NodePoolDefaultsResponseArgs{...}
+type NodePoolDefaultsResponseInput interface {
+	pulumi.Input
+
+	ToNodePoolDefaultsResponseOutput() NodePoolDefaultsResponseOutput
+	ToNodePoolDefaultsResponseOutputWithContext(context.Context) NodePoolDefaultsResponseOutput
+}
+
+// Subset of Nodepool message that has defaults.
+type NodePoolDefaultsResponseArgs struct {
+	// Subset of NodeConfig message that has defaults.
+	NodeConfigDefaults NodeConfigDefaultsResponseInput `pulumi:"nodeConfigDefaults"`
+}
+
+func (NodePoolDefaultsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolDefaultsResponse)(nil)).Elem()
+}
+
+func (i NodePoolDefaultsResponseArgs) ToNodePoolDefaultsResponseOutput() NodePoolDefaultsResponseOutput {
+	return i.ToNodePoolDefaultsResponseOutputWithContext(context.Background())
+}
+
+func (i NodePoolDefaultsResponseArgs) ToNodePoolDefaultsResponseOutputWithContext(ctx context.Context) NodePoolDefaultsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolDefaultsResponseOutput)
+}
+
+func (i NodePoolDefaultsResponseArgs) ToNodePoolDefaultsResponsePtrOutput() NodePoolDefaultsResponsePtrOutput {
+	return i.ToNodePoolDefaultsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolDefaultsResponseArgs) ToNodePoolDefaultsResponsePtrOutputWithContext(ctx context.Context) NodePoolDefaultsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolDefaultsResponseOutput).ToNodePoolDefaultsResponsePtrOutputWithContext(ctx)
+}
+
+// NodePoolDefaultsResponsePtrInput is an input type that accepts NodePoolDefaultsResponseArgs, NodePoolDefaultsResponsePtr and NodePoolDefaultsResponsePtrOutput values.
+// You can construct a concrete instance of `NodePoolDefaultsResponsePtrInput` via:
+//
+//          NodePoolDefaultsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type NodePoolDefaultsResponsePtrInput interface {
+	pulumi.Input
+
+	ToNodePoolDefaultsResponsePtrOutput() NodePoolDefaultsResponsePtrOutput
+	ToNodePoolDefaultsResponsePtrOutputWithContext(context.Context) NodePoolDefaultsResponsePtrOutput
+}
+
+type nodePoolDefaultsResponsePtrType NodePoolDefaultsResponseArgs
+
+func NodePoolDefaultsResponsePtr(v *NodePoolDefaultsResponseArgs) NodePoolDefaultsResponsePtrInput {
+	return (*nodePoolDefaultsResponsePtrType)(v)
+}
+
+func (*nodePoolDefaultsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolDefaultsResponse)(nil)).Elem()
+}
+
+func (i *nodePoolDefaultsResponsePtrType) ToNodePoolDefaultsResponsePtrOutput() NodePoolDefaultsResponsePtrOutput {
+	return i.ToNodePoolDefaultsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolDefaultsResponsePtrType) ToNodePoolDefaultsResponsePtrOutputWithContext(ctx context.Context) NodePoolDefaultsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolDefaultsResponsePtrOutput)
+}
+
+// Subset of Nodepool message that has defaults.
+type NodePoolDefaultsResponseOutput struct{ *pulumi.OutputState }
+
+func (NodePoolDefaultsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolDefaultsResponse)(nil)).Elem()
+}
+
+func (o NodePoolDefaultsResponseOutput) ToNodePoolDefaultsResponseOutput() NodePoolDefaultsResponseOutput {
+	return o
+}
+
+func (o NodePoolDefaultsResponseOutput) ToNodePoolDefaultsResponseOutputWithContext(ctx context.Context) NodePoolDefaultsResponseOutput {
+	return o
+}
+
+func (o NodePoolDefaultsResponseOutput) ToNodePoolDefaultsResponsePtrOutput() NodePoolDefaultsResponsePtrOutput {
+	return o.ToNodePoolDefaultsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolDefaultsResponseOutput) ToNodePoolDefaultsResponsePtrOutputWithContext(ctx context.Context) NodePoolDefaultsResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolDefaultsResponse) *NodePoolDefaultsResponse {
+		return &v
+	}).(NodePoolDefaultsResponsePtrOutput)
+}
+
+// Subset of NodeConfig message that has defaults.
+func (o NodePoolDefaultsResponseOutput) NodeConfigDefaults() NodeConfigDefaultsResponseOutput {
+	return o.ApplyT(func(v NodePoolDefaultsResponse) NodeConfigDefaultsResponse { return v.NodeConfigDefaults }).(NodeConfigDefaultsResponseOutput)
+}
+
+type NodePoolDefaultsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolDefaultsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolDefaultsResponse)(nil)).Elem()
+}
+
+func (o NodePoolDefaultsResponsePtrOutput) ToNodePoolDefaultsResponsePtrOutput() NodePoolDefaultsResponsePtrOutput {
+	return o
+}
+
+func (o NodePoolDefaultsResponsePtrOutput) ToNodePoolDefaultsResponsePtrOutputWithContext(ctx context.Context) NodePoolDefaultsResponsePtrOutput {
+	return o
+}
+
+func (o NodePoolDefaultsResponsePtrOutput) Elem() NodePoolDefaultsResponseOutput {
+	return o.ApplyT(func(v *NodePoolDefaultsResponse) NodePoolDefaultsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolDefaultsResponse
+		return ret
+	}).(NodePoolDefaultsResponseOutput)
+}
+
+// Subset of NodeConfig message that has defaults.
+func (o NodePoolDefaultsResponsePtrOutput) NodeConfigDefaults() NodeConfigDefaultsResponsePtrOutput {
+	return o.ApplyT(func(v *NodePoolDefaultsResponse) *NodeConfigDefaultsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.NodeConfigDefaults
+	}).(NodeConfigDefaultsResponsePtrOutput)
 }
 
 // NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload.
@@ -22434,6 +24071,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigPtrInput)(nil)).Elem(), AddonsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigResponseInput)(nil)).Elem(), AddonsConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigResponsePtrInput)(nil)).Elem(), AddonsConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AdvancedMachineFeaturesInput)(nil)).Elem(), AdvancedMachineFeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AdvancedMachineFeaturesPtrInput)(nil)).Elem(), AdvancedMachineFeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AdvancedMachineFeaturesResponseInput)(nil)).Elem(), AdvancedMachineFeaturesResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AdvancedMachineFeaturesResponsePtrInput)(nil)).Elem(), AdvancedMachineFeaturesResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticatorGroupsConfigInput)(nil)).Elem(), AuthenticatorGroupsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticatorGroupsConfigPtrInput)(nil)).Elem(), AuthenticatorGroupsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticatorGroupsConfigResponseInput)(nil)).Elem(), AuthenticatorGroupsConfigResponseArgs{})
@@ -22487,6 +24128,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsumptionMeteringConfigPtrInput)(nil)).Elem(), ConsumptionMeteringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsumptionMeteringConfigResponseInput)(nil)).Elem(), ConsumptionMeteringConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsumptionMeteringConfigResponsePtrInput)(nil)).Elem(), ConsumptionMeteringConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DNSConfigInput)(nil)).Elem(), DNSConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DNSConfigPtrInput)(nil)).Elem(), DNSConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DNSConfigResponseInput)(nil)).Elem(), DNSConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DNSConfigResponsePtrInput)(nil)).Elem(), DNSConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DailyMaintenanceWindowInput)(nil)).Elem(), DailyMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DailyMaintenanceWindowPtrInput)(nil)).Elem(), DailyMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DailyMaintenanceWindowResponseInput)(nil)).Elem(), DailyMaintenanceWindowResponseArgs{})
@@ -22507,6 +24152,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GcePersistentDiskCsiDriverConfigPtrInput)(nil)).Elem(), GcePersistentDiskCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcePersistentDiskCsiDriverConfigResponseInput)(nil)).Elem(), GcePersistentDiskCsiDriverConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcePersistentDiskCsiDriverConfigResponsePtrInput)(nil)).Elem(), GcePersistentDiskCsiDriverConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcfsConfigInput)(nil)).Elem(), GcfsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcfsConfigPtrInput)(nil)).Elem(), GcfsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcfsConfigResponseInput)(nil)).Elem(), GcfsConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcfsConfigResponsePtrInput)(nil)).Elem(), GcfsConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpFilestoreCsiDriverConfigInput)(nil)).Elem(), GcpFilestoreCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpFilestoreCsiDriverConfigPtrInput)(nil)).Elem(), GcpFilestoreCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpFilestoreCsiDriverConfigResponseInput)(nil)).Elem(), GcpFilestoreCsiDriverConfigResponseArgs{})
@@ -22593,6 +24242,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyResponsePtrInput)(nil)).Elem(), NetworkPolicyResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigInput)(nil)).Elem(), NodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigPtrInput)(nil)).Elem(), NodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigDefaultsInput)(nil)).Elem(), NodeConfigDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigDefaultsPtrInput)(nil)).Elem(), NodeConfigDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigDefaultsResponseInput)(nil)).Elem(), NodeConfigDefaultsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigDefaultsResponsePtrInput)(nil)).Elem(), NodeConfigDefaultsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigResponseInput)(nil)).Elem(), NodeConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigResponsePtrInput)(nil)).Elem(), NodeConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeKubeletConfigInput)(nil)).Elem(), NodeKubeletConfigArgs{})
@@ -22613,6 +24266,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoscalingPtrInput)(nil)).Elem(), NodePoolAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoscalingResponseInput)(nil)).Elem(), NodePoolAutoscalingResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoscalingResponsePtrInput)(nil)).Elem(), NodePoolAutoscalingResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolDefaultsInput)(nil)).Elem(), NodePoolDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolDefaultsPtrInput)(nil)).Elem(), NodePoolDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolDefaultsResponseInput)(nil)).Elem(), NodePoolDefaultsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolDefaultsResponsePtrInput)(nil)).Elem(), NodePoolDefaultsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolResponseInput)(nil)).Elem(), NodePoolResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolResponseArrayInput)(nil)).Elem(), NodePoolResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeTaintInput)(nil)).Elem(), NodeTaintArgs{})
@@ -22703,6 +24360,10 @@ func init() {
 	pulumi.RegisterOutputType(AddonsConfigPtrOutput{})
 	pulumi.RegisterOutputType(AddonsConfigResponseOutput{})
 	pulumi.RegisterOutputType(AddonsConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(AdvancedMachineFeaturesOutput{})
+	pulumi.RegisterOutputType(AdvancedMachineFeaturesPtrOutput{})
+	pulumi.RegisterOutputType(AdvancedMachineFeaturesResponseOutput{})
+	pulumi.RegisterOutputType(AdvancedMachineFeaturesResponsePtrOutput{})
 	pulumi.RegisterOutputType(AuthenticatorGroupsConfigOutput{})
 	pulumi.RegisterOutputType(AuthenticatorGroupsConfigPtrOutput{})
 	pulumi.RegisterOutputType(AuthenticatorGroupsConfigResponseOutput{})
@@ -22756,6 +24417,10 @@ func init() {
 	pulumi.RegisterOutputType(ConsumptionMeteringConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConsumptionMeteringConfigResponseOutput{})
 	pulumi.RegisterOutputType(ConsumptionMeteringConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(DNSConfigOutput{})
+	pulumi.RegisterOutputType(DNSConfigPtrOutput{})
+	pulumi.RegisterOutputType(DNSConfigResponseOutput{})
+	pulumi.RegisterOutputType(DNSConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(DailyMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(DailyMaintenanceWindowPtrOutput{})
 	pulumi.RegisterOutputType(DailyMaintenanceWindowResponseOutput{})
@@ -22776,6 +24441,10 @@ func init() {
 	pulumi.RegisterOutputType(GcePersistentDiskCsiDriverConfigPtrOutput{})
 	pulumi.RegisterOutputType(GcePersistentDiskCsiDriverConfigResponseOutput{})
 	pulumi.RegisterOutputType(GcePersistentDiskCsiDriverConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(GcfsConfigOutput{})
+	pulumi.RegisterOutputType(GcfsConfigPtrOutput{})
+	pulumi.RegisterOutputType(GcfsConfigResponseOutput{})
+	pulumi.RegisterOutputType(GcfsConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GcpFilestoreCsiDriverConfigOutput{})
 	pulumi.RegisterOutputType(GcpFilestoreCsiDriverConfigPtrOutput{})
 	pulumi.RegisterOutputType(GcpFilestoreCsiDriverConfigResponseOutput{})
@@ -22862,6 +24531,10 @@ func init() {
 	pulumi.RegisterOutputType(NetworkPolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(NodeConfigOutput{})
 	pulumi.RegisterOutputType(NodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodeConfigDefaultsOutput{})
+	pulumi.RegisterOutputType(NodeConfigDefaultsPtrOutput{})
+	pulumi.RegisterOutputType(NodeConfigDefaultsResponseOutput{})
+	pulumi.RegisterOutputType(NodeConfigDefaultsResponsePtrOutput{})
 	pulumi.RegisterOutputType(NodeConfigResponseOutput{})
 	pulumi.RegisterOutputType(NodeConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(NodeKubeletConfigOutput{})
@@ -22882,6 +24555,10 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolAutoscalingResponseOutput{})
 	pulumi.RegisterOutputType(NodePoolAutoscalingResponsePtrOutput{})
+	pulumi.RegisterOutputType(NodePoolDefaultsOutput{})
+	pulumi.RegisterOutputType(NodePoolDefaultsPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolDefaultsResponseOutput{})
+	pulumi.RegisterOutputType(NodePoolDefaultsResponsePtrOutput{})
 	pulumi.RegisterOutputType(NodePoolResponseOutput{})
 	pulumi.RegisterOutputType(NodePoolResponseArrayOutput{})
 	pulumi.RegisterOutputType(NodeTaintOutput{})

@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
         /// </summary>
         public readonly string Dataset;
         /// <summary>
+        /// BigQuery resource name of the latest shard.
+        /// </summary>
+        public readonly string LatestShardResource;
+        /// <summary>
         /// Total number of shards.
         /// </summary>
         public readonly string ShardCount;
@@ -33,11 +37,14 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
         private GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse(
             string dataset,
 
+            string latestShardResource,
+
             string shardCount,
 
             string tablePrefix)
         {
             Dataset = dataset;
+            LatestShardResource = latestShardResource;
             ShardCount = shardCount;
             TablePrefix = tablePrefix;
         }

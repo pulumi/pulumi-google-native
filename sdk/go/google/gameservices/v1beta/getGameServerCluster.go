@@ -29,8 +29,6 @@ type LookupGameServerClusterArgs struct {
 }
 
 type LookupGameServerClusterResult struct {
-	// Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
-	AllocationPriority string `pulumi:"allocationPriority"`
 	// The state of the Kubernetes cluster, this will be available if 'view' is set to `FULL` in the relevant List/Get/Preview request.
 	ClusterState KubernetesClusterStateResponse `pulumi:"clusterState"`
 	// The game server cluster connection information. This information is used to manage game server clusters.
@@ -82,11 +80,6 @@ func (o LookupGameServerClusterResultOutput) ToLookupGameServerClusterResultOutp
 
 func (o LookupGameServerClusterResultOutput) ToLookupGameServerClusterResultOutputWithContext(ctx context.Context) LookupGameServerClusterResultOutput {
 	return o
-}
-
-// Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
-func (o LookupGameServerClusterResultOutput) AllocationPriority() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGameServerClusterResult) string { return v.AllocationPriority }).(pulumi.StringOutput)
 }
 
 // The state of the Kubernetes cluster, this will be available if 'view' is set to `FULL` in the relevant List/Get/Preview request.

@@ -37,6 +37,10 @@ export class WorkerPool extends pulumi.CustomResource {
     }
 
     /**
+     * User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     */
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Time at which the request to create the `WorkerPool` was received.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -44,6 +48,14 @@ export class WorkerPool extends pulumi.CustomResource {
      * Time at which the request to delete the `WorkerPool` was received.
      */
     public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    /**
+     * A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+     */
+    public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
      */
@@ -56,6 +68,10 @@ export class WorkerPool extends pulumi.CustomResource {
      * `WorkerPool` state.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * A unique identifier for the `WorkerPool`.
+     */
+    public /*out*/ readonly uid!: pulumi.Output<string>;
     /**
      * Time at which the request to update the `WorkerPool` was received.
      */
@@ -79,6 +95,8 @@ export class WorkerPool extends pulumi.CustomResource {
             if ((!args || args.workerPoolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workerPoolId'");
             }
+            inputs["annotations"] = args ? args.annotations : undefined;
+            inputs["displayName"] = args ? args.displayName : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["networkConfig"] = args ? args.networkConfig : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -86,15 +104,21 @@ export class WorkerPool extends pulumi.CustomResource {
             inputs["workerPoolId"] = args ? args.workerPoolId : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["deleteTime"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
+            inputs["uid"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["annotations"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
             inputs["deleteTime"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["networkConfig"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
+            inputs["uid"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
             inputs["workerConfig"] = undefined /*out*/;
         }
@@ -109,6 +133,14 @@ export class WorkerPool extends pulumi.CustomResource {
  * The set of arguments for constructing a WorkerPool resource.
  */
 export interface WorkerPoolArgs {
+    /**
+     * User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
+     */
+    displayName?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     /**
      * Network configuration for the `WorkerPool`.

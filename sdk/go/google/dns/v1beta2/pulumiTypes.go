@@ -258,6 +258,316 @@ func (o DnsKeySpecResponseArrayOutput) Index(i pulumi.IntInput) DnsKeySpecRespon
 	}).(DnsKeySpecResponseOutput)
 }
 
+// Cloud Logging configurations for publicly visible zones.
+type ManagedZoneCloudLoggingConfig struct {
+	// If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
+	EnableLogging *bool   `pulumi:"enableLogging"`
+	Kind          *string `pulumi:"kind"`
+}
+
+// ManagedZoneCloudLoggingConfigInput is an input type that accepts ManagedZoneCloudLoggingConfigArgs and ManagedZoneCloudLoggingConfigOutput values.
+// You can construct a concrete instance of `ManagedZoneCloudLoggingConfigInput` via:
+//
+//          ManagedZoneCloudLoggingConfigArgs{...}
+type ManagedZoneCloudLoggingConfigInput interface {
+	pulumi.Input
+
+	ToManagedZoneCloudLoggingConfigOutput() ManagedZoneCloudLoggingConfigOutput
+	ToManagedZoneCloudLoggingConfigOutputWithContext(context.Context) ManagedZoneCloudLoggingConfigOutput
+}
+
+// Cloud Logging configurations for publicly visible zones.
+type ManagedZoneCloudLoggingConfigArgs struct {
+	// If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
+	EnableLogging pulumi.BoolPtrInput   `pulumi:"enableLogging"`
+	Kind          pulumi.StringPtrInput `pulumi:"kind"`
+}
+
+func (ManagedZoneCloudLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZoneCloudLoggingConfig)(nil)).Elem()
+}
+
+func (i ManagedZoneCloudLoggingConfigArgs) ToManagedZoneCloudLoggingConfigOutput() ManagedZoneCloudLoggingConfigOutput {
+	return i.ToManagedZoneCloudLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i ManagedZoneCloudLoggingConfigArgs) ToManagedZoneCloudLoggingConfigOutputWithContext(ctx context.Context) ManagedZoneCloudLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneCloudLoggingConfigOutput)
+}
+
+func (i ManagedZoneCloudLoggingConfigArgs) ToManagedZoneCloudLoggingConfigPtrOutput() ManagedZoneCloudLoggingConfigPtrOutput {
+	return i.ToManagedZoneCloudLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedZoneCloudLoggingConfigArgs) ToManagedZoneCloudLoggingConfigPtrOutputWithContext(ctx context.Context) ManagedZoneCloudLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneCloudLoggingConfigOutput).ToManagedZoneCloudLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// ManagedZoneCloudLoggingConfigPtrInput is an input type that accepts ManagedZoneCloudLoggingConfigArgs, ManagedZoneCloudLoggingConfigPtr and ManagedZoneCloudLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `ManagedZoneCloudLoggingConfigPtrInput` via:
+//
+//          ManagedZoneCloudLoggingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ManagedZoneCloudLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToManagedZoneCloudLoggingConfigPtrOutput() ManagedZoneCloudLoggingConfigPtrOutput
+	ToManagedZoneCloudLoggingConfigPtrOutputWithContext(context.Context) ManagedZoneCloudLoggingConfigPtrOutput
+}
+
+type managedZoneCloudLoggingConfigPtrType ManagedZoneCloudLoggingConfigArgs
+
+func ManagedZoneCloudLoggingConfigPtr(v *ManagedZoneCloudLoggingConfigArgs) ManagedZoneCloudLoggingConfigPtrInput {
+	return (*managedZoneCloudLoggingConfigPtrType)(v)
+}
+
+func (*managedZoneCloudLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedZoneCloudLoggingConfig)(nil)).Elem()
+}
+
+func (i *managedZoneCloudLoggingConfigPtrType) ToManagedZoneCloudLoggingConfigPtrOutput() ManagedZoneCloudLoggingConfigPtrOutput {
+	return i.ToManagedZoneCloudLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *managedZoneCloudLoggingConfigPtrType) ToManagedZoneCloudLoggingConfigPtrOutputWithContext(ctx context.Context) ManagedZoneCloudLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneCloudLoggingConfigPtrOutput)
+}
+
+// Cloud Logging configurations for publicly visible zones.
+type ManagedZoneCloudLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (ManagedZoneCloudLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZoneCloudLoggingConfig)(nil)).Elem()
+}
+
+func (o ManagedZoneCloudLoggingConfigOutput) ToManagedZoneCloudLoggingConfigOutput() ManagedZoneCloudLoggingConfigOutput {
+	return o
+}
+
+func (o ManagedZoneCloudLoggingConfigOutput) ToManagedZoneCloudLoggingConfigOutputWithContext(ctx context.Context) ManagedZoneCloudLoggingConfigOutput {
+	return o
+}
+
+func (o ManagedZoneCloudLoggingConfigOutput) ToManagedZoneCloudLoggingConfigPtrOutput() ManagedZoneCloudLoggingConfigPtrOutput {
+	return o.ToManagedZoneCloudLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedZoneCloudLoggingConfigOutput) ToManagedZoneCloudLoggingConfigPtrOutputWithContext(ctx context.Context) ManagedZoneCloudLoggingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZoneCloudLoggingConfig) *ManagedZoneCloudLoggingConfig {
+		return &v
+	}).(ManagedZoneCloudLoggingConfigPtrOutput)
+}
+
+// If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
+func (o ManagedZoneCloudLoggingConfigOutput) EnableLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedZoneCloudLoggingConfig) *bool { return v.EnableLogging }).(pulumi.BoolPtrOutput)
+}
+
+func (o ManagedZoneCloudLoggingConfigOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedZoneCloudLoggingConfig) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+type ManagedZoneCloudLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedZoneCloudLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedZoneCloudLoggingConfig)(nil)).Elem()
+}
+
+func (o ManagedZoneCloudLoggingConfigPtrOutput) ToManagedZoneCloudLoggingConfigPtrOutput() ManagedZoneCloudLoggingConfigPtrOutput {
+	return o
+}
+
+func (o ManagedZoneCloudLoggingConfigPtrOutput) ToManagedZoneCloudLoggingConfigPtrOutputWithContext(ctx context.Context) ManagedZoneCloudLoggingConfigPtrOutput {
+	return o
+}
+
+func (o ManagedZoneCloudLoggingConfigPtrOutput) Elem() ManagedZoneCloudLoggingConfigOutput {
+	return o.ApplyT(func(v *ManagedZoneCloudLoggingConfig) ManagedZoneCloudLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZoneCloudLoggingConfig
+		return ret
+	}).(ManagedZoneCloudLoggingConfigOutput)
+}
+
+// If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
+func (o ManagedZoneCloudLoggingConfigPtrOutput) EnableLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedZoneCloudLoggingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableLogging
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ManagedZoneCloudLoggingConfigPtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedZoneCloudLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cloud Logging configurations for publicly visible zones.
+type ManagedZoneCloudLoggingConfigResponse struct {
+	// If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
+	EnableLogging bool   `pulumi:"enableLogging"`
+	Kind          string `pulumi:"kind"`
+}
+
+// ManagedZoneCloudLoggingConfigResponseInput is an input type that accepts ManagedZoneCloudLoggingConfigResponseArgs and ManagedZoneCloudLoggingConfigResponseOutput values.
+// You can construct a concrete instance of `ManagedZoneCloudLoggingConfigResponseInput` via:
+//
+//          ManagedZoneCloudLoggingConfigResponseArgs{...}
+type ManagedZoneCloudLoggingConfigResponseInput interface {
+	pulumi.Input
+
+	ToManagedZoneCloudLoggingConfigResponseOutput() ManagedZoneCloudLoggingConfigResponseOutput
+	ToManagedZoneCloudLoggingConfigResponseOutputWithContext(context.Context) ManagedZoneCloudLoggingConfigResponseOutput
+}
+
+// Cloud Logging configurations for publicly visible zones.
+type ManagedZoneCloudLoggingConfigResponseArgs struct {
+	// If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
+	EnableLogging pulumi.BoolInput   `pulumi:"enableLogging"`
+	Kind          pulumi.StringInput `pulumi:"kind"`
+}
+
+func (ManagedZoneCloudLoggingConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZoneCloudLoggingConfigResponse)(nil)).Elem()
+}
+
+func (i ManagedZoneCloudLoggingConfigResponseArgs) ToManagedZoneCloudLoggingConfigResponseOutput() ManagedZoneCloudLoggingConfigResponseOutput {
+	return i.ToManagedZoneCloudLoggingConfigResponseOutputWithContext(context.Background())
+}
+
+func (i ManagedZoneCloudLoggingConfigResponseArgs) ToManagedZoneCloudLoggingConfigResponseOutputWithContext(ctx context.Context) ManagedZoneCloudLoggingConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneCloudLoggingConfigResponseOutput)
+}
+
+func (i ManagedZoneCloudLoggingConfigResponseArgs) ToManagedZoneCloudLoggingConfigResponsePtrOutput() ManagedZoneCloudLoggingConfigResponsePtrOutput {
+	return i.ToManagedZoneCloudLoggingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ManagedZoneCloudLoggingConfigResponseArgs) ToManagedZoneCloudLoggingConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZoneCloudLoggingConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneCloudLoggingConfigResponseOutput).ToManagedZoneCloudLoggingConfigResponsePtrOutputWithContext(ctx)
+}
+
+// ManagedZoneCloudLoggingConfigResponsePtrInput is an input type that accepts ManagedZoneCloudLoggingConfigResponseArgs, ManagedZoneCloudLoggingConfigResponsePtr and ManagedZoneCloudLoggingConfigResponsePtrOutput values.
+// You can construct a concrete instance of `ManagedZoneCloudLoggingConfigResponsePtrInput` via:
+//
+//          ManagedZoneCloudLoggingConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ManagedZoneCloudLoggingConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToManagedZoneCloudLoggingConfigResponsePtrOutput() ManagedZoneCloudLoggingConfigResponsePtrOutput
+	ToManagedZoneCloudLoggingConfigResponsePtrOutputWithContext(context.Context) ManagedZoneCloudLoggingConfigResponsePtrOutput
+}
+
+type managedZoneCloudLoggingConfigResponsePtrType ManagedZoneCloudLoggingConfigResponseArgs
+
+func ManagedZoneCloudLoggingConfigResponsePtr(v *ManagedZoneCloudLoggingConfigResponseArgs) ManagedZoneCloudLoggingConfigResponsePtrInput {
+	return (*managedZoneCloudLoggingConfigResponsePtrType)(v)
+}
+
+func (*managedZoneCloudLoggingConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedZoneCloudLoggingConfigResponse)(nil)).Elem()
+}
+
+func (i *managedZoneCloudLoggingConfigResponsePtrType) ToManagedZoneCloudLoggingConfigResponsePtrOutput() ManagedZoneCloudLoggingConfigResponsePtrOutput {
+	return i.ToManagedZoneCloudLoggingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *managedZoneCloudLoggingConfigResponsePtrType) ToManagedZoneCloudLoggingConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZoneCloudLoggingConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneCloudLoggingConfigResponsePtrOutput)
+}
+
+// Cloud Logging configurations for publicly visible zones.
+type ManagedZoneCloudLoggingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedZoneCloudLoggingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZoneCloudLoggingConfigResponse)(nil)).Elem()
+}
+
+func (o ManagedZoneCloudLoggingConfigResponseOutput) ToManagedZoneCloudLoggingConfigResponseOutput() ManagedZoneCloudLoggingConfigResponseOutput {
+	return o
+}
+
+func (o ManagedZoneCloudLoggingConfigResponseOutput) ToManagedZoneCloudLoggingConfigResponseOutputWithContext(ctx context.Context) ManagedZoneCloudLoggingConfigResponseOutput {
+	return o
+}
+
+func (o ManagedZoneCloudLoggingConfigResponseOutput) ToManagedZoneCloudLoggingConfigResponsePtrOutput() ManagedZoneCloudLoggingConfigResponsePtrOutput {
+	return o.ToManagedZoneCloudLoggingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ManagedZoneCloudLoggingConfigResponseOutput) ToManagedZoneCloudLoggingConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZoneCloudLoggingConfigResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZoneCloudLoggingConfigResponse) *ManagedZoneCloudLoggingConfigResponse {
+		return &v
+	}).(ManagedZoneCloudLoggingConfigResponsePtrOutput)
+}
+
+// If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
+func (o ManagedZoneCloudLoggingConfigResponseOutput) EnableLogging() pulumi.BoolOutput {
+	return o.ApplyT(func(v ManagedZoneCloudLoggingConfigResponse) bool { return v.EnableLogging }).(pulumi.BoolOutput)
+}
+
+func (o ManagedZoneCloudLoggingConfigResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedZoneCloudLoggingConfigResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+type ManagedZoneCloudLoggingConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedZoneCloudLoggingConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedZoneCloudLoggingConfigResponse)(nil)).Elem()
+}
+
+func (o ManagedZoneCloudLoggingConfigResponsePtrOutput) ToManagedZoneCloudLoggingConfigResponsePtrOutput() ManagedZoneCloudLoggingConfigResponsePtrOutput {
+	return o
+}
+
+func (o ManagedZoneCloudLoggingConfigResponsePtrOutput) ToManagedZoneCloudLoggingConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZoneCloudLoggingConfigResponsePtrOutput {
+	return o
+}
+
+func (o ManagedZoneCloudLoggingConfigResponsePtrOutput) Elem() ManagedZoneCloudLoggingConfigResponseOutput {
+	return o.ApplyT(func(v *ManagedZoneCloudLoggingConfigResponse) ManagedZoneCloudLoggingConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZoneCloudLoggingConfigResponse
+		return ret
+	}).(ManagedZoneCloudLoggingConfigResponseOutput)
+}
+
+// If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
+func (o ManagedZoneCloudLoggingConfigResponsePtrOutput) EnableLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedZoneCloudLoggingConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableLogging
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ManagedZoneCloudLoggingConfigResponsePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedZoneCloudLoggingConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
 type ManagedZoneDnsSecConfig struct {
 	// Specifies parameters for generating initial DnsKeys for this ManagedZone. Can only be changed while the state is OFF.
 	DefaultKeySpecs []DnsKeySpec `pulumi:"defaultKeySpecs"`
@@ -4477,8 +4787,6 @@ func (o RRSetRoutingPolicyPtrOutput) WrrPolicy() RRSetRoutingPolicyWrrPolicyPtrO
 }
 
 type RRSetRoutingPolicyGeoPolicy struct {
-	// If the health check for the primary target for a geo location returns an unhealthy status, the failover target is returned instead. This failover configuration is not mandatory. If a failover is not provided, the primary target won't be healthchecked, and it returns the primarily configured rrdata irrespective of whether it is healthy or not.
-	Failovers []RRSetRoutingPolicyGeoPolicyGeoPolicyItem `pulumi:"failovers"`
 	// The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
 	Items []RRSetRoutingPolicyGeoPolicyGeoPolicyItem `pulumi:"items"`
 	Kind  *string                                    `pulumi:"kind"`
@@ -4496,8 +4804,6 @@ type RRSetRoutingPolicyGeoPolicyInput interface {
 }
 
 type RRSetRoutingPolicyGeoPolicyArgs struct {
-	// If the health check for the primary target for a geo location returns an unhealthy status, the failover target is returned instead. This failover configuration is not mandatory. If a failover is not provided, the primary target won't be healthchecked, and it returns the primarily configured rrdata irrespective of whether it is healthy or not.
-	Failovers RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayInput `pulumi:"failovers"`
 	// The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
 	Items RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayInput `pulumi:"items"`
 	Kind  pulumi.StringPtrInput                              `pulumi:"kind"`
@@ -4580,11 +4886,6 @@ func (o RRSetRoutingPolicyGeoPolicyOutput) ToRRSetRoutingPolicyGeoPolicyPtrOutpu
 	}).(RRSetRoutingPolicyGeoPolicyPtrOutput)
 }
 
-// If the health check for the primary target for a geo location returns an unhealthy status, the failover target is returned instead. This failover configuration is not mandatory. If a failover is not provided, the primary target won't be healthchecked, and it returns the primarily configured rrdata irrespective of whether it is healthy or not.
-func (o RRSetRoutingPolicyGeoPolicyOutput) Failovers() RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput {
-	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicy) []RRSetRoutingPolicyGeoPolicyGeoPolicyItem { return v.Failovers }).(RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput)
-}
-
 // The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
 func (o RRSetRoutingPolicyGeoPolicyOutput) Items() RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicy) []RRSetRoutingPolicyGeoPolicyGeoPolicyItem { return v.Items }).(RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput)
@@ -4616,16 +4917,6 @@ func (o RRSetRoutingPolicyGeoPolicyPtrOutput) Elem() RRSetRoutingPolicyGeoPolicy
 		var ret RRSetRoutingPolicyGeoPolicy
 		return ret
 	}).(RRSetRoutingPolicyGeoPolicyOutput)
-}
-
-// If the health check for the primary target for a geo location returns an unhealthy status, the failover target is returned instead. This failover configuration is not mandatory. If a failover is not provided, the primary target won't be healthchecked, and it returns the primarily configured rrdata irrespective of whether it is healthy or not.
-func (o RRSetRoutingPolicyGeoPolicyPtrOutput) Failovers() RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput {
-	return o.ApplyT(func(v *RRSetRoutingPolicyGeoPolicy) []RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
-		if v == nil {
-			return nil
-		}
-		return v.Failovers
-	}).(RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput)
 }
 
 // The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
@@ -4884,8 +5175,6 @@ func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseArrayOutput) Index(i pul
 }
 
 type RRSetRoutingPolicyGeoPolicyResponse struct {
-	// If the health check for the primary target for a geo location returns an unhealthy status, the failover target is returned instead. This failover configuration is not mandatory. If a failover is not provided, the primary target won't be healthchecked, and it returns the primarily configured rrdata irrespective of whether it is healthy or not.
-	Failovers []RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse `pulumi:"failovers"`
 	// The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
 	Items []RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse `pulumi:"items"`
 	Kind  string                                             `pulumi:"kind"`
@@ -4903,8 +5192,6 @@ type RRSetRoutingPolicyGeoPolicyResponseInput interface {
 }
 
 type RRSetRoutingPolicyGeoPolicyResponseArgs struct {
-	// If the health check for the primary target for a geo location returns an unhealthy status, the failover target is returned instead. This failover configuration is not mandatory. If a failover is not provided, the primary target won't be healthchecked, and it returns the primarily configured rrdata irrespective of whether it is healthy or not.
-	Failovers RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseArrayInput `pulumi:"failovers"`
 	// The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
 	Items RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseArrayInput `pulumi:"items"`
 	Kind  pulumi.StringInput                                         `pulumi:"kind"`
@@ -4987,13 +5274,6 @@ func (o RRSetRoutingPolicyGeoPolicyResponseOutput) ToRRSetRoutingPolicyGeoPolicy
 	}).(RRSetRoutingPolicyGeoPolicyResponsePtrOutput)
 }
 
-// If the health check for the primary target for a geo location returns an unhealthy status, the failover target is returned instead. This failover configuration is not mandatory. If a failover is not provided, the primary target won't be healthchecked, and it returns the primarily configured rrdata irrespective of whether it is healthy or not.
-func (o RRSetRoutingPolicyGeoPolicyResponseOutput) Failovers() RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseArrayOutput {
-	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicyResponse) []RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse {
-		return v.Failovers
-	}).(RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseArrayOutput)
-}
-
 // The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
 func (o RRSetRoutingPolicyGeoPolicyResponseOutput) Items() RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseArrayOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicyResponse) []RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse {
@@ -5027,16 +5307,6 @@ func (o RRSetRoutingPolicyGeoPolicyResponsePtrOutput) Elem() RRSetRoutingPolicyG
 		var ret RRSetRoutingPolicyGeoPolicyResponse
 		return ret
 	}).(RRSetRoutingPolicyGeoPolicyResponseOutput)
-}
-
-// If the health check for the primary target for a geo location returns an unhealthy status, the failover target is returned instead. This failover configuration is not mandatory. If a failover is not provided, the primary target won't be healthchecked, and it returns the primarily configured rrdata irrespective of whether it is healthy or not.
-func (o RRSetRoutingPolicyGeoPolicyResponsePtrOutput) Failovers() RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseArrayOutput {
-	return o.ApplyT(func(v *RRSetRoutingPolicyGeoPolicyResponse) []RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Failovers
-	}).(RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseArrayOutput)
 }
 
 // The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
@@ -6781,6 +7051,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsKeySpecArrayInput)(nil)).Elem(), DnsKeySpecArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsKeySpecResponseInput)(nil)).Elem(), DnsKeySpecResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsKeySpecResponseArrayInput)(nil)).Elem(), DnsKeySpecResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneCloudLoggingConfigInput)(nil)).Elem(), ManagedZoneCloudLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneCloudLoggingConfigPtrInput)(nil)).Elem(), ManagedZoneCloudLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneCloudLoggingConfigResponseInput)(nil)).Elem(), ManagedZoneCloudLoggingConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneCloudLoggingConfigResponsePtrInput)(nil)).Elem(), ManagedZoneCloudLoggingConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneDnsSecConfigInput)(nil)).Elem(), ManagedZoneDnsSecConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneDnsSecConfigPtrInput)(nil)).Elem(), ManagedZoneDnsSecConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneDnsSecConfigResponseInput)(nil)).Elem(), ManagedZoneDnsSecConfigResponseArgs{})
@@ -6877,6 +7151,10 @@ func init() {
 	pulumi.RegisterOutputType(DnsKeySpecArrayOutput{})
 	pulumi.RegisterOutputType(DnsKeySpecResponseOutput{})
 	pulumi.RegisterOutputType(DnsKeySpecResponseArrayOutput{})
+	pulumi.RegisterOutputType(ManagedZoneCloudLoggingConfigOutput{})
+	pulumi.RegisterOutputType(ManagedZoneCloudLoggingConfigPtrOutput{})
+	pulumi.RegisterOutputType(ManagedZoneCloudLoggingConfigResponseOutput{})
+	pulumi.RegisterOutputType(ManagedZoneCloudLoggingConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedZoneDnsSecConfigOutput{})
 	pulumi.RegisterOutputType(ManagedZoneDnsSecConfigPtrOutput{})
 	pulumi.RegisterOutputType(ManagedZoneDnsSecConfigResponseOutput{})

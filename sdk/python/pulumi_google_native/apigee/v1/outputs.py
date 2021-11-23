@@ -572,7 +572,7 @@ class GoogleCloudApigeeV1ConnectorsPlatformConfigResponse(dict):
         """
         Configuration for the Connectors Platform add-on.
         :param bool enabled: Flag that specifies whether the Connectors Platform add-on is enabled.
-        :param str expires_at: Time at which the Connectors Platform add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
+        :param str expires_at: Time at which the Connectors Platform add-on expires in milliseconds since epoch. If unspecified, the add-on will never expire.
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "expires_at", expires_at)
@@ -589,7 +589,7 @@ class GoogleCloudApigeeV1ConnectorsPlatformConfigResponse(dict):
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> str:
         """
-        Time at which the Connectors Platform add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
+        Time at which the Connectors Platform add-on expires in milliseconds since epoch. If unspecified, the add-on will never expire.
         """
         return pulumi.get(self, "expires_at")
 
@@ -638,7 +638,7 @@ class GoogleCloudApigeeV1CredentialResponse(dict):
         :param str expires_at: Time the credential will expire in milliseconds since epoch.
         :param str issued_at: Time the credential was issued in milliseconds since epoch.
         :param Sequence[str] scopes: List of scopes to apply to the app. Specified scopes must already exist on the API product that you associate with the app.
-        :param str status: Status of the credential.
+        :param str status: Status of the credential. Valid values include `approved` or `revoked`.
         """
         pulumi.set(__self__, "api_products", api_products)
         pulumi.set(__self__, "attributes", attributes)
@@ -709,7 +709,7 @@ class GoogleCloudApigeeV1CredentialResponse(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        Status of the credential.
+        Status of the credential. Valid values include `approved` or `revoked`.
         """
         return pulumi.get(self, "status")
 
@@ -1958,17 +1958,17 @@ class GoogleIamV1AuditLogConfigResponse(dict):
 @pulumi.output_type
 class GoogleIamV1BindingResponse(dict):
     """
-    Associates `members` with a `role`.
+    Associates `members`, or principals, with a `role`.
     """
     def __init__(__self__, *,
                  condition: 'outputs.GoogleTypeExprResponse',
                  members: Sequence[str],
                  role: str):
         """
-        Associates `members` with a `role`.
-        :param 'GoogleTypeExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
-        :param str role: Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Associates `members`, or principals, with a `role`.
+        :param 'GoogleTypeExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        :param Sequence[str] members: Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "members", members)
@@ -1978,7 +1978,7 @@ class GoogleIamV1BindingResponse(dict):
     @pulumi.getter
     def condition(self) -> 'outputs.GoogleTypeExprResponse':
         """
-        The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         """
         return pulumi.get(self, "condition")
 
@@ -1986,7 +1986,7 @@ class GoogleIamV1BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         """
         return pulumi.get(self, "members")
 
@@ -1994,7 +1994,7 @@ class GoogleIamV1BindingResponse(dict):
     @pulumi.getter
     def role(self) -> str:
         """
-        Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
 

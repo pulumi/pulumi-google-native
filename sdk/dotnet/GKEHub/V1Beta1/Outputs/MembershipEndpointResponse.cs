@@ -33,7 +33,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta1.Outputs
         /// </summary>
         public readonly Outputs.MultiCloudClusterResponse MultiCloudCluster;
         /// <summary>
-        /// Optional. Specific information for a GKE On-Prem cluster.
+        /// Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
         /// </summary>
         public readonly Outputs.OnPremClusterResponse OnPremCluster;
 

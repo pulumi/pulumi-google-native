@@ -505,15 +505,15 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         }
 
         /// <summary>
-        /// If it is unspeified, PROTO will be used.
+        /// If it is unspecified, PROTO will be used.
         /// </summary>
         public static GoogleCloudDialogflowV2NotificationConfigMessageFormat MessageFormatUnspecified { get; } = new GoogleCloudDialogflowV2NotificationConfigMessageFormat("MESSAGE_FORMAT_UNSPECIFIED");
         /// <summary>
-        /// Pubsub message will be serialized proto.
+        /// Pub/Sub message will be serialized proto.
         /// </summary>
         public static GoogleCloudDialogflowV2NotificationConfigMessageFormat Proto { get; } = new GoogleCloudDialogflowV2NotificationConfigMessageFormat("PROTO");
         /// <summary>
-        /// Pubsub message will be json.
+        /// Pub/Sub message will be json.
         /// </summary>
         public static GoogleCloudDialogflowV2NotificationConfigMessageFormat Json { get; } = new GoogleCloudDialogflowV2NotificationConfigMessageFormat("JSON");
 
@@ -602,6 +602,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         /// Run FAQ model.
         /// </summary>
         public static GoogleCloudDialogflowV2SuggestionFeatureType Faq { get; } = new GoogleCloudDialogflowV2SuggestionFeatureType("FAQ");
+        /// <summary>
+        /// Run smart reply model.
+        /// </summary>
+        public static GoogleCloudDialogflowV2SuggestionFeatureType SmartReply { get; } = new GoogleCloudDialogflowV2SuggestionFeatureType("SMART_REPLY");
 
         public static bool operator ==(GoogleCloudDialogflowV2SuggestionFeatureType left, GoogleCloudDialogflowV2SuggestionFeatureType right) => left.Equals(right);
         public static bool operator !=(GoogleCloudDialogflowV2SuggestionFeatureType left, GoogleCloudDialogflowV2SuggestionFeatureType right) => !left.Equals(right);

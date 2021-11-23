@@ -111,7 +111,7 @@ export class Occurrence extends pulumi.CustomResource {
     /**
      * Describes a specific SPDX Package.
      */
-    public readonly spdxPackage!: pulumi.Output<outputs.containeranalysis.v1alpha1.PackageOccurrenceResponse>;
+    public readonly spdxPackage!: pulumi.Output<outputs.containeranalysis.v1alpha1.PackageInfoOccurrenceResponse>;
     /**
      * Describes a specific relationship between SPDX elements.
      */
@@ -264,7 +264,7 @@ export interface OccurrenceArgs {
     /**
      * Describes a specific SPDX Package.
      */
-    spdxPackage?: pulumi.Input<inputs.containeranalysis.v1alpha1.PackageOccurrenceArgs>;
+    spdxPackage?: pulumi.Input<inputs.containeranalysis.v1alpha1.PackageInfoOccurrenceArgs>;
     /**
      * Describes a specific relationship between SPDX elements.
      */

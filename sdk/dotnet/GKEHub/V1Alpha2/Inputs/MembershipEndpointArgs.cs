@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha2.Inputs
         public Input<Inputs.MultiCloudClusterArgs>? MultiCloudCluster { get; set; }
 
         /// <summary>
-        /// Optional. Specific information for a GKE On-Prem cluster.
+        /// Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
         /// </summary>
         [Input("onPremCluster")]
         public Input<Inputs.OnPremClusterArgs>? OnPremCluster { get; set; }

@@ -27,6 +27,7 @@ type LookupManagedZoneArgs struct {
 }
 
 type LookupManagedZoneResult struct {
+	CloudLoggingConfig ManagedZoneCloudLoggingConfigResponse `pulumi:"cloudLoggingConfig"`
 	// The time that this resource was created on the server. This is in RFC3339 text format. Output only.
 	CreationTime string `pulumi:"creationTime"`
 	// A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the managed zone's function.
@@ -89,6 +90,10 @@ func (o LookupManagedZoneResultOutput) ToLookupManagedZoneResultOutput() LookupM
 
 func (o LookupManagedZoneResultOutput) ToLookupManagedZoneResultOutputWithContext(ctx context.Context) LookupManagedZoneResultOutput {
 	return o
+}
+
+func (o LookupManagedZoneResultOutput) CloudLoggingConfig() ManagedZoneCloudLoggingConfigResponseOutput {
+	return o.ApplyT(func(v LookupManagedZoneResult) ManagedZoneCloudLoggingConfigResponse { return v.CloudLoggingConfig }).(ManagedZoneCloudLoggingConfigResponseOutput)
 }
 
 // The time that this resource was created on the server. This is in RFC3339 text format. Output only.

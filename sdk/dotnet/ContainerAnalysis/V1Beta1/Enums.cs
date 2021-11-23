@@ -534,6 +534,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         /// This represents an SPDX File.
         /// </summary>
         public static DiscoveryAnalysisKind SpdxFile { get; } = new DiscoveryAnalysisKind("SPDX_FILE");
+        /// <summary>
+        /// This represents an SPDX Relationship.
+        /// </summary>
+        public static DiscoveryAnalysisKind SpdxRelationship { get; } = new DiscoveryAnalysisKind("SPDX_RELATIONSHIP");
 
         public static bool operator ==(DiscoveryAnalysisKind left, DiscoveryAnalysisKind right) => left.Equals(right);
         public static bool operator !=(DiscoveryAnalysisKind left, DiscoveryAnalysisKind right) => !left.Equals(right);
@@ -949,11 +953,11 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
     /// The type of relationship between the source and target SPDX elements
     /// </summary>
     [EnumType]
-    public readonly struct RelationshipOccurrenceType : IEquatable<RelationshipOccurrenceType>
+    public readonly struct RelationshipNoteType : IEquatable<RelationshipNoteType>
     {
         private readonly string _value;
 
-        private RelationshipOccurrenceType(string value)
+        private RelationshipNoteType(string value)
         {
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
@@ -961,188 +965,188 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         /// <summary>
         /// Unspecified
         /// </summary>
-        public static RelationshipOccurrenceType TypeUnspecified { get; } = new RelationshipOccurrenceType("TYPE_UNSPECIFIED");
+        public static RelationshipNoteType RelationshipTypeUnspecified { get; } = new RelationshipNoteType("RELATIONSHIP_TYPE_UNSPECIFIED");
         /// <summary>
         /// Is to be used when SPDXRef-DOCUMENT describes SPDXRef-A
         /// </summary>
-        public static RelationshipOccurrenceType Describes { get; } = new RelationshipOccurrenceType("DESCRIBES");
+        public static RelationshipNoteType Describes { get; } = new RelationshipNoteType("DESCRIBES");
         /// <summary>
         /// Is to be used when SPDXRef-A is described by SPDXREF-Document
         /// </summary>
-        public static RelationshipOccurrenceType DescribedBy { get; } = new RelationshipOccurrenceType("DESCRIBED_BY");
+        public static RelationshipNoteType DescribedBy { get; } = new RelationshipNoteType("DESCRIBED_BY");
         /// <summary>
         /// Is to be used when SPDXRef-A contains SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType Contains { get; } = new RelationshipOccurrenceType("CONTAINS");
+        public static RelationshipNoteType Contains { get; } = new RelationshipNoteType("CONTAINS");
         /// <summary>
         /// Is to be used when SPDXRef-A is contained by SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType ContainedBy { get; } = new RelationshipOccurrenceType("CONTAINED_BY");
+        public static RelationshipNoteType ContainedBy { get; } = new RelationshipNoteType("CONTAINED_BY");
         /// <summary>
         /// Is to be used when SPDXRef-A depends on SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType DependsOn { get; } = new RelationshipOccurrenceType("DEPENDS_ON");
+        public static RelationshipNoteType DependsOn { get; } = new RelationshipNoteType("DEPENDS_ON");
         /// <summary>
         /// Is to be used when SPDXRef-A is dependency of SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType DependencyOf { get; } = new RelationshipOccurrenceType("DEPENDENCY_OF");
+        public static RelationshipNoteType DependencyOf { get; } = new RelationshipNoteType("DEPENDENCY_OF");
         /// <summary>
         /// Is to be used when SPDXRef-A is a manifest file that lists a set of dependencies for SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType DependencyManifestOf { get; } = new RelationshipOccurrenceType("DEPENDENCY_MANIFEST_OF");
+        public static RelationshipNoteType DependencyManifestOf { get; } = new RelationshipNoteType("DEPENDENCY_MANIFEST_OF");
         /// <summary>
         /// Is to be used when SPDXRef-A is a build dependency of SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType BuildDependencyOf { get; } = new RelationshipOccurrenceType("BUILD_DEPENDENCY_OF");
+        public static RelationshipNoteType BuildDependencyOf { get; } = new RelationshipNoteType("BUILD_DEPENDENCY_OF");
         /// <summary>
         /// Is to be used when SPDXRef-A is a development dependency of SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType DevDependencyOf { get; } = new RelationshipOccurrenceType("DEV_DEPENDENCY_OF");
+        public static RelationshipNoteType DevDependencyOf { get; } = new RelationshipNoteType("DEV_DEPENDENCY_OF");
         /// <summary>
         /// Is to be used when SPDXRef-A is an optional dependency of SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType OptionalDependencyOf { get; } = new RelationshipOccurrenceType("OPTIONAL_DEPENDENCY_OF");
+        public static RelationshipNoteType OptionalDependencyOf { get; } = new RelationshipNoteType("OPTIONAL_DEPENDENCY_OF");
         /// <summary>
         /// Is to be used when SPDXRef-A is a to be provided dependency of SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType ProvidedDependencyOf { get; } = new RelationshipOccurrenceType("PROVIDED_DEPENDENCY_OF");
+        public static RelationshipNoteType ProvidedDependencyOf { get; } = new RelationshipNoteType("PROVIDED_DEPENDENCY_OF");
         /// <summary>
         /// Is to be used when SPDXRef-A is a test dependency of SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType TestDependencyOf { get; } = new RelationshipOccurrenceType("TEST_DEPENDENCY_OF");
+        public static RelationshipNoteType TestDependencyOf { get; } = new RelationshipNoteType("TEST_DEPENDENCY_OF");
         /// <summary>
         /// Is to be used when SPDXRef-A is a dependency required for the execution of SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType RuntimeDependencyOf { get; } = new RelationshipOccurrenceType("RUNTIME_DEPENDENCY_OF");
+        public static RelationshipNoteType RuntimeDependencyOf { get; } = new RelationshipNoteType("RUNTIME_DEPENDENCY_OF");
         /// <summary>
         /// Is to be used when SPDXRef-A is an example of SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType ExampleOf { get; } = new RelationshipOccurrenceType("EXAMPLE_OF");
+        public static RelationshipNoteType ExampleOf { get; } = new RelationshipNoteType("EXAMPLE_OF");
         /// <summary>
         /// Is to be used when SPDXRef-A generates SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType Generates { get; } = new RelationshipOccurrenceType("GENERATES");
+        public static RelationshipNoteType Generates { get; } = new RelationshipNoteType("GENERATES");
         /// <summary>
         /// Is to be used when SPDXRef-A was generated from SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType GeneratedFrom { get; } = new RelationshipOccurrenceType("GENERATED_FROM");
+        public static RelationshipNoteType GeneratedFrom { get; } = new RelationshipNoteType("GENERATED_FROM");
         /// <summary>
         /// Is to be used when SPDXRef-A is an ancestor (same lineage but pre-dates) SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType AncestorOf { get; } = new RelationshipOccurrenceType("ANCESTOR_OF");
+        public static RelationshipNoteType AncestorOf { get; } = new RelationshipNoteType("ANCESTOR_OF");
         /// <summary>
         /// Is to be used when SPDXRef-A is a descendant of (same lineage but postdates) SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType DescendantOf { get; } = new RelationshipOccurrenceType("DESCENDANT_OF");
+        public static RelationshipNoteType DescendantOf { get; } = new RelationshipNoteType("DESCENDANT_OF");
         /// <summary>
         /// Is to be used when SPDXRef-A is a variant of (same lineage but not clear which came first) SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType VariantOf { get; } = new RelationshipOccurrenceType("VARIANT_OF");
+        public static RelationshipNoteType VariantOf { get; } = new RelationshipNoteType("VARIANT_OF");
         /// <summary>
         /// Is to be used when distributing SPDXRef-A requires that SPDXRef-B also be distributed
         /// </summary>
-        public static RelationshipOccurrenceType DistributionArtifact { get; } = new RelationshipOccurrenceType("DISTRIBUTION_ARTIFACT");
+        public static RelationshipNoteType DistributionArtifact { get; } = new RelationshipNoteType("DISTRIBUTION_ARTIFACT");
         /// <summary>
         /// Is to be used when SPDXRef-A is a patch file for (to be applied to) SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType PatchFor { get; } = new RelationshipOccurrenceType("PATCH_FOR");
+        public static RelationshipNoteType PatchFor { get; } = new RelationshipNoteType("PATCH_FOR");
         /// <summary>
         /// Is to be used when SPDXRef-A is a patch file that has been applied to SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType PatchApplied { get; } = new RelationshipOccurrenceType("PATCH_APPLIED");
+        public static RelationshipNoteType PatchApplied { get; } = new RelationshipNoteType("PATCH_APPLIED");
         /// <summary>
         /// Is to be used when SPDXRef-A is an exact copy of SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType CopyOf { get; } = new RelationshipOccurrenceType("COPY_OF");
+        public static RelationshipNoteType CopyOf { get; } = new RelationshipNoteType("COPY_OF");
         /// <summary>
         /// Is to be used when SPDXRef-A is a file that was added to SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType FileAdded { get; } = new RelationshipOccurrenceType("FILE_ADDED");
+        public static RelationshipNoteType FileAdded { get; } = new RelationshipNoteType("FILE_ADDED");
         /// <summary>
         /// Is to be used when SPDXRef-A is a file that was deleted from SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType FileDeleted { get; } = new RelationshipOccurrenceType("FILE_DELETED");
+        public static RelationshipNoteType FileDeleted { get; } = new RelationshipNoteType("FILE_DELETED");
         /// <summary>
         /// Is to be used when SPDXRef-A is a file that was modified from SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType FileModified { get; } = new RelationshipOccurrenceType("FILE_MODIFIED");
+        public static RelationshipNoteType FileModified { get; } = new RelationshipNoteType("FILE_MODIFIED");
         /// <summary>
         /// Is to be used when SPDXRef-A is expanded from the archive SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType ExpandedFromArchive { get; } = new RelationshipOccurrenceType("EXPANDED_FROM_ARCHIVE");
+        public static RelationshipNoteType ExpandedFromArchive { get; } = new RelationshipNoteType("EXPANDED_FROM_ARCHIVE");
         /// <summary>
         /// Is to be used when SPDXRef-A dynamically links to SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType DynamicLink { get; } = new RelationshipOccurrenceType("DYNAMIC_LINK");
+        public static RelationshipNoteType DynamicLink { get; } = new RelationshipNoteType("DYNAMIC_LINK");
         /// <summary>
         /// Is to be used when SPDXRef-A statically links to SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType StaticLink { get; } = new RelationshipOccurrenceType("STATIC_LINK");
+        public static RelationshipNoteType StaticLink { get; } = new RelationshipNoteType("STATIC_LINK");
         /// <summary>
         /// Is to be used when SPDXRef-A is a data file used in SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType DataFileOf { get; } = new RelationshipOccurrenceType("DATA_FILE_OF");
+        public static RelationshipNoteType DataFileOf { get; } = new RelationshipNoteType("DATA_FILE_OF");
         /// <summary>
         /// Is to be used when SPDXRef-A is a test case used in testing SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType TestCaseOf { get; } = new RelationshipOccurrenceType("TEST_CASE_OF");
+        public static RelationshipNoteType TestCaseOf { get; } = new RelationshipNoteType("TEST_CASE_OF");
         /// <summary>
         /// Is to be used when SPDXRef-A is used to build SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType BuildToolOf { get; } = new RelationshipOccurrenceType("BUILD_TOOL_OF");
+        public static RelationshipNoteType BuildToolOf { get; } = new RelationshipNoteType("BUILD_TOOL_OF");
         /// <summary>
         /// Is to be used when SPDXRef-A is used as a development tool for SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType DevToolOf { get; } = new RelationshipOccurrenceType("DEV_TOOL_OF");
+        public static RelationshipNoteType DevToolOf { get; } = new RelationshipNoteType("DEV_TOOL_OF");
         /// <summary>
         /// Is to be used when SPDXRef-A is used for testing SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType TestOf { get; } = new RelationshipOccurrenceType("TEST_OF");
+        public static RelationshipNoteType TestOf { get; } = new RelationshipNoteType("TEST_OF");
         /// <summary>
         /// Is to be used when SPDXRef-A is used as a test tool for SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType TestToolOf { get; } = new RelationshipOccurrenceType("TEST_TOOL_OF");
+        public static RelationshipNoteType TestToolOf { get; } = new RelationshipNoteType("TEST_TOOL_OF");
         /// <summary>
         /// Is to be used when SPDXRef-A provides documentation of SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType DocumentationOf { get; } = new RelationshipOccurrenceType("DOCUMENTATION_OF");
+        public static RelationshipNoteType DocumentationOf { get; } = new RelationshipNoteType("DOCUMENTATION_OF");
         /// <summary>
         /// Is to be used when SPDXRef-A is an optional component of SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType OptionalComponentOf { get; } = new RelationshipOccurrenceType("OPTIONAL_COMPONENT_OF");
+        public static RelationshipNoteType OptionalComponentOf { get; } = new RelationshipNoteType("OPTIONAL_COMPONENT_OF");
         /// <summary>
         /// Is to be used when SPDXRef-A is a metafile of SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType MetafileOf { get; } = new RelationshipOccurrenceType("METAFILE_OF");
+        public static RelationshipNoteType MetafileOf { get; } = new RelationshipNoteType("METAFILE_OF");
         /// <summary>
         /// Is to be used when SPDXRef-A is used as a package as part of SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType PackageOf { get; } = new RelationshipOccurrenceType("PACKAGE_OF");
+        public static RelationshipNoteType PackageOf { get; } = new RelationshipNoteType("PACKAGE_OF");
         /// <summary>
         /// Is to be used when (current) SPDXRef-DOCUMENT amends the SPDX information in SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType Amends { get; } = new RelationshipOccurrenceType("AMENDS");
+        public static RelationshipNoteType Amends { get; } = new RelationshipNoteType("AMENDS");
         /// <summary>
         /// Is to be used when SPDXRef-A is a prerequisite for SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType PrerequisiteFor { get; } = new RelationshipOccurrenceType("PREREQUISITE_FOR");
+        public static RelationshipNoteType PrerequisiteFor { get; } = new RelationshipNoteType("PREREQUISITE_FOR");
         /// <summary>
         /// Is to be used when SPDXRef-A has as a prerequisite SPDXRef-B
         /// </summary>
-        public static RelationshipOccurrenceType HasPrerequisite { get; } = new RelationshipOccurrenceType("HAS_PREREQUISITE");
+        public static RelationshipNoteType HasPrerequisite { get; } = new RelationshipNoteType("HAS_PREREQUISITE");
         /// <summary>
         /// Is to be used for a relationship which has not been defined in the formal SPDX specification. A description of the relationship should be included in the Relationship comments field
         /// </summary>
-        public static RelationshipOccurrenceType Other { get; } = new RelationshipOccurrenceType("OTHER");
+        public static RelationshipNoteType Other { get; } = new RelationshipNoteType("OTHER");
 
-        public static bool operator ==(RelationshipOccurrenceType left, RelationshipOccurrenceType right) => left.Equals(right);
-        public static bool operator !=(RelationshipOccurrenceType left, RelationshipOccurrenceType right) => !left.Equals(right);
+        public static bool operator ==(RelationshipNoteType left, RelationshipNoteType right) => left.Equals(right);
+        public static bool operator !=(RelationshipNoteType left, RelationshipNoteType right) => !left.Equals(right);
 
-        public static explicit operator string(RelationshipOccurrenceType value) => value._value;
+        public static explicit operator string(RelationshipNoteType value) => value._value;
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is RelationshipOccurrenceType other && Equals(other);
-        public bool Equals(RelationshipOccurrenceType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+        public override bool Equals(object? obj) => obj is RelationshipNoteType other && Equals(other);
+        public bool Equals(RelationshipNoteType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

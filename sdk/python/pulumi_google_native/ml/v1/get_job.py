@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetJobResult:
-    def __init__(__self__, create_time=None, end_time=None, error_message=None, etag=None, job_id=None, labels=None, prediction_input=None, prediction_output=None, start_time=None, state=None, training_input=None, training_output=None):
+    def __init__(__self__, create_time=None, end_time=None, error_message=None, etag=None, job_id=None, job_position=None, labels=None, prediction_input=None, prediction_output=None, start_time=None, state=None, training_input=None, training_output=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -34,6 +34,9 @@ class GetJobResult:
         if job_id and not isinstance(job_id, str):
             raise TypeError("Expected argument 'job_id' to be a str")
         pulumi.set(__self__, "job_id", job_id)
+        if job_position and not isinstance(job_position, str):
+            raise TypeError("Expected argument 'job_position' to be a str")
+        pulumi.set(__self__, "job_position", job_position)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -95,6 +98,14 @@ class GetJobResult:
         The user-specified id of the job.
         """
         return pulumi.get(self, "job_id")
+
+    @property
+    @pulumi.getter(name="jobPosition")
+    def job_position(self) -> str:
+        """
+        It's only effect when the job is in QUEUED state. If it's positive, it indicates the job's position in the job scheduler. It's 0 when the job is already scheduled.
+        """
+        return pulumi.get(self, "job_position")
 
     @property
     @pulumi.getter
@@ -164,6 +175,7 @@ class AwaitableGetJobResult(GetJobResult):
             error_message=self.error_message,
             etag=self.etag,
             job_id=self.job_id,
+            job_position=self.job_position,
             labels=self.labels,
             prediction_input=self.prediction_input,
             prediction_output=self.prediction_output,
@@ -194,6 +206,7 @@ def get_job(job_id: Optional[str] = None,
         error_message=__ret__.error_message,
         etag=__ret__.etag,
         job_id=__ret__.job_id,
+        job_position=__ret__.job_position,
         labels=__ret__.labels,
         prediction_input=__ret__.prediction_input,
         prediction_output=__ret__.prediction_output,

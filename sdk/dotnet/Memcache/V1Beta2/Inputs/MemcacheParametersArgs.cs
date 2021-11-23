@@ -10,9 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Memcache.V1Beta2.Inputs
 {
 
-    /// <summary>
-    /// The unique ID associated with this set of parameters. Users can use this id to determine if the parameters associated with the instance differ from the parameters associated with the nodes. A discrepancy between parameter ids can inform users that they may need to take action to apply parameters on nodes.
-    /// </summary>
     public sealed class MemcacheParametersArgs : Pulumi.ResourceArgs
     {
         [Input("params")]

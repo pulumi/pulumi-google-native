@@ -11,6 +11,7 @@ from ._enums import *
 
 __all__ = [
     'DnsKeySpecArgs',
+    'ManagedZoneCloudLoggingConfigArgs',
     'ManagedZoneDnsSecConfigArgs',
     'ManagedZoneForwardingConfigNameServerTargetArgs',
     'ManagedZoneForwardingConfigArgs',
@@ -93,6 +94,42 @@ class DnsKeySpecArgs:
     @key_type.setter
     def key_type(self, value: Optional[pulumi.Input['DnsKeySpecKeyType']]):
         pulumi.set(self, "key_type", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+
+@pulumi.input_type
+class ManagedZoneCloudLoggingConfigArgs:
+    def __init__(__self__, *,
+                 enable_logging: Optional[pulumi.Input[bool]] = None,
+                 kind: Optional[pulumi.Input[str]] = None):
+        """
+        Cloud Logging configurations for publicly visible zones.
+        :param pulumi.Input[bool] enable_logging: If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
+        """
+        if enable_logging is not None:
+            pulumi.set(__self__, "enable_logging", enable_logging)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+
+    @property
+    @pulumi.getter(name="enableLogging")
+    def enable_logging(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
+        """
+        return pulumi.get(self, "enable_logging")
+
+    @enable_logging.setter
+    def enable_logging(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_logging", value)
 
     @property
     @pulumi.getter
@@ -787,31 +824,15 @@ class RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs:
 @pulumi.input_type
 class RRSetRoutingPolicyGeoPolicyArgs:
     def __init__(__self__, *,
-                 failovers: Optional[pulumi.Input[Sequence[pulumi.Input['RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs']]]] = None,
                  items: Optional[pulumi.Input[Sequence[pulumi.Input['RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs']]]] = None,
                  kind: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs']]] failovers: If the health check for the primary target for a geo location returns an unhealthy status, the failover target is returned instead. This failover configuration is not mandatory. If a failover is not provided, the primary target won't be healthchecked, and it returns the primarily configured rrdata irrespective of whether it is healthy or not.
         :param pulumi.Input[Sequence[pulumi.Input['RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs']]] items: The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
         """
-        if failovers is not None:
-            pulumi.set(__self__, "failovers", failovers)
         if items is not None:
             pulumi.set(__self__, "items", items)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
-
-    @property
-    @pulumi.getter
-    def failovers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs']]]]:
-        """
-        If the health check for the primary target for a geo location returns an unhealthy status, the failover target is returned instead. This failover configuration is not mandatory. If a failover is not provided, the primary target won't be healthchecked, and it returns the primarily configured rrdata irrespective of whether it is healthy or not.
-        """
-        return pulumi.get(self, "failovers")
-
-    @failovers.setter
-    def failovers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs']]]]):
-        pulumi.set(self, "failovers", value)
 
     @property
     @pulumi.getter

@@ -232,7 +232,7 @@ class MigrationJobState(str, Enum):
     """
     NOT_STARTED = "NOT_STARTED"
     """
-    The migration job is created, not started and is fully editable.
+    The migration job is created and not started.
     """
     RUNNING = "RUNNING"
     """

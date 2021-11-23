@@ -12,7 +12,7 @@ import (
 
 // Error describes why the execution was abnormally terminated.
 type ErrorResponse struct {
-	// Human readable stack trace string.
+	// Human-readable stack trace string.
 	Context string `pulumi:"context"`
 	// Error message and data returned represented as a JSON string.
 	Payload string `pulumi:"payload"`
@@ -33,7 +33,7 @@ type ErrorResponseInput interface {
 
 // Error describes why the execution was abnormally terminated.
 type ErrorResponseArgs struct {
-	// Human readable stack trace string.
+	// Human-readable stack trace string.
 	Context pulumi.StringInput `pulumi:"context"`
 	// Error message and data returned represented as a JSON string.
 	Payload pulumi.StringInput `pulumi:"payload"`
@@ -119,7 +119,7 @@ func (o ErrorResponseOutput) ToErrorResponsePtrOutputWithContext(ctx context.Con
 	}).(ErrorResponsePtrOutput)
 }
 
-// Human readable stack trace string.
+// Human-readable stack trace string.
 func (o ErrorResponseOutput) Context() pulumi.StringOutput {
 	return o.ApplyT(func(v ErrorResponse) string { return v.Context }).(pulumi.StringOutput)
 }
@@ -158,7 +158,7 @@ func (o ErrorResponsePtrOutput) Elem() ErrorResponseOutput {
 	}).(ErrorResponseOutput)
 }
 
-// Human readable stack trace string.
+// Human-readable stack trace string.
 func (o ErrorResponsePtrOutput) Context() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErrorResponse) *string {
 		if v == nil {
@@ -192,7 +192,7 @@ func (o ErrorResponsePtrOutput) StackTrace() StackTraceResponsePtrOutput {
 type PositionResponse struct {
 	// The source code column position (of the line) the current instruction was generated from.
 	Column string `pulumi:"column"`
-	// The length in bytes of text in this character group, e.g. digits of a number, string length, or AST (abstract syntax tree) node.
+	// The number of bytes of source code making up this stack trace element.
 	Length string `pulumi:"length"`
 	// The source code line number the current instruction was generated from.
 	Line string `pulumi:"line"`
@@ -213,7 +213,7 @@ type PositionResponseInput interface {
 type PositionResponseArgs struct {
 	// The source code column position (of the line) the current instruction was generated from.
 	Column pulumi.StringInput `pulumi:"column"`
-	// The length in bytes of text in this character group, e.g. digits of a number, string length, or AST (abstract syntax tree) node.
+	// The number of bytes of source code making up this stack trace element.
 	Length pulumi.StringInput `pulumi:"length"`
 	// The source code line number the current instruction was generated from.
 	Line pulumi.StringInput `pulumi:"line"`
@@ -251,7 +251,7 @@ func (o PositionResponseOutput) Column() pulumi.StringOutput {
 	return o.ApplyT(func(v PositionResponse) string { return v.Column }).(pulumi.StringOutput)
 }
 
-// The length in bytes of text in this character group, e.g. digits of a number, string length, or AST (abstract syntax tree) node.
+// The number of bytes of source code making up this stack trace element.
 func (o PositionResponseOutput) Length() pulumi.StringOutput {
 	return o.ApplyT(func(v PositionResponse) string { return v.Length }).(pulumi.StringOutput)
 }
@@ -263,7 +263,7 @@ func (o PositionResponseOutput) Line() pulumi.StringOutput {
 
 // A single stack element (frame) where an error occurred.
 type StackTraceElementResponse struct {
-	// The source position information of the stacktrace element.
+	// The source position information of the stack trace element.
 	Position PositionResponse `pulumi:"position"`
 	// The routine where the error occurred.
 	Routine string `pulumi:"routine"`
@@ -284,7 +284,7 @@ type StackTraceElementResponseInput interface {
 
 // A single stack element (frame) where an error occurred.
 type StackTraceElementResponseArgs struct {
-	// The source position information of the stacktrace element.
+	// The source position information of the stack trace element.
 	Position PositionResponseInput `pulumi:"position"`
 	// The routine where the error occurred.
 	Routine pulumi.StringInput `pulumi:"routine"`
@@ -344,7 +344,7 @@ func (o StackTraceElementResponseOutput) ToStackTraceElementResponseOutputWithCo
 	return o
 }
 
-// The source position information of the stacktrace element.
+// The source position information of the stack trace element.
 func (o StackTraceElementResponseOutput) Position() PositionResponseOutput {
 	return o.ApplyT(func(v StackTraceElementResponse) PositionResponse { return v.Position }).(PositionResponseOutput)
 }
@@ -381,7 +381,7 @@ func (o StackTraceElementResponseArrayOutput) Index(i pulumi.IntInput) StackTrac
 
 // A collection of stack elements (frames) where an error occurred.
 type StackTraceResponse struct {
-	// An array of Stack elements.
+	// An array of stack elements.
 	Elements []StackTraceElementResponse `pulumi:"elements"`
 }
 
@@ -398,7 +398,7 @@ type StackTraceResponseInput interface {
 
 // A collection of stack elements (frames) where an error occurred.
 type StackTraceResponseArgs struct {
-	// An array of Stack elements.
+	// An array of stack elements.
 	Elements StackTraceElementResponseArrayInput `pulumi:"elements"`
 }
 
@@ -480,7 +480,7 @@ func (o StackTraceResponseOutput) ToStackTraceResponsePtrOutputWithContext(ctx c
 	}).(StackTraceResponsePtrOutput)
 }
 
-// An array of Stack elements.
+// An array of stack elements.
 func (o StackTraceResponseOutput) Elements() StackTraceElementResponseArrayOutput {
 	return o.ApplyT(func(v StackTraceResponse) []StackTraceElementResponse { return v.Elements }).(StackTraceElementResponseArrayOutput)
 }
@@ -509,7 +509,7 @@ func (o StackTraceResponsePtrOutput) Elem() StackTraceResponseOutput {
 	}).(StackTraceResponseOutput)
 }
 
-// An array of Stack elements.
+// An array of stack elements.
 func (o StackTraceResponsePtrOutput) Elements() StackTraceElementResponseArrayOutput {
 	return o.ApplyT(func(v *StackTraceResponse) []StackTraceElementResponse {
 		if v == nil {

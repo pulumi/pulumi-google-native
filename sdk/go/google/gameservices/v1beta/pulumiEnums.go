@@ -533,7 +533,7 @@ const (
 	ConditionIamAuthority = ConditionIam("AUTHORITY")
 	// The principal (even if an authority selector is present), which must only be used for attribution, not authorization.
 	ConditionIamAttribution = ConditionIam("ATTRIBUTION")
-	// Any of the security realms in the IAMContext (go/security-realms). When used with IN, the condition indicates "any of the request's realms match one of the given values; with NOT_IN, "none of the realms match any of the given values". Note that a value can be: - 'self' (i.e., allow connections from clients that are in the same security realm, which is currently but not guaranteed to be campus-sized) - 'self:metro' (i.e., clients that are in the same metro) - 'self:cloud-region' (i.e., allow connections from clients that are in the same cloud region) - 'guardians' (i.e., allow connections from its guardian realms. See go/security-realms-glossary#guardian for more information.) - a realm (e.g., 'campus-abc') - a realm group (e.g., 'realms-for-borg-cell-xx', see: go/realm-groups) A match is determined by a realm group membership check performed by a RealmAclRep object (go/realm-acl-howto). It is not permitted to grant access based on the *absence* of a realm, so realm conditions can only be used in a "positive" context (e.g., ALLOW/IN or DENY/NOT_IN).
+	// Any of the security realms in the IAMContext (go/security-realms). When used with IN, the condition indicates "any of the request's realms match one of the given values; with NOT_IN, "none of the realms match any of the given values". Note that a value can be: - 'self' (i.e., allow connections from clients that are in the same security realm, which is currently but not guaranteed to be campus-sized) - 'self:metro' (i.e., clients that are in the same metro) - 'self:cloud-region' (i.e., allow connections from clients that are in the same cloud region) - 'self:prod-region' (i.e., allow connections from clients that are in the same prod region) - 'guardians' (i.e., allow connections from its guardian realms. See go/security-realms-glossary#guardian for more information.) - a realm (e.g., 'campus-abc') - a realm group (e.g., 'realms-for-borg-cell-xx', see: go/realm-groups) A match is determined by a realm group membership check performed by a RealmAclRep object (go/realm-acl-howto). It is not permitted to grant access based on the *absence* of a realm, so realm conditions can only be used in a "positive" context (e.g., ALLOW/IN or DENY/NOT_IN).
 	ConditionIamSecurityRealm = ConditionIam("SECURITY_REALM")
 	// An approver (distinct from the requester) that has authorized this request. When used with IN, the condition indicates that one of the approvers associated with the request matches the specified principal, or is a member of the specified group. Approvers can only grant additional access, and are thus only used in a strictly positive context (e.g. ALLOW/IN or DENY/NOT_IN).
 	ConditionIamApprover = ConditionIam("APPROVER")
@@ -1216,179 +1216,6 @@ func (in *dataAccessOptionsLogModePtr) ToDataAccessOptionsLogModePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(DataAccessOptionsLogModePtrOutput)
 }
 
-// Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
-type GameServerClusterAllocationPriority string
-
-const (
-	// The default allocation priority. `PRIORITY_UNSPECIFIED` is the lowest possible priority.
-	GameServerClusterAllocationPriorityPriorityUnspecified = GameServerClusterAllocationPriority("PRIORITY_UNSPECIFIED")
-	// Priority 1, the highest priority.
-	GameServerClusterAllocationPriorityP1 = GameServerClusterAllocationPriority("P1")
-	// Priority 2.
-	GameServerClusterAllocationPriorityP2 = GameServerClusterAllocationPriority("P2")
-	// Priority 3.
-	GameServerClusterAllocationPriorityP3 = GameServerClusterAllocationPriority("P3")
-	// Priority 4.
-	GameServerClusterAllocationPriorityP4 = GameServerClusterAllocationPriority("P4")
-)
-
-func (GameServerClusterAllocationPriority) ElementType() reflect.Type {
-	return reflect.TypeOf((*GameServerClusterAllocationPriority)(nil)).Elem()
-}
-
-func (e GameServerClusterAllocationPriority) ToGameServerClusterAllocationPriorityOutput() GameServerClusterAllocationPriorityOutput {
-	return pulumi.ToOutput(e).(GameServerClusterAllocationPriorityOutput)
-}
-
-func (e GameServerClusterAllocationPriority) ToGameServerClusterAllocationPriorityOutputWithContext(ctx context.Context) GameServerClusterAllocationPriorityOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(GameServerClusterAllocationPriorityOutput)
-}
-
-func (e GameServerClusterAllocationPriority) ToGameServerClusterAllocationPriorityPtrOutput() GameServerClusterAllocationPriorityPtrOutput {
-	return e.ToGameServerClusterAllocationPriorityPtrOutputWithContext(context.Background())
-}
-
-func (e GameServerClusterAllocationPriority) ToGameServerClusterAllocationPriorityPtrOutputWithContext(ctx context.Context) GameServerClusterAllocationPriorityPtrOutput {
-	return GameServerClusterAllocationPriority(e).ToGameServerClusterAllocationPriorityOutputWithContext(ctx).ToGameServerClusterAllocationPriorityPtrOutputWithContext(ctx)
-}
-
-func (e GameServerClusterAllocationPriority) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e GameServerClusterAllocationPriority) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e GameServerClusterAllocationPriority) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e GameServerClusterAllocationPriority) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type GameServerClusterAllocationPriorityOutput struct{ *pulumi.OutputState }
-
-func (GameServerClusterAllocationPriorityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GameServerClusterAllocationPriority)(nil)).Elem()
-}
-
-func (o GameServerClusterAllocationPriorityOutput) ToGameServerClusterAllocationPriorityOutput() GameServerClusterAllocationPriorityOutput {
-	return o
-}
-
-func (o GameServerClusterAllocationPriorityOutput) ToGameServerClusterAllocationPriorityOutputWithContext(ctx context.Context) GameServerClusterAllocationPriorityOutput {
-	return o
-}
-
-func (o GameServerClusterAllocationPriorityOutput) ToGameServerClusterAllocationPriorityPtrOutput() GameServerClusterAllocationPriorityPtrOutput {
-	return o.ToGameServerClusterAllocationPriorityPtrOutputWithContext(context.Background())
-}
-
-func (o GameServerClusterAllocationPriorityOutput) ToGameServerClusterAllocationPriorityPtrOutputWithContext(ctx context.Context) GameServerClusterAllocationPriorityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GameServerClusterAllocationPriority) *GameServerClusterAllocationPriority {
-		return &v
-	}).(GameServerClusterAllocationPriorityPtrOutput)
-}
-
-func (o GameServerClusterAllocationPriorityOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o GameServerClusterAllocationPriorityOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e GameServerClusterAllocationPriority) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o GameServerClusterAllocationPriorityOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o GameServerClusterAllocationPriorityOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e GameServerClusterAllocationPriority) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type GameServerClusterAllocationPriorityPtrOutput struct{ *pulumi.OutputState }
-
-func (GameServerClusterAllocationPriorityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GameServerClusterAllocationPriority)(nil)).Elem()
-}
-
-func (o GameServerClusterAllocationPriorityPtrOutput) ToGameServerClusterAllocationPriorityPtrOutput() GameServerClusterAllocationPriorityPtrOutput {
-	return o
-}
-
-func (o GameServerClusterAllocationPriorityPtrOutput) ToGameServerClusterAllocationPriorityPtrOutputWithContext(ctx context.Context) GameServerClusterAllocationPriorityPtrOutput {
-	return o
-}
-
-func (o GameServerClusterAllocationPriorityPtrOutput) Elem() GameServerClusterAllocationPriorityOutput {
-	return o.ApplyT(func(v *GameServerClusterAllocationPriority) GameServerClusterAllocationPriority {
-		if v != nil {
-			return *v
-		}
-		var ret GameServerClusterAllocationPriority
-		return ret
-	}).(GameServerClusterAllocationPriorityOutput)
-}
-
-func (o GameServerClusterAllocationPriorityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o GameServerClusterAllocationPriorityPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GameServerClusterAllocationPriority) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// GameServerClusterAllocationPriorityInput is an input type that accepts GameServerClusterAllocationPriorityArgs and GameServerClusterAllocationPriorityOutput values.
-// You can construct a concrete instance of `GameServerClusterAllocationPriorityInput` via:
-//
-//          GameServerClusterAllocationPriorityArgs{...}
-type GameServerClusterAllocationPriorityInput interface {
-	pulumi.Input
-
-	ToGameServerClusterAllocationPriorityOutput() GameServerClusterAllocationPriorityOutput
-	ToGameServerClusterAllocationPriorityOutputWithContext(context.Context) GameServerClusterAllocationPriorityOutput
-}
-
-var gameServerClusterAllocationPriorityPtrType = reflect.TypeOf((**GameServerClusterAllocationPriority)(nil)).Elem()
-
-type GameServerClusterAllocationPriorityPtrInput interface {
-	pulumi.Input
-
-	ToGameServerClusterAllocationPriorityPtrOutput() GameServerClusterAllocationPriorityPtrOutput
-	ToGameServerClusterAllocationPriorityPtrOutputWithContext(context.Context) GameServerClusterAllocationPriorityPtrOutput
-}
-
-type gameServerClusterAllocationPriorityPtr string
-
-func GameServerClusterAllocationPriorityPtr(v string) GameServerClusterAllocationPriorityPtrInput {
-	return (*gameServerClusterAllocationPriorityPtr)(&v)
-}
-
-func (*gameServerClusterAllocationPriorityPtr) ElementType() reflect.Type {
-	return gameServerClusterAllocationPriorityPtrType
-}
-
-func (in *gameServerClusterAllocationPriorityPtr) ToGameServerClusterAllocationPriorityPtrOutput() GameServerClusterAllocationPriorityPtrOutput {
-	return pulumi.ToOutput(in).(GameServerClusterAllocationPriorityPtrOutput)
-}
-
-func (in *gameServerClusterAllocationPriorityPtr) ToGameServerClusterAllocationPriorityPtrOutputWithContext(ctx context.Context) GameServerClusterAllocationPriorityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(GameServerClusterAllocationPriorityPtrOutput)
-}
-
 // Required
 type RuleAction string
 
@@ -1579,8 +1406,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionSysPtrInput)(nil)).Elem(), ConditionSys("NO_ATTR"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DataAccessOptionsLogModeInput)(nil)).Elem(), DataAccessOptionsLogMode("LOG_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DataAccessOptionsLogModePtrInput)(nil)).Elem(), DataAccessOptionsLogMode("LOG_MODE_UNSPECIFIED"))
-	pulumi.RegisterInputType(reflect.TypeOf((*GameServerClusterAllocationPriorityInput)(nil)).Elem(), GameServerClusterAllocationPriority("PRIORITY_UNSPECIFIED"))
-	pulumi.RegisterInputType(reflect.TypeOf((*GameServerClusterAllocationPriorityPtrInput)(nil)).Elem(), GameServerClusterAllocationPriority("PRIORITY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleActionInput)(nil)).Elem(), RuleAction("NO_ACTION"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleActionPtrInput)(nil)).Elem(), RuleAction("NO_ACTION"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
@@ -1597,8 +1422,6 @@ func init() {
 	pulumi.RegisterOutputType(ConditionSysPtrOutput{})
 	pulumi.RegisterOutputType(DataAccessOptionsLogModeOutput{})
 	pulumi.RegisterOutputType(DataAccessOptionsLogModePtrOutput{})
-	pulumi.RegisterOutputType(GameServerClusterAllocationPriorityOutput{})
-	pulumi.RegisterOutputType(GameServerClusterAllocationPriorityPtrOutput{})
 	pulumi.RegisterOutputType(RuleActionOutput{})
 	pulumi.RegisterOutputType(RuleActionPtrOutput{})
 }

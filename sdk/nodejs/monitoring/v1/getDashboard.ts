@@ -45,6 +45,10 @@ export interface GetDashboardResult {
      */
     readonly gridLayout: outputs.monitoring.v1.GridLayoutResponse;
     /**
+     * Labels applied to the dashboard
+     */
+    readonly labels: {[key: string]: string};
+    /**
      * The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
      */
     readonly mosaicLayout: outputs.monitoring.v1.MosaicLayoutResponse;

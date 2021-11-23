@@ -18,10 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetGameServerClusterResult:
-    def __init__(__self__, allocation_priority=None, cluster_state=None, connection_info=None, create_time=None, description=None, etag=None, labels=None, name=None, update_time=None):
-        if allocation_priority and not isinstance(allocation_priority, str):
-            raise TypeError("Expected argument 'allocation_priority' to be a str")
-        pulumi.set(__self__, "allocation_priority", allocation_priority)
+    def __init__(__self__, cluster_state=None, connection_info=None, create_time=None, description=None, etag=None, labels=None, name=None, update_time=None):
         if cluster_state and not isinstance(cluster_state, dict):
             raise TypeError("Expected argument 'cluster_state' to be a dict")
         pulumi.set(__self__, "cluster_state", cluster_state)
@@ -46,14 +43,6 @@ class GetGameServerClusterResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
-
-    @property
-    @pulumi.getter(name="allocationPriority")
-    def allocation_priority(self) -> str:
-        """
-        Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
-        """
-        return pulumi.get(self, "allocation_priority")
 
     @property
     @pulumi.getter(name="clusterState")
@@ -126,7 +115,6 @@ class AwaitableGetGameServerClusterResult(GetGameServerClusterResult):
         if False:
             yield self
         return GetGameServerClusterResult(
-            allocation_priority=self.allocation_priority,
             cluster_state=self.cluster_state,
             connection_info=self.connection_info,
             create_time=self.create_time,
@@ -159,7 +147,6 @@ def get_game_server_cluster(game_server_cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:gameservices/v1beta:getGameServerCluster', __args__, opts=opts, typ=GetGameServerClusterResult).value
 
     return AwaitableGetGameServerClusterResult(
-        allocation_priority=__ret__.allocation_priority,
         cluster_state=__ret__.cluster_state,
         connection_info=__ret__.connection_info,
         create_time=__ret__.create_time,

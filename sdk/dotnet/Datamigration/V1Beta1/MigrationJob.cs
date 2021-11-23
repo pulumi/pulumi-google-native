@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
+        /// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -217,7 +217,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         public Input<string> MigrationJobId { get; set; } = null!;
 
         /// <summary>
-        /// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
+        /// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

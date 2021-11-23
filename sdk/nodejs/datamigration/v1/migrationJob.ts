@@ -72,7 +72,7 @@ export class MigrationJob extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
+     * The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -213,7 +213,7 @@ export interface MigrationJobArgs {
     location?: pulumi.Input<string>;
     migrationJobId: pulumi.Input<string>;
     /**
-     * The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
+     * The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

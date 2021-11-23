@@ -47,6 +47,10 @@ export interface GetInstanceResult {
      */
     readonly fileShares: outputs.file.v1.FileShareConfigResponse[];
     /**
+     * KMS key name used for data encryption.
+     */
+    readonly kmsKeyName: string;
+    /**
      * Resource labels to represent user provided metadata.
      */
     readonly labels: {[key: string]: string};
@@ -70,6 +74,10 @@ export interface GetInstanceResult {
      * Additional information about the instance state, if available.
      */
     readonly statusMessage: string;
+    /**
+     * field indicates all the reasons the instance is in "SUSPENDED" state.
+     */
+    readonly suspensionReasons: string[];
     /**
      * The service tier of the instance.
      */

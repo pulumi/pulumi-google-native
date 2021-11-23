@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:storagetransfer/v1:AgentPool":
+		r = &AgentPool{}
 	case "google-native:storagetransfer/v1:TransferJob":
 		r = &TransferJob{}
 	default:

@@ -1396,6 +1396,286 @@ func (o AzureCredentialsResponsePtrOutput) SasToken() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specifies the BandwidthLimit to describe the non-negative bandwidth rate in mbps for the agent pool.
+type BandwidthLimit struct {
+	// Specifies bandwidth rate in mbps distributed across all the agents in the pool.
+	LimitMbps *string `pulumi:"limitMbps"`
+}
+
+// BandwidthLimitInput is an input type that accepts BandwidthLimitArgs and BandwidthLimitOutput values.
+// You can construct a concrete instance of `BandwidthLimitInput` via:
+//
+//          BandwidthLimitArgs{...}
+type BandwidthLimitInput interface {
+	pulumi.Input
+
+	ToBandwidthLimitOutput() BandwidthLimitOutput
+	ToBandwidthLimitOutputWithContext(context.Context) BandwidthLimitOutput
+}
+
+// Specifies the BandwidthLimit to describe the non-negative bandwidth rate in mbps for the agent pool.
+type BandwidthLimitArgs struct {
+	// Specifies bandwidth rate in mbps distributed across all the agents in the pool.
+	LimitMbps pulumi.StringPtrInput `pulumi:"limitMbps"`
+}
+
+func (BandwidthLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BandwidthLimit)(nil)).Elem()
+}
+
+func (i BandwidthLimitArgs) ToBandwidthLimitOutput() BandwidthLimitOutput {
+	return i.ToBandwidthLimitOutputWithContext(context.Background())
+}
+
+func (i BandwidthLimitArgs) ToBandwidthLimitOutputWithContext(ctx context.Context) BandwidthLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BandwidthLimitOutput)
+}
+
+func (i BandwidthLimitArgs) ToBandwidthLimitPtrOutput() BandwidthLimitPtrOutput {
+	return i.ToBandwidthLimitPtrOutputWithContext(context.Background())
+}
+
+func (i BandwidthLimitArgs) ToBandwidthLimitPtrOutputWithContext(ctx context.Context) BandwidthLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BandwidthLimitOutput).ToBandwidthLimitPtrOutputWithContext(ctx)
+}
+
+// BandwidthLimitPtrInput is an input type that accepts BandwidthLimitArgs, BandwidthLimitPtr and BandwidthLimitPtrOutput values.
+// You can construct a concrete instance of `BandwidthLimitPtrInput` via:
+//
+//          BandwidthLimitArgs{...}
+//
+//  or:
+//
+//          nil
+type BandwidthLimitPtrInput interface {
+	pulumi.Input
+
+	ToBandwidthLimitPtrOutput() BandwidthLimitPtrOutput
+	ToBandwidthLimitPtrOutputWithContext(context.Context) BandwidthLimitPtrOutput
+}
+
+type bandwidthLimitPtrType BandwidthLimitArgs
+
+func BandwidthLimitPtr(v *BandwidthLimitArgs) BandwidthLimitPtrInput {
+	return (*bandwidthLimitPtrType)(v)
+}
+
+func (*bandwidthLimitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BandwidthLimit)(nil)).Elem()
+}
+
+func (i *bandwidthLimitPtrType) ToBandwidthLimitPtrOutput() BandwidthLimitPtrOutput {
+	return i.ToBandwidthLimitPtrOutputWithContext(context.Background())
+}
+
+func (i *bandwidthLimitPtrType) ToBandwidthLimitPtrOutputWithContext(ctx context.Context) BandwidthLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BandwidthLimitPtrOutput)
+}
+
+// Specifies the BandwidthLimit to describe the non-negative bandwidth rate in mbps for the agent pool.
+type BandwidthLimitOutput struct{ *pulumi.OutputState }
+
+func (BandwidthLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BandwidthLimit)(nil)).Elem()
+}
+
+func (o BandwidthLimitOutput) ToBandwidthLimitOutput() BandwidthLimitOutput {
+	return o
+}
+
+func (o BandwidthLimitOutput) ToBandwidthLimitOutputWithContext(ctx context.Context) BandwidthLimitOutput {
+	return o
+}
+
+func (o BandwidthLimitOutput) ToBandwidthLimitPtrOutput() BandwidthLimitPtrOutput {
+	return o.ToBandwidthLimitPtrOutputWithContext(context.Background())
+}
+
+func (o BandwidthLimitOutput) ToBandwidthLimitPtrOutputWithContext(ctx context.Context) BandwidthLimitPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BandwidthLimit) *BandwidthLimit {
+		return &v
+	}).(BandwidthLimitPtrOutput)
+}
+
+// Specifies bandwidth rate in mbps distributed across all the agents in the pool.
+func (o BandwidthLimitOutput) LimitMbps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BandwidthLimit) *string { return v.LimitMbps }).(pulumi.StringPtrOutput)
+}
+
+type BandwidthLimitPtrOutput struct{ *pulumi.OutputState }
+
+func (BandwidthLimitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BandwidthLimit)(nil)).Elem()
+}
+
+func (o BandwidthLimitPtrOutput) ToBandwidthLimitPtrOutput() BandwidthLimitPtrOutput {
+	return o
+}
+
+func (o BandwidthLimitPtrOutput) ToBandwidthLimitPtrOutputWithContext(ctx context.Context) BandwidthLimitPtrOutput {
+	return o
+}
+
+func (o BandwidthLimitPtrOutput) Elem() BandwidthLimitOutput {
+	return o.ApplyT(func(v *BandwidthLimit) BandwidthLimit {
+		if v != nil {
+			return *v
+		}
+		var ret BandwidthLimit
+		return ret
+	}).(BandwidthLimitOutput)
+}
+
+// Specifies bandwidth rate in mbps distributed across all the agents in the pool.
+func (o BandwidthLimitPtrOutput) LimitMbps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BandwidthLimit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LimitMbps
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the BandwidthLimit to describe the non-negative bandwidth rate in mbps for the agent pool.
+type BandwidthLimitResponse struct {
+	// Specifies bandwidth rate in mbps distributed across all the agents in the pool.
+	LimitMbps string `pulumi:"limitMbps"`
+}
+
+// BandwidthLimitResponseInput is an input type that accepts BandwidthLimitResponseArgs and BandwidthLimitResponseOutput values.
+// You can construct a concrete instance of `BandwidthLimitResponseInput` via:
+//
+//          BandwidthLimitResponseArgs{...}
+type BandwidthLimitResponseInput interface {
+	pulumi.Input
+
+	ToBandwidthLimitResponseOutput() BandwidthLimitResponseOutput
+	ToBandwidthLimitResponseOutputWithContext(context.Context) BandwidthLimitResponseOutput
+}
+
+// Specifies the BandwidthLimit to describe the non-negative bandwidth rate in mbps for the agent pool.
+type BandwidthLimitResponseArgs struct {
+	// Specifies bandwidth rate in mbps distributed across all the agents in the pool.
+	LimitMbps pulumi.StringInput `pulumi:"limitMbps"`
+}
+
+func (BandwidthLimitResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BandwidthLimitResponse)(nil)).Elem()
+}
+
+func (i BandwidthLimitResponseArgs) ToBandwidthLimitResponseOutput() BandwidthLimitResponseOutput {
+	return i.ToBandwidthLimitResponseOutputWithContext(context.Background())
+}
+
+func (i BandwidthLimitResponseArgs) ToBandwidthLimitResponseOutputWithContext(ctx context.Context) BandwidthLimitResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BandwidthLimitResponseOutput)
+}
+
+func (i BandwidthLimitResponseArgs) ToBandwidthLimitResponsePtrOutput() BandwidthLimitResponsePtrOutput {
+	return i.ToBandwidthLimitResponsePtrOutputWithContext(context.Background())
+}
+
+func (i BandwidthLimitResponseArgs) ToBandwidthLimitResponsePtrOutputWithContext(ctx context.Context) BandwidthLimitResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BandwidthLimitResponseOutput).ToBandwidthLimitResponsePtrOutputWithContext(ctx)
+}
+
+// BandwidthLimitResponsePtrInput is an input type that accepts BandwidthLimitResponseArgs, BandwidthLimitResponsePtr and BandwidthLimitResponsePtrOutput values.
+// You can construct a concrete instance of `BandwidthLimitResponsePtrInput` via:
+//
+//          BandwidthLimitResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type BandwidthLimitResponsePtrInput interface {
+	pulumi.Input
+
+	ToBandwidthLimitResponsePtrOutput() BandwidthLimitResponsePtrOutput
+	ToBandwidthLimitResponsePtrOutputWithContext(context.Context) BandwidthLimitResponsePtrOutput
+}
+
+type bandwidthLimitResponsePtrType BandwidthLimitResponseArgs
+
+func BandwidthLimitResponsePtr(v *BandwidthLimitResponseArgs) BandwidthLimitResponsePtrInput {
+	return (*bandwidthLimitResponsePtrType)(v)
+}
+
+func (*bandwidthLimitResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BandwidthLimitResponse)(nil)).Elem()
+}
+
+func (i *bandwidthLimitResponsePtrType) ToBandwidthLimitResponsePtrOutput() BandwidthLimitResponsePtrOutput {
+	return i.ToBandwidthLimitResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *bandwidthLimitResponsePtrType) ToBandwidthLimitResponsePtrOutputWithContext(ctx context.Context) BandwidthLimitResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BandwidthLimitResponsePtrOutput)
+}
+
+// Specifies the BandwidthLimit to describe the non-negative bandwidth rate in mbps for the agent pool.
+type BandwidthLimitResponseOutput struct{ *pulumi.OutputState }
+
+func (BandwidthLimitResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BandwidthLimitResponse)(nil)).Elem()
+}
+
+func (o BandwidthLimitResponseOutput) ToBandwidthLimitResponseOutput() BandwidthLimitResponseOutput {
+	return o
+}
+
+func (o BandwidthLimitResponseOutput) ToBandwidthLimitResponseOutputWithContext(ctx context.Context) BandwidthLimitResponseOutput {
+	return o
+}
+
+func (o BandwidthLimitResponseOutput) ToBandwidthLimitResponsePtrOutput() BandwidthLimitResponsePtrOutput {
+	return o.ToBandwidthLimitResponsePtrOutputWithContext(context.Background())
+}
+
+func (o BandwidthLimitResponseOutput) ToBandwidthLimitResponsePtrOutputWithContext(ctx context.Context) BandwidthLimitResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BandwidthLimitResponse) *BandwidthLimitResponse {
+		return &v
+	}).(BandwidthLimitResponsePtrOutput)
+}
+
+// Specifies bandwidth rate in mbps distributed across all the agents in the pool.
+func (o BandwidthLimitResponseOutput) LimitMbps() pulumi.StringOutput {
+	return o.ApplyT(func(v BandwidthLimitResponse) string { return v.LimitMbps }).(pulumi.StringOutput)
+}
+
+type BandwidthLimitResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BandwidthLimitResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BandwidthLimitResponse)(nil)).Elem()
+}
+
+func (o BandwidthLimitResponsePtrOutput) ToBandwidthLimitResponsePtrOutput() BandwidthLimitResponsePtrOutput {
+	return o
+}
+
+func (o BandwidthLimitResponsePtrOutput) ToBandwidthLimitResponsePtrOutputWithContext(ctx context.Context) BandwidthLimitResponsePtrOutput {
+	return o
+}
+
+func (o BandwidthLimitResponsePtrOutput) Elem() BandwidthLimitResponseOutput {
+	return o.ApplyT(func(v *BandwidthLimitResponse) BandwidthLimitResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BandwidthLimitResponse
+		return ret
+	}).(BandwidthLimitResponseOutput)
+}
+
+// Specifies bandwidth rate in mbps distributed across all the agents in the pool.
+func (o BandwidthLimitResponsePtrOutput) LimitMbps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BandwidthLimitResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LimitMbps
+	}).(pulumi.StringPtrOutput)
+}
+
 // Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
 type Date struct {
 	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
@@ -2354,6 +2634,10 @@ func (o HttpDataResponsePtrOutput) ListUrl() pulumi.StringPtrOutput {
 type LoggingConfig struct {
 	// Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
 	EnableOnpremGcsTransferLogs *bool `pulumi:"enableOnpremGcsTransferLogs"`
+	// States in which `log_actions` are logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+	LogActionStates []LoggingConfigLogActionStatesItem `pulumi:"logActionStates"`
+	// Actions to be logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+	LogActions []LoggingConfigLogActionsItem `pulumi:"logActions"`
 }
 
 // LoggingConfigInput is an input type that accepts LoggingConfigArgs and LoggingConfigOutput values.
@@ -2371,6 +2655,10 @@ type LoggingConfigInput interface {
 type LoggingConfigArgs struct {
 	// Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
 	EnableOnpremGcsTransferLogs pulumi.BoolPtrInput `pulumi:"enableOnpremGcsTransferLogs"`
+	// States in which `log_actions` are logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+	LogActionStates LoggingConfigLogActionStatesItemArrayInput `pulumi:"logActionStates"`
+	// Actions to be logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+	LogActions LoggingConfigLogActionsItemArrayInput `pulumi:"logActions"`
 }
 
 func (LoggingConfigArgs) ElementType() reflect.Type {
@@ -2456,6 +2744,16 @@ func (o LoggingConfigOutput) EnableOnpremGcsTransferLogs() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v LoggingConfig) *bool { return v.EnableOnpremGcsTransferLogs }).(pulumi.BoolPtrOutput)
 }
 
+// States in which `log_actions` are logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+func (o LoggingConfigOutput) LogActionStates() LoggingConfigLogActionStatesItemArrayOutput {
+	return o.ApplyT(func(v LoggingConfig) []LoggingConfigLogActionStatesItem { return v.LogActionStates }).(LoggingConfigLogActionStatesItemArrayOutput)
+}
+
+// Actions to be logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+func (o LoggingConfigOutput) LogActions() LoggingConfigLogActionsItemArrayOutput {
+	return o.ApplyT(func(v LoggingConfig) []LoggingConfigLogActionsItem { return v.LogActions }).(LoggingConfigLogActionsItemArrayOutput)
+}
+
 type LoggingConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (LoggingConfigPtrOutput) ElementType() reflect.Type {
@@ -2490,10 +2788,34 @@ func (o LoggingConfigPtrOutput) EnableOnpremGcsTransferLogs() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
+// States in which `log_actions` are logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+func (o LoggingConfigPtrOutput) LogActionStates() LoggingConfigLogActionStatesItemArrayOutput {
+	return o.ApplyT(func(v *LoggingConfig) []LoggingConfigLogActionStatesItem {
+		if v == nil {
+			return nil
+		}
+		return v.LogActionStates
+	}).(LoggingConfigLogActionStatesItemArrayOutput)
+}
+
+// Actions to be logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+func (o LoggingConfigPtrOutput) LogActions() LoggingConfigLogActionsItemArrayOutput {
+	return o.ApplyT(func(v *LoggingConfig) []LoggingConfigLogActionsItem {
+		if v == nil {
+			return nil
+		}
+		return v.LogActions
+	}).(LoggingConfigLogActionsItemArrayOutput)
+}
+
 // Logging configuration.
 type LoggingConfigResponse struct {
 	// Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
 	EnableOnpremGcsTransferLogs bool `pulumi:"enableOnpremGcsTransferLogs"`
+	// States in which `log_actions` are logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+	LogActionStates []string `pulumi:"logActionStates"`
+	// Actions to be logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+	LogActions []string `pulumi:"logActions"`
 }
 
 // LoggingConfigResponseInput is an input type that accepts LoggingConfigResponseArgs and LoggingConfigResponseOutput values.
@@ -2511,6 +2833,10 @@ type LoggingConfigResponseInput interface {
 type LoggingConfigResponseArgs struct {
 	// Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
 	EnableOnpremGcsTransferLogs pulumi.BoolInput `pulumi:"enableOnpremGcsTransferLogs"`
+	// States in which `log_actions` are logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+	LogActionStates pulumi.StringArrayInput `pulumi:"logActionStates"`
+	// Actions to be logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+	LogActions pulumi.StringArrayInput `pulumi:"logActions"`
 }
 
 func (LoggingConfigResponseArgs) ElementType() reflect.Type {
@@ -2596,6 +2922,16 @@ func (o LoggingConfigResponseOutput) EnableOnpremGcsTransferLogs() pulumi.BoolOu
 	return o.ApplyT(func(v LoggingConfigResponse) bool { return v.EnableOnpremGcsTransferLogs }).(pulumi.BoolOutput)
 }
 
+// States in which `log_actions` are logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+func (o LoggingConfigResponseOutput) LogActionStates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoggingConfigResponse) []string { return v.LogActionStates }).(pulumi.StringArrayOutput)
+}
+
+// Actions to be logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+func (o LoggingConfigResponseOutput) LogActions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoggingConfigResponse) []string { return v.LogActions }).(pulumi.StringArrayOutput)
+}
+
 type LoggingConfigResponsePtrOutput struct{ *pulumi.OutputState }
 
 func (LoggingConfigResponsePtrOutput) ElementType() reflect.Type {
@@ -2628,6 +2964,26 @@ func (o LoggingConfigResponsePtrOutput) EnableOnpremGcsTransferLogs() pulumi.Boo
 		}
 		return &v.EnableOnpremGcsTransferLogs
 	}).(pulumi.BoolPtrOutput)
+}
+
+// States in which `log_actions` are logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+func (o LoggingConfigResponsePtrOutput) LogActionStates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LoggingConfigResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LogActionStates
+	}).(pulumi.StringArrayOutput)
+}
+
+// Actions to be logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+func (o LoggingConfigResponsePtrOutput) LogActions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LoggingConfigResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LogActions
+	}).(pulumi.StringArrayOutput)
 }
 
 // Specification to configure notifications published to Pub/Sub. Notifications are published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` contains a TransferOperation resource formatted according to the specified `PayloadFormat`.
@@ -2986,7 +3342,7 @@ func (o NotificationConfigResponsePtrOutput) PubsubTopic() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. Transfers that use PosixFilesystem and have a Cloud Storage source don't support `ObjectConditions`.
+// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. Transfers with a PosixFilesystem source or destination don't support `ObjectConditions`.
 type ObjectConditions struct {
 	// If you specify `exclude_prefixes`, Storage Transfer Service uses the items in the `exclude_prefixes` array to determine which objects to exclude from a transfer. Objects must not start with one of the matching `exclude_prefixes` for inclusion in a transfer. The following are requirements of `exclude_prefixes`: * Each exclude-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each exclude-prefix must omit the leading slash. For example, to exclude the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the exclude-prefix as `logs/y=2015/requests.gz`. * None of the exclude-prefix values can be empty, if specified. * Each exclude-prefix must exclude a distinct portion of the object namespace. No exclude-prefix may be a prefix of another exclude-prefix. * If include_prefixes is specified, then each exclude-prefix must start with the value of a path explicitly included by `include_prefixes`. The max size of `exclude_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
 	ExcludePrefixes []string `pulumi:"excludePrefixes"`
@@ -3013,7 +3369,7 @@ type ObjectConditionsInput interface {
 	ToObjectConditionsOutputWithContext(context.Context) ObjectConditionsOutput
 }
 
-// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. Transfers that use PosixFilesystem and have a Cloud Storage source don't support `ObjectConditions`.
+// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. Transfers with a PosixFilesystem source or destination don't support `ObjectConditions`.
 type ObjectConditionsArgs struct {
 	// If you specify `exclude_prefixes`, Storage Transfer Service uses the items in the `exclude_prefixes` array to determine which objects to exclude from a transfer. Objects must not start with one of the matching `exclude_prefixes` for inclusion in a transfer. The following are requirements of `exclude_prefixes`: * Each exclude-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each exclude-prefix must omit the leading slash. For example, to exclude the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the exclude-prefix as `logs/y=2015/requests.gz`. * None of the exclude-prefix values can be empty, if specified. * Each exclude-prefix must exclude a distinct portion of the object namespace. No exclude-prefix may be a prefix of another exclude-prefix. * If include_prefixes is specified, then each exclude-prefix must start with the value of a path explicitly included by `include_prefixes`. The max size of `exclude_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
 	ExcludePrefixes pulumi.StringArrayInput `pulumi:"excludePrefixes"`
@@ -3082,7 +3438,7 @@ func (i *objectConditionsPtrType) ToObjectConditionsPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectConditionsPtrOutput)
 }
 
-// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. Transfers that use PosixFilesystem and have a Cloud Storage source don't support `ObjectConditions`.
+// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. Transfers with a PosixFilesystem source or destination don't support `ObjectConditions`.
 type ObjectConditionsOutput struct{ *pulumi.OutputState }
 
 func (ObjectConditionsOutput) ElementType() reflect.Type {
@@ -3221,7 +3577,7 @@ func (o ObjectConditionsPtrOutput) MinTimeElapsedSinceLastModification() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. Transfers that use PosixFilesystem and have a Cloud Storage source don't support `ObjectConditions`.
+// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. Transfers with a PosixFilesystem source or destination don't support `ObjectConditions`.
 type ObjectConditionsResponse struct {
 	// If you specify `exclude_prefixes`, Storage Transfer Service uses the items in the `exclude_prefixes` array to determine which objects to exclude from a transfer. Objects must not start with one of the matching `exclude_prefixes` for inclusion in a transfer. The following are requirements of `exclude_prefixes`: * Each exclude-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each exclude-prefix must omit the leading slash. For example, to exclude the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the exclude-prefix as `logs/y=2015/requests.gz`. * None of the exclude-prefix values can be empty, if specified. * Each exclude-prefix must exclude a distinct portion of the object namespace. No exclude-prefix may be a prefix of another exclude-prefix. * If include_prefixes is specified, then each exclude-prefix must start with the value of a path explicitly included by `include_prefixes`. The max size of `exclude_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
 	ExcludePrefixes []string `pulumi:"excludePrefixes"`
@@ -3248,7 +3604,7 @@ type ObjectConditionsResponseInput interface {
 	ToObjectConditionsResponseOutputWithContext(context.Context) ObjectConditionsResponseOutput
 }
 
-// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. Transfers that use PosixFilesystem and have a Cloud Storage source don't support `ObjectConditions`.
+// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. Transfers with a PosixFilesystem source or destination don't support `ObjectConditions`.
 type ObjectConditionsResponseArgs struct {
 	// If you specify `exclude_prefixes`, Storage Transfer Service uses the items in the `exclude_prefixes` array to determine which objects to exclude from a transfer. Objects must not start with one of the matching `exclude_prefixes` for inclusion in a transfer. The following are requirements of `exclude_prefixes`: * Each exclude-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each exclude-prefix must omit the leading slash. For example, to exclude the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the exclude-prefix as `logs/y=2015/requests.gz`. * None of the exclude-prefix values can be empty, if specified. * Each exclude-prefix must exclude a distinct portion of the object namespace. No exclude-prefix may be a prefix of another exclude-prefix. * If include_prefixes is specified, then each exclude-prefix must start with the value of a path explicitly included by `include_prefixes`. The max size of `exclude_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
 	ExcludePrefixes pulumi.StringArrayInput `pulumi:"excludePrefixes"`
@@ -3317,7 +3673,7 @@ func (i *objectConditionsResponsePtrType) ToObjectConditionsResponsePtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectConditionsResponsePtrOutput)
 }
 
-// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. Transfers that use PosixFilesystem and have a Cloud Storage source don't support `ObjectConditions`.
+// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. Transfers with a PosixFilesystem source or destination don't support `ObjectConditions`.
 type ObjectConditionsResponseOutput struct{ *pulumi.OutputState }
 
 func (ObjectConditionsResponseOutput) ElementType() reflect.Type {
@@ -4562,6 +4918,286 @@ func (o TimeOfDayResponsePtrOutput) Seconds() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Specifies where the manifest is located.
+type TransferManifest struct {
+	// Holds URI-encoded path to find the manifest. It can be located in data_source, data_sink, or separately in GCS. For data_source and data_sink, the manifest location is relative to the path specified by that data_source or data_sink. If manifest is in GCS, use format "gs:///". If manifest is in data_source, use format "source://". If manifest is in data_sink, use format "sink://".
+	Location *string `pulumi:"location"`
+}
+
+// TransferManifestInput is an input type that accepts TransferManifestArgs and TransferManifestOutput values.
+// You can construct a concrete instance of `TransferManifestInput` via:
+//
+//          TransferManifestArgs{...}
+type TransferManifestInput interface {
+	pulumi.Input
+
+	ToTransferManifestOutput() TransferManifestOutput
+	ToTransferManifestOutputWithContext(context.Context) TransferManifestOutput
+}
+
+// Specifies where the manifest is located.
+type TransferManifestArgs struct {
+	// Holds URI-encoded path to find the manifest. It can be located in data_source, data_sink, or separately in GCS. For data_source and data_sink, the manifest location is relative to the path specified by that data_source or data_sink. If manifest is in GCS, use format "gs:///". If manifest is in data_source, use format "source://". If manifest is in data_sink, use format "sink://".
+	Location pulumi.StringPtrInput `pulumi:"location"`
+}
+
+func (TransferManifestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferManifest)(nil)).Elem()
+}
+
+func (i TransferManifestArgs) ToTransferManifestOutput() TransferManifestOutput {
+	return i.ToTransferManifestOutputWithContext(context.Background())
+}
+
+func (i TransferManifestArgs) ToTransferManifestOutputWithContext(ctx context.Context) TransferManifestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferManifestOutput)
+}
+
+func (i TransferManifestArgs) ToTransferManifestPtrOutput() TransferManifestPtrOutput {
+	return i.ToTransferManifestPtrOutputWithContext(context.Background())
+}
+
+func (i TransferManifestArgs) ToTransferManifestPtrOutputWithContext(ctx context.Context) TransferManifestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferManifestOutput).ToTransferManifestPtrOutputWithContext(ctx)
+}
+
+// TransferManifestPtrInput is an input type that accepts TransferManifestArgs, TransferManifestPtr and TransferManifestPtrOutput values.
+// You can construct a concrete instance of `TransferManifestPtrInput` via:
+//
+//          TransferManifestArgs{...}
+//
+//  or:
+//
+//          nil
+type TransferManifestPtrInput interface {
+	pulumi.Input
+
+	ToTransferManifestPtrOutput() TransferManifestPtrOutput
+	ToTransferManifestPtrOutputWithContext(context.Context) TransferManifestPtrOutput
+}
+
+type transferManifestPtrType TransferManifestArgs
+
+func TransferManifestPtr(v *TransferManifestArgs) TransferManifestPtrInput {
+	return (*transferManifestPtrType)(v)
+}
+
+func (*transferManifestPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferManifest)(nil)).Elem()
+}
+
+func (i *transferManifestPtrType) ToTransferManifestPtrOutput() TransferManifestPtrOutput {
+	return i.ToTransferManifestPtrOutputWithContext(context.Background())
+}
+
+func (i *transferManifestPtrType) ToTransferManifestPtrOutputWithContext(ctx context.Context) TransferManifestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferManifestPtrOutput)
+}
+
+// Specifies where the manifest is located.
+type TransferManifestOutput struct{ *pulumi.OutputState }
+
+func (TransferManifestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferManifest)(nil)).Elem()
+}
+
+func (o TransferManifestOutput) ToTransferManifestOutput() TransferManifestOutput {
+	return o
+}
+
+func (o TransferManifestOutput) ToTransferManifestOutputWithContext(ctx context.Context) TransferManifestOutput {
+	return o
+}
+
+func (o TransferManifestOutput) ToTransferManifestPtrOutput() TransferManifestPtrOutput {
+	return o.ToTransferManifestPtrOutputWithContext(context.Background())
+}
+
+func (o TransferManifestOutput) ToTransferManifestPtrOutputWithContext(ctx context.Context) TransferManifestPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferManifest) *TransferManifest {
+		return &v
+	}).(TransferManifestPtrOutput)
+}
+
+// Holds URI-encoded path to find the manifest. It can be located in data_source, data_sink, or separately in GCS. For data_source and data_sink, the manifest location is relative to the path specified by that data_source or data_sink. If manifest is in GCS, use format "gs:///". If manifest is in data_source, use format "source://". If manifest is in data_sink, use format "sink://".
+func (o TransferManifestOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferManifest) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+type TransferManifestPtrOutput struct{ *pulumi.OutputState }
+
+func (TransferManifestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferManifest)(nil)).Elem()
+}
+
+func (o TransferManifestPtrOutput) ToTransferManifestPtrOutput() TransferManifestPtrOutput {
+	return o
+}
+
+func (o TransferManifestPtrOutput) ToTransferManifestPtrOutputWithContext(ctx context.Context) TransferManifestPtrOutput {
+	return o
+}
+
+func (o TransferManifestPtrOutput) Elem() TransferManifestOutput {
+	return o.ApplyT(func(v *TransferManifest) TransferManifest {
+		if v != nil {
+			return *v
+		}
+		var ret TransferManifest
+		return ret
+	}).(TransferManifestOutput)
+}
+
+// Holds URI-encoded path to find the manifest. It can be located in data_source, data_sink, or separately in GCS. For data_source and data_sink, the manifest location is relative to the path specified by that data_source or data_sink. If manifest is in GCS, use format "gs:///". If manifest is in data_source, use format "source://". If manifest is in data_sink, use format "sink://".
+func (o TransferManifestPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferManifest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies where the manifest is located.
+type TransferManifestResponse struct {
+	// Holds URI-encoded path to find the manifest. It can be located in data_source, data_sink, or separately in GCS. For data_source and data_sink, the manifest location is relative to the path specified by that data_source or data_sink. If manifest is in GCS, use format "gs:///". If manifest is in data_source, use format "source://". If manifest is in data_sink, use format "sink://".
+	Location string `pulumi:"location"`
+}
+
+// TransferManifestResponseInput is an input type that accepts TransferManifestResponseArgs and TransferManifestResponseOutput values.
+// You can construct a concrete instance of `TransferManifestResponseInput` via:
+//
+//          TransferManifestResponseArgs{...}
+type TransferManifestResponseInput interface {
+	pulumi.Input
+
+	ToTransferManifestResponseOutput() TransferManifestResponseOutput
+	ToTransferManifestResponseOutputWithContext(context.Context) TransferManifestResponseOutput
+}
+
+// Specifies where the manifest is located.
+type TransferManifestResponseArgs struct {
+	// Holds URI-encoded path to find the manifest. It can be located in data_source, data_sink, or separately in GCS. For data_source and data_sink, the manifest location is relative to the path specified by that data_source or data_sink. If manifest is in GCS, use format "gs:///". If manifest is in data_source, use format "source://". If manifest is in data_sink, use format "sink://".
+	Location pulumi.StringInput `pulumi:"location"`
+}
+
+func (TransferManifestResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferManifestResponse)(nil)).Elem()
+}
+
+func (i TransferManifestResponseArgs) ToTransferManifestResponseOutput() TransferManifestResponseOutput {
+	return i.ToTransferManifestResponseOutputWithContext(context.Background())
+}
+
+func (i TransferManifestResponseArgs) ToTransferManifestResponseOutputWithContext(ctx context.Context) TransferManifestResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferManifestResponseOutput)
+}
+
+func (i TransferManifestResponseArgs) ToTransferManifestResponsePtrOutput() TransferManifestResponsePtrOutput {
+	return i.ToTransferManifestResponsePtrOutputWithContext(context.Background())
+}
+
+func (i TransferManifestResponseArgs) ToTransferManifestResponsePtrOutputWithContext(ctx context.Context) TransferManifestResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferManifestResponseOutput).ToTransferManifestResponsePtrOutputWithContext(ctx)
+}
+
+// TransferManifestResponsePtrInput is an input type that accepts TransferManifestResponseArgs, TransferManifestResponsePtr and TransferManifestResponsePtrOutput values.
+// You can construct a concrete instance of `TransferManifestResponsePtrInput` via:
+//
+//          TransferManifestResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type TransferManifestResponsePtrInput interface {
+	pulumi.Input
+
+	ToTransferManifestResponsePtrOutput() TransferManifestResponsePtrOutput
+	ToTransferManifestResponsePtrOutputWithContext(context.Context) TransferManifestResponsePtrOutput
+}
+
+type transferManifestResponsePtrType TransferManifestResponseArgs
+
+func TransferManifestResponsePtr(v *TransferManifestResponseArgs) TransferManifestResponsePtrInput {
+	return (*transferManifestResponsePtrType)(v)
+}
+
+func (*transferManifestResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferManifestResponse)(nil)).Elem()
+}
+
+func (i *transferManifestResponsePtrType) ToTransferManifestResponsePtrOutput() TransferManifestResponsePtrOutput {
+	return i.ToTransferManifestResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *transferManifestResponsePtrType) ToTransferManifestResponsePtrOutputWithContext(ctx context.Context) TransferManifestResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferManifestResponsePtrOutput)
+}
+
+// Specifies where the manifest is located.
+type TransferManifestResponseOutput struct{ *pulumi.OutputState }
+
+func (TransferManifestResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferManifestResponse)(nil)).Elem()
+}
+
+func (o TransferManifestResponseOutput) ToTransferManifestResponseOutput() TransferManifestResponseOutput {
+	return o
+}
+
+func (o TransferManifestResponseOutput) ToTransferManifestResponseOutputWithContext(ctx context.Context) TransferManifestResponseOutput {
+	return o
+}
+
+func (o TransferManifestResponseOutput) ToTransferManifestResponsePtrOutput() TransferManifestResponsePtrOutput {
+	return o.ToTransferManifestResponsePtrOutputWithContext(context.Background())
+}
+
+func (o TransferManifestResponseOutput) ToTransferManifestResponsePtrOutputWithContext(ctx context.Context) TransferManifestResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferManifestResponse) *TransferManifestResponse {
+		return &v
+	}).(TransferManifestResponsePtrOutput)
+}
+
+// Holds URI-encoded path to find the manifest. It can be located in data_source, data_sink, or separately in GCS. For data_source and data_sink, the manifest location is relative to the path specified by that data_source or data_sink. If manifest is in GCS, use format "gs:///". If manifest is in data_source, use format "source://". If manifest is in data_sink, use format "sink://".
+func (o TransferManifestResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v TransferManifestResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+type TransferManifestResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TransferManifestResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferManifestResponse)(nil)).Elem()
+}
+
+func (o TransferManifestResponsePtrOutput) ToTransferManifestResponsePtrOutput() TransferManifestResponsePtrOutput {
+	return o
+}
+
+func (o TransferManifestResponsePtrOutput) ToTransferManifestResponsePtrOutputWithContext(ctx context.Context) TransferManifestResponsePtrOutput {
+	return o
+}
+
+func (o TransferManifestResponsePtrOutput) Elem() TransferManifestResponseOutput {
+	return o.ApplyT(func(v *TransferManifestResponse) TransferManifestResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TransferManifestResponse
+		return ret
+	}).(TransferManifestResponseOutput)
+}
+
+// Holds URI-encoded path to find the manifest. It can be located in data_source, data_sink, or separately in GCS. For data_source and data_sink, the manifest location is relative to the path specified by that data_source or data_sink. If manifest is in GCS, use format "gs:///". If manifest is in data_source, use format "source://". If manifest is in data_sink, use format "sink://".
+func (o TransferManifestResponsePtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferManifestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
 // TransferOptions define the actions to be performed on objects in a transfer.
 type TransferOptions struct {
 	// Whether objects should be deleted from the source after they are transferred to the sink. **Note:** This option and delete_objects_unique_in_sink are mutually exclusive.
@@ -4932,8 +5568,16 @@ type TransferSpec struct {
 	HttpDataSource *HttpData `pulumi:"httpDataSource"`
 	// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
 	ObjectConditions *ObjectConditions `pulumi:"objectConditions"`
+	// A POSIX Filesystem data sink.
+	PosixDataSink *PosixFilesystem `pulumi:"posixDataSink"`
 	// A POSIX Filesystem data source.
 	PosixDataSource *PosixFilesystem `pulumi:"posixDataSource"`
+	// Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
+	SinkAgentPoolName *string `pulumi:"sinkAgentPoolName"`
+	// Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
+	SourceAgentPoolName *string `pulumi:"sourceAgentPoolName"`
+	// A manifest file provides a list of objects to be transferred from the data source. This field points to the location of the manifest file. Otherwise, the entire source bucket is used. ObjectConditions still apply.
+	TransferManifest *TransferManifest `pulumi:"transferManifest"`
 	// If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
 	TransferOptions *TransferOptions `pulumi:"transferOptions"`
 }
@@ -4963,8 +5607,16 @@ type TransferSpecArgs struct {
 	HttpDataSource HttpDataPtrInput `pulumi:"httpDataSource"`
 	// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
 	ObjectConditions ObjectConditionsPtrInput `pulumi:"objectConditions"`
+	// A POSIX Filesystem data sink.
+	PosixDataSink PosixFilesystemPtrInput `pulumi:"posixDataSink"`
 	// A POSIX Filesystem data source.
 	PosixDataSource PosixFilesystemPtrInput `pulumi:"posixDataSource"`
+	// Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
+	SinkAgentPoolName pulumi.StringPtrInput `pulumi:"sinkAgentPoolName"`
+	// Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
+	SourceAgentPoolName pulumi.StringPtrInput `pulumi:"sourceAgentPoolName"`
+	// A manifest file provides a list of objects to be transferred from the data source. This field points to the location of the manifest file. Otherwise, the entire source bucket is used. ObjectConditions still apply.
+	TransferManifest TransferManifestPtrInput `pulumi:"transferManifest"`
 	// If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
 	TransferOptions TransferOptionsPtrInput `pulumi:"transferOptions"`
 }
@@ -5077,9 +5729,29 @@ func (o TransferSpecOutput) ObjectConditions() ObjectConditionsPtrOutput {
 	return o.ApplyT(func(v TransferSpec) *ObjectConditions { return v.ObjectConditions }).(ObjectConditionsPtrOutput)
 }
 
+// A POSIX Filesystem data sink.
+func (o TransferSpecOutput) PosixDataSink() PosixFilesystemPtrOutput {
+	return o.ApplyT(func(v TransferSpec) *PosixFilesystem { return v.PosixDataSink }).(PosixFilesystemPtrOutput)
+}
+
 // A POSIX Filesystem data source.
 func (o TransferSpecOutput) PosixDataSource() PosixFilesystemPtrOutput {
 	return o.ApplyT(func(v TransferSpec) *PosixFilesystem { return v.PosixDataSource }).(PosixFilesystemPtrOutput)
+}
+
+// Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
+func (o TransferSpecOutput) SinkAgentPoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferSpec) *string { return v.SinkAgentPoolName }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
+func (o TransferSpecOutput) SourceAgentPoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferSpec) *string { return v.SourceAgentPoolName }).(pulumi.StringPtrOutput)
+}
+
+// A manifest file provides a list of objects to be transferred from the data source. This field points to the location of the manifest file. Otherwise, the entire source bucket is used. ObjectConditions still apply.
+func (o TransferSpecOutput) TransferManifest() TransferManifestPtrOutput {
+	return o.ApplyT(func(v TransferSpec) *TransferManifest { return v.TransferManifest }).(TransferManifestPtrOutput)
 }
 
 // If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
@@ -5171,6 +5843,16 @@ func (o TransferSpecPtrOutput) ObjectConditions() ObjectConditionsPtrOutput {
 	}).(ObjectConditionsPtrOutput)
 }
 
+// A POSIX Filesystem data sink.
+func (o TransferSpecPtrOutput) PosixDataSink() PosixFilesystemPtrOutput {
+	return o.ApplyT(func(v *TransferSpec) *PosixFilesystem {
+		if v == nil {
+			return nil
+		}
+		return v.PosixDataSink
+	}).(PosixFilesystemPtrOutput)
+}
+
 // A POSIX Filesystem data source.
 func (o TransferSpecPtrOutput) PosixDataSource() PosixFilesystemPtrOutput {
 	return o.ApplyT(func(v *TransferSpec) *PosixFilesystem {
@@ -5179,6 +5861,36 @@ func (o TransferSpecPtrOutput) PosixDataSource() PosixFilesystemPtrOutput {
 		}
 		return v.PosixDataSource
 	}).(PosixFilesystemPtrOutput)
+}
+
+// Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
+func (o TransferSpecPtrOutput) SinkAgentPoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SinkAgentPoolName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
+func (o TransferSpecPtrOutput) SourceAgentPoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceAgentPoolName
+	}).(pulumi.StringPtrOutput)
+}
+
+// A manifest file provides a list of objects to be transferred from the data source. This field points to the location of the manifest file. Otherwise, the entire source bucket is used. ObjectConditions still apply.
+func (o TransferSpecPtrOutput) TransferManifest() TransferManifestPtrOutput {
+	return o.ApplyT(func(v *TransferSpec) *TransferManifest {
+		if v == nil {
+			return nil
+		}
+		return v.TransferManifest
+	}).(TransferManifestPtrOutput)
 }
 
 // If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
@@ -5205,8 +5917,16 @@ type TransferSpecResponse struct {
 	HttpDataSource HttpDataResponse `pulumi:"httpDataSource"`
 	// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
 	ObjectConditions ObjectConditionsResponse `pulumi:"objectConditions"`
+	// A POSIX Filesystem data sink.
+	PosixDataSink PosixFilesystemResponse `pulumi:"posixDataSink"`
 	// A POSIX Filesystem data source.
 	PosixDataSource PosixFilesystemResponse `pulumi:"posixDataSource"`
+	// Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
+	SinkAgentPoolName string `pulumi:"sinkAgentPoolName"`
+	// Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
+	SourceAgentPoolName string `pulumi:"sourceAgentPoolName"`
+	// A manifest file provides a list of objects to be transferred from the data source. This field points to the location of the manifest file. Otherwise, the entire source bucket is used. ObjectConditions still apply.
+	TransferManifest TransferManifestResponse `pulumi:"transferManifest"`
 	// If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
 	TransferOptions TransferOptionsResponse `pulumi:"transferOptions"`
 }
@@ -5236,8 +5956,16 @@ type TransferSpecResponseArgs struct {
 	HttpDataSource HttpDataResponseInput `pulumi:"httpDataSource"`
 	// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
 	ObjectConditions ObjectConditionsResponseInput `pulumi:"objectConditions"`
+	// A POSIX Filesystem data sink.
+	PosixDataSink PosixFilesystemResponseInput `pulumi:"posixDataSink"`
 	// A POSIX Filesystem data source.
 	PosixDataSource PosixFilesystemResponseInput `pulumi:"posixDataSource"`
+	// Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
+	SinkAgentPoolName pulumi.StringInput `pulumi:"sinkAgentPoolName"`
+	// Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
+	SourceAgentPoolName pulumi.StringInput `pulumi:"sourceAgentPoolName"`
+	// A manifest file provides a list of objects to be transferred from the data source. This field points to the location of the manifest file. Otherwise, the entire source bucket is used. ObjectConditions still apply.
+	TransferManifest TransferManifestResponseInput `pulumi:"transferManifest"`
 	// If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
 	TransferOptions TransferOptionsResponseInput `pulumi:"transferOptions"`
 }
@@ -5350,9 +6078,29 @@ func (o TransferSpecResponseOutput) ObjectConditions() ObjectConditionsResponseO
 	return o.ApplyT(func(v TransferSpecResponse) ObjectConditionsResponse { return v.ObjectConditions }).(ObjectConditionsResponseOutput)
 }
 
+// A POSIX Filesystem data sink.
+func (o TransferSpecResponseOutput) PosixDataSink() PosixFilesystemResponseOutput {
+	return o.ApplyT(func(v TransferSpecResponse) PosixFilesystemResponse { return v.PosixDataSink }).(PosixFilesystemResponseOutput)
+}
+
 // A POSIX Filesystem data source.
 func (o TransferSpecResponseOutput) PosixDataSource() PosixFilesystemResponseOutput {
 	return o.ApplyT(func(v TransferSpecResponse) PosixFilesystemResponse { return v.PosixDataSource }).(PosixFilesystemResponseOutput)
+}
+
+// Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
+func (o TransferSpecResponseOutput) SinkAgentPoolName() pulumi.StringOutput {
+	return o.ApplyT(func(v TransferSpecResponse) string { return v.SinkAgentPoolName }).(pulumi.StringOutput)
+}
+
+// Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
+func (o TransferSpecResponseOutput) SourceAgentPoolName() pulumi.StringOutput {
+	return o.ApplyT(func(v TransferSpecResponse) string { return v.SourceAgentPoolName }).(pulumi.StringOutput)
+}
+
+// A manifest file provides a list of objects to be transferred from the data source. This field points to the location of the manifest file. Otherwise, the entire source bucket is used. ObjectConditions still apply.
+func (o TransferSpecResponseOutput) TransferManifest() TransferManifestResponseOutput {
+	return o.ApplyT(func(v TransferSpecResponse) TransferManifestResponse { return v.TransferManifest }).(TransferManifestResponseOutput)
 }
 
 // If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
@@ -5444,6 +6192,16 @@ func (o TransferSpecResponsePtrOutput) ObjectConditions() ObjectConditionsRespon
 	}).(ObjectConditionsResponsePtrOutput)
 }
 
+// A POSIX Filesystem data sink.
+func (o TransferSpecResponsePtrOutput) PosixDataSink() PosixFilesystemResponsePtrOutput {
+	return o.ApplyT(func(v *TransferSpecResponse) *PosixFilesystemResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.PosixDataSink
+	}).(PosixFilesystemResponsePtrOutput)
+}
+
 // A POSIX Filesystem data source.
 func (o TransferSpecResponsePtrOutput) PosixDataSource() PosixFilesystemResponsePtrOutput {
 	return o.ApplyT(func(v *TransferSpecResponse) *PosixFilesystemResponse {
@@ -5452,6 +6210,36 @@ func (o TransferSpecResponsePtrOutput) PosixDataSource() PosixFilesystemResponse
 		}
 		return &v.PosixDataSource
 	}).(PosixFilesystemResponsePtrOutput)
+}
+
+// Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
+func (o TransferSpecResponsePtrOutput) SinkAgentPoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferSpecResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SinkAgentPoolName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
+func (o TransferSpecResponsePtrOutput) SourceAgentPoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferSpecResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceAgentPoolName
+	}).(pulumi.StringPtrOutput)
+}
+
+// A manifest file provides a list of objects to be transferred from the data source. This field points to the location of the manifest file. Otherwise, the entire source bucket is used. ObjectConditions still apply.
+func (o TransferSpecResponsePtrOutput) TransferManifest() TransferManifestResponsePtrOutput {
+	return o.ApplyT(func(v *TransferSpecResponse) *TransferManifestResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.TransferManifest
+	}).(TransferManifestResponsePtrOutput)
 }
 
 // If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
@@ -5481,6 +6269,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureCredentialsPtrInput)(nil)).Elem(), AzureCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureCredentialsResponseInput)(nil)).Elem(), AzureCredentialsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureCredentialsResponsePtrInput)(nil)).Elem(), AzureCredentialsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BandwidthLimitInput)(nil)).Elem(), BandwidthLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BandwidthLimitPtrInput)(nil)).Elem(), BandwidthLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BandwidthLimitResponseInput)(nil)).Elem(), BandwidthLimitResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BandwidthLimitResponsePtrInput)(nil)).Elem(), BandwidthLimitResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DateInput)(nil)).Elem(), DateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatePtrInput)(nil)).Elem(), DateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DateResponseInput)(nil)).Elem(), DateResponseArgs{})
@@ -5517,6 +6309,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TimeOfDayPtrInput)(nil)).Elem(), TimeOfDayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TimeOfDayResponseInput)(nil)).Elem(), TimeOfDayResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TimeOfDayResponsePtrInput)(nil)).Elem(), TimeOfDayResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferManifestInput)(nil)).Elem(), TransferManifestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferManifestPtrInput)(nil)).Elem(), TransferManifestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferManifestResponseInput)(nil)).Elem(), TransferManifestResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferManifestResponsePtrInput)(nil)).Elem(), TransferManifestResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferOptionsInput)(nil)).Elem(), TransferOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferOptionsPtrInput)(nil)).Elem(), TransferOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferOptionsResponseInput)(nil)).Elem(), TransferOptionsResponseArgs{})
@@ -5541,6 +6337,10 @@ func init() {
 	pulumi.RegisterOutputType(AzureCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(AzureCredentialsResponseOutput{})
 	pulumi.RegisterOutputType(AzureCredentialsResponsePtrOutput{})
+	pulumi.RegisterOutputType(BandwidthLimitOutput{})
+	pulumi.RegisterOutputType(BandwidthLimitPtrOutput{})
+	pulumi.RegisterOutputType(BandwidthLimitResponseOutput{})
+	pulumi.RegisterOutputType(BandwidthLimitResponsePtrOutput{})
 	pulumi.RegisterOutputType(DateOutput{})
 	pulumi.RegisterOutputType(DatePtrOutput{})
 	pulumi.RegisterOutputType(DateResponseOutput{})
@@ -5577,6 +6377,10 @@ func init() {
 	pulumi.RegisterOutputType(TimeOfDayPtrOutput{})
 	pulumi.RegisterOutputType(TimeOfDayResponseOutput{})
 	pulumi.RegisterOutputType(TimeOfDayResponsePtrOutput{})
+	pulumi.RegisterOutputType(TransferManifestOutput{})
+	pulumi.RegisterOutputType(TransferManifestPtrOutput{})
+	pulumi.RegisterOutputType(TransferManifestResponseOutput{})
+	pulumi.RegisterOutputType(TransferManifestResponsePtrOutput{})
 	pulumi.RegisterOutputType(TransferOptionsOutput{})
 	pulumi.RegisterOutputType(TransferOptionsPtrOutput{})
 	pulumi.RegisterOutputType(TransferOptionsResponseOutput{})

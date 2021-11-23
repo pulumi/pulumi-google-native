@@ -17,13 +17,21 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Outputs
     public sealed class CommonFeatureSpecResponse
     {
         /// <summary>
+        /// Appdevexperience specific spec.
+        /// </summary>
+        public readonly Outputs.AppDevExperienceFeatureSpecResponse Appdevexperience;
+        /// <summary>
         /// Multicluster Ingress-specific spec.
         /// </summary>
         public readonly Outputs.MultiClusterIngressFeatureSpecResponse Multiclusteringress;
 
         [OutputConstructor]
-        private CommonFeatureSpecResponse(Outputs.MultiClusterIngressFeatureSpecResponse multiclusteringress)
+        private CommonFeatureSpecResponse(
+            Outputs.AppDevExperienceFeatureSpecResponse appdevexperience,
+
+            Outputs.MultiClusterIngressFeatureSpecResponse multiclusteringress)
         {
+            Appdevexperience = appdevexperience;
             Multiclusteringress = multiclusteringress;
         }
     }

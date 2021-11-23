@@ -168,7 +168,7 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta
         /// </summary>
         public static ConditionIam Attribution { get; } = new ConditionIam("ATTRIBUTION");
         /// <summary>
-        /// Any of the security realms in the IAMContext (go/security-realms). When used with IN, the condition indicates "any of the request's realms match one of the given values; with NOT_IN, "none of the realms match any of the given values". Note that a value can be: - 'self' (i.e., allow connections from clients that are in the same security realm, which is currently but not guaranteed to be campus-sized) - 'self:metro' (i.e., clients that are in the same metro) - 'self:cloud-region' (i.e., allow connections from clients that are in the same cloud region) - 'guardians' (i.e., allow connections from its guardian realms. See go/security-realms-glossary#guardian for more information.) - a realm (e.g., 'campus-abc') - a realm group (e.g., 'realms-for-borg-cell-xx', see: go/realm-groups) A match is determined by a realm group membership check performed by a RealmAclRep object (go/realm-acl-howto). It is not permitted to grant access based on the *absence* of a realm, so realm conditions can only be used in a "positive" context (e.g., ALLOW/IN or DENY/NOT_IN).
+        /// Any of the security realms in the IAMContext (go/security-realms). When used with IN, the condition indicates "any of the request's realms match one of the given values; with NOT_IN, "none of the realms match any of the given values". Note that a value can be: - 'self' (i.e., allow connections from clients that are in the same security realm, which is currently but not guaranteed to be campus-sized) - 'self:metro' (i.e., clients that are in the same metro) - 'self:cloud-region' (i.e., allow connections from clients that are in the same cloud region) - 'self:prod-region' (i.e., allow connections from clients that are in the same prod region) - 'guardians' (i.e., allow connections from its guardian realms. See go/security-realms-glossary#guardian for more information.) - a realm (e.g., 'campus-abc') - a realm group (e.g., 'realms-for-borg-cell-xx', see: go/realm-groups) A match is determined by a realm group membership check performed by a RealmAclRep object (go/realm-acl-howto). It is not permitted to grant access based on the *absence* of a realm, so realm conditions can only be used in a "positive" context (e.g., ALLOW/IN or DENY/NOT_IN).
         /// </summary>
         public static ConditionIam SecurityRealm { get; } = new ConditionIam("SECURITY_REALM");
         /// <summary>
@@ -332,55 +332,6 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is DataAccessOptionsLogMode other && Equals(other);
         public bool Equals(DataAccessOptionsLogMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
-    /// Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
-    /// </summary>
-    [EnumType]
-    public readonly struct GameServerClusterAllocationPriority : IEquatable<GameServerClusterAllocationPriority>
-    {
-        private readonly string _value;
-
-        private GameServerClusterAllocationPriority(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        /// <summary>
-        /// The default allocation priority. `PRIORITY_UNSPECIFIED` is the lowest possible priority.
-        /// </summary>
-        public static GameServerClusterAllocationPriority PriorityUnspecified { get; } = new GameServerClusterAllocationPriority("PRIORITY_UNSPECIFIED");
-        /// <summary>
-        /// Priority 1, the highest priority.
-        /// </summary>
-        public static GameServerClusterAllocationPriority P1 { get; } = new GameServerClusterAllocationPriority("P1");
-        /// <summary>
-        /// Priority 2.
-        /// </summary>
-        public static GameServerClusterAllocationPriority P2 { get; } = new GameServerClusterAllocationPriority("P2");
-        /// <summary>
-        /// Priority 3.
-        /// </summary>
-        public static GameServerClusterAllocationPriority P3 { get; } = new GameServerClusterAllocationPriority("P3");
-        /// <summary>
-        /// Priority 4.
-        /// </summary>
-        public static GameServerClusterAllocationPriority P4 { get; } = new GameServerClusterAllocationPriority("P4");
-
-        public static bool operator ==(GameServerClusterAllocationPriority left, GameServerClusterAllocationPriority right) => left.Equals(right);
-        public static bool operator !=(GameServerClusterAllocationPriority left, GameServerClusterAllocationPriority right) => !left.Equals(right);
-
-        public static explicit operator string(GameServerClusterAllocationPriority value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is GameServerClusterAllocationPriority other && Equals(other);
-        public bool Equals(GameServerClusterAllocationPriority other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

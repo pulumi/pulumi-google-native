@@ -12,9 +12,12 @@ from ._enums import *
 
 __all__ = [
     'AndroidAttributesResponse',
+    'CertificateInfoResponse',
+    'CertificateTemplateResponse',
     'DynamicGroupMetadataResponse',
     'DynamicGroupQueryResponse',
     'DynamicGroupStatusResponse',
+    'EndpointVerificationSpecificAttributesResponse',
     'EntityKeyResponse',
     'ExpiryDetailResponse',
     'MembershipRoleResponse',
@@ -99,6 +102,193 @@ class AndroidAttributesResponse(dict):
         Whether device supports Android work profiles. If false, this service will not block access to corp data even if an administrator turns on the "Enforce Work Profile" policy.
         """
         return pulumi.get(self, "supports_work_profile")
+
+
+@pulumi.output_type
+class CertificateInfoResponse(dict):
+    """
+    Stores information about a certificate.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certificateTemplate":
+            suggest = "certificate_template"
+        elif key == "serialNumber":
+            suggest = "serial_number"
+        elif key == "validationState":
+            suggest = "validation_state"
+        elif key == "validityExpirationTime":
+            suggest = "validity_expiration_time"
+        elif key == "validityStartTime":
+            suggest = "validity_start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 certificate_template: 'outputs.CertificateTemplateResponse',
+                 fingerprint: str,
+                 issuer: str,
+                 serial_number: str,
+                 subject: str,
+                 thumbprint: str,
+                 validation_state: str,
+                 validity_expiration_time: str,
+                 validity_start_time: str):
+        """
+        Stores information about a certificate.
+        :param 'CertificateTemplateResponse' certificate_template: The X.509 extension for CertificateTemplate.
+        :param str fingerprint: The encoded certificate fingerprint.
+        :param str issuer: The name of the issuer of this certificate.
+        :param str serial_number: Serial number of the certificate, Example: "123456789".
+        :param str subject: The subject name of this certificate.
+        :param str thumbprint: The certificate thumbprint.
+        :param str validation_state: Validation state of this certificate.
+        :param str validity_expiration_time: Certificate not valid at or after this timestamp.
+        :param str validity_start_time: Certificate not valid before this timestamp.
+        """
+        pulumi.set(__self__, "certificate_template", certificate_template)
+        pulumi.set(__self__, "fingerprint", fingerprint)
+        pulumi.set(__self__, "issuer", issuer)
+        pulumi.set(__self__, "serial_number", serial_number)
+        pulumi.set(__self__, "subject", subject)
+        pulumi.set(__self__, "thumbprint", thumbprint)
+        pulumi.set(__self__, "validation_state", validation_state)
+        pulumi.set(__self__, "validity_expiration_time", validity_expiration_time)
+        pulumi.set(__self__, "validity_start_time", validity_start_time)
+
+    @property
+    @pulumi.getter(name="certificateTemplate")
+    def certificate_template(self) -> 'outputs.CertificateTemplateResponse':
+        """
+        The X.509 extension for CertificateTemplate.
+        """
+        return pulumi.get(self, "certificate_template")
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> str:
+        """
+        The encoded certificate fingerprint.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter
+    def issuer(self) -> str:
+        """
+        The name of the issuer of this certificate.
+        """
+        return pulumi.get(self, "issuer")
+
+    @property
+    @pulumi.getter(name="serialNumber")
+    def serial_number(self) -> str:
+        """
+        Serial number of the certificate, Example: "123456789".
+        """
+        return pulumi.get(self, "serial_number")
+
+    @property
+    @pulumi.getter
+    def subject(self) -> str:
+        """
+        The subject name of this certificate.
+        """
+        return pulumi.get(self, "subject")
+
+    @property
+    @pulumi.getter
+    def thumbprint(self) -> str:
+        """
+        The certificate thumbprint.
+        """
+        return pulumi.get(self, "thumbprint")
+
+    @property
+    @pulumi.getter(name="validationState")
+    def validation_state(self) -> str:
+        """
+        Validation state of this certificate.
+        """
+        return pulumi.get(self, "validation_state")
+
+    @property
+    @pulumi.getter(name="validityExpirationTime")
+    def validity_expiration_time(self) -> str:
+        """
+        Certificate not valid at or after this timestamp.
+        """
+        return pulumi.get(self, "validity_expiration_time")
+
+    @property
+    @pulumi.getter(name="validityStartTime")
+    def validity_start_time(self) -> str:
+        """
+        Certificate not valid before this timestamp.
+        """
+        return pulumi.get(self, "validity_start_time")
+
+
+@pulumi.output_type
+class CertificateTemplateResponse(dict):
+    """
+    CertificateTemplate (v3 Extension in X.509).
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "majorVersion":
+            suggest = "major_version"
+        elif key == "minorVersion":
+            suggest = "minor_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateTemplateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateTemplateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateTemplateResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 major_version: int,
+                 minor_version: int):
+        """
+        CertificateTemplate (v3 Extension in X.509).
+        :param int major_version: The Major version of the template. Example: 100.
+        :param int minor_version: The minor version of the template. Example: 12.
+        """
+        pulumi.set(__self__, "major_version", major_version)
+        pulumi.set(__self__, "minor_version", minor_version)
+
+    @property
+    @pulumi.getter(name="majorVersion")
+    def major_version(self) -> int:
+        """
+        The Major version of the template. Example: 100.
+        """
+        return pulumi.get(self, "major_version")
+
+    @property
+    @pulumi.getter(name="minorVersion")
+    def minor_version(self) -> int:
+        """
+        The minor version of the template. Example: 12.
+        """
+        return pulumi.get(self, "minor_version")
 
 
 @pulumi.output_type
@@ -228,6 +418,45 @@ class DynamicGroupStatusResponse(dict):
         The latest time at which the dynamic group is guaranteed to be in the given status. If status is `UP_TO_DATE`, the latest time at which the dynamic group was confirmed to be up-to-date. If status is `UPDATING_MEMBERSHIPS`, the time at which dynamic group was created.
         """
         return pulumi.get(self, "status_time")
+
+
+@pulumi.output_type
+class EndpointVerificationSpecificAttributesResponse(dict):
+    """
+    Resource representing the Endpoint Verification-specific attributes of a Device.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certificateInfo":
+            suggest = "certificate_info"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EndpointVerificationSpecificAttributesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EndpointVerificationSpecificAttributesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EndpointVerificationSpecificAttributesResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 certificate_info: Sequence['outputs.CertificateInfoResponse']):
+        """
+        Resource representing the Endpoint Verification-specific attributes of a Device.
+        :param Sequence['CertificateInfoResponse'] certificate_info: Details of certificates.
+        """
+        pulumi.set(__self__, "certificate_info", certificate_info)
+
+    @property
+    @pulumi.getter(name="certificateInfo")
+    def certificate_info(self) -> Sequence['outputs.CertificateInfoResponse']:
+        """
+        Details of certificates.
+        """
+        return pulumi.get(self, "certificate_info")
 
 
 @pulumi.output_type

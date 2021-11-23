@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetFhirStoreResult:
-    def __init__(__self__, default_search_handling_strict=None, disable_referential_integrity=None, disable_resource_versioning=None, enable_update_create=None, labels=None, name=None, notification_config=None, stream_configs=None, version=None):
+    def __init__(__self__, default_search_handling_strict=None, disable_referential_integrity=None, disable_resource_versioning=None, enable_update_create=None, labels=None, name=None, notification_config=None, stream_configs=None, validation_config=None, version=None):
         if default_search_handling_strict and not isinstance(default_search_handling_strict, bool):
             raise TypeError("Expected argument 'default_search_handling_strict' to be a bool")
         pulumi.set(__self__, "default_search_handling_strict", default_search_handling_strict)
@@ -43,6 +43,9 @@ class GetFhirStoreResult:
         if stream_configs and not isinstance(stream_configs, list):
             raise TypeError("Expected argument 'stream_configs' to be a list")
         pulumi.set(__self__, "stream_configs", stream_configs)
+        if validation_config and not isinstance(validation_config, dict):
+            raise TypeError("Expected argument 'validation_config' to be a dict")
+        pulumi.set(__self__, "validation_config", validation_config)
         if version and not isinstance(version, str):
             raise TypeError("Expected argument 'version' to be a str")
         pulumi.set(__self__, "version", version)
@@ -112,6 +115,14 @@ class GetFhirStoreResult:
         return pulumi.get(self, "stream_configs")
 
     @property
+    @pulumi.getter(name="validationConfig")
+    def validation_config(self) -> 'outputs.ValidationConfigResponse':
+        """
+        Configuration for how to validate incoming FHIR resources against configured profiles.
+        """
+        return pulumi.get(self, "validation_config")
+
+    @property
     @pulumi.getter
     def version(self) -> str:
         """
@@ -134,6 +145,7 @@ class AwaitableGetFhirStoreResult(GetFhirStoreResult):
             name=self.name,
             notification_config=self.notification_config,
             stream_configs=self.stream_configs,
+            validation_config=self.validation_config,
             version=self.version)
 
 
@@ -165,6 +177,7 @@ def get_fhir_store(dataset_id: Optional[str] = None,
         name=__ret__.name,
         notification_config=__ret__.notification_config,
         stream_configs=__ret__.stream_configs,
+        validation_config=__ret__.validation_config,
         version=__ret__.version)
 
 

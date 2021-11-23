@@ -35,6 +35,7 @@ export class ManagedZone extends pulumi.CustomResource {
         return obj['__pulumiType'] === ManagedZone.__pulumiType;
     }
 
+    public readonly cloudLoggingConfig!: pulumi.Output<outputs.dns.v1.ManagedZoneCloudLoggingConfigResponse>;
     /**
      * The time that this resource was created on the server. This is in RFC3339 text format. Output only.
      */
@@ -105,6 +106,7 @@ export class ManagedZone extends pulumi.CustomResource {
         opts = opts || {};
         if (!opts.id) {
             inputs["clientOperationId"] = args ? args.clientOperationId : undefined;
+            inputs["cloudLoggingConfig"] = args ? args.cloudLoggingConfig : undefined;
             inputs["creationTime"] = args ? args.creationTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["dnsName"] = args ? args.dnsName : undefined;
@@ -123,6 +125,7 @@ export class ManagedZone extends pulumi.CustomResource {
             inputs["serviceDirectoryConfig"] = args ? args.serviceDirectoryConfig : undefined;
             inputs["visibility"] = args ? args.visibility : undefined;
         } else {
+            inputs["cloudLoggingConfig"] = undefined /*out*/;
             inputs["creationTime"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
             inputs["dnsName"] = undefined /*out*/;
@@ -151,6 +154,7 @@ export class ManagedZone extends pulumi.CustomResource {
  */
 export interface ManagedZoneArgs {
     clientOperationId?: pulumi.Input<string>;
+    cloudLoggingConfig?: pulumi.Input<inputs.dns.v1.ManagedZoneCloudLoggingConfigArgs>;
     /**
      * The time that this resource was created on the server. This is in RFC3339 text format. Output only.
      */

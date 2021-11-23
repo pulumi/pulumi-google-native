@@ -151,7 +151,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         public readonly bool NoRemoveDataDisk;
         /// <summary>
-        /// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
+        /// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
         /// </summary>
         public readonly string PostStartupScript;
         /// <summary>
@@ -171,7 +171,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         public readonly ImmutableArray<string> ServiceAccountScopes;
         /// <summary>
-        /// Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+        /// Optional. Shielded VM configuration. [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
         /// </summary>
         public readonly Outputs.ShieldedInstanceConfigResponse ShieldedInstanceConfig;
         /// <summary>

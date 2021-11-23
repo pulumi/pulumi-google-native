@@ -62,6 +62,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string EstimatedBytesProcessed;
         /// <summary>
+        /// Statistics of a BigQuery ML training job.
+        /// </summary>
+        public readonly Outputs.MlStatisticsResponse MlStatistics;
+        /// <summary>
         /// [Output-only, Beta] Information about create model query job progress.
         /// </summary>
         public readonly Outputs.BigQueryModelTrainingResponse ModelTraining;
@@ -148,6 +152,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             string estimatedBytesProcessed,
 
+            Outputs.MlStatisticsResponse mlStatistics,
+
             Outputs.BigQueryModelTrainingResponse modelTraining,
 
             string numDmlAffectedRows,
@@ -190,6 +196,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             DdlTargetTable = ddlTargetTable;
             DmlStats = dmlStats;
             EstimatedBytesProcessed = estimatedBytesProcessed;
+            MlStatistics = mlStatistics;
             ModelTraining = modelTraining;
             NumDmlAffectedRows = numDmlAffectedRows;
             QueryPlan = queryPlan;

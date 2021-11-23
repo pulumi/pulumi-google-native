@@ -57,6 +57,10 @@ export interface GetTriggerResult {
      */
     readonly disabled: boolean;
     /**
+     * Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+     */
+    readonly eventType: string;
+    /**
      * Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
      */
     readonly filename: string;

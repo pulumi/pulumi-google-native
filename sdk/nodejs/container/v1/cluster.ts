@@ -184,6 +184,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly nodeIpv4CidrSize!: pulumi.Output<number>;
     /**
+     * Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
+     */
+    public readonly nodePoolDefaults!: pulumi.Output<outputs.container.v1.NodePoolDefaultsResponse>;
+    /**
      * The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
      */
     public readonly nodePools!: pulumi.Output<outputs.container.v1.NodePoolResponse[]>;
@@ -281,6 +285,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["network"] = args ? args.network : undefined;
             inputs["networkConfig"] = args ? args.networkConfig : undefined;
             inputs["networkPolicy"] = args ? args.networkPolicy : undefined;
+            inputs["nodePoolDefaults"] = args ? args.nodePoolDefaults : undefined;
             inputs["nodePools"] = args ? args.nodePools : undefined;
             inputs["notificationConfig"] = args ? args.notificationConfig : undefined;
             inputs["parent"] = args ? args.parent : undefined;
@@ -342,6 +347,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["networkConfig"] = undefined /*out*/;
             inputs["networkPolicy"] = undefined /*out*/;
             inputs["nodeIpv4CidrSize"] = undefined /*out*/;
+            inputs["nodePoolDefaults"] = undefined /*out*/;
             inputs["nodePools"] = undefined /*out*/;
             inputs["notificationConfig"] = undefined /*out*/;
             inputs["privateClusterConfig"] = undefined /*out*/;
@@ -485,6 +491,10 @@ export interface ClusterArgs {
      * Configuration options for the NetworkPolicy feature.
      */
     networkPolicy?: pulumi.Input<inputs.container.v1.NetworkPolicyArgs>;
+    /**
+     * Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
+     */
+    nodePoolDefaults?: pulumi.Input<inputs.container.v1.NodePoolDefaultsArgs>;
     /**
      * The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
      */

@@ -185,13 +185,13 @@ type BuildOptionsLogging string
 const (
 	// The service determines the logging mode. The default is `LEGACY`. Do not rely on the default logging behavior as it may change in the future.
 	BuildOptionsLoggingLoggingUnspecified = BuildOptionsLogging("LOGGING_UNSPECIFIED")
-	// Cloud Logging and Cloud Storage logging are enabled.
+	// Build logs are stored in Cloud Logging and Cloud Storage.
 	BuildOptionsLoggingLegacy = BuildOptionsLogging("LEGACY")
-	// Only Cloud Storage logging is enabled.
+	// Build logs are stored in Cloud Storage.
 	BuildOptionsLoggingGcsOnly = BuildOptionsLogging("GCS_ONLY")
 	// This option is the same as CLOUD_LOGGING_ONLY.
 	BuildOptionsLoggingStackdriverOnly = BuildOptionsLogging("STACKDRIVER_ONLY")
-	// Only Cloud Logging is enabled. Note that logs for both the Cloud Console UI and Cloud SDK are based on Cloud Storage logs, so neither will provide logs if this option is chosen.
+	// Build logs are stored in Cloud Logging. Selecting this option will not allow [logs streaming](https://cloud.google.com/sdk/gcloud/reference/builds/log).
 	BuildOptionsLoggingCloudLoggingOnly = BuildOptionsLogging("CLOUD_LOGGING_ONLY")
 	// Turn off all logging. No build logs will be captured.
 	BuildOptionsLoggingNone = BuildOptionsLogging("NONE")
@@ -1923,6 +1923,179 @@ func (in *pullRequestFilterCommentControlPtr) ToPullRequestFilterCommentControlP
 	return pulumi.ToOutputWithContext(ctx, in).(PullRequestFilterCommentControlPtrOutput)
 }
 
+// Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+type TriggerEventType string
+
+const (
+	// EVENT_TYPE_UNSPECIFIED event_types are ignored.
+	TriggerEventTypeEventTypeUnspecified = TriggerEventType("EVENT_TYPE_UNSPECIFIED")
+	// REPO corresponds to the supported VCS integrations.
+	TriggerEventTypeRepo = TriggerEventType("REPO")
+	// WEBHOOK corresponds to webhook triggers.
+	TriggerEventTypeWebhook = TriggerEventType("WEBHOOK")
+	// PUBSUB corresponds to pubsub triggers.
+	TriggerEventTypePubsub = TriggerEventType("PUBSUB")
+	// MANUAL corresponds to manual-only invoked triggers.
+	TriggerEventTypeManual = TriggerEventType("MANUAL")
+)
+
+func (TriggerEventType) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerEventType)(nil)).Elem()
+}
+
+func (e TriggerEventType) ToTriggerEventTypeOutput() TriggerEventTypeOutput {
+	return pulumi.ToOutput(e).(TriggerEventTypeOutput)
+}
+
+func (e TriggerEventType) ToTriggerEventTypeOutputWithContext(ctx context.Context) TriggerEventTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TriggerEventTypeOutput)
+}
+
+func (e TriggerEventType) ToTriggerEventTypePtrOutput() TriggerEventTypePtrOutput {
+	return e.ToTriggerEventTypePtrOutputWithContext(context.Background())
+}
+
+func (e TriggerEventType) ToTriggerEventTypePtrOutputWithContext(ctx context.Context) TriggerEventTypePtrOutput {
+	return TriggerEventType(e).ToTriggerEventTypeOutputWithContext(ctx).ToTriggerEventTypePtrOutputWithContext(ctx)
+}
+
+func (e TriggerEventType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TriggerEventType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TriggerEventType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TriggerEventType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TriggerEventTypeOutput struct{ *pulumi.OutputState }
+
+func (TriggerEventTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerEventType)(nil)).Elem()
+}
+
+func (o TriggerEventTypeOutput) ToTriggerEventTypeOutput() TriggerEventTypeOutput {
+	return o
+}
+
+func (o TriggerEventTypeOutput) ToTriggerEventTypeOutputWithContext(ctx context.Context) TriggerEventTypeOutput {
+	return o
+}
+
+func (o TriggerEventTypeOutput) ToTriggerEventTypePtrOutput() TriggerEventTypePtrOutput {
+	return o.ToTriggerEventTypePtrOutputWithContext(context.Background())
+}
+
+func (o TriggerEventTypeOutput) ToTriggerEventTypePtrOutputWithContext(ctx context.Context) TriggerEventTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerEventType) *TriggerEventType {
+		return &v
+	}).(TriggerEventTypePtrOutput)
+}
+
+func (o TriggerEventTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TriggerEventTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TriggerEventType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TriggerEventTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerEventTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TriggerEventType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TriggerEventTypePtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerEventTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerEventType)(nil)).Elem()
+}
+
+func (o TriggerEventTypePtrOutput) ToTriggerEventTypePtrOutput() TriggerEventTypePtrOutput {
+	return o
+}
+
+func (o TriggerEventTypePtrOutput) ToTriggerEventTypePtrOutputWithContext(ctx context.Context) TriggerEventTypePtrOutput {
+	return o
+}
+
+func (o TriggerEventTypePtrOutput) Elem() TriggerEventTypeOutput {
+	return o.ApplyT(func(v *TriggerEventType) TriggerEventType {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerEventType
+		return ret
+	}).(TriggerEventTypeOutput)
+}
+
+func (o TriggerEventTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerEventTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TriggerEventType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TriggerEventTypeInput is an input type that accepts TriggerEventTypeArgs and TriggerEventTypeOutput values.
+// You can construct a concrete instance of `TriggerEventTypeInput` via:
+//
+//          TriggerEventTypeArgs{...}
+type TriggerEventTypeInput interface {
+	pulumi.Input
+
+	ToTriggerEventTypeOutput() TriggerEventTypeOutput
+	ToTriggerEventTypeOutputWithContext(context.Context) TriggerEventTypeOutput
+}
+
+var triggerEventTypePtrType = reflect.TypeOf((**TriggerEventType)(nil)).Elem()
+
+type TriggerEventTypePtrInput interface {
+	pulumi.Input
+
+	ToTriggerEventTypePtrOutput() TriggerEventTypePtrOutput
+	ToTriggerEventTypePtrOutputWithContext(context.Context) TriggerEventTypePtrOutput
+}
+
+type triggerEventTypePtr string
+
+func TriggerEventTypePtr(v string) TriggerEventTypePtrInput {
+	return (*triggerEventTypePtr)(&v)
+}
+
+func (*triggerEventTypePtr) ElementType() reflect.Type {
+	return triggerEventTypePtrType
+}
+
+func (in *triggerEventTypePtr) ToTriggerEventTypePtrOutput() TriggerEventTypePtrOutput {
+	return pulumi.ToOutput(in).(TriggerEventTypePtrOutput)
+}
+
+func (in *triggerEventTypePtr) ToTriggerEventTypePtrOutputWithContext(ctx context.Context) TriggerEventTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TriggerEventTypePtrOutput)
+}
+
 // Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
 type WebhookConfigState string
 
@@ -2116,6 +2289,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PubsubConfigStatePtrInput)(nil)).Elem(), PubsubConfigState("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PullRequestFilterCommentControlInput)(nil)).Elem(), PullRequestFilterCommentControl("COMMENTS_DISABLED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PullRequestFilterCommentControlPtrInput)(nil)).Elem(), PullRequestFilterCommentControl("COMMENTS_DISABLED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerEventTypeInput)(nil)).Elem(), TriggerEventType("EVENT_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerEventTypePtrInput)(nil)).Elem(), TriggerEventType("EVENT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookConfigStateInput)(nil)).Elem(), WebhookConfigState("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookConfigStatePtrInput)(nil)).Elem(), WebhookConfigState("STATE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(BuildOptionsLogStreamingOptionOutput{})
@@ -2141,6 +2316,8 @@ func init() {
 	pulumi.RegisterOutputType(PubsubConfigStatePtrOutput{})
 	pulumi.RegisterOutputType(PullRequestFilterCommentControlOutput{})
 	pulumi.RegisterOutputType(PullRequestFilterCommentControlPtrOutput{})
+	pulumi.RegisterOutputType(TriggerEventTypeOutput{})
+	pulumi.RegisterOutputType(TriggerEventTypePtrOutput{})
 	pulumi.RegisterOutputType(WebhookConfigStateOutput{})
 	pulumi.RegisterOutputType(WebhookConfigStatePtrOutput{})
 }

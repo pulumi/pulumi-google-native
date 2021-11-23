@@ -8,7 +8,6 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
-from ._enums import *
 from ._inputs import *
 
 __all__ = ['GameServerClusterArgs', 'GameServerCluster']
@@ -18,7 +17,6 @@ class GameServerClusterArgs:
     def __init__(__self__, *,
                  game_server_cluster_id: pulumi.Input[str],
                  realm_id: pulumi.Input[str],
-                 allocation_priority: Optional[pulumi.Input['GameServerClusterAllocationPriority']] = None,
                  connection_info: Optional[pulumi.Input['GameServerClusterConnectionInfoArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -28,7 +26,6 @@ class GameServerClusterArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a GameServerCluster resource.
-        :param pulumi.Input['GameServerClusterAllocationPriority'] allocation_priority: Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
         :param pulumi.Input['GameServerClusterConnectionInfoArgs'] connection_info: The game server cluster connection information. This information is used to manage game server clusters.
         :param pulumi.Input[str] description: Human readable description of the cluster.
         :param pulumi.Input[str] etag: ETag of the resource.
@@ -37,8 +34,6 @@ class GameServerClusterArgs:
         """
         pulumi.set(__self__, "game_server_cluster_id", game_server_cluster_id)
         pulumi.set(__self__, "realm_id", realm_id)
-        if allocation_priority is not None:
-            pulumi.set(__self__, "allocation_priority", allocation_priority)
         if connection_info is not None:
             pulumi.set(__self__, "connection_info", connection_info)
         if description is not None:
@@ -71,18 +66,6 @@ class GameServerClusterArgs:
     @realm_id.setter
     def realm_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "realm_id", value)
-
-    @property
-    @pulumi.getter(name="allocationPriority")
-    def allocation_priority(self) -> Optional[pulumi.Input['GameServerClusterAllocationPriority']]:
-        """
-        Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
-        """
-        return pulumi.get(self, "allocation_priority")
-
-    @allocation_priority.setter
-    def allocation_priority(self, value: Optional[pulumi.Input['GameServerClusterAllocationPriority']]):
-        pulumi.set(self, "allocation_priority", value)
 
     @property
     @pulumi.getter(name="connectionInfo")
@@ -168,7 +151,6 @@ class GameServerCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allocation_priority: Optional[pulumi.Input['GameServerClusterAllocationPriority']] = None,
                  connection_info: Optional[pulumi.Input[pulumi.InputType['GameServerClusterConnectionInfoArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -184,7 +166,6 @@ class GameServerCluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input['GameServerClusterAllocationPriority'] allocation_priority: Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
         :param pulumi.Input[pulumi.InputType['GameServerClusterConnectionInfoArgs']] connection_info: The game server cluster connection information. This information is used to manage game server clusters.
         :param pulumi.Input[str] description: Human readable description of the cluster.
         :param pulumi.Input[str] etag: ETag of the resource.
@@ -215,7 +196,6 @@ class GameServerCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allocation_priority: Optional[pulumi.Input['GameServerClusterAllocationPriority']] = None,
                  connection_info: Optional[pulumi.Input[pulumi.InputType['GameServerClusterConnectionInfoArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -237,7 +217,6 @@ class GameServerCluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GameServerClusterArgs.__new__(GameServerClusterArgs)
 
-            __props__.__dict__["allocation_priority"] = allocation_priority
             __props__.__dict__["connection_info"] = connection_info
             __props__.__dict__["description"] = description
             __props__.__dict__["etag"] = etag
@@ -276,7 +255,6 @@ class GameServerCluster(pulumi.CustomResource):
 
         __props__ = GameServerClusterArgs.__new__(GameServerClusterArgs)
 
-        __props__.__dict__["allocation_priority"] = None
         __props__.__dict__["cluster_state"] = None
         __props__.__dict__["connection_info"] = None
         __props__.__dict__["create_time"] = None
@@ -286,14 +264,6 @@ class GameServerCluster(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["update_time"] = None
         return GameServerCluster(resource_name, opts=opts, __props__=__props__)
-
-    @property
-    @pulumi.getter(name="allocationPriority")
-    def allocation_priority(self) -> pulumi.Output[str]:
-        """
-        Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
-        """
-        return pulumi.get(self, "allocation_priority")
 
     @property
     @pulumi.getter(name="clusterState")

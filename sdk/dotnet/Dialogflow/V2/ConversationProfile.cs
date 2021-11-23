@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public Output<Outputs.GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse> HumanAgentHandoffConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Language which represents the conversationProfile. If unspecified, the default language code en-us applies. Users need to create a ConversationProfile for each language they want to support.
+        /// Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-US languages. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
         /// </summary>
         [Output("languageCode")]
         public Output<string> LanguageCode { get; private set; } = null!;
@@ -76,10 +76,22 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public Output<Outputs.GoogleCloudDialogflowV2NotificationConfigResponse> NotificationConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Name of the CX SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
+        /// </summary>
+        [Output("securitySettings")]
+        public Output<string> SecuritySettings { get; private set; } = null!;
+
+        /// <summary>
         /// Settings for speech transcription.
         /// </summary>
         [Output("sttConfig")]
         public Output<Outputs.GoogleCloudDialogflowV2SpeechToTextConfigResponse> SttConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
+        /// </summary>
+        [Output("timeZone")]
+        public Output<string> TimeZone { get; private set; } = null!;
 
         /// <summary>
         /// Update time of the conversation profile.
@@ -157,7 +169,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public Input<Inputs.GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs>? HumanAgentHandoffConfig { get; set; }
 
         /// <summary>
-        /// Language which represents the conversationProfile. If unspecified, the default language code en-us applies. Users need to create a ConversationProfile for each language they want to support.
+        /// Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-US languages. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
         /// </summary>
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }
@@ -193,10 +205,22 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Name of the CX SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
+        /// </summary>
+        [Input("securitySettings")]
+        public Input<string>? SecuritySettings { get; set; }
+
+        /// <summary>
         /// Settings for speech transcription.
         /// </summary>
         [Input("sttConfig")]
         public Input<Inputs.GoogleCloudDialogflowV2SpeechToTextConfigArgs>? SttConfig { get; set; }
+
+        /// <summary>
+        /// The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
+        /// </summary>
+        [Input("timeZone")]
+        public Input<string>? TimeZone { get; set; }
 
         public ConversationProfileArgs()
         {

@@ -185,7 +185,7 @@ class GetOccurrenceResult:
     @pulumi.getter
     def sbom(self) -> 'outputs.DocumentOccurrenceResponse':
         """
-        Describes a specific SPDX Document.
+        Describes a specific software bill of materials document.
         """
         return pulumi.get(self, "sbom")
 
@@ -199,7 +199,7 @@ class GetOccurrenceResult:
 
     @property
     @pulumi.getter(name="spdxPackage")
-    def spdx_package(self) -> 'outputs.PackageOccurrenceResponse':
+    def spdx_package(self) -> 'outputs.PackageInfoOccurrenceResponse':
         """
         Describes a specific SPDX Package.
         """

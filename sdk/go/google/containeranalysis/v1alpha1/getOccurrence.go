@@ -63,7 +63,7 @@ type LookupOccurrenceResult struct {
 	// Describes a specific SPDX File.
 	SpdxFile FileOccurrenceResponse `pulumi:"spdxFile"`
 	// Describes a specific SPDX Package.
-	SpdxPackage PackageOccurrenceResponse `pulumi:"spdxPackage"`
+	SpdxPackage PackageInfoOccurrenceResponse `pulumi:"spdxPackage"`
 	// Describes a specific relationship between SPDX elements.
 	SpdxRelationship RelationshipOccurrenceResponse `pulumi:"spdxRelationship"`
 	// The time this `Occurrence` was last updated.
@@ -197,8 +197,8 @@ func (o LookupOccurrenceResultOutput) SpdxFile() FileOccurrenceResponseOutput {
 }
 
 // Describes a specific SPDX Package.
-func (o LookupOccurrenceResultOutput) SpdxPackage() PackageOccurrenceResponseOutput {
-	return o.ApplyT(func(v LookupOccurrenceResult) PackageOccurrenceResponse { return v.SpdxPackage }).(PackageOccurrenceResponseOutput)
+func (o LookupOccurrenceResultOutput) SpdxPackage() PackageInfoOccurrenceResponseOutput {
+	return o.ApplyT(func(v LookupOccurrenceResult) PackageInfoOccurrenceResponse { return v.SpdxPackage }).(PackageInfoOccurrenceResponseOutput)
 }
 
 // Describes a specific relationship between SPDX elements.

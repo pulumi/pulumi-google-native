@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./agentPool";
+export * from "./getAgentPool";
 export * from "./getTransferJob";
 export * from "./transferJob";
 
@@ -12,12 +14,15 @@ export * from "./transferJob";
 export * from "../../types/enums/storagetransfer/v1";
 
 // Import resources to register:
+import { AgentPool } from "./agentPool";
 import { TransferJob } from "./transferJob";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:storagetransfer/v1:AgentPool":
+                return new AgentPool(name, <any>undefined, { urn })
             case "google-native:storagetransfer/v1:TransferJob":
                 return new TransferJob(name, <any>undefined, { urn })
             default:

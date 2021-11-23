@@ -3097,7 +3097,7 @@ func (o SourceConfigResponseArrayOutput) Index(i pulumi.IntInput) SourceConfigRe
 
 // Set search results crowding limits. Crowding is a situation in which multiple results from the same source or host "crowd out" other results, diminishing the quality of search for users. To foster better search quality and source diversity in search results, you can set a condition to reduce repetitive results by source.
 type SourceCrowdingConfig struct {
-	// Maximum number of results allowed from a source. No limits will be set on results if this value is less than or equal to 0.
+	// Maximum number of results allowed from a datasource in a result page as long as results from other sources are not exhausted. Value specified must not be negative. A default value is used if this value is equal to 0. To disable crowding, set the value greater than 100.
 	NumResults *int `pulumi:"numResults"`
 	// Maximum number of suggestions allowed from a source. No limits will be set on results if this value is less than or equal to 0.
 	NumSuggestions *int `pulumi:"numSuggestions"`
@@ -3116,7 +3116,7 @@ type SourceCrowdingConfigInput interface {
 
 // Set search results crowding limits. Crowding is a situation in which multiple results from the same source or host "crowd out" other results, diminishing the quality of search for users. To foster better search quality and source diversity in search results, you can set a condition to reduce repetitive results by source.
 type SourceCrowdingConfigArgs struct {
-	// Maximum number of results allowed from a source. No limits will be set on results if this value is less than or equal to 0.
+	// Maximum number of results allowed from a datasource in a result page as long as results from other sources are not exhausted. Value specified must not be negative. A default value is used if this value is equal to 0. To disable crowding, set the value greater than 100.
 	NumResults pulumi.IntPtrInput `pulumi:"numResults"`
 	// Maximum number of suggestions allowed from a source. No limits will be set on results if this value is less than or equal to 0.
 	NumSuggestions pulumi.IntPtrInput `pulumi:"numSuggestions"`
@@ -3200,7 +3200,7 @@ func (o SourceCrowdingConfigOutput) ToSourceCrowdingConfigPtrOutputWithContext(c
 	}).(SourceCrowdingConfigPtrOutput)
 }
 
-// Maximum number of results allowed from a source. No limits will be set on results if this value is less than or equal to 0.
+// Maximum number of results allowed from a datasource in a result page as long as results from other sources are not exhausted. Value specified must not be negative. A default value is used if this value is equal to 0. To disable crowding, set the value greater than 100.
 func (o SourceCrowdingConfigOutput) NumResults() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SourceCrowdingConfig) *int { return v.NumResults }).(pulumi.IntPtrOutput)
 }
@@ -3234,7 +3234,7 @@ func (o SourceCrowdingConfigPtrOutput) Elem() SourceCrowdingConfigOutput {
 	}).(SourceCrowdingConfigOutput)
 }
 
-// Maximum number of results allowed from a source. No limits will be set on results if this value is less than or equal to 0.
+// Maximum number of results allowed from a datasource in a result page as long as results from other sources are not exhausted. Value specified must not be negative. A default value is used if this value is equal to 0. To disable crowding, set the value greater than 100.
 func (o SourceCrowdingConfigPtrOutput) NumResults() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SourceCrowdingConfig) *int {
 		if v == nil {
@@ -3256,7 +3256,7 @@ func (o SourceCrowdingConfigPtrOutput) NumSuggestions() pulumi.IntPtrOutput {
 
 // Set search results crowding limits. Crowding is a situation in which multiple results from the same source or host "crowd out" other results, diminishing the quality of search for users. To foster better search quality and source diversity in search results, you can set a condition to reduce repetitive results by source.
 type SourceCrowdingConfigResponse struct {
-	// Maximum number of results allowed from a source. No limits will be set on results if this value is less than or equal to 0.
+	// Maximum number of results allowed from a datasource in a result page as long as results from other sources are not exhausted. Value specified must not be negative. A default value is used if this value is equal to 0. To disable crowding, set the value greater than 100.
 	NumResults int `pulumi:"numResults"`
 	// Maximum number of suggestions allowed from a source. No limits will be set on results if this value is less than or equal to 0.
 	NumSuggestions int `pulumi:"numSuggestions"`
@@ -3275,7 +3275,7 @@ type SourceCrowdingConfigResponseInput interface {
 
 // Set search results crowding limits. Crowding is a situation in which multiple results from the same source or host "crowd out" other results, diminishing the quality of search for users. To foster better search quality and source diversity in search results, you can set a condition to reduce repetitive results by source.
 type SourceCrowdingConfigResponseArgs struct {
-	// Maximum number of results allowed from a source. No limits will be set on results if this value is less than or equal to 0.
+	// Maximum number of results allowed from a datasource in a result page as long as results from other sources are not exhausted. Value specified must not be negative. A default value is used if this value is equal to 0. To disable crowding, set the value greater than 100.
 	NumResults pulumi.IntInput `pulumi:"numResults"`
 	// Maximum number of suggestions allowed from a source. No limits will be set on results if this value is less than or equal to 0.
 	NumSuggestions pulumi.IntInput `pulumi:"numSuggestions"`
@@ -3308,7 +3308,7 @@ func (o SourceCrowdingConfigResponseOutput) ToSourceCrowdingConfigResponseOutput
 	return o
 }
 
-// Maximum number of results allowed from a source. No limits will be set on results if this value is less than or equal to 0.
+// Maximum number of results allowed from a datasource in a result page as long as results from other sources are not exhausted. Value specified must not be negative. A default value is used if this value is equal to 0. To disable crowding, set the value greater than 100.
 func (o SourceCrowdingConfigResponseOutput) NumResults() pulumi.IntOutput {
 	return o.ApplyT(func(v SourceCrowdingConfigResponse) int { return v.NumResults }).(pulumi.IntOutput)
 }

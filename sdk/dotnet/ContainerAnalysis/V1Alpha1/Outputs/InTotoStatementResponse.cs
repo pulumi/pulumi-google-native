@@ -17,10 +17,20 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
     public sealed class InTotoStatementResponse
     {
         /// <summary>
-        /// "https://in-toto.io/Provenance/v0.1" for InTotoProvenance.
+        /// "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
         /// </summary>
         public readonly string PredicateType;
+        /// <summary>
+        /// provenance is a predicate of type intotoprovenance
+        /// </summary>
         public readonly Outputs.InTotoProvenanceResponse Provenance;
+        /// <summary>
+        /// slsa_provenance is a predicate of type slsaProvenance
+        /// </summary>
+        public readonly Outputs.SlsaProvenanceResponse SlsaProvenance;
+        /// <summary>
+        /// subject is the subjects of the intoto statement
+        /// </summary>
         public readonly ImmutableArray<Outputs.SubjectResponse> Subject;
         /// <summary>
         /// Always "https://in-toto.io/Statement/v0.1".
@@ -33,12 +43,15 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 
             Outputs.InTotoProvenanceResponse provenance,
 
+            Outputs.SlsaProvenanceResponse slsaProvenance,
+
             ImmutableArray<Outputs.SubjectResponse> subject,
 
             string type)
         {
             PredicateType = predicateType;
             Provenance = provenance;
+            SlsaProvenance = slsaProvenance;
             Subject = subject;
             Type = type;
         }

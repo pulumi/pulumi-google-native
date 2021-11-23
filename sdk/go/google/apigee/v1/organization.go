@@ -44,6 +44,8 @@ type Organization struct {
 	LastModifiedAt pulumi.StringOutput `pulumi:"lastModifiedAt"`
 	// Name of the Apigee organization.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Configuration for the Portals settings.
+	PortalDisabled pulumi.BoolOutput `pulumi:"portalDisabled"`
 	// Project ID associated with the Apigee organization.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Properties defined in the Apigee organization profile.
@@ -123,6 +125,8 @@ type organizationArgs struct {
 	// Display name for the Apigee organization. Unused, but reserved for future use.
 	DisplayName *string `pulumi:"displayName"`
 	Parent      string  `pulumi:"parent"`
+	// Configuration for the Portals settings.
+	PortalDisabled *bool `pulumi:"portalDisabled"`
 	// Properties defined in the Apigee organization profile.
 	Properties *GoogleCloudApigeeV1Properties `pulumi:"properties"`
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. Required when [RuntimeType](#RuntimeType) is `CLOUD`. If not specified when [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
@@ -152,6 +156,8 @@ type OrganizationArgs struct {
 	// Display name for the Apigee organization. Unused, but reserved for future use.
 	DisplayName pulumi.StringPtrInput
 	Parent      pulumi.StringInput
+	// Configuration for the Portals settings.
+	PortalDisabled pulumi.BoolPtrInput
 	// Properties defined in the Apigee organization profile.
 	Properties GoogleCloudApigeeV1PropertiesPtrInput
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. Required when [RuntimeType](#RuntimeType) is `CLOUD`. If not specified when [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.

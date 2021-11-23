@@ -24,6 +24,8 @@ type Instance struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// File system shares on the instance. For this version, only a single file share is supported.
 	FileShares FileShareConfigResponseArrayOutput `pulumi:"fileShares"`
+	// KMS key name used for data encryption.
+	KmsKeyName pulumi.StringOutput `pulumi:"kmsKeyName"`
 	// Resource labels to represent user provided metadata.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The resource name of the instance, in the format `projects/{project}/locations/{location}/instances/{instance}`.
@@ -36,6 +38,8 @@ type Instance struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// Additional information about the instance state, if available.
 	StatusMessage pulumi.StringOutput `pulumi:"statusMessage"`
+	// field indicates all the reasons the instance is in "SUSPENDED" state.
+	SuspensionReasons pulumi.StringArrayOutput `pulumi:"suspensionReasons"`
 	// The service tier of the instance.
 	Tier pulumi.StringOutput `pulumi:"tier"`
 }
@@ -89,6 +93,8 @@ type instanceArgs struct {
 	// File system shares on the instance. For this version, only a single file share is supported.
 	FileShares []FileShareConfig `pulumi:"fileShares"`
 	InstanceId string            `pulumi:"instanceId"`
+	// KMS key name used for data encryption.
+	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// Resource labels to represent user provided metadata.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
@@ -108,6 +114,8 @@ type InstanceArgs struct {
 	// File system shares on the instance. For this version, only a single file share is supported.
 	FileShares FileShareConfigArrayInput
 	InstanceId pulumi.StringInput
+	// KMS key name used for data encryption.
+	KmsKeyName pulumi.StringPtrInput
 	// Resource labels to represent user provided metadata.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput

@@ -49,6 +49,10 @@ export interface GetJobResult {
      */
     readonly jobId: string;
     /**
+     * It's only effect when the job is in QUEUED state. If it's positive, it indicates the job's position in the job scheduler. It's 0 when the job is already scheduled.
+     */
+    readonly jobPosition: string;
+    /**
      * Optional. One or more labels that you can add, to organize your jobs. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
      */
     readonly labels: {[key: string]: string};

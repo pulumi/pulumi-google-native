@@ -42,7 +42,7 @@ export class ApiConfigIamPolicy extends pulumi.CustomResource {
      */
     public readonly auditConfigs!: pulumi.Output<outputs.apigateway.v1beta.ApigatewayAuditConfigResponse[]>;
     /**
-     * Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+     * Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.
      */
     public readonly bindings!: pulumi.Output<outputs.apigateway.v1beta.ApigatewayBindingResponse[]>;
     /**
@@ -103,7 +103,7 @@ export interface ApiConfigIamPolicyArgs {
      */
     auditConfigs?: pulumi.Input<pulumi.Input<inputs.apigateway.v1beta.ApigatewayAuditConfigArgs>[]>;
     /**
-     * Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+     * Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.
      */
     bindings?: pulumi.Input<pulumi.Input<inputs.apigateway.v1beta.ApigatewayBindingArgs>[]>;
     configId: pulumi.Input<string>;

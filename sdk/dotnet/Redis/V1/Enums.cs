@@ -49,6 +49,47 @@ namespace Pulumi.GoogleNative.Redis.V1
     }
 
     /// <summary>
+    /// Optional. Read replica mode. Can only be specified when trying to create the instance.
+    /// </summary>
+    [EnumType]
+    public readonly struct InstanceReadReplicasMode : IEquatable<InstanceReadReplicasMode>
+    {
+        private readonly string _value;
+
+        private InstanceReadReplicasMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
+        /// </summary>
+        public static InstanceReadReplicasMode ReadReplicasModeUnspecified { get; } = new InstanceReadReplicasMode("READ_REPLICAS_MODE_UNSPECIFIED");
+        /// <summary>
+        /// If disabled, read endpoint will not be provided and the instance cannot scale up or down the number of replicas.
+        /// </summary>
+        public static InstanceReadReplicasMode ReadReplicasDisabled { get; } = new InstanceReadReplicasMode("READ_REPLICAS_DISABLED");
+        /// <summary>
+        /// If enabled, read endpoint will be provided and the instance can scale up and down the number of replicas. Not valid for basic tier.
+        /// </summary>
+        public static InstanceReadReplicasMode ReadReplicasEnabled { get; } = new InstanceReadReplicasMode("READ_REPLICAS_ENABLED");
+
+        public static bool operator ==(InstanceReadReplicasMode left, InstanceReadReplicasMode right) => left.Equals(right);
+        public static bool operator !=(InstanceReadReplicasMode left, InstanceReadReplicasMode right) => !left.Equals(right);
+
+        public static explicit operator string(InstanceReadReplicasMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is InstanceReadReplicasMode other && Equals(other);
+        public bool Equals(InstanceReadReplicasMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Required. The service tier of the instance.
     /// </summary>
     [EnumType]
@@ -123,6 +164,96 @@ namespace Pulumi.GoogleNative.Redis.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is InstanceTransitEncryptionMode other && Equals(other);
         public bool Equals(InstanceTransitEncryptionMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+    /// </summary>
+    [EnumType]
+    public readonly struct PersistenceConfigPersistenceMode : IEquatable<PersistenceConfigPersistenceMode>
+    {
+        private readonly string _value;
+
+        private PersistenceConfigPersistenceMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Not set.
+        /// </summary>
+        public static PersistenceConfigPersistenceMode PersistenceModeUnspecified { get; } = new PersistenceConfigPersistenceMode("PERSISTENCE_MODE_UNSPECIFIED");
+        /// <summary>
+        /// Persistence is disabled for the instance, and any existing snapshots are deleted.
+        /// </summary>
+        public static PersistenceConfigPersistenceMode Disabled { get; } = new PersistenceConfigPersistenceMode("DISABLED");
+        /// <summary>
+        /// RDB based Persistence is enabled.
+        /// </summary>
+        public static PersistenceConfigPersistenceMode Rdb { get; } = new PersistenceConfigPersistenceMode("RDB");
+
+        public static bool operator ==(PersistenceConfigPersistenceMode left, PersistenceConfigPersistenceMode right) => left.Equals(right);
+        public static bool operator !=(PersistenceConfigPersistenceMode left, PersistenceConfigPersistenceMode right) => !left.Equals(right);
+
+        public static explicit operator string(PersistenceConfigPersistenceMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is PersistenceConfigPersistenceMode other && Equals(other);
+        public bool Equals(PersistenceConfigPersistenceMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Period between RDB snapshots. Snapshots will be attempted every period starting from the provided snapshot start time. For example, a start time of 01/01/2033 06:45 and SIX_HOURS snapshot period will do nothing until 01/01/2033, and then trigger snapshots every day at 06:45, 12:45, 18:45, and 00:45 the next day, and so on. If not provided, TWENTY_FOUR_HOURS will be used as default.
+    /// </summary>
+    [EnumType]
+    public readonly struct PersistenceConfigRdbSnapshotPeriod : IEquatable<PersistenceConfigRdbSnapshotPeriod>
+    {
+        private readonly string _value;
+
+        private PersistenceConfigRdbSnapshotPeriod(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Not set.
+        /// </summary>
+        public static PersistenceConfigRdbSnapshotPeriod SnapshotPeriodUnspecified { get; } = new PersistenceConfigRdbSnapshotPeriod("SNAPSHOT_PERIOD_UNSPECIFIED");
+        /// <summary>
+        /// Snapshot every 1 hour.
+        /// </summary>
+        public static PersistenceConfigRdbSnapshotPeriod OneHour { get; } = new PersistenceConfigRdbSnapshotPeriod("ONE_HOUR");
+        /// <summary>
+        /// Snapshot every 6 hours.
+        /// </summary>
+        public static PersistenceConfigRdbSnapshotPeriod SixHours { get; } = new PersistenceConfigRdbSnapshotPeriod("SIX_HOURS");
+        /// <summary>
+        /// Snapshot every 12 hours.
+        /// </summary>
+        public static PersistenceConfigRdbSnapshotPeriod TwelveHours { get; } = new PersistenceConfigRdbSnapshotPeriod("TWELVE_HOURS");
+        /// <summary>
+        /// Snapshot every 24 horus.
+        /// </summary>
+        public static PersistenceConfigRdbSnapshotPeriod TwentyFourHours { get; } = new PersistenceConfigRdbSnapshotPeriod("TWENTY_FOUR_HOURS");
+
+        public static bool operator ==(PersistenceConfigRdbSnapshotPeriod left, PersistenceConfigRdbSnapshotPeriod right) => left.Equals(right);
+        public static bool operator !=(PersistenceConfigRdbSnapshotPeriod left, PersistenceConfigRdbSnapshotPeriod right) => !left.Equals(right);
+
+        public static explicit operator string(PersistenceConfigRdbSnapshotPeriod value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is PersistenceConfigRdbSnapshotPeriod other && Equals(other);
+        public bool Equals(PersistenceConfigRdbSnapshotPeriod other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

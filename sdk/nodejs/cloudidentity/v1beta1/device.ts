@@ -85,6 +85,10 @@ export class Device extends pulumi.CustomResource {
      */
     public /*out*/ readonly encryptionState!: pulumi.Output<string>;
     /**
+     * Attributes specific to Endpoint Verification devices.
+     */
+    public /*out*/ readonly endpointVerificationSpecificAttributes!: pulumi.Output<outputs.cloudidentity.v1beta1.EndpointVerificationSpecificAttributesResponse>;
+    /**
      * IMEI number of device if GSM device; empty otherwise.
      */
     public /*out*/ readonly imei!: pulumi.Output<string>;
@@ -175,6 +179,7 @@ export class Device extends pulumi.CustomResource {
             inputs["enabledDeveloperOptions"] = undefined /*out*/;
             inputs["enabledUsbDebugging"] = undefined /*out*/;
             inputs["encryptionState"] = undefined /*out*/;
+            inputs["endpointVerificationSpecificAttributes"] = undefined /*out*/;
             inputs["imei"] = undefined /*out*/;
             inputs["kernelVersion"] = undefined /*out*/;
             inputs["managementState"] = undefined /*out*/;
@@ -201,6 +206,7 @@ export class Device extends pulumi.CustomResource {
             inputs["enabledDeveloperOptions"] = undefined /*out*/;
             inputs["enabledUsbDebugging"] = undefined /*out*/;
             inputs["encryptionState"] = undefined /*out*/;
+            inputs["endpointVerificationSpecificAttributes"] = undefined /*out*/;
             inputs["imei"] = undefined /*out*/;
             inputs["kernelVersion"] = undefined /*out*/;
             inputs["lastSyncTime"] = undefined /*out*/;

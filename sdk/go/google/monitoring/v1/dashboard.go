@@ -23,6 +23,8 @@ type Dashboard struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Content is arranged with a basic layout that re-flows a simple list of informational elements like widgets or tiles.
 	GridLayout GridLayoutResponseOutput `pulumi:"gridLayout"`
+	// Labels applied to the dashboard
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
 	MosaicLayout MosaicLayoutResponseOutput `pulumi:"mosaicLayout"`
 	// Immutable. The resource name of the dashboard.
@@ -81,6 +83,8 @@ type dashboardArgs struct {
 	Etag *string `pulumi:"etag"`
 	// Content is arranged with a basic layout that re-flows a simple list of informational elements like widgets or tiles.
 	GridLayout *GridLayout `pulumi:"gridLayout"`
+	// Labels applied to the dashboard
+	Labels map[string]string `pulumi:"labels"`
 	// The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
 	MosaicLayout *MosaicLayout `pulumi:"mosaicLayout"`
 	// Immutable. The resource name of the dashboard.
@@ -101,6 +105,8 @@ type DashboardArgs struct {
 	Etag pulumi.StringPtrInput
 	// Content is arranged with a basic layout that re-flows a simple list of informational elements like widgets or tiles.
 	GridLayout GridLayoutPtrInput
+	// Labels applied to the dashboard
+	Labels pulumi.StringMapInput
 	// The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
 	MosaicLayout MosaicLayoutPtrInput
 	// Immutable. The resource name of the dashboard.

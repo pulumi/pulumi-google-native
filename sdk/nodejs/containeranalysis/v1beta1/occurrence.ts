@@ -89,7 +89,7 @@ export class Occurrence extends pulumi.CustomResource {
      */
     public readonly resource!: pulumi.Output<outputs.containeranalysis.v1beta1.ResourceResponse>;
     /**
-     * Describes a specific SPDX Document.
+     * Describes a specific software bill of materials document.
      */
     public readonly sbom!: pulumi.Output<outputs.containeranalysis.v1beta1.DocumentOccurrenceResponse>;
     /**
@@ -99,7 +99,7 @@ export class Occurrence extends pulumi.CustomResource {
     /**
      * Describes a specific SPDX Package.
      */
-    public readonly spdxPackage!: pulumi.Output<outputs.containeranalysis.v1beta1.PackageOccurrenceResponse>;
+    public readonly spdxPackage!: pulumi.Output<outputs.containeranalysis.v1beta1.PackageInfoOccurrenceResponse>;
     /**
      * Describes a specific SPDX Relationship.
      */
@@ -224,7 +224,7 @@ export interface OccurrenceArgs {
      */
     resource: pulumi.Input<inputs.containeranalysis.v1beta1.ResourceArgs>;
     /**
-     * Describes a specific SPDX Document.
+     * Describes a specific software bill of materials document.
      */
     sbom?: pulumi.Input<inputs.containeranalysis.v1beta1.DocumentOccurrenceArgs>;
     /**
@@ -234,7 +234,7 @@ export interface OccurrenceArgs {
     /**
      * Describes a specific SPDX Package.
      */
-    spdxPackage?: pulumi.Input<inputs.containeranalysis.v1beta1.PackageOccurrenceArgs>;
+    spdxPackage?: pulumi.Input<inputs.containeranalysis.v1beta1.PackageInfoOccurrenceArgs>;
     /**
      * Describes a specific SPDX Relationship.
      */

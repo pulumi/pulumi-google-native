@@ -241,7 +241,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
     }
 
     /// <summary>
-    /// The database engine type and version. The **databaseVersion** field cannot be changed after instance creation. * **MySQL instances**: MYSQL_8_0, MYSQL_5_7 (default), or MYSQL_5_6. * **PostgreSQL instances**: POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13 (default). * **SQL Server instances**: SQLSERVER_2019_STANDARD, SQLSERVER_2019_ENTERPRISE, SQLSERVER_2019_EXPRESS, or SQLSERVER_2019_WEB, SQLSERVER_2017_STANDARD (default), SQLSERVER_2017_ENTERPRISE, SQLSERVER_2017_EXPRESS, or SQLSERVER_2017_WEB.
+    /// The database engine type and version. The **databaseVersion** field cannot be changed after instance creation.
     /// </summary>
     [EnumType]
     public readonly struct InstanceDatabaseVersion : IEquatable<InstanceDatabaseVersion>
@@ -310,9 +310,21 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         public static InstanceDatabaseVersion Mysql80 { get; } = new InstanceDatabaseVersion("MYSQL_8_0");
         /// <summary>
+        /// The database major version is MySQL 8.0 and the minor version is 18.
+        /// </summary>
+        public static InstanceDatabaseVersion Mysql8018 { get; } = new InstanceDatabaseVersion("MYSQL_8_0_18");
+        /// <summary>
+        /// The database major version is MySQL 8.0 and the minor version is 26.
+        /// </summary>
+        public static InstanceDatabaseVersion Mysql8026 { get; } = new InstanceDatabaseVersion("MYSQL_8_0_26");
+        /// <summary>
         /// The database version is PostgreSQL 13.
         /// </summary>
         public static InstanceDatabaseVersion Postgres13 { get; } = new InstanceDatabaseVersion("POSTGRES_13");
+        /// <summary>
+        /// The database version is PostgreSQL 14.
+        /// </summary>
+        public static InstanceDatabaseVersion Postgres14 { get; } = new InstanceDatabaseVersion("POSTGRES_14");
         /// <summary>
         /// The database version is SQL Server 2019 Standard.
         /// </summary>
@@ -346,7 +358,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
     }
 
     /// <summary>
-    /// The instance type. This can be one of the following: * **CLOUD_SQL_INSTANCE**: A Cloud SQL instance that is not replicating from a primary instance. * **ON_PREMISES_INSTANCE**: An instance running on the customer's premises. * **READ_REPLICA_INSTANCE**: A Cloud SQL instance configured as a read-replica.
+    /// The instance type.
     /// </summary>
     [EnumType]
     public readonly struct InstanceInstanceType : IEquatable<InstanceInstanceType>
@@ -363,7 +375,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         public static InstanceInstanceType SqlInstanceTypeUnspecified { get; } = new InstanceInstanceType("SQL_INSTANCE_TYPE_UNSPECIFIED");
         /// <summary>
-        /// A regular Cloud SQL instance.
+        /// A regular Cloud SQL instance that is not replicating from a primary instance.
         /// </summary>
         public static InstanceInstanceType CloudSqlInstance { get; } = new InstanceInstanceType("CLOUD_SQL_INSTANCE");
         /// <summary>
@@ -391,7 +403,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
     }
 
     /// <summary>
-    /// The current serving state of the Cloud SQL instance. This can be one of the following: * **SQL_INSTANCE_STATE_UNSPECIFIED**: The state of the instance is unknown. * **RUNNABLE**: The instance is running, or has been stopped by owner. * **SUSPENDED**: The instance is not available, for example due to problems with billing. * **PENDING_DELETE**: The instance is being deleted. * **PENDING_CREATE**: The instance is being created. * **MAINTENANCE**: The instance is down for maintenance. * **FAILED**: The instance creation failed.
+    /// The current serving state of the Cloud SQL instance.
     /// </summary>
     [EnumType]
     public readonly struct InstanceState : IEquatable<InstanceState>
@@ -432,7 +444,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         public static InstanceState Failed { get; } = new InstanceState("FAILED");
         /// <summary>
-        /// The instance is under maintenance operations and the database is available.
+        /// Deprecated
         /// </summary>
         public static InstanceState OnlineMaintenance { get; } = new InstanceState("ONLINE_MAINTENANCE");
 
@@ -580,6 +592,43 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is MaintenanceWindowUpdateTrack other && Equals(other);
         public bool Equals(MaintenanceWindowUpdateTrack other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The complexity of the password.
+    /// </summary>
+    [EnumType]
+    public readonly struct PasswordValidationPolicyComplexity : IEquatable<PasswordValidationPolicyComplexity>
+    {
+        private readonly string _value;
+
+        private PasswordValidationPolicyComplexity(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Complexity check is not specified.
+        /// </summary>
+        public static PasswordValidationPolicyComplexity ComplexityUnspecified { get; } = new PasswordValidationPolicyComplexity("COMPLEXITY_UNSPECIFIED");
+        /// <summary>
+        /// A combination of lowercase, uppercase, numeric, and non-alphanumeric characters.
+        /// </summary>
+        public static PasswordValidationPolicyComplexity ComplexityDefault { get; } = new PasswordValidationPolicyComplexity("COMPLEXITY_DEFAULT");
+
+        public static bool operator ==(PasswordValidationPolicyComplexity left, PasswordValidationPolicyComplexity right) => left.Equals(right);
+        public static bool operator !=(PasswordValidationPolicyComplexity left, PasswordValidationPolicyComplexity right) => !left.Equals(right);
+
+        public static explicit operator string(PasswordValidationPolicyComplexity value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is PasswordValidationPolicyComplexity other && Equals(other);
+        public bool Equals(PasswordValidationPolicyComplexity other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

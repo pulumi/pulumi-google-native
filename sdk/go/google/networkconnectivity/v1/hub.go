@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,9 +38,12 @@ type Hub struct {
 func NewHub(ctx *pulumi.Context,
 	name string, args *HubArgs, opts ...pulumi.ResourceOption) (*Hub, error) {
 	if args == nil {
-		args = &HubArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.HubId == nil {
+		return nil, errors.New("invalid value for required argument 'HubId'")
+	}
 	var resource Hub
 	err := ctx.RegisterResource("google-native:networkconnectivity/v1:Hub", name, args, &resource, opts...)
 	if err != nil {
@@ -74,7 +78,7 @@ func (HubState) ElementType() reflect.Type {
 type hubArgs struct {
 	// An optional description of the hub.
 	Description *string `pulumi:"description"`
-	HubId       *string `pulumi:"hubId"`
+	HubId       string  `pulumi:"hubId"`
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 	Labels map[string]string `pulumi:"labels"`
 	// Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
@@ -89,7 +93,7 @@ type hubArgs struct {
 type HubArgs struct {
 	// An optional description of the hub.
 	Description pulumi.StringPtrInput
-	HubId       pulumi.StringPtrInput
+	HubId       pulumi.StringInput
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 	Labels pulumi.StringMapInput
 	// Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`

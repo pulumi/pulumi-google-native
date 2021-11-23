@@ -41,7 +41,7 @@ class GetInstanceResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        A server-assigned timestamp representing when this Instance was created.
+        A server-assigned timestamp representing when this Instance was created. For instances created before this field was added (August 2021), this value is `seconds: 0, nanos: 1`.
         """
         return pulumi.get(self, "create_time")
 

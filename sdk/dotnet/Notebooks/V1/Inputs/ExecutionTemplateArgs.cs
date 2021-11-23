@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         public Input<Inputs.DataprocParametersArgs>? DataprocParameters { get; set; }
 
         /// <summary>
-        /// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{bucket_name}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
+        /// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: `gs://{bucket_name}/{folder}/{notebook_file_name}` Ex: `gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb`
         /// </summary>
         [Input("inputNotebookFile")]
         public Input<string>? InputNotebookFile { get; set; }
@@ -44,6 +44,12 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         /// </summary>
         [Input("jobType")]
         public Input<Pulumi.GoogleNative.Notebooks.V1.ExecutionTemplateJobType>? JobType { get; set; }
+
+        /// <summary>
+        /// Name of the kernel spec to use. This must be specified if the kernel spec name on the execution target does not match the name in the input notebook file.
+        /// </summary>
+        [Input("kernelSpec")]
+        public Input<string>? KernelSpec { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -64,7 +70,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         public Input<string>? MasterType { get; set; }
 
         /// <summary>
-        /// Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{bucket_name}/{folder} Ex: gs://notebook_user/scheduled_notebooks
+        /// Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: `gs://{bucket_name}/{folder}` Ex: `gs://notebook_user/scheduled_notebooks`
         /// </summary>
         [Input("outputNotebookFolder")]
         public Input<string>? OutputNotebookFolder { get; set; }
@@ -76,7 +82,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         public Input<string>? Parameters { get; set; }
 
         /// <summary>
-        /// Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml
+        /// Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: `gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml`
         /// </summary>
         [Input("paramsYamlFile")]
         public Input<string>? ParamsYamlFile { get; set; }

@@ -42,7 +42,7 @@ class MigrationJobArgs:
         :param pulumi.Input[str] display_name: The migration job display name.
         :param pulumi.Input[str] dump_path: The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
-        :param pulumi.Input[str] name: The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
+        :param pulumi.Input[str] name: The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
         :param pulumi.Input['ReverseSshConnectivityArgs'] reverse_ssh_connectivity: The details needed to communicate to the source over Reverse SSH tunnel connectivity.
         :param pulumi.Input['DatabaseTypeArgs'] source_database: The database engine type and provider of the source.
         :param pulumi.Input['MigrationJobState'] state: The current migration job state.
@@ -186,7 +186,7 @@ class MigrationJobArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
+        The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
         """
         return pulumi.get(self, "name")
 
@@ -306,7 +306,7 @@ class MigrationJob(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The migration job display name.
         :param pulumi.Input[str] dump_path: The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
-        :param pulumi.Input[str] name: The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
+        :param pulumi.Input[str] name: The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
         :param pulumi.Input[pulumi.InputType['ReverseSshConnectivityArgs']] reverse_ssh_connectivity: The details needed to communicate to the source over Reverse SSH tunnel connectivity.
         :param pulumi.Input[str] source: The resource name (URI) of the source connection profile.
         :param pulumi.Input[pulumi.InputType['DatabaseTypeArgs']] source_database: The database engine type and provider of the source.
@@ -518,7 +518,7 @@ class MigrationJob(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
+        The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
         """
         return pulumi.get(self, "name")
 

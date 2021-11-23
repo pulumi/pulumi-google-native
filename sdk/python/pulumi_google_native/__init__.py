@@ -45,6 +45,8 @@ if typing.TYPE_CHECKING:
     cloudbuild = __cloudbuild
     import pulumi_google_native.cloudchannel as __cloudchannel
     cloudchannel = __cloudchannel
+    import pulumi_google_native.clouddeploy as __clouddeploy
+    clouddeploy = __clouddeploy
     import pulumi_google_native.cloudfunctions as __cloudfunctions
     cloudfunctions = __cloudfunctions
     import pulumi_google_native.cloudidentity as __cloudidentity
@@ -59,6 +61,8 @@ if typing.TYPE_CHECKING:
     cloudscheduler = __cloudscheduler
     import pulumi_google_native.cloudsearch as __cloudsearch
     cloudsearch = __cloudsearch
+    import pulumi_google_native.cloudsupport as __cloudsupport
+    cloudsupport = __cloudsupport
     import pulumi_google_native.cloudtasks as __cloudtasks
     cloudtasks = __cloudtasks
     import pulumi_google_native.cloudtrace as __cloudtrace
@@ -87,10 +91,14 @@ if typing.TYPE_CHECKING:
     datalabeling = __datalabeling
     import pulumi_google_native.datamigration as __datamigration
     datamigration = __datamigration
+    import pulumi_google_native.datapipelines as __datapipelines
+    datapipelines = __datapipelines
     import pulumi_google_native.dataproc as __dataproc
     dataproc = __dataproc
     import pulumi_google_native.datastore as __datastore
     datastore = __datastore
+    import pulumi_google_native.datastream as __datastream
+    datastream = __datastream
     import pulumi_google_native.deploymentmanager as __deploymentmanager
     deploymentmanager = __deploymentmanager
     import pulumi_google_native.dialogflow as __dialogflow
@@ -197,6 +205,8 @@ if typing.TYPE_CHECKING:
     sourcerepo = __sourcerepo
     import pulumi_google_native.spanner as __spanner
     spanner = __spanner
+    import pulumi_google_native.speech as __speech
+    speech = __speech
     import pulumi_google_native.sqladmin as __sqladmin
     sqladmin = __sqladmin
     import pulumi_google_native.storage as __storage
@@ -215,6 +225,8 @@ if typing.TYPE_CHECKING:
     translate = __translate
     import pulumi_google_native.vision as __vision
     vision = __vision
+    import pulumi_google_native.vmmigration as __vmmigration
+    vmmigration = __vmmigration
     import pulumi_google_native.vpcaccess as __vpcaccess
     vpcaccess = __vpcaccess
     import pulumi_google_native.websecurityscanner as __websecurityscanner
@@ -242,6 +254,7 @@ else:
     cloudbilling = _utilities.lazy_import('pulumi_google_native.cloudbilling')
     cloudbuild = _utilities.lazy_import('pulumi_google_native.cloudbuild')
     cloudchannel = _utilities.lazy_import('pulumi_google_native.cloudchannel')
+    clouddeploy = _utilities.lazy_import('pulumi_google_native.clouddeploy')
     cloudfunctions = _utilities.lazy_import('pulumi_google_native.cloudfunctions')
     cloudidentity = _utilities.lazy_import('pulumi_google_native.cloudidentity')
     cloudiot = _utilities.lazy_import('pulumi_google_native.cloudiot')
@@ -249,6 +262,7 @@ else:
     cloudresourcemanager = _utilities.lazy_import('pulumi_google_native.cloudresourcemanager')
     cloudscheduler = _utilities.lazy_import('pulumi_google_native.cloudscheduler')
     cloudsearch = _utilities.lazy_import('pulumi_google_native.cloudsearch')
+    cloudsupport = _utilities.lazy_import('pulumi_google_native.cloudsupport')
     cloudtasks = _utilities.lazy_import('pulumi_google_native.cloudtasks')
     cloudtrace = _utilities.lazy_import('pulumi_google_native.cloudtrace')
     composer = _utilities.lazy_import('pulumi_google_native.composer')
@@ -263,8 +277,10 @@ else:
     datafusion = _utilities.lazy_import('pulumi_google_native.datafusion')
     datalabeling = _utilities.lazy_import('pulumi_google_native.datalabeling')
     datamigration = _utilities.lazy_import('pulumi_google_native.datamigration')
+    datapipelines = _utilities.lazy_import('pulumi_google_native.datapipelines')
     dataproc = _utilities.lazy_import('pulumi_google_native.dataproc')
     datastore = _utilities.lazy_import('pulumi_google_native.datastore')
+    datastream = _utilities.lazy_import('pulumi_google_native.datastream')
     deploymentmanager = _utilities.lazy_import('pulumi_google_native.deploymentmanager')
     dialogflow = _utilities.lazy_import('pulumi_google_native.dialogflow')
     dlp = _utilities.lazy_import('pulumi_google_native.dlp')
@@ -318,6 +334,7 @@ else:
     servicemanagement = _utilities.lazy_import('pulumi_google_native.servicemanagement')
     sourcerepo = _utilities.lazy_import('pulumi_google_native.sourcerepo')
     spanner = _utilities.lazy_import('pulumi_google_native.spanner')
+    speech = _utilities.lazy_import('pulumi_google_native.speech')
     sqladmin = _utilities.lazy_import('pulumi_google_native.sqladmin')
     storage = _utilities.lazy_import('pulumi_google_native.storage')
     storagetransfer = _utilities.lazy_import('pulumi_google_native.storagetransfer')
@@ -327,6 +344,7 @@ else:
     transcoder = _utilities.lazy_import('pulumi_google_native.transcoder')
     translate = _utilities.lazy_import('pulumi_google_native.translate')
     vision = _utilities.lazy_import('pulumi_google_native.vision')
+    vmmigration = _utilities.lazy_import('pulumi_google_native.vmmigration')
     vpcaccess = _utilities.lazy_import('pulumi_google_native.vpcaccess')
     websecurityscanner = _utilities.lazy_import('pulumi_google_native.websecurityscanner')
     workflowexecutions = _utilities.lazy_import('pulumi_google_native.workflowexecutions')
@@ -592,7 +610,8 @@ _utilities.register(
   "mod": "cloudasset/v1",
   "fqn": "pulumi_google_native.cloudasset.v1",
   "classes": {
-   "google-native:cloudasset/v1:Feed": "Feed"
+   "google-native:cloudasset/v1:Feed": "Feed",
+   "google-native:cloudasset/v1:SavedQuery": "SavedQuery"
   }
  },
  {
@@ -647,6 +666,19 @@ _utilities.register(
    "google-native:cloudchannel/v1:ChannelPartnerLink": "ChannelPartnerLink",
    "google-native:cloudchannel/v1:Customer": "Customer",
    "google-native:cloudchannel/v1:Entitlement": "Entitlement"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "clouddeploy/v1",
+  "fqn": "pulumi_google_native.clouddeploy.v1",
+  "classes": {
+   "google-native:clouddeploy/v1:DeliveryPipeline": "DeliveryPipeline",
+   "google-native:clouddeploy/v1:DeliveryPipelineIamPolicy": "DeliveryPipelineIamPolicy",
+   "google-native:clouddeploy/v1:Release": "Release",
+   "google-native:clouddeploy/v1:Rollout": "Rollout",
+   "google-native:clouddeploy/v1:Target": "Target",
+   "google-native:clouddeploy/v1:TargetIamPolicy": "TargetIamPolicy"
   }
  },
  {
@@ -782,6 +814,14 @@ _utilities.register(
   "classes": {
    "google-native:cloudsearch/v1:DataSource": "DataSource",
    "google-native:cloudsearch/v1:SearchApplication": "SearchApplication"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "cloudsupport/v2beta",
+  "fqn": "pulumi_google_native.cloudsupport.v2beta",
+  "classes": {
+   "google-native:cloudsupport/v2beta:Case": "Case"
   }
  },
  {
@@ -1162,6 +1202,17 @@ _utilities.register(
  },
  {
   "pkg": "google-native",
+  "mod": "containeranalysis/v1",
+  "fqn": "pulumi_google_native.containeranalysis.v1",
+  "classes": {
+   "google-native:containeranalysis/v1:Note": "Note",
+   "google-native:containeranalysis/v1:NoteIamPolicy": "NoteIamPolicy",
+   "google-native:containeranalysis/v1:Occurrence": "Occurrence",
+   "google-native:containeranalysis/v1:OccurrenceIamPolicy": "OccurrenceIamPolicy"
+  }
+ },
+ {
+  "pkg": "google-native",
   "mod": "containeranalysis/v1alpha1",
   "fqn": "pulumi_google_native.containeranalysis.v1alpha1",
   "classes": {
@@ -1279,6 +1330,14 @@ _utilities.register(
  },
  {
   "pkg": "google-native",
+  "mod": "datapipelines/v1",
+  "fqn": "pulumi_google_native.datapipelines.v1",
+  "classes": {
+   "google-native:datapipelines/v1:Pipeline": "Pipeline"
+  }
+ },
+ {
+  "pkg": "google-native",
   "mod": "dataproc/v1",
   "fqn": "pulumi_google_native.dataproc.v1",
   "classes": {
@@ -1319,6 +1378,28 @@ _utilities.register(
   "fqn": "pulumi_google_native.datastore.v1",
   "classes": {
    "google-native:datastore/v1:Index": "Index"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "datastream/v1",
+  "fqn": "pulumi_google_native.datastream.v1",
+  "classes": {
+   "google-native:datastream/v1:ConnectionProfile": "ConnectionProfile",
+   "google-native:datastream/v1:PrivateConnection": "PrivateConnection",
+   "google-native:datastream/v1:Route": "Route",
+   "google-native:datastream/v1:Stream": "Stream"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "datastream/v1alpha1",
+  "fqn": "pulumi_google_native.datastream.v1alpha1",
+  "classes": {
+   "google-native:datastream/v1alpha1:ConnectionProfile": "ConnectionProfile",
+   "google-native:datastream/v1alpha1:PrivateConnection": "PrivateConnection",
+   "google-native:datastream/v1alpha1:Route": "Route",
+   "google-native:datastream/v1alpha1:Stream": "Stream"
   }
  },
  {
@@ -1482,6 +1563,15 @@ _utilities.register(
  },
  {
   "pkg": "google-native",
+  "mod": "domains/v1",
+  "fqn": "pulumi_google_native.domains.v1",
+  "classes": {
+   "google-native:domains/v1:Registration": "Registration",
+   "google-native:domains/v1:RegistrationIamPolicy": "RegistrationIamPolicy"
+  }
+ },
+ {
+  "pkg": "google-native",
   "mod": "domains/v1alpha2",
   "fqn": "pulumi_google_native.domains.v1alpha2",
   "classes": {
@@ -1533,7 +1623,8 @@ _utilities.register(
   "fqn": "pulumi_google_native.file.v1",
   "classes": {
    "google-native:file/v1:Backup": "Backup",
-   "google-native:file/v1:Instance": "Instance"
+   "google-native:file/v1:Instance": "Instance",
+   "google-native:file/v1:Snapshot": "Snapshot"
   }
  },
  {
@@ -1673,6 +1764,8 @@ _utilities.register(
   "classes": {
    "google-native:gkehub/v1alpha:Feature": "Feature",
    "google-native:gkehub/v1alpha:FeatureIamPolicy": "FeatureIamPolicy",
+   "google-native:gkehub/v1alpha:Fleet": "Fleet",
+   "google-native:gkehub/v1alpha:Membership": "Membership",
    "google-native:gkehub/v1alpha:MembershipIamPolicy": "MembershipIamPolicy"
   }
  },
@@ -1827,6 +1920,7 @@ _utilities.register(
   "mod": "managedidentities/v1alpha1",
   "fqn": "pulumi_google_native.managedidentities.v1alpha1",
   "classes": {
+   "google-native:managedidentities/v1alpha1:Backup": "Backup",
    "google-native:managedidentities/v1alpha1:Domain": "Domain",
    "google-native:managedidentities/v1alpha1:DomainBackupIamPolicy": "DomainBackupIamPolicy",
    "google-native:managedidentities/v1alpha1:DomainIamPolicy": "DomainIamPolicy",
@@ -1839,6 +1933,7 @@ _utilities.register(
   "mod": "managedidentities/v1beta1",
   "fqn": "pulumi_google_native.managedidentities.v1beta1",
   "classes": {
+   "google-native:managedidentities/v1beta1:Backup": "Backup",
    "google-native:managedidentities/v1beta1:Domain": "Domain",
    "google-native:managedidentities/v1beta1:DomainBackupIamPolicy": "DomainBackupIamPolicy",
    "google-native:managedidentities/v1beta1:DomainIamPolicy": "DomainIamPolicy",
@@ -2023,6 +2118,7 @@ _utilities.register(
    "google-native:notebooks/v1:Instance": "Instance",
    "google-native:notebooks/v1:InstanceIamPolicy": "InstanceIamPolicy",
    "google-native:notebooks/v1:Runtime": "Runtime",
+   "google-native:notebooks/v1:RuntimeIamPolicy": "RuntimeIamPolicy",
    "google-native:notebooks/v1:Schedule": "Schedule"
   }
  },
@@ -2270,7 +2366,9 @@ _utilities.register(
   "mod": "securitycenter/v1",
   "fqn": "pulumi_google_native.securitycenter.v1",
   "classes": {
+   "google-native:securitycenter/v1:MuteConfig": "MuteConfig",
    "google-native:securitycenter/v1:NotificationConfig": "NotificationConfig",
+   "google-native:securitycenter/v1:OrganizationMuteConfig": "OrganizationMuteConfig",
    "google-native:securitycenter/v1:OrganizationSourceIamPolicy": "OrganizationSourceIamPolicy",
    "google-native:securitycenter/v1:Source": "Source"
   }
@@ -2345,6 +2443,15 @@ _utilities.register(
  },
  {
   "pkg": "google-native",
+  "mod": "speech/v1",
+  "fqn": "pulumi_google_native.speech.v1",
+  "classes": {
+   "google-native:speech/v1:CustomClass": "CustomClass",
+   "google-native:speech/v1:PhraseSet": "PhraseSet"
+  }
+ },
+ {
+  "pkg": "google-native",
   "mod": "sqladmin/v1",
   "fqn": "pulumi_google_native.sqladmin.v1",
   "classes": {
@@ -2386,6 +2493,7 @@ _utilities.register(
   "mod": "storagetransfer/v1",
   "fqn": "pulumi_google_native.storagetransfer.v1",
   "classes": {
+   "google-native:storagetransfer/v1:AgentPool": "AgentPool",
    "google-native:storagetransfer/v1:TransferJob": "TransferJob"
   }
  },
@@ -2426,6 +2534,14 @@ _utilities.register(
  },
  {
   "pkg": "google-native",
+  "mod": "tpu/v2alpha1",
+  "fqn": "pulumi_google_native.tpu.v2alpha1",
+  "classes": {
+   "google-native:tpu/v2alpha1:Node": "Node"
+  }
+ },
+ {
+  "pkg": "google-native",
   "mod": "transcoder/v1beta1",
   "fqn": "pulumi_google_native.transcoder.v1beta1",
   "classes": {
@@ -2457,6 +2573,36 @@ _utilities.register(
    "google-native:vision/v1:Product": "Product",
    "google-native:vision/v1:ProductSet": "ProductSet",
    "google-native:vision/v1:ReferenceImage": "ReferenceImage"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "vmmigration/v1",
+  "fqn": "pulumi_google_native.vmmigration.v1",
+  "classes": {
+   "google-native:vmmigration/v1:CloneJob": "CloneJob",
+   "google-native:vmmigration/v1:CutoverJob": "CutoverJob",
+   "google-native:vmmigration/v1:DatacenterConnector": "DatacenterConnector",
+   "google-native:vmmigration/v1:Group": "Group",
+   "google-native:vmmigration/v1:MigratingVm": "MigratingVm",
+   "google-native:vmmigration/v1:Source": "Source",
+   "google-native:vmmigration/v1:TargetProject": "TargetProject",
+   "google-native:vmmigration/v1:UtilizationReport": "UtilizationReport"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "vmmigration/v1alpha1",
+  "fqn": "pulumi_google_native.vmmigration.v1alpha1",
+  "classes": {
+   "google-native:vmmigration/v1alpha1:CloneJob": "CloneJob",
+   "google-native:vmmigration/v1alpha1:CutoverJob": "CutoverJob",
+   "google-native:vmmigration/v1alpha1:DatacenterConnector": "DatacenterConnector",
+   "google-native:vmmigration/v1alpha1:Group": "Group",
+   "google-native:vmmigration/v1alpha1:MigratingVm": "MigratingVm",
+   "google-native:vmmigration/v1alpha1:Source": "Source",
+   "google-native:vmmigration/v1alpha1:TargetProject": "TargetProject",
+   "google-native:vmmigration/v1alpha1:UtilizationReport": "UtilizationReport"
   }
  },
  {

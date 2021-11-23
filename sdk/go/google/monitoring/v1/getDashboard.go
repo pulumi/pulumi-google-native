@@ -34,6 +34,8 @@ type LookupDashboardResult struct {
 	Etag string `pulumi:"etag"`
 	// Content is arranged with a basic layout that re-flows a simple list of informational elements like widgets or tiles.
 	GridLayout GridLayoutResponse `pulumi:"gridLayout"`
+	// Labels applied to the dashboard
+	Labels map[string]string `pulumi:"labels"`
 	// The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
 	MosaicLayout MosaicLayoutResponse `pulumi:"mosaicLayout"`
 	// Immutable. The resource name of the dashboard.
@@ -92,6 +94,11 @@ func (o LookupDashboardResultOutput) Etag() pulumi.StringOutput {
 // Content is arranged with a basic layout that re-flows a simple list of informational elements like widgets or tiles.
 func (o LookupDashboardResultOutput) GridLayout() GridLayoutResponseOutput {
 	return o.ApplyT(func(v LookupDashboardResult) GridLayoutResponse { return v.GridLayout }).(GridLayoutResponseOutput)
+}
+
+// Labels applied to the dashboard
+func (o LookupDashboardResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupDashboardResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.

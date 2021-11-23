@@ -2380,6 +2380,229 @@ func (o GridLayoutResponsePtrOutput) Widgets() WidgetResponseArrayOutput {
 	}).(WidgetResponseArrayOutput)
 }
 
+// A widget that displays a stream of log.
+type LogsPanel struct {
+	// A filter that chooses which log entries to return. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries.
+	Filter *string `pulumi:"filter"`
+	// The names of logging resources to collect logs for. Does not implicitly include the current host project. Currently only projects are supported. There must be at least one resource_name.
+	ResourceNames []string `pulumi:"resourceNames"`
+}
+
+// LogsPanelInput is an input type that accepts LogsPanelArgs and LogsPanelOutput values.
+// You can construct a concrete instance of `LogsPanelInput` via:
+//
+//          LogsPanelArgs{...}
+type LogsPanelInput interface {
+	pulumi.Input
+
+	ToLogsPanelOutput() LogsPanelOutput
+	ToLogsPanelOutputWithContext(context.Context) LogsPanelOutput
+}
+
+// A widget that displays a stream of log.
+type LogsPanelArgs struct {
+	// A filter that chooses which log entries to return. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries.
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// The names of logging resources to collect logs for. Does not implicitly include the current host project. Currently only projects are supported. There must be at least one resource_name.
+	ResourceNames pulumi.StringArrayInput `pulumi:"resourceNames"`
+}
+
+func (LogsPanelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogsPanel)(nil)).Elem()
+}
+
+func (i LogsPanelArgs) ToLogsPanelOutput() LogsPanelOutput {
+	return i.ToLogsPanelOutputWithContext(context.Background())
+}
+
+func (i LogsPanelArgs) ToLogsPanelOutputWithContext(ctx context.Context) LogsPanelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogsPanelOutput)
+}
+
+func (i LogsPanelArgs) ToLogsPanelPtrOutput() LogsPanelPtrOutput {
+	return i.ToLogsPanelPtrOutputWithContext(context.Background())
+}
+
+func (i LogsPanelArgs) ToLogsPanelPtrOutputWithContext(ctx context.Context) LogsPanelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogsPanelOutput).ToLogsPanelPtrOutputWithContext(ctx)
+}
+
+// LogsPanelPtrInput is an input type that accepts LogsPanelArgs, LogsPanelPtr and LogsPanelPtrOutput values.
+// You can construct a concrete instance of `LogsPanelPtrInput` via:
+//
+//          LogsPanelArgs{...}
+//
+//  or:
+//
+//          nil
+type LogsPanelPtrInput interface {
+	pulumi.Input
+
+	ToLogsPanelPtrOutput() LogsPanelPtrOutput
+	ToLogsPanelPtrOutputWithContext(context.Context) LogsPanelPtrOutput
+}
+
+type logsPanelPtrType LogsPanelArgs
+
+func LogsPanelPtr(v *LogsPanelArgs) LogsPanelPtrInput {
+	return (*logsPanelPtrType)(v)
+}
+
+func (*logsPanelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogsPanel)(nil)).Elem()
+}
+
+func (i *logsPanelPtrType) ToLogsPanelPtrOutput() LogsPanelPtrOutput {
+	return i.ToLogsPanelPtrOutputWithContext(context.Background())
+}
+
+func (i *logsPanelPtrType) ToLogsPanelPtrOutputWithContext(ctx context.Context) LogsPanelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogsPanelPtrOutput)
+}
+
+// A widget that displays a stream of log.
+type LogsPanelOutput struct{ *pulumi.OutputState }
+
+func (LogsPanelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogsPanel)(nil)).Elem()
+}
+
+func (o LogsPanelOutput) ToLogsPanelOutput() LogsPanelOutput {
+	return o
+}
+
+func (o LogsPanelOutput) ToLogsPanelOutputWithContext(ctx context.Context) LogsPanelOutput {
+	return o
+}
+
+func (o LogsPanelOutput) ToLogsPanelPtrOutput() LogsPanelPtrOutput {
+	return o.ToLogsPanelPtrOutputWithContext(context.Background())
+}
+
+func (o LogsPanelOutput) ToLogsPanelPtrOutputWithContext(ctx context.Context) LogsPanelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogsPanel) *LogsPanel {
+		return &v
+	}).(LogsPanelPtrOutput)
+}
+
+// A filter that chooses which log entries to return. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries.
+func (o LogsPanelOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogsPanel) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+// The names of logging resources to collect logs for. Does not implicitly include the current host project. Currently only projects are supported. There must be at least one resource_name.
+func (o LogsPanelOutput) ResourceNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LogsPanel) []string { return v.ResourceNames }).(pulumi.StringArrayOutput)
+}
+
+type LogsPanelPtrOutput struct{ *pulumi.OutputState }
+
+func (LogsPanelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogsPanel)(nil)).Elem()
+}
+
+func (o LogsPanelPtrOutput) ToLogsPanelPtrOutput() LogsPanelPtrOutput {
+	return o
+}
+
+func (o LogsPanelPtrOutput) ToLogsPanelPtrOutputWithContext(ctx context.Context) LogsPanelPtrOutput {
+	return o
+}
+
+func (o LogsPanelPtrOutput) Elem() LogsPanelOutput {
+	return o.ApplyT(func(v *LogsPanel) LogsPanel {
+		if v != nil {
+			return *v
+		}
+		var ret LogsPanel
+		return ret
+	}).(LogsPanelOutput)
+}
+
+// A filter that chooses which log entries to return. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries.
+func (o LogsPanelPtrOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogsPanel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Filter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The names of logging resources to collect logs for. Does not implicitly include the current host project. Currently only projects are supported. There must be at least one resource_name.
+func (o LogsPanelPtrOutput) ResourceNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LogsPanel) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// A widget that displays a stream of log.
+type LogsPanelResponse struct {
+	// A filter that chooses which log entries to return. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries.
+	Filter string `pulumi:"filter"`
+	// The names of logging resources to collect logs for. Does not implicitly include the current host project. Currently only projects are supported. There must be at least one resource_name.
+	ResourceNames []string `pulumi:"resourceNames"`
+}
+
+// LogsPanelResponseInput is an input type that accepts LogsPanelResponseArgs and LogsPanelResponseOutput values.
+// You can construct a concrete instance of `LogsPanelResponseInput` via:
+//
+//          LogsPanelResponseArgs{...}
+type LogsPanelResponseInput interface {
+	pulumi.Input
+
+	ToLogsPanelResponseOutput() LogsPanelResponseOutput
+	ToLogsPanelResponseOutputWithContext(context.Context) LogsPanelResponseOutput
+}
+
+// A widget that displays a stream of log.
+type LogsPanelResponseArgs struct {
+	// A filter that chooses which log entries to return. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries.
+	Filter pulumi.StringInput `pulumi:"filter"`
+	// The names of logging resources to collect logs for. Does not implicitly include the current host project. Currently only projects are supported. There must be at least one resource_name.
+	ResourceNames pulumi.StringArrayInput `pulumi:"resourceNames"`
+}
+
+func (LogsPanelResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogsPanelResponse)(nil)).Elem()
+}
+
+func (i LogsPanelResponseArgs) ToLogsPanelResponseOutput() LogsPanelResponseOutput {
+	return i.ToLogsPanelResponseOutputWithContext(context.Background())
+}
+
+func (i LogsPanelResponseArgs) ToLogsPanelResponseOutputWithContext(ctx context.Context) LogsPanelResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogsPanelResponseOutput)
+}
+
+// A widget that displays a stream of log.
+type LogsPanelResponseOutput struct{ *pulumi.OutputState }
+
+func (LogsPanelResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogsPanelResponse)(nil)).Elem()
+}
+
+func (o LogsPanelResponseOutput) ToLogsPanelResponseOutput() LogsPanelResponseOutput {
+	return o
+}
+
+func (o LogsPanelResponseOutput) ToLogsPanelResponseOutputWithContext(ctx context.Context) LogsPanelResponseOutput {
+	return o
+}
+
+// A filter that chooses which log entries to return. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries.
+func (o LogsPanelResponseOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v LogsPanelResponse) string { return v.Filter }).(pulumi.StringOutput)
+}
+
+// The names of logging resources to collect logs for. Does not implicitly include the current host project. Currently only projects are supported. There must be at least one resource_name.
+func (o LogsPanelResponseOutput) ResourceNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LogsPanelResponse) []string { return v.ResourceNames }).(pulumi.StringArrayOutput)
+}
+
 // A mosaic layout divides the available space into a grid of blocks, and overlays the grid with tiles. Unlike GridLayout, tiles may span multiple grid blocks and can be placed at arbitrary locations in the grid.
 type MosaicLayout struct {
 	// The number of columns in the mosaic grid. The number of columns must be between 1 and 12, inclusive.
@@ -6426,6 +6649,8 @@ type Widget struct {
 	AlertChart *AlertChart `pulumi:"alertChart"`
 	// A blank space.
 	Blank *Empty `pulumi:"blank"`
+	// A widget that shows a stream of logs.
+	LogsPanel *LogsPanel `pulumi:"logsPanel"`
 	// A scorecard summarizing time series data.
 	Scorecard *Scorecard `pulumi:"scorecard"`
 	// A raw string or markdown displaying textual content.
@@ -6455,6 +6680,8 @@ type WidgetArgs struct {
 	AlertChart AlertChartPtrInput `pulumi:"alertChart"`
 	// A blank space.
 	Blank EmptyPtrInput `pulumi:"blank"`
+	// A widget that shows a stream of logs.
+	LogsPanel LogsPanelPtrInput `pulumi:"logsPanel"`
 	// A scorecard summarizing time series data.
 	Scorecard ScorecardPtrInput `pulumi:"scorecard"`
 	// A raw string or markdown displaying textual content.
@@ -6580,6 +6807,11 @@ func (o WidgetOutput) Blank() EmptyPtrOutput {
 	return o.ApplyT(func(v Widget) *Empty { return v.Blank }).(EmptyPtrOutput)
 }
 
+// A widget that shows a stream of logs.
+func (o WidgetOutput) LogsPanel() LogsPanelPtrOutput {
+	return o.ApplyT(func(v Widget) *LogsPanel { return v.LogsPanel }).(LogsPanelPtrOutput)
+}
+
 // A scorecard summarizing time series data.
 func (o WidgetOutput) Scorecard() ScorecardPtrOutput {
 	return o.ApplyT(func(v Widget) *Scorecard { return v.Scorecard }).(ScorecardPtrOutput)
@@ -6647,6 +6879,16 @@ func (o WidgetPtrOutput) Blank() EmptyPtrOutput {
 		}
 		return v.Blank
 	}).(EmptyPtrOutput)
+}
+
+// A widget that shows a stream of logs.
+func (o WidgetPtrOutput) LogsPanel() LogsPanelPtrOutput {
+	return o.ApplyT(func(v *Widget) *LogsPanel {
+		if v == nil {
+			return nil
+		}
+		return v.LogsPanel
+	}).(LogsPanelPtrOutput)
 }
 
 // A scorecard summarizing time series data.
@@ -6725,6 +6967,8 @@ type WidgetResponse struct {
 	AlertChart AlertChartResponse `pulumi:"alertChart"`
 	// A blank space.
 	Blank EmptyResponse `pulumi:"blank"`
+	// A widget that shows a stream of logs.
+	LogsPanel LogsPanelResponse `pulumi:"logsPanel"`
 	// A scorecard summarizing time series data.
 	Scorecard ScorecardResponse `pulumi:"scorecard"`
 	// A raw string or markdown displaying textual content.
@@ -6754,6 +6998,8 @@ type WidgetResponseArgs struct {
 	AlertChart AlertChartResponseInput `pulumi:"alertChart"`
 	// A blank space.
 	Blank EmptyResponseInput `pulumi:"blank"`
+	// A widget that shows a stream of logs.
+	LogsPanel LogsPanelResponseInput `pulumi:"logsPanel"`
 	// A scorecard summarizing time series data.
 	Scorecard ScorecardResponseInput `pulumi:"scorecard"`
 	// A raw string or markdown displaying textual content.
@@ -6826,6 +7072,11 @@ func (o WidgetResponseOutput) AlertChart() AlertChartResponseOutput {
 // A blank space.
 func (o WidgetResponseOutput) Blank() EmptyResponseOutput {
 	return o.ApplyT(func(v WidgetResponse) EmptyResponse { return v.Blank }).(EmptyResponseOutput)
+}
+
+// A widget that shows a stream of logs.
+func (o WidgetResponseOutput) LogsPanel() LogsPanelResponseOutput {
+	return o.ApplyT(func(v WidgetResponse) LogsPanelResponse { return v.LogsPanel }).(LogsPanelResponseOutput)
 }
 
 // A scorecard summarizing time series data.
@@ -7271,6 +7522,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GridLayoutPtrInput)(nil)).Elem(), GridLayoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GridLayoutResponseInput)(nil)).Elem(), GridLayoutResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GridLayoutResponsePtrInput)(nil)).Elem(), GridLayoutResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogsPanelInput)(nil)).Elem(), LogsPanelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogsPanelPtrInput)(nil)).Elem(), LogsPanelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogsPanelResponseInput)(nil)).Elem(), LogsPanelResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MosaicLayoutInput)(nil)).Elem(), MosaicLayoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MosaicLayoutPtrInput)(nil)).Elem(), MosaicLayoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MosaicLayoutResponseInput)(nil)).Elem(), MosaicLayoutResponseArgs{})
@@ -7367,6 +7621,9 @@ func init() {
 	pulumi.RegisterOutputType(GridLayoutPtrOutput{})
 	pulumi.RegisterOutputType(GridLayoutResponseOutput{})
 	pulumi.RegisterOutputType(GridLayoutResponsePtrOutput{})
+	pulumi.RegisterOutputType(LogsPanelOutput{})
+	pulumi.RegisterOutputType(LogsPanelPtrOutput{})
+	pulumi.RegisterOutputType(LogsPanelResponseOutput{})
 	pulumi.RegisterOutputType(MosaicLayoutOutput{})
 	pulumi.RegisterOutputType(MosaicLayoutPtrOutput{})
 	pulumi.RegisterOutputType(MosaicLayoutResponseOutput{})

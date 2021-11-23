@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
     public sealed class GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponse
     {
         /// <summary>
-        /// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+        /// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
         /// </summary>
         public readonly bool EnableContinuousRun;
         /// <summary>

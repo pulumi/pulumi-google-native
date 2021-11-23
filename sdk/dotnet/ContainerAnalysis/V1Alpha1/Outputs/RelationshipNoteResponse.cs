@@ -16,9 +16,15 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
     [OutputType]
     public sealed class RelationshipNoteResponse
     {
+        /// <summary>
+        /// The type of relationship between the source and target SPDX elements
+        /// </summary>
+        public readonly string Type;
+
         [OutputConstructor]
-        private RelationshipNoteResponse()
+        private RelationshipNoteResponse(string type)
         {
+            Type = type;
         }
     }
 }

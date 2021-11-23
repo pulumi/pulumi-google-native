@@ -512,6 +512,8 @@ func (o AutoscalingConfigResponsePtrOutput) PolicyUri() pulumi.StringPtrOutput {
 type BasicAutoscalingAlgorithm struct {
 	// Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
 	CooldownPeriod *string `pulumi:"cooldownPeriod"`
+	// Optional. Spark Standalone autoscaling configuration
+	SparkStandaloneConfig *SparkStandaloneAutoscalingConfig `pulumi:"sparkStandaloneConfig"`
 	// Optional. YARN autoscaling configuration.
 	YarnConfig *BasicYarnAutoscalingConfig `pulumi:"yarnConfig"`
 }
@@ -531,6 +533,8 @@ type BasicAutoscalingAlgorithmInput interface {
 type BasicAutoscalingAlgorithmArgs struct {
 	// Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
 	CooldownPeriod pulumi.StringPtrInput `pulumi:"cooldownPeriod"`
+	// Optional. Spark Standalone autoscaling configuration
+	SparkStandaloneConfig SparkStandaloneAutoscalingConfigPtrInput `pulumi:"sparkStandaloneConfig"`
 	// Optional. YARN autoscaling configuration.
 	YarnConfig BasicYarnAutoscalingConfigPtrInput `pulumi:"yarnConfig"`
 }
@@ -618,6 +622,11 @@ func (o BasicAutoscalingAlgorithmOutput) CooldownPeriod() pulumi.StringPtrOutput
 	return o.ApplyT(func(v BasicAutoscalingAlgorithm) *string { return v.CooldownPeriod }).(pulumi.StringPtrOutput)
 }
 
+// Optional. Spark Standalone autoscaling configuration
+func (o BasicAutoscalingAlgorithmOutput) SparkStandaloneConfig() SparkStandaloneAutoscalingConfigPtrOutput {
+	return o.ApplyT(func(v BasicAutoscalingAlgorithm) *SparkStandaloneAutoscalingConfig { return v.SparkStandaloneConfig }).(SparkStandaloneAutoscalingConfigPtrOutput)
+}
+
 // Optional. YARN autoscaling configuration.
 func (o BasicAutoscalingAlgorithmOutput) YarnConfig() BasicYarnAutoscalingConfigPtrOutput {
 	return o.ApplyT(func(v BasicAutoscalingAlgorithm) *BasicYarnAutoscalingConfig { return v.YarnConfig }).(BasicYarnAutoscalingConfigPtrOutput)
@@ -657,6 +666,16 @@ func (o BasicAutoscalingAlgorithmPtrOutput) CooldownPeriod() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. Spark Standalone autoscaling configuration
+func (o BasicAutoscalingAlgorithmPtrOutput) SparkStandaloneConfig() SparkStandaloneAutoscalingConfigPtrOutput {
+	return o.ApplyT(func(v *BasicAutoscalingAlgorithm) *SparkStandaloneAutoscalingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SparkStandaloneConfig
+	}).(SparkStandaloneAutoscalingConfigPtrOutput)
+}
+
 // Optional. YARN autoscaling configuration.
 func (o BasicAutoscalingAlgorithmPtrOutput) YarnConfig() BasicYarnAutoscalingConfigPtrOutput {
 	return o.ApplyT(func(v *BasicAutoscalingAlgorithm) *BasicYarnAutoscalingConfig {
@@ -671,6 +690,8 @@ func (o BasicAutoscalingAlgorithmPtrOutput) YarnConfig() BasicYarnAutoscalingCon
 type BasicAutoscalingAlgorithmResponse struct {
 	// Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
 	CooldownPeriod string `pulumi:"cooldownPeriod"`
+	// Optional. Spark Standalone autoscaling configuration
+	SparkStandaloneConfig SparkStandaloneAutoscalingConfigResponse `pulumi:"sparkStandaloneConfig"`
 	// Optional. YARN autoscaling configuration.
 	YarnConfig BasicYarnAutoscalingConfigResponse `pulumi:"yarnConfig"`
 }
@@ -690,6 +711,8 @@ type BasicAutoscalingAlgorithmResponseInput interface {
 type BasicAutoscalingAlgorithmResponseArgs struct {
 	// Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
 	CooldownPeriod pulumi.StringInput `pulumi:"cooldownPeriod"`
+	// Optional. Spark Standalone autoscaling configuration
+	SparkStandaloneConfig SparkStandaloneAutoscalingConfigResponseInput `pulumi:"sparkStandaloneConfig"`
 	// Optional. YARN autoscaling configuration.
 	YarnConfig BasicYarnAutoscalingConfigResponseInput `pulumi:"yarnConfig"`
 }
@@ -777,6 +800,13 @@ func (o BasicAutoscalingAlgorithmResponseOutput) CooldownPeriod() pulumi.StringO
 	return o.ApplyT(func(v BasicAutoscalingAlgorithmResponse) string { return v.CooldownPeriod }).(pulumi.StringOutput)
 }
 
+// Optional. Spark Standalone autoscaling configuration
+func (o BasicAutoscalingAlgorithmResponseOutput) SparkStandaloneConfig() SparkStandaloneAutoscalingConfigResponseOutput {
+	return o.ApplyT(func(v BasicAutoscalingAlgorithmResponse) SparkStandaloneAutoscalingConfigResponse {
+		return v.SparkStandaloneConfig
+	}).(SparkStandaloneAutoscalingConfigResponseOutput)
+}
+
 // Optional. YARN autoscaling configuration.
 func (o BasicAutoscalingAlgorithmResponseOutput) YarnConfig() BasicYarnAutoscalingConfigResponseOutput {
 	return o.ApplyT(func(v BasicAutoscalingAlgorithmResponse) BasicYarnAutoscalingConfigResponse { return v.YarnConfig }).(BasicYarnAutoscalingConfigResponseOutput)
@@ -814,6 +844,16 @@ func (o BasicAutoscalingAlgorithmResponsePtrOutput) CooldownPeriod() pulumi.Stri
 		}
 		return &v.CooldownPeriod
 	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Spark Standalone autoscaling configuration
+func (o BasicAutoscalingAlgorithmResponsePtrOutput) SparkStandaloneConfig() SparkStandaloneAutoscalingConfigResponsePtrOutput {
+	return o.ApplyT(func(v *BasicAutoscalingAlgorithmResponse) *SparkStandaloneAutoscalingConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.SparkStandaloneConfig
+	}).(SparkStandaloneAutoscalingConfigResponsePtrOutput)
 }
 
 // Optional. YARN autoscaling configuration.
@@ -1258,13 +1298,13 @@ func (o BasicYarnAutoscalingConfigResponsePtrOutput) ScaleUpMinWorkerFraction() 
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Associates members with a role.
+// Associates members, or principals, with a role.
 type Binding struct {
-	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+	// Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
+	// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
 	Role *string `pulumi:"role"`
 }
 
@@ -1279,13 +1319,13 @@ type BindingInput interface {
 	ToBindingOutputWithContext(context.Context) BindingOutput
 }
 
-// Associates members with a role.
+// Associates members, or principals, with a role.
 type BindingArgs struct {
-	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+	// Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
+	// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -1326,7 +1366,7 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-// Associates members with a role.
+// Associates members, or principals, with a role.
 type BindingOutput struct{ *pulumi.OutputState }
 
 func (BindingOutput) ElementType() reflect.Type {
@@ -1341,17 +1381,17 @@ func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOu
 	return o
 }
 
-// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
+// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the identities requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+// Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
+// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
 func (o BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -1376,13 +1416,13 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 	}).(BindingOutput)
 }
 
-// Associates members with a role.
+// Associates members, or principals, with a role.
 type BindingResponse struct {
-	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+	// Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
+	// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
 	Role string `pulumi:"role"`
 }
 
@@ -1397,13 +1437,13 @@ type BindingResponseInput interface {
 	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
 }
 
-// Associates members with a role.
+// Associates members, or principals, with a role.
 type BindingResponseArgs struct {
-	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+	// Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
+	// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
 	Role pulumi.StringInput `pulumi:"role"`
 }
 
@@ -1444,7 +1484,7 @@ func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
 }
 
-// Associates members with a role.
+// Associates members, or principals, with a role.
 type BindingResponseOutput struct{ *pulumi.OutputState }
 
 func (BindingResponseOutput) ElementType() reflect.Type {
@@ -1459,17 +1499,17 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
+// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the identities requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+// Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
+// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
 func (o BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -17727,6 +17767,438 @@ func (o SparkSqlJobResponsePtrOutput) ScriptVariables() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// Basic autoscaling configurations for Spark Standalone.
+type SparkStandaloneAutoscalingConfig struct {
+	// Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decomissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
+	GracefulDecommissionTimeout string `pulumi:"gracefulDecommissionTimeout"`
+	// Fraction of required executors to remove from Spark Serverless clusters. A scale-down factor of 1.0 will result in scaling down so that there are no more executors for the Spark Job.(more aggressive scaling). A scale-down factor closer to 0 will result in a smaller magnitude of scaling donw (less aggressive scaling).Bounds: 0.0, 1.0.
+	ScaleDownFactor float64 `pulumi:"scaleDownFactor"`
+	// Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+	ScaleDownMinWorkerFraction *float64 `pulumi:"scaleDownMinWorkerFraction"`
+	// Fraction of required workers to add to Spark Standalone clusters. A scale-up factor of 1.0 will result in scaling up so that there are no more required workers for the Spark Job (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling).Bounds: 0.0, 1.0.
+	ScaleUpFactor float64 `pulumi:"scaleUpFactor"`
+	// Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+	ScaleUpMinWorkerFraction *float64 `pulumi:"scaleUpMinWorkerFraction"`
+}
+
+// SparkStandaloneAutoscalingConfigInput is an input type that accepts SparkStandaloneAutoscalingConfigArgs and SparkStandaloneAutoscalingConfigOutput values.
+// You can construct a concrete instance of `SparkStandaloneAutoscalingConfigInput` via:
+//
+//          SparkStandaloneAutoscalingConfigArgs{...}
+type SparkStandaloneAutoscalingConfigInput interface {
+	pulumi.Input
+
+	ToSparkStandaloneAutoscalingConfigOutput() SparkStandaloneAutoscalingConfigOutput
+	ToSparkStandaloneAutoscalingConfigOutputWithContext(context.Context) SparkStandaloneAutoscalingConfigOutput
+}
+
+// Basic autoscaling configurations for Spark Standalone.
+type SparkStandaloneAutoscalingConfigArgs struct {
+	// Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decomissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
+	GracefulDecommissionTimeout pulumi.StringInput `pulumi:"gracefulDecommissionTimeout"`
+	// Fraction of required executors to remove from Spark Serverless clusters. A scale-down factor of 1.0 will result in scaling down so that there are no more executors for the Spark Job.(more aggressive scaling). A scale-down factor closer to 0 will result in a smaller magnitude of scaling donw (less aggressive scaling).Bounds: 0.0, 1.0.
+	ScaleDownFactor pulumi.Float64Input `pulumi:"scaleDownFactor"`
+	// Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+	ScaleDownMinWorkerFraction pulumi.Float64PtrInput `pulumi:"scaleDownMinWorkerFraction"`
+	// Fraction of required workers to add to Spark Standalone clusters. A scale-up factor of 1.0 will result in scaling up so that there are no more required workers for the Spark Job (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling).Bounds: 0.0, 1.0.
+	ScaleUpFactor pulumi.Float64Input `pulumi:"scaleUpFactor"`
+	// Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+	ScaleUpMinWorkerFraction pulumi.Float64PtrInput `pulumi:"scaleUpMinWorkerFraction"`
+}
+
+func (SparkStandaloneAutoscalingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkStandaloneAutoscalingConfig)(nil)).Elem()
+}
+
+func (i SparkStandaloneAutoscalingConfigArgs) ToSparkStandaloneAutoscalingConfigOutput() SparkStandaloneAutoscalingConfigOutput {
+	return i.ToSparkStandaloneAutoscalingConfigOutputWithContext(context.Background())
+}
+
+func (i SparkStandaloneAutoscalingConfigArgs) ToSparkStandaloneAutoscalingConfigOutputWithContext(ctx context.Context) SparkStandaloneAutoscalingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkStandaloneAutoscalingConfigOutput)
+}
+
+func (i SparkStandaloneAutoscalingConfigArgs) ToSparkStandaloneAutoscalingConfigPtrOutput() SparkStandaloneAutoscalingConfigPtrOutput {
+	return i.ToSparkStandaloneAutoscalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SparkStandaloneAutoscalingConfigArgs) ToSparkStandaloneAutoscalingConfigPtrOutputWithContext(ctx context.Context) SparkStandaloneAutoscalingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkStandaloneAutoscalingConfigOutput).ToSparkStandaloneAutoscalingConfigPtrOutputWithContext(ctx)
+}
+
+// SparkStandaloneAutoscalingConfigPtrInput is an input type that accepts SparkStandaloneAutoscalingConfigArgs, SparkStandaloneAutoscalingConfigPtr and SparkStandaloneAutoscalingConfigPtrOutput values.
+// You can construct a concrete instance of `SparkStandaloneAutoscalingConfigPtrInput` via:
+//
+//          SparkStandaloneAutoscalingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type SparkStandaloneAutoscalingConfigPtrInput interface {
+	pulumi.Input
+
+	ToSparkStandaloneAutoscalingConfigPtrOutput() SparkStandaloneAutoscalingConfigPtrOutput
+	ToSparkStandaloneAutoscalingConfigPtrOutputWithContext(context.Context) SparkStandaloneAutoscalingConfigPtrOutput
+}
+
+type sparkStandaloneAutoscalingConfigPtrType SparkStandaloneAutoscalingConfigArgs
+
+func SparkStandaloneAutoscalingConfigPtr(v *SparkStandaloneAutoscalingConfigArgs) SparkStandaloneAutoscalingConfigPtrInput {
+	return (*sparkStandaloneAutoscalingConfigPtrType)(v)
+}
+
+func (*sparkStandaloneAutoscalingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SparkStandaloneAutoscalingConfig)(nil)).Elem()
+}
+
+func (i *sparkStandaloneAutoscalingConfigPtrType) ToSparkStandaloneAutoscalingConfigPtrOutput() SparkStandaloneAutoscalingConfigPtrOutput {
+	return i.ToSparkStandaloneAutoscalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *sparkStandaloneAutoscalingConfigPtrType) ToSparkStandaloneAutoscalingConfigPtrOutputWithContext(ctx context.Context) SparkStandaloneAutoscalingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkStandaloneAutoscalingConfigPtrOutput)
+}
+
+// Basic autoscaling configurations for Spark Standalone.
+type SparkStandaloneAutoscalingConfigOutput struct{ *pulumi.OutputState }
+
+func (SparkStandaloneAutoscalingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkStandaloneAutoscalingConfig)(nil)).Elem()
+}
+
+func (o SparkStandaloneAutoscalingConfigOutput) ToSparkStandaloneAutoscalingConfigOutput() SparkStandaloneAutoscalingConfigOutput {
+	return o
+}
+
+func (o SparkStandaloneAutoscalingConfigOutput) ToSparkStandaloneAutoscalingConfigOutputWithContext(ctx context.Context) SparkStandaloneAutoscalingConfigOutput {
+	return o
+}
+
+func (o SparkStandaloneAutoscalingConfigOutput) ToSparkStandaloneAutoscalingConfigPtrOutput() SparkStandaloneAutoscalingConfigPtrOutput {
+	return o.ToSparkStandaloneAutoscalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SparkStandaloneAutoscalingConfigOutput) ToSparkStandaloneAutoscalingConfigPtrOutputWithContext(ctx context.Context) SparkStandaloneAutoscalingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SparkStandaloneAutoscalingConfig) *SparkStandaloneAutoscalingConfig {
+		return &v
+	}).(SparkStandaloneAutoscalingConfigPtrOutput)
+}
+
+// Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decomissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
+func (o SparkStandaloneAutoscalingConfigOutput) GracefulDecommissionTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkStandaloneAutoscalingConfig) string { return v.GracefulDecommissionTimeout }).(pulumi.StringOutput)
+}
+
+// Fraction of required executors to remove from Spark Serverless clusters. A scale-down factor of 1.0 will result in scaling down so that there are no more executors for the Spark Job.(more aggressive scaling). A scale-down factor closer to 0 will result in a smaller magnitude of scaling donw (less aggressive scaling).Bounds: 0.0, 1.0.
+func (o SparkStandaloneAutoscalingConfigOutput) ScaleDownFactor() pulumi.Float64Output {
+	return o.ApplyT(func(v SparkStandaloneAutoscalingConfig) float64 { return v.ScaleDownFactor }).(pulumi.Float64Output)
+}
+
+// Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+func (o SparkStandaloneAutoscalingConfigOutput) ScaleDownMinWorkerFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SparkStandaloneAutoscalingConfig) *float64 { return v.ScaleDownMinWorkerFraction }).(pulumi.Float64PtrOutput)
+}
+
+// Fraction of required workers to add to Spark Standalone clusters. A scale-up factor of 1.0 will result in scaling up so that there are no more required workers for the Spark Job (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling).Bounds: 0.0, 1.0.
+func (o SparkStandaloneAutoscalingConfigOutput) ScaleUpFactor() pulumi.Float64Output {
+	return o.ApplyT(func(v SparkStandaloneAutoscalingConfig) float64 { return v.ScaleUpFactor }).(pulumi.Float64Output)
+}
+
+// Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+func (o SparkStandaloneAutoscalingConfigOutput) ScaleUpMinWorkerFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SparkStandaloneAutoscalingConfig) *float64 { return v.ScaleUpMinWorkerFraction }).(pulumi.Float64PtrOutput)
+}
+
+type SparkStandaloneAutoscalingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SparkStandaloneAutoscalingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SparkStandaloneAutoscalingConfig)(nil)).Elem()
+}
+
+func (o SparkStandaloneAutoscalingConfigPtrOutput) ToSparkStandaloneAutoscalingConfigPtrOutput() SparkStandaloneAutoscalingConfigPtrOutput {
+	return o
+}
+
+func (o SparkStandaloneAutoscalingConfigPtrOutput) ToSparkStandaloneAutoscalingConfigPtrOutputWithContext(ctx context.Context) SparkStandaloneAutoscalingConfigPtrOutput {
+	return o
+}
+
+func (o SparkStandaloneAutoscalingConfigPtrOutput) Elem() SparkStandaloneAutoscalingConfigOutput {
+	return o.ApplyT(func(v *SparkStandaloneAutoscalingConfig) SparkStandaloneAutoscalingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SparkStandaloneAutoscalingConfig
+		return ret
+	}).(SparkStandaloneAutoscalingConfigOutput)
+}
+
+// Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decomissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
+func (o SparkStandaloneAutoscalingConfigPtrOutput) GracefulDecommissionTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SparkStandaloneAutoscalingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GracefulDecommissionTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Fraction of required executors to remove from Spark Serverless clusters. A scale-down factor of 1.0 will result in scaling down so that there are no more executors for the Spark Job.(more aggressive scaling). A scale-down factor closer to 0 will result in a smaller magnitude of scaling donw (less aggressive scaling).Bounds: 0.0, 1.0.
+func (o SparkStandaloneAutoscalingConfigPtrOutput) ScaleDownFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SparkStandaloneAutoscalingConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.ScaleDownFactor
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+func (o SparkStandaloneAutoscalingConfigPtrOutput) ScaleDownMinWorkerFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SparkStandaloneAutoscalingConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ScaleDownMinWorkerFraction
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Fraction of required workers to add to Spark Standalone clusters. A scale-up factor of 1.0 will result in scaling up so that there are no more required workers for the Spark Job (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling).Bounds: 0.0, 1.0.
+func (o SparkStandaloneAutoscalingConfigPtrOutput) ScaleUpFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SparkStandaloneAutoscalingConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.ScaleUpFactor
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+func (o SparkStandaloneAutoscalingConfigPtrOutput) ScaleUpMinWorkerFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SparkStandaloneAutoscalingConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ScaleUpMinWorkerFraction
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Basic autoscaling configurations for Spark Standalone.
+type SparkStandaloneAutoscalingConfigResponse struct {
+	// Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decomissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
+	GracefulDecommissionTimeout string `pulumi:"gracefulDecommissionTimeout"`
+	// Fraction of required executors to remove from Spark Serverless clusters. A scale-down factor of 1.0 will result in scaling down so that there are no more executors for the Spark Job.(more aggressive scaling). A scale-down factor closer to 0 will result in a smaller magnitude of scaling donw (less aggressive scaling).Bounds: 0.0, 1.0.
+	ScaleDownFactor float64 `pulumi:"scaleDownFactor"`
+	// Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+	ScaleDownMinWorkerFraction float64 `pulumi:"scaleDownMinWorkerFraction"`
+	// Fraction of required workers to add to Spark Standalone clusters. A scale-up factor of 1.0 will result in scaling up so that there are no more required workers for the Spark Job (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling).Bounds: 0.0, 1.0.
+	ScaleUpFactor float64 `pulumi:"scaleUpFactor"`
+	// Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+	ScaleUpMinWorkerFraction float64 `pulumi:"scaleUpMinWorkerFraction"`
+}
+
+// SparkStandaloneAutoscalingConfigResponseInput is an input type that accepts SparkStandaloneAutoscalingConfigResponseArgs and SparkStandaloneAutoscalingConfigResponseOutput values.
+// You can construct a concrete instance of `SparkStandaloneAutoscalingConfigResponseInput` via:
+//
+//          SparkStandaloneAutoscalingConfigResponseArgs{...}
+type SparkStandaloneAutoscalingConfigResponseInput interface {
+	pulumi.Input
+
+	ToSparkStandaloneAutoscalingConfigResponseOutput() SparkStandaloneAutoscalingConfigResponseOutput
+	ToSparkStandaloneAutoscalingConfigResponseOutputWithContext(context.Context) SparkStandaloneAutoscalingConfigResponseOutput
+}
+
+// Basic autoscaling configurations for Spark Standalone.
+type SparkStandaloneAutoscalingConfigResponseArgs struct {
+	// Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decomissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
+	GracefulDecommissionTimeout pulumi.StringInput `pulumi:"gracefulDecommissionTimeout"`
+	// Fraction of required executors to remove from Spark Serverless clusters. A scale-down factor of 1.0 will result in scaling down so that there are no more executors for the Spark Job.(more aggressive scaling). A scale-down factor closer to 0 will result in a smaller magnitude of scaling donw (less aggressive scaling).Bounds: 0.0, 1.0.
+	ScaleDownFactor pulumi.Float64Input `pulumi:"scaleDownFactor"`
+	// Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+	ScaleDownMinWorkerFraction pulumi.Float64Input `pulumi:"scaleDownMinWorkerFraction"`
+	// Fraction of required workers to add to Spark Standalone clusters. A scale-up factor of 1.0 will result in scaling up so that there are no more required workers for the Spark Job (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling).Bounds: 0.0, 1.0.
+	ScaleUpFactor pulumi.Float64Input `pulumi:"scaleUpFactor"`
+	// Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+	ScaleUpMinWorkerFraction pulumi.Float64Input `pulumi:"scaleUpMinWorkerFraction"`
+}
+
+func (SparkStandaloneAutoscalingConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkStandaloneAutoscalingConfigResponse)(nil)).Elem()
+}
+
+func (i SparkStandaloneAutoscalingConfigResponseArgs) ToSparkStandaloneAutoscalingConfigResponseOutput() SparkStandaloneAutoscalingConfigResponseOutput {
+	return i.ToSparkStandaloneAutoscalingConfigResponseOutputWithContext(context.Background())
+}
+
+func (i SparkStandaloneAutoscalingConfigResponseArgs) ToSparkStandaloneAutoscalingConfigResponseOutputWithContext(ctx context.Context) SparkStandaloneAutoscalingConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkStandaloneAutoscalingConfigResponseOutput)
+}
+
+func (i SparkStandaloneAutoscalingConfigResponseArgs) ToSparkStandaloneAutoscalingConfigResponsePtrOutput() SparkStandaloneAutoscalingConfigResponsePtrOutput {
+	return i.ToSparkStandaloneAutoscalingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SparkStandaloneAutoscalingConfigResponseArgs) ToSparkStandaloneAutoscalingConfigResponsePtrOutputWithContext(ctx context.Context) SparkStandaloneAutoscalingConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkStandaloneAutoscalingConfigResponseOutput).ToSparkStandaloneAutoscalingConfigResponsePtrOutputWithContext(ctx)
+}
+
+// SparkStandaloneAutoscalingConfigResponsePtrInput is an input type that accepts SparkStandaloneAutoscalingConfigResponseArgs, SparkStandaloneAutoscalingConfigResponsePtr and SparkStandaloneAutoscalingConfigResponsePtrOutput values.
+// You can construct a concrete instance of `SparkStandaloneAutoscalingConfigResponsePtrInput` via:
+//
+//          SparkStandaloneAutoscalingConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SparkStandaloneAutoscalingConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToSparkStandaloneAutoscalingConfigResponsePtrOutput() SparkStandaloneAutoscalingConfigResponsePtrOutput
+	ToSparkStandaloneAutoscalingConfigResponsePtrOutputWithContext(context.Context) SparkStandaloneAutoscalingConfigResponsePtrOutput
+}
+
+type sparkStandaloneAutoscalingConfigResponsePtrType SparkStandaloneAutoscalingConfigResponseArgs
+
+func SparkStandaloneAutoscalingConfigResponsePtr(v *SparkStandaloneAutoscalingConfigResponseArgs) SparkStandaloneAutoscalingConfigResponsePtrInput {
+	return (*sparkStandaloneAutoscalingConfigResponsePtrType)(v)
+}
+
+func (*sparkStandaloneAutoscalingConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SparkStandaloneAutoscalingConfigResponse)(nil)).Elem()
+}
+
+func (i *sparkStandaloneAutoscalingConfigResponsePtrType) ToSparkStandaloneAutoscalingConfigResponsePtrOutput() SparkStandaloneAutoscalingConfigResponsePtrOutput {
+	return i.ToSparkStandaloneAutoscalingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *sparkStandaloneAutoscalingConfigResponsePtrType) ToSparkStandaloneAutoscalingConfigResponsePtrOutputWithContext(ctx context.Context) SparkStandaloneAutoscalingConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkStandaloneAutoscalingConfigResponsePtrOutput)
+}
+
+// Basic autoscaling configurations for Spark Standalone.
+type SparkStandaloneAutoscalingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SparkStandaloneAutoscalingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkStandaloneAutoscalingConfigResponse)(nil)).Elem()
+}
+
+func (o SparkStandaloneAutoscalingConfigResponseOutput) ToSparkStandaloneAutoscalingConfigResponseOutput() SparkStandaloneAutoscalingConfigResponseOutput {
+	return o
+}
+
+func (o SparkStandaloneAutoscalingConfigResponseOutput) ToSparkStandaloneAutoscalingConfigResponseOutputWithContext(ctx context.Context) SparkStandaloneAutoscalingConfigResponseOutput {
+	return o
+}
+
+func (o SparkStandaloneAutoscalingConfigResponseOutput) ToSparkStandaloneAutoscalingConfigResponsePtrOutput() SparkStandaloneAutoscalingConfigResponsePtrOutput {
+	return o.ToSparkStandaloneAutoscalingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SparkStandaloneAutoscalingConfigResponseOutput) ToSparkStandaloneAutoscalingConfigResponsePtrOutputWithContext(ctx context.Context) SparkStandaloneAutoscalingConfigResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SparkStandaloneAutoscalingConfigResponse) *SparkStandaloneAutoscalingConfigResponse {
+		return &v
+	}).(SparkStandaloneAutoscalingConfigResponsePtrOutput)
+}
+
+// Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decomissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
+func (o SparkStandaloneAutoscalingConfigResponseOutput) GracefulDecommissionTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkStandaloneAutoscalingConfigResponse) string { return v.GracefulDecommissionTimeout }).(pulumi.StringOutput)
+}
+
+// Fraction of required executors to remove from Spark Serverless clusters. A scale-down factor of 1.0 will result in scaling down so that there are no more executors for the Spark Job.(more aggressive scaling). A scale-down factor closer to 0 will result in a smaller magnitude of scaling donw (less aggressive scaling).Bounds: 0.0, 1.0.
+func (o SparkStandaloneAutoscalingConfigResponseOutput) ScaleDownFactor() pulumi.Float64Output {
+	return o.ApplyT(func(v SparkStandaloneAutoscalingConfigResponse) float64 { return v.ScaleDownFactor }).(pulumi.Float64Output)
+}
+
+// Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+func (o SparkStandaloneAutoscalingConfigResponseOutput) ScaleDownMinWorkerFraction() pulumi.Float64Output {
+	return o.ApplyT(func(v SparkStandaloneAutoscalingConfigResponse) float64 { return v.ScaleDownMinWorkerFraction }).(pulumi.Float64Output)
+}
+
+// Fraction of required workers to add to Spark Standalone clusters. A scale-up factor of 1.0 will result in scaling up so that there are no more required workers for the Spark Job (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling).Bounds: 0.0, 1.0.
+func (o SparkStandaloneAutoscalingConfigResponseOutput) ScaleUpFactor() pulumi.Float64Output {
+	return o.ApplyT(func(v SparkStandaloneAutoscalingConfigResponse) float64 { return v.ScaleUpFactor }).(pulumi.Float64Output)
+}
+
+// Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+func (o SparkStandaloneAutoscalingConfigResponseOutput) ScaleUpMinWorkerFraction() pulumi.Float64Output {
+	return o.ApplyT(func(v SparkStandaloneAutoscalingConfigResponse) float64 { return v.ScaleUpMinWorkerFraction }).(pulumi.Float64Output)
+}
+
+type SparkStandaloneAutoscalingConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SparkStandaloneAutoscalingConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SparkStandaloneAutoscalingConfigResponse)(nil)).Elem()
+}
+
+func (o SparkStandaloneAutoscalingConfigResponsePtrOutput) ToSparkStandaloneAutoscalingConfigResponsePtrOutput() SparkStandaloneAutoscalingConfigResponsePtrOutput {
+	return o
+}
+
+func (o SparkStandaloneAutoscalingConfigResponsePtrOutput) ToSparkStandaloneAutoscalingConfigResponsePtrOutputWithContext(ctx context.Context) SparkStandaloneAutoscalingConfigResponsePtrOutput {
+	return o
+}
+
+func (o SparkStandaloneAutoscalingConfigResponsePtrOutput) Elem() SparkStandaloneAutoscalingConfigResponseOutput {
+	return o.ApplyT(func(v *SparkStandaloneAutoscalingConfigResponse) SparkStandaloneAutoscalingConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SparkStandaloneAutoscalingConfigResponse
+		return ret
+	}).(SparkStandaloneAutoscalingConfigResponseOutput)
+}
+
+// Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decomissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
+func (o SparkStandaloneAutoscalingConfigResponsePtrOutput) GracefulDecommissionTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SparkStandaloneAutoscalingConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GracefulDecommissionTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Fraction of required executors to remove from Spark Serverless clusters. A scale-down factor of 1.0 will result in scaling down so that there are no more executors for the Spark Job.(more aggressive scaling). A scale-down factor closer to 0 will result in a smaller magnitude of scaling donw (less aggressive scaling).Bounds: 0.0, 1.0.
+func (o SparkStandaloneAutoscalingConfigResponsePtrOutput) ScaleDownFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SparkStandaloneAutoscalingConfigResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.ScaleDownFactor
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+func (o SparkStandaloneAutoscalingConfigResponsePtrOutput) ScaleDownMinWorkerFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SparkStandaloneAutoscalingConfigResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.ScaleDownMinWorkerFraction
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Fraction of required workers to add to Spark Standalone clusters. A scale-up factor of 1.0 will result in scaling up so that there are no more required workers for the Spark Job (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling).Bounds: 0.0, 1.0.
+func (o SparkStandaloneAutoscalingConfigResponsePtrOutput) ScaleUpFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SparkStandaloneAutoscalingConfigResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.ScaleUpFactor
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+func (o SparkStandaloneAutoscalingConfigResponsePtrOutput) ScaleUpMinWorkerFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SparkStandaloneAutoscalingConfigResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.ScaleUpMinWorkerFraction
+	}).(pulumi.Float64PtrOutput)
+}
+
 // A configurable parameter that replaces one or more fields in the template. Parameterizable fields: - Labels - File uris - Job properties - Job arguments - Script variables - Main class (in HadoopJob and SparkJob) - Zone (in ClusterSelector)
 type TemplateParameter struct {
 	// Optional. Brief description of the parameter. Must not exceed 1024 characters.
@@ -18807,6 +19279,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SparkSqlJobPtrInput)(nil)).Elem(), SparkSqlJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SparkSqlJobResponseInput)(nil)).Elem(), SparkSqlJobResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SparkSqlJobResponsePtrInput)(nil)).Elem(), SparkSqlJobResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SparkStandaloneAutoscalingConfigInput)(nil)).Elem(), SparkStandaloneAutoscalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SparkStandaloneAutoscalingConfigPtrInput)(nil)).Elem(), SparkStandaloneAutoscalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SparkStandaloneAutoscalingConfigResponseInput)(nil)).Elem(), SparkStandaloneAutoscalingConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SparkStandaloneAutoscalingConfigResponsePtrInput)(nil)).Elem(), SparkStandaloneAutoscalingConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateParameterInput)(nil)).Elem(), TemplateParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateParameterArrayInput)(nil)).Elem(), TemplateParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateParameterResponseInput)(nil)).Elem(), TemplateParameterResponseArgs{})
@@ -19005,6 +19481,10 @@ func init() {
 	pulumi.RegisterOutputType(SparkSqlJobPtrOutput{})
 	pulumi.RegisterOutputType(SparkSqlJobResponseOutput{})
 	pulumi.RegisterOutputType(SparkSqlJobResponsePtrOutput{})
+	pulumi.RegisterOutputType(SparkStandaloneAutoscalingConfigOutput{})
+	pulumi.RegisterOutputType(SparkStandaloneAutoscalingConfigPtrOutput{})
+	pulumi.RegisterOutputType(SparkStandaloneAutoscalingConfigResponseOutput{})
+	pulumi.RegisterOutputType(SparkStandaloneAutoscalingConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(TemplateParameterOutput{})
 	pulumi.RegisterOutputType(TemplateParameterArrayOutput{})
 	pulumi.RegisterOutputType(TemplateParameterResponseOutput{})

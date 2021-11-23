@@ -446,6 +446,604 @@ func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConf
 	}).(AuditLogConfigResponseOutput)
 }
 
+// Limits for the number of nodes a Cluster can autoscale up/down to.
+type AutoscalingLimits struct {
+	// Maximum number of nodes to scale up to.
+	MaxServeNodes int `pulumi:"maxServeNodes"`
+	// Minimum number of nodes to scale down to.
+	MinServeNodes int `pulumi:"minServeNodes"`
+}
+
+// AutoscalingLimitsInput is an input type that accepts AutoscalingLimitsArgs and AutoscalingLimitsOutput values.
+// You can construct a concrete instance of `AutoscalingLimitsInput` via:
+//
+//          AutoscalingLimitsArgs{...}
+type AutoscalingLimitsInput interface {
+	pulumi.Input
+
+	ToAutoscalingLimitsOutput() AutoscalingLimitsOutput
+	ToAutoscalingLimitsOutputWithContext(context.Context) AutoscalingLimitsOutput
+}
+
+// Limits for the number of nodes a Cluster can autoscale up/down to.
+type AutoscalingLimitsArgs struct {
+	// Maximum number of nodes to scale up to.
+	MaxServeNodes pulumi.IntInput `pulumi:"maxServeNodes"`
+	// Minimum number of nodes to scale down to.
+	MinServeNodes pulumi.IntInput `pulumi:"minServeNodes"`
+}
+
+func (AutoscalingLimitsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalingLimits)(nil)).Elem()
+}
+
+func (i AutoscalingLimitsArgs) ToAutoscalingLimitsOutput() AutoscalingLimitsOutput {
+	return i.ToAutoscalingLimitsOutputWithContext(context.Background())
+}
+
+func (i AutoscalingLimitsArgs) ToAutoscalingLimitsOutputWithContext(ctx context.Context) AutoscalingLimitsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingLimitsOutput)
+}
+
+func (i AutoscalingLimitsArgs) ToAutoscalingLimitsPtrOutput() AutoscalingLimitsPtrOutput {
+	return i.ToAutoscalingLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i AutoscalingLimitsArgs) ToAutoscalingLimitsPtrOutputWithContext(ctx context.Context) AutoscalingLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingLimitsOutput).ToAutoscalingLimitsPtrOutputWithContext(ctx)
+}
+
+// AutoscalingLimitsPtrInput is an input type that accepts AutoscalingLimitsArgs, AutoscalingLimitsPtr and AutoscalingLimitsPtrOutput values.
+// You can construct a concrete instance of `AutoscalingLimitsPtrInput` via:
+//
+//          AutoscalingLimitsArgs{...}
+//
+//  or:
+//
+//          nil
+type AutoscalingLimitsPtrInput interface {
+	pulumi.Input
+
+	ToAutoscalingLimitsPtrOutput() AutoscalingLimitsPtrOutput
+	ToAutoscalingLimitsPtrOutputWithContext(context.Context) AutoscalingLimitsPtrOutput
+}
+
+type autoscalingLimitsPtrType AutoscalingLimitsArgs
+
+func AutoscalingLimitsPtr(v *AutoscalingLimitsArgs) AutoscalingLimitsPtrInput {
+	return (*autoscalingLimitsPtrType)(v)
+}
+
+func (*autoscalingLimitsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoscalingLimits)(nil)).Elem()
+}
+
+func (i *autoscalingLimitsPtrType) ToAutoscalingLimitsPtrOutput() AutoscalingLimitsPtrOutput {
+	return i.ToAutoscalingLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i *autoscalingLimitsPtrType) ToAutoscalingLimitsPtrOutputWithContext(ctx context.Context) AutoscalingLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingLimitsPtrOutput)
+}
+
+// Limits for the number of nodes a Cluster can autoscale up/down to.
+type AutoscalingLimitsOutput struct{ *pulumi.OutputState }
+
+func (AutoscalingLimitsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalingLimits)(nil)).Elem()
+}
+
+func (o AutoscalingLimitsOutput) ToAutoscalingLimitsOutput() AutoscalingLimitsOutput {
+	return o
+}
+
+func (o AutoscalingLimitsOutput) ToAutoscalingLimitsOutputWithContext(ctx context.Context) AutoscalingLimitsOutput {
+	return o
+}
+
+func (o AutoscalingLimitsOutput) ToAutoscalingLimitsPtrOutput() AutoscalingLimitsPtrOutput {
+	return o.ToAutoscalingLimitsPtrOutputWithContext(context.Background())
+}
+
+func (o AutoscalingLimitsOutput) ToAutoscalingLimitsPtrOutputWithContext(ctx context.Context) AutoscalingLimitsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoscalingLimits) *AutoscalingLimits {
+		return &v
+	}).(AutoscalingLimitsPtrOutput)
+}
+
+// Maximum number of nodes to scale up to.
+func (o AutoscalingLimitsOutput) MaxServeNodes() pulumi.IntOutput {
+	return o.ApplyT(func(v AutoscalingLimits) int { return v.MaxServeNodes }).(pulumi.IntOutput)
+}
+
+// Minimum number of nodes to scale down to.
+func (o AutoscalingLimitsOutput) MinServeNodes() pulumi.IntOutput {
+	return o.ApplyT(func(v AutoscalingLimits) int { return v.MinServeNodes }).(pulumi.IntOutput)
+}
+
+type AutoscalingLimitsPtrOutput struct{ *pulumi.OutputState }
+
+func (AutoscalingLimitsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoscalingLimits)(nil)).Elem()
+}
+
+func (o AutoscalingLimitsPtrOutput) ToAutoscalingLimitsPtrOutput() AutoscalingLimitsPtrOutput {
+	return o
+}
+
+func (o AutoscalingLimitsPtrOutput) ToAutoscalingLimitsPtrOutputWithContext(ctx context.Context) AutoscalingLimitsPtrOutput {
+	return o
+}
+
+func (o AutoscalingLimitsPtrOutput) Elem() AutoscalingLimitsOutput {
+	return o.ApplyT(func(v *AutoscalingLimits) AutoscalingLimits {
+		if v != nil {
+			return *v
+		}
+		var ret AutoscalingLimits
+		return ret
+	}).(AutoscalingLimitsOutput)
+}
+
+// Maximum number of nodes to scale up to.
+func (o AutoscalingLimitsPtrOutput) MaxServeNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AutoscalingLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxServeNodes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum number of nodes to scale down to.
+func (o AutoscalingLimitsPtrOutput) MinServeNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AutoscalingLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MinServeNodes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Limits for the number of nodes a Cluster can autoscale up/down to.
+type AutoscalingLimitsResponse struct {
+	// Maximum number of nodes to scale up to.
+	MaxServeNodes int `pulumi:"maxServeNodes"`
+	// Minimum number of nodes to scale down to.
+	MinServeNodes int `pulumi:"minServeNodes"`
+}
+
+// AutoscalingLimitsResponseInput is an input type that accepts AutoscalingLimitsResponseArgs and AutoscalingLimitsResponseOutput values.
+// You can construct a concrete instance of `AutoscalingLimitsResponseInput` via:
+//
+//          AutoscalingLimitsResponseArgs{...}
+type AutoscalingLimitsResponseInput interface {
+	pulumi.Input
+
+	ToAutoscalingLimitsResponseOutput() AutoscalingLimitsResponseOutput
+	ToAutoscalingLimitsResponseOutputWithContext(context.Context) AutoscalingLimitsResponseOutput
+}
+
+// Limits for the number of nodes a Cluster can autoscale up/down to.
+type AutoscalingLimitsResponseArgs struct {
+	// Maximum number of nodes to scale up to.
+	MaxServeNodes pulumi.IntInput `pulumi:"maxServeNodes"`
+	// Minimum number of nodes to scale down to.
+	MinServeNodes pulumi.IntInput `pulumi:"minServeNodes"`
+}
+
+func (AutoscalingLimitsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalingLimitsResponse)(nil)).Elem()
+}
+
+func (i AutoscalingLimitsResponseArgs) ToAutoscalingLimitsResponseOutput() AutoscalingLimitsResponseOutput {
+	return i.ToAutoscalingLimitsResponseOutputWithContext(context.Background())
+}
+
+func (i AutoscalingLimitsResponseArgs) ToAutoscalingLimitsResponseOutputWithContext(ctx context.Context) AutoscalingLimitsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingLimitsResponseOutput)
+}
+
+func (i AutoscalingLimitsResponseArgs) ToAutoscalingLimitsResponsePtrOutput() AutoscalingLimitsResponsePtrOutput {
+	return i.ToAutoscalingLimitsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AutoscalingLimitsResponseArgs) ToAutoscalingLimitsResponsePtrOutputWithContext(ctx context.Context) AutoscalingLimitsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingLimitsResponseOutput).ToAutoscalingLimitsResponsePtrOutputWithContext(ctx)
+}
+
+// AutoscalingLimitsResponsePtrInput is an input type that accepts AutoscalingLimitsResponseArgs, AutoscalingLimitsResponsePtr and AutoscalingLimitsResponsePtrOutput values.
+// You can construct a concrete instance of `AutoscalingLimitsResponsePtrInput` via:
+//
+//          AutoscalingLimitsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AutoscalingLimitsResponsePtrInput interface {
+	pulumi.Input
+
+	ToAutoscalingLimitsResponsePtrOutput() AutoscalingLimitsResponsePtrOutput
+	ToAutoscalingLimitsResponsePtrOutputWithContext(context.Context) AutoscalingLimitsResponsePtrOutput
+}
+
+type autoscalingLimitsResponsePtrType AutoscalingLimitsResponseArgs
+
+func AutoscalingLimitsResponsePtr(v *AutoscalingLimitsResponseArgs) AutoscalingLimitsResponsePtrInput {
+	return (*autoscalingLimitsResponsePtrType)(v)
+}
+
+func (*autoscalingLimitsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoscalingLimitsResponse)(nil)).Elem()
+}
+
+func (i *autoscalingLimitsResponsePtrType) ToAutoscalingLimitsResponsePtrOutput() AutoscalingLimitsResponsePtrOutput {
+	return i.ToAutoscalingLimitsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *autoscalingLimitsResponsePtrType) ToAutoscalingLimitsResponsePtrOutputWithContext(ctx context.Context) AutoscalingLimitsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingLimitsResponsePtrOutput)
+}
+
+// Limits for the number of nodes a Cluster can autoscale up/down to.
+type AutoscalingLimitsResponseOutput struct{ *pulumi.OutputState }
+
+func (AutoscalingLimitsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalingLimitsResponse)(nil)).Elem()
+}
+
+func (o AutoscalingLimitsResponseOutput) ToAutoscalingLimitsResponseOutput() AutoscalingLimitsResponseOutput {
+	return o
+}
+
+func (o AutoscalingLimitsResponseOutput) ToAutoscalingLimitsResponseOutputWithContext(ctx context.Context) AutoscalingLimitsResponseOutput {
+	return o
+}
+
+func (o AutoscalingLimitsResponseOutput) ToAutoscalingLimitsResponsePtrOutput() AutoscalingLimitsResponsePtrOutput {
+	return o.ToAutoscalingLimitsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AutoscalingLimitsResponseOutput) ToAutoscalingLimitsResponsePtrOutputWithContext(ctx context.Context) AutoscalingLimitsResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoscalingLimitsResponse) *AutoscalingLimitsResponse {
+		return &v
+	}).(AutoscalingLimitsResponsePtrOutput)
+}
+
+// Maximum number of nodes to scale up to.
+func (o AutoscalingLimitsResponseOutput) MaxServeNodes() pulumi.IntOutput {
+	return o.ApplyT(func(v AutoscalingLimitsResponse) int { return v.MaxServeNodes }).(pulumi.IntOutput)
+}
+
+// Minimum number of nodes to scale down to.
+func (o AutoscalingLimitsResponseOutput) MinServeNodes() pulumi.IntOutput {
+	return o.ApplyT(func(v AutoscalingLimitsResponse) int { return v.MinServeNodes }).(pulumi.IntOutput)
+}
+
+type AutoscalingLimitsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AutoscalingLimitsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoscalingLimitsResponse)(nil)).Elem()
+}
+
+func (o AutoscalingLimitsResponsePtrOutput) ToAutoscalingLimitsResponsePtrOutput() AutoscalingLimitsResponsePtrOutput {
+	return o
+}
+
+func (o AutoscalingLimitsResponsePtrOutput) ToAutoscalingLimitsResponsePtrOutputWithContext(ctx context.Context) AutoscalingLimitsResponsePtrOutput {
+	return o
+}
+
+func (o AutoscalingLimitsResponsePtrOutput) Elem() AutoscalingLimitsResponseOutput {
+	return o.ApplyT(func(v *AutoscalingLimitsResponse) AutoscalingLimitsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AutoscalingLimitsResponse
+		return ret
+	}).(AutoscalingLimitsResponseOutput)
+}
+
+// Maximum number of nodes to scale up to.
+func (o AutoscalingLimitsResponsePtrOutput) MaxServeNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AutoscalingLimitsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxServeNodes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum number of nodes to scale down to.
+func (o AutoscalingLimitsResponsePtrOutput) MinServeNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AutoscalingLimitsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MinServeNodes
+	}).(pulumi.IntPtrOutput)
+}
+
+// The Autoscaling targets for a Cluster. These determine the recommended nodes.
+type AutoscalingTargets struct {
+	// The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization).
+	CpuUtilizationPercent *int `pulumi:"cpuUtilizationPercent"`
+}
+
+// AutoscalingTargetsInput is an input type that accepts AutoscalingTargetsArgs and AutoscalingTargetsOutput values.
+// You can construct a concrete instance of `AutoscalingTargetsInput` via:
+//
+//          AutoscalingTargetsArgs{...}
+type AutoscalingTargetsInput interface {
+	pulumi.Input
+
+	ToAutoscalingTargetsOutput() AutoscalingTargetsOutput
+	ToAutoscalingTargetsOutputWithContext(context.Context) AutoscalingTargetsOutput
+}
+
+// The Autoscaling targets for a Cluster. These determine the recommended nodes.
+type AutoscalingTargetsArgs struct {
+	// The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization).
+	CpuUtilizationPercent pulumi.IntPtrInput `pulumi:"cpuUtilizationPercent"`
+}
+
+func (AutoscalingTargetsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalingTargets)(nil)).Elem()
+}
+
+func (i AutoscalingTargetsArgs) ToAutoscalingTargetsOutput() AutoscalingTargetsOutput {
+	return i.ToAutoscalingTargetsOutputWithContext(context.Background())
+}
+
+func (i AutoscalingTargetsArgs) ToAutoscalingTargetsOutputWithContext(ctx context.Context) AutoscalingTargetsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingTargetsOutput)
+}
+
+func (i AutoscalingTargetsArgs) ToAutoscalingTargetsPtrOutput() AutoscalingTargetsPtrOutput {
+	return i.ToAutoscalingTargetsPtrOutputWithContext(context.Background())
+}
+
+func (i AutoscalingTargetsArgs) ToAutoscalingTargetsPtrOutputWithContext(ctx context.Context) AutoscalingTargetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingTargetsOutput).ToAutoscalingTargetsPtrOutputWithContext(ctx)
+}
+
+// AutoscalingTargetsPtrInput is an input type that accepts AutoscalingTargetsArgs, AutoscalingTargetsPtr and AutoscalingTargetsPtrOutput values.
+// You can construct a concrete instance of `AutoscalingTargetsPtrInput` via:
+//
+//          AutoscalingTargetsArgs{...}
+//
+//  or:
+//
+//          nil
+type AutoscalingTargetsPtrInput interface {
+	pulumi.Input
+
+	ToAutoscalingTargetsPtrOutput() AutoscalingTargetsPtrOutput
+	ToAutoscalingTargetsPtrOutputWithContext(context.Context) AutoscalingTargetsPtrOutput
+}
+
+type autoscalingTargetsPtrType AutoscalingTargetsArgs
+
+func AutoscalingTargetsPtr(v *AutoscalingTargetsArgs) AutoscalingTargetsPtrInput {
+	return (*autoscalingTargetsPtrType)(v)
+}
+
+func (*autoscalingTargetsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoscalingTargets)(nil)).Elem()
+}
+
+func (i *autoscalingTargetsPtrType) ToAutoscalingTargetsPtrOutput() AutoscalingTargetsPtrOutput {
+	return i.ToAutoscalingTargetsPtrOutputWithContext(context.Background())
+}
+
+func (i *autoscalingTargetsPtrType) ToAutoscalingTargetsPtrOutputWithContext(ctx context.Context) AutoscalingTargetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingTargetsPtrOutput)
+}
+
+// The Autoscaling targets for a Cluster. These determine the recommended nodes.
+type AutoscalingTargetsOutput struct{ *pulumi.OutputState }
+
+func (AutoscalingTargetsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalingTargets)(nil)).Elem()
+}
+
+func (o AutoscalingTargetsOutput) ToAutoscalingTargetsOutput() AutoscalingTargetsOutput {
+	return o
+}
+
+func (o AutoscalingTargetsOutput) ToAutoscalingTargetsOutputWithContext(ctx context.Context) AutoscalingTargetsOutput {
+	return o
+}
+
+func (o AutoscalingTargetsOutput) ToAutoscalingTargetsPtrOutput() AutoscalingTargetsPtrOutput {
+	return o.ToAutoscalingTargetsPtrOutputWithContext(context.Background())
+}
+
+func (o AutoscalingTargetsOutput) ToAutoscalingTargetsPtrOutputWithContext(ctx context.Context) AutoscalingTargetsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoscalingTargets) *AutoscalingTargets {
+		return &v
+	}).(AutoscalingTargetsPtrOutput)
+}
+
+// The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization).
+func (o AutoscalingTargetsOutput) CpuUtilizationPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AutoscalingTargets) *int { return v.CpuUtilizationPercent }).(pulumi.IntPtrOutput)
+}
+
+type AutoscalingTargetsPtrOutput struct{ *pulumi.OutputState }
+
+func (AutoscalingTargetsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoscalingTargets)(nil)).Elem()
+}
+
+func (o AutoscalingTargetsPtrOutput) ToAutoscalingTargetsPtrOutput() AutoscalingTargetsPtrOutput {
+	return o
+}
+
+func (o AutoscalingTargetsPtrOutput) ToAutoscalingTargetsPtrOutputWithContext(ctx context.Context) AutoscalingTargetsPtrOutput {
+	return o
+}
+
+func (o AutoscalingTargetsPtrOutput) Elem() AutoscalingTargetsOutput {
+	return o.ApplyT(func(v *AutoscalingTargets) AutoscalingTargets {
+		if v != nil {
+			return *v
+		}
+		var ret AutoscalingTargets
+		return ret
+	}).(AutoscalingTargetsOutput)
+}
+
+// The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization).
+func (o AutoscalingTargetsPtrOutput) CpuUtilizationPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AutoscalingTargets) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CpuUtilizationPercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// The Autoscaling targets for a Cluster. These determine the recommended nodes.
+type AutoscalingTargetsResponse struct {
+	// The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization).
+	CpuUtilizationPercent int `pulumi:"cpuUtilizationPercent"`
+}
+
+// AutoscalingTargetsResponseInput is an input type that accepts AutoscalingTargetsResponseArgs and AutoscalingTargetsResponseOutput values.
+// You can construct a concrete instance of `AutoscalingTargetsResponseInput` via:
+//
+//          AutoscalingTargetsResponseArgs{...}
+type AutoscalingTargetsResponseInput interface {
+	pulumi.Input
+
+	ToAutoscalingTargetsResponseOutput() AutoscalingTargetsResponseOutput
+	ToAutoscalingTargetsResponseOutputWithContext(context.Context) AutoscalingTargetsResponseOutput
+}
+
+// The Autoscaling targets for a Cluster. These determine the recommended nodes.
+type AutoscalingTargetsResponseArgs struct {
+	// The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization).
+	CpuUtilizationPercent pulumi.IntInput `pulumi:"cpuUtilizationPercent"`
+}
+
+func (AutoscalingTargetsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalingTargetsResponse)(nil)).Elem()
+}
+
+func (i AutoscalingTargetsResponseArgs) ToAutoscalingTargetsResponseOutput() AutoscalingTargetsResponseOutput {
+	return i.ToAutoscalingTargetsResponseOutputWithContext(context.Background())
+}
+
+func (i AutoscalingTargetsResponseArgs) ToAutoscalingTargetsResponseOutputWithContext(ctx context.Context) AutoscalingTargetsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingTargetsResponseOutput)
+}
+
+func (i AutoscalingTargetsResponseArgs) ToAutoscalingTargetsResponsePtrOutput() AutoscalingTargetsResponsePtrOutput {
+	return i.ToAutoscalingTargetsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AutoscalingTargetsResponseArgs) ToAutoscalingTargetsResponsePtrOutputWithContext(ctx context.Context) AutoscalingTargetsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingTargetsResponseOutput).ToAutoscalingTargetsResponsePtrOutputWithContext(ctx)
+}
+
+// AutoscalingTargetsResponsePtrInput is an input type that accepts AutoscalingTargetsResponseArgs, AutoscalingTargetsResponsePtr and AutoscalingTargetsResponsePtrOutput values.
+// You can construct a concrete instance of `AutoscalingTargetsResponsePtrInput` via:
+//
+//          AutoscalingTargetsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AutoscalingTargetsResponsePtrInput interface {
+	pulumi.Input
+
+	ToAutoscalingTargetsResponsePtrOutput() AutoscalingTargetsResponsePtrOutput
+	ToAutoscalingTargetsResponsePtrOutputWithContext(context.Context) AutoscalingTargetsResponsePtrOutput
+}
+
+type autoscalingTargetsResponsePtrType AutoscalingTargetsResponseArgs
+
+func AutoscalingTargetsResponsePtr(v *AutoscalingTargetsResponseArgs) AutoscalingTargetsResponsePtrInput {
+	return (*autoscalingTargetsResponsePtrType)(v)
+}
+
+func (*autoscalingTargetsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoscalingTargetsResponse)(nil)).Elem()
+}
+
+func (i *autoscalingTargetsResponsePtrType) ToAutoscalingTargetsResponsePtrOutput() AutoscalingTargetsResponsePtrOutput {
+	return i.ToAutoscalingTargetsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *autoscalingTargetsResponsePtrType) ToAutoscalingTargetsResponsePtrOutputWithContext(ctx context.Context) AutoscalingTargetsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingTargetsResponsePtrOutput)
+}
+
+// The Autoscaling targets for a Cluster. These determine the recommended nodes.
+type AutoscalingTargetsResponseOutput struct{ *pulumi.OutputState }
+
+func (AutoscalingTargetsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalingTargetsResponse)(nil)).Elem()
+}
+
+func (o AutoscalingTargetsResponseOutput) ToAutoscalingTargetsResponseOutput() AutoscalingTargetsResponseOutput {
+	return o
+}
+
+func (o AutoscalingTargetsResponseOutput) ToAutoscalingTargetsResponseOutputWithContext(ctx context.Context) AutoscalingTargetsResponseOutput {
+	return o
+}
+
+func (o AutoscalingTargetsResponseOutput) ToAutoscalingTargetsResponsePtrOutput() AutoscalingTargetsResponsePtrOutput {
+	return o.ToAutoscalingTargetsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AutoscalingTargetsResponseOutput) ToAutoscalingTargetsResponsePtrOutputWithContext(ctx context.Context) AutoscalingTargetsResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoscalingTargetsResponse) *AutoscalingTargetsResponse {
+		return &v
+	}).(AutoscalingTargetsResponsePtrOutput)
+}
+
+// The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization).
+func (o AutoscalingTargetsResponseOutput) CpuUtilizationPercent() pulumi.IntOutput {
+	return o.ApplyT(func(v AutoscalingTargetsResponse) int { return v.CpuUtilizationPercent }).(pulumi.IntOutput)
+}
+
+type AutoscalingTargetsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AutoscalingTargetsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoscalingTargetsResponse)(nil)).Elem()
+}
+
+func (o AutoscalingTargetsResponsePtrOutput) ToAutoscalingTargetsResponsePtrOutput() AutoscalingTargetsResponsePtrOutput {
+	return o
+}
+
+func (o AutoscalingTargetsResponsePtrOutput) ToAutoscalingTargetsResponsePtrOutputWithContext(ctx context.Context) AutoscalingTargetsResponsePtrOutput {
+	return o
+}
+
+func (o AutoscalingTargetsResponsePtrOutput) Elem() AutoscalingTargetsResponseOutput {
+	return o.ApplyT(func(v *AutoscalingTargetsResponse) AutoscalingTargetsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AutoscalingTargetsResponse
+		return ret
+	}).(AutoscalingTargetsResponseOutput)
+}
+
+// The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization).
+func (o AutoscalingTargetsResponsePtrOutput) CpuUtilizationPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AutoscalingTargetsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.CpuUtilizationPercent
+	}).(pulumi.IntPtrOutput)
+}
+
 // Information about a backup.
 type BackupInfoResponse struct {
 	// Name of the backup.
@@ -643,13 +1241,13 @@ func (o BackupInfoResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type Binding struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role *string `pulumi:"role"`
 }
 
@@ -664,13 +1262,13 @@ type BindingInput interface {
 	ToBindingOutputWithContext(context.Context) BindingOutput
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -711,7 +1309,7 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
 func (BindingOutput) ElementType() reflect.Type {
@@ -726,17 +1324,17 @@ func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOu
 	return o
 }
 
-// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 func (o BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -761,13 +1359,13 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 	}).(BindingOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingResponse struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
 }
 
@@ -782,13 +1380,13 @@ type BindingResponseInput interface {
 	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingResponseArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringInput `pulumi:"role"`
 }
 
@@ -829,7 +1427,7 @@ func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingResponseOutput struct{ *pulumi.OutputState }
 
 func (BindingResponseOutput) ElementType() reflect.Type {
@@ -844,17 +1442,17 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 func (o BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -877,6 +1475,604 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BindingResponse {
 		return vs[0].([]BindingResponse)[vs[1].(int)]
 	}).(BindingResponseOutput)
+}
+
+// Autoscaling config for a cluster.
+type ClusterAutoscalingConfig struct {
+	// Autoscaling limits for this cluster.
+	AutoscalingLimits AutoscalingLimits `pulumi:"autoscalingLimits"`
+	// Autoscaling targets for this cluster.
+	AutoscalingTargets AutoscalingTargets `pulumi:"autoscalingTargets"`
+}
+
+// ClusterAutoscalingConfigInput is an input type that accepts ClusterAutoscalingConfigArgs and ClusterAutoscalingConfigOutput values.
+// You can construct a concrete instance of `ClusterAutoscalingConfigInput` via:
+//
+//          ClusterAutoscalingConfigArgs{...}
+type ClusterAutoscalingConfigInput interface {
+	pulumi.Input
+
+	ToClusterAutoscalingConfigOutput() ClusterAutoscalingConfigOutput
+	ToClusterAutoscalingConfigOutputWithContext(context.Context) ClusterAutoscalingConfigOutput
+}
+
+// Autoscaling config for a cluster.
+type ClusterAutoscalingConfigArgs struct {
+	// Autoscaling limits for this cluster.
+	AutoscalingLimits AutoscalingLimitsInput `pulumi:"autoscalingLimits"`
+	// Autoscaling targets for this cluster.
+	AutoscalingTargets AutoscalingTargetsInput `pulumi:"autoscalingTargets"`
+}
+
+func (ClusterAutoscalingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAutoscalingConfig)(nil)).Elem()
+}
+
+func (i ClusterAutoscalingConfigArgs) ToClusterAutoscalingConfigOutput() ClusterAutoscalingConfigOutput {
+	return i.ToClusterAutoscalingConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterAutoscalingConfigArgs) ToClusterAutoscalingConfigOutputWithContext(ctx context.Context) ClusterAutoscalingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutoscalingConfigOutput)
+}
+
+func (i ClusterAutoscalingConfigArgs) ToClusterAutoscalingConfigPtrOutput() ClusterAutoscalingConfigPtrOutput {
+	return i.ToClusterAutoscalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAutoscalingConfigArgs) ToClusterAutoscalingConfigPtrOutputWithContext(ctx context.Context) ClusterAutoscalingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutoscalingConfigOutput).ToClusterAutoscalingConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterAutoscalingConfigPtrInput is an input type that accepts ClusterAutoscalingConfigArgs, ClusterAutoscalingConfigPtr and ClusterAutoscalingConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterAutoscalingConfigPtrInput` via:
+//
+//          ClusterAutoscalingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterAutoscalingConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterAutoscalingConfigPtrOutput() ClusterAutoscalingConfigPtrOutput
+	ToClusterAutoscalingConfigPtrOutputWithContext(context.Context) ClusterAutoscalingConfigPtrOutput
+}
+
+type clusterAutoscalingConfigPtrType ClusterAutoscalingConfigArgs
+
+func ClusterAutoscalingConfigPtr(v *ClusterAutoscalingConfigArgs) ClusterAutoscalingConfigPtrInput {
+	return (*clusterAutoscalingConfigPtrType)(v)
+}
+
+func (*clusterAutoscalingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAutoscalingConfig)(nil)).Elem()
+}
+
+func (i *clusterAutoscalingConfigPtrType) ToClusterAutoscalingConfigPtrOutput() ClusterAutoscalingConfigPtrOutput {
+	return i.ToClusterAutoscalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAutoscalingConfigPtrType) ToClusterAutoscalingConfigPtrOutputWithContext(ctx context.Context) ClusterAutoscalingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutoscalingConfigPtrOutput)
+}
+
+// Autoscaling config for a cluster.
+type ClusterAutoscalingConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterAutoscalingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAutoscalingConfig)(nil)).Elem()
+}
+
+func (o ClusterAutoscalingConfigOutput) ToClusterAutoscalingConfigOutput() ClusterAutoscalingConfigOutput {
+	return o
+}
+
+func (o ClusterAutoscalingConfigOutput) ToClusterAutoscalingConfigOutputWithContext(ctx context.Context) ClusterAutoscalingConfigOutput {
+	return o
+}
+
+func (o ClusterAutoscalingConfigOutput) ToClusterAutoscalingConfigPtrOutput() ClusterAutoscalingConfigPtrOutput {
+	return o.ToClusterAutoscalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAutoscalingConfigOutput) ToClusterAutoscalingConfigPtrOutputWithContext(ctx context.Context) ClusterAutoscalingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAutoscalingConfig) *ClusterAutoscalingConfig {
+		return &v
+	}).(ClusterAutoscalingConfigPtrOutput)
+}
+
+// Autoscaling limits for this cluster.
+func (o ClusterAutoscalingConfigOutput) AutoscalingLimits() AutoscalingLimitsOutput {
+	return o.ApplyT(func(v ClusterAutoscalingConfig) AutoscalingLimits { return v.AutoscalingLimits }).(AutoscalingLimitsOutput)
+}
+
+// Autoscaling targets for this cluster.
+func (o ClusterAutoscalingConfigOutput) AutoscalingTargets() AutoscalingTargetsOutput {
+	return o.ApplyT(func(v ClusterAutoscalingConfig) AutoscalingTargets { return v.AutoscalingTargets }).(AutoscalingTargetsOutput)
+}
+
+type ClusterAutoscalingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAutoscalingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAutoscalingConfig)(nil)).Elem()
+}
+
+func (o ClusterAutoscalingConfigPtrOutput) ToClusterAutoscalingConfigPtrOutput() ClusterAutoscalingConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAutoscalingConfigPtrOutput) ToClusterAutoscalingConfigPtrOutputWithContext(ctx context.Context) ClusterAutoscalingConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAutoscalingConfigPtrOutput) Elem() ClusterAutoscalingConfigOutput {
+	return o.ApplyT(func(v *ClusterAutoscalingConfig) ClusterAutoscalingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterAutoscalingConfig
+		return ret
+	}).(ClusterAutoscalingConfigOutput)
+}
+
+// Autoscaling limits for this cluster.
+func (o ClusterAutoscalingConfigPtrOutput) AutoscalingLimits() AutoscalingLimitsPtrOutput {
+	return o.ApplyT(func(v *ClusterAutoscalingConfig) *AutoscalingLimits {
+		if v == nil {
+			return nil
+		}
+		return &v.AutoscalingLimits
+	}).(AutoscalingLimitsPtrOutput)
+}
+
+// Autoscaling targets for this cluster.
+func (o ClusterAutoscalingConfigPtrOutput) AutoscalingTargets() AutoscalingTargetsPtrOutput {
+	return o.ApplyT(func(v *ClusterAutoscalingConfig) *AutoscalingTargets {
+		if v == nil {
+			return nil
+		}
+		return &v.AutoscalingTargets
+	}).(AutoscalingTargetsPtrOutput)
+}
+
+// Autoscaling config for a cluster.
+type ClusterAutoscalingConfigResponse struct {
+	// Autoscaling limits for this cluster.
+	AutoscalingLimits AutoscalingLimitsResponse `pulumi:"autoscalingLimits"`
+	// Autoscaling targets for this cluster.
+	AutoscalingTargets AutoscalingTargetsResponse `pulumi:"autoscalingTargets"`
+}
+
+// ClusterAutoscalingConfigResponseInput is an input type that accepts ClusterAutoscalingConfigResponseArgs and ClusterAutoscalingConfigResponseOutput values.
+// You can construct a concrete instance of `ClusterAutoscalingConfigResponseInput` via:
+//
+//          ClusterAutoscalingConfigResponseArgs{...}
+type ClusterAutoscalingConfigResponseInput interface {
+	pulumi.Input
+
+	ToClusterAutoscalingConfigResponseOutput() ClusterAutoscalingConfigResponseOutput
+	ToClusterAutoscalingConfigResponseOutputWithContext(context.Context) ClusterAutoscalingConfigResponseOutput
+}
+
+// Autoscaling config for a cluster.
+type ClusterAutoscalingConfigResponseArgs struct {
+	// Autoscaling limits for this cluster.
+	AutoscalingLimits AutoscalingLimitsResponseInput `pulumi:"autoscalingLimits"`
+	// Autoscaling targets for this cluster.
+	AutoscalingTargets AutoscalingTargetsResponseInput `pulumi:"autoscalingTargets"`
+}
+
+func (ClusterAutoscalingConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAutoscalingConfigResponse)(nil)).Elem()
+}
+
+func (i ClusterAutoscalingConfigResponseArgs) ToClusterAutoscalingConfigResponseOutput() ClusterAutoscalingConfigResponseOutput {
+	return i.ToClusterAutoscalingConfigResponseOutputWithContext(context.Background())
+}
+
+func (i ClusterAutoscalingConfigResponseArgs) ToClusterAutoscalingConfigResponseOutputWithContext(ctx context.Context) ClusterAutoscalingConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutoscalingConfigResponseOutput)
+}
+
+func (i ClusterAutoscalingConfigResponseArgs) ToClusterAutoscalingConfigResponsePtrOutput() ClusterAutoscalingConfigResponsePtrOutput {
+	return i.ToClusterAutoscalingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAutoscalingConfigResponseArgs) ToClusterAutoscalingConfigResponsePtrOutputWithContext(ctx context.Context) ClusterAutoscalingConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutoscalingConfigResponseOutput).ToClusterAutoscalingConfigResponsePtrOutputWithContext(ctx)
+}
+
+// ClusterAutoscalingConfigResponsePtrInput is an input type that accepts ClusterAutoscalingConfigResponseArgs, ClusterAutoscalingConfigResponsePtr and ClusterAutoscalingConfigResponsePtrOutput values.
+// You can construct a concrete instance of `ClusterAutoscalingConfigResponsePtrInput` via:
+//
+//          ClusterAutoscalingConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterAutoscalingConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToClusterAutoscalingConfigResponsePtrOutput() ClusterAutoscalingConfigResponsePtrOutput
+	ToClusterAutoscalingConfigResponsePtrOutputWithContext(context.Context) ClusterAutoscalingConfigResponsePtrOutput
+}
+
+type clusterAutoscalingConfigResponsePtrType ClusterAutoscalingConfigResponseArgs
+
+func ClusterAutoscalingConfigResponsePtr(v *ClusterAutoscalingConfigResponseArgs) ClusterAutoscalingConfigResponsePtrInput {
+	return (*clusterAutoscalingConfigResponsePtrType)(v)
+}
+
+func (*clusterAutoscalingConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAutoscalingConfigResponse)(nil)).Elem()
+}
+
+func (i *clusterAutoscalingConfigResponsePtrType) ToClusterAutoscalingConfigResponsePtrOutput() ClusterAutoscalingConfigResponsePtrOutput {
+	return i.ToClusterAutoscalingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAutoscalingConfigResponsePtrType) ToClusterAutoscalingConfigResponsePtrOutputWithContext(ctx context.Context) ClusterAutoscalingConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutoscalingConfigResponsePtrOutput)
+}
+
+// Autoscaling config for a cluster.
+type ClusterAutoscalingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ClusterAutoscalingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAutoscalingConfigResponse)(nil)).Elem()
+}
+
+func (o ClusterAutoscalingConfigResponseOutput) ToClusterAutoscalingConfigResponseOutput() ClusterAutoscalingConfigResponseOutput {
+	return o
+}
+
+func (o ClusterAutoscalingConfigResponseOutput) ToClusterAutoscalingConfigResponseOutputWithContext(ctx context.Context) ClusterAutoscalingConfigResponseOutput {
+	return o
+}
+
+func (o ClusterAutoscalingConfigResponseOutput) ToClusterAutoscalingConfigResponsePtrOutput() ClusterAutoscalingConfigResponsePtrOutput {
+	return o.ToClusterAutoscalingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAutoscalingConfigResponseOutput) ToClusterAutoscalingConfigResponsePtrOutputWithContext(ctx context.Context) ClusterAutoscalingConfigResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAutoscalingConfigResponse) *ClusterAutoscalingConfigResponse {
+		return &v
+	}).(ClusterAutoscalingConfigResponsePtrOutput)
+}
+
+// Autoscaling limits for this cluster.
+func (o ClusterAutoscalingConfigResponseOutput) AutoscalingLimits() AutoscalingLimitsResponseOutput {
+	return o.ApplyT(func(v ClusterAutoscalingConfigResponse) AutoscalingLimitsResponse { return v.AutoscalingLimits }).(AutoscalingLimitsResponseOutput)
+}
+
+// Autoscaling targets for this cluster.
+func (o ClusterAutoscalingConfigResponseOutput) AutoscalingTargets() AutoscalingTargetsResponseOutput {
+	return o.ApplyT(func(v ClusterAutoscalingConfigResponse) AutoscalingTargetsResponse { return v.AutoscalingTargets }).(AutoscalingTargetsResponseOutput)
+}
+
+type ClusterAutoscalingConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAutoscalingConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAutoscalingConfigResponse)(nil)).Elem()
+}
+
+func (o ClusterAutoscalingConfigResponsePtrOutput) ToClusterAutoscalingConfigResponsePtrOutput() ClusterAutoscalingConfigResponsePtrOutput {
+	return o
+}
+
+func (o ClusterAutoscalingConfigResponsePtrOutput) ToClusterAutoscalingConfigResponsePtrOutputWithContext(ctx context.Context) ClusterAutoscalingConfigResponsePtrOutput {
+	return o
+}
+
+func (o ClusterAutoscalingConfigResponsePtrOutput) Elem() ClusterAutoscalingConfigResponseOutput {
+	return o.ApplyT(func(v *ClusterAutoscalingConfigResponse) ClusterAutoscalingConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterAutoscalingConfigResponse
+		return ret
+	}).(ClusterAutoscalingConfigResponseOutput)
+}
+
+// Autoscaling limits for this cluster.
+func (o ClusterAutoscalingConfigResponsePtrOutput) AutoscalingLimits() AutoscalingLimitsResponsePtrOutput {
+	return o.ApplyT(func(v *ClusterAutoscalingConfigResponse) *AutoscalingLimitsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.AutoscalingLimits
+	}).(AutoscalingLimitsResponsePtrOutput)
+}
+
+// Autoscaling targets for this cluster.
+func (o ClusterAutoscalingConfigResponsePtrOutput) AutoscalingTargets() AutoscalingTargetsResponsePtrOutput {
+	return o.ApplyT(func(v *ClusterAutoscalingConfigResponse) *AutoscalingTargetsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.AutoscalingTargets
+	}).(AutoscalingTargetsResponsePtrOutput)
+}
+
+// Configuration for a cluster.
+type ClusterConfig struct {
+	// Autoscaling configuration for this cluster. Note that when creating or updating a cluster, exactly one of serve_nodes or cluster_autoscaling_config must be set. If serve_nodes is set, then serve_nodes is fixed and autoscaling is turned off. If cluster_autoscaling_config is set, then serve_nodes will be autoscaled.
+	ClusterAutoscalingConfig *ClusterAutoscalingConfig `pulumi:"clusterAutoscalingConfig"`
+}
+
+// ClusterConfigInput is an input type that accepts ClusterConfigArgs and ClusterConfigOutput values.
+// You can construct a concrete instance of `ClusterConfigInput` via:
+//
+//          ClusterConfigArgs{...}
+type ClusterConfigInput interface {
+	pulumi.Input
+
+	ToClusterConfigOutput() ClusterConfigOutput
+	ToClusterConfigOutputWithContext(context.Context) ClusterConfigOutput
+}
+
+// Configuration for a cluster.
+type ClusterConfigArgs struct {
+	// Autoscaling configuration for this cluster. Note that when creating or updating a cluster, exactly one of serve_nodes or cluster_autoscaling_config must be set. If serve_nodes is set, then serve_nodes is fixed and autoscaling is turned off. If cluster_autoscaling_config is set, then serve_nodes will be autoscaled.
+	ClusterAutoscalingConfig ClusterAutoscalingConfigPtrInput `pulumi:"clusterAutoscalingConfig"`
+}
+
+func (ClusterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterConfig)(nil)).Elem()
+}
+
+func (i ClusterConfigArgs) ToClusterConfigOutput() ClusterConfigOutput {
+	return i.ToClusterConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterConfigArgs) ToClusterConfigOutputWithContext(ctx context.Context) ClusterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterConfigOutput)
+}
+
+func (i ClusterConfigArgs) ToClusterConfigPtrOutput() ClusterConfigPtrOutput {
+	return i.ToClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterConfigArgs) ToClusterConfigPtrOutputWithContext(ctx context.Context) ClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterConfigOutput).ToClusterConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterConfigPtrInput is an input type that accepts ClusterConfigArgs, ClusterConfigPtr and ClusterConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterConfigPtrInput` via:
+//
+//          ClusterConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterConfigPtrOutput() ClusterConfigPtrOutput
+	ToClusterConfigPtrOutputWithContext(context.Context) ClusterConfigPtrOutput
+}
+
+type clusterConfigPtrType ClusterConfigArgs
+
+func ClusterConfigPtr(v *ClusterConfigArgs) ClusterConfigPtrInput {
+	return (*clusterConfigPtrType)(v)
+}
+
+func (*clusterConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterConfig)(nil)).Elem()
+}
+
+func (i *clusterConfigPtrType) ToClusterConfigPtrOutput() ClusterConfigPtrOutput {
+	return i.ToClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterConfigPtrType) ToClusterConfigPtrOutputWithContext(ctx context.Context) ClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterConfigPtrOutput)
+}
+
+// Configuration for a cluster.
+type ClusterConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterConfig)(nil)).Elem()
+}
+
+func (o ClusterConfigOutput) ToClusterConfigOutput() ClusterConfigOutput {
+	return o
+}
+
+func (o ClusterConfigOutput) ToClusterConfigOutputWithContext(ctx context.Context) ClusterConfigOutput {
+	return o
+}
+
+func (o ClusterConfigOutput) ToClusterConfigPtrOutput() ClusterConfigPtrOutput {
+	return o.ToClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterConfigOutput) ToClusterConfigPtrOutputWithContext(ctx context.Context) ClusterConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterConfig) *ClusterConfig {
+		return &v
+	}).(ClusterConfigPtrOutput)
+}
+
+// Autoscaling configuration for this cluster. Note that when creating or updating a cluster, exactly one of serve_nodes or cluster_autoscaling_config must be set. If serve_nodes is set, then serve_nodes is fixed and autoscaling is turned off. If cluster_autoscaling_config is set, then serve_nodes will be autoscaled.
+func (o ClusterConfigOutput) ClusterAutoscalingConfig() ClusterAutoscalingConfigPtrOutput {
+	return o.ApplyT(func(v ClusterConfig) *ClusterAutoscalingConfig { return v.ClusterAutoscalingConfig }).(ClusterAutoscalingConfigPtrOutput)
+}
+
+type ClusterConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterConfig)(nil)).Elem()
+}
+
+func (o ClusterConfigPtrOutput) ToClusterConfigPtrOutput() ClusterConfigPtrOutput {
+	return o
+}
+
+func (o ClusterConfigPtrOutput) ToClusterConfigPtrOutputWithContext(ctx context.Context) ClusterConfigPtrOutput {
+	return o
+}
+
+func (o ClusterConfigPtrOutput) Elem() ClusterConfigOutput {
+	return o.ApplyT(func(v *ClusterConfig) ClusterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterConfig
+		return ret
+	}).(ClusterConfigOutput)
+}
+
+// Autoscaling configuration for this cluster. Note that when creating or updating a cluster, exactly one of serve_nodes or cluster_autoscaling_config must be set. If serve_nodes is set, then serve_nodes is fixed and autoscaling is turned off. If cluster_autoscaling_config is set, then serve_nodes will be autoscaled.
+func (o ClusterConfigPtrOutput) ClusterAutoscalingConfig() ClusterAutoscalingConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterConfig) *ClusterAutoscalingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterAutoscalingConfig
+	}).(ClusterAutoscalingConfigPtrOutput)
+}
+
+// Configuration for a cluster.
+type ClusterConfigResponse struct {
+	// Autoscaling configuration for this cluster. Note that when creating or updating a cluster, exactly one of serve_nodes or cluster_autoscaling_config must be set. If serve_nodes is set, then serve_nodes is fixed and autoscaling is turned off. If cluster_autoscaling_config is set, then serve_nodes will be autoscaled.
+	ClusterAutoscalingConfig ClusterAutoscalingConfigResponse `pulumi:"clusterAutoscalingConfig"`
+}
+
+// ClusterConfigResponseInput is an input type that accepts ClusterConfigResponseArgs and ClusterConfigResponseOutput values.
+// You can construct a concrete instance of `ClusterConfigResponseInput` via:
+//
+//          ClusterConfigResponseArgs{...}
+type ClusterConfigResponseInput interface {
+	pulumi.Input
+
+	ToClusterConfigResponseOutput() ClusterConfigResponseOutput
+	ToClusterConfigResponseOutputWithContext(context.Context) ClusterConfigResponseOutput
+}
+
+// Configuration for a cluster.
+type ClusterConfigResponseArgs struct {
+	// Autoscaling configuration for this cluster. Note that when creating or updating a cluster, exactly one of serve_nodes or cluster_autoscaling_config must be set. If serve_nodes is set, then serve_nodes is fixed and autoscaling is turned off. If cluster_autoscaling_config is set, then serve_nodes will be autoscaled.
+	ClusterAutoscalingConfig ClusterAutoscalingConfigResponseInput `pulumi:"clusterAutoscalingConfig"`
+}
+
+func (ClusterConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterConfigResponse)(nil)).Elem()
+}
+
+func (i ClusterConfigResponseArgs) ToClusterConfigResponseOutput() ClusterConfigResponseOutput {
+	return i.ToClusterConfigResponseOutputWithContext(context.Background())
+}
+
+func (i ClusterConfigResponseArgs) ToClusterConfigResponseOutputWithContext(ctx context.Context) ClusterConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterConfigResponseOutput)
+}
+
+func (i ClusterConfigResponseArgs) ToClusterConfigResponsePtrOutput() ClusterConfigResponsePtrOutput {
+	return i.ToClusterConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ClusterConfigResponseArgs) ToClusterConfigResponsePtrOutputWithContext(ctx context.Context) ClusterConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterConfigResponseOutput).ToClusterConfigResponsePtrOutputWithContext(ctx)
+}
+
+// ClusterConfigResponsePtrInput is an input type that accepts ClusterConfigResponseArgs, ClusterConfigResponsePtr and ClusterConfigResponsePtrOutput values.
+// You can construct a concrete instance of `ClusterConfigResponsePtrInput` via:
+//
+//          ClusterConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToClusterConfigResponsePtrOutput() ClusterConfigResponsePtrOutput
+	ToClusterConfigResponsePtrOutputWithContext(context.Context) ClusterConfigResponsePtrOutput
+}
+
+type clusterConfigResponsePtrType ClusterConfigResponseArgs
+
+func ClusterConfigResponsePtr(v *ClusterConfigResponseArgs) ClusterConfigResponsePtrInput {
+	return (*clusterConfigResponsePtrType)(v)
+}
+
+func (*clusterConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterConfigResponse)(nil)).Elem()
+}
+
+func (i *clusterConfigResponsePtrType) ToClusterConfigResponsePtrOutput() ClusterConfigResponsePtrOutput {
+	return i.ToClusterConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterConfigResponsePtrType) ToClusterConfigResponsePtrOutputWithContext(ctx context.Context) ClusterConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterConfigResponsePtrOutput)
+}
+
+// Configuration for a cluster.
+type ClusterConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ClusterConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterConfigResponse)(nil)).Elem()
+}
+
+func (o ClusterConfigResponseOutput) ToClusterConfigResponseOutput() ClusterConfigResponseOutput {
+	return o
+}
+
+func (o ClusterConfigResponseOutput) ToClusterConfigResponseOutputWithContext(ctx context.Context) ClusterConfigResponseOutput {
+	return o
+}
+
+func (o ClusterConfigResponseOutput) ToClusterConfigResponsePtrOutput() ClusterConfigResponsePtrOutput {
+	return o.ToClusterConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterConfigResponseOutput) ToClusterConfigResponsePtrOutputWithContext(ctx context.Context) ClusterConfigResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterConfigResponse) *ClusterConfigResponse {
+		return &v
+	}).(ClusterConfigResponsePtrOutput)
+}
+
+// Autoscaling configuration for this cluster. Note that when creating or updating a cluster, exactly one of serve_nodes or cluster_autoscaling_config must be set. If serve_nodes is set, then serve_nodes is fixed and autoscaling is turned off. If cluster_autoscaling_config is set, then serve_nodes will be autoscaled.
+func (o ClusterConfigResponseOutput) ClusterAutoscalingConfig() ClusterAutoscalingConfigResponseOutput {
+	return o.ApplyT(func(v ClusterConfigResponse) ClusterAutoscalingConfigResponse { return v.ClusterAutoscalingConfig }).(ClusterAutoscalingConfigResponseOutput)
+}
+
+type ClusterConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterConfigResponse)(nil)).Elem()
+}
+
+func (o ClusterConfigResponsePtrOutput) ToClusterConfigResponsePtrOutput() ClusterConfigResponsePtrOutput {
+	return o
+}
+
+func (o ClusterConfigResponsePtrOutput) ToClusterConfigResponsePtrOutputWithContext(ctx context.Context) ClusterConfigResponsePtrOutput {
+	return o
+}
+
+func (o ClusterConfigResponsePtrOutput) Elem() ClusterConfigResponseOutput {
+	return o.ApplyT(func(v *ClusterConfigResponse) ClusterConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterConfigResponse
+		return ret
+	}).(ClusterConfigResponseOutput)
+}
+
+// Autoscaling configuration for this cluster. Note that when creating or updating a cluster, exactly one of serve_nodes or cluster_autoscaling_config must be set. If serve_nodes is set, then serve_nodes is fixed and autoscaling is turned off. If cluster_autoscaling_config is set, then serve_nodes will be autoscaled.
+func (o ClusterConfigResponsePtrOutput) ClusterAutoscalingConfig() ClusterAutoscalingConfigResponsePtrOutput {
+	return o.ApplyT(func(v *ClusterConfigResponse) *ClusterAutoscalingConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterAutoscalingConfig
+	}).(ClusterAutoscalingConfigResponsePtrOutput)
 }
 
 // Cloud Key Management Service (Cloud KMS) settings for a CMEK-protected cluster.
@@ -2660,12 +3856,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseInput)(nil)).Elem(), AuditLogConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseArrayInput)(nil)).Elem(), AuditLogConfigResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingLimitsInput)(nil)).Elem(), AutoscalingLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingLimitsPtrInput)(nil)).Elem(), AutoscalingLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingLimitsResponseInput)(nil)).Elem(), AutoscalingLimitsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingLimitsResponsePtrInput)(nil)).Elem(), AutoscalingLimitsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingTargetsInput)(nil)).Elem(), AutoscalingTargetsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingTargetsPtrInput)(nil)).Elem(), AutoscalingTargetsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingTargetsResponseInput)(nil)).Elem(), AutoscalingTargetsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingTargetsResponsePtrInput)(nil)).Elem(), AutoscalingTargetsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupInfoResponseInput)(nil)).Elem(), BackupInfoResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupInfoResponsePtrInput)(nil)).Elem(), BackupInfoResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingConfigInput)(nil)).Elem(), ClusterAutoscalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingConfigPtrInput)(nil)).Elem(), ClusterAutoscalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingConfigResponseInput)(nil)).Elem(), ClusterAutoscalingConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingConfigResponsePtrInput)(nil)).Elem(), ClusterAutoscalingConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterConfigInput)(nil)).Elem(), ClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterConfigPtrInput)(nil)).Elem(), ClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterConfigResponseInput)(nil)).Elem(), ClusterConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterConfigResponsePtrInput)(nil)).Elem(), ClusterConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigInput)(nil)).Elem(), EncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigPtrInput)(nil)).Elem(), EncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigResponseInput)(nil)).Elem(), EncryptionConfigResponseArgs{})
@@ -2697,12 +3909,28 @@ func init() {
 	pulumi.RegisterOutputType(AuditLogConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigResponseOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(AutoscalingLimitsOutput{})
+	pulumi.RegisterOutputType(AutoscalingLimitsPtrOutput{})
+	pulumi.RegisterOutputType(AutoscalingLimitsResponseOutput{})
+	pulumi.RegisterOutputType(AutoscalingLimitsResponsePtrOutput{})
+	pulumi.RegisterOutputType(AutoscalingTargetsOutput{})
+	pulumi.RegisterOutputType(AutoscalingTargetsPtrOutput{})
+	pulumi.RegisterOutputType(AutoscalingTargetsResponseOutput{})
+	pulumi.RegisterOutputType(AutoscalingTargetsResponsePtrOutput{})
 	pulumi.RegisterOutputType(BackupInfoResponseOutput{})
 	pulumi.RegisterOutputType(BackupInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
+	pulumi.RegisterOutputType(ClusterAutoscalingConfigOutput{})
+	pulumi.RegisterOutputType(ClusterAutoscalingConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterAutoscalingConfigResponseOutput{})
+	pulumi.RegisterOutputType(ClusterAutoscalingConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(ClusterConfigOutput{})
+	pulumi.RegisterOutputType(ClusterConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterConfigResponseOutput{})
+	pulumi.RegisterOutputType(ClusterConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigResponseOutput{})

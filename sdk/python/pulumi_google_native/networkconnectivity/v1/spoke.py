@@ -15,6 +15,7 @@ __all__ = ['SpokeArgs', 'Spoke']
 @pulumi.input_type
 class SpokeArgs:
     def __init__(__self__, *,
+                 spoke_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  hub: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -24,18 +25,18 @@ class SpokeArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
-                 spoke_id: Optional[pulumi.Input[str]] = None):
+                 request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Spoke resource.
         :param pulumi.Input[str] description: An optional description of the spoke.
-        :param pulumi.Input[str] hub: Immutable. The URI of the hub that this spoke is attached to.
+        :param pulumi.Input[str] hub: Immutable. The name of the hub that this spoke is attached to.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
         :param pulumi.Input['LinkedInterconnectAttachmentsArgs'] linked_interconnect_attachments: VLAN attachments that are associated with the spoke.
         :param pulumi.Input['LinkedRouterApplianceInstancesArgs'] linked_router_appliance_instances: Router appliance instances that are associated with the spoke.
         :param pulumi.Input['LinkedVpnTunnelsArgs'] linked_vpn_tunnels: VPN tunnels that are associated with the spoke.
         :param pulumi.Input[str] name: Immutable. The name of the spoke. Spoke names must be unique. They use the following form: `projects/{project_number}/locations/{region}/spokes/{spoke_id}`
         """
+        pulumi.set(__self__, "spoke_id", spoke_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if hub is not None:
@@ -56,8 +57,15 @@ class SpokeArgs:
             pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
-        if spoke_id is not None:
-            pulumi.set(__self__, "spoke_id", spoke_id)
+
+    @property
+    @pulumi.getter(name="spokeId")
+    def spoke_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "spoke_id")
+
+    @spoke_id.setter
+    def spoke_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "spoke_id", value)
 
     @property
     @pulumi.getter
@@ -75,7 +83,7 @@ class SpokeArgs:
     @pulumi.getter
     def hub(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. The URI of the hub that this spoke is attached to.
+        Immutable. The name of the hub that this spoke is attached to.
         """
         return pulumi.get(self, "hub")
 
@@ -170,15 +178,6 @@ class SpokeArgs:
     def request_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "request_id", value)
 
-    @property
-    @pulumi.getter(name="spokeId")
-    def spoke_id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "spoke_id")
-
-    @spoke_id.setter
-    def spoke_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "spoke_id", value)
-
 
 class Spoke(pulumi.CustomResource):
     @overload
@@ -203,7 +202,7 @@ class Spoke(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of the spoke.
-        :param pulumi.Input[str] hub: Immutable. The URI of the hub that this spoke is attached to.
+        :param pulumi.Input[str] hub: Immutable. The name of the hub that this spoke is attached to.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
         :param pulumi.Input[pulumi.InputType['LinkedInterconnectAttachmentsArgs']] linked_interconnect_attachments: VLAN attachments that are associated with the spoke.
         :param pulumi.Input[pulumi.InputType['LinkedRouterApplianceInstancesArgs']] linked_router_appliance_instances: Router appliance instances that are associated with the spoke.
@@ -214,7 +213,7 @@ class Spoke(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[SpokeArgs] = None,
+                 args: SpokeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a spoke in the specified project and location.
@@ -267,6 +266,8 @@ class Spoke(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
+            if spoke_id is None and not opts.urn:
+                raise TypeError("Missing required property 'spoke_id'")
             __props__.__dict__["spoke_id"] = spoke_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["state"] = None
@@ -327,7 +328,7 @@ class Spoke(pulumi.CustomResource):
     @pulumi.getter
     def hub(self) -> pulumi.Output[str]:
         """
-        Immutable. The URI of the hub that this spoke is attached to.
+        Immutable. The name of the hub that this spoke is attached to.
         """
         return pulumi.get(self, "hub")
 

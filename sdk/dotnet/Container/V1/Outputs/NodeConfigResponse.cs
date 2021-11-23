@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AcceleratorConfigResponse> Accelerators;
         /// <summary>
+        /// Advanced features for the Compute Engine VM.
+        /// </summary>
+        public readonly Outputs.AdvancedMachineFeaturesResponse AdvancedMachineFeatures;
+        /// <summary>
         ///  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         /// </summary>
         public readonly string BootDiskKmsKey;
@@ -32,6 +36,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
         /// </summary>
         public readonly string DiskType;
+        /// <summary>
+        /// Google Container File System (image streaming) configs.
+        /// </summary>
+        public readonly Outputs.GcfsConfigResponse GcfsConfig;
         /// <summary>
         /// Enable or disable gvnic in the node pool.
         /// </summary>
@@ -113,11 +121,15 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         private NodeConfigResponse(
             ImmutableArray<Outputs.AcceleratorConfigResponse> accelerators,
 
+            Outputs.AdvancedMachineFeaturesResponse advancedMachineFeatures,
+
             string bootDiskKmsKey,
 
             int diskSizeGb,
 
             string diskType,
+
+            Outputs.GcfsConfigResponse gcfsConfig,
 
             Outputs.VirtualNICResponse gvnic,
 
@@ -158,9 +170,11 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
             Outputs.WorkloadMetadataConfigResponse workloadMetadataConfig)
         {
             Accelerators = accelerators;
+            AdvancedMachineFeatures = advancedMachineFeatures;
             BootDiskKmsKey = bootDiskKmsKey;
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
+            GcfsConfig = gcfsConfig;
             Gvnic = gvnic;
             ImageType = imageType;
             KubeletConfig = kubeletConfig;

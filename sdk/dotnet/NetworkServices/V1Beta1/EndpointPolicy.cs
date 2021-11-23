@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
     public partial class EndpointPolicy : Pulumi.CustomResource
     {
         /// <summary>
-        /// Optional. This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints. Refer to Authorization. If this field is not specified, authorization is disabled(no authz checks) for this endpoint. Applicable only when EndpointPolicyType is SIDECAR_PROXY.
+        /// Optional. This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints. Refer to Authorization. If this field is not specified, authorization is disabled(no authz checks) for this endpoint.
         /// </summary>
         [Output("authorizationPolicy")]
         public Output<string> AuthorizationPolicy { get; private set; } = null!;
@@ -127,7 +127,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
     public sealed class EndpointPolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints. Refer to Authorization. If this field is not specified, authorization is disabled(no authz checks) for this endpoint. Applicable only when EndpointPolicyType is SIDECAR_PROXY.
+        /// Optional. This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints. Refer to Authorization. If this field is not specified, authorization is disabled(no authz checks) for this endpoint.
         /// </summary>
         [Input("authorizationPolicy")]
         public Input<string>? AuthorizationPolicy { get; set; }

@@ -10,6 +10,388 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Spec for App Dev Experience Feature.
+type AppDevExperienceFeatureSpec struct {
+}
+
+// AppDevExperienceFeatureSpecInput is an input type that accepts AppDevExperienceFeatureSpecArgs and AppDevExperienceFeatureSpecOutput values.
+// You can construct a concrete instance of `AppDevExperienceFeatureSpecInput` via:
+//
+//          AppDevExperienceFeatureSpecArgs{...}
+type AppDevExperienceFeatureSpecInput interface {
+	pulumi.Input
+
+	ToAppDevExperienceFeatureSpecOutput() AppDevExperienceFeatureSpecOutput
+	ToAppDevExperienceFeatureSpecOutputWithContext(context.Context) AppDevExperienceFeatureSpecOutput
+}
+
+// Spec for App Dev Experience Feature.
+type AppDevExperienceFeatureSpecArgs struct {
+}
+
+func (AppDevExperienceFeatureSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppDevExperienceFeatureSpec)(nil)).Elem()
+}
+
+func (i AppDevExperienceFeatureSpecArgs) ToAppDevExperienceFeatureSpecOutput() AppDevExperienceFeatureSpecOutput {
+	return i.ToAppDevExperienceFeatureSpecOutputWithContext(context.Background())
+}
+
+func (i AppDevExperienceFeatureSpecArgs) ToAppDevExperienceFeatureSpecOutputWithContext(ctx context.Context) AppDevExperienceFeatureSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDevExperienceFeatureSpecOutput)
+}
+
+func (i AppDevExperienceFeatureSpecArgs) ToAppDevExperienceFeatureSpecPtrOutput() AppDevExperienceFeatureSpecPtrOutput {
+	return i.ToAppDevExperienceFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AppDevExperienceFeatureSpecArgs) ToAppDevExperienceFeatureSpecPtrOutputWithContext(ctx context.Context) AppDevExperienceFeatureSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDevExperienceFeatureSpecOutput).ToAppDevExperienceFeatureSpecPtrOutputWithContext(ctx)
+}
+
+// AppDevExperienceFeatureSpecPtrInput is an input type that accepts AppDevExperienceFeatureSpecArgs, AppDevExperienceFeatureSpecPtr and AppDevExperienceFeatureSpecPtrOutput values.
+// You can construct a concrete instance of `AppDevExperienceFeatureSpecPtrInput` via:
+//
+//          AppDevExperienceFeatureSpecArgs{...}
+//
+//  or:
+//
+//          nil
+type AppDevExperienceFeatureSpecPtrInput interface {
+	pulumi.Input
+
+	ToAppDevExperienceFeatureSpecPtrOutput() AppDevExperienceFeatureSpecPtrOutput
+	ToAppDevExperienceFeatureSpecPtrOutputWithContext(context.Context) AppDevExperienceFeatureSpecPtrOutput
+}
+
+type appDevExperienceFeatureSpecPtrType AppDevExperienceFeatureSpecArgs
+
+func AppDevExperienceFeatureSpecPtr(v *AppDevExperienceFeatureSpecArgs) AppDevExperienceFeatureSpecPtrInput {
+	return (*appDevExperienceFeatureSpecPtrType)(v)
+}
+
+func (*appDevExperienceFeatureSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppDevExperienceFeatureSpec)(nil)).Elem()
+}
+
+func (i *appDevExperienceFeatureSpecPtrType) ToAppDevExperienceFeatureSpecPtrOutput() AppDevExperienceFeatureSpecPtrOutput {
+	return i.ToAppDevExperienceFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *appDevExperienceFeatureSpecPtrType) ToAppDevExperienceFeatureSpecPtrOutputWithContext(ctx context.Context) AppDevExperienceFeatureSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDevExperienceFeatureSpecPtrOutput)
+}
+
+// Spec for App Dev Experience Feature.
+type AppDevExperienceFeatureSpecOutput struct{ *pulumi.OutputState }
+
+func (AppDevExperienceFeatureSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppDevExperienceFeatureSpec)(nil)).Elem()
+}
+
+func (o AppDevExperienceFeatureSpecOutput) ToAppDevExperienceFeatureSpecOutput() AppDevExperienceFeatureSpecOutput {
+	return o
+}
+
+func (o AppDevExperienceFeatureSpecOutput) ToAppDevExperienceFeatureSpecOutputWithContext(ctx context.Context) AppDevExperienceFeatureSpecOutput {
+	return o
+}
+
+func (o AppDevExperienceFeatureSpecOutput) ToAppDevExperienceFeatureSpecPtrOutput() AppDevExperienceFeatureSpecPtrOutput {
+	return o.ToAppDevExperienceFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AppDevExperienceFeatureSpecOutput) ToAppDevExperienceFeatureSpecPtrOutputWithContext(ctx context.Context) AppDevExperienceFeatureSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppDevExperienceFeatureSpec) *AppDevExperienceFeatureSpec {
+		return &v
+	}).(AppDevExperienceFeatureSpecPtrOutput)
+}
+
+type AppDevExperienceFeatureSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AppDevExperienceFeatureSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppDevExperienceFeatureSpec)(nil)).Elem()
+}
+
+func (o AppDevExperienceFeatureSpecPtrOutput) ToAppDevExperienceFeatureSpecPtrOutput() AppDevExperienceFeatureSpecPtrOutput {
+	return o
+}
+
+func (o AppDevExperienceFeatureSpecPtrOutput) ToAppDevExperienceFeatureSpecPtrOutputWithContext(ctx context.Context) AppDevExperienceFeatureSpecPtrOutput {
+	return o
+}
+
+func (o AppDevExperienceFeatureSpecPtrOutput) Elem() AppDevExperienceFeatureSpecOutput {
+	return o.ApplyT(func(v *AppDevExperienceFeatureSpec) AppDevExperienceFeatureSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AppDevExperienceFeatureSpec
+		return ret
+	}).(AppDevExperienceFeatureSpecOutput)
+}
+
+// Spec for App Dev Experience Feature.
+type AppDevExperienceFeatureSpecResponse struct {
+}
+
+// AppDevExperienceFeatureSpecResponseInput is an input type that accepts AppDevExperienceFeatureSpecResponseArgs and AppDevExperienceFeatureSpecResponseOutput values.
+// You can construct a concrete instance of `AppDevExperienceFeatureSpecResponseInput` via:
+//
+//          AppDevExperienceFeatureSpecResponseArgs{...}
+type AppDevExperienceFeatureSpecResponseInput interface {
+	pulumi.Input
+
+	ToAppDevExperienceFeatureSpecResponseOutput() AppDevExperienceFeatureSpecResponseOutput
+	ToAppDevExperienceFeatureSpecResponseOutputWithContext(context.Context) AppDevExperienceFeatureSpecResponseOutput
+}
+
+// Spec for App Dev Experience Feature.
+type AppDevExperienceFeatureSpecResponseArgs struct {
+}
+
+func (AppDevExperienceFeatureSpecResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppDevExperienceFeatureSpecResponse)(nil)).Elem()
+}
+
+func (i AppDevExperienceFeatureSpecResponseArgs) ToAppDevExperienceFeatureSpecResponseOutput() AppDevExperienceFeatureSpecResponseOutput {
+	return i.ToAppDevExperienceFeatureSpecResponseOutputWithContext(context.Background())
+}
+
+func (i AppDevExperienceFeatureSpecResponseArgs) ToAppDevExperienceFeatureSpecResponseOutputWithContext(ctx context.Context) AppDevExperienceFeatureSpecResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDevExperienceFeatureSpecResponseOutput)
+}
+
+func (i AppDevExperienceFeatureSpecResponseArgs) ToAppDevExperienceFeatureSpecResponsePtrOutput() AppDevExperienceFeatureSpecResponsePtrOutput {
+	return i.ToAppDevExperienceFeatureSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AppDevExperienceFeatureSpecResponseArgs) ToAppDevExperienceFeatureSpecResponsePtrOutputWithContext(ctx context.Context) AppDevExperienceFeatureSpecResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDevExperienceFeatureSpecResponseOutput).ToAppDevExperienceFeatureSpecResponsePtrOutputWithContext(ctx)
+}
+
+// AppDevExperienceFeatureSpecResponsePtrInput is an input type that accepts AppDevExperienceFeatureSpecResponseArgs, AppDevExperienceFeatureSpecResponsePtr and AppDevExperienceFeatureSpecResponsePtrOutput values.
+// You can construct a concrete instance of `AppDevExperienceFeatureSpecResponsePtrInput` via:
+//
+//          AppDevExperienceFeatureSpecResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AppDevExperienceFeatureSpecResponsePtrInput interface {
+	pulumi.Input
+
+	ToAppDevExperienceFeatureSpecResponsePtrOutput() AppDevExperienceFeatureSpecResponsePtrOutput
+	ToAppDevExperienceFeatureSpecResponsePtrOutputWithContext(context.Context) AppDevExperienceFeatureSpecResponsePtrOutput
+}
+
+type appDevExperienceFeatureSpecResponsePtrType AppDevExperienceFeatureSpecResponseArgs
+
+func AppDevExperienceFeatureSpecResponsePtr(v *AppDevExperienceFeatureSpecResponseArgs) AppDevExperienceFeatureSpecResponsePtrInput {
+	return (*appDevExperienceFeatureSpecResponsePtrType)(v)
+}
+
+func (*appDevExperienceFeatureSpecResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppDevExperienceFeatureSpecResponse)(nil)).Elem()
+}
+
+func (i *appDevExperienceFeatureSpecResponsePtrType) ToAppDevExperienceFeatureSpecResponsePtrOutput() AppDevExperienceFeatureSpecResponsePtrOutput {
+	return i.ToAppDevExperienceFeatureSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *appDevExperienceFeatureSpecResponsePtrType) ToAppDevExperienceFeatureSpecResponsePtrOutputWithContext(ctx context.Context) AppDevExperienceFeatureSpecResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDevExperienceFeatureSpecResponsePtrOutput)
+}
+
+// Spec for App Dev Experience Feature.
+type AppDevExperienceFeatureSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (AppDevExperienceFeatureSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppDevExperienceFeatureSpecResponse)(nil)).Elem()
+}
+
+func (o AppDevExperienceFeatureSpecResponseOutput) ToAppDevExperienceFeatureSpecResponseOutput() AppDevExperienceFeatureSpecResponseOutput {
+	return o
+}
+
+func (o AppDevExperienceFeatureSpecResponseOutput) ToAppDevExperienceFeatureSpecResponseOutputWithContext(ctx context.Context) AppDevExperienceFeatureSpecResponseOutput {
+	return o
+}
+
+func (o AppDevExperienceFeatureSpecResponseOutput) ToAppDevExperienceFeatureSpecResponsePtrOutput() AppDevExperienceFeatureSpecResponsePtrOutput {
+	return o.ToAppDevExperienceFeatureSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AppDevExperienceFeatureSpecResponseOutput) ToAppDevExperienceFeatureSpecResponsePtrOutputWithContext(ctx context.Context) AppDevExperienceFeatureSpecResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppDevExperienceFeatureSpecResponse) *AppDevExperienceFeatureSpecResponse {
+		return &v
+	}).(AppDevExperienceFeatureSpecResponsePtrOutput)
+}
+
+type AppDevExperienceFeatureSpecResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AppDevExperienceFeatureSpecResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppDevExperienceFeatureSpecResponse)(nil)).Elem()
+}
+
+func (o AppDevExperienceFeatureSpecResponsePtrOutput) ToAppDevExperienceFeatureSpecResponsePtrOutput() AppDevExperienceFeatureSpecResponsePtrOutput {
+	return o
+}
+
+func (o AppDevExperienceFeatureSpecResponsePtrOutput) ToAppDevExperienceFeatureSpecResponsePtrOutputWithContext(ctx context.Context) AppDevExperienceFeatureSpecResponsePtrOutput {
+	return o
+}
+
+func (o AppDevExperienceFeatureSpecResponsePtrOutput) Elem() AppDevExperienceFeatureSpecResponseOutput {
+	return o.ApplyT(func(v *AppDevExperienceFeatureSpecResponse) AppDevExperienceFeatureSpecResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AppDevExperienceFeatureSpecResponse
+		return ret
+	}).(AppDevExperienceFeatureSpecResponseOutput)
+}
+
+// State for App Dev Exp Feature.
+type AppDevExperienceFeatureStateResponse struct {
+	// Status of subcomponent that detects configured Service Mesh resources.
+	NetworkingInstallSucceeded StatusResponse `pulumi:"networkingInstallSucceeded"`
+}
+
+// AppDevExperienceFeatureStateResponseInput is an input type that accepts AppDevExperienceFeatureStateResponseArgs and AppDevExperienceFeatureStateResponseOutput values.
+// You can construct a concrete instance of `AppDevExperienceFeatureStateResponseInput` via:
+//
+//          AppDevExperienceFeatureStateResponseArgs{...}
+type AppDevExperienceFeatureStateResponseInput interface {
+	pulumi.Input
+
+	ToAppDevExperienceFeatureStateResponseOutput() AppDevExperienceFeatureStateResponseOutput
+	ToAppDevExperienceFeatureStateResponseOutputWithContext(context.Context) AppDevExperienceFeatureStateResponseOutput
+}
+
+// State for App Dev Exp Feature.
+type AppDevExperienceFeatureStateResponseArgs struct {
+	// Status of subcomponent that detects configured Service Mesh resources.
+	NetworkingInstallSucceeded StatusResponseInput `pulumi:"networkingInstallSucceeded"`
+}
+
+func (AppDevExperienceFeatureStateResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppDevExperienceFeatureStateResponse)(nil)).Elem()
+}
+
+func (i AppDevExperienceFeatureStateResponseArgs) ToAppDevExperienceFeatureStateResponseOutput() AppDevExperienceFeatureStateResponseOutput {
+	return i.ToAppDevExperienceFeatureStateResponseOutputWithContext(context.Background())
+}
+
+func (i AppDevExperienceFeatureStateResponseArgs) ToAppDevExperienceFeatureStateResponseOutputWithContext(ctx context.Context) AppDevExperienceFeatureStateResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDevExperienceFeatureStateResponseOutput)
+}
+
+func (i AppDevExperienceFeatureStateResponseArgs) ToAppDevExperienceFeatureStateResponsePtrOutput() AppDevExperienceFeatureStateResponsePtrOutput {
+	return i.ToAppDevExperienceFeatureStateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AppDevExperienceFeatureStateResponseArgs) ToAppDevExperienceFeatureStateResponsePtrOutputWithContext(ctx context.Context) AppDevExperienceFeatureStateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDevExperienceFeatureStateResponseOutput).ToAppDevExperienceFeatureStateResponsePtrOutputWithContext(ctx)
+}
+
+// AppDevExperienceFeatureStateResponsePtrInput is an input type that accepts AppDevExperienceFeatureStateResponseArgs, AppDevExperienceFeatureStateResponsePtr and AppDevExperienceFeatureStateResponsePtrOutput values.
+// You can construct a concrete instance of `AppDevExperienceFeatureStateResponsePtrInput` via:
+//
+//          AppDevExperienceFeatureStateResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AppDevExperienceFeatureStateResponsePtrInput interface {
+	pulumi.Input
+
+	ToAppDevExperienceFeatureStateResponsePtrOutput() AppDevExperienceFeatureStateResponsePtrOutput
+	ToAppDevExperienceFeatureStateResponsePtrOutputWithContext(context.Context) AppDevExperienceFeatureStateResponsePtrOutput
+}
+
+type appDevExperienceFeatureStateResponsePtrType AppDevExperienceFeatureStateResponseArgs
+
+func AppDevExperienceFeatureStateResponsePtr(v *AppDevExperienceFeatureStateResponseArgs) AppDevExperienceFeatureStateResponsePtrInput {
+	return (*appDevExperienceFeatureStateResponsePtrType)(v)
+}
+
+func (*appDevExperienceFeatureStateResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppDevExperienceFeatureStateResponse)(nil)).Elem()
+}
+
+func (i *appDevExperienceFeatureStateResponsePtrType) ToAppDevExperienceFeatureStateResponsePtrOutput() AppDevExperienceFeatureStateResponsePtrOutput {
+	return i.ToAppDevExperienceFeatureStateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *appDevExperienceFeatureStateResponsePtrType) ToAppDevExperienceFeatureStateResponsePtrOutputWithContext(ctx context.Context) AppDevExperienceFeatureStateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDevExperienceFeatureStateResponsePtrOutput)
+}
+
+// State for App Dev Exp Feature.
+type AppDevExperienceFeatureStateResponseOutput struct{ *pulumi.OutputState }
+
+func (AppDevExperienceFeatureStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppDevExperienceFeatureStateResponse)(nil)).Elem()
+}
+
+func (o AppDevExperienceFeatureStateResponseOutput) ToAppDevExperienceFeatureStateResponseOutput() AppDevExperienceFeatureStateResponseOutput {
+	return o
+}
+
+func (o AppDevExperienceFeatureStateResponseOutput) ToAppDevExperienceFeatureStateResponseOutputWithContext(ctx context.Context) AppDevExperienceFeatureStateResponseOutput {
+	return o
+}
+
+func (o AppDevExperienceFeatureStateResponseOutput) ToAppDevExperienceFeatureStateResponsePtrOutput() AppDevExperienceFeatureStateResponsePtrOutput {
+	return o.ToAppDevExperienceFeatureStateResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AppDevExperienceFeatureStateResponseOutput) ToAppDevExperienceFeatureStateResponsePtrOutputWithContext(ctx context.Context) AppDevExperienceFeatureStateResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppDevExperienceFeatureStateResponse) *AppDevExperienceFeatureStateResponse {
+		return &v
+	}).(AppDevExperienceFeatureStateResponsePtrOutput)
+}
+
+// Status of subcomponent that detects configured Service Mesh resources.
+func (o AppDevExperienceFeatureStateResponseOutput) NetworkingInstallSucceeded() StatusResponseOutput {
+	return o.ApplyT(func(v AppDevExperienceFeatureStateResponse) StatusResponse { return v.NetworkingInstallSucceeded }).(StatusResponseOutput)
+}
+
+type AppDevExperienceFeatureStateResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AppDevExperienceFeatureStateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppDevExperienceFeatureStateResponse)(nil)).Elem()
+}
+
+func (o AppDevExperienceFeatureStateResponsePtrOutput) ToAppDevExperienceFeatureStateResponsePtrOutput() AppDevExperienceFeatureStateResponsePtrOutput {
+	return o
+}
+
+func (o AppDevExperienceFeatureStateResponsePtrOutput) ToAppDevExperienceFeatureStateResponsePtrOutputWithContext(ctx context.Context) AppDevExperienceFeatureStateResponsePtrOutput {
+	return o
+}
+
+func (o AppDevExperienceFeatureStateResponsePtrOutput) Elem() AppDevExperienceFeatureStateResponseOutput {
+	return o.ApplyT(func(v *AppDevExperienceFeatureStateResponse) AppDevExperienceFeatureStateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AppDevExperienceFeatureStateResponse
+		return ret
+	}).(AppDevExperienceFeatureStateResponseOutput)
+}
+
+// Status of subcomponent that detects configured Service Mesh resources.
+func (o AppDevExperienceFeatureStateResponsePtrOutput) NetworkingInstallSucceeded() StatusResponsePtrOutput {
+	return o.ApplyT(func(v *AppDevExperienceFeatureStateResponse) *StatusResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.NetworkingInstallSucceeded
+	}).(StatusResponsePtrOutput)
+}
+
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
 type AuditConfig struct {
 	// The configuration for logging of each type of permission.
@@ -802,13 +1184,13 @@ func (o AuthorityResponsePtrOutput) WorkloadIdentityPool() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type Binding struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role *string `pulumi:"role"`
 }
 
@@ -823,13 +1205,13 @@ type BindingInput interface {
 	ToBindingOutputWithContext(context.Context) BindingOutput
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -870,7 +1252,7 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
 func (BindingOutput) ElementType() reflect.Type {
@@ -885,17 +1267,17 @@ func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOu
 	return o
 }
 
-// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 func (o BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -920,13 +1302,13 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 	}).(BindingOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingResponse struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
 }
 
@@ -941,13 +1323,13 @@ type BindingResponseInput interface {
 	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingResponseArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringInput `pulumi:"role"`
 }
 
@@ -988,7 +1370,7 @@ func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingResponseOutput struct{ *pulumi.OutputState }
 
 func (BindingResponseOutput) ElementType() reflect.Type {
@@ -1003,17 +1385,17 @@ func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 func (o BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -1040,6 +1422,8 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 
 // CommonFeatureSpec contains Hub-wide configuration information
 type CommonFeatureSpec struct {
+	// Appdevexperience specific spec.
+	Appdevexperience *AppDevExperienceFeatureSpec `pulumi:"appdevexperience"`
 	// Multicluster Ingress-specific spec.
 	Multiclusteringress *MultiClusterIngressFeatureSpec `pulumi:"multiclusteringress"`
 }
@@ -1057,6 +1441,8 @@ type CommonFeatureSpecInput interface {
 
 // CommonFeatureSpec contains Hub-wide configuration information
 type CommonFeatureSpecArgs struct {
+	// Appdevexperience specific spec.
+	Appdevexperience AppDevExperienceFeatureSpecPtrInput `pulumi:"appdevexperience"`
 	// Multicluster Ingress-specific spec.
 	Multiclusteringress MultiClusterIngressFeatureSpecPtrInput `pulumi:"multiclusteringress"`
 }
@@ -1139,6 +1525,11 @@ func (o CommonFeatureSpecOutput) ToCommonFeatureSpecPtrOutputWithContext(ctx con
 	}).(CommonFeatureSpecPtrOutput)
 }
 
+// Appdevexperience specific spec.
+func (o CommonFeatureSpecOutput) Appdevexperience() AppDevExperienceFeatureSpecPtrOutput {
+	return o.ApplyT(func(v CommonFeatureSpec) *AppDevExperienceFeatureSpec { return v.Appdevexperience }).(AppDevExperienceFeatureSpecPtrOutput)
+}
+
 // Multicluster Ingress-specific spec.
 func (o CommonFeatureSpecOutput) Multiclusteringress() MultiClusterIngressFeatureSpecPtrOutput {
 	return o.ApplyT(func(v CommonFeatureSpec) *MultiClusterIngressFeatureSpec { return v.Multiclusteringress }).(MultiClusterIngressFeatureSpecPtrOutput)
@@ -1168,6 +1559,16 @@ func (o CommonFeatureSpecPtrOutput) Elem() CommonFeatureSpecOutput {
 	}).(CommonFeatureSpecOutput)
 }
 
+// Appdevexperience specific spec.
+func (o CommonFeatureSpecPtrOutput) Appdevexperience() AppDevExperienceFeatureSpecPtrOutput {
+	return o.ApplyT(func(v *CommonFeatureSpec) *AppDevExperienceFeatureSpec {
+		if v == nil {
+			return nil
+		}
+		return v.Appdevexperience
+	}).(AppDevExperienceFeatureSpecPtrOutput)
+}
+
 // Multicluster Ingress-specific spec.
 func (o CommonFeatureSpecPtrOutput) Multiclusteringress() MultiClusterIngressFeatureSpecPtrOutput {
 	return o.ApplyT(func(v *CommonFeatureSpec) *MultiClusterIngressFeatureSpec {
@@ -1180,6 +1581,8 @@ func (o CommonFeatureSpecPtrOutput) Multiclusteringress() MultiClusterIngressFea
 
 // CommonFeatureSpec contains Hub-wide configuration information
 type CommonFeatureSpecResponse struct {
+	// Appdevexperience specific spec.
+	Appdevexperience AppDevExperienceFeatureSpecResponse `pulumi:"appdevexperience"`
 	// Multicluster Ingress-specific spec.
 	Multiclusteringress MultiClusterIngressFeatureSpecResponse `pulumi:"multiclusteringress"`
 }
@@ -1197,6 +1600,8 @@ type CommonFeatureSpecResponseInput interface {
 
 // CommonFeatureSpec contains Hub-wide configuration information
 type CommonFeatureSpecResponseArgs struct {
+	// Appdevexperience specific spec.
+	Appdevexperience AppDevExperienceFeatureSpecResponseInput `pulumi:"appdevexperience"`
 	// Multicluster Ingress-specific spec.
 	Multiclusteringress MultiClusterIngressFeatureSpecResponseInput `pulumi:"multiclusteringress"`
 }
@@ -1279,6 +1684,11 @@ func (o CommonFeatureSpecResponseOutput) ToCommonFeatureSpecResponsePtrOutputWit
 	}).(CommonFeatureSpecResponsePtrOutput)
 }
 
+// Appdevexperience specific spec.
+func (o CommonFeatureSpecResponseOutput) Appdevexperience() AppDevExperienceFeatureSpecResponseOutput {
+	return o.ApplyT(func(v CommonFeatureSpecResponse) AppDevExperienceFeatureSpecResponse { return v.Appdevexperience }).(AppDevExperienceFeatureSpecResponseOutput)
+}
+
 // Multicluster Ingress-specific spec.
 func (o CommonFeatureSpecResponseOutput) Multiclusteringress() MultiClusterIngressFeatureSpecResponseOutput {
 	return o.ApplyT(func(v CommonFeatureSpecResponse) MultiClusterIngressFeatureSpecResponse { return v.Multiclusteringress }).(MultiClusterIngressFeatureSpecResponseOutput)
@@ -1308,6 +1718,16 @@ func (o CommonFeatureSpecResponsePtrOutput) Elem() CommonFeatureSpecResponseOutp
 	}).(CommonFeatureSpecResponseOutput)
 }
 
+// Appdevexperience specific spec.
+func (o CommonFeatureSpecResponsePtrOutput) Appdevexperience() AppDevExperienceFeatureSpecResponsePtrOutput {
+	return o.ApplyT(func(v *CommonFeatureSpecResponse) *AppDevExperienceFeatureSpecResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Appdevexperience
+	}).(AppDevExperienceFeatureSpecResponsePtrOutput)
+}
+
 // Multicluster Ingress-specific spec.
 func (o CommonFeatureSpecResponsePtrOutput) Multiclusteringress() MultiClusterIngressFeatureSpecResponsePtrOutput {
 	return o.ApplyT(func(v *CommonFeatureSpecResponse) *MultiClusterIngressFeatureSpecResponse {
@@ -1320,6 +1740,8 @@ func (o CommonFeatureSpecResponsePtrOutput) Multiclusteringress() MultiClusterIn
 
 // CommonFeatureState contains Hub-wide Feature status information.
 type CommonFeatureStateResponse struct {
+	// Appdevexperience specific state.
+	Appdevexperience AppDevExperienceFeatureStateResponse `pulumi:"appdevexperience"`
 	// The "running state" of the Feature in this Hub.
 	State FeatureStateResponse `pulumi:"state"`
 }
@@ -1337,6 +1759,8 @@ type CommonFeatureStateResponseInput interface {
 
 // CommonFeatureState contains Hub-wide Feature status information.
 type CommonFeatureStateResponseArgs struct {
+	// Appdevexperience specific state.
+	Appdevexperience AppDevExperienceFeatureStateResponseInput `pulumi:"appdevexperience"`
 	// The "running state" of the Feature in this Hub.
 	State FeatureStateResponseInput `pulumi:"state"`
 }
@@ -1419,6 +1843,11 @@ func (o CommonFeatureStateResponseOutput) ToCommonFeatureStateResponsePtrOutputW
 	}).(CommonFeatureStateResponsePtrOutput)
 }
 
+// Appdevexperience specific state.
+func (o CommonFeatureStateResponseOutput) Appdevexperience() AppDevExperienceFeatureStateResponseOutput {
+	return o.ApplyT(func(v CommonFeatureStateResponse) AppDevExperienceFeatureStateResponse { return v.Appdevexperience }).(AppDevExperienceFeatureStateResponseOutput)
+}
+
 // The "running state" of the Feature in this Hub.
 func (o CommonFeatureStateResponseOutput) State() FeatureStateResponseOutput {
 	return o.ApplyT(func(v CommonFeatureStateResponse) FeatureStateResponse { return v.State }).(FeatureStateResponseOutput)
@@ -1446,6 +1875,16 @@ func (o CommonFeatureStateResponsePtrOutput) Elem() CommonFeatureStateResponseOu
 		var ret CommonFeatureStateResponse
 		return ret
 	}).(CommonFeatureStateResponseOutput)
+}
+
+// Appdevexperience specific state.
+func (o CommonFeatureStateResponsePtrOutput) Appdevexperience() AppDevExperienceFeatureStateResponsePtrOutput {
+	return o.ApplyT(func(v *CommonFeatureStateResponse) *AppDevExperienceFeatureStateResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Appdevexperience
+	}).(AppDevExperienceFeatureStateResponsePtrOutput)
 }
 
 // The "running state" of the Feature in this Hub.
@@ -2589,13 +3028,371 @@ func (o KubernetesMetadataResponsePtrOutput) VcpuCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// KubernetesResource contains the YAML manifests and configuration for Membership Kubernetes resources in the cluster. After CreateMembership or UpdateMembership, these resources should be re-applied in the cluster.
+type KubernetesResource struct {
+	// Input only. The YAML representation of the Membership CR. This field is ignored for GKE clusters where Hub can read the CR directly. Callers should provide the CR that is currently present in the cluster during CreateMembership or UpdateMembership, or leave this field empty if none exists. The CR manifest is used to validate the cluster has not been registered with another Membership.
+	MembershipCrManifest *string `pulumi:"membershipCrManifest"`
+	// Optional. Options for Kubernetes resource generation.
+	ResourceOptions *ResourceOptions `pulumi:"resourceOptions"`
+}
+
+// KubernetesResourceInput is an input type that accepts KubernetesResourceArgs and KubernetesResourceOutput values.
+// You can construct a concrete instance of `KubernetesResourceInput` via:
+//
+//          KubernetesResourceArgs{...}
+type KubernetesResourceInput interface {
+	pulumi.Input
+
+	ToKubernetesResourceOutput() KubernetesResourceOutput
+	ToKubernetesResourceOutputWithContext(context.Context) KubernetesResourceOutput
+}
+
+// KubernetesResource contains the YAML manifests and configuration for Membership Kubernetes resources in the cluster. After CreateMembership or UpdateMembership, these resources should be re-applied in the cluster.
+type KubernetesResourceArgs struct {
+	// Input only. The YAML representation of the Membership CR. This field is ignored for GKE clusters where Hub can read the CR directly. Callers should provide the CR that is currently present in the cluster during CreateMembership or UpdateMembership, or leave this field empty if none exists. The CR manifest is used to validate the cluster has not been registered with another Membership.
+	MembershipCrManifest pulumi.StringPtrInput `pulumi:"membershipCrManifest"`
+	// Optional. Options for Kubernetes resource generation.
+	ResourceOptions ResourceOptionsPtrInput `pulumi:"resourceOptions"`
+}
+
+func (KubernetesResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesResource)(nil)).Elem()
+}
+
+func (i KubernetesResourceArgs) ToKubernetesResourceOutput() KubernetesResourceOutput {
+	return i.ToKubernetesResourceOutputWithContext(context.Background())
+}
+
+func (i KubernetesResourceArgs) ToKubernetesResourceOutputWithContext(ctx context.Context) KubernetesResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesResourceOutput)
+}
+
+func (i KubernetesResourceArgs) ToKubernetesResourcePtrOutput() KubernetesResourcePtrOutput {
+	return i.ToKubernetesResourcePtrOutputWithContext(context.Background())
+}
+
+func (i KubernetesResourceArgs) ToKubernetesResourcePtrOutputWithContext(ctx context.Context) KubernetesResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesResourceOutput).ToKubernetesResourcePtrOutputWithContext(ctx)
+}
+
+// KubernetesResourcePtrInput is an input type that accepts KubernetesResourceArgs, KubernetesResourcePtr and KubernetesResourcePtrOutput values.
+// You can construct a concrete instance of `KubernetesResourcePtrInput` via:
+//
+//          KubernetesResourceArgs{...}
+//
+//  or:
+//
+//          nil
+type KubernetesResourcePtrInput interface {
+	pulumi.Input
+
+	ToKubernetesResourcePtrOutput() KubernetesResourcePtrOutput
+	ToKubernetesResourcePtrOutputWithContext(context.Context) KubernetesResourcePtrOutput
+}
+
+type kubernetesResourcePtrType KubernetesResourceArgs
+
+func KubernetesResourcePtr(v *KubernetesResourceArgs) KubernetesResourcePtrInput {
+	return (*kubernetesResourcePtrType)(v)
+}
+
+func (*kubernetesResourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesResource)(nil)).Elem()
+}
+
+func (i *kubernetesResourcePtrType) ToKubernetesResourcePtrOutput() KubernetesResourcePtrOutput {
+	return i.ToKubernetesResourcePtrOutputWithContext(context.Background())
+}
+
+func (i *kubernetesResourcePtrType) ToKubernetesResourcePtrOutputWithContext(ctx context.Context) KubernetesResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesResourcePtrOutput)
+}
+
+// KubernetesResource contains the YAML manifests and configuration for Membership Kubernetes resources in the cluster. After CreateMembership or UpdateMembership, these resources should be re-applied in the cluster.
+type KubernetesResourceOutput struct{ *pulumi.OutputState }
+
+func (KubernetesResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesResource)(nil)).Elem()
+}
+
+func (o KubernetesResourceOutput) ToKubernetesResourceOutput() KubernetesResourceOutput {
+	return o
+}
+
+func (o KubernetesResourceOutput) ToKubernetesResourceOutputWithContext(ctx context.Context) KubernetesResourceOutput {
+	return o
+}
+
+func (o KubernetesResourceOutput) ToKubernetesResourcePtrOutput() KubernetesResourcePtrOutput {
+	return o.ToKubernetesResourcePtrOutputWithContext(context.Background())
+}
+
+func (o KubernetesResourceOutput) ToKubernetesResourcePtrOutputWithContext(ctx context.Context) KubernetesResourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesResource) *KubernetesResource {
+		return &v
+	}).(KubernetesResourcePtrOutput)
+}
+
+// Input only. The YAML representation of the Membership CR. This field is ignored for GKE clusters where Hub can read the CR directly. Callers should provide the CR that is currently present in the cluster during CreateMembership or UpdateMembership, or leave this field empty if none exists. The CR manifest is used to validate the cluster has not been registered with another Membership.
+func (o KubernetesResourceOutput) MembershipCrManifest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesResource) *string { return v.MembershipCrManifest }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Options for Kubernetes resource generation.
+func (o KubernetesResourceOutput) ResourceOptions() ResourceOptionsPtrOutput {
+	return o.ApplyT(func(v KubernetesResource) *ResourceOptions { return v.ResourceOptions }).(ResourceOptionsPtrOutput)
+}
+
+type KubernetesResourcePtrOutput struct{ *pulumi.OutputState }
+
+func (KubernetesResourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesResource)(nil)).Elem()
+}
+
+func (o KubernetesResourcePtrOutput) ToKubernetesResourcePtrOutput() KubernetesResourcePtrOutput {
+	return o
+}
+
+func (o KubernetesResourcePtrOutput) ToKubernetesResourcePtrOutputWithContext(ctx context.Context) KubernetesResourcePtrOutput {
+	return o
+}
+
+func (o KubernetesResourcePtrOutput) Elem() KubernetesResourceOutput {
+	return o.ApplyT(func(v *KubernetesResource) KubernetesResource {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesResource
+		return ret
+	}).(KubernetesResourceOutput)
+}
+
+// Input only. The YAML representation of the Membership CR. This field is ignored for GKE clusters where Hub can read the CR directly. Callers should provide the CR that is currently present in the cluster during CreateMembership or UpdateMembership, or leave this field empty if none exists. The CR manifest is used to validate the cluster has not been registered with another Membership.
+func (o KubernetesResourcePtrOutput) MembershipCrManifest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesResource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MembershipCrManifest
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Options for Kubernetes resource generation.
+func (o KubernetesResourcePtrOutput) ResourceOptions() ResourceOptionsPtrOutput {
+	return o.ApplyT(func(v *KubernetesResource) *ResourceOptions {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceOptions
+	}).(ResourceOptionsPtrOutput)
+}
+
+// KubernetesResource contains the YAML manifests and configuration for Membership Kubernetes resources in the cluster. After CreateMembership or UpdateMembership, these resources should be re-applied in the cluster.
+type KubernetesResourceResponse struct {
+	// The Kubernetes resources for installing the GKE Connect agent This field is only populated in the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership. It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the caller should make a UpdateMembership call with an empty field mask.
+	ConnectResources []ResourceManifestResponse `pulumi:"connectResources"`
+	// Input only. The YAML representation of the Membership CR. This field is ignored for GKE clusters where Hub can read the CR directly. Callers should provide the CR that is currently present in the cluster during CreateMembership or UpdateMembership, or leave this field empty if none exists. The CR manifest is used to validate the cluster has not been registered with another Membership.
+	MembershipCrManifest string `pulumi:"membershipCrManifest"`
+	// Additional Kubernetes resources that need to be applied to the cluster after Membership creation, and after every update. This field is only populated in the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership. It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the caller should make a UpdateMembership call with an empty field mask.
+	MembershipResources []ResourceManifestResponse `pulumi:"membershipResources"`
+	// Optional. Options for Kubernetes resource generation.
+	ResourceOptions ResourceOptionsResponse `pulumi:"resourceOptions"`
+}
+
+// KubernetesResourceResponseInput is an input type that accepts KubernetesResourceResponseArgs and KubernetesResourceResponseOutput values.
+// You can construct a concrete instance of `KubernetesResourceResponseInput` via:
+//
+//          KubernetesResourceResponseArgs{...}
+type KubernetesResourceResponseInput interface {
+	pulumi.Input
+
+	ToKubernetesResourceResponseOutput() KubernetesResourceResponseOutput
+	ToKubernetesResourceResponseOutputWithContext(context.Context) KubernetesResourceResponseOutput
+}
+
+// KubernetesResource contains the YAML manifests and configuration for Membership Kubernetes resources in the cluster. After CreateMembership or UpdateMembership, these resources should be re-applied in the cluster.
+type KubernetesResourceResponseArgs struct {
+	// The Kubernetes resources for installing the GKE Connect agent This field is only populated in the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership. It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the caller should make a UpdateMembership call with an empty field mask.
+	ConnectResources ResourceManifestResponseArrayInput `pulumi:"connectResources"`
+	// Input only. The YAML representation of the Membership CR. This field is ignored for GKE clusters where Hub can read the CR directly. Callers should provide the CR that is currently present in the cluster during CreateMembership or UpdateMembership, or leave this field empty if none exists. The CR manifest is used to validate the cluster has not been registered with another Membership.
+	MembershipCrManifest pulumi.StringInput `pulumi:"membershipCrManifest"`
+	// Additional Kubernetes resources that need to be applied to the cluster after Membership creation, and after every update. This field is only populated in the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership. It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the caller should make a UpdateMembership call with an empty field mask.
+	MembershipResources ResourceManifestResponseArrayInput `pulumi:"membershipResources"`
+	// Optional. Options for Kubernetes resource generation.
+	ResourceOptions ResourceOptionsResponseInput `pulumi:"resourceOptions"`
+}
+
+func (KubernetesResourceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesResourceResponse)(nil)).Elem()
+}
+
+func (i KubernetesResourceResponseArgs) ToKubernetesResourceResponseOutput() KubernetesResourceResponseOutput {
+	return i.ToKubernetesResourceResponseOutputWithContext(context.Background())
+}
+
+func (i KubernetesResourceResponseArgs) ToKubernetesResourceResponseOutputWithContext(ctx context.Context) KubernetesResourceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesResourceResponseOutput)
+}
+
+func (i KubernetesResourceResponseArgs) ToKubernetesResourceResponsePtrOutput() KubernetesResourceResponsePtrOutput {
+	return i.ToKubernetesResourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i KubernetesResourceResponseArgs) ToKubernetesResourceResponsePtrOutputWithContext(ctx context.Context) KubernetesResourceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesResourceResponseOutput).ToKubernetesResourceResponsePtrOutputWithContext(ctx)
+}
+
+// KubernetesResourceResponsePtrInput is an input type that accepts KubernetesResourceResponseArgs, KubernetesResourceResponsePtr and KubernetesResourceResponsePtrOutput values.
+// You can construct a concrete instance of `KubernetesResourceResponsePtrInput` via:
+//
+//          KubernetesResourceResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type KubernetesResourceResponsePtrInput interface {
+	pulumi.Input
+
+	ToKubernetesResourceResponsePtrOutput() KubernetesResourceResponsePtrOutput
+	ToKubernetesResourceResponsePtrOutputWithContext(context.Context) KubernetesResourceResponsePtrOutput
+}
+
+type kubernetesResourceResponsePtrType KubernetesResourceResponseArgs
+
+func KubernetesResourceResponsePtr(v *KubernetesResourceResponseArgs) KubernetesResourceResponsePtrInput {
+	return (*kubernetesResourceResponsePtrType)(v)
+}
+
+func (*kubernetesResourceResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesResourceResponse)(nil)).Elem()
+}
+
+func (i *kubernetesResourceResponsePtrType) ToKubernetesResourceResponsePtrOutput() KubernetesResourceResponsePtrOutput {
+	return i.ToKubernetesResourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *kubernetesResourceResponsePtrType) ToKubernetesResourceResponsePtrOutputWithContext(ctx context.Context) KubernetesResourceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesResourceResponsePtrOutput)
+}
+
+// KubernetesResource contains the YAML manifests and configuration for Membership Kubernetes resources in the cluster. After CreateMembership or UpdateMembership, these resources should be re-applied in the cluster.
+type KubernetesResourceResponseOutput struct{ *pulumi.OutputState }
+
+func (KubernetesResourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesResourceResponse)(nil)).Elem()
+}
+
+func (o KubernetesResourceResponseOutput) ToKubernetesResourceResponseOutput() KubernetesResourceResponseOutput {
+	return o
+}
+
+func (o KubernetesResourceResponseOutput) ToKubernetesResourceResponseOutputWithContext(ctx context.Context) KubernetesResourceResponseOutput {
+	return o
+}
+
+func (o KubernetesResourceResponseOutput) ToKubernetesResourceResponsePtrOutput() KubernetesResourceResponsePtrOutput {
+	return o.ToKubernetesResourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (o KubernetesResourceResponseOutput) ToKubernetesResourceResponsePtrOutputWithContext(ctx context.Context) KubernetesResourceResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesResourceResponse) *KubernetesResourceResponse {
+		return &v
+	}).(KubernetesResourceResponsePtrOutput)
+}
+
+// The Kubernetes resources for installing the GKE Connect agent This field is only populated in the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership. It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the caller should make a UpdateMembership call with an empty field mask.
+func (o KubernetesResourceResponseOutput) ConnectResources() ResourceManifestResponseArrayOutput {
+	return o.ApplyT(func(v KubernetesResourceResponse) []ResourceManifestResponse { return v.ConnectResources }).(ResourceManifestResponseArrayOutput)
+}
+
+// Input only. The YAML representation of the Membership CR. This field is ignored for GKE clusters where Hub can read the CR directly. Callers should provide the CR that is currently present in the cluster during CreateMembership or UpdateMembership, or leave this field empty if none exists. The CR manifest is used to validate the cluster has not been registered with another Membership.
+func (o KubernetesResourceResponseOutput) MembershipCrManifest() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesResourceResponse) string { return v.MembershipCrManifest }).(pulumi.StringOutput)
+}
+
+// Additional Kubernetes resources that need to be applied to the cluster after Membership creation, and after every update. This field is only populated in the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership. It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the caller should make a UpdateMembership call with an empty field mask.
+func (o KubernetesResourceResponseOutput) MembershipResources() ResourceManifestResponseArrayOutput {
+	return o.ApplyT(func(v KubernetesResourceResponse) []ResourceManifestResponse { return v.MembershipResources }).(ResourceManifestResponseArrayOutput)
+}
+
+// Optional. Options for Kubernetes resource generation.
+func (o KubernetesResourceResponseOutput) ResourceOptions() ResourceOptionsResponseOutput {
+	return o.ApplyT(func(v KubernetesResourceResponse) ResourceOptionsResponse { return v.ResourceOptions }).(ResourceOptionsResponseOutput)
+}
+
+type KubernetesResourceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (KubernetesResourceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesResourceResponse)(nil)).Elem()
+}
+
+func (o KubernetesResourceResponsePtrOutput) ToKubernetesResourceResponsePtrOutput() KubernetesResourceResponsePtrOutput {
+	return o
+}
+
+func (o KubernetesResourceResponsePtrOutput) ToKubernetesResourceResponsePtrOutputWithContext(ctx context.Context) KubernetesResourceResponsePtrOutput {
+	return o
+}
+
+func (o KubernetesResourceResponsePtrOutput) Elem() KubernetesResourceResponseOutput {
+	return o.ApplyT(func(v *KubernetesResourceResponse) KubernetesResourceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesResourceResponse
+		return ret
+	}).(KubernetesResourceResponseOutput)
+}
+
+// The Kubernetes resources for installing the GKE Connect agent This field is only populated in the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership. It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the caller should make a UpdateMembership call with an empty field mask.
+func (o KubernetesResourceResponsePtrOutput) ConnectResources() ResourceManifestResponseArrayOutput {
+	return o.ApplyT(func(v *KubernetesResourceResponse) []ResourceManifestResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectResources
+	}).(ResourceManifestResponseArrayOutput)
+}
+
+// Input only. The YAML representation of the Membership CR. This field is ignored for GKE clusters where Hub can read the CR directly. Callers should provide the CR that is currently present in the cluster during CreateMembership or UpdateMembership, or leave this field empty if none exists. The CR manifest is used to validate the cluster has not been registered with another Membership.
+func (o KubernetesResourceResponsePtrOutput) MembershipCrManifest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesResourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MembershipCrManifest
+	}).(pulumi.StringPtrOutput)
+}
+
+// Additional Kubernetes resources that need to be applied to the cluster after Membership creation, and after every update. This field is only populated in the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership. It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the caller should make a UpdateMembership call with an empty field mask.
+func (o KubernetesResourceResponsePtrOutput) MembershipResources() ResourceManifestResponseArrayOutput {
+	return o.ApplyT(func(v *KubernetesResourceResponse) []ResourceManifestResponse {
+		if v == nil {
+			return nil
+		}
+		return v.MembershipResources
+	}).(ResourceManifestResponseArrayOutput)
+}
+
+// Optional. Options for Kubernetes resource generation.
+func (o KubernetesResourceResponsePtrOutput) ResourceOptions() ResourceOptionsResponsePtrOutput {
+	return o.ApplyT(func(v *KubernetesResourceResponse) *ResourceOptionsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceOptions
+	}).(ResourceOptionsResponsePtrOutput)
+}
+
 // MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
 type MembershipEndpoint struct {
 	// Optional. Specific information for a GKE-on-GCP cluster.
 	GkeCluster *GkeCluster `pulumi:"gkeCluster"`
+	// Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
+	KubernetesResource *KubernetesResource `pulumi:"kubernetesResource"`
 	// Optional. Specific information for a GKE Multi-Cloud cluster.
 	MultiCloudCluster *MultiCloudCluster `pulumi:"multiCloudCluster"`
-	// Optional. Specific information for a GKE On-Prem cluster.
+	// Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
 	OnPremCluster *OnPremCluster `pulumi:"onPremCluster"`
 }
 
@@ -2614,9 +3411,11 @@ type MembershipEndpointInput interface {
 type MembershipEndpointArgs struct {
 	// Optional. Specific information for a GKE-on-GCP cluster.
 	GkeCluster GkeClusterPtrInput `pulumi:"gkeCluster"`
+	// Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
+	KubernetesResource KubernetesResourcePtrInput `pulumi:"kubernetesResource"`
 	// Optional. Specific information for a GKE Multi-Cloud cluster.
 	MultiCloudCluster MultiCloudClusterPtrInput `pulumi:"multiCloudCluster"`
-	// Optional. Specific information for a GKE On-Prem cluster.
+	// Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
 	OnPremCluster OnPremClusterPtrInput `pulumi:"onPremCluster"`
 }
 
@@ -2703,12 +3502,17 @@ func (o MembershipEndpointOutput) GkeCluster() GkeClusterPtrOutput {
 	return o.ApplyT(func(v MembershipEndpoint) *GkeCluster { return v.GkeCluster }).(GkeClusterPtrOutput)
 }
 
+// Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
+func (o MembershipEndpointOutput) KubernetesResource() KubernetesResourcePtrOutput {
+	return o.ApplyT(func(v MembershipEndpoint) *KubernetesResource { return v.KubernetesResource }).(KubernetesResourcePtrOutput)
+}
+
 // Optional. Specific information for a GKE Multi-Cloud cluster.
 func (o MembershipEndpointOutput) MultiCloudCluster() MultiCloudClusterPtrOutput {
 	return o.ApplyT(func(v MembershipEndpoint) *MultiCloudCluster { return v.MultiCloudCluster }).(MultiCloudClusterPtrOutput)
 }
 
-// Optional. Specific information for a GKE On-Prem cluster.
+// Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
 func (o MembershipEndpointOutput) OnPremCluster() OnPremClusterPtrOutput {
 	return o.ApplyT(func(v MembershipEndpoint) *OnPremCluster { return v.OnPremCluster }).(OnPremClusterPtrOutput)
 }
@@ -2747,6 +3551,16 @@ func (o MembershipEndpointPtrOutput) GkeCluster() GkeClusterPtrOutput {
 	}).(GkeClusterPtrOutput)
 }
 
+// Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
+func (o MembershipEndpointPtrOutput) KubernetesResource() KubernetesResourcePtrOutput {
+	return o.ApplyT(func(v *MembershipEndpoint) *KubernetesResource {
+		if v == nil {
+			return nil
+		}
+		return v.KubernetesResource
+	}).(KubernetesResourcePtrOutput)
+}
+
 // Optional. Specific information for a GKE Multi-Cloud cluster.
 func (o MembershipEndpointPtrOutput) MultiCloudCluster() MultiCloudClusterPtrOutput {
 	return o.ApplyT(func(v *MembershipEndpoint) *MultiCloudCluster {
@@ -2757,7 +3571,7 @@ func (o MembershipEndpointPtrOutput) MultiCloudCluster() MultiCloudClusterPtrOut
 	}).(MultiCloudClusterPtrOutput)
 }
 
-// Optional. Specific information for a GKE On-Prem cluster.
+// Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
 func (o MembershipEndpointPtrOutput) OnPremCluster() OnPremClusterPtrOutput {
 	return o.ApplyT(func(v *MembershipEndpoint) *OnPremCluster {
 		if v == nil {
@@ -2773,9 +3587,11 @@ type MembershipEndpointResponse struct {
 	GkeCluster GkeClusterResponse `pulumi:"gkeCluster"`
 	// Useful Kubernetes-specific metadata.
 	KubernetesMetadata KubernetesMetadataResponse `pulumi:"kubernetesMetadata"`
+	// Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
+	KubernetesResource KubernetesResourceResponse `pulumi:"kubernetesResource"`
 	// Optional. Specific information for a GKE Multi-Cloud cluster.
 	MultiCloudCluster MultiCloudClusterResponse `pulumi:"multiCloudCluster"`
-	// Optional. Specific information for a GKE On-Prem cluster.
+	// Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
 	OnPremCluster OnPremClusterResponse `pulumi:"onPremCluster"`
 }
 
@@ -2796,9 +3612,11 @@ type MembershipEndpointResponseArgs struct {
 	GkeCluster GkeClusterResponseInput `pulumi:"gkeCluster"`
 	// Useful Kubernetes-specific metadata.
 	KubernetesMetadata KubernetesMetadataResponseInput `pulumi:"kubernetesMetadata"`
+	// Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
+	KubernetesResource KubernetesResourceResponseInput `pulumi:"kubernetesResource"`
 	// Optional. Specific information for a GKE Multi-Cloud cluster.
 	MultiCloudCluster MultiCloudClusterResponseInput `pulumi:"multiCloudCluster"`
-	// Optional. Specific information for a GKE On-Prem cluster.
+	// Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
 	OnPremCluster OnPremClusterResponseInput `pulumi:"onPremCluster"`
 }
 
@@ -2890,12 +3708,17 @@ func (o MembershipEndpointResponseOutput) KubernetesMetadata() KubernetesMetadat
 	return o.ApplyT(func(v MembershipEndpointResponse) KubernetesMetadataResponse { return v.KubernetesMetadata }).(KubernetesMetadataResponseOutput)
 }
 
+// Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
+func (o MembershipEndpointResponseOutput) KubernetesResource() KubernetesResourceResponseOutput {
+	return o.ApplyT(func(v MembershipEndpointResponse) KubernetesResourceResponse { return v.KubernetesResource }).(KubernetesResourceResponseOutput)
+}
+
 // Optional. Specific information for a GKE Multi-Cloud cluster.
 func (o MembershipEndpointResponseOutput) MultiCloudCluster() MultiCloudClusterResponseOutput {
 	return o.ApplyT(func(v MembershipEndpointResponse) MultiCloudClusterResponse { return v.MultiCloudCluster }).(MultiCloudClusterResponseOutput)
 }
 
-// Optional. Specific information for a GKE On-Prem cluster.
+// Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
 func (o MembershipEndpointResponseOutput) OnPremCluster() OnPremClusterResponseOutput {
 	return o.ApplyT(func(v MembershipEndpointResponse) OnPremClusterResponse { return v.OnPremCluster }).(OnPremClusterResponseOutput)
 }
@@ -2944,6 +3767,16 @@ func (o MembershipEndpointResponsePtrOutput) KubernetesMetadata() KubernetesMeta
 	}).(KubernetesMetadataResponsePtrOutput)
 }
 
+// Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
+func (o MembershipEndpointResponsePtrOutput) KubernetesResource() KubernetesResourceResponsePtrOutput {
+	return o.ApplyT(func(v *MembershipEndpointResponse) *KubernetesResourceResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.KubernetesResource
+	}).(KubernetesResourceResponsePtrOutput)
+}
+
 // Optional. Specific information for a GKE Multi-Cloud cluster.
 func (o MembershipEndpointResponsePtrOutput) MultiCloudCluster() MultiCloudClusterResponsePtrOutput {
 	return o.ApplyT(func(v *MembershipEndpointResponse) *MultiCloudClusterResponse {
@@ -2954,7 +3787,7 @@ func (o MembershipEndpointResponsePtrOutput) MultiCloudCluster() MultiCloudClust
 	}).(MultiCloudClusterResponsePtrOutput)
 }
 
-// Optional. Specific information for a GKE On-Prem cluster.
+// Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
 func (o MembershipEndpointResponsePtrOutput) OnPremCluster() OnPremClusterResponsePtrOutput {
 	return o.ApplyT(func(v *MembershipEndpointResponse) *OnPremClusterResponse {
 		if v == nil {
@@ -4020,7 +4853,599 @@ func (o OnPremClusterResponsePtrOutput) ResourceLink() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// ResourceManifest represents a single Kubernetes resource to be applied to the cluster.
+type ResourceManifestResponse struct {
+	// Whether the resource provided in the manifest is `cluster_scoped`. If unset, the manifest is assumed to be namespace scoped. This field is used for REST mapping when applying the resource in a cluster.
+	ClusterScoped bool `pulumi:"clusterScoped"`
+	// YAML manifest of the resource.
+	Manifest string `pulumi:"manifest"`
+}
+
+// ResourceManifestResponseInput is an input type that accepts ResourceManifestResponseArgs and ResourceManifestResponseOutput values.
+// You can construct a concrete instance of `ResourceManifestResponseInput` via:
+//
+//          ResourceManifestResponseArgs{...}
+type ResourceManifestResponseInput interface {
+	pulumi.Input
+
+	ToResourceManifestResponseOutput() ResourceManifestResponseOutput
+	ToResourceManifestResponseOutputWithContext(context.Context) ResourceManifestResponseOutput
+}
+
+// ResourceManifest represents a single Kubernetes resource to be applied to the cluster.
+type ResourceManifestResponseArgs struct {
+	// Whether the resource provided in the manifest is `cluster_scoped`. If unset, the manifest is assumed to be namespace scoped. This field is used for REST mapping when applying the resource in a cluster.
+	ClusterScoped pulumi.BoolInput `pulumi:"clusterScoped"`
+	// YAML manifest of the resource.
+	Manifest pulumi.StringInput `pulumi:"manifest"`
+}
+
+func (ResourceManifestResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceManifestResponse)(nil)).Elem()
+}
+
+func (i ResourceManifestResponseArgs) ToResourceManifestResponseOutput() ResourceManifestResponseOutput {
+	return i.ToResourceManifestResponseOutputWithContext(context.Background())
+}
+
+func (i ResourceManifestResponseArgs) ToResourceManifestResponseOutputWithContext(ctx context.Context) ResourceManifestResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceManifestResponseOutput)
+}
+
+// ResourceManifestResponseArrayInput is an input type that accepts ResourceManifestResponseArray and ResourceManifestResponseArrayOutput values.
+// You can construct a concrete instance of `ResourceManifestResponseArrayInput` via:
+//
+//          ResourceManifestResponseArray{ ResourceManifestResponseArgs{...} }
+type ResourceManifestResponseArrayInput interface {
+	pulumi.Input
+
+	ToResourceManifestResponseArrayOutput() ResourceManifestResponseArrayOutput
+	ToResourceManifestResponseArrayOutputWithContext(context.Context) ResourceManifestResponseArrayOutput
+}
+
+type ResourceManifestResponseArray []ResourceManifestResponseInput
+
+func (ResourceManifestResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceManifestResponse)(nil)).Elem()
+}
+
+func (i ResourceManifestResponseArray) ToResourceManifestResponseArrayOutput() ResourceManifestResponseArrayOutput {
+	return i.ToResourceManifestResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ResourceManifestResponseArray) ToResourceManifestResponseArrayOutputWithContext(ctx context.Context) ResourceManifestResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceManifestResponseArrayOutput)
+}
+
+// ResourceManifest represents a single Kubernetes resource to be applied to the cluster.
+type ResourceManifestResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceManifestResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceManifestResponse)(nil)).Elem()
+}
+
+func (o ResourceManifestResponseOutput) ToResourceManifestResponseOutput() ResourceManifestResponseOutput {
+	return o
+}
+
+func (o ResourceManifestResponseOutput) ToResourceManifestResponseOutputWithContext(ctx context.Context) ResourceManifestResponseOutput {
+	return o
+}
+
+// Whether the resource provided in the manifest is `cluster_scoped`. If unset, the manifest is assumed to be namespace scoped. This field is used for REST mapping when applying the resource in a cluster.
+func (o ResourceManifestResponseOutput) ClusterScoped() pulumi.BoolOutput {
+	return o.ApplyT(func(v ResourceManifestResponse) bool { return v.ClusterScoped }).(pulumi.BoolOutput)
+}
+
+// YAML manifest of the resource.
+func (o ResourceManifestResponseOutput) Manifest() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceManifestResponse) string { return v.Manifest }).(pulumi.StringOutput)
+}
+
+type ResourceManifestResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ResourceManifestResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceManifestResponse)(nil)).Elem()
+}
+
+func (o ResourceManifestResponseArrayOutput) ToResourceManifestResponseArrayOutput() ResourceManifestResponseArrayOutput {
+	return o
+}
+
+func (o ResourceManifestResponseArrayOutput) ToResourceManifestResponseArrayOutputWithContext(ctx context.Context) ResourceManifestResponseArrayOutput {
+	return o
+}
+
+func (o ResourceManifestResponseArrayOutput) Index(i pulumi.IntInput) ResourceManifestResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceManifestResponse {
+		return vs[0].([]ResourceManifestResponse)[vs[1].(int)]
+	}).(ResourceManifestResponseOutput)
+}
+
+// ResourceOptions represent options for Kubernetes resource generation.
+type ResourceOptions struct {
+	// Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.
+	ConnectVersion *string `pulumi:"connectVersion"`
+	// Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
+	V1beta1Crd *bool `pulumi:"v1beta1Crd"`
+}
+
+// ResourceOptionsInput is an input type that accepts ResourceOptionsArgs and ResourceOptionsOutput values.
+// You can construct a concrete instance of `ResourceOptionsInput` via:
+//
+//          ResourceOptionsArgs{...}
+type ResourceOptionsInput interface {
+	pulumi.Input
+
+	ToResourceOptionsOutput() ResourceOptionsOutput
+	ToResourceOptionsOutputWithContext(context.Context) ResourceOptionsOutput
+}
+
+// ResourceOptions represent options for Kubernetes resource generation.
+type ResourceOptionsArgs struct {
+	// Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.
+	ConnectVersion pulumi.StringPtrInput `pulumi:"connectVersion"`
+	// Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
+	V1beta1Crd pulumi.BoolPtrInput `pulumi:"v1beta1Crd"`
+}
+
+func (ResourceOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceOptions)(nil)).Elem()
+}
+
+func (i ResourceOptionsArgs) ToResourceOptionsOutput() ResourceOptionsOutput {
+	return i.ToResourceOptionsOutputWithContext(context.Background())
+}
+
+func (i ResourceOptionsArgs) ToResourceOptionsOutputWithContext(ctx context.Context) ResourceOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceOptionsOutput)
+}
+
+func (i ResourceOptionsArgs) ToResourceOptionsPtrOutput() ResourceOptionsPtrOutput {
+	return i.ToResourceOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceOptionsArgs) ToResourceOptionsPtrOutputWithContext(ctx context.Context) ResourceOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceOptionsOutput).ToResourceOptionsPtrOutputWithContext(ctx)
+}
+
+// ResourceOptionsPtrInput is an input type that accepts ResourceOptionsArgs, ResourceOptionsPtr and ResourceOptionsPtrOutput values.
+// You can construct a concrete instance of `ResourceOptionsPtrInput` via:
+//
+//          ResourceOptionsArgs{...}
+//
+//  or:
+//
+//          nil
+type ResourceOptionsPtrInput interface {
+	pulumi.Input
+
+	ToResourceOptionsPtrOutput() ResourceOptionsPtrOutput
+	ToResourceOptionsPtrOutputWithContext(context.Context) ResourceOptionsPtrOutput
+}
+
+type resourceOptionsPtrType ResourceOptionsArgs
+
+func ResourceOptionsPtr(v *ResourceOptionsArgs) ResourceOptionsPtrInput {
+	return (*resourceOptionsPtrType)(v)
+}
+
+func (*resourceOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceOptions)(nil)).Elem()
+}
+
+func (i *resourceOptionsPtrType) ToResourceOptionsPtrOutput() ResourceOptionsPtrOutput {
+	return i.ToResourceOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceOptionsPtrType) ToResourceOptionsPtrOutputWithContext(ctx context.Context) ResourceOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceOptionsPtrOutput)
+}
+
+// ResourceOptions represent options for Kubernetes resource generation.
+type ResourceOptionsOutput struct{ *pulumi.OutputState }
+
+func (ResourceOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceOptions)(nil)).Elem()
+}
+
+func (o ResourceOptionsOutput) ToResourceOptionsOutput() ResourceOptionsOutput {
+	return o
+}
+
+func (o ResourceOptionsOutput) ToResourceOptionsOutputWithContext(ctx context.Context) ResourceOptionsOutput {
+	return o
+}
+
+func (o ResourceOptionsOutput) ToResourceOptionsPtrOutput() ResourceOptionsPtrOutput {
+	return o.ToResourceOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceOptionsOutput) ToResourceOptionsPtrOutputWithContext(ctx context.Context) ResourceOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceOptions) *ResourceOptions {
+		return &v
+	}).(ResourceOptionsPtrOutput)
+}
+
+// Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.
+func (o ResourceOptionsOutput) ConnectVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceOptions) *string { return v.ConnectVersion }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
+func (o ResourceOptionsOutput) V1beta1Crd() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceOptions) *bool { return v.V1beta1Crd }).(pulumi.BoolPtrOutput)
+}
+
+type ResourceOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceOptions)(nil)).Elem()
+}
+
+func (o ResourceOptionsPtrOutput) ToResourceOptionsPtrOutput() ResourceOptionsPtrOutput {
+	return o
+}
+
+func (o ResourceOptionsPtrOutput) ToResourceOptionsPtrOutputWithContext(ctx context.Context) ResourceOptionsPtrOutput {
+	return o
+}
+
+func (o ResourceOptionsPtrOutput) Elem() ResourceOptionsOutput {
+	return o.ApplyT(func(v *ResourceOptions) ResourceOptions {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceOptions
+		return ret
+	}).(ResourceOptionsOutput)
+}
+
+// Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.
+func (o ResourceOptionsPtrOutput) ConnectVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
+func (o ResourceOptionsPtrOutput) V1beta1Crd() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.V1beta1Crd
+	}).(pulumi.BoolPtrOutput)
+}
+
+// ResourceOptions represent options for Kubernetes resource generation.
+type ResourceOptionsResponse struct {
+	// Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.
+	ConnectVersion string `pulumi:"connectVersion"`
+	// Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
+	V1beta1Crd bool `pulumi:"v1beta1Crd"`
+}
+
+// ResourceOptionsResponseInput is an input type that accepts ResourceOptionsResponseArgs and ResourceOptionsResponseOutput values.
+// You can construct a concrete instance of `ResourceOptionsResponseInput` via:
+//
+//          ResourceOptionsResponseArgs{...}
+type ResourceOptionsResponseInput interface {
+	pulumi.Input
+
+	ToResourceOptionsResponseOutput() ResourceOptionsResponseOutput
+	ToResourceOptionsResponseOutputWithContext(context.Context) ResourceOptionsResponseOutput
+}
+
+// ResourceOptions represent options for Kubernetes resource generation.
+type ResourceOptionsResponseArgs struct {
+	// Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.
+	ConnectVersion pulumi.StringInput `pulumi:"connectVersion"`
+	// Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
+	V1beta1Crd pulumi.BoolInput `pulumi:"v1beta1Crd"`
+}
+
+func (ResourceOptionsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceOptionsResponse)(nil)).Elem()
+}
+
+func (i ResourceOptionsResponseArgs) ToResourceOptionsResponseOutput() ResourceOptionsResponseOutput {
+	return i.ToResourceOptionsResponseOutputWithContext(context.Background())
+}
+
+func (i ResourceOptionsResponseArgs) ToResourceOptionsResponseOutputWithContext(ctx context.Context) ResourceOptionsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceOptionsResponseOutput)
+}
+
+func (i ResourceOptionsResponseArgs) ToResourceOptionsResponsePtrOutput() ResourceOptionsResponsePtrOutput {
+	return i.ToResourceOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ResourceOptionsResponseArgs) ToResourceOptionsResponsePtrOutputWithContext(ctx context.Context) ResourceOptionsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceOptionsResponseOutput).ToResourceOptionsResponsePtrOutputWithContext(ctx)
+}
+
+// ResourceOptionsResponsePtrInput is an input type that accepts ResourceOptionsResponseArgs, ResourceOptionsResponsePtr and ResourceOptionsResponsePtrOutput values.
+// You can construct a concrete instance of `ResourceOptionsResponsePtrInput` via:
+//
+//          ResourceOptionsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ResourceOptionsResponsePtrInput interface {
+	pulumi.Input
+
+	ToResourceOptionsResponsePtrOutput() ResourceOptionsResponsePtrOutput
+	ToResourceOptionsResponsePtrOutputWithContext(context.Context) ResourceOptionsResponsePtrOutput
+}
+
+type resourceOptionsResponsePtrType ResourceOptionsResponseArgs
+
+func ResourceOptionsResponsePtr(v *ResourceOptionsResponseArgs) ResourceOptionsResponsePtrInput {
+	return (*resourceOptionsResponsePtrType)(v)
+}
+
+func (*resourceOptionsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceOptionsResponse)(nil)).Elem()
+}
+
+func (i *resourceOptionsResponsePtrType) ToResourceOptionsResponsePtrOutput() ResourceOptionsResponsePtrOutput {
+	return i.ToResourceOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *resourceOptionsResponsePtrType) ToResourceOptionsResponsePtrOutputWithContext(ctx context.Context) ResourceOptionsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceOptionsResponsePtrOutput)
+}
+
+// ResourceOptions represent options for Kubernetes resource generation.
+type ResourceOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceOptionsResponse)(nil)).Elem()
+}
+
+func (o ResourceOptionsResponseOutput) ToResourceOptionsResponseOutput() ResourceOptionsResponseOutput {
+	return o
+}
+
+func (o ResourceOptionsResponseOutput) ToResourceOptionsResponseOutputWithContext(ctx context.Context) ResourceOptionsResponseOutput {
+	return o
+}
+
+func (o ResourceOptionsResponseOutput) ToResourceOptionsResponsePtrOutput() ResourceOptionsResponsePtrOutput {
+	return o.ToResourceOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ResourceOptionsResponseOutput) ToResourceOptionsResponsePtrOutputWithContext(ctx context.Context) ResourceOptionsResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceOptionsResponse) *ResourceOptionsResponse {
+		return &v
+	}).(ResourceOptionsResponsePtrOutput)
+}
+
+// Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.
+func (o ResourceOptionsResponseOutput) ConnectVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceOptionsResponse) string { return v.ConnectVersion }).(pulumi.StringOutput)
+}
+
+// Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
+func (o ResourceOptionsResponseOutput) V1beta1Crd() pulumi.BoolOutput {
+	return o.ApplyT(func(v ResourceOptionsResponse) bool { return v.V1beta1Crd }).(pulumi.BoolOutput)
+}
+
+type ResourceOptionsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceOptionsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceOptionsResponse)(nil)).Elem()
+}
+
+func (o ResourceOptionsResponsePtrOutput) ToResourceOptionsResponsePtrOutput() ResourceOptionsResponsePtrOutput {
+	return o
+}
+
+func (o ResourceOptionsResponsePtrOutput) ToResourceOptionsResponsePtrOutputWithContext(ctx context.Context) ResourceOptionsResponsePtrOutput {
+	return o
+}
+
+func (o ResourceOptionsResponsePtrOutput) Elem() ResourceOptionsResponseOutput {
+	return o.ApplyT(func(v *ResourceOptionsResponse) ResourceOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceOptionsResponse
+		return ret
+	}).(ResourceOptionsResponseOutput)
+}
+
+// Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.
+func (o ResourceOptionsResponsePtrOutput) ConnectVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
+func (o ResourceOptionsResponsePtrOutput) V1beta1Crd() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceOptionsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.V1beta1Crd
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Status specifies state for the subcomponent.
+type StatusResponse struct {
+	// Code specifies AppDevExperienceFeature's subcomponent ready state.
+	Code string `pulumi:"code"`
+	// Description is populated if Code is Failed, explaining why it has failed.
+	Description string `pulumi:"description"`
+}
+
+// StatusResponseInput is an input type that accepts StatusResponseArgs and StatusResponseOutput values.
+// You can construct a concrete instance of `StatusResponseInput` via:
+//
+//          StatusResponseArgs{...}
+type StatusResponseInput interface {
+	pulumi.Input
+
+	ToStatusResponseOutput() StatusResponseOutput
+	ToStatusResponseOutputWithContext(context.Context) StatusResponseOutput
+}
+
+// Status specifies state for the subcomponent.
+type StatusResponseArgs struct {
+	// Code specifies AppDevExperienceFeature's subcomponent ready state.
+	Code pulumi.StringInput `pulumi:"code"`
+	// Description is populated if Code is Failed, explaining why it has failed.
+	Description pulumi.StringInput `pulumi:"description"`
+}
+
+func (StatusResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
+}
+
+func (i StatusResponseArgs) ToStatusResponseOutput() StatusResponseOutput {
+	return i.ToStatusResponseOutputWithContext(context.Background())
+}
+
+func (i StatusResponseArgs) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput)
+}
+
+func (i StatusResponseArgs) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return i.ToStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (i StatusResponseArgs) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput).ToStatusResponsePtrOutputWithContext(ctx)
+}
+
+// StatusResponsePtrInput is an input type that accepts StatusResponseArgs, StatusResponsePtr and StatusResponsePtrOutput values.
+// You can construct a concrete instance of `StatusResponsePtrInput` via:
+//
+//          StatusResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type StatusResponsePtrInput interface {
+	pulumi.Input
+
+	ToStatusResponsePtrOutput() StatusResponsePtrOutput
+	ToStatusResponsePtrOutputWithContext(context.Context) StatusResponsePtrOutput
+}
+
+type statusResponsePtrType StatusResponseArgs
+
+func StatusResponsePtr(v *StatusResponseArgs) StatusResponsePtrInput {
+	return (*statusResponsePtrType)(v)
+}
+
+func (*statusResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
+}
+
+func (i *statusResponsePtrType) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return i.ToStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *statusResponsePtrType) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusResponsePtrOutput)
+}
+
+// Status specifies state for the subcomponent.
+type StatusResponseOutput struct{ *pulumi.OutputState }
+
+func (StatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
+}
+
+func (o StatusResponseOutput) ToStatusResponseOutput() StatusResponseOutput {
+	return o
+}
+
+func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
+	return o
+}
+
+func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return o.ToStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatusResponse) *StatusResponse {
+		return &v
+	}).(StatusResponsePtrOutput)
+}
+
+// Code specifies AppDevExperienceFeature's subcomponent ready state.
+func (o StatusResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v StatusResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Description is populated if Code is Failed, explaining why it has failed.
+func (o StatusResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v StatusResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+type StatusResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StatusResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
+}
+
+func (o StatusResponsePtrOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return o
+}
+
+func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return o
+}
+
+func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
+	return o.ApplyT(func(v *StatusResponse) StatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StatusResponse
+		return ret
+	}).(StatusResponseOutput)
+}
+
+// Code specifies AppDevExperienceFeature's subcomponent ready state.
+func (o StatusResponsePtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// Description is populated if Code is Failed, explaining why it has failed.
+func (o StatusResponsePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AppDevExperienceFeatureSpecInput)(nil)).Elem(), AppDevExperienceFeatureSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppDevExperienceFeatureSpecPtrInput)(nil)).Elem(), AppDevExperienceFeatureSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppDevExperienceFeatureSpecResponseInput)(nil)).Elem(), AppDevExperienceFeatureSpecResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppDevExperienceFeatureSpecResponsePtrInput)(nil)).Elem(), AppDevExperienceFeatureSpecResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppDevExperienceFeatureStateResponseInput)(nil)).Elem(), AppDevExperienceFeatureStateResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppDevExperienceFeatureStateResponsePtrInput)(nil)).Elem(), AppDevExperienceFeatureStateResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseInput)(nil)).Elem(), AuditConfigResponseArgs{})
@@ -4056,6 +5481,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterResponsePtrInput)(nil)).Elem(), GkeClusterResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesMetadataResponseInput)(nil)).Elem(), KubernetesMetadataResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesMetadataResponsePtrInput)(nil)).Elem(), KubernetesMetadataResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesResourceInput)(nil)).Elem(), KubernetesResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesResourcePtrInput)(nil)).Elem(), KubernetesResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesResourceResponseInput)(nil)).Elem(), KubernetesResourceResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesResourceResponsePtrInput)(nil)).Elem(), KubernetesResourceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipEndpointInput)(nil)).Elem(), MembershipEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipEndpointPtrInput)(nil)).Elem(), MembershipEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipEndpointResponseInput)(nil)).Elem(), MembershipEndpointResponseArgs{})
@@ -4074,6 +5503,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OnPremClusterPtrInput)(nil)).Elem(), OnPremClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OnPremClusterResponseInput)(nil)).Elem(), OnPremClusterResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OnPremClusterResponsePtrInput)(nil)).Elem(), OnPremClusterResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceManifestResponseInput)(nil)).Elem(), ResourceManifestResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceManifestResponseArrayInput)(nil)).Elem(), ResourceManifestResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceOptionsInput)(nil)).Elem(), ResourceOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceOptionsPtrInput)(nil)).Elem(), ResourceOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceOptionsResponseInput)(nil)).Elem(), ResourceOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceOptionsResponsePtrInput)(nil)).Elem(), ResourceOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponseInput)(nil)).Elem(), StatusResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponsePtrInput)(nil)).Elem(), StatusResponseArgs{})
+	pulumi.RegisterOutputType(AppDevExperienceFeatureSpecOutput{})
+	pulumi.RegisterOutputType(AppDevExperienceFeatureSpecPtrOutput{})
+	pulumi.RegisterOutputType(AppDevExperienceFeatureSpecResponseOutput{})
+	pulumi.RegisterOutputType(AppDevExperienceFeatureSpecResponsePtrOutput{})
+	pulumi.RegisterOutputType(AppDevExperienceFeatureStateResponseOutput{})
+	pulumi.RegisterOutputType(AppDevExperienceFeatureStateResponsePtrOutput{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -4109,6 +5552,10 @@ func init() {
 	pulumi.RegisterOutputType(GkeClusterResponsePtrOutput{})
 	pulumi.RegisterOutputType(KubernetesMetadataResponseOutput{})
 	pulumi.RegisterOutputType(KubernetesMetadataResponsePtrOutput{})
+	pulumi.RegisterOutputType(KubernetesResourceOutput{})
+	pulumi.RegisterOutputType(KubernetesResourcePtrOutput{})
+	pulumi.RegisterOutputType(KubernetesResourceResponseOutput{})
+	pulumi.RegisterOutputType(KubernetesResourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(MembershipEndpointOutput{})
 	pulumi.RegisterOutputType(MembershipEndpointPtrOutput{})
 	pulumi.RegisterOutputType(MembershipEndpointResponseOutput{})
@@ -4127,4 +5574,12 @@ func init() {
 	pulumi.RegisterOutputType(OnPremClusterPtrOutput{})
 	pulumi.RegisterOutputType(OnPremClusterResponseOutput{})
 	pulumi.RegisterOutputType(OnPremClusterResponsePtrOutput{})
+	pulumi.RegisterOutputType(ResourceManifestResponseOutput{})
+	pulumi.RegisterOutputType(ResourceManifestResponseArrayOutput{})
+	pulumi.RegisterOutputType(ResourceOptionsOutput{})
+	pulumi.RegisterOutputType(ResourceOptionsPtrOutput{})
+	pulumi.RegisterOutputType(ResourceOptionsResponseOutput{})
+	pulumi.RegisterOutputType(ResourceOptionsResponsePtrOutput{})
+	pulumi.RegisterOutputType(StatusResponseOutput{})
+	pulumi.RegisterOutputType(StatusResponsePtrOutput{})
 }

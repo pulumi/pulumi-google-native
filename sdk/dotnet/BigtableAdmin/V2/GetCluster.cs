@@ -63,6 +63,10 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
     public sealed class GetClusterResult
     {
         /// <summary>
+        /// Configuration for this cluster.
+        /// </summary>
+        public readonly Outputs.ClusterConfigResponse ClusterConfig;
+        /// <summary>
         /// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
         /// </summary>
         public readonly string DefaultStorageType;
@@ -89,6 +93,8 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
 
         [OutputConstructor]
         private GetClusterResult(
+            Outputs.ClusterConfigResponse clusterConfig,
+
             string defaultStorageType,
 
             Outputs.EncryptionConfigResponse encryptionConfig,
@@ -101,6 +107,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
 
             string state)
         {
+            ClusterConfig = clusterConfig;
             DefaultStorageType = defaultStorageType;
             EncryptionConfig = encryptionConfig;
             Location = location;

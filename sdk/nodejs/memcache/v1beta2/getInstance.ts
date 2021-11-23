@@ -79,7 +79,7 @@ export interface GetInstanceResult {
      */
     readonly nodeCount: number;
     /**
-     * Optional: User defined parameters to apply to the memcached process on each node.
+     * User defined parameters to apply to the memcached process on each node.
      */
     readonly parameters: outputs.memcache.v1beta2.MemcacheParametersResponse;
     /**

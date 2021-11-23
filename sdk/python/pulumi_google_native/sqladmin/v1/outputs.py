@@ -28,6 +28,7 @@ __all__ = [
     'MySqlReplicaConfigurationResponse',
     'OnPremisesConfigurationResponse',
     'OperationErrorResponse',
+    'PasswordValidationPolicyResponse',
     'ReplicaConfigurationResponse',
     'SettingsResponse',
     'SqlActiveDirectoryConfigResponse',
@@ -701,7 +702,7 @@ class IpConfigurationResponse(dict):
                  require_ssl: bool):
         """
         IP Management configuration.
-        :param str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
+        :param str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
         :param Sequence['AclEntryResponse'] authorized_networks: The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **192.168.100.0/24**).
         :param bool ipv4_enabled: Whether the instance is assigned a public IP address or not.
         :param str private_network: The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, **/projects/myProject/global/networks/default**. This setting can be updated, but it cannot be removed after it is set.
@@ -717,7 +718,7 @@ class IpConfigurationResponse(dict):
     @pulumi.getter(name="allocatedIpRange")
     def allocated_ip_range(self) -> str:
         """
-        The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
+        The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
         """
         return pulumi.get(self, "allocated_ip_range")
 
@@ -1308,6 +1309,95 @@ class OperationErrorResponse(dict):
 
 
 @pulumi.output_type
+class PasswordValidationPolicyResponse(dict):
+    """
+    Database instance local user password validation policy
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disallowUsernameSubstring":
+            suggest = "disallow_username_substring"
+        elif key == "minLength":
+            suggest = "min_length"
+        elif key == "passwordChangeInterval":
+            suggest = "password_change_interval"
+        elif key == "reuseInterval":
+            suggest = "reuse_interval"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PasswordValidationPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PasswordValidationPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PasswordValidationPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 complexity: str,
+                 disallow_username_substring: bool,
+                 min_length: int,
+                 password_change_interval: str,
+                 reuse_interval: int):
+        """
+        Database instance local user password validation policy
+        :param str complexity: The complexity of the password.
+        :param bool disallow_username_substring: Disallow username as a part of the password.
+        :param int min_length: Minimum number of characters allowed.
+        :param str password_change_interval: Minimum interval after which the password can be changed.
+        :param int reuse_interval: Number of previous passwords that cannot be reused.
+        """
+        pulumi.set(__self__, "complexity", complexity)
+        pulumi.set(__self__, "disallow_username_substring", disallow_username_substring)
+        pulumi.set(__self__, "min_length", min_length)
+        pulumi.set(__self__, "password_change_interval", password_change_interval)
+        pulumi.set(__self__, "reuse_interval", reuse_interval)
+
+    @property
+    @pulumi.getter
+    def complexity(self) -> str:
+        """
+        The complexity of the password.
+        """
+        return pulumi.get(self, "complexity")
+
+    @property
+    @pulumi.getter(name="disallowUsernameSubstring")
+    def disallow_username_substring(self) -> bool:
+        """
+        Disallow username as a part of the password.
+        """
+        return pulumi.get(self, "disallow_username_substring")
+
+    @property
+    @pulumi.getter(name="minLength")
+    def min_length(self) -> int:
+        """
+        Minimum number of characters allowed.
+        """
+        return pulumi.get(self, "min_length")
+
+    @property
+    @pulumi.getter(name="passwordChangeInterval")
+    def password_change_interval(self) -> str:
+        """
+        Minimum interval after which the password can be changed.
+        """
+        return pulumi.get(self, "password_change_interval")
+
+    @property
+    @pulumi.getter(name="reuseInterval")
+    def reuse_interval(self) -> int:
+        """
+        Number of previous passwords that cannot be reused.
+        """
+        return pulumi.get(self, "reuse_interval")
+
+
+@pulumi.output_type
 class ReplicaConfigurationResponse(dict):
     """
     Read-replica configuration for connecting to the primary instance.
@@ -1406,6 +1496,8 @@ class SettingsResponse(dict):
             suggest = "location_preference"
         elif key == "maintenanceWindow":
             suggest = "maintenance_window"
+        elif key == "passwordValidationPolicy":
+            suggest = "password_validation_policy"
         elif key == "pricingPlan":
             suggest = "pricing_plan"
         elif key == "settingsVersion":
@@ -1447,6 +1539,7 @@ class SettingsResponse(dict):
                  kind: str,
                  location_preference: 'outputs.LocationPreferenceResponse',
                  maintenance_window: 'outputs.MaintenanceWindowResponse',
+                 password_validation_policy: 'outputs.PasswordValidationPolicyResponse',
                  pricing_plan: str,
                  settings_version: str,
                  sql_server_audit_config: 'outputs.SqlServerAuditConfigResponse',
@@ -1472,6 +1565,7 @@ class SettingsResponse(dict):
         :param str kind: This is always **sql#settings**.
         :param 'LocationPreferenceResponse' location_preference: The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances.
         :param 'MaintenanceWindowResponse' maintenance_window: The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
+        :param 'PasswordValidationPolicyResponse' password_validation_policy: The local user password validation policy of the instance.
         :param str pricing_plan: The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
         :param str settings_version: The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
         :param 'SqlServerAuditConfigResponse' sql_server_audit_config: SQL Server specific audit configuration.
@@ -1496,6 +1590,7 @@ class SettingsResponse(dict):
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "location_preference", location_preference)
         pulumi.set(__self__, "maintenance_window", maintenance_window)
+        pulumi.set(__self__, "password_validation_policy", password_validation_policy)
         pulumi.set(__self__, "pricing_plan", pricing_plan)
         pulumi.set(__self__, "settings_version", settings_version)
         pulumi.set(__self__, "sql_server_audit_config", sql_server_audit_config)
@@ -1631,6 +1726,14 @@ class SettingsResponse(dict):
         The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
         """
         return pulumi.get(self, "maintenance_window")
+
+    @property
+    @pulumi.getter(name="passwordValidationPolicy")
+    def password_validation_policy(self) -> 'outputs.PasswordValidationPolicyResponse':
+        """
+        The local user password validation policy of the instance.
+        """
+        return pulumi.get(self, "password_validation_policy")
 
     @property
     @pulumi.getter(name="pricingPlan")

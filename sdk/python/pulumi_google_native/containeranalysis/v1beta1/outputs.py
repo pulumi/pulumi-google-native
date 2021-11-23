@@ -59,11 +59,12 @@ __all__ = [
     'InstallationResponse',
     'KnowledgeBaseResponse',
     'LayerResponse',
+    'LicenseResponse',
     'LinkResponse',
     'LocationResponse',
+    'PackageInfoNoteResponse',
+    'PackageInfoOccurrenceResponse',
     'PackageIssueResponse',
-    'PackageNoteResponse',
-    'PackageOccurrenceResponse',
     'PackageResponse',
     'PgpSignedAttestationResponse',
     'ProjectRepoIdResponse',
@@ -325,17 +326,17 @@ class BasisResponse(dict):
 @pulumi.output_type
 class BindingResponse(dict):
     """
-    Associates `members` with a `role`.
+    Associates `members`, or principals, with a `role`.
     """
     def __init__(__self__, *,
                  condition: 'outputs.ExprResponse',
                  members: Sequence[str],
                  role: str):
         """
-        Associates `members` with a `role`.
-        :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
-        :param str role: Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Associates `members`, or principals, with a `role`.
+        :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        :param Sequence[str] members: Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "members", members)
@@ -345,7 +346,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def condition(self) -> 'outputs.ExprResponse':
         """
-        The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         """
         return pulumi.get(self, "condition")
 
@@ -353,7 +354,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         """
         return pulumi.get(self, "members")
 
@@ -361,7 +362,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def role(self) -> str:
         """
-        Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
 
@@ -1994,8 +1995,6 @@ class FileOccurrenceResponse(dict):
         suggest = None
         if key == "filesLicenseInfo":
             suggest = "files_license_info"
-        elif key == "licenseComments":
-            suggest = "license_comments"
         elif key == "licenseConcluded":
             suggest = "license_concluded"
 
@@ -2016,8 +2015,7 @@ class FileOccurrenceResponse(dict):
                  contributors: Sequence[str],
                  copyright: str,
                  files_license_info: Sequence[str],
-                 license_comments: str,
-                 license_concluded: str,
+                 license_concluded: 'outputs.LicenseResponse',
                  notice: str):
         """
         FileOccurrence represents an SPDX File Information section: https://spdx.github.io/spdx-spec/4-file-information/
@@ -2026,8 +2024,7 @@ class FileOccurrenceResponse(dict):
         :param Sequence[str] contributors: This field provides a place for the SPDX file creator to record file contributors
         :param str copyright: Identify the copyright holder of the file, as well as any dates present
         :param Sequence[str] files_license_info: This field contains the license information actually found in the file, if any
-        :param str license_comments: This field provides a place for the SPDX file creator to record any relevant background references or analysis that went in to arriving at the Concluded License for a file
-        :param str license_concluded: This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
+        :param 'LicenseResponse' license_concluded: This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
         :param str notice: This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
         """
         pulumi.set(__self__, "attributions", attributions)
@@ -2035,7 +2032,6 @@ class FileOccurrenceResponse(dict):
         pulumi.set(__self__, "contributors", contributors)
         pulumi.set(__self__, "copyright", copyright)
         pulumi.set(__self__, "files_license_info", files_license_info)
-        pulumi.set(__self__, "license_comments", license_comments)
         pulumi.set(__self__, "license_concluded", license_concluded)
         pulumi.set(__self__, "notice", notice)
 
@@ -2080,16 +2076,8 @@ class FileOccurrenceResponse(dict):
         return pulumi.get(self, "files_license_info")
 
     @property
-    @pulumi.getter(name="licenseComments")
-    def license_comments(self) -> str:
-        """
-        This field provides a place for the SPDX file creator to record any relevant background references or analysis that went in to arriving at the Concluded License for a file
-        """
-        return pulumi.get(self, "license_comments")
-
-    @property
     @pulumi.getter(name="licenseConcluded")
-    def license_concluded(self) -> str:
+    def license_concluded(self) -> 'outputs.LicenseResponse':
         """
         This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
         """
@@ -2960,6 +2948,39 @@ class LayerResponse(dict):
 
 
 @pulumi.output_type
+class LicenseResponse(dict):
+    """
+    License information: https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
+    """
+    def __init__(__self__, *,
+                 comments: str,
+                 expression: str):
+        """
+        License information: https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
+        :param str comments: Comments
+        :param str expression: Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+        """
+        pulumi.set(__self__, "comments", comments)
+        pulumi.set(__self__, "expression", expression)
+
+    @property
+    @pulumi.getter
+    def comments(self) -> str:
+        """
+        Comments
+        """
+        return pulumi.get(self, "comments")
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+        """
+        return pulumi.get(self, "expression")
+
+
+@pulumi.output_type
 class LinkResponse(dict):
     """
     This corresponds to an in-toto link.
@@ -3087,87 +3108,9 @@ class LocationResponse(dict):
 
 
 @pulumi.output_type
-class PackageIssueResponse(dict):
+class PackageInfoNoteResponse(dict):
     """
-    This message wraps a location affected by a vulnerability and its associated fix (if one is available).
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "affectedLocation":
-            suggest = "affected_location"
-        elif key == "effectiveSeverity":
-            suggest = "effective_severity"
-        elif key == "fixedLocation":
-            suggest = "fixed_location"
-        elif key == "packageType":
-            suggest = "package_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PackageIssueResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PackageIssueResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PackageIssueResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 affected_location: 'outputs.VulnerabilityLocationResponse',
-                 effective_severity: str,
-                 fixed_location: 'outputs.VulnerabilityLocationResponse',
-                 package_type: str):
-        """
-        This message wraps a location affected by a vulnerability and its associated fix (if one is available).
-        :param 'VulnerabilityLocationResponse' affected_location: The location of the vulnerability.
-        :param str effective_severity: The distro or language system assigned severity for this vulnerability when that is available and note provider assigned severity when it is not available.
-        :param 'VulnerabilityLocationResponse' fixed_location: The location of the available fix for vulnerability.
-        :param str package_type: The type of package (e.g. OS, MAVEN, GO).
-        """
-        pulumi.set(__self__, "affected_location", affected_location)
-        pulumi.set(__self__, "effective_severity", effective_severity)
-        pulumi.set(__self__, "fixed_location", fixed_location)
-        pulumi.set(__self__, "package_type", package_type)
-
-    @property
-    @pulumi.getter(name="affectedLocation")
-    def affected_location(self) -> 'outputs.VulnerabilityLocationResponse':
-        """
-        The location of the vulnerability.
-        """
-        return pulumi.get(self, "affected_location")
-
-    @property
-    @pulumi.getter(name="effectiveSeverity")
-    def effective_severity(self) -> str:
-        """
-        The distro or language system assigned severity for this vulnerability when that is available and note provider assigned severity when it is not available.
-        """
-        return pulumi.get(self, "effective_severity")
-
-    @property
-    @pulumi.getter(name="fixedLocation")
-    def fixed_location(self) -> 'outputs.VulnerabilityLocationResponse':
-        """
-        The location of the available fix for vulnerability.
-        """
-        return pulumi.get(self, "fixed_location")
-
-    @property
-    @pulumi.getter(name="packageType")
-    def package_type(self) -> str:
-        """
-        The type of package (e.g. OS, MAVEN, GO).
-        """
-        return pulumi.get(self, "package_type")
-
-
-@pulumi.output_type
-class PackageNoteResponse(dict):
-    """
-    PackageNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+    PackageInfoNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
     """
     @staticmethod
     def __key_warning(key: str):
@@ -3184,20 +3127,22 @@ class PackageNoteResponse(dict):
             suggest = "home_page"
         elif key == "licenseDeclared":
             suggest = "license_declared"
+        elif key == "packageType":
+            suggest = "package_type"
         elif key == "summaryDescription":
             suggest = "summary_description"
         elif key == "verificationCode":
             suggest = "verification_code"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PackageNoteResponse. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in PackageInfoNoteResponse. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        PackageNoteResponse.__key_warning(key)
+        PackageInfoNoteResponse.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        PackageNoteResponse.__key_warning(key)
+        PackageInfoNoteResponse.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -3210,15 +3155,16 @@ class PackageNoteResponse(dict):
                  external_refs: Sequence['outputs.ExternalRefResponse'],
                  files_license_info: Sequence[str],
                  home_page: str,
-                 license_declared: str,
+                 license_declared: 'outputs.LicenseResponse',
                  originator: str,
+                 package_type: str,
                  summary_description: str,
                  supplier: str,
                  title: str,
                  verification_code: str,
                  version: str):
         """
-        PackageNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+        PackageInfoNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
         :param bool analyzed: Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
         :param str attribution: A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
         :param str checksum: Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
@@ -3228,8 +3174,9 @@ class PackageNoteResponse(dict):
         :param Sequence['ExternalRefResponse'] external_refs: ExternalRef
         :param Sequence[str] files_license_info: Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
         :param str home_page: Provide a place for the SPDX file creator to record a web site that serves as the package's home page
-        :param str license_declared: List the licenses that have been declared by the authors of the package
+        :param 'LicenseResponse' license_declared: List the licenses that have been declared by the authors of the package
         :param str originator: If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
+        :param str package_type: The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
         :param str summary_description: A short description of the package
         :param str supplier: Identify the actual distribution source for the package/directory identified in the SPDX file
         :param str title: Identify the full name of the package as given by the Package Originator
@@ -3247,6 +3194,7 @@ class PackageNoteResponse(dict):
         pulumi.set(__self__, "home_page", home_page)
         pulumi.set(__self__, "license_declared", license_declared)
         pulumi.set(__self__, "originator", originator)
+        pulumi.set(__self__, "package_type", package_type)
         pulumi.set(__self__, "summary_description", summary_description)
         pulumi.set(__self__, "supplier", supplier)
         pulumi.set(__self__, "title", title)
@@ -3327,7 +3275,7 @@ class PackageNoteResponse(dict):
 
     @property
     @pulumi.getter(name="licenseDeclared")
-    def license_declared(self) -> str:
+    def license_declared(self) -> 'outputs.LicenseResponse':
         """
         List the licenses that have been declared by the authors of the package
         """
@@ -3340,6 +3288,14 @@ class PackageNoteResponse(dict):
         If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
         """
         return pulumi.get(self, "originator")
+
+    @property
+    @pulumi.getter(name="packageType")
+    def package_type(self) -> str:
+        """
+        The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+        """
+        return pulumi.get(self, "package_type")
 
     @property
     @pulumi.getter(name="summaryDescription")
@@ -3383,50 +3339,66 @@ class PackageNoteResponse(dict):
 
 
 @pulumi.output_type
-class PackageOccurrenceResponse(dict):
+class PackageInfoOccurrenceResponse(dict):
     """
-    PackageOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+    PackageInfoOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
     """
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "licenseComments":
-            suggest = "license_comments"
+        if key == "homePage":
+            suggest = "home_page"
         elif key == "licenseConcluded":
             suggest = "license_concluded"
+        elif key == "packageType":
+            suggest = "package_type"
         elif key == "sourceInfo":
             suggest = "source_info"
+        elif key == "summaryDescription":
+            suggest = "summary_description"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PackageOccurrenceResponse. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in PackageInfoOccurrenceResponse. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        PackageOccurrenceResponse.__key_warning(key)
+        PackageInfoOccurrenceResponse.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        PackageOccurrenceResponse.__key_warning(key)
+        PackageInfoOccurrenceResponse.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
                  comment: str,
                  filename: str,
-                 license_comments: str,
-                 license_concluded: str,
-                 source_info: str):
+                 home_page: str,
+                 license_concluded: 'outputs.LicenseResponse',
+                 package_type: str,
+                 source_info: str,
+                 summary_description: str,
+                 title: str,
+                 version: str):
         """
-        PackageOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+        PackageInfoOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
         :param str comment: A place for the SPDX file creator to record any general comments about the package being described
         :param str filename: Provide the actual file name of the package, or path of the directory being treated as a package
-        :param str license_comments: This field provides a place for the SPDX file creator to record any relevant background information or analysis that went in to arriving at the Concluded License for a package
-        :param str license_concluded: package or alternative values, if the governing license cannot be determined
+        :param str home_page: Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+        :param 'LicenseResponse' license_concluded: package or alternative values, if the governing license cannot be determined
+        :param str package_type: The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
         :param str source_info: Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
+        :param str summary_description: A short description of the package
+        :param str title: Identify the full name of the package as given by the Package Originator
+        :param str version: Identify the version of the package
         """
         pulumi.set(__self__, "comment", comment)
         pulumi.set(__self__, "filename", filename)
-        pulumi.set(__self__, "license_comments", license_comments)
+        pulumi.set(__self__, "home_page", home_page)
         pulumi.set(__self__, "license_concluded", license_concluded)
+        pulumi.set(__self__, "package_type", package_type)
         pulumi.set(__self__, "source_info", source_info)
+        pulumi.set(__self__, "summary_description", summary_description)
+        pulumi.set(__self__, "title", title)
+        pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -3445,20 +3417,28 @@ class PackageOccurrenceResponse(dict):
         return pulumi.get(self, "filename")
 
     @property
-    @pulumi.getter(name="licenseComments")
-    def license_comments(self) -> str:
+    @pulumi.getter(name="homePage")
+    def home_page(self) -> str:
         """
-        This field provides a place for the SPDX file creator to record any relevant background information or analysis that went in to arriving at the Concluded License for a package
+        Provide a place for the SPDX file creator to record a web site that serves as the package's home page
         """
-        return pulumi.get(self, "license_comments")
+        return pulumi.get(self, "home_page")
 
     @property
     @pulumi.getter(name="licenseConcluded")
-    def license_concluded(self) -> str:
+    def license_concluded(self) -> 'outputs.LicenseResponse':
         """
         package or alternative values, if the governing license cannot be determined
         """
         return pulumi.get(self, "license_concluded")
+
+    @property
+    @pulumi.getter(name="packageType")
+    def package_type(self) -> str:
+        """
+        The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+        """
+        return pulumi.get(self, "package_type")
 
     @property
     @pulumi.getter(name="sourceInfo")
@@ -3467,6 +3447,108 @@ class PackageOccurrenceResponse(dict):
         Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
         """
         return pulumi.get(self, "source_info")
+
+    @property
+    @pulumi.getter(name="summaryDescription")
+    def summary_description(self) -> str:
+        """
+        A short description of the package
+        """
+        return pulumi.get(self, "summary_description")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        Identify the full name of the package as given by the Package Originator
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Identify the version of the package
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class PackageIssueResponse(dict):
+    """
+    This message wraps a location affected by a vulnerability and its associated fix (if one is available).
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "affectedLocation":
+            suggest = "affected_location"
+        elif key == "effectiveSeverity":
+            suggest = "effective_severity"
+        elif key == "fixedLocation":
+            suggest = "fixed_location"
+        elif key == "packageType":
+            suggest = "package_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PackageIssueResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PackageIssueResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PackageIssueResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 affected_location: 'outputs.VulnerabilityLocationResponse',
+                 effective_severity: str,
+                 fixed_location: 'outputs.VulnerabilityLocationResponse',
+                 package_type: str):
+        """
+        This message wraps a location affected by a vulnerability and its associated fix (if one is available).
+        :param 'VulnerabilityLocationResponse' affected_location: The location of the vulnerability.
+        :param str effective_severity: The distro or language system assigned severity for this vulnerability when that is available and note provider assigned severity when it is not available.
+        :param 'VulnerabilityLocationResponse' fixed_location: The location of the available fix for vulnerability.
+        :param str package_type: The type of package (e.g. OS, MAVEN, GO).
+        """
+        pulumi.set(__self__, "affected_location", affected_location)
+        pulumi.set(__self__, "effective_severity", effective_severity)
+        pulumi.set(__self__, "fixed_location", fixed_location)
+        pulumi.set(__self__, "package_type", package_type)
+
+    @property
+    @pulumi.getter(name="affectedLocation")
+    def affected_location(self) -> 'outputs.VulnerabilityLocationResponse':
+        """
+        The location of the vulnerability.
+        """
+        return pulumi.get(self, "affected_location")
+
+    @property
+    @pulumi.getter(name="effectiveSeverity")
+    def effective_severity(self) -> str:
+        """
+        The distro or language system assigned severity for this vulnerability when that is available and note provider assigned severity when it is not available.
+        """
+        return pulumi.get(self, "effective_severity")
+
+    @property
+    @pulumi.getter(name="fixedLocation")
+    def fixed_location(self) -> 'outputs.VulnerabilityLocationResponse':
+        """
+        The location of the available fix for vulnerability.
+        """
+        return pulumi.get(self, "fixed_location")
+
+    @property
+    @pulumi.getter(name="packageType")
+    def package_type(self) -> str:
+        """
+        The type of package (e.g. OS, MAVEN, GO).
+        """
+        return pulumi.get(self, "package_type")
 
 
 @pulumi.output_type
@@ -3653,11 +3735,21 @@ class RelationshipNoteResponse(dict):
     """
     RelationshipNote represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
     """
-    def __init__(__self__):
+    def __init__(__self__, *,
+                 type: str):
         """
         RelationshipNote represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
+        :param str type: The type of relationship between the source and target SPDX elements
         """
-        pass
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of relationship between the source and target SPDX elements
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

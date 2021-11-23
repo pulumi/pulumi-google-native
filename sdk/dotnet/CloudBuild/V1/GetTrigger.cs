@@ -93,6 +93,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// </summary>
         public readonly bool Disabled;
         /// <summary>
+        /// Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+        /// </summary>
+        public readonly string EventType;
+        /// <summary>
         /// Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
         /// </summary>
         public readonly string Filename;
@@ -167,6 +171,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
 
             bool disabled,
 
+            string eventType,
+
             string filename,
 
             string filter,
@@ -203,6 +209,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
             CreateTime = createTime;
             Description = description;
             Disabled = disabled;
+            EventType = eventType;
             Filename = filename;
             Filter = filter;
             GitFileSource = gitFileSource;

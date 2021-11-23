@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, create_time=None, description=None, etag=None, file_shares=None, labels=None, name=None, networks=None, satisfies_pzs=None, state=None, status_message=None, tier=None):
+    def __init__(__self__, create_time=None, description=None, etag=None, file_shares=None, kms_key_name=None, labels=None, name=None, networks=None, satisfies_pzs=None, state=None, status_message=None, suspension_reasons=None, tier=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -31,6 +31,9 @@ class GetInstanceResult:
         if file_shares and not isinstance(file_shares, list):
             raise TypeError("Expected argument 'file_shares' to be a list")
         pulumi.set(__self__, "file_shares", file_shares)
+        if kms_key_name and not isinstance(kms_key_name, str):
+            raise TypeError("Expected argument 'kms_key_name' to be a str")
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -49,6 +52,9 @@ class GetInstanceResult:
         if status_message and not isinstance(status_message, str):
             raise TypeError("Expected argument 'status_message' to be a str")
         pulumi.set(__self__, "status_message", status_message)
+        if suspension_reasons and not isinstance(suspension_reasons, list):
+            raise TypeError("Expected argument 'suspension_reasons' to be a list")
+        pulumi.set(__self__, "suspension_reasons", suspension_reasons)
         if tier and not isinstance(tier, str):
             raise TypeError("Expected argument 'tier' to be a str")
         pulumi.set(__self__, "tier", tier)
@@ -84,6 +90,14 @@ class GetInstanceResult:
         File system shares on the instance. For this version, only a single file share is supported.
         """
         return pulumi.get(self, "file_shares")
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        """
+        KMS key name used for data encryption.
+        """
+        return pulumi.get(self, "kms_key_name")
 
     @property
     @pulumi.getter
@@ -134,6 +148,14 @@ class GetInstanceResult:
         return pulumi.get(self, "status_message")
 
     @property
+    @pulumi.getter(name="suspensionReasons")
+    def suspension_reasons(self) -> Sequence[str]:
+        """
+        field indicates all the reasons the instance is in "SUSPENDED" state.
+        """
+        return pulumi.get(self, "suspension_reasons")
+
+    @property
     @pulumi.getter
     def tier(self) -> str:
         """
@@ -152,12 +174,14 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             description=self.description,
             etag=self.etag,
             file_shares=self.file_shares,
+            kms_key_name=self.kms_key_name,
             labels=self.labels,
             name=self.name,
             networks=self.networks,
             satisfies_pzs=self.satisfies_pzs,
             state=self.state,
             status_message=self.status_message,
+            suspension_reasons=self.suspension_reasons,
             tier=self.tier)
 
 
@@ -183,12 +207,14 @@ def get_instance(instance_id: Optional[str] = None,
         description=__ret__.description,
         etag=__ret__.etag,
         file_shares=__ret__.file_shares,
+        kms_key_name=__ret__.kms_key_name,
         labels=__ret__.labels,
         name=__ret__.name,
         networks=__ret__.networks,
         satisfies_pzs=__ret__.satisfies_pzs,
         state=__ret__.state,
         status_message=__ret__.status_message,
+        suspension_reasons=__ret__.suspension_reasons,
         tier=__ret__.tier)
 
 

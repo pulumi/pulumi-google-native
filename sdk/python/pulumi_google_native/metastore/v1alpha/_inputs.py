@@ -13,6 +13,7 @@ __all__ = [
     'AuditConfigArgs',
     'AuditLogConfigArgs',
     'BindingArgs',
+    'ConsumerArgs',
     'DataCatalogConfigArgs',
     'DatabaseDumpArgs',
     'DataplexConfigArgs',
@@ -22,6 +23,7 @@ __all__ = [
     'KerberosConfigArgs',
     'MaintenanceWindowArgs',
     'MetadataIntegrationArgs',
+    'NetworkConfigArgs',
     'SecretArgs',
 ]
 
@@ -112,10 +114,10 @@ class BindingArgs:
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None):
         """
-        Associates members with a role.
-        :param pulumi.Input['ExprArgs'] condition: The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the identities requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
-        :param pulumi.Input[str] role: Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
+        Associates members, or principals, with a role.
+        :param pulumi.Input['ExprArgs'] condition: The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+        :param pulumi.Input[str] role: Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -128,7 +130,7 @@ class BindingArgs:
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input['ExprArgs']]:
         """
-        The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
+        The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
         """
         return pulumi.get(self, "condition")
 
@@ -140,7 +142,7 @@ class BindingArgs:
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specifies the identities requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+        Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "members")
 
@@ -152,13 +154,37 @@ class BindingArgs:
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
         """
-        Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
+        Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
         """
         return pulumi.get(self, "role")
 
     @role.setter
     def role(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "role", value)
+
+
+@pulumi.input_type
+class ConsumerArgs:
+    def __init__(__self__, *,
+                 subnetwork: Optional[pulumi.Input[str]] = None):
+        """
+        Contains information of the customer's network configurations.
+        :param pulumi.Input[str] subnetwork: The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
+        """
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> Optional[pulumi.Input[str]]:
+        """
+        The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @subnetwork.setter
+    def subnetwork(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subnetwork", value)
 
 
 @pulumi.input_type
@@ -583,6 +609,30 @@ class MetadataIntegrationArgs:
     @dataplex_config.setter
     def dataplex_config(self, value: Optional[pulumi.Input['DataplexConfigArgs']]):
         pulumi.set(self, "dataplex_config", value)
+
+
+@pulumi.input_type
+class NetworkConfigArgs:
+    def __init__(__self__, *,
+                 consumers: Optional[pulumi.Input[Sequence[pulumi.Input['ConsumerArgs']]]] = None):
+        """
+        Network configuration for the Dataproc Metastore service.
+        :param pulumi.Input[Sequence[pulumi.Input['ConsumerArgs']]] consumers: Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
+        """
+        if consumers is not None:
+            pulumi.set(__self__, "consumers", consumers)
+
+    @property
+    @pulumi.getter
+    def consumers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConsumerArgs']]]]:
+        """
+        Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
+        """
+        return pulumi.get(self, "consumers")
+
+    @consumers.setter
+    def consumers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConsumerArgs']]]]):
+        pulumi.set(self, "consumers", value)
 
 
 @pulumi.input_type

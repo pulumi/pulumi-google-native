@@ -26,6 +26,7 @@ import * as cloudasset from "./cloudasset";
 import * as cloudbilling from "./cloudbilling";
 import * as cloudbuild from "./cloudbuild";
 import * as cloudchannel from "./cloudchannel";
+import * as clouddeploy from "./clouddeploy";
 import * as cloudfunctions from "./cloudfunctions";
 import * as cloudidentity from "./cloudidentity";
 import * as cloudiot from "./cloudiot";
@@ -33,6 +34,7 @@ import * as cloudkms from "./cloudkms";
 import * as cloudresourcemanager from "./cloudresourcemanager";
 import * as cloudscheduler from "./cloudscheduler";
 import * as cloudsearch from "./cloudsearch";
+import * as cloudsupport from "./cloudsupport";
 import * as cloudtasks from "./cloudtasks";
 import * as cloudtrace from "./cloudtrace";
 import * as composer from "./composer";
@@ -47,8 +49,10 @@ import * as dataflow from "./dataflow";
 import * as datafusion from "./datafusion";
 import * as datalabeling from "./datalabeling";
 import * as datamigration from "./datamigration";
+import * as datapipelines from "./datapipelines";
 import * as dataproc from "./dataproc";
 import * as datastore from "./datastore";
+import * as datastream from "./datastream";
 import * as deploymentmanager from "./deploymentmanager";
 import * as dialogflow from "./dialogflow";
 import * as dlp from "./dlp";
@@ -102,6 +106,7 @@ import * as servicedirectory from "./servicedirectory";
 import * as servicemanagement from "./servicemanagement";
 import * as sourcerepo from "./sourcerepo";
 import * as spanner from "./spanner";
+import * as speech from "./speech";
 import * as sqladmin from "./sqladmin";
 import * as storage from "./storage";
 import * as storagetransfer from "./storagetransfer";
@@ -112,6 +117,7 @@ import * as transcoder from "./transcoder";
 import * as translate from "./translate";
 import * as types from "./types";
 import * as vision from "./vision";
+import * as vmmigration from "./vmmigration";
 import * as vpcaccess from "./vpcaccess";
 import * as websecurityscanner from "./websecurityscanner";
 import * as workflowexecutions from "./workflowexecutions";
@@ -136,6 +142,7 @@ export {
     cloudbilling,
     cloudbuild,
     cloudchannel,
+    clouddeploy,
     cloudfunctions,
     cloudidentity,
     cloudiot,
@@ -143,6 +150,7 @@ export {
     cloudresourcemanager,
     cloudscheduler,
     cloudsearch,
+    cloudsupport,
     cloudtasks,
     cloudtrace,
     composer,
@@ -157,8 +165,10 @@ export {
     datafusion,
     datalabeling,
     datamigration,
+    datapipelines,
     dataproc,
     datastore,
+    datastream,
     deploymentmanager,
     dialogflow,
     dlp,
@@ -212,6 +222,7 @@ export {
     servicemanagement,
     sourcerepo,
     spanner,
+    speech,
     sqladmin,
     storage,
     storagetransfer,
@@ -222,6 +233,7 @@ export {
     translate,
     types,
     vision,
+    vmmigration,
     vpcaccess,
     websecurityscanner,
     workflowexecutions,

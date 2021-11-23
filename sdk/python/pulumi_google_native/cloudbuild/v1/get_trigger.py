@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTriggerResult:
-    def __init__(__self__, approval_config=None, autodetect=None, build=None, create_time=None, description=None, disabled=None, filename=None, filter=None, git_file_source=None, github=None, ignored_files=None, included_files=None, name=None, pubsub_config=None, resource_name=None, service_account=None, source_to_build=None, substitutions=None, tags=None, trigger_template=None, webhook_config=None):
+    def __init__(__self__, approval_config=None, autodetect=None, build=None, create_time=None, description=None, disabled=None, event_type=None, filename=None, filter=None, git_file_source=None, github=None, ignored_files=None, included_files=None, name=None, pubsub_config=None, resource_name=None, service_account=None, source_to_build=None, substitutions=None, tags=None, trigger_template=None, webhook_config=None):
         if approval_config and not isinstance(approval_config, dict):
             raise TypeError("Expected argument 'approval_config' to be a dict")
         pulumi.set(__self__, "approval_config", approval_config)
@@ -37,6 +37,9 @@ class GetTriggerResult:
         if disabled and not isinstance(disabled, bool):
             raise TypeError("Expected argument 'disabled' to be a bool")
         pulumi.set(__self__, "disabled", disabled)
+        if event_type and not isinstance(event_type, str):
+            raise TypeError("Expected argument 'event_type' to be a str")
+        pulumi.set(__self__, "event_type", event_type)
         if filename and not isinstance(filename, str):
             raise TypeError("Expected argument 'filename' to be a str")
         pulumi.set(__self__, "filename", filename)
@@ -130,6 +133,14 @@ class GetTriggerResult:
         If true, the trigger will never automatically execute a build.
         """
         return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter(name="eventType")
+    def event_type(self) -> str:
+        """
+        Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+        """
+        return pulumi.get(self, "event_type")
 
     @property
     @pulumi.getter
@@ -264,6 +275,7 @@ class AwaitableGetTriggerResult(GetTriggerResult):
             create_time=self.create_time,
             description=self.description,
             disabled=self.disabled,
+            event_type=self.event_type,
             filename=self.filename,
             filter=self.filter,
             git_file_source=self.git_file_source,
@@ -307,6 +319,7 @@ def get_trigger(location: Optional[str] = None,
         create_time=__ret__.create_time,
         description=__ret__.description,
         disabled=__ret__.disabled,
+        event_type=__ret__.event_type,
         filename=__ret__.filename,
         filter=__ret__.filter,
         git_file_source=__ret__.git_file_source,

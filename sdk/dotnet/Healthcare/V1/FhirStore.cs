@@ -65,6 +65,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public Output<ImmutableArray<Outputs.StreamConfigResponse>> StreamConfigs { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for how to validate incoming FHIR resources against configured profiles.
+        /// </summary>
+        [Output("validationConfig")]
+        public Output<Outputs.ValidationConfigResponse> ValidationConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
         /// </summary>
         [Output("version")]
@@ -180,6 +186,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1
             get => _streamConfigs ?? (_streamConfigs = new InputList<Inputs.StreamConfigArgs>());
             set => _streamConfigs = value;
         }
+
+        /// <summary>
+        /// Configuration for how to validate incoming FHIR resources against configured profiles.
+        /// </summary>
+        [Input("validationConfig")]
+        public Input<Inputs.ValidationConfigArgs>? ValidationConfig { get; set; }
 
         /// <summary>
         /// Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.

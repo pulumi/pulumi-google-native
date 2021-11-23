@@ -84,7 +84,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly nodeCount!: pulumi.Output<number>;
     /**
-     * Optional: User defined parameters to apply to the memcached process on each node.
+     * User defined parameters to apply to the memcached process on each node.
      */
     public readonly parameters!: pulumi.Output<outputs.memcache.v1.MemcacheParametersResponse>;
     /**
@@ -203,7 +203,7 @@ export interface InstanceArgs {
      */
     nodeCount: pulumi.Input<number>;
     /**
-     * Optional: User defined parameters to apply to the memcached process on each node.
+     * User defined parameters to apply to the memcached process on each node.
      */
     parameters?: pulumi.Input<inputs.memcache.v1.MemcacheParametersArgs>;
     project?: pulumi.Input<string>;

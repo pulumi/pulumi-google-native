@@ -3364,7 +3364,7 @@ func (o InstanceReferenceResponsePtrOutput) Region() pulumi.StringPtrOutput {
 
 // IP Management configuration.
 type IpConfiguration struct {
-	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
+	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
 	AllocatedIpRange *string `pulumi:"allocatedIpRange"`
 	// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **192.168.100.0/24**).
 	AuthorizedNetworks []AclEntry `pulumi:"authorizedNetworks"`
@@ -3389,7 +3389,7 @@ type IpConfigurationInput interface {
 
 // IP Management configuration.
 type IpConfigurationArgs struct {
-	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
+	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
 	AllocatedIpRange pulumi.StringPtrInput `pulumi:"allocatedIpRange"`
 	// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **192.168.100.0/24**).
 	AuthorizedNetworks AclEntryArrayInput `pulumi:"authorizedNetworks"`
@@ -3479,7 +3479,7 @@ func (o IpConfigurationOutput) ToIpConfigurationPtrOutputWithContext(ctx context
 	}).(IpConfigurationPtrOutput)
 }
 
-// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
+// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
 func (o IpConfigurationOutput) AllocatedIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IpConfiguration) *string { return v.AllocatedIpRange }).(pulumi.StringPtrOutput)
 }
@@ -3528,7 +3528,7 @@ func (o IpConfigurationPtrOutput) Elem() IpConfigurationOutput {
 	}).(IpConfigurationOutput)
 }
 
-// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
+// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
 func (o IpConfigurationPtrOutput) AllocatedIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IpConfiguration) *string {
 		if v == nil {
@@ -3580,7 +3580,7 @@ func (o IpConfigurationPtrOutput) RequireSsl() pulumi.BoolPtrOutput {
 
 // IP Management configuration.
 type IpConfigurationResponse struct {
-	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
+	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
 	AllocatedIpRange string `pulumi:"allocatedIpRange"`
 	// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **192.168.100.0/24**).
 	AuthorizedNetworks []AclEntryResponse `pulumi:"authorizedNetworks"`
@@ -3605,7 +3605,7 @@ type IpConfigurationResponseInput interface {
 
 // IP Management configuration.
 type IpConfigurationResponseArgs struct {
-	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
+	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
 	AllocatedIpRange pulumi.StringInput `pulumi:"allocatedIpRange"`
 	// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **192.168.100.0/24**).
 	AuthorizedNetworks AclEntryResponseArrayInput `pulumi:"authorizedNetworks"`
@@ -3695,7 +3695,7 @@ func (o IpConfigurationResponseOutput) ToIpConfigurationResponsePtrOutputWithCon
 	}).(IpConfigurationResponsePtrOutput)
 }
 
-// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
+// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
 func (o IpConfigurationResponseOutput) AllocatedIpRange() pulumi.StringOutput {
 	return o.ApplyT(func(v IpConfigurationResponse) string { return v.AllocatedIpRange }).(pulumi.StringOutput)
 }
@@ -3744,7 +3744,7 @@ func (o IpConfigurationResponsePtrOutput) Elem() IpConfigurationResponseOutput {
 	}).(IpConfigurationResponseOutput)
 }
 
-// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
+// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
 func (o IpConfigurationResponsePtrOutput) AllocatedIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IpConfigurationResponse) *string {
 		if v == nil {
@@ -6418,6 +6418,438 @@ func (o OperationErrorResponsePtrOutput) Message() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Database instance local user password validation policy
+type PasswordValidationPolicy struct {
+	// The complexity of the password.
+	Complexity *PasswordValidationPolicyComplexity `pulumi:"complexity"`
+	// Disallow username as a part of the password.
+	DisallowUsernameSubstring *bool `pulumi:"disallowUsernameSubstring"`
+	// Minimum number of characters allowed.
+	MinLength *int `pulumi:"minLength"`
+	// Minimum interval after which the password can be changed.
+	PasswordChangeInterval *string `pulumi:"passwordChangeInterval"`
+	// Number of previous passwords that cannot be reused.
+	ReuseInterval *int `pulumi:"reuseInterval"`
+}
+
+// PasswordValidationPolicyInput is an input type that accepts PasswordValidationPolicyArgs and PasswordValidationPolicyOutput values.
+// You can construct a concrete instance of `PasswordValidationPolicyInput` via:
+//
+//          PasswordValidationPolicyArgs{...}
+type PasswordValidationPolicyInput interface {
+	pulumi.Input
+
+	ToPasswordValidationPolicyOutput() PasswordValidationPolicyOutput
+	ToPasswordValidationPolicyOutputWithContext(context.Context) PasswordValidationPolicyOutput
+}
+
+// Database instance local user password validation policy
+type PasswordValidationPolicyArgs struct {
+	// The complexity of the password.
+	Complexity PasswordValidationPolicyComplexityPtrInput `pulumi:"complexity"`
+	// Disallow username as a part of the password.
+	DisallowUsernameSubstring pulumi.BoolPtrInput `pulumi:"disallowUsernameSubstring"`
+	// Minimum number of characters allowed.
+	MinLength pulumi.IntPtrInput `pulumi:"minLength"`
+	// Minimum interval after which the password can be changed.
+	PasswordChangeInterval pulumi.StringPtrInput `pulumi:"passwordChangeInterval"`
+	// Number of previous passwords that cannot be reused.
+	ReuseInterval pulumi.IntPtrInput `pulumi:"reuseInterval"`
+}
+
+func (PasswordValidationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PasswordValidationPolicy)(nil)).Elem()
+}
+
+func (i PasswordValidationPolicyArgs) ToPasswordValidationPolicyOutput() PasswordValidationPolicyOutput {
+	return i.ToPasswordValidationPolicyOutputWithContext(context.Background())
+}
+
+func (i PasswordValidationPolicyArgs) ToPasswordValidationPolicyOutputWithContext(ctx context.Context) PasswordValidationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PasswordValidationPolicyOutput)
+}
+
+func (i PasswordValidationPolicyArgs) ToPasswordValidationPolicyPtrOutput() PasswordValidationPolicyPtrOutput {
+	return i.ToPasswordValidationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i PasswordValidationPolicyArgs) ToPasswordValidationPolicyPtrOutputWithContext(ctx context.Context) PasswordValidationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PasswordValidationPolicyOutput).ToPasswordValidationPolicyPtrOutputWithContext(ctx)
+}
+
+// PasswordValidationPolicyPtrInput is an input type that accepts PasswordValidationPolicyArgs, PasswordValidationPolicyPtr and PasswordValidationPolicyPtrOutput values.
+// You can construct a concrete instance of `PasswordValidationPolicyPtrInput` via:
+//
+//          PasswordValidationPolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type PasswordValidationPolicyPtrInput interface {
+	pulumi.Input
+
+	ToPasswordValidationPolicyPtrOutput() PasswordValidationPolicyPtrOutput
+	ToPasswordValidationPolicyPtrOutputWithContext(context.Context) PasswordValidationPolicyPtrOutput
+}
+
+type passwordValidationPolicyPtrType PasswordValidationPolicyArgs
+
+func PasswordValidationPolicyPtr(v *PasswordValidationPolicyArgs) PasswordValidationPolicyPtrInput {
+	return (*passwordValidationPolicyPtrType)(v)
+}
+
+func (*passwordValidationPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PasswordValidationPolicy)(nil)).Elem()
+}
+
+func (i *passwordValidationPolicyPtrType) ToPasswordValidationPolicyPtrOutput() PasswordValidationPolicyPtrOutput {
+	return i.ToPasswordValidationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *passwordValidationPolicyPtrType) ToPasswordValidationPolicyPtrOutputWithContext(ctx context.Context) PasswordValidationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PasswordValidationPolicyPtrOutput)
+}
+
+// Database instance local user password validation policy
+type PasswordValidationPolicyOutput struct{ *pulumi.OutputState }
+
+func (PasswordValidationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PasswordValidationPolicy)(nil)).Elem()
+}
+
+func (o PasswordValidationPolicyOutput) ToPasswordValidationPolicyOutput() PasswordValidationPolicyOutput {
+	return o
+}
+
+func (o PasswordValidationPolicyOutput) ToPasswordValidationPolicyOutputWithContext(ctx context.Context) PasswordValidationPolicyOutput {
+	return o
+}
+
+func (o PasswordValidationPolicyOutput) ToPasswordValidationPolicyPtrOutput() PasswordValidationPolicyPtrOutput {
+	return o.ToPasswordValidationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o PasswordValidationPolicyOutput) ToPasswordValidationPolicyPtrOutputWithContext(ctx context.Context) PasswordValidationPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PasswordValidationPolicy) *PasswordValidationPolicy {
+		return &v
+	}).(PasswordValidationPolicyPtrOutput)
+}
+
+// The complexity of the password.
+func (o PasswordValidationPolicyOutput) Complexity() PasswordValidationPolicyComplexityPtrOutput {
+	return o.ApplyT(func(v PasswordValidationPolicy) *PasswordValidationPolicyComplexity { return v.Complexity }).(PasswordValidationPolicyComplexityPtrOutput)
+}
+
+// Disallow username as a part of the password.
+func (o PasswordValidationPolicyOutput) DisallowUsernameSubstring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PasswordValidationPolicy) *bool { return v.DisallowUsernameSubstring }).(pulumi.BoolPtrOutput)
+}
+
+// Minimum number of characters allowed.
+func (o PasswordValidationPolicyOutput) MinLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PasswordValidationPolicy) *int { return v.MinLength }).(pulumi.IntPtrOutput)
+}
+
+// Minimum interval after which the password can be changed.
+func (o PasswordValidationPolicyOutput) PasswordChangeInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PasswordValidationPolicy) *string { return v.PasswordChangeInterval }).(pulumi.StringPtrOutput)
+}
+
+// Number of previous passwords that cannot be reused.
+func (o PasswordValidationPolicyOutput) ReuseInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PasswordValidationPolicy) *int { return v.ReuseInterval }).(pulumi.IntPtrOutput)
+}
+
+type PasswordValidationPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (PasswordValidationPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PasswordValidationPolicy)(nil)).Elem()
+}
+
+func (o PasswordValidationPolicyPtrOutput) ToPasswordValidationPolicyPtrOutput() PasswordValidationPolicyPtrOutput {
+	return o
+}
+
+func (o PasswordValidationPolicyPtrOutput) ToPasswordValidationPolicyPtrOutputWithContext(ctx context.Context) PasswordValidationPolicyPtrOutput {
+	return o
+}
+
+func (o PasswordValidationPolicyPtrOutput) Elem() PasswordValidationPolicyOutput {
+	return o.ApplyT(func(v *PasswordValidationPolicy) PasswordValidationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret PasswordValidationPolicy
+		return ret
+	}).(PasswordValidationPolicyOutput)
+}
+
+// The complexity of the password.
+func (o PasswordValidationPolicyPtrOutput) Complexity() PasswordValidationPolicyComplexityPtrOutput {
+	return o.ApplyT(func(v *PasswordValidationPolicy) *PasswordValidationPolicyComplexity {
+		if v == nil {
+			return nil
+		}
+		return v.Complexity
+	}).(PasswordValidationPolicyComplexityPtrOutput)
+}
+
+// Disallow username as a part of the password.
+func (o PasswordValidationPolicyPtrOutput) DisallowUsernameSubstring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PasswordValidationPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisallowUsernameSubstring
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Minimum number of characters allowed.
+func (o PasswordValidationPolicyPtrOutput) MinLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PasswordValidationPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinLength
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum interval after which the password can be changed.
+func (o PasswordValidationPolicyPtrOutput) PasswordChangeInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PasswordValidationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordChangeInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of previous passwords that cannot be reused.
+func (o PasswordValidationPolicyPtrOutput) ReuseInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PasswordValidationPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ReuseInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+// Database instance local user password validation policy
+type PasswordValidationPolicyResponse struct {
+	// The complexity of the password.
+	Complexity string `pulumi:"complexity"`
+	// Disallow username as a part of the password.
+	DisallowUsernameSubstring bool `pulumi:"disallowUsernameSubstring"`
+	// Minimum number of characters allowed.
+	MinLength int `pulumi:"minLength"`
+	// Minimum interval after which the password can be changed.
+	PasswordChangeInterval string `pulumi:"passwordChangeInterval"`
+	// Number of previous passwords that cannot be reused.
+	ReuseInterval int `pulumi:"reuseInterval"`
+}
+
+// PasswordValidationPolicyResponseInput is an input type that accepts PasswordValidationPolicyResponseArgs and PasswordValidationPolicyResponseOutput values.
+// You can construct a concrete instance of `PasswordValidationPolicyResponseInput` via:
+//
+//          PasswordValidationPolicyResponseArgs{...}
+type PasswordValidationPolicyResponseInput interface {
+	pulumi.Input
+
+	ToPasswordValidationPolicyResponseOutput() PasswordValidationPolicyResponseOutput
+	ToPasswordValidationPolicyResponseOutputWithContext(context.Context) PasswordValidationPolicyResponseOutput
+}
+
+// Database instance local user password validation policy
+type PasswordValidationPolicyResponseArgs struct {
+	// The complexity of the password.
+	Complexity pulumi.StringInput `pulumi:"complexity"`
+	// Disallow username as a part of the password.
+	DisallowUsernameSubstring pulumi.BoolInput `pulumi:"disallowUsernameSubstring"`
+	// Minimum number of characters allowed.
+	MinLength pulumi.IntInput `pulumi:"minLength"`
+	// Minimum interval after which the password can be changed.
+	PasswordChangeInterval pulumi.StringInput `pulumi:"passwordChangeInterval"`
+	// Number of previous passwords that cannot be reused.
+	ReuseInterval pulumi.IntInput `pulumi:"reuseInterval"`
+}
+
+func (PasswordValidationPolicyResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PasswordValidationPolicyResponse)(nil)).Elem()
+}
+
+func (i PasswordValidationPolicyResponseArgs) ToPasswordValidationPolicyResponseOutput() PasswordValidationPolicyResponseOutput {
+	return i.ToPasswordValidationPolicyResponseOutputWithContext(context.Background())
+}
+
+func (i PasswordValidationPolicyResponseArgs) ToPasswordValidationPolicyResponseOutputWithContext(ctx context.Context) PasswordValidationPolicyResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PasswordValidationPolicyResponseOutput)
+}
+
+func (i PasswordValidationPolicyResponseArgs) ToPasswordValidationPolicyResponsePtrOutput() PasswordValidationPolicyResponsePtrOutput {
+	return i.ToPasswordValidationPolicyResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PasswordValidationPolicyResponseArgs) ToPasswordValidationPolicyResponsePtrOutputWithContext(ctx context.Context) PasswordValidationPolicyResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PasswordValidationPolicyResponseOutput).ToPasswordValidationPolicyResponsePtrOutputWithContext(ctx)
+}
+
+// PasswordValidationPolicyResponsePtrInput is an input type that accepts PasswordValidationPolicyResponseArgs, PasswordValidationPolicyResponsePtr and PasswordValidationPolicyResponsePtrOutput values.
+// You can construct a concrete instance of `PasswordValidationPolicyResponsePtrInput` via:
+//
+//          PasswordValidationPolicyResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PasswordValidationPolicyResponsePtrInput interface {
+	pulumi.Input
+
+	ToPasswordValidationPolicyResponsePtrOutput() PasswordValidationPolicyResponsePtrOutput
+	ToPasswordValidationPolicyResponsePtrOutputWithContext(context.Context) PasswordValidationPolicyResponsePtrOutput
+}
+
+type passwordValidationPolicyResponsePtrType PasswordValidationPolicyResponseArgs
+
+func PasswordValidationPolicyResponsePtr(v *PasswordValidationPolicyResponseArgs) PasswordValidationPolicyResponsePtrInput {
+	return (*passwordValidationPolicyResponsePtrType)(v)
+}
+
+func (*passwordValidationPolicyResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PasswordValidationPolicyResponse)(nil)).Elem()
+}
+
+func (i *passwordValidationPolicyResponsePtrType) ToPasswordValidationPolicyResponsePtrOutput() PasswordValidationPolicyResponsePtrOutput {
+	return i.ToPasswordValidationPolicyResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *passwordValidationPolicyResponsePtrType) ToPasswordValidationPolicyResponsePtrOutputWithContext(ctx context.Context) PasswordValidationPolicyResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PasswordValidationPolicyResponsePtrOutput)
+}
+
+// Database instance local user password validation policy
+type PasswordValidationPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (PasswordValidationPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PasswordValidationPolicyResponse)(nil)).Elem()
+}
+
+func (o PasswordValidationPolicyResponseOutput) ToPasswordValidationPolicyResponseOutput() PasswordValidationPolicyResponseOutput {
+	return o
+}
+
+func (o PasswordValidationPolicyResponseOutput) ToPasswordValidationPolicyResponseOutputWithContext(ctx context.Context) PasswordValidationPolicyResponseOutput {
+	return o
+}
+
+func (o PasswordValidationPolicyResponseOutput) ToPasswordValidationPolicyResponsePtrOutput() PasswordValidationPolicyResponsePtrOutput {
+	return o.ToPasswordValidationPolicyResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PasswordValidationPolicyResponseOutput) ToPasswordValidationPolicyResponsePtrOutputWithContext(ctx context.Context) PasswordValidationPolicyResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PasswordValidationPolicyResponse) *PasswordValidationPolicyResponse {
+		return &v
+	}).(PasswordValidationPolicyResponsePtrOutput)
+}
+
+// The complexity of the password.
+func (o PasswordValidationPolicyResponseOutput) Complexity() pulumi.StringOutput {
+	return o.ApplyT(func(v PasswordValidationPolicyResponse) string { return v.Complexity }).(pulumi.StringOutput)
+}
+
+// Disallow username as a part of the password.
+func (o PasswordValidationPolicyResponseOutput) DisallowUsernameSubstring() pulumi.BoolOutput {
+	return o.ApplyT(func(v PasswordValidationPolicyResponse) bool { return v.DisallowUsernameSubstring }).(pulumi.BoolOutput)
+}
+
+// Minimum number of characters allowed.
+func (o PasswordValidationPolicyResponseOutput) MinLength() pulumi.IntOutput {
+	return o.ApplyT(func(v PasswordValidationPolicyResponse) int { return v.MinLength }).(pulumi.IntOutput)
+}
+
+// Minimum interval after which the password can be changed.
+func (o PasswordValidationPolicyResponseOutput) PasswordChangeInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v PasswordValidationPolicyResponse) string { return v.PasswordChangeInterval }).(pulumi.StringOutput)
+}
+
+// Number of previous passwords that cannot be reused.
+func (o PasswordValidationPolicyResponseOutput) ReuseInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v PasswordValidationPolicyResponse) int { return v.ReuseInterval }).(pulumi.IntOutput)
+}
+
+type PasswordValidationPolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PasswordValidationPolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PasswordValidationPolicyResponse)(nil)).Elem()
+}
+
+func (o PasswordValidationPolicyResponsePtrOutput) ToPasswordValidationPolicyResponsePtrOutput() PasswordValidationPolicyResponsePtrOutput {
+	return o
+}
+
+func (o PasswordValidationPolicyResponsePtrOutput) ToPasswordValidationPolicyResponsePtrOutputWithContext(ctx context.Context) PasswordValidationPolicyResponsePtrOutput {
+	return o
+}
+
+func (o PasswordValidationPolicyResponsePtrOutput) Elem() PasswordValidationPolicyResponseOutput {
+	return o.ApplyT(func(v *PasswordValidationPolicyResponse) PasswordValidationPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PasswordValidationPolicyResponse
+		return ret
+	}).(PasswordValidationPolicyResponseOutput)
+}
+
+// The complexity of the password.
+func (o PasswordValidationPolicyResponsePtrOutput) Complexity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PasswordValidationPolicyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Complexity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Disallow username as a part of the password.
+func (o PasswordValidationPolicyResponsePtrOutput) DisallowUsernameSubstring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PasswordValidationPolicyResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.DisallowUsernameSubstring
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Minimum number of characters allowed.
+func (o PasswordValidationPolicyResponsePtrOutput) MinLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PasswordValidationPolicyResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MinLength
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum interval after which the password can be changed.
+func (o PasswordValidationPolicyResponsePtrOutput) PasswordChangeInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PasswordValidationPolicyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PasswordChangeInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of previous passwords that cannot be reused.
+func (o PasswordValidationPolicyResponsePtrOutput) ReuseInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PasswordValidationPolicyResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ReuseInterval
+	}).(pulumi.IntPtrOutput)
+}
+
 // Read-replica configuration for connecting to the primary instance.
 type ReplicaConfiguration struct {
 	// Specifies if the replica is the failover target. If the field is set to **true** the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
@@ -6810,6 +7242,8 @@ type Settings struct {
 	LocationPreference *LocationPreference `pulumi:"locationPreference"`
 	// The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
 	MaintenanceWindow *MaintenanceWindow `pulumi:"maintenanceWindow"`
+	// The local user password validation policy of the instance.
+	PasswordValidationPolicy *PasswordValidationPolicy `pulumi:"passwordValidationPolicy"`
 	// The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
 	PricingPlan *SettingsPricingPlan `pulumi:"pricingPlan"`
 	// The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
@@ -6871,6 +7305,8 @@ type SettingsArgs struct {
 	LocationPreference LocationPreferencePtrInput `pulumi:"locationPreference"`
 	// The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
 	MaintenanceWindow MaintenanceWindowPtrInput `pulumi:"maintenanceWindow"`
+	// The local user password validation policy of the instance.
+	PasswordValidationPolicy PasswordValidationPolicyPtrInput `pulumi:"passwordValidationPolicy"`
 	// The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
 	PricingPlan SettingsPricingPlanPtrInput `pulumi:"pricingPlan"`
 	// The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
@@ -7043,6 +7479,11 @@ func (o SettingsOutput) LocationPreference() LocationPreferencePtrOutput {
 // The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
 func (o SettingsOutput) MaintenanceWindow() MaintenanceWindowPtrOutput {
 	return o.ApplyT(func(v Settings) *MaintenanceWindow { return v.MaintenanceWindow }).(MaintenanceWindowPtrOutput)
+}
+
+// The local user password validation policy of the instance.
+func (o SettingsOutput) PasswordValidationPolicy() PasswordValidationPolicyPtrOutput {
+	return o.ApplyT(func(v Settings) *PasswordValidationPolicy { return v.PasswordValidationPolicy }).(PasswordValidationPolicyPtrOutput)
 }
 
 // The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
@@ -7264,6 +7705,16 @@ func (o SettingsPtrOutput) MaintenanceWindow() MaintenanceWindowPtrOutput {
 	}).(MaintenanceWindowPtrOutput)
 }
 
+// The local user password validation policy of the instance.
+func (o SettingsPtrOutput) PasswordValidationPolicy() PasswordValidationPolicyPtrOutput {
+	return o.ApplyT(func(v *Settings) *PasswordValidationPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordValidationPolicy
+	}).(PasswordValidationPolicyPtrOutput)
+}
+
 // The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
 func (o SettingsPtrOutput) PricingPlan() SettingsPricingPlanPtrOutput {
 	return o.ApplyT(func(v *Settings) *SettingsPricingPlan {
@@ -7368,6 +7819,8 @@ type SettingsResponse struct {
 	LocationPreference LocationPreferenceResponse `pulumi:"locationPreference"`
 	// The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
 	MaintenanceWindow MaintenanceWindowResponse `pulumi:"maintenanceWindow"`
+	// The local user password validation policy of the instance.
+	PasswordValidationPolicy PasswordValidationPolicyResponse `pulumi:"passwordValidationPolicy"`
 	// The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
 	PricingPlan string `pulumi:"pricingPlan"`
 	// The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
@@ -7429,6 +7882,8 @@ type SettingsResponseArgs struct {
 	LocationPreference LocationPreferenceResponseInput `pulumi:"locationPreference"`
 	// The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
 	MaintenanceWindow MaintenanceWindowResponseInput `pulumi:"maintenanceWindow"`
+	// The local user password validation policy of the instance.
+	PasswordValidationPolicy PasswordValidationPolicyResponseInput `pulumi:"passwordValidationPolicy"`
 	// The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
 	PricingPlan pulumi.StringInput `pulumi:"pricingPlan"`
 	// The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
@@ -7601,6 +8056,11 @@ func (o SettingsResponseOutput) LocationPreference() LocationPreferenceResponseO
 // The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
 func (o SettingsResponseOutput) MaintenanceWindow() MaintenanceWindowResponseOutput {
 	return o.ApplyT(func(v SettingsResponse) MaintenanceWindowResponse { return v.MaintenanceWindow }).(MaintenanceWindowResponseOutput)
+}
+
+// The local user password validation policy of the instance.
+func (o SettingsResponseOutput) PasswordValidationPolicy() PasswordValidationPolicyResponseOutput {
+	return o.ApplyT(func(v SettingsResponse) PasswordValidationPolicyResponse { return v.PasswordValidationPolicy }).(PasswordValidationPolicyResponseOutput)
 }
 
 // The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
@@ -7820,6 +8280,16 @@ func (o SettingsResponsePtrOutput) MaintenanceWindow() MaintenanceWindowResponse
 		}
 		return &v.MaintenanceWindow
 	}).(MaintenanceWindowResponsePtrOutput)
+}
+
+// The local user password validation policy of the instance.
+func (o SettingsResponsePtrOutput) PasswordValidationPolicy() PasswordValidationPolicyResponsePtrOutput {
+	return o.ApplyT(func(v *SettingsResponse) *PasswordValidationPolicyResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.PasswordValidationPolicy
+	}).(PasswordValidationPolicyResponsePtrOutput)
 }
 
 // The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
@@ -10203,6 +10673,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OperationErrorPtrInput)(nil)).Elem(), OperationErrorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OperationErrorResponseInput)(nil)).Elem(), OperationErrorResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OperationErrorResponsePtrInput)(nil)).Elem(), OperationErrorResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PasswordValidationPolicyInput)(nil)).Elem(), PasswordValidationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PasswordValidationPolicyPtrInput)(nil)).Elem(), PasswordValidationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PasswordValidationPolicyResponseInput)(nil)).Elem(), PasswordValidationPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PasswordValidationPolicyResponsePtrInput)(nil)).Elem(), PasswordValidationPolicyResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReplicaConfigurationInput)(nil)).Elem(), ReplicaConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReplicaConfigurationPtrInput)(nil)).Elem(), ReplicaConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReplicaConfigurationResponseInput)(nil)).Elem(), ReplicaConfigurationResponseArgs{})
@@ -10303,6 +10777,10 @@ func init() {
 	pulumi.RegisterOutputType(OperationErrorPtrOutput{})
 	pulumi.RegisterOutputType(OperationErrorResponseOutput{})
 	pulumi.RegisterOutputType(OperationErrorResponsePtrOutput{})
+	pulumi.RegisterOutputType(PasswordValidationPolicyOutput{})
+	pulumi.RegisterOutputType(PasswordValidationPolicyPtrOutput{})
+	pulumi.RegisterOutputType(PasswordValidationPolicyResponseOutput{})
+	pulumi.RegisterOutputType(PasswordValidationPolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(ReplicaConfigurationOutput{})
 	pulumi.RegisterOutputType(ReplicaConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ReplicaConfigurationResponseOutput{})

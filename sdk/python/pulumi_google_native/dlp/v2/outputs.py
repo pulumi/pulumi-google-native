@@ -107,6 +107,7 @@ __all__ = [
     'GooglePrivacyDlpV2RecordTransformationsResponse',
     'GooglePrivacyDlpV2RedactConfigResponse',
     'GooglePrivacyDlpV2RegexResponse',
+    'GooglePrivacyDlpV2ReplaceDictionaryConfigResponse',
     'GooglePrivacyDlpV2ReplaceValueConfigResponse',
     'GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponse',
     'GooglePrivacyDlpV2RequestedOptionsResponse',
@@ -2956,12 +2957,15 @@ class GooglePrivacyDlpV2InfoTypeResponse(dict):
     Type of information detected by the API.
     """
     def __init__(__self__, *,
-                 name: str):
+                 name: str,
+                 version: str):
         """
         Type of information detected by the API.
         :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        :param str version: Optional version name for this InfoType.
         """
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -2970,6 +2974,14 @@ class GooglePrivacyDlpV2InfoTypeResponse(dict):
         Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Optional version name for this InfoType.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type
@@ -4772,6 +4784,8 @@ class GooglePrivacyDlpV2PrimitiveTransformationResponse(dict):
             suggest = "redact_config"
         elif key == "replaceConfig":
             suggest = "replace_config"
+        elif key == "replaceDictionaryConfig":
+            suggest = "replace_dictionary_config"
         elif key == "replaceWithInfoTypeConfig":
             suggest = "replace_with_info_type_config"
         elif key == "timePartConfig":
@@ -4798,6 +4812,7 @@ class GooglePrivacyDlpV2PrimitiveTransformationResponse(dict):
                  fixed_size_bucketing_config: 'outputs.GooglePrivacyDlpV2FixedSizeBucketingConfigResponse',
                  redact_config: 'outputs.GooglePrivacyDlpV2RedactConfigResponse',
                  replace_config: 'outputs.GooglePrivacyDlpV2ReplaceValueConfigResponse',
+                 replace_dictionary_config: 'outputs.GooglePrivacyDlpV2ReplaceDictionaryConfigResponse',
                  replace_with_info_type_config: 'outputs.GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponse',
                  time_part_config: 'outputs.GooglePrivacyDlpV2TimePartConfigResponse'):
         """
@@ -4811,6 +4826,7 @@ class GooglePrivacyDlpV2PrimitiveTransformationResponse(dict):
         :param 'GooglePrivacyDlpV2FixedSizeBucketingConfigResponse' fixed_size_bucketing_config: Fixed size bucketing
         :param 'GooglePrivacyDlpV2RedactConfigResponse' redact_config: Redact
         :param 'GooglePrivacyDlpV2ReplaceValueConfigResponse' replace_config: Replace with a specified value.
+        :param 'GooglePrivacyDlpV2ReplaceDictionaryConfigResponse' replace_dictionary_config: Replace with a value randomly drawn (with replacement) from a dictionary.
         :param 'GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponse' replace_with_info_type_config: Replace with infotype
         :param 'GooglePrivacyDlpV2TimePartConfigResponse' time_part_config: Time extraction
         """
@@ -4823,6 +4839,7 @@ class GooglePrivacyDlpV2PrimitiveTransformationResponse(dict):
         pulumi.set(__self__, "fixed_size_bucketing_config", fixed_size_bucketing_config)
         pulumi.set(__self__, "redact_config", redact_config)
         pulumi.set(__self__, "replace_config", replace_config)
+        pulumi.set(__self__, "replace_dictionary_config", replace_dictionary_config)
         pulumi.set(__self__, "replace_with_info_type_config", replace_with_info_type_config)
         pulumi.set(__self__, "time_part_config", time_part_config)
 
@@ -4897,6 +4914,14 @@ class GooglePrivacyDlpV2PrimitiveTransformationResponse(dict):
         Replace with a specified value.
         """
         return pulumi.get(self, "replace_config")
+
+    @property
+    @pulumi.getter(name="replaceDictionaryConfig")
+    def replace_dictionary_config(self) -> 'outputs.GooglePrivacyDlpV2ReplaceDictionaryConfigResponse':
+        """
+        Replace with a value randomly drawn (with replacement) from a dictionary.
+        """
+        return pulumi.get(self, "replace_dictionary_config")
 
     @property
     @pulumi.getter(name="replaceWithInfoTypeConfig")
@@ -5074,11 +5099,11 @@ class GooglePrivacyDlpV2ProximityResponse(dict):
 @pulumi.output_type
 class GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponse(dict):
     """
-    Publish findings of a DlpJob to Cloud Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Cloud Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Cloud Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
+    Publish findings of a DlpJob to Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
     """
     def __init__(__self__):
         """
-        Publish findings of a DlpJob to Cloud Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Cloud Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Cloud Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
+        Publish findings of a DlpJob to Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
         """
         pass
 
@@ -5459,6 +5484,45 @@ class GooglePrivacyDlpV2RegexResponse(dict):
         Pattern defining the regular expression. Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
         """
         return pulumi.get(self, "pattern")
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2ReplaceDictionaryConfigResponse(dict):
+    """
+    Replace each input value with a value randomly selected from the dictionary.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "wordList":
+            suggest = "word_list"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2ReplaceDictionaryConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2ReplaceDictionaryConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2ReplaceDictionaryConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 word_list: 'outputs.GooglePrivacyDlpV2WordListResponse'):
+        """
+        Replace each input value with a value randomly selected from the dictionary.
+        :param 'GooglePrivacyDlpV2WordListResponse' word_list: A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
+        """
+        pulumi.set(__self__, "word_list", word_list)
+
+    @property
+    @pulumi.getter(name="wordList")
+    def word_list(self) -> 'outputs.GooglePrivacyDlpV2WordListResponse':
+        """
+        A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
+        """
+        return pulumi.get(self, "word_list")
 
 
 @pulumi.output_type

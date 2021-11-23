@@ -28,6 +28,8 @@ type Job struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The user-specified id of the job.
 	JobId pulumi.StringOutput `pulumi:"jobId"`
+	// It's only effect when the job is in QUEUED state. If it's positive, it indicates the job's position in the job scheduler. It's 0 when the job is already scheduled.
+	JobPosition pulumi.StringOutput `pulumi:"jobPosition"`
 	// Optional. One or more labels that you can add, to organize your jobs. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Input parameters to create a prediction job.

@@ -75,10 +75,6 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta
     public sealed class GetGameServerClusterResult
     {
         /// <summary>
-        /// Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
-        /// </summary>
-        public readonly string AllocationPriority;
-        /// <summary>
         /// The state of the Kubernetes cluster, this will be available if 'view' is set to `FULL` in the relevant List/Get/Preview request.
         /// </summary>
         public readonly Outputs.KubernetesClusterStateResponse ClusterState;
@@ -113,8 +109,6 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta
 
         [OutputConstructor]
         private GetGameServerClusterResult(
-            string allocationPriority,
-
             Outputs.KubernetesClusterStateResponse clusterState,
 
             Outputs.GameServerClusterConnectionInfoResponse connectionInfo,
@@ -131,7 +125,6 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta
 
             string updateTime)
         {
-            AllocationPriority = allocationPriority;
             ClusterState = clusterState;
             ConnectionInfo = connectionInfo;
             CreateTime = createTime;

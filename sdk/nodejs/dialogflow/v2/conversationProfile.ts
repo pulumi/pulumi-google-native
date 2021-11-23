@@ -56,7 +56,7 @@ export class ConversationProfile extends pulumi.CustomResource {
      */
     public readonly humanAgentHandoffConfig!: pulumi.Output<outputs.dialogflow.v2.GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse>;
     /**
-     * Language which represents the conversationProfile. If unspecified, the default language code en-us applies. Users need to create a ConversationProfile for each language they want to support.
+     * Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-US languages. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
      */
     public readonly languageCode!: pulumi.Output<string>;
     /**
@@ -76,9 +76,17 @@ export class ConversationProfile extends pulumi.CustomResource {
      */
     public readonly notificationConfig!: pulumi.Output<outputs.dialogflow.v2.GoogleCloudDialogflowV2NotificationConfigResponse>;
     /**
+     * Name of the CX SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
+     */
+    public readonly securitySettings!: pulumi.Output<string>;
+    /**
      * Settings for speech transcription.
      */
     public readonly sttConfig!: pulumi.Output<outputs.dialogflow.v2.GoogleCloudDialogflowV2SpeechToTextConfigResponse>;
+    /**
+     * The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
+     */
+    public readonly timeZone!: pulumi.Output<string>;
     /**
      * Update time of the conversation profile.
      */
@@ -109,7 +117,9 @@ export class ConversationProfile extends pulumi.CustomResource {
             inputs["newMessageEventNotificationConfig"] = args ? args.newMessageEventNotificationConfig : undefined;
             inputs["notificationConfig"] = args ? args.notificationConfig : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["securitySettings"] = args ? args.securitySettings : undefined;
             inputs["sttConfig"] = args ? args.sttConfig : undefined;
+            inputs["timeZone"] = args ? args.timeZone : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         } else {
@@ -123,7 +133,9 @@ export class ConversationProfile extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["newMessageEventNotificationConfig"] = undefined /*out*/;
             inputs["notificationConfig"] = undefined /*out*/;
+            inputs["securitySettings"] = undefined /*out*/;
             inputs["sttConfig"] = undefined /*out*/;
+            inputs["timeZone"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -154,7 +166,7 @@ export interface ConversationProfileArgs {
      */
     humanAgentHandoffConfig?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs>;
     /**
-     * Language which represents the conversationProfile. If unspecified, the default language code en-us applies. Users need to create a ConversationProfile for each language they want to support.
+     * Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-US languages. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
      */
     languageCode?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
@@ -176,7 +188,15 @@ export interface ConversationProfileArgs {
     notificationConfig?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2NotificationConfigArgs>;
     project?: pulumi.Input<string>;
     /**
+     * Name of the CX SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
+     */
+    securitySettings?: pulumi.Input<string>;
+    /**
      * Settings for speech transcription.
      */
     sttConfig?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2SpeechToTextConfigArgs>;
+    /**
+     * The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
+     */
+    timeZone?: pulumi.Input<string>;
 }

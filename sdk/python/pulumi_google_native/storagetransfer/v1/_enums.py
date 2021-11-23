@@ -5,10 +5,46 @@
 from enum import Enum
 
 __all__ = [
+    'LoggingConfigLogActionStatesItem',
+    'LoggingConfigLogActionsItem',
     'NotificationConfigEventTypesItem',
     'NotificationConfigPayloadFormat',
     'TransferJobStatus',
 ]
+
+
+class LoggingConfigLogActionStatesItem(str, Enum):
+    LOGGABLE_ACTION_STATE_UNSPECIFIED = "LOGGABLE_ACTION_STATE_UNSPECIFIED"
+    """
+    Default value. This value is unused.
+    """
+    SUCCEEDED = "SUCCEEDED"
+    """
+    `LoggableAction` is completed successfully. `SUCCEEDED` actions are logged as INFO.
+    """
+    FAILED = "FAILED"
+    """
+    `LoggableAction` is terminated in an error state. `FAILED` actions are logged as ERROR.
+    """
+
+
+class LoggingConfigLogActionsItem(str, Enum):
+    LOGGABLE_ACTION_UNSPECIFIED = "LOGGABLE_ACTION_UNSPECIFIED"
+    """
+    Default value. This value is unused.
+    """
+    FIND = "FIND"
+    """
+    Finding objects to transfer e.g. listing objects of the source bucket.
+    """
+    DELETE = "DELETE"
+    """
+    Deleting objects at source or destination.
+    """
+    COPY = "COPY"
+    """
+    Copying objects from source to destination.
+    """
 
 
 class NotificationConfigEventTypesItem(str, Enum):

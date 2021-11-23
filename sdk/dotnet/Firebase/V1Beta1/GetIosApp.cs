@@ -80,6 +80,10 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         /// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
         /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// The Apple Developer Team ID associated with the App in the App Store.
+        /// </summary>
+        public readonly string TeamId;
 
         [OutputConstructor]
         private GetIosAppResult(
@@ -93,7 +97,9 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
 
             string name,
 
-            string project)
+            string project,
+
+            string teamId)
         {
             AppId = appId;
             AppStoreId = appStoreId;
@@ -101,6 +107,7 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
             DisplayName = displayName;
             Name = name;
             Project = project;
+            TeamId = teamId;
         }
     }
 }

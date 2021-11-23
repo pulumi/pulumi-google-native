@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1Beta.Outputs
     public sealed class StackTraceResponse
     {
         /// <summary>
-        /// An array of Stack elements.
+        /// An array of stack elements.
         /// </summary>
         public readonly ImmutableArray<Outputs.StackTraceElementResponse> Elements;
 

@@ -124,6 +124,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public Input<Inputs.MaintenanceWindowArgs>? MaintenanceWindow { get; set; }
 
         /// <summary>
+        /// The local user password validation policy of the instance.
+        /// </summary>
+        [Input("passwordValidationPolicy")]
+        public Input<Inputs.PasswordValidationPolicyArgs>? PasswordValidationPolicy { get; set; }
+
+        /// <summary>
         /// The pricing plan for this instance. This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
         /// </summary>
         [Input("pricingPlan")]

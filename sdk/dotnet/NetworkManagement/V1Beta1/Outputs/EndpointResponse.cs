@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
     public sealed class EndpointResponse
     {
         /// <summary>
+        /// A [Cloud function](https://cloud.google.com/functions).
+        /// </summary>
+        public readonly Outputs.CloudFunctionEndpointResponse CloudFunction;
+        /// <summary>
         /// A [Cloud SQL](https://cloud.google.com/sql) instance URI.
         /// </summary>
         public readonly string CloudSqlInstance;
@@ -51,6 +55,8 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
 
         [OutputConstructor]
         private EndpointResponse(
+            Outputs.CloudFunctionEndpointResponse cloudFunction,
+
             string cloudSqlInstance,
 
             string gkeMasterCluster,
@@ -67,6 +73,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
 
             string project)
         {
+            CloudFunction = cloudFunction;
             CloudSqlInstance = cloudSqlInstance;
             GkeMasterCluster = gkeMasterCluster;
             Instance = instance;

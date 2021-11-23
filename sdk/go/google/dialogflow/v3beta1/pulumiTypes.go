@@ -2379,7 +2379,7 @@ func (o GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseResponseArrayOutpu
 
 // The configuration for continuous tests.
 type GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig struct {
-	// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+	// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
 	EnableContinuousRun *bool `pulumi:"enableContinuousRun"`
 	// Whether to run test cases in TestCasesConfig.test_cases before deploying a flow version to the environment. Default false.
 	EnablePredeploymentRun *bool `pulumi:"enablePredeploymentRun"`
@@ -2400,7 +2400,7 @@ type GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigInput interface {
 
 // The configuration for continuous tests.
 type GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigArgs struct {
-	// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+	// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
 	EnableContinuousRun pulumi.BoolPtrInput `pulumi:"enableContinuousRun"`
 	// Whether to run test cases in TestCasesConfig.test_cases before deploying a flow version to the environment. Default false.
 	EnablePredeploymentRun pulumi.BoolPtrInput `pulumi:"enablePredeploymentRun"`
@@ -2486,7 +2486,7 @@ func (o GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigOutput) ToGoogle
 	}).(GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigPtrOutput)
 }
 
-// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
 func (o GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigOutput) EnableContinuousRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig) *bool { return v.EnableContinuousRun }).(pulumi.BoolPtrOutput)
 }
@@ -2527,7 +2527,7 @@ func (o GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigPtrOutput) Elem(
 	}).(GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigOutput)
 }
 
-// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
 func (o GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigPtrOutput) EnableContinuousRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig) *bool {
 		if v == nil {
@@ -2559,7 +2559,7 @@ func (o GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigPtrOutput) TestC
 
 // The configuration for continuous tests.
 type GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponse struct {
-	// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+	// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
 	EnableContinuousRun bool `pulumi:"enableContinuousRun"`
 	// Whether to run test cases in TestCasesConfig.test_cases before deploying a flow version to the environment. Default false.
 	EnablePredeploymentRun bool `pulumi:"enablePredeploymentRun"`
@@ -2580,7 +2580,7 @@ type GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponseInput inter
 
 // The configuration for continuous tests.
 type GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponseArgs struct {
-	// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+	// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
 	EnableContinuousRun pulumi.BoolInput `pulumi:"enableContinuousRun"`
 	// Whether to run test cases in TestCasesConfig.test_cases before deploying a flow version to the environment. Default false.
 	EnablePredeploymentRun pulumi.BoolInput `pulumi:"enablePredeploymentRun"`
@@ -2666,7 +2666,7 @@ func (o GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponseOutput) 
 	}).(GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponsePtrOutput)
 }
 
-// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
 func (o GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponseOutput) EnableContinuousRun() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponse) bool {
 		return v.EnableContinuousRun
@@ -2709,7 +2709,7 @@ func (o GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponsePtrOutpu
 	}).(GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponseOutput)
 }
 
-// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to ture, run once a day.
+// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
 func (o GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponsePtrOutput) EnableContinuousRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponse) *bool {
 		if v == nil {
@@ -15200,6 +15200,8 @@ func (o GoogleCloudDialogflowCxV3beta1VersionVariantsVariantResponseArrayOutput)
 
 // Represents configuration for a generic web service.
 type GoogleCloudDialogflowCxV3beta1WebhookGenericWebService struct {
+	// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
+	AllowedCaCerts []string `pulumi:"allowedCaCerts"`
 	// The password for HTTP Basic authentication.
 	Password *string `pulumi:"password"`
 	// The HTTP request headers to send together with webhook requests.
@@ -15223,6 +15225,8 @@ type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceInput interface {
 
 // Represents configuration for a generic web service.
 type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceArgs struct {
+	// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
+	AllowedCaCerts pulumi.StringArrayInput `pulumi:"allowedCaCerts"`
 	// The password for HTTP Basic authentication.
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// The HTTP request headers to send together with webhook requests.
@@ -15311,6 +15315,11 @@ func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOutput) ToGoogleCl
 	}).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServicePtrOutput)
 }
 
+// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOutput) AllowedCaCerts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1WebhookGenericWebService) []string { return v.AllowedCaCerts }).(pulumi.StringArrayOutput)
+}
+
 // The password for HTTP Basic authentication.
 func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1WebhookGenericWebService) *string { return v.Password }).(pulumi.StringPtrOutput)
@@ -15357,6 +15366,16 @@ func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServicePtrOutput) Elem() 
 	}).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOutput)
 }
 
+// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServicePtrOutput) AllowedCaCerts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1WebhookGenericWebService) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedCaCerts
+	}).(pulumi.StringArrayOutput)
+}
+
 // The password for HTTP Basic authentication.
 func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServicePtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1WebhookGenericWebService) *string {
@@ -15399,6 +15418,8 @@ func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServicePtrOutput) Usernam
 
 // Represents configuration for a generic web service.
 type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse struct {
+	// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
+	AllowedCaCerts []string `pulumi:"allowedCaCerts"`
 	// The password for HTTP Basic authentication.
 	Password string `pulumi:"password"`
 	// The HTTP request headers to send together with webhook requests.
@@ -15422,6 +15443,8 @@ type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponseInput interfa
 
 // Represents configuration for a generic web service.
 type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponseArgs struct {
+	// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
+	AllowedCaCerts pulumi.StringArrayInput `pulumi:"allowedCaCerts"`
 	// The password for HTTP Basic authentication.
 	Password pulumi.StringInput `pulumi:"password"`
 	// The HTTP request headers to send together with webhook requests.
@@ -15510,6 +15533,13 @@ func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponseOutput) To
 	}).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponsePtrOutput)
 }
 
+// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponseOutput) AllowedCaCerts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse) []string {
+		return v.AllowedCaCerts
+	}).(pulumi.StringArrayOutput)
+}
+
 // The password for HTTP Basic authentication.
 func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponseOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse) string { return v.Password }).(pulumi.StringOutput)
@@ -15554,6 +15584,16 @@ func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponsePtrOutput)
 		var ret GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse
 		return ret
 	}).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponseOutput)
+}
+
+// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponsePtrOutput) AllowedCaCerts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedCaCerts
+	}).(pulumi.StringArrayOutput)
 }
 
 // The password for HTTP Basic authentication.

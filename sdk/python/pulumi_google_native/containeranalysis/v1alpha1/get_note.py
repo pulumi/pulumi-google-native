@@ -224,7 +224,7 @@ class GetNoteResult:
 
     @property
     @pulumi.getter(name="spdxPackage")
-    def spdx_package(self) -> 'outputs.PackageNoteResponse':
+    def spdx_package(self) -> 'outputs.PackageInfoNoteResponse':
         """
         A note describing an SPDX Package.
         """

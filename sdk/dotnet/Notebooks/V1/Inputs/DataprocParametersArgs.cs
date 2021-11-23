@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
     public sealed class DataprocParametersArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// URI for cluster used to run Dataproc execution. Format: 'projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}
+        /// URI for cluster used to run Dataproc execution. Format: `projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}`
         /// </summary>
         [Input("cluster")]
         public Input<string>? Cluster { get; set; }

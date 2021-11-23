@@ -27,7 +27,7 @@ type ConnectionProfile struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// A MySQL database connection profile.
 	Mysql MySqlConnectionProfileResponseOutput `pulumi:"mysql"`
-	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{instance}.
+	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A PostgreSQL database connection profile.
 	Postgresql PostgreSqlConnectionProfileResponseOutput `pulumi:"postgresql"`
@@ -91,7 +91,7 @@ type connectionProfileArgs struct {
 	Location *string           `pulumi:"location"`
 	// A MySQL database connection profile.
 	Mysql *MySqlConnectionProfile `pulumi:"mysql"`
-	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{instance}.
+	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
 	Name *string `pulumi:"name"`
 	// A PostgreSQL database connection profile.
 	Postgresql *PostgreSqlConnectionProfile `pulumi:"postgresql"`
@@ -115,7 +115,7 @@ type ConnectionProfileArgs struct {
 	Location pulumi.StringPtrInput
 	// A MySQL database connection profile.
 	Mysql MySqlConnectionProfilePtrInput
-	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{instance}.
+	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
 	Name pulumi.StringPtrInput
 	// A PostgreSQL database connection profile.
 	Postgresql PostgreSqlConnectionProfilePtrInput

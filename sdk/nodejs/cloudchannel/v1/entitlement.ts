@@ -59,7 +59,7 @@ export class Entitlement extends pulumi.CustomResource {
      */
     public readonly offer!: pulumi.Output<string>;
     /**
-     * Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
+     * Extended entitlement parameters. When creating an entitlement, valid parameter names and values are defined in the Offer.parameter_definitions. The response may include the following output-only Parameters: - assigned_units: The number of licenses assigned to users. - max_units: The maximum assignable units for a flexible offer. - num_units: The total commitment for commitment-based offers.
      */
     public readonly parameters!: pulumi.Output<outputs.cloudchannel.v1.GoogleCloudChannelV1ParameterResponse[]>;
     /**
@@ -162,7 +162,7 @@ export interface EntitlementArgs {
      */
     offer: pulumi.Input<string>;
     /**
-     * Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
+     * Extended entitlement parameters. When creating an entitlement, valid parameter names and values are defined in the Offer.parameter_definitions. The response may include the following output-only Parameters: - assigned_units: The number of licenses assigned to users. - max_units: The maximum assignable units for a flexible offer. - num_units: The total commitment for commitment-based offers.
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1ParameterArgs>[]>;
     /**

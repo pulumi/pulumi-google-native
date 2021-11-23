@@ -60,7 +60,7 @@ type Instance struct {
 	NoPublicIp pulumi.BoolOutput `pulumi:"noPublicIp"`
 	// Input only. If true, the data disk will not be auto deleted when deleting the instance.
 	NoRemoveDataDisk pulumi.BoolOutput `pulumi:"noRemoveDataDisk"`
-	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
+	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
 	PostStartupScript pulumi.StringOutput `pulumi:"postStartupScript"`
 	// The proxy endpoint that is used to access the Jupyter notebook.
 	ProxyUri pulumi.StringOutput `pulumi:"proxyUri"`
@@ -70,7 +70,7 @@ type Instance struct {
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// Optional. The URIs of service account scopes to be included in Compute Engine instances. If not specified, the following [scopes](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) are defined: - https://www.googleapis.com/auth/cloud-platform - https://www.googleapis.com/auth/userinfo.email If not using default scopes, you need at least: https://www.googleapis.com/auth/compute
 	ServiceAccountScopes pulumi.StringArrayOutput `pulumi:"serviceAccountScopes"`
-	// Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+	// Optional. Shielded VM configuration. [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
 	ShieldedInstanceConfig ShieldedInstanceConfigResponseOutput `pulumi:"shieldedInstanceConfig"`
 	// The state of this instance.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -171,7 +171,7 @@ type instanceArgs struct {
 	NoPublicIp *bool `pulumi:"noPublicIp"`
 	// Input only. If true, the data disk will not be auto deleted when deleting the instance.
 	NoRemoveDataDisk *bool `pulumi:"noRemoveDataDisk"`
-	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
+	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
 	PostStartupScript *string `pulumi:"postStartupScript"`
 	Project           *string `pulumi:"project"`
 	// Optional. The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this notebook instance.
@@ -180,7 +180,7 @@ type instanceArgs struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Optional. The URIs of service account scopes to be included in Compute Engine instances. If not specified, the following [scopes](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) are defined: - https://www.googleapis.com/auth/cloud-platform - https://www.googleapis.com/auth/userinfo.email If not using default scopes, you need at least: https://www.googleapis.com/auth/compute
 	ServiceAccountScopes []string `pulumi:"serviceAccountScopes"`
-	// Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+	// Optional. Shielded VM configuration. [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
 	ShieldedInstanceConfig *ShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// The name of the subnet that this instance is in. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
 	Subnet *string `pulumi:"subnet"`
@@ -234,7 +234,7 @@ type InstanceArgs struct {
 	NoPublicIp pulumi.BoolPtrInput
 	// Input only. If true, the data disk will not be auto deleted when deleting the instance.
 	NoRemoveDataDisk pulumi.BoolPtrInput
-	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
+	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
 	PostStartupScript pulumi.StringPtrInput
 	Project           pulumi.StringPtrInput
 	// Optional. The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this notebook instance.
@@ -243,7 +243,7 @@ type InstanceArgs struct {
 	ServiceAccount pulumi.StringPtrInput
 	// Optional. The URIs of service account scopes to be included in Compute Engine instances. If not specified, the following [scopes](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) are defined: - https://www.googleapis.com/auth/cloud-platform - https://www.googleapis.com/auth/userinfo.email If not using default scopes, you need at least: https://www.googleapis.com/auth/compute
 	ServiceAccountScopes pulumi.StringArrayInput
-	// Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+	// Optional. Shielded VM configuration. [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
 	ShieldedInstanceConfig ShieldedInstanceConfigPtrInput
 	// The name of the subnet that this instance is in. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
 	Subnet pulumi.StringPtrInput

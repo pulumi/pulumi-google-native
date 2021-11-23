@@ -24,7 +24,6 @@ __all__ = [
     'FleetConfigResponse',
     'GameServerClusterConnectionInfoResponse',
     'GkeClusterReferenceResponse',
-    'GkeHubClusterReferenceResponse',
     'KubernetesClusterStateResponse',
     'LabelSelectorResponse',
     'LogConfigResponse',
@@ -195,7 +194,7 @@ class AuthorizationLoggingOptionsResponse(dict):
 @pulumi.output_type
 class BindingResponse(dict):
     """
-    Associates `members` with a `role`.
+    Associates `members`, or principals, with a `role`.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -220,10 +219,10 @@ class BindingResponse(dict):
                  members: Sequence[str],
                  role: str):
         """
-        Associates `members` with a `role`.
-        :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
-        :param str role: Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Associates `members`, or principals, with a `role`.
+        :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        :param Sequence[str] members: Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         pulumi.set(__self__, "binding_id", binding_id)
         pulumi.set(__self__, "condition", condition)
@@ -239,7 +238,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def condition(self) -> 'outputs.ExprResponse':
         """
-        The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         """
         return pulumi.get(self, "condition")
 
@@ -247,7 +246,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         """
         return pulumi.get(self, "members")
 
@@ -255,7 +254,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def role(self) -> str:
         """
-        Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
 
@@ -622,8 +621,6 @@ class GameServerClusterConnectionInfoResponse(dict):
         suggest = None
         if key == "gkeClusterReference":
             suggest = "gke_cluster_reference"
-        elif key == "gkeHubClusterReference":
-            suggest = "gke_hub_cluster_reference"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GameServerClusterConnectionInfoResponse. Access the value via the '{suggest}' property getter instead.")
@@ -638,16 +635,13 @@ class GameServerClusterConnectionInfoResponse(dict):
 
     def __init__(__self__, *,
                  gke_cluster_reference: 'outputs.GkeClusterReferenceResponse',
-                 gke_hub_cluster_reference: 'outputs.GkeHubClusterReferenceResponse',
                  namespace: str):
         """
         The game server cluster connection information.
         :param 'GkeClusterReferenceResponse' gke_cluster_reference: Reference to the GKE cluster where the game servers are installed.
-        :param 'GkeHubClusterReferenceResponse' gke_hub_cluster_reference: Reference to a Kubernetes cluster registered through GKE Hub. See https://cloud.google.com/anthos/multicluster-management/ for more information about registering Kubernetes clusters.
         :param str namespace: Namespace designated on the game server cluster where the Agones game server instances will be created. Existence of the namespace will be validated during creation.
         """
         pulumi.set(__self__, "gke_cluster_reference", gke_cluster_reference)
-        pulumi.set(__self__, "gke_hub_cluster_reference", gke_hub_cluster_reference)
         pulumi.set(__self__, "namespace", namespace)
 
     @property
@@ -657,14 +651,6 @@ class GameServerClusterConnectionInfoResponse(dict):
         Reference to the GKE cluster where the game servers are installed.
         """
         return pulumi.get(self, "gke_cluster_reference")
-
-    @property
-    @pulumi.getter(name="gkeHubClusterReference")
-    def gke_hub_cluster_reference(self) -> 'outputs.GkeHubClusterReferenceResponse':
-        """
-        Reference to a Kubernetes cluster registered through GKE Hub. See https://cloud.google.com/anthos/multicluster-management/ for more information about registering Kubernetes clusters.
-        """
-        return pulumi.get(self, "gke_hub_cluster_reference")
 
     @property
     @pulumi.getter
@@ -695,28 +681,6 @@ class GkeClusterReferenceResponse(dict):
         The full or partial name of a GKE cluster, using one of the following forms: * `projects/{project}/locations/{location}/clusters/{cluster}` * `locations/{location}/clusters/{cluster}` * `{cluster}` If project and location are not specified, the project and location of the GameServerCluster resource are used to generate the full name of the GKE cluster.
         """
         return pulumi.get(self, "cluster")
-
-
-@pulumi.output_type
-class GkeHubClusterReferenceResponse(dict):
-    """
-    GkeHubClusterReference represents a reference to a Kubernetes cluster registered through GKE Hub.
-    """
-    def __init__(__self__, *,
-                 membership: str):
-        """
-        GkeHubClusterReference represents a reference to a Kubernetes cluster registered through GKE Hub.
-        :param str membership: The full or partial name of a GKE Hub membership, using one of the following forms: * `https://gkehub.googleapis.com/v1beta1/projects/{project_id}/locations/global/memberships/{membership_id}` * `projects/{project_id}/locations/global/memberships/{membership_id}` * `{membership_id}` If project is not specified, the project of the GameServerCluster resource is used to generate the full name of the GKE Hub membership.
-        """
-        pulumi.set(__self__, "membership", membership)
-
-    @property
-    @pulumi.getter
-    def membership(self) -> str:
-        """
-        The full or partial name of a GKE Hub membership, using one of the following forms: * `https://gkehub.googleapis.com/v1beta1/projects/{project_id}/locations/global/memberships/{membership_id}` * `projects/{project_id}/locations/global/memberships/{membership_id}` * `{membership_id}` If project is not specified, the project of the GameServerCluster resource is used to generate the full name of the GKE Hub membership.
-        """
-        return pulumi.get(self, "membership")
 
 
 @pulumi.output_type
@@ -1090,7 +1054,7 @@ class ScalingConfigResponse(dict):
 @pulumi.output_type
 class ScheduleResponse(dict):
     """
-    The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration
+    The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. ``` start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration ```
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1121,7 +1085,7 @@ class ScheduleResponse(dict):
                  end_time: str,
                  start_time: str):
         """
-        The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration
+        The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. ``` start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration ```
         :param str cron_job_duration: The duration for the cron job event. The duration of the event is effective after the cron job's start time.
         :param str cron_spec: The cron definition of the scheduled event. See https://en.wikipedia.org/wiki/Cron. Cron spec specifies the local time as defined by the realm.
         :param str end_time: The end time of the event.

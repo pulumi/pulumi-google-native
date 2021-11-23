@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
-        /// A server-assigned timestamp representing when this Instance was created.
+        /// A server-assigned timestamp representing when this Instance was created. For instances created before this field was added (August 2021), this value is `seconds: 0, nanos: 1`.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;

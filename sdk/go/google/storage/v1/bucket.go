@@ -16,6 +16,8 @@ type Bucket struct {
 
 	// Access controls on the bucket.
 	Acl BucketAccessControlResponseArrayOutput `pulumi:"acl"`
+	// The bucket's Autoclass configuration.
+	Autoclass BucketAutoclassResponseOutput `pulumi:"autoclass"`
 	// The bucket's billing configuration.
 	Billing BucketBillingResponseOutput `pulumi:"billing"`
 	// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
@@ -113,6 +115,8 @@ func (BucketState) ElementType() reflect.Type {
 type bucketArgs struct {
 	// Access controls on the bucket.
 	Acl []BucketAccessControlType `pulumi:"acl"`
+	// The bucket's Autoclass configuration.
+	Autoclass *BucketAutoclass `pulumi:"autoclass"`
 	// The bucket's billing configuration.
 	Billing *BucketBilling `pulumi:"billing"`
 	// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
@@ -181,6 +185,8 @@ type bucketArgs struct {
 type BucketArgs struct {
 	// Access controls on the bucket.
 	Acl BucketAccessControlTypeArrayInput
+	// The bucket's Autoclass configuration.
+	Autoclass BucketAutoclassPtrInput
 	// The bucket's billing configuration.
 	Billing BucketBillingPtrInput
 	// The bucket's Cross-Origin Resource Sharing (CORS) configuration.

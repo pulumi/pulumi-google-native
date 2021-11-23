@@ -25,7 +25,7 @@ type Job struct {
 	CompanyDisplayName pulumi.StringOutput `pulumi:"companyDisplayName"`
 	// Job compensation information (a.k.a. "pay rate") i.e., the compensation that will paid to the employee.
 	CompensationInfo CompensationInfoResponseOutput `pulumi:"compensationInfo"`
-	// A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the provided structured fields. The keys of the map are strings up to 64 bytes and must match the pattern: a-zA-Z*. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100 filterable and at most 100 unfilterable keys are supported. For filterable `string_values`, across all keys at most 200 values are allowed, with each string no more than 255 characters. For unfilterable `string_values`, the maximum total size of `string_values` across all keys is 50KB.
+	// A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the provided structured fields. The keys of the map are strings up to 64 bytes and must match the pattern: `a-zA-Z*`. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100 filterable and at most 100 unfilterable keys are supported. For filterable `string_values`, across all keys at most 200 values are allowed, with each string no more than 255 characters. For unfilterable `string_values`, the maximum total size of `string_values` across all keys is 50KB.
 	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
 	// The desired education degrees for the job, such as Bachelors, Masters.
 	DegreeTypes pulumi.StringArrayOutput `pulumi:"degreeTypes"`
@@ -137,7 +137,7 @@ type jobArgs struct {
 	Company string `pulumi:"company"`
 	// Job compensation information (a.k.a. "pay rate") i.e., the compensation that will paid to the employee.
 	CompensationInfo *CompensationInfo `pulumi:"compensationInfo"`
-	// A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the provided structured fields. The keys of the map are strings up to 64 bytes and must match the pattern: a-zA-Z*. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100 filterable and at most 100 unfilterable keys are supported. For filterable `string_values`, across all keys at most 200 values are allowed, with each string no more than 255 characters. For unfilterable `string_values`, the maximum total size of `string_values` across all keys is 50KB.
+	// A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the provided structured fields. The keys of the map are strings up to 64 bytes and must match the pattern: `a-zA-Z*`. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100 filterable and at most 100 unfilterable keys are supported. For filterable `string_values`, across all keys at most 200 values are allowed, with each string no more than 255 characters. For unfilterable `string_values`, the maximum total size of `string_values` across all keys is 50KB.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// The desired education degrees for the job, such as Bachelors, Masters.
 	DegreeTypes []JobDegreeTypesItem `pulumi:"degreeTypes"`
@@ -193,7 +193,7 @@ type JobArgs struct {
 	Company pulumi.StringInput
 	// Job compensation information (a.k.a. "pay rate") i.e., the compensation that will paid to the employee.
 	CompensationInfo CompensationInfoPtrInput
-	// A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the provided structured fields. The keys of the map are strings up to 64 bytes and must match the pattern: a-zA-Z*. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100 filterable and at most 100 unfilterable keys are supported. For filterable `string_values`, across all keys at most 200 values are allowed, with each string no more than 255 characters. For unfilterable `string_values`, the maximum total size of `string_values` across all keys is 50KB.
+	// A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the provided structured fields. The keys of the map are strings up to 64 bytes and must match the pattern: `a-zA-Z*`. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100 filterable and at most 100 unfilterable keys are supported. For filterable `string_values`, across all keys at most 200 values are allowed, with each string no more than 255 characters. For unfilterable `string_values`, the maximum total size of `string_values` across all keys is 50KB.
 	CustomAttributes pulumi.StringMapInput
 	// The desired education degrees for the job, such as Bachelors, Masters.
 	DegreeTypes JobDegreeTypesItemArrayInput

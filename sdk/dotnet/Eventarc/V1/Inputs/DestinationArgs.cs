@@ -21,6 +21,12 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Inputs
         [Input("cloudRun")]
         public Input<Inputs.CloudRunArgs>? CloudRun { get; set; }
 
+        /// <summary>
+        /// A GKE service capable of receiving events. The service should be running in the same project of the trigger.
+        /// </summary>
+        [Input("gke")]
+        public Input<Inputs.GKEArgs>? Gke { get; set; }
+
         public DestinationArgs()
         {
         }

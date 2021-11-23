@@ -31,7 +31,7 @@ type LookupSpokeResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// An optional description of the spoke.
 	Description string `pulumi:"description"`
-	// Immutable. The URI of the hub that this spoke is attached to.
+	// Immutable. The name of the hub that this spoke is attached to.
 	Hub string `pulumi:"hub"`
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 	Labels map[string]string `pulumi:"labels"`
@@ -94,7 +94,7 @@ func (o LookupSpokeResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSpokeResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Immutable. The URI of the hub that this spoke is attached to.
+// Immutable. The name of the hub that this spoke is attached to.
 func (o LookupSpokeResultOutput) Hub() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSpokeResult) string { return v.Hub }).(pulumi.StringOutput)
 }

@@ -15,6 +15,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// </summary>
     public sealed class RelationshipNoteArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The type of relationship between the source and target SPDX elements
+        /// </summary>
+        [Input("type")]
+        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.RelationshipNoteType>? Type { get; set; }
+
         public RelationshipNoteArgs()
         {
         }

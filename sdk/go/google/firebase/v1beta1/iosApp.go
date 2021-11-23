@@ -28,6 +28,8 @@ type IosApp struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The Apple Developer Team ID associated with the App in the App Store.
+	TeamId pulumi.StringOutput `pulumi:"teamId"`
 }
 
 // NewIosApp registers a new resource with the given unique name, arguments, and options.
@@ -81,6 +83,8 @@ type iosAppArgs struct {
 	Name *string `pulumi:"name"`
 	// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
 	Project *string `pulumi:"project"`
+	// The Apple Developer Team ID associated with the App in the App Store.
+	TeamId *string `pulumi:"teamId"`
 }
 
 // The set of arguments for constructing a IosApp resource.
@@ -97,6 +101,8 @@ type IosAppArgs struct {
 	Name pulumi.StringPtrInput
 	// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
 	Project pulumi.StringPtrInput
+	// The Apple Developer Team ID associated with the App in the App Store.
+	TeamId pulumi.StringPtrInput
 }
 
 func (IosAppArgs) ElementType() reflect.Type {

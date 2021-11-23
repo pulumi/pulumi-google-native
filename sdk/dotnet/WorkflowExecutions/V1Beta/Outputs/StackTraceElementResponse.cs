@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1Beta.Outputs
     public sealed class StackTraceElementResponse
     {
         /// <summary>
-        /// The source position information of the stacktrace element.
+        /// The source position information of the stack trace element.
         /// </summary>
         public readonly Outputs.PositionResponse Position;
         /// <summary>

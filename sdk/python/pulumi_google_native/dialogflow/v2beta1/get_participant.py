@@ -17,7 +17,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetParticipantResult:
-    def __init__(__self__, name=None, obfuscated_external_user_id=None, role=None):
+    def __init__(__self__, documents_metadata_filters=None, name=None, obfuscated_external_user_id=None, role=None):
+        if documents_metadata_filters and not isinstance(documents_metadata_filters, dict):
+            raise TypeError("Expected argument 'documents_metadata_filters' to be a dict")
+        pulumi.set(__self__, "documents_metadata_filters", documents_metadata_filters)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -27,6 +30,14 @@ class GetParticipantResult:
         if role and not isinstance(role, str):
             raise TypeError("Expected argument 'role' to be a str")
         pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter(name="documentsMetadataFilters")
+    def documents_metadata_filters(self) -> Mapping[str, str]:
+        """
+        Optional. Key-value filters on the metadata of documents returned by article suggestion. If specified, article suggestion only returns suggested documents that match all filters in their Document.metadata. Multiple values for a metadata key should be concatenated by comma. For example, filters to match all documents that have 'US' or 'CA' in their market metadata values and 'agent' in their user metadata values will be ``` documents_metadata_filters { key: "market" value: "US,CA" } documents_metadata_filters { key: "user" value: "agent" } ```
+        """
+        return pulumi.get(self, "documents_metadata_filters")
 
     @property
     @pulumi.getter
@@ -59,6 +70,7 @@ class AwaitableGetParticipantResult(GetParticipantResult):
         if False:
             yield self
         return GetParticipantResult(
+            documents_metadata_filters=self.documents_metadata_filters,
             name=self.name,
             obfuscated_external_user_id=self.obfuscated_external_user_id,
             role=self.role)
@@ -84,6 +96,7 @@ def get_participant(conversation_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v2beta1:getParticipant', __args__, opts=opts, typ=GetParticipantResult).value
 
     return AwaitableGetParticipantResult(
+        documents_metadata_filters=__ret__.documents_metadata_filters,
         name=__ret__.name,
         obfuscated_external_user_id=__ret__.obfuscated_external_user_id,
         role=__ret__.role)

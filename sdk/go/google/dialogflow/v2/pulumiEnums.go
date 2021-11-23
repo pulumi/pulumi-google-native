@@ -1935,11 +1935,11 @@ func (in *googleCloudDialogflowV2IntentTrainingPhraseTypePtr) ToGoogleCloudDialo
 type GoogleCloudDialogflowV2NotificationConfigMessageFormat string
 
 const (
-	// If it is unspeified, PROTO will be used.
+	// If it is unspecified, PROTO will be used.
 	GoogleCloudDialogflowV2NotificationConfigMessageFormatMessageFormatUnspecified = GoogleCloudDialogflowV2NotificationConfigMessageFormat("MESSAGE_FORMAT_UNSPECIFIED")
-	// Pubsub message will be serialized proto.
+	// Pub/Sub message will be serialized proto.
 	GoogleCloudDialogflowV2NotificationConfigMessageFormatProto = GoogleCloudDialogflowV2NotificationConfigMessageFormat("PROTO")
-	// Pubsub message will be json.
+	// Pub/Sub message will be json.
 	GoogleCloudDialogflowV2NotificationConfigMessageFormatJson = GoogleCloudDialogflowV2NotificationConfigMessageFormat("JSON")
 )
 
@@ -2281,6 +2281,8 @@ const (
 	GoogleCloudDialogflowV2SuggestionFeatureTypeArticleSuggestion = GoogleCloudDialogflowV2SuggestionFeatureType("ARTICLE_SUGGESTION")
 	// Run FAQ model.
 	GoogleCloudDialogflowV2SuggestionFeatureTypeFaq = GoogleCloudDialogflowV2SuggestionFeatureType("FAQ")
+	// Run smart reply model.
+	GoogleCloudDialogflowV2SuggestionFeatureTypeSmartReply = GoogleCloudDialogflowV2SuggestionFeatureType("SMART_REPLY")
 )
 
 func (GoogleCloudDialogflowV2SuggestionFeatureType) ElementType() reflect.Type {

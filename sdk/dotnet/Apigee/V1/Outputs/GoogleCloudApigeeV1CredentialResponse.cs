@@ -42,7 +42,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Scopes;
         /// <summary>
-        /// Status of the credential.
+        /// Status of the credential. Valid values include `approved` or `revoked`.
         /// </summary>
         public readonly string Status;
 

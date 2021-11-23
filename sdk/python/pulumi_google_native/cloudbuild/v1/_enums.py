@@ -16,6 +16,7 @@ __all__ = [
     'NetworkConfigEgressOption',
     'PubsubConfigState',
     'PullRequestFilterCommentControl',
+    'TriggerEventType',
     'WebhookConfigState',
 ]
 
@@ -48,11 +49,11 @@ class BuildOptionsLogging(str, Enum):
     """
     LEGACY = "LEGACY"
     """
-    Cloud Logging and Cloud Storage logging are enabled.
+    Build logs are stored in Cloud Logging and Cloud Storage.
     """
     GCS_ONLY = "GCS_ONLY"
     """
-    Only Cloud Storage logging is enabled.
+    Build logs are stored in Cloud Storage.
     """
     STACKDRIVER_ONLY = "STACKDRIVER_ONLY"
     """
@@ -60,7 +61,7 @@ class BuildOptionsLogging(str, Enum):
     """
     CLOUD_LOGGING_ONLY = "CLOUD_LOGGING_ONLY"
     """
-    Only Cloud Logging is enabled. Note that logs for both the Cloud Console UI and Cloud SDK are based on Cloud Storage logs, so neither will provide logs if this option is chosen.
+    Build logs are stored in Cloud Logging. Selecting this option will not allow [logs streaming](https://cloud.google.com/sdk/gcloud/reference/builds/log).
     """
     NONE = "NONE"
     """
@@ -232,6 +233,32 @@ class PullRequestFilterCommentControl(str, Enum):
     COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY = "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"
     """
     Enforce that repository owners or collaborators must comment on external contributors' Pull Requests before builds are triggered.
+    """
+
+
+class TriggerEventType(str, Enum):
+    """
+    Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+    """
+    EVENT_TYPE_UNSPECIFIED = "EVENT_TYPE_UNSPECIFIED"
+    """
+    EVENT_TYPE_UNSPECIFIED event_types are ignored.
+    """
+    REPO = "REPO"
+    """
+    REPO corresponds to the supported VCS integrations.
+    """
+    WEBHOOK = "WEBHOOK"
+    """
+    WEBHOOK corresponds to webhook triggers.
+    """
+    PUBSUB = "PUBSUB"
+    """
+    PUBSUB corresponds to pubsub triggers.
+    """
+    MANUAL = "MANUAL"
+    """
+    MANUAL corresponds to manual-only invoked triggers.
     """
 
 

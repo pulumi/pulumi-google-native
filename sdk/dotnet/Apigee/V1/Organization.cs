@@ -101,6 +101,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for the Portals settings.
+        /// </summary>
+        [Output("portalDisabled")]
+        public Output<bool> PortalDisabled { get; private set; } = null!;
+
+        /// <summary>
         /// Project ID associated with the Apigee organization.
         /// </summary>
         [Output("project")]
@@ -237,6 +243,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
+
+        /// <summary>
+        /// Configuration for the Portals settings.
+        /// </summary>
+        [Input("portalDisabled")]
+        public Input<bool>? PortalDisabled { get; set; }
 
         /// <summary>
         /// Properties defined in the Apigee organization profile.

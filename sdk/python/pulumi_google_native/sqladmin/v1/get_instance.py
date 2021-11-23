@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, backend_type=None, connection_name=None, create_time=None, current_disk_size=None, database_version=None, disk_encryption_configuration=None, disk_encryption_status=None, failover_replica=None, gce_zone=None, instance_type=None, ip_addresses=None, kind=None, master_instance_name=None, max_disk_size=None, name=None, on_premises_configuration=None, out_of_disk_report=None, project=None, region=None, replica_configuration=None, replica_names=None, root_password=None, satisfies_pzs=None, scheduled_maintenance=None, secondary_gce_zone=None, self_link=None, server_ca_cert=None, service_account_email_address=None, settings=None, state=None, suspension_reason=None):
+    def __init__(__self__, backend_type=None, connection_name=None, create_time=None, current_disk_size=None, database_installed_version=None, database_version=None, disk_encryption_configuration=None, disk_encryption_status=None, failover_replica=None, gce_zone=None, instance_type=None, ip_addresses=None, kind=None, master_instance_name=None, max_disk_size=None, name=None, on_premises_configuration=None, out_of_disk_report=None, project=None, region=None, replica_configuration=None, replica_names=None, root_password=None, satisfies_pzs=None, scheduled_maintenance=None, secondary_gce_zone=None, self_link=None, server_ca_cert=None, service_account_email_address=None, settings=None, state=None, suspension_reason=None):
         if backend_type and not isinstance(backend_type, str):
             raise TypeError("Expected argument 'backend_type' to be a str")
         pulumi.set(__self__, "backend_type", backend_type)
@@ -31,6 +31,9 @@ class GetInstanceResult:
         if current_disk_size and not isinstance(current_disk_size, str):
             raise TypeError("Expected argument 'current_disk_size' to be a str")
         pulumi.set(__self__, "current_disk_size", current_disk_size)
+        if database_installed_version and not isinstance(database_installed_version, str):
+            raise TypeError("Expected argument 'database_installed_version' to be a str")
+        pulumi.set(__self__, "database_installed_version", database_installed_version)
         if database_version and not isinstance(database_version, str):
             raise TypeError("Expected argument 'database_version' to be a str")
         pulumi.set(__self__, "database_version", database_version)
@@ -146,10 +149,18 @@ class GetInstanceResult:
         return pulumi.get(self, "current_disk_size")
 
     @property
+    @pulumi.getter(name="databaseInstalledVersion")
+    def database_installed_version(self) -> str:
+        """
+        The databaseInstalledVersion stores the current fully resolved database version running on the instance including minor version such as MYSQL_5_6_50
+        """
+        return pulumi.get(self, "database_installed_version")
+
+    @property
     @pulumi.getter(name="databaseVersion")
     def database_version(self) -> str:
         """
-        The database engine type and version. The **databaseVersion** field cannot be changed after instance creation. * **MySQL instances**: MYSQL_8_0, MYSQL_5_7 (default), or MYSQL_5_6. * **PostgreSQL instances**: POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13 (default). * **SQL Server instances**: SQLSERVER_2019_STANDARD, SQLSERVER_2019_ENTERPRISE, SQLSERVER_2019_EXPRESS, or SQLSERVER_2019_WEB, SQLSERVER_2017_STANDARD (default), SQLSERVER_2017_ENTERPRISE, SQLSERVER_2017_EXPRESS, or SQLSERVER_2017_WEB.
+        The database engine type and version. The **databaseVersion** field cannot be changed after instance creation.
         """
         return pulumi.get(self, "database_version")
 
@@ -189,7 +200,7 @@ class GetInstanceResult:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> str:
         """
-        The instance type. This can be one of the following: * **CLOUD_SQL_INSTANCE**: A Cloud SQL instance that is not replicating from a primary instance. * **ON_PREMISES_INSTANCE**: An instance running on the customer's premises. * **READ_REPLICA_INSTANCE**: A Cloud SQL instance configured as a read-replica.
+        The instance type.
         """
         return pulumi.get(self, "instance_type")
 
@@ -349,7 +360,7 @@ class GetInstanceResult:
     @pulumi.getter
     def state(self) -> str:
         """
-        The current serving state of the Cloud SQL instance. This can be one of the following: * **SQL_INSTANCE_STATE_UNSPECIFIED**: The state of the instance is unknown. * **RUNNABLE**: The instance is running, or has been stopped by owner. * **SUSPENDED**: The instance is not available, for example due to problems with billing. * **PENDING_DELETE**: The instance is being deleted. * **PENDING_CREATE**: The instance is being created. * **MAINTENANCE**: The instance is down for maintenance. * **FAILED**: The instance creation failed.
+        The current serving state of the Cloud SQL instance.
         """
         return pulumi.get(self, "state")
 
@@ -372,6 +383,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             connection_name=self.connection_name,
             create_time=self.create_time,
             current_disk_size=self.current_disk_size,
+            database_installed_version=self.database_installed_version,
             database_version=self.database_version,
             disk_encryption_configuration=self.disk_encryption_configuration,
             disk_encryption_status=self.disk_encryption_status,
@@ -421,6 +433,7 @@ def get_instance(instance: Optional[str] = None,
         connection_name=__ret__.connection_name,
         create_time=__ret__.create_time,
         current_disk_size=__ret__.current_disk_size,
+        database_installed_version=__ret__.database_installed_version,
         database_version=__ret__.database_version,
         disk_encryption_configuration=__ret__.disk_encryption_configuration,
         disk_encryption_status=__ret__.disk_encryption_status,

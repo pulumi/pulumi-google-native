@@ -75,6 +75,10 @@ export interface GetDeviceResult {
      */
     readonly encryptionState: string;
     /**
+     * Attributes specific to Endpoint Verification devices.
+     */
+    readonly endpointVerificationSpecificAttributes: outputs.cloudidentity.v1beta1.EndpointVerificationSpecificAttributesResponse;
+    /**
      * IMEI number of device if GSM device; empty otherwise.
      */
     readonly imei: string;

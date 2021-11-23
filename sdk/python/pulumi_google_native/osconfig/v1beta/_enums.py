@@ -178,11 +178,15 @@ class RecurringScheduleFrequency(str, Enum):
     """
     WEEKLY = "WEEKLY"
     """
-    Indicates that the frequency should be expressed in terms of weeks.
+    Indicates that the frequency of recurrence should be expressed in terms of weeks.
     """
     MONTHLY = "MONTHLY"
     """
-    Indicates that the frequency should be expressed in terms of months.
+    Indicates that the frequency of recurrence should be expressed in terms of months.
+    """
+    DAILY = "DAILY"
+    """
+    Indicates that the frequency of recurrence should be expressed in terms of days.
     """
 
 

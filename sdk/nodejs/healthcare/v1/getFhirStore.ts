@@ -65,6 +65,10 @@ export interface GetFhirStoreResult {
      */
     readonly streamConfigs: outputs.healthcare.v1.StreamConfigResponse[];
     /**
+     * Configuration for how to validate incoming FHIR resources against configured profiles.
+     */
+    readonly validationConfig: outputs.healthcare.v1.ValidationConfigResponse;
+    /**
      * Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
      */
     readonly version: string;

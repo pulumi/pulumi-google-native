@@ -186,4 +186,45 @@ namespace Pulumi.GoogleNative.DataFusion.V1
 
         public override string ToString() => _value;
     }
+
+    /// <summary>
+    /// Type represents the release availability of the version
+    /// </summary>
+    [EnumType]
+    public readonly struct VersionType : IEquatable<VersionType>
+    {
+        private readonly string _value;
+
+        private VersionType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Version does not have availability yet
+        /// </summary>
+        public static VersionType TypeUnspecified { get; } = new VersionType("TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Version is under development and not considered stable
+        /// </summary>
+        public static VersionType TypePreview { get; } = new VersionType("TYPE_PREVIEW");
+        /// <summary>
+        /// Version is available for public use
+        /// </summary>
+        public static VersionType TypeGeneralAvailability { get; } = new VersionType("TYPE_GENERAL_AVAILABILITY");
+
+        public static bool operator ==(VersionType left, VersionType right) => left.Equals(right);
+        public static bool operator !=(VersionType left, VersionType right) => !left.Equals(right);
+
+        public static explicit operator string(VersionType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is VersionType other && Equals(other);
+        public bool Equals(VersionType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
 }

@@ -12,6 +12,7 @@ from ._enums import *
 __all__ = [
     'AcceleratorConfigArgs',
     'AddonsConfigArgs',
+    'AdvancedMachineFeaturesArgs',
     'AuthenticatorGroupsConfigArgs',
     'AutoUpgradeOptionsArgs',
     'AutopilotArgs',
@@ -33,6 +34,7 @@ __all__ = [
     'DnsCacheConfigArgs',
     'EphemeralStorageConfigArgs',
     'GcePersistentDiskCsiDriverConfigArgs',
+    'GcfsConfigArgs',
     'GcpFilestoreCsiDriverConfigArgs',
     'HorizontalPodAutoscalingArgs',
     'HttpLoadBalancingArgs',
@@ -47,6 +49,7 @@ __all__ = [
     'LoggingConfigArgs',
     'MaintenancePolicyArgs',
     'MaintenanceWindowArgs',
+    'ManagedPrometheusConfigArgs',
     'MasterAuthorizedNetworksConfigArgs',
     'MasterAuthArgs',
     'MasterArgs',
@@ -329,6 +332,30 @@ class AddonsConfigArgs:
     @network_policy_config.setter
     def network_policy_config(self, value: Optional[pulumi.Input['NetworkPolicyConfigArgs']]):
         pulumi.set(self, "network_policy_config", value)
+
+
+@pulumi.input_type
+class AdvancedMachineFeaturesArgs:
+    def __init__(__self__, *,
+                 threads_per_core: Optional[pulumi.Input[str]] = None):
+        """
+        Specifies options for controlling advanced machine features.
+        :param pulumi.Input[str] threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        """
+        if threads_per_core is not None:
+            pulumi.set(__self__, "threads_per_core", threads_per_core)
+
+    @property
+    @pulumi.getter(name="threadsPerCore")
+    def threads_per_core(self) -> Optional[pulumi.Input[str]]:
+        """
+        The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        """
+        return pulumi.get(self, "threads_per_core")
+
+    @threads_per_core.setter
+    def threads_per_core(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "threads_per_core", value)
 
 
 @pulumi.input_type
@@ -1125,6 +1152,30 @@ class GcePersistentDiskCsiDriverConfigArgs:
 
 
 @pulumi.input_type
+class GcfsConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        GcfsConfig contains configurations of Google Container File System.
+        :param pulumi.Input[bool] enabled: Whether to use GCFS.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to use GCFS.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
 class GcpFilestoreCsiDriverConfigArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None):
@@ -1669,6 +1720,30 @@ class MaintenanceWindowArgs:
 
 
 @pulumi.input_type
+class ManagedPrometheusConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        ManagedPrometheusConfig defines the configuration for Google Cloud Managed Service for Prometheus.
+        :param pulumi.Input[bool] enabled: Enable Managed Collection.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable Managed Collection.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
 class MasterAuthorizedNetworksConfigArgs:
     def __init__(__self__, *,
                  cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input['CidrBlockArgs']]]] = None,
@@ -1860,13 +1935,17 @@ class MonitoringComponentConfigArgs:
 @pulumi.input_type
 class MonitoringConfigArgs:
     def __init__(__self__, *,
-                 component_config: Optional[pulumi.Input['MonitoringComponentConfigArgs']] = None):
+                 component_config: Optional[pulumi.Input['MonitoringComponentConfigArgs']] = None,
+                 managed_prometheus_config: Optional[pulumi.Input['ManagedPrometheusConfigArgs']] = None):
         """
         MonitoringConfig is cluster monitoring configuration.
         :param pulumi.Input['MonitoringComponentConfigArgs'] component_config: Monitoring components configuration
+        :param pulumi.Input['ManagedPrometheusConfigArgs'] managed_prometheus_config: Enable Google Cloud Managed Service for Prometheus in the cluster.
         """
         if component_config is not None:
             pulumi.set(__self__, "component_config", component_config)
+        if managed_prometheus_config is not None:
+            pulumi.set(__self__, "managed_prometheus_config", managed_prometheus_config)
 
     @property
     @pulumi.getter(name="componentConfig")
@@ -1879,6 +1958,18 @@ class MonitoringConfigArgs:
     @component_config.setter
     def component_config(self, value: Optional[pulumi.Input['MonitoringComponentConfigArgs']]):
         pulumi.set(self, "component_config", value)
+
+    @property
+    @pulumi.getter(name="managedPrometheusConfig")
+    def managed_prometheus_config(self) -> Optional[pulumi.Input['ManagedPrometheusConfigArgs']]:
+        """
+        Enable Google Cloud Managed Service for Prometheus in the cluster.
+        """
+        return pulumi.get(self, "managed_prometheus_config")
+
+    @managed_prometheus_config.setter
+    def managed_prometheus_config(self, value: Optional[pulumi.Input['ManagedPrometheusConfigArgs']]):
+        pulumi.set(self, "managed_prometheus_config", value)
 
 
 @pulumi.input_type
@@ -2067,21 +2158,38 @@ class NetworkPolicyArgs:
 
 @pulumi.input_type
 class NodeConfigDefaultsArgs:
-    def __init__(__self__):
+    def __init__(__self__, *,
+                 gcfs_config: Optional[pulumi.Input['GcfsConfigArgs']] = None):
         """
         Subset of NodeConfig message that has defaults.
+        :param pulumi.Input['GcfsConfigArgs'] gcfs_config: GCFS (Google Container File System, a.k.a Riptide) options.
         """
-        pass
+        if gcfs_config is not None:
+            pulumi.set(__self__, "gcfs_config", gcfs_config)
+
+    @property
+    @pulumi.getter(name="gcfsConfig")
+    def gcfs_config(self) -> Optional[pulumi.Input['GcfsConfigArgs']]:
+        """
+        GCFS (Google Container File System, a.k.a Riptide) options.
+        """
+        return pulumi.get(self, "gcfs_config")
+
+    @gcfs_config.setter
+    def gcfs_config(self, value: Optional[pulumi.Input['GcfsConfigArgs']]):
+        pulumi.set(self, "gcfs_config", value)
 
 
 @pulumi.input_type
 class NodeConfigArgs:
     def __init__(__self__, *,
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]]] = None,
+                 advanced_machine_features: Optional[pulumi.Input['AdvancedMachineFeaturesArgs']] = None,
                  boot_disk_kms_key: Optional[pulumi.Input[str]] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  ephemeral_storage_config: Optional[pulumi.Input['EphemeralStorageConfigArgs']] = None,
+                 gcfs_config: Optional[pulumi.Input['GcfsConfigArgs']] = None,
                  gvnic: Optional[pulumi.Input['VirtualNICArgs']] = None,
                  image_type: Optional[pulumi.Input[str]] = None,
                  kubelet_config: Optional[pulumi.Input['NodeKubeletConfigArgs']] = None,
@@ -2105,10 +2213,12 @@ class NodeConfigArgs:
         """
         Parameters that describe the nodes in a cluster.
         :param pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]] accelerators: A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
+        :param pulumi.Input['AdvancedMachineFeaturesArgs'] advanced_machine_features: Advanced features for the Compute Engine VM.
         :param pulumi.Input[str] boot_disk_kms_key:  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         :param pulumi.Input[int] disk_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
         :param pulumi.Input['EphemeralStorageConfigArgs'] ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
+        :param pulumi.Input['GcfsConfigArgs'] gcfs_config: GCFS (Google Container File System) configs.
         :param pulumi.Input['VirtualNICArgs'] gvnic: Enable or disable gvnic on the node pool.
         :param pulumi.Input[str] image_type: The image type to use for this node. Note that for a given image type, the latest version of it will be used.
         :param pulumi.Input['NodeKubeletConfigArgs'] kubelet_config: Node kubelet configs.
@@ -2132,6 +2242,8 @@ class NodeConfigArgs:
         """
         if accelerators is not None:
             pulumi.set(__self__, "accelerators", accelerators)
+        if advanced_machine_features is not None:
+            pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         if boot_disk_kms_key is not None:
             pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
         if disk_size_gb is not None:
@@ -2140,6 +2252,8 @@ class NodeConfigArgs:
             pulumi.set(__self__, "disk_type", disk_type)
         if ephemeral_storage_config is not None:
             pulumi.set(__self__, "ephemeral_storage_config", ephemeral_storage_config)
+        if gcfs_config is not None:
+            pulumi.set(__self__, "gcfs_config", gcfs_config)
         if gvnic is not None:
             pulumi.set(__self__, "gvnic", gvnic)
         if image_type is not None:
@@ -2194,6 +2308,18 @@ class NodeConfigArgs:
         pulumi.set(self, "accelerators", value)
 
     @property
+    @pulumi.getter(name="advancedMachineFeatures")
+    def advanced_machine_features(self) -> Optional[pulumi.Input['AdvancedMachineFeaturesArgs']]:
+        """
+        Advanced features for the Compute Engine VM.
+        """
+        return pulumi.get(self, "advanced_machine_features")
+
+    @advanced_machine_features.setter
+    def advanced_machine_features(self, value: Optional[pulumi.Input['AdvancedMachineFeaturesArgs']]):
+        pulumi.set(self, "advanced_machine_features", value)
+
+    @property
     @pulumi.getter(name="bootDiskKmsKey")
     def boot_disk_kms_key(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2240,6 +2366,18 @@ class NodeConfigArgs:
     @ephemeral_storage_config.setter
     def ephemeral_storage_config(self, value: Optional[pulumi.Input['EphemeralStorageConfigArgs']]):
         pulumi.set(self, "ephemeral_storage_config", value)
+
+    @property
+    @pulumi.getter(name="gcfsConfig")
+    def gcfs_config(self) -> Optional[pulumi.Input['GcfsConfigArgs']]:
+        """
+        GCFS (Google Container File System) configs.
+        """
+        return pulumi.get(self, "gcfs_config")
+
+    @gcfs_config.setter
+    def gcfs_config(self, value: Optional[pulumi.Input['GcfsConfigArgs']]):
+        pulumi.set(self, "gcfs_config", value)
 
     @property
     @pulumi.getter

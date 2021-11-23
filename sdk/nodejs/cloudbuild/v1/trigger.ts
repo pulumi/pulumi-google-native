@@ -60,6 +60,10 @@ export class Trigger extends pulumi.CustomResource {
      */
     public readonly disabled!: pulumi.Output<boolean>;
     /**
+     * Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+     */
+    public readonly eventType!: pulumi.Output<string>;
+    /**
      * Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
      */
     public readonly filename!: pulumi.Output<string>;
@@ -139,6 +143,7 @@ export class Trigger extends pulumi.CustomResource {
             inputs["build"] = args ? args.build : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["disabled"] = args ? args.disabled : undefined;
+            inputs["eventType"] = args ? args.eventType : undefined;
             inputs["filename"] = args ? args.filename : undefined;
             inputs["filter"] = args ? args.filter : undefined;
             inputs["gitFileSource"] = args ? args.gitFileSource : undefined;
@@ -165,6 +170,7 @@ export class Trigger extends pulumi.CustomResource {
             inputs["createTime"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
             inputs["disabled"] = undefined /*out*/;
+            inputs["eventType"] = undefined /*out*/;
             inputs["filename"] = undefined /*out*/;
             inputs["filter"] = undefined /*out*/;
             inputs["gitFileSource"] = undefined /*out*/;
@@ -212,6 +218,10 @@ export interface TriggerArgs {
      * If true, the trigger will never automatically execute a build.
      */
     disabled?: pulumi.Input<boolean>;
+    /**
+     * Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.
+     */
+    eventType?: pulumi.Input<enums.cloudbuild.v1.TriggerEventType>;
     /**
      * Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
      */

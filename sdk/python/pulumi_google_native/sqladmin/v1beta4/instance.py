@@ -51,12 +51,12 @@ class InstanceArgs:
         :param pulumi.Input['InstanceBackendType'] backend_type: The backend type. **SECOND_GEN**: Cloud SQL database instance. **EXTERNAL**: A database server that is not managed by Google. This property is read-only; use the **tier** property in the **settings** object to determine the database type.
         :param pulumi.Input[str] connection_name: Connection name of the Cloud SQL instance used in connection strings.
         :param pulumi.Input[str] current_disk_size: The current disk usage of the instance in bytes. This property has been deprecated. Use the "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please see [this announcement](https://groups.google.com/d/msg/google-cloud-sql-announce/I_7-F9EBhT0/BtvFtdFeAgAJ) for details.
-        :param pulumi.Input['InstanceDatabaseVersion'] database_version: The database engine type and version. The **databaseVersion** field cannot be changed after instance creation. * **MySQL instances**: MYSQL_8_0, MYSQL_5_7 (default), or MYSQL_5_6. * **PostgreSQL instances**: POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13 (default). * **SQL Server instances**: SQLSERVER_2019_STANDARD, SQLSERVER_2019_ENTERPRISE, SQLSERVER_2019_EXPRESS, or SQLSERVER_2019_WEB, SQLSERVER_2017_STANDARD (default), SQLSERVER_2017_ENTERPRISE, SQLSERVER_2017_EXPRESS, or SQLSERVER_2017_WEB.
+        :param pulumi.Input['InstanceDatabaseVersion'] database_version: The database engine type and version. The **databaseVersion** field cannot be changed after instance creation.
         :param pulumi.Input['DiskEncryptionConfigurationArgs'] disk_encryption_configuration: Disk encryption configuration specific to an instance.
         :param pulumi.Input['DiskEncryptionStatusArgs'] disk_encryption_status: Disk encryption status specific to an instance.
         :param pulumi.Input['InstanceFailoverReplicaArgs'] failover_replica: The name and status of the failover replica.
         :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
-        :param pulumi.Input['InstanceInstanceType'] instance_type: The instance type. This can be one of the following: * **CLOUD_SQL_INSTANCE**: A Cloud SQL instance that is not replicating from a primary instance. * **ON_PREMISES_INSTANCE**: An instance running on the customer's premises. * **READ_REPLICA_INSTANCE**: A Cloud SQL instance configured as a read-replica.
+        :param pulumi.Input['InstanceInstanceType'] instance_type: The instance type.
         :param pulumi.Input[Sequence[pulumi.Input['IpMappingArgs']]] ip_addresses: The assigned IP addresses for the instance.
         :param pulumi.Input[str] kind: This is always **sql#instance**.
         :param pulumi.Input[str] master_instance_name: The name of the instance which will act as primary in the replication setup.
@@ -76,7 +76,7 @@ class InstanceArgs:
         :param pulumi.Input['SslCertArgs'] server_ca_cert: SSL configuration.
         :param pulumi.Input[str] service_account_email_address: The service account email address assigned to the instance. This property is read-only.
         :param pulumi.Input['SettingsArgs'] settings: The user settings.
-        :param pulumi.Input['InstanceState'] state: The current serving state of the Cloud SQL instance. This can be one of the following: * **SQL_INSTANCE_STATE_UNSPECIFIED**: The state of the instance is unknown. * **RUNNABLE**: The instance is running, or has been stopped by owner. * **SUSPENDED**: The instance is not available, for example due to problems with billing. * **PENDING_DELETE**: The instance is being deleted. * **PENDING_CREATE**: The instance is being created. * **MAINTENANCE**: The instance is down for maintenance. * **FAILED**: The instance creation failed.
+        :param pulumi.Input['InstanceState'] state: The current serving state of the Cloud SQL instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceSuspensionReasonItem']]] suspension_reason: If the instance state is SUSPENDED, the reason for the suspension.
         """
         if backend_type is not None:
@@ -180,7 +180,7 @@ class InstanceArgs:
     @pulumi.getter(name="databaseVersion")
     def database_version(self) -> Optional[pulumi.Input['InstanceDatabaseVersion']]:
         """
-        The database engine type and version. The **databaseVersion** field cannot be changed after instance creation. * **MySQL instances**: MYSQL_8_0, MYSQL_5_7 (default), or MYSQL_5_6. * **PostgreSQL instances**: POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13 (default). * **SQL Server instances**: SQLSERVER_2019_STANDARD, SQLSERVER_2019_ENTERPRISE, SQLSERVER_2019_EXPRESS, or SQLSERVER_2019_WEB, SQLSERVER_2017_STANDARD (default), SQLSERVER_2017_ENTERPRISE, SQLSERVER_2017_EXPRESS, or SQLSERVER_2017_WEB.
+        The database engine type and version. The **databaseVersion** field cannot be changed after instance creation.
         """
         return pulumi.get(self, "database_version")
 
@@ -240,7 +240,7 @@ class InstanceArgs:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input['InstanceInstanceType']]:
         """
-        The instance type. This can be one of the following: * **CLOUD_SQL_INSTANCE**: A Cloud SQL instance that is not replicating from a primary instance. * **ON_PREMISES_INSTANCE**: An instance running on the customer's premises. * **READ_REPLICA_INSTANCE**: A Cloud SQL instance configured as a read-replica.
+        The instance type.
         """
         return pulumi.get(self, "instance_type")
 
@@ -480,7 +480,7 @@ class InstanceArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input['InstanceState']]:
         """
-        The current serving state of the Cloud SQL instance. This can be one of the following: * **SQL_INSTANCE_STATE_UNSPECIFIED**: The state of the instance is unknown. * **RUNNABLE**: The instance is running, or has been stopped by owner. * **SUSPENDED**: The instance is not available, for example due to problems with billing. * **PENDING_DELETE**: The instance is being deleted. * **PENDING_CREATE**: The instance is being created. * **MAINTENANCE**: The instance is down for maintenance. * **FAILED**: The instance creation failed.
+        The current serving state of the Cloud SQL instance.
         """
         return pulumi.get(self, "state")
 
@@ -545,12 +545,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input['InstanceBackendType'] backend_type: The backend type. **SECOND_GEN**: Cloud SQL database instance. **EXTERNAL**: A database server that is not managed by Google. This property is read-only; use the **tier** property in the **settings** object to determine the database type.
         :param pulumi.Input[str] connection_name: Connection name of the Cloud SQL instance used in connection strings.
         :param pulumi.Input[str] current_disk_size: The current disk usage of the instance in bytes. This property has been deprecated. Use the "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please see [this announcement](https://groups.google.com/d/msg/google-cloud-sql-announce/I_7-F9EBhT0/BtvFtdFeAgAJ) for details.
-        :param pulumi.Input['InstanceDatabaseVersion'] database_version: The database engine type and version. The **databaseVersion** field cannot be changed after instance creation. * **MySQL instances**: MYSQL_8_0, MYSQL_5_7 (default), or MYSQL_5_6. * **PostgreSQL instances**: POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13 (default). * **SQL Server instances**: SQLSERVER_2019_STANDARD, SQLSERVER_2019_ENTERPRISE, SQLSERVER_2019_EXPRESS, or SQLSERVER_2019_WEB, SQLSERVER_2017_STANDARD (default), SQLSERVER_2017_ENTERPRISE, SQLSERVER_2017_EXPRESS, or SQLSERVER_2017_WEB.
+        :param pulumi.Input['InstanceDatabaseVersion'] database_version: The database engine type and version. The **databaseVersion** field cannot be changed after instance creation.
         :param pulumi.Input[pulumi.InputType['DiskEncryptionConfigurationArgs']] disk_encryption_configuration: Disk encryption configuration specific to an instance.
         :param pulumi.Input[pulumi.InputType['DiskEncryptionStatusArgs']] disk_encryption_status: Disk encryption status specific to an instance.
         :param pulumi.Input[pulumi.InputType['InstanceFailoverReplicaArgs']] failover_replica: The name and status of the failover replica.
         :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
-        :param pulumi.Input['InstanceInstanceType'] instance_type: The instance type. This can be one of the following: * **CLOUD_SQL_INSTANCE**: A Cloud SQL instance that is not replicating from a primary instance. * **ON_PREMISES_INSTANCE**: An instance running on the customer's premises. * **READ_REPLICA_INSTANCE**: A Cloud SQL instance configured as a read-replica.
+        :param pulumi.Input['InstanceInstanceType'] instance_type: The instance type.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpMappingArgs']]]] ip_addresses: The assigned IP addresses for the instance.
         :param pulumi.Input[str] kind: This is always **sql#instance**.
         :param pulumi.Input[str] master_instance_name: The name of the instance which will act as primary in the replication setup.
@@ -570,7 +570,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['SslCertArgs']] server_ca_cert: SSL configuration.
         :param pulumi.Input[str] service_account_email_address: The service account email address assigned to the instance. This property is read-only.
         :param pulumi.Input[pulumi.InputType['SettingsArgs']] settings: The user settings.
-        :param pulumi.Input['InstanceState'] state: The current serving state of the Cloud SQL instance. This can be one of the following: * **SQL_INSTANCE_STATE_UNSPECIFIED**: The state of the instance is unknown. * **RUNNABLE**: The instance is running, or has been stopped by owner. * **SUSPENDED**: The instance is not available, for example due to problems with billing. * **PENDING_DELETE**: The instance is being deleted. * **PENDING_CREATE**: The instance is being created. * **MAINTENANCE**: The instance is down for maintenance. * **FAILED**: The instance creation failed.
+        :param pulumi.Input['InstanceState'] state: The current serving state of the Cloud SQL instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceSuspensionReasonItem']]] suspension_reason: If the instance state is SUSPENDED, the reason for the suspension.
         """
         ...
@@ -670,6 +670,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["state"] = state
             __props__.__dict__["suspension_reason"] = suspension_reason
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["database_installed_version"] = None
         super(Instance, __self__).__init__(
             'google-native:sqladmin/v1beta4:Instance',
             resource_name,
@@ -696,6 +697,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["connection_name"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["current_disk_size"] = None
+        __props__.__dict__["database_installed_version"] = None
         __props__.__dict__["database_version"] = None
         __props__.__dict__["disk_encryption_configuration"] = None
         __props__.__dict__["disk_encryption_status"] = None
@@ -758,10 +760,18 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "current_disk_size")
 
     @property
+    @pulumi.getter(name="databaseInstalledVersion")
+    def database_installed_version(self) -> pulumi.Output[str]:
+        """
+        The databaseInstalledVersion stores the current fully resolved database version running on the instance including minor version such as MYSQL_5_6_50
+        """
+        return pulumi.get(self, "database_installed_version")
+
+    @property
     @pulumi.getter(name="databaseVersion")
     def database_version(self) -> pulumi.Output[str]:
         """
-        The database engine type and version. The **databaseVersion** field cannot be changed after instance creation. * **MySQL instances**: MYSQL_8_0, MYSQL_5_7 (default), or MYSQL_5_6. * **PostgreSQL instances**: POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13 (default). * **SQL Server instances**: SQLSERVER_2019_STANDARD, SQLSERVER_2019_ENTERPRISE, SQLSERVER_2019_EXPRESS, or SQLSERVER_2019_WEB, SQLSERVER_2017_STANDARD (default), SQLSERVER_2017_ENTERPRISE, SQLSERVER_2017_EXPRESS, or SQLSERVER_2017_WEB.
+        The database engine type and version. The **databaseVersion** field cannot be changed after instance creation.
         """
         return pulumi.get(self, "database_version")
 
@@ -801,7 +811,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Output[str]:
         """
-        The instance type. This can be one of the following: * **CLOUD_SQL_INSTANCE**: A Cloud SQL instance that is not replicating from a primary instance. * **ON_PREMISES_INSTANCE**: An instance running on the customer's premises. * **READ_REPLICA_INSTANCE**: A Cloud SQL instance configured as a read-replica.
+        The instance type.
         """
         return pulumi.get(self, "instance_type")
 
@@ -961,7 +971,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        The current serving state of the Cloud SQL instance. This can be one of the following: * **SQL_INSTANCE_STATE_UNSPECIFIED**: The state of the instance is unknown. * **RUNNABLE**: The instance is running, or has been stopped by owner. * **SUSPENDED**: The instance is not available, for example due to problems with billing. * **PENDING_DELETE**: The instance is being deleted. * **PENDING_CREATE**: The instance is being created. * **MAINTENANCE**: The instance is down for maintenance. * **FAILED**: The instance creation failed.
+        The current serving state of the Cloud SQL instance.
         """
         return pulumi.get(self, "state")
 

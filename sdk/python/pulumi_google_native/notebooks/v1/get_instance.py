@@ -302,7 +302,7 @@ class GetInstanceResult:
     @pulumi.getter(name="postStartupScript")
     def post_startup_script(self) -> str:
         """
-        Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
+        Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
         """
         return pulumi.get(self, "post_startup_script")
 
@@ -342,7 +342,7 @@ class GetInstanceResult:
     @pulumi.getter(name="shieldedInstanceConfig")
     def shielded_instance_config(self) -> 'outputs.ShieldedInstanceConfigResponse':
         """
-        Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+        Optional. Shielded VM configuration. [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
         """
         return pulumi.get(self, "shielded_instance_config")
 

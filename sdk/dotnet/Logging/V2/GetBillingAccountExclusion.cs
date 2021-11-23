@@ -13,13 +13,13 @@ namespace Pulumi.GoogleNative.Logging.V2
     public static class GetBillingAccountExclusion
     {
         /// <summary>
-        /// Gets the description of an exclusion.
+        /// Gets the description of an exclusion in the _Default sink.
         /// </summary>
         public static Task<GetBillingAccountExclusionResult> InvokeAsync(GetBillingAccountExclusionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBillingAccountExclusionResult>("google-native:logging/v2:getBillingAccountExclusion", args ?? new GetBillingAccountExclusionArgs(), options.WithVersion());
 
         /// <summary>
-        /// Gets the description of an exclusion.
+        /// Gets the description of an exclusion in the _Default sink.
         /// </summary>
         public static Output<GetBillingAccountExclusionResult> Invoke(GetBillingAccountExclusionInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetBillingAccountExclusionResult>("google-native:logging/v2:getBillingAccountExclusion", args ?? new GetBillingAccountExclusionInvokeArgs(), options.WithVersion());

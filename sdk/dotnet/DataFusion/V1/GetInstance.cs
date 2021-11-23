@@ -91,6 +91,10 @@ namespace Pulumi.GoogleNative.DataFusion.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// If the instance state is DISABLED, the reason for disabling the instance.
+        /// </summary>
+        public readonly ImmutableArray<string> DisabledReason;
+        /// <summary>
         /// Display name for an instance.
         /// </summary>
         public readonly string DisplayName;
@@ -183,6 +187,8 @@ namespace Pulumi.GoogleNative.DataFusion.V1
 
             string description,
 
+            ImmutableArray<string> disabledReason,
+
             string displayName,
 
             bool enableRbac,
@@ -228,6 +234,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1
             CryptoKeyConfig = cryptoKeyConfig;
             DataprocServiceAccount = dataprocServiceAccount;
             Description = description;
+            DisabledReason = disabledReason;
             DisplayName = displayName;
             EnableRbac = enableRbac;
             EnableStackdriverLogging = enableStackdriverLogging;

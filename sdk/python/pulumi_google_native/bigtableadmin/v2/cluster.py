@@ -19,6 +19,7 @@ class ClusterArgs:
                  cluster_id: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
                  serve_nodes: pulumi.Input[int],
+                 cluster_config: Optional[pulumi.Input['ClusterConfigArgs']] = None,
                  default_storage_type: Optional[pulumi.Input['ClusterDefaultStorageType']] = None,
                  encryption_config: Optional[pulumi.Input['EncryptionConfigArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -27,6 +28,7 @@ class ClusterArgs:
         """
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[int] serve_nodes: The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+        :param pulumi.Input['ClusterConfigArgs'] cluster_config: Configuration for this cluster.
         :param pulumi.Input['ClusterDefaultStorageType'] default_storage_type: Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
         :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Immutable. The encryption configuration for CMEK-protected clusters.
         :param pulumi.Input[str] location: Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
@@ -35,6 +37,8 @@ class ClusterArgs:
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "serve_nodes", serve_nodes)
+        if cluster_config is not None:
+            pulumi.set(__self__, "cluster_config", cluster_config)
         if default_storage_type is not None:
             pulumi.set(__self__, "default_storage_type", default_storage_type)
         if encryption_config is not None:
@@ -75,6 +79,18 @@ class ClusterArgs:
     @serve_nodes.setter
     def serve_nodes(self, value: pulumi.Input[int]):
         pulumi.set(self, "serve_nodes", value)
+
+    @property
+    @pulumi.getter(name="clusterConfig")
+    def cluster_config(self) -> Optional[pulumi.Input['ClusterConfigArgs']]:
+        """
+        Configuration for this cluster.
+        """
+        return pulumi.get(self, "cluster_config")
+
+    @cluster_config.setter
+    def cluster_config(self, value: Optional[pulumi.Input['ClusterConfigArgs']]):
+        pulumi.set(self, "cluster_config", value)
 
     @property
     @pulumi.getter(name="defaultStorageType")
@@ -139,6 +155,7 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterConfigArgs']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  default_storage_type: Optional[pulumi.Input['ClusterDefaultStorageType']] = None,
                  encryption_config: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigArgs']]] = None,
@@ -153,6 +170,7 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['ClusterConfigArgs']] cluster_config: Configuration for this cluster.
         :param pulumi.Input['ClusterDefaultStorageType'] default_storage_type: Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
         :param pulumi.Input[pulumi.InputType['EncryptionConfigArgs']] encryption_config: Immutable. The encryption configuration for CMEK-protected clusters.
         :param pulumi.Input[str] location: Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
@@ -183,6 +201,7 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterConfigArgs']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  default_storage_type: Optional[pulumi.Input['ClusterDefaultStorageType']] = None,
                  encryption_config: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigArgs']]] = None,
@@ -203,6 +222,7 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ClusterArgs.__new__(ClusterArgs)
 
+            __props__.__dict__["cluster_config"] = cluster_config
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
@@ -240,6 +260,7 @@ class Cluster(pulumi.CustomResource):
 
         __props__ = ClusterArgs.__new__(ClusterArgs)
 
+        __props__.__dict__["cluster_config"] = None
         __props__.__dict__["default_storage_type"] = None
         __props__.__dict__["encryption_config"] = None
         __props__.__dict__["location"] = None
@@ -247,6 +268,14 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["serve_nodes"] = None
         __props__.__dict__["state"] = None
         return Cluster(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="clusterConfig")
+    def cluster_config(self) -> pulumi.Output['outputs.ClusterConfigResponse']:
+        """
+        Configuration for this cluster.
+        """
+        return pulumi.get(self, "cluster_config")
 
     @property
     @pulumi.getter(name="defaultStorageType")

@@ -60,6 +60,10 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. If unspecified and the deployment is eligible to use Artifact Registry, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+     */
+    public readonly dockerRepository!: pulumi.Output<string>;
+    /**
      * The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
      */
     public readonly entryPoint!: pulumi.Output<string>;
@@ -79,6 +83,10 @@ export class Function extends pulumi.CustomResource {
      * The ingress settings for the function, controlling what traffic can reach it.
      */
     public readonly ingressSettings!: pulumi.Output<string>;
+    /**
+     * Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`. If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. The following service accounts need to be granted the role 'Cloud KMS CryptoKey Encrypter/Decrypter (roles/cloudkms.cryptoKeyEncrypterDecrypter)' on the Key/KeyRing/Project/Organization (least access preferred). 1. Google Cloud Functions service account (service-{project_number}@gcf-admin-robot.iam.gserviceaccount.com) - Required to protect the function's image. 2. Google Storage service account (service-{project_number}@gs-project-accounts.iam.gserviceaccount.com) - Required to protect the function's source code. If this service account does not exist, deploying a function without a KMS key or retrieving the service agent name provisions it. For more information, see https://cloud.google.com/storage/docs/projects#service-agents and https://cloud.google.com/storage/docs/getting-service-agent#gsutil. Google Cloud Functions delegates access to service agents to protect function resources in internal projects that are not accessible by the end user.
+     */
+    public readonly kmsKeyName!: pulumi.Output<string>;
     /**
      * Labels associated with this Cloud Function.
      */
@@ -171,11 +179,13 @@ export class Function extends pulumi.CustomResource {
             inputs["buildEnvironmentVariables"] = args ? args.buildEnvironmentVariables : undefined;
             inputs["buildWorkerPool"] = args ? args.buildWorkerPool : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["dockerRepository"] = args ? args.dockerRepository : undefined;
             inputs["entryPoint"] = args ? args.entryPoint : undefined;
             inputs["environmentVariables"] = args ? args.environmentVariables : undefined;
             inputs["eventTrigger"] = args ? args.eventTrigger : undefined;
             inputs["httpsTrigger"] = args ? args.httpsTrigger : undefined;
             inputs["ingressSettings"] = args ? args.ingressSettings : undefined;
+            inputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["maxInstances"] = args ? args.maxInstances : undefined;
@@ -206,11 +216,13 @@ export class Function extends pulumi.CustomResource {
             inputs["buildName"] = undefined /*out*/;
             inputs["buildWorkerPool"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
+            inputs["dockerRepository"] = undefined /*out*/;
             inputs["entryPoint"] = undefined /*out*/;
             inputs["environmentVariables"] = undefined /*out*/;
             inputs["eventTrigger"] = undefined /*out*/;
             inputs["httpsTrigger"] = undefined /*out*/;
             inputs["ingressSettings"] = undefined /*out*/;
+            inputs["kmsKeyName"] = undefined /*out*/;
             inputs["labels"] = undefined /*out*/;
             inputs["maxInstances"] = undefined /*out*/;
             inputs["minInstances"] = undefined /*out*/;
@@ -259,6 +271,10 @@ export interface FunctionArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. If unspecified and the deployment is eligible to use Artifact Registry, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+     */
+    dockerRepository?: pulumi.Input<string>;
+    /**
      * The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
      */
     entryPoint?: pulumi.Input<string>;
@@ -278,6 +294,10 @@ export interface FunctionArgs {
      * The ingress settings for the function, controlling what traffic can reach it.
      */
     ingressSettings?: pulumi.Input<enums.cloudfunctions.v1.FunctionIngressSettings>;
+    /**
+     * Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`. If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. The following service accounts need to be granted the role 'Cloud KMS CryptoKey Encrypter/Decrypter (roles/cloudkms.cryptoKeyEncrypterDecrypter)' on the Key/KeyRing/Project/Organization (least access preferred). 1. Google Cloud Functions service account (service-{project_number}@gcf-admin-robot.iam.gserviceaccount.com) - Required to protect the function's image. 2. Google Storage service account (service-{project_number}@gs-project-accounts.iam.gserviceaccount.com) - Required to protect the function's source code. If this service account does not exist, deploying a function without a KMS key or retrieving the service agent name provisions it. For more information, see https://cloud.google.com/storage/docs/projects#service-agents and https://cloud.google.com/storage/docs/getting-service-agent#gsutil. Google Cloud Functions delegates access to service agents to protect function resources in internal projects that are not accessible by the end user.
+     */
+    kmsKeyName?: pulumi.Input<string>;
     /**
      * Labels associated with this Cloud Function.
      */

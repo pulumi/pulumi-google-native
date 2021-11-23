@@ -60,6 +60,10 @@ export class IosApp extends pulumi.CustomResource {
      * Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The Apple Developer Team ID associated with the App in the App Store.
+     */
+    public readonly teamId!: pulumi.Output<string>;
 
     /**
      * Create a IosApp resource with the given unique name, arguments, and options.
@@ -78,6 +82,7 @@ export class IosApp extends pulumi.CustomResource {
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["teamId"] = args ? args.teamId : undefined;
         } else {
             inputs["appId"] = undefined /*out*/;
             inputs["appStoreId"] = undefined /*out*/;
@@ -85,6 +90,7 @@ export class IosApp extends pulumi.CustomResource {
             inputs["displayName"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["project"] = undefined /*out*/;
+            inputs["teamId"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -121,4 +127,8 @@ export interface IosAppArgs {
      * Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The Apple Developer Team ID associated with the App in the App Store.
+     */
+    teamId?: pulumi.Input<string>;
 }

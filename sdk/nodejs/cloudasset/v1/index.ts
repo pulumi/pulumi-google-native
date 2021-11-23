@@ -7,12 +7,15 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./feed";
 export * from "./getFeed";
+export * from "./getSavedQuery";
+export * from "./savedQuery";
 
 // Export enums:
 export * from "../../types/enums/cloudasset/v1";
 
 // Import resources to register:
 import { Feed } from "./feed";
+import { SavedQuery } from "./savedQuery";
 
 const _module = {
     version: utilities.getVersion(),
@@ -20,6 +23,8 @@ const _module = {
         switch (type) {
             case "google-native:cloudasset/v1:Feed":
                 return new Feed(name, <any>undefined, { urn })
+            case "google-native:cloudasset/v1:SavedQuery":
+                return new SavedQuery(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

@@ -45,6 +45,10 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
         /// </summary>
         public readonly Outputs.MaintenanceWindowResponse MaintenanceWindow;
         /// <summary>
+        /// Optional. The configuration options for GKE clusters master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
+        /// </summary>
+        public readonly Outputs.MasterAuthorizedNetworksConfigResponse MasterAuthorizedNetworksConfig;
+        /// <summary>
         /// The configuration used for the Kubernetes Engine cluster.
         /// </summary>
         public readonly Outputs.NodeConfigResponse NodeConfig;
@@ -65,7 +69,7 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
         /// </summary>
         public readonly Outputs.WebServerConfigResponse WebServerConfig;
         /// <summary>
-        /// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        /// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
         /// </summary>
         public readonly Outputs.WebServerNetworkAccessControlResponse WebServerNetworkAccessControl;
         /// <summary>
@@ -89,6 +93,8 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
 
             Outputs.MaintenanceWindowResponse maintenanceWindow,
 
+            Outputs.MasterAuthorizedNetworksConfigResponse masterAuthorizedNetworksConfig,
+
             Outputs.NodeConfigResponse nodeConfig,
 
             int nodeCount,
@@ -110,6 +116,7 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
             EnvironmentSize = environmentSize;
             GkeCluster = gkeCluster;
             MaintenanceWindow = maintenanceWindow;
+            MasterAuthorizedNetworksConfig = masterAuthorizedNetworksConfig;
             NodeConfig = nodeConfig;
             NodeCount = nodeCount;
             PrivateEnvironmentConfig = privateEnvironmentConfig;

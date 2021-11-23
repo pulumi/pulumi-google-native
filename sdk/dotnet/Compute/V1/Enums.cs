@@ -3782,6 +3782,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public static RegionCommitmentType GeneralPurposeE2 { get; } = new RegionCommitmentType("GENERAL_PURPOSE_E2");
         public static RegionCommitmentType GeneralPurposeN2 { get; } = new RegionCommitmentType("GENERAL_PURPOSE_N2");
         public static RegionCommitmentType GeneralPurposeN2d { get; } = new RegionCommitmentType("GENERAL_PURPOSE_N2D");
+        public static RegionCommitmentType GeneralPurposeT2d { get; } = new RegionCommitmentType("GENERAL_PURPOSE_T2D");
         public static RegionCommitmentType MemoryOptimized { get; } = new RegionCommitmentType("MEMORY_OPTIMIZED");
         public static RegionCommitmentType TypeUnspecified { get; } = new RegionCommitmentType("TYPE_UNSPECIFIED");
 

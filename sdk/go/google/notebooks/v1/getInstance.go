@@ -71,7 +71,7 @@ type LookupInstanceResult struct {
 	NoPublicIp bool `pulumi:"noPublicIp"`
 	// Input only. If true, the data disk will not be auto deleted when deleting the instance.
 	NoRemoveDataDisk bool `pulumi:"noRemoveDataDisk"`
-	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
+	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
 	PostStartupScript string `pulumi:"postStartupScript"`
 	// The proxy endpoint that is used to access the Jupyter notebook.
 	ProxyUri string `pulumi:"proxyUri"`
@@ -81,7 +81,7 @@ type LookupInstanceResult struct {
 	ServiceAccount string `pulumi:"serviceAccount"`
 	// Optional. The URIs of service account scopes to be included in Compute Engine instances. If not specified, the following [scopes](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) are defined: - https://www.googleapis.com/auth/cloud-platform - https://www.googleapis.com/auth/userinfo.email If not using default scopes, you need at least: https://www.googleapis.com/auth/compute
 	ServiceAccountScopes []string `pulumi:"serviceAccountScopes"`
-	// Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+	// Optional. Shielded VM configuration. [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
 	ShieldedInstanceConfig ShieldedInstanceConfigResponse `pulumi:"shieldedInstanceConfig"`
 	// The state of this instance.
 	State string `pulumi:"state"`
@@ -240,7 +240,7 @@ func (o LookupInstanceResultOutput) NoRemoveDataDisk() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupInstanceResult) bool { return v.NoRemoveDataDisk }).(pulumi.BoolOutput)
 }
 
-// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
+// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
 func (o LookupInstanceResultOutput) PostStartupScript() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.PostStartupScript }).(pulumi.StringOutput)
 }
@@ -265,7 +265,7 @@ func (o LookupInstanceResultOutput) ServiceAccountScopes() pulumi.StringArrayOut
 	return o.ApplyT(func(v LookupInstanceResult) []string { return v.ServiceAccountScopes }).(pulumi.StringArrayOutput)
 }
 
-// Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+// Optional. Shielded VM configuration. [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
 func (o LookupInstanceResultOutput) ShieldedInstanceConfig() ShieldedInstanceConfigResponseOutput {
 	return o.ApplyT(func(v LookupInstanceResult) ShieldedInstanceConfigResponse { return v.ShieldedInstanceConfig }).(ShieldedInstanceConfigResponseOutput)
 }

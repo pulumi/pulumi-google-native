@@ -14,6 +14,7 @@ import (
 type ManagedZone struct {
 	pulumi.CustomResourceState
 
+	CloudLoggingConfig ManagedZoneCloudLoggingConfigResponseOutput `pulumi:"cloudLoggingConfig"`
 	// The time that this resource was created on the server. This is in RFC3339 text format. Output only.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
 	// A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the managed zone's function.
@@ -84,7 +85,8 @@ func (ManagedZoneState) ElementType() reflect.Type {
 }
 
 type managedZoneArgs struct {
-	ClientOperationId *string `pulumi:"clientOperationId"`
+	ClientOperationId  *string                        `pulumi:"clientOperationId"`
+	CloudLoggingConfig *ManagedZoneCloudLoggingConfig `pulumi:"cloudLoggingConfig"`
 	// The time that this resource was created on the server. This is in RFC3339 text format. Output only.
 	CreationTime *string `pulumi:"creationTime"`
 	// A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the managed zone's function.
@@ -121,7 +123,8 @@ type managedZoneArgs struct {
 
 // The set of arguments for constructing a ManagedZone resource.
 type ManagedZoneArgs struct {
-	ClientOperationId pulumi.StringPtrInput
+	ClientOperationId  pulumi.StringPtrInput
+	CloudLoggingConfig ManagedZoneCloudLoggingConfigPtrInput
 	// The time that this resource was created on the server. This is in RFC3339 text format. Output only.
 	CreationTime pulumi.StringPtrInput
 	// A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the managed zone's function.

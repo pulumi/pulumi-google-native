@@ -42,12 +42,12 @@ type Occurrence struct {
 	Remediation pulumi.StringOutput `pulumi:"remediation"`
 	// Immutable. The resource for which the occurrence applies.
 	Resource ResourceResponseOutput `pulumi:"resource"`
-	// Describes a specific SPDX Document.
+	// Describes a specific software bill of materials document.
 	Sbom DocumentOccurrenceResponseOutput `pulumi:"sbom"`
 	// Describes a specific SPDX File.
 	SpdxFile FileOccurrenceResponseOutput `pulumi:"spdxFile"`
 	// Describes a specific SPDX Package.
-	SpdxPackage PackageOccurrenceResponseOutput `pulumi:"spdxPackage"`
+	SpdxPackage PackageInfoOccurrenceResponseOutput `pulumi:"spdxPackage"`
 	// Describes a specific SPDX Relationship.
 	SpdxRelationship RelationshipOccurrenceResponseOutput `pulumi:"spdxRelationship"`
 	// The time this occurrence was last updated.
@@ -122,12 +122,12 @@ type occurrenceArgs struct {
 	Remediation *string `pulumi:"remediation"`
 	// Immutable. The resource for which the occurrence applies.
 	Resource Resource `pulumi:"resource"`
-	// Describes a specific SPDX Document.
+	// Describes a specific software bill of materials document.
 	Sbom *DocumentOccurrence `pulumi:"sbom"`
 	// Describes a specific SPDX File.
 	SpdxFile *FileOccurrence `pulumi:"spdxFile"`
 	// Describes a specific SPDX Package.
-	SpdxPackage *PackageOccurrence `pulumi:"spdxPackage"`
+	SpdxPackage *PackageInfoOccurrence `pulumi:"spdxPackage"`
 	// Describes a specific SPDX Relationship.
 	SpdxRelationship *RelationshipOccurrence `pulumi:"spdxRelationship"`
 	// Describes a security vulnerability.
@@ -157,12 +157,12 @@ type OccurrenceArgs struct {
 	Remediation pulumi.StringPtrInput
 	// Immutable. The resource for which the occurrence applies.
 	Resource ResourceInput
-	// Describes a specific SPDX Document.
+	// Describes a specific software bill of materials document.
 	Sbom DocumentOccurrencePtrInput
 	// Describes a specific SPDX File.
 	SpdxFile FileOccurrencePtrInput
 	// Describes a specific SPDX Package.
-	SpdxPackage PackageOccurrencePtrInput
+	SpdxPackage PackageInfoOccurrencePtrInput
 	// Describes a specific SPDX Relationship.
 	SpdxRelationship RelationshipOccurrencePtrInput
 	// Describes a security vulnerability.
