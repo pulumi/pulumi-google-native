@@ -16,6 +16,7 @@ __all__ = ['BucketArgs', 'Bucket']
 class BucketArgs:
     def __init__(__self__, *,
                  acl: Optional[pulumi.Input[Sequence[pulumi.Input['BucketAccessControlArgs']]]] = None,
+                 autoclass: Optional[pulumi.Input['BucketAutoclassArgs']] = None,
                  billing: Optional[pulumi.Input['BucketBillingArgs']] = None,
                  cors: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorsItemArgs']]]] = None,
                  custom_placement_config: Optional[pulumi.Input['BucketCustomPlacementConfigArgs']] = None,
@@ -53,6 +54,7 @@ class BucketArgs:
         """
         The set of arguments for constructing a Bucket resource.
         :param pulumi.Input[Sequence[pulumi.Input['BucketAccessControlArgs']]] acl: Access controls on the bucket.
+        :param pulumi.Input['BucketAutoclassArgs'] autoclass: The bucket's Autoclass configuration.
         :param pulumi.Input['BucketBillingArgs'] billing: The bucket's billing configuration.
         :param pulumi.Input[Sequence[pulumi.Input['BucketCorsItemArgs']]] cors: The bucket's Cross-Origin Resource Sharing (CORS) configuration.
         :param pulumi.Input['BucketCustomPlacementConfigArgs'] custom_placement_config: The bucket's custom placement configuration for Custom Dual Regions.
@@ -84,6 +86,8 @@ class BucketArgs:
         """
         if acl is not None:
             pulumi.set(__self__, "acl", acl)
+        if autoclass is not None:
+            pulumi.set(__self__, "autoclass", autoclass)
         if billing is not None:
             pulumi.set(__self__, "billing", billing)
         if cors is not None:
@@ -164,6 +168,18 @@ class BucketArgs:
     @acl.setter
     def acl(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketAccessControlArgs']]]]):
         pulumi.set(self, "acl", value)
+
+    @property
+    @pulumi.getter
+    def autoclass(self) -> Optional[pulumi.Input['BucketAutoclassArgs']]:
+        """
+        The bucket's Autoclass configuration.
+        """
+        return pulumi.get(self, "autoclass")
+
+    @autoclass.setter
+    def autoclass(self, value: Optional[pulumi.Input['BucketAutoclassArgs']]):
+        pulumi.set(self, "autoclass", value)
 
     @property
     @pulumi.getter
@@ -562,6 +578,7 @@ class Bucket(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketAccessControlArgs']]]]] = None,
+                 autoclass: Optional[pulumi.Input[pulumi.InputType['BucketAutoclassArgs']]] = None,
                  billing: Optional[pulumi.Input[pulumi.InputType['BucketBillingArgs']]] = None,
                  cors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorsItemArgs']]]]] = None,
                  custom_placement_config: Optional[pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']]] = None,
@@ -603,6 +620,7 @@ class Bucket(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketAccessControlArgs']]]] acl: Access controls on the bucket.
+        :param pulumi.Input[pulumi.InputType['BucketAutoclassArgs']] autoclass: The bucket's Autoclass configuration.
         :param pulumi.Input[pulumi.InputType['BucketBillingArgs']] billing: The bucket's billing configuration.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorsItemArgs']]]] cors: The bucket's Cross-Origin Resource Sharing (CORS) configuration.
         :param pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']] custom_placement_config: The bucket's custom placement configuration for Custom Dual Regions.
@@ -657,6 +675,7 @@ class Bucket(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketAccessControlArgs']]]]] = None,
+                 autoclass: Optional[pulumi.Input[pulumi.InputType['BucketAutoclassArgs']]] = None,
                  billing: Optional[pulumi.Input[pulumi.InputType['BucketBillingArgs']]] = None,
                  cors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorsItemArgs']]]]] = None,
                  custom_placement_config: Optional[pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']]] = None,
@@ -704,6 +723,7 @@ class Bucket(pulumi.CustomResource):
             __props__ = BucketArgs.__new__(BucketArgs)
 
             __props__.__dict__["acl"] = acl
+            __props__.__dict__["autoclass"] = autoclass
             __props__.__dict__["billing"] = billing
             __props__.__dict__["cors"] = cors
             __props__.__dict__["custom_placement_config"] = custom_placement_config
@@ -761,6 +781,7 @@ class Bucket(pulumi.CustomResource):
         __props__ = BucketArgs.__new__(BucketArgs)
 
         __props__.__dict__["acl"] = None
+        __props__.__dict__["autoclass"] = None
         __props__.__dict__["billing"] = None
         __props__.__dict__["cors"] = None
         __props__.__dict__["custom_placement_config"] = None
@@ -797,6 +818,14 @@ class Bucket(pulumi.CustomResource):
         Access controls on the bucket.
         """
         return pulumi.get(self, "acl")
+
+    @property
+    @pulumi.getter
+    def autoclass(self) -> pulumi.Output['outputs.BucketAutoclassResponse']:
+        """
+        The bucket's Autoclass configuration.
+        """
+        return pulumi.get(self, "autoclass")
 
     @property
     @pulumi.getter

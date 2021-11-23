@@ -12,6 +12,7 @@ from . import outputs
 __all__ = [
     'BucketAccessControlProjectTeamResponse',
     'BucketAccessControlResponse',
+    'BucketAutoclassResponse',
     'BucketBillingResponse',
     'BucketCorsItemResponse',
     'BucketCustomPlacementConfigResponse',
@@ -250,6 +251,56 @@ class BucketAccessControlResponse(dict):
         The link to this access-control entry.
         """
         return pulumi.get(self, "self_link")
+
+
+@pulumi.output_type
+class BucketAutoclassResponse(dict):
+    """
+    The bucket's Autoclass configuration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "toggleTime":
+            suggest = "toggle_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketAutoclassResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketAutoclassResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketAutoclassResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 toggle_time: str):
+        """
+        The bucket's Autoclass configuration.
+        :param bool enabled: Whether or not Autoclass is enabled on this bucket
+        :param str toggle_time: A date and time in RFC 3339 format representing the instant at which "enabled" was last toggled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "toggle_time", toggle_time)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether or not Autoclass is enabled on this bucket
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="toggleTime")
+    def toggle_time(self) -> str:
+        """
+        A date and time in RFC 3339 format representing the instant at which "enabled" was last toggled.
+        """
+        return pulumi.get(self, "toggle_time")
 
 
 @pulumi.output_type

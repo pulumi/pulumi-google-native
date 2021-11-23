@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, alternative_location_id=None, auth_enabled=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, display_name=None, host=None, labels=None, location=None, maintenance_policy=None, maintenance_schedule=None, memory_size_gb=None, name=None, persistence_iam_identity=None, port=None, redis_configs=None, redis_version=None, reserved_ip_range=None, server_ca_certs=None, state=None, status_message=None, tier=None, transit_encryption_mode=None):
+    def __init__(__self__, alternative_location_id=None, auth_enabled=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, display_name=None, host=None, labels=None, location=None, maintenance_policy=None, maintenance_schedule=None, memory_size_gb=None, name=None, nodes=None, persistence_config=None, persistence_iam_identity=None, port=None, read_endpoint=None, read_endpoint_port=None, read_replicas_mode=None, redis_configs=None, redis_version=None, replica_count=None, reserved_ip_range=None, server_ca_certs=None, state=None, status_message=None, tier=None, transit_encryption_mode=None):
         if alternative_location_id and not isinstance(alternative_location_id, str):
             raise TypeError("Expected argument 'alternative_location_id' to be a str")
         pulumi.set(__self__, "alternative_location_id", alternative_location_id)
@@ -61,18 +61,36 @@ class GetInstanceResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if nodes and not isinstance(nodes, list):
+            raise TypeError("Expected argument 'nodes' to be a list")
+        pulumi.set(__self__, "nodes", nodes)
+        if persistence_config and not isinstance(persistence_config, dict):
+            raise TypeError("Expected argument 'persistence_config' to be a dict")
+        pulumi.set(__self__, "persistence_config", persistence_config)
         if persistence_iam_identity and not isinstance(persistence_iam_identity, str):
             raise TypeError("Expected argument 'persistence_iam_identity' to be a str")
         pulumi.set(__self__, "persistence_iam_identity", persistence_iam_identity)
         if port and not isinstance(port, int):
             raise TypeError("Expected argument 'port' to be a int")
         pulumi.set(__self__, "port", port)
+        if read_endpoint and not isinstance(read_endpoint, str):
+            raise TypeError("Expected argument 'read_endpoint' to be a str")
+        pulumi.set(__self__, "read_endpoint", read_endpoint)
+        if read_endpoint_port and not isinstance(read_endpoint_port, int):
+            raise TypeError("Expected argument 'read_endpoint_port' to be a int")
+        pulumi.set(__self__, "read_endpoint_port", read_endpoint_port)
+        if read_replicas_mode and not isinstance(read_replicas_mode, str):
+            raise TypeError("Expected argument 'read_replicas_mode' to be a str")
+        pulumi.set(__self__, "read_replicas_mode", read_replicas_mode)
         if redis_configs and not isinstance(redis_configs, dict):
             raise TypeError("Expected argument 'redis_configs' to be a dict")
         pulumi.set(__self__, "redis_configs", redis_configs)
         if redis_version and not isinstance(redis_version, str):
             raise TypeError("Expected argument 'redis_version' to be a str")
         pulumi.set(__self__, "redis_version", redis_version)
+        if replica_count and not isinstance(replica_count, int):
+            raise TypeError("Expected argument 'replica_count' to be a int")
+        pulumi.set(__self__, "replica_count", replica_count)
         if reserved_ip_range and not isinstance(reserved_ip_range, str):
             raise TypeError("Expected argument 'reserved_ip_range' to be a str")
         pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
@@ -96,7 +114,7 @@ class GetInstanceResult:
     @pulumi.getter(name="alternativeLocationId")
     def alternative_location_id(self) -> str:
         """
-        Optional. Only applicable to STANDARD_HA tier which protects the instance against zonal failures by provisioning it across two zones. If provided, it must be a different zone from the one provided in location_id.
+        Optional. If specified, at least one node will be provisioned in this zone in addition to the zone specified in location_id. Only applicable to standard tier. If provided, it must be a different zone from the one provided in [location_id]. Additional nodes beyond the first 2 will be placed in zones selected by the service.
         """
         return pulumi.get(self, "alternative_location_id")
 
@@ -136,7 +154,7 @@ class GetInstanceResult:
     @pulumi.getter(name="currentLocationId")
     def current_location_id(self) -> str:
         """
-        The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the location_id provided by the user at creation time. For Standard Tier instances, this can be either location_id or alternative_location_id and can change after a failover event.
+        The current zone where the Redis primary node is located. In basic tier, this will always be the same as [location_id]. In standard tier, this can be the zone of any node in the instance.
         """
         return pulumi.get(self, "current_location_id")
 
@@ -168,7 +186,7 @@ class GetInstanceResult:
     @pulumi.getter
     def location(self) -> str:
         """
-        Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, instances will be created across two zones for protection against zonal failures. If [alternative_location_id] is also provided, it must be different from [location_id].
+        Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, additional nodes will be added across multiple zones for protection against zonal failures. If specified, at least one node will be provisioned in this zone.
         """
         return pulumi.get(self, "location")
 
@@ -205,6 +223,22 @@ class GetInstanceResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def nodes(self) -> Sequence['outputs.NodeInfoResponse']:
+        """
+        Info per node.
+        """
+        return pulumi.get(self, "nodes")
+
+    @property
+    @pulumi.getter(name="persistenceConfig")
+    def persistence_config(self) -> 'outputs.PersistenceConfigResponse':
+        """
+        Optional. Persistence configuration parameters
+        """
+        return pulumi.get(self, "persistence_config")
+
+    @property
     @pulumi.getter(name="persistenceIamIdentity")
     def persistence_iam_identity(self) -> str:
         """
@@ -219,6 +253,30 @@ class GetInstanceResult:
         The port number of the exposed Redis endpoint.
         """
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="readEndpoint")
+    def read_endpoint(self) -> str:
+        """
+        Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write requests must target 'host'.
+        """
+        return pulumi.get(self, "read_endpoint")
+
+    @property
+    @pulumi.getter(name="readEndpointPort")
+    def read_endpoint_port(self) -> int:
+        """
+        The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target 'port'.
+        """
+        return pulumi.get(self, "read_endpoint_port")
+
+    @property
+    @pulumi.getter(name="readReplicasMode")
+    def read_replicas_mode(self) -> str:
+        """
+        Optional. Read replica mode. Can only be specified when trying to create the instance.
+        """
+        return pulumi.get(self, "read_replicas_mode")
 
     @property
     @pulumi.getter(name="redisConfigs")
@@ -237,10 +295,18 @@ class GetInstanceResult:
         return pulumi.get(self, "redis_version")
 
     @property
+    @pulumi.getter(name="replicaCount")
+    def replica_count(self) -> int:
+        """
+        Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default is 1. The valid value for basic tier is 0 and the default is also 0.
+        """
+        return pulumi.get(self, "replica_count")
+
+    @property
     @pulumi.getter(name="reservedIpRange")
     def reserved_ip_range(self) -> str:
         """
-        Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29.
+        Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29. For READ_REPLICAS_ENABLED the default block size is /28.
         """
         return pulumi.get(self, "reserved_ip_range")
 
@@ -305,10 +371,16 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             maintenance_schedule=self.maintenance_schedule,
             memory_size_gb=self.memory_size_gb,
             name=self.name,
+            nodes=self.nodes,
+            persistence_config=self.persistence_config,
             persistence_iam_identity=self.persistence_iam_identity,
             port=self.port,
+            read_endpoint=self.read_endpoint,
+            read_endpoint_port=self.read_endpoint_port,
+            read_replicas_mode=self.read_replicas_mode,
             redis_configs=self.redis_configs,
             redis_version=self.redis_version,
+            replica_count=self.replica_count,
             reserved_ip_range=self.reserved_ip_range,
             server_ca_certs=self.server_ca_certs,
             state=self.state,
@@ -349,10 +421,16 @@ def get_instance(instance_id: Optional[str] = None,
         maintenance_schedule=__ret__.maintenance_schedule,
         memory_size_gb=__ret__.memory_size_gb,
         name=__ret__.name,
+        nodes=__ret__.nodes,
+        persistence_config=__ret__.persistence_config,
         persistence_iam_identity=__ret__.persistence_iam_identity,
         port=__ret__.port,
+        read_endpoint=__ret__.read_endpoint,
+        read_endpoint_port=__ret__.read_endpoint_port,
+        read_replicas_mode=__ret__.read_replicas_mode,
         redis_configs=__ret__.redis_configs,
         redis_version=__ret__.redis_version,
+        replica_count=__ret__.replica_count,
         reserved_ip_range=__ret__.reserved_ip_range,
         server_ca_certs=__ret__.server_ca_certs,
         state=__ret__.state,

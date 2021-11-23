@@ -6,8 +6,11 @@ from enum import Enum
 
 __all__ = [
     'InstanceConnectMode',
+    'InstanceReadReplicasMode',
     'InstanceTier',
     'InstanceTransitEncryptionMode',
+    'PersistenceConfigPersistenceMode',
+    'PersistenceConfigRdbSnapshotPeriod',
     'WeeklyMaintenanceWindowDay',
 ]
 
@@ -27,6 +30,24 @@ class InstanceConnectMode(str, Enum):
     PRIVATE_SERVICE_ACCESS = "PRIVATE_SERVICE_ACCESS"
     """
     Connect your Memorystore for Redis instance using Private Service Access. Private services access provides an IP address range for multiple Google Cloud services, including Memorystore.
+    """
+
+
+class InstanceReadReplicasMode(str, Enum):
+    """
+    Optional. Read replica mode. Can only be specified when trying to create the instance.
+    """
+    READ_REPLICAS_MODE_UNSPECIFIED = "READ_REPLICAS_MODE_UNSPECIFIED"
+    """
+    If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
+    """
+    READ_REPLICAS_DISABLED = "READ_REPLICAS_DISABLED"
+    """
+    If disabled, read endpoint will not be provided and the instance cannot scale up or down the number of replicas.
+    """
+    READ_REPLICAS_ENABLED = "READ_REPLICAS_ENABLED"
+    """
+    If enabled, read endpoint will be provided and the instance can scale up and down the number of replicas. Not valid for basic tier.
     """
 
 
@@ -63,6 +84,50 @@ class InstanceTransitEncryptionMode(str, Enum):
     DISABLED = "DISABLED"
     """
     TLS is disabled for the instance.
+    """
+
+
+class PersistenceConfigPersistenceMode(str, Enum):
+    """
+    Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+    """
+    PERSISTENCE_MODE_UNSPECIFIED = "PERSISTENCE_MODE_UNSPECIFIED"
+    """
+    Not set.
+    """
+    DISABLED = "DISABLED"
+    """
+    Persistence is disabled for the instance, and any existing snapshots are deleted.
+    """
+    RDB = "RDB"
+    """
+    RDB based Persistence is enabled.
+    """
+
+
+class PersistenceConfigRdbSnapshotPeriod(str, Enum):
+    """
+    Optional. Period between RDB snapshots. Snapshots will be attempted every period starting from the provided snapshot start time. For example, a start time of 01/01/2033 06:45 and SIX_HOURS snapshot period will do nothing until 01/01/2033, and then trigger snapshots every day at 06:45, 12:45, 18:45, and 00:45 the next day, and so on. If not provided, TWENTY_FOUR_HOURS will be used as default.
+    """
+    SNAPSHOT_PERIOD_UNSPECIFIED = "SNAPSHOT_PERIOD_UNSPECIFIED"
+    """
+    Not set.
+    """
+    ONE_HOUR = "ONE_HOUR"
+    """
+    Snapshot every 1 hour.
+    """
+    SIX_HOURS = "SIX_HOURS"
+    """
+    Snapshot every 6 hours.
+    """
+    TWELVE_HOURS = "TWELVE_HOURS"
+    """
+    Snapshot every 12 hours.
+    """
+    TWENTY_FOUR_HOURS = "TWENTY_FOUR_HOURS"
+    """
+    Snapshot every 24 horus.
     """
 
 

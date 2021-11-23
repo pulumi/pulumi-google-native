@@ -17,6 +17,7 @@ __all__ = ['ManagedZoneArgs', 'ManagedZone']
 class ManagedZoneArgs:
     def __init__(__self__, *,
                  client_operation_id: Optional[pulumi.Input[str]] = None,
+                 cloud_logging_config: Optional[pulumi.Input['ManagedZoneCloudLoggingConfigArgs']] = None,
                  creation_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
@@ -54,6 +55,8 @@ class ManagedZoneArgs:
         """
         if client_operation_id is not None:
             pulumi.set(__self__, "client_operation_id", client_operation_id)
+        if cloud_logging_config is not None:
+            pulumi.set(__self__, "cloud_logging_config", cloud_logging_config)
         if creation_time is not None:
             pulumi.set(__self__, "creation_time", creation_time)
         if description is not None:
@@ -97,6 +100,15 @@ class ManagedZoneArgs:
     @client_operation_id.setter
     def client_operation_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_operation_id", value)
+
+    @property
+    @pulumi.getter(name="cloudLoggingConfig")
+    def cloud_logging_config(self) -> Optional[pulumi.Input['ManagedZoneCloudLoggingConfigArgs']]:
+        return pulumi.get(self, "cloud_logging_config")
+
+    @cloud_logging_config.setter
+    def cloud_logging_config(self, value: Optional[pulumi.Input['ManagedZoneCloudLoggingConfigArgs']]):
+        pulumi.set(self, "cloud_logging_config", value)
 
     @property
     @pulumi.getter(name="creationTime")
@@ -303,6 +315,7 @@ class ManagedZone(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  client_operation_id: Optional[pulumi.Input[str]] = None,
+                 cloud_logging_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneCloudLoggingConfigArgs']]] = None,
                  creation_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
@@ -367,6 +380,7 @@ class ManagedZone(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  client_operation_id: Optional[pulumi.Input[str]] = None,
+                 cloud_logging_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneCloudLoggingConfigArgs']]] = None,
                  creation_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
@@ -397,6 +411,7 @@ class ManagedZone(pulumi.CustomResource):
             __props__ = ManagedZoneArgs.__new__(ManagedZoneArgs)
 
             __props__.__dict__["client_operation_id"] = client_operation_id
+            __props__.__dict__["cloud_logging_config"] = cloud_logging_config
             __props__.__dict__["creation_time"] = creation_time
             __props__.__dict__["description"] = description
             __props__.__dict__["dns_name"] = dns_name
@@ -436,6 +451,7 @@ class ManagedZone(pulumi.CustomResource):
 
         __props__ = ManagedZoneArgs.__new__(ManagedZoneArgs)
 
+        __props__.__dict__["cloud_logging_config"] = None
         __props__.__dict__["creation_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["dns_name"] = None
@@ -452,6 +468,11 @@ class ManagedZone(pulumi.CustomResource):
         __props__.__dict__["service_directory_config"] = None
         __props__.__dict__["visibility"] = None
         return ManagedZone(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="cloudLoggingConfig")
+    def cloud_logging_config(self) -> pulumi.Output['outputs.ManagedZoneCloudLoggingConfigResponse']:
+        return pulumi.get(self, "cloud_logging_config")
 
     @property
     @pulumi.getter(name="creationTime")

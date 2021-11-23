@@ -60,6 +60,7 @@ __all__ = [
     'SparkJobResponse',
     'SparkRJobResponse',
     'SparkSqlJobResponse',
+    'SparkStandaloneAutoscalingConfigResponse',
     'TemplateParameterResponse',
     'ValueValidationResponse',
     'WorkflowTemplatePlacementResponse',
@@ -167,6 +168,8 @@ class BasicAutoscalingAlgorithmResponse(dict):
         suggest = None
         if key == "cooldownPeriod":
             suggest = "cooldown_period"
+        elif key == "sparkStandaloneConfig":
+            suggest = "spark_standalone_config"
         elif key == "yarnConfig":
             suggest = "yarn_config"
 
@@ -183,13 +186,16 @@ class BasicAutoscalingAlgorithmResponse(dict):
 
     def __init__(__self__, *,
                  cooldown_period: str,
+                 spark_standalone_config: 'outputs.SparkStandaloneAutoscalingConfigResponse',
                  yarn_config: 'outputs.BasicYarnAutoscalingConfigResponse'):
         """
         Basic algorithm for autoscaling.
         :param str cooldown_period: Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
+        :param 'SparkStandaloneAutoscalingConfigResponse' spark_standalone_config: Optional. Spark Standalone autoscaling configuration
         :param 'BasicYarnAutoscalingConfigResponse' yarn_config: Optional. YARN autoscaling configuration.
         """
         pulumi.set(__self__, "cooldown_period", cooldown_period)
+        pulumi.set(__self__, "spark_standalone_config", spark_standalone_config)
         pulumi.set(__self__, "yarn_config", yarn_config)
 
     @property
@@ -199,6 +205,14 @@ class BasicAutoscalingAlgorithmResponse(dict):
         Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
         """
         return pulumi.get(self, "cooldown_period")
+
+    @property
+    @pulumi.getter(name="sparkStandaloneConfig")
+    def spark_standalone_config(self) -> 'outputs.SparkStandaloneAutoscalingConfigResponse':
+        """
+        Optional. Spark Standalone autoscaling configuration
+        """
+        return pulumi.get(self, "spark_standalone_config")
 
     @property
     @pulumi.getter(name="yarnConfig")
@@ -303,17 +317,17 @@ class BasicYarnAutoscalingConfigResponse(dict):
 @pulumi.output_type
 class BindingResponse(dict):
     """
-    Associates members with a role.
+    Associates members, or principals, with a role.
     """
     def __init__(__self__, *,
                  condition: 'outputs.ExprResponse',
                  members: Sequence[str],
                  role: str):
         """
-        Associates members with a role.
-        :param 'ExprResponse' condition: The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the identities requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
-        :param str role: Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
+        Associates members, or principals, with a role.
+        :param 'ExprResponse' condition: The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
+        :param Sequence[str] members: Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+        :param str role: Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "members", members)
@@ -323,7 +337,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def condition(self) -> 'outputs.ExprResponse':
         """
-        The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
+        The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
         """
         return pulumi.get(self, "condition")
 
@@ -331,7 +345,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the identities requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+        Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "members")
 
@@ -339,7 +353,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def role(self) -> str:
         """
-        Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
+        Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
         """
         return pulumi.get(self, "role")
 
@@ -3840,6 +3854,97 @@ class SparkSqlJobResponse(dict):
         Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
         """
         return pulumi.get(self, "script_variables")
+
+
+@pulumi.output_type
+class SparkStandaloneAutoscalingConfigResponse(dict):
+    """
+    Basic autoscaling configurations for Spark Standalone.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gracefulDecommissionTimeout":
+            suggest = "graceful_decommission_timeout"
+        elif key == "scaleDownFactor":
+            suggest = "scale_down_factor"
+        elif key == "scaleDownMinWorkerFraction":
+            suggest = "scale_down_min_worker_fraction"
+        elif key == "scaleUpFactor":
+            suggest = "scale_up_factor"
+        elif key == "scaleUpMinWorkerFraction":
+            suggest = "scale_up_min_worker_fraction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SparkStandaloneAutoscalingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SparkStandaloneAutoscalingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SparkStandaloneAutoscalingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 graceful_decommission_timeout: str,
+                 scale_down_factor: float,
+                 scale_down_min_worker_fraction: float,
+                 scale_up_factor: float,
+                 scale_up_min_worker_fraction: float):
+        """
+        Basic autoscaling configurations for Spark Standalone.
+        :param str graceful_decommission_timeout: Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decomissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
+        :param float scale_down_factor: Fraction of required executors to remove from Spark Serverless clusters. A scale-down factor of 1.0 will result in scaling down so that there are no more executors for the Spark Job.(more aggressive scaling). A scale-down factor closer to 0 will result in a smaller magnitude of scaling donw (less aggressive scaling).Bounds: 0.0, 1.0.
+        :param float scale_down_min_worker_fraction: Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+        :param float scale_up_factor: Fraction of required workers to add to Spark Standalone clusters. A scale-up factor of 1.0 will result in scaling up so that there are no more required workers for the Spark Job (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling).Bounds: 0.0, 1.0.
+        :param float scale_up_min_worker_fraction: Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+        """
+        pulumi.set(__self__, "graceful_decommission_timeout", graceful_decommission_timeout)
+        pulumi.set(__self__, "scale_down_factor", scale_down_factor)
+        pulumi.set(__self__, "scale_down_min_worker_fraction", scale_down_min_worker_fraction)
+        pulumi.set(__self__, "scale_up_factor", scale_up_factor)
+        pulumi.set(__self__, "scale_up_min_worker_fraction", scale_up_min_worker_fraction)
+
+    @property
+    @pulumi.getter(name="gracefulDecommissionTimeout")
+    def graceful_decommission_timeout(self) -> str:
+        """
+        Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decomissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
+        """
+        return pulumi.get(self, "graceful_decommission_timeout")
+
+    @property
+    @pulumi.getter(name="scaleDownFactor")
+    def scale_down_factor(self) -> float:
+        """
+        Fraction of required executors to remove from Spark Serverless clusters. A scale-down factor of 1.0 will result in scaling down so that there are no more executors for the Spark Job.(more aggressive scaling). A scale-down factor closer to 0 will result in a smaller magnitude of scaling donw (less aggressive scaling).Bounds: 0.0, 1.0.
+        """
+        return pulumi.get(self, "scale_down_factor")
+
+    @property
+    @pulumi.getter(name="scaleDownMinWorkerFraction")
+    def scale_down_min_worker_fraction(self) -> float:
+        """
+        Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+        """
+        return pulumi.get(self, "scale_down_min_worker_fraction")
+
+    @property
+    @pulumi.getter(name="scaleUpFactor")
+    def scale_up_factor(self) -> float:
+        """
+        Fraction of required workers to add to Spark Standalone clusters. A scale-up factor of 1.0 will result in scaling up so that there are no more required workers for the Spark Job (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling).Bounds: 0.0, 1.0.
+        """
+        return pulumi.get(self, "scale_up_factor")
+
+    @property
+    @pulumi.getter(name="scaleUpMinWorkerFraction")
+    def scale_up_min_worker_fraction(self) -> float:
+        """
+        Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+        """
+        return pulumi.get(self, "scale_up_min_worker_fraction")
 
 
 @pulumi.output_type

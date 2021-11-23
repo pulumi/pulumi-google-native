@@ -3329,7 +3329,9 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "requestHeaders":
+        if key == "allowedCaCerts":
+            suggest = "allowed_ca_certs"
+        elif key == "requestHeaders":
             suggest = "request_headers"
 
         if suggest:
@@ -3344,21 +3346,32 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 allowed_ca_certs: Sequence[str],
                  password: str,
                  request_headers: Mapping[str, str],
                  uri: str,
                  username: str):
         """
         Represents configuration for a generic web service.
+        :param Sequence[str] allowed_ca_certs: Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
         :param str password: The password for HTTP Basic authentication.
         :param Mapping[str, str] request_headers: The HTTP request headers to send together with webhook requests.
         :param str uri: The webhook URI for receiving POST requests. It must use https protocol.
         :param str username: The user name for HTTP Basic authentication.
         """
+        pulumi.set(__self__, "allowed_ca_certs", allowed_ca_certs)
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "request_headers", request_headers)
         pulumi.set(__self__, "uri", uri)
         pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="allowedCaCerts")
+    def allowed_ca_certs(self) -> Sequence[str]:
+        """
+        Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
+        """
+        return pulumi.get(self, "allowed_ca_certs")
 
     @property
     @pulumi.getter

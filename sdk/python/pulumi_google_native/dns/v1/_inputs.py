@@ -11,6 +11,7 @@ from ._enums import *
 
 __all__ = [
     'DnsKeySpecArgs',
+    'ManagedZoneCloudLoggingConfigArgs',
     'ManagedZoneDnsSecConfigArgs',
     'ManagedZoneForwardingConfigNameServerTargetArgs',
     'ManagedZoneForwardingConfigArgs',
@@ -84,6 +85,42 @@ class DnsKeySpecArgs:
     @key_type.setter
     def key_type(self, value: Optional[pulumi.Input['DnsKeySpecKeyType']]):
         pulumi.set(self, "key_type", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+
+@pulumi.input_type
+class ManagedZoneCloudLoggingConfigArgs:
+    def __init__(__self__, *,
+                 enable_logging: Optional[pulumi.Input[bool]] = None,
+                 kind: Optional[pulumi.Input[str]] = None):
+        """
+        Cloud Logging configurations for publicly visible zones.
+        :param pulumi.Input[bool] enable_logging: If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
+        """
+        if enable_logging is not None:
+            pulumi.set(__self__, "enable_logging", enable_logging)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+
+    @property
+    @pulumi.getter(name="enableLogging")
+    def enable_logging(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
+        """
+        return pulumi.get(self, "enable_logging")
+
+    @enable_logging.setter
+    def enable_logging(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_logging", value)
 
     @property
     @pulumi.getter

@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, accelerators=None, api_endpoint=None, available_version=None, create_time=None, crypto_key_config=None, dataproc_service_account=None, description=None, display_name=None, enable_rbac=None, enable_stackdriver_logging=None, enable_stackdriver_monitoring=None, gcs_bucket=None, labels=None, name=None, network_config=None, options=None, p4_service_account=None, private_instance=None, service_endpoint=None, state=None, state_message=None, tenant_project_id=None, type=None, update_time=None, version=None, zone=None):
+    def __init__(__self__, accelerators=None, api_endpoint=None, available_version=None, create_time=None, crypto_key_config=None, dataproc_service_account=None, description=None, disabled_reason=None, display_name=None, enable_rbac=None, enable_stackdriver_logging=None, enable_stackdriver_monitoring=None, gcs_bucket=None, labels=None, name=None, network_config=None, options=None, p4_service_account=None, private_instance=None, service_endpoint=None, state=None, state_message=None, tenant_project_id=None, type=None, update_time=None, version=None, zone=None):
         if accelerators and not isinstance(accelerators, list):
             raise TypeError("Expected argument 'accelerators' to be a list")
         pulumi.set(__self__, "accelerators", accelerators)
@@ -40,6 +40,9 @@ class GetInstanceResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if disabled_reason and not isinstance(disabled_reason, list):
+            raise TypeError("Expected argument 'disabled_reason' to be a list")
+        pulumi.set(__self__, "disabled_reason", disabled_reason)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -153,6 +156,14 @@ class GetInstanceResult:
         A description of this instance.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="disabledReason")
+    def disabled_reason(self) -> Sequence[str]:
+        """
+        If the instance state is DISABLED, the reason for disabling the instance.
+        """
+        return pulumi.get(self, "disabled_reason")
 
     @property
     @pulumi.getter(name="displayName")
@@ -320,6 +331,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             crypto_key_config=self.crypto_key_config,
             dataproc_service_account=self.dataproc_service_account,
             description=self.description,
+            disabled_reason=self.disabled_reason,
             display_name=self.display_name,
             enable_rbac=self.enable_rbac,
             enable_stackdriver_logging=self.enable_stackdriver_logging,
@@ -366,6 +378,7 @@ def get_instance(instance_id: Optional[str] = None,
         crypto_key_config=__ret__.crypto_key_config,
         dataproc_service_account=__ret__.dataproc_service_account,
         description=__ret__.description,
+        disabled_reason=__ret__.disabled_reason,
         display_name=__ret__.display_name,
         enable_rbac=__ret__.enable_rbac,
         enable_stackdriver_logging=__ret__.enable_stackdriver_logging,

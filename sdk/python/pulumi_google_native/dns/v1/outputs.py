@@ -12,6 +12,7 @@ from ._enums import *
 
 __all__ = [
     'DnsKeySpecResponse',
+    'ManagedZoneCloudLoggingConfigResponse',
     'ManagedZoneDnsSecConfigResponse',
     'ManagedZoneForwardingConfigNameServerTargetResponse',
     'ManagedZoneForwardingConfigResponse',
@@ -91,6 +92,52 @@ class DnsKeySpecResponse(dict):
         Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, are only used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and are used to sign all other types of resource record sets.
         """
         return pulumi.get(self, "key_type")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> str:
+        return pulumi.get(self, "kind")
+
+
+@pulumi.output_type
+class ManagedZoneCloudLoggingConfigResponse(dict):
+    """
+    Cloud Logging configurations for publicly visible zones.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableLogging":
+            suggest = "enable_logging"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedZoneCloudLoggingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedZoneCloudLoggingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedZoneCloudLoggingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_logging: bool,
+                 kind: str):
+        """
+        Cloud Logging configurations for publicly visible zones.
+        :param bool enable_logging: If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
+        """
+        pulumi.set(__self__, "enable_logging", enable_logging)
+        pulumi.set(__self__, "kind", kind)
+
+    @property
+    @pulumi.getter(name="enableLogging")
+    def enable_logging(self) -> bool:
+        """
+        If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
+        """
+        return pulumi.get(self, "enable_logging")
 
     @property
     @pulumi.getter

@@ -235,7 +235,7 @@ class GetOccurrenceResult:
 
     @property
     @pulumi.getter(name="spdxPackage")
-    def spdx_package(self) -> 'outputs.PackageOccurrenceResponse':
+    def spdx_package(self) -> 'outputs.PackageInfoOccurrenceResponse':
         """
         Describes a specific SPDX Package.
         """

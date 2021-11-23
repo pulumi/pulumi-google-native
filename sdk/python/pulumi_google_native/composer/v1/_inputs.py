@@ -18,9 +18,13 @@ __all__ = [
     'NodeConfigArgs',
     'PrivateClusterConfigArgs',
     'PrivateEnvironmentConfigArgs',
+    'SchedulerResourceArgs',
     'SoftwareConfigArgs',
     'WebServerConfigArgs',
     'WebServerNetworkAccessControlArgs',
+    'WebServerResourceArgs',
+    'WorkerResourceArgs',
+    'WorkloadsConfigArgs',
 ]
 
 @pulumi.input_type
@@ -116,27 +120,33 @@ class EnvironmentConfigArgs:
     def __init__(__self__, *,
                  database_config: Optional[pulumi.Input['DatabaseConfigArgs']] = None,
                  encryption_config: Optional[pulumi.Input['EncryptionConfigArgs']] = None,
+                 environment_size: Optional[pulumi.Input['EnvironmentConfigEnvironmentSize']] = None,
                  node_config: Optional[pulumi.Input['NodeConfigArgs']] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  private_environment_config: Optional[pulumi.Input['PrivateEnvironmentConfigArgs']] = None,
                  software_config: Optional[pulumi.Input['SoftwareConfigArgs']] = None,
                  web_server_config: Optional[pulumi.Input['WebServerConfigArgs']] = None,
-                 web_server_network_access_control: Optional[pulumi.Input['WebServerNetworkAccessControlArgs']] = None):
+                 web_server_network_access_control: Optional[pulumi.Input['WebServerNetworkAccessControlArgs']] = None,
+                 workloads_config: Optional[pulumi.Input['WorkloadsConfigArgs']] = None):
         """
         Configuration information for an environment.
         :param pulumi.Input['DatabaseConfigArgs'] database_config: Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        :param pulumi.Input['EnvironmentConfigEnvironmentSize'] environment_size: Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
         :param pulumi.Input['NodeConfigArgs'] node_config: The configuration used for the Kubernetes Engine cluster.
         :param pulumi.Input[int] node_count: The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param pulumi.Input['PrivateEnvironmentConfigArgs'] private_environment_config: The configuration used for the Private IP Cloud Composer environment.
         :param pulumi.Input['SoftwareConfigArgs'] software_config: The configuration settings for software inside the environment.
         :param pulumi.Input['WebServerConfigArgs'] web_server_config: Optional. The configuration settings for the Airflow web server App Engine instance.
-        :param pulumi.Input['WebServerNetworkAccessControlArgs'] web_server_network_access_control: Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        :param pulumi.Input['WebServerNetworkAccessControlArgs'] web_server_network_access_control: Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
+        :param pulumi.Input['WorkloadsConfigArgs'] workloads_config: Optional. The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. The GKE cluster runs Airflow scheduler, web server and workers workloads. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
         """
         if database_config is not None:
             pulumi.set(__self__, "database_config", database_config)
         if encryption_config is not None:
             pulumi.set(__self__, "encryption_config", encryption_config)
+        if environment_size is not None:
+            pulumi.set(__self__, "environment_size", environment_size)
         if node_config is not None:
             pulumi.set(__self__, "node_config", node_config)
         if node_count is not None:
@@ -149,6 +159,8 @@ class EnvironmentConfigArgs:
             pulumi.set(__self__, "web_server_config", web_server_config)
         if web_server_network_access_control is not None:
             pulumi.set(__self__, "web_server_network_access_control", web_server_network_access_control)
+        if workloads_config is not None:
+            pulumi.set(__self__, "workloads_config", workloads_config)
 
     @property
     @pulumi.getter(name="databaseConfig")
@@ -173,6 +185,18 @@ class EnvironmentConfigArgs:
     @encryption_config.setter
     def encryption_config(self, value: Optional[pulumi.Input['EncryptionConfigArgs']]):
         pulumi.set(self, "encryption_config", value)
+
+    @property
+    @pulumi.getter(name="environmentSize")
+    def environment_size(self) -> Optional[pulumi.Input['EnvironmentConfigEnvironmentSize']]:
+        """
+        Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        """
+        return pulumi.get(self, "environment_size")
+
+    @environment_size.setter
+    def environment_size(self, value: Optional[pulumi.Input['EnvironmentConfigEnvironmentSize']]):
+        pulumi.set(self, "environment_size", value)
 
     @property
     @pulumi.getter(name="nodeConfig")
@@ -238,13 +262,25 @@ class EnvironmentConfigArgs:
     @pulumi.getter(name="webServerNetworkAccessControl")
     def web_server_network_access_control(self) -> Optional[pulumi.Input['WebServerNetworkAccessControlArgs']]:
         """
-        Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
         """
         return pulumi.get(self, "web_server_network_access_control")
 
     @web_server_network_access_control.setter
     def web_server_network_access_control(self, value: Optional[pulumi.Input['WebServerNetworkAccessControlArgs']]):
         pulumi.set(self, "web_server_network_access_control", value)
+
+    @property
+    @pulumi.getter(name="workloadsConfig")
+    def workloads_config(self) -> Optional[pulumi.Input['WorkloadsConfigArgs']]:
+        """
+        Optional. The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. The GKE cluster runs Airflow scheduler, web server and workers workloads. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        """
+        return pulumi.get(self, "workloads_config")
+
+    @workloads_config.setter
+    def workloads_config(self, value: Optional[pulumi.Input['WorkloadsConfigArgs']]):
+        pulumi.set(self, "workloads_config", value)
 
 
 @pulumi.input_type
@@ -530,17 +566,21 @@ class PrivateClusterConfigArgs:
 @pulumi.input_type
 class PrivateEnvironmentConfigArgs:
     def __init__(__self__, *,
+                 cloud_composer_network_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  cloud_sql_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  enable_private_environment: Optional[pulumi.Input[bool]] = None,
                  private_cluster_config: Optional[pulumi.Input['PrivateClusterConfigArgs']] = None,
                  web_server_ipv4_cidr_block: Optional[pulumi.Input[str]] = None):
         """
         The configuration information for configuring a Private IP Cloud Composer environment.
+        :param pulumi.Input[str] cloud_composer_network_ipv4_cidr_block: Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
         :param pulumi.Input[str] cloud_sql_ipv4_cidr_block: Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`.
         :param pulumi.Input[bool] enable_private_environment: Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param pulumi.Input['PrivateClusterConfigArgs'] private_cluster_config: Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
         :param pulumi.Input[str] web_server_ipv4_cidr_block: Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         """
+        if cloud_composer_network_ipv4_cidr_block is not None:
+            pulumi.set(__self__, "cloud_composer_network_ipv4_cidr_block", cloud_composer_network_ipv4_cidr_block)
         if cloud_sql_ipv4_cidr_block is not None:
             pulumi.set(__self__, "cloud_sql_ipv4_cidr_block", cloud_sql_ipv4_cidr_block)
         if enable_private_environment is not None:
@@ -549,6 +589,18 @@ class PrivateEnvironmentConfigArgs:
             pulumi.set(__self__, "private_cluster_config", private_cluster_config)
         if web_server_ipv4_cidr_block is not None:
             pulumi.set(__self__, "web_server_ipv4_cidr_block", web_server_ipv4_cidr_block)
+
+    @property
+    @pulumi.getter(name="cloudComposerNetworkIpv4CidrBlock")
+    def cloud_composer_network_ipv4_cidr_block(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        """
+        return pulumi.get(self, "cloud_composer_network_ipv4_cidr_block")
+
+    @cloud_composer_network_ipv4_cidr_block.setter
+    def cloud_composer_network_ipv4_cidr_block(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_composer_network_ipv4_cidr_block", value)
 
     @property
     @pulumi.getter(name="cloudSqlIpv4CidrBlock")
@@ -597,6 +649,78 @@ class PrivateEnvironmentConfigArgs:
     @web_server_ipv4_cidr_block.setter
     def web_server_ipv4_cidr_block(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "web_server_ipv4_cidr_block", value)
+
+
+@pulumi.input_type
+class SchedulerResourceArgs:
+    def __init__(__self__, *,
+                 count: Optional[pulumi.Input[int]] = None,
+                 cpu: Optional[pulumi.Input[float]] = None,
+                 memory_gb: Optional[pulumi.Input[float]] = None,
+                 storage_gb: Optional[pulumi.Input[float]] = None):
+        """
+        Configuration for resources used by Airflow schedulers.
+        :param pulumi.Input[int] count: Optional. The number of schedulers.
+        :param pulumi.Input[float] cpu: Optional. CPU request and limit for a single Airflow scheduler replica.
+        :param pulumi.Input[float] memory_gb: Optional. Memory (GB) request and limit for a single Airflow scheduler replica.
+        :param pulumi.Input[float] storage_gb: Optional. Storage (GB) request and limit for a single Airflow scheduler replica.
+        """
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if memory_gb is not None:
+            pulumi.set(__self__, "memory_gb", memory_gb)
+        if storage_gb is not None:
+            pulumi.set(__self__, "storage_gb", storage_gb)
+
+    @property
+    @pulumi.getter
+    def count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The number of schedulers.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "count", value)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> Optional[pulumi.Input[float]]:
+        """
+        Optional. CPU request and limit for a single Airflow scheduler replica.
+        """
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "cpu", value)
+
+    @property
+    @pulumi.getter(name="memoryGb")
+    def memory_gb(self) -> Optional[pulumi.Input[float]]:
+        """
+        Optional. Memory (GB) request and limit for a single Airflow scheduler replica.
+        """
+        return pulumi.get(self, "memory_gb")
+
+    @memory_gb.setter
+    def memory_gb(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "memory_gb", value)
+
+    @property
+    @pulumi.getter(name="storageGb")
+    def storage_gb(self) -> Optional[pulumi.Input[float]]:
+        """
+        Optional. Storage (GB) request and limit for a single Airflow scheduler replica.
+        """
+        return pulumi.get(self, "storage_gb")
+
+    @storage_gb.setter
+    def storage_gb(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "storage_gb", value)
 
 
 @pulumi.input_type
@@ -732,7 +856,7 @@ class WebServerNetworkAccessControlArgs:
     def __init__(__self__, *,
                  allowed_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['AllowedIpRangeArgs']]]] = None):
         """
-        Network-level access control policy for the Airflow web server. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        Network-level access control policy for the Airflow web server.
         :param pulumi.Input[Sequence[pulumi.Input['AllowedIpRangeArgs']]] allowed_ip_ranges: A collection of allowed IP ranges with descriptions.
         """
         if allowed_ip_ranges is not None:
@@ -749,5 +873,205 @@ class WebServerNetworkAccessControlArgs:
     @allowed_ip_ranges.setter
     def allowed_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AllowedIpRangeArgs']]]]):
         pulumi.set(self, "allowed_ip_ranges", value)
+
+
+@pulumi.input_type
+class WebServerResourceArgs:
+    def __init__(__self__, *,
+                 cpu: Optional[pulumi.Input[float]] = None,
+                 memory_gb: Optional[pulumi.Input[float]] = None,
+                 storage_gb: Optional[pulumi.Input[float]] = None):
+        """
+        Configuration for resources used by Airflow web server.
+        :param pulumi.Input[float] cpu: Optional. CPU request and limit for Airflow web server.
+        :param pulumi.Input[float] memory_gb: Optional. Memory (GB) request and limit for Airflow web server.
+        :param pulumi.Input[float] storage_gb: Optional. Storage (GB) request and limit for Airflow web server.
+        """
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if memory_gb is not None:
+            pulumi.set(__self__, "memory_gb", memory_gb)
+        if storage_gb is not None:
+            pulumi.set(__self__, "storage_gb", storage_gb)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> Optional[pulumi.Input[float]]:
+        """
+        Optional. CPU request and limit for Airflow web server.
+        """
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "cpu", value)
+
+    @property
+    @pulumi.getter(name="memoryGb")
+    def memory_gb(self) -> Optional[pulumi.Input[float]]:
+        """
+        Optional. Memory (GB) request and limit for Airflow web server.
+        """
+        return pulumi.get(self, "memory_gb")
+
+    @memory_gb.setter
+    def memory_gb(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "memory_gb", value)
+
+    @property
+    @pulumi.getter(name="storageGb")
+    def storage_gb(self) -> Optional[pulumi.Input[float]]:
+        """
+        Optional. Storage (GB) request and limit for Airflow web server.
+        """
+        return pulumi.get(self, "storage_gb")
+
+    @storage_gb.setter
+    def storage_gb(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "storage_gb", value)
+
+
+@pulumi.input_type
+class WorkerResourceArgs:
+    def __init__(__self__, *,
+                 cpu: Optional[pulumi.Input[float]] = None,
+                 max_count: Optional[pulumi.Input[int]] = None,
+                 memory_gb: Optional[pulumi.Input[float]] = None,
+                 min_count: Optional[pulumi.Input[int]] = None,
+                 storage_gb: Optional[pulumi.Input[float]] = None):
+        """
+        Configuration for resources used by Airflow workers.
+        :param pulumi.Input[float] cpu: Optional. CPU request and limit for a single Airflow worker replica.
+        :param pulumi.Input[int] max_count: Optional. Maximum number of workers for autoscaling.
+        :param pulumi.Input[float] memory_gb: Optional. Memory (GB) request and limit for a single Airflow worker replica.
+        :param pulumi.Input[int] min_count: Optional. Minimum number of workers for autoscaling.
+        :param pulumi.Input[float] storage_gb: Optional. Storage (GB) request and limit for a single Airflow worker replica.
+        """
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if max_count is not None:
+            pulumi.set(__self__, "max_count", max_count)
+        if memory_gb is not None:
+            pulumi.set(__self__, "memory_gb", memory_gb)
+        if min_count is not None:
+            pulumi.set(__self__, "min_count", min_count)
+        if storage_gb is not None:
+            pulumi.set(__self__, "storage_gb", storage_gb)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> Optional[pulumi.Input[float]]:
+        """
+        Optional. CPU request and limit for a single Airflow worker replica.
+        """
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "cpu", value)
+
+    @property
+    @pulumi.getter(name="maxCount")
+    def max_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. Maximum number of workers for autoscaling.
+        """
+        return pulumi.get(self, "max_count")
+
+    @max_count.setter
+    def max_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_count", value)
+
+    @property
+    @pulumi.getter(name="memoryGb")
+    def memory_gb(self) -> Optional[pulumi.Input[float]]:
+        """
+        Optional. Memory (GB) request and limit for a single Airflow worker replica.
+        """
+        return pulumi.get(self, "memory_gb")
+
+    @memory_gb.setter
+    def memory_gb(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "memory_gb", value)
+
+    @property
+    @pulumi.getter(name="minCount")
+    def min_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. Minimum number of workers for autoscaling.
+        """
+        return pulumi.get(self, "min_count")
+
+    @min_count.setter
+    def min_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_count", value)
+
+    @property
+    @pulumi.getter(name="storageGb")
+    def storage_gb(self) -> Optional[pulumi.Input[float]]:
+        """
+        Optional. Storage (GB) request and limit for a single Airflow worker replica.
+        """
+        return pulumi.get(self, "storage_gb")
+
+    @storage_gb.setter
+    def storage_gb(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "storage_gb", value)
+
+
+@pulumi.input_type
+class WorkloadsConfigArgs:
+    def __init__(__self__, *,
+                 scheduler: Optional[pulumi.Input['SchedulerResourceArgs']] = None,
+                 web_server: Optional[pulumi.Input['WebServerResourceArgs']] = None,
+                 worker: Optional[pulumi.Input['WorkerResourceArgs']] = None):
+        """
+        The Kubernetes workloads configuration for GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        :param pulumi.Input['SchedulerResourceArgs'] scheduler: Optional. Resources used by Airflow schedulers.
+        :param pulumi.Input['WebServerResourceArgs'] web_server: Optional. Resources used by Airflow web server.
+        :param pulumi.Input['WorkerResourceArgs'] worker: Optional. Resources used by Airflow workers.
+        """
+        if scheduler is not None:
+            pulumi.set(__self__, "scheduler", scheduler)
+        if web_server is not None:
+            pulumi.set(__self__, "web_server", web_server)
+        if worker is not None:
+            pulumi.set(__self__, "worker", worker)
+
+    @property
+    @pulumi.getter
+    def scheduler(self) -> Optional[pulumi.Input['SchedulerResourceArgs']]:
+        """
+        Optional. Resources used by Airflow schedulers.
+        """
+        return pulumi.get(self, "scheduler")
+
+    @scheduler.setter
+    def scheduler(self, value: Optional[pulumi.Input['SchedulerResourceArgs']]):
+        pulumi.set(self, "scheduler", value)
+
+    @property
+    @pulumi.getter(name="webServer")
+    def web_server(self) -> Optional[pulumi.Input['WebServerResourceArgs']]:
+        """
+        Optional. Resources used by Airflow web server.
+        """
+        return pulumi.get(self, "web_server")
+
+    @web_server.setter
+    def web_server(self, value: Optional[pulumi.Input['WebServerResourceArgs']]):
+        pulumi.set(self, "web_server", value)
+
+    @property
+    @pulumi.getter
+    def worker(self) -> Optional[pulumi.Input['WorkerResourceArgs']]:
+        """
+        Optional. Resources used by Airflow workers.
+        """
+        return pulumi.get(self, "worker")
+
+    @worker.setter
+    def worker(self, value: Optional[pulumi.Input['WorkerResourceArgs']]):
+        pulumi.set(self, "worker", value)
 
 

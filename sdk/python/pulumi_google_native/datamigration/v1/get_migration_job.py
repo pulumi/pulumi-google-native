@@ -153,7 +153,7 @@ class GetMigrationJobResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
+        The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
         """
         return pulumi.get(self, "name")
 

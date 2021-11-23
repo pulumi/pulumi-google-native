@@ -15,6 +15,7 @@ __all__ = ['ParticipantArgs', 'Participant']
 class ParticipantArgs:
     def __init__(__self__, *,
                  conversation_id: pulumi.Input[str],
+                 documents_metadata_filters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -22,11 +23,14 @@ class ParticipantArgs:
                  sip_recording_media_label: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Participant resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] documents_metadata_filters: Optional. Key-value filters on the metadata of documents returned by article suggestion. If specified, article suggestion only returns suggested documents that match all filters in their Document.metadata. Multiple values for a metadata key should be concatenated by comma. For example, filters to match all documents that have 'US' or 'CA' in their market metadata values and 'agent' in their user metadata values will be ``` documents_metadata_filters { key: "market" value: "US,CA" } documents_metadata_filters { key: "user" value: "agent" } ```
         :param pulumi.Input[str] name: Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
         :param pulumi.Input['ParticipantRole'] role: Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
         :param pulumi.Input[str] sip_recording_media_label: Optional. Label applied to streams representing this participant in SIPREC XML metadata and SDP. This is used to assign transcriptions from that media stream to this participant. This field can be updated.
         """
         pulumi.set(__self__, "conversation_id", conversation_id)
+        if documents_metadata_filters is not None:
+            pulumi.set(__self__, "documents_metadata_filters", documents_metadata_filters)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -46,6 +50,18 @@ class ParticipantArgs:
     @conversation_id.setter
     def conversation_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "conversation_id", value)
+
+    @property
+    @pulumi.getter(name="documentsMetadataFilters")
+    def documents_metadata_filters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Key-value filters on the metadata of documents returned by article suggestion. If specified, article suggestion only returns suggested documents that match all filters in their Document.metadata. Multiple values for a metadata key should be concatenated by comma. For example, filters to match all documents that have 'US' or 'CA' in their market metadata values and 'agent' in their user metadata values will be ``` documents_metadata_filters { key: "market" value: "US,CA" } documents_metadata_filters { key: "user" value: "agent" } ```
+        """
+        return pulumi.get(self, "documents_metadata_filters")
+
+    @documents_metadata_filters.setter
+    def documents_metadata_filters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "documents_metadata_filters", value)
 
     @property
     @pulumi.getter
@@ -108,6 +124,7 @@ class Participant(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  conversation_id: Optional[pulumi.Input[str]] = None,
+                 documents_metadata_filters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -121,6 +138,7 @@ class Participant(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] documents_metadata_filters: Optional. Key-value filters on the metadata of documents returned by article suggestion. If specified, article suggestion only returns suggested documents that match all filters in their Document.metadata. Multiple values for a metadata key should be concatenated by comma. For example, filters to match all documents that have 'US' or 'CA' in their market metadata values and 'agent' in their user metadata values will be ``` documents_metadata_filters { key: "market" value: "US,CA" } documents_metadata_filters { key: "user" value: "agent" } ```
         :param pulumi.Input[str] name: Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
         :param pulumi.Input['ParticipantRole'] role: Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
         :param pulumi.Input[str] sip_recording_media_label: Optional. Label applied to streams representing this participant in SIPREC XML metadata and SDP. This is used to assign transcriptions from that media stream to this participant. This field can be updated.
@@ -152,6 +170,7 @@ class Participant(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  conversation_id: Optional[pulumi.Input[str]] = None,
+                 documents_metadata_filters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -172,6 +191,7 @@ class Participant(pulumi.CustomResource):
             if conversation_id is None and not opts.urn:
                 raise TypeError("Missing required property 'conversation_id'")
             __props__.__dict__["conversation_id"] = conversation_id
+            __props__.__dict__["documents_metadata_filters"] = documents_metadata_filters
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -199,10 +219,19 @@ class Participant(pulumi.CustomResource):
 
         __props__ = ParticipantArgs.__new__(ParticipantArgs)
 
+        __props__.__dict__["documents_metadata_filters"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["role"] = None
         __props__.__dict__["sip_recording_media_label"] = None
         return Participant(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="documentsMetadataFilters")
+    def documents_metadata_filters(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Optional. Key-value filters on the metadata of documents returned by article suggestion. If specified, article suggestion only returns suggested documents that match all filters in their Document.metadata. Multiple values for a metadata key should be concatenated by comma. For example, filters to match all documents that have 'US' or 'CA' in their market metadata values and 'agent' in their user metadata values will be ``` documents_metadata_filters { key: "market" value: "US,CA" } documents_metadata_filters { key: "user" value: "agent" } ```
+        """
+        return pulumi.get(self, "documents_metadata_filters")
 
     @property
     @pulumi.getter

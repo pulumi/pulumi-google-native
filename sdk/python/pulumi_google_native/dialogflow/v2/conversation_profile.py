@@ -27,19 +27,23 @@ class ConversationProfileArgs:
                  new_message_event_notification_config: Optional[pulumi.Input['GoogleCloudDialogflowV2NotificationConfigArgs']] = None,
                  notification_config: Optional[pulumi.Input['GoogleCloudDialogflowV2NotificationConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 stt_config: Optional[pulumi.Input['GoogleCloudDialogflowV2SpeechToTextConfigArgs']] = None):
+                 security_settings: Optional[pulumi.Input[str]] = None,
+                 stt_config: Optional[pulumi.Input['GoogleCloudDialogflowV2SpeechToTextConfigArgs']] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ConversationProfile resource.
         :param pulumi.Input[str] display_name: Human readable name for this profile. Max length 1024 bytes.
         :param pulumi.Input['GoogleCloudDialogflowV2AutomatedAgentConfigArgs'] automated_agent_config: Configuration for an automated agent to use with this profile.
         :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs'] human_agent_assistant_config: Configuration for agent assistance to use with this profile.
         :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs'] human_agent_handoff_config: Configuration for connecting to a live agent. Currently, this feature is not general available, please contact Google to get access.
-        :param pulumi.Input[str] language_code: Language which represents the conversationProfile. If unspecified, the default language code en-us applies. Users need to create a ConversationProfile for each language they want to support.
+        :param pulumi.Input[str] language_code: Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-US languages. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
         :param pulumi.Input['GoogleCloudDialogflowV2LoggingConfigArgs'] logging_config: Configuration for logging conversation lifecycle events.
         :param pulumi.Input[str] name: The unique identifier of this conversation profile. Format: `projects//locations//conversationProfiles/`.
         :param pulumi.Input['GoogleCloudDialogflowV2NotificationConfigArgs'] new_message_event_notification_config: Configuration for publishing new message events. Event will be sent in format of ConversationEvent
         :param pulumi.Input['GoogleCloudDialogflowV2NotificationConfigArgs'] notification_config: Configuration for publishing conversation lifecycle events.
+        :param pulumi.Input[str] security_settings: Name of the CX SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
         :param pulumi.Input['GoogleCloudDialogflowV2SpeechToTextConfigArgs'] stt_config: Settings for speech transcription.
+        :param pulumi.Input[str] time_zone: The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
         """
         pulumi.set(__self__, "display_name", display_name)
         if automated_agent_config is not None:
@@ -62,8 +66,12 @@ class ConversationProfileArgs:
             pulumi.set(__self__, "notification_config", notification_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if security_settings is not None:
+            pulumi.set(__self__, "security_settings", security_settings)
         if stt_config is not None:
             pulumi.set(__self__, "stt_config", stt_config)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
 
     @property
     @pulumi.getter(name="displayName")
@@ -117,7 +125,7 @@ class ConversationProfileArgs:
     @pulumi.getter(name="languageCode")
     def language_code(self) -> Optional[pulumi.Input[str]]:
         """
-        Language which represents the conversationProfile. If unspecified, the default language code en-us applies. Users need to create a ConversationProfile for each language they want to support.
+        Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-US languages. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
         """
         return pulumi.get(self, "language_code")
 
@@ -192,6 +200,18 @@ class ConversationProfileArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="securitySettings")
+    def security_settings(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the CX SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
+        """
+        return pulumi.get(self, "security_settings")
+
+    @security_settings.setter
+    def security_settings(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_settings", value)
+
+    @property
     @pulumi.getter(name="sttConfig")
     def stt_config(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2SpeechToTextConfigArgs']]:
         """
@@ -202,6 +222,18 @@ class ConversationProfileArgs:
     @stt_config.setter
     def stt_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2SpeechToTextConfigArgs']]):
         pulumi.set(self, "stt_config", value)
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_zone", value)
 
 
 class ConversationProfile(pulumi.CustomResource):
@@ -220,7 +252,9 @@ class ConversationProfile(pulumi.CustomResource):
                  new_message_event_notification_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2NotificationConfigArgs']]] = None,
                  notification_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2NotificationConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 security_settings: Optional[pulumi.Input[str]] = None,
                  stt_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2SpeechToTextConfigArgs']]] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a conversation profile in the specified project. ConversationProfile.CreateTime and ConversationProfile.UpdateTime aren't populated in the response. You can retrieve them via GetConversationProfile API.
@@ -231,12 +265,14 @@ class ConversationProfile(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Human readable name for this profile. Max length 1024 bytes.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs']] human_agent_assistant_config: Configuration for agent assistance to use with this profile.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs']] human_agent_handoff_config: Configuration for connecting to a live agent. Currently, this feature is not general available, please contact Google to get access.
-        :param pulumi.Input[str] language_code: Language which represents the conversationProfile. If unspecified, the default language code en-us applies. Users need to create a ConversationProfile for each language they want to support.
+        :param pulumi.Input[str] language_code: Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-US languages. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2LoggingConfigArgs']] logging_config: Configuration for logging conversation lifecycle events.
         :param pulumi.Input[str] name: The unique identifier of this conversation profile. Format: `projects//locations//conversationProfiles/`.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2NotificationConfigArgs']] new_message_event_notification_config: Configuration for publishing new message events. Event will be sent in format of ConversationEvent
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2NotificationConfigArgs']] notification_config: Configuration for publishing conversation lifecycle events.
+        :param pulumi.Input[str] security_settings: Name of the CX SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2SpeechToTextConfigArgs']] stt_config: Settings for speech transcription.
+        :param pulumi.Input[str] time_zone: The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
         """
         ...
     @overload
@@ -273,7 +309,9 @@ class ConversationProfile(pulumi.CustomResource):
                  new_message_event_notification_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2NotificationConfigArgs']]] = None,
                  notification_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2NotificationConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 security_settings: Optional[pulumi.Input[str]] = None,
                  stt_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2SpeechToTextConfigArgs']]] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -299,7 +337,9 @@ class ConversationProfile(pulumi.CustomResource):
             __props__.__dict__["new_message_event_notification_config"] = new_message_event_notification_config
             __props__.__dict__["notification_config"] = notification_config
             __props__.__dict__["project"] = project
+            __props__.__dict__["security_settings"] = security_settings
             __props__.__dict__["stt_config"] = stt_config
+            __props__.__dict__["time_zone"] = time_zone
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None
         super(ConversationProfile, __self__).__init__(
@@ -334,7 +374,9 @@ class ConversationProfile(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["new_message_event_notification_config"] = None
         __props__.__dict__["notification_config"] = None
+        __props__.__dict__["security_settings"] = None
         __props__.__dict__["stt_config"] = None
+        __props__.__dict__["time_zone"] = None
         __props__.__dict__["update_time"] = None
         return ConversationProfile(resource_name, opts=opts, __props__=__props__)
 
@@ -382,7 +424,7 @@ class ConversationProfile(pulumi.CustomResource):
     @pulumi.getter(name="languageCode")
     def language_code(self) -> pulumi.Output[str]:
         """
-        Language which represents the conversationProfile. If unspecified, the default language code en-us applies. Users need to create a ConversationProfile for each language they want to support.
+        Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-US languages. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
         """
         return pulumi.get(self, "language_code")
 
@@ -419,12 +461,28 @@ class ConversationProfile(pulumi.CustomResource):
         return pulumi.get(self, "notification_config")
 
     @property
+    @pulumi.getter(name="securitySettings")
+    def security_settings(self) -> pulumi.Output[str]:
+        """
+        Name of the CX SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
+        """
+        return pulumi.get(self, "security_settings")
+
+    @property
     @pulumi.getter(name="sttConfig")
     def stt_config(self) -> pulumi.Output['outputs.GoogleCloudDialogflowV2SpeechToTextConfigResponse']:
         """
         Settings for speech transcription.
         """
         return pulumi.get(self, "stt_config")
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> pulumi.Output[str]:
+        """
+        The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
+        """
+        return pulumi.get(self, "time_zone")
 
     @property
     @pulumi.getter(name="updateTime")

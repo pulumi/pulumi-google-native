@@ -39,7 +39,7 @@ class InstanceArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         :param pulumi.Input['InstanceMemcacheVersion'] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
-        :param pulumi.Input['MemcacheParametersArgs'] parameters: Optional: User defined parameters to apply to the memcached process on each node.
+        :param pulumi.Input['MemcacheParametersArgs'] parameters: User defined parameters to apply to the memcached process on each node.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
         """
         pulumi.set(__self__, "instance_id", instance_id)
@@ -184,7 +184,7 @@ class InstanceArgs:
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input['MemcacheParametersArgs']]:
         """
-        Optional: User defined parameters to apply to the memcached process on each node.
+        User defined parameters to apply to the memcached process on each node.
         """
         return pulumi.get(self, "parameters")
 
@@ -246,7 +246,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
         :param pulumi.Input[pulumi.InputType['NodeConfigArgs']] node_config: Configuration for Memcached nodes.
         :param pulumi.Input[int] node_count: Number of nodes in the Memcached instance.
-        :param pulumi.Input[pulumi.InputType['MemcacheParametersArgs']] parameters: Optional: User defined parameters to apply to the memcached process on each node.
+        :param pulumi.Input[pulumi.InputType['MemcacheParametersArgs']] parameters: User defined parameters to apply to the memcached process on each node.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
         """
         ...
@@ -463,7 +463,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def parameters(self) -> pulumi.Output['outputs.MemcacheParametersResponse']:
         """
-        Optional: User defined parameters to apply to the memcached process on each node.
+        User defined parameters to apply to the memcached process on each node.
         """
         return pulumi.get(self, "parameters")
 

@@ -45,7 +45,7 @@ class ErrorResponse(dict):
                  stack_trace: 'outputs.StackTraceResponse'):
         """
         Error describes why the execution was abnormally terminated.
-        :param str context: Human readable stack trace string.
+        :param str context: Human-readable stack trace string.
         :param str payload: Error message and data returned represented as a JSON string.
         :param 'StackTraceResponse' stack_trace: Stack trace with detailed information of where error was generated.
         """
@@ -57,7 +57,7 @@ class ErrorResponse(dict):
     @pulumi.getter
     def context(self) -> str:
         """
-        Human readable stack trace string.
+        Human-readable stack trace string.
         """
         return pulumi.get(self, "context")
 
@@ -90,7 +90,7 @@ class PositionResponse(dict):
         """
         Position contains source position information about the stack trace element such as line number, column number and length of the code block in bytes.
         :param str column: The source code column position (of the line) the current instruction was generated from.
-        :param str length: The length in bytes of text in this character group, e.g. digits of a number, string length, or AST (abstract syntax tree) node.
+        :param str length: The number of bytes of source code making up this stack trace element.
         :param str line: The source code line number the current instruction was generated from.
         """
         pulumi.set(__self__, "column", column)
@@ -109,7 +109,7 @@ class PositionResponse(dict):
     @pulumi.getter
     def length(self) -> str:
         """
-        The length in bytes of text in this character group, e.g. digits of a number, string length, or AST (abstract syntax tree) node.
+        The number of bytes of source code making up this stack trace element.
         """
         return pulumi.get(self, "length")
 
@@ -133,7 +133,7 @@ class StackTraceElementResponse(dict):
                  step: str):
         """
         A single stack element (frame) where an error occurred.
-        :param 'PositionResponse' position: The source position information of the stacktrace element.
+        :param 'PositionResponse' position: The source position information of the stack trace element.
         :param str routine: The routine where the error occurred.
         :param str step: The step the error occurred at.
         """
@@ -145,7 +145,7 @@ class StackTraceElementResponse(dict):
     @pulumi.getter
     def position(self) -> 'outputs.PositionResponse':
         """
-        The source position information of the stacktrace element.
+        The source position information of the stack trace element.
         """
         return pulumi.get(self, "position")
 
@@ -175,7 +175,7 @@ class StackTraceResponse(dict):
                  elements: Sequence['outputs.StackTraceElementResponse']):
         """
         A collection of stack elements (frames) where an error occurred.
-        :param Sequence['StackTraceElementResponse'] elements: An array of Stack elements.
+        :param Sequence['StackTraceElementResponse'] elements: An array of stack elements.
         """
         pulumi.set(__self__, "elements", elements)
 
@@ -183,7 +183,7 @@ class StackTraceResponse(dict):
     @pulumi.getter
     def elements(self) -> Sequence['outputs.StackTraceElementResponse']:
         """
-        An array of Stack elements.
+        An array of stack elements.
         """
         return pulumi.get(self, "elements")
 

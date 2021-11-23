@@ -10,6 +10,7 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'AppDevExperienceFeatureSpecArgs',
     'AuditConfigArgs',
     'AuditLogConfigArgs',
     'AuthorityArgs',
@@ -17,11 +18,22 @@ __all__ = [
     'CommonFeatureSpecArgs',
     'ExprArgs',
     'GkeClusterArgs',
+    'KubernetesResourceArgs',
     'MembershipEndpointArgs',
     'MultiCloudClusterArgs',
     'MultiClusterIngressFeatureSpecArgs',
     'OnPremClusterArgs',
+    'ResourceOptionsArgs',
 ]
+
+@pulumi.input_type
+class AppDevExperienceFeatureSpecArgs:
+    def __init__(__self__):
+        """
+        Spec for App Dev Experience Feature.
+        """
+        pass
+
 
 @pulumi.input_type
 class AuditConfigArgs:
@@ -150,10 +162,10 @@ class BindingArgs:
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None):
         """
-        Associates `members` with a `role`.
-        :param pulumi.Input['ExprArgs'] condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
-        :param pulumi.Input[str] role: Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Associates `members`, or principals, with a `role`.
+        :param pulumi.Input['ExprArgs'] condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param pulumi.Input[str] role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -166,7 +178,7 @@ class BindingArgs:
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input['ExprArgs']]:
         """
-        The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         """
         return pulumi.get(self, "condition")
 
@@ -178,7 +190,7 @@ class BindingArgs:
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         """
         return pulumi.get(self, "members")
 
@@ -190,7 +202,7 @@ class BindingArgs:
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
         """
-        Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
 
@@ -202,13 +214,29 @@ class BindingArgs:
 @pulumi.input_type
 class CommonFeatureSpecArgs:
     def __init__(__self__, *,
+                 appdevexperience: Optional[pulumi.Input['AppDevExperienceFeatureSpecArgs']] = None,
                  multiclusteringress: Optional[pulumi.Input['MultiClusterIngressFeatureSpecArgs']] = None):
         """
         CommonFeatureSpec contains Hub-wide configuration information
+        :param pulumi.Input['AppDevExperienceFeatureSpecArgs'] appdevexperience: Appdevexperience specific spec.
         :param pulumi.Input['MultiClusterIngressFeatureSpecArgs'] multiclusteringress: Multicluster Ingress-specific spec.
         """
+        if appdevexperience is not None:
+            pulumi.set(__self__, "appdevexperience", appdevexperience)
         if multiclusteringress is not None:
             pulumi.set(__self__, "multiclusteringress", multiclusteringress)
+
+    @property
+    @pulumi.getter
+    def appdevexperience(self) -> Optional[pulumi.Input['AppDevExperienceFeatureSpecArgs']]:
+        """
+        Appdevexperience specific spec.
+        """
+        return pulumi.get(self, "appdevexperience")
+
+    @appdevexperience.setter
+    def appdevexperience(self, value: Optional[pulumi.Input['AppDevExperienceFeatureSpecArgs']]):
+        pulumi.set(self, "appdevexperience", value)
 
     @property
     @pulumi.getter
@@ -320,19 +348,63 @@ class GkeClusterArgs:
 
 
 @pulumi.input_type
+class KubernetesResourceArgs:
+    def __init__(__self__, *,
+                 membership_cr_manifest: Optional[pulumi.Input[str]] = None,
+                 resource_options: Optional[pulumi.Input['ResourceOptionsArgs']] = None):
+        """
+        KubernetesResource contains the YAML manifests and configuration for Membership Kubernetes resources in the cluster. After CreateMembership or UpdateMembership, these resources should be re-applied in the cluster.
+        :param pulumi.Input[str] membership_cr_manifest: Input only. The YAML representation of the Membership CR. This field is ignored for GKE clusters where Hub can read the CR directly. Callers should provide the CR that is currently present in the cluster during CreateMembership or UpdateMembership, or leave this field empty if none exists. The CR manifest is used to validate the cluster has not been registered with another Membership.
+        :param pulumi.Input['ResourceOptionsArgs'] resource_options: Optional. Options for Kubernetes resource generation.
+        """
+        if membership_cr_manifest is not None:
+            pulumi.set(__self__, "membership_cr_manifest", membership_cr_manifest)
+        if resource_options is not None:
+            pulumi.set(__self__, "resource_options", resource_options)
+
+    @property
+    @pulumi.getter(name="membershipCrManifest")
+    def membership_cr_manifest(self) -> Optional[pulumi.Input[str]]:
+        """
+        Input only. The YAML representation of the Membership CR. This field is ignored for GKE clusters where Hub can read the CR directly. Callers should provide the CR that is currently present in the cluster during CreateMembership or UpdateMembership, or leave this field empty if none exists. The CR manifest is used to validate the cluster has not been registered with another Membership.
+        """
+        return pulumi.get(self, "membership_cr_manifest")
+
+    @membership_cr_manifest.setter
+    def membership_cr_manifest(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "membership_cr_manifest", value)
+
+    @property
+    @pulumi.getter(name="resourceOptions")
+    def resource_options(self) -> Optional[pulumi.Input['ResourceOptionsArgs']]:
+        """
+        Optional. Options for Kubernetes resource generation.
+        """
+        return pulumi.get(self, "resource_options")
+
+    @resource_options.setter
+    def resource_options(self, value: Optional[pulumi.Input['ResourceOptionsArgs']]):
+        pulumi.set(self, "resource_options", value)
+
+
+@pulumi.input_type
 class MembershipEndpointArgs:
     def __init__(__self__, *,
                  gke_cluster: Optional[pulumi.Input['GkeClusterArgs']] = None,
+                 kubernetes_resource: Optional[pulumi.Input['KubernetesResourceArgs']] = None,
                  multi_cloud_cluster: Optional[pulumi.Input['MultiCloudClusterArgs']] = None,
                  on_prem_cluster: Optional[pulumi.Input['OnPremClusterArgs']] = None):
         """
         MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
         :param pulumi.Input['GkeClusterArgs'] gke_cluster: Optional. Specific information for a GKE-on-GCP cluster.
+        :param pulumi.Input['KubernetesResourceArgs'] kubernetes_resource: Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
         :param pulumi.Input['MultiCloudClusterArgs'] multi_cloud_cluster: Optional. Specific information for a GKE Multi-Cloud cluster.
-        :param pulumi.Input['OnPremClusterArgs'] on_prem_cluster: Optional. Specific information for a GKE On-Prem cluster.
+        :param pulumi.Input['OnPremClusterArgs'] on_prem_cluster: Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
         """
         if gke_cluster is not None:
             pulumi.set(__self__, "gke_cluster", gke_cluster)
+        if kubernetes_resource is not None:
+            pulumi.set(__self__, "kubernetes_resource", kubernetes_resource)
         if multi_cloud_cluster is not None:
             pulumi.set(__self__, "multi_cloud_cluster", multi_cloud_cluster)
         if on_prem_cluster is not None:
@@ -351,6 +423,18 @@ class MembershipEndpointArgs:
         pulumi.set(self, "gke_cluster", value)
 
     @property
+    @pulumi.getter(name="kubernetesResource")
+    def kubernetes_resource(self) -> Optional[pulumi.Input['KubernetesResourceArgs']]:
+        """
+        Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
+        """
+        return pulumi.get(self, "kubernetes_resource")
+
+    @kubernetes_resource.setter
+    def kubernetes_resource(self, value: Optional[pulumi.Input['KubernetesResourceArgs']]):
+        pulumi.set(self, "kubernetes_resource", value)
+
+    @property
     @pulumi.getter(name="multiCloudCluster")
     def multi_cloud_cluster(self) -> Optional[pulumi.Input['MultiCloudClusterArgs']]:
         """
@@ -366,7 +450,7 @@ class MembershipEndpointArgs:
     @pulumi.getter(name="onPremCluster")
     def on_prem_cluster(self) -> Optional[pulumi.Input['OnPremClusterArgs']]:
         """
-        Optional. Specific information for a GKE On-Prem cluster.
+        Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
         """
         return pulumi.get(self, "on_prem_cluster")
 
@@ -461,5 +545,45 @@ class OnPremClusterArgs:
     @resource_link.setter
     def resource_link(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_link", value)
+
+
+@pulumi.input_type
+class ResourceOptionsArgs:
+    def __init__(__self__, *,
+                 connect_version: Optional[pulumi.Input[str]] = None,
+                 v1beta1_crd: Optional[pulumi.Input[bool]] = None):
+        """
+        ResourceOptions represent options for Kubernetes resource generation.
+        :param pulumi.Input[str] connect_version: Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.
+        :param pulumi.Input[bool] v1beta1_crd: Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
+        """
+        if connect_version is not None:
+            pulumi.set(__self__, "connect_version", connect_version)
+        if v1beta1_crd is not None:
+            pulumi.set(__self__, "v1beta1_crd", v1beta1_crd)
+
+    @property
+    @pulumi.getter(name="connectVersion")
+    def connect_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.
+        """
+        return pulumi.get(self, "connect_version")
+
+    @connect_version.setter
+    def connect_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connect_version", value)
+
+    @property
+    @pulumi.getter(name="v1beta1Crd")
+    def v1beta1_crd(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
+        """
+        return pulumi.get(self, "v1beta1_crd")
+
+    @v1beta1_crd.setter
+    def v1beta1_crd(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "v1beta1_crd", value)
 
 

@@ -15,8 +15,8 @@ __all__ = ['HubArgs', 'Hub']
 @pulumi.input_type
 class HubArgs:
     def __init__(__self__, *,
+                 hub_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
-                 hub_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -29,10 +29,9 @@ class HubArgs:
         :param pulumi.Input[str] name: Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
         :param pulumi.Input[Sequence[pulumi.Input['RoutingVPCArgs']]] routing_vpcs: The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
         """
+        pulumi.set(__self__, "hub_id", hub_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if hub_id is not None:
-            pulumi.set(__self__, "hub_id", hub_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -45,6 +44,15 @@ class HubArgs:
             pulumi.set(__self__, "routing_vpcs", routing_vpcs)
 
     @property
+    @pulumi.getter(name="hubId")
+    def hub_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "hub_id")
+
+    @hub_id.setter
+    def hub_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "hub_id", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -55,15 +63,6 @@ class HubArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="hubId")
-    def hub_id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "hub_id")
-
-    @hub_id.setter
-    def hub_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "hub_id", value)
 
     @property
     @pulumi.getter
@@ -148,7 +147,7 @@ class Hub(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[HubArgs] = None,
+                 args: HubArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new hub in the specified project.
@@ -189,6 +188,8 @@ class Hub(pulumi.CustomResource):
             __props__ = HubArgs.__new__(HubArgs)
 
             __props__.__dict__["description"] = description
+            if hub_id is None and not opts.urn:
+                raise TypeError("Missing required property 'hub_id'")
             __props__.__dict__["hub_id"] = hub_id
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name

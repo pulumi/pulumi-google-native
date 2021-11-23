@@ -48,13 +48,9 @@ class InstanceMessageResponse(dict):
 
 @pulumi.output_type
 class MemcacheParametersResponse(dict):
-    """
-    The unique ID associated with this set of parameters. Users can use this id to determine if the parameters associated with the instance differ from the parameters associated with the nodes. A discrepancy between parameter ids can inform users that they may need to take action to apply parameters on nodes.
-    """
     def __init__(__self__, *,
                  params: Mapping[str, str]):
         """
-        The unique ID associated with this set of parameters. Users can use this id to determine if the parameters associated with the instance differ from the parameters associated with the nodes. A discrepancy between parameter ids can inform users that they may need to take action to apply parameters on nodes.
         :param Mapping[str, str] params: User defined set of parameters to use in the memcached process.
         """
         pulumi.set(__self__, "params", params)

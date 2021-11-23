@@ -32,7 +32,7 @@ class OccurrenceArgs:
                  resource_url: Optional[pulumi.Input[str]] = None,
                  sbom: Optional[pulumi.Input['DocumentOccurrenceArgs']] = None,
                  spdx_file: Optional[pulumi.Input['FileOccurrenceArgs']] = None,
-                 spdx_package: Optional[pulumi.Input['PackageOccurrenceArgs']] = None,
+                 spdx_package: Optional[pulumi.Input['PackageInfoOccurrenceArgs']] = None,
                  spdx_relationship: Optional[pulumi.Input['RelationshipOccurrenceArgs']] = None,
                  upgrade: Optional[pulumi.Input['UpgradeOccurrenceArgs']] = None,
                  vulnerability_details: Optional[pulumi.Input['VulnerabilityDetailsArgs']] = None):
@@ -53,7 +53,7 @@ class OccurrenceArgs:
         :param pulumi.Input[str] resource_url: The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
         :param pulumi.Input['DocumentOccurrenceArgs'] sbom: Describes a specific software bill of materials document.
         :param pulumi.Input['FileOccurrenceArgs'] spdx_file: Describes a specific SPDX File.
-        :param pulumi.Input['PackageOccurrenceArgs'] spdx_package: Describes a specific SPDX Package.
+        :param pulumi.Input['PackageInfoOccurrenceArgs'] spdx_package: Describes a specific SPDX Package.
         :param pulumi.Input['RelationshipOccurrenceArgs'] spdx_relationship: Describes a specific relationship between SPDX elements.
         :param pulumi.Input['UpgradeOccurrenceArgs'] upgrade: Describes an upgrade.
         :param pulumi.Input['VulnerabilityDetailsArgs'] vulnerability_details: Details of a security vulnerability note.
@@ -290,14 +290,14 @@ class OccurrenceArgs:
 
     @property
     @pulumi.getter(name="spdxPackage")
-    def spdx_package(self) -> Optional[pulumi.Input['PackageOccurrenceArgs']]:
+    def spdx_package(self) -> Optional[pulumi.Input['PackageInfoOccurrenceArgs']]:
         """
         Describes a specific SPDX Package.
         """
         return pulumi.get(self, "spdx_package")
 
     @spdx_package.setter
-    def spdx_package(self, value: Optional[pulumi.Input['PackageOccurrenceArgs']]):
+    def spdx_package(self, value: Optional[pulumi.Input['PackageInfoOccurrenceArgs']]):
         pulumi.set(self, "spdx_package", value)
 
     @property
@@ -358,7 +358,7 @@ class Occurrence(pulumi.CustomResource):
                  resource_url: Optional[pulumi.Input[str]] = None,
                  sbom: Optional[pulumi.Input[pulumi.InputType['DocumentOccurrenceArgs']]] = None,
                  spdx_file: Optional[pulumi.Input[pulumi.InputType['FileOccurrenceArgs']]] = None,
-                 spdx_package: Optional[pulumi.Input[pulumi.InputType['PackageOccurrenceArgs']]] = None,
+                 spdx_package: Optional[pulumi.Input[pulumi.InputType['PackageInfoOccurrenceArgs']]] = None,
                  spdx_relationship: Optional[pulumi.Input[pulumi.InputType['RelationshipOccurrenceArgs']]] = None,
                  upgrade: Optional[pulumi.Input[pulumi.InputType['UpgradeOccurrenceArgs']]] = None,
                  vulnerability_details: Optional[pulumi.Input[pulumi.InputType['VulnerabilityDetailsArgs']]] = None,
@@ -384,7 +384,7 @@ class Occurrence(pulumi.CustomResource):
         :param pulumi.Input[str] resource_url: The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
         :param pulumi.Input[pulumi.InputType['DocumentOccurrenceArgs']] sbom: Describes a specific software bill of materials document.
         :param pulumi.Input[pulumi.InputType['FileOccurrenceArgs']] spdx_file: Describes a specific SPDX File.
-        :param pulumi.Input[pulumi.InputType['PackageOccurrenceArgs']] spdx_package: Describes a specific SPDX Package.
+        :param pulumi.Input[pulumi.InputType['PackageInfoOccurrenceArgs']] spdx_package: Describes a specific SPDX Package.
         :param pulumi.Input[pulumi.InputType['RelationshipOccurrenceArgs']] spdx_relationship: Describes a specific relationship between SPDX elements.
         :param pulumi.Input[pulumi.InputType['UpgradeOccurrenceArgs']] upgrade: Describes an upgrade.
         :param pulumi.Input[pulumi.InputType['VulnerabilityDetailsArgs']] vulnerability_details: Details of a security vulnerability note.
@@ -430,7 +430,7 @@ class Occurrence(pulumi.CustomResource):
                  resource_url: Optional[pulumi.Input[str]] = None,
                  sbom: Optional[pulumi.Input[pulumi.InputType['DocumentOccurrenceArgs']]] = None,
                  spdx_file: Optional[pulumi.Input[pulumi.InputType['FileOccurrenceArgs']]] = None,
-                 spdx_package: Optional[pulumi.Input[pulumi.InputType['PackageOccurrenceArgs']]] = None,
+                 spdx_package: Optional[pulumi.Input[pulumi.InputType['PackageInfoOccurrenceArgs']]] = None,
                  spdx_relationship: Optional[pulumi.Input[pulumi.InputType['RelationshipOccurrenceArgs']]] = None,
                  upgrade: Optional[pulumi.Input[pulumi.InputType['UpgradeOccurrenceArgs']]] = None,
                  vulnerability_details: Optional[pulumi.Input[pulumi.InputType['VulnerabilityDetailsArgs']]] = None,
@@ -663,7 +663,7 @@ class Occurrence(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="spdxPackage")
-    def spdx_package(self) -> pulumi.Output['outputs.PackageOccurrenceResponse']:
+    def spdx_package(self) -> pulumi.Output['outputs.PackageInfoOccurrenceResponse']:
         """
         Describes a specific SPDX Package.
         """

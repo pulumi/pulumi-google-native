@@ -16,6 +16,7 @@ __all__ = ['InstanceArgs', 'Instance']
 @pulumi.input_type
 class InstanceArgs:
     def __init__(__self__, *,
+                 instance_id: pulumi.Input[str],
                  type: pulumi.Input['InstanceType'],
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorArgs']]]] = None,
                  available_version: Optional[pulumi.Input[Sequence[pulumi.Input['VersionArgs']]]] = None,
@@ -26,7 +27,6 @@ class InstanceArgs:
                  enable_rbac: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_monitoring: Optional[pulumi.Input[bool]] = None,
-                 instance_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['NetworkConfigArgs']] = None,
@@ -54,6 +54,7 @@ class InstanceArgs:
         :param pulumi.Input[str] version: Current version of Data Fusion.
         :param pulumi.Input[str] zone: Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
         """
+        pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "type", type)
         if accelerators is not None:
             pulumi.set(__self__, "accelerators", accelerators)
@@ -73,8 +74,6 @@ class InstanceArgs:
             pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
         if enable_stackdriver_monitoring is not None:
             pulumi.set(__self__, "enable_stackdriver_monitoring", enable_stackdriver_monitoring)
-        if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -91,6 +90,15 @@ class InstanceArgs:
             pulumi.set(__self__, "version", version)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
 
     @property
     @pulumi.getter
@@ -211,15 +219,6 @@ class InstanceArgs:
     @enable_stackdriver_monitoring.setter
     def enable_stackdriver_monitoring(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_stackdriver_monitoring", value)
-
-    @property
-    @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "instance_id")
-
-    @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "instance_id", value)
 
     @property
     @pulumi.getter
@@ -425,6 +424,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["enable_rbac"] = enable_rbac
             __props__.__dict__["enable_stackdriver_logging"] = enable_stackdriver_logging
             __props__.__dict__["enable_stackdriver_monitoring"] = enable_stackdriver_monitoring
+            if instance_id is None and not opts.urn:
+                raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
@@ -439,6 +440,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["zone"] = zone
             __props__.__dict__["api_endpoint"] = None
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["disabled_reason"] = None
             __props__.__dict__["gcs_bucket"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["p4_service_account"] = None
@@ -476,6 +478,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["crypto_key_config"] = None
         __props__.__dict__["dataproc_service_account"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["disabled_reason"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["enable_rbac"] = None
         __props__.__dict__["enable_stackdriver_logging"] = None
@@ -552,6 +555,14 @@ class Instance(pulumi.CustomResource):
         A description of this instance.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="disabledReason")
+    def disabled_reason(self) -> pulumi.Output[Sequence[str]]:
+        """
+        If the instance state is DISABLED, the reason for disabling the instance.
+        """
+        return pulumi.get(self, "disabled_reason")
 
     @property
     @pulumi.getter(name="displayName")

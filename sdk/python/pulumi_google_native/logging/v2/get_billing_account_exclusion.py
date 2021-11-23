@@ -104,7 +104,7 @@ def get_billing_account_exclusion(billing_account_id: Optional[str] = None,
                                   exclusion_id: Optional[str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBillingAccountExclusionResult:
     """
-    Gets the description of an exclusion.
+    Gets the description of an exclusion in the _Default sink.
     """
     __args__ = dict()
     __args__['billingAccountId'] = billing_account_id
@@ -129,6 +129,6 @@ def get_billing_account_exclusion_output(billing_account_id: Optional[pulumi.Inp
                                          exclusion_id: Optional[pulumi.Input[str]] = None,
                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBillingAccountExclusionResult]:
     """
-    Gets the description of an exclusion.
+    Gets the description of an exclusion in the _Default sink.
     """
     ...

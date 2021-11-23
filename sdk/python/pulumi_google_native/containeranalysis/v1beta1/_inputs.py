@@ -58,11 +58,12 @@ __all__ = [
     'InstallationArgs',
     'KnowledgeBaseArgs',
     'LayerArgs',
+    'LicenseArgs',
     'LinkArgs',
     'LocationArgs',
+    'PackageInfoNoteArgs',
+    'PackageInfoOccurrenceArgs',
     'PackageIssueArgs',
-    'PackageNoteArgs',
-    'PackageOccurrenceArgs',
     'PackageArgs',
     'PgpSignedAttestationArgs',
     'ProjectRepoIdArgs',
@@ -323,10 +324,10 @@ class BindingArgs:
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None):
         """
-        Associates `members` with a `role`.
-        :param pulumi.Input['ExprArgs'] condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
-        :param pulumi.Input[str] role: Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Associates `members`, or principals, with a `role`.
+        :param pulumi.Input['ExprArgs'] condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param pulumi.Input[str] role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -339,7 +340,7 @@ class BindingArgs:
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input['ExprArgs']]:
         """
-        The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         """
         return pulumi.get(self, "condition")
 
@@ -351,7 +352,7 @@ class BindingArgs:
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         """
         return pulumi.get(self, "members")
 
@@ -363,7 +364,7 @@ class BindingArgs:
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
         """
-        Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
 
@@ -2013,8 +2014,7 @@ class FileOccurrenceArgs:
                  copyright: Optional[pulumi.Input[str]] = None,
                  files_license_info: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 license_comments: Optional[pulumi.Input[str]] = None,
-                 license_concluded: Optional[pulumi.Input[str]] = None,
+                 license_concluded: Optional[pulumi.Input['LicenseArgs']] = None,
                  notice: Optional[pulumi.Input[str]] = None):
         """
         FileOccurrence represents an SPDX File Information section: https://spdx.github.io/spdx-spec/4-file-information/
@@ -2024,8 +2024,7 @@ class FileOccurrenceArgs:
         :param pulumi.Input[str] copyright: Identify the copyright holder of the file, as well as any dates present
         :param pulumi.Input[Sequence[pulumi.Input[str]]] files_license_info: This field contains the license information actually found in the file, if any
         :param pulumi.Input[str] id: Uniquely identify any element in an SPDX document which may be referenced by other elements
-        :param pulumi.Input[str] license_comments: This field provides a place for the SPDX file creator to record any relevant background references or analysis that went in to arriving at the Concluded License for a file
-        :param pulumi.Input[str] license_concluded: This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
+        :param pulumi.Input['LicenseArgs'] license_concluded: This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
         :param pulumi.Input[str] notice: This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
         """
         if attributions is not None:
@@ -2040,8 +2039,6 @@ class FileOccurrenceArgs:
             pulumi.set(__self__, "files_license_info", files_license_info)
         if id is not None:
             pulumi.set(__self__, "id", id)
-        if license_comments is not None:
-            pulumi.set(__self__, "license_comments", license_comments)
         if license_concluded is not None:
             pulumi.set(__self__, "license_concluded", license_concluded)
         if notice is not None:
@@ -2120,27 +2117,15 @@ class FileOccurrenceArgs:
         pulumi.set(self, "id", value)
 
     @property
-    @pulumi.getter(name="licenseComments")
-    def license_comments(self) -> Optional[pulumi.Input[str]]:
-        """
-        This field provides a place for the SPDX file creator to record any relevant background references or analysis that went in to arriving at the Concluded License for a file
-        """
-        return pulumi.get(self, "license_comments")
-
-    @license_comments.setter
-    def license_comments(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "license_comments", value)
-
-    @property
     @pulumi.getter(name="licenseConcluded")
-    def license_concluded(self) -> Optional[pulumi.Input[str]]:
+    def license_concluded(self) -> Optional[pulumi.Input['LicenseArgs']]:
         """
         This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
         """
         return pulumi.get(self, "license_concluded")
 
     @license_concluded.setter
-    def license_concluded(self, value: Optional[pulumi.Input[str]]):
+    def license_concluded(self, value: Optional[pulumi.Input['LicenseArgs']]):
         pulumi.set(self, "license_concluded", value)
 
     @property
@@ -2866,6 +2851,46 @@ class LayerArgs:
 
 
 @pulumi.input_type
+class LicenseArgs:
+    def __init__(__self__, *,
+                 comments: Optional[pulumi.Input[str]] = None,
+                 expression: Optional[pulumi.Input[str]] = None):
+        """
+        License information: https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
+        :param pulumi.Input[str] comments: Comments
+        :param pulumi.Input[str] expression: Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+        """
+        if comments is not None:
+            pulumi.set(__self__, "comments", comments)
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+
+    @property
+    @pulumi.getter
+    def comments(self) -> Optional[pulumi.Input[str]]:
+        """
+        Comments
+        """
+        return pulumi.get(self, "comments")
+
+    @comments.setter
+    def comments(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comments", value)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expression", value)
+
+
+@pulumi.input_type
 class LinkArgs:
     def __init__(__self__, *,
                  byproducts: Optional[pulumi.Input['ByProductsArgs']] = None,
@@ -3009,62 +3034,7 @@ class LocationArgs:
 
 
 @pulumi.input_type
-class PackageIssueArgs:
-    def __init__(__self__, *,
-                 affected_location: pulumi.Input['VulnerabilityLocationArgs'],
-                 fixed_location: Optional[pulumi.Input['VulnerabilityLocationArgs']] = None,
-                 package_type: Optional[pulumi.Input[str]] = None):
-        """
-        This message wraps a location affected by a vulnerability and its associated fix (if one is available).
-        :param pulumi.Input['VulnerabilityLocationArgs'] affected_location: The location of the vulnerability.
-        :param pulumi.Input['VulnerabilityLocationArgs'] fixed_location: The location of the available fix for vulnerability.
-        :param pulumi.Input[str] package_type: The type of package (e.g. OS, MAVEN, GO).
-        """
-        pulumi.set(__self__, "affected_location", affected_location)
-        if fixed_location is not None:
-            pulumi.set(__self__, "fixed_location", fixed_location)
-        if package_type is not None:
-            pulumi.set(__self__, "package_type", package_type)
-
-    @property
-    @pulumi.getter(name="affectedLocation")
-    def affected_location(self) -> pulumi.Input['VulnerabilityLocationArgs']:
-        """
-        The location of the vulnerability.
-        """
-        return pulumi.get(self, "affected_location")
-
-    @affected_location.setter
-    def affected_location(self, value: pulumi.Input['VulnerabilityLocationArgs']):
-        pulumi.set(self, "affected_location", value)
-
-    @property
-    @pulumi.getter(name="fixedLocation")
-    def fixed_location(self) -> Optional[pulumi.Input['VulnerabilityLocationArgs']]:
-        """
-        The location of the available fix for vulnerability.
-        """
-        return pulumi.get(self, "fixed_location")
-
-    @fixed_location.setter
-    def fixed_location(self, value: Optional[pulumi.Input['VulnerabilityLocationArgs']]):
-        pulumi.set(self, "fixed_location", value)
-
-    @property
-    @pulumi.getter(name="packageType")
-    def package_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The type of package (e.g. OS, MAVEN, GO).
-        """
-        return pulumi.get(self, "package_type")
-
-    @package_type.setter
-    def package_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "package_type", value)
-
-
-@pulumi.input_type
-class PackageNoteArgs:
+class PackageInfoNoteArgs:
     def __init__(__self__, *,
                  analyzed: Optional[pulumi.Input[bool]] = None,
                  attribution: Optional[pulumi.Input[str]] = None,
@@ -3075,15 +3045,16 @@ class PackageNoteArgs:
                  external_refs: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalRefArgs']]]] = None,
                  files_license_info: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  home_page: Optional[pulumi.Input[str]] = None,
-                 license_declared: Optional[pulumi.Input[str]] = None,
+                 license_declared: Optional[pulumi.Input['LicenseArgs']] = None,
                  originator: Optional[pulumi.Input[str]] = None,
+                 package_type: Optional[pulumi.Input[str]] = None,
                  summary_description: Optional[pulumi.Input[str]] = None,
                  supplier: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  verification_code: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
-        PackageNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+        PackageInfoNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
         :param pulumi.Input[bool] analyzed: Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
         :param pulumi.Input[str] attribution: A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be communicated in some contexts
         :param pulumi.Input[str] checksum: Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file
@@ -3093,8 +3064,9 @@ class PackageNoteArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ExternalRefArgs']]] external_refs: ExternalRef
         :param pulumi.Input[Sequence[pulumi.Input[str]]] files_license_info: Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not specified in this field – it is simply a listing of all licenses found
         :param pulumi.Input[str] home_page: Provide a place for the SPDX file creator to record a web site that serves as the package's home page
-        :param pulumi.Input[str] license_declared: List the licenses that have been declared by the authors of the package
+        :param pulumi.Input['LicenseArgs'] license_declared: List the licenses that have been declared by the authors of the package
         :param pulumi.Input[str] originator: If the package identified in the SPDX file originated from a different person or organization than identified as Package Supplier, this field identifies from where or whom the package originally came
+        :param pulumi.Input[str] package_type: The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
         :param pulumi.Input[str] summary_description: A short description of the package
         :param pulumi.Input[str] supplier: Identify the actual distribution source for the package/directory identified in the SPDX file
         :param pulumi.Input[str] title: Identify the full name of the package as given by the Package Originator
@@ -3123,6 +3095,8 @@ class PackageNoteArgs:
             pulumi.set(__self__, "license_declared", license_declared)
         if originator is not None:
             pulumi.set(__self__, "originator", originator)
+        if package_type is not None:
+            pulumi.set(__self__, "package_type", package_type)
         if summary_description is not None:
             pulumi.set(__self__, "summary_description", summary_description)
         if supplier is not None:
@@ -3244,14 +3218,14 @@ class PackageNoteArgs:
 
     @property
     @pulumi.getter(name="licenseDeclared")
-    def license_declared(self) -> Optional[pulumi.Input[str]]:
+    def license_declared(self) -> Optional[pulumi.Input['LicenseArgs']]:
         """
         List the licenses that have been declared by the authors of the package
         """
         return pulumi.get(self, "license_declared")
 
     @license_declared.setter
-    def license_declared(self, value: Optional[pulumi.Input[str]]):
+    def license_declared(self, value: Optional[pulumi.Input['LicenseArgs']]):
         pulumi.set(self, "license_declared", value)
 
     @property
@@ -3265,6 +3239,18 @@ class PackageNoteArgs:
     @originator.setter
     def originator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "originator", value)
+
+    @property
+    @pulumi.getter(name="packageType")
+    def package_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+        """
+        return pulumi.get(self, "package_type")
+
+    @package_type.setter
+    def package_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "package_type", value)
 
     @property
     @pulumi.getter(name="summaryDescription")
@@ -3328,21 +3314,19 @@ class PackageNoteArgs:
 
 
 @pulumi.input_type
-class PackageOccurrenceArgs:
+class PackageInfoOccurrenceArgs:
     def __init__(__self__, *,
                  comment: Optional[pulumi.Input[str]] = None,
                  filename: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 license_comments: Optional[pulumi.Input[str]] = None,
-                 license_concluded: Optional[pulumi.Input[str]] = None,
+                 license_concluded: Optional[pulumi.Input['LicenseArgs']] = None,
                  source_info: Optional[pulumi.Input[str]] = None):
         """
-        PackageOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
+        PackageInfoOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
         :param pulumi.Input[str] comment: A place for the SPDX file creator to record any general comments about the package being described
         :param pulumi.Input[str] filename: Provide the actual file name of the package, or path of the directory being treated as a package
         :param pulumi.Input[str] id: Uniquely identify any element in an SPDX document which may be referenced by other elements
-        :param pulumi.Input[str] license_comments: This field provides a place for the SPDX file creator to record any relevant background information or analysis that went in to arriving at the Concluded License for a package
-        :param pulumi.Input[str] license_concluded: package or alternative values, if the governing license cannot be determined
+        :param pulumi.Input['LicenseArgs'] license_concluded: package or alternative values, if the governing license cannot be determined
         :param pulumi.Input[str] source_info: Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
         """
         if comment is not None:
@@ -3351,8 +3335,6 @@ class PackageOccurrenceArgs:
             pulumi.set(__self__, "filename", filename)
         if id is not None:
             pulumi.set(__self__, "id", id)
-        if license_comments is not None:
-            pulumi.set(__self__, "license_comments", license_comments)
         if license_concluded is not None:
             pulumi.set(__self__, "license_concluded", license_concluded)
         if source_info is not None:
@@ -3395,27 +3377,15 @@ class PackageOccurrenceArgs:
         pulumi.set(self, "id", value)
 
     @property
-    @pulumi.getter(name="licenseComments")
-    def license_comments(self) -> Optional[pulumi.Input[str]]:
-        """
-        This field provides a place for the SPDX file creator to record any relevant background information or analysis that went in to arriving at the Concluded License for a package
-        """
-        return pulumi.get(self, "license_comments")
-
-    @license_comments.setter
-    def license_comments(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "license_comments", value)
-
-    @property
     @pulumi.getter(name="licenseConcluded")
-    def license_concluded(self) -> Optional[pulumi.Input[str]]:
+    def license_concluded(self) -> Optional[pulumi.Input['LicenseArgs']]:
         """
         package or alternative values, if the governing license cannot be determined
         """
         return pulumi.get(self, "license_concluded")
 
     @license_concluded.setter
-    def license_concluded(self, value: Optional[pulumi.Input[str]]):
+    def license_concluded(self, value: Optional[pulumi.Input['LicenseArgs']]):
         pulumi.set(self, "license_concluded", value)
 
     @property
@@ -3429,6 +3399,61 @@ class PackageOccurrenceArgs:
     @source_info.setter
     def source_info(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_info", value)
+
+
+@pulumi.input_type
+class PackageIssueArgs:
+    def __init__(__self__, *,
+                 affected_location: pulumi.Input['VulnerabilityLocationArgs'],
+                 fixed_location: Optional[pulumi.Input['VulnerabilityLocationArgs']] = None,
+                 package_type: Optional[pulumi.Input[str]] = None):
+        """
+        This message wraps a location affected by a vulnerability and its associated fix (if one is available).
+        :param pulumi.Input['VulnerabilityLocationArgs'] affected_location: The location of the vulnerability.
+        :param pulumi.Input['VulnerabilityLocationArgs'] fixed_location: The location of the available fix for vulnerability.
+        :param pulumi.Input[str] package_type: The type of package (e.g. OS, MAVEN, GO).
+        """
+        pulumi.set(__self__, "affected_location", affected_location)
+        if fixed_location is not None:
+            pulumi.set(__self__, "fixed_location", fixed_location)
+        if package_type is not None:
+            pulumi.set(__self__, "package_type", package_type)
+
+    @property
+    @pulumi.getter(name="affectedLocation")
+    def affected_location(self) -> pulumi.Input['VulnerabilityLocationArgs']:
+        """
+        The location of the vulnerability.
+        """
+        return pulumi.get(self, "affected_location")
+
+    @affected_location.setter
+    def affected_location(self, value: pulumi.Input['VulnerabilityLocationArgs']):
+        pulumi.set(self, "affected_location", value)
+
+    @property
+    @pulumi.getter(name="fixedLocation")
+    def fixed_location(self) -> Optional[pulumi.Input['VulnerabilityLocationArgs']]:
+        """
+        The location of the available fix for vulnerability.
+        """
+        return pulumi.get(self, "fixed_location")
+
+    @fixed_location.setter
+    def fixed_location(self, value: Optional[pulumi.Input['VulnerabilityLocationArgs']]):
+        pulumi.set(self, "fixed_location", value)
+
+    @property
+    @pulumi.getter(name="packageType")
+    def package_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of package (e.g. OS, MAVEN, GO).
+        """
+        return pulumi.get(self, "package_type")
+
+    @package_type.setter
+    def package_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "package_type", value)
 
 
 @pulumi.input_type
@@ -3607,11 +3632,26 @@ class RelatedUrlArgs:
 
 @pulumi.input_type
 class RelationshipNoteArgs:
-    def __init__(__self__):
+    def __init__(__self__, *,
+                 type: Optional[pulumi.Input['RelationshipNoteType']] = None):
         """
         RelationshipNote represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
+        :param pulumi.Input['RelationshipNoteType'] type: The type of relationship between the source and target SPDX elements
         """
-        pass
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input['RelationshipNoteType']]:
+        """
+        The type of relationship between the source and target SPDX elements
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input['RelationshipNoteType']]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
@@ -3619,14 +3659,12 @@ class RelationshipOccurrenceArgs:
     def __init__(__self__, *,
                  comment: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None,
-                 target: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input['RelationshipOccurrenceType']] = None):
+                 target: Optional[pulumi.Input[str]] = None):
         """
         RelationshipOccurrence represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
         :param pulumi.Input[str] comment: A place for the SPDX file creator to record any general comments about the relationship
         :param pulumi.Input[str] source: Also referred to as SPDXRef-A The source SPDX element (file, package, etc)
         :param pulumi.Input[str] target: Also referred to as SPDXRef-B The target SPDC element (file, package, etc) In cases where there are "known unknowns", the use of the keyword NOASSERTION can be used The keywords NONE can be used to indicate that an SPDX element (package/file/snippet) has no other elements connected by some relationship to it
-        :param pulumi.Input['RelationshipOccurrenceType'] type: The type of relationship between the source and target SPDX elements
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
@@ -3634,8 +3672,6 @@ class RelationshipOccurrenceArgs:
             pulumi.set(__self__, "source", source)
         if target is not None:
             pulumi.set(__self__, "target", target)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -3672,18 +3708,6 @@ class RelationshipOccurrenceArgs:
     @target.setter
     def target(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input['RelationshipOccurrenceType']]:
-        """
-        The type of relationship between the source and target SPDX elements
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input['RelationshipOccurrenceType']]):
-        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type

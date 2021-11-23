@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetOrganizationResult:
-    def __init__(__self__, addons_config=None, analytics_region=None, attributes=None, authorized_network=None, billing_type=None, ca_certificate=None, created_at=None, customer_name=None, description=None, display_name=None, environments=None, expires_at=None, last_modified_at=None, name=None, project=None, properties=None, runtime_database_encryption_key_name=None, runtime_type=None, state=None, type=None):
+    def __init__(__self__, addons_config=None, analytics_region=None, attributes=None, authorized_network=None, billing_type=None, ca_certificate=None, created_at=None, customer_name=None, description=None, display_name=None, environments=None, expires_at=None, last_modified_at=None, name=None, portal_disabled=None, project=None, properties=None, runtime_database_encryption_key_name=None, runtime_type=None, state=None, type=None):
         if addons_config and not isinstance(addons_config, dict):
             raise TypeError("Expected argument 'addons_config' to be a dict")
         pulumi.set(__self__, "addons_config", addons_config)
@@ -61,6 +61,9 @@ class GetOrganizationResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if portal_disabled and not isinstance(portal_disabled, bool):
+            raise TypeError("Expected argument 'portal_disabled' to be a bool")
+        pulumi.set(__self__, "portal_disabled", portal_disabled)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
@@ -193,6 +196,14 @@ class GetOrganizationResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="portalDisabled")
+    def portal_disabled(self) -> bool:
+        """
+        Configuration for the Portals settings.
+        """
+        return pulumi.get(self, "portal_disabled")
+
+    @property
     @pulumi.getter
     def project(self) -> str:
         """
@@ -261,6 +272,7 @@ class AwaitableGetOrganizationResult(GetOrganizationResult):
             expires_at=self.expires_at,
             last_modified_at=self.last_modified_at,
             name=self.name,
+            portal_disabled=self.portal_disabled,
             project=self.project,
             properties=self.properties,
             runtime_database_encryption_key_name=self.runtime_database_encryption_key_name,
@@ -297,6 +309,7 @@ def get_organization(organization_id: Optional[str] = None,
         expires_at=__ret__.expires_at,
         last_modified_at=__ret__.last_modified_at,
         name=__ret__.name,
+        portal_disabled=__ret__.portal_disabled,
         project=__ret__.project,
         properties=__ret__.properties,
         runtime_database_encryption_key_name=__ret__.runtime_database_encryption_key_name,

@@ -9,6 +9,8 @@ __all__ = [
     'ClusterAutoscalingAutoscalingProfile',
     'ClusterUpdateDesiredDatapathProvider',
     'ClusterUpdateDesiredPrivateIpv6GoogleAccess',
+    'DNSConfigClusterDns',
+    'DNSConfigClusterDnsScope',
     'DatabaseEncryptionState',
     'LoggingComponentConfigEnableComponentsItem',
     'MonitoringComponentConfigEnableComponentsItem',
@@ -97,6 +99,38 @@ class ClusterUpdateDesiredPrivateIpv6GoogleAccess(str, Enum):
     PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL = "PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL"
     """
     Enables priate IPv6 access to and from Google Services
+    """
+
+
+class DNSConfigClusterDns(str, Enum):
+    """
+    cluster_dns indicates which in-cluster DNS provider should be used.
+    """
+    PROVIDER_UNSPECIFIED = "PROVIDER_UNSPECIFIED"
+    """
+    Default value
+    """
+    PLATFORM_DEFAULT = "PLATFORM_DEFAULT"
+    """
+    Use GKE default DNS provider(kube-dns) for DNS resolution.
+    """
+    CLOUD_DNS = "CLOUD_DNS"
+    """
+    Use CloudDNS for DNS resolution.
+    """
+
+
+class DNSConfigClusterDnsScope(str, Enum):
+    """
+    cluster_dns_scope indicates the scope of access to cluster DNS records.
+    """
+    DNS_SCOPE_UNSPECIFIED = "DNS_SCOPE_UNSPECIFIED"
+    """
+    Default value, will be inferred as cluster scope.
+    """
+    VPC_SCOPE = "VPC_SCOPE"
+    """
+    DNS records are accessible from within the VPC.
     """
 
 

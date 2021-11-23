@@ -11,6 +11,7 @@ from ._enums import *
 
 __all__ = [
     'MaintenancePolicyArgs',
+    'PersistenceConfigArgs',
     'TimeOfDayArgs',
     'WeeklyMaintenanceWindowArgs',
 ]
@@ -53,6 +54,62 @@ class MaintenancePolicyArgs:
     @weekly_maintenance_window.setter
     def weekly_maintenance_window(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WeeklyMaintenanceWindowArgs']]]]):
         pulumi.set(self, "weekly_maintenance_window", value)
+
+
+@pulumi.input_type
+class PersistenceConfigArgs:
+    def __init__(__self__, *,
+                 persistence_mode: Optional[pulumi.Input['PersistenceConfigPersistenceMode']] = None,
+                 rdb_snapshot_period: Optional[pulumi.Input['PersistenceConfigRdbSnapshotPeriod']] = None,
+                 rdb_snapshot_start_time: Optional[pulumi.Input[str]] = None):
+        """
+        Configuration of the persistence functionality.
+        :param pulumi.Input['PersistenceConfigPersistenceMode'] persistence_mode: Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+        :param pulumi.Input['PersistenceConfigRdbSnapshotPeriod'] rdb_snapshot_period: Optional. Period between RDB snapshots. Snapshots will be attempted every period starting from the provided snapshot start time. For example, a start time of 01/01/2033 06:45 and SIX_HOURS snapshot period will do nothing until 01/01/2033, and then trigger snapshots every day at 06:45, 12:45, 18:45, and 00:45 the next day, and so on. If not provided, TWENTY_FOUR_HOURS will be used as default.
+        :param pulumi.Input[str] rdb_snapshot_start_time: Optional. Date and time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used.
+        """
+        if persistence_mode is not None:
+            pulumi.set(__self__, "persistence_mode", persistence_mode)
+        if rdb_snapshot_period is not None:
+            pulumi.set(__self__, "rdb_snapshot_period", rdb_snapshot_period)
+        if rdb_snapshot_start_time is not None:
+            pulumi.set(__self__, "rdb_snapshot_start_time", rdb_snapshot_start_time)
+
+    @property
+    @pulumi.getter(name="persistenceMode")
+    def persistence_mode(self) -> Optional[pulumi.Input['PersistenceConfigPersistenceMode']]:
+        """
+        Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+        """
+        return pulumi.get(self, "persistence_mode")
+
+    @persistence_mode.setter
+    def persistence_mode(self, value: Optional[pulumi.Input['PersistenceConfigPersistenceMode']]):
+        pulumi.set(self, "persistence_mode", value)
+
+    @property
+    @pulumi.getter(name="rdbSnapshotPeriod")
+    def rdb_snapshot_period(self) -> Optional[pulumi.Input['PersistenceConfigRdbSnapshotPeriod']]:
+        """
+        Optional. Period between RDB snapshots. Snapshots will be attempted every period starting from the provided snapshot start time. For example, a start time of 01/01/2033 06:45 and SIX_HOURS snapshot period will do nothing until 01/01/2033, and then trigger snapshots every day at 06:45, 12:45, 18:45, and 00:45 the next day, and so on. If not provided, TWENTY_FOUR_HOURS will be used as default.
+        """
+        return pulumi.get(self, "rdb_snapshot_period")
+
+    @rdb_snapshot_period.setter
+    def rdb_snapshot_period(self, value: Optional[pulumi.Input['PersistenceConfigRdbSnapshotPeriod']]):
+        pulumi.set(self, "rdb_snapshot_period", value)
+
+    @property
+    @pulumi.getter(name="rdbSnapshotStartTime")
+    def rdb_snapshot_start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Date and time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used.
+        """
+        return pulumi.get(self, "rdb_snapshot_start_time")
+
+    @rdb_snapshot_start_time.setter
+    def rdb_snapshot_start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rdb_snapshot_start_time", value)
 
 
 @pulumi.input_type

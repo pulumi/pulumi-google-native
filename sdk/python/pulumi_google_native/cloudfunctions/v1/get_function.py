@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetFunctionResult:
-    def __init__(__self__, available_memory_mb=None, build_environment_variables=None, build_id=None, build_name=None, build_worker_pool=None, description=None, entry_point=None, environment_variables=None, event_trigger=None, https_trigger=None, ingress_settings=None, labels=None, max_instances=None, min_instances=None, name=None, network=None, runtime=None, secret_environment_variables=None, secret_volumes=None, service_account_email=None, source_archive_url=None, source_repository=None, source_token=None, source_upload_url=None, status=None, timeout=None, update_time=None, version_id=None, vpc_connector=None, vpc_connector_egress_settings=None):
+    def __init__(__self__, available_memory_mb=None, build_environment_variables=None, build_id=None, build_name=None, build_worker_pool=None, description=None, docker_repository=None, entry_point=None, environment_variables=None, event_trigger=None, https_trigger=None, ingress_settings=None, kms_key_name=None, labels=None, max_instances=None, min_instances=None, name=None, network=None, runtime=None, secret_environment_variables=None, secret_volumes=None, service_account_email=None, source_archive_url=None, source_repository=None, source_token=None, source_upload_url=None, status=None, timeout=None, update_time=None, version_id=None, vpc_connector=None, vpc_connector_egress_settings=None):
         if available_memory_mb and not isinstance(available_memory_mb, int):
             raise TypeError("Expected argument 'available_memory_mb' to be a int")
         pulumi.set(__self__, "available_memory_mb", available_memory_mb)
@@ -37,6 +37,9 @@ class GetFunctionResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if docker_repository and not isinstance(docker_repository, str):
+            raise TypeError("Expected argument 'docker_repository' to be a str")
+        pulumi.set(__self__, "docker_repository", docker_repository)
         if entry_point and not isinstance(entry_point, str):
             raise TypeError("Expected argument 'entry_point' to be a str")
         pulumi.set(__self__, "entry_point", entry_point)
@@ -52,6 +55,9 @@ class GetFunctionResult:
         if ingress_settings and not isinstance(ingress_settings, str):
             raise TypeError("Expected argument 'ingress_settings' to be a str")
         pulumi.set(__self__, "ingress_settings", ingress_settings)
+        if kms_key_name and not isinstance(kms_key_name, str):
+            raise TypeError("Expected argument 'kms_key_name' to be a str")
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -159,6 +165,14 @@ class GetFunctionResult:
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="dockerRepository")
+    def docker_repository(self) -> str:
+        """
+        User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. If unspecified and the deployment is eligible to use Artifact Registry, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+        """
+        return pulumi.get(self, "docker_repository")
+
+    @property
     @pulumi.getter(name="entryPoint")
     def entry_point(self) -> str:
         """
@@ -197,6 +211,14 @@ class GetFunctionResult:
         The ingress settings for the function, controlling what traffic can reach it.
         """
         return pulumi.get(self, "ingress_settings")
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        """
+        Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`. If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. The following service accounts need to be granted the role 'Cloud KMS CryptoKey Encrypter/Decrypter (roles/cloudkms.cryptoKeyEncrypterDecrypter)' on the Key/KeyRing/Project/Organization (least access preferred). 1. Google Cloud Functions service account (service-{project_number}@gcf-admin-robot.iam.gserviceaccount.com) - Required to protect the function's image. 2. Google Storage service account (service-{project_number}@gs-project-accounts.iam.gserviceaccount.com) - Required to protect the function's source code. If this service account does not exist, deploying a function without a KMS key or retrieving the service agent name provisions it. For more information, see https://cloud.google.com/storage/docs/projects#service-agents and https://cloud.google.com/storage/docs/getting-service-agent#gsutil. Google Cloud Functions delegates access to service agents to protect function resources in internal projects that are not accessible by the end user.
+        """
+        return pulumi.get(self, "kms_key_name")
 
     @property
     @pulumi.getter
@@ -363,11 +385,13 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             build_name=self.build_name,
             build_worker_pool=self.build_worker_pool,
             description=self.description,
+            docker_repository=self.docker_repository,
             entry_point=self.entry_point,
             environment_variables=self.environment_variables,
             event_trigger=self.event_trigger,
             https_trigger=self.https_trigger,
             ingress_settings=self.ingress_settings,
+            kms_key_name=self.kms_key_name,
             labels=self.labels,
             max_instances=self.max_instances,
             min_instances=self.min_instances,
@@ -413,11 +437,13 @@ def get_function(function_id: Optional[str] = None,
         build_name=__ret__.build_name,
         build_worker_pool=__ret__.build_worker_pool,
         description=__ret__.description,
+        docker_repository=__ret__.docker_repository,
         entry_point=__ret__.entry_point,
         environment_variables=__ret__.environment_variables,
         event_trigger=__ret__.event_trigger,
         https_trigger=__ret__.https_trigger,
         ingress_settings=__ret__.ingress_settings,
+        kms_key_name=__ret__.kms_key_name,
         labels=__ret__.labels,
         max_instances=__ret__.max_instances,
         min_instances=__ret__.min_instances,

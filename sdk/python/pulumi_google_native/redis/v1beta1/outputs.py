@@ -13,6 +13,8 @@ from ._enums import *
 __all__ = [
     'MaintenancePolicyResponse',
     'MaintenanceScheduleResponse',
+    'NodeInfoResponse',
+    'PersistenceConfigResponse',
     'TimeOfDayResponse',
     'TlsCertificateResponse',
     'WeeklyMaintenanceWindowResponse',
@@ -131,7 +133,7 @@ class MaintenanceScheduleResponse(dict):
         Upcoming maintenance schedule. If no maintenance is scheduled, fields are not populated.
         :param bool can_reschedule: If the scheduled maintenance can be rescheduled, default is true.
         :param str end_time: The end time of any upcoming scheduled maintenance for this instance.
-        :param str schedule_deadline_time: The time deadline any schedule start time cannot go beyond, including reschedule.
+        :param str schedule_deadline_time: The deadline that the maintenance schedule start time can not go beyond, including reschedule.
         :param str start_time: The start time of any upcoming scheduled maintenance for this instance.
         """
         pulumi.set(__self__, "can_reschedule", can_reschedule)
@@ -159,7 +161,7 @@ class MaintenanceScheduleResponse(dict):
     @pulumi.getter(name="scheduleDeadlineTime")
     def schedule_deadline_time(self) -> str:
         """
-        The time deadline any schedule start time cannot go beyond, including reschedule.
+        The deadline that the maintenance schedule start time can not go beyond, including reschedule.
         """
         return pulumi.get(self, "schedule_deadline_time")
 
@@ -170,6 +172,106 @@ class MaintenanceScheduleResponse(dict):
         The start time of any upcoming scheduled maintenance for this instance.
         """
         return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class NodeInfoResponse(dict):
+    """
+    Node specific properties.
+    """
+    def __init__(__self__, *,
+                 zone: str):
+        """
+        Node specific properties.
+        :param str zone: Location of the node.
+        """
+        pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> str:
+        """
+        Location of the node.
+        """
+        return pulumi.get(self, "zone")
+
+
+@pulumi.output_type
+class PersistenceConfigResponse(dict):
+    """
+    Configuration of the persistence functionality.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "persistenceMode":
+            suggest = "persistence_mode"
+        elif key == "rdbNextSnapshotTime":
+            suggest = "rdb_next_snapshot_time"
+        elif key == "rdbSnapshotPeriod":
+            suggest = "rdb_snapshot_period"
+        elif key == "rdbSnapshotStartTime":
+            suggest = "rdb_snapshot_start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PersistenceConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PersistenceConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PersistenceConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 persistence_mode: str,
+                 rdb_next_snapshot_time: str,
+                 rdb_snapshot_period: str,
+                 rdb_snapshot_start_time: str):
+        """
+        Configuration of the persistence functionality.
+        :param str persistence_mode: Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+        :param str rdb_next_snapshot_time: The next time that a snapshot attempt is scheduled to occur.
+        :param str rdb_snapshot_period: Optional. Period between RDB snapshots. Snapshots will be attempted every period starting from the provided snapshot start time. For example, a start time of 01/01/2033 06:45 and SIX_HOURS snapshot period will do nothing until 01/01/2033, and then trigger snapshots every day at 06:45, 12:45, 18:45, and 00:45 the next day, and so on. If not provided, TWENTY_FOUR_HOURS will be used as default.
+        :param str rdb_snapshot_start_time: Optional. Date and time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used.
+        """
+        pulumi.set(__self__, "persistence_mode", persistence_mode)
+        pulumi.set(__self__, "rdb_next_snapshot_time", rdb_next_snapshot_time)
+        pulumi.set(__self__, "rdb_snapshot_period", rdb_snapshot_period)
+        pulumi.set(__self__, "rdb_snapshot_start_time", rdb_snapshot_start_time)
+
+    @property
+    @pulumi.getter(name="persistenceMode")
+    def persistence_mode(self) -> str:
+        """
+        Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+        """
+        return pulumi.get(self, "persistence_mode")
+
+    @property
+    @pulumi.getter(name="rdbNextSnapshotTime")
+    def rdb_next_snapshot_time(self) -> str:
+        """
+        The next time that a snapshot attempt is scheduled to occur.
+        """
+        return pulumi.get(self, "rdb_next_snapshot_time")
+
+    @property
+    @pulumi.getter(name="rdbSnapshotPeriod")
+    def rdb_snapshot_period(self) -> str:
+        """
+        Optional. Period between RDB snapshots. Snapshots will be attempted every period starting from the provided snapshot start time. For example, a start time of 01/01/2033 06:45 and SIX_HOURS snapshot period will do nothing until 01/01/2033, and then trigger snapshots every day at 06:45, 12:45, 18:45, and 00:45 the next day, and so on. If not provided, TWENTY_FOUR_HOURS will be used as default.
+        """
+        return pulumi.get(self, "rdb_snapshot_period")
+
+    @property
+    @pulumi.getter(name="rdbSnapshotStartTime")
+    def rdb_snapshot_start_time(self) -> str:
+        """
+        Optional. Date and time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used.
+        """
+        return pulumi.get(self, "rdb_snapshot_start_time")
 
 
 @pulumi.output_type

@@ -23,7 +23,7 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs:
                  allowed_package_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Settings specific to keys that can be used by Android apps.
-        :param pulumi.Input[bool] allow_all_package_names: If set to true, it means allowed_package_names will not be enforced.
+        :param pulumi.Input[bool] allow_all_package_names: If set to true, allowed_package_names are not enforced.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_package_names: Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
         """
         if allow_all_package_names is not None:
@@ -35,7 +35,7 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs:
     @pulumi.getter(name="allowAllPackageNames")
     def allow_all_package_names(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to true, it means allowed_package_names will not be enforced.
+        If set to true, allowed_package_names are not enforced.
         """
         return pulumi.get(self, "allow_all_package_names")
 
@@ -63,7 +63,7 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs:
                  allowed_bundle_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Settings specific to keys that can be used by iOS apps.
-        :param pulumi.Input[bool] allow_all_bundle_ids: If set to true, it means allowed_bundle_ids will not be enforced.
+        :param pulumi.Input[bool] allow_all_bundle_ids: If set to true, allowed_bundle_ids are not enforced.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_bundle_ids: iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
         """
         if allow_all_bundle_ids is not None:
@@ -75,7 +75,7 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs:
     @pulumi.getter(name="allowAllBundleIds")
     def allow_all_bundle_ids(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to true, it means allowed_bundle_ids will not be enforced.
+        If set to true, allowed_bundle_ids are not enforced.
         """
         return pulumi.get(self, "allow_all_bundle_ids")
 
@@ -139,39 +139,28 @@ class GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs:
 @pulumi.input_type
 class GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs:
     def __init__(__self__, *,
-                 allow_amp_traffic: pulumi.Input[bool],
                  integration_type: pulumi.Input['GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType'],
                  allow_all_domains: Optional[pulumi.Input[bool]] = None,
+                 allow_amp_traffic: Optional[pulumi.Input[bool]] = None,
                  allowed_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  challenge_security_preference: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference']] = None):
         """
         Settings specific to keys that can be used by websites.
-        :param pulumi.Input[bool] allow_amp_traffic: Whether this key can be used on AMP (Accelerated Mobile Pages) websites. This can only be set for the SCORE integration type.
         :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType'] integration_type: Describes how this key is integrated with the website.
         :param pulumi.Input[bool] allow_all_domains: If set to true, it means allowed_domains will not be enforced.
+        :param pulumi.Input[bool] allow_amp_traffic: If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_domains: Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: 'example.com' or 'subdomain.example.com'
         :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference'] challenge_security_preference: Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE.
         """
-        pulumi.set(__self__, "allow_amp_traffic", allow_amp_traffic)
         pulumi.set(__self__, "integration_type", integration_type)
         if allow_all_domains is not None:
             pulumi.set(__self__, "allow_all_domains", allow_all_domains)
+        if allow_amp_traffic is not None:
+            pulumi.set(__self__, "allow_amp_traffic", allow_amp_traffic)
         if allowed_domains is not None:
             pulumi.set(__self__, "allowed_domains", allowed_domains)
         if challenge_security_preference is not None:
             pulumi.set(__self__, "challenge_security_preference", challenge_security_preference)
-
-    @property
-    @pulumi.getter(name="allowAmpTraffic")
-    def allow_amp_traffic(self) -> pulumi.Input[bool]:
-        """
-        Whether this key can be used on AMP (Accelerated Mobile Pages) websites. This can only be set for the SCORE integration type.
-        """
-        return pulumi.get(self, "allow_amp_traffic")
-
-    @allow_amp_traffic.setter
-    def allow_amp_traffic(self, value: pulumi.Input[bool]):
-        pulumi.set(self, "allow_amp_traffic", value)
 
     @property
     @pulumi.getter(name="integrationType")
@@ -196,6 +185,18 @@ class GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs:
     @allow_all_domains.setter
     def allow_all_domains(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_all_domains", value)
+
+    @property
+    @pulumi.getter(name="allowAmpTraffic")
+    def allow_amp_traffic(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.
+        """
+        return pulumi.get(self, "allow_amp_traffic")
+
+    @allow_amp_traffic.setter
+    def allow_amp_traffic(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_amp_traffic", value)
 
     @property
     @pulumi.getter(name="allowedDomains")

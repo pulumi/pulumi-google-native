@@ -15,23 +15,22 @@ class DebugTokenArgs:
     def __init__(__self__, *,
                  app_id: pulumi.Input[str],
                  display_name: pulumi.Input[str],
+                 token: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None,
-                 token: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DebugToken resource.
         :param pulumi.Input[str] display_name: A human readable display name used to identify this debug token.
-        :param pulumi.Input[str] name: The relative resource name of the debug token, in the format: ``` projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id} ```
         :param pulumi.Input[str] token: Input only. Immutable. The secret token itself. Must be provided during creation, and must be a UUID4, case insensitive. This field is immutable once set, and cannot be provided during an UpdateDebugToken request. You can, however, delete this debug token using DeleteDebugToken to revoke it. For security reasons, this field will never be populated in any response.
+        :param pulumi.Input[str] name: The relative resource name of the debug token, in the format: ``` projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id} ```
         """
         pulumi.set(__self__, "app_id", app_id)
         pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "token", token)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if token is not None:
-            pulumi.set(__self__, "token", token)
 
     @property
     @pulumi.getter(name="appId")
@@ -56,6 +55,18 @@ class DebugTokenArgs:
 
     @property
     @pulumi.getter
+    def token(self) -> pulumi.Input[str]:
+        """
+        Input only. Immutable. The secret token itself. Must be provided during creation, and must be a UUID4, case insensitive. This field is immutable once set, and cannot be provided during an UpdateDebugToken request. You can, however, delete this debug token using DeleteDebugToken to revoke it. For security reasons, this field will never be populated in any response.
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: pulumi.Input[str]):
+        pulumi.set(self, "token", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The relative resource name of the debug token, in the format: ``` projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id} ```
@@ -74,18 +85,6 @@ class DebugTokenArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[str]]:
-        """
-        Input only. Immutable. The secret token itself. Must be provided during creation, and must be a UUID4, case insensitive. This field is immutable once set, and cannot be provided during an UpdateDebugToken request. You can, however, delete this debug token using DeleteDebugToken to revoke it. For security reasons, this field will never be populated in any response.
-        """
-        return pulumi.get(self, "token")
-
-    @token.setter
-    def token(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "token", value)
 
 
 class DebugToken(pulumi.CustomResource):
@@ -157,6 +156,8 @@ class DebugToken(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            if token is None and not opts.urn:
+                raise TypeError("Missing required property 'token'")
             __props__.__dict__["token"] = token
         super(DebugToken, __self__).__init__(
             'google-native:firebaseappcheck/v1beta:DebugToken',

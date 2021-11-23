@@ -45,7 +45,7 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse(dict):
                  allowed_package_names: Sequence[str]):
         """
         Settings specific to keys that can be used by Android apps.
-        :param bool allow_all_package_names: If set to true, it means allowed_package_names will not be enforced.
+        :param bool allow_all_package_names: If set to true, allowed_package_names are not enforced.
         :param Sequence[str] allowed_package_names: Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
         """
         pulumi.set(__self__, "allow_all_package_names", allow_all_package_names)
@@ -55,7 +55,7 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse(dict):
     @pulumi.getter(name="allowAllPackageNames")
     def allow_all_package_names(self) -> bool:
         """
-        If set to true, it means allowed_package_names will not be enforced.
+        If set to true, allowed_package_names are not enforced.
         """
         return pulumi.get(self, "allow_all_package_names")
 
@@ -97,7 +97,7 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse(dict):
                  allowed_bundle_ids: Sequence[str]):
         """
         Settings specific to keys that can be used by iOS apps.
-        :param bool allow_all_bundle_ids: If set to true, it means allowed_bundle_ids will not be enforced.
+        :param bool allow_all_bundle_ids: If set to true, allowed_bundle_ids are not enforced.
         :param Sequence[str] allowed_bundle_ids: iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
         """
         pulumi.set(__self__, "allow_all_bundle_ids", allow_all_bundle_ids)
@@ -107,7 +107,7 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse(dict):
     @pulumi.getter(name="allowAllBundleIds")
     def allow_all_bundle_ids(self) -> bool:
         """
-        If set to true, it means allowed_bundle_ids will not be enforced.
+        If set to true, allowed_bundle_ids are not enforced.
         """
         return pulumi.get(self, "allow_all_bundle_ids")
 
@@ -211,7 +211,7 @@ class GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse(dict):
         """
         Settings specific to keys that can be used by websites.
         :param bool allow_all_domains: If set to true, it means allowed_domains will not be enforced.
-        :param bool allow_amp_traffic: Whether this key can be used on AMP (Accelerated Mobile Pages) websites. This can only be set for the SCORE integration type.
+        :param bool allow_amp_traffic: If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.
         :param Sequence[str] allowed_domains: Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: 'example.com' or 'subdomain.example.com'
         :param str challenge_security_preference: Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE.
         :param str integration_type: Describes how this key is integrated with the website.
@@ -234,7 +234,7 @@ class GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse(dict):
     @pulumi.getter(name="allowAmpTraffic")
     def allow_amp_traffic(self) -> bool:
         """
-        Whether this key can be used on AMP (Accelerated Mobile Pages) websites. This can only be set for the SCORE integration type.
+        If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.
         """
         return pulumi.get(self, "allow_amp_traffic")
 

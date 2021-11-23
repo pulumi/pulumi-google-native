@@ -68,11 +68,11 @@ class InstanceArgs:
         :param pulumi.Input[bool] no_proxy_access: If true, the notebook instance will not register with the proxy.
         :param pulumi.Input[bool] no_public_ip: If true, no public IP will be assigned to this instance.
         :param pulumi.Input[bool] no_remove_data_disk: Input only. If true, the data disk will not be auto deleted when deleting the instance.
-        :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
+        :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
         :param pulumi.Input['ReservationAffinityArgs'] reservation_affinity: Optional. The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this notebook instance.
         :param pulumi.Input[str] service_account: The service account on this instance, giving access to other Google Cloud services. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_account_scopes: Optional. The URIs of service account scopes to be included in Compute Engine instances. If not specified, the following [scopes](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) are defined: - https://www.googleapis.com/auth/cloud-platform - https://www.googleapis.com/auth/userinfo.email If not using default scopes, you need at least: https://www.googleapis.com/auth/compute
-        :param pulumi.Input['ShieldedInstanceConfigArgs'] shielded_instance_config: Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+        :param pulumi.Input['ShieldedInstanceConfigArgs'] shielded_instance_config: Optional. Shielded VM configuration. [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
         :param pulumi.Input[str] subnet: The name of the subnet that this instance is in. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
         :param pulumi.Input[Sequence[pulumi.Input['UpgradeHistoryEntryArgs']]] upgrade_history: The upgrade history of this instance.
@@ -389,7 +389,7 @@ class InstanceArgs:
     @pulumi.getter(name="postStartupScript")
     def post_startup_script(self) -> Optional[pulumi.Input[str]]:
         """
-        Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
+        Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
         """
         return pulumi.get(self, "post_startup_script")
 
@@ -446,7 +446,7 @@ class InstanceArgs:
     @pulumi.getter(name="shieldedInstanceConfig")
     def shielded_instance_config(self) -> Optional[pulumi.Input['ShieldedInstanceConfigArgs']]:
         """
-        Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+        Optional. Shielded VM configuration. [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
         """
         return pulumi.get(self, "shielded_instance_config")
 
@@ -565,11 +565,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] no_proxy_access: If true, the notebook instance will not register with the proxy.
         :param pulumi.Input[bool] no_public_ip: If true, no public IP will be assigned to this instance.
         :param pulumi.Input[bool] no_remove_data_disk: Input only. If true, the data disk will not be auto deleted when deleting the instance.
-        :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
+        :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
         :param pulumi.Input[pulumi.InputType['ReservationAffinityArgs']] reservation_affinity: Optional. The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this notebook instance.
         :param pulumi.Input[str] service_account: The service account on this instance, giving access to other Google Cloud services. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_account_scopes: Optional. The URIs of service account scopes to be included in Compute Engine instances. If not specified, the following [scopes](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) are defined: - https://www.googleapis.com/auth/cloud-platform - https://www.googleapis.com/auth/userinfo.email If not using default scopes, you need at least: https://www.googleapis.com/auth/compute
-        :param pulumi.Input[pulumi.InputType['ShieldedInstanceConfigArgs']] shielded_instance_config: Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+        :param pulumi.Input[pulumi.InputType['ShieldedInstanceConfigArgs']] shielded_instance_config: Optional. Shielded VM configuration. [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
         :param pulumi.Input[str] subnet: The name of the subnet that this instance is in. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UpgradeHistoryEntryArgs']]]] upgrade_history: The upgrade history of this instance.
@@ -922,7 +922,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="postStartupScript")
     def post_startup_script(self) -> pulumi.Output[str]:
         """
-        Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
+        Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
         """
         return pulumi.get(self, "post_startup_script")
 
@@ -962,7 +962,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="shieldedInstanceConfig")
     def shielded_instance_config(self) -> pulumi.Output['outputs.ShieldedInstanceConfigResponse']:
         """
-        Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+        Optional. Shielded VM configuration. [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
         """
         return pulumi.get(self, "shielded_instance_config")
 

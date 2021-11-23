@@ -18,10 +18,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetBucketResult:
-    def __init__(__self__, acl=None, billing=None, cors=None, custom_placement_config=None, default_event_based_hold=None, default_object_acl=None, encryption=None, etag=None, iam_configuration=None, kind=None, labels=None, lifecycle=None, location=None, location_type=None, logging=None, metageneration=None, name=None, owner=None, project_number=None, retention_policy=None, rpo=None, satisfies_pzs=None, self_link=None, storage_class=None, time_created=None, updated=None, versioning=None, website=None):
+    def __init__(__self__, acl=None, autoclass=None, billing=None, cors=None, custom_placement_config=None, default_event_based_hold=None, default_object_acl=None, encryption=None, etag=None, iam_configuration=None, kind=None, labels=None, lifecycle=None, location=None, location_type=None, logging=None, metageneration=None, name=None, owner=None, project_number=None, retention_policy=None, rpo=None, satisfies_pzs=None, self_link=None, storage_class=None, time_created=None, updated=None, versioning=None, website=None):
         if acl and not isinstance(acl, list):
             raise TypeError("Expected argument 'acl' to be a list")
         pulumi.set(__self__, "acl", acl)
+        if autoclass and not isinstance(autoclass, dict):
+            raise TypeError("Expected argument 'autoclass' to be a dict")
+        pulumi.set(__self__, "autoclass", autoclass)
         if billing and not isinstance(billing, dict):
             raise TypeError("Expected argument 'billing' to be a dict")
         pulumi.set(__self__, "billing", billing)
@@ -111,6 +114,14 @@ class GetBucketResult:
         Access controls on the bucket.
         """
         return pulumi.get(self, "acl")
+
+    @property
+    @pulumi.getter
+    def autoclass(self) -> 'outputs.BucketAutoclassResponse':
+        """
+        The bucket's Autoclass configuration.
+        """
+        return pulumi.get(self, "autoclass")
 
     @property
     @pulumi.getter
@@ -336,6 +347,7 @@ class AwaitableGetBucketResult(GetBucketResult):
             yield self
         return GetBucketResult(
             acl=self.acl,
+            autoclass=self.autoclass,
             billing=self.billing,
             cors=self.cors,
             custom_placement_config=self.custom_placement_config,
@@ -390,6 +402,7 @@ def get_bucket(bucket: Optional[str] = None,
 
     return AwaitableGetBucketResult(
         acl=__ret__.acl,
+        autoclass=__ret__.autoclass,
         billing=__ret__.billing,
         cors=__ret__.cors,
         custom_placement_config=__ret__.custom_placement_config,

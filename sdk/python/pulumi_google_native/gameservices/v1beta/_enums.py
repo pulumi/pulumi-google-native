@@ -12,7 +12,6 @@ __all__ = [
     'ConditionOp',
     'ConditionSys',
     'DataAccessOptionsLogMode',
-    'GameServerClusterAllocationPriority',
     'RuleAction',
 ]
 
@@ -101,7 +100,7 @@ class ConditionIam(str, Enum):
     """
     SECURITY_REALM = "SECURITY_REALM"
     """
-    Any of the security realms in the IAMContext (go/security-realms). When used with IN, the condition indicates "any of the request's realms match one of the given values; with NOT_IN, "none of the realms match any of the given values". Note that a value can be: - 'self' (i.e., allow connections from clients that are in the same security realm, which is currently but not guaranteed to be campus-sized) - 'self:metro' (i.e., clients that are in the same metro) - 'self:cloud-region' (i.e., allow connections from clients that are in the same cloud region) - 'guardians' (i.e., allow connections from its guardian realms. See go/security-realms-glossary#guardian for more information.) - a realm (e.g., 'campus-abc') - a realm group (e.g., 'realms-for-borg-cell-xx', see: go/realm-groups) A match is determined by a realm group membership check performed by a RealmAclRep object (go/realm-acl-howto). It is not permitted to grant access based on the *absence* of a realm, so realm conditions can only be used in a "positive" context (e.g., ALLOW/IN or DENY/NOT_IN).
+    Any of the security realms in the IAMContext (go/security-realms). When used with IN, the condition indicates "any of the request's realms match one of the given values; with NOT_IN, "none of the realms match any of the given values". Note that a value can be: - 'self' (i.e., allow connections from clients that are in the same security realm, which is currently but not guaranteed to be campus-sized) - 'self:metro' (i.e., clients that are in the same metro) - 'self:cloud-region' (i.e., allow connections from clients that are in the same cloud region) - 'self:prod-region' (i.e., allow connections from clients that are in the same prod region) - 'guardians' (i.e., allow connections from its guardian realms. See go/security-realms-glossary#guardian for more information.) - a realm (e.g., 'campus-abc') - a realm group (e.g., 'realms-for-borg-cell-xx', see: go/realm-groups) A match is determined by a realm group membership check performed by a RealmAclRep object (go/realm-acl-howto). It is not permitted to grant access based on the *absence* of a realm, so realm conditions can only be used in a "positive" context (e.g., ALLOW/IN or DENY/NOT_IN).
     """
     APPROVER = "APPROVER"
     """
@@ -185,32 +184,6 @@ class DataAccessOptionsLogMode(str, Enum):
     LOG_FAIL_CLOSED = "LOG_FAIL_CLOSED"
     """
     The application's operation in the context of which this authorization check is being made may only be performed if it is successfully logged to Gin. For instance, the authorization library may satisfy this obligation by emitting a partial log entry at authorization check time and only returning ALLOW to the application if it succeeds. If a matching Rule has this directive, but the client has not indicated that it will honor such requirements, then the IAM check will result in authorization failure by setting CheckPolicyResponse.success=false.
-    """
-
-
-class GameServerClusterAllocationPriority(str, Enum):
-    """
-    Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
-    """
-    PRIORITY_UNSPECIFIED = "PRIORITY_UNSPECIFIED"
-    """
-    The default allocation priority. `PRIORITY_UNSPECIFIED` is the lowest possible priority.
-    """
-    P1 = "P1"
-    """
-    Priority 1, the highest priority.
-    """
-    P2 = "P2"
-    """
-    Priority 2.
-    """
-    P3 = "P3"
-    """
-    Priority 3.
-    """
-    P4 = "P4"
-    """
-    Priority 4.
     """
 
 

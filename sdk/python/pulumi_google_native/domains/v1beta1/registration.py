@@ -37,7 +37,7 @@ class RegistrationArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RegistrationDomainNoticesItem']]] domain_notices: The list of domain notices that you acknowledge. Call `RetrieveRegisterParameters` to see the notices that need acknowledgement.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with the `Registration`.
         :param pulumi.Input['ManagementSettingsArgs'] management_settings: Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
-        :param pulumi.Input[bool] validate_only: When true, only validation will be performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
+        :param pulumi.Input[bool] validate_only: When true, only validation is performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
         """
         pulumi.set(__self__, "contact_settings", contact_settings)
         pulumi.set(__self__, "domain_name", domain_name)
@@ -177,7 +177,7 @@ class RegistrationArgs:
     @pulumi.getter(name="validateOnly")
     def validate_only(self) -> Optional[pulumi.Input[bool]]:
         """
-        When true, only validation will be performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
+        When true, only validation is performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
         """
         return pulumi.get(self, "validate_only")
 
@@ -216,7 +216,7 @@ class Registration(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input['RegistrationDomainNoticesItem']]] domain_notices: The list of domain notices that you acknowledge. Call `RetrieveRegisterParameters` to see the notices that need acknowledgement.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with the `Registration`.
         :param pulumi.Input[pulumi.InputType['ManagementSettingsArgs']] management_settings: Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
-        :param pulumi.Input[bool] validate_only: When true, only validation will be performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
+        :param pulumi.Input[bool] validate_only: When true, only validation is performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
         :param pulumi.Input[pulumi.InputType['MoneyArgs']] yearly_price: Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.
         """
         ...
@@ -403,7 +403,7 @@ class Registration(pulumi.CustomResource):
     @pulumi.getter(name="pendingContactSettings")
     def pending_contact_settings(self) -> pulumi.Output['outputs.ContactSettingsResponse']:
         """
-        Pending contact settings for the `Registration`. Updates to the `contact_settings` field that change its `registrant_contact` or `privacy` fields require email confirmation by the `registrant_contact` before taking effect. This field is set only if there are pending updates to the `contact_settings` that have not yet been confirmed. To confirm the changes, the `registrant_contact` must follow the instructions in the email they receive.
+        Pending contact settings for the `Registration`. Updates to the `contact_settings` field that change its `registrant_contact` or `privacy` fields require email confirmation by the `registrant_contact` before taking effect. This field is set only if there are pending updates to the `contact_settings` that have not been confirmed. To confirm the changes, the `registrant_contact` must follow the instructions in the email they receive.
         """
         return pulumi.get(self, "pending_contact_settings")
 
