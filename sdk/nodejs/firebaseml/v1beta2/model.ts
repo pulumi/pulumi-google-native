@@ -84,39 +84,39 @@ export class Model extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ModelArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["tfliteModel"] = args ? args.tfliteModel : undefined;
-            inputs["activeOperations"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["modelHash"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["tfliteModel"] = args ? args.tfliteModel : undefined;
+            resourceInputs["activeOperations"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["modelHash"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["activeOperations"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["modelHash"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["tags"] = undefined /*out*/;
-            inputs["tfliteModel"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["activeOperations"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["modelHash"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["tags"] = undefined /*out*/;
+            resourceInputs["tfliteModel"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Model.__pulumiType, name, inputs, opts);
+        super(Model.__pulumiType, name, resourceInputs, opts);
     }
 }
 

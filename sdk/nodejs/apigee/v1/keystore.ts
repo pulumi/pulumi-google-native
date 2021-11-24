@@ -51,7 +51,7 @@ export class Keystore extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: KeystoreArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.environmentId === undefined) && !opts.urn) {
@@ -60,18 +60,18 @@ export class Keystore extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            inputs["environmentId"] = args ? args.environmentId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["aliases"] = undefined /*out*/;
+            resourceInputs["environmentId"] = args ? args.environmentId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["aliases"] = undefined /*out*/;
         } else {
-            inputs["aliases"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["aliases"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Keystore.__pulumiType, name, inputs, opts);
+        super(Keystore.__pulumiType, name, resourceInputs, opts);
     }
 }
 

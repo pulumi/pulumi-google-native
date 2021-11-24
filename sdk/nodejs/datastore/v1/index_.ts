@@ -69,7 +69,7 @@ export class Index extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: IndexArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.ancestor === undefined) && !opts.urn) {
@@ -81,24 +81,24 @@ export class Index extends pulumi.CustomResource {
             if ((!args || args.properties === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'properties'");
             }
-            inputs["ancestor"] = args ? args.ancestor : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["properties"] = args ? args.properties : undefined;
-            inputs["indexId"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["ancestor"] = args ? args.ancestor : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["properties"] = args ? args.properties : undefined;
+            resourceInputs["indexId"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
-            inputs["ancestor"] = undefined /*out*/;
-            inputs["indexId"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["project"] = undefined /*out*/;
-            inputs["properties"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["ancestor"] = undefined /*out*/;
+            resourceInputs["indexId"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["properties"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Index.__pulumiType, name, inputs, opts);
+        super(Index.__pulumiType, name, resourceInputs, opts);
     }
 }
 

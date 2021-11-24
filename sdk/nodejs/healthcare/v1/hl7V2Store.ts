@@ -64,32 +64,32 @@ export class Hl7V2Store extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: Hl7V2StoreArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            inputs["datasetId"] = args ? args.datasetId : undefined;
-            inputs["hl7V2StoreId"] = args ? args.hl7V2StoreId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["notificationConfigs"] = args ? args.notificationConfigs : undefined;
-            inputs["parserConfig"] = args ? args.parserConfig : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["rejectDuplicateMessage"] = args ? args.rejectDuplicateMessage : undefined;
+            resourceInputs["datasetId"] = args ? args.datasetId : undefined;
+            resourceInputs["hl7V2StoreId"] = args ? args.hl7V2StoreId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["notificationConfigs"] = args ? args.notificationConfigs : undefined;
+            resourceInputs["parserConfig"] = args ? args.parserConfig : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["rejectDuplicateMessage"] = args ? args.rejectDuplicateMessage : undefined;
         } else {
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["notificationConfigs"] = undefined /*out*/;
-            inputs["parserConfig"] = undefined /*out*/;
-            inputs["rejectDuplicateMessage"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["notificationConfigs"] = undefined /*out*/;
+            resourceInputs["parserConfig"] = undefined /*out*/;
+            resourceInputs["rejectDuplicateMessage"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Hl7V2Store.__pulumiType, name, inputs, opts);
+        super(Hl7V2Store.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -96,43 +96,43 @@ export class Reservation extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: ReservationArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["shareSettings"] = args ? args.shareSettings : undefined;
-            inputs["specificReservation"] = args ? args.specificReservation : undefined;
-            inputs["specificReservationRequired"] = args ? args.specificReservationRequired : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
-            inputs["commitment"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["satisfiesPzs"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["selfLinkWithId"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["shareSettings"] = args ? args.shareSettings : undefined;
+            resourceInputs["specificReservation"] = args ? args.specificReservation : undefined;
+            resourceInputs["specificReservationRequired"] = args ? args.specificReservationRequired : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["commitment"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         } else {
-            inputs["commitment"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["satisfiesPzs"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["selfLinkWithId"] = undefined /*out*/;
-            inputs["shareSettings"] = undefined /*out*/;
-            inputs["specificReservation"] = undefined /*out*/;
-            inputs["specificReservationRequired"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["zone"] = undefined /*out*/;
+            resourceInputs["commitment"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["shareSettings"] = undefined /*out*/;
+            resourceInputs["specificReservation"] = undefined /*out*/;
+            resourceInputs["specificReservationRequired"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["zone"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Reservation.__pulumiType, name, inputs, opts);
+        super(Reservation.__pulumiType, name, resourceInputs, opts);
     }
 }
 

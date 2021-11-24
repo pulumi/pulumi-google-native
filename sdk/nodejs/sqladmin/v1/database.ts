@@ -73,34 +73,34 @@ export class Database extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: DatabaseArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.instance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            inputs["charset"] = args ? args.charset : undefined;
-            inputs["collation"] = args ? args.collation : undefined;
-            inputs["instance"] = args ? args.instance : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["sqlserverDatabaseDetails"] = args ? args.sqlserverDatabaseDetails : undefined;
+            resourceInputs["charset"] = args ? args.charset : undefined;
+            resourceInputs["collation"] = args ? args.collation : undefined;
+            resourceInputs["instance"] = args ? args.instance : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["selfLink"] = args ? args.selfLink : undefined;
+            resourceInputs["sqlserverDatabaseDetails"] = args ? args.sqlserverDatabaseDetails : undefined;
         } else {
-            inputs["charset"] = undefined /*out*/;
-            inputs["collation"] = undefined /*out*/;
-            inputs["instance"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["project"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["sqlserverDatabaseDetails"] = undefined /*out*/;
+            resourceInputs["charset"] = undefined /*out*/;
+            resourceInputs["collation"] = undefined /*out*/;
+            resourceInputs["instance"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["sqlserverDatabaseDetails"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Database.__pulumiType, name, inputs, opts);
+        super(Database.__pulumiType, name, resourceInputs, opts);
     }
 }
 

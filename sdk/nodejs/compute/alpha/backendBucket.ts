@@ -92,41 +92,41 @@ export class BackendBucket extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: BackendBucketArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["bucketName"] = args ? args.bucketName : undefined;
-            inputs["cdnPolicy"] = args ? args.cdnPolicy : undefined;
-            inputs["compressionMode"] = args ? args.compressionMode : undefined;
-            inputs["customResponseHeaders"] = args ? args.customResponseHeaders : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["enableCdn"] = args ? args.enableCdn : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["edgeSecurityPolicy"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["bucketName"] = args ? args.bucketName : undefined;
+            resourceInputs["cdnPolicy"] = args ? args.cdnPolicy : undefined;
+            resourceInputs["compressionMode"] = args ? args.compressionMode : undefined;
+            resourceInputs["customResponseHeaders"] = args ? args.customResponseHeaders : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableCdn"] = args ? args.enableCdn : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["edgeSecurityPolicy"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
         } else {
-            inputs["bucketName"] = undefined /*out*/;
-            inputs["cdnPolicy"] = undefined /*out*/;
-            inputs["compressionMode"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["customResponseHeaders"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["edgeSecurityPolicy"] = undefined /*out*/;
-            inputs["enableCdn"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["bucketName"] = undefined /*out*/;
+            resourceInputs["cdnPolicy"] = undefined /*out*/;
+            resourceInputs["compressionMode"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["customResponseHeaders"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["edgeSecurityPolicy"] = undefined /*out*/;
+            resourceInputs["enableCdn"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(BackendBucket.__pulumiType, name, inputs, opts);
+        super(BackendBucket.__pulumiType, name, resourceInputs, opts);
     }
 }
 

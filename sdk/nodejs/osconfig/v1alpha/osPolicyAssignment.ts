@@ -96,7 +96,7 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: OsPolicyAssignmentArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.instanceFilter === undefined) && !opts.urn) {
@@ -111,41 +111,41 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
             if ((!args || args.rollout === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'rollout'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["instanceFilter"] = args ? args.instanceFilter : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["osPolicies"] = args ? args.osPolicies : undefined;
-            inputs["osPolicyAssignmentId"] = args ? args.osPolicyAssignmentId : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["rollout"] = args ? args.rollout : undefined;
-            inputs["baseline"] = undefined /*out*/;
-            inputs["deleted"] = undefined /*out*/;
-            inputs["reconciling"] = undefined /*out*/;
-            inputs["revisionCreateTime"] = undefined /*out*/;
-            inputs["revisionId"] = undefined /*out*/;
-            inputs["rolloutState"] = undefined /*out*/;
-            inputs["uid"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["instanceFilter"] = args ? args.instanceFilter : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["osPolicies"] = args ? args.osPolicies : undefined;
+            resourceInputs["osPolicyAssignmentId"] = args ? args.osPolicyAssignmentId : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["rollout"] = args ? args.rollout : undefined;
+            resourceInputs["baseline"] = undefined /*out*/;
+            resourceInputs["deleted"] = undefined /*out*/;
+            resourceInputs["reconciling"] = undefined /*out*/;
+            resourceInputs["revisionCreateTime"] = undefined /*out*/;
+            resourceInputs["revisionId"] = undefined /*out*/;
+            resourceInputs["rolloutState"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
         } else {
-            inputs["baseline"] = undefined /*out*/;
-            inputs["deleted"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["instanceFilter"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["osPolicies"] = undefined /*out*/;
-            inputs["reconciling"] = undefined /*out*/;
-            inputs["revisionCreateTime"] = undefined /*out*/;
-            inputs["revisionId"] = undefined /*out*/;
-            inputs["rollout"] = undefined /*out*/;
-            inputs["rolloutState"] = undefined /*out*/;
-            inputs["uid"] = undefined /*out*/;
+            resourceInputs["baseline"] = undefined /*out*/;
+            resourceInputs["deleted"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["instanceFilter"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["osPolicies"] = undefined /*out*/;
+            resourceInputs["reconciling"] = undefined /*out*/;
+            resourceInputs["revisionCreateTime"] = undefined /*out*/;
+            resourceInputs["revisionId"] = undefined /*out*/;
+            resourceInputs["rollout"] = undefined /*out*/;
+            resourceInputs["rolloutState"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(OsPolicyAssignment.__pulumiType, name, inputs, opts);
+        super(OsPolicyAssignment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

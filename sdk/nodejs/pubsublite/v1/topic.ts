@@ -60,29 +60,29 @@ export class Topic extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: TopicArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.topicId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'topicId'");
             }
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["partitionConfig"] = args ? args.partitionConfig : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["reservationConfig"] = args ? args.reservationConfig : undefined;
-            inputs["retentionConfig"] = args ? args.retentionConfig : undefined;
-            inputs["topicId"] = args ? args.topicId : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["partitionConfig"] = args ? args.partitionConfig : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["reservationConfig"] = args ? args.reservationConfig : undefined;
+            resourceInputs["retentionConfig"] = args ? args.retentionConfig : undefined;
+            resourceInputs["topicId"] = args ? args.topicId : undefined;
         } else {
-            inputs["name"] = undefined /*out*/;
-            inputs["partitionConfig"] = undefined /*out*/;
-            inputs["reservationConfig"] = undefined /*out*/;
-            inputs["retentionConfig"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["partitionConfig"] = undefined /*out*/;
+            resourceInputs["reservationConfig"] = undefined /*out*/;
+            resourceInputs["retentionConfig"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Topic.__pulumiType, name, inputs, opts);
+        super(Topic.__pulumiType, name, resourceInputs, opts);
     }
 }
 

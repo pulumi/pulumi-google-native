@@ -164,80 +164,80 @@ export class Subnetwork extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: SubnetworkArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["aggregationInterval"] = args ? args.aggregationInterval : undefined;
-            inputs["allowSubnetCidrRoutesOverlap"] = args ? args.allowSubnetCidrRoutesOverlap : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["enableFlowLogs"] = args ? args.enableFlowLogs : undefined;
-            inputs["enableL2"] = args ? args.enableL2 : undefined;
-            inputs["flowSampling"] = args ? args.flowSampling : undefined;
-            inputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
-            inputs["ipv6AccessType"] = args ? args.ipv6AccessType : undefined;
-            inputs["logConfig"] = args ? args.logConfig : undefined;
-            inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["privateIpGoogleAccess"] = args ? args.privateIpGoogleAccess : undefined;
-            inputs["privateIpv6GoogleAccess"] = args ? args.privateIpv6GoogleAccess : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["purpose"] = args ? args.purpose : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["reservedInternalRange"] = args ? args.reservedInternalRange : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["secondaryIpRanges"] = args ? args.secondaryIpRanges : undefined;
-            inputs["stackType"] = args ? args.stackType : undefined;
-            inputs["vlans"] = args ? args.vlans : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["externalIpv6Prefix"] = undefined /*out*/;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["gatewayAddress"] = undefined /*out*/;
-            inputs["ipv6CidrRange"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["selfLinkWithId"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["aggregationInterval"] = args ? args.aggregationInterval : undefined;
+            resourceInputs["allowSubnetCidrRoutesOverlap"] = args ? args.allowSubnetCidrRoutesOverlap : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableFlowLogs"] = args ? args.enableFlowLogs : undefined;
+            resourceInputs["enableL2"] = args ? args.enableL2 : undefined;
+            resourceInputs["flowSampling"] = args ? args.flowSampling : undefined;
+            resourceInputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
+            resourceInputs["ipv6AccessType"] = args ? args.ipv6AccessType : undefined;
+            resourceInputs["logConfig"] = args ? args.logConfig : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["privateIpGoogleAccess"] = args ? args.privateIpGoogleAccess : undefined;
+            resourceInputs["privateIpv6GoogleAccess"] = args ? args.privateIpv6GoogleAccess : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["purpose"] = args ? args.purpose : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["reservedInternalRange"] = args ? args.reservedInternalRange : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["secondaryIpRanges"] = args ? args.secondaryIpRanges : undefined;
+            resourceInputs["stackType"] = args ? args.stackType : undefined;
+            resourceInputs["vlans"] = args ? args.vlans : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["externalIpv6Prefix"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["gatewayAddress"] = undefined /*out*/;
+            resourceInputs["ipv6CidrRange"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
-            inputs["aggregationInterval"] = undefined /*out*/;
-            inputs["allowSubnetCidrRoutesOverlap"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["enableFlowLogs"] = undefined /*out*/;
-            inputs["enableL2"] = undefined /*out*/;
-            inputs["externalIpv6Prefix"] = undefined /*out*/;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["flowSampling"] = undefined /*out*/;
-            inputs["gatewayAddress"] = undefined /*out*/;
-            inputs["ipCidrRange"] = undefined /*out*/;
-            inputs["ipv6AccessType"] = undefined /*out*/;
-            inputs["ipv6CidrRange"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["logConfig"] = undefined /*out*/;
-            inputs["metadata"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["network"] = undefined /*out*/;
-            inputs["privateIpGoogleAccess"] = undefined /*out*/;
-            inputs["privateIpv6GoogleAccess"] = undefined /*out*/;
-            inputs["purpose"] = undefined /*out*/;
-            inputs["region"] = undefined /*out*/;
-            inputs["reservedInternalRange"] = undefined /*out*/;
-            inputs["role"] = undefined /*out*/;
-            inputs["secondaryIpRanges"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["selfLinkWithId"] = undefined /*out*/;
-            inputs["stackType"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["vlans"] = undefined /*out*/;
+            resourceInputs["aggregationInterval"] = undefined /*out*/;
+            resourceInputs["allowSubnetCidrRoutesOverlap"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["enableFlowLogs"] = undefined /*out*/;
+            resourceInputs["enableL2"] = undefined /*out*/;
+            resourceInputs["externalIpv6Prefix"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["flowSampling"] = undefined /*out*/;
+            resourceInputs["gatewayAddress"] = undefined /*out*/;
+            resourceInputs["ipCidrRange"] = undefined /*out*/;
+            resourceInputs["ipv6AccessType"] = undefined /*out*/;
+            resourceInputs["ipv6CidrRange"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["logConfig"] = undefined /*out*/;
+            resourceInputs["metadata"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["network"] = undefined /*out*/;
+            resourceInputs["privateIpGoogleAccess"] = undefined /*out*/;
+            resourceInputs["privateIpv6GoogleAccess"] = undefined /*out*/;
+            resourceInputs["purpose"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["reservedInternalRange"] = undefined /*out*/;
+            resourceInputs["role"] = undefined /*out*/;
+            resourceInputs["secondaryIpRanges"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["stackType"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["vlans"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Subnetwork.__pulumiType, name, inputs, opts);
+        super(Subnetwork.__pulumiType, name, resourceInputs, opts);
     }
 }
 

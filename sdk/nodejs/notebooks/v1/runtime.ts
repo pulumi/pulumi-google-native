@@ -81,39 +81,39 @@ export class Runtime extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: RuntimeArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.runtimeId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'runtimeId'");
             }
-            inputs["accessConfig"] = args ? args.accessConfig : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["runtimeId"] = args ? args.runtimeId : undefined;
-            inputs["softwareConfig"] = args ? args.softwareConfig : undefined;
-            inputs["virtualMachine"] = args ? args.virtualMachine : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["healthState"] = undefined /*out*/;
-            inputs["metrics"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["accessConfig"] = args ? args.accessConfig : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["runtimeId"] = args ? args.runtimeId : undefined;
+            resourceInputs["softwareConfig"] = args ? args.softwareConfig : undefined;
+            resourceInputs["virtualMachine"] = args ? args.virtualMachine : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["healthState"] = undefined /*out*/;
+            resourceInputs["metrics"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["accessConfig"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["healthState"] = undefined /*out*/;
-            inputs["metrics"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["softwareConfig"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
-            inputs["virtualMachine"] = undefined /*out*/;
+            resourceInputs["accessConfig"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["healthState"] = undefined /*out*/;
+            resourceInputs["metrics"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["softwareConfig"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["virtualMachine"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Runtime.__pulumiType, name, inputs, opts);
+        super(Runtime.__pulumiType, name, resourceInputs, opts);
     }
 }
 

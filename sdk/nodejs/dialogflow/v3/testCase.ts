@@ -78,7 +78,7 @@ export class TestCase extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: TestCaseArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.agentId === undefined) && !opts.urn) {
@@ -87,31 +87,31 @@ export class TestCase extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            inputs["agentId"] = args ? args.agentId : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["lastTestResult"] = args ? args.lastTestResult : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["notes"] = args ? args.notes : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["testCaseConversationTurns"] = args ? args.testCaseConversationTurns : undefined;
-            inputs["testConfig"] = args ? args.testConfig : undefined;
-            inputs["creationTime"] = undefined /*out*/;
+            resourceInputs["agentId"] = args ? args.agentId : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["lastTestResult"] = args ? args.lastTestResult : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["notes"] = args ? args.notes : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["testCaseConversationTurns"] = args ? args.testCaseConversationTurns : undefined;
+            resourceInputs["testConfig"] = args ? args.testConfig : undefined;
+            resourceInputs["creationTime"] = undefined /*out*/;
         } else {
-            inputs["creationTime"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["lastTestResult"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["notes"] = undefined /*out*/;
-            inputs["tags"] = undefined /*out*/;
-            inputs["testCaseConversationTurns"] = undefined /*out*/;
-            inputs["testConfig"] = undefined /*out*/;
+            resourceInputs["creationTime"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["lastTestResult"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["notes"] = undefined /*out*/;
+            resourceInputs["tags"] = undefined /*out*/;
+            resourceInputs["testCaseConversationTurns"] = undefined /*out*/;
+            resourceInputs["testConfig"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(TestCase.__pulumiType, name, inputs, opts);
+        super(TestCase.__pulumiType, name, resourceInputs, opts);
     }
 }
 

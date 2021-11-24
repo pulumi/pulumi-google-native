@@ -101,7 +101,7 @@ export class Developer extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: DeveloperArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.email === undefined) && !opts.urn) {
@@ -119,41 +119,41 @@ export class Developer extends pulumi.CustomResource {
             if ((!args || args.userName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userName'");
             }
-            inputs["accessType"] = args ? args.accessType : undefined;
-            inputs["appFamily"] = args ? args.appFamily : undefined;
-            inputs["apps"] = args ? args.apps : undefined;
-            inputs["attributes"] = args ? args.attributes : undefined;
-            inputs["companies"] = args ? args.companies : undefined;
-            inputs["developerId"] = args ? args.developerId : undefined;
-            inputs["email"] = args ? args.email : undefined;
-            inputs["firstName"] = args ? args.firstName : undefined;
-            inputs["lastName"] = args ? args.lastName : undefined;
-            inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["userName"] = args ? args.userName : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["lastModifiedAt"] = undefined /*out*/;
-            inputs["organizationName"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["accessType"] = args ? args.accessType : undefined;
+            resourceInputs["appFamily"] = args ? args.appFamily : undefined;
+            resourceInputs["apps"] = args ? args.apps : undefined;
+            resourceInputs["attributes"] = args ? args.attributes : undefined;
+            resourceInputs["companies"] = args ? args.companies : undefined;
+            resourceInputs["developerId"] = args ? args.developerId : undefined;
+            resourceInputs["email"] = args ? args.email : undefined;
+            resourceInputs["firstName"] = args ? args.firstName : undefined;
+            resourceInputs["lastName"] = args ? args.lastName : undefined;
+            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["userName"] = args ? args.userName : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["lastModifiedAt"] = undefined /*out*/;
+            resourceInputs["organizationName"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         } else {
-            inputs["accessType"] = undefined /*out*/;
-            inputs["appFamily"] = undefined /*out*/;
-            inputs["apps"] = undefined /*out*/;
-            inputs["attributes"] = undefined /*out*/;
-            inputs["companies"] = undefined /*out*/;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["developerId"] = undefined /*out*/;
-            inputs["email"] = undefined /*out*/;
-            inputs["firstName"] = undefined /*out*/;
-            inputs["lastModifiedAt"] = undefined /*out*/;
-            inputs["lastName"] = undefined /*out*/;
-            inputs["organizationName"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["userName"] = undefined /*out*/;
+            resourceInputs["accessType"] = undefined /*out*/;
+            resourceInputs["appFamily"] = undefined /*out*/;
+            resourceInputs["apps"] = undefined /*out*/;
+            resourceInputs["attributes"] = undefined /*out*/;
+            resourceInputs["companies"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["developerId"] = undefined /*out*/;
+            resourceInputs["email"] = undefined /*out*/;
+            resourceInputs["firstName"] = undefined /*out*/;
+            resourceInputs["lastModifiedAt"] = undefined /*out*/;
+            resourceInputs["lastName"] = undefined /*out*/;
+            resourceInputs["organizationName"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["userName"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Developer.__pulumiType, name, inputs, opts);
+        super(Developer.__pulumiType, name, resourceInputs, opts);
     }
 }
 

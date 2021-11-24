@@ -76,32 +76,32 @@ export class Model extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: ModelArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["description"] = args ? args.description : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["onlinePredictionConsoleLogging"] = args ? args.onlinePredictionConsoleLogging : undefined;
-            inputs["onlinePredictionLogging"] = args ? args.onlinePredictionLogging : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["regions"] = args ? args.regions : undefined;
-            inputs["defaultVersion"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["onlinePredictionConsoleLogging"] = args ? args.onlinePredictionConsoleLogging : undefined;
+            resourceInputs["onlinePredictionLogging"] = args ? args.onlinePredictionLogging : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["regions"] = args ? args.regions : undefined;
+            resourceInputs["defaultVersion"] = undefined /*out*/;
         } else {
-            inputs["defaultVersion"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["onlinePredictionConsoleLogging"] = undefined /*out*/;
-            inputs["onlinePredictionLogging"] = undefined /*out*/;
-            inputs["regions"] = undefined /*out*/;
+            resourceInputs["defaultVersion"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["onlinePredictionConsoleLogging"] = undefined /*out*/;
+            resourceInputs["onlinePredictionLogging"] = undefined /*out*/;
+            resourceInputs["regions"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Model.__pulumiType, name, inputs, opts);
+        super(Model.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -54,25 +54,25 @@ export class KeyRing extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: KeyRingArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.keyRingId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'keyRingId'");
             }
-            inputs["keyRingId"] = args ? args.keyRingId : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["keyRingId"] = args ? args.keyRingId : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(KeyRing.__pulumiType, name, inputs, opts);
+        super(KeyRing.__pulumiType, name, resourceInputs, opts);
     }
 }
 

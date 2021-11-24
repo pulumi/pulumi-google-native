@@ -113,7 +113,7 @@ export class MigratingVm extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: MigratingVmArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.migratingVmId === undefined) && !opts.urn) {
@@ -122,51 +122,51 @@ export class MigratingVm extends pulumi.CustomResource {
             if ((!args || args.sourceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceId'");
             }
-            inputs["computeEngineTargetDefaults"] = args ? args.computeEngineTargetDefaults : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["migratingVmId"] = args ? args.migratingVmId : undefined;
-            inputs["policy"] = args ? args.policy : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["sourceId"] = args ? args.sourceId : undefined;
-            inputs["sourceVmId"] = args ? args.sourceVmId : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["currentSyncInfo"] = undefined /*out*/;
-            inputs["error"] = undefined /*out*/;
-            inputs["group"] = undefined /*out*/;
-            inputs["lastSync"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["recentCloneJobs"] = undefined /*out*/;
-            inputs["recentCutoverJobs"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["stateTime"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["computeEngineTargetDefaults"] = args ? args.computeEngineTargetDefaults : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["migratingVmId"] = args ? args.migratingVmId : undefined;
+            resourceInputs["policy"] = args ? args.policy : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["sourceId"] = args ? args.sourceId : undefined;
+            resourceInputs["sourceVmId"] = args ? args.sourceVmId : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["currentSyncInfo"] = undefined /*out*/;
+            resourceInputs["error"] = undefined /*out*/;
+            resourceInputs["group"] = undefined /*out*/;
+            resourceInputs["lastSync"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["recentCloneJobs"] = undefined /*out*/;
+            resourceInputs["recentCutoverJobs"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stateTime"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["computeEngineTargetDefaults"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["currentSyncInfo"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["error"] = undefined /*out*/;
-            inputs["group"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["lastSync"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["policy"] = undefined /*out*/;
-            inputs["recentCloneJobs"] = undefined /*out*/;
-            inputs["recentCutoverJobs"] = undefined /*out*/;
-            inputs["sourceVmId"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["stateTime"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["computeEngineTargetDefaults"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["currentSyncInfo"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["error"] = undefined /*out*/;
+            resourceInputs["group"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["lastSync"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["policy"] = undefined /*out*/;
+            resourceInputs["recentCloneJobs"] = undefined /*out*/;
+            resourceInputs["recentCutoverJobs"] = undefined /*out*/;
+            resourceInputs["sourceVmId"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stateTime"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(MigratingVm.__pulumiType, name, inputs, opts);
+        super(MigratingVm.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -60,7 +60,7 @@ export class Sharedflow extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: SharedflowArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.action === undefined) && !opts.urn) {
@@ -69,25 +69,25 @@ export class Sharedflow extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            inputs["action"] = args ? args.action : undefined;
-            inputs["contentType"] = args ? args.contentType : undefined;
-            inputs["data"] = args ? args.data : undefined;
-            inputs["extensions"] = args ? args.extensions : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["latestRevisionId"] = undefined /*out*/;
-            inputs["metaData"] = undefined /*out*/;
-            inputs["revision"] = undefined /*out*/;
+            resourceInputs["action"] = args ? args.action : undefined;
+            resourceInputs["contentType"] = args ? args.contentType : undefined;
+            resourceInputs["data"] = args ? args.data : undefined;
+            resourceInputs["extensions"] = args ? args.extensions : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["latestRevisionId"] = undefined /*out*/;
+            resourceInputs["metaData"] = undefined /*out*/;
+            resourceInputs["revision"] = undefined /*out*/;
         } else {
-            inputs["latestRevisionId"] = undefined /*out*/;
-            inputs["metaData"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["revision"] = undefined /*out*/;
+            resourceInputs["latestRevisionId"] = undefined /*out*/;
+            resourceInputs["metaData"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["revision"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Sharedflow.__pulumiType, name, inputs, opts);
+        super(Sharedflow.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -82,41 +82,41 @@ export class Schedule extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ScheduleArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.scheduleId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scheduleId'");
             }
-            inputs["cronSchedule"] = args ? args.cronSchedule : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["executionTemplate"] = args ? args.executionTemplate : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["scheduleId"] = args ? args.scheduleId : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["timeZone"] = args ? args.timeZone : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["recentExecutions"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["cronSchedule"] = args ? args.cronSchedule : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["executionTemplate"] = args ? args.executionTemplate : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["scheduleId"] = args ? args.scheduleId : undefined;
+            resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["timeZone"] = args ? args.timeZone : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["recentExecutions"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["cronSchedule"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["executionTemplate"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["recentExecutions"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["timeZone"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["cronSchedule"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["executionTemplate"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["recentExecutions"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["timeZone"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Schedule.__pulumiType, name, inputs, opts);
+        super(Schedule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -62,7 +62,7 @@ export class FeedbackMessage extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: FeedbackMessageArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.annotatedDatasetId === undefined) && !opts.urn) {
@@ -74,28 +74,28 @@ export class FeedbackMessage extends pulumi.CustomResource {
             if ((!args || args.feedbackThreadId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'feedbackThreadId'");
             }
-            inputs["annotatedDatasetId"] = args ? args.annotatedDatasetId : undefined;
-            inputs["body"] = args ? args.body : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["datasetId"] = args ? args.datasetId : undefined;
-            inputs["feedbackThreadId"] = args ? args.feedbackThreadId : undefined;
-            inputs["image"] = args ? args.image : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["operatorFeedbackMetadata"] = args ? args.operatorFeedbackMetadata : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requesterFeedbackMetadata"] = args ? args.requesterFeedbackMetadata : undefined;
+            resourceInputs["annotatedDatasetId"] = args ? args.annotatedDatasetId : undefined;
+            resourceInputs["body"] = args ? args.body : undefined;
+            resourceInputs["createTime"] = args ? args.createTime : undefined;
+            resourceInputs["datasetId"] = args ? args.datasetId : undefined;
+            resourceInputs["feedbackThreadId"] = args ? args.feedbackThreadId : undefined;
+            resourceInputs["image"] = args ? args.image : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["operatorFeedbackMetadata"] = args ? args.operatorFeedbackMetadata : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requesterFeedbackMetadata"] = args ? args.requesterFeedbackMetadata : undefined;
         } else {
-            inputs["body"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["image"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["operatorFeedbackMetadata"] = undefined /*out*/;
-            inputs["requesterFeedbackMetadata"] = undefined /*out*/;
+            resourceInputs["body"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["image"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["operatorFeedbackMetadata"] = undefined /*out*/;
+            resourceInputs["requesterFeedbackMetadata"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(FeedbackMessage.__pulumiType, name, inputs, opts);
+        super(FeedbackMessage.__pulumiType, name, resourceInputs, opts);
     }
 }
 

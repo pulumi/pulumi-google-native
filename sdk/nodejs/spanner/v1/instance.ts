@@ -71,7 +71,7 @@ export class Instance extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.config === undefined) && !opts.urn) {
@@ -83,28 +83,28 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            inputs["config"] = args ? args.config : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["nodeCount"] = args ? args.nodeCount : undefined;
-            inputs["processingUnits"] = args ? args.processingUnits : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
+            resourceInputs["processingUnits"] = args ? args.processingUnits : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
-            inputs["config"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["nodeCount"] = undefined /*out*/;
-            inputs["processingUnits"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["config"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["nodeCount"] = undefined /*out*/;
+            resourceInputs["processingUnits"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Instance.__pulumiType, name, inputs, opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

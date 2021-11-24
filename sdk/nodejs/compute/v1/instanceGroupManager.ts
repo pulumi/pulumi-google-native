@@ -128,59 +128,59 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: InstanceGroupManagerArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["autoHealingPolicies"] = args ? args.autoHealingPolicies : undefined;
-            inputs["baseInstanceName"] = args ? args.baseInstanceName : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["distributionPolicy"] = args ? args.distributionPolicy : undefined;
-            inputs["instanceTemplate"] = args ? args.instanceTemplate : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namedPorts"] = args ? args.namedPorts : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["statefulPolicy"] = args ? args.statefulPolicy : undefined;
-            inputs["targetPools"] = args ? args.targetPools : undefined;
-            inputs["targetSize"] = args ? args.targetSize : undefined;
-            inputs["updatePolicy"] = args ? args.updatePolicy : undefined;
-            inputs["versions"] = args ? args.versions : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["currentActions"] = undefined /*out*/;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["instanceGroup"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["region"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["autoHealingPolicies"] = args ? args.autoHealingPolicies : undefined;
+            resourceInputs["baseInstanceName"] = args ? args.baseInstanceName : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["distributionPolicy"] = args ? args.distributionPolicy : undefined;
+            resourceInputs["instanceTemplate"] = args ? args.instanceTemplate : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namedPorts"] = args ? args.namedPorts : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["statefulPolicy"] = args ? args.statefulPolicy : undefined;
+            resourceInputs["targetPools"] = args ? args.targetPools : undefined;
+            resourceInputs["targetSize"] = args ? args.targetSize : undefined;
+            resourceInputs["updatePolicy"] = args ? args.updatePolicy : undefined;
+            resourceInputs["versions"] = args ? args.versions : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["currentActions"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["instanceGroup"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         } else {
-            inputs["autoHealingPolicies"] = undefined /*out*/;
-            inputs["baseInstanceName"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["currentActions"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["distributionPolicy"] = undefined /*out*/;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["instanceGroup"] = undefined /*out*/;
-            inputs["instanceTemplate"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["namedPorts"] = undefined /*out*/;
-            inputs["region"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["statefulPolicy"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["targetPools"] = undefined /*out*/;
-            inputs["targetSize"] = undefined /*out*/;
-            inputs["updatePolicy"] = undefined /*out*/;
-            inputs["versions"] = undefined /*out*/;
-            inputs["zone"] = undefined /*out*/;
+            resourceInputs["autoHealingPolicies"] = undefined /*out*/;
+            resourceInputs["baseInstanceName"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["currentActions"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["distributionPolicy"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["instanceGroup"] = undefined /*out*/;
+            resourceInputs["instanceTemplate"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["namedPorts"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["statefulPolicy"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["targetPools"] = undefined /*out*/;
+            resourceInputs["targetSize"] = undefined /*out*/;
+            resourceInputs["updatePolicy"] = undefined /*out*/;
+            resourceInputs["versions"] = undefined /*out*/;
+            resourceInputs["zone"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(InstanceGroupManager.__pulumiType, name, inputs, opts);
+        super(InstanceGroupManager.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -71,30 +71,30 @@ export class Rollout extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: RolloutArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["deleteServiceStrategy"] = args ? args.deleteServiceStrategy : undefined;
-            inputs["rolloutId"] = args ? args.rolloutId : undefined;
-            inputs["serviceName"] = args ? args.serviceName : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["trafficPercentStrategy"] = args ? args.trafficPercentStrategy : undefined;
+            resourceInputs["createTime"] = args ? args.createTime : undefined;
+            resourceInputs["deleteServiceStrategy"] = args ? args.deleteServiceStrategy : undefined;
+            resourceInputs["rolloutId"] = args ? args.rolloutId : undefined;
+            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["trafficPercentStrategy"] = args ? args.trafficPercentStrategy : undefined;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["deleteServiceStrategy"] = undefined /*out*/;
-            inputs["rolloutId"] = undefined /*out*/;
-            inputs["serviceName"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["trafficPercentStrategy"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deleteServiceStrategy"] = undefined /*out*/;
+            resourceInputs["rolloutId"] = undefined /*out*/;
+            resourceInputs["serviceName"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["trafficPercentStrategy"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Rollout.__pulumiType, name, inputs, opts);
+        super(Rollout.__pulumiType, name, resourceInputs, opts);
     }
 }
 

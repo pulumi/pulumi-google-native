@@ -159,7 +159,7 @@ export class Build extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: BuildArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.projectId === undefined) && !opts.urn) {
@@ -168,70 +168,70 @@ export class Build extends pulumi.CustomResource {
             if ((!args || args.steps === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'steps'");
             }
-            inputs["artifacts"] = args ? args.artifacts : undefined;
-            inputs["availableSecrets"] = args ? args.availableSecrets : undefined;
-            inputs["images"] = args ? args.images : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["logsBucket"] = args ? args.logsBucket : undefined;
-            inputs["options"] = args ? args.options : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["queueTtl"] = args ? args.queueTtl : undefined;
-            inputs["secrets"] = args ? args.secrets : undefined;
-            inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            inputs["source"] = args ? args.source : undefined;
-            inputs["steps"] = args ? args.steps : undefined;
-            inputs["substitutions"] = args ? args.substitutions : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["timeout"] = args ? args.timeout : undefined;
-            inputs["approval"] = undefined /*out*/;
-            inputs["buildTriggerId"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["failureInfo"] = undefined /*out*/;
-            inputs["finishTime"] = undefined /*out*/;
-            inputs["logUrl"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["results"] = undefined /*out*/;
-            inputs["sourceProvenance"] = undefined /*out*/;
-            inputs["startTime"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["statusDetail"] = undefined /*out*/;
-            inputs["timing"] = undefined /*out*/;
-            inputs["warnings"] = undefined /*out*/;
+            resourceInputs["artifacts"] = args ? args.artifacts : undefined;
+            resourceInputs["availableSecrets"] = args ? args.availableSecrets : undefined;
+            resourceInputs["images"] = args ? args.images : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["logsBucket"] = args ? args.logsBucket : undefined;
+            resourceInputs["options"] = args ? args.options : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["queueTtl"] = args ? args.queueTtl : undefined;
+            resourceInputs["secrets"] = args ? args.secrets : undefined;
+            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["steps"] = args ? args.steps : undefined;
+            resourceInputs["substitutions"] = args ? args.substitutions : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["timeout"] = args ? args.timeout : undefined;
+            resourceInputs["approval"] = undefined /*out*/;
+            resourceInputs["buildTriggerId"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["failureInfo"] = undefined /*out*/;
+            resourceInputs["finishTime"] = undefined /*out*/;
+            resourceInputs["logUrl"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["results"] = undefined /*out*/;
+            resourceInputs["sourceProvenance"] = undefined /*out*/;
+            resourceInputs["startTime"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["statusDetail"] = undefined /*out*/;
+            resourceInputs["timing"] = undefined /*out*/;
+            resourceInputs["warnings"] = undefined /*out*/;
         } else {
-            inputs["approval"] = undefined /*out*/;
-            inputs["artifacts"] = undefined /*out*/;
-            inputs["availableSecrets"] = undefined /*out*/;
-            inputs["buildTriggerId"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["failureInfo"] = undefined /*out*/;
-            inputs["finishTime"] = undefined /*out*/;
-            inputs["images"] = undefined /*out*/;
-            inputs["logUrl"] = undefined /*out*/;
-            inputs["logsBucket"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["options"] = undefined /*out*/;
-            inputs["project"] = undefined /*out*/;
-            inputs["queueTtl"] = undefined /*out*/;
-            inputs["results"] = undefined /*out*/;
-            inputs["secrets"] = undefined /*out*/;
-            inputs["serviceAccount"] = undefined /*out*/;
-            inputs["source"] = undefined /*out*/;
-            inputs["sourceProvenance"] = undefined /*out*/;
-            inputs["startTime"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["statusDetail"] = undefined /*out*/;
-            inputs["steps"] = undefined /*out*/;
-            inputs["substitutions"] = undefined /*out*/;
-            inputs["tags"] = undefined /*out*/;
-            inputs["timeout"] = undefined /*out*/;
-            inputs["timing"] = undefined /*out*/;
-            inputs["warnings"] = undefined /*out*/;
+            resourceInputs["approval"] = undefined /*out*/;
+            resourceInputs["artifacts"] = undefined /*out*/;
+            resourceInputs["availableSecrets"] = undefined /*out*/;
+            resourceInputs["buildTriggerId"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["failureInfo"] = undefined /*out*/;
+            resourceInputs["finishTime"] = undefined /*out*/;
+            resourceInputs["images"] = undefined /*out*/;
+            resourceInputs["logUrl"] = undefined /*out*/;
+            resourceInputs["logsBucket"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["options"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["queueTtl"] = undefined /*out*/;
+            resourceInputs["results"] = undefined /*out*/;
+            resourceInputs["secrets"] = undefined /*out*/;
+            resourceInputs["serviceAccount"] = undefined /*out*/;
+            resourceInputs["source"] = undefined /*out*/;
+            resourceInputs["sourceProvenance"] = undefined /*out*/;
+            resourceInputs["startTime"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["statusDetail"] = undefined /*out*/;
+            resourceInputs["steps"] = undefined /*out*/;
+            resourceInputs["substitutions"] = undefined /*out*/;
+            resourceInputs["tags"] = undefined /*out*/;
+            resourceInputs["timeout"] = undefined /*out*/;
+            resourceInputs["timing"] = undefined /*out*/;
+            resourceInputs["warnings"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Build.__pulumiType, name, inputs, opts);
+        super(Build.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -97,47 +97,47 @@ export class Instance extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["fileShares"] = args ? args.fileShares : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["networks"] = args ? args.networks : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["tier"] = args ? args.tier : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["satisfiesPzs"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["statusMessage"] = undefined /*out*/;
-            inputs["suspensionReasons"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["fileShares"] = args ? args.fileShares : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["networks"] = args ? args.networks : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["tier"] = args ? args.tier : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["statusMessage"] = undefined /*out*/;
+            resourceInputs["suspensionReasons"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["fileShares"] = undefined /*out*/;
-            inputs["kmsKeyName"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["networks"] = undefined /*out*/;
-            inputs["satisfiesPzs"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["statusMessage"] = undefined /*out*/;
-            inputs["suspensionReasons"] = undefined /*out*/;
-            inputs["tier"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["fileShares"] = undefined /*out*/;
+            resourceInputs["kmsKeyName"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["networks"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["statusMessage"] = undefined /*out*/;
+            resourceInputs["suspensionReasons"] = undefined /*out*/;
+            resourceInputs["tier"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Instance.__pulumiType, name, inputs, opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

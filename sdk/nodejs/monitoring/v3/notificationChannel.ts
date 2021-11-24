@@ -84,36 +84,36 @@ export class NotificationChannel extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: NotificationChannelArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["creationRecord"] = args ? args.creationRecord : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["mutationRecords"] = args ? args.mutationRecords : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["userLabels"] = args ? args.userLabels : undefined;
-            inputs["verificationStatus"] = args ? args.verificationStatus : undefined;
+            resourceInputs["creationRecord"] = args ? args.creationRecord : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["mutationRecords"] = args ? args.mutationRecords : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["userLabels"] = args ? args.userLabels : undefined;
+            resourceInputs["verificationStatus"] = args ? args.verificationStatus : undefined;
         } else {
-            inputs["creationRecord"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["enabled"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["mutationRecords"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
-            inputs["userLabels"] = undefined /*out*/;
-            inputs["verificationStatus"] = undefined /*out*/;
+            resourceInputs["creationRecord"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["enabled"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["mutationRecords"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["userLabels"] = undefined /*out*/;
+            resourceInputs["verificationStatus"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(NotificationChannel.__pulumiType, name, inputs, opts);
+        super(NotificationChannel.__pulumiType, name, resourceInputs, opts);
     }
 }
 

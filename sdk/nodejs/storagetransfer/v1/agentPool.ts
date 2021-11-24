@@ -60,28 +60,28 @@ export class AgentPool extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: AgentPoolArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.agentPoolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'agentPoolId'");
             }
-            inputs["agentPoolId"] = args ? args.agentPoolId : undefined;
-            inputs["bandwidthLimit"] = args ? args.bandwidthLimit : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["agentPoolId"] = args ? args.agentPoolId : undefined;
+            resourceInputs["bandwidthLimit"] = args ? args.bandwidthLimit : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
-            inputs["bandwidthLimit"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["bandwidthLimit"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AgentPool.__pulumiType, name, inputs, opts);
+        super(AgentPool.__pulumiType, name, resourceInputs, opts);
     }
 }
 

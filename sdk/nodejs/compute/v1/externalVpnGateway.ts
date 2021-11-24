@@ -80,35 +80,35 @@ export class ExternalVpnGateway extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: ExternalVpnGatewayArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["description"] = args ? args.description : undefined;
-            inputs["interfaces"] = args ? args.interfaces : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["redundancyType"] = args ? args.redundancyType : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["labelFingerprint"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["interfaces"] = args ? args.interfaces : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["redundancyType"] = args ? args.redundancyType : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["labelFingerprint"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         } else {
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["interfaces"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["labelFingerprint"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["redundancyType"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["interfaces"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["labelFingerprint"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["redundancyType"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ExternalVpnGateway.__pulumiType, name, inputs, opts);
+        super(ExternalVpnGateway.__pulumiType, name, resourceInputs, opts);
     }
 }
 

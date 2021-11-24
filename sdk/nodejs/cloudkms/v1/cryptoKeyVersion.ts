@@ -103,7 +103,7 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: CryptoKeyVersionArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.cryptoKeyId === undefined) && !opts.urn) {
@@ -112,44 +112,44 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
             if ((!args || args.keyRingId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'keyRingId'");
             }
-            inputs["cryptoKeyId"] = args ? args.cryptoKeyId : undefined;
-            inputs["externalProtectionLevelOptions"] = args ? args.externalProtectionLevelOptions : undefined;
-            inputs["keyRingId"] = args ? args.keyRingId : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["algorithm"] = undefined /*out*/;
-            inputs["attestation"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["destroyEventTime"] = undefined /*out*/;
-            inputs["destroyTime"] = undefined /*out*/;
-            inputs["generateTime"] = undefined /*out*/;
-            inputs["importFailureReason"] = undefined /*out*/;
-            inputs["importJob"] = undefined /*out*/;
-            inputs["importTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["protectionLevel"] = undefined /*out*/;
-            inputs["reimportEligible"] = undefined /*out*/;
+            resourceInputs["cryptoKeyId"] = args ? args.cryptoKeyId : undefined;
+            resourceInputs["externalProtectionLevelOptions"] = args ? args.externalProtectionLevelOptions : undefined;
+            resourceInputs["keyRingId"] = args ? args.keyRingId : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["algorithm"] = undefined /*out*/;
+            resourceInputs["attestation"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["destroyEventTime"] = undefined /*out*/;
+            resourceInputs["destroyTime"] = undefined /*out*/;
+            resourceInputs["generateTime"] = undefined /*out*/;
+            resourceInputs["importFailureReason"] = undefined /*out*/;
+            resourceInputs["importJob"] = undefined /*out*/;
+            resourceInputs["importTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["protectionLevel"] = undefined /*out*/;
+            resourceInputs["reimportEligible"] = undefined /*out*/;
         } else {
-            inputs["algorithm"] = undefined /*out*/;
-            inputs["attestation"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["destroyEventTime"] = undefined /*out*/;
-            inputs["destroyTime"] = undefined /*out*/;
-            inputs["externalProtectionLevelOptions"] = undefined /*out*/;
-            inputs["generateTime"] = undefined /*out*/;
-            inputs["importFailureReason"] = undefined /*out*/;
-            inputs["importJob"] = undefined /*out*/;
-            inputs["importTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["protectionLevel"] = undefined /*out*/;
-            inputs["reimportEligible"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["algorithm"] = undefined /*out*/;
+            resourceInputs["attestation"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["destroyEventTime"] = undefined /*out*/;
+            resourceInputs["destroyTime"] = undefined /*out*/;
+            resourceInputs["externalProtectionLevelOptions"] = undefined /*out*/;
+            resourceInputs["generateTime"] = undefined /*out*/;
+            resourceInputs["importFailureReason"] = undefined /*out*/;
+            resourceInputs["importJob"] = undefined /*out*/;
+            resourceInputs["importTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["protectionLevel"] = undefined /*out*/;
+            resourceInputs["reimportEligible"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(CryptoKeyVersion.__pulumiType, name, inputs, opts);
+        super(CryptoKeyVersion.__pulumiType, name, resourceInputs, opts);
     }
 }
 

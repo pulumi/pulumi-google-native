@@ -51,26 +51,26 @@ export class AnnotationStore extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: AnnotationStoreArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            inputs["annotationStoreId"] = args ? args.annotationStoreId : undefined;
-            inputs["datasetId"] = args ? args.datasetId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
+            resourceInputs["annotationStoreId"] = args ? args.annotationStoreId : undefined;
+            resourceInputs["datasetId"] = args ? args.datasetId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
         } else {
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AnnotationStore.__pulumiType, name, inputs, opts);
+        super(AnnotationStore.__pulumiType, name, resourceInputs, opts);
     }
 }
 

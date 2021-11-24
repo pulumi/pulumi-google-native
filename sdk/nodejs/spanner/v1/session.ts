@@ -60,7 +60,7 @@ export class Session extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: SessionArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.databaseId === undefined) && !opts.urn) {
@@ -69,23 +69,23 @@ export class Session extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            inputs["databaseId"] = args ? args.databaseId : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["approximateLastUseTime"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["databaseId"] = args ? args.databaseId : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["approximateLastUseTime"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         } else {
-            inputs["approximateLastUseTime"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["approximateLastUseTime"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Session.__pulumiType, name, inputs, opts);
+        super(Session.__pulumiType, name, resourceInputs, opts);
     }
 }
 

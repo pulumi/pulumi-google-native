@@ -93,7 +93,7 @@ export class ConnectivityTest extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ConnectivityTestArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.destination === undefined) && !opts.urn) {
@@ -108,38 +108,38 @@ export class ConnectivityTest extends pulumi.CustomResource {
             if ((!args || args.testId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'testId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["destination"] = args ? args.destination : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["protocol"] = args ? args.protocol : undefined;
-            inputs["relatedProjects"] = args ? args.relatedProjects : undefined;
-            inputs["source"] = args ? args.source : undefined;
-            inputs["testId"] = args ? args.testId : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["probingDetails"] = undefined /*out*/;
-            inputs["reachabilityDetails"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["destination"] = args ? args.destination : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["relatedProjects"] = args ? args.relatedProjects : undefined;
+            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["testId"] = args ? args.testId : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["probingDetails"] = undefined /*out*/;
+            resourceInputs["reachabilityDetails"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["destination"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["probingDetails"] = undefined /*out*/;
-            inputs["protocol"] = undefined /*out*/;
-            inputs["reachabilityDetails"] = undefined /*out*/;
-            inputs["relatedProjects"] = undefined /*out*/;
-            inputs["source"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["destination"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["probingDetails"] = undefined /*out*/;
+            resourceInputs["protocol"] = undefined /*out*/;
+            resourceInputs["reachabilityDetails"] = undefined /*out*/;
+            resourceInputs["relatedProjects"] = undefined /*out*/;
+            resourceInputs["source"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ConnectivityTest.__pulumiType, name, inputs, opts);
+        super(ConnectivityTest.__pulumiType, name, resourceInputs, opts);
     }
 }
 

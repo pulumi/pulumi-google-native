@@ -85,7 +85,7 @@ export class DatacenterConnector extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: DatacenterConnectorArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.datacenterConnectorId === undefined) && !opts.urn) {
@@ -94,37 +94,37 @@ export class DatacenterConnector extends pulumi.CustomResource {
             if ((!args || args.sourceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceId'");
             }
-            inputs["datacenterConnectorId"] = args ? args.datacenterConnectorId : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["registrationId"] = args ? args.registrationId : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            inputs["sourceId"] = args ? args.sourceId : undefined;
-            inputs["version"] = args ? args.version : undefined;
-            inputs["bucket"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["error"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["stateTime"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["datacenterConnectorId"] = args ? args.datacenterConnectorId : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["registrationId"] = args ? args.registrationId : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            resourceInputs["sourceId"] = args ? args.sourceId : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["bucket"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["error"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stateTime"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["bucket"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["error"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["registrationId"] = undefined /*out*/;
-            inputs["serviceAccount"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["stateTime"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
-            inputs["version"] = undefined /*out*/;
+            resourceInputs["bucket"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["error"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["registrationId"] = undefined /*out*/;
+            resourceInputs["serviceAccount"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stateTime"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["version"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(DatacenterConnector.__pulumiType, name, inputs, opts);
+        super(DatacenterConnector.__pulumiType, name, resourceInputs, opts);
     }
 }
 

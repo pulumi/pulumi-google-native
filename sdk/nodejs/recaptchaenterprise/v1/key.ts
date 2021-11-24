@@ -76,32 +76,32 @@ export class Key extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: KeyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["androidSettings"] = args ? args.androidSettings : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["iosSettings"] = args ? args.iosSettings : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["testingOptions"] = args ? args.testingOptions : undefined;
-            inputs["webSettings"] = args ? args.webSettings : undefined;
+            resourceInputs["androidSettings"] = args ? args.androidSettings : undefined;
+            resourceInputs["createTime"] = args ? args.createTime : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["iosSettings"] = args ? args.iosSettings : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["testingOptions"] = args ? args.testingOptions : undefined;
+            resourceInputs["webSettings"] = args ? args.webSettings : undefined;
         } else {
-            inputs["androidSettings"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["iosSettings"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["testingOptions"] = undefined /*out*/;
-            inputs["webSettings"] = undefined /*out*/;
+            resourceInputs["androidSettings"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["iosSettings"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["testingOptions"] = undefined /*out*/;
+            resourceInputs["webSettings"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Key.__pulumiType, name, inputs, opts);
+        super(Key.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -71,7 +71,7 @@ export class PerfSampleSeries extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: PerfSampleSeriesArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.executionId === undefined) && !opts.urn) {
@@ -83,24 +83,24 @@ export class PerfSampleSeries extends pulumi.CustomResource {
             if ((!args || args.stepId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'stepId'");
             }
-            inputs["basicPerfSampleSeries"] = args ? args.basicPerfSampleSeries : undefined;
-            inputs["executionId"] = args ? args.executionId : undefined;
-            inputs["historyId"] = args ? args.historyId : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["stepId"] = args ? args.stepId : undefined;
-            inputs["sampleSeriesId"] = undefined /*out*/;
+            resourceInputs["basicPerfSampleSeries"] = args ? args.basicPerfSampleSeries : undefined;
+            resourceInputs["executionId"] = args ? args.executionId : undefined;
+            resourceInputs["historyId"] = args ? args.historyId : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["stepId"] = args ? args.stepId : undefined;
+            resourceInputs["sampleSeriesId"] = undefined /*out*/;
         } else {
-            inputs["basicPerfSampleSeries"] = undefined /*out*/;
-            inputs["executionId"] = undefined /*out*/;
-            inputs["historyId"] = undefined /*out*/;
-            inputs["project"] = undefined /*out*/;
-            inputs["sampleSeriesId"] = undefined /*out*/;
-            inputs["stepId"] = undefined /*out*/;
+            resourceInputs["basicPerfSampleSeries"] = undefined /*out*/;
+            resourceInputs["executionId"] = undefined /*out*/;
+            resourceInputs["historyId"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["sampleSeriesId"] = undefined /*out*/;
+            resourceInputs["stepId"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(PerfSampleSeries.__pulumiType, name, inputs, opts);
+        super(PerfSampleSeries.__pulumiType, name, resourceInputs, opts);
     }
 }
 

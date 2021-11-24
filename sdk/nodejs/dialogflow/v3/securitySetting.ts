@@ -80,38 +80,38 @@ export class SecuritySetting extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: SecuritySettingArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            inputs["deidentifyTemplate"] = args ? args.deidentifyTemplate : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["insightsExportSettings"] = args ? args.insightsExportSettings : undefined;
-            inputs["inspectTemplate"] = args ? args.inspectTemplate : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["purgeDataTypes"] = args ? args.purgeDataTypes : undefined;
-            inputs["redactionScope"] = args ? args.redactionScope : undefined;
-            inputs["redactionStrategy"] = args ? args.redactionStrategy : undefined;
-            inputs["retentionWindowDays"] = args ? args.retentionWindowDays : undefined;
+            resourceInputs["deidentifyTemplate"] = args ? args.deidentifyTemplate : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["insightsExportSettings"] = args ? args.insightsExportSettings : undefined;
+            resourceInputs["inspectTemplate"] = args ? args.inspectTemplate : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["purgeDataTypes"] = args ? args.purgeDataTypes : undefined;
+            resourceInputs["redactionScope"] = args ? args.redactionScope : undefined;
+            resourceInputs["redactionStrategy"] = args ? args.redactionStrategy : undefined;
+            resourceInputs["retentionWindowDays"] = args ? args.retentionWindowDays : undefined;
         } else {
-            inputs["deidentifyTemplate"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["insightsExportSettings"] = undefined /*out*/;
-            inputs["inspectTemplate"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["purgeDataTypes"] = undefined /*out*/;
-            inputs["redactionScope"] = undefined /*out*/;
-            inputs["redactionStrategy"] = undefined /*out*/;
-            inputs["retentionWindowDays"] = undefined /*out*/;
+            resourceInputs["deidentifyTemplate"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["insightsExportSettings"] = undefined /*out*/;
+            resourceInputs["inspectTemplate"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["purgeDataTypes"] = undefined /*out*/;
+            resourceInputs["redactionScope"] = undefined /*out*/;
+            resourceInputs["redactionStrategy"] = undefined /*out*/;
+            resourceInputs["retentionWindowDays"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(SecuritySetting.__pulumiType, name, inputs, opts);
+        super(SecuritySetting.__pulumiType, name, resourceInputs, opts);
     }
 }
 

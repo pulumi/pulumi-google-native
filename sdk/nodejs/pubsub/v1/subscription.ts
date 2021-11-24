@@ -100,7 +100,7 @@ export class Subscription extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: SubscriptionArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.subscriptionId === undefined) && !opts.urn) {
@@ -109,42 +109,42 @@ export class Subscription extends pulumi.CustomResource {
             if ((!args || args.topic === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'topic'");
             }
-            inputs["ackDeadlineSeconds"] = args ? args.ackDeadlineSeconds : undefined;
-            inputs["deadLetterPolicy"] = args ? args.deadLetterPolicy : undefined;
-            inputs["detached"] = args ? args.detached : undefined;
-            inputs["enableMessageOrdering"] = args ? args.enableMessageOrdering : undefined;
-            inputs["expirationPolicy"] = args ? args.expirationPolicy : undefined;
-            inputs["filter"] = args ? args.filter : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["messageRetentionDuration"] = args ? args.messageRetentionDuration : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["pushConfig"] = args ? args.pushConfig : undefined;
-            inputs["retainAckedMessages"] = args ? args.retainAckedMessages : undefined;
-            inputs["retryPolicy"] = args ? args.retryPolicy : undefined;
-            inputs["subscriptionId"] = args ? args.subscriptionId : undefined;
-            inputs["topic"] = args ? args.topic : undefined;
-            inputs["topicMessageRetentionDuration"] = undefined /*out*/;
+            resourceInputs["ackDeadlineSeconds"] = args ? args.ackDeadlineSeconds : undefined;
+            resourceInputs["deadLetterPolicy"] = args ? args.deadLetterPolicy : undefined;
+            resourceInputs["detached"] = args ? args.detached : undefined;
+            resourceInputs["enableMessageOrdering"] = args ? args.enableMessageOrdering : undefined;
+            resourceInputs["expirationPolicy"] = args ? args.expirationPolicy : undefined;
+            resourceInputs["filter"] = args ? args.filter : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["messageRetentionDuration"] = args ? args.messageRetentionDuration : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["pushConfig"] = args ? args.pushConfig : undefined;
+            resourceInputs["retainAckedMessages"] = args ? args.retainAckedMessages : undefined;
+            resourceInputs["retryPolicy"] = args ? args.retryPolicy : undefined;
+            resourceInputs["subscriptionId"] = args ? args.subscriptionId : undefined;
+            resourceInputs["topic"] = args ? args.topic : undefined;
+            resourceInputs["topicMessageRetentionDuration"] = undefined /*out*/;
         } else {
-            inputs["ackDeadlineSeconds"] = undefined /*out*/;
-            inputs["deadLetterPolicy"] = undefined /*out*/;
-            inputs["detached"] = undefined /*out*/;
-            inputs["enableMessageOrdering"] = undefined /*out*/;
-            inputs["expirationPolicy"] = undefined /*out*/;
-            inputs["filter"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["messageRetentionDuration"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["pushConfig"] = undefined /*out*/;
-            inputs["retainAckedMessages"] = undefined /*out*/;
-            inputs["retryPolicy"] = undefined /*out*/;
-            inputs["topic"] = undefined /*out*/;
-            inputs["topicMessageRetentionDuration"] = undefined /*out*/;
+            resourceInputs["ackDeadlineSeconds"] = undefined /*out*/;
+            resourceInputs["deadLetterPolicy"] = undefined /*out*/;
+            resourceInputs["detached"] = undefined /*out*/;
+            resourceInputs["enableMessageOrdering"] = undefined /*out*/;
+            resourceInputs["expirationPolicy"] = undefined /*out*/;
+            resourceInputs["filter"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["messageRetentionDuration"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pushConfig"] = undefined /*out*/;
+            resourceInputs["retainAckedMessages"] = undefined /*out*/;
+            resourceInputs["retryPolicy"] = undefined /*out*/;
+            resourceInputs["topic"] = undefined /*out*/;
+            resourceInputs["topicMessageRetentionDuration"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Subscription.__pulumiType, name, inputs, opts);
+        super(Subscription.__pulumiType, name, resourceInputs, opts);
     }
 }
 

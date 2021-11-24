@@ -65,28 +65,28 @@ export class Instance extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: InstanceArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["featurePolicy"] = args ? args.featurePolicy : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["loggingEnabled"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["featurePolicy"] = args ? args.featurePolicy : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["loggingEnabled"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
-            inputs["featurePolicy"] = undefined /*out*/;
-            inputs["location"] = undefined /*out*/;
-            inputs["loggingEnabled"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["featurePolicy"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["loggingEnabled"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Instance.__pulumiType, name, inputs, opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

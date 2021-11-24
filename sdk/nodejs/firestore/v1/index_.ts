@@ -61,7 +61,7 @@ export class Index extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: IndexArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.collectionGroupId === undefined) && !opts.urn) {
@@ -70,23 +70,23 @@ export class Index extends pulumi.CustomResource {
             if ((!args || args.databaseId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'databaseId'");
             }
-            inputs["collectionGroupId"] = args ? args.collectionGroupId : undefined;
-            inputs["databaseId"] = args ? args.databaseId : undefined;
-            inputs["fields"] = args ? args.fields : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["queryScope"] = args ? args.queryScope : undefined;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["collectionGroupId"] = args ? args.collectionGroupId : undefined;
+            resourceInputs["databaseId"] = args ? args.databaseId : undefined;
+            resourceInputs["fields"] = args ? args.fields : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["queryScope"] = args ? args.queryScope : undefined;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
-            inputs["fields"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["queryScope"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["fields"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["queryScope"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Index.__pulumiType, name, inputs, opts);
+        super(Index.__pulumiType, name, resourceInputs, opts);
     }
 }
 

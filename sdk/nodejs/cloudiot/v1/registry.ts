@@ -72,32 +72,32 @@ export class Registry extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: RegistryArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["credentials"] = args ? args.credentials : undefined;
-            inputs["eventNotificationConfigs"] = args ? args.eventNotificationConfigs : undefined;
-            inputs["httpConfig"] = args ? args.httpConfig : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["logLevel"] = args ? args.logLevel : undefined;
-            inputs["mqttConfig"] = args ? args.mqttConfig : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["stateNotificationConfig"] = args ? args.stateNotificationConfig : undefined;
+            resourceInputs["credentials"] = args ? args.credentials : undefined;
+            resourceInputs["eventNotificationConfigs"] = args ? args.eventNotificationConfigs : undefined;
+            resourceInputs["httpConfig"] = args ? args.httpConfig : undefined;
+            resourceInputs["id"] = args ? args.id : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["logLevel"] = args ? args.logLevel : undefined;
+            resourceInputs["mqttConfig"] = args ? args.mqttConfig : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["stateNotificationConfig"] = args ? args.stateNotificationConfig : undefined;
         } else {
-            inputs["credentials"] = undefined /*out*/;
-            inputs["eventNotificationConfigs"] = undefined /*out*/;
-            inputs["httpConfig"] = undefined /*out*/;
-            inputs["logLevel"] = undefined /*out*/;
-            inputs["mqttConfig"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["stateNotificationConfig"] = undefined /*out*/;
+            resourceInputs["credentials"] = undefined /*out*/;
+            resourceInputs["eventNotificationConfigs"] = undefined /*out*/;
+            resourceInputs["httpConfig"] = undefined /*out*/;
+            resourceInputs["logLevel"] = undefined /*out*/;
+            resourceInputs["mqttConfig"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["stateNotificationConfig"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Registry.__pulumiType, name, inputs, opts);
+        super(Registry.__pulumiType, name, resourceInputs, opts);
     }
 }
 

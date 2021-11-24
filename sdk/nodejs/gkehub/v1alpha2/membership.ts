@@ -97,47 +97,47 @@ export class Membership extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: MembershipArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.membershipId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'membershipId'");
             }
-            inputs["authority"] = args ? args.authority : undefined;
-            inputs["endpoint"] = args ? args.endpoint : undefined;
-            inputs["externalId"] = args ? args.externalId : undefined;
-            inputs["infrastructureType"] = args ? args.infrastructureType : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["membershipId"] = args ? args.membershipId : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["deleteTime"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["lastConnectionTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["uniqueId"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["authority"] = args ? args.authority : undefined;
+            resourceInputs["endpoint"] = args ? args.endpoint : undefined;
+            resourceInputs["externalId"] = args ? args.externalId : undefined;
+            resourceInputs["infrastructureType"] = args ? args.infrastructureType : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["membershipId"] = args ? args.membershipId : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deleteTime"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["lastConnectionTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["uniqueId"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["authority"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["deleteTime"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["endpoint"] = undefined /*out*/;
-            inputs["externalId"] = undefined /*out*/;
-            inputs["infrastructureType"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["lastConnectionTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["uniqueId"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["authority"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deleteTime"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["endpoint"] = undefined /*out*/;
+            resourceInputs["externalId"] = undefined /*out*/;
+            resourceInputs["infrastructureType"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["lastConnectionTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["uniqueId"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Membership.__pulumiType, name, inputs, opts);
+        super(Membership.__pulumiType, name, resourceInputs, opts);
     }
 }
 

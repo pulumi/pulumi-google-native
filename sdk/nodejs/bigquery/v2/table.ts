@@ -161,78 +161,78 @@ export class Table extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: TableArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            inputs["clustering"] = args ? args.clustering : undefined;
-            inputs["datasetId"] = args ? args.datasetId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["encryptionConfiguration"] = args ? args.encryptionConfiguration : undefined;
-            inputs["expirationTime"] = args ? args.expirationTime : undefined;
-            inputs["externalDataConfiguration"] = args ? args.externalDataConfiguration : undefined;
-            inputs["friendlyName"] = args ? args.friendlyName : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["materializedView"] = args ? args.materializedView : undefined;
-            inputs["model"] = args ? args.model : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["rangePartitioning"] = args ? args.rangePartitioning : undefined;
-            inputs["requirePartitionFilter"] = args ? args.requirePartitionFilter : undefined;
-            inputs["schema"] = args ? args.schema : undefined;
-            inputs["tableReference"] = args ? args.tableReference : undefined;
-            inputs["timePartitioning"] = args ? args.timePartitioning : undefined;
-            inputs["view"] = args ? args.view : undefined;
-            inputs["creationTime"] = undefined /*out*/;
-            inputs["defaultCollation"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["lastModifiedTime"] = undefined /*out*/;
-            inputs["location"] = undefined /*out*/;
-            inputs["numBytes"] = undefined /*out*/;
-            inputs["numLongTermBytes"] = undefined /*out*/;
-            inputs["numPhysicalBytes"] = undefined /*out*/;
-            inputs["numRows"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["snapshotDefinition"] = undefined /*out*/;
-            inputs["streamingBuffer"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
+            resourceInputs["clustering"] = args ? args.clustering : undefined;
+            resourceInputs["datasetId"] = args ? args.datasetId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["encryptionConfiguration"] = args ? args.encryptionConfiguration : undefined;
+            resourceInputs["expirationTime"] = args ? args.expirationTime : undefined;
+            resourceInputs["externalDataConfiguration"] = args ? args.externalDataConfiguration : undefined;
+            resourceInputs["friendlyName"] = args ? args.friendlyName : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["materializedView"] = args ? args.materializedView : undefined;
+            resourceInputs["model"] = args ? args.model : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["rangePartitioning"] = args ? args.rangePartitioning : undefined;
+            resourceInputs["requirePartitionFilter"] = args ? args.requirePartitionFilter : undefined;
+            resourceInputs["schema"] = args ? args.schema : undefined;
+            resourceInputs["tableReference"] = args ? args.tableReference : undefined;
+            resourceInputs["timePartitioning"] = args ? args.timePartitioning : undefined;
+            resourceInputs["view"] = args ? args.view : undefined;
+            resourceInputs["creationTime"] = undefined /*out*/;
+            resourceInputs["defaultCollation"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["lastModifiedTime"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["numBytes"] = undefined /*out*/;
+            resourceInputs["numLongTermBytes"] = undefined /*out*/;
+            resourceInputs["numPhysicalBytes"] = undefined /*out*/;
+            resourceInputs["numRows"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["snapshotDefinition"] = undefined /*out*/;
+            resourceInputs["streamingBuffer"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         } else {
-            inputs["clustering"] = undefined /*out*/;
-            inputs["creationTime"] = undefined /*out*/;
-            inputs["defaultCollation"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["encryptionConfiguration"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["expirationTime"] = undefined /*out*/;
-            inputs["externalDataConfiguration"] = undefined /*out*/;
-            inputs["friendlyName"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["lastModifiedTime"] = undefined /*out*/;
-            inputs["location"] = undefined /*out*/;
-            inputs["materializedView"] = undefined /*out*/;
-            inputs["model"] = undefined /*out*/;
-            inputs["numBytes"] = undefined /*out*/;
-            inputs["numLongTermBytes"] = undefined /*out*/;
-            inputs["numPhysicalBytes"] = undefined /*out*/;
-            inputs["numRows"] = undefined /*out*/;
-            inputs["rangePartitioning"] = undefined /*out*/;
-            inputs["requirePartitionFilter"] = undefined /*out*/;
-            inputs["schema"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["snapshotDefinition"] = undefined /*out*/;
-            inputs["streamingBuffer"] = undefined /*out*/;
-            inputs["tableReference"] = undefined /*out*/;
-            inputs["timePartitioning"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
-            inputs["view"] = undefined /*out*/;
+            resourceInputs["clustering"] = undefined /*out*/;
+            resourceInputs["creationTime"] = undefined /*out*/;
+            resourceInputs["defaultCollation"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["encryptionConfiguration"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["expirationTime"] = undefined /*out*/;
+            resourceInputs["externalDataConfiguration"] = undefined /*out*/;
+            resourceInputs["friendlyName"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["lastModifiedTime"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["materializedView"] = undefined /*out*/;
+            resourceInputs["model"] = undefined /*out*/;
+            resourceInputs["numBytes"] = undefined /*out*/;
+            resourceInputs["numLongTermBytes"] = undefined /*out*/;
+            resourceInputs["numPhysicalBytes"] = undefined /*out*/;
+            resourceInputs["numRows"] = undefined /*out*/;
+            resourceInputs["rangePartitioning"] = undefined /*out*/;
+            resourceInputs["requirePartitionFilter"] = undefined /*out*/;
+            resourceInputs["schema"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["snapshotDefinition"] = undefined /*out*/;
+            resourceInputs["streamingBuffer"] = undefined /*out*/;
+            resourceInputs["tableReference"] = undefined /*out*/;
+            resourceInputs["timePartitioning"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["view"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Table.__pulumiType, name, inputs, opts);
+        super(Table.__pulumiType, name, resourceInputs, opts);
     }
 }
 

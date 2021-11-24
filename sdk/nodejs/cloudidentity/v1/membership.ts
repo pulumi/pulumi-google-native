@@ -69,7 +69,7 @@ export class Membership extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: MembershipArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.groupId === undefined) && !opts.urn) {
@@ -78,25 +78,25 @@ export class Membership extends pulumi.CustomResource {
             if ((!args || args.preferredMemberKey === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'preferredMemberKey'");
             }
-            inputs["groupId"] = args ? args.groupId : undefined;
-            inputs["preferredMemberKey"] = args ? args.preferredMemberKey : undefined;
-            inputs["roles"] = args ? args.roles : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["preferredMemberKey"] = args ? args.preferredMemberKey : undefined;
+            resourceInputs["roles"] = args ? args.roles : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["preferredMemberKey"] = undefined /*out*/;
-            inputs["roles"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["preferredMemberKey"] = undefined /*out*/;
+            resourceInputs["roles"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Membership.__pulumiType, name, inputs, opts);
+        super(Membership.__pulumiType, name, resourceInputs, opts);
     }
 }
 

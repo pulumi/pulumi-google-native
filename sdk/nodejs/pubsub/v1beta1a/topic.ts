@@ -47,17 +47,17 @@ export class Topic extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: TopicArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["name"] = args ? args.name : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
         } else {
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Topic.__pulumiType, name, inputs, opts);
+        super(Topic.__pulumiType, name, resourceInputs, opts);
     }
 }
 

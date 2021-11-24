@@ -72,7 +72,7 @@ export class Route extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: RouteArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.destinationAddress === undefined) && !opts.urn) {
@@ -87,31 +87,31 @@ export class Route extends pulumi.CustomResource {
             if ((!args || args.routeId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'routeId'");
             }
-            inputs["destinationAddress"] = args ? args.destinationAddress : undefined;
-            inputs["destinationPort"] = args ? args.destinationPort : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["privateConnectionId"] = args ? args.privateConnectionId : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["routeId"] = args ? args.routeId : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["destinationAddress"] = args ? args.destinationAddress : undefined;
+            resourceInputs["destinationPort"] = args ? args.destinationPort : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["privateConnectionId"] = args ? args.privateConnectionId : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["routeId"] = args ? args.routeId : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["destinationAddress"] = undefined /*out*/;
-            inputs["destinationPort"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["destinationAddress"] = undefined /*out*/;
+            resourceInputs["destinationPort"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Route.__pulumiType, name, inputs, opts);
+        super(Route.__pulumiType, name, resourceInputs, opts);
     }
 }
 

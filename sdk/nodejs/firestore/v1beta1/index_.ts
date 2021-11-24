@@ -60,28 +60,28 @@ export class Index extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: IndexArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.databaseId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'databaseId'");
             }
-            inputs["collectionId"] = args ? args.collectionId : undefined;
-            inputs["databaseId"] = args ? args.databaseId : undefined;
-            inputs["fields"] = args ? args.fields : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["state"] = args ? args.state : undefined;
+            resourceInputs["collectionId"] = args ? args.collectionId : undefined;
+            resourceInputs["databaseId"] = args ? args.databaseId : undefined;
+            resourceInputs["fields"] = args ? args.fields : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["state"] = args ? args.state : undefined;
         } else {
-            inputs["collectionId"] = undefined /*out*/;
-            inputs["fields"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["collectionId"] = undefined /*out*/;
+            resourceInputs["fields"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Index.__pulumiType, name, inputs, opts);
+        super(Index.__pulumiType, name, resourceInputs, opts);
     }
 }
 

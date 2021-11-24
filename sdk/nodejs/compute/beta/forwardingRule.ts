@@ -158,80 +158,80 @@ export class ForwardingRule extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ForwardingRuleArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["allPorts"] = args ? args.allPorts : undefined;
-            inputs["allowGlobalAccess"] = args ? args.allowGlobalAccess : undefined;
-            inputs["backendService"] = args ? args.backendService : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["ipAddress"] = args ? args.ipAddress : undefined;
-            inputs["ipProtocol"] = args ? args.ipProtocol : undefined;
-            inputs["ipVersion"] = args ? args.ipVersion : undefined;
-            inputs["isMirroringCollector"] = args ? args.isMirroringCollector : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
-            inputs["metadataFilters"] = args ? args.metadataFilters : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["networkTier"] = args ? args.networkTier : undefined;
-            inputs["portRange"] = args ? args.portRange : undefined;
-            inputs["ports"] = args ? args.ports : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["pscConnectionStatus"] = args ? args.pscConnectionStatus : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["serviceDirectoryRegistrations"] = args ? args.serviceDirectoryRegistrations : undefined;
-            inputs["serviceLabel"] = args ? args.serviceLabel : undefined;
-            inputs["sourceIpRanges"] = args ? args.sourceIpRanges : undefined;
-            inputs["subnetwork"] = args ? args.subnetwork : undefined;
-            inputs["target"] = args ? args.target : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["labelFingerprint"] = undefined /*out*/;
-            inputs["pscConnectionId"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["serviceName"] = undefined /*out*/;
+            resourceInputs["allPorts"] = args ? args.allPorts : undefined;
+            resourceInputs["allowGlobalAccess"] = args ? args.allowGlobalAccess : undefined;
+            resourceInputs["backendService"] = args ? args.backendService : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
+            resourceInputs["ipProtocol"] = args ? args.ipProtocol : undefined;
+            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
+            resourceInputs["isMirroringCollector"] = args ? args.isMirroringCollector : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
+            resourceInputs["metadataFilters"] = args ? args.metadataFilters : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["networkTier"] = args ? args.networkTier : undefined;
+            resourceInputs["portRange"] = args ? args.portRange : undefined;
+            resourceInputs["ports"] = args ? args.ports : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["pscConnectionStatus"] = args ? args.pscConnectionStatus : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["serviceDirectoryRegistrations"] = args ? args.serviceDirectoryRegistrations : undefined;
+            resourceInputs["serviceLabel"] = args ? args.serviceLabel : undefined;
+            resourceInputs["sourceIpRanges"] = args ? args.sourceIpRanges : undefined;
+            resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
+            resourceInputs["target"] = args ? args.target : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["labelFingerprint"] = undefined /*out*/;
+            resourceInputs["pscConnectionId"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["serviceName"] = undefined /*out*/;
         } else {
-            inputs["allPorts"] = undefined /*out*/;
-            inputs["allowGlobalAccess"] = undefined /*out*/;
-            inputs["backendService"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["ipAddress"] = undefined /*out*/;
-            inputs["ipProtocol"] = undefined /*out*/;
-            inputs["ipVersion"] = undefined /*out*/;
-            inputs["isMirroringCollector"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["labelFingerprint"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["loadBalancingScheme"] = undefined /*out*/;
-            inputs["metadataFilters"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["network"] = undefined /*out*/;
-            inputs["networkTier"] = undefined /*out*/;
-            inputs["portRange"] = undefined /*out*/;
-            inputs["ports"] = undefined /*out*/;
-            inputs["pscConnectionId"] = undefined /*out*/;
-            inputs["pscConnectionStatus"] = undefined /*out*/;
-            inputs["region"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["serviceDirectoryRegistrations"] = undefined /*out*/;
-            inputs["serviceLabel"] = undefined /*out*/;
-            inputs["serviceName"] = undefined /*out*/;
-            inputs["sourceIpRanges"] = undefined /*out*/;
-            inputs["subnetwork"] = undefined /*out*/;
-            inputs["target"] = undefined /*out*/;
+            resourceInputs["allPorts"] = undefined /*out*/;
+            resourceInputs["allowGlobalAccess"] = undefined /*out*/;
+            resourceInputs["backendService"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["ipAddress"] = undefined /*out*/;
+            resourceInputs["ipProtocol"] = undefined /*out*/;
+            resourceInputs["ipVersion"] = undefined /*out*/;
+            resourceInputs["isMirroringCollector"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["labelFingerprint"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["loadBalancingScheme"] = undefined /*out*/;
+            resourceInputs["metadataFilters"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["network"] = undefined /*out*/;
+            resourceInputs["networkTier"] = undefined /*out*/;
+            resourceInputs["portRange"] = undefined /*out*/;
+            resourceInputs["ports"] = undefined /*out*/;
+            resourceInputs["pscConnectionId"] = undefined /*out*/;
+            resourceInputs["pscConnectionStatus"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["serviceDirectoryRegistrations"] = undefined /*out*/;
+            resourceInputs["serviceLabel"] = undefined /*out*/;
+            resourceInputs["serviceName"] = undefined /*out*/;
+            resourceInputs["sourceIpRanges"] = undefined /*out*/;
+            resourceInputs["subnetwork"] = undefined /*out*/;
+            resourceInputs["target"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ForwardingRule.__pulumiType, name, inputs, opts);
+        super(ForwardingRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

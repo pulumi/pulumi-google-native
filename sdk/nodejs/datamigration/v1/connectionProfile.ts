@@ -88,44 +88,44 @@ export class ConnectionProfile extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ConnectionProfileArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.connectionProfileId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'connectionProfileId'");
             }
-            inputs["cloudsql"] = args ? args.cloudsql : undefined;
-            inputs["connectionProfileId"] = args ? args.connectionProfileId : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["mysql"] = args ? args.mysql : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["postgresql"] = args ? args.postgresql : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["provider"] = args ? args.provider : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["error"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["cloudsql"] = args ? args.cloudsql : undefined;
+            resourceInputs["connectionProfileId"] = args ? args.connectionProfileId : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["mysql"] = args ? args.mysql : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["postgresql"] = args ? args.postgresql : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["provider"] = args ? args.provider : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["error"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["cloudsql"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["error"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["mysql"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["postgresql"] = undefined /*out*/;
-            inputs["provider"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["cloudsql"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["error"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["mysql"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["postgresql"] = undefined /*out*/;
+            resourceInputs["provider"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ConnectionProfile.__pulumiType, name, inputs, opts);
+        super(ConnectionProfile.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -76,39 +76,39 @@ export class NetworkEdgeSecurityService extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: NetworkEdgeSecurityServiceArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["securityPolicy"] = args ? args.securityPolicy : undefined;
-            inputs["validateOnly"] = args ? args.validateOnly : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["securityPolicy"] = args ? args.securityPolicy : undefined;
+            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
         } else {
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["region"] = undefined /*out*/;
-            inputs["securityPolicy"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["securityPolicy"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(NetworkEdgeSecurityService.__pulumiType, name, inputs, opts);
+        super(NetworkEdgeSecurityService.__pulumiType, name, resourceInputs, opts);
     }
 }
 

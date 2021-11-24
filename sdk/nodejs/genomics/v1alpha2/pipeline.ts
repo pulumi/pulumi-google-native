@@ -76,34 +76,34 @@ export class Pipeline extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: PipelineArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.resources === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resources'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["docker"] = args ? args.docker : undefined;
-            inputs["inputParameters"] = args ? args.inputParameters : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["outputParameters"] = args ? args.outputParameters : undefined;
-            inputs["pipelineId"] = args ? args.pipelineId : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["resources"] = args ? args.resources : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["docker"] = args ? args.docker : undefined;
+            resourceInputs["inputParameters"] = args ? args.inputParameters : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["outputParameters"] = args ? args.outputParameters : undefined;
+            resourceInputs["pipelineId"] = args ? args.pipelineId : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["resources"] = args ? args.resources : undefined;
         } else {
-            inputs["description"] = undefined /*out*/;
-            inputs["docker"] = undefined /*out*/;
-            inputs["inputParameters"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["outputParameters"] = undefined /*out*/;
-            inputs["pipelineId"] = undefined /*out*/;
-            inputs["project"] = undefined /*out*/;
-            inputs["resources"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["docker"] = undefined /*out*/;
+            resourceInputs["inputParameters"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["outputParameters"] = undefined /*out*/;
+            resourceInputs["pipelineId"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["resources"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Pipeline.__pulumiType, name, inputs, opts);
+        super(Pipeline.__pulumiType, name, resourceInputs, opts);
     }
 }
 

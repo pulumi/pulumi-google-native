@@ -98,50 +98,50 @@ export class NodeTemplate extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: NodeTemplateArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["accelerators"] = args ? args.accelerators : undefined;
-            inputs["cpuOvercommitType"] = args ? args.cpuOvercommitType : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["disks"] = args ? args.disks : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["nodeAffinityLabels"] = args ? args.nodeAffinityLabels : undefined;
-            inputs["nodeType"] = args ? args.nodeType : undefined;
-            inputs["nodeTypeFlexibility"] = args ? args.nodeTypeFlexibility : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["serverBinding"] = args ? args.serverBinding : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["statusMessage"] = undefined /*out*/;
+            resourceInputs["accelerators"] = args ? args.accelerators : undefined;
+            resourceInputs["cpuOvercommitType"] = args ? args.cpuOvercommitType : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disks"] = args ? args.disks : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nodeAffinityLabels"] = args ? args.nodeAffinityLabels : undefined;
+            resourceInputs["nodeType"] = args ? args.nodeType : undefined;
+            resourceInputs["nodeTypeFlexibility"] = args ? args.nodeTypeFlexibility : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["serverBinding"] = args ? args.serverBinding : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["statusMessage"] = undefined /*out*/;
         } else {
-            inputs["accelerators"] = undefined /*out*/;
-            inputs["cpuOvercommitType"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["disks"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["nodeAffinityLabels"] = undefined /*out*/;
-            inputs["nodeType"] = undefined /*out*/;
-            inputs["nodeTypeFlexibility"] = undefined /*out*/;
-            inputs["region"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["serverBinding"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["statusMessage"] = undefined /*out*/;
+            resourceInputs["accelerators"] = undefined /*out*/;
+            resourceInputs["cpuOvercommitType"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["disks"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["nodeAffinityLabels"] = undefined /*out*/;
+            resourceInputs["nodeType"] = undefined /*out*/;
+            resourceInputs["nodeTypeFlexibility"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["serverBinding"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["statusMessage"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(NodeTemplate.__pulumiType, name, inputs, opts);
+        super(NodeTemplate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

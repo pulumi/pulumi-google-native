@@ -58,7 +58,7 @@ export class InstanceBackupIamPolicy extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: InstanceBackupIamPolicyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.backupId === undefined) && !opts.urn) {
@@ -67,21 +67,21 @@ export class InstanceBackupIamPolicy extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            inputs["backupId"] = args ? args.backupId : undefined;
-            inputs["bindings"] = args ? args.bindings : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["version"] = args ? args.version : undefined;
+            resourceInputs["backupId"] = args ? args.backupId : undefined;
+            resourceInputs["bindings"] = args ? args.bindings : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
         } else {
-            inputs["bindings"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["version"] = undefined /*out*/;
+            resourceInputs["bindings"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["version"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(InstanceBackupIamPolicy.__pulumiType, name, inputs, opts);
+        super(InstanceBackupIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

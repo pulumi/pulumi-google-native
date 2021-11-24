@@ -60,26 +60,26 @@ export class ProductSet extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: ProductSetArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["productSetId"] = args ? args.productSetId : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["indexError"] = undefined /*out*/;
-            inputs["indexTime"] = undefined /*out*/;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["productSetId"] = args ? args.productSetId : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["indexError"] = undefined /*out*/;
+            resourceInputs["indexTime"] = undefined /*out*/;
         } else {
-            inputs["displayName"] = undefined /*out*/;
-            inputs["indexError"] = undefined /*out*/;
-            inputs["indexTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["indexError"] = undefined /*out*/;
+            resourceInputs["indexTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ProductSet.__pulumiType, name, inputs, opts);
+        super(ProductSet.__pulumiType, name, resourceInputs, opts);
     }
 }
 

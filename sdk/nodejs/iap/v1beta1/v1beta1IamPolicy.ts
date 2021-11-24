@@ -58,25 +58,25 @@ export class V1beta1IamPolicy extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: V1beta1IamPolicyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.v1beta1Id === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'v1beta1Id'");
             }
-            inputs["bindings"] = args ? args.bindings : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["v1beta1Id"] = args ? args.v1beta1Id : undefined;
-            inputs["version"] = args ? args.version : undefined;
+            resourceInputs["bindings"] = args ? args.bindings : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["v1beta1Id"] = args ? args.v1beta1Id : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
         } else {
-            inputs["bindings"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["version"] = undefined /*out*/;
+            resourceInputs["bindings"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["version"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(V1beta1IamPolicy.__pulumiType, name, inputs, opts);
+        super(V1beta1IamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

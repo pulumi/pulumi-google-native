@@ -181,7 +181,7 @@ export class Instance extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
@@ -190,83 +190,83 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.machineType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'machineType'");
             }
-            inputs["acceleratorConfig"] = args ? args.acceleratorConfig : undefined;
-            inputs["bootDiskSizeGb"] = args ? args.bootDiskSizeGb : undefined;
-            inputs["bootDiskType"] = args ? args.bootDiskType : undefined;
-            inputs["containerImage"] = args ? args.containerImage : undefined;
-            inputs["customGpuDriverPath"] = args ? args.customGpuDriverPath : undefined;
-            inputs["dataDiskSizeGb"] = args ? args.dataDiskSizeGb : undefined;
-            inputs["dataDiskType"] = args ? args.dataDiskType : undefined;
-            inputs["diskEncryption"] = args ? args.diskEncryption : undefined;
-            inputs["installGpuDriver"] = args ? args.installGpuDriver : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["instanceOwners"] = args ? args.instanceOwners : undefined;
-            inputs["kmsKey"] = args ? args.kmsKey : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["machineType"] = args ? args.machineType : undefined;
-            inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["nicType"] = args ? args.nicType : undefined;
-            inputs["noProxyAccess"] = args ? args.noProxyAccess : undefined;
-            inputs["noPublicIp"] = args ? args.noPublicIp : undefined;
-            inputs["noRemoveDataDisk"] = args ? args.noRemoveDataDisk : undefined;
-            inputs["postStartupScript"] = args ? args.postStartupScript : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["reservationAffinity"] = args ? args.reservationAffinity : undefined;
-            inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            inputs["serviceAccountScopes"] = args ? args.serviceAccountScopes : undefined;
-            inputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
-            inputs["subnet"] = args ? args.subnet : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["upgradeHistory"] = args ? args.upgradeHistory : undefined;
-            inputs["vmImage"] = args ? args.vmImage : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["disks"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["proxyUri"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["acceleratorConfig"] = args ? args.acceleratorConfig : undefined;
+            resourceInputs["bootDiskSizeGb"] = args ? args.bootDiskSizeGb : undefined;
+            resourceInputs["bootDiskType"] = args ? args.bootDiskType : undefined;
+            resourceInputs["containerImage"] = args ? args.containerImage : undefined;
+            resourceInputs["customGpuDriverPath"] = args ? args.customGpuDriverPath : undefined;
+            resourceInputs["dataDiskSizeGb"] = args ? args.dataDiskSizeGb : undefined;
+            resourceInputs["dataDiskType"] = args ? args.dataDiskType : undefined;
+            resourceInputs["diskEncryption"] = args ? args.diskEncryption : undefined;
+            resourceInputs["installGpuDriver"] = args ? args.installGpuDriver : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["instanceOwners"] = args ? args.instanceOwners : undefined;
+            resourceInputs["kmsKey"] = args ? args.kmsKey : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["machineType"] = args ? args.machineType : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["nicType"] = args ? args.nicType : undefined;
+            resourceInputs["noProxyAccess"] = args ? args.noProxyAccess : undefined;
+            resourceInputs["noPublicIp"] = args ? args.noPublicIp : undefined;
+            resourceInputs["noRemoveDataDisk"] = args ? args.noRemoveDataDisk : undefined;
+            resourceInputs["postStartupScript"] = args ? args.postStartupScript : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["reservationAffinity"] = args ? args.reservationAffinity : undefined;
+            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            resourceInputs["serviceAccountScopes"] = args ? args.serviceAccountScopes : undefined;
+            resourceInputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
+            resourceInputs["subnet"] = args ? args.subnet : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["upgradeHistory"] = args ? args.upgradeHistory : undefined;
+            resourceInputs["vmImage"] = args ? args.vmImage : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["disks"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["proxyUri"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["acceleratorConfig"] = undefined /*out*/;
-            inputs["bootDiskSizeGb"] = undefined /*out*/;
-            inputs["bootDiskType"] = undefined /*out*/;
-            inputs["containerImage"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["customGpuDriverPath"] = undefined /*out*/;
-            inputs["dataDiskSizeGb"] = undefined /*out*/;
-            inputs["dataDiskType"] = undefined /*out*/;
-            inputs["diskEncryption"] = undefined /*out*/;
-            inputs["disks"] = undefined /*out*/;
-            inputs["installGpuDriver"] = undefined /*out*/;
-            inputs["instanceOwners"] = undefined /*out*/;
-            inputs["kmsKey"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["machineType"] = undefined /*out*/;
-            inputs["metadata"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["network"] = undefined /*out*/;
-            inputs["nicType"] = undefined /*out*/;
-            inputs["noProxyAccess"] = undefined /*out*/;
-            inputs["noPublicIp"] = undefined /*out*/;
-            inputs["noRemoveDataDisk"] = undefined /*out*/;
-            inputs["postStartupScript"] = undefined /*out*/;
-            inputs["proxyUri"] = undefined /*out*/;
-            inputs["reservationAffinity"] = undefined /*out*/;
-            inputs["serviceAccount"] = undefined /*out*/;
-            inputs["serviceAccountScopes"] = undefined /*out*/;
-            inputs["shieldedInstanceConfig"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["subnet"] = undefined /*out*/;
-            inputs["tags"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
-            inputs["upgradeHistory"] = undefined /*out*/;
-            inputs["vmImage"] = undefined /*out*/;
+            resourceInputs["acceleratorConfig"] = undefined /*out*/;
+            resourceInputs["bootDiskSizeGb"] = undefined /*out*/;
+            resourceInputs["bootDiskType"] = undefined /*out*/;
+            resourceInputs["containerImage"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["customGpuDriverPath"] = undefined /*out*/;
+            resourceInputs["dataDiskSizeGb"] = undefined /*out*/;
+            resourceInputs["dataDiskType"] = undefined /*out*/;
+            resourceInputs["diskEncryption"] = undefined /*out*/;
+            resourceInputs["disks"] = undefined /*out*/;
+            resourceInputs["installGpuDriver"] = undefined /*out*/;
+            resourceInputs["instanceOwners"] = undefined /*out*/;
+            resourceInputs["kmsKey"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["machineType"] = undefined /*out*/;
+            resourceInputs["metadata"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["network"] = undefined /*out*/;
+            resourceInputs["nicType"] = undefined /*out*/;
+            resourceInputs["noProxyAccess"] = undefined /*out*/;
+            resourceInputs["noPublicIp"] = undefined /*out*/;
+            resourceInputs["noRemoveDataDisk"] = undefined /*out*/;
+            resourceInputs["postStartupScript"] = undefined /*out*/;
+            resourceInputs["proxyUri"] = undefined /*out*/;
+            resourceInputs["reservationAffinity"] = undefined /*out*/;
+            resourceInputs["serviceAccount"] = undefined /*out*/;
+            resourceInputs["serviceAccountScopes"] = undefined /*out*/;
+            resourceInputs["shieldedInstanceConfig"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["subnet"] = undefined /*out*/;
+            resourceInputs["tags"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["upgradeHistory"] = undefined /*out*/;
+            resourceInputs["vmImage"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Instance.__pulumiType, name, inputs, opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -64,30 +64,30 @@ export class DataCollector extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: DataCollectorArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            inputs["dataCollectorId"] = args ? args.dataCollectorId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["lastModifiedAt"] = undefined /*out*/;
+            resourceInputs["dataCollectorId"] = args ? args.dataCollectorId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["lastModifiedAt"] = undefined /*out*/;
         } else {
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["lastModifiedAt"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["lastModifiedAt"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(DataCollector.__pulumiType, name, inputs, opts);
+        super(DataCollector.__pulumiType, name, resourceInputs, opts);
     }
 }
 

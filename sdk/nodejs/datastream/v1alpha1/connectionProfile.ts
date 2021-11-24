@@ -93,7 +93,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ConnectionProfileArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.connectionProfileId === undefined) && !opts.urn) {
@@ -102,40 +102,40 @@ export class ConnectionProfile extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            inputs["connectionProfileId"] = args ? args.connectionProfileId : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["forwardSshConnectivity"] = args ? args.forwardSshConnectivity : undefined;
-            inputs["gcsProfile"] = args ? args.gcsProfile : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["mysqlProfile"] = args ? args.mysqlProfile : undefined;
-            inputs["noConnectivity"] = args ? args.noConnectivity : undefined;
-            inputs["oracleProfile"] = args ? args.oracleProfile : undefined;
-            inputs["privateConnectivity"] = args ? args.privateConnectivity : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["staticServiceIpConnectivity"] = args ? args.staticServiceIpConnectivity : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["connectionProfileId"] = args ? args.connectionProfileId : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["forwardSshConnectivity"] = args ? args.forwardSshConnectivity : undefined;
+            resourceInputs["gcsProfile"] = args ? args.gcsProfile : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["mysqlProfile"] = args ? args.mysqlProfile : undefined;
+            resourceInputs["noConnectivity"] = args ? args.noConnectivity : undefined;
+            resourceInputs["oracleProfile"] = args ? args.oracleProfile : undefined;
+            resourceInputs["privateConnectivity"] = args ? args.privateConnectivity : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["staticServiceIpConnectivity"] = args ? args.staticServiceIpConnectivity : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["forwardSshConnectivity"] = undefined /*out*/;
-            inputs["gcsProfile"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["mysqlProfile"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["noConnectivity"] = undefined /*out*/;
-            inputs["oracleProfile"] = undefined /*out*/;
-            inputs["privateConnectivity"] = undefined /*out*/;
-            inputs["staticServiceIpConnectivity"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["forwardSshConnectivity"] = undefined /*out*/;
+            resourceInputs["gcsProfile"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["mysqlProfile"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["noConnectivity"] = undefined /*out*/;
+            resourceInputs["oracleProfile"] = undefined /*out*/;
+            resourceInputs["privateConnectivity"] = undefined /*out*/;
+            resourceInputs["staticServiceIpConnectivity"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ConnectionProfile.__pulumiType, name, inputs, opts);
+        super(ConnectionProfile.__pulumiType, name, resourceInputs, opts);
     }
 }
 

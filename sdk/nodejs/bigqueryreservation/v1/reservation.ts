@@ -63,28 +63,28 @@ export class Reservation extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: ReservationArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["ignoreIdleSlots"] = args ? args.ignoreIdleSlots : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["reservationId"] = args ? args.reservationId : undefined;
-            inputs["slotCapacity"] = args ? args.slotCapacity : undefined;
-            inputs["creationTime"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["ignoreIdleSlots"] = args ? args.ignoreIdleSlots : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["reservationId"] = args ? args.reservationId : undefined;
+            resourceInputs["slotCapacity"] = args ? args.slotCapacity : undefined;
+            resourceInputs["creationTime"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["creationTime"] = undefined /*out*/;
-            inputs["ignoreIdleSlots"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["slotCapacity"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["creationTime"] = undefined /*out*/;
+            resourceInputs["ignoreIdleSlots"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["slotCapacity"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Reservation.__pulumiType, name, inputs, opts);
+        super(Reservation.__pulumiType, name, resourceInputs, opts);
     }
 }
 

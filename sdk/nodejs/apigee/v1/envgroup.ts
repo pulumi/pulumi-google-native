@@ -63,7 +63,7 @@ export class Envgroup extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: EnvgroupArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.hostnames === undefined) && !opts.urn) {
@@ -72,23 +72,23 @@ export class Envgroup extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            inputs["hostnames"] = args ? args.hostnames : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["lastModifiedAt"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["hostnames"] = args ? args.hostnames : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["lastModifiedAt"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["hostnames"] = undefined /*out*/;
-            inputs["lastModifiedAt"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["hostnames"] = undefined /*out*/;
+            resourceInputs["lastModifiedAt"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Envgroup.__pulumiType, name, inputs, opts);
+        super(Envgroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

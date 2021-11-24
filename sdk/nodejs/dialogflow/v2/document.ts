@@ -80,7 +80,7 @@ export class Document extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: DocumentArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.displayName === undefined) && !opts.urn) {
@@ -95,33 +95,33 @@ export class Document extends pulumi.CustomResource {
             if ((!args || args.mimeType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'mimeType'");
             }
-            inputs["contentUri"] = args ? args.contentUri : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["enableAutoReload"] = args ? args.enableAutoReload : undefined;
-            inputs["knowledgeBaseId"] = args ? args.knowledgeBaseId : undefined;
-            inputs["knowledgeTypes"] = args ? args.knowledgeTypes : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["mimeType"] = args ? args.mimeType : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["rawContent"] = args ? args.rawContent : undefined;
-            inputs["latestReloadStatus"] = undefined /*out*/;
+            resourceInputs["contentUri"] = args ? args.contentUri : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["enableAutoReload"] = args ? args.enableAutoReload : undefined;
+            resourceInputs["knowledgeBaseId"] = args ? args.knowledgeBaseId : undefined;
+            resourceInputs["knowledgeTypes"] = args ? args.knowledgeTypes : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
+            resourceInputs["mimeType"] = args ? args.mimeType : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["rawContent"] = args ? args.rawContent : undefined;
+            resourceInputs["latestReloadStatus"] = undefined /*out*/;
         } else {
-            inputs["contentUri"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["enableAutoReload"] = undefined /*out*/;
-            inputs["knowledgeTypes"] = undefined /*out*/;
-            inputs["latestReloadStatus"] = undefined /*out*/;
-            inputs["metadata"] = undefined /*out*/;
-            inputs["mimeType"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["rawContent"] = undefined /*out*/;
+            resourceInputs["contentUri"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["enableAutoReload"] = undefined /*out*/;
+            resourceInputs["knowledgeTypes"] = undefined /*out*/;
+            resourceInputs["latestReloadStatus"] = undefined /*out*/;
+            resourceInputs["metadata"] = undefined /*out*/;
+            resourceInputs["mimeType"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["rawContent"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Document.__pulumiType, name, inputs, opts);
+        super(Document.__pulumiType, name, resourceInputs, opts);
     }
 }
 

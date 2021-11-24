@@ -98,7 +98,7 @@ export class Case extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: CaseArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.v2betaId1 === undefined) && !opts.urn) {
@@ -107,40 +107,40 @@ export class Case extends pulumi.CustomResource {
             if ((!args || args.v2betumId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'v2betumId'");
             }
-            inputs["classification"] = args ? args.classification : undefined;
-            inputs["creator"] = args ? args.creator : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["escalated"] = args ? args.escalated : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["severity"] = args ? args.severity : undefined;
-            inputs["subscriberEmailAddresses"] = args ? args.subscriberEmailAddresses : undefined;
-            inputs["testCase"] = args ? args.testCase : undefined;
-            inputs["timeZone"] = args ? args.timeZone : undefined;
-            inputs["v2betaId1"] = args ? args.v2betaId1 : undefined;
-            inputs["v2betumId"] = args ? args.v2betumId : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["classification"] = args ? args.classification : undefined;
+            resourceInputs["creator"] = args ? args.creator : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["escalated"] = args ? args.escalated : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["severity"] = args ? args.severity : undefined;
+            resourceInputs["subscriberEmailAddresses"] = args ? args.subscriberEmailAddresses : undefined;
+            resourceInputs["testCase"] = args ? args.testCase : undefined;
+            resourceInputs["timeZone"] = args ? args.timeZone : undefined;
+            resourceInputs["v2betaId1"] = args ? args.v2betaId1 : undefined;
+            resourceInputs["v2betumId"] = args ? args.v2betumId : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["classification"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["creator"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["escalated"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["severity"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["subscriberEmailAddresses"] = undefined /*out*/;
-            inputs["testCase"] = undefined /*out*/;
-            inputs["timeZone"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["classification"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["creator"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["escalated"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["severity"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["subscriberEmailAddresses"] = undefined /*out*/;
+            resourceInputs["testCase"] = undefined /*out*/;
+            resourceInputs["timeZone"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Case.__pulumiType, name, inputs, opts);
+        super(Case.__pulumiType, name, resourceInputs, opts);
     }
 }
 

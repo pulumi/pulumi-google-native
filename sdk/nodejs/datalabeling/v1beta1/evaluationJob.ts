@@ -85,7 +85,7 @@ export class EvaluationJob extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: EvaluationJobArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.annotationSpecSet === undefined) && !opts.urn) {
@@ -106,33 +106,33 @@ export class EvaluationJob extends pulumi.CustomResource {
             if ((!args || args.schedule === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'schedule'");
             }
-            inputs["annotationSpecSet"] = args ? args.annotationSpecSet : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["evaluationJobConfig"] = args ? args.evaluationJobConfig : undefined;
-            inputs["labelMissingGroundTruth"] = args ? args.labelMissingGroundTruth : undefined;
-            inputs["modelVersion"] = args ? args.modelVersion : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["schedule"] = args ? args.schedule : undefined;
-            inputs["attempts"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["annotationSpecSet"] = args ? args.annotationSpecSet : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["evaluationJobConfig"] = args ? args.evaluationJobConfig : undefined;
+            resourceInputs["labelMissingGroundTruth"] = args ? args.labelMissingGroundTruth : undefined;
+            resourceInputs["modelVersion"] = args ? args.modelVersion : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["schedule"] = args ? args.schedule : undefined;
+            resourceInputs["attempts"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
-            inputs["annotationSpecSet"] = undefined /*out*/;
-            inputs["attempts"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["evaluationJobConfig"] = undefined /*out*/;
-            inputs["labelMissingGroundTruth"] = undefined /*out*/;
-            inputs["modelVersion"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["schedule"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["annotationSpecSet"] = undefined /*out*/;
+            resourceInputs["attempts"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["evaluationJobConfig"] = undefined /*out*/;
+            resourceInputs["labelMissingGroundTruth"] = undefined /*out*/;
+            resourceInputs["modelVersion"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["schedule"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(EvaluationJob.__pulumiType, name, inputs, opts);
+        super(EvaluationJob.__pulumiType, name, resourceInputs, opts);
     }
 }
 

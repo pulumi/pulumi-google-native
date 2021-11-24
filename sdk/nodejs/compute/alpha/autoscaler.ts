@@ -100,45 +100,45 @@ export class Autoscaler extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: AutoscalerArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["target"] = args ? args.target : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["recommendedSize"] = undefined /*out*/;
-            inputs["region"] = undefined /*out*/;
-            inputs["scalingScheduleStatus"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["selfLinkWithId"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["statusDetails"] = undefined /*out*/;
+            resourceInputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["target"] = args ? args.target : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["recommendedSize"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["scalingScheduleStatus"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["statusDetails"] = undefined /*out*/;
         } else {
-            inputs["autoscalingPolicy"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["recommendedSize"] = undefined /*out*/;
-            inputs["region"] = undefined /*out*/;
-            inputs["scalingScheduleStatus"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["selfLinkWithId"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["statusDetails"] = undefined /*out*/;
-            inputs["target"] = undefined /*out*/;
-            inputs["zone"] = undefined /*out*/;
+            resourceInputs["autoscalingPolicy"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["recommendedSize"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["scalingScheduleStatus"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["statusDetails"] = undefined /*out*/;
+            resourceInputs["target"] = undefined /*out*/;
+            resourceInputs["zone"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Autoscaler.__pulumiType, name, inputs, opts);
+        super(Autoscaler.__pulumiType, name, resourceInputs, opts);
     }
 }
 

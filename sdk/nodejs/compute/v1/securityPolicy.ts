@@ -74,35 +74,35 @@ export class SecurityPolicy extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: SecurityPolicyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["adaptiveProtectionConfig"] = args ? args.adaptiveProtectionConfig : undefined;
-            inputs["advancedOptionsConfig"] = args ? args.advancedOptionsConfig : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["rules"] = args ? args.rules : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["adaptiveProtectionConfig"] = args ? args.adaptiveProtectionConfig : undefined;
+            resourceInputs["advancedOptionsConfig"] = args ? args.advancedOptionsConfig : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["rules"] = args ? args.rules : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         } else {
-            inputs["adaptiveProtectionConfig"] = undefined /*out*/;
-            inputs["advancedOptionsConfig"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["rules"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["adaptiveProtectionConfig"] = undefined /*out*/;
+            resourceInputs["advancedOptionsConfig"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["rules"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(SecurityPolicy.__pulumiType, name, inputs, opts);
+        super(SecurityPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

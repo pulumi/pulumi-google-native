@@ -87,7 +87,7 @@ export class ImportJob extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ImportJobArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.importJobId === undefined) && !opts.urn) {
@@ -102,36 +102,36 @@ export class ImportJob extends pulumi.CustomResource {
             if ((!args || args.protectionLevel === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protectionLevel'");
             }
-            inputs["importJobId"] = args ? args.importJobId : undefined;
-            inputs["importMethod"] = args ? args.importMethod : undefined;
-            inputs["keyRingId"] = args ? args.keyRingId : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["protectionLevel"] = args ? args.protectionLevel : undefined;
-            inputs["attestation"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["expireEventTime"] = undefined /*out*/;
-            inputs["expireTime"] = undefined /*out*/;
-            inputs["generateTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["publicKey"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["importJobId"] = args ? args.importJobId : undefined;
+            resourceInputs["importMethod"] = args ? args.importMethod : undefined;
+            resourceInputs["keyRingId"] = args ? args.keyRingId : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["protectionLevel"] = args ? args.protectionLevel : undefined;
+            resourceInputs["attestation"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["expireEventTime"] = undefined /*out*/;
+            resourceInputs["expireTime"] = undefined /*out*/;
+            resourceInputs["generateTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["publicKey"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
-            inputs["attestation"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["expireEventTime"] = undefined /*out*/;
-            inputs["expireTime"] = undefined /*out*/;
-            inputs["generateTime"] = undefined /*out*/;
-            inputs["importMethod"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["protectionLevel"] = undefined /*out*/;
-            inputs["publicKey"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["attestation"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["expireEventTime"] = undefined /*out*/;
+            resourceInputs["expireTime"] = undefined /*out*/;
+            resourceInputs["generateTime"] = undefined /*out*/;
+            resourceInputs["importMethod"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["protectionLevel"] = undefined /*out*/;
+            resourceInputs["publicKey"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ImportJob.__pulumiType, name, inputs, opts);
+        super(ImportJob.__pulumiType, name, resourceInputs, opts);
     }
 }
 

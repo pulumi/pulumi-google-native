@@ -89,41 +89,41 @@ export class FutureReservation extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: FutureReservationArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["description"] = args ? args.description : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namePrefix"] = args ? args.namePrefix : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["shareSettings"] = args ? args.shareSettings : undefined;
-            inputs["specificSkuProperties"] = args ? args.specificSkuProperties : undefined;
-            inputs["timeWindow"] = args ? args.timeWindow : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["selfLinkWithId"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["shareSettings"] = args ? args.shareSettings : undefined;
+            resourceInputs["specificSkuProperties"] = args ? args.specificSkuProperties : undefined;
+            resourceInputs["timeWindow"] = args ? args.timeWindow : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         } else {
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["namePrefix"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["selfLinkWithId"] = undefined /*out*/;
-            inputs["shareSettings"] = undefined /*out*/;
-            inputs["specificSkuProperties"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["timeWindow"] = undefined /*out*/;
-            inputs["zone"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["namePrefix"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["shareSettings"] = undefined /*out*/;
+            resourceInputs["specificSkuProperties"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["timeWindow"] = undefined /*out*/;
+            resourceInputs["zone"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(FutureReservation.__pulumiType, name, inputs, opts);
+        super(FutureReservation.__pulumiType, name, resourceInputs, opts);
     }
 }
 

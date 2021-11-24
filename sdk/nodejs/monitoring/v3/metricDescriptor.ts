@@ -88,38 +88,38 @@ export class MetricDescriptor extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: MetricDescriptorArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["launchStage"] = args ? args.launchStage : undefined;
-            inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["metricKind"] = args ? args.metricKind : undefined;
-            inputs["monitoredResourceTypes"] = args ? args.monitoredResourceTypes : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["unit"] = args ? args.unit : undefined;
-            inputs["valueType"] = args ? args.valueType : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["launchStage"] = args ? args.launchStage : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
+            resourceInputs["metricKind"] = args ? args.metricKind : undefined;
+            resourceInputs["monitoredResourceTypes"] = args ? args.monitoredResourceTypes : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["unit"] = args ? args.unit : undefined;
+            resourceInputs["valueType"] = args ? args.valueType : undefined;
         } else {
-            inputs["description"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["launchStage"] = undefined /*out*/;
-            inputs["metadata"] = undefined /*out*/;
-            inputs["metricKind"] = undefined /*out*/;
-            inputs["monitoredResourceTypes"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
-            inputs["unit"] = undefined /*out*/;
-            inputs["valueType"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["launchStage"] = undefined /*out*/;
+            resourceInputs["metadata"] = undefined /*out*/;
+            resourceInputs["metricKind"] = undefined /*out*/;
+            resourceInputs["monitoredResourceTypes"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["unit"] = undefined /*out*/;
+            resourceInputs["valueType"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(MetricDescriptor.__pulumiType, name, inputs, opts);
+        super(MetricDescriptor.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -72,7 +72,7 @@ export class AuthorizationPolicy extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: AuthorizationPolicyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.action === undefined) && !opts.urn) {
@@ -81,29 +81,29 @@ export class AuthorizationPolicy extends pulumi.CustomResource {
             if ((!args || args.authorizationPolicyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'authorizationPolicyId'");
             }
-            inputs["action"] = args ? args.action : undefined;
-            inputs["authorizationPolicyId"] = args ? args.authorizationPolicyId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["rules"] = args ? args.rules : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["action"] = args ? args.action : undefined;
+            resourceInputs["authorizationPolicyId"] = args ? args.authorizationPolicyId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["rules"] = args ? args.rules : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["action"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["rules"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["action"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["rules"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AuthorizationPolicy.__pulumiType, name, inputs, opts);
+        super(AuthorizationPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

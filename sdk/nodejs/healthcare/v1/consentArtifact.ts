@@ -76,7 +76,7 @@ export class ConsentArtifact extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ConsentArtifactArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.consentStoreId === undefined) && !opts.urn) {
@@ -88,32 +88,32 @@ export class ConsentArtifact extends pulumi.CustomResource {
             if ((!args || args.userId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            inputs["consentContentScreenshots"] = args ? args.consentContentScreenshots : undefined;
-            inputs["consentContentVersion"] = args ? args.consentContentVersion : undefined;
-            inputs["consentStoreId"] = args ? args.consentStoreId : undefined;
-            inputs["datasetId"] = args ? args.datasetId : undefined;
-            inputs["guardianSignature"] = args ? args.guardianSignature : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["userId"] = args ? args.userId : undefined;
-            inputs["userSignature"] = args ? args.userSignature : undefined;
-            inputs["witnessSignature"] = args ? args.witnessSignature : undefined;
+            resourceInputs["consentContentScreenshots"] = args ? args.consentContentScreenshots : undefined;
+            resourceInputs["consentContentVersion"] = args ? args.consentContentVersion : undefined;
+            resourceInputs["consentStoreId"] = args ? args.consentStoreId : undefined;
+            resourceInputs["datasetId"] = args ? args.datasetId : undefined;
+            resourceInputs["guardianSignature"] = args ? args.guardianSignature : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["userSignature"] = args ? args.userSignature : undefined;
+            resourceInputs["witnessSignature"] = args ? args.witnessSignature : undefined;
         } else {
-            inputs["consentContentScreenshots"] = undefined /*out*/;
-            inputs["consentContentVersion"] = undefined /*out*/;
-            inputs["guardianSignature"] = undefined /*out*/;
-            inputs["metadata"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["userId"] = undefined /*out*/;
-            inputs["userSignature"] = undefined /*out*/;
-            inputs["witnessSignature"] = undefined /*out*/;
+            resourceInputs["consentContentScreenshots"] = undefined /*out*/;
+            resourceInputs["consentContentVersion"] = undefined /*out*/;
+            resourceInputs["guardianSignature"] = undefined /*out*/;
+            resourceInputs["metadata"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["userId"] = undefined /*out*/;
+            resourceInputs["userSignature"] = undefined /*out*/;
+            resourceInputs["witnessSignature"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ConsentArtifact.__pulumiType, name, inputs, opts);
+        super(ConsentArtifact.__pulumiType, name, resourceInputs, opts);
     }
 }
 

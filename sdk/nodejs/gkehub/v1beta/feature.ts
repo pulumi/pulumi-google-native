@@ -85,39 +85,39 @@ export class Feature extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: FeatureArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["featureId"] = args ? args.featureId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["membershipSpecs"] = args ? args.membershipSpecs : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["spec"] = args ? args.spec : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["deleteTime"] = undefined /*out*/;
-            inputs["membershipStates"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["resourceState"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["featureId"] = args ? args.featureId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["membershipSpecs"] = args ? args.membershipSpecs : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["spec"] = args ? args.spec : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deleteTime"] = undefined /*out*/;
+            resourceInputs["membershipStates"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["resourceState"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["deleteTime"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["membershipSpecs"] = undefined /*out*/;
-            inputs["membershipStates"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["resourceState"] = undefined /*out*/;
-            inputs["spec"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deleteTime"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["membershipSpecs"] = undefined /*out*/;
+            resourceInputs["membershipStates"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["resourceState"] = undefined /*out*/;
+            resourceInputs["spec"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Feature.__pulumiType, name, inputs, opts);
+        super(Feature.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -61,7 +61,7 @@ export class Secret extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: SecretArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.replication === undefined) && !opts.urn) {
@@ -70,22 +70,22 @@ export class Secret extends pulumi.CustomResource {
             if ((!args || args.secretId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'secretId'");
             }
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["replication"] = args ? args.replication : undefined;
-            inputs["secretId"] = args ? args.secretId : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["replication"] = args ? args.replication : undefined;
+            resourceInputs["secretId"] = args ? args.secretId : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["replication"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["replication"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Secret.__pulumiType, name, inputs, opts);
+        super(Secret.__pulumiType, name, resourceInputs, opts);
     }
 }
 

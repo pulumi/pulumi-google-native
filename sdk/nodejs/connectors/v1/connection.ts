@@ -109,7 +109,7 @@ export class Connection extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ConnectionArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.connectionId === undefined) && !opts.urn) {
@@ -118,47 +118,47 @@ export class Connection extends pulumi.CustomResource {
             if ((!args || args.connectorVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'connectorVersion'");
             }
-            inputs["authConfig"] = args ? args.authConfig : undefined;
-            inputs["configVariables"] = args ? args.configVariables : undefined;
-            inputs["connectionId"] = args ? args.connectionId : undefined;
-            inputs["connectorVersion"] = args ? args.connectorVersion : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["inactive"] = args ? args.inactive : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["lockConfig"] = args ? args.lockConfig : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["egressBackends"] = undefined /*out*/;
-            inputs["envoyImageLocation"] = undefined /*out*/;
-            inputs["imageLocation"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["serviceDirectory"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["authConfig"] = args ? args.authConfig : undefined;
+            resourceInputs["configVariables"] = args ? args.configVariables : undefined;
+            resourceInputs["connectionId"] = args ? args.connectionId : undefined;
+            resourceInputs["connectorVersion"] = args ? args.connectorVersion : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["inactive"] = args ? args.inactive : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["lockConfig"] = args ? args.lockConfig : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["egressBackends"] = undefined /*out*/;
+            resourceInputs["envoyImageLocation"] = undefined /*out*/;
+            resourceInputs["imageLocation"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["serviceDirectory"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["authConfig"] = undefined /*out*/;
-            inputs["configVariables"] = undefined /*out*/;
-            inputs["connectorVersion"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["egressBackends"] = undefined /*out*/;
-            inputs["envoyImageLocation"] = undefined /*out*/;
-            inputs["imageLocation"] = undefined /*out*/;
-            inputs["inactive"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["lockConfig"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["serviceAccount"] = undefined /*out*/;
-            inputs["serviceDirectory"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["authConfig"] = undefined /*out*/;
+            resourceInputs["configVariables"] = undefined /*out*/;
+            resourceInputs["connectorVersion"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["egressBackends"] = undefined /*out*/;
+            resourceInputs["envoyImageLocation"] = undefined /*out*/;
+            resourceInputs["imageLocation"] = undefined /*out*/;
+            resourceInputs["inactive"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["lockConfig"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["serviceAccount"] = undefined /*out*/;
+            resourceInputs["serviceDirectory"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Connection.__pulumiType, name, inputs, opts);
+        super(Connection.__pulumiType, name, resourceInputs, opts);
     }
 }
 

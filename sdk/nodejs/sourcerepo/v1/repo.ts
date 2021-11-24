@@ -64,26 +64,26 @@ export class Repo extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: RepoArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["mirrorConfig"] = args ? args.mirrorConfig : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["pubsubConfigs"] = args ? args.pubsubConfigs : undefined;
-            inputs["size"] = args ? args.size : undefined;
-            inputs["url"] = args ? args.url : undefined;
+            resourceInputs["mirrorConfig"] = args ? args.mirrorConfig : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["pubsubConfigs"] = args ? args.pubsubConfigs : undefined;
+            resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["url"] = args ? args.url : undefined;
         } else {
-            inputs["mirrorConfig"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["pubsubConfigs"] = undefined /*out*/;
-            inputs["size"] = undefined /*out*/;
-            inputs["url"] = undefined /*out*/;
+            resourceInputs["mirrorConfig"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pubsubConfigs"] = undefined /*out*/;
+            resourceInputs["size"] = undefined /*out*/;
+            resourceInputs["url"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Repo.__pulumiType, name, inputs, opts);
+        super(Repo.__pulumiType, name, resourceInputs, opts);
     }
 }
 

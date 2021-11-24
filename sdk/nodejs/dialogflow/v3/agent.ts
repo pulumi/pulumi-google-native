@@ -96,7 +96,7 @@ export class Agent extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: AgentArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.defaultLanguageCode === undefined) && !opts.urn) {
@@ -108,40 +108,40 @@ export class Agent extends pulumi.CustomResource {
             if ((!args || args.timeZone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'timeZone'");
             }
-            inputs["advancedSettings"] = args ? args.advancedSettings : undefined;
-            inputs["avatarUri"] = args ? args.avatarUri : undefined;
-            inputs["defaultLanguageCode"] = args ? args.defaultLanguageCode : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["enableSpellCorrection"] = args ? args.enableSpellCorrection : undefined;
-            inputs["enableStackdriverLogging"] = args ? args.enableStackdriverLogging : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["securitySettings"] = args ? args.securitySettings : undefined;
-            inputs["speechToTextSettings"] = args ? args.speechToTextSettings : undefined;
-            inputs["startFlow"] = args ? args.startFlow : undefined;
-            inputs["supportedLanguageCodes"] = args ? args.supportedLanguageCodes : undefined;
-            inputs["timeZone"] = args ? args.timeZone : undefined;
+            resourceInputs["advancedSettings"] = args ? args.advancedSettings : undefined;
+            resourceInputs["avatarUri"] = args ? args.avatarUri : undefined;
+            resourceInputs["defaultLanguageCode"] = args ? args.defaultLanguageCode : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["enableSpellCorrection"] = args ? args.enableSpellCorrection : undefined;
+            resourceInputs["enableStackdriverLogging"] = args ? args.enableStackdriverLogging : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["securitySettings"] = args ? args.securitySettings : undefined;
+            resourceInputs["speechToTextSettings"] = args ? args.speechToTextSettings : undefined;
+            resourceInputs["startFlow"] = args ? args.startFlow : undefined;
+            resourceInputs["supportedLanguageCodes"] = args ? args.supportedLanguageCodes : undefined;
+            resourceInputs["timeZone"] = args ? args.timeZone : undefined;
         } else {
-            inputs["advancedSettings"] = undefined /*out*/;
-            inputs["avatarUri"] = undefined /*out*/;
-            inputs["defaultLanguageCode"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["enableSpellCorrection"] = undefined /*out*/;
-            inputs["enableStackdriverLogging"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["securitySettings"] = undefined /*out*/;
-            inputs["speechToTextSettings"] = undefined /*out*/;
-            inputs["startFlow"] = undefined /*out*/;
-            inputs["supportedLanguageCodes"] = undefined /*out*/;
-            inputs["timeZone"] = undefined /*out*/;
+            resourceInputs["advancedSettings"] = undefined /*out*/;
+            resourceInputs["avatarUri"] = undefined /*out*/;
+            resourceInputs["defaultLanguageCode"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["enableSpellCorrection"] = undefined /*out*/;
+            resourceInputs["enableStackdriverLogging"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["securitySettings"] = undefined /*out*/;
+            resourceInputs["speechToTextSettings"] = undefined /*out*/;
+            resourceInputs["startFlow"] = undefined /*out*/;
+            resourceInputs["supportedLanguageCodes"] = undefined /*out*/;
+            resourceInputs["timeZone"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Agent.__pulumiType, name, inputs, opts);
+        super(Agent.__pulumiType, name, resourceInputs, opts);
     }
 }
 

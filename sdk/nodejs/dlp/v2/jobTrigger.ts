@@ -84,41 +84,41 @@ export class JobTrigger extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: JobTriggerArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.status === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'status'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["inspectJob"] = args ? args.inspectJob : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["triggerId"] = args ? args.triggerId : undefined;
-            inputs["triggers"] = args ? args.triggers : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["errors"] = undefined /*out*/;
-            inputs["lastRunTime"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["inspectJob"] = args ? args.inspectJob : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["triggerId"] = args ? args.triggerId : undefined;
+            resourceInputs["triggers"] = args ? args.triggers : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["errors"] = undefined /*out*/;
+            resourceInputs["lastRunTime"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["errors"] = undefined /*out*/;
-            inputs["inspectJob"] = undefined /*out*/;
-            inputs["lastRunTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["triggers"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["errors"] = undefined /*out*/;
+            resourceInputs["inspectJob"] = undefined /*out*/;
+            resourceInputs["lastRunTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["triggers"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(JobTrigger.__pulumiType, name, inputs, opts);
+        super(JobTrigger.__pulumiType, name, resourceInputs, opts);
     }
 }
 

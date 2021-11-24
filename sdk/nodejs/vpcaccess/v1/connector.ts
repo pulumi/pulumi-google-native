@@ -88,43 +88,43 @@ export class Connector extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ConnectorArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.connectorId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'connectorId'");
             }
-            inputs["connectorId"] = args ? args.connectorId : undefined;
-            inputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["machineType"] = args ? args.machineType : undefined;
-            inputs["maxInstances"] = args ? args.maxInstances : undefined;
-            inputs["maxThroughput"] = args ? args.maxThroughput : undefined;
-            inputs["minInstances"] = args ? args.minInstances : undefined;
-            inputs["minThroughput"] = args ? args.minThroughput : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["subnet"] = args ? args.subnet : undefined;
-            inputs["connectedProjects"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["connectorId"] = args ? args.connectorId : undefined;
+            resourceInputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["machineType"] = args ? args.machineType : undefined;
+            resourceInputs["maxInstances"] = args ? args.maxInstances : undefined;
+            resourceInputs["maxThroughput"] = args ? args.maxThroughput : undefined;
+            resourceInputs["minInstances"] = args ? args.minInstances : undefined;
+            resourceInputs["minThroughput"] = args ? args.minThroughput : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["subnet"] = args ? args.subnet : undefined;
+            resourceInputs["connectedProjects"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
-            inputs["connectedProjects"] = undefined /*out*/;
-            inputs["ipCidrRange"] = undefined /*out*/;
-            inputs["machineType"] = undefined /*out*/;
-            inputs["maxInstances"] = undefined /*out*/;
-            inputs["maxThroughput"] = undefined /*out*/;
-            inputs["minInstances"] = undefined /*out*/;
-            inputs["minThroughput"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["network"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["subnet"] = undefined /*out*/;
+            resourceInputs["connectedProjects"] = undefined /*out*/;
+            resourceInputs["ipCidrRange"] = undefined /*out*/;
+            resourceInputs["machineType"] = undefined /*out*/;
+            resourceInputs["maxInstances"] = undefined /*out*/;
+            resourceInputs["maxThroughput"] = undefined /*out*/;
+            resourceInputs["minInstances"] = undefined /*out*/;
+            resourceInputs["minThroughput"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["network"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["subnet"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Connector.__pulumiType, name, inputs, opts);
+        super(Connector.__pulumiType, name, resourceInputs, opts);
     }
 }
 

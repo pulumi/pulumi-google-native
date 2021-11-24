@@ -75,35 +75,35 @@ export class Conversation extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ConversationArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.conversationProfile === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'conversationProfile'");
             }
-            inputs["conversationId"] = args ? args.conversationId : undefined;
-            inputs["conversationProfile"] = args ? args.conversationProfile : undefined;
-            inputs["conversationStage"] = args ? args.conversationStage : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["endTime"] = undefined /*out*/;
-            inputs["lifecycleState"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["phoneNumber"] = undefined /*out*/;
-            inputs["startTime"] = undefined /*out*/;
+            resourceInputs["conversationId"] = args ? args.conversationId : undefined;
+            resourceInputs["conversationProfile"] = args ? args.conversationProfile : undefined;
+            resourceInputs["conversationStage"] = args ? args.conversationStage : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["lifecycleState"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["phoneNumber"] = undefined /*out*/;
+            resourceInputs["startTime"] = undefined /*out*/;
         } else {
-            inputs["conversationProfile"] = undefined /*out*/;
-            inputs["conversationStage"] = undefined /*out*/;
-            inputs["endTime"] = undefined /*out*/;
-            inputs["lifecycleState"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["phoneNumber"] = undefined /*out*/;
-            inputs["startTime"] = undefined /*out*/;
+            resourceInputs["conversationProfile"] = undefined /*out*/;
+            resourceInputs["conversationStage"] = undefined /*out*/;
+            resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["lifecycleState"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["phoneNumber"] = undefined /*out*/;
+            resourceInputs["startTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Conversation.__pulumiType, name, inputs, opts);
+        super(Conversation.__pulumiType, name, resourceInputs, opts);
     }
 }
 

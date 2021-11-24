@@ -60,29 +60,29 @@ export class Analysis extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: AnalysisArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.conversationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'conversationId'");
             }
-            inputs["conversationId"] = args ? args.conversationId : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["analysisResult"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["requestTime"] = undefined /*out*/;
+            resourceInputs["conversationId"] = args ? args.conversationId : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["analysisResult"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["requestTime"] = undefined /*out*/;
         } else {
-            inputs["analysisResult"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["requestTime"] = undefined /*out*/;
+            resourceInputs["analysisResult"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["requestTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Analysis.__pulumiType, name, inputs, opts);
+        super(Analysis.__pulumiType, name, resourceInputs, opts);
     }
 }
 

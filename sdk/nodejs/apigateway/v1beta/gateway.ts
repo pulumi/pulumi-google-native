@@ -76,7 +76,7 @@ export class Gateway extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: GatewayArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.apiConfig === undefined) && !opts.urn) {
@@ -85,31 +85,31 @@ export class Gateway extends pulumi.CustomResource {
             if ((!args || args.gatewayId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'gatewayId'");
             }
-            inputs["apiConfig"] = args ? args.apiConfig : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["gatewayId"] = args ? args.gatewayId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["defaultHostname"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["apiConfig"] = args ? args.apiConfig : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["gatewayId"] = args ? args.gatewayId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["defaultHostname"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["apiConfig"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["defaultHostname"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["apiConfig"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["defaultHostname"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Gateway.__pulumiType, name, inputs, opts);
+        super(Gateway.__pulumiType, name, resourceInputs, opts);
     }
 }
 

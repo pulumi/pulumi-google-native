@@ -58,7 +58,7 @@ export class ProviderNoteIamPolicy extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ProviderNoteIamPolicyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.noteId === undefined) && !opts.urn) {
@@ -67,20 +67,20 @@ export class ProviderNoteIamPolicy extends pulumi.CustomResource {
             if ((!args || args.providerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'providerId'");
             }
-            inputs["bindings"] = args ? args.bindings : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["noteId"] = args ? args.noteId : undefined;
-            inputs["providerId"] = args ? args.providerId : undefined;
-            inputs["version"] = args ? args.version : undefined;
+            resourceInputs["bindings"] = args ? args.bindings : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["noteId"] = args ? args.noteId : undefined;
+            resourceInputs["providerId"] = args ? args.providerId : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
         } else {
-            inputs["bindings"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["version"] = undefined /*out*/;
+            resourceInputs["bindings"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["version"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ProviderNoteIamPolicy.__pulumiType, name, inputs, opts);
+        super(ProviderNoteIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

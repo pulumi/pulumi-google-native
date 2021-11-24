@@ -94,39 +94,39 @@ export class TransferJob extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: TransferJobArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["description"] = args ? args.description : undefined;
-            inputs["latestOperationName"] = args ? args.latestOperationName : undefined;
-            inputs["loggingConfig"] = args ? args.loggingConfig : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["notificationConfig"] = args ? args.notificationConfig : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["schedule"] = args ? args.schedule : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["transferSpec"] = args ? args.transferSpec : undefined;
-            inputs["creationTime"] = undefined /*out*/;
-            inputs["deletionTime"] = undefined /*out*/;
-            inputs["lastModificationTime"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["latestOperationName"] = args ? args.latestOperationName : undefined;
+            resourceInputs["loggingConfig"] = args ? args.loggingConfig : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["schedule"] = args ? args.schedule : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["transferSpec"] = args ? args.transferSpec : undefined;
+            resourceInputs["creationTime"] = undefined /*out*/;
+            resourceInputs["deletionTime"] = undefined /*out*/;
+            resourceInputs["lastModificationTime"] = undefined /*out*/;
         } else {
-            inputs["creationTime"] = undefined /*out*/;
-            inputs["deletionTime"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["lastModificationTime"] = undefined /*out*/;
-            inputs["latestOperationName"] = undefined /*out*/;
-            inputs["loggingConfig"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["notificationConfig"] = undefined /*out*/;
-            inputs["project"] = undefined /*out*/;
-            inputs["schedule"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["transferSpec"] = undefined /*out*/;
+            resourceInputs["creationTime"] = undefined /*out*/;
+            resourceInputs["deletionTime"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["lastModificationTime"] = undefined /*out*/;
+            resourceInputs["latestOperationName"] = undefined /*out*/;
+            resourceInputs["loggingConfig"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["notificationConfig"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["schedule"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["transferSpec"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(TransferJob.__pulumiType, name, inputs, opts);
+        super(TransferJob.__pulumiType, name, resourceInputs, opts);
     }
 }
 

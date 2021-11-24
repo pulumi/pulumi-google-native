@@ -85,40 +85,40 @@ export class Key extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: KeyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.serviceAccountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountId'");
             }
-            inputs["keyAlgorithm"] = args ? args.keyAlgorithm : undefined;
-            inputs["privateKeyType"] = args ? args.privateKeyType : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
-            inputs["disabled"] = undefined /*out*/;
-            inputs["keyOrigin"] = undefined /*out*/;
-            inputs["keyType"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["privateKeyData"] = undefined /*out*/;
-            inputs["publicKeyData"] = undefined /*out*/;
-            inputs["validAfterTime"] = undefined /*out*/;
-            inputs["validBeforeTime"] = undefined /*out*/;
+            resourceInputs["keyAlgorithm"] = args ? args.keyAlgorithm : undefined;
+            resourceInputs["privateKeyType"] = args ? args.privateKeyType : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
+            resourceInputs["disabled"] = undefined /*out*/;
+            resourceInputs["keyOrigin"] = undefined /*out*/;
+            resourceInputs["keyType"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["privateKeyData"] = undefined /*out*/;
+            resourceInputs["publicKeyData"] = undefined /*out*/;
+            resourceInputs["validAfterTime"] = undefined /*out*/;
+            resourceInputs["validBeforeTime"] = undefined /*out*/;
         } else {
-            inputs["disabled"] = undefined /*out*/;
-            inputs["keyAlgorithm"] = undefined /*out*/;
-            inputs["keyOrigin"] = undefined /*out*/;
-            inputs["keyType"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["privateKeyData"] = undefined /*out*/;
-            inputs["privateKeyType"] = undefined /*out*/;
-            inputs["publicKeyData"] = undefined /*out*/;
-            inputs["validAfterTime"] = undefined /*out*/;
-            inputs["validBeforeTime"] = undefined /*out*/;
+            resourceInputs["disabled"] = undefined /*out*/;
+            resourceInputs["keyAlgorithm"] = undefined /*out*/;
+            resourceInputs["keyOrigin"] = undefined /*out*/;
+            resourceInputs["keyType"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["privateKeyData"] = undefined /*out*/;
+            resourceInputs["privateKeyType"] = undefined /*out*/;
+            resourceInputs["publicKeyData"] = undefined /*out*/;
+            resourceInputs["validAfterTime"] = undefined /*out*/;
+            resourceInputs["validBeforeTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Key.__pulumiType, name, inputs, opts);
+        super(Key.__pulumiType, name, resourceInputs, opts);
     }
 }
 

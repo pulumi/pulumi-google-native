@@ -75,35 +75,35 @@ export class TagValue extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: TagValueArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.shortName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'shortName'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["shortName"] = args ? args.shortName : undefined;
-            inputs["validateOnly"] = args ? args.validateOnly : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["namespacedName"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["shortName"] = args ? args.shortName : undefined;
+            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["namespacedName"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["namespacedName"] = undefined /*out*/;
-            inputs["parent"] = undefined /*out*/;
-            inputs["shortName"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["namespacedName"] = undefined /*out*/;
+            resourceInputs["parent"] = undefined /*out*/;
+            resourceInputs["shortName"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(TagValue.__pulumiType, name, inputs, opts);
+        super(TagValue.__pulumiType, name, resourceInputs, opts);
     }
 }
 

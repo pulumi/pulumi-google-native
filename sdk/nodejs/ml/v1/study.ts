@@ -65,7 +65,7 @@ export class Study extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: StudyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.studyConfig === undefined) && !opts.urn) {
@@ -74,25 +74,25 @@ export class Study extends pulumi.CustomResource {
             if ((!args || args.studyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'studyId'");
             }
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["studyConfig"] = args ? args.studyConfig : undefined;
-            inputs["studyId"] = args ? args.studyId : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["inactiveReason"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["studyConfig"] = args ? args.studyConfig : undefined;
+            resourceInputs["studyId"] = args ? args.studyId : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["inactiveReason"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["inactiveReason"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["studyConfig"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["inactiveReason"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["studyConfig"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Study.__pulumiType, name, inputs, opts);
+        super(Study.__pulumiType, name, resourceInputs, opts);
     }
 }
 

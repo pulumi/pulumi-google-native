@@ -82,42 +82,42 @@ export class ResourcePolicy extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ResourcePolicyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["groupPlacementPolicy"] = args ? args.groupPlacementPolicy : undefined;
-            inputs["instanceSchedulePolicy"] = args ? args.instanceSchedulePolicy : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["snapshotSchedulePolicy"] = args ? args.snapshotSchedulePolicy : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["resourceStatus"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["groupPlacementPolicy"] = args ? args.groupPlacementPolicy : undefined;
+            resourceInputs["instanceSchedulePolicy"] = args ? args.instanceSchedulePolicy : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["snapshotSchedulePolicy"] = args ? args.snapshotSchedulePolicy : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["resourceStatus"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         } else {
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["groupPlacementPolicy"] = undefined /*out*/;
-            inputs["instanceSchedulePolicy"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["region"] = undefined /*out*/;
-            inputs["resourceStatus"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["snapshotSchedulePolicy"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["groupPlacementPolicy"] = undefined /*out*/;
+            resourceInputs["instanceSchedulePolicy"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["resourceStatus"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["snapshotSchedulePolicy"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ResourcePolicy.__pulumiType, name, inputs, opts);
+        super(ResourcePolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

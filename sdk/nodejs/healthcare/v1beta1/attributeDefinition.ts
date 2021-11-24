@@ -68,7 +68,7 @@ export class AttributeDefinition extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: AttributeDefinitionArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.allowedValues === undefined) && !opts.urn) {
@@ -86,29 +86,29 @@ export class AttributeDefinition extends pulumi.CustomResource {
             if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            inputs["allowedValues"] = args ? args.allowedValues : undefined;
-            inputs["attributeDefinitionId"] = args ? args.attributeDefinitionId : undefined;
-            inputs["category"] = args ? args.category : undefined;
-            inputs["consentDefaultValues"] = args ? args.consentDefaultValues : undefined;
-            inputs["consentStoreId"] = args ? args.consentStoreId : undefined;
-            inputs["dataMappingDefaultValue"] = args ? args.dataMappingDefaultValue : undefined;
-            inputs["datasetId"] = args ? args.datasetId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
+            resourceInputs["allowedValues"] = args ? args.allowedValues : undefined;
+            resourceInputs["attributeDefinitionId"] = args ? args.attributeDefinitionId : undefined;
+            resourceInputs["category"] = args ? args.category : undefined;
+            resourceInputs["consentDefaultValues"] = args ? args.consentDefaultValues : undefined;
+            resourceInputs["consentStoreId"] = args ? args.consentStoreId : undefined;
+            resourceInputs["dataMappingDefaultValue"] = args ? args.dataMappingDefaultValue : undefined;
+            resourceInputs["datasetId"] = args ? args.datasetId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
         } else {
-            inputs["allowedValues"] = undefined /*out*/;
-            inputs["category"] = undefined /*out*/;
-            inputs["consentDefaultValues"] = undefined /*out*/;
-            inputs["dataMappingDefaultValue"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["allowedValues"] = undefined /*out*/;
+            resourceInputs["category"] = undefined /*out*/;
+            resourceInputs["consentDefaultValues"] = undefined /*out*/;
+            resourceInputs["dataMappingDefaultValue"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AttributeDefinition.__pulumiType, name, inputs, opts);
+        super(AttributeDefinition.__pulumiType, name, resourceInputs, opts);
     }
 }
 

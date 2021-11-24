@@ -62,7 +62,7 @@ export class ServiceConsumerIamPolicy extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ServiceConsumerIamPolicyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.consumerId === undefined) && !opts.urn) {
@@ -71,23 +71,23 @@ export class ServiceConsumerIamPolicy extends pulumi.CustomResource {
             if ((!args || args.serviceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
             }
-            inputs["auditConfigs"] = args ? args.auditConfigs : undefined;
-            inputs["bindings"] = args ? args.bindings : undefined;
-            inputs["consumerId"] = args ? args.consumerId : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["serviceId"] = args ? args.serviceId : undefined;
-            inputs["updateMask"] = args ? args.updateMask : undefined;
-            inputs["version"] = args ? args.version : undefined;
+            resourceInputs["auditConfigs"] = args ? args.auditConfigs : undefined;
+            resourceInputs["bindings"] = args ? args.bindings : undefined;
+            resourceInputs["consumerId"] = args ? args.consumerId : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["serviceId"] = args ? args.serviceId : undefined;
+            resourceInputs["updateMask"] = args ? args.updateMask : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
         } else {
-            inputs["auditConfigs"] = undefined /*out*/;
-            inputs["bindings"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["version"] = undefined /*out*/;
+            resourceInputs["auditConfigs"] = undefined /*out*/;
+            resourceInputs["bindings"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["version"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ServiceConsumerIamPolicy.__pulumiType, name, inputs, opts);
+        super(ServiceConsumerIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -100,48 +100,48 @@ export class ConversationProfile extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ConversationProfileArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            inputs["automatedAgentConfig"] = args ? args.automatedAgentConfig : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["humanAgentAssistantConfig"] = args ? args.humanAgentAssistantConfig : undefined;
-            inputs["humanAgentHandoffConfig"] = args ? args.humanAgentHandoffConfig : undefined;
-            inputs["languageCode"] = args ? args.languageCode : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["loggingConfig"] = args ? args.loggingConfig : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["newMessageEventNotificationConfig"] = args ? args.newMessageEventNotificationConfig : undefined;
-            inputs["notificationConfig"] = args ? args.notificationConfig : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["securitySettings"] = args ? args.securitySettings : undefined;
-            inputs["sttConfig"] = args ? args.sttConfig : undefined;
-            inputs["timeZone"] = args ? args.timeZone : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["automatedAgentConfig"] = args ? args.automatedAgentConfig : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["humanAgentAssistantConfig"] = args ? args.humanAgentAssistantConfig : undefined;
+            resourceInputs["humanAgentHandoffConfig"] = args ? args.humanAgentHandoffConfig : undefined;
+            resourceInputs["languageCode"] = args ? args.languageCode : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["loggingConfig"] = args ? args.loggingConfig : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["newMessageEventNotificationConfig"] = args ? args.newMessageEventNotificationConfig : undefined;
+            resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["securitySettings"] = args ? args.securitySettings : undefined;
+            resourceInputs["sttConfig"] = args ? args.sttConfig : undefined;
+            resourceInputs["timeZone"] = args ? args.timeZone : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["automatedAgentConfig"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["humanAgentAssistantConfig"] = undefined /*out*/;
-            inputs["humanAgentHandoffConfig"] = undefined /*out*/;
-            inputs["languageCode"] = undefined /*out*/;
-            inputs["loggingConfig"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["newMessageEventNotificationConfig"] = undefined /*out*/;
-            inputs["notificationConfig"] = undefined /*out*/;
-            inputs["securitySettings"] = undefined /*out*/;
-            inputs["sttConfig"] = undefined /*out*/;
-            inputs["timeZone"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["automatedAgentConfig"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["humanAgentAssistantConfig"] = undefined /*out*/;
+            resourceInputs["humanAgentHandoffConfig"] = undefined /*out*/;
+            resourceInputs["languageCode"] = undefined /*out*/;
+            resourceInputs["loggingConfig"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["newMessageEventNotificationConfig"] = undefined /*out*/;
+            resourceInputs["notificationConfig"] = undefined /*out*/;
+            resourceInputs["securitySettings"] = undefined /*out*/;
+            resourceInputs["sttConfig"] = undefined /*out*/;
+            resourceInputs["timeZone"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ConversationProfile.__pulumiType, name, inputs, opts);
+        super(ConversationProfile.__pulumiType, name, resourceInputs, opts);
     }
 }
 

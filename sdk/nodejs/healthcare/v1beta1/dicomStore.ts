@@ -60,30 +60,30 @@ export class DicomStore extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: DicomStoreArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            inputs["datasetId"] = args ? args.datasetId : undefined;
-            inputs["dicomStoreId"] = args ? args.dicomStoreId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["notificationConfig"] = args ? args.notificationConfig : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["streamConfigs"] = args ? args.streamConfigs : undefined;
+            resourceInputs["datasetId"] = args ? args.datasetId : undefined;
+            resourceInputs["dicomStoreId"] = args ? args.dicomStoreId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["streamConfigs"] = args ? args.streamConfigs : undefined;
         } else {
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["notificationConfig"] = undefined /*out*/;
-            inputs["streamConfigs"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["notificationConfig"] = undefined /*out*/;
+            resourceInputs["streamConfigs"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(DicomStore.__pulumiType, name, inputs, opts);
+        super(DicomStore.__pulumiType, name, resourceInputs, opts);
     }
 }
 

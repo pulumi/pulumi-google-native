@@ -56,27 +56,27 @@ export class PhraseSet extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: PhraseSetArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.phraseSetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'phraseSetId'");
             }
-            inputs["boost"] = args ? args.boost : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["phraseSetId"] = args ? args.phraseSetId : undefined;
-            inputs["phrases"] = args ? args.phrases : undefined;
-            inputs["project"] = args ? args.project : undefined;
+            resourceInputs["boost"] = args ? args.boost : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["phraseSetId"] = args ? args.phraseSetId : undefined;
+            resourceInputs["phrases"] = args ? args.phrases : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
         } else {
-            inputs["boost"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["phrases"] = undefined /*out*/;
+            resourceInputs["boost"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["phrases"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(PhraseSet.__pulumiType, name, inputs, opts);
+        super(PhraseSet.__pulumiType, name, resourceInputs, opts);
     }
 }
 

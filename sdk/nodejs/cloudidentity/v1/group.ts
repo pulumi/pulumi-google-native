@@ -81,7 +81,7 @@ export class Group extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: GroupArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.groupKey === undefined) && !opts.urn) {
@@ -93,31 +93,31 @@ export class Group extends pulumi.CustomResource {
             if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["dynamicGroupMetadata"] = args ? args.dynamicGroupMetadata : undefined;
-            inputs["groupKey"] = args ? args.groupKey : undefined;
-            inputs["initialGroupConfig"] = args ? args.initialGroupConfig : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["dynamicGroupMetadata"] = args ? args.dynamicGroupMetadata : undefined;
+            resourceInputs["groupKey"] = args ? args.groupKey : undefined;
+            resourceInputs["initialGroupConfig"] = args ? args.initialGroupConfig : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["dynamicGroupMetadata"] = undefined /*out*/;
-            inputs["groupKey"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["parent"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["dynamicGroupMetadata"] = undefined /*out*/;
+            resourceInputs["groupKey"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["parent"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Group.__pulumiType, name, inputs, opts);
+        super(Group.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -72,29 +72,29 @@ export class Project extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: ProjectArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["lifecycleState"] = args ? args.lifecycleState : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["projectNumber"] = args ? args.projectNumber : undefined;
+            resourceInputs["createTime"] = args ? args.createTime : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["lifecycleState"] = args ? args.lifecycleState : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["projectNumber"] = args ? args.projectNumber : undefined;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["lifecycleState"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["parent"] = undefined /*out*/;
-            inputs["project"] = undefined /*out*/;
-            inputs["projectNumber"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["lifecycleState"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["parent"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["projectNumber"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Project.__pulumiType, name, inputs, opts);
+        super(Project.__pulumiType, name, resourceInputs, opts);
     }
 }
 

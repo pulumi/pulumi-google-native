@@ -93,7 +93,7 @@ export class Customer extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: CustomerArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -111,38 +111,38 @@ export class Customer extends pulumi.CustomResource {
             if ((!args || args.orgPostalAddress === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'orgPostalAddress'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["alternateEmail"] = args ? args.alternateEmail : undefined;
-            inputs["channelPartnerId"] = args ? args.channelPartnerId : undefined;
-            inputs["channelPartnerLinkId"] = args ? args.channelPartnerLinkId : undefined;
-            inputs["domain"] = args ? args.domain : undefined;
-            inputs["languageCode"] = args ? args.languageCode : undefined;
-            inputs["orgDisplayName"] = args ? args.orgDisplayName : undefined;
-            inputs["orgPostalAddress"] = args ? args.orgPostalAddress : undefined;
-            inputs["primaryContactInfo"] = args ? args.primaryContactInfo : undefined;
-            inputs["cloudIdentityId"] = undefined /*out*/;
-            inputs["cloudIdentityInfo"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["alternateEmail"] = args ? args.alternateEmail : undefined;
+            resourceInputs["channelPartnerId"] = args ? args.channelPartnerId : undefined;
+            resourceInputs["channelPartnerLinkId"] = args ? args.channelPartnerLinkId : undefined;
+            resourceInputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["languageCode"] = args ? args.languageCode : undefined;
+            resourceInputs["orgDisplayName"] = args ? args.orgDisplayName : undefined;
+            resourceInputs["orgPostalAddress"] = args ? args.orgPostalAddress : undefined;
+            resourceInputs["primaryContactInfo"] = args ? args.primaryContactInfo : undefined;
+            resourceInputs["cloudIdentityId"] = undefined /*out*/;
+            resourceInputs["cloudIdentityInfo"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["alternateEmail"] = undefined /*out*/;
-            inputs["channelPartnerId"] = undefined /*out*/;
-            inputs["cloudIdentityId"] = undefined /*out*/;
-            inputs["cloudIdentityInfo"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["domain"] = undefined /*out*/;
-            inputs["languageCode"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["orgDisplayName"] = undefined /*out*/;
-            inputs["orgPostalAddress"] = undefined /*out*/;
-            inputs["primaryContactInfo"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["alternateEmail"] = undefined /*out*/;
+            resourceInputs["channelPartnerId"] = undefined /*out*/;
+            resourceInputs["cloudIdentityId"] = undefined /*out*/;
+            resourceInputs["cloudIdentityInfo"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["domain"] = undefined /*out*/;
+            resourceInputs["languageCode"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["orgDisplayName"] = undefined /*out*/;
+            resourceInputs["orgPostalAddress"] = undefined /*out*/;
+            resourceInputs["primaryContactInfo"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Customer.__pulumiType, name, inputs, opts);
+        super(Customer.__pulumiType, name, resourceInputs, opts);
     }
 }
 

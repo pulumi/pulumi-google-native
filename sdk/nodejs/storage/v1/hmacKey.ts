@@ -80,37 +80,37 @@ export class HmacKey extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: HmacKeyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.serviceAccountEmail === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountEmail'");
             }
-            inputs["project"] = args ? args.project : undefined;
-            inputs["serviceAccountEmail"] = args ? args.serviceAccountEmail : undefined;
-            inputs["userProject"] = args ? args.userProject : undefined;
-            inputs["accessId"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["timeCreated"] = undefined /*out*/;
-            inputs["updated"] = undefined /*out*/;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["serviceAccountEmail"] = args ? args.serviceAccountEmail : undefined;
+            resourceInputs["userProject"] = args ? args.userProject : undefined;
+            resourceInputs["accessId"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["timeCreated"] = undefined /*out*/;
+            resourceInputs["updated"] = undefined /*out*/;
         } else {
-            inputs["accessId"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["project"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["serviceAccountEmail"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["timeCreated"] = undefined /*out*/;
-            inputs["updated"] = undefined /*out*/;
+            resourceInputs["accessId"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["serviceAccountEmail"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["timeCreated"] = undefined /*out*/;
+            resourceInputs["updated"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(HmacKey.__pulumiType, name, inputs, opts);
+        super(HmacKey.__pulumiType, name, resourceInputs, opts);
     }
 }
 

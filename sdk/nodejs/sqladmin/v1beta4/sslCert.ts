@@ -80,37 +80,37 @@ export class SslCert extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: SslCertArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.instance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            inputs["commonName"] = args ? args.commonName : undefined;
-            inputs["instance"] = args ? args.instance : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["cert"] = undefined /*out*/;
-            inputs["certSerialNumber"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["expirationTime"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["sha1Fingerprint"] = undefined /*out*/;
+            resourceInputs["commonName"] = args ? args.commonName : undefined;
+            resourceInputs["instance"] = args ? args.instance : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["cert"] = undefined /*out*/;
+            resourceInputs["certSerialNumber"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["expirationTime"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["sha1Fingerprint"] = undefined /*out*/;
         } else {
-            inputs["cert"] = undefined /*out*/;
-            inputs["certSerialNumber"] = undefined /*out*/;
-            inputs["commonName"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["expirationTime"] = undefined /*out*/;
-            inputs["instance"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["sha1Fingerprint"] = undefined /*out*/;
+            resourceInputs["cert"] = undefined /*out*/;
+            resourceInputs["certSerialNumber"] = undefined /*out*/;
+            resourceInputs["commonName"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["expirationTime"] = undefined /*out*/;
+            resourceInputs["instance"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["sha1Fingerprint"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(SslCert.__pulumiType, name, inputs, opts);
+        super(SslCert.__pulumiType, name, resourceInputs, opts);
     }
 }
 

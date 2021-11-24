@@ -119,7 +119,7 @@ export class Release extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ReleaseArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.deliveryPipelineId === undefined) && !opts.urn) {
@@ -128,54 +128,54 @@ export class Release extends pulumi.CustomResource {
             if ((!args || args.releaseId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'releaseId'");
             }
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["buildArtifacts"] = args ? args.buildArtifacts : undefined;
-            inputs["deliveryPipelineId"] = args ? args.deliveryPipelineId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["releaseId"] = args ? args.releaseId : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["skaffoldConfigPath"] = args ? args.skaffoldConfigPath : undefined;
-            inputs["skaffoldConfigUri"] = args ? args.skaffoldConfigUri : undefined;
-            inputs["skaffoldVersion"] = args ? args.skaffoldVersion : undefined;
-            inputs["validateOnly"] = args ? args.validateOnly : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["deliveryPipelineSnapshot"] = undefined /*out*/;
-            inputs["renderEndTime"] = undefined /*out*/;
-            inputs["renderStartTime"] = undefined /*out*/;
-            inputs["renderState"] = undefined /*out*/;
-            inputs["targetArtifacts"] = undefined /*out*/;
-            inputs["targetRenders"] = undefined /*out*/;
-            inputs["targetSnapshots"] = undefined /*out*/;
-            inputs["uid"] = undefined /*out*/;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["buildArtifacts"] = args ? args.buildArtifacts : undefined;
+            resourceInputs["deliveryPipelineId"] = args ? args.deliveryPipelineId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["releaseId"] = args ? args.releaseId : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["skaffoldConfigPath"] = args ? args.skaffoldConfigPath : undefined;
+            resourceInputs["skaffoldConfigUri"] = args ? args.skaffoldConfigUri : undefined;
+            resourceInputs["skaffoldVersion"] = args ? args.skaffoldVersion : undefined;
+            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deliveryPipelineSnapshot"] = undefined /*out*/;
+            resourceInputs["renderEndTime"] = undefined /*out*/;
+            resourceInputs["renderStartTime"] = undefined /*out*/;
+            resourceInputs["renderState"] = undefined /*out*/;
+            resourceInputs["targetArtifacts"] = undefined /*out*/;
+            resourceInputs["targetRenders"] = undefined /*out*/;
+            resourceInputs["targetSnapshots"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
         } else {
-            inputs["annotations"] = undefined /*out*/;
-            inputs["buildArtifacts"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["deliveryPipelineSnapshot"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["renderEndTime"] = undefined /*out*/;
-            inputs["renderStartTime"] = undefined /*out*/;
-            inputs["renderState"] = undefined /*out*/;
-            inputs["skaffoldConfigPath"] = undefined /*out*/;
-            inputs["skaffoldConfigUri"] = undefined /*out*/;
-            inputs["skaffoldVersion"] = undefined /*out*/;
-            inputs["targetArtifacts"] = undefined /*out*/;
-            inputs["targetRenders"] = undefined /*out*/;
-            inputs["targetSnapshots"] = undefined /*out*/;
-            inputs["uid"] = undefined /*out*/;
+            resourceInputs["annotations"] = undefined /*out*/;
+            resourceInputs["buildArtifacts"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deliveryPipelineSnapshot"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["renderEndTime"] = undefined /*out*/;
+            resourceInputs["renderStartTime"] = undefined /*out*/;
+            resourceInputs["renderState"] = undefined /*out*/;
+            resourceInputs["skaffoldConfigPath"] = undefined /*out*/;
+            resourceInputs["skaffoldConfigUri"] = undefined /*out*/;
+            resourceInputs["skaffoldVersion"] = undefined /*out*/;
+            resourceInputs["targetArtifacts"] = undefined /*out*/;
+            resourceInputs["targetRenders"] = undefined /*out*/;
+            resourceInputs["targetSnapshots"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Release.__pulumiType, name, inputs, opts);
+        super(Release.__pulumiType, name, resourceInputs, opts);
     }
 }
 

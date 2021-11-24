@@ -57,28 +57,28 @@ export class DomainMapping extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: DomainMappingArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.appId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            inputs["appId"] = args ? args.appId : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["noManagedCertificate"] = args ? args.noManagedCertificate : undefined;
-            inputs["overrideStrategy"] = args ? args.overrideStrategy : undefined;
-            inputs["sslSettings"] = args ? args.sslSettings : undefined;
-            inputs["name"] = undefined /*out*/;
-            inputs["resourceRecords"] = undefined /*out*/;
+            resourceInputs["appId"] = args ? args.appId : undefined;
+            resourceInputs["id"] = args ? args.id : undefined;
+            resourceInputs["noManagedCertificate"] = args ? args.noManagedCertificate : undefined;
+            resourceInputs["overrideStrategy"] = args ? args.overrideStrategy : undefined;
+            resourceInputs["sslSettings"] = args ? args.sslSettings : undefined;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["resourceRecords"] = undefined /*out*/;
         } else {
-            inputs["name"] = undefined /*out*/;
-            inputs["resourceRecords"] = undefined /*out*/;
-            inputs["sslSettings"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["resourceRecords"] = undefined /*out*/;
+            resourceInputs["sslSettings"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(DomainMapping.__pulumiType, name, inputs, opts);
+        super(DomainMapping.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -58,7 +58,7 @@ export class RegionAutoscalingPolicyIamPolicy extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: RegionAutoscalingPolicyIamPolicyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.autoscalingPolicyId === undefined) && !opts.urn) {
@@ -67,21 +67,21 @@ export class RegionAutoscalingPolicyIamPolicy extends pulumi.CustomResource {
             if ((!args || args.regionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'regionId'");
             }
-            inputs["autoscalingPolicyId"] = args ? args.autoscalingPolicyId : undefined;
-            inputs["bindings"] = args ? args.bindings : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["regionId"] = args ? args.regionId : undefined;
-            inputs["version"] = args ? args.version : undefined;
+            resourceInputs["autoscalingPolicyId"] = args ? args.autoscalingPolicyId : undefined;
+            resourceInputs["bindings"] = args ? args.bindings : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["regionId"] = args ? args.regionId : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
         } else {
-            inputs["bindings"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["version"] = undefined /*out*/;
+            resourceInputs["bindings"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["version"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(RegionAutoscalingPolicyIamPolicy.__pulumiType, name, inputs, opts);
+        super(RegionAutoscalingPolicyIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

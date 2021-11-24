@@ -88,42 +88,42 @@ export class PhraseMatcher extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: PhraseMatcherArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["active"] = args ? args.active : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["phraseMatchRuleGroups"] = args ? args.phraseMatchRuleGroups : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["roleMatch"] = args ? args.roleMatch : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["versionTag"] = args ? args.versionTag : undefined;
-            inputs["activationUpdateTime"] = undefined /*out*/;
-            inputs["revisionCreateTime"] = undefined /*out*/;
-            inputs["revisionId"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["active"] = args ? args.active : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["phraseMatchRuleGroups"] = args ? args.phraseMatchRuleGroups : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["roleMatch"] = args ? args.roleMatch : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["versionTag"] = args ? args.versionTag : undefined;
+            resourceInputs["activationUpdateTime"] = undefined /*out*/;
+            resourceInputs["revisionCreateTime"] = undefined /*out*/;
+            resourceInputs["revisionId"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["activationUpdateTime"] = undefined /*out*/;
-            inputs["active"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["phraseMatchRuleGroups"] = undefined /*out*/;
-            inputs["revisionCreateTime"] = undefined /*out*/;
-            inputs["revisionId"] = undefined /*out*/;
-            inputs["roleMatch"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
-            inputs["versionTag"] = undefined /*out*/;
+            resourceInputs["activationUpdateTime"] = undefined /*out*/;
+            resourceInputs["active"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["phraseMatchRuleGroups"] = undefined /*out*/;
+            resourceInputs["revisionCreateTime"] = undefined /*out*/;
+            resourceInputs["revisionId"] = undefined /*out*/;
+            resourceInputs["roleMatch"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["versionTag"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(PhraseMatcher.__pulumiType, name, inputs, opts);
+        super(PhraseMatcher.__pulumiType, name, resourceInputs, opts);
     }
 }
 

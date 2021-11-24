@@ -65,7 +65,7 @@ export class AnnotationSpecSet extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: AnnotationSpecSetArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.annotationSpecs === undefined) && !opts.urn) {
@@ -74,23 +74,23 @@ export class AnnotationSpecSet extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            inputs["annotationSpecs"] = args ? args.annotationSpecs : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["blockingResources"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["annotationSpecs"] = args ? args.annotationSpecs : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["blockingResources"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         } else {
-            inputs["annotationSpecs"] = undefined /*out*/;
-            inputs["blockingResources"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["annotationSpecs"] = undefined /*out*/;
+            resourceInputs["blockingResources"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AnnotationSpecSet.__pulumiType, name, inputs, opts);
+        super(AnnotationSpecSet.__pulumiType, name, resourceInputs, opts);
     }
 }
 

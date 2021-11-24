@@ -73,7 +73,7 @@ export class Feed extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: FeedArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.feedId === undefined) && !opts.urn) {
@@ -91,29 +91,29 @@ export class Feed extends pulumi.CustomResource {
             if ((!args || args.v1Id1 === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'v1Id1'");
             }
-            inputs["assetNames"] = args ? args.assetNames : undefined;
-            inputs["assetTypes"] = args ? args.assetTypes : undefined;
-            inputs["condition"] = args ? args.condition : undefined;
-            inputs["contentType"] = args ? args.contentType : undefined;
-            inputs["feedId"] = args ? args.feedId : undefined;
-            inputs["feedOutputConfig"] = args ? args.feedOutputConfig : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["relationshipTypes"] = args ? args.relationshipTypes : undefined;
-            inputs["v1Id"] = args ? args.v1Id : undefined;
-            inputs["v1Id1"] = args ? args.v1Id1 : undefined;
+            resourceInputs["assetNames"] = args ? args.assetNames : undefined;
+            resourceInputs["assetTypes"] = args ? args.assetTypes : undefined;
+            resourceInputs["condition"] = args ? args.condition : undefined;
+            resourceInputs["contentType"] = args ? args.contentType : undefined;
+            resourceInputs["feedId"] = args ? args.feedId : undefined;
+            resourceInputs["feedOutputConfig"] = args ? args.feedOutputConfig : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["relationshipTypes"] = args ? args.relationshipTypes : undefined;
+            resourceInputs["v1Id"] = args ? args.v1Id : undefined;
+            resourceInputs["v1Id1"] = args ? args.v1Id1 : undefined;
         } else {
-            inputs["assetNames"] = undefined /*out*/;
-            inputs["assetTypes"] = undefined /*out*/;
-            inputs["condition"] = undefined /*out*/;
-            inputs["contentType"] = undefined /*out*/;
-            inputs["feedOutputConfig"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["relationshipTypes"] = undefined /*out*/;
+            resourceInputs["assetNames"] = undefined /*out*/;
+            resourceInputs["assetTypes"] = undefined /*out*/;
+            resourceInputs["condition"] = undefined /*out*/;
+            resourceInputs["contentType"] = undefined /*out*/;
+            resourceInputs["feedOutputConfig"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["relationshipTypes"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Feed.__pulumiType, name, inputs, opts);
+        super(Feed.__pulumiType, name, resourceInputs, opts);
     }
 }
 

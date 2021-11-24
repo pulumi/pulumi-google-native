@@ -117,7 +117,7 @@ export class RatePlan extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: RatePlanArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.apiproductId === undefined) && !opts.urn) {
@@ -126,50 +126,50 @@ export class RatePlan extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            inputs["apiproduct"] = args ? args.apiproduct : undefined;
-            inputs["apiproductId"] = args ? args.apiproductId : undefined;
-            inputs["billingPeriod"] = args ? args.billingPeriod : undefined;
-            inputs["consumptionPricingRates"] = args ? args.consumptionPricingRates : undefined;
-            inputs["consumptionPricingType"] = args ? args.consumptionPricingType : undefined;
-            inputs["currencyCode"] = args ? args.currencyCode : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["endTime"] = args ? args.endTime : undefined;
-            inputs["fixedFeeFrequency"] = args ? args.fixedFeeFrequency : undefined;
-            inputs["fixedRecurringFee"] = args ? args.fixedRecurringFee : undefined;
-            inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["revenueShareRates"] = args ? args.revenueShareRates : undefined;
-            inputs["revenueShareType"] = args ? args.revenueShareType : undefined;
-            inputs["setupFee"] = args ? args.setupFee : undefined;
-            inputs["startTime"] = args ? args.startTime : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["lastModifiedAt"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["apiproduct"] = args ? args.apiproduct : undefined;
+            resourceInputs["apiproductId"] = args ? args.apiproductId : undefined;
+            resourceInputs["billingPeriod"] = args ? args.billingPeriod : undefined;
+            resourceInputs["consumptionPricingRates"] = args ? args.consumptionPricingRates : undefined;
+            resourceInputs["consumptionPricingType"] = args ? args.consumptionPricingType : undefined;
+            resourceInputs["currencyCode"] = args ? args.currencyCode : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["endTime"] = args ? args.endTime : undefined;
+            resourceInputs["fixedFeeFrequency"] = args ? args.fixedFeeFrequency : undefined;
+            resourceInputs["fixedRecurringFee"] = args ? args.fixedRecurringFee : undefined;
+            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["revenueShareRates"] = args ? args.revenueShareRates : undefined;
+            resourceInputs["revenueShareType"] = args ? args.revenueShareType : undefined;
+            resourceInputs["setupFee"] = args ? args.setupFee : undefined;
+            resourceInputs["startTime"] = args ? args.startTime : undefined;
+            resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["lastModifiedAt"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         } else {
-            inputs["apiproduct"] = undefined /*out*/;
-            inputs["billingPeriod"] = undefined /*out*/;
-            inputs["consumptionPricingRates"] = undefined /*out*/;
-            inputs["consumptionPricingType"] = undefined /*out*/;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["currencyCode"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["endTime"] = undefined /*out*/;
-            inputs["fixedFeeFrequency"] = undefined /*out*/;
-            inputs["fixedRecurringFee"] = undefined /*out*/;
-            inputs["lastModifiedAt"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["revenueShareRates"] = undefined /*out*/;
-            inputs["revenueShareType"] = undefined /*out*/;
-            inputs["setupFee"] = undefined /*out*/;
-            inputs["startTime"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["apiproduct"] = undefined /*out*/;
+            resourceInputs["billingPeriod"] = undefined /*out*/;
+            resourceInputs["consumptionPricingRates"] = undefined /*out*/;
+            resourceInputs["consumptionPricingType"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["currencyCode"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["fixedFeeFrequency"] = undefined /*out*/;
+            resourceInputs["fixedRecurringFee"] = undefined /*out*/;
+            resourceInputs["lastModifiedAt"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["revenueShareRates"] = undefined /*out*/;
+            resourceInputs["revenueShareType"] = undefined /*out*/;
+            resourceInputs["setupFee"] = undefined /*out*/;
+            resourceInputs["startTime"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(RatePlan.__pulumiType, name, inputs, opts);
+        super(RatePlan.__pulumiType, name, resourceInputs, opts);
     }
 }
 

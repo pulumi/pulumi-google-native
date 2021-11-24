@@ -92,45 +92,45 @@ export class Backup extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: BackupArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.backupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'backupId'");
             }
-            inputs["backupId"] = args ? args.backupId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["sourceFileShare"] = args ? args.sourceFileShare : undefined;
-            inputs["sourceInstance"] = args ? args.sourceInstance : undefined;
-            inputs["capacityGb"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["downloadBytes"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["satisfiesPzs"] = undefined /*out*/;
-            inputs["sourceInstanceTier"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["storageBytes"] = undefined /*out*/;
+            resourceInputs["backupId"] = args ? args.backupId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["sourceFileShare"] = args ? args.sourceFileShare : undefined;
+            resourceInputs["sourceInstance"] = args ? args.sourceInstance : undefined;
+            resourceInputs["capacityGb"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["downloadBytes"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
+            resourceInputs["sourceInstanceTier"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["storageBytes"] = undefined /*out*/;
         } else {
-            inputs["capacityGb"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["downloadBytes"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["satisfiesPzs"] = undefined /*out*/;
-            inputs["sourceFileShare"] = undefined /*out*/;
-            inputs["sourceInstance"] = undefined /*out*/;
-            inputs["sourceInstanceTier"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["storageBytes"] = undefined /*out*/;
+            resourceInputs["capacityGb"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["downloadBytes"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
+            resourceInputs["sourceFileShare"] = undefined /*out*/;
+            resourceInputs["sourceInstance"] = undefined /*out*/;
+            resourceInputs["sourceInstanceTier"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["storageBytes"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Backup.__pulumiType, name, inputs, opts);
+        super(Backup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

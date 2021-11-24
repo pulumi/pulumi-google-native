@@ -72,35 +72,35 @@ export class Waiter extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: WaiterArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.configId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'configId'");
             }
-            inputs["configId"] = args ? args.configId : undefined;
-            inputs["failure"] = args ? args.failure : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["success"] = args ? args.success : undefined;
-            inputs["timeout"] = args ? args.timeout : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["done"] = undefined /*out*/;
-            inputs["error"] = undefined /*out*/;
+            resourceInputs["configId"] = args ? args.configId : undefined;
+            resourceInputs["failure"] = args ? args.failure : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["success"] = args ? args.success : undefined;
+            resourceInputs["timeout"] = args ? args.timeout : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["done"] = undefined /*out*/;
+            resourceInputs["error"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["done"] = undefined /*out*/;
-            inputs["error"] = undefined /*out*/;
-            inputs["failure"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["success"] = undefined /*out*/;
-            inputs["timeout"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["done"] = undefined /*out*/;
+            resourceInputs["error"] = undefined /*out*/;
+            resourceInputs["failure"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["success"] = undefined /*out*/;
+            resourceInputs["timeout"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Waiter.__pulumiType, name, inputs, opts);
+        super(Waiter.__pulumiType, name, resourceInputs, opts);
     }
 }
 

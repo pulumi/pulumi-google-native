@@ -65,29 +65,29 @@ export class Job extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: JobArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.namespaceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'namespaceId'");
             }
-            inputs["apiVersion"] = args ? args.apiVersion : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
-            inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["namespaceId"] = args ? args.namespaceId : undefined;
-            inputs["spec"] = args ? args.spec : undefined;
-            inputs["status"] = args ? args.status : undefined;
+            resourceInputs["apiVersion"] = args ? args.apiVersion : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
+            resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
+            resourceInputs["spec"] = args ? args.spec : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
         } else {
-            inputs["apiVersion"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["metadata"] = undefined /*out*/;
-            inputs["spec"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["apiVersion"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["metadata"] = undefined /*out*/;
+            resourceInputs["spec"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Job.__pulumiType, name, inputs, opts);
+        super(Job.__pulumiType, name, resourceInputs, opts);
     }
 }
 

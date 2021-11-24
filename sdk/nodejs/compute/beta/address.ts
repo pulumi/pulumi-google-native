@@ -116,56 +116,56 @@ export class Address extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: AddressArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["address"] = args ? args.address : undefined;
-            inputs["addressType"] = args ? args.addressType : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["ipVersion"] = args ? args.ipVersion : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["networkTier"] = args ? args.networkTier : undefined;
-            inputs["prefixLength"] = args ? args.prefixLength : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["purpose"] = args ? args.purpose : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["subnetwork"] = args ? args.subnetwork : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["labelFingerprint"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["users"] = undefined /*out*/;
+            resourceInputs["address"] = args ? args.address : undefined;
+            resourceInputs["addressType"] = args ? args.addressType : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["networkTier"] = args ? args.networkTier : undefined;
+            resourceInputs["prefixLength"] = args ? args.prefixLength : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["purpose"] = args ? args.purpose : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["labelFingerprint"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["users"] = undefined /*out*/;
         } else {
-            inputs["address"] = undefined /*out*/;
-            inputs["addressType"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["ipVersion"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["labelFingerprint"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["network"] = undefined /*out*/;
-            inputs["networkTier"] = undefined /*out*/;
-            inputs["prefixLength"] = undefined /*out*/;
-            inputs["purpose"] = undefined /*out*/;
-            inputs["region"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["subnetwork"] = undefined /*out*/;
-            inputs["users"] = undefined /*out*/;
+            resourceInputs["address"] = undefined /*out*/;
+            resourceInputs["addressType"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["ipVersion"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["labelFingerprint"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["network"] = undefined /*out*/;
+            resourceInputs["networkTier"] = undefined /*out*/;
+            resourceInputs["prefixLength"] = undefined /*out*/;
+            resourceInputs["purpose"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["subnetwork"] = undefined /*out*/;
+            resourceInputs["users"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Address.__pulumiType, name, inputs, opts);
+        super(Address.__pulumiType, name, resourceInputs, opts);
     }
 }
 

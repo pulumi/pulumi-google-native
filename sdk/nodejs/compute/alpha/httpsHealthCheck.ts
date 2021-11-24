@@ -95,43 +95,43 @@ export class HttpsHealthCheck extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: HttpsHealthCheckArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["checkIntervalSec"] = args ? args.checkIntervalSec : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["healthyThreshold"] = args ? args.healthyThreshold : undefined;
-            inputs["host"] = args ? args.host : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["requestPath"] = args ? args.requestPath : undefined;
-            inputs["timeoutSec"] = args ? args.timeoutSec : undefined;
-            inputs["unhealthyThreshold"] = args ? args.unhealthyThreshold : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["checkIntervalSec"] = args ? args.checkIntervalSec : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["healthyThreshold"] = args ? args.healthyThreshold : undefined;
+            resourceInputs["host"] = args ? args.host : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["requestPath"] = args ? args.requestPath : undefined;
+            resourceInputs["timeoutSec"] = args ? args.timeoutSec : undefined;
+            resourceInputs["unhealthyThreshold"] = args ? args.unhealthyThreshold : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
         } else {
-            inputs["checkIntervalSec"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["healthyThreshold"] = undefined /*out*/;
-            inputs["host"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["port"] = undefined /*out*/;
-            inputs["requestPath"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["selfLinkWithId"] = undefined /*out*/;
-            inputs["timeoutSec"] = undefined /*out*/;
-            inputs["unhealthyThreshold"] = undefined /*out*/;
+            resourceInputs["checkIntervalSec"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["healthyThreshold"] = undefined /*out*/;
+            resourceInputs["host"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["port"] = undefined /*out*/;
+            resourceInputs["requestPath"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["timeoutSec"] = undefined /*out*/;
+            resourceInputs["unhealthyThreshold"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(HttpsHealthCheck.__pulumiType, name, inputs, opts);
+        super(HttpsHealthCheck.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -55,7 +55,7 @@ export class DebugToken extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: DebugTokenArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.appId === undefined) && !opts.urn) {
@@ -67,20 +67,20 @@ export class DebugToken extends pulumi.CustomResource {
             if ((!args || args.token === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'token'");
             }
-            inputs["appId"] = args ? args.appId : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["token"] = args ? args.token : undefined;
+            resourceInputs["appId"] = args ? args.appId : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["token"] = args ? args.token : undefined;
         } else {
-            inputs["displayName"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["token"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["token"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(DebugToken.__pulumiType, name, inputs, opts);
+        super(DebugToken.__pulumiType, name, resourceInputs, opts);
     }
 }
 

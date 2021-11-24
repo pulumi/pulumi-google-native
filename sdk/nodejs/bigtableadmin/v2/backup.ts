@@ -77,7 +77,7 @@ export class Backup extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: BackupArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.backupId === undefined) && !opts.urn) {
@@ -95,32 +95,32 @@ export class Backup extends pulumi.CustomResource {
             if ((!args || args.sourceTable === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceTable'");
             }
-            inputs["backupId"] = args ? args.backupId : undefined;
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["expireTime"] = args ? args.expireTime : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["sourceTable"] = args ? args.sourceTable : undefined;
-            inputs["encryptionInfo"] = undefined /*out*/;
-            inputs["endTime"] = undefined /*out*/;
-            inputs["sizeBytes"] = undefined /*out*/;
-            inputs["startTime"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["backupId"] = args ? args.backupId : undefined;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["expireTime"] = args ? args.expireTime : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["sourceTable"] = args ? args.sourceTable : undefined;
+            resourceInputs["encryptionInfo"] = undefined /*out*/;
+            resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["sizeBytes"] = undefined /*out*/;
+            resourceInputs["startTime"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
-            inputs["encryptionInfo"] = undefined /*out*/;
-            inputs["endTime"] = undefined /*out*/;
-            inputs["expireTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["sizeBytes"] = undefined /*out*/;
-            inputs["sourceTable"] = undefined /*out*/;
-            inputs["startTime"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["encryptionInfo"] = undefined /*out*/;
+            resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["expireTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["sizeBytes"] = undefined /*out*/;
+            resourceInputs["sourceTable"] = undefined /*out*/;
+            resourceInputs["startTime"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Backup.__pulumiType, name, inputs, opts);
+        super(Backup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

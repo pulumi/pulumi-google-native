@@ -104,52 +104,52 @@ export class NodePool extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: NodePoolArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            inputs["autoscaling"] = args ? args.autoscaling : undefined;
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["conditions"] = args ? args.conditions : undefined;
-            inputs["config"] = args ? args.config : undefined;
-            inputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["locations"] = args ? args.locations : undefined;
-            inputs["management"] = args ? args.management : undefined;
-            inputs["maxPodsConstraint"] = args ? args.maxPodsConstraint : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["networkConfig"] = args ? args.networkConfig : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["upgradeSettings"] = args ? args.upgradeSettings : undefined;
-            inputs["version"] = args ? args.version : undefined;
-            inputs["instanceGroupUrls"] = undefined /*out*/;
-            inputs["podIpv4CidrSize"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["autoscaling"] = args ? args.autoscaling : undefined;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["conditions"] = args ? args.conditions : undefined;
+            resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["locations"] = args ? args.locations : undefined;
+            resourceInputs["management"] = args ? args.management : undefined;
+            resourceInputs["maxPodsConstraint"] = args ? args.maxPodsConstraint : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["upgradeSettings"] = args ? args.upgradeSettings : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["instanceGroupUrls"] = undefined /*out*/;
+            resourceInputs["podIpv4CidrSize"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         } else {
-            inputs["autoscaling"] = undefined /*out*/;
-            inputs["conditions"] = undefined /*out*/;
-            inputs["config"] = undefined /*out*/;
-            inputs["initialNodeCount"] = undefined /*out*/;
-            inputs["instanceGroupUrls"] = undefined /*out*/;
-            inputs["locations"] = undefined /*out*/;
-            inputs["management"] = undefined /*out*/;
-            inputs["maxPodsConstraint"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["networkConfig"] = undefined /*out*/;
-            inputs["podIpv4CidrSize"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["upgradeSettings"] = undefined /*out*/;
-            inputs["version"] = undefined /*out*/;
+            resourceInputs["autoscaling"] = undefined /*out*/;
+            resourceInputs["conditions"] = undefined /*out*/;
+            resourceInputs["config"] = undefined /*out*/;
+            resourceInputs["initialNodeCount"] = undefined /*out*/;
+            resourceInputs["instanceGroupUrls"] = undefined /*out*/;
+            resourceInputs["locations"] = undefined /*out*/;
+            resourceInputs["management"] = undefined /*out*/;
+            resourceInputs["maxPodsConstraint"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["networkConfig"] = undefined /*out*/;
+            resourceInputs["podIpv4CidrSize"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["upgradeSettings"] = undefined /*out*/;
+            resourceInputs["version"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(NodePool.__pulumiType, name, inputs, opts);
+        super(NodePool.__pulumiType, name, resourceInputs, opts);
     }
 }
 

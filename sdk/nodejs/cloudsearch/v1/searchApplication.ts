@@ -84,35 +84,35 @@ export class SearchApplication extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: SearchApplicationArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["dataSourceRestrictions"] = args ? args.dataSourceRestrictions : undefined;
-            inputs["defaultFacetOptions"] = args ? args.defaultFacetOptions : undefined;
-            inputs["defaultSortOptions"] = args ? args.defaultSortOptions : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["enableAuditLog"] = args ? args.enableAuditLog : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["queryInterpretationConfig"] = args ? args.queryInterpretationConfig : undefined;
-            inputs["scoringConfig"] = args ? args.scoringConfig : undefined;
-            inputs["sourceConfig"] = args ? args.sourceConfig : undefined;
-            inputs["operationIds"] = undefined /*out*/;
+            resourceInputs["dataSourceRestrictions"] = args ? args.dataSourceRestrictions : undefined;
+            resourceInputs["defaultFacetOptions"] = args ? args.defaultFacetOptions : undefined;
+            resourceInputs["defaultSortOptions"] = args ? args.defaultSortOptions : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["enableAuditLog"] = args ? args.enableAuditLog : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["queryInterpretationConfig"] = args ? args.queryInterpretationConfig : undefined;
+            resourceInputs["scoringConfig"] = args ? args.scoringConfig : undefined;
+            resourceInputs["sourceConfig"] = args ? args.sourceConfig : undefined;
+            resourceInputs["operationIds"] = undefined /*out*/;
         } else {
-            inputs["dataSourceRestrictions"] = undefined /*out*/;
-            inputs["defaultFacetOptions"] = undefined /*out*/;
-            inputs["defaultSortOptions"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["enableAuditLog"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["operationIds"] = undefined /*out*/;
-            inputs["queryInterpretationConfig"] = undefined /*out*/;
-            inputs["scoringConfig"] = undefined /*out*/;
-            inputs["sourceConfig"] = undefined /*out*/;
+            resourceInputs["dataSourceRestrictions"] = undefined /*out*/;
+            resourceInputs["defaultFacetOptions"] = undefined /*out*/;
+            resourceInputs["defaultSortOptions"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["enableAuditLog"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["operationIds"] = undefined /*out*/;
+            resourceInputs["queryInterpretationConfig"] = undefined /*out*/;
+            resourceInputs["scoringConfig"] = undefined /*out*/;
+            resourceInputs["sourceConfig"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(SearchApplication.__pulumiType, name, inputs, opts);
+        super(SearchApplication.__pulumiType, name, resourceInputs, opts);
     }
 }
 

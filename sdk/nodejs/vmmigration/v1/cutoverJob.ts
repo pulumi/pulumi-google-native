@@ -79,7 +79,7 @@ export class CutoverJob extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: CutoverJobArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.cutoverJobId === undefined) && !opts.urn) {
@@ -91,34 +91,34 @@ export class CutoverJob extends pulumi.CustomResource {
             if ((!args || args.sourceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceId'");
             }
-            inputs["cutoverJobId"] = args ? args.cutoverJobId : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["migratingVmId"] = args ? args.migratingVmId : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["sourceId"] = args ? args.sourceId : undefined;
-            inputs["computeEngineTargetDetails"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["error"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["progressPercent"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["stateMessage"] = undefined /*out*/;
-            inputs["stateTime"] = undefined /*out*/;
+            resourceInputs["cutoverJobId"] = args ? args.cutoverJobId : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["migratingVmId"] = args ? args.migratingVmId : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["sourceId"] = args ? args.sourceId : undefined;
+            resourceInputs["computeEngineTargetDetails"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["error"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["progressPercent"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stateMessage"] = undefined /*out*/;
+            resourceInputs["stateTime"] = undefined /*out*/;
         } else {
-            inputs["computeEngineTargetDetails"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["error"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["progressPercent"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["stateMessage"] = undefined /*out*/;
-            inputs["stateTime"] = undefined /*out*/;
+            resourceInputs["computeEngineTargetDetails"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["error"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["progressPercent"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stateMessage"] = undefined /*out*/;
+            resourceInputs["stateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(CutoverJob.__pulumiType, name, inputs, opts);
+        super(CutoverJob.__pulumiType, name, resourceInputs, opts);
     }
 }
 

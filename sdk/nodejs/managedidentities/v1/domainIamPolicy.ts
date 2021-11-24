@@ -58,26 +58,26 @@ export class DomainIamPolicy extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: DomainIamPolicyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.domainId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'domainId'");
             }
-            inputs["bindings"] = args ? args.bindings : undefined;
-            inputs["domainId"] = args ? args.domainId : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["version"] = args ? args.version : undefined;
+            resourceInputs["bindings"] = args ? args.bindings : undefined;
+            resourceInputs["domainId"] = args ? args.domainId : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
         } else {
-            inputs["bindings"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["version"] = undefined /*out*/;
+            resourceInputs["bindings"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["version"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(DomainIamPolicy.__pulumiType, name, inputs, opts);
+        super(DomainIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

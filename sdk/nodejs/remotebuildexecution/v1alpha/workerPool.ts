@@ -68,34 +68,34 @@ export class WorkerPool extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: WorkerPoolArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            inputs["autoscale"] = args ? args.autoscale : undefined;
-            inputs["channel"] = args ? args.channel : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["poolId"] = args ? args.poolId : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["workerConfig"] = args ? args.workerConfig : undefined;
-            inputs["workerCount"] = args ? args.workerCount : undefined;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["autoscale"] = args ? args.autoscale : undefined;
+            resourceInputs["channel"] = args ? args.channel : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["poolId"] = args ? args.poolId : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["workerConfig"] = args ? args.workerConfig : undefined;
+            resourceInputs["workerCount"] = args ? args.workerCount : undefined;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
-            inputs["autoscale"] = undefined /*out*/;
-            inputs["channel"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["workerConfig"] = undefined /*out*/;
-            inputs["workerCount"] = undefined /*out*/;
+            resourceInputs["autoscale"] = undefined /*out*/;
+            resourceInputs["channel"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["workerConfig"] = undefined /*out*/;
+            resourceInputs["workerCount"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(WorkerPool.__pulumiType, name, inputs, opts);
+        super(WorkerPool.__pulumiType, name, resourceInputs, opts);
     }
 }
 

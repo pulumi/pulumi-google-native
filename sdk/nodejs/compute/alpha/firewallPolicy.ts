@@ -97,43 +97,43 @@ export class FirewallPolicy extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: FirewallPolicyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["associations"] = args ? args.associations : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["parentId"] = args ? args.parentId : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["rules"] = args ? args.rules : undefined;
-            inputs["shortName"] = args ? args.shortName : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["parent"] = undefined /*out*/;
-            inputs["region"] = undefined /*out*/;
-            inputs["ruleTupleCount"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["associations"] = args ? args.associations : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["parentId"] = args ? args.parentId : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["rules"] = args ? args.rules : undefined;
+            resourceInputs["shortName"] = args ? args.shortName : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["parent"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["ruleTupleCount"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
         } else {
-            inputs["associations"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["parent"] = undefined /*out*/;
-            inputs["region"] = undefined /*out*/;
-            inputs["ruleTupleCount"] = undefined /*out*/;
-            inputs["rules"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["selfLinkWithId"] = undefined /*out*/;
-            inputs["shortName"] = undefined /*out*/;
+            resourceInputs["associations"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["parent"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["ruleTupleCount"] = undefined /*out*/;
+            resourceInputs["rules"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["shortName"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(FirewallPolicy.__pulumiType, name, inputs, opts);
+        super(FirewallPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

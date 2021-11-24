@@ -56,26 +56,26 @@ export class IdentityAwareProxyClient extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: IdentityAwareProxyClientArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.brandId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'brandId'");
             }
-            inputs["brandId"] = args ? args.brandId : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["name"] = undefined /*out*/;
-            inputs["secret"] = undefined /*out*/;
+            resourceInputs["brandId"] = args ? args.brandId : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["secret"] = undefined /*out*/;
         } else {
-            inputs["displayName"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["secret"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["secret"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(IdentityAwareProxyClient.__pulumiType, name, inputs, opts);
+        super(IdentityAwareProxyClient.__pulumiType, name, resourceInputs, opts);
     }
 }
 

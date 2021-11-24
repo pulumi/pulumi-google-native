@@ -85,7 +85,7 @@ export class Service extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ServiceArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.v3Id === undefined) && !opts.urn) {
@@ -94,35 +94,35 @@ export class Service extends pulumi.CustomResource {
             if ((!args || args.v3Id1 === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'v3Id1'");
             }
-            inputs["appEngine"] = args ? args.appEngine : undefined;
-            inputs["cloudEndpoints"] = args ? args.cloudEndpoints : undefined;
-            inputs["clusterIstio"] = args ? args.clusterIstio : undefined;
-            inputs["custom"] = args ? args.custom : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["istioCanonicalService"] = args ? args.istioCanonicalService : undefined;
-            inputs["meshIstio"] = args ? args.meshIstio : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["serviceId"] = args ? args.serviceId : undefined;
-            inputs["telemetry"] = args ? args.telemetry : undefined;
-            inputs["userLabels"] = args ? args.userLabels : undefined;
-            inputs["v3Id"] = args ? args.v3Id : undefined;
-            inputs["v3Id1"] = args ? args.v3Id1 : undefined;
+            resourceInputs["appEngine"] = args ? args.appEngine : undefined;
+            resourceInputs["cloudEndpoints"] = args ? args.cloudEndpoints : undefined;
+            resourceInputs["clusterIstio"] = args ? args.clusterIstio : undefined;
+            resourceInputs["custom"] = args ? args.custom : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["istioCanonicalService"] = args ? args.istioCanonicalService : undefined;
+            resourceInputs["meshIstio"] = args ? args.meshIstio : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["serviceId"] = args ? args.serviceId : undefined;
+            resourceInputs["telemetry"] = args ? args.telemetry : undefined;
+            resourceInputs["userLabels"] = args ? args.userLabels : undefined;
+            resourceInputs["v3Id"] = args ? args.v3Id : undefined;
+            resourceInputs["v3Id1"] = args ? args.v3Id1 : undefined;
         } else {
-            inputs["appEngine"] = undefined /*out*/;
-            inputs["cloudEndpoints"] = undefined /*out*/;
-            inputs["clusterIstio"] = undefined /*out*/;
-            inputs["custom"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["istioCanonicalService"] = undefined /*out*/;
-            inputs["meshIstio"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["telemetry"] = undefined /*out*/;
-            inputs["userLabels"] = undefined /*out*/;
+            resourceInputs["appEngine"] = undefined /*out*/;
+            resourceInputs["cloudEndpoints"] = undefined /*out*/;
+            resourceInputs["clusterIstio"] = undefined /*out*/;
+            resourceInputs["custom"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["istioCanonicalService"] = undefined /*out*/;
+            resourceInputs["meshIstio"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["telemetry"] = undefined /*out*/;
+            resourceInputs["userLabels"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Service.__pulumiType, name, inputs, opts);
+        super(Service.__pulumiType, name, resourceInputs, opts);
     }
 }
 

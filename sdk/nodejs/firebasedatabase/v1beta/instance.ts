@@ -64,28 +64,28 @@ export class Instance extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: InstanceArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["databaseId"] = args ? args.databaseId : undefined;
-            inputs["databaseUrl"] = args ? args.databaseUrl : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["validateOnly"] = args ? args.validateOnly : undefined;
+            resourceInputs["databaseId"] = args ? args.databaseId : undefined;
+            resourceInputs["databaseUrl"] = args ? args.databaseUrl : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
         } else {
-            inputs["databaseUrl"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["project"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
+            resourceInputs["databaseUrl"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Instance.__pulumiType, name, inputs, opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -81,39 +81,39 @@ export class Execution extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ExecutionArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.executionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'executionId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["executionId"] = args ? args.executionId : undefined;
-            inputs["executionTemplate"] = args ? args.executionTemplate : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["outputNotebookFile"] = args ? args.outputNotebookFile : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["jobUri"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["executionId"] = args ? args.executionId : undefined;
+            resourceInputs["executionTemplate"] = args ? args.executionTemplate : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["outputNotebookFile"] = args ? args.outputNotebookFile : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["jobUri"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["executionTemplate"] = undefined /*out*/;
-            inputs["jobUri"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["outputNotebookFile"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["executionTemplate"] = undefined /*out*/;
+            resourceInputs["jobUri"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["outputNotebookFile"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Execution.__pulumiType, name, inputs, opts);
+        super(Execution.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -92,44 +92,44 @@ export class TargetPool extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: TargetPoolArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["backupPool"] = args ? args.backupPool : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["failoverRatio"] = args ? args.failoverRatio : undefined;
-            inputs["healthChecks"] = args ? args.healthChecks : undefined;
-            inputs["instances"] = args ? args.instances : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["backupPool"] = args ? args.backupPool : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["failoverRatio"] = args ? args.failoverRatio : undefined;
+            resourceInputs["healthChecks"] = args ? args.healthChecks : undefined;
+            resourceInputs["instances"] = args ? args.instances : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
         } else {
-            inputs["backupPool"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["failoverRatio"] = undefined /*out*/;
-            inputs["healthChecks"] = undefined /*out*/;
-            inputs["instances"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["region"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["selfLinkWithId"] = undefined /*out*/;
-            inputs["sessionAffinity"] = undefined /*out*/;
+            resourceInputs["backupPool"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["failoverRatio"] = undefined /*out*/;
+            resourceInputs["healthChecks"] = undefined /*out*/;
+            resourceInputs["instances"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["sessionAffinity"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(TargetPool.__pulumiType, name, inputs, opts);
+        super(TargetPool.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -60,7 +60,7 @@ export class AccessPolicy extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: AccessPolicyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.parent === undefined) && !opts.urn) {
@@ -69,20 +69,20 @@ export class AccessPolicy extends pulumi.CustomResource {
             if ((!args || args.title === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
-            inputs["parent"] = args ? args.parent : undefined;
-            inputs["title"] = args ? args.title : undefined;
-            inputs["etag"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["title"] = args ? args.title : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         } else {
-            inputs["etag"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["parent"] = undefined /*out*/;
-            inputs["title"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["parent"] = undefined /*out*/;
+            resourceInputs["title"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AccessPolicy.__pulumiType, name, inputs, opts);
+        super(AccessPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

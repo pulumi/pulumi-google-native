@@ -76,37 +76,37 @@ export class ClientTlsPolicy extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ClientTlsPolicyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.clientTlsPolicyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clientTlsPolicyId'");
             }
-            inputs["clientCertificate"] = args ? args.clientCertificate : undefined;
-            inputs["clientTlsPolicyId"] = args ? args.clientTlsPolicyId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["serverValidationCa"] = args ? args.serverValidationCa : undefined;
-            inputs["sni"] = args ? args.sni : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["clientCertificate"] = args ? args.clientCertificate : undefined;
+            resourceInputs["clientTlsPolicyId"] = args ? args.clientTlsPolicyId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["serverValidationCa"] = args ? args.serverValidationCa : undefined;
+            resourceInputs["sni"] = args ? args.sni : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["clientCertificate"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["serverValidationCa"] = undefined /*out*/;
-            inputs["sni"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["clientCertificate"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["serverValidationCa"] = undefined /*out*/;
+            resourceInputs["sni"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ClientTlsPolicy.__pulumiType, name, inputs, opts);
+        super(ClientTlsPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

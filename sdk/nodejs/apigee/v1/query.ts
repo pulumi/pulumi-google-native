@@ -98,7 +98,7 @@ export class Query extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: QueryArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.environmentId === undefined) && !opts.urn) {
@@ -110,48 +110,48 @@ export class Query extends pulumi.CustomResource {
             if ((!args || args.timeRange === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'timeRange'");
             }
-            inputs["csvDelimiter"] = args ? args.csvDelimiter : undefined;
-            inputs["dimensions"] = args ? args.dimensions : undefined;
-            inputs["envgroupHostname"] = args ? args.envgroupHostname : undefined;
-            inputs["environmentId"] = args ? args.environmentId : undefined;
-            inputs["filter"] = args ? args.filter : undefined;
-            inputs["groupByTimeUnit"] = args ? args.groupByTimeUnit : undefined;
-            inputs["limit"] = args ? args.limit : undefined;
-            inputs["metrics"] = args ? args.metrics : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["outputFormat"] = args ? args.outputFormat : undefined;
-            inputs["reportDefinitionId"] = args ? args.reportDefinitionId : undefined;
-            inputs["timeRange"] = args ? args.timeRange : undefined;
-            inputs["created"] = undefined /*out*/;
-            inputs["error"] = undefined /*out*/;
-            inputs["executionTime"] = undefined /*out*/;
-            inputs["queryParams"] = undefined /*out*/;
-            inputs["result"] = undefined /*out*/;
-            inputs["resultFileSize"] = undefined /*out*/;
-            inputs["resultRows"] = undefined /*out*/;
-            inputs["self"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["updated"] = undefined /*out*/;
+            resourceInputs["csvDelimiter"] = args ? args.csvDelimiter : undefined;
+            resourceInputs["dimensions"] = args ? args.dimensions : undefined;
+            resourceInputs["envgroupHostname"] = args ? args.envgroupHostname : undefined;
+            resourceInputs["environmentId"] = args ? args.environmentId : undefined;
+            resourceInputs["filter"] = args ? args.filter : undefined;
+            resourceInputs["groupByTimeUnit"] = args ? args.groupByTimeUnit : undefined;
+            resourceInputs["limit"] = args ? args.limit : undefined;
+            resourceInputs["metrics"] = args ? args.metrics : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["outputFormat"] = args ? args.outputFormat : undefined;
+            resourceInputs["reportDefinitionId"] = args ? args.reportDefinitionId : undefined;
+            resourceInputs["timeRange"] = args ? args.timeRange : undefined;
+            resourceInputs["created"] = undefined /*out*/;
+            resourceInputs["error"] = undefined /*out*/;
+            resourceInputs["executionTime"] = undefined /*out*/;
+            resourceInputs["queryParams"] = undefined /*out*/;
+            resourceInputs["result"] = undefined /*out*/;
+            resourceInputs["resultFileSize"] = undefined /*out*/;
+            resourceInputs["resultRows"] = undefined /*out*/;
+            resourceInputs["self"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["updated"] = undefined /*out*/;
         } else {
-            inputs["created"] = undefined /*out*/;
-            inputs["envgroupHostname"] = undefined /*out*/;
-            inputs["error"] = undefined /*out*/;
-            inputs["executionTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["queryParams"] = undefined /*out*/;
-            inputs["reportDefinitionId"] = undefined /*out*/;
-            inputs["result"] = undefined /*out*/;
-            inputs["resultFileSize"] = undefined /*out*/;
-            inputs["resultRows"] = undefined /*out*/;
-            inputs["self"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["updated"] = undefined /*out*/;
+            resourceInputs["created"] = undefined /*out*/;
+            resourceInputs["envgroupHostname"] = undefined /*out*/;
+            resourceInputs["error"] = undefined /*out*/;
+            resourceInputs["executionTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["queryParams"] = undefined /*out*/;
+            resourceInputs["reportDefinitionId"] = undefined /*out*/;
+            resourceInputs["result"] = undefined /*out*/;
+            resourceInputs["resultFileSize"] = undefined /*out*/;
+            resourceInputs["resultRows"] = undefined /*out*/;
+            resourceInputs["self"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["updated"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Query.__pulumiType, name, inputs, opts);
+        super(Query.__pulumiType, name, resourceInputs, opts);
     }
 }
 

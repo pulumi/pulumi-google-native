@@ -76,36 +76,36 @@ export class Dashboard extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: DashboardArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            inputs["columnLayout"] = args ? args.columnLayout : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["gridLayout"] = args ? args.gridLayout : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["mosaicLayout"] = args ? args.mosaicLayout : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["rowLayout"] = args ? args.rowLayout : undefined;
-            inputs["validateOnly"] = args ? args.validateOnly : undefined;
+            resourceInputs["columnLayout"] = args ? args.columnLayout : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["gridLayout"] = args ? args.gridLayout : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["mosaicLayout"] = args ? args.mosaicLayout : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["rowLayout"] = args ? args.rowLayout : undefined;
+            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
         } else {
-            inputs["columnLayout"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["gridLayout"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["mosaicLayout"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["rowLayout"] = undefined /*out*/;
+            resourceInputs["columnLayout"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["gridLayout"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["mosaicLayout"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["rowLayout"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Dashboard.__pulumiType, name, inputs, opts);
+        super(Dashboard.__pulumiType, name, resourceInputs, opts);
     }
 }
 

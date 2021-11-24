@@ -72,7 +72,7 @@ export class TargetServer extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: TargetServerArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.environmentId === undefined) && !opts.urn) {
@@ -87,28 +87,28 @@ export class TargetServer extends pulumi.CustomResource {
             if ((!args || args.port === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["environmentId"] = args ? args.environmentId : undefined;
-            inputs["host"] = args ? args.host : undefined;
-            inputs["isEnabled"] = args ? args.isEnabled : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["protocol"] = args ? args.protocol : undefined;
-            inputs["sSLInfo"] = args ? args.sSLInfo : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["environmentId"] = args ? args.environmentId : undefined;
+            resourceInputs["host"] = args ? args.host : undefined;
+            resourceInputs["isEnabled"] = args ? args.isEnabled : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["sSLInfo"] = args ? args.sSLInfo : undefined;
         } else {
-            inputs["description"] = undefined /*out*/;
-            inputs["host"] = undefined /*out*/;
-            inputs["isEnabled"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["port"] = undefined /*out*/;
-            inputs["protocol"] = undefined /*out*/;
-            inputs["sSLInfo"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["host"] = undefined /*out*/;
+            resourceInputs["isEnabled"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["port"] = undefined /*out*/;
+            resourceInputs["protocol"] = undefined /*out*/;
+            resourceInputs["sSLInfo"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(TargetServer.__pulumiType, name, inputs, opts);
+        super(TargetServer.__pulumiType, name, resourceInputs, opts);
     }
 }
 

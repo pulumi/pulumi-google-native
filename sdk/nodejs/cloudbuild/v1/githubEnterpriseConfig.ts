@@ -80,40 +80,40 @@ export class GithubEnterpriseConfig extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: GithubEnterpriseConfigArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.appId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            inputs["appId"] = args ? args.appId : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["gheConfigId"] = args ? args.gheConfigId : undefined;
-            inputs["hostUrl"] = args ? args.hostUrl : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["peeredNetwork"] = args ? args.peeredNetwork : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["secrets"] = args ? args.secrets : undefined;
-            inputs["sslCa"] = args ? args.sslCa : undefined;
-            inputs["webhookKey"] = args ? args.webhookKey : undefined;
-            inputs["createTime"] = undefined /*out*/;
+            resourceInputs["appId"] = args ? args.appId : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["gheConfigId"] = args ? args.gheConfigId : undefined;
+            resourceInputs["hostUrl"] = args ? args.hostUrl : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["peeredNetwork"] = args ? args.peeredNetwork : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["secrets"] = args ? args.secrets : undefined;
+            resourceInputs["sslCa"] = args ? args.sslCa : undefined;
+            resourceInputs["webhookKey"] = args ? args.webhookKey : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
         } else {
-            inputs["appId"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["hostUrl"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["peeredNetwork"] = undefined /*out*/;
-            inputs["secrets"] = undefined /*out*/;
-            inputs["sslCa"] = undefined /*out*/;
-            inputs["webhookKey"] = undefined /*out*/;
+            resourceInputs["appId"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["hostUrl"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["peeredNetwork"] = undefined /*out*/;
+            resourceInputs["secrets"] = undefined /*out*/;
+            resourceInputs["sslCa"] = undefined /*out*/;
+            resourceInputs["webhookKey"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(GithubEnterpriseConfig.__pulumiType, name, inputs, opts);
+        super(GithubEnterpriseConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 

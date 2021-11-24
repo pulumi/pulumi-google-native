@@ -72,32 +72,32 @@ export class Connection extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: ConnectionArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["cloudSql"] = args ? args.cloudSql : undefined;
-            inputs["connectionId"] = args ? args.connectionId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["friendlyName"] = args ? args.friendlyName : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["creationTime"] = undefined /*out*/;
-            inputs["hasCredential"] = undefined /*out*/;
-            inputs["lastModifiedTime"] = undefined /*out*/;
+            resourceInputs["cloudSql"] = args ? args.cloudSql : undefined;
+            resourceInputs["connectionId"] = args ? args.connectionId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["friendlyName"] = args ? args.friendlyName : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["creationTime"] = undefined /*out*/;
+            resourceInputs["hasCredential"] = undefined /*out*/;
+            resourceInputs["lastModifiedTime"] = undefined /*out*/;
         } else {
-            inputs["cloudSql"] = undefined /*out*/;
-            inputs["creationTime"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["friendlyName"] = undefined /*out*/;
-            inputs["hasCredential"] = undefined /*out*/;
-            inputs["lastModifiedTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["cloudSql"] = undefined /*out*/;
+            resourceInputs["creationTime"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["friendlyName"] = undefined /*out*/;
+            resourceInputs["hasCredential"] = undefined /*out*/;
+            resourceInputs["lastModifiedTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Connection.__pulumiType, name, inputs, opts);
+        super(Connection.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -87,7 +87,7 @@ export class CryptoKey extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: CryptoKeyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.cryptoKeyId === undefined) && !opts.urn) {
@@ -96,37 +96,37 @@ export class CryptoKey extends pulumi.CustomResource {
             if ((!args || args.keyRingId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'keyRingId'");
             }
-            inputs["cryptoKeyId"] = args ? args.cryptoKeyId : undefined;
-            inputs["destroyScheduledDuration"] = args ? args.destroyScheduledDuration : undefined;
-            inputs["importOnly"] = args ? args.importOnly : undefined;
-            inputs["keyRingId"] = args ? args.keyRingId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["nextRotationTime"] = args ? args.nextRotationTime : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["purpose"] = args ? args.purpose : undefined;
-            inputs["rotationPeriod"] = args ? args.rotationPeriod : undefined;
-            inputs["skipInitialVersionCreation"] = args ? args.skipInitialVersionCreation : undefined;
-            inputs["versionTemplate"] = args ? args.versionTemplate : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["primary"] = undefined /*out*/;
+            resourceInputs["cryptoKeyId"] = args ? args.cryptoKeyId : undefined;
+            resourceInputs["destroyScheduledDuration"] = args ? args.destroyScheduledDuration : undefined;
+            resourceInputs["importOnly"] = args ? args.importOnly : undefined;
+            resourceInputs["keyRingId"] = args ? args.keyRingId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["nextRotationTime"] = args ? args.nextRotationTime : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["purpose"] = args ? args.purpose : undefined;
+            resourceInputs["rotationPeriod"] = args ? args.rotationPeriod : undefined;
+            resourceInputs["skipInitialVersionCreation"] = args ? args.skipInitialVersionCreation : undefined;
+            resourceInputs["versionTemplate"] = args ? args.versionTemplate : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["primary"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["destroyScheduledDuration"] = undefined /*out*/;
-            inputs["importOnly"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["nextRotationTime"] = undefined /*out*/;
-            inputs["primary"] = undefined /*out*/;
-            inputs["purpose"] = undefined /*out*/;
-            inputs["rotationPeriod"] = undefined /*out*/;
-            inputs["versionTemplate"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["destroyScheduledDuration"] = undefined /*out*/;
+            resourceInputs["importOnly"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["nextRotationTime"] = undefined /*out*/;
+            resourceInputs["primary"] = undefined /*out*/;
+            resourceInputs["purpose"] = undefined /*out*/;
+            resourceInputs["rotationPeriod"] = undefined /*out*/;
+            resourceInputs["versionTemplate"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(CryptoKey.__pulumiType, name, inputs, opts);
+        super(CryptoKey.__pulumiType, name, resourceInputs, opts);
     }
 }
 

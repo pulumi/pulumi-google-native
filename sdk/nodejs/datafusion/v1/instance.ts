@@ -153,7 +153,7 @@ export class Instance extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
@@ -162,69 +162,69 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["accelerators"] = args ? args.accelerators : undefined;
-            inputs["availableVersion"] = args ? args.availableVersion : undefined;
-            inputs["cryptoKeyConfig"] = args ? args.cryptoKeyConfig : undefined;
-            inputs["dataprocServiceAccount"] = args ? args.dataprocServiceAccount : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["enableRbac"] = args ? args.enableRbac : undefined;
-            inputs["enableStackdriverLogging"] = args ? args.enableStackdriverLogging : undefined;
-            inputs["enableStackdriverMonitoring"] = args ? args.enableStackdriverMonitoring : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["networkConfig"] = args ? args.networkConfig : undefined;
-            inputs["options"] = args ? args.options : undefined;
-            inputs["privateInstance"] = args ? args.privateInstance : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["version"] = args ? args.version : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
-            inputs["apiEndpoint"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["disabledReason"] = undefined /*out*/;
-            inputs["gcsBucket"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["p4ServiceAccount"] = undefined /*out*/;
-            inputs["serviceEndpoint"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["stateMessage"] = undefined /*out*/;
-            inputs["tenantProjectId"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["accelerators"] = args ? args.accelerators : undefined;
+            resourceInputs["availableVersion"] = args ? args.availableVersion : undefined;
+            resourceInputs["cryptoKeyConfig"] = args ? args.cryptoKeyConfig : undefined;
+            resourceInputs["dataprocServiceAccount"] = args ? args.dataprocServiceAccount : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["enableRbac"] = args ? args.enableRbac : undefined;
+            resourceInputs["enableStackdriverLogging"] = args ? args.enableStackdriverLogging : undefined;
+            resourceInputs["enableStackdriverMonitoring"] = args ? args.enableStackdriverMonitoring : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
+            resourceInputs["options"] = args ? args.options : undefined;
+            resourceInputs["privateInstance"] = args ? args.privateInstance : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["apiEndpoint"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["disabledReason"] = undefined /*out*/;
+            resourceInputs["gcsBucket"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["p4ServiceAccount"] = undefined /*out*/;
+            resourceInputs["serviceEndpoint"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stateMessage"] = undefined /*out*/;
+            resourceInputs["tenantProjectId"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["accelerators"] = undefined /*out*/;
-            inputs["apiEndpoint"] = undefined /*out*/;
-            inputs["availableVersion"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["cryptoKeyConfig"] = undefined /*out*/;
-            inputs["dataprocServiceAccount"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["disabledReason"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["enableRbac"] = undefined /*out*/;
-            inputs["enableStackdriverLogging"] = undefined /*out*/;
-            inputs["enableStackdriverMonitoring"] = undefined /*out*/;
-            inputs["gcsBucket"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["networkConfig"] = undefined /*out*/;
-            inputs["options"] = undefined /*out*/;
-            inputs["p4ServiceAccount"] = undefined /*out*/;
-            inputs["privateInstance"] = undefined /*out*/;
-            inputs["serviceEndpoint"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["stateMessage"] = undefined /*out*/;
-            inputs["tenantProjectId"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
-            inputs["version"] = undefined /*out*/;
-            inputs["zone"] = undefined /*out*/;
+            resourceInputs["accelerators"] = undefined /*out*/;
+            resourceInputs["apiEndpoint"] = undefined /*out*/;
+            resourceInputs["availableVersion"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["cryptoKeyConfig"] = undefined /*out*/;
+            resourceInputs["dataprocServiceAccount"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["disabledReason"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["enableRbac"] = undefined /*out*/;
+            resourceInputs["enableStackdriverLogging"] = undefined /*out*/;
+            resourceInputs["enableStackdriverMonitoring"] = undefined /*out*/;
+            resourceInputs["gcsBucket"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["networkConfig"] = undefined /*out*/;
+            resourceInputs["options"] = undefined /*out*/;
+            resourceInputs["p4ServiceAccount"] = undefined /*out*/;
+            resourceInputs["privateInstance"] = undefined /*out*/;
+            resourceInputs["serviceEndpoint"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stateMessage"] = undefined /*out*/;
+            resourceInputs["tenantProjectId"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["version"] = undefined /*out*/;
+            resourceInputs["zone"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Instance.__pulumiType, name, inputs, opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

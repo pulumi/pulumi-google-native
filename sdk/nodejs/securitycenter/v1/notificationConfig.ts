@@ -64,7 +64,7 @@ export class NotificationConfig extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: NotificationConfigArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.configId === undefined) && !opts.urn) {
@@ -73,24 +73,24 @@ export class NotificationConfig extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            inputs["configId"] = args ? args.configId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["pubsubTopic"] = args ? args.pubsubTopic : undefined;
-            inputs["streamingConfig"] = args ? args.streamingConfig : undefined;
-            inputs["serviceAccount"] = undefined /*out*/;
+            resourceInputs["configId"] = args ? args.configId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["pubsubTopic"] = args ? args.pubsubTopic : undefined;
+            resourceInputs["streamingConfig"] = args ? args.streamingConfig : undefined;
+            resourceInputs["serviceAccount"] = undefined /*out*/;
         } else {
-            inputs["description"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["pubsubTopic"] = undefined /*out*/;
-            inputs["serviceAccount"] = undefined /*out*/;
-            inputs["streamingConfig"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pubsubTopic"] = undefined /*out*/;
+            resourceInputs["serviceAccount"] = undefined /*out*/;
+            resourceInputs["streamingConfig"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(NotificationConfig.__pulumiType, name, inputs, opts);
+        super(NotificationConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 

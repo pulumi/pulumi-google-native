@@ -72,31 +72,31 @@ export class Role extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: RoleArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["deleted"] = args ? args.deleted : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["includedPermissions"] = args ? args.includedPermissions : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["roleId"] = args ? args.roleId : undefined;
-            inputs["stage"] = args ? args.stage : undefined;
-            inputs["title"] = args ? args.title : undefined;
+            resourceInputs["deleted"] = args ? args.deleted : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["includedPermissions"] = args ? args.includedPermissions : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["roleId"] = args ? args.roleId : undefined;
+            resourceInputs["stage"] = args ? args.stage : undefined;
+            resourceInputs["title"] = args ? args.title : undefined;
         } else {
-            inputs["deleted"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["includedPermissions"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["stage"] = undefined /*out*/;
-            inputs["title"] = undefined /*out*/;
+            resourceInputs["deleted"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["includedPermissions"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["stage"] = undefined /*out*/;
+            resourceInputs["title"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Role.__pulumiType, name, inputs, opts);
+        super(Role.__pulumiType, name, resourceInputs, opts);
     }
 }
 

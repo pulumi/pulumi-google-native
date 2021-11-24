@@ -57,7 +57,7 @@ export class SessionEntityType extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: SessionEntityTypeArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.entities === undefined) && !opts.urn) {
@@ -78,23 +78,23 @@ export class SessionEntityType extends pulumi.CustomResource {
             if ((!args || args.userId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            inputs["entities"] = args ? args.entities : undefined;
-            inputs["entityOverrideMode"] = args ? args.entityOverrideMode : undefined;
-            inputs["environmentId"] = args ? args.environmentId : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["sessionId"] = args ? args.sessionId : undefined;
-            inputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["entities"] = args ? args.entities : undefined;
+            resourceInputs["entityOverrideMode"] = args ? args.entityOverrideMode : undefined;
+            resourceInputs["environmentId"] = args ? args.environmentId : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["sessionId"] = args ? args.sessionId : undefined;
+            resourceInputs["userId"] = args ? args.userId : undefined;
         } else {
-            inputs["entities"] = undefined /*out*/;
-            inputs["entityOverrideMode"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["entities"] = undefined /*out*/;
+            resourceInputs["entityOverrideMode"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(SessionEntityType.__pulumiType, name, inputs, opts);
+        super(SessionEntityType.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -72,32 +72,32 @@ export class Repository extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: RepositoryArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["format"] = args ? args.format : undefined;
-            inputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["repositoryId"] = args ? args.repositoryId : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            resourceInputs["createTime"] = args ? args.createTime : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["format"] = args ? args.format : undefined;
+            resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["repositoryId"] = args ? args.repositoryId : undefined;
+            resourceInputs["updateTime"] = args ? args.updateTime : undefined;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["format"] = undefined /*out*/;
-            inputs["kmsKeyName"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["format"] = undefined /*out*/;
+            resourceInputs["kmsKeyName"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Repository.__pulumiType, name, inputs, opts);
+        super(Repository.__pulumiType, name, resourceInputs, opts);
     }
 }
 

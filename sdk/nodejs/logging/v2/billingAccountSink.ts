@@ -88,7 +88,7 @@ export class BillingAccountSink extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: BillingAccountSinkArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.billingAccountId === undefined) && !opts.urn) {
@@ -97,36 +97,36 @@ export class BillingAccountSink extends pulumi.CustomResource {
             if ((!args || args.destination === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'destination'");
             }
-            inputs["bigqueryOptions"] = args ? args.bigqueryOptions : undefined;
-            inputs["billingAccountId"] = args ? args.billingAccountId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["destination"] = args ? args.destination : undefined;
-            inputs["disabled"] = args ? args.disabled : undefined;
-            inputs["exclusions"] = args ? args.exclusions : undefined;
-            inputs["filter"] = args ? args.filter : undefined;
-            inputs["includeChildren"] = args ? args.includeChildren : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["uniqueWriterIdentity"] = args ? args.uniqueWriterIdentity : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
-            inputs["writerIdentity"] = undefined /*out*/;
+            resourceInputs["bigqueryOptions"] = args ? args.bigqueryOptions : undefined;
+            resourceInputs["billingAccountId"] = args ? args.billingAccountId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["destination"] = args ? args.destination : undefined;
+            resourceInputs["disabled"] = args ? args.disabled : undefined;
+            resourceInputs["exclusions"] = args ? args.exclusions : undefined;
+            resourceInputs["filter"] = args ? args.filter : undefined;
+            resourceInputs["includeChildren"] = args ? args.includeChildren : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["uniqueWriterIdentity"] = args ? args.uniqueWriterIdentity : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["writerIdentity"] = undefined /*out*/;
         } else {
-            inputs["bigqueryOptions"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["destination"] = undefined /*out*/;
-            inputs["disabled"] = undefined /*out*/;
-            inputs["exclusions"] = undefined /*out*/;
-            inputs["filter"] = undefined /*out*/;
-            inputs["includeChildren"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
-            inputs["writerIdentity"] = undefined /*out*/;
+            resourceInputs["bigqueryOptions"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["destination"] = undefined /*out*/;
+            resourceInputs["disabled"] = undefined /*out*/;
+            resourceInputs["exclusions"] = undefined /*out*/;
+            resourceInputs["filter"] = undefined /*out*/;
+            resourceInputs["includeChildren"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["writerIdentity"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(BillingAccountSink.__pulumiType, name, inputs, opts);
+        super(BillingAccountSink.__pulumiType, name, resourceInputs, opts);
     }
 }
 

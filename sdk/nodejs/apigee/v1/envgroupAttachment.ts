@@ -55,7 +55,7 @@ export class EnvgroupAttachment extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: EnvgroupAttachmentArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.envgroupId === undefined) && !opts.urn) {
@@ -67,20 +67,20 @@ export class EnvgroupAttachment extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            inputs["envgroupId"] = args ? args.envgroupId : undefined;
-            inputs["environment"] = args ? args.environment : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["createdAt"] = undefined /*out*/;
+            resourceInputs["envgroupId"] = args ? args.envgroupId : undefined;
+            resourceInputs["environment"] = args ? args.environment : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
         } else {
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["environment"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["environment"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(EnvgroupAttachment.__pulumiType, name, inputs, opts);
+        super(EnvgroupAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

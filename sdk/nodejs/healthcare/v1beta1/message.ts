@@ -84,7 +84,7 @@ export class Message extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: MessageArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.datasetId === undefined) && !opts.urn) {
@@ -93,36 +93,36 @@ export class Message extends pulumi.CustomResource {
             if ((!args || args.hl7V2StoreId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'hl7V2StoreId'");
             }
-            inputs["data"] = args ? args.data : undefined;
-            inputs["datasetId"] = args ? args.datasetId : undefined;
-            inputs["hl7V2StoreId"] = args ? args.hl7V2StoreId : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["messageType"] = args ? args.messageType : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["patientIds"] = args ? args.patientIds : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["schematizedData"] = args ? args.schematizedData : undefined;
-            inputs["sendFacility"] = args ? args.sendFacility : undefined;
-            inputs["sendTime"] = args ? args.sendTime : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["parsedData"] = undefined /*out*/;
+            resourceInputs["data"] = args ? args.data : undefined;
+            resourceInputs["datasetId"] = args ? args.datasetId : undefined;
+            resourceInputs["hl7V2StoreId"] = args ? args.hl7V2StoreId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["messageType"] = args ? args.messageType : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["patientIds"] = args ? args.patientIds : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["schematizedData"] = args ? args.schematizedData : undefined;
+            resourceInputs["sendFacility"] = args ? args.sendFacility : undefined;
+            resourceInputs["sendTime"] = args ? args.sendTime : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["parsedData"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["data"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["messageType"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["parsedData"] = undefined /*out*/;
-            inputs["patientIds"] = undefined /*out*/;
-            inputs["schematizedData"] = undefined /*out*/;
-            inputs["sendFacility"] = undefined /*out*/;
-            inputs["sendTime"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["data"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["messageType"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["parsedData"] = undefined /*out*/;
+            resourceInputs["patientIds"] = undefined /*out*/;
+            resourceInputs["schematizedData"] = undefined /*out*/;
+            resourceInputs["sendFacility"] = undefined /*out*/;
+            resourceInputs["sendTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Message.__pulumiType, name, inputs, opts);
+        super(Message.__pulumiType, name, resourceInputs, opts);
     }
 }
 

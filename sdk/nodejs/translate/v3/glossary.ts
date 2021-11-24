@@ -72,34 +72,34 @@ export class Glossary extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: GlossaryArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.inputConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'inputConfig'");
             }
-            inputs["inputConfig"] = args ? args.inputConfig : undefined;
-            inputs["languageCodesSet"] = args ? args.languageCodesSet : undefined;
-            inputs["languagePair"] = args ? args.languagePair : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["endTime"] = undefined /*out*/;
-            inputs["entryCount"] = undefined /*out*/;
-            inputs["submitTime"] = undefined /*out*/;
+            resourceInputs["inputConfig"] = args ? args.inputConfig : undefined;
+            resourceInputs["languageCodesSet"] = args ? args.languageCodesSet : undefined;
+            resourceInputs["languagePair"] = args ? args.languagePair : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["entryCount"] = undefined /*out*/;
+            resourceInputs["submitTime"] = undefined /*out*/;
         } else {
-            inputs["endTime"] = undefined /*out*/;
-            inputs["entryCount"] = undefined /*out*/;
-            inputs["inputConfig"] = undefined /*out*/;
-            inputs["languageCodesSet"] = undefined /*out*/;
-            inputs["languagePair"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["submitTime"] = undefined /*out*/;
+            resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["entryCount"] = undefined /*out*/;
+            resourceInputs["inputConfig"] = undefined /*out*/;
+            resourceInputs["languageCodesSet"] = undefined /*out*/;
+            resourceInputs["languagePair"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["submitTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Glossary.__pulumiType, name, inputs, opts);
+        super(Glossary.__pulumiType, name, resourceInputs, opts);
     }
 }
 

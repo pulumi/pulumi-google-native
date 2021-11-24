@@ -59,7 +59,7 @@ export class TagTemplate extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: TagTemplateArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.fields === undefined) && !opts.urn) {
@@ -68,23 +68,23 @@ export class TagTemplate extends pulumi.CustomResource {
             if ((!args || args.tagTemplateId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tagTemplateId'");
             }
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["fields"] = args ? args.fields : undefined;
-            inputs["isPubliclyReadable"] = args ? args.isPubliclyReadable : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["tagTemplateId"] = args ? args.tagTemplateId : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["fields"] = args ? args.fields : undefined;
+            resourceInputs["isPubliclyReadable"] = args ? args.isPubliclyReadable : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["tagTemplateId"] = args ? args.tagTemplateId : undefined;
         } else {
-            inputs["displayName"] = undefined /*out*/;
-            inputs["fields"] = undefined /*out*/;
-            inputs["isPubliclyReadable"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["fields"] = undefined /*out*/;
+            resourceInputs["isPubliclyReadable"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(TagTemplate.__pulumiType, name, inputs, opts);
+        super(TagTemplate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -103,57 +103,57 @@ export class HealthCheck extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: HealthCheckArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["checkIntervalSec"] = args ? args.checkIntervalSec : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["grpcHealthCheck"] = args ? args.grpcHealthCheck : undefined;
-            inputs["healthyThreshold"] = args ? args.healthyThreshold : undefined;
-            inputs["http2HealthCheck"] = args ? args.http2HealthCheck : undefined;
-            inputs["httpHealthCheck"] = args ? args.httpHealthCheck : undefined;
-            inputs["httpsHealthCheck"] = args ? args.httpsHealthCheck : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
-            inputs["logConfig"] = args ? args.logConfig : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["sslHealthCheck"] = args ? args.sslHealthCheck : undefined;
-            inputs["tcpHealthCheck"] = args ? args.tcpHealthCheck : undefined;
-            inputs["timeoutSec"] = args ? args.timeoutSec : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["udpHealthCheck"] = args ? args.udpHealthCheck : undefined;
-            inputs["unhealthyThreshold"] = args ? args.unhealthyThreshold : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["region"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["checkIntervalSec"] = args ? args.checkIntervalSec : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["grpcHealthCheck"] = args ? args.grpcHealthCheck : undefined;
+            resourceInputs["healthyThreshold"] = args ? args.healthyThreshold : undefined;
+            resourceInputs["http2HealthCheck"] = args ? args.http2HealthCheck : undefined;
+            resourceInputs["httpHealthCheck"] = args ? args.httpHealthCheck : undefined;
+            resourceInputs["httpsHealthCheck"] = args ? args.httpsHealthCheck : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
+            resourceInputs["logConfig"] = args ? args.logConfig : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["sslHealthCheck"] = args ? args.sslHealthCheck : undefined;
+            resourceInputs["tcpHealthCheck"] = args ? args.tcpHealthCheck : undefined;
+            resourceInputs["timeoutSec"] = args ? args.timeoutSec : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["udpHealthCheck"] = args ? args.udpHealthCheck : undefined;
+            resourceInputs["unhealthyThreshold"] = args ? args.unhealthyThreshold : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
         } else {
-            inputs["checkIntervalSec"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["grpcHealthCheck"] = undefined /*out*/;
-            inputs["healthyThreshold"] = undefined /*out*/;
-            inputs["http2HealthCheck"] = undefined /*out*/;
-            inputs["httpHealthCheck"] = undefined /*out*/;
-            inputs["httpsHealthCheck"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["logConfig"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["region"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["selfLinkWithId"] = undefined /*out*/;
-            inputs["sslHealthCheck"] = undefined /*out*/;
-            inputs["tcpHealthCheck"] = undefined /*out*/;
-            inputs["timeoutSec"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
-            inputs["udpHealthCheck"] = undefined /*out*/;
-            inputs["unhealthyThreshold"] = undefined /*out*/;
+            resourceInputs["checkIntervalSec"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["grpcHealthCheck"] = undefined /*out*/;
+            resourceInputs["healthyThreshold"] = undefined /*out*/;
+            resourceInputs["http2HealthCheck"] = undefined /*out*/;
+            resourceInputs["httpHealthCheck"] = undefined /*out*/;
+            resourceInputs["httpsHealthCheck"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["logConfig"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["sslHealthCheck"] = undefined /*out*/;
+            resourceInputs["tcpHealthCheck"] = undefined /*out*/;
+            resourceInputs["timeoutSec"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["udpHealthCheck"] = undefined /*out*/;
+            resourceInputs["unhealthyThreshold"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(HealthCheck.__pulumiType, name, inputs, opts);
+        super(HealthCheck.__pulumiType, name, resourceInputs, opts);
     }
 }
 

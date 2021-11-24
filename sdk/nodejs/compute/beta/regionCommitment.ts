@@ -110,52 +110,52 @@ export class RegionCommitment extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: RegionCommitmentArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["category"] = args ? args.category : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["licenseResource"] = args ? args.licenseResource : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["plan"] = args ? args.plan : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["reservations"] = args ? args.reservations : undefined;
-            inputs["resources"] = args ? args.resources : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["endTimestamp"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["startTimestamp"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["statusMessage"] = undefined /*out*/;
+            resourceInputs["category"] = args ? args.category : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["licenseResource"] = args ? args.licenseResource : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["plan"] = args ? args.plan : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["reservations"] = args ? args.reservations : undefined;
+            resourceInputs["resources"] = args ? args.resources : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["endTimestamp"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["startTimestamp"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["statusMessage"] = undefined /*out*/;
         } else {
-            inputs["category"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["endTimestamp"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["licenseResource"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["plan"] = undefined /*out*/;
-            inputs["region"] = undefined /*out*/;
-            inputs["reservations"] = undefined /*out*/;
-            inputs["resources"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["startTimestamp"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["statusMessage"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
+            resourceInputs["category"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["endTimestamp"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["licenseResource"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["plan"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["reservations"] = undefined /*out*/;
+            resourceInputs["resources"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["startTimestamp"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["statusMessage"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(RegionCommitment.__pulumiType, name, inputs, opts);
+        super(RegionCommitment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

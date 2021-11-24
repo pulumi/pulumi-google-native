@@ -62,25 +62,25 @@ export class History extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: HistoryArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["historyId"] = args ? args.historyId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["testPlatform"] = args ? args.testPlatform : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["historyId"] = args ? args.historyId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["testPlatform"] = args ? args.testPlatform : undefined;
         } else {
-            inputs["displayName"] = undefined /*out*/;
-            inputs["historyId"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["testPlatform"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["historyId"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["testPlatform"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(History.__pulumiType, name, inputs, opts);
+        super(History.__pulumiType, name, resourceInputs, opts);
     }
 }
 

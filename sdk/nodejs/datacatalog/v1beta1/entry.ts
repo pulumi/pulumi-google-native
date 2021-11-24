@@ -101,7 +101,7 @@ export class Entry extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: EntryArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.entryGroupId === undefined) && !opts.urn) {
@@ -110,44 +110,44 @@ export class Entry extends pulumi.CustomResource {
             if ((!args || args.entryId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'entryId'");
             }
-            inputs["bigqueryDateShardedSpec"] = args ? args.bigqueryDateShardedSpec : undefined;
-            inputs["bigqueryTableSpec"] = args ? args.bigqueryTableSpec : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["entryGroupId"] = args ? args.entryGroupId : undefined;
-            inputs["entryId"] = args ? args.entryId : undefined;
-            inputs["gcsFilesetSpec"] = args ? args.gcsFilesetSpec : undefined;
-            inputs["linkedResource"] = args ? args.linkedResource : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["schema"] = args ? args.schema : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["userSpecifiedSystem"] = args ? args.userSpecifiedSystem : undefined;
-            inputs["userSpecifiedType"] = args ? args.userSpecifiedType : undefined;
-            inputs["integratedSystem"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["sourceSystemTimestamps"] = undefined /*out*/;
-            inputs["usageSignal"] = undefined /*out*/;
+            resourceInputs["bigqueryDateShardedSpec"] = args ? args.bigqueryDateShardedSpec : undefined;
+            resourceInputs["bigqueryTableSpec"] = args ? args.bigqueryTableSpec : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["entryGroupId"] = args ? args.entryGroupId : undefined;
+            resourceInputs["entryId"] = args ? args.entryId : undefined;
+            resourceInputs["gcsFilesetSpec"] = args ? args.gcsFilesetSpec : undefined;
+            resourceInputs["linkedResource"] = args ? args.linkedResource : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["schema"] = args ? args.schema : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["userSpecifiedSystem"] = args ? args.userSpecifiedSystem : undefined;
+            resourceInputs["userSpecifiedType"] = args ? args.userSpecifiedType : undefined;
+            resourceInputs["integratedSystem"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["sourceSystemTimestamps"] = undefined /*out*/;
+            resourceInputs["usageSignal"] = undefined /*out*/;
         } else {
-            inputs["bigqueryDateShardedSpec"] = undefined /*out*/;
-            inputs["bigqueryTableSpec"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["gcsFilesetSpec"] = undefined /*out*/;
-            inputs["integratedSystem"] = undefined /*out*/;
-            inputs["linkedResource"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["schema"] = undefined /*out*/;
-            inputs["sourceSystemTimestamps"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
-            inputs["usageSignal"] = undefined /*out*/;
-            inputs["userSpecifiedSystem"] = undefined /*out*/;
-            inputs["userSpecifiedType"] = undefined /*out*/;
+            resourceInputs["bigqueryDateShardedSpec"] = undefined /*out*/;
+            resourceInputs["bigqueryTableSpec"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["gcsFilesetSpec"] = undefined /*out*/;
+            resourceInputs["integratedSystem"] = undefined /*out*/;
+            resourceInputs["linkedResource"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["schema"] = undefined /*out*/;
+            resourceInputs["sourceSystemTimestamps"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["usageSignal"] = undefined /*out*/;
+            resourceInputs["userSpecifiedSystem"] = undefined /*out*/;
+            resourceInputs["userSpecifiedType"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Entry.__pulumiType, name, inputs, opts);
+        super(Entry.__pulumiType, name, resourceInputs, opts);
     }
 }
 

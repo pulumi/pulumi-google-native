@@ -120,7 +120,7 @@ export class MigrationJob extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: MigrationJobArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.destination === undefined) && !opts.urn) {
@@ -135,54 +135,54 @@ export class MigrationJob extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["destination"] = args ? args.destination : undefined;
-            inputs["destinationDatabase"] = args ? args.destinationDatabase : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["dumpPath"] = args ? args.dumpPath : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["migrationJobId"] = args ? args.migrationJobId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["reverseSshConnectivity"] = args ? args.reverseSshConnectivity : undefined;
-            inputs["source"] = args ? args.source : undefined;
-            inputs["sourceDatabase"] = args ? args.sourceDatabase : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["staticIpConnectivity"] = args ? args.staticIpConnectivity : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["vpcPeeringConnectivity"] = args ? args.vpcPeeringConnectivity : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["duration"] = undefined /*out*/;
-            inputs["endTime"] = undefined /*out*/;
-            inputs["error"] = undefined /*out*/;
-            inputs["phase"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["destination"] = args ? args.destination : undefined;
+            resourceInputs["destinationDatabase"] = args ? args.destinationDatabase : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["dumpPath"] = args ? args.dumpPath : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["migrationJobId"] = args ? args.migrationJobId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["reverseSshConnectivity"] = args ? args.reverseSshConnectivity : undefined;
+            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["sourceDatabase"] = args ? args.sourceDatabase : undefined;
+            resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["staticIpConnectivity"] = args ? args.staticIpConnectivity : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["vpcPeeringConnectivity"] = args ? args.vpcPeeringConnectivity : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["duration"] = undefined /*out*/;
+            resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["error"] = undefined /*out*/;
+            resourceInputs["phase"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["destination"] = undefined /*out*/;
-            inputs["destinationDatabase"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["dumpPath"] = undefined /*out*/;
-            inputs["duration"] = undefined /*out*/;
-            inputs["endTime"] = undefined /*out*/;
-            inputs["error"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["phase"] = undefined /*out*/;
-            inputs["reverseSshConnectivity"] = undefined /*out*/;
-            inputs["source"] = undefined /*out*/;
-            inputs["sourceDatabase"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["staticIpConnectivity"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
-            inputs["vpcPeeringConnectivity"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["destination"] = undefined /*out*/;
+            resourceInputs["destinationDatabase"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["dumpPath"] = undefined /*out*/;
+            resourceInputs["duration"] = undefined /*out*/;
+            resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["error"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["phase"] = undefined /*out*/;
+            resourceInputs["reverseSshConnectivity"] = undefined /*out*/;
+            resourceInputs["source"] = undefined /*out*/;
+            resourceInputs["sourceDatabase"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["staticIpConnectivity"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["vpcPeeringConnectivity"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(MigrationJob.__pulumiType, name, inputs, opts);
+        super(MigrationJob.__pulumiType, name, resourceInputs, opts);
     }
 }
 

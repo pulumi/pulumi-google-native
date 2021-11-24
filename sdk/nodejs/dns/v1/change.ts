@@ -68,34 +68,34 @@ export class Change extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ChangeArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.managedZone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'managedZone'");
             }
-            inputs["additions"] = args ? args.additions : undefined;
-            inputs["clientOperationId"] = args ? args.clientOperationId : undefined;
-            inputs["deletions"] = args ? args.deletions : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["isServing"] = args ? args.isServing : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
-            inputs["managedZone"] = args ? args.managedZone : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["startTime"] = args ? args.startTime : undefined;
-            inputs["status"] = args ? args.status : undefined;
+            resourceInputs["additions"] = args ? args.additions : undefined;
+            resourceInputs["clientOperationId"] = args ? args.clientOperationId : undefined;
+            resourceInputs["deletions"] = args ? args.deletions : undefined;
+            resourceInputs["id"] = args ? args.id : undefined;
+            resourceInputs["isServing"] = args ? args.isServing : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
+            resourceInputs["managedZone"] = args ? args.managedZone : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["startTime"] = args ? args.startTime : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
         } else {
-            inputs["additions"] = undefined /*out*/;
-            inputs["deletions"] = undefined /*out*/;
-            inputs["isServing"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["startTime"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["additions"] = undefined /*out*/;
+            resourceInputs["deletions"] = undefined /*out*/;
+            resourceInputs["isServing"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["startTime"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Change.__pulumiType, name, inputs, opts);
+        super(Change.__pulumiType, name, resourceInputs, opts);
     }
 }
 

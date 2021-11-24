@@ -73,35 +73,35 @@ export class Environment extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: EnvironmentArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.environmentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'environmentId'");
             }
-            inputs["agentVersion"] = args ? args.agentVersion : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["environmentId"] = args ? args.environmentId : undefined;
-            inputs["fulfillment"] = args ? args.fulfillment : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["textToSpeechSettings"] = args ? args.textToSpeechSettings : undefined;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["agentVersion"] = args ? args.agentVersion : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["environmentId"] = args ? args.environmentId : undefined;
+            resourceInputs["fulfillment"] = args ? args.fulfillment : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["textToSpeechSettings"] = args ? args.textToSpeechSettings : undefined;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["agentVersion"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["fulfillment"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["textToSpeechSettings"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["agentVersion"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["fulfillment"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["textToSpeechSettings"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Environment.__pulumiType, name, inputs, opts);
+        super(Environment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

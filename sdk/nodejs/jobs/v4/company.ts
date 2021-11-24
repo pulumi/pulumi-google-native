@@ -96,7 +96,7 @@ export class Company extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: CompanyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.displayName === undefined) && !opts.urn) {
@@ -108,40 +108,40 @@ export class Company extends pulumi.CustomResource {
             if ((!args || args.tenantId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tenantId'");
             }
-            inputs["careerSiteUri"] = args ? args.careerSiteUri : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["eeoText"] = args ? args.eeoText : undefined;
-            inputs["externalId"] = args ? args.externalId : undefined;
-            inputs["headquartersAddress"] = args ? args.headquartersAddress : undefined;
-            inputs["hiringAgency"] = args ? args.hiringAgency : undefined;
-            inputs["imageUri"] = args ? args.imageUri : undefined;
-            inputs["keywordSearchableJobCustomAttributes"] = args ? args.keywordSearchableJobCustomAttributes : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["size"] = args ? args.size : undefined;
-            inputs["tenantId"] = args ? args.tenantId : undefined;
-            inputs["websiteUri"] = args ? args.websiteUri : undefined;
-            inputs["derivedInfo"] = undefined /*out*/;
-            inputs["suspended"] = undefined /*out*/;
+            resourceInputs["careerSiteUri"] = args ? args.careerSiteUri : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["eeoText"] = args ? args.eeoText : undefined;
+            resourceInputs["externalId"] = args ? args.externalId : undefined;
+            resourceInputs["headquartersAddress"] = args ? args.headquartersAddress : undefined;
+            resourceInputs["hiringAgency"] = args ? args.hiringAgency : undefined;
+            resourceInputs["imageUri"] = args ? args.imageUri : undefined;
+            resourceInputs["keywordSearchableJobCustomAttributes"] = args ? args.keywordSearchableJobCustomAttributes : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["websiteUri"] = args ? args.websiteUri : undefined;
+            resourceInputs["derivedInfo"] = undefined /*out*/;
+            resourceInputs["suspended"] = undefined /*out*/;
         } else {
-            inputs["careerSiteUri"] = undefined /*out*/;
-            inputs["derivedInfo"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["eeoText"] = undefined /*out*/;
-            inputs["externalId"] = undefined /*out*/;
-            inputs["headquartersAddress"] = undefined /*out*/;
-            inputs["hiringAgency"] = undefined /*out*/;
-            inputs["imageUri"] = undefined /*out*/;
-            inputs["keywordSearchableJobCustomAttributes"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["size"] = undefined /*out*/;
-            inputs["suspended"] = undefined /*out*/;
-            inputs["websiteUri"] = undefined /*out*/;
+            resourceInputs["careerSiteUri"] = undefined /*out*/;
+            resourceInputs["derivedInfo"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["eeoText"] = undefined /*out*/;
+            resourceInputs["externalId"] = undefined /*out*/;
+            resourceInputs["headquartersAddress"] = undefined /*out*/;
+            resourceInputs["hiringAgency"] = undefined /*out*/;
+            resourceInputs["imageUri"] = undefined /*out*/;
+            resourceInputs["keywordSearchableJobCustomAttributes"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["size"] = undefined /*out*/;
+            resourceInputs["suspended"] = undefined /*out*/;
+            resourceInputs["websiteUri"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Company.__pulumiType, name, inputs, opts);
+        super(Company.__pulumiType, name, resourceInputs, opts);
     }
 }
 

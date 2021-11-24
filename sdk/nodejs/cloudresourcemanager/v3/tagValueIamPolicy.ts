@@ -62,28 +62,28 @@ export class TagValueIamPolicy extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: TagValueIamPolicyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.tagValueId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tagValueId'");
             }
-            inputs["auditConfigs"] = args ? args.auditConfigs : undefined;
-            inputs["bindings"] = args ? args.bindings : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["tagValueId"] = args ? args.tagValueId : undefined;
-            inputs["updateMask"] = args ? args.updateMask : undefined;
-            inputs["version"] = args ? args.version : undefined;
+            resourceInputs["auditConfigs"] = args ? args.auditConfigs : undefined;
+            resourceInputs["bindings"] = args ? args.bindings : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["tagValueId"] = args ? args.tagValueId : undefined;
+            resourceInputs["updateMask"] = args ? args.updateMask : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
         } else {
-            inputs["auditConfigs"] = undefined /*out*/;
-            inputs["bindings"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["version"] = undefined /*out*/;
+            resourceInputs["auditConfigs"] = undefined /*out*/;
+            resourceInputs["bindings"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["version"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(TagValueIamPolicy.__pulumiType, name, inputs, opts);
+        super(TagValueIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

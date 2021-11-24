@@ -69,32 +69,32 @@ export class Policy extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: PolicyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["alternativeNameServerConfig"] = args ? args.alternativeNameServerConfig : undefined;
-            inputs["clientOperationId"] = args ? args.clientOperationId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["enableInboundForwarding"] = args ? args.enableInboundForwarding : undefined;
-            inputs["enableLogging"] = args ? args.enableLogging : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["networks"] = args ? args.networks : undefined;
-            inputs["project"] = args ? args.project : undefined;
+            resourceInputs["alternativeNameServerConfig"] = args ? args.alternativeNameServerConfig : undefined;
+            resourceInputs["clientOperationId"] = args ? args.clientOperationId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableInboundForwarding"] = args ? args.enableInboundForwarding : undefined;
+            resourceInputs["enableLogging"] = args ? args.enableLogging : undefined;
+            resourceInputs["id"] = args ? args.id : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networks"] = args ? args.networks : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
         } else {
-            inputs["alternativeNameServerConfig"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["enableInboundForwarding"] = undefined /*out*/;
-            inputs["enableLogging"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["networks"] = undefined /*out*/;
+            resourceInputs["alternativeNameServerConfig"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["enableInboundForwarding"] = undefined /*out*/;
+            resourceInputs["enableLogging"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["networks"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Policy.__pulumiType, name, inputs, opts);
+        super(Policy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

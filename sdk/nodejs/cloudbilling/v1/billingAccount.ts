@@ -62,23 +62,23 @@ export class BillingAccount extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: BillingAccountArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["masterBillingAccount"] = args ? args.masterBillingAccount : undefined;
-            inputs["name"] = undefined /*out*/;
-            inputs["open"] = undefined /*out*/;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["masterBillingAccount"] = args ? args.masterBillingAccount : undefined;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["open"] = undefined /*out*/;
         } else {
-            inputs["displayName"] = undefined /*out*/;
-            inputs["masterBillingAccount"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["open"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["masterBillingAccount"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["open"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(BillingAccount.__pulumiType, name, inputs, opts);
+        super(BillingAccount.__pulumiType, name, resourceInputs, opts);
     }
 }
 

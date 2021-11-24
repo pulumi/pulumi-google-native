@@ -62,29 +62,29 @@ export class Participant extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ParticipantArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.conversationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'conversationId'");
             }
-            inputs["conversationId"] = args ? args.conversationId : undefined;
-            inputs["documentsMetadataFilters"] = args ? args.documentsMetadataFilters : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["obfuscatedExternalUserId"] = args ? args.obfuscatedExternalUserId : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["role"] = args ? args.role : undefined;
+            resourceInputs["conversationId"] = args ? args.conversationId : undefined;
+            resourceInputs["documentsMetadataFilters"] = args ? args.documentsMetadataFilters : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["obfuscatedExternalUserId"] = args ? args.obfuscatedExternalUserId : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
         } else {
-            inputs["documentsMetadataFilters"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["obfuscatedExternalUserId"] = undefined /*out*/;
-            inputs["role"] = undefined /*out*/;
+            resourceInputs["documentsMetadataFilters"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["obfuscatedExternalUserId"] = undefined /*out*/;
+            resourceInputs["role"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Participant.__pulumiType, name, inputs, opts);
+        super(Participant.__pulumiType, name, resourceInputs, opts);
     }
 }
 

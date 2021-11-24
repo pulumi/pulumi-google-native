@@ -85,41 +85,41 @@ export class Trial extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: TrialArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.studyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'studyId'");
             }
-            inputs["finalMeasurement"] = args ? args.finalMeasurement : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["measurements"] = args ? args.measurements : undefined;
-            inputs["parameters"] = args ? args.parameters : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["studyId"] = args ? args.studyId : undefined;
-            inputs["clientId"] = undefined /*out*/;
-            inputs["endTime"] = undefined /*out*/;
-            inputs["infeasibleReason"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["startTime"] = undefined /*out*/;
-            inputs["trialInfeasible"] = undefined /*out*/;
+            resourceInputs["finalMeasurement"] = args ? args.finalMeasurement : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["measurements"] = args ? args.measurements : undefined;
+            resourceInputs["parameters"] = args ? args.parameters : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["studyId"] = args ? args.studyId : undefined;
+            resourceInputs["clientId"] = undefined /*out*/;
+            resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["infeasibleReason"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["startTime"] = undefined /*out*/;
+            resourceInputs["trialInfeasible"] = undefined /*out*/;
         } else {
-            inputs["clientId"] = undefined /*out*/;
-            inputs["endTime"] = undefined /*out*/;
-            inputs["finalMeasurement"] = undefined /*out*/;
-            inputs["infeasibleReason"] = undefined /*out*/;
-            inputs["measurements"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["parameters"] = undefined /*out*/;
-            inputs["startTime"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["trialInfeasible"] = undefined /*out*/;
+            resourceInputs["clientId"] = undefined /*out*/;
+            resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["finalMeasurement"] = undefined /*out*/;
+            resourceInputs["infeasibleReason"] = undefined /*out*/;
+            resourceInputs["measurements"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["parameters"] = undefined /*out*/;
+            resourceInputs["startTime"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["trialInfeasible"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Trial.__pulumiType, name, inputs, opts);
+        super(Trial.__pulumiType, name, resourceInputs, opts);
     }
 }
 

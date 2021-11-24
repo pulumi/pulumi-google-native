@@ -84,7 +84,7 @@ export class ScanConfig extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ScanConfigArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.displayName === undefined) && !opts.urn) {
@@ -93,33 +93,33 @@ export class ScanConfig extends pulumi.CustomResource {
             if ((!args || args.startingUrls === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'startingUrls'");
             }
-            inputs["authentication"] = args ? args.authentication : undefined;
-            inputs["blacklistPatterns"] = args ? args.blacklistPatterns : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["latestRun"] = args ? args.latestRun : undefined;
-            inputs["maxQps"] = args ? args.maxQps : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["schedule"] = args ? args.schedule : undefined;
-            inputs["startingUrls"] = args ? args.startingUrls : undefined;
-            inputs["targetPlatforms"] = args ? args.targetPlatforms : undefined;
-            inputs["userAgent"] = args ? args.userAgent : undefined;
+            resourceInputs["authentication"] = args ? args.authentication : undefined;
+            resourceInputs["blacklistPatterns"] = args ? args.blacklistPatterns : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["latestRun"] = args ? args.latestRun : undefined;
+            resourceInputs["maxQps"] = args ? args.maxQps : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["schedule"] = args ? args.schedule : undefined;
+            resourceInputs["startingUrls"] = args ? args.startingUrls : undefined;
+            resourceInputs["targetPlatforms"] = args ? args.targetPlatforms : undefined;
+            resourceInputs["userAgent"] = args ? args.userAgent : undefined;
         } else {
-            inputs["authentication"] = undefined /*out*/;
-            inputs["blacklistPatterns"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["latestRun"] = undefined /*out*/;
-            inputs["maxQps"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["schedule"] = undefined /*out*/;
-            inputs["startingUrls"] = undefined /*out*/;
-            inputs["targetPlatforms"] = undefined /*out*/;
-            inputs["userAgent"] = undefined /*out*/;
+            resourceInputs["authentication"] = undefined /*out*/;
+            resourceInputs["blacklistPatterns"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["latestRun"] = undefined /*out*/;
+            resourceInputs["maxQps"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["schedule"] = undefined /*out*/;
+            resourceInputs["startingUrls"] = undefined /*out*/;
+            resourceInputs["targetPlatforms"] = undefined /*out*/;
+            resourceInputs["userAgent"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ScanConfig.__pulumiType, name, inputs, opts);
+        super(ScanConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 

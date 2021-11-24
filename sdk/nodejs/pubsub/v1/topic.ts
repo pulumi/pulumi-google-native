@@ -72,34 +72,34 @@ export class Topic extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: TopicArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.topicId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'topicId'");
             }
-            inputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["messageRetentionDuration"] = args ? args.messageRetentionDuration : undefined;
-            inputs["messageStoragePolicy"] = args ? args.messageStoragePolicy : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
-            inputs["schemaSettings"] = args ? args.schemaSettings : undefined;
-            inputs["topicId"] = args ? args.topicId : undefined;
+            resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["messageRetentionDuration"] = args ? args.messageRetentionDuration : undefined;
+            resourceInputs["messageStoragePolicy"] = args ? args.messageStoragePolicy : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
+            resourceInputs["schemaSettings"] = args ? args.schemaSettings : undefined;
+            resourceInputs["topicId"] = args ? args.topicId : undefined;
         } else {
-            inputs["kmsKeyName"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["messageRetentionDuration"] = undefined /*out*/;
-            inputs["messageStoragePolicy"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["satisfiesPzs"] = undefined /*out*/;
-            inputs["schemaSettings"] = undefined /*out*/;
+            resourceInputs["kmsKeyName"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["messageRetentionDuration"] = undefined /*out*/;
+            resourceInputs["messageStoragePolicy"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
+            resourceInputs["schemaSettings"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Topic.__pulumiType, name, inputs, opts);
+        super(Topic.__pulumiType, name, resourceInputs, opts);
     }
 }
 

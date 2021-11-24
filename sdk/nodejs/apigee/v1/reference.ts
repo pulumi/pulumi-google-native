@@ -59,7 +59,7 @@ export class Reference extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ReferenceArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.environmentId === undefined) && !opts.urn) {
@@ -71,22 +71,22 @@ export class Reference extends pulumi.CustomResource {
             if ((!args || args.refers === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'refers'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["environmentId"] = args ? args.environmentId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["refers"] = args ? args.refers : undefined;
-            inputs["resourceType"] = args ? args.resourceType : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["environmentId"] = args ? args.environmentId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["refers"] = args ? args.refers : undefined;
+            resourceInputs["resourceType"] = args ? args.resourceType : undefined;
         } else {
-            inputs["description"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["refers"] = undefined /*out*/;
-            inputs["resourceType"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["refers"] = undefined /*out*/;
+            resourceInputs["resourceType"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Reference.__pulumiType, name, inputs, opts);
+        super(Reference.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -97,7 +97,7 @@ export class Domain extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: DomainArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.locations === undefined) && !opts.urn) {
@@ -106,40 +106,40 @@ export class Domain extends pulumi.CustomResource {
             if ((!args || args.reservedIpRange === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'reservedIpRange'");
             }
-            inputs["auditLogsEnabled"] = args ? args.auditLogsEnabled : undefined;
-            inputs["authorizedNetworks"] = args ? args.authorizedNetworks : undefined;
-            inputs["domainName"] = args ? args.domainName : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["locations"] = args ? args.locations : undefined;
-            inputs["managedIdentitiesAdminName"] = args ? args.managedIdentitiesAdminName : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["reservedIpRange"] = args ? args.reservedIpRange : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["fqdn"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["statusMessage"] = undefined /*out*/;
-            inputs["trusts"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["auditLogsEnabled"] = args ? args.auditLogsEnabled : undefined;
+            resourceInputs["authorizedNetworks"] = args ? args.authorizedNetworks : undefined;
+            resourceInputs["domainName"] = args ? args.domainName : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["locations"] = args ? args.locations : undefined;
+            resourceInputs["managedIdentitiesAdminName"] = args ? args.managedIdentitiesAdminName : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["reservedIpRange"] = args ? args.reservedIpRange : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["fqdn"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["statusMessage"] = undefined /*out*/;
+            resourceInputs["trusts"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["auditLogsEnabled"] = undefined /*out*/;
-            inputs["authorizedNetworks"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["fqdn"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["locations"] = undefined /*out*/;
-            inputs["managedIdentitiesAdminName"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["reservedIpRange"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["statusMessage"] = undefined /*out*/;
-            inputs["trusts"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["auditLogsEnabled"] = undefined /*out*/;
+            resourceInputs["authorizedNetworks"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["fqdn"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["locations"] = undefined /*out*/;
+            resourceInputs["managedIdentitiesAdminName"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["reservedIpRange"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["statusMessage"] = undefined /*out*/;
+            resourceInputs["trusts"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Domain.__pulumiType, name, inputs, opts);
+        super(Domain.__pulumiType, name, resourceInputs, opts);
     }
 }
 

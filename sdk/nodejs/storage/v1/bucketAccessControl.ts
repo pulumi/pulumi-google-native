@@ -96,41 +96,41 @@ export class BucketAccessControl extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: BucketAccessControlArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.bucket === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            inputs["bucket"] = args ? args.bucket : undefined;
-            inputs["domain"] = args ? args.domain : undefined;
-            inputs["email"] = args ? args.email : undefined;
-            inputs["entity"] = args ? args.entity : undefined;
-            inputs["entityId"] = args ? args.entityId : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["id"] = args ? args.id : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
-            inputs["projectTeam"] = args ? args.projectTeam : undefined;
-            inputs["provisionalUserProject"] = args ? args.provisionalUserProject : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["selfLink"] = args ? args.selfLink : undefined;
-            inputs["userProject"] = args ? args.userProject : undefined;
+            resourceInputs["bucket"] = args ? args.bucket : undefined;
+            resourceInputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["email"] = args ? args.email : undefined;
+            resourceInputs["entity"] = args ? args.entity : undefined;
+            resourceInputs["entityId"] = args ? args.entityId : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["id"] = args ? args.id : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
+            resourceInputs["projectTeam"] = args ? args.projectTeam : undefined;
+            resourceInputs["provisionalUserProject"] = args ? args.provisionalUserProject : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["selfLink"] = args ? args.selfLink : undefined;
+            resourceInputs["userProject"] = args ? args.userProject : undefined;
         } else {
-            inputs["bucket"] = undefined /*out*/;
-            inputs["domain"] = undefined /*out*/;
-            inputs["email"] = undefined /*out*/;
-            inputs["entity"] = undefined /*out*/;
-            inputs["entityId"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["projectTeam"] = undefined /*out*/;
-            inputs["role"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
+            resourceInputs["bucket"] = undefined /*out*/;
+            resourceInputs["domain"] = undefined /*out*/;
+            resourceInputs["email"] = undefined /*out*/;
+            resourceInputs["entity"] = undefined /*out*/;
+            resourceInputs["entityId"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["projectTeam"] = undefined /*out*/;
+            resourceInputs["role"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(BucketAccessControl.__pulumiType, name, inputs, opts);
+        super(BucketAccessControl.__pulumiType, name, resourceInputs, opts);
     }
 }
 

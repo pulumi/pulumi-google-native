@@ -92,40 +92,40 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: UptimeCheckConfigArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["contentMatchers"] = args ? args.contentMatchers : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["httpCheck"] = args ? args.httpCheck : undefined;
-            inputs["internalCheckers"] = args ? args.internalCheckers : undefined;
-            inputs["isInternal"] = args ? args.isInternal : undefined;
-            inputs["monitoredResource"] = args ? args.monitoredResource : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["resourceGroup"] = args ? args.resourceGroup : undefined;
-            inputs["selectedRegions"] = args ? args.selectedRegions : undefined;
-            inputs["tcpCheck"] = args ? args.tcpCheck : undefined;
-            inputs["timeout"] = args ? args.timeout : undefined;
+            resourceInputs["contentMatchers"] = args ? args.contentMatchers : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["httpCheck"] = args ? args.httpCheck : undefined;
+            resourceInputs["internalCheckers"] = args ? args.internalCheckers : undefined;
+            resourceInputs["isInternal"] = args ? args.isInternal : undefined;
+            resourceInputs["monitoredResource"] = args ? args.monitoredResource : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["resourceGroup"] = args ? args.resourceGroup : undefined;
+            resourceInputs["selectedRegions"] = args ? args.selectedRegions : undefined;
+            resourceInputs["tcpCheck"] = args ? args.tcpCheck : undefined;
+            resourceInputs["timeout"] = args ? args.timeout : undefined;
         } else {
-            inputs["contentMatchers"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["httpCheck"] = undefined /*out*/;
-            inputs["internalCheckers"] = undefined /*out*/;
-            inputs["isInternal"] = undefined /*out*/;
-            inputs["monitoredResource"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["period"] = undefined /*out*/;
-            inputs["resourceGroup"] = undefined /*out*/;
-            inputs["selectedRegions"] = undefined /*out*/;
-            inputs["tcpCheck"] = undefined /*out*/;
-            inputs["timeout"] = undefined /*out*/;
+            resourceInputs["contentMatchers"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["httpCheck"] = undefined /*out*/;
+            resourceInputs["internalCheckers"] = undefined /*out*/;
+            resourceInputs["isInternal"] = undefined /*out*/;
+            resourceInputs["monitoredResource"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["period"] = undefined /*out*/;
+            resourceInputs["resourceGroup"] = undefined /*out*/;
+            resourceInputs["selectedRegions"] = undefined /*out*/;
+            resourceInputs["tcpCheck"] = undefined /*out*/;
+            resourceInputs["timeout"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(UptimeCheckConfig.__pulumiType, name, inputs, opts);
+        super(UptimeCheckConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 

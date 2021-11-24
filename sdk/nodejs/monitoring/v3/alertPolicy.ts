@@ -92,40 +92,40 @@ export class AlertPolicy extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: AlertPolicyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["alertStrategy"] = args ? args.alertStrategy : undefined;
-            inputs["combiner"] = args ? args.combiner : undefined;
-            inputs["conditions"] = args ? args.conditions : undefined;
-            inputs["creationRecord"] = args ? args.creationRecord : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["documentation"] = args ? args.documentation : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["mutationRecord"] = args ? args.mutationRecord : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["notificationChannels"] = args ? args.notificationChannels : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["userLabels"] = args ? args.userLabels : undefined;
-            inputs["validity"] = args ? args.validity : undefined;
+            resourceInputs["alertStrategy"] = args ? args.alertStrategy : undefined;
+            resourceInputs["combiner"] = args ? args.combiner : undefined;
+            resourceInputs["conditions"] = args ? args.conditions : undefined;
+            resourceInputs["creationRecord"] = args ? args.creationRecord : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["documentation"] = args ? args.documentation : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["mutationRecord"] = args ? args.mutationRecord : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["notificationChannels"] = args ? args.notificationChannels : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["userLabels"] = args ? args.userLabels : undefined;
+            resourceInputs["validity"] = args ? args.validity : undefined;
         } else {
-            inputs["alertStrategy"] = undefined /*out*/;
-            inputs["combiner"] = undefined /*out*/;
-            inputs["conditions"] = undefined /*out*/;
-            inputs["creationRecord"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["documentation"] = undefined /*out*/;
-            inputs["enabled"] = undefined /*out*/;
-            inputs["mutationRecord"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["notificationChannels"] = undefined /*out*/;
-            inputs["userLabels"] = undefined /*out*/;
-            inputs["validity"] = undefined /*out*/;
+            resourceInputs["alertStrategy"] = undefined /*out*/;
+            resourceInputs["combiner"] = undefined /*out*/;
+            resourceInputs["conditions"] = undefined /*out*/;
+            resourceInputs["creationRecord"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["documentation"] = undefined /*out*/;
+            resourceInputs["enabled"] = undefined /*out*/;
+            resourceInputs["mutationRecord"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["notificationChannels"] = undefined /*out*/;
+            resourceInputs["userLabels"] = undefined /*out*/;
+            resourceInputs["validity"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AlertPolicy.__pulumiType, name, inputs, opts);
+        super(AlertPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

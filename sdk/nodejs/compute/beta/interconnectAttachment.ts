@@ -160,79 +160,79 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: InterconnectAttachmentArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["adminEnabled"] = args ? args.adminEnabled : undefined;
-            inputs["bandwidth"] = args ? args.bandwidth : undefined;
-            inputs["candidateSubnets"] = args ? args.candidateSubnets : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["edgeAvailabilityDomain"] = args ? args.edgeAvailabilityDomain : undefined;
-            inputs["encryption"] = args ? args.encryption : undefined;
-            inputs["interconnect"] = args ? args.interconnect : undefined;
-            inputs["ipsecInternalAddresses"] = args ? args.ipsecInternalAddresses : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["mtu"] = args ? args.mtu : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["pairingKey"] = args ? args.pairingKey : undefined;
-            inputs["partnerAsn"] = args ? args.partnerAsn : undefined;
-            inputs["partnerMetadata"] = args ? args.partnerMetadata : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["router"] = args ? args.router : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["validateOnly"] = args ? args.validateOnly : undefined;
-            inputs["vlanTag8021q"] = args ? args.vlanTag8021q : undefined;
-            inputs["cloudRouterIpAddress"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["customerRouterIpAddress"] = undefined /*out*/;
-            inputs["dataplaneVersion"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["labelFingerprint"] = undefined /*out*/;
-            inputs["operationalStatus"] = undefined /*out*/;
-            inputs["privateInterconnectInfo"] = undefined /*out*/;
-            inputs["satisfiesPzs"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["adminEnabled"] = args ? args.adminEnabled : undefined;
+            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
+            resourceInputs["candidateSubnets"] = args ? args.candidateSubnets : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["edgeAvailabilityDomain"] = args ? args.edgeAvailabilityDomain : undefined;
+            resourceInputs["encryption"] = args ? args.encryption : undefined;
+            resourceInputs["interconnect"] = args ? args.interconnect : undefined;
+            resourceInputs["ipsecInternalAddresses"] = args ? args.ipsecInternalAddresses : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["mtu"] = args ? args.mtu : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["pairingKey"] = args ? args.pairingKey : undefined;
+            resourceInputs["partnerAsn"] = args ? args.partnerAsn : undefined;
+            resourceInputs["partnerMetadata"] = args ? args.partnerMetadata : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["router"] = args ? args.router : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
+            resourceInputs["vlanTag8021q"] = args ? args.vlanTag8021q : undefined;
+            resourceInputs["cloudRouterIpAddress"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["customerRouterIpAddress"] = undefined /*out*/;
+            resourceInputs["dataplaneVersion"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["labelFingerprint"] = undefined /*out*/;
+            resourceInputs["operationalStatus"] = undefined /*out*/;
+            resourceInputs["privateInterconnectInfo"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
-            inputs["adminEnabled"] = undefined /*out*/;
-            inputs["bandwidth"] = undefined /*out*/;
-            inputs["candidateSubnets"] = undefined /*out*/;
-            inputs["cloudRouterIpAddress"] = undefined /*out*/;
-            inputs["creationTimestamp"] = undefined /*out*/;
-            inputs["customerRouterIpAddress"] = undefined /*out*/;
-            inputs["dataplaneVersion"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["edgeAvailabilityDomain"] = undefined /*out*/;
-            inputs["encryption"] = undefined /*out*/;
-            inputs["interconnect"] = undefined /*out*/;
-            inputs["ipsecInternalAddresses"] = undefined /*out*/;
-            inputs["kind"] = undefined /*out*/;
-            inputs["labelFingerprint"] = undefined /*out*/;
-            inputs["labels"] = undefined /*out*/;
-            inputs["mtu"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["operationalStatus"] = undefined /*out*/;
-            inputs["pairingKey"] = undefined /*out*/;
-            inputs["partnerAsn"] = undefined /*out*/;
-            inputs["partnerMetadata"] = undefined /*out*/;
-            inputs["privateInterconnectInfo"] = undefined /*out*/;
-            inputs["region"] = undefined /*out*/;
-            inputs["router"] = undefined /*out*/;
-            inputs["satisfiesPzs"] = undefined /*out*/;
-            inputs["selfLink"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
-            inputs["vlanTag8021q"] = undefined /*out*/;
+            resourceInputs["adminEnabled"] = undefined /*out*/;
+            resourceInputs["bandwidth"] = undefined /*out*/;
+            resourceInputs["candidateSubnets"] = undefined /*out*/;
+            resourceInputs["cloudRouterIpAddress"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["customerRouterIpAddress"] = undefined /*out*/;
+            resourceInputs["dataplaneVersion"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["edgeAvailabilityDomain"] = undefined /*out*/;
+            resourceInputs["encryption"] = undefined /*out*/;
+            resourceInputs["interconnect"] = undefined /*out*/;
+            resourceInputs["ipsecInternalAddresses"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["labelFingerprint"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["mtu"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["operationalStatus"] = undefined /*out*/;
+            resourceInputs["pairingKey"] = undefined /*out*/;
+            resourceInputs["partnerAsn"] = undefined /*out*/;
+            resourceInputs["partnerMetadata"] = undefined /*out*/;
+            resourceInputs["privateInterconnectInfo"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["router"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
+            resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["vlanTag8021q"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(InterconnectAttachment.__pulumiType, name, inputs, opts);
+        super(InterconnectAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

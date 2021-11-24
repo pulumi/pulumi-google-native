@@ -69,7 +69,7 @@ export class DebugSession extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: DebugSessionArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.apiId === undefined) && !opts.urn) {
@@ -84,28 +84,28 @@ export class DebugSession extends pulumi.CustomResource {
             if ((!args || args.revisionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'revisionId'");
             }
-            inputs["apiId"] = args ? args.apiId : undefined;
-            inputs["count"] = args ? args.count : undefined;
-            inputs["environmentId"] = args ? args.environmentId : undefined;
-            inputs["filter"] = args ? args.filter : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["organizationId"] = args ? args.organizationId : undefined;
-            inputs["revisionId"] = args ? args.revisionId : undefined;
-            inputs["timeout"] = args ? args.timeout : undefined;
-            inputs["tracesize"] = args ? args.tracesize : undefined;
-            inputs["validity"] = args ? args.validity : undefined;
+            resourceInputs["apiId"] = args ? args.apiId : undefined;
+            resourceInputs["count"] = args ? args.count : undefined;
+            resourceInputs["environmentId"] = args ? args.environmentId : undefined;
+            resourceInputs["filter"] = args ? args.filter : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["revisionId"] = args ? args.revisionId : undefined;
+            resourceInputs["timeout"] = args ? args.timeout : undefined;
+            resourceInputs["tracesize"] = args ? args.tracesize : undefined;
+            resourceInputs["validity"] = args ? args.validity : undefined;
         } else {
-            inputs["count"] = undefined /*out*/;
-            inputs["filter"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["timeout"] = undefined /*out*/;
-            inputs["tracesize"] = undefined /*out*/;
-            inputs["validity"] = undefined /*out*/;
+            resourceInputs["count"] = undefined /*out*/;
+            resourceInputs["filter"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["timeout"] = undefined /*out*/;
+            resourceInputs["tracesize"] = undefined /*out*/;
+            resourceInputs["validity"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(DebugSession.__pulumiType, name, inputs, opts);
+        super(DebugSession.__pulumiType, name, resourceInputs, opts);
     }
 }
 

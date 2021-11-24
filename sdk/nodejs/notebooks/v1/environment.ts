@@ -73,35 +73,35 @@ export class Environment extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: EnvironmentArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.environmentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'environmentId'");
             }
-            inputs["containerImage"] = args ? args.containerImage : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["environmentId"] = args ? args.environmentId : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["postStartupScript"] = args ? args.postStartupScript : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["vmImage"] = args ? args.vmImage : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
+            resourceInputs["containerImage"] = args ? args.containerImage : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["environmentId"] = args ? args.environmentId : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["postStartupScript"] = args ? args.postStartupScript : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["vmImage"] = args ? args.vmImage : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         } else {
-            inputs["containerImage"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["postStartupScript"] = undefined /*out*/;
-            inputs["vmImage"] = undefined /*out*/;
+            resourceInputs["containerImage"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["postStartupScript"] = undefined /*out*/;
+            resourceInputs["vmImage"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Environment.__pulumiType, name, inputs, opts);
+        super(Environment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

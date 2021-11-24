@@ -53,23 +53,23 @@ export class FolderPolicy extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: FolderPolicyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.folderId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'folderId'");
             }
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["spec"] = args ? args.spec : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["spec"] = args ? args.spec : undefined;
         } else {
-            inputs["name"] = undefined /*out*/;
-            inputs["spec"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["spec"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(FolderPolicy.__pulumiType, name, inputs, opts);
+        super(FolderPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

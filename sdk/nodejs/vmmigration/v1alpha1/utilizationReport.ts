@@ -89,7 +89,7 @@ export class UtilizationReport extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: UtilizationReportArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.sourceId === undefined) && !opts.urn) {
@@ -98,39 +98,39 @@ export class UtilizationReport extends pulumi.CustomResource {
             if ((!args || args.utilizationReportId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'utilizationReportId'");
             }
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["sourceId"] = args ? args.sourceId : undefined;
-            inputs["timeFrame"] = args ? args.timeFrame : undefined;
-            inputs["utilizationReportId"] = args ? args.utilizationReportId : undefined;
-            inputs["vms"] = args ? args.vms : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["error"] = undefined /*out*/;
-            inputs["frameEndTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["stateTime"] = undefined /*out*/;
-            inputs["vmCount"] = undefined /*out*/;
-            inputs["vmsCount"] = undefined /*out*/;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["sourceId"] = args ? args.sourceId : undefined;
+            resourceInputs["timeFrame"] = args ? args.timeFrame : undefined;
+            resourceInputs["utilizationReportId"] = args ? args.utilizationReportId : undefined;
+            resourceInputs["vms"] = args ? args.vms : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["error"] = undefined /*out*/;
+            resourceInputs["frameEndTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stateTime"] = undefined /*out*/;
+            resourceInputs["vmCount"] = undefined /*out*/;
+            resourceInputs["vmsCount"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["error"] = undefined /*out*/;
-            inputs["frameEndTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["stateTime"] = undefined /*out*/;
-            inputs["timeFrame"] = undefined /*out*/;
-            inputs["vmCount"] = undefined /*out*/;
-            inputs["vms"] = undefined /*out*/;
-            inputs["vmsCount"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["error"] = undefined /*out*/;
+            resourceInputs["frameEndTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stateTime"] = undefined /*out*/;
+            resourceInputs["timeFrame"] = undefined /*out*/;
+            resourceInputs["vmCount"] = undefined /*out*/;
+            resourceInputs["vms"] = undefined /*out*/;
+            resourceInputs["vmsCount"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(UtilizationReport.__pulumiType, name, inputs, opts);
+        super(UtilizationReport.__pulumiType, name, resourceInputs, opts);
     }
 }
 

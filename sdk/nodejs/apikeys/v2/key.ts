@@ -81,36 +81,36 @@ export class Key extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: KeyArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["keyId"] = args ? args.keyId : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["restrictions"] = args ? args.restrictions : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["deleteTime"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["keyString"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["uid"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["keyId"] = args ? args.keyId : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["restrictions"] = args ? args.restrictions : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deleteTime"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["keyString"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["createTime"] = undefined /*out*/;
-            inputs["deleteTime"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["keyString"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["restrictions"] = undefined /*out*/;
-            inputs["uid"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deleteTime"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["keyString"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["restrictions"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Key.__pulumiType, name, inputs, opts);
+        super(Key.__pulumiType, name, resourceInputs, opts);
     }
 }
 

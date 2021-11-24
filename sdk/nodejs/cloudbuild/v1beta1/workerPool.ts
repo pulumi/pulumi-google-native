@@ -89,43 +89,43 @@ export class WorkerPool extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: WorkerPoolArgs, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.workerPoolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workerPoolId'");
             }
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["networkConfig"] = args ? args.networkConfig : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["workerConfig"] = args ? args.workerConfig : undefined;
-            inputs["workerPoolId"] = args ? args.workerPoolId : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["deleteTime"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["uid"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["workerConfig"] = args ? args.workerConfig : undefined;
+            resourceInputs["workerPoolId"] = args ? args.workerPoolId : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deleteTime"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            inputs["annotations"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["deleteTime"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["networkConfig"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["uid"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
-            inputs["workerConfig"] = undefined /*out*/;
+            resourceInputs["annotations"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deleteTime"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["networkConfig"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["workerConfig"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(WorkerPool.__pulumiType, name, inputs, opts);
+        super(WorkerPool.__pulumiType, name, resourceInputs, opts);
     }
 }
 
