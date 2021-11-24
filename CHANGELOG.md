@@ -3,6 +3,10 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+(None)
+
+## 0.9.0 (2021-11-24)
+
 - Update to support the latest resource definitions and the latest Pulumi SDK
 
 ## 0.8.0 (2021-10-08)
