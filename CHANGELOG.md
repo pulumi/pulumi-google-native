@@ -3,7 +3,10 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
-(None)
+Bug fixes:
+
+- Disable unconditional replaces
+  [#185](https://github.com/pulumi/pulumi-google-native/issues/185)
 
 ## 0.9.0 (2021-11-24)
 
