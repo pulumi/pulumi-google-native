@@ -5,7 +5,9 @@ CHANGELOG
 
 Bug fixes:
 
-- Disable unconditional replaces
+- Disable unconditional replaces. No replaces will be triggered by the provider
+  at this time. Use the `replaceOnChanges` resource option to trigger a
+  replacement operation manually.
   [#185](https://github.com/pulumi/pulumi-google-native/issues/185)
 
 ## 0.9.0 (2021-11-24)
