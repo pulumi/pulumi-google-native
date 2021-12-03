@@ -322,7 +322,7 @@ func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 	logging.V(9).Infof("%s executing", label)
 
 	resourceKey := string(urn.Type())
-	res, ok := p.resourceMap.Resources[resourceKey]
+	_, ok := p.resourceMap.Resources[resourceKey]
 	if !ok {
 		return nil, errors.Errorf("resource %q not found", resourceKey)
 	}
@@ -353,32 +353,7 @@ func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 		return &rpc.DiffResponse{Changes: rpc.DiffResponse_DIFF_NONE}, nil
 	}
 
-	var replaces []string
-	for _, p := range res.CreateParams {
-		sdkName := p.Name
-		if p.SdkName != "" {
-			sdkName = p.SdkName
-		}
-		replaces = append(replaces, sdkName)
-	}
-	for name, prop := range res.CreateProperties {
-		if _, has := res.UpdateProperties[name]; !has {
-			sdkName := name
-			if prop.SdkName != "" {
-				sdkName = prop.SdkName
-			}
-			replaces = append(replaces, sdkName)
-		}
-	}
-
-	// Uploads are only supported for create methods, not updates.
-	if res.AssetUpload {
-		if _, ok := diff.Updates[resource.PropertyKey("source")]; ok {
-			replaces = append(replaces, "source")
-		}
-	}
-
-	return &rpc.DiffResponse{Changes: rpc.DiffResponse_DIFF_UNKNOWN, Replaces: replaces, DeleteBeforeReplace: true}, nil
+	return &rpc.DiffResponse{Changes: rpc.DiffResponse_DIFF_UNKNOWN, DeleteBeforeReplace: true}, nil
 }
 
 // Create allocates a new instance of the provided resource and returns its unique ID afterwards.
