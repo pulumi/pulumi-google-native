@@ -220,7 +220,7 @@ class GetInterconnectAttachmentResult:
     @pulumi.getter(name="dataplaneVersion")
     def dataplane_version(self) -> int:
         """
-        Dataplane version for this InterconnectAttachment.
+        [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
         """
         return pulumi.get(self, "dataplane_version")
 

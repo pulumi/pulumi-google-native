@@ -300,7 +300,7 @@ class GetForwardingRuleResult:
     @pulumi.getter(name="serviceDirectoryRegistrations")
     def service_directory_registrations(self) -> Sequence['outputs.ForwardingRuleServiceDirectoryRegistrationResponse']:
         """
-        Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource. It is only supported for internal load balancing.
+        Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource.
         """
         return pulumi.get(self, "service_directory_registrations")
 

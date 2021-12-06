@@ -124,7 +124,7 @@ class GetTransferJobResult:
     @pulumi.getter
     def project(self) -> str:
         """
-        The ID of the Google Cloud Platform Project that owns the job.
+        The ID of the Google Cloud project that owns the job.
         """
         return pulumi.get(self, "project")
 

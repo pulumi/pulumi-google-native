@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSecurityPolicyResult:
-    def __init__(__self__, adaptive_protection_config=None, advanced_options_config=None, creation_timestamp=None, description=None, fingerprint=None, kind=None, name=None, rules=None, self_link=None):
+    def __init__(__self__, adaptive_protection_config=None, advanced_options_config=None, creation_timestamp=None, description=None, fingerprint=None, kind=None, name=None, recaptcha_options_config=None, rules=None, self_link=None, type=None):
         if adaptive_protection_config and not isinstance(adaptive_protection_config, dict):
             raise TypeError("Expected argument 'adaptive_protection_config' to be a dict")
         pulumi.set(__self__, "adaptive_protection_config", adaptive_protection_config)
@@ -40,12 +40,18 @@ class GetSecurityPolicyResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if recaptcha_options_config and not isinstance(recaptcha_options_config, dict):
+            raise TypeError("Expected argument 'recaptcha_options_config' to be a dict")
+        pulumi.set(__self__, "recaptcha_options_config", recaptcha_options_config)
         if rules and not isinstance(rules, list):
             raise TypeError("Expected argument 'rules' to be a list")
         pulumi.set(__self__, "rules", rules)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="adaptiveProtectionConfig")
@@ -98,6 +104,11 @@ class GetSecurityPolicyResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="recaptchaOptionsConfig")
+    def recaptcha_options_config(self) -> 'outputs.SecurityPolicyRecaptchaOptionsConfigResponse':
+        return pulumi.get(self, "recaptcha_options_config")
+
+    @property
     @pulumi.getter
     def rules(self) -> Sequence['outputs.SecurityPolicyRuleResponse']:
         """
@@ -113,6 +124,14 @@ class GetSecurityPolicyResult:
         """
         return pulumi.get(self, "self_link")
 
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
+        """
+        return pulumi.get(self, "type")
+
 
 class AwaitableGetSecurityPolicyResult(GetSecurityPolicyResult):
     # pylint: disable=using-constant-test
@@ -127,8 +146,10 @@ class AwaitableGetSecurityPolicyResult(GetSecurityPolicyResult):
             fingerprint=self.fingerprint,
             kind=self.kind,
             name=self.name,
+            recaptcha_options_config=self.recaptcha_options_config,
             rules=self.rules,
-            self_link=self.self_link)
+            self_link=self.self_link,
+            type=self.type)
 
 
 def get_security_policy(project: Optional[str] = None,
@@ -154,8 +175,10 @@ def get_security_policy(project: Optional[str] = None,
         fingerprint=__ret__.fingerprint,
         kind=__ret__.kind,
         name=__ret__.name,
+        recaptcha_options_config=__ret__.recaptcha_options_config,
         rules=__ret__.rules,
-        self_link=__ret__.self_link)
+        self_link=__ret__.self_link,
+        type=__ret__.type)
 
 
 @_utilities.lift_output_func(get_security_policy)

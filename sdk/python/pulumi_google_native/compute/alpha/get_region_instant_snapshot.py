@@ -17,7 +17,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionInstantSnapshotResult:
-    def __init__(__self__, creation_timestamp=None, description=None, disk_size_gb=None, guest_flush=None, kind=None, label_fingerprint=None, labels=None, name=None, region=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, source_disk=None, source_disk_id=None, status=None, zone=None):
+    def __init__(__self__, architecture=None, creation_timestamp=None, description=None, disk_size_gb=None, guest_flush=None, kind=None, label_fingerprint=None, labels=None, name=None, region=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, source_disk=None, source_disk_id=None, status=None, zone=None):
+        if architecture and not isinstance(architecture, str):
+            raise TypeError("Expected argument 'architecture' to be a str")
+        pulumi.set(__self__, "architecture", architecture)
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -66,6 +69,14 @@ class GetRegionInstantSnapshotResult:
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> str:
+        """
+        The architecture of the instant snapshot. Valid values are ARM64 or X86_64.
+        """
+        return pulumi.get(self, "architecture")
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -202,6 +213,7 @@ class AwaitableGetRegionInstantSnapshotResult(GetRegionInstantSnapshotResult):
         if False:
             yield self
         return GetRegionInstantSnapshotResult(
+            architecture=self.architecture,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             disk_size_gb=self.disk_size_gb,
@@ -238,6 +250,7 @@ def get_region_instant_snapshot(instant_snapshot: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getRegionInstantSnapshot', __args__, opts=opts, typ=GetRegionInstantSnapshotResult).value
 
     return AwaitableGetRegionInstantSnapshotResult(
+        architecture=__ret__.architecture,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         disk_size_gb=__ret__.disk_size_gb,

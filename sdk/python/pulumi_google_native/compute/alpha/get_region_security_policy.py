@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionSecurityPolicyResult:
-    def __init__(__self__, adaptive_protection_config=None, advanced_options_config=None, associations=None, cloud_armor_config=None, creation_timestamp=None, ddos_protection_config=None, description=None, display_name=None, fingerprint=None, kind=None, label_fingerprint=None, labels=None, name=None, parent=None, region=None, rule_tuple_count=None, rules=None, self_link=None, self_link_with_id=None, type=None):
+    def __init__(__self__, adaptive_protection_config=None, advanced_options_config=None, associations=None, cloud_armor_config=None, creation_timestamp=None, ddos_protection_config=None, description=None, display_name=None, fingerprint=None, kind=None, label_fingerprint=None, labels=None, name=None, parent=None, recaptcha_options_config=None, region=None, rule_tuple_count=None, rules=None, self_link=None, self_link_with_id=None, type=None):
         if adaptive_protection_config and not isinstance(adaptive_protection_config, dict):
             raise TypeError("Expected argument 'adaptive_protection_config' to be a dict")
         pulumi.set(__self__, "adaptive_protection_config", adaptive_protection_config)
@@ -61,6 +61,9 @@ class GetRegionSecurityPolicyResult:
         if parent and not isinstance(parent, str):
             raise TypeError("Expected argument 'parent' to be a str")
         pulumi.set(__self__, "parent", parent)
+        if recaptcha_options_config and not isinstance(recaptcha_options_config, dict):
+            raise TypeError("Expected argument 'recaptcha_options_config' to be a dict")
+        pulumi.set(__self__, "recaptcha_options_config", recaptcha_options_config)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -181,6 +184,11 @@ class GetRegionSecurityPolicyResult:
         return pulumi.get(self, "parent")
 
     @property
+    @pulumi.getter(name="recaptchaOptionsConfig")
+    def recaptcha_options_config(self) -> 'outputs.SecurityPolicyRecaptchaOptionsConfigResponse':
+        return pulumi.get(self, "recaptcha_options_config")
+
+    @property
     @pulumi.getter
     def region(self) -> str:
         """
@@ -249,6 +257,7 @@ class AwaitableGetRegionSecurityPolicyResult(GetRegionSecurityPolicyResult):
             labels=self.labels,
             name=self.name,
             parent=self.parent,
+            recaptcha_options_config=self.recaptcha_options_config,
             region=self.region,
             rule_tuple_count=self.rule_tuple_count,
             rules=self.rules,
@@ -289,6 +298,7 @@ def get_region_security_policy(project: Optional[str] = None,
         labels=__ret__.labels,
         name=__ret__.name,
         parent=__ret__.parent,
+        recaptcha_options_config=__ret__.recaptcha_options_config,
         region=__ret__.region,
         rule_tuple_count=__ret__.rule_tuple_count,
         rules=__ret__.rules,

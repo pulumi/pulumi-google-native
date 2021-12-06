@@ -240,6 +240,7 @@ class BackendBucket(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["edge_security_policy"] = None
             __props__.__dict__["self_link"] = None
         super(BackendBucket, __self__).__init__(
             'google-native:compute/v1:BackendBucket',
@@ -268,6 +269,7 @@ class BackendBucket(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["custom_response_headers"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["edge_security_policy"] = None
         __props__.__dict__["enable_cdn"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
@@ -313,6 +315,14 @@ class BackendBucket(pulumi.CustomResource):
         An optional textual description of the resource; provided by the client when the resource is created.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="edgeSecurityPolicy")
+    def edge_security_policy(self) -> pulumi.Output[str]:
+        """
+        The resource URL for the edge security policy associated with this backend bucket.
+        """
+        return pulumi.get(self, "edge_security_policy")
 
     @property
     @pulumi.getter(name="enableCdn")

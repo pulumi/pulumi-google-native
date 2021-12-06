@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionCommitmentResult:
-    def __init__(__self__, auto_renew=None, category=None, creation_timestamp=None, description=None, end_timestamp=None, kind=None, license_resource=None, name=None, plan=None, region=None, reservations=None, resources=None, self_link=None, self_link_with_id=None, start_timestamp=None, status=None, status_message=None, type=None):
+    def __init__(__self__, auto_renew=None, category=None, creation_timestamp=None, description=None, end_timestamp=None, kind=None, license_resource=None, merge_source_commitments=None, name=None, plan=None, region=None, reservations=None, resources=None, self_link=None, self_link_with_id=None, split_source_commitment=None, start_timestamp=None, status=None, status_message=None, type=None):
         if auto_renew and not isinstance(auto_renew, bool):
             raise TypeError("Expected argument 'auto_renew' to be a bool")
         pulumi.set(__self__, "auto_renew", auto_renew)
@@ -40,6 +40,9 @@ class GetRegionCommitmentResult:
         if license_resource and not isinstance(license_resource, dict):
             raise TypeError("Expected argument 'license_resource' to be a dict")
         pulumi.set(__self__, "license_resource", license_resource)
+        if merge_source_commitments and not isinstance(merge_source_commitments, list):
+            raise TypeError("Expected argument 'merge_source_commitments' to be a list")
+        pulumi.set(__self__, "merge_source_commitments", merge_source_commitments)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -61,6 +64,9 @@ class GetRegionCommitmentResult:
         if self_link_with_id and not isinstance(self_link_with_id, str):
             raise TypeError("Expected argument 'self_link_with_id' to be a str")
         pulumi.set(__self__, "self_link_with_id", self_link_with_id)
+        if split_source_commitment and not isinstance(split_source_commitment, str):
+            raise TypeError("Expected argument 'split_source_commitment' to be a str")
+        pulumi.set(__self__, "split_source_commitment", split_source_commitment)
         if start_timestamp and not isinstance(start_timestamp, str):
             raise TypeError("Expected argument 'start_timestamp' to be a str")
         pulumi.set(__self__, "start_timestamp", start_timestamp)
@@ -131,6 +137,14 @@ class GetRegionCommitmentResult:
         return pulumi.get(self, "license_resource")
 
     @property
+    @pulumi.getter(name="mergeSourceCommitments")
+    def merge_source_commitments(self) -> Sequence[str]:
+        """
+        List of source commitments to be merged into a new commitment.
+        """
+        return pulumi.get(self, "merge_source_commitments")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -187,6 +201,14 @@ class GetRegionCommitmentResult:
         return pulumi.get(self, "self_link_with_id")
 
     @property
+    @pulumi.getter(name="splitSourceCommitment")
+    def split_source_commitment(self) -> str:
+        """
+        Source commitment to be splitted into a new commitment.
+        """
+        return pulumi.get(self, "split_source_commitment")
+
+    @property
     @pulumi.getter(name="startTimestamp")
     def start_timestamp(self) -> str:
         """
@@ -232,6 +254,7 @@ class AwaitableGetRegionCommitmentResult(GetRegionCommitmentResult):
             end_timestamp=self.end_timestamp,
             kind=self.kind,
             license_resource=self.license_resource,
+            merge_source_commitments=self.merge_source_commitments,
             name=self.name,
             plan=self.plan,
             region=self.region,
@@ -239,6 +262,7 @@ class AwaitableGetRegionCommitmentResult(GetRegionCommitmentResult):
             resources=self.resources,
             self_link=self.self_link,
             self_link_with_id=self.self_link_with_id,
+            split_source_commitment=self.split_source_commitment,
             start_timestamp=self.start_timestamp,
             status=self.status,
             status_message=self.status_message,
@@ -270,6 +294,7 @@ def get_region_commitment(commitment: Optional[str] = None,
         end_timestamp=__ret__.end_timestamp,
         kind=__ret__.kind,
         license_resource=__ret__.license_resource,
+        merge_source_commitments=__ret__.merge_source_commitments,
         name=__ret__.name,
         plan=__ret__.plan,
         region=__ret__.region,
@@ -277,6 +302,7 @@ def get_region_commitment(commitment: Optional[str] = None,
         resources=__ret__.resources,
         self_link=__ret__.self_link,
         self_link_with_id=__ret__.self_link_with_id,
+        split_source_commitment=__ret__.split_source_commitment,
         start_timestamp=__ret__.start_timestamp,
         status=__ret__.status,
         status_message=__ret__.status_message,

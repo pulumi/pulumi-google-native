@@ -17,6 +17,7 @@ __all__ = ['RegionDiskArgs', 'RegionDisk']
 class RegionDiskArgs:
     def __init__(__self__, *,
                  region: pulumi.Input[str],
+                 architecture: Optional[pulumi.Input['RegionDiskArchitecture']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
                  erase_windows_vss_signature: Optional[pulumi.Input[bool]] = None,
@@ -46,6 +47,7 @@ class RegionDiskArgs:
                  user_licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a RegionDisk resource.
+        :param pulumi.Input['RegionDiskArchitecture'] architecture: The architecture of the disk. Valid values are ARM64 or X86_64.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input['CustomerEncryptionKeyArgs'] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
         :param pulumi.Input[bool] erase_windows_vss_signature: Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
@@ -73,6 +75,8 @@ class RegionDiskArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_licenses: A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch 
         """
         pulumi.set(__self__, "region", region)
+        if architecture is not None:
+            pulumi.set(__self__, "architecture", architecture)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disk_encryption_key is not None:
@@ -136,6 +140,18 @@ class RegionDiskArgs:
     @region.setter
     def region(self, value: pulumi.Input[str]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> Optional[pulumi.Input['RegionDiskArchitecture']]:
+        """
+        The architecture of the disk. Valid values are ARM64 or X86_64.
+        """
+        return pulumi.get(self, "architecture")
+
+    @architecture.setter
+    def architecture(self, value: Optional[pulumi.Input['RegionDiskArchitecture']]):
+        pulumi.set(self, "architecture", value)
 
     @property
     @pulumi.getter
@@ -461,6 +477,7 @@ class RegionDisk(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 architecture: Optional[pulumi.Input['RegionDiskArchitecture']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  erase_windows_vss_signature: Optional[pulumi.Input[bool]] = None,
@@ -495,6 +512,7 @@ class RegionDisk(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input['RegionDiskArchitecture'] architecture: The architecture of the disk. Valid values are ARM64 or X86_64.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
         :param pulumi.Input[bool] erase_windows_vss_signature: Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
@@ -545,6 +563,7 @@ class RegionDisk(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 architecture: Optional[pulumi.Input['RegionDiskArchitecture']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  erase_windows_vss_signature: Optional[pulumi.Input[bool]] = None,
@@ -585,6 +604,7 @@ class RegionDisk(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RegionDiskArgs.__new__(RegionDiskArgs)
 
+            __props__.__dict__["architecture"] = architecture
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_encryption_key"] = disk_encryption_key
             __props__.__dict__["erase_windows_vss_signature"] = erase_windows_vss_signature
@@ -653,6 +673,7 @@ class RegionDisk(pulumi.CustomResource):
 
         __props__ = RegionDiskArgs.__new__(RegionDiskArgs)
 
+        __props__.__dict__["architecture"] = None
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["disk_encryption_key"] = None
@@ -696,6 +717,14 @@ class RegionDisk(pulumi.CustomResource):
         __props__.__dict__["users"] = None
         __props__.__dict__["zone"] = None
         return RegionDisk(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> pulumi.Output[str]:
+        """
+        The architecture of the disk. Valid values are ARM64 or X86_64.
+        """
+        return pulumi.get(self, "architecture")
 
     @property
     @pulumi.getter(name="creationTimestamp")

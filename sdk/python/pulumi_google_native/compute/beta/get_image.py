@@ -171,7 +171,7 @@ class GetImageResult:
     @pulumi.getter(name="guestOsFeatures")
     def guest_os_features(self) -> Sequence['outputs.GuestOsFeatureResponse']:
         """
-        A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+        A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
         """
         return pulumi.get(self, "guest_os_features")
 

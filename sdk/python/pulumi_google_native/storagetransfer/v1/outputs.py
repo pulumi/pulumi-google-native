@@ -274,7 +274,7 @@ class AzureCredentialsResponse(dict):
 @pulumi.output_type
 class BandwidthLimitResponse(dict):
     """
-    Specifies the BandwidthLimit to describe the non-negative bandwidth rate in mbps for the agent pool.
+    Specifies a bandwidth limit for an agent pool.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -296,8 +296,8 @@ class BandwidthLimitResponse(dict):
     def __init__(__self__, *,
                  limit_mbps: str):
         """
-        Specifies the BandwidthLimit to describe the non-negative bandwidth rate in mbps for the agent pool.
-        :param str limit_mbps: Specifies bandwidth rate in mbps distributed across all the agents in the pool.
+        Specifies a bandwidth limit for an agent pool.
+        :param str limit_mbps: Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
         """
         pulumi.set(__self__, "limit_mbps", limit_mbps)
 
@@ -305,7 +305,7 @@ class BandwidthLimitResponse(dict):
     @pulumi.getter(name="limitMbps")
     def limit_mbps(self) -> str:
         """
-        Specifies bandwidth rate in mbps distributed across all the agents in the pool.
+        Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
         """
         return pulumi.get(self, "limit_mbps")
 
@@ -871,7 +871,7 @@ class TransferManifestResponse(dict):
                  location: str):
         """
         Specifies where the manifest is located.
-        :param str location: Holds URI-encoded path to find the manifest. It can be located in data_source, data_sink, or separately in GCS. For data_source and data_sink, the manifest location is relative to the path specified by that data_source or data_sink. If manifest is in GCS, use format "gs:///". If manifest is in data_source, use format "source://". If manifest is in data_sink, use format "sink://".
+        :param str location: Specifies the path to the manifest in Cloud Storage. The Google-managed service account for the transfer must have `storage.objects.get` permission for this object. An example path is `gs://bucket_name/path/manifest.csv`.
         """
         pulumi.set(__self__, "location", location)
 
@@ -879,7 +879,7 @@ class TransferManifestResponse(dict):
     @pulumi.getter
     def location(self) -> str:
         """
-        Holds URI-encoded path to find the manifest. It can be located in data_source, data_sink, or separately in GCS. For data_source and data_sink, the manifest location is relative to the path specified by that data_source or data_sink. If manifest is in GCS, use format "gs:///". If manifest is in data_source, use format "source://". If manifest is in data_sink, use format "sink://".
+        Specifies the path to the manifest in Cloud Storage. The Google-managed service account for the transfer must have `storage.objects.get` permission for this object. An example path is `gs://bucket_name/path/manifest.csv`.
         """
         return pulumi.get(self, "location")
 

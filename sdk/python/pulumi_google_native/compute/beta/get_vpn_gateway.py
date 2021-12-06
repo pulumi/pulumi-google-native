@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetVpnGatewayResult:
-    def __init__(__self__, creation_timestamp=None, description=None, kind=None, label_fingerprint=None, labels=None, name=None, network=None, region=None, self_link=None, vpn_interfaces=None):
+    def __init__(__self__, creation_timestamp=None, description=None, kind=None, label_fingerprint=None, labels=None, name=None, network=None, region=None, self_link=None, stack_type=None, vpn_interfaces=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -46,6 +46,9 @@ class GetVpnGatewayResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
+        if stack_type and not isinstance(stack_type, str):
+            raise TypeError("Expected argument 'stack_type' to be a str")
+        pulumi.set(__self__, "stack_type", stack_type)
         if vpn_interfaces and not isinstance(vpn_interfaces, list):
             raise TypeError("Expected argument 'vpn_interfaces' to be a list")
         pulumi.set(__self__, "vpn_interfaces", vpn_interfaces)
@@ -123,6 +126,14 @@ class GetVpnGatewayResult:
         return pulumi.get(self, "self_link")
 
     @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> str:
+        """
+        The stack type for this VPN gateway to identify the IP protocols that are enabled. If not specified, IPV4_ONLY will be used.
+        """
+        return pulumi.get(self, "stack_type")
+
+    @property
     @pulumi.getter(name="vpnInterfaces")
     def vpn_interfaces(self) -> Sequence['outputs.VpnGatewayVpnGatewayInterfaceResponse']:
         """
@@ -146,6 +157,7 @@ class AwaitableGetVpnGatewayResult(GetVpnGatewayResult):
             network=self.network,
             region=self.region,
             self_link=self.self_link,
+            stack_type=self.stack_type,
             vpn_interfaces=self.vpn_interfaces)
 
 
@@ -176,6 +188,7 @@ def get_vpn_gateway(project: Optional[str] = None,
         network=__ret__.network,
         region=__ret__.region,
         self_link=__ret__.self_link,
+        stack_type=__ret__.stack_type,
         vpn_interfaces=__ret__.vpn_interfaces)
 
 

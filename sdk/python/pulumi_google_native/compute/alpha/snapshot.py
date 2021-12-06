@@ -318,6 +318,7 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["source_disk_encryption_key"] = source_disk_encryption_key
             __props__.__dict__["source_instant_snapshot"] = source_instant_snapshot
             __props__.__dict__["storage_locations"] = storage_locations
+            __props__.__dict__["architecture"] = None
             __props__.__dict__["auto_created"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["disk_size_gb"] = None
@@ -358,6 +359,7 @@ class Snapshot(pulumi.CustomResource):
 
         __props__ = SnapshotArgs.__new__(SnapshotArgs)
 
+        __props__.__dict__["architecture"] = None
         __props__.__dict__["auto_created"] = None
         __props__.__dict__["chain_name"] = None
         __props__.__dict__["creation_timestamp"] = None
@@ -388,6 +390,14 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["storage_locations"] = None
         __props__.__dict__["user_licenses"] = None
         return Snapshot(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> pulumi.Output[str]:
+        """
+        The architecture of the snapshot. Valid values are ARM64 or X86_64.
+        """
+        return pulumi.get(self, "architecture")
 
     @property
     @pulumi.getter(name="autoCreated")

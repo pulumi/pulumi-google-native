@@ -211,6 +211,7 @@ class InstantSnapshot(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["source_disk"] = source_disk
             __props__.__dict__["zone"] = zone
+            __props__.__dict__["architecture"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["disk_size_gb"] = None
             __props__.__dict__["kind"] = None
@@ -243,6 +244,7 @@ class InstantSnapshot(pulumi.CustomResource):
 
         __props__ = InstantSnapshotArgs.__new__(InstantSnapshotArgs)
 
+        __props__.__dict__["architecture"] = None
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["disk_size_gb"] = None
@@ -260,6 +262,14 @@ class InstantSnapshot(pulumi.CustomResource):
         __props__.__dict__["status"] = None
         __props__.__dict__["zone"] = None
         return InstantSnapshot(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> pulumi.Output[str]:
+        """
+        The architecture of the instant snapshot. Valid values are ARM64 or X86_64.
+        """
+        return pulumi.get(self, "architecture")
 
     @property
     @pulumi.getter(name="creationTimestamp")

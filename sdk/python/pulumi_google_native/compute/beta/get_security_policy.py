@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSecurityPolicyResult:
-    def __init__(__self__, adaptive_protection_config=None, advanced_options_config=None, associations=None, creation_timestamp=None, description=None, display_name=None, fingerprint=None, kind=None, label_fingerprint=None, labels=None, name=None, parent=None, rule_tuple_count=None, rules=None, self_link=None, self_link_with_id=None, type=None):
+    def __init__(__self__, adaptive_protection_config=None, advanced_options_config=None, associations=None, creation_timestamp=None, description=None, display_name=None, fingerprint=None, kind=None, label_fingerprint=None, labels=None, name=None, parent=None, recaptcha_options_config=None, rule_tuple_count=None, rules=None, self_link=None, self_link_with_id=None, type=None):
         if adaptive_protection_config and not isinstance(adaptive_protection_config, dict):
             raise TypeError("Expected argument 'adaptive_protection_config' to be a dict")
         pulumi.set(__self__, "adaptive_protection_config", adaptive_protection_config)
@@ -55,6 +55,9 @@ class GetSecurityPolicyResult:
         if parent and not isinstance(parent, str):
             raise TypeError("Expected argument 'parent' to be a str")
         pulumi.set(__self__, "parent", parent)
+        if recaptcha_options_config and not isinstance(recaptcha_options_config, dict):
+            raise TypeError("Expected argument 'recaptcha_options_config' to be a dict")
+        pulumi.set(__self__, "recaptcha_options_config", recaptcha_options_config)
         if rule_tuple_count and not isinstance(rule_tuple_count, int):
             raise TypeError("Expected argument 'rule_tuple_count' to be a int")
         pulumi.set(__self__, "rule_tuple_count", rule_tuple_count)
@@ -162,6 +165,11 @@ class GetSecurityPolicyResult:
         return pulumi.get(self, "parent")
 
     @property
+    @pulumi.getter(name="recaptchaOptionsConfig")
+    def recaptcha_options_config(self) -> 'outputs.SecurityPolicyRecaptchaOptionsConfigResponse':
+        return pulumi.get(self, "recaptcha_options_config")
+
+    @property
     @pulumi.getter(name="ruleTupleCount")
     def rule_tuple_count(self) -> int:
         """
@@ -220,6 +228,7 @@ class AwaitableGetSecurityPolicyResult(GetSecurityPolicyResult):
             labels=self.labels,
             name=self.name,
             parent=self.parent,
+            recaptcha_options_config=self.recaptcha_options_config,
             rule_tuple_count=self.rule_tuple_count,
             rules=self.rules,
             self_link=self.self_link,
@@ -255,6 +264,7 @@ def get_security_policy(project: Optional[str] = None,
         labels=__ret__.labels,
         name=__ret__.name,
         parent=__ret__.parent,
+        recaptcha_options_config=__ret__.recaptcha_options_config,
         rule_tuple_count=__ret__.rule_tuple_count,
         rules=__ret__.rules,
         self_link=__ret__.self_link,

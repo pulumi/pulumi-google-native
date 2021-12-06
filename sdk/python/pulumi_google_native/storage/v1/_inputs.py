@@ -556,7 +556,7 @@ class BucketIamConfigurationArgs:
         """
         The bucket's IAM configuration.
         :param pulumi.Input['BucketIamConfigurationBucketPolicyOnlyArgs'] bucket_policy_only: The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
-        :param pulumi.Input[str] public_access_prevention: The bucket's Public Access Prevention configuration. Currently, 'unspecified' and 'enforced' are supported.
+        :param pulumi.Input[str] public_access_prevention: The bucket's Public Access Prevention configuration. Currently, 'inherited' and 'enforced' are supported.
         :param pulumi.Input['BucketIamConfigurationUniformBucketLevelAccessArgs'] uniform_bucket_level_access: The bucket's uniform bucket-level access configuration.
         """
         if bucket_policy_only is not None:
@@ -582,7 +582,7 @@ class BucketIamConfigurationArgs:
     @pulumi.getter(name="publicAccessPrevention")
     def public_access_prevention(self) -> Optional[pulumi.Input[str]]:
         """
-        The bucket's Public Access Prevention configuration. Currently, 'unspecified' and 'enforced' are supported.
+        The bucket's Public Access Prevention configuration. Currently, 'inherited' and 'enforced' are supported.
         """
         return pulumi.get(self, "public_access_prevention")
 

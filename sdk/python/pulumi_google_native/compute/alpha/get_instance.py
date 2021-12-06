@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_config=None, cpu_platform=None, creation_timestamp=None, deletion_protection=None, description=None, disks=None, display_device=None, erase_windows_vss_signature=None, fingerprint=None, guest_accelerators=None, hostname=None, instance_encryption_key=None, kind=None, label_fingerprint=None, labels=None, last_start_timestamp=None, last_stop_timestamp=None, last_suspended_timestamp=None, machine_type=None, metadata=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_config=None, post_key_revocation_action_type=None, preserved_state_size_gb=None, private_ipv6_google_access=None, reservation_affinity=None, resource_policies=None, resource_status=None, satisfies_pzs=None, scheduling=None, secure_tags=None, self_link=None, self_link_with_id=None, service_accounts=None, shielded_instance_config=None, shielded_instance_integrity_policy=None, shielded_vm_config=None, shielded_vm_integrity_policy=None, source_machine_image=None, source_machine_image_encryption_key=None, start_restricted=None, status=None, status_message=None, tags=None, upcoming_maintenance=None, zone=None):
+    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_config=None, cpu_platform=None, creation_timestamp=None, deletion_protection=None, description=None, disks=None, display_device=None, erase_windows_vss_signature=None, fingerprint=None, guest_accelerators=None, hostname=None, instance_encryption_key=None, key_revocation_action_type=None, kind=None, label_fingerprint=None, labels=None, last_start_timestamp=None, last_stop_timestamp=None, last_suspended_timestamp=None, machine_type=None, metadata=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_config=None, post_key_revocation_action_type=None, preserved_state_size_gb=None, private_ipv6_google_access=None, reservation_affinity=None, resource_policies=None, resource_status=None, satisfies_pzs=None, scheduling=None, secure_tags=None, self_link=None, self_link_with_id=None, service_accounts=None, shielded_instance_config=None, shielded_instance_integrity_policy=None, shielded_vm_config=None, shielded_vm_integrity_policy=None, source_machine_image=None, source_machine_image_encryption_key=None, start_restricted=None, status=None, status_message=None, tags=None, upcoming_maintenance=None, zone=None):
         if advanced_machine_features and not isinstance(advanced_machine_features, dict):
             raise TypeError("Expected argument 'advanced_machine_features' to be a dict")
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -61,6 +61,9 @@ class GetInstanceResult:
         if instance_encryption_key and not isinstance(instance_encryption_key, dict):
             raise TypeError("Expected argument 'instance_encryption_key' to be a dict")
         pulumi.set(__self__, "instance_encryption_key", instance_encryption_key)
+        if key_revocation_action_type and not isinstance(key_revocation_action_type, str):
+            raise TypeError("Expected argument 'key_revocation_action_type' to be a str")
+        pulumi.set(__self__, "key_revocation_action_type", key_revocation_action_type)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -278,6 +281,14 @@ class GetInstanceResult:
         Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
         """
         return pulumi.get(self, "instance_encryption_key")
+
+    @property
+    @pulumi.getter(name="keyRevocationActionType")
+    def key_revocation_action_type(self) -> str:
+        """
+        KeyRevocationActionType of the instance.
+        """
+        return pulumi.get(self, "key_revocation_action_type")
 
     @property
     @pulumi.getter
@@ -579,6 +590,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             guest_accelerators=self.guest_accelerators,
             hostname=self.hostname,
             instance_encryption_key=self.instance_encryption_key,
+            key_revocation_action_type=self.key_revocation_action_type,
             kind=self.kind,
             label_fingerprint=self.label_fingerprint,
             labels=self.labels,
@@ -649,6 +661,7 @@ def get_instance(instance: Optional[str] = None,
         guest_accelerators=__ret__.guest_accelerators,
         hostname=__ret__.hostname,
         instance_encryption_key=__ret__.instance_encryption_key,
+        key_revocation_action_type=__ret__.key_revocation_action_type,
         kind=__ret__.kind,
         label_fingerprint=__ret__.label_fingerprint,
         labels=__ret__.labels,

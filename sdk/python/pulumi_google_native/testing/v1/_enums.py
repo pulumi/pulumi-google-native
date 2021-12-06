@@ -13,7 +13,7 @@ __all__ = [
 
 class AndroidInstrumentationTestOrchestratorOption(str, Enum):
     """
-    The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
+    The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.1 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
     """
     ORCHESTRATOR_OPTION_UNSPECIFIED = "ORCHESTRATOR_OPTION_UNSPECIFIED"
     """
@@ -21,7 +21,7 @@ class AndroidInstrumentationTestOrchestratorOption(str, Enum):
     """
     USE_ORCHESTRATOR = "USE_ORCHESTRATOR"
     """
-    Run test using orchestrator. ** Only compatible with AndroidJUnitRunner version 1.0 or higher! ** Recommended.
+    Run test using orchestrator. ** Only compatible with AndroidJUnitRunner version 1.1 or higher! ** Recommended.
     """
     DO_NOT_USE_ORCHESTRATOR = "DO_NOT_USE_ORCHESTRATOR"
     """

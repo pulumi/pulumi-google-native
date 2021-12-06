@@ -15,6 +15,7 @@ __all__ = [
     'EncryptionConfigArgs',
     'EnvironmentConfigArgs',
     'IPAllocationPolicyArgs',
+    'MaintenanceWindowArgs',
     'NodeConfigArgs',
     'PrivateClusterConfigArgs',
     'PrivateEnvironmentConfigArgs',
@@ -121,6 +122,7 @@ class EnvironmentConfigArgs:
                  database_config: Optional[pulumi.Input['DatabaseConfigArgs']] = None,
                  encryption_config: Optional[pulumi.Input['EncryptionConfigArgs']] = None,
                  environment_size: Optional[pulumi.Input['EnvironmentConfigEnvironmentSize']] = None,
+                 maintenance_window: Optional[pulumi.Input['MaintenanceWindowArgs']] = None,
                  node_config: Optional[pulumi.Input['NodeConfigArgs']] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  private_environment_config: Optional[pulumi.Input['PrivateEnvironmentConfigArgs']] = None,
@@ -131,8 +133,9 @@ class EnvironmentConfigArgs:
         """
         Configuration information for an environment.
         :param pulumi.Input['DatabaseConfigArgs'] database_config: Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-        :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
         :param pulumi.Input['EnvironmentConfigEnvironmentSize'] environment_size: Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        :param pulumi.Input['MaintenanceWindowArgs'] maintenance_window: Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window will be applied. The default value is Saturday and Sunday 00-06 GMT.
         :param pulumi.Input['NodeConfigArgs'] node_config: The configuration used for the Kubernetes Engine cluster.
         :param pulumi.Input[int] node_count: The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param pulumi.Input['PrivateEnvironmentConfigArgs'] private_environment_config: The configuration used for the Private IP Cloud Composer environment.
@@ -147,6 +150,8 @@ class EnvironmentConfigArgs:
             pulumi.set(__self__, "encryption_config", encryption_config)
         if environment_size is not None:
             pulumi.set(__self__, "environment_size", environment_size)
+        if maintenance_window is not None:
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
         if node_config is not None:
             pulumi.set(__self__, "node_config", node_config)
         if node_count is not None:
@@ -178,7 +183,7 @@ class EnvironmentConfigArgs:
     @pulumi.getter(name="encryptionConfig")
     def encryption_config(self) -> Optional[pulumi.Input['EncryptionConfigArgs']]:
         """
-        Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
         """
         return pulumi.get(self, "encryption_config")
 
@@ -197,6 +202,18 @@ class EnvironmentConfigArgs:
     @environment_size.setter
     def environment_size(self, value: Optional[pulumi.Input['EnvironmentConfigEnvironmentSize']]):
         pulumi.set(self, "environment_size", value)
+
+    @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> Optional[pulumi.Input['MaintenanceWindowArgs']]:
+        """
+        Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window will be applied. The default value is Saturday and Sunday 00-06 GMT.
+        """
+        return pulumi.get(self, "maintenance_window")
+
+    @maintenance_window.setter
+    def maintenance_window(self, value: Optional[pulumi.Input['MaintenanceWindowArgs']]):
+        pulumi.set(self, "maintenance_window", value)
 
     @property
     @pulumi.getter(name="nodeConfig")
@@ -369,6 +386,59 @@ class IPAllocationPolicyArgs:
     @use_ip_aliases.setter
     def use_ip_aliases(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_ip_aliases", value)
+
+
+@pulumi.input_type
+class MaintenanceWindowArgs:
+    def __init__(__self__, *,
+                 end_time: pulumi.Input[str],
+                 recurrence: pulumi.Input[str],
+                 start_time: pulumi.Input[str]):
+        """
+        The configuration settings for Cloud Composer maintenance window. The following example: ``` { "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" } ``` would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
+        :param pulumi.Input[str] end_time: Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to `start_time`.
+        :param pulumi.Input[str] recurrence: Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+        :param pulumi.Input[str] start_time: Start time of the first recurrence of the maintenance window.
+        """
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "recurrence", recurrence)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> pulumi.Input[str]:
+        """
+        Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to `start_time`.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter
+    def recurrence(self) -> pulumi.Input[str]:
+        """
+        Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+        """
+        return pulumi.get(self, "recurrence")
+
+    @recurrence.setter
+    def recurrence(self, value: pulumi.Input[str]):
+        pulumi.set(self, "recurrence", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Input[str]:
+        """
+        Start time of the first recurrence of the maintenance window.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "start_time", value)
 
 
 @pulumi.input_type

@@ -223,6 +223,7 @@ class SslPolicy(pulumi.CustomResource):
             __props__.__dict__["enabled_features"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["region"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
             __props__.__dict__["warnings"] = None
@@ -257,6 +258,7 @@ class SslPolicy(pulumi.CustomResource):
         __props__.__dict__["min_tls_version"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["profile"] = None
+        __props__.__dict__["region"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
         __props__.__dict__["tls_settings"] = None
@@ -334,6 +336,14 @@ class SslPolicy(pulumi.CustomResource):
         Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
         """
         return pulumi.get(self, "profile")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        """
+        URL of the region where the regional SSL policy resides. This field is not applicable to global SSL policies.
+        """
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="selfLink")

@@ -192,7 +192,7 @@ class FeedOutputConfigResponse(dict):
 @pulumi.output_type
 class IamPolicyAnalysisQueryResponse(dict):
     """
-    ## IAM policy analysis query message.
+    IAM policy analysis query message.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -225,7 +225,7 @@ class IamPolicyAnalysisQueryResponse(dict):
                  resource_selector: 'outputs.ResourceSelectorResponse',
                  scope: str):
         """
-        ## IAM policy analysis query message.
+        IAM policy analysis query message.
         :param 'AccessSelectorResponse' access_selector: Optional. Specifies roles or permissions for analysis. This is optional.
         :param 'ConditionContextResponse' condition_context: Optional. The hypothetical context for IAM conditions evaluation.
         :param 'IdentitySelectorResponse' identity_selector: Optional. Specifies an identity for analysis.
