@@ -1282,7 +1282,7 @@ func (o FeedOutputConfigResponsePtrOutput) PubsubDestination() PubsubDestination
 	}).(PubsubDestinationResponsePtrOutput)
 }
 
-// ## IAM policy analysis query message.
+// IAM policy analysis query message.
 type IamPolicyAnalysisQuery struct {
 	// Optional. Specifies roles or permissions for analysis. This is optional.
 	AccessSelector *AccessSelector `pulumi:"accessSelector"`
@@ -1309,7 +1309,7 @@ type IamPolicyAnalysisQueryInput interface {
 	ToIamPolicyAnalysisQueryOutputWithContext(context.Context) IamPolicyAnalysisQueryOutput
 }
 
-// ## IAM policy analysis query message.
+// IAM policy analysis query message.
 type IamPolicyAnalysisQueryArgs struct {
 	// Optional. Specifies roles or permissions for analysis. This is optional.
 	AccessSelector AccessSelectorPtrInput `pulumi:"accessSelector"`
@@ -1378,7 +1378,7 @@ func (i *iamPolicyAnalysisQueryPtrType) ToIamPolicyAnalysisQueryPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(IamPolicyAnalysisQueryPtrOutput)
 }
 
-// ## IAM policy analysis query message.
+// IAM policy analysis query message.
 type IamPolicyAnalysisQueryOutput struct{ *pulumi.OutputState }
 
 func (IamPolicyAnalysisQueryOutput) ElementType() reflect.Type {
@@ -1517,7 +1517,7 @@ func (o IamPolicyAnalysisQueryPtrOutput) Scope() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// ## IAM policy analysis query message.
+// IAM policy analysis query message.
 type IamPolicyAnalysisQueryResponse struct {
 	// Optional. Specifies roles or permissions for analysis. This is optional.
 	AccessSelector AccessSelectorResponse `pulumi:"accessSelector"`
@@ -1544,7 +1544,7 @@ type IamPolicyAnalysisQueryResponseInput interface {
 	ToIamPolicyAnalysisQueryResponseOutputWithContext(context.Context) IamPolicyAnalysisQueryResponseOutput
 }
 
-// ## IAM policy analysis query message.
+// IAM policy analysis query message.
 type IamPolicyAnalysisQueryResponseArgs struct {
 	// Optional. Specifies roles or permissions for analysis. This is optional.
 	AccessSelector AccessSelectorResponseInput `pulumi:"accessSelector"`
@@ -1613,7 +1613,7 @@ func (i *iamPolicyAnalysisQueryResponsePtrType) ToIamPolicyAnalysisQueryResponse
 	return pulumi.ToOutputWithContext(ctx, i).(IamPolicyAnalysisQueryResponsePtrOutput)
 }
 
-// ## IAM policy analysis query message.
+// IAM policy analysis query message.
 type IamPolicyAnalysisQueryResponseOutput struct{ *pulumi.OutputState }
 
 func (IamPolicyAnalysisQueryResponseOutput) ElementType() reflect.Type {

@@ -15,6 +15,8 @@ import (
 type RegionInstantSnapshot struct {
 	pulumi.CustomResourceState
 
+	// The architecture of the instant snapshot. Valid values are ARM64 or X86_64.
+	Architecture pulumi.StringOutput `pulumi:"architecture"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.

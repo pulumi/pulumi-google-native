@@ -32,7 +32,7 @@ type TransferJob struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Notification configuration. This is not supported for transfers involving PosixFilesystem.
 	NotificationConfig NotificationConfigResponseOutput `pulumi:"notificationConfig"`
-	// The ID of the Google Cloud Platform Project that owns the job.
+	// The ID of the Google Cloud project that owns the job.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job never executes a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
 	Schedule ScheduleResponseOutput `pulumi:"schedule"`
@@ -91,7 +91,7 @@ type transferJobArgs struct {
 	Name *string `pulumi:"name"`
 	// Notification configuration. This is not supported for transfers involving PosixFilesystem.
 	NotificationConfig *NotificationConfig `pulumi:"notificationConfig"`
-	// The ID of the Google Cloud Platform Project that owns the job.
+	// The ID of the Google Cloud project that owns the job.
 	Project *string `pulumi:"project"`
 	// Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job never executes a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
 	Schedule *Schedule `pulumi:"schedule"`
@@ -113,7 +113,7 @@ type TransferJobArgs struct {
 	Name pulumi.StringPtrInput
 	// Notification configuration. This is not supported for transfers involving PosixFilesystem.
 	NotificationConfig NotificationConfigPtrInput
-	// The ID of the Google Cloud Platform Project that owns the job.
+	// The ID of the Google Cloud project that owns the job.
 	Project pulumi.StringPtrInput
 	// Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job never executes a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
 	Schedule SchedulePtrInput

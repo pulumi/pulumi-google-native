@@ -31,7 +31,7 @@ type LookupSubnetworkResult struct {
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource. This field can be set only at resource creation time.
 	Description string `pulumi:"description"`
-	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
+	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
 	EnableFlowLogs bool `pulumi:"enableFlowLogs"`
 	// The range of external IPv6 addresses that are owned by this subnetwork.
 	ExternalIpv6Prefix string `pulumi:"externalIpv6Prefix"`
@@ -116,7 +116,7 @@ func (o LookupSubnetworkResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
+// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
 func (o LookupSubnetworkResultOutput) EnableFlowLogs() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupSubnetworkResult) bool { return v.EnableFlowLogs }).(pulumi.BoolOutput)
 }

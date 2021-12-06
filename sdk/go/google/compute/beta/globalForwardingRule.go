@@ -61,7 +61,7 @@ type GlobalForwardingRule struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource. It is only supported for internal load balancing.
+	// Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource.
 	ServiceDirectoryRegistrations ForwardingRuleServiceDirectoryRegistrationResponseArrayOutput `pulumi:"serviceDirectoryRegistrations"`
 	// An optional prefix to the service name for this Forwarding Rule. If specified, the prefix is the first label of the fully qualified service name. The label must be 1-63 characters long, and comply with RFC1035. Specifically, the label must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. This field is only used for internal load balancing.
 	ServiceLabel pulumi.StringOutput `pulumi:"serviceLabel"`
@@ -148,7 +148,7 @@ type globalForwardingRuleArgs struct {
 	Project             *string                                  `pulumi:"project"`
 	PscConnectionStatus *GlobalForwardingRulePscConnectionStatus `pulumi:"pscConnectionStatus"`
 	RequestId           *string                                  `pulumi:"requestId"`
-	// Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource. It is only supported for internal load balancing.
+	// Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource.
 	ServiceDirectoryRegistrations []ForwardingRuleServiceDirectoryRegistration `pulumi:"serviceDirectoryRegistrations"`
 	// An optional prefix to the service name for this Forwarding Rule. If specified, the prefix is the first label of the fully qualified service name. The label must be 1-63 characters long, and comply with RFC1035. Specifically, the label must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. This field is only used for internal load balancing.
 	ServiceLabel *string `pulumi:"serviceLabel"`
@@ -196,7 +196,7 @@ type GlobalForwardingRuleArgs struct {
 	Project             pulumi.StringPtrInput
 	PscConnectionStatus GlobalForwardingRulePscConnectionStatusPtrInput
 	RequestId           pulumi.StringPtrInput
-	// Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource. It is only supported for internal load balancing.
+	// Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource.
 	ServiceDirectoryRegistrations ForwardingRuleServiceDirectoryRegistrationArrayInput
 	// An optional prefix to the service name for this Forwarding Rule. If specified, the prefix is the first label of the fully qualified service name. The label must be 1-63 characters long, and comply with RFC1035. Specifically, the label must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. This field is only used for internal load balancing.
 	ServiceLabel pulumi.StringPtrInput

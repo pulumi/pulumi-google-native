@@ -42,7 +42,7 @@ type LookupTransferJobResult struct {
 	Name string `pulumi:"name"`
 	// Notification configuration. This is not supported for transfers involving PosixFilesystem.
 	NotificationConfig NotificationConfigResponse `pulumi:"notificationConfig"`
-	// The ID of the Google Cloud Platform Project that owns the job.
+	// The ID of the Google Cloud project that owns the job.
 	Project string `pulumi:"project"`
 	// Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job never executes a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
 	Schedule ScheduleResponse `pulumi:"schedule"`
@@ -124,7 +124,7 @@ func (o LookupTransferJobResultOutput) NotificationConfig() NotificationConfigRe
 	return o.ApplyT(func(v LookupTransferJobResult) NotificationConfigResponse { return v.NotificationConfig }).(NotificationConfigResponseOutput)
 }
 
-// The ID of the Google Cloud Platform Project that owns the job.
+// The ID of the Google Cloud project that owns the job.
 func (o LookupTransferJobResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTransferJobResult) string { return v.Project }).(pulumi.StringOutput)
 }

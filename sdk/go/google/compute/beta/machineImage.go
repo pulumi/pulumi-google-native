@@ -21,6 +21,8 @@ type MachineImage struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
 	GuestFlush pulumi.BoolOutput `pulumi:"guestFlush"`
+	// Properties of source instance
+	InstanceProperties InstancePropertiesResponseOutput `pulumi:"instanceProperties"`
 	// The resource type, which is always compute#machineImage for machine image.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Encrypts the machine image using a customer-supplied encryption key. After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request. Customer-supplied encryption keys do not protect access to metadata of the machine image. If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
@@ -29,13 +31,15 @@ type MachineImage struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Reserved for future use.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
+	// An array of Machine Image specific properties for disks attached to the source instance
+	SavedDisks SavedDiskResponseArrayOutput `pulumi:"savedDisks"`
 	// The URL for this machine image. The server defines this URL.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// [Input Only] The customer-supplied encryption key of the disks attached to the source instance. Required if the source disk is protected by a customer-supplied encryption key.
 	SourceDiskEncryptionKeys SourceDiskEncryptionKeyResponseArrayOutput `pulumi:"sourceDiskEncryptionKeys"`
 	// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance
 	SourceInstance pulumi.StringOutput `pulumi:"sourceInstance"`
-	// Properties of source instance.
+	// DEPRECATED: Please use instance_properties instead for source instance related properties. New properties will not be added to this field.
 	SourceInstanceProperties SourceInstancePropertiesResponseOutput `pulumi:"sourceInstanceProperties"`
 	// The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -97,6 +101,8 @@ type machineImageArgs struct {
 	Name      *string `pulumi:"name"`
 	Project   *string `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
+	// An array of Machine Image specific properties for disks attached to the source instance
+	SavedDisks []SavedDisk `pulumi:"savedDisks"`
 	// [Input Only] The customer-supplied encryption key of the disks attached to the source instance. Required if the source disk is protected by a customer-supplied encryption key.
 	SourceDiskEncryptionKeys []SourceDiskEncryptionKey `pulumi:"sourceDiskEncryptionKeys"`
 	// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance
@@ -117,6 +123,8 @@ type MachineImageArgs struct {
 	Name      pulumi.StringPtrInput
 	Project   pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput
+	// An array of Machine Image specific properties for disks attached to the source instance
+	SavedDisks SavedDiskArrayInput
 	// [Input Only] The customer-supplied encryption key of the disks attached to the source instance. Required if the source disk is protected by a customer-supplied encryption key.
 	SourceDiskEncryptionKeys SourceDiskEncryptionKeyArrayInput
 	// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance

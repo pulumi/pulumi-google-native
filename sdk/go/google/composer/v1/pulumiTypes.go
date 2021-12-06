@@ -792,10 +792,12 @@ func (o EncryptionConfigResponsePtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 type EnvironmentConfig struct {
 	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DatabaseConfig *DatabaseConfig `pulumi:"databaseConfig"`
-	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 	EncryptionConfig *EncryptionConfig `pulumi:"encryptionConfig"`
 	// Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	EnvironmentSize *EnvironmentConfigEnvironmentSize `pulumi:"environmentSize"`
+	// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window will be applied. The default value is Saturday and Sunday 00-06 GMT.
+	MaintenanceWindow *MaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The configuration used for the Kubernetes Engine cluster.
 	NodeConfig *NodeConfig `pulumi:"nodeConfig"`
 	// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -827,10 +829,12 @@ type EnvironmentConfigInput interface {
 type EnvironmentConfigArgs struct {
 	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DatabaseConfig DatabaseConfigPtrInput `pulumi:"databaseConfig"`
-	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 	EncryptionConfig EncryptionConfigPtrInput `pulumi:"encryptionConfig"`
 	// Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	EnvironmentSize EnvironmentConfigEnvironmentSizePtrInput `pulumi:"environmentSize"`
+	// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window will be applied. The default value is Saturday and Sunday 00-06 GMT.
+	MaintenanceWindow MaintenanceWindowPtrInput `pulumi:"maintenanceWindow"`
 	// The configuration used for the Kubernetes Engine cluster.
 	NodeConfig NodeConfigPtrInput `pulumi:"nodeConfig"`
 	// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -930,7 +934,7 @@ func (o EnvironmentConfigOutput) DatabaseConfig() DatabaseConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *DatabaseConfig { return v.DatabaseConfig }).(DatabaseConfigPtrOutput)
 }
 
-// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 func (o EnvironmentConfigOutput) EncryptionConfig() EncryptionConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EncryptionConfig { return v.EncryptionConfig }).(EncryptionConfigPtrOutput)
 }
@@ -938,6 +942,11 @@ func (o EnvironmentConfigOutput) EncryptionConfig() EncryptionConfigPtrOutput {
 // Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 func (o EnvironmentConfigOutput) EnvironmentSize() EnvironmentConfigEnvironmentSizePtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigEnvironmentSize { return v.EnvironmentSize }).(EnvironmentConfigEnvironmentSizePtrOutput)
+}
+
+// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window will be applied. The default value is Saturday and Sunday 00-06 GMT.
+func (o EnvironmentConfigOutput) MaintenanceWindow() MaintenanceWindowPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfig) *MaintenanceWindow { return v.MaintenanceWindow }).(MaintenanceWindowPtrOutput)
 }
 
 // The configuration used for the Kubernetes Engine cluster.
@@ -1009,7 +1018,7 @@ func (o EnvironmentConfigPtrOutput) DatabaseConfig() DatabaseConfigPtrOutput {
 	}).(DatabaseConfigPtrOutput)
 }
 
-// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 func (o EnvironmentConfigPtrOutput) EncryptionConfig() EncryptionConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *EncryptionConfig {
 		if v == nil {
@@ -1027,6 +1036,16 @@ func (o EnvironmentConfigPtrOutput) EnvironmentSize() EnvironmentConfigEnvironme
 		}
 		return v.EnvironmentSize
 	}).(EnvironmentConfigEnvironmentSizePtrOutput)
+}
+
+// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window will be applied. The default value is Saturday and Sunday 00-06 GMT.
+func (o EnvironmentConfigPtrOutput) MaintenanceWindow() MaintenanceWindowPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfig) *MaintenanceWindow {
+		if v == nil {
+			return nil
+		}
+		return v.MaintenanceWindow
+	}).(MaintenanceWindowPtrOutput)
 }
 
 // The configuration used for the Kubernetes Engine cluster.
@@ -1107,12 +1126,14 @@ type EnvironmentConfigResponse struct {
 	DagGcsPrefix string `pulumi:"dagGcsPrefix"`
 	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DatabaseConfig DatabaseConfigResponse `pulumi:"databaseConfig"`
-	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 	EncryptionConfig EncryptionConfigResponse `pulumi:"encryptionConfig"`
 	// Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	EnvironmentSize string `pulumi:"environmentSize"`
 	// The Kubernetes Engine cluster used to run this environment.
 	GkeCluster string `pulumi:"gkeCluster"`
+	// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window will be applied. The default value is Saturday and Sunday 00-06 GMT.
+	MaintenanceWindow MaintenanceWindowResponse `pulumi:"maintenanceWindow"`
 	// The configuration used for the Kubernetes Engine cluster.
 	NodeConfig NodeConfigResponse `pulumi:"nodeConfig"`
 	// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -1148,12 +1169,14 @@ type EnvironmentConfigResponseArgs struct {
 	DagGcsPrefix pulumi.StringInput `pulumi:"dagGcsPrefix"`
 	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DatabaseConfig DatabaseConfigResponseInput `pulumi:"databaseConfig"`
-	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 	EncryptionConfig EncryptionConfigResponseInput `pulumi:"encryptionConfig"`
 	// Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	EnvironmentSize pulumi.StringInput `pulumi:"environmentSize"`
 	// The Kubernetes Engine cluster used to run this environment.
 	GkeCluster pulumi.StringInput `pulumi:"gkeCluster"`
+	// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window will be applied. The default value is Saturday and Sunday 00-06 GMT.
+	MaintenanceWindow MaintenanceWindowResponseInput `pulumi:"maintenanceWindow"`
 	// The configuration used for the Kubernetes Engine cluster.
 	NodeConfig NodeConfigResponseInput `pulumi:"nodeConfig"`
 	// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -1263,7 +1286,7 @@ func (o EnvironmentConfigResponseOutput) DatabaseConfig() DatabaseConfigResponse
 	return o.ApplyT(func(v EnvironmentConfigResponse) DatabaseConfigResponse { return v.DatabaseConfig }).(DatabaseConfigResponseOutput)
 }
 
-// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 func (o EnvironmentConfigResponseOutput) EncryptionConfig() EncryptionConfigResponseOutput {
 	return o.ApplyT(func(v EnvironmentConfigResponse) EncryptionConfigResponse { return v.EncryptionConfig }).(EncryptionConfigResponseOutput)
 }
@@ -1276,6 +1299,11 @@ func (o EnvironmentConfigResponseOutput) EnvironmentSize() pulumi.StringOutput {
 // The Kubernetes Engine cluster used to run this environment.
 func (o EnvironmentConfigResponseOutput) GkeCluster() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvironmentConfigResponse) string { return v.GkeCluster }).(pulumi.StringOutput)
+}
+
+// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window will be applied. The default value is Saturday and Sunday 00-06 GMT.
+func (o EnvironmentConfigResponseOutput) MaintenanceWindow() MaintenanceWindowResponseOutput {
+	return o.ApplyT(func(v EnvironmentConfigResponse) MaintenanceWindowResponse { return v.MaintenanceWindow }).(MaintenanceWindowResponseOutput)
 }
 
 // The configuration used for the Kubernetes Engine cluster.
@@ -1369,7 +1397,7 @@ func (o EnvironmentConfigResponsePtrOutput) DatabaseConfig() DatabaseConfigRespo
 	}).(DatabaseConfigResponsePtrOutput)
 }
 
-// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 func (o EnvironmentConfigResponsePtrOutput) EncryptionConfig() EncryptionConfigResponsePtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigResponse) *EncryptionConfigResponse {
 		if v == nil {
@@ -1397,6 +1425,16 @@ func (o EnvironmentConfigResponsePtrOutput) GkeCluster() pulumi.StringPtrOutput 
 		}
 		return &v.GkeCluster
 	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window will be applied. The default value is Saturday and Sunday 00-06 GMT.
+func (o EnvironmentConfigResponsePtrOutput) MaintenanceWindow() MaintenanceWindowResponsePtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigResponse) *MaintenanceWindowResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.MaintenanceWindow
+	}).(MaintenanceWindowResponsePtrOutput)
 }
 
 // The configuration used for the Kubernetes Engine cluster.
@@ -1899,6 +1937,362 @@ func (o IPAllocationPolicyResponsePtrOutput) UseIpAliases() pulumi.BoolPtrOutput
 		}
 		return &v.UseIpAliases
 	}).(pulumi.BoolPtrOutput)
+}
+
+// The configuration settings for Cloud Composer maintenance window. The following example: ```{ "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" }``` would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
+type MaintenanceWindow struct {
+	// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to `start_time`.
+	EndTime string `pulumi:"endTime"`
+	// Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+	Recurrence string `pulumi:"recurrence"`
+	// Start time of the first recurrence of the maintenance window.
+	StartTime string `pulumi:"startTime"`
+}
+
+// MaintenanceWindowInput is an input type that accepts MaintenanceWindowArgs and MaintenanceWindowOutput values.
+// You can construct a concrete instance of `MaintenanceWindowInput` via:
+//
+//          MaintenanceWindowArgs{...}
+type MaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToMaintenanceWindowOutput() MaintenanceWindowOutput
+	ToMaintenanceWindowOutputWithContext(context.Context) MaintenanceWindowOutput
+}
+
+// The configuration settings for Cloud Composer maintenance window. The following example: ```{ "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" }``` would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
+type MaintenanceWindowArgs struct {
+	// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to `start_time`.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+	Recurrence pulumi.StringInput `pulumi:"recurrence"`
+	// Start time of the first recurrence of the maintenance window.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (MaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceWindow)(nil)).Elem()
+}
+
+func (i MaintenanceWindowArgs) ToMaintenanceWindowOutput() MaintenanceWindowOutput {
+	return i.ToMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i MaintenanceWindowArgs) ToMaintenanceWindowOutputWithContext(ctx context.Context) MaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowOutput)
+}
+
+func (i MaintenanceWindowArgs) ToMaintenanceWindowPtrOutput() MaintenanceWindowPtrOutput {
+	return i.ToMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i MaintenanceWindowArgs) ToMaintenanceWindowPtrOutputWithContext(ctx context.Context) MaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowOutput).ToMaintenanceWindowPtrOutputWithContext(ctx)
+}
+
+// MaintenanceWindowPtrInput is an input type that accepts MaintenanceWindowArgs, MaintenanceWindowPtr and MaintenanceWindowPtrOutput values.
+// You can construct a concrete instance of `MaintenanceWindowPtrInput` via:
+//
+//          MaintenanceWindowArgs{...}
+//
+//  or:
+//
+//          nil
+type MaintenanceWindowPtrInput interface {
+	pulumi.Input
+
+	ToMaintenanceWindowPtrOutput() MaintenanceWindowPtrOutput
+	ToMaintenanceWindowPtrOutputWithContext(context.Context) MaintenanceWindowPtrOutput
+}
+
+type maintenanceWindowPtrType MaintenanceWindowArgs
+
+func MaintenanceWindowPtr(v *MaintenanceWindowArgs) MaintenanceWindowPtrInput {
+	return (*maintenanceWindowPtrType)(v)
+}
+
+func (*maintenanceWindowPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MaintenanceWindow)(nil)).Elem()
+}
+
+func (i *maintenanceWindowPtrType) ToMaintenanceWindowPtrOutput() MaintenanceWindowPtrOutput {
+	return i.ToMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i *maintenanceWindowPtrType) ToMaintenanceWindowPtrOutputWithContext(ctx context.Context) MaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowPtrOutput)
+}
+
+// The configuration settings for Cloud Composer maintenance window. The following example: ```{ "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" }``` would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
+type MaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceWindow)(nil)).Elem()
+}
+
+func (o MaintenanceWindowOutput) ToMaintenanceWindowOutput() MaintenanceWindowOutput {
+	return o
+}
+
+func (o MaintenanceWindowOutput) ToMaintenanceWindowOutputWithContext(ctx context.Context) MaintenanceWindowOutput {
+	return o
+}
+
+func (o MaintenanceWindowOutput) ToMaintenanceWindowPtrOutput() MaintenanceWindowPtrOutput {
+	return o.ToMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (o MaintenanceWindowOutput) ToMaintenanceWindowPtrOutputWithContext(ctx context.Context) MaintenanceWindowPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaintenanceWindow) *MaintenanceWindow {
+		return &v
+	}).(MaintenanceWindowPtrOutput)
+}
+
+// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to `start_time`.
+func (o MaintenanceWindowOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v MaintenanceWindow) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+func (o MaintenanceWindowOutput) Recurrence() pulumi.StringOutput {
+	return o.ApplyT(func(v MaintenanceWindow) string { return v.Recurrence }).(pulumi.StringOutput)
+}
+
+// Start time of the first recurrence of the maintenance window.
+func (o MaintenanceWindowOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v MaintenanceWindow) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type MaintenanceWindowPtrOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceWindowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MaintenanceWindow)(nil)).Elem()
+}
+
+func (o MaintenanceWindowPtrOutput) ToMaintenanceWindowPtrOutput() MaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o MaintenanceWindowPtrOutput) ToMaintenanceWindowPtrOutputWithContext(ctx context.Context) MaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o MaintenanceWindowPtrOutput) Elem() MaintenanceWindowOutput {
+	return o.ApplyT(func(v *MaintenanceWindow) MaintenanceWindow {
+		if v != nil {
+			return *v
+		}
+		var ret MaintenanceWindow
+		return ret
+	}).(MaintenanceWindowOutput)
+}
+
+// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to `start_time`.
+func (o MaintenanceWindowPtrOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MaintenanceWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+func (o MaintenanceWindowPtrOutput) Recurrence() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MaintenanceWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Recurrence
+	}).(pulumi.StringPtrOutput)
+}
+
+// Start time of the first recurrence of the maintenance window.
+func (o MaintenanceWindowPtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MaintenanceWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The configuration settings for Cloud Composer maintenance window. The following example: ```{ "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" }``` would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
+type MaintenanceWindowResponse struct {
+	// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to `start_time`.
+	EndTime string `pulumi:"endTime"`
+	// Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+	Recurrence string `pulumi:"recurrence"`
+	// Start time of the first recurrence of the maintenance window.
+	StartTime string `pulumi:"startTime"`
+}
+
+// MaintenanceWindowResponseInput is an input type that accepts MaintenanceWindowResponseArgs and MaintenanceWindowResponseOutput values.
+// You can construct a concrete instance of `MaintenanceWindowResponseInput` via:
+//
+//          MaintenanceWindowResponseArgs{...}
+type MaintenanceWindowResponseInput interface {
+	pulumi.Input
+
+	ToMaintenanceWindowResponseOutput() MaintenanceWindowResponseOutput
+	ToMaintenanceWindowResponseOutputWithContext(context.Context) MaintenanceWindowResponseOutput
+}
+
+// The configuration settings for Cloud Composer maintenance window. The following example: ```{ "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" }``` would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
+type MaintenanceWindowResponseArgs struct {
+	// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to `start_time`.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+	Recurrence pulumi.StringInput `pulumi:"recurrence"`
+	// Start time of the first recurrence of the maintenance window.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (MaintenanceWindowResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceWindowResponse)(nil)).Elem()
+}
+
+func (i MaintenanceWindowResponseArgs) ToMaintenanceWindowResponseOutput() MaintenanceWindowResponseOutput {
+	return i.ToMaintenanceWindowResponseOutputWithContext(context.Background())
+}
+
+func (i MaintenanceWindowResponseArgs) ToMaintenanceWindowResponseOutputWithContext(ctx context.Context) MaintenanceWindowResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowResponseOutput)
+}
+
+func (i MaintenanceWindowResponseArgs) ToMaintenanceWindowResponsePtrOutput() MaintenanceWindowResponsePtrOutput {
+	return i.ToMaintenanceWindowResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MaintenanceWindowResponseArgs) ToMaintenanceWindowResponsePtrOutputWithContext(ctx context.Context) MaintenanceWindowResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowResponseOutput).ToMaintenanceWindowResponsePtrOutputWithContext(ctx)
+}
+
+// MaintenanceWindowResponsePtrInput is an input type that accepts MaintenanceWindowResponseArgs, MaintenanceWindowResponsePtr and MaintenanceWindowResponsePtrOutput values.
+// You can construct a concrete instance of `MaintenanceWindowResponsePtrInput` via:
+//
+//          MaintenanceWindowResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MaintenanceWindowResponsePtrInput interface {
+	pulumi.Input
+
+	ToMaintenanceWindowResponsePtrOutput() MaintenanceWindowResponsePtrOutput
+	ToMaintenanceWindowResponsePtrOutputWithContext(context.Context) MaintenanceWindowResponsePtrOutput
+}
+
+type maintenanceWindowResponsePtrType MaintenanceWindowResponseArgs
+
+func MaintenanceWindowResponsePtr(v *MaintenanceWindowResponseArgs) MaintenanceWindowResponsePtrInput {
+	return (*maintenanceWindowResponsePtrType)(v)
+}
+
+func (*maintenanceWindowResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MaintenanceWindowResponse)(nil)).Elem()
+}
+
+func (i *maintenanceWindowResponsePtrType) ToMaintenanceWindowResponsePtrOutput() MaintenanceWindowResponsePtrOutput {
+	return i.ToMaintenanceWindowResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *maintenanceWindowResponsePtrType) ToMaintenanceWindowResponsePtrOutputWithContext(ctx context.Context) MaintenanceWindowResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowResponsePtrOutput)
+}
+
+// The configuration settings for Cloud Composer maintenance window. The following example: ```{ "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" }``` would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
+type MaintenanceWindowResponseOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceWindowResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceWindowResponse)(nil)).Elem()
+}
+
+func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponseOutput() MaintenanceWindowResponseOutput {
+	return o
+}
+
+func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponseOutputWithContext(ctx context.Context) MaintenanceWindowResponseOutput {
+	return o
+}
+
+func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponsePtrOutput() MaintenanceWindowResponsePtrOutput {
+	return o.ToMaintenanceWindowResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponsePtrOutputWithContext(ctx context.Context) MaintenanceWindowResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaintenanceWindowResponse) *MaintenanceWindowResponse {
+		return &v
+	}).(MaintenanceWindowResponsePtrOutput)
+}
+
+// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to `start_time`.
+func (o MaintenanceWindowResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v MaintenanceWindowResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+func (o MaintenanceWindowResponseOutput) Recurrence() pulumi.StringOutput {
+	return o.ApplyT(func(v MaintenanceWindowResponse) string { return v.Recurrence }).(pulumi.StringOutput)
+}
+
+// Start time of the first recurrence of the maintenance window.
+func (o MaintenanceWindowResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v MaintenanceWindowResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type MaintenanceWindowResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceWindowResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MaintenanceWindowResponse)(nil)).Elem()
+}
+
+func (o MaintenanceWindowResponsePtrOutput) ToMaintenanceWindowResponsePtrOutput() MaintenanceWindowResponsePtrOutput {
+	return o
+}
+
+func (o MaintenanceWindowResponsePtrOutput) ToMaintenanceWindowResponsePtrOutputWithContext(ctx context.Context) MaintenanceWindowResponsePtrOutput {
+	return o
+}
+
+func (o MaintenanceWindowResponsePtrOutput) Elem() MaintenanceWindowResponseOutput {
+	return o.ApplyT(func(v *MaintenanceWindowResponse) MaintenanceWindowResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MaintenanceWindowResponse
+		return ret
+	}).(MaintenanceWindowResponseOutput)
+}
+
+// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to `start_time`.
+func (o MaintenanceWindowResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MaintenanceWindowResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+func (o MaintenanceWindowResponsePtrOutput) Recurrence() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MaintenanceWindowResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Recurrence
+	}).(pulumi.StringPtrOutput)
+}
+
+// Start time of the first recurrence of the maintenance window.
+func (o MaintenanceWindowResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MaintenanceWindowResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartTime
+	}).(pulumi.StringPtrOutput)
 }
 
 // The configuration information for the Kubernetes Engine nodes running the Apache Airflow software.
@@ -5881,6 +6275,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyPtrInput)(nil)).Elem(), IPAllocationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyResponseInput)(nil)).Elem(), IPAllocationPolicyResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyResponsePtrInput)(nil)).Elem(), IPAllocationPolicyResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowInput)(nil)).Elem(), MaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowPtrInput)(nil)).Elem(), MaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowResponseInput)(nil)).Elem(), MaintenanceWindowResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowResponsePtrInput)(nil)).Elem(), MaintenanceWindowResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigInput)(nil)).Elem(), NodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigPtrInput)(nil)).Elem(), NodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigResponseInput)(nil)).Elem(), NodeConfigResponseArgs{})
@@ -5941,6 +6339,10 @@ func init() {
 	pulumi.RegisterOutputType(IPAllocationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(IPAllocationPolicyResponseOutput{})
 	pulumi.RegisterOutputType(IPAllocationPolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(MaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(MaintenanceWindowPtrOutput{})
+	pulumi.RegisterOutputType(MaintenanceWindowResponseOutput{})
+	pulumi.RegisterOutputType(MaintenanceWindowResponsePtrOutput{})
 	pulumi.RegisterOutputType(NodeConfigOutput{})
 	pulumi.RegisterOutputType(NodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodeConfigResponseOutput{})

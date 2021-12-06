@@ -58,7 +58,8 @@ type Instance struct {
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
-	NetworkInterfaces NetworkInterfaceResponseArrayOutput `pulumi:"networkInterfaces"`
+	NetworkInterfaces        NetworkInterfaceResponseArrayOutput    `pulumi:"networkInterfaces"`
+	NetworkPerformanceConfig NetworkPerformanceConfigResponseOutput `pulumi:"networkPerformanceConfig"`
 	// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
 	PrivateIpv6GoogleAccess pulumi.StringOutput `pulumi:"privateIpv6GoogleAccess"`
 	// Specifies the reservations that this instance can consume from.
@@ -75,6 +76,10 @@ type Instance struct {
 	ServiceAccounts                 ServiceAccountResponseArrayOutput             `pulumi:"serviceAccounts"`
 	ShieldedInstanceConfig          ShieldedInstanceConfigResponseOutput          `pulumi:"shieldedInstanceConfig"`
 	ShieldedInstanceIntegrityPolicy ShieldedInstanceIntegrityPolicyResponseOutput `pulumi:"shieldedInstanceIntegrityPolicy"`
+	// Source machine image
+	SourceMachineImage pulumi.StringOutput `pulumi:"sourceMachineImage"`
+	// Source machine image encryption key when creating an instance from a machine image.
+	SourceMachineImageEncryptionKey CustomerEncryptionKeyResponseOutput `pulumi:"sourceMachineImageEncryptionKey"`
 	// Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
 	StartRestricted pulumi.BoolOutput `pulumi:"startRestricted"`
 	// The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see Instance life cycle.
@@ -154,7 +159,8 @@ type instanceArgs struct {
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
-	NetworkInterfaces []NetworkInterface `pulumi:"networkInterfaces"`
+	NetworkInterfaces        []NetworkInterface        `pulumi:"networkInterfaces"`
+	NetworkPerformanceConfig *NetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
 	PrivateIpv6GoogleAccess *InstancePrivateIpv6GoogleAccess `pulumi:"privateIpv6GoogleAccess"`
 	Project                 *string                          `pulumi:"project"`
@@ -170,6 +176,10 @@ type instanceArgs struct {
 	ShieldedInstanceConfig          *ShieldedInstanceConfig          `pulumi:"shieldedInstanceConfig"`
 	ShieldedInstanceIntegrityPolicy *ShieldedInstanceIntegrityPolicy `pulumi:"shieldedInstanceIntegrityPolicy"`
 	SourceInstanceTemplate          *string                          `pulumi:"sourceInstanceTemplate"`
+	// Source machine image
+	SourceMachineImage *string `pulumi:"sourceMachineImage"`
+	// Source machine image encryption key when creating an instance from a machine image.
+	SourceMachineImageEncryptionKey *CustomerEncryptionKey `pulumi:"sourceMachineImageEncryptionKey"`
 	// Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
 	Tags *Tags   `pulumi:"tags"`
 	Zone *string `pulumi:"zone"`
@@ -205,7 +215,8 @@ type InstanceArgs struct {
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
-	NetworkInterfaces NetworkInterfaceArrayInput
+	NetworkInterfaces        NetworkInterfaceArrayInput
+	NetworkPerformanceConfig NetworkPerformanceConfigPtrInput
 	// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
 	PrivateIpv6GoogleAccess InstancePrivateIpv6GoogleAccessPtrInput
 	Project                 pulumi.StringPtrInput
@@ -221,6 +232,10 @@ type InstanceArgs struct {
 	ShieldedInstanceConfig          ShieldedInstanceConfigPtrInput
 	ShieldedInstanceIntegrityPolicy ShieldedInstanceIntegrityPolicyPtrInput
 	SourceInstanceTemplate          pulumi.StringPtrInput
+	// Source machine image
+	SourceMachineImage pulumi.StringPtrInput
+	// Source machine image encryption key when creating an instance from a machine image.
+	SourceMachineImageEncryptionKey CustomerEncryptionKeyPtrInput
 	// Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
 	Tags TagsPtrInput
 	Zone pulumi.StringPtrInput

@@ -34,7 +34,7 @@ type PublicAdvertisedPrefix struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The shared secret to be used for reverse DNS verification.
 	SharedSecret pulumi.StringOutput `pulumi:"sharedSecret"`
-	// The status of the public advertised prefix.
+	// The status of the public advertised prefix. Possible values include: - `INITIAL`: RPKI validation is complete. - `PTR_CONFIGURED`: User has configured the PTR. - `VALIDATED`: Reverse DNS lookup is successful. - `REVERSE_DNS_LOOKUP_FAILED`: Reverse DNS lookup failed. - `PREFIX_CONFIGURATION_IN_PROGRESS`: The prefix is being configured. - `PREFIX_CONFIGURATION_COMPLETE`: The prefix is fully configured. - `PREFIX_REMOVAL_IN_PROGRESS`: The prefix is being removed.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -87,7 +87,7 @@ type publicAdvertisedPrefixArgs struct {
 	Name      *string `pulumi:"name"`
 	Project   *string `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
-	// The status of the public advertised prefix.
+	// The status of the public advertised prefix. Possible values include: - `INITIAL`: RPKI validation is complete. - `PTR_CONFIGURED`: User has configured the PTR. - `VALIDATED`: Reverse DNS lookup is successful. - `REVERSE_DNS_LOOKUP_FAILED`: Reverse DNS lookup failed. - `PREFIX_CONFIGURATION_IN_PROGRESS`: The prefix is being configured. - `PREFIX_CONFIGURATION_COMPLETE`: The prefix is fully configured. - `PREFIX_REMOVAL_IN_PROGRESS`: The prefix is being removed.
 	Status *PublicAdvertisedPrefixStatus `pulumi:"status"`
 }
 
@@ -103,7 +103,7 @@ type PublicAdvertisedPrefixArgs struct {
 	Name      pulumi.StringPtrInput
 	Project   pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput
-	// The status of the public advertised prefix.
+	// The status of the public advertised prefix. Possible values include: - `INITIAL`: RPKI validation is complete. - `PTR_CONFIGURED`: User has configured the PTR. - `VALIDATED`: Reverse DNS lookup is successful. - `REVERSE_DNS_LOOKUP_FAILED`: Reverse DNS lookup failed. - `PREFIX_CONFIGURATION_IN_PROGRESS`: The prefix is being configured. - `PREFIX_CONFIGURATION_COMPLETE`: The prefix is fully configured. - `PREFIX_REMOVAL_IN_PROGRESS`: The prefix is being removed.
 	Status PublicAdvertisedPrefixStatusPtrInput
 }
 

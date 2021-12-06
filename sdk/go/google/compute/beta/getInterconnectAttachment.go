@@ -39,7 +39,7 @@ type LookupInterconnectAttachmentResult struct {
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
 	CustomerRouterIpAddress string `pulumi:"customerRouterIpAddress"`
-	// Dataplane version for this InterconnectAttachment.
+	// [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
 	DataplaneVersion int `pulumi:"dataplaneVersion"`
 	// An optional description of this resource.
 	Description string `pulumi:"description"`
@@ -150,7 +150,7 @@ func (o LookupInterconnectAttachmentResultOutput) CustomerRouterIpAddress() pulu
 	return o.ApplyT(func(v LookupInterconnectAttachmentResult) string { return v.CustomerRouterIpAddress }).(pulumi.StringOutput)
 }
 
-// Dataplane version for this InterconnectAttachment.
+// [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
 func (o LookupInterconnectAttachmentResultOutput) DataplaneVersion() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupInterconnectAttachmentResult) int { return v.DataplaneVersion }).(pulumi.IntOutput)
 }

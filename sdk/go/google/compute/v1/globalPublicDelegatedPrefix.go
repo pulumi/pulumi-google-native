@@ -36,7 +36,7 @@ type GlobalPublicDelegatedPrefix struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// The status of the public delegated prefix.
+	// The status of the public delegated prefix, which can be one of following values: - `INITIALIZING` The public delegated prefix is being initialized and addresses cannot be created yet. - `READY_TO_ANNOUNCE` The public delegated prefix is a live migration prefix and is active. - `ANNOUNCED` The public delegated prefix is active. - `DELETING` The public delegated prefix is being deprovsioned.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 

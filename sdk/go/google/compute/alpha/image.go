@@ -14,6 +14,8 @@ import (
 type Image struct {
 	pulumi.CustomResourceState
 
+	// The architecture of the image. Valid values are ARM64 or X86_64.
+	Architecture pulumi.StringOutput `pulumi:"architecture"`
 	// Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
 	ArchiveSizeBytes pulumi.StringOutput `pulumi:"archiveSizeBytes"`
 	// Creation timestamp in RFC3339 text format.
@@ -26,7 +28,7 @@ type Image struct {
 	DiskSizeGb pulumi.StringOutput `pulumi:"diskSizeGb"`
 	// The name of the image family to which this image belongs. You can create disks by specifying an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
 	Family pulumi.StringOutput `pulumi:"family"`
-	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+	// A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
 	GuestOsFeatures GuestOsFeatureResponseArrayOutput `pulumi:"guestOsFeatures"`
 	// Encrypts the image using a customer-supplied encryption key. After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the image, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the image later.
 	ImageEncryptionKey CustomerEncryptionKeyResponseOutput `pulumi:"imageEncryptionKey"`
@@ -123,6 +125,8 @@ func (ImageState) ElementType() reflect.Type {
 }
 
 type imageArgs struct {
+	// The architecture of the image. Valid values are ARM64 or X86_64.
+	Architecture *ImageArchitecture `pulumi:"architecture"`
 	// Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
 	ArchiveSizeBytes *string `pulumi:"archiveSizeBytes"`
 	// The deprecation status associated with this image.
@@ -134,7 +138,7 @@ type imageArgs struct {
 	// The name of the image family to which this image belongs. You can create disks by specifying an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
 	Family      *string `pulumi:"family"`
 	ForceCreate *string `pulumi:"forceCreate"`
-	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+	// A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
 	GuestOsFeatures []GuestOsFeature `pulumi:"guestOsFeatures"`
 	// Encrypts the image using a customer-supplied encryption key. After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the image, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the image later.
 	ImageEncryptionKey *CustomerEncryptionKey `pulumi:"imageEncryptionKey"`
@@ -178,6 +182,8 @@ type imageArgs struct {
 
 // The set of arguments for constructing a Image resource.
 type ImageArgs struct {
+	// The architecture of the image. Valid values are ARM64 or X86_64.
+	Architecture ImageArchitecturePtrInput
 	// Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
 	ArchiveSizeBytes pulumi.StringPtrInput
 	// The deprecation status associated with this image.
@@ -189,7 +195,7 @@ type ImageArgs struct {
 	// The name of the image family to which this image belongs. You can create disks by specifying an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
 	Family      pulumi.StringPtrInput
 	ForceCreate pulumi.StringPtrInput
-	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+	// A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
 	GuestOsFeatures GuestOsFeatureArrayInput
 	// Encrypts the image using a customer-supplied encryption key. After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the image, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the image later.
 	ImageEncryptionKey CustomerEncryptionKeyPtrInput

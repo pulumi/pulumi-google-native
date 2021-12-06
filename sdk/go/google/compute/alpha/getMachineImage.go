@@ -32,6 +32,8 @@ type LookupMachineImageResult struct {
 	Description string `pulumi:"description"`
 	// [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
 	GuestFlush bool `pulumi:"guestFlush"`
+	// Properties of source instance
+	InstanceProperties InstancePropertiesResponse `pulumi:"instanceProperties"`
 	// The resource type, which is always compute#machineImage for machine image.
 	Kind string `pulumi:"kind"`
 	// Encrypts the machine image using a customer-supplied encryption key. After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request. Customer-supplied encryption keys do not protect access to metadata of the machine image. If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
@@ -40,6 +42,8 @@ type LookupMachineImageResult struct {
 	Name string `pulumi:"name"`
 	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
+	// An array of Machine Image specific properties for disks attached to the source instance
+	SavedDisks []SavedDiskResponse `pulumi:"savedDisks"`
 	// The URL for this machine image. The server defines this URL.
 	SelfLink string `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
@@ -48,7 +52,7 @@ type LookupMachineImageResult struct {
 	SourceDiskEncryptionKeys []SourceDiskEncryptionKeyResponse `pulumi:"sourceDiskEncryptionKeys"`
 	// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance
 	SourceInstance string `pulumi:"sourceInstance"`
-	// Properties of source instance.
+	// DEPRECATED: Please use instance_properties instead for source instance related properties. New properties will not be added to this field.
 	SourceInstanceProperties SourceInstancePropertiesResponse `pulumi:"sourceInstanceProperties"`
 	// The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
 	Status string `pulumi:"status"`
@@ -105,6 +109,11 @@ func (o LookupMachineImageResultOutput) GuestFlush() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupMachineImageResult) bool { return v.GuestFlush }).(pulumi.BoolOutput)
 }
 
+// Properties of source instance
+func (o LookupMachineImageResultOutput) InstanceProperties() InstancePropertiesResponseOutput {
+	return o.ApplyT(func(v LookupMachineImageResult) InstancePropertiesResponse { return v.InstanceProperties }).(InstancePropertiesResponseOutput)
+}
+
 // The resource type, which is always compute#machineImage for machine image.
 func (o LookupMachineImageResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineImageResult) string { return v.Kind }).(pulumi.StringOutput)
@@ -123,6 +132,11 @@ func (o LookupMachineImageResultOutput) Name() pulumi.StringOutput {
 // Reserved for future use.
 func (o LookupMachineImageResultOutput) SatisfiesPzs() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupMachineImageResult) bool { return v.SatisfiesPzs }).(pulumi.BoolOutput)
+}
+
+// An array of Machine Image specific properties for disks attached to the source instance
+func (o LookupMachineImageResultOutput) SavedDisks() SavedDiskResponseArrayOutput {
+	return o.ApplyT(func(v LookupMachineImageResult) []SavedDiskResponse { return v.SavedDisks }).(SavedDiskResponseArrayOutput)
 }
 
 // The URL for this machine image. The server defines this URL.
@@ -145,7 +159,7 @@ func (o LookupMachineImageResultOutput) SourceInstance() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineImageResult) string { return v.SourceInstance }).(pulumi.StringOutput)
 }
 
-// Properties of source instance.
+// DEPRECATED: Please use instance_properties instead for source instance related properties. New properties will not be added to this field.
 func (o LookupMachineImageResultOutput) SourceInstanceProperties() SourceInstancePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupMachineImageResult) SourceInstancePropertiesResponse { return v.SourceInstanceProperties }).(SourceInstancePropertiesResponseOutput)
 }

@@ -236,9 +236,9 @@ type AccessConfig struct {
 	NatIP *string `pulumi:"natIP"`
 	// This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD. If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier. If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
 	NetworkTier *AccessConfigNetworkTier `pulumi:"networkTier"`
-	// The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled.
+	// The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled in accessConfig. If this field is unspecified in ipv6AccessConfig, a default PTR record will be createc for first IP in associated external IPv6 range.
 	PublicPtrDomainName *string `pulumi:"publicPtrDomainName"`
-	// Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name.
+	// Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name. This field is not used in ipv6AccessConfig. A default PTR record will be created if the VM has external IPv6 range associated.
 	SetPublicPtr *bool `pulumi:"setPublicPtr"`
 	// The type of configuration. The default and only option is ONE_TO_ONE_NAT.
 	Type *AccessConfigType `pulumi:"type"`
@@ -263,9 +263,9 @@ type AccessConfigArgs struct {
 	NatIP pulumi.StringPtrInput `pulumi:"natIP"`
 	// This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD. If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier. If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
 	NetworkTier AccessConfigNetworkTierPtrInput `pulumi:"networkTier"`
-	// The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled.
+	// The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled in accessConfig. If this field is unspecified in ipv6AccessConfig, a default PTR record will be createc for first IP in associated external IPv6 range.
 	PublicPtrDomainName pulumi.StringPtrInput `pulumi:"publicPtrDomainName"`
-	// Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name.
+	// Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name. This field is not used in ipv6AccessConfig. A default PTR record will be created if the VM has external IPv6 range associated.
 	SetPublicPtr pulumi.BoolPtrInput `pulumi:"setPublicPtr"`
 	// The type of configuration. The default and only option is ONE_TO_ONE_NAT.
 	Type AccessConfigTypePtrInput `pulumi:"type"`
@@ -338,12 +338,12 @@ func (o AccessConfigOutput) NetworkTier() AccessConfigNetworkTierPtrOutput {
 	return o.ApplyT(func(v AccessConfig) *AccessConfigNetworkTier { return v.NetworkTier }).(AccessConfigNetworkTierPtrOutput)
 }
 
-// The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled.
+// The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled in accessConfig. If this field is unspecified in ipv6AccessConfig, a default PTR record will be createc for first IP in associated external IPv6 range.
 func (o AccessConfigOutput) PublicPtrDomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessConfig) *string { return v.PublicPtrDomainName }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name.
+// Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name. This field is not used in ipv6AccessConfig. A default PTR record will be created if the VM has external IPv6 range associated.
 func (o AccessConfigOutput) SetPublicPtr() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessConfig) *bool { return v.SetPublicPtr }).(pulumi.BoolPtrOutput)
 }
@@ -387,9 +387,9 @@ type AccessConfigResponse struct {
 	NatIP string `pulumi:"natIP"`
 	// This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD. If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier. If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
 	NetworkTier string `pulumi:"networkTier"`
-	// The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled.
+	// The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled in accessConfig. If this field is unspecified in ipv6AccessConfig, a default PTR record will be createc for first IP in associated external IPv6 range.
 	PublicPtrDomainName string `pulumi:"publicPtrDomainName"`
-	// Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name.
+	// Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name. This field is not used in ipv6AccessConfig. A default PTR record will be created if the VM has external IPv6 range associated.
 	SetPublicPtr bool `pulumi:"setPublicPtr"`
 	// The type of configuration. The default and only option is ONE_TO_ONE_NAT.
 	Type string `pulumi:"type"`
@@ -420,9 +420,9 @@ type AccessConfigResponseArgs struct {
 	NatIP pulumi.StringInput `pulumi:"natIP"`
 	// This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD. If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier. If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
 	NetworkTier pulumi.StringInput `pulumi:"networkTier"`
-	// The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled.
+	// The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled in accessConfig. If this field is unspecified in ipv6AccessConfig, a default PTR record will be createc for first IP in associated external IPv6 range.
 	PublicPtrDomainName pulumi.StringInput `pulumi:"publicPtrDomainName"`
-	// Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name.
+	// Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name. This field is not used in ipv6AccessConfig. A default PTR record will be created if the VM has external IPv6 range associated.
 	SetPublicPtr pulumi.BoolInput `pulumi:"setPublicPtr"`
 	// The type of configuration. The default and only option is ONE_TO_ONE_NAT.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -510,12 +510,12 @@ func (o AccessConfigResponseOutput) NetworkTier() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessConfigResponse) string { return v.NetworkTier }).(pulumi.StringOutput)
 }
 
-// The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled.
+// The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled in accessConfig. If this field is unspecified in ipv6AccessConfig, a default PTR record will be createc for first IP in associated external IPv6 range.
 func (o AccessConfigResponseOutput) PublicPtrDomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessConfigResponse) string { return v.PublicPtrDomainName }).(pulumi.StringOutput)
 }
 
-// Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name.
+// Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name. This field is not used in ipv6AccessConfig. A default PTR record will be created if the VM has external IPv6 range associated.
 func (o AccessConfigResponseOutput) SetPublicPtr() pulumi.BoolOutput {
 	return o.ApplyT(func(v AccessConfigResponse) bool { return v.SetPublicPtr }).(pulumi.BoolOutput)
 }
@@ -2190,7 +2190,7 @@ type AttachedDisk struct {
 	Interface *AttachedDiskInterface `pulumi:"interface"`
 	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode.
 	Mode *AttachedDiskMode `pulumi:"mode"`
-	// Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks. Note that for InstanceTemplate, specify the disk name, not the URL for the disk.
+	// Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks. Note that for InstanceTemplate, specify the disk name for zonal disk, and the URL for regional disk.
 	Source *string `pulumi:"source"`
 	// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT.
 	Type *AttachedDiskType `pulumi:"type"`
@@ -2227,7 +2227,7 @@ type AttachedDiskArgs struct {
 	Interface AttachedDiskInterfacePtrInput `pulumi:"interface"`
 	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode.
 	Mode AttachedDiskModePtrInput `pulumi:"mode"`
-	// Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks. Note that for InstanceTemplate, specify the disk name, not the URL for the disk.
+	// Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks. Note that for InstanceTemplate, specify the disk name for zonal disk, and the URL for regional disk.
 	Source pulumi.StringPtrInput `pulumi:"source"`
 	// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT.
 	Type AttachedDiskTypePtrInput `pulumi:"type"`
@@ -2330,7 +2330,7 @@ func (o AttachedDiskOutput) Mode() AttachedDiskModePtrOutput {
 	return o.ApplyT(func(v AttachedDisk) *AttachedDiskMode { return v.Mode }).(AttachedDiskModePtrOutput)
 }
 
-// Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks. Note that for InstanceTemplate, specify the disk name, not the URL for the disk.
+// Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks. Note that for InstanceTemplate, specify the disk name for zonal disk, and the URL for regional disk.
 func (o AttachedDiskOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AttachedDisk) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
@@ -2955,7 +2955,7 @@ type AttachedDiskResponse struct {
 	Mode string `pulumi:"mode"`
 	// shielded vm initial state stored on disk
 	ShieldedInstanceInitialState InitialStateConfigResponse `pulumi:"shieldedInstanceInitialState"`
-	// Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks. Note that for InstanceTemplate, specify the disk name, not the URL for the disk.
+	// Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks. Note that for InstanceTemplate, specify the disk name for zonal disk, and the URL for regional disk.
 	Source string `pulumi:"source"`
 	// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT.
 	Type string `pulumi:"type"`
@@ -3004,7 +3004,7 @@ type AttachedDiskResponseArgs struct {
 	Mode pulumi.StringInput `pulumi:"mode"`
 	// shielded vm initial state stored on disk
 	ShieldedInstanceInitialState InitialStateConfigResponseInput `pulumi:"shieldedInstanceInitialState"`
-	// Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks. Note that for InstanceTemplate, specify the disk name, not the URL for the disk.
+	// Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks. Note that for InstanceTemplate, specify the disk name for zonal disk, and the URL for regional disk.
 	Source pulumi.StringInput `pulumi:"source"`
 	// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -3134,7 +3134,7 @@ func (o AttachedDiskResponseOutput) ShieldedInstanceInitialState() InitialStateC
 	return o.ApplyT(func(v AttachedDiskResponse) InitialStateConfigResponse { return v.ShieldedInstanceInitialState }).(InitialStateConfigResponseOutput)
 }
 
-// Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks. Note that for InstanceTemplate, specify the disk name, not the URL for the disk.
+// Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks. Note that for InstanceTemplate, specify the disk name for zonal disk, and the URL for regional disk.
 func (o AttachedDiskResponseOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v AttachedDiskResponse) string { return v.Source }).(pulumi.StringOutput)
 }
@@ -6277,7 +6277,7 @@ type BackendBucketCdnPolicy struct {
 	CacheKeyPolicy *BackendBucketCdnPolicyCacheKeyPolicy `pulumi:"cacheKeyPolicy"`
 	// Specifies the cache setting for all responses from this backend. The possible values are: USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server. FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content. CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
 	CacheMode *BackendBucketCdnPolicyCacheMode `pulumi:"cacheMode"`
-	// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
+	// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 31,622,400s (1 year).
 	ClientTtl *int `pulumi:"clientTtl"`
 	// Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-max-age). Setting a TTL of "0" means "always revalidate". The value of defaultTTL cannot be set to a value greater than that of maxTTL, but can be equal. When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses. The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
 	DefaultTtl *int `pulumi:"defaultTtl"`
@@ -6314,7 +6314,7 @@ type BackendBucketCdnPolicyArgs struct {
 	CacheKeyPolicy BackendBucketCdnPolicyCacheKeyPolicyPtrInput `pulumi:"cacheKeyPolicy"`
 	// Specifies the cache setting for all responses from this backend. The possible values are: USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server. FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content. CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
 	CacheMode BackendBucketCdnPolicyCacheModePtrInput `pulumi:"cacheMode"`
-	// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
+	// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 31,622,400s (1 year).
 	ClientTtl pulumi.IntPtrInput `pulumi:"clientTtl"`
 	// Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-max-age). Setting a TTL of "0" means "always revalidate". The value of defaultTTL cannot be set to a value greater than that of maxTTL, but can be equal. When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses. The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
 	DefaultTtl pulumi.IntPtrInput `pulumi:"defaultTtl"`
@@ -6427,7 +6427,7 @@ func (o BackendBucketCdnPolicyOutput) CacheMode() BackendBucketCdnPolicyCacheMod
 	return o.ApplyT(func(v BackendBucketCdnPolicy) *BackendBucketCdnPolicyCacheMode { return v.CacheMode }).(BackendBucketCdnPolicyCacheModePtrOutput)
 }
 
-// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
+// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 31,622,400s (1 year).
 func (o BackendBucketCdnPolicyOutput) ClientTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BackendBucketCdnPolicy) *int { return v.ClientTtl }).(pulumi.IntPtrOutput)
 }
@@ -6523,7 +6523,7 @@ func (o BackendBucketCdnPolicyPtrOutput) CacheMode() BackendBucketCdnPolicyCache
 	}).(BackendBucketCdnPolicyCacheModePtrOutput)
 }
 
-// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
+// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 31,622,400s (1 year).
 func (o BackendBucketCdnPolicyPtrOutput) ClientTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BackendBucketCdnPolicy) *int {
 		if v == nil {
@@ -7347,7 +7347,7 @@ type BackendBucketCdnPolicyResponse struct {
 	CacheKeyPolicy BackendBucketCdnPolicyCacheKeyPolicyResponse `pulumi:"cacheKeyPolicy"`
 	// Specifies the cache setting for all responses from this backend. The possible values are: USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server. FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content. CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
 	CacheMode string `pulumi:"cacheMode"`
-	// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
+	// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 31,622,400s (1 year).
 	ClientTtl int `pulumi:"clientTtl"`
 	// Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-max-age). Setting a TTL of "0" means "always revalidate". The value of defaultTTL cannot be set to a value greater than that of maxTTL, but can be equal. When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses. The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
 	DefaultTtl int `pulumi:"defaultTtl"`
@@ -7386,7 +7386,7 @@ type BackendBucketCdnPolicyResponseArgs struct {
 	CacheKeyPolicy BackendBucketCdnPolicyCacheKeyPolicyResponseInput `pulumi:"cacheKeyPolicy"`
 	// Specifies the cache setting for all responses from this backend. The possible values are: USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server. FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content. CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
 	CacheMode pulumi.StringInput `pulumi:"cacheMode"`
-	// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
+	// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 31,622,400s (1 year).
 	ClientTtl pulumi.IntInput `pulumi:"clientTtl"`
 	// Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-max-age). Setting a TTL of "0" means "always revalidate". The value of defaultTTL cannot be set to a value greater than that of maxTTL, but can be equal. When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses. The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
 	DefaultTtl pulumi.IntInput `pulumi:"defaultTtl"`
@@ -7503,7 +7503,7 @@ func (o BackendBucketCdnPolicyResponseOutput) CacheMode() pulumi.StringOutput {
 	return o.ApplyT(func(v BackendBucketCdnPolicyResponse) string { return v.CacheMode }).(pulumi.StringOutput)
 }
 
-// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
+// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 31,622,400s (1 year).
 func (o BackendBucketCdnPolicyResponseOutput) ClientTtl() pulumi.IntOutput {
 	return o.ApplyT(func(v BackendBucketCdnPolicyResponse) int { return v.ClientTtl }).(pulumi.IntOutput)
 }
@@ -7604,7 +7604,7 @@ func (o BackendBucketCdnPolicyResponsePtrOutput) CacheMode() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
+// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 31,622,400s (1 year).
 func (o BackendBucketCdnPolicyResponsePtrOutput) ClientTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BackendBucketCdnPolicyResponse) *int {
 		if v == nil {
@@ -7901,7 +7901,7 @@ type BackendServiceCdnPolicy struct {
 	CacheKeyPolicy *CacheKeyPolicy `pulumi:"cacheKeyPolicy"`
 	// Specifies the cache setting for all responses from this backend. The possible values are: USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server. FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content. CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
 	CacheMode *BackendServiceCdnPolicyCacheMode `pulumi:"cacheMode"`
-	// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
+	// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 31,622,400s (1 year).
 	ClientTtl *int `pulumi:"clientTtl"`
 	// Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-max-age). Setting a TTL of "0" means "always revalidate". The value of defaultTTL cannot be set to a value greater than that of maxTTL, but can be equal. When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses. The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
 	DefaultTtl *int `pulumi:"defaultTtl"`
@@ -7938,7 +7938,7 @@ type BackendServiceCdnPolicyArgs struct {
 	CacheKeyPolicy CacheKeyPolicyPtrInput `pulumi:"cacheKeyPolicy"`
 	// Specifies the cache setting for all responses from this backend. The possible values are: USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server. FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content. CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
 	CacheMode BackendServiceCdnPolicyCacheModePtrInput `pulumi:"cacheMode"`
-	// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
+	// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 31,622,400s (1 year).
 	ClientTtl pulumi.IntPtrInput `pulumi:"clientTtl"`
 	// Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-max-age). Setting a TTL of "0" means "always revalidate". The value of defaultTTL cannot be set to a value greater than that of maxTTL, but can be equal. When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses. The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
 	DefaultTtl pulumi.IntPtrInput `pulumi:"defaultTtl"`
@@ -8051,7 +8051,7 @@ func (o BackendServiceCdnPolicyOutput) CacheMode() BackendServiceCdnPolicyCacheM
 	return o.ApplyT(func(v BackendServiceCdnPolicy) *BackendServiceCdnPolicyCacheMode { return v.CacheMode }).(BackendServiceCdnPolicyCacheModePtrOutput)
 }
 
-// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
+// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 31,622,400s (1 year).
 func (o BackendServiceCdnPolicyOutput) ClientTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BackendServiceCdnPolicy) *int { return v.ClientTtl }).(pulumi.IntPtrOutput)
 }
@@ -8147,7 +8147,7 @@ func (o BackendServiceCdnPolicyPtrOutput) CacheMode() BackendServiceCdnPolicyCac
 	}).(BackendServiceCdnPolicyCacheModePtrOutput)
 }
 
-// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
+// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 31,622,400s (1 year).
 func (o BackendServiceCdnPolicyPtrOutput) ClientTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BackendServiceCdnPolicy) *int {
 		if v == nil {
@@ -8653,7 +8653,7 @@ type BackendServiceCdnPolicyResponse struct {
 	CacheKeyPolicy CacheKeyPolicyResponse `pulumi:"cacheKeyPolicy"`
 	// Specifies the cache setting for all responses from this backend. The possible values are: USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server. FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content. CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
 	CacheMode string `pulumi:"cacheMode"`
-	// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
+	// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 31,622,400s (1 year).
 	ClientTtl int `pulumi:"clientTtl"`
 	// Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-max-age). Setting a TTL of "0" means "always revalidate". The value of defaultTTL cannot be set to a value greater than that of maxTTL, but can be equal. When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses. The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
 	DefaultTtl int `pulumi:"defaultTtl"`
@@ -8692,7 +8692,7 @@ type BackendServiceCdnPolicyResponseArgs struct {
 	CacheKeyPolicy CacheKeyPolicyResponseInput `pulumi:"cacheKeyPolicy"`
 	// Specifies the cache setting for all responses from this backend. The possible values are: USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server. FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content. CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
 	CacheMode pulumi.StringInput `pulumi:"cacheMode"`
-	// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
+	// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 31,622,400s (1 year).
 	ClientTtl pulumi.IntInput `pulumi:"clientTtl"`
 	// Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-max-age). Setting a TTL of "0" means "always revalidate". The value of defaultTTL cannot be set to a value greater than that of maxTTL, but can be equal. When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses. The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
 	DefaultTtl pulumi.IntInput `pulumi:"defaultTtl"`
@@ -8807,7 +8807,7 @@ func (o BackendServiceCdnPolicyResponseOutput) CacheMode() pulumi.StringOutput {
 	return o.ApplyT(func(v BackendServiceCdnPolicyResponse) string { return v.CacheMode }).(pulumi.StringOutput)
 }
 
-// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
+// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 31,622,400s (1 year).
 func (o BackendServiceCdnPolicyResponseOutput) ClientTtl() pulumi.IntOutput {
 	return o.ApplyT(func(v BackendServiceCdnPolicyResponse) int { return v.ClientTtl }).(pulumi.IntOutput)
 }
@@ -8908,7 +8908,7 @@ func (o BackendServiceCdnPolicyResponsePtrOutput) CacheMode() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
+// Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 31,622,400s (1 year).
 func (o BackendServiceCdnPolicyResponsePtrOutput) ClientTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BackendServiceCdnPolicyResponse) *int {
 		if v == nil {
@@ -9000,13 +9000,13 @@ func (o BackendServiceCdnPolicyResponsePtrOutput) SignedUrlKeyNames() pulumi.Str
 
 // Connection Tracking configuration for this BackendService.
 type BackendServiceConnectionTrackingPolicy struct {
-	// Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default.
+	// Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default. For more details, see [Connection Persistence for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#connection-persistence) and [Connection Persistence for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#connection-persistence).
 	ConnectionPersistenceOnUnhealthyBackends *BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends `pulumi:"connectionPersistenceOnUnhealthyBackends"`
 	// Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
 	EnableStrongAffinity *bool `pulumi:"enableStrongAffinity"`
-	// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For Network Load Balancer the default is 60 seconds. This option is not available publicly. This field will be supported only if the Connection Tracking key is less than 5-tuple.
+	// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For Internal TCP/UDP Load Balancing: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For Network Load Balancer the default is 60 seconds. This option is not available publicly.
 	IdleTimeoutSec *int `pulumi:"idleTimeoutSec"`
-	// Specifies the key used for connection tracking. There are two options: PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity.
+	// Specifies the key used for connection tracking. There are two options: - PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. - PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity. For more details, see [Tracking Mode for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#tracking-mode) and [Tracking Mode for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#tracking-mode).
 	TrackingMode *BackendServiceConnectionTrackingPolicyTrackingMode `pulumi:"trackingMode"`
 }
 
@@ -9023,13 +9023,13 @@ type BackendServiceConnectionTrackingPolicyInput interface {
 
 // Connection Tracking configuration for this BackendService.
 type BackendServiceConnectionTrackingPolicyArgs struct {
-	// Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default.
+	// Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default. For more details, see [Connection Persistence for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#connection-persistence) and [Connection Persistence for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#connection-persistence).
 	ConnectionPersistenceOnUnhealthyBackends BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsPtrInput `pulumi:"connectionPersistenceOnUnhealthyBackends"`
 	// Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
 	EnableStrongAffinity pulumi.BoolPtrInput `pulumi:"enableStrongAffinity"`
-	// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For Network Load Balancer the default is 60 seconds. This option is not available publicly. This field will be supported only if the Connection Tracking key is less than 5-tuple.
+	// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For Internal TCP/UDP Load Balancing: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For Network Load Balancer the default is 60 seconds. This option is not available publicly.
 	IdleTimeoutSec pulumi.IntPtrInput `pulumi:"idleTimeoutSec"`
-	// Specifies the key used for connection tracking. There are two options: PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity.
+	// Specifies the key used for connection tracking. There are two options: - PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. - PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity. For more details, see [Tracking Mode for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#tracking-mode) and [Tracking Mode for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#tracking-mode).
 	TrackingMode BackendServiceConnectionTrackingPolicyTrackingModePtrInput `pulumi:"trackingMode"`
 }
 
@@ -9111,7 +9111,7 @@ func (o BackendServiceConnectionTrackingPolicyOutput) ToBackendServiceConnection
 	}).(BackendServiceConnectionTrackingPolicyPtrOutput)
 }
 
-// Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default.
+// Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default. For more details, see [Connection Persistence for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#connection-persistence) and [Connection Persistence for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#connection-persistence).
 func (o BackendServiceConnectionTrackingPolicyOutput) ConnectionPersistenceOnUnhealthyBackends() BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsPtrOutput {
 	return o.ApplyT(func(v BackendServiceConnectionTrackingPolicy) *BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends {
 		return v.ConnectionPersistenceOnUnhealthyBackends
@@ -9123,12 +9123,12 @@ func (o BackendServiceConnectionTrackingPolicyOutput) EnableStrongAffinity() pul
 	return o.ApplyT(func(v BackendServiceConnectionTrackingPolicy) *bool { return v.EnableStrongAffinity }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For Network Load Balancer the default is 60 seconds. This option is not available publicly. This field will be supported only if the Connection Tracking key is less than 5-tuple.
+// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For Internal TCP/UDP Load Balancing: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For Network Load Balancer the default is 60 seconds. This option is not available publicly.
 func (o BackendServiceConnectionTrackingPolicyOutput) IdleTimeoutSec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BackendServiceConnectionTrackingPolicy) *int { return v.IdleTimeoutSec }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the key used for connection tracking. There are two options: PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity.
+// Specifies the key used for connection tracking. There are two options: - PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. - PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity. For more details, see [Tracking Mode for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#tracking-mode) and [Tracking Mode for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#tracking-mode).
 func (o BackendServiceConnectionTrackingPolicyOutput) TrackingMode() BackendServiceConnectionTrackingPolicyTrackingModePtrOutput {
 	return o.ApplyT(func(v BackendServiceConnectionTrackingPolicy) *BackendServiceConnectionTrackingPolicyTrackingMode {
 		return v.TrackingMode
@@ -9159,7 +9159,7 @@ func (o BackendServiceConnectionTrackingPolicyPtrOutput) Elem() BackendServiceCo
 	}).(BackendServiceConnectionTrackingPolicyOutput)
 }
 
-// Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default.
+// Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default. For more details, see [Connection Persistence for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#connection-persistence) and [Connection Persistence for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#connection-persistence).
 func (o BackendServiceConnectionTrackingPolicyPtrOutput) ConnectionPersistenceOnUnhealthyBackends() BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsPtrOutput {
 	return o.ApplyT(func(v *BackendServiceConnectionTrackingPolicy) *BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends {
 		if v == nil {
@@ -9179,7 +9179,7 @@ func (o BackendServiceConnectionTrackingPolicyPtrOutput) EnableStrongAffinity() 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For Network Load Balancer the default is 60 seconds. This option is not available publicly. This field will be supported only if the Connection Tracking key is less than 5-tuple.
+// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For Internal TCP/UDP Load Balancing: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For Network Load Balancer the default is 60 seconds. This option is not available publicly.
 func (o BackendServiceConnectionTrackingPolicyPtrOutput) IdleTimeoutSec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BackendServiceConnectionTrackingPolicy) *int {
 		if v == nil {
@@ -9189,7 +9189,7 @@ func (o BackendServiceConnectionTrackingPolicyPtrOutput) IdleTimeoutSec() pulumi
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the key used for connection tracking. There are two options: PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity.
+// Specifies the key used for connection tracking. There are two options: - PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. - PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity. For more details, see [Tracking Mode for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#tracking-mode) and [Tracking Mode for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#tracking-mode).
 func (o BackendServiceConnectionTrackingPolicyPtrOutput) TrackingMode() BackendServiceConnectionTrackingPolicyTrackingModePtrOutput {
 	return o.ApplyT(func(v *BackendServiceConnectionTrackingPolicy) *BackendServiceConnectionTrackingPolicyTrackingMode {
 		if v == nil {
@@ -9201,13 +9201,13 @@ func (o BackendServiceConnectionTrackingPolicyPtrOutput) TrackingMode() BackendS
 
 // Connection Tracking configuration for this BackendService.
 type BackendServiceConnectionTrackingPolicyResponse struct {
-	// Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default.
+	// Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default. For more details, see [Connection Persistence for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#connection-persistence) and [Connection Persistence for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#connection-persistence).
 	ConnectionPersistenceOnUnhealthyBackends string `pulumi:"connectionPersistenceOnUnhealthyBackends"`
 	// Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
 	EnableStrongAffinity bool `pulumi:"enableStrongAffinity"`
-	// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For Network Load Balancer the default is 60 seconds. This option is not available publicly. This field will be supported only if the Connection Tracking key is less than 5-tuple.
+	// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For Internal TCP/UDP Load Balancing: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For Network Load Balancer the default is 60 seconds. This option is not available publicly.
 	IdleTimeoutSec int `pulumi:"idleTimeoutSec"`
-	// Specifies the key used for connection tracking. There are two options: PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity.
+	// Specifies the key used for connection tracking. There are two options: - PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. - PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity. For more details, see [Tracking Mode for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#tracking-mode) and [Tracking Mode for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#tracking-mode).
 	TrackingMode string `pulumi:"trackingMode"`
 }
 
@@ -9224,13 +9224,13 @@ type BackendServiceConnectionTrackingPolicyResponseInput interface {
 
 // Connection Tracking configuration for this BackendService.
 type BackendServiceConnectionTrackingPolicyResponseArgs struct {
-	// Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default.
+	// Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default. For more details, see [Connection Persistence for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#connection-persistence) and [Connection Persistence for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#connection-persistence).
 	ConnectionPersistenceOnUnhealthyBackends pulumi.StringInput `pulumi:"connectionPersistenceOnUnhealthyBackends"`
 	// Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
 	EnableStrongAffinity pulumi.BoolInput `pulumi:"enableStrongAffinity"`
-	// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For Network Load Balancer the default is 60 seconds. This option is not available publicly. This field will be supported only if the Connection Tracking key is less than 5-tuple.
+	// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For Internal TCP/UDP Load Balancing: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For Network Load Balancer the default is 60 seconds. This option is not available publicly.
 	IdleTimeoutSec pulumi.IntInput `pulumi:"idleTimeoutSec"`
-	// Specifies the key used for connection tracking. There are two options: PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity.
+	// Specifies the key used for connection tracking. There are two options: - PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. - PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity. For more details, see [Tracking Mode for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#tracking-mode) and [Tracking Mode for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#tracking-mode).
 	TrackingMode pulumi.StringInput `pulumi:"trackingMode"`
 }
 
@@ -9312,7 +9312,7 @@ func (o BackendServiceConnectionTrackingPolicyResponseOutput) ToBackendServiceCo
 	}).(BackendServiceConnectionTrackingPolicyResponsePtrOutput)
 }
 
-// Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default.
+// Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default. For more details, see [Connection Persistence for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#connection-persistence) and [Connection Persistence for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#connection-persistence).
 func (o BackendServiceConnectionTrackingPolicyResponseOutput) ConnectionPersistenceOnUnhealthyBackends() pulumi.StringOutput {
 	return o.ApplyT(func(v BackendServiceConnectionTrackingPolicyResponse) string {
 		return v.ConnectionPersistenceOnUnhealthyBackends
@@ -9324,12 +9324,12 @@ func (o BackendServiceConnectionTrackingPolicyResponseOutput) EnableStrongAffini
 	return o.ApplyT(func(v BackendServiceConnectionTrackingPolicyResponse) bool { return v.EnableStrongAffinity }).(pulumi.BoolOutput)
 }
 
-// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For Network Load Balancer the default is 60 seconds. This option is not available publicly. This field will be supported only if the Connection Tracking key is less than 5-tuple.
+// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For Internal TCP/UDP Load Balancing: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For Network Load Balancer the default is 60 seconds. This option is not available publicly.
 func (o BackendServiceConnectionTrackingPolicyResponseOutput) IdleTimeoutSec() pulumi.IntOutput {
 	return o.ApplyT(func(v BackendServiceConnectionTrackingPolicyResponse) int { return v.IdleTimeoutSec }).(pulumi.IntOutput)
 }
 
-// Specifies the key used for connection tracking. There are two options: PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity.
+// Specifies the key used for connection tracking. There are two options: - PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. - PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity. For more details, see [Tracking Mode for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#tracking-mode) and [Tracking Mode for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#tracking-mode).
 func (o BackendServiceConnectionTrackingPolicyResponseOutput) TrackingMode() pulumi.StringOutput {
 	return o.ApplyT(func(v BackendServiceConnectionTrackingPolicyResponse) string { return v.TrackingMode }).(pulumi.StringOutput)
 }
@@ -9358,7 +9358,7 @@ func (o BackendServiceConnectionTrackingPolicyResponsePtrOutput) Elem() BackendS
 	}).(BackendServiceConnectionTrackingPolicyResponseOutput)
 }
 
-// Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default.
+// Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default. For more details, see [Connection Persistence for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#connection-persistence) and [Connection Persistence for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#connection-persistence).
 func (o BackendServiceConnectionTrackingPolicyResponsePtrOutput) ConnectionPersistenceOnUnhealthyBackends() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackendServiceConnectionTrackingPolicyResponse) *string {
 		if v == nil {
@@ -9378,7 +9378,7 @@ func (o BackendServiceConnectionTrackingPolicyResponsePtrOutput) EnableStrongAff
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For Network Load Balancer the default is 60 seconds. This option is not available publicly. This field will be supported only if the Connection Tracking key is less than 5-tuple.
+// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For Internal TCP/UDP Load Balancing: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For Network Load Balancer the default is 60 seconds. This option is not available publicly.
 func (o BackendServiceConnectionTrackingPolicyResponsePtrOutput) IdleTimeoutSec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BackendServiceConnectionTrackingPolicyResponse) *int {
 		if v == nil {
@@ -9388,7 +9388,7 @@ func (o BackendServiceConnectionTrackingPolicyResponsePtrOutput) IdleTimeoutSec(
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the key used for connection tracking. There are two options: PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity.
+// Specifies the key used for connection tracking. There are two options: - PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. - PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity. For more details, see [Tracking Mode for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#tracking-mode) and [Tracking Mode for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#tracking-mode).
 func (o BackendServiceConnectionTrackingPolicyResponsePtrOutput) TrackingMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackendServiceConnectionTrackingPolicyResponse) *string {
 		if v == nil {
@@ -9398,13 +9398,13 @@ func (o BackendServiceConnectionTrackingPolicyResponsePtrOutput) TrackingMode() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
+// For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
 type BackendServiceFailoverPolicy struct {
 	// This can be set to true only if the protocol is TCP. The default is false.
 	DisableConnectionDrainOnFailover *bool `pulumi:"disableConnectionDrainOnFailover"`
-	// If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview). The default is false.
+	// If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
 	DropTrafficIfUnhealthy *bool `pulumi:"dropTrafficIfUnhealthy"`
-	// The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview).
+	// The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
 	FailoverRatio *float64 `pulumi:"failoverRatio"`
 }
 
@@ -9419,13 +9419,13 @@ type BackendServiceFailoverPolicyInput interface {
 	ToBackendServiceFailoverPolicyOutputWithContext(context.Context) BackendServiceFailoverPolicyOutput
 }
 
-// For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
+// For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
 type BackendServiceFailoverPolicyArgs struct {
 	// This can be set to true only if the protocol is TCP. The default is false.
 	DisableConnectionDrainOnFailover pulumi.BoolPtrInput `pulumi:"disableConnectionDrainOnFailover"`
-	// If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview). The default is false.
+	// If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
 	DropTrafficIfUnhealthy pulumi.BoolPtrInput `pulumi:"dropTrafficIfUnhealthy"`
-	// The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview).
+	// The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
 	FailoverRatio pulumi.Float64PtrInput `pulumi:"failoverRatio"`
 }
 
@@ -9482,7 +9482,7 @@ func (i *backendServiceFailoverPolicyPtrType) ToBackendServiceFailoverPolicyPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceFailoverPolicyPtrOutput)
 }
 
-// For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
+// For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
 type BackendServiceFailoverPolicyOutput struct{ *pulumi.OutputState }
 
 func (BackendServiceFailoverPolicyOutput) ElementType() reflect.Type {
@@ -9512,12 +9512,12 @@ func (o BackendServiceFailoverPolicyOutput) DisableConnectionDrainOnFailover() p
 	return o.ApplyT(func(v BackendServiceFailoverPolicy) *bool { return v.DisableConnectionDrainOnFailover }).(pulumi.BoolPtrOutput)
 }
 
-// If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview). The default is false.
+// If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
 func (o BackendServiceFailoverPolicyOutput) DropTrafficIfUnhealthy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BackendServiceFailoverPolicy) *bool { return v.DropTrafficIfUnhealthy }).(pulumi.BoolPtrOutput)
 }
 
-// The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview).
+// The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
 func (o BackendServiceFailoverPolicyOutput) FailoverRatio() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v BackendServiceFailoverPolicy) *float64 { return v.FailoverRatio }).(pulumi.Float64PtrOutput)
 }
@@ -9556,7 +9556,7 @@ func (o BackendServiceFailoverPolicyPtrOutput) DisableConnectionDrainOnFailover(
 	}).(pulumi.BoolPtrOutput)
 }
 
-// If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview). The default is false.
+// If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
 func (o BackendServiceFailoverPolicyPtrOutput) DropTrafficIfUnhealthy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BackendServiceFailoverPolicy) *bool {
 		if v == nil {
@@ -9566,7 +9566,7 @@ func (o BackendServiceFailoverPolicyPtrOutput) DropTrafficIfUnhealthy() pulumi.B
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview).
+// The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
 func (o BackendServiceFailoverPolicyPtrOutput) FailoverRatio() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *BackendServiceFailoverPolicy) *float64 {
 		if v == nil {
@@ -9576,13 +9576,13 @@ func (o BackendServiceFailoverPolicyPtrOutput) FailoverRatio() pulumi.Float64Ptr
 	}).(pulumi.Float64PtrOutput)
 }
 
-// For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
+// For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
 type BackendServiceFailoverPolicyResponse struct {
 	// This can be set to true only if the protocol is TCP. The default is false.
 	DisableConnectionDrainOnFailover bool `pulumi:"disableConnectionDrainOnFailover"`
-	// If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview). The default is false.
+	// If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
 	DropTrafficIfUnhealthy bool `pulumi:"dropTrafficIfUnhealthy"`
-	// The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview).
+	// The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
 	FailoverRatio float64 `pulumi:"failoverRatio"`
 }
 
@@ -9597,13 +9597,13 @@ type BackendServiceFailoverPolicyResponseInput interface {
 	ToBackendServiceFailoverPolicyResponseOutputWithContext(context.Context) BackendServiceFailoverPolicyResponseOutput
 }
 
-// For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
+// For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
 type BackendServiceFailoverPolicyResponseArgs struct {
 	// This can be set to true only if the protocol is TCP. The default is false.
 	DisableConnectionDrainOnFailover pulumi.BoolInput `pulumi:"disableConnectionDrainOnFailover"`
-	// If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview). The default is false.
+	// If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
 	DropTrafficIfUnhealthy pulumi.BoolInput `pulumi:"dropTrafficIfUnhealthy"`
-	// The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview).
+	// The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
 	FailoverRatio pulumi.Float64Input `pulumi:"failoverRatio"`
 }
 
@@ -9660,7 +9660,7 @@ func (i *backendServiceFailoverPolicyResponsePtrType) ToBackendServiceFailoverPo
 	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceFailoverPolicyResponsePtrOutput)
 }
 
-// For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
+// For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
 type BackendServiceFailoverPolicyResponseOutput struct{ *pulumi.OutputState }
 
 func (BackendServiceFailoverPolicyResponseOutput) ElementType() reflect.Type {
@@ -9690,12 +9690,12 @@ func (o BackendServiceFailoverPolicyResponseOutput) DisableConnectionDrainOnFail
 	return o.ApplyT(func(v BackendServiceFailoverPolicyResponse) bool { return v.DisableConnectionDrainOnFailover }).(pulumi.BoolOutput)
 }
 
-// If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview). The default is false.
+// If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
 func (o BackendServiceFailoverPolicyResponseOutput) DropTrafficIfUnhealthy() pulumi.BoolOutput {
 	return o.ApplyT(func(v BackendServiceFailoverPolicyResponse) bool { return v.DropTrafficIfUnhealthy }).(pulumi.BoolOutput)
 }
 
-// The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview).
+// The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
 func (o BackendServiceFailoverPolicyResponseOutput) FailoverRatio() pulumi.Float64Output {
 	return o.ApplyT(func(v BackendServiceFailoverPolicyResponse) float64 { return v.FailoverRatio }).(pulumi.Float64Output)
 }
@@ -9734,7 +9734,7 @@ func (o BackendServiceFailoverPolicyResponsePtrOutput) DisableConnectionDrainOnF
 	}).(pulumi.BoolPtrOutput)
 }
 
-// If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview). The default is false.
+// If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
 func (o BackendServiceFailoverPolicyResponsePtrOutput) DropTrafficIfUnhealthy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BackendServiceFailoverPolicyResponse) *bool {
 		if v == nil {
@@ -9744,7 +9744,7 @@ func (o BackendServiceFailoverPolicyResponsePtrOutput) DropTrafficIfUnhealthy() 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview).
+// The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
 func (o BackendServiceFailoverPolicyResponsePtrOutput) FailoverRatio() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *BackendServiceFailoverPolicyResponse) *float64 {
 		if v == nil {
@@ -10447,15 +10447,15 @@ func (o BackendServiceLogConfigResponsePtrOutput) SampleRate() pulumi.Float64Ptr
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type Binding struct {
 	// This is deprecated and has no effect. Do not use.
 	BindingId *string `pulumi:"bindingId"`
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role *string `pulumi:"role"`
 }
 
@@ -10470,15 +10470,15 @@ type BindingInput interface {
 	ToBindingOutputWithContext(context.Context) BindingOutput
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingArgs struct {
 	// This is deprecated and has no effect. Do not use.
 	BindingId pulumi.StringPtrInput `pulumi:"bindingId"`
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -10519,7 +10519,7 @@ func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) Bindi
 	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingOutput struct{ *pulumi.OutputState }
 
 func (BindingOutput) ElementType() reflect.Type {
@@ -10539,17 +10539,17 @@ func (o BindingOutput) BindingId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Binding) *string { return v.BindingId }).(pulumi.StringPtrOutput)
 }
 
-// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 func (o BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -10574,15 +10574,15 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 	}).(BindingOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingResponse struct {
 	// This is deprecated and has no effect. Do not use.
 	BindingId string `pulumi:"bindingId"`
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
 }
 
@@ -10597,15 +10597,15 @@ type BindingResponseInput interface {
 	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingResponseArgs struct {
 	// This is deprecated and has no effect. Do not use.
 	BindingId pulumi.StringInput `pulumi:"bindingId"`
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringInput `pulumi:"role"`
 }
 
@@ -10646,7 +10646,7 @@ func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
 }
 
-// Associates `members` with a `role`.
+// Associates `members`, or principals, with a `role`.
 type BindingResponseOutput struct{ *pulumi.OutputState }
 
 func (BindingResponseOutput) ElementType() reflect.Type {
@@ -10666,17 +10666,17 @@ func (o BindingResponseOutput) BindingId() pulumi.StringOutput {
 	return o.ApplyT(func(v BindingResponse) string { return v.BindingId }).(pulumi.StringOutput)
 }
 
-// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 func (o BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -12513,7 +12513,7 @@ func (o ConnectionDrainingResponsePtrOutput) DrainingTimeoutSec() pulumi.IntPtrO
 
 // This message defines settings for a consistent hash style load balancer.
 type ConsistentHashLoadBalancerSettings struct {
-	// Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+	// Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	HttpCookie *ConsistentHashLoadBalancerSettingsHttpCookie `pulumi:"httpCookie"`
 	// The hash based on the value of the specified header field. This field is applicable if the sessionAffinity is set to HEADER_FIELD.
 	HttpHeaderName *string `pulumi:"httpHeaderName"`
@@ -12534,7 +12534,7 @@ type ConsistentHashLoadBalancerSettingsInput interface {
 
 // This message defines settings for a consistent hash style load balancer.
 type ConsistentHashLoadBalancerSettingsArgs struct {
-	// Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+	// Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	HttpCookie ConsistentHashLoadBalancerSettingsHttpCookiePtrInput `pulumi:"httpCookie"`
 	// The hash based on the value of the specified header field. This field is applicable if the sessionAffinity is set to HEADER_FIELD.
 	HttpHeaderName pulumi.StringPtrInput `pulumi:"httpHeaderName"`
@@ -12620,7 +12620,7 @@ func (o ConsistentHashLoadBalancerSettingsOutput) ToConsistentHashLoadBalancerSe
 	}).(ConsistentHashLoadBalancerSettingsPtrOutput)
 }
 
-// Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+// Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o ConsistentHashLoadBalancerSettingsOutput) HttpCookie() ConsistentHashLoadBalancerSettingsHttpCookiePtrOutput {
 	return o.ApplyT(func(v ConsistentHashLoadBalancerSettings) *ConsistentHashLoadBalancerSettingsHttpCookie {
 		return v.HttpCookie
@@ -12661,7 +12661,7 @@ func (o ConsistentHashLoadBalancerSettingsPtrOutput) Elem() ConsistentHashLoadBa
 	}).(ConsistentHashLoadBalancerSettingsOutput)
 }
 
-// Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+// Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o ConsistentHashLoadBalancerSettingsPtrOutput) HttpCookie() ConsistentHashLoadBalancerSettingsHttpCookiePtrOutput {
 	return o.ApplyT(func(v *ConsistentHashLoadBalancerSettings) *ConsistentHashLoadBalancerSettingsHttpCookie {
 		if v == nil {
@@ -13049,7 +13049,7 @@ func (o ConsistentHashLoadBalancerSettingsHttpCookieResponsePtrOutput) Ttl() Dur
 
 // This message defines settings for a consistent hash style load balancer.
 type ConsistentHashLoadBalancerSettingsResponse struct {
-	// Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+	// Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	HttpCookie ConsistentHashLoadBalancerSettingsHttpCookieResponse `pulumi:"httpCookie"`
 	// The hash based on the value of the specified header field. This field is applicable if the sessionAffinity is set to HEADER_FIELD.
 	HttpHeaderName string `pulumi:"httpHeaderName"`
@@ -13070,7 +13070,7 @@ type ConsistentHashLoadBalancerSettingsResponseInput interface {
 
 // This message defines settings for a consistent hash style load balancer.
 type ConsistentHashLoadBalancerSettingsResponseArgs struct {
-	// Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+	// Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	HttpCookie ConsistentHashLoadBalancerSettingsHttpCookieResponseInput `pulumi:"httpCookie"`
 	// The hash based on the value of the specified header field. This field is applicable if the sessionAffinity is set to HEADER_FIELD.
 	HttpHeaderName pulumi.StringInput `pulumi:"httpHeaderName"`
@@ -13156,7 +13156,7 @@ func (o ConsistentHashLoadBalancerSettingsResponseOutput) ToConsistentHashLoadBa
 	}).(ConsistentHashLoadBalancerSettingsResponsePtrOutput)
 }
 
-// Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+// Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o ConsistentHashLoadBalancerSettingsResponseOutput) HttpCookie() ConsistentHashLoadBalancerSettingsHttpCookieResponseOutput {
 	return o.ApplyT(func(v ConsistentHashLoadBalancerSettingsResponse) ConsistentHashLoadBalancerSettingsHttpCookieResponse {
 		return v.HttpCookie
@@ -13197,7 +13197,7 @@ func (o ConsistentHashLoadBalancerSettingsResponsePtrOutput) Elem() ConsistentHa
 	}).(ConsistentHashLoadBalancerSettingsResponseOutput)
 }
 
-// Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+// Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o ConsistentHashLoadBalancerSettingsResponsePtrOutput) HttpCookie() ConsistentHashLoadBalancerSettingsHttpCookieResponsePtrOutput {
 	return o.ApplyT(func(v *ConsistentHashLoadBalancerSettingsResponse) *ConsistentHashLoadBalancerSettingsHttpCookieResponse {
 		if v == nil {
@@ -13227,23 +13227,23 @@ func (o ConsistentHashLoadBalancerSettingsResponsePtrOutput) MinimumRingSize() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing
+// The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard.
 type CorsPolicy struct {
-	// In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header. Default is false.
+	// In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header. Default is false.
 	AllowCredentials *bool `pulumi:"allowCredentials"`
 	// Specifies the content for the Access-Control-Allow-Headers header.
 	AllowHeaders []string `pulumi:"allowHeaders"`
 	// Specifies the content for the Access-Control-Allow-Methods header.
 	AllowMethods []string `pulumi:"allowMethods"`
-	// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see github.com/google/re2/wiki/Syntax An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+	// Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 	AllowOriginRegexes []string `pulumi:"allowOriginRegexes"`
-	// Specifies the list of origins that will be allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+	// Specifies the list of origins that is allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 	AllowOrigins []string `pulumi:"allowOrigins"`
-	// If true, specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+	// If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
 	Disabled *bool `pulumi:"disabled"`
 	// Specifies the content for the Access-Control-Expose-Headers header.
 	ExposeHeaders []string `pulumi:"exposeHeaders"`
-	// Specifies how long results of a preflight request can be cached in seconds. This translates to the Access-Control-Max-Age header.
+	// Specifies how long results of a preflight request can be cached in seconds. This field translates to the Access-Control-Max-Age header.
 	MaxAge *int `pulumi:"maxAge"`
 }
 
@@ -13258,23 +13258,23 @@ type CorsPolicyInput interface {
 	ToCorsPolicyOutputWithContext(context.Context) CorsPolicyOutput
 }
 
-// The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing
+// The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard.
 type CorsPolicyArgs struct {
-	// In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header. Default is false.
+	// In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header. Default is false.
 	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
 	// Specifies the content for the Access-Control-Allow-Headers header.
 	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
 	// Specifies the content for the Access-Control-Allow-Methods header.
 	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
-	// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see github.com/google/re2/wiki/Syntax An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+	// Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 	AllowOriginRegexes pulumi.StringArrayInput `pulumi:"allowOriginRegexes"`
-	// Specifies the list of origins that will be allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+	// Specifies the list of origins that is allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 	AllowOrigins pulumi.StringArrayInput `pulumi:"allowOrigins"`
-	// If true, specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+	// If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// Specifies the content for the Access-Control-Expose-Headers header.
 	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
-	// Specifies how long results of a preflight request can be cached in seconds. This translates to the Access-Control-Max-Age header.
+	// Specifies how long results of a preflight request can be cached in seconds. This field translates to the Access-Control-Max-Age header.
 	MaxAge pulumi.IntPtrInput `pulumi:"maxAge"`
 }
 
@@ -13331,7 +13331,7 @@ func (i *corsPolicyPtrType) ToCorsPolicyPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(CorsPolicyPtrOutput)
 }
 
-// The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing
+// The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard.
 type CorsPolicyOutput struct{ *pulumi.OutputState }
 
 func (CorsPolicyOutput) ElementType() reflect.Type {
@@ -13356,7 +13356,7 @@ func (o CorsPolicyOutput) ToCorsPolicyPtrOutputWithContext(ctx context.Context) 
 	}).(CorsPolicyPtrOutput)
 }
 
-// In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header. Default is false.
+// In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header. Default is false.
 func (o CorsPolicyOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CorsPolicy) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
 }
@@ -13371,17 +13371,17 @@ func (o CorsPolicyOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CorsPolicy) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see github.com/google/re2/wiki/Syntax An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+// Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 func (o CorsPolicyOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CorsPolicy) []string { return v.AllowOriginRegexes }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the list of origins that will be allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+// Specifies the list of origins that is allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 func (o CorsPolicyOutput) AllowOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CorsPolicy) []string { return v.AllowOrigins }).(pulumi.StringArrayOutput)
 }
 
-// If true, specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+// If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
 func (o CorsPolicyOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CorsPolicy) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
@@ -13391,7 +13391,7 @@ func (o CorsPolicyOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CorsPolicy) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
 }
 
-// Specifies how long results of a preflight request can be cached in seconds. This translates to the Access-Control-Max-Age header.
+// Specifies how long results of a preflight request can be cached in seconds. This field translates to the Access-Control-Max-Age header.
 func (o CorsPolicyOutput) MaxAge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v CorsPolicy) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
 }
@@ -13420,7 +13420,7 @@ func (o CorsPolicyPtrOutput) Elem() CorsPolicyOutput {
 	}).(CorsPolicyOutput)
 }
 
-// In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header. Default is false.
+// In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header. Default is false.
 func (o CorsPolicyPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CorsPolicy) *bool {
 		if v == nil {
@@ -13450,7 +13450,7 @@ func (o CorsPolicyPtrOutput) AllowMethods() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see github.com/google/re2/wiki/Syntax An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+// Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 func (o CorsPolicyPtrOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CorsPolicy) []string {
 		if v == nil {
@@ -13460,7 +13460,7 @@ func (o CorsPolicyPtrOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Specifies the list of origins that will be allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+// Specifies the list of origins that is allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 func (o CorsPolicyPtrOutput) AllowOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CorsPolicy) []string {
 		if v == nil {
@@ -13470,7 +13470,7 @@ func (o CorsPolicyPtrOutput) AllowOrigins() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// If true, specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+// If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
 func (o CorsPolicyPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CorsPolicy) *bool {
 		if v == nil {
@@ -13490,7 +13490,7 @@ func (o CorsPolicyPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Specifies how long results of a preflight request can be cached in seconds. This translates to the Access-Control-Max-Age header.
+// Specifies how long results of a preflight request can be cached in seconds. This field translates to the Access-Control-Max-Age header.
 func (o CorsPolicyPtrOutput) MaxAge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *CorsPolicy) *int {
 		if v == nil {
@@ -13500,23 +13500,23 @@ func (o CorsPolicyPtrOutput) MaxAge() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing
+// The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard.
 type CorsPolicyResponse struct {
-	// In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header. Default is false.
+	// In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header. Default is false.
 	AllowCredentials bool `pulumi:"allowCredentials"`
 	// Specifies the content for the Access-Control-Allow-Headers header.
 	AllowHeaders []string `pulumi:"allowHeaders"`
 	// Specifies the content for the Access-Control-Allow-Methods header.
 	AllowMethods []string `pulumi:"allowMethods"`
-	// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see github.com/google/re2/wiki/Syntax An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+	// Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 	AllowOriginRegexes []string `pulumi:"allowOriginRegexes"`
-	// Specifies the list of origins that will be allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+	// Specifies the list of origins that is allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 	AllowOrigins []string `pulumi:"allowOrigins"`
-	// If true, specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+	// If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
 	Disabled bool `pulumi:"disabled"`
 	// Specifies the content for the Access-Control-Expose-Headers header.
 	ExposeHeaders []string `pulumi:"exposeHeaders"`
-	// Specifies how long results of a preflight request can be cached in seconds. This translates to the Access-Control-Max-Age header.
+	// Specifies how long results of a preflight request can be cached in seconds. This field translates to the Access-Control-Max-Age header.
 	MaxAge int `pulumi:"maxAge"`
 }
 
@@ -13531,23 +13531,23 @@ type CorsPolicyResponseInput interface {
 	ToCorsPolicyResponseOutputWithContext(context.Context) CorsPolicyResponseOutput
 }
 
-// The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing
+// The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard.
 type CorsPolicyResponseArgs struct {
-	// In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header. Default is false.
+	// In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header. Default is false.
 	AllowCredentials pulumi.BoolInput `pulumi:"allowCredentials"`
 	// Specifies the content for the Access-Control-Allow-Headers header.
 	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
 	// Specifies the content for the Access-Control-Allow-Methods header.
 	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
-	// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see github.com/google/re2/wiki/Syntax An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+	// Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 	AllowOriginRegexes pulumi.StringArrayInput `pulumi:"allowOriginRegexes"`
-	// Specifies the list of origins that will be allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+	// Specifies the list of origins that is allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 	AllowOrigins pulumi.StringArrayInput `pulumi:"allowOrigins"`
-	// If true, specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+	// If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
 	Disabled pulumi.BoolInput `pulumi:"disabled"`
 	// Specifies the content for the Access-Control-Expose-Headers header.
 	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
-	// Specifies how long results of a preflight request can be cached in seconds. This translates to the Access-Control-Max-Age header.
+	// Specifies how long results of a preflight request can be cached in seconds. This field translates to the Access-Control-Max-Age header.
 	MaxAge pulumi.IntInput `pulumi:"maxAge"`
 }
 
@@ -13604,7 +13604,7 @@ func (i *corsPolicyResponsePtrType) ToCorsPolicyResponsePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(CorsPolicyResponsePtrOutput)
 }
 
-// The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing
+// The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard.
 type CorsPolicyResponseOutput struct{ *pulumi.OutputState }
 
 func (CorsPolicyResponseOutput) ElementType() reflect.Type {
@@ -13629,7 +13629,7 @@ func (o CorsPolicyResponseOutput) ToCorsPolicyResponsePtrOutputWithContext(ctx c
 	}).(CorsPolicyResponsePtrOutput)
 }
 
-// In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header. Default is false.
+// In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header. Default is false.
 func (o CorsPolicyResponseOutput) AllowCredentials() pulumi.BoolOutput {
 	return o.ApplyT(func(v CorsPolicyResponse) bool { return v.AllowCredentials }).(pulumi.BoolOutput)
 }
@@ -13644,17 +13644,17 @@ func (o CorsPolicyResponseOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CorsPolicyResponse) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see github.com/google/re2/wiki/Syntax An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+// Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 func (o CorsPolicyResponseOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CorsPolicyResponse) []string { return v.AllowOriginRegexes }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the list of origins that will be allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+// Specifies the list of origins that is allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 func (o CorsPolicyResponseOutput) AllowOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CorsPolicyResponse) []string { return v.AllowOrigins }).(pulumi.StringArrayOutput)
 }
 
-// If true, specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+// If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
 func (o CorsPolicyResponseOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v CorsPolicyResponse) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
@@ -13664,7 +13664,7 @@ func (o CorsPolicyResponseOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CorsPolicyResponse) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
 }
 
-// Specifies how long results of a preflight request can be cached in seconds. This translates to the Access-Control-Max-Age header.
+// Specifies how long results of a preflight request can be cached in seconds. This field translates to the Access-Control-Max-Age header.
 func (o CorsPolicyResponseOutput) MaxAge() pulumi.IntOutput {
 	return o.ApplyT(func(v CorsPolicyResponse) int { return v.MaxAge }).(pulumi.IntOutput)
 }
@@ -13693,7 +13693,7 @@ func (o CorsPolicyResponsePtrOutput) Elem() CorsPolicyResponseOutput {
 	}).(CorsPolicyResponseOutput)
 }
 
-// In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header. Default is false.
+// In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header. Default is false.
 func (o CorsPolicyResponsePtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CorsPolicyResponse) *bool {
 		if v == nil {
@@ -13723,7 +13723,7 @@ func (o CorsPolicyResponsePtrOutput) AllowMethods() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see github.com/google/re2/wiki/Syntax An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+// Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 func (o CorsPolicyResponsePtrOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CorsPolicyResponse) []string {
 		if v == nil {
@@ -13733,7 +13733,7 @@ func (o CorsPolicyResponsePtrOutput) AllowOriginRegexes() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
-// Specifies the list of origins that will be allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+// Specifies the list of origins that is allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 func (o CorsPolicyResponsePtrOutput) AllowOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CorsPolicyResponse) []string {
 		if v == nil {
@@ -13743,7 +13743,7 @@ func (o CorsPolicyResponsePtrOutput) AllowOrigins() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// If true, specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+// If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
 func (o CorsPolicyResponsePtrOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CorsPolicyResponse) *bool {
 		if v == nil {
@@ -13763,7 +13763,7 @@ func (o CorsPolicyResponsePtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Specifies how long results of a preflight request can be cached in seconds. This translates to the Access-Control-Max-Age header.
+// Specifies how long results of a preflight request can be cached in seconds. This field translates to the Access-Control-Max-Age header.
 func (o CorsPolicyResponsePtrOutput) MaxAge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *CorsPolicyResponse) *int {
 		if v == nil {
@@ -19669,7 +19669,7 @@ func (o GRPCHealthCheckResponsePtrOutput) PortSpecification() pulumi.StringPtrOu
 
 // Guest OS features.
 type GuestOsFeature struct {
-	// The ID of a supported feature. Read Enabling guest operating system features to see a list of available options.
+	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
 	Type *GuestOsFeatureType `pulumi:"type"`
 }
 
@@ -19686,7 +19686,7 @@ type GuestOsFeatureInput interface {
 
 // Guest OS features.
 type GuestOsFeatureArgs struct {
-	// The ID of a supported feature. Read Enabling guest operating system features to see a list of available options.
+	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
 	Type GuestOsFeatureTypePtrInput `pulumi:"type"`
 }
 
@@ -19742,7 +19742,7 @@ func (o GuestOsFeatureOutput) ToGuestOsFeatureOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The ID of a supported feature. Read Enabling guest operating system features to see a list of available options.
+// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
 func (o GuestOsFeatureOutput) Type() GuestOsFeatureTypePtrOutput {
 	return o.ApplyT(func(v GuestOsFeature) *GuestOsFeatureType { return v.Type }).(GuestOsFeatureTypePtrOutput)
 }
@@ -19769,7 +19769,7 @@ func (o GuestOsFeatureArrayOutput) Index(i pulumi.IntInput) GuestOsFeatureOutput
 
 // Guest OS features.
 type GuestOsFeatureResponse struct {
-	// The ID of a supported feature. Read Enabling guest operating system features to see a list of available options.
+	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
 	Type string `pulumi:"type"`
 }
 
@@ -19786,7 +19786,7 @@ type GuestOsFeatureResponseInput interface {
 
 // Guest OS features.
 type GuestOsFeatureResponseArgs struct {
-	// The ID of a supported feature. Read Enabling guest operating system features to see a list of available options.
+	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -19842,7 +19842,7 @@ func (o GuestOsFeatureResponseOutput) ToGuestOsFeatureResponseOutputWithContext(
 	return o
 }
 
-// The ID of a supported feature. Read Enabling guest operating system features to see a list of available options.
+// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
 func (o GuestOsFeatureResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestOsFeatureResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -21657,7 +21657,7 @@ func (o HealthCheckLogConfigResponsePtrOutput) Enable() pulumi.BoolPtrOutput {
 type HostRule struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or .. * based matching is not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or .. * based matching is not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 	Hosts []string `pulumi:"hosts"`
 	// The name of the PathMatcher to use to match the path portion of the URL if the hostRule matches the URL's host portion.
 	PathMatcher *string `pulumi:"pathMatcher"`
@@ -21678,7 +21678,7 @@ type HostRuleInput interface {
 type HostRuleArgs struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or .. * based matching is not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or .. * based matching is not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 	Hosts pulumi.StringArrayInput `pulumi:"hosts"`
 	// The name of the PathMatcher to use to match the path portion of the URL if the hostRule matches the URL's host portion.
 	PathMatcher pulumi.StringPtrInput `pulumi:"pathMatcher"`
@@ -21741,7 +21741,7 @@ func (o HostRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HostRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or .. * based matching is not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or .. * based matching is not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 func (o HostRuleOutput) Hosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v HostRule) []string { return v.Hosts }).(pulumi.StringArrayOutput)
 }
@@ -21775,7 +21775,7 @@ func (o HostRuleArrayOutput) Index(i pulumi.IntInput) HostRuleOutput {
 type HostRuleResponse struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
-	// The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or .. * based matching is not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or .. * based matching is not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 	Hosts []string `pulumi:"hosts"`
 	// The name of the PathMatcher to use to match the path portion of the URL if the hostRule matches the URL's host portion.
 	PathMatcher string `pulumi:"pathMatcher"`
@@ -21796,7 +21796,7 @@ type HostRuleResponseInput interface {
 type HostRuleResponseArgs struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringInput `pulumi:"description"`
-	// The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or .. * based matching is not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or .. * based matching is not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 	Hosts pulumi.StringArrayInput `pulumi:"hosts"`
 	// The name of the PathMatcher to use to match the path portion of the URL if the hostRule matches the URL's host portion.
 	PathMatcher pulumi.StringInput `pulumi:"pathMatcher"`
@@ -21859,7 +21859,7 @@ func (o HostRuleResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v HostRuleResponse) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or .. * based matching is not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or .. * based matching is not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 func (o HostRuleResponseOutput) Hosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v HostRuleResponse) []string { return v.Hosts }).(pulumi.StringArrayOutput)
 }
@@ -21891,9 +21891,9 @@ func (o HostRuleResponseArrayOutput) Index(i pulumi.IntInput) HostRuleResponseOu
 
 // Specification for how requests are aborted as part of fault injection.
 type HttpFaultAbort struct {
-	// The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive. For gRPC protocol, the gRPC status code is mapped to HTTP status code according to this mapping table. HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK status is currently not supported by Traffic Director.
+	// The HTTP status code used to abort the request. The value must be from 200 to 599 inclusive. For gRPC protocol, the gRPC status code is mapped to HTTP status code according to this mapping table. HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK status is currently not supported by Traffic Director.
 	HttpStatus *int `pulumi:"httpStatus"`
-	// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
+	// The percentage of traffic for connections, operations, or requests that is aborted as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
 	Percentage *float64 `pulumi:"percentage"`
 }
 
@@ -21910,9 +21910,9 @@ type HttpFaultAbortInput interface {
 
 // Specification for how requests are aborted as part of fault injection.
 type HttpFaultAbortArgs struct {
-	// The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive. For gRPC protocol, the gRPC status code is mapped to HTTP status code according to this mapping table. HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK status is currently not supported by Traffic Director.
+	// The HTTP status code used to abort the request. The value must be from 200 to 599 inclusive. For gRPC protocol, the gRPC status code is mapped to HTTP status code according to this mapping table. HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK status is currently not supported by Traffic Director.
 	HttpStatus pulumi.IntPtrInput `pulumi:"httpStatus"`
-	// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
+	// The percentage of traffic for connections, operations, or requests that is aborted as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
 	Percentage pulumi.Float64PtrInput `pulumi:"percentage"`
 }
 
@@ -21994,12 +21994,12 @@ func (o HttpFaultAbortOutput) ToHttpFaultAbortPtrOutputWithContext(ctx context.C
 	}).(HttpFaultAbortPtrOutput)
 }
 
-// The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive. For gRPC protocol, the gRPC status code is mapped to HTTP status code according to this mapping table. HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK status is currently not supported by Traffic Director.
+// The HTTP status code used to abort the request. The value must be from 200 to 599 inclusive. For gRPC protocol, the gRPC status code is mapped to HTTP status code according to this mapping table. HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK status is currently not supported by Traffic Director.
 func (o HttpFaultAbortOutput) HttpStatus() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HttpFaultAbort) *int { return v.HttpStatus }).(pulumi.IntPtrOutput)
 }
 
-// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
+// The percentage of traffic for connections, operations, or requests that is aborted as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
 func (o HttpFaultAbortOutput) Percentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v HttpFaultAbort) *float64 { return v.Percentage }).(pulumi.Float64PtrOutput)
 }
@@ -22028,7 +22028,7 @@ func (o HttpFaultAbortPtrOutput) Elem() HttpFaultAbortOutput {
 	}).(HttpFaultAbortOutput)
 }
 
-// The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive. For gRPC protocol, the gRPC status code is mapped to HTTP status code according to this mapping table. HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK status is currently not supported by Traffic Director.
+// The HTTP status code used to abort the request. The value must be from 200 to 599 inclusive. For gRPC protocol, the gRPC status code is mapped to HTTP status code according to this mapping table. HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK status is currently not supported by Traffic Director.
 func (o HttpFaultAbortPtrOutput) HttpStatus() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HttpFaultAbort) *int {
 		if v == nil {
@@ -22038,7 +22038,7 @@ func (o HttpFaultAbortPtrOutput) HttpStatus() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
+// The percentage of traffic for connections, operations, or requests that is aborted as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
 func (o HttpFaultAbortPtrOutput) Percentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *HttpFaultAbort) *float64 {
 		if v == nil {
@@ -22050,9 +22050,9 @@ func (o HttpFaultAbortPtrOutput) Percentage() pulumi.Float64PtrOutput {
 
 // Specification for how requests are aborted as part of fault injection.
 type HttpFaultAbortResponse struct {
-	// The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive. For gRPC protocol, the gRPC status code is mapped to HTTP status code according to this mapping table. HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK status is currently not supported by Traffic Director.
+	// The HTTP status code used to abort the request. The value must be from 200 to 599 inclusive. For gRPC protocol, the gRPC status code is mapped to HTTP status code according to this mapping table. HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK status is currently not supported by Traffic Director.
 	HttpStatus int `pulumi:"httpStatus"`
-	// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
+	// The percentage of traffic for connections, operations, or requests that is aborted as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
 	Percentage float64 `pulumi:"percentage"`
 }
 
@@ -22069,9 +22069,9 @@ type HttpFaultAbortResponseInput interface {
 
 // Specification for how requests are aborted as part of fault injection.
 type HttpFaultAbortResponseArgs struct {
-	// The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive. For gRPC protocol, the gRPC status code is mapped to HTTP status code according to this mapping table. HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK status is currently not supported by Traffic Director.
+	// The HTTP status code used to abort the request. The value must be from 200 to 599 inclusive. For gRPC protocol, the gRPC status code is mapped to HTTP status code according to this mapping table. HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK status is currently not supported by Traffic Director.
 	HttpStatus pulumi.IntInput `pulumi:"httpStatus"`
-	// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
+	// The percentage of traffic for connections, operations, or requests that is aborted as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
 	Percentage pulumi.Float64Input `pulumi:"percentage"`
 }
 
@@ -22153,12 +22153,12 @@ func (o HttpFaultAbortResponseOutput) ToHttpFaultAbortResponsePtrOutputWithConte
 	}).(HttpFaultAbortResponsePtrOutput)
 }
 
-// The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive. For gRPC protocol, the gRPC status code is mapped to HTTP status code according to this mapping table. HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK status is currently not supported by Traffic Director.
+// The HTTP status code used to abort the request. The value must be from 200 to 599 inclusive. For gRPC protocol, the gRPC status code is mapped to HTTP status code according to this mapping table. HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK status is currently not supported by Traffic Director.
 func (o HttpFaultAbortResponseOutput) HttpStatus() pulumi.IntOutput {
 	return o.ApplyT(func(v HttpFaultAbortResponse) int { return v.HttpStatus }).(pulumi.IntOutput)
 }
 
-// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
+// The percentage of traffic for connections, operations, or requests that is aborted as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
 func (o HttpFaultAbortResponseOutput) Percentage() pulumi.Float64Output {
 	return o.ApplyT(func(v HttpFaultAbortResponse) float64 { return v.Percentage }).(pulumi.Float64Output)
 }
@@ -22187,7 +22187,7 @@ func (o HttpFaultAbortResponsePtrOutput) Elem() HttpFaultAbortResponseOutput {
 	}).(HttpFaultAbortResponseOutput)
 }
 
-// The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive. For gRPC protocol, the gRPC status code is mapped to HTTP status code according to this mapping table. HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK status is currently not supported by Traffic Director.
+// The HTTP status code used to abort the request. The value must be from 200 to 599 inclusive. For gRPC protocol, the gRPC status code is mapped to HTTP status code according to this mapping table. HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK status is currently not supported by Traffic Director.
 func (o HttpFaultAbortResponsePtrOutput) HttpStatus() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HttpFaultAbortResponse) *int {
 		if v == nil {
@@ -22197,7 +22197,7 @@ func (o HttpFaultAbortResponsePtrOutput) HttpStatus() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
+// The percentage of traffic for connections, operations, or requests that is aborted as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
 func (o HttpFaultAbortResponsePtrOutput) Percentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *HttpFaultAbortResponse) *float64 {
 		if v == nil {
@@ -22207,11 +22207,11 @@ func (o HttpFaultAbortResponsePtrOutput) Percentage() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Specifies the delay introduced by Loadbalancer before forwarding the request to the backend service as part of fault injection.
+// Specifies the delay introduced by the load balancer before forwarding the request to the backend service as part of fault injection.
 type HttpFaultDelay struct {
 	// Specifies the value of the fixed delay interval.
 	FixedDelay *Duration `pulumi:"fixedDelay"`
-	// The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
+	// The percentage of traffic for connections, operations, or requests for which a delay is introduced as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
 	Percentage *float64 `pulumi:"percentage"`
 }
 
@@ -22226,11 +22226,11 @@ type HttpFaultDelayInput interface {
 	ToHttpFaultDelayOutputWithContext(context.Context) HttpFaultDelayOutput
 }
 
-// Specifies the delay introduced by Loadbalancer before forwarding the request to the backend service as part of fault injection.
+// Specifies the delay introduced by the load balancer before forwarding the request to the backend service as part of fault injection.
 type HttpFaultDelayArgs struct {
 	// Specifies the value of the fixed delay interval.
 	FixedDelay DurationPtrInput `pulumi:"fixedDelay"`
-	// The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
+	// The percentage of traffic for connections, operations, or requests for which a delay is introduced as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
 	Percentage pulumi.Float64PtrInput `pulumi:"percentage"`
 }
 
@@ -22287,7 +22287,7 @@ func (i *httpFaultDelayPtrType) ToHttpFaultDelayPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(HttpFaultDelayPtrOutput)
 }
 
-// Specifies the delay introduced by Loadbalancer before forwarding the request to the backend service as part of fault injection.
+// Specifies the delay introduced by the load balancer before forwarding the request to the backend service as part of fault injection.
 type HttpFaultDelayOutput struct{ *pulumi.OutputState }
 
 func (HttpFaultDelayOutput) ElementType() reflect.Type {
@@ -22317,7 +22317,7 @@ func (o HttpFaultDelayOutput) FixedDelay() DurationPtrOutput {
 	return o.ApplyT(func(v HttpFaultDelay) *Duration { return v.FixedDelay }).(DurationPtrOutput)
 }
 
-// The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
+// The percentage of traffic for connections, operations, or requests for which a delay is introduced as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
 func (o HttpFaultDelayOutput) Percentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v HttpFaultDelay) *float64 { return v.Percentage }).(pulumi.Float64PtrOutput)
 }
@@ -22356,7 +22356,7 @@ func (o HttpFaultDelayPtrOutput) FixedDelay() DurationPtrOutput {
 	}).(DurationPtrOutput)
 }
 
-// The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
+// The percentage of traffic for connections, operations, or requests for which a delay is introduced as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
 func (o HttpFaultDelayPtrOutput) Percentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *HttpFaultDelay) *float64 {
 		if v == nil {
@@ -22366,11 +22366,11 @@ func (o HttpFaultDelayPtrOutput) Percentage() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Specifies the delay introduced by Loadbalancer before forwarding the request to the backend service as part of fault injection.
+// Specifies the delay introduced by the load balancer before forwarding the request to the backend service as part of fault injection.
 type HttpFaultDelayResponse struct {
 	// Specifies the value of the fixed delay interval.
 	FixedDelay DurationResponse `pulumi:"fixedDelay"`
-	// The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
+	// The percentage of traffic for connections, operations, or requests for which a delay is introduced as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
 	Percentage float64 `pulumi:"percentage"`
 }
 
@@ -22385,11 +22385,11 @@ type HttpFaultDelayResponseInput interface {
 	ToHttpFaultDelayResponseOutputWithContext(context.Context) HttpFaultDelayResponseOutput
 }
 
-// Specifies the delay introduced by Loadbalancer before forwarding the request to the backend service as part of fault injection.
+// Specifies the delay introduced by the load balancer before forwarding the request to the backend service as part of fault injection.
 type HttpFaultDelayResponseArgs struct {
 	// Specifies the value of the fixed delay interval.
 	FixedDelay DurationResponseInput `pulumi:"fixedDelay"`
-	// The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
+	// The percentage of traffic for connections, operations, or requests for which a delay is introduced as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
 	Percentage pulumi.Float64Input `pulumi:"percentage"`
 }
 
@@ -22446,7 +22446,7 @@ func (i *httpFaultDelayResponsePtrType) ToHttpFaultDelayResponsePtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(HttpFaultDelayResponsePtrOutput)
 }
 
-// Specifies the delay introduced by Loadbalancer before forwarding the request to the backend service as part of fault injection.
+// Specifies the delay introduced by the load balancer before forwarding the request to the backend service as part of fault injection.
 type HttpFaultDelayResponseOutput struct{ *pulumi.OutputState }
 
 func (HttpFaultDelayResponseOutput) ElementType() reflect.Type {
@@ -22476,7 +22476,7 @@ func (o HttpFaultDelayResponseOutput) FixedDelay() DurationResponseOutput {
 	return o.ApplyT(func(v HttpFaultDelayResponse) DurationResponse { return v.FixedDelay }).(DurationResponseOutput)
 }
 
-// The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
+// The percentage of traffic for connections, operations, or requests for which a delay is introduced as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
 func (o HttpFaultDelayResponseOutput) Percentage() pulumi.Float64Output {
 	return o.ApplyT(func(v HttpFaultDelayResponse) float64 { return v.Percentage }).(pulumi.Float64Output)
 }
@@ -22515,7 +22515,7 @@ func (o HttpFaultDelayResponsePtrOutput) FixedDelay() DurationResponsePtrOutput 
 	}).(DurationResponsePtrOutput)
 }
 
-// The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
+// The percentage of traffic for connections, operations, or requests for which a delay is introduced as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
 func (o HttpFaultDelayResponsePtrOutput) Percentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *HttpFaultDelayResponse) *float64 {
 		if v == nil {
@@ -22525,7 +22525,7 @@ func (o HttpFaultDelayResponsePtrOutput) Percentage() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests.
+// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by the load balancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
 type HttpFaultInjection struct {
 	// The specification for how client requests are aborted as part of fault injection.
 	Abort *HttpFaultAbort `pulumi:"abort"`
@@ -22544,7 +22544,7 @@ type HttpFaultInjectionInput interface {
 	ToHttpFaultInjectionOutputWithContext(context.Context) HttpFaultInjectionOutput
 }
 
-// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests.
+// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by the load balancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
 type HttpFaultInjectionArgs struct {
 	// The specification for how client requests are aborted as part of fault injection.
 	Abort HttpFaultAbortPtrInput `pulumi:"abort"`
@@ -22605,7 +22605,7 @@ func (i *httpFaultInjectionPtrType) ToHttpFaultInjectionPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(HttpFaultInjectionPtrOutput)
 }
 
-// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests.
+// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by the load balancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
 type HttpFaultInjectionOutput struct{ *pulumi.OutputState }
 
 func (HttpFaultInjectionOutput) ElementType() reflect.Type {
@@ -22684,7 +22684,7 @@ func (o HttpFaultInjectionPtrOutput) Delay() HttpFaultDelayPtrOutput {
 	}).(HttpFaultDelayPtrOutput)
 }
 
-// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests.
+// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by the load balancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
 type HttpFaultInjectionResponse struct {
 	// The specification for how client requests are aborted as part of fault injection.
 	Abort HttpFaultAbortResponse `pulumi:"abort"`
@@ -22703,7 +22703,7 @@ type HttpFaultInjectionResponseInput interface {
 	ToHttpFaultInjectionResponseOutputWithContext(context.Context) HttpFaultInjectionResponseOutput
 }
 
-// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests.
+// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by the load balancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
 type HttpFaultInjectionResponseArgs struct {
 	// The specification for how client requests are aborted as part of fault injection.
 	Abort HttpFaultAbortResponseInput `pulumi:"abort"`
@@ -22764,7 +22764,7 @@ func (i *httpFaultInjectionResponsePtrType) ToHttpFaultInjectionResponsePtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(HttpFaultInjectionResponsePtrOutput)
 }
 
-// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests.
+// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by the load balancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
 type HttpFaultInjectionResponseOutput struct{ *pulumi.OutputState }
 
 func (HttpFaultInjectionResponseOutput) ElementType() reflect.Type {
@@ -23081,13 +23081,13 @@ func (o HttpFilterConfigResponseArrayOutput) Index(i pulumi.IntInput) HttpFilter
 
 // The request and response header transformations that take effect before the request is passed along to the selected backendService.
 type HttpHeaderAction struct {
-	// Headers to add to a matching request prior to forwarding the request to the backendService.
+	// Headers to add to a matching request before forwarding the request to the backendService.
 	RequestHeadersToAdd []HttpHeaderOption `pulumi:"requestHeadersToAdd"`
-	// A list of header names for headers that need to be removed from the request prior to forwarding the request to the backendService.
+	// A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
 	RequestHeadersToRemove []string `pulumi:"requestHeadersToRemove"`
-	// Headers to add the response prior to sending the response back to the client.
+	// Headers to add the response before sending the response back to the client.
 	ResponseHeadersToAdd []HttpHeaderOption `pulumi:"responseHeadersToAdd"`
-	// A list of header names for headers that need to be removed from the response prior to sending the response back to the client.
+	// A list of header names for headers that need to be removed from the response before sending the response back to the client.
 	ResponseHeadersToRemove []string `pulumi:"responseHeadersToRemove"`
 }
 
@@ -23104,13 +23104,13 @@ type HttpHeaderActionInput interface {
 
 // The request and response header transformations that take effect before the request is passed along to the selected backendService.
 type HttpHeaderActionArgs struct {
-	// Headers to add to a matching request prior to forwarding the request to the backendService.
+	// Headers to add to a matching request before forwarding the request to the backendService.
 	RequestHeadersToAdd HttpHeaderOptionArrayInput `pulumi:"requestHeadersToAdd"`
-	// A list of header names for headers that need to be removed from the request prior to forwarding the request to the backendService.
+	// A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
 	RequestHeadersToRemove pulumi.StringArrayInput `pulumi:"requestHeadersToRemove"`
-	// Headers to add the response prior to sending the response back to the client.
+	// Headers to add the response before sending the response back to the client.
 	ResponseHeadersToAdd HttpHeaderOptionArrayInput `pulumi:"responseHeadersToAdd"`
-	// A list of header names for headers that need to be removed from the response prior to sending the response back to the client.
+	// A list of header names for headers that need to be removed from the response before sending the response back to the client.
 	ResponseHeadersToRemove pulumi.StringArrayInput `pulumi:"responseHeadersToRemove"`
 }
 
@@ -23192,22 +23192,22 @@ func (o HttpHeaderActionOutput) ToHttpHeaderActionPtrOutputWithContext(ctx conte
 	}).(HttpHeaderActionPtrOutput)
 }
 
-// Headers to add to a matching request prior to forwarding the request to the backendService.
+// Headers to add to a matching request before forwarding the request to the backendService.
 func (o HttpHeaderActionOutput) RequestHeadersToAdd() HttpHeaderOptionArrayOutput {
 	return o.ApplyT(func(v HttpHeaderAction) []HttpHeaderOption { return v.RequestHeadersToAdd }).(HttpHeaderOptionArrayOutput)
 }
 
-// A list of header names for headers that need to be removed from the request prior to forwarding the request to the backendService.
+// A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
 func (o HttpHeaderActionOutput) RequestHeadersToRemove() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v HttpHeaderAction) []string { return v.RequestHeadersToRemove }).(pulumi.StringArrayOutput)
 }
 
-// Headers to add the response prior to sending the response back to the client.
+// Headers to add the response before sending the response back to the client.
 func (o HttpHeaderActionOutput) ResponseHeadersToAdd() HttpHeaderOptionArrayOutput {
 	return o.ApplyT(func(v HttpHeaderAction) []HttpHeaderOption { return v.ResponseHeadersToAdd }).(HttpHeaderOptionArrayOutput)
 }
 
-// A list of header names for headers that need to be removed from the response prior to sending the response back to the client.
+// A list of header names for headers that need to be removed from the response before sending the response back to the client.
 func (o HttpHeaderActionOutput) ResponseHeadersToRemove() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v HttpHeaderAction) []string { return v.ResponseHeadersToRemove }).(pulumi.StringArrayOutput)
 }
@@ -23236,7 +23236,7 @@ func (o HttpHeaderActionPtrOutput) Elem() HttpHeaderActionOutput {
 	}).(HttpHeaderActionOutput)
 }
 
-// Headers to add to a matching request prior to forwarding the request to the backendService.
+// Headers to add to a matching request before forwarding the request to the backendService.
 func (o HttpHeaderActionPtrOutput) RequestHeadersToAdd() HttpHeaderOptionArrayOutput {
 	return o.ApplyT(func(v *HttpHeaderAction) []HttpHeaderOption {
 		if v == nil {
@@ -23246,7 +23246,7 @@ func (o HttpHeaderActionPtrOutput) RequestHeadersToAdd() HttpHeaderOptionArrayOu
 	}).(HttpHeaderOptionArrayOutput)
 }
 
-// A list of header names for headers that need to be removed from the request prior to forwarding the request to the backendService.
+// A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
 func (o HttpHeaderActionPtrOutput) RequestHeadersToRemove() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HttpHeaderAction) []string {
 		if v == nil {
@@ -23256,7 +23256,7 @@ func (o HttpHeaderActionPtrOutput) RequestHeadersToRemove() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
-// Headers to add the response prior to sending the response back to the client.
+// Headers to add the response before sending the response back to the client.
 func (o HttpHeaderActionPtrOutput) ResponseHeadersToAdd() HttpHeaderOptionArrayOutput {
 	return o.ApplyT(func(v *HttpHeaderAction) []HttpHeaderOption {
 		if v == nil {
@@ -23266,7 +23266,7 @@ func (o HttpHeaderActionPtrOutput) ResponseHeadersToAdd() HttpHeaderOptionArrayO
 	}).(HttpHeaderOptionArrayOutput)
 }
 
-// A list of header names for headers that need to be removed from the response prior to sending the response back to the client.
+// A list of header names for headers that need to be removed from the response before sending the response back to the client.
 func (o HttpHeaderActionPtrOutput) ResponseHeadersToRemove() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HttpHeaderAction) []string {
 		if v == nil {
@@ -23278,13 +23278,13 @@ func (o HttpHeaderActionPtrOutput) ResponseHeadersToRemove() pulumi.StringArrayO
 
 // The request and response header transformations that take effect before the request is passed along to the selected backendService.
 type HttpHeaderActionResponse struct {
-	// Headers to add to a matching request prior to forwarding the request to the backendService.
+	// Headers to add to a matching request before forwarding the request to the backendService.
 	RequestHeadersToAdd []HttpHeaderOptionResponse `pulumi:"requestHeadersToAdd"`
-	// A list of header names for headers that need to be removed from the request prior to forwarding the request to the backendService.
+	// A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
 	RequestHeadersToRemove []string `pulumi:"requestHeadersToRemove"`
-	// Headers to add the response prior to sending the response back to the client.
+	// Headers to add the response before sending the response back to the client.
 	ResponseHeadersToAdd []HttpHeaderOptionResponse `pulumi:"responseHeadersToAdd"`
-	// A list of header names for headers that need to be removed from the response prior to sending the response back to the client.
+	// A list of header names for headers that need to be removed from the response before sending the response back to the client.
 	ResponseHeadersToRemove []string `pulumi:"responseHeadersToRemove"`
 }
 
@@ -23301,13 +23301,13 @@ type HttpHeaderActionResponseInput interface {
 
 // The request and response header transformations that take effect before the request is passed along to the selected backendService.
 type HttpHeaderActionResponseArgs struct {
-	// Headers to add to a matching request prior to forwarding the request to the backendService.
+	// Headers to add to a matching request before forwarding the request to the backendService.
 	RequestHeadersToAdd HttpHeaderOptionResponseArrayInput `pulumi:"requestHeadersToAdd"`
-	// A list of header names for headers that need to be removed from the request prior to forwarding the request to the backendService.
+	// A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
 	RequestHeadersToRemove pulumi.StringArrayInput `pulumi:"requestHeadersToRemove"`
-	// Headers to add the response prior to sending the response back to the client.
+	// Headers to add the response before sending the response back to the client.
 	ResponseHeadersToAdd HttpHeaderOptionResponseArrayInput `pulumi:"responseHeadersToAdd"`
-	// A list of header names for headers that need to be removed from the response prior to sending the response back to the client.
+	// A list of header names for headers that need to be removed from the response before sending the response back to the client.
 	ResponseHeadersToRemove pulumi.StringArrayInput `pulumi:"responseHeadersToRemove"`
 }
 
@@ -23389,22 +23389,22 @@ func (o HttpHeaderActionResponseOutput) ToHttpHeaderActionResponsePtrOutputWithC
 	}).(HttpHeaderActionResponsePtrOutput)
 }
 
-// Headers to add to a matching request prior to forwarding the request to the backendService.
+// Headers to add to a matching request before forwarding the request to the backendService.
 func (o HttpHeaderActionResponseOutput) RequestHeadersToAdd() HttpHeaderOptionResponseArrayOutput {
 	return o.ApplyT(func(v HttpHeaderActionResponse) []HttpHeaderOptionResponse { return v.RequestHeadersToAdd }).(HttpHeaderOptionResponseArrayOutput)
 }
 
-// A list of header names for headers that need to be removed from the request prior to forwarding the request to the backendService.
+// A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
 func (o HttpHeaderActionResponseOutput) RequestHeadersToRemove() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v HttpHeaderActionResponse) []string { return v.RequestHeadersToRemove }).(pulumi.StringArrayOutput)
 }
 
-// Headers to add the response prior to sending the response back to the client.
+// Headers to add the response before sending the response back to the client.
 func (o HttpHeaderActionResponseOutput) ResponseHeadersToAdd() HttpHeaderOptionResponseArrayOutput {
 	return o.ApplyT(func(v HttpHeaderActionResponse) []HttpHeaderOptionResponse { return v.ResponseHeadersToAdd }).(HttpHeaderOptionResponseArrayOutput)
 }
 
-// A list of header names for headers that need to be removed from the response prior to sending the response back to the client.
+// A list of header names for headers that need to be removed from the response before sending the response back to the client.
 func (o HttpHeaderActionResponseOutput) ResponseHeadersToRemove() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v HttpHeaderActionResponse) []string { return v.ResponseHeadersToRemove }).(pulumi.StringArrayOutput)
 }
@@ -23433,7 +23433,7 @@ func (o HttpHeaderActionResponsePtrOutput) Elem() HttpHeaderActionResponseOutput
 	}).(HttpHeaderActionResponseOutput)
 }
 
-// Headers to add to a matching request prior to forwarding the request to the backendService.
+// Headers to add to a matching request before forwarding the request to the backendService.
 func (o HttpHeaderActionResponsePtrOutput) RequestHeadersToAdd() HttpHeaderOptionResponseArrayOutput {
 	return o.ApplyT(func(v *HttpHeaderActionResponse) []HttpHeaderOptionResponse {
 		if v == nil {
@@ -23443,7 +23443,7 @@ func (o HttpHeaderActionResponsePtrOutput) RequestHeadersToAdd() HttpHeaderOptio
 	}).(HttpHeaderOptionResponseArrayOutput)
 }
 
-// A list of header names for headers that need to be removed from the request prior to forwarding the request to the backendService.
+// A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
 func (o HttpHeaderActionResponsePtrOutput) RequestHeadersToRemove() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HttpHeaderActionResponse) []string {
 		if v == nil {
@@ -23453,7 +23453,7 @@ func (o HttpHeaderActionResponsePtrOutput) RequestHeadersToRemove() pulumi.Strin
 	}).(pulumi.StringArrayOutput)
 }
 
-// Headers to add the response prior to sending the response back to the client.
+// Headers to add the response before sending the response back to the client.
 func (o HttpHeaderActionResponsePtrOutput) ResponseHeadersToAdd() HttpHeaderOptionResponseArrayOutput {
 	return o.ApplyT(func(v *HttpHeaderActionResponse) []HttpHeaderOptionResponse {
 		if v == nil {
@@ -23463,7 +23463,7 @@ func (o HttpHeaderActionResponsePtrOutput) ResponseHeadersToAdd() HttpHeaderOpti
 	}).(HttpHeaderOptionResponseArrayOutput)
 }
 
-// A list of header names for headers that need to be removed from the response prior to sending the response back to the client.
+// A list of header names for headers that need to be removed from the response before sending the response back to the client.
 func (o HttpHeaderActionResponsePtrOutput) ResponseHeadersToRemove() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HttpHeaderActionResponse) []string {
 		if v == nil {
@@ -23477,17 +23477,17 @@ func (o HttpHeaderActionResponsePtrOutput) ResponseHeadersToRemove() pulumi.Stri
 type HttpHeaderMatch struct {
 	// The value should exactly match contents of exactMatch. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
 	ExactMatch *string `pulumi:"exactMatch"`
-	// The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method". When the URL map is bound to target gRPC proxy that has validateForProxyless field set to true, only non-binary user-specified custom metadata and the `content-type` header are supported. The following transport-level headers cannot be used in header matching rules: `:authority`, `:method`, `:path`, `:scheme`, `user-agent`, `accept-encoding`, `content-encoding`, `grpc-accept-encoding`, `grpc-encoding`, `grpc-previous-rpc-attempts`, `grpc-tags-bin`, `grpc-timeout` and `grpc-trace-bin.
+	// The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method". When the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true, only non-binary user-specified custom metadata and the `content-type` header are supported. The following transport-level headers cannot be used in header matching rules: `:authority`, `:method`, `:path`, `:scheme`, `user-agent`, `accept-encoding`, `content-encoding`, `grpc-accept-encoding`, `grpc-encoding`, `grpc-previous-rpc-attempts`, `grpc-tags-bin`, `grpc-timeout` and `grpc-trace-bin`.
 	HeaderName *string `pulumi:"headerName"`
-	// If set to false, the headerMatch is considered a match if the match criteria above are met. If set to true, the headerMatch is considered a match if the match criteria above are NOT met. The default setting is false.
+	// If set to false, the headerMatch is considered a match if the preceding match criteria are met. If set to true, the headerMatch is considered a match if the preceding match criteria are NOT met. The default setting is false.
 	InvertMatch *bool `pulumi:"invertMatch"`
 	// The value of the header must start with the contents of prefixMatch. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
 	PrefixMatch *string `pulumi:"prefixMatch"`
 	// A header with the contents of headerName must exist. The match takes place whether or not the request's header has a value. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
 	PresentMatch *bool `pulumi:"presentMatch"`
-	// The header value must be an integer and its value must be in the range specified in rangeMatch. If the header does not contain an integer, number or is empty, the match fails. For example for a range [-5, 0] - -3 will match. - 0 will not match. - 0.25 will not match. - -3someString will not match. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Note that rangeMatch is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL.
+	// The header value must be an integer and its value must be in the range specified in rangeMatch. If the header does not contain an integer, number or is empty, the match fails. For example for a range [-5, 0] - -3 will match. - 0 will not match. - 0.25 will not match. - -3someString will not match. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. rangeMatch is not supported for load balancers that have loadBalancingScheme set to EXTERNAL.
 	RangeMatch *Int64RangeMatch `pulumi:"rangeMatch"`
-	// The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see: github.com/google/re2/wiki/Syntax For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// The value of the header must match the regular expression specified in regexMatch. For more information about regular expression syntax, see Syntax. For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	RegexMatch *string `pulumi:"regexMatch"`
 	// The value of the header must end with the contents of suffixMatch. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
 	SuffixMatch *string `pulumi:"suffixMatch"`
@@ -23508,17 +23508,17 @@ type HttpHeaderMatchInput interface {
 type HttpHeaderMatchArgs struct {
 	// The value should exactly match contents of exactMatch. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
 	ExactMatch pulumi.StringPtrInput `pulumi:"exactMatch"`
-	// The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method". When the URL map is bound to target gRPC proxy that has validateForProxyless field set to true, only non-binary user-specified custom metadata and the `content-type` header are supported. The following transport-level headers cannot be used in header matching rules: `:authority`, `:method`, `:path`, `:scheme`, `user-agent`, `accept-encoding`, `content-encoding`, `grpc-accept-encoding`, `grpc-encoding`, `grpc-previous-rpc-attempts`, `grpc-tags-bin`, `grpc-timeout` and `grpc-trace-bin.
+	// The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method". When the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true, only non-binary user-specified custom metadata and the `content-type` header are supported. The following transport-level headers cannot be used in header matching rules: `:authority`, `:method`, `:path`, `:scheme`, `user-agent`, `accept-encoding`, `content-encoding`, `grpc-accept-encoding`, `grpc-encoding`, `grpc-previous-rpc-attempts`, `grpc-tags-bin`, `grpc-timeout` and `grpc-trace-bin`.
 	HeaderName pulumi.StringPtrInput `pulumi:"headerName"`
-	// If set to false, the headerMatch is considered a match if the match criteria above are met. If set to true, the headerMatch is considered a match if the match criteria above are NOT met. The default setting is false.
+	// If set to false, the headerMatch is considered a match if the preceding match criteria are met. If set to true, the headerMatch is considered a match if the preceding match criteria are NOT met. The default setting is false.
 	InvertMatch pulumi.BoolPtrInput `pulumi:"invertMatch"`
 	// The value of the header must start with the contents of prefixMatch. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
 	PrefixMatch pulumi.StringPtrInput `pulumi:"prefixMatch"`
 	// A header with the contents of headerName must exist. The match takes place whether or not the request's header has a value. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
 	PresentMatch pulumi.BoolPtrInput `pulumi:"presentMatch"`
-	// The header value must be an integer and its value must be in the range specified in rangeMatch. If the header does not contain an integer, number or is empty, the match fails. For example for a range [-5, 0] - -3 will match. - 0 will not match. - 0.25 will not match. - -3someString will not match. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Note that rangeMatch is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL.
+	// The header value must be an integer and its value must be in the range specified in rangeMatch. If the header does not contain an integer, number or is empty, the match fails. For example for a range [-5, 0] - -3 will match. - 0 will not match. - 0.25 will not match. - -3someString will not match. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. rangeMatch is not supported for load balancers that have loadBalancingScheme set to EXTERNAL.
 	RangeMatch Int64RangeMatchPtrInput `pulumi:"rangeMatch"`
-	// The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see: github.com/google/re2/wiki/Syntax For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// The value of the header must match the regular expression specified in regexMatch. For more information about regular expression syntax, see Syntax. For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	RegexMatch pulumi.StringPtrInput `pulumi:"regexMatch"`
 	// The value of the header must end with the contents of suffixMatch. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
 	SuffixMatch pulumi.StringPtrInput `pulumi:"suffixMatch"`
@@ -23581,12 +23581,12 @@ func (o HttpHeaderMatchOutput) ExactMatch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpHeaderMatch) *string { return v.ExactMatch }).(pulumi.StringPtrOutput)
 }
 
-// The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method". When the URL map is bound to target gRPC proxy that has validateForProxyless field set to true, only non-binary user-specified custom metadata and the `content-type` header are supported. The following transport-level headers cannot be used in header matching rules: `:authority`, `:method`, `:path`, `:scheme`, `user-agent`, `accept-encoding`, `content-encoding`, `grpc-accept-encoding`, `grpc-encoding`, `grpc-previous-rpc-attempts`, `grpc-tags-bin`, `grpc-timeout` and `grpc-trace-bin.
+// The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method". When the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true, only non-binary user-specified custom metadata and the `content-type` header are supported. The following transport-level headers cannot be used in header matching rules: `:authority`, `:method`, `:path`, `:scheme`, `user-agent`, `accept-encoding`, `content-encoding`, `grpc-accept-encoding`, `grpc-encoding`, `grpc-previous-rpc-attempts`, `grpc-tags-bin`, `grpc-timeout` and `grpc-trace-bin`.
 func (o HttpHeaderMatchOutput) HeaderName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpHeaderMatch) *string { return v.HeaderName }).(pulumi.StringPtrOutput)
 }
 
-// If set to false, the headerMatch is considered a match if the match criteria above are met. If set to true, the headerMatch is considered a match if the match criteria above are NOT met. The default setting is false.
+// If set to false, the headerMatch is considered a match if the preceding match criteria are met. If set to true, the headerMatch is considered a match if the preceding match criteria are NOT met. The default setting is false.
 func (o HttpHeaderMatchOutput) InvertMatch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v HttpHeaderMatch) *bool { return v.InvertMatch }).(pulumi.BoolPtrOutput)
 }
@@ -23601,12 +23601,12 @@ func (o HttpHeaderMatchOutput) PresentMatch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v HttpHeaderMatch) *bool { return v.PresentMatch }).(pulumi.BoolPtrOutput)
 }
 
-// The header value must be an integer and its value must be in the range specified in rangeMatch. If the header does not contain an integer, number or is empty, the match fails. For example for a range [-5, 0] - -3 will match. - 0 will not match. - 0.25 will not match. - -3someString will not match. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Note that rangeMatch is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL.
+// The header value must be an integer and its value must be in the range specified in rangeMatch. If the header does not contain an integer, number or is empty, the match fails. For example for a range [-5, 0] - -3 will match. - 0 will not match. - 0.25 will not match. - -3someString will not match. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. rangeMatch is not supported for load balancers that have loadBalancingScheme set to EXTERNAL.
 func (o HttpHeaderMatchOutput) RangeMatch() Int64RangeMatchPtrOutput {
 	return o.ApplyT(func(v HttpHeaderMatch) *Int64RangeMatch { return v.RangeMatch }).(Int64RangeMatchPtrOutput)
 }
 
-// The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see: github.com/google/re2/wiki/Syntax For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+// The value of the header must match the regular expression specified in regexMatch. For more information about regular expression syntax, see Syntax. For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 func (o HttpHeaderMatchOutput) RegexMatch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpHeaderMatch) *string { return v.RegexMatch }).(pulumi.StringPtrOutput)
 }
@@ -23640,17 +23640,17 @@ func (o HttpHeaderMatchArrayOutput) Index(i pulumi.IntInput) HttpHeaderMatchOutp
 type HttpHeaderMatchResponse struct {
 	// The value should exactly match contents of exactMatch. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
 	ExactMatch string `pulumi:"exactMatch"`
-	// The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method". When the URL map is bound to target gRPC proxy that has validateForProxyless field set to true, only non-binary user-specified custom metadata and the `content-type` header are supported. The following transport-level headers cannot be used in header matching rules: `:authority`, `:method`, `:path`, `:scheme`, `user-agent`, `accept-encoding`, `content-encoding`, `grpc-accept-encoding`, `grpc-encoding`, `grpc-previous-rpc-attempts`, `grpc-tags-bin`, `grpc-timeout` and `grpc-trace-bin.
+	// The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method". When the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true, only non-binary user-specified custom metadata and the `content-type` header are supported. The following transport-level headers cannot be used in header matching rules: `:authority`, `:method`, `:path`, `:scheme`, `user-agent`, `accept-encoding`, `content-encoding`, `grpc-accept-encoding`, `grpc-encoding`, `grpc-previous-rpc-attempts`, `grpc-tags-bin`, `grpc-timeout` and `grpc-trace-bin`.
 	HeaderName string `pulumi:"headerName"`
-	// If set to false, the headerMatch is considered a match if the match criteria above are met. If set to true, the headerMatch is considered a match if the match criteria above are NOT met. The default setting is false.
+	// If set to false, the headerMatch is considered a match if the preceding match criteria are met. If set to true, the headerMatch is considered a match if the preceding match criteria are NOT met. The default setting is false.
 	InvertMatch bool `pulumi:"invertMatch"`
 	// The value of the header must start with the contents of prefixMatch. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
 	PrefixMatch string `pulumi:"prefixMatch"`
 	// A header with the contents of headerName must exist. The match takes place whether or not the request's header has a value. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
 	PresentMatch bool `pulumi:"presentMatch"`
-	// The header value must be an integer and its value must be in the range specified in rangeMatch. If the header does not contain an integer, number or is empty, the match fails. For example for a range [-5, 0] - -3 will match. - 0 will not match. - 0.25 will not match. - -3someString will not match. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Note that rangeMatch is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL.
+	// The header value must be an integer and its value must be in the range specified in rangeMatch. If the header does not contain an integer, number or is empty, the match fails. For example for a range [-5, 0] - -3 will match. - 0 will not match. - 0.25 will not match. - -3someString will not match. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. rangeMatch is not supported for load balancers that have loadBalancingScheme set to EXTERNAL.
 	RangeMatch Int64RangeMatchResponse `pulumi:"rangeMatch"`
-	// The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see: github.com/google/re2/wiki/Syntax For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// The value of the header must match the regular expression specified in regexMatch. For more information about regular expression syntax, see Syntax. For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	RegexMatch string `pulumi:"regexMatch"`
 	// The value of the header must end with the contents of suffixMatch. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
 	SuffixMatch string `pulumi:"suffixMatch"`
@@ -23671,17 +23671,17 @@ type HttpHeaderMatchResponseInput interface {
 type HttpHeaderMatchResponseArgs struct {
 	// The value should exactly match contents of exactMatch. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
 	ExactMatch pulumi.StringInput `pulumi:"exactMatch"`
-	// The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method". When the URL map is bound to target gRPC proxy that has validateForProxyless field set to true, only non-binary user-specified custom metadata and the `content-type` header are supported. The following transport-level headers cannot be used in header matching rules: `:authority`, `:method`, `:path`, `:scheme`, `user-agent`, `accept-encoding`, `content-encoding`, `grpc-accept-encoding`, `grpc-encoding`, `grpc-previous-rpc-attempts`, `grpc-tags-bin`, `grpc-timeout` and `grpc-trace-bin.
+	// The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method". When the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true, only non-binary user-specified custom metadata and the `content-type` header are supported. The following transport-level headers cannot be used in header matching rules: `:authority`, `:method`, `:path`, `:scheme`, `user-agent`, `accept-encoding`, `content-encoding`, `grpc-accept-encoding`, `grpc-encoding`, `grpc-previous-rpc-attempts`, `grpc-tags-bin`, `grpc-timeout` and `grpc-trace-bin`.
 	HeaderName pulumi.StringInput `pulumi:"headerName"`
-	// If set to false, the headerMatch is considered a match if the match criteria above are met. If set to true, the headerMatch is considered a match if the match criteria above are NOT met. The default setting is false.
+	// If set to false, the headerMatch is considered a match if the preceding match criteria are met. If set to true, the headerMatch is considered a match if the preceding match criteria are NOT met. The default setting is false.
 	InvertMatch pulumi.BoolInput `pulumi:"invertMatch"`
 	// The value of the header must start with the contents of prefixMatch. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
 	PrefixMatch pulumi.StringInput `pulumi:"prefixMatch"`
 	// A header with the contents of headerName must exist. The match takes place whether or not the request's header has a value. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
 	PresentMatch pulumi.BoolInput `pulumi:"presentMatch"`
-	// The header value must be an integer and its value must be in the range specified in rangeMatch. If the header does not contain an integer, number or is empty, the match fails. For example for a range [-5, 0] - -3 will match. - 0 will not match. - 0.25 will not match. - -3someString will not match. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Note that rangeMatch is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL.
+	// The header value must be an integer and its value must be in the range specified in rangeMatch. If the header does not contain an integer, number or is empty, the match fails. For example for a range [-5, 0] - -3 will match. - 0 will not match. - 0.25 will not match. - -3someString will not match. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. rangeMatch is not supported for load balancers that have loadBalancingScheme set to EXTERNAL.
 	RangeMatch Int64RangeMatchResponseInput `pulumi:"rangeMatch"`
-	// The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see: github.com/google/re2/wiki/Syntax For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// The value of the header must match the regular expression specified in regexMatch. For more information about regular expression syntax, see Syntax. For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	RegexMatch pulumi.StringInput `pulumi:"regexMatch"`
 	// The value of the header must end with the contents of suffixMatch. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
 	SuffixMatch pulumi.StringInput `pulumi:"suffixMatch"`
@@ -23744,12 +23744,12 @@ func (o HttpHeaderMatchResponseOutput) ExactMatch() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpHeaderMatchResponse) string { return v.ExactMatch }).(pulumi.StringOutput)
 }
 
-// The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method". When the URL map is bound to target gRPC proxy that has validateForProxyless field set to true, only non-binary user-specified custom metadata and the `content-type` header are supported. The following transport-level headers cannot be used in header matching rules: `:authority`, `:method`, `:path`, `:scheme`, `user-agent`, `accept-encoding`, `content-encoding`, `grpc-accept-encoding`, `grpc-encoding`, `grpc-previous-rpc-attempts`, `grpc-tags-bin`, `grpc-timeout` and `grpc-trace-bin.
+// The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method". When the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true, only non-binary user-specified custom metadata and the `content-type` header are supported. The following transport-level headers cannot be used in header matching rules: `:authority`, `:method`, `:path`, `:scheme`, `user-agent`, `accept-encoding`, `content-encoding`, `grpc-accept-encoding`, `grpc-encoding`, `grpc-previous-rpc-attempts`, `grpc-tags-bin`, `grpc-timeout` and `grpc-trace-bin`.
 func (o HttpHeaderMatchResponseOutput) HeaderName() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpHeaderMatchResponse) string { return v.HeaderName }).(pulumi.StringOutput)
 }
 
-// If set to false, the headerMatch is considered a match if the match criteria above are met. If set to true, the headerMatch is considered a match if the match criteria above are NOT met. The default setting is false.
+// If set to false, the headerMatch is considered a match if the preceding match criteria are met. If set to true, the headerMatch is considered a match if the preceding match criteria are NOT met. The default setting is false.
 func (o HttpHeaderMatchResponseOutput) InvertMatch() pulumi.BoolOutput {
 	return o.ApplyT(func(v HttpHeaderMatchResponse) bool { return v.InvertMatch }).(pulumi.BoolOutput)
 }
@@ -23764,12 +23764,12 @@ func (o HttpHeaderMatchResponseOutput) PresentMatch() pulumi.BoolOutput {
 	return o.ApplyT(func(v HttpHeaderMatchResponse) bool { return v.PresentMatch }).(pulumi.BoolOutput)
 }
 
-// The header value must be an integer and its value must be in the range specified in rangeMatch. If the header does not contain an integer, number or is empty, the match fails. For example for a range [-5, 0] - -3 will match. - 0 will not match. - 0.25 will not match. - -3someString will not match. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Note that rangeMatch is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL.
+// The header value must be an integer and its value must be in the range specified in rangeMatch. If the header does not contain an integer, number or is empty, the match fails. For example for a range [-5, 0] - -3 will match. - 0 will not match. - 0.25 will not match. - -3someString will not match. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. rangeMatch is not supported for load balancers that have loadBalancingScheme set to EXTERNAL.
 func (o HttpHeaderMatchResponseOutput) RangeMatch() Int64RangeMatchResponseOutput {
 	return o.ApplyT(func(v HttpHeaderMatchResponse) Int64RangeMatchResponse { return v.RangeMatch }).(Int64RangeMatchResponseOutput)
 }
 
-// The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see: github.com/google/re2/wiki/Syntax For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+// The value of the header must match the regular expression specified in regexMatch. For more information about regular expression syntax, see Syntax. For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 func (o HttpHeaderMatchResponseOutput) RegexMatch() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpHeaderMatchResponse) string { return v.RegexMatch }).(pulumi.StringOutput)
 }
@@ -24037,13 +24037,13 @@ func (o HttpHeaderOptionResponseArrayOutput) Index(i pulumi.IntInput) HttpHeader
 
 // HttpRouteRuleMatch criteria for a request's query parameter.
 type HttpQueryParameterMatch struct {
-	// The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch. Only one of presentMatch, exactMatch or regexMatch must be set.
+	// The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch. Only one of presentMatch, exactMatch, or regexMatch must be set.
 	ExactMatch *string `pulumi:"exactMatch"`
 	// The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
 	Name *string `pulumi:"name"`
-	// Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not. Only one of presentMatch, exactMatch or regexMatch must be set.
+	// Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not. Only one of presentMatch, exactMatch, or regexMatch must be set.
 	PresentMatch *bool `pulumi:"presentMatch"`
-	// The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For the regular expression grammar, please see github.com/google/re2/wiki/Syntax Only one of presentMatch, exactMatch or regexMatch must be set. Note that regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+	// The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For more information about regular expression syntax, see Syntax. Only one of presentMatch, exactMatch, or regexMatch must be set. regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 	RegexMatch *string `pulumi:"regexMatch"`
 }
 
@@ -24060,13 +24060,13 @@ type HttpQueryParameterMatchInput interface {
 
 // HttpRouteRuleMatch criteria for a request's query parameter.
 type HttpQueryParameterMatchArgs struct {
-	// The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch. Only one of presentMatch, exactMatch or regexMatch must be set.
+	// The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch. Only one of presentMatch, exactMatch, or regexMatch must be set.
 	ExactMatch pulumi.StringPtrInput `pulumi:"exactMatch"`
 	// The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not. Only one of presentMatch, exactMatch or regexMatch must be set.
+	// Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not. Only one of presentMatch, exactMatch, or regexMatch must be set.
 	PresentMatch pulumi.BoolPtrInput `pulumi:"presentMatch"`
-	// The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For the regular expression grammar, please see github.com/google/re2/wiki/Syntax Only one of presentMatch, exactMatch or regexMatch must be set. Note that regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+	// The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For more information about regular expression syntax, see Syntax. Only one of presentMatch, exactMatch, or regexMatch must be set. regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 	RegexMatch pulumi.StringPtrInput `pulumi:"regexMatch"`
 }
 
@@ -24122,7 +24122,7 @@ func (o HttpQueryParameterMatchOutput) ToHttpQueryParameterMatchOutputWithContex
 	return o
 }
 
-// The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch. Only one of presentMatch, exactMatch or regexMatch must be set.
+// The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch. Only one of presentMatch, exactMatch, or regexMatch must be set.
 func (o HttpQueryParameterMatchOutput) ExactMatch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpQueryParameterMatch) *string { return v.ExactMatch }).(pulumi.StringPtrOutput)
 }
@@ -24132,12 +24132,12 @@ func (o HttpQueryParameterMatchOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpQueryParameterMatch) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not. Only one of presentMatch, exactMatch or regexMatch must be set.
+// Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not. Only one of presentMatch, exactMatch, or regexMatch must be set.
 func (o HttpQueryParameterMatchOutput) PresentMatch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v HttpQueryParameterMatch) *bool { return v.PresentMatch }).(pulumi.BoolPtrOutput)
 }
 
-// The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For the regular expression grammar, please see github.com/google/re2/wiki/Syntax Only one of presentMatch, exactMatch or regexMatch must be set. Note that regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+// The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For more information about regular expression syntax, see Syntax. Only one of presentMatch, exactMatch, or regexMatch must be set. regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 func (o HttpQueryParameterMatchOutput) RegexMatch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpQueryParameterMatch) *string { return v.RegexMatch }).(pulumi.StringPtrOutput)
 }
@@ -24164,13 +24164,13 @@ func (o HttpQueryParameterMatchArrayOutput) Index(i pulumi.IntInput) HttpQueryPa
 
 // HttpRouteRuleMatch criteria for a request's query parameter.
 type HttpQueryParameterMatchResponse struct {
-	// The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch. Only one of presentMatch, exactMatch or regexMatch must be set.
+	// The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch. Only one of presentMatch, exactMatch, or regexMatch must be set.
 	ExactMatch string `pulumi:"exactMatch"`
 	// The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
 	Name string `pulumi:"name"`
-	// Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not. Only one of presentMatch, exactMatch or regexMatch must be set.
+	// Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not. Only one of presentMatch, exactMatch, or regexMatch must be set.
 	PresentMatch bool `pulumi:"presentMatch"`
-	// The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For the regular expression grammar, please see github.com/google/re2/wiki/Syntax Only one of presentMatch, exactMatch or regexMatch must be set. Note that regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+	// The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For more information about regular expression syntax, see Syntax. Only one of presentMatch, exactMatch, or regexMatch must be set. regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 	RegexMatch string `pulumi:"regexMatch"`
 }
 
@@ -24187,13 +24187,13 @@ type HttpQueryParameterMatchResponseInput interface {
 
 // HttpRouteRuleMatch criteria for a request's query parameter.
 type HttpQueryParameterMatchResponseArgs struct {
-	// The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch. Only one of presentMatch, exactMatch or regexMatch must be set.
+	// The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch. Only one of presentMatch, exactMatch, or regexMatch must be set.
 	ExactMatch pulumi.StringInput `pulumi:"exactMatch"`
 	// The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not. Only one of presentMatch, exactMatch or regexMatch must be set.
+	// Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not. Only one of presentMatch, exactMatch, or regexMatch must be set.
 	PresentMatch pulumi.BoolInput `pulumi:"presentMatch"`
-	// The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For the regular expression grammar, please see github.com/google/re2/wiki/Syntax Only one of presentMatch, exactMatch or regexMatch must be set. Note that regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+	// The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For more information about regular expression syntax, see Syntax. Only one of presentMatch, exactMatch, or regexMatch must be set. regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 	RegexMatch pulumi.StringInput `pulumi:"regexMatch"`
 }
 
@@ -24249,7 +24249,7 @@ func (o HttpQueryParameterMatchResponseOutput) ToHttpQueryParameterMatchResponse
 	return o
 }
 
-// The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch. Only one of presentMatch, exactMatch or regexMatch must be set.
+// The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch. Only one of presentMatch, exactMatch, or regexMatch must be set.
 func (o HttpQueryParameterMatchResponseOutput) ExactMatch() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpQueryParameterMatchResponse) string { return v.ExactMatch }).(pulumi.StringOutput)
 }
@@ -24259,12 +24259,12 @@ func (o HttpQueryParameterMatchResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpQueryParameterMatchResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not. Only one of presentMatch, exactMatch or regexMatch must be set.
+// Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not. Only one of presentMatch, exactMatch, or regexMatch must be set.
 func (o HttpQueryParameterMatchResponseOutput) PresentMatch() pulumi.BoolOutput {
 	return o.ApplyT(func(v HttpQueryParameterMatchResponse) bool { return v.PresentMatch }).(pulumi.BoolOutput)
 }
 
-// The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For the regular expression grammar, please see github.com/google/re2/wiki/Syntax Only one of presentMatch, exactMatch or regexMatch must be set. Note that regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+// The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For more information about regular expression syntax, see Syntax. Only one of presentMatch, exactMatch, or regexMatch must be set. regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 func (o HttpQueryParameterMatchResponseOutput) RegexMatch() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpQueryParameterMatchResponse) string { return v.RegexMatch }).(pulumi.StringOutput)
 }
@@ -24291,17 +24291,17 @@ func (o HttpQueryParameterMatchResponseArrayOutput) Index(i pulumi.IntInput) Htt
 
 // Specifies settings for an HTTP redirect.
 type HttpRedirectAction struct {
-	// The host that will be used in the redirect response instead of the one that was supplied in the request. The value must be between 1 and 255 characters.
+	// The host that is used in the redirect response instead of the one that was supplied in the request. The value must be from 1 to 255 characters.
 	HostRedirect *string `pulumi:"hostRedirect"`
-	// If set to true, the URL scheme in the redirected request is set to https. If set to false, the URL scheme of the redirected request will remain the same as that of the request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
+	// If set to true, the URL scheme in the redirected request is set to HTTPS. If set to false, the URL scheme of the redirected request remains the same as that of the request. This must only be set for URL maps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
 	HttpsRedirect *bool `pulumi:"httpsRedirect"`
-	// The path that will be used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
+	// The path that is used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters.
 	PathRedirect *string `pulumi:"pathRedirect"`
-	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
+	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters.
 	PrefixRedirect *string `pulumi:"prefixRedirect"`
-	// The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
+	// The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method is retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method is retained.
 	RedirectResponseCode *HttpRedirectActionRedirectResponseCode `pulumi:"redirectResponseCode"`
-	// If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false.
+	// If set to true, any accompanying query portion of the original URL is removed before redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false.
 	StripQuery *bool `pulumi:"stripQuery"`
 }
 
@@ -24318,17 +24318,17 @@ type HttpRedirectActionInput interface {
 
 // Specifies settings for an HTTP redirect.
 type HttpRedirectActionArgs struct {
-	// The host that will be used in the redirect response instead of the one that was supplied in the request. The value must be between 1 and 255 characters.
+	// The host that is used in the redirect response instead of the one that was supplied in the request. The value must be from 1 to 255 characters.
 	HostRedirect pulumi.StringPtrInput `pulumi:"hostRedirect"`
-	// If set to true, the URL scheme in the redirected request is set to https. If set to false, the URL scheme of the redirected request will remain the same as that of the request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
+	// If set to true, the URL scheme in the redirected request is set to HTTPS. If set to false, the URL scheme of the redirected request remains the same as that of the request. This must only be set for URL maps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
 	HttpsRedirect pulumi.BoolPtrInput `pulumi:"httpsRedirect"`
-	// The path that will be used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
+	// The path that is used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters.
 	PathRedirect pulumi.StringPtrInput `pulumi:"pathRedirect"`
-	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
+	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters.
 	PrefixRedirect pulumi.StringPtrInput `pulumi:"prefixRedirect"`
-	// The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
+	// The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method is retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method is retained.
 	RedirectResponseCode HttpRedirectActionRedirectResponseCodePtrInput `pulumi:"redirectResponseCode"`
-	// If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false.
+	// If set to true, any accompanying query portion of the original URL is removed before redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false.
 	StripQuery pulumi.BoolPtrInput `pulumi:"stripQuery"`
 }
 
@@ -24410,32 +24410,32 @@ func (o HttpRedirectActionOutput) ToHttpRedirectActionPtrOutputWithContext(ctx c
 	}).(HttpRedirectActionPtrOutput)
 }
 
-// The host that will be used in the redirect response instead of the one that was supplied in the request. The value must be between 1 and 255 characters.
+// The host that is used in the redirect response instead of the one that was supplied in the request. The value must be from 1 to 255 characters.
 func (o HttpRedirectActionOutput) HostRedirect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpRedirectAction) *string { return v.HostRedirect }).(pulumi.StringPtrOutput)
 }
 
-// If set to true, the URL scheme in the redirected request is set to https. If set to false, the URL scheme of the redirected request will remain the same as that of the request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
+// If set to true, the URL scheme in the redirected request is set to HTTPS. If set to false, the URL scheme of the redirected request remains the same as that of the request. This must only be set for URL maps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
 func (o HttpRedirectActionOutput) HttpsRedirect() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v HttpRedirectAction) *bool { return v.HttpsRedirect }).(pulumi.BoolPtrOutput)
 }
 
-// The path that will be used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
+// The path that is used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters.
 func (o HttpRedirectActionOutput) PathRedirect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpRedirectAction) *string { return v.PathRedirect }).(pulumi.StringPtrOutput)
 }
 
-// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
+// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters.
 func (o HttpRedirectActionOutput) PrefixRedirect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpRedirectAction) *string { return v.PrefixRedirect }).(pulumi.StringPtrOutput)
 }
 
-// The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
+// The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method is retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method is retained.
 func (o HttpRedirectActionOutput) RedirectResponseCode() HttpRedirectActionRedirectResponseCodePtrOutput {
 	return o.ApplyT(func(v HttpRedirectAction) *HttpRedirectActionRedirectResponseCode { return v.RedirectResponseCode }).(HttpRedirectActionRedirectResponseCodePtrOutput)
 }
 
-// If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false.
+// If set to true, any accompanying query portion of the original URL is removed before redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false.
 func (o HttpRedirectActionOutput) StripQuery() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v HttpRedirectAction) *bool { return v.StripQuery }).(pulumi.BoolPtrOutput)
 }
@@ -24464,7 +24464,7 @@ func (o HttpRedirectActionPtrOutput) Elem() HttpRedirectActionOutput {
 	}).(HttpRedirectActionOutput)
 }
 
-// The host that will be used in the redirect response instead of the one that was supplied in the request. The value must be between 1 and 255 characters.
+// The host that is used in the redirect response instead of the one that was supplied in the request. The value must be from 1 to 255 characters.
 func (o HttpRedirectActionPtrOutput) HostRedirect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpRedirectAction) *string {
 		if v == nil {
@@ -24474,7 +24474,7 @@ func (o HttpRedirectActionPtrOutput) HostRedirect() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// If set to true, the URL scheme in the redirected request is set to https. If set to false, the URL scheme of the redirected request will remain the same as that of the request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
+// If set to true, the URL scheme in the redirected request is set to HTTPS. If set to false, the URL scheme of the redirected request remains the same as that of the request. This must only be set for URL maps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
 func (o HttpRedirectActionPtrOutput) HttpsRedirect() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HttpRedirectAction) *bool {
 		if v == nil {
@@ -24484,7 +24484,7 @@ func (o HttpRedirectActionPtrOutput) HttpsRedirect() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The path that will be used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
+// The path that is used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters.
 func (o HttpRedirectActionPtrOutput) PathRedirect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpRedirectAction) *string {
 		if v == nil {
@@ -24494,7 +24494,7 @@ func (o HttpRedirectActionPtrOutput) PathRedirect() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
+// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters.
 func (o HttpRedirectActionPtrOutput) PrefixRedirect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpRedirectAction) *string {
 		if v == nil {
@@ -24504,7 +24504,7 @@ func (o HttpRedirectActionPtrOutput) PrefixRedirect() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
+// The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method is retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method is retained.
 func (o HttpRedirectActionPtrOutput) RedirectResponseCode() HttpRedirectActionRedirectResponseCodePtrOutput {
 	return o.ApplyT(func(v *HttpRedirectAction) *HttpRedirectActionRedirectResponseCode {
 		if v == nil {
@@ -24514,7 +24514,7 @@ func (o HttpRedirectActionPtrOutput) RedirectResponseCode() HttpRedirectActionRe
 	}).(HttpRedirectActionRedirectResponseCodePtrOutput)
 }
 
-// If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false.
+// If set to true, any accompanying query portion of the original URL is removed before redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false.
 func (o HttpRedirectActionPtrOutput) StripQuery() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HttpRedirectAction) *bool {
 		if v == nil {
@@ -24526,17 +24526,17 @@ func (o HttpRedirectActionPtrOutput) StripQuery() pulumi.BoolPtrOutput {
 
 // Specifies settings for an HTTP redirect.
 type HttpRedirectActionResponse struct {
-	// The host that will be used in the redirect response instead of the one that was supplied in the request. The value must be between 1 and 255 characters.
+	// The host that is used in the redirect response instead of the one that was supplied in the request. The value must be from 1 to 255 characters.
 	HostRedirect string `pulumi:"hostRedirect"`
-	// If set to true, the URL scheme in the redirected request is set to https. If set to false, the URL scheme of the redirected request will remain the same as that of the request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
+	// If set to true, the URL scheme in the redirected request is set to HTTPS. If set to false, the URL scheme of the redirected request remains the same as that of the request. This must only be set for URL maps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
 	HttpsRedirect bool `pulumi:"httpsRedirect"`
-	// The path that will be used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
+	// The path that is used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters.
 	PathRedirect string `pulumi:"pathRedirect"`
-	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
+	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters.
 	PrefixRedirect string `pulumi:"prefixRedirect"`
-	// The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
+	// The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method is retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method is retained.
 	RedirectResponseCode string `pulumi:"redirectResponseCode"`
-	// If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false.
+	// If set to true, any accompanying query portion of the original URL is removed before redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false.
 	StripQuery bool `pulumi:"stripQuery"`
 }
 
@@ -24553,17 +24553,17 @@ type HttpRedirectActionResponseInput interface {
 
 // Specifies settings for an HTTP redirect.
 type HttpRedirectActionResponseArgs struct {
-	// The host that will be used in the redirect response instead of the one that was supplied in the request. The value must be between 1 and 255 characters.
+	// The host that is used in the redirect response instead of the one that was supplied in the request. The value must be from 1 to 255 characters.
 	HostRedirect pulumi.StringInput `pulumi:"hostRedirect"`
-	// If set to true, the URL scheme in the redirected request is set to https. If set to false, the URL scheme of the redirected request will remain the same as that of the request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
+	// If set to true, the URL scheme in the redirected request is set to HTTPS. If set to false, the URL scheme of the redirected request remains the same as that of the request. This must only be set for URL maps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
 	HttpsRedirect pulumi.BoolInput `pulumi:"httpsRedirect"`
-	// The path that will be used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
+	// The path that is used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters.
 	PathRedirect pulumi.StringInput `pulumi:"pathRedirect"`
-	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
+	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters.
 	PrefixRedirect pulumi.StringInput `pulumi:"prefixRedirect"`
-	// The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
+	// The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method is retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method is retained.
 	RedirectResponseCode pulumi.StringInput `pulumi:"redirectResponseCode"`
-	// If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false.
+	// If set to true, any accompanying query portion of the original URL is removed before redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false.
 	StripQuery pulumi.BoolInput `pulumi:"stripQuery"`
 }
 
@@ -24645,32 +24645,32 @@ func (o HttpRedirectActionResponseOutput) ToHttpRedirectActionResponsePtrOutputW
 	}).(HttpRedirectActionResponsePtrOutput)
 }
 
-// The host that will be used in the redirect response instead of the one that was supplied in the request. The value must be between 1 and 255 characters.
+// The host that is used in the redirect response instead of the one that was supplied in the request. The value must be from 1 to 255 characters.
 func (o HttpRedirectActionResponseOutput) HostRedirect() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpRedirectActionResponse) string { return v.HostRedirect }).(pulumi.StringOutput)
 }
 
-// If set to true, the URL scheme in the redirected request is set to https. If set to false, the URL scheme of the redirected request will remain the same as that of the request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
+// If set to true, the URL scheme in the redirected request is set to HTTPS. If set to false, the URL scheme of the redirected request remains the same as that of the request. This must only be set for URL maps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
 func (o HttpRedirectActionResponseOutput) HttpsRedirect() pulumi.BoolOutput {
 	return o.ApplyT(func(v HttpRedirectActionResponse) bool { return v.HttpsRedirect }).(pulumi.BoolOutput)
 }
 
-// The path that will be used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
+// The path that is used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters.
 func (o HttpRedirectActionResponseOutput) PathRedirect() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpRedirectActionResponse) string { return v.PathRedirect }).(pulumi.StringOutput)
 }
 
-// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
+// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters.
 func (o HttpRedirectActionResponseOutput) PrefixRedirect() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpRedirectActionResponse) string { return v.PrefixRedirect }).(pulumi.StringOutput)
 }
 
-// The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
+// The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method is retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method is retained.
 func (o HttpRedirectActionResponseOutput) RedirectResponseCode() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpRedirectActionResponse) string { return v.RedirectResponseCode }).(pulumi.StringOutput)
 }
 
-// If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false.
+// If set to true, any accompanying query portion of the original URL is removed before redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false.
 func (o HttpRedirectActionResponseOutput) StripQuery() pulumi.BoolOutput {
 	return o.ApplyT(func(v HttpRedirectActionResponse) bool { return v.StripQuery }).(pulumi.BoolOutput)
 }
@@ -24699,7 +24699,7 @@ func (o HttpRedirectActionResponsePtrOutput) Elem() HttpRedirectActionResponseOu
 	}).(HttpRedirectActionResponseOutput)
 }
 
-// The host that will be used in the redirect response instead of the one that was supplied in the request. The value must be between 1 and 255 characters.
+// The host that is used in the redirect response instead of the one that was supplied in the request. The value must be from 1 to 255 characters.
 func (o HttpRedirectActionResponsePtrOutput) HostRedirect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpRedirectActionResponse) *string {
 		if v == nil {
@@ -24709,7 +24709,7 @@ func (o HttpRedirectActionResponsePtrOutput) HostRedirect() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// If set to true, the URL scheme in the redirected request is set to https. If set to false, the URL scheme of the redirected request will remain the same as that of the request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
+// If set to true, the URL scheme in the redirected request is set to HTTPS. If set to false, the URL scheme of the redirected request remains the same as that of the request. This must only be set for URL maps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
 func (o HttpRedirectActionResponsePtrOutput) HttpsRedirect() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HttpRedirectActionResponse) *bool {
 		if v == nil {
@@ -24719,7 +24719,7 @@ func (o HttpRedirectActionResponsePtrOutput) HttpsRedirect() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The path that will be used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
+// The path that is used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters.
 func (o HttpRedirectActionResponsePtrOutput) PathRedirect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpRedirectActionResponse) *string {
 		if v == nil {
@@ -24729,7 +24729,7 @@ func (o HttpRedirectActionResponsePtrOutput) PathRedirect() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
+// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters.
 func (o HttpRedirectActionResponsePtrOutput) PrefixRedirect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpRedirectActionResponse) *string {
 		if v == nil {
@@ -24739,7 +24739,7 @@ func (o HttpRedirectActionResponsePtrOutput) PrefixRedirect() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
+// The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method is retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method is retained.
 func (o HttpRedirectActionResponsePtrOutput) RedirectResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpRedirectActionResponse) *string {
 		if v == nil {
@@ -24749,7 +24749,7 @@ func (o HttpRedirectActionResponsePtrOutput) RedirectResponseCode() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false.
+// If set to true, any accompanying query portion of the original URL is removed before redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false.
 func (o HttpRedirectActionResponsePtrOutput) StripQuery() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HttpRedirectActionResponse) *bool {
 		if v == nil {
@@ -24763,9 +24763,9 @@ func (o HttpRedirectActionResponsePtrOutput) StripQuery() pulumi.BoolPtrOutput {
 type HttpRetryPolicy struct {
 	// Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
 	NumRetries *int `pulumi:"numRetries"`
-	// Specifies a non-zero timeout per retry attempt. If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set, will use the largest timeout among all backend services associated with the route.
+	// Specifies a non-zero timeout per retry attempt. If not specified, will use the timeout set in the HttpRouteAction field. If timeout in the HttpRouteAction field is not set, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 	PerTryTimeout *Duration `pulumi:"perTryTimeout"`
-	// Specifies one or more conditions when this retry policy applies. Valid values are: - 5xx: Retry will be attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all, example: disconnects, reset, read timeout, connection failure, and refused streams. - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504. - - connect-failure: A retry will be attempted on failures connecting to the instance or endpoint, for example due to connection timeouts. - retriable-4xx: A retry will be attempted if the instance or endpoint responds with a retriable 4xx response code. Currently the only retriable error supported is 409. - refused-stream: A retry will be attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: A retry will be attempted if the gRPC status code in the response header is set to cancelled. - deadline-exceeded: A retry will be attempted if the gRPC status code in the response header is set to deadline-exceeded. - internal: A retry will be attempted if the gRPC status code in the response header is set to internal. - resource-exhausted: A retry will be attempted if the gRPC status code in the response header is set to resource-exhausted. - unavailable: A retry will be attempted if the gRPC status code in the response header is set to unavailable.
+	// Specifies one or more conditions when this retry policy applies. Valid values are: - 5xx: retry is attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all. For example, disconnects, reset, read timeout, connection failure, and refused streams. - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504. - connect-failure: a retry is attempted on failures connecting to the instance or endpoint. For example, connection timeouts. - retriable-4xx: a retry is attempted if the instance or endpoint responds with a 4xx response code. The only error that you can retry is error code 409. - refused-stream: a retry is attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: a retry is attempted if the gRPC status code in the response header is set to cancelled. - deadline-exceeded: a retry is attempted if the gRPC status code in the response header is set to deadline-exceeded. - internal: a retry is attempted if the gRPC status code in the response header is set to internal. - resource-exhausted: a retry is attempted if the gRPC status code in the response header is set to resource-exhausted. - unavailable: a retry is attempted if the gRPC status code in the response header is set to unavailable. Only the following codes are supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true. - cancelled - deadline-exceeded - internal - resource-exhausted - unavailable
 	RetryConditions []string `pulumi:"retryConditions"`
 }
 
@@ -24784,9 +24784,9 @@ type HttpRetryPolicyInput interface {
 type HttpRetryPolicyArgs struct {
 	// Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
 	NumRetries pulumi.IntPtrInput `pulumi:"numRetries"`
-	// Specifies a non-zero timeout per retry attempt. If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set, will use the largest timeout among all backend services associated with the route.
+	// Specifies a non-zero timeout per retry attempt. If not specified, will use the timeout set in the HttpRouteAction field. If timeout in the HttpRouteAction field is not set, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 	PerTryTimeout DurationPtrInput `pulumi:"perTryTimeout"`
-	// Specifies one or more conditions when this retry policy applies. Valid values are: - 5xx: Retry will be attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all, example: disconnects, reset, read timeout, connection failure, and refused streams. - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504. - - connect-failure: A retry will be attempted on failures connecting to the instance or endpoint, for example due to connection timeouts. - retriable-4xx: A retry will be attempted if the instance or endpoint responds with a retriable 4xx response code. Currently the only retriable error supported is 409. - refused-stream: A retry will be attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: A retry will be attempted if the gRPC status code in the response header is set to cancelled. - deadline-exceeded: A retry will be attempted if the gRPC status code in the response header is set to deadline-exceeded. - internal: A retry will be attempted if the gRPC status code in the response header is set to internal. - resource-exhausted: A retry will be attempted if the gRPC status code in the response header is set to resource-exhausted. - unavailable: A retry will be attempted if the gRPC status code in the response header is set to unavailable.
+	// Specifies one or more conditions when this retry policy applies. Valid values are: - 5xx: retry is attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all. For example, disconnects, reset, read timeout, connection failure, and refused streams. - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504. - connect-failure: a retry is attempted on failures connecting to the instance or endpoint. For example, connection timeouts. - retriable-4xx: a retry is attempted if the instance or endpoint responds with a 4xx response code. The only error that you can retry is error code 409. - refused-stream: a retry is attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: a retry is attempted if the gRPC status code in the response header is set to cancelled. - deadline-exceeded: a retry is attempted if the gRPC status code in the response header is set to deadline-exceeded. - internal: a retry is attempted if the gRPC status code in the response header is set to internal. - resource-exhausted: a retry is attempted if the gRPC status code in the response header is set to resource-exhausted. - unavailable: a retry is attempted if the gRPC status code in the response header is set to unavailable. Only the following codes are supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true. - cancelled - deadline-exceeded - internal - resource-exhausted - unavailable
 	RetryConditions pulumi.StringArrayInput `pulumi:"retryConditions"`
 }
 
@@ -24873,12 +24873,12 @@ func (o HttpRetryPolicyOutput) NumRetries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HttpRetryPolicy) *int { return v.NumRetries }).(pulumi.IntPtrOutput)
 }
 
-// Specifies a non-zero timeout per retry attempt. If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set, will use the largest timeout among all backend services associated with the route.
+// Specifies a non-zero timeout per retry attempt. If not specified, will use the timeout set in the HttpRouteAction field. If timeout in the HttpRouteAction field is not set, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 func (o HttpRetryPolicyOutput) PerTryTimeout() DurationPtrOutput {
 	return o.ApplyT(func(v HttpRetryPolicy) *Duration { return v.PerTryTimeout }).(DurationPtrOutput)
 }
 
-// Specifies one or more conditions when this retry policy applies. Valid values are: - 5xx: Retry will be attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all, example: disconnects, reset, read timeout, connection failure, and refused streams. - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504. - - connect-failure: A retry will be attempted on failures connecting to the instance or endpoint, for example due to connection timeouts. - retriable-4xx: A retry will be attempted if the instance or endpoint responds with a retriable 4xx response code. Currently the only retriable error supported is 409. - refused-stream: A retry will be attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: A retry will be attempted if the gRPC status code in the response header is set to cancelled. - deadline-exceeded: A retry will be attempted if the gRPC status code in the response header is set to deadline-exceeded. - internal: A retry will be attempted if the gRPC status code in the response header is set to internal. - resource-exhausted: A retry will be attempted if the gRPC status code in the response header is set to resource-exhausted. - unavailable: A retry will be attempted if the gRPC status code in the response header is set to unavailable.
+// Specifies one or more conditions when this retry policy applies. Valid values are: - 5xx: retry is attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all. For example, disconnects, reset, read timeout, connection failure, and refused streams. - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504. - connect-failure: a retry is attempted on failures connecting to the instance or endpoint. For example, connection timeouts. - retriable-4xx: a retry is attempted if the instance or endpoint responds with a 4xx response code. The only error that you can retry is error code 409. - refused-stream: a retry is attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: a retry is attempted if the gRPC status code in the response header is set to cancelled. - deadline-exceeded: a retry is attempted if the gRPC status code in the response header is set to deadline-exceeded. - internal: a retry is attempted if the gRPC status code in the response header is set to internal. - resource-exhausted: a retry is attempted if the gRPC status code in the response header is set to resource-exhausted. - unavailable: a retry is attempted if the gRPC status code in the response header is set to unavailable. Only the following codes are supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true. - cancelled - deadline-exceeded - internal - resource-exhausted - unavailable
 func (o HttpRetryPolicyOutput) RetryConditions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v HttpRetryPolicy) []string { return v.RetryConditions }).(pulumi.StringArrayOutput)
 }
@@ -24917,7 +24917,7 @@ func (o HttpRetryPolicyPtrOutput) NumRetries() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies a non-zero timeout per retry attempt. If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set, will use the largest timeout among all backend services associated with the route.
+// Specifies a non-zero timeout per retry attempt. If not specified, will use the timeout set in the HttpRouteAction field. If timeout in the HttpRouteAction field is not set, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 func (o HttpRetryPolicyPtrOutput) PerTryTimeout() DurationPtrOutput {
 	return o.ApplyT(func(v *HttpRetryPolicy) *Duration {
 		if v == nil {
@@ -24927,7 +24927,7 @@ func (o HttpRetryPolicyPtrOutput) PerTryTimeout() DurationPtrOutput {
 	}).(DurationPtrOutput)
 }
 
-// Specifies one or more conditions when this retry policy applies. Valid values are: - 5xx: Retry will be attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all, example: disconnects, reset, read timeout, connection failure, and refused streams. - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504. - - connect-failure: A retry will be attempted on failures connecting to the instance or endpoint, for example due to connection timeouts. - retriable-4xx: A retry will be attempted if the instance or endpoint responds with a retriable 4xx response code. Currently the only retriable error supported is 409. - refused-stream: A retry will be attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: A retry will be attempted if the gRPC status code in the response header is set to cancelled. - deadline-exceeded: A retry will be attempted if the gRPC status code in the response header is set to deadline-exceeded. - internal: A retry will be attempted if the gRPC status code in the response header is set to internal. - resource-exhausted: A retry will be attempted if the gRPC status code in the response header is set to resource-exhausted. - unavailable: A retry will be attempted if the gRPC status code in the response header is set to unavailable.
+// Specifies one or more conditions when this retry policy applies. Valid values are: - 5xx: retry is attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all. For example, disconnects, reset, read timeout, connection failure, and refused streams. - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504. - connect-failure: a retry is attempted on failures connecting to the instance or endpoint. For example, connection timeouts. - retriable-4xx: a retry is attempted if the instance or endpoint responds with a 4xx response code. The only error that you can retry is error code 409. - refused-stream: a retry is attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: a retry is attempted if the gRPC status code in the response header is set to cancelled. - deadline-exceeded: a retry is attempted if the gRPC status code in the response header is set to deadline-exceeded. - internal: a retry is attempted if the gRPC status code in the response header is set to internal. - resource-exhausted: a retry is attempted if the gRPC status code in the response header is set to resource-exhausted. - unavailable: a retry is attempted if the gRPC status code in the response header is set to unavailable. Only the following codes are supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true. - cancelled - deadline-exceeded - internal - resource-exhausted - unavailable
 func (o HttpRetryPolicyPtrOutput) RetryConditions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HttpRetryPolicy) []string {
 		if v == nil {
@@ -24941,9 +24941,9 @@ func (o HttpRetryPolicyPtrOutput) RetryConditions() pulumi.StringArrayOutput {
 type HttpRetryPolicyResponse struct {
 	// Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
 	NumRetries int `pulumi:"numRetries"`
-	// Specifies a non-zero timeout per retry attempt. If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set, will use the largest timeout among all backend services associated with the route.
+	// Specifies a non-zero timeout per retry attempt. If not specified, will use the timeout set in the HttpRouteAction field. If timeout in the HttpRouteAction field is not set, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 	PerTryTimeout DurationResponse `pulumi:"perTryTimeout"`
-	// Specifies one or more conditions when this retry policy applies. Valid values are: - 5xx: Retry will be attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all, example: disconnects, reset, read timeout, connection failure, and refused streams. - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504. - - connect-failure: A retry will be attempted on failures connecting to the instance or endpoint, for example due to connection timeouts. - retriable-4xx: A retry will be attempted if the instance or endpoint responds with a retriable 4xx response code. Currently the only retriable error supported is 409. - refused-stream: A retry will be attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: A retry will be attempted if the gRPC status code in the response header is set to cancelled. - deadline-exceeded: A retry will be attempted if the gRPC status code in the response header is set to deadline-exceeded. - internal: A retry will be attempted if the gRPC status code in the response header is set to internal. - resource-exhausted: A retry will be attempted if the gRPC status code in the response header is set to resource-exhausted. - unavailable: A retry will be attempted if the gRPC status code in the response header is set to unavailable.
+	// Specifies one or more conditions when this retry policy applies. Valid values are: - 5xx: retry is attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all. For example, disconnects, reset, read timeout, connection failure, and refused streams. - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504. - connect-failure: a retry is attempted on failures connecting to the instance or endpoint. For example, connection timeouts. - retriable-4xx: a retry is attempted if the instance or endpoint responds with a 4xx response code. The only error that you can retry is error code 409. - refused-stream: a retry is attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: a retry is attempted if the gRPC status code in the response header is set to cancelled. - deadline-exceeded: a retry is attempted if the gRPC status code in the response header is set to deadline-exceeded. - internal: a retry is attempted if the gRPC status code in the response header is set to internal. - resource-exhausted: a retry is attempted if the gRPC status code in the response header is set to resource-exhausted. - unavailable: a retry is attempted if the gRPC status code in the response header is set to unavailable. Only the following codes are supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true. - cancelled - deadline-exceeded - internal - resource-exhausted - unavailable
 	RetryConditions []string `pulumi:"retryConditions"`
 }
 
@@ -24962,9 +24962,9 @@ type HttpRetryPolicyResponseInput interface {
 type HttpRetryPolicyResponseArgs struct {
 	// Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
 	NumRetries pulumi.IntInput `pulumi:"numRetries"`
-	// Specifies a non-zero timeout per retry attempt. If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set, will use the largest timeout among all backend services associated with the route.
+	// Specifies a non-zero timeout per retry attempt. If not specified, will use the timeout set in the HttpRouteAction field. If timeout in the HttpRouteAction field is not set, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 	PerTryTimeout DurationResponseInput `pulumi:"perTryTimeout"`
-	// Specifies one or more conditions when this retry policy applies. Valid values are: - 5xx: Retry will be attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all, example: disconnects, reset, read timeout, connection failure, and refused streams. - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504. - - connect-failure: A retry will be attempted on failures connecting to the instance or endpoint, for example due to connection timeouts. - retriable-4xx: A retry will be attempted if the instance or endpoint responds with a retriable 4xx response code. Currently the only retriable error supported is 409. - refused-stream: A retry will be attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: A retry will be attempted if the gRPC status code in the response header is set to cancelled. - deadline-exceeded: A retry will be attempted if the gRPC status code in the response header is set to deadline-exceeded. - internal: A retry will be attempted if the gRPC status code in the response header is set to internal. - resource-exhausted: A retry will be attempted if the gRPC status code in the response header is set to resource-exhausted. - unavailable: A retry will be attempted if the gRPC status code in the response header is set to unavailable.
+	// Specifies one or more conditions when this retry policy applies. Valid values are: - 5xx: retry is attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all. For example, disconnects, reset, read timeout, connection failure, and refused streams. - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504. - connect-failure: a retry is attempted on failures connecting to the instance or endpoint. For example, connection timeouts. - retriable-4xx: a retry is attempted if the instance or endpoint responds with a 4xx response code. The only error that you can retry is error code 409. - refused-stream: a retry is attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: a retry is attempted if the gRPC status code in the response header is set to cancelled. - deadline-exceeded: a retry is attempted if the gRPC status code in the response header is set to deadline-exceeded. - internal: a retry is attempted if the gRPC status code in the response header is set to internal. - resource-exhausted: a retry is attempted if the gRPC status code in the response header is set to resource-exhausted. - unavailable: a retry is attempted if the gRPC status code in the response header is set to unavailable. Only the following codes are supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true. - cancelled - deadline-exceeded - internal - resource-exhausted - unavailable
 	RetryConditions pulumi.StringArrayInput `pulumi:"retryConditions"`
 }
 
@@ -25051,12 +25051,12 @@ func (o HttpRetryPolicyResponseOutput) NumRetries() pulumi.IntOutput {
 	return o.ApplyT(func(v HttpRetryPolicyResponse) int { return v.NumRetries }).(pulumi.IntOutput)
 }
 
-// Specifies a non-zero timeout per retry attempt. If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set, will use the largest timeout among all backend services associated with the route.
+// Specifies a non-zero timeout per retry attempt. If not specified, will use the timeout set in the HttpRouteAction field. If timeout in the HttpRouteAction field is not set, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 func (o HttpRetryPolicyResponseOutput) PerTryTimeout() DurationResponseOutput {
 	return o.ApplyT(func(v HttpRetryPolicyResponse) DurationResponse { return v.PerTryTimeout }).(DurationResponseOutput)
 }
 
-// Specifies one or more conditions when this retry policy applies. Valid values are: - 5xx: Retry will be attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all, example: disconnects, reset, read timeout, connection failure, and refused streams. - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504. - - connect-failure: A retry will be attempted on failures connecting to the instance or endpoint, for example due to connection timeouts. - retriable-4xx: A retry will be attempted if the instance or endpoint responds with a retriable 4xx response code. Currently the only retriable error supported is 409. - refused-stream: A retry will be attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: A retry will be attempted if the gRPC status code in the response header is set to cancelled. - deadline-exceeded: A retry will be attempted if the gRPC status code in the response header is set to deadline-exceeded. - internal: A retry will be attempted if the gRPC status code in the response header is set to internal. - resource-exhausted: A retry will be attempted if the gRPC status code in the response header is set to resource-exhausted. - unavailable: A retry will be attempted if the gRPC status code in the response header is set to unavailable.
+// Specifies one or more conditions when this retry policy applies. Valid values are: - 5xx: retry is attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all. For example, disconnects, reset, read timeout, connection failure, and refused streams. - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504. - connect-failure: a retry is attempted on failures connecting to the instance or endpoint. For example, connection timeouts. - retriable-4xx: a retry is attempted if the instance or endpoint responds with a 4xx response code. The only error that you can retry is error code 409. - refused-stream: a retry is attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: a retry is attempted if the gRPC status code in the response header is set to cancelled. - deadline-exceeded: a retry is attempted if the gRPC status code in the response header is set to deadline-exceeded. - internal: a retry is attempted if the gRPC status code in the response header is set to internal. - resource-exhausted: a retry is attempted if the gRPC status code in the response header is set to resource-exhausted. - unavailable: a retry is attempted if the gRPC status code in the response header is set to unavailable. Only the following codes are supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true. - cancelled - deadline-exceeded - internal - resource-exhausted - unavailable
 func (o HttpRetryPolicyResponseOutput) RetryConditions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v HttpRetryPolicyResponse) []string { return v.RetryConditions }).(pulumi.StringArrayOutput)
 }
@@ -25095,7 +25095,7 @@ func (o HttpRetryPolicyResponsePtrOutput) NumRetries() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies a non-zero timeout per retry attempt. If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set, will use the largest timeout among all backend services associated with the route.
+// Specifies a non-zero timeout per retry attempt. If not specified, will use the timeout set in the HttpRouteAction field. If timeout in the HttpRouteAction field is not set, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 func (o HttpRetryPolicyResponsePtrOutput) PerTryTimeout() DurationResponsePtrOutput {
 	return o.ApplyT(func(v *HttpRetryPolicyResponse) *DurationResponse {
 		if v == nil {
@@ -25105,7 +25105,7 @@ func (o HttpRetryPolicyResponsePtrOutput) PerTryTimeout() DurationResponsePtrOut
 	}).(DurationResponsePtrOutput)
 }
 
-// Specifies one or more conditions when this retry policy applies. Valid values are: - 5xx: Retry will be attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all, example: disconnects, reset, read timeout, connection failure, and refused streams. - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504. - - connect-failure: A retry will be attempted on failures connecting to the instance or endpoint, for example due to connection timeouts. - retriable-4xx: A retry will be attempted if the instance or endpoint responds with a retriable 4xx response code. Currently the only retriable error supported is 409. - refused-stream: A retry will be attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: A retry will be attempted if the gRPC status code in the response header is set to cancelled. - deadline-exceeded: A retry will be attempted if the gRPC status code in the response header is set to deadline-exceeded. - internal: A retry will be attempted if the gRPC status code in the response header is set to internal. - resource-exhausted: A retry will be attempted if the gRPC status code in the response header is set to resource-exhausted. - unavailable: A retry will be attempted if the gRPC status code in the response header is set to unavailable.
+// Specifies one or more conditions when this retry policy applies. Valid values are: - 5xx: retry is attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all. For example, disconnects, reset, read timeout, connection failure, and refused streams. - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504. - connect-failure: a retry is attempted on failures connecting to the instance or endpoint. For example, connection timeouts. - retriable-4xx: a retry is attempted if the instance or endpoint responds with a 4xx response code. The only error that you can retry is error code 409. - refused-stream: a retry is attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: a retry is attempted if the gRPC status code in the response header is set to cancelled. - deadline-exceeded: a retry is attempted if the gRPC status code in the response header is set to deadline-exceeded. - internal: a retry is attempted if the gRPC status code in the response header is set to internal. - resource-exhausted: a retry is attempted if the gRPC status code in the response header is set to resource-exhausted. - unavailable: a retry is attempted if the gRPC status code in the response header is set to unavailable. Only the following codes are supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true. - cancelled - deadline-exceeded - internal - resource-exhausted - unavailable
 func (o HttpRetryPolicyResponsePtrOutput) RetryConditions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HttpRetryPolicyResponse) []string {
 		if v == nil {
@@ -25116,21 +25116,21 @@ func (o HttpRetryPolicyResponsePtrOutput) RetryConditions() pulumi.StringArrayOu
 }
 
 type HttpRouteAction struct {
-	// The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing Not supported when the URL map is bound to target gRPC proxy.
+	// The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard. Not supported when the URL map is bound to a target gRPC proxy.
 	CorsPolicy *CorsPolicy `pulumi:"corsPolicy"`
-	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests. For the requests impacted by fault injection, timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy.
+	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. For the requests impacted by fault injection, timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy.
 	FaultInjectionPolicy *HttpFaultInjection `pulumi:"faultInjectionPolicy"`
-	// Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (i.e. end-of-stream), the duration in this field is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, will use the largest maxStreamDuration among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (known as *end-of-stream*), the duration in this field is computed from the beginning of the stream until the response has been processed, including all retries. A stream that does not complete in this duration is closed. If not specified, this field uses the maximum maxStreamDuration value among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	MaxStreamDuration *Duration `pulumi:"maxStreamDuration"`
-	// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 	RequestMirrorPolicy *RequestMirrorPolicy `pulumi:"requestMirrorPolicy"`
-	// Specifies the retry policy associated with this route. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Specifies the retry policy associated with this route.
 	RetryPolicy *HttpRetryPolicy `pulumi:"retryPolicy"`
-	// Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries. If not specified, will use the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as *end-of-stream*) up until the response has been processed. Timeout includes all retries. If not specified, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	Timeout *Duration `pulumi:"timeout"`
-	// The spec to modify the URL of the request, prior to forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// The spec to modify the URL of the request, before forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 	UrlRewrite *UrlRewrite `pulumi:"urlRewrite"`
-	// A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number. Once a backendService is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
+	// A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number. After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
 	WeightedBackendServices []WeightedBackendService `pulumi:"weightedBackendServices"`
 }
 
@@ -25146,21 +25146,21 @@ type HttpRouteActionInput interface {
 }
 
 type HttpRouteActionArgs struct {
-	// The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing Not supported when the URL map is bound to target gRPC proxy.
+	// The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard. Not supported when the URL map is bound to a target gRPC proxy.
 	CorsPolicy CorsPolicyPtrInput `pulumi:"corsPolicy"`
-	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests. For the requests impacted by fault injection, timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy.
+	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. For the requests impacted by fault injection, timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy.
 	FaultInjectionPolicy HttpFaultInjectionPtrInput `pulumi:"faultInjectionPolicy"`
-	// Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (i.e. end-of-stream), the duration in this field is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, will use the largest maxStreamDuration among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (known as *end-of-stream*), the duration in this field is computed from the beginning of the stream until the response has been processed, including all retries. A stream that does not complete in this duration is closed. If not specified, this field uses the maximum maxStreamDuration value among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	MaxStreamDuration DurationPtrInput `pulumi:"maxStreamDuration"`
-	// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 	RequestMirrorPolicy RequestMirrorPolicyPtrInput `pulumi:"requestMirrorPolicy"`
-	// Specifies the retry policy associated with this route. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Specifies the retry policy associated with this route.
 	RetryPolicy HttpRetryPolicyPtrInput `pulumi:"retryPolicy"`
-	// Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries. If not specified, will use the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as *end-of-stream*) up until the response has been processed. Timeout includes all retries. If not specified, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	Timeout DurationPtrInput `pulumi:"timeout"`
-	// The spec to modify the URL of the request, prior to forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// The spec to modify the URL of the request, before forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 	UrlRewrite UrlRewritePtrInput `pulumi:"urlRewrite"`
-	// A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number. Once a backendService is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
+	// A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number. After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
 	WeightedBackendServices WeightedBackendServiceArrayInput `pulumi:"weightedBackendServices"`
 }
 
@@ -25241,42 +25241,42 @@ func (o HttpRouteActionOutput) ToHttpRouteActionPtrOutputWithContext(ctx context
 	}).(HttpRouteActionPtrOutput)
 }
 
-// The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing Not supported when the URL map is bound to target gRPC proxy.
+// The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard. Not supported when the URL map is bound to a target gRPC proxy.
 func (o HttpRouteActionOutput) CorsPolicy() CorsPolicyPtrOutput {
 	return o.ApplyT(func(v HttpRouteAction) *CorsPolicy { return v.CorsPolicy }).(CorsPolicyPtrOutput)
 }
 
-// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests. For the requests impacted by fault injection, timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy.
+// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. For the requests impacted by fault injection, timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy.
 func (o HttpRouteActionOutput) FaultInjectionPolicy() HttpFaultInjectionPtrOutput {
 	return o.ApplyT(func(v HttpRouteAction) *HttpFaultInjection { return v.FaultInjectionPolicy }).(HttpFaultInjectionPtrOutput)
 }
 
-// Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (i.e. end-of-stream), the duration in this field is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, will use the largest maxStreamDuration among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+// Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (known as *end-of-stream*), the duration in this field is computed from the beginning of the stream until the response has been processed, including all retries. A stream that does not complete in this duration is closed. If not specified, this field uses the maximum maxStreamDuration value among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 func (o HttpRouteActionOutput) MaxStreamDuration() DurationPtrOutput {
 	return o.ApplyT(func(v HttpRouteAction) *Duration { return v.MaxStreamDuration }).(DurationPtrOutput)
 }
 
-// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 func (o HttpRouteActionOutput) RequestMirrorPolicy() RequestMirrorPolicyPtrOutput {
 	return o.ApplyT(func(v HttpRouteAction) *RequestMirrorPolicy { return v.RequestMirrorPolicy }).(RequestMirrorPolicyPtrOutput)
 }
 
-// Specifies the retry policy associated with this route. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Specifies the retry policy associated with this route.
 func (o HttpRouteActionOutput) RetryPolicy() HttpRetryPolicyPtrOutput {
 	return o.ApplyT(func(v HttpRouteAction) *HttpRetryPolicy { return v.RetryPolicy }).(HttpRetryPolicyPtrOutput)
 }
 
-// Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries. If not specified, will use the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as *end-of-stream*) up until the response has been processed. Timeout includes all retries. If not specified, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 func (o HttpRouteActionOutput) Timeout() DurationPtrOutput {
 	return o.ApplyT(func(v HttpRouteAction) *Duration { return v.Timeout }).(DurationPtrOutput)
 }
 
-// The spec to modify the URL of the request, prior to forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// The spec to modify the URL of the request, before forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 func (o HttpRouteActionOutput) UrlRewrite() UrlRewritePtrOutput {
 	return o.ApplyT(func(v HttpRouteAction) *UrlRewrite { return v.UrlRewrite }).(UrlRewritePtrOutput)
 }
 
-// A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number. Once a backendService is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
+// A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number. After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
 func (o HttpRouteActionOutput) WeightedBackendServices() WeightedBackendServiceArrayOutput {
 	return o.ApplyT(func(v HttpRouteAction) []WeightedBackendService { return v.WeightedBackendServices }).(WeightedBackendServiceArrayOutput)
 }
@@ -25305,7 +25305,7 @@ func (o HttpRouteActionPtrOutput) Elem() HttpRouteActionOutput {
 	}).(HttpRouteActionOutput)
 }
 
-// The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing Not supported when the URL map is bound to target gRPC proxy.
+// The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard. Not supported when the URL map is bound to a target gRPC proxy.
 func (o HttpRouteActionPtrOutput) CorsPolicy() CorsPolicyPtrOutput {
 	return o.ApplyT(func(v *HttpRouteAction) *CorsPolicy {
 		if v == nil {
@@ -25315,7 +25315,7 @@ func (o HttpRouteActionPtrOutput) CorsPolicy() CorsPolicyPtrOutput {
 	}).(CorsPolicyPtrOutput)
 }
 
-// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests. For the requests impacted by fault injection, timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy.
+// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. For the requests impacted by fault injection, timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy.
 func (o HttpRouteActionPtrOutput) FaultInjectionPolicy() HttpFaultInjectionPtrOutput {
 	return o.ApplyT(func(v *HttpRouteAction) *HttpFaultInjection {
 		if v == nil {
@@ -25325,7 +25325,7 @@ func (o HttpRouteActionPtrOutput) FaultInjectionPolicy() HttpFaultInjectionPtrOu
 	}).(HttpFaultInjectionPtrOutput)
 }
 
-// Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (i.e. end-of-stream), the duration in this field is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, will use the largest maxStreamDuration among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+// Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (known as *end-of-stream*), the duration in this field is computed from the beginning of the stream until the response has been processed, including all retries. A stream that does not complete in this duration is closed. If not specified, this field uses the maximum maxStreamDuration value among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 func (o HttpRouteActionPtrOutput) MaxStreamDuration() DurationPtrOutput {
 	return o.ApplyT(func(v *HttpRouteAction) *Duration {
 		if v == nil {
@@ -25335,7 +25335,7 @@ func (o HttpRouteActionPtrOutput) MaxStreamDuration() DurationPtrOutput {
 	}).(DurationPtrOutput)
 }
 
-// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 func (o HttpRouteActionPtrOutput) RequestMirrorPolicy() RequestMirrorPolicyPtrOutput {
 	return o.ApplyT(func(v *HttpRouteAction) *RequestMirrorPolicy {
 		if v == nil {
@@ -25345,7 +25345,7 @@ func (o HttpRouteActionPtrOutput) RequestMirrorPolicy() RequestMirrorPolicyPtrOu
 	}).(RequestMirrorPolicyPtrOutput)
 }
 
-// Specifies the retry policy associated with this route. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Specifies the retry policy associated with this route.
 func (o HttpRouteActionPtrOutput) RetryPolicy() HttpRetryPolicyPtrOutput {
 	return o.ApplyT(func(v *HttpRouteAction) *HttpRetryPolicy {
 		if v == nil {
@@ -25355,7 +25355,7 @@ func (o HttpRouteActionPtrOutput) RetryPolicy() HttpRetryPolicyPtrOutput {
 	}).(HttpRetryPolicyPtrOutput)
 }
 
-// Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries. If not specified, will use the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as *end-of-stream*) up until the response has been processed. Timeout includes all retries. If not specified, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 func (o HttpRouteActionPtrOutput) Timeout() DurationPtrOutput {
 	return o.ApplyT(func(v *HttpRouteAction) *Duration {
 		if v == nil {
@@ -25365,7 +25365,7 @@ func (o HttpRouteActionPtrOutput) Timeout() DurationPtrOutput {
 	}).(DurationPtrOutput)
 }
 
-// The spec to modify the URL of the request, prior to forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// The spec to modify the URL of the request, before forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 func (o HttpRouteActionPtrOutput) UrlRewrite() UrlRewritePtrOutput {
 	return o.ApplyT(func(v *HttpRouteAction) *UrlRewrite {
 		if v == nil {
@@ -25375,7 +25375,7 @@ func (o HttpRouteActionPtrOutput) UrlRewrite() UrlRewritePtrOutput {
 	}).(UrlRewritePtrOutput)
 }
 
-// A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number. Once a backendService is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
+// A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number. After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
 func (o HttpRouteActionPtrOutput) WeightedBackendServices() WeightedBackendServiceArrayOutput {
 	return o.ApplyT(func(v *HttpRouteAction) []WeightedBackendService {
 		if v == nil {
@@ -25386,21 +25386,21 @@ func (o HttpRouteActionPtrOutput) WeightedBackendServices() WeightedBackendServi
 }
 
 type HttpRouteActionResponse struct {
-	// The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing Not supported when the URL map is bound to target gRPC proxy.
+	// The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard. Not supported when the URL map is bound to a target gRPC proxy.
 	CorsPolicy CorsPolicyResponse `pulumi:"corsPolicy"`
-	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests. For the requests impacted by fault injection, timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy.
+	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. For the requests impacted by fault injection, timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy.
 	FaultInjectionPolicy HttpFaultInjectionResponse `pulumi:"faultInjectionPolicy"`
-	// Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (i.e. end-of-stream), the duration in this field is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, will use the largest maxStreamDuration among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (known as *end-of-stream*), the duration in this field is computed from the beginning of the stream until the response has been processed, including all retries. A stream that does not complete in this duration is closed. If not specified, this field uses the maximum maxStreamDuration value among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	MaxStreamDuration DurationResponse `pulumi:"maxStreamDuration"`
-	// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 	RequestMirrorPolicy RequestMirrorPolicyResponse `pulumi:"requestMirrorPolicy"`
-	// Specifies the retry policy associated with this route. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Specifies the retry policy associated with this route.
 	RetryPolicy HttpRetryPolicyResponse `pulumi:"retryPolicy"`
-	// Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries. If not specified, will use the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as *end-of-stream*) up until the response has been processed. Timeout includes all retries. If not specified, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	Timeout DurationResponse `pulumi:"timeout"`
-	// The spec to modify the URL of the request, prior to forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// The spec to modify the URL of the request, before forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 	UrlRewrite UrlRewriteResponse `pulumi:"urlRewrite"`
-	// A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number. Once a backendService is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
+	// A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number. After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
 	WeightedBackendServices []WeightedBackendServiceResponse `pulumi:"weightedBackendServices"`
 }
 
@@ -25416,21 +25416,21 @@ type HttpRouteActionResponseInput interface {
 }
 
 type HttpRouteActionResponseArgs struct {
-	// The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing Not supported when the URL map is bound to target gRPC proxy.
+	// The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard. Not supported when the URL map is bound to a target gRPC proxy.
 	CorsPolicy CorsPolicyResponseInput `pulumi:"corsPolicy"`
-	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests. For the requests impacted by fault injection, timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy.
+	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. For the requests impacted by fault injection, timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy.
 	FaultInjectionPolicy HttpFaultInjectionResponseInput `pulumi:"faultInjectionPolicy"`
-	// Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (i.e. end-of-stream), the duration in this field is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, will use the largest maxStreamDuration among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (known as *end-of-stream*), the duration in this field is computed from the beginning of the stream until the response has been processed, including all retries. A stream that does not complete in this duration is closed. If not specified, this field uses the maximum maxStreamDuration value among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	MaxStreamDuration DurationResponseInput `pulumi:"maxStreamDuration"`
-	// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 	RequestMirrorPolicy RequestMirrorPolicyResponseInput `pulumi:"requestMirrorPolicy"`
-	// Specifies the retry policy associated with this route. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Specifies the retry policy associated with this route.
 	RetryPolicy HttpRetryPolicyResponseInput `pulumi:"retryPolicy"`
-	// Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries. If not specified, will use the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as *end-of-stream*) up until the response has been processed. Timeout includes all retries. If not specified, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	Timeout DurationResponseInput `pulumi:"timeout"`
-	// The spec to modify the URL of the request, prior to forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// The spec to modify the URL of the request, before forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 	UrlRewrite UrlRewriteResponseInput `pulumi:"urlRewrite"`
-	// A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number. Once a backendService is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
+	// A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number. After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
 	WeightedBackendServices WeightedBackendServiceResponseArrayInput `pulumi:"weightedBackendServices"`
 }
 
@@ -25511,42 +25511,42 @@ func (o HttpRouteActionResponseOutput) ToHttpRouteActionResponsePtrOutputWithCon
 	}).(HttpRouteActionResponsePtrOutput)
 }
 
-// The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing Not supported when the URL map is bound to target gRPC proxy.
+// The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard. Not supported when the URL map is bound to a target gRPC proxy.
 func (o HttpRouteActionResponseOutput) CorsPolicy() CorsPolicyResponseOutput {
 	return o.ApplyT(func(v HttpRouteActionResponse) CorsPolicyResponse { return v.CorsPolicy }).(CorsPolicyResponseOutput)
 }
 
-// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests. For the requests impacted by fault injection, timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy.
+// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. For the requests impacted by fault injection, timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy.
 func (o HttpRouteActionResponseOutput) FaultInjectionPolicy() HttpFaultInjectionResponseOutput {
 	return o.ApplyT(func(v HttpRouteActionResponse) HttpFaultInjectionResponse { return v.FaultInjectionPolicy }).(HttpFaultInjectionResponseOutput)
 }
 
-// Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (i.e. end-of-stream), the duration in this field is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, will use the largest maxStreamDuration among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+// Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (known as *end-of-stream*), the duration in this field is computed from the beginning of the stream until the response has been processed, including all retries. A stream that does not complete in this duration is closed. If not specified, this field uses the maximum maxStreamDuration value among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 func (o HttpRouteActionResponseOutput) MaxStreamDuration() DurationResponseOutput {
 	return o.ApplyT(func(v HttpRouteActionResponse) DurationResponse { return v.MaxStreamDuration }).(DurationResponseOutput)
 }
 
-// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 func (o HttpRouteActionResponseOutput) RequestMirrorPolicy() RequestMirrorPolicyResponseOutput {
 	return o.ApplyT(func(v HttpRouteActionResponse) RequestMirrorPolicyResponse { return v.RequestMirrorPolicy }).(RequestMirrorPolicyResponseOutput)
 }
 
-// Specifies the retry policy associated with this route. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Specifies the retry policy associated with this route.
 func (o HttpRouteActionResponseOutput) RetryPolicy() HttpRetryPolicyResponseOutput {
 	return o.ApplyT(func(v HttpRouteActionResponse) HttpRetryPolicyResponse { return v.RetryPolicy }).(HttpRetryPolicyResponseOutput)
 }
 
-// Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries. If not specified, will use the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as *end-of-stream*) up until the response has been processed. Timeout includes all retries. If not specified, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 func (o HttpRouteActionResponseOutput) Timeout() DurationResponseOutput {
 	return o.ApplyT(func(v HttpRouteActionResponse) DurationResponse { return v.Timeout }).(DurationResponseOutput)
 }
 
-// The spec to modify the URL of the request, prior to forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// The spec to modify the URL of the request, before forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 func (o HttpRouteActionResponseOutput) UrlRewrite() UrlRewriteResponseOutput {
 	return o.ApplyT(func(v HttpRouteActionResponse) UrlRewriteResponse { return v.UrlRewrite }).(UrlRewriteResponseOutput)
 }
 
-// A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number. Once a backendService is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
+// A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number. After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
 func (o HttpRouteActionResponseOutput) WeightedBackendServices() WeightedBackendServiceResponseArrayOutput {
 	return o.ApplyT(func(v HttpRouteActionResponse) []WeightedBackendServiceResponse { return v.WeightedBackendServices }).(WeightedBackendServiceResponseArrayOutput)
 }
@@ -25575,7 +25575,7 @@ func (o HttpRouteActionResponsePtrOutput) Elem() HttpRouteActionResponseOutput {
 	}).(HttpRouteActionResponseOutput)
 }
 
-// The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing Not supported when the URL map is bound to target gRPC proxy.
+// The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard. Not supported when the URL map is bound to a target gRPC proxy.
 func (o HttpRouteActionResponsePtrOutput) CorsPolicy() CorsPolicyResponsePtrOutput {
 	return o.ApplyT(func(v *HttpRouteActionResponse) *CorsPolicyResponse {
 		if v == nil {
@@ -25585,7 +25585,7 @@ func (o HttpRouteActionResponsePtrOutput) CorsPolicy() CorsPolicyResponsePtrOutp
 	}).(CorsPolicyResponsePtrOutput)
 }
 
-// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests. For the requests impacted by fault injection, timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy.
+// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. For the requests impacted by fault injection, timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy.
 func (o HttpRouteActionResponsePtrOutput) FaultInjectionPolicy() HttpFaultInjectionResponsePtrOutput {
 	return o.ApplyT(func(v *HttpRouteActionResponse) *HttpFaultInjectionResponse {
 		if v == nil {
@@ -25595,7 +25595,7 @@ func (o HttpRouteActionResponsePtrOutput) FaultInjectionPolicy() HttpFaultInject
 	}).(HttpFaultInjectionResponsePtrOutput)
 }
 
-// Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (i.e. end-of-stream), the duration in this field is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, will use the largest maxStreamDuration among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+// Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (known as *end-of-stream*), the duration in this field is computed from the beginning of the stream until the response has been processed, including all retries. A stream that does not complete in this duration is closed. If not specified, this field uses the maximum maxStreamDuration value among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 func (o HttpRouteActionResponsePtrOutput) MaxStreamDuration() DurationResponsePtrOutput {
 	return o.ApplyT(func(v *HttpRouteActionResponse) *DurationResponse {
 		if v == nil {
@@ -25605,7 +25605,7 @@ func (o HttpRouteActionResponsePtrOutput) MaxStreamDuration() DurationResponsePt
 	}).(DurationResponsePtrOutput)
 }
 
-// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 func (o HttpRouteActionResponsePtrOutput) RequestMirrorPolicy() RequestMirrorPolicyResponsePtrOutput {
 	return o.ApplyT(func(v *HttpRouteActionResponse) *RequestMirrorPolicyResponse {
 		if v == nil {
@@ -25615,7 +25615,7 @@ func (o HttpRouteActionResponsePtrOutput) RequestMirrorPolicy() RequestMirrorPol
 	}).(RequestMirrorPolicyResponsePtrOutput)
 }
 
-// Specifies the retry policy associated with this route. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Specifies the retry policy associated with this route.
 func (o HttpRouteActionResponsePtrOutput) RetryPolicy() HttpRetryPolicyResponsePtrOutput {
 	return o.ApplyT(func(v *HttpRouteActionResponse) *HttpRetryPolicyResponse {
 		if v == nil {
@@ -25625,7 +25625,7 @@ func (o HttpRouteActionResponsePtrOutput) RetryPolicy() HttpRetryPolicyResponseP
 	}).(HttpRetryPolicyResponsePtrOutput)
 }
 
-// Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries. If not specified, will use the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as *end-of-stream*) up until the response has been processed. Timeout includes all retries. If not specified, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 func (o HttpRouteActionResponsePtrOutput) Timeout() DurationResponsePtrOutput {
 	return o.ApplyT(func(v *HttpRouteActionResponse) *DurationResponse {
 		if v == nil {
@@ -25635,7 +25635,7 @@ func (o HttpRouteActionResponsePtrOutput) Timeout() DurationResponsePtrOutput {
 	}).(DurationResponsePtrOutput)
 }
 
-// The spec to modify the URL of the request, prior to forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// The spec to modify the URL of the request, before forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 func (o HttpRouteActionResponsePtrOutput) UrlRewrite() UrlRewriteResponsePtrOutput {
 	return o.ApplyT(func(v *HttpRouteActionResponse) *UrlRewriteResponse {
 		if v == nil {
@@ -25645,7 +25645,7 @@ func (o HttpRouteActionResponsePtrOutput) UrlRewrite() UrlRewriteResponsePtrOutp
 	}).(UrlRewriteResponsePtrOutput)
 }
 
-// A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number. Once a backendService is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
+// A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number. After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
 func (o HttpRouteActionResponsePtrOutput) WeightedBackendServices() WeightedBackendServiceResponseArrayOutput {
 	return o.ApplyT(func(v *HttpRouteActionResponse) []WeightedBackendServiceResponse {
 		if v == nil {
@@ -25655,25 +25655,25 @@ func (o HttpRouteActionResponsePtrOutput) WeightedBackendServices() WeightedBack
 	}).(WeightedBackendServiceResponseArrayOutput)
 }
 
-// An HttpRouteRule specifies how to match an HTTP request and the corresponding routing action that load balancing proxies will perform.
+// The HttpRouteRule setting specifies how to match an HTTP request and the corresponding routing action that load balancing proxies perform.
 type HttpRouteRule struct {
 	// The short description conveying the intent of this routeRule. The description can have a maximum length of 1024 characters.
 	Description *string `pulumi:"description"`
-	// Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction specified here are applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction value specified here is applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	HeaderAction *HttpHeaderAction `pulumi:"headerAction"`
-	// Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director. httpFilterConfigs only applies for Loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director. httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	HttpFilterConfigs []HttpFilterConfig `pulumi:"httpFilterConfigs"`
-	// Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director. httpFilterMetadata only applies for Loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. The only configTypeUrl supported is type.googleapis.com/google.protobuf.Struct Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director. httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. The only configTypeUrl supported is type.googleapis.com/google.protobuf.Struct Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	HttpFilterMetadata []HttpFilterConfig `pulumi:"httpFilterMetadata"`
 	// The list of criteria for matching attributes of a request to this routeRule. This list has OR semantics: the request matches this routeRule when any of the matchRules are satisfied. However predicates within a given matchRule have AND semantics. All predicates within a matchRule must match for the request to match the rule.
 	MatchRules []HttpRouteRuleMatch `pulumi:"matchRules"`
-	// For routeRules within a given pathMatcher, priority determines the order in which load balancer will interpret routeRules. RouteRules are evaluated in order of priority, from the lowest to highest number. The priority of a rule decreases as its number increases (1, 2, 3, N+1). The first rule that matches the request is applied. You cannot configure two or more routeRules with the same priority. Priority for each rule must be set to a number between 0 and 2147483647 inclusive. Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
+	// For routeRules within a given pathMatcher, priority determines the order in which a load balancer interprets routeRules. RouteRules are evaluated in order of priority, from the lowest to highest number. The priority of a rule decreases as its number increases (1, 2, 3, N+1). The first rule that matches the request is applied. You cannot configure two or more routeRules with the same priority. Priority for each rule must be set to a number from 0 to 2147483647 inclusive. Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
 	Priority *int `pulumi:"priority"`
-	// In response to a matching matchRule, the load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a routeRule's routeAction.
+	// In response to a matching matchRule, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a route rule's routeAction.
 	RouteAction *HttpRouteAction `pulumi:"routeAction"`
-	// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendService s. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
+	// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
 	Service *string `pulumi:"service"`
-	// When this rule is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+	// When this rule is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
 	UrlRedirect *HttpRedirectAction `pulumi:"urlRedirect"`
 }
 
@@ -25688,25 +25688,25 @@ type HttpRouteRuleInput interface {
 	ToHttpRouteRuleOutputWithContext(context.Context) HttpRouteRuleOutput
 }
 
-// An HttpRouteRule specifies how to match an HTTP request and the corresponding routing action that load balancing proxies will perform.
+// The HttpRouteRule setting specifies how to match an HTTP request and the corresponding routing action that load balancing proxies perform.
 type HttpRouteRuleArgs struct {
 	// The short description conveying the intent of this routeRule. The description can have a maximum length of 1024 characters.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction specified here are applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction value specified here is applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	HeaderAction HttpHeaderActionPtrInput `pulumi:"headerAction"`
-	// Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director. httpFilterConfigs only applies for Loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director. httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	HttpFilterConfigs HttpFilterConfigArrayInput `pulumi:"httpFilterConfigs"`
-	// Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director. httpFilterMetadata only applies for Loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. The only configTypeUrl supported is type.googleapis.com/google.protobuf.Struct Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director. httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. The only configTypeUrl supported is type.googleapis.com/google.protobuf.Struct Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	HttpFilterMetadata HttpFilterConfigArrayInput `pulumi:"httpFilterMetadata"`
 	// The list of criteria for matching attributes of a request to this routeRule. This list has OR semantics: the request matches this routeRule when any of the matchRules are satisfied. However predicates within a given matchRule have AND semantics. All predicates within a matchRule must match for the request to match the rule.
 	MatchRules HttpRouteRuleMatchArrayInput `pulumi:"matchRules"`
-	// For routeRules within a given pathMatcher, priority determines the order in which load balancer will interpret routeRules. RouteRules are evaluated in order of priority, from the lowest to highest number. The priority of a rule decreases as its number increases (1, 2, 3, N+1). The first rule that matches the request is applied. You cannot configure two or more routeRules with the same priority. Priority for each rule must be set to a number between 0 and 2147483647 inclusive. Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
+	// For routeRules within a given pathMatcher, priority determines the order in which a load balancer interprets routeRules. RouteRules are evaluated in order of priority, from the lowest to highest number. The priority of a rule decreases as its number increases (1, 2, 3, N+1). The first rule that matches the request is applied. You cannot configure two or more routeRules with the same priority. Priority for each rule must be set to a number from 0 to 2147483647 inclusive. Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
 	Priority pulumi.IntPtrInput `pulumi:"priority"`
-	// In response to a matching matchRule, the load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a routeRule's routeAction.
+	// In response to a matching matchRule, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a route rule's routeAction.
 	RouteAction HttpRouteActionPtrInput `pulumi:"routeAction"`
-	// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendService s. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
+	// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
 	Service pulumi.StringPtrInput `pulumi:"service"`
-	// When this rule is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+	// When this rule is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
 	UrlRedirect HttpRedirectActionPtrInput `pulumi:"urlRedirect"`
 }
 
@@ -25747,7 +25747,7 @@ func (i HttpRouteRuleArray) ToHttpRouteRuleArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleArrayOutput)
 }
 
-// An HttpRouteRule specifies how to match an HTTP request and the corresponding routing action that load balancing proxies will perform.
+// The HttpRouteRule setting specifies how to match an HTTP request and the corresponding routing action that load balancing proxies perform.
 type HttpRouteRuleOutput struct{ *pulumi.OutputState }
 
 func (HttpRouteRuleOutput) ElementType() reflect.Type {
@@ -25767,17 +25767,17 @@ func (o HttpRouteRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpRouteRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction specified here are applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction value specified here is applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 func (o HttpRouteRuleOutput) HeaderAction() HttpHeaderActionPtrOutput {
 	return o.ApplyT(func(v HttpRouteRule) *HttpHeaderAction { return v.HeaderAction }).(HttpHeaderActionPtrOutput)
 }
 
-// Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director. httpFilterConfigs only applies for Loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director. httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 func (o HttpRouteRuleOutput) HttpFilterConfigs() HttpFilterConfigArrayOutput {
 	return o.ApplyT(func(v HttpRouteRule) []HttpFilterConfig { return v.HttpFilterConfigs }).(HttpFilterConfigArrayOutput)
 }
 
-// Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director. httpFilterMetadata only applies for Loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. The only configTypeUrl supported is type.googleapis.com/google.protobuf.Struct Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director. httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. The only configTypeUrl supported is type.googleapis.com/google.protobuf.Struct Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 func (o HttpRouteRuleOutput) HttpFilterMetadata() HttpFilterConfigArrayOutput {
 	return o.ApplyT(func(v HttpRouteRule) []HttpFilterConfig { return v.HttpFilterMetadata }).(HttpFilterConfigArrayOutput)
 }
@@ -25787,22 +25787,22 @@ func (o HttpRouteRuleOutput) MatchRules() HttpRouteRuleMatchArrayOutput {
 	return o.ApplyT(func(v HttpRouteRule) []HttpRouteRuleMatch { return v.MatchRules }).(HttpRouteRuleMatchArrayOutput)
 }
 
-// For routeRules within a given pathMatcher, priority determines the order in which load balancer will interpret routeRules. RouteRules are evaluated in order of priority, from the lowest to highest number. The priority of a rule decreases as its number increases (1, 2, 3, N+1). The first rule that matches the request is applied. You cannot configure two or more routeRules with the same priority. Priority for each rule must be set to a number between 0 and 2147483647 inclusive. Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
+// For routeRules within a given pathMatcher, priority determines the order in which a load balancer interprets routeRules. RouteRules are evaluated in order of priority, from the lowest to highest number. The priority of a rule decreases as its number increases (1, 2, 3, N+1). The first rule that matches the request is applied. You cannot configure two or more routeRules with the same priority. Priority for each rule must be set to a number from 0 to 2147483647 inclusive. Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
 func (o HttpRouteRuleOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HttpRouteRule) *int { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
-// In response to a matching matchRule, the load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a routeRule's routeAction.
+// In response to a matching matchRule, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a route rule's routeAction.
 func (o HttpRouteRuleOutput) RouteAction() HttpRouteActionPtrOutput {
 	return o.ApplyT(func(v HttpRouteRule) *HttpRouteAction { return v.RouteAction }).(HttpRouteActionPtrOutput)
 }
 
-// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendService s. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
+// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
 func (o HttpRouteRuleOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpRouteRule) *string { return v.Service }).(pulumi.StringPtrOutput)
 }
 
-// When this rule is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+// When this rule is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
 func (o HttpRouteRuleOutput) UrlRedirect() HttpRedirectActionPtrOutput {
 	return o.ApplyT(func(v HttpRouteRule) *HttpRedirectAction { return v.UrlRedirect }).(HttpRedirectActionPtrOutput)
 }
@@ -25829,19 +25829,19 @@ func (o HttpRouteRuleArrayOutput) Index(i pulumi.IntInput) HttpRouteRuleOutput {
 
 // HttpRouteRuleMatch specifies a set of criteria for matching requests to an HttpRouteRule. All specified criteria must be satisfied for a match to occur.
 type HttpRouteRuleMatch struct {
-	// For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL. fullPathMatch must be between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+	// For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL. fullPathMatch must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
 	FullPathMatch *string `pulumi:"fullPathMatch"`
 	// Specifies a list of header match criteria, all of which must match corresponding headers in the request.
 	HeaderMatches []HttpHeaderMatch `pulumi:"headerMatches"`
-	// Specifies that prefixMatch and fullPathMatch matches are case sensitive. The default value is false. ignoreCase must not be used with regexMatch. Not supported when the URL map is bound to target gRPC proxy.
+	// Specifies that prefixMatch and fullPathMatch matches are case sensitive. The default value is false. ignoreCase must not be used with regexMatch. Not supported when the URL map is bound to a target gRPC proxy.
 	IgnoreCase *bool `pulumi:"ignoreCase"`
-	// Opaque filter criteria used by Loadbalancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to Loadbalancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadataFilters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here will be applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Opaque filter criteria used by the load balancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to the load balancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadata filters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here is applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	MetadataFilters []MetadataFilter `pulumi:"metadataFilters"`
-	// For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+	// For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
 	PrefixMatch *string `pulumi:"prefixMatch"`
-	// Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to target gRPC proxy.
+	// Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to a target gRPC proxy.
 	QueryParameterMatches []HttpQueryParameterMatch `pulumi:"queryParameterMatches"`
-	// For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar please see github.com/google/re2/wiki/Syntax Only one of prefixMatch, fullPathMatch or regexMatch must be specified. Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For more information about regular expression syntax, see Syntax. Only one of prefixMatch, fullPathMatch or regexMatch must be specified. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	RegexMatch *string `pulumi:"regexMatch"`
 }
 
@@ -25858,19 +25858,19 @@ type HttpRouteRuleMatchInput interface {
 
 // HttpRouteRuleMatch specifies a set of criteria for matching requests to an HttpRouteRule. All specified criteria must be satisfied for a match to occur.
 type HttpRouteRuleMatchArgs struct {
-	// For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL. fullPathMatch must be between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+	// For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL. fullPathMatch must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
 	FullPathMatch pulumi.StringPtrInput `pulumi:"fullPathMatch"`
 	// Specifies a list of header match criteria, all of which must match corresponding headers in the request.
 	HeaderMatches HttpHeaderMatchArrayInput `pulumi:"headerMatches"`
-	// Specifies that prefixMatch and fullPathMatch matches are case sensitive. The default value is false. ignoreCase must not be used with regexMatch. Not supported when the URL map is bound to target gRPC proxy.
+	// Specifies that prefixMatch and fullPathMatch matches are case sensitive. The default value is false. ignoreCase must not be used with regexMatch. Not supported when the URL map is bound to a target gRPC proxy.
 	IgnoreCase pulumi.BoolPtrInput `pulumi:"ignoreCase"`
-	// Opaque filter criteria used by Loadbalancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to Loadbalancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadataFilters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here will be applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Opaque filter criteria used by the load balancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to the load balancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadata filters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here is applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	MetadataFilters MetadataFilterArrayInput `pulumi:"metadataFilters"`
-	// For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+	// For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
 	PrefixMatch pulumi.StringPtrInput `pulumi:"prefixMatch"`
-	// Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to target gRPC proxy.
+	// Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to a target gRPC proxy.
 	QueryParameterMatches HttpQueryParameterMatchArrayInput `pulumi:"queryParameterMatches"`
-	// For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar please see github.com/google/re2/wiki/Syntax Only one of prefixMatch, fullPathMatch or regexMatch must be specified. Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For more information about regular expression syntax, see Syntax. Only one of prefixMatch, fullPathMatch or regexMatch must be specified. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	RegexMatch pulumi.StringPtrInput `pulumi:"regexMatch"`
 }
 
@@ -25926,7 +25926,7 @@ func (o HttpRouteRuleMatchOutput) ToHttpRouteRuleMatchOutputWithContext(ctx cont
 	return o
 }
 
-// For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL. fullPathMatch must be between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+// For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL. fullPathMatch must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
 func (o HttpRouteRuleMatchOutput) FullPathMatch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpRouteRuleMatch) *string { return v.FullPathMatch }).(pulumi.StringPtrOutput)
 }
@@ -25936,27 +25936,27 @@ func (o HttpRouteRuleMatchOutput) HeaderMatches() HttpHeaderMatchArrayOutput {
 	return o.ApplyT(func(v HttpRouteRuleMatch) []HttpHeaderMatch { return v.HeaderMatches }).(HttpHeaderMatchArrayOutput)
 }
 
-// Specifies that prefixMatch and fullPathMatch matches are case sensitive. The default value is false. ignoreCase must not be used with regexMatch. Not supported when the URL map is bound to target gRPC proxy.
+// Specifies that prefixMatch and fullPathMatch matches are case sensitive. The default value is false. ignoreCase must not be used with regexMatch. Not supported when the URL map is bound to a target gRPC proxy.
 func (o HttpRouteRuleMatchOutput) IgnoreCase() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v HttpRouteRuleMatch) *bool { return v.IgnoreCase }).(pulumi.BoolPtrOutput)
 }
 
-// Opaque filter criteria used by Loadbalancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to Loadbalancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadataFilters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here will be applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Opaque filter criteria used by the load balancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to the load balancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadata filters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here is applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 func (o HttpRouteRuleMatchOutput) MetadataFilters() MetadataFilterArrayOutput {
 	return o.ApplyT(func(v HttpRouteRuleMatch) []MetadataFilter { return v.MetadataFilters }).(MetadataFilterArrayOutput)
 }
 
-// For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+// For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
 func (o HttpRouteRuleMatchOutput) PrefixMatch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpRouteRuleMatch) *string { return v.PrefixMatch }).(pulumi.StringPtrOutput)
 }
 
-// Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to target gRPC proxy.
+// Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to a target gRPC proxy.
 func (o HttpRouteRuleMatchOutput) QueryParameterMatches() HttpQueryParameterMatchArrayOutput {
 	return o.ApplyT(func(v HttpRouteRuleMatch) []HttpQueryParameterMatch { return v.QueryParameterMatches }).(HttpQueryParameterMatchArrayOutput)
 }
 
-// For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar please see github.com/google/re2/wiki/Syntax Only one of prefixMatch, fullPathMatch or regexMatch must be specified. Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+// For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For more information about regular expression syntax, see Syntax. Only one of prefixMatch, fullPathMatch or regexMatch must be specified. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 func (o HttpRouteRuleMatchOutput) RegexMatch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpRouteRuleMatch) *string { return v.RegexMatch }).(pulumi.StringPtrOutput)
 }
@@ -25983,19 +25983,19 @@ func (o HttpRouteRuleMatchArrayOutput) Index(i pulumi.IntInput) HttpRouteRuleMat
 
 // HttpRouteRuleMatch specifies a set of criteria for matching requests to an HttpRouteRule. All specified criteria must be satisfied for a match to occur.
 type HttpRouteRuleMatchResponse struct {
-	// For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL. fullPathMatch must be between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+	// For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL. fullPathMatch must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
 	FullPathMatch string `pulumi:"fullPathMatch"`
 	// Specifies a list of header match criteria, all of which must match corresponding headers in the request.
 	HeaderMatches []HttpHeaderMatchResponse `pulumi:"headerMatches"`
-	// Specifies that prefixMatch and fullPathMatch matches are case sensitive. The default value is false. ignoreCase must not be used with regexMatch. Not supported when the URL map is bound to target gRPC proxy.
+	// Specifies that prefixMatch and fullPathMatch matches are case sensitive. The default value is false. ignoreCase must not be used with regexMatch. Not supported when the URL map is bound to a target gRPC proxy.
 	IgnoreCase bool `pulumi:"ignoreCase"`
-	// Opaque filter criteria used by Loadbalancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to Loadbalancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadataFilters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here will be applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Opaque filter criteria used by the load balancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to the load balancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadata filters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here is applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	MetadataFilters []MetadataFilterResponse `pulumi:"metadataFilters"`
-	// For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+	// For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
 	PrefixMatch string `pulumi:"prefixMatch"`
-	// Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to target gRPC proxy.
+	// Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to a target gRPC proxy.
 	QueryParameterMatches []HttpQueryParameterMatchResponse `pulumi:"queryParameterMatches"`
-	// For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar please see github.com/google/re2/wiki/Syntax Only one of prefixMatch, fullPathMatch or regexMatch must be specified. Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For more information about regular expression syntax, see Syntax. Only one of prefixMatch, fullPathMatch or regexMatch must be specified. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	RegexMatch string `pulumi:"regexMatch"`
 }
 
@@ -26012,19 +26012,19 @@ type HttpRouteRuleMatchResponseInput interface {
 
 // HttpRouteRuleMatch specifies a set of criteria for matching requests to an HttpRouteRule. All specified criteria must be satisfied for a match to occur.
 type HttpRouteRuleMatchResponseArgs struct {
-	// For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL. fullPathMatch must be between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+	// For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL. fullPathMatch must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
 	FullPathMatch pulumi.StringInput `pulumi:"fullPathMatch"`
 	// Specifies a list of header match criteria, all of which must match corresponding headers in the request.
 	HeaderMatches HttpHeaderMatchResponseArrayInput `pulumi:"headerMatches"`
-	// Specifies that prefixMatch and fullPathMatch matches are case sensitive. The default value is false. ignoreCase must not be used with regexMatch. Not supported when the URL map is bound to target gRPC proxy.
+	// Specifies that prefixMatch and fullPathMatch matches are case sensitive. The default value is false. ignoreCase must not be used with regexMatch. Not supported when the URL map is bound to a target gRPC proxy.
 	IgnoreCase pulumi.BoolInput `pulumi:"ignoreCase"`
-	// Opaque filter criteria used by Loadbalancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to Loadbalancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadataFilters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here will be applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Opaque filter criteria used by the load balancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to the load balancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadata filters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here is applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	MetadataFilters MetadataFilterResponseArrayInput `pulumi:"metadataFilters"`
-	// For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+	// For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
 	PrefixMatch pulumi.StringInput `pulumi:"prefixMatch"`
-	// Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to target gRPC proxy.
+	// Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to a target gRPC proxy.
 	QueryParameterMatches HttpQueryParameterMatchResponseArrayInput `pulumi:"queryParameterMatches"`
-	// For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar please see github.com/google/re2/wiki/Syntax Only one of prefixMatch, fullPathMatch or regexMatch must be specified. Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For more information about regular expression syntax, see Syntax. Only one of prefixMatch, fullPathMatch or regexMatch must be specified. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	RegexMatch pulumi.StringInput `pulumi:"regexMatch"`
 }
 
@@ -26080,7 +26080,7 @@ func (o HttpRouteRuleMatchResponseOutput) ToHttpRouteRuleMatchResponseOutputWith
 	return o
 }
 
-// For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL. fullPathMatch must be between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+// For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL. fullPathMatch must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
 func (o HttpRouteRuleMatchResponseOutput) FullPathMatch() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpRouteRuleMatchResponse) string { return v.FullPathMatch }).(pulumi.StringOutput)
 }
@@ -26090,27 +26090,27 @@ func (o HttpRouteRuleMatchResponseOutput) HeaderMatches() HttpHeaderMatchRespons
 	return o.ApplyT(func(v HttpRouteRuleMatchResponse) []HttpHeaderMatchResponse { return v.HeaderMatches }).(HttpHeaderMatchResponseArrayOutput)
 }
 
-// Specifies that prefixMatch and fullPathMatch matches are case sensitive. The default value is false. ignoreCase must not be used with regexMatch. Not supported when the URL map is bound to target gRPC proxy.
+// Specifies that prefixMatch and fullPathMatch matches are case sensitive. The default value is false. ignoreCase must not be used with regexMatch. Not supported when the URL map is bound to a target gRPC proxy.
 func (o HttpRouteRuleMatchResponseOutput) IgnoreCase() pulumi.BoolOutput {
 	return o.ApplyT(func(v HttpRouteRuleMatchResponse) bool { return v.IgnoreCase }).(pulumi.BoolOutput)
 }
 
-// Opaque filter criteria used by Loadbalancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to Loadbalancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadataFilters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here will be applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Opaque filter criteria used by the load balancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to the load balancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadata filters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here is applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 func (o HttpRouteRuleMatchResponseOutput) MetadataFilters() MetadataFilterResponseArrayOutput {
 	return o.ApplyT(func(v HttpRouteRuleMatchResponse) []MetadataFilterResponse { return v.MetadataFilters }).(MetadataFilterResponseArrayOutput)
 }
 
-// For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+// For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
 func (o HttpRouteRuleMatchResponseOutput) PrefixMatch() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpRouteRuleMatchResponse) string { return v.PrefixMatch }).(pulumi.StringOutput)
 }
 
-// Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to target gRPC proxy.
+// Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to a target gRPC proxy.
 func (o HttpRouteRuleMatchResponseOutput) QueryParameterMatches() HttpQueryParameterMatchResponseArrayOutput {
 	return o.ApplyT(func(v HttpRouteRuleMatchResponse) []HttpQueryParameterMatchResponse { return v.QueryParameterMatches }).(HttpQueryParameterMatchResponseArrayOutput)
 }
 
-// For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar please see github.com/google/re2/wiki/Syntax Only one of prefixMatch, fullPathMatch or regexMatch must be specified. Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+// For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For more information about regular expression syntax, see Syntax. Only one of prefixMatch, fullPathMatch or regexMatch must be specified. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 func (o HttpRouteRuleMatchResponseOutput) RegexMatch() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpRouteRuleMatchResponse) string { return v.RegexMatch }).(pulumi.StringOutput)
 }
@@ -26135,25 +26135,25 @@ func (o HttpRouteRuleMatchResponseArrayOutput) Index(i pulumi.IntInput) HttpRout
 	}).(HttpRouteRuleMatchResponseOutput)
 }
 
-// An HttpRouteRule specifies how to match an HTTP request and the corresponding routing action that load balancing proxies will perform.
+// The HttpRouteRule setting specifies how to match an HTTP request and the corresponding routing action that load balancing proxies perform.
 type HttpRouteRuleResponse struct {
 	// The short description conveying the intent of this routeRule. The description can have a maximum length of 1024 characters.
 	Description string `pulumi:"description"`
-	// Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction specified here are applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction value specified here is applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	HeaderAction HttpHeaderActionResponse `pulumi:"headerAction"`
-	// Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director. httpFilterConfigs only applies for Loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director. httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	HttpFilterConfigs []HttpFilterConfigResponse `pulumi:"httpFilterConfigs"`
-	// Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director. httpFilterMetadata only applies for Loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. The only configTypeUrl supported is type.googleapis.com/google.protobuf.Struct Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director. httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. The only configTypeUrl supported is type.googleapis.com/google.protobuf.Struct Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	HttpFilterMetadata []HttpFilterConfigResponse `pulumi:"httpFilterMetadata"`
 	// The list of criteria for matching attributes of a request to this routeRule. This list has OR semantics: the request matches this routeRule when any of the matchRules are satisfied. However predicates within a given matchRule have AND semantics. All predicates within a matchRule must match for the request to match the rule.
 	MatchRules []HttpRouteRuleMatchResponse `pulumi:"matchRules"`
-	// For routeRules within a given pathMatcher, priority determines the order in which load balancer will interpret routeRules. RouteRules are evaluated in order of priority, from the lowest to highest number. The priority of a rule decreases as its number increases (1, 2, 3, N+1). The first rule that matches the request is applied. You cannot configure two or more routeRules with the same priority. Priority for each rule must be set to a number between 0 and 2147483647 inclusive. Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
+	// For routeRules within a given pathMatcher, priority determines the order in which a load balancer interprets routeRules. RouteRules are evaluated in order of priority, from the lowest to highest number. The priority of a rule decreases as its number increases (1, 2, 3, N+1). The first rule that matches the request is applied. You cannot configure two or more routeRules with the same priority. Priority for each rule must be set to a number from 0 to 2147483647 inclusive. Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
 	Priority int `pulumi:"priority"`
-	// In response to a matching matchRule, the load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a routeRule's routeAction.
+	// In response to a matching matchRule, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a route rule's routeAction.
 	RouteAction HttpRouteActionResponse `pulumi:"routeAction"`
-	// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendService s. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
+	// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
 	Service string `pulumi:"service"`
-	// When this rule is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+	// When this rule is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
 	UrlRedirect HttpRedirectActionResponse `pulumi:"urlRedirect"`
 }
 
@@ -26168,25 +26168,25 @@ type HttpRouteRuleResponseInput interface {
 	ToHttpRouteRuleResponseOutputWithContext(context.Context) HttpRouteRuleResponseOutput
 }
 
-// An HttpRouteRule specifies how to match an HTTP request and the corresponding routing action that load balancing proxies will perform.
+// The HttpRouteRule setting specifies how to match an HTTP request and the corresponding routing action that load balancing proxies perform.
 type HttpRouteRuleResponseArgs struct {
 	// The short description conveying the intent of this routeRule. The description can have a maximum length of 1024 characters.
 	Description pulumi.StringInput `pulumi:"description"`
-	// Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction specified here are applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction value specified here is applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	HeaderAction HttpHeaderActionResponseInput `pulumi:"headerAction"`
-	// Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director. httpFilterConfigs only applies for Loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director. httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	HttpFilterConfigs HttpFilterConfigResponseArrayInput `pulumi:"httpFilterConfigs"`
-	// Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director. httpFilterMetadata only applies for Loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. The only configTypeUrl supported is type.googleapis.com/google.protobuf.Struct Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director. httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. The only configTypeUrl supported is type.googleapis.com/google.protobuf.Struct Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	HttpFilterMetadata HttpFilterConfigResponseArrayInput `pulumi:"httpFilterMetadata"`
 	// The list of criteria for matching attributes of a request to this routeRule. This list has OR semantics: the request matches this routeRule when any of the matchRules are satisfied. However predicates within a given matchRule have AND semantics. All predicates within a matchRule must match for the request to match the rule.
 	MatchRules HttpRouteRuleMatchResponseArrayInput `pulumi:"matchRules"`
-	// For routeRules within a given pathMatcher, priority determines the order in which load balancer will interpret routeRules. RouteRules are evaluated in order of priority, from the lowest to highest number. The priority of a rule decreases as its number increases (1, 2, 3, N+1). The first rule that matches the request is applied. You cannot configure two or more routeRules with the same priority. Priority for each rule must be set to a number between 0 and 2147483647 inclusive. Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
+	// For routeRules within a given pathMatcher, priority determines the order in which a load balancer interprets routeRules. RouteRules are evaluated in order of priority, from the lowest to highest number. The priority of a rule decreases as its number increases (1, 2, 3, N+1). The first rule that matches the request is applied. You cannot configure two or more routeRules with the same priority. Priority for each rule must be set to a number from 0 to 2147483647 inclusive. Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
 	Priority pulumi.IntInput `pulumi:"priority"`
-	// In response to a matching matchRule, the load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a routeRule's routeAction.
+	// In response to a matching matchRule, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a route rule's routeAction.
 	RouteAction HttpRouteActionResponseInput `pulumi:"routeAction"`
-	// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendService s. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
+	// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
 	Service pulumi.StringInput `pulumi:"service"`
-	// When this rule is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+	// When this rule is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
 	UrlRedirect HttpRedirectActionResponseInput `pulumi:"urlRedirect"`
 }
 
@@ -26227,7 +26227,7 @@ func (i HttpRouteRuleResponseArray) ToHttpRouteRuleResponseArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleResponseArrayOutput)
 }
 
-// An HttpRouteRule specifies how to match an HTTP request and the corresponding routing action that load balancing proxies will perform.
+// The HttpRouteRule setting specifies how to match an HTTP request and the corresponding routing action that load balancing proxies perform.
 type HttpRouteRuleResponseOutput struct{ *pulumi.OutputState }
 
 func (HttpRouteRuleResponseOutput) ElementType() reflect.Type {
@@ -26247,17 +26247,17 @@ func (o HttpRouteRuleResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpRouteRuleResponse) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction specified here are applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction value specified here is applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 func (o HttpRouteRuleResponseOutput) HeaderAction() HttpHeaderActionResponseOutput {
 	return o.ApplyT(func(v HttpRouteRuleResponse) HttpHeaderActionResponse { return v.HeaderAction }).(HttpHeaderActionResponseOutput)
 }
 
-// Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director. httpFilterConfigs only applies for Loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director. httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 func (o HttpRouteRuleResponseOutput) HttpFilterConfigs() HttpFilterConfigResponseArrayOutput {
 	return o.ApplyT(func(v HttpRouteRuleResponse) []HttpFilterConfigResponse { return v.HttpFilterConfigs }).(HttpFilterConfigResponseArrayOutput)
 }
 
-// Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director. httpFilterMetadata only applies for Loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. The only configTypeUrl supported is type.googleapis.com/google.protobuf.Struct Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director. httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. The only configTypeUrl supported is type.googleapis.com/google.protobuf.Struct Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 func (o HttpRouteRuleResponseOutput) HttpFilterMetadata() HttpFilterConfigResponseArrayOutput {
 	return o.ApplyT(func(v HttpRouteRuleResponse) []HttpFilterConfigResponse { return v.HttpFilterMetadata }).(HttpFilterConfigResponseArrayOutput)
 }
@@ -26267,22 +26267,22 @@ func (o HttpRouteRuleResponseOutput) MatchRules() HttpRouteRuleMatchResponseArra
 	return o.ApplyT(func(v HttpRouteRuleResponse) []HttpRouteRuleMatchResponse { return v.MatchRules }).(HttpRouteRuleMatchResponseArrayOutput)
 }
 
-// For routeRules within a given pathMatcher, priority determines the order in which load balancer will interpret routeRules. RouteRules are evaluated in order of priority, from the lowest to highest number. The priority of a rule decreases as its number increases (1, 2, 3, N+1). The first rule that matches the request is applied. You cannot configure two or more routeRules with the same priority. Priority for each rule must be set to a number between 0 and 2147483647 inclusive. Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
+// For routeRules within a given pathMatcher, priority determines the order in which a load balancer interprets routeRules. RouteRules are evaluated in order of priority, from the lowest to highest number. The priority of a rule decreases as its number increases (1, 2, 3, N+1). The first rule that matches the request is applied. You cannot configure two or more routeRules with the same priority. Priority for each rule must be set to a number from 0 to 2147483647 inclusive. Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
 func (o HttpRouteRuleResponseOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v HttpRouteRuleResponse) int { return v.Priority }).(pulumi.IntOutput)
 }
 
-// In response to a matching matchRule, the load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a routeRule's routeAction.
+// In response to a matching matchRule, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a route rule's routeAction.
 func (o HttpRouteRuleResponseOutput) RouteAction() HttpRouteActionResponseOutput {
 	return o.ApplyT(func(v HttpRouteRuleResponse) HttpRouteActionResponse { return v.RouteAction }).(HttpRouteActionResponseOutput)
 }
 
-// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendService s. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
+// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
 func (o HttpRouteRuleResponseOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpRouteRuleResponse) string { return v.Service }).(pulumi.StringOutput)
 }
 
-// When this rule is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+// When this rule is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
 func (o HttpRouteRuleResponseOutput) UrlRedirect() HttpRedirectActionResponseOutput {
 	return o.ApplyT(func(v HttpRouteRuleResponse) HttpRedirectActionResponse { return v.UrlRedirect }).(HttpRedirectActionResponseOutput)
 }
@@ -28929,17 +28929,17 @@ func (o InstanceGroupManagerVersionResponseArrayOutput) Index(i pulumi.IntInput)
 }
 
 type InstanceProperties struct {
-	// Controls for advanced machine-related behavior features.
+	// Controls for advanced machine-related behavior features. Note that for MachineImage, this is not supported yet.
 	AdvancedMachineFeatures *AdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// Enables instances created based on these properties to send packets with source IP addresses other than their own and receive packets with destination IP addresses other than their own. If these instances will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If unsure, leave this set to false. See the Enable IP forwarding documentation for more information.
 	CanIpForward *bool `pulumi:"canIpForward"`
-	// Specifies the Confidential Instance options.
+	// Specifies the Confidential Instance options. Note that for MachineImage, this is not supported yet.
 	ConfidentialInstanceConfig *ConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// An optional text description for the instances that are created from these properties.
 	Description *string `pulumi:"description"`
 	// An array of disks that are associated with the instances that are created from these properties.
 	Disks []AttachedDisk `pulumi:"disks"`
-	// Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer
+	// Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer Note that for MachineImage, this is not supported yet.
 	DisplayDevice *DisplayDevice `pulumi:"displayDevice"`
 	// A list of guest accelerator cards' type and count to use for instances created from these properties.
 	GuestAccelerators []AcceleratorConfig `pulumi:"guestAccelerators"`
@@ -28952,20 +28952,22 @@ type InstanceProperties struct {
 	// Minimum cpu/platform to be used by instances. The instance may be scheduled on the specified or newer cpu/platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge". For more information, read Specifying a Minimum CPU Platform.
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
 	// An array of network access configurations for this interface.
-	NetworkInterfaces        []NetworkInterface        `pulumi:"networkInterfaces"`
+	NetworkInterfaces []NetworkInterface `pulumi:"networkInterfaces"`
+	// Note that for MachineImage, this is not supported yet.
 	NetworkPerformanceConfig *NetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
-	// PostKeyRevocationActionType of the instance.(will be deprecated soon)
+	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType *InstancePropertiesPostKeyRevocationActionType `pulumi:"postKeyRevocationActionType"`
-	// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default.
+	// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
 	PrivateIpv6GoogleAccess *InstancePropertiesPrivateIpv6GoogleAccess `pulumi:"privateIpv6GoogleAccess"`
-	// Specifies the reservations that instances can consume from.
+	// Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
 	ReservationAffinity *ReservationAffinity `pulumi:"reservationAffinity"`
-	// Resource policies (names, not ULRs) applied to instances created from these properties.
+	// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// Specifies the scheduling options for the instances that are created from these properties.
 	Scheduling *Scheduling `pulumi:"scheduling"`
 	// A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
-	ServiceAccounts        []ServiceAccount        `pulumi:"serviceAccounts"`
+	ServiceAccounts []ServiceAccount `pulumi:"serviceAccounts"`
+	// Note that for MachineImage, this is not supported yet.
 	ShieldedInstanceConfig *ShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// Specifies the Shielded VM options for the instances that are created from these properties.
 	ShieldedVmConfig *ShieldedVmConfig `pulumi:"shieldedVmConfig"`
@@ -28985,17 +28987,17 @@ type InstancePropertiesInput interface {
 }
 
 type InstancePropertiesArgs struct {
-	// Controls for advanced machine-related behavior features.
+	// Controls for advanced machine-related behavior features. Note that for MachineImage, this is not supported yet.
 	AdvancedMachineFeatures AdvancedMachineFeaturesPtrInput `pulumi:"advancedMachineFeatures"`
 	// Enables instances created based on these properties to send packets with source IP addresses other than their own and receive packets with destination IP addresses other than their own. If these instances will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If unsure, leave this set to false. See the Enable IP forwarding documentation for more information.
 	CanIpForward pulumi.BoolPtrInput `pulumi:"canIpForward"`
-	// Specifies the Confidential Instance options.
+	// Specifies the Confidential Instance options. Note that for MachineImage, this is not supported yet.
 	ConfidentialInstanceConfig ConfidentialInstanceConfigPtrInput `pulumi:"confidentialInstanceConfig"`
 	// An optional text description for the instances that are created from these properties.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// An array of disks that are associated with the instances that are created from these properties.
 	Disks AttachedDiskArrayInput `pulumi:"disks"`
-	// Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer
+	// Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer Note that for MachineImage, this is not supported yet.
 	DisplayDevice DisplayDevicePtrInput `pulumi:"displayDevice"`
 	// A list of guest accelerator cards' type and count to use for instances created from these properties.
 	GuestAccelerators AcceleratorConfigArrayInput `pulumi:"guestAccelerators"`
@@ -29008,20 +29010,22 @@ type InstancePropertiesArgs struct {
 	// Minimum cpu/platform to be used by instances. The instance may be scheduled on the specified or newer cpu/platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge". For more information, read Specifying a Minimum CPU Platform.
 	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
 	// An array of network access configurations for this interface.
-	NetworkInterfaces        NetworkInterfaceArrayInput       `pulumi:"networkInterfaces"`
+	NetworkInterfaces NetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
+	// Note that for MachineImage, this is not supported yet.
 	NetworkPerformanceConfig NetworkPerformanceConfigPtrInput `pulumi:"networkPerformanceConfig"`
-	// PostKeyRevocationActionType of the instance.(will be deprecated soon)
+	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType InstancePropertiesPostKeyRevocationActionTypePtrInput `pulumi:"postKeyRevocationActionType"`
-	// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default.
+	// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
 	PrivateIpv6GoogleAccess InstancePropertiesPrivateIpv6GoogleAccessPtrInput `pulumi:"privateIpv6GoogleAccess"`
-	// Specifies the reservations that instances can consume from.
+	// Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
 	ReservationAffinity ReservationAffinityPtrInput `pulumi:"reservationAffinity"`
-	// Resource policies (names, not ULRs) applied to instances created from these properties.
+	// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
 	ResourcePolicies pulumi.StringArrayInput `pulumi:"resourcePolicies"`
 	// Specifies the scheduling options for the instances that are created from these properties.
 	Scheduling SchedulingPtrInput `pulumi:"scheduling"`
 	// A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
-	ServiceAccounts        ServiceAccountArrayInput       `pulumi:"serviceAccounts"`
+	ServiceAccounts ServiceAccountArrayInput `pulumi:"serviceAccounts"`
+	// Note that for MachineImage, this is not supported yet.
 	ShieldedInstanceConfig ShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
 	// Specifies the Shielded VM options for the instances that are created from these properties.
 	ShieldedVmConfig ShieldedVmConfigPtrInput `pulumi:"shieldedVmConfig"`
@@ -29106,7 +29110,7 @@ func (o InstancePropertiesOutput) ToInstancePropertiesPtrOutputWithContext(ctx c
 	}).(InstancePropertiesPtrOutput)
 }
 
-// Controls for advanced machine-related behavior features.
+// Controls for advanced machine-related behavior features. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesOutput) AdvancedMachineFeatures() AdvancedMachineFeaturesPtrOutput {
 	return o.ApplyT(func(v InstanceProperties) *AdvancedMachineFeatures { return v.AdvancedMachineFeatures }).(AdvancedMachineFeaturesPtrOutput)
 }
@@ -29116,7 +29120,7 @@ func (o InstancePropertiesOutput) CanIpForward() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceProperties) *bool { return v.CanIpForward }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the Confidential Instance options.
+// Specifies the Confidential Instance options. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesOutput) ConfidentialInstanceConfig() ConfidentialInstanceConfigPtrOutput {
 	return o.ApplyT(func(v InstanceProperties) *ConfidentialInstanceConfig { return v.ConfidentialInstanceConfig }).(ConfidentialInstanceConfigPtrOutput)
 }
@@ -29131,7 +29135,7 @@ func (o InstancePropertiesOutput) Disks() AttachedDiskArrayOutput {
 	return o.ApplyT(func(v InstanceProperties) []AttachedDisk { return v.Disks }).(AttachedDiskArrayOutput)
 }
 
-// Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer
+// Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesOutput) DisplayDevice() DisplayDevicePtrOutput {
 	return o.ApplyT(func(v InstanceProperties) *DisplayDevice { return v.DisplayDevice }).(DisplayDevicePtrOutput)
 }
@@ -29166,30 +29170,31 @@ func (o InstancePropertiesOutput) NetworkInterfaces() NetworkInterfaceArrayOutpu
 	return o.ApplyT(func(v InstanceProperties) []NetworkInterface { return v.NetworkInterfaces }).(NetworkInterfaceArrayOutput)
 }
 
+// Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesOutput) NetworkPerformanceConfig() NetworkPerformanceConfigPtrOutput {
 	return o.ApplyT(func(v InstanceProperties) *NetworkPerformanceConfig { return v.NetworkPerformanceConfig }).(NetworkPerformanceConfigPtrOutput)
 }
 
-// PostKeyRevocationActionType of the instance.(will be deprecated soon)
+// PostKeyRevocationActionType of the instance.
 func (o InstancePropertiesOutput) PostKeyRevocationActionType() InstancePropertiesPostKeyRevocationActionTypePtrOutput {
 	return o.ApplyT(func(v InstanceProperties) *InstancePropertiesPostKeyRevocationActionType {
 		return v.PostKeyRevocationActionType
 	}).(InstancePropertiesPostKeyRevocationActionTypePtrOutput)
 }
 
-// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default.
+// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesOutput) PrivateIpv6GoogleAccess() InstancePropertiesPrivateIpv6GoogleAccessPtrOutput {
 	return o.ApplyT(func(v InstanceProperties) *InstancePropertiesPrivateIpv6GoogleAccess {
 		return v.PrivateIpv6GoogleAccess
 	}).(InstancePropertiesPrivateIpv6GoogleAccessPtrOutput)
 }
 
-// Specifies the reservations that instances can consume from.
+// Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesOutput) ReservationAffinity() ReservationAffinityPtrOutput {
 	return o.ApplyT(func(v InstanceProperties) *ReservationAffinity { return v.ReservationAffinity }).(ReservationAffinityPtrOutput)
 }
 
-// Resource policies (names, not ULRs) applied to instances created from these properties.
+// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesOutput) ResourcePolicies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InstanceProperties) []string { return v.ResourcePolicies }).(pulumi.StringArrayOutput)
 }
@@ -29204,6 +29209,7 @@ func (o InstancePropertiesOutput) ServiceAccounts() ServiceAccountArrayOutput {
 	return o.ApplyT(func(v InstanceProperties) []ServiceAccount { return v.ServiceAccounts }).(ServiceAccountArrayOutput)
 }
 
+// Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesOutput) ShieldedInstanceConfig() ShieldedInstanceConfigPtrOutput {
 	return o.ApplyT(func(v InstanceProperties) *ShieldedInstanceConfig { return v.ShieldedInstanceConfig }).(ShieldedInstanceConfigPtrOutput)
 }
@@ -29242,7 +29248,7 @@ func (o InstancePropertiesPtrOutput) Elem() InstancePropertiesOutput {
 	}).(InstancePropertiesOutput)
 }
 
-// Controls for advanced machine-related behavior features.
+// Controls for advanced machine-related behavior features. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesPtrOutput) AdvancedMachineFeatures() AdvancedMachineFeaturesPtrOutput {
 	return o.ApplyT(func(v *InstanceProperties) *AdvancedMachineFeatures {
 		if v == nil {
@@ -29262,7 +29268,7 @@ func (o InstancePropertiesPtrOutput) CanIpForward() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the Confidential Instance options.
+// Specifies the Confidential Instance options. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesPtrOutput) ConfidentialInstanceConfig() ConfidentialInstanceConfigPtrOutput {
 	return o.ApplyT(func(v *InstanceProperties) *ConfidentialInstanceConfig {
 		if v == nil {
@@ -29292,7 +29298,7 @@ func (o InstancePropertiesPtrOutput) Disks() AttachedDiskArrayOutput {
 	}).(AttachedDiskArrayOutput)
 }
 
-// Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer
+// Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesPtrOutput) DisplayDevice() DisplayDevicePtrOutput {
 	return o.ApplyT(func(v *InstanceProperties) *DisplayDevice {
 		if v == nil {
@@ -29362,6 +29368,7 @@ func (o InstancePropertiesPtrOutput) NetworkInterfaces() NetworkInterfaceArrayOu
 	}).(NetworkInterfaceArrayOutput)
 }
 
+// Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesPtrOutput) NetworkPerformanceConfig() NetworkPerformanceConfigPtrOutput {
 	return o.ApplyT(func(v *InstanceProperties) *NetworkPerformanceConfig {
 		if v == nil {
@@ -29371,7 +29378,7 @@ func (o InstancePropertiesPtrOutput) NetworkPerformanceConfig() NetworkPerforman
 	}).(NetworkPerformanceConfigPtrOutput)
 }
 
-// PostKeyRevocationActionType of the instance.(will be deprecated soon)
+// PostKeyRevocationActionType of the instance.
 func (o InstancePropertiesPtrOutput) PostKeyRevocationActionType() InstancePropertiesPostKeyRevocationActionTypePtrOutput {
 	return o.ApplyT(func(v *InstanceProperties) *InstancePropertiesPostKeyRevocationActionType {
 		if v == nil {
@@ -29381,7 +29388,7 @@ func (o InstancePropertiesPtrOutput) PostKeyRevocationActionType() InstancePrope
 	}).(InstancePropertiesPostKeyRevocationActionTypePtrOutput)
 }
 
-// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default.
+// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesPtrOutput) PrivateIpv6GoogleAccess() InstancePropertiesPrivateIpv6GoogleAccessPtrOutput {
 	return o.ApplyT(func(v *InstanceProperties) *InstancePropertiesPrivateIpv6GoogleAccess {
 		if v == nil {
@@ -29391,7 +29398,7 @@ func (o InstancePropertiesPtrOutput) PrivateIpv6GoogleAccess() InstancePropertie
 	}).(InstancePropertiesPrivateIpv6GoogleAccessPtrOutput)
 }
 
-// Specifies the reservations that instances can consume from.
+// Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesPtrOutput) ReservationAffinity() ReservationAffinityPtrOutput {
 	return o.ApplyT(func(v *InstanceProperties) *ReservationAffinity {
 		if v == nil {
@@ -29401,7 +29408,7 @@ func (o InstancePropertiesPtrOutput) ReservationAffinity() ReservationAffinityPt
 	}).(ReservationAffinityPtrOutput)
 }
 
-// Resource policies (names, not ULRs) applied to instances created from these properties.
+// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesPtrOutput) ResourcePolicies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InstanceProperties) []string {
 		if v == nil {
@@ -29431,6 +29438,7 @@ func (o InstancePropertiesPtrOutput) ServiceAccounts() ServiceAccountArrayOutput
 	}).(ServiceAccountArrayOutput)
 }
 
+// Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesPtrOutput) ShieldedInstanceConfig() ShieldedInstanceConfigPtrOutput {
 	return o.ApplyT(func(v *InstanceProperties) *ShieldedInstanceConfig {
 		if v == nil {
@@ -29461,17 +29469,17 @@ func (o InstancePropertiesPtrOutput) Tags() TagsPtrOutput {
 }
 
 type InstancePropertiesResponse struct {
-	// Controls for advanced machine-related behavior features.
+	// Controls for advanced machine-related behavior features. Note that for MachineImage, this is not supported yet.
 	AdvancedMachineFeatures AdvancedMachineFeaturesResponse `pulumi:"advancedMachineFeatures"`
 	// Enables instances created based on these properties to send packets with source IP addresses other than their own and receive packets with destination IP addresses other than their own. If these instances will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If unsure, leave this set to false. See the Enable IP forwarding documentation for more information.
 	CanIpForward bool `pulumi:"canIpForward"`
-	// Specifies the Confidential Instance options.
+	// Specifies the Confidential Instance options. Note that for MachineImage, this is not supported yet.
 	ConfidentialInstanceConfig ConfidentialInstanceConfigResponse `pulumi:"confidentialInstanceConfig"`
 	// An optional text description for the instances that are created from these properties.
 	Description string `pulumi:"description"`
 	// An array of disks that are associated with the instances that are created from these properties.
 	Disks []AttachedDiskResponse `pulumi:"disks"`
-	// Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer
+	// Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer Note that for MachineImage, this is not supported yet.
 	DisplayDevice DisplayDeviceResponse `pulumi:"displayDevice"`
 	// A list of guest accelerator cards' type and count to use for instances created from these properties.
 	GuestAccelerators []AcceleratorConfigResponse `pulumi:"guestAccelerators"`
@@ -29484,20 +29492,22 @@ type InstancePropertiesResponse struct {
 	// Minimum cpu/platform to be used by instances. The instance may be scheduled on the specified or newer cpu/platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge". For more information, read Specifying a Minimum CPU Platform.
 	MinCpuPlatform string `pulumi:"minCpuPlatform"`
 	// An array of network access configurations for this interface.
-	NetworkInterfaces        []NetworkInterfaceResponse       `pulumi:"networkInterfaces"`
+	NetworkInterfaces []NetworkInterfaceResponse `pulumi:"networkInterfaces"`
+	// Note that for MachineImage, this is not supported yet.
 	NetworkPerformanceConfig NetworkPerformanceConfigResponse `pulumi:"networkPerformanceConfig"`
-	// PostKeyRevocationActionType of the instance.(will be deprecated soon)
+	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType string `pulumi:"postKeyRevocationActionType"`
-	// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default.
+	// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
 	PrivateIpv6GoogleAccess string `pulumi:"privateIpv6GoogleAccess"`
-	// Specifies the reservations that instances can consume from.
+	// Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
 	ReservationAffinity ReservationAffinityResponse `pulumi:"reservationAffinity"`
-	// Resource policies (names, not ULRs) applied to instances created from these properties.
+	// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// Specifies the scheduling options for the instances that are created from these properties.
 	Scheduling SchedulingResponse `pulumi:"scheduling"`
 	// A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
-	ServiceAccounts        []ServiceAccountResponse       `pulumi:"serviceAccounts"`
+	ServiceAccounts []ServiceAccountResponse `pulumi:"serviceAccounts"`
+	// Note that for MachineImage, this is not supported yet.
 	ShieldedInstanceConfig ShieldedInstanceConfigResponse `pulumi:"shieldedInstanceConfig"`
 	// Specifies the Shielded VM options for the instances that are created from these properties.
 	ShieldedVmConfig ShieldedVmConfigResponse `pulumi:"shieldedVmConfig"`
@@ -29517,17 +29527,17 @@ type InstancePropertiesResponseInput interface {
 }
 
 type InstancePropertiesResponseArgs struct {
-	// Controls for advanced machine-related behavior features.
+	// Controls for advanced machine-related behavior features. Note that for MachineImage, this is not supported yet.
 	AdvancedMachineFeatures AdvancedMachineFeaturesResponseInput `pulumi:"advancedMachineFeatures"`
 	// Enables instances created based on these properties to send packets with source IP addresses other than their own and receive packets with destination IP addresses other than their own. If these instances will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If unsure, leave this set to false. See the Enable IP forwarding documentation for more information.
 	CanIpForward pulumi.BoolInput `pulumi:"canIpForward"`
-	// Specifies the Confidential Instance options.
+	// Specifies the Confidential Instance options. Note that for MachineImage, this is not supported yet.
 	ConfidentialInstanceConfig ConfidentialInstanceConfigResponseInput `pulumi:"confidentialInstanceConfig"`
 	// An optional text description for the instances that are created from these properties.
 	Description pulumi.StringInput `pulumi:"description"`
 	// An array of disks that are associated with the instances that are created from these properties.
 	Disks AttachedDiskResponseArrayInput `pulumi:"disks"`
-	// Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer
+	// Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer Note that for MachineImage, this is not supported yet.
 	DisplayDevice DisplayDeviceResponseInput `pulumi:"displayDevice"`
 	// A list of guest accelerator cards' type and count to use for instances created from these properties.
 	GuestAccelerators AcceleratorConfigResponseArrayInput `pulumi:"guestAccelerators"`
@@ -29540,20 +29550,22 @@ type InstancePropertiesResponseArgs struct {
 	// Minimum cpu/platform to be used by instances. The instance may be scheduled on the specified or newer cpu/platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge". For more information, read Specifying a Minimum CPU Platform.
 	MinCpuPlatform pulumi.StringInput `pulumi:"minCpuPlatform"`
 	// An array of network access configurations for this interface.
-	NetworkInterfaces        NetworkInterfaceResponseArrayInput    `pulumi:"networkInterfaces"`
+	NetworkInterfaces NetworkInterfaceResponseArrayInput `pulumi:"networkInterfaces"`
+	// Note that for MachineImage, this is not supported yet.
 	NetworkPerformanceConfig NetworkPerformanceConfigResponseInput `pulumi:"networkPerformanceConfig"`
-	// PostKeyRevocationActionType of the instance.(will be deprecated soon)
+	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType pulumi.StringInput `pulumi:"postKeyRevocationActionType"`
-	// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default.
+	// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
 	PrivateIpv6GoogleAccess pulumi.StringInput `pulumi:"privateIpv6GoogleAccess"`
-	// Specifies the reservations that instances can consume from.
+	// Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
 	ReservationAffinity ReservationAffinityResponseInput `pulumi:"reservationAffinity"`
-	// Resource policies (names, not ULRs) applied to instances created from these properties.
+	// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
 	ResourcePolicies pulumi.StringArrayInput `pulumi:"resourcePolicies"`
 	// Specifies the scheduling options for the instances that are created from these properties.
 	Scheduling SchedulingResponseInput `pulumi:"scheduling"`
 	// A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
-	ServiceAccounts        ServiceAccountResponseArrayInput    `pulumi:"serviceAccounts"`
+	ServiceAccounts ServiceAccountResponseArrayInput `pulumi:"serviceAccounts"`
+	// Note that for MachineImage, this is not supported yet.
 	ShieldedInstanceConfig ShieldedInstanceConfigResponseInput `pulumi:"shieldedInstanceConfig"`
 	// Specifies the Shielded VM options for the instances that are created from these properties.
 	ShieldedVmConfig ShieldedVmConfigResponseInput `pulumi:"shieldedVmConfig"`
@@ -29638,7 +29650,7 @@ func (o InstancePropertiesResponseOutput) ToInstancePropertiesResponsePtrOutputW
 	}).(InstancePropertiesResponsePtrOutput)
 }
 
-// Controls for advanced machine-related behavior features.
+// Controls for advanced machine-related behavior features. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesResponseOutput) AdvancedMachineFeatures() AdvancedMachineFeaturesResponseOutput {
 	return o.ApplyT(func(v InstancePropertiesResponse) AdvancedMachineFeaturesResponse { return v.AdvancedMachineFeatures }).(AdvancedMachineFeaturesResponseOutput)
 }
@@ -29648,7 +29660,7 @@ func (o InstancePropertiesResponseOutput) CanIpForward() pulumi.BoolOutput {
 	return o.ApplyT(func(v InstancePropertiesResponse) bool { return v.CanIpForward }).(pulumi.BoolOutput)
 }
 
-// Specifies the Confidential Instance options.
+// Specifies the Confidential Instance options. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesResponseOutput) ConfidentialInstanceConfig() ConfidentialInstanceConfigResponseOutput {
 	return o.ApplyT(func(v InstancePropertiesResponse) ConfidentialInstanceConfigResponse {
 		return v.ConfidentialInstanceConfig
@@ -29665,7 +29677,7 @@ func (o InstancePropertiesResponseOutput) Disks() AttachedDiskResponseArrayOutpu
 	return o.ApplyT(func(v InstancePropertiesResponse) []AttachedDiskResponse { return v.Disks }).(AttachedDiskResponseArrayOutput)
 }
 
-// Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer
+// Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesResponseOutput) DisplayDevice() DisplayDeviceResponseOutput {
 	return o.ApplyT(func(v InstancePropertiesResponse) DisplayDeviceResponse { return v.DisplayDevice }).(DisplayDeviceResponseOutput)
 }
@@ -29700,26 +29712,27 @@ func (o InstancePropertiesResponseOutput) NetworkInterfaces() NetworkInterfaceRe
 	return o.ApplyT(func(v InstancePropertiesResponse) []NetworkInterfaceResponse { return v.NetworkInterfaces }).(NetworkInterfaceResponseArrayOutput)
 }
 
+// Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesResponseOutput) NetworkPerformanceConfig() NetworkPerformanceConfigResponseOutput {
 	return o.ApplyT(func(v InstancePropertiesResponse) NetworkPerformanceConfigResponse { return v.NetworkPerformanceConfig }).(NetworkPerformanceConfigResponseOutput)
 }
 
-// PostKeyRevocationActionType of the instance.(will be deprecated soon)
+// PostKeyRevocationActionType of the instance.
 func (o InstancePropertiesResponseOutput) PostKeyRevocationActionType() pulumi.StringOutput {
 	return o.ApplyT(func(v InstancePropertiesResponse) string { return v.PostKeyRevocationActionType }).(pulumi.StringOutput)
 }
 
-// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default.
+// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesResponseOutput) PrivateIpv6GoogleAccess() pulumi.StringOutput {
 	return o.ApplyT(func(v InstancePropertiesResponse) string { return v.PrivateIpv6GoogleAccess }).(pulumi.StringOutput)
 }
 
-// Specifies the reservations that instances can consume from.
+// Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesResponseOutput) ReservationAffinity() ReservationAffinityResponseOutput {
 	return o.ApplyT(func(v InstancePropertiesResponse) ReservationAffinityResponse { return v.ReservationAffinity }).(ReservationAffinityResponseOutput)
 }
 
-// Resource policies (names, not ULRs) applied to instances created from these properties.
+// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesResponseOutput) ResourcePolicies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InstancePropertiesResponse) []string { return v.ResourcePolicies }).(pulumi.StringArrayOutput)
 }
@@ -29734,6 +29747,7 @@ func (o InstancePropertiesResponseOutput) ServiceAccounts() ServiceAccountRespon
 	return o.ApplyT(func(v InstancePropertiesResponse) []ServiceAccountResponse { return v.ServiceAccounts }).(ServiceAccountResponseArrayOutput)
 }
 
+// Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesResponseOutput) ShieldedInstanceConfig() ShieldedInstanceConfigResponseOutput {
 	return o.ApplyT(func(v InstancePropertiesResponse) ShieldedInstanceConfigResponse { return v.ShieldedInstanceConfig }).(ShieldedInstanceConfigResponseOutput)
 }
@@ -29772,7 +29786,7 @@ func (o InstancePropertiesResponsePtrOutput) Elem() InstancePropertiesResponseOu
 	}).(InstancePropertiesResponseOutput)
 }
 
-// Controls for advanced machine-related behavior features.
+// Controls for advanced machine-related behavior features. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesResponsePtrOutput) AdvancedMachineFeatures() AdvancedMachineFeaturesResponsePtrOutput {
 	return o.ApplyT(func(v *InstancePropertiesResponse) *AdvancedMachineFeaturesResponse {
 		if v == nil {
@@ -29792,7 +29806,7 @@ func (o InstancePropertiesResponsePtrOutput) CanIpForward() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the Confidential Instance options.
+// Specifies the Confidential Instance options. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesResponsePtrOutput) ConfidentialInstanceConfig() ConfidentialInstanceConfigResponsePtrOutput {
 	return o.ApplyT(func(v *InstancePropertiesResponse) *ConfidentialInstanceConfigResponse {
 		if v == nil {
@@ -29822,7 +29836,7 @@ func (o InstancePropertiesResponsePtrOutput) Disks() AttachedDiskResponseArrayOu
 	}).(AttachedDiskResponseArrayOutput)
 }
 
-// Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer
+// Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesResponsePtrOutput) DisplayDevice() DisplayDeviceResponsePtrOutput {
 	return o.ApplyT(func(v *InstancePropertiesResponse) *DisplayDeviceResponse {
 		if v == nil {
@@ -29892,6 +29906,7 @@ func (o InstancePropertiesResponsePtrOutput) NetworkInterfaces() NetworkInterfac
 	}).(NetworkInterfaceResponseArrayOutput)
 }
 
+// Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesResponsePtrOutput) NetworkPerformanceConfig() NetworkPerformanceConfigResponsePtrOutput {
 	return o.ApplyT(func(v *InstancePropertiesResponse) *NetworkPerformanceConfigResponse {
 		if v == nil {
@@ -29901,7 +29916,7 @@ func (o InstancePropertiesResponsePtrOutput) NetworkPerformanceConfig() NetworkP
 	}).(NetworkPerformanceConfigResponsePtrOutput)
 }
 
-// PostKeyRevocationActionType of the instance.(will be deprecated soon)
+// PostKeyRevocationActionType of the instance.
 func (o InstancePropertiesResponsePtrOutput) PostKeyRevocationActionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstancePropertiesResponse) *string {
 		if v == nil {
@@ -29911,7 +29926,7 @@ func (o InstancePropertiesResponsePtrOutput) PostKeyRevocationActionType() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default.
+// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesResponsePtrOutput) PrivateIpv6GoogleAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstancePropertiesResponse) *string {
 		if v == nil {
@@ -29921,7 +29936,7 @@ func (o InstancePropertiesResponsePtrOutput) PrivateIpv6GoogleAccess() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the reservations that instances can consume from.
+// Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesResponsePtrOutput) ReservationAffinity() ReservationAffinityResponsePtrOutput {
 	return o.ApplyT(func(v *InstancePropertiesResponse) *ReservationAffinityResponse {
 		if v == nil {
@@ -29931,7 +29946,7 @@ func (o InstancePropertiesResponsePtrOutput) ReservationAffinity() ReservationAf
 	}).(ReservationAffinityResponsePtrOutput)
 }
 
-// Resource policies (names, not ULRs) applied to instances created from these properties.
+// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesResponsePtrOutput) ResourcePolicies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InstancePropertiesResponse) []string {
 		if v == nil {
@@ -29961,6 +29976,7 @@ func (o InstancePropertiesResponsePtrOutput) ServiceAccounts() ServiceAccountRes
 	}).(ServiceAccountResponseArrayOutput)
 }
 
+// Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesResponsePtrOutput) ShieldedInstanceConfig() ShieldedInstanceConfigResponsePtrOutput {
 	return o.ApplyT(func(v *InstancePropertiesResponse) *ShieldedInstanceConfigResponse {
 		if v == nil {
@@ -33155,11 +33171,11 @@ func (o MetadataPtrOutput) Items() MetadataItemsItemArrayOutput {
 	}).(MetadataItemsItemArrayOutput)
 }
 
-// Opaque filter criteria used by loadbalancers to restrict routing configuration to a limited set of loadbalancing proxies. Proxies and sidecars involved in loadbalancing would typically present metadata to the loadbalancers which need to match criteria specified here. If a match takes place, the relevant configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. An example for using metadataFilters would be: if loadbalancing involves Envoys, they will only receive routing configuration when values in metadataFilters match values supplied in of their XDS requests to loadbalancers.
+// Opaque filter criteria used by load balancers to restrict routing configuration to a limited set of load balancing proxies. Proxies and sidecars involved in load balancing would typically present metadata to the load balancers that need to match criteria specified here. If a match takes place, the relevant configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. An example for using metadataFilters would be: if load balancing involves Envoys, they receive routing configuration when values in metadataFilters match values supplied in of their XDS requests to loadbalancers.
 type MetadataFilter struct {
 	// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list must not be empty and can have at the most 64 entries.
 	FilterLabels []MetadataFilterLabelMatch `pulumi:"filterLabels"`
-	// Specifies how individual filterLabel matches within the list of filterLabels contribute towards the overall metadataFilter match. Supported values are: - MATCH_ANY: At least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: All filterLabels must have matching labels in the provided metadata.
+	// Specifies how individual filter label matches within the list of filterLabels and contributes toward the overall metadataFilter match. Supported values are: - MATCH_ANY: at least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: all filterLabels must have matching labels in the provided metadata.
 	FilterMatchCriteria *MetadataFilterFilterMatchCriteria `pulumi:"filterMatchCriteria"`
 }
 
@@ -33174,11 +33190,11 @@ type MetadataFilterInput interface {
 	ToMetadataFilterOutputWithContext(context.Context) MetadataFilterOutput
 }
 
-// Opaque filter criteria used by loadbalancers to restrict routing configuration to a limited set of loadbalancing proxies. Proxies and sidecars involved in loadbalancing would typically present metadata to the loadbalancers which need to match criteria specified here. If a match takes place, the relevant configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. An example for using metadataFilters would be: if loadbalancing involves Envoys, they will only receive routing configuration when values in metadataFilters match values supplied in of their XDS requests to loadbalancers.
+// Opaque filter criteria used by load balancers to restrict routing configuration to a limited set of load balancing proxies. Proxies and sidecars involved in load balancing would typically present metadata to the load balancers that need to match criteria specified here. If a match takes place, the relevant configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. An example for using metadataFilters would be: if load balancing involves Envoys, they receive routing configuration when values in metadataFilters match values supplied in of their XDS requests to loadbalancers.
 type MetadataFilterArgs struct {
 	// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list must not be empty and can have at the most 64 entries.
 	FilterLabels MetadataFilterLabelMatchArrayInput `pulumi:"filterLabels"`
-	// Specifies how individual filterLabel matches within the list of filterLabels contribute towards the overall metadataFilter match. Supported values are: - MATCH_ANY: At least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: All filterLabels must have matching labels in the provided metadata.
+	// Specifies how individual filter label matches within the list of filterLabels and contributes toward the overall metadataFilter match. Supported values are: - MATCH_ANY: at least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: all filterLabels must have matching labels in the provided metadata.
 	FilterMatchCriteria MetadataFilterFilterMatchCriteriaPtrInput `pulumi:"filterMatchCriteria"`
 }
 
@@ -33219,7 +33235,7 @@ func (i MetadataFilterArray) ToMetadataFilterArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(MetadataFilterArrayOutput)
 }
 
-// Opaque filter criteria used by loadbalancers to restrict routing configuration to a limited set of loadbalancing proxies. Proxies and sidecars involved in loadbalancing would typically present metadata to the loadbalancers which need to match criteria specified here. If a match takes place, the relevant configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. An example for using metadataFilters would be: if loadbalancing involves Envoys, they will only receive routing configuration when values in metadataFilters match values supplied in of their XDS requests to loadbalancers.
+// Opaque filter criteria used by load balancers to restrict routing configuration to a limited set of load balancing proxies. Proxies and sidecars involved in load balancing would typically present metadata to the load balancers that need to match criteria specified here. If a match takes place, the relevant configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. An example for using metadataFilters would be: if load balancing involves Envoys, they receive routing configuration when values in metadataFilters match values supplied in of their XDS requests to loadbalancers.
 type MetadataFilterOutput struct{ *pulumi.OutputState }
 
 func (MetadataFilterOutput) ElementType() reflect.Type {
@@ -33239,7 +33255,7 @@ func (o MetadataFilterOutput) FilterLabels() MetadataFilterLabelMatchArrayOutput
 	return o.ApplyT(func(v MetadataFilter) []MetadataFilterLabelMatch { return v.FilterLabels }).(MetadataFilterLabelMatchArrayOutput)
 }
 
-// Specifies how individual filterLabel matches within the list of filterLabels contribute towards the overall metadataFilter match. Supported values are: - MATCH_ANY: At least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: All filterLabels must have matching labels in the provided metadata.
+// Specifies how individual filter label matches within the list of filterLabels and contributes toward the overall metadataFilter match. Supported values are: - MATCH_ANY: at least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: all filterLabels must have matching labels in the provided metadata.
 func (o MetadataFilterOutput) FilterMatchCriteria() MetadataFilterFilterMatchCriteriaPtrOutput {
 	return o.ApplyT(func(v MetadataFilter) *MetadataFilterFilterMatchCriteria { return v.FilterMatchCriteria }).(MetadataFilterFilterMatchCriteriaPtrOutput)
 }
@@ -33264,7 +33280,7 @@ func (o MetadataFilterArrayOutput) Index(i pulumi.IntInput) MetadataFilterOutput
 	}).(MetadataFilterOutput)
 }
 
-// MetadataFilter label name value pairs that are expected to match corresponding labels presented as metadata to the loadbalancer.
+// MetadataFilter label name value pairs that are expected to match corresponding labels presented as metadata to the load balancer.
 type MetadataFilterLabelMatch struct {
 	// Name of metadata label. The name can have a maximum length of 1024 characters and must be at least 1 character long.
 	Name *string `pulumi:"name"`
@@ -33283,7 +33299,7 @@ type MetadataFilterLabelMatchInput interface {
 	ToMetadataFilterLabelMatchOutputWithContext(context.Context) MetadataFilterLabelMatchOutput
 }
 
-// MetadataFilter label name value pairs that are expected to match corresponding labels presented as metadata to the loadbalancer.
+// MetadataFilter label name value pairs that are expected to match corresponding labels presented as metadata to the load balancer.
 type MetadataFilterLabelMatchArgs struct {
 	// Name of metadata label. The name can have a maximum length of 1024 characters and must be at least 1 character long.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -33328,7 +33344,7 @@ func (i MetadataFilterLabelMatchArray) ToMetadataFilterLabelMatchArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(MetadataFilterLabelMatchArrayOutput)
 }
 
-// MetadataFilter label name value pairs that are expected to match corresponding labels presented as metadata to the loadbalancer.
+// MetadataFilter label name value pairs that are expected to match corresponding labels presented as metadata to the load balancer.
 type MetadataFilterLabelMatchOutput struct{ *pulumi.OutputState }
 
 func (MetadataFilterLabelMatchOutput) ElementType() reflect.Type {
@@ -33373,7 +33389,7 @@ func (o MetadataFilterLabelMatchArrayOutput) Index(i pulumi.IntInput) MetadataFi
 	}).(MetadataFilterLabelMatchOutput)
 }
 
-// MetadataFilter label name value pairs that are expected to match corresponding labels presented as metadata to the loadbalancer.
+// MetadataFilter label name value pairs that are expected to match corresponding labels presented as metadata to the load balancer.
 type MetadataFilterLabelMatchResponse struct {
 	// Name of metadata label. The name can have a maximum length of 1024 characters and must be at least 1 character long.
 	Name string `pulumi:"name"`
@@ -33392,7 +33408,7 @@ type MetadataFilterLabelMatchResponseInput interface {
 	ToMetadataFilterLabelMatchResponseOutputWithContext(context.Context) MetadataFilterLabelMatchResponseOutput
 }
 
-// MetadataFilter label name value pairs that are expected to match corresponding labels presented as metadata to the loadbalancer.
+// MetadataFilter label name value pairs that are expected to match corresponding labels presented as metadata to the load balancer.
 type MetadataFilterLabelMatchResponseArgs struct {
 	// Name of metadata label. The name can have a maximum length of 1024 characters and must be at least 1 character long.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -33437,7 +33453,7 @@ func (i MetadataFilterLabelMatchResponseArray) ToMetadataFilterLabelMatchRespons
 	return pulumi.ToOutputWithContext(ctx, i).(MetadataFilterLabelMatchResponseArrayOutput)
 }
 
-// MetadataFilter label name value pairs that are expected to match corresponding labels presented as metadata to the loadbalancer.
+// MetadataFilter label name value pairs that are expected to match corresponding labels presented as metadata to the load balancer.
 type MetadataFilterLabelMatchResponseOutput struct{ *pulumi.OutputState }
 
 func (MetadataFilterLabelMatchResponseOutput) ElementType() reflect.Type {
@@ -33482,11 +33498,11 @@ func (o MetadataFilterLabelMatchResponseArrayOutput) Index(i pulumi.IntInput) Me
 	}).(MetadataFilterLabelMatchResponseOutput)
 }
 
-// Opaque filter criteria used by loadbalancers to restrict routing configuration to a limited set of loadbalancing proxies. Proxies and sidecars involved in loadbalancing would typically present metadata to the loadbalancers which need to match criteria specified here. If a match takes place, the relevant configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. An example for using metadataFilters would be: if loadbalancing involves Envoys, they will only receive routing configuration when values in metadataFilters match values supplied in of their XDS requests to loadbalancers.
+// Opaque filter criteria used by load balancers to restrict routing configuration to a limited set of load balancing proxies. Proxies and sidecars involved in load balancing would typically present metadata to the load balancers that need to match criteria specified here. If a match takes place, the relevant configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. An example for using metadataFilters would be: if load balancing involves Envoys, they receive routing configuration when values in metadataFilters match values supplied in of their XDS requests to loadbalancers.
 type MetadataFilterResponse struct {
 	// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list must not be empty and can have at the most 64 entries.
 	FilterLabels []MetadataFilterLabelMatchResponse `pulumi:"filterLabels"`
-	// Specifies how individual filterLabel matches within the list of filterLabels contribute towards the overall metadataFilter match. Supported values are: - MATCH_ANY: At least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: All filterLabels must have matching labels in the provided metadata.
+	// Specifies how individual filter label matches within the list of filterLabels and contributes toward the overall metadataFilter match. Supported values are: - MATCH_ANY: at least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: all filterLabels must have matching labels in the provided metadata.
 	FilterMatchCriteria string `pulumi:"filterMatchCriteria"`
 }
 
@@ -33501,11 +33517,11 @@ type MetadataFilterResponseInput interface {
 	ToMetadataFilterResponseOutputWithContext(context.Context) MetadataFilterResponseOutput
 }
 
-// Opaque filter criteria used by loadbalancers to restrict routing configuration to a limited set of loadbalancing proxies. Proxies and sidecars involved in loadbalancing would typically present metadata to the loadbalancers which need to match criteria specified here. If a match takes place, the relevant configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. An example for using metadataFilters would be: if loadbalancing involves Envoys, they will only receive routing configuration when values in metadataFilters match values supplied in of their XDS requests to loadbalancers.
+// Opaque filter criteria used by load balancers to restrict routing configuration to a limited set of load balancing proxies. Proxies and sidecars involved in load balancing would typically present metadata to the load balancers that need to match criteria specified here. If a match takes place, the relevant configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. An example for using metadataFilters would be: if load balancing involves Envoys, they receive routing configuration when values in metadataFilters match values supplied in of their XDS requests to loadbalancers.
 type MetadataFilterResponseArgs struct {
 	// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list must not be empty and can have at the most 64 entries.
 	FilterLabels MetadataFilterLabelMatchResponseArrayInput `pulumi:"filterLabels"`
-	// Specifies how individual filterLabel matches within the list of filterLabels contribute towards the overall metadataFilter match. Supported values are: - MATCH_ANY: At least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: All filterLabels must have matching labels in the provided metadata.
+	// Specifies how individual filter label matches within the list of filterLabels and contributes toward the overall metadataFilter match. Supported values are: - MATCH_ANY: at least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: all filterLabels must have matching labels in the provided metadata.
 	FilterMatchCriteria pulumi.StringInput `pulumi:"filterMatchCriteria"`
 }
 
@@ -33546,7 +33562,7 @@ func (i MetadataFilterResponseArray) ToMetadataFilterResponseArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(MetadataFilterResponseArrayOutput)
 }
 
-// Opaque filter criteria used by loadbalancers to restrict routing configuration to a limited set of loadbalancing proxies. Proxies and sidecars involved in loadbalancing would typically present metadata to the loadbalancers which need to match criteria specified here. If a match takes place, the relevant configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. An example for using metadataFilters would be: if loadbalancing involves Envoys, they will only receive routing configuration when values in metadataFilters match values supplied in of their XDS requests to loadbalancers.
+// Opaque filter criteria used by load balancers to restrict routing configuration to a limited set of load balancing proxies. Proxies and sidecars involved in load balancing would typically present metadata to the load balancers that need to match criteria specified here. If a match takes place, the relevant configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. An example for using metadataFilters would be: if load balancing involves Envoys, they receive routing configuration when values in metadataFilters match values supplied in of their XDS requests to loadbalancers.
 type MetadataFilterResponseOutput struct{ *pulumi.OutputState }
 
 func (MetadataFilterResponseOutput) ElementType() reflect.Type {
@@ -33566,7 +33582,7 @@ func (o MetadataFilterResponseOutput) FilterLabels() MetadataFilterLabelMatchRes
 	return o.ApplyT(func(v MetadataFilterResponse) []MetadataFilterLabelMatchResponse { return v.FilterLabels }).(MetadataFilterLabelMatchResponseArrayOutput)
 }
 
-// Specifies how individual filterLabel matches within the list of filterLabels contribute towards the overall metadataFilter match. Supported values are: - MATCH_ANY: At least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: All filterLabels must have matching labels in the provided metadata.
+// Specifies how individual filter label matches within the list of filterLabels and contributes toward the overall metadataFilter match. Supported values are: - MATCH_ANY: at least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: all filterLabels must have matching labels in the provided metadata.
 func (o MetadataFilterResponseOutput) FilterMatchCriteria() pulumi.StringOutput {
 	return o.ApplyT(func(v MetadataFilterResponse) string { return v.FilterMatchCriteria }).(pulumi.StringOutput)
 }
@@ -35637,7 +35653,7 @@ type NetworkInterface struct {
 	AliasIpRanges []AliasIpRange `pulumi:"aliasIpRanges"`
 	// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
 	Ipv6AccessConfigs []AccessConfig `pulumi:"ipv6AccessConfigs"`
-	// URL of the network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used; if the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default
+	// URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default
 	Network *string `pulumi:"network"`
 	// An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
 	NetworkIP *string `pulumi:"networkIP"`
@@ -35670,7 +35686,7 @@ type NetworkInterfaceArgs struct {
 	AliasIpRanges AliasIpRangeArrayInput `pulumi:"aliasIpRanges"`
 	// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
 	Ipv6AccessConfigs AccessConfigArrayInput `pulumi:"ipv6AccessConfigs"`
-	// URL of the network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used; if the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default
+	// URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
 	NetworkIP pulumi.StringPtrInput `pulumi:"networkIP"`
@@ -35751,7 +35767,7 @@ func (o NetworkInterfaceOutput) Ipv6AccessConfigs() AccessConfigArrayOutput {
 	return o.ApplyT(func(v NetworkInterface) []AccessConfig { return v.Ipv6AccessConfigs }).(AccessConfigArrayOutput)
 }
 
-// URL of the network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used; if the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default
+// URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default
 func (o NetworkInterfaceOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkInterface) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
@@ -35819,7 +35835,7 @@ type NetworkInterfaceResponse struct {
 	Kind string `pulumi:"kind"`
 	// The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
 	Name string `pulumi:"name"`
-	// URL of the network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used; if the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default
+	// URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default
 	Network string `pulumi:"network"`
 	// An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
 	NetworkIP string `pulumi:"networkIP"`
@@ -35862,7 +35878,7 @@ type NetworkInterfaceResponseArgs struct {
 	Kind pulumi.StringInput `pulumi:"kind"`
 	// The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
 	Name pulumi.StringInput `pulumi:"name"`
-	// URL of the network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used; if the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default
+	// URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default
 	Network pulumi.StringInput `pulumi:"network"`
 	// An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
 	NetworkIP pulumi.StringInput `pulumi:"networkIP"`
@@ -35968,7 +35984,7 @@ func (o NetworkInterfaceResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// URL of the network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used; if the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default
+// URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default
 func (o NetworkInterfaceResponseOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.Network }).(pulumi.StringOutput)
 }
@@ -36024,11 +36040,11 @@ type NetworkPeeringResponse struct {
 	AutoCreateRoutes bool `pulumi:"autoCreateRoutes"`
 	// Indicates whether full mesh connectivity is created and managed automatically between peered networks. Currently this field should always be true since Google Compute Engine will automatically create and manage subnetwork routes between two networks when peering state is ACTIVE.
 	ExchangeSubnetRoutes bool `pulumi:"exchangeSubnetRoutes"`
-	// Whether to export the custom routes to peer network.
+	// Whether to export the custom routes to peer network. The default value is false.
 	ExportCustomRoutes bool `pulumi:"exportCustomRoutes"`
 	// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. IPv4 special-use ranges are always exported to peers and are not controlled by this field.
 	ExportSubnetRoutesWithPublicIp bool `pulumi:"exportSubnetRoutesWithPublicIp"`
-	// Whether to import the custom routes from peer network.
+	// Whether to import the custom routes from peer network. The default value is false.
 	ImportCustomRoutes bool `pulumi:"importCustomRoutes"`
 	// Whether subnet routes with public IP range are imported. The default value is false. IPv4 special-use ranges are always imported from peers and are not controlled by this field.
 	ImportSubnetRoutesWithPublicIp bool `pulumi:"importSubnetRoutesWithPublicIp"`
@@ -36061,11 +36077,11 @@ type NetworkPeeringResponseArgs struct {
 	AutoCreateRoutes pulumi.BoolInput `pulumi:"autoCreateRoutes"`
 	// Indicates whether full mesh connectivity is created and managed automatically between peered networks. Currently this field should always be true since Google Compute Engine will automatically create and manage subnetwork routes between two networks when peering state is ACTIVE.
 	ExchangeSubnetRoutes pulumi.BoolInput `pulumi:"exchangeSubnetRoutes"`
-	// Whether to export the custom routes to peer network.
+	// Whether to export the custom routes to peer network. The default value is false.
 	ExportCustomRoutes pulumi.BoolInput `pulumi:"exportCustomRoutes"`
 	// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. IPv4 special-use ranges are always exported to peers and are not controlled by this field.
 	ExportSubnetRoutesWithPublicIp pulumi.BoolInput `pulumi:"exportSubnetRoutesWithPublicIp"`
-	// Whether to import the custom routes from peer network.
+	// Whether to import the custom routes from peer network. The default value is false.
 	ImportCustomRoutes pulumi.BoolInput `pulumi:"importCustomRoutes"`
 	// Whether subnet routes with public IP range are imported. The default value is false. IPv4 special-use ranges are always imported from peers and are not controlled by this field.
 	ImportSubnetRoutesWithPublicIp pulumi.BoolInput `pulumi:"importSubnetRoutesWithPublicIp"`
@@ -36143,7 +36159,7 @@ func (o NetworkPeeringResponseOutput) ExchangeSubnetRoutes() pulumi.BoolOutput {
 	return o.ApplyT(func(v NetworkPeeringResponse) bool { return v.ExchangeSubnetRoutes }).(pulumi.BoolOutput)
 }
 
-// Whether to export the custom routes to peer network.
+// Whether to export the custom routes to peer network. The default value is false.
 func (o NetworkPeeringResponseOutput) ExportCustomRoutes() pulumi.BoolOutput {
 	return o.ApplyT(func(v NetworkPeeringResponse) bool { return v.ExportCustomRoutes }).(pulumi.BoolOutput)
 }
@@ -36153,7 +36169,7 @@ func (o NetworkPeeringResponseOutput) ExportSubnetRoutesWithPublicIp() pulumi.Bo
 	return o.ApplyT(func(v NetworkPeeringResponse) bool { return v.ExportSubnetRoutesWithPublicIp }).(pulumi.BoolOutput)
 }
 
-// Whether to import the custom routes from peer network.
+// Whether to import the custom routes from peer network. The default value is false.
 func (o NetworkPeeringResponseOutput) ImportCustomRoutes() pulumi.BoolOutput {
 	return o.ApplyT(func(v NetworkPeeringResponse) bool { return v.ImportCustomRoutes }).(pulumi.BoolOutput)
 }
@@ -40523,17 +40539,17 @@ func (o PacketMirroringNetworkInfoResponsePtrOutput) Url() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service will be used.
+// A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service is used.
 type PathMatcher struct {
-	// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a pathMatcher's defaultRouteAction.
+	// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a path matcher's defaultRouteAction.
 	DefaultRouteAction *HttpRouteAction `pulumi:"defaultRouteAction"`
-	// The full or partial URL to the BackendService resource. This will be used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use
+	// The full or partial URL to the BackendService resource. This URL is used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect , or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use
 	DefaultService *string `pulumi:"defaultService"`
-	// When none of the specified pathRules or routeRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+	// When none of the specified pathRules or routeRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
 	DefaultUrlRedirect *HttpRedirectAction `pulumi:"defaultUrlRedirect"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// Specifies changes to request and response headers that need to take effect for the selected backendService. HeaderAction specified here are applied after the matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Specifies changes to request and response headers that need to take effect for the selected backend service. HeaderAction specified here are applied after the matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	HeaderAction *HttpHeaderAction `pulumi:"headerAction"`
 	// The name to which this PathMatcher is referred by the HostRule.
 	Name *string `pulumi:"name"`
@@ -40554,17 +40570,17 @@ type PathMatcherInput interface {
 	ToPathMatcherOutputWithContext(context.Context) PathMatcherOutput
 }
 
-// A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service will be used.
+// A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service is used.
 type PathMatcherArgs struct {
-	// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a pathMatcher's defaultRouteAction.
+	// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a path matcher's defaultRouteAction.
 	DefaultRouteAction HttpRouteActionPtrInput `pulumi:"defaultRouteAction"`
-	// The full or partial URL to the BackendService resource. This will be used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use
+	// The full or partial URL to the BackendService resource. This URL is used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect , or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use
 	DefaultService pulumi.StringPtrInput `pulumi:"defaultService"`
-	// When none of the specified pathRules or routeRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+	// When none of the specified pathRules or routeRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
 	DefaultUrlRedirect HttpRedirectActionPtrInput `pulumi:"defaultUrlRedirect"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Specifies changes to request and response headers that need to take effect for the selected backendService. HeaderAction specified here are applied after the matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Specifies changes to request and response headers that need to take effect for the selected backend service. HeaderAction specified here are applied after the matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	HeaderAction HttpHeaderActionPtrInput `pulumi:"headerAction"`
 	// The name to which this PathMatcher is referred by the HostRule.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -40611,7 +40627,7 @@ func (i PathMatcherArray) ToPathMatcherArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(PathMatcherArrayOutput)
 }
 
-// A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service will be used.
+// A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service is used.
 type PathMatcherOutput struct{ *pulumi.OutputState }
 
 func (PathMatcherOutput) ElementType() reflect.Type {
@@ -40626,17 +40642,17 @@ func (o PathMatcherOutput) ToPathMatcherOutputWithContext(ctx context.Context) P
 	return o
 }
 
-// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a pathMatcher's defaultRouteAction.
+// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a path matcher's defaultRouteAction.
 func (o PathMatcherOutput) DefaultRouteAction() HttpRouteActionPtrOutput {
 	return o.ApplyT(func(v PathMatcher) *HttpRouteAction { return v.DefaultRouteAction }).(HttpRouteActionPtrOutput)
 }
 
-// The full or partial URL to the BackendService resource. This will be used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use
+// The full or partial URL to the BackendService resource. This URL is used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect , or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use
 func (o PathMatcherOutput) DefaultService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PathMatcher) *string { return v.DefaultService }).(pulumi.StringPtrOutput)
 }
 
-// When none of the specified pathRules or routeRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+// When none of the specified pathRules or routeRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
 func (o PathMatcherOutput) DefaultUrlRedirect() HttpRedirectActionPtrOutput {
 	return o.ApplyT(func(v PathMatcher) *HttpRedirectAction { return v.DefaultUrlRedirect }).(HttpRedirectActionPtrOutput)
 }
@@ -40646,7 +40662,7 @@ func (o PathMatcherOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PathMatcher) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies changes to request and response headers that need to take effect for the selected backendService. HeaderAction specified here are applied after the matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Specifies changes to request and response headers that need to take effect for the selected backend service. HeaderAction specified here are applied after the matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 func (o PathMatcherOutput) HeaderAction() HttpHeaderActionPtrOutput {
 	return o.ApplyT(func(v PathMatcher) *HttpHeaderAction { return v.HeaderAction }).(HttpHeaderActionPtrOutput)
 }
@@ -40686,17 +40702,17 @@ func (o PathMatcherArrayOutput) Index(i pulumi.IntInput) PathMatcherOutput {
 	}).(PathMatcherOutput)
 }
 
-// A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service will be used.
+// A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service is used.
 type PathMatcherResponse struct {
-	// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a pathMatcher's defaultRouteAction.
+	// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a path matcher's defaultRouteAction.
 	DefaultRouteAction HttpRouteActionResponse `pulumi:"defaultRouteAction"`
-	// The full or partial URL to the BackendService resource. This will be used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use
+	// The full or partial URL to the BackendService resource. This URL is used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect , or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use
 	DefaultService string `pulumi:"defaultService"`
-	// When none of the specified pathRules or routeRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+	// When none of the specified pathRules or routeRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
 	DefaultUrlRedirect HttpRedirectActionResponse `pulumi:"defaultUrlRedirect"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
-	// Specifies changes to request and response headers that need to take effect for the selected backendService. HeaderAction specified here are applied after the matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Specifies changes to request and response headers that need to take effect for the selected backend service. HeaderAction specified here are applied after the matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	HeaderAction HttpHeaderActionResponse `pulumi:"headerAction"`
 	// The name to which this PathMatcher is referred by the HostRule.
 	Name string `pulumi:"name"`
@@ -40717,17 +40733,17 @@ type PathMatcherResponseInput interface {
 	ToPathMatcherResponseOutputWithContext(context.Context) PathMatcherResponseOutput
 }
 
-// A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service will be used.
+// A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service is used.
 type PathMatcherResponseArgs struct {
-	// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a pathMatcher's defaultRouteAction.
+	// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a path matcher's defaultRouteAction.
 	DefaultRouteAction HttpRouteActionResponseInput `pulumi:"defaultRouteAction"`
-	// The full or partial URL to the BackendService resource. This will be used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use
+	// The full or partial URL to the BackendService resource. This URL is used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect , or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use
 	DefaultService pulumi.StringInput `pulumi:"defaultService"`
-	// When none of the specified pathRules or routeRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+	// When none of the specified pathRules or routeRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
 	DefaultUrlRedirect HttpRedirectActionResponseInput `pulumi:"defaultUrlRedirect"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringInput `pulumi:"description"`
-	// Specifies changes to request and response headers that need to take effect for the selected backendService. HeaderAction specified here are applied after the matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Specifies changes to request and response headers that need to take effect for the selected backend service. HeaderAction specified here are applied after the matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	HeaderAction HttpHeaderActionResponseInput `pulumi:"headerAction"`
 	// The name to which this PathMatcher is referred by the HostRule.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -40774,7 +40790,7 @@ func (i PathMatcherResponseArray) ToPathMatcherResponseArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(PathMatcherResponseArrayOutput)
 }
 
-// A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service will be used.
+// A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service is used.
 type PathMatcherResponseOutput struct{ *pulumi.OutputState }
 
 func (PathMatcherResponseOutput) ElementType() reflect.Type {
@@ -40789,17 +40805,17 @@ func (o PathMatcherResponseOutput) ToPathMatcherResponseOutputWithContext(ctx co
 	return o
 }
 
-// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a pathMatcher's defaultRouteAction.
+// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a path matcher's defaultRouteAction.
 func (o PathMatcherResponseOutput) DefaultRouteAction() HttpRouteActionResponseOutput {
 	return o.ApplyT(func(v PathMatcherResponse) HttpRouteActionResponse { return v.DefaultRouteAction }).(HttpRouteActionResponseOutput)
 }
 
-// The full or partial URL to the BackendService resource. This will be used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use
+// The full or partial URL to the BackendService resource. This URL is used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect , or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use
 func (o PathMatcherResponseOutput) DefaultService() pulumi.StringOutput {
 	return o.ApplyT(func(v PathMatcherResponse) string { return v.DefaultService }).(pulumi.StringOutput)
 }
 
-// When none of the specified pathRules or routeRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+// When none of the specified pathRules or routeRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
 func (o PathMatcherResponseOutput) DefaultUrlRedirect() HttpRedirectActionResponseOutput {
 	return o.ApplyT(func(v PathMatcherResponse) HttpRedirectActionResponse { return v.DefaultUrlRedirect }).(HttpRedirectActionResponseOutput)
 }
@@ -40809,7 +40825,7 @@ func (o PathMatcherResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v PathMatcherResponse) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Specifies changes to request and response headers that need to take effect for the selected backendService. HeaderAction specified here are applied after the matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Specifies changes to request and response headers that need to take effect for the selected backend service. HeaderAction specified here are applied after the matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 func (o PathMatcherResponseOutput) HeaderAction() HttpHeaderActionResponseOutput {
 	return o.ApplyT(func(v PathMatcherResponse) HttpHeaderActionResponse { return v.HeaderAction }).(HttpHeaderActionResponseOutput)
 }
@@ -40853,11 +40869,11 @@ func (o PathMatcherResponseArrayOutput) Index(i pulumi.IntInput) PathMatcherResp
 type PathRule struct {
 	// The list of path patterns to match. Each must start with / and the only place a * is allowed is at the end following a /. The string fed to the path matcher does not include any text after the first ? or #, and those chars are not allowed here.
 	Paths []string `pulumi:"paths"`
-	// In response to a matching path, the load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a pathRule's routeAction.
+	// In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for external HTTP(S) load balancers support only the urlRewrite action within a path rule's routeAction.
 	RouteAction *HttpRouteAction `pulumi:"routeAction"`
-	// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendService s. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
+	// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
 	Service *string `pulumi:"service"`
-	// When a path pattern is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+	// When a path pattern is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
 	UrlRedirect *HttpRedirectAction `pulumi:"urlRedirect"`
 }
 
@@ -40876,11 +40892,11 @@ type PathRuleInput interface {
 type PathRuleArgs struct {
 	// The list of path patterns to match. Each must start with / and the only place a * is allowed is at the end following a /. The string fed to the path matcher does not include any text after the first ? or #, and those chars are not allowed here.
 	Paths pulumi.StringArrayInput `pulumi:"paths"`
-	// In response to a matching path, the load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a pathRule's routeAction.
+	// In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for external HTTP(S) load balancers support only the urlRewrite action within a path rule's routeAction.
 	RouteAction HttpRouteActionPtrInput `pulumi:"routeAction"`
-	// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendService s. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
+	// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
 	Service pulumi.StringPtrInput `pulumi:"service"`
-	// When a path pattern is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+	// When a path pattern is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
 	UrlRedirect HttpRedirectActionPtrInput `pulumi:"urlRedirect"`
 }
 
@@ -40941,17 +40957,17 @@ func (o PathRuleOutput) Paths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PathRule) []string { return v.Paths }).(pulumi.StringArrayOutput)
 }
 
-// In response to a matching path, the load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a pathRule's routeAction.
+// In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for external HTTP(S) load balancers support only the urlRewrite action within a path rule's routeAction.
 func (o PathRuleOutput) RouteAction() HttpRouteActionPtrOutput {
 	return o.ApplyT(func(v PathRule) *HttpRouteAction { return v.RouteAction }).(HttpRouteActionPtrOutput)
 }
 
-// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendService s. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
+// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
 func (o PathRuleOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PathRule) *string { return v.Service }).(pulumi.StringPtrOutput)
 }
 
-// When a path pattern is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+// When a path pattern is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
 func (o PathRuleOutput) UrlRedirect() HttpRedirectActionPtrOutput {
 	return o.ApplyT(func(v PathRule) *HttpRedirectAction { return v.UrlRedirect }).(HttpRedirectActionPtrOutput)
 }
@@ -40980,11 +40996,11 @@ func (o PathRuleArrayOutput) Index(i pulumi.IntInput) PathRuleOutput {
 type PathRuleResponse struct {
 	// The list of path patterns to match. Each must start with / and the only place a * is allowed is at the end following a /. The string fed to the path matcher does not include any text after the first ? or #, and those chars are not allowed here.
 	Paths []string `pulumi:"paths"`
-	// In response to a matching path, the load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a pathRule's routeAction.
+	// In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for external HTTP(S) load balancers support only the urlRewrite action within a path rule's routeAction.
 	RouteAction HttpRouteActionResponse `pulumi:"routeAction"`
-	// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendService s. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
+	// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
 	Service string `pulumi:"service"`
-	// When a path pattern is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+	// When a path pattern is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
 	UrlRedirect HttpRedirectActionResponse `pulumi:"urlRedirect"`
 }
 
@@ -41003,11 +41019,11 @@ type PathRuleResponseInput interface {
 type PathRuleResponseArgs struct {
 	// The list of path patterns to match. Each must start with / and the only place a * is allowed is at the end following a /. The string fed to the path matcher does not include any text after the first ? or #, and those chars are not allowed here.
 	Paths pulumi.StringArrayInput `pulumi:"paths"`
-	// In response to a matching path, the load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a pathRule's routeAction.
+	// In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for external HTTP(S) load balancers support only the urlRewrite action within a path rule's routeAction.
 	RouteAction HttpRouteActionResponseInput `pulumi:"routeAction"`
-	// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendService s. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
+	// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
 	Service pulumi.StringInput `pulumi:"service"`
-	// When a path pattern is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+	// When a path pattern is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
 	UrlRedirect HttpRedirectActionResponseInput `pulumi:"urlRedirect"`
 }
 
@@ -41068,17 +41084,17 @@ func (o PathRuleResponseOutput) Paths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PathRuleResponse) []string { return v.Paths }).(pulumi.StringArrayOutput)
 }
 
-// In response to a matching path, the load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a pathRule's routeAction.
+// In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for external HTTP(S) load balancers support only the urlRewrite action within a path rule's routeAction.
 func (o PathRuleResponseOutput) RouteAction() HttpRouteActionResponseOutput {
 	return o.ApplyT(func(v PathRuleResponse) HttpRouteActionResponse { return v.RouteAction }).(HttpRouteActionResponseOutput)
 }
 
-// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendService s. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
+// The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
 func (o PathRuleResponseOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v PathRuleResponse) string { return v.Service }).(pulumi.StringOutput)
 }
 
-// When a path pattern is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+// When a path pattern is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
 func (o PathRuleResponseOutput) UrlRedirect() HttpRedirectActionResponseOutput {
 	return o.ApplyT(func(v PathRuleResponse) HttpRedirectActionResponse { return v.UrlRedirect }).(HttpRedirectActionResponseOutput)
 }
@@ -41529,7 +41545,7 @@ func (o PublicDelegatedPrefixPublicDelegatedSubPrefixResponseArrayOutput) Index(
 	}).(PublicDelegatedPrefixPublicDelegatedSubPrefixResponseOutput)
 }
 
-// A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
+// A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer doesn't wait for responses from the shadow service. Before sending traffic to the shadow service, the host or authority header is suffixed with -shadow.
 type RequestMirrorPolicy struct {
 	// The full or partial URL to the BackendService resource being mirrored to.
 	BackendService *string `pulumi:"backendService"`
@@ -41546,7 +41562,7 @@ type RequestMirrorPolicyInput interface {
 	ToRequestMirrorPolicyOutputWithContext(context.Context) RequestMirrorPolicyOutput
 }
 
-// A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
+// A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer doesn't wait for responses from the shadow service. Before sending traffic to the shadow service, the host or authority header is suffixed with -shadow.
 type RequestMirrorPolicyArgs struct {
 	// The full or partial URL to the BackendService resource being mirrored to.
 	BackendService pulumi.StringPtrInput `pulumi:"backendService"`
@@ -41605,7 +41621,7 @@ func (i *requestMirrorPolicyPtrType) ToRequestMirrorPolicyPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(RequestMirrorPolicyPtrOutput)
 }
 
-// A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
+// A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer doesn't wait for responses from the shadow service. Before sending traffic to the shadow service, the host or authority header is suffixed with -shadow.
 type RequestMirrorPolicyOutput struct{ *pulumi.OutputState }
 
 func (RequestMirrorPolicyOutput) ElementType() reflect.Type {
@@ -41669,7 +41685,7 @@ func (o RequestMirrorPolicyPtrOutput) BackendService() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
+// A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer doesn't wait for responses from the shadow service. Before sending traffic to the shadow service, the host or authority header is suffixed with -shadow.
 type RequestMirrorPolicyResponse struct {
 	// The full or partial URL to the BackendService resource being mirrored to.
 	BackendService string `pulumi:"backendService"`
@@ -41686,7 +41702,7 @@ type RequestMirrorPolicyResponseInput interface {
 	ToRequestMirrorPolicyResponseOutputWithContext(context.Context) RequestMirrorPolicyResponseOutput
 }
 
-// A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
+// A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer doesn't wait for responses from the shadow service. Before sending traffic to the shadow service, the host or authority header is suffixed with -shadow.
 type RequestMirrorPolicyResponseArgs struct {
 	// The full or partial URL to the BackendService resource being mirrored to.
 	BackendService pulumi.StringInput `pulumi:"backendService"`
@@ -41745,7 +41761,7 @@ func (i *requestMirrorPolicyResponsePtrType) ToRequestMirrorPolicyResponsePtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(RequestMirrorPolicyResponsePtrOutput)
 }
 
-// A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
+// A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer doesn't wait for responses from the shadow service. Before sending traffic to the shadow service, the host or authority header is suffixed with -shadow.
 type RequestMirrorPolicyResponseOutput struct{ *pulumi.OutputState }
 
 func (RequestMirrorPolicyResponseOutput) ElementType() reflect.Type {
@@ -47823,16 +47839,22 @@ type RouterBgpPeer struct {
 	Bfd *RouterBgpPeerBfd `pulumi:"bfd"`
 	// The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
 	Enable *RouterBgpPeerEnable `pulumi:"enable"`
+	// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+	EnableIpv6 *bool `pulumi:"enableIpv6"`
 	// Name of the interface the BGP peer is associated with.
 	InterfaceName *string `pulumi:"interfaceName"`
 	// IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
 	IpAddress *string `pulumi:"ipAddress"`
+	// IPv6 address of the interface inside Google Cloud Platform.
+	Ipv6NexthopAddress *string `pulumi:"ipv6NexthopAddress"`
 	// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
 	PeerAsn *int `pulumi:"peerAsn"`
 	// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
 	PeerIpAddress *string `pulumi:"peerIpAddress"`
+	// IPv6 address of the BGP interface outside Google Cloud Platform.
+	PeerIpv6NexthopAddress *string `pulumi:"peerIpv6NexthopAddress"`
 	// URI of the VM instance that is used as third-party router appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances. The VM instance must be located in zones contained in the same region as this Cloud Router. The VM instance is the peer side of the BGP session.
 	RouterApplianceInstance *string `pulumi:"routerApplianceInstance"`
 }
@@ -47861,16 +47883,22 @@ type RouterBgpPeerArgs struct {
 	Bfd RouterBgpPeerBfdPtrInput `pulumi:"bfd"`
 	// The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
 	Enable RouterBgpPeerEnablePtrInput `pulumi:"enable"`
+	// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+	EnableIpv6 pulumi.BoolPtrInput `pulumi:"enableIpv6"`
 	// Name of the interface the BGP peer is associated with.
 	InterfaceName pulumi.StringPtrInput `pulumi:"interfaceName"`
 	// IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// IPv6 address of the interface inside Google Cloud Platform.
+	Ipv6NexthopAddress pulumi.StringPtrInput `pulumi:"ipv6NexthopAddress"`
 	// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
 	PeerAsn pulumi.IntPtrInput `pulumi:"peerAsn"`
 	// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
 	PeerIpAddress pulumi.StringPtrInput `pulumi:"peerIpAddress"`
+	// IPv6 address of the BGP interface outside Google Cloud Platform.
+	PeerIpv6NexthopAddress pulumi.StringPtrInput `pulumi:"peerIpv6NexthopAddress"`
 	// URI of the VM instance that is used as third-party router appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances. The VM instance must be located in zones contained in the same region as this Cloud Router. The VM instance is the peer side of the BGP session.
 	RouterApplianceInstance pulumi.StringPtrInput `pulumi:"routerApplianceInstance"`
 }
@@ -47956,6 +47984,11 @@ func (o RouterBgpPeerOutput) Enable() RouterBgpPeerEnablePtrOutput {
 	return o.ApplyT(func(v RouterBgpPeer) *RouterBgpPeerEnable { return v.Enable }).(RouterBgpPeerEnablePtrOutput)
 }
 
+// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+func (o RouterBgpPeerOutput) EnableIpv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RouterBgpPeer) *bool { return v.EnableIpv6 }).(pulumi.BoolPtrOutput)
+}
+
 // Name of the interface the BGP peer is associated with.
 func (o RouterBgpPeerOutput) InterfaceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouterBgpPeer) *string { return v.InterfaceName }).(pulumi.StringPtrOutput)
@@ -47964,6 +47997,11 @@ func (o RouterBgpPeerOutput) InterfaceName() pulumi.StringPtrOutput {
 // IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
 func (o RouterBgpPeerOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouterBgpPeer) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// IPv6 address of the interface inside Google Cloud Platform.
+func (o RouterBgpPeerOutput) Ipv6NexthopAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterBgpPeer) *string { return v.Ipv6NexthopAddress }).(pulumi.StringPtrOutput)
 }
 
 // Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -47979,6 +48017,11 @@ func (o RouterBgpPeerOutput) PeerAsn() pulumi.IntPtrOutput {
 // IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
 func (o RouterBgpPeerOutput) PeerIpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouterBgpPeer) *string { return v.PeerIpAddress }).(pulumi.StringPtrOutput)
+}
+
+// IPv6 address of the BGP interface outside Google Cloud Platform.
+func (o RouterBgpPeerOutput) PeerIpv6NexthopAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterBgpPeer) *string { return v.PeerIpv6NexthopAddress }).(pulumi.StringPtrOutput)
 }
 
 // URI of the VM instance that is used as third-party router appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances. The VM instance must be located in zones contained in the same region as this Cloud Router. The VM instance is the peer side of the BGP session.
@@ -48294,10 +48337,14 @@ type RouterBgpPeerResponse struct {
 	Bfd RouterBgpPeerBfdResponse `pulumi:"bfd"`
 	// The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
 	Enable string `pulumi:"enable"`
+	// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+	EnableIpv6 bool `pulumi:"enableIpv6"`
 	// Name of the interface the BGP peer is associated with.
 	InterfaceName string `pulumi:"interfaceName"`
 	// IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
 	IpAddress string `pulumi:"ipAddress"`
+	// IPv6 address of the interface inside Google Cloud Platform.
+	Ipv6NexthopAddress string `pulumi:"ipv6NexthopAddress"`
 	// The resource that configures and manages this BGP peer. - MANAGED_BY_USER is the default value and can be managed by you or other users - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
 	ManagementType string `pulumi:"managementType"`
 	// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -48306,6 +48353,8 @@ type RouterBgpPeerResponse struct {
 	PeerAsn int `pulumi:"peerAsn"`
 	// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
 	PeerIpAddress string `pulumi:"peerIpAddress"`
+	// IPv6 address of the BGP interface outside Google Cloud Platform.
+	PeerIpv6NexthopAddress string `pulumi:"peerIpv6NexthopAddress"`
 	// URI of the VM instance that is used as third-party router appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances. The VM instance must be located in zones contained in the same region as this Cloud Router. The VM instance is the peer side of the BGP session.
 	RouterApplianceInstance string `pulumi:"routerApplianceInstance"`
 }
@@ -48334,10 +48383,14 @@ type RouterBgpPeerResponseArgs struct {
 	Bfd RouterBgpPeerBfdResponseInput `pulumi:"bfd"`
 	// The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
 	Enable pulumi.StringInput `pulumi:"enable"`
+	// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+	EnableIpv6 pulumi.BoolInput `pulumi:"enableIpv6"`
 	// Name of the interface the BGP peer is associated with.
 	InterfaceName pulumi.StringInput `pulumi:"interfaceName"`
 	// IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
 	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// IPv6 address of the interface inside Google Cloud Platform.
+	Ipv6NexthopAddress pulumi.StringInput `pulumi:"ipv6NexthopAddress"`
 	// The resource that configures and manages this BGP peer. - MANAGED_BY_USER is the default value and can be managed by you or other users - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
 	ManagementType pulumi.StringInput `pulumi:"managementType"`
 	// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -48346,6 +48399,8 @@ type RouterBgpPeerResponseArgs struct {
 	PeerAsn pulumi.IntInput `pulumi:"peerAsn"`
 	// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
 	PeerIpAddress pulumi.StringInput `pulumi:"peerIpAddress"`
+	// IPv6 address of the BGP interface outside Google Cloud Platform.
+	PeerIpv6NexthopAddress pulumi.StringInput `pulumi:"peerIpv6NexthopAddress"`
 	// URI of the VM instance that is used as third-party router appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances. The VM instance must be located in zones contained in the same region as this Cloud Router. The VM instance is the peer side of the BGP session.
 	RouterApplianceInstance pulumi.StringInput `pulumi:"routerApplianceInstance"`
 }
@@ -48431,6 +48486,11 @@ func (o RouterBgpPeerResponseOutput) Enable() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterBgpPeerResponse) string { return v.Enable }).(pulumi.StringOutput)
 }
 
+// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+func (o RouterBgpPeerResponseOutput) EnableIpv6() pulumi.BoolOutput {
+	return o.ApplyT(func(v RouterBgpPeerResponse) bool { return v.EnableIpv6 }).(pulumi.BoolOutput)
+}
+
 // Name of the interface the BGP peer is associated with.
 func (o RouterBgpPeerResponseOutput) InterfaceName() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterBgpPeerResponse) string { return v.InterfaceName }).(pulumi.StringOutput)
@@ -48439,6 +48499,11 @@ func (o RouterBgpPeerResponseOutput) InterfaceName() pulumi.StringOutput {
 // IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
 func (o RouterBgpPeerResponseOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterBgpPeerResponse) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// IPv6 address of the interface inside Google Cloud Platform.
+func (o RouterBgpPeerResponseOutput) Ipv6NexthopAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterBgpPeerResponse) string { return v.Ipv6NexthopAddress }).(pulumi.StringOutput)
 }
 
 // The resource that configures and manages this BGP peer. - MANAGED_BY_USER is the default value and can be managed by you or other users - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
@@ -48459,6 +48524,11 @@ func (o RouterBgpPeerResponseOutput) PeerAsn() pulumi.IntOutput {
 // IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
 func (o RouterBgpPeerResponseOutput) PeerIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterBgpPeerResponse) string { return v.PeerIpAddress }).(pulumi.StringOutput)
+}
+
+// IPv6 address of the BGP interface outside Google Cloud Platform.
+func (o RouterBgpPeerResponseOutput) PeerIpv6NexthopAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterBgpPeerResponse) string { return v.PeerIpv6NexthopAddress }).(pulumi.StringOutput)
 }
 
 // URI of the VM instance that is used as third-party router appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances. The VM instance must be located in zones contained in the same region as this Cloud Router. The VM instance is the peer side of the BGP session.
@@ -49013,12 +49083,16 @@ func (o RouterInterfaceResponseArrayOutput) Index(i pulumi.IntInput) RouterInter
 // Represents a Nat resource. It enables the VMs within the specified subnetworks to access Internet without external IP addresses. It specifies a list of subnetworks (and the ranges within) that want to use NAT. Customers can also provide the external IPs that would be used for NAT. GCP would auto-allocate ephemeral IPs if no external IPs are provided.
 type RouterNat struct {
 	// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.
-	DrainNatIps                      []string `pulumi:"drainNatIps"`
-	EnableEndpointIndependentMapping *bool    `pulumi:"enableEndpointIndependentMapping"`
+	DrainNatIps []string `pulumi:"drainNatIps"`
+	// Enable Dynamic Port Allocation. If not specified, it is disabled by default. If set to true, - Dynamic Port Allocation will be enabled on this NAT config. - enableEndpointIndependentMapping cannot be set to true. - If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32. If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+	EnableDynamicPortAllocation      *bool `pulumi:"enableDynamicPortAllocation"`
+	EnableEndpointIndependentMapping *bool `pulumi:"enableEndpointIndependentMapping"`
 	// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 	IcmpIdleTimeoutSec *int `pulumi:"icmpIdleTimeoutSec"`
 	// Configure logging on this NAT.
 	LogConfig *RouterNatLogConfig `pulumi:"logConfig"`
+	// Maximum number of ports allocated to a VM from this NAT config when Dynamic Port Allocation is enabled. If Dynamic Port Allocation is not enabled, this field has no effect. If Dynamic Port Allocation is enabled, and this field is set, it must be set to a power of two greater than minPortsPerVm, or 64 if minPortsPerVm is not set. If Dynamic Port Allocation is enabled and this field is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config.
+	MaxPortsPerVm *int `pulumi:"maxPortsPerVm"`
 	// Minimum number of ports allocated to a VM from this NAT config. If not set, a default number of ports is allocated to a VM. This is rounded up to the nearest power of 2. For example, if the value of this field is 50, at least 64 ports are allocated to a VM.
 	MinPortsPerVm *int `pulumi:"minPortsPerVm"`
 	// Unique name of this Nat service. The name must be 1-63 characters long and comply with RFC1035.
@@ -49057,12 +49131,16 @@ type RouterNatInput interface {
 // Represents a Nat resource. It enables the VMs within the specified subnetworks to access Internet without external IP addresses. It specifies a list of subnetworks (and the ranges within) that want to use NAT. Customers can also provide the external IPs that would be used for NAT. GCP would auto-allocate ephemeral IPs if no external IPs are provided.
 type RouterNatArgs struct {
 	// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.
-	DrainNatIps                      pulumi.StringArrayInput `pulumi:"drainNatIps"`
-	EnableEndpointIndependentMapping pulumi.BoolPtrInput     `pulumi:"enableEndpointIndependentMapping"`
+	DrainNatIps pulumi.StringArrayInput `pulumi:"drainNatIps"`
+	// Enable Dynamic Port Allocation. If not specified, it is disabled by default. If set to true, - Dynamic Port Allocation will be enabled on this NAT config. - enableEndpointIndependentMapping cannot be set to true. - If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32. If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+	EnableDynamicPortAllocation      pulumi.BoolPtrInput `pulumi:"enableDynamicPortAllocation"`
+	EnableEndpointIndependentMapping pulumi.BoolPtrInput `pulumi:"enableEndpointIndependentMapping"`
 	// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 	IcmpIdleTimeoutSec pulumi.IntPtrInput `pulumi:"icmpIdleTimeoutSec"`
 	// Configure logging on this NAT.
 	LogConfig RouterNatLogConfigPtrInput `pulumi:"logConfig"`
+	// Maximum number of ports allocated to a VM from this NAT config when Dynamic Port Allocation is enabled. If Dynamic Port Allocation is not enabled, this field has no effect. If Dynamic Port Allocation is enabled, and this field is set, it must be set to a power of two greater than minPortsPerVm, or 64 if minPortsPerVm is not set. If Dynamic Port Allocation is enabled and this field is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config.
+	MaxPortsPerVm pulumi.IntPtrInput `pulumi:"maxPortsPerVm"`
 	// Minimum number of ports allocated to a VM from this NAT config. If not set, a default number of ports is allocated to a VM. This is rounded up to the nearest power of 2. For example, if the value of this field is 50, at least 64 ports are allocated to a VM.
 	MinPortsPerVm pulumi.IntPtrInput `pulumi:"minPortsPerVm"`
 	// Unique name of this Nat service. The name must be 1-63 characters long and comply with RFC1035.
@@ -49144,6 +49222,11 @@ func (o RouterNatOutput) DrainNatIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RouterNat) []string { return v.DrainNatIps }).(pulumi.StringArrayOutput)
 }
 
+// Enable Dynamic Port Allocation. If not specified, it is disabled by default. If set to true, - Dynamic Port Allocation will be enabled on this NAT config. - enableEndpointIndependentMapping cannot be set to true. - If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32. If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+func (o RouterNatOutput) EnableDynamicPortAllocation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RouterNat) *bool { return v.EnableDynamicPortAllocation }).(pulumi.BoolPtrOutput)
+}
+
 func (o RouterNatOutput) EnableEndpointIndependentMapping() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RouterNat) *bool { return v.EnableEndpointIndependentMapping }).(pulumi.BoolPtrOutput)
 }
@@ -49156,6 +49239,11 @@ func (o RouterNatOutput) IcmpIdleTimeoutSec() pulumi.IntPtrOutput {
 // Configure logging on this NAT.
 func (o RouterNatOutput) LogConfig() RouterNatLogConfigPtrOutput {
 	return o.ApplyT(func(v RouterNat) *RouterNatLogConfig { return v.LogConfig }).(RouterNatLogConfigPtrOutput)
+}
+
+// Maximum number of ports allocated to a VM from this NAT config when Dynamic Port Allocation is enabled. If Dynamic Port Allocation is not enabled, this field has no effect. If Dynamic Port Allocation is enabled, and this field is set, it must be set to a power of two greater than minPortsPerVm, or 64 if minPortsPerVm is not set. If Dynamic Port Allocation is enabled and this field is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config.
+func (o RouterNatOutput) MaxPortsPerVm() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RouterNat) *int { return v.MaxPortsPerVm }).(pulumi.IntPtrOutput)
 }
 
 // Minimum number of ports allocated to a VM from this NAT config. If not set, a default number of ports is allocated to a VM. This is rounded up to the nearest power of 2. For example, if the value of this field is 50, at least 64 ports are allocated to a VM.
@@ -49459,12 +49547,16 @@ func (o RouterNatLogConfigResponseOutput) Filter() pulumi.StringOutput {
 // Represents a Nat resource. It enables the VMs within the specified subnetworks to access Internet without external IP addresses. It specifies a list of subnetworks (and the ranges within) that want to use NAT. Customers can also provide the external IPs that would be used for NAT. GCP would auto-allocate ephemeral IPs if no external IPs are provided.
 type RouterNatResponse struct {
 	// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.
-	DrainNatIps                      []string `pulumi:"drainNatIps"`
-	EnableEndpointIndependentMapping bool     `pulumi:"enableEndpointIndependentMapping"`
+	DrainNatIps []string `pulumi:"drainNatIps"`
+	// Enable Dynamic Port Allocation. If not specified, it is disabled by default. If set to true, - Dynamic Port Allocation will be enabled on this NAT config. - enableEndpointIndependentMapping cannot be set to true. - If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32. If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+	EnableDynamicPortAllocation      bool `pulumi:"enableDynamicPortAllocation"`
+	EnableEndpointIndependentMapping bool `pulumi:"enableEndpointIndependentMapping"`
 	// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 	IcmpIdleTimeoutSec int `pulumi:"icmpIdleTimeoutSec"`
 	// Configure logging on this NAT.
 	LogConfig RouterNatLogConfigResponse `pulumi:"logConfig"`
+	// Maximum number of ports allocated to a VM from this NAT config when Dynamic Port Allocation is enabled. If Dynamic Port Allocation is not enabled, this field has no effect. If Dynamic Port Allocation is enabled, and this field is set, it must be set to a power of two greater than minPortsPerVm, or 64 if minPortsPerVm is not set. If Dynamic Port Allocation is enabled and this field is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config.
+	MaxPortsPerVm int `pulumi:"maxPortsPerVm"`
 	// Minimum number of ports allocated to a VM from this NAT config. If not set, a default number of ports is allocated to a VM. This is rounded up to the nearest power of 2. For example, if the value of this field is 50, at least 64 ports are allocated to a VM.
 	MinPortsPerVm int `pulumi:"minPortsPerVm"`
 	// Unique name of this Nat service. The name must be 1-63 characters long and comply with RFC1035.
@@ -49503,12 +49595,16 @@ type RouterNatResponseInput interface {
 // Represents a Nat resource. It enables the VMs within the specified subnetworks to access Internet without external IP addresses. It specifies a list of subnetworks (and the ranges within) that want to use NAT. Customers can also provide the external IPs that would be used for NAT. GCP would auto-allocate ephemeral IPs if no external IPs are provided.
 type RouterNatResponseArgs struct {
 	// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.
-	DrainNatIps                      pulumi.StringArrayInput `pulumi:"drainNatIps"`
-	EnableEndpointIndependentMapping pulumi.BoolInput        `pulumi:"enableEndpointIndependentMapping"`
+	DrainNatIps pulumi.StringArrayInput `pulumi:"drainNatIps"`
+	// Enable Dynamic Port Allocation. If not specified, it is disabled by default. If set to true, - Dynamic Port Allocation will be enabled on this NAT config. - enableEndpointIndependentMapping cannot be set to true. - If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32. If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+	EnableDynamicPortAllocation      pulumi.BoolInput `pulumi:"enableDynamicPortAllocation"`
+	EnableEndpointIndependentMapping pulumi.BoolInput `pulumi:"enableEndpointIndependentMapping"`
 	// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 	IcmpIdleTimeoutSec pulumi.IntInput `pulumi:"icmpIdleTimeoutSec"`
 	// Configure logging on this NAT.
 	LogConfig RouterNatLogConfigResponseInput `pulumi:"logConfig"`
+	// Maximum number of ports allocated to a VM from this NAT config when Dynamic Port Allocation is enabled. If Dynamic Port Allocation is not enabled, this field has no effect. If Dynamic Port Allocation is enabled, and this field is set, it must be set to a power of two greater than minPortsPerVm, or 64 if minPortsPerVm is not set. If Dynamic Port Allocation is enabled and this field is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config.
+	MaxPortsPerVm pulumi.IntInput `pulumi:"maxPortsPerVm"`
 	// Minimum number of ports allocated to a VM from this NAT config. If not set, a default number of ports is allocated to a VM. This is rounded up to the nearest power of 2. For example, if the value of this field is 50, at least 64 ports are allocated to a VM.
 	MinPortsPerVm pulumi.IntInput `pulumi:"minPortsPerVm"`
 	// Unique name of this Nat service. The name must be 1-63 characters long and comply with RFC1035.
@@ -49590,6 +49686,11 @@ func (o RouterNatResponseOutput) DrainNatIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RouterNatResponse) []string { return v.DrainNatIps }).(pulumi.StringArrayOutput)
 }
 
+// Enable Dynamic Port Allocation. If not specified, it is disabled by default. If set to true, - Dynamic Port Allocation will be enabled on this NAT config. - enableEndpointIndependentMapping cannot be set to true. - If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32. If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
+func (o RouterNatResponseOutput) EnableDynamicPortAllocation() pulumi.BoolOutput {
+	return o.ApplyT(func(v RouterNatResponse) bool { return v.EnableDynamicPortAllocation }).(pulumi.BoolOutput)
+}
+
 func (o RouterNatResponseOutput) EnableEndpointIndependentMapping() pulumi.BoolOutput {
 	return o.ApplyT(func(v RouterNatResponse) bool { return v.EnableEndpointIndependentMapping }).(pulumi.BoolOutput)
 }
@@ -49602,6 +49703,11 @@ func (o RouterNatResponseOutput) IcmpIdleTimeoutSec() pulumi.IntOutput {
 // Configure logging on this NAT.
 func (o RouterNatResponseOutput) LogConfig() RouterNatLogConfigResponseOutput {
 	return o.ApplyT(func(v RouterNatResponse) RouterNatLogConfigResponse { return v.LogConfig }).(RouterNatLogConfigResponseOutput)
+}
+
+// Maximum number of ports allocated to a VM from this NAT config when Dynamic Port Allocation is enabled. If Dynamic Port Allocation is not enabled, this field has no effect. If Dynamic Port Allocation is enabled, and this field is set, it must be set to a power of two greater than minPortsPerVm, or 64 if minPortsPerVm is not set. If Dynamic Port Allocation is enabled and this field is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config.
+func (o RouterNatResponseOutput) MaxPortsPerVm() pulumi.IntOutput {
+	return o.ApplyT(func(v RouterNatResponse) int { return v.MaxPortsPerVm }).(pulumi.IntOutput)
 }
 
 // Minimum number of ports allocated to a VM from this NAT config. If not set, a default number of ports is allocated to a VM. This is rounded up to the nearest power of 2. For example, if the value of this field is 50, at least 64 ports are allocated to a VM.
@@ -49684,7 +49790,7 @@ type RouterNatRule struct {
 	Action *RouterNatRuleAction `pulumi:"action"`
 	// An optional description of this rule.
 	Description *string `pulumi:"description"`
-	// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == '/projects/my-project/global/hub/hub-1'"
+	// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
 	Match *string `pulumi:"match"`
 	// An integer uniquely identifying a rule in the list. The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
 	RuleNumber *int `pulumi:"ruleNumber"`
@@ -49706,7 +49812,7 @@ type RouterNatRuleArgs struct {
 	Action RouterNatRuleActionPtrInput `pulumi:"action"`
 	// An optional description of this rule.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == '/projects/my-project/global/hub/hub-1'"
+	// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
 	Match pulumi.StringPtrInput `pulumi:"match"`
 	// An integer uniquely identifying a rule in the list. The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
 	RuleNumber pulumi.IntPtrInput `pulumi:"ruleNumber"`
@@ -49773,7 +49879,7 @@ func (o RouterNatRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouterNatRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == '/projects/my-project/global/hub/hub-1'"
+// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
 func (o RouterNatRuleOutput) Match() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouterNatRule) *string { return v.Match }).(pulumi.StringPtrOutput)
 }
@@ -50025,7 +50131,7 @@ type RouterNatRuleResponse struct {
 	Action RouterNatRuleActionResponse `pulumi:"action"`
 	// An optional description of this rule.
 	Description string `pulumi:"description"`
-	// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == '/projects/my-project/global/hub/hub-1'"
+	// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
 	Match string `pulumi:"match"`
 	// An integer uniquely identifying a rule in the list. The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
 	RuleNumber int `pulumi:"ruleNumber"`
@@ -50047,7 +50153,7 @@ type RouterNatRuleResponseArgs struct {
 	Action RouterNatRuleActionResponseInput `pulumi:"action"`
 	// An optional description of this rule.
 	Description pulumi.StringInput `pulumi:"description"`
-	// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == '/projects/my-project/global/hub/hub-1'"
+	// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
 	Match pulumi.StringInput `pulumi:"match"`
 	// An integer uniquely identifying a rule in the list. The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
 	RuleNumber pulumi.IntInput `pulumi:"ruleNumber"`
@@ -50114,7 +50220,7 @@ func (o RouterNatRuleResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterNatRuleResponse) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == '/projects/my-project/global/hub/hub-1'"
+// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
 func (o RouterNatRuleResponseOutput) Match() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterNatRuleResponse) string { return v.Match }).(pulumi.StringOutput)
 }
@@ -51154,7 +51260,7 @@ func (o SSLHealthCheckResponsePtrOutput) Response() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// An instance-attached disk resource.
+// DEPRECATED: Please use compute#savedDisk instead. An instance-attached disk resource.
 type SavedAttachedDiskResponse struct {
 	// Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
 	AutoDelete bool `pulumi:"autoDelete"`
@@ -51201,7 +51307,7 @@ type SavedAttachedDiskResponseInput interface {
 	ToSavedAttachedDiskResponseOutputWithContext(context.Context) SavedAttachedDiskResponseOutput
 }
 
-// An instance-attached disk resource.
+// DEPRECATED: Please use compute#savedDisk instead. An instance-attached disk resource.
 type SavedAttachedDiskResponseArgs struct {
 	// Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
 	AutoDelete pulumi.BoolInput `pulumi:"autoDelete"`
@@ -51274,7 +51380,7 @@ func (i SavedAttachedDiskResponseArray) ToSavedAttachedDiskResponseArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(SavedAttachedDiskResponseArrayOutput)
 }
 
-// An instance-attached disk resource.
+// DEPRECATED: Please use compute#savedDisk instead. An instance-attached disk resource.
 type SavedAttachedDiskResponseOutput struct{ *pulumi.OutputState }
 
 func (SavedAttachedDiskResponseOutput) ElementType() reflect.Type {
@@ -51387,6 +51493,233 @@ func (o SavedAttachedDiskResponseArrayOutput) Index(i pulumi.IntInput) SavedAtta
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SavedAttachedDiskResponse {
 		return vs[0].([]SavedAttachedDiskResponse)[vs[1].(int)]
 	}).(SavedAttachedDiskResponseOutput)
+}
+
+// An instance-attached disk resource.
+type SavedDisk struct {
+	// Specifies a URL of the disk attached to the source instance.
+	SourceDisk *string `pulumi:"sourceDisk"`
+}
+
+// SavedDiskInput is an input type that accepts SavedDiskArgs and SavedDiskOutput values.
+// You can construct a concrete instance of `SavedDiskInput` via:
+//
+//          SavedDiskArgs{...}
+type SavedDiskInput interface {
+	pulumi.Input
+
+	ToSavedDiskOutput() SavedDiskOutput
+	ToSavedDiskOutputWithContext(context.Context) SavedDiskOutput
+}
+
+// An instance-attached disk resource.
+type SavedDiskArgs struct {
+	// Specifies a URL of the disk attached to the source instance.
+	SourceDisk pulumi.StringPtrInput `pulumi:"sourceDisk"`
+}
+
+func (SavedDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SavedDisk)(nil)).Elem()
+}
+
+func (i SavedDiskArgs) ToSavedDiskOutput() SavedDiskOutput {
+	return i.ToSavedDiskOutputWithContext(context.Background())
+}
+
+func (i SavedDiskArgs) ToSavedDiskOutputWithContext(ctx context.Context) SavedDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SavedDiskOutput)
+}
+
+// SavedDiskArrayInput is an input type that accepts SavedDiskArray and SavedDiskArrayOutput values.
+// You can construct a concrete instance of `SavedDiskArrayInput` via:
+//
+//          SavedDiskArray{ SavedDiskArgs{...} }
+type SavedDiskArrayInput interface {
+	pulumi.Input
+
+	ToSavedDiskArrayOutput() SavedDiskArrayOutput
+	ToSavedDiskArrayOutputWithContext(context.Context) SavedDiskArrayOutput
+}
+
+type SavedDiskArray []SavedDiskInput
+
+func (SavedDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SavedDisk)(nil)).Elem()
+}
+
+func (i SavedDiskArray) ToSavedDiskArrayOutput() SavedDiskArrayOutput {
+	return i.ToSavedDiskArrayOutputWithContext(context.Background())
+}
+
+func (i SavedDiskArray) ToSavedDiskArrayOutputWithContext(ctx context.Context) SavedDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SavedDiskArrayOutput)
+}
+
+// An instance-attached disk resource.
+type SavedDiskOutput struct{ *pulumi.OutputState }
+
+func (SavedDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SavedDisk)(nil)).Elem()
+}
+
+func (o SavedDiskOutput) ToSavedDiskOutput() SavedDiskOutput {
+	return o
+}
+
+func (o SavedDiskOutput) ToSavedDiskOutputWithContext(ctx context.Context) SavedDiskOutput {
+	return o
+}
+
+// Specifies a URL of the disk attached to the source instance.
+func (o SavedDiskOutput) SourceDisk() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SavedDisk) *string { return v.SourceDisk }).(pulumi.StringPtrOutput)
+}
+
+type SavedDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (SavedDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SavedDisk)(nil)).Elem()
+}
+
+func (o SavedDiskArrayOutput) ToSavedDiskArrayOutput() SavedDiskArrayOutput {
+	return o
+}
+
+func (o SavedDiskArrayOutput) ToSavedDiskArrayOutputWithContext(ctx context.Context) SavedDiskArrayOutput {
+	return o
+}
+
+func (o SavedDiskArrayOutput) Index(i pulumi.IntInput) SavedDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SavedDisk {
+		return vs[0].([]SavedDisk)[vs[1].(int)]
+	}).(SavedDiskOutput)
+}
+
+// An instance-attached disk resource.
+type SavedDiskResponse struct {
+	// Type of the resource. Always compute#savedDisk for attached disks.
+	Kind string `pulumi:"kind"`
+	// Specifies a URL of the disk attached to the source instance.
+	SourceDisk string `pulumi:"sourceDisk"`
+	// Size of the individual disk snapshot used by this machine image.
+	StorageBytes string `pulumi:"storageBytes"`
+	// An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
+	StorageBytesStatus string `pulumi:"storageBytesStatus"`
+}
+
+// SavedDiskResponseInput is an input type that accepts SavedDiskResponseArgs and SavedDiskResponseOutput values.
+// You can construct a concrete instance of `SavedDiskResponseInput` via:
+//
+//          SavedDiskResponseArgs{...}
+type SavedDiskResponseInput interface {
+	pulumi.Input
+
+	ToSavedDiskResponseOutput() SavedDiskResponseOutput
+	ToSavedDiskResponseOutputWithContext(context.Context) SavedDiskResponseOutput
+}
+
+// An instance-attached disk resource.
+type SavedDiskResponseArgs struct {
+	// Type of the resource. Always compute#savedDisk for attached disks.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// Specifies a URL of the disk attached to the source instance.
+	SourceDisk pulumi.StringInput `pulumi:"sourceDisk"`
+	// Size of the individual disk snapshot used by this machine image.
+	StorageBytes pulumi.StringInput `pulumi:"storageBytes"`
+	// An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
+	StorageBytesStatus pulumi.StringInput `pulumi:"storageBytesStatus"`
+}
+
+func (SavedDiskResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SavedDiskResponse)(nil)).Elem()
+}
+
+func (i SavedDiskResponseArgs) ToSavedDiskResponseOutput() SavedDiskResponseOutput {
+	return i.ToSavedDiskResponseOutputWithContext(context.Background())
+}
+
+func (i SavedDiskResponseArgs) ToSavedDiskResponseOutputWithContext(ctx context.Context) SavedDiskResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SavedDiskResponseOutput)
+}
+
+// SavedDiskResponseArrayInput is an input type that accepts SavedDiskResponseArray and SavedDiskResponseArrayOutput values.
+// You can construct a concrete instance of `SavedDiskResponseArrayInput` via:
+//
+//          SavedDiskResponseArray{ SavedDiskResponseArgs{...} }
+type SavedDiskResponseArrayInput interface {
+	pulumi.Input
+
+	ToSavedDiskResponseArrayOutput() SavedDiskResponseArrayOutput
+	ToSavedDiskResponseArrayOutputWithContext(context.Context) SavedDiskResponseArrayOutput
+}
+
+type SavedDiskResponseArray []SavedDiskResponseInput
+
+func (SavedDiskResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SavedDiskResponse)(nil)).Elem()
+}
+
+func (i SavedDiskResponseArray) ToSavedDiskResponseArrayOutput() SavedDiskResponseArrayOutput {
+	return i.ToSavedDiskResponseArrayOutputWithContext(context.Background())
+}
+
+func (i SavedDiskResponseArray) ToSavedDiskResponseArrayOutputWithContext(ctx context.Context) SavedDiskResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SavedDiskResponseArrayOutput)
+}
+
+// An instance-attached disk resource.
+type SavedDiskResponseOutput struct{ *pulumi.OutputState }
+
+func (SavedDiskResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SavedDiskResponse)(nil)).Elem()
+}
+
+func (o SavedDiskResponseOutput) ToSavedDiskResponseOutput() SavedDiskResponseOutput {
+	return o
+}
+
+func (o SavedDiskResponseOutput) ToSavedDiskResponseOutputWithContext(ctx context.Context) SavedDiskResponseOutput {
+	return o
+}
+
+// Type of the resource. Always compute#savedDisk for attached disks.
+func (o SavedDiskResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v SavedDiskResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Specifies a URL of the disk attached to the source instance.
+func (o SavedDiskResponseOutput) SourceDisk() pulumi.StringOutput {
+	return o.ApplyT(func(v SavedDiskResponse) string { return v.SourceDisk }).(pulumi.StringOutput)
+}
+
+// Size of the individual disk snapshot used by this machine image.
+func (o SavedDiskResponseOutput) StorageBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v SavedDiskResponse) string { return v.StorageBytes }).(pulumi.StringOutput)
+}
+
+// An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
+func (o SavedDiskResponseOutput) StorageBytesStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v SavedDiskResponse) string { return v.StorageBytesStatus }).(pulumi.StringOutput)
+}
+
+type SavedDiskResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SavedDiskResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SavedDiskResponse)(nil)).Elem()
+}
+
+func (o SavedDiskResponseArrayOutput) ToSavedDiskResponseArrayOutput() SavedDiskResponseArrayOutput {
+	return o
+}
+
+func (o SavedDiskResponseArrayOutput) ToSavedDiskResponseArrayOutputWithContext(ctx context.Context) SavedDiskResponseArrayOutput {
+	return o
+}
+
+func (o SavedDiskResponseArrayOutput) Index(i pulumi.IntInput) SavedDiskResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SavedDiskResponse {
+		return vs[0].([]SavedDiskResponse)[vs[1].(int)]
+	}).(SavedDiskResponseOutput)
 }
 
 // Sets the scheduling options for an Instance. NextID: 21
@@ -53421,9 +53754,283 @@ func (o SecurityPolicyAssociationResponseArrayOutput) Index(i pulumi.IntInput) S
 	}).(SecurityPolicyAssociationResponseOutput)
 }
 
+type SecurityPolicyRecaptchaOptionsConfig struct {
+	// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+	RedirectSiteKey *string `pulumi:"redirectSiteKey"`
+}
+
+// SecurityPolicyRecaptchaOptionsConfigInput is an input type that accepts SecurityPolicyRecaptchaOptionsConfigArgs and SecurityPolicyRecaptchaOptionsConfigOutput values.
+// You can construct a concrete instance of `SecurityPolicyRecaptchaOptionsConfigInput` via:
+//
+//          SecurityPolicyRecaptchaOptionsConfigArgs{...}
+type SecurityPolicyRecaptchaOptionsConfigInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRecaptchaOptionsConfigOutput() SecurityPolicyRecaptchaOptionsConfigOutput
+	ToSecurityPolicyRecaptchaOptionsConfigOutputWithContext(context.Context) SecurityPolicyRecaptchaOptionsConfigOutput
+}
+
+type SecurityPolicyRecaptchaOptionsConfigArgs struct {
+	// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+	RedirectSiteKey pulumi.StringPtrInput `pulumi:"redirectSiteKey"`
+}
+
+func (SecurityPolicyRecaptchaOptionsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRecaptchaOptionsConfig)(nil)).Elem()
+}
+
+func (i SecurityPolicyRecaptchaOptionsConfigArgs) ToSecurityPolicyRecaptchaOptionsConfigOutput() SecurityPolicyRecaptchaOptionsConfigOutput {
+	return i.ToSecurityPolicyRecaptchaOptionsConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRecaptchaOptionsConfigArgs) ToSecurityPolicyRecaptchaOptionsConfigOutputWithContext(ctx context.Context) SecurityPolicyRecaptchaOptionsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRecaptchaOptionsConfigOutput)
+}
+
+func (i SecurityPolicyRecaptchaOptionsConfigArgs) ToSecurityPolicyRecaptchaOptionsConfigPtrOutput() SecurityPolicyRecaptchaOptionsConfigPtrOutput {
+	return i.ToSecurityPolicyRecaptchaOptionsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRecaptchaOptionsConfigArgs) ToSecurityPolicyRecaptchaOptionsConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyRecaptchaOptionsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRecaptchaOptionsConfigOutput).ToSecurityPolicyRecaptchaOptionsConfigPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyRecaptchaOptionsConfigPtrInput is an input type that accepts SecurityPolicyRecaptchaOptionsConfigArgs, SecurityPolicyRecaptchaOptionsConfigPtr and SecurityPolicyRecaptchaOptionsConfigPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyRecaptchaOptionsConfigPtrInput` via:
+//
+//          SecurityPolicyRecaptchaOptionsConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type SecurityPolicyRecaptchaOptionsConfigPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRecaptchaOptionsConfigPtrOutput() SecurityPolicyRecaptchaOptionsConfigPtrOutput
+	ToSecurityPolicyRecaptchaOptionsConfigPtrOutputWithContext(context.Context) SecurityPolicyRecaptchaOptionsConfigPtrOutput
+}
+
+type securityPolicyRecaptchaOptionsConfigPtrType SecurityPolicyRecaptchaOptionsConfigArgs
+
+func SecurityPolicyRecaptchaOptionsConfigPtr(v *SecurityPolicyRecaptchaOptionsConfigArgs) SecurityPolicyRecaptchaOptionsConfigPtrInput {
+	return (*securityPolicyRecaptchaOptionsConfigPtrType)(v)
+}
+
+func (*securityPolicyRecaptchaOptionsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRecaptchaOptionsConfig)(nil)).Elem()
+}
+
+func (i *securityPolicyRecaptchaOptionsConfigPtrType) ToSecurityPolicyRecaptchaOptionsConfigPtrOutput() SecurityPolicyRecaptchaOptionsConfigPtrOutput {
+	return i.ToSecurityPolicyRecaptchaOptionsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyRecaptchaOptionsConfigPtrType) ToSecurityPolicyRecaptchaOptionsConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyRecaptchaOptionsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRecaptchaOptionsConfigPtrOutput)
+}
+
+type SecurityPolicyRecaptchaOptionsConfigOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRecaptchaOptionsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRecaptchaOptionsConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyRecaptchaOptionsConfigOutput) ToSecurityPolicyRecaptchaOptionsConfigOutput() SecurityPolicyRecaptchaOptionsConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyRecaptchaOptionsConfigOutput) ToSecurityPolicyRecaptchaOptionsConfigOutputWithContext(ctx context.Context) SecurityPolicyRecaptchaOptionsConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyRecaptchaOptionsConfigOutput) ToSecurityPolicyRecaptchaOptionsConfigPtrOutput() SecurityPolicyRecaptchaOptionsConfigPtrOutput {
+	return o.ToSecurityPolicyRecaptchaOptionsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRecaptchaOptionsConfigOutput) ToSecurityPolicyRecaptchaOptionsConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyRecaptchaOptionsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRecaptchaOptionsConfig) *SecurityPolicyRecaptchaOptionsConfig {
+		return &v
+	}).(SecurityPolicyRecaptchaOptionsConfigPtrOutput)
+}
+
+// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+func (o SecurityPolicyRecaptchaOptionsConfigOutput) RedirectSiteKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRecaptchaOptionsConfig) *string { return v.RedirectSiteKey }).(pulumi.StringPtrOutput)
+}
+
+type SecurityPolicyRecaptchaOptionsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRecaptchaOptionsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRecaptchaOptionsConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyRecaptchaOptionsConfigPtrOutput) ToSecurityPolicyRecaptchaOptionsConfigPtrOutput() SecurityPolicyRecaptchaOptionsConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRecaptchaOptionsConfigPtrOutput) ToSecurityPolicyRecaptchaOptionsConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyRecaptchaOptionsConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRecaptchaOptionsConfigPtrOutput) Elem() SecurityPolicyRecaptchaOptionsConfigOutput {
+	return o.ApplyT(func(v *SecurityPolicyRecaptchaOptionsConfig) SecurityPolicyRecaptchaOptionsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyRecaptchaOptionsConfig
+		return ret
+	}).(SecurityPolicyRecaptchaOptionsConfigOutput)
+}
+
+// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+func (o SecurityPolicyRecaptchaOptionsConfigPtrOutput) RedirectSiteKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRecaptchaOptionsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectSiteKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityPolicyRecaptchaOptionsConfigResponse struct {
+	// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+	RedirectSiteKey string `pulumi:"redirectSiteKey"`
+}
+
+// SecurityPolicyRecaptchaOptionsConfigResponseInput is an input type that accepts SecurityPolicyRecaptchaOptionsConfigResponseArgs and SecurityPolicyRecaptchaOptionsConfigResponseOutput values.
+// You can construct a concrete instance of `SecurityPolicyRecaptchaOptionsConfigResponseInput` via:
+//
+//          SecurityPolicyRecaptchaOptionsConfigResponseArgs{...}
+type SecurityPolicyRecaptchaOptionsConfigResponseInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRecaptchaOptionsConfigResponseOutput() SecurityPolicyRecaptchaOptionsConfigResponseOutput
+	ToSecurityPolicyRecaptchaOptionsConfigResponseOutputWithContext(context.Context) SecurityPolicyRecaptchaOptionsConfigResponseOutput
+}
+
+type SecurityPolicyRecaptchaOptionsConfigResponseArgs struct {
+	// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+	RedirectSiteKey pulumi.StringInput `pulumi:"redirectSiteKey"`
+}
+
+func (SecurityPolicyRecaptchaOptionsConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRecaptchaOptionsConfigResponse)(nil)).Elem()
+}
+
+func (i SecurityPolicyRecaptchaOptionsConfigResponseArgs) ToSecurityPolicyRecaptchaOptionsConfigResponseOutput() SecurityPolicyRecaptchaOptionsConfigResponseOutput {
+	return i.ToSecurityPolicyRecaptchaOptionsConfigResponseOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRecaptchaOptionsConfigResponseArgs) ToSecurityPolicyRecaptchaOptionsConfigResponseOutputWithContext(ctx context.Context) SecurityPolicyRecaptchaOptionsConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRecaptchaOptionsConfigResponseOutput)
+}
+
+func (i SecurityPolicyRecaptchaOptionsConfigResponseArgs) ToSecurityPolicyRecaptchaOptionsConfigResponsePtrOutput() SecurityPolicyRecaptchaOptionsConfigResponsePtrOutput {
+	return i.ToSecurityPolicyRecaptchaOptionsConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRecaptchaOptionsConfigResponseArgs) ToSecurityPolicyRecaptchaOptionsConfigResponsePtrOutputWithContext(ctx context.Context) SecurityPolicyRecaptchaOptionsConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRecaptchaOptionsConfigResponseOutput).ToSecurityPolicyRecaptchaOptionsConfigResponsePtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyRecaptchaOptionsConfigResponsePtrInput is an input type that accepts SecurityPolicyRecaptchaOptionsConfigResponseArgs, SecurityPolicyRecaptchaOptionsConfigResponsePtr and SecurityPolicyRecaptchaOptionsConfigResponsePtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyRecaptchaOptionsConfigResponsePtrInput` via:
+//
+//          SecurityPolicyRecaptchaOptionsConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SecurityPolicyRecaptchaOptionsConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRecaptchaOptionsConfigResponsePtrOutput() SecurityPolicyRecaptchaOptionsConfigResponsePtrOutput
+	ToSecurityPolicyRecaptchaOptionsConfigResponsePtrOutputWithContext(context.Context) SecurityPolicyRecaptchaOptionsConfigResponsePtrOutput
+}
+
+type securityPolicyRecaptchaOptionsConfigResponsePtrType SecurityPolicyRecaptchaOptionsConfigResponseArgs
+
+func SecurityPolicyRecaptchaOptionsConfigResponsePtr(v *SecurityPolicyRecaptchaOptionsConfigResponseArgs) SecurityPolicyRecaptchaOptionsConfigResponsePtrInput {
+	return (*securityPolicyRecaptchaOptionsConfigResponsePtrType)(v)
+}
+
+func (*securityPolicyRecaptchaOptionsConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRecaptchaOptionsConfigResponse)(nil)).Elem()
+}
+
+func (i *securityPolicyRecaptchaOptionsConfigResponsePtrType) ToSecurityPolicyRecaptchaOptionsConfigResponsePtrOutput() SecurityPolicyRecaptchaOptionsConfigResponsePtrOutput {
+	return i.ToSecurityPolicyRecaptchaOptionsConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyRecaptchaOptionsConfigResponsePtrType) ToSecurityPolicyRecaptchaOptionsConfigResponsePtrOutputWithContext(ctx context.Context) SecurityPolicyRecaptchaOptionsConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRecaptchaOptionsConfigResponsePtrOutput)
+}
+
+type SecurityPolicyRecaptchaOptionsConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRecaptchaOptionsConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRecaptchaOptionsConfigResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRecaptchaOptionsConfigResponseOutput) ToSecurityPolicyRecaptchaOptionsConfigResponseOutput() SecurityPolicyRecaptchaOptionsConfigResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRecaptchaOptionsConfigResponseOutput) ToSecurityPolicyRecaptchaOptionsConfigResponseOutputWithContext(ctx context.Context) SecurityPolicyRecaptchaOptionsConfigResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRecaptchaOptionsConfigResponseOutput) ToSecurityPolicyRecaptchaOptionsConfigResponsePtrOutput() SecurityPolicyRecaptchaOptionsConfigResponsePtrOutput {
+	return o.ToSecurityPolicyRecaptchaOptionsConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRecaptchaOptionsConfigResponseOutput) ToSecurityPolicyRecaptchaOptionsConfigResponsePtrOutputWithContext(ctx context.Context) SecurityPolicyRecaptchaOptionsConfigResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRecaptchaOptionsConfigResponse) *SecurityPolicyRecaptchaOptionsConfigResponse {
+		return &v
+	}).(SecurityPolicyRecaptchaOptionsConfigResponsePtrOutput)
+}
+
+// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+func (o SecurityPolicyRecaptchaOptionsConfigResponseOutput) RedirectSiteKey() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRecaptchaOptionsConfigResponse) string { return v.RedirectSiteKey }).(pulumi.StringOutput)
+}
+
+type SecurityPolicyRecaptchaOptionsConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRecaptchaOptionsConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRecaptchaOptionsConfigResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRecaptchaOptionsConfigResponsePtrOutput) ToSecurityPolicyRecaptchaOptionsConfigResponsePtrOutput() SecurityPolicyRecaptchaOptionsConfigResponsePtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRecaptchaOptionsConfigResponsePtrOutput) ToSecurityPolicyRecaptchaOptionsConfigResponsePtrOutputWithContext(ctx context.Context) SecurityPolicyRecaptchaOptionsConfigResponsePtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRecaptchaOptionsConfigResponsePtrOutput) Elem() SecurityPolicyRecaptchaOptionsConfigResponseOutput {
+	return o.ApplyT(func(v *SecurityPolicyRecaptchaOptionsConfigResponse) SecurityPolicyRecaptchaOptionsConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyRecaptchaOptionsConfigResponse
+		return ret
+	}).(SecurityPolicyRecaptchaOptionsConfigResponseOutput)
+}
+
+// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+func (o SecurityPolicyRecaptchaOptionsConfigResponsePtrOutput) RedirectSiteKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRecaptchaOptionsConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RedirectSiteKey
+	}).(pulumi.StringPtrOutput)
+}
+
 // Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
 type SecurityPolicyRule struct {
-	// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502). - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
 	Action *string `pulumi:"action"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
@@ -53464,7 +54071,7 @@ type SecurityPolicyRuleInput interface {
 
 // Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
 type SecurityPolicyRuleArgs struct {
-	// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502). - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -53544,7 +54151,7 @@ func (o SecurityPolicyRuleOutput) ToSecurityPolicyRuleOutputWithContext(ctx cont
 	return o
 }
 
-// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502). - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
 func (o SecurityPolicyRuleOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRule) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -54753,12 +55360,14 @@ type SecurityPolicyRuleRateLimitOptions struct {
 	BanThreshold *SecurityPolicyRuleRateLimitOptionsThreshold `pulumi:"banThreshold"`
 	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
 	ConformAction *string `pulumi:"conformAction"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: "ALL" -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. "ALL_IPS" -- This definition, equivalent to "ALL", has been depprecated. "IP" -- The source IP address of the request is the key. Each IP has this limit enforced separately. "HTTP_HEADER" -- The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to "ALL". "XFF_IP" -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to "ALL".
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
 	EnforceOnKey *SecurityPolicyRuleRateLimitOptionsEnforceOnKey `pulumi:"enforceOnKey"`
-	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 	EnforceOnKeyName *string `pulumi:"enforceOnKeyName"`
-	// When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
+	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceed_redirect_options below.
 	ExceedAction *string `pulumi:"exceedAction"`
+	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+	ExceedRedirectOptions *SecurityPolicyRuleRedirectOptions `pulumi:"exceedRedirectOptions"`
 	// Threshold at which to begin ratelimiting.
 	RateLimitThreshold *SecurityPolicyRuleRateLimitOptionsThreshold `pulumi:"rateLimitThreshold"`
 }
@@ -54781,12 +55390,14 @@ type SecurityPolicyRuleRateLimitOptionsArgs struct {
 	BanThreshold SecurityPolicyRuleRateLimitOptionsThresholdPtrInput `pulumi:"banThreshold"`
 	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
 	ConformAction pulumi.StringPtrInput `pulumi:"conformAction"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: "ALL" -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. "ALL_IPS" -- This definition, equivalent to "ALL", has been depprecated. "IP" -- The source IP address of the request is the key. Each IP has this limit enforced separately. "HTTP_HEADER" -- The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to "ALL". "XFF_IP" -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to "ALL".
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
 	EnforceOnKey SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrInput `pulumi:"enforceOnKey"`
-	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 	EnforceOnKeyName pulumi.StringPtrInput `pulumi:"enforceOnKeyName"`
-	// When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
+	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceed_redirect_options below.
 	ExceedAction pulumi.StringPtrInput `pulumi:"exceedAction"`
+	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+	ExceedRedirectOptions SecurityPolicyRuleRedirectOptionsPtrInput `pulumi:"exceedRedirectOptions"`
 	// Threshold at which to begin ratelimiting.
 	RateLimitThreshold SecurityPolicyRuleRateLimitOptionsThresholdPtrInput `pulumi:"rateLimitThreshold"`
 }
@@ -54885,21 +55496,28 @@ func (o SecurityPolicyRuleRateLimitOptionsOutput) ConformAction() pulumi.StringP
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.ConformAction }).(pulumi.StringPtrOutput)
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: "ALL" -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. "ALL_IPS" -- This definition, equivalent to "ALL", has been depprecated. "IP" -- The source IP address of the request is the key. Each IP has this limit enforced separately. "HTTP_HEADER" -- The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to "ALL". "XFF_IP" -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to "ALL".
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
 func (o SecurityPolicyRuleRateLimitOptionsOutput) EnforceOnKey() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsEnforceOnKey {
 		return v.EnforceOnKey
 	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput)
 }
 
-// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 func (o SecurityPolicyRuleRateLimitOptionsOutput) EnforceOnKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.EnforceOnKeyName }).(pulumi.StringPtrOutput)
 }
 
-// When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
+// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceed_redirect_options below.
 func (o SecurityPolicyRuleRateLimitOptionsOutput) ExceedAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.ExceedAction }).(pulumi.StringPtrOutput)
+}
+
+// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+func (o SecurityPolicyRuleRateLimitOptionsOutput) ExceedRedirectOptions() SecurityPolicyRuleRedirectOptionsPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRedirectOptions {
+		return v.ExceedRedirectOptions
+	}).(SecurityPolicyRuleRedirectOptionsPtrOutput)
 }
 
 // Threshold at which to begin ratelimiting.
@@ -54963,7 +55581,7 @@ func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ConformAction() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: "ALL" -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. "ALL_IPS" -- This definition, equivalent to "ALL", has been depprecated. "IP" -- The source IP address of the request is the key. Each IP has this limit enforced separately. "HTTP_HEADER" -- The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to "ALL". "XFF_IP" -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to "ALL".
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
 func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) EnforceOnKey() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsEnforceOnKey {
 		if v == nil {
@@ -54973,7 +55591,7 @@ func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) EnforceOnKey() SecurityPoli
 	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput)
 }
 
-// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) EnforceOnKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *string {
 		if v == nil {
@@ -54983,7 +55601,7 @@ func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) EnforceOnKeyName() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
+// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceed_redirect_options below.
 func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ExceedAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *string {
 		if v == nil {
@@ -54991,6 +55609,16 @@ func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ExceedAction() pulumi.Strin
 		}
 		return v.ExceedAction
 	}).(pulumi.StringPtrOutput)
+}
+
+// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ExceedRedirectOptions() SecurityPolicyRuleRedirectOptionsPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRedirectOptions {
+		if v == nil {
+			return nil
+		}
+		return v.ExceedRedirectOptions
+	}).(SecurityPolicyRuleRedirectOptionsPtrOutput)
 }
 
 // Threshold at which to begin ratelimiting.
@@ -55010,12 +55638,14 @@ type SecurityPolicyRuleRateLimitOptionsResponse struct {
 	BanThreshold SecurityPolicyRuleRateLimitOptionsThresholdResponse `pulumi:"banThreshold"`
 	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
 	ConformAction string `pulumi:"conformAction"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: "ALL" -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. "ALL_IPS" -- This definition, equivalent to "ALL", has been depprecated. "IP" -- The source IP address of the request is the key. Each IP has this limit enforced separately. "HTTP_HEADER" -- The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to "ALL". "XFF_IP" -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to "ALL".
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
 	EnforceOnKey string `pulumi:"enforceOnKey"`
-	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 	EnforceOnKeyName string `pulumi:"enforceOnKeyName"`
-	// When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
+	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceed_redirect_options below.
 	ExceedAction string `pulumi:"exceedAction"`
+	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+	ExceedRedirectOptions SecurityPolicyRuleRedirectOptionsResponse `pulumi:"exceedRedirectOptions"`
 	// Threshold at which to begin ratelimiting.
 	RateLimitThreshold SecurityPolicyRuleRateLimitOptionsThresholdResponse `pulumi:"rateLimitThreshold"`
 }
@@ -55038,12 +55668,14 @@ type SecurityPolicyRuleRateLimitOptionsResponseArgs struct {
 	BanThreshold SecurityPolicyRuleRateLimitOptionsThresholdResponseInput `pulumi:"banThreshold"`
 	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
 	ConformAction pulumi.StringInput `pulumi:"conformAction"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: "ALL" -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. "ALL_IPS" -- This definition, equivalent to "ALL", has been depprecated. "IP" -- The source IP address of the request is the key. Each IP has this limit enforced separately. "HTTP_HEADER" -- The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to "ALL". "XFF_IP" -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to "ALL".
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
 	EnforceOnKey pulumi.StringInput `pulumi:"enforceOnKey"`
-	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 	EnforceOnKeyName pulumi.StringInput `pulumi:"enforceOnKeyName"`
-	// When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
+	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceed_redirect_options below.
 	ExceedAction pulumi.StringInput `pulumi:"exceedAction"`
+	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+	ExceedRedirectOptions SecurityPolicyRuleRedirectOptionsResponseInput `pulumi:"exceedRedirectOptions"`
 	// Threshold at which to begin ratelimiting.
 	RateLimitThreshold SecurityPolicyRuleRateLimitOptionsThresholdResponseInput `pulumi:"rateLimitThreshold"`
 }
@@ -55091,19 +55723,26 @@ func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ConformAction() pulumi
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.ConformAction }).(pulumi.StringOutput)
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: "ALL" -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. "ALL_IPS" -- This definition, equivalent to "ALL", has been depprecated. "IP" -- The source IP address of the request is the key. Each IP has this limit enforced separately. "HTTP_HEADER" -- The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to "ALL". "XFF_IP" -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to "ALL".
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
 func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKey() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.EnforceOnKey }).(pulumi.StringOutput)
 }
 
-// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.EnforceOnKeyName }).(pulumi.StringOutput)
 }
 
-// When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
+// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceed_redirect_options below.
 func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ExceedAction() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.ExceedAction }).(pulumi.StringOutput)
+}
+
+// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ExceedRedirectOptions() SecurityPolicyRuleRedirectOptionsResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) SecurityPolicyRuleRedirectOptionsResponse {
+		return v.ExceedRedirectOptions
+	}).(SecurityPolicyRuleRedirectOptionsResponseOutput)
 }
 
 // Threshold at which to begin ratelimiting.
@@ -55549,7 +56188,7 @@ func (o SecurityPolicyRuleRedirectOptionsResponseOutput) Type() pulumi.StringOut
 
 // Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
 type SecurityPolicyRuleResponse struct {
-	// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502). - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
 	Action string `pulumi:"action"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
@@ -55594,7 +56233,7 @@ type SecurityPolicyRuleResponseInput interface {
 
 // Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
 type SecurityPolicyRuleResponseArgs struct {
-	// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502). - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
 	Action pulumi.StringInput `pulumi:"action"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringInput `pulumi:"description"`
@@ -55678,7 +56317,7 @@ func (o SecurityPolicyRuleResponseOutput) ToSecurityPolicyRuleResponseOutputWith
 	return o
 }
 
-// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502). - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
 func (o SecurityPolicyRuleResponseOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleResponse) string { return v.Action }).(pulumi.StringOutput)
 }
@@ -56909,7 +57548,7 @@ func (o ServiceAttachmentConsumerProjectLimitResponseArrayOutput) Index(i pulumi
 
 // The share setting for reservations and sole tenancy node groups.
 type ShareSettings struct {
-	// A map of project id and project config. Using map format to ease add-to/remove-from the Project list in PATCH command. In future we will deprecate (And later remove) the array one.
+	// A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
 	ProjectMap map[string]string `pulumi:"projectMap"`
 	// A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
 	Projects []string `pulumi:"projects"`
@@ -56930,7 +57569,7 @@ type ShareSettingsInput interface {
 
 // The share setting for reservations and sole tenancy node groups.
 type ShareSettingsArgs struct {
-	// A map of project id and project config. Using map format to ease add-to/remove-from the Project list in PATCH command. In future we will deprecate (And later remove) the array one.
+	// A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
 	ProjectMap pulumi.StringMapInput `pulumi:"projectMap"`
 	// A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
 	Projects pulumi.StringArrayInput `pulumi:"projects"`
@@ -57016,7 +57655,7 @@ func (o ShareSettingsOutput) ToShareSettingsPtrOutputWithContext(ctx context.Con
 	}).(ShareSettingsPtrOutput)
 }
 
-// A map of project id and project config. Using map format to ease add-to/remove-from the Project list in PATCH command. In future we will deprecate (And later remove) the array one.
+// A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
 func (o ShareSettingsOutput) ProjectMap() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ShareSettings) map[string]string { return v.ProjectMap }).(pulumi.StringMapOutput)
 }
@@ -57055,7 +57694,7 @@ func (o ShareSettingsPtrOutput) Elem() ShareSettingsOutput {
 	}).(ShareSettingsOutput)
 }
 
-// A map of project id and project config. Using map format to ease add-to/remove-from the Project list in PATCH command. In future we will deprecate (And later remove) the array one.
+// A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
 func (o ShareSettingsPtrOutput) ProjectMap() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ShareSettings) map[string]string {
 		if v == nil {
@@ -57087,7 +57726,7 @@ func (o ShareSettingsPtrOutput) ShareType() ShareSettingsShareTypePtrOutput {
 
 // The share setting for reservations and sole tenancy node groups.
 type ShareSettingsResponse struct {
-	// A map of project id and project config. Using map format to ease add-to/remove-from the Project list in PATCH command. In future we will deprecate (And later remove) the array one.
+	// A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
 	ProjectMap map[string]string `pulumi:"projectMap"`
 	// A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
 	Projects []string `pulumi:"projects"`
@@ -57108,7 +57747,7 @@ type ShareSettingsResponseInput interface {
 
 // The share setting for reservations and sole tenancy node groups.
 type ShareSettingsResponseArgs struct {
-	// A map of project id and project config. Using map format to ease add-to/remove-from the Project list in PATCH command. In future we will deprecate (And later remove) the array one.
+	// A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
 	ProjectMap pulumi.StringMapInput `pulumi:"projectMap"`
 	// A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
 	Projects pulumi.StringArrayInput `pulumi:"projects"`
@@ -57194,7 +57833,7 @@ func (o ShareSettingsResponseOutput) ToShareSettingsResponsePtrOutputWithContext
 	}).(ShareSettingsResponsePtrOutput)
 }
 
-// A map of project id and project config. Using map format to ease add-to/remove-from the Project list in PATCH command. In future we will deprecate (And later remove) the array one.
+// A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
 func (o ShareSettingsResponseOutput) ProjectMap() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ShareSettingsResponse) map[string]string { return v.ProjectMap }).(pulumi.StringMapOutput)
 }
@@ -57233,7 +57872,7 @@ func (o ShareSettingsResponsePtrOutput) Elem() ShareSettingsResponseOutput {
 	}).(ShareSettingsResponseOutput)
 }
 
-// A map of project id and project config. Using map format to ease add-to/remove-from the Project list in PATCH command. In future we will deprecate (And later remove) the array one.
+// A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
 func (o ShareSettingsResponsePtrOutput) ProjectMap() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ShareSettingsResponse) map[string]string {
 		if v == nil {
@@ -59027,6 +59666,7 @@ func (o SourceInstanceParamsResponsePtrOutput) DiskConfigs() DiskInstantiationCo
 	}).(DiskInstantiationConfigResponseArrayOutput)
 }
 
+// DEPRECATED: Please use compute#instanceProperties instead. New properties will not be added to this field.
 type SourceInstancePropertiesResponse struct {
 	// Enables instances created based on this machine image to send packets with source IP addresses other than their own and receive packets with destination IP addresses other than their own. If these instances will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If unsure, leave this set to false. See the Enable IP forwarding documentation for more information.
 	CanIpForward bool `pulumi:"canIpForward"`
@@ -59048,7 +59688,7 @@ type SourceInstancePropertiesResponse struct {
 	MinCpuPlatform string `pulumi:"minCpuPlatform"`
 	// An array of network access configurations for this interface.
 	NetworkInterfaces []NetworkInterfaceResponse `pulumi:"networkInterfaces"`
-	// PostKeyRevocationActionType of the instance. (will be deprecated soon)
+	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType string `pulumi:"postKeyRevocationActionType"`
 	// Specifies the scheduling options for the instances that are created from this machine image.
 	Scheduling SchedulingResponse `pulumi:"scheduling"`
@@ -59069,6 +59709,7 @@ type SourceInstancePropertiesResponseInput interface {
 	ToSourceInstancePropertiesResponseOutputWithContext(context.Context) SourceInstancePropertiesResponseOutput
 }
 
+// DEPRECATED: Please use compute#instanceProperties instead. New properties will not be added to this field.
 type SourceInstancePropertiesResponseArgs struct {
 	// Enables instances created based on this machine image to send packets with source IP addresses other than their own and receive packets with destination IP addresses other than their own. If these instances will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If unsure, leave this set to false. See the Enable IP forwarding documentation for more information.
 	CanIpForward pulumi.BoolInput `pulumi:"canIpForward"`
@@ -59090,7 +59731,7 @@ type SourceInstancePropertiesResponseArgs struct {
 	MinCpuPlatform pulumi.StringInput `pulumi:"minCpuPlatform"`
 	// An array of network access configurations for this interface.
 	NetworkInterfaces NetworkInterfaceResponseArrayInput `pulumi:"networkInterfaces"`
-	// PostKeyRevocationActionType of the instance. (will be deprecated soon)
+	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType pulumi.StringInput `pulumi:"postKeyRevocationActionType"`
 	// Specifies the scheduling options for the instances that are created from this machine image.
 	Scheduling SchedulingResponseInput `pulumi:"scheduling"`
@@ -59153,6 +59794,7 @@ func (i *sourceInstancePropertiesResponsePtrType) ToSourceInstancePropertiesResp
 	return pulumi.ToOutputWithContext(ctx, i).(SourceInstancePropertiesResponsePtrOutput)
 }
 
+// DEPRECATED: Please use compute#instanceProperties instead. New properties will not be added to this field.
 type SourceInstancePropertiesResponseOutput struct{ *pulumi.OutputState }
 
 func (SourceInstancePropertiesResponseOutput) ElementType() reflect.Type {
@@ -59227,7 +59869,7 @@ func (o SourceInstancePropertiesResponseOutput) NetworkInterfaces() NetworkInter
 	return o.ApplyT(func(v SourceInstancePropertiesResponse) []NetworkInterfaceResponse { return v.NetworkInterfaces }).(NetworkInterfaceResponseArrayOutput)
 }
 
-// PostKeyRevocationActionType of the instance. (will be deprecated soon)
+// PostKeyRevocationActionType of the instance.
 func (o SourceInstancePropertiesResponseOutput) PostKeyRevocationActionType() pulumi.StringOutput {
 	return o.ApplyT(func(v SourceInstancePropertiesResponse) string { return v.PostKeyRevocationActionType }).(pulumi.StringOutput)
 }
@@ -59371,7 +60013,7 @@ func (o SourceInstancePropertiesResponsePtrOutput) NetworkInterfaces() NetworkIn
 	}).(NetworkInterfaceResponseArrayOutput)
 }
 
-// PostKeyRevocationActionType of the instance. (will be deprecated soon)
+// PostKeyRevocationActionType of the instance.
 func (o SourceInstancePropertiesResponsePtrOutput) PostKeyRevocationActionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SourceInstancePropertiesResponse) *string {
 		if v == nil {
@@ -60405,6 +61047,10 @@ func (o StatefulPolicyPtrOutput) PreservedState() StatefulPolicyPreservedStatePt
 type StatefulPolicyPreservedState struct {
 	// Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
 	Disks map[string]string `pulumi:"disks"`
+	// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+	ExternalIPs map[string]string `pulumi:"externalIPs"`
+	// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+	InternalIPs map[string]string `pulumi:"internalIPs"`
 }
 
 // StatefulPolicyPreservedStateInput is an input type that accepts StatefulPolicyPreservedStateArgs and StatefulPolicyPreservedStateOutput values.
@@ -60422,6 +61068,10 @@ type StatefulPolicyPreservedStateInput interface {
 type StatefulPolicyPreservedStateArgs struct {
 	// Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
 	Disks pulumi.StringMapInput `pulumi:"disks"`
+	// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+	ExternalIPs pulumi.StringMapInput `pulumi:"externalIPs"`
+	// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+	InternalIPs pulumi.StringMapInput `pulumi:"internalIPs"`
 }
 
 func (StatefulPolicyPreservedStateArgs) ElementType() reflect.Type {
@@ -60507,6 +61157,16 @@ func (o StatefulPolicyPreservedStateOutput) Disks() pulumi.StringMapOutput {
 	return o.ApplyT(func(v StatefulPolicyPreservedState) map[string]string { return v.Disks }).(pulumi.StringMapOutput)
 }
 
+// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+func (o StatefulPolicyPreservedStateOutput) ExternalIPs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v StatefulPolicyPreservedState) map[string]string { return v.ExternalIPs }).(pulumi.StringMapOutput)
+}
+
+// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+func (o StatefulPolicyPreservedStateOutput) InternalIPs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v StatefulPolicyPreservedState) map[string]string { return v.InternalIPs }).(pulumi.StringMapOutput)
+}
+
 type StatefulPolicyPreservedStatePtrOutput struct{ *pulumi.OutputState }
 
 func (StatefulPolicyPreservedStatePtrOutput) ElementType() reflect.Type {
@@ -60541,10 +61201,34 @@ func (o StatefulPolicyPreservedStatePtrOutput) Disks() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+func (o StatefulPolicyPreservedStatePtrOutput) ExternalIPs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *StatefulPolicyPreservedState) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalIPs
+	}).(pulumi.StringMapOutput)
+}
+
+// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+func (o StatefulPolicyPreservedStatePtrOutput) InternalIPs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *StatefulPolicyPreservedState) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.InternalIPs
+	}).(pulumi.StringMapOutput)
+}
+
 // Configuration of preserved resources.
 type StatefulPolicyPreservedStateResponse struct {
 	// Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
 	Disks map[string]string `pulumi:"disks"`
+	// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+	ExternalIPs map[string]string `pulumi:"externalIPs"`
+	// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+	InternalIPs map[string]string `pulumi:"internalIPs"`
 }
 
 // StatefulPolicyPreservedStateResponseInput is an input type that accepts StatefulPolicyPreservedStateResponseArgs and StatefulPolicyPreservedStateResponseOutput values.
@@ -60562,6 +61246,10 @@ type StatefulPolicyPreservedStateResponseInput interface {
 type StatefulPolicyPreservedStateResponseArgs struct {
 	// Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
 	Disks pulumi.StringMapInput `pulumi:"disks"`
+	// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+	ExternalIPs pulumi.StringMapInput `pulumi:"externalIPs"`
+	// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+	InternalIPs pulumi.StringMapInput `pulumi:"internalIPs"`
 }
 
 func (StatefulPolicyPreservedStateResponseArgs) ElementType() reflect.Type {
@@ -60647,6 +61335,16 @@ func (o StatefulPolicyPreservedStateResponseOutput) Disks() pulumi.StringMapOutp
 	return o.ApplyT(func(v StatefulPolicyPreservedStateResponse) map[string]string { return v.Disks }).(pulumi.StringMapOutput)
 }
 
+// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+func (o StatefulPolicyPreservedStateResponseOutput) ExternalIPs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v StatefulPolicyPreservedStateResponse) map[string]string { return v.ExternalIPs }).(pulumi.StringMapOutput)
+}
+
+// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+func (o StatefulPolicyPreservedStateResponseOutput) InternalIPs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v StatefulPolicyPreservedStateResponse) map[string]string { return v.InternalIPs }).(pulumi.StringMapOutput)
+}
+
 type StatefulPolicyPreservedStateResponsePtrOutput struct{ *pulumi.OutputState }
 
 func (StatefulPolicyPreservedStateResponsePtrOutput) ElementType() reflect.Type {
@@ -60678,6 +61376,26 @@ func (o StatefulPolicyPreservedStateResponsePtrOutput) Disks() pulumi.StringMapO
 			return nil
 		}
 		return v.Disks
+	}).(pulumi.StringMapOutput)
+}
+
+// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+func (o StatefulPolicyPreservedStateResponsePtrOutput) ExternalIPs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *StatefulPolicyPreservedStateResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalIPs
+	}).(pulumi.StringMapOutput)
+}
+
+// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+func (o StatefulPolicyPreservedStateResponsePtrOutput) InternalIPs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *StatefulPolicyPreservedStateResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.InternalIPs
 	}).(pulumi.StringMapOutput)
 }
 
@@ -60818,11 +61536,11 @@ func (o StatefulPolicyResponsePtrOutput) PreservedState() StatefulPolicyPreserve
 type SubnetworkLogConfig struct {
 	// Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
 	AggregationInterval *SubnetworkLogConfigAggregationInterval `pulumi:"aggregationInterval"`
-	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging.
+	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
 	Enable *bool `pulumi:"enable"`
 	// Can only be specified if VPC flow logs for this subnetwork is enabled. Export filter used to define which VPC flow logs should be logged.
 	FilterExpr *string `pulumi:"filterExpr"`
-	// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
+	// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
 	FlowSampling *float64 `pulumi:"flowSampling"`
 	// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
 	Metadata *SubnetworkLogConfigMetadata `pulumi:"metadata"`
@@ -60845,11 +61563,11 @@ type SubnetworkLogConfigInput interface {
 type SubnetworkLogConfigArgs struct {
 	// Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
 	AggregationInterval SubnetworkLogConfigAggregationIntervalPtrInput `pulumi:"aggregationInterval"`
-	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging.
+	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
 	// Can only be specified if VPC flow logs for this subnetwork is enabled. Export filter used to define which VPC flow logs should be logged.
 	FilterExpr pulumi.StringPtrInput `pulumi:"filterExpr"`
-	// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
+	// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
 	FlowSampling pulumi.Float64PtrInput `pulumi:"flowSampling"`
 	// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
 	Metadata SubnetworkLogConfigMetadataPtrInput `pulumi:"metadata"`
@@ -60940,7 +61658,7 @@ func (o SubnetworkLogConfigOutput) AggregationInterval() SubnetworkLogConfigAggr
 	return o.ApplyT(func(v SubnetworkLogConfig) *SubnetworkLogConfigAggregationInterval { return v.AggregationInterval }).(SubnetworkLogConfigAggregationIntervalPtrOutput)
 }
 
-// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging.
+// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
 func (o SubnetworkLogConfigOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SubnetworkLogConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
@@ -60950,7 +61668,7 @@ func (o SubnetworkLogConfigOutput) FilterExpr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubnetworkLogConfig) *string { return v.FilterExpr }).(pulumi.StringPtrOutput)
 }
 
-// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
+// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
 func (o SubnetworkLogConfigOutput) FlowSampling() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v SubnetworkLogConfig) *float64 { return v.FlowSampling }).(pulumi.Float64PtrOutput)
 }
@@ -60999,7 +61717,7 @@ func (o SubnetworkLogConfigPtrOutput) AggregationInterval() SubnetworkLogConfigA
 	}).(SubnetworkLogConfigAggregationIntervalPtrOutput)
 }
 
-// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging.
+// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
 func (o SubnetworkLogConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SubnetworkLogConfig) *bool {
 		if v == nil {
@@ -61019,7 +61737,7 @@ func (o SubnetworkLogConfigPtrOutput) FilterExpr() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
+// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
 func (o SubnetworkLogConfigPtrOutput) FlowSampling() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *SubnetworkLogConfig) *float64 {
 		if v == nil {
@@ -61053,11 +61771,11 @@ func (o SubnetworkLogConfigPtrOutput) MetadataFields() pulumi.StringArrayOutput 
 type SubnetworkLogConfigResponse struct {
 	// Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
 	AggregationInterval string `pulumi:"aggregationInterval"`
-	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging.
+	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
 	Enable bool `pulumi:"enable"`
 	// Can only be specified if VPC flow logs for this subnetwork is enabled. Export filter used to define which VPC flow logs should be logged.
 	FilterExpr string `pulumi:"filterExpr"`
-	// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
+	// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
 	FlowSampling float64 `pulumi:"flowSampling"`
 	// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
 	Metadata string `pulumi:"metadata"`
@@ -61080,11 +61798,11 @@ type SubnetworkLogConfigResponseInput interface {
 type SubnetworkLogConfigResponseArgs struct {
 	// Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
 	AggregationInterval pulumi.StringInput `pulumi:"aggregationInterval"`
-	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging.
+	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
 	Enable pulumi.BoolInput `pulumi:"enable"`
 	// Can only be specified if VPC flow logs for this subnetwork is enabled. Export filter used to define which VPC flow logs should be logged.
 	FilterExpr pulumi.StringInput `pulumi:"filterExpr"`
-	// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
+	// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
 	FlowSampling pulumi.Float64Input `pulumi:"flowSampling"`
 	// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
 	Metadata pulumi.StringInput `pulumi:"metadata"`
@@ -61175,7 +61893,7 @@ func (o SubnetworkLogConfigResponseOutput) AggregationInterval() pulumi.StringOu
 	return o.ApplyT(func(v SubnetworkLogConfigResponse) string { return v.AggregationInterval }).(pulumi.StringOutput)
 }
 
-// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging.
+// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
 func (o SubnetworkLogConfigResponseOutput) Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v SubnetworkLogConfigResponse) bool { return v.Enable }).(pulumi.BoolOutput)
 }
@@ -61185,7 +61903,7 @@ func (o SubnetworkLogConfigResponseOutput) FilterExpr() pulumi.StringOutput {
 	return o.ApplyT(func(v SubnetworkLogConfigResponse) string { return v.FilterExpr }).(pulumi.StringOutput)
 }
 
-// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
+// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
 func (o SubnetworkLogConfigResponseOutput) FlowSampling() pulumi.Float64Output {
 	return o.ApplyT(func(v SubnetworkLogConfigResponse) float64 { return v.FlowSampling }).(pulumi.Float64Output)
 }
@@ -61234,7 +61952,7 @@ func (o SubnetworkLogConfigResponsePtrOutput) AggregationInterval() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging.
+// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
 func (o SubnetworkLogConfigResponsePtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SubnetworkLogConfigResponse) *bool {
 		if v == nil {
@@ -61254,7 +61972,7 @@ func (o SubnetworkLogConfigResponsePtrOutput) FilterExpr() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
+// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
 func (o SubnetworkLogConfigResponsePtrOutput) FlowSampling() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *SubnetworkLogConfigResponse) *float64 {
 		if v == nil {
@@ -61505,6 +62223,8 @@ func (o SubnetworkSecondaryRangeResponseArrayOutput) Index(i pulumi.IntInput) Su
 // Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and Traffic Director.
 type Subsetting struct {
 	Policy *SubsettingPolicy `pulumi:"policy"`
+	// The number of backends per backend group assigned to each proxy instance or each service mesh client. An input parameter to the `CONSISTENT_HASH_SUBSETTING` algorithm. Can only be set if `policy` is set to `CONSISTENT_HASH_SUBSETTING`. Can only be set if load balancing scheme is `INTERNAL_MANAGED` or `INTERNAL_SELF_MANAGED`. `subset_size` is optional for Internal HTTP(S) load balancing and required for Traffic Director. If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number of proxies/clients visible to each backend and vice versa. Must be greater than 0. If `subset_size` is larger than the number of backends/endpoints, then subsetting is disabled.
+	SubsetSize *int `pulumi:"subsetSize"`
 }
 
 // SubsettingInput is an input type that accepts SubsettingArgs and SubsettingOutput values.
@@ -61521,6 +62241,8 @@ type SubsettingInput interface {
 // Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and Traffic Director.
 type SubsettingArgs struct {
 	Policy SubsettingPolicyPtrInput `pulumi:"policy"`
+	// The number of backends per backend group assigned to each proxy instance or each service mesh client. An input parameter to the `CONSISTENT_HASH_SUBSETTING` algorithm. Can only be set if `policy` is set to `CONSISTENT_HASH_SUBSETTING`. Can only be set if load balancing scheme is `INTERNAL_MANAGED` or `INTERNAL_SELF_MANAGED`. `subset_size` is optional for Internal HTTP(S) load balancing and required for Traffic Director. If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number of proxies/clients visible to each backend and vice versa. Must be greater than 0. If `subset_size` is larger than the number of backends/endpoints, then subsetting is disabled.
+	SubsetSize pulumi.IntPtrInput `pulumi:"subsetSize"`
 }
 
 func (SubsettingArgs) ElementType() reflect.Type {
@@ -61605,6 +62327,11 @@ func (o SubsettingOutput) Policy() SubsettingPolicyPtrOutput {
 	return o.ApplyT(func(v Subsetting) *SubsettingPolicy { return v.Policy }).(SubsettingPolicyPtrOutput)
 }
 
+// The number of backends per backend group assigned to each proxy instance or each service mesh client. An input parameter to the `CONSISTENT_HASH_SUBSETTING` algorithm. Can only be set if `policy` is set to `CONSISTENT_HASH_SUBSETTING`. Can only be set if load balancing scheme is `INTERNAL_MANAGED` or `INTERNAL_SELF_MANAGED`. `subset_size` is optional for Internal HTTP(S) load balancing and required for Traffic Director. If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number of proxies/clients visible to each backend and vice versa. Must be greater than 0. If `subset_size` is larger than the number of backends/endpoints, then subsetting is disabled.
+func (o SubsettingOutput) SubsetSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Subsetting) *int { return v.SubsetSize }).(pulumi.IntPtrOutput)
+}
+
 type SubsettingPtrOutput struct{ *pulumi.OutputState }
 
 func (SubsettingPtrOutput) ElementType() reflect.Type {
@@ -61638,9 +62365,21 @@ func (o SubsettingPtrOutput) Policy() SubsettingPolicyPtrOutput {
 	}).(SubsettingPolicyPtrOutput)
 }
 
+// The number of backends per backend group assigned to each proxy instance or each service mesh client. An input parameter to the `CONSISTENT_HASH_SUBSETTING` algorithm. Can only be set if `policy` is set to `CONSISTENT_HASH_SUBSETTING`. Can only be set if load balancing scheme is `INTERNAL_MANAGED` or `INTERNAL_SELF_MANAGED`. `subset_size` is optional for Internal HTTP(S) load balancing and required for Traffic Director. If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number of proxies/clients visible to each backend and vice versa. Must be greater than 0. If `subset_size` is larger than the number of backends/endpoints, then subsetting is disabled.
+func (o SubsettingPtrOutput) SubsetSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Subsetting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SubsetSize
+	}).(pulumi.IntPtrOutput)
+}
+
 // Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and Traffic Director.
 type SubsettingResponse struct {
 	Policy string `pulumi:"policy"`
+	// The number of backends per backend group assigned to each proxy instance or each service mesh client. An input parameter to the `CONSISTENT_HASH_SUBSETTING` algorithm. Can only be set if `policy` is set to `CONSISTENT_HASH_SUBSETTING`. Can only be set if load balancing scheme is `INTERNAL_MANAGED` or `INTERNAL_SELF_MANAGED`. `subset_size` is optional for Internal HTTP(S) load balancing and required for Traffic Director. If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number of proxies/clients visible to each backend and vice versa. Must be greater than 0. If `subset_size` is larger than the number of backends/endpoints, then subsetting is disabled.
+	SubsetSize int `pulumi:"subsetSize"`
 }
 
 // SubsettingResponseInput is an input type that accepts SubsettingResponseArgs and SubsettingResponseOutput values.
@@ -61657,6 +62396,8 @@ type SubsettingResponseInput interface {
 // Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and Traffic Director.
 type SubsettingResponseArgs struct {
 	Policy pulumi.StringInput `pulumi:"policy"`
+	// The number of backends per backend group assigned to each proxy instance or each service mesh client. An input parameter to the `CONSISTENT_HASH_SUBSETTING` algorithm. Can only be set if `policy` is set to `CONSISTENT_HASH_SUBSETTING`. Can only be set if load balancing scheme is `INTERNAL_MANAGED` or `INTERNAL_SELF_MANAGED`. `subset_size` is optional for Internal HTTP(S) load balancing and required for Traffic Director. If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number of proxies/clients visible to each backend and vice versa. Must be greater than 0. If `subset_size` is larger than the number of backends/endpoints, then subsetting is disabled.
+	SubsetSize pulumi.IntInput `pulumi:"subsetSize"`
 }
 
 func (SubsettingResponseArgs) ElementType() reflect.Type {
@@ -61741,6 +62482,11 @@ func (o SubsettingResponseOutput) Policy() pulumi.StringOutput {
 	return o.ApplyT(func(v SubsettingResponse) string { return v.Policy }).(pulumi.StringOutput)
 }
 
+// The number of backends per backend group assigned to each proxy instance or each service mesh client. An input parameter to the `CONSISTENT_HASH_SUBSETTING` algorithm. Can only be set if `policy` is set to `CONSISTENT_HASH_SUBSETTING`. Can only be set if load balancing scheme is `INTERNAL_MANAGED` or `INTERNAL_SELF_MANAGED`. `subset_size` is optional for Internal HTTP(S) load balancing and required for Traffic Director. If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number of proxies/clients visible to each backend and vice versa. Must be greater than 0. If `subset_size` is larger than the number of backends/endpoints, then subsetting is disabled.
+func (o SubsettingResponseOutput) SubsetSize() pulumi.IntOutput {
+	return o.ApplyT(func(v SubsettingResponse) int { return v.SubsetSize }).(pulumi.IntOutput)
+}
+
 type SubsettingResponsePtrOutput struct{ *pulumi.OutputState }
 
 func (SubsettingResponsePtrOutput) ElementType() reflect.Type {
@@ -61772,6 +62518,16 @@ func (o SubsettingResponsePtrOutput) Policy() pulumi.StringPtrOutput {
 		}
 		return &v.Policy
 	}).(pulumi.StringPtrOutput)
+}
+
+// The number of backends per backend group assigned to each proxy instance or each service mesh client. An input parameter to the `CONSISTENT_HASH_SUBSETTING` algorithm. Can only be set if `policy` is set to `CONSISTENT_HASH_SUBSETTING`. Can only be set if load balancing scheme is `INTERNAL_MANAGED` or `INTERNAL_SELF_MANAGED`. `subset_size` is optional for Internal HTTP(S) load balancing and required for Traffic Director. If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number of proxies/clients visible to each backend and vice versa. Must be greater than 0. If `subset_size` is larger than the number of backends/endpoints, then subsetting is disabled.
+func (o SubsettingResponsePtrOutput) SubsetSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SubsettingResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.SubsetSize
+	}).(pulumi.IntPtrOutput)
 }
 
 type TCPHealthCheck struct {
@@ -62689,7 +63445,7 @@ func (o Uint128ResponsePtrOutput) Low() pulumi.StringPtrOutput {
 type UrlMapTest struct {
 	// Description of this test case.
 	Description *string `pulumi:"description"`
-	// The expected output URL evaluated by load balancer containing the scheme, host, path and query parameters. For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored. For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies https_redirect, the test passes only if the scheme in expectedOutputUrl is also set to https. If urlRedirect specifies strip_query, the test passes only if expectedOutputUrl does not contain any query parameters. expectedOutputUrl is optional when service is specified.
+	// The expected output URL evaluated by the load balancer containing the scheme, host, path and query parameters. For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by the load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored. For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies https_redirect, the test passes only if the scheme in expectedOutputUrl is also set to HTTPS. If urlRedirect specifies strip_query, the test passes only if expectedOutputUrl does not contain any query parameters. expectedOutputUrl is optional when service is specified.
 	ExpectedOutputUrl *string `pulumi:"expectedOutputUrl"`
 	// For rules with urlRedirect, the test passes only if expectedRedirectResponseCode matches the HTTP status code in load balancer's redirect response. expectedRedirectResponseCode cannot be set when service is set.
 	ExpectedRedirectResponseCode *int `pulumi:"expectedRedirectResponseCode"`
@@ -62699,7 +63455,7 @@ type UrlMapTest struct {
 	Host *string `pulumi:"host"`
 	// Path portion of the URL.
 	Path *string `pulumi:"path"`
-	// Expected BackendService or BackendBucket resource the given URL should be mapped to. service cannot be set if expectedRedirectResponseCode is set.
+	// Expected BackendService or BackendBucket resource the given URL should be mapped to. The service field cannot be set if expectedRedirectResponseCode is set.
 	Service *string `pulumi:"service"`
 }
 
@@ -62718,7 +63474,7 @@ type UrlMapTestInput interface {
 type UrlMapTestArgs struct {
 	// Description of this test case.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The expected output URL evaluated by load balancer containing the scheme, host, path and query parameters. For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored. For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies https_redirect, the test passes only if the scheme in expectedOutputUrl is also set to https. If urlRedirect specifies strip_query, the test passes only if expectedOutputUrl does not contain any query parameters. expectedOutputUrl is optional when service is specified.
+	// The expected output URL evaluated by the load balancer containing the scheme, host, path and query parameters. For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by the load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored. For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies https_redirect, the test passes only if the scheme in expectedOutputUrl is also set to HTTPS. If urlRedirect specifies strip_query, the test passes only if expectedOutputUrl does not contain any query parameters. expectedOutputUrl is optional when service is specified.
 	ExpectedOutputUrl pulumi.StringPtrInput `pulumi:"expectedOutputUrl"`
 	// For rules with urlRedirect, the test passes only if expectedRedirectResponseCode matches the HTTP status code in load balancer's redirect response. expectedRedirectResponseCode cannot be set when service is set.
 	ExpectedRedirectResponseCode pulumi.IntPtrInput `pulumi:"expectedRedirectResponseCode"`
@@ -62728,7 +63484,7 @@ type UrlMapTestArgs struct {
 	Host pulumi.StringPtrInput `pulumi:"host"`
 	// Path portion of the URL.
 	Path pulumi.StringPtrInput `pulumi:"path"`
-	// Expected BackendService or BackendBucket resource the given URL should be mapped to. service cannot be set if expectedRedirectResponseCode is set.
+	// Expected BackendService or BackendBucket resource the given URL should be mapped to. The service field cannot be set if expectedRedirectResponseCode is set.
 	Service pulumi.StringPtrInput `pulumi:"service"`
 }
 
@@ -62789,7 +63545,7 @@ func (o UrlMapTestOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UrlMapTest) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The expected output URL evaluated by load balancer containing the scheme, host, path and query parameters. For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored. For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies https_redirect, the test passes only if the scheme in expectedOutputUrl is also set to https. If urlRedirect specifies strip_query, the test passes only if expectedOutputUrl does not contain any query parameters. expectedOutputUrl is optional when service is specified.
+// The expected output URL evaluated by the load balancer containing the scheme, host, path and query parameters. For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by the load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored. For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies https_redirect, the test passes only if the scheme in expectedOutputUrl is also set to HTTPS. If urlRedirect specifies strip_query, the test passes only if expectedOutputUrl does not contain any query parameters. expectedOutputUrl is optional when service is specified.
 func (o UrlMapTestOutput) ExpectedOutputUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UrlMapTest) *string { return v.ExpectedOutputUrl }).(pulumi.StringPtrOutput)
 }
@@ -62814,7 +63570,7 @@ func (o UrlMapTestOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UrlMapTest) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// Expected BackendService or BackendBucket resource the given URL should be mapped to. service cannot be set if expectedRedirectResponseCode is set.
+// Expected BackendService or BackendBucket resource the given URL should be mapped to. The service field cannot be set if expectedRedirectResponseCode is set.
 func (o UrlMapTestOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UrlMapTest) *string { return v.Service }).(pulumi.StringPtrOutput)
 }
@@ -63061,7 +63817,7 @@ func (o UrlMapTestHeaderResponseArrayOutput) Index(i pulumi.IntInput) UrlMapTest
 type UrlMapTestResponse struct {
 	// Description of this test case.
 	Description string `pulumi:"description"`
-	// The expected output URL evaluated by load balancer containing the scheme, host, path and query parameters. For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored. For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies https_redirect, the test passes only if the scheme in expectedOutputUrl is also set to https. If urlRedirect specifies strip_query, the test passes only if expectedOutputUrl does not contain any query parameters. expectedOutputUrl is optional when service is specified.
+	// The expected output URL evaluated by the load balancer containing the scheme, host, path and query parameters. For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by the load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored. For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies https_redirect, the test passes only if the scheme in expectedOutputUrl is also set to HTTPS. If urlRedirect specifies strip_query, the test passes only if expectedOutputUrl does not contain any query parameters. expectedOutputUrl is optional when service is specified.
 	ExpectedOutputUrl string `pulumi:"expectedOutputUrl"`
 	// For rules with urlRedirect, the test passes only if expectedRedirectResponseCode matches the HTTP status code in load balancer's redirect response. expectedRedirectResponseCode cannot be set when service is set.
 	ExpectedRedirectResponseCode int `pulumi:"expectedRedirectResponseCode"`
@@ -63071,7 +63827,7 @@ type UrlMapTestResponse struct {
 	Host string `pulumi:"host"`
 	// Path portion of the URL.
 	Path string `pulumi:"path"`
-	// Expected BackendService or BackendBucket resource the given URL should be mapped to. service cannot be set if expectedRedirectResponseCode is set.
+	// Expected BackendService or BackendBucket resource the given URL should be mapped to. The service field cannot be set if expectedRedirectResponseCode is set.
 	Service string `pulumi:"service"`
 }
 
@@ -63090,7 +63846,7 @@ type UrlMapTestResponseInput interface {
 type UrlMapTestResponseArgs struct {
 	// Description of this test case.
 	Description pulumi.StringInput `pulumi:"description"`
-	// The expected output URL evaluated by load balancer containing the scheme, host, path and query parameters. For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored. For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies https_redirect, the test passes only if the scheme in expectedOutputUrl is also set to https. If urlRedirect specifies strip_query, the test passes only if expectedOutputUrl does not contain any query parameters. expectedOutputUrl is optional when service is specified.
+	// The expected output URL evaluated by the load balancer containing the scheme, host, path and query parameters. For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by the load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored. For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies https_redirect, the test passes only if the scheme in expectedOutputUrl is also set to HTTPS. If urlRedirect specifies strip_query, the test passes only if expectedOutputUrl does not contain any query parameters. expectedOutputUrl is optional when service is specified.
 	ExpectedOutputUrl pulumi.StringInput `pulumi:"expectedOutputUrl"`
 	// For rules with urlRedirect, the test passes only if expectedRedirectResponseCode matches the HTTP status code in load balancer's redirect response. expectedRedirectResponseCode cannot be set when service is set.
 	ExpectedRedirectResponseCode pulumi.IntInput `pulumi:"expectedRedirectResponseCode"`
@@ -63100,7 +63856,7 @@ type UrlMapTestResponseArgs struct {
 	Host pulumi.StringInput `pulumi:"host"`
 	// Path portion of the URL.
 	Path pulumi.StringInput `pulumi:"path"`
-	// Expected BackendService or BackendBucket resource the given URL should be mapped to. service cannot be set if expectedRedirectResponseCode is set.
+	// Expected BackendService or BackendBucket resource the given URL should be mapped to. The service field cannot be set if expectedRedirectResponseCode is set.
 	Service pulumi.StringInput `pulumi:"service"`
 }
 
@@ -63161,7 +63917,7 @@ func (o UrlMapTestResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlMapTestResponse) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The expected output URL evaluated by load balancer containing the scheme, host, path and query parameters. For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored. For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies https_redirect, the test passes only if the scheme in expectedOutputUrl is also set to https. If urlRedirect specifies strip_query, the test passes only if expectedOutputUrl does not contain any query parameters. expectedOutputUrl is optional when service is specified.
+// The expected output URL evaluated by the load balancer containing the scheme, host, path and query parameters. For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by the load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored. For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies https_redirect, the test passes only if the scheme in expectedOutputUrl is also set to HTTPS. If urlRedirect specifies strip_query, the test passes only if expectedOutputUrl does not contain any query parameters. expectedOutputUrl is optional when service is specified.
 func (o UrlMapTestResponseOutput) ExpectedOutputUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlMapTestResponse) string { return v.ExpectedOutputUrl }).(pulumi.StringOutput)
 }
@@ -63186,7 +63942,7 @@ func (o UrlMapTestResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlMapTestResponse) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// Expected BackendService or BackendBucket resource the given URL should be mapped to. service cannot be set if expectedRedirectResponseCode is set.
+// Expected BackendService or BackendBucket resource the given URL should be mapped to. The service field cannot be set if expectedRedirectResponseCode is set.
 func (o UrlMapTestResponseOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlMapTestResponse) string { return v.Service }).(pulumi.StringOutput)
 }
@@ -63213,9 +63969,9 @@ func (o UrlMapTestResponseArrayOutput) Index(i pulumi.IntInput) UrlMapTestRespon
 
 // The spec for modifying the path before sending the request to the matched backend service.
 type UrlRewrite struct {
-	// Prior to forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be between 1 and 255 characters.
+	// Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be from 1 to 255 characters.
 	HostRewrite *string `pulumi:"hostRewrite"`
-	// Prior to forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be between 1 and 1024 characters.
+	// Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be from 1 to 1024 characters.
 	PathPrefixRewrite *string `pulumi:"pathPrefixRewrite"`
 }
 
@@ -63232,9 +63988,9 @@ type UrlRewriteInput interface {
 
 // The spec for modifying the path before sending the request to the matched backend service.
 type UrlRewriteArgs struct {
-	// Prior to forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be between 1 and 255 characters.
+	// Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be from 1 to 255 characters.
 	HostRewrite pulumi.StringPtrInput `pulumi:"hostRewrite"`
-	// Prior to forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be between 1 and 1024 characters.
+	// Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be from 1 to 1024 characters.
 	PathPrefixRewrite pulumi.StringPtrInput `pulumi:"pathPrefixRewrite"`
 }
 
@@ -63316,12 +64072,12 @@ func (o UrlRewriteOutput) ToUrlRewritePtrOutputWithContext(ctx context.Context) 
 	}).(UrlRewritePtrOutput)
 }
 
-// Prior to forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be between 1 and 255 characters.
+// Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be from 1 to 255 characters.
 func (o UrlRewriteOutput) HostRewrite() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UrlRewrite) *string { return v.HostRewrite }).(pulumi.StringPtrOutput)
 }
 
-// Prior to forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be between 1 and 1024 characters.
+// Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be from 1 to 1024 characters.
 func (o UrlRewriteOutput) PathPrefixRewrite() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UrlRewrite) *string { return v.PathPrefixRewrite }).(pulumi.StringPtrOutput)
 }
@@ -63350,7 +64106,7 @@ func (o UrlRewritePtrOutput) Elem() UrlRewriteOutput {
 	}).(UrlRewriteOutput)
 }
 
-// Prior to forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be between 1 and 255 characters.
+// Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be from 1 to 255 characters.
 func (o UrlRewritePtrOutput) HostRewrite() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UrlRewrite) *string {
 		if v == nil {
@@ -63360,7 +64116,7 @@ func (o UrlRewritePtrOutput) HostRewrite() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Prior to forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be between 1 and 1024 characters.
+// Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be from 1 to 1024 characters.
 func (o UrlRewritePtrOutput) PathPrefixRewrite() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UrlRewrite) *string {
 		if v == nil {
@@ -63372,9 +64128,9 @@ func (o UrlRewritePtrOutput) PathPrefixRewrite() pulumi.StringPtrOutput {
 
 // The spec for modifying the path before sending the request to the matched backend service.
 type UrlRewriteResponse struct {
-	// Prior to forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be between 1 and 255 characters.
+	// Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be from 1 to 255 characters.
 	HostRewrite string `pulumi:"hostRewrite"`
-	// Prior to forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be between 1 and 1024 characters.
+	// Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be from 1 to 1024 characters.
 	PathPrefixRewrite string `pulumi:"pathPrefixRewrite"`
 }
 
@@ -63391,9 +64147,9 @@ type UrlRewriteResponseInput interface {
 
 // The spec for modifying the path before sending the request to the matched backend service.
 type UrlRewriteResponseArgs struct {
-	// Prior to forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be between 1 and 255 characters.
+	// Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be from 1 to 255 characters.
 	HostRewrite pulumi.StringInput `pulumi:"hostRewrite"`
-	// Prior to forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be between 1 and 1024 characters.
+	// Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be from 1 to 1024 characters.
 	PathPrefixRewrite pulumi.StringInput `pulumi:"pathPrefixRewrite"`
 }
 
@@ -63475,12 +64231,12 @@ func (o UrlRewriteResponseOutput) ToUrlRewriteResponsePtrOutputWithContext(ctx c
 	}).(UrlRewriteResponsePtrOutput)
 }
 
-// Prior to forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be between 1 and 255 characters.
+// Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be from 1 to 255 characters.
 func (o UrlRewriteResponseOutput) HostRewrite() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlRewriteResponse) string { return v.HostRewrite }).(pulumi.StringOutput)
 }
 
-// Prior to forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be between 1 and 1024 characters.
+// Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be from 1 to 1024 characters.
 func (o UrlRewriteResponseOutput) PathPrefixRewrite() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlRewriteResponse) string { return v.PathPrefixRewrite }).(pulumi.StringOutput)
 }
@@ -63509,7 +64265,7 @@ func (o UrlRewriteResponsePtrOutput) Elem() UrlRewriteResponseOutput {
 	}).(UrlRewriteResponseOutput)
 }
 
-// Prior to forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be between 1 and 255 characters.
+// Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be from 1 to 255 characters.
 func (o UrlRewriteResponsePtrOutput) HostRewrite() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UrlRewriteResponse) *string {
 		if v == nil {
@@ -63519,7 +64275,7 @@ func (o UrlRewriteResponsePtrOutput) HostRewrite() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Prior to forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be between 1 and 1024 characters.
+// Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be from 1 to 1024 characters.
 func (o UrlRewriteResponsePtrOutput) PathPrefixRewrite() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UrlRewriteResponse) *string {
 		if v == nil {
@@ -63738,13 +64494,13 @@ func (o VpnGatewayVpnGatewayInterfaceResponseArrayOutput) Index(i pulumi.IntInpu
 	}).(VpnGatewayVpnGatewayInterfaceResponseOutput)
 }
 
-// In contrast to a single BackendService in HttpRouteAction to which all matching traffic is directed to, WeightedBackendService allows traffic to be split across multiple BackendServices. The volume of traffic for each BackendService is proportional to the weight specified in each WeightedBackendService
+// In contrast to a single BackendService in HttpRouteAction to which all matching traffic is directed to, WeightedBackendService allows traffic to be split across multiple backend services. The volume of traffic for each backend service is proportional to the weight specified in each WeightedBackendService
 type WeightedBackendService struct {
-	// The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the loadbalancer applies any relevant headerActions specified as part of this backendServiceWeight.
+	// The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
 	BackendService *string `pulumi:"backendService"`
-	// Specifies changes to request and response headers that need to take effect for the selected backendService. headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap. Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Specifies changes to request and response headers that need to take effect for the selected backendService. headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap. headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	HeaderAction *HttpHeaderAction `pulumi:"headerAction"`
-	// Specifies the fraction of traffic sent to backendService, computed as weight / (sum of all weightedBackendService weights in routeAction) . The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backendService, subsequent requests will be sent to the same backendService as determined by the BackendService's session affinity policy. The value must be between 0 and 1000
+	// Specifies the fraction of traffic sent to a backend service, computed as weight / (sum of all weightedBackendService weights in routeAction) . The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backend service, subsequent requests are sent to the same backend service as determined by the backend service's session affinity policy. The value must be from 0 to 1000.
 	Weight *int `pulumi:"weight"`
 }
 
@@ -63759,13 +64515,13 @@ type WeightedBackendServiceInput interface {
 	ToWeightedBackendServiceOutputWithContext(context.Context) WeightedBackendServiceOutput
 }
 
-// In contrast to a single BackendService in HttpRouteAction to which all matching traffic is directed to, WeightedBackendService allows traffic to be split across multiple BackendServices. The volume of traffic for each BackendService is proportional to the weight specified in each WeightedBackendService
+// In contrast to a single BackendService in HttpRouteAction to which all matching traffic is directed to, WeightedBackendService allows traffic to be split across multiple backend services. The volume of traffic for each backend service is proportional to the weight specified in each WeightedBackendService
 type WeightedBackendServiceArgs struct {
-	// The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the loadbalancer applies any relevant headerActions specified as part of this backendServiceWeight.
+	// The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
 	BackendService pulumi.StringPtrInput `pulumi:"backendService"`
-	// Specifies changes to request and response headers that need to take effect for the selected backendService. headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap. Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Specifies changes to request and response headers that need to take effect for the selected backendService. headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap. headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	HeaderAction HttpHeaderActionPtrInput `pulumi:"headerAction"`
-	// Specifies the fraction of traffic sent to backendService, computed as weight / (sum of all weightedBackendService weights in routeAction) . The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backendService, subsequent requests will be sent to the same backendService as determined by the BackendService's session affinity policy. The value must be between 0 and 1000
+	// Specifies the fraction of traffic sent to a backend service, computed as weight / (sum of all weightedBackendService weights in routeAction) . The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backend service, subsequent requests are sent to the same backend service as determined by the backend service's session affinity policy. The value must be from 0 to 1000.
 	Weight pulumi.IntPtrInput `pulumi:"weight"`
 }
 
@@ -63806,7 +64562,7 @@ func (i WeightedBackendServiceArray) ToWeightedBackendServiceArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(WeightedBackendServiceArrayOutput)
 }
 
-// In contrast to a single BackendService in HttpRouteAction to which all matching traffic is directed to, WeightedBackendService allows traffic to be split across multiple BackendServices. The volume of traffic for each BackendService is proportional to the weight specified in each WeightedBackendService
+// In contrast to a single BackendService in HttpRouteAction to which all matching traffic is directed to, WeightedBackendService allows traffic to be split across multiple backend services. The volume of traffic for each backend service is proportional to the weight specified in each WeightedBackendService
 type WeightedBackendServiceOutput struct{ *pulumi.OutputState }
 
 func (WeightedBackendServiceOutput) ElementType() reflect.Type {
@@ -63821,17 +64577,17 @@ func (o WeightedBackendServiceOutput) ToWeightedBackendServiceOutputWithContext(
 	return o
 }
 
-// The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the loadbalancer applies any relevant headerActions specified as part of this backendServiceWeight.
+// The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
 func (o WeightedBackendServiceOutput) BackendService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WeightedBackendService) *string { return v.BackendService }).(pulumi.StringPtrOutput)
 }
 
-// Specifies changes to request and response headers that need to take effect for the selected backendService. headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap. Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Specifies changes to request and response headers that need to take effect for the selected backendService. headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap. headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 func (o WeightedBackendServiceOutput) HeaderAction() HttpHeaderActionPtrOutput {
 	return o.ApplyT(func(v WeightedBackendService) *HttpHeaderAction { return v.HeaderAction }).(HttpHeaderActionPtrOutput)
 }
 
-// Specifies the fraction of traffic sent to backendService, computed as weight / (sum of all weightedBackendService weights in routeAction) . The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backendService, subsequent requests will be sent to the same backendService as determined by the BackendService's session affinity policy. The value must be between 0 and 1000
+// Specifies the fraction of traffic sent to a backend service, computed as weight / (sum of all weightedBackendService weights in routeAction) . The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backend service, subsequent requests are sent to the same backend service as determined by the backend service's session affinity policy. The value must be from 0 to 1000.
 func (o WeightedBackendServiceOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WeightedBackendService) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }
@@ -63856,13 +64612,13 @@ func (o WeightedBackendServiceArrayOutput) Index(i pulumi.IntInput) WeightedBack
 	}).(WeightedBackendServiceOutput)
 }
 
-// In contrast to a single BackendService in HttpRouteAction to which all matching traffic is directed to, WeightedBackendService allows traffic to be split across multiple BackendServices. The volume of traffic for each BackendService is proportional to the weight specified in each WeightedBackendService
+// In contrast to a single BackendService in HttpRouteAction to which all matching traffic is directed to, WeightedBackendService allows traffic to be split across multiple backend services. The volume of traffic for each backend service is proportional to the weight specified in each WeightedBackendService
 type WeightedBackendServiceResponse struct {
-	// The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the loadbalancer applies any relevant headerActions specified as part of this backendServiceWeight.
+	// The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
 	BackendService string `pulumi:"backendService"`
-	// Specifies changes to request and response headers that need to take effect for the selected backendService. headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap. Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Specifies changes to request and response headers that need to take effect for the selected backendService. headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap. headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	HeaderAction HttpHeaderActionResponse `pulumi:"headerAction"`
-	// Specifies the fraction of traffic sent to backendService, computed as weight / (sum of all weightedBackendService weights in routeAction) . The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backendService, subsequent requests will be sent to the same backendService as determined by the BackendService's session affinity policy. The value must be between 0 and 1000
+	// Specifies the fraction of traffic sent to a backend service, computed as weight / (sum of all weightedBackendService weights in routeAction) . The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backend service, subsequent requests are sent to the same backend service as determined by the backend service's session affinity policy. The value must be from 0 to 1000.
 	Weight int `pulumi:"weight"`
 }
 
@@ -63877,13 +64633,13 @@ type WeightedBackendServiceResponseInput interface {
 	ToWeightedBackendServiceResponseOutputWithContext(context.Context) WeightedBackendServiceResponseOutput
 }
 
-// In contrast to a single BackendService in HttpRouteAction to which all matching traffic is directed to, WeightedBackendService allows traffic to be split across multiple BackendServices. The volume of traffic for each BackendService is proportional to the weight specified in each WeightedBackendService
+// In contrast to a single BackendService in HttpRouteAction to which all matching traffic is directed to, WeightedBackendService allows traffic to be split across multiple backend services. The volume of traffic for each backend service is proportional to the weight specified in each WeightedBackendService
 type WeightedBackendServiceResponseArgs struct {
-	// The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the loadbalancer applies any relevant headerActions specified as part of this backendServiceWeight.
+	// The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
 	BackendService pulumi.StringInput `pulumi:"backendService"`
-	// Specifies changes to request and response headers that need to take effect for the selected backendService. headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap. Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Specifies changes to request and response headers that need to take effect for the selected backendService. headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap. headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	HeaderAction HttpHeaderActionResponseInput `pulumi:"headerAction"`
-	// Specifies the fraction of traffic sent to backendService, computed as weight / (sum of all weightedBackendService weights in routeAction) . The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backendService, subsequent requests will be sent to the same backendService as determined by the BackendService's session affinity policy. The value must be between 0 and 1000
+	// Specifies the fraction of traffic sent to a backend service, computed as weight / (sum of all weightedBackendService weights in routeAction) . The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backend service, subsequent requests are sent to the same backend service as determined by the backend service's session affinity policy. The value must be from 0 to 1000.
 	Weight pulumi.IntInput `pulumi:"weight"`
 }
 
@@ -63924,7 +64680,7 @@ func (i WeightedBackendServiceResponseArray) ToWeightedBackendServiceResponseArr
 	return pulumi.ToOutputWithContext(ctx, i).(WeightedBackendServiceResponseArrayOutput)
 }
 
-// In contrast to a single BackendService in HttpRouteAction to which all matching traffic is directed to, WeightedBackendService allows traffic to be split across multiple BackendServices. The volume of traffic for each BackendService is proportional to the weight specified in each WeightedBackendService
+// In contrast to a single BackendService in HttpRouteAction to which all matching traffic is directed to, WeightedBackendService allows traffic to be split across multiple backend services. The volume of traffic for each backend service is proportional to the weight specified in each WeightedBackendService
 type WeightedBackendServiceResponseOutput struct{ *pulumi.OutputState }
 
 func (WeightedBackendServiceResponseOutput) ElementType() reflect.Type {
@@ -63939,17 +64695,17 @@ func (o WeightedBackendServiceResponseOutput) ToWeightedBackendServiceResponseOu
 	return o
 }
 
-// The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the loadbalancer applies any relevant headerActions specified as part of this backendServiceWeight.
+// The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
 func (o WeightedBackendServiceResponseOutput) BackendService() pulumi.StringOutput {
 	return o.ApplyT(func(v WeightedBackendServiceResponse) string { return v.BackendService }).(pulumi.StringOutput)
 }
 
-// Specifies changes to request and response headers that need to take effect for the selected backendService. headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap. Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Specifies changes to request and response headers that need to take effect for the selected backendService. headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap. headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 func (o WeightedBackendServiceResponseOutput) HeaderAction() HttpHeaderActionResponseOutput {
 	return o.ApplyT(func(v WeightedBackendServiceResponse) HttpHeaderActionResponse { return v.HeaderAction }).(HttpHeaderActionResponseOutput)
 }
 
-// Specifies the fraction of traffic sent to backendService, computed as weight / (sum of all weightedBackendService weights in routeAction) . The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backendService, subsequent requests will be sent to the same backendService as determined by the BackendService's session affinity policy. The value must be between 0 and 1000
+// Specifies the fraction of traffic sent to a backend service, computed as weight / (sum of all weightedBackendService weights in routeAction) . The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backend service, subsequent requests are sent to the same backend service as determined by the backend service's session affinity policy. The value must be from 0 to 1000.
 func (o WeightedBackendServiceResponseOutput) Weight() pulumi.IntOutput {
 	return o.ApplyT(func(v WeightedBackendServiceResponse) int { return v.Weight }).(pulumi.IntOutput)
 }
@@ -64592,6 +65348,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SSLHealthCheckResponsePtrInput)(nil)).Elem(), SSLHealthCheckResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SavedAttachedDiskResponseInput)(nil)).Elem(), SavedAttachedDiskResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SavedAttachedDiskResponseArrayInput)(nil)).Elem(), SavedAttachedDiskResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SavedDiskInput)(nil)).Elem(), SavedDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SavedDiskArrayInput)(nil)).Elem(), SavedDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SavedDiskResponseInput)(nil)).Elem(), SavedDiskResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SavedDiskResponseArrayInput)(nil)).Elem(), SavedDiskResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingInput)(nil)).Elem(), SchedulingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingPtrInput)(nil)).Elem(), SchedulingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingNodeAffinityInput)(nil)).Elem(), SchedulingNodeAffinityArgs{})
@@ -64616,6 +65376,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAssociationArrayInput)(nil)).Elem(), SecurityPolicyAssociationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAssociationResponseInput)(nil)).Elem(), SecurityPolicyAssociationResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAssociationResponseArrayInput)(nil)).Elem(), SecurityPolicyAssociationResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRecaptchaOptionsConfigInput)(nil)).Elem(), SecurityPolicyRecaptchaOptionsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRecaptchaOptionsConfigPtrInput)(nil)).Elem(), SecurityPolicyRecaptchaOptionsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRecaptchaOptionsConfigResponseInput)(nil)).Elem(), SecurityPolicyRecaptchaOptionsConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRecaptchaOptionsConfigResponsePtrInput)(nil)).Elem(), SecurityPolicyRecaptchaOptionsConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleInput)(nil)).Elem(), SecurityPolicyRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleArrayInput)(nil)).Elem(), SecurityPolicyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleHttpHeaderActionInput)(nil)).Elem(), SecurityPolicyRuleHttpHeaderActionArgs{})
@@ -65373,6 +66137,10 @@ func init() {
 	pulumi.RegisterOutputType(SSLHealthCheckResponsePtrOutput{})
 	pulumi.RegisterOutputType(SavedAttachedDiskResponseOutput{})
 	pulumi.RegisterOutputType(SavedAttachedDiskResponseArrayOutput{})
+	pulumi.RegisterOutputType(SavedDiskOutput{})
+	pulumi.RegisterOutputType(SavedDiskArrayOutput{})
+	pulumi.RegisterOutputType(SavedDiskResponseOutput{})
+	pulumi.RegisterOutputType(SavedDiskResponseArrayOutput{})
 	pulumi.RegisterOutputType(SchedulingOutput{})
 	pulumi.RegisterOutputType(SchedulingPtrOutput{})
 	pulumi.RegisterOutputType(SchedulingNodeAffinityOutput{})
@@ -65397,6 +66165,10 @@ func init() {
 	pulumi.RegisterOutputType(SecurityPolicyAssociationArrayOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAssociationResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAssociationResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRecaptchaOptionsConfigOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRecaptchaOptionsConfigPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRecaptchaOptionsConfigResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRecaptchaOptionsConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleHttpHeaderActionOutput{})

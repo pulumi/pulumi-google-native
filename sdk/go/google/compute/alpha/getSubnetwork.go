@@ -35,7 +35,7 @@ type LookupSubnetworkResult struct {
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource. This field can be set only at resource creation time.
 	Description string `pulumi:"description"`
-	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
+	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
 	EnableFlowLogs bool `pulumi:"enableFlowLogs"`
 	// Enables Layer2 communication on the subnetwork.
 	EnableL2 bool `pulumi:"enableL2"`
@@ -43,7 +43,7 @@ type LookupSubnetworkResult struct {
 	ExternalIpv6Prefix string `pulumi:"externalIpv6Prefix"`
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
 	Fingerprint string `pulumi:"fingerprint"`
-	// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
+	// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
 	FlowSampling float64 `pulumi:"flowSampling"`
 	// The gateway address for default routes to reach destination addresses outside this subnetwork.
 	GatewayAddress string `pulumi:"gatewayAddress"`
@@ -142,7 +142,7 @@ func (o LookupSubnetworkResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
+// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
 func (o LookupSubnetworkResultOutput) EnableFlowLogs() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupSubnetworkResult) bool { return v.EnableFlowLogs }).(pulumi.BoolOutput)
 }
@@ -162,7 +162,7 @@ func (o LookupSubnetworkResultOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.Fingerprint }).(pulumi.StringOutput)
 }
 
-// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
+// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
 func (o LookupSubnetworkResultOutput) FlowSampling() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupSubnetworkResult) float64 { return v.FlowSampling }).(pulumi.Float64Output)
 }

@@ -27,7 +27,7 @@ type InterconnectAttachment struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
 	CustomerRouterIpAddress pulumi.StringOutput `pulumi:"customerRouterIpAddress"`
-	// Dataplane version for this InterconnectAttachment.
+	// [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
 	DataplaneVersion pulumi.IntOutput `pulumi:"dataplaneVersion"`
 	// An optional description of this resource.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -123,6 +123,8 @@ type interconnectAttachmentArgs struct {
 	Bandwidth *InterconnectAttachmentBandwidth `pulumi:"bandwidth"`
 	// Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and customerRouterIpAddress for this attachment. All prefixes must be within link-local address space (169.254.0.0/16) and must be /29 or shorter (/28, /27, etc). Google will attempt to select an unused /29 from the supplied candidate prefix(es). The request will fail if all possible /29s are in use on Google's edge. If not supplied, Google will randomly select an unused /29 from all of link-local space.
 	CandidateSubnets []string `pulumi:"candidateSubnets"`
+	// [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
+	DataplaneVersion *int `pulumi:"dataplaneVersion"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values: - AVAILABILITY_DOMAIN_ANY - AVAILABILITY_DOMAIN_1 - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
@@ -165,6 +167,8 @@ type InterconnectAttachmentArgs struct {
 	Bandwidth InterconnectAttachmentBandwidthPtrInput
 	// Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and customerRouterIpAddress for this attachment. All prefixes must be within link-local address space (169.254.0.0/16) and must be /29 or shorter (/28, /27, etc). Google will attempt to select an unused /29 from the supplied candidate prefix(es). The request will fail if all possible /29s are in use on Google's edge. If not supplied, Google will randomly select an unused /29 from all of link-local space.
 	CandidateSubnets pulumi.StringArrayInput
+	// [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
+	DataplaneVersion pulumi.IntPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values: - AVAILABILITY_DOMAIN_ANY - AVAILABILITY_DOMAIN_1 - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.

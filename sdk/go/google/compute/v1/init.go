@@ -81,6 +81,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &License{}
 	case "google-native:compute/v1:LicenseIamPolicy":
 		r = &LicenseIamPolicy{}
+	case "google-native:compute/v1:MachineImage":
+		r = &MachineImage{}
+	case "google-native:compute/v1:MachineImageIamPolicy":
+		r = &MachineImageIamPolicy{}
 	case "google-native:compute/v1:Network":
 		r = &Network{}
 	case "google-native:compute/v1:NetworkEndpointGroup":
@@ -145,6 +149,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServiceAttachment{}
 	case "google-native:compute/v1:ServiceAttachmentIamPolicy":
 		r = &ServiceAttachmentIamPolicy{}
+	case "google-native:compute/v1:Snapshot":
+		r = &Snapshot{}
 	case "google-native:compute/v1:SnapshotIamPolicy":
 		r = &SnapshotIamPolicy{}
 	case "google-native:compute/v1:SslCertificate":
