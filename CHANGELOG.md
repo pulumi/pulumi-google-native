@@ -3,6 +3,16 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+(None)
+
+---
+
+## 0.10.0 (2021-12-06)
+
+Improvements:
+
+- Update to support the latest resource definitions and the latest Pulumi SDK
+
 Bug fixes:
 
 - Disable unconditional replaces. No replaces will be triggered by the provider
