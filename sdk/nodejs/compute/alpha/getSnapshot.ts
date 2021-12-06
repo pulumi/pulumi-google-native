@@ -29,6 +29,10 @@ export interface GetSnapshotArgs {
 
 export interface GetSnapshotResult {
     /**
+     * The architecture of the snapshot. Valid values are ARM64 or X86_64.
+     */
+    readonly architecture: string;
+    /**
      * Set to true if snapshots are automatically created by applying resource policy on the target disk.
      */
     readonly autoCreated: boolean;

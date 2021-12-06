@@ -65,6 +65,10 @@ export interface GetSslPolicyResult {
      */
     readonly profile: string;
     /**
+     * URL of the region where the regional SSL policy resides. This field is not applicable to global SSL policies.
+     */
+    readonly region: string;
+    /**
      * Server-defined URL for the resource.
      */
     readonly selfLink: string;

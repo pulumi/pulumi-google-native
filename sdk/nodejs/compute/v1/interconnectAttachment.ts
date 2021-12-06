@@ -60,9 +60,9 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public /*out*/ readonly customerRouterIpAddress!: pulumi.Output<string>;
     /**
-     * Dataplane version for this InterconnectAttachment.
+     * [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
      */
-    public /*out*/ readonly dataplaneVersion!: pulumi.Output<number>;
+    public readonly dataplaneVersion!: pulumi.Output<number>;
     /**
      * An optional description of this resource.
      */
@@ -161,6 +161,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["adminEnabled"] = args ? args.adminEnabled : undefined;
             resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
             resourceInputs["candidateSubnets"] = args ? args.candidateSubnets : undefined;
+            resourceInputs["dataplaneVersion"] = args ? args.dataplaneVersion : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["edgeAvailabilityDomain"] = args ? args.edgeAvailabilityDomain : undefined;
             resourceInputs["encryption"] = args ? args.encryption : undefined;
@@ -181,7 +182,6 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["cloudRouterIpAddress"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["customerRouterIpAddress"] = undefined /*out*/;
-            resourceInputs["dataplaneVersion"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["operationalStatus"] = undefined /*out*/;
             resourceInputs["privateInterconnectInfo"] = undefined /*out*/;
@@ -240,6 +240,10 @@ export interface InterconnectAttachmentArgs {
      * Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and customerRouterIpAddress for this attachment. All prefixes must be within link-local address space (169.254.0.0/16) and must be /29 or shorter (/28, /27, etc). Google will attempt to select an unused /29 from the supplied candidate prefix(es). The request will fail if all possible /29s are in use on Google's edge. If not supplied, Google will randomly select an unused /29 from all of link-local space.
      */
     candidateSubnets?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
+     */
+    dataplaneVersion?: pulumi.Input<number>;
     /**
      * An optional description of this resource.
      */

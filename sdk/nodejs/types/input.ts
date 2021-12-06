@@ -3232,7 +3232,7 @@ export namespace bigquery {
              */
             description?: pulumi.Input<string>;
             /**
-             * [Optional] The destination table expiration time. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
+             * [Internal] This field is for Google internal use only.
              */
             expirationTime?: pulumi.Input<string>;
             /**
@@ -4897,7 +4897,7 @@ export namespace cloudasset {
         }
 
         /**
-         * ## IAM policy analysis query message.
+         * IAM policy analysis query message.
          */
         export interface IamPolicyAnalysisQueryArgs {
             /**
@@ -8326,13 +8326,17 @@ export namespace composer {
              */
             databaseConfig?: pulumi.Input<inputs.composer.v1.DatabaseConfigArgs>;
             /**
-             * Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+             * Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
              */
             encryptionConfig?: pulumi.Input<inputs.composer.v1.EncryptionConfigArgs>;
             /**
              * Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
              */
             environmentSize?: pulumi.Input<enums.composer.v1.EnvironmentConfigEnvironmentSize>;
+            /**
+             * Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window will be applied. The default value is Saturday and Sunday 00-06 GMT.
+             */
+            maintenanceWindow?: pulumi.Input<inputs.composer.v1.MaintenanceWindowArgs>;
             /**
              * The configuration used for the Kubernetes Engine cluster.
              */
@@ -8387,6 +8391,24 @@ export namespace composer {
              * Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
              */
             useIpAliases?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * The configuration settings for Cloud Composer maintenance window. The following example: ``` { "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" } ``` would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
+         */
+        export interface MaintenanceWindowArgs {
+            /**
+             * Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to `start_time`.
+             */
+            endTime: pulumi.Input<string>;
+            /**
+             * Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+             */
+            recurrence: pulumi.Input<string>;
+            /**
+             * Start time of the first recurrence of the maintenance window.
+             */
+            startTime: pulumi.Input<string>;
         }
 
         /**
@@ -8665,7 +8687,7 @@ export namespace composer {
              */
             databaseConfig?: pulumi.Input<inputs.composer.v1beta1.DatabaseConfigArgs>;
             /**
-             * Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+             * Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
              */
             encryptionConfig?: pulumi.Input<inputs.composer.v1beta1.EncryptionConfigArgs>;
             /**
@@ -9036,7 +9058,7 @@ export namespace compute {
              */
             networkTier?: pulumi.Input<enums.compute.alpha.AccessConfigNetworkTier>;
             /**
-             * The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled.
+             * The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled in accessConfig. If this field is unspecified in ipv6AccessConfig, a default PTR record will be createc for first IP in associated external IPv6 range.
              */
             publicPtrDomainName?: pulumi.Input<string>;
             /**
@@ -9044,7 +9066,7 @@ export namespace compute {
              */
             setPublicDns?: pulumi.Input<boolean>;
             /**
-             * Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name.
+             * Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name. This field is not used in ipv6AccessConfig. A default PTR record will be created if the VM has external IPv6 range associated.
              */
             setPublicPtr?: pulumi.Input<boolean>;
             /**
@@ -9201,7 +9223,7 @@ export namespace compute {
              */
             savedState?: pulumi.Input<enums.compute.alpha.AttachedDiskSavedState>;
             /**
-             * Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks. Note that for InstanceTemplate, specify the disk name, not the URL for the disk.
+             * Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks. Note that for InstanceTemplate, specify the disk name for zonal disk, and the URL for regional disk.
              */
             source?: pulumi.Input<string>;
             /**
@@ -9214,6 +9236,10 @@ export namespace compute {
          * [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
          */
         export interface AttachedDiskInitializeParamsArgs {
+            /**
+             * The architecture of the attached disk. Valid values are arm64 or x86_64.
+             */
+            architecture?: pulumi.Input<enums.compute.alpha.AttachedDiskInitializeParamsArchitecture>;
             /**
              * An optional description. Provide this property when creating the disk.
              */
@@ -9519,7 +9545,7 @@ export namespace compute {
              */
             cacheMode?: pulumi.Input<enums.compute.alpha.BackendBucketCdnPolicyCacheMode>;
             /**
-             * Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
+             * Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 31,622,400s (1 year).
              */
             clientTtl?: pulumi.Input<number>;
             /**
@@ -9607,7 +9633,7 @@ export namespace compute {
              */
             cacheMode?: pulumi.Input<enums.compute.alpha.BackendServiceCdnPolicyCacheMode>;
             /**
-             * Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
+             * Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 31,622,400s (1 year).
              */
             clientTtl?: pulumi.Input<number>;
             /**
@@ -9669,7 +9695,7 @@ export namespace compute {
          */
         export interface BackendServiceConnectionTrackingPolicyArgs {
             /**
-             * Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default.
+             * Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default. For more details, see [Connection Persistence for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#connection-persistence) and [Connection Persistence for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#connection-persistence).
              */
             connectionPersistenceOnUnhealthyBackends?: pulumi.Input<enums.compute.alpha.BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends>;
             /**
@@ -9677,17 +9703,17 @@ export namespace compute {
              */
             enableStrongAffinity?: pulumi.Input<boolean>;
             /**
-             * Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For Network Load Balancer the default is 60 seconds. This option is not available publicly. This field will be supported only if the Connection Tracking key is less than 5-tuple.
+             * Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For Internal TCP/UDP Load Balancing: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For Network Load Balancer the default is 60 seconds. This option is not available publicly.
              */
             idleTimeoutSec?: pulumi.Input<number>;
             /**
-             * Specifies the key used for connection tracking. There are two options: PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity.
+             * Specifies the key used for connection tracking. There are two options: - PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. - PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity. For more details, see [Tracking Mode for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#tracking-mode) and [Tracking Mode for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#tracking-mode).
              */
             trackingMode?: pulumi.Input<enums.compute.alpha.BackendServiceConnectionTrackingPolicyTrackingMode>;
         }
 
         /**
-         * For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
+         * For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
          */
         export interface BackendServiceFailoverPolicyArgs {
             /**
@@ -9695,11 +9721,11 @@ export namespace compute {
              */
             disableConnectionDrainOnFailover?: pulumi.Input<boolean>;
             /**
-             * If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview). The default is false.
+             * If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
              */
             dropTrafficIfUnhealthy?: pulumi.Input<boolean>;
             /**
-             * The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview).
+             * The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
              */
             failoverRatio?: pulumi.Input<number>;
         }
@@ -9756,7 +9782,7 @@ export namespace compute {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
@@ -9764,15 +9790,15 @@ export namespace compute {
              */
             bindingId?: pulumi.Input<string>;
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.compute.alpha.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -9920,7 +9946,7 @@ export namespace compute {
          */
         export interface ConsistentHashLoadBalancerSettingsArgs {
             /**
-             * Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+             * Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
              */
             httpCookie?: pulumi.Input<inputs.compute.alpha.ConsistentHashLoadBalancerSettingsHttpCookieArgs>;
             /**
@@ -9952,11 +9978,11 @@ export namespace compute {
         }
 
         /**
-         * The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing
+         * The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard.
          */
         export interface CorsPolicyArgs {
             /**
-             * In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header. Default is false.
+             * In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header. Default is false.
              */
             allowCredentials?: pulumi.Input<boolean>;
             /**
@@ -9968,15 +9994,15 @@ export namespace compute {
              */
             allowMethods?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see github.com/google/re2/wiki/Syntax An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+             * Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
              */
             allowOriginRegexes?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Specifies the list of origins that will be allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+             * Specifies the list of origins that is allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
              */
             allowOrigins?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * If true, specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+             * If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
              */
             disabled?: pulumi.Input<boolean>;
             /**
@@ -9984,7 +10010,7 @@ export namespace compute {
              */
             exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Specifies how long results of a preflight request can be cached in seconds. This translates to the Access-Control-Max-Age header.
+             * Specifies how long results of a preflight request can be cached in seconds. This field translates to the Access-Control-Max-Age header.
              */
             maxAge?: pulumi.Input<number>;
         }
@@ -10251,6 +10277,10 @@ export namespace compute {
              */
             destAddressGroups?: pulumi.Input<pulumi.Input<string>[]>;
             /**
+             * Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 1000.
+             */
+            destFqdns?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
              * CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
              */
             destIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
@@ -10262,6 +10292,10 @@ export namespace compute {
              * Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
              */
             srcAddressGroups?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 1000.
+             */
+            srcFqdns?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
              */
@@ -10384,7 +10418,7 @@ export namespace compute {
          */
         export interface GuestOsFeatureArgs {
             /**
-             * The ID of a supported feature. Read Enabling guest operating system features to see a list of available options.
+             * The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
              */
             type?: pulumi.Input<enums.compute.alpha.GuestOsFeatureType>;
         }
@@ -10513,7 +10547,7 @@ export namespace compute {
              */
             description?: pulumi.Input<string>;
             /**
-             * The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or .. * based matching is not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or .. * based matching is not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
              */
             hosts?: pulumi.Input<pulumi.Input<string>[]>;
             /**
@@ -10527,17 +10561,17 @@ export namespace compute {
          */
         export interface HttpFaultAbortArgs {
             /**
-             * The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive. For gRPC protocol, the gRPC status code is mapped to HTTP status code according to this mapping table. HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK status is currently not supported by Traffic Director.
+             * The HTTP status code used to abort the request. The value must be from 200 to 599 inclusive. For gRPC protocol, the gRPC status code is mapped to HTTP status code according to this mapping table. HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK status is currently not supported by Traffic Director.
              */
             httpStatus?: pulumi.Input<number>;
             /**
-             * The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
+             * The percentage of traffic for connections, operations, or requests that is aborted as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
              */
             percentage?: pulumi.Input<number>;
         }
 
         /**
-         * Specifies the delay introduced by Loadbalancer before forwarding the request to the backend service as part of fault injection.
+         * Specifies the delay introduced by the load balancer before forwarding the request to the backend service as part of fault injection.
          */
         export interface HttpFaultDelayArgs {
             /**
@@ -10545,13 +10579,13 @@ export namespace compute {
              */
             fixedDelay?: pulumi.Input<inputs.compute.alpha.DurationArgs>;
             /**
-             * The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
+             * The percentage of traffic for connections, operations, or requests for which a delay is introduced as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
              */
             percentage?: pulumi.Input<number>;
         }
 
         /**
-         * The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests.
+         * The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by the load balancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
          */
         export interface HttpFaultInjectionArgs {
             /**
@@ -10587,19 +10621,19 @@ export namespace compute {
          */
         export interface HttpHeaderActionArgs {
             /**
-             * Headers to add to a matching request prior to forwarding the request to the backendService.
+             * Headers to add to a matching request before forwarding the request to the backendService.
              */
             requestHeadersToAdd?: pulumi.Input<pulumi.Input<inputs.compute.alpha.HttpHeaderOptionArgs>[]>;
             /**
-             * A list of header names for headers that need to be removed from the request prior to forwarding the request to the backendService.
+             * A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
              */
             requestHeadersToRemove?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Headers to add the response prior to sending the response back to the client.
+             * Headers to add the response before sending the response back to the client.
              */
             responseHeadersToAdd?: pulumi.Input<pulumi.Input<inputs.compute.alpha.HttpHeaderOptionArgs>[]>;
             /**
-             * A list of header names for headers that need to be removed from the response prior to sending the response back to the client.
+             * A list of header names for headers that need to be removed from the response before sending the response back to the client.
              */
             responseHeadersToRemove?: pulumi.Input<pulumi.Input<string>[]>;
         }
@@ -10613,11 +10647,11 @@ export namespace compute {
              */
             exactMatch?: pulumi.Input<string>;
             /**
-             * The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method". When the URL map is bound to target gRPC proxy that has validateForProxyless field set to true, only non-binary user-specified custom metadata and the `content-type` header are supported. The following transport-level headers cannot be used in header matching rules: `:authority`, `:method`, `:path`, `:scheme`, `user-agent`, `accept-encoding`, `content-encoding`, `grpc-accept-encoding`, `grpc-encoding`, `grpc-previous-rpc-attempts`, `grpc-tags-bin`, `grpc-timeout` and `grpc-trace-bin.
+             * The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method". When the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true, only non-binary user-specified custom metadata and the `content-type` header are supported. The following transport-level headers cannot be used in header matching rules: `:authority`, `:method`, `:path`, `:scheme`, `user-agent`, `accept-encoding`, `content-encoding`, `grpc-accept-encoding`, `grpc-encoding`, `grpc-previous-rpc-attempts`, `grpc-tags-bin`, `grpc-timeout` and `grpc-trace-bin`.
              */
             headerName?: pulumi.Input<string>;
             /**
-             * If set to false, the headerMatch is considered a match if the match criteria above are met. If set to true, the headerMatch is considered a match if the match criteria above are NOT met. The default setting is false.
+             * If set to false, the headerMatch is considered a match if the preceding match criteria are met. If set to true, the headerMatch is considered a match if the preceding match criteria are NOT met. The default setting is false. 
              */
             invertMatch?: pulumi.Input<boolean>;
             /**
@@ -10629,11 +10663,11 @@ export namespace compute {
              */
             presentMatch?: pulumi.Input<boolean>;
             /**
-             * The header value must be an integer and its value must be in the range specified in rangeMatch. If the header does not contain an integer, number or is empty, the match fails. For example for a range [-5, 0] - -3 will match. - 0 will not match. - 0.25 will not match. - -3someString will not match. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Note that rangeMatch is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL.
+             * The header value must be an integer and its value must be in the range specified in rangeMatch. If the header does not contain an integer, number or is empty, the match fails. For example for a range [-5, 0] - -3 will match. - 0 will not match. - 0.25 will not match. - -3someString will not match. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. rangeMatch is not supported for load balancers that have loadBalancingScheme set to EXTERNAL.
              */
             rangeMatch?: pulumi.Input<inputs.compute.alpha.Int64RangeMatchArgs>;
             /**
-             * The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see: github.com/google/re2/wiki/Syntax For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+             * The value of the header must match the regular expression specified in regexMatch. For more information about regular expression syntax, see Syntax. For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
              */
             regexMatch?: pulumi.Input<string>;
             /**
@@ -10655,7 +10689,7 @@ export namespace compute {
              */
             headerValue?: pulumi.Input<string>;
             /**
-             * If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header. The default value is false.
+             * If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header. The default value is false. 
              */
             replace?: pulumi.Input<boolean>;
         }
@@ -10665,7 +10699,7 @@ export namespace compute {
          */
         export interface HttpQueryParameterMatchArgs {
             /**
-             * The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch. Only one of presentMatch, exactMatch or regexMatch must be set.
+             * The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch. Only one of presentMatch, exactMatch, or regexMatch must be set. 
              */
             exactMatch?: pulumi.Input<string>;
             /**
@@ -10673,11 +10707,11 @@ export namespace compute {
              */
             name?: pulumi.Input<string>;
             /**
-             * Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not. Only one of presentMatch, exactMatch or regexMatch must be set.
+             * Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not. Only one of presentMatch, exactMatch, or regexMatch must be set. 
              */
             presentMatch?: pulumi.Input<boolean>;
             /**
-             * The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For the regular expression grammar, please see github.com/google/re2/wiki/Syntax Only one of presentMatch, exactMatch or regexMatch must be set. Note that regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+             * The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For more information about regular expression syntax, see Syntax. Only one of presentMatch, exactMatch, or regexMatch must be set. regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED. 
              */
             regexMatch?: pulumi.Input<string>;
         }
@@ -10687,27 +10721,27 @@ export namespace compute {
          */
         export interface HttpRedirectActionArgs {
             /**
-             * The host that will be used in the redirect response instead of the one that was supplied in the request. The value must be between 1 and 255 characters.
+             * The host that is used in the redirect response instead of the one that was supplied in the request. The value must be from 1 to 255 characters.
              */
             hostRedirect?: pulumi.Input<string>;
             /**
-             * If set to true, the URL scheme in the redirected request is set to https. If set to false, the URL scheme of the redirected request will remain the same as that of the request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
+             * If set to true, the URL scheme in the redirected request is set to HTTPS. If set to false, the URL scheme of the redirected request remains the same as that of the request. This must only be set for URL maps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
              */
             httpsRedirect?: pulumi.Input<boolean>;
             /**
-             * The path that will be used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
+             * The path that is used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters.
              */
             pathRedirect?: pulumi.Input<string>;
             /**
-             * The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
+             * The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters.
              */
             prefixRedirect?: pulumi.Input<string>;
             /**
-             * The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained. 
+             * The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method is retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method is retained. 
              */
             redirectResponseCode?: pulumi.Input<enums.compute.alpha.HttpRedirectActionRedirectResponseCode>;
             /**
-             * If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false.
+             * If set to true, any accompanying query portion of the original URL is removed before redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false. 
              */
             stripQuery?: pulumi.Input<boolean>;
         }
@@ -10721,52 +10755,52 @@ export namespace compute {
              */
             numRetries?: pulumi.Input<number>;
             /**
-             * Specifies a non-zero timeout per retry attempt. If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set, will use the largest timeout among all backend services associated with the route.
+             * Specifies a non-zero timeout per retry attempt. If not specified, will use the timeout set in the HttpRouteAction field. If timeout in the HttpRouteAction field is not set, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
              */
             perTryTimeout?: pulumi.Input<inputs.compute.alpha.DurationArgs>;
             /**
-             * Specifies one or more conditions when this retry policy applies. Valid values are: - 5xx: Retry will be attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all, example: disconnects, reset, read timeout, connection failure, and refused streams. - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504. - - connect-failure: A retry will be attempted on failures connecting to the instance or endpoint, for example due to connection timeouts. - retriable-4xx: A retry will be attempted if the instance or endpoint responds with a retriable 4xx response code. Currently the only retriable error supported is 409. - refused-stream: A retry will be attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: A retry will be attempted if the gRPC status code in the response header is set to cancelled. - deadline-exceeded: A retry will be attempted if the gRPC status code in the response header is set to deadline-exceeded. - internal: A retry will be attempted if the gRPC status code in the response header is set to internal. - resource-exhausted: A retry will be attempted if the gRPC status code in the response header is set to resource-exhausted. - unavailable: A retry will be attempted if the gRPC status code in the response header is set to unavailable. 
+             * Specifies one or more conditions when this retry policy applies. Valid values are: - 5xx: retry is attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all. For example, disconnects, reset, read timeout, connection failure, and refused streams. - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504. - connect-failure: a retry is attempted on failures connecting to the instance or endpoint. For example, connection timeouts. - retriable-4xx: a retry is attempted if the instance or endpoint responds with a 4xx response code. The only error that you can retry is error code 409. - refused-stream: a retry is attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: a retry is attempted if the gRPC status code in the response header is set to cancelled. - deadline-exceeded: a retry is attempted if the gRPC status code in the response header is set to deadline-exceeded. - internal: a retry is attempted if the gRPC status code in the response header is set to internal. - resource-exhausted: a retry is attempted if the gRPC status code in the response header is set to resource-exhausted. - unavailable: a retry is attempted if the gRPC status code in the response header is set to unavailable. Only the following codes are supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true. - cancelled - deadline-exceeded - internal - resource-exhausted - unavailable 
              */
             retryConditions?: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         export interface HttpRouteActionArgs {
             /**
-             * The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing Not supported when the URL map is bound to target gRPC proxy.
+             * The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard. Not supported when the URL map is bound to a target gRPC proxy.
              */
             corsPolicy?: pulumi.Input<inputs.compute.alpha.CorsPolicyArgs>;
             /**
-             * The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests. For the requests impacted by fault injection, timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy.
+             * The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. For the requests impacted by fault injection, timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy.
              */
             faultInjectionPolicy?: pulumi.Input<inputs.compute.alpha.HttpFaultInjectionArgs>;
             /**
-             * Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (i.e. end-of-stream), the duration in this field is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, will use the largest maxStreamDuration among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+             * Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (known as *end-of-stream*), the duration in this field is computed from the beginning of the stream until the response has been processed, including all retries. A stream that does not complete in this duration is closed. If not specified, this field uses the maximum maxStreamDuration value among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
              */
             maxStreamDuration?: pulumi.Input<inputs.compute.alpha.DurationArgs>;
             /**
-             * Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
              */
             requestMirrorPolicy?: pulumi.Input<inputs.compute.alpha.RequestMirrorPolicyArgs>;
             /**
-             * Specifies the retry policy associated with this route. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Specifies the retry policy associated with this route.
              */
             retryPolicy?: pulumi.Input<inputs.compute.alpha.HttpRetryPolicyArgs>;
             /**
-             * Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries. If not specified, will use the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as *end-of-stream*) up until the response has been processed. Timeout includes all retries. If not specified, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
              */
             timeout?: pulumi.Input<inputs.compute.alpha.DurationArgs>;
             /**
-             * The spec to modify the URL of the request, prior to forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * The spec to modify the URL of the request, before forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
              */
             urlRewrite?: pulumi.Input<inputs.compute.alpha.UrlRewriteArgs>;
             /**
-             * A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number. Once a backendService is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
+             * A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number. After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
              */
             weightedBackendServices?: pulumi.Input<pulumi.Input<inputs.compute.alpha.WeightedBackendServiceArgs>[]>;
         }
 
         /**
-         * An HttpRouteRule specifies how to match an HTTP request and the corresponding routing action that load balancing proxies will perform.
+         * The HttpRouteRule setting specifies how to match an HTTP request and the corresponding routing action that load balancing proxies perform.
          */
         export interface HttpRouteRuleArgs {
             /**
@@ -10774,15 +10808,15 @@ export namespace compute {
              */
             description?: pulumi.Input<string>;
             /**
-             * Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction specified here are applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction value specified here is applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
              */
             headerAction?: pulumi.Input<inputs.compute.alpha.HttpHeaderActionArgs>;
             /**
-             * Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director. httpFilterConfigs only applies for Loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director. httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
              */
             httpFilterConfigs?: pulumi.Input<pulumi.Input<inputs.compute.alpha.HttpFilterConfigArgs>[]>;
             /**
-             * Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director. httpFilterMetadata only applies for Loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. The only configTypeUrl supported is type.googleapis.com/google.protobuf.Struct Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director. httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. The only configTypeUrl supported is type.googleapis.com/google.protobuf.Struct Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
              */
             httpFilterMetadata?: pulumi.Input<pulumi.Input<inputs.compute.alpha.HttpFilterConfigArgs>[]>;
             /**
@@ -10790,19 +10824,19 @@ export namespace compute {
              */
             matchRules?: pulumi.Input<pulumi.Input<inputs.compute.alpha.HttpRouteRuleMatchArgs>[]>;
             /**
-             * For routeRules within a given pathMatcher, priority determines the order in which load balancer will interpret routeRules. RouteRules are evaluated in order of priority, from the lowest to highest number. The priority of a rule decreases as its number increases (1, 2, 3, N+1). The first rule that matches the request is applied. You cannot configure two or more routeRules with the same priority. Priority for each rule must be set to a number between 0 and 2147483647 inclusive. Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
+             * For routeRules within a given pathMatcher, priority determines the order in which a load balancer interprets routeRules. RouteRules are evaluated in order of priority, from the lowest to highest number. The priority of a rule decreases as its number increases (1, 2, 3, N+1). The first rule that matches the request is applied. You cannot configure two or more routeRules with the same priority. Priority for each rule must be set to a number from 0 to 2147483647 inclusive. Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
              */
             priority?: pulumi.Input<number>;
             /**
-             * In response to a matching matchRule, the load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a routeRule's routeAction.
+             * In response to a matching matchRule, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a route rule's routeAction.
              */
             routeAction?: pulumi.Input<inputs.compute.alpha.HttpRouteActionArgs>;
             /**
-             * The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendService s. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
+             * The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
              */
             service?: pulumi.Input<string>;
             /**
-             * When this rule is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+             * When this rule is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
              */
             urlRedirect?: pulumi.Input<inputs.compute.alpha.HttpRedirectActionArgs>;
         }
@@ -10812,7 +10846,7 @@ export namespace compute {
          */
         export interface HttpRouteRuleMatchArgs {
             /**
-             * For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL. fullPathMatch must be between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+             * For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL. fullPathMatch must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
              */
             fullPathMatch?: pulumi.Input<string>;
             /**
@@ -10820,23 +10854,23 @@ export namespace compute {
              */
             headerMatches?: pulumi.Input<pulumi.Input<inputs.compute.alpha.HttpHeaderMatchArgs>[]>;
             /**
-             * Specifies that prefixMatch and fullPathMatch matches are case sensitive. The default value is false. ignoreCase must not be used with regexMatch. Not supported when the URL map is bound to target gRPC proxy.
+             * Specifies that prefixMatch and fullPathMatch matches are case sensitive. The default value is false. ignoreCase must not be used with regexMatch. Not supported when the URL map is bound to a target gRPC proxy.
              */
             ignoreCase?: pulumi.Input<boolean>;
             /**
-             * Opaque filter criteria used by Loadbalancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to Loadbalancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadataFilters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here will be applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Opaque filter criteria used by the load balancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to the load balancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadata filters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here is applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
              */
             metadataFilters?: pulumi.Input<pulumi.Input<inputs.compute.alpha.MetadataFilterArgs>[]>;
             /**
-             * For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+             * For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
              */
             prefixMatch?: pulumi.Input<string>;
             /**
-             * Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to target gRPC proxy.
+             * Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to a target gRPC proxy.
              */
             queryParameterMatches?: pulumi.Input<pulumi.Input<inputs.compute.alpha.HttpQueryParameterMatchArgs>[]>;
             /**
-             * For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar please see github.com/google/re2/wiki/Syntax Only one of prefixMatch, fullPathMatch or regexMatch must be specified. Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+             * For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For more information about regular expression syntax, see Syntax. Only one of prefixMatch, fullPathMatch or regexMatch must be specified. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
              */
             regexMatch?: pulumi.Input<string>;
         }
@@ -10886,6 +10920,10 @@ export namespace compute {
 
         export interface InstanceGroupManagerAutoHealingPolicyArgs {
             /**
+             * Restricts what triggers autohealing.
+             */
+            autoHealingTriggers?: pulumi.Input<inputs.compute.alpha.InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersArgs>;
+            /**
              * The URL for the health check that signals autohealing.
              */
             healthCheck?: pulumi.Input<string>;
@@ -10898,6 +10936,13 @@ export namespace compute {
              */
             maxUnavailable?: pulumi.Input<inputs.compute.alpha.FixedOrPercentArgs>;
             updateInstances?: pulumi.Input<enums.compute.alpha.InstanceGroupManagerAutoHealingPolicyUpdateInstances>;
+        }
+
+        export interface InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersArgs {
+            /**
+             * If you have configured an application-based health check for the group, this field controls whether to trigger VM autohealing based on a failed health check. Valid values are: - ON (default): The group recreates running VMs that fail the application-based health check. - OFF: When set to OFF, you can still observe instance health state, but the group does not recreate VMs that fail the application-based health check. This is useful for troubleshooting and setting up your health check configuration. 
+             */
+            onHealthCheck?: pulumi.Input<enums.compute.alpha.InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheck>;
         }
 
         export interface InstanceGroupManagerInstanceLifecyclePolicyArgs {
@@ -10970,7 +11015,7 @@ export namespace compute {
 
         export interface InstancePropertiesArgs {
             /**
-             * Controls for advanced machine-related behavior features.
+             * Controls for advanced machine-related behavior features. Note that for MachineImage, this is not supported yet.
              */
             advancedMachineFeatures?: pulumi.Input<inputs.compute.alpha.AdvancedMachineFeaturesArgs>;
             /**
@@ -10978,7 +11023,7 @@ export namespace compute {
              */
             canIpForward?: pulumi.Input<boolean>;
             /**
-             * Specifies the Confidential Instance options.
+             * Specifies the Confidential Instance options. Note that for MachineImage, this is not supported yet.
              */
             confidentialInstanceConfig?: pulumi.Input<inputs.compute.alpha.ConfidentialInstanceConfigArgs>;
             /**
@@ -10990,13 +11035,17 @@ export namespace compute {
              */
             disks?: pulumi.Input<pulumi.Input<inputs.compute.alpha.AttachedDiskArgs>[]>;
             /**
-             * Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer
+             * Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer Note that for MachineImage, this is not supported yet.
              */
             displayDevice?: pulumi.Input<inputs.compute.alpha.DisplayDeviceArgs>;
             /**
              * A list of guest accelerator cards' type and count to use for instances created from these properties.
              */
             guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.alpha.AcceleratorConfigArgs>[]>;
+            /**
+             * KeyRevocationActionType of the instance.
+             */
+            keyRevocationActionType?: pulumi.Input<enums.compute.alpha.InstancePropertiesKeyRevocationActionType>;
             /**
              * Labels to apply to instances that are created from these properties.
              */
@@ -11017,21 +11066,24 @@ export namespace compute {
              * An array of network access configurations for this interface.
              */
             networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.alpha.NetworkInterfaceArgs>[]>;
+            /**
+             * Note that for MachineImage, this is not supported yet.
+             */
             networkPerformanceConfig?: pulumi.Input<inputs.compute.alpha.NetworkPerformanceConfigArgs>;
             /**
-             * PostKeyRevocationActionType of the instance.(will be deprecated soon)
+             * PostKeyRevocationActionType of the instance.
              */
             postKeyRevocationActionType?: pulumi.Input<enums.compute.alpha.InstancePropertiesPostKeyRevocationActionType>;
             /**
-             * The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default.
+             * The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
              */
             privateIpv6GoogleAccess?: pulumi.Input<enums.compute.alpha.InstancePropertiesPrivateIpv6GoogleAccess>;
             /**
-             * Specifies the reservations that instances can consume from.
+             * Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
              */
             reservationAffinity?: pulumi.Input<inputs.compute.alpha.ReservationAffinityArgs>;
             /**
-             * Resource policies (names, not ULRs) applied to instances created from these properties.
+             * Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
              */
             resourcePolicies?: pulumi.Input<pulumi.Input<string>[]>;
             /**
@@ -11039,13 +11091,16 @@ export namespace compute {
              */
             scheduling?: pulumi.Input<inputs.compute.alpha.SchedulingArgs>;
             /**
-             * [Input Only] Secure tags to apply to this instance. Maximum number of secure tags allowed is 50.
+             * [Input Only] Secure tags to apply to this instance. Maximum number of secure tags allowed is 50. Note that for MachineImage, this is not supported yet.
              */
             secureTags?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
              */
             serviceAccounts?: pulumi.Input<pulumi.Input<inputs.compute.alpha.ServiceAccountArgs>[]>;
+            /**
+             * Note that for MachineImage, this is not supported yet.
+             */
             shieldedInstanceConfig?: pulumi.Input<inputs.compute.alpha.ShieldedInstanceConfigArgs>;
             /**
              * Specifies the Shielded VM options for the instances that are created from these properties.
@@ -11274,7 +11329,7 @@ export namespace compute {
         }
 
         /**
-         * Opaque filter criteria used by loadbalancers to restrict routing configuration to a limited set of loadbalancing proxies. Proxies and sidecars involved in loadbalancing would typically present metadata to the loadbalancers which need to match criteria specified here. If a match takes place, the relevant configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. An example for using metadataFilters would be: if loadbalancing involves Envoys, they will only receive routing configuration when values in metadataFilters match values supplied in of their XDS requests to loadbalancers.
+         * Opaque filter criteria used by load balancers to restrict routing configuration to a limited set of load balancing proxies. Proxies and sidecars involved in load balancing would typically present metadata to the load balancers that need to match criteria specified here. If a match takes place, the relevant configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. An example for using metadataFilters would be: if load balancing involves Envoys, they receive routing configuration when values in metadataFilters match values supplied in of their XDS requests to loadbalancers.
          */
         export interface MetadataFilterArgs {
             /**
@@ -11282,13 +11337,13 @@ export namespace compute {
              */
             filterLabels?: pulumi.Input<pulumi.Input<inputs.compute.alpha.MetadataFilterLabelMatchArgs>[]>;
             /**
-             * Specifies how individual filterLabel matches within the list of filterLabels contribute towards the overall metadataFilter match. Supported values are: - MATCH_ANY: At least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: All filterLabels must have matching labels in the provided metadata. 
+             * Specifies how individual filter label matches within the list of filterLabels and contributes toward the overall metadataFilter match. Supported values are: - MATCH_ANY: at least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: all filterLabels must have matching labels in the provided metadata. 
              */
             filterMatchCriteria?: pulumi.Input<enums.compute.alpha.MetadataFilterFilterMatchCriteria>;
         }
 
         /**
-         * MetadataFilter label name value pairs that are expected to match corresponding labels presented as metadata to the loadbalancer.
+         * MetadataFilter label name value pairs that are expected to match corresponding labels presented as metadata to the load balancer.
          */
         export interface MetadataFilterLabelMatchArgs {
             /**
@@ -11418,7 +11473,7 @@ export namespace compute {
              */
             ipv6AccessConfigs?: pulumi.Input<pulumi.Input<inputs.compute.alpha.AccessConfigArgs>[]>;
             /**
-             * URL of the network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used; if the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default 
+             * URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default 
              */
             network?: pulumi.Input<string>;
             /**
@@ -11644,19 +11699,19 @@ export namespace compute {
         }
 
         /**
-         * A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service will be used.
+         * A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service is used.
          */
         export interface PathMatcherArgs {
             /**
-             * defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a pathMatcher's defaultRouteAction.
+             * defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a path matcher's defaultRouteAction.
              */
             defaultRouteAction?: pulumi.Input<inputs.compute.alpha.HttpRouteActionArgs>;
             /**
-             * The full or partial URL to the BackendService resource. This will be used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use 
+             * The full or partial URL to the BackendService resource. This URL is used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect , or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use 
              */
             defaultService?: pulumi.Input<string>;
             /**
-             * When none of the specified pathRules or routeRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+             * When none of the specified pathRules or routeRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
              */
             defaultUrlRedirect?: pulumi.Input<inputs.compute.alpha.HttpRedirectActionArgs>;
             /**
@@ -11664,7 +11719,7 @@ export namespace compute {
              */
             description?: pulumi.Input<string>;
             /**
-             * Specifies changes to request and response headers that need to take effect for the selected backendService. HeaderAction specified here are applied after the matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Specifies changes to request and response headers that need to take effect for the selected backend service. HeaderAction specified here are applied after the matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
              */
             headerAction?: pulumi.Input<inputs.compute.alpha.HttpHeaderActionArgs>;
             /**
@@ -11690,15 +11745,15 @@ export namespace compute {
              */
             paths?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * In response to a matching path, the load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a pathRule's routeAction.
+             * In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for external HTTP(S) load balancers support only the urlRewrite action within a path rule's routeAction.
              */
             routeAction?: pulumi.Input<inputs.compute.alpha.HttpRouteActionArgs>;
             /**
-             * The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendService s. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
+             * The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
              */
             service?: pulumi.Input<string>;
             /**
-             * When a path pattern is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+             * When a path pattern is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
              */
             urlRedirect?: pulumi.Input<inputs.compute.alpha.HttpRedirectActionArgs>;
         }
@@ -11730,7 +11785,7 @@ export namespace compute {
         }
 
         /**
-         * A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
+         * A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer doesn't wait for responses from the shadow service. Before sending traffic to the shadow service, the host or authority header is suffixed with -shadow.
          */
         export interface RequestMirrorPolicyArgs {
             /**
@@ -12248,6 +12303,10 @@ export namespace compute {
              */
             tcpTransitoryIdleTimeoutSec?: pulumi.Input<number>;
             /**
+             * Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC.
+             */
+            type?: pulumi.Input<enums.compute.alpha.RouterNatType>;
+            /**
              * Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
              */
             udpIdleTimeoutSec?: pulumi.Input<number>;
@@ -12277,7 +12336,7 @@ export namespace compute {
              */
             description?: pulumi.Input<string>;
             /**
-             * CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == '/projects/my-project/global/hub/hub-1'"
+             * CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
              */
             match?: pulumi.Input<string>;
             /**
@@ -12292,9 +12351,17 @@ export namespace compute {
              */
             sourceNatActiveIps?: pulumi.Input<pulumi.Input<string>[]>;
             /**
+             * A list of URLs of the subnetworks used as source ranges for this NAT Rule. These subnetworks must have purpose set to PRIVATE_NAT. This field is used for private NAT.
+             */
+            sourceNatActiveRanges?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
              * A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT rule only. This field is used for public NAT.
              */
             sourceNatDrainIps?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * A list of URLs of subnetworks representing source ranges to be drained. This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule. This field is used for private NAT.
+             */
+            sourceNatDrainRanges?: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         /**
@@ -12377,6 +12444,16 @@ export namespace compute {
         }
 
         /**
+         * An instance-attached disk resource.
+         */
+        export interface SavedDiskArgs {
+            /**
+             * Specifies a URL of the disk attached to the source instance.
+             */
+            sourceDisk?: pulumi.Input<string>;
+        }
+
+        /**
          * Sets the scheduling options for an Instance. NextID: 21
          */
         export interface SchedulingArgs {
@@ -12421,6 +12498,10 @@ export namespace compute {
              */
             maintenanceInterval?: pulumi.Input<enums.compute.alpha.SchedulingMaintenanceInterval>;
             /**
+             * Specifies the max run duration for the given instance. If specified, the instance termination action will be performed at the end of the run duration.
+             */
+            maxRunDuration?: pulumi.Input<inputs.compute.alpha.DurationArgs>;
+            /**
              * The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
              */
             minNodeCpus?: pulumi.Input<number>;
@@ -12440,6 +12521,10 @@ export namespace compute {
              * Specifies the provisioning model of the instance.
              */
             provisioningModel?: pulumi.Input<enums.compute.alpha.SchedulingProvisioningModel>;
+            /**
+             * Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
+             */
+            terminationTime?: pulumi.Input<string>;
         }
 
         /**
@@ -12524,12 +12609,19 @@ export namespace compute {
             ddosProtection?: pulumi.Input<enums.compute.alpha.SecurityPolicyDdosProtectionConfigDdosProtection>;
         }
 
+        export interface SecurityPolicyRecaptchaOptionsConfigArgs {
+            /**
+             * An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+             */
+            redirectSiteKey?: pulumi.Input<string>;
+        }
+
         /**
          * Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
          */
         export interface SecurityPolicyRuleArgs {
             /**
-             * The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+             * The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502). - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this. 
              */
             action?: pulumi.Input<string>;
             /**
@@ -12677,17 +12769,21 @@ export namespace compute {
              */
             conformAction?: pulumi.Input<string>;
             /**
-             * Determines the key to enforce the rate_limit_threshold on. Possible values are: "ALL" -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. "ALL_IPS" -- This definition, equivalent to "ALL", has been depprecated. "IP" -- The source IP address of the request is the key. Each IP has this limit enforced separately. "HTTP_HEADER" -- The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to "ALL". "XFF_IP" -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to "ALL".
+             * Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
              */
             enforceOnKey?: pulumi.Input<enums.compute.alpha.SecurityPolicyRuleRateLimitOptionsEnforceOnKey>;
             /**
-             * Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+             * Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
              */
             enforceOnKeyName?: pulumi.Input<string>;
             /**
-             * When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
+             * Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceed_redirect_options below.
              */
             exceedAction?: pulumi.Input<string>;
+            /**
+             * Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+             */
+            exceedRedirectOptions?: pulumi.Input<inputs.compute.alpha.SecurityPolicyRuleRedirectOptionsArgs>;
             /**
              * Threshold at which to begin ratelimiting.
              */
@@ -12782,11 +12878,11 @@ export namespace compute {
          */
         export interface ShareSettingsArgs {
             /**
-             * A map of folder id and folder config to specify consumer projects for this shared-reservation. This is only valid when share_type's value is DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS.
+             * A map of folder id and folder config to specify consumer projects for this shared-reservation. This is only valid when share_type's value is DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS. Folder id should be a string of number, and without "folders/" prefix.
              */
             folderMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
-             * A map of project id and project config. Using map format to ease add-to/remove-from the Project list in PATCH command. In future we will deprecate (And later remove) the array one.
+             * A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
              */
             projectMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
@@ -12931,7 +13027,7 @@ export namespace compute {
              */
             aggregationInterval?: pulumi.Input<enums.compute.alpha.SubnetworkLogConfigAggregationInterval>;
             /**
-             * Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging.
+             * Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
              */
             enable?: pulumi.Input<boolean>;
             /**
@@ -12939,7 +13035,7 @@ export namespace compute {
              */
             filterExpr?: pulumi.Input<string>;
             /**
-             * Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
+             * Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
              */
             flowSampling?: pulumi.Input<number>;
             /**
@@ -13114,7 +13210,7 @@ export namespace compute {
              */
             description?: pulumi.Input<string>;
             /**
-             * The expected output URL evaluated by load balancer containing the scheme, host, path and query parameters. For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored. For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies https_redirect, the test passes only if the scheme in expectedOutputUrl is also set to https. If urlRedirect specifies strip_query, the test passes only if expectedOutputUrl does not contain any query parameters. expectedOutputUrl is optional when service is specified.
+             * The expected output URL evaluated by the load balancer containing the scheme, host, path and query parameters. For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by the load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored. For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies https_redirect, the test passes only if the scheme in expectedOutputUrl is also set to HTTPS. If urlRedirect specifies strip_query, the test passes only if expectedOutputUrl does not contain any query parameters. expectedOutputUrl is optional when service is specified.
              */
             expectedOutputUrl?: pulumi.Input<string>;
             /**
@@ -13134,7 +13230,7 @@ export namespace compute {
              */
             path?: pulumi.Input<string>;
             /**
-             * Expected BackendService or BackendBucket resource the given URL should be mapped to. service cannot be set if expectedRedirectResponseCode is set.
+             * Expected BackendService or BackendBucket resource the given URL should be mapped to. The service field cannot be set if expectedRedirectResponseCode is set.
              */
             service?: pulumi.Input<string>;
         }
@@ -13158,11 +13254,11 @@ export namespace compute {
          */
         export interface UrlRewriteArgs {
             /**
-             * Prior to forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be between 1 and 255 characters.
+             * Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be from 1 to 255 characters.
              */
             hostRewrite?: pulumi.Input<string>;
             /**
-             * Prior to forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be between 1 and 1024 characters.
+             * Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be from 1 to 1024 characters.
              */
             pathPrefixRewrite?: pulumi.Input<string>;
         }
@@ -13178,19 +13274,19 @@ export namespace compute {
         }
 
         /**
-         * In contrast to a single BackendService in HttpRouteAction to which all matching traffic is directed to, WeightedBackendService allows traffic to be split across multiple BackendServices. The volume of traffic for each BackendService is proportional to the weight specified in each WeightedBackendService
+         * In contrast to a single BackendService in HttpRouteAction to which all matching traffic is directed to, WeightedBackendService allows traffic to be split across multiple backend services. The volume of traffic for each backend service is proportional to the weight specified in each WeightedBackendService
          */
         export interface WeightedBackendServiceArgs {
             /**
-             * The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the loadbalancer applies any relevant headerActions specified as part of this backendServiceWeight.
+             * The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
              */
             backendService?: pulumi.Input<string>;
             /**
-             * Specifies changes to request and response headers that need to take effect for the selected backendService. headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap. Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Specifies changes to request and response headers that need to take effect for the selected backendService. headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap. headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
              */
             headerAction?: pulumi.Input<inputs.compute.alpha.HttpHeaderActionArgs>;
             /**
-             * Specifies the fraction of traffic sent to backendService, computed as weight / (sum of all weightedBackendService weights in routeAction) . The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backendService, subsequent requests will be sent to the same backendService as determined by the BackendService's session affinity policy. The value must be between 0 and 1000
+             * Specifies the fraction of traffic sent to a backend service, computed as weight / (sum of all weightedBackendService weights in routeAction) . The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backend service, subsequent requests are sent to the same backend service as determined by the backend service's session affinity policy. The value must be from 0 to 1000.
              */
             weight?: pulumi.Input<number>;
         }
@@ -13229,11 +13325,11 @@ export namespace compute {
              */
             networkTier?: pulumi.Input<enums.compute.beta.AccessConfigNetworkTier>;
             /**
-             * The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled.
+             * The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled in accessConfig. If this field is unspecified in ipv6AccessConfig, a default PTR record will be createc for first IP in associated external IPv6 range.
              */
             publicPtrDomainName?: pulumi.Input<string>;
             /**
-             * Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name.
+             * Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name. This field is not used in ipv6AccessConfig. A default PTR record will be created if the VM has external IPv6 range associated.
              */
             setPublicPtr?: pulumi.Input<boolean>;
             /**
@@ -13370,7 +13466,7 @@ export namespace compute {
              */
             mode?: pulumi.Input<enums.compute.beta.AttachedDiskMode>;
             /**
-             * Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks. Note that for InstanceTemplate, specify the disk name, not the URL for the disk.
+             * Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks. Note that for InstanceTemplate, specify the disk name for zonal disk, and the URL for regional disk.
              */
             source?: pulumi.Input<string>;
             /**
@@ -13676,7 +13772,7 @@ export namespace compute {
              */
             cacheMode?: pulumi.Input<enums.compute.beta.BackendBucketCdnPolicyCacheMode>;
             /**
-             * Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
+             * Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 31,622,400s (1 year).
              */
             clientTtl?: pulumi.Input<number>;
             /**
@@ -13764,7 +13860,7 @@ export namespace compute {
              */
             cacheMode?: pulumi.Input<enums.compute.beta.BackendServiceCdnPolicyCacheMode>;
             /**
-             * Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
+             * Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 31,622,400s (1 year).
              */
             clientTtl?: pulumi.Input<number>;
             /**
@@ -13826,7 +13922,7 @@ export namespace compute {
          */
         export interface BackendServiceConnectionTrackingPolicyArgs {
             /**
-             * Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default.
+             * Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default. For more details, see [Connection Persistence for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#connection-persistence) and [Connection Persistence for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#connection-persistence).
              */
             connectionPersistenceOnUnhealthyBackends?: pulumi.Input<enums.compute.beta.BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends>;
             /**
@@ -13834,17 +13930,17 @@ export namespace compute {
              */
             enableStrongAffinity?: pulumi.Input<boolean>;
             /**
-             * Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For Network Load Balancer the default is 60 seconds. This option is not available publicly. This field will be supported only if the Connection Tracking key is less than 5-tuple.
+             * Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For Internal TCP/UDP Load Balancing: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For Network Load Balancer the default is 60 seconds. This option is not available publicly.
              */
             idleTimeoutSec?: pulumi.Input<number>;
             /**
-             * Specifies the key used for connection tracking. There are two options: PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity.
+             * Specifies the key used for connection tracking. There are two options: - PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. - PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity. For more details, see [Tracking Mode for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#tracking-mode) and [Tracking Mode for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#tracking-mode).
              */
             trackingMode?: pulumi.Input<enums.compute.beta.BackendServiceConnectionTrackingPolicyTrackingMode>;
         }
 
         /**
-         * For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
+         * For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
          */
         export interface BackendServiceFailoverPolicyArgs {
             /**
@@ -13852,11 +13948,11 @@ export namespace compute {
              */
             disableConnectionDrainOnFailover?: pulumi.Input<boolean>;
             /**
-             * If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview). The default is false.
+             * If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
              */
             dropTrafficIfUnhealthy?: pulumi.Input<boolean>;
             /**
-             * The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview).
+             * The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
              */
             failoverRatio?: pulumi.Input<number>;
         }
@@ -13894,7 +13990,7 @@ export namespace compute {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
@@ -13902,15 +13998,15 @@ export namespace compute {
              */
             bindingId?: pulumi.Input<string>;
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.compute.beta.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -14030,7 +14126,7 @@ export namespace compute {
          */
         export interface ConsistentHashLoadBalancerSettingsArgs {
             /**
-             * Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+             * Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
              */
             httpCookie?: pulumi.Input<inputs.compute.beta.ConsistentHashLoadBalancerSettingsHttpCookieArgs>;
             /**
@@ -14062,11 +14158,11 @@ export namespace compute {
         }
 
         /**
-         * The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing
+         * The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard.
          */
         export interface CorsPolicyArgs {
             /**
-             * In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header. Default is false.
+             * In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header. Default is false.
              */
             allowCredentials?: pulumi.Input<boolean>;
             /**
@@ -14078,15 +14174,15 @@ export namespace compute {
              */
             allowMethods?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see github.com/google/re2/wiki/Syntax An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+             * Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
              */
             allowOriginRegexes?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Specifies the list of origins that will be allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+             * Specifies the list of origins that is allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
              */
             allowOrigins?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * If true, specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+             * If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
              */
             disabled?: pulumi.Input<boolean>;
             /**
@@ -14094,7 +14190,7 @@ export namespace compute {
              */
             exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Specifies how long results of a preflight request can be cached in seconds. This translates to the Access-Control-Max-Age header.
+             * Specifies how long results of a preflight request can be cached in seconds. This field translates to the Access-Control-Max-Age header.
              */
             maxAge?: pulumi.Input<number>;
         }
@@ -14433,7 +14529,7 @@ export namespace compute {
          */
         export interface GuestOsFeatureArgs {
             /**
-             * The ID of a supported feature. Read Enabling guest operating system features to see a list of available options.
+             * The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
              */
             type?: pulumi.Input<enums.compute.beta.GuestOsFeatureType>;
         }
@@ -14550,7 +14646,7 @@ export namespace compute {
              */
             description?: pulumi.Input<string>;
             /**
-             * The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or .. * based matching is not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or .. * based matching is not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
              */
             hosts?: pulumi.Input<pulumi.Input<string>[]>;
             /**
@@ -14564,17 +14660,17 @@ export namespace compute {
          */
         export interface HttpFaultAbortArgs {
             /**
-             * The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive. For gRPC protocol, the gRPC status code is mapped to HTTP status code according to this mapping table. HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK status is currently not supported by Traffic Director.
+             * The HTTP status code used to abort the request. The value must be from 200 to 599 inclusive. For gRPC protocol, the gRPC status code is mapped to HTTP status code according to this mapping table. HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK status is currently not supported by Traffic Director.
              */
             httpStatus?: pulumi.Input<number>;
             /**
-             * The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
+             * The percentage of traffic for connections, operations, or requests that is aborted as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
              */
             percentage?: pulumi.Input<number>;
         }
 
         /**
-         * Specifies the delay introduced by Loadbalancer before forwarding the request to the backend service as part of fault injection.
+         * Specifies the delay introduced by the load balancer before forwarding the request to the backend service as part of fault injection.
          */
         export interface HttpFaultDelayArgs {
             /**
@@ -14582,13 +14678,13 @@ export namespace compute {
              */
             fixedDelay?: pulumi.Input<inputs.compute.beta.DurationArgs>;
             /**
-             * The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
+             * The percentage of traffic for connections, operations, or requests for which a delay is introduced as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
              */
             percentage?: pulumi.Input<number>;
         }
 
         /**
-         * The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests.
+         * The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by the load balancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
          */
         export interface HttpFaultInjectionArgs {
             /**
@@ -14624,19 +14720,19 @@ export namespace compute {
          */
         export interface HttpHeaderActionArgs {
             /**
-             * Headers to add to a matching request prior to forwarding the request to the backendService.
+             * Headers to add to a matching request before forwarding the request to the backendService.
              */
             requestHeadersToAdd?: pulumi.Input<pulumi.Input<inputs.compute.beta.HttpHeaderOptionArgs>[]>;
             /**
-             * A list of header names for headers that need to be removed from the request prior to forwarding the request to the backendService.
+             * A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
              */
             requestHeadersToRemove?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Headers to add the response prior to sending the response back to the client.
+             * Headers to add the response before sending the response back to the client.
              */
             responseHeadersToAdd?: pulumi.Input<pulumi.Input<inputs.compute.beta.HttpHeaderOptionArgs>[]>;
             /**
-             * A list of header names for headers that need to be removed from the response prior to sending the response back to the client.
+             * A list of header names for headers that need to be removed from the response before sending the response back to the client.
              */
             responseHeadersToRemove?: pulumi.Input<pulumi.Input<string>[]>;
         }
@@ -14650,11 +14746,11 @@ export namespace compute {
              */
             exactMatch?: pulumi.Input<string>;
             /**
-             * The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method". When the URL map is bound to target gRPC proxy that has validateForProxyless field set to true, only non-binary user-specified custom metadata and the `content-type` header are supported. The following transport-level headers cannot be used in header matching rules: `:authority`, `:method`, `:path`, `:scheme`, `user-agent`, `accept-encoding`, `content-encoding`, `grpc-accept-encoding`, `grpc-encoding`, `grpc-previous-rpc-attempts`, `grpc-tags-bin`, `grpc-timeout` and `grpc-trace-bin.
+             * The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method". When the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true, only non-binary user-specified custom metadata and the `content-type` header are supported. The following transport-level headers cannot be used in header matching rules: `:authority`, `:method`, `:path`, `:scheme`, `user-agent`, `accept-encoding`, `content-encoding`, `grpc-accept-encoding`, `grpc-encoding`, `grpc-previous-rpc-attempts`, `grpc-tags-bin`, `grpc-timeout` and `grpc-trace-bin`.
              */
             headerName?: pulumi.Input<string>;
             /**
-             * If set to false, the headerMatch is considered a match if the match criteria above are met. If set to true, the headerMatch is considered a match if the match criteria above are NOT met. The default setting is false.
+             * If set to false, the headerMatch is considered a match if the preceding match criteria are met. If set to true, the headerMatch is considered a match if the preceding match criteria are NOT met. The default setting is false. 
              */
             invertMatch?: pulumi.Input<boolean>;
             /**
@@ -14666,11 +14762,11 @@ export namespace compute {
              */
             presentMatch?: pulumi.Input<boolean>;
             /**
-             * The header value must be an integer and its value must be in the range specified in rangeMatch. If the header does not contain an integer, number or is empty, the match fails. For example for a range [-5, 0] - -3 will match. - 0 will not match. - 0.25 will not match. - -3someString will not match. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Note that rangeMatch is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL.
+             * The header value must be an integer and its value must be in the range specified in rangeMatch. If the header does not contain an integer, number or is empty, the match fails. For example for a range [-5, 0] - -3 will match. - 0 will not match. - 0.25 will not match. - -3someString will not match. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. rangeMatch is not supported for load balancers that have loadBalancingScheme set to EXTERNAL.
              */
             rangeMatch?: pulumi.Input<inputs.compute.beta.Int64RangeMatchArgs>;
             /**
-             * The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see: github.com/google/re2/wiki/Syntax For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+             * The value of the header must match the regular expression specified in regexMatch. For more information about regular expression syntax, see Syntax. For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
              */
             regexMatch?: pulumi.Input<string>;
             /**
@@ -14692,7 +14788,7 @@ export namespace compute {
              */
             headerValue?: pulumi.Input<string>;
             /**
-             * If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header. The default value is false.
+             * If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header. The default value is false. 
              */
             replace?: pulumi.Input<boolean>;
         }
@@ -14702,7 +14798,7 @@ export namespace compute {
          */
         export interface HttpQueryParameterMatchArgs {
             /**
-             * The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch. Only one of presentMatch, exactMatch or regexMatch must be set.
+             * The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch. Only one of presentMatch, exactMatch, or regexMatch must be set. 
              */
             exactMatch?: pulumi.Input<string>;
             /**
@@ -14710,11 +14806,11 @@ export namespace compute {
              */
             name?: pulumi.Input<string>;
             /**
-             * Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not. Only one of presentMatch, exactMatch or regexMatch must be set.
+             * Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not. Only one of presentMatch, exactMatch, or regexMatch must be set. 
              */
             presentMatch?: pulumi.Input<boolean>;
             /**
-             * The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For the regular expression grammar, please see github.com/google/re2/wiki/Syntax Only one of presentMatch, exactMatch or regexMatch must be set. Note that regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+             * The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For more information about regular expression syntax, see Syntax. Only one of presentMatch, exactMatch, or regexMatch must be set. regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED. 
              */
             regexMatch?: pulumi.Input<string>;
         }
@@ -14724,27 +14820,27 @@ export namespace compute {
          */
         export interface HttpRedirectActionArgs {
             /**
-             * The host that will be used in the redirect response instead of the one that was supplied in the request. The value must be between 1 and 255 characters.
+             * The host that is used in the redirect response instead of the one that was supplied in the request. The value must be from 1 to 255 characters.
              */
             hostRedirect?: pulumi.Input<string>;
             /**
-             * If set to true, the URL scheme in the redirected request is set to https. If set to false, the URL scheme of the redirected request will remain the same as that of the request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
+             * If set to true, the URL scheme in the redirected request is set to HTTPS. If set to false, the URL scheme of the redirected request remains the same as that of the request. This must only be set for URL maps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
              */
             httpsRedirect?: pulumi.Input<boolean>;
             /**
-             * The path that will be used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
+             * The path that is used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters.
              */
             pathRedirect?: pulumi.Input<string>;
             /**
-             * The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
+             * The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters.
              */
             prefixRedirect?: pulumi.Input<string>;
             /**
-             * The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained. 
+             * The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method is retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method is retained. 
              */
             redirectResponseCode?: pulumi.Input<enums.compute.beta.HttpRedirectActionRedirectResponseCode>;
             /**
-             * If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false.
+             * If set to true, any accompanying query portion of the original URL is removed before redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false. 
              */
             stripQuery?: pulumi.Input<boolean>;
         }
@@ -14758,52 +14854,52 @@ export namespace compute {
              */
             numRetries?: pulumi.Input<number>;
             /**
-             * Specifies a non-zero timeout per retry attempt. If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set, will use the largest timeout among all backend services associated with the route.
+             * Specifies a non-zero timeout per retry attempt. If not specified, will use the timeout set in the HttpRouteAction field. If timeout in the HttpRouteAction field is not set, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
              */
             perTryTimeout?: pulumi.Input<inputs.compute.beta.DurationArgs>;
             /**
-             * Specifies one or more conditions when this retry policy applies. Valid values are: - 5xx: Retry will be attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all, example: disconnects, reset, read timeout, connection failure, and refused streams. - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504. - - connect-failure: A retry will be attempted on failures connecting to the instance or endpoint, for example due to connection timeouts. - retriable-4xx: A retry will be attempted if the instance or endpoint responds with a retriable 4xx response code. Currently the only retriable error supported is 409. - refused-stream: A retry will be attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: A retry will be attempted if the gRPC status code in the response header is set to cancelled. - deadline-exceeded: A retry will be attempted if the gRPC status code in the response header is set to deadline-exceeded. - internal: A retry will be attempted if the gRPC status code in the response header is set to internal. - resource-exhausted: A retry will be attempted if the gRPC status code in the response header is set to resource-exhausted. - unavailable: A retry will be attempted if the gRPC status code in the response header is set to unavailable. 
+             * Specifies one or more conditions when this retry policy applies. Valid values are: - 5xx: retry is attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all. For example, disconnects, reset, read timeout, connection failure, and refused streams. - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504. - connect-failure: a retry is attempted on failures connecting to the instance or endpoint. For example, connection timeouts. - retriable-4xx: a retry is attempted if the instance or endpoint responds with a 4xx response code. The only error that you can retry is error code 409. - refused-stream: a retry is attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: a retry is attempted if the gRPC status code in the response header is set to cancelled. - deadline-exceeded: a retry is attempted if the gRPC status code in the response header is set to deadline-exceeded. - internal: a retry is attempted if the gRPC status code in the response header is set to internal. - resource-exhausted: a retry is attempted if the gRPC status code in the response header is set to resource-exhausted. - unavailable: a retry is attempted if the gRPC status code in the response header is set to unavailable. Only the following codes are supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true. - cancelled - deadline-exceeded - internal - resource-exhausted - unavailable 
              */
             retryConditions?: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         export interface HttpRouteActionArgs {
             /**
-             * The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing Not supported when the URL map is bound to target gRPC proxy.
+             * The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard. Not supported when the URL map is bound to a target gRPC proxy.
              */
             corsPolicy?: pulumi.Input<inputs.compute.beta.CorsPolicyArgs>;
             /**
-             * The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests. For the requests impacted by fault injection, timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy.
+             * The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. For the requests impacted by fault injection, timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy.
              */
             faultInjectionPolicy?: pulumi.Input<inputs.compute.beta.HttpFaultInjectionArgs>;
             /**
-             * Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (i.e. end-of-stream), the duration in this field is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, will use the largest maxStreamDuration among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+             * Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (known as *end-of-stream*), the duration in this field is computed from the beginning of the stream until the response has been processed, including all retries. A stream that does not complete in this duration is closed. If not specified, this field uses the maximum maxStreamDuration value among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
              */
             maxStreamDuration?: pulumi.Input<inputs.compute.beta.DurationArgs>;
             /**
-             * Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
              */
             requestMirrorPolicy?: pulumi.Input<inputs.compute.beta.RequestMirrorPolicyArgs>;
             /**
-             * Specifies the retry policy associated with this route. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Specifies the retry policy associated with this route.
              */
             retryPolicy?: pulumi.Input<inputs.compute.beta.HttpRetryPolicyArgs>;
             /**
-             * Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries. If not specified, will use the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as *end-of-stream*) up until the response has been processed. Timeout includes all retries. If not specified, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
              */
             timeout?: pulumi.Input<inputs.compute.beta.DurationArgs>;
             /**
-             * The spec to modify the URL of the request, prior to forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * The spec to modify the URL of the request, before forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
              */
             urlRewrite?: pulumi.Input<inputs.compute.beta.UrlRewriteArgs>;
             /**
-             * A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number. Once a backendService is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
+             * A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number. After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
              */
             weightedBackendServices?: pulumi.Input<pulumi.Input<inputs.compute.beta.WeightedBackendServiceArgs>[]>;
         }
 
         /**
-         * An HttpRouteRule specifies how to match an HTTP request and the corresponding routing action that load balancing proxies will perform.
+         * The HttpRouteRule setting specifies how to match an HTTP request and the corresponding routing action that load balancing proxies perform.
          */
         export interface HttpRouteRuleArgs {
             /**
@@ -14811,15 +14907,15 @@ export namespace compute {
              */
             description?: pulumi.Input<string>;
             /**
-             * Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction specified here are applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction value specified here is applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
              */
             headerAction?: pulumi.Input<inputs.compute.beta.HttpHeaderActionArgs>;
             /**
-             * Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director. httpFilterConfigs only applies for Loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director. httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
              */
             httpFilterConfigs?: pulumi.Input<pulumi.Input<inputs.compute.beta.HttpFilterConfigArgs>[]>;
             /**
-             * Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director. httpFilterMetadata only applies for Loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. The only configTypeUrl supported is type.googleapis.com/google.protobuf.Struct Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director. httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. The only configTypeUrl supported is type.googleapis.com/google.protobuf.Struct Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
              */
             httpFilterMetadata?: pulumi.Input<pulumi.Input<inputs.compute.beta.HttpFilterConfigArgs>[]>;
             /**
@@ -14827,19 +14923,19 @@ export namespace compute {
              */
             matchRules?: pulumi.Input<pulumi.Input<inputs.compute.beta.HttpRouteRuleMatchArgs>[]>;
             /**
-             * For routeRules within a given pathMatcher, priority determines the order in which load balancer will interpret routeRules. RouteRules are evaluated in order of priority, from the lowest to highest number. The priority of a rule decreases as its number increases (1, 2, 3, N+1). The first rule that matches the request is applied. You cannot configure two or more routeRules with the same priority. Priority for each rule must be set to a number between 0 and 2147483647 inclusive. Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
+             * For routeRules within a given pathMatcher, priority determines the order in which a load balancer interprets routeRules. RouteRules are evaluated in order of priority, from the lowest to highest number. The priority of a rule decreases as its number increases (1, 2, 3, N+1). The first rule that matches the request is applied. You cannot configure two or more routeRules with the same priority. Priority for each rule must be set to a number from 0 to 2147483647 inclusive. Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
              */
             priority?: pulumi.Input<number>;
             /**
-             * In response to a matching matchRule, the load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a routeRule's routeAction.
+             * In response to a matching matchRule, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a route rule's routeAction.
              */
             routeAction?: pulumi.Input<inputs.compute.beta.HttpRouteActionArgs>;
             /**
-             * The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendService s. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
+             * The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
              */
             service?: pulumi.Input<string>;
             /**
-             * When this rule is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+             * When this rule is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
              */
             urlRedirect?: pulumi.Input<inputs.compute.beta.HttpRedirectActionArgs>;
         }
@@ -14849,7 +14945,7 @@ export namespace compute {
          */
         export interface HttpRouteRuleMatchArgs {
             /**
-             * For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL. fullPathMatch must be between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+             * For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL. fullPathMatch must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
              */
             fullPathMatch?: pulumi.Input<string>;
             /**
@@ -14857,23 +14953,23 @@ export namespace compute {
              */
             headerMatches?: pulumi.Input<pulumi.Input<inputs.compute.beta.HttpHeaderMatchArgs>[]>;
             /**
-             * Specifies that prefixMatch and fullPathMatch matches are case sensitive. The default value is false. ignoreCase must not be used with regexMatch. Not supported when the URL map is bound to target gRPC proxy.
+             * Specifies that prefixMatch and fullPathMatch matches are case sensitive. The default value is false. ignoreCase must not be used with regexMatch. Not supported when the URL map is bound to a target gRPC proxy.
              */
             ignoreCase?: pulumi.Input<boolean>;
             /**
-             * Opaque filter criteria used by Loadbalancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to Loadbalancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadataFilters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here will be applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Opaque filter criteria used by the load balancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to the load balancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadata filters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here is applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
              */
             metadataFilters?: pulumi.Input<pulumi.Input<inputs.compute.beta.MetadataFilterArgs>[]>;
             /**
-             * For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+             * For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
              */
             prefixMatch?: pulumi.Input<string>;
             /**
-             * Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to target gRPC proxy.
+             * Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to a target gRPC proxy.
              */
             queryParameterMatches?: pulumi.Input<pulumi.Input<inputs.compute.beta.HttpQueryParameterMatchArgs>[]>;
             /**
-             * For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar please see github.com/google/re2/wiki/Syntax Only one of prefixMatch, fullPathMatch or regexMatch must be specified. Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+             * For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For more information about regular expression syntax, see Syntax. Only one of prefixMatch, fullPathMatch or regexMatch must be specified. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
              */
             regexMatch?: pulumi.Input<string>;
         }
@@ -14977,7 +15073,7 @@ export namespace compute {
 
         export interface InstancePropertiesArgs {
             /**
-             * Controls for advanced machine-related behavior features.
+             * Controls for advanced machine-related behavior features. Note that for MachineImage, this is not supported yet.
              */
             advancedMachineFeatures?: pulumi.Input<inputs.compute.beta.AdvancedMachineFeaturesArgs>;
             /**
@@ -14985,7 +15081,7 @@ export namespace compute {
              */
             canIpForward?: pulumi.Input<boolean>;
             /**
-             * Specifies the Confidential Instance options.
+             * Specifies the Confidential Instance options. Note that for MachineImage, this is not supported yet.
              */
             confidentialInstanceConfig?: pulumi.Input<inputs.compute.beta.ConfidentialInstanceConfigArgs>;
             /**
@@ -14997,7 +15093,7 @@ export namespace compute {
              */
             disks?: pulumi.Input<pulumi.Input<inputs.compute.beta.AttachedDiskArgs>[]>;
             /**
-             * Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer
+             * Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer Note that for MachineImage, this is not supported yet.
              */
             displayDevice?: pulumi.Input<inputs.compute.beta.DisplayDeviceArgs>;
             /**
@@ -15024,21 +15120,24 @@ export namespace compute {
              * An array of network access configurations for this interface.
              */
             networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.beta.NetworkInterfaceArgs>[]>;
+            /**
+             * Note that for MachineImage, this is not supported yet.
+             */
             networkPerformanceConfig?: pulumi.Input<inputs.compute.beta.NetworkPerformanceConfigArgs>;
             /**
-             * PostKeyRevocationActionType of the instance.(will be deprecated soon)
+             * PostKeyRevocationActionType of the instance.
              */
             postKeyRevocationActionType?: pulumi.Input<enums.compute.beta.InstancePropertiesPostKeyRevocationActionType>;
             /**
-             * The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default.
+             * The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
              */
             privateIpv6GoogleAccess?: pulumi.Input<enums.compute.beta.InstancePropertiesPrivateIpv6GoogleAccess>;
             /**
-             * Specifies the reservations that instances can consume from.
+             * Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
              */
             reservationAffinity?: pulumi.Input<inputs.compute.beta.ReservationAffinityArgs>;
             /**
-             * Resource policies (names, not ULRs) applied to instances created from these properties.
+             * Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
              */
             resourcePolicies?: pulumi.Input<pulumi.Input<string>[]>;
             /**
@@ -15049,6 +15148,9 @@ export namespace compute {
              * A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
              */
             serviceAccounts?: pulumi.Input<pulumi.Input<inputs.compute.beta.ServiceAccountArgs>[]>;
+            /**
+             * Note that for MachineImage, this is not supported yet.
+             */
             shieldedInstanceConfig?: pulumi.Input<inputs.compute.beta.ShieldedInstanceConfigArgs>;
             /**
              * Specifies the Shielded VM options for the instances that are created from these properties.
@@ -15221,7 +15323,7 @@ export namespace compute {
         }
 
         /**
-         * Opaque filter criteria used by loadbalancers to restrict routing configuration to a limited set of loadbalancing proxies. Proxies and sidecars involved in loadbalancing would typically present metadata to the loadbalancers which need to match criteria specified here. If a match takes place, the relevant configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. An example for using metadataFilters would be: if loadbalancing involves Envoys, they will only receive routing configuration when values in metadataFilters match values supplied in of their XDS requests to loadbalancers.
+         * Opaque filter criteria used by load balancers to restrict routing configuration to a limited set of load balancing proxies. Proxies and sidecars involved in load balancing would typically present metadata to the load balancers that need to match criteria specified here. If a match takes place, the relevant configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. An example for using metadataFilters would be: if load balancing involves Envoys, they receive routing configuration when values in metadataFilters match values supplied in of their XDS requests to loadbalancers.
          */
         export interface MetadataFilterArgs {
             /**
@@ -15229,13 +15331,13 @@ export namespace compute {
              */
             filterLabels?: pulumi.Input<pulumi.Input<inputs.compute.beta.MetadataFilterLabelMatchArgs>[]>;
             /**
-             * Specifies how individual filterLabel matches within the list of filterLabels contribute towards the overall metadataFilter match. Supported values are: - MATCH_ANY: At least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: All filterLabels must have matching labels in the provided metadata. 
+             * Specifies how individual filter label matches within the list of filterLabels and contributes toward the overall metadataFilter match. Supported values are: - MATCH_ANY: at least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: all filterLabels must have matching labels in the provided metadata. 
              */
             filterMatchCriteria?: pulumi.Input<enums.compute.beta.MetadataFilterFilterMatchCriteria>;
         }
 
         /**
-         * MetadataFilter label name value pairs that are expected to match corresponding labels presented as metadata to the loadbalancer.
+         * MetadataFilter label name value pairs that are expected to match corresponding labels presented as metadata to the load balancer.
          */
         export interface MetadataFilterLabelMatchArgs {
             /**
@@ -15365,7 +15467,7 @@ export namespace compute {
              */
             ipv6AccessConfigs?: pulumi.Input<pulumi.Input<inputs.compute.beta.AccessConfigArgs>[]>;
             /**
-             * URL of the network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used; if the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default 
+             * URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default 
              */
             network?: pulumi.Input<string>;
             /**
@@ -15570,19 +15672,19 @@ export namespace compute {
         }
 
         /**
-         * A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service will be used.
+         * A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service is used.
          */
         export interface PathMatcherArgs {
             /**
-             * defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a pathMatcher's defaultRouteAction.
+             * defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a path matcher's defaultRouteAction.
              */
             defaultRouteAction?: pulumi.Input<inputs.compute.beta.HttpRouteActionArgs>;
             /**
-             * The full or partial URL to the BackendService resource. This will be used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use 
+             * The full or partial URL to the BackendService resource. This URL is used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect , or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use 
              */
             defaultService?: pulumi.Input<string>;
             /**
-             * When none of the specified pathRules or routeRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+             * When none of the specified pathRules or routeRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
              */
             defaultUrlRedirect?: pulumi.Input<inputs.compute.beta.HttpRedirectActionArgs>;
             /**
@@ -15590,7 +15692,7 @@ export namespace compute {
              */
             description?: pulumi.Input<string>;
             /**
-             * Specifies changes to request and response headers that need to take effect for the selected backendService. HeaderAction specified here are applied after the matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Specifies changes to request and response headers that need to take effect for the selected backend service. HeaderAction specified here are applied after the matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
              */
             headerAction?: pulumi.Input<inputs.compute.beta.HttpHeaderActionArgs>;
             /**
@@ -15616,15 +15718,15 @@ export namespace compute {
              */
             paths?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * In response to a matching path, the load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a pathRule's routeAction.
+             * In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for external HTTP(S) load balancers support only the urlRewrite action within a path rule's routeAction.
              */
             routeAction?: pulumi.Input<inputs.compute.beta.HttpRouteActionArgs>;
             /**
-             * The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendService s. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
+             * The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
              */
             service?: pulumi.Input<string>;
             /**
-             * When a path pattern is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+             * When a path pattern is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
              */
             urlRedirect?: pulumi.Input<inputs.compute.beta.HttpRedirectActionArgs>;
         }
@@ -15656,7 +15758,7 @@ export namespace compute {
         }
 
         /**
-         * A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
+         * A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer doesn't wait for responses from the shadow service. Before sending traffic to the shadow service, the host or authority header is suffixed with -shadow.
          */
         export interface RequestMirrorPolicyArgs {
             /**
@@ -15974,6 +16076,10 @@ export namespace compute {
              */
             enable?: pulumi.Input<enums.compute.beta.RouterBgpPeerEnable>;
             /**
+             * Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+             */
+            enableIpv6?: pulumi.Input<boolean>;
+            /**
              * Name of the interface the BGP peer is associated with.
              */
             interfaceName?: pulumi.Input<string>;
@@ -15981,6 +16087,10 @@ export namespace compute {
              * IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
              */
             ipAddress?: pulumi.Input<string>;
+            /**
+             * IPv6 address of the interface inside Google Cloud Platform.
+             */
+            ipv6NexthopAddress?: pulumi.Input<string>;
             /**
              * Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
              */
@@ -15993,6 +16103,10 @@ export namespace compute {
              * IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
              */
             peerIpAddress?: pulumi.Input<string>;
+            /**
+             * IPv6 address of the BGP interface outside Google Cloud Platform.
+             */
+            peerIpv6NexthopAddress?: pulumi.Input<string>;
             /**
              * URI of the VM instance that is used as third-party router appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances. The VM instance must be located in zones contained in the same region as this Cloud Router. The VM instance is the peer side of the BGP session.
              */
@@ -16057,6 +16171,10 @@ export namespace compute {
              * A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.
              */
             drainNatIps?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Enable Dynamic Port Allocation. If not specified, it is disabled by default. If set to true, - Dynamic Port Allocation will be enabled on this NAT config. - enableEndpointIndependentMapping cannot be set to true. - If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32. If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config. 
+             */
+            enableDynamicPortAllocation?: pulumi.Input<boolean>;
             enableEndpointIndependentMapping?: pulumi.Input<boolean>;
             /**
              * Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
@@ -16066,6 +16184,10 @@ export namespace compute {
              * Configure logging on this NAT.
              */
             logConfig?: pulumi.Input<inputs.compute.beta.RouterNatLogConfigArgs>;
+            /**
+             * Maximum number of ports allocated to a VM from this NAT config when Dynamic Port Allocation is enabled. If Dynamic Port Allocation is not enabled, this field has no effect. If Dynamic Port Allocation is enabled, and this field is set, it must be set to a power of two greater than minPortsPerVm, or 64 if minPortsPerVm is not set. If Dynamic Port Allocation is enabled and this field is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config.
+             */
+            maxPortsPerVm?: pulumi.Input<number>;
             /**
              * Minimum number of ports allocated to a VM from this NAT config. If not set, a default number of ports is allocated to a VM. This is rounded up to the nearest power of 2. For example, if the value of this field is 50, at least 64 ports are allocated to a VM.
              */
@@ -16136,7 +16258,7 @@ export namespace compute {
              */
             description?: pulumi.Input<string>;
             /**
-             * CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == '/projects/my-project/global/hub/hub-1'"
+             * CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
              */
             match?: pulumi.Input<string>;
             /**
@@ -16233,6 +16355,16 @@ export namespace compute {
              * The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.
              */
             response?: pulumi.Input<string>;
+        }
+
+        /**
+         * An instance-attached disk resource.
+         */
+        export interface SavedDiskArgs {
+            /**
+             * Specifies a URL of the disk attached to the source instance.
+             */
+            sourceDisk?: pulumi.Input<string>;
         }
 
         /**
@@ -16343,12 +16475,19 @@ export namespace compute {
             name?: pulumi.Input<string>;
         }
 
+        export interface SecurityPolicyRecaptchaOptionsConfigArgs {
+            /**
+             * An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+             */
+            redirectSiteKey?: pulumi.Input<string>;
+        }
+
         /**
          * Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
          */
         export interface SecurityPolicyRuleArgs {
             /**
-             * The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+             * The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502). - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this. 
              */
             action?: pulumi.Input<string>;
             /**
@@ -16477,17 +16616,21 @@ export namespace compute {
              */
             conformAction?: pulumi.Input<string>;
             /**
-             * Determines the key to enforce the rate_limit_threshold on. Possible values are: "ALL" -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. "ALL_IPS" -- This definition, equivalent to "ALL", has been depprecated. "IP" -- The source IP address of the request is the key. Each IP has this limit enforced separately. "HTTP_HEADER" -- The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to "ALL". "XFF_IP" -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to "ALL".
+             * Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
              */
             enforceOnKey?: pulumi.Input<enums.compute.beta.SecurityPolicyRuleRateLimitOptionsEnforceOnKey>;
             /**
-             * Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+             * Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
              */
             enforceOnKeyName?: pulumi.Input<string>;
             /**
-             * When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
+             * Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceed_redirect_options below.
              */
             exceedAction?: pulumi.Input<string>;
+            /**
+             * Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+             */
+            exceedRedirectOptions?: pulumi.Input<inputs.compute.beta.SecurityPolicyRuleRedirectOptionsArgs>;
             /**
              * Threshold at which to begin ratelimiting.
              */
@@ -16564,7 +16707,7 @@ export namespace compute {
          */
         export interface ShareSettingsArgs {
             /**
-             * A map of project id and project config. Using map format to ease add-to/remove-from the Project list in PATCH command. In future we will deprecate (And later remove) the array one.
+             * A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
              */
             projectMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
@@ -16690,6 +16833,14 @@ export namespace compute {
              * Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
              */
             disks?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+             */
+            externalIPs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+             */
+            internalIPs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         }
 
         /**
@@ -16701,7 +16852,7 @@ export namespace compute {
              */
             aggregationInterval?: pulumi.Input<enums.compute.beta.SubnetworkLogConfigAggregationInterval>;
             /**
-             * Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging.
+             * Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
              */
             enable?: pulumi.Input<boolean>;
             /**
@@ -16709,7 +16860,7 @@ export namespace compute {
              */
             filterExpr?: pulumi.Input<string>;
             /**
-             * Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
+             * Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
              */
             flowSampling?: pulumi.Input<number>;
             /**
@@ -16741,6 +16892,10 @@ export namespace compute {
          */
         export interface SubsettingArgs {
             policy?: pulumi.Input<enums.compute.beta.SubsettingPolicy>;
+            /**
+             * The number of backends per backend group assigned to each proxy instance or each service mesh client. An input parameter to the `CONSISTENT_HASH_SUBSETTING` algorithm. Can only be set if `policy` is set to `CONSISTENT_HASH_SUBSETTING`. Can only be set if load balancing scheme is `INTERNAL_MANAGED` or `INTERNAL_SELF_MANAGED`. `subset_size` is optional for Internal HTTP(S) load balancing and required for Traffic Director. If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number of proxies/clients visible to each backend and vice versa. Must be greater than 0. If `subset_size` is larger than the number of backends/endpoints, then subsetting is disabled.
+             */
+            subsetSize?: pulumi.Input<number>;
         }
 
         export interface TCPHealthCheckArgs {
@@ -16789,7 +16944,7 @@ export namespace compute {
              */
             description?: pulumi.Input<string>;
             /**
-             * The expected output URL evaluated by load balancer containing the scheme, host, path and query parameters. For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored. For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies https_redirect, the test passes only if the scheme in expectedOutputUrl is also set to https. If urlRedirect specifies strip_query, the test passes only if expectedOutputUrl does not contain any query parameters. expectedOutputUrl is optional when service is specified.
+             * The expected output URL evaluated by the load balancer containing the scheme, host, path and query parameters. For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by the load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored. For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies https_redirect, the test passes only if the scheme in expectedOutputUrl is also set to HTTPS. If urlRedirect specifies strip_query, the test passes only if expectedOutputUrl does not contain any query parameters. expectedOutputUrl is optional when service is specified.
              */
             expectedOutputUrl?: pulumi.Input<string>;
             /**
@@ -16809,7 +16964,7 @@ export namespace compute {
              */
             path?: pulumi.Input<string>;
             /**
-             * Expected BackendService or BackendBucket resource the given URL should be mapped to. service cannot be set if expectedRedirectResponseCode is set.
+             * Expected BackendService or BackendBucket resource the given URL should be mapped to. The service field cannot be set if expectedRedirectResponseCode is set.
              */
             service?: pulumi.Input<string>;
         }
@@ -16833,11 +16988,11 @@ export namespace compute {
          */
         export interface UrlRewriteArgs {
             /**
-             * Prior to forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be between 1 and 255 characters.
+             * Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be from 1 to 255 characters.
              */
             hostRewrite?: pulumi.Input<string>;
             /**
-             * Prior to forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be between 1 and 1024 characters.
+             * Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be from 1 to 1024 characters.
              */
             pathPrefixRewrite?: pulumi.Input<string>;
         }
@@ -16853,19 +17008,19 @@ export namespace compute {
         }
 
         /**
-         * In contrast to a single BackendService in HttpRouteAction to which all matching traffic is directed to, WeightedBackendService allows traffic to be split across multiple BackendServices. The volume of traffic for each BackendService is proportional to the weight specified in each WeightedBackendService
+         * In contrast to a single BackendService in HttpRouteAction to which all matching traffic is directed to, WeightedBackendService allows traffic to be split across multiple backend services. The volume of traffic for each backend service is proportional to the weight specified in each WeightedBackendService
          */
         export interface WeightedBackendServiceArgs {
             /**
-             * The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the loadbalancer applies any relevant headerActions specified as part of this backendServiceWeight.
+             * The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
              */
             backendService?: pulumi.Input<string>;
             /**
-             * Specifies changes to request and response headers that need to take effect for the selected backendService. headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap. Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Specifies changes to request and response headers that need to take effect for the selected backendService. headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap. headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
              */
             headerAction?: pulumi.Input<inputs.compute.beta.HttpHeaderActionArgs>;
             /**
-             * Specifies the fraction of traffic sent to backendService, computed as weight / (sum of all weightedBackendService weights in routeAction) . The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backendService, subsequent requests will be sent to the same backendService as determined by the BackendService's session affinity policy. The value must be between 0 and 1000
+             * Specifies the fraction of traffic sent to a backend service, computed as weight / (sum of all weightedBackendService weights in routeAction) . The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backend service, subsequent requests are sent to the same backend service as determined by the backend service's session affinity policy. The value must be from 0 to 1000.
              */
             weight?: pulumi.Input<number>;
         }
@@ -16904,11 +17059,11 @@ export namespace compute {
              */
             networkTier?: pulumi.Input<enums.compute.v1.AccessConfigNetworkTier>;
             /**
-             * The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled.
+             * The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled in accessConfig. If this field is unspecified in ipv6AccessConfig, a default PTR record will be createc for first IP in associated external IPv6 range.
              */
             publicPtrDomainName?: pulumi.Input<string>;
             /**
-             * Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name.
+             * Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name. This field is not used in ipv6AccessConfig. A default PTR record will be created if the VM has external IPv6 range associated.
              */
             setPublicPtr?: pulumi.Input<boolean>;
             /**
@@ -17037,7 +17192,7 @@ export namespace compute {
              */
             mode?: pulumi.Input<enums.compute.v1.AttachedDiskMode>;
             /**
-             * Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks. Note that for InstanceTemplate, specify the disk name, not the URL for the disk.
+             * Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks. Note that for InstanceTemplate, specify the disk name for zonal disk, and the URL for regional disk.
              */
             source?: pulumi.Input<string>;
             /**
@@ -17312,11 +17467,15 @@ export namespace compute {
              */
             bypassCacheOnRequestHeaders?: pulumi.Input<pulumi.Input<inputs.compute.v1.BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs>[]>;
             /**
+             * The CacheKeyPolicy for this CdnPolicy.
+             */
+            cacheKeyPolicy?: pulumi.Input<inputs.compute.v1.BackendBucketCdnPolicyCacheKeyPolicyArgs>;
+            /**
              * Specifies the cache setting for all responses from this backend. The possible values are: USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server. FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content. CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
              */
             cacheMode?: pulumi.Input<enums.compute.v1.BackendBucketCdnPolicyCacheMode>;
             /**
-             * Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
+             * Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 31,622,400s (1 year).
              */
             clientTtl?: pulumi.Input<number>;
             /**
@@ -17360,6 +17519,20 @@ export namespace compute {
         }
 
         /**
+         * Message containing what to include in the cache key for a request for Cloud CDN.
+         */
+        export interface BackendBucketCdnPolicyCacheKeyPolicyArgs {
+            /**
+             * Allows HTTP request headers (by name) to be used in the cache key.
+             */
+            includeHttpHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Names of query string parameters to include in cache keys. All other parameters will be excluded. '&' and '=' will be percent encoded and not treated as delimiters.
+             */
+            queryStringWhitelist?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
          * Specify CDN TTLs for response error codes.
          */
         export interface BackendBucketCdnPolicyNegativeCachingPolicyArgs {
@@ -17390,7 +17563,7 @@ export namespace compute {
              */
             cacheMode?: pulumi.Input<enums.compute.v1.BackendServiceCdnPolicyCacheMode>;
             /**
-             * Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
+             * Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 31,622,400s (1 year).
              */
             clientTtl?: pulumi.Input<number>;
             /**
@@ -17448,7 +17621,25 @@ export namespace compute {
         }
 
         /**
-         * For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
+         * Connection Tracking configuration for this BackendService.
+         */
+        export interface BackendServiceConnectionTrackingPolicyArgs {
+            /**
+             * Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default. For more details, see [Connection Persistence for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#connection-persistence) and [Connection Persistence for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#connection-persistence).
+             */
+            connectionPersistenceOnUnhealthyBackends?: pulumi.Input<enums.compute.v1.BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends>;
+            /**
+             * Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For Internal TCP/UDP Load Balancing: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For Network Load Balancer the default is 60 seconds. This option is not available publicly.
+             */
+            idleTimeoutSec?: pulumi.Input<number>;
+            /**
+             * Specifies the key used for connection tracking. There are two options: - PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. - PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity. For more details, see [Tracking Mode for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#tracking-mode) and [Tracking Mode for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#tracking-mode).
+             */
+            trackingMode?: pulumi.Input<enums.compute.v1.BackendServiceConnectionTrackingPolicyTrackingMode>;
+        }
+
+        /**
+         * For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
          */
         export interface BackendServiceFailoverPolicyArgs {
             /**
@@ -17456,11 +17647,11 @@ export namespace compute {
              */
             disableConnectionDrainOnFailover?: pulumi.Input<boolean>;
             /**
-             * If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview). The default is false.
+             * If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
              */
             dropTrafficIfUnhealthy?: pulumi.Input<boolean>;
             /**
-             * The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview).
+             * The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
              */
             failoverRatio?: pulumi.Input<number>;
         }
@@ -17498,7 +17689,7 @@ export namespace compute {
         }
 
         /**
-         * Associates `members` with a `role`.
+         * Associates `members`, or principals, with a `role`.
          */
         export interface BindingArgs {
             /**
@@ -17506,15 +17697,15 @@ export namespace compute {
              */
             bindingId?: pulumi.Input<string>;
             /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
              */
             condition?: pulumi.Input<inputs.compute.v1.ExprArgs>;
             /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
              */
             members?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
              */
             role?: pulumi.Input<string>;
         }
@@ -17527,6 +17718,14 @@ export namespace compute {
              * If true, requests to different hosts will be cached separately.
              */
             includeHost?: pulumi.Input<boolean>;
+            /**
+             * Allows HTTP request headers (by name) to be used in the cache key.
+             */
+            includeHttpHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Allows HTTP cookies (by name) to be used in the cache key. The name=value pair will be used in the cache key Cloud CDN generates.
+             */
+            includeNamedCookies?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * If true, http and https requests will be cached separately.
              */
@@ -17622,7 +17821,7 @@ export namespace compute {
          */
         export interface ConsistentHashLoadBalancerSettingsArgs {
             /**
-             * Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+             * Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
              */
             httpCookie?: pulumi.Input<inputs.compute.v1.ConsistentHashLoadBalancerSettingsHttpCookieArgs>;
             /**
@@ -17654,11 +17853,11 @@ export namespace compute {
         }
 
         /**
-         * The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing
+         * The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard.
          */
         export interface CorsPolicyArgs {
             /**
-             * In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header. Default is false.
+             * In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header. Default is false.
              */
             allowCredentials?: pulumi.Input<boolean>;
             /**
@@ -17670,15 +17869,15 @@ export namespace compute {
              */
             allowMethods?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see github.com/google/re2/wiki/Syntax An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+             * Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
              */
             allowOriginRegexes?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Specifies the list of origins that will be allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+             * Specifies the list of origins that is allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
              */
             allowOrigins?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * If true, specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+             * If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
              */
             disabled?: pulumi.Input<boolean>;
             /**
@@ -17686,7 +17885,7 @@ export namespace compute {
              */
             exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Specifies how long results of a preflight request can be cached in seconds. This translates to the Access-Control-Max-Age header.
+             * Specifies how long results of a preflight request can be cached in seconds. This field translates to the Access-Control-Max-Age header.
              */
             maxAge?: pulumi.Input<number>;
         }
@@ -18021,7 +18220,7 @@ export namespace compute {
          */
         export interface GuestOsFeatureArgs {
             /**
-             * The ID of a supported feature. Read Enabling guest operating system features to see a list of available options.
+             * The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
              */
             type?: pulumi.Input<enums.compute.v1.GuestOsFeatureType>;
         }
@@ -18138,7 +18337,7 @@ export namespace compute {
              */
             description?: pulumi.Input<string>;
             /**
-             * The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or .. * based matching is not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or .. * based matching is not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
              */
             hosts?: pulumi.Input<pulumi.Input<string>[]>;
             /**
@@ -18152,17 +18351,17 @@ export namespace compute {
          */
         export interface HttpFaultAbortArgs {
             /**
-             * The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive. For gRPC protocol, the gRPC status code is mapped to HTTP status code according to this mapping table. HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK status is currently not supported by Traffic Director.
+             * The HTTP status code used to abort the request. The value must be from 200 to 599 inclusive. For gRPC protocol, the gRPC status code is mapped to HTTP status code according to this mapping table. HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK status is currently not supported by Traffic Director.
              */
             httpStatus?: pulumi.Input<number>;
             /**
-             * The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
+             * The percentage of traffic for connections, operations, or requests that is aborted as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
              */
             percentage?: pulumi.Input<number>;
         }
 
         /**
-         * Specifies the delay introduced by Loadbalancer before forwarding the request to the backend service as part of fault injection.
+         * Specifies the delay introduced by the load balancer before forwarding the request to the backend service as part of fault injection.
          */
         export interface HttpFaultDelayArgs {
             /**
@@ -18170,13 +18369,13 @@ export namespace compute {
              */
             fixedDelay?: pulumi.Input<inputs.compute.v1.DurationArgs>;
             /**
-             * The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
+             * The percentage of traffic for connections, operations, or requests for which a delay is introduced as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
              */
             percentage?: pulumi.Input<number>;
         }
 
         /**
-         * The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests.
+         * The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by the load balancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
          */
         export interface HttpFaultInjectionArgs {
             /**
@@ -18194,19 +18393,19 @@ export namespace compute {
          */
         export interface HttpHeaderActionArgs {
             /**
-             * Headers to add to a matching request prior to forwarding the request to the backendService.
+             * Headers to add to a matching request before forwarding the request to the backendService.
              */
             requestHeadersToAdd?: pulumi.Input<pulumi.Input<inputs.compute.v1.HttpHeaderOptionArgs>[]>;
             /**
-             * A list of header names for headers that need to be removed from the request prior to forwarding the request to the backendService.
+             * A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
              */
             requestHeadersToRemove?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Headers to add the response prior to sending the response back to the client.
+             * Headers to add the response before sending the response back to the client.
              */
             responseHeadersToAdd?: pulumi.Input<pulumi.Input<inputs.compute.v1.HttpHeaderOptionArgs>[]>;
             /**
-             * A list of header names for headers that need to be removed from the response prior to sending the response back to the client.
+             * A list of header names for headers that need to be removed from the response before sending the response back to the client.
              */
             responseHeadersToRemove?: pulumi.Input<pulumi.Input<string>[]>;
         }
@@ -18220,11 +18419,11 @@ export namespace compute {
              */
             exactMatch?: pulumi.Input<string>;
             /**
-             * The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method". When the URL map is bound to target gRPC proxy that has validateForProxyless field set to true, only non-binary user-specified custom metadata and the `content-type` header are supported. The following transport-level headers cannot be used in header matching rules: `:authority`, `:method`, `:path`, `:scheme`, `user-agent`, `accept-encoding`, `content-encoding`, `grpc-accept-encoding`, `grpc-encoding`, `grpc-previous-rpc-attempts`, `grpc-tags-bin`, `grpc-timeout` and `grpc-trace-bin.
+             * The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method". When the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true, only non-binary user-specified custom metadata and the `content-type` header are supported. The following transport-level headers cannot be used in header matching rules: `:authority`, `:method`, `:path`, `:scheme`, `user-agent`, `accept-encoding`, `content-encoding`, `grpc-accept-encoding`, `grpc-encoding`, `grpc-previous-rpc-attempts`, `grpc-tags-bin`, `grpc-timeout` and `grpc-trace-bin`.
              */
             headerName?: pulumi.Input<string>;
             /**
-             * If set to false, the headerMatch is considered a match if the match criteria above are met. If set to true, the headerMatch is considered a match if the match criteria above are NOT met. The default setting is false.
+             * If set to false, the headerMatch is considered a match if the preceding match criteria are met. If set to true, the headerMatch is considered a match if the preceding match criteria are NOT met. The default setting is false. 
              */
             invertMatch?: pulumi.Input<boolean>;
             /**
@@ -18236,11 +18435,11 @@ export namespace compute {
              */
             presentMatch?: pulumi.Input<boolean>;
             /**
-             * The header value must be an integer and its value must be in the range specified in rangeMatch. If the header does not contain an integer, number or is empty, the match fails. For example for a range [-5, 0] - -3 will match. - 0 will not match. - 0.25 will not match. - -3someString will not match. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Note that rangeMatch is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL.
+             * The header value must be an integer and its value must be in the range specified in rangeMatch. If the header does not contain an integer, number or is empty, the match fails. For example for a range [-5, 0] - -3 will match. - 0 will not match. - 0.25 will not match. - -3someString will not match. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. rangeMatch is not supported for load balancers that have loadBalancingScheme set to EXTERNAL.
              */
             rangeMatch?: pulumi.Input<inputs.compute.v1.Int64RangeMatchArgs>;
             /**
-             * The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see: github.com/google/re2/wiki/Syntax For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+             * The value of the header must match the regular expression specified in regexMatch. For more information about regular expression syntax, see Syntax. For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
              */
             regexMatch?: pulumi.Input<string>;
             /**
@@ -18262,7 +18461,7 @@ export namespace compute {
              */
             headerValue?: pulumi.Input<string>;
             /**
-             * If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header. The default value is false.
+             * If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header. The default value is false. 
              */
             replace?: pulumi.Input<boolean>;
         }
@@ -18272,7 +18471,7 @@ export namespace compute {
          */
         export interface HttpQueryParameterMatchArgs {
             /**
-             * The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch. Only one of presentMatch, exactMatch or regexMatch must be set.
+             * The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch. Only one of presentMatch, exactMatch, or regexMatch must be set. 
              */
             exactMatch?: pulumi.Input<string>;
             /**
@@ -18280,11 +18479,11 @@ export namespace compute {
              */
             name?: pulumi.Input<string>;
             /**
-             * Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not. Only one of presentMatch, exactMatch or regexMatch must be set.
+             * Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not. Only one of presentMatch, exactMatch, or regexMatch must be set. 
              */
             presentMatch?: pulumi.Input<boolean>;
             /**
-             * The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For the regular expression grammar, please see github.com/google/re2/wiki/Syntax Only one of presentMatch, exactMatch or regexMatch must be set. Note that regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+             * The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For more information about regular expression syntax, see Syntax. Only one of presentMatch, exactMatch, or regexMatch must be set. regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED. 
              */
             regexMatch?: pulumi.Input<string>;
         }
@@ -18294,27 +18493,27 @@ export namespace compute {
          */
         export interface HttpRedirectActionArgs {
             /**
-             * The host that will be used in the redirect response instead of the one that was supplied in the request. The value must be between 1 and 255 characters.
+             * The host that is used in the redirect response instead of the one that was supplied in the request. The value must be from 1 to 255 characters.
              */
             hostRedirect?: pulumi.Input<string>;
             /**
-             * If set to true, the URL scheme in the redirected request is set to https. If set to false, the URL scheme of the redirected request will remain the same as that of the request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
+             * If set to true, the URL scheme in the redirected request is set to HTTPS. If set to false, the URL scheme of the redirected request remains the same as that of the request. This must only be set for URL maps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
              */
             httpsRedirect?: pulumi.Input<boolean>;
             /**
-             * The path that will be used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
+             * The path that is used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters.
              */
             pathRedirect?: pulumi.Input<string>;
             /**
-             * The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
+             * The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters.
              */
             prefixRedirect?: pulumi.Input<string>;
             /**
-             * The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained. 
+             * The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method is retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method is retained. 
              */
             redirectResponseCode?: pulumi.Input<enums.compute.v1.HttpRedirectActionRedirectResponseCode>;
             /**
-             * If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false.
+             * If set to true, any accompanying query portion of the original URL is removed before redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false. 
              */
             stripQuery?: pulumi.Input<boolean>;
         }
@@ -18328,52 +18527,52 @@ export namespace compute {
              */
             numRetries?: pulumi.Input<number>;
             /**
-             * Specifies a non-zero timeout per retry attempt. If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set, will use the largest timeout among all backend services associated with the route.
+             * Specifies a non-zero timeout per retry attempt. If not specified, will use the timeout set in the HttpRouteAction field. If timeout in the HttpRouteAction field is not set, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
              */
             perTryTimeout?: pulumi.Input<inputs.compute.v1.DurationArgs>;
             /**
-             * Specifies one or more conditions when this retry policy applies. Valid values are: - 5xx: Retry will be attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all, example: disconnects, reset, read timeout, connection failure, and refused streams. - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504. - - connect-failure: A retry will be attempted on failures connecting to the instance or endpoint, for example due to connection timeouts. - retriable-4xx: A retry will be attempted if the instance or endpoint responds with a retriable 4xx response code. Currently the only retriable error supported is 409. - refused-stream: A retry will be attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: A retry will be attempted if the gRPC status code in the response header is set to cancelled. - deadline-exceeded: A retry will be attempted if the gRPC status code in the response header is set to deadline-exceeded. - internal: A retry will be attempted if the gRPC status code in the response header is set to internal. - resource-exhausted: A retry will be attempted if the gRPC status code in the response header is set to resource-exhausted. - unavailable: A retry will be attempted if the gRPC status code in the response header is set to unavailable. 
+             * Specifies one or more conditions when this retry policy applies. Valid values are: - 5xx: retry is attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all. For example, disconnects, reset, read timeout, connection failure, and refused streams. - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504. - connect-failure: a retry is attempted on failures connecting to the instance or endpoint. For example, connection timeouts. - retriable-4xx: a retry is attempted if the instance or endpoint responds with a 4xx response code. The only error that you can retry is error code 409. - refused-stream: a retry is attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: a retry is attempted if the gRPC status code in the response header is set to cancelled. - deadline-exceeded: a retry is attempted if the gRPC status code in the response header is set to deadline-exceeded. - internal: a retry is attempted if the gRPC status code in the response header is set to internal. - resource-exhausted: a retry is attempted if the gRPC status code in the response header is set to resource-exhausted. - unavailable: a retry is attempted if the gRPC status code in the response header is set to unavailable. Only the following codes are supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true. - cancelled - deadline-exceeded - internal - resource-exhausted - unavailable 
              */
             retryConditions?: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         export interface HttpRouteActionArgs {
             /**
-             * The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing Not supported when the URL map is bound to target gRPC proxy.
+             * The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard. Not supported when the URL map is bound to a target gRPC proxy.
              */
             corsPolicy?: pulumi.Input<inputs.compute.v1.CorsPolicyArgs>;
             /**
-             * The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests. For the requests impacted by fault injection, timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy.
+             * The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. For the requests impacted by fault injection, timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy.
              */
             faultInjectionPolicy?: pulumi.Input<inputs.compute.v1.HttpFaultInjectionArgs>;
             /**
-             * Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (i.e. end-of-stream), the duration in this field is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, will use the largest maxStreamDuration among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+             * Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (known as *end-of-stream*), the duration in this field is computed from the beginning of the stream until the response has been processed, including all retries. A stream that does not complete in this duration is closed. If not specified, this field uses the maximum maxStreamDuration value among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
              */
             maxStreamDuration?: pulumi.Input<inputs.compute.v1.DurationArgs>;
             /**
-             * Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
              */
             requestMirrorPolicy?: pulumi.Input<inputs.compute.v1.RequestMirrorPolicyArgs>;
             /**
-             * Specifies the retry policy associated with this route. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Specifies the retry policy associated with this route.
              */
             retryPolicy?: pulumi.Input<inputs.compute.v1.HttpRetryPolicyArgs>;
             /**
-             * Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries. If not specified, will use the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as *end-of-stream*) up until the response has been processed. Timeout includes all retries. If not specified, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
              */
             timeout?: pulumi.Input<inputs.compute.v1.DurationArgs>;
             /**
-             * The spec to modify the URL of the request, prior to forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * The spec to modify the URL of the request, before forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
              */
             urlRewrite?: pulumi.Input<inputs.compute.v1.UrlRewriteArgs>;
             /**
-             * A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number. Once a backendService is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
+             * A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number. After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
              */
             weightedBackendServices?: pulumi.Input<pulumi.Input<inputs.compute.v1.WeightedBackendServiceArgs>[]>;
         }
 
         /**
-         * An HttpRouteRule specifies how to match an HTTP request and the corresponding routing action that load balancing proxies will perform.
+         * The HttpRouteRule setting specifies how to match an HTTP request and the corresponding routing action that load balancing proxies perform.
          */
         export interface HttpRouteRuleArgs {
             /**
@@ -18381,7 +18580,7 @@ export namespace compute {
              */
             description?: pulumi.Input<string>;
             /**
-             * Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction specified here are applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction value specified here is applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
              */
             headerAction?: pulumi.Input<inputs.compute.v1.HttpHeaderActionArgs>;
             /**
@@ -18389,19 +18588,19 @@ export namespace compute {
              */
             matchRules?: pulumi.Input<pulumi.Input<inputs.compute.v1.HttpRouteRuleMatchArgs>[]>;
             /**
-             * For routeRules within a given pathMatcher, priority determines the order in which load balancer will interpret routeRules. RouteRules are evaluated in order of priority, from the lowest to highest number. The priority of a rule decreases as its number increases (1, 2, 3, N+1). The first rule that matches the request is applied. You cannot configure two or more routeRules with the same priority. Priority for each rule must be set to a number between 0 and 2147483647 inclusive. Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
+             * For routeRules within a given pathMatcher, priority determines the order in which a load balancer interprets routeRules. RouteRules are evaluated in order of priority, from the lowest to highest number. The priority of a rule decreases as its number increases (1, 2, 3, N+1). The first rule that matches the request is applied. You cannot configure two or more routeRules with the same priority. Priority for each rule must be set to a number from 0 to 2147483647 inclusive. Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
              */
             priority?: pulumi.Input<number>;
             /**
-             * In response to a matching matchRule, the load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a routeRule's routeAction.
+             * In response to a matching matchRule, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a route rule's routeAction.
              */
             routeAction?: pulumi.Input<inputs.compute.v1.HttpRouteActionArgs>;
             /**
-             * The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendService s. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
+             * The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
              */
             service?: pulumi.Input<string>;
             /**
-             * When this rule is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+             * When this rule is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
              */
             urlRedirect?: pulumi.Input<inputs.compute.v1.HttpRedirectActionArgs>;
         }
@@ -18411,7 +18610,7 @@ export namespace compute {
          */
         export interface HttpRouteRuleMatchArgs {
             /**
-             * For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL. fullPathMatch must be between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+             * For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL. fullPathMatch must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
              */
             fullPathMatch?: pulumi.Input<string>;
             /**
@@ -18419,23 +18618,23 @@ export namespace compute {
              */
             headerMatches?: pulumi.Input<pulumi.Input<inputs.compute.v1.HttpHeaderMatchArgs>[]>;
             /**
-             * Specifies that prefixMatch and fullPathMatch matches are case sensitive. The default value is false. ignoreCase must not be used with regexMatch. Not supported when the URL map is bound to target gRPC proxy.
+             * Specifies that prefixMatch and fullPathMatch matches are case sensitive. The default value is false. ignoreCase must not be used with regexMatch. Not supported when the URL map is bound to a target gRPC proxy.
              */
             ignoreCase?: pulumi.Input<boolean>;
             /**
-             * Opaque filter criteria used by Loadbalancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to Loadbalancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadataFilters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here will be applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Opaque filter criteria used by the load balancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to the load balancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadata filters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here is applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
              */
             metadataFilters?: pulumi.Input<pulumi.Input<inputs.compute.v1.MetadataFilterArgs>[]>;
             /**
-             * For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+             * For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
              */
             prefixMatch?: pulumi.Input<string>;
             /**
-             * Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to target gRPC proxy.
+             * Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to a target gRPC proxy.
              */
             queryParameterMatches?: pulumi.Input<pulumi.Input<inputs.compute.v1.HttpQueryParameterMatchArgs>[]>;
             /**
-             * For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar please see github.com/google/re2/wiki/Syntax Only one of prefixMatch, fullPathMatch or regexMatch must be specified. Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+             * For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For more information about regular expression syntax, see Syntax. Only one of prefixMatch, fullPathMatch or regexMatch must be specified. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
              */
             regexMatch?: pulumi.Input<string>;
         }
@@ -18505,6 +18704,10 @@ export namespace compute {
              */
             minimalAction?: pulumi.Input<enums.compute.v1.InstanceGroupManagerUpdatePolicyMinimalAction>;
             /**
+             * Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+             */
+            mostDisruptiveAllowedAction?: pulumi.Input<enums.compute.v1.InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction>;
+            /**
              * What action should be used to replace instances. See minimal_action.REPLACE
              */
             replacementMethod?: pulumi.Input<enums.compute.v1.InstanceGroupManagerUpdatePolicyReplacementMethod>;
@@ -18531,7 +18734,7 @@ export namespace compute {
 
         export interface InstancePropertiesArgs {
             /**
-             * Controls for advanced machine-related behavior features.
+             * Controls for advanced machine-related behavior features. Note that for MachineImage, this is not supported yet.
              */
             advancedMachineFeatures?: pulumi.Input<inputs.compute.v1.AdvancedMachineFeaturesArgs>;
             /**
@@ -18539,7 +18742,7 @@ export namespace compute {
              */
             canIpForward?: pulumi.Input<boolean>;
             /**
-             * Specifies the Confidential Instance options.
+             * Specifies the Confidential Instance options. Note that for MachineImage, this is not supported yet.
              */
             confidentialInstanceConfig?: pulumi.Input<inputs.compute.v1.ConfidentialInstanceConfigArgs>;
             /**
@@ -18575,15 +18778,19 @@ export namespace compute {
              */
             networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.v1.NetworkInterfaceArgs>[]>;
             /**
-             * The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default.
+             * Note that for MachineImage, this is not supported yet.
+             */
+            networkPerformanceConfig?: pulumi.Input<inputs.compute.v1.NetworkPerformanceConfigArgs>;
+            /**
+             * The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
              */
             privateIpv6GoogleAccess?: pulumi.Input<enums.compute.v1.InstancePropertiesPrivateIpv6GoogleAccess>;
             /**
-             * Specifies the reservations that instances can consume from.
+             * Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
              */
             reservationAffinity?: pulumi.Input<inputs.compute.v1.ReservationAffinityArgs>;
             /**
-             * Resource policies (names, not ULRs) applied to instances created from these properties.
+             * Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
              */
             resourcePolicies?: pulumi.Input<pulumi.Input<string>[]>;
             /**
@@ -18594,6 +18801,9 @@ export namespace compute {
              * A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
              */
             serviceAccounts?: pulumi.Input<pulumi.Input<inputs.compute.v1.ServiceAccountArgs>[]>;
+            /**
+             * Note that for MachineImage, this is not supported yet.
+             */
             shieldedInstanceConfig?: pulumi.Input<inputs.compute.v1.ShieldedInstanceConfigArgs>;
             /**
              * A list of tags to apply to the instances that are created from these properties. The tags identify valid sources or targets for network firewalls. The setTags method can modify this list of tags. Each tag within the list must comply with RFC1035.
@@ -18762,7 +18972,7 @@ export namespace compute {
         }
 
         /**
-         * Opaque filter criteria used by loadbalancers to restrict routing configuration to a limited set of loadbalancing proxies. Proxies and sidecars involved in loadbalancing would typically present metadata to the loadbalancers which need to match criteria specified here. If a match takes place, the relevant configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. An example for using metadataFilters would be: if loadbalancing involves Envoys, they will only receive routing configuration when values in metadataFilters match values supplied in of their XDS requests to loadbalancers.
+         * Opaque filter criteria used by load balancers to restrict routing configuration to a limited set of load balancing proxies. Proxies and sidecars involved in load balancing would typically present metadata to the load balancers that need to match criteria specified here. If a match takes place, the relevant configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. An example for using metadataFilters would be: if load balancing involves Envoys, they receive routing configuration when values in metadataFilters match values supplied in of their XDS requests to loadbalancers.
          */
         export interface MetadataFilterArgs {
             /**
@@ -18770,13 +18980,13 @@ export namespace compute {
              */
             filterLabels?: pulumi.Input<pulumi.Input<inputs.compute.v1.MetadataFilterLabelMatchArgs>[]>;
             /**
-             * Specifies how individual filterLabel matches within the list of filterLabels contribute towards the overall metadataFilter match. Supported values are: - MATCH_ANY: At least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: All filterLabels must have matching labels in the provided metadata. 
+             * Specifies how individual filter label matches within the list of filterLabels and contributes toward the overall metadataFilter match. Supported values are: - MATCH_ANY: at least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: all filterLabels must have matching labels in the provided metadata. 
              */
             filterMatchCriteria?: pulumi.Input<enums.compute.v1.MetadataFilterFilterMatchCriteria>;
         }
 
         /**
-         * MetadataFilter label name value pairs that are expected to match corresponding labels presented as metadata to the loadbalancer.
+         * MetadataFilter label name value pairs that are expected to match corresponding labels presented as metadata to the load balancer.
          */
         export interface MetadataFilterLabelMatchArgs {
             /**
@@ -18884,7 +19094,7 @@ export namespace compute {
              */
             ipv6AccessConfigs?: pulumi.Input<pulumi.Input<inputs.compute.v1.AccessConfigArgs>[]>;
             /**
-             * URL of the network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used; if the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default 
+             * URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default 
              */
             network?: pulumi.Input<string>;
             /**
@@ -18907,6 +19117,10 @@ export namespace compute {
              * The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/regions/region /subnetworks/subnetwork - regions/region/subnetworks/subnetwork 
              */
             subnetwork?: pulumi.Input<string>;
+        }
+
+        export interface NetworkPerformanceConfigArgs {
+            totalEgressBandwidthTier?: pulumi.Input<enums.compute.v1.NetworkPerformanceConfigTotalEgressBandwidthTier>;
         }
 
         /**
@@ -19085,19 +19299,19 @@ export namespace compute {
         }
 
         /**
-         * A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service will be used.
+         * A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service is used.
          */
         export interface PathMatcherArgs {
             /**
-             * defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a pathMatcher's defaultRouteAction.
+             * defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a path matcher's defaultRouteAction.
              */
             defaultRouteAction?: pulumi.Input<inputs.compute.v1.HttpRouteActionArgs>;
             /**
-             * The full or partial URL to the BackendService resource. This will be used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use 
+             * The full or partial URL to the BackendService resource. This URL is used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect , or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use 
              */
             defaultService?: pulumi.Input<string>;
             /**
-             * When none of the specified pathRules or routeRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+             * When none of the specified pathRules or routeRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
              */
             defaultUrlRedirect?: pulumi.Input<inputs.compute.v1.HttpRedirectActionArgs>;
             /**
@@ -19105,7 +19319,7 @@ export namespace compute {
              */
             description?: pulumi.Input<string>;
             /**
-             * Specifies changes to request and response headers that need to take effect for the selected backendService. HeaderAction specified here are applied after the matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Specifies changes to request and response headers that need to take effect for the selected backend service. HeaderAction specified here are applied after the matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
              */
             headerAction?: pulumi.Input<inputs.compute.v1.HttpHeaderActionArgs>;
             /**
@@ -19131,15 +19345,15 @@ export namespace compute {
              */
             paths?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * In response to a matching path, the load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a pathRule's routeAction.
+             * In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for external HTTP(S) load balancers support only the urlRewrite action within a path rule's routeAction.
              */
             routeAction?: pulumi.Input<inputs.compute.v1.HttpRouteActionArgs>;
             /**
-             * The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendService s. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
+             * The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
              */
             service?: pulumi.Input<string>;
             /**
-             * When a path pattern is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+             * When a path pattern is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
              */
             urlRedirect?: pulumi.Input<inputs.compute.v1.HttpRedirectActionArgs>;
         }
@@ -19171,7 +19385,7 @@ export namespace compute {
         }
 
         /**
-         * A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
+         * A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer doesn't wait for responses from the shadow service. Before sending traffic to the shadow service, the host or authority header is suffixed with -shadow.
          */
         export interface RequestMirrorPolicyArgs {
             /**
@@ -19192,6 +19406,10 @@ export namespace compute {
              * The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
              */
             name?: pulumi.Input<string>;
+            /**
+             * Share-settings for shared-reservation
+             */
+            shareSettings?: pulumi.Input<inputs.compute.v1.ShareSettingsArgs>;
             /**
              * Reservation for instances with specific machine shapes.
              */
@@ -19471,6 +19689,10 @@ export namespace compute {
              */
             enable?: pulumi.Input<enums.compute.v1.RouterBgpPeerEnable>;
             /**
+             * Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+             */
+            enableIpv6?: pulumi.Input<boolean>;
+            /**
              * Name of the interface the BGP peer is associated with.
              */
             interfaceName?: pulumi.Input<string>;
@@ -19478,6 +19700,10 @@ export namespace compute {
              * IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
              */
             ipAddress?: pulumi.Input<string>;
+            /**
+             * IPv6 address of the interface inside Google Cloud Platform.
+             */
+            ipv6NexthopAddress?: pulumi.Input<string>;
             /**
              * Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
              */
@@ -19490,6 +19716,10 @@ export namespace compute {
              * IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
              */
             peerIpAddress?: pulumi.Input<string>;
+            /**
+             * IPv6 address of the BGP interface outside Google Cloud Platform.
+             */
+            peerIpv6NexthopAddress?: pulumi.Input<string>;
             /**
              * URI of the VM instance that is used as third-party router appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances. The VM instance must be located in zones contained in the same region as this Cloud Router. The VM instance is the peer side of the BGP session.
              */
@@ -19554,6 +19784,10 @@ export namespace compute {
              * A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.
              */
             drainNatIps?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Enable Dynamic Port Allocation. If not specified, it is disabled by default. If set to true, - Dynamic Port Allocation will be enabled on this NAT config. - enableEndpointIndependentMapping cannot be set to true. - If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32. If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config. 
+             */
+            enableDynamicPortAllocation?: pulumi.Input<boolean>;
             enableEndpointIndependentMapping?: pulumi.Input<boolean>;
             /**
              * Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
@@ -19563,6 +19797,10 @@ export namespace compute {
              * Configure logging on this NAT.
              */
             logConfig?: pulumi.Input<inputs.compute.v1.RouterNatLogConfigArgs>;
+            /**
+             * Maximum number of ports allocated to a VM from this NAT config when Dynamic Port Allocation is enabled. If Dynamic Port Allocation is not enabled, this field has no effect. If Dynamic Port Allocation is enabled, and this field is set, it must be set to a power of two greater than minPortsPerVm, or 64 if minPortsPerVm is not set. If Dynamic Port Allocation is enabled and this field is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config.
+             */
+            maxPortsPerVm?: pulumi.Input<number>;
             /**
              * Minimum number of ports allocated to a VM from this NAT config. If not set, a default number of ports is allocated to a VM. This is rounded up to the nearest power of 2. For example, if the value of this field is 50, at least 64 ports are allocated to a VM.
              */
@@ -19633,7 +19871,7 @@ export namespace compute {
              */
             description?: pulumi.Input<string>;
             /**
-             * CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == '/projects/my-project/global/hub/hub-1'"
+             * CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
              */
             match?: pulumi.Input<string>;
             /**
@@ -19733,6 +19971,16 @@ export namespace compute {
         }
 
         /**
+         * An instance-attached disk resource.
+         */
+        export interface SavedDiskArgs {
+            /**
+             * Specifies a URL of the disk attached to the source instance.
+             */
+            sourceDisk?: pulumi.Input<string>;
+        }
+
+        /**
          * Sets the scheduling options for an Instance. NextID: 21
          */
         export interface SchedulingArgs {
@@ -19740,6 +19988,10 @@ export namespace compute {
              * Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted. By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine.
              */
             automaticRestart?: pulumi.Input<boolean>;
+            /**
+             * Specifies the termination action for the instance.
+             */
+            instanceTerminationAction?: pulumi.Input<enums.compute.v1.SchedulingInstanceTerminationAction>;
             /**
              * An opaque location hint used to place the instance close to other resources. This field is for use by internal tools that use the public API.
              */
@@ -19760,6 +20012,10 @@ export namespace compute {
              * Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
              */
             preemptible?: pulumi.Input<boolean>;
+            /**
+             * Specifies the provisioning model of the instance.
+             */
+            provisioningModel?: pulumi.Input<enums.compute.v1.SchedulingProvisioningModel>;
         }
 
         /**
@@ -19809,18 +20065,29 @@ export namespace compute {
             logLevel?: pulumi.Input<enums.compute.v1.SecurityPolicyAdvancedOptionsConfigLogLevel>;
         }
 
+        export interface SecurityPolicyRecaptchaOptionsConfigArgs {
+            /**
+             * An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+             */
+            redirectSiteKey?: pulumi.Input<string>;
+        }
+
         /**
          * Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
          */
         export interface SecurityPolicyRuleArgs {
             /**
-             * The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+             * The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502). - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this. 
              */
             action?: pulumi.Input<string>;
             /**
              * An optional description of this resource. Provide this property when you create the resource.
              */
             description?: pulumi.Input<string>;
+            /**
+             * Optional, additional actions that are performed on headers.
+             */
+            headerAction?: pulumi.Input<inputs.compute.v1.SecurityPolicyRuleHttpHeaderActionArgs>;
             /**
              * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
              */
@@ -19833,6 +20100,32 @@ export namespace compute {
              * An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
              */
             priority?: pulumi.Input<number>;
+            /**
+             * Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+             */
+            rateLimitOptions?: pulumi.Input<inputs.compute.v1.SecurityPolicyRuleRateLimitOptionsArgs>;
+            /**
+             * Parameters defining the redirect action. Cannot be specified for any other actions.
+             */
+            redirectOptions?: pulumi.Input<inputs.compute.v1.SecurityPolicyRuleRedirectOptionsArgs>;
+        }
+
+        export interface SecurityPolicyRuleHttpHeaderActionArgs {
+            /**
+             * The list of request headers to add or overwrite if they're already present.
+             */
+            requestHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.v1.SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArgs>[]>;
+        }
+
+        export interface SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArgs {
+            /**
+             * The name of the header to set.
+             */
+            headerName?: pulumi.Input<string>;
+            /**
+             * The value to set the named header to.
+             */
+            headerValue?: pulumi.Input<string>;
         }
 
         /**
@@ -19858,6 +20151,63 @@ export namespace compute {
              * CIDR IP address range. Maximum number of src_ip_ranges allowed is 10.
              */
             srcIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        export interface SecurityPolicyRuleRateLimitOptionsArgs {
+            /**
+             * Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+             */
+            banDurationSec?: pulumi.Input<number>;
+            /**
+             * Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
+             */
+            banThreshold?: pulumi.Input<inputs.compute.v1.SecurityPolicyRuleRateLimitOptionsThresholdArgs>;
+            /**
+             * Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+             */
+            conformAction?: pulumi.Input<string>;
+            /**
+             * Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
+             */
+            enforceOnKey?: pulumi.Input<enums.compute.v1.SecurityPolicyRuleRateLimitOptionsEnforceOnKey>;
+            /**
+             * Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+             */
+            enforceOnKeyName?: pulumi.Input<string>;
+            /**
+             * Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceed_redirect_options below.
+             */
+            exceedAction?: pulumi.Input<string>;
+            /**
+             * Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+             */
+            exceedRedirectOptions?: pulumi.Input<inputs.compute.v1.SecurityPolicyRuleRedirectOptionsArgs>;
+            /**
+             * Threshold at which to begin ratelimiting.
+             */
+            rateLimitThreshold?: pulumi.Input<inputs.compute.v1.SecurityPolicyRuleRateLimitOptionsThresholdArgs>;
+        }
+
+        export interface SecurityPolicyRuleRateLimitOptionsThresholdArgs {
+            /**
+             * Number of HTTP(S) requests for calculating the threshold.
+             */
+            count?: pulumi.Input<number>;
+            /**
+             * Interval over which the threshold is computed.
+             */
+            intervalSec?: pulumi.Input<number>;
+        }
+
+        export interface SecurityPolicyRuleRedirectOptionsArgs {
+            /**
+             * Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+             */
+            target?: pulumi.Input<string>;
+            /**
+             * Type of the redirect action.
+             */
+            type?: pulumi.Input<enums.compute.v1.SecurityPolicyRuleRedirectOptionsType>;
         }
 
         /**
@@ -19904,6 +20254,20 @@ export namespace compute {
         }
 
         /**
+         * The share setting for reservations and sole tenancy node groups.
+         */
+        export interface ShareSettingsArgs {
+            /**
+             * A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
+             */
+            projectMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * Type of sharing for this shared-reservation
+             */
+            shareType?: pulumi.Input<enums.compute.v1.ShareSettingsShareType>;
+        }
+
+        /**
          * A set of Shielded Instance options.
          */
         export interface ShieldedInstanceConfigArgs {
@@ -19929,6 +20293,17 @@ export namespace compute {
              * Updates the integrity policy baseline using the measurements from the VM instance's most recent boot.
              */
             updateAutoLearnPolicy?: pulumi.Input<boolean>;
+        }
+
+        export interface SourceDiskEncryptionKeyArgs {
+            /**
+             * The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
+             */
+            diskEncryptionKey?: pulumi.Input<inputs.compute.v1.CustomerEncryptionKeyArgs>;
+            /**
+             * URL of the disk attached to the source instance. This can be a full or valid partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk 
+             */
+            sourceDisk?: pulumi.Input<string>;
         }
 
         /**
@@ -19988,7 +20363,7 @@ export namespace compute {
              */
             aggregationInterval?: pulumi.Input<enums.compute.v1.SubnetworkLogConfigAggregationInterval>;
             /**
-             * Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging.
+             * Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
              */
             enable?: pulumi.Input<boolean>;
             /**
@@ -19996,7 +20371,7 @@ export namespace compute {
              */
             filterExpr?: pulumi.Input<string>;
             /**
-             * Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
+             * Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
              */
             flowSampling?: pulumi.Input<number>;
             /**
@@ -20076,7 +20451,7 @@ export namespace compute {
              */
             description?: pulumi.Input<string>;
             /**
-             * The expected output URL evaluated by load balancer containing the scheme, host, path and query parameters. For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored. For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies https_redirect, the test passes only if the scheme in expectedOutputUrl is also set to https. If urlRedirect specifies strip_query, the test passes only if expectedOutputUrl does not contain any query parameters. expectedOutputUrl is optional when service is specified.
+             * The expected output URL evaluated by the load balancer containing the scheme, host, path and query parameters. For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by the load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored. For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies https_redirect, the test passes only if the scheme in expectedOutputUrl is also set to HTTPS. If urlRedirect specifies strip_query, the test passes only if expectedOutputUrl does not contain any query parameters. expectedOutputUrl is optional when service is specified.
              */
             expectedOutputUrl?: pulumi.Input<string>;
             /**
@@ -20096,7 +20471,7 @@ export namespace compute {
              */
             path?: pulumi.Input<string>;
             /**
-             * Expected BackendService or BackendBucket resource the given URL should be mapped to. service cannot be set if expectedRedirectResponseCode is set.
+             * Expected BackendService or BackendBucket resource the given URL should be mapped to. The service field cannot be set if expectedRedirectResponseCode is set.
              */
             service?: pulumi.Input<string>;
         }
@@ -20120,11 +20495,11 @@ export namespace compute {
          */
         export interface UrlRewriteArgs {
             /**
-             * Prior to forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be between 1 and 255 characters.
+             * Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be from 1 to 255 characters.
              */
             hostRewrite?: pulumi.Input<string>;
             /**
-             * Prior to forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be between 1 and 1024 characters.
+             * Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be from 1 to 1024 characters.
              */
             pathPrefixRewrite?: pulumi.Input<string>;
         }
@@ -20140,19 +20515,19 @@ export namespace compute {
         }
 
         /**
-         * In contrast to a single BackendService in HttpRouteAction to which all matching traffic is directed to, WeightedBackendService allows traffic to be split across multiple BackendServices. The volume of traffic for each BackendService is proportional to the weight specified in each WeightedBackendService
+         * In contrast to a single BackendService in HttpRouteAction to which all matching traffic is directed to, WeightedBackendService allows traffic to be split across multiple backend services. The volume of traffic for each backend service is proportional to the weight specified in each WeightedBackendService
          */
         export interface WeightedBackendServiceArgs {
             /**
-             * The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the loadbalancer applies any relevant headerActions specified as part of this backendServiceWeight.
+             * The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
              */
             backendService?: pulumi.Input<string>;
             /**
-             * Specifies changes to request and response headers that need to take effect for the selected backendService. headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap. Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+             * Specifies changes to request and response headers that need to take effect for the selected backendService. headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap. headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
              */
             headerAction?: pulumi.Input<inputs.compute.v1.HttpHeaderActionArgs>;
             /**
-             * Specifies the fraction of traffic sent to backendService, computed as weight / (sum of all weightedBackendService weights in routeAction) . The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backendService, subsequent requests will be sent to the same backendService as determined by the BackendService's session affinity policy. The value must be between 0 and 1000
+             * Specifies the fraction of traffic sent to a backend service, computed as weight / (sum of all weightedBackendService weights in routeAction) . The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backend service, subsequent requests are sent to the same backend service as determined by the backend service's session affinity policy. The value must be from 0 to 1000.
              */
             weight?: pulumi.Input<number>;
         }
@@ -57649,7 +58024,7 @@ export namespace storage {
              */
             bucketPolicyOnly?: pulumi.Input<inputs.storage.v1.BucketIamConfigurationBucketPolicyOnlyArgs>;
             /**
-             * The bucket's Public Access Prevention configuration. Currently, 'unspecified' and 'enforced' are supported.
+             * The bucket's Public Access Prevention configuration. Currently, 'inherited' and 'enforced' are supported.
              */
             publicAccessPrevention?: pulumi.Input<string>;
             /**
@@ -58126,11 +58501,11 @@ export namespace storagetransfer {
         }
 
         /**
-         * Specifies the BandwidthLimit to describe the non-negative bandwidth rate in mbps for the agent pool.
+         * Specifies a bandwidth limit for an agent pool.
          */
         export interface BandwidthLimitArgs {
             /**
-             * Specifies bandwidth rate in mbps distributed across all the agents in the pool.
+             * Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
              */
             limitMbps?: pulumi.Input<string>;
         }
@@ -58306,7 +58681,7 @@ export namespace storagetransfer {
          */
         export interface TransferManifestArgs {
             /**
-             * Holds URI-encoded path to find the manifest. It can be located in data_source, data_sink, or separately in GCS. For data_source and data_sink, the manifest location is relative to the path specified by that data_source or data_sink. If manifest is in GCS, use format "gs:///". If manifest is in data_source, use format "source://". If manifest is in data_sink, use format "sink://".
+             * Specifies the path to the manifest in Cloud Storage. The Google-managed service account for the transfer must have `storage.objects.get` permission for this object. An example path is `gs://bucket_name/path/manifest.csv`.
              */
             location?: pulumi.Input<string>;
         }
@@ -58447,7 +58822,7 @@ export namespace testing {
              */
             appPackageId?: pulumi.Input<string>;
             /**
-             * The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
+             * The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.1 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
              */
             orchestratorOption?: pulumi.Input<enums.testing.v1.AndroidInstrumentationTestOrchestratorOption>;
             /**

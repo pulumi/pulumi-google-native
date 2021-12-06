@@ -59,6 +59,10 @@ export interface GetRegionCommitmentResult {
      */
     readonly licenseResource: outputs.compute.alpha.LicenseResourceCommitmentResponse;
     /**
+     * List of source commitments to be merged into a new commitment.
+     */
+    readonly mergeSourceCommitments: string[];
+    /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     readonly name: string;
@@ -86,6 +90,10 @@ export interface GetRegionCommitmentResult {
      * Server-defined URL for this resource with the resource id.
      */
     readonly selfLinkWithId: string;
+    /**
+     * Source commitment to be splitted into a new commitment.
+     */
+    readonly splitSourceCommitment: string;
     /**
      * Commitment start time in RFC3339 text format.
      */

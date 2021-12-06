@@ -129,7 +129,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource. It is only supported for internal load balancing.
+     * Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource.
      */
     public readonly serviceDirectoryRegistrations!: pulumi.Output<outputs.compute.v1.ForwardingRuleServiceDirectoryRegistrationResponse[]>;
     /**
@@ -298,7 +298,7 @@ export interface GlobalForwardingRuleArgs {
     pscConnectionStatus?: pulumi.Input<enums.compute.v1.GlobalForwardingRulePscConnectionStatus>;
     requestId?: pulumi.Input<string>;
     /**
-     * Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource. It is only supported for internal load balancing.
+     * Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource.
      */
     serviceDirectoryRegistrations?: pulumi.Input<pulumi.Input<inputs.compute.v1.ForwardingRuleServiceDirectoryRegistrationArgs>[]>;
     /**

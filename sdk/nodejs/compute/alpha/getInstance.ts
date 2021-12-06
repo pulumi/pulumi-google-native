@@ -84,6 +84,10 @@ export interface GetInstanceResult {
      */
     readonly instanceEncryptionKey: outputs.compute.alpha.CustomerEncryptionKeyResponse;
     /**
+     * KeyRevocationActionType of the instance.
+     */
+    readonly keyRevocationActionType: string;
+    /**
      * Type of the resource. Always compute#instance for instances.
      */
     readonly kind: string;

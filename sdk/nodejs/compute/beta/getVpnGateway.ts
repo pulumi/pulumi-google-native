@@ -67,6 +67,10 @@ export interface GetVpnGatewayResult {
      */
     readonly selfLink: string;
     /**
+     * The stack type for this VPN gateway to identify the IP protocols that are enabled. If not specified, IPV4_ONLY will be used.
+     */
+    readonly stackType: string;
+    /**
      * The list of VPN interfaces associated with this VPN gateway.
      */
     readonly vpnInterfaces: outputs.compute.beta.VpnGatewayVpnGatewayInterfaceResponse[];

@@ -46,6 +46,8 @@ export * from "./getInterconnect";
 export * from "./getInterconnectAttachment";
 export * from "./getLicense";
 export * from "./getLicenseIamPolicy";
+export * from "./getMachineImage";
+export * from "./getMachineImageIamPolicy";
 export * from "./getNetwork";
 export * from "./getNetworkEndpointGroup";
 export * from "./getNodeGroup";
@@ -78,6 +80,7 @@ export * from "./getRouter";
 export * from "./getSecurityPolicy";
 export * from "./getServiceAttachment";
 export * from "./getServiceAttachmentIamPolicy";
+export * from "./getSnapshot";
 export * from "./getSnapshotIamPolicy";
 export * from "./getSslCertificate";
 export * from "./getSslPolicy";
@@ -113,6 +116,8 @@ export * from "./interconnect";
 export * from "./interconnectAttachment";
 export * from "./license";
 export * from "./licenseIamPolicy";
+export * from "./machineImage";
+export * from "./machineImageIamPolicy";
 export * from "./network";
 export * from "./networkEndpointGroup";
 export * from "./nodeGroup";
@@ -145,6 +150,7 @@ export * from "./router";
 export * from "./securityPolicy";
 export * from "./serviceAttachment";
 export * from "./serviceAttachmentIamPolicy";
+export * from "./snapshot";
 export * from "./snapshotIamPolicy";
 export * from "./sslCertificate";
 export * from "./sslPolicy";
@@ -196,6 +202,8 @@ import { Interconnect } from "./interconnect";
 import { InterconnectAttachment } from "./interconnectAttachment";
 import { License } from "./license";
 import { LicenseIamPolicy } from "./licenseIamPolicy";
+import { MachineImage } from "./machineImage";
+import { MachineImageIamPolicy } from "./machineImageIamPolicy";
 import { Network } from "./network";
 import { NetworkEndpointGroup } from "./networkEndpointGroup";
 import { NodeGroup } from "./nodeGroup";
@@ -228,6 +236,7 @@ import { Router } from "./router";
 import { SecurityPolicy } from "./securityPolicy";
 import { ServiceAttachment } from "./serviceAttachment";
 import { ServiceAttachmentIamPolicy } from "./serviceAttachmentIamPolicy";
+import { Snapshot } from "./snapshot";
 import { SnapshotIamPolicy } from "./snapshotIamPolicy";
 import { SslCertificate } from "./sslCertificate";
 import { SslPolicy } from "./sslPolicy";
@@ -309,6 +318,10 @@ const _module = {
                 return new License(name, <any>undefined, { urn })
             case "google-native:compute/v1:LicenseIamPolicy":
                 return new LicenseIamPolicy(name, <any>undefined, { urn })
+            case "google-native:compute/v1:MachineImage":
+                return new MachineImage(name, <any>undefined, { urn })
+            case "google-native:compute/v1:MachineImageIamPolicy":
+                return new MachineImageIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:Network":
                 return new Network(name, <any>undefined, { urn })
             case "google-native:compute/v1:NetworkEndpointGroup":
@@ -373,6 +386,8 @@ const _module = {
                 return new ServiceAttachment(name, <any>undefined, { urn })
             case "google-native:compute/v1:ServiceAttachmentIamPolicy":
                 return new ServiceAttachmentIamPolicy(name, <any>undefined, { urn })
+            case "google-native:compute/v1:Snapshot":
+                return new Snapshot(name, <any>undefined, { urn })
             case "google-native:compute/v1:SnapshotIamPolicy":
                 return new SnapshotIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:SslCertificate":

@@ -48,6 +48,10 @@ export class MachineImage extends pulumi.CustomResource {
      */
     public readonly guestFlush!: pulumi.Output<boolean>;
     /**
+     * Properties of source instance
+     */
+    public /*out*/ readonly instanceProperties!: pulumi.Output<outputs.compute.beta.InstancePropertiesResponse>;
+    /**
      * The resource type, which is always compute#machineImage for machine image.
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
@@ -64,6 +68,10 @@ export class MachineImage extends pulumi.CustomResource {
      */
     public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
     /**
+     * An array of Machine Image specific properties for disks attached to the source instance
+     */
+    public readonly savedDisks!: pulumi.Output<outputs.compute.beta.SavedDiskResponse[]>;
+    /**
      * The URL for this machine image. The server defines this URL.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -76,7 +84,7 @@ export class MachineImage extends pulumi.CustomResource {
      */
     public readonly sourceInstance!: pulumi.Output<string>;
     /**
-     * Properties of source instance.
+     * DEPRECATED: Please use instance_properties instead for source instance related properties. New properties will not be added to this field.
      */
     public /*out*/ readonly sourceInstanceProperties!: pulumi.Output<outputs.compute.beta.SourceInstancePropertiesResponse>;
     /**
@@ -112,10 +120,12 @@ export class MachineImage extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["savedDisks"] = args ? args.savedDisks : undefined;
             resourceInputs["sourceDiskEncryptionKeys"] = args ? args.sourceDiskEncryptionKeys : undefined;
             resourceInputs["sourceInstance"] = args ? args.sourceInstance : undefined;
             resourceInputs["storageLocations"] = args ? args.storageLocations : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["instanceProperties"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -126,10 +136,12 @@ export class MachineImage extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["guestFlush"] = undefined /*out*/;
+            resourceInputs["instanceProperties"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["machineImageEncryptionKey"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
+            resourceInputs["savedDisks"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["sourceDiskEncryptionKeys"] = undefined /*out*/;
             resourceInputs["sourceInstance"] = undefined /*out*/;
@@ -167,6 +179,10 @@ export interface MachineImageArgs {
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
+    /**
+     * An array of Machine Image specific properties for disks attached to the source instance
+     */
+    savedDisks?: pulumi.Input<pulumi.Input<inputs.compute.beta.SavedDiskArgs>[]>;
     /**
      * [Input Only] The customer-supplied encryption key of the disks attached to the source instance. Required if the source disk is protected by a customer-supplied encryption key.
      */

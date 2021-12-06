@@ -79,6 +79,7 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
      * The parent of the security policy.
      */
     public /*out*/ readonly parent!: pulumi.Output<string>;
+    public readonly recaptchaOptionsConfig!: pulumi.Output<outputs.compute.alpha.SecurityPolicyRecaptchaOptionsConfigResponse>;
     /**
      * URL of the region where the regional security policy resides. This field is not applicable to global security policies.
      */
@@ -128,6 +129,7 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["recaptchaOptionsConfig"] = args ? args.recaptchaOptionsConfig : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
@@ -156,6 +158,7 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["parent"] = undefined /*out*/;
+            resourceInputs["recaptchaOptionsConfig"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["ruleTupleCount"] = undefined /*out*/;
             resourceInputs["rules"] = undefined /*out*/;
@@ -199,6 +202,7 @@ export interface RegionSecurityPolicyArgs {
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    recaptchaOptionsConfig?: pulumi.Input<inputs.compute.alpha.SecurityPolicyRecaptchaOptionsConfigArgs>;
     region: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**

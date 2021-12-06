@@ -124,6 +124,7 @@ export class Instance extends pulumi.CustomResource {
      * An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
      */
     public readonly networkInterfaces!: pulumi.Output<outputs.compute.v1.NetworkInterfaceResponse[]>;
+    public readonly networkPerformanceConfig!: pulumi.Output<outputs.compute.v1.NetworkPerformanceConfigResponse>;
     /**
      * The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
      */
@@ -154,6 +155,14 @@ export class Instance extends pulumi.CustomResource {
     public readonly serviceAccounts!: pulumi.Output<outputs.compute.v1.ServiceAccountResponse[]>;
     public readonly shieldedInstanceConfig!: pulumi.Output<outputs.compute.v1.ShieldedInstanceConfigResponse>;
     public readonly shieldedInstanceIntegrityPolicy!: pulumi.Output<outputs.compute.v1.ShieldedInstanceIntegrityPolicyResponse>;
+    /**
+     * Source machine image
+     */
+    public readonly sourceMachineImage!: pulumi.Output<string>;
+    /**
+     * Source machine image encryption key when creating an instance from a machine image.
+     */
+    public readonly sourceMachineImageEncryptionKey!: pulumi.Output<outputs.compute.v1.CustomerEncryptionKeyResponse>;
     /**
      * Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
      */
@@ -201,6 +210,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["minCpuPlatform"] = args ? args.minCpuPlatform : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
+            resourceInputs["networkPerformanceConfig"] = args ? args.networkPerformanceConfig : undefined;
             resourceInputs["privateIpv6GoogleAccess"] = args ? args.privateIpv6GoogleAccess : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
@@ -211,6 +221,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
             resourceInputs["shieldedInstanceIntegrityPolicy"] = args ? args.shieldedInstanceIntegrityPolicy : undefined;
             resourceInputs["sourceInstanceTemplate"] = args ? args.sourceInstanceTemplate : undefined;
+            resourceInputs["sourceMachineImage"] = args ? args.sourceMachineImage : undefined;
+            resourceInputs["sourceMachineImageEncryptionKey"] = args ? args.sourceMachineImageEncryptionKey : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["cpuPlatform"] = undefined /*out*/;
@@ -250,6 +262,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["minCpuPlatform"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networkInterfaces"] = undefined /*out*/;
+            resourceInputs["networkPerformanceConfig"] = undefined /*out*/;
             resourceInputs["privateIpv6GoogleAccess"] = undefined /*out*/;
             resourceInputs["reservationAffinity"] = undefined /*out*/;
             resourceInputs["resourcePolicies"] = undefined /*out*/;
@@ -259,6 +272,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["serviceAccounts"] = undefined /*out*/;
             resourceInputs["shieldedInstanceConfig"] = undefined /*out*/;
             resourceInputs["shieldedInstanceIntegrityPolicy"] = undefined /*out*/;
+            resourceInputs["sourceMachineImage"] = undefined /*out*/;
+            resourceInputs["sourceMachineImageEncryptionKey"] = undefined /*out*/;
             resourceInputs["startRestricted"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["statusMessage"] = undefined /*out*/;
@@ -333,6 +348,7 @@ export interface InstanceArgs {
      * An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.v1.NetworkInterfaceArgs>[]>;
+    networkPerformanceConfig?: pulumi.Input<inputs.compute.v1.NetworkPerformanceConfigArgs>;
     /**
      * The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
      */
@@ -358,6 +374,14 @@ export interface InstanceArgs {
     shieldedInstanceConfig?: pulumi.Input<inputs.compute.v1.ShieldedInstanceConfigArgs>;
     shieldedInstanceIntegrityPolicy?: pulumi.Input<inputs.compute.v1.ShieldedInstanceIntegrityPolicyArgs>;
     sourceInstanceTemplate?: pulumi.Input<string>;
+    /**
+     * Source machine image
+     */
+    sourceMachineImage?: pulumi.Input<string>;
+    /**
+     * Source machine image encryption key when creating an instance from a machine image.
+     */
+    sourceMachineImageEncryptionKey?: pulumi.Input<inputs.compute.v1.CustomerEncryptionKeyArgs>;
     /**
      * Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
      */

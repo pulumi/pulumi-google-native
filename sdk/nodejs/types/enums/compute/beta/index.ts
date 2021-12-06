@@ -4,6 +4,10 @@
 
 export const AccessConfigNetworkTier = {
     /**
+     * Public internet quality with fixed bandwidth.
+     */
+    FixedStandard: "FIXED_STANDARD",
+    /**
      * High quality, Google-grade network tier, support for all networking products.
      */
     Premium: "PREMIUM",
@@ -11,6 +15,10 @@ export const AccessConfigNetworkTier = {
      * Public internet quality, only limited support for other networking products.
      */
     Standard: "STANDARD",
+    /**
+     * (Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured.
+     */
+    StandardOverridesFixedStandard: "STANDARD_OVERRIDES_FIXED_STANDARD",
 } as const;
 
 /**
@@ -58,6 +66,10 @@ export type AddressIpVersion = (typeof AddressIpVersion)[keyof typeof AddressIpV
 
 export const AddressNetworkTier = {
     /**
+     * Public internet quality with fixed bandwidth.
+     */
+    FixedStandard: "FIXED_STANDARD",
+    /**
      * High quality, Google-grade network tier, support for all networking products.
      */
     Premium: "PREMIUM",
@@ -65,6 +77,10 @@ export const AddressNetworkTier = {
      * Public internet quality, only limited support for other networking products.
      */
     Standard: "STANDARD",
+    /**
+     * (Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured.
+     */
+    StandardOverridesFixedStandard: "STANDARD_OVERRIDES_FIXED_STANDARD",
 } as const;
 
 /**
@@ -104,7 +120,7 @@ export const AddressPurpose = {
 } as const;
 
 /**
- * The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using . - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose. 
+ * The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using automatic NAT IP address allocation. - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose. 
  */
 export type AddressPurpose = (typeof AddressPurpose)[keyof typeof AddressPurpose];
 
@@ -400,7 +416,7 @@ export const BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnheal
 } as const;
 
 /**
- * Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default.
+ * Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default. For more details, see [Connection Persistence for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#connection-persistence) and [Connection Persistence for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#connection-persistence).
  */
 export type BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends = (typeof BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends)[keyof typeof BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends];
 
@@ -411,7 +427,7 @@ export const BackendServiceConnectionTrackingPolicyTrackingMode = {
 } as const;
 
 /**
- * Specifies the key used for connection tracking. There are two options: PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity.
+ * Specifies the key used for connection tracking. There are two options: - PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. - PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity. For more details, see [Tracking Mode for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#tracking-mode) and [Tracking Mode for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#tracking-mode).
  */
 export type BackendServiceConnectionTrackingPolicyTrackingMode = (typeof BackendServiceConnectionTrackingPolicyTrackingMode)[keyof typeof BackendServiceConnectionTrackingPolicyTrackingMode];
 
@@ -421,7 +437,7 @@ export const BackendServiceLoadBalancingScheme = {
      */
     External: "EXTERNAL",
     /**
-     * Signifies that this will be used for External Managed HTTP(S), SSL Proxy, or TCP Proxy Load Balancing.
+     * Signifies that this will be used for External Managed HTTP(S) Load Balancing.
      */
     ExternalManaged: "EXTERNAL_MANAGED",
     /**
@@ -473,7 +489,7 @@ export const BackendServiceLocalityLbPolicy = {
 } as const;
 
 /**
- * The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+ * The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
  */
 export type BackendServiceLocalityLbPolicy = (typeof BackendServiceLocalityLbPolicy)[keyof typeof BackendServiceLocalityLbPolicy];
 
@@ -547,7 +563,7 @@ export const BackendServiceSessionAffinity = {
 } as const;
 
 /**
- * Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+ * Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).
  */
 export type BackendServiceSessionAffinity = (typeof BackendServiceSessionAffinity)[keyof typeof BackendServiceSessionAffinity];
 
@@ -828,6 +844,10 @@ export type ForwardingRuleLoadBalancingScheme = (typeof ForwardingRuleLoadBalanc
 
 export const ForwardingRuleNetworkTier = {
     /**
+     * Public internet quality with fixed bandwidth.
+     */
+    FixedStandard: "FIXED_STANDARD",
+    /**
      * High quality, Google-grade network tier, support for all networking products.
      */
     Premium: "PREMIUM",
@@ -835,6 +855,10 @@ export const ForwardingRuleNetworkTier = {
      * Public internet quality, only limited support for other networking products.
      */
     Standard: "STANDARD",
+    /**
+     * (Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured.
+     */
+    StandardOverridesFixedStandard: "STANDARD_OVERRIDES_FIXED_STANDARD",
 } as const;
 
 /**
@@ -914,6 +938,10 @@ export type GlobalAddressIpVersion = (typeof GlobalAddressIpVersion)[keyof typeo
 
 export const GlobalAddressNetworkTier = {
     /**
+     * Public internet quality with fixed bandwidth.
+     */
+    FixedStandard: "FIXED_STANDARD",
+    /**
      * High quality, Google-grade network tier, support for all networking products.
      */
     Premium: "PREMIUM",
@@ -921,6 +949,10 @@ export const GlobalAddressNetworkTier = {
      * Public internet quality, only limited support for other networking products.
      */
     Standard: "STANDARD",
+    /**
+     * (Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured.
+     */
+    StandardOverridesFixedStandard: "STANDARD_OVERRIDES_FIXED_STANDARD",
 } as const;
 
 /**
@@ -960,7 +992,7 @@ export const GlobalAddressPurpose = {
 } as const;
 
 /**
- * The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using . - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose. 
+ * The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using automatic NAT IP address allocation. - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose. 
  */
 export type GlobalAddressPurpose = (typeof GlobalAddressPurpose)[keyof typeof GlobalAddressPurpose];
 
@@ -1006,6 +1038,10 @@ export type GlobalForwardingRuleLoadBalancingScheme = (typeof GlobalForwardingRu
 
 export const GlobalForwardingRuleNetworkTier = {
     /**
+     * Public internet quality with fixed bandwidth.
+     */
+    FixedStandard: "FIXED_STANDARD",
+    /**
      * High quality, Google-grade network tier, support for all networking products.
      */
     Premium: "PREMIUM",
@@ -1013,6 +1049,10 @@ export const GlobalForwardingRuleNetworkTier = {
      * Public internet quality, only limited support for other networking products.
      */
     Standard: "STANDARD",
+    /**
+     * (Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured.
+     */
+    StandardOverridesFixedStandard: "STANDARD_OVERRIDES_FIXED_STANDARD",
 } as const;
 
 /**
@@ -1090,7 +1130,7 @@ export const GuestOsFeatureType = {
 } as const;
 
 /**
- * The ID of a supported feature. Read Enabling guest operating system features to see a list of available options.
+ * The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
  */
 export type GuestOsFeatureType = (typeof GuestOsFeatureType)[keyof typeof GuestOsFeatureType];
 
@@ -1195,7 +1235,7 @@ export const HealthCheckType = {
 } as const;
 
 /**
- * Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+ * Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
  */
 export type HealthCheckType = (typeof HealthCheckType)[keyof typeof HealthCheckType];
 
@@ -1223,7 +1263,7 @@ export const HttpRedirectActionRedirectResponseCode = {
 } as const;
 
 /**
- * The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained. 
+ * The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method is retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method is retained. 
  */
 export type HttpRedirectActionRedirectResponseCode = (typeof HttpRedirectActionRedirectResponseCode)[keyof typeof HttpRedirectActionRedirectResponseCode];
 
@@ -1407,7 +1447,7 @@ export const InstancePropertiesPostKeyRevocationActionType = {
 } as const;
 
 /**
- * PostKeyRevocationActionType of the instance.(will be deprecated soon)
+ * PostKeyRevocationActionType of the instance.
  */
 export type InstancePropertiesPostKeyRevocationActionType = (typeof InstancePropertiesPostKeyRevocationActionType)[keyof typeof InstancePropertiesPostKeyRevocationActionType];
 
@@ -1427,7 +1467,7 @@ export const InstancePropertiesPrivateIpv6GoogleAccess = {
 } as const;
 
 /**
- * The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default.
+ * The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
  */
 export type InstancePropertiesPrivateIpv6GoogleAccess = (typeof InstancePropertiesPrivateIpv6GoogleAccess)[keyof typeof InstancePropertiesPrivateIpv6GoogleAccess];
 
@@ -1622,7 +1662,7 @@ export const MetadataFilterFilterMatchCriteria = {
 } as const;
 
 /**
- * Specifies how individual filterLabel matches within the list of filterLabels contribute towards the overall metadataFilter match. Supported values are: - MATCH_ANY: At least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: All filterLabels must have matching labels in the provided metadata. 
+ * Specifies how individual filter label matches within the list of filterLabels and contributes toward the overall metadataFilter match. Supported values are: - MATCH_ANY: at least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: all filterLabels must have matching labels in the provided metadata. 
  */
 export type MetadataFilterFilterMatchCriteria = (typeof MetadataFilterFilterMatchCriteria)[keyof typeof MetadataFilterFilterMatchCriteria];
 
@@ -1820,17 +1860,38 @@ export const PacketMirroringFilterDirection = {
 export type PacketMirroringFilterDirection = (typeof PacketMirroringFilterDirection)[keyof typeof PacketMirroringFilterDirection];
 
 export const PublicAdvertisedPrefixStatus = {
+    /**
+     * RPKI validation is complete.
+     */
     Initial: "INITIAL",
+    /**
+     * The prefix is fully configured.
+     */
     PrefixConfigurationComplete: "PREFIX_CONFIGURATION_COMPLETE",
+    /**
+     * The prefix is being configured.
+     */
     PrefixConfigurationInProgress: "PREFIX_CONFIGURATION_IN_PROGRESS",
+    /**
+     * The prefix is being removed.
+     */
     PrefixRemovalInProgress: "PREFIX_REMOVAL_IN_PROGRESS",
+    /**
+     * User has configured the PTR.
+     */
     PtrConfigured: "PTR_CONFIGURED",
+    /**
+     * Reverse DNS lookup failed.
+     */
     ReverseDnsLookupFailed: "REVERSE_DNS_LOOKUP_FAILED",
+    /**
+     * Reverse DNS lookup is successful.
+     */
     Validated: "VALIDATED",
 } as const;
 
 /**
- * The status of the public advertised prefix.
+ * The status of the public advertised prefix. Possible values include: - `INITIAL`: RPKI validation is complete. - `PTR_CONFIGURED`: User has configured the PTR. - `VALIDATED`: Reverse DNS lookup is successful. - `REVERSE_DNS_LOOKUP_FAILED`: Reverse DNS lookup failed. - `PREFIX_CONFIGURATION_IN_PROGRESS`: The prefix is being configured. - `PREFIX_CONFIGURATION_COMPLETE`: The prefix is fully configured. - `PREFIX_REMOVAL_IN_PROGRESS`: The prefix is being removed. 
  */
 export type PublicAdvertisedPrefixStatus = (typeof PublicAdvertisedPrefixStatus)[keyof typeof PublicAdvertisedPrefixStatus];
 
@@ -1856,7 +1917,7 @@ export const RegionBackendServiceLoadBalancingScheme = {
      */
     External: "EXTERNAL",
     /**
-     * Signifies that this will be used for External Managed HTTP(S), SSL Proxy, or TCP Proxy Load Balancing.
+     * Signifies that this will be used for External Managed HTTP(S) Load Balancing.
      */
     ExternalManaged: "EXTERNAL_MANAGED",
     /**
@@ -1908,7 +1969,7 @@ export const RegionBackendServiceLocalityLbPolicy = {
 } as const;
 
 /**
- * The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+ * The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
  */
 export type RegionBackendServiceLocalityLbPolicy = (typeof RegionBackendServiceLocalityLbPolicy)[keyof typeof RegionBackendServiceLocalityLbPolicy];
 
@@ -1982,7 +2043,7 @@ export const RegionBackendServiceSessionAffinity = {
 } as const;
 
 /**
- * Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+ * Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).
  */
 export type RegionBackendServiceSessionAffinity = (typeof RegionBackendServiceSessionAffinity)[keyof typeof RegionBackendServiceSessionAffinity];
 
@@ -2011,6 +2072,7 @@ export type RegionCommitmentPlan = (typeof RegionCommitmentPlan)[keyof typeof Re
 export const RegionCommitmentType = {
     AcceleratorOptimized: "ACCELERATOR_OPTIMIZED",
     ComputeOptimized: "COMPUTE_OPTIMIZED",
+    ComputeOptimizedC2d: "COMPUTE_OPTIMIZED_C2D",
     GeneralPurpose: "GENERAL_PURPOSE",
     GeneralPurposeE2: "GENERAL_PURPOSE_E2",
     GeneralPurposeN2: "GENERAL_PURPOSE_N2",
@@ -2052,7 +2114,7 @@ export const RegionHealthCheckType = {
 } as const;
 
 /**
- * Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+ * Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
  */
 export type RegionHealthCheckType = (typeof RegionHealthCheckType)[keyof typeof RegionHealthCheckType];
 
@@ -2478,6 +2540,10 @@ export const SchedulingProvisioningModel = {
      * Heavily discounted, no guaranteed runtime.
      */
     Spot: "SPOT",
+    /**
+     * Standard provisioning with user controlled runtime, no discounts.
+     */
+    Standard: "STANDARD",
 } as const;
 
 /**
@@ -2535,13 +2601,14 @@ export type SecurityPolicyRuleMatcherVersionedExpr = (typeof SecurityPolicyRuleM
 export const SecurityPolicyRuleRateLimitOptionsEnforceOnKey = {
     All: "ALL",
     AllIps: "ALL_IPS",
+    HttpCookie: "HTTP_COOKIE",
     HttpHeader: "HTTP_HEADER",
     Ip: "IP",
     XffIp: "XFF_IP",
 } as const;
 
 /**
- * Determines the key to enforce the rate_limit_threshold on. Possible values are: "ALL" -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. "ALL_IPS" -- This definition, equivalent to "ALL", has been depprecated. "IP" -- The source IP address of the request is the key. Each IP has this limit enforced separately. "HTTP_HEADER" -- The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to "ALL". "XFF_IP" -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to "ALL".
+ * Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
  */
 export type SecurityPolicyRuleRateLimitOptionsEnforceOnKey = (typeof SecurityPolicyRuleRateLimitOptionsEnforceOnKey)[keyof typeof SecurityPolicyRuleRateLimitOptionsEnforceOnKey];
 
@@ -2928,3 +2995,19 @@ export const TargetTcpProxyProxyHeader = {
  * Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
  */
 export type TargetTcpProxyProxyHeader = (typeof TargetTcpProxyProxyHeader)[keyof typeof TargetTcpProxyProxyHeader];
+
+export const VpnGatewayStackType = {
+    /**
+     * Enable VPN gateway with both IPv4 and IPv6 protocols.
+     */
+    Ipv4Ipv6: "IPV4_IPV6",
+    /**
+     * Enable VPN gateway with only IPv4 protocol.
+     */
+    Ipv4Only: "IPV4_ONLY",
+} as const;
+
+/**
+ * The stack type for this VPN gateway to identify the IP protocols that are enabled. If not specified, IPV4_ONLY will be used.
+ */
+export type VpnGatewayStackType = (typeof VpnGatewayStackType)[keyof typeof VpnGatewayStackType];

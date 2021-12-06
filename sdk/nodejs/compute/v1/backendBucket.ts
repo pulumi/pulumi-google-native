@@ -56,6 +56,10 @@ export class BackendBucket extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * The resource URL for the edge security policy associated with this backend bucket.
+     */
+    public /*out*/ readonly edgeSecurityPolicy!: pulumi.Output<string>;
+    /**
      * If true, enable Cloud CDN for this BackendBucket.
      */
     public readonly enableCdn!: pulumi.Output<boolean>;
@@ -93,6 +97,7 @@ export class BackendBucket extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["edgeSecurityPolicy"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         } else {
             resourceInputs["bucketName"] = undefined /*out*/;
@@ -100,6 +105,7 @@ export class BackendBucket extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["customResponseHeaders"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["edgeSecurityPolicy"] = undefined /*out*/;
             resourceInputs["enableCdn"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

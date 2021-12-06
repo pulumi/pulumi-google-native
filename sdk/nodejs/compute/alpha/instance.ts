@@ -89,6 +89,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly instanceEncryptionKey!: pulumi.Output<outputs.compute.alpha.CustomerEncryptionKeyResponse>;
     /**
+     * KeyRevocationActionType of the instance.
+     */
+    public readonly keyRevocationActionType!: pulumi.Output<string>;
+    /**
      * Type of the resource. Always compute#instance for instances.
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
@@ -246,6 +250,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["guestAccelerators"] = args ? args.guestAccelerators : undefined;
             resourceInputs["hostname"] = args ? args.hostname : undefined;
             resourceInputs["instanceEncryptionKey"] = args ? args.instanceEncryptionKey : undefined;
+            resourceInputs["keyRevocationActionType"] = args ? args.keyRevocationActionType : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["machineType"] = args ? args.machineType : undefined;
             resourceInputs["metadata"] = args ? args.metadata : undefined;
@@ -303,6 +308,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["guestAccelerators"] = undefined /*out*/;
             resourceInputs["hostname"] = undefined /*out*/;
             resourceInputs["instanceEncryptionKey"] = undefined /*out*/;
+            resourceInputs["keyRevocationActionType"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
@@ -392,6 +398,10 @@ export interface InstanceArgs {
      * Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
      */
     instanceEncryptionKey?: pulumi.Input<inputs.compute.alpha.CustomerEncryptionKeyArgs>;
+    /**
+     * KeyRevocationActionType of the instance.
+     */
+    keyRevocationActionType?: pulumi.Input<enums.compute.alpha.InstanceKeyRevocationActionType>;
     /**
      * Labels to apply to this instance. These can be later modified by the setLabels method.
      */

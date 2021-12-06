@@ -8,7 +8,7 @@ export const AndroidInstrumentationTestOrchestratorOption = {
      */
     OrchestratorOptionUnspecified: "ORCHESTRATOR_OPTION_UNSPECIFIED",
     /**
-     * Run test using orchestrator. ** Only compatible with AndroidJUnitRunner version 1.0 or higher! ** Recommended.
+     * Run test using orchestrator. ** Only compatible with AndroidJUnitRunner version 1.1 or higher! ** Recommended.
      */
     UseOrchestrator: "USE_ORCHESTRATOR",
     /**
@@ -18,7 +18,7 @@ export const AndroidInstrumentationTestOrchestratorOption = {
 } as const;
 
 /**
- * The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
+ * The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.1 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
  */
 export type AndroidInstrumentationTestOrchestratorOption = (typeof AndroidInstrumentationTestOrchestratorOption)[keyof typeof AndroidInstrumentationTestOrchestratorOption];
 

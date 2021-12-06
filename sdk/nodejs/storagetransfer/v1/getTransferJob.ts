@@ -61,7 +61,7 @@ export interface GetTransferJobResult {
      */
     readonly notificationConfig: outputs.storagetransfer.v1.NotificationConfigResponse;
     /**
-     * The ID of the Google Cloud Platform Project that owns the job.
+     * The ID of the Google Cloud project that owns the job.
      */
     readonly project: string;
     /**

@@ -37,7 +37,7 @@ export interface GetAgentPoolResult {
      */
     readonly displayName: string;
     /**
-     * Specifies a unique string that identifies the agent pool. Format: projects/{project_id}/agentPools/{agent_pool_id}
+     * Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`
      */
     readonly name: string;
     /**

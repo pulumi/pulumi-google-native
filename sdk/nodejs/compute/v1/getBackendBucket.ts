@@ -49,6 +49,10 @@ export interface GetBackendBucketResult {
      */
     readonly description: string;
     /**
+     * The resource URL for the edge security policy associated with this backend bucket.
+     */
+    readonly edgeSecurityPolicy: string;
+    /**
      * If true, enable Cloud CDN for this BackendBucket.
      */
     readonly enableCdn: boolean;

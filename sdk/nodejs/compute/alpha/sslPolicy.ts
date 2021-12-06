@@ -72,6 +72,10 @@ export class SslPolicy extends pulumi.CustomResource {
      */
     public readonly profile!: pulumi.Output<string>;
     /**
+     * URL of the region where the regional SSL policy resides. This field is not applicable to global SSL policies.
+     */
+    public /*out*/ readonly region!: pulumi.Output<string>;
+    /**
      * Server-defined URL for the resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -111,6 +115,7 @@ export class SslPolicy extends pulumi.CustomResource {
             resourceInputs["enabledFeatures"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["warnings"] = undefined /*out*/;
@@ -124,6 +129,7 @@ export class SslPolicy extends pulumi.CustomResource {
             resourceInputs["minTlsVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["profile"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["tlsSettings"] = undefined /*out*/;
