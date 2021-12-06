@@ -57,6 +57,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class GetImageResult
     {
         /// <summary>
+        /// The architecture of the image. Valid values are ARM64 or X86_64.
+        /// </summary>
+        public readonly string Architecture;
+        /// <summary>
         /// Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
         /// </summary>
         public readonly string ArchiveSizeBytes;
@@ -81,7 +85,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Family;
         /// <summary>
-        /// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+        /// A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
         /// </summary>
         public readonly ImmutableArray<Outputs.GuestOsFeatureResponse> GuestOsFeatures;
         /// <summary>
@@ -195,6 +199,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
         [OutputConstructor]
         private GetImageResult(
+            string architecture,
+
             string archiveSizeBytes,
 
             string creationTimestamp,
@@ -263,6 +269,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             ImmutableArray<string> userLicenses)
         {
+            Architecture = architecture;
             ArchiveSizeBytes = archiveSizeBytes;
             CreationTimestamp = creationTimestamp;
             Deprecated = deprecated;

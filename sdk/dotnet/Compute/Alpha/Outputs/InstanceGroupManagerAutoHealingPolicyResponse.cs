@@ -14,6 +14,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class InstanceGroupManagerAutoHealingPolicyResponse
     {
         /// <summary>
+        /// Restricts what triggers autohealing.
+        /// </summary>
+        public readonly Outputs.InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersResponse AutoHealingTriggers;
+        /// <summary>
         /// The URL for the health check that signals autohealing.
         /// </summary>
         public readonly string HealthCheck;
@@ -29,6 +33,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
         [OutputConstructor]
         private InstanceGroupManagerAutoHealingPolicyResponse(
+            Outputs.InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersResponse autoHealingTriggers,
+
             string healthCheck,
 
             int initialDelaySec,
@@ -37,6 +43,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             string updateInstances)
         {
+            AutoHealingTriggers = autoHealingTriggers;
             HealthCheck = healthCheck;
             InitialDelaySec = initialDelaySec;
             MaxUnavailable = maxUnavailable;

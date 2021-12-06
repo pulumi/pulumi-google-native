@@ -21,6 +21,30 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         [Input("includeHost")]
         public Input<bool>? IncludeHost { get; set; }
 
+        [Input("includeHttpHeaders")]
+        private InputList<string>? _includeHttpHeaders;
+
+        /// <summary>
+        /// Allows HTTP request headers (by name) to be used in the cache key.
+        /// </summary>
+        public InputList<string> IncludeHttpHeaders
+        {
+            get => _includeHttpHeaders ?? (_includeHttpHeaders = new InputList<string>());
+            set => _includeHttpHeaders = value;
+        }
+
+        [Input("includeNamedCookies")]
+        private InputList<string>? _includeNamedCookies;
+
+        /// <summary>
+        /// Allows HTTP cookies (by name) to be used in the cache key. The name=value pair will be used in the cache key Cloud CDN generates.
+        /// </summary>
+        public InputList<string> IncludeNamedCookies
+        {
+            get => _includeNamedCookies ?? (_includeNamedCookies = new InputList<string>());
+            set => _includeNamedCookies = value;
+        }
+
         /// <summary>
         /// If true, http and https requests will be cached separately.
         /// </summary>

@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     public sealed class SecurityPolicyRuleArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        /// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502). - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this. 
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -26,6 +26,12 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Optional, additional actions that are performed on headers.
+        /// </summary>
+        [Input("headerAction")]
+        public Input<Inputs.SecurityPolicyRuleHttpHeaderActionArgs>? HeaderAction { get; set; }
 
         /// <summary>
         /// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
@@ -44,6 +50,18 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
+
+        /// <summary>
+        /// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        /// </summary>
+        [Input("rateLimitOptions")]
+        public Input<Inputs.SecurityPolicyRuleRateLimitOptionsArgs>? RateLimitOptions { get; set; }
+
+        /// <summary>
+        /// Parameters defining the redirect action. Cannot be specified for any other actions.
+        /// </summary>
+        [Input("redirectOptions")]
+        public Input<Inputs.SecurityPolicyRuleRedirectOptionsArgs>? RedirectOptions { get; set; }
 
         public SecurityPolicyRuleArgs()
         {

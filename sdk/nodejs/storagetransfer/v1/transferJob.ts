@@ -70,7 +70,7 @@ export class TransferJob extends pulumi.CustomResource {
      */
     public readonly notificationConfig!: pulumi.Output<outputs.storagetransfer.v1.NotificationConfigResponse>;
     /**
-     * The ID of the Google Cloud Platform Project that owns the job.
+     * The ID of the Google Cloud project that owns the job.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -155,7 +155,7 @@ export interface TransferJobArgs {
      */
     notificationConfig?: pulumi.Input<inputs.storagetransfer.v1.NotificationConfigArgs>;
     /**
-     * The ID of the Google Cloud Platform Project that owns the job.
+     * The ID of the Google Cloud project that owns the job.
      */
     project?: pulumi.Input<string>;
     /**

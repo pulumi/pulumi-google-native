@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetMachineImageResult:
-    def __init__(__self__, creation_timestamp=None, description=None, guest_flush=None, kind=None, machine_image_encryption_key=None, name=None, satisfies_pzs=None, self_link=None, source_disk_encryption_keys=None, source_instance=None, source_instance_properties=None, status=None, storage_locations=None, total_storage_bytes=None):
+    def __init__(__self__, creation_timestamp=None, description=None, guest_flush=None, instance_properties=None, kind=None, machine_image_encryption_key=None, name=None, satisfies_pzs=None, saved_disks=None, self_link=None, source_disk_encryption_keys=None, source_instance=None, source_instance_properties=None, status=None, storage_locations=None, total_storage_bytes=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -28,6 +28,9 @@ class GetMachineImageResult:
         if guest_flush and not isinstance(guest_flush, bool):
             raise TypeError("Expected argument 'guest_flush' to be a bool")
         pulumi.set(__self__, "guest_flush", guest_flush)
+        if instance_properties and not isinstance(instance_properties, dict):
+            raise TypeError("Expected argument 'instance_properties' to be a dict")
+        pulumi.set(__self__, "instance_properties", instance_properties)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -40,6 +43,9 @@ class GetMachineImageResult:
         if satisfies_pzs and not isinstance(satisfies_pzs, bool):
             raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
+        if saved_disks and not isinstance(saved_disks, list):
+            raise TypeError("Expected argument 'saved_disks' to be a list")
+        pulumi.set(__self__, "saved_disks", saved_disks)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
@@ -87,6 +93,14 @@ class GetMachineImageResult:
         return pulumi.get(self, "guest_flush")
 
     @property
+    @pulumi.getter(name="instanceProperties")
+    def instance_properties(self) -> 'outputs.InstancePropertiesResponse':
+        """
+        Properties of source instance
+        """
+        return pulumi.get(self, "instance_properties")
+
+    @property
     @pulumi.getter
     def kind(self) -> str:
         """
@@ -119,6 +133,14 @@ class GetMachineImageResult:
         return pulumi.get(self, "satisfies_pzs")
 
     @property
+    @pulumi.getter(name="savedDisks")
+    def saved_disks(self) -> Sequence['outputs.SavedDiskResponse']:
+        """
+        An array of Machine Image specific properties for disks attached to the source instance
+        """
+        return pulumi.get(self, "saved_disks")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
@@ -146,7 +168,7 @@ class GetMachineImageResult:
     @pulumi.getter(name="sourceInstanceProperties")
     def source_instance_properties(self) -> 'outputs.SourceInstancePropertiesResponse':
         """
-        Properties of source instance.
+        DEPRECATED: Please use instance_properties instead for source instance related properties. New properties will not be added to this field.
         """
         return pulumi.get(self, "source_instance_properties")
 
@@ -184,10 +206,12 @@ class AwaitableGetMachineImageResult(GetMachineImageResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             guest_flush=self.guest_flush,
+            instance_properties=self.instance_properties,
             kind=self.kind,
             machine_image_encryption_key=self.machine_image_encryption_key,
             name=self.name,
             satisfies_pzs=self.satisfies_pzs,
+            saved_disks=self.saved_disks,
             self_link=self.self_link,
             source_disk_encryption_keys=self.source_disk_encryption_keys,
             source_instance=self.source_instance,
@@ -216,10 +240,12 @@ def get_machine_image(machine_image: Optional[str] = None,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         guest_flush=__ret__.guest_flush,
+        instance_properties=__ret__.instance_properties,
         kind=__ret__.kind,
         machine_image_encryption_key=__ret__.machine_image_encryption_key,
         name=__ret__.name,
         satisfies_pzs=__ret__.satisfies_pzs,
+        saved_disks=__ret__.saved_disks,
         self_link=__ret__.self_link,
         source_disk_encryption_keys=__ret__.source_disk_encryption_keys,
         source_instance=__ret__.source_instance,

@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.CloudAsset.V1.Inputs
 {
 
     /// <summary>
-    /// ## IAM policy analysis query message.
+    /// IAM policy analysis query message.
     /// </summary>
     public sealed class IamPolicyAnalysisQueryArgs : Pulumi.ResourceArgs
     {

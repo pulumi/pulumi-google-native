@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         private InputMap<string>? _projectMap;
 
         /// <summary>
-        /// A map of project id and project config. Using map format to ease add-to/remove-from the Project list in PATCH command. In future we will deprecate (And later remove) the array one.
+        /// A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
         /// </summary>
         public InputMap<string> ProjectMap
         {

@@ -8,7 +8,7 @@ using Pulumi;
 namespace Pulumi.GoogleNative.Testing.V1
 {
     /// <summary>
-    /// The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
+    /// The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.1 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
     /// </summary>
     [EnumType]
     public readonly struct AndroidInstrumentationTestOrchestratorOption : IEquatable<AndroidInstrumentationTestOrchestratorOption>
@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Testing.V1
         /// </summary>
         public static AndroidInstrumentationTestOrchestratorOption OrchestratorOptionUnspecified { get; } = new AndroidInstrumentationTestOrchestratorOption("ORCHESTRATOR_OPTION_UNSPECIFIED");
         /// <summary>
-        /// Run test using orchestrator. ** Only compatible with AndroidJUnitRunner version 1.0 or higher! ** Recommended.
+        /// Run test using orchestrator. ** Only compatible with AndroidJUnitRunner version 1.1 or higher! ** Recommended.
         /// </summary>
         public static AndroidInstrumentationTestOrchestratorOption UseOrchestrator { get; } = new AndroidInstrumentationTestOrchestratorOption("USE_ORCHESTRATOR");
         /// <summary>

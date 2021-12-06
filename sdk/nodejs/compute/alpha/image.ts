@@ -36,6 +36,10 @@ export class Image extends pulumi.CustomResource {
     }
 
     /**
+     * The architecture of the image. Valid values are ARM64 or X86_64.
+     */
+    public readonly architecture!: pulumi.Output<string>;
+    /**
      * Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
      */
     public readonly archiveSizeBytes!: pulumi.Output<string>;
@@ -60,7 +64,7 @@ export class Image extends pulumi.CustomResource {
      */
     public readonly family!: pulumi.Output<string>;
     /**
-     * A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+     * A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
      */
     public readonly guestOsFeatures!: pulumi.Output<outputs.compute.alpha.GuestOsFeatureResponse[]>;
     /**
@@ -183,6 +187,7 @@ export class Image extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            resourceInputs["architecture"] = args ? args.architecture : undefined;
             resourceInputs["archiveSizeBytes"] = args ? args.archiveSizeBytes : undefined;
             resourceInputs["deprecated"] = args ? args.deprecated : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -221,6 +226,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["sourceSnapshotId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         } else {
+            resourceInputs["architecture"] = undefined /*out*/;
             resourceInputs["archiveSizeBytes"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["deprecated"] = undefined /*out*/;
@@ -268,6 +274,10 @@ export class Image extends pulumi.CustomResource {
  */
 export interface ImageArgs {
     /**
+     * The architecture of the image. Valid values are ARM64 or X86_64.
+     */
+    architecture?: pulumi.Input<enums.compute.alpha.ImageArchitecture>;
+    /**
      * Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
      */
     archiveSizeBytes?: pulumi.Input<string>;
@@ -289,7 +299,7 @@ export interface ImageArgs {
     family?: pulumi.Input<string>;
     forceCreate?: pulumi.Input<string>;
     /**
-     * A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+     * A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
      */
     guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.alpha.GuestOsFeatureArgs>[]>;
     /**

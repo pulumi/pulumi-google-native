@@ -41,11 +41,11 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly string NetworkTier;
         /// <summary>
-        /// The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled.
+        /// The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled in accessConfig. If this field is unspecified in ipv6AccessConfig, a default PTR record will be createc for first IP in associated external IPv6 range.
         /// </summary>
         public readonly string PublicPtrDomainName;
         /// <summary>
-        /// Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name.
+        /// Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name. This field is not used in ipv6AccessConfig. A default PTR record will be created if the VM has external IPv6 range associated.
         /// </summary>
         public readonly bool SetPublicPtr;
         /// <summary>

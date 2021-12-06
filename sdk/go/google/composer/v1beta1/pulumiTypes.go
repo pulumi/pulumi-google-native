@@ -1010,7 +1010,7 @@ func (o EncryptionConfigResponsePtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 type EnvironmentConfig struct {
 	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DatabaseConfig *DatabaseConfig `pulumi:"databaseConfig"`
-	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 	EncryptionConfig *EncryptionConfig `pulumi:"encryptionConfig"`
 	// Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	EnvironmentSize *EnvironmentConfigEnvironmentSize `pulumi:"environmentSize"`
@@ -1049,7 +1049,7 @@ type EnvironmentConfigInput interface {
 type EnvironmentConfigArgs struct {
 	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DatabaseConfig DatabaseConfigPtrInput `pulumi:"databaseConfig"`
-	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 	EncryptionConfig EncryptionConfigPtrInput `pulumi:"encryptionConfig"`
 	// Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	EnvironmentSize EnvironmentConfigEnvironmentSizePtrInput `pulumi:"environmentSize"`
@@ -1156,7 +1156,7 @@ func (o EnvironmentConfigOutput) DatabaseConfig() DatabaseConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *DatabaseConfig { return v.DatabaseConfig }).(DatabaseConfigPtrOutput)
 }
 
-// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 func (o EnvironmentConfigOutput) EncryptionConfig() EncryptionConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EncryptionConfig { return v.EncryptionConfig }).(EncryptionConfigPtrOutput)
 }
@@ -1245,7 +1245,7 @@ func (o EnvironmentConfigPtrOutput) DatabaseConfig() DatabaseConfigPtrOutput {
 	}).(DatabaseConfigPtrOutput)
 }
 
-// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 func (o EnvironmentConfigPtrOutput) EncryptionConfig() EncryptionConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *EncryptionConfig {
 		if v == nil {
@@ -1363,7 +1363,7 @@ type EnvironmentConfigResponse struct {
 	DagGcsPrefix string `pulumi:"dagGcsPrefix"`
 	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DatabaseConfig DatabaseConfigResponse `pulumi:"databaseConfig"`
-	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 	EncryptionConfig EncryptionConfigResponse `pulumi:"encryptionConfig"`
 	// Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	EnvironmentSize string `pulumi:"environmentSize"`
@@ -1408,7 +1408,7 @@ type EnvironmentConfigResponseArgs struct {
 	DagGcsPrefix pulumi.StringInput `pulumi:"dagGcsPrefix"`
 	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DatabaseConfig DatabaseConfigResponseInput `pulumi:"databaseConfig"`
-	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 	EncryptionConfig EncryptionConfigResponseInput `pulumi:"encryptionConfig"`
 	// Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	EnvironmentSize pulumi.StringInput `pulumi:"environmentSize"`
@@ -1527,7 +1527,7 @@ func (o EnvironmentConfigResponseOutput) DatabaseConfig() DatabaseConfigResponse
 	return o.ApplyT(func(v EnvironmentConfigResponse) DatabaseConfigResponse { return v.DatabaseConfig }).(DatabaseConfigResponseOutput)
 }
 
-// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 func (o EnvironmentConfigResponseOutput) EncryptionConfig() EncryptionConfigResponseOutput {
 	return o.ApplyT(func(v EnvironmentConfigResponse) EncryptionConfigResponse { return v.EncryptionConfig }).(EncryptionConfigResponseOutput)
 }
@@ -1645,7 +1645,7 @@ func (o EnvironmentConfigResponsePtrOutput) DatabaseConfig() DatabaseConfigRespo
 	}).(DatabaseConfigResponsePtrOutput)
 }
 
-// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 func (o EnvironmentConfigResponsePtrOutput) EncryptionConfig() EncryptionConfigResponsePtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigResponse) *EncryptionConfigResponse {
 		if v == nil {

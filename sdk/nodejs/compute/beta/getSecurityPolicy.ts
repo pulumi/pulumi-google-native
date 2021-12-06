@@ -70,6 +70,7 @@ export interface GetSecurityPolicyResult {
      * The parent of the security policy.
      */
     readonly parent: string;
+    readonly recaptchaOptionsConfig: outputs.compute.beta.SecurityPolicyRecaptchaOptionsConfigResponse;
     /**
      * Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
      */

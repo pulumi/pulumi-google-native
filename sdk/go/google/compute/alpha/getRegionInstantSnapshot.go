@@ -27,6 +27,8 @@ type LookupRegionInstantSnapshotArgs struct {
 }
 
 type LookupRegionInstantSnapshotResult struct {
+	// The architecture of the instant snapshot. Valid values are ARM64 or X86_64.
+	Architecture string `pulumi:"architecture"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
@@ -92,6 +94,11 @@ func (o LookupRegionInstantSnapshotResultOutput) ToLookupRegionInstantSnapshotRe
 
 func (o LookupRegionInstantSnapshotResultOutput) ToLookupRegionInstantSnapshotResultOutputWithContext(ctx context.Context) LookupRegionInstantSnapshotResultOutput {
 	return o
+}
+
+// The architecture of the instant snapshot. Valid values are ARM64 or X86_64.
+func (o LookupRegionInstantSnapshotResultOutput) Architecture() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionInstantSnapshotResult) string { return v.Architecture }).(pulumi.StringOutput)
 }
 
 // Creation timestamp in RFC3339 text format.

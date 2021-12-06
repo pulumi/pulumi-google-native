@@ -133,6 +133,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<int>? TcpTransitoryIdleTimeoutSec { get; set; }
 
         /// <summary>
+        /// Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC.
+        /// </summary>
+        [Input("type")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.RouterNatType>? Type { get; set; }
+
+        /// <summary>
         /// Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
         /// </summary>
         [Input("udpIdleTimeoutSec")]

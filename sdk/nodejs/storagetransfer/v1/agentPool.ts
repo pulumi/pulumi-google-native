@@ -44,7 +44,7 @@ export class AgentPool extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * Specifies a unique string that identifies the agent pool. Format: projects/{project_id}/agentPools/{agent_pool_id}
+     * Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -99,7 +99,7 @@ export interface AgentPoolArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Specifies a unique string that identifies the agent pool. Format: projects/{project_id}/agentPools/{agent_pool_id}
+     * Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

@@ -21,12 +21,14 @@ class RegionCommitmentArgs:
                  category: Optional[pulumi.Input['RegionCommitmentCategory']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  license_resource: Optional[pulumi.Input['LicenseResourceCommitmentArgs']] = None,
+                 merge_source_commitments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input['RegionCommitmentPlan']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  reservations: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationArgs']]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceCommitmentArgs']]]] = None,
+                 split_source_commitment: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['RegionCommitmentType']] = None):
         """
         The set of arguments for constructing a RegionCommitment resource.
@@ -34,10 +36,12 @@ class RegionCommitmentArgs:
         :param pulumi.Input['RegionCommitmentCategory'] category: The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input['LicenseResourceCommitmentArgs'] license_resource: The license specification required as part of a license commitment.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] merge_source_commitments: List of source commitments to be merged into a new commitment.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input['RegionCommitmentPlan'] plan: The plan for this commitment, which determines duration and discount rate. The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
         :param pulumi.Input[Sequence[pulumi.Input['ReservationArgs']]] reservations: List of reservations in this commitment.
         :param pulumi.Input[Sequence[pulumi.Input['ResourceCommitmentArgs']]] resources: A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
+        :param pulumi.Input[str] split_source_commitment: Source commitment to be splitted into a new commitment.
         :param pulumi.Input['RegionCommitmentType'] type: The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
         """
         pulumi.set(__self__, "region", region)
@@ -49,6 +53,8 @@ class RegionCommitmentArgs:
             pulumi.set(__self__, "description", description)
         if license_resource is not None:
             pulumi.set(__self__, "license_resource", license_resource)
+        if merge_source_commitments is not None:
+            pulumi.set(__self__, "merge_source_commitments", merge_source_commitments)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if plan is not None:
@@ -61,6 +67,8 @@ class RegionCommitmentArgs:
             pulumi.set(__self__, "reservations", reservations)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if split_source_commitment is not None:
+            pulumi.set(__self__, "split_source_commitment", split_source_commitment)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -120,6 +128,18 @@ class RegionCommitmentArgs:
     @license_resource.setter
     def license_resource(self, value: Optional[pulumi.Input['LicenseResourceCommitmentArgs']]):
         pulumi.set(self, "license_resource", value)
+
+    @property
+    @pulumi.getter(name="mergeSourceCommitments")
+    def merge_source_commitments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of source commitments to be merged into a new commitment.
+        """
+        return pulumi.get(self, "merge_source_commitments")
+
+    @merge_source_commitments.setter
+    def merge_source_commitments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "merge_source_commitments", value)
 
     @property
     @pulumi.getter
@@ -188,6 +208,18 @@ class RegionCommitmentArgs:
         pulumi.set(self, "resources", value)
 
     @property
+    @pulumi.getter(name="splitSourceCommitment")
+    def split_source_commitment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Source commitment to be splitted into a new commitment.
+        """
+        return pulumi.get(self, "split_source_commitment")
+
+    @split_source_commitment.setter
+    def split_source_commitment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "split_source_commitment", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input['RegionCommitmentType']]:
         """
@@ -209,6 +241,7 @@ class RegionCommitment(pulumi.CustomResource):
                  category: Optional[pulumi.Input['RegionCommitmentCategory']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  license_resource: Optional[pulumi.Input[pulumi.InputType['LicenseResourceCommitmentArgs']]] = None,
+                 merge_source_commitments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input['RegionCommitmentPlan']] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -216,6 +249,7 @@ class RegionCommitment(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  reservations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReservationArgs']]]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceCommitmentArgs']]]]] = None,
+                 split_source_commitment: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['RegionCommitmentType']] = None,
                  __props__=None):
         """
@@ -229,10 +263,12 @@ class RegionCommitment(pulumi.CustomResource):
         :param pulumi.Input['RegionCommitmentCategory'] category: The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[pulumi.InputType['LicenseResourceCommitmentArgs']] license_resource: The license specification required as part of a license commitment.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] merge_source_commitments: List of source commitments to be merged into a new commitment.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input['RegionCommitmentPlan'] plan: The plan for this commitment, which determines duration and discount rate. The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReservationArgs']]]] reservations: List of reservations in this commitment.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceCommitmentArgs']]]] resources: A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
+        :param pulumi.Input[str] split_source_commitment: Source commitment to be splitted into a new commitment.
         :param pulumi.Input['RegionCommitmentType'] type: The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
         """
         ...
@@ -265,6 +301,7 @@ class RegionCommitment(pulumi.CustomResource):
                  category: Optional[pulumi.Input['RegionCommitmentCategory']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  license_resource: Optional[pulumi.Input[pulumi.InputType['LicenseResourceCommitmentArgs']]] = None,
+                 merge_source_commitments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input['RegionCommitmentPlan']] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -272,6 +309,7 @@ class RegionCommitment(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  reservations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReservationArgs']]]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceCommitmentArgs']]]]] = None,
+                 split_source_commitment: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['RegionCommitmentType']] = None,
                  __props__=None):
         if opts is None:
@@ -289,6 +327,7 @@ class RegionCommitment(pulumi.CustomResource):
             __props__.__dict__["category"] = category
             __props__.__dict__["description"] = description
             __props__.__dict__["license_resource"] = license_resource
+            __props__.__dict__["merge_source_commitments"] = merge_source_commitments
             __props__.__dict__["name"] = name
             __props__.__dict__["plan"] = plan
             __props__.__dict__["project"] = project
@@ -298,6 +337,7 @@ class RegionCommitment(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["reservations"] = reservations
             __props__.__dict__["resources"] = resources
+            __props__.__dict__["split_source_commitment"] = split_source_commitment
             __props__.__dict__["type"] = type
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["end_timestamp"] = None
@@ -336,6 +376,7 @@ class RegionCommitment(pulumi.CustomResource):
         __props__.__dict__["end_timestamp"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["license_resource"] = None
+        __props__.__dict__["merge_source_commitments"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["plan"] = None
         __props__.__dict__["region"] = None
@@ -343,6 +384,7 @@ class RegionCommitment(pulumi.CustomResource):
         __props__.__dict__["resources"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
+        __props__.__dict__["split_source_commitment"] = None
         __props__.__dict__["start_timestamp"] = None
         __props__.__dict__["status"] = None
         __props__.__dict__["status_message"] = None
@@ -406,6 +448,14 @@ class RegionCommitment(pulumi.CustomResource):
         return pulumi.get(self, "license_resource")
 
     @property
+    @pulumi.getter(name="mergeSourceCommitments")
+    def merge_source_commitments(self) -> pulumi.Output[Sequence[str]]:
+        """
+        List of source commitments to be merged into a new commitment.
+        """
+        return pulumi.get(self, "merge_source_commitments")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
@@ -460,6 +510,14 @@ class RegionCommitment(pulumi.CustomResource):
         Server-defined URL for this resource with the resource id.
         """
         return pulumi.get(self, "self_link_with_id")
+
+    @property
+    @pulumi.getter(name="splitSourceCommitment")
+    def split_source_commitment(self) -> pulumi.Output[str]:
+        """
+        Source commitment to be splitted into a new commitment.
+        """
+        return pulumi.get(self, "split_source_commitment")
 
     @property
     @pulumi.getter(name="startTimestamp")

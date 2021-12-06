@@ -63,6 +63,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class GetInstantSnapshotResult
     {
         /// <summary>
+        /// The architecture of the instant snapshot. Valid values are ARM64 or X86_64.
+        /// </summary>
+        public readonly string Architecture;
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
@@ -129,6 +133,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
         [OutputConstructor]
         private GetInstantSnapshotResult(
+            string architecture,
+
             string creationTimestamp,
 
             string description,
@@ -161,6 +167,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string zone)
         {
+            Architecture = architecture;
             CreationTimestamp = creationTimestamp;
             Description = description;
             DiskSizeGb = diskSizeGb;

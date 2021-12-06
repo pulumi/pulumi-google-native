@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['VpnGatewayArgs', 'VpnGateway']
@@ -22,6 +23,7 @@ class VpnGatewayArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 stack_type: Optional[pulumi.Input['VpnGatewayStackType']] = None,
                  vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['VpnGatewayVpnGatewayInterfaceArgs']]]] = None):
         """
         The set of arguments for constructing a VpnGateway resource.
@@ -29,6 +31,7 @@ class VpnGatewayArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: URL of the network to which this VPN gateway is attached. Provided by the client when the VPN gateway is created.
+        :param pulumi.Input['VpnGatewayStackType'] stack_type: The stack type for this VPN gateway to identify the IP protocols that are enabled. If not specified, IPV4_ONLY will be used.
         :param pulumi.Input[Sequence[pulumi.Input['VpnGatewayVpnGatewayInterfaceArgs']]] vpn_interfaces: The list of VPN interfaces associated with this VPN gateway.
         """
         pulumi.set(__self__, "region", region)
@@ -44,6 +47,8 @@ class VpnGatewayArgs:
             pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
+        if stack_type is not None:
+            pulumi.set(__self__, "stack_type", stack_type)
         if vpn_interfaces is not None:
             pulumi.set(__self__, "vpn_interfaces", vpn_interfaces)
 
@@ -123,6 +128,18 @@ class VpnGatewayArgs:
         pulumi.set(self, "request_id", value)
 
     @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> Optional[pulumi.Input['VpnGatewayStackType']]:
+        """
+        The stack type for this VPN gateway to identify the IP protocols that are enabled. If not specified, IPV4_ONLY will be used.
+        """
+        return pulumi.get(self, "stack_type")
+
+    @stack_type.setter
+    def stack_type(self, value: Optional[pulumi.Input['VpnGatewayStackType']]):
+        pulumi.set(self, "stack_type", value)
+
+    @property
     @pulumi.getter(name="vpnInterfaces")
     def vpn_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpnGatewayVpnGatewayInterfaceArgs']]]]:
         """
@@ -147,6 +164,7 @@ class VpnGateway(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 stack_type: Optional[pulumi.Input['VpnGatewayStackType']] = None,
                  vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpnGatewayVpnGatewayInterfaceArgs']]]]] = None,
                  __props__=None):
         """
@@ -158,6 +176,7 @@ class VpnGateway(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: URL of the network to which this VPN gateway is attached. Provided by the client when the VPN gateway is created.
+        :param pulumi.Input['VpnGatewayStackType'] stack_type: The stack type for this VPN gateway to identify the IP protocols that are enabled. If not specified, IPV4_ONLY will be used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpnGatewayVpnGatewayInterfaceArgs']]]] vpn_interfaces: The list of VPN interfaces associated with this VPN gateway.
         """
         ...
@@ -191,6 +210,7 @@ class VpnGateway(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 stack_type: Optional[pulumi.Input['VpnGatewayStackType']] = None,
                  vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VpnGatewayVpnGatewayInterfaceArgs']]]]] = None,
                  __props__=None):
         if opts is None:
@@ -213,6 +233,7 @@ class VpnGateway(pulumi.CustomResource):
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
             __props__.__dict__["request_id"] = request_id
+            __props__.__dict__["stack_type"] = stack_type
             __props__.__dict__["vpn_interfaces"] = vpn_interfaces
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
@@ -249,6 +270,7 @@ class VpnGateway(pulumi.CustomResource):
         __props__.__dict__["network"] = None
         __props__.__dict__["region"] = None
         __props__.__dict__["self_link"] = None
+        __props__.__dict__["stack_type"] = None
         __props__.__dict__["vpn_interfaces"] = None
         return VpnGateway(resource_name, opts=opts, __props__=__props__)
 
@@ -323,6 +345,14 @@ class VpnGateway(pulumi.CustomResource):
         Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> pulumi.Output[str]:
+        """
+        The stack type for this VPN gateway to identify the IP protocols that are enabled. If not specified, IPV4_ONLY will be used.
+        """
+        return pulumi.get(self, "stack_type")
 
     @property
     @pulumi.getter(name="vpnInterfaces")

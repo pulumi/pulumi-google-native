@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<Pulumi.GoogleNative.Compute.Alpha.AttachedDiskSavedState>? SavedState { get; set; }
 
         /// <summary>
-        /// Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks. Note that for InstanceTemplate, specify the disk name, not the URL for the disk.
+        /// Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks. Note that for InstanceTemplate, specify the disk name for zonal disk, and the URL for regional disk.
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }

@@ -119,6 +119,7 @@ export interface GetInstanceResult {
      * An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
      */
     readonly networkInterfaces: outputs.compute.v1.NetworkInterfaceResponse[];
+    readonly networkPerformanceConfig: outputs.compute.v1.NetworkPerformanceConfigResponse;
     /**
      * The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
      */
@@ -149,6 +150,14 @@ export interface GetInstanceResult {
     readonly serviceAccounts: outputs.compute.v1.ServiceAccountResponse[];
     readonly shieldedInstanceConfig: outputs.compute.v1.ShieldedInstanceConfigResponse;
     readonly shieldedInstanceIntegrityPolicy: outputs.compute.v1.ShieldedInstanceIntegrityPolicyResponse;
+    /**
+     * Source machine image
+     */
+    readonly sourceMachineImage: string;
+    /**
+     * Source machine image encryption key when creating an instance from a machine image.
+     */
+    readonly sourceMachineImageEncryptionKey: outputs.compute.v1.CustomerEncryptionKeyResponse;
     /**
      * Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
      */

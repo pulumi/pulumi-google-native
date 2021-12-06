@@ -106,6 +106,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// The parent of the security policy.
         /// </summary>
         public readonly string Parent;
+        public readonly Outputs.SecurityPolicyRecaptchaOptionsConfigResponse RecaptchaOptionsConfig;
         /// <summary>
         /// URL of the region where the regional security policy resides. This field is not applicable to global security policies.
         /// </summary>
@@ -161,6 +162,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string parent,
 
+            Outputs.SecurityPolicyRecaptchaOptionsConfigResponse recaptchaOptionsConfig,
+
             string region,
 
             int ruleTupleCount,
@@ -187,6 +190,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Labels = labels;
             Name = name;
             Parent = parent;
+            RecaptchaOptionsConfig = recaptchaOptionsConfig;
             Region = region;
             RuleTupleCount = ruleTupleCount;
             Rules = rules;

@@ -50,7 +50,7 @@ type LookupGlobalPublicDelegatedPrefixResult struct {
 	SelfLink string `pulumi:"selfLink"`
 	// Server-defined URL with id for the resource.
 	SelfLinkWithId string `pulumi:"selfLinkWithId"`
-	// The status of the public delegated prefix.
+	// The status of the public delegated prefix, which can be one of following values: - `INITIALIZING` The public delegated prefix is being initialized and addresses cannot be created yet. - `READY_TO_ANNOUNCE` The public delegated prefix is a live migration prefix and is active. - `ANNOUNCED` The public delegated prefix is active. - `DELETING` The public delegated prefix is being deprovsioned.
 	Status string `pulumi:"status"`
 }
 
@@ -148,7 +148,7 @@ func (o LookupGlobalPublicDelegatedPrefixResultOutput) SelfLinkWithId() pulumi.S
 	return o.ApplyT(func(v LookupGlobalPublicDelegatedPrefixResult) string { return v.SelfLinkWithId }).(pulumi.StringOutput)
 }
 
-// The status of the public delegated prefix.
+// The status of the public delegated prefix, which can be one of following values: - `INITIALIZING` The public delegated prefix is being initialized and addresses cannot be created yet. - `READY_TO_ANNOUNCE` The public delegated prefix is a live migration prefix and is active. - `ANNOUNCED` The public delegated prefix is active. - `DELETING` The public delegated prefix is being deprovsioned.
 func (o LookupGlobalPublicDelegatedPrefixResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalPublicDelegatedPrefixResult) string { return v.Status }).(pulumi.StringOutput)
 }

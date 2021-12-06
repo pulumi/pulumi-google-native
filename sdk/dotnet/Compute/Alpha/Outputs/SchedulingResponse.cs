@@ -57,6 +57,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string MaintenanceInterval;
         /// <summary>
+        /// Specifies the max run duration for the given instance. If specified, the instance termination action will be performed at the end of the run duration.
+        /// </summary>
+        public readonly Outputs.DurationResponse MaxRunDuration;
+        /// <summary>
         /// The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
         /// </summary>
         public readonly int MinNodeCpus;
@@ -76,6 +80,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// Specifies the provisioning model of the instance.
         /// </summary>
         public readonly string ProvisioningModel;
+        /// <summary>
+        /// Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
+        /// </summary>
+        public readonly string TerminationTime;
 
         [OutputConstructor]
         private SchedulingResponse(
@@ -99,6 +107,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             string maintenanceInterval,
 
+            Outputs.DurationResponse maxRunDuration,
+
             int minNodeCpus,
 
             ImmutableArray<Outputs.SchedulingNodeAffinityResponse> nodeAffinities,
@@ -107,7 +117,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             bool preemptible,
 
-            string provisioningModel)
+            string provisioningModel,
+
+            string terminationTime)
         {
             AutomaticRestart = automaticRestart;
             AvailabilityDomain = availabilityDomain;
@@ -119,11 +131,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             LocationHint = locationHint;
             MaintenanceFreezeDurationHours = maintenanceFreezeDurationHours;
             MaintenanceInterval = maintenanceInterval;
+            MaxRunDuration = maxRunDuration;
             MinNodeCpus = minNodeCpus;
             NodeAffinities = nodeAffinities;
             OnHostMaintenance = onHostMaintenance;
             Preemptible = preemptible;
             ProvisioningModel = provisioningModel;
+            TerminationTime = terminationTime;
         }
     }
 }

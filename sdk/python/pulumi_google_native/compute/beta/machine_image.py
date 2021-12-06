@@ -22,6 +22,7 @@ class MachineImageArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 saved_disks: Optional[pulumi.Input[Sequence[pulumi.Input['SavedDiskArgs']]]] = None,
                  source_disk_encryption_keys: Optional[pulumi.Input[Sequence[pulumi.Input['SourceDiskEncryptionKeyArgs']]]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -31,6 +32,7 @@ class MachineImageArgs:
         :param pulumi.Input[bool] guest_flush: [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
         :param pulumi.Input['CustomerEncryptionKeyArgs'] machine_image_encryption_key: Encrypts the machine image using a customer-supplied encryption key. After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request. Customer-supplied encryption keys do not protect access to metadata of the machine image. If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input[Sequence[pulumi.Input['SavedDiskArgs']]] saved_disks: An array of Machine Image specific properties for disks attached to the source instance
         :param pulumi.Input[Sequence[pulumi.Input['SourceDiskEncryptionKeyArgs']]] source_disk_encryption_keys: [Input Only] The customer-supplied encryption key of the disks attached to the source instance. Required if the source disk is protected by a customer-supplied encryption key.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
         """
@@ -47,6 +49,8 @@ class MachineImageArgs:
             pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
+        if saved_disks is not None:
+            pulumi.set(__self__, "saved_disks", saved_disks)
         if source_disk_encryption_keys is not None:
             pulumi.set(__self__, "source_disk_encryption_keys", source_disk_encryption_keys)
         if storage_locations is not None:
@@ -131,6 +135,18 @@ class MachineImageArgs:
         pulumi.set(self, "request_id", value)
 
     @property
+    @pulumi.getter(name="savedDisks")
+    def saved_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SavedDiskArgs']]]]:
+        """
+        An array of Machine Image specific properties for disks attached to the source instance
+        """
+        return pulumi.get(self, "saved_disks")
+
+    @saved_disks.setter
+    def saved_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SavedDiskArgs']]]]):
+        pulumi.set(self, "saved_disks", value)
+
+    @property
     @pulumi.getter(name="sourceDiskEncryptionKeys")
     def source_disk_encryption_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SourceDiskEncryptionKeyArgs']]]]:
         """
@@ -166,6 +182,7 @@ class MachineImage(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 saved_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SavedDiskArgs']]]]] = None,
                  source_disk_encryption_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SourceDiskEncryptionKeyArgs']]]]] = None,
                  source_instance: Optional[pulumi.Input[str]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -179,6 +196,7 @@ class MachineImage(pulumi.CustomResource):
         :param pulumi.Input[bool] guest_flush: [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] machine_image_encryption_key: Encrypts the machine image using a customer-supplied encryption key. After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request. Customer-supplied encryption keys do not protect access to metadata of the machine image. If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SavedDiskArgs']]]] saved_disks: An array of Machine Image specific properties for disks attached to the source instance
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SourceDiskEncryptionKeyArgs']]]] source_disk_encryption_keys: [Input Only] The customer-supplied encryption key of the disks attached to the source instance. Required if the source disk is protected by a customer-supplied encryption key.
         :param pulumi.Input[str] source_instance: The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance 
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
@@ -213,6 +231,7 @@ class MachineImage(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 saved_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SavedDiskArgs']]]]] = None,
                  source_disk_encryption_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SourceDiskEncryptionKeyArgs']]]]] = None,
                  source_instance: Optional[pulumi.Input[str]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -234,12 +253,14 @@ class MachineImage(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
+            __props__.__dict__["saved_disks"] = saved_disks
             __props__.__dict__["source_disk_encryption_keys"] = source_disk_encryption_keys
             if source_instance is None and not opts.urn:
                 raise TypeError("Missing required property 'source_instance'")
             __props__.__dict__["source_instance"] = source_instance
             __props__.__dict__["storage_locations"] = storage_locations
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["instance_properties"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["self_link"] = None
@@ -271,10 +292,12 @@ class MachineImage(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["guest_flush"] = None
+        __props__.__dict__["instance_properties"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["machine_image_encryption_key"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["satisfies_pzs"] = None
+        __props__.__dict__["saved_disks"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["source_disk_encryption_keys"] = None
         __props__.__dict__["source_instance"] = None
@@ -309,6 +332,14 @@ class MachineImage(pulumi.CustomResource):
         return pulumi.get(self, "guest_flush")
 
     @property
+    @pulumi.getter(name="instanceProperties")
+    def instance_properties(self) -> pulumi.Output['outputs.InstancePropertiesResponse']:
+        """
+        Properties of source instance
+        """
+        return pulumi.get(self, "instance_properties")
+
+    @property
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
@@ -341,6 +372,14 @@ class MachineImage(pulumi.CustomResource):
         return pulumi.get(self, "satisfies_pzs")
 
     @property
+    @pulumi.getter(name="savedDisks")
+    def saved_disks(self) -> pulumi.Output[Sequence['outputs.SavedDiskResponse']]:
+        """
+        An array of Machine Image specific properties for disks attached to the source instance
+        """
+        return pulumi.get(self, "saved_disks")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
@@ -368,7 +407,7 @@ class MachineImage(pulumi.CustomResource):
     @pulumi.getter(name="sourceInstanceProperties")
     def source_instance_properties(self) -> pulumi.Output['outputs.SourceInstancePropertiesResponse']:
         """
-        Properties of source instance.
+        DEPRECATED: Please use instance_properties instead for source instance related properties. New properties will not be added to this field.
         """
         return pulumi.get(self, "source_instance_properties")
 

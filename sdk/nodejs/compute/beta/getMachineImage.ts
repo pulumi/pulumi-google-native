@@ -41,6 +41,10 @@ export interface GetMachineImageResult {
      */
     readonly guestFlush: boolean;
     /**
+     * Properties of source instance
+     */
+    readonly instanceProperties: outputs.compute.beta.InstancePropertiesResponse;
+    /**
      * The resource type, which is always compute#machineImage for machine image.
      */
     readonly kind: string;
@@ -57,6 +61,10 @@ export interface GetMachineImageResult {
      */
     readonly satisfiesPzs: boolean;
     /**
+     * An array of Machine Image specific properties for disks attached to the source instance
+     */
+    readonly savedDisks: outputs.compute.beta.SavedDiskResponse[];
+    /**
      * The URL for this machine image. The server defines this URL.
      */
     readonly selfLink: string;
@@ -69,7 +77,7 @@ export interface GetMachineImageResult {
      */
     readonly sourceInstance: string;
     /**
-     * Properties of source instance.
+     * DEPRECATED: Please use instance_properties instead for source instance related properties. New properties will not be added to this field.
      */
     readonly sourceInstanceProperties: outputs.compute.beta.SourceInstancePropertiesResponse;
     /**

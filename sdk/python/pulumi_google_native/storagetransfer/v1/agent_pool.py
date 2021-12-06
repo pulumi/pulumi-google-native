@@ -24,7 +24,7 @@ class AgentPoolArgs:
         The set of arguments for constructing a AgentPool resource.
         :param pulumi.Input['BandwidthLimitArgs'] bandwidth_limit: Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
         :param pulumi.Input[str] display_name: Specifies the client-specified AgentPool description.
-        :param pulumi.Input[str] name: Specifies a unique string that identifies the agent pool. Format: projects/{project_id}/agentPools/{agent_pool_id}
+        :param pulumi.Input[str] name: Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`
         """
         pulumi.set(__self__, "agent_pool_id", agent_pool_id)
         if bandwidth_limit is not None:
@@ -73,7 +73,7 @@ class AgentPoolArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies a unique string that identifies the agent pool. Format: projects/{project_id}/agentPools/{agent_pool_id}
+        Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`
         """
         return pulumi.get(self, "name")
 
@@ -109,7 +109,7 @@ class AgentPool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['BandwidthLimitArgs']] bandwidth_limit: Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
         :param pulumi.Input[str] display_name: Specifies the client-specified AgentPool description.
-        :param pulumi.Input[str] name: Specifies a unique string that identifies the agent pool. Format: projects/{project_id}/agentPools/{agent_pool_id}
+        :param pulumi.Input[str] name: Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`
         """
         ...
     @overload
@@ -208,7 +208,7 @@ class AgentPool(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Specifies a unique string that identifies the agent pool. Format: projects/{project_id}/agentPools/{agent_pool_id}
+        Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`
         """
         return pulumi.get(self, "name")
 

@@ -11,12 +11,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
     /// <summary>
-    /// The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing
+    /// The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard.
     /// </summary>
     public sealed class CorsPolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header. Default is false.
+        /// In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header. Default is false.
         /// </summary>
         [Input("allowCredentials")]
         public Input<bool>? AllowCredentials { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         private InputList<string>? _allowOriginRegexes;
 
         /// <summary>
-        /// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see github.com/google/re2/wiki/Syntax An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        /// Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         /// </summary>
         public InputList<string> AllowOriginRegexes
         {
@@ -61,7 +61,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         private InputList<string>? _allowOrigins;
 
         /// <summary>
-        /// Specifies the list of origins that will be allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        /// Specifies the list of origins that is allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         /// </summary>
         public InputList<string> AllowOrigins
         {
@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         }
 
         /// <summary>
-        /// If true, specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+        /// If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         }
 
         /// <summary>
-        /// Specifies how long results of a preflight request can be cached in seconds. This translates to the Access-Control-Max-Age header.
+        /// Specifies how long results of a preflight request can be cached in seconds. This field translates to the Access-Control-Max-Age header.
         /// </summary>
         [Input("maxAge")]
         public Input<int>? MaxAge { get; set; }

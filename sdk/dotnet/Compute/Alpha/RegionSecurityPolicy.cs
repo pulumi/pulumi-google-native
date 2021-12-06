@@ -87,6 +87,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
 
+        [Output("recaptchaOptionsConfig")]
+        public Output<Outputs.SecurityPolicyRecaptchaOptionsConfigResponse> RecaptchaOptionsConfig { get; private set; } = null!;
+
         /// <summary>
         /// URL of the region where the regional security policy resides. This field is not applicable to global security policies.
         /// </summary>
@@ -224,6 +227,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("recaptchaOptionsConfig")]
+        public Input<Inputs.SecurityPolicyRecaptchaOptionsConfigArgs>? RecaptchaOptionsConfig { get; set; }
 
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;

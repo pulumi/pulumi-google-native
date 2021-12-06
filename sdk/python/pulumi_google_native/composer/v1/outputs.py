@@ -16,6 +16,7 @@ __all__ = [
     'EncryptionConfigResponse',
     'EnvironmentConfigResponse',
     'IPAllocationPolicyResponse',
+    'MaintenanceWindowResponse',
     'NodeConfigResponse',
     'PrivateClusterConfigResponse',
     'PrivateEnvironmentConfigResponse',
@@ -159,6 +160,8 @@ class EnvironmentConfigResponse(dict):
             suggest = "environment_size"
         elif key == "gkeCluster":
             suggest = "gke_cluster"
+        elif key == "maintenanceWindow":
+            suggest = "maintenance_window"
         elif key == "nodeConfig":
             suggest = "node_config"
         elif key == "nodeCount":
@@ -192,6 +195,7 @@ class EnvironmentConfigResponse(dict):
                  encryption_config: 'outputs.EncryptionConfigResponse',
                  environment_size: str,
                  gke_cluster: str,
+                 maintenance_window: 'outputs.MaintenanceWindowResponse',
                  node_config: 'outputs.NodeConfigResponse',
                  node_count: int,
                  private_environment_config: 'outputs.PrivateEnvironmentConfigResponse',
@@ -204,9 +208,10 @@ class EnvironmentConfigResponse(dict):
         :param str airflow_uri: The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface)).
         :param str dag_gcs_prefix: The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with the given prefix.
         :param 'DatabaseConfigResponse' database_config: Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-        :param 'EncryptionConfigResponse' encryption_config: Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        :param 'EncryptionConfigResponse' encryption_config: Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
         :param str environment_size: Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
         :param str gke_cluster: The Kubernetes Engine cluster used to run this environment.
+        :param 'MaintenanceWindowResponse' maintenance_window: Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window will be applied. The default value is Saturday and Sunday 00-06 GMT.
         :param 'NodeConfigResponse' node_config: The configuration used for the Kubernetes Engine cluster.
         :param int node_count: The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param 'PrivateEnvironmentConfigResponse' private_environment_config: The configuration used for the Private IP Cloud Composer environment.
@@ -221,6 +226,7 @@ class EnvironmentConfigResponse(dict):
         pulumi.set(__self__, "encryption_config", encryption_config)
         pulumi.set(__self__, "environment_size", environment_size)
         pulumi.set(__self__, "gke_cluster", gke_cluster)
+        pulumi.set(__self__, "maintenance_window", maintenance_window)
         pulumi.set(__self__, "node_config", node_config)
         pulumi.set(__self__, "node_count", node_count)
         pulumi.set(__self__, "private_environment_config", private_environment_config)
@@ -257,7 +263,7 @@ class EnvironmentConfigResponse(dict):
     @pulumi.getter(name="encryptionConfig")
     def encryption_config(self) -> 'outputs.EncryptionConfigResponse':
         """
-        Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
         """
         return pulumi.get(self, "encryption_config")
 
@@ -276,6 +282,14 @@ class EnvironmentConfigResponse(dict):
         The Kubernetes Engine cluster used to run this environment.
         """
         return pulumi.get(self, "gke_cluster")
+
+    @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> 'outputs.MaintenanceWindowResponse':
+        """
+        Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window will be applied. The default value is Saturday and Sunday 00-06 GMT.
+        """
+        return pulumi.get(self, "maintenance_window")
 
     @property
     @pulumi.getter(name="nodeConfig")
@@ -423,6 +437,69 @@ class IPAllocationPolicyResponse(dict):
         Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
         """
         return pulumi.get(self, "use_ip_aliases")
+
+
+@pulumi.output_type
+class MaintenanceWindowResponse(dict):
+    """
+    The configuration settings for Cloud Composer maintenance window. The following example: ``` { "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" } ``` would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MaintenanceWindowResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MaintenanceWindowResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MaintenanceWindowResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_time: str,
+                 recurrence: str,
+                 start_time: str):
+        """
+        The configuration settings for Cloud Composer maintenance window. The following example: ``` { "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" } ``` would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
+        :param str end_time: Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to `start_time`.
+        :param str recurrence: Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+        :param str start_time: Start time of the first recurrence of the maintenance window.
+        """
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "recurrence", recurrence)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to `start_time`.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter
+    def recurrence(self) -> str:
+        """
+        Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+        """
+        return pulumi.get(self, "recurrence")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        Start time of the first recurrence of the maintenance window.
+        """
+        return pulumi.get(self, "start_time")
 
 
 @pulumi.output_type

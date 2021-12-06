@@ -50,7 +50,7 @@ class ImageArgs:
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] disk_size_gb: Size of the image when restored onto a persistent disk (in GB).
         :param pulumi.Input[str] family: The name of the image family to which this image belongs. You can create disks by specifying an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
-        :param pulumi.Input[Sequence[pulumi.Input['GuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+        :param pulumi.Input[Sequence[pulumi.Input['GuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
         :param pulumi.Input['CustomerEncryptionKeyArgs'] image_encryption_key: Encrypts the image using a customer-supplied encryption key. After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the image, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the image later.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this image. These can be later modified by the setLabels method.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] license_codes: Integer license codes indicating which licenses are attached to this image.
@@ -198,7 +198,7 @@ class ImageArgs:
     @pulumi.getter(name="guestOsFeatures")
     def guest_os_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestOsFeatureArgs']]]]:
         """
-        A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+        A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
         """
         return pulumi.get(self, "guest_os_features")
 
@@ -484,7 +484,7 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] disk_size_gb: Size of the image when restored onto a persistent disk (in GB).
         :param pulumi.Input[str] family: The name of the image family to which this image belongs. You can create disks by specifying an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] image_encryption_key: Encrypts the image using a customer-supplied encryption key. After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the image, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the image later.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this image. These can be later modified by the setLabels method.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] license_codes: Integer license codes indicating which licenses are attached to this image.
@@ -712,7 +712,7 @@ class Image(pulumi.CustomResource):
     @pulumi.getter(name="guestOsFeatures")
     def guest_os_features(self) -> pulumi.Output[Sequence['outputs.GuestOsFeatureResponse']]:
         """
-        A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+        A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
         """
         return pulumi.get(self, "guest_os_features")
 

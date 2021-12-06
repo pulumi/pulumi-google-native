@@ -21,7 +21,7 @@ type Subnetwork struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource. This field can be set only at resource creation time.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
+	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
 	EnableFlowLogs pulumi.BoolOutput `pulumi:"enableFlowLogs"`
 	// The range of external IPv6 addresses that are owned by this subnetwork.
 	ExternalIpv6Prefix pulumi.StringOutput `pulumi:"externalIpv6Prefix"`
@@ -109,7 +109,7 @@ type subnetworkArgs struct {
 	AllowSubnetCidrRoutesOverlap *bool `pulumi:"allowSubnetCidrRoutesOverlap"`
 	// An optional description of this resource. Provide this property when you create the resource. This field can be set only at resource creation time.
 	Description *string `pulumi:"description"`
-	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
+	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
 	EnableFlowLogs *bool `pulumi:"enableFlowLogs"`
 	// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
@@ -145,7 +145,7 @@ type SubnetworkArgs struct {
 	AllowSubnetCidrRoutesOverlap pulumi.BoolPtrInput
 	// An optional description of this resource. Provide this property when you create the resource. This field can be set only at resource creation time.
 	Description pulumi.StringPtrInput
-	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
+	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
 	EnableFlowLogs pulumi.BoolPtrInput
 	// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
 	IpCidrRange pulumi.StringPtrInput

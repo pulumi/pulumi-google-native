@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_config=None, cpu_platform=None, creation_timestamp=None, deletion_protection=None, description=None, disks=None, display_device=None, fingerprint=None, guest_accelerators=None, hostname=None, kind=None, label_fingerprint=None, labels=None, last_start_timestamp=None, last_stop_timestamp=None, last_suspended_timestamp=None, machine_type=None, metadata=None, min_cpu_platform=None, name=None, network_interfaces=None, private_ipv6_google_access=None, reservation_affinity=None, resource_policies=None, satisfies_pzs=None, scheduling=None, self_link=None, service_accounts=None, shielded_instance_config=None, shielded_instance_integrity_policy=None, start_restricted=None, status=None, status_message=None, tags=None, zone=None):
+    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_config=None, cpu_platform=None, creation_timestamp=None, deletion_protection=None, description=None, disks=None, display_device=None, fingerprint=None, guest_accelerators=None, hostname=None, kind=None, label_fingerprint=None, labels=None, last_start_timestamp=None, last_stop_timestamp=None, last_suspended_timestamp=None, machine_type=None, metadata=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_config=None, private_ipv6_google_access=None, reservation_affinity=None, resource_policies=None, satisfies_pzs=None, scheduling=None, self_link=None, service_accounts=None, shielded_instance_config=None, shielded_instance_integrity_policy=None, source_machine_image=None, source_machine_image_encryption_key=None, start_restricted=None, status=None, status_message=None, tags=None, zone=None):
         if advanced_machine_features and not isinstance(advanced_machine_features, dict):
             raise TypeError("Expected argument 'advanced_machine_features' to be a dict")
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -88,6 +88,9 @@ class GetInstanceResult:
         if network_interfaces and not isinstance(network_interfaces, list):
             raise TypeError("Expected argument 'network_interfaces' to be a list")
         pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if network_performance_config and not isinstance(network_performance_config, dict):
+            raise TypeError("Expected argument 'network_performance_config' to be a dict")
+        pulumi.set(__self__, "network_performance_config", network_performance_config)
         if private_ipv6_google_access and not isinstance(private_ipv6_google_access, str):
             raise TypeError("Expected argument 'private_ipv6_google_access' to be a str")
         pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
@@ -115,6 +118,12 @@ class GetInstanceResult:
         if shielded_instance_integrity_policy and not isinstance(shielded_instance_integrity_policy, dict):
             raise TypeError("Expected argument 'shielded_instance_integrity_policy' to be a dict")
         pulumi.set(__self__, "shielded_instance_integrity_policy", shielded_instance_integrity_policy)
+        if source_machine_image and not isinstance(source_machine_image, str):
+            raise TypeError("Expected argument 'source_machine_image' to be a str")
+        pulumi.set(__self__, "source_machine_image", source_machine_image)
+        if source_machine_image_encryption_key and not isinstance(source_machine_image_encryption_key, dict):
+            raise TypeError("Expected argument 'source_machine_image_encryption_key' to be a dict")
+        pulumi.set(__self__, "source_machine_image_encryption_key", source_machine_image_encryption_key)
         if start_restricted and not isinstance(start_restricted, bool):
             raise TypeError("Expected argument 'start_restricted' to be a bool")
         pulumi.set(__self__, "start_restricted", start_restricted)
@@ -313,6 +322,11 @@ class GetInstanceResult:
         return pulumi.get(self, "network_interfaces")
 
     @property
+    @pulumi.getter(name="networkPerformanceConfig")
+    def network_performance_config(self) -> 'outputs.NetworkPerformanceConfigResponse':
+        return pulumi.get(self, "network_performance_config")
+
+    @property
     @pulumi.getter(name="privateIpv6GoogleAccess")
     def private_ipv6_google_access(self) -> str:
         """
@@ -377,6 +391,22 @@ class GetInstanceResult:
     @pulumi.getter(name="shieldedInstanceIntegrityPolicy")
     def shielded_instance_integrity_policy(self) -> 'outputs.ShieldedInstanceIntegrityPolicyResponse':
         return pulumi.get(self, "shielded_instance_integrity_policy")
+
+    @property
+    @pulumi.getter(name="sourceMachineImage")
+    def source_machine_image(self) -> str:
+        """
+        Source machine image
+        """
+        return pulumi.get(self, "source_machine_image")
+
+    @property
+    @pulumi.getter(name="sourceMachineImageEncryptionKey")
+    def source_machine_image_encryption_key(self) -> 'outputs.CustomerEncryptionKeyResponse':
+        """
+        Source machine image encryption key when creating an instance from a machine image.
+        """
+        return pulumi.get(self, "source_machine_image_encryption_key")
 
     @property
     @pulumi.getter(name="startRestricted")
@@ -448,6 +478,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             min_cpu_platform=self.min_cpu_platform,
             name=self.name,
             network_interfaces=self.network_interfaces,
+            network_performance_config=self.network_performance_config,
             private_ipv6_google_access=self.private_ipv6_google_access,
             reservation_affinity=self.reservation_affinity,
             resource_policies=self.resource_policies,
@@ -457,6 +488,8 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             service_accounts=self.service_accounts,
             shielded_instance_config=self.shielded_instance_config,
             shielded_instance_integrity_policy=self.shielded_instance_integrity_policy,
+            source_machine_image=self.source_machine_image,
+            source_machine_image_encryption_key=self.source_machine_image_encryption_key,
             start_restricted=self.start_restricted,
             status=self.status,
             status_message=self.status_message,
@@ -505,6 +538,7 @@ def get_instance(instance: Optional[str] = None,
         min_cpu_platform=__ret__.min_cpu_platform,
         name=__ret__.name,
         network_interfaces=__ret__.network_interfaces,
+        network_performance_config=__ret__.network_performance_config,
         private_ipv6_google_access=__ret__.private_ipv6_google_access,
         reservation_affinity=__ret__.reservation_affinity,
         resource_policies=__ret__.resource_policies,
@@ -514,6 +548,8 @@ def get_instance(instance: Optional[str] = None,
         service_accounts=__ret__.service_accounts,
         shielded_instance_config=__ret__.shielded_instance_config,
         shielded_instance_integrity_policy=__ret__.shielded_instance_integrity_policy,
+        source_machine_image=__ret__.source_machine_image,
+        source_machine_image_encryption_key=__ret__.source_machine_image_encryption_key,
         start_restricted=__ret__.start_restricted,
         status=__ret__.status,
         status_message=__ret__.status_message,

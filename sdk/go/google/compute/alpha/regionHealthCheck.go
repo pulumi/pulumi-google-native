@@ -43,7 +43,7 @@ type RegionHealthCheck struct {
 	TcpHealthCheck TCPHealthCheckResponseOutput `pulumi:"tcpHealthCheck"`
 	// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
 	TimeoutSec pulumi.IntOutput `pulumi:"timeoutSec"`
-	// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+	// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
 	Type           pulumi.StringOutput          `pulumi:"type"`
 	UdpHealthCheck UDPHealthCheckResponseOutput `pulumi:"udpHealthCheck"`
 	// A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
@@ -115,7 +115,7 @@ type regionHealthCheckArgs struct {
 	TcpHealthCheck *TCPHealthCheck `pulumi:"tcpHealthCheck"`
 	// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
 	TimeoutSec *int `pulumi:"timeoutSec"`
-	// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+	// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
 	Type           *RegionHealthCheckType `pulumi:"type"`
 	UdpHealthCheck *UDPHealthCheck        `pulumi:"udpHealthCheck"`
 	// A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
@@ -147,7 +147,7 @@ type RegionHealthCheckArgs struct {
 	TcpHealthCheck TCPHealthCheckPtrInput
 	// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
 	TimeoutSec pulumi.IntPtrInput
-	// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+	// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
 	Type           RegionHealthCheckTypePtrInput
 	UdpHealthCheck UDPHealthCheckPtrInput
 	// A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.

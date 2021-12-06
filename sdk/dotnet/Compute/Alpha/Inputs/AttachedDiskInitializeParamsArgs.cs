@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     public sealed class AttachedDiskInitializeParamsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The architecture of the attached disk. Valid values are arm64 or x86_64.
+        /// </summary>
+        [Input("architecture")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.AttachedDiskInitializeParamsArchitecture>? Architecture { get; set; }
+
+        /// <summary>
         /// An optional description. Provide this property when creating the disk.
         /// </summary>
         [Input("description")]

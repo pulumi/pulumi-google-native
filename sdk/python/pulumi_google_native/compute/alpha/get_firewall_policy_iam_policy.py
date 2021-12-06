@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetFirewallPolicyIamPolicyResult:
-    def __init__(__self__, audit_configs=None, bindings=None, etag=None, iam_owned=None, rules=None, version=None):
+    def __init__(__self__, audit_configs=None, bindings=None, etag=None, rules=None, version=None):
         if audit_configs and not isinstance(audit_configs, list):
             raise TypeError("Expected argument 'audit_configs' to be a list")
         pulumi.set(__self__, "audit_configs", audit_configs)
@@ -28,9 +28,6 @@ class GetFirewallPolicyIamPolicyResult:
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
-        if iam_owned and not isinstance(iam_owned, bool):
-            raise TypeError("Expected argument 'iam_owned' to be a bool")
-        pulumi.set(__self__, "iam_owned", iam_owned)
         if rules and not isinstance(rules, list):
             raise TypeError("Expected argument 'rules' to be a list")
         pulumi.set(__self__, "rules", rules)
@@ -50,7 +47,7 @@ class GetFirewallPolicyIamPolicyResult:
     @pulumi.getter
     def bindings(self) -> Sequence['outputs.BindingResponse']:
         """
-        Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+        Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.
         """
         return pulumi.get(self, "bindings")
 
@@ -61,14 +58,6 @@ class GetFirewallPolicyIamPolicyResult:
         `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
         """
         return pulumi.get(self, "etag")
-
-    @property
-    @pulumi.getter(name="iamOwned")
-    def iam_owned(self) -> bool:
-        """
-        This is deprecated and has no effect. Do not use.
-        """
-        return pulumi.get(self, "iam_owned")
 
     @property
     @pulumi.getter
@@ -96,7 +85,6 @@ class AwaitableGetFirewallPolicyIamPolicyResult(GetFirewallPolicyIamPolicyResult
             audit_configs=self.audit_configs,
             bindings=self.bindings,
             etag=self.etag,
-            iam_owned=self.iam_owned,
             rules=self.rules,
             version=self.version)
 
@@ -120,7 +108,6 @@ def get_firewall_policy_iam_policy(options_requested_policy_version: Optional[st
         audit_configs=__ret__.audit_configs,
         bindings=__ret__.bindings,
         etag=__ret__.etag,
-        iam_owned=__ret__.iam_owned,
         rules=__ret__.rules,
         version=__ret__.version)
 

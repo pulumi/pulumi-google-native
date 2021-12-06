@@ -1396,9 +1396,9 @@ func (o AzureCredentialsResponsePtrOutput) SasToken() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the BandwidthLimit to describe the non-negative bandwidth rate in mbps for the agent pool.
+// Specifies a bandwidth limit for an agent pool.
 type BandwidthLimit struct {
-	// Specifies bandwidth rate in mbps distributed across all the agents in the pool.
+	// Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
 	LimitMbps *string `pulumi:"limitMbps"`
 }
 
@@ -1413,9 +1413,9 @@ type BandwidthLimitInput interface {
 	ToBandwidthLimitOutputWithContext(context.Context) BandwidthLimitOutput
 }
 
-// Specifies the BandwidthLimit to describe the non-negative bandwidth rate in mbps for the agent pool.
+// Specifies a bandwidth limit for an agent pool.
 type BandwidthLimitArgs struct {
-	// Specifies bandwidth rate in mbps distributed across all the agents in the pool.
+	// Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
 	LimitMbps pulumi.StringPtrInput `pulumi:"limitMbps"`
 }
 
@@ -1472,7 +1472,7 @@ func (i *bandwidthLimitPtrType) ToBandwidthLimitPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(BandwidthLimitPtrOutput)
 }
 
-// Specifies the BandwidthLimit to describe the non-negative bandwidth rate in mbps for the agent pool.
+// Specifies a bandwidth limit for an agent pool.
 type BandwidthLimitOutput struct{ *pulumi.OutputState }
 
 func (BandwidthLimitOutput) ElementType() reflect.Type {
@@ -1497,7 +1497,7 @@ func (o BandwidthLimitOutput) ToBandwidthLimitPtrOutputWithContext(ctx context.C
 	}).(BandwidthLimitPtrOutput)
 }
 
-// Specifies bandwidth rate in mbps distributed across all the agents in the pool.
+// Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
 func (o BandwidthLimitOutput) LimitMbps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BandwidthLimit) *string { return v.LimitMbps }).(pulumi.StringPtrOutput)
 }
@@ -1526,7 +1526,7 @@ func (o BandwidthLimitPtrOutput) Elem() BandwidthLimitOutput {
 	}).(BandwidthLimitOutput)
 }
 
-// Specifies bandwidth rate in mbps distributed across all the agents in the pool.
+// Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
 func (o BandwidthLimitPtrOutput) LimitMbps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BandwidthLimit) *string {
 		if v == nil {
@@ -1536,9 +1536,9 @@ func (o BandwidthLimitPtrOutput) LimitMbps() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the BandwidthLimit to describe the non-negative bandwidth rate in mbps for the agent pool.
+// Specifies a bandwidth limit for an agent pool.
 type BandwidthLimitResponse struct {
-	// Specifies bandwidth rate in mbps distributed across all the agents in the pool.
+	// Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
 	LimitMbps string `pulumi:"limitMbps"`
 }
 
@@ -1553,9 +1553,9 @@ type BandwidthLimitResponseInput interface {
 	ToBandwidthLimitResponseOutputWithContext(context.Context) BandwidthLimitResponseOutput
 }
 
-// Specifies the BandwidthLimit to describe the non-negative bandwidth rate in mbps for the agent pool.
+// Specifies a bandwidth limit for an agent pool.
 type BandwidthLimitResponseArgs struct {
-	// Specifies bandwidth rate in mbps distributed across all the agents in the pool.
+	// Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
 	LimitMbps pulumi.StringInput `pulumi:"limitMbps"`
 }
 
@@ -1612,7 +1612,7 @@ func (i *bandwidthLimitResponsePtrType) ToBandwidthLimitResponsePtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(BandwidthLimitResponsePtrOutput)
 }
 
-// Specifies the BandwidthLimit to describe the non-negative bandwidth rate in mbps for the agent pool.
+// Specifies a bandwidth limit for an agent pool.
 type BandwidthLimitResponseOutput struct{ *pulumi.OutputState }
 
 func (BandwidthLimitResponseOutput) ElementType() reflect.Type {
@@ -1637,7 +1637,7 @@ func (o BandwidthLimitResponseOutput) ToBandwidthLimitResponsePtrOutputWithConte
 	}).(BandwidthLimitResponsePtrOutput)
 }
 
-// Specifies bandwidth rate in mbps distributed across all the agents in the pool.
+// Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
 func (o BandwidthLimitResponseOutput) LimitMbps() pulumi.StringOutput {
 	return o.ApplyT(func(v BandwidthLimitResponse) string { return v.LimitMbps }).(pulumi.StringOutput)
 }
@@ -1666,7 +1666,7 @@ func (o BandwidthLimitResponsePtrOutput) Elem() BandwidthLimitResponseOutput {
 	}).(BandwidthLimitResponseOutput)
 }
 
-// Specifies bandwidth rate in mbps distributed across all the agents in the pool.
+// Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
 func (o BandwidthLimitResponsePtrOutput) LimitMbps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BandwidthLimitResponse) *string {
 		if v == nil {
@@ -4920,7 +4920,7 @@ func (o TimeOfDayResponsePtrOutput) Seconds() pulumi.IntPtrOutput {
 
 // Specifies where the manifest is located.
 type TransferManifest struct {
-	// Holds URI-encoded path to find the manifest. It can be located in data_source, data_sink, or separately in GCS. For data_source and data_sink, the manifest location is relative to the path specified by that data_source or data_sink. If manifest is in GCS, use format "gs:///". If manifest is in data_source, use format "source://". If manifest is in data_sink, use format "sink://".
+	// Specifies the path to the manifest in Cloud Storage. The Google-managed service account for the transfer must have `storage.objects.get` permission for this object. An example path is `gs://bucket_name/path/manifest.csv`.
 	Location *string `pulumi:"location"`
 }
 
@@ -4937,7 +4937,7 @@ type TransferManifestInput interface {
 
 // Specifies where the manifest is located.
 type TransferManifestArgs struct {
-	// Holds URI-encoded path to find the manifest. It can be located in data_source, data_sink, or separately in GCS. For data_source and data_sink, the manifest location is relative to the path specified by that data_source or data_sink. If manifest is in GCS, use format "gs:///". If manifest is in data_source, use format "source://". If manifest is in data_sink, use format "sink://".
+	// Specifies the path to the manifest in Cloud Storage. The Google-managed service account for the transfer must have `storage.objects.get` permission for this object. An example path is `gs://bucket_name/path/manifest.csv`.
 	Location pulumi.StringPtrInput `pulumi:"location"`
 }
 
@@ -5019,7 +5019,7 @@ func (o TransferManifestOutput) ToTransferManifestPtrOutputWithContext(ctx conte
 	}).(TransferManifestPtrOutput)
 }
 
-// Holds URI-encoded path to find the manifest. It can be located in data_source, data_sink, or separately in GCS. For data_source and data_sink, the manifest location is relative to the path specified by that data_source or data_sink. If manifest is in GCS, use format "gs:///". If manifest is in data_source, use format "source://". If manifest is in data_sink, use format "sink://".
+// Specifies the path to the manifest in Cloud Storage. The Google-managed service account for the transfer must have `storage.objects.get` permission for this object. An example path is `gs://bucket_name/path/manifest.csv`.
 func (o TransferManifestOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TransferManifest) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -5048,7 +5048,7 @@ func (o TransferManifestPtrOutput) Elem() TransferManifestOutput {
 	}).(TransferManifestOutput)
 }
 
-// Holds URI-encoded path to find the manifest. It can be located in data_source, data_sink, or separately in GCS. For data_source and data_sink, the manifest location is relative to the path specified by that data_source or data_sink. If manifest is in GCS, use format "gs:///". If manifest is in data_source, use format "source://". If manifest is in data_sink, use format "sink://".
+// Specifies the path to the manifest in Cloud Storage. The Google-managed service account for the transfer must have `storage.objects.get` permission for this object. An example path is `gs://bucket_name/path/manifest.csv`.
 func (o TransferManifestPtrOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransferManifest) *string {
 		if v == nil {
@@ -5060,7 +5060,7 @@ func (o TransferManifestPtrOutput) Location() pulumi.StringPtrOutput {
 
 // Specifies where the manifest is located.
 type TransferManifestResponse struct {
-	// Holds URI-encoded path to find the manifest. It can be located in data_source, data_sink, or separately in GCS. For data_source and data_sink, the manifest location is relative to the path specified by that data_source or data_sink. If manifest is in GCS, use format "gs:///". If manifest is in data_source, use format "source://". If manifest is in data_sink, use format "sink://".
+	// Specifies the path to the manifest in Cloud Storage. The Google-managed service account for the transfer must have `storage.objects.get` permission for this object. An example path is `gs://bucket_name/path/manifest.csv`.
 	Location string `pulumi:"location"`
 }
 
@@ -5077,7 +5077,7 @@ type TransferManifestResponseInput interface {
 
 // Specifies where the manifest is located.
 type TransferManifestResponseArgs struct {
-	// Holds URI-encoded path to find the manifest. It can be located in data_source, data_sink, or separately in GCS. For data_source and data_sink, the manifest location is relative to the path specified by that data_source or data_sink. If manifest is in GCS, use format "gs:///". If manifest is in data_source, use format "source://". If manifest is in data_sink, use format "sink://".
+	// Specifies the path to the manifest in Cloud Storage. The Google-managed service account for the transfer must have `storage.objects.get` permission for this object. An example path is `gs://bucket_name/path/manifest.csv`.
 	Location pulumi.StringInput `pulumi:"location"`
 }
 
@@ -5159,7 +5159,7 @@ func (o TransferManifestResponseOutput) ToTransferManifestResponsePtrOutputWithC
 	}).(TransferManifestResponsePtrOutput)
 }
 
-// Holds URI-encoded path to find the manifest. It can be located in data_source, data_sink, or separately in GCS. For data_source and data_sink, the manifest location is relative to the path specified by that data_source or data_sink. If manifest is in GCS, use format "gs:///". If manifest is in data_source, use format "source://". If manifest is in data_sink, use format "sink://".
+// Specifies the path to the manifest in Cloud Storage. The Google-managed service account for the transfer must have `storage.objects.get` permission for this object. An example path is `gs://bucket_name/path/manifest.csv`.
 func (o TransferManifestResponseOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v TransferManifestResponse) string { return v.Location }).(pulumi.StringOutput)
 }
@@ -5188,7 +5188,7 @@ func (o TransferManifestResponsePtrOutput) Elem() TransferManifestResponseOutput
 	}).(TransferManifestResponseOutput)
 }
 
-// Holds URI-encoded path to find the manifest. It can be located in data_source, data_sink, or separately in GCS. For data_source and data_sink, the manifest location is relative to the path specified by that data_source or data_sink. If manifest is in GCS, use format "gs:///". If manifest is in data_source, use format "source://". If manifest is in data_sink, use format "sink://".
+// Specifies the path to the manifest in Cloud Storage. The Google-managed service account for the transfer must have `storage.objects.get` permission for this object. An example path is `gs://bucket_name/path/manifest.csv`.
 func (o TransferManifestResponsePtrOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransferManifestResponse) *string {
 		if v == nil {

@@ -80,9 +80,9 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public readonly customerRouterIpv6InterfaceId!: pulumi.Output<string>;
     /**
-     * Dataplane version for this InterconnectAttachment.
+     * [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
      */
-    public /*out*/ readonly dataplaneVersion!: pulumi.Output<number>;
+    public readonly dataplaneVersion!: pulumi.Output<number>;
     /**
      * An optional description of this resource.
      */
@@ -200,6 +200,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["candidateSubnets"] = args ? args.candidateSubnets : undefined;
             resourceInputs["cloudRouterIpv6InterfaceId"] = args ? args.cloudRouterIpv6InterfaceId : undefined;
             resourceInputs["customerRouterIpv6InterfaceId"] = args ? args.customerRouterIpv6InterfaceId : undefined;
+            resourceInputs["dataplaneVersion"] = args ? args.dataplaneVersion : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["edgeAvailabilityDomain"] = args ? args.edgeAvailabilityDomain : undefined;
             resourceInputs["encryption"] = args ? args.encryption : undefined;
@@ -224,7 +225,6 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["customerRouterIpAddress"] = undefined /*out*/;
             resourceInputs["customerRouterIpv6Address"] = undefined /*out*/;
-            resourceInputs["dataplaneVersion"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["operationalStatus"] = undefined /*out*/;
@@ -306,6 +306,10 @@ export interface InterconnectAttachmentArgs {
      * If supplied, the interface id (index within the subnet) to be used for the customer router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
      */
     customerRouterIpv6InterfaceId?: pulumi.Input<string>;
+    /**
+     * [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
+     */
+    dataplaneVersion?: pulumi.Input<number>;
     /**
      * An optional description of this resource.
      */

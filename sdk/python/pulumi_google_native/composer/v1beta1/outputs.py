@@ -265,7 +265,7 @@ class EnvironmentConfigResponse(dict):
         :param str airflow_uri: The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface)).
         :param str dag_gcs_prefix: The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with the given prefix.
         :param 'DatabaseConfigResponse' database_config: Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-        :param 'EncryptionConfigResponse' encryption_config: Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        :param 'EncryptionConfigResponse' encryption_config: Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
         :param str environment_size: Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
         :param str gke_cluster: The Kubernetes Engine cluster used to run this environment.
         :param 'MaintenanceWindowResponse' maintenance_window: Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, Cloud Composer components may be subject to maintenance at any time.
@@ -322,7 +322,7 @@ class EnvironmentConfigResponse(dict):
     @pulumi.getter(name="encryptionConfig")
     def encryption_config(self) -> 'outputs.EncryptionConfigResponse':
         """
-        Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
         """
         return pulumi.get(self, "encryption_config")
 

@@ -72,6 +72,10 @@ export class VpnGateway extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * The stack type for this VPN gateway to identify the IP protocols that are enabled. If not specified, IPV4_ONLY will be used.
+     */
+    public readonly stackType!: pulumi.Output<string>;
+    /**
      * The list of VPN interfaces associated with this VPN gateway.
      */
     public readonly vpnInterfaces!: pulumi.Output<outputs.compute.v1.VpnGatewayVpnGatewayInterfaceResponse[]>;
@@ -97,6 +101,7 @@ export class VpnGateway extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["stackType"] = args ? args.stackType : undefined;
             resourceInputs["vpnInterfaces"] = args ? args.vpnInterfaces : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -112,6 +117,7 @@ export class VpnGateway extends pulumi.CustomResource {
             resourceInputs["network"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["stackType"] = undefined /*out*/;
             resourceInputs["vpnInterfaces"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -144,6 +150,10 @@ export interface VpnGatewayArgs {
     project?: pulumi.Input<string>;
     region: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
+    /**
+     * The stack type for this VPN gateway to identify the IP protocols that are enabled. If not specified, IPV4_ONLY will be used.
+     */
+    stackType?: pulumi.Input<enums.compute.v1.VpnGatewayStackType>;
     /**
      * The list of VPN interfaces associated with this VPN gateway.
      */

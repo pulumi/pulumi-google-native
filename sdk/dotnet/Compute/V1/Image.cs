@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Family { get; private set; } = null!;
 
         /// <summary>
-        /// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+        /// A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
         /// </summary>
         [Output("guestOsFeatures")]
         public Output<ImmutableArray<Outputs.GuestOsFeatureResponse>> GuestOsFeatures { get; private set; } = null!;
@@ -277,7 +277,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         private InputList<Inputs.GuestOsFeatureArgs>? _guestOsFeatures;
 
         /// <summary>
-        /// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+        /// A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
         /// </summary>
         public InputList<Inputs.GuestOsFeatureArgs> GuestOsFeatures
         {

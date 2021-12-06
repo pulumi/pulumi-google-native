@@ -82,7 +82,7 @@ export class HealthCheck extends pulumi.CustomResource {
      */
     public readonly timeoutSec!: pulumi.Output<number>;
     /**
-     * Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+     * Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -189,7 +189,7 @@ export interface HealthCheckArgs {
      */
     timeoutSec?: pulumi.Input<number>;
     /**
-     * Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+     * Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
      */
     type?: pulumi.Input<enums.compute.v1.HealthCheckType>;
     /**

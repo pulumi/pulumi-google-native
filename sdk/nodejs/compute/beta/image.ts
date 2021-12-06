@@ -60,7 +60,7 @@ export class Image extends pulumi.CustomResource {
      */
     public readonly family!: pulumi.Output<string>;
     /**
-     * A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+     * A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
      */
     public readonly guestOsFeatures!: pulumi.Output<outputs.compute.beta.GuestOsFeatureResponse[]>;
     /**
@@ -283,7 +283,7 @@ export interface ImageArgs {
     family?: pulumi.Input<string>;
     forceCreate?: pulumi.Input<string>;
     /**
-     * A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+     * A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
      */
     guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.beta.GuestOsFeatureArgs>[]>;
     /**

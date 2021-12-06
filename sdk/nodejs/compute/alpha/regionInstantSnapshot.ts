@@ -35,6 +35,10 @@ export class RegionInstantSnapshot extends pulumi.CustomResource {
     }
 
     /**
+     * The architecture of the instant snapshot. Valid values are ARM64 or X86_64.
+     */
+    public /*out*/ readonly architecture!: pulumi.Output<string>;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -121,6 +125,7 @@ export class RegionInstantSnapshot extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["sourceDisk"] = args ? args.sourceDisk : undefined;
+            resourceInputs["architecture"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["diskSizeGb"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -132,6 +137,7 @@ export class RegionInstantSnapshot extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["zone"] = undefined /*out*/;
         } else {
+            resourceInputs["architecture"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["diskSizeGb"] = undefined /*out*/;

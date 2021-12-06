@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
     public sealed class InstancePropertiesResponse
     {
         /// <summary>
-        /// Controls for advanced machine-related behavior features.
+        /// Controls for advanced machine-related behavior features. Note that for MachineImage, this is not supported yet.
         /// </summary>
         public readonly Outputs.AdvancedMachineFeaturesResponse AdvancedMachineFeatures;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly bool CanIpForward;
         /// <summary>
-        /// Specifies the Confidential Instance options.
+        /// Specifies the Confidential Instance options. Note that for MachineImage, this is not supported yet.
         /// </summary>
         public readonly Outputs.ConfidentialInstanceConfigResponse ConfidentialInstanceConfig;
         /// <summary>
@@ -58,15 +58,19 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.NetworkInterfaceResponse> NetworkInterfaces;
         /// <summary>
-        /// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default.
+        /// Note that for MachineImage, this is not supported yet.
+        /// </summary>
+        public readonly Outputs.NetworkPerformanceConfigResponse NetworkPerformanceConfig;
+        /// <summary>
+        /// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
         /// </summary>
         public readonly string PrivateIpv6GoogleAccess;
         /// <summary>
-        /// Specifies the reservations that instances can consume from.
+        /// Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
         /// </summary>
         public readonly Outputs.ReservationAffinityResponse ReservationAffinity;
         /// <summary>
-        /// Resource policies (names, not ULRs) applied to instances created from these properties.
+        /// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
         /// </summary>
         public readonly ImmutableArray<string> ResourcePolicies;
         /// <summary>
@@ -77,6 +81,9 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceAccountResponse> ServiceAccounts;
+        /// <summary>
+        /// Note that for MachineImage, this is not supported yet.
+        /// </summary>
         public readonly Outputs.ShieldedInstanceConfigResponse ShieldedInstanceConfig;
         /// <summary>
         /// A list of tags to apply to the instances that are created from these properties. The tags identify valid sources or targets for network firewalls. The setTags method can modify this list of tags. Each tag within the list must comply with RFC1035.
@@ -107,6 +114,8 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
             ImmutableArray<Outputs.NetworkInterfaceResponse> networkInterfaces,
 
+            Outputs.NetworkPerformanceConfigResponse networkPerformanceConfig,
+
             string privateIpv6GoogleAccess,
 
             Outputs.ReservationAffinityResponse reservationAffinity,
@@ -132,6 +141,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
             Metadata = metadata;
             MinCpuPlatform = minCpuPlatform;
             NetworkInterfaces = networkInterfaces;
+            NetworkPerformanceConfig = networkPerformanceConfig;
             PrivateIpv6GoogleAccess = privateIpv6GoogleAccess;
             ReservationAffinity = reservationAffinity;
             ResourcePolicies = resourcePolicies;

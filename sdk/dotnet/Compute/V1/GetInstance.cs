@@ -151,6 +151,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
         /// </summary>
         public readonly ImmutableArray<Outputs.NetworkInterfaceResponse> NetworkInterfaces;
+        public readonly Outputs.NetworkPerformanceConfigResponse NetworkPerformanceConfig;
         /// <summary>
         /// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
         /// </summary>
@@ -181,6 +182,14 @@ namespace Pulumi.GoogleNative.Compute.V1
         public readonly ImmutableArray<Outputs.ServiceAccountResponse> ServiceAccounts;
         public readonly Outputs.ShieldedInstanceConfigResponse ShieldedInstanceConfig;
         public readonly Outputs.ShieldedInstanceIntegrityPolicyResponse ShieldedInstanceIntegrityPolicy;
+        /// <summary>
+        /// Source machine image
+        /// </summary>
+        public readonly string SourceMachineImage;
+        /// <summary>
+        /// Source machine image encryption key when creating an instance from a machine image.
+        /// </summary>
+        public readonly Outputs.CustomerEncryptionKeyResponse SourceMachineImageEncryptionKey;
         /// <summary>
         /// Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
         /// </summary>
@@ -250,6 +259,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             ImmutableArray<Outputs.NetworkInterfaceResponse> networkInterfaces,
 
+            Outputs.NetworkPerformanceConfigResponse networkPerformanceConfig,
+
             string privateIpv6GoogleAccess,
 
             Outputs.ReservationAffinityResponse reservationAffinity,
@@ -267,6 +278,10 @@ namespace Pulumi.GoogleNative.Compute.V1
             Outputs.ShieldedInstanceConfigResponse shieldedInstanceConfig,
 
             Outputs.ShieldedInstanceIntegrityPolicyResponse shieldedInstanceIntegrityPolicy,
+
+            string sourceMachineImage,
+
+            Outputs.CustomerEncryptionKeyResponse sourceMachineImageEncryptionKey,
 
             bool startRestricted,
 
@@ -301,6 +316,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             MinCpuPlatform = minCpuPlatform;
             Name = name;
             NetworkInterfaces = networkInterfaces;
+            NetworkPerformanceConfig = networkPerformanceConfig;
             PrivateIpv6GoogleAccess = privateIpv6GoogleAccess;
             ReservationAffinity = reservationAffinity;
             ResourcePolicies = resourcePolicies;
@@ -310,6 +326,8 @@ namespace Pulumi.GoogleNative.Compute.V1
             ServiceAccounts = serviceAccounts;
             ShieldedInstanceConfig = shieldedInstanceConfig;
             ShieldedInstanceIntegrityPolicy = shieldedInstanceIntegrityPolicy;
+            SourceMachineImage = sourceMachineImage;
+            SourceMachineImageEncryptionKey = sourceMachineImageEncryptionKey;
             StartRestricted = startRestricted;
             Status = status;
             StatusMessage = statusMessage;

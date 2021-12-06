@@ -64,6 +64,10 @@ export class Reservation extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * Share-settings for shared-reservation
+     */
+    public readonly shareSettings!: pulumi.Output<outputs.compute.v1.ShareSettingsResponse>;
+    /**
      * Reservation for instances with specific machine shapes.
      */
     public readonly specificReservation!: pulumi.Output<outputs.compute.v1.AllocationSpecificSKUReservationResponse>;
@@ -95,6 +99,7 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["shareSettings"] = args ? args.shareSettings : undefined;
             resourceInputs["specificReservation"] = args ? args.specificReservation : undefined;
             resourceInputs["specificReservationRequired"] = args ? args.specificReservationRequired : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
@@ -112,6 +117,7 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["shareSettings"] = undefined /*out*/;
             resourceInputs["specificReservation"] = undefined /*out*/;
             resourceInputs["specificReservationRequired"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -138,6 +144,10 @@ export interface ReservationArgs {
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
+    /**
+     * Share-settings for shared-reservation
+     */
+    shareSettings?: pulumi.Input<inputs.compute.v1.ShareSettingsArgs>;
     /**
      * Reservation for instances with specific machine shapes.
      */

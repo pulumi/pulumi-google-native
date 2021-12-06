@@ -70,6 +70,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Profile { get; private set; } = null!;
 
         /// <summary>
+        /// URL of the region where the regional SSL policy resides. This field is not applicable to global SSL policies.
+        /// </summary>
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
         /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]

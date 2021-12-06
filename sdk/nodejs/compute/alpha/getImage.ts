@@ -29,6 +29,10 @@ export interface GetImageArgs {
 
 export interface GetImageResult {
     /**
+     * The architecture of the image. Valid values are ARM64 or X86_64.
+     */
+    readonly architecture: string;
+    /**
      * Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
      */
     readonly archiveSizeBytes: string;
@@ -53,7 +57,7 @@ export interface GetImageResult {
      */
     readonly family: string;
     /**
-     * A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+     * A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
      */
     readonly guestOsFeatures: outputs.compute.alpha.GuestOsFeatureResponse[];
     /**

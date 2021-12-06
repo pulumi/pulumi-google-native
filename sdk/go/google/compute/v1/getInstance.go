@@ -71,7 +71,8 @@ type LookupInstanceResult struct {
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
 	// An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
-	NetworkInterfaces []NetworkInterfaceResponse `pulumi:"networkInterfaces"`
+	NetworkInterfaces        []NetworkInterfaceResponse       `pulumi:"networkInterfaces"`
+	NetworkPerformanceConfig NetworkPerformanceConfigResponse `pulumi:"networkPerformanceConfig"`
 	// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
 	PrivateIpv6GoogleAccess string `pulumi:"privateIpv6GoogleAccess"`
 	// Specifies the reservations that this instance can consume from.
@@ -88,6 +89,10 @@ type LookupInstanceResult struct {
 	ServiceAccounts                 []ServiceAccountResponse                `pulumi:"serviceAccounts"`
 	ShieldedInstanceConfig          ShieldedInstanceConfigResponse          `pulumi:"shieldedInstanceConfig"`
 	ShieldedInstanceIntegrityPolicy ShieldedInstanceIntegrityPolicyResponse `pulumi:"shieldedInstanceIntegrityPolicy"`
+	// Source machine image
+	SourceMachineImage string `pulumi:"sourceMachineImage"`
+	// Source machine image encryption key when creating an instance from a machine image.
+	SourceMachineImageEncryptionKey CustomerEncryptionKeyResponse `pulumi:"sourceMachineImageEncryptionKey"`
 	// Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
 	StartRestricted bool `pulumi:"startRestricted"`
 	// The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see Instance life cycle.
@@ -247,6 +252,10 @@ func (o LookupInstanceResultOutput) NetworkInterfaces() NetworkInterfaceResponse
 	return o.ApplyT(func(v LookupInstanceResult) []NetworkInterfaceResponse { return v.NetworkInterfaces }).(NetworkInterfaceResponseArrayOutput)
 }
 
+func (o LookupInstanceResultOutput) NetworkPerformanceConfig() NetworkPerformanceConfigResponseOutput {
+	return o.ApplyT(func(v LookupInstanceResult) NetworkPerformanceConfigResponse { return v.NetworkPerformanceConfig }).(NetworkPerformanceConfigResponseOutput)
+}
+
 // The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
 func (o LookupInstanceResultOutput) PrivateIpv6GoogleAccess() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.PrivateIpv6GoogleAccess }).(pulumi.StringOutput)
@@ -290,6 +299,16 @@ func (o LookupInstanceResultOutput) ShieldedInstanceIntegrityPolicy() ShieldedIn
 	return o.ApplyT(func(v LookupInstanceResult) ShieldedInstanceIntegrityPolicyResponse {
 		return v.ShieldedInstanceIntegrityPolicy
 	}).(ShieldedInstanceIntegrityPolicyResponseOutput)
+}
+
+// Source machine image
+func (o LookupInstanceResultOutput) SourceMachineImage() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.SourceMachineImage }).(pulumi.StringOutput)
+}
+
+// Source machine image encryption key when creating an instance from a machine image.
+func (o LookupInstanceResultOutput) SourceMachineImageEncryptionKey() CustomerEncryptionKeyResponseOutput {
+	return o.ApplyT(func(v LookupInstanceResult) CustomerEncryptionKeyResponse { return v.SourceMachineImageEncryptionKey }).(CustomerEncryptionKeyResponseOutput)
 }
 
 // Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.

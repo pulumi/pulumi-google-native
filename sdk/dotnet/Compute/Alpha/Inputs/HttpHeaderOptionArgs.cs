@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<string>? HeaderValue { get; set; }
 
         /// <summary>
-        /// If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header. The default value is false.
+        /// If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header. The default value is false. 
         /// </summary>
         [Input("replace")]
         public Input<bool>? Replace { get; set; }

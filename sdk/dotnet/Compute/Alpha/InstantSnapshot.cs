@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public partial class InstantSnapshot : Pulumi.CustomResource
     {
         /// <summary>
+        /// The architecture of the instant snapshot. Valid values are ARM64 or X86_64.
+        /// </summary>
+        [Output("architecture")]
+        public Output<string> Architecture { get; private set; } = null!;
+
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]

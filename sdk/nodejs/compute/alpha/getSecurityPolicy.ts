@@ -72,6 +72,7 @@ export interface GetSecurityPolicyResult {
      * The parent of the security policy.
      */
     readonly parent: string;
+    readonly recaptchaOptionsConfig: outputs.compute.alpha.SecurityPolicyRecaptchaOptionsConfigResponse;
     /**
      * URL of the region where the regional security policy resides. This field is not applicable to global security policies.
      */

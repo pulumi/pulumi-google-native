@@ -31,6 +31,7 @@ class InstanceArgs:
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]]] = None,
+                 network_performance_config: Optional[pulumi.Input['NetworkPerformanceConfigArgs']] = None,
                  private_ipv6_google_access: Optional[pulumi.Input['InstancePrivateIpv6GoogleAccess']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -41,6 +42,8 @@ class InstanceArgs:
                  shielded_instance_config: Optional[pulumi.Input['ShieldedInstanceConfigArgs']] = None,
                  shielded_instance_integrity_policy: Optional[pulumi.Input['ShieldedInstanceIntegrityPolicyArgs']] = None,
                  source_instance_template: Optional[pulumi.Input[str]] = None,
+                 source_machine_image: Optional[pulumi.Input[str]] = None,
+                 source_machine_image_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
                  tags: Optional[pulumi.Input['TagsArgs']] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
@@ -64,6 +67,8 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this instance.
         :param pulumi.Input['SchedulingArgs'] scheduling: Sets the scheduling options for this instance.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]] service_accounts: A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
+        :param pulumi.Input[str] source_machine_image: Source machine image
+        :param pulumi.Input['CustomerEncryptionKeyArgs'] source_machine_image_encryption_key: Source machine image encryption key when creating an instance from a machine image.
         :param pulumi.Input['TagsArgs'] tags: Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
         """
         if advanced_machine_features is not None:
@@ -96,6 +101,8 @@ class InstanceArgs:
             pulumi.set(__self__, "name", name)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if network_performance_config is not None:
+            pulumi.set(__self__, "network_performance_config", network_performance_config)
         if private_ipv6_google_access is not None:
             pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
         if project is not None:
@@ -116,6 +123,10 @@ class InstanceArgs:
             pulumi.set(__self__, "shielded_instance_integrity_policy", shielded_instance_integrity_policy)
         if source_instance_template is not None:
             pulumi.set(__self__, "source_instance_template", source_instance_template)
+        if source_machine_image is not None:
+            pulumi.set(__self__, "source_machine_image", source_machine_image)
+        if source_machine_image_encryption_key is not None:
+            pulumi.set(__self__, "source_machine_image_encryption_key", source_machine_image_encryption_key)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if zone is not None:
@@ -299,6 +310,15 @@ class InstanceArgs:
         pulumi.set(self, "network_interfaces", value)
 
     @property
+    @pulumi.getter(name="networkPerformanceConfig")
+    def network_performance_config(self) -> Optional[pulumi.Input['NetworkPerformanceConfigArgs']]:
+        return pulumi.get(self, "network_performance_config")
+
+    @network_performance_config.setter
+    def network_performance_config(self, value: Optional[pulumi.Input['NetworkPerformanceConfigArgs']]):
+        pulumi.set(self, "network_performance_config", value)
+
+    @property
     @pulumi.getter(name="privateIpv6GoogleAccess")
     def private_ipv6_google_access(self) -> Optional[pulumi.Input['InstancePrivateIpv6GoogleAccess']]:
         """
@@ -404,6 +424,30 @@ class InstanceArgs:
         pulumi.set(self, "source_instance_template", value)
 
     @property
+    @pulumi.getter(name="sourceMachineImage")
+    def source_machine_image(self) -> Optional[pulumi.Input[str]]:
+        """
+        Source machine image
+        """
+        return pulumi.get(self, "source_machine_image")
+
+    @source_machine_image.setter
+    def source_machine_image(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_machine_image", value)
+
+    @property
+    @pulumi.getter(name="sourceMachineImageEncryptionKey")
+    def source_machine_image_encryption_key(self) -> Optional[pulumi.Input['CustomerEncryptionKeyArgs']]:
+        """
+        Source machine image encryption key when creating an instance from a machine image.
+        """
+        return pulumi.get(self, "source_machine_image_encryption_key")
+
+    @source_machine_image_encryption_key.setter
+    def source_machine_image_encryption_key(self, value: Optional[pulumi.Input['CustomerEncryptionKeyArgs']]):
+        pulumi.set(self, "source_machine_image_encryption_key", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input['TagsArgs']]:
         """
@@ -445,6 +489,7 @@ class Instance(pulumi.CustomResource):
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkInterfaceArgs']]]]] = None,
+                 network_performance_config: Optional[pulumi.Input[pulumi.InputType['NetworkPerformanceConfigArgs']]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input['InstancePrivateIpv6GoogleAccess']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -455,6 +500,8 @@ class Instance(pulumi.CustomResource):
                  shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceConfigArgs']]] = None,
                  shielded_instance_integrity_policy: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceIntegrityPolicyArgs']]] = None,
                  source_instance_template: Optional[pulumi.Input[str]] = None,
+                 source_machine_image: Optional[pulumi.Input[str]] = None,
+                 source_machine_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  tags: Optional[pulumi.Input[pulumi.InputType['TagsArgs']]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -482,6 +529,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this instance.
         :param pulumi.Input[pulumi.InputType['SchedulingArgs']] scheduling: Sets the scheduling options for this instance.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAccountArgs']]]] service_accounts: A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
+        :param pulumi.Input[str] source_machine_image: Source machine image
+        :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_machine_image_encryption_key: Source machine image encryption key when creating an instance from a machine image.
         :param pulumi.Input[pulumi.InputType['TagsArgs']] tags: Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
         """
         ...
@@ -523,6 +572,7 @@ class Instance(pulumi.CustomResource):
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkInterfaceArgs']]]]] = None,
+                 network_performance_config: Optional[pulumi.Input[pulumi.InputType['NetworkPerformanceConfigArgs']]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input['InstancePrivateIpv6GoogleAccess']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -533,6 +583,8 @@ class Instance(pulumi.CustomResource):
                  shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceConfigArgs']]] = None,
                  shielded_instance_integrity_policy: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceIntegrityPolicyArgs']]] = None,
                  source_instance_template: Optional[pulumi.Input[str]] = None,
+                 source_machine_image: Optional[pulumi.Input[str]] = None,
+                 source_machine_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  tags: Optional[pulumi.Input[pulumi.InputType['TagsArgs']]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -562,6 +614,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["min_cpu_platform"] = min_cpu_platform
             __props__.__dict__["name"] = name
             __props__.__dict__["network_interfaces"] = network_interfaces
+            __props__.__dict__["network_performance_config"] = network_performance_config
             __props__.__dict__["private_ipv6_google_access"] = private_ipv6_google_access
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
@@ -572,6 +625,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["shielded_instance_config"] = shielded_instance_config
             __props__.__dict__["shielded_instance_integrity_policy"] = shielded_instance_integrity_policy
             __props__.__dict__["source_instance_template"] = source_instance_template
+            __props__.__dict__["source_machine_image"] = source_machine_image
+            __props__.__dict__["source_machine_image_encryption_key"] = source_machine_image_encryption_key
             __props__.__dict__["tags"] = tags
             __props__.__dict__["zone"] = zone
             __props__.__dict__["cpu_platform"] = None
@@ -632,6 +687,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["min_cpu_platform"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network_interfaces"] = None
+        __props__.__dict__["network_performance_config"] = None
         __props__.__dict__["private_ipv6_google_access"] = None
         __props__.__dict__["reservation_affinity"] = None
         __props__.__dict__["resource_policies"] = None
@@ -641,6 +697,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["service_accounts"] = None
         __props__.__dict__["shielded_instance_config"] = None
         __props__.__dict__["shielded_instance_integrity_policy"] = None
+        __props__.__dict__["source_machine_image"] = None
+        __props__.__dict__["source_machine_image_encryption_key"] = None
         __props__.__dict__["start_restricted"] = None
         __props__.__dict__["status"] = None
         __props__.__dict__["status_message"] = None
@@ -830,6 +888,11 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "network_interfaces")
 
     @property
+    @pulumi.getter(name="networkPerformanceConfig")
+    def network_performance_config(self) -> pulumi.Output['outputs.NetworkPerformanceConfigResponse']:
+        return pulumi.get(self, "network_performance_config")
+
+    @property
     @pulumi.getter(name="privateIpv6GoogleAccess")
     def private_ipv6_google_access(self) -> pulumi.Output[str]:
         """
@@ -894,6 +957,22 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="shieldedInstanceIntegrityPolicy")
     def shielded_instance_integrity_policy(self) -> pulumi.Output['outputs.ShieldedInstanceIntegrityPolicyResponse']:
         return pulumi.get(self, "shielded_instance_integrity_policy")
+
+    @property
+    @pulumi.getter(name="sourceMachineImage")
+    def source_machine_image(self) -> pulumi.Output[str]:
+        """
+        Source machine image
+        """
+        return pulumi.get(self, "source_machine_image")
+
+    @property
+    @pulumi.getter(name="sourceMachineImageEncryptionKey")
+    def source_machine_image_encryption_key(self) -> pulumi.Output['outputs.CustomerEncryptionKeyResponse']:
+        """
+        Source machine image encryption key when creating an instance from a machine image.
+        """
+        return pulumi.get(self, "source_machine_image_encryption_key")
 
     @property
     @pulumi.getter(name="startRestricted")

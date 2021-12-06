@@ -27,6 +27,7 @@ class RegionSecurityPolicyArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 recaptcha_options_config: Optional[pulumi.Input['SecurityPolicyRecaptchaOptionsConfigArgs']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]] = None,
                  type: Optional[pulumi.Input['RegionSecurityPolicyType']] = None,
@@ -62,6 +63,8 @@ class RegionSecurityPolicyArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if recaptcha_options_config is not None:
+            pulumi.set(__self__, "recaptcha_options_config", recaptcha_options_config)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
         if rules is not None:
@@ -186,6 +189,15 @@ class RegionSecurityPolicyArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="recaptchaOptionsConfig")
+    def recaptcha_options_config(self) -> Optional[pulumi.Input['SecurityPolicyRecaptchaOptionsConfigArgs']]:
+        return pulumi.get(self, "recaptcha_options_config")
+
+    @recaptcha_options_config.setter
+    def recaptcha_options_config(self, value: Optional[pulumi.Input['SecurityPolicyRecaptchaOptionsConfigArgs']]):
+        pulumi.set(self, "recaptcha_options_config", value)
+
+    @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "request_id")
@@ -243,6 +255,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 recaptcha_options_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyRecaptchaOptionsConfigArgs']]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]]] = None,
@@ -296,6 +309,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 recaptcha_options_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyRecaptchaOptionsConfigArgs']]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]]] = None,
@@ -323,6 +337,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["recaptcha_options_config"] = recaptcha_options_config
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
@@ -374,6 +389,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["parent"] = None
+        __props__.__dict__["recaptcha_options_config"] = None
         __props__.__dict__["region"] = None
         __props__.__dict__["rule_tuple_count"] = None
         __props__.__dict__["rules"] = None
@@ -481,6 +497,11 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         The parent of the security policy.
         """
         return pulumi.get(self, "parent")
+
+    @property
+    @pulumi.getter(name="recaptchaOptionsConfig")
+    def recaptcha_options_config(self) -> pulumi.Output['outputs.SecurityPolicyRecaptchaOptionsConfigResponse']:
+        return pulumi.get(self, "recaptcha_options_config")
 
     @property
     @pulumi.getter

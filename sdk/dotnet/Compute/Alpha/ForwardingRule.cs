@@ -163,7 +163,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> SelfLinkWithId { get; private set; } = null!;
 
         /// <summary>
-        /// Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource. It is only supported for internal load balancing.
+        /// Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource.
         /// </summary>
         [Output("serviceDirectoryRegistrations")]
         public Output<ImmutableArray<Outputs.ForwardingRuleServiceDirectoryRegistrationResponse>> ServiceDirectoryRegistrations { get; private set; } = null!;
@@ -370,7 +370,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         private InputList<Inputs.ForwardingRuleServiceDirectoryRegistrationArgs>? _serviceDirectoryRegistrations;
 
         /// <summary>
-        /// Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource. It is only supported for internal load balancing.
+        /// Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource.
         /// </summary>
         public InputList<Inputs.ForwardingRuleServiceDirectoryRegistrationArgs> ServiceDirectoryRegistrations
         {

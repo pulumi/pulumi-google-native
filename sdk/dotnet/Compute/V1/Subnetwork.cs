@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
+        /// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
         /// </summary>
         [Output("enableFlowLogs")]
         public Output<bool> EnableFlowLogs { get; private set; } = null!;
@@ -199,7 +199,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
+        /// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
         /// </summary>
         [Input("enableFlowLogs")]
         public Input<bool>? EnableFlowLogs { get; set; }

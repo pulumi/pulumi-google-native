@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     public sealed class ConsistentHashLoadBalancerSettingsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+        /// Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         /// </summary>
         [Input("httpCookie")]
         public Input<Inputs.ConsistentHashLoadBalancerSettingsHttpCookieArgs>? HttpCookie { get; set; }

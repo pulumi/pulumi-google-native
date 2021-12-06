@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetReservationResult:
-    def __init__(__self__, commitment=None, creation_timestamp=None, description=None, kind=None, name=None, satisfies_pzs=None, self_link=None, specific_reservation=None, specific_reservation_required=None, status=None, zone=None):
+    def __init__(__self__, commitment=None, creation_timestamp=None, description=None, kind=None, name=None, satisfies_pzs=None, self_link=None, share_settings=None, specific_reservation=None, specific_reservation_required=None, status=None, zone=None):
         if commitment and not isinstance(commitment, str):
             raise TypeError("Expected argument 'commitment' to be a str")
         pulumi.set(__self__, "commitment", commitment)
@@ -40,6 +40,9 @@ class GetReservationResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
+        if share_settings and not isinstance(share_settings, dict):
+            raise TypeError("Expected argument 'share_settings' to be a dict")
+        pulumi.set(__self__, "share_settings", share_settings)
         if specific_reservation and not isinstance(specific_reservation, dict):
             raise TypeError("Expected argument 'specific_reservation' to be a dict")
         pulumi.set(__self__, "specific_reservation", specific_reservation)
@@ -110,6 +113,14 @@ class GetReservationResult:
         return pulumi.get(self, "self_link")
 
     @property
+    @pulumi.getter(name="shareSettings")
+    def share_settings(self) -> 'outputs.ShareSettingsResponse':
+        """
+        Share-settings for shared-reservation
+        """
+        return pulumi.get(self, "share_settings")
+
+    @property
     @pulumi.getter(name="specificReservation")
     def specific_reservation(self) -> 'outputs.AllocationSpecificSKUReservationResponse':
         """
@@ -155,6 +166,7 @@ class AwaitableGetReservationResult(GetReservationResult):
             name=self.name,
             satisfies_pzs=self.satisfies_pzs,
             self_link=self.self_link,
+            share_settings=self.share_settings,
             specific_reservation=self.specific_reservation,
             specific_reservation_required=self.specific_reservation_required,
             status=self.status,
@@ -186,6 +198,7 @@ def get_reservation(project: Optional[str] = None,
         name=__ret__.name,
         satisfies_pzs=__ret__.satisfies_pzs,
         self_link=__ret__.self_link,
+        share_settings=__ret__.share_settings,
         specific_reservation=__ret__.specific_reservation,
         specific_reservation_required=__ret__.specific_reservation_required,
         status=__ret__.status,

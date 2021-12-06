@@ -30,7 +30,7 @@ type LookupAgentPoolResult struct {
 	BandwidthLimit BandwidthLimitResponse `pulumi:"bandwidthLimit"`
 	// Specifies the client-specified AgentPool description.
 	DisplayName string `pulumi:"displayName"`
-	// Specifies a unique string that identifies the agent pool. Format: projects/{project_id}/agentPools/{agent_pool_id}
+	// Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`
 	Name string `pulumi:"name"`
 	// Specifies the state of the AgentPool.
 	State string `pulumi:"state"`
@@ -78,7 +78,7 @@ func (o LookupAgentPoolResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAgentPoolResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Specifies a unique string that identifies the agent pool. Format: projects/{project_id}/agentPools/{agent_pool_id}
+// Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`
 func (o LookupAgentPoolResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAgentPoolResult) string { return v.Name }).(pulumi.StringOutput)
 }

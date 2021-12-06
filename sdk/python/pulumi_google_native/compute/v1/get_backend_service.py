@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBackendServiceResult:
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, connection_draining=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, enable_cdn=None, failover_policy=None, fingerprint=None, health_checks=None, iap=None, kind=None, load_balancing_scheme=None, locality_lb_policy=None, log_config=None, max_stream_duration=None, name=None, network=None, outlier_detection=None, port_name=None, protocol=None, region=None, security_policy=None, security_settings=None, self_link=None, session_affinity=None, subsetting=None, timeout_sec=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, connection_draining=None, connection_tracking_policy=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, failover_policy=None, fingerprint=None, health_checks=None, iap=None, kind=None, load_balancing_scheme=None, locality_lb_policy=None, log_config=None, max_stream_duration=None, name=None, network=None, outlier_detection=None, port_name=None, protocol=None, region=None, security_policy=None, security_settings=None, self_link=None, session_affinity=None, subsetting=None, timeout_sec=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -34,6 +34,9 @@ class GetBackendServiceResult:
         if connection_draining and not isinstance(connection_draining, dict):
             raise TypeError("Expected argument 'connection_draining' to be a dict")
         pulumi.set(__self__, "connection_draining", connection_draining)
+        if connection_tracking_policy and not isinstance(connection_tracking_policy, dict):
+            raise TypeError("Expected argument 'connection_tracking_policy' to be a dict")
+        pulumi.set(__self__, "connection_tracking_policy", connection_tracking_policy)
         if consistent_hash and not isinstance(consistent_hash, dict):
             raise TypeError("Expected argument 'consistent_hash' to be a dict")
         pulumi.set(__self__, "consistent_hash", consistent_hash)
@@ -49,6 +52,9 @@ class GetBackendServiceResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if edge_security_policy and not isinstance(edge_security_policy, str):
+            raise TypeError("Expected argument 'edge_security_policy' to be a str")
+        pulumi.set(__self__, "edge_security_policy", edge_security_policy)
         if enable_cdn and not isinstance(enable_cdn, bool):
             raise TypeError("Expected argument 'enable_cdn' to be a bool")
         pulumi.set(__self__, "enable_cdn", enable_cdn)
@@ -151,10 +157,18 @@ class GetBackendServiceResult:
         return pulumi.get(self, "connection_draining")
 
     @property
+    @pulumi.getter(name="connectionTrackingPolicy")
+    def connection_tracking_policy(self) -> 'outputs.BackendServiceConnectionTrackingPolicyResponse':
+        """
+        Connection Tracking configuration for this BackendService. Connection tracking policy settings are only available for Network Load Balancing and Internal TCP/UDP Load Balancing.
+        """
+        return pulumi.get(self, "connection_tracking_policy")
+
+    @property
     @pulumi.getter(name="consistentHash")
     def consistent_hash(self) -> 'outputs.ConsistentHashLoadBalancerSettingsResponse':
         """
-        Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular destination host will be lost when one or more hosts are added/removed from the destination service. This field specifies parameters that control consistent hashing. This field is only applicable when localityLbPolicy is set to MAGLEV or RING_HASH. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular destination host will be lost when one or more hosts are added/removed from the destination service. This field specifies parameters that control consistent hashing. This field is only applicable when localityLbPolicy is set to MAGLEV or RING_HASH. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. 
         """
         return pulumi.get(self, "consistent_hash")
 
@@ -191,6 +205,14 @@ class GetBackendServiceResult:
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="edgeSecurityPolicy")
+    def edge_security_policy(self) -> str:
+        """
+        The resource URL for the edge security policy associated with this backend service.
+        """
+        return pulumi.get(self, "edge_security_policy")
+
+    @property
     @pulumi.getter(name="enableCDN")
     def enable_cdn(self) -> bool:
         """
@@ -202,7 +224,7 @@ class GetBackendServiceResult:
     @pulumi.getter(name="failoverPolicy")
     def failover_policy(self) -> 'outputs.BackendServiceFailoverPolicyResponse':
         """
-        Requires at least one backend instance group to be defined as a backup (failover) backend. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview).
+        Requires at least one backend instance group to be defined as a backup (failover) backend. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
         """
         return pulumi.get(self, "failover_policy")
 
@@ -250,7 +272,7 @@ class GetBackendServiceResult:
     @pulumi.getter(name="localityLbPolicy")
     def locality_lb_policy(self) -> str:
         """
-        The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "locality_lb_policy")
 
@@ -346,7 +368,7 @@ class GetBackendServiceResult:
     @pulumi.getter(name="sessionAffinity")
     def session_affinity(self) -> str:
         """
-        Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).
         """
         return pulumi.get(self, "session_affinity")
 
@@ -375,11 +397,13 @@ class AwaitableGetBackendServiceResult(GetBackendServiceResult):
             cdn_policy=self.cdn_policy,
             circuit_breakers=self.circuit_breakers,
             connection_draining=self.connection_draining,
+            connection_tracking_policy=self.connection_tracking_policy,
             consistent_hash=self.consistent_hash,
             creation_timestamp=self.creation_timestamp,
             custom_request_headers=self.custom_request_headers,
             custom_response_headers=self.custom_response_headers,
             description=self.description,
+            edge_security_policy=self.edge_security_policy,
             enable_cdn=self.enable_cdn,
             failover_policy=self.failover_policy,
             fingerprint=self.fingerprint,
@@ -425,11 +449,13 @@ def get_backend_service(backend_service: Optional[str] = None,
         cdn_policy=__ret__.cdn_policy,
         circuit_breakers=__ret__.circuit_breakers,
         connection_draining=__ret__.connection_draining,
+        connection_tracking_policy=__ret__.connection_tracking_policy,
         consistent_hash=__ret__.consistent_hash,
         creation_timestamp=__ret__.creation_timestamp,
         custom_request_headers=__ret__.custom_request_headers,
         custom_response_headers=__ret__.custom_response_headers,
         description=__ret__.description,
+        edge_security_policy=__ret__.edge_security_policy,
         enable_cdn=__ret__.enable_cdn,
         failover_policy=__ret__.failover_policy,
         fingerprint=__ret__.fingerprint,

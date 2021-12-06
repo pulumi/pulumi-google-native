@@ -124,7 +124,7 @@ export interface GetForwardingRuleResult {
      */
     readonly selfLink: string;
     /**
-     * Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource. It is only supported for internal load balancing.
+     * Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource.
      */
     readonly serviceDirectoryRegistrations: outputs.compute.beta.ForwardingRuleServiceDirectoryRegistrationResponse[];
     /**

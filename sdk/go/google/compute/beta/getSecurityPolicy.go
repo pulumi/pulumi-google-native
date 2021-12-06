@@ -47,7 +47,8 @@ type LookupSecurityPolicyResult struct {
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
 	// The parent of the security policy.
-	Parent string `pulumi:"parent"`
+	Parent                 string                                       `pulumi:"parent"`
+	RecaptchaOptionsConfig SecurityPolicyRecaptchaOptionsConfigResponse `pulumi:"recaptchaOptionsConfig"`
 	// Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
 	RuleTupleCount int `pulumi:"ruleTupleCount"`
 	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
@@ -152,6 +153,12 @@ func (o LookupSecurityPolicyResultOutput) Name() pulumi.StringOutput {
 // The parent of the security policy.
 func (o LookupSecurityPolicyResultOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityPolicyResult) string { return v.Parent }).(pulumi.StringOutput)
+}
+
+func (o LookupSecurityPolicyResultOutput) RecaptchaOptionsConfig() SecurityPolicyRecaptchaOptionsConfigResponseOutput {
+	return o.ApplyT(func(v LookupSecurityPolicyResult) SecurityPolicyRecaptchaOptionsConfigResponse {
+		return v.RecaptchaOptionsConfig
+	}).(SecurityPolicyRecaptchaOptionsConfigResponseOutput)
 }
 
 // Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.

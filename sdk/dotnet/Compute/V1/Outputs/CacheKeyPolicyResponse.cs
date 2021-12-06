@@ -21,6 +21,14 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly bool IncludeHost;
         /// <summary>
+        /// Allows HTTP request headers (by name) to be used in the cache key.
+        /// </summary>
+        public readonly ImmutableArray<string> IncludeHttpHeaders;
+        /// <summary>
+        /// Allows HTTP cookies (by name) to be used in the cache key. The name=value pair will be used in the cache key Cloud CDN generates.
+        /// </summary>
+        public readonly ImmutableArray<string> IncludeNamedCookies;
+        /// <summary>
         /// If true, http and https requests will be cached separately.
         /// </summary>
         public readonly bool IncludeProtocol;
@@ -41,6 +49,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         private CacheKeyPolicyResponse(
             bool includeHost,
 
+            ImmutableArray<string> includeHttpHeaders,
+
+            ImmutableArray<string> includeNamedCookies,
+
             bool includeProtocol,
 
             bool includeQueryString,
@@ -50,6 +62,8 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
             ImmutableArray<string> queryStringWhitelist)
         {
             IncludeHost = includeHost;
+            IncludeHttpHeaders = includeHttpHeaders;
+            IncludeNamedCookies = includeNamedCookies;
             IncludeProtocol = includeProtocol;
             IncludeQueryString = includeQueryString;
             QueryStringBlacklist = queryStringBlacklist;

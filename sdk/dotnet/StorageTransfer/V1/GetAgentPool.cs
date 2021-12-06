@@ -65,7 +65,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// Specifies a unique string that identifies the agent pool. Format: projects/{project_id}/agentPools/{agent_pool_id}
+        /// Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`
         /// </summary>
         public readonly string Name;
         /// <summary>

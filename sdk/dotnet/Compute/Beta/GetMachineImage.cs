@@ -69,6 +69,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly bool GuestFlush;
         /// <summary>
+        /// Properties of source instance
+        /// </summary>
+        public readonly Outputs.InstancePropertiesResponse InstanceProperties;
+        /// <summary>
         /// The resource type, which is always compute#machineImage for machine image.
         /// </summary>
         public readonly string Kind;
@@ -85,6 +89,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly bool SatisfiesPzs;
         /// <summary>
+        /// An array of Machine Image specific properties for disks attached to the source instance
+        /// </summary>
+        public readonly ImmutableArray<Outputs.SavedDiskResponse> SavedDisks;
+        /// <summary>
         /// The URL for this machine image. The server defines this URL.
         /// </summary>
         public readonly string SelfLink;
@@ -97,7 +105,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string SourceInstance;
         /// <summary>
-        /// Properties of source instance.
+        /// DEPRECATED: Please use instance_properties instead for source instance related properties. New properties will not be added to this field.
         /// </summary>
         public readonly Outputs.SourceInstancePropertiesResponse SourceInstanceProperties;
         /// <summary>
@@ -121,6 +129,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             bool guestFlush,
 
+            Outputs.InstancePropertiesResponse instanceProperties,
+
             string kind,
 
             Outputs.CustomerEncryptionKeyResponse machineImageEncryptionKey,
@@ -128,6 +138,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
             string name,
 
             bool satisfiesPzs,
+
+            ImmutableArray<Outputs.SavedDiskResponse> savedDisks,
 
             string selfLink,
 
@@ -146,10 +158,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
             CreationTimestamp = creationTimestamp;
             Description = description;
             GuestFlush = guestFlush;
+            InstanceProperties = instanceProperties;
             Kind = kind;
             MachineImageEncryptionKey = machineImageEncryptionKey;
             Name = name;
             SatisfiesPzs = satisfiesPzs;
+            SavedDisks = savedDisks;
             SelfLink = selfLink;
             SourceDiskEncryptionKeys = sourceDiskEncryptionKeys;
             SourceInstance = sourceInstance;

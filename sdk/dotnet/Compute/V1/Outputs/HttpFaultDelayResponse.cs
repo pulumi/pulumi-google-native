@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
     /// <summary>
-    /// Specifies the delay introduced by Loadbalancer before forwarding the request to the backend service as part of fault injection.
+    /// Specifies the delay introduced by the load balancer before forwarding the request to the backend service as part of fault injection.
     /// </summary>
     [OutputType]
     public sealed class HttpFaultDelayResponse
@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly Outputs.DurationResponse FixedDelay;
         /// <summary>
-        /// The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
+        /// The percentage of traffic for connections, operations, or requests for which a delay is introduced as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
         /// </summary>
         public readonly double Percentage;
 

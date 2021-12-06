@@ -102,6 +102,7 @@ __all__ = [
     'InitialStateConfigResponse',
     'InstanceGroupManagerActionsSummaryResponse',
     'InstanceGroupManagerAllInstancesConfigResponse',
+    'InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersResponse',
     'InstanceGroupManagerAutoHealingPolicyResponse',
     'InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalResponse',
     'InstanceGroupManagerInstanceLifecyclePolicyResponse',
@@ -160,6 +161,8 @@ __all__ = [
     'PathRuleResponse',
     'PublicAdvertisedPrefixPublicDelegatedPrefixResponse',
     'PublicDelegatedPrefixPublicDelegatedSubPrefixResponse',
+    'RegionSslPolicyWarningsItemDataItemResponse',
+    'RegionSslPolicyWarningsItemResponse',
     'RequestMirrorPolicyResponse',
     'ReservationAffinityResponse',
     'ReservationResponse',
@@ -200,6 +203,7 @@ __all__ = [
     'RuleResponse',
     'SSLHealthCheckResponse',
     'SavedAttachedDiskResponse',
+    'SavedDiskResponse',
     'SchedulingNodeAffinityResponse',
     'SchedulingResponse',
     'SdsConfigResponse',
@@ -209,6 +213,7 @@ __all__ = [
     'SecurityPolicyAssociationResponse',
     'SecurityPolicyCloudArmorConfigResponse',
     'SecurityPolicyDdosProtectionConfigResponse',
+    'SecurityPolicyRecaptchaOptionsConfigResponse',
     'SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponse',
     'SecurityPolicyRuleHttpHeaderActionResponse',
     'SecurityPolicyRuleMatcherConfigDestinationPortResponse',
@@ -368,9 +373,9 @@ class AccessConfigResponse(dict):
         :param str nat_ip: An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
         :param str network_tier: This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD. If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier. If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
         :param str public_dns_name: The public DNS domain name for the instance.
-        :param str public_ptr_domain_name: The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled.
+        :param str public_ptr_domain_name: The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled in accessConfig. If this field is unspecified in ipv6AccessConfig, a default PTR record will be createc for first IP in associated external IPv6 range.
         :param bool set_public_dns: Specifies whether a public DNS 'A' record should be created for the external IP address of this access configuration.
-        :param bool set_public_ptr: Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name.
+        :param bool set_public_ptr: Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name. This field is not used in ipv6AccessConfig. A default PTR record will be created if the VM has external IPv6 range associated.
         :param str type: The type of configuration. The default and only option is ONE_TO_ONE_NAT.
         """
         pulumi.set(__self__, "external_ipv6", external_ipv6)
@@ -445,7 +450,7 @@ class AccessConfigResponse(dict):
     @pulumi.getter(name="publicPtrDomainName")
     def public_ptr_domain_name(self) -> str:
         """
-        The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled.
+        The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled in accessConfig. If this field is unspecified in ipv6AccessConfig, a default PTR record will be createc for first IP in associated external IPv6 range.
         """
         return pulumi.get(self, "public_ptr_domain_name")
 
@@ -461,7 +466,7 @@ class AccessConfigResponse(dict):
     @pulumi.getter(name="setPublicPtr")
     def set_public_ptr(self) -> bool:
         """
-        Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name.
+        Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name. This field is not used in ipv6AccessConfig. A default PTR record will be created if the VM has external IPv6 range associated.
         """
         return pulumi.get(self, "set_public_ptr")
 
@@ -788,7 +793,9 @@ class AllocationSpecificSKUReservationResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "inUseCount":
+        if key == "assuredCount":
+            suggest = "assured_count"
+        elif key == "inUseCount":
             suggest = "in_use_count"
         elif key == "instanceProperties":
             suggest = "instance_properties"
@@ -805,18 +812,29 @@ class AllocationSpecificSKUReservationResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 assured_count: str,
                  count: str,
                  in_use_count: str,
                  instance_properties: 'outputs.AllocationSpecificSKUAllocationReservedInstancePropertiesResponse'):
         """
         This reservation type allows to pre allocate specific instance configuration. Next ID: 5
+        :param str assured_count: Indicates how many instances are actually usable currently.
         :param str count: Specifies the number of resources that are allocated.
         :param str in_use_count: Indicates how many instances are in use.
         :param 'AllocationSpecificSKUAllocationReservedInstancePropertiesResponse' instance_properties: The instance properties for the reservation.
         """
+        pulumi.set(__self__, "assured_count", assured_count)
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "in_use_count", in_use_count)
         pulumi.set(__self__, "instance_properties", instance_properties)
+
+    @property
+    @pulumi.getter(name="assuredCount")
+    def assured_count(self) -> str:
+        """
+        Indicates how many instances are actually usable currently.
+        """
+        return pulumi.get(self, "assured_count")
 
     @property
     @pulumi.getter
@@ -892,6 +910,7 @@ class AttachedDiskInitializeParamsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 architecture: str,
                  description: str,
                  disk_name: str,
                  disk_size_gb: str,
@@ -911,6 +930,7 @@ class AttachedDiskInitializeParamsResponse(dict):
                  source_snapshot_encryption_key: 'outputs.CustomerEncryptionKeyResponse'):
         """
         [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+        :param str architecture: The architecture of the attached disk. Valid values are arm64 or x86_64.
         :param str description: An optional description. Provide this property when creating the disk.
         :param str disk_name: Specifies the disk name. If not specified, the default is to use the name of the instance. If a disk with the same name already exists in the given region, the existing disk is attached to the new instance and the new disk is not created.
         :param str disk_size_gb: Specifies the size of the disk in base-2 GB. The size must be at least 10 GB. If you specify a sourceImage, which is required for boot disks, the default size is the size of the sourceImage. If you do not specify a sourceImage, the default disk size is 500 GB.
@@ -929,6 +949,7 @@ class AttachedDiskInitializeParamsResponse(dict):
         :param str source_snapshot: The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot or initializeParams.sourceImage or disks.source is required except for local SSD. To create a disk with a snapshot that you created, specify the snapshot name in the following format: global/snapshots/my-backup If the source snapshot is deleted later, this field will not be set.
         :param 'CustomerEncryptionKeyResponse' source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot.
         """
+        pulumi.set(__self__, "architecture", architecture)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "disk_name", disk_name)
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
@@ -946,6 +967,14 @@ class AttachedDiskInitializeParamsResponse(dict):
         pulumi.set(__self__, "source_image_encryption_key", source_image_encryption_key)
         pulumi.set(__self__, "source_snapshot", source_snapshot)
         pulumi.set(__self__, "source_snapshot_encryption_key", source_snapshot_encryption_key)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> str:
+        """
+        The architecture of the attached disk. Valid values are arm64 or x86_64.
+        """
+        return pulumi.get(self, "architecture")
 
     @property
     @pulumi.getter
@@ -1162,7 +1191,7 @@ class AttachedDiskResponse(dict):
         :param str mode: The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode.
         :param str saved_state: For LocalSSD disks on VM Instances in STOPPED or SUSPENDED state, this field is set to PRESERVED if the LocalSSD data has been saved to a persistent location by customer request. (see the discard_local_ssd option on Stop/Suspend). Read-only in the api.
         :param 'InitialStateConfigResponse' shielded_instance_initial_state: shielded vm initial state stored on disk
-        :param str source: Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks. Note that for InstanceTemplate, specify the disk name, not the URL for the disk.
+        :param str source: Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks. Note that for InstanceTemplate, specify the disk name for zonal disk, and the URL for regional disk.
         :param str type: Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT.
         :param Sequence[str] user_licenses: A list of user provided licenses. It represents a list of URLs to the license resource. Unlike regular licenses, user provided licenses can be modified after the disk is created.
         """
@@ -1318,7 +1347,7 @@ class AttachedDiskResponse(dict):
     @pulumi.getter
     def source(self) -> str:
         """
-        Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks. Note that for InstanceTemplate, specify the disk name, not the URL for the disk.
+        Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. If desired, you can also attach existing non-root persistent disks using this property. This field is only applicable for persistent disks. Note that for InstanceTemplate, specify the disk name for zonal disk, and the URL for regional disk.
         """
         return pulumi.get(self, "source")
 
@@ -2149,7 +2178,7 @@ class BackendBucketCdnPolicyResponse(dict):
         :param Sequence['BackendBucketCdnPolicyBypassCacheOnRequestHeaderResponse'] bypass_cache_on_request_headers: Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
         :param 'BackendBucketCdnPolicyCacheKeyPolicyResponse' cache_key_policy: The CacheKeyPolicy for this CdnPolicy.
         :param str cache_mode: Specifies the cache setting for all responses from this backend. The possible values are: USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server. FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content. CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
-        :param int client_ttl: Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
+        :param int client_ttl: Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 31,622,400s (1 year).
         :param int default_ttl: Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-max-age). Setting a TTL of "0" means "always revalidate". The value of defaultTTL cannot be set to a value greater than that of maxTTL, but can be equal. When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses. The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
         :param int max_ttl: Specifies the maximum allowed TTL for cached content served by this origin. Cache directives that attempt to set a max-age or s-maxage higher than this, or an Expires header more than maxTTL seconds in the future will be capped at the value of maxTTL, as if it were the value of an s-maxage Cache-Control directive. Headers sent to the client will not be modified. Setting a TTL of "0" means "always revalidate". The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
         :param bool negative_caching: Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency. When the cache mode is set to CACHE_ALL_STATIC or USE_ORIGIN_HEADERS, negative caching applies to responses with the specified response code that lack any Cache-Control, Expires, or Pragma: no-cache directives. When the cache mode is set to FORCE_CACHE_ALL, negative caching applies to all responses with the specified response code, and override any caching headers. By default, Cloud CDN will apply the following default TTLs to these status codes: HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not Found), 421 (Misdirected Request), 501 (Not Implemented): 60s. These defaults can be overridden in negative_caching_policy.
@@ -2200,7 +2229,7 @@ class BackendBucketCdnPolicyResponse(dict):
     @pulumi.getter(name="clientTtl")
     def client_ttl(self) -> int:
         """
-        Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
+        Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 31,622,400s (1 year).
         """
         return pulumi.get(self, "client_ttl")
 
@@ -2579,7 +2608,7 @@ class BackendServiceCdnPolicyResponse(dict):
         :param Sequence['BackendServiceCdnPolicyBypassCacheOnRequestHeaderResponse'] bypass_cache_on_request_headers: Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
         :param 'CacheKeyPolicyResponse' cache_key_policy: The CacheKeyPolicy for this CdnPolicy.
         :param str cache_mode: Specifies the cache setting for all responses from this backend. The possible values are: USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server. FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content. CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
-        :param int client_ttl: Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
+        :param int client_ttl: Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 31,622,400s (1 year).
         :param int default_ttl: Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-max-age). Setting a TTL of "0" means "always revalidate". The value of defaultTTL cannot be set to a value greater than that of maxTTL, but can be equal. When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses. The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
         :param int max_ttl: Specifies the maximum allowed TTL for cached content served by this origin. Cache directives that attempt to set a max-age or s-maxage higher than this, or an Expires header more than maxTTL seconds in the future will be capped at the value of maxTTL, as if it were the value of an s-maxage Cache-Control directive. Headers sent to the client will not be modified. Setting a TTL of "0" means "always revalidate". The maximum allowed value is 31,622,400s (1 year), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
         :param bool negative_caching: Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency. When the cache mode is set to CACHE_ALL_STATIC or USE_ORIGIN_HEADERS, negative caching applies to responses with the specified response code that lack any Cache-Control, Expires, or Pragma: no-cache directives. When the cache mode is set to FORCE_CACHE_ALL, negative caching applies to all responses with the specified response code, and override any caching headers. By default, Cloud CDN will apply the following default TTLs to these status codes: HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not Found), 421 (Misdirected Request), 501 (Not Implemented): 60s. These defaults can be overridden in negative_caching_policy.
@@ -2630,7 +2659,7 @@ class BackendServiceCdnPolicyResponse(dict):
     @pulumi.getter(name="clientTtl")
     def client_ttl(self) -> int:
         """
-        Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 86400s (1 day).
+        Specifies a separate client (e.g. browser client) maximum TTL. This is used to clamp the max-age (or Expires) value sent to the client. With FORCE_CACHE_ALL, the lesser of client_ttl and default_ttl is used for the response max-age directive, along with a "public" directive. For cacheable content in CACHE_ALL_STATIC mode, client_ttl clamps the max-age from the origin (if specified), or else sets the response max-age directive to the lesser of the client_ttl and default_ttl, and also ensures a "public" cache-control directive is present. If a client TTL is not specified, a default value (1 hour) will be used. The maximum allowed value is 31,622,400s (1 year).
         """
         return pulumi.get(self, "client_ttl")
 
@@ -2734,10 +2763,10 @@ class BackendServiceConnectionTrackingPolicyResponse(dict):
                  tracking_mode: str):
         """
         Connection Tracking configuration for this BackendService.
-        :param str connection_persistence_on_unhealthy_backends: Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default.
+        :param str connection_persistence_on_unhealthy_backends: Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default. For more details, see [Connection Persistence for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#connection-persistence) and [Connection Persistence for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#connection-persistence).
         :param bool enable_strong_affinity: Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
-        :param int idle_timeout_sec: Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For Network Load Balancer the default is 60 seconds. This option is not available publicly. This field will be supported only if the Connection Tracking key is less than 5-tuple.
-        :param str tracking_mode: Specifies the key used for connection tracking. There are two options: PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity.
+        :param int idle_timeout_sec: Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For Internal TCP/UDP Load Balancing: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For Network Load Balancer the default is 60 seconds. This option is not available publicly.
+        :param str tracking_mode: Specifies the key used for connection tracking. There are two options: - PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. - PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity. For more details, see [Tracking Mode for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#tracking-mode) and [Tracking Mode for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#tracking-mode).
         """
         pulumi.set(__self__, "connection_persistence_on_unhealthy_backends", connection_persistence_on_unhealthy_backends)
         pulumi.set(__self__, "enable_strong_affinity", enable_strong_affinity)
@@ -2748,7 +2777,7 @@ class BackendServiceConnectionTrackingPolicyResponse(dict):
     @pulumi.getter(name="connectionPersistenceOnUnhealthyBackends")
     def connection_persistence_on_unhealthy_backends(self) -> str:
         """
-        Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default.
+        Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default. For more details, see [Connection Persistence for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#connection-persistence) and [Connection Persistence for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#connection-persistence).
         """
         return pulumi.get(self, "connection_persistence_on_unhealthy_backends")
 
@@ -2764,7 +2793,7 @@ class BackendServiceConnectionTrackingPolicyResponse(dict):
     @pulumi.getter(name="idleTimeoutSec")
     def idle_timeout_sec(self) -> int:
         """
-        Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours. For Network Load Balancer the default is 60 seconds. This option is not available publicly. This field will be supported only if the Connection Tracking key is less than 5-tuple.
+        Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For Internal TCP/UDP Load Balancing: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For Network Load Balancer the default is 60 seconds. This option is not available publicly.
         """
         return pulumi.get(self, "idle_timeout_sec")
 
@@ -2772,7 +2801,7 @@ class BackendServiceConnectionTrackingPolicyResponse(dict):
     @pulumi.getter(name="trackingMode")
     def tracking_mode(self) -> str:
         """
-        Specifies the key used for connection tracking. There are two options: PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity.
+        Specifies the key used for connection tracking. There are two options: - PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. - PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity. For more details, see [Tracking Mode for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#tracking-mode) and [Tracking Mode for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#tracking-mode).
         """
         return pulumi.get(self, "tracking_mode")
 
@@ -2780,7 +2809,7 @@ class BackendServiceConnectionTrackingPolicyResponse(dict):
 @pulumi.output_type
 class BackendServiceFailoverPolicyResponse(dict):
     """
-    For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
+    For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2808,10 +2837,10 @@ class BackendServiceFailoverPolicyResponse(dict):
                  drop_traffic_if_unhealthy: bool,
                  failover_ratio: float):
         """
-        For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
+        For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
         :param bool disable_connection_drain_on_failover: This can be set to true only if the protocol is TCP. The default is false.
-        :param bool drop_traffic_if_unhealthy: If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview). The default is false.
-        :param float failover_ratio: The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview).
+        :param bool drop_traffic_if_unhealthy: If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
+        :param float failover_ratio: The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
         """
         pulumi.set(__self__, "disable_connection_drain_on_failover", disable_connection_drain_on_failover)
         pulumi.set(__self__, "drop_traffic_if_unhealthy", drop_traffic_if_unhealthy)
@@ -2829,7 +2858,7 @@ class BackendServiceFailoverPolicyResponse(dict):
     @pulumi.getter(name="dropTrafficIfUnhealthy")
     def drop_traffic_if_unhealthy(self) -> bool:
         """
-        If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview). The default is false.
+        If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
         """
         return pulumi.get(self, "drop_traffic_if_unhealthy")
 
@@ -2837,7 +2866,7 @@ class BackendServiceFailoverPolicyResponse(dict):
     @pulumi.getter(name="failoverRatio")
     def failover_ratio(self) -> float:
         """
-        The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview).
+        The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
         """
         return pulumi.get(self, "failover_ratio")
 
@@ -3045,7 +3074,7 @@ class BackendServiceLogConfigResponse(dict):
 @pulumi.output_type
 class BindingResponse(dict):
     """
-    Associates `members` with a `role`.
+    Associates `members`, or principals, with a `role`.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -3070,11 +3099,11 @@ class BindingResponse(dict):
                  members: Sequence[str],
                  role: str):
         """
-        Associates `members` with a `role`.
+        Associates `members`, or principals, with a `role`.
         :param str binding_id: This is deprecated and has no effect. Do not use.
-        :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
-        :param str role: Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        :param Sequence[str] members: Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         pulumi.set(__self__, "binding_id", binding_id)
         pulumi.set(__self__, "condition", condition)
@@ -3093,7 +3122,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def condition(self) -> 'outputs.ExprResponse':
         """
-        The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         """
         return pulumi.get(self, "condition")
 
@@ -3101,7 +3130,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         """
         return pulumi.get(self, "members")
 
@@ -3109,7 +3138,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def role(self) -> str:
         """
-        Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
 
@@ -3657,7 +3686,7 @@ class ConsistentHashLoadBalancerSettingsResponse(dict):
                  minimum_ring_size: str):
         """
         This message defines settings for a consistent hash style load balancer.
-        :param 'ConsistentHashLoadBalancerSettingsHttpCookieResponse' http_cookie: Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+        :param 'ConsistentHashLoadBalancerSettingsHttpCookieResponse' http_cookie: Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         :param str http_header_name: The hash based on the value of the specified header field. This field is applicable if the sessionAffinity is set to HEADER_FIELD.
         :param str minimum_ring_size: The minimum number of virtual nodes to use for the hash ring. Defaults to 1024. Larger ring sizes result in more granular load distributions. If the number of hosts in the load balancing pool is larger than the ring size, each host will be assigned a single virtual node.
         """
@@ -3669,7 +3698,7 @@ class ConsistentHashLoadBalancerSettingsResponse(dict):
     @pulumi.getter(name="httpCookie")
     def http_cookie(self) -> 'outputs.ConsistentHashLoadBalancerSettingsHttpCookieResponse':
         """
-        Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+        Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "http_cookie")
 
@@ -3693,7 +3722,7 @@ class ConsistentHashLoadBalancerSettingsResponse(dict):
 @pulumi.output_type
 class CorsPolicyResponse(dict):
     """
-    The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing
+    The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -3734,15 +3763,15 @@ class CorsPolicyResponse(dict):
                  expose_headers: Sequence[str],
                  max_age: int):
         """
-        The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing
-        :param bool allow_credentials: In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header. Default is false.
+        The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard.
+        :param bool allow_credentials: In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header. Default is false.
         :param Sequence[str] allow_headers: Specifies the content for the Access-Control-Allow-Headers header.
         :param Sequence[str] allow_methods: Specifies the content for the Access-Control-Allow-Methods header.
-        :param Sequence[str] allow_origin_regexes: Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see github.com/google/re2/wiki/Syntax An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
-        :param Sequence[str] allow_origins: Specifies the list of origins that will be allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
-        :param bool disabled: If true, specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+        :param Sequence[str] allow_origin_regexes: Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        :param Sequence[str] allow_origins: Specifies the list of origins that is allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        :param bool disabled: If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
         :param Sequence[str] expose_headers: Specifies the content for the Access-Control-Expose-Headers header.
-        :param int max_age: Specifies how long results of a preflight request can be cached in seconds. This translates to the Access-Control-Max-Age header.
+        :param int max_age: Specifies how long results of a preflight request can be cached in seconds. This field translates to the Access-Control-Max-Age header.
         """
         pulumi.set(__self__, "allow_credentials", allow_credentials)
         pulumi.set(__self__, "allow_headers", allow_headers)
@@ -3757,7 +3786,7 @@ class CorsPolicyResponse(dict):
     @pulumi.getter(name="allowCredentials")
     def allow_credentials(self) -> bool:
         """
-        In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header. Default is false.
+        In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header. Default is false.
         """
         return pulumi.get(self, "allow_credentials")
 
@@ -3781,7 +3810,7 @@ class CorsPolicyResponse(dict):
     @pulumi.getter(name="allowOriginRegexes")
     def allow_origin_regexes(self) -> Sequence[str]:
         """
-        Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see github.com/google/re2/wiki/Syntax An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         """
         return pulumi.get(self, "allow_origin_regexes")
 
@@ -3789,7 +3818,7 @@ class CorsPolicyResponse(dict):
     @pulumi.getter(name="allowOrigins")
     def allow_origins(self) -> Sequence[str]:
         """
-        Specifies the list of origins that will be allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        Specifies the list of origins that is allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         """
         return pulumi.get(self, "allow_origins")
 
@@ -3797,7 +3826,7 @@ class CorsPolicyResponse(dict):
     @pulumi.getter
     def disabled(self) -> bool:
         """
-        If true, specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+        If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
         """
         return pulumi.get(self, "disabled")
 
@@ -3813,7 +3842,7 @@ class CorsPolicyResponse(dict):
     @pulumi.getter(name="maxAge")
     def max_age(self) -> int:
         """
-        Specifies how long results of a preflight request can be cached in seconds. This translates to the Access-Control-Max-Age header.
+        Specifies how long results of a preflight request can be cached in seconds. This field translates to the Access-Control-Max-Age header.
         """
         return pulumi.get(self, "max_age")
 
@@ -4617,12 +4646,16 @@ class FirewallPolicyRuleMatcherResponse(dict):
         suggest = None
         if key == "destAddressGroups":
             suggest = "dest_address_groups"
+        elif key == "destFqdns":
+            suggest = "dest_fqdns"
         elif key == "destIpRanges":
             suggest = "dest_ip_ranges"
         elif key == "layer4Configs":
             suggest = "layer4_configs"
         elif key == "srcAddressGroups":
             suggest = "src_address_groups"
+        elif key == "srcFqdns":
+            suggest = "src_fqdns"
         elif key == "srcIpRanges":
             suggest = "src_ip_ranges"
         elif key == "srcSecureTags":
@@ -4641,24 +4674,30 @@ class FirewallPolicyRuleMatcherResponse(dict):
 
     def __init__(__self__, *,
                  dest_address_groups: Sequence[str],
+                 dest_fqdns: Sequence[str],
                  dest_ip_ranges: Sequence[str],
                  layer4_configs: Sequence['outputs.FirewallPolicyRuleMatcherLayer4ConfigResponse'],
                  src_address_groups: Sequence[str],
+                 src_fqdns: Sequence[str],
                  src_ip_ranges: Sequence[str],
                  src_secure_tags: Sequence['outputs.FirewallPolicyRuleSecureTagResponse']):
         """
         Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
         :param Sequence[str] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
+        :param Sequence[str] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 1000.
         :param Sequence[str] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
         :param Sequence['FirewallPolicyRuleMatcherLayer4ConfigResponse'] layer4_configs: Pairs of IP protocols and ports that the rule should match.
         :param Sequence[str] src_address_groups: Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
+        :param Sequence[str] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 1000.
         :param Sequence[str] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
         :param Sequence['FirewallPolicyRuleSecureTagResponse'] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
         """
         pulumi.set(__self__, "dest_address_groups", dest_address_groups)
+        pulumi.set(__self__, "dest_fqdns", dest_fqdns)
         pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
         pulumi.set(__self__, "layer4_configs", layer4_configs)
         pulumi.set(__self__, "src_address_groups", src_address_groups)
+        pulumi.set(__self__, "src_fqdns", src_fqdns)
         pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
         pulumi.set(__self__, "src_secure_tags", src_secure_tags)
 
@@ -4669,6 +4708,14 @@ class FirewallPolicyRuleMatcherResponse(dict):
         Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
         """
         return pulumi.get(self, "dest_address_groups")
+
+    @property
+    @pulumi.getter(name="destFqdns")
+    def dest_fqdns(self) -> Sequence[str]:
+        """
+        Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 1000.
+        """
+        return pulumi.get(self, "dest_fqdns")
 
     @property
     @pulumi.getter(name="destIpRanges")
@@ -4693,6 +4740,14 @@ class FirewallPolicyRuleMatcherResponse(dict):
         Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
         """
         return pulumi.get(self, "src_address_groups")
+
+    @property
+    @pulumi.getter(name="srcFqdns")
+    def src_fqdns(self) -> Sequence[str]:
+        """
+        Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 1000.
+        """
+        return pulumi.get(self, "src_fqdns")
 
     @property
     @pulumi.getter(name="srcIpRanges")
@@ -5336,7 +5391,7 @@ class GuestOsFeatureResponse(dict):
                  type: str):
         """
         Guest OS features.
-        :param str type: The ID of a supported feature. Read Enabling guest operating system features to see a list of available options.
+        :param str type: The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
         """
         pulumi.set(__self__, "type", type)
 
@@ -5344,7 +5399,7 @@ class GuestOsFeatureResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The ID of a supported feature. Read Enabling guest operating system features to see a list of available options.
+        The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
         """
         return pulumi.get(self, "type")
 
@@ -5760,7 +5815,7 @@ class HostRuleResponse(dict):
         """
         UrlMaps A host-matching rule for a URL. If matched, will use the named PathMatcher to select the BackendService.
         :param str description: An optional description of this resource. Provide this property when you create the resource.
-        :param Sequence[str] hosts: The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or .. * based matching is not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param Sequence[str] hosts: The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or .. * based matching is not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
         :param str path_matcher: The name of the PathMatcher to use to match the path portion of the URL if the hostRule matches the URL's host portion.
         """
         pulumi.set(__self__, "description", description)
@@ -5779,7 +5834,7 @@ class HostRuleResponse(dict):
     @pulumi.getter
     def hosts(self) -> Sequence[str]:
         """
-        The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or .. * based matching is not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+        The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or .. * based matching is not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
         """
         return pulumi.get(self, "hosts")
 
@@ -5819,8 +5874,8 @@ class HttpFaultAbortResponse(dict):
                  percentage: float):
         """
         Specification for how requests are aborted as part of fault injection.
-        :param int http_status: The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive. For gRPC protocol, the gRPC status code is mapped to HTTP status code according to this mapping table. HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK status is currently not supported by Traffic Director.
-        :param float percentage: The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
+        :param int http_status: The HTTP status code used to abort the request. The value must be from 200 to 599 inclusive. For gRPC protocol, the gRPC status code is mapped to HTTP status code according to this mapping table. HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK status is currently not supported by Traffic Director.
+        :param float percentage: The percentage of traffic for connections, operations, or requests that is aborted as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
         """
         pulumi.set(__self__, "http_status", http_status)
         pulumi.set(__self__, "percentage", percentage)
@@ -5829,7 +5884,7 @@ class HttpFaultAbortResponse(dict):
     @pulumi.getter(name="httpStatus")
     def http_status(self) -> int:
         """
-        The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive. For gRPC protocol, the gRPC status code is mapped to HTTP status code according to this mapping table. HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK status is currently not supported by Traffic Director.
+        The HTTP status code used to abort the request. The value must be from 200 to 599 inclusive. For gRPC protocol, the gRPC status code is mapped to HTTP status code according to this mapping table. HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK status is currently not supported by Traffic Director.
         """
         return pulumi.get(self, "http_status")
 
@@ -5837,7 +5892,7 @@ class HttpFaultAbortResponse(dict):
     @pulumi.getter
     def percentage(self) -> float:
         """
-        The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
+        The percentage of traffic for connections, operations, or requests that is aborted as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
         """
         return pulumi.get(self, "percentage")
 
@@ -5845,7 +5900,7 @@ class HttpFaultAbortResponse(dict):
 @pulumi.output_type
 class HttpFaultDelayResponse(dict):
     """
-    Specifies the delay introduced by Loadbalancer before forwarding the request to the backend service as part of fault injection.
+    Specifies the delay introduced by the load balancer before forwarding the request to the backend service as part of fault injection.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -5868,9 +5923,9 @@ class HttpFaultDelayResponse(dict):
                  fixed_delay: 'outputs.DurationResponse',
                  percentage: float):
         """
-        Specifies the delay introduced by Loadbalancer before forwarding the request to the backend service as part of fault injection.
+        Specifies the delay introduced by the load balancer before forwarding the request to the backend service as part of fault injection.
         :param 'DurationResponse' fixed_delay: Specifies the value of the fixed delay interval.
-        :param float percentage: The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
+        :param float percentage: The percentage of traffic for connections, operations, or requests for which a delay is introduced as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
         """
         pulumi.set(__self__, "fixed_delay", fixed_delay)
         pulumi.set(__self__, "percentage", percentage)
@@ -5887,7 +5942,7 @@ class HttpFaultDelayResponse(dict):
     @pulumi.getter
     def percentage(self) -> float:
         """
-        The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
+        The percentage of traffic for connections, operations, or requests for which a delay is introduced as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
         """
         return pulumi.get(self, "percentage")
 
@@ -5895,13 +5950,13 @@ class HttpFaultDelayResponse(dict):
 @pulumi.output_type
 class HttpFaultInjectionResponse(dict):
     """
-    The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests.
+    The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by the load balancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
     """
     def __init__(__self__, *,
                  abort: 'outputs.HttpFaultAbortResponse',
                  delay: 'outputs.HttpFaultDelayResponse'):
         """
-        The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests.
+        The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by the load balancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
         :param 'HttpFaultAbortResponse' abort: The specification for how client requests are aborted as part of fault injection.
         :param 'HttpFaultDelayResponse' delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
         """
@@ -6023,10 +6078,10 @@ class HttpHeaderActionResponse(dict):
                  response_headers_to_remove: Sequence[str]):
         """
         The request and response header transformations that take effect before the request is passed along to the selected backendService.
-        :param Sequence['HttpHeaderOptionResponse'] request_headers_to_add: Headers to add to a matching request prior to forwarding the request to the backendService.
-        :param Sequence[str] request_headers_to_remove: A list of header names for headers that need to be removed from the request prior to forwarding the request to the backendService.
-        :param Sequence['HttpHeaderOptionResponse'] response_headers_to_add: Headers to add the response prior to sending the response back to the client.
-        :param Sequence[str] response_headers_to_remove: A list of header names for headers that need to be removed from the response prior to sending the response back to the client.
+        :param Sequence['HttpHeaderOptionResponse'] request_headers_to_add: Headers to add to a matching request before forwarding the request to the backendService.
+        :param Sequence[str] request_headers_to_remove: A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
+        :param Sequence['HttpHeaderOptionResponse'] response_headers_to_add: Headers to add the response before sending the response back to the client.
+        :param Sequence[str] response_headers_to_remove: A list of header names for headers that need to be removed from the response before sending the response back to the client.
         """
         pulumi.set(__self__, "request_headers_to_add", request_headers_to_add)
         pulumi.set(__self__, "request_headers_to_remove", request_headers_to_remove)
@@ -6037,7 +6092,7 @@ class HttpHeaderActionResponse(dict):
     @pulumi.getter(name="requestHeadersToAdd")
     def request_headers_to_add(self) -> Sequence['outputs.HttpHeaderOptionResponse']:
         """
-        Headers to add to a matching request prior to forwarding the request to the backendService.
+        Headers to add to a matching request before forwarding the request to the backendService.
         """
         return pulumi.get(self, "request_headers_to_add")
 
@@ -6045,7 +6100,7 @@ class HttpHeaderActionResponse(dict):
     @pulumi.getter(name="requestHeadersToRemove")
     def request_headers_to_remove(self) -> Sequence[str]:
         """
-        A list of header names for headers that need to be removed from the request prior to forwarding the request to the backendService.
+        A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
         """
         return pulumi.get(self, "request_headers_to_remove")
 
@@ -6053,7 +6108,7 @@ class HttpHeaderActionResponse(dict):
     @pulumi.getter(name="responseHeadersToAdd")
     def response_headers_to_add(self) -> Sequence['outputs.HttpHeaderOptionResponse']:
         """
-        Headers to add the response prior to sending the response back to the client.
+        Headers to add the response before sending the response back to the client.
         """
         return pulumi.get(self, "response_headers_to_add")
 
@@ -6061,7 +6116,7 @@ class HttpHeaderActionResponse(dict):
     @pulumi.getter(name="responseHeadersToRemove")
     def response_headers_to_remove(self) -> Sequence[str]:
         """
-        A list of header names for headers that need to be removed from the response prior to sending the response back to the client.
+        A list of header names for headers that need to be removed from the response before sending the response back to the client.
         """
         return pulumi.get(self, "response_headers_to_remove")
 
@@ -6114,12 +6169,12 @@ class HttpHeaderMatchResponse(dict):
         """
         matchRule criteria for request header matches.
         :param str exact_match: The value should exactly match contents of exactMatch. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
-        :param str header_name: The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method". When the URL map is bound to target gRPC proxy that has validateForProxyless field set to true, only non-binary user-specified custom metadata and the `content-type` header are supported. The following transport-level headers cannot be used in header matching rules: `:authority`, `:method`, `:path`, `:scheme`, `user-agent`, `accept-encoding`, `content-encoding`, `grpc-accept-encoding`, `grpc-encoding`, `grpc-previous-rpc-attempts`, `grpc-tags-bin`, `grpc-timeout` and `grpc-trace-bin.
-        :param bool invert_match: If set to false, the headerMatch is considered a match if the match criteria above are met. If set to true, the headerMatch is considered a match if the match criteria above are NOT met. The default setting is false.
+        :param str header_name: The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method". When the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true, only non-binary user-specified custom metadata and the `content-type` header are supported. The following transport-level headers cannot be used in header matching rules: `:authority`, `:method`, `:path`, `:scheme`, `user-agent`, `accept-encoding`, `content-encoding`, `grpc-accept-encoding`, `grpc-encoding`, `grpc-previous-rpc-attempts`, `grpc-tags-bin`, `grpc-timeout` and `grpc-trace-bin`.
+        :param bool invert_match: If set to false, the headerMatch is considered a match if the preceding match criteria are met. If set to true, the headerMatch is considered a match if the preceding match criteria are NOT met. The default setting is false. 
         :param str prefix_match: The value of the header must start with the contents of prefixMatch. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
         :param bool present_match: A header with the contents of headerName must exist. The match takes place whether or not the request's header has a value. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
-        :param 'Int64RangeMatchResponse' range_match: The header value must be an integer and its value must be in the range specified in rangeMatch. If the header does not contain an integer, number or is empty, the match fails. For example for a range [-5, 0] - -3 will match. - 0 will not match. - 0.25 will not match. - -3someString will not match. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Note that rangeMatch is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL.
-        :param str regex_match: The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see: github.com/google/re2/wiki/Syntax For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        :param 'Int64RangeMatchResponse' range_match: The header value must be an integer and its value must be in the range specified in rangeMatch. If the header does not contain an integer, number or is empty, the match fails. For example for a range [-5, 0] - -3 will match. - 0 will not match. - 0.25 will not match. - -3someString will not match. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. rangeMatch is not supported for load balancers that have loadBalancingScheme set to EXTERNAL.
+        :param str regex_match: The value of the header must match the regular expression specified in regexMatch. For more information about regular expression syntax, see Syntax. For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         :param str suffix_match: The value of the header must end with the contents of suffixMatch. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
         """
         pulumi.set(__self__, "exact_match", exact_match)
@@ -6143,7 +6198,7 @@ class HttpHeaderMatchResponse(dict):
     @pulumi.getter(name="headerName")
     def header_name(self) -> str:
         """
-        The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method". When the URL map is bound to target gRPC proxy that has validateForProxyless field set to true, only non-binary user-specified custom metadata and the `content-type` header are supported. The following transport-level headers cannot be used in header matching rules: `:authority`, `:method`, `:path`, `:scheme`, `user-agent`, `accept-encoding`, `content-encoding`, `grpc-accept-encoding`, `grpc-encoding`, `grpc-previous-rpc-attempts`, `grpc-tags-bin`, `grpc-timeout` and `grpc-trace-bin.
+        The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method". When the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true, only non-binary user-specified custom metadata and the `content-type` header are supported. The following transport-level headers cannot be used in header matching rules: `:authority`, `:method`, `:path`, `:scheme`, `user-agent`, `accept-encoding`, `content-encoding`, `grpc-accept-encoding`, `grpc-encoding`, `grpc-previous-rpc-attempts`, `grpc-tags-bin`, `grpc-timeout` and `grpc-trace-bin`.
         """
         return pulumi.get(self, "header_name")
 
@@ -6151,7 +6206,7 @@ class HttpHeaderMatchResponse(dict):
     @pulumi.getter(name="invertMatch")
     def invert_match(self) -> bool:
         """
-        If set to false, the headerMatch is considered a match if the match criteria above are met. If set to true, the headerMatch is considered a match if the match criteria above are NOT met. The default setting is false.
+        If set to false, the headerMatch is considered a match if the preceding match criteria are met. If set to true, the headerMatch is considered a match if the preceding match criteria are NOT met. The default setting is false. 
         """
         return pulumi.get(self, "invert_match")
 
@@ -6175,7 +6230,7 @@ class HttpHeaderMatchResponse(dict):
     @pulumi.getter(name="rangeMatch")
     def range_match(self) -> 'outputs.Int64RangeMatchResponse':
         """
-        The header value must be an integer and its value must be in the range specified in rangeMatch. If the header does not contain an integer, number or is empty, the match fails. For example for a range [-5, 0] - -3 will match. - 0 will not match. - 0.25 will not match. - -3someString will not match. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Note that rangeMatch is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL.
+        The header value must be an integer and its value must be in the range specified in rangeMatch. If the header does not contain an integer, number or is empty, the match fails. For example for a range [-5, 0] - -3 will match. - 0 will not match. - 0.25 will not match. - -3someString will not match. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. rangeMatch is not supported for load balancers that have loadBalancingScheme set to EXTERNAL.
         """
         return pulumi.get(self, "range_match")
 
@@ -6183,7 +6238,7 @@ class HttpHeaderMatchResponse(dict):
     @pulumi.getter(name="regexMatch")
     def regex_match(self) -> str:
         """
-        The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see: github.com/google/re2/wiki/Syntax For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        The value of the header must match the regular expression specified in regexMatch. For more information about regular expression syntax, see Syntax. For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         """
         return pulumi.get(self, "regex_match")
 
@@ -6228,7 +6283,7 @@ class HttpHeaderOptionResponse(dict):
         Specification determining how headers are added to requests or responses.
         :param str header_name: The name of the header.
         :param str header_value: The value of the header to add.
-        :param bool replace: If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header. The default value is false.
+        :param bool replace: If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header. The default value is false. 
         """
         pulumi.set(__self__, "header_name", header_name)
         pulumi.set(__self__, "header_value", header_value)
@@ -6254,7 +6309,7 @@ class HttpHeaderOptionResponse(dict):
     @pulumi.getter
     def replace(self) -> bool:
         """
-        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header. The default value is false.
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header. The default value is false. 
         """
         return pulumi.get(self, "replace")
 
@@ -6292,10 +6347,10 @@ class HttpQueryParameterMatchResponse(dict):
                  regex_match: str):
         """
         HttpRouteRuleMatch criteria for a request's query parameter.
-        :param str exact_match: The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch. Only one of presentMatch, exactMatch or regexMatch must be set.
+        :param str exact_match: The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch. Only one of presentMatch, exactMatch, or regexMatch must be set. 
         :param str name: The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
-        :param bool present_match: Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not. Only one of presentMatch, exactMatch or regexMatch must be set.
-        :param str regex_match: The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For the regular expression grammar, please see github.com/google/re2/wiki/Syntax Only one of presentMatch, exactMatch or regexMatch must be set. Note that regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+        :param bool present_match: Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not. Only one of presentMatch, exactMatch, or regexMatch must be set. 
+        :param str regex_match: The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For more information about regular expression syntax, see Syntax. Only one of presentMatch, exactMatch, or regexMatch must be set. regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED. 
         """
         pulumi.set(__self__, "exact_match", exact_match)
         pulumi.set(__self__, "name", name)
@@ -6306,7 +6361,7 @@ class HttpQueryParameterMatchResponse(dict):
     @pulumi.getter(name="exactMatch")
     def exact_match(self) -> str:
         """
-        The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch. Only one of presentMatch, exactMatch or regexMatch must be set.
+        The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch. Only one of presentMatch, exactMatch, or regexMatch must be set. 
         """
         return pulumi.get(self, "exact_match")
 
@@ -6322,7 +6377,7 @@ class HttpQueryParameterMatchResponse(dict):
     @pulumi.getter(name="presentMatch")
     def present_match(self) -> bool:
         """
-        Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not. Only one of presentMatch, exactMatch or regexMatch must be set.
+        Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not. Only one of presentMatch, exactMatch, or regexMatch must be set. 
         """
         return pulumi.get(self, "present_match")
 
@@ -6330,7 +6385,7 @@ class HttpQueryParameterMatchResponse(dict):
     @pulumi.getter(name="regexMatch")
     def regex_match(self) -> str:
         """
-        The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For the regular expression grammar, please see github.com/google/re2/wiki/Syntax Only one of presentMatch, exactMatch or regexMatch must be set. Note that regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+        The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For more information about regular expression syntax, see Syntax. Only one of presentMatch, exactMatch, or regexMatch must be set. regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED. 
         """
         return pulumi.get(self, "regex_match")
 
@@ -6376,12 +6431,12 @@ class HttpRedirectActionResponse(dict):
                  strip_query: bool):
         """
         Specifies settings for an HTTP redirect.
-        :param str host_redirect: The host that will be used in the redirect response instead of the one that was supplied in the request. The value must be between 1 and 255 characters.
-        :param bool https_redirect: If set to true, the URL scheme in the redirected request is set to https. If set to false, the URL scheme of the redirected request will remain the same as that of the request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
-        :param str path_redirect: The path that will be used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
-        :param str prefix_redirect: The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
-        :param str redirect_response_code: The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained. 
-        :param bool strip_query: If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false.
+        :param str host_redirect: The host that is used in the redirect response instead of the one that was supplied in the request. The value must be from 1 to 255 characters.
+        :param bool https_redirect: If set to true, the URL scheme in the redirected request is set to HTTPS. If set to false, the URL scheme of the redirected request remains the same as that of the request. This must only be set for URL maps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
+        :param str path_redirect: The path that is used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters.
+        :param str prefix_redirect: The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters.
+        :param str redirect_response_code: The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method is retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method is retained. 
+        :param bool strip_query: If set to true, any accompanying query portion of the original URL is removed before redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false. 
         """
         pulumi.set(__self__, "host_redirect", host_redirect)
         pulumi.set(__self__, "https_redirect", https_redirect)
@@ -6394,7 +6449,7 @@ class HttpRedirectActionResponse(dict):
     @pulumi.getter(name="hostRedirect")
     def host_redirect(self) -> str:
         """
-        The host that will be used in the redirect response instead of the one that was supplied in the request. The value must be between 1 and 255 characters.
+        The host that is used in the redirect response instead of the one that was supplied in the request. The value must be from 1 to 255 characters.
         """
         return pulumi.get(self, "host_redirect")
 
@@ -6402,7 +6457,7 @@ class HttpRedirectActionResponse(dict):
     @pulumi.getter(name="httpsRedirect")
     def https_redirect(self) -> bool:
         """
-        If set to true, the URL scheme in the redirected request is set to https. If set to false, the URL scheme of the redirected request will remain the same as that of the request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
+        If set to true, the URL scheme in the redirected request is set to HTTPS. If set to false, the URL scheme of the redirected request remains the same as that of the request. This must only be set for URL maps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
         """
         return pulumi.get(self, "https_redirect")
 
@@ -6410,7 +6465,7 @@ class HttpRedirectActionResponse(dict):
     @pulumi.getter(name="pathRedirect")
     def path_redirect(self) -> str:
         """
-        The path that will be used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
+        The path that is used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters.
         """
         return pulumi.get(self, "path_redirect")
 
@@ -6418,7 +6473,7 @@ class HttpRedirectActionResponse(dict):
     @pulumi.getter(name="prefixRedirect")
     def prefix_redirect(self) -> str:
         """
-        The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
+        The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request is used for the redirect. The value must be from 1 to 1024 characters.
         """
         return pulumi.get(self, "prefix_redirect")
 
@@ -6426,7 +6481,7 @@ class HttpRedirectActionResponse(dict):
     @pulumi.getter(name="redirectResponseCode")
     def redirect_response_code(self) -> str:
         """
-        The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained. 
+        The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method is retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method is retained. 
         """
         return pulumi.get(self, "redirect_response_code")
 
@@ -6434,7 +6489,7 @@ class HttpRedirectActionResponse(dict):
     @pulumi.getter(name="stripQuery")
     def strip_query(self) -> bool:
         """
-        If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false.
+        If set to true, any accompanying query portion of the original URL is removed before redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false. 
         """
         return pulumi.get(self, "strip_query")
 
@@ -6472,8 +6527,8 @@ class HttpRetryPolicyResponse(dict):
         """
         The retry policy associates with HttpRouteRule
         :param int num_retries: Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
-        :param 'DurationResponse' per_try_timeout: Specifies a non-zero timeout per retry attempt. If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set, will use the largest timeout among all backend services associated with the route.
-        :param Sequence[str] retry_conditions: Specifies one or more conditions when this retry policy applies. Valid values are: - 5xx: Retry will be attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all, example: disconnects, reset, read timeout, connection failure, and refused streams. - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504. - - connect-failure: A retry will be attempted on failures connecting to the instance or endpoint, for example due to connection timeouts. - retriable-4xx: A retry will be attempted if the instance or endpoint responds with a retriable 4xx response code. Currently the only retriable error supported is 409. - refused-stream: A retry will be attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: A retry will be attempted if the gRPC status code in the response header is set to cancelled. - deadline-exceeded: A retry will be attempted if the gRPC status code in the response header is set to deadline-exceeded. - internal: A retry will be attempted if the gRPC status code in the response header is set to internal. - resource-exhausted: A retry will be attempted if the gRPC status code in the response header is set to resource-exhausted. - unavailable: A retry will be attempted if the gRPC status code in the response header is set to unavailable. 
+        :param 'DurationResponse' per_try_timeout: Specifies a non-zero timeout per retry attempt. If not specified, will use the timeout set in the HttpRouteAction field. If timeout in the HttpRouteAction field is not set, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+        :param Sequence[str] retry_conditions: Specifies one or more conditions when this retry policy applies. Valid values are: - 5xx: retry is attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all. For example, disconnects, reset, read timeout, connection failure, and refused streams. - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504. - connect-failure: a retry is attempted on failures connecting to the instance or endpoint. For example, connection timeouts. - retriable-4xx: a retry is attempted if the instance or endpoint responds with a 4xx response code. The only error that you can retry is error code 409. - refused-stream: a retry is attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: a retry is attempted if the gRPC status code in the response header is set to cancelled. - deadline-exceeded: a retry is attempted if the gRPC status code in the response header is set to deadline-exceeded. - internal: a retry is attempted if the gRPC status code in the response header is set to internal. - resource-exhausted: a retry is attempted if the gRPC status code in the response header is set to resource-exhausted. - unavailable: a retry is attempted if the gRPC status code in the response header is set to unavailable. Only the following codes are supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true. - cancelled - deadline-exceeded - internal - resource-exhausted - unavailable 
         """
         pulumi.set(__self__, "num_retries", num_retries)
         pulumi.set(__self__, "per_try_timeout", per_try_timeout)
@@ -6491,7 +6546,7 @@ class HttpRetryPolicyResponse(dict):
     @pulumi.getter(name="perTryTimeout")
     def per_try_timeout(self) -> 'outputs.DurationResponse':
         """
-        Specifies a non-zero timeout per retry attempt. If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set, will use the largest timeout among all backend services associated with the route.
+        Specifies a non-zero timeout per retry attempt. If not specified, will use the timeout set in the HttpRouteAction field. If timeout in the HttpRouteAction field is not set, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
         """
         return pulumi.get(self, "per_try_timeout")
 
@@ -6499,7 +6554,7 @@ class HttpRetryPolicyResponse(dict):
     @pulumi.getter(name="retryConditions")
     def retry_conditions(self) -> Sequence[str]:
         """
-        Specifies one or more conditions when this retry policy applies. Valid values are: - 5xx: Retry will be attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all, example: disconnects, reset, read timeout, connection failure, and refused streams. - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504. - - connect-failure: A retry will be attempted on failures connecting to the instance or endpoint, for example due to connection timeouts. - retriable-4xx: A retry will be attempted if the instance or endpoint responds with a retriable 4xx response code. Currently the only retriable error supported is 409. - refused-stream: A retry will be attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: A retry will be attempted if the gRPC status code in the response header is set to cancelled. - deadline-exceeded: A retry will be attempted if the gRPC status code in the response header is set to deadline-exceeded. - internal: A retry will be attempted if the gRPC status code in the response header is set to internal. - resource-exhausted: A retry will be attempted if the gRPC status code in the response header is set to resource-exhausted. - unavailable: A retry will be attempted if the gRPC status code in the response header is set to unavailable. 
+        Specifies one or more conditions when this retry policy applies. Valid values are: - 5xx: retry is attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all. For example, disconnects, reset, read timeout, connection failure, and refused streams. - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504. - connect-failure: a retry is attempted on failures connecting to the instance or endpoint. For example, connection timeouts. - retriable-4xx: a retry is attempted if the instance or endpoint responds with a 4xx response code. The only error that you can retry is error code 409. - refused-stream: a retry is attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: a retry is attempted if the gRPC status code in the response header is set to cancelled. - deadline-exceeded: a retry is attempted if the gRPC status code in the response header is set to deadline-exceeded. - internal: a retry is attempted if the gRPC status code in the response header is set to internal. - resource-exhausted: a retry is attempted if the gRPC status code in the response header is set to resource-exhausted. - unavailable: a retry is attempted if the gRPC status code in the response header is set to unavailable. Only the following codes are supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true. - cancelled - deadline-exceeded - internal - resource-exhausted - unavailable 
         """
         return pulumi.get(self, "retry_conditions")
 
@@ -6545,14 +6600,14 @@ class HttpRouteActionResponse(dict):
                  url_rewrite: 'outputs.UrlRewriteResponse',
                  weighted_backend_services: Sequence['outputs.WeightedBackendServiceResponse']):
         """
-        :param 'CorsPolicyResponse' cors_policy: The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing Not supported when the URL map is bound to target gRPC proxy.
-        :param 'HttpFaultInjectionResponse' fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests. For the requests impacted by fault injection, timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy.
-        :param 'DurationResponse' max_stream_duration: Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (i.e. end-of-stream), the duration in this field is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, will use the largest maxStreamDuration among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
-        :param 'RequestMirrorPolicyResponse' request_mirror_policy: Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
-        :param 'HttpRetryPolicyResponse' retry_policy: Specifies the retry policy associated with this route. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
-        :param 'DurationResponse' timeout: Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries. If not specified, will use the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
-        :param 'UrlRewriteResponse' url_rewrite: The spec to modify the URL of the request, prior to forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
-        :param Sequence['WeightedBackendServiceResponse'] weighted_backend_services: A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number. Once a backendService is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
+        :param 'CorsPolicyResponse' cors_policy: The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard. Not supported when the URL map is bound to a target gRPC proxy.
+        :param 'HttpFaultInjectionResponse' fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. For the requests impacted by fault injection, timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy.
+        :param 'DurationResponse' max_stream_duration: Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (known as *end-of-stream*), the duration in this field is computed from the beginning of the stream until the response has been processed, including all retries. A stream that does not complete in this duration is closed. If not specified, this field uses the maximum maxStreamDuration value among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        :param 'RequestMirrorPolicyResponse' request_mirror_policy: Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+        :param 'HttpRetryPolicyResponse' retry_policy: Specifies the retry policy associated with this route.
+        :param 'DurationResponse' timeout: Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as *end-of-stream*) up until the response has been processed. Timeout includes all retries. If not specified, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        :param 'UrlRewriteResponse' url_rewrite: The spec to modify the URL of the request, before forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+        :param Sequence['WeightedBackendServiceResponse'] weighted_backend_services: A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number. After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
         """
         pulumi.set(__self__, "cors_policy", cors_policy)
         pulumi.set(__self__, "fault_injection_policy", fault_injection_policy)
@@ -6567,7 +6622,7 @@ class HttpRouteActionResponse(dict):
     @pulumi.getter(name="corsPolicy")
     def cors_policy(self) -> 'outputs.CorsPolicyResponse':
         """
-        The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing Not supported when the URL map is bound to target gRPC proxy.
+        The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard. Not supported when the URL map is bound to a target gRPC proxy.
         """
         return pulumi.get(self, "cors_policy")
 
@@ -6575,7 +6630,7 @@ class HttpRouteActionResponse(dict):
     @pulumi.getter(name="faultInjectionPolicy")
     def fault_injection_policy(self) -> 'outputs.HttpFaultInjectionResponse':
         """
-        The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests. For the requests impacted by fault injection, timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy.
+        The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. For the requests impacted by fault injection, timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy.
         """
         return pulumi.get(self, "fault_injection_policy")
 
@@ -6583,7 +6638,7 @@ class HttpRouteActionResponse(dict):
     @pulumi.getter(name="maxStreamDuration")
     def max_stream_duration(self) -> 'outputs.DurationResponse':
         """
-        Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (i.e. end-of-stream), the duration in this field is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, will use the largest maxStreamDuration among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (known as *end-of-stream*), the duration in this field is computed from the beginning of the stream until the response has been processed, including all retries. A stream that does not complete in this duration is closed. If not specified, this field uses the maximum maxStreamDuration value among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         """
         return pulumi.get(self, "max_stream_duration")
 
@@ -6591,7 +6646,7 @@ class HttpRouteActionResponse(dict):
     @pulumi.getter(name="requestMirrorPolicy")
     def request_mirror_policy(self) -> 'outputs.RequestMirrorPolicyResponse':
         """
-        Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
         """
         return pulumi.get(self, "request_mirror_policy")
 
@@ -6599,7 +6654,7 @@ class HttpRouteActionResponse(dict):
     @pulumi.getter(name="retryPolicy")
     def retry_policy(self) -> 'outputs.HttpRetryPolicyResponse':
         """
-        Specifies the retry policy associated with this route. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Specifies the retry policy associated with this route.
         """
         return pulumi.get(self, "retry_policy")
 
@@ -6607,7 +6662,7 @@ class HttpRouteActionResponse(dict):
     @pulumi.getter
     def timeout(self) -> 'outputs.DurationResponse':
         """
-        Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries. If not specified, will use the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as *end-of-stream*) up until the response has been processed. Timeout includes all retries. If not specified, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "timeout")
 
@@ -6615,7 +6670,7 @@ class HttpRouteActionResponse(dict):
     @pulumi.getter(name="urlRewrite")
     def url_rewrite(self) -> 'outputs.UrlRewriteResponse':
         """
-        The spec to modify the URL of the request, prior to forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+        The spec to modify the URL of the request, before forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
         """
         return pulumi.get(self, "url_rewrite")
 
@@ -6623,7 +6678,7 @@ class HttpRouteActionResponse(dict):
     @pulumi.getter(name="weightedBackendServices")
     def weighted_backend_services(self) -> Sequence['outputs.WeightedBackendServiceResponse']:
         """
-        A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number. Once a backendService is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
+        A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number. After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
         """
         return pulumi.get(self, "weighted_backend_services")
 
@@ -6672,13 +6727,13 @@ class HttpRouteRuleMatchResponse(dict):
                  regex_match: str):
         """
         HttpRouteRuleMatch specifies a set of criteria for matching requests to an HttpRouteRule. All specified criteria must be satisfied for a match to occur.
-        :param str full_path_match: For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL. fullPathMatch must be between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+        :param str full_path_match: For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL. fullPathMatch must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
         :param Sequence['HttpHeaderMatchResponse'] header_matches: Specifies a list of header match criteria, all of which must match corresponding headers in the request.
-        :param bool ignore_case: Specifies that prefixMatch and fullPathMatch matches are case sensitive. The default value is false. ignoreCase must not be used with regexMatch. Not supported when the URL map is bound to target gRPC proxy.
-        :param Sequence['MetadataFilterResponse'] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to Loadbalancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadataFilters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here will be applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
-        :param str prefix_match: For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
-        :param Sequence['HttpQueryParameterMatchResponse'] query_parameter_matches: Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to target gRPC proxy.
-        :param str regex_match: For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar please see github.com/google/re2/wiki/Syntax Only one of prefixMatch, fullPathMatch or regexMatch must be specified. Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        :param bool ignore_case: Specifies that prefixMatch and fullPathMatch matches are case sensitive. The default value is false. ignoreCase must not be used with regexMatch. Not supported when the URL map is bound to a target gRPC proxy.
+        :param Sequence['MetadataFilterResponse'] metadata_filters: Opaque filter criteria used by the load balancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to the load balancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadata filters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here is applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        :param str prefix_match: For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+        :param Sequence['HttpQueryParameterMatchResponse'] query_parameter_matches: Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to a target gRPC proxy.
+        :param str regex_match: For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For more information about regular expression syntax, see Syntax. Only one of prefixMatch, fullPathMatch or regexMatch must be specified. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         """
         pulumi.set(__self__, "full_path_match", full_path_match)
         pulumi.set(__self__, "header_matches", header_matches)
@@ -6692,7 +6747,7 @@ class HttpRouteRuleMatchResponse(dict):
     @pulumi.getter(name="fullPathMatch")
     def full_path_match(self) -> str:
         """
-        For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL. fullPathMatch must be between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+        For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL. fullPathMatch must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
         """
         return pulumi.get(self, "full_path_match")
 
@@ -6708,7 +6763,7 @@ class HttpRouteRuleMatchResponse(dict):
     @pulumi.getter(name="ignoreCase")
     def ignore_case(self) -> bool:
         """
-        Specifies that prefixMatch and fullPathMatch matches are case sensitive. The default value is false. ignoreCase must not be used with regexMatch. Not supported when the URL map is bound to target gRPC proxy.
+        Specifies that prefixMatch and fullPathMatch matches are case sensitive. The default value is false. ignoreCase must not be used with regexMatch. Not supported when the URL map is bound to a target gRPC proxy.
         """
         return pulumi.get(self, "ignore_case")
 
@@ -6716,7 +6771,7 @@ class HttpRouteRuleMatchResponse(dict):
     @pulumi.getter(name="metadataFilters")
     def metadata_filters(self) -> Sequence['outputs.MetadataFilterResponse']:
         """
-        Opaque filter criteria used by Loadbalancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to Loadbalancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadataFilters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here will be applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Opaque filter criteria used by the load balancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to the load balancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadata filters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here is applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "metadata_filters")
 
@@ -6724,7 +6779,7 @@ class HttpRouteRuleMatchResponse(dict):
     @pulumi.getter(name="prefixMatch")
     def prefix_match(self) -> str:
         """
-        For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+        For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
         """
         return pulumi.get(self, "prefix_match")
 
@@ -6732,7 +6787,7 @@ class HttpRouteRuleMatchResponse(dict):
     @pulumi.getter(name="queryParameterMatches")
     def query_parameter_matches(self) -> Sequence['outputs.HttpQueryParameterMatchResponse']:
         """
-        Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to target gRPC proxy.
+        Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to a target gRPC proxy.
         """
         return pulumi.get(self, "query_parameter_matches")
 
@@ -6740,7 +6795,7 @@ class HttpRouteRuleMatchResponse(dict):
     @pulumi.getter(name="regexMatch")
     def regex_match(self) -> str:
         """
-        For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar please see github.com/google/re2/wiki/Syntax Only one of prefixMatch, fullPathMatch or regexMatch must be specified. Note that regexMatch only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For more information about regular expression syntax, see Syntax. Only one of prefixMatch, fullPathMatch or regexMatch must be specified. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         """
         return pulumi.get(self, "regex_match")
 
@@ -6748,7 +6803,7 @@ class HttpRouteRuleMatchResponse(dict):
 @pulumi.output_type
 class HttpRouteRuleResponse(dict):
     """
-    An HttpRouteRule specifies how to match an HTTP request and the corresponding routing action that load balancing proxies will perform.
+    The HttpRouteRule setting specifies how to match an HTTP request and the corresponding routing action that load balancing proxies perform.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -6788,16 +6843,16 @@ class HttpRouteRuleResponse(dict):
                  service: str,
                  url_redirect: 'outputs.HttpRedirectActionResponse'):
         """
-        An HttpRouteRule specifies how to match an HTTP request and the corresponding routing action that load balancing proxies will perform.
+        The HttpRouteRule setting specifies how to match an HTTP request and the corresponding routing action that load balancing proxies perform.
         :param str description: The short description conveying the intent of this routeRule. The description can have a maximum length of 1024 characters.
-        :param 'HttpHeaderActionResponse' header_action: Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction specified here are applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
-        :param Sequence['HttpFilterConfigResponse'] http_filter_configs: Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director. httpFilterConfigs only applies for Loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
-        :param Sequence['HttpFilterConfigResponse'] http_filter_metadata: Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director. httpFilterMetadata only applies for Loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. The only configTypeUrl supported is type.googleapis.com/google.protobuf.Struct Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param 'HttpHeaderActionResponse' header_action: Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction value specified here is applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        :param Sequence['HttpFilterConfigResponse'] http_filter_configs: Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director. httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        :param Sequence['HttpFilterConfigResponse'] http_filter_metadata: Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director. httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. The only configTypeUrl supported is type.googleapis.com/google.protobuf.Struct Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
         :param Sequence['HttpRouteRuleMatchResponse'] match_rules: The list of criteria for matching attributes of a request to this routeRule. This list has OR semantics: the request matches this routeRule when any of the matchRules are satisfied. However predicates within a given matchRule have AND semantics. All predicates within a matchRule must match for the request to match the rule.
-        :param int priority: For routeRules within a given pathMatcher, priority determines the order in which load balancer will interpret routeRules. RouteRules are evaluated in order of priority, from the lowest to highest number. The priority of a rule decreases as its number increases (1, 2, 3, N+1). The first rule that matches the request is applied. You cannot configure two or more routeRules with the same priority. Priority for each rule must be set to a number between 0 and 2147483647 inclusive. Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
-        :param 'HttpRouteActionResponse' route_action: In response to a matching matchRule, the load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a routeRule's routeAction.
-        :param str service: The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendService s. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
-        :param 'HttpRedirectActionResponse' url_redirect: When this rule is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+        :param int priority: For routeRules within a given pathMatcher, priority determines the order in which a load balancer interprets routeRules. RouteRules are evaluated in order of priority, from the lowest to highest number. The priority of a rule decreases as its number increases (1, 2, 3, N+1). The first rule that matches the request is applied. You cannot configure two or more routeRules with the same priority. Priority for each rule must be set to a number from 0 to 2147483647 inclusive. Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
+        :param 'HttpRouteActionResponse' route_action: In response to a matching matchRule, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a route rule's routeAction.
+        :param str service: The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
+        :param 'HttpRedirectActionResponse' url_redirect: When this rule is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "header_action", header_action)
@@ -6821,7 +6876,7 @@ class HttpRouteRuleResponse(dict):
     @pulumi.getter(name="headerAction")
     def header_action(self) -> 'outputs.HttpHeaderActionResponse':
         """
-        Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction specified here are applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction value specified here is applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "header_action")
 
@@ -6829,7 +6884,7 @@ class HttpRouteRuleResponse(dict):
     @pulumi.getter(name="httpFilterConfigs")
     def http_filter_configs(self) -> Sequence['outputs.HttpFilterConfigResponse']:
         """
-        Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director. httpFilterConfigs only applies for Loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director. httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "http_filter_configs")
 
@@ -6837,7 +6892,7 @@ class HttpRouteRuleResponse(dict):
     @pulumi.getter(name="httpFilterMetadata")
     def http_filter_metadata(self) -> Sequence['outputs.HttpFilterConfigResponse']:
         """
-        Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director. httpFilterMetadata only applies for Loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. The only configTypeUrl supported is type.googleapis.com/google.protobuf.Struct Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director. httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. The only configTypeUrl supported is type.googleapis.com/google.protobuf.Struct Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "http_filter_metadata")
 
@@ -6853,7 +6908,7 @@ class HttpRouteRuleResponse(dict):
     @pulumi.getter
     def priority(self) -> int:
         """
-        For routeRules within a given pathMatcher, priority determines the order in which load balancer will interpret routeRules. RouteRules are evaluated in order of priority, from the lowest to highest number. The priority of a rule decreases as its number increases (1, 2, 3, N+1). The first rule that matches the request is applied. You cannot configure two or more routeRules with the same priority. Priority for each rule must be set to a number between 0 and 2147483647 inclusive. Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
+        For routeRules within a given pathMatcher, priority determines the order in which a load balancer interprets routeRules. RouteRules are evaluated in order of priority, from the lowest to highest number. The priority of a rule decreases as its number increases (1, 2, 3, N+1). The first rule that matches the request is applied. You cannot configure two or more routeRules with the same priority. Priority for each rule must be set to a number from 0 to 2147483647 inclusive. Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
         """
         return pulumi.get(self, "priority")
 
@@ -6861,7 +6916,7 @@ class HttpRouteRuleResponse(dict):
     @pulumi.getter(name="routeAction")
     def route_action(self) -> 'outputs.HttpRouteActionResponse':
         """
-        In response to a matching matchRule, the load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a routeRule's routeAction.
+        In response to a matching matchRule, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of urlRedirect, service or routeAction.weightedBackendService must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a route rule's routeAction.
         """
         return pulumi.get(self, "route_action")
 
@@ -6869,7 +6924,7 @@ class HttpRouteRuleResponse(dict):
     @pulumi.getter
     def service(self) -> str:
         """
-        The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendService s. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
+        The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
         """
         return pulumi.get(self, "service")
 
@@ -6877,7 +6932,7 @@ class HttpRouteRuleResponse(dict):
     @pulumi.getter(name="urlRedirect")
     def url_redirect(self) -> 'outputs.HttpRedirectActionResponse':
         """
-        When this rule is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+        When this rule is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
         """
         return pulumi.get(self, "url_redirect")
 
@@ -7173,11 +7228,48 @@ class InstanceGroupManagerAllInstancesConfigResponse(dict):
 
 
 @pulumi.output_type
+class InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "onHealthCheck":
+            suggest = "on_health_check"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 on_health_check: str):
+        """
+        :param str on_health_check: If you have configured an application-based health check for the group, this field controls whether to trigger VM autohealing based on a failed health check. Valid values are: - ON (default): The group recreates running VMs that fail the application-based health check. - OFF: When set to OFF, you can still observe instance health state, but the group does not recreate VMs that fail the application-based health check. This is useful for troubleshooting and setting up your health check configuration. 
+        """
+        pulumi.set(__self__, "on_health_check", on_health_check)
+
+    @property
+    @pulumi.getter(name="onHealthCheck")
+    def on_health_check(self) -> str:
+        """
+        If you have configured an application-based health check for the group, this field controls whether to trigger VM autohealing based on a failed health check. Valid values are: - ON (default): The group recreates running VMs that fail the application-based health check. - OFF: When set to OFF, you can still observe instance health state, but the group does not recreate VMs that fail the application-based health check. This is useful for troubleshooting and setting up your health check configuration. 
+        """
+        return pulumi.get(self, "on_health_check")
+
+
+@pulumi.output_type
 class InstanceGroupManagerAutoHealingPolicyResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "healthCheck":
+        if key == "autoHealingTriggers":
+            suggest = "auto_healing_triggers"
+        elif key == "healthCheck":
             suggest = "health_check"
         elif key == "initialDelaySec":
             suggest = "initial_delay_sec"
@@ -7198,19 +7290,30 @@ class InstanceGroupManagerAutoHealingPolicyResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 auto_healing_triggers: 'outputs.InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersResponse',
                  health_check: str,
                  initial_delay_sec: int,
                  max_unavailable: 'outputs.FixedOrPercentResponse',
                  update_instances: str):
         """
+        :param 'InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersResponse' auto_healing_triggers: Restricts what triggers autohealing.
         :param str health_check: The URL for the health check that signals autohealing.
         :param int initial_delay_sec: The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. This initial delay allows instances to initialize and run their startup scripts before the instance group determines that they are UNHEALTHY. This prevents the managed instance group from recreating its instances prematurely. This value must be from range [0, 3600].
         :param 'FixedOrPercentResponse' max_unavailable: Maximum number of instances that can be unavailable when autohealing. When 'percent' is used, the value is rounded if necessary. The instance is considered available if all of the following conditions are satisfied: 1. Instance's status is RUNNING. 2. Instance's currentAction is NONE (in particular its liveness health check result was observed to be HEALTHY at least once as it passed VERIFYING). 3. There is no outgoing action on an instance triggered by IGM. By default, number of concurrently autohealed instances is smaller than the managed instance group target size. However, if a zonal managed instance group has only one instance, or a regional managed instance group has only one instance per zone, autohealing will recreate these instances when they become unhealthy.
         """
+        pulumi.set(__self__, "auto_healing_triggers", auto_healing_triggers)
         pulumi.set(__self__, "health_check", health_check)
         pulumi.set(__self__, "initial_delay_sec", initial_delay_sec)
         pulumi.set(__self__, "max_unavailable", max_unavailable)
         pulumi.set(__self__, "update_instances", update_instances)
+
+    @property
+    @pulumi.getter(name="autoHealingTriggers")
+    def auto_healing_triggers(self) -> 'outputs.InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersResponse':
+        """
+        Restricts what triggers autohealing.
+        """
+        return pulumi.get(self, "auto_healing_triggers")
 
     @property
     @pulumi.getter(name="healthCheck")
@@ -7819,6 +7922,8 @@ class InstancePropertiesResponse(dict):
             suggest = "display_device"
         elif key == "guestAccelerators":
             suggest = "guest_accelerators"
+        elif key == "keyRevocationActionType":
+            suggest = "key_revocation_action_type"
         elif key == "machineType":
             suggest = "machine_type"
         elif key == "minCpuPlatform":
@@ -7863,6 +7968,7 @@ class InstancePropertiesResponse(dict):
                  disks: Sequence['outputs.AttachedDiskResponse'],
                  display_device: 'outputs.DisplayDeviceResponse',
                  guest_accelerators: Sequence['outputs.AcceleratorConfigResponse'],
+                 key_revocation_action_type: str,
                  labels: Mapping[str, str],
                  machine_type: str,
                  metadata: 'outputs.MetadataResponse',
@@ -7880,25 +7986,28 @@ class InstancePropertiesResponse(dict):
                  shielded_vm_config: 'outputs.ShieldedVmConfigResponse',
                  tags: 'outputs.TagsResponse'):
         """
-        :param 'AdvancedMachineFeaturesResponse' advanced_machine_features: Controls for advanced machine-related behavior features.
+        :param 'AdvancedMachineFeaturesResponse' advanced_machine_features: Controls for advanced machine-related behavior features. Note that for MachineImage, this is not supported yet.
         :param bool can_ip_forward: Enables instances created based on these properties to send packets with source IP addresses other than their own and receive packets with destination IP addresses other than their own. If these instances will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If unsure, leave this set to false. See the Enable IP forwarding documentation for more information.
-        :param 'ConfidentialInstanceConfigResponse' confidential_instance_config: Specifies the Confidential Instance options.
+        :param 'ConfidentialInstanceConfigResponse' confidential_instance_config: Specifies the Confidential Instance options. Note that for MachineImage, this is not supported yet.
         :param str description: An optional text description for the instances that are created from these properties.
         :param Sequence['AttachedDiskResponse'] disks: An array of disks that are associated with the instances that are created from these properties.
-        :param 'DisplayDeviceResponse' display_device: Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer
+        :param 'DisplayDeviceResponse' display_device: Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer Note that for MachineImage, this is not supported yet.
         :param Sequence['AcceleratorConfigResponse'] guest_accelerators: A list of guest accelerator cards' type and count to use for instances created from these properties.
+        :param str key_revocation_action_type: KeyRevocationActionType of the instance.
         :param Mapping[str, str] labels: Labels to apply to instances that are created from these properties.
         :param str machine_type: The machine type to use for instances that are created from these properties.
         :param 'MetadataResponse' metadata: The metadata key/value pairs to assign to instances that are created from these properties. These pairs can consist of custom metadata or predefined keys. See Project and instance metadata for more information.
         :param str min_cpu_platform: Minimum cpu/platform to be used by instances. The instance may be scheduled on the specified or newer cpu/platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge". For more information, read Specifying a Minimum CPU Platform.
         :param Sequence['NetworkInterfaceResponse'] network_interfaces: An array of network access configurations for this interface.
-        :param str post_key_revocation_action_type: PostKeyRevocationActionType of the instance.(will be deprecated soon)
-        :param str private_ipv6_google_access: The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default.
-        :param 'ReservationAffinityResponse' reservation_affinity: Specifies the reservations that instances can consume from.
-        :param Sequence[str] resource_policies: Resource policies (names, not ULRs) applied to instances created from these properties.
+        :param 'NetworkPerformanceConfigResponse' network_performance_config: Note that for MachineImage, this is not supported yet.
+        :param str post_key_revocation_action_type: PostKeyRevocationActionType of the instance.
+        :param str private_ipv6_google_access: The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
+        :param 'ReservationAffinityResponse' reservation_affinity: Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
+        :param Sequence[str] resource_policies: Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
         :param 'SchedulingResponse' scheduling: Specifies the scheduling options for the instances that are created from these properties.
-        :param Sequence[str] secure_tags: [Input Only] Secure tags to apply to this instance. Maximum number of secure tags allowed is 50.
+        :param Sequence[str] secure_tags: [Input Only] Secure tags to apply to this instance. Maximum number of secure tags allowed is 50. Note that for MachineImage, this is not supported yet.
         :param Sequence['ServiceAccountResponse'] service_accounts: A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
+        :param 'ShieldedInstanceConfigResponse' shielded_instance_config: Note that for MachineImage, this is not supported yet.
         :param 'ShieldedVmConfigResponse' shielded_vm_config: Specifies the Shielded VM options for the instances that are created from these properties.
         :param 'TagsResponse' tags: A list of tags to apply to the instances that are created from these properties. The tags identify valid sources or targets for network firewalls. The setTags method can modify this list of tags. Each tag within the list must comply with RFC1035.
         """
@@ -7909,6 +8018,7 @@ class InstancePropertiesResponse(dict):
         pulumi.set(__self__, "disks", disks)
         pulumi.set(__self__, "display_device", display_device)
         pulumi.set(__self__, "guest_accelerators", guest_accelerators)
+        pulumi.set(__self__, "key_revocation_action_type", key_revocation_action_type)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "machine_type", machine_type)
         pulumi.set(__self__, "metadata", metadata)
@@ -7930,7 +8040,7 @@ class InstancePropertiesResponse(dict):
     @pulumi.getter(name="advancedMachineFeatures")
     def advanced_machine_features(self) -> 'outputs.AdvancedMachineFeaturesResponse':
         """
-        Controls for advanced machine-related behavior features.
+        Controls for advanced machine-related behavior features. Note that for MachineImage, this is not supported yet.
         """
         return pulumi.get(self, "advanced_machine_features")
 
@@ -7946,7 +8056,7 @@ class InstancePropertiesResponse(dict):
     @pulumi.getter(name="confidentialInstanceConfig")
     def confidential_instance_config(self) -> 'outputs.ConfidentialInstanceConfigResponse':
         """
-        Specifies the Confidential Instance options.
+        Specifies the Confidential Instance options. Note that for MachineImage, this is not supported yet.
         """
         return pulumi.get(self, "confidential_instance_config")
 
@@ -7970,7 +8080,7 @@ class InstancePropertiesResponse(dict):
     @pulumi.getter(name="displayDevice")
     def display_device(self) -> 'outputs.DisplayDeviceResponse':
         """
-        Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer
+        Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer Note that for MachineImage, this is not supported yet.
         """
         return pulumi.get(self, "display_device")
 
@@ -7981,6 +8091,14 @@ class InstancePropertiesResponse(dict):
         A list of guest accelerator cards' type and count to use for instances created from these properties.
         """
         return pulumi.get(self, "guest_accelerators")
+
+    @property
+    @pulumi.getter(name="keyRevocationActionType")
+    def key_revocation_action_type(self) -> str:
+        """
+        KeyRevocationActionType of the instance.
+        """
+        return pulumi.get(self, "key_revocation_action_type")
 
     @property
     @pulumi.getter
@@ -8025,13 +8143,16 @@ class InstancePropertiesResponse(dict):
     @property
     @pulumi.getter(name="networkPerformanceConfig")
     def network_performance_config(self) -> 'outputs.NetworkPerformanceConfigResponse':
+        """
+        Note that for MachineImage, this is not supported yet.
+        """
         return pulumi.get(self, "network_performance_config")
 
     @property
     @pulumi.getter(name="postKeyRevocationActionType")
     def post_key_revocation_action_type(self) -> str:
         """
-        PostKeyRevocationActionType of the instance.(will be deprecated soon)
+        PostKeyRevocationActionType of the instance.
         """
         return pulumi.get(self, "post_key_revocation_action_type")
 
@@ -8039,7 +8160,7 @@ class InstancePropertiesResponse(dict):
     @pulumi.getter(name="privateIpv6GoogleAccess")
     def private_ipv6_google_access(self) -> str:
         """
-        The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default.
+        The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
         """
         return pulumi.get(self, "private_ipv6_google_access")
 
@@ -8047,7 +8168,7 @@ class InstancePropertiesResponse(dict):
     @pulumi.getter(name="reservationAffinity")
     def reservation_affinity(self) -> 'outputs.ReservationAffinityResponse':
         """
-        Specifies the reservations that instances can consume from.
+        Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
         """
         return pulumi.get(self, "reservation_affinity")
 
@@ -8055,7 +8176,7 @@ class InstancePropertiesResponse(dict):
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> Sequence[str]:
         """
-        Resource policies (names, not ULRs) applied to instances created from these properties.
+        Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
         """
         return pulumi.get(self, "resource_policies")
 
@@ -8071,7 +8192,7 @@ class InstancePropertiesResponse(dict):
     @pulumi.getter(name="secureTags")
     def secure_tags(self) -> Sequence[str]:
         """
-        [Input Only] Secure tags to apply to this instance. Maximum number of secure tags allowed is 50.
+        [Input Only] Secure tags to apply to this instance. Maximum number of secure tags allowed is 50. Note that for MachineImage, this is not supported yet.
         """
         return pulumi.get(self, "secure_tags")
 
@@ -8086,6 +8207,9 @@ class InstancePropertiesResponse(dict):
     @property
     @pulumi.getter(name="shieldedInstanceConfig")
     def shielded_instance_config(self) -> 'outputs.ShieldedInstanceConfigResponse':
+        """
+        Note that for MachineImage, this is not supported yet.
+        """
         return pulumi.get(self, "shielded_instance_config")
 
     @property
@@ -9004,13 +9128,13 @@ class MetadataCredentialsFromPluginResponse(dict):
 @pulumi.output_type
 class MetadataFilterLabelMatchResponse(dict):
     """
-    MetadataFilter label name value pairs that are expected to match corresponding labels presented as metadata to the loadbalancer.
+    MetadataFilter label name value pairs that are expected to match corresponding labels presented as metadata to the load balancer.
     """
     def __init__(__self__, *,
                  name: str,
                  value: str):
         """
-        MetadataFilter label name value pairs that are expected to match corresponding labels presented as metadata to the loadbalancer.
+        MetadataFilter label name value pairs that are expected to match corresponding labels presented as metadata to the load balancer.
         :param str name: Name of metadata label. The name can have a maximum length of 1024 characters and must be at least 1 character long.
         :param str value: The value of the label must match the specified value. value can have a maximum length of 1024 characters.
         """
@@ -9037,7 +9161,7 @@ class MetadataFilterLabelMatchResponse(dict):
 @pulumi.output_type
 class MetadataFilterResponse(dict):
     """
-    Opaque filter criteria used by loadbalancers to restrict routing configuration to a limited set of loadbalancing proxies. Proxies and sidecars involved in loadbalancing would typically present metadata to the loadbalancers which need to match criteria specified here. If a match takes place, the relevant configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. An example for using metadataFilters would be: if loadbalancing involves Envoys, they will only receive routing configuration when values in metadataFilters match values supplied in of their XDS requests to loadbalancers.
+    Opaque filter criteria used by load balancers to restrict routing configuration to a limited set of load balancing proxies. Proxies and sidecars involved in load balancing would typically present metadata to the load balancers that need to match criteria specified here. If a match takes place, the relevant configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. An example for using metadataFilters would be: if load balancing involves Envoys, they receive routing configuration when values in metadataFilters match values supplied in of their XDS requests to loadbalancers.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -9062,9 +9186,9 @@ class MetadataFilterResponse(dict):
                  filter_labels: Sequence['outputs.MetadataFilterLabelMatchResponse'],
                  filter_match_criteria: str):
         """
-        Opaque filter criteria used by loadbalancers to restrict routing configuration to a limited set of loadbalancing proxies. Proxies and sidecars involved in loadbalancing would typically present metadata to the loadbalancers which need to match criteria specified here. If a match takes place, the relevant configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. An example for using metadataFilters would be: if loadbalancing involves Envoys, they will only receive routing configuration when values in metadataFilters match values supplied in of their XDS requests to loadbalancers.
+        Opaque filter criteria used by load balancers to restrict routing configuration to a limited set of load balancing proxies. Proxies and sidecars involved in load balancing would typically present metadata to the load balancers that need to match criteria specified here. If a match takes place, the relevant configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. An example for using metadataFilters would be: if load balancing involves Envoys, they receive routing configuration when values in metadataFilters match values supplied in of their XDS requests to loadbalancers.
         :param Sequence['MetadataFilterLabelMatchResponse'] filter_labels: The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list must not be empty and can have at the most 64 entries.
-        :param str filter_match_criteria: Specifies how individual filterLabel matches within the list of filterLabels contribute towards the overall metadataFilter match. Supported values are: - MATCH_ANY: At least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: All filterLabels must have matching labels in the provided metadata. 
+        :param str filter_match_criteria: Specifies how individual filter label matches within the list of filterLabels and contributes toward the overall metadataFilter match. Supported values are: - MATCH_ANY: at least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: all filterLabels must have matching labels in the provided metadata. 
         """
         pulumi.set(__self__, "filter_labels", filter_labels)
         pulumi.set(__self__, "filter_match_criteria", filter_match_criteria)
@@ -9081,7 +9205,7 @@ class MetadataFilterResponse(dict):
     @pulumi.getter(name="filterMatchCriteria")
     def filter_match_criteria(self) -> str:
         """
-        Specifies how individual filterLabel matches within the list of filterLabels contribute towards the overall metadataFilter match. Supported values are: - MATCH_ANY: At least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: All filterLabels must have matching labels in the provided metadata. 
+        Specifies how individual filter label matches within the list of filterLabels and contributes toward the overall metadataFilter match. Supported values are: - MATCH_ANY: at least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: all filterLabels must have matching labels in the provided metadata. 
         """
         return pulumi.get(self, "filter_match_criteria")
 
@@ -9508,7 +9632,7 @@ class NetworkInterfaceResponse(dict):
         :param str ipv6_address: An IPv6 internal network address for this network interface.
         :param str kind: Type of the resource. Always compute#networkInterface for network interfaces.
         :param str name: The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
-        :param str network: URL of the network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used; if the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default 
+        :param str network: URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default 
         :param str network_ip: An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
         :param str nic_type: The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
         :param int queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
@@ -9609,7 +9733,7 @@ class NetworkInterfaceResponse(dict):
     @pulumi.getter
     def network(self) -> str:
         """
-        URL of the network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used; if the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default 
+        URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default 
         """
         return pulumi.get(self, "network")
 
@@ -9784,9 +9908,9 @@ class NetworkPeeringResponse(dict):
         :param bool advertise_peer_subnets_via_routers: Whether Cloud Routers in this network can automatically advertise subnets from the peer network.
         :param bool auto_create_routes: This field will be deprecated soon. Use the exchange_subnet_routes field instead. Indicates whether full mesh connectivity is created and managed automatically between peered networks. Currently this field should always be true since Google Compute Engine will automatically create and manage subnetwork routes between two networks when peering state is ACTIVE.
         :param bool exchange_subnet_routes: Indicates whether full mesh connectivity is created and managed automatically between peered networks. Currently this field should always be true since Google Compute Engine will automatically create and manage subnetwork routes between two networks when peering state is ACTIVE.
-        :param bool export_custom_routes: Whether to export the custom routes to peer network.
+        :param bool export_custom_routes: Whether to export the custom routes to peer network. The default value is false.
         :param bool export_subnet_routes_with_public_ip: Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. IPv4 special-use ranges are always exported to peers and are not controlled by this field.
-        :param bool import_custom_routes: Whether to import the custom routes from peer network.
+        :param bool import_custom_routes: Whether to import the custom routes from peer network. The default value is false.
         :param bool import_subnet_routes_with_public_ip: Whether subnet routes with public IP range are imported. The default value is false. IPv4 special-use ranges are always imported from peers and are not controlled by this field.
         :param str name: Name of this peering. Provided by the client when the peering is created. The name must comply with RFC1035. Specifically, the name must be 1-63 characters long and match regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all the following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param str network: The URL of the peer network. It can be either full URL or partial URL. The peer network may belong to a different project. If the partial URL does not contain project, it is assumed that the peer network is in the same project as the current network.
@@ -9835,7 +9959,7 @@ class NetworkPeeringResponse(dict):
     @pulumi.getter(name="exportCustomRoutes")
     def export_custom_routes(self) -> bool:
         """
-        Whether to export the custom routes to peer network.
+        Whether to export the custom routes to peer network. The default value is false.
         """
         return pulumi.get(self, "export_custom_routes")
 
@@ -9851,7 +9975,7 @@ class NetworkPeeringResponse(dict):
     @pulumi.getter(name="importCustomRoutes")
     def import_custom_routes(self) -> bool:
         """
-        Whether to import the custom routes from peer network.
+        Whether to import the custom routes from peer network. The default value is false.
         """
         return pulumi.get(self, "import_custom_routes")
 
@@ -10686,7 +10810,7 @@ class PacketMirroringNetworkInfoResponse(dict):
 @pulumi.output_type
 class PathMatcherResponse(dict):
     """
-    A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service will be used.
+    A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service is used.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -10725,12 +10849,12 @@ class PathMatcherResponse(dict):
                  path_rules: Sequence['outputs.PathRuleResponse'],
                  route_rules: Sequence['outputs.HttpRouteRuleResponse']):
         """
-        A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service will be used.
-        :param 'HttpRouteActionResponse' default_route_action: defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a pathMatcher's defaultRouteAction.
-        :param str default_service: The full or partial URL to the BackendService resource. This will be used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use 
-        :param 'HttpRedirectActionResponse' default_url_redirect: When none of the specified pathRules or routeRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+        A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service is used.
+        :param 'HttpRouteActionResponse' default_route_action: defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a path matcher's defaultRouteAction.
+        :param str default_service: The full or partial URL to the BackendService resource. This URL is used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect , or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use 
+        :param 'HttpRedirectActionResponse' default_url_redirect: When none of the specified pathRules or routeRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
         :param str description: An optional description of this resource. Provide this property when you create the resource.
-        :param 'HttpHeaderActionResponse' header_action: Specifies changes to request and response headers that need to take effect for the selected backendService. HeaderAction specified here are applied after the matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param 'HttpHeaderActionResponse' header_action: Specifies changes to request and response headers that need to take effect for the selected backend service. HeaderAction specified here are applied after the matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
         :param str name: The name to which this PathMatcher is referred by the HostRule.
         :param Sequence['PathRuleResponse'] path_rules: The list of path rules. Use this list instead of routeRules when routing based on simple path matching is all that's required. The order by which path rules are specified does not matter. Matches are always done on the longest-path-first basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/* irrespective of the order in which those paths appear in this list. Within a given pathMatcher, only one of pathRules or routeRules must be set.
         :param Sequence['HttpRouteRuleResponse'] route_rules: The list of HTTP route rules. Use this list instead of pathRules when advanced route matching and routing actions are desired. routeRules are evaluated in order of priority, from the lowest to highest number. Within a given pathMatcher, you can set only one of pathRules or routeRules.
@@ -10748,7 +10872,7 @@ class PathMatcherResponse(dict):
     @pulumi.getter(name="defaultRouteAction")
     def default_route_action(self) -> 'outputs.HttpRouteActionResponse':
         """
-        defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a pathMatcher's defaultRouteAction.
+        defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a path matcher's defaultRouteAction.
         """
         return pulumi.get(self, "default_route_action")
 
@@ -10756,7 +10880,7 @@ class PathMatcherResponse(dict):
     @pulumi.getter(name="defaultService")
     def default_service(self) -> str:
         """
-        The full or partial URL to the BackendService resource. This will be used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use 
+        The full or partial URL to the BackendService resource. This URL is used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect , or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use 
         """
         return pulumi.get(self, "default_service")
 
@@ -10764,7 +10888,7 @@ class PathMatcherResponse(dict):
     @pulumi.getter(name="defaultUrlRedirect")
     def default_url_redirect(self) -> 'outputs.HttpRedirectActionResponse':
         """
-        When none of the specified pathRules or routeRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+        When none of the specified pathRules or routeRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
         """
         return pulumi.get(self, "default_url_redirect")
 
@@ -10780,7 +10904,7 @@ class PathMatcherResponse(dict):
     @pulumi.getter(name="headerAction")
     def header_action(self) -> 'outputs.HttpHeaderActionResponse':
         """
-        Specifies changes to request and response headers that need to take effect for the selected backendService. HeaderAction specified here are applied after the matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Specifies changes to request and response headers that need to take effect for the selected backend service. HeaderAction specified here are applied after the matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "header_action")
 
@@ -10841,9 +10965,9 @@ class PathRuleResponse(dict):
         """
         A path-matching rule for a URL. If matched, will use the specified BackendService to handle the traffic arriving at this URL.
         :param Sequence[str] paths: The list of path patterns to match. Each must start with / and the only place a * is allowed is at the end following a /. The string fed to the path matcher does not include any text after the first ? or #, and those chars are not allowed here.
-        :param 'HttpRouteActionResponse' route_action: In response to a matching path, the load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a pathRule's routeAction.
-        :param str service: The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendService s. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
-        :param 'HttpRedirectActionResponse' url_redirect: When a path pattern is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+        :param 'HttpRouteActionResponse' route_action: In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for external HTTP(S) load balancers support only the urlRewrite action within a path rule's routeAction.
+        :param str service: The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
+        :param 'HttpRedirectActionResponse' url_redirect: When a path pattern is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
         """
         pulumi.set(__self__, "paths", paths)
         pulumi.set(__self__, "route_action", route_action)
@@ -10862,7 +10986,7 @@ class PathRuleResponse(dict):
     @pulumi.getter(name="routeAction")
     def route_action(self) -> 'outputs.HttpRouteActionResponse':
         """
-        In response to a matching path, the load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a pathRule's routeAction.
+        In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for external HTTP(S) load balancers support only the urlRewrite action within a path rule's routeAction.
         """
         return pulumi.get(self, "route_action")
 
@@ -10870,7 +10994,7 @@ class PathRuleResponse(dict):
     @pulumi.getter
     def service(self) -> str:
         """
-        The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendService s. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
+        The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
         """
         return pulumi.get(self, "service")
 
@@ -10878,7 +11002,7 @@ class PathRuleResponse(dict):
     @pulumi.getter(name="urlRedirect")
     def url_redirect(self) -> 'outputs.HttpRedirectActionResponse':
         """
-        When a path pattern is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
+        When a path pattern is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
         """
         return pulumi.get(self, "url_redirect")
 
@@ -11076,9 +11200,78 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefixResponse(dict):
 
 
 @pulumi.output_type
+class RegionSslPolicyWarningsItemDataItemResponse(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        :param str key: A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+        :param str value: A warning data value corresponding to the key.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        A warning data value corresponding to the key.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class RegionSslPolicyWarningsItemResponse(dict):
+    def __init__(__self__, *,
+                 code: str,
+                 data: Sequence['outputs.RegionSslPolicyWarningsItemDataItemResponse'],
+                 message: str):
+        """
+        :param str code: A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+        :param Sequence['RegionSslPolicyWarningsItemDataItemResponse'] data: Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } 
+        :param str message: A human-readable description of the warning code.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "data", data)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def data(self) -> Sequence['outputs.RegionSslPolicyWarningsItemDataItemResponse']:
+        """
+        Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } 
+        """
+        return pulumi.get(self, "data")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        A human-readable description of the warning code.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
 class RequestMirrorPolicyResponse(dict):
     """
-    A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
+    A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer doesn't wait for responses from the shadow service. Before sending traffic to the shadow service, the host or authority header is suffixed with -shadow.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -11100,7 +11293,7 @@ class RequestMirrorPolicyResponse(dict):
     def __init__(__self__, *,
                  backend_service: str):
         """
-        A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
+        A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer doesn't wait for responses from the shadow service. Before sending traffic to the shadow service, the host or authority header is suffixed with -shadow.
         :param str backend_service: The full or partial URL to the BackendService resource being mirrored to.
         """
         pulumi.set(__self__, "backend_service", backend_service)
@@ -13256,6 +13449,7 @@ class RouterNatResponse(dict):
                  tcp_established_idle_timeout_sec: int,
                  tcp_time_wait_timeout_sec: int,
                  tcp_transitory_idle_timeout_sec: int,
+                 type: str,
                  udp_idle_timeout_sec: int):
         """
         Represents a Nat resource. It enables the VMs within the specified subnetworks to access Internet without external IP addresses. It specifies a list of subnetworks (and the ranges within) that want to use NAT. Customers can also provide the external IPs that would be used for NAT. GCP would auto-allocate ephemeral IPs if no external IPs are provided.
@@ -13274,6 +13468,7 @@ class RouterNatResponse(dict):
         :param int tcp_established_idle_timeout_sec: Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.
         :param int tcp_time_wait_timeout_sec: Timeout (in seconds) for TCP connections that are in TIME_WAIT state. Defaults to 120s if not set.
         :param int tcp_transitory_idle_timeout_sec: Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not set.
+        :param str type: Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC.
         :param int udp_idle_timeout_sec: Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
         """
         pulumi.set(__self__, "drain_nat_ips", drain_nat_ips)
@@ -13292,6 +13487,7 @@ class RouterNatResponse(dict):
         pulumi.set(__self__, "tcp_established_idle_timeout_sec", tcp_established_idle_timeout_sec)
         pulumi.set(__self__, "tcp_time_wait_timeout_sec", tcp_time_wait_timeout_sec)
         pulumi.set(__self__, "tcp_transitory_idle_timeout_sec", tcp_transitory_idle_timeout_sec)
+        pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "udp_idle_timeout_sec", udp_idle_timeout_sec)
 
     @property
@@ -13420,6 +13616,14 @@ class RouterNatResponse(dict):
         return pulumi.get(self, "tcp_transitory_idle_timeout_sec")
 
     @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC.
+        """
+        return pulumi.get(self, "type")
+
+    @property
     @pulumi.getter(name="udpIdleTimeoutSec")
     def udp_idle_timeout_sec(self) -> int:
         """
@@ -13435,8 +13639,12 @@ class RouterNatRuleActionResponse(dict):
         suggest = None
         if key == "sourceNatActiveIps":
             suggest = "source_nat_active_ips"
+        elif key == "sourceNatActiveRanges":
+            suggest = "source_nat_active_ranges"
         elif key == "sourceNatDrainIps":
             suggest = "source_nat_drain_ips"
+        elif key == "sourceNatDrainRanges":
+            suggest = "source_nat_drain_ranges"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RouterNatRuleActionResponse. Access the value via the '{suggest}' property getter instead.")
@@ -13451,13 +13659,19 @@ class RouterNatRuleActionResponse(dict):
 
     def __init__(__self__, *,
                  source_nat_active_ips: Sequence[str],
-                 source_nat_drain_ips: Sequence[str]):
+                 source_nat_active_ranges: Sequence[str],
+                 source_nat_drain_ips: Sequence[str],
+                 source_nat_drain_ranges: Sequence[str]):
         """
         :param Sequence[str] source_nat_active_ips: A list of URLs of the IP resources used for this NAT rule. These IP addresses must be valid static external IP addresses assigned to the project. This field is used for public NAT.
+        :param Sequence[str] source_nat_active_ranges: A list of URLs of the subnetworks used as source ranges for this NAT Rule. These subnetworks must have purpose set to PRIVATE_NAT. This field is used for private NAT.
         :param Sequence[str] source_nat_drain_ips: A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT rule only. This field is used for public NAT.
+        :param Sequence[str] source_nat_drain_ranges: A list of URLs of subnetworks representing source ranges to be drained. This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule. This field is used for private NAT.
         """
         pulumi.set(__self__, "source_nat_active_ips", source_nat_active_ips)
+        pulumi.set(__self__, "source_nat_active_ranges", source_nat_active_ranges)
         pulumi.set(__self__, "source_nat_drain_ips", source_nat_drain_ips)
+        pulumi.set(__self__, "source_nat_drain_ranges", source_nat_drain_ranges)
 
     @property
     @pulumi.getter(name="sourceNatActiveIps")
@@ -13468,12 +13682,28 @@ class RouterNatRuleActionResponse(dict):
         return pulumi.get(self, "source_nat_active_ips")
 
     @property
+    @pulumi.getter(name="sourceNatActiveRanges")
+    def source_nat_active_ranges(self) -> Sequence[str]:
+        """
+        A list of URLs of the subnetworks used as source ranges for this NAT Rule. These subnetworks must have purpose set to PRIVATE_NAT. This field is used for private NAT.
+        """
+        return pulumi.get(self, "source_nat_active_ranges")
+
+    @property
     @pulumi.getter(name="sourceNatDrainIps")
     def source_nat_drain_ips(self) -> Sequence[str]:
         """
         A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT rule only. This field is used for public NAT.
         """
         return pulumi.get(self, "source_nat_drain_ips")
+
+    @property
+    @pulumi.getter(name="sourceNatDrainRanges")
+    def source_nat_drain_ranges(self) -> Sequence[str]:
+        """
+        A list of URLs of subnetworks representing source ranges to be drained. This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule. This field is used for private NAT.
+        """
+        return pulumi.get(self, "source_nat_drain_ranges")
 
 
 @pulumi.output_type
@@ -13503,7 +13733,7 @@ class RouterNatRuleResponse(dict):
         """
         :param 'RouterNatRuleActionResponse' action: The action to be enforced for traffic that matches this rule.
         :param str description: An optional description of this rule.
-        :param str match: CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == '/projects/my-project/global/hub/hub-1'"
+        :param str match: CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
         :param int rule_number: An integer uniquely identifying a rule in the list. The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
         """
         pulumi.set(__self__, "action", action)
@@ -13531,7 +13761,7 @@ class RouterNatRuleResponse(dict):
     @pulumi.getter
     def match(self) -> str:
         """
-        CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == '/projects/my-project/global/hub/hub-1'"
+        CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it evaluates to true, the corresponding `action` is enforced. The following examples are valid match expressions for public NAT: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The following example is a valid match expression for private NAT: "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
         """
         return pulumi.get(self, "match")
 
@@ -13811,7 +14041,7 @@ class SSLHealthCheckResponse(dict):
 @pulumi.output_type
 class SavedAttachedDiskResponse(dict):
     """
-    An instance-attached disk resource.
+    DEPRECATED: Please use compute#savedDisk instead. An instance-attached disk resource.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -13862,7 +14092,7 @@ class SavedAttachedDiskResponse(dict):
                  storage_bytes_status: str,
                  type: str):
         """
-        An instance-attached disk resource.
+        DEPRECATED: Please use compute#savedDisk instead. An instance-attached disk resource.
         :param bool auto_delete: Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
         :param bool boot: Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
         :param str device_name: Specifies the name of the disk attached to the source instance.
@@ -14027,6 +14257,82 @@ class SavedAttachedDiskResponse(dict):
 
 
 @pulumi.output_type
+class SavedDiskResponse(dict):
+    """
+    An instance-attached disk resource.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceDisk":
+            suggest = "source_disk"
+        elif key == "storageBytes":
+            suggest = "storage_bytes"
+        elif key == "storageBytesStatus":
+            suggest = "storage_bytes_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SavedDiskResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SavedDiskResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SavedDiskResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kind: str,
+                 source_disk: str,
+                 storage_bytes: str,
+                 storage_bytes_status: str):
+        """
+        An instance-attached disk resource.
+        :param str kind: Type of the resource. Always compute#savedDisk for attached disks.
+        :param str source_disk: Specifies a URL of the disk attached to the source instance.
+        :param str storage_bytes: Size of the individual disk snapshot used by this machine image.
+        :param str storage_bytes_status: An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
+        """
+        pulumi.set(__self__, "kind", kind)
+        pulumi.set(__self__, "source_disk", source_disk)
+        pulumi.set(__self__, "storage_bytes", storage_bytes)
+        pulumi.set(__self__, "storage_bytes_status", storage_bytes_status)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> str:
+        """
+        Type of the resource. Always compute#savedDisk for attached disks.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="sourceDisk")
+    def source_disk(self) -> str:
+        """
+        Specifies a URL of the disk attached to the source instance.
+        """
+        return pulumi.get(self, "source_disk")
+
+    @property
+    @pulumi.getter(name="storageBytes")
+    def storage_bytes(self) -> str:
+        """
+        Size of the individual disk snapshot used by this machine image.
+        """
+        return pulumi.get(self, "storage_bytes")
+
+    @property
+    @pulumi.getter(name="storageBytesStatus")
+    def storage_bytes_status(self) -> str:
+        """
+        An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
+        """
+        return pulumi.get(self, "storage_bytes_status")
+
+
+@pulumi.output_type
 class SchedulingNodeAffinityResponse(dict):
     """
     Node Affinity: the configuration of desired nodes onto which this Instance could be scheduled.
@@ -14098,6 +14404,8 @@ class SchedulingResponse(dict):
             suggest = "maintenance_freeze_duration_hours"
         elif key == "maintenanceInterval":
             suggest = "maintenance_interval"
+        elif key == "maxRunDuration":
+            suggest = "max_run_duration"
         elif key == "minNodeCpus":
             suggest = "min_node_cpus"
         elif key == "nodeAffinities":
@@ -14106,6 +14414,8 @@ class SchedulingResponse(dict):
             suggest = "on_host_maintenance"
         elif key == "provisioningModel":
             suggest = "provisioning_model"
+        elif key == "terminationTime":
+            suggest = "termination_time"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in SchedulingResponse. Access the value via the '{suggest}' property getter instead.")
@@ -14129,11 +14439,13 @@ class SchedulingResponse(dict):
                  location_hint: str,
                  maintenance_freeze_duration_hours: int,
                  maintenance_interval: str,
+                 max_run_duration: 'outputs.DurationResponse',
                  min_node_cpus: int,
                  node_affinities: Sequence['outputs.SchedulingNodeAffinityResponse'],
                  on_host_maintenance: str,
                  preemptible: bool,
-                 provisioning_model: str):
+                 provisioning_model: str,
+                 termination_time: str):
         """
         Sets the scheduling options for an Instance. NextID: 21
         :param bool automatic_restart: Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted. By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine.
@@ -14146,11 +14458,13 @@ class SchedulingResponse(dict):
         :param str location_hint: An opaque location hint used to place the instance close to other resources. This field is for use by internal tools that use the public API.
         :param int maintenance_freeze_duration_hours: Specifies the number of hours after VM instance creation where the VM won't be scheduled for maintenance.
         :param str maintenance_interval: For more information about maintenance intervals, see Setting maintenance intervals.
+        :param 'DurationResponse' max_run_duration: Specifies the max run duration for the given instance. If specified, the instance termination action will be performed at the end of the run duration.
         :param int min_node_cpus: The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
         :param Sequence['SchedulingNodeAffinityResponse'] node_affinities: A set of node affinity and anti-affinity configurations. Refer to Configuring node affinity for more information. Overrides reservationAffinity.
         :param str on_host_maintenance: Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Setting Instance Scheduling Options.
         :param bool preemptible: Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
         :param str provisioning_model: Specifies the provisioning model of the instance.
+        :param str termination_time: Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
         """
         pulumi.set(__self__, "automatic_restart", automatic_restart)
         pulumi.set(__self__, "availability_domain", availability_domain)
@@ -14162,11 +14476,13 @@ class SchedulingResponse(dict):
         pulumi.set(__self__, "location_hint", location_hint)
         pulumi.set(__self__, "maintenance_freeze_duration_hours", maintenance_freeze_duration_hours)
         pulumi.set(__self__, "maintenance_interval", maintenance_interval)
+        pulumi.set(__self__, "max_run_duration", max_run_duration)
         pulumi.set(__self__, "min_node_cpus", min_node_cpus)
         pulumi.set(__self__, "node_affinities", node_affinities)
         pulumi.set(__self__, "on_host_maintenance", on_host_maintenance)
         pulumi.set(__self__, "preemptible", preemptible)
         pulumi.set(__self__, "provisioning_model", provisioning_model)
+        pulumi.set(__self__, "termination_time", termination_time)
 
     @property
     @pulumi.getter(name="automaticRestart")
@@ -14249,6 +14565,14 @@ class SchedulingResponse(dict):
         return pulumi.get(self, "maintenance_interval")
 
     @property
+    @pulumi.getter(name="maxRunDuration")
+    def max_run_duration(self) -> 'outputs.DurationResponse':
+        """
+        Specifies the max run duration for the given instance. If specified, the instance termination action will be performed at the end of the run duration.
+        """
+        return pulumi.get(self, "max_run_duration")
+
+    @property
     @pulumi.getter(name="minNodeCpus")
     def min_node_cpus(self) -> int:
         """
@@ -14287,6 +14611,14 @@ class SchedulingResponse(dict):
         Specifies the provisioning model of the instance.
         """
         return pulumi.get(self, "provisioning_model")
+
+    @property
+    @pulumi.getter(name="terminationTime")
+    def termination_time(self) -> str:
+        """
+        Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
+        """
+        return pulumi.get(self, "termination_time")
 
 
 @pulumi.output_type
@@ -14593,6 +14925,41 @@ class SecurityPolicyDdosProtectionConfigResponse(dict):
     @pulumi.getter(name="ddosProtection")
     def ddos_protection(self) -> str:
         return pulumi.get(self, "ddos_protection")
+
+
+@pulumi.output_type
+class SecurityPolicyRecaptchaOptionsConfigResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "redirectSiteKey":
+            suggest = "redirect_site_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityPolicyRecaptchaOptionsConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityPolicyRecaptchaOptionsConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityPolicyRecaptchaOptionsConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 redirect_site_key: str):
+        """
+        :param str redirect_site_key: An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+        """
+        pulumi.set(__self__, "redirect_site_key", redirect_site_key)
+
+    @property
+    @pulumi.getter(name="redirectSiteKey")
+    def redirect_site_key(self) -> str:
+        """
+        An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+        """
+        return pulumi.get(self, "redirect_site_key")
 
 
 @pulumi.output_type
@@ -14922,6 +15289,8 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
             suggest = "enforce_on_key_name"
         elif key == "exceedAction":
             suggest = "exceed_action"
+        elif key == "exceedRedirectOptions":
+            suggest = "exceed_redirect_options"
         elif key == "rateLimitThreshold":
             suggest = "rate_limit_threshold"
 
@@ -14943,14 +15312,16 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
                  enforce_on_key: str,
                  enforce_on_key_name: str,
                  exceed_action: str,
+                 exceed_redirect_options: 'outputs.SecurityPolicyRuleRedirectOptionsResponse',
                  rate_limit_threshold: 'outputs.SecurityPolicyRuleRateLimitOptionsThresholdResponse'):
         """
         :param int ban_duration_sec: Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
         :param 'SecurityPolicyRuleRateLimitOptionsThresholdResponse' ban_threshold: Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
         :param str conform_action: Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
-        :param str enforce_on_key: Determines the key to enforce the rate_limit_threshold on. Possible values are: "ALL" -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. "ALL_IPS" -- This definition, equivalent to "ALL", has been depprecated. "IP" -- The source IP address of the request is the key. Each IP has this limit enforced separately. "HTTP_HEADER" -- The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to "ALL". "XFF_IP" -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to "ALL".
-        :param str enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
-        :param str exceed_action: When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
+        :param str enforce_on_key: Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
+        :param str enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+        :param str exceed_action: Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceed_redirect_options below.
+        :param 'SecurityPolicyRuleRedirectOptionsResponse' exceed_redirect_options: Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
         :param 'SecurityPolicyRuleRateLimitOptionsThresholdResponse' rate_limit_threshold: Threshold at which to begin ratelimiting.
         """
         pulumi.set(__self__, "ban_duration_sec", ban_duration_sec)
@@ -14959,6 +15330,7 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
         pulumi.set(__self__, "enforce_on_key", enforce_on_key)
         pulumi.set(__self__, "enforce_on_key_name", enforce_on_key_name)
         pulumi.set(__self__, "exceed_action", exceed_action)
+        pulumi.set(__self__, "exceed_redirect_options", exceed_redirect_options)
         pulumi.set(__self__, "rate_limit_threshold", rate_limit_threshold)
 
     @property
@@ -14989,7 +15361,7 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
     @pulumi.getter(name="enforceOnKey")
     def enforce_on_key(self) -> str:
         """
-        Determines the key to enforce the rate_limit_threshold on. Possible values are: "ALL" -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. "ALL_IPS" -- This definition, equivalent to "ALL", has been depprecated. "IP" -- The source IP address of the request is the key. Each IP has this limit enforced separately. "HTTP_HEADER" -- The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to "ALL". "XFF_IP" -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to "ALL".
+        Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
         """
         return pulumi.get(self, "enforce_on_key")
 
@@ -14997,7 +15369,7 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
     @pulumi.getter(name="enforceOnKeyName")
     def enforce_on_key_name(self) -> str:
         """
-        Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+        Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
         """
         return pulumi.get(self, "enforce_on_key_name")
 
@@ -15005,9 +15377,17 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
     @pulumi.getter(name="exceedAction")
     def exceed_action(self) -> str:
         """
-        When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
+        Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceed_redirect_options below.
         """
         return pulumi.get(self, "exceed_action")
+
+    @property
+    @pulumi.getter(name="exceedRedirectOptions")
+    def exceed_redirect_options(self) -> 'outputs.SecurityPolicyRuleRedirectOptionsResponse':
+        """
+        Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+        """
+        return pulumi.get(self, "exceed_redirect_options")
 
     @property
     @pulumi.getter(name="rateLimitThreshold")
@@ -15150,7 +15530,7 @@ class SecurityPolicyRuleResponse(dict):
                  target_service_accounts: Sequence[str]):
         """
         Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
-        :param str action: The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        :param str action: The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502). - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this. 
         :param str description: An optional description of this resource. Provide this property when you create the resource.
         :param str direction: The direction in which this rule applies. This field may only be specified when versioned_expr is set to FIREWALL.
         :param bool enable_logging: Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules. This field may only be specified when the versioned_expr is set to FIREWALL.
@@ -15188,7 +15568,7 @@ class SecurityPolicyRuleResponse(dict):
     @pulumi.getter
     def action(self) -> str:
         """
-        The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502). - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this. 
         """
         return pulumi.get(self, "action")
 
@@ -15617,8 +15997,8 @@ class ShareSettingsResponse(dict):
                  share_type: str):
         """
         The share setting for reservations and sole tenancy node groups.
-        :param Mapping[str, str] folder_map: A map of folder id and folder config to specify consumer projects for this shared-reservation. This is only valid when share_type's value is DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS.
-        :param Mapping[str, str] project_map: A map of project id and project config. Using map format to ease add-to/remove-from the Project list in PATCH command. In future we will deprecate (And later remove) the array one.
+        :param Mapping[str, str] folder_map: A map of folder id and folder config to specify consumer projects for this shared-reservation. This is only valid when share_type's value is DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS. Folder id should be a string of number, and without "folders/" prefix.
+        :param Mapping[str, str] project_map: A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
         :param Sequence[str] projects: A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
         :param str share_type: Type of sharing for this shared-reservation
         """
@@ -15631,7 +16011,7 @@ class ShareSettingsResponse(dict):
     @pulumi.getter(name="folderMap")
     def folder_map(self) -> Mapping[str, str]:
         """
-        A map of folder id and folder config to specify consumer projects for this shared-reservation. This is only valid when share_type's value is DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS.
+        A map of folder id and folder config to specify consumer projects for this shared-reservation. This is only valid when share_type's value is DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS. Folder id should be a string of number, and without "folders/" prefix.
         """
         return pulumi.get(self, "folder_map")
 
@@ -15639,7 +16019,7 @@ class ShareSettingsResponse(dict):
     @pulumi.getter(name="projectMap")
     def project_map(self) -> Mapping[str, str]:
         """
-        A map of project id and project config. Using map format to ease add-to/remove-from the Project list in PATCH command. In future we will deprecate (And later remove) the array one.
+        A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
         """
         return pulumi.get(self, "project_map")
 
@@ -15957,6 +16337,9 @@ class SourceInstanceParamsResponse(dict):
 
 @pulumi.output_type
 class SourceInstancePropertiesResponse(dict):
+    """
+    DEPRECATED: Please use compute#instanceProperties instead. New properties will not be added to this field.
+    """
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -15966,6 +16349,8 @@ class SourceInstancePropertiesResponse(dict):
             suggest = "deletion_protection"
         elif key == "guestAccelerators":
             suggest = "guest_accelerators"
+        elif key == "keyRevocationActionType":
+            suggest = "key_revocation_action_type"
         elif key == "machineType":
             suggest = "machine_type"
         elif key == "minCpuPlatform":
@@ -15994,6 +16379,7 @@ class SourceInstancePropertiesResponse(dict):
                  description: str,
                  disks: Sequence['outputs.SavedAttachedDiskResponse'],
                  guest_accelerators: Sequence['outputs.AcceleratorConfigResponse'],
+                 key_revocation_action_type: str,
                  labels: Mapping[str, str],
                  machine_type: str,
                  metadata: 'outputs.MetadataResponse',
@@ -16004,17 +16390,19 @@ class SourceInstancePropertiesResponse(dict):
                  service_accounts: Sequence['outputs.ServiceAccountResponse'],
                  tags: 'outputs.TagsResponse'):
         """
+        DEPRECATED: Please use compute#instanceProperties instead. New properties will not be added to this field.
         :param bool can_ip_forward: Enables instances created based on this machine image to send packets with source IP addresses other than their own and receive packets with destination IP addresses other than their own. If these instances will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If unsure, leave this set to false. See the Enable IP forwarding documentation for more information.
         :param bool deletion_protection: Whether the instance created from this machine image should be protected against deletion.
         :param str description: An optional text description for the instances that are created from this machine image.
         :param Sequence['SavedAttachedDiskResponse'] disks: An array of disks that are associated with the instances that are created from this machine image.
         :param Sequence['AcceleratorConfigResponse'] guest_accelerators: A list of guest accelerator cards' type and count to use for instances created from this machine image.
+        :param str key_revocation_action_type: KeyRevocationActionType of the instance.
         :param Mapping[str, str] labels: Labels to apply to instances that are created from this machine image.
         :param str machine_type: The machine type to use for instances that are created from this machine image.
         :param 'MetadataResponse' metadata: The metadata key/value pairs to assign to instances that are created from this machine image. These pairs can consist of custom metadata or predefined keys. See Project and instance metadata for more information.
         :param str min_cpu_platform: Minimum cpu/platform to be used by instances created from this machine image. The instance may be scheduled on the specified or newer cpu/platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge". For more information, read Specifying a Minimum CPU Platform.
         :param Sequence['NetworkInterfaceResponse'] network_interfaces: An array of network access configurations for this interface.
-        :param str post_key_revocation_action_type: PostKeyRevocationActionType of the instance. (will be deprecated soon)
+        :param str post_key_revocation_action_type: PostKeyRevocationActionType of the instance.
         :param 'SchedulingResponse' scheduling: Specifies the scheduling options for the instances that are created from this machine image.
         :param Sequence['ServiceAccountResponse'] service_accounts: A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from this machine image. Use metadata queries to obtain the access tokens for these instances.
         :param 'TagsResponse' tags: A list of tags to apply to the instances that are created from this machine image. The tags identify valid sources or targets for network firewalls. The setTags method can modify this list of tags. Each tag within the list must comply with RFC1035.
@@ -16024,6 +16412,7 @@ class SourceInstancePropertiesResponse(dict):
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "disks", disks)
         pulumi.set(__self__, "guest_accelerators", guest_accelerators)
+        pulumi.set(__self__, "key_revocation_action_type", key_revocation_action_type)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "machine_type", machine_type)
         pulumi.set(__self__, "metadata", metadata)
@@ -16075,6 +16464,14 @@ class SourceInstancePropertiesResponse(dict):
         return pulumi.get(self, "guest_accelerators")
 
     @property
+    @pulumi.getter(name="keyRevocationActionType")
+    def key_revocation_action_type(self) -> str:
+        """
+        KeyRevocationActionType of the instance.
+        """
+        return pulumi.get(self, "key_revocation_action_type")
+
+    @property
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
@@ -16118,7 +16515,7 @@ class SourceInstancePropertiesResponse(dict):
     @pulumi.getter(name="postKeyRevocationActionType")
     def post_key_revocation_action_type(self) -> str:
         """
-        PostKeyRevocationActionType of the instance. (will be deprecated soon)
+        PostKeyRevocationActionType of the instance.
         """
         return pulumi.get(self, "post_key_revocation_action_type")
 
@@ -16457,9 +16854,9 @@ class SubnetworkLogConfigResponse(dict):
         """
         The available logging options for this subnetwork.
         :param str aggregation_interval: Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
-        :param bool enable: Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging.
+        :param bool enable: Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
         :param str filter_expr: Can only be specified if VPC flow logs for this subnetwork is enabled. Export filter used to define which VPC flow logs should be logged.
-        :param float flow_sampling: Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
+        :param float flow_sampling: Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
         :param str metadata: Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
         :param Sequence[str] metadata_fields: Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" was set to CUSTOM_METADATA.
         """
@@ -16482,7 +16879,7 @@ class SubnetworkLogConfigResponse(dict):
     @pulumi.getter
     def enable(self) -> bool:
         """
-        Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging.
+        Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
         """
         return pulumi.get(self, "enable")
 
@@ -16498,7 +16895,7 @@ class SubnetworkLogConfigResponse(dict):
     @pulumi.getter(name="flowSampling")
     def flow_sampling(self) -> float:
         """
-        Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all collected logs are reported.
+        Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
         """
         return pulumi.get(self, "flow_sampling")
 
@@ -17086,7 +17483,9 @@ class UpcomingMaintenanceResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "startTimeWindow":
+        if key == "canReschedule":
+            suggest = "can_reschedule"
+        elif key == "startTimeWindow":
             suggest = "start_time_window"
 
         if suggest:
@@ -17101,15 +17500,26 @@ class UpcomingMaintenanceResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 can_reschedule: bool,
                  start_time_window: 'outputs.UpcomingMaintenanceTimeWindowResponse',
                  type: str):
         """
         Upcoming Maintenance notification information. TODO(b/196881882) Deprecate this proto once it's fully migrated to be under proto ResourceStatus.UpcomingMaintenance.
+        :param bool can_reschedule: Indicates if the maintenance can be customer triggered. From more detail, see go/sf-ctm-design.
         :param 'UpcomingMaintenanceTimeWindowResponse' start_time_window: The start time window of the maintenance disruption.
         :param str type: Defines the type of maintenance.
         """
+        pulumi.set(__self__, "can_reschedule", can_reschedule)
         pulumi.set(__self__, "start_time_window", start_time_window)
         pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="canReschedule")
+    def can_reschedule(self) -> bool:
+        """
+        Indicates if the maintenance can be customer triggered. From more detail, see go/sf-ctm-design.
+        """
+        return pulumi.get(self, "can_reschedule")
 
     @property
     @pulumi.getter(name="startTimeWindow")
@@ -17225,12 +17635,12 @@ class UrlMapTestResponse(dict):
         Message for the expected URL mappings.
         :param int backend_service_weight: The weight to use for the supplied host and path when using advanced routing rules that involve traffic splitting.
         :param str description: Description of this test case.
-        :param str expected_output_url: The expected output URL evaluated by load balancer containing the scheme, host, path and query parameters. For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored. For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies https_redirect, the test passes only if the scheme in expectedOutputUrl is also set to https. If urlRedirect specifies strip_query, the test passes only if expectedOutputUrl does not contain any query parameters. expectedOutputUrl is optional when service is specified.
+        :param str expected_output_url: The expected output URL evaluated by the load balancer containing the scheme, host, path and query parameters. For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by the load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored. For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies https_redirect, the test passes only if the scheme in expectedOutputUrl is also set to HTTPS. If urlRedirect specifies strip_query, the test passes only if expectedOutputUrl does not contain any query parameters. expectedOutputUrl is optional when service is specified.
         :param int expected_redirect_response_code: For rules with urlRedirect, the test passes only if expectedRedirectResponseCode matches the HTTP status code in load balancer's redirect response. expectedRedirectResponseCode cannot be set when service is set.
         :param Sequence['UrlMapTestHeaderResponse'] headers: HTTP headers for this request. If headers contains a host header, then host must also match the header value.
         :param str host: Host portion of the URL. If headers contains a host header, then host must also match the header value.
         :param str path: Path portion of the URL.
-        :param str service: Expected BackendService or BackendBucket resource the given URL should be mapped to. service cannot be set if expectedRedirectResponseCode is set.
+        :param str service: Expected BackendService or BackendBucket resource the given URL should be mapped to. The service field cannot be set if expectedRedirectResponseCode is set.
         """
         pulumi.set(__self__, "backend_service_weight", backend_service_weight)
         pulumi.set(__self__, "description", description)
@@ -17261,7 +17671,7 @@ class UrlMapTestResponse(dict):
     @pulumi.getter(name="expectedOutputUrl")
     def expected_output_url(self) -> str:
         """
-        The expected output URL evaluated by load balancer containing the scheme, host, path and query parameters. For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored. For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies https_redirect, the test passes only if the scheme in expectedOutputUrl is also set to https. If urlRedirect specifies strip_query, the test passes only if expectedOutputUrl does not contain any query parameters. expectedOutputUrl is optional when service is specified.
+        The expected output URL evaluated by the load balancer containing the scheme, host, path and query parameters. For rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by the load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl`s scheme is ignored. For rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies https_redirect, the test passes only if the scheme in expectedOutputUrl is also set to HTTPS. If urlRedirect specifies strip_query, the test passes only if expectedOutputUrl does not contain any query parameters. expectedOutputUrl is optional when service is specified.
         """
         return pulumi.get(self, "expected_output_url")
 
@@ -17301,7 +17711,7 @@ class UrlMapTestResponse(dict):
     @pulumi.getter
     def service(self) -> str:
         """
-        Expected BackendService or BackendBucket resource the given URL should be mapped to. service cannot be set if expectedRedirectResponseCode is set.
+        Expected BackendService or BackendBucket resource the given URL should be mapped to. The service field cannot be set if expectedRedirectResponseCode is set.
         """
         return pulumi.get(self, "service")
 
@@ -17335,8 +17745,8 @@ class UrlRewriteResponse(dict):
                  path_prefix_rewrite: str):
         """
         The spec for modifying the path before sending the request to the matched backend service.
-        :param str host_rewrite: Prior to forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be between 1 and 255 characters.
-        :param str path_prefix_rewrite: Prior to forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be between 1 and 1024 characters.
+        :param str host_rewrite: Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be from 1 to 255 characters.
+        :param str path_prefix_rewrite: Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be from 1 to 1024 characters.
         """
         pulumi.set(__self__, "host_rewrite", host_rewrite)
         pulumi.set(__self__, "path_prefix_rewrite", path_prefix_rewrite)
@@ -17345,7 +17755,7 @@ class UrlRewriteResponse(dict):
     @pulumi.getter(name="hostRewrite")
     def host_rewrite(self) -> str:
         """
-        Prior to forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be between 1 and 255 characters.
+        Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be from 1 to 255 characters.
         """
         return pulumi.get(self, "host_rewrite")
 
@@ -17353,7 +17763,7 @@ class UrlRewriteResponse(dict):
     @pulumi.getter(name="pathPrefixRewrite")
     def path_prefix_rewrite(self) -> str:
         """
-        Prior to forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be between 1 and 1024 characters.
+        Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be from 1 to 1024 characters.
         """
         return pulumi.get(self, "path_prefix_rewrite")
 
@@ -17413,7 +17823,7 @@ class VpnGatewayVpnGatewayInterfaceResponse(dict):
 @pulumi.output_type
 class WeightedBackendServiceResponse(dict):
     """
-    In contrast to a single BackendService in HttpRouteAction to which all matching traffic is directed to, WeightedBackendService allows traffic to be split across multiple BackendServices. The volume of traffic for each BackendService is proportional to the weight specified in each WeightedBackendService
+    In contrast to a single BackendService in HttpRouteAction to which all matching traffic is directed to, WeightedBackendService allows traffic to be split across multiple backend services. The volume of traffic for each backend service is proportional to the weight specified in each WeightedBackendService
     """
     @staticmethod
     def __key_warning(key: str):
@@ -17439,10 +17849,10 @@ class WeightedBackendServiceResponse(dict):
                  header_action: 'outputs.HttpHeaderActionResponse',
                  weight: int):
         """
-        In contrast to a single BackendService in HttpRouteAction to which all matching traffic is directed to, WeightedBackendService allows traffic to be split across multiple BackendServices. The volume of traffic for each BackendService is proportional to the weight specified in each WeightedBackendService
-        :param str backend_service: The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the loadbalancer applies any relevant headerActions specified as part of this backendServiceWeight.
-        :param 'HttpHeaderActionResponse' header_action: Specifies changes to request and response headers that need to take effect for the selected backendService. headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap. Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
-        :param int weight: Specifies the fraction of traffic sent to backendService, computed as weight / (sum of all weightedBackendService weights in routeAction) . The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backendService, subsequent requests will be sent to the same backendService as determined by the BackendService's session affinity policy. The value must be between 0 and 1000
+        In contrast to a single BackendService in HttpRouteAction to which all matching traffic is directed to, WeightedBackendService allows traffic to be split across multiple backend services. The volume of traffic for each backend service is proportional to the weight specified in each WeightedBackendService
+        :param str backend_service: The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
+        :param 'HttpHeaderActionResponse' header_action: Specifies changes to request and response headers that need to take effect for the selected backendService. headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap. headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        :param int weight: Specifies the fraction of traffic sent to a backend service, computed as weight / (sum of all weightedBackendService weights in routeAction) . The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backend service, subsequent requests are sent to the same backend service as determined by the backend service's session affinity policy. The value must be from 0 to 1000.
         """
         pulumi.set(__self__, "backend_service", backend_service)
         pulumi.set(__self__, "header_action", header_action)
@@ -17452,7 +17862,7 @@ class WeightedBackendServiceResponse(dict):
     @pulumi.getter(name="backendService")
     def backend_service(self) -> str:
         """
-        The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the loadbalancer applies any relevant headerActions specified as part of this backendServiceWeight.
+        The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
         """
         return pulumi.get(self, "backend_service")
 
@@ -17460,7 +17870,7 @@ class WeightedBackendServiceResponse(dict):
     @pulumi.getter(name="headerAction")
     def header_action(self) -> 'outputs.HttpHeaderActionResponse':
         """
-        Specifies changes to request and response headers that need to take effect for the selected backendService. headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap. Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Specifies changes to request and response headers that need to take effect for the selected backendService. headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap. headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "header_action")
 
@@ -17468,7 +17878,7 @@ class WeightedBackendServiceResponse(dict):
     @pulumi.getter
     def weight(self) -> int:
         """
-        Specifies the fraction of traffic sent to backendService, computed as weight / (sum of all weightedBackendService weights in routeAction) . The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backendService, subsequent requests will be sent to the same backendService as determined by the BackendService's session affinity policy. The value must be between 0 and 1000
+        Specifies the fraction of traffic sent to a backend service, computed as weight / (sum of all weightedBackendService weights in routeAction) . The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backend service, subsequent requests are sent to the same backend service as determined by the backend service's session affinity policy. The value must be from 0 to 1000.
         """
         return pulumi.get(self, "weight")
 

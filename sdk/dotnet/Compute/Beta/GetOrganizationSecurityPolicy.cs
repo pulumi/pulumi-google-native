@@ -92,6 +92,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// The parent of the security policy.
         /// </summary>
         public readonly string Parent;
+        public readonly Outputs.SecurityPolicyRecaptchaOptionsConfigResponse RecaptchaOptionsConfig;
         /// <summary>
         /// Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
         /// </summary>
@@ -139,6 +140,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string parent,
 
+            Outputs.SecurityPolicyRecaptchaOptionsConfigResponse recaptchaOptionsConfig,
+
             int ruleTupleCount,
 
             ImmutableArray<Outputs.SecurityPolicyRuleResponse> rules,
@@ -161,6 +164,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             Labels = labels;
             Name = name;
             Parent = parent;
+            RecaptchaOptionsConfig = recaptchaOptionsConfig;
             RuleTupleCount = ruleTupleCount;
             Rules = rules;
             SelfLink = selfLink;

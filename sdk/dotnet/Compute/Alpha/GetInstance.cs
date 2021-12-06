@@ -116,6 +116,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse InstanceEncryptionKey;
         /// <summary>
+        /// KeyRevocationActionType of the instance.
+        /// </summary>
+        public readonly string KeyRevocationActionType;
+        /// <summary>
         /// Type of the resource. Always compute#instance for instances.
         /// </summary>
         public readonly string Kind;
@@ -281,6 +285,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             Outputs.CustomerEncryptionKeyResponse instanceEncryptionKey,
 
+            string keyRevocationActionType,
+
             string kind,
 
             string labelFingerprint,
@@ -367,6 +373,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             GuestAccelerators = guestAccelerators;
             Hostname = hostname;
             InstanceEncryptionKey = instanceEncryptionKey;
+            KeyRevocationActionType = keyRevocationActionType;
             Kind = kind;
             LabelFingerprint = labelFingerprint;
             Labels = labels;

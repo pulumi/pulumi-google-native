@@ -47,6 +47,8 @@ from .get_interconnect import *
 from .get_interconnect_attachment import *
 from .get_license import *
 from .get_license_iam_policy import *
+from .get_machine_image import *
+from .get_machine_image_iam_policy import *
 from .get_network import *
 from .get_network_endpoint_group import *
 from .get_node_group import *
@@ -79,6 +81,7 @@ from .get_router import *
 from .get_security_policy import *
 from .get_service_attachment import *
 from .get_service_attachment_iam_policy import *
+from .get_snapshot import *
 from .get_snapshot_iam_policy import *
 from .get_ssl_certificate import *
 from .get_ssl_policy import *
@@ -114,6 +117,8 @@ from .interconnect import *
 from .interconnect_attachment import *
 from .license import *
 from .license_iam_policy import *
+from .machine_image import *
+from .machine_image_iam_policy import *
 from .network import *
 from .network_endpoint_group import *
 from .node_group import *
@@ -146,6 +151,7 @@ from .router import *
 from .security_policy import *
 from .service_attachment import *
 from .service_attachment_iam_policy import *
+from .snapshot import *
 from .snapshot_iam_policy import *
 from .ssl_certificate import *
 from .ssl_policy import *

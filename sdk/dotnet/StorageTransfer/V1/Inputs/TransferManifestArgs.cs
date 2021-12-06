@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
     public sealed class TransferManifestArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Holds URI-encoded path to find the manifest. It can be located in data_source, data_sink, or separately in GCS. For data_source and data_sink, the manifest location is relative to the path specified by that data_source or data_sink. If manifest is in GCS, use format "gs:///". If manifest is in data_source, use format "source://". If manifest is in data_sink, use format "sink://".
+        /// Specifies the path to the manifest in Cloud Storage. The Google-managed service account for the transfer must have `storage.objects.get` permission for this object. An example path is `gs://bucket_name/path/manifest.csv`.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

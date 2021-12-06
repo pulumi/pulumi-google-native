@@ -51,6 +51,9 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("recaptchaOptionsConfig")]
+        public Output<Outputs.SecurityPolicyRecaptchaOptionsConfigResponse> RecaptchaOptionsConfig { get; private set; } = null!;
+
         /// <summary>
         /// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
         /// </summary>
@@ -62,6 +65,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
 
 
         /// <summary>
@@ -129,6 +138,9 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("recaptchaOptionsConfig")]
+        public Input<Inputs.SecurityPolicyRecaptchaOptionsConfigArgs>? RecaptchaOptionsConfig { get; set; }
+
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
 
@@ -143,6 +155,12 @@ namespace Pulumi.GoogleNative.Compute.V1
             get => _rules ?? (_rules = new InputList<Inputs.SecurityPolicyRuleArgs>());
             set => _rules = value;
         }
+
+        /// <summary>
+        /// The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
+        /// </summary>
+        [Input("type")]
+        public Input<Pulumi.GoogleNative.Compute.V1.SecurityPolicyType>? Type { get; set; }
 
         public SecurityPolicyArgs()
         {

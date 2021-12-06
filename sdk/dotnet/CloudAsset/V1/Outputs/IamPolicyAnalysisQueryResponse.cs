@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.CloudAsset.V1.Outputs
 {
 
     /// <summary>
-    /// ## IAM policy analysis query message.
+    /// IAM policy analysis query message.
     /// </summary>
     [OutputType]
     public sealed class IamPolicyAnalysisQueryResponse

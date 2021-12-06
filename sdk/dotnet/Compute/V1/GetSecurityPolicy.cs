@@ -78,6 +78,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         public readonly string Name;
+        public readonly Outputs.SecurityPolicyRecaptchaOptionsConfigResponse RecaptchaOptionsConfig;
         /// <summary>
         /// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
         /// </summary>
@@ -86,6 +87,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
+        /// <summary>
+        /// The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
+        /// </summary>
+        public readonly string Type;
 
         [OutputConstructor]
         private GetSecurityPolicyResult(
@@ -103,9 +108,13 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string name,
 
+            Outputs.SecurityPolicyRecaptchaOptionsConfigResponse recaptchaOptionsConfig,
+
             ImmutableArray<Outputs.SecurityPolicyRuleResponse> rules,
 
-            string selfLink)
+            string selfLink,
+
+            string type)
         {
             AdaptiveProtectionConfig = adaptiveProtectionConfig;
             AdvancedOptionsConfig = advancedOptionsConfig;
@@ -114,8 +123,10 @@ namespace Pulumi.GoogleNative.Compute.V1
             Fingerprint = fingerprint;
             Kind = kind;
             Name = name;
+            RecaptchaOptionsConfig = recaptchaOptionsConfig;
             Rules = rules;
             SelfLink = selfLink;
+            Type = type;
         }
     }
 }

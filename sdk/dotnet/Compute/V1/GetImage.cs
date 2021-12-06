@@ -81,7 +81,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Family;
         /// <summary>
-        /// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+        /// A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
         /// </summary>
         public readonly ImmutableArray<Outputs.GuestOsFeatureResponse> GuestOsFeatures;
         /// <summary>

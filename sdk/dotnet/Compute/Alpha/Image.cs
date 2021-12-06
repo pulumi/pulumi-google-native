@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public partial class Image : Pulumi.CustomResource
     {
         /// <summary>
+        /// The architecture of the image. Valid values are ARM64 or X86_64.
+        /// </summary>
+        [Output("architecture")]
+        public Output<string> Architecture { get; private set; } = null!;
+
+        /// <summary>
         /// Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
         /// </summary>
         [Output("archiveSizeBytes")]
@@ -52,7 +58,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Family { get; private set; } = null!;
 
         /// <summary>
-        /// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+        /// A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
         /// </summary>
         [Output("guestOsFeatures")]
         public Output<ImmutableArray<Outputs.GuestOsFeatureResponse>> GuestOsFeatures { get; private set; } = null!;
@@ -265,6 +271,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class ImageArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The architecture of the image. Valid values are ARM64 or X86_64.
+        /// </summary>
+        [Input("architecture")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.ImageArchitecture>? Architecture { get; set; }
+
+        /// <summary>
         /// Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
         /// </summary>
         [Input("archiveSizeBytes")]
@@ -301,7 +313,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         private InputList<Inputs.GuestOsFeatureArgs>? _guestOsFeatures;
 
         /// <summary>
-        /// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+        /// A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
         /// </summary>
         public InputList<Inputs.GuestOsFeatureArgs> GuestOsFeatures
         {

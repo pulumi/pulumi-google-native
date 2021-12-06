@@ -31,22 +31,28 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<string>? ConformAction { get; set; }
 
         /// <summary>
-        /// Determines the key to enforce the rate_limit_threshold on. Possible values are: "ALL" -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. "ALL_IPS" -- This definition, equivalent to "ALL", has been depprecated. "IP" -- The source IP address of the request is the key. Each IP has this limit enforced separately. "HTTP_HEADER" -- The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to "ALL". "XFF_IP" -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to "ALL".
+        /// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
         /// </summary>
         [Input("enforceOnKey")]
         public Input<Pulumi.GoogleNative.Compute.Beta.SecurityPolicyRuleRateLimitOptionsEnforceOnKey>? EnforceOnKey { get; set; }
 
         /// <summary>
-        /// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+        /// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
         /// </summary>
         [Input("enforceOnKeyName")]
         public Input<string>? EnforceOnKeyName { get; set; }
 
         /// <summary>
-        /// When a request is denied, returns the HTTP response code specified. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
+        /// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceed_redirect_options below.
         /// </summary>
         [Input("exceedAction")]
         public Input<string>? ExceedAction { get; set; }
+
+        /// <summary>
+        /// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+        /// </summary>
+        [Input("exceedRedirectOptions")]
+        public Input<Inputs.SecurityPolicyRuleRedirectOptionsArgs>? ExceedRedirectOptions { get; set; }
 
         /// <summary>
         /// Threshold at which to begin ratelimiting.

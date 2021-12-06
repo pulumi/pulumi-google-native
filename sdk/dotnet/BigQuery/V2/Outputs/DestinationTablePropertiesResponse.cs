@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// [Optional] The destination table expiration time. If this field is set: For a new table, it will set the table's expiration time (even if there is a dataset level default table expiration time). For an existing table, it will update the table's expiration time. If this field is not set: For a new table, if dataset level default table expiration time is present, that will be applied. For an existing table, no change is made to the table's expiration time. Additionally this field is only applied when data is written to an empty table (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
+        /// [Internal] This field is for Google internal use only.
         /// </summary>
         public readonly string ExpirationTime;
         /// <summary>

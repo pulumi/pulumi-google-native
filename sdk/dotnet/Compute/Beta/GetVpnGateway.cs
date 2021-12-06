@@ -99,6 +99,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
+        /// The stack type for this VPN gateway to identify the IP protocols that are enabled. If not specified, IPV4_ONLY will be used.
+        /// </summary>
+        public readonly string StackType;
+        /// <summary>
         /// The list of VPN interfaces associated with this VPN gateway.
         /// </summary>
         public readonly ImmutableArray<Outputs.VpnGatewayVpnGatewayInterfaceResponse> VpnInterfaces;
@@ -123,6 +127,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string selfLink,
 
+            string stackType,
+
             ImmutableArray<Outputs.VpnGatewayVpnGatewayInterfaceResponse> vpnInterfaces)
         {
             CreationTimestamp = creationTimestamp;
@@ -134,6 +140,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             Network = network;
             Region = region;
             SelfLink = selfLink;
+            StackType = stackType;
             VpnInterfaces = vpnInterfaces;
         }
     }

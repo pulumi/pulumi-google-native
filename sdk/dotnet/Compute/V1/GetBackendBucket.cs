@@ -77,6 +77,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// The resource URL for the edge security policy associated with this backend bucket.
+        /// </summary>
+        public readonly string EdgeSecurityPolicy;
+        /// <summary>
         /// If true, enable Cloud CDN for this BackendBucket.
         /// </summary>
         public readonly bool EnableCdn;
@@ -105,6 +109,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string description,
 
+            string edgeSecurityPolicy,
+
             bool enableCdn,
 
             string kind,
@@ -118,6 +124,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             CreationTimestamp = creationTimestamp;
             CustomResponseHeaders = customResponseHeaders;
             Description = description;
+            EdgeSecurityPolicy = edgeSecurityPolicy;
             EnableCdn = enableCdn;
             Kind = kind;
             Name = name;

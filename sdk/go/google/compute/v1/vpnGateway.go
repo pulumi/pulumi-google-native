@@ -33,6 +33,8 @@ type VpnGateway struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// The stack type for this VPN gateway to identify the IP protocols that are enabled. If not specified, IPV4_ONLY will be used.
+	StackType pulumi.StringOutput `pulumi:"stackType"`
 	// The list of VPN interfaces associated with this VPN gateway.
 	VpnInterfaces VpnGatewayVpnGatewayInterfaceResponseArrayOutput `pulumi:"vpnInterfaces"`
 }
@@ -90,6 +92,8 @@ type vpnGatewayArgs struct {
 	Project   *string `pulumi:"project"`
 	Region    string  `pulumi:"region"`
 	RequestId *string `pulumi:"requestId"`
+	// The stack type for this VPN gateway to identify the IP protocols that are enabled. If not specified, IPV4_ONLY will be used.
+	StackType *VpnGatewayStackType `pulumi:"stackType"`
 	// The list of VPN interfaces associated with this VPN gateway.
 	VpnInterfaces []VpnGatewayVpnGatewayInterface `pulumi:"vpnInterfaces"`
 }
@@ -107,6 +111,8 @@ type VpnGatewayArgs struct {
 	Project   pulumi.StringPtrInput
 	Region    pulumi.StringInput
 	RequestId pulumi.StringPtrInput
+	// The stack type for this VPN gateway to identify the IP protocols that are enabled. If not specified, IPV4_ONLY will be used.
+	StackType VpnGatewayStackTypePtrInput
 	// The list of VPN interfaces associated with this VPN gateway.
 	VpnInterfaces VpnGatewayVpnGatewayInterfaceArrayInput
 }

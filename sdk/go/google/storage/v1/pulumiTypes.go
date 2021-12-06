@@ -2175,7 +2175,7 @@ func (o BucketEncryptionResponsePtrOutput) DefaultKmsKeyName() pulumi.StringPtrO
 type BucketIamConfiguration struct {
 	// The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
 	BucketPolicyOnly *BucketIamConfigurationBucketPolicyOnly `pulumi:"bucketPolicyOnly"`
-	// The bucket's Public Access Prevention configuration. Currently, 'unspecified' and 'enforced' are supported.
+	// The bucket's Public Access Prevention configuration. Currently, 'inherited' and 'enforced' are supported.
 	PublicAccessPrevention *string `pulumi:"publicAccessPrevention"`
 	// The bucket's uniform bucket-level access configuration.
 	UniformBucketLevelAccess *BucketIamConfigurationUniformBucketLevelAccess `pulumi:"uniformBucketLevelAccess"`
@@ -2196,7 +2196,7 @@ type BucketIamConfigurationInput interface {
 type BucketIamConfigurationArgs struct {
 	// The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
 	BucketPolicyOnly BucketIamConfigurationBucketPolicyOnlyPtrInput `pulumi:"bucketPolicyOnly"`
-	// The bucket's Public Access Prevention configuration. Currently, 'unspecified' and 'enforced' are supported.
+	// The bucket's Public Access Prevention configuration. Currently, 'inherited' and 'enforced' are supported.
 	PublicAccessPrevention pulumi.StringPtrInput `pulumi:"publicAccessPrevention"`
 	// The bucket's uniform bucket-level access configuration.
 	UniformBucketLevelAccess BucketIamConfigurationUniformBucketLevelAccessPtrInput `pulumi:"uniformBucketLevelAccess"`
@@ -2285,7 +2285,7 @@ func (o BucketIamConfigurationOutput) BucketPolicyOnly() BucketIamConfigurationB
 	return o.ApplyT(func(v BucketIamConfiguration) *BucketIamConfigurationBucketPolicyOnly { return v.BucketPolicyOnly }).(BucketIamConfigurationBucketPolicyOnlyPtrOutput)
 }
 
-// The bucket's Public Access Prevention configuration. Currently, 'unspecified' and 'enforced' are supported.
+// The bucket's Public Access Prevention configuration. Currently, 'inherited' and 'enforced' are supported.
 func (o BucketIamConfigurationOutput) PublicAccessPrevention() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketIamConfiguration) *string { return v.PublicAccessPrevention }).(pulumi.StringPtrOutput)
 }
@@ -2331,7 +2331,7 @@ func (o BucketIamConfigurationPtrOutput) BucketPolicyOnly() BucketIamConfigurati
 	}).(BucketIamConfigurationBucketPolicyOnlyPtrOutput)
 }
 
-// The bucket's Public Access Prevention configuration. Currently, 'unspecified' and 'enforced' are supported.
+// The bucket's Public Access Prevention configuration. Currently, 'inherited' and 'enforced' are supported.
 func (o BucketIamConfigurationPtrOutput) PublicAccessPrevention() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketIamConfiguration) *string {
 		if v == nil {
@@ -2673,7 +2673,7 @@ func (o BucketIamConfigurationBucketPolicyOnlyResponsePtrOutput) LockedTime() pu
 type BucketIamConfigurationResponse struct {
 	// The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
 	BucketPolicyOnly BucketIamConfigurationBucketPolicyOnlyResponse `pulumi:"bucketPolicyOnly"`
-	// The bucket's Public Access Prevention configuration. Currently, 'unspecified' and 'enforced' are supported.
+	// The bucket's Public Access Prevention configuration. Currently, 'inherited' and 'enforced' are supported.
 	PublicAccessPrevention string `pulumi:"publicAccessPrevention"`
 	// The bucket's uniform bucket-level access configuration.
 	UniformBucketLevelAccess BucketIamConfigurationUniformBucketLevelAccessResponse `pulumi:"uniformBucketLevelAccess"`
@@ -2694,7 +2694,7 @@ type BucketIamConfigurationResponseInput interface {
 type BucketIamConfigurationResponseArgs struct {
 	// The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
 	BucketPolicyOnly BucketIamConfigurationBucketPolicyOnlyResponseInput `pulumi:"bucketPolicyOnly"`
-	// The bucket's Public Access Prevention configuration. Currently, 'unspecified' and 'enforced' are supported.
+	// The bucket's Public Access Prevention configuration. Currently, 'inherited' and 'enforced' are supported.
 	PublicAccessPrevention pulumi.StringInput `pulumi:"publicAccessPrevention"`
 	// The bucket's uniform bucket-level access configuration.
 	UniformBucketLevelAccess BucketIamConfigurationUniformBucketLevelAccessResponseInput `pulumi:"uniformBucketLevelAccess"`
@@ -2785,7 +2785,7 @@ func (o BucketIamConfigurationResponseOutput) BucketPolicyOnly() BucketIamConfig
 	}).(BucketIamConfigurationBucketPolicyOnlyResponseOutput)
 }
 
-// The bucket's Public Access Prevention configuration. Currently, 'unspecified' and 'enforced' are supported.
+// The bucket's Public Access Prevention configuration. Currently, 'inherited' and 'enforced' are supported.
 func (o BucketIamConfigurationResponseOutput) PublicAccessPrevention() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketIamConfigurationResponse) string { return v.PublicAccessPrevention }).(pulumi.StringOutput)
 }
@@ -2831,7 +2831,7 @@ func (o BucketIamConfigurationResponsePtrOutput) BucketPolicyOnly() BucketIamCon
 	}).(BucketIamConfigurationBucketPolicyOnlyResponsePtrOutput)
 }
 
-// The bucket's Public Access Prevention configuration. Currently, 'unspecified' and 'enforced' are supported.
+// The bucket's Public Access Prevention configuration. Currently, 'inherited' and 'enforced' are supported.
 func (o BucketIamConfigurationResponsePtrOutput) PublicAccessPrevention() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketIamConfigurationResponse) *string {
 		if v == nil {

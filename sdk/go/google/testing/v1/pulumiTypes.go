@@ -832,7 +832,7 @@ type AndroidInstrumentationTest struct {
 	AppBundle *AppBundle `pulumi:"appBundle"`
 	// The java package for the application under test. The default value is determined by examining the application's manifest.
 	AppPackageId *string `pulumi:"appPackageId"`
-	// The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
+	// The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.1 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
 	OrchestratorOption *AndroidInstrumentationTestOrchestratorOption `pulumi:"orchestratorOption"`
 	// The option to run tests in multiple shards in parallel.
 	ShardingOption *ShardingOption `pulumi:"shardingOption"`
@@ -865,7 +865,7 @@ type AndroidInstrumentationTestArgs struct {
 	AppBundle AppBundlePtrInput `pulumi:"appBundle"`
 	// The java package for the application under test. The default value is determined by examining the application's manifest.
 	AppPackageId pulumi.StringPtrInput `pulumi:"appPackageId"`
-	// The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
+	// The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.1 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
 	OrchestratorOption AndroidInstrumentationTestOrchestratorOptionPtrInput `pulumi:"orchestratorOption"`
 	// The option to run tests in multiple shards in parallel.
 	ShardingOption ShardingOptionPtrInput `pulumi:"shardingOption"`
@@ -972,7 +972,7 @@ func (o AndroidInstrumentationTestOutput) AppPackageId() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v AndroidInstrumentationTest) *string { return v.AppPackageId }).(pulumi.StringPtrOutput)
 }
 
-// The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
+// The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.1 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
 func (o AndroidInstrumentationTestOutput) OrchestratorOption() AndroidInstrumentationTestOrchestratorOptionPtrOutput {
 	return o.ApplyT(func(v AndroidInstrumentationTest) *AndroidInstrumentationTestOrchestratorOption {
 		return v.OrchestratorOption
@@ -1058,7 +1058,7 @@ func (o AndroidInstrumentationTestPtrOutput) AppPackageId() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
+// The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.1 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
 func (o AndroidInstrumentationTestPtrOutput) OrchestratorOption() AndroidInstrumentationTestOrchestratorOptionPtrOutput {
 	return o.ApplyT(func(v *AndroidInstrumentationTest) *AndroidInstrumentationTestOrchestratorOption {
 		if v == nil {
@@ -1126,7 +1126,7 @@ type AndroidInstrumentationTestResponse struct {
 	AppBundle AppBundleResponse `pulumi:"appBundle"`
 	// The java package for the application under test. The default value is determined by examining the application's manifest.
 	AppPackageId string `pulumi:"appPackageId"`
-	// The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
+	// The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.1 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
 	OrchestratorOption string `pulumi:"orchestratorOption"`
 	// The option to run tests in multiple shards in parallel.
 	ShardingOption ShardingOptionResponse `pulumi:"shardingOption"`
@@ -1159,7 +1159,7 @@ type AndroidInstrumentationTestResponseArgs struct {
 	AppBundle AppBundleResponseInput `pulumi:"appBundle"`
 	// The java package for the application under test. The default value is determined by examining the application's manifest.
 	AppPackageId pulumi.StringInput `pulumi:"appPackageId"`
-	// The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
+	// The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.1 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
 	OrchestratorOption pulumi.StringInput `pulumi:"orchestratorOption"`
 	// The option to run tests in multiple shards in parallel.
 	ShardingOption ShardingOptionResponseInput `pulumi:"shardingOption"`
@@ -1266,7 +1266,7 @@ func (o AndroidInstrumentationTestResponseOutput) AppPackageId() pulumi.StringOu
 	return o.ApplyT(func(v AndroidInstrumentationTestResponse) string { return v.AppPackageId }).(pulumi.StringOutput)
 }
 
-// The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
+// The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.1 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
 func (o AndroidInstrumentationTestResponseOutput) OrchestratorOption() pulumi.StringOutput {
 	return o.ApplyT(func(v AndroidInstrumentationTestResponse) string { return v.OrchestratorOption }).(pulumi.StringOutput)
 }
@@ -1350,7 +1350,7 @@ func (o AndroidInstrumentationTestResponsePtrOutput) AppPackageId() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
+// The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.1 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
 func (o AndroidInstrumentationTestResponsePtrOutput) OrchestratorOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AndroidInstrumentationTestResponse) *string {
 		if v == nil {

@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> SharedSecret { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the public advertised prefix.
+        /// The status of the public advertised prefix. Possible values include: - `INITIAL`: RPKI validation is complete. - `PTR_CONFIGURED`: User has configured the PTR. - `VALIDATED`: Reverse DNS lookup is successful. - `REVERSE_DNS_LOOKUP_FAILED`: Reverse DNS lookup failed. - `PREFIX_CONFIGURATION_IN_PROGRESS`: The prefix is being configured. - `PREFIX_CONFIGURATION_COMPLETE`: The prefix is fully configured. - `PREFIX_REMOVAL_IN_PROGRESS`: The prefix is being removed. 
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? RequestId { get; set; }
 
         /// <summary>
-        /// The status of the public advertised prefix.
+        /// The status of the public advertised prefix. Possible values include: - `INITIAL`: RPKI validation is complete. - `PTR_CONFIGURED`: User has configured the PTR. - `VALIDATED`: Reverse DNS lookup is successful. - `REVERSE_DNS_LOOKUP_FAILED`: Reverse DNS lookup failed. - `PREFIX_CONFIGURATION_IN_PROGRESS`: The prefix is being configured. - `PREFIX_CONFIGURATION_COMPLETE`: The prefix is fully configured. - `PREFIX_REMOVAL_IN_PROGRESS`: The prefix is being removed. 
         /// </summary>
         [Input("status")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.PublicAdvertisedPrefixStatus>? Status { get; set; }

@@ -77,6 +77,7 @@ export class OrganizationSecurityPolicy extends pulumi.CustomResource {
      * The parent of the security policy.
      */
     public /*out*/ readonly parent!: pulumi.Output<string>;
+    public readonly recaptchaOptionsConfig!: pulumi.Output<outputs.compute.beta.SecurityPolicyRecaptchaOptionsConfigResponse>;
     /**
      * Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
      */
@@ -117,6 +118,7 @@ export class OrganizationSecurityPolicy extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["parentId"] = args ? args.parentId : undefined;
+            resourceInputs["recaptchaOptionsConfig"] = args ? args.recaptchaOptionsConfig : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
@@ -141,6 +143,7 @@ export class OrganizationSecurityPolicy extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["parent"] = undefined /*out*/;
+            resourceInputs["recaptchaOptionsConfig"] = undefined /*out*/;
             resourceInputs["ruleTupleCount"] = undefined /*out*/;
             resourceInputs["rules"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -181,6 +184,7 @@ export interface OrganizationSecurityPolicyArgs {
      */
     name?: pulumi.Input<string>;
     parentId?: pulumi.Input<string>;
+    recaptchaOptionsConfig?: pulumi.Input<inputs.compute.beta.SecurityPolicyRecaptchaOptionsConfigArgs>;
     requestId?: pulumi.Input<string>;
     /**
      * A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.

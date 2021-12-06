@@ -13,6 +13,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     public sealed class InstanceGroupManagerAutoHealingPolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Restricts what triggers autohealing.
+        /// </summary>
+        [Input("autoHealingTriggers")]
+        public Input<Inputs.InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersArgs>? AutoHealingTriggers { get; set; }
+
+        /// <summary>
         /// The URL for the health check that signals autohealing.
         /// </summary>
         [Input("healthCheck")]

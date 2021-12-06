@@ -38,7 +38,7 @@ type LookupImageResult struct {
 	DiskSizeGb string `pulumi:"diskSizeGb"`
 	// The name of the image family to which this image belongs. You can create disks by specifying an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
 	Family string `pulumi:"family"`
-	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+	// A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
 	GuestOsFeatures []GuestOsFeatureResponse `pulumi:"guestOsFeatures"`
 	// Encrypts the image using a customer-supplied encryption key. After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the image, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the image later.
 	ImageEncryptionKey CustomerEncryptionKeyResponse `pulumi:"imageEncryptionKey"`
@@ -150,7 +150,7 @@ func (o LookupImageResultOutput) Family() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.Family }).(pulumi.StringOutput)
 }
 
-// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+// A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
 func (o LookupImageResultOutput) GuestOsFeatures() GuestOsFeatureResponseArrayOutput {
 	return o.ApplyT(func(v LookupImageResult) []GuestOsFeatureResponse { return v.GuestOsFeatures }).(GuestOsFeatureResponseArrayOutput)
 }

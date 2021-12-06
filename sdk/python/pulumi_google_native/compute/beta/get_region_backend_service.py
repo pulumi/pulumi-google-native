@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionBackendServiceResult:
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, compression_mode=None, connection_draining=None, connection_tracking_policy=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, failover_policy=None, fingerprint=None, health_checks=None, iap=None, kind=None, load_balancing_scheme=None, locality_lb_policy=None, log_config=None, max_stream_duration=None, name=None, network=None, outlier_detection=None, port_name=None, protocol=None, region=None, security_policy=None, security_settings=None, self_link=None, session_affinity=None, subsetting=None, timeout_sec=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, compression_mode=None, connection_draining=None, connection_tracking_policy=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, failover_policy=None, fingerprint=None, health_checks=None, iap=None, kind=None, load_balancing_scheme=None, locality_lb_policy=None, log_config=None, max_stream_duration=None, name=None, network=None, outlier_detection=None, port_name=None, protocol=None, region=None, security_policy=None, security_settings=None, self_link=None, service_bindings=None, session_affinity=None, subsetting=None, timeout_sec=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -115,6 +115,9 @@ class GetRegionBackendServiceResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
+        if service_bindings and not isinstance(service_bindings, list):
+            raise TypeError("Expected argument 'service_bindings' to be a list")
+        pulumi.set(__self__, "service_bindings", service_bindings)
         if session_affinity and not isinstance(session_affinity, str):
             raise TypeError("Expected argument 'session_affinity' to be a str")
         pulumi.set(__self__, "session_affinity", session_affinity)
@@ -170,13 +173,16 @@ class GetRegionBackendServiceResult:
     @property
     @pulumi.getter(name="connectionTrackingPolicy")
     def connection_tracking_policy(self) -> 'outputs.BackendServiceConnectionTrackingPolicyResponse':
+        """
+        Connection Tracking configuration for this BackendService. Connection tracking policy settings are only available for Network Load Balancing and Internal TCP/UDP Load Balancing.
+        """
         return pulumi.get(self, "connection_tracking_policy")
 
     @property
     @pulumi.getter(name="consistentHash")
     def consistent_hash(self) -> 'outputs.ConsistentHashLoadBalancerSettingsResponse':
         """
-        Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular destination host will be lost when one or more hosts are added/removed from the destination service. This field specifies parameters that control consistent hashing. This field is only applicable when localityLbPolicy is set to MAGLEV or RING_HASH. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular destination host will be lost when one or more hosts are added/removed from the destination service. This field specifies parameters that control consistent hashing. This field is only applicable when localityLbPolicy is set to MAGLEV or RING_HASH. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. 
         """
         return pulumi.get(self, "consistent_hash")
 
@@ -232,7 +238,7 @@ class GetRegionBackendServiceResult:
     @pulumi.getter(name="failoverPolicy")
     def failover_policy(self) -> 'outputs.BackendServiceFailoverPolicyResponse':
         """
-        Requires at least one backend instance group to be defined as a backup (failover) backend. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview).
+        Requires at least one backend instance group to be defined as a backup (failover) backend. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
         """
         return pulumi.get(self, "failover_policy")
 
@@ -280,7 +286,7 @@ class GetRegionBackendServiceResult:
     @pulumi.getter(name="localityLbPolicy")
     def locality_lb_policy(self) -> str:
         """
-        The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "locality_lb_policy")
 
@@ -373,10 +379,18 @@ class GetRegionBackendServiceResult:
         return pulumi.get(self, "self_link")
 
     @property
+    @pulumi.getter(name="serviceBindings")
+    def service_bindings(self) -> Sequence[str]:
+        """
+        URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
+        """
+        return pulumi.get(self, "service_bindings")
+
+    @property
     @pulumi.getter(name="sessionAffinity")
     def session_affinity(self) -> str:
         """
-        Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).
         """
         return pulumi.get(self, "session_affinity")
 
@@ -432,6 +446,7 @@ class AwaitableGetRegionBackendServiceResult(GetRegionBackendServiceResult):
             security_policy=self.security_policy,
             security_settings=self.security_settings,
             self_link=self.self_link,
+            service_bindings=self.service_bindings,
             session_affinity=self.session_affinity,
             subsetting=self.subsetting,
             timeout_sec=self.timeout_sec)
@@ -487,6 +502,7 @@ def get_region_backend_service(backend_service: Optional[str] = None,
         security_policy=__ret__.security_policy,
         security_settings=__ret__.security_settings,
         self_link=__ret__.self_link,
+        service_bindings=__ret__.service_bindings,
         session_affinity=__ret__.session_affinity,
         subsetting=__ret__.subsetting,
         timeout_sec=__ret__.timeout_sec)

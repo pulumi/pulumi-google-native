@@ -24,6 +24,8 @@ type BackendBucket struct {
 	CustomResponseHeaders pulumi.StringArrayOutput `pulumi:"customResponseHeaders"`
 	// An optional textual description of the resource; provided by the client when the resource is created.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// The resource URL for the edge security policy associated with this backend bucket.
+	EdgeSecurityPolicy pulumi.StringOutput `pulumi:"edgeSecurityPolicy"`
 	// If true, enable Cloud CDN for this BackendBucket.
 	EnableCdn pulumi.BoolOutput `pulumi:"enableCdn"`
 	// Type of the resource.

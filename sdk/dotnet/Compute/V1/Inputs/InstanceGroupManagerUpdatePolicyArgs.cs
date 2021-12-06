@@ -37,6 +37,12 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public Input<Pulumi.GoogleNative.Compute.V1.InstanceGroupManagerUpdatePolicyMinimalAction>? MinimalAction { get; set; }
 
         /// <summary>
+        /// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+        /// </summary>
+        [Input("mostDisruptiveAllowedAction")]
+        public Input<Pulumi.GoogleNative.Compute.V1.InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction>? MostDisruptiveAllowedAction { get; set; }
+
+        /// <summary>
         /// What action should be used to replace instances. See minimal_action.REPLACE
         /// </summary>
         [Input("replacementMethod")]

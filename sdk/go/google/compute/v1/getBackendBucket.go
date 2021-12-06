@@ -36,6 +36,8 @@ type LookupBackendBucketResult struct {
 	CustomResponseHeaders []string `pulumi:"customResponseHeaders"`
 	// An optional textual description of the resource; provided by the client when the resource is created.
 	Description string `pulumi:"description"`
+	// The resource URL for the edge security policy associated with this backend bucket.
+	EdgeSecurityPolicy string `pulumi:"edgeSecurityPolicy"`
 	// If true, enable Cloud CDN for this BackendBucket.
 	EnableCdn bool `pulumi:"enableCdn"`
 	// Type of the resource.
@@ -101,6 +103,11 @@ func (o LookupBackendBucketResultOutput) CustomResponseHeaders() pulumi.StringAr
 // An optional textual description of the resource; provided by the client when the resource is created.
 func (o LookupBackendBucketResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackendBucketResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The resource URL for the edge security policy associated with this backend bucket.
+func (o LookupBackendBucketResultOutput) EdgeSecurityPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendBucketResult) string { return v.EdgeSecurityPolicy }).(pulumi.StringOutput)
 }
 
 // If true, enable Cloud CDN for this BackendBucket.

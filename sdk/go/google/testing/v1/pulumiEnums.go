@@ -10,13 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
+// The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.1 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
 type AndroidInstrumentationTestOrchestratorOption string
 
 const (
 	// Default value: the server will choose the mode. Currently implies that the test will run without the orchestrator. In the future, all instrumentation tests will be run with the orchestrator. Using the orchestrator is highly encouraged because of all the benefits it offers.
 	AndroidInstrumentationTestOrchestratorOptionOrchestratorOptionUnspecified = AndroidInstrumentationTestOrchestratorOption("ORCHESTRATOR_OPTION_UNSPECIFIED")
-	// Run test using orchestrator. ** Only compatible with AndroidJUnitRunner version 1.0 or higher! ** Recommended.
+	// Run test using orchestrator. ** Only compatible with AndroidJUnitRunner version 1.1 or higher! ** Recommended.
 	AndroidInstrumentationTestOrchestratorOptionUseOrchestrator = AndroidInstrumentationTestOrchestratorOption("USE_ORCHESTRATOR")
 	// Run test without using orchestrator.
 	AndroidInstrumentationTestOrchestratorOptionDoNotUseOrchestrator = AndroidInstrumentationTestOrchestratorOption("DO_NOT_USE_ORCHESTRATOR")

@@ -31,6 +31,10 @@ export interface GetDiskArgs {
 
 export interface GetDiskResult {
     /**
+     * The architecture of the disk. Valid values are ARM64 or X86_64.
+     */
+    readonly architecture: string;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;

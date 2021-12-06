@@ -19,7 +19,7 @@ type AgentPool struct {
 	BandwidthLimit BandwidthLimitResponseOutput `pulumi:"bandwidthLimit"`
 	// Specifies the client-specified AgentPool description.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Specifies a unique string that identifies the agent pool. Format: projects/{project_id}/agentPools/{agent_pool_id}
+	// Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specifies the state of the AgentPool.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -72,7 +72,7 @@ type agentPoolArgs struct {
 	BandwidthLimit *BandwidthLimit `pulumi:"bandwidthLimit"`
 	// Specifies the client-specified AgentPool description.
 	DisplayName *string `pulumi:"displayName"`
-	// Specifies a unique string that identifies the agent pool. Format: projects/{project_id}/agentPools/{agent_pool_id}
+	// Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 }
@@ -84,7 +84,7 @@ type AgentPoolArgs struct {
 	BandwidthLimit BandwidthLimitPtrInput
 	// Specifies the client-specified AgentPool description.
 	DisplayName pulumi.StringPtrInput
-	// Specifies a unique string that identifies the agent pool. Format: projects/{project_id}/agentPools/{agent_pool_id}
+	// Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 }

@@ -14,10 +14,14 @@ import (
 type AccessConfigNetworkTier string
 
 const (
+	// Public internet quality with fixed bandwidth.
+	AccessConfigNetworkTierFixedStandard = AccessConfigNetworkTier("FIXED_STANDARD")
 	// High quality, Google-grade network tier, support for all networking products.
 	AccessConfigNetworkTierPremium = AccessConfigNetworkTier("PREMIUM")
 	// Public internet quality, only limited support for other networking products.
 	AccessConfigNetworkTierStandard = AccessConfigNetworkTier("STANDARD")
+	// (Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured.
+	AccessConfigNetworkTierStandardOverridesFixedStandard = AccessConfigNetworkTier("STANDARD_OVERRIDES_FIXED_STANDARD")
 )
 
 func (AccessConfigNetworkTier) ElementType() reflect.Type {
@@ -680,10 +684,14 @@ func (in *addressIpVersionPtr) ToAddressIpVersionPtrOutputWithContext(ctx contex
 type AddressNetworkTier string
 
 const (
+	// Public internet quality with fixed bandwidth.
+	AddressNetworkTierFixedStandard = AddressNetworkTier("FIXED_STANDARD")
 	// High quality, Google-grade network tier, support for all networking products.
 	AddressNetworkTierPremium = AddressNetworkTier("PREMIUM")
 	// Public internet quality, only limited support for other networking products.
 	AddressNetworkTierStandard = AddressNetworkTier("STANDARD")
+	// (Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured.
+	AddressNetworkTierStandardOverridesFixedStandard = AddressNetworkTier("STANDARD_OVERRIDES_FIXED_STANDARD")
 )
 
 func (AddressNetworkTier) ElementType() reflect.Type {
@@ -843,7 +851,7 @@ func (in *addressNetworkTierPtr) ToAddressNetworkTierPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(AddressNetworkTierPtrOutput)
 }
 
-// The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using . - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose.
+// The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using automatic NAT IP address allocation. - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose.
 type AddressPurpose string
 
 const (
@@ -3711,7 +3719,7 @@ func (in *backendServiceCompressionModePtr) ToBackendServiceCompressionModePtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceCompressionModePtrOutput)
 }
 
-// Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default.
+// Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default. For more details, see [Connection Persistence for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#connection-persistence) and [Connection Persistence for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#connection-persistence).
 type BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends string
 
 const (
@@ -3877,7 +3885,7 @@ func (in *backendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthy
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsPtrOutput)
 }
 
-// Specifies the key used for connection tracking. There are two options: PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity.
+// Specifies the key used for connection tracking. There are two options: - PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. - PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity. For more details, see [Tracking Mode for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#tracking-mode) and [Tracking Mode for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#tracking-mode).
 type BackendServiceConnectionTrackingPolicyTrackingMode string
 
 const (
@@ -4049,7 +4057,7 @@ type BackendServiceLoadBalancingScheme string
 const (
 	// Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
 	BackendServiceLoadBalancingSchemeExternal = BackendServiceLoadBalancingScheme("EXTERNAL")
-	// Signifies that this will be used for External Managed HTTP(S), SSL Proxy, or TCP Proxy Load Balancing.
+	// Signifies that this will be used for External Managed HTTP(S) Load Balancing.
 	BackendServiceLoadBalancingSchemeExternalManaged = BackendServiceLoadBalancingScheme("EXTERNAL_MANAGED")
 	// Signifies that this will be used for Internal TCP/UDP Load Balancing.
 	BackendServiceLoadBalancingSchemeInternal = BackendServiceLoadBalancingScheme("INTERNAL")
@@ -4217,7 +4225,7 @@ func (in *backendServiceLoadBalancingSchemePtr) ToBackendServiceLoadBalancingSch
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceLoadBalancingSchemePtrOutput)
 }
 
-// The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 type BackendServiceLocalityLbPolicy string
 
 const (
@@ -4570,7 +4578,7 @@ func (in *backendServiceProtocolPtr) ToBackendServiceProtocolPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceProtocolPtrOutput)
 }
 
-// Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).
 type BackendServiceSessionAffinity string
 
 const (
@@ -7130,10 +7138,14 @@ func (in *forwardingRuleLoadBalancingSchemePtr) ToForwardingRuleLoadBalancingSch
 type ForwardingRuleNetworkTier string
 
 const (
+	// Public internet quality with fixed bandwidth.
+	ForwardingRuleNetworkTierFixedStandard = ForwardingRuleNetworkTier("FIXED_STANDARD")
 	// High quality, Google-grade network tier, support for all networking products.
 	ForwardingRuleNetworkTierPremium = ForwardingRuleNetworkTier("PREMIUM")
 	// Public internet quality, only limited support for other networking products.
 	ForwardingRuleNetworkTierStandard = ForwardingRuleNetworkTier("STANDARD")
+	// (Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured.
+	ForwardingRuleNetworkTierStandardOverridesFixedStandard = ForwardingRuleNetworkTier("STANDARD_OVERRIDES_FIXED_STANDARD")
 )
 
 func (ForwardingRuleNetworkTier) ElementType() reflect.Type {
@@ -7971,10 +7983,14 @@ func (in *globalAddressIpVersionPtr) ToGlobalAddressIpVersionPtrOutputWithContex
 type GlobalAddressNetworkTier string
 
 const (
+	// Public internet quality with fixed bandwidth.
+	GlobalAddressNetworkTierFixedStandard = GlobalAddressNetworkTier("FIXED_STANDARD")
 	// High quality, Google-grade network tier, support for all networking products.
 	GlobalAddressNetworkTierPremium = GlobalAddressNetworkTier("PREMIUM")
 	// Public internet quality, only limited support for other networking products.
 	GlobalAddressNetworkTierStandard = GlobalAddressNetworkTier("STANDARD")
+	// (Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured.
+	GlobalAddressNetworkTierStandardOverridesFixedStandard = GlobalAddressNetworkTier("STANDARD_OVERRIDES_FIXED_STANDARD")
 )
 
 func (GlobalAddressNetworkTier) ElementType() reflect.Type {
@@ -8134,7 +8150,7 @@ func (in *globalAddressNetworkTierPtr) ToGlobalAddressNetworkTierPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalAddressNetworkTierPtrOutput)
 }
 
-// The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using . - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose.
+// The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using automatic NAT IP address allocation. - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose.
 type GlobalAddressPurpose string
 
 const (
@@ -8820,10 +8836,14 @@ func (in *globalForwardingRuleLoadBalancingSchemePtr) ToGlobalForwardingRuleLoad
 type GlobalForwardingRuleNetworkTier string
 
 const (
+	// Public internet quality with fixed bandwidth.
+	GlobalForwardingRuleNetworkTierFixedStandard = GlobalForwardingRuleNetworkTier("FIXED_STANDARD")
 	// High quality, Google-grade network tier, support for all networking products.
 	GlobalForwardingRuleNetworkTierPremium = GlobalForwardingRuleNetworkTier("PREMIUM")
 	// Public internet quality, only limited support for other networking products.
 	GlobalForwardingRuleNetworkTierStandard = GlobalForwardingRuleNetworkTier("STANDARD")
+	// (Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured.
+	GlobalForwardingRuleNetworkTierStandardOverridesFixedStandard = GlobalForwardingRuleNetworkTier("STANDARD_OVERRIDES_FIXED_STANDARD")
 )
 
 func (GlobalForwardingRuleNetworkTier) ElementType() reflect.Type {
@@ -9331,7 +9351,7 @@ func (in *globalNetworkEndpointGroupNetworkEndpointTypePtr) ToGlobalNetworkEndpo
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput)
 }
 
-// The ID of a supported feature. Read Enabling guest operating system features to see a list of available options.
+// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
 type GuestOsFeatureType string
 
 const (
@@ -10504,7 +10524,7 @@ func (in *httpshealthCheckProxyHeaderPtr) ToHTTPSHealthCheckProxyHeaderPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(HTTPSHealthCheckProxyHeaderPtrOutput)
 }
 
-// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
 type HealthCheckType string
 
 const (
@@ -10674,7 +10694,7 @@ func (in *healthCheckTypePtr) ToHealthCheckTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(HealthCheckTypePtrOutput)
 }
 
-// The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
+// The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method is retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method is retained.
 type HttpRedirectActionRedirectResponseCode string
 
 const (
@@ -12521,7 +12541,7 @@ func (in *instancePrivateIpv6GoogleAccessPtr) ToInstancePrivateIpv6GoogleAccessP
 	return pulumi.ToOutputWithContext(ctx, in).(InstancePrivateIpv6GoogleAccessPtrOutput)
 }
 
-// PostKeyRevocationActionType of the instance.(will be deprecated soon)
+// PostKeyRevocationActionType of the instance.
 type InstancePropertiesPostKeyRevocationActionType string
 
 const (
@@ -12690,7 +12710,7 @@ func (in *instancePropertiesPostKeyRevocationActionTypePtr) ToInstanceProperties
 	return pulumi.ToOutputWithContext(ctx, in).(InstancePropertiesPostKeyRevocationActionTypePtrOutput)
 }
 
-// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default.
+// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
 type InstancePropertiesPrivateIpv6GoogleAccess string
 
 const (
@@ -14220,7 +14240,7 @@ func (in *logConfigDataAccessOptionsLogModePtr) ToLogConfigDataAccessOptionsLogM
 	return pulumi.ToOutputWithContext(ctx, in).(LogConfigDataAccessOptionsLogModePtrOutput)
 }
 
-// Specifies how individual filterLabel matches within the list of filterLabels contribute towards the overall metadataFilter match. Supported values are: - MATCH_ANY: At least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: All filterLabels must have matching labels in the provided metadata.
+// Specifies how individual filter label matches within the list of filterLabels and contributes toward the overall metadataFilter match. Supported values are: - MATCH_ANY: at least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: all filterLabels must have matching labels in the provided metadata.
 type MetadataFilterFilterMatchCriteria string
 
 const (
@@ -16404,17 +16424,24 @@ func (in *packetMirroringFilterDirectionPtr) ToPacketMirroringFilterDirectionPtr
 	return pulumi.ToOutputWithContext(ctx, in).(PacketMirroringFilterDirectionPtrOutput)
 }
 
-// The status of the public advertised prefix.
+// The status of the public advertised prefix. Possible values include: - `INITIAL`: RPKI validation is complete. - `PTR_CONFIGURED`: User has configured the PTR. - `VALIDATED`: Reverse DNS lookup is successful. - `REVERSE_DNS_LOOKUP_FAILED`: Reverse DNS lookup failed. - `PREFIX_CONFIGURATION_IN_PROGRESS`: The prefix is being configured. - `PREFIX_CONFIGURATION_COMPLETE`: The prefix is fully configured. - `PREFIX_REMOVAL_IN_PROGRESS`: The prefix is being removed.
 type PublicAdvertisedPrefixStatus string
 
 const (
-	PublicAdvertisedPrefixStatusInitial                       = PublicAdvertisedPrefixStatus("INITIAL")
-	PublicAdvertisedPrefixStatusPrefixConfigurationComplete   = PublicAdvertisedPrefixStatus("PREFIX_CONFIGURATION_COMPLETE")
+	// RPKI validation is complete.
+	PublicAdvertisedPrefixStatusInitial = PublicAdvertisedPrefixStatus("INITIAL")
+	// The prefix is fully configured.
+	PublicAdvertisedPrefixStatusPrefixConfigurationComplete = PublicAdvertisedPrefixStatus("PREFIX_CONFIGURATION_COMPLETE")
+	// The prefix is being configured.
 	PublicAdvertisedPrefixStatusPrefixConfigurationInProgress = PublicAdvertisedPrefixStatus("PREFIX_CONFIGURATION_IN_PROGRESS")
-	PublicAdvertisedPrefixStatusPrefixRemovalInProgress       = PublicAdvertisedPrefixStatus("PREFIX_REMOVAL_IN_PROGRESS")
-	PublicAdvertisedPrefixStatusPtrConfigured                 = PublicAdvertisedPrefixStatus("PTR_CONFIGURED")
-	PublicAdvertisedPrefixStatusReverseDnsLookupFailed        = PublicAdvertisedPrefixStatus("REVERSE_DNS_LOOKUP_FAILED")
-	PublicAdvertisedPrefixStatusValidated                     = PublicAdvertisedPrefixStatus("VALIDATED")
+	// The prefix is being removed.
+	PublicAdvertisedPrefixStatusPrefixRemovalInProgress = PublicAdvertisedPrefixStatus("PREFIX_REMOVAL_IN_PROGRESS")
+	// User has configured the PTR.
+	PublicAdvertisedPrefixStatusPtrConfigured = PublicAdvertisedPrefixStatus("PTR_CONFIGURED")
+	// Reverse DNS lookup failed.
+	PublicAdvertisedPrefixStatusReverseDnsLookupFailed = PublicAdvertisedPrefixStatus("REVERSE_DNS_LOOKUP_FAILED")
+	// Reverse DNS lookup is successful.
+	PublicAdvertisedPrefixStatusValidated = PublicAdvertisedPrefixStatus("VALIDATED")
 )
 
 func (PublicAdvertisedPrefixStatus) ElementType() reflect.Type {
@@ -16747,7 +16774,7 @@ type RegionBackendServiceLoadBalancingScheme string
 const (
 	// Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
 	RegionBackendServiceLoadBalancingSchemeExternal = RegionBackendServiceLoadBalancingScheme("EXTERNAL")
-	// Signifies that this will be used for External Managed HTTP(S), SSL Proxy, or TCP Proxy Load Balancing.
+	// Signifies that this will be used for External Managed HTTP(S) Load Balancing.
 	RegionBackendServiceLoadBalancingSchemeExternalManaged = RegionBackendServiceLoadBalancingScheme("EXTERNAL_MANAGED")
 	// Signifies that this will be used for Internal TCP/UDP Load Balancing.
 	RegionBackendServiceLoadBalancingSchemeInternal = RegionBackendServiceLoadBalancingScheme("INTERNAL")
@@ -16915,7 +16942,7 @@ func (in *regionBackendServiceLoadBalancingSchemePtr) ToRegionBackendServiceLoad
 	return pulumi.ToOutputWithContext(ctx, in).(RegionBackendServiceLoadBalancingSchemePtrOutput)
 }
 
-// The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 type RegionBackendServiceLocalityLbPolicy string
 
 const (
@@ -17268,7 +17295,7 @@ func (in *regionBackendServiceProtocolPtr) ToRegionBackendServiceProtocolPtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(RegionBackendServiceProtocolPtrOutput)
 }
 
-// Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).
 type RegionBackendServiceSessionAffinity string
 
 const (
@@ -17785,6 +17812,7 @@ type RegionCommitmentType string
 const (
 	RegionCommitmentTypeAcceleratorOptimized = RegionCommitmentType("ACCELERATOR_OPTIMIZED")
 	RegionCommitmentTypeComputeOptimized     = RegionCommitmentType("COMPUTE_OPTIMIZED")
+	RegionCommitmentTypeComputeOptimizedC2d  = RegionCommitmentType("COMPUTE_OPTIMIZED_C2D")
 	RegionCommitmentTypeGeneralPurpose       = RegionCommitmentType("GENERAL_PURPOSE")
 	RegionCommitmentTypeGeneralPurposeE2     = RegionCommitmentType("GENERAL_PURPOSE_E2")
 	RegionCommitmentTypeGeneralPurposeN2     = RegionCommitmentType("GENERAL_PURPOSE_N2")
@@ -18118,7 +18146,7 @@ func (in *regionHealthCheckServiceHealthStatusAggregationPolicyPtr) ToRegionHeal
 	return pulumi.ToOutputWithContext(ctx, in).(RegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutput)
 }
 
-// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
 type RegionHealthCheckType string
 
 const (
@@ -22790,6 +22818,8 @@ type SchedulingProvisioningModel string
 const (
 	// Heavily discounted, no guaranteed runtime.
 	SchedulingProvisioningModelSpot = SchedulingProvisioningModel("SPOT")
+	// Standard provisioning with user controlled runtime, no discounts.
+	SchedulingProvisioningModelStandard = SchedulingProvisioningModel("STANDARD")
 )
 
 func (SchedulingProvisioningModel) ElementType() reflect.Type {
@@ -23773,12 +23803,13 @@ func (in *securityPolicyRuleMatcherVersionedExprPtr) ToSecurityPolicyRuleMatcher
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyRuleMatcherVersionedExprPtrOutput)
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: "ALL" -- A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. "ALL_IPS" -- This definition, equivalent to "ALL", has been depprecated. "IP" -- The source IP address of the request is the key. Each IP has this limit enforced separately. "HTTP_HEADER" -- The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to "ALL". "XFF_IP" -- The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to "ALL".
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
 type SecurityPolicyRuleRateLimitOptionsEnforceOnKey string
 
 const (
 	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyAll        = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("ALL")
 	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyAllIps     = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("ALL_IPS")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyHttpCookie = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("HTTP_COOKIE")
 	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyHttpHeader = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("HTTP_HEADER")
 	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyIp         = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("IP")
 	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyXffIp      = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("XFF_IP")
@@ -27804,17 +27835,184 @@ func (in *targetTcpProxyProxyHeaderPtr) ToTargetTcpProxyProxyHeaderPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(TargetTcpProxyProxyHeaderPtrOutput)
 }
 
+// The stack type for this VPN gateway to identify the IP protocols that are enabled. If not specified, IPV4_ONLY will be used.
+type VpnGatewayStackType string
+
+const (
+	// Enable VPN gateway with both IPv4 and IPv6 protocols.
+	VpnGatewayStackTypeIpv4Ipv6 = VpnGatewayStackType("IPV4_IPV6")
+	// Enable VPN gateway with only IPv4 protocol.
+	VpnGatewayStackTypeIpv4Only = VpnGatewayStackType("IPV4_ONLY")
+)
+
+func (VpnGatewayStackType) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnGatewayStackType)(nil)).Elem()
+}
+
+func (e VpnGatewayStackType) ToVpnGatewayStackTypeOutput() VpnGatewayStackTypeOutput {
+	return pulumi.ToOutput(e).(VpnGatewayStackTypeOutput)
+}
+
+func (e VpnGatewayStackType) ToVpnGatewayStackTypeOutputWithContext(ctx context.Context) VpnGatewayStackTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(VpnGatewayStackTypeOutput)
+}
+
+func (e VpnGatewayStackType) ToVpnGatewayStackTypePtrOutput() VpnGatewayStackTypePtrOutput {
+	return e.ToVpnGatewayStackTypePtrOutputWithContext(context.Background())
+}
+
+func (e VpnGatewayStackType) ToVpnGatewayStackTypePtrOutputWithContext(ctx context.Context) VpnGatewayStackTypePtrOutput {
+	return VpnGatewayStackType(e).ToVpnGatewayStackTypeOutputWithContext(ctx).ToVpnGatewayStackTypePtrOutputWithContext(ctx)
+}
+
+func (e VpnGatewayStackType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VpnGatewayStackType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VpnGatewayStackType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e VpnGatewayStackType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type VpnGatewayStackTypeOutput struct{ *pulumi.OutputState }
+
+func (VpnGatewayStackTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnGatewayStackType)(nil)).Elem()
+}
+
+func (o VpnGatewayStackTypeOutput) ToVpnGatewayStackTypeOutput() VpnGatewayStackTypeOutput {
+	return o
+}
+
+func (o VpnGatewayStackTypeOutput) ToVpnGatewayStackTypeOutputWithContext(ctx context.Context) VpnGatewayStackTypeOutput {
+	return o
+}
+
+func (o VpnGatewayStackTypeOutput) ToVpnGatewayStackTypePtrOutput() VpnGatewayStackTypePtrOutput {
+	return o.ToVpnGatewayStackTypePtrOutputWithContext(context.Background())
+}
+
+func (o VpnGatewayStackTypeOutput) ToVpnGatewayStackTypePtrOutputWithContext(ctx context.Context) VpnGatewayStackTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpnGatewayStackType) *VpnGatewayStackType {
+		return &v
+	}).(VpnGatewayStackTypePtrOutput)
+}
+
+func (o VpnGatewayStackTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o VpnGatewayStackTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VpnGatewayStackType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o VpnGatewayStackTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VpnGatewayStackTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VpnGatewayStackType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type VpnGatewayStackTypePtrOutput struct{ *pulumi.OutputState }
+
+func (VpnGatewayStackTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnGatewayStackType)(nil)).Elem()
+}
+
+func (o VpnGatewayStackTypePtrOutput) ToVpnGatewayStackTypePtrOutput() VpnGatewayStackTypePtrOutput {
+	return o
+}
+
+func (o VpnGatewayStackTypePtrOutput) ToVpnGatewayStackTypePtrOutputWithContext(ctx context.Context) VpnGatewayStackTypePtrOutput {
+	return o
+}
+
+func (o VpnGatewayStackTypePtrOutput) Elem() VpnGatewayStackTypeOutput {
+	return o.ApplyT(func(v *VpnGatewayStackType) VpnGatewayStackType {
+		if v != nil {
+			return *v
+		}
+		var ret VpnGatewayStackType
+		return ret
+	}).(VpnGatewayStackTypeOutput)
+}
+
+func (o VpnGatewayStackTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VpnGatewayStackTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *VpnGatewayStackType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// VpnGatewayStackTypeInput is an input type that accepts VpnGatewayStackTypeArgs and VpnGatewayStackTypeOutput values.
+// You can construct a concrete instance of `VpnGatewayStackTypeInput` via:
+//
+//          VpnGatewayStackTypeArgs{...}
+type VpnGatewayStackTypeInput interface {
+	pulumi.Input
+
+	ToVpnGatewayStackTypeOutput() VpnGatewayStackTypeOutput
+	ToVpnGatewayStackTypeOutputWithContext(context.Context) VpnGatewayStackTypeOutput
+}
+
+var vpnGatewayStackTypePtrType = reflect.TypeOf((**VpnGatewayStackType)(nil)).Elem()
+
+type VpnGatewayStackTypePtrInput interface {
+	pulumi.Input
+
+	ToVpnGatewayStackTypePtrOutput() VpnGatewayStackTypePtrOutput
+	ToVpnGatewayStackTypePtrOutputWithContext(context.Context) VpnGatewayStackTypePtrOutput
+}
+
+type vpnGatewayStackTypePtr string
+
+func VpnGatewayStackTypePtr(v string) VpnGatewayStackTypePtrInput {
+	return (*vpnGatewayStackTypePtr)(&v)
+}
+
+func (*vpnGatewayStackTypePtr) ElementType() reflect.Type {
+	return vpnGatewayStackTypePtrType
+}
+
+func (in *vpnGatewayStackTypePtr) ToVpnGatewayStackTypePtrOutput() VpnGatewayStackTypePtrOutput {
+	return pulumi.ToOutput(in).(VpnGatewayStackTypePtrOutput)
+}
+
+func (in *vpnGatewayStackTypePtr) ToVpnGatewayStackTypePtrOutputWithContext(ctx context.Context) VpnGatewayStackTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(VpnGatewayStackTypePtrOutput)
+}
+
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*AccessConfigNetworkTierInput)(nil)).Elem(), AccessConfigNetworkTier("PREMIUM"))
-	pulumi.RegisterInputType(reflect.TypeOf((*AccessConfigNetworkTierPtrInput)(nil)).Elem(), AccessConfigNetworkTier("PREMIUM"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessConfigNetworkTierInput)(nil)).Elem(), AccessConfigNetworkTier("FIXED_STANDARD"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessConfigNetworkTierPtrInput)(nil)).Elem(), AccessConfigNetworkTier("FIXED_STANDARD"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessConfigTypeInput)(nil)).Elem(), AccessConfigType("DIRECT_IPV6"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessConfigTypePtrInput)(nil)).Elem(), AccessConfigType("DIRECT_IPV6"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AddressAddressTypeInput)(nil)).Elem(), AddressAddressType("EXTERNAL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AddressAddressTypePtrInput)(nil)).Elem(), AddressAddressType("EXTERNAL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AddressIpVersionInput)(nil)).Elem(), AddressIpVersion("IPV4"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AddressIpVersionPtrInput)(nil)).Elem(), AddressIpVersion("IPV4"))
-	pulumi.RegisterInputType(reflect.TypeOf((*AddressNetworkTierInput)(nil)).Elem(), AddressNetworkTier("PREMIUM"))
-	pulumi.RegisterInputType(reflect.TypeOf((*AddressNetworkTierPtrInput)(nil)).Elem(), AddressNetworkTier("PREMIUM"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressNetworkTierInput)(nil)).Elem(), AddressNetworkTier("FIXED_STANDARD"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressNetworkTierPtrInput)(nil)).Elem(), AddressNetworkTier("FIXED_STANDARD"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AddressPurposeInput)(nil)).Elem(), AddressPurpose("DNS_RESOLVER"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AddressPurposePtrInput)(nil)).Elem(), AddressPurpose("DNS_RESOLVER"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceInput)(nil)).Elem(), AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface("NVME"))
@@ -27889,8 +28087,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleIpVersionPtrInput)(nil)).Elem(), ForwardingRuleIpVersion("IPV4"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleLoadBalancingSchemeInput)(nil)).Elem(), ForwardingRuleLoadBalancingScheme("EXTERNAL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleLoadBalancingSchemePtrInput)(nil)).Elem(), ForwardingRuleLoadBalancingScheme("EXTERNAL"))
-	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleNetworkTierInput)(nil)).Elem(), ForwardingRuleNetworkTier("PREMIUM"))
-	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleNetworkTierPtrInput)(nil)).Elem(), ForwardingRuleNetworkTier("PREMIUM"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleNetworkTierInput)(nil)).Elem(), ForwardingRuleNetworkTier("FIXED_STANDARD"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleNetworkTierPtrInput)(nil)).Elem(), ForwardingRuleNetworkTier("FIXED_STANDARD"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRulePscConnectionStatusInput)(nil)).Elem(), ForwardingRulePscConnectionStatus("ACCEPTED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRulePscConnectionStatusPtrInput)(nil)).Elem(), ForwardingRulePscConnectionStatus("ACCEPTED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GRPCHealthCheckPortSpecificationInput)(nil)).Elem(), GRPCHealthCheckPortSpecification("USE_FIXED_PORT"))
@@ -27899,8 +28097,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalAddressAddressTypePtrInput)(nil)).Elem(), GlobalAddressAddressType("EXTERNAL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalAddressIpVersionInput)(nil)).Elem(), GlobalAddressIpVersion("IPV4"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalAddressIpVersionPtrInput)(nil)).Elem(), GlobalAddressIpVersion("IPV4"))
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalAddressNetworkTierInput)(nil)).Elem(), GlobalAddressNetworkTier("PREMIUM"))
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalAddressNetworkTierPtrInput)(nil)).Elem(), GlobalAddressNetworkTier("PREMIUM"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalAddressNetworkTierInput)(nil)).Elem(), GlobalAddressNetworkTier("FIXED_STANDARD"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalAddressNetworkTierPtrInput)(nil)).Elem(), GlobalAddressNetworkTier("FIXED_STANDARD"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalAddressPurposeInput)(nil)).Elem(), GlobalAddressPurpose("DNS_RESOLVER"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalAddressPurposePtrInput)(nil)).Elem(), GlobalAddressPurpose("DNS_RESOLVER"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalForwardingRuleIpProtocolInput)(nil)).Elem(), GlobalForwardingRuleIpProtocol("AH"))
@@ -27909,8 +28107,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalForwardingRuleIpVersionPtrInput)(nil)).Elem(), GlobalForwardingRuleIpVersion("IPV4"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalForwardingRuleLoadBalancingSchemeInput)(nil)).Elem(), GlobalForwardingRuleLoadBalancingScheme("EXTERNAL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalForwardingRuleLoadBalancingSchemePtrInput)(nil)).Elem(), GlobalForwardingRuleLoadBalancingScheme("EXTERNAL"))
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalForwardingRuleNetworkTierInput)(nil)).Elem(), GlobalForwardingRuleNetworkTier("PREMIUM"))
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalForwardingRuleNetworkTierPtrInput)(nil)).Elem(), GlobalForwardingRuleNetworkTier("PREMIUM"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalForwardingRuleNetworkTierInput)(nil)).Elem(), GlobalForwardingRuleNetworkTier("FIXED_STANDARD"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalForwardingRuleNetworkTierPtrInput)(nil)).Elem(), GlobalForwardingRuleNetworkTier("FIXED_STANDARD"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalForwardingRulePscConnectionStatusInput)(nil)).Elem(), GlobalForwardingRulePscConnectionStatus("ACCEPTED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalForwardingRulePscConnectionStatusPtrInput)(nil)).Elem(), GlobalForwardingRulePscConnectionStatus("ACCEPTED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalNetworkEndpointGroupNetworkEndpointTypeInput)(nil)).Elem(), GlobalNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP"))
@@ -28136,6 +28334,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetSslProxyProxyHeaderPtrInput)(nil)).Elem(), TargetSslProxyProxyHeader("NONE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetTcpProxyProxyHeaderInput)(nil)).Elem(), TargetTcpProxyProxyHeader("NONE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetTcpProxyProxyHeaderPtrInput)(nil)).Elem(), TargetTcpProxyProxyHeader("NONE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayStackTypeInput)(nil)).Elem(), VpnGatewayStackType("IPV4_IPV6"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayStackTypePtrInput)(nil)).Elem(), VpnGatewayStackType("IPV4_IPV6"))
 	pulumi.RegisterOutputType(AccessConfigNetworkTierOutput{})
 	pulumi.RegisterOutputType(AccessConfigNetworkTierPtrOutput{})
 	pulumi.RegisterOutputType(AccessConfigTypeOutput{})
@@ -28467,4 +28667,6 @@ func init() {
 	pulumi.RegisterOutputType(TargetSslProxyProxyHeaderPtrOutput{})
 	pulumi.RegisterOutputType(TargetTcpProxyProxyHeaderOutput{})
 	pulumi.RegisterOutputType(TargetTcpProxyProxyHeaderPtrOutput{})
+	pulumi.RegisterOutputType(VpnGatewayStackTypeOutput{})
+	pulumi.RegisterOutputType(VpnGatewayStackTypePtrOutput{})
 }

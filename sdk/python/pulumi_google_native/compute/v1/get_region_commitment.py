@@ -18,7 +18,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionCommitmentResult:
-    def __init__(__self__, category=None, creation_timestamp=None, description=None, end_timestamp=None, kind=None, license_resource=None, name=None, plan=None, region=None, reservations=None, resources=None, self_link=None, start_timestamp=None, status=None, status_message=None, type=None):
+    def __init__(__self__, auto_renew=None, category=None, creation_timestamp=None, description=None, end_timestamp=None, kind=None, license_resource=None, name=None, plan=None, region=None, reservations=None, resources=None, self_link=None, start_timestamp=None, status=None, status_message=None, type=None):
+        if auto_renew and not isinstance(auto_renew, bool):
+            raise TypeError("Expected argument 'auto_renew' to be a bool")
+        pulumi.set(__self__, "auto_renew", auto_renew)
         if category and not isinstance(category, str):
             raise TypeError("Expected argument 'category' to be a str")
         pulumi.set(__self__, "category", category)
@@ -67,6 +70,14 @@ class GetRegionCommitmentResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> bool:
+        """
+        Specifies whether to enable automatic renewal for the commitment. The default value is false if not specified. The field can be updated until the day of the commitment expiration at 12:00am PST. If the field is set to true, the commitment will be automatically renewed for either one or three years according to the terms of the existing commitment.
+        """
+        return pulumi.get(self, "auto_renew")
 
     @property
     @pulumi.getter
@@ -203,6 +214,7 @@ class AwaitableGetRegionCommitmentResult(GetRegionCommitmentResult):
         if False:
             yield self
         return GetRegionCommitmentResult(
+            auto_renew=self.auto_renew,
             category=self.category,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
@@ -239,6 +251,7 @@ def get_region_commitment(commitment: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/v1:getRegionCommitment', __args__, opts=opts, typ=GetRegionCommitmentResult).value
 
     return AwaitableGetRegionCommitmentResult(
+        auto_renew=__ret__.auto_renew,
         category=__ret__.category,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,

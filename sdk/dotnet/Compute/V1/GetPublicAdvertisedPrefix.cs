@@ -97,7 +97,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string SharedSecret;
         /// <summary>
-        /// The status of the public advertised prefix.
+        /// The status of the public advertised prefix. Possible values include: - `INITIAL`: RPKI validation is complete. - `PTR_CONFIGURED`: User has configured the PTR. - `VALIDATED`: Reverse DNS lookup is successful. - `REVERSE_DNS_LOOKUP_FAILED`: Reverse DNS lookup failed. - `PREFIX_CONFIGURATION_IN_PROGRESS`: The prefix is being configured. - `PREFIX_CONFIGURATION_COMPLETE`: The prefix is fully configured. - `PREFIX_REMOVAL_IN_PROGRESS`: The prefix is being removed. 
         /// </summary>
         public readonly string Status;
 

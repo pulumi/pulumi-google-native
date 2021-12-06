@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> CustomerRouterIpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// Dataplane version for this InterconnectAttachment.
+        /// [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
         /// </summary>
         [Output("dataplaneVersion")]
         public Output<int> DataplaneVersion { get; private set; } = null!;
@@ -245,6 +245,12 @@ namespace Pulumi.GoogleNative.Compute.V1
             get => _candidateSubnets ?? (_candidateSubnets = new InputList<string>());
             set => _candidateSubnets = value;
         }
+
+        /// <summary>
+        /// [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
+        /// </summary>
+        [Input("dataplaneVersion")]
+        public Input<int>? DataplaneVersion { get; set; }
 
         /// <summary>
         /// An optional description of this resource.

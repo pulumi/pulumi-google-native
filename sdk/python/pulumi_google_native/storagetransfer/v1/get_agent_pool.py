@@ -52,7 +52,7 @@ class GetAgentPoolResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Specifies a unique string that identifies the agent pool. Format: projects/{project_id}/agentPools/{agent_pool_id}
+        Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`
         """
         return pulumi.get(self, "name")
 

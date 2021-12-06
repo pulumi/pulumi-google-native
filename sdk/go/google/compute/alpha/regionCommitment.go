@@ -31,6 +31,8 @@ type RegionCommitment struct {
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The license specification required as part of a license commitment.
 	LicenseResource LicenseResourceCommitmentResponseOutput `pulumi:"licenseResource"`
+	// List of source commitments to be merged into a new commitment.
+	MergeSourceCommitments pulumi.StringArrayOutput `pulumi:"mergeSourceCommitments"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The plan for this commitment, which determines duration and discount rate. The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
@@ -45,6 +47,8 @@ type RegionCommitment struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
+	// Source commitment to be splitted into a new commitment.
+	SplitSourceCommitment pulumi.StringOutput `pulumi:"splitSourceCommitment"`
 	// Commitment start time in RFC3339 text format.
 	StartTimestamp pulumi.StringOutput `pulumi:"startTimestamp"`
 	// Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
@@ -105,6 +109,8 @@ type regionCommitmentArgs struct {
 	Description *string `pulumi:"description"`
 	// The license specification required as part of a license commitment.
 	LicenseResource *LicenseResourceCommitment `pulumi:"licenseResource"`
+	// List of source commitments to be merged into a new commitment.
+	MergeSourceCommitments []string `pulumi:"mergeSourceCommitments"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The plan for this commitment, which determines duration and discount rate. The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
@@ -116,6 +122,8 @@ type regionCommitmentArgs struct {
 	Reservations []ReservationType `pulumi:"reservations"`
 	// A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
 	Resources []ResourceCommitment `pulumi:"resources"`
+	// Source commitment to be splitted into a new commitment.
+	SplitSourceCommitment *string `pulumi:"splitSourceCommitment"`
 	// The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
 	Type *RegionCommitmentType `pulumi:"type"`
 }
@@ -130,6 +138,8 @@ type RegionCommitmentArgs struct {
 	Description pulumi.StringPtrInput
 	// The license specification required as part of a license commitment.
 	LicenseResource LicenseResourceCommitmentPtrInput
+	// List of source commitments to be merged into a new commitment.
+	MergeSourceCommitments pulumi.StringArrayInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The plan for this commitment, which determines duration and discount rate. The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
@@ -141,6 +151,8 @@ type RegionCommitmentArgs struct {
 	Reservations ReservationTypeArrayInput
 	// A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
 	Resources ResourceCommitmentArrayInput
+	// Source commitment to be splitted into a new commitment.
+	SplitSourceCommitment pulumi.StringPtrInput
 	// The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
 	Type RegionCommitmentTypePtrInput
 }

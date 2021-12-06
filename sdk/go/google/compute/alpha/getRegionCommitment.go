@@ -41,6 +41,8 @@ type LookupRegionCommitmentResult struct {
 	Kind string `pulumi:"kind"`
 	// The license specification required as part of a license commitment.
 	LicenseResource LicenseResourceCommitmentResponse `pulumi:"licenseResource"`
+	// List of source commitments to be merged into a new commitment.
+	MergeSourceCommitments []string `pulumi:"mergeSourceCommitments"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
 	// The plan for this commitment, which determines duration and discount rate. The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
@@ -55,6 +57,8 @@ type LookupRegionCommitmentResult struct {
 	SelfLink string `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId string `pulumi:"selfLinkWithId"`
+	// Source commitment to be splitted into a new commitment.
+	SplitSourceCommitment string `pulumi:"splitSourceCommitment"`
 	// Commitment start time in RFC3339 text format.
 	StartTimestamp string `pulumi:"startTimestamp"`
 	// Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
@@ -133,6 +137,11 @@ func (o LookupRegionCommitmentResultOutput) LicenseResource() LicenseResourceCom
 	return o.ApplyT(func(v LookupRegionCommitmentResult) LicenseResourceCommitmentResponse { return v.LicenseResource }).(LicenseResourceCommitmentResponseOutput)
 }
 
+// List of source commitments to be merged into a new commitment.
+func (o LookupRegionCommitmentResultOutput) MergeSourceCommitments() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupRegionCommitmentResult) []string { return v.MergeSourceCommitments }).(pulumi.StringArrayOutput)
+}
+
 // Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 func (o LookupRegionCommitmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionCommitmentResult) string { return v.Name }).(pulumi.StringOutput)
@@ -166,6 +175,11 @@ func (o LookupRegionCommitmentResultOutput) SelfLink() pulumi.StringOutput {
 // Server-defined URL for this resource with the resource id.
 func (o LookupRegionCommitmentResultOutput) SelfLinkWithId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionCommitmentResult) string { return v.SelfLinkWithId }).(pulumi.StringOutput)
+}
+
+// Source commitment to be splitted into a new commitment.
+func (o LookupRegionCommitmentResultOutput) SplitSourceCommitment() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionCommitmentResult) string { return v.SplitSourceCommitment }).(pulumi.StringOutput)
 }
 
 // Commitment start time in RFC3339 text format.

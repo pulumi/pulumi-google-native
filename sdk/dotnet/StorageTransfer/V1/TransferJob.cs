@@ -66,7 +66,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         public Output<Outputs.NotificationConfigResponse> NotificationConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Google Cloud Platform Project that owns the job.
+        /// The ID of the Google Cloud project that owns the job.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -165,7 +165,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         public Input<Inputs.NotificationConfigArgs>? NotificationConfig { get; set; }
 
         /// <summary>
-        /// The ID of the Google Cloud Platform Project that owns the job.
+        /// The ID of the Google Cloud project that owns the job.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

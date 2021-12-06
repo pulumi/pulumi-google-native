@@ -61,6 +61,12 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public Input<Pulumi.GoogleNative.Compute.V1.RouterBgpPeerEnable>? Enable { get; set; }
 
         /// <summary>
+        /// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+        /// </summary>
+        [Input("enableIpv6")]
+        public Input<bool>? EnableIpv6 { get; set; }
+
+        /// <summary>
         /// Name of the interface the BGP peer is associated with.
         /// </summary>
         [Input("interfaceName")]
@@ -71,6 +77,12 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
+
+        /// <summary>
+        /// IPv6 address of the interface inside Google Cloud Platform.
+        /// </summary>
+        [Input("ipv6NexthopAddress")]
+        public Input<string>? Ipv6NexthopAddress { get; set; }
 
         /// <summary>
         /// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -89,6 +101,12 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         /// </summary>
         [Input("peerIpAddress")]
         public Input<string>? PeerIpAddress { get; set; }
+
+        /// <summary>
+        /// IPv6 address of the BGP interface outside Google Cloud Platform.
+        /// </summary>
+        [Input("peerIpv6NexthopAddress")]
+        public Input<string>? PeerIpv6NexthopAddress { get; set; }
 
         /// <summary>
         /// URI of the VM instance that is used as third-party router appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances. The VM instance must be located in zones contained in the same region as this Cloud Router. The VM instance is the peer side of the BGP session.
