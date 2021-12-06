@@ -351,9 +351,15 @@ jobs:
           project_id: ${{ env.GOOGLE_PROJECT }}
           service_account_email: ${{ secrets.GCP_SA_EMAIL }}
           service_account_key: ${{ secrets.GCP_SA_KEY }}
+      - name: Set up gotestfmt
+        uses: haveyoudebuggedit/gotestfmt-action@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Run tests
-        run: cd examples && go test -v -count=1 -cover -timeout 2h -tags=${{ matrix.language
-          }} -parallel 4 .
+        run: |
+          set -euo pipefail
+          cd examples && go test -v -json -count=1 -cover -timeout 2h -tags=${{ matrix.language
+          }} -parallel 4 . 2>&1 | tee /tmp/gotest.log | gotestfmt
       - if: failure() && github.event_name == 'push'
         name: Notify Slack
         uses: 8398a7/action-slack@v3
