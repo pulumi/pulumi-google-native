@@ -97,6 +97,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.CustomerEncryptionKeyResponse> InstanceEncryptionKey { get; private set; } = null!;
 
         /// <summary>
+        /// KeyRevocationActionType of the instance.
+        /// </summary>
+        [Output("keyRevocationActionType")]
+        public Output<string> KeyRevocationActionType { get; private set; } = null!;
+
+        /// <summary>
         /// Type of the resource. Always compute#instance for instances.
         /// </summary>
         [Output("kind")]
@@ -422,6 +428,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("instanceEncryptionKey")]
         public Input<Inputs.CustomerEncryptionKeyArgs>? InstanceEncryptionKey { get; set; }
+
+        /// <summary>
+        /// KeyRevocationActionType of the instance.
+        /// </summary>
+        [Input("keyRevocationActionType")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.InstanceKeyRevocationActionType>? KeyRevocationActionType { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

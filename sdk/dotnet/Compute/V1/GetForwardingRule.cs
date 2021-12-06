@@ -156,7 +156,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource. It is only supported for internal load balancing.
+        /// Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource.
         /// </summary>
         public readonly ImmutableArray<Outputs.ForwardingRuleServiceDirectoryRegistrationResponse> ServiceDirectoryRegistrations;
         /// <summary>

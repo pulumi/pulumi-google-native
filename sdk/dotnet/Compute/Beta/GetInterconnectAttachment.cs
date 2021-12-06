@@ -87,7 +87,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string CustomerRouterIpAddress;
         /// <summary>
-        /// Dataplane version for this InterconnectAttachment.
+        /// [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
         /// </summary>
         public readonly int DataplaneVersion;
         /// <summary>

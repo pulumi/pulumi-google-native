@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
     public sealed class InstancePropertiesResponse
     {
         /// <summary>
-        /// Controls for advanced machine-related behavior features.
+        /// Controls for advanced machine-related behavior features. Note that for MachineImage, this is not supported yet.
         /// </summary>
         public readonly Outputs.AdvancedMachineFeaturesResponse AdvancedMachineFeatures;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly bool CanIpForward;
         /// <summary>
-        /// Specifies the Confidential Instance options.
+        /// Specifies the Confidential Instance options. Note that for MachineImage, this is not supported yet.
         /// </summary>
         public readonly Outputs.ConfidentialInstanceConfigResponse ConfidentialInstanceConfig;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AttachedDiskResponse> Disks;
         /// <summary>
-        /// Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer
+        /// Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer Note that for MachineImage, this is not supported yet.
         /// </summary>
         public readonly Outputs.DisplayDeviceResponse DisplayDevice;
         /// <summary>
@@ -61,21 +61,24 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// An array of network access configurations for this interface.
         /// </summary>
         public readonly ImmutableArray<Outputs.NetworkInterfaceResponse> NetworkInterfaces;
+        /// <summary>
+        /// Note that for MachineImage, this is not supported yet.
+        /// </summary>
         public readonly Outputs.NetworkPerformanceConfigResponse NetworkPerformanceConfig;
         /// <summary>
-        /// PostKeyRevocationActionType of the instance.(will be deprecated soon)
+        /// PostKeyRevocationActionType of the instance.
         /// </summary>
         public readonly string PostKeyRevocationActionType;
         /// <summary>
-        /// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default.
+        /// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
         /// </summary>
         public readonly string PrivateIpv6GoogleAccess;
         /// <summary>
-        /// Specifies the reservations that instances can consume from.
+        /// Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
         /// </summary>
         public readonly Outputs.ReservationAffinityResponse ReservationAffinity;
         /// <summary>
-        /// Resource policies (names, not ULRs) applied to instances created from these properties.
+        /// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
         /// </summary>
         public readonly ImmutableArray<string> ResourcePolicies;
         /// <summary>
@@ -86,6 +89,9 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceAccountResponse> ServiceAccounts;
+        /// <summary>
+        /// Note that for MachineImage, this is not supported yet.
+        /// </summary>
         public readonly Outputs.ShieldedInstanceConfigResponse ShieldedInstanceConfig;
         /// <summary>
         /// Specifies the Shielded VM options for the instances that are created from these properties.

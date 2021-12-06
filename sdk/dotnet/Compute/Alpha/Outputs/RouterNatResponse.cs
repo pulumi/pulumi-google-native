@@ -78,6 +78,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly int TcpTransitoryIdleTimeoutSec;
         /// <summary>
+        /// Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC.
+        /// </summary>
+        public readonly string Type;
+        /// <summary>
         /// Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
         /// </summary>
         public readonly int UdpIdleTimeoutSec;
@@ -116,6 +120,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             int tcpTransitoryIdleTimeoutSec,
 
+            string type,
+
             int udpIdleTimeoutSec)
         {
             DrainNatIps = drainNatIps;
@@ -134,6 +140,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             TcpEstablishedIdleTimeoutSec = tcpEstablishedIdleTimeoutSec;
             TcpTimeWaitTimeoutSec = tcpTimeWaitTimeoutSec;
             TcpTransitoryIdleTimeoutSec = tcpTransitoryIdleTimeoutSec;
+            Type = type;
             UdpIdleTimeoutSec = udpIdleTimeoutSec;
         }
     }

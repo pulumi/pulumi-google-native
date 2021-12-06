@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     public sealed class GuestOsFeatureArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of a supported feature. Read Enabling guest operating system features to see a list of available options.
+        /// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
         /// </summary>
         [Input("type")]
         public Input<Pulumi.GoogleNative.Compute.V1.GuestOsFeatureType>? Type { get; set; }

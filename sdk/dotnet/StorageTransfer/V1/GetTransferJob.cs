@@ -89,7 +89,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         /// </summary>
         public readonly Outputs.NotificationConfigResponse NotificationConfig;
         /// <summary>
-        /// The ID of the Google Cloud Platform Project that owns the job.
+        /// The ID of the Google Cloud project that owns the job.
         /// </summary>
         public readonly string Project;
         /// <summary>

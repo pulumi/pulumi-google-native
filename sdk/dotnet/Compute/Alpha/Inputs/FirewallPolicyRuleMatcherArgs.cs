@@ -27,6 +27,18 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
             set => _destAddressGroups = value;
         }
 
+        [Input("destFqdns")]
+        private InputList<string>? _destFqdns;
+
+        /// <summary>
+        /// Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 1000.
+        /// </summary>
+        public InputList<string> DestFqdns
+        {
+            get => _destFqdns ?? (_destFqdns = new InputList<string>());
+            set => _destFqdns = value;
+        }
+
         [Input("destIpRanges")]
         private InputList<string>? _destIpRanges;
 
@@ -61,6 +73,18 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         {
             get => _srcAddressGroups ?? (_srcAddressGroups = new InputList<string>());
             set => _srcAddressGroups = value;
+        }
+
+        [Input("srcFqdns")]
+        private InputList<string>? _srcFqdns;
+
+        /// <summary>
+        /// Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 1000.
+        /// </summary>
+        public InputList<string> SrcFqdns
+        {
+            get => _srcFqdns ?? (_srcFqdns = new InputList<string>());
+            set => _srcFqdns = value;
         }
 
         [Input("srcIpRanges")]

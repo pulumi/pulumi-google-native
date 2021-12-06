@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Composer.V1.Outputs
         /// </summary>
         public readonly Outputs.DatabaseConfigResponse DatabaseConfig;
         /// <summary>
-        /// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        /// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
         /// </summary>
         public readonly Outputs.EncryptionConfigResponse EncryptionConfig;
         /// <summary>
@@ -40,6 +40,10 @@ namespace Pulumi.GoogleNative.Composer.V1.Outputs
         /// The Kubernetes Engine cluster used to run this environment.
         /// </summary>
         public readonly string GkeCluster;
+        /// <summary>
+        /// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window will be applied. The default value is Saturday and Sunday 00-06 GMT.
+        /// </summary>
+        public readonly Outputs.MaintenanceWindowResponse MaintenanceWindow;
         /// <summary>
         /// The configuration used for the Kubernetes Engine cluster.
         /// </summary>
@@ -83,6 +87,8 @@ namespace Pulumi.GoogleNative.Composer.V1.Outputs
 
             string gkeCluster,
 
+            Outputs.MaintenanceWindowResponse maintenanceWindow,
+
             Outputs.NodeConfigResponse nodeConfig,
 
             int nodeCount,
@@ -103,6 +109,7 @@ namespace Pulumi.GoogleNative.Composer.V1.Outputs
             EncryptionConfig = encryptionConfig;
             EnvironmentSize = environmentSize;
             GkeCluster = gkeCluster;
+            MaintenanceWindow = maintenanceWindow;
             NodeConfig = nodeConfig;
             NodeCount = nodeCount;
             PrivateEnvironmentConfig = privateEnvironmentConfig;

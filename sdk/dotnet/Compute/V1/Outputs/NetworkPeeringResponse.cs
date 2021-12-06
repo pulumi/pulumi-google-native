@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly bool ExchangeSubnetRoutes;
         /// <summary>
-        /// Whether to export the custom routes to peer network.
+        /// Whether to export the custom routes to peer network. The default value is false.
         /// </summary>
         public readonly bool ExportCustomRoutes;
         /// <summary>
@@ -33,7 +33,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly bool ExportSubnetRoutesWithPublicIp;
         /// <summary>
-        /// Whether to import the custom routes from peer network.
+        /// Whether to import the custom routes from peer network. The default value is false.
         /// </summary>
         public readonly bool ImportCustomRoutes;
         /// <summary>

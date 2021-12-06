@@ -94,7 +94,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<int> TimeoutSec { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+        /// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -220,7 +220,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<int>? TimeoutSec { get; set; }
 
         /// <summary>
-        /// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+        /// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
         /// </summary>
         [Input("type")]
         public Input<Pulumi.GoogleNative.Compute.Beta.RegionHealthCheckType>? Type { get; set; }

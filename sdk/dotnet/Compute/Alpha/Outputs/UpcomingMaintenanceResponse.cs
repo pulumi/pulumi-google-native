@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class UpcomingMaintenanceResponse
     {
         /// <summary>
+        /// Indicates if the maintenance can be customer triggered. From more detail, see go/sf-ctm-design.
+        /// </summary>
+        public readonly bool CanReschedule;
+        /// <summary>
         /// The start time window of the maintenance disruption.
         /// </summary>
         public readonly Outputs.UpcomingMaintenanceTimeWindowResponse StartTimeWindow;
@@ -27,10 +31,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
         [OutputConstructor]
         private UpcomingMaintenanceResponse(
+            bool canReschedule,
+
             Outputs.UpcomingMaintenanceTimeWindowResponse startTimeWindow,
 
             string type)
         {
+            CanReschedule = canReschedule;
             StartTimeWindow = startTimeWindow;
             Type = type;
         }

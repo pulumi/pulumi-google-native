@@ -17,19 +17,19 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
     public sealed class HttpHeaderActionResponse
     {
         /// <summary>
-        /// Headers to add to a matching request prior to forwarding the request to the backendService.
+        /// Headers to add to a matching request before forwarding the request to the backendService.
         /// </summary>
         public readonly ImmutableArray<Outputs.HttpHeaderOptionResponse> RequestHeadersToAdd;
         /// <summary>
-        /// A list of header names for headers that need to be removed from the request prior to forwarding the request to the backendService.
+        /// A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
         /// </summary>
         public readonly ImmutableArray<string> RequestHeadersToRemove;
         /// <summary>
-        /// Headers to add the response prior to sending the response back to the client.
+        /// Headers to add the response before sending the response back to the client.
         /// </summary>
         public readonly ImmutableArray<Outputs.HttpHeaderOptionResponse> ResponseHeadersToAdd;
         /// <summary>
-        /// A list of header names for headers that need to be removed from the response prior to sending the response back to the client.
+        /// A list of header names for headers that need to be removed from the response before sending the response back to the client.
         /// </summary>
         public readonly ImmutableArray<string> ResponseHeadersToRemove;
 

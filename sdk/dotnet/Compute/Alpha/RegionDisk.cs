@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public partial class RegionDisk : Pulumi.CustomResource
     {
         /// <summary>
+        /// The architecture of the disk. Valid values are ARM64 or X86_64.
+        /// </summary>
+        [Output("architecture")]
+        public Output<string> Architecture { get; private set; } = null!;
+
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
@@ -312,6 +318,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
     public sealed class RegionDiskArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The architecture of the disk. Valid values are ARM64 or X86_64.
+        /// </summary>
+        [Input("architecture")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.RegionDiskArchitecture>? Architecture { get; set; }
+
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
         /// </summary>

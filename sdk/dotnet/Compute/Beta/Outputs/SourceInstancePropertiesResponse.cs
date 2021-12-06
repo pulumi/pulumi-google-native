@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 {
 
+    /// <summary>
+    /// DEPRECATED: Please use compute#instanceProperties instead. New properties will not be added to this field.
+    /// </summary>
     [OutputType]
     public sealed class SourceInstancePropertiesResponse
     {
@@ -54,7 +57,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.NetworkInterfaceResponse> NetworkInterfaces;
         /// <summary>
-        /// PostKeyRevocationActionType of the instance. (will be deprecated soon)
+        /// PostKeyRevocationActionType of the instance.
         /// </summary>
         public readonly string PostKeyRevocationActionType;
         /// <summary>

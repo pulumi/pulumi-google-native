@@ -81,6 +81,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
 
+        [Output("recaptchaOptionsConfig")]
+        public Output<Outputs.SecurityPolicyRecaptchaOptionsConfigResponse> RecaptchaOptionsConfig { get; private set; } = null!;
+
         /// <summary>
         /// Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
         /// </summary>
@@ -206,6 +209,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("recaptchaOptionsConfig")]
+        public Input<Inputs.SecurityPolicyRecaptchaOptionsConfigArgs>? RecaptchaOptionsConfig { get; set; }
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }

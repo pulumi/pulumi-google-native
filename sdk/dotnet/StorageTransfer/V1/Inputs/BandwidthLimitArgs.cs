@@ -11,12 +11,12 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
 {
 
     /// <summary>
-    /// Specifies the BandwidthLimit to describe the non-negative bandwidth rate in mbps for the agent pool.
+    /// Specifies a bandwidth limit for an agent pool.
     /// </summary>
     public sealed class BandwidthLimitArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies bandwidth rate in mbps distributed across all the agents in the pool.
+        /// Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
         /// </summary>
         [Input("limitMbps")]
         public Input<string>? LimitMbps { get; set; }

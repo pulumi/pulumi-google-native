@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 {
 
     /// <summary>
-    /// MetadataFilter label name value pairs that are expected to match corresponding labels presented as metadata to the loadbalancer.
+    /// MetadataFilter label name value pairs that are expected to match corresponding labels presented as metadata to the load balancer.
     /// </summary>
     public sealed class MetadataFilterLabelMatchArgs : Pulumi.ResourceArgs
     {

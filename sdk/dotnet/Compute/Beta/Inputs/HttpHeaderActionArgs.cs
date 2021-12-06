@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         private InputList<Inputs.HttpHeaderOptionArgs>? _requestHeadersToAdd;
 
         /// <summary>
-        /// Headers to add to a matching request prior to forwarding the request to the backendService.
+        /// Headers to add to a matching request before forwarding the request to the backendService.
         /// </summary>
         public InputList<Inputs.HttpHeaderOptionArgs> RequestHeadersToAdd
         {
@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         private InputList<string>? _requestHeadersToRemove;
 
         /// <summary>
-        /// A list of header names for headers that need to be removed from the request prior to forwarding the request to the backendService.
+        /// A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
         /// </summary>
         public InputList<string> RequestHeadersToRemove
         {
@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         private InputList<Inputs.HttpHeaderOptionArgs>? _responseHeadersToAdd;
 
         /// <summary>
-        /// Headers to add the response prior to sending the response back to the client.
+        /// Headers to add the response before sending the response back to the client.
         /// </summary>
         public InputList<Inputs.HttpHeaderOptionArgs> ResponseHeadersToAdd
         {
@@ -55,7 +55,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         private InputList<string>? _responseHeadersToRemove;
 
         /// <summary>
-        /// A list of header names for headers that need to be removed from the response prior to sending the response back to the client.
+        /// A list of header names for headers that need to be removed from the response before sending the response back to the client.
         /// </summary>
         public InputList<string> ResponseHeadersToRemove
         {

@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<bool> GuestFlush { get; private set; } = null!;
 
         /// <summary>
+        /// Properties of source instance
+        /// </summary>
+        [Output("instanceProperties")]
+        public Output<Outputs.InstancePropertiesResponse> InstanceProperties { get; private set; } = null!;
+
+        /// <summary>
         /// The resource type, which is always compute#machineImage for machine image.
         /// </summary>
         [Output("kind")]
@@ -56,6 +62,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Output("satisfiesPzs")]
         public Output<bool> SatisfiesPzs { get; private set; } = null!;
+
+        /// <summary>
+        /// An array of Machine Image specific properties for disks attached to the source instance
+        /// </summary>
+        [Output("savedDisks")]
+        public Output<ImmutableArray<Outputs.SavedDiskResponse>> SavedDisks { get; private set; } = null!;
 
         /// <summary>
         /// The URL for this machine image. The server defines this URL.
@@ -82,7 +94,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> SourceInstance { get; private set; } = null!;
 
         /// <summary>
-        /// Properties of source instance.
+        /// DEPRECATED: Please use instance_properties instead for source instance related properties. New properties will not be added to this field.
         /// </summary>
         [Output("sourceInstanceProperties")]
         public Output<Outputs.SourceInstancePropertiesResponse> SourceInstanceProperties { get; private set; } = null!;
@@ -179,6 +191,18 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
+
+        [Input("savedDisks")]
+        private InputList<Inputs.SavedDiskArgs>? _savedDisks;
+
+        /// <summary>
+        /// An array of Machine Image specific properties for disks attached to the source instance
+        /// </summary>
+        public InputList<Inputs.SavedDiskArgs> SavedDisks
+        {
+            get => _savedDisks ?? (_savedDisks = new InputList<Inputs.SavedDiskArgs>());
+            set => _savedDisks = value;
+        }
 
         [Input("sourceDiskEncryptionKeys")]
         private InputList<Inputs.SourceDiskEncryptionKeyArgs>? _sourceDiskEncryptionKeys;

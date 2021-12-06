@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class AllocationSpecificSKUReservationResponse
     {
         /// <summary>
+        /// Indicates how many instances are actually usable currently.
+        /// </summary>
+        public readonly string AssuredCount;
+        /// <summary>
         /// Specifies the number of resources that are allocated.
         /// </summary>
         public readonly string Count;
@@ -31,12 +35,15 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
         [OutputConstructor]
         private AllocationSpecificSKUReservationResponse(
+            string assuredCount,
+
             string count,
 
             string inUseCount,
 
             Outputs.AllocationSpecificSKUAllocationReservedInstancePropertiesResponse instanceProperties)
         {
+            AssuredCount = assuredCount;
             Count = count;
             InUseCount = inUseCount;
             InstanceProperties = instanceProperties;

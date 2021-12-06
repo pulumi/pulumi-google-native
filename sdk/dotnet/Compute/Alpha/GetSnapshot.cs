@@ -57,6 +57,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class GetSnapshotResult
     {
         /// <summary>
+        /// The architecture of the snapshot. Valid values are ARM64 or X86_64.
+        /// </summary>
+        public readonly string Architecture;
+        /// <summary>
         /// Set to true if snapshots are automatically created by applying resource policy on the target disk.
         /// </summary>
         public readonly bool AutoCreated;
@@ -175,6 +179,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
         [OutputConstructor]
         private GetSnapshotResult(
+            string architecture,
+
             bool autoCreated,
 
             string chainName,
@@ -233,6 +239,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             ImmutableArray<string> userLicenses)
         {
+            Architecture = architecture;
             AutoCreated = autoCreated;
             ChainName = chainName;
             CreationTimestamp = creationTimestamp;

@@ -45,6 +45,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
+        /// Share-settings for shared-reservation
+        /// </summary>
+        public readonly Outputs.ShareSettingsResponse ShareSettings;
+        /// <summary>
         /// Reservation for instances with specific machine shapes.
         /// </summary>
         public readonly Outputs.AllocationSpecificSKUReservationResponse SpecificReservation;
@@ -77,6 +81,8 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
             string selfLink,
 
+            Outputs.ShareSettingsResponse shareSettings,
+
             Outputs.AllocationSpecificSKUReservationResponse specificReservation,
 
             bool specificReservationRequired,
@@ -92,6 +98,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
             Name = name;
             SatisfiesPzs = satisfiesPzs;
             SelfLink = selfLink;
+            ShareSettings = shareSettings;
             SpecificReservation = specificReservation;
             SpecificReservationRequired = specificReservationRequired;
             Status = status;

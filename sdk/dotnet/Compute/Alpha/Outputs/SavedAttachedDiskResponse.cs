@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
     /// <summary>
-    /// An instance-attached disk resource.
+    /// DEPRECATED: Please use compute#savedDisk instead. An instance-attached disk resource.
     /// </summary>
     [OutputType]
     public sealed class SavedAttachedDiskResponse

@@ -20,6 +20,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.
         /// </summary>
         public readonly ImmutableArray<string> DrainNatIps;
+        /// <summary>
+        /// Enable Dynamic Port Allocation. If not specified, it is disabled by default. If set to true, - Dynamic Port Allocation will be enabled on this NAT config. - enableEndpointIndependentMapping cannot be set to true. - If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32. If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config. 
+        /// </summary>
+        public readonly bool EnableDynamicPortAllocation;
         public readonly bool EnableEndpointIndependentMapping;
         /// <summary>
         /// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
@@ -29,6 +33,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// Configure logging on this NAT.
         /// </summary>
         public readonly Outputs.RouterNatLogConfigResponse LogConfig;
+        /// <summary>
+        /// Maximum number of ports allocated to a VM from this NAT config when Dynamic Port Allocation is enabled. If Dynamic Port Allocation is not enabled, this field has no effect. If Dynamic Port Allocation is enabled, and this field is set, it must be set to a power of two greater than minPortsPerVm, or 64 if minPortsPerVm is not set. If Dynamic Port Allocation is enabled and this field is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config.
+        /// </summary>
+        public readonly int MaxPortsPerVm;
         /// <summary>
         /// Minimum number of ports allocated to a VM from this NAT config. If not set, a default number of ports is allocated to a VM. This is rounded up to the nearest power of 2. For example, if the value of this field is 50, at least 64 ports are allocated to a VM.
         /// </summary>
@@ -78,11 +86,15 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         private RouterNatResponse(
             ImmutableArray<string> drainNatIps,
 
+            bool enableDynamicPortAllocation,
+
             bool enableEndpointIndependentMapping,
 
             int icmpIdleTimeoutSec,
 
             Outputs.RouterNatLogConfigResponse logConfig,
+
+            int maxPortsPerVm,
 
             int minPortsPerVm,
 
@@ -107,9 +119,11 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
             int udpIdleTimeoutSec)
         {
             DrainNatIps = drainNatIps;
+            EnableDynamicPortAllocation = enableDynamicPortAllocation;
             EnableEndpointIndependentMapping = enableEndpointIndependentMapping;
             IcmpIdleTimeoutSec = icmpIdleTimeoutSec;
             LogConfig = logConfig;
+            MaxPortsPerVm = maxPortsPerVm;
             MinPortsPerVm = minPortsPerVm;
             Name = name;
             NatIpAllocateOption = natIpAllocateOption;

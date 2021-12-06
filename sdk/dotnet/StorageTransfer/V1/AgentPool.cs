@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies a unique string that identifies the agent pool. Format: projects/{project_id}/agentPools/{agent_pool_id}
+        /// Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Specifies a unique string that identifies the agent pool. Format: projects/{project_id}/agentPools/{agent_pool_id}
+        /// Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

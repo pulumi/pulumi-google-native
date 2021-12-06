@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     public sealed class InstancePropertiesArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Controls for advanced machine-related behavior features.
+        /// Controls for advanced machine-related behavior features. Note that for MachineImage, this is not supported yet.
         /// </summary>
         [Input("advancedMachineFeatures")]
         public Input<Inputs.AdvancedMachineFeaturesArgs>? AdvancedMachineFeatures { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public Input<bool>? CanIpForward { get; set; }
 
         /// <summary>
-        /// Specifies the Confidential Instance options.
+        /// Specifies the Confidential Instance options. Note that for MachineImage, this is not supported yet.
         /// </summary>
         [Input("confidentialInstanceConfig")]
         public Input<Inputs.ConfidentialInstanceConfigArgs>? ConfidentialInstanceConfig { get; set; }
@@ -103,13 +103,19 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         }
 
         /// <summary>
-        /// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default.
+        /// Note that for MachineImage, this is not supported yet.
+        /// </summary>
+        [Input("networkPerformanceConfig")]
+        public Input<Inputs.NetworkPerformanceConfigArgs>? NetworkPerformanceConfig { get; set; }
+
+        /// <summary>
+        /// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
         /// </summary>
         [Input("privateIpv6GoogleAccess")]
         public Input<Pulumi.GoogleNative.Compute.V1.InstancePropertiesPrivateIpv6GoogleAccess>? PrivateIpv6GoogleAccess { get; set; }
 
         /// <summary>
-        /// Specifies the reservations that instances can consume from.
+        /// Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
         /// </summary>
         [Input("reservationAffinity")]
         public Input<Inputs.ReservationAffinityArgs>? ReservationAffinity { get; set; }
@@ -118,7 +124,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         private InputList<string>? _resourcePolicies;
 
         /// <summary>
-        /// Resource policies (names, not ULRs) applied to instances created from these properties.
+        /// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
         /// </summary>
         public InputList<string> ResourcePolicies
         {
@@ -144,6 +150,9 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
             set => _serviceAccounts = value;
         }
 
+        /// <summary>
+        /// Note that for MachineImage, this is not supported yet.
+        /// </summary>
         [Input("shieldedInstanceConfig")]
         public Input<Inputs.ShieldedInstanceConfigArgs>? ShieldedInstanceConfig { get; set; }
 

@@ -30,6 +30,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly string MinimalAction;
         /// <summary>
+        /// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+        /// </summary>
+        public readonly string MostDisruptiveAllowedAction;
+        /// <summary>
         /// What action should be used to replace instances. See minimal_action.REPLACE
         /// </summary>
         public readonly string ReplacementMethod;
@@ -48,6 +52,8 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
             string minimalAction,
 
+            string mostDisruptiveAllowedAction,
+
             string replacementMethod,
 
             string type)
@@ -56,6 +62,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
             MaxSurge = maxSurge;
             MaxUnavailable = maxUnavailable;
             MinimalAction = minimalAction;
+            MostDisruptiveAllowedAction = mostDisruptiveAllowedAction;
             ReplacementMethod = replacementMethod;
             Type = type;
         }

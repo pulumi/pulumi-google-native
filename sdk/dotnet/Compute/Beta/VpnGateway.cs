@@ -70,6 +70,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
+        /// The stack type for this VPN gateway to identify the IP protocols that are enabled. If not specified, IPV4_ONLY will be used.
+        /// </summary>
+        [Output("stackType")]
+        public Output<string> StackType { get; private set; } = null!;
+
+        /// <summary>
         /// The list of VPN interfaces associated with this VPN gateway.
         /// </summary>
         [Output("vpnInterfaces")]
@@ -158,6 +164,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
+
+        /// <summary>
+        /// The stack type for this VPN gateway to identify the IP protocols that are enabled. If not specified, IPV4_ONLY will be used.
+        /// </summary>
+        [Input("stackType")]
+        public Input<Pulumi.GoogleNative.Compute.Beta.VpnGatewayStackType>? StackType { get; set; }
 
         [Input("vpnInterfaces")]
         private InputList<Inputs.VpnGatewayVpnGatewayInterfaceArgs>? _vpnInterfaces;

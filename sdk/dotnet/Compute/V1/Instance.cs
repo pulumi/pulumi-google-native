@@ -150,6 +150,9 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Output("networkInterfaces")]
         public Output<ImmutableArray<Outputs.NetworkInterfaceResponse>> NetworkInterfaces { get; private set; } = null!;
 
+        [Output("networkPerformanceConfig")]
+        public Output<Outputs.NetworkPerformanceConfigResponse> NetworkPerformanceConfig { get; private set; } = null!;
+
         /// <summary>
         /// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
         /// </summary>
@@ -197,6 +200,18 @@ namespace Pulumi.GoogleNative.Compute.V1
 
         [Output("shieldedInstanceIntegrityPolicy")]
         public Output<Outputs.ShieldedInstanceIntegrityPolicyResponse> ShieldedInstanceIntegrityPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Source machine image
+        /// </summary>
+        [Output("sourceMachineImage")]
+        public Output<string> SourceMachineImage { get; private set; } = null!;
+
+        /// <summary>
+        /// Source machine image encryption key when creating an instance from a machine image.
+        /// </summary>
+        [Output("sourceMachineImageEncryptionKey")]
+        public Output<Outputs.CustomerEncryptionKeyResponse> SourceMachineImageEncryptionKey { get; private set; } = null!;
 
         /// <summary>
         /// Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
@@ -384,6 +399,9 @@ namespace Pulumi.GoogleNative.Compute.V1
             set => _networkInterfaces = value;
         }
 
+        [Input("networkPerformanceConfig")]
+        public Input<Inputs.NetworkPerformanceConfigArgs>? NetworkPerformanceConfig { get; set; }
+
         /// <summary>
         /// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
         /// </summary>
@@ -440,6 +458,18 @@ namespace Pulumi.GoogleNative.Compute.V1
 
         [Input("sourceInstanceTemplate")]
         public Input<string>? SourceInstanceTemplate { get; set; }
+
+        /// <summary>
+        /// Source machine image
+        /// </summary>
+        [Input("sourceMachineImage")]
+        public Input<string>? SourceMachineImage { get; set; }
+
+        /// <summary>
+        /// Source machine image encryption key when creating an instance from a machine image.
+        /// </summary>
+        [Input("sourceMachineImageEncryptionKey")]
+        public Input<Inputs.CustomerEncryptionKeyArgs>? SourceMachineImageEncryptionKey { get; set; }
 
         /// <summary>
         /// Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.

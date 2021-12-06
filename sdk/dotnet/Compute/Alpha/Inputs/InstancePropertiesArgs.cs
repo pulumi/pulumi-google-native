@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     public sealed class InstancePropertiesArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Controls for advanced machine-related behavior features.
+        /// Controls for advanced machine-related behavior features. Note that for MachineImage, this is not supported yet.
         /// </summary>
         [Input("advancedMachineFeatures")]
         public Input<Inputs.AdvancedMachineFeaturesArgs>? AdvancedMachineFeatures { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<bool>? CanIpForward { get; set; }
 
         /// <summary>
-        /// Specifies the Confidential Instance options.
+        /// Specifies the Confidential Instance options. Note that for MachineImage, this is not supported yet.
         /// </summary>
         [Input("confidentialInstanceConfig")]
         public Input<Inputs.ConfidentialInstanceConfigArgs>? ConfidentialInstanceConfig { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         }
 
         /// <summary>
-        /// Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer
+        /// Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer Note that for MachineImage, this is not supported yet.
         /// </summary>
         [Input("displayDevice")]
         public Input<Inputs.DisplayDeviceArgs>? DisplayDevice { get; set; }
@@ -65,6 +65,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
             get => _guestAccelerators ?? (_guestAccelerators = new InputList<Inputs.AcceleratorConfigArgs>());
             set => _guestAccelerators = value;
         }
+
+        /// <summary>
+        /// KeyRevocationActionType of the instance.
+        /// </summary>
+        [Input("keyRevocationActionType")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.InstancePropertiesKeyRevocationActionType>? KeyRevocationActionType { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -108,23 +114,26 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
             set => _networkInterfaces = value;
         }
 
+        /// <summary>
+        /// Note that for MachineImage, this is not supported yet.
+        /// </summary>
         [Input("networkPerformanceConfig")]
         public Input<Inputs.NetworkPerformanceConfigArgs>? NetworkPerformanceConfig { get; set; }
 
         /// <summary>
-        /// PostKeyRevocationActionType of the instance.(will be deprecated soon)
+        /// PostKeyRevocationActionType of the instance.
         /// </summary>
         [Input("postKeyRevocationActionType")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.InstancePropertiesPostKeyRevocationActionType>? PostKeyRevocationActionType { get; set; }
 
         /// <summary>
-        /// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default.
+        /// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
         /// </summary>
         [Input("privateIpv6GoogleAccess")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.InstancePropertiesPrivateIpv6GoogleAccess>? PrivateIpv6GoogleAccess { get; set; }
 
         /// <summary>
-        /// Specifies the reservations that instances can consume from.
+        /// Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
         /// </summary>
         [Input("reservationAffinity")]
         public Input<Inputs.ReservationAffinityArgs>? ReservationAffinity { get; set; }
@@ -133,7 +142,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         private InputList<string>? _resourcePolicies;
 
         /// <summary>
-        /// Resource policies (names, not ULRs) applied to instances created from these properties.
+        /// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
         /// </summary>
         public InputList<string> ResourcePolicies
         {
@@ -151,7 +160,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         private InputList<string>? _secureTags;
 
         /// <summary>
-        /// [Input Only] Secure tags to apply to this instance. Maximum number of secure tags allowed is 50.
+        /// [Input Only] Secure tags to apply to this instance. Maximum number of secure tags allowed is 50. Note that for MachineImage, this is not supported yet.
         /// </summary>
         public InputList<string> SecureTags
         {
@@ -171,6 +180,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
             set => _serviceAccounts = value;
         }
 
+        /// <summary>
+        /// Note that for MachineImage, this is not supported yet.
+        /// </summary>
         [Input("shieldedInstanceConfig")]
         public Input<Inputs.ShieldedInstanceConfigArgs>? ShieldedInstanceConfig { get; set; }
 

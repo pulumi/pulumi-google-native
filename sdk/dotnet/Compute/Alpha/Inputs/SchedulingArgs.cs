@@ -76,6 +76,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<Pulumi.GoogleNative.Compute.Alpha.SchedulingMaintenanceInterval>? MaintenanceInterval { get; set; }
 
         /// <summary>
+        /// Specifies the max run duration for the given instance. If specified, the instance termination action will be performed at the end of the run duration.
+        /// </summary>
+        [Input("maxRunDuration")]
+        public Input<Inputs.DurationArgs>? MaxRunDuration { get; set; }
+
+        /// <summary>
         /// The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
         /// </summary>
         [Input("minNodeCpus")]
@@ -110,6 +116,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// </summary>
         [Input("provisioningModel")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.SchedulingProvisioningModel>? ProvisioningModel { get; set; }
+
+        /// <summary>
+        /// Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
+        /// </summary>
+        [Input("terminationTime")]
+        public Input<string>? TerminationTime { get; set; }
 
         public SchedulingArgs()
         {

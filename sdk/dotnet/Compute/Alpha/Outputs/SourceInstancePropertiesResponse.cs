@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// DEPRECATED: Please use compute#instanceProperties instead. New properties will not be added to this field.
+    /// </summary>
     [OutputType]
     public sealed class SourceInstancePropertiesResponse
     {
@@ -34,6 +37,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AcceleratorConfigResponse> GuestAccelerators;
         /// <summary>
+        /// KeyRevocationActionType of the instance.
+        /// </summary>
+        public readonly string KeyRevocationActionType;
+        /// <summary>
         /// Labels to apply to instances that are created from this machine image.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
@@ -54,7 +61,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.NetworkInterfaceResponse> NetworkInterfaces;
         /// <summary>
-        /// PostKeyRevocationActionType of the instance. (will be deprecated soon)
+        /// PostKeyRevocationActionType of the instance.
         /// </summary>
         public readonly string PostKeyRevocationActionType;
         /// <summary>
@@ -82,6 +89,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             ImmutableArray<Outputs.AcceleratorConfigResponse> guestAccelerators,
 
+            string keyRevocationActionType,
+
             ImmutableDictionary<string, string> labels,
 
             string machineType,
@@ -105,6 +114,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             Description = description;
             Disks = disks;
             GuestAccelerators = guestAccelerators;
+            KeyRevocationActionType = keyRevocationActionType;
             Labels = labels;
             MachineType = machineType;
             Metadata = metadata;
