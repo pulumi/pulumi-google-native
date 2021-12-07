@@ -62,7 +62,7 @@ quality and higher fidelity with Google Cloud.
 Credentials configuration is compatible with the classic GCP provider.
 
 Please refer to [this quickstart guide](
-https://www.pulumi.com/docs/intro/cloud-providers/gcp/setup/) for possible configuration options.
+https://www.pulumi.com/docs/intro/cloud-providers/google-native/setup/) for possible configuration options.
 
 ## Building
 
