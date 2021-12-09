@@ -69,10 +69,12 @@ quality and higher fidelity with Google Cloud.
 
 ## Configuring credentials
 
-Credentials configuration is compatible with the classic GCP provider.
+Please refer to the [quickstart guide](
+https://www.pulumi.com/docs/intro/cloud-providers/google-native/setup/) for configuration options.
 
-Please refer to [this quickstart guide](
-https://www.pulumi.com/docs/intro/cloud-providers/google-native/setup/) for possible configuration options.
+When developing locally, we recommend that you install the Google Cloud SDK and then authorize access with a user
+account. Other configuration settings should be set either via `pulumi config set google-native:<KEY> <VALUE>` or
+pass options to the constructor of a new [google-native `Provider`](https://www.pulumi.com/registry/packages/google-native/api-docs/provider/).
 
 ## Building
 
