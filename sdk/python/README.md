@@ -23,29 +23,39 @@ This package is available in many languages in the standard packaging formats.
 
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
-    $ npm install @pulumi/google-native
+```bash
+npm install @pulumi/google-native
+```
 
 or `yarn`:
 
-    $ yarn add @pulumi/google-native
+```bash
+yarn add @pulumi/google-native
+```
 
 ### Python
 
 To use from Python, install using `pip`:
 
-    $ pip install pulumi_google_native
+```bash
+pip install pulumi_google_native
+```
 
 ### Go
 
 To use from Go, use `go get` to grab the latest version of the library
 
-    $ go get github.com/pulumi/pulumi-google-native/sdk
+```bash
+go get github.com/pulumi/pulumi-google-native/sdk
+```
 
 ### .NET
 
 To use from .NET, install using `dotnet add package`:
 
-    $ dotnet add package Pulumi.GoogleNative
+```bash
+dotnet add package Pulumi.GoogleNative
+```
 
 ## Concepts
 
@@ -59,10 +69,12 @@ quality and higher fidelity with Google Cloud.
 
 ## Configuring credentials
 
-Credentials configuration is compatible with the classic GCP provider.
+Please refer to the [quickstart guide](
+https://www.pulumi.com/docs/intro/cloud-providers/google-native/setup/) for configuration options.
 
-Please refer to [this quickstart guide](
-https://www.pulumi.com/docs/intro/cloud-providers/gcp/setup/) for possible configuration options.
+When developing locally, we recommend that you install the Google Cloud SDK and then authorize access with a user
+account. Other configuration settings should be set either via `pulumi config set google-native:<KEY> <VALUE>` or
+pass options to the constructor of a new [google-native `Provider`](https://www.pulumi.com/registry/packages/google-native/api-docs/provider/).
 
 ## Building
 
@@ -80,9 +92,9 @@ guidance.
 
 Run the following commands to install Go modules, generate all SDKs, and build the provider: 
 
-```
-$ make ensure
-$ make build
+```bash
+make ensure
+make build
 ```
 
 Add the `bin` folder to your `$PATH` or copy the `bin/pulumi-resource-google-native` file to another location in your `$PATH`.
@@ -91,8 +103,8 @@ Add the `bin` folder to your `$PATH` or copy the `bin/pulumi-resource-google-nat
 
 Navigate to one of the `examples` and run Pulumi:
 
+```bash
+cd ./exampes/simple
+yarn link @pulumi/google-native
+pulumi up
 ```
-$ cd ./exampes/simple
-$ yarn link @pulumi/google-native
-$ pulumi up
-``` 

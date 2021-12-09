@@ -43,10 +43,11 @@ generate_nodejs::
 	$(WORKING_DIR)/bin/$(CODEGEN) nodejs ${VERSION}
 
 build_nodejs:: VERSION := $(shell pulumictl get version --language javascript)
+build_nodejs:: TSC := $(shell which tsc)
 build_nodejs::
 	cd ${PACKDIR}/nodejs/ && \
 		yarn install && \
-		node --max-old-space-size=4096 /usr/local/bin/tsc --diagnostics && \
+		node --max-old-space-size=4096 $(TSC) --diagnostics && \
 		cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/ && \
 		sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json
 
