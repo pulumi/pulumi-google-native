@@ -60,7 +60,7 @@ jobs:
         if: steps.gomod.outputs.changes != 0
         run: |
           git add .
-          git commit -m "Regenerating SDK based on updated modules
+          git commit -m "Regenerating SDK based on updated modules"
           git push origin update-pulumi/${{ github.run_id }}-${{ github.run_number }}
       - name: Open a pull request
         if: steps.gomod.outputs.changes != 0
