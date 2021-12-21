@@ -141,7 +141,7 @@ type CryptoKeyInput interface {
 }
 
 func (*CryptoKey) ElementType() reflect.Type {
-	return reflect.TypeOf((*CryptoKey)(nil))
+	return reflect.TypeOf((**CryptoKey)(nil)).Elem()
 }
 
 func (i *CryptoKey) ToCryptoKeyOutput() CryptoKeyOutput {
@@ -155,7 +155,7 @@ func (i *CryptoKey) ToCryptoKeyOutputWithContext(ctx context.Context) CryptoKeyO
 type CryptoKeyOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CryptoKey)(nil))
+	return reflect.TypeOf((**CryptoKey)(nil)).Elem()
 }
 
 func (o CryptoKeyOutput) ToCryptoKeyOutput() CryptoKeyOutput {

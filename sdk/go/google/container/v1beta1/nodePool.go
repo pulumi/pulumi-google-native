@@ -161,7 +161,7 @@ type NodePoolInput interface {
 }
 
 func (*NodePool) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodePool)(nil))
+	return reflect.TypeOf((**NodePool)(nil)).Elem()
 }
 
 func (i *NodePool) ToNodePoolOutput() NodePoolOutput {
@@ -175,7 +175,7 @@ func (i *NodePool) ToNodePoolOutputWithContext(ctx context.Context) NodePoolOutp
 type NodePoolOutput struct{ *pulumi.OutputState }
 
 func (NodePoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodePool)(nil))
+	return reflect.TypeOf((**NodePool)(nil)).Elem()
 }
 
 func (o NodePoolOutput) ToNodePoolOutput() NodePoolOutput {

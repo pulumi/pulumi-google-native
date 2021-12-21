@@ -103,7 +103,7 @@ type WorkflowTemplateIamPolicyInput interface {
 }
 
 func (*WorkflowTemplateIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkflowTemplateIamPolicy)(nil))
+	return reflect.TypeOf((**WorkflowTemplateIamPolicy)(nil)).Elem()
 }
 
 func (i *WorkflowTemplateIamPolicy) ToWorkflowTemplateIamPolicyOutput() WorkflowTemplateIamPolicyOutput {
@@ -117,7 +117,7 @@ func (i *WorkflowTemplateIamPolicy) ToWorkflowTemplateIamPolicyOutputWithContext
 type WorkflowTemplateIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkflowTemplateIamPolicy)(nil))
+	return reflect.TypeOf((**WorkflowTemplateIamPolicy)(nil)).Elem()
 }
 
 func (o WorkflowTemplateIamPolicyOutput) ToWorkflowTemplateIamPolicyOutput() WorkflowTemplateIamPolicyOutput {

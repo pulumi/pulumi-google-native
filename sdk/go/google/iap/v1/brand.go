@@ -94,7 +94,7 @@ type BrandInput interface {
 }
 
 func (*Brand) ElementType() reflect.Type {
-	return reflect.TypeOf((*Brand)(nil))
+	return reflect.TypeOf((**Brand)(nil)).Elem()
 }
 
 func (i *Brand) ToBrandOutput() BrandOutput {
@@ -108,7 +108,7 @@ func (i *Brand) ToBrandOutputWithContext(ctx context.Context) BrandOutput {
 type BrandOutput struct{ *pulumi.OutputState }
 
 func (BrandOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Brand)(nil))
+	return reflect.TypeOf((**Brand)(nil)).Elem()
 }
 
 func (o BrandOutput) ToBrandOutput() BrandOutput {

@@ -109,7 +109,7 @@ type TagKeyIamPolicyInput interface {
 }
 
 func (*TagKeyIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*TagKeyIamPolicy)(nil))
+	return reflect.TypeOf((**TagKeyIamPolicy)(nil)).Elem()
 }
 
 func (i *TagKeyIamPolicy) ToTagKeyIamPolicyOutput() TagKeyIamPolicyOutput {
@@ -123,7 +123,7 @@ func (i *TagKeyIamPolicy) ToTagKeyIamPolicyOutputWithContext(ctx context.Context
 type TagKeyIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (TagKeyIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TagKeyIamPolicy)(nil))
+	return reflect.TypeOf((**TagKeyIamPolicy)(nil)).Elem()
 }
 
 func (o TagKeyIamPolicyOutput) ToTagKeyIamPolicyOutput() TagKeyIamPolicyOutput {

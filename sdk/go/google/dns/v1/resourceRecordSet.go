@@ -116,7 +116,7 @@ type ResourceRecordSetInput interface {
 }
 
 func (*ResourceRecordSet) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceRecordSet)(nil))
+	return reflect.TypeOf((**ResourceRecordSet)(nil)).Elem()
 }
 
 func (i *ResourceRecordSet) ToResourceRecordSetOutput() ResourceRecordSetOutput {
@@ -130,7 +130,7 @@ func (i *ResourceRecordSet) ToResourceRecordSetOutputWithContext(ctx context.Con
 type ResourceRecordSetOutput struct{ *pulumi.OutputState }
 
 func (ResourceRecordSetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceRecordSet)(nil))
+	return reflect.TypeOf((**ResourceRecordSet)(nil)).Elem()
 }
 
 func (o ResourceRecordSetOutput) ToResourceRecordSetOutput() ResourceRecordSetOutput {

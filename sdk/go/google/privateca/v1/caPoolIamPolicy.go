@@ -113,7 +113,7 @@ type CaPoolIamPolicyInput interface {
 }
 
 func (*CaPoolIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*CaPoolIamPolicy)(nil))
+	return reflect.TypeOf((**CaPoolIamPolicy)(nil)).Elem()
 }
 
 func (i *CaPoolIamPolicy) ToCaPoolIamPolicyOutput() CaPoolIamPolicyOutput {
@@ -127,7 +127,7 @@ func (i *CaPoolIamPolicy) ToCaPoolIamPolicyOutputWithContext(ctx context.Context
 type CaPoolIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (CaPoolIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CaPoolIamPolicy)(nil))
+	return reflect.TypeOf((**CaPoolIamPolicy)(nil)).Elem()
 }
 
 func (o CaPoolIamPolicyOutput) ToCaPoolIamPolicyOutput() CaPoolIamPolicyOutput {

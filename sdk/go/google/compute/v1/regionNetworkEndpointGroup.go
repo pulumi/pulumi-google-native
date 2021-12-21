@@ -155,7 +155,7 @@ type RegionNetworkEndpointGroupInput interface {
 }
 
 func (*RegionNetworkEndpointGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionNetworkEndpointGroup)(nil))
+	return reflect.TypeOf((**RegionNetworkEndpointGroup)(nil)).Elem()
 }
 
 func (i *RegionNetworkEndpointGroup) ToRegionNetworkEndpointGroupOutput() RegionNetworkEndpointGroupOutput {
@@ -169,7 +169,7 @@ func (i *RegionNetworkEndpointGroup) ToRegionNetworkEndpointGroupOutputWithConte
 type RegionNetworkEndpointGroupOutput struct{ *pulumi.OutputState }
 
 func (RegionNetworkEndpointGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionNetworkEndpointGroup)(nil))
+	return reflect.TypeOf((**RegionNetworkEndpointGroup)(nil)).Elem()
 }
 
 func (o RegionNetworkEndpointGroupOutput) ToRegionNetworkEndpointGroupOutput() RegionNetworkEndpointGroupOutput {

@@ -109,7 +109,7 @@ type AccessLevelInput interface {
 }
 
 func (*AccessLevel) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessLevel)(nil))
+	return reflect.TypeOf((**AccessLevel)(nil)).Elem()
 }
 
 func (i *AccessLevel) ToAccessLevelOutput() AccessLevelOutput {
@@ -123,7 +123,7 @@ func (i *AccessLevel) ToAccessLevelOutputWithContext(ctx context.Context) Access
 type AccessLevelOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessLevel)(nil))
+	return reflect.TypeOf((**AccessLevel)(nil)).Elem()
 }
 
 func (o AccessLevelOutput) ToAccessLevelOutput() AccessLevelOutput {

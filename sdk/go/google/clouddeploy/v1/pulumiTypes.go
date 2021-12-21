@@ -127,62 +127,6 @@ type AuditConfigResponse struct {
 	Service string `pulumi:"service"`
 }
 
-// AuditConfigResponseInput is an input type that accepts AuditConfigResponseArgs and AuditConfigResponseOutput values.
-// You can construct a concrete instance of `AuditConfigResponseInput` via:
-//
-//          AuditConfigResponseArgs{...}
-type AuditConfigResponseInput interface {
-	pulumi.Input
-
-	ToAuditConfigResponseOutput() AuditConfigResponseOutput
-	ToAuditConfigResponseOutputWithContext(context.Context) AuditConfigResponseOutput
-}
-
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
-type AuditConfigResponseArgs struct {
-	// The configuration for logging of each type of permission.
-	AuditLogConfigs AuditLogConfigResponseArrayInput `pulumi:"auditLogConfigs"`
-	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-	Service pulumi.StringInput `pulumi:"service"`
-}
-
-func (AuditConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
-}
-
-func (i AuditConfigResponseArgs) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
-	return i.ToAuditConfigResponseOutputWithContext(context.Background())
-}
-
-func (i AuditConfigResponseArgs) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseOutput)
-}
-
-// AuditConfigResponseArrayInput is an input type that accepts AuditConfigResponseArray and AuditConfigResponseArrayOutput values.
-// You can construct a concrete instance of `AuditConfigResponseArrayInput` via:
-//
-//          AuditConfigResponseArray{ AuditConfigResponseArgs{...} }
-type AuditConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput
-	ToAuditConfigResponseArrayOutputWithContext(context.Context) AuditConfigResponseArrayOutput
-}
-
-type AuditConfigResponseArray []AuditConfigResponseInput
-
-func (AuditConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
-}
-
-func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
-	return i.ToAuditConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseArrayOutput)
-}
-
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
 type AuditConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -343,62 +287,6 @@ type AuditLogConfigResponse struct {
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
 	LogType string `pulumi:"logType"`
-}
-
-// AuditLogConfigResponseInput is an input type that accepts AuditLogConfigResponseArgs and AuditLogConfigResponseOutput values.
-// You can construct a concrete instance of `AuditLogConfigResponseInput` via:
-//
-//          AuditLogConfigResponseArgs{...}
-type AuditLogConfigResponseInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput
-	ToAuditLogConfigResponseOutputWithContext(context.Context) AuditLogConfigResponseOutput
-}
-
-// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
-type AuditLogConfigResponseArgs struct {
-	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
-	// The log type that this config enables.
-	LogType pulumi.StringInput `pulumi:"logType"`
-}
-
-func (AuditLogConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
-	return i.ToAuditLogConfigResponseOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseOutput)
-}
-
-// AuditLogConfigResponseArrayInput is an input type that accepts AuditLogConfigResponseArray and AuditLogConfigResponseArrayOutput values.
-// You can construct a concrete instance of `AuditLogConfigResponseArrayInput` via:
-//
-//          AuditLogConfigResponseArray{ AuditLogConfigResponseArgs{...} }
-type AuditLogConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput
-	ToAuditLogConfigResponseArrayOutputWithContext(context.Context) AuditLogConfigResponseArrayOutput
-}
-
-type AuditLogConfigResponseArray []AuditLogConfigResponseInput
-
-func (AuditLogConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
-	return i.ToAuditLogConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseArrayOutput)
 }
 
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
@@ -574,64 +462,6 @@ type BindingResponse struct {
 	Role string `pulumi:"role"`
 }
 
-// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
-// You can construct a concrete instance of `BindingResponseInput` via:
-//
-//          BindingResponseArgs{...}
-type BindingResponseInput interface {
-	pulumi.Input
-
-	ToBindingResponseOutput() BindingResponseOutput
-	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
-}
-
-// Associates `members`, or principals, with a `role`.
-type BindingResponseArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
-	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-	Role pulumi.StringInput `pulumi:"role"`
-}
-
-func (BindingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
-	return i.ToBindingResponseOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
-}
-
-// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
-// You can construct a concrete instance of `BindingResponseArrayInput` via:
-//
-//          BindingResponseArray{ BindingResponseArgs{...} }
-type BindingResponseArrayInput interface {
-	pulumi.Input
-
-	ToBindingResponseArrayOutput() BindingResponseArrayOutput
-	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
-}
-
-type BindingResponseArray []BindingResponseInput
-
-func (BindingResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
-	return i.ToBindingResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
-}
-
 // Associates `members`, or principals, with a `role`.
 type BindingResponseOutput struct{ *pulumi.OutputState }
 
@@ -797,62 +627,6 @@ type BuildArtifactResponse struct {
 	Image string `pulumi:"image"`
 	// Image tag to use. This will generally be the full path to an image, such as "gcr.io/my-project/busybox:1.2.3" or "gcr.io/my-project/busybox@sha256:abc123".
 	Tag string `pulumi:"tag"`
-}
-
-// BuildArtifactResponseInput is an input type that accepts BuildArtifactResponseArgs and BuildArtifactResponseOutput values.
-// You can construct a concrete instance of `BuildArtifactResponseInput` via:
-//
-//          BuildArtifactResponseArgs{...}
-type BuildArtifactResponseInput interface {
-	pulumi.Input
-
-	ToBuildArtifactResponseOutput() BuildArtifactResponseOutput
-	ToBuildArtifactResponseOutputWithContext(context.Context) BuildArtifactResponseOutput
-}
-
-// Description of an a image to use during Skaffold rendering.
-type BuildArtifactResponseArgs struct {
-	// Image name in Skaffold configuration.
-	Image pulumi.StringInput `pulumi:"image"`
-	// Image tag to use. This will generally be the full path to an image, such as "gcr.io/my-project/busybox:1.2.3" or "gcr.io/my-project/busybox@sha256:abc123".
-	Tag pulumi.StringInput `pulumi:"tag"`
-}
-
-func (BuildArtifactResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BuildArtifactResponse)(nil)).Elem()
-}
-
-func (i BuildArtifactResponseArgs) ToBuildArtifactResponseOutput() BuildArtifactResponseOutput {
-	return i.ToBuildArtifactResponseOutputWithContext(context.Background())
-}
-
-func (i BuildArtifactResponseArgs) ToBuildArtifactResponseOutputWithContext(ctx context.Context) BuildArtifactResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuildArtifactResponseOutput)
-}
-
-// BuildArtifactResponseArrayInput is an input type that accepts BuildArtifactResponseArray and BuildArtifactResponseArrayOutput values.
-// You can construct a concrete instance of `BuildArtifactResponseArrayInput` via:
-//
-//          BuildArtifactResponseArray{ BuildArtifactResponseArgs{...} }
-type BuildArtifactResponseArrayInput interface {
-	pulumi.Input
-
-	ToBuildArtifactResponseArrayOutput() BuildArtifactResponseArrayOutput
-	ToBuildArtifactResponseArrayOutputWithContext(context.Context) BuildArtifactResponseArrayOutput
-}
-
-type BuildArtifactResponseArray []BuildArtifactResponseInput
-
-func (BuildArtifactResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BuildArtifactResponse)(nil)).Elem()
-}
-
-func (i BuildArtifactResponseArray) ToBuildArtifactResponseArrayOutput() BuildArtifactResponseArrayOutput {
-	return i.ToBuildArtifactResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BuildArtifactResponseArray) ToBuildArtifactResponseArrayOutputWithContext(ctx context.Context) BuildArtifactResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuildArtifactResponseArrayOutput)
 }
 
 // Description of an a image to use during Skaffold rendering.
@@ -1067,37 +841,6 @@ type DefaultPoolResponse struct {
 	ServiceAccount string `pulumi:"serviceAccount"`
 }
 
-// DefaultPoolResponseInput is an input type that accepts DefaultPoolResponseArgs and DefaultPoolResponseOutput values.
-// You can construct a concrete instance of `DefaultPoolResponseInput` via:
-//
-//          DefaultPoolResponseArgs{...}
-type DefaultPoolResponseInput interface {
-	pulumi.Input
-
-	ToDefaultPoolResponseOutput() DefaultPoolResponseOutput
-	ToDefaultPoolResponseOutputWithContext(context.Context) DefaultPoolResponseOutput
-}
-
-// Execution using the default Cloud Build pool.
-type DefaultPoolResponseArgs struct {
-	// Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
-	ArtifactStorage pulumi.StringInput `pulumi:"artifactStorage"`
-	// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
-	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
-}
-
-func (DefaultPoolResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefaultPoolResponse)(nil)).Elem()
-}
-
-func (i DefaultPoolResponseArgs) ToDefaultPoolResponseOutput() DefaultPoolResponseOutput {
-	return i.ToDefaultPoolResponseOutputWithContext(context.Background())
-}
-
-func (i DefaultPoolResponseArgs) ToDefaultPoolResponseOutputWithContext(ctx context.Context) DefaultPoolResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefaultPoolResponseOutput)
-}
-
 // Execution using the default Cloud Build pool.
 type DefaultPoolResponseOutput struct{ *pulumi.OutputState }
 
@@ -1147,94 +890,6 @@ type DeliveryPipelineResponse struct {
 	UpdateTime string `pulumi:"updateTime"`
 }
 
-// DeliveryPipelineResponseInput is an input type that accepts DeliveryPipelineResponseArgs and DeliveryPipelineResponseOutput values.
-// You can construct a concrete instance of `DeliveryPipelineResponseInput` via:
-//
-//          DeliveryPipelineResponseArgs{...}
-type DeliveryPipelineResponseInput interface {
-	pulumi.Input
-
-	ToDeliveryPipelineResponseOutput() DeliveryPipelineResponseOutput
-	ToDeliveryPipelineResponseOutputWithContext(context.Context) DeliveryPipelineResponseOutput
-}
-
-// A `DeliveryPipeline` resource in the Google Cloud Deploy API. A `DeliveryPipeline` defines a pipeline through which a Skaffold configuration can progress.
-type DeliveryPipelineResponseArgs struct {
-	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
-	Annotations pulumi.StringMapInput `pulumi:"annotations"`
-	// Information around the state of the Delivery Pipeline.
-	Condition PipelineConditionResponseInput `pulumi:"condition"`
-	// Time at which the pipeline was created.
-	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// Description of the `DeliveryPipeline`. Max length is 255 characters.
-	Description pulumi.StringInput `pulumi:"description"`
-	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-	Etag pulumi.StringInput `pulumi:"etag"`
-	// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// Optional. Name of the `DeliveryPipeline`. Format is projects/{project}/ locations/{location}/deliveryPipelines/a-z{0,62}.
-	Name pulumi.StringInput `pulumi:"name"`
-	// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
-	SerialPipeline SerialPipelineResponseInput `pulumi:"serialPipeline"`
-	// Unique identifier of the `DeliveryPipeline`.
-	Uid pulumi.StringInput `pulumi:"uid"`
-	// Most recent time at which the pipeline was updated.
-	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
-}
-
-func (DeliveryPipelineResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeliveryPipelineResponse)(nil)).Elem()
-}
-
-func (i DeliveryPipelineResponseArgs) ToDeliveryPipelineResponseOutput() DeliveryPipelineResponseOutput {
-	return i.ToDeliveryPipelineResponseOutputWithContext(context.Background())
-}
-
-func (i DeliveryPipelineResponseArgs) ToDeliveryPipelineResponseOutputWithContext(ctx context.Context) DeliveryPipelineResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineResponseOutput)
-}
-
-func (i DeliveryPipelineResponseArgs) ToDeliveryPipelineResponsePtrOutput() DeliveryPipelineResponsePtrOutput {
-	return i.ToDeliveryPipelineResponsePtrOutputWithContext(context.Background())
-}
-
-func (i DeliveryPipelineResponseArgs) ToDeliveryPipelineResponsePtrOutputWithContext(ctx context.Context) DeliveryPipelineResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineResponseOutput).ToDeliveryPipelineResponsePtrOutputWithContext(ctx)
-}
-
-// DeliveryPipelineResponsePtrInput is an input type that accepts DeliveryPipelineResponseArgs, DeliveryPipelineResponsePtr and DeliveryPipelineResponsePtrOutput values.
-// You can construct a concrete instance of `DeliveryPipelineResponsePtrInput` via:
-//
-//          DeliveryPipelineResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type DeliveryPipelineResponsePtrInput interface {
-	pulumi.Input
-
-	ToDeliveryPipelineResponsePtrOutput() DeliveryPipelineResponsePtrOutput
-	ToDeliveryPipelineResponsePtrOutputWithContext(context.Context) DeliveryPipelineResponsePtrOutput
-}
-
-type deliveryPipelineResponsePtrType DeliveryPipelineResponseArgs
-
-func DeliveryPipelineResponsePtr(v *DeliveryPipelineResponseArgs) DeliveryPipelineResponsePtrInput {
-	return (*deliveryPipelineResponsePtrType)(v)
-}
-
-func (*deliveryPipelineResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeliveryPipelineResponse)(nil)).Elem()
-}
-
-func (i *deliveryPipelineResponsePtrType) ToDeliveryPipelineResponsePtrOutput() DeliveryPipelineResponsePtrOutput {
-	return i.ToDeliveryPipelineResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *deliveryPipelineResponsePtrType) ToDeliveryPipelineResponsePtrOutputWithContext(ctx context.Context) DeliveryPipelineResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineResponsePtrOutput)
-}
-
 // A `DeliveryPipeline` resource in the Google Cloud Deploy API. A `DeliveryPipeline` defines a pipeline through which a Skaffold configuration can progress.
 type DeliveryPipelineResponseOutput struct{ *pulumi.OutputState }
 
@@ -1248,16 +903,6 @@ func (o DeliveryPipelineResponseOutput) ToDeliveryPipelineResponseOutput() Deliv
 
 func (o DeliveryPipelineResponseOutput) ToDeliveryPipelineResponseOutputWithContext(ctx context.Context) DeliveryPipelineResponseOutput {
 	return o
-}
-
-func (o DeliveryPipelineResponseOutput) ToDeliveryPipelineResponsePtrOutput() DeliveryPipelineResponsePtrOutput {
-	return o.ToDeliveryPipelineResponsePtrOutputWithContext(context.Background())
-}
-
-func (o DeliveryPipelineResponseOutput) ToDeliveryPipelineResponsePtrOutputWithContext(ctx context.Context) DeliveryPipelineResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineResponse) *DeliveryPipelineResponse {
-		return &v
-	}).(DeliveryPipelineResponsePtrOutput)
 }
 
 // User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
@@ -1308,130 +953,6 @@ func (o DeliveryPipelineResponseOutput) Uid() pulumi.StringOutput {
 // Most recent time at which the pipeline was updated.
 func (o DeliveryPipelineResponseOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryPipelineResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
-}
-
-type DeliveryPipelineResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DeliveryPipelineResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeliveryPipelineResponse)(nil)).Elem()
-}
-
-func (o DeliveryPipelineResponsePtrOutput) ToDeliveryPipelineResponsePtrOutput() DeliveryPipelineResponsePtrOutput {
-	return o
-}
-
-func (o DeliveryPipelineResponsePtrOutput) ToDeliveryPipelineResponsePtrOutputWithContext(ctx context.Context) DeliveryPipelineResponsePtrOutput {
-	return o
-}
-
-func (o DeliveryPipelineResponsePtrOutput) Elem() DeliveryPipelineResponseOutput {
-	return o.ApplyT(func(v *DeliveryPipelineResponse) DeliveryPipelineResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DeliveryPipelineResponse
-		return ret
-	}).(DeliveryPipelineResponseOutput)
-}
-
-// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
-func (o DeliveryPipelineResponsePtrOutput) Annotations() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *DeliveryPipelineResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Annotations
-	}).(pulumi.StringMapOutput)
-}
-
-// Information around the state of the Delivery Pipeline.
-func (o DeliveryPipelineResponsePtrOutput) Condition() PipelineConditionResponsePtrOutput {
-	return o.ApplyT(func(v *DeliveryPipelineResponse) *PipelineConditionResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Condition
-	}).(PipelineConditionResponsePtrOutput)
-}
-
-// Time at which the pipeline was created.
-func (o DeliveryPipelineResponsePtrOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeliveryPipelineResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CreateTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Description of the `DeliveryPipeline`. Max length is 255 characters.
-func (o DeliveryPipelineResponsePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeliveryPipelineResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-func (o DeliveryPipelineResponsePtrOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeliveryPipelineResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Etag
-	}).(pulumi.StringPtrOutput)
-}
-
-// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
-func (o DeliveryPipelineResponsePtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *DeliveryPipelineResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Labels
-	}).(pulumi.StringMapOutput)
-}
-
-// Optional. Name of the `DeliveryPipeline`. Format is projects/{project}/ locations/{location}/deliveryPipelines/a-z{0,62}.
-func (o DeliveryPipelineResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeliveryPipelineResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
-func (o DeliveryPipelineResponsePtrOutput) SerialPipeline() SerialPipelineResponsePtrOutput {
-	return o.ApplyT(func(v *DeliveryPipelineResponse) *SerialPipelineResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.SerialPipeline
-	}).(SerialPipelineResponsePtrOutput)
-}
-
-// Unique identifier of the `DeliveryPipeline`.
-func (o DeliveryPipelineResponsePtrOutput) Uid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeliveryPipelineResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Uid
-	}).(pulumi.StringPtrOutput)
-}
-
-// Most recent time at which the pipeline was updated.
-func (o DeliveryPipelineResponsePtrOutput) UpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeliveryPipelineResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UpdateTime
-	}).(pulumi.StringPtrOutput)
 }
 
 // Configuration of the environment to use when calling Skaffold.
@@ -1560,64 +1081,6 @@ type ExecutionConfigResponse struct {
 	PrivatePool PrivatePoolResponse `pulumi:"privatePool"`
 	// Usages when this configuration should be applied.
 	Usages []string `pulumi:"usages"`
-}
-
-// ExecutionConfigResponseInput is an input type that accepts ExecutionConfigResponseArgs and ExecutionConfigResponseOutput values.
-// You can construct a concrete instance of `ExecutionConfigResponseInput` via:
-//
-//          ExecutionConfigResponseArgs{...}
-type ExecutionConfigResponseInput interface {
-	pulumi.Input
-
-	ToExecutionConfigResponseOutput() ExecutionConfigResponseOutput
-	ToExecutionConfigResponseOutputWithContext(context.Context) ExecutionConfigResponseOutput
-}
-
-// Configuration of the environment to use when calling Skaffold.
-type ExecutionConfigResponseArgs struct {
-	// Optional. Use default Cloud Build pool.
-	DefaultPool DefaultPoolResponseInput `pulumi:"defaultPool"`
-	// Optional. Use private Cloud Build pool.
-	PrivatePool PrivatePoolResponseInput `pulumi:"privatePool"`
-	// Usages when this configuration should be applied.
-	Usages pulumi.StringArrayInput `pulumi:"usages"`
-}
-
-func (ExecutionConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExecutionConfigResponse)(nil)).Elem()
-}
-
-func (i ExecutionConfigResponseArgs) ToExecutionConfigResponseOutput() ExecutionConfigResponseOutput {
-	return i.ToExecutionConfigResponseOutputWithContext(context.Background())
-}
-
-func (i ExecutionConfigResponseArgs) ToExecutionConfigResponseOutputWithContext(ctx context.Context) ExecutionConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExecutionConfigResponseOutput)
-}
-
-// ExecutionConfigResponseArrayInput is an input type that accepts ExecutionConfigResponseArray and ExecutionConfigResponseArrayOutput values.
-// You can construct a concrete instance of `ExecutionConfigResponseArrayInput` via:
-//
-//          ExecutionConfigResponseArray{ ExecutionConfigResponseArgs{...} }
-type ExecutionConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToExecutionConfigResponseArrayOutput() ExecutionConfigResponseArrayOutput
-	ToExecutionConfigResponseArrayOutputWithContext(context.Context) ExecutionConfigResponseArrayOutput
-}
-
-type ExecutionConfigResponseArray []ExecutionConfigResponseInput
-
-func (ExecutionConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ExecutionConfigResponse)(nil)).Elem()
-}
-
-func (i ExecutionConfigResponseArray) ToExecutionConfigResponseArrayOutput() ExecutionConfigResponseArrayOutput {
-	return i.ToExecutionConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ExecutionConfigResponseArray) ToExecutionConfigResponseArrayOutputWithContext(ctx context.Context) ExecutionConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExecutionConfigResponseArrayOutput)
 }
 
 // Configuration of the environment to use when calling Skaffold.
@@ -1879,41 +1342,6 @@ type ExprResponse struct {
 	Title string `pulumi:"title"`
 }
 
-// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
-// You can construct a concrete instance of `ExprResponseInput` via:
-//
-//          ExprResponseArgs{...}
-type ExprResponseInput interface {
-	pulumi.Input
-
-	ToExprResponseOutput() ExprResponseOutput
-	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type ExprResponseArgs struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-	Location pulumi.StringInput `pulumi:"location"`
-	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (ExprResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
-}
-
-func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
-	return i.ToExprResponseOutputWithContext(context.Background())
-}
-
-func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprResponseOutput struct{ *pulumi.OutputState }
 
@@ -2095,76 +1523,6 @@ type GkeClusterResponse struct {
 	Cluster string `pulumi:"cluster"`
 }
 
-// GkeClusterResponseInput is an input type that accepts GkeClusterResponseArgs and GkeClusterResponseOutput values.
-// You can construct a concrete instance of `GkeClusterResponseInput` via:
-//
-//          GkeClusterResponseArgs{...}
-type GkeClusterResponseInput interface {
-	pulumi.Input
-
-	ToGkeClusterResponseOutput() GkeClusterResponseOutput
-	ToGkeClusterResponseOutputWithContext(context.Context) GkeClusterResponseOutput
-}
-
-// Information specifying a GKE Cluster.
-type GkeClusterResponseArgs struct {
-	// Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
-	Cluster pulumi.StringInput `pulumi:"cluster"`
-}
-
-func (GkeClusterResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GkeClusterResponse)(nil)).Elem()
-}
-
-func (i GkeClusterResponseArgs) ToGkeClusterResponseOutput() GkeClusterResponseOutput {
-	return i.ToGkeClusterResponseOutputWithContext(context.Background())
-}
-
-func (i GkeClusterResponseArgs) ToGkeClusterResponseOutputWithContext(ctx context.Context) GkeClusterResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GkeClusterResponseOutput)
-}
-
-func (i GkeClusterResponseArgs) ToGkeClusterResponsePtrOutput() GkeClusterResponsePtrOutput {
-	return i.ToGkeClusterResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GkeClusterResponseArgs) ToGkeClusterResponsePtrOutputWithContext(ctx context.Context) GkeClusterResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GkeClusterResponseOutput).ToGkeClusterResponsePtrOutputWithContext(ctx)
-}
-
-// GkeClusterResponsePtrInput is an input type that accepts GkeClusterResponseArgs, GkeClusterResponsePtr and GkeClusterResponsePtrOutput values.
-// You can construct a concrete instance of `GkeClusterResponsePtrInput` via:
-//
-//          GkeClusterResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GkeClusterResponsePtrInput interface {
-	pulumi.Input
-
-	ToGkeClusterResponsePtrOutput() GkeClusterResponsePtrOutput
-	ToGkeClusterResponsePtrOutputWithContext(context.Context) GkeClusterResponsePtrOutput
-}
-
-type gkeClusterResponsePtrType GkeClusterResponseArgs
-
-func GkeClusterResponsePtr(v *GkeClusterResponseArgs) GkeClusterResponsePtrInput {
-	return (*gkeClusterResponsePtrType)(v)
-}
-
-func (*gkeClusterResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GkeClusterResponse)(nil)).Elem()
-}
-
-func (i *gkeClusterResponsePtrType) ToGkeClusterResponsePtrOutput() GkeClusterResponsePtrOutput {
-	return i.ToGkeClusterResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *gkeClusterResponsePtrType) ToGkeClusterResponsePtrOutputWithContext(ctx context.Context) GkeClusterResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GkeClusterResponsePtrOutput)
-}
-
 // Information specifying a GKE Cluster.
 type GkeClusterResponseOutput struct{ *pulumi.OutputState }
 
@@ -2180,53 +1538,9 @@ func (o GkeClusterResponseOutput) ToGkeClusterResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o GkeClusterResponseOutput) ToGkeClusterResponsePtrOutput() GkeClusterResponsePtrOutput {
-	return o.ToGkeClusterResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GkeClusterResponseOutput) ToGkeClusterResponsePtrOutputWithContext(ctx context.Context) GkeClusterResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GkeClusterResponse) *GkeClusterResponse {
-		return &v
-	}).(GkeClusterResponsePtrOutput)
-}
-
 // Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
 func (o GkeClusterResponseOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v GkeClusterResponse) string { return v.Cluster }).(pulumi.StringOutput)
-}
-
-type GkeClusterResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GkeClusterResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GkeClusterResponse)(nil)).Elem()
-}
-
-func (o GkeClusterResponsePtrOutput) ToGkeClusterResponsePtrOutput() GkeClusterResponsePtrOutput {
-	return o
-}
-
-func (o GkeClusterResponsePtrOutput) ToGkeClusterResponsePtrOutputWithContext(ctx context.Context) GkeClusterResponsePtrOutput {
-	return o
-}
-
-func (o GkeClusterResponsePtrOutput) Elem() GkeClusterResponseOutput {
-	return o.ApplyT(func(v *GkeClusterResponse) GkeClusterResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GkeClusterResponse
-		return ret
-	}).(GkeClusterResponseOutput)
-}
-
-// Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
-func (o GkeClusterResponsePtrOutput) Cluster() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GkeClusterResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Cluster
-	}).(pulumi.StringPtrOutput)
 }
 
 // PipelineCondition contains all conditions relevant to a Delivery Pipeline.
@@ -2235,78 +1549,6 @@ type PipelineConditionResponse struct {
 	PipelineReadyCondition PipelineReadyConditionResponse `pulumi:"pipelineReadyCondition"`
 	// Detalis around targets enumerated in the pipeline.
 	TargetsPresentCondition TargetsPresentConditionResponse `pulumi:"targetsPresentCondition"`
-}
-
-// PipelineConditionResponseInput is an input type that accepts PipelineConditionResponseArgs and PipelineConditionResponseOutput values.
-// You can construct a concrete instance of `PipelineConditionResponseInput` via:
-//
-//          PipelineConditionResponseArgs{...}
-type PipelineConditionResponseInput interface {
-	pulumi.Input
-
-	ToPipelineConditionResponseOutput() PipelineConditionResponseOutput
-	ToPipelineConditionResponseOutputWithContext(context.Context) PipelineConditionResponseOutput
-}
-
-// PipelineCondition contains all conditions relevant to a Delivery Pipeline.
-type PipelineConditionResponseArgs struct {
-	// Details around the Pipeline's overall status.
-	PipelineReadyCondition PipelineReadyConditionResponseInput `pulumi:"pipelineReadyCondition"`
-	// Detalis around targets enumerated in the pipeline.
-	TargetsPresentCondition TargetsPresentConditionResponseInput `pulumi:"targetsPresentCondition"`
-}
-
-func (PipelineConditionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PipelineConditionResponse)(nil)).Elem()
-}
-
-func (i PipelineConditionResponseArgs) ToPipelineConditionResponseOutput() PipelineConditionResponseOutput {
-	return i.ToPipelineConditionResponseOutputWithContext(context.Background())
-}
-
-func (i PipelineConditionResponseArgs) ToPipelineConditionResponseOutputWithContext(ctx context.Context) PipelineConditionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineConditionResponseOutput)
-}
-
-func (i PipelineConditionResponseArgs) ToPipelineConditionResponsePtrOutput() PipelineConditionResponsePtrOutput {
-	return i.ToPipelineConditionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PipelineConditionResponseArgs) ToPipelineConditionResponsePtrOutputWithContext(ctx context.Context) PipelineConditionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineConditionResponseOutput).ToPipelineConditionResponsePtrOutputWithContext(ctx)
-}
-
-// PipelineConditionResponsePtrInput is an input type that accepts PipelineConditionResponseArgs, PipelineConditionResponsePtr and PipelineConditionResponsePtrOutput values.
-// You can construct a concrete instance of `PipelineConditionResponsePtrInput` via:
-//
-//          PipelineConditionResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PipelineConditionResponsePtrInput interface {
-	pulumi.Input
-
-	ToPipelineConditionResponsePtrOutput() PipelineConditionResponsePtrOutput
-	ToPipelineConditionResponsePtrOutputWithContext(context.Context) PipelineConditionResponsePtrOutput
-}
-
-type pipelineConditionResponsePtrType PipelineConditionResponseArgs
-
-func PipelineConditionResponsePtr(v *PipelineConditionResponseArgs) PipelineConditionResponsePtrInput {
-	return (*pipelineConditionResponsePtrType)(v)
-}
-
-func (*pipelineConditionResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PipelineConditionResponse)(nil)).Elem()
-}
-
-func (i *pipelineConditionResponsePtrType) ToPipelineConditionResponsePtrOutput() PipelineConditionResponsePtrOutput {
-	return i.ToPipelineConditionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *pipelineConditionResponsePtrType) ToPipelineConditionResponsePtrOutputWithContext(ctx context.Context) PipelineConditionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineConditionResponsePtrOutput)
 }
 
 // PipelineCondition contains all conditions relevant to a Delivery Pipeline.
@@ -2324,16 +1566,6 @@ func (o PipelineConditionResponseOutput) ToPipelineConditionResponseOutputWithCo
 	return o
 }
 
-func (o PipelineConditionResponseOutput) ToPipelineConditionResponsePtrOutput() PipelineConditionResponsePtrOutput {
-	return o.ToPipelineConditionResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PipelineConditionResponseOutput) ToPipelineConditionResponsePtrOutputWithContext(ctx context.Context) PipelineConditionResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineConditionResponse) *PipelineConditionResponse {
-		return &v
-	}).(PipelineConditionResponsePtrOutput)
-}
-
 // Details around the Pipeline's overall status.
 func (o PipelineConditionResponseOutput) PipelineReadyCondition() PipelineReadyConditionResponseOutput {
 	return o.ApplyT(func(v PipelineConditionResponse) PipelineReadyConditionResponse { return v.PipelineReadyCondition }).(PipelineReadyConditionResponseOutput)
@@ -2344,128 +1576,12 @@ func (o PipelineConditionResponseOutput) TargetsPresentCondition() TargetsPresen
 	return o.ApplyT(func(v PipelineConditionResponse) TargetsPresentConditionResponse { return v.TargetsPresentCondition }).(TargetsPresentConditionResponseOutput)
 }
 
-type PipelineConditionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PipelineConditionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PipelineConditionResponse)(nil)).Elem()
-}
-
-func (o PipelineConditionResponsePtrOutput) ToPipelineConditionResponsePtrOutput() PipelineConditionResponsePtrOutput {
-	return o
-}
-
-func (o PipelineConditionResponsePtrOutput) ToPipelineConditionResponsePtrOutputWithContext(ctx context.Context) PipelineConditionResponsePtrOutput {
-	return o
-}
-
-func (o PipelineConditionResponsePtrOutput) Elem() PipelineConditionResponseOutput {
-	return o.ApplyT(func(v *PipelineConditionResponse) PipelineConditionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PipelineConditionResponse
-		return ret
-	}).(PipelineConditionResponseOutput)
-}
-
-// Details around the Pipeline's overall status.
-func (o PipelineConditionResponsePtrOutput) PipelineReadyCondition() PipelineReadyConditionResponsePtrOutput {
-	return o.ApplyT(func(v *PipelineConditionResponse) *PipelineReadyConditionResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.PipelineReadyCondition
-	}).(PipelineReadyConditionResponsePtrOutput)
-}
-
-// Detalis around targets enumerated in the pipeline.
-func (o PipelineConditionResponsePtrOutput) TargetsPresentCondition() TargetsPresentConditionResponsePtrOutput {
-	return o.ApplyT(func(v *PipelineConditionResponse) *TargetsPresentConditionResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.TargetsPresentCondition
-	}).(TargetsPresentConditionResponsePtrOutput)
-}
-
 // PipelineReadyCondition contains information around the status of the Pipeline.
 type PipelineReadyConditionResponse struct {
 	// True if the Pipeline is in a valid state. Otherwise at least one condition in `PipelineCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Pipeline.
 	Status bool `pulumi:"status"`
 	// Last time the condition was updated.
 	UpdateTime string `pulumi:"updateTime"`
-}
-
-// PipelineReadyConditionResponseInput is an input type that accepts PipelineReadyConditionResponseArgs and PipelineReadyConditionResponseOutput values.
-// You can construct a concrete instance of `PipelineReadyConditionResponseInput` via:
-//
-//          PipelineReadyConditionResponseArgs{...}
-type PipelineReadyConditionResponseInput interface {
-	pulumi.Input
-
-	ToPipelineReadyConditionResponseOutput() PipelineReadyConditionResponseOutput
-	ToPipelineReadyConditionResponseOutputWithContext(context.Context) PipelineReadyConditionResponseOutput
-}
-
-// PipelineReadyCondition contains information around the status of the Pipeline.
-type PipelineReadyConditionResponseArgs struct {
-	// True if the Pipeline is in a valid state. Otherwise at least one condition in `PipelineCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Pipeline.
-	Status pulumi.BoolInput `pulumi:"status"`
-	// Last time the condition was updated.
-	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
-}
-
-func (PipelineReadyConditionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PipelineReadyConditionResponse)(nil)).Elem()
-}
-
-func (i PipelineReadyConditionResponseArgs) ToPipelineReadyConditionResponseOutput() PipelineReadyConditionResponseOutput {
-	return i.ToPipelineReadyConditionResponseOutputWithContext(context.Background())
-}
-
-func (i PipelineReadyConditionResponseArgs) ToPipelineReadyConditionResponseOutputWithContext(ctx context.Context) PipelineReadyConditionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineReadyConditionResponseOutput)
-}
-
-func (i PipelineReadyConditionResponseArgs) ToPipelineReadyConditionResponsePtrOutput() PipelineReadyConditionResponsePtrOutput {
-	return i.ToPipelineReadyConditionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PipelineReadyConditionResponseArgs) ToPipelineReadyConditionResponsePtrOutputWithContext(ctx context.Context) PipelineReadyConditionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineReadyConditionResponseOutput).ToPipelineReadyConditionResponsePtrOutputWithContext(ctx)
-}
-
-// PipelineReadyConditionResponsePtrInput is an input type that accepts PipelineReadyConditionResponseArgs, PipelineReadyConditionResponsePtr and PipelineReadyConditionResponsePtrOutput values.
-// You can construct a concrete instance of `PipelineReadyConditionResponsePtrInput` via:
-//
-//          PipelineReadyConditionResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PipelineReadyConditionResponsePtrInput interface {
-	pulumi.Input
-
-	ToPipelineReadyConditionResponsePtrOutput() PipelineReadyConditionResponsePtrOutput
-	ToPipelineReadyConditionResponsePtrOutputWithContext(context.Context) PipelineReadyConditionResponsePtrOutput
-}
-
-type pipelineReadyConditionResponsePtrType PipelineReadyConditionResponseArgs
-
-func PipelineReadyConditionResponsePtr(v *PipelineReadyConditionResponseArgs) PipelineReadyConditionResponsePtrInput {
-	return (*pipelineReadyConditionResponsePtrType)(v)
-}
-
-func (*pipelineReadyConditionResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PipelineReadyConditionResponse)(nil)).Elem()
-}
-
-func (i *pipelineReadyConditionResponsePtrType) ToPipelineReadyConditionResponsePtrOutput() PipelineReadyConditionResponsePtrOutput {
-	return i.ToPipelineReadyConditionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *pipelineReadyConditionResponsePtrType) ToPipelineReadyConditionResponsePtrOutputWithContext(ctx context.Context) PipelineReadyConditionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineReadyConditionResponsePtrOutput)
 }
 
 // PipelineReadyCondition contains information around the status of the Pipeline.
@@ -2483,16 +1599,6 @@ func (o PipelineReadyConditionResponseOutput) ToPipelineReadyConditionResponseOu
 	return o
 }
 
-func (o PipelineReadyConditionResponseOutput) ToPipelineReadyConditionResponsePtrOutput() PipelineReadyConditionResponsePtrOutput {
-	return o.ToPipelineReadyConditionResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PipelineReadyConditionResponseOutput) ToPipelineReadyConditionResponsePtrOutputWithContext(ctx context.Context) PipelineReadyConditionResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineReadyConditionResponse) *PipelineReadyConditionResponse {
-		return &v
-	}).(PipelineReadyConditionResponsePtrOutput)
-}
-
 // True if the Pipeline is in a valid state. Otherwise at least one condition in `PipelineCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Pipeline.
 func (o PipelineReadyConditionResponseOutput) Status() pulumi.BoolOutput {
 	return o.ApplyT(func(v PipelineReadyConditionResponse) bool { return v.Status }).(pulumi.BoolOutput)
@@ -2501,50 +1607,6 @@ func (o PipelineReadyConditionResponseOutput) Status() pulumi.BoolOutput {
 // Last time the condition was updated.
 func (o PipelineReadyConditionResponseOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v PipelineReadyConditionResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
-}
-
-type PipelineReadyConditionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PipelineReadyConditionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PipelineReadyConditionResponse)(nil)).Elem()
-}
-
-func (o PipelineReadyConditionResponsePtrOutput) ToPipelineReadyConditionResponsePtrOutput() PipelineReadyConditionResponsePtrOutput {
-	return o
-}
-
-func (o PipelineReadyConditionResponsePtrOutput) ToPipelineReadyConditionResponsePtrOutputWithContext(ctx context.Context) PipelineReadyConditionResponsePtrOutput {
-	return o
-}
-
-func (o PipelineReadyConditionResponsePtrOutput) Elem() PipelineReadyConditionResponseOutput {
-	return o.ApplyT(func(v *PipelineReadyConditionResponse) PipelineReadyConditionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PipelineReadyConditionResponse
-		return ret
-	}).(PipelineReadyConditionResponseOutput)
-}
-
-// True if the Pipeline is in a valid state. Otherwise at least one condition in `PipelineCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Pipeline.
-func (o PipelineReadyConditionResponsePtrOutput) Status() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PipelineReadyConditionResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Status
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Last time the condition was updated.
-func (o PipelineReadyConditionResponsePtrOutput) UpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PipelineReadyConditionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UpdateTime
-	}).(pulumi.StringPtrOutput)
 }
 
 // Execution using a private Cloud Build pool.
@@ -2735,39 +1797,6 @@ type PrivatePoolResponse struct {
 	WorkerPool string `pulumi:"workerPool"`
 }
 
-// PrivatePoolResponseInput is an input type that accepts PrivatePoolResponseArgs and PrivatePoolResponseOutput values.
-// You can construct a concrete instance of `PrivatePoolResponseInput` via:
-//
-//          PrivatePoolResponseArgs{...}
-type PrivatePoolResponseInput interface {
-	pulumi.Input
-
-	ToPrivatePoolResponseOutput() PrivatePoolResponseOutput
-	ToPrivatePoolResponseOutputWithContext(context.Context) PrivatePoolResponseOutput
-}
-
-// Execution using a private Cloud Build pool.
-type PrivatePoolResponseArgs struct {
-	// Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
-	ArtifactStorage pulumi.StringInput `pulumi:"artifactStorage"`
-	// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
-	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
-	// Resource name of the Cloud Build worker pool to use. The format is `projects/{project}/locations/{location}/workerPools/{pool}`.
-	WorkerPool pulumi.StringInput `pulumi:"workerPool"`
-}
-
-func (PrivatePoolResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivatePoolResponse)(nil)).Elem()
-}
-
-func (i PrivatePoolResponseArgs) ToPrivatePoolResponseOutput() PrivatePoolResponseOutput {
-	return i.ToPrivatePoolResponseOutputWithContext(context.Background())
-}
-
-func (i PrivatePoolResponseArgs) ToPrivatePoolResponseOutputWithContext(ctx context.Context) PrivatePoolResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivatePoolResponseOutput)
-}
-
 // Execution using a private Cloud Build pool.
 type PrivatePoolResponseOutput struct{ *pulumi.OutputState }
 
@@ -2944,76 +1973,6 @@ type SerialPipelineResponse struct {
 	Stages []StageResponse `pulumi:"stages"`
 }
 
-// SerialPipelineResponseInput is an input type that accepts SerialPipelineResponseArgs and SerialPipelineResponseOutput values.
-// You can construct a concrete instance of `SerialPipelineResponseInput` via:
-//
-//          SerialPipelineResponseArgs{...}
-type SerialPipelineResponseInput interface {
-	pulumi.Input
-
-	ToSerialPipelineResponseOutput() SerialPipelineResponseOutput
-	ToSerialPipelineResponseOutputWithContext(context.Context) SerialPipelineResponseOutput
-}
-
-// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
-type SerialPipelineResponseArgs struct {
-	// Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
-	Stages StageResponseArrayInput `pulumi:"stages"`
-}
-
-func (SerialPipelineResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SerialPipelineResponse)(nil)).Elem()
-}
-
-func (i SerialPipelineResponseArgs) ToSerialPipelineResponseOutput() SerialPipelineResponseOutput {
-	return i.ToSerialPipelineResponseOutputWithContext(context.Background())
-}
-
-func (i SerialPipelineResponseArgs) ToSerialPipelineResponseOutputWithContext(ctx context.Context) SerialPipelineResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SerialPipelineResponseOutput)
-}
-
-func (i SerialPipelineResponseArgs) ToSerialPipelineResponsePtrOutput() SerialPipelineResponsePtrOutput {
-	return i.ToSerialPipelineResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SerialPipelineResponseArgs) ToSerialPipelineResponsePtrOutputWithContext(ctx context.Context) SerialPipelineResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SerialPipelineResponseOutput).ToSerialPipelineResponsePtrOutputWithContext(ctx)
-}
-
-// SerialPipelineResponsePtrInput is an input type that accepts SerialPipelineResponseArgs, SerialPipelineResponsePtr and SerialPipelineResponsePtrOutput values.
-// You can construct a concrete instance of `SerialPipelineResponsePtrInput` via:
-//
-//          SerialPipelineResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SerialPipelineResponsePtrInput interface {
-	pulumi.Input
-
-	ToSerialPipelineResponsePtrOutput() SerialPipelineResponsePtrOutput
-	ToSerialPipelineResponsePtrOutputWithContext(context.Context) SerialPipelineResponsePtrOutput
-}
-
-type serialPipelineResponsePtrType SerialPipelineResponseArgs
-
-func SerialPipelineResponsePtr(v *SerialPipelineResponseArgs) SerialPipelineResponsePtrInput {
-	return (*serialPipelineResponsePtrType)(v)
-}
-
-func (*serialPipelineResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SerialPipelineResponse)(nil)).Elem()
-}
-
-func (i *serialPipelineResponsePtrType) ToSerialPipelineResponsePtrOutput() SerialPipelineResponsePtrOutput {
-	return i.ToSerialPipelineResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *serialPipelineResponsePtrType) ToSerialPipelineResponsePtrOutputWithContext(ctx context.Context) SerialPipelineResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SerialPipelineResponsePtrOutput)
-}
-
 // SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 type SerialPipelineResponseOutput struct{ *pulumi.OutputState }
 
@@ -3029,53 +1988,9 @@ func (o SerialPipelineResponseOutput) ToSerialPipelineResponseOutputWithContext(
 	return o
 }
 
-func (o SerialPipelineResponseOutput) ToSerialPipelineResponsePtrOutput() SerialPipelineResponsePtrOutput {
-	return o.ToSerialPipelineResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SerialPipelineResponseOutput) ToSerialPipelineResponsePtrOutputWithContext(ctx context.Context) SerialPipelineResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SerialPipelineResponse) *SerialPipelineResponse {
-		return &v
-	}).(SerialPipelineResponsePtrOutput)
-}
-
 // Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
 func (o SerialPipelineResponseOutput) Stages() StageResponseArrayOutput {
 	return o.ApplyT(func(v SerialPipelineResponse) []StageResponse { return v.Stages }).(StageResponseArrayOutput)
-}
-
-type SerialPipelineResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SerialPipelineResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SerialPipelineResponse)(nil)).Elem()
-}
-
-func (o SerialPipelineResponsePtrOutput) ToSerialPipelineResponsePtrOutput() SerialPipelineResponsePtrOutput {
-	return o
-}
-
-func (o SerialPipelineResponsePtrOutput) ToSerialPipelineResponsePtrOutputWithContext(ctx context.Context) SerialPipelineResponsePtrOutput {
-	return o
-}
-
-func (o SerialPipelineResponsePtrOutput) Elem() SerialPipelineResponseOutput {
-	return o.ApplyT(func(v *SerialPipelineResponse) SerialPipelineResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SerialPipelineResponse
-		return ret
-	}).(SerialPipelineResponseOutput)
-}
-
-// Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
-func (o SerialPipelineResponsePtrOutput) Stages() StageResponseArrayOutput {
-	return o.ApplyT(func(v *SerialPipelineResponse) []StageResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Stages
-	}).(StageResponseArrayOutput)
 }
 
 // Stage specifies a location to which to deploy.
@@ -3195,62 +2110,6 @@ type StageResponse struct {
 	TargetId string `pulumi:"targetId"`
 }
 
-// StageResponseInput is an input type that accepts StageResponseArgs and StageResponseOutput values.
-// You can construct a concrete instance of `StageResponseInput` via:
-//
-//          StageResponseArgs{...}
-type StageResponseInput interface {
-	pulumi.Input
-
-	ToStageResponseOutput() StageResponseOutput
-	ToStageResponseOutputWithContext(context.Context) StageResponseOutput
-}
-
-// Stage specifies a location to which to deploy.
-type StageResponseArgs struct {
-	// Skaffold profiles to use when rendering the manifest for this stage's `Target`.
-	Profiles pulumi.StringArrayInput `pulumi:"profiles"`
-	// The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/deliveryPipelines/pipeline/targets/my-target`). The parent `DeliveryPipeline` of the `Target` is inferred to be the parent `DeliveryPipeline` of the `Release` in which this `Stage` lives.
-	TargetId pulumi.StringInput `pulumi:"targetId"`
-}
-
-func (StageResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StageResponse)(nil)).Elem()
-}
-
-func (i StageResponseArgs) ToStageResponseOutput() StageResponseOutput {
-	return i.ToStageResponseOutputWithContext(context.Background())
-}
-
-func (i StageResponseArgs) ToStageResponseOutputWithContext(ctx context.Context) StageResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StageResponseOutput)
-}
-
-// StageResponseArrayInput is an input type that accepts StageResponseArray and StageResponseArrayOutput values.
-// You can construct a concrete instance of `StageResponseArrayInput` via:
-//
-//          StageResponseArray{ StageResponseArgs{...} }
-type StageResponseArrayInput interface {
-	pulumi.Input
-
-	ToStageResponseArrayOutput() StageResponseArrayOutput
-	ToStageResponseArrayOutputWithContext(context.Context) StageResponseArrayOutput
-}
-
-type StageResponseArray []StageResponseInput
-
-func (StageResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StageResponse)(nil)).Elem()
-}
-
-func (i StageResponseArray) ToStageResponseArrayOutput() StageResponseArrayOutput {
-	return i.ToStageResponseArrayOutputWithContext(context.Background())
-}
-
-func (i StageResponseArray) ToStageResponseArrayOutputWithContext(ctx context.Context) StageResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StageResponseArrayOutput)
-}
-
 // Stage specifies a location to which to deploy.
 type StageResponseOutput struct{ *pulumi.OutputState }
 
@@ -3322,82 +2181,6 @@ type TargetResponse struct {
 	Uid string `pulumi:"uid"`
 	// Most recent time at which the `Target` was updated.
 	UpdateTime string `pulumi:"updateTime"`
-}
-
-// TargetResponseInput is an input type that accepts TargetResponseArgs and TargetResponseOutput values.
-// You can construct a concrete instance of `TargetResponseInput` via:
-//
-//          TargetResponseArgs{...}
-type TargetResponseInput interface {
-	pulumi.Input
-
-	ToTargetResponseOutput() TargetResponseOutput
-	ToTargetResponseOutputWithContext(context.Context) TargetResponseOutput
-}
-
-// A `Target` resource in the Google Cloud Deploy API. A `Target` defines a location to which a Skaffold configuration can be deployed.
-type TargetResponseArgs struct {
-	// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
-	Annotations pulumi.StringMapInput `pulumi:"annotations"`
-	// Time at which the `Target` was created.
-	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// Optional. Description of the `Target`. Max length is 255 characters.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-	Etag pulumi.StringInput `pulumi:"etag"`
-	// Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
-	ExecutionConfigs ExecutionConfigResponseArrayInput `pulumi:"executionConfigs"`
-	// Information specifying a GKE Cluster.
-	Gke GkeClusterResponseInput `pulumi:"gke"`
-	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/ deliveryPipelines/{deliveryPipeline}/targets/a-z{0,62}.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Optional. Whether or not the `Target` requires approval.
-	RequireApproval pulumi.BoolInput `pulumi:"requireApproval"`
-	// Resource id of the `Target`.
-	TargetId pulumi.StringInput `pulumi:"targetId"`
-	// Unique identifier of the `Target`.
-	Uid pulumi.StringInput `pulumi:"uid"`
-	// Most recent time at which the `Target` was updated.
-	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
-}
-
-func (TargetResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetResponse)(nil)).Elem()
-}
-
-func (i TargetResponseArgs) ToTargetResponseOutput() TargetResponseOutput {
-	return i.ToTargetResponseOutputWithContext(context.Background())
-}
-
-func (i TargetResponseArgs) ToTargetResponseOutputWithContext(ctx context.Context) TargetResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TargetResponseOutput)
-}
-
-// TargetResponseArrayInput is an input type that accepts TargetResponseArray and TargetResponseArrayOutput values.
-// You can construct a concrete instance of `TargetResponseArrayInput` via:
-//
-//          TargetResponseArray{ TargetResponseArgs{...} }
-type TargetResponseArrayInput interface {
-	pulumi.Input
-
-	ToTargetResponseArrayOutput() TargetResponseArrayOutput
-	ToTargetResponseArrayOutputWithContext(context.Context) TargetResponseArrayOutput
-}
-
-type TargetResponseArray []TargetResponseInput
-
-func (TargetResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TargetResponse)(nil)).Elem()
-}
-
-func (i TargetResponseArray) ToTargetResponseArrayOutput() TargetResponseArrayOutput {
-	return i.ToTargetResponseArrayOutputWithContext(context.Background())
-}
-
-func (i TargetResponseArray) ToTargetResponseArrayOutputWithContext(ctx context.Context) TargetResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TargetResponseArrayOutput)
 }
 
 // A `Target` resource in the Google Cloud Deploy API. A `Target` defines a location to which a Skaffold configuration can be deployed.
@@ -3505,80 +2288,6 @@ type TargetsPresentConditionResponse struct {
 	UpdateTime string `pulumi:"updateTime"`
 }
 
-// TargetsPresentConditionResponseInput is an input type that accepts TargetsPresentConditionResponseArgs and TargetsPresentConditionResponseOutput values.
-// You can construct a concrete instance of `TargetsPresentConditionResponseInput` via:
-//
-//          TargetsPresentConditionResponseArgs{...}
-type TargetsPresentConditionResponseInput interface {
-	pulumi.Input
-
-	ToTargetsPresentConditionResponseOutput() TargetsPresentConditionResponseOutput
-	ToTargetsPresentConditionResponseOutputWithContext(context.Context) TargetsPresentConditionResponseOutput
-}
-
-// TargetsPresentCondition contains information on any Targets defined in the Delivery Pipeline that do not actually exist.
-type TargetsPresentConditionResponseArgs struct {
-	// The list of Target names that are missing. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
-	MissingTargets pulumi.StringArrayInput `pulumi:"missingTargets"`
-	// True if there aren't any missing Targets.
-	Status pulumi.BoolInput `pulumi:"status"`
-	// Last time the condition was updated.
-	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
-}
-
-func (TargetsPresentConditionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetsPresentConditionResponse)(nil)).Elem()
-}
-
-func (i TargetsPresentConditionResponseArgs) ToTargetsPresentConditionResponseOutput() TargetsPresentConditionResponseOutput {
-	return i.ToTargetsPresentConditionResponseOutputWithContext(context.Background())
-}
-
-func (i TargetsPresentConditionResponseArgs) ToTargetsPresentConditionResponseOutputWithContext(ctx context.Context) TargetsPresentConditionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TargetsPresentConditionResponseOutput)
-}
-
-func (i TargetsPresentConditionResponseArgs) ToTargetsPresentConditionResponsePtrOutput() TargetsPresentConditionResponsePtrOutput {
-	return i.ToTargetsPresentConditionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i TargetsPresentConditionResponseArgs) ToTargetsPresentConditionResponsePtrOutputWithContext(ctx context.Context) TargetsPresentConditionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TargetsPresentConditionResponseOutput).ToTargetsPresentConditionResponsePtrOutputWithContext(ctx)
-}
-
-// TargetsPresentConditionResponsePtrInput is an input type that accepts TargetsPresentConditionResponseArgs, TargetsPresentConditionResponsePtr and TargetsPresentConditionResponsePtrOutput values.
-// You can construct a concrete instance of `TargetsPresentConditionResponsePtrInput` via:
-//
-//          TargetsPresentConditionResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type TargetsPresentConditionResponsePtrInput interface {
-	pulumi.Input
-
-	ToTargetsPresentConditionResponsePtrOutput() TargetsPresentConditionResponsePtrOutput
-	ToTargetsPresentConditionResponsePtrOutputWithContext(context.Context) TargetsPresentConditionResponsePtrOutput
-}
-
-type targetsPresentConditionResponsePtrType TargetsPresentConditionResponseArgs
-
-func TargetsPresentConditionResponsePtr(v *TargetsPresentConditionResponseArgs) TargetsPresentConditionResponsePtrInput {
-	return (*targetsPresentConditionResponsePtrType)(v)
-}
-
-func (*targetsPresentConditionResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TargetsPresentConditionResponse)(nil)).Elem()
-}
-
-func (i *targetsPresentConditionResponsePtrType) ToTargetsPresentConditionResponsePtrOutput() TargetsPresentConditionResponsePtrOutput {
-	return i.ToTargetsPresentConditionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *targetsPresentConditionResponsePtrType) ToTargetsPresentConditionResponsePtrOutputWithContext(ctx context.Context) TargetsPresentConditionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TargetsPresentConditionResponsePtrOutput)
-}
-
 // TargetsPresentCondition contains information on any Targets defined in the Delivery Pipeline that do not actually exist.
 type TargetsPresentConditionResponseOutput struct{ *pulumi.OutputState }
 
@@ -3592,16 +2301,6 @@ func (o TargetsPresentConditionResponseOutput) ToTargetsPresentConditionResponse
 
 func (o TargetsPresentConditionResponseOutput) ToTargetsPresentConditionResponseOutputWithContext(ctx context.Context) TargetsPresentConditionResponseOutput {
 	return o
-}
-
-func (o TargetsPresentConditionResponseOutput) ToTargetsPresentConditionResponsePtrOutput() TargetsPresentConditionResponsePtrOutput {
-	return o.ToTargetsPresentConditionResponsePtrOutputWithContext(context.Background())
-}
-
-func (o TargetsPresentConditionResponseOutput) ToTargetsPresentConditionResponsePtrOutputWithContext(ctx context.Context) TargetsPresentConditionResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetsPresentConditionResponse) *TargetsPresentConditionResponse {
-		return &v
-	}).(TargetsPresentConditionResponsePtrOutput)
 }
 
 // The list of Target names that are missing. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
@@ -3619,112 +2318,29 @@ func (o TargetsPresentConditionResponseOutput) UpdateTime() pulumi.StringOutput 
 	return o.ApplyT(func(v TargetsPresentConditionResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-type TargetsPresentConditionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (TargetsPresentConditionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TargetsPresentConditionResponse)(nil)).Elem()
-}
-
-func (o TargetsPresentConditionResponsePtrOutput) ToTargetsPresentConditionResponsePtrOutput() TargetsPresentConditionResponsePtrOutput {
-	return o
-}
-
-func (o TargetsPresentConditionResponsePtrOutput) ToTargetsPresentConditionResponsePtrOutputWithContext(ctx context.Context) TargetsPresentConditionResponsePtrOutput {
-	return o
-}
-
-func (o TargetsPresentConditionResponsePtrOutput) Elem() TargetsPresentConditionResponseOutput {
-	return o.ApplyT(func(v *TargetsPresentConditionResponse) TargetsPresentConditionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret TargetsPresentConditionResponse
-		return ret
-	}).(TargetsPresentConditionResponseOutput)
-}
-
-// The list of Target names that are missing. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
-func (o TargetsPresentConditionResponsePtrOutput) MissingTargets() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TargetsPresentConditionResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.MissingTargets
-	}).(pulumi.StringArrayOutput)
-}
-
-// True if there aren't any missing Targets.
-func (o TargetsPresentConditionResponsePtrOutput) Status() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TargetsPresentConditionResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Status
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Last time the condition was updated.
-func (o TargetsPresentConditionResponsePtrOutput) UpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TargetsPresentConditionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UpdateTime
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseInput)(nil)).Elem(), AuditConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseArrayInput)(nil)).Elem(), AuditConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseInput)(nil)).Elem(), AuditLogConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseArrayInput)(nil)).Elem(), AuditLogConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildArtifactInput)(nil)).Elem(), BuildArtifactArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildArtifactArrayInput)(nil)).Elem(), BuildArtifactArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BuildArtifactResponseInput)(nil)).Elem(), BuildArtifactResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BuildArtifactResponseArrayInput)(nil)).Elem(), BuildArtifactResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPoolInput)(nil)).Elem(), DefaultPoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPoolPtrInput)(nil)).Elem(), DefaultPoolArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPoolResponseInput)(nil)).Elem(), DefaultPoolResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineResponseInput)(nil)).Elem(), DeliveryPipelineResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineResponsePtrInput)(nil)).Elem(), DeliveryPipelineResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionConfigInput)(nil)).Elem(), ExecutionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionConfigArrayInput)(nil)).Elem(), ExecutionConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionConfigResponseInput)(nil)).Elem(), ExecutionConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionConfigResponseArrayInput)(nil)).Elem(), ExecutionConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterInput)(nil)).Elem(), GkeClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterPtrInput)(nil)).Elem(), GkeClusterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterResponseInput)(nil)).Elem(), GkeClusterResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterResponsePtrInput)(nil)).Elem(), GkeClusterResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PipelineConditionResponseInput)(nil)).Elem(), PipelineConditionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PipelineConditionResponsePtrInput)(nil)).Elem(), PipelineConditionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PipelineReadyConditionResponseInput)(nil)).Elem(), PipelineReadyConditionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PipelineReadyConditionResponsePtrInput)(nil)).Elem(), PipelineReadyConditionResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivatePoolInput)(nil)).Elem(), PrivatePoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivatePoolPtrInput)(nil)).Elem(), PrivatePoolArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PrivatePoolResponseInput)(nil)).Elem(), PrivatePoolResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SerialPipelineInput)(nil)).Elem(), SerialPipelineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SerialPipelinePtrInput)(nil)).Elem(), SerialPipelineArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SerialPipelineResponseInput)(nil)).Elem(), SerialPipelineResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SerialPipelineResponsePtrInput)(nil)).Elem(), SerialPipelineResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StageInput)(nil)).Elem(), StageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StageArrayInput)(nil)).Elem(), StageArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StageResponseInput)(nil)).Elem(), StageResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StageResponseArrayInput)(nil)).Elem(), StageResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TargetResponseInput)(nil)).Elem(), TargetResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TargetResponseArrayInput)(nil)).Elem(), TargetResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TargetsPresentConditionResponseInput)(nil)).Elem(), TargetsPresentConditionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TargetsPresentConditionResponsePtrInput)(nil)).Elem(), TargetsPresentConditionResponseArgs{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -3745,7 +2361,6 @@ func init() {
 	pulumi.RegisterOutputType(DefaultPoolPtrOutput{})
 	pulumi.RegisterOutputType(DefaultPoolResponseOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineResponseOutput{})
-	pulumi.RegisterOutputType(DeliveryPipelineResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExecutionConfigOutput{})
 	pulumi.RegisterOutputType(ExecutionConfigArrayOutput{})
 	pulumi.RegisterOutputType(ExecutionConfigResponseOutput{})
@@ -3756,18 +2371,14 @@ func init() {
 	pulumi.RegisterOutputType(GkeClusterOutput{})
 	pulumi.RegisterOutputType(GkeClusterPtrOutput{})
 	pulumi.RegisterOutputType(GkeClusterResponseOutput{})
-	pulumi.RegisterOutputType(GkeClusterResponsePtrOutput{})
 	pulumi.RegisterOutputType(PipelineConditionResponseOutput{})
-	pulumi.RegisterOutputType(PipelineConditionResponsePtrOutput{})
 	pulumi.RegisterOutputType(PipelineReadyConditionResponseOutput{})
-	pulumi.RegisterOutputType(PipelineReadyConditionResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivatePoolOutput{})
 	pulumi.RegisterOutputType(PrivatePoolPtrOutput{})
 	pulumi.RegisterOutputType(PrivatePoolResponseOutput{})
 	pulumi.RegisterOutputType(SerialPipelineOutput{})
 	pulumi.RegisterOutputType(SerialPipelinePtrOutput{})
 	pulumi.RegisterOutputType(SerialPipelineResponseOutput{})
-	pulumi.RegisterOutputType(SerialPipelineResponsePtrOutput{})
 	pulumi.RegisterOutputType(StageOutput{})
 	pulumi.RegisterOutputType(StageArrayOutput{})
 	pulumi.RegisterOutputType(StageResponseOutput{})
@@ -3775,5 +2386,4 @@ func init() {
 	pulumi.RegisterOutputType(TargetResponseOutput{})
 	pulumi.RegisterOutputType(TargetResponseArrayOutput{})
 	pulumi.RegisterOutputType(TargetsPresentConditionResponseOutput{})
-	pulumi.RegisterOutputType(TargetsPresentConditionResponsePtrOutput{})
 }

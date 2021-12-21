@@ -113,7 +113,7 @@ type InternalRangeIamPolicyInput interface {
 }
 
 func (*InternalRangeIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*InternalRangeIamPolicy)(nil))
+	return reflect.TypeOf((**InternalRangeIamPolicy)(nil)).Elem()
 }
 
 func (i *InternalRangeIamPolicy) ToInternalRangeIamPolicyOutput() InternalRangeIamPolicyOutput {
@@ -127,7 +127,7 @@ func (i *InternalRangeIamPolicy) ToInternalRangeIamPolicyOutputWithContext(ctx c
 type InternalRangeIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (InternalRangeIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InternalRangeIamPolicy)(nil))
+	return reflect.TypeOf((**InternalRangeIamPolicy)(nil)).Elem()
 }
 
 func (o InternalRangeIamPolicyOutput) ToInternalRangeIamPolicyOutput() InternalRangeIamPolicyOutput {

@@ -102,7 +102,7 @@ type OverrideInput interface {
 }
 
 func (*Override) ElementType() reflect.Type {
-	return reflect.TypeOf((*Override)(nil))
+	return reflect.TypeOf((**Override)(nil)).Elem()
 }
 
 func (i *Override) ToOverrideOutput() OverrideOutput {
@@ -116,7 +116,7 @@ func (i *Override) ToOverrideOutputWithContext(ctx context.Context) OverrideOutp
 type OverrideOutput struct{ *pulumi.OutputState }
 
 func (OverrideOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Override)(nil))
+	return reflect.TypeOf((**Override)(nil)).Elem()
 }
 
 func (o OverrideOutput) ToOverrideOutput() OverrideOutput {

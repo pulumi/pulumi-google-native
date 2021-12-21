@@ -109,7 +109,7 @@ type RegionNotificationEndpointInput interface {
 }
 
 func (*RegionNotificationEndpoint) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionNotificationEndpoint)(nil))
+	return reflect.TypeOf((**RegionNotificationEndpoint)(nil)).Elem()
 }
 
 func (i *RegionNotificationEndpoint) ToRegionNotificationEndpointOutput() RegionNotificationEndpointOutput {
@@ -123,7 +123,7 @@ func (i *RegionNotificationEndpoint) ToRegionNotificationEndpointOutputWithConte
 type RegionNotificationEndpointOutput struct{ *pulumi.OutputState }
 
 func (RegionNotificationEndpointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionNotificationEndpoint)(nil))
+	return reflect.TypeOf((**RegionNotificationEndpoint)(nil)).Elem()
 }
 
 func (o RegionNotificationEndpointOutput) ToRegionNotificationEndpointOutput() RegionNotificationEndpointOutput {

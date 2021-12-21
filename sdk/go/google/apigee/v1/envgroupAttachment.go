@@ -101,7 +101,7 @@ type EnvgroupAttachmentInput interface {
 }
 
 func (*EnvgroupAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnvgroupAttachment)(nil))
+	return reflect.TypeOf((**EnvgroupAttachment)(nil)).Elem()
 }
 
 func (i *EnvgroupAttachment) ToEnvgroupAttachmentOutput() EnvgroupAttachmentOutput {
@@ -115,7 +115,7 @@ func (i *EnvgroupAttachment) ToEnvgroupAttachmentOutputWithContext(ctx context.C
 type EnvgroupAttachmentOutput struct{ *pulumi.OutputState }
 
 func (EnvgroupAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnvgroupAttachment)(nil))
+	return reflect.TypeOf((**EnvgroupAttachment)(nil)).Elem()
 }
 
 func (o EnvgroupAttachmentOutput) ToEnvgroupAttachmentOutput() EnvgroupAttachmentOutput {

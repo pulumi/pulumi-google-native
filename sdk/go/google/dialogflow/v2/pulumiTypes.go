@@ -156,76 +156,6 @@ type GoogleCloudDialogflowV2AutomatedAgentConfigResponse struct {
 	Agent string `pulumi:"agent"`
 }
 
-// GoogleCloudDialogflowV2AutomatedAgentConfigResponseInput is an input type that accepts GoogleCloudDialogflowV2AutomatedAgentConfigResponseArgs and GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2AutomatedAgentConfigResponseInput` via:
-//
-//          GoogleCloudDialogflowV2AutomatedAgentConfigResponseArgs{...}
-type GoogleCloudDialogflowV2AutomatedAgentConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput() GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput
-	ToGoogleCloudDialogflowV2AutomatedAgentConfigResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput
-}
-
-// Defines the Automated Agent to connect to a conversation.
-type GoogleCloudDialogflowV2AutomatedAgentConfigResponseArgs struct {
-	// ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. - For ES agents, use format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details. - For CX agents, use format `projects//locations//agents//environments/`. If environment is not specified, the default `draft` environment is used.
-	Agent pulumi.StringInput `pulumi:"agent"`
-}
-
-func (GoogleCloudDialogflowV2AutomatedAgentConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2AutomatedAgentConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2AutomatedAgentConfigResponseArgs) ToGoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput() GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput {
-	return i.ToGoogleCloudDialogflowV2AutomatedAgentConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2AutomatedAgentConfigResponseArgs) ToGoogleCloudDialogflowV2AutomatedAgentConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput)
-}
-
-func (i GoogleCloudDialogflowV2AutomatedAgentConfigResponseArgs) ToGoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput() GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2AutomatedAgentConfigResponseArgs) ToGoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput).ToGoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrInput is an input type that accepts GoogleCloudDialogflowV2AutomatedAgentConfigResponseArgs, GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtr and GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrInput` via:
-//
-//          GoogleCloudDialogflowV2AutomatedAgentConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput() GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput
-	ToGoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutputWithContext(context.Context) GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput
-}
-
-type googleCloudDialogflowV2AutomatedAgentConfigResponsePtrType GoogleCloudDialogflowV2AutomatedAgentConfigResponseArgs
-
-func GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtr(v *GoogleCloudDialogflowV2AutomatedAgentConfigResponseArgs) GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrInput {
-	return (*googleCloudDialogflowV2AutomatedAgentConfigResponsePtrType)(v)
-}
-
-func (*googleCloudDialogflowV2AutomatedAgentConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2AutomatedAgentConfigResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDialogflowV2AutomatedAgentConfigResponsePtrType) ToGoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput() GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDialogflowV2AutomatedAgentConfigResponsePtrType) ToGoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput)
-}
-
 // Defines the Automated Agent to connect to a conversation.
 type GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -241,53 +171,9 @@ func (o GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput) ToGoogleCloud
 	return o
 }
 
-func (o GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput) ToGoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput() GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput {
-	return o.ToGoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput) ToGoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2AutomatedAgentConfigResponse) *GoogleCloudDialogflowV2AutomatedAgentConfigResponse {
-		return &v
-	}).(GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput)
-}
-
 // ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. - For ES agents, use format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details. - For CX agents, use format `projects//locations//agents//environments/`. If environment is not specified, the default `draft` environment is used.
 func (o GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput) Agent() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2AutomatedAgentConfigResponse) string { return v.Agent }).(pulumi.StringOutput)
-}
-
-type GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2AutomatedAgentConfigResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput) ToGoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput() GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput) ToGoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput) Elem() GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2AutomatedAgentConfigResponse) GoogleCloudDialogflowV2AutomatedAgentConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDialogflowV2AutomatedAgentConfigResponse
-		return ret
-	}).(GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput)
-}
-
-// ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. - For ES agents, use format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details. - For CX agents, use format `projects//locations//agents//environments/`. If environment is not specified, the default `draft` environment is used.
-func (o GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput) Agent() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2AutomatedAgentConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Agent
-	}).(pulumi.StringPtrOutput)
 }
 
 // Dialogflow contexts are similar to natural language context. If a person says to you "they are orange", you need context in order to understand what "they" is referring to. Similarly, for Dialogflow to handle an end-user expression like that, it needs to be provided with context in order to correctly match an intent. Using contexts, you can control the flow of a conversation. You can configure contexts for an intent by setting input and output contexts, which are identified by string names. When an intent is matched, any configured output contexts for that intent become active. While any contexts are active, Dialogflow is more likely to match intents that are configured with input contexts that correspond to the currently active contexts. For more information about context, see the [Contexts guide](https://cloud.google.com/dialogflow/docs/contexts-overview).
@@ -418,64 +304,6 @@ type GoogleCloudDialogflowV2ContextResponse struct {
 	Parameters map[string]string `pulumi:"parameters"`
 }
 
-// GoogleCloudDialogflowV2ContextResponseInput is an input type that accepts GoogleCloudDialogflowV2ContextResponseArgs and GoogleCloudDialogflowV2ContextResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2ContextResponseInput` via:
-//
-//          GoogleCloudDialogflowV2ContextResponseArgs{...}
-type GoogleCloudDialogflowV2ContextResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2ContextResponseOutput() GoogleCloudDialogflowV2ContextResponseOutput
-	ToGoogleCloudDialogflowV2ContextResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2ContextResponseOutput
-}
-
-// Dialogflow contexts are similar to natural language context. If a person says to you "they are orange", you need context in order to understand what "they" is referring to. Similarly, for Dialogflow to handle an end-user expression like that, it needs to be provided with context in order to correctly match an intent. Using contexts, you can control the flow of a conversation. You can configure contexts for an intent by setting input and output contexts, which are identified by string names. When an intent is matched, any configured output contexts for that intent become active. While any contexts are active, Dialogflow is more likely to match intents that are configured with input contexts that correspond to the currently active contexts. For more information about context, see the [Contexts guide](https://cloud.google.com/dialogflow/docs/contexts-overview).
-type GoogleCloudDialogflowV2ContextResponseArgs struct {
-	// Optional. The number of conversational query requests after which the context expires. The default is `0`. If set to `0`, the context expires immediately. Contexts expire automatically after 20 minutes if there are no matching queries.
-	LifespanCount pulumi.IntInput `pulumi:"lifespanCount"`
-	// The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
-	Name pulumi.StringInput `pulumi:"name"`
-	// Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
-	Parameters pulumi.StringMapInput `pulumi:"parameters"`
-}
-
-func (GoogleCloudDialogflowV2ContextResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2ContextResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2ContextResponseArgs) ToGoogleCloudDialogflowV2ContextResponseOutput() GoogleCloudDialogflowV2ContextResponseOutput {
-	return i.ToGoogleCloudDialogflowV2ContextResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2ContextResponseArgs) ToGoogleCloudDialogflowV2ContextResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2ContextResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2ContextResponseOutput)
-}
-
-// GoogleCloudDialogflowV2ContextResponseArrayInput is an input type that accepts GoogleCloudDialogflowV2ContextResponseArray and GoogleCloudDialogflowV2ContextResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2ContextResponseArrayInput` via:
-//
-//          GoogleCloudDialogflowV2ContextResponseArray{ GoogleCloudDialogflowV2ContextResponseArgs{...} }
-type GoogleCloudDialogflowV2ContextResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2ContextResponseArrayOutput() GoogleCloudDialogflowV2ContextResponseArrayOutput
-	ToGoogleCloudDialogflowV2ContextResponseArrayOutputWithContext(context.Context) GoogleCloudDialogflowV2ContextResponseArrayOutput
-}
-
-type GoogleCloudDialogflowV2ContextResponseArray []GoogleCloudDialogflowV2ContextResponseInput
-
-func (GoogleCloudDialogflowV2ContextResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDialogflowV2ContextResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2ContextResponseArray) ToGoogleCloudDialogflowV2ContextResponseArrayOutput() GoogleCloudDialogflowV2ContextResponseArrayOutput {
-	return i.ToGoogleCloudDialogflowV2ContextResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2ContextResponseArray) ToGoogleCloudDialogflowV2ContextResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2ContextResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2ContextResponseArrayOutput)
-}
-
 // Dialogflow contexts are similar to natural language context. If a person says to you "they are orange", you need context in order to understand what "they" is referring to. Similarly, for Dialogflow to handle an end-user expression like that, it needs to be provided with context in order to correctly match an intent. Using contexts, you can control the flow of a conversation. You can configure contexts for an intent by setting input and output contexts, which are identified by string names. When an intent is matched, any configured output contexts for that intent become active. While any contexts are active, Dialogflow is more likely to match intents that are configured with input contexts that correspond to the currently active contexts. For more information about context, see the [Contexts guide](https://cloud.google.com/dialogflow/docs/contexts-overview).
 type GoogleCloudDialogflowV2ContextResponseOutput struct{ *pulumi.OutputState }
 
@@ -532,76 +360,6 @@ type GoogleCloudDialogflowV2ConversationPhoneNumberResponse struct {
 	PhoneNumber string `pulumi:"phoneNumber"`
 }
 
-// GoogleCloudDialogflowV2ConversationPhoneNumberResponseInput is an input type that accepts GoogleCloudDialogflowV2ConversationPhoneNumberResponseArgs and GoogleCloudDialogflowV2ConversationPhoneNumberResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2ConversationPhoneNumberResponseInput` via:
-//
-//          GoogleCloudDialogflowV2ConversationPhoneNumberResponseArgs{...}
-type GoogleCloudDialogflowV2ConversationPhoneNumberResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2ConversationPhoneNumberResponseOutput() GoogleCloudDialogflowV2ConversationPhoneNumberResponseOutput
-	ToGoogleCloudDialogflowV2ConversationPhoneNumberResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2ConversationPhoneNumberResponseOutput
-}
-
-// Represents a phone number for telephony integration. It allows for connecting a particular conversation over telephony.
-type GoogleCloudDialogflowV2ConversationPhoneNumberResponseArgs struct {
-	// The phone number to connect to this conversation.
-	PhoneNumber pulumi.StringInput `pulumi:"phoneNumber"`
-}
-
-func (GoogleCloudDialogflowV2ConversationPhoneNumberResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2ConversationPhoneNumberResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2ConversationPhoneNumberResponseArgs) ToGoogleCloudDialogflowV2ConversationPhoneNumberResponseOutput() GoogleCloudDialogflowV2ConversationPhoneNumberResponseOutput {
-	return i.ToGoogleCloudDialogflowV2ConversationPhoneNumberResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2ConversationPhoneNumberResponseArgs) ToGoogleCloudDialogflowV2ConversationPhoneNumberResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2ConversationPhoneNumberResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2ConversationPhoneNumberResponseOutput)
-}
-
-func (i GoogleCloudDialogflowV2ConversationPhoneNumberResponseArgs) ToGoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutput() GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2ConversationPhoneNumberResponseArgs) ToGoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2ConversationPhoneNumberResponseOutput).ToGoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrInput is an input type that accepts GoogleCloudDialogflowV2ConversationPhoneNumberResponseArgs, GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtr and GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrInput` via:
-//
-//          GoogleCloudDialogflowV2ConversationPhoneNumberResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutput() GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutput
-	ToGoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutputWithContext(context.Context) GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutput
-}
-
-type googleCloudDialogflowV2ConversationPhoneNumberResponsePtrType GoogleCloudDialogflowV2ConversationPhoneNumberResponseArgs
-
-func GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtr(v *GoogleCloudDialogflowV2ConversationPhoneNumberResponseArgs) GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrInput {
-	return (*googleCloudDialogflowV2ConversationPhoneNumberResponsePtrType)(v)
-}
-
-func (*googleCloudDialogflowV2ConversationPhoneNumberResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2ConversationPhoneNumberResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDialogflowV2ConversationPhoneNumberResponsePtrType) ToGoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutput() GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDialogflowV2ConversationPhoneNumberResponsePtrType) ToGoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutput)
-}
-
 // Represents a phone number for telephony integration. It allows for connecting a particular conversation over telephony.
 type GoogleCloudDialogflowV2ConversationPhoneNumberResponseOutput struct{ *pulumi.OutputState }
 
@@ -617,53 +375,9 @@ func (o GoogleCloudDialogflowV2ConversationPhoneNumberResponseOutput) ToGoogleCl
 	return o
 }
 
-func (o GoogleCloudDialogflowV2ConversationPhoneNumberResponseOutput) ToGoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutput() GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutput {
-	return o.ToGoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDialogflowV2ConversationPhoneNumberResponseOutput) ToGoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2ConversationPhoneNumberResponse) *GoogleCloudDialogflowV2ConversationPhoneNumberResponse {
-		return &v
-	}).(GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutput)
-}
-
 // The phone number to connect to this conversation.
 func (o GoogleCloudDialogflowV2ConversationPhoneNumberResponseOutput) PhoneNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2ConversationPhoneNumberResponse) string { return v.PhoneNumber }).(pulumi.StringOutput)
-}
-
-type GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2ConversationPhoneNumberResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutput) ToGoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutput() GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutput) ToGoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutput) Elem() GoogleCloudDialogflowV2ConversationPhoneNumberResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2ConversationPhoneNumberResponse) GoogleCloudDialogflowV2ConversationPhoneNumberResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDialogflowV2ConversationPhoneNumberResponse
-		return ret
-	}).(GoogleCloudDialogflowV2ConversationPhoneNumberResponseOutput)
-}
-
-// The phone number to connect to this conversation.
-func (o GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutput) PhoneNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2ConversationPhoneNumberResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PhoneNumber
-	}).(pulumi.StringPtrOutput)
 }
 
 // The status of a reload attempt.
@@ -672,78 +386,6 @@ type GoogleCloudDialogflowV2DocumentReloadStatusResponse struct {
 	Status GoogleRpcStatusResponse `pulumi:"status"`
 	// The time of a reload attempt. This reload may have been triggered automatically or manually and may not have succeeded.
 	Time string `pulumi:"time"`
-}
-
-// GoogleCloudDialogflowV2DocumentReloadStatusResponseInput is an input type that accepts GoogleCloudDialogflowV2DocumentReloadStatusResponseArgs and GoogleCloudDialogflowV2DocumentReloadStatusResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2DocumentReloadStatusResponseInput` via:
-//
-//          GoogleCloudDialogflowV2DocumentReloadStatusResponseArgs{...}
-type GoogleCloudDialogflowV2DocumentReloadStatusResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2DocumentReloadStatusResponseOutput() GoogleCloudDialogflowV2DocumentReloadStatusResponseOutput
-	ToGoogleCloudDialogflowV2DocumentReloadStatusResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2DocumentReloadStatusResponseOutput
-}
-
-// The status of a reload attempt.
-type GoogleCloudDialogflowV2DocumentReloadStatusResponseArgs struct {
-	// The status of a reload attempt or the initial load.
-	Status GoogleRpcStatusResponseInput `pulumi:"status"`
-	// The time of a reload attempt. This reload may have been triggered automatically or manually and may not have succeeded.
-	Time pulumi.StringInput `pulumi:"time"`
-}
-
-func (GoogleCloudDialogflowV2DocumentReloadStatusResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2DocumentReloadStatusResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2DocumentReloadStatusResponseArgs) ToGoogleCloudDialogflowV2DocumentReloadStatusResponseOutput() GoogleCloudDialogflowV2DocumentReloadStatusResponseOutput {
-	return i.ToGoogleCloudDialogflowV2DocumentReloadStatusResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2DocumentReloadStatusResponseArgs) ToGoogleCloudDialogflowV2DocumentReloadStatusResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2DocumentReloadStatusResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2DocumentReloadStatusResponseOutput)
-}
-
-func (i GoogleCloudDialogflowV2DocumentReloadStatusResponseArgs) ToGoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput() GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2DocumentReloadStatusResponseArgs) ToGoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2DocumentReloadStatusResponseOutput).ToGoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrInput is an input type that accepts GoogleCloudDialogflowV2DocumentReloadStatusResponseArgs, GoogleCloudDialogflowV2DocumentReloadStatusResponsePtr and GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrInput` via:
-//
-//          GoogleCloudDialogflowV2DocumentReloadStatusResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput() GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput
-	ToGoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutputWithContext(context.Context) GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput
-}
-
-type googleCloudDialogflowV2DocumentReloadStatusResponsePtrType GoogleCloudDialogflowV2DocumentReloadStatusResponseArgs
-
-func GoogleCloudDialogflowV2DocumentReloadStatusResponsePtr(v *GoogleCloudDialogflowV2DocumentReloadStatusResponseArgs) GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrInput {
-	return (*googleCloudDialogflowV2DocumentReloadStatusResponsePtrType)(v)
-}
-
-func (*googleCloudDialogflowV2DocumentReloadStatusResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2DocumentReloadStatusResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDialogflowV2DocumentReloadStatusResponsePtrType) ToGoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput() GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDialogflowV2DocumentReloadStatusResponsePtrType) ToGoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput)
 }
 
 // The status of a reload attempt.
@@ -761,16 +403,6 @@ func (o GoogleCloudDialogflowV2DocumentReloadStatusResponseOutput) ToGoogleCloud
 	return o
 }
 
-func (o GoogleCloudDialogflowV2DocumentReloadStatusResponseOutput) ToGoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput() GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput {
-	return o.ToGoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDialogflowV2DocumentReloadStatusResponseOutput) ToGoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2DocumentReloadStatusResponse) *GoogleCloudDialogflowV2DocumentReloadStatusResponse {
-		return &v
-	}).(GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput)
-}
-
 // The status of a reload attempt or the initial load.
 func (o GoogleCloudDialogflowV2DocumentReloadStatusResponseOutput) Status() GoogleRpcStatusResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2DocumentReloadStatusResponse) GoogleRpcStatusResponse { return v.Status }).(GoogleRpcStatusResponseOutput)
@@ -779,50 +411,6 @@ func (o GoogleCloudDialogflowV2DocumentReloadStatusResponseOutput) Status() Goog
 // The time of a reload attempt. This reload may have been triggered automatically or manually and may not have succeeded.
 func (o GoogleCloudDialogflowV2DocumentReloadStatusResponseOutput) Time() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2DocumentReloadStatusResponse) string { return v.Time }).(pulumi.StringOutput)
-}
-
-type GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2DocumentReloadStatusResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput) ToGoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput() GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput) ToGoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput) Elem() GoogleCloudDialogflowV2DocumentReloadStatusResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2DocumentReloadStatusResponse) GoogleCloudDialogflowV2DocumentReloadStatusResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDialogflowV2DocumentReloadStatusResponse
-		return ret
-	}).(GoogleCloudDialogflowV2DocumentReloadStatusResponseOutput)
-}
-
-// The status of a reload attempt or the initial load.
-func (o GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput) Status() GoogleRpcStatusResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2DocumentReloadStatusResponse) *GoogleRpcStatusResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Status
-	}).(GoogleRpcStatusResponsePtrOutput)
-}
-
-// The time of a reload attempt. This reload may have been triggered automatically or manually and may not have succeeded.
-func (o GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput) Time() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2DocumentReloadStatusResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Time
-	}).(pulumi.StringPtrOutput)
 }
 
 // An **entity entry** for an associated entity type.
@@ -940,62 +528,6 @@ type GoogleCloudDialogflowV2EntityTypeEntityResponse struct {
 	Synonyms []string `pulumi:"synonyms"`
 	// The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
 	Value string `pulumi:"value"`
-}
-
-// GoogleCloudDialogflowV2EntityTypeEntityResponseInput is an input type that accepts GoogleCloudDialogflowV2EntityTypeEntityResponseArgs and GoogleCloudDialogflowV2EntityTypeEntityResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2EntityTypeEntityResponseInput` via:
-//
-//          GoogleCloudDialogflowV2EntityTypeEntityResponseArgs{...}
-type GoogleCloudDialogflowV2EntityTypeEntityResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2EntityTypeEntityResponseOutput() GoogleCloudDialogflowV2EntityTypeEntityResponseOutput
-	ToGoogleCloudDialogflowV2EntityTypeEntityResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2EntityTypeEntityResponseOutput
-}
-
-// An **entity entry** for an associated entity type.
-type GoogleCloudDialogflowV2EntityTypeEntityResponseArgs struct {
-	// A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
-	Synonyms pulumi.StringArrayInput `pulumi:"synonyms"`
-	// The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (GoogleCloudDialogflowV2EntityTypeEntityResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2EntityTypeEntityResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2EntityTypeEntityResponseArgs) ToGoogleCloudDialogflowV2EntityTypeEntityResponseOutput() GoogleCloudDialogflowV2EntityTypeEntityResponseOutput {
-	return i.ToGoogleCloudDialogflowV2EntityTypeEntityResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2EntityTypeEntityResponseArgs) ToGoogleCloudDialogflowV2EntityTypeEntityResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2EntityTypeEntityResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2EntityTypeEntityResponseOutput)
-}
-
-// GoogleCloudDialogflowV2EntityTypeEntityResponseArrayInput is an input type that accepts GoogleCloudDialogflowV2EntityTypeEntityResponseArray and GoogleCloudDialogflowV2EntityTypeEntityResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2EntityTypeEntityResponseArrayInput` via:
-//
-//          GoogleCloudDialogflowV2EntityTypeEntityResponseArray{ GoogleCloudDialogflowV2EntityTypeEntityResponseArgs{...} }
-type GoogleCloudDialogflowV2EntityTypeEntityResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2EntityTypeEntityResponseArrayOutput() GoogleCloudDialogflowV2EntityTypeEntityResponseArrayOutput
-	ToGoogleCloudDialogflowV2EntityTypeEntityResponseArrayOutputWithContext(context.Context) GoogleCloudDialogflowV2EntityTypeEntityResponseArrayOutput
-}
-
-type GoogleCloudDialogflowV2EntityTypeEntityResponseArray []GoogleCloudDialogflowV2EntityTypeEntityResponseInput
-
-func (GoogleCloudDialogflowV2EntityTypeEntityResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDialogflowV2EntityTypeEntityResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2EntityTypeEntityResponseArray) ToGoogleCloudDialogflowV2EntityTypeEntityResponseArrayOutput() GoogleCloudDialogflowV2EntityTypeEntityResponseArrayOutput {
-	return i.ToGoogleCloudDialogflowV2EntityTypeEntityResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2EntityTypeEntityResponseArray) ToGoogleCloudDialogflowV2EntityTypeEntityResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2EntityTypeEntityResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2EntityTypeEntityResponseArrayOutput)
 }
 
 // An **entity entry** for an associated entity type.
@@ -1371,60 +903,6 @@ type GoogleCloudDialogflowV2FulfillmentFeatureResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// GoogleCloudDialogflowV2FulfillmentFeatureResponseInput is an input type that accepts GoogleCloudDialogflowV2FulfillmentFeatureResponseArgs and GoogleCloudDialogflowV2FulfillmentFeatureResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2FulfillmentFeatureResponseInput` via:
-//
-//          GoogleCloudDialogflowV2FulfillmentFeatureResponseArgs{...}
-type GoogleCloudDialogflowV2FulfillmentFeatureResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2FulfillmentFeatureResponseOutput() GoogleCloudDialogflowV2FulfillmentFeatureResponseOutput
-	ToGoogleCloudDialogflowV2FulfillmentFeatureResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2FulfillmentFeatureResponseOutput
-}
-
-// Whether fulfillment is enabled for the specific feature.
-type GoogleCloudDialogflowV2FulfillmentFeatureResponseArgs struct {
-	// The type of the feature that enabled for fulfillment.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GoogleCloudDialogflowV2FulfillmentFeatureResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2FulfillmentFeatureResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2FulfillmentFeatureResponseArgs) ToGoogleCloudDialogflowV2FulfillmentFeatureResponseOutput() GoogleCloudDialogflowV2FulfillmentFeatureResponseOutput {
-	return i.ToGoogleCloudDialogflowV2FulfillmentFeatureResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2FulfillmentFeatureResponseArgs) ToGoogleCloudDialogflowV2FulfillmentFeatureResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2FulfillmentFeatureResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2FulfillmentFeatureResponseOutput)
-}
-
-// GoogleCloudDialogflowV2FulfillmentFeatureResponseArrayInput is an input type that accepts GoogleCloudDialogflowV2FulfillmentFeatureResponseArray and GoogleCloudDialogflowV2FulfillmentFeatureResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2FulfillmentFeatureResponseArrayInput` via:
-//
-//          GoogleCloudDialogflowV2FulfillmentFeatureResponseArray{ GoogleCloudDialogflowV2FulfillmentFeatureResponseArgs{...} }
-type GoogleCloudDialogflowV2FulfillmentFeatureResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2FulfillmentFeatureResponseArrayOutput() GoogleCloudDialogflowV2FulfillmentFeatureResponseArrayOutput
-	ToGoogleCloudDialogflowV2FulfillmentFeatureResponseArrayOutputWithContext(context.Context) GoogleCloudDialogflowV2FulfillmentFeatureResponseArrayOutput
-}
-
-type GoogleCloudDialogflowV2FulfillmentFeatureResponseArray []GoogleCloudDialogflowV2FulfillmentFeatureResponseInput
-
-func (GoogleCloudDialogflowV2FulfillmentFeatureResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDialogflowV2FulfillmentFeatureResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2FulfillmentFeatureResponseArray) ToGoogleCloudDialogflowV2FulfillmentFeatureResponseArrayOutput() GoogleCloudDialogflowV2FulfillmentFeatureResponseArrayOutput {
-	return i.ToGoogleCloudDialogflowV2FulfillmentFeatureResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2FulfillmentFeatureResponseArray) ToGoogleCloudDialogflowV2FulfillmentFeatureResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2FulfillmentFeatureResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2FulfillmentFeatureResponseArrayOutput)
-}
-
 // Whether fulfillment is enabled for the specific feature.
 type GoogleCloudDialogflowV2FulfillmentFeatureResponseOutput struct{ *pulumi.OutputState }
 
@@ -1695,84 +1173,6 @@ type GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse struct {
 	Username string `pulumi:"username"`
 }
 
-// GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseInput is an input type that accepts GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseArgs and GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseInput` via:
-//
-//          GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseArgs{...}
-type GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput() GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput
-	ToGoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput
-}
-
-// Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers. More information could be found at: https://cloud.google.com/dialogflow/docs/fulfillment-configure.
-type GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseArgs struct {
-	// Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false. is_cloud_function is deprecated. Cloud functions can be configured by its uri as a regular web service now.
-	IsCloudFunction pulumi.BoolInput `pulumi:"isCloudFunction"`
-	// Optional. The password for HTTP Basic authentication.
-	Password pulumi.StringInput `pulumi:"password"`
-	// Optional. The HTTP request headers to send together with fulfillment requests.
-	RequestHeaders pulumi.StringMapInput `pulumi:"requestHeaders"`
-	// The fulfillment URI for receiving POST requests. It must use https protocol.
-	Uri pulumi.StringInput `pulumi:"uri"`
-	// Optional. The user name for HTTP Basic authentication.
-	Username pulumi.StringInput `pulumi:"username"`
-}
-
-func (GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseArgs) ToGoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput() GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput {
-	return i.ToGoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseArgs) ToGoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput)
-}
-
-func (i GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseArgs) ToGoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput() GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseArgs) ToGoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput).ToGoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrInput is an input type that accepts GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseArgs, GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtr and GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrInput` via:
-//
-//          GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput() GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput
-	ToGoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutputWithContext(context.Context) GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput
-}
-
-type googleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrType GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseArgs
-
-func GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtr(v *GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseArgs) GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrInput {
-	return (*googleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrType)(v)
-}
-
-func (*googleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrType) ToGoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput() GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrType) ToGoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput)
-}
-
 // Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers. More information could be found at: https://cloud.google.com/dialogflow/docs/fulfillment-configure.
 type GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput struct{ *pulumi.OutputState }
 
@@ -1786,16 +1186,6 @@ func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput) ToGoo
 
 func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput) ToGoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput) ToGoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput() GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput {
-	return o.ToGoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput) ToGoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse) *GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse {
-		return &v
-	}).(GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput)
 }
 
 // Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false. is_cloud_function is deprecated. Cloud functions can be configured by its uri as a regular web service now.
@@ -1825,80 +1215,6 @@ func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput) Usern
 	return o.ApplyT(func(v GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse) string { return v.Username }).(pulumi.StringOutput)
 }
 
-type GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput) ToGoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput() GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput) ToGoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput) Elem() GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse) GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse
-		return ret
-	}).(GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput)
-}
-
-// Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false. is_cloud_function is deprecated. Cloud functions can be configured by its uri as a regular web service now.
-func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput) IsCloudFunction() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.IsCloudFunction
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Optional. The password for HTTP Basic authentication.
-func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Password
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The HTTP request headers to send together with fulfillment requests.
-func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput) RequestHeaders() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.RequestHeaders
-	}).(pulumi.StringMapOutput)
-}
-
-// The fulfillment URI for receiving POST requests. It must use https protocol.
-func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Uri
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The user name for HTTP Basic authentication.
-func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Username
-	}).(pulumi.StringPtrOutput)
-}
-
 // By default, your agent responds to a matched intent with a static response. As an alternative, you can provide a more dynamic response by using fulfillment. When you enable fulfillment for an intent, Dialogflow responds to that intent by calling a service that you define. For example, if an end-user wants to schedule a haircut on Friday, your service can check your database and respond to the end-user with availability information for Friday. For more information, see the [fulfillment guide](https://cloud.google.com/dialogflow/docs/fulfillment-overview).
 type GoogleCloudDialogflowV2FulfillmentResponse struct {
 	// Optional. The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
@@ -1911,84 +1227,6 @@ type GoogleCloudDialogflowV2FulfillmentResponse struct {
 	GenericWebService GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse `pulumi:"genericWebService"`
 	// The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
 	Name string `pulumi:"name"`
-}
-
-// GoogleCloudDialogflowV2FulfillmentResponseInput is an input type that accepts GoogleCloudDialogflowV2FulfillmentResponseArgs and GoogleCloudDialogflowV2FulfillmentResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2FulfillmentResponseInput` via:
-//
-//          GoogleCloudDialogflowV2FulfillmentResponseArgs{...}
-type GoogleCloudDialogflowV2FulfillmentResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2FulfillmentResponseOutput() GoogleCloudDialogflowV2FulfillmentResponseOutput
-	ToGoogleCloudDialogflowV2FulfillmentResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2FulfillmentResponseOutput
-}
-
-// By default, your agent responds to a matched intent with a static response. As an alternative, you can provide a more dynamic response by using fulfillment. When you enable fulfillment for an intent, Dialogflow responds to that intent by calling a service that you define. For example, if an end-user wants to schedule a haircut on Friday, your service can check your database and respond to the end-user with availability information for Friday. For more information, see the [fulfillment guide](https://cloud.google.com/dialogflow/docs/fulfillment-overview).
-type GoogleCloudDialogflowV2FulfillmentResponseArgs struct {
-	// Optional. The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// Optional. Whether fulfillment is enabled.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Optional. The field defines whether the fulfillment is enabled for certain features.
-	Features GoogleCloudDialogflowV2FulfillmentFeatureResponseArrayInput `pulumi:"features"`
-	// Configuration for a generic web service.
-	GenericWebService GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseInput `pulumi:"genericWebService"`
-	// The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GoogleCloudDialogflowV2FulfillmentResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2FulfillmentResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2FulfillmentResponseArgs) ToGoogleCloudDialogflowV2FulfillmentResponseOutput() GoogleCloudDialogflowV2FulfillmentResponseOutput {
-	return i.ToGoogleCloudDialogflowV2FulfillmentResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2FulfillmentResponseArgs) ToGoogleCloudDialogflowV2FulfillmentResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2FulfillmentResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2FulfillmentResponseOutput)
-}
-
-func (i GoogleCloudDialogflowV2FulfillmentResponseArgs) ToGoogleCloudDialogflowV2FulfillmentResponsePtrOutput() GoogleCloudDialogflowV2FulfillmentResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2FulfillmentResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2FulfillmentResponseArgs) ToGoogleCloudDialogflowV2FulfillmentResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2FulfillmentResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2FulfillmentResponseOutput).ToGoogleCloudDialogflowV2FulfillmentResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDialogflowV2FulfillmentResponsePtrInput is an input type that accepts GoogleCloudDialogflowV2FulfillmentResponseArgs, GoogleCloudDialogflowV2FulfillmentResponsePtr and GoogleCloudDialogflowV2FulfillmentResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2FulfillmentResponsePtrInput` via:
-//
-//          GoogleCloudDialogflowV2FulfillmentResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDialogflowV2FulfillmentResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2FulfillmentResponsePtrOutput() GoogleCloudDialogflowV2FulfillmentResponsePtrOutput
-	ToGoogleCloudDialogflowV2FulfillmentResponsePtrOutputWithContext(context.Context) GoogleCloudDialogflowV2FulfillmentResponsePtrOutput
-}
-
-type googleCloudDialogflowV2FulfillmentResponsePtrType GoogleCloudDialogflowV2FulfillmentResponseArgs
-
-func GoogleCloudDialogflowV2FulfillmentResponsePtr(v *GoogleCloudDialogflowV2FulfillmentResponseArgs) GoogleCloudDialogflowV2FulfillmentResponsePtrInput {
-	return (*googleCloudDialogflowV2FulfillmentResponsePtrType)(v)
-}
-
-func (*googleCloudDialogflowV2FulfillmentResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2FulfillmentResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDialogflowV2FulfillmentResponsePtrType) ToGoogleCloudDialogflowV2FulfillmentResponsePtrOutput() GoogleCloudDialogflowV2FulfillmentResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2FulfillmentResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDialogflowV2FulfillmentResponsePtrType) ToGoogleCloudDialogflowV2FulfillmentResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2FulfillmentResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2FulfillmentResponsePtrOutput)
 }
 
 // By default, your agent responds to a matched intent with a static response. As an alternative, you can provide a more dynamic response by using fulfillment. When you enable fulfillment for an intent, Dialogflow responds to that intent by calling a service that you define. For example, if an end-user wants to schedule a haircut on Friday, your service can check your database and respond to the end-user with availability information for Friday. For more information, see the [fulfillment guide](https://cloud.google.com/dialogflow/docs/fulfillment-overview).
@@ -2004,16 +1242,6 @@ func (o GoogleCloudDialogflowV2FulfillmentResponseOutput) ToGoogleCloudDialogflo
 
 func (o GoogleCloudDialogflowV2FulfillmentResponseOutput) ToGoogleCloudDialogflowV2FulfillmentResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2FulfillmentResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDialogflowV2FulfillmentResponseOutput) ToGoogleCloudDialogflowV2FulfillmentResponsePtrOutput() GoogleCloudDialogflowV2FulfillmentResponsePtrOutput {
-	return o.ToGoogleCloudDialogflowV2FulfillmentResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDialogflowV2FulfillmentResponseOutput) ToGoogleCloudDialogflowV2FulfillmentResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2FulfillmentResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2FulfillmentResponse) *GoogleCloudDialogflowV2FulfillmentResponse {
-		return &v
-	}).(GoogleCloudDialogflowV2FulfillmentResponsePtrOutput)
 }
 
 // Optional. The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
@@ -2043,80 +1271,6 @@ func (o GoogleCloudDialogflowV2FulfillmentResponseOutput) GenericWebService() Go
 // The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
 func (o GoogleCloudDialogflowV2FulfillmentResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2FulfillmentResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type GoogleCloudDialogflowV2FulfillmentResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDialogflowV2FulfillmentResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2FulfillmentResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDialogflowV2FulfillmentResponsePtrOutput) ToGoogleCloudDialogflowV2FulfillmentResponsePtrOutput() GoogleCloudDialogflowV2FulfillmentResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2FulfillmentResponsePtrOutput) ToGoogleCloudDialogflowV2FulfillmentResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2FulfillmentResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2FulfillmentResponsePtrOutput) Elem() GoogleCloudDialogflowV2FulfillmentResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2FulfillmentResponse) GoogleCloudDialogflowV2FulfillmentResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDialogflowV2FulfillmentResponse
-		return ret
-	}).(GoogleCloudDialogflowV2FulfillmentResponseOutput)
-}
-
-// Optional. The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
-func (o GoogleCloudDialogflowV2FulfillmentResponsePtrOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2FulfillmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DisplayName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Whether fulfillment is enabled.
-func (o GoogleCloudDialogflowV2FulfillmentResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2FulfillmentResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Optional. The field defines whether the fulfillment is enabled for certain features.
-func (o GoogleCloudDialogflowV2FulfillmentResponsePtrOutput) Features() GoogleCloudDialogflowV2FulfillmentFeatureResponseArrayOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2FulfillmentResponse) []GoogleCloudDialogflowV2FulfillmentFeatureResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Features
-	}).(GoogleCloudDialogflowV2FulfillmentFeatureResponseArrayOutput)
-}
-
-// Configuration for a generic web service.
-func (o GoogleCloudDialogflowV2FulfillmentResponsePtrOutput) GenericWebService() GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2FulfillmentResponse) *GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.GenericWebService
-	}).(GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput)
-}
-
-// The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
-func (o GoogleCloudDialogflowV2FulfillmentResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2FulfillmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
 }
 
 // Defines the Human Agent Assist to connect to a conversation.
@@ -2472,35 +1626,6 @@ type GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResp
 	Model string `pulumi:"model"`
 }
 
-// GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseArgs and GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseInput` via:
-//
-//          GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseArgs{...}
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseOutput
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseOutput
-}
-
-// Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseArgs struct {
-	// Conversation model resource name. Format: `projects//conversationModels/`.
-	Model pulumi.StringInput `pulumi:"model"`
-}
-
-func (GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseOutput {
-	return i.ToGoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseOutput)
-}
-
 // Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -2694,78 +1819,6 @@ type GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigRespon
 	EnableSentimentAnalysis bool `pulumi:"enableSentimentAnalysis"`
 }
 
-// GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseArgs and GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseInput` via:
-//
-//          GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseArgs{...}
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseOutput
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseOutput
-}
-
-// Configuration for analyses to run on each conversation message.
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseArgs struct {
-	// Enable entity extraction in conversation messages on [agent assist stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages). If unspecified, defaults to false. Currently, this feature is not general available, please contact Google to get access.
-	EnableEntityExtraction pulumi.BoolInput `pulumi:"enableEntityExtraction"`
-	// Enable sentiment analysis in conversation messages on [agent assist stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages). If unspecified, defaults to false. Sentiment analysis inspects user input and identifies the prevailing subjective opinion, especially to determine a user's attitude as positive, negative, or neutral: https://cloud.google.com/natural-language/docs/basics#sentiment_analysis For Participants.StreamingAnalyzeContent method, result will be in StreamingAnalyzeContentResponse.message.SentimentAnalysisResult. For Participants.AnalyzeContent method, result will be in AnalyzeContentResponse.message.SentimentAnalysisResult For Conversations.ListMessages method, result will be in ListMessagesResponse.messages.SentimentAnalysisResult If Pub/Sub notification is configured, result will be in ConversationEvent.new_message_payload.SentimentAnalysisResult.
-	EnableSentimentAnalysis pulumi.BoolInput `pulumi:"enableSentimentAnalysis"`
-}
-
-func (GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseOutput {
-	return i.ToGoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseOutput)
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseOutput).ToGoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseArgs, GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtr and GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrInput` via:
-//
-//          GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutputWithContext(context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput
-}
-
-type googleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrType GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseArgs
-
-func GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtr(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseArgs) GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrInput {
-	return (*googleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrType)(v)
-}
-
-func (*googleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrType) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrType) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput)
-}
-
 // Configuration for analyses to run on each conversation message.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -2779,16 +1832,6 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigRes
 
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput {
-	return o.ToGoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponse) *GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponse {
-		return &v
-	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput)
 }
 
 // Enable entity extraction in conversation messages on [agent assist stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages). If unspecified, defaults to false. Currently, this feature is not general available, please contact Google to get access.
@@ -2805,50 +1848,6 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigRes
 	}).(pulumi.BoolOutput)
 }
 
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput) Elem() GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponse) GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponse
-		return ret
-	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseOutput)
-}
-
-// Enable entity extraction in conversation messages on [agent assist stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages). If unspecified, defaults to false. Currently, this feature is not general available, please contact Google to get access.
-func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput) EnableEntityExtraction() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.EnableEntityExtraction
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Enable sentiment analysis in conversation messages on [agent assist stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages). If unspecified, defaults to false. Sentiment analysis inspects user input and identifies the prevailing subjective opinion, especially to determine a user's attitude as positive, negative, or neutral: https://cloud.google.com/natural-language/docs/basics#sentiment_analysis For Participants.StreamingAnalyzeContent method, result will be in StreamingAnalyzeContentResponse.message.SentimentAnalysisResult. For Participants.AnalyzeContent method, result will be in AnalyzeContentResponse.message.SentimentAnalysisResult For Conversations.ListMessages method, result will be in ListMessagesResponse.messages.SentimentAnalysisResult If Pub/Sub notification is configured, result will be in ConversationEvent.new_message_payload.SentimentAnalysisResult.
-func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput) EnableSentimentAnalysis() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.EnableSentimentAnalysis
-	}).(pulumi.BoolPtrOutput)
-}
-
 // Defines the Human Agent Assist to connect to a conversation.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse struct {
 	// Configuration for agent assistance of end user participant. Currently, this feature is not general available, please contact Google to get access.
@@ -2859,82 +1858,6 @@ type GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse struct {
 	MessageAnalysisConfig GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponse `pulumi:"messageAnalysisConfig"`
 	// Pub/Sub topic on which to publish new agent assistant events.
 	NotificationConfig GoogleCloudDialogflowV2NotificationConfigResponse `pulumi:"notificationConfig"`
-}
-
-// GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseArgs and GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseInput` via:
-//
-//          GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseArgs{...}
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutput
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutput
-}
-
-// Defines the Human Agent Assist to connect to a conversation.
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseArgs struct {
-	// Configuration for agent assistance of end user participant. Currently, this feature is not general available, please contact Google to get access.
-	EndUserSuggestionConfig GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseInput `pulumi:"endUserSuggestionConfig"`
-	// Configuration for agent assistance of human agent participant.
-	HumanAgentSuggestionConfig GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseInput `pulumi:"humanAgentSuggestionConfig"`
-	// Configuration for message analysis.
-	MessageAnalysisConfig GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseInput `pulumi:"messageAnalysisConfig"`
-	// Pub/Sub topic on which to publish new agent assistant events.
-	NotificationConfig GoogleCloudDialogflowV2NotificationConfigResponseInput `pulumi:"notificationConfig"`
-}
-
-func (GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutput {
-	return i.ToGoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutput)
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutput).ToGoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseArgs, GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtr and GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrInput` via:
-//
-//          GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutputWithContext(context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput
-}
-
-type googleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrType GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseArgs
-
-func GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtr(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseArgs) GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrInput {
-	return (*googleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrType)(v)
-}
-
-func (*googleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrType) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrType) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput)
 }
 
 // Defines the Human Agent Assist to connect to a conversation.
@@ -2950,16 +1873,6 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutput) ToGoogle
 
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput {
-	return o.ToGoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse) *GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse {
-		return &v
-	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput)
 }
 
 // Configuration for agent assistance of end user participant. Currently, this feature is not general available, please contact Google to get access.
@@ -2988,70 +1901,6 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutput) Notifica
 	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse) GoogleCloudDialogflowV2NotificationConfigResponse {
 		return v.NotificationConfig
 	}).(GoogleCloudDialogflowV2NotificationConfigResponseOutput)
-}
-
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput) Elem() GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse) GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse
-		return ret
-	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutput)
-}
-
-// Configuration for agent assistance of end user participant. Currently, this feature is not general available, please contact Google to get access.
-func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput) EndUserSuggestionConfig() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse) *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.EndUserSuggestionConfig
-	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput)
-}
-
-// Configuration for agent assistance of human agent participant.
-func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput) HumanAgentSuggestionConfig() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse) *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.HumanAgentSuggestionConfig
-	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput)
-}
-
-// Configuration for message analysis.
-func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput) MessageAnalysisConfig() GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse) *GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.MessageAnalysisConfig
-	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput)
-}
-
-// Pub/Sub topic on which to publish new agent assistant events.
-func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput) NotificationConfig() GoogleCloudDialogflowV2NotificationConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse) *GoogleCloudDialogflowV2NotificationConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.NotificationConfig
-	}).(GoogleCloudDialogflowV2NotificationConfigResponsePtrOutput)
 }
 
 // Detail human agent assistant config.
@@ -3225,78 +2074,6 @@ type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse st
 	GroupSuggestionResponses bool `pulumi:"groupSuggestionResponses"`
 }
 
-// GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseArgs and GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseInput` via:
-//
-//          GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseArgs{...}
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseOutput
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseOutput
-}
-
-// Detail human agent assistant config.
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseArgs struct {
-	// Configuration of different suggestion features. One feature can have only one config.
-	FeatureConfigs GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArrayInput `pulumi:"featureConfigs"`
-	// If `group_suggestion_responses` is false, and there are multiple `feature_configs` in `event based suggestion` or StreamingAnalyzeContent, we will try to deliver suggestions to customers as soon as we get new suggestion. Different type of suggestions based on the same context will be in separate Pub/Sub event or `StreamingAnalyzeContentResponse`. If `group_suggestion_responses` set to true. All the suggestions to the same participant based on the same context will be grouped into a single Pub/Sub event or StreamingAnalyzeContentResponse.
-	GroupSuggestionResponses pulumi.BoolInput `pulumi:"groupSuggestionResponses"`
-}
-
-func (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseOutput {
-	return i.ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseOutput)
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseOutput).ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseArgs, GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtr and GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrInput` via:
-//
-//          GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutputWithContext(context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput
-}
-
-type googleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrType GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseArgs
-
-func GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtr(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseArgs) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrInput {
-	return (*googleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrType)(v)
-}
-
-func (*googleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrType) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrType) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput)
-}
-
 // Detail human agent assistant config.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -3312,16 +2089,6 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse
 	return o
 }
 
-func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput {
-	return o.ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse) *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse {
-		return &v
-	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput)
-}
-
 // Configuration of different suggestion features. One feature can have only one config.
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseOutput) FeatureConfigs() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse) []GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponse {
@@ -3334,50 +2101,6 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse
 	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse) bool {
 		return v.GroupSuggestionResponses
 	}).(pulumi.BoolOutput)
-}
-
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput) Elem() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse
-		return ret
-	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseOutput)
-}
-
-// Configuration of different suggestion features. One feature can have only one config.
-func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput) FeatureConfigs() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArrayOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse) []GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return v.FeatureConfigs
-	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArrayOutput)
-}
-
-// If `group_suggestion_responses` is false, and there are multiple `feature_configs` in `event based suggestion` or StreamingAnalyzeContent, we will try to deliver suggestions to customers as soon as we get new suggestion. Different type of suggestions based on the same context will be in separate Pub/Sub event or `StreamingAnalyzeContentResponse`. If `group_suggestion_responses` set to true. All the suggestions to the same participant based on the same context will be grouped into a single Pub/Sub event or StreamingAnalyzeContentResponse.
-func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput) GroupSuggestionResponses() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.GroupSuggestionResponses
-	}).(pulumi.BoolPtrOutput)
 }
 
 // Config for suggestion features.
@@ -3538,68 +2261,6 @@ type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResp
 	SuggestionFeature GoogleCloudDialogflowV2SuggestionFeatureResponse `pulumi:"suggestionFeature"`
 	// Settings of suggestion trigger. Currently, only ARTICLE_SUGGESTION and FAQ will use this field.
 	SuggestionTriggerSettings GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponse `pulumi:"suggestionTriggerSettings"`
-}
-
-// GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArgs and GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseInput` via:
-//
-//          GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArgs{...}
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseOutput
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseOutput
-}
-
-// Config for suggestion features.
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArgs struct {
-	// Configs of custom conversation model.
-	ConversationModelConfig GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseInput `pulumi:"conversationModelConfig"`
-	// Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST.
-	EnableEventBasedSuggestion pulumi.BoolInput `pulumi:"enableEventBasedSuggestion"`
-	// Configs of query.
-	QueryConfig GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponseInput `pulumi:"queryConfig"`
-	// The suggestion feature.
-	SuggestionFeature GoogleCloudDialogflowV2SuggestionFeatureResponseInput `pulumi:"suggestionFeature"`
-	// Settings of suggestion trigger. Currently, only ARTICLE_SUGGESTION and FAQ will use this field.
-	SuggestionTriggerSettings GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponseInput `pulumi:"suggestionTriggerSettings"`
-}
-
-func (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseOutput {
-	return i.ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseOutput)
-}
-
-// GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArrayInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArray and GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArrayInput` via:
-//
-//          GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArray{ GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArgs{...} }
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArrayOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArrayOutput
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArrayOutputWithContext(context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArrayOutput
-}
-
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArray []GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseInput
-
-func (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArray) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArrayOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArrayOutput {
-	return i.ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArray) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArrayOutput)
 }
 
 // Config for suggestion features.
@@ -4113,39 +2774,6 @@ type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContex
 	DropVirtualAgentMessages bool `pulumi:"dropVirtualAgentMessages"`
 }
 
-// GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponseInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponseArgs and GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponseInput` via:
-//
-//          GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponseArgs{...}
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponseOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponseOutput
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponseOutput
-}
-
-// Settings that determine how to filter recent conversation context when generating suggestions.
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponseArgs struct {
-	// If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
-	DropHandoffMessages pulumi.BoolInput `pulumi:"dropHandoffMessages"`
-	// If set to true, all messages from ivr stage are dropped.
-	DropIvrMessages pulumi.BoolInput `pulumi:"dropIvrMessages"`
-	// If set to true, all messages from virtual agent are dropped.
-	DropVirtualAgentMessages pulumi.BoolInput `pulumi:"dropVirtualAgentMessages"`
-}
-
-func (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponseArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponseOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponseOutput {
-	return i.ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponseArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponseOutput)
-}
-
 // Settings that determine how to filter recent conversation context when generating suggestions.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponseOutput struct{ *pulumi.OutputState }
 
@@ -4330,35 +2958,6 @@ type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialog
 	Agent string `pulumi:"agent"`
 }
 
-// GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponseInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponseArgs and GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponseInput` via:
-//
-//          GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponseArgs{...}
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponseOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponseOutput
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponseOutput
-}
-
-// Dialogflow source setting. Supported feature: DIALOGFLOW_ASSIST.
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponseArgs struct {
-	// The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
-	Agent pulumi.StringInput `pulumi:"agent"`
-}
-
-func (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponseArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponseOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponseOutput {
-	return i.ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponseArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponseOutput)
-}
-
 // Dialogflow source setting. Supported feature: DIALOGFLOW_ASSIST.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponseOutput struct{ *pulumi.OutputState }
 
@@ -4527,35 +3126,6 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDoc
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponse struct {
 	// Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, at most 5 documents are supported.
 	Documents []string `pulumi:"documents"`
-}
-
-// GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponseInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponseArgs and GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponseInput` via:
-//
-//          GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponseArgs{...}
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponseOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponseOutput
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponseOutput
-}
-
-// Document source settings. Supported features: SMART_REPLY, SMART_COMPOSE.
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponseArgs struct {
-	// Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, at most 5 documents are supported.
-	Documents pulumi.StringArrayInput `pulumi:"documents"`
-}
-
-func (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponseArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponseOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponseOutput {
-	return i.ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponseArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponseOutput)
 }
 
 // Document source settings. Supported features: SMART_REPLY, SMART_COMPOSE.
@@ -4728,35 +3298,6 @@ type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowle
 	KnowledgeBases []string `pulumi:"knowledgeBases"`
 }
 
-// GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponseInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponseArgs and GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponseInput` via:
-//
-//          GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponseArgs{...}
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponseOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponseOutput
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponseOutput
-}
-
-// Knowledge base source settings. Supported features: ARTICLE_SUGGESTION, FAQ.
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponseArgs struct {
-	// Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, at most 5 knowledge bases are supported.
-	KnowledgeBases pulumi.StringArrayInput `pulumi:"knowledgeBases"`
-}
-
-func (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponseArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponseOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponseOutput {
-	return i.ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponseArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponseOutput)
-}
-
 // Knowledge base source settings. Supported features: ARTICLE_SUGGESTION, FAQ.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponseOutput struct{ *pulumi.OutputState }
 
@@ -4793,45 +3334,6 @@ type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigRespon
 	KnowledgeBaseQuerySource GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponse `pulumi:"knowledgeBaseQuerySource"`
 	// Maximum number of results to return. Currently, if unset, defaults to 10. And the max number is 20.
 	MaxResults int `pulumi:"maxResults"`
-}
-
-// GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponseInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponseArgs and GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponseInput` via:
-//
-//          GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponseArgs{...}
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponseOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponseOutput
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponseOutput
-}
-
-// Config for suggestion query.
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponseArgs struct {
-	// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE.
-	ConfidenceThreshold pulumi.Float64Input `pulumi:"confidenceThreshold"`
-	// Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
-	ContextFilterSettings GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponseInput `pulumi:"contextFilterSettings"`
-	// Query from Dialogflow agent. It is used by DIALOGFLOW_ASSIST.
-	DialogflowQuerySource GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponseInput `pulumi:"dialogflowQuerySource"`
-	// Query from knowledge base document. It is used by: SMART_REPLY, SMART_COMPOSE.
-	DocumentQuerySource GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponseInput `pulumi:"documentQuerySource"`
-	// Query from knowledgebase. It is used by: ARTICLE_SUGGESTION, FAQ.
-	KnowledgeBaseQuerySource GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponseInput `pulumi:"knowledgeBaseQuerySource"`
-	// Maximum number of results to return. Currently, if unset, defaults to 10. And the max number is 20.
-	MaxResults pulumi.IntInput `pulumi:"maxResults"`
-}
-
-func (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponseOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponseOutput {
-	return i.ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponseOutput)
 }
 
 // Config for suggestion query.
@@ -5060,37 +3562,6 @@ type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsRe
 	NoSmalltalk bool `pulumi:"noSmalltalk"`
 	// Only trigger suggestion if participant role of last utterance is END_USER.
 	OnlyEndUser bool `pulumi:"onlyEndUser"`
-}
-
-// GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponseInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponseArgs and GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponseInput` via:
-//
-//          GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponseArgs{...}
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponseOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponseOutput
-	ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponseOutput
-}
-
-// Settings of suggestion trigger.
-type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponseArgs struct {
-	// Do not trigger if last utterance is small talk.
-	NoSmalltalk pulumi.BoolInput `pulumi:"noSmalltalk"`
-	// Only trigger suggestion if participant role of last utterance is END_USER.
-	OnlyEndUser pulumi.BoolInput `pulumi:"onlyEndUser"`
-}
-
-func (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponseArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponseOutput() GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponseOutput {
-	return i.ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponseArgs) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponseOutput)
 }
 
 // Settings of suggestion trigger.
@@ -5431,76 +3902,6 @@ type GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse stru
 	AccountNumber string `pulumi:"accountNumber"`
 }
 
-// GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseArgs and GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseInput` via:
-//
-//          GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseArgs{...}
-type GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseOutput
-	ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseOutput
-}
-
-// Configuration specific to LivePerson (https://www.liveperson.com).
-type GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseArgs struct {
-	// Account number of the LivePerson account to connect. This is the account number you input at the login page.
-	AccountNumber pulumi.StringInput `pulumi:"accountNumber"`
-}
-
-func (GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseOutput {
-	return i.ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseOutput)
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseOutput).ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseArgs, GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtr and GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrInput` via:
-//
-//          GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput
-	ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutputWithContext(context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput
-}
-
-type googleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrType GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseArgs
-
-func GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtr(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseArgs) GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrInput {
-	return (*googleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrType)(v)
-}
-
-func (*googleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrType) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrType) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput)
-}
-
 // Configuration specific to LivePerson (https://www.liveperson.com).
 type GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -5516,55 +3917,11 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseOu
 	return o
 }
 
-func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput {
-	return o.ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse) *GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse {
-		return &v
-	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput)
-}
-
 // Account number of the LivePerson account to connect. This is the account number you input at the login page.
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseOutput) AccountNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse) string {
 		return v.AccountNumber
 	}).(pulumi.StringOutput)
-}
-
-type GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput) Elem() GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse) GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse
-		return ret
-	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseOutput)
-}
-
-// Account number of the LivePerson account to connect. This is the account number you input at the login page.
-func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput) AccountNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AccountNumber
-	}).(pulumi.StringPtrOutput)
 }
 
 // Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation. Currently, this feature is not general available, please contact Google to get access.
@@ -5573,78 +3930,6 @@ type GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse struct {
 	LivePersonConfig GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse `pulumi:"livePersonConfig"`
 	// Uses Salesforce Live Agent.
 	SalesforceLiveAgentConfig GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse `pulumi:"salesforceLiveAgentConfig"`
-}
-
-// GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseArgs and GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseInput` via:
-//
-//          GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseArgs{...}
-type GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutput
-	ToGoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutput
-}
-
-// Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation. Currently, this feature is not general available, please contact Google to get access.
-type GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseArgs struct {
-	// Uses LivePerson (https://www.liveperson.com).
-	LivePersonConfig GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseInput `pulumi:"livePersonConfig"`
-	// Uses Salesforce Live Agent.
-	SalesforceLiveAgentConfig GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseInput `pulumi:"salesforceLiveAgentConfig"`
-}
-
-func (GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutput {
-	return i.ToGoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutput)
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutput).ToGoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseArgs, GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtr and GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrInput` via:
-//
-//          GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput
-	ToGoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutputWithContext(context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput
-}
-
-type googleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrType GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseArgs
-
-func GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtr(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseArgs) GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrInput {
-	return (*googleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrType)(v)
-}
-
-func (*googleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrType) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrType) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput)
 }
 
 // Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation. Currently, this feature is not general available, please contact Google to get access.
@@ -5662,16 +3947,6 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutput) ToGoogleCl
 	return o
 }
 
-func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput {
-	return o.ToGoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse) *GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse {
-		return &v
-	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput)
-}
-
 // Uses LivePerson (https://www.liveperson.com).
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutput) LivePersonConfig() GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse) GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse {
@@ -5684,50 +3959,6 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutput) Salesforce
 	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse) GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse {
 		return v.SalesforceLiveAgentConfig
 	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutput)
-}
-
-type GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput) Elem() GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse) GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse
-		return ret
-	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutput)
-}
-
-// Uses LivePerson (https://www.liveperson.com).
-func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput) LivePersonConfig() GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse) *GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.LivePersonConfig
-	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput)
-}
-
-// Uses Salesforce Live Agent.
-func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput) SalesforceLiveAgentConfig() GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse) *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.SalesforceLiveAgentConfig
-	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput)
 }
 
 // Configuration specific to Salesforce Live Agent.
@@ -5947,82 +4178,6 @@ type GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResp
 	OrganizationId string `pulumi:"organizationId"`
 }
 
-// GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseArgs and GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseInput` via:
-//
-//          GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseArgs{...}
-type GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutput
-	ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutput
-}
-
-// Configuration specific to Salesforce Live Agent.
-type GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseArgs struct {
-	// Live Agent chat button ID.
-	ButtonId pulumi.StringInput `pulumi:"buttonId"`
-	// Live Agent deployment ID.
-	DeploymentId pulumi.StringInput `pulumi:"deploymentId"`
-	// Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
-	EndpointDomain pulumi.StringInput `pulumi:"endpointDomain"`
-	// The organization ID of the Salesforce account.
-	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
-}
-
-func (GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutput {
-	return i.ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutput)
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseArgs) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutput).ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseArgs, GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtr and GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrInput` via:
-//
-//          GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput
-	ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutputWithContext(context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput
-}
-
-type googleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrType GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseArgs
-
-func GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtr(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseArgs) GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrInput {
-	return (*googleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrType)(v)
-}
-
-func (*googleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrType) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrType) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput)
-}
-
 // Configuration specific to Salesforce Live Agent.
 type GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -6036,16 +4191,6 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigR
 
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput {
-	return o.ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse) *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse {
-		return &v
-	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput)
 }
 
 // Live Agent chat button ID.
@@ -6076,132 +4221,12 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigR
 	}).(pulumi.StringOutput)
 }
 
-type GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput() GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput) ToGoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput) Elem() GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse) GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse
-		return ret
-	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutput)
-}
-
-// Live Agent chat button ID.
-func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput) ButtonId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ButtonId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Live Agent deployment ID.
-func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput) DeploymentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DeploymentId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
-func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput) EndpointDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EndpointDomain
-	}).(pulumi.StringPtrOutput)
-}
-
-// The organization ID of the Salesforce account.
-func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput) OrganizationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OrganizationId
-	}).(pulumi.StringPtrOutput)
-}
-
 // Represents a single followup intent in the chain.
 type GoogleCloudDialogflowV2IntentFollowupIntentInfoResponse struct {
 	// The unique identifier of the followup intent. Format: `projects//agent/intents/`.
 	FollowupIntentName string `pulumi:"followupIntentName"`
 	// The unique identifier of the followup intent's parent. Format: `projects//agent/intents/`.
 	ParentFollowupIntentName string `pulumi:"parentFollowupIntentName"`
-}
-
-// GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArgs and GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArgs{...}
-type GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentFollowupIntentInfoResponseOutput() GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseOutput
-	ToGoogleCloudDialogflowV2IntentFollowupIntentInfoResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseOutput
-}
-
-// Represents a single followup intent in the chain.
-type GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArgs struct {
-	// The unique identifier of the followup intent. Format: `projects//agent/intents/`.
-	FollowupIntentName pulumi.StringInput `pulumi:"followupIntentName"`
-	// The unique identifier of the followup intent's parent. Format: `projects//agent/intents/`.
-	ParentFollowupIntentName pulumi.StringInput `pulumi:"parentFollowupIntentName"`
-}
-
-func (GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentFollowupIntentInfoResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArgs) ToGoogleCloudDialogflowV2IntentFollowupIntentInfoResponseOutput() GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentFollowupIntentInfoResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArgs) ToGoogleCloudDialogflowV2IntentFollowupIntentInfoResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseOutput)
-}
-
-// GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArrayInput is an input type that accepts GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArray and GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArrayInput` via:
-//
-//          GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArray{ GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArgs{...} }
-type GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArrayOutput() GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArrayOutput
-	ToGoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArrayOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArrayOutput
-}
-
-type GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArray []GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseInput
-
-func (GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDialogflowV2IntentFollowupIntentInfoResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArray) ToGoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArrayOutput() GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArrayOutput {
-	return i.ToGoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArray) ToGoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArrayOutput)
 }
 
 // Represents a single followup intent in the chain.
@@ -6893,35 +4918,6 @@ type GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponse st
 	Uri string `pulumi:"uri"`
 }
 
-// GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseArgs and GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseArgs{...}
-type GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseOutput() GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseOutput
-	ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseOutput
-}
-
-// Opens the given URI.
-type GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseArgs struct {
-	// The HTTP or HTTPS scheme URI.
-	Uri pulumi.StringInput `pulumi:"uri"`
-}
-
-func (GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseArgs) ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseOutput() GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseArgs) ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseOutput)
-}
-
 // Opens the given URI.
 type GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseOutput struct{ *pulumi.OutputState }
 
@@ -6948,62 +4944,6 @@ type GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponse struct {
 	OpenUriAction GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponse `pulumi:"openUriAction"`
 	// The title of the button.
 	Title string `pulumi:"title"`
-}
-
-// GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArgs and GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArgs{...}
-type GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseOutput() GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseOutput
-	ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseOutput
-}
-
-// The button object that appears at the bottom of a card.
-type GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArgs struct {
-	// Action to take when a user taps on the button.
-	OpenUriAction GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseInput `pulumi:"openUriAction"`
-	// The title of the button.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArgs) ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseOutput() GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArgs) ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseOutput)
-}
-
-// GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArrayInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArray and GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArrayInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArray{ GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArgs{...} }
-type GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArrayOutput() GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArrayOutput
-	ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArrayOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArrayOutput
-}
-
-type GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArray []GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseInput
-
-func (GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArray) ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArrayOutput() GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArrayOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArray) ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArrayOutput)
 }
 
 // The button object that appears at the bottom of a card.
@@ -7065,43 +5005,6 @@ type GoogleCloudDialogflowV2IntentMessageBasicCardResponse struct {
 	Subtitle string `pulumi:"subtitle"`
 	// Optional. The title of the card.
 	Title string `pulumi:"title"`
-}
-
-// GoogleCloudDialogflowV2IntentMessageBasicCardResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageBasicCardResponseArgs and GoogleCloudDialogflowV2IntentMessageBasicCardResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageBasicCardResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageBasicCardResponseArgs{...}
-type GoogleCloudDialogflowV2IntentMessageBasicCardResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageBasicCardResponseOutput() GoogleCloudDialogflowV2IntentMessageBasicCardResponseOutput
-	ToGoogleCloudDialogflowV2IntentMessageBasicCardResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageBasicCardResponseOutput
-}
-
-// The basic card message. Useful for displaying information.
-type GoogleCloudDialogflowV2IntentMessageBasicCardResponseArgs struct {
-	// Optional. The collection of card buttons.
-	Buttons GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArrayInput `pulumi:"buttons"`
-	// Required, unless image is present. The body text of the card.
-	FormattedText pulumi.StringInput `pulumi:"formattedText"`
-	// Optional. The image for the card.
-	Image GoogleCloudDialogflowV2IntentMessageImageResponseInput `pulumi:"image"`
-	// Optional. The subtitle of the card.
-	Subtitle pulumi.StringInput `pulumi:"subtitle"`
-	// Optional. The title of the card.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (GoogleCloudDialogflowV2IntentMessageBasicCardResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageBasicCardResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageBasicCardResponseArgs) ToGoogleCloudDialogflowV2IntentMessageBasicCardResponseOutput() GoogleCloudDialogflowV2IntentMessageBasicCardResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageBasicCardResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageBasicCardResponseArgs) ToGoogleCloudDialogflowV2IntentMessageBasicCardResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageBasicCardResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageBasicCardResponseOutput)
 }
 
 // The basic card message. Useful for displaying information.
@@ -7533,37 +5436,6 @@ type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIte
 	UrlTypeHint string `pulumi:"urlTypeHint"`
 }
 
-// GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseArgs and GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseArgs{...}
-type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseOutput() GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseOutput
-	ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseOutput
-}
-
-// Actions on Google action to open a given url.
-type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseArgs struct {
-	// URL
-	Url pulumi.StringInput `pulumi:"url"`
-	// Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
-	UrlTypeHint pulumi.StringInput `pulumi:"urlTypeHint"`
-}
-
-func (GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseArgs) ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseOutput() GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseArgs) ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseOutput)
-}
-
 // Actions on Google action to open a given url.
 type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseOutput struct{ *pulumi.OutputState }
 
@@ -7605,68 +5477,6 @@ type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIte
 	OpenUriAction GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse `pulumi:"openUriAction"`
 	// Title of the carousel item. Maximum of two lines of text.
 	Title string `pulumi:"title"`
-}
-
-// GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArgs and GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArgs{...}
-type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseOutput() GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseOutput
-	ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseOutput
-}
-
-// Browsing carousel tile
-type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArgs struct {
-	// Optional. Description of the carousel item. Maximum of four lines of text.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Optional. Text that appears at the bottom of the Browse Carousel Card. Maximum of one line of text.
-	Footer pulumi.StringInput `pulumi:"footer"`
-	// Optional. Hero image for the carousel item.
-	Image GoogleCloudDialogflowV2IntentMessageImageResponseInput `pulumi:"image"`
-	// Action to present to the user.
-	OpenUriAction GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseInput `pulumi:"openUriAction"`
-	// Title of the carousel item. Maximum of two lines of text.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArgs) ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseOutput() GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArgs) ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseOutput)
-}
-
-// GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArrayInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArray and GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArrayInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArray{ GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArgs{...} }
-type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArrayOutput() GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArrayOutput
-	ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArrayOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArrayOutput
-}
-
-type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArray []GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseInput
-
-func (GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArray) ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArrayOutput() GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArrayOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArray) ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArrayOutput)
 }
 
 // Browsing carousel tile
@@ -7745,37 +5555,6 @@ type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponse struct {
 	ImageDisplayOptions string `pulumi:"imageDisplayOptions"`
 	// List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
 	Items []GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse `pulumi:"items"`
-}
-
-// GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponseArgs and GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponseArgs{...}
-type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponseOutput() GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponseOutput
-	ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponseOutput
-}
-
-// Browse Carousel Card for Actions on Google. https://developers.google.com/actions/assistant/responses#browsing_carousel
-type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponseArgs struct {
-	// Optional. Settings for displaying the image. Applies to every image in items.
-	ImageDisplayOptions pulumi.StringInput `pulumi:"imageDisplayOptions"`
-	// List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
-	Items GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArrayInput `pulumi:"items"`
-}
-
-func (GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponseArgs) ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponseOutput() GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponseArgs) ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponseOutput)
 }
 
 // Browse Carousel Card for Actions on Google. https://developers.google.com/actions/assistant/responses#browsing_carousel
@@ -8123,62 +5902,6 @@ type GoogleCloudDialogflowV2IntentMessageCardButtonResponse struct {
 	Text string `pulumi:"text"`
 }
 
-// GoogleCloudDialogflowV2IntentMessageCardButtonResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageCardButtonResponseArgs and GoogleCloudDialogflowV2IntentMessageCardButtonResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageCardButtonResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageCardButtonResponseArgs{...}
-type GoogleCloudDialogflowV2IntentMessageCardButtonResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageCardButtonResponseOutput() GoogleCloudDialogflowV2IntentMessageCardButtonResponseOutput
-	ToGoogleCloudDialogflowV2IntentMessageCardButtonResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageCardButtonResponseOutput
-}
-
-// Contains information about a button.
-type GoogleCloudDialogflowV2IntentMessageCardButtonResponseArgs struct {
-	// Optional. The text to send back to the Dialogflow API or a URI to open.
-	Postback pulumi.StringInput `pulumi:"postback"`
-	// Optional. The text to show on the button.
-	Text pulumi.StringInput `pulumi:"text"`
-}
-
-func (GoogleCloudDialogflowV2IntentMessageCardButtonResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageCardButtonResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageCardButtonResponseArgs) ToGoogleCloudDialogflowV2IntentMessageCardButtonResponseOutput() GoogleCloudDialogflowV2IntentMessageCardButtonResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageCardButtonResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageCardButtonResponseArgs) ToGoogleCloudDialogflowV2IntentMessageCardButtonResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageCardButtonResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageCardButtonResponseOutput)
-}
-
-// GoogleCloudDialogflowV2IntentMessageCardButtonResponseArrayInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageCardButtonResponseArray and GoogleCloudDialogflowV2IntentMessageCardButtonResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageCardButtonResponseArrayInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageCardButtonResponseArray{ GoogleCloudDialogflowV2IntentMessageCardButtonResponseArgs{...} }
-type GoogleCloudDialogflowV2IntentMessageCardButtonResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageCardButtonResponseArrayOutput() GoogleCloudDialogflowV2IntentMessageCardButtonResponseArrayOutput
-	ToGoogleCloudDialogflowV2IntentMessageCardButtonResponseArrayOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageCardButtonResponseArrayOutput
-}
-
-type GoogleCloudDialogflowV2IntentMessageCardButtonResponseArray []GoogleCloudDialogflowV2IntentMessageCardButtonResponseInput
-
-func (GoogleCloudDialogflowV2IntentMessageCardButtonResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDialogflowV2IntentMessageCardButtonResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageCardButtonResponseArray) ToGoogleCloudDialogflowV2IntentMessageCardButtonResponseArrayOutput() GoogleCloudDialogflowV2IntentMessageCardButtonResponseArrayOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageCardButtonResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageCardButtonResponseArray) ToGoogleCloudDialogflowV2IntentMessageCardButtonResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageCardButtonResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageCardButtonResponseArrayOutput)
-}
-
 // Contains information about a button.
 type GoogleCloudDialogflowV2IntentMessageCardButtonResponseOutput struct{ *pulumi.OutputState }
 
@@ -8234,41 +5957,6 @@ type GoogleCloudDialogflowV2IntentMessageCardResponse struct {
 	Subtitle string `pulumi:"subtitle"`
 	// Optional. The title of the card.
 	Title string `pulumi:"title"`
-}
-
-// GoogleCloudDialogflowV2IntentMessageCardResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageCardResponseArgs and GoogleCloudDialogflowV2IntentMessageCardResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageCardResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageCardResponseArgs{...}
-type GoogleCloudDialogflowV2IntentMessageCardResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageCardResponseOutput() GoogleCloudDialogflowV2IntentMessageCardResponseOutput
-	ToGoogleCloudDialogflowV2IntentMessageCardResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageCardResponseOutput
-}
-
-// The card response message.
-type GoogleCloudDialogflowV2IntentMessageCardResponseArgs struct {
-	// Optional. The collection of card buttons.
-	Buttons GoogleCloudDialogflowV2IntentMessageCardButtonResponseArrayInput `pulumi:"buttons"`
-	// Optional. The public URI to an image file for the card.
-	ImageUri pulumi.StringInput `pulumi:"imageUri"`
-	// Optional. The subtitle of the card.
-	Subtitle pulumi.StringInput `pulumi:"subtitle"`
-	// Optional. The title of the card.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (GoogleCloudDialogflowV2IntentMessageCardResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageCardResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageCardResponseArgs) ToGoogleCloudDialogflowV2IntentMessageCardResponseOutput() GoogleCloudDialogflowV2IntentMessageCardResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageCardResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageCardResponseArgs) ToGoogleCloudDialogflowV2IntentMessageCardResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageCardResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageCardResponseOutput)
 }
 
 // The card response message.
@@ -8593,66 +6281,6 @@ type GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse struct {
 	Title string `pulumi:"title"`
 }
 
-// GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArgs and GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArgs{...}
-type GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseOutput() GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseOutput
-	ToGoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseOutput
-}
-
-// An item in the carousel.
-type GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArgs struct {
-	// Optional. The body text of the card.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Optional. The image to display.
-	Image GoogleCloudDialogflowV2IntentMessageImageResponseInput `pulumi:"image"`
-	// Additional info about the option item.
-	Info GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseInput `pulumi:"info"`
-	// Title of the carousel item.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArgs) ToGoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseOutput() GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArgs) ToGoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseOutput)
-}
-
-// GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArrayInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArray and GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArrayInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArray{ GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArgs{...} }
-type GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArrayOutput() GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArrayOutput
-	ToGoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArrayOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArrayOutput
-}
-
-type GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArray []GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseInput
-
-func (GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArray) ToGoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArrayOutput() GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArrayOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArray) ToGoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArrayOutput)
-}
-
 // An item in the carousel.
 type GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseOutput struct{ *pulumi.OutputState }
 
@@ -8716,35 +6344,6 @@ func (o GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArrayOutpu
 type GoogleCloudDialogflowV2IntentMessageCarouselSelectResponse struct {
 	// Carousel items.
 	Items []GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse `pulumi:"items"`
-}
-
-// GoogleCloudDialogflowV2IntentMessageCarouselSelectResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageCarouselSelectResponseArgs and GoogleCloudDialogflowV2IntentMessageCarouselSelectResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageCarouselSelectResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageCarouselSelectResponseArgs{...}
-type GoogleCloudDialogflowV2IntentMessageCarouselSelectResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageCarouselSelectResponseOutput() GoogleCloudDialogflowV2IntentMessageCarouselSelectResponseOutput
-	ToGoogleCloudDialogflowV2IntentMessageCarouselSelectResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageCarouselSelectResponseOutput
-}
-
-// The card for presenting a carousel of options to select from.
-type GoogleCloudDialogflowV2IntentMessageCarouselSelectResponseArgs struct {
-	// Carousel items.
-	Items GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArrayInput `pulumi:"items"`
-}
-
-func (GoogleCloudDialogflowV2IntentMessageCarouselSelectResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageCarouselSelectResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageCarouselSelectResponseArgs) ToGoogleCloudDialogflowV2IntentMessageCarouselSelectResponseOutput() GoogleCloudDialogflowV2IntentMessageCarouselSelectResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageCarouselSelectResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageCarouselSelectResponseArgs) ToGoogleCloudDialogflowV2IntentMessageCarouselSelectResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageCarouselSelectResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageCarouselSelectResponseOutput)
 }
 
 // The card for presenting a carousel of options to select from.
@@ -8886,62 +6485,6 @@ type GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponse struct {
 	Header string `pulumi:"header"`
 	// Optional. Defines text alignment for all cells in this column.
 	HorizontalAlignment string `pulumi:"horizontalAlignment"`
-}
-
-// GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArgs and GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArgs{...}
-type GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseOutput() GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseOutput
-	ToGoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseOutput
-}
-
-// Column properties for TableCard.
-type GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArgs struct {
-	// Column heading.
-	Header pulumi.StringInput `pulumi:"header"`
-	// Optional. Defines text alignment for all cells in this column.
-	HorizontalAlignment pulumi.StringInput `pulumi:"horizontalAlignment"`
-}
-
-func (GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArgs) ToGoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseOutput() GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArgs) ToGoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseOutput)
-}
-
-// GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArrayInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArray and GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArrayInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArray{ GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArgs{...} }
-type GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArrayOutput() GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArrayOutput
-	ToGoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArrayOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArrayOutput
-}
-
-type GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArray []GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseInput
-
-func (GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArray) ToGoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArrayOutput() GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArrayOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArray) ToGoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArrayOutput)
 }
 
 // Column properties for TableCard.
@@ -9158,37 +6701,6 @@ type GoogleCloudDialogflowV2IntentMessageImageResponse struct {
 	ImageUri string `pulumi:"imageUri"`
 }
 
-// GoogleCloudDialogflowV2IntentMessageImageResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageImageResponseArgs and GoogleCloudDialogflowV2IntentMessageImageResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageImageResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageImageResponseArgs{...}
-type GoogleCloudDialogflowV2IntentMessageImageResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageImageResponseOutput() GoogleCloudDialogflowV2IntentMessageImageResponseOutput
-	ToGoogleCloudDialogflowV2IntentMessageImageResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageImageResponseOutput
-}
-
-// The image response message.
-type GoogleCloudDialogflowV2IntentMessageImageResponseArgs struct {
-	// Optional. A text description of the image to be used for accessibility, e.g., screen readers.
-	AccessibilityText pulumi.StringInput `pulumi:"accessibilityText"`
-	// Optional. The public URI to an image file.
-	ImageUri pulumi.StringInput `pulumi:"imageUri"`
-}
-
-func (GoogleCloudDialogflowV2IntentMessageImageResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageImageResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageImageResponseArgs) ToGoogleCloudDialogflowV2IntentMessageImageResponseOutput() GoogleCloudDialogflowV2IntentMessageImageResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageImageResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageImageResponseArgs) ToGoogleCloudDialogflowV2IntentMessageImageResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageImageResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageImageResponseOutput)
-}
-
 // The image response message.
 type GoogleCloudDialogflowV2IntentMessageImageResponseOutput struct{ *pulumi.OutputState }
 
@@ -9379,37 +6891,6 @@ type GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponse struct {
 	DestinationName string `pulumi:"destinationName"`
 	// The URI of the app or site to open when the user taps the suggestion chip.
 	Uri string `pulumi:"uri"`
-}
-
-// GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponseArgs and GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponseArgs{...}
-type GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponseOutput() GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponseOutput
-	ToGoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponseOutput
-}
-
-// The suggestion chip message that allows the user to jump out to the app or website associated with this agent.
-type GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponseArgs struct {
-	// The name of the app or site this chip is linking to.
-	DestinationName pulumi.StringInput `pulumi:"destinationName"`
-	// The URI of the app or site to open when the user taps the suggestion chip.
-	Uri pulumi.StringInput `pulumi:"uri"`
-}
-
-func (GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponseArgs) ToGoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponseOutput() GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponseArgs) ToGoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponseOutput)
 }
 
 // The suggestion chip message that allows the user to jump out to the app or website associated with this agent.
@@ -9760,66 +7241,6 @@ type GoogleCloudDialogflowV2IntentMessageListSelectItemResponse struct {
 	Title string `pulumi:"title"`
 }
 
-// GoogleCloudDialogflowV2IntentMessageListSelectItemResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArgs and GoogleCloudDialogflowV2IntentMessageListSelectItemResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageListSelectItemResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArgs{...}
-type GoogleCloudDialogflowV2IntentMessageListSelectItemResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageListSelectItemResponseOutput() GoogleCloudDialogflowV2IntentMessageListSelectItemResponseOutput
-	ToGoogleCloudDialogflowV2IntentMessageListSelectItemResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageListSelectItemResponseOutput
-}
-
-// An item in the list.
-type GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArgs struct {
-	// Optional. The main text describing the item.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Optional. The image to display.
-	Image GoogleCloudDialogflowV2IntentMessageImageResponseInput `pulumi:"image"`
-	// Additional information about this option.
-	Info GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseInput `pulumi:"info"`
-	// The title of the list item.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageListSelectItemResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArgs) ToGoogleCloudDialogflowV2IntentMessageListSelectItemResponseOutput() GoogleCloudDialogflowV2IntentMessageListSelectItemResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageListSelectItemResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArgs) ToGoogleCloudDialogflowV2IntentMessageListSelectItemResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageListSelectItemResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageListSelectItemResponseOutput)
-}
-
-// GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArrayInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArray and GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArrayInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArray{ GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArgs{...} }
-type GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageListSelectItemResponseArrayOutput() GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArrayOutput
-	ToGoogleCloudDialogflowV2IntentMessageListSelectItemResponseArrayOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArrayOutput
-}
-
-type GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArray []GoogleCloudDialogflowV2IntentMessageListSelectItemResponseInput
-
-func (GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDialogflowV2IntentMessageListSelectItemResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArray) ToGoogleCloudDialogflowV2IntentMessageListSelectItemResponseArrayOutput() GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArrayOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageListSelectItemResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArray) ToGoogleCloudDialogflowV2IntentMessageListSelectItemResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArrayOutput)
-}
-
 // An item in the list.
 type GoogleCloudDialogflowV2IntentMessageListSelectItemResponseOutput struct{ *pulumi.OutputState }
 
@@ -9887,39 +7308,6 @@ type GoogleCloudDialogflowV2IntentMessageListSelectResponse struct {
 	Subtitle string `pulumi:"subtitle"`
 	// Optional. The overall title of the list.
 	Title string `pulumi:"title"`
-}
-
-// GoogleCloudDialogflowV2IntentMessageListSelectResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageListSelectResponseArgs and GoogleCloudDialogflowV2IntentMessageListSelectResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageListSelectResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageListSelectResponseArgs{...}
-type GoogleCloudDialogflowV2IntentMessageListSelectResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageListSelectResponseOutput() GoogleCloudDialogflowV2IntentMessageListSelectResponseOutput
-	ToGoogleCloudDialogflowV2IntentMessageListSelectResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageListSelectResponseOutput
-}
-
-// The card for presenting a list of options to select from.
-type GoogleCloudDialogflowV2IntentMessageListSelectResponseArgs struct {
-	// List items.
-	Items GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArrayInput `pulumi:"items"`
-	// Optional. Subtitle of the list.
-	Subtitle pulumi.StringInput `pulumi:"subtitle"`
-	// Optional. The overall title of the list.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (GoogleCloudDialogflowV2IntentMessageListSelectResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageListSelectResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageListSelectResponseArgs) ToGoogleCloudDialogflowV2IntentMessageListSelectResponseOutput() GoogleCloudDialogflowV2IntentMessageListSelectResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageListSelectResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageListSelectResponseArgs) ToGoogleCloudDialogflowV2IntentMessageListSelectResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageListSelectResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageListSelectResponseOutput)
 }
 
 // The card for presenting a list of options to select from.
@@ -10125,37 +7513,6 @@ type GoogleCloudDialogflowV2IntentMessageMediaContentResponse struct {
 	MediaType string `pulumi:"mediaType"`
 }
 
-// GoogleCloudDialogflowV2IntentMessageMediaContentResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageMediaContentResponseArgs and GoogleCloudDialogflowV2IntentMessageMediaContentResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageMediaContentResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageMediaContentResponseArgs{...}
-type GoogleCloudDialogflowV2IntentMessageMediaContentResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageMediaContentResponseOutput() GoogleCloudDialogflowV2IntentMessageMediaContentResponseOutput
-	ToGoogleCloudDialogflowV2IntentMessageMediaContentResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageMediaContentResponseOutput
-}
-
-// The media content card for Actions on Google.
-type GoogleCloudDialogflowV2IntentMessageMediaContentResponseArgs struct {
-	// List of media objects.
-	MediaObjects GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArrayInput `pulumi:"mediaObjects"`
-	// Optional. What type of media is the content (ie "audio").
-	MediaType pulumi.StringInput `pulumi:"mediaType"`
-}
-
-func (GoogleCloudDialogflowV2IntentMessageMediaContentResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageMediaContentResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageMediaContentResponseArgs) ToGoogleCloudDialogflowV2IntentMessageMediaContentResponseOutput() GoogleCloudDialogflowV2IntentMessageMediaContentResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageMediaContentResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageMediaContentResponseArgs) ToGoogleCloudDialogflowV2IntentMessageMediaContentResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageMediaContentResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageMediaContentResponseOutput)
-}
-
 // The media content card for Actions on Google.
 type GoogleCloudDialogflowV2IntentMessageMediaContentResponseOutput struct{ *pulumi.OutputState }
 
@@ -10339,68 +7696,6 @@ type GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponse
 	LargeImage GoogleCloudDialogflowV2IntentMessageImageResponse `pulumi:"largeImage"`
 	// Name of media card.
 	Name string `pulumi:"name"`
-}
-
-// GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArgs and GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArgs{...}
-type GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseOutput() GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseOutput
-	ToGoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseOutput
-}
-
-// Response media object for media content card.
-type GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArgs struct {
-	// Url where the media is stored.
-	ContentUrl pulumi.StringInput `pulumi:"contentUrl"`
-	// Optional. Description of media card.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Optional. Icon to display above media content.
-	Icon GoogleCloudDialogflowV2IntentMessageImageResponseInput `pulumi:"icon"`
-	// Optional. Image to display above media content.
-	LargeImage GoogleCloudDialogflowV2IntentMessageImageResponseInput `pulumi:"largeImage"`
-	// Name of media card.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArgs) ToGoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseOutput() GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArgs) ToGoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseOutput)
-}
-
-// GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArrayInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArray and GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArrayInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArray{ GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArgs{...} }
-type GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArrayOutput() GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArrayOutput
-	ToGoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArrayOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArrayOutput
-}
-
-type GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArray []GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseInput
-
-func (GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArray) ToGoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArrayOutput() GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArrayOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArray) ToGoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArrayOutput)
 }
 
 // Response media object for media content card.
@@ -10640,37 +7935,6 @@ type GoogleCloudDialogflowV2IntentMessageQuickRepliesResponse struct {
 	Title string `pulumi:"title"`
 }
 
-// GoogleCloudDialogflowV2IntentMessageQuickRepliesResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageQuickRepliesResponseArgs and GoogleCloudDialogflowV2IntentMessageQuickRepliesResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageQuickRepliesResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageQuickRepliesResponseArgs{...}
-type GoogleCloudDialogflowV2IntentMessageQuickRepliesResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageQuickRepliesResponseOutput() GoogleCloudDialogflowV2IntentMessageQuickRepliesResponseOutput
-	ToGoogleCloudDialogflowV2IntentMessageQuickRepliesResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageQuickRepliesResponseOutput
-}
-
-// The quick replies response message.
-type GoogleCloudDialogflowV2IntentMessageQuickRepliesResponseArgs struct {
-	// Optional. The collection of quick replies.
-	QuickReplies pulumi.StringArrayInput `pulumi:"quickReplies"`
-	// Optional. The title of the collection of quick replies.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (GoogleCloudDialogflowV2IntentMessageQuickRepliesResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageQuickRepliesResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageQuickRepliesResponseArgs) ToGoogleCloudDialogflowV2IntentMessageQuickRepliesResponseOutput() GoogleCloudDialogflowV2IntentMessageQuickRepliesResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageQuickRepliesResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageQuickRepliesResponseArgs) ToGoogleCloudDialogflowV2IntentMessageQuickRepliesResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageQuickRepliesResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageQuickRepliesResponseOutput)
-}
-
 // The quick replies response message.
 type GoogleCloudDialogflowV2IntentMessageQuickRepliesResponseOutput struct{ *pulumi.OutputState }
 
@@ -10728,88 +7992,6 @@ type GoogleCloudDialogflowV2IntentMessageResponse struct {
 	TableCard GoogleCloudDialogflowV2IntentMessageTableCardResponse `pulumi:"tableCard"`
 	// The text response.
 	Text GoogleCloudDialogflowV2IntentMessageTextResponse `pulumi:"text"`
-}
-
-// GoogleCloudDialogflowV2IntentMessageResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageResponseArgs and GoogleCloudDialogflowV2IntentMessageResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageResponseArgs{...}
-type GoogleCloudDialogflowV2IntentMessageResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageResponseOutput() GoogleCloudDialogflowV2IntentMessageResponseOutput
-	ToGoogleCloudDialogflowV2IntentMessageResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageResponseOutput
-}
-
-// A rich response message. Corresponds to the intent `Response` field in the Dialogflow console. For more information, see [Rich response messages](https://cloud.google.com/dialogflow/docs/intents-rich-messages).
-type GoogleCloudDialogflowV2IntentMessageResponseArgs struct {
-	// The basic card response for Actions on Google.
-	BasicCard GoogleCloudDialogflowV2IntentMessageBasicCardResponseInput `pulumi:"basicCard"`
-	// Browse carousel card for Actions on Google.
-	BrowseCarouselCard GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponseInput `pulumi:"browseCarouselCard"`
-	// The card response.
-	Card GoogleCloudDialogflowV2IntentMessageCardResponseInput `pulumi:"card"`
-	// The carousel card response for Actions on Google.
-	CarouselSelect GoogleCloudDialogflowV2IntentMessageCarouselSelectResponseInput `pulumi:"carouselSelect"`
-	// The image response.
-	Image GoogleCloudDialogflowV2IntentMessageImageResponseInput `pulumi:"image"`
-	// The link out suggestion chip for Actions on Google.
-	LinkOutSuggestion GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponseInput `pulumi:"linkOutSuggestion"`
-	// The list card response for Actions on Google.
-	ListSelect GoogleCloudDialogflowV2IntentMessageListSelectResponseInput `pulumi:"listSelect"`
-	// The media content card for Actions on Google.
-	MediaContent GoogleCloudDialogflowV2IntentMessageMediaContentResponseInput `pulumi:"mediaContent"`
-	// A custom platform-specific response.
-	Payload pulumi.StringMapInput `pulumi:"payload"`
-	// Optional. The platform that this message is intended for.
-	Platform pulumi.StringInput `pulumi:"platform"`
-	// The quick replies response.
-	QuickReplies GoogleCloudDialogflowV2IntentMessageQuickRepliesResponseInput `pulumi:"quickReplies"`
-	// The voice and text-only responses for Actions on Google.
-	SimpleResponses GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponseInput `pulumi:"simpleResponses"`
-	// The suggestion chips for Actions on Google.
-	Suggestions GoogleCloudDialogflowV2IntentMessageSuggestionsResponseInput `pulumi:"suggestions"`
-	// Table card for Actions on Google.
-	TableCard GoogleCloudDialogflowV2IntentMessageTableCardResponseInput `pulumi:"tableCard"`
-	// The text response.
-	Text GoogleCloudDialogflowV2IntentMessageTextResponseInput `pulumi:"text"`
-}
-
-func (GoogleCloudDialogflowV2IntentMessageResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageResponseArgs) ToGoogleCloudDialogflowV2IntentMessageResponseOutput() GoogleCloudDialogflowV2IntentMessageResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageResponseArgs) ToGoogleCloudDialogflowV2IntentMessageResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageResponseOutput)
-}
-
-// GoogleCloudDialogflowV2IntentMessageResponseArrayInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageResponseArray and GoogleCloudDialogflowV2IntentMessageResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageResponseArrayInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageResponseArray{ GoogleCloudDialogflowV2IntentMessageResponseArgs{...} }
-type GoogleCloudDialogflowV2IntentMessageResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageResponseArrayOutput() GoogleCloudDialogflowV2IntentMessageResponseArrayOutput
-	ToGoogleCloudDialogflowV2IntentMessageResponseArrayOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageResponseArrayOutput
-}
-
-type GoogleCloudDialogflowV2IntentMessageResponseArray []GoogleCloudDialogflowV2IntentMessageResponseInput
-
-func (GoogleCloudDialogflowV2IntentMessageResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDialogflowV2IntentMessageResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageResponseArray) ToGoogleCloudDialogflowV2IntentMessageResponseArrayOutput() GoogleCloudDialogflowV2IntentMessageResponseArrayOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageResponseArray) ToGoogleCloudDialogflowV2IntentMessageResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageResponseArrayOutput)
 }
 
 // A rich response message. Corresponds to the intent `Response` field in the Dialogflow console. For more information, see [Rich response messages](https://cloud.google.com/dialogflow/docs/intents-rich-messages).
@@ -11020,37 +8202,6 @@ type GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponse struct {
 	Synonyms []string `pulumi:"synonyms"`
 }
 
-// GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseArgs and GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseArgs{...}
-type GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseOutput() GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseOutput
-	ToGoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseOutput
-}
-
-// Additional info about the select item for when it is triggered in a dialog.
-type GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseArgs struct {
-	// A unique key that will be sent back to the agent if this response is given.
-	Key pulumi.StringInput `pulumi:"key"`
-	// Optional. A list of synonyms that can also be used to trigger this item in dialog.
-	Synonyms pulumi.StringArrayInput `pulumi:"synonyms"`
-}
-
-func (GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseArgs) ToGoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseOutput() GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseArgs) ToGoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseOutput)
-}
-
 // Additional info about the select item for when it is triggered in a dialog.
 type GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseOutput struct{ *pulumi.OutputState }
 
@@ -11202,64 +8353,6 @@ type GoogleCloudDialogflowV2IntentMessageSimpleResponseResponse struct {
 	Ssml string `pulumi:"ssml"`
 	// One of text_to_speech or ssml must be provided. The plain text of the speech output. Mutually exclusive with ssml.
 	TextToSpeech string `pulumi:"textToSpeech"`
-}
-
-// GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArgs and GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArgs{...}
-type GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageSimpleResponseResponseOutput() GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseOutput
-	ToGoogleCloudDialogflowV2IntentMessageSimpleResponseResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseOutput
-}
-
-// The simple response message containing speech or text.
-type GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArgs struct {
-	// Optional. The text to display.
-	DisplayText pulumi.StringInput `pulumi:"displayText"`
-	// One of text_to_speech or ssml must be provided. Structured spoken response to the user in the SSML format. Mutually exclusive with text_to_speech.
-	Ssml pulumi.StringInput `pulumi:"ssml"`
-	// One of text_to_speech or ssml must be provided. The plain text of the speech output. Mutually exclusive with ssml.
-	TextToSpeech pulumi.StringInput `pulumi:"textToSpeech"`
-}
-
-func (GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageSimpleResponseResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArgs) ToGoogleCloudDialogflowV2IntentMessageSimpleResponseResponseOutput() GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageSimpleResponseResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArgs) ToGoogleCloudDialogflowV2IntentMessageSimpleResponseResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseOutput)
-}
-
-// GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArrayInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArray and GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArrayInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArray{ GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArgs{...} }
-type GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArrayOutput() GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArrayOutput
-	ToGoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArrayOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArrayOutput
-}
-
-type GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArray []GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseInput
-
-func (GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDialogflowV2IntentMessageSimpleResponseResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArray) ToGoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArrayOutput() GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArrayOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArray) ToGoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArrayOutput)
 }
 
 // The simple response message containing speech or text.
@@ -11460,35 +8553,6 @@ type GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponse struct {
 	SimpleResponses []GoogleCloudDialogflowV2IntentMessageSimpleResponseResponse `pulumi:"simpleResponses"`
 }
 
-// GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponseArgs and GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponseArgs{...}
-type GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageSimpleResponsesResponseOutput() GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponseOutput
-	ToGoogleCloudDialogflowV2IntentMessageSimpleResponsesResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponseOutput
-}
-
-// The collection of simple response candidates. This message in `QueryResult.fulfillment_messages` and `WebhookResponse.fulfillment_messages` should contain only one `SimpleResponse`.
-type GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponseArgs struct {
-	// The list of simple responses.
-	SimpleResponses GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArrayInput `pulumi:"simpleResponses"`
-}
-
-func (GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponseArgs) ToGoogleCloudDialogflowV2IntentMessageSimpleResponsesResponseOutput() GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageSimpleResponsesResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponseArgs) ToGoogleCloudDialogflowV2IntentMessageSimpleResponsesResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponseOutput)
-}
-
 // The collection of simple response candidates. This message in `QueryResult.fulfillment_messages` and `WebhookResponse.fulfillment_messages` should contain only one `SimpleResponse`.
 type GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponseOutput struct{ *pulumi.OutputState }
 
@@ -11615,60 +8679,6 @@ func (o GoogleCloudDialogflowV2IntentMessageSuggestionArrayOutput) Index(i pulum
 type GoogleCloudDialogflowV2IntentMessageSuggestionResponse struct {
 	// The text shown the in the suggestion chip.
 	Title string `pulumi:"title"`
-}
-
-// GoogleCloudDialogflowV2IntentMessageSuggestionResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageSuggestionResponseArgs and GoogleCloudDialogflowV2IntentMessageSuggestionResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageSuggestionResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageSuggestionResponseArgs{...}
-type GoogleCloudDialogflowV2IntentMessageSuggestionResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageSuggestionResponseOutput() GoogleCloudDialogflowV2IntentMessageSuggestionResponseOutput
-	ToGoogleCloudDialogflowV2IntentMessageSuggestionResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageSuggestionResponseOutput
-}
-
-// The suggestion chip message that the user can tap to quickly post a reply to the conversation.
-type GoogleCloudDialogflowV2IntentMessageSuggestionResponseArgs struct {
-	// The text shown the in the suggestion chip.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (GoogleCloudDialogflowV2IntentMessageSuggestionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageSuggestionResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageSuggestionResponseArgs) ToGoogleCloudDialogflowV2IntentMessageSuggestionResponseOutput() GoogleCloudDialogflowV2IntentMessageSuggestionResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageSuggestionResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageSuggestionResponseArgs) ToGoogleCloudDialogflowV2IntentMessageSuggestionResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageSuggestionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageSuggestionResponseOutput)
-}
-
-// GoogleCloudDialogflowV2IntentMessageSuggestionResponseArrayInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageSuggestionResponseArray and GoogleCloudDialogflowV2IntentMessageSuggestionResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageSuggestionResponseArrayInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageSuggestionResponseArray{ GoogleCloudDialogflowV2IntentMessageSuggestionResponseArgs{...} }
-type GoogleCloudDialogflowV2IntentMessageSuggestionResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageSuggestionResponseArrayOutput() GoogleCloudDialogflowV2IntentMessageSuggestionResponseArrayOutput
-	ToGoogleCloudDialogflowV2IntentMessageSuggestionResponseArrayOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageSuggestionResponseArrayOutput
-}
-
-type GoogleCloudDialogflowV2IntentMessageSuggestionResponseArray []GoogleCloudDialogflowV2IntentMessageSuggestionResponseInput
-
-func (GoogleCloudDialogflowV2IntentMessageSuggestionResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDialogflowV2IntentMessageSuggestionResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageSuggestionResponseArray) ToGoogleCloudDialogflowV2IntentMessageSuggestionResponseArrayOutput() GoogleCloudDialogflowV2IntentMessageSuggestionResponseArrayOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageSuggestionResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageSuggestionResponseArray) ToGoogleCloudDialogflowV2IntentMessageSuggestionResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageSuggestionResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageSuggestionResponseArrayOutput)
 }
 
 // The suggestion chip message that the user can tap to quickly post a reply to the conversation.
@@ -11857,35 +8867,6 @@ func (o GoogleCloudDialogflowV2IntentMessageSuggestionsPtrOutput) Suggestions() 
 type GoogleCloudDialogflowV2IntentMessageSuggestionsResponse struct {
 	// The list of suggested replies.
 	Suggestions []GoogleCloudDialogflowV2IntentMessageSuggestionResponse `pulumi:"suggestions"`
-}
-
-// GoogleCloudDialogflowV2IntentMessageSuggestionsResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageSuggestionsResponseArgs and GoogleCloudDialogflowV2IntentMessageSuggestionsResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageSuggestionsResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageSuggestionsResponseArgs{...}
-type GoogleCloudDialogflowV2IntentMessageSuggestionsResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageSuggestionsResponseOutput() GoogleCloudDialogflowV2IntentMessageSuggestionsResponseOutput
-	ToGoogleCloudDialogflowV2IntentMessageSuggestionsResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageSuggestionsResponseOutput
-}
-
-// The collection of suggestions.
-type GoogleCloudDialogflowV2IntentMessageSuggestionsResponseArgs struct {
-	// The list of suggested replies.
-	Suggestions GoogleCloudDialogflowV2IntentMessageSuggestionResponseArrayInput `pulumi:"suggestions"`
-}
-
-func (GoogleCloudDialogflowV2IntentMessageSuggestionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageSuggestionsResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageSuggestionsResponseArgs) ToGoogleCloudDialogflowV2IntentMessageSuggestionsResponseOutput() GoogleCloudDialogflowV2IntentMessageSuggestionsResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageSuggestionsResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageSuggestionsResponseArgs) ToGoogleCloudDialogflowV2IntentMessageSuggestionsResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageSuggestionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageSuggestionsResponseOutput)
 }
 
 // The collection of suggestions.
@@ -12259,60 +9240,6 @@ type GoogleCloudDialogflowV2IntentMessageTableCardCellResponse struct {
 	Text string `pulumi:"text"`
 }
 
-// GoogleCloudDialogflowV2IntentMessageTableCardCellResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageTableCardCellResponseArgs and GoogleCloudDialogflowV2IntentMessageTableCardCellResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageTableCardCellResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageTableCardCellResponseArgs{...}
-type GoogleCloudDialogflowV2IntentMessageTableCardCellResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageTableCardCellResponseOutput() GoogleCloudDialogflowV2IntentMessageTableCardCellResponseOutput
-	ToGoogleCloudDialogflowV2IntentMessageTableCardCellResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageTableCardCellResponseOutput
-}
-
-// Cell of TableCardRow.
-type GoogleCloudDialogflowV2IntentMessageTableCardCellResponseArgs struct {
-	// Text in this cell.
-	Text pulumi.StringInput `pulumi:"text"`
-}
-
-func (GoogleCloudDialogflowV2IntentMessageTableCardCellResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageTableCardCellResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageTableCardCellResponseArgs) ToGoogleCloudDialogflowV2IntentMessageTableCardCellResponseOutput() GoogleCloudDialogflowV2IntentMessageTableCardCellResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageTableCardCellResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageTableCardCellResponseArgs) ToGoogleCloudDialogflowV2IntentMessageTableCardCellResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageTableCardCellResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageTableCardCellResponseOutput)
-}
-
-// GoogleCloudDialogflowV2IntentMessageTableCardCellResponseArrayInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageTableCardCellResponseArray and GoogleCloudDialogflowV2IntentMessageTableCardCellResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageTableCardCellResponseArrayInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageTableCardCellResponseArray{ GoogleCloudDialogflowV2IntentMessageTableCardCellResponseArgs{...} }
-type GoogleCloudDialogflowV2IntentMessageTableCardCellResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageTableCardCellResponseArrayOutput() GoogleCloudDialogflowV2IntentMessageTableCardCellResponseArrayOutput
-	ToGoogleCloudDialogflowV2IntentMessageTableCardCellResponseArrayOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageTableCardCellResponseArrayOutput
-}
-
-type GoogleCloudDialogflowV2IntentMessageTableCardCellResponseArray []GoogleCloudDialogflowV2IntentMessageTableCardCellResponseInput
-
-func (GoogleCloudDialogflowV2IntentMessageTableCardCellResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDialogflowV2IntentMessageTableCardCellResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageTableCardCellResponseArray) ToGoogleCloudDialogflowV2IntentMessageTableCardCellResponseArrayOutput() GoogleCloudDialogflowV2IntentMessageTableCardCellResponseArrayOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageTableCardCellResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageTableCardCellResponseArray) ToGoogleCloudDialogflowV2IntentMessageTableCardCellResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageTableCardCellResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageTableCardCellResponseArrayOutput)
-}
-
 // Cell of TableCardRow.
 type GoogleCloudDialogflowV2IntentMessageTableCardCellResponseOutput struct{ *pulumi.OutputState }
 
@@ -12367,45 +9294,6 @@ type GoogleCloudDialogflowV2IntentMessageTableCardResponse struct {
 	Subtitle string `pulumi:"subtitle"`
 	// Title of the card.
 	Title string `pulumi:"title"`
-}
-
-// GoogleCloudDialogflowV2IntentMessageTableCardResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageTableCardResponseArgs and GoogleCloudDialogflowV2IntentMessageTableCardResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageTableCardResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageTableCardResponseArgs{...}
-type GoogleCloudDialogflowV2IntentMessageTableCardResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageTableCardResponseOutput() GoogleCloudDialogflowV2IntentMessageTableCardResponseOutput
-	ToGoogleCloudDialogflowV2IntentMessageTableCardResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageTableCardResponseOutput
-}
-
-// Table card for Actions on Google.
-type GoogleCloudDialogflowV2IntentMessageTableCardResponseArgs struct {
-	// Optional. List of buttons for the card.
-	Buttons GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArrayInput `pulumi:"buttons"`
-	// Optional. Display properties for the columns in this table.
-	ColumnProperties GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArrayInput `pulumi:"columnProperties"`
-	// Optional. Image which should be displayed on the card.
-	Image GoogleCloudDialogflowV2IntentMessageImageResponseInput `pulumi:"image"`
-	// Optional. Rows in this table of data.
-	Rows GoogleCloudDialogflowV2IntentMessageTableCardRowResponseArrayInput `pulumi:"rows"`
-	// Optional. Subtitle to the title.
-	Subtitle pulumi.StringInput `pulumi:"subtitle"`
-	// Title of the card.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (GoogleCloudDialogflowV2IntentMessageTableCardResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageTableCardResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageTableCardResponseArgs) ToGoogleCloudDialogflowV2IntentMessageTableCardResponseOutput() GoogleCloudDialogflowV2IntentMessageTableCardResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageTableCardResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageTableCardResponseArgs) ToGoogleCloudDialogflowV2IntentMessageTableCardResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageTableCardResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageTableCardResponseOutput)
 }
 
 // Table card for Actions on Google.
@@ -12578,62 +9466,6 @@ type GoogleCloudDialogflowV2IntentMessageTableCardRowResponse struct {
 	Cells []GoogleCloudDialogflowV2IntentMessageTableCardCellResponse `pulumi:"cells"`
 	// Optional. Whether to add a visual divider after this row.
 	DividerAfter bool `pulumi:"dividerAfter"`
-}
-
-// GoogleCloudDialogflowV2IntentMessageTableCardRowResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageTableCardRowResponseArgs and GoogleCloudDialogflowV2IntentMessageTableCardRowResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageTableCardRowResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageTableCardRowResponseArgs{...}
-type GoogleCloudDialogflowV2IntentMessageTableCardRowResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageTableCardRowResponseOutput() GoogleCloudDialogflowV2IntentMessageTableCardRowResponseOutput
-	ToGoogleCloudDialogflowV2IntentMessageTableCardRowResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageTableCardRowResponseOutput
-}
-
-// Row of TableCard.
-type GoogleCloudDialogflowV2IntentMessageTableCardRowResponseArgs struct {
-	// Optional. List of cells that make up this row.
-	Cells GoogleCloudDialogflowV2IntentMessageTableCardCellResponseArrayInput `pulumi:"cells"`
-	// Optional. Whether to add a visual divider after this row.
-	DividerAfter pulumi.BoolInput `pulumi:"dividerAfter"`
-}
-
-func (GoogleCloudDialogflowV2IntentMessageTableCardRowResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageTableCardRowResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageTableCardRowResponseArgs) ToGoogleCloudDialogflowV2IntentMessageTableCardRowResponseOutput() GoogleCloudDialogflowV2IntentMessageTableCardRowResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageTableCardRowResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageTableCardRowResponseArgs) ToGoogleCloudDialogflowV2IntentMessageTableCardRowResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageTableCardRowResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageTableCardRowResponseOutput)
-}
-
-// GoogleCloudDialogflowV2IntentMessageTableCardRowResponseArrayInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageTableCardRowResponseArray and GoogleCloudDialogflowV2IntentMessageTableCardRowResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageTableCardRowResponseArrayInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageTableCardRowResponseArray{ GoogleCloudDialogflowV2IntentMessageTableCardRowResponseArgs{...} }
-type GoogleCloudDialogflowV2IntentMessageTableCardRowResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageTableCardRowResponseArrayOutput() GoogleCloudDialogflowV2IntentMessageTableCardRowResponseArrayOutput
-	ToGoogleCloudDialogflowV2IntentMessageTableCardRowResponseArrayOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageTableCardRowResponseArrayOutput
-}
-
-type GoogleCloudDialogflowV2IntentMessageTableCardRowResponseArray []GoogleCloudDialogflowV2IntentMessageTableCardRowResponseInput
-
-func (GoogleCloudDialogflowV2IntentMessageTableCardRowResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDialogflowV2IntentMessageTableCardRowResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageTableCardRowResponseArray) ToGoogleCloudDialogflowV2IntentMessageTableCardRowResponseArrayOutput() GoogleCloudDialogflowV2IntentMessageTableCardRowResponseArrayOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageTableCardRowResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageTableCardRowResponseArray) ToGoogleCloudDialogflowV2IntentMessageTableCardRowResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageTableCardRowResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageTableCardRowResponseArrayOutput)
 }
 
 // Row of TableCard.
@@ -12827,35 +9659,6 @@ func (o GoogleCloudDialogflowV2IntentMessageTextPtrOutput) Text() pulumi.StringA
 type GoogleCloudDialogflowV2IntentMessageTextResponse struct {
 	// Optional. The collection of the agent's responses.
 	Text []string `pulumi:"text"`
-}
-
-// GoogleCloudDialogflowV2IntentMessageTextResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageTextResponseArgs and GoogleCloudDialogflowV2IntentMessageTextResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageTextResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageTextResponseArgs{...}
-type GoogleCloudDialogflowV2IntentMessageTextResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageTextResponseOutput() GoogleCloudDialogflowV2IntentMessageTextResponseOutput
-	ToGoogleCloudDialogflowV2IntentMessageTextResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageTextResponseOutput
-}
-
-// The text response message.
-type GoogleCloudDialogflowV2IntentMessageTextResponseArgs struct {
-	// Optional. The collection of the agent's responses.
-	Text pulumi.StringArrayInput `pulumi:"text"`
-}
-
-func (GoogleCloudDialogflowV2IntentMessageTextResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageTextResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageTextResponseArgs) ToGoogleCloudDialogflowV2IntentMessageTextResponseOutput() GoogleCloudDialogflowV2IntentMessageTextResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageTextResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageTextResponseArgs) ToGoogleCloudDialogflowV2IntentMessageTextResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageTextResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageTextResponseOutput)
 }
 
 // The text response message.
@@ -13059,74 +9862,6 @@ type GoogleCloudDialogflowV2IntentParameterResponse struct {
 	Prompts []string `pulumi:"prompts"`
 	// Optional. The definition of the parameter value. It can be: - a constant string, - a parameter value defined as `$parameter_name`, - an original parameter value defined as `$parameter_name.original`, - a parameter value from some context defined as `#context_name.parameter_name`.
 	Value string `pulumi:"value"`
-}
-
-// GoogleCloudDialogflowV2IntentParameterResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentParameterResponseArgs and GoogleCloudDialogflowV2IntentParameterResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentParameterResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentParameterResponseArgs{...}
-type GoogleCloudDialogflowV2IntentParameterResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentParameterResponseOutput() GoogleCloudDialogflowV2IntentParameterResponseOutput
-	ToGoogleCloudDialogflowV2IntentParameterResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentParameterResponseOutput
-}
-
-// Represents intent parameters.
-type GoogleCloudDialogflowV2IntentParameterResponseArgs struct {
-	// Optional. The default value to use when the `value` yields an empty result. Default values can be extracted from contexts by using the following syntax: `#context_name.parameter_name`.
-	DefaultValue pulumi.StringInput `pulumi:"defaultValue"`
-	// The name of the parameter.
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// Optional. The name of the entity type, prefixed with `@`, that describes values of the parameter. If the parameter is required, this must be provided.
-	EntityTypeDisplayName pulumi.StringInput `pulumi:"entityTypeDisplayName"`
-	// Optional. Indicates whether the parameter represents a list of values.
-	IsList pulumi.BoolInput `pulumi:"isList"`
-	// Optional. Indicates whether the parameter is required. That is, whether the intent cannot be completed without collecting the parameter value.
-	Mandatory pulumi.BoolInput `pulumi:"mandatory"`
-	// The unique identifier of this parameter.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Optional. The collection of prompts that the agent can present to the user in order to collect a value for the parameter.
-	Prompts pulumi.StringArrayInput `pulumi:"prompts"`
-	// Optional. The definition of the parameter value. It can be: - a constant string, - a parameter value defined as `$parameter_name`, - an original parameter value defined as `$parameter_name.original`, - a parameter value from some context defined as `#context_name.parameter_name`.
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (GoogleCloudDialogflowV2IntentParameterResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentParameterResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentParameterResponseArgs) ToGoogleCloudDialogflowV2IntentParameterResponseOutput() GoogleCloudDialogflowV2IntentParameterResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentParameterResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentParameterResponseArgs) ToGoogleCloudDialogflowV2IntentParameterResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentParameterResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentParameterResponseOutput)
-}
-
-// GoogleCloudDialogflowV2IntentParameterResponseArrayInput is an input type that accepts GoogleCloudDialogflowV2IntentParameterResponseArray and GoogleCloudDialogflowV2IntentParameterResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentParameterResponseArrayInput` via:
-//
-//          GoogleCloudDialogflowV2IntentParameterResponseArray{ GoogleCloudDialogflowV2IntentParameterResponseArgs{...} }
-type GoogleCloudDialogflowV2IntentParameterResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentParameterResponseArrayOutput() GoogleCloudDialogflowV2IntentParameterResponseArrayOutput
-	ToGoogleCloudDialogflowV2IntentParameterResponseArrayOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentParameterResponseArrayOutput
-}
-
-type GoogleCloudDialogflowV2IntentParameterResponseArray []GoogleCloudDialogflowV2IntentParameterResponseInput
-
-func (GoogleCloudDialogflowV2IntentParameterResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDialogflowV2IntentParameterResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentParameterResponseArray) ToGoogleCloudDialogflowV2IntentParameterResponseArrayOutput() GoogleCloudDialogflowV2IntentParameterResponseArrayOutput {
-	return i.ToGoogleCloudDialogflowV2IntentParameterResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentParameterResponseArray) ToGoogleCloudDialogflowV2IntentParameterResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentParameterResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentParameterResponseArrayOutput)
 }
 
 // Represents intent parameters.
@@ -13465,66 +10200,6 @@ type GoogleCloudDialogflowV2IntentTrainingPhrasePartResponse struct {
 	UserDefined bool `pulumi:"userDefined"`
 }
 
-// GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArgs and GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArgs{...}
-type GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentTrainingPhrasePartResponseOutput() GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseOutput
-	ToGoogleCloudDialogflowV2IntentTrainingPhrasePartResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseOutput
-}
-
-// Represents a part of a training phrase.
-type GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArgs struct {
-	// Optional. The parameter name for the value extracted from the annotated part of the example. This field is required for annotated parts of the training phrase.
-	Alias pulumi.StringInput `pulumi:"alias"`
-	// Optional. The entity type name prefixed with `@`. This field is required for annotated parts of the training phrase.
-	EntityType pulumi.StringInput `pulumi:"entityType"`
-	// The text for this part.
-	Text pulumi.StringInput `pulumi:"text"`
-	// Optional. Indicates whether the text was manually annotated. This field is set to true when the Dialogflow Console is used to manually annotate the part. When creating an annotated part with the API, you must set this to true.
-	UserDefined pulumi.BoolInput `pulumi:"userDefined"`
-}
-
-func (GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentTrainingPhrasePartResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArgs) ToGoogleCloudDialogflowV2IntentTrainingPhrasePartResponseOutput() GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentTrainingPhrasePartResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArgs) ToGoogleCloudDialogflowV2IntentTrainingPhrasePartResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseOutput)
-}
-
-// GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArrayInput is an input type that accepts GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArray and GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArrayInput` via:
-//
-//          GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArray{ GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArgs{...} }
-type GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArrayOutput() GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArrayOutput
-	ToGoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArrayOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArrayOutput
-}
-
-type GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArray []GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseInput
-
-func (GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDialogflowV2IntentTrainingPhrasePartResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArray) ToGoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArrayOutput() GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArrayOutput {
-	return i.ToGoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArray) ToGoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArrayOutput)
-}
-
 // Represents a part of a training phrase.
 type GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseOutput struct{ *pulumi.OutputState }
 
@@ -13590,66 +10265,6 @@ type GoogleCloudDialogflowV2IntentTrainingPhraseResponse struct {
 	TimesAddedCount int `pulumi:"timesAddedCount"`
 	// The type of the training phrase.
 	Type string `pulumi:"type"`
-}
-
-// GoogleCloudDialogflowV2IntentTrainingPhraseResponseInput is an input type that accepts GoogleCloudDialogflowV2IntentTrainingPhraseResponseArgs and GoogleCloudDialogflowV2IntentTrainingPhraseResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentTrainingPhraseResponseInput` via:
-//
-//          GoogleCloudDialogflowV2IntentTrainingPhraseResponseArgs{...}
-type GoogleCloudDialogflowV2IntentTrainingPhraseResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentTrainingPhraseResponseOutput() GoogleCloudDialogflowV2IntentTrainingPhraseResponseOutput
-	ToGoogleCloudDialogflowV2IntentTrainingPhraseResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentTrainingPhraseResponseOutput
-}
-
-// Represents an example that the agent is trained on.
-type GoogleCloudDialogflowV2IntentTrainingPhraseResponseArgs struct {
-	// The unique identifier of this training phrase.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
-	Parts GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArrayInput `pulumi:"parts"`
-	// Optional. Indicates how many times this example was added to the intent. Each time a developer adds an existing sample by editing an intent or training, this counter is increased.
-	TimesAddedCount pulumi.IntInput `pulumi:"timesAddedCount"`
-	// The type of the training phrase.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GoogleCloudDialogflowV2IntentTrainingPhraseResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2IntentTrainingPhraseResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentTrainingPhraseResponseArgs) ToGoogleCloudDialogflowV2IntentTrainingPhraseResponseOutput() GoogleCloudDialogflowV2IntentTrainingPhraseResponseOutput {
-	return i.ToGoogleCloudDialogflowV2IntentTrainingPhraseResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentTrainingPhraseResponseArgs) ToGoogleCloudDialogflowV2IntentTrainingPhraseResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentTrainingPhraseResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentTrainingPhraseResponseOutput)
-}
-
-// GoogleCloudDialogflowV2IntentTrainingPhraseResponseArrayInput is an input type that accepts GoogleCloudDialogflowV2IntentTrainingPhraseResponseArray and GoogleCloudDialogflowV2IntentTrainingPhraseResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentTrainingPhraseResponseArrayInput` via:
-//
-//          GoogleCloudDialogflowV2IntentTrainingPhraseResponseArray{ GoogleCloudDialogflowV2IntentTrainingPhraseResponseArgs{...} }
-type GoogleCloudDialogflowV2IntentTrainingPhraseResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentTrainingPhraseResponseArrayOutput() GoogleCloudDialogflowV2IntentTrainingPhraseResponseArrayOutput
-	ToGoogleCloudDialogflowV2IntentTrainingPhraseResponseArrayOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentTrainingPhraseResponseArrayOutput
-}
-
-type GoogleCloudDialogflowV2IntentTrainingPhraseResponseArray []GoogleCloudDialogflowV2IntentTrainingPhraseResponseInput
-
-func (GoogleCloudDialogflowV2IntentTrainingPhraseResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDialogflowV2IntentTrainingPhraseResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2IntentTrainingPhraseResponseArray) ToGoogleCloudDialogflowV2IntentTrainingPhraseResponseArrayOutput() GoogleCloudDialogflowV2IntentTrainingPhraseResponseArrayOutput {
-	return i.ToGoogleCloudDialogflowV2IntentTrainingPhraseResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentTrainingPhraseResponseArray) ToGoogleCloudDialogflowV2IntentTrainingPhraseResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentTrainingPhraseResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentTrainingPhraseResponseArrayOutput)
 }
 
 // Represents an example that the agent is trained on.
@@ -13855,76 +10470,6 @@ type GoogleCloudDialogflowV2LoggingConfigResponse struct {
 	EnableStackdriverLogging bool `pulumi:"enableStackdriverLogging"`
 }
 
-// GoogleCloudDialogflowV2LoggingConfigResponseInput is an input type that accepts GoogleCloudDialogflowV2LoggingConfigResponseArgs and GoogleCloudDialogflowV2LoggingConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2LoggingConfigResponseInput` via:
-//
-//          GoogleCloudDialogflowV2LoggingConfigResponseArgs{...}
-type GoogleCloudDialogflowV2LoggingConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2LoggingConfigResponseOutput() GoogleCloudDialogflowV2LoggingConfigResponseOutput
-	ToGoogleCloudDialogflowV2LoggingConfigResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2LoggingConfigResponseOutput
-}
-
-// Defines logging behavior for conversation lifecycle events.
-type GoogleCloudDialogflowV2LoggingConfigResponseArgs struct {
-	// Whether to log conversation events like CONVERSATION_STARTED to Stackdriver in the conversation project as JSON format ConversationEvent protos.
-	EnableStackdriverLogging pulumi.BoolInput `pulumi:"enableStackdriverLogging"`
-}
-
-func (GoogleCloudDialogflowV2LoggingConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2LoggingConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2LoggingConfigResponseArgs) ToGoogleCloudDialogflowV2LoggingConfigResponseOutput() GoogleCloudDialogflowV2LoggingConfigResponseOutput {
-	return i.ToGoogleCloudDialogflowV2LoggingConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2LoggingConfigResponseArgs) ToGoogleCloudDialogflowV2LoggingConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2LoggingConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2LoggingConfigResponseOutput)
-}
-
-func (i GoogleCloudDialogflowV2LoggingConfigResponseArgs) ToGoogleCloudDialogflowV2LoggingConfigResponsePtrOutput() GoogleCloudDialogflowV2LoggingConfigResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2LoggingConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2LoggingConfigResponseArgs) ToGoogleCloudDialogflowV2LoggingConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2LoggingConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2LoggingConfigResponseOutput).ToGoogleCloudDialogflowV2LoggingConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDialogflowV2LoggingConfigResponsePtrInput is an input type that accepts GoogleCloudDialogflowV2LoggingConfigResponseArgs, GoogleCloudDialogflowV2LoggingConfigResponsePtr and GoogleCloudDialogflowV2LoggingConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2LoggingConfigResponsePtrInput` via:
-//
-//          GoogleCloudDialogflowV2LoggingConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDialogflowV2LoggingConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2LoggingConfigResponsePtrOutput() GoogleCloudDialogflowV2LoggingConfigResponsePtrOutput
-	ToGoogleCloudDialogflowV2LoggingConfigResponsePtrOutputWithContext(context.Context) GoogleCloudDialogflowV2LoggingConfigResponsePtrOutput
-}
-
-type googleCloudDialogflowV2LoggingConfigResponsePtrType GoogleCloudDialogflowV2LoggingConfigResponseArgs
-
-func GoogleCloudDialogflowV2LoggingConfigResponsePtr(v *GoogleCloudDialogflowV2LoggingConfigResponseArgs) GoogleCloudDialogflowV2LoggingConfigResponsePtrInput {
-	return (*googleCloudDialogflowV2LoggingConfigResponsePtrType)(v)
-}
-
-func (*googleCloudDialogflowV2LoggingConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2LoggingConfigResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDialogflowV2LoggingConfigResponsePtrType) ToGoogleCloudDialogflowV2LoggingConfigResponsePtrOutput() GoogleCloudDialogflowV2LoggingConfigResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2LoggingConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDialogflowV2LoggingConfigResponsePtrType) ToGoogleCloudDialogflowV2LoggingConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2LoggingConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2LoggingConfigResponsePtrOutput)
-}
-
 // Defines logging behavior for conversation lifecycle events.
 type GoogleCloudDialogflowV2LoggingConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -13940,53 +10485,9 @@ func (o GoogleCloudDialogflowV2LoggingConfigResponseOutput) ToGoogleCloudDialogf
 	return o
 }
 
-func (o GoogleCloudDialogflowV2LoggingConfigResponseOutput) ToGoogleCloudDialogflowV2LoggingConfigResponsePtrOutput() GoogleCloudDialogflowV2LoggingConfigResponsePtrOutput {
-	return o.ToGoogleCloudDialogflowV2LoggingConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDialogflowV2LoggingConfigResponseOutput) ToGoogleCloudDialogflowV2LoggingConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2LoggingConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2LoggingConfigResponse) *GoogleCloudDialogflowV2LoggingConfigResponse {
-		return &v
-	}).(GoogleCloudDialogflowV2LoggingConfigResponsePtrOutput)
-}
-
 // Whether to log conversation events like CONVERSATION_STARTED to Stackdriver in the conversation project as JSON format ConversationEvent protos.
 func (o GoogleCloudDialogflowV2LoggingConfigResponseOutput) EnableStackdriverLogging() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2LoggingConfigResponse) bool { return v.EnableStackdriverLogging }).(pulumi.BoolOutput)
-}
-
-type GoogleCloudDialogflowV2LoggingConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDialogflowV2LoggingConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2LoggingConfigResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDialogflowV2LoggingConfigResponsePtrOutput) ToGoogleCloudDialogflowV2LoggingConfigResponsePtrOutput() GoogleCloudDialogflowV2LoggingConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2LoggingConfigResponsePtrOutput) ToGoogleCloudDialogflowV2LoggingConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2LoggingConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2LoggingConfigResponsePtrOutput) Elem() GoogleCloudDialogflowV2LoggingConfigResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2LoggingConfigResponse) GoogleCloudDialogflowV2LoggingConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDialogflowV2LoggingConfigResponse
-		return ret
-	}).(GoogleCloudDialogflowV2LoggingConfigResponseOutput)
-}
-
-// Whether to log conversation events like CONVERSATION_STARTED to Stackdriver in the conversation project as JSON format ConversationEvent protos.
-func (o GoogleCloudDialogflowV2LoggingConfigResponsePtrOutput) EnableStackdriverLogging() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2LoggingConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.EnableStackdriverLogging
-	}).(pulumi.BoolPtrOutput)
 }
 
 // Defines notification behavior.
@@ -14158,78 +10659,6 @@ type GoogleCloudDialogflowV2NotificationConfigResponse struct {
 	Topic string `pulumi:"topic"`
 }
 
-// GoogleCloudDialogflowV2NotificationConfigResponseInput is an input type that accepts GoogleCloudDialogflowV2NotificationConfigResponseArgs and GoogleCloudDialogflowV2NotificationConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2NotificationConfigResponseInput` via:
-//
-//          GoogleCloudDialogflowV2NotificationConfigResponseArgs{...}
-type GoogleCloudDialogflowV2NotificationConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2NotificationConfigResponseOutput() GoogleCloudDialogflowV2NotificationConfigResponseOutput
-	ToGoogleCloudDialogflowV2NotificationConfigResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2NotificationConfigResponseOutput
-}
-
-// Defines notification behavior.
-type GoogleCloudDialogflowV2NotificationConfigResponseArgs struct {
-	// Format of message.
-	MessageFormat pulumi.StringInput `pulumi:"messageFormat"`
-	// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. Notification works for phone calls, if this topic either is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. Format: `projects//locations//topics/`.
-	Topic pulumi.StringInput `pulumi:"topic"`
-}
-
-func (GoogleCloudDialogflowV2NotificationConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2NotificationConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2NotificationConfigResponseArgs) ToGoogleCloudDialogflowV2NotificationConfigResponseOutput() GoogleCloudDialogflowV2NotificationConfigResponseOutput {
-	return i.ToGoogleCloudDialogflowV2NotificationConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2NotificationConfigResponseArgs) ToGoogleCloudDialogflowV2NotificationConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2NotificationConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2NotificationConfigResponseOutput)
-}
-
-func (i GoogleCloudDialogflowV2NotificationConfigResponseArgs) ToGoogleCloudDialogflowV2NotificationConfigResponsePtrOutput() GoogleCloudDialogflowV2NotificationConfigResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2NotificationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2NotificationConfigResponseArgs) ToGoogleCloudDialogflowV2NotificationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2NotificationConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2NotificationConfigResponseOutput).ToGoogleCloudDialogflowV2NotificationConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDialogflowV2NotificationConfigResponsePtrInput is an input type that accepts GoogleCloudDialogflowV2NotificationConfigResponseArgs, GoogleCloudDialogflowV2NotificationConfigResponsePtr and GoogleCloudDialogflowV2NotificationConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2NotificationConfigResponsePtrInput` via:
-//
-//          GoogleCloudDialogflowV2NotificationConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDialogflowV2NotificationConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2NotificationConfigResponsePtrOutput() GoogleCloudDialogflowV2NotificationConfigResponsePtrOutput
-	ToGoogleCloudDialogflowV2NotificationConfigResponsePtrOutputWithContext(context.Context) GoogleCloudDialogflowV2NotificationConfigResponsePtrOutput
-}
-
-type googleCloudDialogflowV2NotificationConfigResponsePtrType GoogleCloudDialogflowV2NotificationConfigResponseArgs
-
-func GoogleCloudDialogflowV2NotificationConfigResponsePtr(v *GoogleCloudDialogflowV2NotificationConfigResponseArgs) GoogleCloudDialogflowV2NotificationConfigResponsePtrInput {
-	return (*googleCloudDialogflowV2NotificationConfigResponsePtrType)(v)
-}
-
-func (*googleCloudDialogflowV2NotificationConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2NotificationConfigResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDialogflowV2NotificationConfigResponsePtrType) ToGoogleCloudDialogflowV2NotificationConfigResponsePtrOutput() GoogleCloudDialogflowV2NotificationConfigResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2NotificationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDialogflowV2NotificationConfigResponsePtrType) ToGoogleCloudDialogflowV2NotificationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2NotificationConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2NotificationConfigResponsePtrOutput)
-}
-
 // Defines notification behavior.
 type GoogleCloudDialogflowV2NotificationConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -14245,16 +10674,6 @@ func (o GoogleCloudDialogflowV2NotificationConfigResponseOutput) ToGoogleCloudDi
 	return o
 }
 
-func (o GoogleCloudDialogflowV2NotificationConfigResponseOutput) ToGoogleCloudDialogflowV2NotificationConfigResponsePtrOutput() GoogleCloudDialogflowV2NotificationConfigResponsePtrOutput {
-	return o.ToGoogleCloudDialogflowV2NotificationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDialogflowV2NotificationConfigResponseOutput) ToGoogleCloudDialogflowV2NotificationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2NotificationConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2NotificationConfigResponse) *GoogleCloudDialogflowV2NotificationConfigResponse {
-		return &v
-	}).(GoogleCloudDialogflowV2NotificationConfigResponsePtrOutput)
-}
-
 // Format of message.
 func (o GoogleCloudDialogflowV2NotificationConfigResponseOutput) MessageFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2NotificationConfigResponse) string { return v.MessageFormat }).(pulumi.StringOutput)
@@ -14263,50 +10682,6 @@ func (o GoogleCloudDialogflowV2NotificationConfigResponseOutput) MessageFormat()
 // Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. Notification works for phone calls, if this topic either is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. Format: `projects//locations//topics/`.
 func (o GoogleCloudDialogflowV2NotificationConfigResponseOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2NotificationConfigResponse) string { return v.Topic }).(pulumi.StringOutput)
-}
-
-type GoogleCloudDialogflowV2NotificationConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDialogflowV2NotificationConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2NotificationConfigResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDialogflowV2NotificationConfigResponsePtrOutput) ToGoogleCloudDialogflowV2NotificationConfigResponsePtrOutput() GoogleCloudDialogflowV2NotificationConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2NotificationConfigResponsePtrOutput) ToGoogleCloudDialogflowV2NotificationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2NotificationConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2NotificationConfigResponsePtrOutput) Elem() GoogleCloudDialogflowV2NotificationConfigResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2NotificationConfigResponse) GoogleCloudDialogflowV2NotificationConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDialogflowV2NotificationConfigResponse
-		return ret
-	}).(GoogleCloudDialogflowV2NotificationConfigResponseOutput)
-}
-
-// Format of message.
-func (o GoogleCloudDialogflowV2NotificationConfigResponsePtrOutput) MessageFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2NotificationConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MessageFormat
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. Notification works for phone calls, if this topic either is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. Format: `projects//locations//topics/`.
-func (o GoogleCloudDialogflowV2NotificationConfigResponsePtrOutput) Topic() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2NotificationConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Topic
-	}).(pulumi.StringPtrOutput)
 }
 
 // Configures speech transcription for ConversationProfile.
@@ -14457,76 +10832,6 @@ type GoogleCloudDialogflowV2SpeechToTextConfigResponse struct {
 	SpeechModelVariant string `pulumi:"speechModelVariant"`
 }
 
-// GoogleCloudDialogflowV2SpeechToTextConfigResponseInput is an input type that accepts GoogleCloudDialogflowV2SpeechToTextConfigResponseArgs and GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2SpeechToTextConfigResponseInput` via:
-//
-//          GoogleCloudDialogflowV2SpeechToTextConfigResponseArgs{...}
-type GoogleCloudDialogflowV2SpeechToTextConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2SpeechToTextConfigResponseOutput() GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput
-	ToGoogleCloudDialogflowV2SpeechToTextConfigResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput
-}
-
-// Configures speech transcription for ConversationProfile.
-type GoogleCloudDialogflowV2SpeechToTextConfigResponseArgs struct {
-	// Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
-	SpeechModelVariant pulumi.StringInput `pulumi:"speechModelVariant"`
-}
-
-func (GoogleCloudDialogflowV2SpeechToTextConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2SpeechToTextConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2SpeechToTextConfigResponseArgs) ToGoogleCloudDialogflowV2SpeechToTextConfigResponseOutput() GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput {
-	return i.ToGoogleCloudDialogflowV2SpeechToTextConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2SpeechToTextConfigResponseArgs) ToGoogleCloudDialogflowV2SpeechToTextConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput)
-}
-
-func (i GoogleCloudDialogflowV2SpeechToTextConfigResponseArgs) ToGoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput() GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2SpeechToTextConfigResponseArgs) ToGoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput).ToGoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrInput is an input type that accepts GoogleCloudDialogflowV2SpeechToTextConfigResponseArgs, GoogleCloudDialogflowV2SpeechToTextConfigResponsePtr and GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrInput` via:
-//
-//          GoogleCloudDialogflowV2SpeechToTextConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput() GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput
-	ToGoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutputWithContext(context.Context) GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput
-}
-
-type googleCloudDialogflowV2SpeechToTextConfigResponsePtrType GoogleCloudDialogflowV2SpeechToTextConfigResponseArgs
-
-func GoogleCloudDialogflowV2SpeechToTextConfigResponsePtr(v *GoogleCloudDialogflowV2SpeechToTextConfigResponseArgs) GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrInput {
-	return (*googleCloudDialogflowV2SpeechToTextConfigResponsePtrType)(v)
-}
-
-func (*googleCloudDialogflowV2SpeechToTextConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2SpeechToTextConfigResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDialogflowV2SpeechToTextConfigResponsePtrType) ToGoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput() GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDialogflowV2SpeechToTextConfigResponsePtrType) ToGoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput)
-}
-
 // Configures speech transcription for ConversationProfile.
 type GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -14542,53 +10847,9 @@ func (o GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput) ToGoogleCloudDi
 	return o
 }
 
-func (o GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput) ToGoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput() GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput {
-	return o.ToGoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput) ToGoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2SpeechToTextConfigResponse) *GoogleCloudDialogflowV2SpeechToTextConfigResponse {
-		return &v
-	}).(GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput)
-}
-
 // Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
 func (o GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput) SpeechModelVariant() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2SpeechToTextConfigResponse) string { return v.SpeechModelVariant }).(pulumi.StringOutput)
-}
-
-type GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2SpeechToTextConfigResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput) ToGoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput() GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput) ToGoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput) Elem() GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2SpeechToTextConfigResponse) GoogleCloudDialogflowV2SpeechToTextConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDialogflowV2SpeechToTextConfigResponse
-		return ret
-	}).(GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput)
-}
-
-// Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
-func (o GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput) SpeechModelVariant() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2SpeechToTextConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SpeechModelVariant
-	}).(pulumi.StringPtrOutput)
 }
 
 // The type of Human Agent Assistant API suggestion to perform, and the maximum number of results to return for that type. Multiple `Feature` objects can be specified in the `features` list.
@@ -14737,35 +10998,6 @@ func (o GoogleCloudDialogflowV2SuggestionFeaturePtrOutput) Type() GoogleCloudDia
 type GoogleCloudDialogflowV2SuggestionFeatureResponse struct {
 	// Type of Human Agent Assistant API feature to request.
 	Type string `pulumi:"type"`
-}
-
-// GoogleCloudDialogflowV2SuggestionFeatureResponseInput is an input type that accepts GoogleCloudDialogflowV2SuggestionFeatureResponseArgs and GoogleCloudDialogflowV2SuggestionFeatureResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2SuggestionFeatureResponseInput` via:
-//
-//          GoogleCloudDialogflowV2SuggestionFeatureResponseArgs{...}
-type GoogleCloudDialogflowV2SuggestionFeatureResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2SuggestionFeatureResponseOutput() GoogleCloudDialogflowV2SuggestionFeatureResponseOutput
-	ToGoogleCloudDialogflowV2SuggestionFeatureResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2SuggestionFeatureResponseOutput
-}
-
-// The type of Human Agent Assistant API suggestion to perform, and the maximum number of results to return for that type. Multiple `Feature` objects can be specified in the `features` list.
-type GoogleCloudDialogflowV2SuggestionFeatureResponseArgs struct {
-	// Type of Human Agent Assistant API feature to request.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GoogleCloudDialogflowV2SuggestionFeatureResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2SuggestionFeatureResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2SuggestionFeatureResponseArgs) ToGoogleCloudDialogflowV2SuggestionFeatureResponseOutput() GoogleCloudDialogflowV2SuggestionFeatureResponseOutput {
-	return i.ToGoogleCloudDialogflowV2SuggestionFeatureResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2SuggestionFeatureResponseArgs) ToGoogleCloudDialogflowV2SuggestionFeatureResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2SuggestionFeatureResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2SuggestionFeatureResponseOutput)
 }
 
 // The type of Human Agent Assistant API suggestion to perform, and the maximum number of results to return for that type. Multiple `Feature` objects can be specified in the `features` list.
@@ -15001,82 +11233,6 @@ type GoogleCloudDialogflowV2TextToSpeechSettingsResponse struct {
 	SynthesizeSpeechConfigs map[string]string `pulumi:"synthesizeSpeechConfigs"`
 }
 
-// GoogleCloudDialogflowV2TextToSpeechSettingsResponseInput is an input type that accepts GoogleCloudDialogflowV2TextToSpeechSettingsResponseArgs and GoogleCloudDialogflowV2TextToSpeechSettingsResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2TextToSpeechSettingsResponseInput` via:
-//
-//          GoogleCloudDialogflowV2TextToSpeechSettingsResponseArgs{...}
-type GoogleCloudDialogflowV2TextToSpeechSettingsResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2TextToSpeechSettingsResponseOutput() GoogleCloudDialogflowV2TextToSpeechSettingsResponseOutput
-	ToGoogleCloudDialogflowV2TextToSpeechSettingsResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2TextToSpeechSettingsResponseOutput
-}
-
-// Instructs the speech synthesizer on how to generate the output audio content.
-type GoogleCloudDialogflowV2TextToSpeechSettingsResponseArgs struct {
-	// Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
-	EnableTextToSpeech pulumi.BoolInput `pulumi:"enableTextToSpeech"`
-	// Audio encoding of the synthesized audio content.
-	OutputAudioEncoding pulumi.StringInput `pulumi:"outputAudioEncoding"`
-	// Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
-	SampleRateHertz pulumi.IntInput `pulumi:"sampleRateHertz"`
-	// Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
-	SynthesizeSpeechConfigs pulumi.StringMapInput `pulumi:"synthesizeSpeechConfigs"`
-}
-
-func (GoogleCloudDialogflowV2TextToSpeechSettingsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDialogflowV2TextToSpeechSettingsResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDialogflowV2TextToSpeechSettingsResponseArgs) ToGoogleCloudDialogflowV2TextToSpeechSettingsResponseOutput() GoogleCloudDialogflowV2TextToSpeechSettingsResponseOutput {
-	return i.ToGoogleCloudDialogflowV2TextToSpeechSettingsResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2TextToSpeechSettingsResponseArgs) ToGoogleCloudDialogflowV2TextToSpeechSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2TextToSpeechSettingsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2TextToSpeechSettingsResponseOutput)
-}
-
-func (i GoogleCloudDialogflowV2TextToSpeechSettingsResponseArgs) ToGoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput() GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2TextToSpeechSettingsResponseArgs) ToGoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2TextToSpeechSettingsResponseOutput).ToGoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrInput is an input type that accepts GoogleCloudDialogflowV2TextToSpeechSettingsResponseArgs, GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtr and GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrInput` via:
-//
-//          GoogleCloudDialogflowV2TextToSpeechSettingsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput() GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput
-	ToGoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutputWithContext(context.Context) GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput
-}
-
-type googleCloudDialogflowV2TextToSpeechSettingsResponsePtrType GoogleCloudDialogflowV2TextToSpeechSettingsResponseArgs
-
-func GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtr(v *GoogleCloudDialogflowV2TextToSpeechSettingsResponseArgs) GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrInput {
-	return (*googleCloudDialogflowV2TextToSpeechSettingsResponsePtrType)(v)
-}
-
-func (*googleCloudDialogflowV2TextToSpeechSettingsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2TextToSpeechSettingsResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDialogflowV2TextToSpeechSettingsResponsePtrType) ToGoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput() GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput {
-	return i.ToGoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDialogflowV2TextToSpeechSettingsResponsePtrType) ToGoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput)
-}
-
 // Instructs the speech synthesizer on how to generate the output audio content.
 type GoogleCloudDialogflowV2TextToSpeechSettingsResponseOutput struct{ *pulumi.OutputState }
 
@@ -15090,16 +11246,6 @@ func (o GoogleCloudDialogflowV2TextToSpeechSettingsResponseOutput) ToGoogleCloud
 
 func (o GoogleCloudDialogflowV2TextToSpeechSettingsResponseOutput) ToGoogleCloudDialogflowV2TextToSpeechSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2TextToSpeechSettingsResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDialogflowV2TextToSpeechSettingsResponseOutput) ToGoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput() GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput {
-	return o.ToGoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDialogflowV2TextToSpeechSettingsResponseOutput) ToGoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2TextToSpeechSettingsResponse) *GoogleCloudDialogflowV2TextToSpeechSettingsResponse {
-		return &v
-	}).(GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput)
 }
 
 // Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
@@ -15124,70 +11270,6 @@ func (o GoogleCloudDialogflowV2TextToSpeechSettingsResponseOutput) SynthesizeSpe
 	}).(pulumi.StringMapOutput)
 }
 
-type GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2TextToSpeechSettingsResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput) ToGoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput() GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput) ToGoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput) Elem() GoogleCloudDialogflowV2TextToSpeechSettingsResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2TextToSpeechSettingsResponse) GoogleCloudDialogflowV2TextToSpeechSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDialogflowV2TextToSpeechSettingsResponse
-		return ret
-	}).(GoogleCloudDialogflowV2TextToSpeechSettingsResponseOutput)
-}
-
-// Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
-func (o GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput) EnableTextToSpeech() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2TextToSpeechSettingsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.EnableTextToSpeech
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Audio encoding of the synthesized audio content.
-func (o GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput) OutputAudioEncoding() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2TextToSpeechSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OutputAudioEncoding
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
-func (o GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput) SampleRateHertz() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2TextToSpeechSettingsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.SampleRateHertz
-	}).(pulumi.IntPtrOutput)
-}
-
-// Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
-func (o GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput) SynthesizeSpeechConfigs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2TextToSpeechSettingsResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.SynthesizeSpeechConfigs
-	}).(pulumi.StringMapOutput)
-}
-
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
 type GoogleRpcStatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
@@ -15196,80 +11278,6 @@ type GoogleRpcStatusResponse struct {
 	Details []map[string]string `pulumi:"details"`
 	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 	Message string `pulumi:"message"`
-}
-
-// GoogleRpcStatusResponseInput is an input type that accepts GoogleRpcStatusResponseArgs and GoogleRpcStatusResponseOutput values.
-// You can construct a concrete instance of `GoogleRpcStatusResponseInput` via:
-//
-//          GoogleRpcStatusResponseArgs{...}
-type GoogleRpcStatusResponseInput interface {
-	pulumi.Input
-
-	ToGoogleRpcStatusResponseOutput() GoogleRpcStatusResponseOutput
-	ToGoogleRpcStatusResponseOutputWithContext(context.Context) GoogleRpcStatusResponseOutput
-}
-
-// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type GoogleRpcStatusResponseArgs struct {
-	// The status code, which should be an enum value of google.rpc.Code.
-	Code pulumi.IntInput `pulumi:"code"`
-	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details pulumi.StringMapArrayInput `pulumi:"details"`
-	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-	Message pulumi.StringInput `pulumi:"message"`
-}
-
-func (GoogleRpcStatusResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleRpcStatusResponse)(nil)).Elem()
-}
-
-func (i GoogleRpcStatusResponseArgs) ToGoogleRpcStatusResponseOutput() GoogleRpcStatusResponseOutput {
-	return i.ToGoogleRpcStatusResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleRpcStatusResponseArgs) ToGoogleRpcStatusResponseOutputWithContext(ctx context.Context) GoogleRpcStatusResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleRpcStatusResponseOutput)
-}
-
-func (i GoogleRpcStatusResponseArgs) ToGoogleRpcStatusResponsePtrOutput() GoogleRpcStatusResponsePtrOutput {
-	return i.ToGoogleRpcStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleRpcStatusResponseArgs) ToGoogleRpcStatusResponsePtrOutputWithContext(ctx context.Context) GoogleRpcStatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleRpcStatusResponseOutput).ToGoogleRpcStatusResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleRpcStatusResponsePtrInput is an input type that accepts GoogleRpcStatusResponseArgs, GoogleRpcStatusResponsePtr and GoogleRpcStatusResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleRpcStatusResponsePtrInput` via:
-//
-//          GoogleRpcStatusResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleRpcStatusResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleRpcStatusResponsePtrOutput() GoogleRpcStatusResponsePtrOutput
-	ToGoogleRpcStatusResponsePtrOutputWithContext(context.Context) GoogleRpcStatusResponsePtrOutput
-}
-
-type googleRpcStatusResponsePtrType GoogleRpcStatusResponseArgs
-
-func GoogleRpcStatusResponsePtr(v *GoogleRpcStatusResponseArgs) GoogleRpcStatusResponsePtrInput {
-	return (*googleRpcStatusResponsePtrType)(v)
-}
-
-func (*googleRpcStatusResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleRpcStatusResponse)(nil)).Elem()
-}
-
-func (i *googleRpcStatusResponsePtrType) ToGoogleRpcStatusResponsePtrOutput() GoogleRpcStatusResponsePtrOutput {
-	return i.ToGoogleRpcStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleRpcStatusResponsePtrType) ToGoogleRpcStatusResponsePtrOutputWithContext(ctx context.Context) GoogleRpcStatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleRpcStatusResponsePtrOutput)
 }
 
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
@@ -15287,16 +11295,6 @@ func (o GoogleRpcStatusResponseOutput) ToGoogleRpcStatusResponseOutputWithContex
 	return o
 }
 
-func (o GoogleRpcStatusResponseOutput) ToGoogleRpcStatusResponsePtrOutput() GoogleRpcStatusResponsePtrOutput {
-	return o.ToGoogleRpcStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleRpcStatusResponseOutput) ToGoogleRpcStatusResponsePtrOutputWithContext(ctx context.Context) GoogleRpcStatusResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleRpcStatusResponse) *GoogleRpcStatusResponse {
-		return &v
-	}).(GoogleRpcStatusResponsePtrOutput)
-}
-
 // The status code, which should be an enum value of google.rpc.Code.
 func (o GoogleRpcStatusResponseOutput) Code() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleRpcStatusResponse) int { return v.Code }).(pulumi.IntOutput)
@@ -15312,140 +11310,47 @@ func (o GoogleRpcStatusResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleRpcStatusResponse) string { return v.Message }).(pulumi.StringOutput)
 }
 
-type GoogleRpcStatusResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleRpcStatusResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleRpcStatusResponse)(nil)).Elem()
-}
-
-func (o GoogleRpcStatusResponsePtrOutput) ToGoogleRpcStatusResponsePtrOutput() GoogleRpcStatusResponsePtrOutput {
-	return o
-}
-
-func (o GoogleRpcStatusResponsePtrOutput) ToGoogleRpcStatusResponsePtrOutputWithContext(ctx context.Context) GoogleRpcStatusResponsePtrOutput {
-	return o
-}
-
-func (o GoogleRpcStatusResponsePtrOutput) Elem() GoogleRpcStatusResponseOutput {
-	return o.ApplyT(func(v *GoogleRpcStatusResponse) GoogleRpcStatusResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleRpcStatusResponse
-		return ret
-	}).(GoogleRpcStatusResponseOutput)
-}
-
-// The status code, which should be an enum value of google.rpc.Code.
-func (o GoogleRpcStatusResponsePtrOutput) Code() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleRpcStatusResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Code
-	}).(pulumi.IntPtrOutput)
-}
-
-// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o GoogleRpcStatusResponsePtrOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *GoogleRpcStatusResponse) []map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Details
-	}).(pulumi.StringMapArrayOutput)
-}
-
-// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-func (o GoogleRpcStatusResponsePtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleRpcStatusResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Message
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2AutomatedAgentConfigInput)(nil)).Elem(), GoogleCloudDialogflowV2AutomatedAgentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2AutomatedAgentConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2AutomatedAgentConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2AutomatedAgentConfigResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2AutomatedAgentConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2AutomatedAgentConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2ContextInput)(nil)).Elem(), GoogleCloudDialogflowV2ContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2ContextArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2ContextArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2ContextResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2ContextResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2ContextResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2ContextResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2ConversationPhoneNumberResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2ConversationPhoneNumberResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2ConversationPhoneNumberResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2DocumentReloadStatusResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2DocumentReloadStatusResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2DocumentReloadStatusResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2EntityTypeEntityInput)(nil)).Elem(), GoogleCloudDialogflowV2EntityTypeEntityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2EntityTypeEntityArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2EntityTypeEntityArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2EntityTypeEntityResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2EntityTypeEntityResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2EntityTypeEntityResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2EntityTypeEntityResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2FulfillmentInput)(nil)).Elem(), GoogleCloudDialogflowV2FulfillmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2FulfillmentPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2FulfillmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2FulfillmentFeatureInput)(nil)).Elem(), GoogleCloudDialogflowV2FulfillmentFeatureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2FulfillmentFeatureArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2FulfillmentFeatureArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2FulfillmentFeatureResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2FulfillmentFeatureResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2FulfillmentFeatureResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2FulfillmentFeatureResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2FulfillmentGenericWebServiceInput)(nil)).Elem(), GoogleCloudDialogflowV2FulfillmentGenericWebServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2FulfillmentGenericWebServicePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2FulfillmentGenericWebServiceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2FulfillmentResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2FulfillmentResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2FulfillmentResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2FulfillmentResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentHandoffConfigInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageBasicCardInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageBasicCardArgs{})
@@ -15453,137 +11358,77 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageBasicCardButtonInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageBasicCardButtonArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageBasicCardButtonArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageBasicCardResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageBasicCardResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageCardInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageCardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageCardPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageCardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageCardButtonInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageCardButtonArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageCardButtonArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageCardButtonArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageCardButtonResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageCardButtonResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageCardButtonResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageCardButtonResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageCardResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageCardResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageCarouselSelectInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageCarouselSelectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageCarouselSelectPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageCarouselSelectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageCarouselSelectItemInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageCarouselSelectItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageCarouselSelectItemArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageCarouselSelectItemArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageCarouselSelectResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageCarouselSelectResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageColumnPropertiesInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageColumnPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageColumnPropertiesArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageColumnPropertiesArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageImageInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageImagePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageImageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageImageResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageImageResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageListSelectInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageListSelectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageListSelectPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageListSelectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageListSelectItemInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageListSelectItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageListSelectItemArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageListSelectItemArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageListSelectItemResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageListSelectResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageListSelectResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageMediaContentInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageMediaContentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageMediaContentPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageMediaContentArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageMediaContentResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageMediaContentResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageQuickRepliesInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageQuickRepliesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageQuickRepliesPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageQuickRepliesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageQuickRepliesResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageQuickRepliesResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageSelectItemInfoInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageSimpleResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageSimpleResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageSimpleResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageSimpleResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageSimpleResponsesInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageSimpleResponsesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageSimpleResponsesPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageSimpleResponsesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageSuggestionInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageSuggestionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageSuggestionArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageSuggestionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageSuggestionResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageSuggestionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageSuggestionResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageSuggestionResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageSuggestionsInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageSuggestionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageSuggestionsPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageSuggestionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageSuggestionsResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageSuggestionsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageTableCardInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageTableCardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageTableCardPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageTableCardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageTableCardCellInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageTableCardCellArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageTableCardCellArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageTableCardCellArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageTableCardCellResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageTableCardCellResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageTableCardCellResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageTableCardCellResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageTableCardResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageTableCardResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageTableCardRowInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageTableCardRowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageTableCardRowArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageTableCardRowArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageTableCardRowResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageTableCardRowResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageTableCardRowResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageTableCardRowResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageTextInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageTextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageTextPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageTextArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageTextResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageTextResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentParameterInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentParameterArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentParameterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentParameterResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentParameterResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentParameterResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentParameterResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentTrainingPhraseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentTrainingPhraseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentTrainingPhraseArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentTrainingPhraseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentTrainingPhrasePartInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentTrainingPhrasePartArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentTrainingPhrasePartArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentTrainingPhrasePartArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentTrainingPhraseResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentTrainingPhraseResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentTrainingPhraseResponseArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentTrainingPhraseResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2LoggingConfigInput)(nil)).Elem(), GoogleCloudDialogflowV2LoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2LoggingConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2LoggingConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2LoggingConfigResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2LoggingConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2LoggingConfigResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2LoggingConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2NotificationConfigInput)(nil)).Elem(), GoogleCloudDialogflowV2NotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2NotificationConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2NotificationConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2NotificationConfigResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2NotificationConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2NotificationConfigResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2NotificationConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2SpeechToTextConfigInput)(nil)).Elem(), GoogleCloudDialogflowV2SpeechToTextConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2SpeechToTextConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2SpeechToTextConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2SpeechToTextConfigResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2SpeechToTextConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2SpeechToTextConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2SuggestionFeatureInput)(nil)).Elem(), GoogleCloudDialogflowV2SuggestionFeatureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2SuggestionFeaturePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2SuggestionFeatureArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2SuggestionFeatureResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2SuggestionFeatureResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2TextToSpeechSettingsInput)(nil)).Elem(), GoogleCloudDialogflowV2TextToSpeechSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2TextToSpeechSettingsPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2TextToSpeechSettingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2TextToSpeechSettingsResponseInput)(nil)).Elem(), GoogleCloudDialogflowV2TextToSpeechSettingsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2TextToSpeechSettingsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleRpcStatusResponseInput)(nil)).Elem(), GoogleRpcStatusResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleRpcStatusResponsePtrInput)(nil)).Elem(), GoogleRpcStatusResponseArgs{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2AutomatedAgentConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2AutomatedAgentConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2ContextOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2ContextArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2ContextResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2ContextResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2ConversationPhoneNumberResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2DocumentReloadStatusResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2EntityTypeEntityOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2EntityTypeEntityArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2EntityTypeEntityResponseOutput{})
@@ -15597,9 +11442,7 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2FulfillmentGenericWebServiceOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2FulfillmentGenericWebServicePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2FulfillmentResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDialogflowV2FulfillmentResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigOutput{})
@@ -15608,13 +11451,10 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigResponseOutput{})
@@ -15642,13 +11482,10 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentMessageOutput{})
@@ -15759,22 +11596,17 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2LoggingConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2LoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2LoggingConfigResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDialogflowV2LoggingConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2NotificationConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2NotificationConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2NotificationConfigResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDialogflowV2NotificationConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2SpeechToTextConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2SpeechToTextConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2SuggestionFeatureOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2SuggestionFeaturePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2SuggestionFeatureResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2TextToSpeechSettingsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2TextToSpeechSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2TextToSpeechSettingsResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleRpcStatusResponseOutput{})
-	pulumi.RegisterOutputType(GoogleRpcStatusResponsePtrOutput{})
 }

@@ -141,7 +141,7 @@ type MetricDescriptorInput interface {
 }
 
 func (*MetricDescriptor) ElementType() reflect.Type {
-	return reflect.TypeOf((*MetricDescriptor)(nil))
+	return reflect.TypeOf((**MetricDescriptor)(nil)).Elem()
 }
 
 func (i *MetricDescriptor) ToMetricDescriptorOutput() MetricDescriptorOutput {
@@ -155,7 +155,7 @@ func (i *MetricDescriptor) ToMetricDescriptorOutputWithContext(ctx context.Conte
 type MetricDescriptorOutput struct{ *pulumi.OutputState }
 
 func (MetricDescriptorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MetricDescriptor)(nil))
+	return reflect.TypeOf((**MetricDescriptor)(nil)).Elem()
 }
 
 func (o MetricDescriptorOutput) ToMetricDescriptorOutput() MetricDescriptorOutput {

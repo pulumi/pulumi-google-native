@@ -135,7 +135,7 @@ type ConfigInput interface {
 }
 
 func (*Config) ElementType() reflect.Type {
-	return reflect.TypeOf((*Config)(nil))
+	return reflect.TypeOf((**Config)(nil)).Elem()
 }
 
 func (i *Config) ToConfigOutput() ConfigOutput {
@@ -149,7 +149,7 @@ func (i *Config) ToConfigOutputWithContext(ctx context.Context) ConfigOutput {
 type ConfigOutput struct{ *pulumi.OutputState }
 
 func (ConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Config)(nil))
+	return reflect.TypeOf((**Config)(nil)).Elem()
 }
 
 func (o ConfigOutput) ToConfigOutput() ConfigOutput {

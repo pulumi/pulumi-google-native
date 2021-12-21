@@ -113,7 +113,7 @@ type MigrationJobIamPolicyInput interface {
 }
 
 func (*MigrationJobIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*MigrationJobIamPolicy)(nil))
+	return reflect.TypeOf((**MigrationJobIamPolicy)(nil)).Elem()
 }
 
 func (i *MigrationJobIamPolicy) ToMigrationJobIamPolicyOutput() MigrationJobIamPolicyOutput {
@@ -127,7 +127,7 @@ func (i *MigrationJobIamPolicy) ToMigrationJobIamPolicyOutputWithContext(ctx con
 type MigrationJobIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (MigrationJobIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MigrationJobIamPolicy)(nil))
+	return reflect.TypeOf((**MigrationJobIamPolicy)(nil)).Elem()
 }
 
 func (o MigrationJobIamPolicyOutput) ToMigrationJobIamPolicyOutput() MigrationJobIamPolicyOutput {

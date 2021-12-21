@@ -105,7 +105,7 @@ type DebugTokenInput interface {
 }
 
 func (*DebugToken) ElementType() reflect.Type {
-	return reflect.TypeOf((*DebugToken)(nil))
+	return reflect.TypeOf((**DebugToken)(nil)).Elem()
 }
 
 func (i *DebugToken) ToDebugTokenOutput() DebugTokenOutput {
@@ -119,7 +119,7 @@ func (i *DebugToken) ToDebugTokenOutputWithContext(ctx context.Context) DebugTok
 type DebugTokenOutput struct{ *pulumi.OutputState }
 
 func (DebugTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DebugToken)(nil))
+	return reflect.TypeOf((**DebugToken)(nil)).Elem()
 }
 
 func (o DebugTokenOutput) ToDebugTokenOutput() DebugTokenOutput {

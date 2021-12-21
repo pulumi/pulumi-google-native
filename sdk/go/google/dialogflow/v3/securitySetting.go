@@ -135,7 +135,7 @@ type SecuritySettingInput interface {
 }
 
 func (*SecuritySetting) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecuritySetting)(nil))
+	return reflect.TypeOf((**SecuritySetting)(nil)).Elem()
 }
 
 func (i *SecuritySetting) ToSecuritySettingOutput() SecuritySettingOutput {
@@ -149,7 +149,7 @@ func (i *SecuritySetting) ToSecuritySettingOutputWithContext(ctx context.Context
 type SecuritySettingOutput struct{ *pulumi.OutputState }
 
 func (SecuritySettingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecuritySetting)(nil))
+	return reflect.TypeOf((**SecuritySetting)(nil)).Elem()
 }
 
 func (o SecuritySettingOutput) ToSecuritySettingOutput() SecuritySettingOutput {

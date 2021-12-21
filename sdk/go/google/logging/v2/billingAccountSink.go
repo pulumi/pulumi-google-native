@@ -138,7 +138,7 @@ type BillingAccountSinkInput interface {
 }
 
 func (*BillingAccountSink) ElementType() reflect.Type {
-	return reflect.TypeOf((*BillingAccountSink)(nil))
+	return reflect.TypeOf((**BillingAccountSink)(nil)).Elem()
 }
 
 func (i *BillingAccountSink) ToBillingAccountSinkOutput() BillingAccountSinkOutput {
@@ -152,7 +152,7 @@ func (i *BillingAccountSink) ToBillingAccountSinkOutputWithContext(ctx context.C
 type BillingAccountSinkOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountSinkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BillingAccountSink)(nil))
+	return reflect.TypeOf((**BillingAccountSink)(nil)).Elem()
 }
 
 func (o BillingAccountSinkOutput) ToBillingAccountSinkOutput() BillingAccountSinkOutput {

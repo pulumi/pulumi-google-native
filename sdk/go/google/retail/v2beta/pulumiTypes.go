@@ -177,78 +177,6 @@ type GoogleCloudRetailV2betaAudienceResponse struct {
 	Genders []string `pulumi:"genders"`
 }
 
-// GoogleCloudRetailV2betaAudienceResponseInput is an input type that accepts GoogleCloudRetailV2betaAudienceResponseArgs and GoogleCloudRetailV2betaAudienceResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudRetailV2betaAudienceResponseInput` via:
-//
-//          GoogleCloudRetailV2betaAudienceResponseArgs{...}
-type GoogleCloudRetailV2betaAudienceResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRetailV2betaAudienceResponseOutput() GoogleCloudRetailV2betaAudienceResponseOutput
-	ToGoogleCloudRetailV2betaAudienceResponseOutputWithContext(context.Context) GoogleCloudRetailV2betaAudienceResponseOutput
-}
-
-// An intended audience of the Product for whom it's sold.
-type GoogleCloudRetailV2betaAudienceResponseArgs struct {
-	// The age groups of the audience. Strongly encouraged to use the standard values: "newborn" (up to 3 months old), "infant" (3–12 months old), "toddler" (1–5 years old), "kids" (5–13 years old), "adult" (typically teens or older). At most 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [age_group](https://support.google.com/merchants/answer/6324463). Schema.org property [Product.audience.suggestedMinAge](https://schema.org/suggestedMinAge) and [Product.audience.suggestedMaxAge](https://schema.org/suggestedMaxAge).
-	AgeGroups pulumi.StringArrayInput `pulumi:"ageGroups"`
-	// The genders of the audience. Strongly encouraged to use the standard values: "male", "female", "unisex". At most 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [gender](https://support.google.com/merchants/answer/6324479). Schema.org property [Product.audience.suggestedGender](https://schema.org/suggestedGender).
-	Genders pulumi.StringArrayInput `pulumi:"genders"`
-}
-
-func (GoogleCloudRetailV2betaAudienceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRetailV2betaAudienceResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRetailV2betaAudienceResponseArgs) ToGoogleCloudRetailV2betaAudienceResponseOutput() GoogleCloudRetailV2betaAudienceResponseOutput {
-	return i.ToGoogleCloudRetailV2betaAudienceResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRetailV2betaAudienceResponseArgs) ToGoogleCloudRetailV2betaAudienceResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaAudienceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaAudienceResponseOutput)
-}
-
-func (i GoogleCloudRetailV2betaAudienceResponseArgs) ToGoogleCloudRetailV2betaAudienceResponsePtrOutput() GoogleCloudRetailV2betaAudienceResponsePtrOutput {
-	return i.ToGoogleCloudRetailV2betaAudienceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRetailV2betaAudienceResponseArgs) ToGoogleCloudRetailV2betaAudienceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaAudienceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaAudienceResponseOutput).ToGoogleCloudRetailV2betaAudienceResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudRetailV2betaAudienceResponsePtrInput is an input type that accepts GoogleCloudRetailV2betaAudienceResponseArgs, GoogleCloudRetailV2betaAudienceResponsePtr and GoogleCloudRetailV2betaAudienceResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudRetailV2betaAudienceResponsePtrInput` via:
-//
-//          GoogleCloudRetailV2betaAudienceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudRetailV2betaAudienceResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRetailV2betaAudienceResponsePtrOutput() GoogleCloudRetailV2betaAudienceResponsePtrOutput
-	ToGoogleCloudRetailV2betaAudienceResponsePtrOutputWithContext(context.Context) GoogleCloudRetailV2betaAudienceResponsePtrOutput
-}
-
-type googleCloudRetailV2betaAudienceResponsePtrType GoogleCloudRetailV2betaAudienceResponseArgs
-
-func GoogleCloudRetailV2betaAudienceResponsePtr(v *GoogleCloudRetailV2betaAudienceResponseArgs) GoogleCloudRetailV2betaAudienceResponsePtrInput {
-	return (*googleCloudRetailV2betaAudienceResponsePtrType)(v)
-}
-
-func (*googleCloudRetailV2betaAudienceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudRetailV2betaAudienceResponse)(nil)).Elem()
-}
-
-func (i *googleCloudRetailV2betaAudienceResponsePtrType) ToGoogleCloudRetailV2betaAudienceResponsePtrOutput() GoogleCloudRetailV2betaAudienceResponsePtrOutput {
-	return i.ToGoogleCloudRetailV2betaAudienceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudRetailV2betaAudienceResponsePtrType) ToGoogleCloudRetailV2betaAudienceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaAudienceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaAudienceResponsePtrOutput)
-}
-
 // An intended audience of the Product for whom it's sold.
 type GoogleCloudRetailV2betaAudienceResponseOutput struct{ *pulumi.OutputState }
 
@@ -264,16 +192,6 @@ func (o GoogleCloudRetailV2betaAudienceResponseOutput) ToGoogleCloudRetailV2beta
 	return o
 }
 
-func (o GoogleCloudRetailV2betaAudienceResponseOutput) ToGoogleCloudRetailV2betaAudienceResponsePtrOutput() GoogleCloudRetailV2betaAudienceResponsePtrOutput {
-	return o.ToGoogleCloudRetailV2betaAudienceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudRetailV2betaAudienceResponseOutput) ToGoogleCloudRetailV2betaAudienceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaAudienceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2betaAudienceResponse) *GoogleCloudRetailV2betaAudienceResponse {
-		return &v
-	}).(GoogleCloudRetailV2betaAudienceResponsePtrOutput)
-}
-
 // The age groups of the audience. Strongly encouraged to use the standard values: "newborn" (up to 3 months old), "infant" (3–12 months old), "toddler" (1–5 years old), "kids" (5–13 years old), "adult" (typically teens or older). At most 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [age_group](https://support.google.com/merchants/answer/6324463). Schema.org property [Product.audience.suggestedMinAge](https://schema.org/suggestedMinAge) and [Product.audience.suggestedMaxAge](https://schema.org/suggestedMaxAge).
 func (o GoogleCloudRetailV2betaAudienceResponseOutput) AgeGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaAudienceResponse) []string { return v.AgeGroups }).(pulumi.StringArrayOutput)
@@ -282,50 +200,6 @@ func (o GoogleCloudRetailV2betaAudienceResponseOutput) AgeGroups() pulumi.String
 // The genders of the audience. Strongly encouraged to use the standard values: "male", "female", "unisex". At most 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [gender](https://support.google.com/merchants/answer/6324479). Schema.org property [Product.audience.suggestedGender](https://schema.org/suggestedGender).
 func (o GoogleCloudRetailV2betaAudienceResponseOutput) Genders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaAudienceResponse) []string { return v.Genders }).(pulumi.StringArrayOutput)
-}
-
-type GoogleCloudRetailV2betaAudienceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudRetailV2betaAudienceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudRetailV2betaAudienceResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudRetailV2betaAudienceResponsePtrOutput) ToGoogleCloudRetailV2betaAudienceResponsePtrOutput() GoogleCloudRetailV2betaAudienceResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudRetailV2betaAudienceResponsePtrOutput) ToGoogleCloudRetailV2betaAudienceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaAudienceResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudRetailV2betaAudienceResponsePtrOutput) Elem() GoogleCloudRetailV2betaAudienceResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2betaAudienceResponse) GoogleCloudRetailV2betaAudienceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudRetailV2betaAudienceResponse
-		return ret
-	}).(GoogleCloudRetailV2betaAudienceResponseOutput)
-}
-
-// The age groups of the audience. Strongly encouraged to use the standard values: "newborn" (up to 3 months old), "infant" (3–12 months old), "toddler" (1–5 years old), "kids" (5–13 years old), "adult" (typically teens or older). At most 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [age_group](https://support.google.com/merchants/answer/6324463). Schema.org property [Product.audience.suggestedMinAge](https://schema.org/suggestedMinAge) and [Product.audience.suggestedMaxAge](https://schema.org/suggestedMaxAge).
-func (o GoogleCloudRetailV2betaAudienceResponsePtrOutput) AgeGroups() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2betaAudienceResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AgeGroups
-	}).(pulumi.StringArrayOutput)
-}
-
-// The genders of the audience. Strongly encouraged to use the standard values: "male", "female", "unisex". At most 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [gender](https://support.google.com/merchants/answer/6324479). Schema.org property [Product.audience.suggestedGender](https://schema.org/suggestedGender).
-func (o GoogleCloudRetailV2betaAudienceResponsePtrOutput) Genders() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2betaAudienceResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Genders
-	}).(pulumi.StringArrayOutput)
 }
 
 // The color information of a Product.
@@ -495,78 +369,6 @@ type GoogleCloudRetailV2betaColorInfoResponse struct {
 	Colors []string `pulumi:"colors"`
 }
 
-// GoogleCloudRetailV2betaColorInfoResponseInput is an input type that accepts GoogleCloudRetailV2betaColorInfoResponseArgs and GoogleCloudRetailV2betaColorInfoResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudRetailV2betaColorInfoResponseInput` via:
-//
-//          GoogleCloudRetailV2betaColorInfoResponseArgs{...}
-type GoogleCloudRetailV2betaColorInfoResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRetailV2betaColorInfoResponseOutput() GoogleCloudRetailV2betaColorInfoResponseOutput
-	ToGoogleCloudRetailV2betaColorInfoResponseOutputWithContext(context.Context) GoogleCloudRetailV2betaColorInfoResponseOutput
-}
-
-// The color information of a Product.
-type GoogleCloudRetailV2betaColorInfoResponseArgs struct {
-	// The standard color families. Strongly recommended to use the following standard color groups: "Red", "Pink", "Orange", "Yellow", "Purple", "Green", "Cyan", "Blue", "Brown", "White", "Gray", "Black" and "Mixed". Normally it is expected to have only 1 color family. May consider using single "Mixed" instead of multiple values. A maximum of 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
-	ColorFamilies pulumi.StringArrayInput `pulumi:"colorFamilies"`
-	// The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single "Mixed" instead of multiple values. A maximum of 25 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
-	Colors pulumi.StringArrayInput `pulumi:"colors"`
-}
-
-func (GoogleCloudRetailV2betaColorInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRetailV2betaColorInfoResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRetailV2betaColorInfoResponseArgs) ToGoogleCloudRetailV2betaColorInfoResponseOutput() GoogleCloudRetailV2betaColorInfoResponseOutput {
-	return i.ToGoogleCloudRetailV2betaColorInfoResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRetailV2betaColorInfoResponseArgs) ToGoogleCloudRetailV2betaColorInfoResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaColorInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaColorInfoResponseOutput)
-}
-
-func (i GoogleCloudRetailV2betaColorInfoResponseArgs) ToGoogleCloudRetailV2betaColorInfoResponsePtrOutput() GoogleCloudRetailV2betaColorInfoResponsePtrOutput {
-	return i.ToGoogleCloudRetailV2betaColorInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRetailV2betaColorInfoResponseArgs) ToGoogleCloudRetailV2betaColorInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaColorInfoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaColorInfoResponseOutput).ToGoogleCloudRetailV2betaColorInfoResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudRetailV2betaColorInfoResponsePtrInput is an input type that accepts GoogleCloudRetailV2betaColorInfoResponseArgs, GoogleCloudRetailV2betaColorInfoResponsePtr and GoogleCloudRetailV2betaColorInfoResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudRetailV2betaColorInfoResponsePtrInput` via:
-//
-//          GoogleCloudRetailV2betaColorInfoResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudRetailV2betaColorInfoResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRetailV2betaColorInfoResponsePtrOutput() GoogleCloudRetailV2betaColorInfoResponsePtrOutput
-	ToGoogleCloudRetailV2betaColorInfoResponsePtrOutputWithContext(context.Context) GoogleCloudRetailV2betaColorInfoResponsePtrOutput
-}
-
-type googleCloudRetailV2betaColorInfoResponsePtrType GoogleCloudRetailV2betaColorInfoResponseArgs
-
-func GoogleCloudRetailV2betaColorInfoResponsePtr(v *GoogleCloudRetailV2betaColorInfoResponseArgs) GoogleCloudRetailV2betaColorInfoResponsePtrInput {
-	return (*googleCloudRetailV2betaColorInfoResponsePtrType)(v)
-}
-
-func (*googleCloudRetailV2betaColorInfoResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudRetailV2betaColorInfoResponse)(nil)).Elem()
-}
-
-func (i *googleCloudRetailV2betaColorInfoResponsePtrType) ToGoogleCloudRetailV2betaColorInfoResponsePtrOutput() GoogleCloudRetailV2betaColorInfoResponsePtrOutput {
-	return i.ToGoogleCloudRetailV2betaColorInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudRetailV2betaColorInfoResponsePtrType) ToGoogleCloudRetailV2betaColorInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaColorInfoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaColorInfoResponsePtrOutput)
-}
-
 // The color information of a Product.
 type GoogleCloudRetailV2betaColorInfoResponseOutput struct{ *pulumi.OutputState }
 
@@ -582,16 +384,6 @@ func (o GoogleCloudRetailV2betaColorInfoResponseOutput) ToGoogleCloudRetailV2bet
 	return o
 }
 
-func (o GoogleCloudRetailV2betaColorInfoResponseOutput) ToGoogleCloudRetailV2betaColorInfoResponsePtrOutput() GoogleCloudRetailV2betaColorInfoResponsePtrOutput {
-	return o.ToGoogleCloudRetailV2betaColorInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudRetailV2betaColorInfoResponseOutput) ToGoogleCloudRetailV2betaColorInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaColorInfoResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2betaColorInfoResponse) *GoogleCloudRetailV2betaColorInfoResponse {
-		return &v
-	}).(GoogleCloudRetailV2betaColorInfoResponsePtrOutput)
-}
-
 // The standard color families. Strongly recommended to use the following standard color groups: "Red", "Pink", "Orange", "Yellow", "Purple", "Green", "Cyan", "Blue", "Brown", "White", "Gray", "Black" and "Mixed". Normally it is expected to have only 1 color family. May consider using single "Mixed" instead of multiple values. A maximum of 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
 func (o GoogleCloudRetailV2betaColorInfoResponseOutput) ColorFamilies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaColorInfoResponse) []string { return v.ColorFamilies }).(pulumi.StringArrayOutput)
@@ -600,50 +392,6 @@ func (o GoogleCloudRetailV2betaColorInfoResponseOutput) ColorFamilies() pulumi.S
 // The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single "Mixed" instead of multiple values. A maximum of 25 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
 func (o GoogleCloudRetailV2betaColorInfoResponseOutput) Colors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaColorInfoResponse) []string { return v.Colors }).(pulumi.StringArrayOutput)
-}
-
-type GoogleCloudRetailV2betaColorInfoResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudRetailV2betaColorInfoResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudRetailV2betaColorInfoResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudRetailV2betaColorInfoResponsePtrOutput) ToGoogleCloudRetailV2betaColorInfoResponsePtrOutput() GoogleCloudRetailV2betaColorInfoResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudRetailV2betaColorInfoResponsePtrOutput) ToGoogleCloudRetailV2betaColorInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaColorInfoResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudRetailV2betaColorInfoResponsePtrOutput) Elem() GoogleCloudRetailV2betaColorInfoResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2betaColorInfoResponse) GoogleCloudRetailV2betaColorInfoResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudRetailV2betaColorInfoResponse
-		return ret
-	}).(GoogleCloudRetailV2betaColorInfoResponseOutput)
-}
-
-// The standard color families. Strongly recommended to use the following standard color groups: "Red", "Pink", "Orange", "Yellow", "Purple", "Green", "Cyan", "Blue", "Brown", "White", "Gray", "Black" and "Mixed". Normally it is expected to have only 1 color family. May consider using single "Mixed" instead of multiple values. A maximum of 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
-func (o GoogleCloudRetailV2betaColorInfoResponsePtrOutput) ColorFamilies() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2betaColorInfoResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ColorFamilies
-	}).(pulumi.StringArrayOutput)
-}
-
-// The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single "Mixed" instead of multiple values. A maximum of 25 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
-func (o GoogleCloudRetailV2betaColorInfoResponsePtrOutput) Colors() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2betaColorInfoResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Colors
-	}).(pulumi.StringArrayOutput)
 }
 
 // Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods.
@@ -761,62 +509,6 @@ type GoogleCloudRetailV2betaFulfillmentInfoResponse struct {
 	PlaceIds []string `pulumi:"placeIds"`
 	// The fulfillment type, including commonly used types (such as pickup in store and same day delivery), and custom types. Customers have to map custom types to their display names before rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-day-delivery" * "next-day-delivery" * "custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5" If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned.
 	Type string `pulumi:"type"`
-}
-
-// GoogleCloudRetailV2betaFulfillmentInfoResponseInput is an input type that accepts GoogleCloudRetailV2betaFulfillmentInfoResponseArgs and GoogleCloudRetailV2betaFulfillmentInfoResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudRetailV2betaFulfillmentInfoResponseInput` via:
-//
-//          GoogleCloudRetailV2betaFulfillmentInfoResponseArgs{...}
-type GoogleCloudRetailV2betaFulfillmentInfoResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRetailV2betaFulfillmentInfoResponseOutput() GoogleCloudRetailV2betaFulfillmentInfoResponseOutput
-	ToGoogleCloudRetailV2betaFulfillmentInfoResponseOutputWithContext(context.Context) GoogleCloudRetailV2betaFulfillmentInfoResponseOutput
-}
-
-// Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods.
-type GoogleCloudRetailV2betaFulfillmentInfoResponseArgs struct {
-	// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern `[a-zA-Z0-9_-]+`, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
-	PlaceIds pulumi.StringArrayInput `pulumi:"placeIds"`
-	// The fulfillment type, including commonly used types (such as pickup in store and same day delivery), and custom types. Customers have to map custom types to their display names before rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-day-delivery" * "next-day-delivery" * "custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5" If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GoogleCloudRetailV2betaFulfillmentInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRetailV2betaFulfillmentInfoResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRetailV2betaFulfillmentInfoResponseArgs) ToGoogleCloudRetailV2betaFulfillmentInfoResponseOutput() GoogleCloudRetailV2betaFulfillmentInfoResponseOutput {
-	return i.ToGoogleCloudRetailV2betaFulfillmentInfoResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRetailV2betaFulfillmentInfoResponseArgs) ToGoogleCloudRetailV2betaFulfillmentInfoResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaFulfillmentInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaFulfillmentInfoResponseOutput)
-}
-
-// GoogleCloudRetailV2betaFulfillmentInfoResponseArrayInput is an input type that accepts GoogleCloudRetailV2betaFulfillmentInfoResponseArray and GoogleCloudRetailV2betaFulfillmentInfoResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudRetailV2betaFulfillmentInfoResponseArrayInput` via:
-//
-//          GoogleCloudRetailV2betaFulfillmentInfoResponseArray{ GoogleCloudRetailV2betaFulfillmentInfoResponseArgs{...} }
-type GoogleCloudRetailV2betaFulfillmentInfoResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRetailV2betaFulfillmentInfoResponseArrayOutput() GoogleCloudRetailV2betaFulfillmentInfoResponseArrayOutput
-	ToGoogleCloudRetailV2betaFulfillmentInfoResponseArrayOutputWithContext(context.Context) GoogleCloudRetailV2betaFulfillmentInfoResponseArrayOutput
-}
-
-type GoogleCloudRetailV2betaFulfillmentInfoResponseArray []GoogleCloudRetailV2betaFulfillmentInfoResponseInput
-
-func (GoogleCloudRetailV2betaFulfillmentInfoResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudRetailV2betaFulfillmentInfoResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRetailV2betaFulfillmentInfoResponseArray) ToGoogleCloudRetailV2betaFulfillmentInfoResponseArrayOutput() GoogleCloudRetailV2betaFulfillmentInfoResponseArrayOutput {
-	return i.ToGoogleCloudRetailV2betaFulfillmentInfoResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRetailV2betaFulfillmentInfoResponseArray) ToGoogleCloudRetailV2betaFulfillmentInfoResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaFulfillmentInfoResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaFulfillmentInfoResponseArrayOutput)
 }
 
 // Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods.
@@ -992,64 +684,6 @@ type GoogleCloudRetailV2betaImageResponse struct {
 	Width int `pulumi:"width"`
 }
 
-// GoogleCloudRetailV2betaImageResponseInput is an input type that accepts GoogleCloudRetailV2betaImageResponseArgs and GoogleCloudRetailV2betaImageResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudRetailV2betaImageResponseInput` via:
-//
-//          GoogleCloudRetailV2betaImageResponseArgs{...}
-type GoogleCloudRetailV2betaImageResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRetailV2betaImageResponseOutput() GoogleCloudRetailV2betaImageResponseOutput
-	ToGoogleCloudRetailV2betaImageResponseOutputWithContext(context.Context) GoogleCloudRetailV2betaImageResponseOutput
-}
-
-// Product thumbnail/detail image.
-type GoogleCloudRetailV2betaImageResponseArgs struct {
-	// Height of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
-	Height pulumi.IntInput `pulumi:"height"`
-	// URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
-	Uri pulumi.StringInput `pulumi:"uri"`
-	// Width of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
-	Width pulumi.IntInput `pulumi:"width"`
-}
-
-func (GoogleCloudRetailV2betaImageResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRetailV2betaImageResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRetailV2betaImageResponseArgs) ToGoogleCloudRetailV2betaImageResponseOutput() GoogleCloudRetailV2betaImageResponseOutput {
-	return i.ToGoogleCloudRetailV2betaImageResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRetailV2betaImageResponseArgs) ToGoogleCloudRetailV2betaImageResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaImageResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaImageResponseOutput)
-}
-
-// GoogleCloudRetailV2betaImageResponseArrayInput is an input type that accepts GoogleCloudRetailV2betaImageResponseArray and GoogleCloudRetailV2betaImageResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudRetailV2betaImageResponseArrayInput` via:
-//
-//          GoogleCloudRetailV2betaImageResponseArray{ GoogleCloudRetailV2betaImageResponseArgs{...} }
-type GoogleCloudRetailV2betaImageResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRetailV2betaImageResponseArrayOutput() GoogleCloudRetailV2betaImageResponseArrayOutput
-	ToGoogleCloudRetailV2betaImageResponseArrayOutputWithContext(context.Context) GoogleCloudRetailV2betaImageResponseArrayOutput
-}
-
-type GoogleCloudRetailV2betaImageResponseArray []GoogleCloudRetailV2betaImageResponseInput
-
-func (GoogleCloudRetailV2betaImageResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudRetailV2betaImageResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRetailV2betaImageResponseArray) ToGoogleCloudRetailV2betaImageResponseArrayOutput() GoogleCloudRetailV2betaImageResponseArrayOutput {
-	return i.ToGoogleCloudRetailV2betaImageResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRetailV2betaImageResponseArray) ToGoogleCloudRetailV2betaImageResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaImageResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaImageResponseArrayOutput)
-}
-
 // Product thumbnail/detail image.
 type GoogleCloudRetailV2betaImageResponseOutput struct{ *pulumi.OutputState }
 
@@ -1112,82 +746,6 @@ type GoogleCloudRetailV2betaIntervalResponse struct {
 	Minimum float64 `pulumi:"minimum"`
 }
 
-// GoogleCloudRetailV2betaIntervalResponseInput is an input type that accepts GoogleCloudRetailV2betaIntervalResponseArgs and GoogleCloudRetailV2betaIntervalResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudRetailV2betaIntervalResponseInput` via:
-//
-//          GoogleCloudRetailV2betaIntervalResponseArgs{...}
-type GoogleCloudRetailV2betaIntervalResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRetailV2betaIntervalResponseOutput() GoogleCloudRetailV2betaIntervalResponseOutput
-	ToGoogleCloudRetailV2betaIntervalResponseOutputWithContext(context.Context) GoogleCloudRetailV2betaIntervalResponseOutput
-}
-
-// A floating point interval.
-type GoogleCloudRetailV2betaIntervalResponseArgs struct {
-	// Exclusive upper bound.
-	ExclusiveMaximum pulumi.Float64Input `pulumi:"exclusiveMaximum"`
-	// Exclusive lower bound.
-	ExclusiveMinimum pulumi.Float64Input `pulumi:"exclusiveMinimum"`
-	// Inclusive upper bound.
-	Maximum pulumi.Float64Input `pulumi:"maximum"`
-	// Inclusive lower bound.
-	Minimum pulumi.Float64Input `pulumi:"minimum"`
-}
-
-func (GoogleCloudRetailV2betaIntervalResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRetailV2betaIntervalResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRetailV2betaIntervalResponseArgs) ToGoogleCloudRetailV2betaIntervalResponseOutput() GoogleCloudRetailV2betaIntervalResponseOutput {
-	return i.ToGoogleCloudRetailV2betaIntervalResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRetailV2betaIntervalResponseArgs) ToGoogleCloudRetailV2betaIntervalResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaIntervalResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaIntervalResponseOutput)
-}
-
-func (i GoogleCloudRetailV2betaIntervalResponseArgs) ToGoogleCloudRetailV2betaIntervalResponsePtrOutput() GoogleCloudRetailV2betaIntervalResponsePtrOutput {
-	return i.ToGoogleCloudRetailV2betaIntervalResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRetailV2betaIntervalResponseArgs) ToGoogleCloudRetailV2betaIntervalResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaIntervalResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaIntervalResponseOutput).ToGoogleCloudRetailV2betaIntervalResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudRetailV2betaIntervalResponsePtrInput is an input type that accepts GoogleCloudRetailV2betaIntervalResponseArgs, GoogleCloudRetailV2betaIntervalResponsePtr and GoogleCloudRetailV2betaIntervalResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudRetailV2betaIntervalResponsePtrInput` via:
-//
-//          GoogleCloudRetailV2betaIntervalResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudRetailV2betaIntervalResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRetailV2betaIntervalResponsePtrOutput() GoogleCloudRetailV2betaIntervalResponsePtrOutput
-	ToGoogleCloudRetailV2betaIntervalResponsePtrOutputWithContext(context.Context) GoogleCloudRetailV2betaIntervalResponsePtrOutput
-}
-
-type googleCloudRetailV2betaIntervalResponsePtrType GoogleCloudRetailV2betaIntervalResponseArgs
-
-func GoogleCloudRetailV2betaIntervalResponsePtr(v *GoogleCloudRetailV2betaIntervalResponseArgs) GoogleCloudRetailV2betaIntervalResponsePtrInput {
-	return (*googleCloudRetailV2betaIntervalResponsePtrType)(v)
-}
-
-func (*googleCloudRetailV2betaIntervalResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudRetailV2betaIntervalResponse)(nil)).Elem()
-}
-
-func (i *googleCloudRetailV2betaIntervalResponsePtrType) ToGoogleCloudRetailV2betaIntervalResponsePtrOutput() GoogleCloudRetailV2betaIntervalResponsePtrOutput {
-	return i.ToGoogleCloudRetailV2betaIntervalResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudRetailV2betaIntervalResponsePtrType) ToGoogleCloudRetailV2betaIntervalResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaIntervalResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaIntervalResponsePtrOutput)
-}
-
 // A floating point interval.
 type GoogleCloudRetailV2betaIntervalResponseOutput struct{ *pulumi.OutputState }
 
@@ -1201,16 +759,6 @@ func (o GoogleCloudRetailV2betaIntervalResponseOutput) ToGoogleCloudRetailV2beta
 
 func (o GoogleCloudRetailV2betaIntervalResponseOutput) ToGoogleCloudRetailV2betaIntervalResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaIntervalResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaIntervalResponseOutput) ToGoogleCloudRetailV2betaIntervalResponsePtrOutput() GoogleCloudRetailV2betaIntervalResponsePtrOutput {
-	return o.ToGoogleCloudRetailV2betaIntervalResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudRetailV2betaIntervalResponseOutput) ToGoogleCloudRetailV2betaIntervalResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaIntervalResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2betaIntervalResponse) *GoogleCloudRetailV2betaIntervalResponse {
-		return &v
-	}).(GoogleCloudRetailV2betaIntervalResponsePtrOutput)
 }
 
 // Exclusive upper bound.
@@ -1231,70 +779,6 @@ func (o GoogleCloudRetailV2betaIntervalResponseOutput) Maximum() pulumi.Float64O
 // Inclusive lower bound.
 func (o GoogleCloudRetailV2betaIntervalResponseOutput) Minimum() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaIntervalResponse) float64 { return v.Minimum }).(pulumi.Float64Output)
-}
-
-type GoogleCloudRetailV2betaIntervalResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudRetailV2betaIntervalResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudRetailV2betaIntervalResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudRetailV2betaIntervalResponsePtrOutput) ToGoogleCloudRetailV2betaIntervalResponsePtrOutput() GoogleCloudRetailV2betaIntervalResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudRetailV2betaIntervalResponsePtrOutput) ToGoogleCloudRetailV2betaIntervalResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaIntervalResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudRetailV2betaIntervalResponsePtrOutput) Elem() GoogleCloudRetailV2betaIntervalResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2betaIntervalResponse) GoogleCloudRetailV2betaIntervalResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudRetailV2betaIntervalResponse
-		return ret
-	}).(GoogleCloudRetailV2betaIntervalResponseOutput)
-}
-
-// Exclusive upper bound.
-func (o GoogleCloudRetailV2betaIntervalResponsePtrOutput) ExclusiveMaximum() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2betaIntervalResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.ExclusiveMaximum
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Exclusive lower bound.
-func (o GoogleCloudRetailV2betaIntervalResponsePtrOutput) ExclusiveMinimum() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2betaIntervalResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.ExclusiveMinimum
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Inclusive upper bound.
-func (o GoogleCloudRetailV2betaIntervalResponsePtrOutput) Maximum() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2betaIntervalResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.Maximum
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Inclusive lower bound.
-func (o GoogleCloudRetailV2betaIntervalResponsePtrOutput) Minimum() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2betaIntervalResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.Minimum
-	}).(pulumi.Float64PtrOutput)
 }
 
 // The price information of a Product.
@@ -1540,78 +1024,6 @@ type GoogleCloudRetailV2betaPriceInfoPriceRangeResponse struct {
 	Price GoogleCloudRetailV2betaIntervalResponse `pulumi:"price"`
 }
 
-// GoogleCloudRetailV2betaPriceInfoPriceRangeResponseInput is an input type that accepts GoogleCloudRetailV2betaPriceInfoPriceRangeResponseArgs and GoogleCloudRetailV2betaPriceInfoPriceRangeResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudRetailV2betaPriceInfoPriceRangeResponseInput` via:
-//
-//          GoogleCloudRetailV2betaPriceInfoPriceRangeResponseArgs{...}
-type GoogleCloudRetailV2betaPriceInfoPriceRangeResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRetailV2betaPriceInfoPriceRangeResponseOutput() GoogleCloudRetailV2betaPriceInfoPriceRangeResponseOutput
-	ToGoogleCloudRetailV2betaPriceInfoPriceRangeResponseOutputWithContext(context.Context) GoogleCloudRetailV2betaPriceInfoPriceRangeResponseOutput
-}
-
-// The price range of all variant Product having the same Product.primary_product_id.
-type GoogleCloudRetailV2betaPriceInfoPriceRangeResponseArgs struct {
-	// The inclusive Product.pricing_info.original_price internal of all variant Product having the same Product.primary_product_id.
-	OriginalPrice GoogleCloudRetailV2betaIntervalResponseInput `pulumi:"originalPrice"`
-	// The inclusive Product.pricing_info.price interval of all variant Product having the same Product.primary_product_id.
-	Price GoogleCloudRetailV2betaIntervalResponseInput `pulumi:"price"`
-}
-
-func (GoogleCloudRetailV2betaPriceInfoPriceRangeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRetailV2betaPriceInfoPriceRangeResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRetailV2betaPriceInfoPriceRangeResponseArgs) ToGoogleCloudRetailV2betaPriceInfoPriceRangeResponseOutput() GoogleCloudRetailV2betaPriceInfoPriceRangeResponseOutput {
-	return i.ToGoogleCloudRetailV2betaPriceInfoPriceRangeResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRetailV2betaPriceInfoPriceRangeResponseArgs) ToGoogleCloudRetailV2betaPriceInfoPriceRangeResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaPriceInfoPriceRangeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaPriceInfoPriceRangeResponseOutput)
-}
-
-func (i GoogleCloudRetailV2betaPriceInfoPriceRangeResponseArgs) ToGoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutput() GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutput {
-	return i.ToGoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRetailV2betaPriceInfoPriceRangeResponseArgs) ToGoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaPriceInfoPriceRangeResponseOutput).ToGoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrInput is an input type that accepts GoogleCloudRetailV2betaPriceInfoPriceRangeResponseArgs, GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtr and GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrInput` via:
-//
-//          GoogleCloudRetailV2betaPriceInfoPriceRangeResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutput() GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutput
-	ToGoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutputWithContext(context.Context) GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutput
-}
-
-type googleCloudRetailV2betaPriceInfoPriceRangeResponsePtrType GoogleCloudRetailV2betaPriceInfoPriceRangeResponseArgs
-
-func GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtr(v *GoogleCloudRetailV2betaPriceInfoPriceRangeResponseArgs) GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrInput {
-	return (*googleCloudRetailV2betaPriceInfoPriceRangeResponsePtrType)(v)
-}
-
-func (*googleCloudRetailV2betaPriceInfoPriceRangeResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudRetailV2betaPriceInfoPriceRangeResponse)(nil)).Elem()
-}
-
-func (i *googleCloudRetailV2betaPriceInfoPriceRangeResponsePtrType) ToGoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutput() GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutput {
-	return i.ToGoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudRetailV2betaPriceInfoPriceRangeResponsePtrType) ToGoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutput)
-}
-
 // The price range of all variant Product having the same Product.primary_product_id.
 type GoogleCloudRetailV2betaPriceInfoPriceRangeResponseOutput struct{ *pulumi.OutputState }
 
@@ -1627,16 +1039,6 @@ func (o GoogleCloudRetailV2betaPriceInfoPriceRangeResponseOutput) ToGoogleCloudR
 	return o
 }
 
-func (o GoogleCloudRetailV2betaPriceInfoPriceRangeResponseOutput) ToGoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutput() GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutput {
-	return o.ToGoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudRetailV2betaPriceInfoPriceRangeResponseOutput) ToGoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2betaPriceInfoPriceRangeResponse) *GoogleCloudRetailV2betaPriceInfoPriceRangeResponse {
-		return &v
-	}).(GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutput)
-}
-
 // The inclusive Product.pricing_info.original_price internal of all variant Product having the same Product.primary_product_id.
 func (o GoogleCloudRetailV2betaPriceInfoPriceRangeResponseOutput) OriginalPrice() GoogleCloudRetailV2betaIntervalResponseOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaPriceInfoPriceRangeResponse) GoogleCloudRetailV2betaIntervalResponse {
@@ -1649,50 +1051,6 @@ func (o GoogleCloudRetailV2betaPriceInfoPriceRangeResponseOutput) Price() Google
 	return o.ApplyT(func(v GoogleCloudRetailV2betaPriceInfoPriceRangeResponse) GoogleCloudRetailV2betaIntervalResponse {
 		return v.Price
 	}).(GoogleCloudRetailV2betaIntervalResponseOutput)
-}
-
-type GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudRetailV2betaPriceInfoPriceRangeResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutput) ToGoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutput() GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutput) ToGoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutput) Elem() GoogleCloudRetailV2betaPriceInfoPriceRangeResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2betaPriceInfoPriceRangeResponse) GoogleCloudRetailV2betaPriceInfoPriceRangeResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudRetailV2betaPriceInfoPriceRangeResponse
-		return ret
-	}).(GoogleCloudRetailV2betaPriceInfoPriceRangeResponseOutput)
-}
-
-// The inclusive Product.pricing_info.original_price internal of all variant Product having the same Product.primary_product_id.
-func (o GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutput) OriginalPrice() GoogleCloudRetailV2betaIntervalResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2betaPriceInfoPriceRangeResponse) *GoogleCloudRetailV2betaIntervalResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.OriginalPrice
-	}).(GoogleCloudRetailV2betaIntervalResponsePtrOutput)
-}
-
-// The inclusive Product.pricing_info.price interval of all variant Product having the same Product.primary_product_id.
-func (o GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutput) Price() GoogleCloudRetailV2betaIntervalResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2betaPriceInfoPriceRangeResponse) *GoogleCloudRetailV2betaIntervalResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Price
-	}).(GoogleCloudRetailV2betaIntervalResponsePtrOutput)
 }
 
 // The price information of a Product.
@@ -1713,88 +1071,6 @@ type GoogleCloudRetailV2betaPriceInfoResponse struct {
 	PriceRange GoogleCloudRetailV2betaPriceInfoPriceRangeResponse `pulumi:"priceRange"`
 }
 
-// GoogleCloudRetailV2betaPriceInfoResponseInput is an input type that accepts GoogleCloudRetailV2betaPriceInfoResponseArgs and GoogleCloudRetailV2betaPriceInfoResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudRetailV2betaPriceInfoResponseInput` via:
-//
-//          GoogleCloudRetailV2betaPriceInfoResponseArgs{...}
-type GoogleCloudRetailV2betaPriceInfoResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRetailV2betaPriceInfoResponseOutput() GoogleCloudRetailV2betaPriceInfoResponseOutput
-	ToGoogleCloudRetailV2betaPriceInfoResponseOutputWithContext(context.Context) GoogleCloudRetailV2betaPriceInfoResponseOutput
-}
-
-// The price information of a Product.
-type GoogleCloudRetailV2betaPriceInfoResponseArgs struct {
-	// The costs associated with the sale of a particular product. Used for gross profit reporting. * Profit = price - cost Google Merchant Center property [cost_of_goods_sold](https://support.google.com/merchants/answer/9017895).
-	Cost pulumi.Float64Input `pulumi:"cost"`
-	// The 3-letter currency code defined in [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html). If this field is an unrecognizable currency code, an INVALID_ARGUMENT error is returned. The Product.Type.VARIANT Products with the same Product.primary_product_id must share the same currency_code. Otherwise, a FAILED_PRECONDITION error is returned.
-	CurrencyCode pulumi.StringInput `pulumi:"currencyCode"`
-	// Price of the product without any discount. If zero, by default set to be the price.
-	OriginalPrice pulumi.Float64Input `pulumi:"originalPrice"`
-	// Price of the product. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371). Schema.org property [Offer.priceSpecification](https://schema.org/priceSpecification).
-	Price pulumi.Float64Input `pulumi:"price"`
-	// The timestamp when the price starts to be effective. This can be set as a future timestamp, and the price is only used for search after price_effective_time. If so, the original_price must be set and original_price is used before price_effective_time. Do not set if price is always effective because it will cause additional latency during search.
-	PriceEffectiveTime pulumi.StringInput `pulumi:"priceEffectiveTime"`
-	// The timestamp when the price stops to be effective. The price is used for search before price_expire_time. If this field is set, the original_price must be set and original_price is used after price_expire_time. Do not set if price is always effective because it will cause additional latency during search.
-	PriceExpireTime pulumi.StringInput `pulumi:"priceExpireTime"`
-	// The price range of all the child Product.Type.VARIANT Products grouped together on the Product.Type.PRIMARY Product. Only populated for Product.Type.PRIMARY Products. Note: This field is OUTPUT_ONLY for ProductService.GetProduct. Do not set this field in API requests.
-	PriceRange GoogleCloudRetailV2betaPriceInfoPriceRangeResponseInput `pulumi:"priceRange"`
-}
-
-func (GoogleCloudRetailV2betaPriceInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRetailV2betaPriceInfoResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRetailV2betaPriceInfoResponseArgs) ToGoogleCloudRetailV2betaPriceInfoResponseOutput() GoogleCloudRetailV2betaPriceInfoResponseOutput {
-	return i.ToGoogleCloudRetailV2betaPriceInfoResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRetailV2betaPriceInfoResponseArgs) ToGoogleCloudRetailV2betaPriceInfoResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaPriceInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaPriceInfoResponseOutput)
-}
-
-func (i GoogleCloudRetailV2betaPriceInfoResponseArgs) ToGoogleCloudRetailV2betaPriceInfoResponsePtrOutput() GoogleCloudRetailV2betaPriceInfoResponsePtrOutput {
-	return i.ToGoogleCloudRetailV2betaPriceInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRetailV2betaPriceInfoResponseArgs) ToGoogleCloudRetailV2betaPriceInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaPriceInfoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaPriceInfoResponseOutput).ToGoogleCloudRetailV2betaPriceInfoResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudRetailV2betaPriceInfoResponsePtrInput is an input type that accepts GoogleCloudRetailV2betaPriceInfoResponseArgs, GoogleCloudRetailV2betaPriceInfoResponsePtr and GoogleCloudRetailV2betaPriceInfoResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudRetailV2betaPriceInfoResponsePtrInput` via:
-//
-//          GoogleCloudRetailV2betaPriceInfoResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudRetailV2betaPriceInfoResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRetailV2betaPriceInfoResponsePtrOutput() GoogleCloudRetailV2betaPriceInfoResponsePtrOutput
-	ToGoogleCloudRetailV2betaPriceInfoResponsePtrOutputWithContext(context.Context) GoogleCloudRetailV2betaPriceInfoResponsePtrOutput
-}
-
-type googleCloudRetailV2betaPriceInfoResponsePtrType GoogleCloudRetailV2betaPriceInfoResponseArgs
-
-func GoogleCloudRetailV2betaPriceInfoResponsePtr(v *GoogleCloudRetailV2betaPriceInfoResponseArgs) GoogleCloudRetailV2betaPriceInfoResponsePtrInput {
-	return (*googleCloudRetailV2betaPriceInfoResponsePtrType)(v)
-}
-
-func (*googleCloudRetailV2betaPriceInfoResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudRetailV2betaPriceInfoResponse)(nil)).Elem()
-}
-
-func (i *googleCloudRetailV2betaPriceInfoResponsePtrType) ToGoogleCloudRetailV2betaPriceInfoResponsePtrOutput() GoogleCloudRetailV2betaPriceInfoResponsePtrOutput {
-	return i.ToGoogleCloudRetailV2betaPriceInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudRetailV2betaPriceInfoResponsePtrType) ToGoogleCloudRetailV2betaPriceInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaPriceInfoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaPriceInfoResponsePtrOutput)
-}
-
 // The price information of a Product.
 type GoogleCloudRetailV2betaPriceInfoResponseOutput struct{ *pulumi.OutputState }
 
@@ -1808,16 +1084,6 @@ func (o GoogleCloudRetailV2betaPriceInfoResponseOutput) ToGoogleCloudRetailV2bet
 
 func (o GoogleCloudRetailV2betaPriceInfoResponseOutput) ToGoogleCloudRetailV2betaPriceInfoResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaPriceInfoResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaPriceInfoResponseOutput) ToGoogleCloudRetailV2betaPriceInfoResponsePtrOutput() GoogleCloudRetailV2betaPriceInfoResponsePtrOutput {
-	return o.ToGoogleCloudRetailV2betaPriceInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudRetailV2betaPriceInfoResponseOutput) ToGoogleCloudRetailV2betaPriceInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaPriceInfoResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2betaPriceInfoResponse) *GoogleCloudRetailV2betaPriceInfoResponse {
-		return &v
-	}).(GoogleCloudRetailV2betaPriceInfoResponsePtrOutput)
 }
 
 // The costs associated with the sale of a particular product. Used for gross profit reporting. * Profit = price - cost Google Merchant Center property [cost_of_goods_sold](https://support.google.com/merchants/answer/9017895).
@@ -1855,100 +1121,6 @@ func (o GoogleCloudRetailV2betaPriceInfoResponseOutput) PriceRange() GoogleCloud
 	return o.ApplyT(func(v GoogleCloudRetailV2betaPriceInfoResponse) GoogleCloudRetailV2betaPriceInfoPriceRangeResponse {
 		return v.PriceRange
 	}).(GoogleCloudRetailV2betaPriceInfoPriceRangeResponseOutput)
-}
-
-type GoogleCloudRetailV2betaPriceInfoResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudRetailV2betaPriceInfoResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudRetailV2betaPriceInfoResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudRetailV2betaPriceInfoResponsePtrOutput) ToGoogleCloudRetailV2betaPriceInfoResponsePtrOutput() GoogleCloudRetailV2betaPriceInfoResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudRetailV2betaPriceInfoResponsePtrOutput) ToGoogleCloudRetailV2betaPriceInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaPriceInfoResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudRetailV2betaPriceInfoResponsePtrOutput) Elem() GoogleCloudRetailV2betaPriceInfoResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2betaPriceInfoResponse) GoogleCloudRetailV2betaPriceInfoResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudRetailV2betaPriceInfoResponse
-		return ret
-	}).(GoogleCloudRetailV2betaPriceInfoResponseOutput)
-}
-
-// The costs associated with the sale of a particular product. Used for gross profit reporting. * Profit = price - cost Google Merchant Center property [cost_of_goods_sold](https://support.google.com/merchants/answer/9017895).
-func (o GoogleCloudRetailV2betaPriceInfoResponsePtrOutput) Cost() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2betaPriceInfoResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.Cost
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The 3-letter currency code defined in [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html). If this field is an unrecognizable currency code, an INVALID_ARGUMENT error is returned. The Product.Type.VARIANT Products with the same Product.primary_product_id must share the same currency_code. Otherwise, a FAILED_PRECONDITION error is returned.
-func (o GoogleCloudRetailV2betaPriceInfoResponsePtrOutput) CurrencyCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2betaPriceInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CurrencyCode
-	}).(pulumi.StringPtrOutput)
-}
-
-// Price of the product without any discount. If zero, by default set to be the price.
-func (o GoogleCloudRetailV2betaPriceInfoResponsePtrOutput) OriginalPrice() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2betaPriceInfoResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.OriginalPrice
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Price of the product. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371). Schema.org property [Offer.priceSpecification](https://schema.org/priceSpecification).
-func (o GoogleCloudRetailV2betaPriceInfoResponsePtrOutput) Price() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2betaPriceInfoResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.Price
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The timestamp when the price starts to be effective. This can be set as a future timestamp, and the price is only used for search after price_effective_time. If so, the original_price must be set and original_price is used before price_effective_time. Do not set if price is always effective because it will cause additional latency during search.
-func (o GoogleCloudRetailV2betaPriceInfoResponsePtrOutput) PriceEffectiveTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2betaPriceInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PriceEffectiveTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// The timestamp when the price stops to be effective. The price is used for search before price_expire_time. If this field is set, the original_price must be set and original_price is used after price_expire_time. Do not set if price is always effective because it will cause additional latency during search.
-func (o GoogleCloudRetailV2betaPriceInfoResponsePtrOutput) PriceExpireTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2betaPriceInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PriceExpireTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// The price range of all the child Product.Type.VARIANT Products grouped together on the Product.Type.PRIMARY Product. Only populated for Product.Type.PRIMARY Products. Note: This field is OUTPUT_ONLY for ProductService.GetProduct. Do not set this field in API requests.
-func (o GoogleCloudRetailV2betaPriceInfoResponsePtrOutput) PriceRange() GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2betaPriceInfoResponse) *GoogleCloudRetailV2betaPriceInfoPriceRangeResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.PriceRange
-	}).(GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutput)
 }
 
 // Product captures all metadata information of items to be recommended or searched.
@@ -2017,122 +1189,6 @@ type GoogleCloudRetailV2betaProductResponse struct {
 	Uri string `pulumi:"uri"`
 	// Product variants grouped together on primary product which share similar product attributes. It's automatically grouped by primary_product_id for all the product variants. Only populated for Type.PRIMARY Products. Note: This field is OUTPUT_ONLY for ProductService.GetProduct. Do not set this field in API requests.
 	Variants []GoogleCloudRetailV2betaProductResponse `pulumi:"variants"`
-}
-
-// GoogleCloudRetailV2betaProductResponseInput is an input type that accepts GoogleCloudRetailV2betaProductResponseArgs and GoogleCloudRetailV2betaProductResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudRetailV2betaProductResponseInput` via:
-//
-//          GoogleCloudRetailV2betaProductResponseArgs{...}
-type GoogleCloudRetailV2betaProductResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRetailV2betaProductResponseOutput() GoogleCloudRetailV2betaProductResponseOutput
-	ToGoogleCloudRetailV2betaProductResponseOutputWithContext(context.Context) GoogleCloudRetailV2betaProductResponseOutput
-}
-
-// Product captures all metadata information of items to be recommended or searched.
-type GoogleCloudRetailV2betaProductResponseArgs struct {
-	// Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or KEY_1_LIKE_THIS.
-	Attributes pulumi.StringMapInput `pulumi:"attributes"`
-	// The target group associated with a given audience (e.g. male, veterans, car owners, musicians, etc.) of the product.
-	Audience GoogleCloudRetailV2betaAudienceResponseInput `pulumi:"audience"`
-	// The online availability of the Product. Default to Availability.IN_STOCK. Google Merchant Center Property [availability](https://support.google.com/merchants/answer/6324448). Schema.org Property [Offer.availability](https://schema.org/availability).
-	Availability pulumi.StringInput `pulumi:"availability"`
-	// The available quantity of the item.
-	AvailableQuantity pulumi.IntInput `pulumi:"availableQuantity"`
-	// The timestamp when this Product becomes available for SearchService.Search.
-	AvailableTime pulumi.StringInput `pulumi:"availableTime"`
-	// The brands of the product. A maximum of 30 brands are allowed. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [brand](https://support.google.com/merchants/answer/6324351). Schema.org property [Product.brand](https://schema.org/brand).
-	Brands pulumi.StringArrayInput `pulumi:"brands"`
-	// Product categories. This field is repeated for supporting one product belonging to several parallel categories. Strongly recommended using the full path for better search / recommendation quality. To represent full path of category, use '>' sign to separate different hierarchies. If '>' is part of the category name, please replace it with other character(s). For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categories": [ "Shoes & Accessories > Shoes", "Sports & Fitness > Athletic Clothing > Shoes" ] Must be set for Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property google_product_category. Schema.org property [Product.category] (https://schema.org/category). [mc_google_product_category]: https://support.google.com/merchants/answer/6324436
-	Categories pulumi.StringArrayInput `pulumi:"categories"`
-	// The id of the collection members when type is Type.COLLECTION. Should not set it for other types. A maximum of 1000 values are allowed. Otherwise, an INVALID_ARGUMENT error is return.
-	CollectionMemberIds pulumi.StringArrayInput `pulumi:"collectionMemberIds"`
-	// The color of the product. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
-	ColorInfo GoogleCloudRetailV2betaColorInfoResponseInput `pulumi:"colorInfo"`
-	// The condition of the product. Strongly encouraged to use the standard values: "new", "refurbished", "used". A maximum of 5 values are allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [condition](https://support.google.com/merchants/answer/6324469). Schema.org property [Offer.itemCondition](https://schema.org/itemCondition).
-	Conditions pulumi.StringArrayInput `pulumi:"conditions"`
-	// Product description. This field must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [description](https://support.google.com/merchants/answer/6324468). schema.org property [Product.description](https://schema.org/description).
-	Description pulumi.StringInput `pulumi:"description"`
-	// The timestamp when this product becomes unavailable for SearchService.Search. If it is set, the Product is not available for SearchService.Search after expire_time. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts. expire_time must be later than available_time and publish_time, otherwise an INVALID_ARGUMENT error is thrown. Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
-	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
-	// Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods. All the elements must have distinct FulfillmentInfo.type. Otherwise, an INVALID_ARGUMENT error is returned.
-	FulfillmentInfo GoogleCloudRetailV2betaFulfillmentInfoResponseArrayInput `pulumi:"fulfillmentInfo"`
-	// The Global Trade Item Number (GTIN) of the product. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. This field must be a Unigram. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [gtin](https://support.google.com/merchants/answer/6324461). Schema.org property [Product.isbn](https://schema.org/isbn) or [Product.gtin8](https://schema.org/gtin8) or [Product.gtin12](https://schema.org/gtin12) or [Product.gtin13](https://schema.org/gtin13) or [Product.gtin14](https://schema.org/gtin14). If the value is not a valid GTIN, an INVALID_ARGUMENT error is returned.
-	Gtin pulumi.StringInput `pulumi:"gtin"`
-	// Product images for the product.Highly recommended to put the main image to the first. A maximum of 300 images are allowed. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
-	Images GoogleCloudRetailV2betaImageResponseArrayInput `pulumi:"images"`
-	// Language of the title/description and other string attributes. Use language tags defined by BCP 47. For product prediction, this field is ignored and the model automatically detects the text language. The Product can include text in different languages, but duplicating Products to provide text in multiple languages can result in degraded model performance. For product search this field is in use. It defaults to "en-US" if unset.
-	LanguageCode pulumi.StringInput `pulumi:"languageCode"`
-	// The material of the product. For example, "leather", "wooden". A maximum of 20 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [material](https://support.google.com/merchants/answer/6324410). Schema.org property [Product.material](https://schema.org/material).
-	Materials pulumi.StringArrayInput `pulumi:"materials"`
-	// Immutable. Full resource name of the product, such as `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The pattern or graphic print of the product. For example, "striped", "polka dot", "paisley". A maximum of 20 values are allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [pattern](https://support.google.com/merchants/answer/6324483). Schema.org property [Product.pattern](https://schema.org/pattern).
-	Patterns pulumi.StringArrayInput `pulumi:"patterns"`
-	// Product price and cost information. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371).
-	PriceInfo GoogleCloudRetailV2betaPriceInfoResponseInput `pulumi:"priceInfo"`
-	// Variant group identifier. Must be an id, with the same parent branch with this product. Otherwise, an error is thrown. For Type.PRIMARY Products, this field can only be empty or set to the same value as id. For VARIANT Products, this field cannot be empty. A maximum of 2,000 products are allowed to share the same Type.PRIMARY Product. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center Property [item_group_id](https://support.google.com/merchants/answer/6324507). Schema.org Property [Product.inProductGroupWithID](https://schema.org/inProductGroupWithID). This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
-	PrimaryProductId pulumi.StringInput `pulumi:"primaryProductId"`
-	// The promotions applied to the product. A maximum of 10 values are allowed per Product.
-	Promotions GoogleCloudRetailV2betaPromotionResponseArrayInput `pulumi:"promotions"`
-	// The timestamp when the product is published by the retailer for the first time, which indicates the freshness of the products. Note that this field is different from available_time, given it purely describes product freshness regardless of when it is available on search and recommendation.
-	PublishTime pulumi.StringInput `pulumi:"publishTime"`
-	// The rating of this product.
-	Rating GoogleCloudRetailV2betaRatingResponseInput `pulumi:"rating"`
-	// Indicates which fields in the Products are returned in SearchResponse. Supported fields for all types: * audience * availability * brands * color_info * conditions * gtin * materials * name * patterns * price_info * rating * sizes * title * uri Supported fields only for Type.PRIMARY and Type.COLLECTION: * categories * description * images Supported fields only for Type.VARIANT: * Only the first image in images To mark attributes as retrievable, include paths of the form "attributes.key" where "key" is the key of a custom attribute, as specified in attributes. For Type.PRIMARY and Type.COLLECTION, the following fields are always returned in SearchResponse by default: * name For Type.VARIANT, the following fields are always returned in by default: * name * color_info Maximum number of paths is 30. Otherwise, an INVALID_ARGUMENT error is returned. Note: Returning more fields in SearchResponse may increase response payload size and serving latency.
-	RetrievableFields pulumi.StringInput `pulumi:"retrievableFields"`
-	// The size of the product. To represent different size systems or size types, consider using this format: [[[size_system:]size_type:]size_value]. For example, in "US:MENS:M", "US" represents size system; "MENS" represents size type; "M" represents size value. In "GIRLS:27", size system is empty; "GIRLS" represents size type; "27" represents size value. In "32 inches", both size system and size type are empty, while size value is "32 inches". A maximum of 20 values are allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [size](https://support.google.com/merchants/answer/6324492), [size_type](https://support.google.com/merchants/answer/6324497) and [size_system](https://support.google.com/merchants/answer/6324502). Schema.org property [Product.size](https://schema.org/size).
-	Sizes pulumi.StringArrayInput `pulumi:"sizes"`
-	// Custom tags associated with the product. At most 250 values are allowed per Product. This value must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. This tag can be used for filtering recommendation results by passing the tag as part of the PredictRequest.filter. Google Merchant Center property [custom_label_0–4](https://support.google.com/merchants/answer/6324473).
-	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// Product title. This field must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [title](https://support.google.com/merchants/answer/6324415). Schema.org property [Product.name](https://schema.org/name).
-	Title pulumi.StringInput `pulumi:"title"`
-	// Input only. The TTL (time to live) of the product. If it is set, it must be a non-negative value, and expire_time is set as current timestamp plus ttl. The derived expire_time is returned in the output and ttl is left blank when retrieving the Product. If it is set, the product is not available for SearchService.Search after current timestamp plus ttl. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts.
-	Ttl pulumi.StringInput `pulumi:"ttl"`
-	// Immutable. The type of the product. Default to Catalog.product_level_config.ingestion_product_type if unset.
-	Type pulumi.StringInput `pulumi:"type"`
-	// Canonical URL directly linking to the product detail page. It is strongly recommended to provide a valid uri for the product, otherwise the service performance could be significantly degraded. This field must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [link](https://support.google.com/merchants/answer/6324416). Schema.org property [Offer.url](https://schema.org/url).
-	Uri pulumi.StringInput `pulumi:"uri"`
-	// Product variants grouped together on primary product which share similar product attributes. It's automatically grouped by primary_product_id for all the product variants. Only populated for Type.PRIMARY Products. Note: This field is OUTPUT_ONLY for ProductService.GetProduct. Do not set this field in API requests.
-	Variants GoogleCloudRetailV2betaProductResponseArrayInput `pulumi:"variants"`
-}
-
-func (GoogleCloudRetailV2betaProductResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRetailV2betaProductResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRetailV2betaProductResponseArgs) ToGoogleCloudRetailV2betaProductResponseOutput() GoogleCloudRetailV2betaProductResponseOutput {
-	return i.ToGoogleCloudRetailV2betaProductResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRetailV2betaProductResponseArgs) ToGoogleCloudRetailV2betaProductResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaProductResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaProductResponseOutput)
-}
-
-// GoogleCloudRetailV2betaProductResponseArrayInput is an input type that accepts GoogleCloudRetailV2betaProductResponseArray and GoogleCloudRetailV2betaProductResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudRetailV2betaProductResponseArrayInput` via:
-//
-//          GoogleCloudRetailV2betaProductResponseArray{ GoogleCloudRetailV2betaProductResponseArgs{...} }
-type GoogleCloudRetailV2betaProductResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRetailV2betaProductResponseArrayOutput() GoogleCloudRetailV2betaProductResponseArrayOutput
-	ToGoogleCloudRetailV2betaProductResponseArrayOutputWithContext(context.Context) GoogleCloudRetailV2betaProductResponseArrayOutput
-}
-
-type GoogleCloudRetailV2betaProductResponseArray []GoogleCloudRetailV2betaProductResponseInput
-
-func (GoogleCloudRetailV2betaProductResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudRetailV2betaProductResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRetailV2betaProductResponseArray) ToGoogleCloudRetailV2betaProductResponseArrayOutput() GoogleCloudRetailV2betaProductResponseArrayOutput {
-	return i.ToGoogleCloudRetailV2betaProductResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRetailV2betaProductResponseArray) ToGoogleCloudRetailV2betaProductResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaProductResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaProductResponseArrayOutput)
 }
 
 // Product captures all metadata information of items to be recommended or searched.
@@ -2448,60 +1504,6 @@ type GoogleCloudRetailV2betaPromotionResponse struct {
 	PromotionId string `pulumi:"promotionId"`
 }
 
-// GoogleCloudRetailV2betaPromotionResponseInput is an input type that accepts GoogleCloudRetailV2betaPromotionResponseArgs and GoogleCloudRetailV2betaPromotionResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudRetailV2betaPromotionResponseInput` via:
-//
-//          GoogleCloudRetailV2betaPromotionResponseArgs{...}
-type GoogleCloudRetailV2betaPromotionResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRetailV2betaPromotionResponseOutput() GoogleCloudRetailV2betaPromotionResponseOutput
-	ToGoogleCloudRetailV2betaPromotionResponseOutputWithContext(context.Context) GoogleCloudRetailV2betaPromotionResponseOutput
-}
-
-// Promotion information.
-type GoogleCloudRetailV2betaPromotionResponseArgs struct {
-	// ID of the promotion. For example, "free gift". The value value must be a UTF-8 encoded string with a length limit of 128 characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion](https://support.google.com/merchants/answer/7050148).
-	PromotionId pulumi.StringInput `pulumi:"promotionId"`
-}
-
-func (GoogleCloudRetailV2betaPromotionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRetailV2betaPromotionResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRetailV2betaPromotionResponseArgs) ToGoogleCloudRetailV2betaPromotionResponseOutput() GoogleCloudRetailV2betaPromotionResponseOutput {
-	return i.ToGoogleCloudRetailV2betaPromotionResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRetailV2betaPromotionResponseArgs) ToGoogleCloudRetailV2betaPromotionResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaPromotionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaPromotionResponseOutput)
-}
-
-// GoogleCloudRetailV2betaPromotionResponseArrayInput is an input type that accepts GoogleCloudRetailV2betaPromotionResponseArray and GoogleCloudRetailV2betaPromotionResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudRetailV2betaPromotionResponseArrayInput` via:
-//
-//          GoogleCloudRetailV2betaPromotionResponseArray{ GoogleCloudRetailV2betaPromotionResponseArgs{...} }
-type GoogleCloudRetailV2betaPromotionResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRetailV2betaPromotionResponseArrayOutput() GoogleCloudRetailV2betaPromotionResponseArrayOutput
-	ToGoogleCloudRetailV2betaPromotionResponseArrayOutputWithContext(context.Context) GoogleCloudRetailV2betaPromotionResponseArrayOutput
-}
-
-type GoogleCloudRetailV2betaPromotionResponseArray []GoogleCloudRetailV2betaPromotionResponseInput
-
-func (GoogleCloudRetailV2betaPromotionResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudRetailV2betaPromotionResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRetailV2betaPromotionResponseArray) ToGoogleCloudRetailV2betaPromotionResponseArrayOutput() GoogleCloudRetailV2betaPromotionResponseArrayOutput {
-	return i.ToGoogleCloudRetailV2betaPromotionResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRetailV2betaPromotionResponseArray) ToGoogleCloudRetailV2betaPromotionResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaPromotionResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaPromotionResponseArrayOutput)
-}
-
 // Promotion information.
 type GoogleCloudRetailV2betaPromotionResponseOutput struct{ *pulumi.OutputState }
 
@@ -2730,80 +1732,6 @@ type GoogleCloudRetailV2betaRatingResponse struct {
 	RatingHistogram []int `pulumi:"ratingHistogram"`
 }
 
-// GoogleCloudRetailV2betaRatingResponseInput is an input type that accepts GoogleCloudRetailV2betaRatingResponseArgs and GoogleCloudRetailV2betaRatingResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudRetailV2betaRatingResponseInput` via:
-//
-//          GoogleCloudRetailV2betaRatingResponseArgs{...}
-type GoogleCloudRetailV2betaRatingResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRetailV2betaRatingResponseOutput() GoogleCloudRetailV2betaRatingResponseOutput
-	ToGoogleCloudRetailV2betaRatingResponseOutputWithContext(context.Context) GoogleCloudRetailV2betaRatingResponseOutput
-}
-
-// The rating of a Product.
-type GoogleCloudRetailV2betaRatingResponseArgs struct {
-	// The average rating of the Product. The rating is scaled at 1-5. Otherwise, an INVALID_ARGUMENT error is returned.
-	AverageRating pulumi.Float64Input `pulumi:"averageRating"`
-	// The total number of ratings. This value is independent of the value of rating_histogram. This value must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
-	RatingCount pulumi.IntInput `pulumi:"ratingCount"`
-	// List of rating counts per rating value (index = rating - 1). The list is empty if there is no rating. If the list is non-empty, its size is always 5. Otherwise, an INVALID_ARGUMENT error is returned. For example, [41, 14, 13, 47, 303]. It means that the Product got 41 ratings with 1 star, 14 ratings with 2 star, and so on.
-	RatingHistogram pulumi.IntArrayInput `pulumi:"ratingHistogram"`
-}
-
-func (GoogleCloudRetailV2betaRatingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRetailV2betaRatingResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudRetailV2betaRatingResponseArgs) ToGoogleCloudRetailV2betaRatingResponseOutput() GoogleCloudRetailV2betaRatingResponseOutput {
-	return i.ToGoogleCloudRetailV2betaRatingResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRetailV2betaRatingResponseArgs) ToGoogleCloudRetailV2betaRatingResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRatingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRatingResponseOutput)
-}
-
-func (i GoogleCloudRetailV2betaRatingResponseArgs) ToGoogleCloudRetailV2betaRatingResponsePtrOutput() GoogleCloudRetailV2betaRatingResponsePtrOutput {
-	return i.ToGoogleCloudRetailV2betaRatingResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRetailV2betaRatingResponseArgs) ToGoogleCloudRetailV2betaRatingResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRatingResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRatingResponseOutput).ToGoogleCloudRetailV2betaRatingResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudRetailV2betaRatingResponsePtrInput is an input type that accepts GoogleCloudRetailV2betaRatingResponseArgs, GoogleCloudRetailV2betaRatingResponsePtr and GoogleCloudRetailV2betaRatingResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudRetailV2betaRatingResponsePtrInput` via:
-//
-//          GoogleCloudRetailV2betaRatingResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudRetailV2betaRatingResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRetailV2betaRatingResponsePtrOutput() GoogleCloudRetailV2betaRatingResponsePtrOutput
-	ToGoogleCloudRetailV2betaRatingResponsePtrOutputWithContext(context.Context) GoogleCloudRetailV2betaRatingResponsePtrOutput
-}
-
-type googleCloudRetailV2betaRatingResponsePtrType GoogleCloudRetailV2betaRatingResponseArgs
-
-func GoogleCloudRetailV2betaRatingResponsePtr(v *GoogleCloudRetailV2betaRatingResponseArgs) GoogleCloudRetailV2betaRatingResponsePtrInput {
-	return (*googleCloudRetailV2betaRatingResponsePtrType)(v)
-}
-
-func (*googleCloudRetailV2betaRatingResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudRetailV2betaRatingResponse)(nil)).Elem()
-}
-
-func (i *googleCloudRetailV2betaRatingResponsePtrType) ToGoogleCloudRetailV2betaRatingResponsePtrOutput() GoogleCloudRetailV2betaRatingResponsePtrOutput {
-	return i.ToGoogleCloudRetailV2betaRatingResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudRetailV2betaRatingResponsePtrType) ToGoogleCloudRetailV2betaRatingResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRatingResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRatingResponsePtrOutput)
-}
-
 // The rating of a Product.
 type GoogleCloudRetailV2betaRatingResponseOutput struct{ *pulumi.OutputState }
 
@@ -2817,16 +1745,6 @@ func (o GoogleCloudRetailV2betaRatingResponseOutput) ToGoogleCloudRetailV2betaRa
 
 func (o GoogleCloudRetailV2betaRatingResponseOutput) ToGoogleCloudRetailV2betaRatingResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRatingResponseOutput {
 	return o
-}
-
-func (o GoogleCloudRetailV2betaRatingResponseOutput) ToGoogleCloudRetailV2betaRatingResponsePtrOutput() GoogleCloudRetailV2betaRatingResponsePtrOutput {
-	return o.ToGoogleCloudRetailV2betaRatingResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudRetailV2betaRatingResponseOutput) ToGoogleCloudRetailV2betaRatingResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRatingResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2betaRatingResponse) *GoogleCloudRetailV2betaRatingResponse {
-		return &v
-	}).(GoogleCloudRetailV2betaRatingResponsePtrOutput)
 }
 
 // The average rating of the Product. The rating is scaled at 1-5. Otherwise, an INVALID_ARGUMENT error is returned.
@@ -2844,103 +1762,27 @@ func (o GoogleCloudRetailV2betaRatingResponseOutput) RatingHistogram() pulumi.In
 	return o.ApplyT(func(v GoogleCloudRetailV2betaRatingResponse) []int { return v.RatingHistogram }).(pulumi.IntArrayOutput)
 }
 
-type GoogleCloudRetailV2betaRatingResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudRetailV2betaRatingResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudRetailV2betaRatingResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudRetailV2betaRatingResponsePtrOutput) ToGoogleCloudRetailV2betaRatingResponsePtrOutput() GoogleCloudRetailV2betaRatingResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudRetailV2betaRatingResponsePtrOutput) ToGoogleCloudRetailV2betaRatingResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaRatingResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudRetailV2betaRatingResponsePtrOutput) Elem() GoogleCloudRetailV2betaRatingResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2betaRatingResponse) GoogleCloudRetailV2betaRatingResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudRetailV2betaRatingResponse
-		return ret
-	}).(GoogleCloudRetailV2betaRatingResponseOutput)
-}
-
-// The average rating of the Product. The rating is scaled at 1-5. Otherwise, an INVALID_ARGUMENT error is returned.
-func (o GoogleCloudRetailV2betaRatingResponsePtrOutput) AverageRating() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2betaRatingResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.AverageRating
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The total number of ratings. This value is independent of the value of rating_histogram. This value must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
-func (o GoogleCloudRetailV2betaRatingResponsePtrOutput) RatingCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2betaRatingResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.RatingCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// List of rating counts per rating value (index = rating - 1). The list is empty if there is no rating. If the list is non-empty, its size is always 5. Otherwise, an INVALID_ARGUMENT error is returned. For example, [41, 14, 13, 47, 303]. It means that the Product got 41 ratings with 1 star, 14 ratings with 2 star, and so on.
-func (o GoogleCloudRetailV2betaRatingResponsePtrOutput) RatingHistogram() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v *GoogleCloudRetailV2betaRatingResponse) []int {
-		if v == nil {
-			return nil
-		}
-		return v.RatingHistogram
-	}).(pulumi.IntArrayOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaAudienceInput)(nil)).Elem(), GoogleCloudRetailV2betaAudienceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaAudiencePtrInput)(nil)).Elem(), GoogleCloudRetailV2betaAudienceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaAudienceResponseInput)(nil)).Elem(), GoogleCloudRetailV2betaAudienceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaAudienceResponsePtrInput)(nil)).Elem(), GoogleCloudRetailV2betaAudienceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaColorInfoInput)(nil)).Elem(), GoogleCloudRetailV2betaColorInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaColorInfoPtrInput)(nil)).Elem(), GoogleCloudRetailV2betaColorInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaColorInfoResponseInput)(nil)).Elem(), GoogleCloudRetailV2betaColorInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaColorInfoResponsePtrInput)(nil)).Elem(), GoogleCloudRetailV2betaColorInfoResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaFulfillmentInfoInput)(nil)).Elem(), GoogleCloudRetailV2betaFulfillmentInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaFulfillmentInfoArrayInput)(nil)).Elem(), GoogleCloudRetailV2betaFulfillmentInfoArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaFulfillmentInfoResponseInput)(nil)).Elem(), GoogleCloudRetailV2betaFulfillmentInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaFulfillmentInfoResponseArrayInput)(nil)).Elem(), GoogleCloudRetailV2betaFulfillmentInfoResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaImageInput)(nil)).Elem(), GoogleCloudRetailV2betaImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaImageArrayInput)(nil)).Elem(), GoogleCloudRetailV2betaImageArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaImageResponseInput)(nil)).Elem(), GoogleCloudRetailV2betaImageResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaImageResponseArrayInput)(nil)).Elem(), GoogleCloudRetailV2betaImageResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaIntervalResponseInput)(nil)).Elem(), GoogleCloudRetailV2betaIntervalResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaIntervalResponsePtrInput)(nil)).Elem(), GoogleCloudRetailV2betaIntervalResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaPriceInfoInput)(nil)).Elem(), GoogleCloudRetailV2betaPriceInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaPriceInfoPtrInput)(nil)).Elem(), GoogleCloudRetailV2betaPriceInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaPriceInfoPriceRangeResponseInput)(nil)).Elem(), GoogleCloudRetailV2betaPriceInfoPriceRangeResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrInput)(nil)).Elem(), GoogleCloudRetailV2betaPriceInfoPriceRangeResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaPriceInfoResponseInput)(nil)).Elem(), GoogleCloudRetailV2betaPriceInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaPriceInfoResponsePtrInput)(nil)).Elem(), GoogleCloudRetailV2betaPriceInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaProductResponseInput)(nil)).Elem(), GoogleCloudRetailV2betaProductResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaProductResponseArrayInput)(nil)).Elem(), GoogleCloudRetailV2betaProductResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaPromotionInput)(nil)).Elem(), GoogleCloudRetailV2betaPromotionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaPromotionArrayInput)(nil)).Elem(), GoogleCloudRetailV2betaPromotionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaPromotionResponseInput)(nil)).Elem(), GoogleCloudRetailV2betaPromotionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaPromotionResponseArrayInput)(nil)).Elem(), GoogleCloudRetailV2betaPromotionResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaRatingInput)(nil)).Elem(), GoogleCloudRetailV2betaRatingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaRatingPtrInput)(nil)).Elem(), GoogleCloudRetailV2betaRatingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaRatingResponseInput)(nil)).Elem(), GoogleCloudRetailV2betaRatingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaRatingResponsePtrInput)(nil)).Elem(), GoogleCloudRetailV2betaRatingResponseArgs{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaAudienceOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaAudiencePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaAudienceResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudRetailV2betaAudienceResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaColorInfoOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaColorInfoPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaColorInfoResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudRetailV2betaColorInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaFulfillmentInfoOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaFulfillmentInfoArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaFulfillmentInfoResponseOutput{})
@@ -2950,13 +1792,10 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaImageResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaImageResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaIntervalResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudRetailV2betaIntervalResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaPriceInfoOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaPriceInfoPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaPriceInfoPriceRangeResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudRetailV2betaPriceInfoPriceRangeResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaPriceInfoResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudRetailV2betaPriceInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaProductResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaProductResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaPromotionOutput{})
@@ -2966,5 +1805,4 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRatingOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRatingPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRatingResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudRetailV2betaRatingResponsePtrOutput{})
 }

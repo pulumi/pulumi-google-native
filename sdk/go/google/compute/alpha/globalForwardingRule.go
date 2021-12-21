@@ -221,7 +221,7 @@ type GlobalForwardingRuleInput interface {
 }
 
 func (*GlobalForwardingRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalForwardingRule)(nil))
+	return reflect.TypeOf((**GlobalForwardingRule)(nil)).Elem()
 }
 
 func (i *GlobalForwardingRule) ToGlobalForwardingRuleOutput() GlobalForwardingRuleOutput {
@@ -235,7 +235,7 @@ func (i *GlobalForwardingRule) ToGlobalForwardingRuleOutputWithContext(ctx conte
 type GlobalForwardingRuleOutput struct{ *pulumi.OutputState }
 
 func (GlobalForwardingRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalForwardingRule)(nil))
+	return reflect.TypeOf((**GlobalForwardingRule)(nil)).Elem()
 }
 
 func (o GlobalForwardingRuleOutput) ToGlobalForwardingRuleOutput() GlobalForwardingRuleOutput {

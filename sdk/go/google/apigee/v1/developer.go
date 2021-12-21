@@ -160,7 +160,7 @@ type DeveloperInput interface {
 }
 
 func (*Developer) ElementType() reflect.Type {
-	return reflect.TypeOf((*Developer)(nil))
+	return reflect.TypeOf((**Developer)(nil)).Elem()
 }
 
 func (i *Developer) ToDeveloperOutput() DeveloperOutput {
@@ -174,7 +174,7 @@ func (i *Developer) ToDeveloperOutputWithContext(ctx context.Context) DeveloperO
 type DeveloperOutput struct{ *pulumi.OutputState }
 
 func (DeveloperOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Developer)(nil))
+	return reflect.TypeOf((**Developer)(nil)).Elem()
 }
 
 func (o DeveloperOutput) ToDeveloperOutput() DeveloperOutput {

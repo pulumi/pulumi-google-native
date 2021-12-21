@@ -127,62 +127,6 @@ type ApiOperationResponse struct {
 	ServiceName string `pulumi:"serviceName"`
 }
 
-// ApiOperationResponseInput is an input type that accepts ApiOperationResponseArgs and ApiOperationResponseOutput values.
-// You can construct a concrete instance of `ApiOperationResponseInput` via:
-//
-//          ApiOperationResponseArgs{...}
-type ApiOperationResponseInput interface {
-	pulumi.Input
-
-	ToApiOperationResponseOutput() ApiOperationResponseOutput
-	ToApiOperationResponseOutputWithContext(context.Context) ApiOperationResponseOutput
-}
-
-// Identification for an API Operation.
-type ApiOperationResponseArgs struct {
-	// API methods or permissions to allow. Method or permission must belong to the service specified by `service_name` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `service_name`.
-	MethodSelectors MethodSelectorResponseArrayInput `pulumi:"methodSelectors"`
-	// The name of the API whose methods or permissions the IngressPolicy or EgressPolicy want to allow. A single ApiOperation with `service_name` field set to `*` will allow all methods AND permissions for all services.
-	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-}
-
-func (ApiOperationResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiOperationResponse)(nil)).Elem()
-}
-
-func (i ApiOperationResponseArgs) ToApiOperationResponseOutput() ApiOperationResponseOutput {
-	return i.ToApiOperationResponseOutputWithContext(context.Background())
-}
-
-func (i ApiOperationResponseArgs) ToApiOperationResponseOutputWithContext(ctx context.Context) ApiOperationResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiOperationResponseOutput)
-}
-
-// ApiOperationResponseArrayInput is an input type that accepts ApiOperationResponseArray and ApiOperationResponseArrayOutput values.
-// You can construct a concrete instance of `ApiOperationResponseArrayInput` via:
-//
-//          ApiOperationResponseArray{ ApiOperationResponseArgs{...} }
-type ApiOperationResponseArrayInput interface {
-	pulumi.Input
-
-	ToApiOperationResponseArrayOutput() ApiOperationResponseArrayOutput
-	ToApiOperationResponseArrayOutputWithContext(context.Context) ApiOperationResponseArrayOutput
-}
-
-type ApiOperationResponseArray []ApiOperationResponseInput
-
-func (ApiOperationResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApiOperationResponse)(nil)).Elem()
-}
-
-func (i ApiOperationResponseArray) ToApiOperationResponseArrayOutput() ApiOperationResponseArrayOutput {
-	return i.ToApiOperationResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ApiOperationResponseArray) ToApiOperationResponseArrayOutputWithContext(ctx context.Context) ApiOperationResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiOperationResponseArrayOutput)
-}
-
 // Identification for an API Operation.
 type ApiOperationResponseOutput struct{ *pulumi.OutputState }
 
@@ -395,78 +339,6 @@ type BasicLevelResponse struct {
 	Conditions []ConditionResponse `pulumi:"conditions"`
 }
 
-// BasicLevelResponseInput is an input type that accepts BasicLevelResponseArgs and BasicLevelResponseOutput values.
-// You can construct a concrete instance of `BasicLevelResponseInput` via:
-//
-//          BasicLevelResponseArgs{...}
-type BasicLevelResponseInput interface {
-	pulumi.Input
-
-	ToBasicLevelResponseOutput() BasicLevelResponseOutput
-	ToBasicLevelResponseOutputWithContext(context.Context) BasicLevelResponseOutput
-}
-
-// `BasicLevel` is an `AccessLevel` using a set of recommended features.
-type BasicLevelResponseArgs struct {
-	// How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
-	CombiningFunction pulumi.StringInput `pulumi:"combiningFunction"`
-	// A list of requirements for the `AccessLevel` to be granted.
-	Conditions ConditionResponseArrayInput `pulumi:"conditions"`
-}
-
-func (BasicLevelResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BasicLevelResponse)(nil)).Elem()
-}
-
-func (i BasicLevelResponseArgs) ToBasicLevelResponseOutput() BasicLevelResponseOutput {
-	return i.ToBasicLevelResponseOutputWithContext(context.Background())
-}
-
-func (i BasicLevelResponseArgs) ToBasicLevelResponseOutputWithContext(ctx context.Context) BasicLevelResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BasicLevelResponseOutput)
-}
-
-func (i BasicLevelResponseArgs) ToBasicLevelResponsePtrOutput() BasicLevelResponsePtrOutput {
-	return i.ToBasicLevelResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BasicLevelResponseArgs) ToBasicLevelResponsePtrOutputWithContext(ctx context.Context) BasicLevelResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BasicLevelResponseOutput).ToBasicLevelResponsePtrOutputWithContext(ctx)
-}
-
-// BasicLevelResponsePtrInput is an input type that accepts BasicLevelResponseArgs, BasicLevelResponsePtr and BasicLevelResponsePtrOutput values.
-// You can construct a concrete instance of `BasicLevelResponsePtrInput` via:
-//
-//          BasicLevelResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BasicLevelResponsePtrInput interface {
-	pulumi.Input
-
-	ToBasicLevelResponsePtrOutput() BasicLevelResponsePtrOutput
-	ToBasicLevelResponsePtrOutputWithContext(context.Context) BasicLevelResponsePtrOutput
-}
-
-type basicLevelResponsePtrType BasicLevelResponseArgs
-
-func BasicLevelResponsePtr(v *BasicLevelResponseArgs) BasicLevelResponsePtrInput {
-	return (*basicLevelResponsePtrType)(v)
-}
-
-func (*basicLevelResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BasicLevelResponse)(nil)).Elem()
-}
-
-func (i *basicLevelResponsePtrType) ToBasicLevelResponsePtrOutput() BasicLevelResponsePtrOutput {
-	return i.ToBasicLevelResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *basicLevelResponsePtrType) ToBasicLevelResponsePtrOutputWithContext(ctx context.Context) BasicLevelResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BasicLevelResponsePtrOutput)
-}
-
 // `BasicLevel` is an `AccessLevel` using a set of recommended features.
 type BasicLevelResponseOutput struct{ *pulumi.OutputState }
 
@@ -482,16 +354,6 @@ func (o BasicLevelResponseOutput) ToBasicLevelResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o BasicLevelResponseOutput) ToBasicLevelResponsePtrOutput() BasicLevelResponsePtrOutput {
-	return o.ToBasicLevelResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BasicLevelResponseOutput) ToBasicLevelResponsePtrOutputWithContext(ctx context.Context) BasicLevelResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BasicLevelResponse) *BasicLevelResponse {
-		return &v
-	}).(BasicLevelResponsePtrOutput)
-}
-
 // How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
 func (o BasicLevelResponseOutput) CombiningFunction() pulumi.StringOutput {
 	return o.ApplyT(func(v BasicLevelResponse) string { return v.CombiningFunction }).(pulumi.StringOutput)
@@ -500,50 +362,6 @@ func (o BasicLevelResponseOutput) CombiningFunction() pulumi.StringOutput {
 // A list of requirements for the `AccessLevel` to be granted.
 func (o BasicLevelResponseOutput) Conditions() ConditionResponseArrayOutput {
 	return o.ApplyT(func(v BasicLevelResponse) []ConditionResponse { return v.Conditions }).(ConditionResponseArrayOutput)
-}
-
-type BasicLevelResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BasicLevelResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BasicLevelResponse)(nil)).Elem()
-}
-
-func (o BasicLevelResponsePtrOutput) ToBasicLevelResponsePtrOutput() BasicLevelResponsePtrOutput {
-	return o
-}
-
-func (o BasicLevelResponsePtrOutput) ToBasicLevelResponsePtrOutputWithContext(ctx context.Context) BasicLevelResponsePtrOutput {
-	return o
-}
-
-func (o BasicLevelResponsePtrOutput) Elem() BasicLevelResponseOutput {
-	return o.ApplyT(func(v *BasicLevelResponse) BasicLevelResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BasicLevelResponse
-		return ret
-	}).(BasicLevelResponseOutput)
-}
-
-// How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
-func (o BasicLevelResponsePtrOutput) CombiningFunction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BasicLevelResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CombiningFunction
-	}).(pulumi.StringPtrOutput)
-}
-
-// A list of requirements for the `AccessLevel` to be granted.
-func (o BasicLevelResponsePtrOutput) Conditions() ConditionResponseArrayOutput {
-	return o.ApplyT(func(v *BasicLevelResponse) []ConditionResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Conditions
-	}).(ConditionResponseArrayOutput)
 }
 
 // A condition necessary for an `AccessLevel` to be granted. The Condition is an AND over its fields. So a Condition is true if: 1) the request IP is from one of the listed subnetworks AND 2) the originating device complies with the listed device policy AND 3) all listed access levels are granted AND 4) the request was sent at a time allowed by the DateTimeRestriction.
@@ -705,70 +523,6 @@ type ConditionResponse struct {
 	Regions []string `pulumi:"regions"`
 	// A list of other access levels defined in the same `Policy`, referenced by resource name. Referencing an `AccessLevel` which does not exist is an error. All access levels listed must be granted for the Condition to be true. Example: "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
 	RequiredAccessLevels []string `pulumi:"requiredAccessLevels"`
-}
-
-// ConditionResponseInput is an input type that accepts ConditionResponseArgs and ConditionResponseOutput values.
-// You can construct a concrete instance of `ConditionResponseInput` via:
-//
-//          ConditionResponseArgs{...}
-type ConditionResponseInput interface {
-	pulumi.Input
-
-	ToConditionResponseOutput() ConditionResponseOutput
-	ToConditionResponseOutputWithContext(context.Context) ConditionResponseOutput
-}
-
-// A condition necessary for an `AccessLevel` to be granted. The Condition is an AND over its fields. So a Condition is true if: 1) the request IP is from one of the listed subnetworks AND 2) the originating device complies with the listed device policy AND 3) all listed access levels are granted AND 4) the request was sent at a time allowed by the DateTimeRestriction.
-type ConditionResponseArgs struct {
-	// Device specific restrictions, all restrictions must hold for the Condition to be true. If not specified, all devices are allowed.
-	DevicePolicy DevicePolicyResponseInput `pulumi:"devicePolicy"`
-	// CIDR block IP subnetwork specification. May be IPv4 or IPv6. Note that for a CIDR IP address block, the specified IP address portion must be properly truncated (i.e. all the host bits must be zero) or the input is considered malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. Similarly, for IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32" is not. The originating IP of a request must be in one of the listed subnets in order for this Condition to be true. If empty, all IP addresses are allowed.
-	IpSubnetworks pulumi.StringArrayInput `pulumi:"ipSubnetworks"`
-	// The request must be made by one of the provided user or service accounts. Groups are not supported. Syntax: `user:{emailid}` `serviceAccount:{emailid}` If not specified, a request may come from any user.
-	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields, each field must be false for the Condition overall to be satisfied. Defaults to false.
-	Negate pulumi.BoolInput `pulumi:"negate"`
-	// The request must originate from one of the provided countries/regions. Must be valid ISO 3166-1 alpha-2 codes.
-	Regions pulumi.StringArrayInput `pulumi:"regions"`
-	// A list of other access levels defined in the same `Policy`, referenced by resource name. Referencing an `AccessLevel` which does not exist is an error. All access levels listed must be granted for the Condition to be true. Example: "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
-	RequiredAccessLevels pulumi.StringArrayInput `pulumi:"requiredAccessLevels"`
-}
-
-func (ConditionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConditionResponse)(nil)).Elem()
-}
-
-func (i ConditionResponseArgs) ToConditionResponseOutput() ConditionResponseOutput {
-	return i.ToConditionResponseOutputWithContext(context.Background())
-}
-
-func (i ConditionResponseArgs) ToConditionResponseOutputWithContext(ctx context.Context) ConditionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConditionResponseOutput)
-}
-
-// ConditionResponseArrayInput is an input type that accepts ConditionResponseArray and ConditionResponseArrayOutput values.
-// You can construct a concrete instance of `ConditionResponseArrayInput` via:
-//
-//          ConditionResponseArray{ ConditionResponseArgs{...} }
-type ConditionResponseArrayInput interface {
-	pulumi.Input
-
-	ToConditionResponseArrayOutput() ConditionResponseArrayOutput
-	ToConditionResponseArrayOutputWithContext(context.Context) ConditionResponseArrayOutput
-}
-
-type ConditionResponseArray []ConditionResponseInput
-
-func (ConditionResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConditionResponse)(nil)).Elem()
-}
-
-func (i ConditionResponseArray) ToConditionResponseArrayOutput() ConditionResponseArrayOutput {
-	return i.ToConditionResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ConditionResponseArray) ToConditionResponseArrayOutputWithContext(ctx context.Context) ConditionResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConditionResponseArrayOutput)
 }
 
 // A condition necessary for an `AccessLevel` to be granted. The Condition is an AND over its fields. So a Condition is true if: 1) the request IP is from one of the listed subnetworks AND 2) the originating device complies with the listed device policy AND 3) all listed access levels are granted AND 4) the request was sent at a time allowed by the DateTimeRestriction.
@@ -982,76 +736,6 @@ type CustomLevelResponse struct {
 	Expr ExprResponse `pulumi:"expr"`
 }
 
-// CustomLevelResponseInput is an input type that accepts CustomLevelResponseArgs and CustomLevelResponseOutput values.
-// You can construct a concrete instance of `CustomLevelResponseInput` via:
-//
-//          CustomLevelResponseArgs{...}
-type CustomLevelResponseInput interface {
-	pulumi.Input
-
-	ToCustomLevelResponseOutput() CustomLevelResponseOutput
-	ToCustomLevelResponseOutputWithContext(context.Context) CustomLevelResponseOutput
-}
-
-// `CustomLevel` is an `AccessLevel` using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request. See CEL spec at: https://github.com/google/cel-spec
-type CustomLevelResponseArgs struct {
-	// A Cloud CEL expression evaluating to a boolean.
-	Expr ExprResponseInput `pulumi:"expr"`
-}
-
-func (CustomLevelResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomLevelResponse)(nil)).Elem()
-}
-
-func (i CustomLevelResponseArgs) ToCustomLevelResponseOutput() CustomLevelResponseOutput {
-	return i.ToCustomLevelResponseOutputWithContext(context.Background())
-}
-
-func (i CustomLevelResponseArgs) ToCustomLevelResponseOutputWithContext(ctx context.Context) CustomLevelResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomLevelResponseOutput)
-}
-
-func (i CustomLevelResponseArgs) ToCustomLevelResponsePtrOutput() CustomLevelResponsePtrOutput {
-	return i.ToCustomLevelResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CustomLevelResponseArgs) ToCustomLevelResponsePtrOutputWithContext(ctx context.Context) CustomLevelResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomLevelResponseOutput).ToCustomLevelResponsePtrOutputWithContext(ctx)
-}
-
-// CustomLevelResponsePtrInput is an input type that accepts CustomLevelResponseArgs, CustomLevelResponsePtr and CustomLevelResponsePtrOutput values.
-// You can construct a concrete instance of `CustomLevelResponsePtrInput` via:
-//
-//          CustomLevelResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CustomLevelResponsePtrInput interface {
-	pulumi.Input
-
-	ToCustomLevelResponsePtrOutput() CustomLevelResponsePtrOutput
-	ToCustomLevelResponsePtrOutputWithContext(context.Context) CustomLevelResponsePtrOutput
-}
-
-type customLevelResponsePtrType CustomLevelResponseArgs
-
-func CustomLevelResponsePtr(v *CustomLevelResponseArgs) CustomLevelResponsePtrInput {
-	return (*customLevelResponsePtrType)(v)
-}
-
-func (*customLevelResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CustomLevelResponse)(nil)).Elem()
-}
-
-func (i *customLevelResponsePtrType) ToCustomLevelResponsePtrOutput() CustomLevelResponsePtrOutput {
-	return i.ToCustomLevelResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *customLevelResponsePtrType) ToCustomLevelResponsePtrOutputWithContext(ctx context.Context) CustomLevelResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomLevelResponsePtrOutput)
-}
-
 // `CustomLevel` is an `AccessLevel` using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request. See CEL spec at: https://github.com/google/cel-spec
 type CustomLevelResponseOutput struct{ *pulumi.OutputState }
 
@@ -1067,53 +751,9 @@ func (o CustomLevelResponseOutput) ToCustomLevelResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o CustomLevelResponseOutput) ToCustomLevelResponsePtrOutput() CustomLevelResponsePtrOutput {
-	return o.ToCustomLevelResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CustomLevelResponseOutput) ToCustomLevelResponsePtrOutputWithContext(ctx context.Context) CustomLevelResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomLevelResponse) *CustomLevelResponse {
-		return &v
-	}).(CustomLevelResponsePtrOutput)
-}
-
 // A Cloud CEL expression evaluating to a boolean.
 func (o CustomLevelResponseOutput) Expr() ExprResponseOutput {
 	return o.ApplyT(func(v CustomLevelResponse) ExprResponse { return v.Expr }).(ExprResponseOutput)
-}
-
-type CustomLevelResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CustomLevelResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CustomLevelResponse)(nil)).Elem()
-}
-
-func (o CustomLevelResponsePtrOutput) ToCustomLevelResponsePtrOutput() CustomLevelResponsePtrOutput {
-	return o
-}
-
-func (o CustomLevelResponsePtrOutput) ToCustomLevelResponsePtrOutputWithContext(ctx context.Context) CustomLevelResponsePtrOutput {
-	return o
-}
-
-func (o CustomLevelResponsePtrOutput) Elem() CustomLevelResponseOutput {
-	return o.ApplyT(func(v *CustomLevelResponse) CustomLevelResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CustomLevelResponse
-		return ret
-	}).(CustomLevelResponseOutput)
-}
-
-// A Cloud CEL expression evaluating to a boolean.
-func (o CustomLevelResponsePtrOutput) Expr() ExprResponsePtrOutput {
-	return o.ApplyT(func(v *CustomLevelResponse) *ExprResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Expr
-	}).(ExprResponsePtrOutput)
 }
 
 // `DevicePolicy` specifies device specific restrictions necessary to acquire a given access level. A `DevicePolicy` specifies requirements for requests from devices to be granted access levels, it does not do any enforcement on the device. `DevicePolicy` acts as an AND over all specified fields, and each repeated field is an OR over its elements. Any unset fields are ignored. For example, if the proto is { os_type : DESKTOP_WINDOWS, os_type : DESKTOP_LINUX, encryption_status: ENCRYPTED}, then the DevicePolicy will be true for requests originating from encrypted Linux desktops and encrypted Windows desktops.
@@ -1369,45 +1009,6 @@ type DevicePolicyResponse struct {
 	RequireScreenlock bool `pulumi:"requireScreenlock"`
 }
 
-// DevicePolicyResponseInput is an input type that accepts DevicePolicyResponseArgs and DevicePolicyResponseOutput values.
-// You can construct a concrete instance of `DevicePolicyResponseInput` via:
-//
-//          DevicePolicyResponseArgs{...}
-type DevicePolicyResponseInput interface {
-	pulumi.Input
-
-	ToDevicePolicyResponseOutput() DevicePolicyResponseOutput
-	ToDevicePolicyResponseOutputWithContext(context.Context) DevicePolicyResponseOutput
-}
-
-// `DevicePolicy` specifies device specific restrictions necessary to acquire a given access level. A `DevicePolicy` specifies requirements for requests from devices to be granted access levels, it does not do any enforcement on the device. `DevicePolicy` acts as an AND over all specified fields, and each repeated field is an OR over its elements. Any unset fields are ignored. For example, if the proto is { os_type : DESKTOP_WINDOWS, os_type : DESKTOP_LINUX, encryption_status: ENCRYPTED}, then the DevicePolicy will be true for requests originating from encrypted Linux desktops and encrypted Windows desktops.
-type DevicePolicyResponseArgs struct {
-	// Allowed device management levels, an empty list allows all management levels.
-	AllowedDeviceManagementLevels pulumi.StringArrayInput `pulumi:"allowedDeviceManagementLevels"`
-	// Allowed encryptions statuses, an empty list allows all statuses.
-	AllowedEncryptionStatuses pulumi.StringArrayInput `pulumi:"allowedEncryptionStatuses"`
-	// Allowed OS versions, an empty list allows all types and all versions.
-	OsConstraints OsConstraintResponseArrayInput `pulumi:"osConstraints"`
-	// Whether the device needs to be approved by the customer admin.
-	RequireAdminApproval pulumi.BoolInput `pulumi:"requireAdminApproval"`
-	// Whether the device needs to be corp owned.
-	RequireCorpOwned pulumi.BoolInput `pulumi:"requireCorpOwned"`
-	// Whether or not screenlock is required for the DevicePolicy to be true. Defaults to `false`.
-	RequireScreenlock pulumi.BoolInput `pulumi:"requireScreenlock"`
-}
-
-func (DevicePolicyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DevicePolicyResponse)(nil)).Elem()
-}
-
-func (i DevicePolicyResponseArgs) ToDevicePolicyResponseOutput() DevicePolicyResponseOutput {
-	return i.ToDevicePolicyResponseOutputWithContext(context.Background())
-}
-
-func (i DevicePolicyResponseArgs) ToDevicePolicyResponseOutputWithContext(ctx context.Context) DevicePolicyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DevicePolicyResponseOutput)
-}
-
 // `DevicePolicy` specifies device specific restrictions necessary to acquire a given access level. A `DevicePolicy` specifies requirements for requests from devices to be granted access levels, it does not do any enforcement on the device. `DevicePolicy` acts as an AND over all specified fields, and each repeated field is an OR over its elements. Any unset fields are ignored. For example, if the proto is { os_type : DESKTOP_WINDOWS, os_type : DESKTOP_LINUX, encryption_status: ENCRYPTED}, then the DevicePolicy will be true for requests originating from encrypted Linux desktops and encrypted Windows desktops.
 type DevicePolicyResponseOutput struct{ *pulumi.OutputState }
 
@@ -1620,37 +1221,6 @@ type EgressFromResponse struct {
 	IdentityType string `pulumi:"identityType"`
 }
 
-// EgressFromResponseInput is an input type that accepts EgressFromResponseArgs and EgressFromResponseOutput values.
-// You can construct a concrete instance of `EgressFromResponseInput` via:
-//
-//          EgressFromResponseArgs{...}
-type EgressFromResponseInput interface {
-	pulumi.Input
-
-	ToEgressFromResponseOutput() EgressFromResponseOutput
-	ToEgressFromResponseOutputWithContext(context.Context) EgressFromResponseOutput
-}
-
-// Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the source of the request. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
-type EgressFromResponseArgs struct {
-	// A list of identities that are allowed access through this [EgressPolicy]. Should be in the format of email address. The email address should represent individual user or service account only.
-	Identities pulumi.StringArrayInput `pulumi:"identities"`
-	// Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
-	IdentityType pulumi.StringInput `pulumi:"identityType"`
-}
-
-func (EgressFromResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EgressFromResponse)(nil)).Elem()
-}
-
-func (i EgressFromResponseArgs) ToEgressFromResponseOutput() EgressFromResponseOutput {
-	return i.ToEgressFromResponseOutputWithContext(context.Background())
-}
-
-func (i EgressFromResponseArgs) ToEgressFromResponseOutputWithContext(ctx context.Context) EgressFromResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EgressFromResponseOutput)
-}
-
 // Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the source of the request. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
 type EgressFromResponseOutput struct{ *pulumi.OutputState }
 
@@ -1791,62 +1361,6 @@ type EgressPolicyResponse struct {
 	EgressFrom EgressFromResponse `pulumi:"egressFrom"`
 	// Defines the conditions on the ApiOperation and destination resources that cause this EgressPolicy to apply.
 	EgressTo EgressToResponse `pulumi:"egressTo"`
-}
-
-// EgressPolicyResponseInput is an input type that accepts EgressPolicyResponseArgs and EgressPolicyResponseOutput values.
-// You can construct a concrete instance of `EgressPolicyResponseInput` via:
-//
-//          EgressPolicyResponseArgs{...}
-type EgressPolicyResponseInput interface {
-	pulumi.Input
-
-	ToEgressPolicyResponseOutput() EgressPolicyResponseOutput
-	ToEgressPolicyResponseOutputWithContext(context.Context) EgressPolicyResponseOutput
-}
-
-// Policy for egress from perimeter. EgressPolicies match requests based on `egress_from` and `egress_to` stanzas. For an EgressPolicy to match, both `egress_from` and `egress_to` stanzas must be matched. If an EgressPolicy matches a request, the request is allowed to span the ServicePerimeter boundary. For example, an EgressPolicy can be used to allow VMs on networks within the ServicePerimeter to access a defined set of projects outside the perimeter in certain contexts (e.g. to read data from a Cloud Storage bucket or query against a BigQuery dataset). EgressPolicies are concerned with the *resources* that a request relates as well as the API services and API actions being used. They do not related to the direction of data movement. More detailed documentation for this concept can be found in the descriptions of EgressFrom and EgressTo.
-type EgressPolicyResponseArgs struct {
-	// Defines conditions on the source of a request causing this EgressPolicy to apply.
-	EgressFrom EgressFromResponseInput `pulumi:"egressFrom"`
-	// Defines the conditions on the ApiOperation and destination resources that cause this EgressPolicy to apply.
-	EgressTo EgressToResponseInput `pulumi:"egressTo"`
-}
-
-func (EgressPolicyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EgressPolicyResponse)(nil)).Elem()
-}
-
-func (i EgressPolicyResponseArgs) ToEgressPolicyResponseOutput() EgressPolicyResponseOutput {
-	return i.ToEgressPolicyResponseOutputWithContext(context.Background())
-}
-
-func (i EgressPolicyResponseArgs) ToEgressPolicyResponseOutputWithContext(ctx context.Context) EgressPolicyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EgressPolicyResponseOutput)
-}
-
-// EgressPolicyResponseArrayInput is an input type that accepts EgressPolicyResponseArray and EgressPolicyResponseArrayOutput values.
-// You can construct a concrete instance of `EgressPolicyResponseArrayInput` via:
-//
-//          EgressPolicyResponseArray{ EgressPolicyResponseArgs{...} }
-type EgressPolicyResponseArrayInput interface {
-	pulumi.Input
-
-	ToEgressPolicyResponseArrayOutput() EgressPolicyResponseArrayOutput
-	ToEgressPolicyResponseArrayOutputWithContext(context.Context) EgressPolicyResponseArrayOutput
-}
-
-type EgressPolicyResponseArray []EgressPolicyResponseInput
-
-func (EgressPolicyResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EgressPolicyResponse)(nil)).Elem()
-}
-
-func (i EgressPolicyResponseArray) ToEgressPolicyResponseArrayOutput() EgressPolicyResponseArrayOutput {
-	return i.ToEgressPolicyResponseArrayOutputWithContext(context.Background())
-}
-
-func (i EgressPolicyResponseArray) ToEgressPolicyResponseArrayOutputWithContext(ctx context.Context) EgressPolicyResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EgressPolicyResponseArrayOutput)
 }
 
 // Policy for egress from perimeter. EgressPolicies match requests based on `egress_from` and `egress_to` stanzas. For an EgressPolicy to match, both `egress_from` and `egress_to` stanzas must be matched. If an EgressPolicy matches a request, the request is allowed to span the ServicePerimeter boundary. For example, an EgressPolicy can be used to allow VMs on networks within the ServicePerimeter to access a defined set of projects outside the perimeter in certain contexts (e.g. to read data from a Cloud Storage bucket or query against a BigQuery dataset). EgressPolicies are concerned with the *resources* that a request relates as well as the API services and API actions being used. They do not related to the direction of data movement. More detailed documentation for this concept can be found in the descriptions of EgressFrom and EgressTo.
@@ -2059,37 +1573,6 @@ type EgressToResponse struct {
 	Operations []ApiOperationResponse `pulumi:"operations"`
 	// A list of resources, currently only projects in the form `projects/`, that are allowed to be accessed by sources defined in the corresponding EgressFrom. A request matches if it contains a resource in this list. If `*` is specified for `resources`, then this EgressTo rule will authorize access to all resources outside the perimeter.
 	Resources []string `pulumi:"resources"`
-}
-
-// EgressToResponseInput is an input type that accepts EgressToResponseArgs and EgressToResponseOutput values.
-// You can construct a concrete instance of `EgressToResponseInput` via:
-//
-//          EgressToResponseArgs{...}
-type EgressToResponseInput interface {
-	pulumi.Input
-
-	ToEgressToResponseOutput() EgressToResponseOutput
-	ToEgressToResponseOutputWithContext(context.Context) EgressToResponseOutput
-}
-
-// Defines the conditions under which an EgressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the `resources` specified. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed. The request must match `operations` AND `resources` fields in order to be allowed egress out of the perimeter.
-type EgressToResponseArgs struct {
-	// A list of ApiOperations allowed to be performed by the sources specified in the corresponding EgressFrom. A request matches if it uses an operation/service in this list.
-	Operations ApiOperationResponseArrayInput `pulumi:"operations"`
-	// A list of resources, currently only projects in the form `projects/`, that are allowed to be accessed by sources defined in the corresponding EgressFrom. A request matches if it contains a resource in this list. If `*` is specified for `resources`, then this EgressTo rule will authorize access to all resources outside the perimeter.
-	Resources pulumi.StringArrayInput `pulumi:"resources"`
-}
-
-func (EgressToResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EgressToResponse)(nil)).Elem()
-}
-
-func (i EgressToResponseArgs) ToEgressToResponseOutput() EgressToResponseOutput {
-	return i.ToEgressToResponseOutputWithContext(context.Background())
-}
-
-func (i EgressToResponseArgs) ToEgressToResponseOutputWithContext(ctx context.Context) EgressToResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EgressToResponseOutput)
 }
 
 // Defines the conditions under which an EgressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the `resources` specified. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed. The request must match `operations` AND `resources` fields in order to be allowed egress out of the perimeter.
@@ -2326,82 +1809,6 @@ type ExprResponse struct {
 	Title string `pulumi:"title"`
 }
 
-// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
-// You can construct a concrete instance of `ExprResponseInput` via:
-//
-//          ExprResponseArgs{...}
-type ExprResponseInput interface {
-	pulumi.Input
-
-	ToExprResponseOutput() ExprResponseOutput
-	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type ExprResponseArgs struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-	Location pulumi.StringInput `pulumi:"location"`
-	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (ExprResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
-}
-
-func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
-	return i.ToExprResponseOutputWithContext(context.Background())
-}
-
-func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
-}
-
-func (i ExprResponseArgs) ToExprResponsePtrOutput() ExprResponsePtrOutput {
-	return i.ToExprResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ExprResponseArgs) ToExprResponsePtrOutputWithContext(ctx context.Context) ExprResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput).ToExprResponsePtrOutputWithContext(ctx)
-}
-
-// ExprResponsePtrInput is an input type that accepts ExprResponseArgs, ExprResponsePtr and ExprResponsePtrOutput values.
-// You can construct a concrete instance of `ExprResponsePtrInput` via:
-//
-//          ExprResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ExprResponsePtrInput interface {
-	pulumi.Input
-
-	ToExprResponsePtrOutput() ExprResponsePtrOutput
-	ToExprResponsePtrOutputWithContext(context.Context) ExprResponsePtrOutput
-}
-
-type exprResponsePtrType ExprResponseArgs
-
-func ExprResponsePtr(v *ExprResponseArgs) ExprResponsePtrInput {
-	return (*exprResponsePtrType)(v)
-}
-
-func (*exprResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExprResponse)(nil)).Elem()
-}
-
-func (i *exprResponsePtrType) ToExprResponsePtrOutput() ExprResponsePtrOutput {
-	return i.ToExprResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *exprResponsePtrType) ToExprResponsePtrOutputWithContext(ctx context.Context) ExprResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponsePtrOutput)
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprResponseOutput struct{ *pulumi.OutputState }
 
@@ -2415,16 +1822,6 @@ func (o ExprResponseOutput) ToExprResponseOutput() ExprResponseOutput {
 
 func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
 	return o
-}
-
-func (o ExprResponseOutput) ToExprResponsePtrOutput() ExprResponsePtrOutput {
-	return o.ToExprResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ExprResponseOutput) ToExprResponsePtrOutputWithContext(ctx context.Context) ExprResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExprResponse) *ExprResponse {
-		return &v
-	}).(ExprResponsePtrOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -2445,70 +1842,6 @@ func (o ExprResponseOutput) Location() pulumi.StringOutput {
 // Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
 func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
-}
-
-type ExprResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ExprResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExprResponse)(nil)).Elem()
-}
-
-func (o ExprResponsePtrOutput) ToExprResponsePtrOutput() ExprResponsePtrOutput {
-	return o
-}
-
-func (o ExprResponsePtrOutput) ToExprResponsePtrOutputWithContext(ctx context.Context) ExprResponsePtrOutput {
-	return o
-}
-
-func (o ExprResponsePtrOutput) Elem() ExprResponseOutput {
-	return o.ApplyT(func(v *ExprResponse) ExprResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ExprResponse
-		return ret
-	}).(ExprResponseOutput)
-}
-
-// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-func (o ExprResponsePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExprResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// Textual representation of an expression in Common Expression Language syntax.
-func (o ExprResponsePtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExprResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Expression
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-func (o ExprResponsePtrOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExprResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Location
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-func (o ExprResponsePtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExprResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Title
-	}).(pulumi.StringPtrOutput)
 }
 
 // Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the source of the request. The request must satisfy what is defined in `sources` AND identity related fields in order to match.
@@ -2699,39 +2032,6 @@ type IngressFromResponse struct {
 	Sources []IngressSourceResponse `pulumi:"sources"`
 }
 
-// IngressFromResponseInput is an input type that accepts IngressFromResponseArgs and IngressFromResponseOutput values.
-// You can construct a concrete instance of `IngressFromResponseInput` via:
-//
-//          IngressFromResponseArgs{...}
-type IngressFromResponseInput interface {
-	pulumi.Input
-
-	ToIngressFromResponseOutput() IngressFromResponseOutput
-	ToIngressFromResponseOutputWithContext(context.Context) IngressFromResponseOutput
-}
-
-// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the source of the request. The request must satisfy what is defined in `sources` AND identity related fields in order to match.
-type IngressFromResponseArgs struct {
-	// A list of identities that are allowed access through this ingress policy. Should be in the format of email address. The email address should represent individual user or service account only.
-	Identities pulumi.StringArrayInput `pulumi:"identities"`
-	// Specifies the type of identities that are allowed access from outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
-	IdentityType pulumi.StringInput `pulumi:"identityType"`
-	// Sources that this IngressPolicy authorizes access from.
-	Sources IngressSourceResponseArrayInput `pulumi:"sources"`
-}
-
-func (IngressFromResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IngressFromResponse)(nil)).Elem()
-}
-
-func (i IngressFromResponseArgs) ToIngressFromResponseOutput() IngressFromResponseOutput {
-	return i.ToIngressFromResponseOutputWithContext(context.Background())
-}
-
-func (i IngressFromResponseArgs) ToIngressFromResponseOutputWithContext(ctx context.Context) IngressFromResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IngressFromResponseOutput)
-}
-
 // Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the source of the request. The request must satisfy what is defined in `sources` AND identity related fields in order to match.
 type IngressFromResponseOutput struct{ *pulumi.OutputState }
 
@@ -2877,62 +2177,6 @@ type IngressPolicyResponse struct {
 	IngressFrom IngressFromResponse `pulumi:"ingressFrom"`
 	// Defines the conditions on the ApiOperation and request destination that cause this IngressPolicy to apply.
 	IngressTo IngressToResponse `pulumi:"ingressTo"`
-}
-
-// IngressPolicyResponseInput is an input type that accepts IngressPolicyResponseArgs and IngressPolicyResponseOutput values.
-// You can construct a concrete instance of `IngressPolicyResponseInput` via:
-//
-//          IngressPolicyResponseArgs{...}
-type IngressPolicyResponseInput interface {
-	pulumi.Input
-
-	ToIngressPolicyResponseOutput() IngressPolicyResponseOutput
-	ToIngressPolicyResponseOutputWithContext(context.Context) IngressPolicyResponseOutput
-}
-
-// Policy for ingress into ServicePerimeter. IngressPolicies match requests based on `ingress_from` and `ingress_to` stanzas. For an ingress policy to match, both the `ingress_from` and `ingress_to` stanzas must be matched. If an IngressPolicy matches a request, the request is allowed through the perimeter boundary from outside the perimeter. For example, access from the internet can be allowed either based on an AccessLevel or, for traffic hosted on Google Cloud, the project of the source network. For access from private networks, using the project of the hosting network is required. Individual ingress policies can be limited by restricting which services and/or actions they match using the `ingress_to` field.
-type IngressPolicyResponseArgs struct {
-	// Defines the conditions on the source of a request causing this IngressPolicy to apply.
-	IngressFrom IngressFromResponseInput `pulumi:"ingressFrom"`
-	// Defines the conditions on the ApiOperation and request destination that cause this IngressPolicy to apply.
-	IngressTo IngressToResponseInput `pulumi:"ingressTo"`
-}
-
-func (IngressPolicyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IngressPolicyResponse)(nil)).Elem()
-}
-
-func (i IngressPolicyResponseArgs) ToIngressPolicyResponseOutput() IngressPolicyResponseOutput {
-	return i.ToIngressPolicyResponseOutputWithContext(context.Background())
-}
-
-func (i IngressPolicyResponseArgs) ToIngressPolicyResponseOutputWithContext(ctx context.Context) IngressPolicyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IngressPolicyResponseOutput)
-}
-
-// IngressPolicyResponseArrayInput is an input type that accepts IngressPolicyResponseArray and IngressPolicyResponseArrayOutput values.
-// You can construct a concrete instance of `IngressPolicyResponseArrayInput` via:
-//
-//          IngressPolicyResponseArray{ IngressPolicyResponseArgs{...} }
-type IngressPolicyResponseArrayInput interface {
-	pulumi.Input
-
-	ToIngressPolicyResponseArrayOutput() IngressPolicyResponseArrayOutput
-	ToIngressPolicyResponseArrayOutputWithContext(context.Context) IngressPolicyResponseArrayOutput
-}
-
-type IngressPolicyResponseArray []IngressPolicyResponseInput
-
-func (IngressPolicyResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IngressPolicyResponse)(nil)).Elem()
-}
-
-func (i IngressPolicyResponseArray) ToIngressPolicyResponseArrayOutput() IngressPolicyResponseArrayOutput {
-	return i.ToIngressPolicyResponseArrayOutputWithContext(context.Background())
-}
-
-func (i IngressPolicyResponseArray) ToIngressPolicyResponseArrayOutputWithContext(ctx context.Context) IngressPolicyResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IngressPolicyResponseArrayOutput)
 }
 
 // Policy for ingress into ServicePerimeter. IngressPolicies match requests based on `ingress_from` and `ingress_to` stanzas. For an ingress policy to match, both the `ingress_from` and `ingress_to` stanzas must be matched. If an IngressPolicy matches a request, the request is allowed through the perimeter boundary from outside the perimeter. For example, access from the internet can be allowed either based on an AccessLevel or, for traffic hosted on Google Cloud, the project of the source network. For access from private networks, using the project of the hosting network is required. Individual ingress policies can be limited by restricting which services and/or actions they match using the `ingress_to` field.
@@ -3095,62 +2339,6 @@ type IngressSourceResponse struct {
 	AccessLevel string `pulumi:"accessLevel"`
 	// A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format: `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
 	Resource string `pulumi:"resource"`
-}
-
-// IngressSourceResponseInput is an input type that accepts IngressSourceResponseArgs and IngressSourceResponseOutput values.
-// You can construct a concrete instance of `IngressSourceResponseInput` via:
-//
-//          IngressSourceResponseArgs{...}
-type IngressSourceResponseInput interface {
-	pulumi.Input
-
-	ToIngressSourceResponseOutput() IngressSourceResponseOutput
-	ToIngressSourceResponseOutputWithContext(context.Context) IngressSourceResponseOutput
-}
-
-// The source that IngressPolicy authorizes access from.
-type IngressSourceResponseArgs struct {
-	// An AccessLevel resource name that allow resources within the ServicePerimeters to be accessed from the internet. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If no AccessLevel names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for `access_level`, then all IngressSources will be allowed.
-	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
-	// A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format: `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
-	Resource pulumi.StringInput `pulumi:"resource"`
-}
-
-func (IngressSourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IngressSourceResponse)(nil)).Elem()
-}
-
-func (i IngressSourceResponseArgs) ToIngressSourceResponseOutput() IngressSourceResponseOutput {
-	return i.ToIngressSourceResponseOutputWithContext(context.Background())
-}
-
-func (i IngressSourceResponseArgs) ToIngressSourceResponseOutputWithContext(ctx context.Context) IngressSourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IngressSourceResponseOutput)
-}
-
-// IngressSourceResponseArrayInput is an input type that accepts IngressSourceResponseArray and IngressSourceResponseArrayOutput values.
-// You can construct a concrete instance of `IngressSourceResponseArrayInput` via:
-//
-//          IngressSourceResponseArray{ IngressSourceResponseArgs{...} }
-type IngressSourceResponseArrayInput interface {
-	pulumi.Input
-
-	ToIngressSourceResponseArrayOutput() IngressSourceResponseArrayOutput
-	ToIngressSourceResponseArrayOutputWithContext(context.Context) IngressSourceResponseArrayOutput
-}
-
-type IngressSourceResponseArray []IngressSourceResponseInput
-
-func (IngressSourceResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IngressSourceResponse)(nil)).Elem()
-}
-
-func (i IngressSourceResponseArray) ToIngressSourceResponseArrayOutput() IngressSourceResponseArrayOutput {
-	return i.ToIngressSourceResponseArrayOutputWithContext(context.Background())
-}
-
-func (i IngressSourceResponseArray) ToIngressSourceResponseArrayOutputWithContext(ctx context.Context) IngressSourceResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IngressSourceResponseArrayOutput)
 }
 
 // The source that IngressPolicy authorizes access from.
@@ -3365,37 +2553,6 @@ type IngressToResponse struct {
 	Resources []string `pulumi:"resources"`
 }
 
-// IngressToResponseInput is an input type that accepts IngressToResponseArgs and IngressToResponseOutput values.
-// You can construct a concrete instance of `IngressToResponseInput` via:
-//
-//          IngressToResponseArgs{...}
-type IngressToResponseInput interface {
-	pulumi.Input
-
-	ToIngressToResponseOutput() IngressToResponseOutput
-	ToIngressToResponseOutputWithContext(context.Context) IngressToResponseOutput
-}
-
-// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the target resource of the request. The request must satisfy what is defined in `operations` AND `resources` in order to match.
-type IngressToResponseArgs struct {
-	// A list of ApiOperations allowed to be performed by the sources specified in corresponding IngressFrom in this ServicePerimeter.
-	Operations ApiOperationResponseArrayInput `pulumi:"operations"`
-	// A list of resources, currently only projects in the form `projects/`, protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. If a single `*` is specified, then access to all resources inside the perimeter are allowed.
-	Resources pulumi.StringArrayInput `pulumi:"resources"`
-}
-
-func (IngressToResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IngressToResponse)(nil)).Elem()
-}
-
-func (i IngressToResponseArgs) ToIngressToResponseOutput() IngressToResponseOutput {
-	return i.ToIngressToResponseOutputWithContext(context.Background())
-}
-
-func (i IngressToResponseArgs) ToIngressToResponseOutputWithContext(ctx context.Context) IngressToResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IngressToResponseOutput)
-}
-
 // Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the target resource of the request. The request must satisfy what is defined in `operations` AND `resources` in order to match.
 type IngressToResponseOutput struct{ *pulumi.OutputState }
 
@@ -3536,62 +2693,6 @@ type MethodSelectorResponse struct {
 	Method string `pulumi:"method"`
 	// Value for `permission` should be a valid Cloud IAM permission for the corresponding `service_name` in ApiOperation.
 	Permission string `pulumi:"permission"`
-}
-
-// MethodSelectorResponseInput is an input type that accepts MethodSelectorResponseArgs and MethodSelectorResponseOutput values.
-// You can construct a concrete instance of `MethodSelectorResponseInput` via:
-//
-//          MethodSelectorResponseArgs{...}
-type MethodSelectorResponseInput interface {
-	pulumi.Input
-
-	ToMethodSelectorResponseOutput() MethodSelectorResponseOutput
-	ToMethodSelectorResponseOutputWithContext(context.Context) MethodSelectorResponseOutput
-}
-
-// An allowed method or permission of a service specified in ApiOperation.
-type MethodSelectorResponseArgs struct {
-	// Value for `method` should be a valid method name for the corresponding `service_name` in ApiOperation. If `*` used as value for `method`, then ALL methods and permissions are allowed.
-	Method pulumi.StringInput `pulumi:"method"`
-	// Value for `permission` should be a valid Cloud IAM permission for the corresponding `service_name` in ApiOperation.
-	Permission pulumi.StringInput `pulumi:"permission"`
-}
-
-func (MethodSelectorResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MethodSelectorResponse)(nil)).Elem()
-}
-
-func (i MethodSelectorResponseArgs) ToMethodSelectorResponseOutput() MethodSelectorResponseOutput {
-	return i.ToMethodSelectorResponseOutputWithContext(context.Background())
-}
-
-func (i MethodSelectorResponseArgs) ToMethodSelectorResponseOutputWithContext(ctx context.Context) MethodSelectorResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MethodSelectorResponseOutput)
-}
-
-// MethodSelectorResponseArrayInput is an input type that accepts MethodSelectorResponseArray and MethodSelectorResponseArrayOutput values.
-// You can construct a concrete instance of `MethodSelectorResponseArrayInput` via:
-//
-//          MethodSelectorResponseArray{ MethodSelectorResponseArgs{...} }
-type MethodSelectorResponseArrayInput interface {
-	pulumi.Input
-
-	ToMethodSelectorResponseArrayOutput() MethodSelectorResponseArrayOutput
-	ToMethodSelectorResponseArrayOutputWithContext(context.Context) MethodSelectorResponseArrayOutput
-}
-
-type MethodSelectorResponseArray []MethodSelectorResponseInput
-
-func (MethodSelectorResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MethodSelectorResponse)(nil)).Elem()
-}
-
-func (i MethodSelectorResponseArray) ToMethodSelectorResponseArrayOutput() MethodSelectorResponseArrayOutput {
-	return i.ToMethodSelectorResponseArrayOutputWithContext(context.Background())
-}
-
-func (i MethodSelectorResponseArray) ToMethodSelectorResponseArrayOutputWithContext(ctx context.Context) MethodSelectorResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MethodSelectorResponseArrayOutput)
 }
 
 // An allowed method or permission of a service specified in ApiOperation.
@@ -3765,64 +2866,6 @@ type OsConstraintResponse struct {
 	OsType string `pulumi:"osType"`
 	// Only allows requests from devices with a verified Chrome OS. Verifications includes requirements that the device is enterprise-managed, conformant to domain policies, and the caller has permission to call the API targeted by the request.
 	RequireVerifiedChromeOs bool `pulumi:"requireVerifiedChromeOs"`
-}
-
-// OsConstraintResponseInput is an input type that accepts OsConstraintResponseArgs and OsConstraintResponseOutput values.
-// You can construct a concrete instance of `OsConstraintResponseInput` via:
-//
-//          OsConstraintResponseArgs{...}
-type OsConstraintResponseInput interface {
-	pulumi.Input
-
-	ToOsConstraintResponseOutput() OsConstraintResponseOutput
-	ToOsConstraintResponseOutputWithContext(context.Context) OsConstraintResponseOutput
-}
-
-// A restriction on the OS type and version of devices making requests.
-type OsConstraintResponseArgs struct {
-	// The minimum allowed OS version. If not set, any version of this OS satisfies the constraint. Format: `"major.minor.patch"`. Examples: `"10.5.301"`, `"9.2.1"`.
-	MinimumVersion pulumi.StringInput `pulumi:"minimumVersion"`
-	// The allowed OS type.
-	OsType pulumi.StringInput `pulumi:"osType"`
-	// Only allows requests from devices with a verified Chrome OS. Verifications includes requirements that the device is enterprise-managed, conformant to domain policies, and the caller has permission to call the API targeted by the request.
-	RequireVerifiedChromeOs pulumi.BoolInput `pulumi:"requireVerifiedChromeOs"`
-}
-
-func (OsConstraintResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OsConstraintResponse)(nil)).Elem()
-}
-
-func (i OsConstraintResponseArgs) ToOsConstraintResponseOutput() OsConstraintResponseOutput {
-	return i.ToOsConstraintResponseOutputWithContext(context.Background())
-}
-
-func (i OsConstraintResponseArgs) ToOsConstraintResponseOutputWithContext(ctx context.Context) OsConstraintResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OsConstraintResponseOutput)
-}
-
-// OsConstraintResponseArrayInput is an input type that accepts OsConstraintResponseArray and OsConstraintResponseArrayOutput values.
-// You can construct a concrete instance of `OsConstraintResponseArrayInput` via:
-//
-//          OsConstraintResponseArray{ OsConstraintResponseArgs{...} }
-type OsConstraintResponseArrayInput interface {
-	pulumi.Input
-
-	ToOsConstraintResponseArrayOutput() OsConstraintResponseArrayOutput
-	ToOsConstraintResponseArrayOutputWithContext(context.Context) OsConstraintResponseArrayOutput
-}
-
-type OsConstraintResponseArray []OsConstraintResponseInput
-
-func (OsConstraintResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OsConstraintResponse)(nil)).Elem()
-}
-
-func (i OsConstraintResponseArray) ToOsConstraintResponseArrayOutput() OsConstraintResponseArrayOutput {
-	return i.ToOsConstraintResponseArrayOutputWithContext(context.Background())
-}
-
-func (i OsConstraintResponseArray) ToOsConstraintResponseArrayOutputWithContext(ctx context.Context) OsConstraintResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OsConstraintResponseArrayOutput)
 }
 
 // A restriction on the OS type and version of devices making requests.
@@ -4126,86 +3169,6 @@ type ServicePerimeterConfigResponse struct {
 	VpcAccessibleServices VpcAccessibleServicesResponse `pulumi:"vpcAccessibleServices"`
 }
 
-// ServicePerimeterConfigResponseInput is an input type that accepts ServicePerimeterConfigResponseArgs and ServicePerimeterConfigResponseOutput values.
-// You can construct a concrete instance of `ServicePerimeterConfigResponseInput` via:
-//
-//          ServicePerimeterConfigResponseArgs{...}
-type ServicePerimeterConfigResponseInput interface {
-	pulumi.Input
-
-	ToServicePerimeterConfigResponseOutput() ServicePerimeterConfigResponseOutput
-	ToServicePerimeterConfigResponseOutputWithContext(context.Context) ServicePerimeterConfigResponseOutput
-}
-
-// `ServicePerimeterConfig` specifies a set of Google Cloud resources that describe specific Service Perimeter configuration.
-type ServicePerimeterConfigResponseArgs struct {
-	// A list of `AccessLevel` resource names that allow resources within the `ServicePerimeter` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`. For Service Perimeter Bridge, must be empty.
-	AccessLevels pulumi.StringArrayInput `pulumi:"accessLevels"`
-	// List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
-	EgressPolicies EgressPolicyResponseArrayInput `pulumi:"egressPolicies"`
-	// List of IngressPolicies to apply to the perimeter. A perimeter may have multiple IngressPolicies, each of which is evaluated separately. Access is granted if any Ingress Policy grants it. Must be empty for a perimeter bridge.
-	IngressPolicies IngressPolicyResponseArrayInput `pulumi:"ingressPolicies"`
-	// A list of Google Cloud resources that are inside of the service perimeter. Currently only projects are allowed. Format: `projects/{project_number}`
-	Resources pulumi.StringArrayInput `pulumi:"resources"`
-	// Google Cloud services that are subject to the Service Perimeter restrictions. For example, if `storage.googleapis.com` is specified, access to the storage buckets inside the perimeter must meet the perimeter's access restrictions.
-	RestrictedServices pulumi.StringArrayInput `pulumi:"restrictedServices"`
-	// Configuration for APIs allowed within Perimeter.
-	VpcAccessibleServices VpcAccessibleServicesResponseInput `pulumi:"vpcAccessibleServices"`
-}
-
-func (ServicePerimeterConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServicePerimeterConfigResponse)(nil)).Elem()
-}
-
-func (i ServicePerimeterConfigResponseArgs) ToServicePerimeterConfigResponseOutput() ServicePerimeterConfigResponseOutput {
-	return i.ToServicePerimeterConfigResponseOutputWithContext(context.Background())
-}
-
-func (i ServicePerimeterConfigResponseArgs) ToServicePerimeterConfigResponseOutputWithContext(ctx context.Context) ServicePerimeterConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterConfigResponseOutput)
-}
-
-func (i ServicePerimeterConfigResponseArgs) ToServicePerimeterConfigResponsePtrOutput() ServicePerimeterConfigResponsePtrOutput {
-	return i.ToServicePerimeterConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ServicePerimeterConfigResponseArgs) ToServicePerimeterConfigResponsePtrOutputWithContext(ctx context.Context) ServicePerimeterConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterConfigResponseOutput).ToServicePerimeterConfigResponsePtrOutputWithContext(ctx)
-}
-
-// ServicePerimeterConfigResponsePtrInput is an input type that accepts ServicePerimeterConfigResponseArgs, ServicePerimeterConfigResponsePtr and ServicePerimeterConfigResponsePtrOutput values.
-// You can construct a concrete instance of `ServicePerimeterConfigResponsePtrInput` via:
-//
-//          ServicePerimeterConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ServicePerimeterConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToServicePerimeterConfigResponsePtrOutput() ServicePerimeterConfigResponsePtrOutput
-	ToServicePerimeterConfigResponsePtrOutputWithContext(context.Context) ServicePerimeterConfigResponsePtrOutput
-}
-
-type servicePerimeterConfigResponsePtrType ServicePerimeterConfigResponseArgs
-
-func ServicePerimeterConfigResponsePtr(v *ServicePerimeterConfigResponseArgs) ServicePerimeterConfigResponsePtrInput {
-	return (*servicePerimeterConfigResponsePtrType)(v)
-}
-
-func (*servicePerimeterConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServicePerimeterConfigResponse)(nil)).Elem()
-}
-
-func (i *servicePerimeterConfigResponsePtrType) ToServicePerimeterConfigResponsePtrOutput() ServicePerimeterConfigResponsePtrOutput {
-	return i.ToServicePerimeterConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *servicePerimeterConfigResponsePtrType) ToServicePerimeterConfigResponsePtrOutputWithContext(ctx context.Context) ServicePerimeterConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterConfigResponsePtrOutput)
-}
-
 // `ServicePerimeterConfig` specifies a set of Google Cloud resources that describe specific Service Perimeter configuration.
 type ServicePerimeterConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -4219,16 +3182,6 @@ func (o ServicePerimeterConfigResponseOutput) ToServicePerimeterConfigResponseOu
 
 func (o ServicePerimeterConfigResponseOutput) ToServicePerimeterConfigResponseOutputWithContext(ctx context.Context) ServicePerimeterConfigResponseOutput {
 	return o
-}
-
-func (o ServicePerimeterConfigResponseOutput) ToServicePerimeterConfigResponsePtrOutput() ServicePerimeterConfigResponsePtrOutput {
-	return o.ToServicePerimeterConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ServicePerimeterConfigResponseOutput) ToServicePerimeterConfigResponsePtrOutputWithContext(ctx context.Context) ServicePerimeterConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterConfigResponse) *ServicePerimeterConfigResponse {
-		return &v
-	}).(ServicePerimeterConfigResponsePtrOutput)
 }
 
 // A list of `AccessLevel` resource names that allow resources within the `ServicePerimeter` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`. For Service Perimeter Bridge, must be empty.
@@ -4259,90 +3212,6 @@ func (o ServicePerimeterConfigResponseOutput) RestrictedServices() pulumi.String
 // Configuration for APIs allowed within Perimeter.
 func (o ServicePerimeterConfigResponseOutput) VpcAccessibleServices() VpcAccessibleServicesResponseOutput {
 	return o.ApplyT(func(v ServicePerimeterConfigResponse) VpcAccessibleServicesResponse { return v.VpcAccessibleServices }).(VpcAccessibleServicesResponseOutput)
-}
-
-type ServicePerimeterConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ServicePerimeterConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServicePerimeterConfigResponse)(nil)).Elem()
-}
-
-func (o ServicePerimeterConfigResponsePtrOutput) ToServicePerimeterConfigResponsePtrOutput() ServicePerimeterConfigResponsePtrOutput {
-	return o
-}
-
-func (o ServicePerimeterConfigResponsePtrOutput) ToServicePerimeterConfigResponsePtrOutputWithContext(ctx context.Context) ServicePerimeterConfigResponsePtrOutput {
-	return o
-}
-
-func (o ServicePerimeterConfigResponsePtrOutput) Elem() ServicePerimeterConfigResponseOutput {
-	return o.ApplyT(func(v *ServicePerimeterConfigResponse) ServicePerimeterConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ServicePerimeterConfigResponse
-		return ret
-	}).(ServicePerimeterConfigResponseOutput)
-}
-
-// A list of `AccessLevel` resource names that allow resources within the `ServicePerimeter` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`. For Service Perimeter Bridge, must be empty.
-func (o ServicePerimeterConfigResponsePtrOutput) AccessLevels() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ServicePerimeterConfigResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AccessLevels
-	}).(pulumi.StringArrayOutput)
-}
-
-// List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
-func (o ServicePerimeterConfigResponsePtrOutput) EgressPolicies() EgressPolicyResponseArrayOutput {
-	return o.ApplyT(func(v *ServicePerimeterConfigResponse) []EgressPolicyResponse {
-		if v == nil {
-			return nil
-		}
-		return v.EgressPolicies
-	}).(EgressPolicyResponseArrayOutput)
-}
-
-// List of IngressPolicies to apply to the perimeter. A perimeter may have multiple IngressPolicies, each of which is evaluated separately. Access is granted if any Ingress Policy grants it. Must be empty for a perimeter bridge.
-func (o ServicePerimeterConfigResponsePtrOutput) IngressPolicies() IngressPolicyResponseArrayOutput {
-	return o.ApplyT(func(v *ServicePerimeterConfigResponse) []IngressPolicyResponse {
-		if v == nil {
-			return nil
-		}
-		return v.IngressPolicies
-	}).(IngressPolicyResponseArrayOutput)
-}
-
-// A list of Google Cloud resources that are inside of the service perimeter. Currently only projects are allowed. Format: `projects/{project_number}`
-func (o ServicePerimeterConfigResponsePtrOutput) Resources() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ServicePerimeterConfigResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Resources
-	}).(pulumi.StringArrayOutput)
-}
-
-// Google Cloud services that are subject to the Service Perimeter restrictions. For example, if `storage.googleapis.com` is specified, access to the storage buckets inside the perimeter must meet the perimeter's access restrictions.
-func (o ServicePerimeterConfigResponsePtrOutput) RestrictedServices() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ServicePerimeterConfigResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.RestrictedServices
-	}).(pulumi.StringArrayOutput)
-}
-
-// Configuration for APIs allowed within Perimeter.
-func (o ServicePerimeterConfigResponsePtrOutput) VpcAccessibleServices() VpcAccessibleServicesResponsePtrOutput {
-	return o.ApplyT(func(v *ServicePerimeterConfigResponse) *VpcAccessibleServicesResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.VpcAccessibleServices
-	}).(VpcAccessibleServicesResponsePtrOutput)
 }
 
 // Specifies how APIs are allowed to communicate within the Service Perimeter.
@@ -4512,78 +3381,6 @@ type VpcAccessibleServicesResponse struct {
 	EnableRestriction bool `pulumi:"enableRestriction"`
 }
 
-// VpcAccessibleServicesResponseInput is an input type that accepts VpcAccessibleServicesResponseArgs and VpcAccessibleServicesResponseOutput values.
-// You can construct a concrete instance of `VpcAccessibleServicesResponseInput` via:
-//
-//          VpcAccessibleServicesResponseArgs{...}
-type VpcAccessibleServicesResponseInput interface {
-	pulumi.Input
-
-	ToVpcAccessibleServicesResponseOutput() VpcAccessibleServicesResponseOutput
-	ToVpcAccessibleServicesResponseOutputWithContext(context.Context) VpcAccessibleServicesResponseOutput
-}
-
-// Specifies how APIs are allowed to communicate within the Service Perimeter.
-type VpcAccessibleServicesResponseArgs struct {
-	// The list of APIs usable within the Service Perimeter. Must be empty unless 'enable_restriction' is True. You can specify a list of individual services, as well as include the 'RESTRICTED-SERVICES' value, which automatically includes all of the services protected by the perimeter.
-	AllowedServices pulumi.StringArrayInput `pulumi:"allowedServices"`
-	// Whether to restrict API calls within the Service Perimeter to the list of APIs specified in 'allowed_services'.
-	EnableRestriction pulumi.BoolInput `pulumi:"enableRestriction"`
-}
-
-func (VpcAccessibleServicesResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcAccessibleServicesResponse)(nil)).Elem()
-}
-
-func (i VpcAccessibleServicesResponseArgs) ToVpcAccessibleServicesResponseOutput() VpcAccessibleServicesResponseOutput {
-	return i.ToVpcAccessibleServicesResponseOutputWithContext(context.Background())
-}
-
-func (i VpcAccessibleServicesResponseArgs) ToVpcAccessibleServicesResponseOutputWithContext(ctx context.Context) VpcAccessibleServicesResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcAccessibleServicesResponseOutput)
-}
-
-func (i VpcAccessibleServicesResponseArgs) ToVpcAccessibleServicesResponsePtrOutput() VpcAccessibleServicesResponsePtrOutput {
-	return i.ToVpcAccessibleServicesResponsePtrOutputWithContext(context.Background())
-}
-
-func (i VpcAccessibleServicesResponseArgs) ToVpcAccessibleServicesResponsePtrOutputWithContext(ctx context.Context) VpcAccessibleServicesResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcAccessibleServicesResponseOutput).ToVpcAccessibleServicesResponsePtrOutputWithContext(ctx)
-}
-
-// VpcAccessibleServicesResponsePtrInput is an input type that accepts VpcAccessibleServicesResponseArgs, VpcAccessibleServicesResponsePtr and VpcAccessibleServicesResponsePtrOutput values.
-// You can construct a concrete instance of `VpcAccessibleServicesResponsePtrInput` via:
-//
-//          VpcAccessibleServicesResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type VpcAccessibleServicesResponsePtrInput interface {
-	pulumi.Input
-
-	ToVpcAccessibleServicesResponsePtrOutput() VpcAccessibleServicesResponsePtrOutput
-	ToVpcAccessibleServicesResponsePtrOutputWithContext(context.Context) VpcAccessibleServicesResponsePtrOutput
-}
-
-type vpcAccessibleServicesResponsePtrType VpcAccessibleServicesResponseArgs
-
-func VpcAccessibleServicesResponsePtr(v *VpcAccessibleServicesResponseArgs) VpcAccessibleServicesResponsePtrInput {
-	return (*vpcAccessibleServicesResponsePtrType)(v)
-}
-
-func (*vpcAccessibleServicesResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VpcAccessibleServicesResponse)(nil)).Elem()
-}
-
-func (i *vpcAccessibleServicesResponsePtrType) ToVpcAccessibleServicesResponsePtrOutput() VpcAccessibleServicesResponsePtrOutput {
-	return i.ToVpcAccessibleServicesResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *vpcAccessibleServicesResponsePtrType) ToVpcAccessibleServicesResponsePtrOutputWithContext(ctx context.Context) VpcAccessibleServicesResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcAccessibleServicesResponsePtrOutput)
-}
-
 // Specifies how APIs are allowed to communicate within the Service Perimeter.
 type VpcAccessibleServicesResponseOutput struct{ *pulumi.OutputState }
 
@@ -4599,16 +3396,6 @@ func (o VpcAccessibleServicesResponseOutput) ToVpcAccessibleServicesResponseOutp
 	return o
 }
 
-func (o VpcAccessibleServicesResponseOutput) ToVpcAccessibleServicesResponsePtrOutput() VpcAccessibleServicesResponsePtrOutput {
-	return o.ToVpcAccessibleServicesResponsePtrOutputWithContext(context.Background())
-}
-
-func (o VpcAccessibleServicesResponseOutput) ToVpcAccessibleServicesResponsePtrOutputWithContext(ctx context.Context) VpcAccessibleServicesResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcAccessibleServicesResponse) *VpcAccessibleServicesResponse {
-		return &v
-	}).(VpcAccessibleServicesResponsePtrOutput)
-}
-
 // The list of APIs usable within the Service Perimeter. Must be empty unless 'enable_restriction' is True. You can specify a list of individual services, as well as include the 'RESTRICTED-SERVICES' value, which automatically includes all of the services protected by the perimeter.
 func (o VpcAccessibleServicesResponseOutput) AllowedServices() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VpcAccessibleServicesResponse) []string { return v.AllowedServices }).(pulumi.StringArrayOutput)
@@ -4619,114 +3406,41 @@ func (o VpcAccessibleServicesResponseOutput) EnableRestriction() pulumi.BoolOutp
 	return o.ApplyT(func(v VpcAccessibleServicesResponse) bool { return v.EnableRestriction }).(pulumi.BoolOutput)
 }
 
-type VpcAccessibleServicesResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (VpcAccessibleServicesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VpcAccessibleServicesResponse)(nil)).Elem()
-}
-
-func (o VpcAccessibleServicesResponsePtrOutput) ToVpcAccessibleServicesResponsePtrOutput() VpcAccessibleServicesResponsePtrOutput {
-	return o
-}
-
-func (o VpcAccessibleServicesResponsePtrOutput) ToVpcAccessibleServicesResponsePtrOutputWithContext(ctx context.Context) VpcAccessibleServicesResponsePtrOutput {
-	return o
-}
-
-func (o VpcAccessibleServicesResponsePtrOutput) Elem() VpcAccessibleServicesResponseOutput {
-	return o.ApplyT(func(v *VpcAccessibleServicesResponse) VpcAccessibleServicesResponse {
-		if v != nil {
-			return *v
-		}
-		var ret VpcAccessibleServicesResponse
-		return ret
-	}).(VpcAccessibleServicesResponseOutput)
-}
-
-// The list of APIs usable within the Service Perimeter. Must be empty unless 'enable_restriction' is True. You can specify a list of individual services, as well as include the 'RESTRICTED-SERVICES' value, which automatically includes all of the services protected by the perimeter.
-func (o VpcAccessibleServicesResponsePtrOutput) AllowedServices() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *VpcAccessibleServicesResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AllowedServices
-	}).(pulumi.StringArrayOutput)
-}
-
-// Whether to restrict API calls within the Service Perimeter to the list of APIs specified in 'allowed_services'.
-func (o VpcAccessibleServicesResponsePtrOutput) EnableRestriction() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *VpcAccessibleServicesResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.EnableRestriction
-	}).(pulumi.BoolPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiOperationInput)(nil)).Elem(), ApiOperationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiOperationArrayInput)(nil)).Elem(), ApiOperationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ApiOperationResponseInput)(nil)).Elem(), ApiOperationResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ApiOperationResponseArrayInput)(nil)).Elem(), ApiOperationResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BasicLevelInput)(nil)).Elem(), BasicLevelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BasicLevelPtrInput)(nil)).Elem(), BasicLevelArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BasicLevelResponseInput)(nil)).Elem(), BasicLevelResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BasicLevelResponsePtrInput)(nil)).Elem(), BasicLevelResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionInput)(nil)).Elem(), ConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionArrayInput)(nil)).Elem(), ConditionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConditionResponseInput)(nil)).Elem(), ConditionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConditionResponseArrayInput)(nil)).Elem(), ConditionResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomLevelInput)(nil)).Elem(), CustomLevelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomLevelPtrInput)(nil)).Elem(), CustomLevelArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CustomLevelResponseInput)(nil)).Elem(), CustomLevelResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CustomLevelResponsePtrInput)(nil)).Elem(), CustomLevelResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DevicePolicyInput)(nil)).Elem(), DevicePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DevicePolicyPtrInput)(nil)).Elem(), DevicePolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DevicePolicyResponseInput)(nil)).Elem(), DevicePolicyResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EgressFromInput)(nil)).Elem(), EgressFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EgressFromPtrInput)(nil)).Elem(), EgressFromArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EgressFromResponseInput)(nil)).Elem(), EgressFromResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EgressPolicyInput)(nil)).Elem(), EgressPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EgressPolicyArrayInput)(nil)).Elem(), EgressPolicyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EgressPolicyResponseInput)(nil)).Elem(), EgressPolicyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EgressPolicyResponseArrayInput)(nil)).Elem(), EgressPolicyResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EgressToInput)(nil)).Elem(), EgressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EgressToPtrInput)(nil)).Elem(), EgressToArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EgressToResponseInput)(nil)).Elem(), EgressToResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponsePtrInput)(nil)).Elem(), ExprResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressFromInput)(nil)).Elem(), IngressFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressFromPtrInput)(nil)).Elem(), IngressFromArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IngressFromResponseInput)(nil)).Elem(), IngressFromResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressPolicyInput)(nil)).Elem(), IngressPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressPolicyArrayInput)(nil)).Elem(), IngressPolicyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IngressPolicyResponseInput)(nil)).Elem(), IngressPolicyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IngressPolicyResponseArrayInput)(nil)).Elem(), IngressPolicyResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressSourceInput)(nil)).Elem(), IngressSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressSourceArrayInput)(nil)).Elem(), IngressSourceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IngressSourceResponseInput)(nil)).Elem(), IngressSourceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IngressSourceResponseArrayInput)(nil)).Elem(), IngressSourceResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressToInput)(nil)).Elem(), IngressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressToPtrInput)(nil)).Elem(), IngressToArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IngressToResponseInput)(nil)).Elem(), IngressToResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MethodSelectorInput)(nil)).Elem(), MethodSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MethodSelectorArrayInput)(nil)).Elem(), MethodSelectorArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MethodSelectorResponseInput)(nil)).Elem(), MethodSelectorResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MethodSelectorResponseArrayInput)(nil)).Elem(), MethodSelectorResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OsConstraintInput)(nil)).Elem(), OsConstraintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OsConstraintArrayInput)(nil)).Elem(), OsConstraintArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OsConstraintResponseInput)(nil)).Elem(), OsConstraintResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OsConstraintResponseArrayInput)(nil)).Elem(), OsConstraintResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterConfigInput)(nil)).Elem(), ServicePerimeterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterConfigPtrInput)(nil)).Elem(), ServicePerimeterConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterConfigResponseInput)(nil)).Elem(), ServicePerimeterConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterConfigResponsePtrInput)(nil)).Elem(), ServicePerimeterConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcAccessibleServicesInput)(nil)).Elem(), VpcAccessibleServicesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcAccessibleServicesPtrInput)(nil)).Elem(), VpcAccessibleServicesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VpcAccessibleServicesResponseInput)(nil)).Elem(), VpcAccessibleServicesResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VpcAccessibleServicesResponsePtrInput)(nil)).Elem(), VpcAccessibleServicesResponseArgs{})
 	pulumi.RegisterOutputType(ApiOperationOutput{})
 	pulumi.RegisterOutputType(ApiOperationArrayOutput{})
 	pulumi.RegisterOutputType(ApiOperationResponseOutput{})
@@ -4734,7 +3448,6 @@ func init() {
 	pulumi.RegisterOutputType(BasicLevelOutput{})
 	pulumi.RegisterOutputType(BasicLevelPtrOutput{})
 	pulumi.RegisterOutputType(BasicLevelResponseOutput{})
-	pulumi.RegisterOutputType(BasicLevelResponsePtrOutput{})
 	pulumi.RegisterOutputType(ConditionOutput{})
 	pulumi.RegisterOutputType(ConditionArrayOutput{})
 	pulumi.RegisterOutputType(ConditionResponseOutput{})
@@ -4742,7 +3455,6 @@ func init() {
 	pulumi.RegisterOutputType(CustomLevelOutput{})
 	pulumi.RegisterOutputType(CustomLevelPtrOutput{})
 	pulumi.RegisterOutputType(CustomLevelResponseOutput{})
-	pulumi.RegisterOutputType(CustomLevelResponsePtrOutput{})
 	pulumi.RegisterOutputType(DevicePolicyOutput{})
 	pulumi.RegisterOutputType(DevicePolicyPtrOutput{})
 	pulumi.RegisterOutputType(DevicePolicyResponseOutput{})
@@ -4759,7 +3471,6 @@ func init() {
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
-	pulumi.RegisterOutputType(ExprResponsePtrOutput{})
 	pulumi.RegisterOutputType(IngressFromOutput{})
 	pulumi.RegisterOutputType(IngressFromPtrOutput{})
 	pulumi.RegisterOutputType(IngressFromResponseOutput{})
@@ -4785,9 +3496,7 @@ func init() {
 	pulumi.RegisterOutputType(ServicePerimeterConfigOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterConfigResponseOutput{})
-	pulumi.RegisterOutputType(ServicePerimeterConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(VpcAccessibleServicesOutput{})
 	pulumi.RegisterOutputType(VpcAccessibleServicesPtrOutput{})
 	pulumi.RegisterOutputType(VpcAccessibleServicesResponseOutput{})
-	pulumi.RegisterOutputType(VpcAccessibleServicesResponsePtrOutput{})
 }

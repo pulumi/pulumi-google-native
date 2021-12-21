@@ -112,7 +112,7 @@ type ChannelPartnerLinkInput interface {
 }
 
 func (*ChannelPartnerLink) ElementType() reflect.Type {
-	return reflect.TypeOf((*ChannelPartnerLink)(nil))
+	return reflect.TypeOf((**ChannelPartnerLink)(nil)).Elem()
 }
 
 func (i *ChannelPartnerLink) ToChannelPartnerLinkOutput() ChannelPartnerLinkOutput {
@@ -126,7 +126,7 @@ func (i *ChannelPartnerLink) ToChannelPartnerLinkOutputWithContext(ctx context.C
 type ChannelPartnerLinkOutput struct{ *pulumi.OutputState }
 
 func (ChannelPartnerLinkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ChannelPartnerLink)(nil))
+	return reflect.TypeOf((**ChannelPartnerLink)(nil)).Elem()
 }
 
 func (o ChannelPartnerLinkOutput) ToChannelPartnerLinkOutput() ChannelPartnerLinkOutput {

@@ -109,7 +109,7 @@ type LienInput interface {
 }
 
 func (*Lien) ElementType() reflect.Type {
-	return reflect.TypeOf((*Lien)(nil))
+	return reflect.TypeOf((**Lien)(nil)).Elem()
 }
 
 func (i *Lien) ToLienOutput() LienOutput {
@@ -123,7 +123,7 @@ func (i *Lien) ToLienOutputWithContext(ctx context.Context) LienOutput {
 type LienOutput struct{ *pulumi.OutputState }
 
 func (LienOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Lien)(nil))
+	return reflect.TypeOf((**Lien)(nil)).Elem()
 }
 
 func (o LienOutput) ToLienOutput() LienOutput {

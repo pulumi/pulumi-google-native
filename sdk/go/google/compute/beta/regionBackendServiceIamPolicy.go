@@ -118,7 +118,7 @@ type RegionBackendServiceIamPolicyInput interface {
 }
 
 func (*RegionBackendServiceIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionBackendServiceIamPolicy)(nil))
+	return reflect.TypeOf((**RegionBackendServiceIamPolicy)(nil)).Elem()
 }
 
 func (i *RegionBackendServiceIamPolicy) ToRegionBackendServiceIamPolicyOutput() RegionBackendServiceIamPolicyOutput {
@@ -132,7 +132,7 @@ func (i *RegionBackendServiceIamPolicy) ToRegionBackendServiceIamPolicyOutputWit
 type RegionBackendServiceIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (RegionBackendServiceIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionBackendServiceIamPolicy)(nil))
+	return reflect.TypeOf((**RegionBackendServiceIamPolicy)(nil)).Elem()
 }
 
 func (o RegionBackendServiceIamPolicyOutput) ToRegionBackendServiceIamPolicyOutput() RegionBackendServiceIamPolicyOutput {

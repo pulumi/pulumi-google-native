@@ -125,7 +125,7 @@ type GlobalPublicDelegatedPrefixInput interface {
 }
 
 func (*GlobalPublicDelegatedPrefix) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalPublicDelegatedPrefix)(nil))
+	return reflect.TypeOf((**GlobalPublicDelegatedPrefix)(nil)).Elem()
 }
 
 func (i *GlobalPublicDelegatedPrefix) ToGlobalPublicDelegatedPrefixOutput() GlobalPublicDelegatedPrefixOutput {
@@ -139,7 +139,7 @@ func (i *GlobalPublicDelegatedPrefix) ToGlobalPublicDelegatedPrefixOutputWithCon
 type GlobalPublicDelegatedPrefixOutput struct{ *pulumi.OutputState }
 
 func (GlobalPublicDelegatedPrefixOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalPublicDelegatedPrefix)(nil))
+	return reflect.TypeOf((**GlobalPublicDelegatedPrefix)(nil)).Elem()
 }
 
 func (o GlobalPublicDelegatedPrefixOutput) ToGlobalPublicDelegatedPrefixOutput() GlobalPublicDelegatedPrefixOutput {

@@ -129,7 +129,7 @@ type JobTriggerInput interface {
 }
 
 func (*JobTrigger) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobTrigger)(nil))
+	return reflect.TypeOf((**JobTrigger)(nil)).Elem()
 }
 
 func (i *JobTrigger) ToJobTriggerOutput() JobTriggerOutput {
@@ -143,7 +143,7 @@ func (i *JobTrigger) ToJobTriggerOutputWithContext(ctx context.Context) JobTrigg
 type JobTriggerOutput struct{ *pulumi.OutputState }
 
 func (JobTriggerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobTrigger)(nil))
+	return reflect.TypeOf((**JobTrigger)(nil)).Elem()
 }
 
 func (o JobTriggerOutput) ToJobTriggerOutput() JobTriggerOutput {

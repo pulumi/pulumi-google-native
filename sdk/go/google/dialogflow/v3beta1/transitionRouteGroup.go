@@ -111,7 +111,7 @@ type TransitionRouteGroupInput interface {
 }
 
 func (*TransitionRouteGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransitionRouteGroup)(nil))
+	return reflect.TypeOf((**TransitionRouteGroup)(nil)).Elem()
 }
 
 func (i *TransitionRouteGroup) ToTransitionRouteGroupOutput() TransitionRouteGroupOutput {
@@ -125,7 +125,7 @@ func (i *TransitionRouteGroup) ToTransitionRouteGroupOutputWithContext(ctx conte
 type TransitionRouteGroupOutput struct{ *pulumi.OutputState }
 
 func (TransitionRouteGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransitionRouteGroup)(nil))
+	return reflect.TypeOf((**TransitionRouteGroup)(nil)).Elem()
 }
 
 func (o TransitionRouteGroupOutput) ToTransitionRouteGroupOutput() TransitionRouteGroupOutput {

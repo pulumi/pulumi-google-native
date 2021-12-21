@@ -18,37 +18,6 @@ type AbortInfoResponse struct {
 	ResourceUri string `pulumi:"resourceUri"`
 }
 
-// AbortInfoResponseInput is an input type that accepts AbortInfoResponseArgs and AbortInfoResponseOutput values.
-// You can construct a concrete instance of `AbortInfoResponseInput` via:
-//
-//          AbortInfoResponseArgs{...}
-type AbortInfoResponseInput interface {
-	pulumi.Input
-
-	ToAbortInfoResponseOutput() AbortInfoResponseOutput
-	ToAbortInfoResponseOutputWithContext(context.Context) AbortInfoResponseOutput
-}
-
-// Details of the final state "abort" and associated resource.
-type AbortInfoResponseArgs struct {
-	// Causes that the analysis is aborted.
-	Cause pulumi.StringInput `pulumi:"cause"`
-	// URI of the resource that caused the abort.
-	ResourceUri pulumi.StringInput `pulumi:"resourceUri"`
-}
-
-func (AbortInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AbortInfoResponse)(nil)).Elem()
-}
-
-func (i AbortInfoResponseArgs) ToAbortInfoResponseOutput() AbortInfoResponseOutput {
-	return i.ToAbortInfoResponseOutputWithContext(context.Background())
-}
-
-func (i AbortInfoResponseArgs) ToAbortInfoResponseOutputWithContext(ctx context.Context) AbortInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AbortInfoResponseOutput)
-}
-
 // Details of the final state "abort" and associated resource.
 type AbortInfoResponseOutput struct{ *pulumi.OutputState }
 
@@ -189,62 +158,6 @@ type AuditConfigResponse struct {
 	AuditLogConfigs []AuditLogConfigResponse `pulumi:"auditLogConfigs"`
 	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
 	Service string `pulumi:"service"`
-}
-
-// AuditConfigResponseInput is an input type that accepts AuditConfigResponseArgs and AuditConfigResponseOutput values.
-// You can construct a concrete instance of `AuditConfigResponseInput` via:
-//
-//          AuditConfigResponseArgs{...}
-type AuditConfigResponseInput interface {
-	pulumi.Input
-
-	ToAuditConfigResponseOutput() AuditConfigResponseOutput
-	ToAuditConfigResponseOutputWithContext(context.Context) AuditConfigResponseOutput
-}
-
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
-type AuditConfigResponseArgs struct {
-	// The configuration for logging of each type of permission.
-	AuditLogConfigs AuditLogConfigResponseArrayInput `pulumi:"auditLogConfigs"`
-	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-	Service pulumi.StringInput `pulumi:"service"`
-}
-
-func (AuditConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
-}
-
-func (i AuditConfigResponseArgs) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
-	return i.ToAuditConfigResponseOutputWithContext(context.Background())
-}
-
-func (i AuditConfigResponseArgs) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseOutput)
-}
-
-// AuditConfigResponseArrayInput is an input type that accepts AuditConfigResponseArray and AuditConfigResponseArrayOutput values.
-// You can construct a concrete instance of `AuditConfigResponseArrayInput` via:
-//
-//          AuditConfigResponseArray{ AuditConfigResponseArgs{...} }
-type AuditConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput
-	ToAuditConfigResponseArrayOutputWithContext(context.Context) AuditConfigResponseArrayOutput
-}
-
-type AuditConfigResponseArray []AuditConfigResponseInput
-
-func (AuditConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
-}
-
-func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
-	return i.ToAuditConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseArrayOutput)
 }
 
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
@@ -407,62 +320,6 @@ type AuditLogConfigResponse struct {
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
 	LogType string `pulumi:"logType"`
-}
-
-// AuditLogConfigResponseInput is an input type that accepts AuditLogConfigResponseArgs and AuditLogConfigResponseOutput values.
-// You can construct a concrete instance of `AuditLogConfigResponseInput` via:
-//
-//          AuditLogConfigResponseArgs{...}
-type AuditLogConfigResponseInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput
-	ToAuditLogConfigResponseOutputWithContext(context.Context) AuditLogConfigResponseOutput
-}
-
-// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
-type AuditLogConfigResponseArgs struct {
-	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
-	// The log type that this config enables.
-	LogType pulumi.StringInput `pulumi:"logType"`
-}
-
-func (AuditLogConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
-	return i.ToAuditLogConfigResponseOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseOutput)
-}
-
-// AuditLogConfigResponseArrayInput is an input type that accepts AuditLogConfigResponseArray and AuditLogConfigResponseArrayOutput values.
-// You can construct a concrete instance of `AuditLogConfigResponseArrayInput` via:
-//
-//          AuditLogConfigResponseArray{ AuditLogConfigResponseArgs{...} }
-type AuditLogConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput
-	ToAuditLogConfigResponseArrayOutputWithContext(context.Context) AuditLogConfigResponseArrayOutput
-}
-
-type AuditLogConfigResponseArray []AuditLogConfigResponseInput
-
-func (AuditLogConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
-	return i.ToAuditLogConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseArrayOutput)
 }
 
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
@@ -636,64 +493,6 @@ type BindingResponse struct {
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
-}
-
-// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
-// You can construct a concrete instance of `BindingResponseInput` via:
-//
-//          BindingResponseArgs{...}
-type BindingResponseInput interface {
-	pulumi.Input
-
-	ToBindingResponseOutput() BindingResponseOutput
-	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
-}
-
-// Associates `members`, or principals, with a `role`.
-type BindingResponseArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
-	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-	Role pulumi.StringInput `pulumi:"role"`
-}
-
-func (BindingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
-	return i.ToBindingResponseOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
-}
-
-// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
-// You can construct a concrete instance of `BindingResponseArrayInput` via:
-//
-//          BindingResponseArray{ BindingResponseArgs{...} }
-type BindingResponseArrayInput interface {
-	pulumi.Input
-
-	ToBindingResponseArrayOutput() BindingResponseArrayOutput
-	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
-}
-
-type BindingResponseArray []BindingResponseInput
-
-func (BindingResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
-	return i.ToBindingResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
 }
 
 // Associates `members`, or principals, with a `role`.
@@ -892,76 +691,6 @@ type CloudFunctionEndpointResponse struct {
 	Uri string `pulumi:"uri"`
 }
 
-// CloudFunctionEndpointResponseInput is an input type that accepts CloudFunctionEndpointResponseArgs and CloudFunctionEndpointResponseOutput values.
-// You can construct a concrete instance of `CloudFunctionEndpointResponseInput` via:
-//
-//          CloudFunctionEndpointResponseArgs{...}
-type CloudFunctionEndpointResponseInput interface {
-	pulumi.Input
-
-	ToCloudFunctionEndpointResponseOutput() CloudFunctionEndpointResponseOutput
-	ToCloudFunctionEndpointResponseOutputWithContext(context.Context) CloudFunctionEndpointResponseOutput
-}
-
-// Wrapper for cloud function attributes.
-type CloudFunctionEndpointResponseArgs struct {
-	// A [Cloud function](https://cloud.google.com/functions) name.
-	Uri pulumi.StringInput `pulumi:"uri"`
-}
-
-func (CloudFunctionEndpointResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudFunctionEndpointResponse)(nil)).Elem()
-}
-
-func (i CloudFunctionEndpointResponseArgs) ToCloudFunctionEndpointResponseOutput() CloudFunctionEndpointResponseOutput {
-	return i.ToCloudFunctionEndpointResponseOutputWithContext(context.Background())
-}
-
-func (i CloudFunctionEndpointResponseArgs) ToCloudFunctionEndpointResponseOutputWithContext(ctx context.Context) CloudFunctionEndpointResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudFunctionEndpointResponseOutput)
-}
-
-func (i CloudFunctionEndpointResponseArgs) ToCloudFunctionEndpointResponsePtrOutput() CloudFunctionEndpointResponsePtrOutput {
-	return i.ToCloudFunctionEndpointResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CloudFunctionEndpointResponseArgs) ToCloudFunctionEndpointResponsePtrOutputWithContext(ctx context.Context) CloudFunctionEndpointResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudFunctionEndpointResponseOutput).ToCloudFunctionEndpointResponsePtrOutputWithContext(ctx)
-}
-
-// CloudFunctionEndpointResponsePtrInput is an input type that accepts CloudFunctionEndpointResponseArgs, CloudFunctionEndpointResponsePtr and CloudFunctionEndpointResponsePtrOutput values.
-// You can construct a concrete instance of `CloudFunctionEndpointResponsePtrInput` via:
-//
-//          CloudFunctionEndpointResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CloudFunctionEndpointResponsePtrInput interface {
-	pulumi.Input
-
-	ToCloudFunctionEndpointResponsePtrOutput() CloudFunctionEndpointResponsePtrOutput
-	ToCloudFunctionEndpointResponsePtrOutputWithContext(context.Context) CloudFunctionEndpointResponsePtrOutput
-}
-
-type cloudFunctionEndpointResponsePtrType CloudFunctionEndpointResponseArgs
-
-func CloudFunctionEndpointResponsePtr(v *CloudFunctionEndpointResponseArgs) CloudFunctionEndpointResponsePtrInput {
-	return (*cloudFunctionEndpointResponsePtrType)(v)
-}
-
-func (*cloudFunctionEndpointResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudFunctionEndpointResponse)(nil)).Elem()
-}
-
-func (i *cloudFunctionEndpointResponsePtrType) ToCloudFunctionEndpointResponsePtrOutput() CloudFunctionEndpointResponsePtrOutput {
-	return i.ToCloudFunctionEndpointResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *cloudFunctionEndpointResponsePtrType) ToCloudFunctionEndpointResponsePtrOutputWithContext(ctx context.Context) CloudFunctionEndpointResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudFunctionEndpointResponsePtrOutput)
-}
-
 // Wrapper for cloud function attributes.
 type CloudFunctionEndpointResponseOutput struct{ *pulumi.OutputState }
 
@@ -977,53 +706,9 @@ func (o CloudFunctionEndpointResponseOutput) ToCloudFunctionEndpointResponseOutp
 	return o
 }
 
-func (o CloudFunctionEndpointResponseOutput) ToCloudFunctionEndpointResponsePtrOutput() CloudFunctionEndpointResponsePtrOutput {
-	return o.ToCloudFunctionEndpointResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CloudFunctionEndpointResponseOutput) ToCloudFunctionEndpointResponsePtrOutputWithContext(ctx context.Context) CloudFunctionEndpointResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudFunctionEndpointResponse) *CloudFunctionEndpointResponse {
-		return &v
-	}).(CloudFunctionEndpointResponsePtrOutput)
-}
-
 // A [Cloud function](https://cloud.google.com/functions) name.
 func (o CloudFunctionEndpointResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudFunctionEndpointResponse) string { return v.Uri }).(pulumi.StringOutput)
-}
-
-type CloudFunctionEndpointResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CloudFunctionEndpointResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudFunctionEndpointResponse)(nil)).Elem()
-}
-
-func (o CloudFunctionEndpointResponsePtrOutput) ToCloudFunctionEndpointResponsePtrOutput() CloudFunctionEndpointResponsePtrOutput {
-	return o
-}
-
-func (o CloudFunctionEndpointResponsePtrOutput) ToCloudFunctionEndpointResponsePtrOutputWithContext(ctx context.Context) CloudFunctionEndpointResponsePtrOutput {
-	return o
-}
-
-func (o CloudFunctionEndpointResponsePtrOutput) Elem() CloudFunctionEndpointResponseOutput {
-	return o.ApplyT(func(v *CloudFunctionEndpointResponse) CloudFunctionEndpointResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CloudFunctionEndpointResponse
-		return ret
-	}).(CloudFunctionEndpointResponseOutput)
-}
-
-// A [Cloud function](https://cloud.google.com/functions) name.
-func (o CloudFunctionEndpointResponsePtrOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudFunctionEndpointResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Uri
-	}).(pulumi.StringPtrOutput)
 }
 
 // For display only. Metadata associated with a Cloud SQL instance.
@@ -1040,45 +725,6 @@ type CloudSQLInstanceInfoResponse struct {
 	Region string `pulumi:"region"`
 	// URI of a Cloud SQL instance.
 	Uri string `pulumi:"uri"`
-}
-
-// CloudSQLInstanceInfoResponseInput is an input type that accepts CloudSQLInstanceInfoResponseArgs and CloudSQLInstanceInfoResponseOutput values.
-// You can construct a concrete instance of `CloudSQLInstanceInfoResponseInput` via:
-//
-//          CloudSQLInstanceInfoResponseArgs{...}
-type CloudSQLInstanceInfoResponseInput interface {
-	pulumi.Input
-
-	ToCloudSQLInstanceInfoResponseOutput() CloudSQLInstanceInfoResponseOutput
-	ToCloudSQLInstanceInfoResponseOutputWithContext(context.Context) CloudSQLInstanceInfoResponseOutput
-}
-
-// For display only. Metadata associated with a Cloud SQL instance.
-type CloudSQLInstanceInfoResponseArgs struct {
-	// Name of a Cloud SQL instance.
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// External IP address of a Cloud SQL instance.
-	ExternalIp pulumi.StringInput `pulumi:"externalIp"`
-	// Internal IP address of a Cloud SQL instance.
-	InternalIp pulumi.StringInput `pulumi:"internalIp"`
-	// URI of a Cloud SQL instance network or empty string if the instance does not have one.
-	NetworkUri pulumi.StringInput `pulumi:"networkUri"`
-	// Region in which the Cloud SQL instance is running.
-	Region pulumi.StringInput `pulumi:"region"`
-	// URI of a Cloud SQL instance.
-	Uri pulumi.StringInput `pulumi:"uri"`
-}
-
-func (CloudSQLInstanceInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudSQLInstanceInfoResponse)(nil)).Elem()
-}
-
-func (i CloudSQLInstanceInfoResponseArgs) ToCloudSQLInstanceInfoResponseOutput() CloudSQLInstanceInfoResponseOutput {
-	return i.ToCloudSQLInstanceInfoResponseOutputWithContext(context.Background())
-}
-
-func (i CloudSQLInstanceInfoResponseArgs) ToCloudSQLInstanceInfoResponseOutputWithContext(ctx context.Context) CloudSQLInstanceInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudSQLInstanceInfoResponseOutput)
 }
 
 // For display only. Metadata associated with a Cloud SQL instance.
@@ -1134,37 +780,6 @@ type DeliverInfoResponse struct {
 	Target string `pulumi:"target"`
 }
 
-// DeliverInfoResponseInput is an input type that accepts DeliverInfoResponseArgs and DeliverInfoResponseOutput values.
-// You can construct a concrete instance of `DeliverInfoResponseInput` via:
-//
-//          DeliverInfoResponseArgs{...}
-type DeliverInfoResponseInput interface {
-	pulumi.Input
-
-	ToDeliverInfoResponseOutput() DeliverInfoResponseOutput
-	ToDeliverInfoResponseOutputWithContext(context.Context) DeliverInfoResponseOutput
-}
-
-// Details of the final state "deliver" and associated resource.
-type DeliverInfoResponseArgs struct {
-	// URI of the resource that the packet is delivered to.
-	ResourceUri pulumi.StringInput `pulumi:"resourceUri"`
-	// Target type where the packet is delivered to.
-	Target pulumi.StringInput `pulumi:"target"`
-}
-
-func (DeliverInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeliverInfoResponse)(nil)).Elem()
-}
-
-func (i DeliverInfoResponseArgs) ToDeliverInfoResponseOutput() DeliverInfoResponseOutput {
-	return i.ToDeliverInfoResponseOutputWithContext(context.Background())
-}
-
-func (i DeliverInfoResponseArgs) ToDeliverInfoResponseOutputWithContext(ctx context.Context) DeliverInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeliverInfoResponseOutput)
-}
-
 // Details of the final state "deliver" and associated resource.
 type DeliverInfoResponseOutput struct{ *pulumi.OutputState }
 
@@ -1196,37 +811,6 @@ type DropInfoResponse struct {
 	Cause string `pulumi:"cause"`
 	// URI of the resource that caused the drop.
 	ResourceUri string `pulumi:"resourceUri"`
-}
-
-// DropInfoResponseInput is an input type that accepts DropInfoResponseArgs and DropInfoResponseOutput values.
-// You can construct a concrete instance of `DropInfoResponseInput` via:
-//
-//          DropInfoResponseArgs{...}
-type DropInfoResponseInput interface {
-	pulumi.Input
-
-	ToDropInfoResponseOutput() DropInfoResponseOutput
-	ToDropInfoResponseOutputWithContext(context.Context) DropInfoResponseOutput
-}
-
-// Details of the final state "drop" and associated resource.
-type DropInfoResponseArgs struct {
-	// Cause that the packet is dropped.
-	Cause pulumi.StringInput `pulumi:"cause"`
-	// URI of the resource that caused the drop.
-	ResourceUri pulumi.StringInput `pulumi:"resourceUri"`
-}
-
-func (DropInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DropInfoResponse)(nil)).Elem()
-}
-
-func (i DropInfoResponseArgs) ToDropInfoResponseOutput() DropInfoResponseOutput {
-	return i.ToDropInfoResponseOutputWithContext(context.Background())
-}
-
-func (i DropInfoResponseArgs) ToDropInfoResponseOutputWithContext(ctx context.Context) DropInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DropInfoResponseOutput)
 }
 
 // Details of the final state "drop" and associated resource.
@@ -1321,47 +905,6 @@ func (i EndpointArgs) ToEndpointOutputWithContext(ctx context.Context) EndpointO
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointOutput)
 }
 
-func (i EndpointArgs) ToEndpointPtrOutput() EndpointPtrOutput {
-	return i.ToEndpointPtrOutputWithContext(context.Background())
-}
-
-func (i EndpointArgs) ToEndpointPtrOutputWithContext(ctx context.Context) EndpointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointOutput).ToEndpointPtrOutputWithContext(ctx)
-}
-
-// EndpointPtrInput is an input type that accepts EndpointArgs, EndpointPtr and EndpointPtrOutput values.
-// You can construct a concrete instance of `EndpointPtrInput` via:
-//
-//          EndpointArgs{...}
-//
-//  or:
-//
-//          nil
-type EndpointPtrInput interface {
-	pulumi.Input
-
-	ToEndpointPtrOutput() EndpointPtrOutput
-	ToEndpointPtrOutputWithContext(context.Context) EndpointPtrOutput
-}
-
-type endpointPtrType EndpointArgs
-
-func EndpointPtr(v *EndpointArgs) EndpointPtrInput {
-	return (*endpointPtrType)(v)
-}
-
-func (*endpointPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Endpoint)(nil)).Elem()
-}
-
-func (i *endpointPtrType) ToEndpointPtrOutput() EndpointPtrOutput {
-	return i.ToEndpointPtrOutputWithContext(context.Background())
-}
-
-func (i *endpointPtrType) ToEndpointPtrOutputWithContext(ctx context.Context) EndpointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointPtrOutput)
-}
-
 // Source or destination of the Connectivity Test.
 type EndpointOutput struct{ *pulumi.OutputState }
 
@@ -1375,16 +918,6 @@ func (o EndpointOutput) ToEndpointOutput() EndpointOutput {
 
 func (o EndpointOutput) ToEndpointOutputWithContext(ctx context.Context) EndpointOutput {
 	return o
-}
-
-func (o EndpointOutput) ToEndpointPtrOutput() EndpointPtrOutput {
-	return o.ToEndpointPtrOutputWithContext(context.Background())
-}
-
-func (o EndpointOutput) ToEndpointPtrOutputWithContext(ctx context.Context) EndpointPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Endpoint) *Endpoint {
-		return &v
-	}).(EndpointPtrOutput)
 }
 
 // A [Cloud function](https://cloud.google.com/functions).
@@ -1432,120 +965,6 @@ func (o EndpointOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoint) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
-type EndpointPtrOutput struct{ *pulumi.OutputState }
-
-func (EndpointPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Endpoint)(nil)).Elem()
-}
-
-func (o EndpointPtrOutput) ToEndpointPtrOutput() EndpointPtrOutput {
-	return o
-}
-
-func (o EndpointPtrOutput) ToEndpointPtrOutputWithContext(ctx context.Context) EndpointPtrOutput {
-	return o
-}
-
-func (o EndpointPtrOutput) Elem() EndpointOutput {
-	return o.ApplyT(func(v *Endpoint) Endpoint {
-		if v != nil {
-			return *v
-		}
-		var ret Endpoint
-		return ret
-	}).(EndpointOutput)
-}
-
-// A [Cloud function](https://cloud.google.com/functions).
-func (o EndpointPtrOutput) CloudFunction() CloudFunctionEndpointPtrOutput {
-	return o.ApplyT(func(v *Endpoint) *CloudFunctionEndpoint {
-		if v == nil {
-			return nil
-		}
-		return v.CloudFunction
-	}).(CloudFunctionEndpointPtrOutput)
-}
-
-// A [Cloud SQL](https://cloud.google.com/sql) instance URI.
-func (o EndpointPtrOutput) CloudSqlInstance() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Endpoint) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CloudSqlInstance
-	}).(pulumi.StringPtrOutput)
-}
-
-// A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
-func (o EndpointPtrOutput) GkeMasterCluster() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Endpoint) *string {
-		if v == nil {
-			return nil
-		}
-		return v.GkeMasterCluster
-	}).(pulumi.StringPtrOutput)
-}
-
-// A Compute Engine instance URI.
-func (o EndpointPtrOutput) Instance() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Endpoint) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Instance
-	}).(pulumi.StringPtrOutput)
-}
-
-// The IP address of the endpoint, which can be an external or internal IP. An IPv6 address is only allowed when the test's destination is a [global load balancer VIP](https://cloud.google.com/load-balancing/docs/load-balancing-overview).
-func (o EndpointPtrOutput) IpAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Endpoint) *string {
-		if v == nil {
-			return nil
-		}
-		return v.IpAddress
-	}).(pulumi.StringPtrOutput)
-}
-
-// A Compute Engine network URI.
-func (o EndpointPtrOutput) Network() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Endpoint) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Network
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type of the network where the endpoint is located. Applicable only to source endpoint, as destination network type can be inferred from the source.
-func (o EndpointPtrOutput) NetworkType() EndpointNetworkTypePtrOutput {
-	return o.ApplyT(func(v *Endpoint) *EndpointNetworkType {
-		if v == nil {
-			return nil
-		}
-		return v.NetworkType
-	}).(EndpointNetworkTypePtrOutput)
-}
-
-// The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP.
-func (o EndpointPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Endpoint) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Port
-	}).(pulumi.IntPtrOutput)
-}
-
-// Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
-func (o EndpointPtrOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Endpoint) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Project
-	}).(pulumi.StringPtrOutput)
-}
-
 // For display only. The specification of the endpoints for the test. EndpointInfo is derived from source and destination Endpoint and validated by the backend data plane model.
 type EndpointInfoResponse struct {
 	// Destination IP address.
@@ -1566,90 +985,6 @@ type EndpointInfoResponse struct {
 	SourcePort int `pulumi:"sourcePort"`
 }
 
-// EndpointInfoResponseInput is an input type that accepts EndpointInfoResponseArgs and EndpointInfoResponseOutput values.
-// You can construct a concrete instance of `EndpointInfoResponseInput` via:
-//
-//          EndpointInfoResponseArgs{...}
-type EndpointInfoResponseInput interface {
-	pulumi.Input
-
-	ToEndpointInfoResponseOutput() EndpointInfoResponseOutput
-	ToEndpointInfoResponseOutputWithContext(context.Context) EndpointInfoResponseOutput
-}
-
-// For display only. The specification of the endpoints for the test. EndpointInfo is derived from source and destination Endpoint and validated by the backend data plane model.
-type EndpointInfoResponseArgs struct {
-	// Destination IP address.
-	DestinationIp pulumi.StringInput `pulumi:"destinationIp"`
-	// URI of the network where this packet is sent to.
-	DestinationNetworkUri pulumi.StringInput `pulumi:"destinationNetworkUri"`
-	// Destination port. Only valid when protocol is TCP or UDP.
-	DestinationPort pulumi.IntInput `pulumi:"destinationPort"`
-	// IP protocol in string format, for example: "TCP", "UDP", "ICMP".
-	Protocol pulumi.StringInput `pulumi:"protocol"`
-	// URI of the source telemetry agent this packet originates from.
-	SourceAgentUri pulumi.StringInput `pulumi:"sourceAgentUri"`
-	// Source IP address.
-	SourceIp pulumi.StringInput `pulumi:"sourceIp"`
-	// URI of the network where this packet originates from.
-	SourceNetworkUri pulumi.StringInput `pulumi:"sourceNetworkUri"`
-	// Source port. Only valid when protocol is TCP or UDP.
-	SourcePort pulumi.IntInput `pulumi:"sourcePort"`
-}
-
-func (EndpointInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EndpointInfoResponse)(nil)).Elem()
-}
-
-func (i EndpointInfoResponseArgs) ToEndpointInfoResponseOutput() EndpointInfoResponseOutput {
-	return i.ToEndpointInfoResponseOutputWithContext(context.Background())
-}
-
-func (i EndpointInfoResponseArgs) ToEndpointInfoResponseOutputWithContext(ctx context.Context) EndpointInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointInfoResponseOutput)
-}
-
-func (i EndpointInfoResponseArgs) ToEndpointInfoResponsePtrOutput() EndpointInfoResponsePtrOutput {
-	return i.ToEndpointInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i EndpointInfoResponseArgs) ToEndpointInfoResponsePtrOutputWithContext(ctx context.Context) EndpointInfoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointInfoResponseOutput).ToEndpointInfoResponsePtrOutputWithContext(ctx)
-}
-
-// EndpointInfoResponsePtrInput is an input type that accepts EndpointInfoResponseArgs, EndpointInfoResponsePtr and EndpointInfoResponsePtrOutput values.
-// You can construct a concrete instance of `EndpointInfoResponsePtrInput` via:
-//
-//          EndpointInfoResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type EndpointInfoResponsePtrInput interface {
-	pulumi.Input
-
-	ToEndpointInfoResponsePtrOutput() EndpointInfoResponsePtrOutput
-	ToEndpointInfoResponsePtrOutputWithContext(context.Context) EndpointInfoResponsePtrOutput
-}
-
-type endpointInfoResponsePtrType EndpointInfoResponseArgs
-
-func EndpointInfoResponsePtr(v *EndpointInfoResponseArgs) EndpointInfoResponsePtrInput {
-	return (*endpointInfoResponsePtrType)(v)
-}
-
-func (*endpointInfoResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EndpointInfoResponse)(nil)).Elem()
-}
-
-func (i *endpointInfoResponsePtrType) ToEndpointInfoResponsePtrOutput() EndpointInfoResponsePtrOutput {
-	return i.ToEndpointInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *endpointInfoResponsePtrType) ToEndpointInfoResponsePtrOutputWithContext(ctx context.Context) EndpointInfoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointInfoResponsePtrOutput)
-}
-
 // For display only. The specification of the endpoints for the test. EndpointInfo is derived from source and destination Endpoint and validated by the backend data plane model.
 type EndpointInfoResponseOutput struct{ *pulumi.OutputState }
 
@@ -1663,16 +998,6 @@ func (o EndpointInfoResponseOutput) ToEndpointInfoResponseOutput() EndpointInfoR
 
 func (o EndpointInfoResponseOutput) ToEndpointInfoResponseOutputWithContext(ctx context.Context) EndpointInfoResponseOutput {
 	return o
-}
-
-func (o EndpointInfoResponseOutput) ToEndpointInfoResponsePtrOutput() EndpointInfoResponsePtrOutput {
-	return o.ToEndpointInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (o EndpointInfoResponseOutput) ToEndpointInfoResponsePtrOutputWithContext(ctx context.Context) EndpointInfoResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointInfoResponse) *EndpointInfoResponse {
-		return &v
-	}).(EndpointInfoResponsePtrOutput)
 }
 
 // Destination IP address.
@@ -1715,110 +1040,6 @@ func (o EndpointInfoResponseOutput) SourcePort() pulumi.IntOutput {
 	return o.ApplyT(func(v EndpointInfoResponse) int { return v.SourcePort }).(pulumi.IntOutput)
 }
 
-type EndpointInfoResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (EndpointInfoResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EndpointInfoResponse)(nil)).Elem()
-}
-
-func (o EndpointInfoResponsePtrOutput) ToEndpointInfoResponsePtrOutput() EndpointInfoResponsePtrOutput {
-	return o
-}
-
-func (o EndpointInfoResponsePtrOutput) ToEndpointInfoResponsePtrOutputWithContext(ctx context.Context) EndpointInfoResponsePtrOutput {
-	return o
-}
-
-func (o EndpointInfoResponsePtrOutput) Elem() EndpointInfoResponseOutput {
-	return o.ApplyT(func(v *EndpointInfoResponse) EndpointInfoResponse {
-		if v != nil {
-			return *v
-		}
-		var ret EndpointInfoResponse
-		return ret
-	}).(EndpointInfoResponseOutput)
-}
-
-// Destination IP address.
-func (o EndpointInfoResponsePtrOutput) DestinationIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EndpointInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DestinationIp
-	}).(pulumi.StringPtrOutput)
-}
-
-// URI of the network where this packet is sent to.
-func (o EndpointInfoResponsePtrOutput) DestinationNetworkUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EndpointInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DestinationNetworkUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// Destination port. Only valid when protocol is TCP or UDP.
-func (o EndpointInfoResponsePtrOutput) DestinationPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *EndpointInfoResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.DestinationPort
-	}).(pulumi.IntPtrOutput)
-}
-
-// IP protocol in string format, for example: "TCP", "UDP", "ICMP".
-func (o EndpointInfoResponsePtrOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EndpointInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Protocol
-	}).(pulumi.StringPtrOutput)
-}
-
-// URI of the source telemetry agent this packet originates from.
-func (o EndpointInfoResponsePtrOutput) SourceAgentUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EndpointInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SourceAgentUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// Source IP address.
-func (o EndpointInfoResponsePtrOutput) SourceIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EndpointInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SourceIp
-	}).(pulumi.StringPtrOutput)
-}
-
-// URI of the network where this packet originates from.
-func (o EndpointInfoResponsePtrOutput) SourceNetworkUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EndpointInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SourceNetworkUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// Source port. Only valid when protocol is TCP or UDP.
-func (o EndpointInfoResponsePtrOutput) SourcePort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *EndpointInfoResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.SourcePort
-	}).(pulumi.IntPtrOutput)
-}
-
 // Source or destination of the Connectivity Test.
 type EndpointResponse struct {
 	// A [Cloud function](https://cloud.google.com/functions).
@@ -1841,92 +1062,6 @@ type EndpointResponse struct {
 	Project string `pulumi:"project"`
 }
 
-// EndpointResponseInput is an input type that accepts EndpointResponseArgs and EndpointResponseOutput values.
-// You can construct a concrete instance of `EndpointResponseInput` via:
-//
-//          EndpointResponseArgs{...}
-type EndpointResponseInput interface {
-	pulumi.Input
-
-	ToEndpointResponseOutput() EndpointResponseOutput
-	ToEndpointResponseOutputWithContext(context.Context) EndpointResponseOutput
-}
-
-// Source or destination of the Connectivity Test.
-type EndpointResponseArgs struct {
-	// A [Cloud function](https://cloud.google.com/functions).
-	CloudFunction CloudFunctionEndpointResponseInput `pulumi:"cloudFunction"`
-	// A [Cloud SQL](https://cloud.google.com/sql) instance URI.
-	CloudSqlInstance pulumi.StringInput `pulumi:"cloudSqlInstance"`
-	// A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
-	GkeMasterCluster pulumi.StringInput `pulumi:"gkeMasterCluster"`
-	// A Compute Engine instance URI.
-	Instance pulumi.StringInput `pulumi:"instance"`
-	// The IP address of the endpoint, which can be an external or internal IP. An IPv6 address is only allowed when the test's destination is a [global load balancer VIP](https://cloud.google.com/load-balancing/docs/load-balancing-overview).
-	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
-	// A Compute Engine network URI.
-	Network pulumi.StringInput `pulumi:"network"`
-	// Type of the network where the endpoint is located. Applicable only to source endpoint, as destination network type can be inferred from the source.
-	NetworkType pulumi.StringInput `pulumi:"networkType"`
-	// The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP.
-	Port pulumi.IntInput `pulumi:"port"`
-	// Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
-	Project pulumi.StringInput `pulumi:"project"`
-}
-
-func (EndpointResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EndpointResponse)(nil)).Elem()
-}
-
-func (i EndpointResponseArgs) ToEndpointResponseOutput() EndpointResponseOutput {
-	return i.ToEndpointResponseOutputWithContext(context.Background())
-}
-
-func (i EndpointResponseArgs) ToEndpointResponseOutputWithContext(ctx context.Context) EndpointResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointResponseOutput)
-}
-
-func (i EndpointResponseArgs) ToEndpointResponsePtrOutput() EndpointResponsePtrOutput {
-	return i.ToEndpointResponsePtrOutputWithContext(context.Background())
-}
-
-func (i EndpointResponseArgs) ToEndpointResponsePtrOutputWithContext(ctx context.Context) EndpointResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointResponseOutput).ToEndpointResponsePtrOutputWithContext(ctx)
-}
-
-// EndpointResponsePtrInput is an input type that accepts EndpointResponseArgs, EndpointResponsePtr and EndpointResponsePtrOutput values.
-// You can construct a concrete instance of `EndpointResponsePtrInput` via:
-//
-//          EndpointResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type EndpointResponsePtrInput interface {
-	pulumi.Input
-
-	ToEndpointResponsePtrOutput() EndpointResponsePtrOutput
-	ToEndpointResponsePtrOutputWithContext(context.Context) EndpointResponsePtrOutput
-}
-
-type endpointResponsePtrType EndpointResponseArgs
-
-func EndpointResponsePtr(v *EndpointResponseArgs) EndpointResponsePtrInput {
-	return (*endpointResponsePtrType)(v)
-}
-
-func (*endpointResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EndpointResponse)(nil)).Elem()
-}
-
-func (i *endpointResponsePtrType) ToEndpointResponsePtrOutput() EndpointResponsePtrOutput {
-	return i.ToEndpointResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *endpointResponsePtrType) ToEndpointResponsePtrOutputWithContext(ctx context.Context) EndpointResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointResponsePtrOutput)
-}
-
 // Source or destination of the Connectivity Test.
 type EndpointResponseOutput struct{ *pulumi.OutputState }
 
@@ -1940,16 +1075,6 @@ func (o EndpointResponseOutput) ToEndpointResponseOutput() EndpointResponseOutpu
 
 func (o EndpointResponseOutput) ToEndpointResponseOutputWithContext(ctx context.Context) EndpointResponseOutput {
 	return o
-}
-
-func (o EndpointResponseOutput) ToEndpointResponsePtrOutput() EndpointResponsePtrOutput {
-	return o.ToEndpointResponsePtrOutputWithContext(context.Background())
-}
-
-func (o EndpointResponseOutput) ToEndpointResponsePtrOutputWithContext(ctx context.Context) EndpointResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointResponse) *EndpointResponse {
-		return &v
-	}).(EndpointResponsePtrOutput)
 }
 
 // A [Cloud function](https://cloud.google.com/functions).
@@ -1995,120 +1120,6 @@ func (o EndpointResponseOutput) Port() pulumi.IntOutput {
 // Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
 func (o EndpointResponseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v EndpointResponse) string { return v.Project }).(pulumi.StringOutput)
-}
-
-type EndpointResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (EndpointResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EndpointResponse)(nil)).Elem()
-}
-
-func (o EndpointResponsePtrOutput) ToEndpointResponsePtrOutput() EndpointResponsePtrOutput {
-	return o
-}
-
-func (o EndpointResponsePtrOutput) ToEndpointResponsePtrOutputWithContext(ctx context.Context) EndpointResponsePtrOutput {
-	return o
-}
-
-func (o EndpointResponsePtrOutput) Elem() EndpointResponseOutput {
-	return o.ApplyT(func(v *EndpointResponse) EndpointResponse {
-		if v != nil {
-			return *v
-		}
-		var ret EndpointResponse
-		return ret
-	}).(EndpointResponseOutput)
-}
-
-// A [Cloud function](https://cloud.google.com/functions).
-func (o EndpointResponsePtrOutput) CloudFunction() CloudFunctionEndpointResponsePtrOutput {
-	return o.ApplyT(func(v *EndpointResponse) *CloudFunctionEndpointResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.CloudFunction
-	}).(CloudFunctionEndpointResponsePtrOutput)
-}
-
-// A [Cloud SQL](https://cloud.google.com/sql) instance URI.
-func (o EndpointResponsePtrOutput) CloudSqlInstance() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EndpointResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CloudSqlInstance
-	}).(pulumi.StringPtrOutput)
-}
-
-// A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
-func (o EndpointResponsePtrOutput) GkeMasterCluster() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EndpointResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.GkeMasterCluster
-	}).(pulumi.StringPtrOutput)
-}
-
-// A Compute Engine instance URI.
-func (o EndpointResponsePtrOutput) Instance() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EndpointResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Instance
-	}).(pulumi.StringPtrOutput)
-}
-
-// The IP address of the endpoint, which can be an external or internal IP. An IPv6 address is only allowed when the test's destination is a [global load balancer VIP](https://cloud.google.com/load-balancing/docs/load-balancing-overview).
-func (o EndpointResponsePtrOutput) IpAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EndpointResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.IpAddress
-	}).(pulumi.StringPtrOutput)
-}
-
-// A Compute Engine network URI.
-func (o EndpointResponsePtrOutput) Network() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EndpointResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Network
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type of the network where the endpoint is located. Applicable only to source endpoint, as destination network type can be inferred from the source.
-func (o EndpointResponsePtrOutput) NetworkType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EndpointResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.NetworkType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP.
-func (o EndpointResponsePtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *EndpointResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Port
-	}).(pulumi.IntPtrOutput)
-}
-
-// Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
-func (o EndpointResponsePtrOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EndpointResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Project
-	}).(pulumi.StringPtrOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -2320,41 +1331,6 @@ type ExprResponse struct {
 	Title string `pulumi:"title"`
 }
 
-// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
-// You can construct a concrete instance of `ExprResponseInput` via:
-//
-//          ExprResponseArgs{...}
-type ExprResponseInput interface {
-	pulumi.Input
-
-	ToExprResponseOutput() ExprResponseOutput
-	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type ExprResponseArgs struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-	Location pulumi.StringInput `pulumi:"location"`
-	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (ExprResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
-}
-
-func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
-	return i.ToExprResponseOutputWithContext(context.Background())
-}
-
-func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprResponseOutput struct{ *pulumi.OutputState }
 
@@ -2412,53 +1388,6 @@ type FirewallInfoResponse struct {
 	TargetTags []string `pulumi:"targetTags"`
 	// The URI of the VPC firewall rule. This field is not applicable to implied firewall rules or hierarchical firewall policy rules.
 	Uri string `pulumi:"uri"`
-}
-
-// FirewallInfoResponseInput is an input type that accepts FirewallInfoResponseArgs and FirewallInfoResponseOutput values.
-// You can construct a concrete instance of `FirewallInfoResponseInput` via:
-//
-//          FirewallInfoResponseArgs{...}
-type FirewallInfoResponseInput interface {
-	pulumi.Input
-
-	ToFirewallInfoResponseOutput() FirewallInfoResponseOutput
-	ToFirewallInfoResponseOutputWithContext(context.Context) FirewallInfoResponseOutput
-}
-
-// For display only. Metadata associated with a VPC firewall rule, an implied VPC firewall rule, or a hierarchical firewall policy rule.
-type FirewallInfoResponseArgs struct {
-	// Possible values: ALLOW, DENY
-	Action pulumi.StringInput `pulumi:"action"`
-	// Possible values: INGRESS, EGRESS
-	Direction pulumi.StringInput `pulumi:"direction"`
-	// The display name of the VPC firewall rule. This field is not applicable to hierarchical firewall policy rules.
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// The firewall rule's type.
-	FirewallRuleType pulumi.StringInput `pulumi:"firewallRuleType"`
-	// The URI of the VPC network that the firewall rule is associated with. This field is not applicable to hierarchical firewall policy rules.
-	NetworkUri pulumi.StringInput `pulumi:"networkUri"`
-	// The hierarchical firewall policy that this rule is associated with. This field is not applicable to VPC firewall rules.
-	Policy pulumi.StringInput `pulumi:"policy"`
-	// The priority of the firewall rule.
-	Priority pulumi.IntInput `pulumi:"priority"`
-	// The target service accounts specified by the firewall rule.
-	TargetServiceAccounts pulumi.StringArrayInput `pulumi:"targetServiceAccounts"`
-	// The target tags defined by the VPC firewall rule. This field is not applicable to hierarchical firewall policy rules.
-	TargetTags pulumi.StringArrayInput `pulumi:"targetTags"`
-	// The URI of the VPC firewall rule. This field is not applicable to implied firewall rules or hierarchical firewall policy rules.
-	Uri pulumi.StringInput `pulumi:"uri"`
-}
-
-func (FirewallInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FirewallInfoResponse)(nil)).Elem()
-}
-
-func (i FirewallInfoResponseArgs) ToFirewallInfoResponseOutput() FirewallInfoResponseOutput {
-	return i.ToFirewallInfoResponseOutputWithContext(context.Background())
-}
-
-func (i FirewallInfoResponseArgs) ToFirewallInfoResponseOutputWithContext(ctx context.Context) FirewallInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirewallInfoResponseOutput)
 }
 
 // For display only. Metadata associated with a VPC firewall rule, an implied VPC firewall rule, or a hierarchical firewall policy rule.
@@ -2534,37 +1463,6 @@ type ForwardInfoResponse struct {
 	Target string `pulumi:"target"`
 }
 
-// ForwardInfoResponseInput is an input type that accepts ForwardInfoResponseArgs and ForwardInfoResponseOutput values.
-// You can construct a concrete instance of `ForwardInfoResponseInput` via:
-//
-//          ForwardInfoResponseArgs{...}
-type ForwardInfoResponseInput interface {
-	pulumi.Input
-
-	ToForwardInfoResponseOutput() ForwardInfoResponseOutput
-	ToForwardInfoResponseOutputWithContext(context.Context) ForwardInfoResponseOutput
-}
-
-// Details of the final state "forward" and associated resource.
-type ForwardInfoResponseArgs struct {
-	// URI of the resource that the packet is forwarded to.
-	ResourceUri pulumi.StringInput `pulumi:"resourceUri"`
-	// Target type where this packet is forwarded to.
-	Target pulumi.StringInput `pulumi:"target"`
-}
-
-func (ForwardInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ForwardInfoResponse)(nil)).Elem()
-}
-
-func (i ForwardInfoResponseArgs) ToForwardInfoResponseOutput() ForwardInfoResponseOutput {
-	return i.ToForwardInfoResponseOutputWithContext(context.Background())
-}
-
-func (i ForwardInfoResponseArgs) ToForwardInfoResponseOutputWithContext(ctx context.Context) ForwardInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ForwardInfoResponseOutput)
-}
-
 // Details of the final state "forward" and associated resource.
 type ForwardInfoResponseOutput struct{ *pulumi.OutputState }
 
@@ -2606,47 +1504,6 @@ type ForwardingRuleInfoResponse struct {
 	Uri string `pulumi:"uri"`
 	// VIP of the forwarding rule.
 	Vip string `pulumi:"vip"`
-}
-
-// ForwardingRuleInfoResponseInput is an input type that accepts ForwardingRuleInfoResponseArgs and ForwardingRuleInfoResponseOutput values.
-// You can construct a concrete instance of `ForwardingRuleInfoResponseInput` via:
-//
-//          ForwardingRuleInfoResponseArgs{...}
-type ForwardingRuleInfoResponseInput interface {
-	pulumi.Input
-
-	ToForwardingRuleInfoResponseOutput() ForwardingRuleInfoResponseOutput
-	ToForwardingRuleInfoResponseOutputWithContext(context.Context) ForwardingRuleInfoResponseOutput
-}
-
-// For display only. Metadata associated with a Compute Engine forwarding rule.
-type ForwardingRuleInfoResponseArgs struct {
-	// Name of a Compute Engine forwarding rule.
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// Port range defined in the forwarding rule that matches the test.
-	MatchedPortRange pulumi.StringInput `pulumi:"matchedPortRange"`
-	// Protocol defined in the forwarding rule that matches the test.
-	MatchedProtocol pulumi.StringInput `pulumi:"matchedProtocol"`
-	// Network URI. Only valid for Internal Load Balancer.
-	NetworkUri pulumi.StringInput `pulumi:"networkUri"`
-	// Target type of the forwarding rule.
-	Target pulumi.StringInput `pulumi:"target"`
-	// URI of a Compute Engine forwarding rule.
-	Uri pulumi.StringInput `pulumi:"uri"`
-	// VIP of the forwarding rule.
-	Vip pulumi.StringInput `pulumi:"vip"`
-}
-
-func (ForwardingRuleInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ForwardingRuleInfoResponse)(nil)).Elem()
-}
-
-func (i ForwardingRuleInfoResponseArgs) ToForwardingRuleInfoResponseOutput() ForwardingRuleInfoResponseOutput {
-	return i.ToForwardingRuleInfoResponseOutputWithContext(context.Background())
-}
-
-func (i ForwardingRuleInfoResponseArgs) ToForwardingRuleInfoResponseOutputWithContext(ctx context.Context) ForwardingRuleInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleInfoResponseOutput)
 }
 
 // For display only. Metadata associated with a Compute Engine forwarding rule.
@@ -2711,41 +1568,6 @@ type GKEMasterInfoResponse struct {
 	InternalIp string `pulumi:"internalIp"`
 }
 
-// GKEMasterInfoResponseInput is an input type that accepts GKEMasterInfoResponseArgs and GKEMasterInfoResponseOutput values.
-// You can construct a concrete instance of `GKEMasterInfoResponseInput` via:
-//
-//          GKEMasterInfoResponseArgs{...}
-type GKEMasterInfoResponseInput interface {
-	pulumi.Input
-
-	ToGKEMasterInfoResponseOutput() GKEMasterInfoResponseOutput
-	ToGKEMasterInfoResponseOutputWithContext(context.Context) GKEMasterInfoResponseOutput
-}
-
-// For display only. Metadata associated with a Google Kubernetes Engine (GKE) cluster master.
-type GKEMasterInfoResponseArgs struct {
-	// URI of a GKE cluster network.
-	ClusterNetworkUri pulumi.StringInput `pulumi:"clusterNetworkUri"`
-	// URI of a GKE cluster.
-	ClusterUri pulumi.StringInput `pulumi:"clusterUri"`
-	// External IP address of a GKE cluster master.
-	ExternalIp pulumi.StringInput `pulumi:"externalIp"`
-	// Internal IP address of a GKE cluster master.
-	InternalIp pulumi.StringInput `pulumi:"internalIp"`
-}
-
-func (GKEMasterInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GKEMasterInfoResponse)(nil)).Elem()
-}
-
-func (i GKEMasterInfoResponseArgs) ToGKEMasterInfoResponseOutput() GKEMasterInfoResponseOutput {
-	return i.ToGKEMasterInfoResponseOutputWithContext(context.Background())
-}
-
-func (i GKEMasterInfoResponseArgs) ToGKEMasterInfoResponseOutputWithContext(ctx context.Context) GKEMasterInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GKEMasterInfoResponseOutput)
-}
-
 // For display only. Metadata associated with a Google Kubernetes Engine (GKE) cluster master.
 type GKEMasterInfoResponseOutput struct{ *pulumi.OutputState }
 
@@ -2799,49 +1621,6 @@ type InstanceInfoResponse struct {
 	ServiceAccount string `pulumi:"serviceAccount"`
 	// URI of a Compute Engine instance.
 	Uri string `pulumi:"uri"`
-}
-
-// InstanceInfoResponseInput is an input type that accepts InstanceInfoResponseArgs and InstanceInfoResponseOutput values.
-// You can construct a concrete instance of `InstanceInfoResponseInput` via:
-//
-//          InstanceInfoResponseArgs{...}
-type InstanceInfoResponseInput interface {
-	pulumi.Input
-
-	ToInstanceInfoResponseOutput() InstanceInfoResponseOutput
-	ToInstanceInfoResponseOutputWithContext(context.Context) InstanceInfoResponseOutput
-}
-
-// For display only. Metadata associated with a Compute Engine instance.
-type InstanceInfoResponseArgs struct {
-	// Name of a Compute Engine instance.
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// External IP address of the network interface.
-	ExternalIp pulumi.StringInput `pulumi:"externalIp"`
-	// Name of the network interface of a Compute Engine instance.
-	Interface pulumi.StringInput `pulumi:"interface"`
-	// Internal IP address of the network interface.
-	InternalIp pulumi.StringInput `pulumi:"internalIp"`
-	// Network tags configured on the instance.
-	NetworkTags pulumi.StringArrayInput `pulumi:"networkTags"`
-	// URI of a Compute Engine network.
-	NetworkUri pulumi.StringInput `pulumi:"networkUri"`
-	// Service account authorized for the instance.
-	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
-	// URI of a Compute Engine instance.
-	Uri pulumi.StringInput `pulumi:"uri"`
-}
-
-func (InstanceInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceInfoResponse)(nil)).Elem()
-}
-
-func (i InstanceInfoResponseArgs) ToInstanceInfoResponseOutput() InstanceInfoResponseOutput {
-	return i.ToInstanceInfoResponseOutputWithContext(context.Background())
-}
-
-func (i InstanceInfoResponseArgs) ToInstanceInfoResponseOutputWithContext(ctx context.Context) InstanceInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceInfoResponseOutput)
 }
 
 // For display only. Metadata associated with a Compute Engine instance.
@@ -2905,76 +1684,6 @@ type LatencyDistributionResponse struct {
 	LatencyPercentiles []LatencyPercentileResponse `pulumi:"latencyPercentiles"`
 }
 
-// LatencyDistributionResponseInput is an input type that accepts LatencyDistributionResponseArgs and LatencyDistributionResponseOutput values.
-// You can construct a concrete instance of `LatencyDistributionResponseInput` via:
-//
-//          LatencyDistributionResponseArgs{...}
-type LatencyDistributionResponseInput interface {
-	pulumi.Input
-
-	ToLatencyDistributionResponseOutput() LatencyDistributionResponseOutput
-	ToLatencyDistributionResponseOutputWithContext(context.Context) LatencyDistributionResponseOutput
-}
-
-// Describes measured latency distribution.
-type LatencyDistributionResponseArgs struct {
-	// Representative latency percentiles.
-	LatencyPercentiles LatencyPercentileResponseArrayInput `pulumi:"latencyPercentiles"`
-}
-
-func (LatencyDistributionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LatencyDistributionResponse)(nil)).Elem()
-}
-
-func (i LatencyDistributionResponseArgs) ToLatencyDistributionResponseOutput() LatencyDistributionResponseOutput {
-	return i.ToLatencyDistributionResponseOutputWithContext(context.Background())
-}
-
-func (i LatencyDistributionResponseArgs) ToLatencyDistributionResponseOutputWithContext(ctx context.Context) LatencyDistributionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LatencyDistributionResponseOutput)
-}
-
-func (i LatencyDistributionResponseArgs) ToLatencyDistributionResponsePtrOutput() LatencyDistributionResponsePtrOutput {
-	return i.ToLatencyDistributionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i LatencyDistributionResponseArgs) ToLatencyDistributionResponsePtrOutputWithContext(ctx context.Context) LatencyDistributionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LatencyDistributionResponseOutput).ToLatencyDistributionResponsePtrOutputWithContext(ctx)
-}
-
-// LatencyDistributionResponsePtrInput is an input type that accepts LatencyDistributionResponseArgs, LatencyDistributionResponsePtr and LatencyDistributionResponsePtrOutput values.
-// You can construct a concrete instance of `LatencyDistributionResponsePtrInput` via:
-//
-//          LatencyDistributionResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type LatencyDistributionResponsePtrInput interface {
-	pulumi.Input
-
-	ToLatencyDistributionResponsePtrOutput() LatencyDistributionResponsePtrOutput
-	ToLatencyDistributionResponsePtrOutputWithContext(context.Context) LatencyDistributionResponsePtrOutput
-}
-
-type latencyDistributionResponsePtrType LatencyDistributionResponseArgs
-
-func LatencyDistributionResponsePtr(v *LatencyDistributionResponseArgs) LatencyDistributionResponsePtrInput {
-	return (*latencyDistributionResponsePtrType)(v)
-}
-
-func (*latencyDistributionResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LatencyDistributionResponse)(nil)).Elem()
-}
-
-func (i *latencyDistributionResponsePtrType) ToLatencyDistributionResponsePtrOutput() LatencyDistributionResponsePtrOutput {
-	return i.ToLatencyDistributionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *latencyDistributionResponsePtrType) ToLatencyDistributionResponsePtrOutputWithContext(ctx context.Context) LatencyDistributionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LatencyDistributionResponsePtrOutput)
-}
-
 // Describes measured latency distribution.
 type LatencyDistributionResponseOutput struct{ *pulumi.OutputState }
 
@@ -2990,53 +1699,9 @@ func (o LatencyDistributionResponseOutput) ToLatencyDistributionResponseOutputWi
 	return o
 }
 
-func (o LatencyDistributionResponseOutput) ToLatencyDistributionResponsePtrOutput() LatencyDistributionResponsePtrOutput {
-	return o.ToLatencyDistributionResponsePtrOutputWithContext(context.Background())
-}
-
-func (o LatencyDistributionResponseOutput) ToLatencyDistributionResponsePtrOutputWithContext(ctx context.Context) LatencyDistributionResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LatencyDistributionResponse) *LatencyDistributionResponse {
-		return &v
-	}).(LatencyDistributionResponsePtrOutput)
-}
-
 // Representative latency percentiles.
 func (o LatencyDistributionResponseOutput) LatencyPercentiles() LatencyPercentileResponseArrayOutput {
 	return o.ApplyT(func(v LatencyDistributionResponse) []LatencyPercentileResponse { return v.LatencyPercentiles }).(LatencyPercentileResponseArrayOutput)
-}
-
-type LatencyDistributionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (LatencyDistributionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LatencyDistributionResponse)(nil)).Elem()
-}
-
-func (o LatencyDistributionResponsePtrOutput) ToLatencyDistributionResponsePtrOutput() LatencyDistributionResponsePtrOutput {
-	return o
-}
-
-func (o LatencyDistributionResponsePtrOutput) ToLatencyDistributionResponsePtrOutputWithContext(ctx context.Context) LatencyDistributionResponsePtrOutput {
-	return o
-}
-
-func (o LatencyDistributionResponsePtrOutput) Elem() LatencyDistributionResponseOutput {
-	return o.ApplyT(func(v *LatencyDistributionResponse) LatencyDistributionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret LatencyDistributionResponse
-		return ret
-	}).(LatencyDistributionResponseOutput)
-}
-
-// Representative latency percentiles.
-func (o LatencyDistributionResponsePtrOutput) LatencyPercentiles() LatencyPercentileResponseArrayOutput {
-	return o.ApplyT(func(v *LatencyDistributionResponse) []LatencyPercentileResponse {
-		if v == nil {
-			return nil
-		}
-		return v.LatencyPercentiles
-	}).(LatencyPercentileResponseArrayOutput)
 }
 
 // Latency percentile rank and value.
@@ -3045,62 +1710,6 @@ type LatencyPercentileResponse struct {
 	LatencyMicros string `pulumi:"latencyMicros"`
 	// Percentage of samples this data point applies to.
 	Percent int `pulumi:"percent"`
-}
-
-// LatencyPercentileResponseInput is an input type that accepts LatencyPercentileResponseArgs and LatencyPercentileResponseOutput values.
-// You can construct a concrete instance of `LatencyPercentileResponseInput` via:
-//
-//          LatencyPercentileResponseArgs{...}
-type LatencyPercentileResponseInput interface {
-	pulumi.Input
-
-	ToLatencyPercentileResponseOutput() LatencyPercentileResponseOutput
-	ToLatencyPercentileResponseOutputWithContext(context.Context) LatencyPercentileResponseOutput
-}
-
-// Latency percentile rank and value.
-type LatencyPercentileResponseArgs struct {
-	// percent-th percentile of latency observed, in microseconds. Fraction of percent/100 of samples have latency lower or equal to the value of this field.
-	LatencyMicros pulumi.StringInput `pulumi:"latencyMicros"`
-	// Percentage of samples this data point applies to.
-	Percent pulumi.IntInput `pulumi:"percent"`
-}
-
-func (LatencyPercentileResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LatencyPercentileResponse)(nil)).Elem()
-}
-
-func (i LatencyPercentileResponseArgs) ToLatencyPercentileResponseOutput() LatencyPercentileResponseOutput {
-	return i.ToLatencyPercentileResponseOutputWithContext(context.Background())
-}
-
-func (i LatencyPercentileResponseArgs) ToLatencyPercentileResponseOutputWithContext(ctx context.Context) LatencyPercentileResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LatencyPercentileResponseOutput)
-}
-
-// LatencyPercentileResponseArrayInput is an input type that accepts LatencyPercentileResponseArray and LatencyPercentileResponseArrayOutput values.
-// You can construct a concrete instance of `LatencyPercentileResponseArrayInput` via:
-//
-//          LatencyPercentileResponseArray{ LatencyPercentileResponseArgs{...} }
-type LatencyPercentileResponseArrayInput interface {
-	pulumi.Input
-
-	ToLatencyPercentileResponseArrayOutput() LatencyPercentileResponseArrayOutput
-	ToLatencyPercentileResponseArrayOutputWithContext(context.Context) LatencyPercentileResponseArrayOutput
-}
-
-type LatencyPercentileResponseArray []LatencyPercentileResponseInput
-
-func (LatencyPercentileResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LatencyPercentileResponse)(nil)).Elem()
-}
-
-func (i LatencyPercentileResponseArray) ToLatencyPercentileResponseArrayOutput() LatencyPercentileResponseArrayOutput {
-	return i.ToLatencyPercentileResponseArrayOutputWithContext(context.Background())
-}
-
-func (i LatencyPercentileResponseArray) ToLatencyPercentileResponseArrayOutputWithContext(ctx context.Context) LatencyPercentileResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LatencyPercentileResponseArrayOutput)
 }
 
 // Latency percentile rank and value.
@@ -3160,68 +1769,6 @@ type LoadBalancerBackendResponse struct {
 	HealthCheckFirewallState string `pulumi:"healthCheckFirewallState"`
 	// URI of a Compute Engine instance or network endpoint.
 	Uri string `pulumi:"uri"`
-}
-
-// LoadBalancerBackendResponseInput is an input type that accepts LoadBalancerBackendResponseArgs and LoadBalancerBackendResponseOutput values.
-// You can construct a concrete instance of `LoadBalancerBackendResponseInput` via:
-//
-//          LoadBalancerBackendResponseArgs{...}
-type LoadBalancerBackendResponseInput interface {
-	pulumi.Input
-
-	ToLoadBalancerBackendResponseOutput() LoadBalancerBackendResponseOutput
-	ToLoadBalancerBackendResponseOutputWithContext(context.Context) LoadBalancerBackendResponseOutput
-}
-
-// For display only. Metadata associated with a specific load balancer backend.
-type LoadBalancerBackendResponseArgs struct {
-	// Name of a Compute Engine instance or network endpoint.
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// A list of firewall rule URIs allowing probes from health check IP ranges.
-	HealthCheckAllowingFirewallRules pulumi.StringArrayInput `pulumi:"healthCheckAllowingFirewallRules"`
-	// A list of firewall rule URIs blocking probes from health check IP ranges.
-	HealthCheckBlockingFirewallRules pulumi.StringArrayInput `pulumi:"healthCheckBlockingFirewallRules"`
-	// State of the health check firewall configuration.
-	HealthCheckFirewallState pulumi.StringInput `pulumi:"healthCheckFirewallState"`
-	// URI of a Compute Engine instance or network endpoint.
-	Uri pulumi.StringInput `pulumi:"uri"`
-}
-
-func (LoadBalancerBackendResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadBalancerBackendResponse)(nil)).Elem()
-}
-
-func (i LoadBalancerBackendResponseArgs) ToLoadBalancerBackendResponseOutput() LoadBalancerBackendResponseOutput {
-	return i.ToLoadBalancerBackendResponseOutputWithContext(context.Background())
-}
-
-func (i LoadBalancerBackendResponseArgs) ToLoadBalancerBackendResponseOutputWithContext(ctx context.Context) LoadBalancerBackendResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerBackendResponseOutput)
-}
-
-// LoadBalancerBackendResponseArrayInput is an input type that accepts LoadBalancerBackendResponseArray and LoadBalancerBackendResponseArrayOutput values.
-// You can construct a concrete instance of `LoadBalancerBackendResponseArrayInput` via:
-//
-//          LoadBalancerBackendResponseArray{ LoadBalancerBackendResponseArgs{...} }
-type LoadBalancerBackendResponseArrayInput interface {
-	pulumi.Input
-
-	ToLoadBalancerBackendResponseArrayOutput() LoadBalancerBackendResponseArrayOutput
-	ToLoadBalancerBackendResponseArrayOutputWithContext(context.Context) LoadBalancerBackendResponseArrayOutput
-}
-
-type LoadBalancerBackendResponseArray []LoadBalancerBackendResponseInput
-
-func (LoadBalancerBackendResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LoadBalancerBackendResponse)(nil)).Elem()
-}
-
-func (i LoadBalancerBackendResponseArray) ToLoadBalancerBackendResponseArrayOutput() LoadBalancerBackendResponseArrayOutput {
-	return i.ToLoadBalancerBackendResponseArrayOutputWithContext(context.Background())
-}
-
-func (i LoadBalancerBackendResponseArray) ToLoadBalancerBackendResponseArrayOutputWithContext(ctx context.Context) LoadBalancerBackendResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerBackendResponseArrayOutput)
 }
 
 // For display only. Metadata associated with a specific load balancer backend.
@@ -3298,43 +1845,6 @@ type LoadBalancerInfoResponse struct {
 	LoadBalancerType string `pulumi:"loadBalancerType"`
 }
 
-// LoadBalancerInfoResponseInput is an input type that accepts LoadBalancerInfoResponseArgs and LoadBalancerInfoResponseOutput values.
-// You can construct a concrete instance of `LoadBalancerInfoResponseInput` via:
-//
-//          LoadBalancerInfoResponseArgs{...}
-type LoadBalancerInfoResponseInput interface {
-	pulumi.Input
-
-	ToLoadBalancerInfoResponseOutput() LoadBalancerInfoResponseOutput
-	ToLoadBalancerInfoResponseOutputWithContext(context.Context) LoadBalancerInfoResponseOutput
-}
-
-// For display only. Metadata associated with a load balancer.
-type LoadBalancerInfoResponseArgs struct {
-	// Type of load balancer's backend configuration.
-	BackendType pulumi.StringInput `pulumi:"backendType"`
-	// Backend configuration URI.
-	BackendUri pulumi.StringInput `pulumi:"backendUri"`
-	// Information for the loadbalancer backends.
-	Backends LoadBalancerBackendResponseArrayInput `pulumi:"backends"`
-	// URI of the health check for the load balancer.
-	HealthCheckUri pulumi.StringInput `pulumi:"healthCheckUri"`
-	// Type of the load balancer.
-	LoadBalancerType pulumi.StringInput `pulumi:"loadBalancerType"`
-}
-
-func (LoadBalancerInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadBalancerInfoResponse)(nil)).Elem()
-}
-
-func (i LoadBalancerInfoResponseArgs) ToLoadBalancerInfoResponseOutput() LoadBalancerInfoResponseOutput {
-	return i.ToLoadBalancerInfoResponseOutputWithContext(context.Background())
-}
-
-func (i LoadBalancerInfoResponseArgs) ToLoadBalancerInfoResponseOutputWithContext(ctx context.Context) LoadBalancerInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerInfoResponseOutput)
-}
-
 // For display only. Metadata associated with a load balancer.
 type LoadBalancerInfoResponseOutput struct{ *pulumi.OutputState }
 
@@ -3383,39 +1893,6 @@ type NetworkInfoResponse struct {
 	MatchedIpRange string `pulumi:"matchedIpRange"`
 	// URI of a Compute Engine network.
 	Uri string `pulumi:"uri"`
-}
-
-// NetworkInfoResponseInput is an input type that accepts NetworkInfoResponseArgs and NetworkInfoResponseOutput values.
-// You can construct a concrete instance of `NetworkInfoResponseInput` via:
-//
-//          NetworkInfoResponseArgs{...}
-type NetworkInfoResponseInput interface {
-	pulumi.Input
-
-	ToNetworkInfoResponseOutput() NetworkInfoResponseOutput
-	ToNetworkInfoResponseOutputWithContext(context.Context) NetworkInfoResponseOutput
-}
-
-// For display only. Metadata associated with a Compute Engine network.
-type NetworkInfoResponseArgs struct {
-	// Name of a Compute Engine network.
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// The IP range that matches the test.
-	MatchedIpRange pulumi.StringInput `pulumi:"matchedIpRange"`
-	// URI of a Compute Engine network.
-	Uri pulumi.StringInput `pulumi:"uri"`
-}
-
-func (NetworkInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkInfoResponse)(nil)).Elem()
-}
-
-func (i NetworkInfoResponseArgs) ToNetworkInfoResponseOutput() NetworkInfoResponseOutput {
-	return i.ToNetworkInfoResponseOutputWithContext(context.Background())
-}
-
-func (i NetworkInfoResponseArgs) ToNetworkInfoResponseOutputWithContext(ctx context.Context) NetworkInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkInfoResponseOutput)
 }
 
 // For display only. Metadata associated with a Compute Engine network.
@@ -3468,90 +1945,6 @@ type ProbingDetailsResponse struct {
 	VerifyTime string `pulumi:"verifyTime"`
 }
 
-// ProbingDetailsResponseInput is an input type that accepts ProbingDetailsResponseArgs and ProbingDetailsResponseOutput values.
-// You can construct a concrete instance of `ProbingDetailsResponseInput` via:
-//
-//          ProbingDetailsResponseArgs{...}
-type ProbingDetailsResponseInput interface {
-	pulumi.Input
-
-	ToProbingDetailsResponseOutput() ProbingDetailsResponseOutput
-	ToProbingDetailsResponseOutputWithContext(context.Context) ProbingDetailsResponseOutput
-}
-
-// Results of active probing from the last run of the test.
-type ProbingDetailsResponseArgs struct {
-	// The reason probing was aborted.
-	AbortCause pulumi.StringInput `pulumi:"abortCause"`
-	// The source and destination endpoints derived from the test input and used for active probing.
-	EndpointInfo EndpointInfoResponseInput `pulumi:"endpointInfo"`
-	// Details about an internal failure or the cancellation of active probing.
-	Error StatusResponseInput `pulumi:"error"`
-	// Latency as measured by active probing in one direction: from the source to the destination endpoint.
-	ProbingLatency LatencyDistributionResponseInput `pulumi:"probingLatency"`
-	// The overall result of active probing.
-	Result pulumi.StringInput `pulumi:"result"`
-	// Number of probes sent.
-	SentProbeCount pulumi.IntInput `pulumi:"sentProbeCount"`
-	// Number of probes that reached the destination.
-	SuccessfulProbeCount pulumi.IntInput `pulumi:"successfulProbeCount"`
-	// The time that reachability was assessed through active probing.
-	VerifyTime pulumi.StringInput `pulumi:"verifyTime"`
-}
-
-func (ProbingDetailsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProbingDetailsResponse)(nil)).Elem()
-}
-
-func (i ProbingDetailsResponseArgs) ToProbingDetailsResponseOutput() ProbingDetailsResponseOutput {
-	return i.ToProbingDetailsResponseOutputWithContext(context.Background())
-}
-
-func (i ProbingDetailsResponseArgs) ToProbingDetailsResponseOutputWithContext(ctx context.Context) ProbingDetailsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProbingDetailsResponseOutput)
-}
-
-func (i ProbingDetailsResponseArgs) ToProbingDetailsResponsePtrOutput() ProbingDetailsResponsePtrOutput {
-	return i.ToProbingDetailsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ProbingDetailsResponseArgs) ToProbingDetailsResponsePtrOutputWithContext(ctx context.Context) ProbingDetailsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProbingDetailsResponseOutput).ToProbingDetailsResponsePtrOutputWithContext(ctx)
-}
-
-// ProbingDetailsResponsePtrInput is an input type that accepts ProbingDetailsResponseArgs, ProbingDetailsResponsePtr and ProbingDetailsResponsePtrOutput values.
-// You can construct a concrete instance of `ProbingDetailsResponsePtrInput` via:
-//
-//          ProbingDetailsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ProbingDetailsResponsePtrInput interface {
-	pulumi.Input
-
-	ToProbingDetailsResponsePtrOutput() ProbingDetailsResponsePtrOutput
-	ToProbingDetailsResponsePtrOutputWithContext(context.Context) ProbingDetailsResponsePtrOutput
-}
-
-type probingDetailsResponsePtrType ProbingDetailsResponseArgs
-
-func ProbingDetailsResponsePtr(v *ProbingDetailsResponseArgs) ProbingDetailsResponsePtrInput {
-	return (*probingDetailsResponsePtrType)(v)
-}
-
-func (*probingDetailsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProbingDetailsResponse)(nil)).Elem()
-}
-
-func (i *probingDetailsResponsePtrType) ToProbingDetailsResponsePtrOutput() ProbingDetailsResponsePtrOutput {
-	return i.ToProbingDetailsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *probingDetailsResponsePtrType) ToProbingDetailsResponsePtrOutputWithContext(ctx context.Context) ProbingDetailsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProbingDetailsResponsePtrOutput)
-}
-
 // Results of active probing from the last run of the test.
 type ProbingDetailsResponseOutput struct{ *pulumi.OutputState }
 
@@ -3565,16 +1958,6 @@ func (o ProbingDetailsResponseOutput) ToProbingDetailsResponseOutput() ProbingDe
 
 func (o ProbingDetailsResponseOutput) ToProbingDetailsResponseOutputWithContext(ctx context.Context) ProbingDetailsResponseOutput {
 	return o
-}
-
-func (o ProbingDetailsResponseOutput) ToProbingDetailsResponsePtrOutput() ProbingDetailsResponsePtrOutput {
-	return o.ToProbingDetailsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ProbingDetailsResponseOutput) ToProbingDetailsResponsePtrOutputWithContext(ctx context.Context) ProbingDetailsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProbingDetailsResponse) *ProbingDetailsResponse {
-		return &v
-	}).(ProbingDetailsResponsePtrOutput)
 }
 
 // The reason probing was aborted.
@@ -3617,110 +2000,6 @@ func (o ProbingDetailsResponseOutput) VerifyTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ProbingDetailsResponse) string { return v.VerifyTime }).(pulumi.StringOutput)
 }
 
-type ProbingDetailsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ProbingDetailsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProbingDetailsResponse)(nil)).Elem()
-}
-
-func (o ProbingDetailsResponsePtrOutput) ToProbingDetailsResponsePtrOutput() ProbingDetailsResponsePtrOutput {
-	return o
-}
-
-func (o ProbingDetailsResponsePtrOutput) ToProbingDetailsResponsePtrOutputWithContext(ctx context.Context) ProbingDetailsResponsePtrOutput {
-	return o
-}
-
-func (o ProbingDetailsResponsePtrOutput) Elem() ProbingDetailsResponseOutput {
-	return o.ApplyT(func(v *ProbingDetailsResponse) ProbingDetailsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ProbingDetailsResponse
-		return ret
-	}).(ProbingDetailsResponseOutput)
-}
-
-// The reason probing was aborted.
-func (o ProbingDetailsResponsePtrOutput) AbortCause() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProbingDetailsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AbortCause
-	}).(pulumi.StringPtrOutput)
-}
-
-// The source and destination endpoints derived from the test input and used for active probing.
-func (o ProbingDetailsResponsePtrOutput) EndpointInfo() EndpointInfoResponsePtrOutput {
-	return o.ApplyT(func(v *ProbingDetailsResponse) *EndpointInfoResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.EndpointInfo
-	}).(EndpointInfoResponsePtrOutput)
-}
-
-// Details about an internal failure or the cancellation of active probing.
-func (o ProbingDetailsResponsePtrOutput) Error() StatusResponsePtrOutput {
-	return o.ApplyT(func(v *ProbingDetailsResponse) *StatusResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Error
-	}).(StatusResponsePtrOutput)
-}
-
-// Latency as measured by active probing in one direction: from the source to the destination endpoint.
-func (o ProbingDetailsResponsePtrOutput) ProbingLatency() LatencyDistributionResponsePtrOutput {
-	return o.ApplyT(func(v *ProbingDetailsResponse) *LatencyDistributionResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ProbingLatency
-	}).(LatencyDistributionResponsePtrOutput)
-}
-
-// The overall result of active probing.
-func (o ProbingDetailsResponsePtrOutput) Result() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProbingDetailsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Result
-	}).(pulumi.StringPtrOutput)
-}
-
-// Number of probes sent.
-func (o ProbingDetailsResponsePtrOutput) SentProbeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ProbingDetailsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.SentProbeCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// Number of probes that reached the destination.
-func (o ProbingDetailsResponsePtrOutput) SuccessfulProbeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ProbingDetailsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.SuccessfulProbeCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// The time that reachability was assessed through active probing.
-func (o ProbingDetailsResponsePtrOutput) VerifyTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProbingDetailsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.VerifyTime
-	}).(pulumi.StringPtrOutput)
-}
-
 // Results of the configuration analysis from the last run of the test.
 type ReachabilityDetailsResponse struct {
 	// The details of a failure or a cancellation of reachability analysis.
@@ -3731,82 +2010,6 @@ type ReachabilityDetailsResponse struct {
 	Traces []TraceResponse `pulumi:"traces"`
 	// The time of the configuration analysis.
 	VerifyTime string `pulumi:"verifyTime"`
-}
-
-// ReachabilityDetailsResponseInput is an input type that accepts ReachabilityDetailsResponseArgs and ReachabilityDetailsResponseOutput values.
-// You can construct a concrete instance of `ReachabilityDetailsResponseInput` via:
-//
-//          ReachabilityDetailsResponseArgs{...}
-type ReachabilityDetailsResponseInput interface {
-	pulumi.Input
-
-	ToReachabilityDetailsResponseOutput() ReachabilityDetailsResponseOutput
-	ToReachabilityDetailsResponseOutputWithContext(context.Context) ReachabilityDetailsResponseOutput
-}
-
-// Results of the configuration analysis from the last run of the test.
-type ReachabilityDetailsResponseArgs struct {
-	// The details of a failure or a cancellation of reachability analysis.
-	Error StatusResponseInput `pulumi:"error"`
-	// The overall result of the test's configuration analysis.
-	Result pulumi.StringInput `pulumi:"result"`
-	// Result may contain a list of traces if a test has multiple possible paths in the network, such as when destination endpoint is a load balancer with multiple backends.
-	Traces TraceResponseArrayInput `pulumi:"traces"`
-	// The time of the configuration analysis.
-	VerifyTime pulumi.StringInput `pulumi:"verifyTime"`
-}
-
-func (ReachabilityDetailsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReachabilityDetailsResponse)(nil)).Elem()
-}
-
-func (i ReachabilityDetailsResponseArgs) ToReachabilityDetailsResponseOutput() ReachabilityDetailsResponseOutput {
-	return i.ToReachabilityDetailsResponseOutputWithContext(context.Background())
-}
-
-func (i ReachabilityDetailsResponseArgs) ToReachabilityDetailsResponseOutputWithContext(ctx context.Context) ReachabilityDetailsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReachabilityDetailsResponseOutput)
-}
-
-func (i ReachabilityDetailsResponseArgs) ToReachabilityDetailsResponsePtrOutput() ReachabilityDetailsResponsePtrOutput {
-	return i.ToReachabilityDetailsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ReachabilityDetailsResponseArgs) ToReachabilityDetailsResponsePtrOutputWithContext(ctx context.Context) ReachabilityDetailsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReachabilityDetailsResponseOutput).ToReachabilityDetailsResponsePtrOutputWithContext(ctx)
-}
-
-// ReachabilityDetailsResponsePtrInput is an input type that accepts ReachabilityDetailsResponseArgs, ReachabilityDetailsResponsePtr and ReachabilityDetailsResponsePtrOutput values.
-// You can construct a concrete instance of `ReachabilityDetailsResponsePtrInput` via:
-//
-//          ReachabilityDetailsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ReachabilityDetailsResponsePtrInput interface {
-	pulumi.Input
-
-	ToReachabilityDetailsResponsePtrOutput() ReachabilityDetailsResponsePtrOutput
-	ToReachabilityDetailsResponsePtrOutputWithContext(context.Context) ReachabilityDetailsResponsePtrOutput
-}
-
-type reachabilityDetailsResponsePtrType ReachabilityDetailsResponseArgs
-
-func ReachabilityDetailsResponsePtr(v *ReachabilityDetailsResponseArgs) ReachabilityDetailsResponsePtrInput {
-	return (*reachabilityDetailsResponsePtrType)(v)
-}
-
-func (*reachabilityDetailsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ReachabilityDetailsResponse)(nil)).Elem()
-}
-
-func (i *reachabilityDetailsResponsePtrType) ToReachabilityDetailsResponsePtrOutput() ReachabilityDetailsResponsePtrOutput {
-	return i.ToReachabilityDetailsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *reachabilityDetailsResponsePtrType) ToReachabilityDetailsResponsePtrOutputWithContext(ctx context.Context) ReachabilityDetailsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReachabilityDetailsResponsePtrOutput)
 }
 
 // Results of the configuration analysis from the last run of the test.
@@ -3822,16 +2025,6 @@ func (o ReachabilityDetailsResponseOutput) ToReachabilityDetailsResponseOutput()
 
 func (o ReachabilityDetailsResponseOutput) ToReachabilityDetailsResponseOutputWithContext(ctx context.Context) ReachabilityDetailsResponseOutput {
 	return o
-}
-
-func (o ReachabilityDetailsResponseOutput) ToReachabilityDetailsResponsePtrOutput() ReachabilityDetailsResponsePtrOutput {
-	return o.ToReachabilityDetailsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ReachabilityDetailsResponseOutput) ToReachabilityDetailsResponsePtrOutputWithContext(ctx context.Context) ReachabilityDetailsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReachabilityDetailsResponse) *ReachabilityDetailsResponse {
-		return &v
-	}).(ReachabilityDetailsResponsePtrOutput)
 }
 
 // The details of a failure or a cancellation of reachability analysis.
@@ -3854,70 +2047,6 @@ func (o ReachabilityDetailsResponseOutput) VerifyTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ReachabilityDetailsResponse) string { return v.VerifyTime }).(pulumi.StringOutput)
 }
 
-type ReachabilityDetailsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ReachabilityDetailsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ReachabilityDetailsResponse)(nil)).Elem()
-}
-
-func (o ReachabilityDetailsResponsePtrOutput) ToReachabilityDetailsResponsePtrOutput() ReachabilityDetailsResponsePtrOutput {
-	return o
-}
-
-func (o ReachabilityDetailsResponsePtrOutput) ToReachabilityDetailsResponsePtrOutputWithContext(ctx context.Context) ReachabilityDetailsResponsePtrOutput {
-	return o
-}
-
-func (o ReachabilityDetailsResponsePtrOutput) Elem() ReachabilityDetailsResponseOutput {
-	return o.ApplyT(func(v *ReachabilityDetailsResponse) ReachabilityDetailsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ReachabilityDetailsResponse
-		return ret
-	}).(ReachabilityDetailsResponseOutput)
-}
-
-// The details of a failure or a cancellation of reachability analysis.
-func (o ReachabilityDetailsResponsePtrOutput) Error() StatusResponsePtrOutput {
-	return o.ApplyT(func(v *ReachabilityDetailsResponse) *StatusResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Error
-	}).(StatusResponsePtrOutput)
-}
-
-// The overall result of the test's configuration analysis.
-func (o ReachabilityDetailsResponsePtrOutput) Result() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ReachabilityDetailsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Result
-	}).(pulumi.StringPtrOutput)
-}
-
-// Result may contain a list of traces if a test has multiple possible paths in the network, such as when destination endpoint is a load balancer with multiple backends.
-func (o ReachabilityDetailsResponsePtrOutput) Traces() TraceResponseArrayOutput {
-	return o.ApplyT(func(v *ReachabilityDetailsResponse) []TraceResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Traces
-	}).(TraceResponseArrayOutput)
-}
-
-// The time of the configuration analysis.
-func (o ReachabilityDetailsResponsePtrOutput) VerifyTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ReachabilityDetailsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.VerifyTime
-	}).(pulumi.StringPtrOutput)
-}
-
 // For display only. Metadata associated with a Compute Engine route.
 type RouteInfoResponse struct {
 	// Destination IP range of the route.
@@ -3938,51 +2067,6 @@ type RouteInfoResponse struct {
 	RouteType string `pulumi:"routeType"`
 	// URI of a Compute Engine route. Dynamic route from cloud router does not have a URI. Advertised route from Google Cloud VPC to on-premises network also does not have a URI.
 	Uri string `pulumi:"uri"`
-}
-
-// RouteInfoResponseInput is an input type that accepts RouteInfoResponseArgs and RouteInfoResponseOutput values.
-// You can construct a concrete instance of `RouteInfoResponseInput` via:
-//
-//          RouteInfoResponseArgs{...}
-type RouteInfoResponseInput interface {
-	pulumi.Input
-
-	ToRouteInfoResponseOutput() RouteInfoResponseOutput
-	ToRouteInfoResponseOutputWithContext(context.Context) RouteInfoResponseOutput
-}
-
-// For display only. Metadata associated with a Compute Engine route.
-type RouteInfoResponseArgs struct {
-	// Destination IP range of the route.
-	DestIpRange pulumi.StringInput `pulumi:"destIpRange"`
-	// Name of a Compute Engine route.
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// Instance tags of the route.
-	InstanceTags pulumi.StringArrayInput `pulumi:"instanceTags"`
-	// URI of a Compute Engine network.
-	NetworkUri pulumi.StringInput `pulumi:"networkUri"`
-	// Next hop of the route.
-	NextHop pulumi.StringInput `pulumi:"nextHop"`
-	// Type of next hop.
-	NextHopType pulumi.StringInput `pulumi:"nextHopType"`
-	// Priority of the route.
-	Priority pulumi.IntInput `pulumi:"priority"`
-	// Type of route.
-	RouteType pulumi.StringInput `pulumi:"routeType"`
-	// URI of a Compute Engine route. Dynamic route from cloud router does not have a URI. Advertised route from Google Cloud VPC to on-premises network also does not have a URI.
-	Uri pulumi.StringInput `pulumi:"uri"`
-}
-
-func (RouteInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouteInfoResponse)(nil)).Elem()
-}
-
-func (i RouteInfoResponseArgs) ToRouteInfoResponseOutput() RouteInfoResponseOutput {
-	return i.ToRouteInfoResponseOutputWithContext(context.Background())
-}
-
-func (i RouteInfoResponseArgs) ToRouteInfoResponseOutputWithContext(ctx context.Context) RouteInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteInfoResponseOutput)
 }
 
 // For display only. Metadata associated with a Compute Engine route.
@@ -4055,80 +2139,6 @@ type StatusResponse struct {
 	Message string `pulumi:"message"`
 }
 
-// StatusResponseInput is an input type that accepts StatusResponseArgs and StatusResponseOutput values.
-// You can construct a concrete instance of `StatusResponseInput` via:
-//
-//          StatusResponseArgs{...}
-type StatusResponseInput interface {
-	pulumi.Input
-
-	ToStatusResponseOutput() StatusResponseOutput
-	ToStatusResponseOutputWithContext(context.Context) StatusResponseOutput
-}
-
-// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type StatusResponseArgs struct {
-	// The status code, which should be an enum value of google.rpc.Code.
-	Code pulumi.IntInput `pulumi:"code"`
-	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details pulumi.StringMapArrayInput `pulumi:"details"`
-	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-	Message pulumi.StringInput `pulumi:"message"`
-}
-
-func (StatusResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
-}
-
-func (i StatusResponseArgs) ToStatusResponseOutput() StatusResponseOutput {
-	return i.ToStatusResponseOutputWithContext(context.Background())
-}
-
-func (i StatusResponseArgs) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput)
-}
-
-func (i StatusResponseArgs) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return i.ToStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i StatusResponseArgs) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput).ToStatusResponsePtrOutputWithContext(ctx)
-}
-
-// StatusResponsePtrInput is an input type that accepts StatusResponseArgs, StatusResponsePtr and StatusResponsePtrOutput values.
-// You can construct a concrete instance of `StatusResponsePtrInput` via:
-//
-//          StatusResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type StatusResponsePtrInput interface {
-	pulumi.Input
-
-	ToStatusResponsePtrOutput() StatusResponsePtrOutput
-	ToStatusResponsePtrOutputWithContext(context.Context) StatusResponsePtrOutput
-}
-
-type statusResponsePtrType StatusResponseArgs
-
-func StatusResponsePtr(v *StatusResponseArgs) StatusResponsePtrInput {
-	return (*statusResponsePtrType)(v)
-}
-
-func (*statusResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
-}
-
-func (i *statusResponsePtrType) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return i.ToStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *statusResponsePtrType) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusResponsePtrOutput)
-}
-
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
 type StatusResponseOutput struct{ *pulumi.OutputState }
 
@@ -4144,16 +2154,6 @@ func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return o.ToStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatusResponse) *StatusResponse {
-		return &v
-	}).(StatusResponsePtrOutput)
-}
-
 // The status code, which should be an enum value of google.rpc.Code.
 func (o StatusResponseOutput) Code() pulumi.IntOutput {
 	return o.ApplyT(func(v StatusResponse) int { return v.Code }).(pulumi.IntOutput)
@@ -4167,60 +2167,6 @@ func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 func (o StatusResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
-}
-
-type StatusResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (StatusResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
-}
-
-func (o StatusResponsePtrOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return o
-}
-
-func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o
-}
-
-func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
-	return o.ApplyT(func(v *StatusResponse) StatusResponse {
-		if v != nil {
-			return *v
-		}
-		var ret StatusResponse
-		return ret
-	}).(StatusResponseOutput)
-}
-
-// The status code, which should be an enum value of google.rpc.Code.
-func (o StatusResponsePtrOutput) Code() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *StatusResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Code
-	}).(pulumi.IntPtrOutput)
-}
-
-// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o StatusResponsePtrOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *StatusResponse) []map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Details
-	}).(pulumi.StringMapArrayOutput)
-}
-
-// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-func (o StatusResponsePtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StatusResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Message
-	}).(pulumi.StringPtrOutput)
 }
 
 // A simulated forwarding path is composed of multiple steps. Each step has a well-defined state and an associated configuration.
@@ -4263,96 +2209,6 @@ type StepResponse struct {
 	VpnGateway VpnGatewayInfoResponse `pulumi:"vpnGateway"`
 	// Display information of a Compute Engine VPN tunnel.
 	VpnTunnel VpnTunnelInfoResponse `pulumi:"vpnTunnel"`
-}
-
-// StepResponseInput is an input type that accepts StepResponseArgs and StepResponseOutput values.
-// You can construct a concrete instance of `StepResponseInput` via:
-//
-//          StepResponseArgs{...}
-type StepResponseInput interface {
-	pulumi.Input
-
-	ToStepResponseOutput() StepResponseOutput
-	ToStepResponseOutputWithContext(context.Context) StepResponseOutput
-}
-
-// A simulated forwarding path is composed of multiple steps. Each step has a well-defined state and an associated configuration.
-type StepResponseArgs struct {
-	// Display information of the final state "abort" and reason.
-	Abort AbortInfoResponseInput `pulumi:"abort"`
-	// This is a step that leads to the final state Drop.
-	CausesDrop pulumi.BoolInput `pulumi:"causesDrop"`
-	// Display information of a Cloud SQL instance.
-	CloudSqlInstance CloudSQLInstanceInfoResponseInput `pulumi:"cloudSqlInstance"`
-	// Display information of the final state "deliver" and reason.
-	Deliver DeliverInfoResponseInput `pulumi:"deliver"`
-	// A description of the step. Usually this is a summary of the state.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Display information of the final state "drop" and reason.
-	Drop DropInfoResponseInput `pulumi:"drop"`
-	// Display information of the source and destination under analysis. The endpoint information in an intermediate state may differ with the initial input, as it might be modified by state like NAT, or Connection Proxy.
-	Endpoint EndpointInfoResponseInput `pulumi:"endpoint"`
-	// Display information of a Compute Engine firewall rule.
-	Firewall FirewallInfoResponseInput `pulumi:"firewall"`
-	// Display information of the final state "forward" and reason.
-	Forward ForwardInfoResponseInput `pulumi:"forward"`
-	// Display information of a Compute Engine forwarding rule.
-	ForwardingRule ForwardingRuleInfoResponseInput `pulumi:"forwardingRule"`
-	// Display information of a Google Kubernetes Engine cluster master.
-	GkeMaster GKEMasterInfoResponseInput `pulumi:"gkeMaster"`
-	// Display information of a Compute Engine instance.
-	Instance InstanceInfoResponseInput `pulumi:"instance"`
-	// Display information of the load balancers.
-	LoadBalancer LoadBalancerInfoResponseInput `pulumi:"loadBalancer"`
-	// Display information of a Google Cloud network.
-	Network NetworkInfoResponseInput `pulumi:"network"`
-	// Project ID that contains the configuration this step is validating.
-	Project pulumi.StringInput `pulumi:"project"`
-	// Display information of a Compute Engine route.
-	Route RouteInfoResponseInput `pulumi:"route"`
-	// Each step is in one of the pre-defined states.
-	State pulumi.StringInput `pulumi:"state"`
-	// Display information of a Compute Engine VPN gateway.
-	VpnGateway VpnGatewayInfoResponseInput `pulumi:"vpnGateway"`
-	// Display information of a Compute Engine VPN tunnel.
-	VpnTunnel VpnTunnelInfoResponseInput `pulumi:"vpnTunnel"`
-}
-
-func (StepResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StepResponse)(nil)).Elem()
-}
-
-func (i StepResponseArgs) ToStepResponseOutput() StepResponseOutput {
-	return i.ToStepResponseOutputWithContext(context.Background())
-}
-
-func (i StepResponseArgs) ToStepResponseOutputWithContext(ctx context.Context) StepResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StepResponseOutput)
-}
-
-// StepResponseArrayInput is an input type that accepts StepResponseArray and StepResponseArrayOutput values.
-// You can construct a concrete instance of `StepResponseArrayInput` via:
-//
-//          StepResponseArray{ StepResponseArgs{...} }
-type StepResponseArrayInput interface {
-	pulumi.Input
-
-	ToStepResponseArrayOutput() StepResponseArrayOutput
-	ToStepResponseArrayOutputWithContext(context.Context) StepResponseArrayOutput
-}
-
-type StepResponseArray []StepResponseInput
-
-func (StepResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StepResponse)(nil)).Elem()
-}
-
-func (i StepResponseArray) ToStepResponseArrayOutput() StepResponseArrayOutput {
-	return i.ToStepResponseArrayOutputWithContext(context.Background())
-}
-
-func (i StepResponseArray) ToStepResponseArrayOutputWithContext(ctx context.Context) StepResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StepResponseArrayOutput)
 }
 
 // A simulated forwarding path is composed of multiple steps. Each step has a well-defined state and an associated configuration.
@@ -4493,62 +2349,6 @@ type TraceResponse struct {
 	Steps []StepResponse `pulumi:"steps"`
 }
 
-// TraceResponseInput is an input type that accepts TraceResponseArgs and TraceResponseOutput values.
-// You can construct a concrete instance of `TraceResponseInput` via:
-//
-//          TraceResponseArgs{...}
-type TraceResponseInput interface {
-	pulumi.Input
-
-	ToTraceResponseOutput() TraceResponseOutput
-	ToTraceResponseOutputWithContext(context.Context) TraceResponseOutput
-}
-
-// Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ```|---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final))```
-type TraceResponseArgs struct {
-	// Derived from the source and destination endpoints definition specified by user request, and validated by the data plane model. If there are multiple traces starting from different source locations, then the endpoint_info may be different between traces.
-	EndpointInfo EndpointInfoResponseInput `pulumi:"endpointInfo"`
-	// A trace of a test contains multiple steps from the initial state to the final state (delivered, dropped, forwarded, or aborted). The steps are ordered by the processing sequence within the simulated network state machine. It is critical to preserve the order of the steps and avoid reordering or sorting them.
-	Steps StepResponseArrayInput `pulumi:"steps"`
-}
-
-func (TraceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TraceResponse)(nil)).Elem()
-}
-
-func (i TraceResponseArgs) ToTraceResponseOutput() TraceResponseOutput {
-	return i.ToTraceResponseOutputWithContext(context.Background())
-}
-
-func (i TraceResponseArgs) ToTraceResponseOutputWithContext(ctx context.Context) TraceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TraceResponseOutput)
-}
-
-// TraceResponseArrayInput is an input type that accepts TraceResponseArray and TraceResponseArrayOutput values.
-// You can construct a concrete instance of `TraceResponseArrayInput` via:
-//
-//          TraceResponseArray{ TraceResponseArgs{...} }
-type TraceResponseArrayInput interface {
-	pulumi.Input
-
-	ToTraceResponseArrayOutput() TraceResponseArrayOutput
-	ToTraceResponseArrayOutputWithContext(context.Context) TraceResponseArrayOutput
-}
-
-type TraceResponseArray []TraceResponseInput
-
-func (TraceResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TraceResponse)(nil)).Elem()
-}
-
-func (i TraceResponseArray) ToTraceResponseArrayOutput() TraceResponseArrayOutput {
-	return i.ToTraceResponseArrayOutputWithContext(context.Background())
-}
-
-func (i TraceResponseArray) ToTraceResponseArrayOutputWithContext(ctx context.Context) TraceResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TraceResponseArrayOutput)
-}
-
 // Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ```|---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final))```
 type TraceResponseOutput struct{ *pulumi.OutputState }
 
@@ -4608,45 +2408,6 @@ type VpnGatewayInfoResponse struct {
 	Uri string `pulumi:"uri"`
 	// A VPN tunnel that is associated with this VPN gateway. There may be multiple VPN tunnels configured on a VPN gateway, and only the one relevant to the test is displayed.
 	VpnTunnelUri string `pulumi:"vpnTunnelUri"`
-}
-
-// VpnGatewayInfoResponseInput is an input type that accepts VpnGatewayInfoResponseArgs and VpnGatewayInfoResponseOutput values.
-// You can construct a concrete instance of `VpnGatewayInfoResponseInput` via:
-//
-//          VpnGatewayInfoResponseArgs{...}
-type VpnGatewayInfoResponseInput interface {
-	pulumi.Input
-
-	ToVpnGatewayInfoResponseOutput() VpnGatewayInfoResponseOutput
-	ToVpnGatewayInfoResponseOutputWithContext(context.Context) VpnGatewayInfoResponseOutput
-}
-
-// For display only. Metadata associated with a Compute Engine VPN gateway.
-type VpnGatewayInfoResponseArgs struct {
-	// Name of a VPN gateway.
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// IP address of the VPN gateway.
-	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
-	// URI of a Compute Engine network where the VPN gateway is configured.
-	NetworkUri pulumi.StringInput `pulumi:"networkUri"`
-	// Name of a Google Cloud region where this VPN gateway is configured.
-	Region pulumi.StringInput `pulumi:"region"`
-	// URI of a VPN gateway.
-	Uri pulumi.StringInput `pulumi:"uri"`
-	// A VPN tunnel that is associated with this VPN gateway. There may be multiple VPN tunnels configured on a VPN gateway, and only the one relevant to the test is displayed.
-	VpnTunnelUri pulumi.StringInput `pulumi:"vpnTunnelUri"`
-}
-
-func (VpnGatewayInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpnGatewayInfoResponse)(nil)).Elem()
-}
-
-func (i VpnGatewayInfoResponseArgs) ToVpnGatewayInfoResponseOutput() VpnGatewayInfoResponseOutput {
-	return i.ToVpnGatewayInfoResponseOutputWithContext(context.Background())
-}
-
-func (i VpnGatewayInfoResponseArgs) ToVpnGatewayInfoResponseOutputWithContext(ctx context.Context) VpnGatewayInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayInfoResponseOutput)
 }
 
 // For display only. Metadata associated with a Compute Engine VPN gateway.
@@ -4716,51 +2477,6 @@ type VpnTunnelInfoResponse struct {
 	Uri string `pulumi:"uri"`
 }
 
-// VpnTunnelInfoResponseInput is an input type that accepts VpnTunnelInfoResponseArgs and VpnTunnelInfoResponseOutput values.
-// You can construct a concrete instance of `VpnTunnelInfoResponseInput` via:
-//
-//          VpnTunnelInfoResponseArgs{...}
-type VpnTunnelInfoResponseInput interface {
-	pulumi.Input
-
-	ToVpnTunnelInfoResponseOutput() VpnTunnelInfoResponseOutput
-	ToVpnTunnelInfoResponseOutputWithContext(context.Context) VpnTunnelInfoResponseOutput
-}
-
-// For display only. Metadata associated with a Compute Engine VPN tunnel.
-type VpnTunnelInfoResponseArgs struct {
-	// Name of a VPN tunnel.
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// URI of a Compute Engine network where the VPN tunnel is configured.
-	NetworkUri pulumi.StringInput `pulumi:"networkUri"`
-	// Name of a Google Cloud region where this VPN tunnel is configured.
-	Region pulumi.StringInput `pulumi:"region"`
-	// URI of a VPN gateway at remote end of the tunnel.
-	RemoteGateway pulumi.StringInput `pulumi:"remoteGateway"`
-	// Remote VPN gateway's IP address.
-	RemoteGatewayIp pulumi.StringInput `pulumi:"remoteGatewayIp"`
-	// Type of the routing policy.
-	RoutingType pulumi.StringInput `pulumi:"routingType"`
-	// URI of the VPN gateway at local end of the tunnel.
-	SourceGateway pulumi.StringInput `pulumi:"sourceGateway"`
-	// Local VPN gateway's IP address.
-	SourceGatewayIp pulumi.StringInput `pulumi:"sourceGatewayIp"`
-	// URI of a VPN tunnel.
-	Uri pulumi.StringInput `pulumi:"uri"`
-}
-
-func (VpnTunnelInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpnTunnelInfoResponse)(nil)).Elem()
-}
-
-func (i VpnTunnelInfoResponseArgs) ToVpnTunnelInfoResponseOutput() VpnTunnelInfoResponseOutput {
-	return i.ToVpnTunnelInfoResponseOutputWithContext(context.Background())
-}
-
-func (i VpnTunnelInfoResponseArgs) ToVpnTunnelInfoResponseOutputWithContext(ctx context.Context) VpnTunnelInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpnTunnelInfoResponseOutput)
-}
-
 // For display only. Metadata associated with a Compute Engine VPN tunnel.
 type VpnTunnelInfoResponseOutput struct{ *pulumi.OutputState }
 
@@ -4822,61 +2538,17 @@ func (o VpnTunnelInfoResponseOutput) Uri() pulumi.StringOutput {
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*AbortInfoResponseInput)(nil)).Elem(), AbortInfoResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseInput)(nil)).Elem(), AuditConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseArrayInput)(nil)).Elem(), AuditConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseInput)(nil)).Elem(), AuditLogConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseArrayInput)(nil)).Elem(), AuditLogConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudFunctionEndpointInput)(nil)).Elem(), CloudFunctionEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudFunctionEndpointPtrInput)(nil)).Elem(), CloudFunctionEndpointArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudFunctionEndpointResponseInput)(nil)).Elem(), CloudFunctionEndpointResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudFunctionEndpointResponsePtrInput)(nil)).Elem(), CloudFunctionEndpointResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudSQLInstanceInfoResponseInput)(nil)).Elem(), CloudSQLInstanceInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeliverInfoResponseInput)(nil)).Elem(), DeliverInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DropInfoResponseInput)(nil)).Elem(), DropInfoResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointInput)(nil)).Elem(), EndpointArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EndpointPtrInput)(nil)).Elem(), EndpointArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EndpointInfoResponseInput)(nil)).Elem(), EndpointInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EndpointInfoResponsePtrInput)(nil)).Elem(), EndpointInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EndpointResponseInput)(nil)).Elem(), EndpointResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EndpointResponsePtrInput)(nil)).Elem(), EndpointResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FirewallInfoResponseInput)(nil)).Elem(), FirewallInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ForwardInfoResponseInput)(nil)).Elem(), ForwardInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleInfoResponseInput)(nil)).Elem(), ForwardingRuleInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GKEMasterInfoResponseInput)(nil)).Elem(), GKEMasterInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceInfoResponseInput)(nil)).Elem(), InstanceInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LatencyDistributionResponseInput)(nil)).Elem(), LatencyDistributionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LatencyDistributionResponsePtrInput)(nil)).Elem(), LatencyDistributionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LatencyPercentileResponseInput)(nil)).Elem(), LatencyPercentileResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LatencyPercentileResponseArrayInput)(nil)).Elem(), LatencyPercentileResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerBackendResponseInput)(nil)).Elem(), LoadBalancerBackendResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerBackendResponseArrayInput)(nil)).Elem(), LoadBalancerBackendResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerInfoResponseInput)(nil)).Elem(), LoadBalancerInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInfoResponseInput)(nil)).Elem(), NetworkInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProbingDetailsResponseInput)(nil)).Elem(), ProbingDetailsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProbingDetailsResponsePtrInput)(nil)).Elem(), ProbingDetailsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ReachabilityDetailsResponseInput)(nil)).Elem(), ReachabilityDetailsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ReachabilityDetailsResponsePtrInput)(nil)).Elem(), ReachabilityDetailsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RouteInfoResponseInput)(nil)).Elem(), RouteInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponseInput)(nil)).Elem(), StatusResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponsePtrInput)(nil)).Elem(), StatusResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StepResponseInput)(nil)).Elem(), StepResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StepResponseArrayInput)(nil)).Elem(), StepResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TraceResponseInput)(nil)).Elem(), TraceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TraceResponseArrayInput)(nil)).Elem(), TraceResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayInfoResponseInput)(nil)).Elem(), VpnGatewayInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VpnTunnelInfoResponseInput)(nil)).Elem(), VpnTunnelInfoResponseArgs{})
 	pulumi.RegisterOutputType(AbortInfoResponseOutput{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
@@ -4893,16 +2565,12 @@ func init() {
 	pulumi.RegisterOutputType(CloudFunctionEndpointOutput{})
 	pulumi.RegisterOutputType(CloudFunctionEndpointPtrOutput{})
 	pulumi.RegisterOutputType(CloudFunctionEndpointResponseOutput{})
-	pulumi.RegisterOutputType(CloudFunctionEndpointResponsePtrOutput{})
 	pulumi.RegisterOutputType(CloudSQLInstanceInfoResponseOutput{})
 	pulumi.RegisterOutputType(DeliverInfoResponseOutput{})
 	pulumi.RegisterOutputType(DropInfoResponseOutput{})
 	pulumi.RegisterOutputType(EndpointOutput{})
-	pulumi.RegisterOutputType(EndpointPtrOutput{})
 	pulumi.RegisterOutputType(EndpointInfoResponseOutput{})
-	pulumi.RegisterOutputType(EndpointInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(EndpointResponseOutput{})
-	pulumi.RegisterOutputType(EndpointResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
@@ -4912,7 +2580,6 @@ func init() {
 	pulumi.RegisterOutputType(GKEMasterInfoResponseOutput{})
 	pulumi.RegisterOutputType(InstanceInfoResponseOutput{})
 	pulumi.RegisterOutputType(LatencyDistributionResponseOutput{})
-	pulumi.RegisterOutputType(LatencyDistributionResponsePtrOutput{})
 	pulumi.RegisterOutputType(LatencyPercentileResponseOutput{})
 	pulumi.RegisterOutputType(LatencyPercentileResponseArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerBackendResponseOutput{})
@@ -4920,12 +2587,9 @@ func init() {
 	pulumi.RegisterOutputType(LoadBalancerInfoResponseOutput{})
 	pulumi.RegisterOutputType(NetworkInfoResponseOutput{})
 	pulumi.RegisterOutputType(ProbingDetailsResponseOutput{})
-	pulumi.RegisterOutputType(ProbingDetailsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ReachabilityDetailsResponseOutput{})
-	pulumi.RegisterOutputType(ReachabilityDetailsResponsePtrOutput{})
 	pulumi.RegisterOutputType(RouteInfoResponseOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
-	pulumi.RegisterOutputType(StatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(StepResponseOutput{})
 	pulumi.RegisterOutputType(StepResponseArrayOutput{})
 	pulumi.RegisterOutputType(TraceResponseOutput{})

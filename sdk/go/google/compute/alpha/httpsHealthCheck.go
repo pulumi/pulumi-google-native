@@ -143,7 +143,7 @@ type HttpsHealthCheckInput interface {
 }
 
 func (*HttpsHealthCheck) ElementType() reflect.Type {
-	return reflect.TypeOf((*HttpsHealthCheck)(nil))
+	return reflect.TypeOf((**HttpsHealthCheck)(nil)).Elem()
 }
 
 func (i *HttpsHealthCheck) ToHttpsHealthCheckOutput() HttpsHealthCheckOutput {
@@ -157,7 +157,7 @@ func (i *HttpsHealthCheck) ToHttpsHealthCheckOutputWithContext(ctx context.Conte
 type HttpsHealthCheckOutput struct{ *pulumi.OutputState }
 
 func (HttpsHealthCheckOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HttpsHealthCheck)(nil))
+	return reflect.TypeOf((**HttpsHealthCheck)(nil)).Elem()
 }
 
 func (o HttpsHealthCheckOutput) ToHttpsHealthCheckOutput() HttpsHealthCheckOutput {

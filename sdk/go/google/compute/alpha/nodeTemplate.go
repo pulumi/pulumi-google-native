@@ -145,7 +145,7 @@ type NodeTemplateInput interface {
 }
 
 func (*NodeTemplate) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeTemplate)(nil))
+	return reflect.TypeOf((**NodeTemplate)(nil)).Elem()
 }
 
 func (i *NodeTemplate) ToNodeTemplateOutput() NodeTemplateOutput {
@@ -159,7 +159,7 @@ func (i *NodeTemplate) ToNodeTemplateOutputWithContext(ctx context.Context) Node
 type NodeTemplateOutput struct{ *pulumi.OutputState }
 
 func (NodeTemplateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeTemplate)(nil))
+	return reflect.TypeOf((**NodeTemplate)(nil)).Elem()
 }
 
 func (o NodeTemplateOutput) ToNodeTemplateOutput() NodeTemplateOutput {

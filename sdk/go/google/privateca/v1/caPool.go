@@ -115,7 +115,7 @@ type CaPoolInput interface {
 }
 
 func (*CaPool) ElementType() reflect.Type {
-	return reflect.TypeOf((*CaPool)(nil))
+	return reflect.TypeOf((**CaPool)(nil)).Elem()
 }
 
 func (i *CaPool) ToCaPoolOutput() CaPoolOutput {
@@ -129,7 +129,7 @@ func (i *CaPool) ToCaPoolOutputWithContext(ctx context.Context) CaPoolOutput {
 type CaPoolOutput struct{ *pulumi.OutputState }
 
 func (CaPoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CaPool)(nil))
+	return reflect.TypeOf((**CaPool)(nil)).Elem()
 }
 
 func (o CaPoolOutput) ToCaPoolOutput() CaPoolOutput {

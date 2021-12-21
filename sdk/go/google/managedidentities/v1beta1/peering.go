@@ -116,7 +116,7 @@ type PeeringInput interface {
 }
 
 func (*Peering) ElementType() reflect.Type {
-	return reflect.TypeOf((*Peering)(nil))
+	return reflect.TypeOf((**Peering)(nil)).Elem()
 }
 
 func (i *Peering) ToPeeringOutput() PeeringOutput {
@@ -130,7 +130,7 @@ func (i *Peering) ToPeeringOutputWithContext(ctx context.Context) PeeringOutput 
 type PeeringOutput struct{ *pulumi.OutputState }
 
 func (PeeringOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Peering)(nil))
+	return reflect.TypeOf((**Peering)(nil)).Elem()
 }
 
 func (o PeeringOutput) ToPeeringOutput() PeeringOutput {

@@ -117,7 +117,7 @@ type PrivateConnectionInput interface {
 }
 
 func (*PrivateConnection) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateConnection)(nil))
+	return reflect.TypeOf((**PrivateConnection)(nil)).Elem()
 }
 
 func (i *PrivateConnection) ToPrivateConnectionOutput() PrivateConnectionOutput {
@@ -131,7 +131,7 @@ func (i *PrivateConnection) ToPrivateConnectionOutputWithContext(ctx context.Con
 type PrivateConnectionOutput struct{ *pulumi.OutputState }
 
 func (PrivateConnectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateConnection)(nil))
+	return reflect.TypeOf((**PrivateConnection)(nil)).Elem()
 }
 
 func (o PrivateConnectionOutput) ToPrivateConnectionOutput() PrivateConnectionOutput {

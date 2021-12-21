@@ -139,7 +139,7 @@ type RegionSslCertificateInput interface {
 }
 
 func (*RegionSslCertificate) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionSslCertificate)(nil))
+	return reflect.TypeOf((**RegionSslCertificate)(nil)).Elem()
 }
 
 func (i *RegionSslCertificate) ToRegionSslCertificateOutput() RegionSslCertificateOutput {
@@ -153,7 +153,7 @@ func (i *RegionSslCertificate) ToRegionSslCertificateOutputWithContext(ctx conte
 type RegionSslCertificateOutput struct{ *pulumi.OutputState }
 
 func (RegionSslCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionSslCertificate)(nil))
+	return reflect.TypeOf((**RegionSslCertificate)(nil)).Elem()
 }
 
 func (o RegionSslCertificateOutput) ToRegionSslCertificateOutput() RegionSslCertificateOutput {

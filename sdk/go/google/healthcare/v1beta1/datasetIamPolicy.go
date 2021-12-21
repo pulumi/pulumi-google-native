@@ -113,7 +113,7 @@ type DatasetIamPolicyInput interface {
 }
 
 func (*DatasetIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetIamPolicy)(nil))
+	return reflect.TypeOf((**DatasetIamPolicy)(nil)).Elem()
 }
 
 func (i *DatasetIamPolicy) ToDatasetIamPolicyOutput() DatasetIamPolicyOutput {
@@ -127,7 +127,7 @@ func (i *DatasetIamPolicy) ToDatasetIamPolicyOutputWithContext(ctx context.Conte
 type DatasetIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (DatasetIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetIamPolicy)(nil))
+	return reflect.TypeOf((**DatasetIamPolicy)(nil)).Elem()
 }
 
 func (o DatasetIamPolicyOutput) ToDatasetIamPolicyOutput() DatasetIamPolicyOutput {

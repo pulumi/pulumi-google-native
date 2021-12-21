@@ -137,7 +137,7 @@ type RegionInstantSnapshotInput interface {
 }
 
 func (*RegionInstantSnapshot) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionInstantSnapshot)(nil))
+	return reflect.TypeOf((**RegionInstantSnapshot)(nil)).Elem()
 }
 
 func (i *RegionInstantSnapshot) ToRegionInstantSnapshotOutput() RegionInstantSnapshotOutput {
@@ -151,7 +151,7 @@ func (i *RegionInstantSnapshot) ToRegionInstantSnapshotOutputWithContext(ctx con
 type RegionInstantSnapshotOutput struct{ *pulumi.OutputState }
 
 func (RegionInstantSnapshotOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionInstantSnapshot)(nil))
+	return reflect.TypeOf((**RegionInstantSnapshot)(nil)).Elem()
 }
 
 func (o RegionInstantSnapshotOutput) ToRegionInstantSnapshotOutput() RegionInstantSnapshotOutput {

@@ -149,66 +149,6 @@ type FileShareConfigResponse struct {
 	SourceBackup string `pulumi:"sourceBackup"`
 }
 
-// FileShareConfigResponseInput is an input type that accepts FileShareConfigResponseArgs and FileShareConfigResponseOutput values.
-// You can construct a concrete instance of `FileShareConfigResponseInput` via:
-//
-//          FileShareConfigResponseArgs{...}
-type FileShareConfigResponseInput interface {
-	pulumi.Input
-
-	ToFileShareConfigResponseOutput() FileShareConfigResponseOutput
-	ToFileShareConfigResponseOutputWithContext(context.Context) FileShareConfigResponseOutput
-}
-
-// File share configuration for the instance.
-type FileShareConfigResponseArgs struct {
-	// File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes.
-	CapacityGb pulumi.StringInput `pulumi:"capacityGb"`
-	// The name of the file share (must be 32 characters or less for Enterprise and High Scale SSD tiers and 16 characters or less for all other tiers).
-	Name pulumi.StringInput `pulumi:"name"`
-	// Nfs Export Options. There is a limit of 10 export options per file share.
-	NfsExportOptions NfsExportOptionsResponseArrayInput `pulumi:"nfsExportOptions"`
-	// The resource name of the backup, in the format `projects/{project_id}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored from.
-	SourceBackup pulumi.StringInput `pulumi:"sourceBackup"`
-}
-
-func (FileShareConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FileShareConfigResponse)(nil)).Elem()
-}
-
-func (i FileShareConfigResponseArgs) ToFileShareConfigResponseOutput() FileShareConfigResponseOutput {
-	return i.ToFileShareConfigResponseOutputWithContext(context.Background())
-}
-
-func (i FileShareConfigResponseArgs) ToFileShareConfigResponseOutputWithContext(ctx context.Context) FileShareConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FileShareConfigResponseOutput)
-}
-
-// FileShareConfigResponseArrayInput is an input type that accepts FileShareConfigResponseArray and FileShareConfigResponseArrayOutput values.
-// You can construct a concrete instance of `FileShareConfigResponseArrayInput` via:
-//
-//          FileShareConfigResponseArray{ FileShareConfigResponseArgs{...} }
-type FileShareConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToFileShareConfigResponseArrayOutput() FileShareConfigResponseArrayOutput
-	ToFileShareConfigResponseArrayOutputWithContext(context.Context) FileShareConfigResponseArrayOutput
-}
-
-type FileShareConfigResponseArray []FileShareConfigResponseInput
-
-func (FileShareConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FileShareConfigResponse)(nil)).Elem()
-}
-
-func (i FileShareConfigResponseArray) ToFileShareConfigResponseArrayOutput() FileShareConfigResponseArrayOutput {
-	return i.ToFileShareConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i FileShareConfigResponseArray) ToFileShareConfigResponseArrayOutputWithContext(ctx context.Context) FileShareConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FileShareConfigResponseArrayOutput)
-}
-
 // File share configuration for the instance.
 type FileShareConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -403,68 +343,6 @@ type NetworkConfigResponse struct {
 	Network string `pulumi:"network"`
 	// Optional, reserved_ip_range can have one of the following two types of values. * CIDR range value when using DIRECT_PEERING connect mode. * [Allocated IP address range](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address) when using PRIVATE_SERVICE_ACCESS connect mode. When the name of an allocated IP address range is specified, it must be one of the ranges associated with the private service access connection. When specified as a direct CIDR value, it must be a /29 CIDR block for Basic tier or a /24 CIDR block for High Scale or Enterprise tier in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/24. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
 	ReservedIpRange string `pulumi:"reservedIpRange"`
-}
-
-// NetworkConfigResponseInput is an input type that accepts NetworkConfigResponseArgs and NetworkConfigResponseOutput values.
-// You can construct a concrete instance of `NetworkConfigResponseInput` via:
-//
-//          NetworkConfigResponseArgs{...}
-type NetworkConfigResponseInput interface {
-	pulumi.Input
-
-	ToNetworkConfigResponseOutput() NetworkConfigResponseOutput
-	ToNetworkConfigResponseOutputWithContext(context.Context) NetworkConfigResponseOutput
-}
-
-// Network configuration for the instance.
-type NetworkConfigResponseArgs struct {
-	// The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
-	ConnectMode pulumi.StringInput `pulumi:"connectMode"`
-	// IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or IPv6 addresses in the format `{block1}:{block2}:{block3}:{block4}:{block5}:{block6}:{block7}:{block8}`.
-	IpAddresses pulumi.StringArrayInput `pulumi:"ipAddresses"`
-	// Internet protocol versions for which the instance has IP addresses assigned. For this version, only MODE_IPV4 is supported.
-	Modes pulumi.StringArrayInput `pulumi:"modes"`
-	// The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected.
-	Network pulumi.StringInput `pulumi:"network"`
-	// Optional, reserved_ip_range can have one of the following two types of values. * CIDR range value when using DIRECT_PEERING connect mode. * [Allocated IP address range](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address) when using PRIVATE_SERVICE_ACCESS connect mode. When the name of an allocated IP address range is specified, it must be one of the ranges associated with the private service access connection. When specified as a direct CIDR value, it must be a /29 CIDR block for Basic tier or a /24 CIDR block for High Scale or Enterprise tier in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/24. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
-	ReservedIpRange pulumi.StringInput `pulumi:"reservedIpRange"`
-}
-
-func (NetworkConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkConfigResponse)(nil)).Elem()
-}
-
-func (i NetworkConfigResponseArgs) ToNetworkConfigResponseOutput() NetworkConfigResponseOutput {
-	return i.ToNetworkConfigResponseOutputWithContext(context.Background())
-}
-
-func (i NetworkConfigResponseArgs) ToNetworkConfigResponseOutputWithContext(ctx context.Context) NetworkConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigResponseOutput)
-}
-
-// NetworkConfigResponseArrayInput is an input type that accepts NetworkConfigResponseArray and NetworkConfigResponseArrayOutput values.
-// You can construct a concrete instance of `NetworkConfigResponseArrayInput` via:
-//
-//          NetworkConfigResponseArray{ NetworkConfigResponseArgs{...} }
-type NetworkConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToNetworkConfigResponseArrayOutput() NetworkConfigResponseArrayOutput
-	ToNetworkConfigResponseArrayOutputWithContext(context.Context) NetworkConfigResponseArrayOutput
-}
-
-type NetworkConfigResponseArray []NetworkConfigResponseInput
-
-func (NetworkConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NetworkConfigResponse)(nil)).Elem()
-}
-
-func (i NetworkConfigResponseArray) ToNetworkConfigResponseArrayOutput() NetworkConfigResponseArrayOutput {
-	return i.ToNetworkConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i NetworkConfigResponseArray) ToNetworkConfigResponseArrayOutputWithContext(ctx context.Context) NetworkConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigResponseArrayOutput)
 }
 
 // Network configuration for the instance.
@@ -677,68 +555,6 @@ type NfsExportOptionsResponse struct {
 	SquashMode string `pulumi:"squashMode"`
 }
 
-// NfsExportOptionsResponseInput is an input type that accepts NfsExportOptionsResponseArgs and NfsExportOptionsResponseOutput values.
-// You can construct a concrete instance of `NfsExportOptionsResponseInput` via:
-//
-//          NfsExportOptionsResponseArgs{...}
-type NfsExportOptionsResponseInput interface {
-	pulumi.Input
-
-	ToNfsExportOptionsResponseOutput() NfsExportOptionsResponseOutput
-	ToNfsExportOptionsResponseOutputWithContext(context.Context) NfsExportOptionsResponseOutput
-}
-
-// NFS export options specifications.
-type NfsExportOptionsResponseArgs struct {
-	// Either READ_ONLY, for allowing only read requests on the exported directory, or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
-	AccessMode pulumi.StringInput `pulumi:"accessMode"`
-	// An integer representing the anonymous group id with a default value of 65534. Anon_gid may only be set with squash_mode of ROOT_SQUASH. An error will be returned if this field is specified for other squash_mode settings.
-	AnonGid pulumi.StringInput `pulumi:"anonGid"`
-	// An integer representing the anonymous user id with a default value of 65534. Anon_uid may only be set with squash_mode of ROOT_SQUASH. An error will be returned if this field is specified for other squash_mode settings.
-	AnonUid pulumi.StringInput `pulumi:"anonUid"`
-	// List of either an IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or CIDR ranges in the format `{octet1}.{octet2}.{octet3}.{octet4}/{mask size}` which may mount the file share. Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned. The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
-	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
-	// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH.
-	SquashMode pulumi.StringInput `pulumi:"squashMode"`
-}
-
-func (NfsExportOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NfsExportOptionsResponse)(nil)).Elem()
-}
-
-func (i NfsExportOptionsResponseArgs) ToNfsExportOptionsResponseOutput() NfsExportOptionsResponseOutput {
-	return i.ToNfsExportOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i NfsExportOptionsResponseArgs) ToNfsExportOptionsResponseOutputWithContext(ctx context.Context) NfsExportOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NfsExportOptionsResponseOutput)
-}
-
-// NfsExportOptionsResponseArrayInput is an input type that accepts NfsExportOptionsResponseArray and NfsExportOptionsResponseArrayOutput values.
-// You can construct a concrete instance of `NfsExportOptionsResponseArrayInput` via:
-//
-//          NfsExportOptionsResponseArray{ NfsExportOptionsResponseArgs{...} }
-type NfsExportOptionsResponseArrayInput interface {
-	pulumi.Input
-
-	ToNfsExportOptionsResponseArrayOutput() NfsExportOptionsResponseArrayOutput
-	ToNfsExportOptionsResponseArrayOutputWithContext(context.Context) NfsExportOptionsResponseArrayOutput
-}
-
-type NfsExportOptionsResponseArray []NfsExportOptionsResponseInput
-
-func (NfsExportOptionsResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NfsExportOptionsResponse)(nil)).Elem()
-}
-
-func (i NfsExportOptionsResponseArray) ToNfsExportOptionsResponseArrayOutput() NfsExportOptionsResponseArrayOutput {
-	return i.ToNfsExportOptionsResponseArrayOutputWithContext(context.Background())
-}
-
-func (i NfsExportOptionsResponseArray) ToNfsExportOptionsResponseArrayOutputWithContext(ctx context.Context) NfsExportOptionsResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NfsExportOptionsResponseArrayOutput)
-}
-
 // NFS export options specifications.
 type NfsExportOptionsResponseOutput struct{ *pulumi.OutputState }
 
@@ -802,16 +618,10 @@ func (o NfsExportOptionsResponseArrayOutput) Index(i pulumi.IntInput) NfsExportO
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FileShareConfigInput)(nil)).Elem(), FileShareConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileShareConfigArrayInput)(nil)).Elem(), FileShareConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FileShareConfigResponseInput)(nil)).Elem(), FileShareConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FileShareConfigResponseArrayInput)(nil)).Elem(), FileShareConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigInput)(nil)).Elem(), NetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigArrayInput)(nil)).Elem(), NetworkConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigResponseInput)(nil)).Elem(), NetworkConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigResponseArrayInput)(nil)).Elem(), NetworkConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportOptionsInput)(nil)).Elem(), NfsExportOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportOptionsArrayInput)(nil)).Elem(), NfsExportOptionsArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportOptionsResponseInput)(nil)).Elem(), NfsExportOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportOptionsResponseArrayInput)(nil)).Elem(), NfsExportOptionsResponseArray{})
 	pulumi.RegisterOutputType(FileShareConfigOutput{})
 	pulumi.RegisterOutputType(FileShareConfigArrayOutput{})
 	pulumi.RegisterOutputType(FileShareConfigResponseOutput{})

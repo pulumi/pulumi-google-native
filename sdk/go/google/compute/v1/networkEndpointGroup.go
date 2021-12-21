@@ -151,7 +151,7 @@ type NetworkEndpointGroupInput interface {
 }
 
 func (*NetworkEndpointGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkEndpointGroup)(nil))
+	return reflect.TypeOf((**NetworkEndpointGroup)(nil)).Elem()
 }
 
 func (i *NetworkEndpointGroup) ToNetworkEndpointGroupOutput() NetworkEndpointGroupOutput {
@@ -165,7 +165,7 @@ func (i *NetworkEndpointGroup) ToNetworkEndpointGroupOutputWithContext(ctx conte
 type NetworkEndpointGroupOutput struct{ *pulumi.OutputState }
 
 func (NetworkEndpointGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkEndpointGroup)(nil))
+	return reflect.TypeOf((**NetworkEndpointGroup)(nil)).Elem()
 }
 
 func (o NetworkEndpointGroupOutput) ToNetworkEndpointGroupOutput() NetworkEndpointGroupOutput {

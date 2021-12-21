@@ -111,7 +111,7 @@ type GameServerDeploymentInput interface {
 }
 
 func (*GameServerDeployment) ElementType() reflect.Type {
-	return reflect.TypeOf((*GameServerDeployment)(nil))
+	return reflect.TypeOf((**GameServerDeployment)(nil)).Elem()
 }
 
 func (i *GameServerDeployment) ToGameServerDeploymentOutput() GameServerDeploymentOutput {
@@ -125,7 +125,7 @@ func (i *GameServerDeployment) ToGameServerDeploymentOutputWithContext(ctx conte
 type GameServerDeploymentOutput struct{ *pulumi.OutputState }
 
 func (GameServerDeploymentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GameServerDeployment)(nil))
+	return reflect.TypeOf((**GameServerDeployment)(nil)).Elem()
 }
 
 func (o GameServerDeploymentOutput) ToGameServerDeploymentOutput() GameServerDeploymentOutput {

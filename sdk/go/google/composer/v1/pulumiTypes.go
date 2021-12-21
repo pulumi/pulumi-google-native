@@ -127,62 +127,6 @@ type AllowedIpRangeResponse struct {
 	Value string `pulumi:"value"`
 }
 
-// AllowedIpRangeResponseInput is an input type that accepts AllowedIpRangeResponseArgs and AllowedIpRangeResponseOutput values.
-// You can construct a concrete instance of `AllowedIpRangeResponseInput` via:
-//
-//          AllowedIpRangeResponseArgs{...}
-type AllowedIpRangeResponseInput interface {
-	pulumi.Input
-
-	ToAllowedIpRangeResponseOutput() AllowedIpRangeResponseOutput
-	ToAllowedIpRangeResponseOutputWithContext(context.Context) AllowedIpRangeResponseOutput
-}
-
-// Allowed IP range with user-provided description.
-type AllowedIpRangeResponseArgs struct {
-	// Optional. User-provided description. It must contain at most 300 characters.
-	Description pulumi.StringInput `pulumi:"description"`
-	// IP address or range, defined using CIDR notation, of requests that this rule applies to. Examples: `192.168.1.1` or `192.168.0.0/16` or `2001:db8::/32` or `2001:0db8:0000:0042:0000:8a2e:0370:7334`. IP range prefixes should be properly truncated. For example, `1.2.3.4/24` should be truncated to `1.2.3.0/24`. Similarly, for IPv6, `2001:db8::1/32` should be truncated to `2001:db8::/32`.
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (AllowedIpRangeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AllowedIpRangeResponse)(nil)).Elem()
-}
-
-func (i AllowedIpRangeResponseArgs) ToAllowedIpRangeResponseOutput() AllowedIpRangeResponseOutput {
-	return i.ToAllowedIpRangeResponseOutputWithContext(context.Background())
-}
-
-func (i AllowedIpRangeResponseArgs) ToAllowedIpRangeResponseOutputWithContext(ctx context.Context) AllowedIpRangeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AllowedIpRangeResponseOutput)
-}
-
-// AllowedIpRangeResponseArrayInput is an input type that accepts AllowedIpRangeResponseArray and AllowedIpRangeResponseArrayOutput values.
-// You can construct a concrete instance of `AllowedIpRangeResponseArrayInput` via:
-//
-//          AllowedIpRangeResponseArray{ AllowedIpRangeResponseArgs{...} }
-type AllowedIpRangeResponseArrayInput interface {
-	pulumi.Input
-
-	ToAllowedIpRangeResponseArrayOutput() AllowedIpRangeResponseArrayOutput
-	ToAllowedIpRangeResponseArrayOutputWithContext(context.Context) AllowedIpRangeResponseArrayOutput
-}
-
-type AllowedIpRangeResponseArray []AllowedIpRangeResponseInput
-
-func (AllowedIpRangeResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AllowedIpRangeResponse)(nil)).Elem()
-}
-
-func (i AllowedIpRangeResponseArray) ToAllowedIpRangeResponseArrayOutput() AllowedIpRangeResponseArrayOutput {
-	return i.ToAllowedIpRangeResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AllowedIpRangeResponseArray) ToAllowedIpRangeResponseArrayOutputWithContext(ctx context.Context) AllowedIpRangeResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AllowedIpRangeResponseArrayOutput)
-}
-
 // Allowed IP range with user-provided description.
 type AllowedIpRangeResponseOutput struct{ *pulumi.OutputState }
 
@@ -374,76 +318,6 @@ type DatabaseConfigResponse struct {
 	MachineType string `pulumi:"machineType"`
 }
 
-// DatabaseConfigResponseInput is an input type that accepts DatabaseConfigResponseArgs and DatabaseConfigResponseOutput values.
-// You can construct a concrete instance of `DatabaseConfigResponseInput` via:
-//
-//          DatabaseConfigResponseArgs{...}
-type DatabaseConfigResponseInput interface {
-	pulumi.Input
-
-	ToDatabaseConfigResponseOutput() DatabaseConfigResponseOutput
-	ToDatabaseConfigResponseOutputWithContext(context.Context) DatabaseConfigResponseOutput
-}
-
-// The configuration of Cloud SQL instance that is used by the Apache Airflow software. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-type DatabaseConfigResponseArgs struct {
-	// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
-	MachineType pulumi.StringInput `pulumi:"machineType"`
-}
-
-func (DatabaseConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseConfigResponse)(nil)).Elem()
-}
-
-func (i DatabaseConfigResponseArgs) ToDatabaseConfigResponseOutput() DatabaseConfigResponseOutput {
-	return i.ToDatabaseConfigResponseOutputWithContext(context.Background())
-}
-
-func (i DatabaseConfigResponseArgs) ToDatabaseConfigResponseOutputWithContext(ctx context.Context) DatabaseConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseConfigResponseOutput)
-}
-
-func (i DatabaseConfigResponseArgs) ToDatabaseConfigResponsePtrOutput() DatabaseConfigResponsePtrOutput {
-	return i.ToDatabaseConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i DatabaseConfigResponseArgs) ToDatabaseConfigResponsePtrOutputWithContext(ctx context.Context) DatabaseConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseConfigResponseOutput).ToDatabaseConfigResponsePtrOutputWithContext(ctx)
-}
-
-// DatabaseConfigResponsePtrInput is an input type that accepts DatabaseConfigResponseArgs, DatabaseConfigResponsePtr and DatabaseConfigResponsePtrOutput values.
-// You can construct a concrete instance of `DatabaseConfigResponsePtrInput` via:
-//
-//          DatabaseConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type DatabaseConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToDatabaseConfigResponsePtrOutput() DatabaseConfigResponsePtrOutput
-	ToDatabaseConfigResponsePtrOutputWithContext(context.Context) DatabaseConfigResponsePtrOutput
-}
-
-type databaseConfigResponsePtrType DatabaseConfigResponseArgs
-
-func DatabaseConfigResponsePtr(v *DatabaseConfigResponseArgs) DatabaseConfigResponsePtrInput {
-	return (*databaseConfigResponsePtrType)(v)
-}
-
-func (*databaseConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseConfigResponse)(nil)).Elem()
-}
-
-func (i *databaseConfigResponsePtrType) ToDatabaseConfigResponsePtrOutput() DatabaseConfigResponsePtrOutput {
-	return i.ToDatabaseConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *databaseConfigResponsePtrType) ToDatabaseConfigResponsePtrOutputWithContext(ctx context.Context) DatabaseConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseConfigResponsePtrOutput)
-}
-
 // The configuration of Cloud SQL instance that is used by the Apache Airflow software. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 type DatabaseConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -459,53 +333,9 @@ func (o DatabaseConfigResponseOutput) ToDatabaseConfigResponseOutputWithContext(
 	return o
 }
 
-func (o DatabaseConfigResponseOutput) ToDatabaseConfigResponsePtrOutput() DatabaseConfigResponsePtrOutput {
-	return o.ToDatabaseConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o DatabaseConfigResponseOutput) ToDatabaseConfigResponsePtrOutputWithContext(ctx context.Context) DatabaseConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseConfigResponse) *DatabaseConfigResponse {
-		return &v
-	}).(DatabaseConfigResponsePtrOutput)
-}
-
 // Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
 func (o DatabaseConfigResponseOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseConfigResponse) string { return v.MachineType }).(pulumi.StringOutput)
-}
-
-type DatabaseConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DatabaseConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseConfigResponse)(nil)).Elem()
-}
-
-func (o DatabaseConfigResponsePtrOutput) ToDatabaseConfigResponsePtrOutput() DatabaseConfigResponsePtrOutput {
-	return o
-}
-
-func (o DatabaseConfigResponsePtrOutput) ToDatabaseConfigResponsePtrOutputWithContext(ctx context.Context) DatabaseConfigResponsePtrOutput {
-	return o
-}
-
-func (o DatabaseConfigResponsePtrOutput) Elem() DatabaseConfigResponseOutput {
-	return o.ApplyT(func(v *DatabaseConfigResponse) DatabaseConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DatabaseConfigResponse
-		return ret
-	}).(DatabaseConfigResponseOutput)
-}
-
-// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
-func (o DatabaseConfigResponsePtrOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatabaseConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MachineType
-	}).(pulumi.StringPtrOutput)
 }
 
 // The encryption options for the Cloud Composer environment and its dependencies.Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -654,76 +484,6 @@ type EncryptionConfigResponse struct {
 	KmsKeyName string `pulumi:"kmsKeyName"`
 }
 
-// EncryptionConfigResponseInput is an input type that accepts EncryptionConfigResponseArgs and EncryptionConfigResponseOutput values.
-// You can construct a concrete instance of `EncryptionConfigResponseInput` via:
-//
-//          EncryptionConfigResponseArgs{...}
-type EncryptionConfigResponseInput interface {
-	pulumi.Input
-
-	ToEncryptionConfigResponseOutput() EncryptionConfigResponseOutput
-	ToEncryptionConfigResponseOutputWithContext(context.Context) EncryptionConfigResponseOutput
-}
-
-// The encryption options for the Cloud Composer environment and its dependencies.Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-type EncryptionConfigResponseArgs struct {
-	// Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used.
-	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
-}
-
-func (EncryptionConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EncryptionConfigResponse)(nil)).Elem()
-}
-
-func (i EncryptionConfigResponseArgs) ToEncryptionConfigResponseOutput() EncryptionConfigResponseOutput {
-	return i.ToEncryptionConfigResponseOutputWithContext(context.Background())
-}
-
-func (i EncryptionConfigResponseArgs) ToEncryptionConfigResponseOutputWithContext(ctx context.Context) EncryptionConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigResponseOutput)
-}
-
-func (i EncryptionConfigResponseArgs) ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput {
-	return i.ToEncryptionConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i EncryptionConfigResponseArgs) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigResponseOutput).ToEncryptionConfigResponsePtrOutputWithContext(ctx)
-}
-
-// EncryptionConfigResponsePtrInput is an input type that accepts EncryptionConfigResponseArgs, EncryptionConfigResponsePtr and EncryptionConfigResponsePtrOutput values.
-// You can construct a concrete instance of `EncryptionConfigResponsePtrInput` via:
-//
-//          EncryptionConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type EncryptionConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput
-	ToEncryptionConfigResponsePtrOutputWithContext(context.Context) EncryptionConfigResponsePtrOutput
-}
-
-type encryptionConfigResponsePtrType EncryptionConfigResponseArgs
-
-func EncryptionConfigResponsePtr(v *EncryptionConfigResponseArgs) EncryptionConfigResponsePtrInput {
-	return (*encryptionConfigResponsePtrType)(v)
-}
-
-func (*encryptionConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EncryptionConfigResponse)(nil)).Elem()
-}
-
-func (i *encryptionConfigResponsePtrType) ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput {
-	return i.ToEncryptionConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *encryptionConfigResponsePtrType) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigResponsePtrOutput)
-}
-
 // The encryption options for the Cloud Composer environment and its dependencies.Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 type EncryptionConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -739,53 +499,9 @@ func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponseOutputWithCont
 	return o
 }
 
-func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput {
-	return o.ToEncryptionConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionConfigResponse) *EncryptionConfigResponse {
-		return &v
-	}).(EncryptionConfigResponsePtrOutput)
-}
-
 // Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used.
 func (o EncryptionConfigResponseOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v EncryptionConfigResponse) string { return v.KmsKeyName }).(pulumi.StringOutput)
-}
-
-type EncryptionConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (EncryptionConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EncryptionConfigResponse)(nil)).Elem()
-}
-
-func (o EncryptionConfigResponsePtrOutput) ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput {
-	return o
-}
-
-func (o EncryptionConfigResponsePtrOutput) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
-	return o
-}
-
-func (o EncryptionConfigResponsePtrOutput) Elem() EncryptionConfigResponseOutput {
-	return o.ApplyT(func(v *EncryptionConfigResponse) EncryptionConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret EncryptionConfigResponse
-		return ret
-	}).(EncryptionConfigResponseOutput)
-}
-
-// Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used.
-func (o EncryptionConfigResponsePtrOutput) KmsKeyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EncryptionConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.KmsKeyName
-	}).(pulumi.StringPtrOutput)
 }
 
 // Configuration information for an environment.
@@ -1150,102 +866,6 @@ type EnvironmentConfigResponse struct {
 	WorkloadsConfig WorkloadsConfigResponse `pulumi:"workloadsConfig"`
 }
 
-// EnvironmentConfigResponseInput is an input type that accepts EnvironmentConfigResponseArgs and EnvironmentConfigResponseOutput values.
-// You can construct a concrete instance of `EnvironmentConfigResponseInput` via:
-//
-//          EnvironmentConfigResponseArgs{...}
-type EnvironmentConfigResponseInput interface {
-	pulumi.Input
-
-	ToEnvironmentConfigResponseOutput() EnvironmentConfigResponseOutput
-	ToEnvironmentConfigResponseOutputWithContext(context.Context) EnvironmentConfigResponseOutput
-}
-
-// Configuration information for an environment.
-type EnvironmentConfigResponseArgs struct {
-	// The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface)).
-	AirflowUri pulumi.StringInput `pulumi:"airflowUri"`
-	// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with the given prefix.
-	DagGcsPrefix pulumi.StringInput `pulumi:"dagGcsPrefix"`
-	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-	DatabaseConfig DatabaseConfigResponseInput `pulumi:"databaseConfig"`
-	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
-	EncryptionConfig EncryptionConfigResponseInput `pulumi:"encryptionConfig"`
-	// Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-	EnvironmentSize pulumi.StringInput `pulumi:"environmentSize"`
-	// The Kubernetes Engine cluster used to run this environment.
-	GkeCluster pulumi.StringInput `pulumi:"gkeCluster"`
-	// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window will be applied. The default value is Saturday and Sunday 00-06 GMT.
-	MaintenanceWindow MaintenanceWindowResponseInput `pulumi:"maintenanceWindow"`
-	// The configuration used for the Kubernetes Engine cluster.
-	NodeConfig NodeConfigResponseInput `pulumi:"nodeConfig"`
-	// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-	NodeCount pulumi.IntInput `pulumi:"nodeCount"`
-	// The configuration used for the Private IP Cloud Composer environment.
-	PrivateEnvironmentConfig PrivateEnvironmentConfigResponseInput `pulumi:"privateEnvironmentConfig"`
-	// The configuration settings for software inside the environment.
-	SoftwareConfig SoftwareConfigResponseInput `pulumi:"softwareConfig"`
-	// Optional. The configuration settings for the Airflow web server App Engine instance.
-	WebServerConfig WebServerConfigResponseInput `pulumi:"webServerConfig"`
-	// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
-	WebServerNetworkAccessControl WebServerNetworkAccessControlResponseInput `pulumi:"webServerNetworkAccessControl"`
-	// Optional. The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. The GKE cluster runs Airflow scheduler, web server and workers workloads. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-	WorkloadsConfig WorkloadsConfigResponseInput `pulumi:"workloadsConfig"`
-}
-
-func (EnvironmentConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnvironmentConfigResponse)(nil)).Elem()
-}
-
-func (i EnvironmentConfigResponseArgs) ToEnvironmentConfigResponseOutput() EnvironmentConfigResponseOutput {
-	return i.ToEnvironmentConfigResponseOutputWithContext(context.Background())
-}
-
-func (i EnvironmentConfigResponseArgs) ToEnvironmentConfigResponseOutputWithContext(ctx context.Context) EnvironmentConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigResponseOutput)
-}
-
-func (i EnvironmentConfigResponseArgs) ToEnvironmentConfigResponsePtrOutput() EnvironmentConfigResponsePtrOutput {
-	return i.ToEnvironmentConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i EnvironmentConfigResponseArgs) ToEnvironmentConfigResponsePtrOutputWithContext(ctx context.Context) EnvironmentConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigResponseOutput).ToEnvironmentConfigResponsePtrOutputWithContext(ctx)
-}
-
-// EnvironmentConfigResponsePtrInput is an input type that accepts EnvironmentConfigResponseArgs, EnvironmentConfigResponsePtr and EnvironmentConfigResponsePtrOutput values.
-// You can construct a concrete instance of `EnvironmentConfigResponsePtrInput` via:
-//
-//          EnvironmentConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type EnvironmentConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToEnvironmentConfigResponsePtrOutput() EnvironmentConfigResponsePtrOutput
-	ToEnvironmentConfigResponsePtrOutputWithContext(context.Context) EnvironmentConfigResponsePtrOutput
-}
-
-type environmentConfigResponsePtrType EnvironmentConfigResponseArgs
-
-func EnvironmentConfigResponsePtr(v *EnvironmentConfigResponseArgs) EnvironmentConfigResponsePtrInput {
-	return (*environmentConfigResponsePtrType)(v)
-}
-
-func (*environmentConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnvironmentConfigResponse)(nil)).Elem()
-}
-
-func (i *environmentConfigResponsePtrType) ToEnvironmentConfigResponsePtrOutput() EnvironmentConfigResponsePtrOutput {
-	return i.ToEnvironmentConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *environmentConfigResponsePtrType) ToEnvironmentConfigResponsePtrOutputWithContext(ctx context.Context) EnvironmentConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigResponsePtrOutput)
-}
-
 // Configuration information for an environment.
 type EnvironmentConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -1259,16 +879,6 @@ func (o EnvironmentConfigResponseOutput) ToEnvironmentConfigResponseOutput() Env
 
 func (o EnvironmentConfigResponseOutput) ToEnvironmentConfigResponseOutputWithContext(ctx context.Context) EnvironmentConfigResponseOutput {
 	return o
-}
-
-func (o EnvironmentConfigResponseOutput) ToEnvironmentConfigResponsePtrOutput() EnvironmentConfigResponsePtrOutput {
-	return o.ToEnvironmentConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o EnvironmentConfigResponseOutput) ToEnvironmentConfigResponsePtrOutputWithContext(ctx context.Context) EnvironmentConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigResponse) *EnvironmentConfigResponse {
-		return &v
-	}).(EnvironmentConfigResponsePtrOutput)
 }
 
 // The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface)).
@@ -1341,170 +951,6 @@ func (o EnvironmentConfigResponseOutput) WebServerNetworkAccessControl() WebServ
 // Optional. The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. The GKE cluster runs Airflow scheduler, web server and workers workloads. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 func (o EnvironmentConfigResponseOutput) WorkloadsConfig() WorkloadsConfigResponseOutput {
 	return o.ApplyT(func(v EnvironmentConfigResponse) WorkloadsConfigResponse { return v.WorkloadsConfig }).(WorkloadsConfigResponseOutput)
-}
-
-type EnvironmentConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (EnvironmentConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnvironmentConfigResponse)(nil)).Elem()
-}
-
-func (o EnvironmentConfigResponsePtrOutput) ToEnvironmentConfigResponsePtrOutput() EnvironmentConfigResponsePtrOutput {
-	return o
-}
-
-func (o EnvironmentConfigResponsePtrOutput) ToEnvironmentConfigResponsePtrOutputWithContext(ctx context.Context) EnvironmentConfigResponsePtrOutput {
-	return o
-}
-
-func (o EnvironmentConfigResponsePtrOutput) Elem() EnvironmentConfigResponseOutput {
-	return o.ApplyT(func(v *EnvironmentConfigResponse) EnvironmentConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret EnvironmentConfigResponse
-		return ret
-	}).(EnvironmentConfigResponseOutput)
-}
-
-// The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface)).
-func (o EnvironmentConfigResponsePtrOutput) AirflowUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EnvironmentConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AirflowUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with the given prefix.
-func (o EnvironmentConfigResponsePtrOutput) DagGcsPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EnvironmentConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DagGcsPrefix
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-func (o EnvironmentConfigResponsePtrOutput) DatabaseConfig() DatabaseConfigResponsePtrOutput {
-	return o.ApplyT(func(v *EnvironmentConfigResponse) *DatabaseConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DatabaseConfig
-	}).(DatabaseConfigResponsePtrOutput)
-}
-
-// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
-func (o EnvironmentConfigResponsePtrOutput) EncryptionConfig() EncryptionConfigResponsePtrOutput {
-	return o.ApplyT(func(v *EnvironmentConfigResponse) *EncryptionConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.EncryptionConfig
-	}).(EncryptionConfigResponsePtrOutput)
-}
-
-// Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-func (o EnvironmentConfigResponsePtrOutput) EnvironmentSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EnvironmentConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EnvironmentSize
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Kubernetes Engine cluster used to run this environment.
-func (o EnvironmentConfigResponsePtrOutput) GkeCluster() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EnvironmentConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.GkeCluster
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window will be applied. The default value is Saturday and Sunday 00-06 GMT.
-func (o EnvironmentConfigResponsePtrOutput) MaintenanceWindow() MaintenanceWindowResponsePtrOutput {
-	return o.ApplyT(func(v *EnvironmentConfigResponse) *MaintenanceWindowResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.MaintenanceWindow
-	}).(MaintenanceWindowResponsePtrOutput)
-}
-
-// The configuration used for the Kubernetes Engine cluster.
-func (o EnvironmentConfigResponsePtrOutput) NodeConfig() NodeConfigResponsePtrOutput {
-	return o.ApplyT(func(v *EnvironmentConfigResponse) *NodeConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.NodeConfig
-	}).(NodeConfigResponsePtrOutput)
-}
-
-// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-func (o EnvironmentConfigResponsePtrOutput) NodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *EnvironmentConfigResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.NodeCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// The configuration used for the Private IP Cloud Composer environment.
-func (o EnvironmentConfigResponsePtrOutput) PrivateEnvironmentConfig() PrivateEnvironmentConfigResponsePtrOutput {
-	return o.ApplyT(func(v *EnvironmentConfigResponse) *PrivateEnvironmentConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.PrivateEnvironmentConfig
-	}).(PrivateEnvironmentConfigResponsePtrOutput)
-}
-
-// The configuration settings for software inside the environment.
-func (o EnvironmentConfigResponsePtrOutput) SoftwareConfig() SoftwareConfigResponsePtrOutput {
-	return o.ApplyT(func(v *EnvironmentConfigResponse) *SoftwareConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.SoftwareConfig
-	}).(SoftwareConfigResponsePtrOutput)
-}
-
-// Optional. The configuration settings for the Airflow web server App Engine instance.
-func (o EnvironmentConfigResponsePtrOutput) WebServerConfig() WebServerConfigResponsePtrOutput {
-	return o.ApplyT(func(v *EnvironmentConfigResponse) *WebServerConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.WebServerConfig
-	}).(WebServerConfigResponsePtrOutput)
-}
-
-// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
-func (o EnvironmentConfigResponsePtrOutput) WebServerNetworkAccessControl() WebServerNetworkAccessControlResponsePtrOutput {
-	return o.ApplyT(func(v *EnvironmentConfigResponse) *WebServerNetworkAccessControlResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.WebServerNetworkAccessControl
-	}).(WebServerNetworkAccessControlResponsePtrOutput)
-}
-
-// Optional. The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. The GKE cluster runs Airflow scheduler, web server and workers workloads. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-func (o EnvironmentConfigResponsePtrOutput) WorkloadsConfig() WorkloadsConfigResponsePtrOutput {
-	return o.ApplyT(func(v *EnvironmentConfigResponse) *WorkloadsConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.WorkloadsConfig
-	}).(WorkloadsConfigResponsePtrOutput)
 }
 
 // Configuration for controlling how IPs are allocated in the GKE cluster running the Apache Airflow software.
@@ -1737,84 +1183,6 @@ type IPAllocationPolicyResponse struct {
 	UseIpAliases bool `pulumi:"useIpAliases"`
 }
 
-// IPAllocationPolicyResponseInput is an input type that accepts IPAllocationPolicyResponseArgs and IPAllocationPolicyResponseOutput values.
-// You can construct a concrete instance of `IPAllocationPolicyResponseInput` via:
-//
-//          IPAllocationPolicyResponseArgs{...}
-type IPAllocationPolicyResponseInput interface {
-	pulumi.Input
-
-	ToIPAllocationPolicyResponseOutput() IPAllocationPolicyResponseOutput
-	ToIPAllocationPolicyResponseOutputWithContext(context.Context) IPAllocationPolicyResponseOutput
-}
-
-// Configuration for controlling how IPs are allocated in the GKE cluster running the Apache Airflow software.
-type IPAllocationPolicyResponseArgs struct {
-	// Optional. The IP address range used to allocate IP addresses to pods in the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
-	ClusterIpv4CidrBlock pulumi.StringInput `pulumi:"clusterIpv4CidrBlock"`
-	// Optional. The name of the GKE cluster's secondary range used to allocate IP addresses to pods. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
-	ClusterSecondaryRangeName pulumi.StringInput `pulumi:"clusterSecondaryRangeName"`
-	// Optional. The IP address range of the services IP addresses in this GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
-	ServicesIpv4CidrBlock pulumi.StringInput `pulumi:"servicesIpv4CidrBlock"`
-	// Optional. The name of the services' secondary range used to allocate IP addresses to the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
-	ServicesSecondaryRangeName pulumi.StringInput `pulumi:"servicesSecondaryRangeName"`
-	// Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
-	UseIpAliases pulumi.BoolInput `pulumi:"useIpAliases"`
-}
-
-func (IPAllocationPolicyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IPAllocationPolicyResponse)(nil)).Elem()
-}
-
-func (i IPAllocationPolicyResponseArgs) ToIPAllocationPolicyResponseOutput() IPAllocationPolicyResponseOutput {
-	return i.ToIPAllocationPolicyResponseOutputWithContext(context.Background())
-}
-
-func (i IPAllocationPolicyResponseArgs) ToIPAllocationPolicyResponseOutputWithContext(ctx context.Context) IPAllocationPolicyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IPAllocationPolicyResponseOutput)
-}
-
-func (i IPAllocationPolicyResponseArgs) ToIPAllocationPolicyResponsePtrOutput() IPAllocationPolicyResponsePtrOutput {
-	return i.ToIPAllocationPolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i IPAllocationPolicyResponseArgs) ToIPAllocationPolicyResponsePtrOutputWithContext(ctx context.Context) IPAllocationPolicyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IPAllocationPolicyResponseOutput).ToIPAllocationPolicyResponsePtrOutputWithContext(ctx)
-}
-
-// IPAllocationPolicyResponsePtrInput is an input type that accepts IPAllocationPolicyResponseArgs, IPAllocationPolicyResponsePtr and IPAllocationPolicyResponsePtrOutput values.
-// You can construct a concrete instance of `IPAllocationPolicyResponsePtrInput` via:
-//
-//          IPAllocationPolicyResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type IPAllocationPolicyResponsePtrInput interface {
-	pulumi.Input
-
-	ToIPAllocationPolicyResponsePtrOutput() IPAllocationPolicyResponsePtrOutput
-	ToIPAllocationPolicyResponsePtrOutputWithContext(context.Context) IPAllocationPolicyResponsePtrOutput
-}
-
-type ipallocationPolicyResponsePtrType IPAllocationPolicyResponseArgs
-
-func IPAllocationPolicyResponsePtr(v *IPAllocationPolicyResponseArgs) IPAllocationPolicyResponsePtrInput {
-	return (*ipallocationPolicyResponsePtrType)(v)
-}
-
-func (*ipallocationPolicyResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IPAllocationPolicyResponse)(nil)).Elem()
-}
-
-func (i *ipallocationPolicyResponsePtrType) ToIPAllocationPolicyResponsePtrOutput() IPAllocationPolicyResponsePtrOutput {
-	return i.ToIPAllocationPolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *ipallocationPolicyResponsePtrType) ToIPAllocationPolicyResponsePtrOutputWithContext(ctx context.Context) IPAllocationPolicyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IPAllocationPolicyResponsePtrOutput)
-}
-
 // Configuration for controlling how IPs are allocated in the GKE cluster running the Apache Airflow software.
 type IPAllocationPolicyResponseOutput struct{ *pulumi.OutputState }
 
@@ -1828,16 +1196,6 @@ func (o IPAllocationPolicyResponseOutput) ToIPAllocationPolicyResponseOutput() I
 
 func (o IPAllocationPolicyResponseOutput) ToIPAllocationPolicyResponseOutputWithContext(ctx context.Context) IPAllocationPolicyResponseOutput {
 	return o
-}
-
-func (o IPAllocationPolicyResponseOutput) ToIPAllocationPolicyResponsePtrOutput() IPAllocationPolicyResponsePtrOutput {
-	return o.ToIPAllocationPolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (o IPAllocationPolicyResponseOutput) ToIPAllocationPolicyResponsePtrOutputWithContext(ctx context.Context) IPAllocationPolicyResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IPAllocationPolicyResponse) *IPAllocationPolicyResponse {
-		return &v
-	}).(IPAllocationPolicyResponsePtrOutput)
 }
 
 // Optional. The IP address range used to allocate IP addresses to pods in the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
@@ -1863,80 +1221,6 @@ func (o IPAllocationPolicyResponseOutput) ServicesSecondaryRangeName() pulumi.St
 // Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
 func (o IPAllocationPolicyResponseOutput) UseIpAliases() pulumi.BoolOutput {
 	return o.ApplyT(func(v IPAllocationPolicyResponse) bool { return v.UseIpAliases }).(pulumi.BoolOutput)
-}
-
-type IPAllocationPolicyResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (IPAllocationPolicyResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IPAllocationPolicyResponse)(nil)).Elem()
-}
-
-func (o IPAllocationPolicyResponsePtrOutput) ToIPAllocationPolicyResponsePtrOutput() IPAllocationPolicyResponsePtrOutput {
-	return o
-}
-
-func (o IPAllocationPolicyResponsePtrOutput) ToIPAllocationPolicyResponsePtrOutputWithContext(ctx context.Context) IPAllocationPolicyResponsePtrOutput {
-	return o
-}
-
-func (o IPAllocationPolicyResponsePtrOutput) Elem() IPAllocationPolicyResponseOutput {
-	return o.ApplyT(func(v *IPAllocationPolicyResponse) IPAllocationPolicyResponse {
-		if v != nil {
-			return *v
-		}
-		var ret IPAllocationPolicyResponse
-		return ret
-	}).(IPAllocationPolicyResponseOutput)
-}
-
-// Optional. The IP address range used to allocate IP addresses to pods in the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
-func (o IPAllocationPolicyResponsePtrOutput) ClusterIpv4CidrBlock() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IPAllocationPolicyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClusterIpv4CidrBlock
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The name of the GKE cluster's secondary range used to allocate IP addresses to pods. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
-func (o IPAllocationPolicyResponsePtrOutput) ClusterSecondaryRangeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IPAllocationPolicyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClusterSecondaryRangeName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The IP address range of the services IP addresses in this GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
-func (o IPAllocationPolicyResponsePtrOutput) ServicesIpv4CidrBlock() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IPAllocationPolicyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ServicesIpv4CidrBlock
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The name of the services' secondary range used to allocate IP addresses to the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
-func (o IPAllocationPolicyResponsePtrOutput) ServicesSecondaryRangeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IPAllocationPolicyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ServicesSecondaryRangeName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
-func (o IPAllocationPolicyResponsePtrOutput) UseIpAliases() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *IPAllocationPolicyResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.UseIpAliases
-	}).(pulumi.BoolPtrOutput)
 }
 
 // The configuration settings for Cloud Composer maintenance window. The following example: ```{ "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" }``` would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
@@ -2127,80 +1411,6 @@ type MaintenanceWindowResponse struct {
 	StartTime string `pulumi:"startTime"`
 }
 
-// MaintenanceWindowResponseInput is an input type that accepts MaintenanceWindowResponseArgs and MaintenanceWindowResponseOutput values.
-// You can construct a concrete instance of `MaintenanceWindowResponseInput` via:
-//
-//          MaintenanceWindowResponseArgs{...}
-type MaintenanceWindowResponseInput interface {
-	pulumi.Input
-
-	ToMaintenanceWindowResponseOutput() MaintenanceWindowResponseOutput
-	ToMaintenanceWindowResponseOutputWithContext(context.Context) MaintenanceWindowResponseOutput
-}
-
-// The configuration settings for Cloud Composer maintenance window. The following example: ```{ "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" }``` would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
-type MaintenanceWindowResponseArgs struct {
-	// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to `start_time`.
-	EndTime pulumi.StringInput `pulumi:"endTime"`
-	// Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
-	Recurrence pulumi.StringInput `pulumi:"recurrence"`
-	// Start time of the first recurrence of the maintenance window.
-	StartTime pulumi.StringInput `pulumi:"startTime"`
-}
-
-func (MaintenanceWindowResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MaintenanceWindowResponse)(nil)).Elem()
-}
-
-func (i MaintenanceWindowResponseArgs) ToMaintenanceWindowResponseOutput() MaintenanceWindowResponseOutput {
-	return i.ToMaintenanceWindowResponseOutputWithContext(context.Background())
-}
-
-func (i MaintenanceWindowResponseArgs) ToMaintenanceWindowResponseOutputWithContext(ctx context.Context) MaintenanceWindowResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowResponseOutput)
-}
-
-func (i MaintenanceWindowResponseArgs) ToMaintenanceWindowResponsePtrOutput() MaintenanceWindowResponsePtrOutput {
-	return i.ToMaintenanceWindowResponsePtrOutputWithContext(context.Background())
-}
-
-func (i MaintenanceWindowResponseArgs) ToMaintenanceWindowResponsePtrOutputWithContext(ctx context.Context) MaintenanceWindowResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowResponseOutput).ToMaintenanceWindowResponsePtrOutputWithContext(ctx)
-}
-
-// MaintenanceWindowResponsePtrInput is an input type that accepts MaintenanceWindowResponseArgs, MaintenanceWindowResponsePtr and MaintenanceWindowResponsePtrOutput values.
-// You can construct a concrete instance of `MaintenanceWindowResponsePtrInput` via:
-//
-//          MaintenanceWindowResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type MaintenanceWindowResponsePtrInput interface {
-	pulumi.Input
-
-	ToMaintenanceWindowResponsePtrOutput() MaintenanceWindowResponsePtrOutput
-	ToMaintenanceWindowResponsePtrOutputWithContext(context.Context) MaintenanceWindowResponsePtrOutput
-}
-
-type maintenanceWindowResponsePtrType MaintenanceWindowResponseArgs
-
-func MaintenanceWindowResponsePtr(v *MaintenanceWindowResponseArgs) MaintenanceWindowResponsePtrInput {
-	return (*maintenanceWindowResponsePtrType)(v)
-}
-
-func (*maintenanceWindowResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MaintenanceWindowResponse)(nil)).Elem()
-}
-
-func (i *maintenanceWindowResponsePtrType) ToMaintenanceWindowResponsePtrOutput() MaintenanceWindowResponsePtrOutput {
-	return i.ToMaintenanceWindowResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *maintenanceWindowResponsePtrType) ToMaintenanceWindowResponsePtrOutputWithContext(ctx context.Context) MaintenanceWindowResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowResponsePtrOutput)
-}
-
 // The configuration settings for Cloud Composer maintenance window. The following example: ```{ "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" }``` would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
 type MaintenanceWindowResponseOutput struct{ *pulumi.OutputState }
 
@@ -2216,16 +1426,6 @@ func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponseOutputWithCo
 	return o
 }
 
-func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponsePtrOutput() MaintenanceWindowResponsePtrOutput {
-	return o.ToMaintenanceWindowResponsePtrOutputWithContext(context.Background())
-}
-
-func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponsePtrOutputWithContext(ctx context.Context) MaintenanceWindowResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaintenanceWindowResponse) *MaintenanceWindowResponse {
-		return &v
-	}).(MaintenanceWindowResponsePtrOutput)
-}
-
 // Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to `start_time`.
 func (o MaintenanceWindowResponseOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v MaintenanceWindowResponse) string { return v.EndTime }).(pulumi.StringOutput)
@@ -2239,60 +1439,6 @@ func (o MaintenanceWindowResponseOutput) Recurrence() pulumi.StringOutput {
 // Start time of the first recurrence of the maintenance window.
 func (o MaintenanceWindowResponseOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v MaintenanceWindowResponse) string { return v.StartTime }).(pulumi.StringOutput)
-}
-
-type MaintenanceWindowResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (MaintenanceWindowResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MaintenanceWindowResponse)(nil)).Elem()
-}
-
-func (o MaintenanceWindowResponsePtrOutput) ToMaintenanceWindowResponsePtrOutput() MaintenanceWindowResponsePtrOutput {
-	return o
-}
-
-func (o MaintenanceWindowResponsePtrOutput) ToMaintenanceWindowResponsePtrOutputWithContext(ctx context.Context) MaintenanceWindowResponsePtrOutput {
-	return o
-}
-
-func (o MaintenanceWindowResponsePtrOutput) Elem() MaintenanceWindowResponseOutput {
-	return o.ApplyT(func(v *MaintenanceWindowResponse) MaintenanceWindowResponse {
-		if v != nil {
-			return *v
-		}
-		var ret MaintenanceWindowResponse
-		return ret
-	}).(MaintenanceWindowResponseOutput)
-}
-
-// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to `start_time`.
-func (o MaintenanceWindowResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MaintenanceWindowResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EndTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
-func (o MaintenanceWindowResponsePtrOutput) Recurrence() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MaintenanceWindowResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Recurrence
-	}).(pulumi.StringPtrOutput)
-}
-
-// Start time of the first recurrence of the maintenance window.
-func (o MaintenanceWindowResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MaintenanceWindowResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StartTime
-	}).(pulumi.StringPtrOutput)
 }
 
 // The configuration information for the Kubernetes Engine nodes running the Apache Airflow software.
@@ -2609,92 +1755,6 @@ type NodeConfigResponse struct {
 	Tags []string `pulumi:"tags"`
 }
 
-// NodeConfigResponseInput is an input type that accepts NodeConfigResponseArgs and NodeConfigResponseOutput values.
-// You can construct a concrete instance of `NodeConfigResponseInput` via:
-//
-//          NodeConfigResponseArgs{...}
-type NodeConfigResponseInput interface {
-	pulumi.Input
-
-	ToNodeConfigResponseOutput() NodeConfigResponseOutput
-	ToNodeConfigResponseOutputWithContext(context.Context) NodeConfigResponseOutput
-}
-
-// The configuration information for the Kubernetes Engine nodes running the Apache Airflow software.
-type NodeConfigResponseArgs struct {
-	// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-	DiskSizeGb pulumi.IntInput `pulumi:"diskSizeGb"`
-	// Optional. The configuration for controlling how IPs are allocated in the GKE cluster.
-	IpAllocationPolicy IPAllocationPolicyResponseInput `pulumi:"ipAllocationPolicy"`
-	// Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-	Location pulumi.StringInput `pulumi:"location"`
-	// Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The `machineType` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.location` are specified, this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location information from the specified field will be propagated to the unspecified field. The `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1". This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-	MachineType pulumi.StringInput `pulumi:"machineType"`
-	// Optional. The Compute Engine network to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/global/networks/{networkId}". If unspecified, the "default" network ID in the environment's project is used. If a [Custom Subnet Network](/vpc/docs/vpc#vpc_networks_and_subnets) is provided, `nodeConfig.subnetwork` must also be provided. For [Shared VPC](/vpc/docs/shared-vpc) subnetwork requirements, see `nodeConfig.subnetwork`.
-	Network pulumi.StringInput `pulumi:"network"`
-	// Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
-	// Optional. The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated.
-	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
-	// Optional. The Compute Engine subnetwork to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}" If a subnetwork is provided, `nodeConfig.network` must also be provided, and the subnetwork must belong to the enclosing environment's project and location.
-	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
-	// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-	Tags pulumi.StringArrayInput `pulumi:"tags"`
-}
-
-func (NodeConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeConfigResponse)(nil)).Elem()
-}
-
-func (i NodeConfigResponseArgs) ToNodeConfigResponseOutput() NodeConfigResponseOutput {
-	return i.ToNodeConfigResponseOutputWithContext(context.Background())
-}
-
-func (i NodeConfigResponseArgs) ToNodeConfigResponseOutputWithContext(ctx context.Context) NodeConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigResponseOutput)
-}
-
-func (i NodeConfigResponseArgs) ToNodeConfigResponsePtrOutput() NodeConfigResponsePtrOutput {
-	return i.ToNodeConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i NodeConfigResponseArgs) ToNodeConfigResponsePtrOutputWithContext(ctx context.Context) NodeConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigResponseOutput).ToNodeConfigResponsePtrOutputWithContext(ctx)
-}
-
-// NodeConfigResponsePtrInput is an input type that accepts NodeConfigResponseArgs, NodeConfigResponsePtr and NodeConfigResponsePtrOutput values.
-// You can construct a concrete instance of `NodeConfigResponsePtrInput` via:
-//
-//          NodeConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type NodeConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToNodeConfigResponsePtrOutput() NodeConfigResponsePtrOutput
-	ToNodeConfigResponsePtrOutputWithContext(context.Context) NodeConfigResponsePtrOutput
-}
-
-type nodeConfigResponsePtrType NodeConfigResponseArgs
-
-func NodeConfigResponsePtr(v *NodeConfigResponseArgs) NodeConfigResponsePtrInput {
-	return (*nodeConfigResponsePtrType)(v)
-}
-
-func (*nodeConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NodeConfigResponse)(nil)).Elem()
-}
-
-func (i *nodeConfigResponsePtrType) ToNodeConfigResponsePtrOutput() NodeConfigResponsePtrOutput {
-	return i.ToNodeConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *nodeConfigResponsePtrType) ToNodeConfigResponsePtrOutputWithContext(ctx context.Context) NodeConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigResponsePtrOutput)
-}
-
 // The configuration information for the Kubernetes Engine nodes running the Apache Airflow software.
 type NodeConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -2708,16 +1768,6 @@ func (o NodeConfigResponseOutput) ToNodeConfigResponseOutput() NodeConfigRespons
 
 func (o NodeConfigResponseOutput) ToNodeConfigResponseOutputWithContext(ctx context.Context) NodeConfigResponseOutput {
 	return o
-}
-
-func (o NodeConfigResponseOutput) ToNodeConfigResponsePtrOutput() NodeConfigResponsePtrOutput {
-	return o.ToNodeConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o NodeConfigResponseOutput) ToNodeConfigResponsePtrOutputWithContext(ctx context.Context) NodeConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeConfigResponse) *NodeConfigResponse {
-		return &v
-	}).(NodeConfigResponsePtrOutput)
 }
 
 // Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -2763,120 +1813,6 @@ func (o NodeConfigResponseOutput) Subnetwork() pulumi.StringOutput {
 // Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o NodeConfigResponseOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NodeConfigResponse) []string { return v.Tags }).(pulumi.StringArrayOutput)
-}
-
-type NodeConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (NodeConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NodeConfigResponse)(nil)).Elem()
-}
-
-func (o NodeConfigResponsePtrOutput) ToNodeConfigResponsePtrOutput() NodeConfigResponsePtrOutput {
-	return o
-}
-
-func (o NodeConfigResponsePtrOutput) ToNodeConfigResponsePtrOutputWithContext(ctx context.Context) NodeConfigResponsePtrOutput {
-	return o
-}
-
-func (o NodeConfigResponsePtrOutput) Elem() NodeConfigResponseOutput {
-	return o.ApplyT(func(v *NodeConfigResponse) NodeConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret NodeConfigResponse
-		return ret
-	}).(NodeConfigResponseOutput)
-}
-
-// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-func (o NodeConfigResponsePtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *NodeConfigResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.DiskSizeGb
-	}).(pulumi.IntPtrOutput)
-}
-
-// Optional. The configuration for controlling how IPs are allocated in the GKE cluster.
-func (o NodeConfigResponsePtrOutput) IpAllocationPolicy() IPAllocationPolicyResponsePtrOutput {
-	return o.ApplyT(func(v *NodeConfigResponse) *IPAllocationPolicyResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.IpAllocationPolicy
-	}).(IPAllocationPolicyResponsePtrOutput)
-}
-
-// Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-func (o NodeConfigResponsePtrOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NodeConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Location
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The `machineType` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.location` are specified, this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location information from the specified field will be propagated to the unspecified field. The `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1". This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-func (o NodeConfigResponsePtrOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NodeConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MachineType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The Compute Engine network to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/global/networks/{networkId}". If unspecified, the "default" network ID in the environment's project is used. If a [Custom Subnet Network](/vpc/docs/vpc#vpc_networks_and_subnets) is provided, `nodeConfig.subnetwork` must also be provided. For [Shared VPC](/vpc/docs/shared-vpc) subnetwork requirements, see `nodeConfig.subnetwork`.
-func (o NodeConfigResponsePtrOutput) Network() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NodeConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Network
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-func (o NodeConfigResponsePtrOutput) OauthScopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *NodeConfigResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.OauthScopes
-	}).(pulumi.StringArrayOutput)
-}
-
-// Optional. The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated.
-func (o NodeConfigResponsePtrOutput) ServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NodeConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ServiceAccount
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The Compute Engine subnetwork to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}" If a subnetwork is provided, `nodeConfig.network` must also be provided, and the subnetwork must belong to the enclosing environment's project and location.
-func (o NodeConfigResponsePtrOutput) Subnetwork() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NodeConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Subnetwork
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-func (o NodeConfigResponsePtrOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *NodeConfigResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Tags
-	}).(pulumi.StringArrayOutput)
 }
 
 // Configuration options for the private GKE cluster in a Cloud Composer environment.
@@ -3048,80 +1984,6 @@ type PrivateClusterConfigResponse struct {
 	MasterIpv4ReservedRange string `pulumi:"masterIpv4ReservedRange"`
 }
 
-// PrivateClusterConfigResponseInput is an input type that accepts PrivateClusterConfigResponseArgs and PrivateClusterConfigResponseOutput values.
-// You can construct a concrete instance of `PrivateClusterConfigResponseInput` via:
-//
-//          PrivateClusterConfigResponseArgs{...}
-type PrivateClusterConfigResponseInput interface {
-	pulumi.Input
-
-	ToPrivateClusterConfigResponseOutput() PrivateClusterConfigResponseOutput
-	ToPrivateClusterConfigResponseOutputWithContext(context.Context) PrivateClusterConfigResponseOutput
-}
-
-// Configuration options for the private GKE cluster in a Cloud Composer environment.
-type PrivateClusterConfigResponseArgs struct {
-	// Optional. If `true`, access to the public endpoint of the GKE cluster is denied.
-	EnablePrivateEndpoint pulumi.BoolInput `pulumi:"enablePrivateEndpoint"`
-	// Optional. The CIDR block from which IPv4 range for GKE master will be reserved. If left blank, the default value of '172.16.0.0/23' is used.
-	MasterIpv4CidrBlock pulumi.StringInput `pulumi:"masterIpv4CidrBlock"`
-	// The IP range in CIDR notation to use for the hosted master network. This range is used for assigning internal IP addresses to the GKE cluster master or set of masters and to the internal load balancer virtual IP. This range must not overlap with any other ranges in use within the cluster's network.
-	MasterIpv4ReservedRange pulumi.StringInput `pulumi:"masterIpv4ReservedRange"`
-}
-
-func (PrivateClusterConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateClusterConfigResponse)(nil)).Elem()
-}
-
-func (i PrivateClusterConfigResponseArgs) ToPrivateClusterConfigResponseOutput() PrivateClusterConfigResponseOutput {
-	return i.ToPrivateClusterConfigResponseOutputWithContext(context.Background())
-}
-
-func (i PrivateClusterConfigResponseArgs) ToPrivateClusterConfigResponseOutputWithContext(ctx context.Context) PrivateClusterConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateClusterConfigResponseOutput)
-}
-
-func (i PrivateClusterConfigResponseArgs) ToPrivateClusterConfigResponsePtrOutput() PrivateClusterConfigResponsePtrOutput {
-	return i.ToPrivateClusterConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PrivateClusterConfigResponseArgs) ToPrivateClusterConfigResponsePtrOutputWithContext(ctx context.Context) PrivateClusterConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateClusterConfigResponseOutput).ToPrivateClusterConfigResponsePtrOutputWithContext(ctx)
-}
-
-// PrivateClusterConfigResponsePtrInput is an input type that accepts PrivateClusterConfigResponseArgs, PrivateClusterConfigResponsePtr and PrivateClusterConfigResponsePtrOutput values.
-// You can construct a concrete instance of `PrivateClusterConfigResponsePtrInput` via:
-//
-//          PrivateClusterConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PrivateClusterConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToPrivateClusterConfigResponsePtrOutput() PrivateClusterConfigResponsePtrOutput
-	ToPrivateClusterConfigResponsePtrOutputWithContext(context.Context) PrivateClusterConfigResponsePtrOutput
-}
-
-type privateClusterConfigResponsePtrType PrivateClusterConfigResponseArgs
-
-func PrivateClusterConfigResponsePtr(v *PrivateClusterConfigResponseArgs) PrivateClusterConfigResponsePtrInput {
-	return (*privateClusterConfigResponsePtrType)(v)
-}
-
-func (*privateClusterConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateClusterConfigResponse)(nil)).Elem()
-}
-
-func (i *privateClusterConfigResponsePtrType) ToPrivateClusterConfigResponsePtrOutput() PrivateClusterConfigResponsePtrOutput {
-	return i.ToPrivateClusterConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *privateClusterConfigResponsePtrType) ToPrivateClusterConfigResponsePtrOutputWithContext(ctx context.Context) PrivateClusterConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateClusterConfigResponsePtrOutput)
-}
-
 // Configuration options for the private GKE cluster in a Cloud Composer environment.
 type PrivateClusterConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -3137,16 +1999,6 @@ func (o PrivateClusterConfigResponseOutput) ToPrivateClusterConfigResponseOutput
 	return o
 }
 
-func (o PrivateClusterConfigResponseOutput) ToPrivateClusterConfigResponsePtrOutput() PrivateClusterConfigResponsePtrOutput {
-	return o.ToPrivateClusterConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PrivateClusterConfigResponseOutput) ToPrivateClusterConfigResponsePtrOutputWithContext(ctx context.Context) PrivateClusterConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateClusterConfigResponse) *PrivateClusterConfigResponse {
-		return &v
-	}).(PrivateClusterConfigResponsePtrOutput)
-}
-
 // Optional. If `true`, access to the public endpoint of the GKE cluster is denied.
 func (o PrivateClusterConfigResponseOutput) EnablePrivateEndpoint() pulumi.BoolOutput {
 	return o.ApplyT(func(v PrivateClusterConfigResponse) bool { return v.EnablePrivateEndpoint }).(pulumi.BoolOutput)
@@ -3160,60 +2012,6 @@ func (o PrivateClusterConfigResponseOutput) MasterIpv4CidrBlock() pulumi.StringO
 // The IP range in CIDR notation to use for the hosted master network. This range is used for assigning internal IP addresses to the GKE cluster master or set of masters and to the internal load balancer virtual IP. This range must not overlap with any other ranges in use within the cluster's network.
 func (o PrivateClusterConfigResponseOutput) MasterIpv4ReservedRange() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateClusterConfigResponse) string { return v.MasterIpv4ReservedRange }).(pulumi.StringOutput)
-}
-
-type PrivateClusterConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateClusterConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateClusterConfigResponse)(nil)).Elem()
-}
-
-func (o PrivateClusterConfigResponsePtrOutput) ToPrivateClusterConfigResponsePtrOutput() PrivateClusterConfigResponsePtrOutput {
-	return o
-}
-
-func (o PrivateClusterConfigResponsePtrOutput) ToPrivateClusterConfigResponsePtrOutputWithContext(ctx context.Context) PrivateClusterConfigResponsePtrOutput {
-	return o
-}
-
-func (o PrivateClusterConfigResponsePtrOutput) Elem() PrivateClusterConfigResponseOutput {
-	return o.ApplyT(func(v *PrivateClusterConfigResponse) PrivateClusterConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PrivateClusterConfigResponse
-		return ret
-	}).(PrivateClusterConfigResponseOutput)
-}
-
-// Optional. If `true`, access to the public endpoint of the GKE cluster is denied.
-func (o PrivateClusterConfigResponsePtrOutput) EnablePrivateEndpoint() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PrivateClusterConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.EnablePrivateEndpoint
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Optional. The CIDR block from which IPv4 range for GKE master will be reserved. If left blank, the default value of '172.16.0.0/23' is used.
-func (o PrivateClusterConfigResponsePtrOutput) MasterIpv4CidrBlock() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateClusterConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MasterIpv4CidrBlock
-	}).(pulumi.StringPtrOutput)
-}
-
-// The IP range in CIDR notation to use for the hosted master network. This range is used for assigning internal IP addresses to the GKE cluster master or set of masters and to the internal load balancer virtual IP. This range must not overlap with any other ranges in use within the cluster's network.
-func (o PrivateClusterConfigResponsePtrOutput) MasterIpv4ReservedRange() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateClusterConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MasterIpv4ReservedRange
-	}).(pulumi.StringPtrOutput)
 }
 
 // The configuration information for configuring a Private IP Cloud Composer environment.
@@ -3450,88 +2248,6 @@ type PrivateEnvironmentConfigResponse struct {
 	WebServerIpv4ReservedRange string `pulumi:"webServerIpv4ReservedRange"`
 }
 
-// PrivateEnvironmentConfigResponseInput is an input type that accepts PrivateEnvironmentConfigResponseArgs and PrivateEnvironmentConfigResponseOutput values.
-// You can construct a concrete instance of `PrivateEnvironmentConfigResponseInput` via:
-//
-//          PrivateEnvironmentConfigResponseArgs{...}
-type PrivateEnvironmentConfigResponseInput interface {
-	pulumi.Input
-
-	ToPrivateEnvironmentConfigResponseOutput() PrivateEnvironmentConfigResponseOutput
-	ToPrivateEnvironmentConfigResponseOutputWithContext(context.Context) PrivateEnvironmentConfigResponseOutput
-}
-
-// The configuration information for configuring a Private IP Cloud Composer environment.
-type PrivateEnvironmentConfigResponseArgs struct {
-	// Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-	CloudComposerNetworkIpv4CidrBlock pulumi.StringInput `pulumi:"cloudComposerNetworkIpv4CidrBlock"`
-	// The IP range reserved for the tenant project's Cloud Composer network. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-	CloudComposerNetworkIpv4ReservedRange pulumi.StringInput `pulumi:"cloudComposerNetworkIpv4ReservedRange"`
-	// Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`.
-	CloudSqlIpv4CidrBlock pulumi.StringInput `pulumi:"cloudSqlIpv4CidrBlock"`
-	// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-	EnablePrivateEnvironment pulumi.BoolInput `pulumi:"enablePrivateEnvironment"`
-	// Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
-	PrivateClusterConfig PrivateClusterConfigResponseInput `pulumi:"privateClusterConfig"`
-	// Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-	WebServerIpv4CidrBlock pulumi.StringInput `pulumi:"webServerIpv4CidrBlock"`
-	// The IP range reserved for the tenant project's App Engine VMs. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-	WebServerIpv4ReservedRange pulumi.StringInput `pulumi:"webServerIpv4ReservedRange"`
-}
-
-func (PrivateEnvironmentConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEnvironmentConfigResponse)(nil)).Elem()
-}
-
-func (i PrivateEnvironmentConfigResponseArgs) ToPrivateEnvironmentConfigResponseOutput() PrivateEnvironmentConfigResponseOutput {
-	return i.ToPrivateEnvironmentConfigResponseOutputWithContext(context.Background())
-}
-
-func (i PrivateEnvironmentConfigResponseArgs) ToPrivateEnvironmentConfigResponseOutputWithContext(ctx context.Context) PrivateEnvironmentConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateEnvironmentConfigResponseOutput)
-}
-
-func (i PrivateEnvironmentConfigResponseArgs) ToPrivateEnvironmentConfigResponsePtrOutput() PrivateEnvironmentConfigResponsePtrOutput {
-	return i.ToPrivateEnvironmentConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PrivateEnvironmentConfigResponseArgs) ToPrivateEnvironmentConfigResponsePtrOutputWithContext(ctx context.Context) PrivateEnvironmentConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateEnvironmentConfigResponseOutput).ToPrivateEnvironmentConfigResponsePtrOutputWithContext(ctx)
-}
-
-// PrivateEnvironmentConfigResponsePtrInput is an input type that accepts PrivateEnvironmentConfigResponseArgs, PrivateEnvironmentConfigResponsePtr and PrivateEnvironmentConfigResponsePtrOutput values.
-// You can construct a concrete instance of `PrivateEnvironmentConfigResponsePtrInput` via:
-//
-//          PrivateEnvironmentConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PrivateEnvironmentConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToPrivateEnvironmentConfigResponsePtrOutput() PrivateEnvironmentConfigResponsePtrOutput
-	ToPrivateEnvironmentConfigResponsePtrOutputWithContext(context.Context) PrivateEnvironmentConfigResponsePtrOutput
-}
-
-type privateEnvironmentConfigResponsePtrType PrivateEnvironmentConfigResponseArgs
-
-func PrivateEnvironmentConfigResponsePtr(v *PrivateEnvironmentConfigResponseArgs) PrivateEnvironmentConfigResponsePtrInput {
-	return (*privateEnvironmentConfigResponsePtrType)(v)
-}
-
-func (*privateEnvironmentConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateEnvironmentConfigResponse)(nil)).Elem()
-}
-
-func (i *privateEnvironmentConfigResponsePtrType) ToPrivateEnvironmentConfigResponsePtrOutput() PrivateEnvironmentConfigResponsePtrOutput {
-	return i.ToPrivateEnvironmentConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *privateEnvironmentConfigResponsePtrType) ToPrivateEnvironmentConfigResponsePtrOutputWithContext(ctx context.Context) PrivateEnvironmentConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateEnvironmentConfigResponsePtrOutput)
-}
-
 // The configuration information for configuring a Private IP Cloud Composer environment.
 type PrivateEnvironmentConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -3545,16 +2261,6 @@ func (o PrivateEnvironmentConfigResponseOutput) ToPrivateEnvironmentConfigRespon
 
 func (o PrivateEnvironmentConfigResponseOutput) ToPrivateEnvironmentConfigResponseOutputWithContext(ctx context.Context) PrivateEnvironmentConfigResponseOutput {
 	return o
-}
-
-func (o PrivateEnvironmentConfigResponseOutput) ToPrivateEnvironmentConfigResponsePtrOutput() PrivateEnvironmentConfigResponsePtrOutput {
-	return o.ToPrivateEnvironmentConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PrivateEnvironmentConfigResponseOutput) ToPrivateEnvironmentConfigResponsePtrOutputWithContext(ctx context.Context) PrivateEnvironmentConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateEnvironmentConfigResponse) *PrivateEnvironmentConfigResponse {
-		return &v
-	}).(PrivateEnvironmentConfigResponsePtrOutput)
 }
 
 // Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
@@ -3590,100 +2296,6 @@ func (o PrivateEnvironmentConfigResponseOutput) WebServerIpv4CidrBlock() pulumi.
 // The IP range reserved for the tenant project's App Engine VMs. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o PrivateEnvironmentConfigResponseOutput) WebServerIpv4ReservedRange() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEnvironmentConfigResponse) string { return v.WebServerIpv4ReservedRange }).(pulumi.StringOutput)
-}
-
-type PrivateEnvironmentConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateEnvironmentConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateEnvironmentConfigResponse)(nil)).Elem()
-}
-
-func (o PrivateEnvironmentConfigResponsePtrOutput) ToPrivateEnvironmentConfigResponsePtrOutput() PrivateEnvironmentConfigResponsePtrOutput {
-	return o
-}
-
-func (o PrivateEnvironmentConfigResponsePtrOutput) ToPrivateEnvironmentConfigResponsePtrOutputWithContext(ctx context.Context) PrivateEnvironmentConfigResponsePtrOutput {
-	return o
-}
-
-func (o PrivateEnvironmentConfigResponsePtrOutput) Elem() PrivateEnvironmentConfigResponseOutput {
-	return o.ApplyT(func(v *PrivateEnvironmentConfigResponse) PrivateEnvironmentConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PrivateEnvironmentConfigResponse
-		return ret
-	}).(PrivateEnvironmentConfigResponseOutput)
-}
-
-// Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-func (o PrivateEnvironmentConfigResponsePtrOutput) CloudComposerNetworkIpv4CidrBlock() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEnvironmentConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CloudComposerNetworkIpv4CidrBlock
-	}).(pulumi.StringPtrOutput)
-}
-
-// The IP range reserved for the tenant project's Cloud Composer network. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-func (o PrivateEnvironmentConfigResponsePtrOutput) CloudComposerNetworkIpv4ReservedRange() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEnvironmentConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CloudComposerNetworkIpv4ReservedRange
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`.
-func (o PrivateEnvironmentConfigResponsePtrOutput) CloudSqlIpv4CidrBlock() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEnvironmentConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CloudSqlIpv4CidrBlock
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-func (o PrivateEnvironmentConfigResponsePtrOutput) EnablePrivateEnvironment() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PrivateEnvironmentConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.EnablePrivateEnvironment
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
-func (o PrivateEnvironmentConfigResponsePtrOutput) PrivateClusterConfig() PrivateClusterConfigResponsePtrOutput {
-	return o.ApplyT(func(v *PrivateEnvironmentConfigResponse) *PrivateClusterConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.PrivateClusterConfig
-	}).(PrivateClusterConfigResponsePtrOutput)
-}
-
-// Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-func (o PrivateEnvironmentConfigResponsePtrOutput) WebServerIpv4CidrBlock() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEnvironmentConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.WebServerIpv4CidrBlock
-	}).(pulumi.StringPtrOutput)
-}
-
-// The IP range reserved for the tenant project's App Engine VMs. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-func (o PrivateEnvironmentConfigResponsePtrOutput) WebServerIpv4ReservedRange() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEnvironmentConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.WebServerIpv4ReservedRange
-	}).(pulumi.StringPtrOutput)
 }
 
 // Configuration for resources used by Airflow schedulers.
@@ -3895,82 +2507,6 @@ type SchedulerResourceResponse struct {
 	StorageGb float64 `pulumi:"storageGb"`
 }
 
-// SchedulerResourceResponseInput is an input type that accepts SchedulerResourceResponseArgs and SchedulerResourceResponseOutput values.
-// You can construct a concrete instance of `SchedulerResourceResponseInput` via:
-//
-//          SchedulerResourceResponseArgs{...}
-type SchedulerResourceResponseInput interface {
-	pulumi.Input
-
-	ToSchedulerResourceResponseOutput() SchedulerResourceResponseOutput
-	ToSchedulerResourceResponseOutputWithContext(context.Context) SchedulerResourceResponseOutput
-}
-
-// Configuration for resources used by Airflow schedulers.
-type SchedulerResourceResponseArgs struct {
-	// Optional. The number of schedulers.
-	Count pulumi.IntInput `pulumi:"count"`
-	// Optional. CPU request and limit for a single Airflow scheduler replica.
-	Cpu pulumi.Float64Input `pulumi:"cpu"`
-	// Optional. Memory (GB) request and limit for a single Airflow scheduler replica.
-	MemoryGb pulumi.Float64Input `pulumi:"memoryGb"`
-	// Optional. Storage (GB) request and limit for a single Airflow scheduler replica.
-	StorageGb pulumi.Float64Input `pulumi:"storageGb"`
-}
-
-func (SchedulerResourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SchedulerResourceResponse)(nil)).Elem()
-}
-
-func (i SchedulerResourceResponseArgs) ToSchedulerResourceResponseOutput() SchedulerResourceResponseOutput {
-	return i.ToSchedulerResourceResponseOutputWithContext(context.Background())
-}
-
-func (i SchedulerResourceResponseArgs) ToSchedulerResourceResponseOutputWithContext(ctx context.Context) SchedulerResourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchedulerResourceResponseOutput)
-}
-
-func (i SchedulerResourceResponseArgs) ToSchedulerResourceResponsePtrOutput() SchedulerResourceResponsePtrOutput {
-	return i.ToSchedulerResourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SchedulerResourceResponseArgs) ToSchedulerResourceResponsePtrOutputWithContext(ctx context.Context) SchedulerResourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchedulerResourceResponseOutput).ToSchedulerResourceResponsePtrOutputWithContext(ctx)
-}
-
-// SchedulerResourceResponsePtrInput is an input type that accepts SchedulerResourceResponseArgs, SchedulerResourceResponsePtr and SchedulerResourceResponsePtrOutput values.
-// You can construct a concrete instance of `SchedulerResourceResponsePtrInput` via:
-//
-//          SchedulerResourceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SchedulerResourceResponsePtrInput interface {
-	pulumi.Input
-
-	ToSchedulerResourceResponsePtrOutput() SchedulerResourceResponsePtrOutput
-	ToSchedulerResourceResponsePtrOutputWithContext(context.Context) SchedulerResourceResponsePtrOutput
-}
-
-type schedulerResourceResponsePtrType SchedulerResourceResponseArgs
-
-func SchedulerResourceResponsePtr(v *SchedulerResourceResponseArgs) SchedulerResourceResponsePtrInput {
-	return (*schedulerResourceResponsePtrType)(v)
-}
-
-func (*schedulerResourceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SchedulerResourceResponse)(nil)).Elem()
-}
-
-func (i *schedulerResourceResponsePtrType) ToSchedulerResourceResponsePtrOutput() SchedulerResourceResponsePtrOutput {
-	return i.ToSchedulerResourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *schedulerResourceResponsePtrType) ToSchedulerResourceResponsePtrOutputWithContext(ctx context.Context) SchedulerResourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchedulerResourceResponsePtrOutput)
-}
-
 // Configuration for resources used by Airflow schedulers.
 type SchedulerResourceResponseOutput struct{ *pulumi.OutputState }
 
@@ -3984,16 +2520,6 @@ func (o SchedulerResourceResponseOutput) ToSchedulerResourceResponseOutput() Sch
 
 func (o SchedulerResourceResponseOutput) ToSchedulerResourceResponseOutputWithContext(ctx context.Context) SchedulerResourceResponseOutput {
 	return o
-}
-
-func (o SchedulerResourceResponseOutput) ToSchedulerResourceResponsePtrOutput() SchedulerResourceResponsePtrOutput {
-	return o.ToSchedulerResourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SchedulerResourceResponseOutput) ToSchedulerResourceResponsePtrOutputWithContext(ctx context.Context) SchedulerResourceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchedulerResourceResponse) *SchedulerResourceResponse {
-		return &v
-	}).(SchedulerResourceResponsePtrOutput)
 }
 
 // Optional. The number of schedulers.
@@ -4014,70 +2540,6 @@ func (o SchedulerResourceResponseOutput) MemoryGb() pulumi.Float64Output {
 // Optional. Storage (GB) request and limit for a single Airflow scheduler replica.
 func (o SchedulerResourceResponseOutput) StorageGb() pulumi.Float64Output {
 	return o.ApplyT(func(v SchedulerResourceResponse) float64 { return v.StorageGb }).(pulumi.Float64Output)
-}
-
-type SchedulerResourceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SchedulerResourceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SchedulerResourceResponse)(nil)).Elem()
-}
-
-func (o SchedulerResourceResponsePtrOutput) ToSchedulerResourceResponsePtrOutput() SchedulerResourceResponsePtrOutput {
-	return o
-}
-
-func (o SchedulerResourceResponsePtrOutput) ToSchedulerResourceResponsePtrOutputWithContext(ctx context.Context) SchedulerResourceResponsePtrOutput {
-	return o
-}
-
-func (o SchedulerResourceResponsePtrOutput) Elem() SchedulerResourceResponseOutput {
-	return o.ApplyT(func(v *SchedulerResourceResponse) SchedulerResourceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SchedulerResourceResponse
-		return ret
-	}).(SchedulerResourceResponseOutput)
-}
-
-// Optional. The number of schedulers.
-func (o SchedulerResourceResponsePtrOutput) Count() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SchedulerResourceResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Count
-	}).(pulumi.IntPtrOutput)
-}
-
-// Optional. CPU request and limit for a single Airflow scheduler replica.
-func (o SchedulerResourceResponsePtrOutput) Cpu() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *SchedulerResourceResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.Cpu
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Optional. Memory (GB) request and limit for a single Airflow scheduler replica.
-func (o SchedulerResourceResponsePtrOutput) MemoryGb() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *SchedulerResourceResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.MemoryGb
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Optional. Storage (GB) request and limit for a single Airflow scheduler replica.
-func (o SchedulerResourceResponsePtrOutput) StorageGb() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *SchedulerResourceResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.StorageGb
-	}).(pulumi.Float64PtrOutput)
 }
 
 // Specifies the selection and configuration of software inside the environment.
@@ -4331,86 +2793,6 @@ type SoftwareConfigResponse struct {
 	SchedulerCount int `pulumi:"schedulerCount"`
 }
 
-// SoftwareConfigResponseInput is an input type that accepts SoftwareConfigResponseArgs and SoftwareConfigResponseOutput values.
-// You can construct a concrete instance of `SoftwareConfigResponseInput` via:
-//
-//          SoftwareConfigResponseArgs{...}
-type SoftwareConfigResponseInput interface {
-	pulumi.Input
-
-	ToSoftwareConfigResponseOutput() SoftwareConfigResponseOutput
-	ToSoftwareConfigResponseOutputWithContext(context.Context) SoftwareConfigResponseOutput
-}
-
-// Specifies the selection and configuration of software inside the environment.
-type SoftwareConfigResponseArgs struct {
-	// Optional. Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and must not contain an equals sign ("=") or semicolon (";"). Section and property names must not contain a period ("."). Apache Airflow configuration property names must be written in [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are [blocked](/composer/docs/concepts/airflow-configurations), and cannot be overridden.
-	AirflowConfigOverrides pulumi.StringMapInput `pulumi:"airflowConfigOverrides"`
-	// Optional. Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression `a-zA-Z_*`. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names: * `AIRFLOW_HOME` * `C_FORCE_ROOT` * `CONTAINER_NAME` * `DAGS_FOLDER` * `GCP_PROJECT` * `GCS_BUCKET` * `GKE_CLUSTER_NAME` * `SQL_DATABASE` * `SQL_INSTANCE` * `SQL_PASSWORD` * `SQL_PROJECT` * `SQL_REGION` * `SQL_USER`
-	EnvVariables pulumi.StringMapInput `pulumi:"envVariables"`
-	// The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression `composer-([0-9]+\.[0-9]+\.[0-9]+|latest)-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`. When used as input, the server also checks if the provided version is supported and denies the request for an unsupported version. The Cloud Composer portion of the version is a [semantic version](https://semver.org) or `latest`. When the patch version is omitted, the current Cloud Composer patch version is selected. When `latest` is provided instead of an explicit version number, the server replaces `latest` with the current Cloud Composer version and stores that version number in the same field. The portion of the image version that follows *airflow-* is an official Apache Airflow repository [release name](https://github.com/apache/incubator-airflow/releases). See also [Version List](/composer/docs/concepts/versioning/composer-versions).
-	ImageVersion pulumi.StringInput `pulumi:"imageVersion"`
-	// Optional. Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name such as "numpy" and values are the lowercase extras and version specifier such as "==1.12.0", "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a package without pinning it to a version specifier, use the empty string as the value.
-	PypiPackages pulumi.StringMapInput `pulumi:"pypiPackages"`
-	// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use Python major version 3.
-	PythonVersion pulumi.StringInput `pulumi:"pythonVersion"`
-	// Optional. The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
-	SchedulerCount pulumi.IntInput `pulumi:"schedulerCount"`
-}
-
-func (SoftwareConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SoftwareConfigResponse)(nil)).Elem()
-}
-
-func (i SoftwareConfigResponseArgs) ToSoftwareConfigResponseOutput() SoftwareConfigResponseOutput {
-	return i.ToSoftwareConfigResponseOutputWithContext(context.Background())
-}
-
-func (i SoftwareConfigResponseArgs) ToSoftwareConfigResponseOutputWithContext(ctx context.Context) SoftwareConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SoftwareConfigResponseOutput)
-}
-
-func (i SoftwareConfigResponseArgs) ToSoftwareConfigResponsePtrOutput() SoftwareConfigResponsePtrOutput {
-	return i.ToSoftwareConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SoftwareConfigResponseArgs) ToSoftwareConfigResponsePtrOutputWithContext(ctx context.Context) SoftwareConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SoftwareConfigResponseOutput).ToSoftwareConfigResponsePtrOutputWithContext(ctx)
-}
-
-// SoftwareConfigResponsePtrInput is an input type that accepts SoftwareConfigResponseArgs, SoftwareConfigResponsePtr and SoftwareConfigResponsePtrOutput values.
-// You can construct a concrete instance of `SoftwareConfigResponsePtrInput` via:
-//
-//          SoftwareConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SoftwareConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToSoftwareConfigResponsePtrOutput() SoftwareConfigResponsePtrOutput
-	ToSoftwareConfigResponsePtrOutputWithContext(context.Context) SoftwareConfigResponsePtrOutput
-}
-
-type softwareConfigResponsePtrType SoftwareConfigResponseArgs
-
-func SoftwareConfigResponsePtr(v *SoftwareConfigResponseArgs) SoftwareConfigResponsePtrInput {
-	return (*softwareConfigResponsePtrType)(v)
-}
-
-func (*softwareConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SoftwareConfigResponse)(nil)).Elem()
-}
-
-func (i *softwareConfigResponsePtrType) ToSoftwareConfigResponsePtrOutput() SoftwareConfigResponsePtrOutput {
-	return i.ToSoftwareConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *softwareConfigResponsePtrType) ToSoftwareConfigResponsePtrOutputWithContext(ctx context.Context) SoftwareConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SoftwareConfigResponsePtrOutput)
-}
-
 // Specifies the selection and configuration of software inside the environment.
 type SoftwareConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -4424,16 +2806,6 @@ func (o SoftwareConfigResponseOutput) ToSoftwareConfigResponseOutput() SoftwareC
 
 func (o SoftwareConfigResponseOutput) ToSoftwareConfigResponseOutputWithContext(ctx context.Context) SoftwareConfigResponseOutput {
 	return o
-}
-
-func (o SoftwareConfigResponseOutput) ToSoftwareConfigResponsePtrOutput() SoftwareConfigResponsePtrOutput {
-	return o.ToSoftwareConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SoftwareConfigResponseOutput) ToSoftwareConfigResponsePtrOutputWithContext(ctx context.Context) SoftwareConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoftwareConfigResponse) *SoftwareConfigResponse {
-		return &v
-	}).(SoftwareConfigResponsePtrOutput)
 }
 
 // Optional. Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and must not contain an equals sign ("=") or semicolon (";"). Section and property names must not contain a period ("."). Apache Airflow configuration property names must be written in [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are [blocked](/composer/docs/concepts/airflow-configurations), and cannot be overridden.
@@ -4464,90 +2836,6 @@ func (o SoftwareConfigResponseOutput) PythonVersion() pulumi.StringOutput {
 // Optional. The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
 func (o SoftwareConfigResponseOutput) SchedulerCount() pulumi.IntOutput {
 	return o.ApplyT(func(v SoftwareConfigResponse) int { return v.SchedulerCount }).(pulumi.IntOutput)
-}
-
-type SoftwareConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SoftwareConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SoftwareConfigResponse)(nil)).Elem()
-}
-
-func (o SoftwareConfigResponsePtrOutput) ToSoftwareConfigResponsePtrOutput() SoftwareConfigResponsePtrOutput {
-	return o
-}
-
-func (o SoftwareConfigResponsePtrOutput) ToSoftwareConfigResponsePtrOutputWithContext(ctx context.Context) SoftwareConfigResponsePtrOutput {
-	return o
-}
-
-func (o SoftwareConfigResponsePtrOutput) Elem() SoftwareConfigResponseOutput {
-	return o.ApplyT(func(v *SoftwareConfigResponse) SoftwareConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SoftwareConfigResponse
-		return ret
-	}).(SoftwareConfigResponseOutput)
-}
-
-// Optional. Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and must not contain an equals sign ("=") or semicolon (";"). Section and property names must not contain a period ("."). Apache Airflow configuration property names must be written in [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are [blocked](/composer/docs/concepts/airflow-configurations), and cannot be overridden.
-func (o SoftwareConfigResponsePtrOutput) AirflowConfigOverrides() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *SoftwareConfigResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.AirflowConfigOverrides
-	}).(pulumi.StringMapOutput)
-}
-
-// Optional. Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression `a-zA-Z_*`. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names: * `AIRFLOW_HOME` * `C_FORCE_ROOT` * `CONTAINER_NAME` * `DAGS_FOLDER` * `GCP_PROJECT` * `GCS_BUCKET` * `GKE_CLUSTER_NAME` * `SQL_DATABASE` * `SQL_INSTANCE` * `SQL_PASSWORD` * `SQL_PROJECT` * `SQL_REGION` * `SQL_USER`
-func (o SoftwareConfigResponsePtrOutput) EnvVariables() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *SoftwareConfigResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.EnvVariables
-	}).(pulumi.StringMapOutput)
-}
-
-// The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression `composer-([0-9]+\.[0-9]+\.[0-9]+|latest)-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`. When used as input, the server also checks if the provided version is supported and denies the request for an unsupported version. The Cloud Composer portion of the version is a [semantic version](https://semver.org) or `latest`. When the patch version is omitted, the current Cloud Composer patch version is selected. When `latest` is provided instead of an explicit version number, the server replaces `latest` with the current Cloud Composer version and stores that version number in the same field. The portion of the image version that follows *airflow-* is an official Apache Airflow repository [release name](https://github.com/apache/incubator-airflow/releases). See also [Version List](/composer/docs/concepts/versioning/composer-versions).
-func (o SoftwareConfigResponsePtrOutput) ImageVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SoftwareConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ImageVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name such as "numpy" and values are the lowercase extras and version specifier such as "==1.12.0", "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a package without pinning it to a version specifier, use the empty string as the value.
-func (o SoftwareConfigResponsePtrOutput) PypiPackages() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *SoftwareConfigResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.PypiPackages
-	}).(pulumi.StringMapOutput)
-}
-
-// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use Python major version 3.
-func (o SoftwareConfigResponsePtrOutput) PythonVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SoftwareConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PythonVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
-func (o SoftwareConfigResponsePtrOutput) SchedulerCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SoftwareConfigResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.SchedulerCount
-	}).(pulumi.IntPtrOutput)
 }
 
 // The configuration settings for the Airflow web server App Engine instance. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*
@@ -4696,76 +2984,6 @@ type WebServerConfigResponse struct {
 	MachineType string `pulumi:"machineType"`
 }
 
-// WebServerConfigResponseInput is an input type that accepts WebServerConfigResponseArgs and WebServerConfigResponseOutput values.
-// You can construct a concrete instance of `WebServerConfigResponseInput` via:
-//
-//          WebServerConfigResponseArgs{...}
-type WebServerConfigResponseInput interface {
-	pulumi.Input
-
-	ToWebServerConfigResponseOutput() WebServerConfigResponseOutput
-	ToWebServerConfigResponseOutputWithContext(context.Context) WebServerConfigResponseOutput
-}
-
-// The configuration settings for the Airflow web server App Engine instance. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*
-type WebServerConfigResponseArgs struct {
-	// Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
-	MachineType pulumi.StringInput `pulumi:"machineType"`
-}
-
-func (WebServerConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebServerConfigResponse)(nil)).Elem()
-}
-
-func (i WebServerConfigResponseArgs) ToWebServerConfigResponseOutput() WebServerConfigResponseOutput {
-	return i.ToWebServerConfigResponseOutputWithContext(context.Background())
-}
-
-func (i WebServerConfigResponseArgs) ToWebServerConfigResponseOutputWithContext(ctx context.Context) WebServerConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebServerConfigResponseOutput)
-}
-
-func (i WebServerConfigResponseArgs) ToWebServerConfigResponsePtrOutput() WebServerConfigResponsePtrOutput {
-	return i.ToWebServerConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i WebServerConfigResponseArgs) ToWebServerConfigResponsePtrOutputWithContext(ctx context.Context) WebServerConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebServerConfigResponseOutput).ToWebServerConfigResponsePtrOutputWithContext(ctx)
-}
-
-// WebServerConfigResponsePtrInput is an input type that accepts WebServerConfigResponseArgs, WebServerConfigResponsePtr and WebServerConfigResponsePtrOutput values.
-// You can construct a concrete instance of `WebServerConfigResponsePtrInput` via:
-//
-//          WebServerConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type WebServerConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToWebServerConfigResponsePtrOutput() WebServerConfigResponsePtrOutput
-	ToWebServerConfigResponsePtrOutputWithContext(context.Context) WebServerConfigResponsePtrOutput
-}
-
-type webServerConfigResponsePtrType WebServerConfigResponseArgs
-
-func WebServerConfigResponsePtr(v *WebServerConfigResponseArgs) WebServerConfigResponsePtrInput {
-	return (*webServerConfigResponsePtrType)(v)
-}
-
-func (*webServerConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WebServerConfigResponse)(nil)).Elem()
-}
-
-func (i *webServerConfigResponsePtrType) ToWebServerConfigResponsePtrOutput() WebServerConfigResponsePtrOutput {
-	return i.ToWebServerConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *webServerConfigResponsePtrType) ToWebServerConfigResponsePtrOutputWithContext(ctx context.Context) WebServerConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebServerConfigResponsePtrOutput)
-}
-
 // The configuration settings for the Airflow web server App Engine instance. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*
 type WebServerConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -4781,53 +2999,9 @@ func (o WebServerConfigResponseOutput) ToWebServerConfigResponseOutputWithContex
 	return o
 }
 
-func (o WebServerConfigResponseOutput) ToWebServerConfigResponsePtrOutput() WebServerConfigResponsePtrOutput {
-	return o.ToWebServerConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o WebServerConfigResponseOutput) ToWebServerConfigResponsePtrOutputWithContext(ctx context.Context) WebServerConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebServerConfigResponse) *WebServerConfigResponse {
-		return &v
-	}).(WebServerConfigResponsePtrOutput)
-}
-
 // Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
 func (o WebServerConfigResponseOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v WebServerConfigResponse) string { return v.MachineType }).(pulumi.StringOutput)
-}
-
-type WebServerConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (WebServerConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WebServerConfigResponse)(nil)).Elem()
-}
-
-func (o WebServerConfigResponsePtrOutput) ToWebServerConfigResponsePtrOutput() WebServerConfigResponsePtrOutput {
-	return o
-}
-
-func (o WebServerConfigResponsePtrOutput) ToWebServerConfigResponsePtrOutputWithContext(ctx context.Context) WebServerConfigResponsePtrOutput {
-	return o
-}
-
-func (o WebServerConfigResponsePtrOutput) Elem() WebServerConfigResponseOutput {
-	return o.ApplyT(func(v *WebServerConfigResponse) WebServerConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret WebServerConfigResponse
-		return ret
-	}).(WebServerConfigResponseOutput)
-}
-
-// Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
-func (o WebServerConfigResponsePtrOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WebServerConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MachineType
-	}).(pulumi.StringPtrOutput)
 }
 
 // Network-level access control policy for the Airflow web server.
@@ -4976,76 +3150,6 @@ type WebServerNetworkAccessControlResponse struct {
 	AllowedIpRanges []AllowedIpRangeResponse `pulumi:"allowedIpRanges"`
 }
 
-// WebServerNetworkAccessControlResponseInput is an input type that accepts WebServerNetworkAccessControlResponseArgs and WebServerNetworkAccessControlResponseOutput values.
-// You can construct a concrete instance of `WebServerNetworkAccessControlResponseInput` via:
-//
-//          WebServerNetworkAccessControlResponseArgs{...}
-type WebServerNetworkAccessControlResponseInput interface {
-	pulumi.Input
-
-	ToWebServerNetworkAccessControlResponseOutput() WebServerNetworkAccessControlResponseOutput
-	ToWebServerNetworkAccessControlResponseOutputWithContext(context.Context) WebServerNetworkAccessControlResponseOutput
-}
-
-// Network-level access control policy for the Airflow web server.
-type WebServerNetworkAccessControlResponseArgs struct {
-	// A collection of allowed IP ranges with descriptions.
-	AllowedIpRanges AllowedIpRangeResponseArrayInput `pulumi:"allowedIpRanges"`
-}
-
-func (WebServerNetworkAccessControlResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebServerNetworkAccessControlResponse)(nil)).Elem()
-}
-
-func (i WebServerNetworkAccessControlResponseArgs) ToWebServerNetworkAccessControlResponseOutput() WebServerNetworkAccessControlResponseOutput {
-	return i.ToWebServerNetworkAccessControlResponseOutputWithContext(context.Background())
-}
-
-func (i WebServerNetworkAccessControlResponseArgs) ToWebServerNetworkAccessControlResponseOutputWithContext(ctx context.Context) WebServerNetworkAccessControlResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebServerNetworkAccessControlResponseOutput)
-}
-
-func (i WebServerNetworkAccessControlResponseArgs) ToWebServerNetworkAccessControlResponsePtrOutput() WebServerNetworkAccessControlResponsePtrOutput {
-	return i.ToWebServerNetworkAccessControlResponsePtrOutputWithContext(context.Background())
-}
-
-func (i WebServerNetworkAccessControlResponseArgs) ToWebServerNetworkAccessControlResponsePtrOutputWithContext(ctx context.Context) WebServerNetworkAccessControlResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebServerNetworkAccessControlResponseOutput).ToWebServerNetworkAccessControlResponsePtrOutputWithContext(ctx)
-}
-
-// WebServerNetworkAccessControlResponsePtrInput is an input type that accepts WebServerNetworkAccessControlResponseArgs, WebServerNetworkAccessControlResponsePtr and WebServerNetworkAccessControlResponsePtrOutput values.
-// You can construct a concrete instance of `WebServerNetworkAccessControlResponsePtrInput` via:
-//
-//          WebServerNetworkAccessControlResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type WebServerNetworkAccessControlResponsePtrInput interface {
-	pulumi.Input
-
-	ToWebServerNetworkAccessControlResponsePtrOutput() WebServerNetworkAccessControlResponsePtrOutput
-	ToWebServerNetworkAccessControlResponsePtrOutputWithContext(context.Context) WebServerNetworkAccessControlResponsePtrOutput
-}
-
-type webServerNetworkAccessControlResponsePtrType WebServerNetworkAccessControlResponseArgs
-
-func WebServerNetworkAccessControlResponsePtr(v *WebServerNetworkAccessControlResponseArgs) WebServerNetworkAccessControlResponsePtrInput {
-	return (*webServerNetworkAccessControlResponsePtrType)(v)
-}
-
-func (*webServerNetworkAccessControlResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WebServerNetworkAccessControlResponse)(nil)).Elem()
-}
-
-func (i *webServerNetworkAccessControlResponsePtrType) ToWebServerNetworkAccessControlResponsePtrOutput() WebServerNetworkAccessControlResponsePtrOutput {
-	return i.ToWebServerNetworkAccessControlResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *webServerNetworkAccessControlResponsePtrType) ToWebServerNetworkAccessControlResponsePtrOutputWithContext(ctx context.Context) WebServerNetworkAccessControlResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebServerNetworkAccessControlResponsePtrOutput)
-}
-
 // Network-level access control policy for the Airflow web server.
 type WebServerNetworkAccessControlResponseOutput struct{ *pulumi.OutputState }
 
@@ -5061,53 +3165,9 @@ func (o WebServerNetworkAccessControlResponseOutput) ToWebServerNetworkAccessCon
 	return o
 }
 
-func (o WebServerNetworkAccessControlResponseOutput) ToWebServerNetworkAccessControlResponsePtrOutput() WebServerNetworkAccessControlResponsePtrOutput {
-	return o.ToWebServerNetworkAccessControlResponsePtrOutputWithContext(context.Background())
-}
-
-func (o WebServerNetworkAccessControlResponseOutput) ToWebServerNetworkAccessControlResponsePtrOutputWithContext(ctx context.Context) WebServerNetworkAccessControlResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebServerNetworkAccessControlResponse) *WebServerNetworkAccessControlResponse {
-		return &v
-	}).(WebServerNetworkAccessControlResponsePtrOutput)
-}
-
 // A collection of allowed IP ranges with descriptions.
 func (o WebServerNetworkAccessControlResponseOutput) AllowedIpRanges() AllowedIpRangeResponseArrayOutput {
 	return o.ApplyT(func(v WebServerNetworkAccessControlResponse) []AllowedIpRangeResponse { return v.AllowedIpRanges }).(AllowedIpRangeResponseArrayOutput)
-}
-
-type WebServerNetworkAccessControlResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (WebServerNetworkAccessControlResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WebServerNetworkAccessControlResponse)(nil)).Elem()
-}
-
-func (o WebServerNetworkAccessControlResponsePtrOutput) ToWebServerNetworkAccessControlResponsePtrOutput() WebServerNetworkAccessControlResponsePtrOutput {
-	return o
-}
-
-func (o WebServerNetworkAccessControlResponsePtrOutput) ToWebServerNetworkAccessControlResponsePtrOutputWithContext(ctx context.Context) WebServerNetworkAccessControlResponsePtrOutput {
-	return o
-}
-
-func (o WebServerNetworkAccessControlResponsePtrOutput) Elem() WebServerNetworkAccessControlResponseOutput {
-	return o.ApplyT(func(v *WebServerNetworkAccessControlResponse) WebServerNetworkAccessControlResponse {
-		if v != nil {
-			return *v
-		}
-		var ret WebServerNetworkAccessControlResponse
-		return ret
-	}).(WebServerNetworkAccessControlResponseOutput)
-}
-
-// A collection of allowed IP ranges with descriptions.
-func (o WebServerNetworkAccessControlResponsePtrOutput) AllowedIpRanges() AllowedIpRangeResponseArrayOutput {
-	return o.ApplyT(func(v *WebServerNetworkAccessControlResponse) []AllowedIpRangeResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AllowedIpRanges
-	}).(AllowedIpRangeResponseArrayOutput)
 }
 
 // Configuration for resources used by Airflow web server.
@@ -5298,80 +3358,6 @@ type WebServerResourceResponse struct {
 	StorageGb float64 `pulumi:"storageGb"`
 }
 
-// WebServerResourceResponseInput is an input type that accepts WebServerResourceResponseArgs and WebServerResourceResponseOutput values.
-// You can construct a concrete instance of `WebServerResourceResponseInput` via:
-//
-//          WebServerResourceResponseArgs{...}
-type WebServerResourceResponseInput interface {
-	pulumi.Input
-
-	ToWebServerResourceResponseOutput() WebServerResourceResponseOutput
-	ToWebServerResourceResponseOutputWithContext(context.Context) WebServerResourceResponseOutput
-}
-
-// Configuration for resources used by Airflow web server.
-type WebServerResourceResponseArgs struct {
-	// Optional. CPU request and limit for Airflow web server.
-	Cpu pulumi.Float64Input `pulumi:"cpu"`
-	// Optional. Memory (GB) request and limit for Airflow web server.
-	MemoryGb pulumi.Float64Input `pulumi:"memoryGb"`
-	// Optional. Storage (GB) request and limit for Airflow web server.
-	StorageGb pulumi.Float64Input `pulumi:"storageGb"`
-}
-
-func (WebServerResourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebServerResourceResponse)(nil)).Elem()
-}
-
-func (i WebServerResourceResponseArgs) ToWebServerResourceResponseOutput() WebServerResourceResponseOutput {
-	return i.ToWebServerResourceResponseOutputWithContext(context.Background())
-}
-
-func (i WebServerResourceResponseArgs) ToWebServerResourceResponseOutputWithContext(ctx context.Context) WebServerResourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebServerResourceResponseOutput)
-}
-
-func (i WebServerResourceResponseArgs) ToWebServerResourceResponsePtrOutput() WebServerResourceResponsePtrOutput {
-	return i.ToWebServerResourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i WebServerResourceResponseArgs) ToWebServerResourceResponsePtrOutputWithContext(ctx context.Context) WebServerResourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebServerResourceResponseOutput).ToWebServerResourceResponsePtrOutputWithContext(ctx)
-}
-
-// WebServerResourceResponsePtrInput is an input type that accepts WebServerResourceResponseArgs, WebServerResourceResponsePtr and WebServerResourceResponsePtrOutput values.
-// You can construct a concrete instance of `WebServerResourceResponsePtrInput` via:
-//
-//          WebServerResourceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type WebServerResourceResponsePtrInput interface {
-	pulumi.Input
-
-	ToWebServerResourceResponsePtrOutput() WebServerResourceResponsePtrOutput
-	ToWebServerResourceResponsePtrOutputWithContext(context.Context) WebServerResourceResponsePtrOutput
-}
-
-type webServerResourceResponsePtrType WebServerResourceResponseArgs
-
-func WebServerResourceResponsePtr(v *WebServerResourceResponseArgs) WebServerResourceResponsePtrInput {
-	return (*webServerResourceResponsePtrType)(v)
-}
-
-func (*webServerResourceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WebServerResourceResponse)(nil)).Elem()
-}
-
-func (i *webServerResourceResponsePtrType) ToWebServerResourceResponsePtrOutput() WebServerResourceResponsePtrOutput {
-	return i.ToWebServerResourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *webServerResourceResponsePtrType) ToWebServerResourceResponsePtrOutputWithContext(ctx context.Context) WebServerResourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebServerResourceResponsePtrOutput)
-}
-
 // Configuration for resources used by Airflow web server.
 type WebServerResourceResponseOutput struct{ *pulumi.OutputState }
 
@@ -5387,16 +3373,6 @@ func (o WebServerResourceResponseOutput) ToWebServerResourceResponseOutputWithCo
 	return o
 }
 
-func (o WebServerResourceResponseOutput) ToWebServerResourceResponsePtrOutput() WebServerResourceResponsePtrOutput {
-	return o.ToWebServerResourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o WebServerResourceResponseOutput) ToWebServerResourceResponsePtrOutputWithContext(ctx context.Context) WebServerResourceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebServerResourceResponse) *WebServerResourceResponse {
-		return &v
-	}).(WebServerResourceResponsePtrOutput)
-}
-
 // Optional. CPU request and limit for Airflow web server.
 func (o WebServerResourceResponseOutput) Cpu() pulumi.Float64Output {
 	return o.ApplyT(func(v WebServerResourceResponse) float64 { return v.Cpu }).(pulumi.Float64Output)
@@ -5410,60 +3386,6 @@ func (o WebServerResourceResponseOutput) MemoryGb() pulumi.Float64Output {
 // Optional. Storage (GB) request and limit for Airflow web server.
 func (o WebServerResourceResponseOutput) StorageGb() pulumi.Float64Output {
 	return o.ApplyT(func(v WebServerResourceResponse) float64 { return v.StorageGb }).(pulumi.Float64Output)
-}
-
-type WebServerResourceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (WebServerResourceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WebServerResourceResponse)(nil)).Elem()
-}
-
-func (o WebServerResourceResponsePtrOutput) ToWebServerResourceResponsePtrOutput() WebServerResourceResponsePtrOutput {
-	return o
-}
-
-func (o WebServerResourceResponsePtrOutput) ToWebServerResourceResponsePtrOutputWithContext(ctx context.Context) WebServerResourceResponsePtrOutput {
-	return o
-}
-
-func (o WebServerResourceResponsePtrOutput) Elem() WebServerResourceResponseOutput {
-	return o.ApplyT(func(v *WebServerResourceResponse) WebServerResourceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret WebServerResourceResponse
-		return ret
-	}).(WebServerResourceResponseOutput)
-}
-
-// Optional. CPU request and limit for Airflow web server.
-func (o WebServerResourceResponsePtrOutput) Cpu() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *WebServerResourceResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.Cpu
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Optional. Memory (GB) request and limit for Airflow web server.
-func (o WebServerResourceResponsePtrOutput) MemoryGb() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *WebServerResourceResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.MemoryGb
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Optional. Storage (GB) request and limit for Airflow web server.
-func (o WebServerResourceResponsePtrOutput) StorageGb() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *WebServerResourceResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.StorageGb
-	}).(pulumi.Float64PtrOutput)
 }
 
 // Configuration for resources used by Airflow workers.
@@ -5696,84 +3618,6 @@ type WorkerResourceResponse struct {
 	StorageGb float64 `pulumi:"storageGb"`
 }
 
-// WorkerResourceResponseInput is an input type that accepts WorkerResourceResponseArgs and WorkerResourceResponseOutput values.
-// You can construct a concrete instance of `WorkerResourceResponseInput` via:
-//
-//          WorkerResourceResponseArgs{...}
-type WorkerResourceResponseInput interface {
-	pulumi.Input
-
-	ToWorkerResourceResponseOutput() WorkerResourceResponseOutput
-	ToWorkerResourceResponseOutputWithContext(context.Context) WorkerResourceResponseOutput
-}
-
-// Configuration for resources used by Airflow workers.
-type WorkerResourceResponseArgs struct {
-	// Optional. CPU request and limit for a single Airflow worker replica.
-	Cpu pulumi.Float64Input `pulumi:"cpu"`
-	// Optional. Maximum number of workers for autoscaling.
-	MaxCount pulumi.IntInput `pulumi:"maxCount"`
-	// Optional. Memory (GB) request and limit for a single Airflow worker replica.
-	MemoryGb pulumi.Float64Input `pulumi:"memoryGb"`
-	// Optional. Minimum number of workers for autoscaling.
-	MinCount pulumi.IntInput `pulumi:"minCount"`
-	// Optional. Storage (GB) request and limit for a single Airflow worker replica.
-	StorageGb pulumi.Float64Input `pulumi:"storageGb"`
-}
-
-func (WorkerResourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkerResourceResponse)(nil)).Elem()
-}
-
-func (i WorkerResourceResponseArgs) ToWorkerResourceResponseOutput() WorkerResourceResponseOutput {
-	return i.ToWorkerResourceResponseOutputWithContext(context.Background())
-}
-
-func (i WorkerResourceResponseArgs) ToWorkerResourceResponseOutputWithContext(ctx context.Context) WorkerResourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerResourceResponseOutput)
-}
-
-func (i WorkerResourceResponseArgs) ToWorkerResourceResponsePtrOutput() WorkerResourceResponsePtrOutput {
-	return i.ToWorkerResourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i WorkerResourceResponseArgs) ToWorkerResourceResponsePtrOutputWithContext(ctx context.Context) WorkerResourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerResourceResponseOutput).ToWorkerResourceResponsePtrOutputWithContext(ctx)
-}
-
-// WorkerResourceResponsePtrInput is an input type that accepts WorkerResourceResponseArgs, WorkerResourceResponsePtr and WorkerResourceResponsePtrOutput values.
-// You can construct a concrete instance of `WorkerResourceResponsePtrInput` via:
-//
-//          WorkerResourceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type WorkerResourceResponsePtrInput interface {
-	pulumi.Input
-
-	ToWorkerResourceResponsePtrOutput() WorkerResourceResponsePtrOutput
-	ToWorkerResourceResponsePtrOutputWithContext(context.Context) WorkerResourceResponsePtrOutput
-}
-
-type workerResourceResponsePtrType WorkerResourceResponseArgs
-
-func WorkerResourceResponsePtr(v *WorkerResourceResponseArgs) WorkerResourceResponsePtrInput {
-	return (*workerResourceResponsePtrType)(v)
-}
-
-func (*workerResourceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkerResourceResponse)(nil)).Elem()
-}
-
-func (i *workerResourceResponsePtrType) ToWorkerResourceResponsePtrOutput() WorkerResourceResponsePtrOutput {
-	return i.ToWorkerResourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *workerResourceResponsePtrType) ToWorkerResourceResponsePtrOutputWithContext(ctx context.Context) WorkerResourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerResourceResponsePtrOutput)
-}
-
 // Configuration for resources used by Airflow workers.
 type WorkerResourceResponseOutput struct{ *pulumi.OutputState }
 
@@ -5787,16 +3631,6 @@ func (o WorkerResourceResponseOutput) ToWorkerResourceResponseOutput() WorkerRes
 
 func (o WorkerResourceResponseOutput) ToWorkerResourceResponseOutputWithContext(ctx context.Context) WorkerResourceResponseOutput {
 	return o
-}
-
-func (o WorkerResourceResponseOutput) ToWorkerResourceResponsePtrOutput() WorkerResourceResponsePtrOutput {
-	return o.ToWorkerResourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o WorkerResourceResponseOutput) ToWorkerResourceResponsePtrOutputWithContext(ctx context.Context) WorkerResourceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerResourceResponse) *WorkerResourceResponse {
-		return &v
-	}).(WorkerResourceResponsePtrOutput)
 }
 
 // Optional. CPU request and limit for a single Airflow worker replica.
@@ -5822,80 +3656,6 @@ func (o WorkerResourceResponseOutput) MinCount() pulumi.IntOutput {
 // Optional. Storage (GB) request and limit for a single Airflow worker replica.
 func (o WorkerResourceResponseOutput) StorageGb() pulumi.Float64Output {
 	return o.ApplyT(func(v WorkerResourceResponse) float64 { return v.StorageGb }).(pulumi.Float64Output)
-}
-
-type WorkerResourceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (WorkerResourceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkerResourceResponse)(nil)).Elem()
-}
-
-func (o WorkerResourceResponsePtrOutput) ToWorkerResourceResponsePtrOutput() WorkerResourceResponsePtrOutput {
-	return o
-}
-
-func (o WorkerResourceResponsePtrOutput) ToWorkerResourceResponsePtrOutputWithContext(ctx context.Context) WorkerResourceResponsePtrOutput {
-	return o
-}
-
-func (o WorkerResourceResponsePtrOutput) Elem() WorkerResourceResponseOutput {
-	return o.ApplyT(func(v *WorkerResourceResponse) WorkerResourceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret WorkerResourceResponse
-		return ret
-	}).(WorkerResourceResponseOutput)
-}
-
-// Optional. CPU request and limit for a single Airflow worker replica.
-func (o WorkerResourceResponsePtrOutput) Cpu() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *WorkerResourceResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.Cpu
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Optional. Maximum number of workers for autoscaling.
-func (o WorkerResourceResponsePtrOutput) MaxCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WorkerResourceResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// Optional. Memory (GB) request and limit for a single Airflow worker replica.
-func (o WorkerResourceResponsePtrOutput) MemoryGb() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *WorkerResourceResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.MemoryGb
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Optional. Minimum number of workers for autoscaling.
-func (o WorkerResourceResponsePtrOutput) MinCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WorkerResourceResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MinCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// Optional. Storage (GB) request and limit for a single Airflow worker replica.
-func (o WorkerResourceResponsePtrOutput) StorageGb() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *WorkerResourceResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.StorageGb
-	}).(pulumi.Float64PtrOutput)
 }
 
 // The Kubernetes workloads configuration for GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
@@ -6086,80 +3846,6 @@ type WorkloadsConfigResponse struct {
 	Worker WorkerResourceResponse `pulumi:"worker"`
 }
 
-// WorkloadsConfigResponseInput is an input type that accepts WorkloadsConfigResponseArgs and WorkloadsConfigResponseOutput values.
-// You can construct a concrete instance of `WorkloadsConfigResponseInput` via:
-//
-//          WorkloadsConfigResponseArgs{...}
-type WorkloadsConfigResponseInput interface {
-	pulumi.Input
-
-	ToWorkloadsConfigResponseOutput() WorkloadsConfigResponseOutput
-	ToWorkloadsConfigResponseOutputWithContext(context.Context) WorkloadsConfigResponseOutput
-}
-
-// The Kubernetes workloads configuration for GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-type WorkloadsConfigResponseArgs struct {
-	// Optional. Resources used by Airflow schedulers.
-	Scheduler SchedulerResourceResponseInput `pulumi:"scheduler"`
-	// Optional. Resources used by Airflow web server.
-	WebServer WebServerResourceResponseInput `pulumi:"webServer"`
-	// Optional. Resources used by Airflow workers.
-	Worker WorkerResourceResponseInput `pulumi:"worker"`
-}
-
-func (WorkloadsConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkloadsConfigResponse)(nil)).Elem()
-}
-
-func (i WorkloadsConfigResponseArgs) ToWorkloadsConfigResponseOutput() WorkloadsConfigResponseOutput {
-	return i.ToWorkloadsConfigResponseOutputWithContext(context.Background())
-}
-
-func (i WorkloadsConfigResponseArgs) ToWorkloadsConfigResponseOutputWithContext(ctx context.Context) WorkloadsConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkloadsConfigResponseOutput)
-}
-
-func (i WorkloadsConfigResponseArgs) ToWorkloadsConfigResponsePtrOutput() WorkloadsConfigResponsePtrOutput {
-	return i.ToWorkloadsConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i WorkloadsConfigResponseArgs) ToWorkloadsConfigResponsePtrOutputWithContext(ctx context.Context) WorkloadsConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkloadsConfigResponseOutput).ToWorkloadsConfigResponsePtrOutputWithContext(ctx)
-}
-
-// WorkloadsConfigResponsePtrInput is an input type that accepts WorkloadsConfigResponseArgs, WorkloadsConfigResponsePtr and WorkloadsConfigResponsePtrOutput values.
-// You can construct a concrete instance of `WorkloadsConfigResponsePtrInput` via:
-//
-//          WorkloadsConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type WorkloadsConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToWorkloadsConfigResponsePtrOutput() WorkloadsConfigResponsePtrOutput
-	ToWorkloadsConfigResponsePtrOutputWithContext(context.Context) WorkloadsConfigResponsePtrOutput
-}
-
-type workloadsConfigResponsePtrType WorkloadsConfigResponseArgs
-
-func WorkloadsConfigResponsePtr(v *WorkloadsConfigResponseArgs) WorkloadsConfigResponsePtrInput {
-	return (*workloadsConfigResponsePtrType)(v)
-}
-
-func (*workloadsConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkloadsConfigResponse)(nil)).Elem()
-}
-
-func (i *workloadsConfigResponsePtrType) ToWorkloadsConfigResponsePtrOutput() WorkloadsConfigResponsePtrOutput {
-	return i.ToWorkloadsConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *workloadsConfigResponsePtrType) ToWorkloadsConfigResponsePtrOutputWithContext(ctx context.Context) WorkloadsConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkloadsConfigResponsePtrOutput)
-}
-
 // The Kubernetes workloads configuration for GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 type WorkloadsConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -6173,16 +3859,6 @@ func (o WorkloadsConfigResponseOutput) ToWorkloadsConfigResponseOutput() Workloa
 
 func (o WorkloadsConfigResponseOutput) ToWorkloadsConfigResponseOutputWithContext(ctx context.Context) WorkloadsConfigResponseOutput {
 	return o
-}
-
-func (o WorkloadsConfigResponseOutput) ToWorkloadsConfigResponsePtrOutput() WorkloadsConfigResponsePtrOutput {
-	return o.ToWorkloadsConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o WorkloadsConfigResponseOutput) ToWorkloadsConfigResponsePtrOutputWithContext(ctx context.Context) WorkloadsConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkloadsConfigResponse) *WorkloadsConfigResponse {
-		return &v
-	}).(WorkloadsConfigResponsePtrOutput)
 }
 
 // Optional. Resources used by Airflow schedulers.
@@ -6200,125 +3876,39 @@ func (o WorkloadsConfigResponseOutput) Worker() WorkerResourceResponseOutput {
 	return o.ApplyT(func(v WorkloadsConfigResponse) WorkerResourceResponse { return v.Worker }).(WorkerResourceResponseOutput)
 }
 
-type WorkloadsConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (WorkloadsConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkloadsConfigResponse)(nil)).Elem()
-}
-
-func (o WorkloadsConfigResponsePtrOutput) ToWorkloadsConfigResponsePtrOutput() WorkloadsConfigResponsePtrOutput {
-	return o
-}
-
-func (o WorkloadsConfigResponsePtrOutput) ToWorkloadsConfigResponsePtrOutputWithContext(ctx context.Context) WorkloadsConfigResponsePtrOutput {
-	return o
-}
-
-func (o WorkloadsConfigResponsePtrOutput) Elem() WorkloadsConfigResponseOutput {
-	return o.ApplyT(func(v *WorkloadsConfigResponse) WorkloadsConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret WorkloadsConfigResponse
-		return ret
-	}).(WorkloadsConfigResponseOutput)
-}
-
-// Optional. Resources used by Airflow schedulers.
-func (o WorkloadsConfigResponsePtrOutput) Scheduler() SchedulerResourceResponsePtrOutput {
-	return o.ApplyT(func(v *WorkloadsConfigResponse) *SchedulerResourceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Scheduler
-	}).(SchedulerResourceResponsePtrOutput)
-}
-
-// Optional. Resources used by Airflow web server.
-func (o WorkloadsConfigResponsePtrOutput) WebServer() WebServerResourceResponsePtrOutput {
-	return o.ApplyT(func(v *WorkloadsConfigResponse) *WebServerResourceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.WebServer
-	}).(WebServerResourceResponsePtrOutput)
-}
-
-// Optional. Resources used by Airflow workers.
-func (o WorkloadsConfigResponsePtrOutput) Worker() WorkerResourceResponsePtrOutput {
-	return o.ApplyT(func(v *WorkloadsConfigResponse) *WorkerResourceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Worker
-	}).(WorkerResourceResponsePtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AllowedIpRangeInput)(nil)).Elem(), AllowedIpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AllowedIpRangeArrayInput)(nil)).Elem(), AllowedIpRangeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AllowedIpRangeResponseInput)(nil)).Elem(), AllowedIpRangeResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AllowedIpRangeResponseArrayInput)(nil)).Elem(), AllowedIpRangeResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseConfigInput)(nil)).Elem(), DatabaseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseConfigPtrInput)(nil)).Elem(), DatabaseConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseConfigResponseInput)(nil)).Elem(), DatabaseConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseConfigResponsePtrInput)(nil)).Elem(), DatabaseConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigInput)(nil)).Elem(), EncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigPtrInput)(nil)).Elem(), EncryptionConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigResponseInput)(nil)).Elem(), EncryptionConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigResponsePtrInput)(nil)).Elem(), EncryptionConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigInput)(nil)).Elem(), EnvironmentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigPtrInput)(nil)).Elem(), EnvironmentConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigResponseInput)(nil)).Elem(), EnvironmentConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigResponsePtrInput)(nil)).Elem(), EnvironmentConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyInput)(nil)).Elem(), IPAllocationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyPtrInput)(nil)).Elem(), IPAllocationPolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyResponseInput)(nil)).Elem(), IPAllocationPolicyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyResponsePtrInput)(nil)).Elem(), IPAllocationPolicyResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowInput)(nil)).Elem(), MaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowPtrInput)(nil)).Elem(), MaintenanceWindowArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowResponseInput)(nil)).Elem(), MaintenanceWindowResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowResponsePtrInput)(nil)).Elem(), MaintenanceWindowResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigInput)(nil)).Elem(), NodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigPtrInput)(nil)).Elem(), NodeConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigResponseInput)(nil)).Elem(), NodeConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigResponsePtrInput)(nil)).Elem(), NodeConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterConfigInput)(nil)).Elem(), PrivateClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterConfigPtrInput)(nil)).Elem(), PrivateClusterConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterConfigResponseInput)(nil)).Elem(), PrivateClusterConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterConfigResponsePtrInput)(nil)).Elem(), PrivateClusterConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateEnvironmentConfigInput)(nil)).Elem(), PrivateEnvironmentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateEnvironmentConfigPtrInput)(nil)).Elem(), PrivateEnvironmentConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PrivateEnvironmentConfigResponseInput)(nil)).Elem(), PrivateEnvironmentConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PrivateEnvironmentConfigResponsePtrInput)(nil)).Elem(), PrivateEnvironmentConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulerResourceInput)(nil)).Elem(), SchedulerResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulerResourcePtrInput)(nil)).Elem(), SchedulerResourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SchedulerResourceResponseInput)(nil)).Elem(), SchedulerResourceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SchedulerResourceResponsePtrInput)(nil)).Elem(), SchedulerResourceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigInput)(nil)).Elem(), SoftwareConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigPtrInput)(nil)).Elem(), SoftwareConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigResponseInput)(nil)).Elem(), SoftwareConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigResponsePtrInput)(nil)).Elem(), SoftwareConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebServerConfigInput)(nil)).Elem(), WebServerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebServerConfigPtrInput)(nil)).Elem(), WebServerConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WebServerConfigResponseInput)(nil)).Elem(), WebServerConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WebServerConfigResponsePtrInput)(nil)).Elem(), WebServerConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebServerNetworkAccessControlInput)(nil)).Elem(), WebServerNetworkAccessControlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebServerNetworkAccessControlPtrInput)(nil)).Elem(), WebServerNetworkAccessControlArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WebServerNetworkAccessControlResponseInput)(nil)).Elem(), WebServerNetworkAccessControlResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WebServerNetworkAccessControlResponsePtrInput)(nil)).Elem(), WebServerNetworkAccessControlResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebServerResourceInput)(nil)).Elem(), WebServerResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebServerResourcePtrInput)(nil)).Elem(), WebServerResourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WebServerResourceResponseInput)(nil)).Elem(), WebServerResourceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WebServerResourceResponsePtrInput)(nil)).Elem(), WebServerResourceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerResourceInput)(nil)).Elem(), WorkerResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerResourcePtrInput)(nil)).Elem(), WorkerResourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkerResourceResponseInput)(nil)).Elem(), WorkerResourceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkerResourceResponsePtrInput)(nil)).Elem(), WorkerResourceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadsConfigInput)(nil)).Elem(), WorkloadsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadsConfigPtrInput)(nil)).Elem(), WorkloadsConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadsConfigResponseInput)(nil)).Elem(), WorkloadsConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadsConfigResponsePtrInput)(nil)).Elem(), WorkloadsConfigResponseArgs{})
 	pulumi.RegisterOutputType(AllowedIpRangeOutput{})
 	pulumi.RegisterOutputType(AllowedIpRangeArrayOutput{})
 	pulumi.RegisterOutputType(AllowedIpRangeResponseOutput{})
@@ -6326,61 +3916,46 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseConfigOutput{})
 	pulumi.RegisterOutputType(DatabaseConfigPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseConfigResponseOutput{})
-	pulumi.RegisterOutputType(DatabaseConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigResponseOutput{})
-	pulumi.RegisterOutputType(EncryptionConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigResponseOutput{})
-	pulumi.RegisterOutputType(EnvironmentConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(IPAllocationPolicyOutput{})
 	pulumi.RegisterOutputType(IPAllocationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(IPAllocationPolicyResponseOutput{})
-	pulumi.RegisterOutputType(IPAllocationPolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowPtrOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowResponseOutput{})
-	pulumi.RegisterOutputType(MaintenanceWindowResponsePtrOutput{})
 	pulumi.RegisterOutputType(NodeConfigOutput{})
 	pulumi.RegisterOutputType(NodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodeConfigResponseOutput{})
-	pulumi.RegisterOutputType(NodeConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateClusterConfigOutput{})
 	pulumi.RegisterOutputType(PrivateClusterConfigPtrOutput{})
 	pulumi.RegisterOutputType(PrivateClusterConfigResponseOutput{})
-	pulumi.RegisterOutputType(PrivateClusterConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateEnvironmentConfigOutput{})
 	pulumi.RegisterOutputType(PrivateEnvironmentConfigPtrOutput{})
 	pulumi.RegisterOutputType(PrivateEnvironmentConfigResponseOutput{})
-	pulumi.RegisterOutputType(PrivateEnvironmentConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(SchedulerResourceOutput{})
 	pulumi.RegisterOutputType(SchedulerResourcePtrOutput{})
 	pulumi.RegisterOutputType(SchedulerResourceResponseOutput{})
-	pulumi.RegisterOutputType(SchedulerResourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(SoftwareConfigOutput{})
 	pulumi.RegisterOutputType(SoftwareConfigPtrOutput{})
 	pulumi.RegisterOutputType(SoftwareConfigResponseOutput{})
-	pulumi.RegisterOutputType(SoftwareConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(WebServerConfigOutput{})
 	pulumi.RegisterOutputType(WebServerConfigPtrOutput{})
 	pulumi.RegisterOutputType(WebServerConfigResponseOutput{})
-	pulumi.RegisterOutputType(WebServerConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(WebServerNetworkAccessControlOutput{})
 	pulumi.RegisterOutputType(WebServerNetworkAccessControlPtrOutput{})
 	pulumi.RegisterOutputType(WebServerNetworkAccessControlResponseOutput{})
-	pulumi.RegisterOutputType(WebServerNetworkAccessControlResponsePtrOutput{})
 	pulumi.RegisterOutputType(WebServerResourceOutput{})
 	pulumi.RegisterOutputType(WebServerResourcePtrOutput{})
 	pulumi.RegisterOutputType(WebServerResourceResponseOutput{})
-	pulumi.RegisterOutputType(WebServerResourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(WorkerResourceOutput{})
 	pulumi.RegisterOutputType(WorkerResourcePtrOutput{})
 	pulumi.RegisterOutputType(WorkerResourceResponseOutput{})
-	pulumi.RegisterOutputType(WorkerResourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(WorkloadsConfigOutput{})
 	pulumi.RegisterOutputType(WorkloadsConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkloadsConfigResponseOutput{})
-	pulumi.RegisterOutputType(WorkloadsConfigResponsePtrOutput{})
 }

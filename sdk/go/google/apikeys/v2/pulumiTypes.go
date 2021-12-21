@@ -127,62 +127,6 @@ type V2AndroidApplicationResponse struct {
 	Sha1Fingerprint string `pulumi:"sha1Fingerprint"`
 }
 
-// V2AndroidApplicationResponseInput is an input type that accepts V2AndroidApplicationResponseArgs and V2AndroidApplicationResponseOutput values.
-// You can construct a concrete instance of `V2AndroidApplicationResponseInput` via:
-//
-//          V2AndroidApplicationResponseArgs{...}
-type V2AndroidApplicationResponseInput interface {
-	pulumi.Input
-
-	ToV2AndroidApplicationResponseOutput() V2AndroidApplicationResponseOutput
-	ToV2AndroidApplicationResponseOutputWithContext(context.Context) V2AndroidApplicationResponseOutput
-}
-
-// Identifier of an Android application for key use.
-type V2AndroidApplicationResponseArgs struct {
-	// The package name of the application.
-	PackageName pulumi.StringInput `pulumi:"packageName"`
-	// The SHA1 fingerprint of the application. For example, both sha1 formats are acceptable : DA:39:A3:EE:5E:6B:4B:0D:32:55:BF:EF:95:60:18:90:AF:D8:07:09 or DA39A3EE5E6B4B0D3255BFEF95601890AFD80709. Output format is the latter.
-	Sha1Fingerprint pulumi.StringInput `pulumi:"sha1Fingerprint"`
-}
-
-func (V2AndroidApplicationResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*V2AndroidApplicationResponse)(nil)).Elem()
-}
-
-func (i V2AndroidApplicationResponseArgs) ToV2AndroidApplicationResponseOutput() V2AndroidApplicationResponseOutput {
-	return i.ToV2AndroidApplicationResponseOutputWithContext(context.Background())
-}
-
-func (i V2AndroidApplicationResponseArgs) ToV2AndroidApplicationResponseOutputWithContext(ctx context.Context) V2AndroidApplicationResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(V2AndroidApplicationResponseOutput)
-}
-
-// V2AndroidApplicationResponseArrayInput is an input type that accepts V2AndroidApplicationResponseArray and V2AndroidApplicationResponseArrayOutput values.
-// You can construct a concrete instance of `V2AndroidApplicationResponseArrayInput` via:
-//
-//          V2AndroidApplicationResponseArray{ V2AndroidApplicationResponseArgs{...} }
-type V2AndroidApplicationResponseArrayInput interface {
-	pulumi.Input
-
-	ToV2AndroidApplicationResponseArrayOutput() V2AndroidApplicationResponseArrayOutput
-	ToV2AndroidApplicationResponseArrayOutputWithContext(context.Context) V2AndroidApplicationResponseArrayOutput
-}
-
-type V2AndroidApplicationResponseArray []V2AndroidApplicationResponseInput
-
-func (V2AndroidApplicationResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]V2AndroidApplicationResponse)(nil)).Elem()
-}
-
-func (i V2AndroidApplicationResponseArray) ToV2AndroidApplicationResponseArrayOutput() V2AndroidApplicationResponseArrayOutput {
-	return i.ToV2AndroidApplicationResponseArrayOutputWithContext(context.Background())
-}
-
-func (i V2AndroidApplicationResponseArray) ToV2AndroidApplicationResponseArrayOutputWithContext(ctx context.Context) V2AndroidApplicationResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(V2AndroidApplicationResponseArrayOutput)
-}
-
 // Identifier of an Android application for key use.
 type V2AndroidApplicationResponseOutput struct{ *pulumi.OutputState }
 
@@ -374,76 +318,6 @@ type V2AndroidKeyRestrictionsResponse struct {
 	AllowedApplications []V2AndroidApplicationResponse `pulumi:"allowedApplications"`
 }
 
-// V2AndroidKeyRestrictionsResponseInput is an input type that accepts V2AndroidKeyRestrictionsResponseArgs and V2AndroidKeyRestrictionsResponseOutput values.
-// You can construct a concrete instance of `V2AndroidKeyRestrictionsResponseInput` via:
-//
-//          V2AndroidKeyRestrictionsResponseArgs{...}
-type V2AndroidKeyRestrictionsResponseInput interface {
-	pulumi.Input
-
-	ToV2AndroidKeyRestrictionsResponseOutput() V2AndroidKeyRestrictionsResponseOutput
-	ToV2AndroidKeyRestrictionsResponseOutputWithContext(context.Context) V2AndroidKeyRestrictionsResponseOutput
-}
-
-// The Android apps that are allowed to use the key.
-type V2AndroidKeyRestrictionsResponseArgs struct {
-	// A list of Android applications that are allowed to make API calls with this key.
-	AllowedApplications V2AndroidApplicationResponseArrayInput `pulumi:"allowedApplications"`
-}
-
-func (V2AndroidKeyRestrictionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*V2AndroidKeyRestrictionsResponse)(nil)).Elem()
-}
-
-func (i V2AndroidKeyRestrictionsResponseArgs) ToV2AndroidKeyRestrictionsResponseOutput() V2AndroidKeyRestrictionsResponseOutput {
-	return i.ToV2AndroidKeyRestrictionsResponseOutputWithContext(context.Background())
-}
-
-func (i V2AndroidKeyRestrictionsResponseArgs) ToV2AndroidKeyRestrictionsResponseOutputWithContext(ctx context.Context) V2AndroidKeyRestrictionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(V2AndroidKeyRestrictionsResponseOutput)
-}
-
-func (i V2AndroidKeyRestrictionsResponseArgs) ToV2AndroidKeyRestrictionsResponsePtrOutput() V2AndroidKeyRestrictionsResponsePtrOutput {
-	return i.ToV2AndroidKeyRestrictionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i V2AndroidKeyRestrictionsResponseArgs) ToV2AndroidKeyRestrictionsResponsePtrOutputWithContext(ctx context.Context) V2AndroidKeyRestrictionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(V2AndroidKeyRestrictionsResponseOutput).ToV2AndroidKeyRestrictionsResponsePtrOutputWithContext(ctx)
-}
-
-// V2AndroidKeyRestrictionsResponsePtrInput is an input type that accepts V2AndroidKeyRestrictionsResponseArgs, V2AndroidKeyRestrictionsResponsePtr and V2AndroidKeyRestrictionsResponsePtrOutput values.
-// You can construct a concrete instance of `V2AndroidKeyRestrictionsResponsePtrInput` via:
-//
-//          V2AndroidKeyRestrictionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type V2AndroidKeyRestrictionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToV2AndroidKeyRestrictionsResponsePtrOutput() V2AndroidKeyRestrictionsResponsePtrOutput
-	ToV2AndroidKeyRestrictionsResponsePtrOutputWithContext(context.Context) V2AndroidKeyRestrictionsResponsePtrOutput
-}
-
-type v2androidKeyRestrictionsResponsePtrType V2AndroidKeyRestrictionsResponseArgs
-
-func V2AndroidKeyRestrictionsResponsePtr(v *V2AndroidKeyRestrictionsResponseArgs) V2AndroidKeyRestrictionsResponsePtrInput {
-	return (*v2androidKeyRestrictionsResponsePtrType)(v)
-}
-
-func (*v2androidKeyRestrictionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**V2AndroidKeyRestrictionsResponse)(nil)).Elem()
-}
-
-func (i *v2androidKeyRestrictionsResponsePtrType) ToV2AndroidKeyRestrictionsResponsePtrOutput() V2AndroidKeyRestrictionsResponsePtrOutput {
-	return i.ToV2AndroidKeyRestrictionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *v2androidKeyRestrictionsResponsePtrType) ToV2AndroidKeyRestrictionsResponsePtrOutputWithContext(ctx context.Context) V2AndroidKeyRestrictionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(V2AndroidKeyRestrictionsResponsePtrOutput)
-}
-
 // The Android apps that are allowed to use the key.
 type V2AndroidKeyRestrictionsResponseOutput struct{ *pulumi.OutputState }
 
@@ -459,53 +333,9 @@ func (o V2AndroidKeyRestrictionsResponseOutput) ToV2AndroidKeyRestrictionsRespon
 	return o
 }
 
-func (o V2AndroidKeyRestrictionsResponseOutput) ToV2AndroidKeyRestrictionsResponsePtrOutput() V2AndroidKeyRestrictionsResponsePtrOutput {
-	return o.ToV2AndroidKeyRestrictionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o V2AndroidKeyRestrictionsResponseOutput) ToV2AndroidKeyRestrictionsResponsePtrOutputWithContext(ctx context.Context) V2AndroidKeyRestrictionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2AndroidKeyRestrictionsResponse) *V2AndroidKeyRestrictionsResponse {
-		return &v
-	}).(V2AndroidKeyRestrictionsResponsePtrOutput)
-}
-
 // A list of Android applications that are allowed to make API calls with this key.
 func (o V2AndroidKeyRestrictionsResponseOutput) AllowedApplications() V2AndroidApplicationResponseArrayOutput {
 	return o.ApplyT(func(v V2AndroidKeyRestrictionsResponse) []V2AndroidApplicationResponse { return v.AllowedApplications }).(V2AndroidApplicationResponseArrayOutput)
-}
-
-type V2AndroidKeyRestrictionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (V2AndroidKeyRestrictionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**V2AndroidKeyRestrictionsResponse)(nil)).Elem()
-}
-
-func (o V2AndroidKeyRestrictionsResponsePtrOutput) ToV2AndroidKeyRestrictionsResponsePtrOutput() V2AndroidKeyRestrictionsResponsePtrOutput {
-	return o
-}
-
-func (o V2AndroidKeyRestrictionsResponsePtrOutput) ToV2AndroidKeyRestrictionsResponsePtrOutputWithContext(ctx context.Context) V2AndroidKeyRestrictionsResponsePtrOutput {
-	return o
-}
-
-func (o V2AndroidKeyRestrictionsResponsePtrOutput) Elem() V2AndroidKeyRestrictionsResponseOutput {
-	return o.ApplyT(func(v *V2AndroidKeyRestrictionsResponse) V2AndroidKeyRestrictionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret V2AndroidKeyRestrictionsResponse
-		return ret
-	}).(V2AndroidKeyRestrictionsResponseOutput)
-}
-
-// A list of Android applications that are allowed to make API calls with this key.
-func (o V2AndroidKeyRestrictionsResponsePtrOutput) AllowedApplications() V2AndroidApplicationResponseArrayOutput {
-	return o.ApplyT(func(v *V2AndroidKeyRestrictionsResponse) []V2AndroidApplicationResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AllowedApplications
-	}).(V2AndroidApplicationResponseArrayOutput)
 }
 
 // A restriction for a specific service and optionally one or multiple specific methods. Both fields are case insensitive.
@@ -623,62 +453,6 @@ type V2ApiTargetResponse struct {
 	Methods []string `pulumi:"methods"`
 	// The service for this restriction. It should be the canonical service name, for example: `translate.googleapis.com`. You can use [`gcloud services list`](/sdk/gcloud/reference/services/list) to get a list of services that are enabled in the project.
 	Service string `pulumi:"service"`
-}
-
-// V2ApiTargetResponseInput is an input type that accepts V2ApiTargetResponseArgs and V2ApiTargetResponseOutput values.
-// You can construct a concrete instance of `V2ApiTargetResponseInput` via:
-//
-//          V2ApiTargetResponseArgs{...}
-type V2ApiTargetResponseInput interface {
-	pulumi.Input
-
-	ToV2ApiTargetResponseOutput() V2ApiTargetResponseOutput
-	ToV2ApiTargetResponseOutputWithContext(context.Context) V2ApiTargetResponseOutput
-}
-
-// A restriction for a specific service and optionally one or multiple specific methods. Both fields are case insensitive.
-type V2ApiTargetResponseArgs struct {
-	// Optional. List of one or more methods that can be called. If empty, all methods for the service are allowed. A wildcard (*) can be used as the last symbol. Valid examples: `google.cloud.translate.v2.TranslateService.GetSupportedLanguage` `TranslateText` `Get*` `translate.googleapis.com.Get*`
-	Methods pulumi.StringArrayInput `pulumi:"methods"`
-	// The service for this restriction. It should be the canonical service name, for example: `translate.googleapis.com`. You can use [`gcloud services list`](/sdk/gcloud/reference/services/list) to get a list of services that are enabled in the project.
-	Service pulumi.StringInput `pulumi:"service"`
-}
-
-func (V2ApiTargetResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*V2ApiTargetResponse)(nil)).Elem()
-}
-
-func (i V2ApiTargetResponseArgs) ToV2ApiTargetResponseOutput() V2ApiTargetResponseOutput {
-	return i.ToV2ApiTargetResponseOutputWithContext(context.Background())
-}
-
-func (i V2ApiTargetResponseArgs) ToV2ApiTargetResponseOutputWithContext(ctx context.Context) V2ApiTargetResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(V2ApiTargetResponseOutput)
-}
-
-// V2ApiTargetResponseArrayInput is an input type that accepts V2ApiTargetResponseArray and V2ApiTargetResponseArrayOutput values.
-// You can construct a concrete instance of `V2ApiTargetResponseArrayInput` via:
-//
-//          V2ApiTargetResponseArray{ V2ApiTargetResponseArgs{...} }
-type V2ApiTargetResponseArrayInput interface {
-	pulumi.Input
-
-	ToV2ApiTargetResponseArrayOutput() V2ApiTargetResponseArrayOutput
-	ToV2ApiTargetResponseArrayOutputWithContext(context.Context) V2ApiTargetResponseArrayOutput
-}
-
-type V2ApiTargetResponseArray []V2ApiTargetResponseInput
-
-func (V2ApiTargetResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]V2ApiTargetResponse)(nil)).Elem()
-}
-
-func (i V2ApiTargetResponseArray) ToV2ApiTargetResponseArrayOutput() V2ApiTargetResponseArrayOutput {
-	return i.ToV2ApiTargetResponseArrayOutputWithContext(context.Background())
-}
-
-func (i V2ApiTargetResponseArray) ToV2ApiTargetResponseArrayOutputWithContext(ctx context.Context) V2ApiTargetResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(V2ApiTargetResponseArrayOutput)
 }
 
 // A restriction for a specific service and optionally one or multiple specific methods. Both fields are case insensitive.
@@ -872,76 +646,6 @@ type V2BrowserKeyRestrictionsResponse struct {
 	AllowedReferrers []string `pulumi:"allowedReferrers"`
 }
 
-// V2BrowserKeyRestrictionsResponseInput is an input type that accepts V2BrowserKeyRestrictionsResponseArgs and V2BrowserKeyRestrictionsResponseOutput values.
-// You can construct a concrete instance of `V2BrowserKeyRestrictionsResponseInput` via:
-//
-//          V2BrowserKeyRestrictionsResponseArgs{...}
-type V2BrowserKeyRestrictionsResponseInput interface {
-	pulumi.Input
-
-	ToV2BrowserKeyRestrictionsResponseOutput() V2BrowserKeyRestrictionsResponseOutput
-	ToV2BrowserKeyRestrictionsResponseOutputWithContext(context.Context) V2BrowserKeyRestrictionsResponseOutput
-}
-
-// The HTTP referrers (websites) that are allowed to use the key.
-type V2BrowserKeyRestrictionsResponseArgs struct {
-	// A list of regular expressions for the referrer URLs that are allowed to make API calls with this key.
-	AllowedReferrers pulumi.StringArrayInput `pulumi:"allowedReferrers"`
-}
-
-func (V2BrowserKeyRestrictionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*V2BrowserKeyRestrictionsResponse)(nil)).Elem()
-}
-
-func (i V2BrowserKeyRestrictionsResponseArgs) ToV2BrowserKeyRestrictionsResponseOutput() V2BrowserKeyRestrictionsResponseOutput {
-	return i.ToV2BrowserKeyRestrictionsResponseOutputWithContext(context.Background())
-}
-
-func (i V2BrowserKeyRestrictionsResponseArgs) ToV2BrowserKeyRestrictionsResponseOutputWithContext(ctx context.Context) V2BrowserKeyRestrictionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(V2BrowserKeyRestrictionsResponseOutput)
-}
-
-func (i V2BrowserKeyRestrictionsResponseArgs) ToV2BrowserKeyRestrictionsResponsePtrOutput() V2BrowserKeyRestrictionsResponsePtrOutput {
-	return i.ToV2BrowserKeyRestrictionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i V2BrowserKeyRestrictionsResponseArgs) ToV2BrowserKeyRestrictionsResponsePtrOutputWithContext(ctx context.Context) V2BrowserKeyRestrictionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(V2BrowserKeyRestrictionsResponseOutput).ToV2BrowserKeyRestrictionsResponsePtrOutputWithContext(ctx)
-}
-
-// V2BrowserKeyRestrictionsResponsePtrInput is an input type that accepts V2BrowserKeyRestrictionsResponseArgs, V2BrowserKeyRestrictionsResponsePtr and V2BrowserKeyRestrictionsResponsePtrOutput values.
-// You can construct a concrete instance of `V2BrowserKeyRestrictionsResponsePtrInput` via:
-//
-//          V2BrowserKeyRestrictionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type V2BrowserKeyRestrictionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToV2BrowserKeyRestrictionsResponsePtrOutput() V2BrowserKeyRestrictionsResponsePtrOutput
-	ToV2BrowserKeyRestrictionsResponsePtrOutputWithContext(context.Context) V2BrowserKeyRestrictionsResponsePtrOutput
-}
-
-type v2browserKeyRestrictionsResponsePtrType V2BrowserKeyRestrictionsResponseArgs
-
-func V2BrowserKeyRestrictionsResponsePtr(v *V2BrowserKeyRestrictionsResponseArgs) V2BrowserKeyRestrictionsResponsePtrInput {
-	return (*v2browserKeyRestrictionsResponsePtrType)(v)
-}
-
-func (*v2browserKeyRestrictionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**V2BrowserKeyRestrictionsResponse)(nil)).Elem()
-}
-
-func (i *v2browserKeyRestrictionsResponsePtrType) ToV2BrowserKeyRestrictionsResponsePtrOutput() V2BrowserKeyRestrictionsResponsePtrOutput {
-	return i.ToV2BrowserKeyRestrictionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *v2browserKeyRestrictionsResponsePtrType) ToV2BrowserKeyRestrictionsResponsePtrOutputWithContext(ctx context.Context) V2BrowserKeyRestrictionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(V2BrowserKeyRestrictionsResponsePtrOutput)
-}
-
 // The HTTP referrers (websites) that are allowed to use the key.
 type V2BrowserKeyRestrictionsResponseOutput struct{ *pulumi.OutputState }
 
@@ -957,53 +661,9 @@ func (o V2BrowserKeyRestrictionsResponseOutput) ToV2BrowserKeyRestrictionsRespon
 	return o
 }
 
-func (o V2BrowserKeyRestrictionsResponseOutput) ToV2BrowserKeyRestrictionsResponsePtrOutput() V2BrowserKeyRestrictionsResponsePtrOutput {
-	return o.ToV2BrowserKeyRestrictionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o V2BrowserKeyRestrictionsResponseOutput) ToV2BrowserKeyRestrictionsResponsePtrOutputWithContext(ctx context.Context) V2BrowserKeyRestrictionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2BrowserKeyRestrictionsResponse) *V2BrowserKeyRestrictionsResponse {
-		return &v
-	}).(V2BrowserKeyRestrictionsResponsePtrOutput)
-}
-
 // A list of regular expressions for the referrer URLs that are allowed to make API calls with this key.
 func (o V2BrowserKeyRestrictionsResponseOutput) AllowedReferrers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v V2BrowserKeyRestrictionsResponse) []string { return v.AllowedReferrers }).(pulumi.StringArrayOutput)
-}
-
-type V2BrowserKeyRestrictionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (V2BrowserKeyRestrictionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**V2BrowserKeyRestrictionsResponse)(nil)).Elem()
-}
-
-func (o V2BrowserKeyRestrictionsResponsePtrOutput) ToV2BrowserKeyRestrictionsResponsePtrOutput() V2BrowserKeyRestrictionsResponsePtrOutput {
-	return o
-}
-
-func (o V2BrowserKeyRestrictionsResponsePtrOutput) ToV2BrowserKeyRestrictionsResponsePtrOutputWithContext(ctx context.Context) V2BrowserKeyRestrictionsResponsePtrOutput {
-	return o
-}
-
-func (o V2BrowserKeyRestrictionsResponsePtrOutput) Elem() V2BrowserKeyRestrictionsResponseOutput {
-	return o.ApplyT(func(v *V2BrowserKeyRestrictionsResponse) V2BrowserKeyRestrictionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret V2BrowserKeyRestrictionsResponse
-		return ret
-	}).(V2BrowserKeyRestrictionsResponseOutput)
-}
-
-// A list of regular expressions for the referrer URLs that are allowed to make API calls with this key.
-func (o V2BrowserKeyRestrictionsResponsePtrOutput) AllowedReferrers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *V2BrowserKeyRestrictionsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AllowedReferrers
-	}).(pulumi.StringArrayOutput)
 }
 
 // The iOS apps that are allowed to use the key.
@@ -1152,76 +812,6 @@ type V2IosKeyRestrictionsResponse struct {
 	AllowedBundleIds []string `pulumi:"allowedBundleIds"`
 }
 
-// V2IosKeyRestrictionsResponseInput is an input type that accepts V2IosKeyRestrictionsResponseArgs and V2IosKeyRestrictionsResponseOutput values.
-// You can construct a concrete instance of `V2IosKeyRestrictionsResponseInput` via:
-//
-//          V2IosKeyRestrictionsResponseArgs{...}
-type V2IosKeyRestrictionsResponseInput interface {
-	pulumi.Input
-
-	ToV2IosKeyRestrictionsResponseOutput() V2IosKeyRestrictionsResponseOutput
-	ToV2IosKeyRestrictionsResponseOutputWithContext(context.Context) V2IosKeyRestrictionsResponseOutput
-}
-
-// The iOS apps that are allowed to use the key.
-type V2IosKeyRestrictionsResponseArgs struct {
-	// A list of bundle IDs that are allowed when making API calls with this key.
-	AllowedBundleIds pulumi.StringArrayInput `pulumi:"allowedBundleIds"`
-}
-
-func (V2IosKeyRestrictionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*V2IosKeyRestrictionsResponse)(nil)).Elem()
-}
-
-func (i V2IosKeyRestrictionsResponseArgs) ToV2IosKeyRestrictionsResponseOutput() V2IosKeyRestrictionsResponseOutput {
-	return i.ToV2IosKeyRestrictionsResponseOutputWithContext(context.Background())
-}
-
-func (i V2IosKeyRestrictionsResponseArgs) ToV2IosKeyRestrictionsResponseOutputWithContext(ctx context.Context) V2IosKeyRestrictionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(V2IosKeyRestrictionsResponseOutput)
-}
-
-func (i V2IosKeyRestrictionsResponseArgs) ToV2IosKeyRestrictionsResponsePtrOutput() V2IosKeyRestrictionsResponsePtrOutput {
-	return i.ToV2IosKeyRestrictionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i V2IosKeyRestrictionsResponseArgs) ToV2IosKeyRestrictionsResponsePtrOutputWithContext(ctx context.Context) V2IosKeyRestrictionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(V2IosKeyRestrictionsResponseOutput).ToV2IosKeyRestrictionsResponsePtrOutputWithContext(ctx)
-}
-
-// V2IosKeyRestrictionsResponsePtrInput is an input type that accepts V2IosKeyRestrictionsResponseArgs, V2IosKeyRestrictionsResponsePtr and V2IosKeyRestrictionsResponsePtrOutput values.
-// You can construct a concrete instance of `V2IosKeyRestrictionsResponsePtrInput` via:
-//
-//          V2IosKeyRestrictionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type V2IosKeyRestrictionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToV2IosKeyRestrictionsResponsePtrOutput() V2IosKeyRestrictionsResponsePtrOutput
-	ToV2IosKeyRestrictionsResponsePtrOutputWithContext(context.Context) V2IosKeyRestrictionsResponsePtrOutput
-}
-
-type v2iosKeyRestrictionsResponsePtrType V2IosKeyRestrictionsResponseArgs
-
-func V2IosKeyRestrictionsResponsePtr(v *V2IosKeyRestrictionsResponseArgs) V2IosKeyRestrictionsResponsePtrInput {
-	return (*v2iosKeyRestrictionsResponsePtrType)(v)
-}
-
-func (*v2iosKeyRestrictionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**V2IosKeyRestrictionsResponse)(nil)).Elem()
-}
-
-func (i *v2iosKeyRestrictionsResponsePtrType) ToV2IosKeyRestrictionsResponsePtrOutput() V2IosKeyRestrictionsResponsePtrOutput {
-	return i.ToV2IosKeyRestrictionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *v2iosKeyRestrictionsResponsePtrType) ToV2IosKeyRestrictionsResponsePtrOutputWithContext(ctx context.Context) V2IosKeyRestrictionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(V2IosKeyRestrictionsResponsePtrOutput)
-}
-
 // The iOS apps that are allowed to use the key.
 type V2IosKeyRestrictionsResponseOutput struct{ *pulumi.OutputState }
 
@@ -1237,53 +827,9 @@ func (o V2IosKeyRestrictionsResponseOutput) ToV2IosKeyRestrictionsResponseOutput
 	return o
 }
 
-func (o V2IosKeyRestrictionsResponseOutput) ToV2IosKeyRestrictionsResponsePtrOutput() V2IosKeyRestrictionsResponsePtrOutput {
-	return o.ToV2IosKeyRestrictionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o V2IosKeyRestrictionsResponseOutput) ToV2IosKeyRestrictionsResponsePtrOutputWithContext(ctx context.Context) V2IosKeyRestrictionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2IosKeyRestrictionsResponse) *V2IosKeyRestrictionsResponse {
-		return &v
-	}).(V2IosKeyRestrictionsResponsePtrOutput)
-}
-
 // A list of bundle IDs that are allowed when making API calls with this key.
 func (o V2IosKeyRestrictionsResponseOutput) AllowedBundleIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v V2IosKeyRestrictionsResponse) []string { return v.AllowedBundleIds }).(pulumi.StringArrayOutput)
-}
-
-type V2IosKeyRestrictionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (V2IosKeyRestrictionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**V2IosKeyRestrictionsResponse)(nil)).Elem()
-}
-
-func (o V2IosKeyRestrictionsResponsePtrOutput) ToV2IosKeyRestrictionsResponsePtrOutput() V2IosKeyRestrictionsResponsePtrOutput {
-	return o
-}
-
-func (o V2IosKeyRestrictionsResponsePtrOutput) ToV2IosKeyRestrictionsResponsePtrOutputWithContext(ctx context.Context) V2IosKeyRestrictionsResponsePtrOutput {
-	return o
-}
-
-func (o V2IosKeyRestrictionsResponsePtrOutput) Elem() V2IosKeyRestrictionsResponseOutput {
-	return o.ApplyT(func(v *V2IosKeyRestrictionsResponse) V2IosKeyRestrictionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret V2IosKeyRestrictionsResponse
-		return ret
-	}).(V2IosKeyRestrictionsResponseOutput)
-}
-
-// A list of bundle IDs that are allowed when making API calls with this key.
-func (o V2IosKeyRestrictionsResponsePtrOutput) AllowedBundleIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *V2IosKeyRestrictionsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AllowedBundleIds
-	}).(pulumi.StringArrayOutput)
 }
 
 // Describes the restrictions on the key.
@@ -1516,84 +1062,6 @@ type V2RestrictionsResponse struct {
 	ServerKeyRestrictions V2ServerKeyRestrictionsResponse `pulumi:"serverKeyRestrictions"`
 }
 
-// V2RestrictionsResponseInput is an input type that accepts V2RestrictionsResponseArgs and V2RestrictionsResponseOutput values.
-// You can construct a concrete instance of `V2RestrictionsResponseInput` via:
-//
-//          V2RestrictionsResponseArgs{...}
-type V2RestrictionsResponseInput interface {
-	pulumi.Input
-
-	ToV2RestrictionsResponseOutput() V2RestrictionsResponseOutput
-	ToV2RestrictionsResponseOutputWithContext(context.Context) V2RestrictionsResponseOutput
-}
-
-// Describes the restrictions on the key.
-type V2RestrictionsResponseArgs struct {
-	// The Android apps that are allowed to use the key.
-	AndroidKeyRestrictions V2AndroidKeyRestrictionsResponseInput `pulumi:"androidKeyRestrictions"`
-	// A restriction for a specific service and optionally one or more specific methods. Requests are allowed if they match any of these restrictions. If no restrictions are specified, all targets are allowed.
-	ApiTargets V2ApiTargetResponseArrayInput `pulumi:"apiTargets"`
-	// The HTTP referrers (websites) that are allowed to use the key.
-	BrowserKeyRestrictions V2BrowserKeyRestrictionsResponseInput `pulumi:"browserKeyRestrictions"`
-	// The iOS apps that are allowed to use the key.
-	IosKeyRestrictions V2IosKeyRestrictionsResponseInput `pulumi:"iosKeyRestrictions"`
-	// The IP addresses of callers that are allowed to use the key.
-	ServerKeyRestrictions V2ServerKeyRestrictionsResponseInput `pulumi:"serverKeyRestrictions"`
-}
-
-func (V2RestrictionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*V2RestrictionsResponse)(nil)).Elem()
-}
-
-func (i V2RestrictionsResponseArgs) ToV2RestrictionsResponseOutput() V2RestrictionsResponseOutput {
-	return i.ToV2RestrictionsResponseOutputWithContext(context.Background())
-}
-
-func (i V2RestrictionsResponseArgs) ToV2RestrictionsResponseOutputWithContext(ctx context.Context) V2RestrictionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(V2RestrictionsResponseOutput)
-}
-
-func (i V2RestrictionsResponseArgs) ToV2RestrictionsResponsePtrOutput() V2RestrictionsResponsePtrOutput {
-	return i.ToV2RestrictionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i V2RestrictionsResponseArgs) ToV2RestrictionsResponsePtrOutputWithContext(ctx context.Context) V2RestrictionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(V2RestrictionsResponseOutput).ToV2RestrictionsResponsePtrOutputWithContext(ctx)
-}
-
-// V2RestrictionsResponsePtrInput is an input type that accepts V2RestrictionsResponseArgs, V2RestrictionsResponsePtr and V2RestrictionsResponsePtrOutput values.
-// You can construct a concrete instance of `V2RestrictionsResponsePtrInput` via:
-//
-//          V2RestrictionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type V2RestrictionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToV2RestrictionsResponsePtrOutput() V2RestrictionsResponsePtrOutput
-	ToV2RestrictionsResponsePtrOutputWithContext(context.Context) V2RestrictionsResponsePtrOutput
-}
-
-type v2restrictionsResponsePtrType V2RestrictionsResponseArgs
-
-func V2RestrictionsResponsePtr(v *V2RestrictionsResponseArgs) V2RestrictionsResponsePtrInput {
-	return (*v2restrictionsResponsePtrType)(v)
-}
-
-func (*v2restrictionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**V2RestrictionsResponse)(nil)).Elem()
-}
-
-func (i *v2restrictionsResponsePtrType) ToV2RestrictionsResponsePtrOutput() V2RestrictionsResponsePtrOutput {
-	return i.ToV2RestrictionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *v2restrictionsResponsePtrType) ToV2RestrictionsResponsePtrOutputWithContext(ctx context.Context) V2RestrictionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(V2RestrictionsResponsePtrOutput)
-}
-
 // Describes the restrictions on the key.
 type V2RestrictionsResponseOutput struct{ *pulumi.OutputState }
 
@@ -1607,16 +1075,6 @@ func (o V2RestrictionsResponseOutput) ToV2RestrictionsResponseOutput() V2Restric
 
 func (o V2RestrictionsResponseOutput) ToV2RestrictionsResponseOutputWithContext(ctx context.Context) V2RestrictionsResponseOutput {
 	return o
-}
-
-func (o V2RestrictionsResponseOutput) ToV2RestrictionsResponsePtrOutput() V2RestrictionsResponsePtrOutput {
-	return o.ToV2RestrictionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o V2RestrictionsResponseOutput) ToV2RestrictionsResponsePtrOutputWithContext(ctx context.Context) V2RestrictionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2RestrictionsResponse) *V2RestrictionsResponse {
-		return &v
-	}).(V2RestrictionsResponsePtrOutput)
 }
 
 // The Android apps that are allowed to use the key.
@@ -1642,80 +1100,6 @@ func (o V2RestrictionsResponseOutput) IosKeyRestrictions() V2IosKeyRestrictionsR
 // The IP addresses of callers that are allowed to use the key.
 func (o V2RestrictionsResponseOutput) ServerKeyRestrictions() V2ServerKeyRestrictionsResponseOutput {
 	return o.ApplyT(func(v V2RestrictionsResponse) V2ServerKeyRestrictionsResponse { return v.ServerKeyRestrictions }).(V2ServerKeyRestrictionsResponseOutput)
-}
-
-type V2RestrictionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (V2RestrictionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**V2RestrictionsResponse)(nil)).Elem()
-}
-
-func (o V2RestrictionsResponsePtrOutput) ToV2RestrictionsResponsePtrOutput() V2RestrictionsResponsePtrOutput {
-	return o
-}
-
-func (o V2RestrictionsResponsePtrOutput) ToV2RestrictionsResponsePtrOutputWithContext(ctx context.Context) V2RestrictionsResponsePtrOutput {
-	return o
-}
-
-func (o V2RestrictionsResponsePtrOutput) Elem() V2RestrictionsResponseOutput {
-	return o.ApplyT(func(v *V2RestrictionsResponse) V2RestrictionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret V2RestrictionsResponse
-		return ret
-	}).(V2RestrictionsResponseOutput)
-}
-
-// The Android apps that are allowed to use the key.
-func (o V2RestrictionsResponsePtrOutput) AndroidKeyRestrictions() V2AndroidKeyRestrictionsResponsePtrOutput {
-	return o.ApplyT(func(v *V2RestrictionsResponse) *V2AndroidKeyRestrictionsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.AndroidKeyRestrictions
-	}).(V2AndroidKeyRestrictionsResponsePtrOutput)
-}
-
-// A restriction for a specific service and optionally one or more specific methods. Requests are allowed if they match any of these restrictions. If no restrictions are specified, all targets are allowed.
-func (o V2RestrictionsResponsePtrOutput) ApiTargets() V2ApiTargetResponseArrayOutput {
-	return o.ApplyT(func(v *V2RestrictionsResponse) []V2ApiTargetResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ApiTargets
-	}).(V2ApiTargetResponseArrayOutput)
-}
-
-// The HTTP referrers (websites) that are allowed to use the key.
-func (o V2RestrictionsResponsePtrOutput) BrowserKeyRestrictions() V2BrowserKeyRestrictionsResponsePtrOutput {
-	return o.ApplyT(func(v *V2RestrictionsResponse) *V2BrowserKeyRestrictionsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.BrowserKeyRestrictions
-	}).(V2BrowserKeyRestrictionsResponsePtrOutput)
-}
-
-// The iOS apps that are allowed to use the key.
-func (o V2RestrictionsResponsePtrOutput) IosKeyRestrictions() V2IosKeyRestrictionsResponsePtrOutput {
-	return o.ApplyT(func(v *V2RestrictionsResponse) *V2IosKeyRestrictionsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.IosKeyRestrictions
-	}).(V2IosKeyRestrictionsResponsePtrOutput)
-}
-
-// The IP addresses of callers that are allowed to use the key.
-func (o V2RestrictionsResponsePtrOutput) ServerKeyRestrictions() V2ServerKeyRestrictionsResponsePtrOutput {
-	return o.ApplyT(func(v *V2RestrictionsResponse) *V2ServerKeyRestrictionsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ServerKeyRestrictions
-	}).(V2ServerKeyRestrictionsResponsePtrOutput)
 }
 
 // The IP addresses of callers that are allowed to use the key.
@@ -1864,76 +1248,6 @@ type V2ServerKeyRestrictionsResponse struct {
 	AllowedIps []string `pulumi:"allowedIps"`
 }
 
-// V2ServerKeyRestrictionsResponseInput is an input type that accepts V2ServerKeyRestrictionsResponseArgs and V2ServerKeyRestrictionsResponseOutput values.
-// You can construct a concrete instance of `V2ServerKeyRestrictionsResponseInput` via:
-//
-//          V2ServerKeyRestrictionsResponseArgs{...}
-type V2ServerKeyRestrictionsResponseInput interface {
-	pulumi.Input
-
-	ToV2ServerKeyRestrictionsResponseOutput() V2ServerKeyRestrictionsResponseOutput
-	ToV2ServerKeyRestrictionsResponseOutputWithContext(context.Context) V2ServerKeyRestrictionsResponseOutput
-}
-
-// The IP addresses of callers that are allowed to use the key.
-type V2ServerKeyRestrictionsResponseArgs struct {
-	// A list of the caller IP addresses that are allowed to make API calls with this key.
-	AllowedIps pulumi.StringArrayInput `pulumi:"allowedIps"`
-}
-
-func (V2ServerKeyRestrictionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*V2ServerKeyRestrictionsResponse)(nil)).Elem()
-}
-
-func (i V2ServerKeyRestrictionsResponseArgs) ToV2ServerKeyRestrictionsResponseOutput() V2ServerKeyRestrictionsResponseOutput {
-	return i.ToV2ServerKeyRestrictionsResponseOutputWithContext(context.Background())
-}
-
-func (i V2ServerKeyRestrictionsResponseArgs) ToV2ServerKeyRestrictionsResponseOutputWithContext(ctx context.Context) V2ServerKeyRestrictionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(V2ServerKeyRestrictionsResponseOutput)
-}
-
-func (i V2ServerKeyRestrictionsResponseArgs) ToV2ServerKeyRestrictionsResponsePtrOutput() V2ServerKeyRestrictionsResponsePtrOutput {
-	return i.ToV2ServerKeyRestrictionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i V2ServerKeyRestrictionsResponseArgs) ToV2ServerKeyRestrictionsResponsePtrOutputWithContext(ctx context.Context) V2ServerKeyRestrictionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(V2ServerKeyRestrictionsResponseOutput).ToV2ServerKeyRestrictionsResponsePtrOutputWithContext(ctx)
-}
-
-// V2ServerKeyRestrictionsResponsePtrInput is an input type that accepts V2ServerKeyRestrictionsResponseArgs, V2ServerKeyRestrictionsResponsePtr and V2ServerKeyRestrictionsResponsePtrOutput values.
-// You can construct a concrete instance of `V2ServerKeyRestrictionsResponsePtrInput` via:
-//
-//          V2ServerKeyRestrictionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type V2ServerKeyRestrictionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToV2ServerKeyRestrictionsResponsePtrOutput() V2ServerKeyRestrictionsResponsePtrOutput
-	ToV2ServerKeyRestrictionsResponsePtrOutputWithContext(context.Context) V2ServerKeyRestrictionsResponsePtrOutput
-}
-
-type v2serverKeyRestrictionsResponsePtrType V2ServerKeyRestrictionsResponseArgs
-
-func V2ServerKeyRestrictionsResponsePtr(v *V2ServerKeyRestrictionsResponseArgs) V2ServerKeyRestrictionsResponsePtrInput {
-	return (*v2serverKeyRestrictionsResponsePtrType)(v)
-}
-
-func (*v2serverKeyRestrictionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**V2ServerKeyRestrictionsResponse)(nil)).Elem()
-}
-
-func (i *v2serverKeyRestrictionsResponsePtrType) ToV2ServerKeyRestrictionsResponsePtrOutput() V2ServerKeyRestrictionsResponsePtrOutput {
-	return i.ToV2ServerKeyRestrictionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *v2serverKeyRestrictionsResponsePtrType) ToV2ServerKeyRestrictionsResponsePtrOutputWithContext(ctx context.Context) V2ServerKeyRestrictionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(V2ServerKeyRestrictionsResponsePtrOutput)
-}
-
 // The IP addresses of callers that are allowed to use the key.
 type V2ServerKeyRestrictionsResponseOutput struct{ *pulumi.OutputState }
 
@@ -1949,84 +1263,26 @@ func (o V2ServerKeyRestrictionsResponseOutput) ToV2ServerKeyRestrictionsResponse
 	return o
 }
 
-func (o V2ServerKeyRestrictionsResponseOutput) ToV2ServerKeyRestrictionsResponsePtrOutput() V2ServerKeyRestrictionsResponsePtrOutput {
-	return o.ToV2ServerKeyRestrictionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o V2ServerKeyRestrictionsResponseOutput) ToV2ServerKeyRestrictionsResponsePtrOutputWithContext(ctx context.Context) V2ServerKeyRestrictionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2ServerKeyRestrictionsResponse) *V2ServerKeyRestrictionsResponse {
-		return &v
-	}).(V2ServerKeyRestrictionsResponsePtrOutput)
-}
-
 // A list of the caller IP addresses that are allowed to make API calls with this key.
 func (o V2ServerKeyRestrictionsResponseOutput) AllowedIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v V2ServerKeyRestrictionsResponse) []string { return v.AllowedIps }).(pulumi.StringArrayOutput)
 }
 
-type V2ServerKeyRestrictionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (V2ServerKeyRestrictionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**V2ServerKeyRestrictionsResponse)(nil)).Elem()
-}
-
-func (o V2ServerKeyRestrictionsResponsePtrOutput) ToV2ServerKeyRestrictionsResponsePtrOutput() V2ServerKeyRestrictionsResponsePtrOutput {
-	return o
-}
-
-func (o V2ServerKeyRestrictionsResponsePtrOutput) ToV2ServerKeyRestrictionsResponsePtrOutputWithContext(ctx context.Context) V2ServerKeyRestrictionsResponsePtrOutput {
-	return o
-}
-
-func (o V2ServerKeyRestrictionsResponsePtrOutput) Elem() V2ServerKeyRestrictionsResponseOutput {
-	return o.ApplyT(func(v *V2ServerKeyRestrictionsResponse) V2ServerKeyRestrictionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret V2ServerKeyRestrictionsResponse
-		return ret
-	}).(V2ServerKeyRestrictionsResponseOutput)
-}
-
-// A list of the caller IP addresses that are allowed to make API calls with this key.
-func (o V2ServerKeyRestrictionsResponsePtrOutput) AllowedIps() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *V2ServerKeyRestrictionsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AllowedIps
-	}).(pulumi.StringArrayOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*V2AndroidApplicationInput)(nil)).Elem(), V2AndroidApplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2AndroidApplicationArrayInput)(nil)).Elem(), V2AndroidApplicationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*V2AndroidApplicationResponseInput)(nil)).Elem(), V2AndroidApplicationResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*V2AndroidApplicationResponseArrayInput)(nil)).Elem(), V2AndroidApplicationResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2AndroidKeyRestrictionsInput)(nil)).Elem(), V2AndroidKeyRestrictionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2AndroidKeyRestrictionsPtrInput)(nil)).Elem(), V2AndroidKeyRestrictionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*V2AndroidKeyRestrictionsResponseInput)(nil)).Elem(), V2AndroidKeyRestrictionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*V2AndroidKeyRestrictionsResponsePtrInput)(nil)).Elem(), V2AndroidKeyRestrictionsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2ApiTargetInput)(nil)).Elem(), V2ApiTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2ApiTargetArrayInput)(nil)).Elem(), V2ApiTargetArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*V2ApiTargetResponseInput)(nil)).Elem(), V2ApiTargetResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*V2ApiTargetResponseArrayInput)(nil)).Elem(), V2ApiTargetResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2BrowserKeyRestrictionsInput)(nil)).Elem(), V2BrowserKeyRestrictionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2BrowserKeyRestrictionsPtrInput)(nil)).Elem(), V2BrowserKeyRestrictionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*V2BrowserKeyRestrictionsResponseInput)(nil)).Elem(), V2BrowserKeyRestrictionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*V2BrowserKeyRestrictionsResponsePtrInput)(nil)).Elem(), V2BrowserKeyRestrictionsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2IosKeyRestrictionsInput)(nil)).Elem(), V2IosKeyRestrictionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2IosKeyRestrictionsPtrInput)(nil)).Elem(), V2IosKeyRestrictionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*V2IosKeyRestrictionsResponseInput)(nil)).Elem(), V2IosKeyRestrictionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*V2IosKeyRestrictionsResponsePtrInput)(nil)).Elem(), V2IosKeyRestrictionsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2RestrictionsInput)(nil)).Elem(), V2RestrictionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2RestrictionsPtrInput)(nil)).Elem(), V2RestrictionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*V2RestrictionsResponseInput)(nil)).Elem(), V2RestrictionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*V2RestrictionsResponsePtrInput)(nil)).Elem(), V2RestrictionsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2ServerKeyRestrictionsInput)(nil)).Elem(), V2ServerKeyRestrictionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2ServerKeyRestrictionsPtrInput)(nil)).Elem(), V2ServerKeyRestrictionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*V2ServerKeyRestrictionsResponseInput)(nil)).Elem(), V2ServerKeyRestrictionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*V2ServerKeyRestrictionsResponsePtrInput)(nil)).Elem(), V2ServerKeyRestrictionsResponseArgs{})
 	pulumi.RegisterOutputType(V2AndroidApplicationOutput{})
 	pulumi.RegisterOutputType(V2AndroidApplicationArrayOutput{})
 	pulumi.RegisterOutputType(V2AndroidApplicationResponseOutput{})
@@ -2034,7 +1290,6 @@ func init() {
 	pulumi.RegisterOutputType(V2AndroidKeyRestrictionsOutput{})
 	pulumi.RegisterOutputType(V2AndroidKeyRestrictionsPtrOutput{})
 	pulumi.RegisterOutputType(V2AndroidKeyRestrictionsResponseOutput{})
-	pulumi.RegisterOutputType(V2AndroidKeyRestrictionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(V2ApiTargetOutput{})
 	pulumi.RegisterOutputType(V2ApiTargetArrayOutput{})
 	pulumi.RegisterOutputType(V2ApiTargetResponseOutput{})
@@ -2042,17 +1297,13 @@ func init() {
 	pulumi.RegisterOutputType(V2BrowserKeyRestrictionsOutput{})
 	pulumi.RegisterOutputType(V2BrowserKeyRestrictionsPtrOutput{})
 	pulumi.RegisterOutputType(V2BrowserKeyRestrictionsResponseOutput{})
-	pulumi.RegisterOutputType(V2BrowserKeyRestrictionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(V2IosKeyRestrictionsOutput{})
 	pulumi.RegisterOutputType(V2IosKeyRestrictionsPtrOutput{})
 	pulumi.RegisterOutputType(V2IosKeyRestrictionsResponseOutput{})
-	pulumi.RegisterOutputType(V2IosKeyRestrictionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(V2RestrictionsOutput{})
 	pulumi.RegisterOutputType(V2RestrictionsPtrOutput{})
 	pulumi.RegisterOutputType(V2RestrictionsResponseOutput{})
-	pulumi.RegisterOutputType(V2RestrictionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(V2ServerKeyRestrictionsOutput{})
 	pulumi.RegisterOutputType(V2ServerKeyRestrictionsPtrOutput{})
 	pulumi.RegisterOutputType(V2ServerKeyRestrictionsResponseOutput{})
-	pulumi.RegisterOutputType(V2ServerKeyRestrictionsResponsePtrOutput{})
 }

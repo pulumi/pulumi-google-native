@@ -134,7 +134,7 @@ type ServiceLevelObjectiveInput interface {
 }
 
 func (*ServiceLevelObjective) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceLevelObjective)(nil))
+	return reflect.TypeOf((**ServiceLevelObjective)(nil)).Elem()
 }
 
 func (i *ServiceLevelObjective) ToServiceLevelObjectiveOutput() ServiceLevelObjectiveOutput {
@@ -148,7 +148,7 @@ func (i *ServiceLevelObjective) ToServiceLevelObjectiveOutputWithContext(ctx con
 type ServiceLevelObjectiveOutput struct{ *pulumi.OutputState }
 
 func (ServiceLevelObjectiveOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceLevelObjective)(nil))
+	return reflect.TypeOf((**ServiceLevelObjective)(nil)).Elem()
 }
 
 func (o ServiceLevelObjectiveOutput) ToServiceLevelObjectiveOutput() ServiceLevelObjectiveOutput {

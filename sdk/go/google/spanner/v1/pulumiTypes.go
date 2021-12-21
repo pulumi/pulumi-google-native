@@ -22,82 +22,6 @@ type BackupInfoResponse struct {
 	VersionTime string `pulumi:"versionTime"`
 }
 
-// BackupInfoResponseInput is an input type that accepts BackupInfoResponseArgs and BackupInfoResponseOutput values.
-// You can construct a concrete instance of `BackupInfoResponseInput` via:
-//
-//          BackupInfoResponseArgs{...}
-type BackupInfoResponseInput interface {
-	pulumi.Input
-
-	ToBackupInfoResponseOutput() BackupInfoResponseOutput
-	ToBackupInfoResponseOutputWithContext(context.Context) BackupInfoResponseOutput
-}
-
-// Information about a backup.
-type BackupInfoResponseArgs struct {
-	// Name of the backup.
-	Backup pulumi.StringInput `pulumi:"backup"`
-	// The time the CreateBackup request was received.
-	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// Name of the database the backup was created from.
-	SourceDatabase pulumi.StringInput `pulumi:"sourceDatabase"`
-	// The backup contains an externally consistent copy of `source_database` at the timestamp specified by `version_time`. If the CreateBackup request did not specify `version_time`, the `version_time` of the backup is equivalent to the `create_time`.
-	VersionTime pulumi.StringInput `pulumi:"versionTime"`
-}
-
-func (BackupInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackupInfoResponse)(nil)).Elem()
-}
-
-func (i BackupInfoResponseArgs) ToBackupInfoResponseOutput() BackupInfoResponseOutput {
-	return i.ToBackupInfoResponseOutputWithContext(context.Background())
-}
-
-func (i BackupInfoResponseArgs) ToBackupInfoResponseOutputWithContext(ctx context.Context) BackupInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackupInfoResponseOutput)
-}
-
-func (i BackupInfoResponseArgs) ToBackupInfoResponsePtrOutput() BackupInfoResponsePtrOutput {
-	return i.ToBackupInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BackupInfoResponseArgs) ToBackupInfoResponsePtrOutputWithContext(ctx context.Context) BackupInfoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackupInfoResponseOutput).ToBackupInfoResponsePtrOutputWithContext(ctx)
-}
-
-// BackupInfoResponsePtrInput is an input type that accepts BackupInfoResponseArgs, BackupInfoResponsePtr and BackupInfoResponsePtrOutput values.
-// You can construct a concrete instance of `BackupInfoResponsePtrInput` via:
-//
-//          BackupInfoResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BackupInfoResponsePtrInput interface {
-	pulumi.Input
-
-	ToBackupInfoResponsePtrOutput() BackupInfoResponsePtrOutput
-	ToBackupInfoResponsePtrOutputWithContext(context.Context) BackupInfoResponsePtrOutput
-}
-
-type backupInfoResponsePtrType BackupInfoResponseArgs
-
-func BackupInfoResponsePtr(v *BackupInfoResponseArgs) BackupInfoResponsePtrInput {
-	return (*backupInfoResponsePtrType)(v)
-}
-
-func (*backupInfoResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BackupInfoResponse)(nil)).Elem()
-}
-
-func (i *backupInfoResponsePtrType) ToBackupInfoResponsePtrOutput() BackupInfoResponsePtrOutput {
-	return i.ToBackupInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *backupInfoResponsePtrType) ToBackupInfoResponsePtrOutputWithContext(ctx context.Context) BackupInfoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackupInfoResponsePtrOutput)
-}
-
 // Information about a backup.
 type BackupInfoResponseOutput struct{ *pulumi.OutputState }
 
@@ -111,16 +35,6 @@ func (o BackupInfoResponseOutput) ToBackupInfoResponseOutput() BackupInfoRespons
 
 func (o BackupInfoResponseOutput) ToBackupInfoResponseOutputWithContext(ctx context.Context) BackupInfoResponseOutput {
 	return o
-}
-
-func (o BackupInfoResponseOutput) ToBackupInfoResponsePtrOutput() BackupInfoResponsePtrOutput {
-	return o.ToBackupInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BackupInfoResponseOutput) ToBackupInfoResponsePtrOutputWithContext(ctx context.Context) BackupInfoResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupInfoResponse) *BackupInfoResponse {
-		return &v
-	}).(BackupInfoResponsePtrOutput)
 }
 
 // Name of the backup.
@@ -141,70 +55,6 @@ func (o BackupInfoResponseOutput) SourceDatabase() pulumi.StringOutput {
 // The backup contains an externally consistent copy of `source_database` at the timestamp specified by `version_time`. If the CreateBackup request did not specify `version_time`, the `version_time` of the backup is equivalent to the `create_time`.
 func (o BackupInfoResponseOutput) VersionTime() pulumi.StringOutput {
 	return o.ApplyT(func(v BackupInfoResponse) string { return v.VersionTime }).(pulumi.StringOutput)
-}
-
-type BackupInfoResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BackupInfoResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BackupInfoResponse)(nil)).Elem()
-}
-
-func (o BackupInfoResponsePtrOutput) ToBackupInfoResponsePtrOutput() BackupInfoResponsePtrOutput {
-	return o
-}
-
-func (o BackupInfoResponsePtrOutput) ToBackupInfoResponsePtrOutputWithContext(ctx context.Context) BackupInfoResponsePtrOutput {
-	return o
-}
-
-func (o BackupInfoResponsePtrOutput) Elem() BackupInfoResponseOutput {
-	return o.ApplyT(func(v *BackupInfoResponse) BackupInfoResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BackupInfoResponse
-		return ret
-	}).(BackupInfoResponseOutput)
-}
-
-// Name of the backup.
-func (o BackupInfoResponsePtrOutput) Backup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BackupInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Backup
-	}).(pulumi.StringPtrOutput)
-}
-
-// The time the CreateBackup request was received.
-func (o BackupInfoResponsePtrOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BackupInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CreateTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of the database the backup was created from.
-func (o BackupInfoResponsePtrOutput) SourceDatabase() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BackupInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SourceDatabase
-	}).(pulumi.StringPtrOutput)
-}
-
-// The backup contains an externally consistent copy of `source_database` at the timestamp specified by `version_time`. If the CreateBackup request did not specify `version_time`, the `version_time` of the backup is equivalent to the `create_time`.
-func (o BackupInfoResponsePtrOutput) VersionTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BackupInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.VersionTime
-	}).(pulumi.StringPtrOutput)
 }
 
 // Associates `members`, or principals, with a `role`.
@@ -333,64 +183,6 @@ type BindingResponse struct {
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
-}
-
-// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
-// You can construct a concrete instance of `BindingResponseInput` via:
-//
-//          BindingResponseArgs{...}
-type BindingResponseInput interface {
-	pulumi.Input
-
-	ToBindingResponseOutput() BindingResponseOutput
-	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
-}
-
-// Associates `members`, or principals, with a `role`.
-type BindingResponseArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
-	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-	Role pulumi.StringInput `pulumi:"role"`
-}
-
-func (BindingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
-	return i.ToBindingResponseOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
-}
-
-// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
-// You can construct a concrete instance of `BindingResponseArrayInput` via:
-//
-//          BindingResponseArray{ BindingResponseArgs{...} }
-type BindingResponseArrayInput interface {
-	pulumi.Input
-
-	ToBindingResponseArrayOutput() BindingResponseArrayOutput
-	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
-}
-
-type BindingResponseArray []BindingResponseInput
-
-func (BindingResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
-	return i.ToBindingResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
 }
 
 // Associates `members`, or principals, with a `role`.
@@ -589,76 +381,6 @@ type EncryptionConfigResponse struct {
 	KmsKeyName string `pulumi:"kmsKeyName"`
 }
 
-// EncryptionConfigResponseInput is an input type that accepts EncryptionConfigResponseArgs and EncryptionConfigResponseOutput values.
-// You can construct a concrete instance of `EncryptionConfigResponseInput` via:
-//
-//          EncryptionConfigResponseArgs{...}
-type EncryptionConfigResponseInput interface {
-	pulumi.Input
-
-	ToEncryptionConfigResponseOutput() EncryptionConfigResponseOutput
-	ToEncryptionConfigResponseOutputWithContext(context.Context) EncryptionConfigResponseOutput
-}
-
-// Encryption configuration for a Cloud Spanner database.
-type EncryptionConfigResponseArgs struct {
-	// The Cloud KMS key to be used for encrypting and decrypting the database. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
-	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
-}
-
-func (EncryptionConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EncryptionConfigResponse)(nil)).Elem()
-}
-
-func (i EncryptionConfigResponseArgs) ToEncryptionConfigResponseOutput() EncryptionConfigResponseOutput {
-	return i.ToEncryptionConfigResponseOutputWithContext(context.Background())
-}
-
-func (i EncryptionConfigResponseArgs) ToEncryptionConfigResponseOutputWithContext(ctx context.Context) EncryptionConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigResponseOutput)
-}
-
-func (i EncryptionConfigResponseArgs) ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput {
-	return i.ToEncryptionConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i EncryptionConfigResponseArgs) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigResponseOutput).ToEncryptionConfigResponsePtrOutputWithContext(ctx)
-}
-
-// EncryptionConfigResponsePtrInput is an input type that accepts EncryptionConfigResponseArgs, EncryptionConfigResponsePtr and EncryptionConfigResponsePtrOutput values.
-// You can construct a concrete instance of `EncryptionConfigResponsePtrInput` via:
-//
-//          EncryptionConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type EncryptionConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput
-	ToEncryptionConfigResponsePtrOutputWithContext(context.Context) EncryptionConfigResponsePtrOutput
-}
-
-type encryptionConfigResponsePtrType EncryptionConfigResponseArgs
-
-func EncryptionConfigResponsePtr(v *EncryptionConfigResponseArgs) EncryptionConfigResponsePtrInput {
-	return (*encryptionConfigResponsePtrType)(v)
-}
-
-func (*encryptionConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EncryptionConfigResponse)(nil)).Elem()
-}
-
-func (i *encryptionConfigResponsePtrType) ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput {
-	return i.ToEncryptionConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *encryptionConfigResponsePtrType) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigResponsePtrOutput)
-}
-
 // Encryption configuration for a Cloud Spanner database.
 type EncryptionConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -674,53 +396,9 @@ func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponseOutputWithCont
 	return o
 }
 
-func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput {
-	return o.ToEncryptionConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionConfigResponse) *EncryptionConfigResponse {
-		return &v
-	}).(EncryptionConfigResponsePtrOutput)
-}
-
 // The Cloud KMS key to be used for encrypting and decrypting the database. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
 func (o EncryptionConfigResponseOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v EncryptionConfigResponse) string { return v.KmsKeyName }).(pulumi.StringOutput)
-}
-
-type EncryptionConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (EncryptionConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EncryptionConfigResponse)(nil)).Elem()
-}
-
-func (o EncryptionConfigResponsePtrOutput) ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput {
-	return o
-}
-
-func (o EncryptionConfigResponsePtrOutput) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
-	return o
-}
-
-func (o EncryptionConfigResponsePtrOutput) Elem() EncryptionConfigResponseOutput {
-	return o.ApplyT(func(v *EncryptionConfigResponse) EncryptionConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret EncryptionConfigResponse
-		return ret
-	}).(EncryptionConfigResponseOutput)
-}
-
-// The Cloud KMS key to be used for encrypting and decrypting the database. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
-func (o EncryptionConfigResponsePtrOutput) KmsKeyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EncryptionConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.KmsKeyName
-	}).(pulumi.StringPtrOutput)
 }
 
 // Encryption information for a Cloud Spanner database or backup.
@@ -731,105 +409,6 @@ type EncryptionInfoResponse struct {
 	EncryptionType string `pulumi:"encryptionType"`
 	// A Cloud KMS key version that is being used to protect the database or backup.
 	KmsKeyVersion string `pulumi:"kmsKeyVersion"`
-}
-
-// EncryptionInfoResponseInput is an input type that accepts EncryptionInfoResponseArgs and EncryptionInfoResponseOutput values.
-// You can construct a concrete instance of `EncryptionInfoResponseInput` via:
-//
-//          EncryptionInfoResponseArgs{...}
-type EncryptionInfoResponseInput interface {
-	pulumi.Input
-
-	ToEncryptionInfoResponseOutput() EncryptionInfoResponseOutput
-	ToEncryptionInfoResponseOutputWithContext(context.Context) EncryptionInfoResponseOutput
-}
-
-// Encryption information for a Cloud Spanner database or backup.
-type EncryptionInfoResponseArgs struct {
-	// If present, the status of a recent encrypt/decrypt call on underlying data for this database or backup. Regardless of status, data is always encrypted at rest.
-	EncryptionStatus StatusResponseInput `pulumi:"encryptionStatus"`
-	// The type of encryption.
-	EncryptionType pulumi.StringInput `pulumi:"encryptionType"`
-	// A Cloud KMS key version that is being used to protect the database or backup.
-	KmsKeyVersion pulumi.StringInput `pulumi:"kmsKeyVersion"`
-}
-
-func (EncryptionInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EncryptionInfoResponse)(nil)).Elem()
-}
-
-func (i EncryptionInfoResponseArgs) ToEncryptionInfoResponseOutput() EncryptionInfoResponseOutput {
-	return i.ToEncryptionInfoResponseOutputWithContext(context.Background())
-}
-
-func (i EncryptionInfoResponseArgs) ToEncryptionInfoResponseOutputWithContext(ctx context.Context) EncryptionInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionInfoResponseOutput)
-}
-
-func (i EncryptionInfoResponseArgs) ToEncryptionInfoResponsePtrOutput() EncryptionInfoResponsePtrOutput {
-	return i.ToEncryptionInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i EncryptionInfoResponseArgs) ToEncryptionInfoResponsePtrOutputWithContext(ctx context.Context) EncryptionInfoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionInfoResponseOutput).ToEncryptionInfoResponsePtrOutputWithContext(ctx)
-}
-
-// EncryptionInfoResponsePtrInput is an input type that accepts EncryptionInfoResponseArgs, EncryptionInfoResponsePtr and EncryptionInfoResponsePtrOutput values.
-// You can construct a concrete instance of `EncryptionInfoResponsePtrInput` via:
-//
-//          EncryptionInfoResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type EncryptionInfoResponsePtrInput interface {
-	pulumi.Input
-
-	ToEncryptionInfoResponsePtrOutput() EncryptionInfoResponsePtrOutput
-	ToEncryptionInfoResponsePtrOutputWithContext(context.Context) EncryptionInfoResponsePtrOutput
-}
-
-type encryptionInfoResponsePtrType EncryptionInfoResponseArgs
-
-func EncryptionInfoResponsePtr(v *EncryptionInfoResponseArgs) EncryptionInfoResponsePtrInput {
-	return (*encryptionInfoResponsePtrType)(v)
-}
-
-func (*encryptionInfoResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EncryptionInfoResponse)(nil)).Elem()
-}
-
-func (i *encryptionInfoResponsePtrType) ToEncryptionInfoResponsePtrOutput() EncryptionInfoResponsePtrOutput {
-	return i.ToEncryptionInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *encryptionInfoResponsePtrType) ToEncryptionInfoResponsePtrOutputWithContext(ctx context.Context) EncryptionInfoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionInfoResponsePtrOutput)
-}
-
-// EncryptionInfoResponseArrayInput is an input type that accepts EncryptionInfoResponseArray and EncryptionInfoResponseArrayOutput values.
-// You can construct a concrete instance of `EncryptionInfoResponseArrayInput` via:
-//
-//          EncryptionInfoResponseArray{ EncryptionInfoResponseArgs{...} }
-type EncryptionInfoResponseArrayInput interface {
-	pulumi.Input
-
-	ToEncryptionInfoResponseArrayOutput() EncryptionInfoResponseArrayOutput
-	ToEncryptionInfoResponseArrayOutputWithContext(context.Context) EncryptionInfoResponseArrayOutput
-}
-
-type EncryptionInfoResponseArray []EncryptionInfoResponseInput
-
-func (EncryptionInfoResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EncryptionInfoResponse)(nil)).Elem()
-}
-
-func (i EncryptionInfoResponseArray) ToEncryptionInfoResponseArrayOutput() EncryptionInfoResponseArrayOutput {
-	return i.ToEncryptionInfoResponseArrayOutputWithContext(context.Background())
-}
-
-func (i EncryptionInfoResponseArray) ToEncryptionInfoResponseArrayOutputWithContext(ctx context.Context) EncryptionInfoResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionInfoResponseArrayOutput)
 }
 
 // Encryption information for a Cloud Spanner database or backup.
@@ -847,16 +426,6 @@ func (o EncryptionInfoResponseOutput) ToEncryptionInfoResponseOutputWithContext(
 	return o
 }
 
-func (o EncryptionInfoResponseOutput) ToEncryptionInfoResponsePtrOutput() EncryptionInfoResponsePtrOutput {
-	return o.ToEncryptionInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (o EncryptionInfoResponseOutput) ToEncryptionInfoResponsePtrOutputWithContext(ctx context.Context) EncryptionInfoResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionInfoResponse) *EncryptionInfoResponse {
-		return &v
-	}).(EncryptionInfoResponsePtrOutput)
-}
-
 // If present, the status of a recent encrypt/decrypt call on underlying data for this database or backup. Regardless of status, data is always encrypted at rest.
 func (o EncryptionInfoResponseOutput) EncryptionStatus() StatusResponseOutput {
 	return o.ApplyT(func(v EncryptionInfoResponse) StatusResponse { return v.EncryptionStatus }).(StatusResponseOutput)
@@ -870,60 +439,6 @@ func (o EncryptionInfoResponseOutput) EncryptionType() pulumi.StringOutput {
 // A Cloud KMS key version that is being used to protect the database or backup.
 func (o EncryptionInfoResponseOutput) KmsKeyVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v EncryptionInfoResponse) string { return v.KmsKeyVersion }).(pulumi.StringOutput)
-}
-
-type EncryptionInfoResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (EncryptionInfoResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EncryptionInfoResponse)(nil)).Elem()
-}
-
-func (o EncryptionInfoResponsePtrOutput) ToEncryptionInfoResponsePtrOutput() EncryptionInfoResponsePtrOutput {
-	return o
-}
-
-func (o EncryptionInfoResponsePtrOutput) ToEncryptionInfoResponsePtrOutputWithContext(ctx context.Context) EncryptionInfoResponsePtrOutput {
-	return o
-}
-
-func (o EncryptionInfoResponsePtrOutput) Elem() EncryptionInfoResponseOutput {
-	return o.ApplyT(func(v *EncryptionInfoResponse) EncryptionInfoResponse {
-		if v != nil {
-			return *v
-		}
-		var ret EncryptionInfoResponse
-		return ret
-	}).(EncryptionInfoResponseOutput)
-}
-
-// If present, the status of a recent encrypt/decrypt call on underlying data for this database or backup. Regardless of status, data is always encrypted at rest.
-func (o EncryptionInfoResponsePtrOutput) EncryptionStatus() StatusResponsePtrOutput {
-	return o.ApplyT(func(v *EncryptionInfoResponse) *StatusResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.EncryptionStatus
-	}).(StatusResponsePtrOutput)
-}
-
-// The type of encryption.
-func (o EncryptionInfoResponsePtrOutput) EncryptionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EncryptionInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EncryptionType
-	}).(pulumi.StringPtrOutput)
-}
-
-// A Cloud KMS key version that is being used to protect the database or backup.
-func (o EncryptionInfoResponsePtrOutput) KmsKeyVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EncryptionInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.KmsKeyVersion
-	}).(pulumi.StringPtrOutput)
 }
 
 type EncryptionInfoResponseArrayOutput struct{ *pulumi.OutputState }
@@ -1155,41 +670,6 @@ type ExprResponse struct {
 	Title string `pulumi:"title"`
 }
 
-// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
-// You can construct a concrete instance of `ExprResponseInput` via:
-//
-//          ExprResponseArgs{...}
-type ExprResponseInput interface {
-	pulumi.Input
-
-	ToExprResponseOutput() ExprResponseOutput
-	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type ExprResponseArgs struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-	Location pulumi.StringInput `pulumi:"location"`
-	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (ExprResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
-}
-
-func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
-	return i.ToExprResponseOutputWithContext(context.Background())
-}
-
-func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprResponseOutput struct{ *pulumi.OutputState }
 
@@ -1233,78 +713,6 @@ type RestoreInfoResponse struct {
 	SourceType string `pulumi:"sourceType"`
 }
 
-// RestoreInfoResponseInput is an input type that accepts RestoreInfoResponseArgs and RestoreInfoResponseOutput values.
-// You can construct a concrete instance of `RestoreInfoResponseInput` via:
-//
-//          RestoreInfoResponseArgs{...}
-type RestoreInfoResponseInput interface {
-	pulumi.Input
-
-	ToRestoreInfoResponseOutput() RestoreInfoResponseOutput
-	ToRestoreInfoResponseOutputWithContext(context.Context) RestoreInfoResponseOutput
-}
-
-// Information about the database restore.
-type RestoreInfoResponseArgs struct {
-	// Information about the backup used to restore the database. The backup may no longer exist.
-	BackupInfo BackupInfoResponseInput `pulumi:"backupInfo"`
-	// The type of the restore source.
-	SourceType pulumi.StringInput `pulumi:"sourceType"`
-}
-
-func (RestoreInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RestoreInfoResponse)(nil)).Elem()
-}
-
-func (i RestoreInfoResponseArgs) ToRestoreInfoResponseOutput() RestoreInfoResponseOutput {
-	return i.ToRestoreInfoResponseOutputWithContext(context.Background())
-}
-
-func (i RestoreInfoResponseArgs) ToRestoreInfoResponseOutputWithContext(ctx context.Context) RestoreInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RestoreInfoResponseOutput)
-}
-
-func (i RestoreInfoResponseArgs) ToRestoreInfoResponsePtrOutput() RestoreInfoResponsePtrOutput {
-	return i.ToRestoreInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i RestoreInfoResponseArgs) ToRestoreInfoResponsePtrOutputWithContext(ctx context.Context) RestoreInfoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RestoreInfoResponseOutput).ToRestoreInfoResponsePtrOutputWithContext(ctx)
-}
-
-// RestoreInfoResponsePtrInput is an input type that accepts RestoreInfoResponseArgs, RestoreInfoResponsePtr and RestoreInfoResponsePtrOutput values.
-// You can construct a concrete instance of `RestoreInfoResponsePtrInput` via:
-//
-//          RestoreInfoResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type RestoreInfoResponsePtrInput interface {
-	pulumi.Input
-
-	ToRestoreInfoResponsePtrOutput() RestoreInfoResponsePtrOutput
-	ToRestoreInfoResponsePtrOutputWithContext(context.Context) RestoreInfoResponsePtrOutput
-}
-
-type restoreInfoResponsePtrType RestoreInfoResponseArgs
-
-func RestoreInfoResponsePtr(v *RestoreInfoResponseArgs) RestoreInfoResponsePtrInput {
-	return (*restoreInfoResponsePtrType)(v)
-}
-
-func (*restoreInfoResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RestoreInfoResponse)(nil)).Elem()
-}
-
-func (i *restoreInfoResponsePtrType) ToRestoreInfoResponsePtrOutput() RestoreInfoResponsePtrOutput {
-	return i.ToRestoreInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *restoreInfoResponsePtrType) ToRestoreInfoResponsePtrOutputWithContext(ctx context.Context) RestoreInfoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RestoreInfoResponsePtrOutput)
-}
-
 // Information about the database restore.
 type RestoreInfoResponseOutput struct{ *pulumi.OutputState }
 
@@ -1320,16 +728,6 @@ func (o RestoreInfoResponseOutput) ToRestoreInfoResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o RestoreInfoResponseOutput) ToRestoreInfoResponsePtrOutput() RestoreInfoResponsePtrOutput {
-	return o.ToRestoreInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (o RestoreInfoResponseOutput) ToRestoreInfoResponsePtrOutputWithContext(ctx context.Context) RestoreInfoResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestoreInfoResponse) *RestoreInfoResponse {
-		return &v
-	}).(RestoreInfoResponsePtrOutput)
-}
-
 // Information about the backup used to restore the database. The backup may no longer exist.
 func (o RestoreInfoResponseOutput) BackupInfo() BackupInfoResponseOutput {
 	return o.ApplyT(func(v RestoreInfoResponse) BackupInfoResponse { return v.BackupInfo }).(BackupInfoResponseOutput)
@@ -1340,50 +738,6 @@ func (o RestoreInfoResponseOutput) SourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v RestoreInfoResponse) string { return v.SourceType }).(pulumi.StringOutput)
 }
 
-type RestoreInfoResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RestoreInfoResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RestoreInfoResponse)(nil)).Elem()
-}
-
-func (o RestoreInfoResponsePtrOutput) ToRestoreInfoResponsePtrOutput() RestoreInfoResponsePtrOutput {
-	return o
-}
-
-func (o RestoreInfoResponsePtrOutput) ToRestoreInfoResponsePtrOutputWithContext(ctx context.Context) RestoreInfoResponsePtrOutput {
-	return o
-}
-
-func (o RestoreInfoResponsePtrOutput) Elem() RestoreInfoResponseOutput {
-	return o.ApplyT(func(v *RestoreInfoResponse) RestoreInfoResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RestoreInfoResponse
-		return ret
-	}).(RestoreInfoResponseOutput)
-}
-
-// Information about the backup used to restore the database. The backup may no longer exist.
-func (o RestoreInfoResponsePtrOutput) BackupInfo() BackupInfoResponsePtrOutput {
-	return o.ApplyT(func(v *RestoreInfoResponse) *BackupInfoResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.BackupInfo
-	}).(BackupInfoResponsePtrOutput)
-}
-
-// The type of the restore source.
-func (o RestoreInfoResponsePtrOutput) SourceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RestoreInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SourceType
-	}).(pulumi.StringPtrOutput)
-}
-
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
 type StatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
@@ -1392,80 +746,6 @@ type StatusResponse struct {
 	Details []map[string]string `pulumi:"details"`
 	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 	Message string `pulumi:"message"`
-}
-
-// StatusResponseInput is an input type that accepts StatusResponseArgs and StatusResponseOutput values.
-// You can construct a concrete instance of `StatusResponseInput` via:
-//
-//          StatusResponseArgs{...}
-type StatusResponseInput interface {
-	pulumi.Input
-
-	ToStatusResponseOutput() StatusResponseOutput
-	ToStatusResponseOutputWithContext(context.Context) StatusResponseOutput
-}
-
-// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type StatusResponseArgs struct {
-	// The status code, which should be an enum value of google.rpc.Code.
-	Code pulumi.IntInput `pulumi:"code"`
-	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details pulumi.StringMapArrayInput `pulumi:"details"`
-	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-	Message pulumi.StringInput `pulumi:"message"`
-}
-
-func (StatusResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
-}
-
-func (i StatusResponseArgs) ToStatusResponseOutput() StatusResponseOutput {
-	return i.ToStatusResponseOutputWithContext(context.Background())
-}
-
-func (i StatusResponseArgs) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput)
-}
-
-func (i StatusResponseArgs) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return i.ToStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i StatusResponseArgs) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput).ToStatusResponsePtrOutputWithContext(ctx)
-}
-
-// StatusResponsePtrInput is an input type that accepts StatusResponseArgs, StatusResponsePtr and StatusResponsePtrOutput values.
-// You can construct a concrete instance of `StatusResponsePtrInput` via:
-//
-//          StatusResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type StatusResponsePtrInput interface {
-	pulumi.Input
-
-	ToStatusResponsePtrOutput() StatusResponsePtrOutput
-	ToStatusResponsePtrOutputWithContext(context.Context) StatusResponsePtrOutput
-}
-
-type statusResponsePtrType StatusResponseArgs
-
-func StatusResponsePtr(v *StatusResponseArgs) StatusResponsePtrInput {
-	return (*statusResponsePtrType)(v)
-}
-
-func (*statusResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
-}
-
-func (i *statusResponsePtrType) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return i.ToStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *statusResponsePtrType) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusResponsePtrOutput)
 }
 
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
@@ -1483,16 +763,6 @@ func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return o.ToStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatusResponse) *StatusResponse {
-		return &v
-	}).(StatusResponsePtrOutput)
-}
-
 // The status code, which should be an enum value of google.rpc.Code.
 func (o StatusResponseOutput) Code() pulumi.IntOutput {
 	return o.ApplyT(func(v StatusResponse) int { return v.Code }).(pulumi.IntOutput)
@@ -1508,83 +778,14 @@ func (o StatusResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
 }
 
-type StatusResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (StatusResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
-}
-
-func (o StatusResponsePtrOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return o
-}
-
-func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o
-}
-
-func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
-	return o.ApplyT(func(v *StatusResponse) StatusResponse {
-		if v != nil {
-			return *v
-		}
-		var ret StatusResponse
-		return ret
-	}).(StatusResponseOutput)
-}
-
-// The status code, which should be an enum value of google.rpc.Code.
-func (o StatusResponsePtrOutput) Code() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *StatusResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Code
-	}).(pulumi.IntPtrOutput)
-}
-
-// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o StatusResponsePtrOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *StatusResponse) []map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Details
-	}).(pulumi.StringMapArrayOutput)
-}
-
-// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-func (o StatusResponsePtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StatusResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Message
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*BackupInfoResponseInput)(nil)).Elem(), BackupInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BackupInfoResponsePtrInput)(nil)).Elem(), BackupInfoResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigInput)(nil)).Elem(), EncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigPtrInput)(nil)).Elem(), EncryptionConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigResponseInput)(nil)).Elem(), EncryptionConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigResponsePtrInput)(nil)).Elem(), EncryptionConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionInfoResponseInput)(nil)).Elem(), EncryptionInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionInfoResponsePtrInput)(nil)).Elem(), EncryptionInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionInfoResponseArrayInput)(nil)).Elem(), EncryptionInfoResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RestoreInfoResponseInput)(nil)).Elem(), RestoreInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RestoreInfoResponsePtrInput)(nil)).Elem(), RestoreInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponseInput)(nil)).Elem(), StatusResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponsePtrInput)(nil)).Elem(), StatusResponseArgs{})
 	pulumi.RegisterOutputType(BackupInfoResponseOutput{})
-	pulumi.RegisterOutputType(BackupInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
@@ -1592,15 +793,11 @@ func init() {
 	pulumi.RegisterOutputType(EncryptionConfigOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigResponseOutput{})
-	pulumi.RegisterOutputType(EncryptionConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(EncryptionInfoResponseOutput{})
-	pulumi.RegisterOutputType(EncryptionInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(EncryptionInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
 	pulumi.RegisterOutputType(RestoreInfoResponseOutput{})
-	pulumi.RegisterOutputType(RestoreInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
-	pulumi.RegisterOutputType(StatusResponsePtrOutput{})
 }

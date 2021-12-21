@@ -156,76 +156,6 @@ type CertificateProviderInstanceResponse struct {
 	PluginInstance string `pulumi:"pluginInstance"`
 }
 
-// CertificateProviderInstanceResponseInput is an input type that accepts CertificateProviderInstanceResponseArgs and CertificateProviderInstanceResponseOutput values.
-// You can construct a concrete instance of `CertificateProviderInstanceResponseInput` via:
-//
-//          CertificateProviderInstanceResponseArgs{...}
-type CertificateProviderInstanceResponseInput interface {
-	pulumi.Input
-
-	ToCertificateProviderInstanceResponseOutput() CertificateProviderInstanceResponseOutput
-	ToCertificateProviderInstanceResponseOutputWithContext(context.Context) CertificateProviderInstanceResponseOutput
-}
-
-// Specification of a TLS certificate provider instance. Workloads may have one or more CertificateProvider instances (plugins) and one of them is enabled and configured by specifying this message. Workloads use the values from this message to locate and load the CertificateProvider instance configuration.
-type CertificateProviderInstanceResponseArgs struct {
-	// Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
-	PluginInstance pulumi.StringInput `pulumi:"pluginInstance"`
-}
-
-func (CertificateProviderInstanceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertificateProviderInstanceResponse)(nil)).Elem()
-}
-
-func (i CertificateProviderInstanceResponseArgs) ToCertificateProviderInstanceResponseOutput() CertificateProviderInstanceResponseOutput {
-	return i.ToCertificateProviderInstanceResponseOutputWithContext(context.Background())
-}
-
-func (i CertificateProviderInstanceResponseArgs) ToCertificateProviderInstanceResponseOutputWithContext(ctx context.Context) CertificateProviderInstanceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateProviderInstanceResponseOutput)
-}
-
-func (i CertificateProviderInstanceResponseArgs) ToCertificateProviderInstanceResponsePtrOutput() CertificateProviderInstanceResponsePtrOutput {
-	return i.ToCertificateProviderInstanceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CertificateProviderInstanceResponseArgs) ToCertificateProviderInstanceResponsePtrOutputWithContext(ctx context.Context) CertificateProviderInstanceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateProviderInstanceResponseOutput).ToCertificateProviderInstanceResponsePtrOutputWithContext(ctx)
-}
-
-// CertificateProviderInstanceResponsePtrInput is an input type that accepts CertificateProviderInstanceResponseArgs, CertificateProviderInstanceResponsePtr and CertificateProviderInstanceResponsePtrOutput values.
-// You can construct a concrete instance of `CertificateProviderInstanceResponsePtrInput` via:
-//
-//          CertificateProviderInstanceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CertificateProviderInstanceResponsePtrInput interface {
-	pulumi.Input
-
-	ToCertificateProviderInstanceResponsePtrOutput() CertificateProviderInstanceResponsePtrOutput
-	ToCertificateProviderInstanceResponsePtrOutputWithContext(context.Context) CertificateProviderInstanceResponsePtrOutput
-}
-
-type certificateProviderInstanceResponsePtrType CertificateProviderInstanceResponseArgs
-
-func CertificateProviderInstanceResponsePtr(v *CertificateProviderInstanceResponseArgs) CertificateProviderInstanceResponsePtrInput {
-	return (*certificateProviderInstanceResponsePtrType)(v)
-}
-
-func (*certificateProviderInstanceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CertificateProviderInstanceResponse)(nil)).Elem()
-}
-
-func (i *certificateProviderInstanceResponsePtrType) ToCertificateProviderInstanceResponsePtrOutput() CertificateProviderInstanceResponsePtrOutput {
-	return i.ToCertificateProviderInstanceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *certificateProviderInstanceResponsePtrType) ToCertificateProviderInstanceResponsePtrOutputWithContext(ctx context.Context) CertificateProviderInstanceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateProviderInstanceResponsePtrOutput)
-}
-
 // Specification of a TLS certificate provider instance. Workloads may have one or more CertificateProvider instances (plugins) and one of them is enabled and configured by specifying this message. Workloads use the values from this message to locate and load the CertificateProvider instance configuration.
 type CertificateProviderInstanceResponseOutput struct{ *pulumi.OutputState }
 
@@ -241,53 +171,9 @@ func (o CertificateProviderInstanceResponseOutput) ToCertificateProviderInstance
 	return o
 }
 
-func (o CertificateProviderInstanceResponseOutput) ToCertificateProviderInstanceResponsePtrOutput() CertificateProviderInstanceResponsePtrOutput {
-	return o.ToCertificateProviderInstanceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CertificateProviderInstanceResponseOutput) ToCertificateProviderInstanceResponsePtrOutputWithContext(ctx context.Context) CertificateProviderInstanceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateProviderInstanceResponse) *CertificateProviderInstanceResponse {
-		return &v
-	}).(CertificateProviderInstanceResponsePtrOutput)
-}
-
 // Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
 func (o CertificateProviderInstanceResponseOutput) PluginInstance() pulumi.StringOutput {
 	return o.ApplyT(func(v CertificateProviderInstanceResponse) string { return v.PluginInstance }).(pulumi.StringOutput)
-}
-
-type CertificateProviderInstanceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CertificateProviderInstanceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CertificateProviderInstanceResponse)(nil)).Elem()
-}
-
-func (o CertificateProviderInstanceResponsePtrOutput) ToCertificateProviderInstanceResponsePtrOutput() CertificateProviderInstanceResponsePtrOutput {
-	return o
-}
-
-func (o CertificateProviderInstanceResponsePtrOutput) ToCertificateProviderInstanceResponsePtrOutputWithContext(ctx context.Context) CertificateProviderInstanceResponsePtrOutput {
-	return o
-}
-
-func (o CertificateProviderInstanceResponsePtrOutput) Elem() CertificateProviderInstanceResponseOutput {
-	return o.ApplyT(func(v *CertificateProviderInstanceResponse) CertificateProviderInstanceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CertificateProviderInstanceResponse
-		return ret
-	}).(CertificateProviderInstanceResponseOutput)
-}
-
-// Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
-func (o CertificateProviderInstanceResponsePtrOutput) PluginInstance() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CertificateProviderInstanceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PluginInstance
-	}).(pulumi.StringPtrOutput)
 }
 
 // Specification of traffic destination attributes.
@@ -427,66 +313,6 @@ type DestinationResponse struct {
 	Methods []string `pulumi:"methods"`
 	// List of destination ports to match. At least one port should match.
 	Ports []int `pulumi:"ports"`
-}
-
-// DestinationResponseInput is an input type that accepts DestinationResponseArgs and DestinationResponseOutput values.
-// You can construct a concrete instance of `DestinationResponseInput` via:
-//
-//          DestinationResponseArgs{...}
-type DestinationResponseInput interface {
-	pulumi.Input
-
-	ToDestinationResponseOutput() DestinationResponseOutput
-	ToDestinationResponseOutputWithContext(context.Context) DestinationResponseOutput
-}
-
-// Specification of traffic destination attributes.
-type DestinationResponseArgs struct {
-	// List of host names to match. Matched against HOST header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example // *.myorg.com") or a presence(any) match "*".
-	Hosts pulumi.StringArrayInput `pulumi:"hosts"`
-	// Optional. Match against key:value pair in http header. Provides a flexible match based on HTTP headers, for potentially advanced use cases. At least one header should match.
-	HttpHeaderMatch HttpHeaderMatchResponseInput `pulumi:"httpHeaderMatch"`
-	// Optional. A list of HTTP methods to match. At least one method should match. Should not be set for gRPC services.
-	Methods pulumi.StringArrayInput `pulumi:"methods"`
-	// List of destination ports to match. At least one port should match.
-	Ports pulumi.IntArrayInput `pulumi:"ports"`
-}
-
-func (DestinationResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DestinationResponse)(nil)).Elem()
-}
-
-func (i DestinationResponseArgs) ToDestinationResponseOutput() DestinationResponseOutput {
-	return i.ToDestinationResponseOutputWithContext(context.Background())
-}
-
-func (i DestinationResponseArgs) ToDestinationResponseOutputWithContext(ctx context.Context) DestinationResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DestinationResponseOutput)
-}
-
-// DestinationResponseArrayInput is an input type that accepts DestinationResponseArray and DestinationResponseArrayOutput values.
-// You can construct a concrete instance of `DestinationResponseArrayInput` via:
-//
-//          DestinationResponseArray{ DestinationResponseArgs{...} }
-type DestinationResponseArrayInput interface {
-	pulumi.Input
-
-	ToDestinationResponseArrayOutput() DestinationResponseArrayOutput
-	ToDestinationResponseArrayOutputWithContext(context.Context) DestinationResponseArrayOutput
-}
-
-type DestinationResponseArray []DestinationResponseInput
-
-func (DestinationResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DestinationResponse)(nil)).Elem()
-}
-
-func (i DestinationResponseArray) ToDestinationResponseArrayOutput() DestinationResponseArrayOutput {
-	return i.ToDestinationResponseArrayOutputWithContext(context.Background())
-}
-
-func (i DestinationResponseArray) ToDestinationResponseArrayOutputWithContext(ctx context.Context) DestinationResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DestinationResponseArrayOutput)
 }
 
 // Specification of traffic destination attributes.
@@ -753,41 +579,6 @@ type ExprResponse struct {
 	Title string `pulumi:"title"`
 }
 
-// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
-// You can construct a concrete instance of `ExprResponseInput` via:
-//
-//          ExprResponseArgs{...}
-type ExprResponseInput interface {
-	pulumi.Input
-
-	ToExprResponseOutput() ExprResponseOutput
-	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type ExprResponseArgs struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-	Location pulumi.StringInput `pulumi:"location"`
-	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (ExprResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
-}
-
-func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
-	return i.ToExprResponseOutputWithContext(context.Background())
-}
-
-func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprResponseOutput struct{ *pulumi.OutputState }
 
@@ -994,78 +785,6 @@ type GoogleCloudNetworksecurityV1beta1CertificateProviderResponse struct {
 	GrpcEndpoint GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse `pulumi:"grpcEndpoint"`
 }
 
-// GoogleCloudNetworksecurityV1beta1CertificateProviderResponseInput is an input type that accepts GoogleCloudNetworksecurityV1beta1CertificateProviderResponseArgs and GoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudNetworksecurityV1beta1CertificateProviderResponseInput` via:
-//
-//          GoogleCloudNetworksecurityV1beta1CertificateProviderResponseArgs{...}
-type GoogleCloudNetworksecurityV1beta1CertificateProviderResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput() GoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput
-	ToGoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutputWithContext(context.Context) GoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput
-}
-
-// Specification of certificate provider. Defines the mechanism to obtain the certificate and private key for peer to peer authentication.
-type GoogleCloudNetworksecurityV1beta1CertificateProviderResponseArgs struct {
-	// The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
-	CertificateProviderInstance CertificateProviderInstanceResponseInput `pulumi:"certificateProviderInstance"`
-	// gRPC specific configuration to access the gRPC server to obtain the cert and private key.
-	GrpcEndpoint GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseInput `pulumi:"grpcEndpoint"`
-}
-
-func (GoogleCloudNetworksecurityV1beta1CertificateProviderResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudNetworksecurityV1beta1CertificateProviderResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudNetworksecurityV1beta1CertificateProviderResponseArgs) ToGoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput() GoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput {
-	return i.ToGoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudNetworksecurityV1beta1CertificateProviderResponseArgs) ToGoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutputWithContext(ctx context.Context) GoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput)
-}
-
-func (i GoogleCloudNetworksecurityV1beta1CertificateProviderResponseArgs) ToGoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput() GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput {
-	return i.ToGoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudNetworksecurityV1beta1CertificateProviderResponseArgs) ToGoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutputWithContext(ctx context.Context) GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput).ToGoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrInput is an input type that accepts GoogleCloudNetworksecurityV1beta1CertificateProviderResponseArgs, GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtr and GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrInput` via:
-//
-//          GoogleCloudNetworksecurityV1beta1CertificateProviderResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput() GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput
-	ToGoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutputWithContext(context.Context) GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput
-}
-
-type googleCloudNetworksecurityV1beta1CertificateProviderResponsePtrType GoogleCloudNetworksecurityV1beta1CertificateProviderResponseArgs
-
-func GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtr(v *GoogleCloudNetworksecurityV1beta1CertificateProviderResponseArgs) GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrInput {
-	return (*googleCloudNetworksecurityV1beta1CertificateProviderResponsePtrType)(v)
-}
-
-func (*googleCloudNetworksecurityV1beta1CertificateProviderResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudNetworksecurityV1beta1CertificateProviderResponse)(nil)).Elem()
-}
-
-func (i *googleCloudNetworksecurityV1beta1CertificateProviderResponsePtrType) ToGoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput() GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput {
-	return i.ToGoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudNetworksecurityV1beta1CertificateProviderResponsePtrType) ToGoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutputWithContext(ctx context.Context) GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput)
-}
-
 // Specification of certificate provider. Defines the mechanism to obtain the certificate and private key for peer to peer authentication.
 type GoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput struct{ *pulumi.OutputState }
 
@@ -1081,16 +800,6 @@ func (o GoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput) ToGo
 	return o
 }
 
-func (o GoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput) ToGoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput() GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput {
-	return o.ToGoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput) ToGoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutputWithContext(ctx context.Context) GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudNetworksecurityV1beta1CertificateProviderResponse) *GoogleCloudNetworksecurityV1beta1CertificateProviderResponse {
-		return &v
-	}).(GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput)
-}
-
 // The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
 func (o GoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput) CertificateProviderInstance() CertificateProviderInstanceResponseOutput {
 	return o.ApplyT(func(v GoogleCloudNetworksecurityV1beta1CertificateProviderResponse) CertificateProviderInstanceResponse {
@@ -1103,50 +812,6 @@ func (o GoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput) Grpc
 	return o.ApplyT(func(v GoogleCloudNetworksecurityV1beta1CertificateProviderResponse) GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse {
 		return v.GrpcEndpoint
 	}).(GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseOutput)
-}
-
-type GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudNetworksecurityV1beta1CertificateProviderResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput) ToGoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput() GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput) ToGoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutputWithContext(ctx context.Context) GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput) Elem() GoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudNetworksecurityV1beta1CertificateProviderResponse) GoogleCloudNetworksecurityV1beta1CertificateProviderResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudNetworksecurityV1beta1CertificateProviderResponse
-		return ret
-	}).(GoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput)
-}
-
-// The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
-func (o GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput) CertificateProviderInstance() CertificateProviderInstanceResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudNetworksecurityV1beta1CertificateProviderResponse) *CertificateProviderInstanceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.CertificateProviderInstance
-	}).(CertificateProviderInstanceResponsePtrOutput)
-}
-
-// gRPC specific configuration to access the gRPC server to obtain the cert and private key.
-func (o GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput) GrpcEndpoint() GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudNetworksecurityV1beta1CertificateProviderResponse) *GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.GrpcEndpoint
-	}).(GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput)
 }
 
 // Specification of the GRPC Endpoint.
@@ -1295,76 +960,6 @@ type GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse struct {
 	TargetUri string `pulumi:"targetUri"`
 }
 
-// GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseInput is an input type that accepts GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseArgs and GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseInput` via:
-//
-//          GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseArgs{...}
-type GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudNetworksecurityV1beta1GrpcEndpointResponseOutput() GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseOutput
-	ToGoogleCloudNetworksecurityV1beta1GrpcEndpointResponseOutputWithContext(context.Context) GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseOutput
-}
-
-// Specification of the GRPC Endpoint.
-type GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseArgs struct {
-	// The target URI of the gRPC endpoint. Only UDS path is supported, and should start with “unix:”.
-	TargetUri pulumi.StringInput `pulumi:"targetUri"`
-}
-
-func (GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseArgs) ToGoogleCloudNetworksecurityV1beta1GrpcEndpointResponseOutput() GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseOutput {
-	return i.ToGoogleCloudNetworksecurityV1beta1GrpcEndpointResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseArgs) ToGoogleCloudNetworksecurityV1beta1GrpcEndpointResponseOutputWithContext(ctx context.Context) GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseOutput)
-}
-
-func (i GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseArgs) ToGoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput() GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput {
-	return i.ToGoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseArgs) ToGoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutputWithContext(ctx context.Context) GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseOutput).ToGoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrInput is an input type that accepts GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseArgs, GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtr and GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrInput` via:
-//
-//          GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput() GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput
-	ToGoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutputWithContext(context.Context) GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput
-}
-
-type googleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrType GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseArgs
-
-func GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtr(v *GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseArgs) GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrInput {
-	return (*googleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrType)(v)
-}
-
-func (*googleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse)(nil)).Elem()
-}
-
-func (i *googleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrType) ToGoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput() GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput {
-	return i.ToGoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrType) ToGoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutputWithContext(ctx context.Context) GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput)
-}
-
 // Specification of the GRPC Endpoint.
 type GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseOutput struct{ *pulumi.OutputState }
 
@@ -1380,53 +975,9 @@ func (o GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseOutput) ToGoogleClo
 	return o
 }
 
-func (o GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseOutput) ToGoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput() GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput {
-	return o.ToGoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseOutput) ToGoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutputWithContext(ctx context.Context) GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse) *GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse {
-		return &v
-	}).(GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput)
-}
-
 // The target URI of the gRPC endpoint. Only UDS path is supported, and should start with “unix:”.
 func (o GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseOutput) TargetUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse) string { return v.TargetUri }).(pulumi.StringOutput)
-}
-
-type GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput) ToGoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput() GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput) ToGoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutputWithContext(ctx context.Context) GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput) Elem() GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse) GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse
-		return ret
-	}).(GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseOutput)
-}
-
-// The target URI of the gRPC endpoint. Only UDS path is supported, and should start with “unix:”.
-func (o GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput) TargetUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TargetUri
-	}).(pulumi.StringPtrOutput)
 }
 
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
@@ -1544,62 +1095,6 @@ type GoogleIamV1AuditConfigResponse struct {
 	AuditLogConfigs []GoogleIamV1AuditLogConfigResponse `pulumi:"auditLogConfigs"`
 	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
 	Service string `pulumi:"service"`
-}
-
-// GoogleIamV1AuditConfigResponseInput is an input type that accepts GoogleIamV1AuditConfigResponseArgs and GoogleIamV1AuditConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleIamV1AuditConfigResponseInput` via:
-//
-//          GoogleIamV1AuditConfigResponseArgs{...}
-type GoogleIamV1AuditConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleIamV1AuditConfigResponseOutput() GoogleIamV1AuditConfigResponseOutput
-	ToGoogleIamV1AuditConfigResponseOutputWithContext(context.Context) GoogleIamV1AuditConfigResponseOutput
-}
-
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
-type GoogleIamV1AuditConfigResponseArgs struct {
-	// The configuration for logging of each type of permission.
-	AuditLogConfigs GoogleIamV1AuditLogConfigResponseArrayInput `pulumi:"auditLogConfigs"`
-	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-	Service pulumi.StringInput `pulumi:"service"`
-}
-
-func (GoogleIamV1AuditConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleIamV1AuditConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleIamV1AuditConfigResponseArgs) ToGoogleIamV1AuditConfigResponseOutput() GoogleIamV1AuditConfigResponseOutput {
-	return i.ToGoogleIamV1AuditConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleIamV1AuditConfigResponseArgs) ToGoogleIamV1AuditConfigResponseOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditConfigResponseOutput)
-}
-
-// GoogleIamV1AuditConfigResponseArrayInput is an input type that accepts GoogleIamV1AuditConfigResponseArray and GoogleIamV1AuditConfigResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleIamV1AuditConfigResponseArrayInput` via:
-//
-//          GoogleIamV1AuditConfigResponseArray{ GoogleIamV1AuditConfigResponseArgs{...} }
-type GoogleIamV1AuditConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleIamV1AuditConfigResponseArrayOutput() GoogleIamV1AuditConfigResponseArrayOutput
-	ToGoogleIamV1AuditConfigResponseArrayOutputWithContext(context.Context) GoogleIamV1AuditConfigResponseArrayOutput
-}
-
-type GoogleIamV1AuditConfigResponseArray []GoogleIamV1AuditConfigResponseInput
-
-func (GoogleIamV1AuditConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleIamV1AuditConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleIamV1AuditConfigResponseArray) ToGoogleIamV1AuditConfigResponseArrayOutput() GoogleIamV1AuditConfigResponseArrayOutput {
-	return i.ToGoogleIamV1AuditConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleIamV1AuditConfigResponseArray) ToGoogleIamV1AuditConfigResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditConfigResponseArrayOutput)
 }
 
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
@@ -1762,62 +1257,6 @@ type GoogleIamV1AuditLogConfigResponse struct {
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
 	LogType string `pulumi:"logType"`
-}
-
-// GoogleIamV1AuditLogConfigResponseInput is an input type that accepts GoogleIamV1AuditLogConfigResponseArgs and GoogleIamV1AuditLogConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleIamV1AuditLogConfigResponseInput` via:
-//
-//          GoogleIamV1AuditLogConfigResponseArgs{...}
-type GoogleIamV1AuditLogConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleIamV1AuditLogConfigResponseOutput() GoogleIamV1AuditLogConfigResponseOutput
-	ToGoogleIamV1AuditLogConfigResponseOutputWithContext(context.Context) GoogleIamV1AuditLogConfigResponseOutput
-}
-
-// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
-type GoogleIamV1AuditLogConfigResponseArgs struct {
-	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
-	// The log type that this config enables.
-	LogType pulumi.StringInput `pulumi:"logType"`
-}
-
-func (GoogleIamV1AuditLogConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleIamV1AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleIamV1AuditLogConfigResponseArgs) ToGoogleIamV1AuditLogConfigResponseOutput() GoogleIamV1AuditLogConfigResponseOutput {
-	return i.ToGoogleIamV1AuditLogConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleIamV1AuditLogConfigResponseArgs) ToGoogleIamV1AuditLogConfigResponseOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditLogConfigResponseOutput)
-}
-
-// GoogleIamV1AuditLogConfigResponseArrayInput is an input type that accepts GoogleIamV1AuditLogConfigResponseArray and GoogleIamV1AuditLogConfigResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleIamV1AuditLogConfigResponseArrayInput` via:
-//
-//          GoogleIamV1AuditLogConfigResponseArray{ GoogleIamV1AuditLogConfigResponseArgs{...} }
-type GoogleIamV1AuditLogConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleIamV1AuditLogConfigResponseArrayOutput() GoogleIamV1AuditLogConfigResponseArrayOutput
-	ToGoogleIamV1AuditLogConfigResponseArrayOutputWithContext(context.Context) GoogleIamV1AuditLogConfigResponseArrayOutput
-}
-
-type GoogleIamV1AuditLogConfigResponseArray []GoogleIamV1AuditLogConfigResponseInput
-
-func (GoogleIamV1AuditLogConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleIamV1AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleIamV1AuditLogConfigResponseArray) ToGoogleIamV1AuditLogConfigResponseArrayOutput() GoogleIamV1AuditLogConfigResponseArrayOutput {
-	return i.ToGoogleIamV1AuditLogConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleIamV1AuditLogConfigResponseArray) ToGoogleIamV1AuditLogConfigResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditLogConfigResponseArrayOutput)
 }
 
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
@@ -1991,64 +1430,6 @@ type GoogleIamV1BindingResponse struct {
 	Members []string `pulumi:"members"`
 	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
-}
-
-// GoogleIamV1BindingResponseInput is an input type that accepts GoogleIamV1BindingResponseArgs and GoogleIamV1BindingResponseOutput values.
-// You can construct a concrete instance of `GoogleIamV1BindingResponseInput` via:
-//
-//          GoogleIamV1BindingResponseArgs{...}
-type GoogleIamV1BindingResponseInput interface {
-	pulumi.Input
-
-	ToGoogleIamV1BindingResponseOutput() GoogleIamV1BindingResponseOutput
-	ToGoogleIamV1BindingResponseOutputWithContext(context.Context) GoogleIamV1BindingResponseOutput
-}
-
-// Associates `members` with a `role`.
-type GoogleIamV1BindingResponseArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
-	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-	Role pulumi.StringInput `pulumi:"role"`
-}
-
-func (GoogleIamV1BindingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleIamV1BindingResponse)(nil)).Elem()
-}
-
-func (i GoogleIamV1BindingResponseArgs) ToGoogleIamV1BindingResponseOutput() GoogleIamV1BindingResponseOutput {
-	return i.ToGoogleIamV1BindingResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleIamV1BindingResponseArgs) ToGoogleIamV1BindingResponseOutputWithContext(ctx context.Context) GoogleIamV1BindingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1BindingResponseOutput)
-}
-
-// GoogleIamV1BindingResponseArrayInput is an input type that accepts GoogleIamV1BindingResponseArray and GoogleIamV1BindingResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleIamV1BindingResponseArrayInput` via:
-//
-//          GoogleIamV1BindingResponseArray{ GoogleIamV1BindingResponseArgs{...} }
-type GoogleIamV1BindingResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleIamV1BindingResponseArrayOutput() GoogleIamV1BindingResponseArrayOutput
-	ToGoogleIamV1BindingResponseArrayOutputWithContext(context.Context) GoogleIamV1BindingResponseArrayOutput
-}
-
-type GoogleIamV1BindingResponseArray []GoogleIamV1BindingResponseInput
-
-func (GoogleIamV1BindingResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleIamV1BindingResponse)(nil)).Elem()
-}
-
-func (i GoogleIamV1BindingResponseArray) ToGoogleIamV1BindingResponseArrayOutput() GoogleIamV1BindingResponseArrayOutput {
-	return i.ToGoogleIamV1BindingResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleIamV1BindingResponseArray) ToGoogleIamV1BindingResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1BindingResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1BindingResponseArrayOutput)
 }
 
 // Associates `members` with a `role`.
@@ -2268,37 +1649,6 @@ type HttpHeaderMatchResponse struct {
 	RegexMatch string `pulumi:"regexMatch"`
 }
 
-// HttpHeaderMatchResponseInput is an input type that accepts HttpHeaderMatchResponseArgs and HttpHeaderMatchResponseOutput values.
-// You can construct a concrete instance of `HttpHeaderMatchResponseInput` via:
-//
-//          HttpHeaderMatchResponseArgs{...}
-type HttpHeaderMatchResponseInput interface {
-	pulumi.Input
-
-	ToHttpHeaderMatchResponseOutput() HttpHeaderMatchResponseOutput
-	ToHttpHeaderMatchResponseOutputWithContext(context.Context) HttpHeaderMatchResponseOutput
-}
-
-// Specification of HTTP header match atrributes.
-type HttpHeaderMatchResponseArgs struct {
-	// The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method".
-	HeaderName pulumi.StringInput `pulumi:"headerName"`
-	// The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see: en.cppreference.com/w/cpp/regex/ecmascript For matching against a port specified in the HTTP request, use a headerMatch with headerName set to Host and a regular expression that satisfies the RFC2616 Host header's port specifier.
-	RegexMatch pulumi.StringInput `pulumi:"regexMatch"`
-}
-
-func (HttpHeaderMatchResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*HttpHeaderMatchResponse)(nil)).Elem()
-}
-
-func (i HttpHeaderMatchResponseArgs) ToHttpHeaderMatchResponseOutput() HttpHeaderMatchResponseOutput {
-	return i.ToHttpHeaderMatchResponseOutputWithContext(context.Background())
-}
-
-func (i HttpHeaderMatchResponseArgs) ToHttpHeaderMatchResponseOutputWithContext(ctx context.Context) HttpHeaderMatchResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HttpHeaderMatchResponseOutput)
-}
-
 // Specification of HTTP header match atrributes.
 type HttpHeaderMatchResponseOutput struct{ *pulumi.OutputState }
 
@@ -2470,76 +1820,6 @@ type MTLSPolicyResponse struct {
 	ClientValidationCa []ValidationCAResponse `pulumi:"clientValidationCa"`
 }
 
-// MTLSPolicyResponseInput is an input type that accepts MTLSPolicyResponseArgs and MTLSPolicyResponseOutput values.
-// You can construct a concrete instance of `MTLSPolicyResponseInput` via:
-//
-//          MTLSPolicyResponseArgs{...}
-type MTLSPolicyResponseInput interface {
-	pulumi.Input
-
-	ToMTLSPolicyResponseOutput() MTLSPolicyResponseOutput
-	ToMTLSPolicyResponseOutputWithContext(context.Context) MTLSPolicyResponseOutput
-}
-
-// Specification of the MTLSPolicy.
-type MTLSPolicyResponseArgs struct {
-	//  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
-	ClientValidationCa ValidationCAResponseArrayInput `pulumi:"clientValidationCa"`
-}
-
-func (MTLSPolicyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MTLSPolicyResponse)(nil)).Elem()
-}
-
-func (i MTLSPolicyResponseArgs) ToMTLSPolicyResponseOutput() MTLSPolicyResponseOutput {
-	return i.ToMTLSPolicyResponseOutputWithContext(context.Background())
-}
-
-func (i MTLSPolicyResponseArgs) ToMTLSPolicyResponseOutputWithContext(ctx context.Context) MTLSPolicyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MTLSPolicyResponseOutput)
-}
-
-func (i MTLSPolicyResponseArgs) ToMTLSPolicyResponsePtrOutput() MTLSPolicyResponsePtrOutput {
-	return i.ToMTLSPolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i MTLSPolicyResponseArgs) ToMTLSPolicyResponsePtrOutputWithContext(ctx context.Context) MTLSPolicyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MTLSPolicyResponseOutput).ToMTLSPolicyResponsePtrOutputWithContext(ctx)
-}
-
-// MTLSPolicyResponsePtrInput is an input type that accepts MTLSPolicyResponseArgs, MTLSPolicyResponsePtr and MTLSPolicyResponsePtrOutput values.
-// You can construct a concrete instance of `MTLSPolicyResponsePtrInput` via:
-//
-//          MTLSPolicyResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type MTLSPolicyResponsePtrInput interface {
-	pulumi.Input
-
-	ToMTLSPolicyResponsePtrOutput() MTLSPolicyResponsePtrOutput
-	ToMTLSPolicyResponsePtrOutputWithContext(context.Context) MTLSPolicyResponsePtrOutput
-}
-
-type mtlspolicyResponsePtrType MTLSPolicyResponseArgs
-
-func MTLSPolicyResponsePtr(v *MTLSPolicyResponseArgs) MTLSPolicyResponsePtrInput {
-	return (*mtlspolicyResponsePtrType)(v)
-}
-
-func (*mtlspolicyResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MTLSPolicyResponse)(nil)).Elem()
-}
-
-func (i *mtlspolicyResponsePtrType) ToMTLSPolicyResponsePtrOutput() MTLSPolicyResponsePtrOutput {
-	return i.ToMTLSPolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *mtlspolicyResponsePtrType) ToMTLSPolicyResponsePtrOutputWithContext(ctx context.Context) MTLSPolicyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MTLSPolicyResponsePtrOutput)
-}
-
 // Specification of the MTLSPolicy.
 type MTLSPolicyResponseOutput struct{ *pulumi.OutputState }
 
@@ -2555,53 +1835,9 @@ func (o MTLSPolicyResponseOutput) ToMTLSPolicyResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o MTLSPolicyResponseOutput) ToMTLSPolicyResponsePtrOutput() MTLSPolicyResponsePtrOutput {
-	return o.ToMTLSPolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (o MTLSPolicyResponseOutput) ToMTLSPolicyResponsePtrOutputWithContext(ctx context.Context) MTLSPolicyResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MTLSPolicyResponse) *MTLSPolicyResponse {
-		return &v
-	}).(MTLSPolicyResponsePtrOutput)
-}
-
 //  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
 func (o MTLSPolicyResponseOutput) ClientValidationCa() ValidationCAResponseArrayOutput {
 	return o.ApplyT(func(v MTLSPolicyResponse) []ValidationCAResponse { return v.ClientValidationCa }).(ValidationCAResponseArrayOutput)
-}
-
-type MTLSPolicyResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (MTLSPolicyResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MTLSPolicyResponse)(nil)).Elem()
-}
-
-func (o MTLSPolicyResponsePtrOutput) ToMTLSPolicyResponsePtrOutput() MTLSPolicyResponsePtrOutput {
-	return o
-}
-
-func (o MTLSPolicyResponsePtrOutput) ToMTLSPolicyResponsePtrOutputWithContext(ctx context.Context) MTLSPolicyResponsePtrOutput {
-	return o
-}
-
-func (o MTLSPolicyResponsePtrOutput) Elem() MTLSPolicyResponseOutput {
-	return o.ApplyT(func(v *MTLSPolicyResponse) MTLSPolicyResponse {
-		if v != nil {
-			return *v
-		}
-		var ret MTLSPolicyResponse
-		return ret
-	}).(MTLSPolicyResponseOutput)
-}
-
-//  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
-func (o MTLSPolicyResponsePtrOutput) ClientValidationCa() ValidationCAResponseArrayOutput {
-	return o.ApplyT(func(v *MTLSPolicyResponse) []ValidationCAResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ClientValidationCa
-	}).(ValidationCAResponseArrayOutput)
 }
 
 // Specification of rules.
@@ -2719,62 +1955,6 @@ type RuleResponse struct {
 	Destinations []DestinationResponse `pulumi:"destinations"`
 	// Optional. List of attributes for the traffic source. All of the sources must match. A source is a match if both principals and ip_blocks match. If not set, the action specified in the 'action' field will be applied without any rule checks for the source.
 	Sources []SourceResponse `pulumi:"sources"`
-}
-
-// RuleResponseInput is an input type that accepts RuleResponseArgs and RuleResponseOutput values.
-// You can construct a concrete instance of `RuleResponseInput` via:
-//
-//          RuleResponseArgs{...}
-type RuleResponseInput interface {
-	pulumi.Input
-
-	ToRuleResponseOutput() RuleResponseOutput
-	ToRuleResponseOutputWithContext(context.Context) RuleResponseOutput
-}
-
-// Specification of rules.
-type RuleResponseArgs struct {
-	// Optional. List of attributes for the traffic destination. All of the destinations must match. A destination is a match if a request matches all the specified hosts, ports, methods and headers. If not set, the action specified in the 'action' field will be applied without any rule checks for the destination.
-	Destinations DestinationResponseArrayInput `pulumi:"destinations"`
-	// Optional. List of attributes for the traffic source. All of the sources must match. A source is a match if both principals and ip_blocks match. If not set, the action specified in the 'action' field will be applied without any rule checks for the source.
-	Sources SourceResponseArrayInput `pulumi:"sources"`
-}
-
-func (RuleResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RuleResponse)(nil)).Elem()
-}
-
-func (i RuleResponseArgs) ToRuleResponseOutput() RuleResponseOutput {
-	return i.ToRuleResponseOutputWithContext(context.Background())
-}
-
-func (i RuleResponseArgs) ToRuleResponseOutputWithContext(ctx context.Context) RuleResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuleResponseOutput)
-}
-
-// RuleResponseArrayInput is an input type that accepts RuleResponseArray and RuleResponseArrayOutput values.
-// You can construct a concrete instance of `RuleResponseArrayInput` via:
-//
-//          RuleResponseArray{ RuleResponseArgs{...} }
-type RuleResponseArrayInput interface {
-	pulumi.Input
-
-	ToRuleResponseArrayOutput() RuleResponseArrayOutput
-	ToRuleResponseArrayOutputWithContext(context.Context) RuleResponseArrayOutput
-}
-
-type RuleResponseArray []RuleResponseInput
-
-func (RuleResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RuleResponse)(nil)).Elem()
-}
-
-func (i RuleResponseArray) ToRuleResponseArrayOutput() RuleResponseArrayOutput {
-	return i.ToRuleResponseArrayOutputWithContext(context.Background())
-}
-
-func (i RuleResponseArray) ToRuleResponseArrayOutputWithContext(ctx context.Context) RuleResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuleResponseArrayOutput)
 }
 
 // Specification of rules.
@@ -2939,62 +2119,6 @@ type SourceResponse struct {
 	Principals []string `pulumi:"principals"`
 }
 
-// SourceResponseInput is an input type that accepts SourceResponseArgs and SourceResponseOutput values.
-// You can construct a concrete instance of `SourceResponseInput` via:
-//
-//          SourceResponseArgs{...}
-type SourceResponseInput interface {
-	pulumi.Input
-
-	ToSourceResponseOutput() SourceResponseOutput
-	ToSourceResponseOutputWithContext(context.Context) SourceResponseOutput
-}
-
-// Specification of traffic source attributes.
-type SourceResponseArgs struct {
-	// Optional. List of CIDR ranges to match based on source IP address. At least one IP block should match. Single IP (e.g., "1.2.3.4") and CIDR (e.g., "1.2.3.0/24") are supported.
-	IpBlocks pulumi.StringArrayInput `pulumi:"ipBlocks"`
-	// Optional. List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, // */service-account") or a presence match "*".
-	Principals pulumi.StringArrayInput `pulumi:"principals"`
-}
-
-func (SourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceResponse)(nil)).Elem()
-}
-
-func (i SourceResponseArgs) ToSourceResponseOutput() SourceResponseOutput {
-	return i.ToSourceResponseOutputWithContext(context.Background())
-}
-
-func (i SourceResponseArgs) ToSourceResponseOutputWithContext(ctx context.Context) SourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceResponseOutput)
-}
-
-// SourceResponseArrayInput is an input type that accepts SourceResponseArray and SourceResponseArrayOutput values.
-// You can construct a concrete instance of `SourceResponseArrayInput` via:
-//
-//          SourceResponseArray{ SourceResponseArgs{...} }
-type SourceResponseArrayInput interface {
-	pulumi.Input
-
-	ToSourceResponseArrayOutput() SourceResponseArrayOutput
-	ToSourceResponseArrayOutputWithContext(context.Context) SourceResponseArrayOutput
-}
-
-type SourceResponseArray []SourceResponseInput
-
-func (SourceResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SourceResponse)(nil)).Elem()
-}
-
-func (i SourceResponseArray) ToSourceResponseArrayOutput() SourceResponseArrayOutput {
-	return i.ToSourceResponseArrayOutputWithContext(context.Background())
-}
-
-func (i SourceResponseArray) ToSourceResponseArrayOutputWithContext(ctx context.Context) SourceResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceResponseArrayOutput)
-}
-
 // Specification of traffic source attributes.
 type SourceResponseOutput struct{ *pulumi.OutputState }
 
@@ -3157,62 +2281,6 @@ type ValidationCAResponse struct {
 	GrpcEndpoint GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse `pulumi:"grpcEndpoint"`
 }
 
-// ValidationCAResponseInput is an input type that accepts ValidationCAResponseArgs and ValidationCAResponseOutput values.
-// You can construct a concrete instance of `ValidationCAResponseInput` via:
-//
-//          ValidationCAResponseArgs{...}
-type ValidationCAResponseInput interface {
-	pulumi.Input
-
-	ToValidationCAResponseOutput() ValidationCAResponseOutput
-	ToValidationCAResponseOutputWithContext(context.Context) ValidationCAResponseOutput
-}
-
-// Specification of ValidationCA. Defines the mechanism to obtain the Certificate Authority certificate to validate the peer certificate.
-type ValidationCAResponseArgs struct {
-	// The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
-	CertificateProviderInstance CertificateProviderInstanceResponseInput `pulumi:"certificateProviderInstance"`
-	// gRPC specific configuration to access the gRPC server to obtain the CA certificate.
-	GrpcEndpoint GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseInput `pulumi:"grpcEndpoint"`
-}
-
-func (ValidationCAResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ValidationCAResponse)(nil)).Elem()
-}
-
-func (i ValidationCAResponseArgs) ToValidationCAResponseOutput() ValidationCAResponseOutput {
-	return i.ToValidationCAResponseOutputWithContext(context.Background())
-}
-
-func (i ValidationCAResponseArgs) ToValidationCAResponseOutputWithContext(ctx context.Context) ValidationCAResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ValidationCAResponseOutput)
-}
-
-// ValidationCAResponseArrayInput is an input type that accepts ValidationCAResponseArray and ValidationCAResponseArrayOutput values.
-// You can construct a concrete instance of `ValidationCAResponseArrayInput` via:
-//
-//          ValidationCAResponseArray{ ValidationCAResponseArgs{...} }
-type ValidationCAResponseArrayInput interface {
-	pulumi.Input
-
-	ToValidationCAResponseArrayOutput() ValidationCAResponseArrayOutput
-	ToValidationCAResponseArrayOutputWithContext(context.Context) ValidationCAResponseArrayOutput
-}
-
-type ValidationCAResponseArray []ValidationCAResponseInput
-
-func (ValidationCAResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ValidationCAResponse)(nil)).Elem()
-}
-
-func (i ValidationCAResponseArray) ToValidationCAResponseArrayOutput() ValidationCAResponseArrayOutput {
-	return i.ToValidationCAResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ValidationCAResponseArray) ToValidationCAResponseArrayOutputWithContext(ctx context.Context) ValidationCAResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ValidationCAResponseArrayOutput)
-}
-
 // Specification of ValidationCA. Defines the mechanism to obtain the Certificate Authority certificate to validate the peer certificate.
 type ValidationCAResponseOutput struct{ *pulumi.OutputState }
 
@@ -3263,58 +2331,33 @@ func (o ValidationCAResponseArrayOutput) Index(i pulumi.IntInput) ValidationCARe
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateProviderInstanceInput)(nil)).Elem(), CertificateProviderInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateProviderInstancePtrInput)(nil)).Elem(), CertificateProviderInstanceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CertificateProviderInstanceResponseInput)(nil)).Elem(), CertificateProviderInstanceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CertificateProviderInstanceResponsePtrInput)(nil)).Elem(), CertificateProviderInstanceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DestinationInput)(nil)).Elem(), DestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DestinationArrayInput)(nil)).Elem(), DestinationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DestinationResponseInput)(nil)).Elem(), DestinationResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DestinationResponseArrayInput)(nil)).Elem(), DestinationResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudNetworksecurityV1beta1CertificateProviderInput)(nil)).Elem(), GoogleCloudNetworksecurityV1beta1CertificateProviderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudNetworksecurityV1beta1CertificateProviderPtrInput)(nil)).Elem(), GoogleCloudNetworksecurityV1beta1CertificateProviderArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudNetworksecurityV1beta1CertificateProviderResponseInput)(nil)).Elem(), GoogleCloudNetworksecurityV1beta1CertificateProviderResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrInput)(nil)).Elem(), GoogleCloudNetworksecurityV1beta1CertificateProviderResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudNetworksecurityV1beta1GrpcEndpointInput)(nil)).Elem(), GoogleCloudNetworksecurityV1beta1GrpcEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudNetworksecurityV1beta1GrpcEndpointPtrInput)(nil)).Elem(), GoogleCloudNetworksecurityV1beta1GrpcEndpointArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseInput)(nil)).Elem(), GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrInput)(nil)).Elem(), GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditConfigInput)(nil)).Elem(), GoogleIamV1AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditConfigArrayInput)(nil)).Elem(), GoogleIamV1AuditConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditConfigResponseInput)(nil)).Elem(), GoogleIamV1AuditConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditConfigResponseArrayInput)(nil)).Elem(), GoogleIamV1AuditConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigInput)(nil)).Elem(), GoogleIamV1AuditLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigArrayInput)(nil)).Elem(), GoogleIamV1AuditLogConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigResponseInput)(nil)).Elem(), GoogleIamV1AuditLogConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigResponseArrayInput)(nil)).Elem(), GoogleIamV1AuditLogConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1BindingInput)(nil)).Elem(), GoogleIamV1BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1BindingArrayInput)(nil)).Elem(), GoogleIamV1BindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1BindingResponseInput)(nil)).Elem(), GoogleIamV1BindingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1BindingResponseArrayInput)(nil)).Elem(), GoogleIamV1BindingResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpHeaderMatchInput)(nil)).Elem(), HttpHeaderMatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpHeaderMatchPtrInput)(nil)).Elem(), HttpHeaderMatchArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HttpHeaderMatchResponseInput)(nil)).Elem(), HttpHeaderMatchResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MTLSPolicyInput)(nil)).Elem(), MTLSPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MTLSPolicyPtrInput)(nil)).Elem(), MTLSPolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MTLSPolicyResponseInput)(nil)).Elem(), MTLSPolicyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MTLSPolicyResponsePtrInput)(nil)).Elem(), MTLSPolicyResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleInput)(nil)).Elem(), RuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleArrayInput)(nil)).Elem(), RuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RuleResponseInput)(nil)).Elem(), RuleResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RuleResponseArrayInput)(nil)).Elem(), RuleResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceInput)(nil)).Elem(), SourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceArrayInput)(nil)).Elem(), SourceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SourceResponseInput)(nil)).Elem(), SourceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SourceResponseArrayInput)(nil)).Elem(), SourceResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ValidationCAInput)(nil)).Elem(), ValidationCAArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ValidationCAArrayInput)(nil)).Elem(), ValidationCAArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ValidationCAResponseInput)(nil)).Elem(), ValidationCAResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ValidationCAResponseArrayInput)(nil)).Elem(), ValidationCAResponseArray{})
 	pulumi.RegisterOutputType(CertificateProviderInstanceOutput{})
 	pulumi.RegisterOutputType(CertificateProviderInstancePtrOutput{})
 	pulumi.RegisterOutputType(CertificateProviderInstanceResponseOutput{})
-	pulumi.RegisterOutputType(CertificateProviderInstanceResponsePtrOutput{})
 	pulumi.RegisterOutputType(DestinationOutput{})
 	pulumi.RegisterOutputType(DestinationArrayOutput{})
 	pulumi.RegisterOutputType(DestinationResponseOutput{})
@@ -3325,11 +2368,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudNetworksecurityV1beta1CertificateProviderOutput{})
 	pulumi.RegisterOutputType(GoogleCloudNetworksecurityV1beta1CertificateProviderPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudNetworksecurityV1beta1GrpcEndpointOutput{})
 	pulumi.RegisterOutputType(GoogleCloudNetworksecurityV1beta1GrpcEndpointPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudNetworksecurityV1beta1GrpcEndpointResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudNetworksecurityV1beta1GrpcEndpointResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditConfigOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditConfigResponseOutput{})
@@ -3348,7 +2389,6 @@ func init() {
 	pulumi.RegisterOutputType(MTLSPolicyOutput{})
 	pulumi.RegisterOutputType(MTLSPolicyPtrOutput{})
 	pulumi.RegisterOutputType(MTLSPolicyResponseOutput{})
-	pulumi.RegisterOutputType(MTLSPolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(RuleOutput{})
 	pulumi.RegisterOutputType(RuleArrayOutput{})
 	pulumi.RegisterOutputType(RuleResponseOutput{})

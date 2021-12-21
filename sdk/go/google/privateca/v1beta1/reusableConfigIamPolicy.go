@@ -113,7 +113,7 @@ type ReusableConfigIamPolicyInput interface {
 }
 
 func (*ReusableConfigIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReusableConfigIamPolicy)(nil))
+	return reflect.TypeOf((**ReusableConfigIamPolicy)(nil)).Elem()
 }
 
 func (i *ReusableConfigIamPolicy) ToReusableConfigIamPolicyOutput() ReusableConfigIamPolicyOutput {
@@ -127,7 +127,7 @@ func (i *ReusableConfigIamPolicy) ToReusableConfigIamPolicyOutputWithContext(ctx
 type ReusableConfigIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (ReusableConfigIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReusableConfigIamPolicy)(nil))
+	return reflect.TypeOf((**ReusableConfigIamPolicy)(nil)).Elem()
 }
 
 func (o ReusableConfigIamPolicyOutput) ToReusableConfigIamPolicyOutput() ReusableConfigIamPolicyOutput {

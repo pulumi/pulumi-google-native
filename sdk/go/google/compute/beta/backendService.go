@@ -256,7 +256,7 @@ type BackendServiceInput interface {
 }
 
 func (*BackendService) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackendService)(nil))
+	return reflect.TypeOf((**BackendService)(nil)).Elem()
 }
 
 func (i *BackendService) ToBackendServiceOutput() BackendServiceOutput {
@@ -270,7 +270,7 @@ func (i *BackendService) ToBackendServiceOutputWithContext(ctx context.Context) 
 type BackendServiceOutput struct{ *pulumi.OutputState }
 
 func (BackendServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackendService)(nil))
+	return reflect.TypeOf((**BackendService)(nil)).Elem()
 }
 
 func (o BackendServiceOutput) ToBackendServiceOutput() BackendServiceOutput {

@@ -118,7 +118,7 @@ type ServiceDatabaseIamPolicyInput interface {
 }
 
 func (*ServiceDatabaseIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceDatabaseIamPolicy)(nil))
+	return reflect.TypeOf((**ServiceDatabaseIamPolicy)(nil)).Elem()
 }
 
 func (i *ServiceDatabaseIamPolicy) ToServiceDatabaseIamPolicyOutput() ServiceDatabaseIamPolicyOutput {
@@ -132,7 +132,7 @@ func (i *ServiceDatabaseIamPolicy) ToServiceDatabaseIamPolicyOutputWithContext(c
 type ServiceDatabaseIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (ServiceDatabaseIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceDatabaseIamPolicy)(nil))
+	return reflect.TypeOf((**ServiceDatabaseIamPolicy)(nil)).Elem()
 }
 
 func (o ServiceDatabaseIamPolicyOutput) ToServiceDatabaseIamPolicyOutput() ServiceDatabaseIamPolicyOutput {

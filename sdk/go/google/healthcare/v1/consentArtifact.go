@@ -139,7 +139,7 @@ type ConsentArtifactInput interface {
 }
 
 func (*ConsentArtifact) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConsentArtifact)(nil))
+	return reflect.TypeOf((**ConsentArtifact)(nil)).Elem()
 }
 
 func (i *ConsentArtifact) ToConsentArtifactOutput() ConsentArtifactOutput {
@@ -153,7 +153,7 @@ func (i *ConsentArtifact) ToConsentArtifactOutputWithContext(ctx context.Context
 type ConsentArtifactOutput struct{ *pulumi.OutputState }
 
 func (ConsentArtifactOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConsentArtifact)(nil))
+	return reflect.TypeOf((**ConsentArtifact)(nil)).Elem()
 }
 
 func (o ConsentArtifactOutput) ToConsentArtifactOutput() ConsentArtifactOutput {

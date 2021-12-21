@@ -90,7 +90,7 @@ type KeyRingInput interface {
 }
 
 func (*KeyRing) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyRing)(nil))
+	return reflect.TypeOf((**KeyRing)(nil)).Elem()
 }
 
 func (i *KeyRing) ToKeyRingOutput() KeyRingOutput {
@@ -104,7 +104,7 @@ func (i *KeyRing) ToKeyRingOutputWithContext(ctx context.Context) KeyRingOutput 
 type KeyRingOutput struct{ *pulumi.OutputState }
 
 func (KeyRingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyRing)(nil))
+	return reflect.TypeOf((**KeyRing)(nil)).Elem()
 }
 
 func (o KeyRingOutput) ToKeyRingOutput() KeyRingOutput {

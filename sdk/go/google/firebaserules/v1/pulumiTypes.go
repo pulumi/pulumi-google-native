@@ -138,64 +138,6 @@ type FileResponse struct {
 	Name string `pulumi:"name"`
 }
 
-// FileResponseInput is an input type that accepts FileResponseArgs and FileResponseOutput values.
-// You can construct a concrete instance of `FileResponseInput` via:
-//
-//          FileResponseArgs{...}
-type FileResponseInput interface {
-	pulumi.Input
-
-	ToFileResponseOutput() FileResponseOutput
-	ToFileResponseOutputWithContext(context.Context) FileResponseOutput
-}
-
-// `File` containing source content.
-type FileResponseArgs struct {
-	// Textual Content.
-	Content pulumi.StringInput `pulumi:"content"`
-	// Fingerprint (e.g. github sha) associated with the `File`.
-	Fingerprint pulumi.StringInput `pulumi:"fingerprint"`
-	// File name.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (FileResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FileResponse)(nil)).Elem()
-}
-
-func (i FileResponseArgs) ToFileResponseOutput() FileResponseOutput {
-	return i.ToFileResponseOutputWithContext(context.Background())
-}
-
-func (i FileResponseArgs) ToFileResponseOutputWithContext(ctx context.Context) FileResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FileResponseOutput)
-}
-
-// FileResponseArrayInput is an input type that accepts FileResponseArray and FileResponseArrayOutput values.
-// You can construct a concrete instance of `FileResponseArrayInput` via:
-//
-//          FileResponseArray{ FileResponseArgs{...} }
-type FileResponseArrayInput interface {
-	pulumi.Input
-
-	ToFileResponseArrayOutput() FileResponseArrayOutput
-	ToFileResponseArrayOutputWithContext(context.Context) FileResponseArrayOutput
-}
-
-type FileResponseArray []FileResponseInput
-
-func (FileResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FileResponse)(nil)).Elem()
-}
-
-func (i FileResponseArray) ToFileResponseArrayOutput() FileResponseArrayOutput {
-	return i.ToFileResponseArrayOutputWithContext(context.Background())
-}
-
-func (i FileResponseArray) ToFileResponseArrayOutputWithContext(ctx context.Context) FileResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FileResponseArrayOutput)
-}
-
 // `File` containing source content.
 type FileResponseOutput struct{ *pulumi.OutputState }
 
@@ -252,76 +194,6 @@ type MetadataResponse struct {
 	Services []string `pulumi:"services"`
 }
 
-// MetadataResponseInput is an input type that accepts MetadataResponseArgs and MetadataResponseOutput values.
-// You can construct a concrete instance of `MetadataResponseInput` via:
-//
-//          MetadataResponseArgs{...}
-type MetadataResponseInput interface {
-	pulumi.Input
-
-	ToMetadataResponseOutput() MetadataResponseOutput
-	ToMetadataResponseOutputWithContext(context.Context) MetadataResponseOutput
-}
-
-// Metadata for a Ruleset.
-type MetadataResponseArgs struct {
-	// Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
-	Services pulumi.StringArrayInput `pulumi:"services"`
-}
-
-func (MetadataResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MetadataResponse)(nil)).Elem()
-}
-
-func (i MetadataResponseArgs) ToMetadataResponseOutput() MetadataResponseOutput {
-	return i.ToMetadataResponseOutputWithContext(context.Background())
-}
-
-func (i MetadataResponseArgs) ToMetadataResponseOutputWithContext(ctx context.Context) MetadataResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetadataResponseOutput)
-}
-
-func (i MetadataResponseArgs) ToMetadataResponsePtrOutput() MetadataResponsePtrOutput {
-	return i.ToMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i MetadataResponseArgs) ToMetadataResponsePtrOutputWithContext(ctx context.Context) MetadataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetadataResponseOutput).ToMetadataResponsePtrOutputWithContext(ctx)
-}
-
-// MetadataResponsePtrInput is an input type that accepts MetadataResponseArgs, MetadataResponsePtr and MetadataResponsePtrOutput values.
-// You can construct a concrete instance of `MetadataResponsePtrInput` via:
-//
-//          MetadataResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type MetadataResponsePtrInput interface {
-	pulumi.Input
-
-	ToMetadataResponsePtrOutput() MetadataResponsePtrOutput
-	ToMetadataResponsePtrOutputWithContext(context.Context) MetadataResponsePtrOutput
-}
-
-type metadataResponsePtrType MetadataResponseArgs
-
-func MetadataResponsePtr(v *MetadataResponseArgs) MetadataResponsePtrInput {
-	return (*metadataResponsePtrType)(v)
-}
-
-func (*metadataResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MetadataResponse)(nil)).Elem()
-}
-
-func (i *metadataResponsePtrType) ToMetadataResponsePtrOutput() MetadataResponsePtrOutput {
-	return i.ToMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *metadataResponsePtrType) ToMetadataResponsePtrOutputWithContext(ctx context.Context) MetadataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetadataResponsePtrOutput)
-}
-
 // Metadata for a Ruleset.
 type MetadataResponseOutput struct{ *pulumi.OutputState }
 
@@ -337,53 +209,9 @@ func (o MetadataResponseOutput) ToMetadataResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o MetadataResponseOutput) ToMetadataResponsePtrOutput() MetadataResponsePtrOutput {
-	return o.ToMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (o MetadataResponseOutput) ToMetadataResponsePtrOutputWithContext(ctx context.Context) MetadataResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetadataResponse) *MetadataResponse {
-		return &v
-	}).(MetadataResponsePtrOutput)
-}
-
 // Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
 func (o MetadataResponseOutput) Services() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MetadataResponse) []string { return v.Services }).(pulumi.StringArrayOutput)
-}
-
-type MetadataResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (MetadataResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MetadataResponse)(nil)).Elem()
-}
-
-func (o MetadataResponsePtrOutput) ToMetadataResponsePtrOutput() MetadataResponsePtrOutput {
-	return o
-}
-
-func (o MetadataResponsePtrOutput) ToMetadataResponsePtrOutputWithContext(ctx context.Context) MetadataResponsePtrOutput {
-	return o
-}
-
-func (o MetadataResponsePtrOutput) Elem() MetadataResponseOutput {
-	return o.ApplyT(func(v *MetadataResponse) MetadataResponse {
-		if v != nil {
-			return *v
-		}
-		var ret MetadataResponse
-		return ret
-	}).(MetadataResponseOutput)
-}
-
-// Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
-func (o MetadataResponsePtrOutput) Services() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *MetadataResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Services
-	}).(pulumi.StringArrayOutput)
 }
 
 // `Source` is one or more `File` messages comprising a logical set of rules.
@@ -532,76 +360,6 @@ type SourceResponse struct {
 	Files []FileResponse `pulumi:"files"`
 }
 
-// SourceResponseInput is an input type that accepts SourceResponseArgs and SourceResponseOutput values.
-// You can construct a concrete instance of `SourceResponseInput` via:
-//
-//          SourceResponseArgs{...}
-type SourceResponseInput interface {
-	pulumi.Input
-
-	ToSourceResponseOutput() SourceResponseOutput
-	ToSourceResponseOutputWithContext(context.Context) SourceResponseOutput
-}
-
-// `Source` is one or more `File` messages comprising a logical set of rules.
-type SourceResponseArgs struct {
-	// `File` set constituting the `Source` bundle.
-	Files FileResponseArrayInput `pulumi:"files"`
-}
-
-func (SourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceResponse)(nil)).Elem()
-}
-
-func (i SourceResponseArgs) ToSourceResponseOutput() SourceResponseOutput {
-	return i.ToSourceResponseOutputWithContext(context.Background())
-}
-
-func (i SourceResponseArgs) ToSourceResponseOutputWithContext(ctx context.Context) SourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceResponseOutput)
-}
-
-func (i SourceResponseArgs) ToSourceResponsePtrOutput() SourceResponsePtrOutput {
-	return i.ToSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SourceResponseArgs) ToSourceResponsePtrOutputWithContext(ctx context.Context) SourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceResponseOutput).ToSourceResponsePtrOutputWithContext(ctx)
-}
-
-// SourceResponsePtrInput is an input type that accepts SourceResponseArgs, SourceResponsePtr and SourceResponsePtrOutput values.
-// You can construct a concrete instance of `SourceResponsePtrInput` via:
-//
-//          SourceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SourceResponsePtrInput interface {
-	pulumi.Input
-
-	ToSourceResponsePtrOutput() SourceResponsePtrOutput
-	ToSourceResponsePtrOutputWithContext(context.Context) SourceResponsePtrOutput
-}
-
-type sourceResponsePtrType SourceResponseArgs
-
-func SourceResponsePtr(v *SourceResponseArgs) SourceResponsePtrInput {
-	return (*sourceResponsePtrType)(v)
-}
-
-func (*sourceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SourceResponse)(nil)).Elem()
-}
-
-func (i *sourceResponsePtrType) ToSourceResponsePtrOutput() SourceResponsePtrOutput {
-	return i.ToSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *sourceResponsePtrType) ToSourceResponsePtrOutputWithContext(ctx context.Context) SourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceResponsePtrOutput)
-}
-
 // `Source` is one or more `File` messages comprising a logical set of rules.
 type SourceResponseOutput struct{ *pulumi.OutputState }
 
@@ -617,74 +375,22 @@ func (o SourceResponseOutput) ToSourceResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o SourceResponseOutput) ToSourceResponsePtrOutput() SourceResponsePtrOutput {
-	return o.ToSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SourceResponseOutput) ToSourceResponsePtrOutputWithContext(ctx context.Context) SourceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceResponse) *SourceResponse {
-		return &v
-	}).(SourceResponsePtrOutput)
-}
-
 // `File` set constituting the `Source` bundle.
 func (o SourceResponseOutput) Files() FileResponseArrayOutput {
 	return o.ApplyT(func(v SourceResponse) []FileResponse { return v.Files }).(FileResponseArrayOutput)
 }
 
-type SourceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SourceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SourceResponse)(nil)).Elem()
-}
-
-func (o SourceResponsePtrOutput) ToSourceResponsePtrOutput() SourceResponsePtrOutput {
-	return o
-}
-
-func (o SourceResponsePtrOutput) ToSourceResponsePtrOutputWithContext(ctx context.Context) SourceResponsePtrOutput {
-	return o
-}
-
-func (o SourceResponsePtrOutput) Elem() SourceResponseOutput {
-	return o.ApplyT(func(v *SourceResponse) SourceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SourceResponse
-		return ret
-	}).(SourceResponseOutput)
-}
-
-// `File` set constituting the `Source` bundle.
-func (o SourceResponsePtrOutput) Files() FileResponseArrayOutput {
-	return o.ApplyT(func(v *SourceResponse) []FileResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Files
-	}).(FileResponseArrayOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FileInput)(nil)).Elem(), FileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileArrayInput)(nil)).Elem(), FileArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FileResponseInput)(nil)).Elem(), FileResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FileResponseArrayInput)(nil)).Elem(), FileResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MetadataResponseInput)(nil)).Elem(), MetadataResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MetadataResponsePtrInput)(nil)).Elem(), MetadataResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceInput)(nil)).Elem(), SourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourcePtrInput)(nil)).Elem(), SourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SourceResponseInput)(nil)).Elem(), SourceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SourceResponsePtrInput)(nil)).Elem(), SourceResponseArgs{})
 	pulumi.RegisterOutputType(FileOutput{})
 	pulumi.RegisterOutputType(FileArrayOutput{})
 	pulumi.RegisterOutputType(FileResponseOutput{})
 	pulumi.RegisterOutputType(FileResponseArrayOutput{})
 	pulumi.RegisterOutputType(MetadataResponseOutput{})
-	pulumi.RegisterOutputType(MetadataResponsePtrOutput{})
 	pulumi.RegisterOutputType(SourceOutput{})
 	pulumi.RegisterOutputType(SourcePtrOutput{})
 	pulumi.RegisterOutputType(SourceResponseOutput{})
-	pulumi.RegisterOutputType(SourceResponsePtrOutput{})
 }

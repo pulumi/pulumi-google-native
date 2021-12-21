@@ -127,62 +127,6 @@ type AuditConfigResponse struct {
 	Service string `pulumi:"service"`
 }
 
-// AuditConfigResponseInput is an input type that accepts AuditConfigResponseArgs and AuditConfigResponseOutput values.
-// You can construct a concrete instance of `AuditConfigResponseInput` via:
-//
-//          AuditConfigResponseArgs{...}
-type AuditConfigResponseInput interface {
-	pulumi.Input
-
-	ToAuditConfigResponseOutput() AuditConfigResponseOutput
-	ToAuditConfigResponseOutputWithContext(context.Context) AuditConfigResponseOutput
-}
-
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs.If there are AuditConfigs for both allServices and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted.Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
-type AuditConfigResponseArgs struct {
-	// The configuration for logging of each type of permission.
-	AuditLogConfigs AuditLogConfigResponseArrayInput `pulumi:"auditLogConfigs"`
-	// Specifies a service that will be enabled for audit logging. For example, storage.googleapis.com, cloudsql.googleapis.com. allServices is a special value that covers all services.
-	Service pulumi.StringInput `pulumi:"service"`
-}
-
-func (AuditConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
-}
-
-func (i AuditConfigResponseArgs) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
-	return i.ToAuditConfigResponseOutputWithContext(context.Background())
-}
-
-func (i AuditConfigResponseArgs) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseOutput)
-}
-
-// AuditConfigResponseArrayInput is an input type that accepts AuditConfigResponseArray and AuditConfigResponseArrayOutput values.
-// You can construct a concrete instance of `AuditConfigResponseArrayInput` via:
-//
-//          AuditConfigResponseArray{ AuditConfigResponseArgs{...} }
-type AuditConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput
-	ToAuditConfigResponseArrayOutputWithContext(context.Context) AuditConfigResponseArrayOutput
-}
-
-type AuditConfigResponseArray []AuditConfigResponseInput
-
-func (AuditConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
-}
-
-func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
-	return i.ToAuditConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseArrayOutput)
-}
-
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs.If there are AuditConfigs for both allServices and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted.Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
 type AuditConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -343,62 +287,6 @@ type AuditLogConfigResponse struct {
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
 	LogType string `pulumi:"logType"`
-}
-
-// AuditLogConfigResponseInput is an input type that accepts AuditLogConfigResponseArgs and AuditLogConfigResponseOutput values.
-// You can construct a concrete instance of `AuditLogConfigResponseInput` via:
-//
-//          AuditLogConfigResponseArgs{...}
-type AuditLogConfigResponseInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput
-	ToAuditLogConfigResponseOutputWithContext(context.Context) AuditLogConfigResponseOutput
-}
-
-// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
-type AuditLogConfigResponseArgs struct {
-	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
-	// The log type that this config enables.
-	LogType pulumi.StringInput `pulumi:"logType"`
-}
-
-func (AuditLogConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
-	return i.ToAuditLogConfigResponseOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseOutput)
-}
-
-// AuditLogConfigResponseArrayInput is an input type that accepts AuditLogConfigResponseArray and AuditLogConfigResponseArrayOutput values.
-// You can construct a concrete instance of `AuditLogConfigResponseArrayInput` via:
-//
-//          AuditLogConfigResponseArray{ AuditLogConfigResponseArgs{...} }
-type AuditLogConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput
-	ToAuditLogConfigResponseArrayOutputWithContext(context.Context) AuditLogConfigResponseArrayOutput
-}
-
-type AuditLogConfigResponseArray []AuditLogConfigResponseInput
-
-func (AuditLogConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
-	return i.ToAuditLogConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseArrayOutput)
 }
 
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
@@ -574,64 +462,6 @@ type BindingResponse struct {
 	Role string `pulumi:"role"`
 }
 
-// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
-// You can construct a concrete instance of `BindingResponseInput` via:
-//
-//          BindingResponseArgs{...}
-type BindingResponseInput interface {
-	pulumi.Input
-
-	ToBindingResponseOutput() BindingResponseOutput
-	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
-}
-
-// Associates members, or principals, with a role.
-type BindingResponseArgs struct {
-	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
-	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
-	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
-	Role pulumi.StringInput `pulumi:"role"`
-}
-
-func (BindingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
-	return i.ToBindingResponseOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
-}
-
-// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
-// You can construct a concrete instance of `BindingResponseArrayInput` via:
-//
-//          BindingResponseArray{ BindingResponseArgs{...} }
-type BindingResponseArrayInput interface {
-	pulumi.Input
-
-	ToBindingResponseArrayOutput() BindingResponseArrayOutput
-	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
-}
-
-type BindingResponseArray []BindingResponseInput
-
-func (BindingResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
-	return i.ToBindingResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
-}
-
 // Associates members, or principals, with a role.
 type BindingResponseOutput struct{ *pulumi.OutputState }
 
@@ -788,62 +618,6 @@ type ConsumerResponse struct {
 	EndpointUri string `pulumi:"endpointUri"`
 	// The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
 	Subnetwork string `pulumi:"subnetwork"`
-}
-
-// ConsumerResponseInput is an input type that accepts ConsumerResponseArgs and ConsumerResponseOutput values.
-// You can construct a concrete instance of `ConsumerResponseInput` via:
-//
-//          ConsumerResponseArgs{...}
-type ConsumerResponseInput interface {
-	pulumi.Input
-
-	ToConsumerResponseOutput() ConsumerResponseOutput
-	ToConsumerResponseOutputWithContext(context.Context) ConsumerResponseOutput
-}
-
-// Contains information of the customer's network configurations.
-type ConsumerResponseArgs struct {
-	// The URI of the endpoint used to access the metastore service.
-	EndpointUri pulumi.StringInput `pulumi:"endpointUri"`
-	// The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
-	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
-}
-
-func (ConsumerResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConsumerResponse)(nil)).Elem()
-}
-
-func (i ConsumerResponseArgs) ToConsumerResponseOutput() ConsumerResponseOutput {
-	return i.ToConsumerResponseOutputWithContext(context.Background())
-}
-
-func (i ConsumerResponseArgs) ToConsumerResponseOutputWithContext(ctx context.Context) ConsumerResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConsumerResponseOutput)
-}
-
-// ConsumerResponseArrayInput is an input type that accepts ConsumerResponseArray and ConsumerResponseArrayOutput values.
-// You can construct a concrete instance of `ConsumerResponseArrayInput` via:
-//
-//          ConsumerResponseArray{ ConsumerResponseArgs{...} }
-type ConsumerResponseArrayInput interface {
-	pulumi.Input
-
-	ToConsumerResponseArrayOutput() ConsumerResponseArrayOutput
-	ToConsumerResponseArrayOutputWithContext(context.Context) ConsumerResponseArrayOutput
-}
-
-type ConsumerResponseArray []ConsumerResponseInput
-
-func (ConsumerResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConsumerResponse)(nil)).Elem()
-}
-
-func (i ConsumerResponseArray) ToConsumerResponseArrayOutput() ConsumerResponseArrayOutput {
-	return i.ToConsumerResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ConsumerResponseArray) ToConsumerResponseArrayOutputWithContext(ctx context.Context) ConsumerResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConsumerResponseArrayOutput)
 }
 
 // Contains information of the customer's network configurations.
@@ -1037,76 +811,6 @@ type DataCatalogConfigResponse struct {
 	Enabled bool `pulumi:"enabled"`
 }
 
-// DataCatalogConfigResponseInput is an input type that accepts DataCatalogConfigResponseArgs and DataCatalogConfigResponseOutput values.
-// You can construct a concrete instance of `DataCatalogConfigResponseInput` via:
-//
-//          DataCatalogConfigResponseArgs{...}
-type DataCatalogConfigResponseInput interface {
-	pulumi.Input
-
-	ToDataCatalogConfigResponseOutput() DataCatalogConfigResponseOutput
-	ToDataCatalogConfigResponseOutputWithContext(context.Context) DataCatalogConfigResponseOutput
-}
-
-// Specifies how metastore metadata should be integrated with the Data Catalog service.
-type DataCatalogConfigResponseArgs struct {
-	// Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-}
-
-func (DataCatalogConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataCatalogConfigResponse)(nil)).Elem()
-}
-
-func (i DataCatalogConfigResponseArgs) ToDataCatalogConfigResponseOutput() DataCatalogConfigResponseOutput {
-	return i.ToDataCatalogConfigResponseOutputWithContext(context.Background())
-}
-
-func (i DataCatalogConfigResponseArgs) ToDataCatalogConfigResponseOutputWithContext(ctx context.Context) DataCatalogConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataCatalogConfigResponseOutput)
-}
-
-func (i DataCatalogConfigResponseArgs) ToDataCatalogConfigResponsePtrOutput() DataCatalogConfigResponsePtrOutput {
-	return i.ToDataCatalogConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i DataCatalogConfigResponseArgs) ToDataCatalogConfigResponsePtrOutputWithContext(ctx context.Context) DataCatalogConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataCatalogConfigResponseOutput).ToDataCatalogConfigResponsePtrOutputWithContext(ctx)
-}
-
-// DataCatalogConfigResponsePtrInput is an input type that accepts DataCatalogConfigResponseArgs, DataCatalogConfigResponsePtr and DataCatalogConfigResponsePtrOutput values.
-// You can construct a concrete instance of `DataCatalogConfigResponsePtrInput` via:
-//
-//          DataCatalogConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type DataCatalogConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToDataCatalogConfigResponsePtrOutput() DataCatalogConfigResponsePtrOutput
-	ToDataCatalogConfigResponsePtrOutputWithContext(context.Context) DataCatalogConfigResponsePtrOutput
-}
-
-type dataCatalogConfigResponsePtrType DataCatalogConfigResponseArgs
-
-func DataCatalogConfigResponsePtr(v *DataCatalogConfigResponseArgs) DataCatalogConfigResponsePtrInput {
-	return (*dataCatalogConfigResponsePtrType)(v)
-}
-
-func (*dataCatalogConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataCatalogConfigResponse)(nil)).Elem()
-}
-
-func (i *dataCatalogConfigResponsePtrType) ToDataCatalogConfigResponsePtrOutput() DataCatalogConfigResponsePtrOutput {
-	return i.ToDataCatalogConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *dataCatalogConfigResponsePtrType) ToDataCatalogConfigResponsePtrOutputWithContext(ctx context.Context) DataCatalogConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataCatalogConfigResponsePtrOutput)
-}
-
 // Specifies how metastore metadata should be integrated with the Data Catalog service.
 type DataCatalogConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -1122,53 +826,9 @@ func (o DataCatalogConfigResponseOutput) ToDataCatalogConfigResponseOutputWithCo
 	return o
 }
 
-func (o DataCatalogConfigResponseOutput) ToDataCatalogConfigResponsePtrOutput() DataCatalogConfigResponsePtrOutput {
-	return o.ToDataCatalogConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o DataCatalogConfigResponseOutput) ToDataCatalogConfigResponsePtrOutputWithContext(ctx context.Context) DataCatalogConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataCatalogConfigResponse) *DataCatalogConfigResponse {
-		return &v
-	}).(DataCatalogConfigResponsePtrOutput)
-}
-
 // Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
 func (o DataCatalogConfigResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v DataCatalogConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-type DataCatalogConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DataCatalogConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataCatalogConfigResponse)(nil)).Elem()
-}
-
-func (o DataCatalogConfigResponsePtrOutput) ToDataCatalogConfigResponsePtrOutput() DataCatalogConfigResponsePtrOutput {
-	return o
-}
-
-func (o DataCatalogConfigResponsePtrOutput) ToDataCatalogConfigResponsePtrOutputWithContext(ctx context.Context) DataCatalogConfigResponsePtrOutput {
-	return o
-}
-
-func (o DataCatalogConfigResponsePtrOutput) Elem() DataCatalogConfigResponseOutput {
-	return o.ApplyT(func(v *DataCatalogConfigResponse) DataCatalogConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DataCatalogConfigResponse
-		return ret
-	}).(DataCatalogConfigResponseOutput)
-}
-
-// Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
-func (o DataCatalogConfigResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *DataCatalogConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Enabled
-	}).(pulumi.BoolPtrOutput)
 }
 
 // A specification of the location of and metadata about a database dump from a relational database management system.
@@ -1380,82 +1040,6 @@ type DatabaseDumpResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// DatabaseDumpResponseInput is an input type that accepts DatabaseDumpResponseArgs and DatabaseDumpResponseOutput values.
-// You can construct a concrete instance of `DatabaseDumpResponseInput` via:
-//
-//          DatabaseDumpResponseArgs{...}
-type DatabaseDumpResponseInput interface {
-	pulumi.Input
-
-	ToDatabaseDumpResponseOutput() DatabaseDumpResponseOutput
-	ToDatabaseDumpResponseOutputWithContext(context.Context) DatabaseDumpResponseOutput
-}
-
-// A specification of the location of and metadata about a database dump from a relational database management system.
-type DatabaseDumpResponseArgs struct {
-	// The type of the database.
-	DatabaseType pulumi.StringInput `pulumi:"databaseType"`
-	// A Cloud Storage object or folder URI that specifies the source from which to import metadata. It must begin with gs://.
-	GcsUri pulumi.StringInput `pulumi:"gcsUri"`
-	// The name of the source database.
-	SourceDatabase pulumi.StringInput `pulumi:"sourceDatabase"`
-	// Optional. The type of the database dump. If unspecified, defaults to MYSQL.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (DatabaseDumpResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseDumpResponse)(nil)).Elem()
-}
-
-func (i DatabaseDumpResponseArgs) ToDatabaseDumpResponseOutput() DatabaseDumpResponseOutput {
-	return i.ToDatabaseDumpResponseOutputWithContext(context.Background())
-}
-
-func (i DatabaseDumpResponseArgs) ToDatabaseDumpResponseOutputWithContext(ctx context.Context) DatabaseDumpResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseDumpResponseOutput)
-}
-
-func (i DatabaseDumpResponseArgs) ToDatabaseDumpResponsePtrOutput() DatabaseDumpResponsePtrOutput {
-	return i.ToDatabaseDumpResponsePtrOutputWithContext(context.Background())
-}
-
-func (i DatabaseDumpResponseArgs) ToDatabaseDumpResponsePtrOutputWithContext(ctx context.Context) DatabaseDumpResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseDumpResponseOutput).ToDatabaseDumpResponsePtrOutputWithContext(ctx)
-}
-
-// DatabaseDumpResponsePtrInput is an input type that accepts DatabaseDumpResponseArgs, DatabaseDumpResponsePtr and DatabaseDumpResponsePtrOutput values.
-// You can construct a concrete instance of `DatabaseDumpResponsePtrInput` via:
-//
-//          DatabaseDumpResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type DatabaseDumpResponsePtrInput interface {
-	pulumi.Input
-
-	ToDatabaseDumpResponsePtrOutput() DatabaseDumpResponsePtrOutput
-	ToDatabaseDumpResponsePtrOutputWithContext(context.Context) DatabaseDumpResponsePtrOutput
-}
-
-type databaseDumpResponsePtrType DatabaseDumpResponseArgs
-
-func DatabaseDumpResponsePtr(v *DatabaseDumpResponseArgs) DatabaseDumpResponsePtrInput {
-	return (*databaseDumpResponsePtrType)(v)
-}
-
-func (*databaseDumpResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseDumpResponse)(nil)).Elem()
-}
-
-func (i *databaseDumpResponsePtrType) ToDatabaseDumpResponsePtrOutput() DatabaseDumpResponsePtrOutput {
-	return i.ToDatabaseDumpResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *databaseDumpResponsePtrType) ToDatabaseDumpResponsePtrOutputWithContext(ctx context.Context) DatabaseDumpResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseDumpResponsePtrOutput)
-}
-
 // A specification of the location of and metadata about a database dump from a relational database management system.
 type DatabaseDumpResponseOutput struct{ *pulumi.OutputState }
 
@@ -1469,16 +1053,6 @@ func (o DatabaseDumpResponseOutput) ToDatabaseDumpResponseOutput() DatabaseDumpR
 
 func (o DatabaseDumpResponseOutput) ToDatabaseDumpResponseOutputWithContext(ctx context.Context) DatabaseDumpResponseOutput {
 	return o
-}
-
-func (o DatabaseDumpResponseOutput) ToDatabaseDumpResponsePtrOutput() DatabaseDumpResponsePtrOutput {
-	return o.ToDatabaseDumpResponsePtrOutputWithContext(context.Background())
-}
-
-func (o DatabaseDumpResponseOutput) ToDatabaseDumpResponsePtrOutputWithContext(ctx context.Context) DatabaseDumpResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseDumpResponse) *DatabaseDumpResponse {
-		return &v
-	}).(DatabaseDumpResponsePtrOutput)
 }
 
 // The type of the database.
@@ -1499,70 +1073,6 @@ func (o DatabaseDumpResponseOutput) SourceDatabase() pulumi.StringOutput {
 // Optional. The type of the database dump. If unspecified, defaults to MYSQL.
 func (o DatabaseDumpResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseDumpResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type DatabaseDumpResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DatabaseDumpResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseDumpResponse)(nil)).Elem()
-}
-
-func (o DatabaseDumpResponsePtrOutput) ToDatabaseDumpResponsePtrOutput() DatabaseDumpResponsePtrOutput {
-	return o
-}
-
-func (o DatabaseDumpResponsePtrOutput) ToDatabaseDumpResponsePtrOutputWithContext(ctx context.Context) DatabaseDumpResponsePtrOutput {
-	return o
-}
-
-func (o DatabaseDumpResponsePtrOutput) Elem() DatabaseDumpResponseOutput {
-	return o.ApplyT(func(v *DatabaseDumpResponse) DatabaseDumpResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DatabaseDumpResponse
-		return ret
-	}).(DatabaseDumpResponseOutput)
-}
-
-// The type of the database.
-func (o DatabaseDumpResponsePtrOutput) DatabaseType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatabaseDumpResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DatabaseType
-	}).(pulumi.StringPtrOutput)
-}
-
-// A Cloud Storage object or folder URI that specifies the source from which to import metadata. It must begin with gs://.
-func (o DatabaseDumpResponsePtrOutput) GcsUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatabaseDumpResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.GcsUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the source database.
-func (o DatabaseDumpResponsePtrOutput) SourceDatabase() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatabaseDumpResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SourceDatabase
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The type of the database dump. If unspecified, defaults to MYSQL.
-func (o DatabaseDumpResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatabaseDumpResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
 }
 
 // Specifies how metastore metadata should be integrated with the Dataplex service.
@@ -1711,76 +1221,6 @@ type DataplexConfigResponse struct {
 	LakeResources map[string]string `pulumi:"lakeResources"`
 }
 
-// DataplexConfigResponseInput is an input type that accepts DataplexConfigResponseArgs and DataplexConfigResponseOutput values.
-// You can construct a concrete instance of `DataplexConfigResponseInput` via:
-//
-//          DataplexConfigResponseArgs{...}
-type DataplexConfigResponseInput interface {
-	pulumi.Input
-
-	ToDataplexConfigResponseOutput() DataplexConfigResponseOutput
-	ToDataplexConfigResponseOutputWithContext(context.Context) DataplexConfigResponseOutput
-}
-
-// Specifies how metastore metadata should be integrated with the Dataplex service.
-type DataplexConfigResponseArgs struct {
-	// A reference to the Lake resources that this metastore service is attached to. The key is the lake resource name. Example: projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
-	LakeResources pulumi.StringMapInput `pulumi:"lakeResources"`
-}
-
-func (DataplexConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataplexConfigResponse)(nil)).Elem()
-}
-
-func (i DataplexConfigResponseArgs) ToDataplexConfigResponseOutput() DataplexConfigResponseOutput {
-	return i.ToDataplexConfigResponseOutputWithContext(context.Background())
-}
-
-func (i DataplexConfigResponseArgs) ToDataplexConfigResponseOutputWithContext(ctx context.Context) DataplexConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataplexConfigResponseOutput)
-}
-
-func (i DataplexConfigResponseArgs) ToDataplexConfigResponsePtrOutput() DataplexConfigResponsePtrOutput {
-	return i.ToDataplexConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i DataplexConfigResponseArgs) ToDataplexConfigResponsePtrOutputWithContext(ctx context.Context) DataplexConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataplexConfigResponseOutput).ToDataplexConfigResponsePtrOutputWithContext(ctx)
-}
-
-// DataplexConfigResponsePtrInput is an input type that accepts DataplexConfigResponseArgs, DataplexConfigResponsePtr and DataplexConfigResponsePtrOutput values.
-// You can construct a concrete instance of `DataplexConfigResponsePtrInput` via:
-//
-//          DataplexConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type DataplexConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToDataplexConfigResponsePtrOutput() DataplexConfigResponsePtrOutput
-	ToDataplexConfigResponsePtrOutputWithContext(context.Context) DataplexConfigResponsePtrOutput
-}
-
-type dataplexConfigResponsePtrType DataplexConfigResponseArgs
-
-func DataplexConfigResponsePtr(v *DataplexConfigResponseArgs) DataplexConfigResponsePtrInput {
-	return (*dataplexConfigResponsePtrType)(v)
-}
-
-func (*dataplexConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataplexConfigResponse)(nil)).Elem()
-}
-
-func (i *dataplexConfigResponsePtrType) ToDataplexConfigResponsePtrOutput() DataplexConfigResponsePtrOutput {
-	return i.ToDataplexConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *dataplexConfigResponsePtrType) ToDataplexConfigResponsePtrOutputWithContext(ctx context.Context) DataplexConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataplexConfigResponsePtrOutput)
-}
-
 // Specifies how metastore metadata should be integrated with the Dataplex service.
 type DataplexConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -1796,53 +1236,9 @@ func (o DataplexConfigResponseOutput) ToDataplexConfigResponseOutputWithContext(
 	return o
 }
 
-func (o DataplexConfigResponseOutput) ToDataplexConfigResponsePtrOutput() DataplexConfigResponsePtrOutput {
-	return o.ToDataplexConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o DataplexConfigResponseOutput) ToDataplexConfigResponsePtrOutputWithContext(ctx context.Context) DataplexConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataplexConfigResponse) *DataplexConfigResponse {
-		return &v
-	}).(DataplexConfigResponsePtrOutput)
-}
-
 // A reference to the Lake resources that this metastore service is attached to. The key is the lake resource name. Example: projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
 func (o DataplexConfigResponseOutput) LakeResources() pulumi.StringMapOutput {
 	return o.ApplyT(func(v DataplexConfigResponse) map[string]string { return v.LakeResources }).(pulumi.StringMapOutput)
-}
-
-type DataplexConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DataplexConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataplexConfigResponse)(nil)).Elem()
-}
-
-func (o DataplexConfigResponsePtrOutput) ToDataplexConfigResponsePtrOutput() DataplexConfigResponsePtrOutput {
-	return o
-}
-
-func (o DataplexConfigResponsePtrOutput) ToDataplexConfigResponsePtrOutputWithContext(ctx context.Context) DataplexConfigResponsePtrOutput {
-	return o
-}
-
-func (o DataplexConfigResponsePtrOutput) Elem() DataplexConfigResponseOutput {
-	return o.ApplyT(func(v *DataplexConfigResponse) DataplexConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DataplexConfigResponse
-		return ret
-	}).(DataplexConfigResponseOutput)
-}
-
-// A reference to the Lake resources that this metastore service is attached to. The key is the lake resource name. Example: projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
-func (o DataplexConfigResponsePtrOutput) LakeResources() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *DataplexConfigResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.LakeResources
-	}).(pulumi.StringMapOutput)
 }
 
 // Encryption settings for the service.
@@ -1991,76 +1387,6 @@ type EncryptionConfigResponse struct {
 	KmsKey string `pulumi:"kmsKey"`
 }
 
-// EncryptionConfigResponseInput is an input type that accepts EncryptionConfigResponseArgs and EncryptionConfigResponseOutput values.
-// You can construct a concrete instance of `EncryptionConfigResponseInput` via:
-//
-//          EncryptionConfigResponseArgs{...}
-type EncryptionConfigResponseInput interface {
-	pulumi.Input
-
-	ToEncryptionConfigResponseOutput() EncryptionConfigResponseOutput
-	ToEncryptionConfigResponseOutputWithContext(context.Context) EncryptionConfigResponseOutput
-}
-
-// Encryption settings for the service.
-type EncryptionConfigResponseArgs struct {
-	// The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
-	KmsKey pulumi.StringInput `pulumi:"kmsKey"`
-}
-
-func (EncryptionConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EncryptionConfigResponse)(nil)).Elem()
-}
-
-func (i EncryptionConfigResponseArgs) ToEncryptionConfigResponseOutput() EncryptionConfigResponseOutput {
-	return i.ToEncryptionConfigResponseOutputWithContext(context.Background())
-}
-
-func (i EncryptionConfigResponseArgs) ToEncryptionConfigResponseOutputWithContext(ctx context.Context) EncryptionConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigResponseOutput)
-}
-
-func (i EncryptionConfigResponseArgs) ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput {
-	return i.ToEncryptionConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i EncryptionConfigResponseArgs) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigResponseOutput).ToEncryptionConfigResponsePtrOutputWithContext(ctx)
-}
-
-// EncryptionConfigResponsePtrInput is an input type that accepts EncryptionConfigResponseArgs, EncryptionConfigResponsePtr and EncryptionConfigResponsePtrOutput values.
-// You can construct a concrete instance of `EncryptionConfigResponsePtrInput` via:
-//
-//          EncryptionConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type EncryptionConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput
-	ToEncryptionConfigResponsePtrOutputWithContext(context.Context) EncryptionConfigResponsePtrOutput
-}
-
-type encryptionConfigResponsePtrType EncryptionConfigResponseArgs
-
-func EncryptionConfigResponsePtr(v *EncryptionConfigResponseArgs) EncryptionConfigResponsePtrInput {
-	return (*encryptionConfigResponsePtrType)(v)
-}
-
-func (*encryptionConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EncryptionConfigResponse)(nil)).Elem()
-}
-
-func (i *encryptionConfigResponsePtrType) ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput {
-	return i.ToEncryptionConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *encryptionConfigResponsePtrType) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigResponsePtrOutput)
-}
-
 // Encryption settings for the service.
 type EncryptionConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -2076,53 +1402,9 @@ func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponseOutputWithCont
 	return o
 }
 
-func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput {
-	return o.ToEncryptionConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionConfigResponse) *EncryptionConfigResponse {
-		return &v
-	}).(EncryptionConfigResponsePtrOutput)
-}
-
 // The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
 func (o EncryptionConfigResponseOutput) KmsKey() pulumi.StringOutput {
 	return o.ApplyT(func(v EncryptionConfigResponse) string { return v.KmsKey }).(pulumi.StringOutput)
-}
-
-type EncryptionConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (EncryptionConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EncryptionConfigResponse)(nil)).Elem()
-}
-
-func (o EncryptionConfigResponsePtrOutput) ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput {
-	return o
-}
-
-func (o EncryptionConfigResponsePtrOutput) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
-	return o
-}
-
-func (o EncryptionConfigResponsePtrOutput) Elem() EncryptionConfigResponseOutput {
-	return o.ApplyT(func(v *EncryptionConfigResponse) EncryptionConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret EncryptionConfigResponse
-		return ret
-	}).(EncryptionConfigResponseOutput)
-}
-
-// The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
-func (o EncryptionConfigResponsePtrOutput) KmsKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EncryptionConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.KmsKey
-	}).(pulumi.StringPtrOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -2332,41 +1614,6 @@ type ExprResponse struct {
 	Location string `pulumi:"location"`
 	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
 	Title string `pulumi:"title"`
-}
-
-// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
-// You can construct a concrete instance of `ExprResponseInput` via:
-//
-//          ExprResponseArgs{...}
-type ExprResponseInput interface {
-	pulumi.Input
-
-	ToExprResponseOutput() ExprResponseOutput
-	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type ExprResponseArgs struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-	Location pulumi.StringInput `pulumi:"location"`
-	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (ExprResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
-}
-
-func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
-	return i.ToExprResponseOutputWithContext(context.Background())
-}
-
-func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -2613,82 +1860,6 @@ type HiveMetastoreConfigResponse struct {
 	Version string `pulumi:"version"`
 }
 
-// HiveMetastoreConfigResponseInput is an input type that accepts HiveMetastoreConfigResponseArgs and HiveMetastoreConfigResponseOutput values.
-// You can construct a concrete instance of `HiveMetastoreConfigResponseInput` via:
-//
-//          HiveMetastoreConfigResponseArgs{...}
-type HiveMetastoreConfigResponseInput interface {
-	pulumi.Input
-
-	ToHiveMetastoreConfigResponseOutput() HiveMetastoreConfigResponseOutput
-	ToHiveMetastoreConfigResponseOutputWithContext(context.Context) HiveMetastoreConfigResponseOutput
-}
-
-// Specifies configuration information specific to running Hive metastore software as the metastore service.
-type HiveMetastoreConfigResponseArgs struct {
-	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden).
-	ConfigOverrides pulumi.StringMapInput `pulumi:"configOverrides"`
-	// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
-	EndpointProtocol pulumi.StringInput `pulumi:"endpointProtocol"`
-	// Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
-	KerberosConfig KerberosConfigResponseInput `pulumi:"kerberosConfig"`
-	// Immutable. The Hive metastore schema version.
-	Version pulumi.StringInput `pulumi:"version"`
-}
-
-func (HiveMetastoreConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*HiveMetastoreConfigResponse)(nil)).Elem()
-}
-
-func (i HiveMetastoreConfigResponseArgs) ToHiveMetastoreConfigResponseOutput() HiveMetastoreConfigResponseOutput {
-	return i.ToHiveMetastoreConfigResponseOutputWithContext(context.Background())
-}
-
-func (i HiveMetastoreConfigResponseArgs) ToHiveMetastoreConfigResponseOutputWithContext(ctx context.Context) HiveMetastoreConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HiveMetastoreConfigResponseOutput)
-}
-
-func (i HiveMetastoreConfigResponseArgs) ToHiveMetastoreConfigResponsePtrOutput() HiveMetastoreConfigResponsePtrOutput {
-	return i.ToHiveMetastoreConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i HiveMetastoreConfigResponseArgs) ToHiveMetastoreConfigResponsePtrOutputWithContext(ctx context.Context) HiveMetastoreConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HiveMetastoreConfigResponseOutput).ToHiveMetastoreConfigResponsePtrOutputWithContext(ctx)
-}
-
-// HiveMetastoreConfigResponsePtrInput is an input type that accepts HiveMetastoreConfigResponseArgs, HiveMetastoreConfigResponsePtr and HiveMetastoreConfigResponsePtrOutput values.
-// You can construct a concrete instance of `HiveMetastoreConfigResponsePtrInput` via:
-//
-//          HiveMetastoreConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type HiveMetastoreConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToHiveMetastoreConfigResponsePtrOutput() HiveMetastoreConfigResponsePtrOutput
-	ToHiveMetastoreConfigResponsePtrOutputWithContext(context.Context) HiveMetastoreConfigResponsePtrOutput
-}
-
-type hiveMetastoreConfigResponsePtrType HiveMetastoreConfigResponseArgs
-
-func HiveMetastoreConfigResponsePtr(v *HiveMetastoreConfigResponseArgs) HiveMetastoreConfigResponsePtrInput {
-	return (*hiveMetastoreConfigResponsePtrType)(v)
-}
-
-func (*hiveMetastoreConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**HiveMetastoreConfigResponse)(nil)).Elem()
-}
-
-func (i *hiveMetastoreConfigResponsePtrType) ToHiveMetastoreConfigResponsePtrOutput() HiveMetastoreConfigResponsePtrOutput {
-	return i.ToHiveMetastoreConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *hiveMetastoreConfigResponsePtrType) ToHiveMetastoreConfigResponsePtrOutputWithContext(ctx context.Context) HiveMetastoreConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HiveMetastoreConfigResponsePtrOutput)
-}
-
 // Specifies configuration information specific to running Hive metastore software as the metastore service.
 type HiveMetastoreConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -2702,16 +1873,6 @@ func (o HiveMetastoreConfigResponseOutput) ToHiveMetastoreConfigResponseOutput()
 
 func (o HiveMetastoreConfigResponseOutput) ToHiveMetastoreConfigResponseOutputWithContext(ctx context.Context) HiveMetastoreConfigResponseOutput {
 	return o
-}
-
-func (o HiveMetastoreConfigResponseOutput) ToHiveMetastoreConfigResponsePtrOutput() HiveMetastoreConfigResponsePtrOutput {
-	return o.ToHiveMetastoreConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o HiveMetastoreConfigResponseOutput) ToHiveMetastoreConfigResponsePtrOutputWithContext(ctx context.Context) HiveMetastoreConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v HiveMetastoreConfigResponse) *HiveMetastoreConfigResponse {
-		return &v
-	}).(HiveMetastoreConfigResponsePtrOutput)
 }
 
 // A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden).
@@ -2732,70 +1893,6 @@ func (o HiveMetastoreConfigResponseOutput) KerberosConfig() KerberosConfigRespon
 // Immutable. The Hive metastore schema version.
 func (o HiveMetastoreConfigResponseOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v HiveMetastoreConfigResponse) string { return v.Version }).(pulumi.StringOutput)
-}
-
-type HiveMetastoreConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (HiveMetastoreConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**HiveMetastoreConfigResponse)(nil)).Elem()
-}
-
-func (o HiveMetastoreConfigResponsePtrOutput) ToHiveMetastoreConfigResponsePtrOutput() HiveMetastoreConfigResponsePtrOutput {
-	return o
-}
-
-func (o HiveMetastoreConfigResponsePtrOutput) ToHiveMetastoreConfigResponsePtrOutputWithContext(ctx context.Context) HiveMetastoreConfigResponsePtrOutput {
-	return o
-}
-
-func (o HiveMetastoreConfigResponsePtrOutput) Elem() HiveMetastoreConfigResponseOutput {
-	return o.ApplyT(func(v *HiveMetastoreConfigResponse) HiveMetastoreConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret HiveMetastoreConfigResponse
-		return ret
-	}).(HiveMetastoreConfigResponseOutput)
-}
-
-// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden).
-func (o HiveMetastoreConfigResponsePtrOutput) ConfigOverrides() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *HiveMetastoreConfigResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.ConfigOverrides
-	}).(pulumi.StringMapOutput)
-}
-
-// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
-func (o HiveMetastoreConfigResponsePtrOutput) EndpointProtocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HiveMetastoreConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EndpointProtocol
-	}).(pulumi.StringPtrOutput)
-}
-
-// Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
-func (o HiveMetastoreConfigResponsePtrOutput) KerberosConfig() KerberosConfigResponsePtrOutput {
-	return o.ApplyT(func(v *HiveMetastoreConfigResponse) *KerberosConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.KerberosConfig
-	}).(KerberosConfigResponsePtrOutput)
-}
-
-// Immutable. The Hive metastore schema version.
-func (o HiveMetastoreConfigResponsePtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HiveMetastoreConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Version
-	}).(pulumi.StringPtrOutput)
 }
 
 // Configuration information for a Kerberos principal.
@@ -2986,80 +2083,6 @@ type KerberosConfigResponse struct {
 	Principal string `pulumi:"principal"`
 }
 
-// KerberosConfigResponseInput is an input type that accepts KerberosConfigResponseArgs and KerberosConfigResponseOutput values.
-// You can construct a concrete instance of `KerberosConfigResponseInput` via:
-//
-//          KerberosConfigResponseArgs{...}
-type KerberosConfigResponseInput interface {
-	pulumi.Input
-
-	ToKerberosConfigResponseOutput() KerberosConfigResponseOutput
-	ToKerberosConfigResponseOutputWithContext(context.Context) KerberosConfigResponseOutput
-}
-
-// Configuration information for a Kerberos principal.
-type KerberosConfigResponseArgs struct {
-	// A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
-	Keytab SecretResponseInput `pulumi:"keytab"`
-	// A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly.
-	Krb5ConfigGcsUri pulumi.StringInput `pulumi:"krb5ConfigGcsUri"`
-	// A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form primary/instance@REALM, but there is no exact format.
-	Principal pulumi.StringInput `pulumi:"principal"`
-}
-
-func (KerberosConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*KerberosConfigResponse)(nil)).Elem()
-}
-
-func (i KerberosConfigResponseArgs) ToKerberosConfigResponseOutput() KerberosConfigResponseOutput {
-	return i.ToKerberosConfigResponseOutputWithContext(context.Background())
-}
-
-func (i KerberosConfigResponseArgs) ToKerberosConfigResponseOutputWithContext(ctx context.Context) KerberosConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KerberosConfigResponseOutput)
-}
-
-func (i KerberosConfigResponseArgs) ToKerberosConfigResponsePtrOutput() KerberosConfigResponsePtrOutput {
-	return i.ToKerberosConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i KerberosConfigResponseArgs) ToKerberosConfigResponsePtrOutputWithContext(ctx context.Context) KerberosConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KerberosConfigResponseOutput).ToKerberosConfigResponsePtrOutputWithContext(ctx)
-}
-
-// KerberosConfigResponsePtrInput is an input type that accepts KerberosConfigResponseArgs, KerberosConfigResponsePtr and KerberosConfigResponsePtrOutput values.
-// You can construct a concrete instance of `KerberosConfigResponsePtrInput` via:
-//
-//          KerberosConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type KerberosConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToKerberosConfigResponsePtrOutput() KerberosConfigResponsePtrOutput
-	ToKerberosConfigResponsePtrOutputWithContext(context.Context) KerberosConfigResponsePtrOutput
-}
-
-type kerberosConfigResponsePtrType KerberosConfigResponseArgs
-
-func KerberosConfigResponsePtr(v *KerberosConfigResponseArgs) KerberosConfigResponsePtrInput {
-	return (*kerberosConfigResponsePtrType)(v)
-}
-
-func (*kerberosConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KerberosConfigResponse)(nil)).Elem()
-}
-
-func (i *kerberosConfigResponsePtrType) ToKerberosConfigResponsePtrOutput() KerberosConfigResponsePtrOutput {
-	return i.ToKerberosConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *kerberosConfigResponsePtrType) ToKerberosConfigResponsePtrOutputWithContext(ctx context.Context) KerberosConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KerberosConfigResponsePtrOutput)
-}
-
 // Configuration information for a Kerberos principal.
 type KerberosConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -3075,16 +2098,6 @@ func (o KerberosConfigResponseOutput) ToKerberosConfigResponseOutputWithContext(
 	return o
 }
 
-func (o KerberosConfigResponseOutput) ToKerberosConfigResponsePtrOutput() KerberosConfigResponsePtrOutput {
-	return o.ToKerberosConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o KerberosConfigResponseOutput) ToKerberosConfigResponsePtrOutputWithContext(ctx context.Context) KerberosConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KerberosConfigResponse) *KerberosConfigResponse {
-		return &v
-	}).(KerberosConfigResponsePtrOutput)
-}
-
 // A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
 func (o KerberosConfigResponseOutput) Keytab() SecretResponseOutput {
 	return o.ApplyT(func(v KerberosConfigResponse) SecretResponse { return v.Keytab }).(SecretResponseOutput)
@@ -3098,60 +2111,6 @@ func (o KerberosConfigResponseOutput) Krb5ConfigGcsUri() pulumi.StringOutput {
 // A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form primary/instance@REALM, but there is no exact format.
 func (o KerberosConfigResponseOutput) Principal() pulumi.StringOutput {
 	return o.ApplyT(func(v KerberosConfigResponse) string { return v.Principal }).(pulumi.StringOutput)
-}
-
-type KerberosConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (KerberosConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KerberosConfigResponse)(nil)).Elem()
-}
-
-func (o KerberosConfigResponsePtrOutput) ToKerberosConfigResponsePtrOutput() KerberosConfigResponsePtrOutput {
-	return o
-}
-
-func (o KerberosConfigResponsePtrOutput) ToKerberosConfigResponsePtrOutputWithContext(ctx context.Context) KerberosConfigResponsePtrOutput {
-	return o
-}
-
-func (o KerberosConfigResponsePtrOutput) Elem() KerberosConfigResponseOutput {
-	return o.ApplyT(func(v *KerberosConfigResponse) KerberosConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret KerberosConfigResponse
-		return ret
-	}).(KerberosConfigResponseOutput)
-}
-
-// A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
-func (o KerberosConfigResponsePtrOutput) Keytab() SecretResponsePtrOutput {
-	return o.ApplyT(func(v *KerberosConfigResponse) *SecretResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Keytab
-	}).(SecretResponsePtrOutput)
-}
-
-// A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly.
-func (o KerberosConfigResponsePtrOutput) Krb5ConfigGcsUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KerberosConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Krb5ConfigGcsUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form primary/instance@REALM, but there is no exact format.
-func (o KerberosConfigResponsePtrOutput) Principal() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KerberosConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Principal
-	}).(pulumi.StringPtrOutput)
 }
 
 // Maintenance window. This specifies when Dataproc Metastore may perform system maintenance operation to the service.
@@ -3321,78 +2280,6 @@ type MaintenanceWindowResponse struct {
 	HourOfDay int `pulumi:"hourOfDay"`
 }
 
-// MaintenanceWindowResponseInput is an input type that accepts MaintenanceWindowResponseArgs and MaintenanceWindowResponseOutput values.
-// You can construct a concrete instance of `MaintenanceWindowResponseInput` via:
-//
-//          MaintenanceWindowResponseArgs{...}
-type MaintenanceWindowResponseInput interface {
-	pulumi.Input
-
-	ToMaintenanceWindowResponseOutput() MaintenanceWindowResponseOutput
-	ToMaintenanceWindowResponseOutputWithContext(context.Context) MaintenanceWindowResponseOutput
-}
-
-// Maintenance window. This specifies when Dataproc Metastore may perform system maintenance operation to the service.
-type MaintenanceWindowResponseArgs struct {
-	// The day of week, when the window starts.
-	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
-	// The hour of day (0-23) when the window starts.
-	HourOfDay pulumi.IntInput `pulumi:"hourOfDay"`
-}
-
-func (MaintenanceWindowResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MaintenanceWindowResponse)(nil)).Elem()
-}
-
-func (i MaintenanceWindowResponseArgs) ToMaintenanceWindowResponseOutput() MaintenanceWindowResponseOutput {
-	return i.ToMaintenanceWindowResponseOutputWithContext(context.Background())
-}
-
-func (i MaintenanceWindowResponseArgs) ToMaintenanceWindowResponseOutputWithContext(ctx context.Context) MaintenanceWindowResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowResponseOutput)
-}
-
-func (i MaintenanceWindowResponseArgs) ToMaintenanceWindowResponsePtrOutput() MaintenanceWindowResponsePtrOutput {
-	return i.ToMaintenanceWindowResponsePtrOutputWithContext(context.Background())
-}
-
-func (i MaintenanceWindowResponseArgs) ToMaintenanceWindowResponsePtrOutputWithContext(ctx context.Context) MaintenanceWindowResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowResponseOutput).ToMaintenanceWindowResponsePtrOutputWithContext(ctx)
-}
-
-// MaintenanceWindowResponsePtrInput is an input type that accepts MaintenanceWindowResponseArgs, MaintenanceWindowResponsePtr and MaintenanceWindowResponsePtrOutput values.
-// You can construct a concrete instance of `MaintenanceWindowResponsePtrInput` via:
-//
-//          MaintenanceWindowResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type MaintenanceWindowResponsePtrInput interface {
-	pulumi.Input
-
-	ToMaintenanceWindowResponsePtrOutput() MaintenanceWindowResponsePtrOutput
-	ToMaintenanceWindowResponsePtrOutputWithContext(context.Context) MaintenanceWindowResponsePtrOutput
-}
-
-type maintenanceWindowResponsePtrType MaintenanceWindowResponseArgs
-
-func MaintenanceWindowResponsePtr(v *MaintenanceWindowResponseArgs) MaintenanceWindowResponsePtrInput {
-	return (*maintenanceWindowResponsePtrType)(v)
-}
-
-func (*maintenanceWindowResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MaintenanceWindowResponse)(nil)).Elem()
-}
-
-func (i *maintenanceWindowResponsePtrType) ToMaintenanceWindowResponsePtrOutput() MaintenanceWindowResponsePtrOutput {
-	return i.ToMaintenanceWindowResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *maintenanceWindowResponsePtrType) ToMaintenanceWindowResponsePtrOutputWithContext(ctx context.Context) MaintenanceWindowResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowResponsePtrOutput)
-}
-
 // Maintenance window. This specifies when Dataproc Metastore may perform system maintenance operation to the service.
 type MaintenanceWindowResponseOutput struct{ *pulumi.OutputState }
 
@@ -3408,16 +2295,6 @@ func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponseOutputWithCo
 	return o
 }
 
-func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponsePtrOutput() MaintenanceWindowResponsePtrOutput {
-	return o.ToMaintenanceWindowResponsePtrOutputWithContext(context.Background())
-}
-
-func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponsePtrOutputWithContext(ctx context.Context) MaintenanceWindowResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaintenanceWindowResponse) *MaintenanceWindowResponse {
-		return &v
-	}).(MaintenanceWindowResponsePtrOutput)
-}
-
 // The day of week, when the window starts.
 func (o MaintenanceWindowResponseOutput) DayOfWeek() pulumi.StringOutput {
 	return o.ApplyT(func(v MaintenanceWindowResponse) string { return v.DayOfWeek }).(pulumi.StringOutput)
@@ -3426,50 +2303,6 @@ func (o MaintenanceWindowResponseOutput) DayOfWeek() pulumi.StringOutput {
 // The hour of day (0-23) when the window starts.
 func (o MaintenanceWindowResponseOutput) HourOfDay() pulumi.IntOutput {
 	return o.ApplyT(func(v MaintenanceWindowResponse) int { return v.HourOfDay }).(pulumi.IntOutput)
-}
-
-type MaintenanceWindowResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (MaintenanceWindowResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MaintenanceWindowResponse)(nil)).Elem()
-}
-
-func (o MaintenanceWindowResponsePtrOutput) ToMaintenanceWindowResponsePtrOutput() MaintenanceWindowResponsePtrOutput {
-	return o
-}
-
-func (o MaintenanceWindowResponsePtrOutput) ToMaintenanceWindowResponsePtrOutputWithContext(ctx context.Context) MaintenanceWindowResponsePtrOutput {
-	return o
-}
-
-func (o MaintenanceWindowResponsePtrOutput) Elem() MaintenanceWindowResponseOutput {
-	return o.ApplyT(func(v *MaintenanceWindowResponse) MaintenanceWindowResponse {
-		if v != nil {
-			return *v
-		}
-		var ret MaintenanceWindowResponse
-		return ret
-	}).(MaintenanceWindowResponseOutput)
-}
-
-// The day of week, when the window starts.
-func (o MaintenanceWindowResponsePtrOutput) DayOfWeek() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MaintenanceWindowResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DayOfWeek
-	}).(pulumi.StringPtrOutput)
-}
-
-// The hour of day (0-23) when the window starts.
-func (o MaintenanceWindowResponsePtrOutput) HourOfDay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MaintenanceWindowResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.HourOfDay
-	}).(pulumi.IntPtrOutput)
 }
 
 // The details of a metadata export operation.
@@ -3484,68 +2317,6 @@ type MetadataExportResponse struct {
 	StartTime string `pulumi:"startTime"`
 	// The current state of the export.
 	State string `pulumi:"state"`
-}
-
-// MetadataExportResponseInput is an input type that accepts MetadataExportResponseArgs and MetadataExportResponseOutput values.
-// You can construct a concrete instance of `MetadataExportResponseInput` via:
-//
-//          MetadataExportResponseArgs{...}
-type MetadataExportResponseInput interface {
-	pulumi.Input
-
-	ToMetadataExportResponseOutput() MetadataExportResponseOutput
-	ToMetadataExportResponseOutputWithContext(context.Context) MetadataExportResponseOutput
-}
-
-// The details of a metadata export operation.
-type MetadataExportResponseArgs struct {
-	// The type of the database dump.
-	DatabaseDumpType pulumi.StringInput `pulumi:"databaseDumpType"`
-	// A Cloud Storage URI of a folder that metadata are exported to, in the form of gs:////, where is automatically generated.
-	DestinationGcsUri pulumi.StringInput `pulumi:"destinationGcsUri"`
-	// The time when the export ended.
-	EndTime pulumi.StringInput `pulumi:"endTime"`
-	// The time when the export started.
-	StartTime pulumi.StringInput `pulumi:"startTime"`
-	// The current state of the export.
-	State pulumi.StringInput `pulumi:"state"`
-}
-
-func (MetadataExportResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MetadataExportResponse)(nil)).Elem()
-}
-
-func (i MetadataExportResponseArgs) ToMetadataExportResponseOutput() MetadataExportResponseOutput {
-	return i.ToMetadataExportResponseOutputWithContext(context.Background())
-}
-
-func (i MetadataExportResponseArgs) ToMetadataExportResponseOutputWithContext(ctx context.Context) MetadataExportResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetadataExportResponseOutput)
-}
-
-// MetadataExportResponseArrayInput is an input type that accepts MetadataExportResponseArray and MetadataExportResponseArrayOutput values.
-// You can construct a concrete instance of `MetadataExportResponseArrayInput` via:
-//
-//          MetadataExportResponseArray{ MetadataExportResponseArgs{...} }
-type MetadataExportResponseArrayInput interface {
-	pulumi.Input
-
-	ToMetadataExportResponseArrayOutput() MetadataExportResponseArrayOutput
-	ToMetadataExportResponseArrayOutputWithContext(context.Context) MetadataExportResponseArrayOutput
-}
-
-type MetadataExportResponseArray []MetadataExportResponseInput
-
-func (MetadataExportResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MetadataExportResponse)(nil)).Elem()
-}
-
-func (i MetadataExportResponseArray) ToMetadataExportResponseArrayOutput() MetadataExportResponseArrayOutput {
-	return i.ToMetadataExportResponseArrayOutputWithContext(context.Background())
-}
-
-func (i MetadataExportResponseArray) ToMetadataExportResponseArrayOutputWithContext(ctx context.Context) MetadataExportResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetadataExportResponseArrayOutput)
 }
 
 // The details of a metadata export operation.
@@ -3775,78 +2546,6 @@ type MetadataIntegrationResponse struct {
 	DataplexConfig DataplexConfigResponse `pulumi:"dataplexConfig"`
 }
 
-// MetadataIntegrationResponseInput is an input type that accepts MetadataIntegrationResponseArgs and MetadataIntegrationResponseOutput values.
-// You can construct a concrete instance of `MetadataIntegrationResponseInput` via:
-//
-//          MetadataIntegrationResponseArgs{...}
-type MetadataIntegrationResponseInput interface {
-	pulumi.Input
-
-	ToMetadataIntegrationResponseOutput() MetadataIntegrationResponseOutput
-	ToMetadataIntegrationResponseOutputWithContext(context.Context) MetadataIntegrationResponseOutput
-}
-
-// Specifies how metastore metadata should be integrated with external services.
-type MetadataIntegrationResponseArgs struct {
-	// The integration config for the Data Catalog service.
-	DataCatalogConfig DataCatalogConfigResponseInput `pulumi:"dataCatalogConfig"`
-	// The integration config for the Dataplex service.
-	DataplexConfig DataplexConfigResponseInput `pulumi:"dataplexConfig"`
-}
-
-func (MetadataIntegrationResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MetadataIntegrationResponse)(nil)).Elem()
-}
-
-func (i MetadataIntegrationResponseArgs) ToMetadataIntegrationResponseOutput() MetadataIntegrationResponseOutput {
-	return i.ToMetadataIntegrationResponseOutputWithContext(context.Background())
-}
-
-func (i MetadataIntegrationResponseArgs) ToMetadataIntegrationResponseOutputWithContext(ctx context.Context) MetadataIntegrationResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetadataIntegrationResponseOutput)
-}
-
-func (i MetadataIntegrationResponseArgs) ToMetadataIntegrationResponsePtrOutput() MetadataIntegrationResponsePtrOutput {
-	return i.ToMetadataIntegrationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i MetadataIntegrationResponseArgs) ToMetadataIntegrationResponsePtrOutputWithContext(ctx context.Context) MetadataIntegrationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetadataIntegrationResponseOutput).ToMetadataIntegrationResponsePtrOutputWithContext(ctx)
-}
-
-// MetadataIntegrationResponsePtrInput is an input type that accepts MetadataIntegrationResponseArgs, MetadataIntegrationResponsePtr and MetadataIntegrationResponsePtrOutput values.
-// You can construct a concrete instance of `MetadataIntegrationResponsePtrInput` via:
-//
-//          MetadataIntegrationResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type MetadataIntegrationResponsePtrInput interface {
-	pulumi.Input
-
-	ToMetadataIntegrationResponsePtrOutput() MetadataIntegrationResponsePtrOutput
-	ToMetadataIntegrationResponsePtrOutputWithContext(context.Context) MetadataIntegrationResponsePtrOutput
-}
-
-type metadataIntegrationResponsePtrType MetadataIntegrationResponseArgs
-
-func MetadataIntegrationResponsePtr(v *MetadataIntegrationResponseArgs) MetadataIntegrationResponsePtrInput {
-	return (*metadataIntegrationResponsePtrType)(v)
-}
-
-func (*metadataIntegrationResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MetadataIntegrationResponse)(nil)).Elem()
-}
-
-func (i *metadataIntegrationResponsePtrType) ToMetadataIntegrationResponsePtrOutput() MetadataIntegrationResponsePtrOutput {
-	return i.ToMetadataIntegrationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *metadataIntegrationResponsePtrType) ToMetadataIntegrationResponsePtrOutputWithContext(ctx context.Context) MetadataIntegrationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetadataIntegrationResponsePtrOutput)
-}
-
 // Specifies how metastore metadata should be integrated with external services.
 type MetadataIntegrationResponseOutput struct{ *pulumi.OutputState }
 
@@ -3862,16 +2561,6 @@ func (o MetadataIntegrationResponseOutput) ToMetadataIntegrationResponseOutputWi
 	return o
 }
 
-func (o MetadataIntegrationResponseOutput) ToMetadataIntegrationResponsePtrOutput() MetadataIntegrationResponsePtrOutput {
-	return o.ToMetadataIntegrationResponsePtrOutputWithContext(context.Background())
-}
-
-func (o MetadataIntegrationResponseOutput) ToMetadataIntegrationResponsePtrOutputWithContext(ctx context.Context) MetadataIntegrationResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetadataIntegrationResponse) *MetadataIntegrationResponse {
-		return &v
-	}).(MetadataIntegrationResponsePtrOutput)
-}
-
 // The integration config for the Data Catalog service.
 func (o MetadataIntegrationResponseOutput) DataCatalogConfig() DataCatalogConfigResponseOutput {
 	return o.ApplyT(func(v MetadataIntegrationResponse) DataCatalogConfigResponse { return v.DataCatalogConfig }).(DataCatalogConfigResponseOutput)
@@ -3882,128 +2571,12 @@ func (o MetadataIntegrationResponseOutput) DataplexConfig() DataplexConfigRespon
 	return o.ApplyT(func(v MetadataIntegrationResponse) DataplexConfigResponse { return v.DataplexConfig }).(DataplexConfigResponseOutput)
 }
 
-type MetadataIntegrationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (MetadataIntegrationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MetadataIntegrationResponse)(nil)).Elem()
-}
-
-func (o MetadataIntegrationResponsePtrOutput) ToMetadataIntegrationResponsePtrOutput() MetadataIntegrationResponsePtrOutput {
-	return o
-}
-
-func (o MetadataIntegrationResponsePtrOutput) ToMetadataIntegrationResponsePtrOutputWithContext(ctx context.Context) MetadataIntegrationResponsePtrOutput {
-	return o
-}
-
-func (o MetadataIntegrationResponsePtrOutput) Elem() MetadataIntegrationResponseOutput {
-	return o.ApplyT(func(v *MetadataIntegrationResponse) MetadataIntegrationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret MetadataIntegrationResponse
-		return ret
-	}).(MetadataIntegrationResponseOutput)
-}
-
-// The integration config for the Data Catalog service.
-func (o MetadataIntegrationResponsePtrOutput) DataCatalogConfig() DataCatalogConfigResponsePtrOutput {
-	return o.ApplyT(func(v *MetadataIntegrationResponse) *DataCatalogConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DataCatalogConfig
-	}).(DataCatalogConfigResponsePtrOutput)
-}
-
-// The integration config for the Dataplex service.
-func (o MetadataIntegrationResponsePtrOutput) DataplexConfig() DataplexConfigResponsePtrOutput {
-	return o.ApplyT(func(v *MetadataIntegrationResponse) *DataplexConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DataplexConfig
-	}).(DataplexConfigResponsePtrOutput)
-}
-
 // The metadata management activities of the metastore service.
 type MetadataManagementActivityResponse struct {
 	// The latest metadata exports of the metastore service.
 	MetadataExports []MetadataExportResponse `pulumi:"metadataExports"`
 	// The latest restores of the metastore service.
 	Restores []RestoreResponse `pulumi:"restores"`
-}
-
-// MetadataManagementActivityResponseInput is an input type that accepts MetadataManagementActivityResponseArgs and MetadataManagementActivityResponseOutput values.
-// You can construct a concrete instance of `MetadataManagementActivityResponseInput` via:
-//
-//          MetadataManagementActivityResponseArgs{...}
-type MetadataManagementActivityResponseInput interface {
-	pulumi.Input
-
-	ToMetadataManagementActivityResponseOutput() MetadataManagementActivityResponseOutput
-	ToMetadataManagementActivityResponseOutputWithContext(context.Context) MetadataManagementActivityResponseOutput
-}
-
-// The metadata management activities of the metastore service.
-type MetadataManagementActivityResponseArgs struct {
-	// The latest metadata exports of the metastore service.
-	MetadataExports MetadataExportResponseArrayInput `pulumi:"metadataExports"`
-	// The latest restores of the metastore service.
-	Restores RestoreResponseArrayInput `pulumi:"restores"`
-}
-
-func (MetadataManagementActivityResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MetadataManagementActivityResponse)(nil)).Elem()
-}
-
-func (i MetadataManagementActivityResponseArgs) ToMetadataManagementActivityResponseOutput() MetadataManagementActivityResponseOutput {
-	return i.ToMetadataManagementActivityResponseOutputWithContext(context.Background())
-}
-
-func (i MetadataManagementActivityResponseArgs) ToMetadataManagementActivityResponseOutputWithContext(ctx context.Context) MetadataManagementActivityResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetadataManagementActivityResponseOutput)
-}
-
-func (i MetadataManagementActivityResponseArgs) ToMetadataManagementActivityResponsePtrOutput() MetadataManagementActivityResponsePtrOutput {
-	return i.ToMetadataManagementActivityResponsePtrOutputWithContext(context.Background())
-}
-
-func (i MetadataManagementActivityResponseArgs) ToMetadataManagementActivityResponsePtrOutputWithContext(ctx context.Context) MetadataManagementActivityResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetadataManagementActivityResponseOutput).ToMetadataManagementActivityResponsePtrOutputWithContext(ctx)
-}
-
-// MetadataManagementActivityResponsePtrInput is an input type that accepts MetadataManagementActivityResponseArgs, MetadataManagementActivityResponsePtr and MetadataManagementActivityResponsePtrOutput values.
-// You can construct a concrete instance of `MetadataManagementActivityResponsePtrInput` via:
-//
-//          MetadataManagementActivityResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type MetadataManagementActivityResponsePtrInput interface {
-	pulumi.Input
-
-	ToMetadataManagementActivityResponsePtrOutput() MetadataManagementActivityResponsePtrOutput
-	ToMetadataManagementActivityResponsePtrOutputWithContext(context.Context) MetadataManagementActivityResponsePtrOutput
-}
-
-type metadataManagementActivityResponsePtrType MetadataManagementActivityResponseArgs
-
-func MetadataManagementActivityResponsePtr(v *MetadataManagementActivityResponseArgs) MetadataManagementActivityResponsePtrInput {
-	return (*metadataManagementActivityResponsePtrType)(v)
-}
-
-func (*metadataManagementActivityResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MetadataManagementActivityResponse)(nil)).Elem()
-}
-
-func (i *metadataManagementActivityResponsePtrType) ToMetadataManagementActivityResponsePtrOutput() MetadataManagementActivityResponsePtrOutput {
-	return i.ToMetadataManagementActivityResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *metadataManagementActivityResponsePtrType) ToMetadataManagementActivityResponsePtrOutputWithContext(ctx context.Context) MetadataManagementActivityResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetadataManagementActivityResponsePtrOutput)
 }
 
 // The metadata management activities of the metastore service.
@@ -4021,16 +2594,6 @@ func (o MetadataManagementActivityResponseOutput) ToMetadataManagementActivityRe
 	return o
 }
 
-func (o MetadataManagementActivityResponseOutput) ToMetadataManagementActivityResponsePtrOutput() MetadataManagementActivityResponsePtrOutput {
-	return o.ToMetadataManagementActivityResponsePtrOutputWithContext(context.Background())
-}
-
-func (o MetadataManagementActivityResponseOutput) ToMetadataManagementActivityResponsePtrOutputWithContext(ctx context.Context) MetadataManagementActivityResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetadataManagementActivityResponse) *MetadataManagementActivityResponse {
-		return &v
-	}).(MetadataManagementActivityResponsePtrOutput)
-}
-
 // The latest metadata exports of the metastore service.
 func (o MetadataManagementActivityResponseOutput) MetadataExports() MetadataExportResponseArrayOutput {
 	return o.ApplyT(func(v MetadataManagementActivityResponse) []MetadataExportResponse { return v.MetadataExports }).(MetadataExportResponseArrayOutput)
@@ -4039,50 +2602,6 @@ func (o MetadataManagementActivityResponseOutput) MetadataExports() MetadataExpo
 // The latest restores of the metastore service.
 func (o MetadataManagementActivityResponseOutput) Restores() RestoreResponseArrayOutput {
 	return o.ApplyT(func(v MetadataManagementActivityResponse) []RestoreResponse { return v.Restores }).(RestoreResponseArrayOutput)
-}
-
-type MetadataManagementActivityResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (MetadataManagementActivityResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MetadataManagementActivityResponse)(nil)).Elem()
-}
-
-func (o MetadataManagementActivityResponsePtrOutput) ToMetadataManagementActivityResponsePtrOutput() MetadataManagementActivityResponsePtrOutput {
-	return o
-}
-
-func (o MetadataManagementActivityResponsePtrOutput) ToMetadataManagementActivityResponsePtrOutputWithContext(ctx context.Context) MetadataManagementActivityResponsePtrOutput {
-	return o
-}
-
-func (o MetadataManagementActivityResponsePtrOutput) Elem() MetadataManagementActivityResponseOutput {
-	return o.ApplyT(func(v *MetadataManagementActivityResponse) MetadataManagementActivityResponse {
-		if v != nil {
-			return *v
-		}
-		var ret MetadataManagementActivityResponse
-		return ret
-	}).(MetadataManagementActivityResponseOutput)
-}
-
-// The latest metadata exports of the metastore service.
-func (o MetadataManagementActivityResponsePtrOutput) MetadataExports() MetadataExportResponseArrayOutput {
-	return o.ApplyT(func(v *MetadataManagementActivityResponse) []MetadataExportResponse {
-		if v == nil {
-			return nil
-		}
-		return v.MetadataExports
-	}).(MetadataExportResponseArrayOutput)
-}
-
-// The latest restores of the metastore service.
-func (o MetadataManagementActivityResponsePtrOutput) Restores() RestoreResponseArrayOutput {
-	return o.ApplyT(func(v *MetadataManagementActivityResponse) []RestoreResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Restores
-	}).(RestoreResponseArrayOutput)
 }
 
 // Network configuration for the Dataproc Metastore service.
@@ -4231,76 +2750,6 @@ type NetworkConfigResponse struct {
 	Consumers []ConsumerResponse `pulumi:"consumers"`
 }
 
-// NetworkConfigResponseInput is an input type that accepts NetworkConfigResponseArgs and NetworkConfigResponseOutput values.
-// You can construct a concrete instance of `NetworkConfigResponseInput` via:
-//
-//          NetworkConfigResponseArgs{...}
-type NetworkConfigResponseInput interface {
-	pulumi.Input
-
-	ToNetworkConfigResponseOutput() NetworkConfigResponseOutput
-	ToNetworkConfigResponseOutputWithContext(context.Context) NetworkConfigResponseOutput
-}
-
-// Network configuration for the Dataproc Metastore service.
-type NetworkConfigResponseArgs struct {
-	// Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
-	Consumers ConsumerResponseArrayInput `pulumi:"consumers"`
-}
-
-func (NetworkConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkConfigResponse)(nil)).Elem()
-}
-
-func (i NetworkConfigResponseArgs) ToNetworkConfigResponseOutput() NetworkConfigResponseOutput {
-	return i.ToNetworkConfigResponseOutputWithContext(context.Background())
-}
-
-func (i NetworkConfigResponseArgs) ToNetworkConfigResponseOutputWithContext(ctx context.Context) NetworkConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigResponseOutput)
-}
-
-func (i NetworkConfigResponseArgs) ToNetworkConfigResponsePtrOutput() NetworkConfigResponsePtrOutput {
-	return i.ToNetworkConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i NetworkConfigResponseArgs) ToNetworkConfigResponsePtrOutputWithContext(ctx context.Context) NetworkConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigResponseOutput).ToNetworkConfigResponsePtrOutputWithContext(ctx)
-}
-
-// NetworkConfigResponsePtrInput is an input type that accepts NetworkConfigResponseArgs, NetworkConfigResponsePtr and NetworkConfigResponsePtrOutput values.
-// You can construct a concrete instance of `NetworkConfigResponsePtrInput` via:
-//
-//          NetworkConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type NetworkConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToNetworkConfigResponsePtrOutput() NetworkConfigResponsePtrOutput
-	ToNetworkConfigResponsePtrOutputWithContext(context.Context) NetworkConfigResponsePtrOutput
-}
-
-type networkConfigResponsePtrType NetworkConfigResponseArgs
-
-func NetworkConfigResponsePtr(v *NetworkConfigResponseArgs) NetworkConfigResponsePtrInput {
-	return (*networkConfigResponsePtrType)(v)
-}
-
-func (*networkConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkConfigResponse)(nil)).Elem()
-}
-
-func (i *networkConfigResponsePtrType) ToNetworkConfigResponsePtrOutput() NetworkConfigResponsePtrOutput {
-	return i.ToNetworkConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *networkConfigResponsePtrType) ToNetworkConfigResponsePtrOutputWithContext(ctx context.Context) NetworkConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigResponsePtrOutput)
-}
-
 // Network configuration for the Dataproc Metastore service.
 type NetworkConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -4316,53 +2765,9 @@ func (o NetworkConfigResponseOutput) ToNetworkConfigResponseOutputWithContext(ct
 	return o
 }
 
-func (o NetworkConfigResponseOutput) ToNetworkConfigResponsePtrOutput() NetworkConfigResponsePtrOutput {
-	return o.ToNetworkConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o NetworkConfigResponseOutput) ToNetworkConfigResponsePtrOutputWithContext(ctx context.Context) NetworkConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkConfigResponse) *NetworkConfigResponse {
-		return &v
-	}).(NetworkConfigResponsePtrOutput)
-}
-
 // Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
 func (o NetworkConfigResponseOutput) Consumers() ConsumerResponseArrayOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) []ConsumerResponse { return v.Consumers }).(ConsumerResponseArrayOutput)
-}
-
-type NetworkConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (NetworkConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkConfigResponse)(nil)).Elem()
-}
-
-func (o NetworkConfigResponsePtrOutput) ToNetworkConfigResponsePtrOutput() NetworkConfigResponsePtrOutput {
-	return o
-}
-
-func (o NetworkConfigResponsePtrOutput) ToNetworkConfigResponsePtrOutputWithContext(ctx context.Context) NetworkConfigResponsePtrOutput {
-	return o
-}
-
-func (o NetworkConfigResponsePtrOutput) Elem() NetworkConfigResponseOutput {
-	return o.ApplyT(func(v *NetworkConfigResponse) NetworkConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret NetworkConfigResponse
-		return ret
-	}).(NetworkConfigResponseOutput)
-}
-
-// Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
-func (o NetworkConfigResponsePtrOutput) Consumers() ConsumerResponseArrayOutput {
-	return o.ApplyT(func(v *NetworkConfigResponse) []ConsumerResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Consumers
-	}).(ConsumerResponseArrayOutput)
 }
 
 // The details of a metadata restore operation.
@@ -4379,70 +2784,6 @@ type RestoreResponse struct {
 	State string `pulumi:"state"`
 	// The type of restore.
 	Type string `pulumi:"type"`
-}
-
-// RestoreResponseInput is an input type that accepts RestoreResponseArgs and RestoreResponseOutput values.
-// You can construct a concrete instance of `RestoreResponseInput` via:
-//
-//          RestoreResponseArgs{...}
-type RestoreResponseInput interface {
-	pulumi.Input
-
-	ToRestoreResponseOutput() RestoreResponseOutput
-	ToRestoreResponseOutputWithContext(context.Context) RestoreResponseOutput
-}
-
-// The details of a metadata restore operation.
-type RestoreResponseArgs struct {
-	// The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}.
-	Backup pulumi.StringInput `pulumi:"backup"`
-	// The restore details containing the revision of the service to be restored to, in format of JSON.
-	Details pulumi.StringInput `pulumi:"details"`
-	// The time when the restore ended.
-	EndTime pulumi.StringInput `pulumi:"endTime"`
-	// The time when the restore started.
-	StartTime pulumi.StringInput `pulumi:"startTime"`
-	// The current state of the restore.
-	State pulumi.StringInput `pulumi:"state"`
-	// The type of restore.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (RestoreResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RestoreResponse)(nil)).Elem()
-}
-
-func (i RestoreResponseArgs) ToRestoreResponseOutput() RestoreResponseOutput {
-	return i.ToRestoreResponseOutputWithContext(context.Background())
-}
-
-func (i RestoreResponseArgs) ToRestoreResponseOutputWithContext(ctx context.Context) RestoreResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RestoreResponseOutput)
-}
-
-// RestoreResponseArrayInput is an input type that accepts RestoreResponseArray and RestoreResponseArrayOutput values.
-// You can construct a concrete instance of `RestoreResponseArrayInput` via:
-//
-//          RestoreResponseArray{ RestoreResponseArgs{...} }
-type RestoreResponseArrayInput interface {
-	pulumi.Input
-
-	ToRestoreResponseArrayOutput() RestoreResponseArrayOutput
-	ToRestoreResponseArrayOutputWithContext(context.Context) RestoreResponseArrayOutput
-}
-
-type RestoreResponseArray []RestoreResponseInput
-
-func (RestoreResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RestoreResponse)(nil)).Elem()
-}
-
-func (i RestoreResponseArray) ToRestoreResponseArrayOutput() RestoreResponseArrayOutput {
-	return i.ToRestoreResponseArrayOutputWithContext(context.Background())
-}
-
-func (i RestoreResponseArray) ToRestoreResponseArrayOutputWithContext(ctx context.Context) RestoreResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RestoreResponseArrayOutput)
 }
 
 // The details of a metadata restore operation.
@@ -4656,76 +2997,6 @@ type SecretResponse struct {
 	CloudSecret string `pulumi:"cloudSecret"`
 }
 
-// SecretResponseInput is an input type that accepts SecretResponseArgs and SecretResponseOutput values.
-// You can construct a concrete instance of `SecretResponseInput` via:
-//
-//          SecretResponseArgs{...}
-type SecretResponseInput interface {
-	pulumi.Input
-
-	ToSecretResponseOutput() SecretResponseOutput
-	ToSecretResponseOutputWithContext(context.Context) SecretResponseOutput
-}
-
-// A securely stored value.
-type SecretResponseArgs struct {
-	// The relative resource name of a Secret Manager secret version, in the following form:projects/{project_number}/secrets/{secret_id}/versions/{version_id}.
-	CloudSecret pulumi.StringInput `pulumi:"cloudSecret"`
-}
-
-func (SecretResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecretResponse)(nil)).Elem()
-}
-
-func (i SecretResponseArgs) ToSecretResponseOutput() SecretResponseOutput {
-	return i.ToSecretResponseOutputWithContext(context.Background())
-}
-
-func (i SecretResponseArgs) ToSecretResponseOutputWithContext(ctx context.Context) SecretResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretResponseOutput)
-}
-
-func (i SecretResponseArgs) ToSecretResponsePtrOutput() SecretResponsePtrOutput {
-	return i.ToSecretResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SecretResponseArgs) ToSecretResponsePtrOutputWithContext(ctx context.Context) SecretResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretResponseOutput).ToSecretResponsePtrOutputWithContext(ctx)
-}
-
-// SecretResponsePtrInput is an input type that accepts SecretResponseArgs, SecretResponsePtr and SecretResponsePtrOutput values.
-// You can construct a concrete instance of `SecretResponsePtrInput` via:
-//
-//          SecretResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SecretResponsePtrInput interface {
-	pulumi.Input
-
-	ToSecretResponsePtrOutput() SecretResponsePtrOutput
-	ToSecretResponsePtrOutputWithContext(context.Context) SecretResponsePtrOutput
-}
-
-type secretResponsePtrType SecretResponseArgs
-
-func SecretResponsePtr(v *SecretResponseArgs) SecretResponsePtrInput {
-	return (*secretResponsePtrType)(v)
-}
-
-func (*secretResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecretResponse)(nil)).Elem()
-}
-
-func (i *secretResponsePtrType) ToSecretResponsePtrOutput() SecretResponsePtrOutput {
-	return i.ToSecretResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *secretResponsePtrType) ToSecretResponsePtrOutputWithContext(ctx context.Context) SecretResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretResponsePtrOutput)
-}
-
 // A securely stored value.
 type SecretResponseOutput struct{ *pulumi.OutputState }
 
@@ -4741,53 +3012,9 @@ func (o SecretResponseOutput) ToSecretResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o SecretResponseOutput) ToSecretResponsePtrOutput() SecretResponsePtrOutput {
-	return o.ToSecretResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SecretResponseOutput) ToSecretResponsePtrOutputWithContext(ctx context.Context) SecretResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretResponse) *SecretResponse {
-		return &v
-	}).(SecretResponsePtrOutput)
-}
-
 // The relative resource name of a Secret Manager secret version, in the following form:projects/{project_number}/secrets/{secret_id}/versions/{version_id}.
 func (o SecretResponseOutput) CloudSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretResponse) string { return v.CloudSecret }).(pulumi.StringOutput)
-}
-
-type SecretResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SecretResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecretResponse)(nil)).Elem()
-}
-
-func (o SecretResponsePtrOutput) ToSecretResponsePtrOutput() SecretResponsePtrOutput {
-	return o
-}
-
-func (o SecretResponsePtrOutput) ToSecretResponsePtrOutputWithContext(ctx context.Context) SecretResponsePtrOutput {
-	return o
-}
-
-func (o SecretResponsePtrOutput) Elem() SecretResponseOutput {
-	return o.ApplyT(func(v *SecretResponse) SecretResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SecretResponse
-		return ret
-	}).(SecretResponseOutput)
-}
-
-// The relative resource name of a Secret Manager secret version, in the following form:projects/{project_number}/secrets/{secret_id}/versions/{version_id}.
-func (o SecretResponsePtrOutput) CloudSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecretResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CloudSecret
-	}).(pulumi.StringPtrOutput)
 }
 
 // A managed metastore service that serves metadata queries.
@@ -4832,112 +3059,6 @@ type ServiceResponse struct {
 	UpdateTime string `pulumi:"updateTime"`
 }
 
-// ServiceResponseInput is an input type that accepts ServiceResponseArgs and ServiceResponseOutput values.
-// You can construct a concrete instance of `ServiceResponseInput` via:
-//
-//          ServiceResponseArgs{...}
-type ServiceResponseInput interface {
-	pulumi.Input
-
-	ToServiceResponseOutput() ServiceResponseOutput
-	ToServiceResponseOutputWithContext(context.Context) ServiceResponseOutput
-}
-
-// A managed metastore service that serves metadata queries.
-type ServiceResponseArgs struct {
-	// A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
-	ArtifactGcsUri pulumi.StringInput `pulumi:"artifactGcsUri"`
-	// The time when the metastore service was created.
-	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
-	EncryptionConfig EncryptionConfigResponseInput `pulumi:"encryptionConfig"`
-	// The URI of the endpoint used to access the metastore service.
-	EndpointUri pulumi.StringInput `pulumi:"endpointUri"`
-	// Configuration information specific to running Hive metastore software as the metastore service.
-	HiveMetastoreConfig HiveMetastoreConfigResponseInput `pulumi:"hiveMetastoreConfig"`
-	// User-defined labels for the metastore service.
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
-	MaintenanceWindow MaintenanceWindowResponseInput `pulumi:"maintenanceWindow"`
-	// The setting that defines how metastore metadata should be integrated with external services and systems.
-	MetadataIntegration MetadataIntegrationResponseInput `pulumi:"metadataIntegration"`
-	// The metadata management activities of the metastore service.
-	MetadataManagementActivity MetadataManagementActivityResponseInput `pulumi:"metadataManagementActivity"`
-	// Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
-	Network pulumi.StringInput `pulumi:"network"`
-	// Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
-	NetworkConfig NetworkConfigResponseInput `pulumi:"networkConfig"`
-	// The TCP port at which the metastore service is reached. Default: 9083.
-	Port pulumi.IntInput `pulumi:"port"`
-	// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
-	ReleaseChannel pulumi.StringInput `pulumi:"releaseChannel"`
-	// The current state of the metastore service.
-	State pulumi.StringInput `pulumi:"state"`
-	// Additional information about the current state of the metastore service, if available.
-	StateMessage pulumi.StringInput `pulumi:"stateMessage"`
-	// The tier of the service.
-	Tier pulumi.StringInput `pulumi:"tier"`
-	// The globally unique resource identifier of the metastore service.
-	Uid pulumi.StringInput `pulumi:"uid"`
-	// The time when the metastore service was last updated.
-	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
-}
-
-func (ServiceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceResponse)(nil)).Elem()
-}
-
-func (i ServiceResponseArgs) ToServiceResponseOutput() ServiceResponseOutput {
-	return i.ToServiceResponseOutputWithContext(context.Background())
-}
-
-func (i ServiceResponseArgs) ToServiceResponseOutputWithContext(ctx context.Context) ServiceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceResponseOutput)
-}
-
-func (i ServiceResponseArgs) ToServiceResponsePtrOutput() ServiceResponsePtrOutput {
-	return i.ToServiceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ServiceResponseArgs) ToServiceResponsePtrOutputWithContext(ctx context.Context) ServiceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceResponseOutput).ToServiceResponsePtrOutputWithContext(ctx)
-}
-
-// ServiceResponsePtrInput is an input type that accepts ServiceResponseArgs, ServiceResponsePtr and ServiceResponsePtrOutput values.
-// You can construct a concrete instance of `ServiceResponsePtrInput` via:
-//
-//          ServiceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ServiceResponsePtrInput interface {
-	pulumi.Input
-
-	ToServiceResponsePtrOutput() ServiceResponsePtrOutput
-	ToServiceResponsePtrOutputWithContext(context.Context) ServiceResponsePtrOutput
-}
-
-type serviceResponsePtrType ServiceResponseArgs
-
-func ServiceResponsePtr(v *ServiceResponseArgs) ServiceResponsePtrInput {
-	return (*serviceResponsePtrType)(v)
-}
-
-func (*serviceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceResponse)(nil)).Elem()
-}
-
-func (i *serviceResponsePtrType) ToServiceResponsePtrOutput() ServiceResponsePtrOutput {
-	return i.ToServiceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *serviceResponsePtrType) ToServiceResponsePtrOutputWithContext(ctx context.Context) ServiceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceResponsePtrOutput)
-}
-
 // A managed metastore service that serves metadata queries.
 type ServiceResponseOutput struct{ *pulumi.OutputState }
 
@@ -4951,16 +3072,6 @@ func (o ServiceResponseOutput) ToServiceResponseOutput() ServiceResponseOutput {
 
 func (o ServiceResponseOutput) ToServiceResponseOutputWithContext(ctx context.Context) ServiceResponseOutput {
 	return o
-}
-
-func (o ServiceResponseOutput) ToServiceResponsePtrOutput() ServiceResponsePtrOutput {
-	return o.ToServiceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ServiceResponseOutput) ToServiceResponsePtrOutputWithContext(ctx context.Context) ServiceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceResponse) *ServiceResponse {
-		return &v
-	}).(ServiceResponsePtrOutput)
 }
 
 // A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
@@ -5058,288 +3169,37 @@ func (o ServiceResponseOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-type ServiceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ServiceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceResponse)(nil)).Elem()
-}
-
-func (o ServiceResponsePtrOutput) ToServiceResponsePtrOutput() ServiceResponsePtrOutput {
-	return o
-}
-
-func (o ServiceResponsePtrOutput) ToServiceResponsePtrOutputWithContext(ctx context.Context) ServiceResponsePtrOutput {
-	return o
-}
-
-func (o ServiceResponsePtrOutput) Elem() ServiceResponseOutput {
-	return o.ApplyT(func(v *ServiceResponse) ServiceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ServiceResponse
-		return ret
-	}).(ServiceResponseOutput)
-}
-
-// A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
-func (o ServiceResponsePtrOutput) ArtifactGcsUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ArtifactGcsUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// The time when the metastore service was created.
-func (o ServiceResponsePtrOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CreateTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
-func (o ServiceResponsePtrOutput) EncryptionConfig() EncryptionConfigResponsePtrOutput {
-	return o.ApplyT(func(v *ServiceResponse) *EncryptionConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.EncryptionConfig
-	}).(EncryptionConfigResponsePtrOutput)
-}
-
-// The URI of the endpoint used to access the metastore service.
-func (o ServiceResponsePtrOutput) EndpointUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EndpointUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// Configuration information specific to running Hive metastore software as the metastore service.
-func (o ServiceResponsePtrOutput) HiveMetastoreConfig() HiveMetastoreConfigResponsePtrOutput {
-	return o.ApplyT(func(v *ServiceResponse) *HiveMetastoreConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.HiveMetastoreConfig
-	}).(HiveMetastoreConfigResponsePtrOutput)
-}
-
-// User-defined labels for the metastore service.
-func (o ServiceResponsePtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ServiceResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Labels
-	}).(pulumi.StringMapOutput)
-}
-
-// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
-func (o ServiceResponsePtrOutput) MaintenanceWindow() MaintenanceWindowResponsePtrOutput {
-	return o.ApplyT(func(v *ServiceResponse) *MaintenanceWindowResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.MaintenanceWindow
-	}).(MaintenanceWindowResponsePtrOutput)
-}
-
-// The setting that defines how metastore metadata should be integrated with external services and systems.
-func (o ServiceResponsePtrOutput) MetadataIntegration() MetadataIntegrationResponsePtrOutput {
-	return o.ApplyT(func(v *ServiceResponse) *MetadataIntegrationResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.MetadataIntegration
-	}).(MetadataIntegrationResponsePtrOutput)
-}
-
-// The metadata management activities of the metastore service.
-func (o ServiceResponsePtrOutput) MetadataManagementActivity() MetadataManagementActivityResponsePtrOutput {
-	return o.ApplyT(func(v *ServiceResponse) *MetadataManagementActivityResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.MetadataManagementActivity
-	}).(MetadataManagementActivityResponsePtrOutput)
-}
-
-// Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
-func (o ServiceResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
-func (o ServiceResponsePtrOutput) Network() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Network
-	}).(pulumi.StringPtrOutput)
-}
-
-// Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
-func (o ServiceResponsePtrOutput) NetworkConfig() NetworkConfigResponsePtrOutput {
-	return o.ApplyT(func(v *ServiceResponse) *NetworkConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.NetworkConfig
-	}).(NetworkConfigResponsePtrOutput)
-}
-
-// The TCP port at which the metastore service is reached. Default: 9083.
-func (o ServiceResponsePtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Port
-	}).(pulumi.IntPtrOutput)
-}
-
-// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
-func (o ServiceResponsePtrOutput) ReleaseChannel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ReleaseChannel
-	}).(pulumi.StringPtrOutput)
-}
-
-// The current state of the metastore service.
-func (o ServiceResponsePtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.State
-	}).(pulumi.StringPtrOutput)
-}
-
-// Additional information about the current state of the metastore service, if available.
-func (o ServiceResponsePtrOutput) StateMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StateMessage
-	}).(pulumi.StringPtrOutput)
-}
-
-// The tier of the service.
-func (o ServiceResponsePtrOutput) Tier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Tier
-	}).(pulumi.StringPtrOutput)
-}
-
-// The globally unique resource identifier of the metastore service.
-func (o ServiceResponsePtrOutput) Uid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Uid
-	}).(pulumi.StringPtrOutput)
-}
-
-// The time when the metastore service was last updated.
-func (o ServiceResponsePtrOutput) UpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UpdateTime
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseInput)(nil)).Elem(), AuditConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseArrayInput)(nil)).Elem(), AuditConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseInput)(nil)).Elem(), AuditLogConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseArrayInput)(nil)).Elem(), AuditLogConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerInput)(nil)).Elem(), ConsumerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerArrayInput)(nil)).Elem(), ConsumerArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerResponseInput)(nil)).Elem(), ConsumerResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerResponseArrayInput)(nil)).Elem(), ConsumerResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataCatalogConfigInput)(nil)).Elem(), DataCatalogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataCatalogConfigPtrInput)(nil)).Elem(), DataCatalogConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DataCatalogConfigResponseInput)(nil)).Elem(), DataCatalogConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DataCatalogConfigResponsePtrInput)(nil)).Elem(), DataCatalogConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDumpInput)(nil)).Elem(), DatabaseDumpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDumpPtrInput)(nil)).Elem(), DatabaseDumpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDumpResponseInput)(nil)).Elem(), DatabaseDumpResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDumpResponsePtrInput)(nil)).Elem(), DatabaseDumpResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataplexConfigInput)(nil)).Elem(), DataplexConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataplexConfigPtrInput)(nil)).Elem(), DataplexConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DataplexConfigResponseInput)(nil)).Elem(), DataplexConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DataplexConfigResponsePtrInput)(nil)).Elem(), DataplexConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigInput)(nil)).Elem(), EncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigPtrInput)(nil)).Elem(), EncryptionConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigResponseInput)(nil)).Elem(), EncryptionConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigResponsePtrInput)(nil)).Elem(), EncryptionConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HiveMetastoreConfigInput)(nil)).Elem(), HiveMetastoreConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HiveMetastoreConfigPtrInput)(nil)).Elem(), HiveMetastoreConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HiveMetastoreConfigResponseInput)(nil)).Elem(), HiveMetastoreConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HiveMetastoreConfigResponsePtrInput)(nil)).Elem(), HiveMetastoreConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KerberosConfigInput)(nil)).Elem(), KerberosConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KerberosConfigPtrInput)(nil)).Elem(), KerberosConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KerberosConfigResponseInput)(nil)).Elem(), KerberosConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KerberosConfigResponsePtrInput)(nil)).Elem(), KerberosConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowInput)(nil)).Elem(), MaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowPtrInput)(nil)).Elem(), MaintenanceWindowArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowResponseInput)(nil)).Elem(), MaintenanceWindowResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowResponsePtrInput)(nil)).Elem(), MaintenanceWindowResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MetadataExportResponseInput)(nil)).Elem(), MetadataExportResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MetadataExportResponseArrayInput)(nil)).Elem(), MetadataExportResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataIntegrationInput)(nil)).Elem(), MetadataIntegrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataIntegrationPtrInput)(nil)).Elem(), MetadataIntegrationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MetadataIntegrationResponseInput)(nil)).Elem(), MetadataIntegrationResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MetadataIntegrationResponsePtrInput)(nil)).Elem(), MetadataIntegrationResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MetadataManagementActivityResponseInput)(nil)).Elem(), MetadataManagementActivityResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MetadataManagementActivityResponsePtrInput)(nil)).Elem(), MetadataManagementActivityResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigInput)(nil)).Elem(), NetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigPtrInput)(nil)).Elem(), NetworkConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigResponseInput)(nil)).Elem(), NetworkConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigResponsePtrInput)(nil)).Elem(), NetworkConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RestoreResponseInput)(nil)).Elem(), RestoreResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RestoreResponseArrayInput)(nil)).Elem(), RestoreResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretInput)(nil)).Elem(), SecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretPtrInput)(nil)).Elem(), SecretArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecretResponseInput)(nil)).Elem(), SecretResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecretResponsePtrInput)(nil)).Elem(), SecretResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServiceResponseInput)(nil)).Elem(), ServiceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServiceResponsePtrInput)(nil)).Elem(), ServiceResponseArgs{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -5359,52 +3219,40 @@ func init() {
 	pulumi.RegisterOutputType(DataCatalogConfigOutput{})
 	pulumi.RegisterOutputType(DataCatalogConfigPtrOutput{})
 	pulumi.RegisterOutputType(DataCatalogConfigResponseOutput{})
-	pulumi.RegisterOutputType(DataCatalogConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseDumpOutput{})
 	pulumi.RegisterOutputType(DatabaseDumpPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseDumpResponseOutput{})
-	pulumi.RegisterOutputType(DatabaseDumpResponsePtrOutput{})
 	pulumi.RegisterOutputType(DataplexConfigOutput{})
 	pulumi.RegisterOutputType(DataplexConfigPtrOutput{})
 	pulumi.RegisterOutputType(DataplexConfigResponseOutput{})
-	pulumi.RegisterOutputType(DataplexConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigResponseOutput{})
-	pulumi.RegisterOutputType(EncryptionConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
 	pulumi.RegisterOutputType(HiveMetastoreConfigOutput{})
 	pulumi.RegisterOutputType(HiveMetastoreConfigPtrOutput{})
 	pulumi.RegisterOutputType(HiveMetastoreConfigResponseOutput{})
-	pulumi.RegisterOutputType(HiveMetastoreConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(KerberosConfigOutput{})
 	pulumi.RegisterOutputType(KerberosConfigPtrOutput{})
 	pulumi.RegisterOutputType(KerberosConfigResponseOutput{})
-	pulumi.RegisterOutputType(KerberosConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowPtrOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowResponseOutput{})
-	pulumi.RegisterOutputType(MaintenanceWindowResponsePtrOutput{})
 	pulumi.RegisterOutputType(MetadataExportResponseOutput{})
 	pulumi.RegisterOutputType(MetadataExportResponseArrayOutput{})
 	pulumi.RegisterOutputType(MetadataIntegrationOutput{})
 	pulumi.RegisterOutputType(MetadataIntegrationPtrOutput{})
 	pulumi.RegisterOutputType(MetadataIntegrationResponseOutput{})
-	pulumi.RegisterOutputType(MetadataIntegrationResponsePtrOutput{})
 	pulumi.RegisterOutputType(MetadataManagementActivityResponseOutput{})
-	pulumi.RegisterOutputType(MetadataManagementActivityResponsePtrOutput{})
 	pulumi.RegisterOutputType(NetworkConfigOutput{})
 	pulumi.RegisterOutputType(NetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(NetworkConfigResponseOutput{})
-	pulumi.RegisterOutputType(NetworkConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(RestoreResponseOutput{})
 	pulumi.RegisterOutputType(RestoreResponseArrayOutput{})
 	pulumi.RegisterOutputType(SecretOutput{})
 	pulumi.RegisterOutputType(SecretPtrOutput{})
 	pulumi.RegisterOutputType(SecretResponseOutput{})
-	pulumi.RegisterOutputType(SecretResponsePtrOutput{})
 	pulumi.RegisterOutputType(ServiceResponseOutput{})
-	pulumi.RegisterOutputType(ServiceResponsePtrOutput{})
 }

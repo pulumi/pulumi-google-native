@@ -156,76 +156,6 @@ type AnnotationSourceResponse struct {
 	CloudHealthcareSource CloudHealthcareSourceResponse `pulumi:"cloudHealthcareSource"`
 }
 
-// AnnotationSourceResponseInput is an input type that accepts AnnotationSourceResponseArgs and AnnotationSourceResponseOutput values.
-// You can construct a concrete instance of `AnnotationSourceResponseInput` via:
-//
-//          AnnotationSourceResponseArgs{...}
-type AnnotationSourceResponseInput interface {
-	pulumi.Input
-
-	ToAnnotationSourceResponseOutput() AnnotationSourceResponseOutput
-	ToAnnotationSourceResponseOutputWithContext(context.Context) AnnotationSourceResponseOutput
-}
-
-// AnnotationSource holds the source information of the annotation.
-type AnnotationSourceResponseArgs struct {
-	// Cloud Healthcare API resource.
-	CloudHealthcareSource CloudHealthcareSourceResponseInput `pulumi:"cloudHealthcareSource"`
-}
-
-func (AnnotationSourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AnnotationSourceResponse)(nil)).Elem()
-}
-
-func (i AnnotationSourceResponseArgs) ToAnnotationSourceResponseOutput() AnnotationSourceResponseOutput {
-	return i.ToAnnotationSourceResponseOutputWithContext(context.Background())
-}
-
-func (i AnnotationSourceResponseArgs) ToAnnotationSourceResponseOutputWithContext(ctx context.Context) AnnotationSourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnnotationSourceResponseOutput)
-}
-
-func (i AnnotationSourceResponseArgs) ToAnnotationSourceResponsePtrOutput() AnnotationSourceResponsePtrOutput {
-	return i.ToAnnotationSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i AnnotationSourceResponseArgs) ToAnnotationSourceResponsePtrOutputWithContext(ctx context.Context) AnnotationSourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnnotationSourceResponseOutput).ToAnnotationSourceResponsePtrOutputWithContext(ctx)
-}
-
-// AnnotationSourceResponsePtrInput is an input type that accepts AnnotationSourceResponseArgs, AnnotationSourceResponsePtr and AnnotationSourceResponsePtrOutput values.
-// You can construct a concrete instance of `AnnotationSourceResponsePtrInput` via:
-//
-//          AnnotationSourceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type AnnotationSourceResponsePtrInput interface {
-	pulumi.Input
-
-	ToAnnotationSourceResponsePtrOutput() AnnotationSourceResponsePtrOutput
-	ToAnnotationSourceResponsePtrOutputWithContext(context.Context) AnnotationSourceResponsePtrOutput
-}
-
-type annotationSourceResponsePtrType AnnotationSourceResponseArgs
-
-func AnnotationSourceResponsePtr(v *AnnotationSourceResponseArgs) AnnotationSourceResponsePtrInput {
-	return (*annotationSourceResponsePtrType)(v)
-}
-
-func (*annotationSourceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AnnotationSourceResponse)(nil)).Elem()
-}
-
-func (i *annotationSourceResponsePtrType) ToAnnotationSourceResponsePtrOutput() AnnotationSourceResponsePtrOutput {
-	return i.ToAnnotationSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *annotationSourceResponsePtrType) ToAnnotationSourceResponsePtrOutputWithContext(ctx context.Context) AnnotationSourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnnotationSourceResponsePtrOutput)
-}
-
 // AnnotationSource holds the source information of the annotation.
 type AnnotationSourceResponseOutput struct{ *pulumi.OutputState }
 
@@ -241,53 +171,9 @@ func (o AnnotationSourceResponseOutput) ToAnnotationSourceResponseOutputWithCont
 	return o
 }
 
-func (o AnnotationSourceResponseOutput) ToAnnotationSourceResponsePtrOutput() AnnotationSourceResponsePtrOutput {
-	return o.ToAnnotationSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o AnnotationSourceResponseOutput) ToAnnotationSourceResponsePtrOutputWithContext(ctx context.Context) AnnotationSourceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AnnotationSourceResponse) *AnnotationSourceResponse {
-		return &v
-	}).(AnnotationSourceResponsePtrOutput)
-}
-
 // Cloud Healthcare API resource.
 func (o AnnotationSourceResponseOutput) CloudHealthcareSource() CloudHealthcareSourceResponseOutput {
 	return o.ApplyT(func(v AnnotationSourceResponse) CloudHealthcareSourceResponse { return v.CloudHealthcareSource }).(CloudHealthcareSourceResponseOutput)
-}
-
-type AnnotationSourceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AnnotationSourceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AnnotationSourceResponse)(nil)).Elem()
-}
-
-func (o AnnotationSourceResponsePtrOutput) ToAnnotationSourceResponsePtrOutput() AnnotationSourceResponsePtrOutput {
-	return o
-}
-
-func (o AnnotationSourceResponsePtrOutput) ToAnnotationSourceResponsePtrOutputWithContext(ctx context.Context) AnnotationSourceResponsePtrOutput {
-	return o
-}
-
-func (o AnnotationSourceResponsePtrOutput) Elem() AnnotationSourceResponseOutput {
-	return o.ApplyT(func(v *AnnotationSourceResponse) AnnotationSourceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AnnotationSourceResponse
-		return ret
-	}).(AnnotationSourceResponseOutput)
-}
-
-// Cloud Healthcare API resource.
-func (o AnnotationSourceResponsePtrOutput) CloudHealthcareSource() CloudHealthcareSourceResponsePtrOutput {
-	return o.ApplyT(func(v *AnnotationSourceResponse) *CloudHealthcareSourceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.CloudHealthcareSource
-	}).(CloudHealthcareSourceResponsePtrOutput)
 }
 
 // An attribute value for a Consent or User data mapping. Each Attribute must have a corresponding AttributeDefinition in the consent store that defines the default and allowed values.
@@ -405,62 +291,6 @@ type AttributeResponse struct {
 	AttributeDefinitionId string `pulumi:"attributeDefinitionId"`
 	// The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values.
 	Values []string `pulumi:"values"`
-}
-
-// AttributeResponseInput is an input type that accepts AttributeResponseArgs and AttributeResponseOutput values.
-// You can construct a concrete instance of `AttributeResponseInput` via:
-//
-//          AttributeResponseArgs{...}
-type AttributeResponseInput interface {
-	pulumi.Input
-
-	ToAttributeResponseOutput() AttributeResponseOutput
-	ToAttributeResponseOutputWithContext(context.Context) AttributeResponseOutput
-}
-
-// An attribute value for a Consent or User data mapping. Each Attribute must have a corresponding AttributeDefinition in the consent store that defines the default and allowed values.
-type AttributeResponseArgs struct {
-	// Indicates the name of an attribute defined in the consent store.
-	AttributeDefinitionId pulumi.StringInput `pulumi:"attributeDefinitionId"`
-	// The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (AttributeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AttributeResponse)(nil)).Elem()
-}
-
-func (i AttributeResponseArgs) ToAttributeResponseOutput() AttributeResponseOutput {
-	return i.ToAttributeResponseOutputWithContext(context.Background())
-}
-
-func (i AttributeResponseArgs) ToAttributeResponseOutputWithContext(ctx context.Context) AttributeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AttributeResponseOutput)
-}
-
-// AttributeResponseArrayInput is an input type that accepts AttributeResponseArray and AttributeResponseArrayOutput values.
-// You can construct a concrete instance of `AttributeResponseArrayInput` via:
-//
-//          AttributeResponseArray{ AttributeResponseArgs{...} }
-type AttributeResponseArrayInput interface {
-	pulumi.Input
-
-	ToAttributeResponseArrayOutput() AttributeResponseArrayOutput
-	ToAttributeResponseArrayOutputWithContext(context.Context) AttributeResponseArrayOutput
-}
-
-type AttributeResponseArray []AttributeResponseInput
-
-func (AttributeResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AttributeResponse)(nil)).Elem()
-}
-
-func (i AttributeResponseArray) ToAttributeResponseArrayOutput() AttributeResponseArrayOutput {
-	return i.ToAttributeResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AttributeResponseArray) ToAttributeResponseArrayOutputWithContext(ctx context.Context) AttributeResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AttributeResponseArrayOutput)
 }
 
 // An attribute value for a Consent or User data mapping. Each Attribute must have a corresponding AttributeDefinition in the consent store that defines the default and allowed values.
@@ -625,62 +455,6 @@ type AuditConfigResponse struct {
 	Service string `pulumi:"service"`
 }
 
-// AuditConfigResponseInput is an input type that accepts AuditConfigResponseArgs and AuditConfigResponseOutput values.
-// You can construct a concrete instance of `AuditConfigResponseInput` via:
-//
-//          AuditConfigResponseArgs{...}
-type AuditConfigResponseInput interface {
-	pulumi.Input
-
-	ToAuditConfigResponseOutput() AuditConfigResponseOutput
-	ToAuditConfigResponseOutputWithContext(context.Context) AuditConfigResponseOutput
-}
-
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
-type AuditConfigResponseArgs struct {
-	// The configuration for logging of each type of permission.
-	AuditLogConfigs AuditLogConfigResponseArrayInput `pulumi:"auditLogConfigs"`
-	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-	Service pulumi.StringInput `pulumi:"service"`
-}
-
-func (AuditConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
-}
-
-func (i AuditConfigResponseArgs) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
-	return i.ToAuditConfigResponseOutputWithContext(context.Background())
-}
-
-func (i AuditConfigResponseArgs) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseOutput)
-}
-
-// AuditConfigResponseArrayInput is an input type that accepts AuditConfigResponseArray and AuditConfigResponseArrayOutput values.
-// You can construct a concrete instance of `AuditConfigResponseArrayInput` via:
-//
-//          AuditConfigResponseArray{ AuditConfigResponseArgs{...} }
-type AuditConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput
-	ToAuditConfigResponseArrayOutputWithContext(context.Context) AuditConfigResponseArrayOutput
-}
-
-type AuditConfigResponseArray []AuditConfigResponseInput
-
-func (AuditConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
-}
-
-func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
-	return i.ToAuditConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseArrayOutput)
-}
-
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
 type AuditConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -841,62 +615,6 @@ type AuditLogConfigResponse struct {
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
 	LogType string `pulumi:"logType"`
-}
-
-// AuditLogConfigResponseInput is an input type that accepts AuditLogConfigResponseArgs and AuditLogConfigResponseOutput values.
-// You can construct a concrete instance of `AuditLogConfigResponseInput` via:
-//
-//          AuditLogConfigResponseArgs{...}
-type AuditLogConfigResponseInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput
-	ToAuditLogConfigResponseOutputWithContext(context.Context) AuditLogConfigResponseOutput
-}
-
-// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
-type AuditLogConfigResponseArgs struct {
-	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
-	// The log type that this config enables.
-	LogType pulumi.StringInput `pulumi:"logType"`
-}
-
-func (AuditLogConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
-	return i.ToAuditLogConfigResponseOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseOutput)
-}
-
-// AuditLogConfigResponseArrayInput is an input type that accepts AuditLogConfigResponseArray and AuditLogConfigResponseArrayOutput values.
-// You can construct a concrete instance of `AuditLogConfigResponseArrayInput` via:
-//
-//          AuditLogConfigResponseArray{ AuditLogConfigResponseArgs{...} }
-type AuditLogConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput
-	ToAuditLogConfigResponseArrayOutputWithContext(context.Context) AuditLogConfigResponseArrayOutput
-}
-
-type AuditLogConfigResponseArray []AuditLogConfigResponseInput
-
-func (AuditLogConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
-	return i.ToAuditLogConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseArrayOutput)
 }
 
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
@@ -1072,64 +790,6 @@ type BindingResponse struct {
 	Role string `pulumi:"role"`
 }
 
-// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
-// You can construct a concrete instance of `BindingResponseInput` via:
-//
-//          BindingResponseArgs{...}
-type BindingResponseInput interface {
-	pulumi.Input
-
-	ToBindingResponseOutput() BindingResponseOutput
-	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
-}
-
-// Associates `members`, or principals, with a `role`.
-type BindingResponseArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
-	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-	Role pulumi.StringInput `pulumi:"role"`
-}
-
-func (BindingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
-	return i.ToBindingResponseOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
-}
-
-// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
-// You can construct a concrete instance of `BindingResponseArrayInput` via:
-//
-//          BindingResponseArray{ BindingResponseArgs{...} }
-type BindingResponseArrayInput interface {
-	pulumi.Input
-
-	ToBindingResponseArrayOutput() BindingResponseArrayOutput
-	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
-}
-
-type BindingResponseArray []BindingResponseInput
-
-func (BindingResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
-	return i.ToBindingResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
-}
-
 // Associates `members`, or principals, with a `role`.
 type BindingResponseOutput struct{ *pulumi.OutputState }
 
@@ -1295,62 +955,6 @@ type BoundingPolyResponse struct {
 	Label string `pulumi:"label"`
 	// List of the vertices of this polygon.
 	Vertices []VertexResponse `pulumi:"vertices"`
-}
-
-// BoundingPolyResponseInput is an input type that accepts BoundingPolyResponseArgs and BoundingPolyResponseOutput values.
-// You can construct a concrete instance of `BoundingPolyResponseInput` via:
-//
-//          BoundingPolyResponseArgs{...}
-type BoundingPolyResponseInput interface {
-	pulumi.Input
-
-	ToBoundingPolyResponseOutput() BoundingPolyResponseOutput
-	ToBoundingPolyResponseOutputWithContext(context.Context) BoundingPolyResponseOutput
-}
-
-// A bounding polygon for the detected image annotation.
-type BoundingPolyResponseArgs struct {
-	// A description of this polygon.
-	Label pulumi.StringInput `pulumi:"label"`
-	// List of the vertices of this polygon.
-	Vertices VertexResponseArrayInput `pulumi:"vertices"`
-}
-
-func (BoundingPolyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BoundingPolyResponse)(nil)).Elem()
-}
-
-func (i BoundingPolyResponseArgs) ToBoundingPolyResponseOutput() BoundingPolyResponseOutput {
-	return i.ToBoundingPolyResponseOutputWithContext(context.Background())
-}
-
-func (i BoundingPolyResponseArgs) ToBoundingPolyResponseOutputWithContext(ctx context.Context) BoundingPolyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BoundingPolyResponseOutput)
-}
-
-// BoundingPolyResponseArrayInput is an input type that accepts BoundingPolyResponseArray and BoundingPolyResponseArrayOutput values.
-// You can construct a concrete instance of `BoundingPolyResponseArrayInput` via:
-//
-//          BoundingPolyResponseArray{ BoundingPolyResponseArgs{...} }
-type BoundingPolyResponseArrayInput interface {
-	pulumi.Input
-
-	ToBoundingPolyResponseArrayOutput() BoundingPolyResponseArrayOutput
-	ToBoundingPolyResponseArrayOutputWithContext(context.Context) BoundingPolyResponseArrayOutput
-}
-
-type BoundingPolyResponseArray []BoundingPolyResponseInput
-
-func (BoundingPolyResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BoundingPolyResponse)(nil)).Elem()
-}
-
-func (i BoundingPolyResponseArray) ToBoundingPolyResponseArrayOutput() BoundingPolyResponseArrayOutput {
-	return i.ToBoundingPolyResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BoundingPolyResponseArray) ToBoundingPolyResponseArrayOutputWithContext(ctx context.Context) BoundingPolyResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BoundingPolyResponseArrayOutput)
 }
 
 // A bounding polygon for the detected image annotation.
@@ -1544,76 +1148,6 @@ type CloudHealthcareSourceResponse struct {
 	Name string `pulumi:"name"`
 }
 
-// CloudHealthcareSourceResponseInput is an input type that accepts CloudHealthcareSourceResponseArgs and CloudHealthcareSourceResponseOutput values.
-// You can construct a concrete instance of `CloudHealthcareSourceResponseInput` via:
-//
-//          CloudHealthcareSourceResponseArgs{...}
-type CloudHealthcareSourceResponseInput interface {
-	pulumi.Input
-
-	ToCloudHealthcareSourceResponseOutput() CloudHealthcareSourceResponseOutput
-	ToCloudHealthcareSourceResponseOutputWithContext(context.Context) CloudHealthcareSourceResponseOutput
-}
-
-// Cloud Healthcare API resource.
-type CloudHealthcareSourceResponseArgs struct {
-	// Full path of a Cloud Healthcare API resource.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (CloudHealthcareSourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudHealthcareSourceResponse)(nil)).Elem()
-}
-
-func (i CloudHealthcareSourceResponseArgs) ToCloudHealthcareSourceResponseOutput() CloudHealthcareSourceResponseOutput {
-	return i.ToCloudHealthcareSourceResponseOutputWithContext(context.Background())
-}
-
-func (i CloudHealthcareSourceResponseArgs) ToCloudHealthcareSourceResponseOutputWithContext(ctx context.Context) CloudHealthcareSourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudHealthcareSourceResponseOutput)
-}
-
-func (i CloudHealthcareSourceResponseArgs) ToCloudHealthcareSourceResponsePtrOutput() CloudHealthcareSourceResponsePtrOutput {
-	return i.ToCloudHealthcareSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CloudHealthcareSourceResponseArgs) ToCloudHealthcareSourceResponsePtrOutputWithContext(ctx context.Context) CloudHealthcareSourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudHealthcareSourceResponseOutput).ToCloudHealthcareSourceResponsePtrOutputWithContext(ctx)
-}
-
-// CloudHealthcareSourceResponsePtrInput is an input type that accepts CloudHealthcareSourceResponseArgs, CloudHealthcareSourceResponsePtr and CloudHealthcareSourceResponsePtrOutput values.
-// You can construct a concrete instance of `CloudHealthcareSourceResponsePtrInput` via:
-//
-//          CloudHealthcareSourceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CloudHealthcareSourceResponsePtrInput interface {
-	pulumi.Input
-
-	ToCloudHealthcareSourceResponsePtrOutput() CloudHealthcareSourceResponsePtrOutput
-	ToCloudHealthcareSourceResponsePtrOutputWithContext(context.Context) CloudHealthcareSourceResponsePtrOutput
-}
-
-type cloudHealthcareSourceResponsePtrType CloudHealthcareSourceResponseArgs
-
-func CloudHealthcareSourceResponsePtr(v *CloudHealthcareSourceResponseArgs) CloudHealthcareSourceResponsePtrInput {
-	return (*cloudHealthcareSourceResponsePtrType)(v)
-}
-
-func (*cloudHealthcareSourceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudHealthcareSourceResponse)(nil)).Elem()
-}
-
-func (i *cloudHealthcareSourceResponsePtrType) ToCloudHealthcareSourceResponsePtrOutput() CloudHealthcareSourceResponsePtrOutput {
-	return i.ToCloudHealthcareSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *cloudHealthcareSourceResponsePtrType) ToCloudHealthcareSourceResponsePtrOutputWithContext(ctx context.Context) CloudHealthcareSourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudHealthcareSourceResponsePtrOutput)
-}
-
 // Cloud Healthcare API resource.
 type CloudHealthcareSourceResponseOutput struct{ *pulumi.OutputState }
 
@@ -1629,53 +1163,9 @@ func (o CloudHealthcareSourceResponseOutput) ToCloudHealthcareSourceResponseOutp
 	return o
 }
 
-func (o CloudHealthcareSourceResponseOutput) ToCloudHealthcareSourceResponsePtrOutput() CloudHealthcareSourceResponsePtrOutput {
-	return o.ToCloudHealthcareSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CloudHealthcareSourceResponseOutput) ToCloudHealthcareSourceResponsePtrOutputWithContext(ctx context.Context) CloudHealthcareSourceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudHealthcareSourceResponse) *CloudHealthcareSourceResponse {
-		return &v
-	}).(CloudHealthcareSourceResponsePtrOutput)
-}
-
 // Full path of a Cloud Healthcare API resource.
 func (o CloudHealthcareSourceResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudHealthcareSourceResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type CloudHealthcareSourceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CloudHealthcareSourceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudHealthcareSourceResponse)(nil)).Elem()
-}
-
-func (o CloudHealthcareSourceResponsePtrOutput) ToCloudHealthcareSourceResponsePtrOutput() CloudHealthcareSourceResponsePtrOutput {
-	return o
-}
-
-func (o CloudHealthcareSourceResponsePtrOutput) ToCloudHealthcareSourceResponsePtrOutputWithContext(ctx context.Context) CloudHealthcareSourceResponsePtrOutput {
-	return o
-}
-
-func (o CloudHealthcareSourceResponsePtrOutput) Elem() CloudHealthcareSourceResponseOutput {
-	return o.ApplyT(func(v *CloudHealthcareSourceResponse) CloudHealthcareSourceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CloudHealthcareSourceResponse
-		return ret
-	}).(CloudHealthcareSourceResponseOutput)
-}
-
-// Full path of a Cloud Healthcare API resource.
-func (o CloudHealthcareSourceResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudHealthcareSourceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -1887,41 +1377,6 @@ type ExprResponse struct {
 	Title string `pulumi:"title"`
 }
 
-// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
-// You can construct a concrete instance of `ExprResponseInput` via:
-//
-//          ExprResponseArgs{...}
-type ExprResponseInput interface {
-	pulumi.Input
-
-	ToExprResponseOutput() ExprResponseOutput
-	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type ExprResponseArgs struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-	Location pulumi.StringInput `pulumi:"location"`
-	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (ExprResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
-}
-
-func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
-	return i.ToExprResponseOutputWithContext(context.Background())
-}
-
-func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprResponseOutput struct{ *pulumi.OutputState }
 
@@ -2107,68 +1562,6 @@ type FieldResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// FieldResponseInput is an input type that accepts FieldResponseArgs and FieldResponseOutput values.
-// You can construct a concrete instance of `FieldResponseInput` via:
-//
-//          FieldResponseArgs{...}
-type FieldResponseInput interface {
-	pulumi.Input
-
-	ToFieldResponseOutput() FieldResponseOutput
-	ToFieldResponseOutputWithContext(context.Context) FieldResponseOutput
-}
-
-// A (sub) field of a type.
-type FieldResponseArgs struct {
-	// The maximum number of times this field can be repeated. 0 or -1 means unbounded.
-	MaxOccurs pulumi.IntInput `pulumi:"maxOccurs"`
-	// The minimum number of times this field must be present/repeated.
-	MinOccurs pulumi.IntInput `pulumi:"minOccurs"`
-	// The name of the field. For example, "PID-1" or just "1".
-	Name pulumi.StringInput `pulumi:"name"`
-	// The HL7v2 table this field refers to. For example, PID-15 (Patient's Primary Language) usually refers to table "0296".
-	Table pulumi.StringInput `pulumi:"table"`
-	// The type of this field. A Type with this name must be defined in an Hl7TypesConfig.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (FieldResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FieldResponse)(nil)).Elem()
-}
-
-func (i FieldResponseArgs) ToFieldResponseOutput() FieldResponseOutput {
-	return i.ToFieldResponseOutputWithContext(context.Background())
-}
-
-func (i FieldResponseArgs) ToFieldResponseOutputWithContext(ctx context.Context) FieldResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FieldResponseOutput)
-}
-
-// FieldResponseArrayInput is an input type that accepts FieldResponseArray and FieldResponseArrayOutput values.
-// You can construct a concrete instance of `FieldResponseArrayInput` via:
-//
-//          FieldResponseArray{ FieldResponseArgs{...} }
-type FieldResponseArrayInput interface {
-	pulumi.Input
-
-	ToFieldResponseArrayOutput() FieldResponseArrayOutput
-	ToFieldResponseArrayOutputWithContext(context.Context) FieldResponseArrayOutput
-}
-
-type FieldResponseArray []FieldResponseInput
-
-func (FieldResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FieldResponse)(nil)).Elem()
-}
-
-func (i FieldResponseArray) ToFieldResponseArrayOutput() FieldResponseArrayOutput {
-	return i.ToFieldResponseArrayOutputWithContext(context.Background())
-}
-
-func (i FieldResponseArray) ToFieldResponseArrayOutputWithContext(ctx context.Context) FieldResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FieldResponseArrayOutput)
-}
-
 // A (sub) field of a type.
 type FieldResponseOutput struct{ *pulumi.OutputState }
 
@@ -2344,62 +1737,6 @@ type GoogleCloudHealthcareV1beta1ConsentPolicyResponse struct {
 	AuthorizationRule ExprResponse `pulumi:"authorizationRule"`
 	// The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user.
 	ResourceAttributes []AttributeResponse `pulumi:"resourceAttributes"`
-}
-
-// GoogleCloudHealthcareV1beta1ConsentPolicyResponseInput is an input type that accepts GoogleCloudHealthcareV1beta1ConsentPolicyResponseArgs and GoogleCloudHealthcareV1beta1ConsentPolicyResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudHealthcareV1beta1ConsentPolicyResponseInput` via:
-//
-//          GoogleCloudHealthcareV1beta1ConsentPolicyResponseArgs{...}
-type GoogleCloudHealthcareV1beta1ConsentPolicyResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudHealthcareV1beta1ConsentPolicyResponseOutput() GoogleCloudHealthcareV1beta1ConsentPolicyResponseOutput
-	ToGoogleCloudHealthcareV1beta1ConsentPolicyResponseOutputWithContext(context.Context) GoogleCloudHealthcareV1beta1ConsentPolicyResponseOutput
-}
-
-// Represents a user's consent in terms of the resources that can be accessed and under what conditions.
-type GoogleCloudHealthcareV1beta1ConsentPolicyResponseArgs struct {
-	// The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
-	AuthorizationRule ExprResponseInput `pulumi:"authorizationRule"`
-	// The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user.
-	ResourceAttributes AttributeResponseArrayInput `pulumi:"resourceAttributes"`
-}
-
-func (GoogleCloudHealthcareV1beta1ConsentPolicyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudHealthcareV1beta1ConsentPolicyResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudHealthcareV1beta1ConsentPolicyResponseArgs) ToGoogleCloudHealthcareV1beta1ConsentPolicyResponseOutput() GoogleCloudHealthcareV1beta1ConsentPolicyResponseOutput {
-	return i.ToGoogleCloudHealthcareV1beta1ConsentPolicyResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudHealthcareV1beta1ConsentPolicyResponseArgs) ToGoogleCloudHealthcareV1beta1ConsentPolicyResponseOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1beta1ConsentPolicyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudHealthcareV1beta1ConsentPolicyResponseOutput)
-}
-
-// GoogleCloudHealthcareV1beta1ConsentPolicyResponseArrayInput is an input type that accepts GoogleCloudHealthcareV1beta1ConsentPolicyResponseArray and GoogleCloudHealthcareV1beta1ConsentPolicyResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudHealthcareV1beta1ConsentPolicyResponseArrayInput` via:
-//
-//          GoogleCloudHealthcareV1beta1ConsentPolicyResponseArray{ GoogleCloudHealthcareV1beta1ConsentPolicyResponseArgs{...} }
-type GoogleCloudHealthcareV1beta1ConsentPolicyResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudHealthcareV1beta1ConsentPolicyResponseArrayOutput() GoogleCloudHealthcareV1beta1ConsentPolicyResponseArrayOutput
-	ToGoogleCloudHealthcareV1beta1ConsentPolicyResponseArrayOutputWithContext(context.Context) GoogleCloudHealthcareV1beta1ConsentPolicyResponseArrayOutput
-}
-
-type GoogleCloudHealthcareV1beta1ConsentPolicyResponseArray []GoogleCloudHealthcareV1beta1ConsentPolicyResponseInput
-
-func (GoogleCloudHealthcareV1beta1ConsentPolicyResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudHealthcareV1beta1ConsentPolicyResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudHealthcareV1beta1ConsentPolicyResponseArray) ToGoogleCloudHealthcareV1beta1ConsentPolicyResponseArrayOutput() GoogleCloudHealthcareV1beta1ConsentPolicyResponseArrayOutput {
-	return i.ToGoogleCloudHealthcareV1beta1ConsentPolicyResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudHealthcareV1beta1ConsentPolicyResponseArray) ToGoogleCloudHealthcareV1beta1ConsentPolicyResponseArrayOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1beta1ConsentPolicyResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudHealthcareV1beta1ConsentPolicyResponseArrayOutput)
 }
 
 // Represents a user's consent in terms of the resources that can be accessed and under what conditions.
@@ -2639,39 +1976,6 @@ type GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponse struct {
 	WriteDisposition string `pulumi:"writeDisposition"`
 }
 
-// GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponseInput is an input type that accepts GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponseArgs and GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponseInput` via:
-//
-//          GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponseArgs{...}
-type GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponseOutput() GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponseOutput
-	ToGoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponseOutputWithContext(context.Context) GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponseOutput
-}
-
-// The BigQuery table where the server writes output.
-type GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponseArgs struct {
-	// Use `write_disposition` instead. If `write_disposition` is specified, this parameter is ignored. force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
-	Force pulumi.BoolInput `pulumi:"force"`
-	// BigQuery URI to a table, up to 2000 characters long, in the format `bq://projectId.bqDatasetId.tableId`
-	TableUri pulumi.StringInput `pulumi:"tableUri"`
-	// Determines whether the existing table in the destination is to be overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
-	WriteDisposition pulumi.StringInput `pulumi:"writeDisposition"`
-}
-
-func (GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponseArgs) ToGoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponseOutput() GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponseOutput {
-	return i.ToGoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponseArgs) ToGoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponseOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponseOutput)
-}
-
 // The BigQuery table where the server writes output.
 type GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponseOutput struct{ *pulumi.OutputState }
 
@@ -2808,60 +2112,6 @@ func (o GoogleCloudHealthcareV1beta1DicomStreamConfigArrayOutput) Index(i pulumi
 type GoogleCloudHealthcareV1beta1DicomStreamConfigResponse struct {
 	// Results are appended to this table. The server creates a new table in the given BigQuery dataset if the specified table does not exist. To enable the Cloud Healthcare API to write to your BigQuery table, you must give the Cloud Healthcare API service account the bigquery.dataEditor role. The service account is: `service-{PROJECT_NUMBER}@gcp-sa-healthcare.iam.gserviceaccount.com`. The PROJECT_NUMBER identifies the project that the DICOM store resides in. To get the project number, go to the Cloud Console Dashboard. It is recommended to not have a custom schema in the destination table which could conflict with the schema created by the Cloud Healthcare API. Instance deletions are not applied to the destination table. The destination's table schema will be automatically updated in case a new instance's data is incompatible with the current schema. The schema should not be updated manually as this can cause incompatibilies that cannot be resolved automatically. One resolution in this case is to delete the incompatible table and let the server recreate one, though the newly created table only contains data after the table recreation. BigQuery imposes a 1 MB limit on streaming insert row size, therefore any instance that generates more than 1 MB of BigQuery data will not be streamed. If an instance cannot be streamed to BigQuery, errors will be logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
 	BigqueryDestination GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponse `pulumi:"bigqueryDestination"`
-}
-
-// GoogleCloudHealthcareV1beta1DicomStreamConfigResponseInput is an input type that accepts GoogleCloudHealthcareV1beta1DicomStreamConfigResponseArgs and GoogleCloudHealthcareV1beta1DicomStreamConfigResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudHealthcareV1beta1DicomStreamConfigResponseInput` via:
-//
-//          GoogleCloudHealthcareV1beta1DicomStreamConfigResponseArgs{...}
-type GoogleCloudHealthcareV1beta1DicomStreamConfigResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudHealthcareV1beta1DicomStreamConfigResponseOutput() GoogleCloudHealthcareV1beta1DicomStreamConfigResponseOutput
-	ToGoogleCloudHealthcareV1beta1DicomStreamConfigResponseOutputWithContext(context.Context) GoogleCloudHealthcareV1beta1DicomStreamConfigResponseOutput
-}
-
-// StreamConfig specifies configuration for a streaming DICOM export.
-type GoogleCloudHealthcareV1beta1DicomStreamConfigResponseArgs struct {
-	// Results are appended to this table. The server creates a new table in the given BigQuery dataset if the specified table does not exist. To enable the Cloud Healthcare API to write to your BigQuery table, you must give the Cloud Healthcare API service account the bigquery.dataEditor role. The service account is: `service-{PROJECT_NUMBER}@gcp-sa-healthcare.iam.gserviceaccount.com`. The PROJECT_NUMBER identifies the project that the DICOM store resides in. To get the project number, go to the Cloud Console Dashboard. It is recommended to not have a custom schema in the destination table which could conflict with the schema created by the Cloud Healthcare API. Instance deletions are not applied to the destination table. The destination's table schema will be automatically updated in case a new instance's data is incompatible with the current schema. The schema should not be updated manually as this can cause incompatibilies that cannot be resolved automatically. One resolution in this case is to delete the incompatible table and let the server recreate one, though the newly created table only contains data after the table recreation. BigQuery imposes a 1 MB limit on streaming insert row size, therefore any instance that generates more than 1 MB of BigQuery data will not be streamed. If an instance cannot be streamed to BigQuery, errors will be logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
-	BigqueryDestination GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponseInput `pulumi:"bigqueryDestination"`
-}
-
-func (GoogleCloudHealthcareV1beta1DicomStreamConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudHealthcareV1beta1DicomStreamConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudHealthcareV1beta1DicomStreamConfigResponseArgs) ToGoogleCloudHealthcareV1beta1DicomStreamConfigResponseOutput() GoogleCloudHealthcareV1beta1DicomStreamConfigResponseOutput {
-	return i.ToGoogleCloudHealthcareV1beta1DicomStreamConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudHealthcareV1beta1DicomStreamConfigResponseArgs) ToGoogleCloudHealthcareV1beta1DicomStreamConfigResponseOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1beta1DicomStreamConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudHealthcareV1beta1DicomStreamConfigResponseOutput)
-}
-
-// GoogleCloudHealthcareV1beta1DicomStreamConfigResponseArrayInput is an input type that accepts GoogleCloudHealthcareV1beta1DicomStreamConfigResponseArray and GoogleCloudHealthcareV1beta1DicomStreamConfigResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudHealthcareV1beta1DicomStreamConfigResponseArrayInput` via:
-//
-//          GoogleCloudHealthcareV1beta1DicomStreamConfigResponseArray{ GoogleCloudHealthcareV1beta1DicomStreamConfigResponseArgs{...} }
-type GoogleCloudHealthcareV1beta1DicomStreamConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudHealthcareV1beta1DicomStreamConfigResponseArrayOutput() GoogleCloudHealthcareV1beta1DicomStreamConfigResponseArrayOutput
-	ToGoogleCloudHealthcareV1beta1DicomStreamConfigResponseArrayOutputWithContext(context.Context) GoogleCloudHealthcareV1beta1DicomStreamConfigResponseArrayOutput
-}
-
-type GoogleCloudHealthcareV1beta1DicomStreamConfigResponseArray []GoogleCloudHealthcareV1beta1DicomStreamConfigResponseInput
-
-func (GoogleCloudHealthcareV1beta1DicomStreamConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudHealthcareV1beta1DicomStreamConfigResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudHealthcareV1beta1DicomStreamConfigResponseArray) ToGoogleCloudHealthcareV1beta1DicomStreamConfigResponseArrayOutput() GoogleCloudHealthcareV1beta1DicomStreamConfigResponseArrayOutput {
-	return i.ToGoogleCloudHealthcareV1beta1DicomStreamConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudHealthcareV1beta1DicomStreamConfigResponseArray) ToGoogleCloudHealthcareV1beta1DicomStreamConfigResponseArrayOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1beta1DicomStreamConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudHealthcareV1beta1DicomStreamConfigResponseArrayOutput)
 }
 
 // StreamConfig specifies configuration for a streaming DICOM export.
@@ -3117,41 +2367,6 @@ type GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponse struct {
 	WriteDisposition string `pulumi:"writeDisposition"`
 }
 
-// GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponseInput is an input type that accepts GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponseArgs and GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponseInput` via:
-//
-//          GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponseArgs{...}
-type GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponseOutput() GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponseOutput
-	ToGoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponseOutputWithContext(context.Context) GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponseOutput
-}
-
-// The configuration for exporting to BigQuery.
-type GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponseArgs struct {
-	// BigQuery URI to an existing dataset, up to 2000 characters long, in the format `bq://projectId.bqDatasetId`.
-	DatasetUri pulumi.StringInput `pulumi:"datasetUri"`
-	// Use `write_disposition` instead. If `write_disposition` is specified, this parameter is ignored. force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
-	Force pulumi.BoolInput `pulumi:"force"`
-	// The configuration for the exported BigQuery schema.
-	SchemaConfig SchemaConfigResponseInput `pulumi:"schemaConfig"`
-	// Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
-	WriteDisposition pulumi.StringInput `pulumi:"writeDisposition"`
-}
-
-func (GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponseArgs) ToGoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponseOutput() GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponseOutput {
-	return i.ToGoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponseArgs) ToGoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponseOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponseOutput)
-}
-
 // The configuration for exporting to BigQuery.
 type GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponseOutput struct{ *pulumi.OutputState }
 
@@ -3304,62 +2519,6 @@ type Hl7SchemaConfigResponse struct {
 	MessageSchemaConfigs map[string]string `pulumi:"messageSchemaConfigs"`
 	// Each VersionSource is tested and only if they all match is the schema used for the message.
 	Version []VersionSourceResponse `pulumi:"version"`
-}
-
-// Hl7SchemaConfigResponseInput is an input type that accepts Hl7SchemaConfigResponseArgs and Hl7SchemaConfigResponseOutput values.
-// You can construct a concrete instance of `Hl7SchemaConfigResponseInput` via:
-//
-//          Hl7SchemaConfigResponseArgs{...}
-type Hl7SchemaConfigResponseInput interface {
-	pulumi.Input
-
-	ToHl7SchemaConfigResponseOutput() Hl7SchemaConfigResponseOutput
-	ToHl7SchemaConfigResponseOutputWithContext(context.Context) Hl7SchemaConfigResponseOutput
-}
-
-// Root config message for HL7v2 schema. This contains a schema structure of groups and segments, and filters that determine which messages to apply the schema structure to.
-type Hl7SchemaConfigResponseArgs struct {
-	// Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
-	MessageSchemaConfigs pulumi.StringMapInput `pulumi:"messageSchemaConfigs"`
-	// Each VersionSource is tested and only if they all match is the schema used for the message.
-	Version VersionSourceResponseArrayInput `pulumi:"version"`
-}
-
-func (Hl7SchemaConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Hl7SchemaConfigResponse)(nil)).Elem()
-}
-
-func (i Hl7SchemaConfigResponseArgs) ToHl7SchemaConfigResponseOutput() Hl7SchemaConfigResponseOutput {
-	return i.ToHl7SchemaConfigResponseOutputWithContext(context.Background())
-}
-
-func (i Hl7SchemaConfigResponseArgs) ToHl7SchemaConfigResponseOutputWithContext(ctx context.Context) Hl7SchemaConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Hl7SchemaConfigResponseOutput)
-}
-
-// Hl7SchemaConfigResponseArrayInput is an input type that accepts Hl7SchemaConfigResponseArray and Hl7SchemaConfigResponseArrayOutput values.
-// You can construct a concrete instance of `Hl7SchemaConfigResponseArrayInput` via:
-//
-//          Hl7SchemaConfigResponseArray{ Hl7SchemaConfigResponseArgs{...} }
-type Hl7SchemaConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToHl7SchemaConfigResponseArrayOutput() Hl7SchemaConfigResponseArrayOutput
-	ToHl7SchemaConfigResponseArrayOutputWithContext(context.Context) Hl7SchemaConfigResponseArrayOutput
-}
-
-type Hl7SchemaConfigResponseArray []Hl7SchemaConfigResponseInput
-
-func (Hl7SchemaConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Hl7SchemaConfigResponse)(nil)).Elem()
-}
-
-func (i Hl7SchemaConfigResponseArray) ToHl7SchemaConfigResponseArrayOutput() Hl7SchemaConfigResponseArrayOutput {
-	return i.ToHl7SchemaConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i Hl7SchemaConfigResponseArray) ToHl7SchemaConfigResponseArrayOutputWithContext(ctx context.Context) Hl7SchemaConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Hl7SchemaConfigResponseArrayOutput)
 }
 
 // Root config message for HL7v2 schema. This contains a schema structure of groups and segments, and filters that determine which messages to apply the schema structure to.
@@ -3524,62 +2683,6 @@ type Hl7TypesConfigResponse struct {
 	Version []VersionSourceResponse `pulumi:"version"`
 }
 
-// Hl7TypesConfigResponseInput is an input type that accepts Hl7TypesConfigResponseArgs and Hl7TypesConfigResponseOutput values.
-// You can construct a concrete instance of `Hl7TypesConfigResponseInput` via:
-//
-//          Hl7TypesConfigResponseArgs{...}
-type Hl7TypesConfigResponseInput interface {
-	pulumi.Input
-
-	ToHl7TypesConfigResponseOutput() Hl7TypesConfigResponseOutput
-	ToHl7TypesConfigResponseOutputWithContext(context.Context) Hl7TypesConfigResponseOutput
-}
-
-// Root config for HL7v2 datatype definitions for a specific HL7v2 version.
-type Hl7TypesConfigResponseArgs struct {
-	// The HL7v2 type definitions.
-	Type TypeResponseArrayInput `pulumi:"type"`
-	// The version selectors that this config applies to. A message must match ALL version sources to apply.
-	Version VersionSourceResponseArrayInput `pulumi:"version"`
-}
-
-func (Hl7TypesConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Hl7TypesConfigResponse)(nil)).Elem()
-}
-
-func (i Hl7TypesConfigResponseArgs) ToHl7TypesConfigResponseOutput() Hl7TypesConfigResponseOutput {
-	return i.ToHl7TypesConfigResponseOutputWithContext(context.Background())
-}
-
-func (i Hl7TypesConfigResponseArgs) ToHl7TypesConfigResponseOutputWithContext(ctx context.Context) Hl7TypesConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Hl7TypesConfigResponseOutput)
-}
-
-// Hl7TypesConfigResponseArrayInput is an input type that accepts Hl7TypesConfigResponseArray and Hl7TypesConfigResponseArrayOutput values.
-// You can construct a concrete instance of `Hl7TypesConfigResponseArrayInput` via:
-//
-//          Hl7TypesConfigResponseArray{ Hl7TypesConfigResponseArgs{...} }
-type Hl7TypesConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToHl7TypesConfigResponseArrayOutput() Hl7TypesConfigResponseArrayOutput
-	ToHl7TypesConfigResponseArrayOutputWithContext(context.Context) Hl7TypesConfigResponseArrayOutput
-}
-
-type Hl7TypesConfigResponseArray []Hl7TypesConfigResponseInput
-
-func (Hl7TypesConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Hl7TypesConfigResponse)(nil)).Elem()
-}
-
-func (i Hl7TypesConfigResponseArray) ToHl7TypesConfigResponseArrayOutput() Hl7TypesConfigResponseArrayOutput {
-	return i.ToHl7TypesConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i Hl7TypesConfigResponseArray) ToHl7TypesConfigResponseArrayOutputWithContext(ctx context.Context) Hl7TypesConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Hl7TypesConfigResponseArrayOutput)
-}
-
 // Root config for HL7v2 datatype definitions for a specific HL7v2 version.
 type Hl7TypesConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -3740,62 +2843,6 @@ type Hl7V2NotificationConfigResponse struct {
 	Filter string `pulumi:"filter"`
 	// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. The notification is a `PubsubMessage` with the following fields: * `PubsubMessage.Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of this notification. It is guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is the time when the message was published. Note that notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. Cloud Healthcare API service account must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging).
 	PubsubTopic string `pulumi:"pubsubTopic"`
-}
-
-// Hl7V2NotificationConfigResponseInput is an input type that accepts Hl7V2NotificationConfigResponseArgs and Hl7V2NotificationConfigResponseOutput values.
-// You can construct a concrete instance of `Hl7V2NotificationConfigResponseInput` via:
-//
-//          Hl7V2NotificationConfigResponseArgs{...}
-type Hl7V2NotificationConfigResponseInput interface {
-	pulumi.Input
-
-	ToHl7V2NotificationConfigResponseOutput() Hl7V2NotificationConfigResponseOutput
-	ToHl7V2NotificationConfigResponseOutputWithContext(context.Context) Hl7V2NotificationConfigResponseOutput
-}
-
-// Specifies where and whether to send notifications upon changes to a data store.
-type Hl7V2NotificationConfigResponseArgs struct {
-	// Restricts notifications sent for messages matching a filter. If this is empty, all messages are matched. The following syntax is available: * A string field value can be written as text inside quotation marks, for example `"query text"`. The only valid relational operation for text fields is equality (`=`), where text is searched within the field, rather than having the field be equal to the text. For example, `"Comment = great"` returns messages with `great` in the comment field. * A number field value can be written as an integer, a decimal, or an exponential. The valid relational operators for number fields are the equality operator (`=`), along with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * A date field value must be written in `yyyy-mm-dd` form. Fields with date and time use the RFC3339 time format. Leading zeros are required for one-digit months and days. The valid relational operators for date fields are the equality operator (`=`) , along with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * Multiple field query expressions can be combined in one query by adding `AND` or `OR` operators between the expressions. If a boolean operator appears within a quoted string, it is not treated as special, it's just another part of the character string to be matched. You can prepend the `NOT` operator to an expression to negate it. Fields/functions available for filtering are: * `message_type`, from the MSH-9.1 field. For example, `NOT message_type = "ADT"`. * `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent in the dataset's time_zone, from the MSH-7 segment. For example, `send_date < "2017-01-02"`. * `send_time`, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from the MSH-7 segment. For example, `send_time < "2017-01-02T00:00:00-05:00"`. * `create_time`, the timestamp when the message was created in the HL7v2 store. Use the RFC3339 time format for comparisons. For example, `create_time < "2017-01-02T00:00:00-05:00"`. * `send_facility`, the care center that the message came from, from the MSH-4 segment. For example, `send_facility = "ABC"`. * `PatientId(value, type)`, which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, `PatientId("123456", "MRN")`. * `labels.x`, a string value of the label with key `x` as set using the Message.labels map. For example, `labels."priority"="high"`. The operator `:*` can be used to assert the existence of a label. For example, `labels."priority":*`.
-	Filter pulumi.StringInput `pulumi:"filter"`
-	// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. The notification is a `PubsubMessage` with the following fields: * `PubsubMessage.Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of this notification. It is guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is the time when the message was published. Note that notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. Cloud Healthcare API service account must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging).
-	PubsubTopic pulumi.StringInput `pulumi:"pubsubTopic"`
-}
-
-func (Hl7V2NotificationConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Hl7V2NotificationConfigResponse)(nil)).Elem()
-}
-
-func (i Hl7V2NotificationConfigResponseArgs) ToHl7V2NotificationConfigResponseOutput() Hl7V2NotificationConfigResponseOutput {
-	return i.ToHl7V2NotificationConfigResponseOutputWithContext(context.Background())
-}
-
-func (i Hl7V2NotificationConfigResponseArgs) ToHl7V2NotificationConfigResponseOutputWithContext(ctx context.Context) Hl7V2NotificationConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Hl7V2NotificationConfigResponseOutput)
-}
-
-// Hl7V2NotificationConfigResponseArrayInput is an input type that accepts Hl7V2NotificationConfigResponseArray and Hl7V2NotificationConfigResponseArrayOutput values.
-// You can construct a concrete instance of `Hl7V2NotificationConfigResponseArrayInput` via:
-//
-//          Hl7V2NotificationConfigResponseArray{ Hl7V2NotificationConfigResponseArgs{...} }
-type Hl7V2NotificationConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToHl7V2NotificationConfigResponseArrayOutput() Hl7V2NotificationConfigResponseArrayOutput
-	ToHl7V2NotificationConfigResponseArrayOutputWithContext(context.Context) Hl7V2NotificationConfigResponseArrayOutput
-}
-
-type Hl7V2NotificationConfigResponseArray []Hl7V2NotificationConfigResponseInput
-
-func (Hl7V2NotificationConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Hl7V2NotificationConfigResponse)(nil)).Elem()
-}
-
-func (i Hl7V2NotificationConfigResponseArray) ToHl7V2NotificationConfigResponseArrayOutput() Hl7V2NotificationConfigResponseArrayOutput {
-	return i.ToHl7V2NotificationConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i Hl7V2NotificationConfigResponseArray) ToHl7V2NotificationConfigResponseArrayOutputWithContext(ctx context.Context) Hl7V2NotificationConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Hl7V2NotificationConfigResponseArrayOutput)
 }
 
 // Specifies where and whether to send notifications upon changes to a data store.
@@ -4214,78 +3261,6 @@ type ImageAnnotationResponse struct {
 	FrameIndex int `pulumi:"frameIndex"`
 }
 
-// ImageAnnotationResponseInput is an input type that accepts ImageAnnotationResponseArgs and ImageAnnotationResponseOutput values.
-// You can construct a concrete instance of `ImageAnnotationResponseInput` via:
-//
-//          ImageAnnotationResponseArgs{...}
-type ImageAnnotationResponseInput interface {
-	pulumi.Input
-
-	ToImageAnnotationResponseOutput() ImageAnnotationResponseOutput
-	ToImageAnnotationResponseOutputWithContext(context.Context) ImageAnnotationResponseOutput
-}
-
-// Image annotation.
-type ImageAnnotationResponseArgs struct {
-	// The list of polygons outlining the sensitive regions in the image.
-	BoundingPolys BoundingPolyResponseArrayInput `pulumi:"boundingPolys"`
-	// 0-based index of the image frame. For example, an image frame in a DICOM instance.
-	FrameIndex pulumi.IntInput `pulumi:"frameIndex"`
-}
-
-func (ImageAnnotationResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageAnnotationResponse)(nil)).Elem()
-}
-
-func (i ImageAnnotationResponseArgs) ToImageAnnotationResponseOutput() ImageAnnotationResponseOutput {
-	return i.ToImageAnnotationResponseOutputWithContext(context.Background())
-}
-
-func (i ImageAnnotationResponseArgs) ToImageAnnotationResponseOutputWithContext(ctx context.Context) ImageAnnotationResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageAnnotationResponseOutput)
-}
-
-func (i ImageAnnotationResponseArgs) ToImageAnnotationResponsePtrOutput() ImageAnnotationResponsePtrOutput {
-	return i.ToImageAnnotationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ImageAnnotationResponseArgs) ToImageAnnotationResponsePtrOutputWithContext(ctx context.Context) ImageAnnotationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageAnnotationResponseOutput).ToImageAnnotationResponsePtrOutputWithContext(ctx)
-}
-
-// ImageAnnotationResponsePtrInput is an input type that accepts ImageAnnotationResponseArgs, ImageAnnotationResponsePtr and ImageAnnotationResponsePtrOutput values.
-// You can construct a concrete instance of `ImageAnnotationResponsePtrInput` via:
-//
-//          ImageAnnotationResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ImageAnnotationResponsePtrInput interface {
-	pulumi.Input
-
-	ToImageAnnotationResponsePtrOutput() ImageAnnotationResponsePtrOutput
-	ToImageAnnotationResponsePtrOutputWithContext(context.Context) ImageAnnotationResponsePtrOutput
-}
-
-type imageAnnotationResponsePtrType ImageAnnotationResponseArgs
-
-func ImageAnnotationResponsePtr(v *ImageAnnotationResponseArgs) ImageAnnotationResponsePtrInput {
-	return (*imageAnnotationResponsePtrType)(v)
-}
-
-func (*imageAnnotationResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ImageAnnotationResponse)(nil)).Elem()
-}
-
-func (i *imageAnnotationResponsePtrType) ToImageAnnotationResponsePtrOutput() ImageAnnotationResponsePtrOutput {
-	return i.ToImageAnnotationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *imageAnnotationResponsePtrType) ToImageAnnotationResponsePtrOutputWithContext(ctx context.Context) ImageAnnotationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageAnnotationResponsePtrOutput)
-}
-
 // Image annotation.
 type ImageAnnotationResponseOutput struct{ *pulumi.OutputState }
 
@@ -4301,16 +3276,6 @@ func (o ImageAnnotationResponseOutput) ToImageAnnotationResponseOutputWithContex
 	return o
 }
 
-func (o ImageAnnotationResponseOutput) ToImageAnnotationResponsePtrOutput() ImageAnnotationResponsePtrOutput {
-	return o.ToImageAnnotationResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ImageAnnotationResponseOutput) ToImageAnnotationResponsePtrOutputWithContext(ctx context.Context) ImageAnnotationResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageAnnotationResponse) *ImageAnnotationResponse {
-		return &v
-	}).(ImageAnnotationResponsePtrOutput)
-}
-
 // The list of polygons outlining the sensitive regions in the image.
 func (o ImageAnnotationResponseOutput) BoundingPolys() BoundingPolyResponseArrayOutput {
 	return o.ApplyT(func(v ImageAnnotationResponse) []BoundingPolyResponse { return v.BoundingPolys }).(BoundingPolyResponseArrayOutput)
@@ -4321,153 +3286,12 @@ func (o ImageAnnotationResponseOutput) FrameIndex() pulumi.IntOutput {
 	return o.ApplyT(func(v ImageAnnotationResponse) int { return v.FrameIndex }).(pulumi.IntOutput)
 }
 
-type ImageAnnotationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ImageAnnotationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ImageAnnotationResponse)(nil)).Elem()
-}
-
-func (o ImageAnnotationResponsePtrOutput) ToImageAnnotationResponsePtrOutput() ImageAnnotationResponsePtrOutput {
-	return o
-}
-
-func (o ImageAnnotationResponsePtrOutput) ToImageAnnotationResponsePtrOutputWithContext(ctx context.Context) ImageAnnotationResponsePtrOutput {
-	return o
-}
-
-func (o ImageAnnotationResponsePtrOutput) Elem() ImageAnnotationResponseOutput {
-	return o.ApplyT(func(v *ImageAnnotationResponse) ImageAnnotationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ImageAnnotationResponse
-		return ret
-	}).(ImageAnnotationResponseOutput)
-}
-
-// The list of polygons outlining the sensitive regions in the image.
-func (o ImageAnnotationResponsePtrOutput) BoundingPolys() BoundingPolyResponseArrayOutput {
-	return o.ApplyT(func(v *ImageAnnotationResponse) []BoundingPolyResponse {
-		if v == nil {
-			return nil
-		}
-		return v.BoundingPolys
-	}).(BoundingPolyResponseArrayOutput)
-}
-
-// 0-based index of the image frame. For example, an image frame in a DICOM instance.
-func (o ImageAnnotationResponsePtrOutput) FrameIndex() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ImageAnnotationResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.FrameIndex
-	}).(pulumi.IntPtrOutput)
-}
-
 // Raw bytes representing consent artifact content.
 type ImageResponse struct {
 	// Input only. Points to a Cloud Storage URI containing the consent artifact content. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The Cloud Healthcare API service account must have the `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage location. The consent artifact content at this URI is copied to a Cloud Storage location managed by the Cloud Healthcare API. Responses to fetching requests return the consent artifact content in raw_bytes.
 	GcsUri string `pulumi:"gcsUri"`
 	// Consent artifact content represented as a stream of bytes. This field is populated when returned in GetConsentArtifact response, but not included in CreateConsentArtifact and ListConsentArtifact response.
 	RawBytes string `pulumi:"rawBytes"`
-}
-
-// ImageResponseInput is an input type that accepts ImageResponseArgs and ImageResponseOutput values.
-// You can construct a concrete instance of `ImageResponseInput` via:
-//
-//          ImageResponseArgs{...}
-type ImageResponseInput interface {
-	pulumi.Input
-
-	ToImageResponseOutput() ImageResponseOutput
-	ToImageResponseOutputWithContext(context.Context) ImageResponseOutput
-}
-
-// Raw bytes representing consent artifact content.
-type ImageResponseArgs struct {
-	// Input only. Points to a Cloud Storage URI containing the consent artifact content. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The Cloud Healthcare API service account must have the `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage location. The consent artifact content at this URI is copied to a Cloud Storage location managed by the Cloud Healthcare API. Responses to fetching requests return the consent artifact content in raw_bytes.
-	GcsUri pulumi.StringInput `pulumi:"gcsUri"`
-	// Consent artifact content represented as a stream of bytes. This field is populated when returned in GetConsentArtifact response, but not included in CreateConsentArtifact and ListConsentArtifact response.
-	RawBytes pulumi.StringInput `pulumi:"rawBytes"`
-}
-
-func (ImageResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageResponse)(nil)).Elem()
-}
-
-func (i ImageResponseArgs) ToImageResponseOutput() ImageResponseOutput {
-	return i.ToImageResponseOutputWithContext(context.Background())
-}
-
-func (i ImageResponseArgs) ToImageResponseOutputWithContext(ctx context.Context) ImageResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageResponseOutput)
-}
-
-func (i ImageResponseArgs) ToImageResponsePtrOutput() ImageResponsePtrOutput {
-	return i.ToImageResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ImageResponseArgs) ToImageResponsePtrOutputWithContext(ctx context.Context) ImageResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageResponseOutput).ToImageResponsePtrOutputWithContext(ctx)
-}
-
-// ImageResponsePtrInput is an input type that accepts ImageResponseArgs, ImageResponsePtr and ImageResponsePtrOutput values.
-// You can construct a concrete instance of `ImageResponsePtrInput` via:
-//
-//          ImageResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ImageResponsePtrInput interface {
-	pulumi.Input
-
-	ToImageResponsePtrOutput() ImageResponsePtrOutput
-	ToImageResponsePtrOutputWithContext(context.Context) ImageResponsePtrOutput
-}
-
-type imageResponsePtrType ImageResponseArgs
-
-func ImageResponsePtr(v *ImageResponseArgs) ImageResponsePtrInput {
-	return (*imageResponsePtrType)(v)
-}
-
-func (*imageResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ImageResponse)(nil)).Elem()
-}
-
-func (i *imageResponsePtrType) ToImageResponsePtrOutput() ImageResponsePtrOutput {
-	return i.ToImageResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *imageResponsePtrType) ToImageResponsePtrOutputWithContext(ctx context.Context) ImageResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageResponsePtrOutput)
-}
-
-// ImageResponseArrayInput is an input type that accepts ImageResponseArray and ImageResponseArrayOutput values.
-// You can construct a concrete instance of `ImageResponseArrayInput` via:
-//
-//          ImageResponseArray{ ImageResponseArgs{...} }
-type ImageResponseArrayInput interface {
-	pulumi.Input
-
-	ToImageResponseArrayOutput() ImageResponseArrayOutput
-	ToImageResponseArrayOutputWithContext(context.Context) ImageResponseArrayOutput
-}
-
-type ImageResponseArray []ImageResponseInput
-
-func (ImageResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ImageResponse)(nil)).Elem()
-}
-
-func (i ImageResponseArray) ToImageResponseArrayOutput() ImageResponseArrayOutput {
-	return i.ToImageResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ImageResponseArray) ToImageResponseArrayOutputWithContext(ctx context.Context) ImageResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageResponseArrayOutput)
 }
 
 // Raw bytes representing consent artifact content.
@@ -4485,16 +3309,6 @@ func (o ImageResponseOutput) ToImageResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o ImageResponseOutput) ToImageResponsePtrOutput() ImageResponsePtrOutput {
-	return o.ToImageResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ImageResponseOutput) ToImageResponsePtrOutputWithContext(ctx context.Context) ImageResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageResponse) *ImageResponse {
-		return &v
-	}).(ImageResponsePtrOutput)
-}
-
 // Input only. Points to a Cloud Storage URI containing the consent artifact content. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The Cloud Healthcare API service account must have the `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage location. The consent artifact content at this URI is copied to a Cloud Storage location managed by the Cloud Healthcare API. Responses to fetching requests return the consent artifact content in raw_bytes.
 func (o ImageResponseOutput) GcsUri() pulumi.StringOutput {
 	return o.ApplyT(func(v ImageResponse) string { return v.GcsUri }).(pulumi.StringOutput)
@@ -4503,50 +3317,6 @@ func (o ImageResponseOutput) GcsUri() pulumi.StringOutput {
 // Consent artifact content represented as a stream of bytes. This field is populated when returned in GetConsentArtifact response, but not included in CreateConsentArtifact and ListConsentArtifact response.
 func (o ImageResponseOutput) RawBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v ImageResponse) string { return v.RawBytes }).(pulumi.StringOutput)
-}
-
-type ImageResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ImageResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ImageResponse)(nil)).Elem()
-}
-
-func (o ImageResponsePtrOutput) ToImageResponsePtrOutput() ImageResponsePtrOutput {
-	return o
-}
-
-func (o ImageResponsePtrOutput) ToImageResponsePtrOutputWithContext(ctx context.Context) ImageResponsePtrOutput {
-	return o
-}
-
-func (o ImageResponsePtrOutput) Elem() ImageResponseOutput {
-	return o.ApplyT(func(v *ImageResponse) ImageResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ImageResponse
-		return ret
-	}).(ImageResponseOutput)
-}
-
-// Input only. Points to a Cloud Storage URI containing the consent artifact content. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The Cloud Healthcare API service account must have the `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage location. The consent artifact content at this URI is copied to a Cloud Storage location managed by the Cloud Healthcare API. Responses to fetching requests return the consent artifact content in raw_bytes.
-func (o ImageResponsePtrOutput) GcsUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ImageResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.GcsUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// Consent artifact content represented as a stream of bytes. This field is populated when returned in GetConsentArtifact response, but not included in CreateConsentArtifact and ListConsentArtifact response.
-func (o ImageResponsePtrOutput) RawBytes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ImageResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RawBytes
-	}).(pulumi.StringPtrOutput)
 }
 
 type ImageResponseArrayOutput struct{ *pulumi.OutputState }
@@ -4736,78 +3506,6 @@ type NotificationConfigResponse struct {
 	SendForBulkImport bool `pulumi:"sendForBulkImport"`
 }
 
-// NotificationConfigResponseInput is an input type that accepts NotificationConfigResponseArgs and NotificationConfigResponseOutput values.
-// You can construct a concrete instance of `NotificationConfigResponseInput` via:
-//
-//          NotificationConfigResponseArgs{...}
-type NotificationConfigResponseInput interface {
-	pulumi.Input
-
-	ToNotificationConfigResponseOutput() NotificationConfigResponseOutput
-	ToNotificationConfigResponseOutputWithContext(context.Context) NotificationConfigResponseOutput
-}
-
-// Specifies where to send notifications upon changes to a data store.
-type NotificationConfigResponseArgs struct {
-	// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. PubsubMessage.Data contains the resource name. PubsubMessage.MessageId is the ID of this message. It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message was published. Notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. Cloud Healthcare API service account must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). If the number of errors exceeds a certain rate, some aren't submitted. Note that not all operations trigger notifications, see [Configuring Pub/Sub notifications](https://cloud.google.com/healthcare/docs/how-tos/pubsub) for specific details.
-	PubsubTopic pulumi.StringInput `pulumi:"pubsubTopic"`
-	// Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
-	SendForBulkImport pulumi.BoolInput `pulumi:"sendForBulkImport"`
-}
-
-func (NotificationConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NotificationConfigResponse)(nil)).Elem()
-}
-
-func (i NotificationConfigResponseArgs) ToNotificationConfigResponseOutput() NotificationConfigResponseOutput {
-	return i.ToNotificationConfigResponseOutputWithContext(context.Background())
-}
-
-func (i NotificationConfigResponseArgs) ToNotificationConfigResponseOutputWithContext(ctx context.Context) NotificationConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NotificationConfigResponseOutput)
-}
-
-func (i NotificationConfigResponseArgs) ToNotificationConfigResponsePtrOutput() NotificationConfigResponsePtrOutput {
-	return i.ToNotificationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i NotificationConfigResponseArgs) ToNotificationConfigResponsePtrOutputWithContext(ctx context.Context) NotificationConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NotificationConfigResponseOutput).ToNotificationConfigResponsePtrOutputWithContext(ctx)
-}
-
-// NotificationConfigResponsePtrInput is an input type that accepts NotificationConfigResponseArgs, NotificationConfigResponsePtr and NotificationConfigResponsePtrOutput values.
-// You can construct a concrete instance of `NotificationConfigResponsePtrInput` via:
-//
-//          NotificationConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type NotificationConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToNotificationConfigResponsePtrOutput() NotificationConfigResponsePtrOutput
-	ToNotificationConfigResponsePtrOutputWithContext(context.Context) NotificationConfigResponsePtrOutput
-}
-
-type notificationConfigResponsePtrType NotificationConfigResponseArgs
-
-func NotificationConfigResponsePtr(v *NotificationConfigResponseArgs) NotificationConfigResponsePtrInput {
-	return (*notificationConfigResponsePtrType)(v)
-}
-
-func (*notificationConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NotificationConfigResponse)(nil)).Elem()
-}
-
-func (i *notificationConfigResponsePtrType) ToNotificationConfigResponsePtrOutput() NotificationConfigResponsePtrOutput {
-	return i.ToNotificationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *notificationConfigResponsePtrType) ToNotificationConfigResponsePtrOutputWithContext(ctx context.Context) NotificationConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NotificationConfigResponsePtrOutput)
-}
-
 // Specifies where to send notifications upon changes to a data store.
 type NotificationConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -4823,16 +3521,6 @@ func (o NotificationConfigResponseOutput) ToNotificationConfigResponseOutputWith
 	return o
 }
 
-func (o NotificationConfigResponseOutput) ToNotificationConfigResponsePtrOutput() NotificationConfigResponsePtrOutput {
-	return o.ToNotificationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o NotificationConfigResponseOutput) ToNotificationConfigResponsePtrOutputWithContext(ctx context.Context) NotificationConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationConfigResponse) *NotificationConfigResponse {
-		return &v
-	}).(NotificationConfigResponsePtrOutput)
-}
-
 // The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. PubsubMessage.Data contains the resource name. PubsubMessage.MessageId is the ID of this message. It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message was published. Notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. Cloud Healthcare API service account must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). If the number of errors exceeds a certain rate, some aren't submitted. Note that not all operations trigger notifications, see [Configuring Pub/Sub notifications](https://cloud.google.com/healthcare/docs/how-tos/pubsub) for specific details.
 func (o NotificationConfigResponseOutput) PubsubTopic() pulumi.StringOutput {
 	return o.ApplyT(func(v NotificationConfigResponse) string { return v.PubsubTopic }).(pulumi.StringOutput)
@@ -4843,122 +3531,9 @@ func (o NotificationConfigResponseOutput) SendForBulkImport() pulumi.BoolOutput 
 	return o.ApplyT(func(v NotificationConfigResponse) bool { return v.SendForBulkImport }).(pulumi.BoolOutput)
 }
 
-type NotificationConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (NotificationConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NotificationConfigResponse)(nil)).Elem()
-}
-
-func (o NotificationConfigResponsePtrOutput) ToNotificationConfigResponsePtrOutput() NotificationConfigResponsePtrOutput {
-	return o
-}
-
-func (o NotificationConfigResponsePtrOutput) ToNotificationConfigResponsePtrOutputWithContext(ctx context.Context) NotificationConfigResponsePtrOutput {
-	return o
-}
-
-func (o NotificationConfigResponsePtrOutput) Elem() NotificationConfigResponseOutput {
-	return o.ApplyT(func(v *NotificationConfigResponse) NotificationConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret NotificationConfigResponse
-		return ret
-	}).(NotificationConfigResponseOutput)
-}
-
-// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. PubsubMessage.Data contains the resource name. PubsubMessage.MessageId is the ID of this message. It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message was published. Notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. Cloud Healthcare API service account must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). If the number of errors exceeds a certain rate, some aren't submitted. Note that not all operations trigger notifications, see [Configuring Pub/Sub notifications](https://cloud.google.com/healthcare/docs/how-tos/pubsub) for specific details.
-func (o NotificationConfigResponsePtrOutput) PubsubTopic() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NotificationConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PubsubTopic
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
-func (o NotificationConfigResponsePtrOutput) SendForBulkImport() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *NotificationConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.SendForBulkImport
-	}).(pulumi.BoolPtrOutput)
-}
-
 // The content of an HL7v2 message in a structured format.
 type ParsedDataResponse struct {
 	Segments []SegmentResponse `pulumi:"segments"`
-}
-
-// ParsedDataResponseInput is an input type that accepts ParsedDataResponseArgs and ParsedDataResponseOutput values.
-// You can construct a concrete instance of `ParsedDataResponseInput` via:
-//
-//          ParsedDataResponseArgs{...}
-type ParsedDataResponseInput interface {
-	pulumi.Input
-
-	ToParsedDataResponseOutput() ParsedDataResponseOutput
-	ToParsedDataResponseOutputWithContext(context.Context) ParsedDataResponseOutput
-}
-
-// The content of an HL7v2 message in a structured format.
-type ParsedDataResponseArgs struct {
-	Segments SegmentResponseArrayInput `pulumi:"segments"`
-}
-
-func (ParsedDataResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ParsedDataResponse)(nil)).Elem()
-}
-
-func (i ParsedDataResponseArgs) ToParsedDataResponseOutput() ParsedDataResponseOutput {
-	return i.ToParsedDataResponseOutputWithContext(context.Background())
-}
-
-func (i ParsedDataResponseArgs) ToParsedDataResponseOutputWithContext(ctx context.Context) ParsedDataResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ParsedDataResponseOutput)
-}
-
-func (i ParsedDataResponseArgs) ToParsedDataResponsePtrOutput() ParsedDataResponsePtrOutput {
-	return i.ToParsedDataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ParsedDataResponseArgs) ToParsedDataResponsePtrOutputWithContext(ctx context.Context) ParsedDataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ParsedDataResponseOutput).ToParsedDataResponsePtrOutputWithContext(ctx)
-}
-
-// ParsedDataResponsePtrInput is an input type that accepts ParsedDataResponseArgs, ParsedDataResponsePtr and ParsedDataResponsePtrOutput values.
-// You can construct a concrete instance of `ParsedDataResponsePtrInput` via:
-//
-//          ParsedDataResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ParsedDataResponsePtrInput interface {
-	pulumi.Input
-
-	ToParsedDataResponsePtrOutput() ParsedDataResponsePtrOutput
-	ToParsedDataResponsePtrOutputWithContext(context.Context) ParsedDataResponsePtrOutput
-}
-
-type parsedDataResponsePtrType ParsedDataResponseArgs
-
-func ParsedDataResponsePtr(v *ParsedDataResponseArgs) ParsedDataResponsePtrInput {
-	return (*parsedDataResponsePtrType)(v)
-}
-
-func (*parsedDataResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ParsedDataResponse)(nil)).Elem()
-}
-
-func (i *parsedDataResponsePtrType) ToParsedDataResponsePtrOutput() ParsedDataResponsePtrOutput {
-	return i.ToParsedDataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *parsedDataResponsePtrType) ToParsedDataResponsePtrOutputWithContext(ctx context.Context) ParsedDataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ParsedDataResponsePtrOutput)
 }
 
 // The content of an HL7v2 message in a structured format.
@@ -4976,51 +3551,8 @@ func (o ParsedDataResponseOutput) ToParsedDataResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o ParsedDataResponseOutput) ToParsedDataResponsePtrOutput() ParsedDataResponsePtrOutput {
-	return o.ToParsedDataResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ParsedDataResponseOutput) ToParsedDataResponsePtrOutputWithContext(ctx context.Context) ParsedDataResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ParsedDataResponse) *ParsedDataResponse {
-		return &v
-	}).(ParsedDataResponsePtrOutput)
-}
-
 func (o ParsedDataResponseOutput) Segments() SegmentResponseArrayOutput {
 	return o.ApplyT(func(v ParsedDataResponse) []SegmentResponse { return v.Segments }).(SegmentResponseArrayOutput)
-}
-
-type ParsedDataResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ParsedDataResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ParsedDataResponse)(nil)).Elem()
-}
-
-func (o ParsedDataResponsePtrOutput) ToParsedDataResponsePtrOutput() ParsedDataResponsePtrOutput {
-	return o
-}
-
-func (o ParsedDataResponsePtrOutput) ToParsedDataResponsePtrOutputWithContext(ctx context.Context) ParsedDataResponsePtrOutput {
-	return o
-}
-
-func (o ParsedDataResponsePtrOutput) Elem() ParsedDataResponseOutput {
-	return o.ApplyT(func(v *ParsedDataResponse) ParsedDataResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ParsedDataResponse
-		return ret
-	}).(ParsedDataResponseOutput)
-}
-
-func (o ParsedDataResponsePtrOutput) Segments() SegmentResponseArrayOutput {
-	return o.ApplyT(func(v *ParsedDataResponse) []SegmentResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Segments
-	}).(SegmentResponseArrayOutput)
 }
 
 // The configuration for the parser. It determines how the server parses the messages.
@@ -5232,82 +3764,6 @@ type ParserConfigResponse struct {
 	Version string `pulumi:"version"`
 }
 
-// ParserConfigResponseInput is an input type that accepts ParserConfigResponseArgs and ParserConfigResponseOutput values.
-// You can construct a concrete instance of `ParserConfigResponseInput` via:
-//
-//          ParserConfigResponseArgs{...}
-type ParserConfigResponseInput interface {
-	pulumi.Input
-
-	ToParserConfigResponseOutput() ParserConfigResponseOutput
-	ToParserConfigResponseOutputWithContext(context.Context) ParserConfigResponseOutput
-}
-
-// The configuration for the parser. It determines how the server parses the messages.
-type ParserConfigResponseArgs struct {
-	// Determines whether messages with no header are allowed.
-	AllowNullHeader pulumi.BoolInput `pulumi:"allowNullHeader"`
-	// Schemas used to parse messages in this store, if schematized parsing is desired.
-	Schema SchemaPackageResponseInput `pulumi:"schema"`
-	// Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification.
-	SegmentTerminator pulumi.StringInput `pulumi:"segmentTerminator"`
-	// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
-	Version pulumi.StringInput `pulumi:"version"`
-}
-
-func (ParserConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ParserConfigResponse)(nil)).Elem()
-}
-
-func (i ParserConfigResponseArgs) ToParserConfigResponseOutput() ParserConfigResponseOutput {
-	return i.ToParserConfigResponseOutputWithContext(context.Background())
-}
-
-func (i ParserConfigResponseArgs) ToParserConfigResponseOutputWithContext(ctx context.Context) ParserConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ParserConfigResponseOutput)
-}
-
-func (i ParserConfigResponseArgs) ToParserConfigResponsePtrOutput() ParserConfigResponsePtrOutput {
-	return i.ToParserConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ParserConfigResponseArgs) ToParserConfigResponsePtrOutputWithContext(ctx context.Context) ParserConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ParserConfigResponseOutput).ToParserConfigResponsePtrOutputWithContext(ctx)
-}
-
-// ParserConfigResponsePtrInput is an input type that accepts ParserConfigResponseArgs, ParserConfigResponsePtr and ParserConfigResponsePtrOutput values.
-// You can construct a concrete instance of `ParserConfigResponsePtrInput` via:
-//
-//          ParserConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ParserConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToParserConfigResponsePtrOutput() ParserConfigResponsePtrOutput
-	ToParserConfigResponsePtrOutputWithContext(context.Context) ParserConfigResponsePtrOutput
-}
-
-type parserConfigResponsePtrType ParserConfigResponseArgs
-
-func ParserConfigResponsePtr(v *ParserConfigResponseArgs) ParserConfigResponsePtrInput {
-	return (*parserConfigResponsePtrType)(v)
-}
-
-func (*parserConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ParserConfigResponse)(nil)).Elem()
-}
-
-func (i *parserConfigResponsePtrType) ToParserConfigResponsePtrOutput() ParserConfigResponsePtrOutput {
-	return i.ToParserConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *parserConfigResponsePtrType) ToParserConfigResponsePtrOutputWithContext(ctx context.Context) ParserConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ParserConfigResponsePtrOutput)
-}
-
 // The configuration for the parser. It determines how the server parses the messages.
 type ParserConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -5321,16 +3777,6 @@ func (o ParserConfigResponseOutput) ToParserConfigResponseOutput() ParserConfigR
 
 func (o ParserConfigResponseOutput) ToParserConfigResponseOutputWithContext(ctx context.Context) ParserConfigResponseOutput {
 	return o
-}
-
-func (o ParserConfigResponseOutput) ToParserConfigResponsePtrOutput() ParserConfigResponsePtrOutput {
-	return o.ToParserConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ParserConfigResponseOutput) ToParserConfigResponsePtrOutputWithContext(ctx context.Context) ParserConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ParserConfigResponse) *ParserConfigResponse {
-		return &v
-	}).(ParserConfigResponsePtrOutput)
 }
 
 // Determines whether messages with no header are allowed.
@@ -5351,70 +3797,6 @@ func (o ParserConfigResponseOutput) SegmentTerminator() pulumi.StringOutput {
 // Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
 func (o ParserConfigResponseOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v ParserConfigResponse) string { return v.Version }).(pulumi.StringOutput)
-}
-
-type ParserConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ParserConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ParserConfigResponse)(nil)).Elem()
-}
-
-func (o ParserConfigResponsePtrOutput) ToParserConfigResponsePtrOutput() ParserConfigResponsePtrOutput {
-	return o
-}
-
-func (o ParserConfigResponsePtrOutput) ToParserConfigResponsePtrOutputWithContext(ctx context.Context) ParserConfigResponsePtrOutput {
-	return o
-}
-
-func (o ParserConfigResponsePtrOutput) Elem() ParserConfigResponseOutput {
-	return o.ApplyT(func(v *ParserConfigResponse) ParserConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ParserConfigResponse
-		return ret
-	}).(ParserConfigResponseOutput)
-}
-
-// Determines whether messages with no header are allowed.
-func (o ParserConfigResponsePtrOutput) AllowNullHeader() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ParserConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.AllowNullHeader
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Schemas used to parse messages in this store, if schematized parsing is desired.
-func (o ParserConfigResponsePtrOutput) Schema() SchemaPackageResponsePtrOutput {
-	return o.ApplyT(func(v *ParserConfigResponse) *SchemaPackageResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Schema
-	}).(SchemaPackageResponsePtrOutput)
-}
-
-// Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification.
-func (o ParserConfigResponsePtrOutput) SegmentTerminator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ParserConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SegmentTerminator
-	}).(pulumi.StringPtrOutput)
-}
-
-// Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
-func (o ParserConfigResponsePtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ParserConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Version
-	}).(pulumi.StringPtrOutput)
 }
 
 // A patient identifier and associated type.
@@ -5532,62 +3914,6 @@ type PatientIdResponse struct {
 	Type string `pulumi:"type"`
 	// The patient's unique identifier.
 	Value string `pulumi:"value"`
-}
-
-// PatientIdResponseInput is an input type that accepts PatientIdResponseArgs and PatientIdResponseOutput values.
-// You can construct a concrete instance of `PatientIdResponseInput` via:
-//
-//          PatientIdResponseArgs{...}
-type PatientIdResponseInput interface {
-	pulumi.Input
-
-	ToPatientIdResponseOutput() PatientIdResponseOutput
-	ToPatientIdResponseOutputWithContext(context.Context) PatientIdResponseOutput
-}
-
-// A patient identifier and associated type.
-type PatientIdResponseArgs struct {
-	// ID type. For example, MRN or NHS.
-	Type pulumi.StringInput `pulumi:"type"`
-	// The patient's unique identifier.
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (PatientIdResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PatientIdResponse)(nil)).Elem()
-}
-
-func (i PatientIdResponseArgs) ToPatientIdResponseOutput() PatientIdResponseOutput {
-	return i.ToPatientIdResponseOutputWithContext(context.Background())
-}
-
-func (i PatientIdResponseArgs) ToPatientIdResponseOutputWithContext(ctx context.Context) PatientIdResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PatientIdResponseOutput)
-}
-
-// PatientIdResponseArrayInput is an input type that accepts PatientIdResponseArray and PatientIdResponseArrayOutput values.
-// You can construct a concrete instance of `PatientIdResponseArrayInput` via:
-//
-//          PatientIdResponseArray{ PatientIdResponseArgs{...} }
-type PatientIdResponseArrayInput interface {
-	pulumi.Input
-
-	ToPatientIdResponseArrayOutput() PatientIdResponseArrayOutput
-	ToPatientIdResponseArrayOutputWithContext(context.Context) PatientIdResponseArrayOutput
-}
-
-type PatientIdResponseArray []PatientIdResponseInput
-
-func (PatientIdResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PatientIdResponse)(nil)).Elem()
-}
-
-func (i PatientIdResponseArray) ToPatientIdResponseArrayOutput() PatientIdResponseArrayOutput {
-	return i.ToPatientIdResponseArrayOutputWithContext(context.Background())
-}
-
-func (i PatientIdResponseArray) ToPatientIdResponseArrayOutputWithContext(ctx context.Context) PatientIdResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PatientIdResponseArrayOutput)
 }
 
 // A patient identifier and associated type.
@@ -5781,76 +4107,6 @@ type ResourceAnnotationResponse struct {
 	Label string `pulumi:"label"`
 }
 
-// ResourceAnnotationResponseInput is an input type that accepts ResourceAnnotationResponseArgs and ResourceAnnotationResponseOutput values.
-// You can construct a concrete instance of `ResourceAnnotationResponseInput` via:
-//
-//          ResourceAnnotationResponseArgs{...}
-type ResourceAnnotationResponseInput interface {
-	pulumi.Input
-
-	ToResourceAnnotationResponseOutput() ResourceAnnotationResponseOutput
-	ToResourceAnnotationResponseOutputWithContext(context.Context) ResourceAnnotationResponseOutput
-}
-
-// Resource level annotation.
-type ResourceAnnotationResponseArgs struct {
-	// A description of the annotation record.
-	Label pulumi.StringInput `pulumi:"label"`
-}
-
-func (ResourceAnnotationResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceAnnotationResponse)(nil)).Elem()
-}
-
-func (i ResourceAnnotationResponseArgs) ToResourceAnnotationResponseOutput() ResourceAnnotationResponseOutput {
-	return i.ToResourceAnnotationResponseOutputWithContext(context.Background())
-}
-
-func (i ResourceAnnotationResponseArgs) ToResourceAnnotationResponseOutputWithContext(ctx context.Context) ResourceAnnotationResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceAnnotationResponseOutput)
-}
-
-func (i ResourceAnnotationResponseArgs) ToResourceAnnotationResponsePtrOutput() ResourceAnnotationResponsePtrOutput {
-	return i.ToResourceAnnotationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ResourceAnnotationResponseArgs) ToResourceAnnotationResponsePtrOutputWithContext(ctx context.Context) ResourceAnnotationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceAnnotationResponseOutput).ToResourceAnnotationResponsePtrOutputWithContext(ctx)
-}
-
-// ResourceAnnotationResponsePtrInput is an input type that accepts ResourceAnnotationResponseArgs, ResourceAnnotationResponsePtr and ResourceAnnotationResponsePtrOutput values.
-// You can construct a concrete instance of `ResourceAnnotationResponsePtrInput` via:
-//
-//          ResourceAnnotationResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ResourceAnnotationResponsePtrInput interface {
-	pulumi.Input
-
-	ToResourceAnnotationResponsePtrOutput() ResourceAnnotationResponsePtrOutput
-	ToResourceAnnotationResponsePtrOutputWithContext(context.Context) ResourceAnnotationResponsePtrOutput
-}
-
-type resourceAnnotationResponsePtrType ResourceAnnotationResponseArgs
-
-func ResourceAnnotationResponsePtr(v *ResourceAnnotationResponseArgs) ResourceAnnotationResponsePtrInput {
-	return (*resourceAnnotationResponsePtrType)(v)
-}
-
-func (*resourceAnnotationResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourceAnnotationResponse)(nil)).Elem()
-}
-
-func (i *resourceAnnotationResponsePtrType) ToResourceAnnotationResponsePtrOutput() ResourceAnnotationResponsePtrOutput {
-	return i.ToResourceAnnotationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *resourceAnnotationResponsePtrType) ToResourceAnnotationResponsePtrOutputWithContext(ctx context.Context) ResourceAnnotationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceAnnotationResponsePtrOutput)
-}
-
 // Resource level annotation.
 type ResourceAnnotationResponseOutput struct{ *pulumi.OutputState }
 
@@ -5866,53 +4122,9 @@ func (o ResourceAnnotationResponseOutput) ToResourceAnnotationResponseOutputWith
 	return o
 }
 
-func (o ResourceAnnotationResponseOutput) ToResourceAnnotationResponsePtrOutput() ResourceAnnotationResponsePtrOutput {
-	return o.ToResourceAnnotationResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ResourceAnnotationResponseOutput) ToResourceAnnotationResponsePtrOutputWithContext(ctx context.Context) ResourceAnnotationResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAnnotationResponse) *ResourceAnnotationResponse {
-		return &v
-	}).(ResourceAnnotationResponsePtrOutput)
-}
-
 // A description of the annotation record.
 func (o ResourceAnnotationResponseOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceAnnotationResponse) string { return v.Label }).(pulumi.StringOutput)
-}
-
-type ResourceAnnotationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ResourceAnnotationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourceAnnotationResponse)(nil)).Elem()
-}
-
-func (o ResourceAnnotationResponsePtrOutput) ToResourceAnnotationResponsePtrOutput() ResourceAnnotationResponsePtrOutput {
-	return o
-}
-
-func (o ResourceAnnotationResponsePtrOutput) ToResourceAnnotationResponsePtrOutputWithContext(ctx context.Context) ResourceAnnotationResponsePtrOutput {
-	return o
-}
-
-func (o ResourceAnnotationResponsePtrOutput) Elem() ResourceAnnotationResponseOutput {
-	return o.ApplyT(func(v *ResourceAnnotationResponse) ResourceAnnotationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ResourceAnnotationResponse
-		return ret
-	}).(ResourceAnnotationResponseOutput)
-}
-
-// A description of the annotation record.
-func (o ResourceAnnotationResponsePtrOutput) Label() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAnnotationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Label
-	}).(pulumi.StringPtrOutput)
 }
 
 // Configuration for the FHIR BigQuery schema. Determines how the server generates the schema.
@@ -6080,37 +4292,6 @@ type SchemaConfigResponse struct {
 	RecursiveStructureDepth string `pulumi:"recursiveStructureDepth"`
 	// Specifies the output schema type. Schema type is required.
 	SchemaType string `pulumi:"schemaType"`
-}
-
-// SchemaConfigResponseInput is an input type that accepts SchemaConfigResponseArgs and SchemaConfigResponseOutput values.
-// You can construct a concrete instance of `SchemaConfigResponseInput` via:
-//
-//          SchemaConfigResponseArgs{...}
-type SchemaConfigResponseInput interface {
-	pulumi.Input
-
-	ToSchemaConfigResponseOutput() SchemaConfigResponseOutput
-	ToSchemaConfigResponseOutputWithContext(context.Context) SchemaConfigResponseOutput
-}
-
-// Configuration for the FHIR BigQuery schema. Determines how the server generates the schema.
-type SchemaConfigResponseArgs struct {
-	// The depth for all recursive structures in the output analytics schema. For example, `concept` in the CodeSystem resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called `concept.concept` but not `concept.concept.concept`. If not specified or set to 0, the server will use the default value 2. The maximum depth allowed is 5.
-	RecursiveStructureDepth pulumi.StringInput `pulumi:"recursiveStructureDepth"`
-	// Specifies the output schema type. Schema type is required.
-	SchemaType pulumi.StringInput `pulumi:"schemaType"`
-}
-
-func (SchemaConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SchemaConfigResponse)(nil)).Elem()
-}
-
-func (i SchemaConfigResponseArgs) ToSchemaConfigResponseOutput() SchemaConfigResponseOutput {
-	return i.ToSchemaConfigResponseOutputWithContext(context.Background())
-}
-
-func (i SchemaConfigResponseArgs) ToSchemaConfigResponseOutputWithContext(ctx context.Context) SchemaConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchemaConfigResponseOutput)
 }
 
 // Configuration for the FHIR BigQuery schema. Determines how the server generates the schema.
@@ -6368,84 +4549,6 @@ type SchemaPackageResponse struct {
 	UnexpectedSegmentHandling string `pulumi:"unexpectedSegmentHandling"`
 }
 
-// SchemaPackageResponseInput is an input type that accepts SchemaPackageResponseArgs and SchemaPackageResponseOutput values.
-// You can construct a concrete instance of `SchemaPackageResponseInput` via:
-//
-//          SchemaPackageResponseArgs{...}
-type SchemaPackageResponseInput interface {
-	pulumi.Input
-
-	ToSchemaPackageResponseOutput() SchemaPackageResponseOutput
-	ToSchemaPackageResponseOutputWithContext(context.Context) SchemaPackageResponseOutput
-}
-
-// A schema package contains a set of schemas and type definitions.
-type SchemaPackageResponseArgs struct {
-	// Flag to ignore all min_occurs restrictions in the schema. This means that incoming messages can omit any group, segment, field, component, or subcomponent.
-	IgnoreMinOccurs pulumi.BoolInput `pulumi:"ignoreMinOccurs"`
-	// Schema configs that are layered based on their VersionSources that match the incoming message. Schema configs present in higher indices override those in lower indices with the same message type and trigger event if their VersionSources all match an incoming message.
-	Schemas Hl7SchemaConfigResponseArrayInput `pulumi:"schemas"`
-	// Determines how messages that fail to parse are handled.
-	SchematizedParsingType pulumi.StringInput `pulumi:"schematizedParsingType"`
-	// Schema type definitions that are layered based on their VersionSources that match the incoming message. Type definitions present in higher indices override those in lower indices with the same type name if their VersionSources all match an incoming message.
-	Types Hl7TypesConfigResponseArrayInput `pulumi:"types"`
-	// Determines how unexpected segments (segments not matched to the schema) are handled.
-	UnexpectedSegmentHandling pulumi.StringInput `pulumi:"unexpectedSegmentHandling"`
-}
-
-func (SchemaPackageResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SchemaPackageResponse)(nil)).Elem()
-}
-
-func (i SchemaPackageResponseArgs) ToSchemaPackageResponseOutput() SchemaPackageResponseOutput {
-	return i.ToSchemaPackageResponseOutputWithContext(context.Background())
-}
-
-func (i SchemaPackageResponseArgs) ToSchemaPackageResponseOutputWithContext(ctx context.Context) SchemaPackageResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchemaPackageResponseOutput)
-}
-
-func (i SchemaPackageResponseArgs) ToSchemaPackageResponsePtrOutput() SchemaPackageResponsePtrOutput {
-	return i.ToSchemaPackageResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SchemaPackageResponseArgs) ToSchemaPackageResponsePtrOutputWithContext(ctx context.Context) SchemaPackageResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchemaPackageResponseOutput).ToSchemaPackageResponsePtrOutputWithContext(ctx)
-}
-
-// SchemaPackageResponsePtrInput is an input type that accepts SchemaPackageResponseArgs, SchemaPackageResponsePtr and SchemaPackageResponsePtrOutput values.
-// You can construct a concrete instance of `SchemaPackageResponsePtrInput` via:
-//
-//          SchemaPackageResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SchemaPackageResponsePtrInput interface {
-	pulumi.Input
-
-	ToSchemaPackageResponsePtrOutput() SchemaPackageResponsePtrOutput
-	ToSchemaPackageResponsePtrOutputWithContext(context.Context) SchemaPackageResponsePtrOutput
-}
-
-type schemaPackageResponsePtrType SchemaPackageResponseArgs
-
-func SchemaPackageResponsePtr(v *SchemaPackageResponseArgs) SchemaPackageResponsePtrInput {
-	return (*schemaPackageResponsePtrType)(v)
-}
-
-func (*schemaPackageResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SchemaPackageResponse)(nil)).Elem()
-}
-
-func (i *schemaPackageResponsePtrType) ToSchemaPackageResponsePtrOutput() SchemaPackageResponsePtrOutput {
-	return i.ToSchemaPackageResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *schemaPackageResponsePtrType) ToSchemaPackageResponsePtrOutputWithContext(ctx context.Context) SchemaPackageResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchemaPackageResponsePtrOutput)
-}
-
 // A schema package contains a set of schemas and type definitions.
 type SchemaPackageResponseOutput struct{ *pulumi.OutputState }
 
@@ -6459,16 +4562,6 @@ func (o SchemaPackageResponseOutput) ToSchemaPackageResponseOutput() SchemaPacka
 
 func (o SchemaPackageResponseOutput) ToSchemaPackageResponseOutputWithContext(ctx context.Context) SchemaPackageResponseOutput {
 	return o
-}
-
-func (o SchemaPackageResponseOutput) ToSchemaPackageResponsePtrOutput() SchemaPackageResponsePtrOutput {
-	return o.ToSchemaPackageResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SchemaPackageResponseOutput) ToSchemaPackageResponsePtrOutputWithContext(ctx context.Context) SchemaPackageResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchemaPackageResponse) *SchemaPackageResponse {
-		return &v
-	}).(SchemaPackageResponsePtrOutput)
 }
 
 // Flag to ignore all min_occurs restrictions in the schema. This means that incoming messages can omit any group, segment, field, component, or subcomponent.
@@ -6494,80 +4587,6 @@ func (o SchemaPackageResponseOutput) Types() Hl7TypesConfigResponseArrayOutput {
 // Determines how unexpected segments (segments not matched to the schema) are handled.
 func (o SchemaPackageResponseOutput) UnexpectedSegmentHandling() pulumi.StringOutput {
 	return o.ApplyT(func(v SchemaPackageResponse) string { return v.UnexpectedSegmentHandling }).(pulumi.StringOutput)
-}
-
-type SchemaPackageResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SchemaPackageResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SchemaPackageResponse)(nil)).Elem()
-}
-
-func (o SchemaPackageResponsePtrOutput) ToSchemaPackageResponsePtrOutput() SchemaPackageResponsePtrOutput {
-	return o
-}
-
-func (o SchemaPackageResponsePtrOutput) ToSchemaPackageResponsePtrOutputWithContext(ctx context.Context) SchemaPackageResponsePtrOutput {
-	return o
-}
-
-func (o SchemaPackageResponsePtrOutput) Elem() SchemaPackageResponseOutput {
-	return o.ApplyT(func(v *SchemaPackageResponse) SchemaPackageResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SchemaPackageResponse
-		return ret
-	}).(SchemaPackageResponseOutput)
-}
-
-// Flag to ignore all min_occurs restrictions in the schema. This means that incoming messages can omit any group, segment, field, component, or subcomponent.
-func (o SchemaPackageResponsePtrOutput) IgnoreMinOccurs() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SchemaPackageResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.IgnoreMinOccurs
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Schema configs that are layered based on their VersionSources that match the incoming message. Schema configs present in higher indices override those in lower indices with the same message type and trigger event if their VersionSources all match an incoming message.
-func (o SchemaPackageResponsePtrOutput) Schemas() Hl7SchemaConfigResponseArrayOutput {
-	return o.ApplyT(func(v *SchemaPackageResponse) []Hl7SchemaConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Schemas
-	}).(Hl7SchemaConfigResponseArrayOutput)
-}
-
-// Determines how messages that fail to parse are handled.
-func (o SchemaPackageResponsePtrOutput) SchematizedParsingType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SchemaPackageResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SchematizedParsingType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Schema type definitions that are layered based on their VersionSources that match the incoming message. Type definitions present in higher indices override those in lower indices with the same type name if their VersionSources all match an incoming message.
-func (o SchemaPackageResponsePtrOutput) Types() Hl7TypesConfigResponseArrayOutput {
-	return o.ApplyT(func(v *SchemaPackageResponse) []Hl7TypesConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Types
-	}).(Hl7TypesConfigResponseArrayOutput)
-}
-
-// Determines how unexpected segments (segments not matched to the schema) are handled.
-func (o SchemaPackageResponsePtrOutput) UnexpectedSegmentHandling() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SchemaPackageResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UnexpectedSegmentHandling
-	}).(pulumi.StringPtrOutput)
 }
 
 // The content of an HL7v2 message in a structured format as specified by a schema.
@@ -6737,78 +4756,6 @@ type SchematizedDataResponse struct {
 	Error string `pulumi:"error"`
 }
 
-// SchematizedDataResponseInput is an input type that accepts SchematizedDataResponseArgs and SchematizedDataResponseOutput values.
-// You can construct a concrete instance of `SchematizedDataResponseInput` via:
-//
-//          SchematizedDataResponseArgs{...}
-type SchematizedDataResponseInput interface {
-	pulumi.Input
-
-	ToSchematizedDataResponseOutput() SchematizedDataResponseOutput
-	ToSchematizedDataResponseOutputWithContext(context.Context) SchematizedDataResponseOutput
-}
-
-// The content of an HL7v2 message in a structured format as specified by a schema.
-type SchematizedDataResponseArgs struct {
-	// JSON output of the parser.
-	Data pulumi.StringInput `pulumi:"data"`
-	// The error output of the parser.
-	Error pulumi.StringInput `pulumi:"error"`
-}
-
-func (SchematizedDataResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SchematizedDataResponse)(nil)).Elem()
-}
-
-func (i SchematizedDataResponseArgs) ToSchematizedDataResponseOutput() SchematizedDataResponseOutput {
-	return i.ToSchematizedDataResponseOutputWithContext(context.Background())
-}
-
-func (i SchematizedDataResponseArgs) ToSchematizedDataResponseOutputWithContext(ctx context.Context) SchematizedDataResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchematizedDataResponseOutput)
-}
-
-func (i SchematizedDataResponseArgs) ToSchematizedDataResponsePtrOutput() SchematizedDataResponsePtrOutput {
-	return i.ToSchematizedDataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SchematizedDataResponseArgs) ToSchematizedDataResponsePtrOutputWithContext(ctx context.Context) SchematizedDataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchematizedDataResponseOutput).ToSchematizedDataResponsePtrOutputWithContext(ctx)
-}
-
-// SchematizedDataResponsePtrInput is an input type that accepts SchematizedDataResponseArgs, SchematizedDataResponsePtr and SchematizedDataResponsePtrOutput values.
-// You can construct a concrete instance of `SchematizedDataResponsePtrInput` via:
-//
-//          SchematizedDataResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SchematizedDataResponsePtrInput interface {
-	pulumi.Input
-
-	ToSchematizedDataResponsePtrOutput() SchematizedDataResponsePtrOutput
-	ToSchematizedDataResponsePtrOutputWithContext(context.Context) SchematizedDataResponsePtrOutput
-}
-
-type schematizedDataResponsePtrType SchematizedDataResponseArgs
-
-func SchematizedDataResponsePtr(v *SchematizedDataResponseArgs) SchematizedDataResponsePtrInput {
-	return (*schematizedDataResponsePtrType)(v)
-}
-
-func (*schematizedDataResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SchematizedDataResponse)(nil)).Elem()
-}
-
-func (i *schematizedDataResponsePtrType) ToSchematizedDataResponsePtrOutput() SchematizedDataResponsePtrOutput {
-	return i.ToSchematizedDataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *schematizedDataResponsePtrType) ToSchematizedDataResponsePtrOutputWithContext(ctx context.Context) SchematizedDataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchematizedDataResponsePtrOutput)
-}
-
 // The content of an HL7v2 message in a structured format as specified by a schema.
 type SchematizedDataResponseOutput struct{ *pulumi.OutputState }
 
@@ -6824,16 +4771,6 @@ func (o SchematizedDataResponseOutput) ToSchematizedDataResponseOutputWithContex
 	return o
 }
 
-func (o SchematizedDataResponseOutput) ToSchematizedDataResponsePtrOutput() SchematizedDataResponsePtrOutput {
-	return o.ToSchematizedDataResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SchematizedDataResponseOutput) ToSchematizedDataResponsePtrOutputWithContext(ctx context.Context) SchematizedDataResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchematizedDataResponse) *SchematizedDataResponse {
-		return &v
-	}).(SchematizedDataResponsePtrOutput)
-}
-
 // JSON output of the parser.
 func (o SchematizedDataResponseOutput) Data() pulumi.StringOutput {
 	return o.ApplyT(func(v SchematizedDataResponse) string { return v.Data }).(pulumi.StringOutput)
@@ -6842,50 +4779,6 @@ func (o SchematizedDataResponseOutput) Data() pulumi.StringOutput {
 // The error output of the parser.
 func (o SchematizedDataResponseOutput) Error() pulumi.StringOutput {
 	return o.ApplyT(func(v SchematizedDataResponse) string { return v.Error }).(pulumi.StringOutput)
-}
-
-type SchematizedDataResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SchematizedDataResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SchematizedDataResponse)(nil)).Elem()
-}
-
-func (o SchematizedDataResponsePtrOutput) ToSchematizedDataResponsePtrOutput() SchematizedDataResponsePtrOutput {
-	return o
-}
-
-func (o SchematizedDataResponsePtrOutput) ToSchematizedDataResponsePtrOutputWithContext(ctx context.Context) SchematizedDataResponsePtrOutput {
-	return o
-}
-
-func (o SchematizedDataResponsePtrOutput) Elem() SchematizedDataResponseOutput {
-	return o.ApplyT(func(v *SchematizedDataResponse) SchematizedDataResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SchematizedDataResponse
-		return ret
-	}).(SchematizedDataResponseOutput)
-}
-
-// JSON output of the parser.
-func (o SchematizedDataResponsePtrOutput) Data() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SchematizedDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Data
-	}).(pulumi.StringPtrOutput)
-}
-
-// The error output of the parser.
-func (o SchematizedDataResponsePtrOutput) Error() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SchematizedDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Error
-	}).(pulumi.StringPtrOutput)
 }
 
 // Contains the configuration for FHIR search.
@@ -7034,76 +4927,6 @@ type SearchConfigResponse struct {
 	SearchParameters []SearchParameterResponse `pulumi:"searchParameters"`
 }
 
-// SearchConfigResponseInput is an input type that accepts SearchConfigResponseArgs and SearchConfigResponseOutput values.
-// You can construct a concrete instance of `SearchConfigResponseInput` via:
-//
-//          SearchConfigResponseArgs{...}
-type SearchConfigResponseInput interface {
-	pulumi.Input
-
-	ToSearchConfigResponseOutput() SearchConfigResponseOutput
-	ToSearchConfigResponseOutputWithContext(context.Context) SearchConfigResponseOutput
-}
-
-// Contains the configuration for FHIR search.
-type SearchConfigResponseArgs struct {
-	// A list of search parameters in this FHIR store that are used to configure this FHIR store.
-	SearchParameters SearchParameterResponseArrayInput `pulumi:"searchParameters"`
-}
-
-func (SearchConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SearchConfigResponse)(nil)).Elem()
-}
-
-func (i SearchConfigResponseArgs) ToSearchConfigResponseOutput() SearchConfigResponseOutput {
-	return i.ToSearchConfigResponseOutputWithContext(context.Background())
-}
-
-func (i SearchConfigResponseArgs) ToSearchConfigResponseOutputWithContext(ctx context.Context) SearchConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SearchConfigResponseOutput)
-}
-
-func (i SearchConfigResponseArgs) ToSearchConfigResponsePtrOutput() SearchConfigResponsePtrOutput {
-	return i.ToSearchConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SearchConfigResponseArgs) ToSearchConfigResponsePtrOutputWithContext(ctx context.Context) SearchConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SearchConfigResponseOutput).ToSearchConfigResponsePtrOutputWithContext(ctx)
-}
-
-// SearchConfigResponsePtrInput is an input type that accepts SearchConfigResponseArgs, SearchConfigResponsePtr and SearchConfigResponsePtrOutput values.
-// You can construct a concrete instance of `SearchConfigResponsePtrInput` via:
-//
-//          SearchConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SearchConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToSearchConfigResponsePtrOutput() SearchConfigResponsePtrOutput
-	ToSearchConfigResponsePtrOutputWithContext(context.Context) SearchConfigResponsePtrOutput
-}
-
-type searchConfigResponsePtrType SearchConfigResponseArgs
-
-func SearchConfigResponsePtr(v *SearchConfigResponseArgs) SearchConfigResponsePtrInput {
-	return (*searchConfigResponsePtrType)(v)
-}
-
-func (*searchConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SearchConfigResponse)(nil)).Elem()
-}
-
-func (i *searchConfigResponsePtrType) ToSearchConfigResponsePtrOutput() SearchConfigResponsePtrOutput {
-	return i.ToSearchConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *searchConfigResponsePtrType) ToSearchConfigResponsePtrOutputWithContext(ctx context.Context) SearchConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SearchConfigResponsePtrOutput)
-}
-
 // Contains the configuration for FHIR search.
 type SearchConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -7119,53 +4942,9 @@ func (o SearchConfigResponseOutput) ToSearchConfigResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o SearchConfigResponseOutput) ToSearchConfigResponsePtrOutput() SearchConfigResponsePtrOutput {
-	return o.ToSearchConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SearchConfigResponseOutput) ToSearchConfigResponsePtrOutputWithContext(ctx context.Context) SearchConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SearchConfigResponse) *SearchConfigResponse {
-		return &v
-	}).(SearchConfigResponsePtrOutput)
-}
-
 // A list of search parameters in this FHIR store that are used to configure this FHIR store.
 func (o SearchConfigResponseOutput) SearchParameters() SearchParameterResponseArrayOutput {
 	return o.ApplyT(func(v SearchConfigResponse) []SearchParameterResponse { return v.SearchParameters }).(SearchParameterResponseArrayOutput)
-}
-
-type SearchConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SearchConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SearchConfigResponse)(nil)).Elem()
-}
-
-func (o SearchConfigResponsePtrOutput) ToSearchConfigResponsePtrOutput() SearchConfigResponsePtrOutput {
-	return o
-}
-
-func (o SearchConfigResponsePtrOutput) ToSearchConfigResponsePtrOutputWithContext(ctx context.Context) SearchConfigResponsePtrOutput {
-	return o
-}
-
-func (o SearchConfigResponsePtrOutput) Elem() SearchConfigResponseOutput {
-	return o.ApplyT(func(v *SearchConfigResponse) SearchConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SearchConfigResponse
-		return ret
-	}).(SearchConfigResponseOutput)
-}
-
-// A list of search parameters in this FHIR store that are used to configure this FHIR store.
-func (o SearchConfigResponsePtrOutput) SearchParameters() SearchParameterResponseArrayOutput {
-	return o.ApplyT(func(v *SearchConfigResponse) []SearchParameterResponse {
-		if v == nil {
-			return nil
-		}
-		return v.SearchParameters
-	}).(SearchParameterResponseArrayOutput)
 }
 
 // Contains the versioned name and the URL for one SearchParameter.
@@ -7285,62 +5064,6 @@ type SearchParameterResponse struct {
 	Parameter string `pulumi:"parameter"`
 }
 
-// SearchParameterResponseInput is an input type that accepts SearchParameterResponseArgs and SearchParameterResponseOutput values.
-// You can construct a concrete instance of `SearchParameterResponseInput` via:
-//
-//          SearchParameterResponseArgs{...}
-type SearchParameterResponseInput interface {
-	pulumi.Input
-
-	ToSearchParameterResponseOutput() SearchParameterResponseOutput
-	ToSearchParameterResponseOutputWithContext(context.Context) SearchParameterResponseOutput
-}
-
-// Contains the versioned name and the URL for one SearchParameter.
-type SearchParameterResponseArgs struct {
-	// The canonical url of the search parameter resource.
-	CanonicalUrl pulumi.StringInput `pulumi:"canonicalUrl"`
-	// The versioned name of the search parameter resource. The format is projects/{project-id}/locations/{location}/datasets/{dataset-id}/fhirStores/{fhirStore-id}/fhir/SearchParameter/{resource-id}/_history/{version-id} For fhir stores with disable_resource_versioning=true, the format is projects/{project-id}/locations/{location}/datasets/{dataset-id}/fhirStores/{fhirStore-id}/fhir/SearchParameter/{resource-id}/
-	Parameter pulumi.StringInput `pulumi:"parameter"`
-}
-
-func (SearchParameterResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SearchParameterResponse)(nil)).Elem()
-}
-
-func (i SearchParameterResponseArgs) ToSearchParameterResponseOutput() SearchParameterResponseOutput {
-	return i.ToSearchParameterResponseOutputWithContext(context.Background())
-}
-
-func (i SearchParameterResponseArgs) ToSearchParameterResponseOutputWithContext(ctx context.Context) SearchParameterResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SearchParameterResponseOutput)
-}
-
-// SearchParameterResponseArrayInput is an input type that accepts SearchParameterResponseArray and SearchParameterResponseArrayOutput values.
-// You can construct a concrete instance of `SearchParameterResponseArrayInput` via:
-//
-//          SearchParameterResponseArray{ SearchParameterResponseArgs{...} }
-type SearchParameterResponseArrayInput interface {
-	pulumi.Input
-
-	ToSearchParameterResponseArrayOutput() SearchParameterResponseArrayOutput
-	ToSearchParameterResponseArrayOutputWithContext(context.Context) SearchParameterResponseArrayOutput
-}
-
-type SearchParameterResponseArray []SearchParameterResponseInput
-
-func (SearchParameterResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SearchParameterResponse)(nil)).Elem()
-}
-
-func (i SearchParameterResponseArray) ToSearchParameterResponseArrayOutput() SearchParameterResponseArrayOutput {
-	return i.ToSearchParameterResponseArrayOutputWithContext(context.Background())
-}
-
-func (i SearchParameterResponseArray) ToSearchParameterResponseArrayOutputWithContext(ctx context.Context) SearchParameterResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SearchParameterResponseArrayOutput)
-}
-
 // Contains the versioned name and the URL for one SearchParameter.
 type SearchParameterResponseOutput struct{ *pulumi.OutputState }
 
@@ -7394,64 +5117,6 @@ type SegmentResponse struct {
 	SegmentId string `pulumi:"segmentId"`
 	// Set ID for segments that can be in a set. This can be empty if it's missing or isn't applicable.
 	SetId string `pulumi:"setId"`
-}
-
-// SegmentResponseInput is an input type that accepts SegmentResponseArgs and SegmentResponseOutput values.
-// You can construct a concrete instance of `SegmentResponseInput` via:
-//
-//          SegmentResponseArgs{...}
-type SegmentResponseInput interface {
-	pulumi.Input
-
-	ToSegmentResponseOutput() SegmentResponseOutput
-	ToSegmentResponseOutputWithContext(context.Context) SegmentResponseOutput
-}
-
-// A segment in a structured format.
-type SegmentResponseArgs struct {
-	// A mapping from the positional location to the value. The key string uses zero-based indexes separated by dots to identify Fields, components and sub-components. A bracket notation is also used to identify different instances of a repeated field. Regex for key: (\d+)(\[\d+\])?(.\d+)?(.\d+)? Examples of (key, value) pairs: * (0.1, "hemoglobin") denotes that the first component of Field 0 has the value "hemoglobin". * (1.1.2, "CBC") denotes that the second sub-component of the first component of Field 1 has the value "CBC". * (1[0].1, "HbA1c") denotes that the first component of the first Instance of Field 1, which is repeated, has the value "HbA1c".
-	Fields pulumi.StringMapInput `pulumi:"fields"`
-	// A string that indicates the type of segment. For example, EVN or PID.
-	SegmentId pulumi.StringInput `pulumi:"segmentId"`
-	// Set ID for segments that can be in a set. This can be empty if it's missing or isn't applicable.
-	SetId pulumi.StringInput `pulumi:"setId"`
-}
-
-func (SegmentResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SegmentResponse)(nil)).Elem()
-}
-
-func (i SegmentResponseArgs) ToSegmentResponseOutput() SegmentResponseOutput {
-	return i.ToSegmentResponseOutputWithContext(context.Background())
-}
-
-func (i SegmentResponseArgs) ToSegmentResponseOutputWithContext(ctx context.Context) SegmentResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SegmentResponseOutput)
-}
-
-// SegmentResponseArrayInput is an input type that accepts SegmentResponseArray and SegmentResponseArrayOutput values.
-// You can construct a concrete instance of `SegmentResponseArrayInput` via:
-//
-//          SegmentResponseArray{ SegmentResponseArgs{...} }
-type SegmentResponseArrayInput interface {
-	pulumi.Input
-
-	ToSegmentResponseArrayOutput() SegmentResponseArrayOutput
-	ToSegmentResponseArrayOutputWithContext(context.Context) SegmentResponseArrayOutput
-}
-
-type SegmentResponseArray []SegmentResponseInput
-
-func (SegmentResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SegmentResponse)(nil)).Elem()
-}
-
-func (i SegmentResponseArray) ToSegmentResponseArrayOutput() SegmentResponseArrayOutput {
-	return i.ToSegmentResponseArrayOutputWithContext(context.Background())
-}
-
-func (i SegmentResponseArray) ToSegmentResponseArrayOutputWithContext(ctx context.Context) SegmentResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SegmentResponseArrayOutput)
 }
 
 // A segment in a structured format.
@@ -7650,76 +5315,6 @@ type SensitiveTextAnnotationResponse struct {
 	Details map[string]string `pulumi:"details"`
 }
 
-// SensitiveTextAnnotationResponseInput is an input type that accepts SensitiveTextAnnotationResponseArgs and SensitiveTextAnnotationResponseOutput values.
-// You can construct a concrete instance of `SensitiveTextAnnotationResponseInput` via:
-//
-//          SensitiveTextAnnotationResponseArgs{...}
-type SensitiveTextAnnotationResponseInput interface {
-	pulumi.Input
-
-	ToSensitiveTextAnnotationResponseOutput() SensitiveTextAnnotationResponseOutput
-	ToSensitiveTextAnnotationResponseOutputWithContext(context.Context) SensitiveTextAnnotationResponseOutput
-}
-
-// A TextAnnotation specifies a text range that includes sensitive information.
-type SensitiveTextAnnotationResponseArgs struct {
-	// Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For example, Appointment.Narrative text1 --> {findings_1, findings_2, findings_3}
-	Details pulumi.StringMapInput `pulumi:"details"`
-}
-
-func (SensitiveTextAnnotationResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SensitiveTextAnnotationResponse)(nil)).Elem()
-}
-
-func (i SensitiveTextAnnotationResponseArgs) ToSensitiveTextAnnotationResponseOutput() SensitiveTextAnnotationResponseOutput {
-	return i.ToSensitiveTextAnnotationResponseOutputWithContext(context.Background())
-}
-
-func (i SensitiveTextAnnotationResponseArgs) ToSensitiveTextAnnotationResponseOutputWithContext(ctx context.Context) SensitiveTextAnnotationResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SensitiveTextAnnotationResponseOutput)
-}
-
-func (i SensitiveTextAnnotationResponseArgs) ToSensitiveTextAnnotationResponsePtrOutput() SensitiveTextAnnotationResponsePtrOutput {
-	return i.ToSensitiveTextAnnotationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SensitiveTextAnnotationResponseArgs) ToSensitiveTextAnnotationResponsePtrOutputWithContext(ctx context.Context) SensitiveTextAnnotationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SensitiveTextAnnotationResponseOutput).ToSensitiveTextAnnotationResponsePtrOutputWithContext(ctx)
-}
-
-// SensitiveTextAnnotationResponsePtrInput is an input type that accepts SensitiveTextAnnotationResponseArgs, SensitiveTextAnnotationResponsePtr and SensitiveTextAnnotationResponsePtrOutput values.
-// You can construct a concrete instance of `SensitiveTextAnnotationResponsePtrInput` via:
-//
-//          SensitiveTextAnnotationResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SensitiveTextAnnotationResponsePtrInput interface {
-	pulumi.Input
-
-	ToSensitiveTextAnnotationResponsePtrOutput() SensitiveTextAnnotationResponsePtrOutput
-	ToSensitiveTextAnnotationResponsePtrOutputWithContext(context.Context) SensitiveTextAnnotationResponsePtrOutput
-}
-
-type sensitiveTextAnnotationResponsePtrType SensitiveTextAnnotationResponseArgs
-
-func SensitiveTextAnnotationResponsePtr(v *SensitiveTextAnnotationResponseArgs) SensitiveTextAnnotationResponsePtrInput {
-	return (*sensitiveTextAnnotationResponsePtrType)(v)
-}
-
-func (*sensitiveTextAnnotationResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SensitiveTextAnnotationResponse)(nil)).Elem()
-}
-
-func (i *sensitiveTextAnnotationResponsePtrType) ToSensitiveTextAnnotationResponsePtrOutput() SensitiveTextAnnotationResponsePtrOutput {
-	return i.ToSensitiveTextAnnotationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *sensitiveTextAnnotationResponsePtrType) ToSensitiveTextAnnotationResponsePtrOutputWithContext(ctx context.Context) SensitiveTextAnnotationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SensitiveTextAnnotationResponsePtrOutput)
-}
-
 // A TextAnnotation specifies a text range that includes sensitive information.
 type SensitiveTextAnnotationResponseOutput struct{ *pulumi.OutputState }
 
@@ -7735,53 +5330,9 @@ func (o SensitiveTextAnnotationResponseOutput) ToSensitiveTextAnnotationResponse
 	return o
 }
 
-func (o SensitiveTextAnnotationResponseOutput) ToSensitiveTextAnnotationResponsePtrOutput() SensitiveTextAnnotationResponsePtrOutput {
-	return o.ToSensitiveTextAnnotationResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SensitiveTextAnnotationResponseOutput) ToSensitiveTextAnnotationResponsePtrOutputWithContext(ctx context.Context) SensitiveTextAnnotationResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SensitiveTextAnnotationResponse) *SensitiveTextAnnotationResponse {
-		return &v
-	}).(SensitiveTextAnnotationResponsePtrOutput)
-}
-
 // Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For example, Appointment.Narrative text1 --> {findings_1, findings_2, findings_3}
 func (o SensitiveTextAnnotationResponseOutput) Details() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SensitiveTextAnnotationResponse) map[string]string { return v.Details }).(pulumi.StringMapOutput)
-}
-
-type SensitiveTextAnnotationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SensitiveTextAnnotationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SensitiveTextAnnotationResponse)(nil)).Elem()
-}
-
-func (o SensitiveTextAnnotationResponsePtrOutput) ToSensitiveTextAnnotationResponsePtrOutput() SensitiveTextAnnotationResponsePtrOutput {
-	return o
-}
-
-func (o SensitiveTextAnnotationResponsePtrOutput) ToSensitiveTextAnnotationResponsePtrOutputWithContext(ctx context.Context) SensitiveTextAnnotationResponsePtrOutput {
-	return o
-}
-
-func (o SensitiveTextAnnotationResponsePtrOutput) Elem() SensitiveTextAnnotationResponseOutput {
-	return o.ApplyT(func(v *SensitiveTextAnnotationResponse) SensitiveTextAnnotationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SensitiveTextAnnotationResponse
-		return ret
-	}).(SensitiveTextAnnotationResponseOutput)
-}
-
-// Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For example, Appointment.Narrative text1 --> {findings_1, findings_2, findings_3}
-func (o SensitiveTextAnnotationResponsePtrOutput) Details() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *SensitiveTextAnnotationResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Details
-	}).(pulumi.StringMapOutput)
 }
 
 // User signature.
@@ -7993,82 +5544,6 @@ type SignatureResponse struct {
 	UserId string `pulumi:"userId"`
 }
 
-// SignatureResponseInput is an input type that accepts SignatureResponseArgs and SignatureResponseOutput values.
-// You can construct a concrete instance of `SignatureResponseInput` via:
-//
-//          SignatureResponseArgs{...}
-type SignatureResponseInput interface {
-	pulumi.Input
-
-	ToSignatureResponseOutput() SignatureResponseOutput
-	ToSignatureResponseOutputWithContext(context.Context) SignatureResponseOutput
-}
-
-// User signature.
-type SignatureResponseArgs struct {
-	// Optional. An image of the user's signature.
-	Image ImageResponseInput `pulumi:"image"`
-	// Optional. Metadata associated with the user's signature. For example, the user's name or the user's title.
-	Metadata pulumi.StringMapInput `pulumi:"metadata"`
-	// Optional. Timestamp of the signature.
-	SignatureTime pulumi.StringInput `pulumi:"signatureTime"`
-	// User's UUID provided by the client.
-	UserId pulumi.StringInput `pulumi:"userId"`
-}
-
-func (SignatureResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SignatureResponse)(nil)).Elem()
-}
-
-func (i SignatureResponseArgs) ToSignatureResponseOutput() SignatureResponseOutput {
-	return i.ToSignatureResponseOutputWithContext(context.Background())
-}
-
-func (i SignatureResponseArgs) ToSignatureResponseOutputWithContext(ctx context.Context) SignatureResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SignatureResponseOutput)
-}
-
-func (i SignatureResponseArgs) ToSignatureResponsePtrOutput() SignatureResponsePtrOutput {
-	return i.ToSignatureResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SignatureResponseArgs) ToSignatureResponsePtrOutputWithContext(ctx context.Context) SignatureResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SignatureResponseOutput).ToSignatureResponsePtrOutputWithContext(ctx)
-}
-
-// SignatureResponsePtrInput is an input type that accepts SignatureResponseArgs, SignatureResponsePtr and SignatureResponsePtrOutput values.
-// You can construct a concrete instance of `SignatureResponsePtrInput` via:
-//
-//          SignatureResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SignatureResponsePtrInput interface {
-	pulumi.Input
-
-	ToSignatureResponsePtrOutput() SignatureResponsePtrOutput
-	ToSignatureResponsePtrOutputWithContext(context.Context) SignatureResponsePtrOutput
-}
-
-type signatureResponsePtrType SignatureResponseArgs
-
-func SignatureResponsePtr(v *SignatureResponseArgs) SignatureResponsePtrInput {
-	return (*signatureResponsePtrType)(v)
-}
-
-func (*signatureResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SignatureResponse)(nil)).Elem()
-}
-
-func (i *signatureResponsePtrType) ToSignatureResponsePtrOutput() SignatureResponsePtrOutput {
-	return i.ToSignatureResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *signatureResponsePtrType) ToSignatureResponsePtrOutputWithContext(ctx context.Context) SignatureResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SignatureResponsePtrOutput)
-}
-
 // User signature.
 type SignatureResponseOutput struct{ *pulumi.OutputState }
 
@@ -8082,16 +5557,6 @@ func (o SignatureResponseOutput) ToSignatureResponseOutput() SignatureResponseOu
 
 func (o SignatureResponseOutput) ToSignatureResponseOutputWithContext(ctx context.Context) SignatureResponseOutput {
 	return o
-}
-
-func (o SignatureResponseOutput) ToSignatureResponsePtrOutput() SignatureResponsePtrOutput {
-	return o.ToSignatureResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SignatureResponseOutput) ToSignatureResponsePtrOutputWithContext(ctx context.Context) SignatureResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SignatureResponse) *SignatureResponse {
-		return &v
-	}).(SignatureResponsePtrOutput)
 }
 
 // Optional. An image of the user's signature.
@@ -8112,70 +5577,6 @@ func (o SignatureResponseOutput) SignatureTime() pulumi.StringOutput {
 // User's UUID provided by the client.
 func (o SignatureResponseOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v SignatureResponse) string { return v.UserId }).(pulumi.StringOutput)
-}
-
-type SignatureResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SignatureResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SignatureResponse)(nil)).Elem()
-}
-
-func (o SignatureResponsePtrOutput) ToSignatureResponsePtrOutput() SignatureResponsePtrOutput {
-	return o
-}
-
-func (o SignatureResponsePtrOutput) ToSignatureResponsePtrOutputWithContext(ctx context.Context) SignatureResponsePtrOutput {
-	return o
-}
-
-func (o SignatureResponsePtrOutput) Elem() SignatureResponseOutput {
-	return o.ApplyT(func(v *SignatureResponse) SignatureResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SignatureResponse
-		return ret
-	}).(SignatureResponseOutput)
-}
-
-// Optional. An image of the user's signature.
-func (o SignatureResponsePtrOutput) Image() ImageResponsePtrOutput {
-	return o.ApplyT(func(v *SignatureResponse) *ImageResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Image
-	}).(ImageResponsePtrOutput)
-}
-
-// Optional. Metadata associated with the user's signature. For example, the user's name or the user's title.
-func (o SignatureResponsePtrOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *SignatureResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Metadata
-	}).(pulumi.StringMapOutput)
-}
-
-// Optional. Timestamp of the signature.
-func (o SignatureResponsePtrOutput) SignatureTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SignatureResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SignatureTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// User's UUID provided by the client.
-func (o SignatureResponsePtrOutput) UserId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SignatureResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UserId
-	}).(pulumi.StringPtrOutput)
 }
 
 // Contains configuration for streaming FHIR export.
@@ -8295,62 +5696,6 @@ type StreamConfigResponse struct {
 	BigqueryDestination GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponse `pulumi:"bigqueryDestination"`
 	// Supply a FHIR resource type (such as "Patient" or "Observation"). See https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats an empty list as an intent to stream all the supported resource types in this FHIR store.
 	ResourceTypes []string `pulumi:"resourceTypes"`
-}
-
-// StreamConfigResponseInput is an input type that accepts StreamConfigResponseArgs and StreamConfigResponseOutput values.
-// You can construct a concrete instance of `StreamConfigResponseInput` via:
-//
-//          StreamConfigResponseArgs{...}
-type StreamConfigResponseInput interface {
-	pulumi.Input
-
-	ToStreamConfigResponseOutput() StreamConfigResponseOutput
-	ToStreamConfigResponseOutputWithContext(context.Context) StreamConfigResponseOutput
-}
-
-// Contains configuration for streaming FHIR export.
-type StreamConfigResponseArgs struct {
-	// The destination BigQuery structure that contains both the dataset location and corresponding schema config. The output is organized in one table per resource type. The server reuses the existing tables (if any) that are named after the resource types, e.g. "Patient", "Observation". When there is no existing table for a given resource type, the server attempts to create one. When a table schema doesn't align with the schema config, either because of existing incompatible schema or out of band incompatible modification, the server does not stream in new data. One resolution in this case is to delete the incompatible table and let the server recreate one, though the newly created table only contains data after the table recreation. BigQuery imposes a 1 MB limit on streaming insert row size, therefore any resource mutation that generates more than 1 MB of BigQuery data will not be streamed. Results are written to BigQuery tables according to the parameters in BigQueryDestination.WriteDisposition. Different versions of the same resource are distinguishable by the meta.versionId and meta.lastUpdated columns. The operation (CREATE/UPDATE/DELETE) that results in the new version is recorded in the meta.tag. The tables contain all historical resource versions since streaming was enabled. For query convenience, the server also creates one view per table of the same name containing only the current resource version. The streamed data in the BigQuery dataset is not guaranteed to be completely unique. The combination of the id and meta.versionId columns should ideally identify a single unique row. But in rare cases, duplicates may exist. At query time, users may use the SQL select statement to keep only one of the duplicate rows given an id and meta.versionId pair. Alternatively, the server created view mentioned above also filters out duplicates. If a resource mutation cannot be streamed to BigQuery, errors will be logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
-	BigqueryDestination GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponseInput `pulumi:"bigqueryDestination"`
-	// Supply a FHIR resource type (such as "Patient" or "Observation"). See https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats an empty list as an intent to stream all the supported resource types in this FHIR store.
-	ResourceTypes pulumi.StringArrayInput `pulumi:"resourceTypes"`
-}
-
-func (StreamConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StreamConfigResponse)(nil)).Elem()
-}
-
-func (i StreamConfigResponseArgs) ToStreamConfigResponseOutput() StreamConfigResponseOutput {
-	return i.ToStreamConfigResponseOutputWithContext(context.Background())
-}
-
-func (i StreamConfigResponseArgs) ToStreamConfigResponseOutputWithContext(ctx context.Context) StreamConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StreamConfigResponseOutput)
-}
-
-// StreamConfigResponseArrayInput is an input type that accepts StreamConfigResponseArray and StreamConfigResponseArrayOutput values.
-// You can construct a concrete instance of `StreamConfigResponseArrayInput` via:
-//
-//          StreamConfigResponseArray{ StreamConfigResponseArgs{...} }
-type StreamConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToStreamConfigResponseArrayOutput() StreamConfigResponseArrayOutput
-	ToStreamConfigResponseArrayOutputWithContext(context.Context) StreamConfigResponseArrayOutput
-}
-
-type StreamConfigResponseArray []StreamConfigResponseInput
-
-func (StreamConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StreamConfigResponse)(nil)).Elem()
-}
-
-func (i StreamConfigResponseArray) ToStreamConfigResponseArrayOutput() StreamConfigResponseArrayOutput {
-	return i.ToStreamConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i StreamConfigResponseArray) ToStreamConfigResponseArrayOutputWithContext(ctx context.Context) StreamConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StreamConfigResponseArrayOutput)
 }
 
 // Contains configuration for streaming FHIR export.
@@ -8526,64 +5871,6 @@ type TypeResponse struct {
 	Name string `pulumi:"name"`
 	// If this is a primitive type then this field is the type of the primitive For example, STRING. Leave unspecified for composite types.
 	Primitive string `pulumi:"primitive"`
-}
-
-// TypeResponseInput is an input type that accepts TypeResponseArgs and TypeResponseOutput values.
-// You can construct a concrete instance of `TypeResponseInput` via:
-//
-//          TypeResponseArgs{...}
-type TypeResponseInput interface {
-	pulumi.Input
-
-	ToTypeResponseOutput() TypeResponseOutput
-	ToTypeResponseOutputWithContext(context.Context) TypeResponseOutput
-}
-
-// A type definition for some HL7v2 type (incl. Segments and Datatypes).
-type TypeResponseArgs struct {
-	// The (sub) fields this type has (if not primitive).
-	Fields FieldResponseArrayInput `pulumi:"fields"`
-	// The name of this type. This would be the segment or datatype name. For example, "PID" or "XPN".
-	Name pulumi.StringInput `pulumi:"name"`
-	// If this is a primitive type then this field is the type of the primitive For example, STRING. Leave unspecified for composite types.
-	Primitive pulumi.StringInput `pulumi:"primitive"`
-}
-
-func (TypeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TypeResponse)(nil)).Elem()
-}
-
-func (i TypeResponseArgs) ToTypeResponseOutput() TypeResponseOutput {
-	return i.ToTypeResponseOutputWithContext(context.Background())
-}
-
-func (i TypeResponseArgs) ToTypeResponseOutputWithContext(ctx context.Context) TypeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TypeResponseOutput)
-}
-
-// TypeResponseArrayInput is an input type that accepts TypeResponseArray and TypeResponseArrayOutput values.
-// You can construct a concrete instance of `TypeResponseArrayInput` via:
-//
-//          TypeResponseArray{ TypeResponseArgs{...} }
-type TypeResponseArrayInput interface {
-	pulumi.Input
-
-	ToTypeResponseArrayOutput() TypeResponseArrayOutput
-	ToTypeResponseArrayOutputWithContext(context.Context) TypeResponseArrayOutput
-}
-
-type TypeResponseArray []TypeResponseInput
-
-func (TypeResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TypeResponse)(nil)).Elem()
-}
-
-func (i TypeResponseArray) ToTypeResponseArrayOutput() TypeResponseArrayOutput {
-	return i.ToTypeResponseArrayOutputWithContext(context.Background())
-}
-
-func (i TypeResponseArray) ToTypeResponseArrayOutputWithContext(ctx context.Context) TypeResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TypeResponseArrayOutput)
 }
 
 // A type definition for some HL7v2 type (incl. Segments and Datatypes).
@@ -8866,84 +6153,6 @@ type ValidationConfigResponse struct {
 	EnabledImplementationGuides []string `pulumi:"enabledImplementationGuides"`
 }
 
-// ValidationConfigResponseInput is an input type that accepts ValidationConfigResponseArgs and ValidationConfigResponseOutput values.
-// You can construct a concrete instance of `ValidationConfigResponseInput` via:
-//
-//          ValidationConfigResponseArgs{...}
-type ValidationConfigResponseInput interface {
-	pulumi.Input
-
-	ToValidationConfigResponseOutput() ValidationConfigResponseOutput
-	ToValidationConfigResponseOutputWithContext(context.Context) ValidationConfigResponseOutput
-}
-
-// Contains the configuration for FHIR profiles and validation.
-type ValidationConfigResponseArgs struct {
-	// Whether to disable FHIRPath validation for incoming resources. Set this to true to disable checking incoming resources for conformance against FHIRPath requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
-	DisableFhirpathValidation pulumi.BoolInput `pulumi:"disableFhirpathValidation"`
-	// Whether to disable profile validation for this FHIR store. Set this to true to disable checking incoming resources for conformance against StructureDefinitions in this FHIR store.
-	DisableProfileValidation pulumi.BoolInput `pulumi:"disableProfileValidation"`
-	// Whether to disable reference type validation for incoming resources. Set this to true to disable checking incoming resources for conformance against reference type requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
-	DisableReferenceTypeValidation pulumi.BoolInput `pulumi:"disableReferenceTypeValidation"`
-	// Whether to disable required fields validation for incoming resources. Set this to true to disable checking incoming resources for conformance against required fields requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
-	DisableRequiredFieldValidation pulumi.BoolInput `pulumi:"disableRequiredFieldValidation"`
-	// A list of ImplementationGuide URLs in this FHIR store that are used to configure the profiles to use for validation. For example, to use the US Core profiles for validation, set `enabled_implementation_guides` to `["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]`. If `enabled_implementation_guides` is empty or omitted, then incoming resources are only required to conform to the base FHIR profiles. Otherwise, a resource must conform to at least one profile listed in the `global` property of one of the enabled ImplementationGuides. The Cloud Healthcare API does not currently enforce all of the rules in a StructureDefinition. The following rules are supported: - min/max - minValue/maxValue - maxLength - type - fixed[x] - pattern[x] on simple types - slicing, when using "value" as the discriminator type When a URL cannot be resolved (for example, in a type assertion), the server does not return an error.
-	EnabledImplementationGuides pulumi.StringArrayInput `pulumi:"enabledImplementationGuides"`
-}
-
-func (ValidationConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ValidationConfigResponse)(nil)).Elem()
-}
-
-func (i ValidationConfigResponseArgs) ToValidationConfigResponseOutput() ValidationConfigResponseOutput {
-	return i.ToValidationConfigResponseOutputWithContext(context.Background())
-}
-
-func (i ValidationConfigResponseArgs) ToValidationConfigResponseOutputWithContext(ctx context.Context) ValidationConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ValidationConfigResponseOutput)
-}
-
-func (i ValidationConfigResponseArgs) ToValidationConfigResponsePtrOutput() ValidationConfigResponsePtrOutput {
-	return i.ToValidationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ValidationConfigResponseArgs) ToValidationConfigResponsePtrOutputWithContext(ctx context.Context) ValidationConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ValidationConfigResponseOutput).ToValidationConfigResponsePtrOutputWithContext(ctx)
-}
-
-// ValidationConfigResponsePtrInput is an input type that accepts ValidationConfigResponseArgs, ValidationConfigResponsePtr and ValidationConfigResponsePtrOutput values.
-// You can construct a concrete instance of `ValidationConfigResponsePtrInput` via:
-//
-//          ValidationConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ValidationConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToValidationConfigResponsePtrOutput() ValidationConfigResponsePtrOutput
-	ToValidationConfigResponsePtrOutputWithContext(context.Context) ValidationConfigResponsePtrOutput
-}
-
-type validationConfigResponsePtrType ValidationConfigResponseArgs
-
-func ValidationConfigResponsePtr(v *ValidationConfigResponseArgs) ValidationConfigResponsePtrInput {
-	return (*validationConfigResponsePtrType)(v)
-}
-
-func (*validationConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ValidationConfigResponse)(nil)).Elem()
-}
-
-func (i *validationConfigResponsePtrType) ToValidationConfigResponsePtrOutput() ValidationConfigResponsePtrOutput {
-	return i.ToValidationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *validationConfigResponsePtrType) ToValidationConfigResponsePtrOutputWithContext(ctx context.Context) ValidationConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ValidationConfigResponsePtrOutput)
-}
-
 // Contains the configuration for FHIR profiles and validation.
 type ValidationConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -8957,16 +6166,6 @@ func (o ValidationConfigResponseOutput) ToValidationConfigResponseOutput() Valid
 
 func (o ValidationConfigResponseOutput) ToValidationConfigResponseOutputWithContext(ctx context.Context) ValidationConfigResponseOutput {
 	return o
-}
-
-func (o ValidationConfigResponseOutput) ToValidationConfigResponsePtrOutput() ValidationConfigResponsePtrOutput {
-	return o.ToValidationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ValidationConfigResponseOutput) ToValidationConfigResponsePtrOutputWithContext(ctx context.Context) ValidationConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ValidationConfigResponse) *ValidationConfigResponse {
-		return &v
-	}).(ValidationConfigResponsePtrOutput)
 }
 
 // Whether to disable FHIRPath validation for incoming resources. Set this to true to disable checking incoming resources for conformance against FHIRPath requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
@@ -8992,80 +6191,6 @@ func (o ValidationConfigResponseOutput) DisableRequiredFieldValidation() pulumi.
 // A list of ImplementationGuide URLs in this FHIR store that are used to configure the profiles to use for validation. For example, to use the US Core profiles for validation, set `enabled_implementation_guides` to `["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]`. If `enabled_implementation_guides` is empty or omitted, then incoming resources are only required to conform to the base FHIR profiles. Otherwise, a resource must conform to at least one profile listed in the `global` property of one of the enabled ImplementationGuides. The Cloud Healthcare API does not currently enforce all of the rules in a StructureDefinition. The following rules are supported: - min/max - minValue/maxValue - maxLength - type - fixed[x] - pattern[x] on simple types - slicing, when using "value" as the discriminator type When a URL cannot be resolved (for example, in a type assertion), the server does not return an error.
 func (o ValidationConfigResponseOutput) EnabledImplementationGuides() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ValidationConfigResponse) []string { return v.EnabledImplementationGuides }).(pulumi.StringArrayOutput)
-}
-
-type ValidationConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ValidationConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ValidationConfigResponse)(nil)).Elem()
-}
-
-func (o ValidationConfigResponsePtrOutput) ToValidationConfigResponsePtrOutput() ValidationConfigResponsePtrOutput {
-	return o
-}
-
-func (o ValidationConfigResponsePtrOutput) ToValidationConfigResponsePtrOutputWithContext(ctx context.Context) ValidationConfigResponsePtrOutput {
-	return o
-}
-
-func (o ValidationConfigResponsePtrOutput) Elem() ValidationConfigResponseOutput {
-	return o.ApplyT(func(v *ValidationConfigResponse) ValidationConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ValidationConfigResponse
-		return ret
-	}).(ValidationConfigResponseOutput)
-}
-
-// Whether to disable FHIRPath validation for incoming resources. Set this to true to disable checking incoming resources for conformance against FHIRPath requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
-func (o ValidationConfigResponsePtrOutput) DisableFhirpathValidation() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ValidationConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.DisableFhirpathValidation
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Whether to disable profile validation for this FHIR store. Set this to true to disable checking incoming resources for conformance against StructureDefinitions in this FHIR store.
-func (o ValidationConfigResponsePtrOutput) DisableProfileValidation() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ValidationConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.DisableProfileValidation
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Whether to disable reference type validation for incoming resources. Set this to true to disable checking incoming resources for conformance against reference type requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
-func (o ValidationConfigResponsePtrOutput) DisableReferenceTypeValidation() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ValidationConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.DisableReferenceTypeValidation
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Whether to disable required fields validation for incoming resources. Set this to true to disable checking incoming resources for conformance against required fields requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
-func (o ValidationConfigResponsePtrOutput) DisableRequiredFieldValidation() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ValidationConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.DisableRequiredFieldValidation
-	}).(pulumi.BoolPtrOutput)
-}
-
-// A list of ImplementationGuide URLs in this FHIR store that are used to configure the profiles to use for validation. For example, to use the US Core profiles for validation, set `enabled_implementation_guides` to `["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]`. If `enabled_implementation_guides` is empty or omitted, then incoming resources are only required to conform to the base FHIR profiles. Otherwise, a resource must conform to at least one profile listed in the `global` property of one of the enabled ImplementationGuides. The Cloud Healthcare API does not currently enforce all of the rules in a StructureDefinition. The following rules are supported: - min/max - minValue/maxValue - maxLength - type - fixed[x] - pattern[x] on simple types - slicing, when using "value" as the discriminator type When a URL cannot be resolved (for example, in a type assertion), the server does not return an error.
-func (o ValidationConfigResponsePtrOutput) EnabledImplementationGuides() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ValidationConfigResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.EnabledImplementationGuides
-	}).(pulumi.StringArrayOutput)
 }
 
 // Describes a selector for extracting and matching an MSH field to a value.
@@ -9183,62 +6308,6 @@ type VersionSourceResponse struct {
 	MshField string `pulumi:"mshField"`
 	// The value to match with the field. For example, "My Application Name" or "2.3".
 	Value string `pulumi:"value"`
-}
-
-// VersionSourceResponseInput is an input type that accepts VersionSourceResponseArgs and VersionSourceResponseOutput values.
-// You can construct a concrete instance of `VersionSourceResponseInput` via:
-//
-//          VersionSourceResponseArgs{...}
-type VersionSourceResponseInput interface {
-	pulumi.Input
-
-	ToVersionSourceResponseOutput() VersionSourceResponseOutput
-	ToVersionSourceResponseOutputWithContext(context.Context) VersionSourceResponseOutput
-}
-
-// Describes a selector for extracting and matching an MSH field to a value.
-type VersionSourceResponseArgs struct {
-	// The field to extract from the MSH segment. For example, "3.1" or "18[1].1".
-	MshField pulumi.StringInput `pulumi:"mshField"`
-	// The value to match with the field. For example, "My Application Name" or "2.3".
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (VersionSourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VersionSourceResponse)(nil)).Elem()
-}
-
-func (i VersionSourceResponseArgs) ToVersionSourceResponseOutput() VersionSourceResponseOutput {
-	return i.ToVersionSourceResponseOutputWithContext(context.Background())
-}
-
-func (i VersionSourceResponseArgs) ToVersionSourceResponseOutputWithContext(ctx context.Context) VersionSourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VersionSourceResponseOutput)
-}
-
-// VersionSourceResponseArrayInput is an input type that accepts VersionSourceResponseArray and VersionSourceResponseArrayOutput values.
-// You can construct a concrete instance of `VersionSourceResponseArrayInput` via:
-//
-//          VersionSourceResponseArray{ VersionSourceResponseArgs{...} }
-type VersionSourceResponseArrayInput interface {
-	pulumi.Input
-
-	ToVersionSourceResponseArrayOutput() VersionSourceResponseArrayOutput
-	ToVersionSourceResponseArrayOutputWithContext(context.Context) VersionSourceResponseArrayOutput
-}
-
-type VersionSourceResponseArray []VersionSourceResponseInput
-
-func (VersionSourceResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VersionSourceResponse)(nil)).Elem()
-}
-
-func (i VersionSourceResponseArray) ToVersionSourceResponseArrayOutput() VersionSourceResponseArrayOutput {
-	return i.ToVersionSourceResponseArrayOutputWithContext(context.Background())
-}
-
-func (i VersionSourceResponseArray) ToVersionSourceResponseArrayOutputWithContext(ctx context.Context) VersionSourceResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VersionSourceResponseArrayOutput)
 }
 
 // Describes a selector for extracting and matching an MSH field to a value.
@@ -9403,62 +6472,6 @@ type VertexResponse struct {
 	Y float64 `pulumi:"y"`
 }
 
-// VertexResponseInput is an input type that accepts VertexResponseArgs and VertexResponseOutput values.
-// You can construct a concrete instance of `VertexResponseInput` via:
-//
-//          VertexResponseArgs{...}
-type VertexResponseInput interface {
-	pulumi.Input
-
-	ToVertexResponseOutput() VertexResponseOutput
-	ToVertexResponseOutputWithContext(context.Context) VertexResponseOutput
-}
-
-// A 2D coordinate in an image. The origin is the top-left.
-type VertexResponseArgs struct {
-	// X coordinate.
-	X pulumi.Float64Input `pulumi:"x"`
-	// Y coordinate.
-	Y pulumi.Float64Input `pulumi:"y"`
-}
-
-func (VertexResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VertexResponse)(nil)).Elem()
-}
-
-func (i VertexResponseArgs) ToVertexResponseOutput() VertexResponseOutput {
-	return i.ToVertexResponseOutputWithContext(context.Background())
-}
-
-func (i VertexResponseArgs) ToVertexResponseOutputWithContext(ctx context.Context) VertexResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VertexResponseOutput)
-}
-
-// VertexResponseArrayInput is an input type that accepts VertexResponseArray and VertexResponseArrayOutput values.
-// You can construct a concrete instance of `VertexResponseArrayInput` via:
-//
-//          VertexResponseArray{ VertexResponseArgs{...} }
-type VertexResponseArrayInput interface {
-	pulumi.Input
-
-	ToVertexResponseArrayOutput() VertexResponseArrayOutput
-	ToVertexResponseArrayOutputWithContext(context.Context) VertexResponseArrayOutput
-}
-
-type VertexResponseArray []VertexResponseInput
-
-func (VertexResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VertexResponse)(nil)).Elem()
-}
-
-func (i VertexResponseArray) ToVertexResponseArrayOutput() VertexResponseArrayOutput {
-	return i.ToVertexResponseArrayOutputWithContext(context.Background())
-}
-
-func (i VertexResponseArray) ToVertexResponseArrayOutputWithContext(ctx context.Context) VertexResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VertexResponseArrayOutput)
-}
-
 // A 2D coordinate in an image. The origin is the top-left.
 type VertexResponseOutput struct{ *pulumi.OutputState }
 
@@ -9507,146 +6520,76 @@ func (o VertexResponseArrayOutput) Index(i pulumi.IntInput) VertexResponseOutput
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AnnotationSourceInput)(nil)).Elem(), AnnotationSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnnotationSourcePtrInput)(nil)).Elem(), AnnotationSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AnnotationSourceResponseInput)(nil)).Elem(), AnnotationSourceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AnnotationSourceResponsePtrInput)(nil)).Elem(), AnnotationSourceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttributeInput)(nil)).Elem(), AttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttributeArrayInput)(nil)).Elem(), AttributeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AttributeResponseInput)(nil)).Elem(), AttributeResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AttributeResponseArrayInput)(nil)).Elem(), AttributeResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseInput)(nil)).Elem(), AuditConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseArrayInput)(nil)).Elem(), AuditConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseInput)(nil)).Elem(), AuditLogConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseArrayInput)(nil)).Elem(), AuditLogConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BoundingPolyInput)(nil)).Elem(), BoundingPolyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BoundingPolyArrayInput)(nil)).Elem(), BoundingPolyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BoundingPolyResponseInput)(nil)).Elem(), BoundingPolyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BoundingPolyResponseArrayInput)(nil)).Elem(), BoundingPolyResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudHealthcareSourceInput)(nil)).Elem(), CloudHealthcareSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudHealthcareSourcePtrInput)(nil)).Elem(), CloudHealthcareSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudHealthcareSourceResponseInput)(nil)).Elem(), CloudHealthcareSourceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudHealthcareSourceResponsePtrInput)(nil)).Elem(), CloudHealthcareSourceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FieldInput)(nil)).Elem(), FieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FieldArrayInput)(nil)).Elem(), FieldArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FieldResponseInput)(nil)).Elem(), FieldResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FieldResponseArrayInput)(nil)).Elem(), FieldResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1beta1ConsentPolicyInput)(nil)).Elem(), GoogleCloudHealthcareV1beta1ConsentPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1beta1ConsentPolicyArrayInput)(nil)).Elem(), GoogleCloudHealthcareV1beta1ConsentPolicyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1beta1ConsentPolicyResponseInput)(nil)).Elem(), GoogleCloudHealthcareV1beta1ConsentPolicyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1beta1ConsentPolicyResponseArrayInput)(nil)).Elem(), GoogleCloudHealthcareV1beta1ConsentPolicyResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1beta1DicomBigQueryDestinationInput)(nil)).Elem(), GoogleCloudHealthcareV1beta1DicomBigQueryDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1beta1DicomBigQueryDestinationPtrInput)(nil)).Elem(), GoogleCloudHealthcareV1beta1DicomBigQueryDestinationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponseInput)(nil)).Elem(), GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1beta1DicomStreamConfigInput)(nil)).Elem(), GoogleCloudHealthcareV1beta1DicomStreamConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1beta1DicomStreamConfigArrayInput)(nil)).Elem(), GoogleCloudHealthcareV1beta1DicomStreamConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1beta1DicomStreamConfigResponseInput)(nil)).Elem(), GoogleCloudHealthcareV1beta1DicomStreamConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1beta1DicomStreamConfigResponseArrayInput)(nil)).Elem(), GoogleCloudHealthcareV1beta1DicomStreamConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1beta1FhirBigQueryDestinationInput)(nil)).Elem(), GoogleCloudHealthcareV1beta1FhirBigQueryDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1beta1FhirBigQueryDestinationPtrInput)(nil)).Elem(), GoogleCloudHealthcareV1beta1FhirBigQueryDestinationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponseInput)(nil)).Elem(), GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Hl7SchemaConfigInput)(nil)).Elem(), Hl7SchemaConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Hl7SchemaConfigArrayInput)(nil)).Elem(), Hl7SchemaConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*Hl7SchemaConfigResponseInput)(nil)).Elem(), Hl7SchemaConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*Hl7SchemaConfigResponseArrayInput)(nil)).Elem(), Hl7SchemaConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Hl7TypesConfigInput)(nil)).Elem(), Hl7TypesConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Hl7TypesConfigArrayInput)(nil)).Elem(), Hl7TypesConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*Hl7TypesConfigResponseInput)(nil)).Elem(), Hl7TypesConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*Hl7TypesConfigResponseArrayInput)(nil)).Elem(), Hl7TypesConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Hl7V2NotificationConfigInput)(nil)).Elem(), Hl7V2NotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Hl7V2NotificationConfigArrayInput)(nil)).Elem(), Hl7V2NotificationConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*Hl7V2NotificationConfigResponseInput)(nil)).Elem(), Hl7V2NotificationConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*Hl7V2NotificationConfigResponseArrayInput)(nil)).Elem(), Hl7V2NotificationConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageInput)(nil)).Elem(), ImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImagePtrInput)(nil)).Elem(), ImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageArrayInput)(nil)).Elem(), ImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageAnnotationInput)(nil)).Elem(), ImageAnnotationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageAnnotationPtrInput)(nil)).Elem(), ImageAnnotationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ImageAnnotationResponseInput)(nil)).Elem(), ImageAnnotationResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ImageAnnotationResponsePtrInput)(nil)).Elem(), ImageAnnotationResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ImageResponseInput)(nil)).Elem(), ImageResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ImageResponsePtrInput)(nil)).Elem(), ImageResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ImageResponseArrayInput)(nil)).Elem(), ImageResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigInput)(nil)).Elem(), NotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigPtrInput)(nil)).Elem(), NotificationConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigResponseInput)(nil)).Elem(), NotificationConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigResponsePtrInput)(nil)).Elem(), NotificationConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ParsedDataResponseInput)(nil)).Elem(), ParsedDataResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ParsedDataResponsePtrInput)(nil)).Elem(), ParsedDataResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ParserConfigInput)(nil)).Elem(), ParserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ParserConfigPtrInput)(nil)).Elem(), ParserConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ParserConfigResponseInput)(nil)).Elem(), ParserConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ParserConfigResponsePtrInput)(nil)).Elem(), ParserConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PatientIdInput)(nil)).Elem(), PatientIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PatientIdArrayInput)(nil)).Elem(), PatientIdArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PatientIdResponseInput)(nil)).Elem(), PatientIdResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PatientIdResponseArrayInput)(nil)).Elem(), PatientIdResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAnnotationInput)(nil)).Elem(), ResourceAnnotationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAnnotationPtrInput)(nil)).Elem(), ResourceAnnotationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAnnotationResponseInput)(nil)).Elem(), ResourceAnnotationResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAnnotationResponsePtrInput)(nil)).Elem(), ResourceAnnotationResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaConfigInput)(nil)).Elem(), SchemaConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaConfigPtrInput)(nil)).Elem(), SchemaConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SchemaConfigResponseInput)(nil)).Elem(), SchemaConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaPackageInput)(nil)).Elem(), SchemaPackageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaPackagePtrInput)(nil)).Elem(), SchemaPackageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SchemaPackageResponseInput)(nil)).Elem(), SchemaPackageResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SchemaPackageResponsePtrInput)(nil)).Elem(), SchemaPackageResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchematizedDataInput)(nil)).Elem(), SchematizedDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchematizedDataPtrInput)(nil)).Elem(), SchematizedDataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SchematizedDataResponseInput)(nil)).Elem(), SchematizedDataResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SchematizedDataResponsePtrInput)(nil)).Elem(), SchematizedDataResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SearchConfigInput)(nil)).Elem(), SearchConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SearchConfigPtrInput)(nil)).Elem(), SearchConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SearchConfigResponseInput)(nil)).Elem(), SearchConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SearchConfigResponsePtrInput)(nil)).Elem(), SearchConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SearchParameterInput)(nil)).Elem(), SearchParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SearchParameterArrayInput)(nil)).Elem(), SearchParameterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SearchParameterResponseInput)(nil)).Elem(), SearchParameterResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SearchParameterResponseArrayInput)(nil)).Elem(), SearchParameterResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SegmentResponseInput)(nil)).Elem(), SegmentResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SegmentResponseArrayInput)(nil)).Elem(), SegmentResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SensitiveTextAnnotationInput)(nil)).Elem(), SensitiveTextAnnotationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SensitiveTextAnnotationPtrInput)(nil)).Elem(), SensitiveTextAnnotationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SensitiveTextAnnotationResponseInput)(nil)).Elem(), SensitiveTextAnnotationResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SensitiveTextAnnotationResponsePtrInput)(nil)).Elem(), SensitiveTextAnnotationResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SignatureInput)(nil)).Elem(), SignatureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SignaturePtrInput)(nil)).Elem(), SignatureArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SignatureResponseInput)(nil)).Elem(), SignatureResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SignatureResponsePtrInput)(nil)).Elem(), SignatureResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamConfigInput)(nil)).Elem(), StreamConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamConfigArrayInput)(nil)).Elem(), StreamConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StreamConfigResponseInput)(nil)).Elem(), StreamConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StreamConfigResponseArrayInput)(nil)).Elem(), StreamConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TypeInput)(nil)).Elem(), TypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TypeArrayInput)(nil)).Elem(), TypeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TypeResponseInput)(nil)).Elem(), TypeResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TypeResponseArrayInput)(nil)).Elem(), TypeResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ValidationConfigInput)(nil)).Elem(), ValidationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ValidationConfigPtrInput)(nil)).Elem(), ValidationConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ValidationConfigResponseInput)(nil)).Elem(), ValidationConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ValidationConfigResponsePtrInput)(nil)).Elem(), ValidationConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VersionSourceInput)(nil)).Elem(), VersionSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VersionSourceArrayInput)(nil)).Elem(), VersionSourceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VersionSourceResponseInput)(nil)).Elem(), VersionSourceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VersionSourceResponseArrayInput)(nil)).Elem(), VersionSourceResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VertexInput)(nil)).Elem(), VertexArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VertexArrayInput)(nil)).Elem(), VertexArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VertexResponseInput)(nil)).Elem(), VertexResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VertexResponseArrayInput)(nil)).Elem(), VertexResponseArray{})
 	pulumi.RegisterOutputType(AnnotationSourceOutput{})
 	pulumi.RegisterOutputType(AnnotationSourcePtrOutput{})
 	pulumi.RegisterOutputType(AnnotationSourceResponseOutput{})
-	pulumi.RegisterOutputType(AnnotationSourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(AttributeOutput{})
 	pulumi.RegisterOutputType(AttributeArrayOutput{})
 	pulumi.RegisterOutputType(AttributeResponseOutput{})
@@ -9670,7 +6613,6 @@ func init() {
 	pulumi.RegisterOutputType(CloudHealthcareSourceOutput{})
 	pulumi.RegisterOutputType(CloudHealthcareSourcePtrOutput{})
 	pulumi.RegisterOutputType(CloudHealthcareSourceResponseOutput{})
-	pulumi.RegisterOutputType(CloudHealthcareSourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
@@ -9710,20 +6652,15 @@ func init() {
 	pulumi.RegisterOutputType(ImageAnnotationOutput{})
 	pulumi.RegisterOutputType(ImageAnnotationPtrOutput{})
 	pulumi.RegisterOutputType(ImageAnnotationResponseOutput{})
-	pulumi.RegisterOutputType(ImageAnnotationResponsePtrOutput{})
 	pulumi.RegisterOutputType(ImageResponseOutput{})
-	pulumi.RegisterOutputType(ImageResponsePtrOutput{})
 	pulumi.RegisterOutputType(ImageResponseArrayOutput{})
 	pulumi.RegisterOutputType(NotificationConfigOutput{})
 	pulumi.RegisterOutputType(NotificationConfigPtrOutput{})
 	pulumi.RegisterOutputType(NotificationConfigResponseOutput{})
-	pulumi.RegisterOutputType(NotificationConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(ParsedDataResponseOutput{})
-	pulumi.RegisterOutputType(ParsedDataResponsePtrOutput{})
 	pulumi.RegisterOutputType(ParserConfigOutput{})
 	pulumi.RegisterOutputType(ParserConfigPtrOutput{})
 	pulumi.RegisterOutputType(ParserConfigResponseOutput{})
-	pulumi.RegisterOutputType(ParserConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(PatientIdOutput{})
 	pulumi.RegisterOutputType(PatientIdArrayOutput{})
 	pulumi.RegisterOutputType(PatientIdResponseOutput{})
@@ -9731,22 +6668,18 @@ func init() {
 	pulumi.RegisterOutputType(ResourceAnnotationOutput{})
 	pulumi.RegisterOutputType(ResourceAnnotationPtrOutput{})
 	pulumi.RegisterOutputType(ResourceAnnotationResponseOutput{})
-	pulumi.RegisterOutputType(ResourceAnnotationResponsePtrOutput{})
 	pulumi.RegisterOutputType(SchemaConfigOutput{})
 	pulumi.RegisterOutputType(SchemaConfigPtrOutput{})
 	pulumi.RegisterOutputType(SchemaConfigResponseOutput{})
 	pulumi.RegisterOutputType(SchemaPackageOutput{})
 	pulumi.RegisterOutputType(SchemaPackagePtrOutput{})
 	pulumi.RegisterOutputType(SchemaPackageResponseOutput{})
-	pulumi.RegisterOutputType(SchemaPackageResponsePtrOutput{})
 	pulumi.RegisterOutputType(SchematizedDataOutput{})
 	pulumi.RegisterOutputType(SchematizedDataPtrOutput{})
 	pulumi.RegisterOutputType(SchematizedDataResponseOutput{})
-	pulumi.RegisterOutputType(SchematizedDataResponsePtrOutput{})
 	pulumi.RegisterOutputType(SearchConfigOutput{})
 	pulumi.RegisterOutputType(SearchConfigPtrOutput{})
 	pulumi.RegisterOutputType(SearchConfigResponseOutput{})
-	pulumi.RegisterOutputType(SearchConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(SearchParameterOutput{})
 	pulumi.RegisterOutputType(SearchParameterArrayOutput{})
 	pulumi.RegisterOutputType(SearchParameterResponseOutput{})
@@ -9756,11 +6689,9 @@ func init() {
 	pulumi.RegisterOutputType(SensitiveTextAnnotationOutput{})
 	pulumi.RegisterOutputType(SensitiveTextAnnotationPtrOutput{})
 	pulumi.RegisterOutputType(SensitiveTextAnnotationResponseOutput{})
-	pulumi.RegisterOutputType(SensitiveTextAnnotationResponsePtrOutput{})
 	pulumi.RegisterOutputType(SignatureOutput{})
 	pulumi.RegisterOutputType(SignaturePtrOutput{})
 	pulumi.RegisterOutputType(SignatureResponseOutput{})
-	pulumi.RegisterOutputType(SignatureResponsePtrOutput{})
 	pulumi.RegisterOutputType(StreamConfigOutput{})
 	pulumi.RegisterOutputType(StreamConfigArrayOutput{})
 	pulumi.RegisterOutputType(StreamConfigResponseOutput{})
@@ -9772,7 +6703,6 @@ func init() {
 	pulumi.RegisterOutputType(ValidationConfigOutput{})
 	pulumi.RegisterOutputType(ValidationConfigPtrOutput{})
 	pulumi.RegisterOutputType(ValidationConfigResponseOutput{})
-	pulumi.RegisterOutputType(ValidationConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(VersionSourceOutput{})
 	pulumi.RegisterOutputType(VersionSourceArrayOutput{})
 	pulumi.RegisterOutputType(VersionSourceResponseOutput{})

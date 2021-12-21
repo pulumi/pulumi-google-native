@@ -120,7 +120,7 @@ type TrialInput interface {
 }
 
 func (*Trial) ElementType() reflect.Type {
-	return reflect.TypeOf((*Trial)(nil))
+	return reflect.TypeOf((**Trial)(nil)).Elem()
 }
 
 func (i *Trial) ToTrialOutput() TrialOutput {
@@ -134,7 +134,7 @@ func (i *Trial) ToTrialOutputWithContext(ctx context.Context) TrialOutput {
 type TrialOutput struct{ *pulumi.OutputState }
 
 func (TrialOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Trial)(nil))
+	return reflect.TypeOf((**Trial)(nil)).Elem()
 }
 
 func (o TrialOutput) ToTrialOutput() TrialOutput {

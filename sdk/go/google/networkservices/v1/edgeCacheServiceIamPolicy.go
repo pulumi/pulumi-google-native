@@ -113,7 +113,7 @@ type EdgeCacheServiceIamPolicyInput interface {
 }
 
 func (*EdgeCacheServiceIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*EdgeCacheServiceIamPolicy)(nil))
+	return reflect.TypeOf((**EdgeCacheServiceIamPolicy)(nil)).Elem()
 }
 
 func (i *EdgeCacheServiceIamPolicy) ToEdgeCacheServiceIamPolicyOutput() EdgeCacheServiceIamPolicyOutput {
@@ -127,7 +127,7 @@ func (i *EdgeCacheServiceIamPolicy) ToEdgeCacheServiceIamPolicyOutputWithContext
 type EdgeCacheServiceIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EdgeCacheServiceIamPolicy)(nil))
+	return reflect.TypeOf((**EdgeCacheServiceIamPolicy)(nil)).Elem()
 }
 
 func (o EdgeCacheServiceIamPolicyOutput) ToEdgeCacheServiceIamPolicyOutput() EdgeCacheServiceIamPolicyOutput {

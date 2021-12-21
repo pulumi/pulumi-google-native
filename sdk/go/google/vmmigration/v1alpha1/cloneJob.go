@@ -113,7 +113,7 @@ type CloneJobInput interface {
 }
 
 func (*CloneJob) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloneJob)(nil))
+	return reflect.TypeOf((**CloneJob)(nil)).Elem()
 }
 
 func (i *CloneJob) ToCloneJobOutput() CloneJobOutput {
@@ -127,7 +127,7 @@ func (i *CloneJob) ToCloneJobOutputWithContext(ctx context.Context) CloneJobOutp
 type CloneJobOutput struct{ *pulumi.OutputState }
 
 func (CloneJobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloneJob)(nil))
+	return reflect.TypeOf((**CloneJob)(nil)).Elem()
 }
 
 func (o CloneJobOutput) ToCloneJobOutput() CloneJobOutput {

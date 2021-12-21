@@ -400,78 +400,6 @@ type BucketAccessControlProjectTeamResponse struct {
 	Team string `pulumi:"team"`
 }
 
-// BucketAccessControlProjectTeamResponseInput is an input type that accepts BucketAccessControlProjectTeamResponseArgs and BucketAccessControlProjectTeamResponseOutput values.
-// You can construct a concrete instance of `BucketAccessControlProjectTeamResponseInput` via:
-//
-//          BucketAccessControlProjectTeamResponseArgs{...}
-type BucketAccessControlProjectTeamResponseInput interface {
-	pulumi.Input
-
-	ToBucketAccessControlProjectTeamResponseOutput() BucketAccessControlProjectTeamResponseOutput
-	ToBucketAccessControlProjectTeamResponseOutputWithContext(context.Context) BucketAccessControlProjectTeamResponseOutput
-}
-
-// The project team associated with the entity, if any.
-type BucketAccessControlProjectTeamResponseArgs struct {
-	// The project number.
-	ProjectNumber pulumi.StringInput `pulumi:"projectNumber"`
-	// The team.
-	Team pulumi.StringInput `pulumi:"team"`
-}
-
-func (BucketAccessControlProjectTeamResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketAccessControlProjectTeamResponse)(nil)).Elem()
-}
-
-func (i BucketAccessControlProjectTeamResponseArgs) ToBucketAccessControlProjectTeamResponseOutput() BucketAccessControlProjectTeamResponseOutput {
-	return i.ToBucketAccessControlProjectTeamResponseOutputWithContext(context.Background())
-}
-
-func (i BucketAccessControlProjectTeamResponseArgs) ToBucketAccessControlProjectTeamResponseOutputWithContext(ctx context.Context) BucketAccessControlProjectTeamResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketAccessControlProjectTeamResponseOutput)
-}
-
-func (i BucketAccessControlProjectTeamResponseArgs) ToBucketAccessControlProjectTeamResponsePtrOutput() BucketAccessControlProjectTeamResponsePtrOutput {
-	return i.ToBucketAccessControlProjectTeamResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BucketAccessControlProjectTeamResponseArgs) ToBucketAccessControlProjectTeamResponsePtrOutputWithContext(ctx context.Context) BucketAccessControlProjectTeamResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketAccessControlProjectTeamResponseOutput).ToBucketAccessControlProjectTeamResponsePtrOutputWithContext(ctx)
-}
-
-// BucketAccessControlProjectTeamResponsePtrInput is an input type that accepts BucketAccessControlProjectTeamResponseArgs, BucketAccessControlProjectTeamResponsePtr and BucketAccessControlProjectTeamResponsePtrOutput values.
-// You can construct a concrete instance of `BucketAccessControlProjectTeamResponsePtrInput` via:
-//
-//          BucketAccessControlProjectTeamResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BucketAccessControlProjectTeamResponsePtrInput interface {
-	pulumi.Input
-
-	ToBucketAccessControlProjectTeamResponsePtrOutput() BucketAccessControlProjectTeamResponsePtrOutput
-	ToBucketAccessControlProjectTeamResponsePtrOutputWithContext(context.Context) BucketAccessControlProjectTeamResponsePtrOutput
-}
-
-type bucketAccessControlProjectTeamResponsePtrType BucketAccessControlProjectTeamResponseArgs
-
-func BucketAccessControlProjectTeamResponsePtr(v *BucketAccessControlProjectTeamResponseArgs) BucketAccessControlProjectTeamResponsePtrInput {
-	return (*bucketAccessControlProjectTeamResponsePtrType)(v)
-}
-
-func (*bucketAccessControlProjectTeamResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketAccessControlProjectTeamResponse)(nil)).Elem()
-}
-
-func (i *bucketAccessControlProjectTeamResponsePtrType) ToBucketAccessControlProjectTeamResponsePtrOutput() BucketAccessControlProjectTeamResponsePtrOutput {
-	return i.ToBucketAccessControlProjectTeamResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *bucketAccessControlProjectTeamResponsePtrType) ToBucketAccessControlProjectTeamResponsePtrOutputWithContext(ctx context.Context) BucketAccessControlProjectTeamResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketAccessControlProjectTeamResponsePtrOutput)
-}
-
 // The project team associated with the entity, if any.
 type BucketAccessControlProjectTeamResponseOutput struct{ *pulumi.OutputState }
 
@@ -487,16 +415,6 @@ func (o BucketAccessControlProjectTeamResponseOutput) ToBucketAccessControlProje
 	return o
 }
 
-func (o BucketAccessControlProjectTeamResponseOutput) ToBucketAccessControlProjectTeamResponsePtrOutput() BucketAccessControlProjectTeamResponsePtrOutput {
-	return o.ToBucketAccessControlProjectTeamResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BucketAccessControlProjectTeamResponseOutput) ToBucketAccessControlProjectTeamResponsePtrOutputWithContext(ctx context.Context) BucketAccessControlProjectTeamResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketAccessControlProjectTeamResponse) *BucketAccessControlProjectTeamResponse {
-		return &v
-	}).(BucketAccessControlProjectTeamResponsePtrOutput)
-}
-
 // The project number.
 func (o BucketAccessControlProjectTeamResponseOutput) ProjectNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketAccessControlProjectTeamResponse) string { return v.ProjectNumber }).(pulumi.StringOutput)
@@ -505,50 +423,6 @@ func (o BucketAccessControlProjectTeamResponseOutput) ProjectNumber() pulumi.Str
 // The team.
 func (o BucketAccessControlProjectTeamResponseOutput) Team() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketAccessControlProjectTeamResponse) string { return v.Team }).(pulumi.StringOutput)
-}
-
-type BucketAccessControlProjectTeamResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BucketAccessControlProjectTeamResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketAccessControlProjectTeamResponse)(nil)).Elem()
-}
-
-func (o BucketAccessControlProjectTeamResponsePtrOutput) ToBucketAccessControlProjectTeamResponsePtrOutput() BucketAccessControlProjectTeamResponsePtrOutput {
-	return o
-}
-
-func (o BucketAccessControlProjectTeamResponsePtrOutput) ToBucketAccessControlProjectTeamResponsePtrOutputWithContext(ctx context.Context) BucketAccessControlProjectTeamResponsePtrOutput {
-	return o
-}
-
-func (o BucketAccessControlProjectTeamResponsePtrOutput) Elem() BucketAccessControlProjectTeamResponseOutput {
-	return o.ApplyT(func(v *BucketAccessControlProjectTeamResponse) BucketAccessControlProjectTeamResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BucketAccessControlProjectTeamResponse
-		return ret
-	}).(BucketAccessControlProjectTeamResponseOutput)
-}
-
-// The project number.
-func (o BucketAccessControlProjectTeamResponsePtrOutput) ProjectNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketAccessControlProjectTeamResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ProjectNumber
-	}).(pulumi.StringPtrOutput)
-}
-
-// The team.
-func (o BucketAccessControlProjectTeamResponsePtrOutput) Team() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketAccessControlProjectTeamResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Team
-	}).(pulumi.StringPtrOutput)
 }
 
 // An access-control entry.
@@ -584,89 +458,6 @@ type BucketAccessControlResponse struct {
 	Role string `pulumi:"role"`
 	// The link to this access-control entry.
 	SelfLink string `pulumi:"selfLink"`
-}
-
-// BucketAccessControlResponseInput is an input type that accepts BucketAccessControlResponseArgs and BucketAccessControlResponseOutput values.
-// You can construct a concrete instance of `BucketAccessControlResponseInput` via:
-//
-//          BucketAccessControlResponseArgs{...}
-type BucketAccessControlResponseInput interface {
-	pulumi.Input
-
-	ToBucketAccessControlResponseOutput() BucketAccessControlResponseOutput
-	ToBucketAccessControlResponseOutputWithContext(context.Context) BucketAccessControlResponseOutput
-}
-
-// An access-control entry.
-type BucketAccessControlResponseArgs struct {
-	// The name of the bucket.
-	Bucket pulumi.StringInput `pulumi:"bucket"`
-	// The domain associated with the entity, if any.
-	Domain pulumi.StringInput `pulumi:"domain"`
-	// The email address associated with the entity, if any.
-	Email pulumi.StringInput `pulumi:"email"`
-	// The entity holding the permission, in one of the following forms:
-	// - user-userId
-	// - user-email
-	// - group-groupId
-	// - group-email
-	// - domain-domain
-	// - project-team-projectId
-	// - allUsers
-	// - allAuthenticatedUsers Examples:
-	// - The user liz@example.com would be user-liz@example.com.
-	// - The group example@googlegroups.com would be group-example@googlegroups.com.
-	// - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
-	Entity pulumi.StringInput `pulumi:"entity"`
-	// The ID for the entity, if any.
-	EntityId pulumi.StringInput `pulumi:"entityId"`
-	// HTTP 1.1 Entity tag for the access-control entry.
-	Etag pulumi.StringInput `pulumi:"etag"`
-	// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
-	Kind pulumi.StringInput `pulumi:"kind"`
-	// The project team associated with the entity, if any.
-	ProjectTeam BucketAccessControlProjectTeamResponseInput `pulumi:"projectTeam"`
-	// The access permission for the entity.
-	Role pulumi.StringInput `pulumi:"role"`
-	// The link to this access-control entry.
-	SelfLink pulumi.StringInput `pulumi:"selfLink"`
-}
-
-func (BucketAccessControlResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketAccessControlResponse)(nil)).Elem()
-}
-
-func (i BucketAccessControlResponseArgs) ToBucketAccessControlResponseOutput() BucketAccessControlResponseOutput {
-	return i.ToBucketAccessControlResponseOutputWithContext(context.Background())
-}
-
-func (i BucketAccessControlResponseArgs) ToBucketAccessControlResponseOutputWithContext(ctx context.Context) BucketAccessControlResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketAccessControlResponseOutput)
-}
-
-// BucketAccessControlResponseArrayInput is an input type that accepts BucketAccessControlResponseArray and BucketAccessControlResponseArrayOutput values.
-// You can construct a concrete instance of `BucketAccessControlResponseArrayInput` via:
-//
-//          BucketAccessControlResponseArray{ BucketAccessControlResponseArgs{...} }
-type BucketAccessControlResponseArrayInput interface {
-	pulumi.Input
-
-	ToBucketAccessControlResponseArrayOutput() BucketAccessControlResponseArrayOutput
-	ToBucketAccessControlResponseArrayOutputWithContext(context.Context) BucketAccessControlResponseArrayOutput
-}
-
-type BucketAccessControlResponseArray []BucketAccessControlResponseInput
-
-func (BucketAccessControlResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BucketAccessControlResponse)(nil)).Elem()
-}
-
-func (i BucketAccessControlResponseArray) ToBucketAccessControlResponseArrayOutput() BucketAccessControlResponseArrayOutput {
-	return i.ToBucketAccessControlResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BucketAccessControlResponseArray) ToBucketAccessControlResponseArrayOutputWithContext(ctx context.Context) BucketAccessControlResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketAccessControlResponseArrayOutput)
 }
 
 // An access-control entry.
@@ -932,78 +723,6 @@ type BucketAutoclassResponse struct {
 	ToggleTime string `pulumi:"toggleTime"`
 }
 
-// BucketAutoclassResponseInput is an input type that accepts BucketAutoclassResponseArgs and BucketAutoclassResponseOutput values.
-// You can construct a concrete instance of `BucketAutoclassResponseInput` via:
-//
-//          BucketAutoclassResponseArgs{...}
-type BucketAutoclassResponseInput interface {
-	pulumi.Input
-
-	ToBucketAutoclassResponseOutput() BucketAutoclassResponseOutput
-	ToBucketAutoclassResponseOutputWithContext(context.Context) BucketAutoclassResponseOutput
-}
-
-// The bucket's Autoclass configuration.
-type BucketAutoclassResponseArgs struct {
-	// Whether or not Autoclass is enabled on this bucket
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// A date and time in RFC 3339 format representing the instant at which "enabled" was last toggled.
-	ToggleTime pulumi.StringInput `pulumi:"toggleTime"`
-}
-
-func (BucketAutoclassResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketAutoclassResponse)(nil)).Elem()
-}
-
-func (i BucketAutoclassResponseArgs) ToBucketAutoclassResponseOutput() BucketAutoclassResponseOutput {
-	return i.ToBucketAutoclassResponseOutputWithContext(context.Background())
-}
-
-func (i BucketAutoclassResponseArgs) ToBucketAutoclassResponseOutputWithContext(ctx context.Context) BucketAutoclassResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketAutoclassResponseOutput)
-}
-
-func (i BucketAutoclassResponseArgs) ToBucketAutoclassResponsePtrOutput() BucketAutoclassResponsePtrOutput {
-	return i.ToBucketAutoclassResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BucketAutoclassResponseArgs) ToBucketAutoclassResponsePtrOutputWithContext(ctx context.Context) BucketAutoclassResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketAutoclassResponseOutput).ToBucketAutoclassResponsePtrOutputWithContext(ctx)
-}
-
-// BucketAutoclassResponsePtrInput is an input type that accepts BucketAutoclassResponseArgs, BucketAutoclassResponsePtr and BucketAutoclassResponsePtrOutput values.
-// You can construct a concrete instance of `BucketAutoclassResponsePtrInput` via:
-//
-//          BucketAutoclassResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BucketAutoclassResponsePtrInput interface {
-	pulumi.Input
-
-	ToBucketAutoclassResponsePtrOutput() BucketAutoclassResponsePtrOutput
-	ToBucketAutoclassResponsePtrOutputWithContext(context.Context) BucketAutoclassResponsePtrOutput
-}
-
-type bucketAutoclassResponsePtrType BucketAutoclassResponseArgs
-
-func BucketAutoclassResponsePtr(v *BucketAutoclassResponseArgs) BucketAutoclassResponsePtrInput {
-	return (*bucketAutoclassResponsePtrType)(v)
-}
-
-func (*bucketAutoclassResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketAutoclassResponse)(nil)).Elem()
-}
-
-func (i *bucketAutoclassResponsePtrType) ToBucketAutoclassResponsePtrOutput() BucketAutoclassResponsePtrOutput {
-	return i.ToBucketAutoclassResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *bucketAutoclassResponsePtrType) ToBucketAutoclassResponsePtrOutputWithContext(ctx context.Context) BucketAutoclassResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketAutoclassResponsePtrOutput)
-}
-
 // The bucket's Autoclass configuration.
 type BucketAutoclassResponseOutput struct{ *pulumi.OutputState }
 
@@ -1019,16 +738,6 @@ func (o BucketAutoclassResponseOutput) ToBucketAutoclassResponseOutputWithContex
 	return o
 }
 
-func (o BucketAutoclassResponseOutput) ToBucketAutoclassResponsePtrOutput() BucketAutoclassResponsePtrOutput {
-	return o.ToBucketAutoclassResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BucketAutoclassResponseOutput) ToBucketAutoclassResponsePtrOutputWithContext(ctx context.Context) BucketAutoclassResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketAutoclassResponse) *BucketAutoclassResponse {
-		return &v
-	}).(BucketAutoclassResponsePtrOutput)
-}
-
 // Whether or not Autoclass is enabled on this bucket
 func (o BucketAutoclassResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v BucketAutoclassResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -1037,50 +746,6 @@ func (o BucketAutoclassResponseOutput) Enabled() pulumi.BoolOutput {
 // A date and time in RFC 3339 format representing the instant at which "enabled" was last toggled.
 func (o BucketAutoclassResponseOutput) ToggleTime() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketAutoclassResponse) string { return v.ToggleTime }).(pulumi.StringOutput)
-}
-
-type BucketAutoclassResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BucketAutoclassResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketAutoclassResponse)(nil)).Elem()
-}
-
-func (o BucketAutoclassResponsePtrOutput) ToBucketAutoclassResponsePtrOutput() BucketAutoclassResponsePtrOutput {
-	return o
-}
-
-func (o BucketAutoclassResponsePtrOutput) ToBucketAutoclassResponsePtrOutputWithContext(ctx context.Context) BucketAutoclassResponsePtrOutput {
-	return o
-}
-
-func (o BucketAutoclassResponsePtrOutput) Elem() BucketAutoclassResponseOutput {
-	return o.ApplyT(func(v *BucketAutoclassResponse) BucketAutoclassResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BucketAutoclassResponse
-		return ret
-	}).(BucketAutoclassResponseOutput)
-}
-
-// Whether or not Autoclass is enabled on this bucket
-func (o BucketAutoclassResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *BucketAutoclassResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// A date and time in RFC 3339 format representing the instant at which "enabled" was last toggled.
-func (o BucketAutoclassResponsePtrOutput) ToggleTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketAutoclassResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ToggleTime
-	}).(pulumi.StringPtrOutput)
 }
 
 // The bucket's billing configuration.
@@ -1229,76 +894,6 @@ type BucketBillingResponse struct {
 	RequesterPays bool `pulumi:"requesterPays"`
 }
 
-// BucketBillingResponseInput is an input type that accepts BucketBillingResponseArgs and BucketBillingResponseOutput values.
-// You can construct a concrete instance of `BucketBillingResponseInput` via:
-//
-//          BucketBillingResponseArgs{...}
-type BucketBillingResponseInput interface {
-	pulumi.Input
-
-	ToBucketBillingResponseOutput() BucketBillingResponseOutput
-	ToBucketBillingResponseOutputWithContext(context.Context) BucketBillingResponseOutput
-}
-
-// The bucket's billing configuration.
-type BucketBillingResponseArgs struct {
-	// When set to true, Requester Pays is enabled for this bucket.
-	RequesterPays pulumi.BoolInput `pulumi:"requesterPays"`
-}
-
-func (BucketBillingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketBillingResponse)(nil)).Elem()
-}
-
-func (i BucketBillingResponseArgs) ToBucketBillingResponseOutput() BucketBillingResponseOutput {
-	return i.ToBucketBillingResponseOutputWithContext(context.Background())
-}
-
-func (i BucketBillingResponseArgs) ToBucketBillingResponseOutputWithContext(ctx context.Context) BucketBillingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketBillingResponseOutput)
-}
-
-func (i BucketBillingResponseArgs) ToBucketBillingResponsePtrOutput() BucketBillingResponsePtrOutput {
-	return i.ToBucketBillingResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BucketBillingResponseArgs) ToBucketBillingResponsePtrOutputWithContext(ctx context.Context) BucketBillingResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketBillingResponseOutput).ToBucketBillingResponsePtrOutputWithContext(ctx)
-}
-
-// BucketBillingResponsePtrInput is an input type that accepts BucketBillingResponseArgs, BucketBillingResponsePtr and BucketBillingResponsePtrOutput values.
-// You can construct a concrete instance of `BucketBillingResponsePtrInput` via:
-//
-//          BucketBillingResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BucketBillingResponsePtrInput interface {
-	pulumi.Input
-
-	ToBucketBillingResponsePtrOutput() BucketBillingResponsePtrOutput
-	ToBucketBillingResponsePtrOutputWithContext(context.Context) BucketBillingResponsePtrOutput
-}
-
-type bucketBillingResponsePtrType BucketBillingResponseArgs
-
-func BucketBillingResponsePtr(v *BucketBillingResponseArgs) BucketBillingResponsePtrInput {
-	return (*bucketBillingResponsePtrType)(v)
-}
-
-func (*bucketBillingResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketBillingResponse)(nil)).Elem()
-}
-
-func (i *bucketBillingResponsePtrType) ToBucketBillingResponsePtrOutput() BucketBillingResponsePtrOutput {
-	return i.ToBucketBillingResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *bucketBillingResponsePtrType) ToBucketBillingResponsePtrOutputWithContext(ctx context.Context) BucketBillingResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketBillingResponsePtrOutput)
-}
-
 // The bucket's billing configuration.
 type BucketBillingResponseOutput struct{ *pulumi.OutputState }
 
@@ -1314,53 +909,9 @@ func (o BucketBillingResponseOutput) ToBucketBillingResponseOutputWithContext(ct
 	return o
 }
 
-func (o BucketBillingResponseOutput) ToBucketBillingResponsePtrOutput() BucketBillingResponsePtrOutput {
-	return o.ToBucketBillingResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BucketBillingResponseOutput) ToBucketBillingResponsePtrOutputWithContext(ctx context.Context) BucketBillingResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketBillingResponse) *BucketBillingResponse {
-		return &v
-	}).(BucketBillingResponsePtrOutput)
-}
-
 // When set to true, Requester Pays is enabled for this bucket.
 func (o BucketBillingResponseOutput) RequesterPays() pulumi.BoolOutput {
 	return o.ApplyT(func(v BucketBillingResponse) bool { return v.RequesterPays }).(pulumi.BoolOutput)
-}
-
-type BucketBillingResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BucketBillingResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketBillingResponse)(nil)).Elem()
-}
-
-func (o BucketBillingResponsePtrOutput) ToBucketBillingResponsePtrOutput() BucketBillingResponsePtrOutput {
-	return o
-}
-
-func (o BucketBillingResponsePtrOutput) ToBucketBillingResponsePtrOutputWithContext(ctx context.Context) BucketBillingResponsePtrOutput {
-	return o
-}
-
-func (o BucketBillingResponsePtrOutput) Elem() BucketBillingResponseOutput {
-	return o.ApplyT(func(v *BucketBillingResponse) BucketBillingResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BucketBillingResponse
-		return ret
-	}).(BucketBillingResponseOutput)
-}
-
-// When set to true, Requester Pays is enabled for this bucket.
-func (o BucketBillingResponsePtrOutput) RequesterPays() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *BucketBillingResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.RequesterPays
-	}).(pulumi.BoolPtrOutput)
 }
 
 type BucketCorsItem struct {
@@ -1496,65 +1047,6 @@ type BucketCorsItemResponse struct {
 	Origin []string `pulumi:"origin"`
 	// The list of HTTP headers other than the simple response headers to give permission for the user-agent to share across domains.
 	ResponseHeader []string `pulumi:"responseHeader"`
-}
-
-// BucketCorsItemResponseInput is an input type that accepts BucketCorsItemResponseArgs and BucketCorsItemResponseOutput values.
-// You can construct a concrete instance of `BucketCorsItemResponseInput` via:
-//
-//          BucketCorsItemResponseArgs{...}
-type BucketCorsItemResponseInput interface {
-	pulumi.Input
-
-	ToBucketCorsItemResponseOutput() BucketCorsItemResponseOutput
-	ToBucketCorsItemResponseOutputWithContext(context.Context) BucketCorsItemResponseOutput
-}
-
-type BucketCorsItemResponseArgs struct {
-	// The value, in seconds, to return in the  Access-Control-Max-Age header used in preflight responses.
-	MaxAgeSeconds pulumi.IntInput `pulumi:"maxAgeSeconds"`
-	// The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
-	Method pulumi.StringArrayInput `pulumi:"method"`
-	// The list of Origins eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
-	Origin pulumi.StringArrayInput `pulumi:"origin"`
-	// The list of HTTP headers other than the simple response headers to give permission for the user-agent to share across domains.
-	ResponseHeader pulumi.StringArrayInput `pulumi:"responseHeader"`
-}
-
-func (BucketCorsItemResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketCorsItemResponse)(nil)).Elem()
-}
-
-func (i BucketCorsItemResponseArgs) ToBucketCorsItemResponseOutput() BucketCorsItemResponseOutput {
-	return i.ToBucketCorsItemResponseOutputWithContext(context.Background())
-}
-
-func (i BucketCorsItemResponseArgs) ToBucketCorsItemResponseOutputWithContext(ctx context.Context) BucketCorsItemResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketCorsItemResponseOutput)
-}
-
-// BucketCorsItemResponseArrayInput is an input type that accepts BucketCorsItemResponseArray and BucketCorsItemResponseArrayOutput values.
-// You can construct a concrete instance of `BucketCorsItemResponseArrayInput` via:
-//
-//          BucketCorsItemResponseArray{ BucketCorsItemResponseArgs{...} }
-type BucketCorsItemResponseArrayInput interface {
-	pulumi.Input
-
-	ToBucketCorsItemResponseArrayOutput() BucketCorsItemResponseArrayOutput
-	ToBucketCorsItemResponseArrayOutputWithContext(context.Context) BucketCorsItemResponseArrayOutput
-}
-
-type BucketCorsItemResponseArray []BucketCorsItemResponseInput
-
-func (BucketCorsItemResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BucketCorsItemResponse)(nil)).Elem()
-}
-
-func (i BucketCorsItemResponseArray) ToBucketCorsItemResponseArrayOutput() BucketCorsItemResponseArrayOutput {
-	return i.ToBucketCorsItemResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BucketCorsItemResponseArray) ToBucketCorsItemResponseArrayOutputWithContext(ctx context.Context) BucketCorsItemResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketCorsItemResponseArrayOutput)
 }
 
 type BucketCorsItemResponseOutput struct{ *pulumi.OutputState }
@@ -1757,76 +1249,6 @@ type BucketCustomPlacementConfigResponse struct {
 	DataLocations []string `pulumi:"dataLocations"`
 }
 
-// BucketCustomPlacementConfigResponseInput is an input type that accepts BucketCustomPlacementConfigResponseArgs and BucketCustomPlacementConfigResponseOutput values.
-// You can construct a concrete instance of `BucketCustomPlacementConfigResponseInput` via:
-//
-//          BucketCustomPlacementConfigResponseArgs{...}
-type BucketCustomPlacementConfigResponseInput interface {
-	pulumi.Input
-
-	ToBucketCustomPlacementConfigResponseOutput() BucketCustomPlacementConfigResponseOutput
-	ToBucketCustomPlacementConfigResponseOutputWithContext(context.Context) BucketCustomPlacementConfigResponseOutput
-}
-
-// The bucket's custom placement configuration for Custom Dual Regions.
-type BucketCustomPlacementConfigResponseArgs struct {
-	// The list of regional locations in which data is placed.
-	DataLocations pulumi.StringArrayInput `pulumi:"dataLocations"`
-}
-
-func (BucketCustomPlacementConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketCustomPlacementConfigResponse)(nil)).Elem()
-}
-
-func (i BucketCustomPlacementConfigResponseArgs) ToBucketCustomPlacementConfigResponseOutput() BucketCustomPlacementConfigResponseOutput {
-	return i.ToBucketCustomPlacementConfigResponseOutputWithContext(context.Background())
-}
-
-func (i BucketCustomPlacementConfigResponseArgs) ToBucketCustomPlacementConfigResponseOutputWithContext(ctx context.Context) BucketCustomPlacementConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketCustomPlacementConfigResponseOutput)
-}
-
-func (i BucketCustomPlacementConfigResponseArgs) ToBucketCustomPlacementConfigResponsePtrOutput() BucketCustomPlacementConfigResponsePtrOutput {
-	return i.ToBucketCustomPlacementConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BucketCustomPlacementConfigResponseArgs) ToBucketCustomPlacementConfigResponsePtrOutputWithContext(ctx context.Context) BucketCustomPlacementConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketCustomPlacementConfigResponseOutput).ToBucketCustomPlacementConfigResponsePtrOutputWithContext(ctx)
-}
-
-// BucketCustomPlacementConfigResponsePtrInput is an input type that accepts BucketCustomPlacementConfigResponseArgs, BucketCustomPlacementConfigResponsePtr and BucketCustomPlacementConfigResponsePtrOutput values.
-// You can construct a concrete instance of `BucketCustomPlacementConfigResponsePtrInput` via:
-//
-//          BucketCustomPlacementConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BucketCustomPlacementConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToBucketCustomPlacementConfigResponsePtrOutput() BucketCustomPlacementConfigResponsePtrOutput
-	ToBucketCustomPlacementConfigResponsePtrOutputWithContext(context.Context) BucketCustomPlacementConfigResponsePtrOutput
-}
-
-type bucketCustomPlacementConfigResponsePtrType BucketCustomPlacementConfigResponseArgs
-
-func BucketCustomPlacementConfigResponsePtr(v *BucketCustomPlacementConfigResponseArgs) BucketCustomPlacementConfigResponsePtrInput {
-	return (*bucketCustomPlacementConfigResponsePtrType)(v)
-}
-
-func (*bucketCustomPlacementConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketCustomPlacementConfigResponse)(nil)).Elem()
-}
-
-func (i *bucketCustomPlacementConfigResponsePtrType) ToBucketCustomPlacementConfigResponsePtrOutput() BucketCustomPlacementConfigResponsePtrOutput {
-	return i.ToBucketCustomPlacementConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *bucketCustomPlacementConfigResponsePtrType) ToBucketCustomPlacementConfigResponsePtrOutputWithContext(ctx context.Context) BucketCustomPlacementConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketCustomPlacementConfigResponsePtrOutput)
-}
-
 // The bucket's custom placement configuration for Custom Dual Regions.
 type BucketCustomPlacementConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -1842,53 +1264,9 @@ func (o BucketCustomPlacementConfigResponseOutput) ToBucketCustomPlacementConfig
 	return o
 }
 
-func (o BucketCustomPlacementConfigResponseOutput) ToBucketCustomPlacementConfigResponsePtrOutput() BucketCustomPlacementConfigResponsePtrOutput {
-	return o.ToBucketCustomPlacementConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BucketCustomPlacementConfigResponseOutput) ToBucketCustomPlacementConfigResponsePtrOutputWithContext(ctx context.Context) BucketCustomPlacementConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketCustomPlacementConfigResponse) *BucketCustomPlacementConfigResponse {
-		return &v
-	}).(BucketCustomPlacementConfigResponsePtrOutput)
-}
-
 // The list of regional locations in which data is placed.
 func (o BucketCustomPlacementConfigResponseOutput) DataLocations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BucketCustomPlacementConfigResponse) []string { return v.DataLocations }).(pulumi.StringArrayOutput)
-}
-
-type BucketCustomPlacementConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BucketCustomPlacementConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketCustomPlacementConfigResponse)(nil)).Elem()
-}
-
-func (o BucketCustomPlacementConfigResponsePtrOutput) ToBucketCustomPlacementConfigResponsePtrOutput() BucketCustomPlacementConfigResponsePtrOutput {
-	return o
-}
-
-func (o BucketCustomPlacementConfigResponsePtrOutput) ToBucketCustomPlacementConfigResponsePtrOutputWithContext(ctx context.Context) BucketCustomPlacementConfigResponsePtrOutput {
-	return o
-}
-
-func (o BucketCustomPlacementConfigResponsePtrOutput) Elem() BucketCustomPlacementConfigResponseOutput {
-	return o.ApplyT(func(v *BucketCustomPlacementConfigResponse) BucketCustomPlacementConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BucketCustomPlacementConfigResponse
-		return ret
-	}).(BucketCustomPlacementConfigResponseOutput)
-}
-
-// The list of regional locations in which data is placed.
-func (o BucketCustomPlacementConfigResponsePtrOutput) DataLocations() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *BucketCustomPlacementConfigResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.DataLocations
-	}).(pulumi.StringArrayOutput)
 }
 
 // Encryption configuration for a bucket.
@@ -2037,76 +1415,6 @@ type BucketEncryptionResponse struct {
 	DefaultKmsKeyName string `pulumi:"defaultKmsKeyName"`
 }
 
-// BucketEncryptionResponseInput is an input type that accepts BucketEncryptionResponseArgs and BucketEncryptionResponseOutput values.
-// You can construct a concrete instance of `BucketEncryptionResponseInput` via:
-//
-//          BucketEncryptionResponseArgs{...}
-type BucketEncryptionResponseInput interface {
-	pulumi.Input
-
-	ToBucketEncryptionResponseOutput() BucketEncryptionResponseOutput
-	ToBucketEncryptionResponseOutputWithContext(context.Context) BucketEncryptionResponseOutput
-}
-
-// Encryption configuration for a bucket.
-type BucketEncryptionResponseArgs struct {
-	// A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
-	DefaultKmsKeyName pulumi.StringInput `pulumi:"defaultKmsKeyName"`
-}
-
-func (BucketEncryptionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketEncryptionResponse)(nil)).Elem()
-}
-
-func (i BucketEncryptionResponseArgs) ToBucketEncryptionResponseOutput() BucketEncryptionResponseOutput {
-	return i.ToBucketEncryptionResponseOutputWithContext(context.Background())
-}
-
-func (i BucketEncryptionResponseArgs) ToBucketEncryptionResponseOutputWithContext(ctx context.Context) BucketEncryptionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketEncryptionResponseOutput)
-}
-
-func (i BucketEncryptionResponseArgs) ToBucketEncryptionResponsePtrOutput() BucketEncryptionResponsePtrOutput {
-	return i.ToBucketEncryptionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BucketEncryptionResponseArgs) ToBucketEncryptionResponsePtrOutputWithContext(ctx context.Context) BucketEncryptionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketEncryptionResponseOutput).ToBucketEncryptionResponsePtrOutputWithContext(ctx)
-}
-
-// BucketEncryptionResponsePtrInput is an input type that accepts BucketEncryptionResponseArgs, BucketEncryptionResponsePtr and BucketEncryptionResponsePtrOutput values.
-// You can construct a concrete instance of `BucketEncryptionResponsePtrInput` via:
-//
-//          BucketEncryptionResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BucketEncryptionResponsePtrInput interface {
-	pulumi.Input
-
-	ToBucketEncryptionResponsePtrOutput() BucketEncryptionResponsePtrOutput
-	ToBucketEncryptionResponsePtrOutputWithContext(context.Context) BucketEncryptionResponsePtrOutput
-}
-
-type bucketEncryptionResponsePtrType BucketEncryptionResponseArgs
-
-func BucketEncryptionResponsePtr(v *BucketEncryptionResponseArgs) BucketEncryptionResponsePtrInput {
-	return (*bucketEncryptionResponsePtrType)(v)
-}
-
-func (*bucketEncryptionResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketEncryptionResponse)(nil)).Elem()
-}
-
-func (i *bucketEncryptionResponsePtrType) ToBucketEncryptionResponsePtrOutput() BucketEncryptionResponsePtrOutput {
-	return i.ToBucketEncryptionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *bucketEncryptionResponsePtrType) ToBucketEncryptionResponsePtrOutputWithContext(ctx context.Context) BucketEncryptionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketEncryptionResponsePtrOutput)
-}
-
 // Encryption configuration for a bucket.
 type BucketEncryptionResponseOutput struct{ *pulumi.OutputState }
 
@@ -2122,53 +1430,9 @@ func (o BucketEncryptionResponseOutput) ToBucketEncryptionResponseOutputWithCont
 	return o
 }
 
-func (o BucketEncryptionResponseOutput) ToBucketEncryptionResponsePtrOutput() BucketEncryptionResponsePtrOutput {
-	return o.ToBucketEncryptionResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BucketEncryptionResponseOutput) ToBucketEncryptionResponsePtrOutputWithContext(ctx context.Context) BucketEncryptionResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketEncryptionResponse) *BucketEncryptionResponse {
-		return &v
-	}).(BucketEncryptionResponsePtrOutput)
-}
-
 // A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
 func (o BucketEncryptionResponseOutput) DefaultKmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketEncryptionResponse) string { return v.DefaultKmsKeyName }).(pulumi.StringOutput)
-}
-
-type BucketEncryptionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BucketEncryptionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketEncryptionResponse)(nil)).Elem()
-}
-
-func (o BucketEncryptionResponsePtrOutput) ToBucketEncryptionResponsePtrOutput() BucketEncryptionResponsePtrOutput {
-	return o
-}
-
-func (o BucketEncryptionResponsePtrOutput) ToBucketEncryptionResponsePtrOutputWithContext(ctx context.Context) BucketEncryptionResponsePtrOutput {
-	return o
-}
-
-func (o BucketEncryptionResponsePtrOutput) Elem() BucketEncryptionResponseOutput {
-	return o.ApplyT(func(v *BucketEncryptionResponse) BucketEncryptionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BucketEncryptionResponse
-		return ret
-	}).(BucketEncryptionResponseOutput)
-}
-
-// A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
-func (o BucketEncryptionResponsePtrOutput) DefaultKmsKeyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketEncryptionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DefaultKmsKeyName
-	}).(pulumi.StringPtrOutput)
 }
 
 // The bucket's IAM configuration.
@@ -2518,78 +1782,6 @@ type BucketIamConfigurationBucketPolicyOnlyResponse struct {
 	LockedTime string `pulumi:"lockedTime"`
 }
 
-// BucketIamConfigurationBucketPolicyOnlyResponseInput is an input type that accepts BucketIamConfigurationBucketPolicyOnlyResponseArgs and BucketIamConfigurationBucketPolicyOnlyResponseOutput values.
-// You can construct a concrete instance of `BucketIamConfigurationBucketPolicyOnlyResponseInput` via:
-//
-//          BucketIamConfigurationBucketPolicyOnlyResponseArgs{...}
-type BucketIamConfigurationBucketPolicyOnlyResponseInput interface {
-	pulumi.Input
-
-	ToBucketIamConfigurationBucketPolicyOnlyResponseOutput() BucketIamConfigurationBucketPolicyOnlyResponseOutput
-	ToBucketIamConfigurationBucketPolicyOnlyResponseOutputWithContext(context.Context) BucketIamConfigurationBucketPolicyOnlyResponseOutput
-}
-
-// The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
-type BucketIamConfigurationBucketPolicyOnlyResponseArgs struct {
-	// If set, access is controlled only by bucket-level or above IAM policies.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// The deadline for changing iamConfiguration.bucketPolicyOnly.enabled from true to false in RFC 3339 format. iamConfiguration.bucketPolicyOnly.enabled may be changed from true to false until the locked time, after which the field is immutable.
-	LockedTime pulumi.StringInput `pulumi:"lockedTime"`
-}
-
-func (BucketIamConfigurationBucketPolicyOnlyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketIamConfigurationBucketPolicyOnlyResponse)(nil)).Elem()
-}
-
-func (i BucketIamConfigurationBucketPolicyOnlyResponseArgs) ToBucketIamConfigurationBucketPolicyOnlyResponseOutput() BucketIamConfigurationBucketPolicyOnlyResponseOutput {
-	return i.ToBucketIamConfigurationBucketPolicyOnlyResponseOutputWithContext(context.Background())
-}
-
-func (i BucketIamConfigurationBucketPolicyOnlyResponseArgs) ToBucketIamConfigurationBucketPolicyOnlyResponseOutputWithContext(ctx context.Context) BucketIamConfigurationBucketPolicyOnlyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketIamConfigurationBucketPolicyOnlyResponseOutput)
-}
-
-func (i BucketIamConfigurationBucketPolicyOnlyResponseArgs) ToBucketIamConfigurationBucketPolicyOnlyResponsePtrOutput() BucketIamConfigurationBucketPolicyOnlyResponsePtrOutput {
-	return i.ToBucketIamConfigurationBucketPolicyOnlyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BucketIamConfigurationBucketPolicyOnlyResponseArgs) ToBucketIamConfigurationBucketPolicyOnlyResponsePtrOutputWithContext(ctx context.Context) BucketIamConfigurationBucketPolicyOnlyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketIamConfigurationBucketPolicyOnlyResponseOutput).ToBucketIamConfigurationBucketPolicyOnlyResponsePtrOutputWithContext(ctx)
-}
-
-// BucketIamConfigurationBucketPolicyOnlyResponsePtrInput is an input type that accepts BucketIamConfigurationBucketPolicyOnlyResponseArgs, BucketIamConfigurationBucketPolicyOnlyResponsePtr and BucketIamConfigurationBucketPolicyOnlyResponsePtrOutput values.
-// You can construct a concrete instance of `BucketIamConfigurationBucketPolicyOnlyResponsePtrInput` via:
-//
-//          BucketIamConfigurationBucketPolicyOnlyResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BucketIamConfigurationBucketPolicyOnlyResponsePtrInput interface {
-	pulumi.Input
-
-	ToBucketIamConfigurationBucketPolicyOnlyResponsePtrOutput() BucketIamConfigurationBucketPolicyOnlyResponsePtrOutput
-	ToBucketIamConfigurationBucketPolicyOnlyResponsePtrOutputWithContext(context.Context) BucketIamConfigurationBucketPolicyOnlyResponsePtrOutput
-}
-
-type bucketIamConfigurationBucketPolicyOnlyResponsePtrType BucketIamConfigurationBucketPolicyOnlyResponseArgs
-
-func BucketIamConfigurationBucketPolicyOnlyResponsePtr(v *BucketIamConfigurationBucketPolicyOnlyResponseArgs) BucketIamConfigurationBucketPolicyOnlyResponsePtrInput {
-	return (*bucketIamConfigurationBucketPolicyOnlyResponsePtrType)(v)
-}
-
-func (*bucketIamConfigurationBucketPolicyOnlyResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketIamConfigurationBucketPolicyOnlyResponse)(nil)).Elem()
-}
-
-func (i *bucketIamConfigurationBucketPolicyOnlyResponsePtrType) ToBucketIamConfigurationBucketPolicyOnlyResponsePtrOutput() BucketIamConfigurationBucketPolicyOnlyResponsePtrOutput {
-	return i.ToBucketIamConfigurationBucketPolicyOnlyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *bucketIamConfigurationBucketPolicyOnlyResponsePtrType) ToBucketIamConfigurationBucketPolicyOnlyResponsePtrOutputWithContext(ctx context.Context) BucketIamConfigurationBucketPolicyOnlyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketIamConfigurationBucketPolicyOnlyResponsePtrOutput)
-}
-
 // The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
 type BucketIamConfigurationBucketPolicyOnlyResponseOutput struct{ *pulumi.OutputState }
 
@@ -2605,16 +1797,6 @@ func (o BucketIamConfigurationBucketPolicyOnlyResponseOutput) ToBucketIamConfigu
 	return o
 }
 
-func (o BucketIamConfigurationBucketPolicyOnlyResponseOutput) ToBucketIamConfigurationBucketPolicyOnlyResponsePtrOutput() BucketIamConfigurationBucketPolicyOnlyResponsePtrOutput {
-	return o.ToBucketIamConfigurationBucketPolicyOnlyResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BucketIamConfigurationBucketPolicyOnlyResponseOutput) ToBucketIamConfigurationBucketPolicyOnlyResponsePtrOutputWithContext(ctx context.Context) BucketIamConfigurationBucketPolicyOnlyResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketIamConfigurationBucketPolicyOnlyResponse) *BucketIamConfigurationBucketPolicyOnlyResponse {
-		return &v
-	}).(BucketIamConfigurationBucketPolicyOnlyResponsePtrOutput)
-}
-
 // If set, access is controlled only by bucket-level or above IAM policies.
 func (o BucketIamConfigurationBucketPolicyOnlyResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v BucketIamConfigurationBucketPolicyOnlyResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -2625,50 +1807,6 @@ func (o BucketIamConfigurationBucketPolicyOnlyResponseOutput) LockedTime() pulum
 	return o.ApplyT(func(v BucketIamConfigurationBucketPolicyOnlyResponse) string { return v.LockedTime }).(pulumi.StringOutput)
 }
 
-type BucketIamConfigurationBucketPolicyOnlyResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BucketIamConfigurationBucketPolicyOnlyResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketIamConfigurationBucketPolicyOnlyResponse)(nil)).Elem()
-}
-
-func (o BucketIamConfigurationBucketPolicyOnlyResponsePtrOutput) ToBucketIamConfigurationBucketPolicyOnlyResponsePtrOutput() BucketIamConfigurationBucketPolicyOnlyResponsePtrOutput {
-	return o
-}
-
-func (o BucketIamConfigurationBucketPolicyOnlyResponsePtrOutput) ToBucketIamConfigurationBucketPolicyOnlyResponsePtrOutputWithContext(ctx context.Context) BucketIamConfigurationBucketPolicyOnlyResponsePtrOutput {
-	return o
-}
-
-func (o BucketIamConfigurationBucketPolicyOnlyResponsePtrOutput) Elem() BucketIamConfigurationBucketPolicyOnlyResponseOutput {
-	return o.ApplyT(func(v *BucketIamConfigurationBucketPolicyOnlyResponse) BucketIamConfigurationBucketPolicyOnlyResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BucketIamConfigurationBucketPolicyOnlyResponse
-		return ret
-	}).(BucketIamConfigurationBucketPolicyOnlyResponseOutput)
-}
-
-// If set, access is controlled only by bucket-level or above IAM policies.
-func (o BucketIamConfigurationBucketPolicyOnlyResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *BucketIamConfigurationBucketPolicyOnlyResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The deadline for changing iamConfiguration.bucketPolicyOnly.enabled from true to false in RFC 3339 format. iamConfiguration.bucketPolicyOnly.enabled may be changed from true to false until the locked time, after which the field is immutable.
-func (o BucketIamConfigurationBucketPolicyOnlyResponsePtrOutput) LockedTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketIamConfigurationBucketPolicyOnlyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LockedTime
-	}).(pulumi.StringPtrOutput)
-}
-
 // The bucket's IAM configuration.
 type BucketIamConfigurationResponse struct {
 	// The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
@@ -2677,80 +1815,6 @@ type BucketIamConfigurationResponse struct {
 	PublicAccessPrevention string `pulumi:"publicAccessPrevention"`
 	// The bucket's uniform bucket-level access configuration.
 	UniformBucketLevelAccess BucketIamConfigurationUniformBucketLevelAccessResponse `pulumi:"uniformBucketLevelAccess"`
-}
-
-// BucketIamConfigurationResponseInput is an input type that accepts BucketIamConfigurationResponseArgs and BucketIamConfigurationResponseOutput values.
-// You can construct a concrete instance of `BucketIamConfigurationResponseInput` via:
-//
-//          BucketIamConfigurationResponseArgs{...}
-type BucketIamConfigurationResponseInput interface {
-	pulumi.Input
-
-	ToBucketIamConfigurationResponseOutput() BucketIamConfigurationResponseOutput
-	ToBucketIamConfigurationResponseOutputWithContext(context.Context) BucketIamConfigurationResponseOutput
-}
-
-// The bucket's IAM configuration.
-type BucketIamConfigurationResponseArgs struct {
-	// The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
-	BucketPolicyOnly BucketIamConfigurationBucketPolicyOnlyResponseInput `pulumi:"bucketPolicyOnly"`
-	// The bucket's Public Access Prevention configuration. Currently, 'inherited' and 'enforced' are supported.
-	PublicAccessPrevention pulumi.StringInput `pulumi:"publicAccessPrevention"`
-	// The bucket's uniform bucket-level access configuration.
-	UniformBucketLevelAccess BucketIamConfigurationUniformBucketLevelAccessResponseInput `pulumi:"uniformBucketLevelAccess"`
-}
-
-func (BucketIamConfigurationResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketIamConfigurationResponse)(nil)).Elem()
-}
-
-func (i BucketIamConfigurationResponseArgs) ToBucketIamConfigurationResponseOutput() BucketIamConfigurationResponseOutput {
-	return i.ToBucketIamConfigurationResponseOutputWithContext(context.Background())
-}
-
-func (i BucketIamConfigurationResponseArgs) ToBucketIamConfigurationResponseOutputWithContext(ctx context.Context) BucketIamConfigurationResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketIamConfigurationResponseOutput)
-}
-
-func (i BucketIamConfigurationResponseArgs) ToBucketIamConfigurationResponsePtrOutput() BucketIamConfigurationResponsePtrOutput {
-	return i.ToBucketIamConfigurationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BucketIamConfigurationResponseArgs) ToBucketIamConfigurationResponsePtrOutputWithContext(ctx context.Context) BucketIamConfigurationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketIamConfigurationResponseOutput).ToBucketIamConfigurationResponsePtrOutputWithContext(ctx)
-}
-
-// BucketIamConfigurationResponsePtrInput is an input type that accepts BucketIamConfigurationResponseArgs, BucketIamConfigurationResponsePtr and BucketIamConfigurationResponsePtrOutput values.
-// You can construct a concrete instance of `BucketIamConfigurationResponsePtrInput` via:
-//
-//          BucketIamConfigurationResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BucketIamConfigurationResponsePtrInput interface {
-	pulumi.Input
-
-	ToBucketIamConfigurationResponsePtrOutput() BucketIamConfigurationResponsePtrOutput
-	ToBucketIamConfigurationResponsePtrOutputWithContext(context.Context) BucketIamConfigurationResponsePtrOutput
-}
-
-type bucketIamConfigurationResponsePtrType BucketIamConfigurationResponseArgs
-
-func BucketIamConfigurationResponsePtr(v *BucketIamConfigurationResponseArgs) BucketIamConfigurationResponsePtrInput {
-	return (*bucketIamConfigurationResponsePtrType)(v)
-}
-
-func (*bucketIamConfigurationResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketIamConfigurationResponse)(nil)).Elem()
-}
-
-func (i *bucketIamConfigurationResponsePtrType) ToBucketIamConfigurationResponsePtrOutput() BucketIamConfigurationResponsePtrOutput {
-	return i.ToBucketIamConfigurationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *bucketIamConfigurationResponsePtrType) ToBucketIamConfigurationResponsePtrOutputWithContext(ctx context.Context) BucketIamConfigurationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketIamConfigurationResponsePtrOutput)
 }
 
 // The bucket's IAM configuration.
@@ -2766,16 +1830,6 @@ func (o BucketIamConfigurationResponseOutput) ToBucketIamConfigurationResponseOu
 
 func (o BucketIamConfigurationResponseOutput) ToBucketIamConfigurationResponseOutputWithContext(ctx context.Context) BucketIamConfigurationResponseOutput {
 	return o
-}
-
-func (o BucketIamConfigurationResponseOutput) ToBucketIamConfigurationResponsePtrOutput() BucketIamConfigurationResponsePtrOutput {
-	return o.ToBucketIamConfigurationResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BucketIamConfigurationResponseOutput) ToBucketIamConfigurationResponsePtrOutputWithContext(ctx context.Context) BucketIamConfigurationResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketIamConfigurationResponse) *BucketIamConfigurationResponse {
-		return &v
-	}).(BucketIamConfigurationResponsePtrOutput)
 }
 
 // The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
@@ -2795,60 +1849,6 @@ func (o BucketIamConfigurationResponseOutput) UniformBucketLevelAccess() BucketI
 	return o.ApplyT(func(v BucketIamConfigurationResponse) BucketIamConfigurationUniformBucketLevelAccessResponse {
 		return v.UniformBucketLevelAccess
 	}).(BucketIamConfigurationUniformBucketLevelAccessResponseOutput)
-}
-
-type BucketIamConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BucketIamConfigurationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketIamConfigurationResponse)(nil)).Elem()
-}
-
-func (o BucketIamConfigurationResponsePtrOutput) ToBucketIamConfigurationResponsePtrOutput() BucketIamConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o BucketIamConfigurationResponsePtrOutput) ToBucketIamConfigurationResponsePtrOutputWithContext(ctx context.Context) BucketIamConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o BucketIamConfigurationResponsePtrOutput) Elem() BucketIamConfigurationResponseOutput {
-	return o.ApplyT(func(v *BucketIamConfigurationResponse) BucketIamConfigurationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BucketIamConfigurationResponse
-		return ret
-	}).(BucketIamConfigurationResponseOutput)
-}
-
-// The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
-func (o BucketIamConfigurationResponsePtrOutput) BucketPolicyOnly() BucketIamConfigurationBucketPolicyOnlyResponsePtrOutput {
-	return o.ApplyT(func(v *BucketIamConfigurationResponse) *BucketIamConfigurationBucketPolicyOnlyResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.BucketPolicyOnly
-	}).(BucketIamConfigurationBucketPolicyOnlyResponsePtrOutput)
-}
-
-// The bucket's Public Access Prevention configuration. Currently, 'inherited' and 'enforced' are supported.
-func (o BucketIamConfigurationResponsePtrOutput) PublicAccessPrevention() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketIamConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PublicAccessPrevention
-	}).(pulumi.StringPtrOutput)
-}
-
-// The bucket's uniform bucket-level access configuration.
-func (o BucketIamConfigurationResponsePtrOutput) UniformBucketLevelAccess() BucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput {
-	return o.ApplyT(func(v *BucketIamConfigurationResponse) *BucketIamConfigurationUniformBucketLevelAccessResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.UniformBucketLevelAccess
-	}).(BucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput)
 }
 
 // The bucket's uniform bucket-level access configuration.
@@ -3018,78 +2018,6 @@ type BucketIamConfigurationUniformBucketLevelAccessResponse struct {
 	LockedTime string `pulumi:"lockedTime"`
 }
 
-// BucketIamConfigurationUniformBucketLevelAccessResponseInput is an input type that accepts BucketIamConfigurationUniformBucketLevelAccessResponseArgs and BucketIamConfigurationUniformBucketLevelAccessResponseOutput values.
-// You can construct a concrete instance of `BucketIamConfigurationUniformBucketLevelAccessResponseInput` via:
-//
-//          BucketIamConfigurationUniformBucketLevelAccessResponseArgs{...}
-type BucketIamConfigurationUniformBucketLevelAccessResponseInput interface {
-	pulumi.Input
-
-	ToBucketIamConfigurationUniformBucketLevelAccessResponseOutput() BucketIamConfigurationUniformBucketLevelAccessResponseOutput
-	ToBucketIamConfigurationUniformBucketLevelAccessResponseOutputWithContext(context.Context) BucketIamConfigurationUniformBucketLevelAccessResponseOutput
-}
-
-// The bucket's uniform bucket-level access configuration.
-type BucketIamConfigurationUniformBucketLevelAccessResponseArgs struct {
-	// If set, access is controlled only by bucket-level or above IAM policies.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// The deadline for changing iamConfiguration.uniformBucketLevelAccess.enabled from true to false in RFC 3339  format. iamConfiguration.uniformBucketLevelAccess.enabled may be changed from true to false until the locked time, after which the field is immutable.
-	LockedTime pulumi.StringInput `pulumi:"lockedTime"`
-}
-
-func (BucketIamConfigurationUniformBucketLevelAccessResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketIamConfigurationUniformBucketLevelAccessResponse)(nil)).Elem()
-}
-
-func (i BucketIamConfigurationUniformBucketLevelAccessResponseArgs) ToBucketIamConfigurationUniformBucketLevelAccessResponseOutput() BucketIamConfigurationUniformBucketLevelAccessResponseOutput {
-	return i.ToBucketIamConfigurationUniformBucketLevelAccessResponseOutputWithContext(context.Background())
-}
-
-func (i BucketIamConfigurationUniformBucketLevelAccessResponseArgs) ToBucketIamConfigurationUniformBucketLevelAccessResponseOutputWithContext(ctx context.Context) BucketIamConfigurationUniformBucketLevelAccessResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketIamConfigurationUniformBucketLevelAccessResponseOutput)
-}
-
-func (i BucketIamConfigurationUniformBucketLevelAccessResponseArgs) ToBucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput() BucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput {
-	return i.ToBucketIamConfigurationUniformBucketLevelAccessResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BucketIamConfigurationUniformBucketLevelAccessResponseArgs) ToBucketIamConfigurationUniformBucketLevelAccessResponsePtrOutputWithContext(ctx context.Context) BucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketIamConfigurationUniformBucketLevelAccessResponseOutput).ToBucketIamConfigurationUniformBucketLevelAccessResponsePtrOutputWithContext(ctx)
-}
-
-// BucketIamConfigurationUniformBucketLevelAccessResponsePtrInput is an input type that accepts BucketIamConfigurationUniformBucketLevelAccessResponseArgs, BucketIamConfigurationUniformBucketLevelAccessResponsePtr and BucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput values.
-// You can construct a concrete instance of `BucketIamConfigurationUniformBucketLevelAccessResponsePtrInput` via:
-//
-//          BucketIamConfigurationUniformBucketLevelAccessResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BucketIamConfigurationUniformBucketLevelAccessResponsePtrInput interface {
-	pulumi.Input
-
-	ToBucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput() BucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput
-	ToBucketIamConfigurationUniformBucketLevelAccessResponsePtrOutputWithContext(context.Context) BucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput
-}
-
-type bucketIamConfigurationUniformBucketLevelAccessResponsePtrType BucketIamConfigurationUniformBucketLevelAccessResponseArgs
-
-func BucketIamConfigurationUniformBucketLevelAccessResponsePtr(v *BucketIamConfigurationUniformBucketLevelAccessResponseArgs) BucketIamConfigurationUniformBucketLevelAccessResponsePtrInput {
-	return (*bucketIamConfigurationUniformBucketLevelAccessResponsePtrType)(v)
-}
-
-func (*bucketIamConfigurationUniformBucketLevelAccessResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketIamConfigurationUniformBucketLevelAccessResponse)(nil)).Elem()
-}
-
-func (i *bucketIamConfigurationUniformBucketLevelAccessResponsePtrType) ToBucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput() BucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput {
-	return i.ToBucketIamConfigurationUniformBucketLevelAccessResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *bucketIamConfigurationUniformBucketLevelAccessResponsePtrType) ToBucketIamConfigurationUniformBucketLevelAccessResponsePtrOutputWithContext(ctx context.Context) BucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput)
-}
-
 // The bucket's uniform bucket-level access configuration.
 type BucketIamConfigurationUniformBucketLevelAccessResponseOutput struct{ *pulumi.OutputState }
 
@@ -3105,16 +2033,6 @@ func (o BucketIamConfigurationUniformBucketLevelAccessResponseOutput) ToBucketIa
 	return o
 }
 
-func (o BucketIamConfigurationUniformBucketLevelAccessResponseOutput) ToBucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput() BucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput {
-	return o.ToBucketIamConfigurationUniformBucketLevelAccessResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BucketIamConfigurationUniformBucketLevelAccessResponseOutput) ToBucketIamConfigurationUniformBucketLevelAccessResponsePtrOutputWithContext(ctx context.Context) BucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketIamConfigurationUniformBucketLevelAccessResponse) *BucketIamConfigurationUniformBucketLevelAccessResponse {
-		return &v
-	}).(BucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput)
-}
-
 // If set, access is controlled only by bucket-level or above IAM policies.
 func (o BucketIamConfigurationUniformBucketLevelAccessResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v BucketIamConfigurationUniformBucketLevelAccessResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -3123,50 +2041,6 @@ func (o BucketIamConfigurationUniformBucketLevelAccessResponseOutput) Enabled() 
 // The deadline for changing iamConfiguration.uniformBucketLevelAccess.enabled from true to false in RFC 3339  format. iamConfiguration.uniformBucketLevelAccess.enabled may be changed from true to false until the locked time, after which the field is immutable.
 func (o BucketIamConfigurationUniformBucketLevelAccessResponseOutput) LockedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketIamConfigurationUniformBucketLevelAccessResponse) string { return v.LockedTime }).(pulumi.StringOutput)
-}
-
-type BucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketIamConfigurationUniformBucketLevelAccessResponse)(nil)).Elem()
-}
-
-func (o BucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput) ToBucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput() BucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput {
-	return o
-}
-
-func (o BucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput) ToBucketIamConfigurationUniformBucketLevelAccessResponsePtrOutputWithContext(ctx context.Context) BucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput {
-	return o
-}
-
-func (o BucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput) Elem() BucketIamConfigurationUniformBucketLevelAccessResponseOutput {
-	return o.ApplyT(func(v *BucketIamConfigurationUniformBucketLevelAccessResponse) BucketIamConfigurationUniformBucketLevelAccessResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BucketIamConfigurationUniformBucketLevelAccessResponse
-		return ret
-	}).(BucketIamConfigurationUniformBucketLevelAccessResponseOutput)
-}
-
-// If set, access is controlled only by bucket-level or above IAM policies.
-func (o BucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *BucketIamConfigurationUniformBucketLevelAccessResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The deadline for changing iamConfiguration.uniformBucketLevelAccess.enabled from true to false in RFC 3339  format. iamConfiguration.uniformBucketLevelAccess.enabled may be changed from true to false until the locked time, after which the field is immutable.
-func (o BucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput) LockedTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketIamConfigurationUniformBucketLevelAccessResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LockedTime
-	}).(pulumi.StringPtrOutput)
 }
 
 type BucketIamPolicyBindingsItem struct {
@@ -3367,82 +2241,6 @@ type BucketIamPolicyBindingsItemResponse struct {
 	// - roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.
 	// - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
 	Role string `pulumi:"role"`
-}
-
-// BucketIamPolicyBindingsItemResponseInput is an input type that accepts BucketIamPolicyBindingsItemResponseArgs and BucketIamPolicyBindingsItemResponseOutput values.
-// You can construct a concrete instance of `BucketIamPolicyBindingsItemResponseInput` via:
-//
-//          BucketIamPolicyBindingsItemResponseArgs{...}
-type BucketIamPolicyBindingsItemResponseInput interface {
-	pulumi.Input
-
-	ToBucketIamPolicyBindingsItemResponseOutput() BucketIamPolicyBindingsItemResponseOutput
-	ToBucketIamPolicyBindingsItemResponseOutputWithContext(context.Context) BucketIamPolicyBindingsItemResponseOutput
-}
-
-type BucketIamPolicyBindingsItemResponseArgs struct {
-	// The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
-	Condition ExprResponseInput `pulumi:"condition"`
-	// A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:
-	// - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.
-	// - allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// - user:emailid — An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.
-	// - serviceAccount:emailid — An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .
-	// - group:emailid — An email address that represents a Google group. For example, group:admins@example.com.
-	// - domain:domain — A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.
-	// - projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project
-	// - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project
-	// - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
-	Members pulumi.StringArrayInput `pulumi:"members"`
-	// The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
-	// The new IAM roles are:
-	// - roles/storage.admin — Full control of Google Cloud Storage resources.
-	// - roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects.
-	// - roles/storage.objectCreator — Access to create objects in Google Cloud Storage.
-	// - roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are:
-	// - roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.
-	// - roles/storage.legacyObjectOwner — Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.
-	// - roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.
-	// - roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.
-	// - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
-	Role pulumi.StringInput `pulumi:"role"`
-}
-
-func (BucketIamPolicyBindingsItemResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketIamPolicyBindingsItemResponse)(nil)).Elem()
-}
-
-func (i BucketIamPolicyBindingsItemResponseArgs) ToBucketIamPolicyBindingsItemResponseOutput() BucketIamPolicyBindingsItemResponseOutput {
-	return i.ToBucketIamPolicyBindingsItemResponseOutputWithContext(context.Background())
-}
-
-func (i BucketIamPolicyBindingsItemResponseArgs) ToBucketIamPolicyBindingsItemResponseOutputWithContext(ctx context.Context) BucketIamPolicyBindingsItemResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketIamPolicyBindingsItemResponseOutput)
-}
-
-// BucketIamPolicyBindingsItemResponseArrayInput is an input type that accepts BucketIamPolicyBindingsItemResponseArray and BucketIamPolicyBindingsItemResponseArrayOutput values.
-// You can construct a concrete instance of `BucketIamPolicyBindingsItemResponseArrayInput` via:
-//
-//          BucketIamPolicyBindingsItemResponseArray{ BucketIamPolicyBindingsItemResponseArgs{...} }
-type BucketIamPolicyBindingsItemResponseArrayInput interface {
-	pulumi.Input
-
-	ToBucketIamPolicyBindingsItemResponseArrayOutput() BucketIamPolicyBindingsItemResponseArrayOutput
-	ToBucketIamPolicyBindingsItemResponseArrayOutputWithContext(context.Context) BucketIamPolicyBindingsItemResponseArrayOutput
-}
-
-type BucketIamPolicyBindingsItemResponseArray []BucketIamPolicyBindingsItemResponseInput
-
-func (BucketIamPolicyBindingsItemResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BucketIamPolicyBindingsItemResponse)(nil)).Elem()
-}
-
-func (i BucketIamPolicyBindingsItemResponseArray) ToBucketIamPolicyBindingsItemResponseArrayOutput() BucketIamPolicyBindingsItemResponseArrayOutput {
-	return i.ToBucketIamPolicyBindingsItemResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BucketIamPolicyBindingsItemResponseArray) ToBucketIamPolicyBindingsItemResponseArrayOutputWithContext(ctx context.Context) BucketIamPolicyBindingsItemResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketIamPolicyBindingsItemResponseArrayOutput)
 }
 
 type BucketIamPolicyBindingsItemResponseOutput struct{ *pulumi.OutputState }
@@ -3659,76 +2457,6 @@ type BucketLifecycleResponse struct {
 	Rule []BucketLifecycleRuleItemResponse `pulumi:"rule"`
 }
 
-// BucketLifecycleResponseInput is an input type that accepts BucketLifecycleResponseArgs and BucketLifecycleResponseOutput values.
-// You can construct a concrete instance of `BucketLifecycleResponseInput` via:
-//
-//          BucketLifecycleResponseArgs{...}
-type BucketLifecycleResponseInput interface {
-	pulumi.Input
-
-	ToBucketLifecycleResponseOutput() BucketLifecycleResponseOutput
-	ToBucketLifecycleResponseOutputWithContext(context.Context) BucketLifecycleResponseOutput
-}
-
-// The bucket's lifecycle configuration. See lifecycle management for more information.
-type BucketLifecycleResponseArgs struct {
-	// A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken.
-	Rule BucketLifecycleRuleItemResponseArrayInput `pulumi:"rule"`
-}
-
-func (BucketLifecycleResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketLifecycleResponse)(nil)).Elem()
-}
-
-func (i BucketLifecycleResponseArgs) ToBucketLifecycleResponseOutput() BucketLifecycleResponseOutput {
-	return i.ToBucketLifecycleResponseOutputWithContext(context.Background())
-}
-
-func (i BucketLifecycleResponseArgs) ToBucketLifecycleResponseOutputWithContext(ctx context.Context) BucketLifecycleResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleResponseOutput)
-}
-
-func (i BucketLifecycleResponseArgs) ToBucketLifecycleResponsePtrOutput() BucketLifecycleResponsePtrOutput {
-	return i.ToBucketLifecycleResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BucketLifecycleResponseArgs) ToBucketLifecycleResponsePtrOutputWithContext(ctx context.Context) BucketLifecycleResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleResponseOutput).ToBucketLifecycleResponsePtrOutputWithContext(ctx)
-}
-
-// BucketLifecycleResponsePtrInput is an input type that accepts BucketLifecycleResponseArgs, BucketLifecycleResponsePtr and BucketLifecycleResponsePtrOutput values.
-// You can construct a concrete instance of `BucketLifecycleResponsePtrInput` via:
-//
-//          BucketLifecycleResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BucketLifecycleResponsePtrInput interface {
-	pulumi.Input
-
-	ToBucketLifecycleResponsePtrOutput() BucketLifecycleResponsePtrOutput
-	ToBucketLifecycleResponsePtrOutputWithContext(context.Context) BucketLifecycleResponsePtrOutput
-}
-
-type bucketLifecycleResponsePtrType BucketLifecycleResponseArgs
-
-func BucketLifecycleResponsePtr(v *BucketLifecycleResponseArgs) BucketLifecycleResponsePtrInput {
-	return (*bucketLifecycleResponsePtrType)(v)
-}
-
-func (*bucketLifecycleResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketLifecycleResponse)(nil)).Elem()
-}
-
-func (i *bucketLifecycleResponsePtrType) ToBucketLifecycleResponsePtrOutput() BucketLifecycleResponsePtrOutput {
-	return i.ToBucketLifecycleResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *bucketLifecycleResponsePtrType) ToBucketLifecycleResponsePtrOutputWithContext(ctx context.Context) BucketLifecycleResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleResponsePtrOutput)
-}
-
 // The bucket's lifecycle configuration. See lifecycle management for more information.
 type BucketLifecycleResponseOutput struct{ *pulumi.OutputState }
 
@@ -3744,53 +2472,9 @@ func (o BucketLifecycleResponseOutput) ToBucketLifecycleResponseOutputWithContex
 	return o
 }
 
-func (o BucketLifecycleResponseOutput) ToBucketLifecycleResponsePtrOutput() BucketLifecycleResponsePtrOutput {
-	return o.ToBucketLifecycleResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BucketLifecycleResponseOutput) ToBucketLifecycleResponsePtrOutputWithContext(ctx context.Context) BucketLifecycleResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketLifecycleResponse) *BucketLifecycleResponse {
-		return &v
-	}).(BucketLifecycleResponsePtrOutput)
-}
-
 // A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken.
 func (o BucketLifecycleResponseOutput) Rule() BucketLifecycleRuleItemResponseArrayOutput {
 	return o.ApplyT(func(v BucketLifecycleResponse) []BucketLifecycleRuleItemResponse { return v.Rule }).(BucketLifecycleRuleItemResponseArrayOutput)
-}
-
-type BucketLifecycleResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BucketLifecycleResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketLifecycleResponse)(nil)).Elem()
-}
-
-func (o BucketLifecycleResponsePtrOutput) ToBucketLifecycleResponsePtrOutput() BucketLifecycleResponsePtrOutput {
-	return o
-}
-
-func (o BucketLifecycleResponsePtrOutput) ToBucketLifecycleResponsePtrOutputWithContext(ctx context.Context) BucketLifecycleResponsePtrOutput {
-	return o
-}
-
-func (o BucketLifecycleResponsePtrOutput) Elem() BucketLifecycleResponseOutput {
-	return o.ApplyT(func(v *BucketLifecycleResponse) BucketLifecycleResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BucketLifecycleResponse
-		return ret
-	}).(BucketLifecycleResponseOutput)
-}
-
-// A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken.
-func (o BucketLifecycleResponsePtrOutput) Rule() BucketLifecycleRuleItemResponseArrayOutput {
-	return o.ApplyT(func(v *BucketLifecycleResponse) []BucketLifecycleRuleItemResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Rule
-	}).(BucketLifecycleRuleItemResponseArrayOutput)
 }
 
 type BucketLifecycleRuleItem struct {
@@ -4064,37 +2748,6 @@ type BucketLifecycleRuleItemActionResponse struct {
 	StorageClass string `pulumi:"storageClass"`
 	// Type of the action. Currently, only Delete and SetStorageClass are supported.
 	Type string `pulumi:"type"`
-}
-
-// BucketLifecycleRuleItemActionResponseInput is an input type that accepts BucketLifecycleRuleItemActionResponseArgs and BucketLifecycleRuleItemActionResponseOutput values.
-// You can construct a concrete instance of `BucketLifecycleRuleItemActionResponseInput` via:
-//
-//          BucketLifecycleRuleItemActionResponseArgs{...}
-type BucketLifecycleRuleItemActionResponseInput interface {
-	pulumi.Input
-
-	ToBucketLifecycleRuleItemActionResponseOutput() BucketLifecycleRuleItemActionResponseOutput
-	ToBucketLifecycleRuleItemActionResponseOutputWithContext(context.Context) BucketLifecycleRuleItemActionResponseOutput
-}
-
-// The action to take.
-type BucketLifecycleRuleItemActionResponseArgs struct {
-	// Target storage class. Required iff the type of the action is SetStorageClass.
-	StorageClass pulumi.StringInput `pulumi:"storageClass"`
-	// Type of the action. Currently, only Delete and SetStorageClass are supported.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (BucketLifecycleRuleItemActionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketLifecycleRuleItemActionResponse)(nil)).Elem()
-}
-
-func (i BucketLifecycleRuleItemActionResponseArgs) ToBucketLifecycleRuleItemActionResponseOutput() BucketLifecycleRuleItemActionResponseOutput {
-	return i.ToBucketLifecycleRuleItemActionResponseOutputWithContext(context.Background())
-}
-
-func (i BucketLifecycleRuleItemActionResponseArgs) ToBucketLifecycleRuleItemActionResponseOutputWithContext(ctx context.Context) BucketLifecycleRuleItemActionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleItemActionResponseOutput)
 }
 
 // The action to take.
@@ -4457,53 +3110,6 @@ type BucketLifecycleRuleItemConditionResponse struct {
 	NumNewerVersions int `pulumi:"numNewerVersions"`
 }
 
-// BucketLifecycleRuleItemConditionResponseInput is an input type that accepts BucketLifecycleRuleItemConditionResponseArgs and BucketLifecycleRuleItemConditionResponseOutput values.
-// You can construct a concrete instance of `BucketLifecycleRuleItemConditionResponseInput` via:
-//
-//          BucketLifecycleRuleItemConditionResponseArgs{...}
-type BucketLifecycleRuleItemConditionResponseInput interface {
-	pulumi.Input
-
-	ToBucketLifecycleRuleItemConditionResponseOutput() BucketLifecycleRuleItemConditionResponseOutput
-	ToBucketLifecycleRuleItemConditionResponseOutputWithContext(context.Context) BucketLifecycleRuleItemConditionResponseOutput
-}
-
-// The condition(s) under which the action will be taken.
-type BucketLifecycleRuleItemConditionResponseArgs struct {
-	// Age of an object (in days). This condition is satisfied when an object reaches the specified age.
-	Age pulumi.IntInput `pulumi:"age"`
-	// A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when an object is created before midnight of the specified date in UTC.
-	CreatedBefore pulumi.StringInput `pulumi:"createdBefore"`
-	// A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when the custom time on an object is before this date in UTC.
-	CustomTimeBefore pulumi.StringInput `pulumi:"customTimeBefore"`
-	// Number of days elapsed since the user-specified timestamp set on an object. The condition is satisfied if the days elapsed is at least this number. If no custom timestamp is specified on an object, the condition does not apply.
-	DaysSinceCustomTime pulumi.IntInput `pulumi:"daysSinceCustomTime"`
-	// Number of days elapsed since the noncurrent timestamp of an object. The condition is satisfied if the days elapsed is at least this number. This condition is relevant only for versioned objects. The value of the field must be a nonnegative integer. If it's zero, the object version will become eligible for Lifecycle action as soon as it becomes noncurrent.
-	DaysSinceNoncurrentTime pulumi.IntInput `pulumi:"daysSinceNoncurrentTime"`
-	// Relevant only for versioned objects. If the value is true, this condition matches live objects; if the value is false, it matches archived objects.
-	IsLive pulumi.BoolInput `pulumi:"isLive"`
-	// A regular expression that satisfies the RE2 syntax. This condition is satisfied when the name of the object matches the RE2 pattern. Note: This feature is currently in the "Early Access" launch stage and is only available to a whitelisted set of users; that means that this feature may be changed in backward-incompatible ways and that it is not guaranteed to be released.
-	MatchesPattern pulumi.StringInput `pulumi:"matchesPattern"`
-	// Objects having any of the storage classes specified by this condition will be matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, and DURABLE_REDUCED_AVAILABILITY.
-	MatchesStorageClass pulumi.StringArrayInput `pulumi:"matchesStorageClass"`
-	// A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when the noncurrent time on an object is before this date in UTC. This condition is relevant only for versioned objects.
-	NoncurrentTimeBefore pulumi.StringInput `pulumi:"noncurrentTimeBefore"`
-	// Relevant only for versioned objects. If the value is N, this condition is satisfied when there are at least N versions (including the live version) newer than this version of the object.
-	NumNewerVersions pulumi.IntInput `pulumi:"numNewerVersions"`
-}
-
-func (BucketLifecycleRuleItemConditionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketLifecycleRuleItemConditionResponse)(nil)).Elem()
-}
-
-func (i BucketLifecycleRuleItemConditionResponseArgs) ToBucketLifecycleRuleItemConditionResponseOutput() BucketLifecycleRuleItemConditionResponseOutput {
-	return i.ToBucketLifecycleRuleItemConditionResponseOutputWithContext(context.Background())
-}
-
-func (i BucketLifecycleRuleItemConditionResponseArgs) ToBucketLifecycleRuleItemConditionResponseOutputWithContext(ctx context.Context) BucketLifecycleRuleItemConditionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleItemConditionResponseOutput)
-}
-
 // The condition(s) under which the action will be taken.
 type BucketLifecycleRuleItemConditionResponseOutput struct{ *pulumi.OutputState }
 
@@ -4574,61 +3180,6 @@ type BucketLifecycleRuleItemResponse struct {
 	Action BucketLifecycleRuleItemActionResponse `pulumi:"action"`
 	// The condition(s) under which the action will be taken.
 	Condition BucketLifecycleRuleItemConditionResponse `pulumi:"condition"`
-}
-
-// BucketLifecycleRuleItemResponseInput is an input type that accepts BucketLifecycleRuleItemResponseArgs and BucketLifecycleRuleItemResponseOutput values.
-// You can construct a concrete instance of `BucketLifecycleRuleItemResponseInput` via:
-//
-//          BucketLifecycleRuleItemResponseArgs{...}
-type BucketLifecycleRuleItemResponseInput interface {
-	pulumi.Input
-
-	ToBucketLifecycleRuleItemResponseOutput() BucketLifecycleRuleItemResponseOutput
-	ToBucketLifecycleRuleItemResponseOutputWithContext(context.Context) BucketLifecycleRuleItemResponseOutput
-}
-
-type BucketLifecycleRuleItemResponseArgs struct {
-	// The action to take.
-	Action BucketLifecycleRuleItemActionResponseInput `pulumi:"action"`
-	// The condition(s) under which the action will be taken.
-	Condition BucketLifecycleRuleItemConditionResponseInput `pulumi:"condition"`
-}
-
-func (BucketLifecycleRuleItemResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketLifecycleRuleItemResponse)(nil)).Elem()
-}
-
-func (i BucketLifecycleRuleItemResponseArgs) ToBucketLifecycleRuleItemResponseOutput() BucketLifecycleRuleItemResponseOutput {
-	return i.ToBucketLifecycleRuleItemResponseOutputWithContext(context.Background())
-}
-
-func (i BucketLifecycleRuleItemResponseArgs) ToBucketLifecycleRuleItemResponseOutputWithContext(ctx context.Context) BucketLifecycleRuleItemResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleItemResponseOutput)
-}
-
-// BucketLifecycleRuleItemResponseArrayInput is an input type that accepts BucketLifecycleRuleItemResponseArray and BucketLifecycleRuleItemResponseArrayOutput values.
-// You can construct a concrete instance of `BucketLifecycleRuleItemResponseArrayInput` via:
-//
-//          BucketLifecycleRuleItemResponseArray{ BucketLifecycleRuleItemResponseArgs{...} }
-type BucketLifecycleRuleItemResponseArrayInput interface {
-	pulumi.Input
-
-	ToBucketLifecycleRuleItemResponseArrayOutput() BucketLifecycleRuleItemResponseArrayOutput
-	ToBucketLifecycleRuleItemResponseArrayOutputWithContext(context.Context) BucketLifecycleRuleItemResponseArrayOutput
-}
-
-type BucketLifecycleRuleItemResponseArray []BucketLifecycleRuleItemResponseInput
-
-func (BucketLifecycleRuleItemResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BucketLifecycleRuleItemResponse)(nil)).Elem()
-}
-
-func (i BucketLifecycleRuleItemResponseArray) ToBucketLifecycleRuleItemResponseArrayOutput() BucketLifecycleRuleItemResponseArrayOutput {
-	return i.ToBucketLifecycleRuleItemResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BucketLifecycleRuleItemResponseArray) ToBucketLifecycleRuleItemResponseArrayOutputWithContext(ctx context.Context) BucketLifecycleRuleItemResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleItemResponseArrayOutput)
 }
 
 type BucketLifecycleRuleItemResponseOutput struct{ *pulumi.OutputState }
@@ -4842,78 +3393,6 @@ type BucketLoggingResponse struct {
 	LogObjectPrefix string `pulumi:"logObjectPrefix"`
 }
 
-// BucketLoggingResponseInput is an input type that accepts BucketLoggingResponseArgs and BucketLoggingResponseOutput values.
-// You can construct a concrete instance of `BucketLoggingResponseInput` via:
-//
-//          BucketLoggingResponseArgs{...}
-type BucketLoggingResponseInput interface {
-	pulumi.Input
-
-	ToBucketLoggingResponseOutput() BucketLoggingResponseOutput
-	ToBucketLoggingResponseOutputWithContext(context.Context) BucketLoggingResponseOutput
-}
-
-// The bucket's logging configuration, which defines the destination bucket and optional name prefix for the current bucket's logs.
-type BucketLoggingResponseArgs struct {
-	// The destination bucket where the current bucket's logs should be placed.
-	LogBucket pulumi.StringInput `pulumi:"logBucket"`
-	// A prefix for log object names.
-	LogObjectPrefix pulumi.StringInput `pulumi:"logObjectPrefix"`
-}
-
-func (BucketLoggingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketLoggingResponse)(nil)).Elem()
-}
-
-func (i BucketLoggingResponseArgs) ToBucketLoggingResponseOutput() BucketLoggingResponseOutput {
-	return i.ToBucketLoggingResponseOutputWithContext(context.Background())
-}
-
-func (i BucketLoggingResponseArgs) ToBucketLoggingResponseOutputWithContext(ctx context.Context) BucketLoggingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketLoggingResponseOutput)
-}
-
-func (i BucketLoggingResponseArgs) ToBucketLoggingResponsePtrOutput() BucketLoggingResponsePtrOutput {
-	return i.ToBucketLoggingResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BucketLoggingResponseArgs) ToBucketLoggingResponsePtrOutputWithContext(ctx context.Context) BucketLoggingResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketLoggingResponseOutput).ToBucketLoggingResponsePtrOutputWithContext(ctx)
-}
-
-// BucketLoggingResponsePtrInput is an input type that accepts BucketLoggingResponseArgs, BucketLoggingResponsePtr and BucketLoggingResponsePtrOutput values.
-// You can construct a concrete instance of `BucketLoggingResponsePtrInput` via:
-//
-//          BucketLoggingResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BucketLoggingResponsePtrInput interface {
-	pulumi.Input
-
-	ToBucketLoggingResponsePtrOutput() BucketLoggingResponsePtrOutput
-	ToBucketLoggingResponsePtrOutputWithContext(context.Context) BucketLoggingResponsePtrOutput
-}
-
-type bucketLoggingResponsePtrType BucketLoggingResponseArgs
-
-func BucketLoggingResponsePtr(v *BucketLoggingResponseArgs) BucketLoggingResponsePtrInput {
-	return (*bucketLoggingResponsePtrType)(v)
-}
-
-func (*bucketLoggingResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketLoggingResponse)(nil)).Elem()
-}
-
-func (i *bucketLoggingResponsePtrType) ToBucketLoggingResponsePtrOutput() BucketLoggingResponsePtrOutput {
-	return i.ToBucketLoggingResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *bucketLoggingResponsePtrType) ToBucketLoggingResponsePtrOutputWithContext(ctx context.Context) BucketLoggingResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketLoggingResponsePtrOutput)
-}
-
 // The bucket's logging configuration, which defines the destination bucket and optional name prefix for the current bucket's logs.
 type BucketLoggingResponseOutput struct{ *pulumi.OutputState }
 
@@ -4929,16 +3408,6 @@ func (o BucketLoggingResponseOutput) ToBucketLoggingResponseOutputWithContext(ct
 	return o
 }
 
-func (o BucketLoggingResponseOutput) ToBucketLoggingResponsePtrOutput() BucketLoggingResponsePtrOutput {
-	return o.ToBucketLoggingResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BucketLoggingResponseOutput) ToBucketLoggingResponsePtrOutputWithContext(ctx context.Context) BucketLoggingResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketLoggingResponse) *BucketLoggingResponse {
-		return &v
-	}).(BucketLoggingResponsePtrOutput)
-}
-
 // The destination bucket where the current bucket's logs should be placed.
 func (o BucketLoggingResponseOutput) LogBucket() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketLoggingResponse) string { return v.LogBucket }).(pulumi.StringOutput)
@@ -4947,50 +3416,6 @@ func (o BucketLoggingResponseOutput) LogBucket() pulumi.StringOutput {
 // A prefix for log object names.
 func (o BucketLoggingResponseOutput) LogObjectPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketLoggingResponse) string { return v.LogObjectPrefix }).(pulumi.StringOutput)
-}
-
-type BucketLoggingResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BucketLoggingResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketLoggingResponse)(nil)).Elem()
-}
-
-func (o BucketLoggingResponsePtrOutput) ToBucketLoggingResponsePtrOutput() BucketLoggingResponsePtrOutput {
-	return o
-}
-
-func (o BucketLoggingResponsePtrOutput) ToBucketLoggingResponsePtrOutputWithContext(ctx context.Context) BucketLoggingResponsePtrOutput {
-	return o
-}
-
-func (o BucketLoggingResponsePtrOutput) Elem() BucketLoggingResponseOutput {
-	return o.ApplyT(func(v *BucketLoggingResponse) BucketLoggingResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BucketLoggingResponse
-		return ret
-	}).(BucketLoggingResponseOutput)
-}
-
-// The destination bucket where the current bucket's logs should be placed.
-func (o BucketLoggingResponsePtrOutput) LogBucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketLoggingResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LogBucket
-	}).(pulumi.StringPtrOutput)
-}
-
-// A prefix for log object names.
-func (o BucketLoggingResponsePtrOutput) LogObjectPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketLoggingResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LogObjectPrefix
-	}).(pulumi.StringPtrOutput)
 }
 
 // Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
@@ -5160,78 +3585,6 @@ type BucketObjectCustomerEncryptionResponse struct {
 	KeySha256 string `pulumi:"keySha256"`
 }
 
-// BucketObjectCustomerEncryptionResponseInput is an input type that accepts BucketObjectCustomerEncryptionResponseArgs and BucketObjectCustomerEncryptionResponseOutput values.
-// You can construct a concrete instance of `BucketObjectCustomerEncryptionResponseInput` via:
-//
-//          BucketObjectCustomerEncryptionResponseArgs{...}
-type BucketObjectCustomerEncryptionResponseInput interface {
-	pulumi.Input
-
-	ToBucketObjectCustomerEncryptionResponseOutput() BucketObjectCustomerEncryptionResponseOutput
-	ToBucketObjectCustomerEncryptionResponseOutputWithContext(context.Context) BucketObjectCustomerEncryptionResponseOutput
-}
-
-// Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
-type BucketObjectCustomerEncryptionResponseArgs struct {
-	// The encryption algorithm.
-	EncryptionAlgorithm pulumi.StringInput `pulumi:"encryptionAlgorithm"`
-	// SHA256 hash value of the encryption key.
-	KeySha256 pulumi.StringInput `pulumi:"keySha256"`
-}
-
-func (BucketObjectCustomerEncryptionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketObjectCustomerEncryptionResponse)(nil)).Elem()
-}
-
-func (i BucketObjectCustomerEncryptionResponseArgs) ToBucketObjectCustomerEncryptionResponseOutput() BucketObjectCustomerEncryptionResponseOutput {
-	return i.ToBucketObjectCustomerEncryptionResponseOutputWithContext(context.Background())
-}
-
-func (i BucketObjectCustomerEncryptionResponseArgs) ToBucketObjectCustomerEncryptionResponseOutputWithContext(ctx context.Context) BucketObjectCustomerEncryptionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectCustomerEncryptionResponseOutput)
-}
-
-func (i BucketObjectCustomerEncryptionResponseArgs) ToBucketObjectCustomerEncryptionResponsePtrOutput() BucketObjectCustomerEncryptionResponsePtrOutput {
-	return i.ToBucketObjectCustomerEncryptionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BucketObjectCustomerEncryptionResponseArgs) ToBucketObjectCustomerEncryptionResponsePtrOutputWithContext(ctx context.Context) BucketObjectCustomerEncryptionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectCustomerEncryptionResponseOutput).ToBucketObjectCustomerEncryptionResponsePtrOutputWithContext(ctx)
-}
-
-// BucketObjectCustomerEncryptionResponsePtrInput is an input type that accepts BucketObjectCustomerEncryptionResponseArgs, BucketObjectCustomerEncryptionResponsePtr and BucketObjectCustomerEncryptionResponsePtrOutput values.
-// You can construct a concrete instance of `BucketObjectCustomerEncryptionResponsePtrInput` via:
-//
-//          BucketObjectCustomerEncryptionResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BucketObjectCustomerEncryptionResponsePtrInput interface {
-	pulumi.Input
-
-	ToBucketObjectCustomerEncryptionResponsePtrOutput() BucketObjectCustomerEncryptionResponsePtrOutput
-	ToBucketObjectCustomerEncryptionResponsePtrOutputWithContext(context.Context) BucketObjectCustomerEncryptionResponsePtrOutput
-}
-
-type bucketObjectCustomerEncryptionResponsePtrType BucketObjectCustomerEncryptionResponseArgs
-
-func BucketObjectCustomerEncryptionResponsePtr(v *BucketObjectCustomerEncryptionResponseArgs) BucketObjectCustomerEncryptionResponsePtrInput {
-	return (*bucketObjectCustomerEncryptionResponsePtrType)(v)
-}
-
-func (*bucketObjectCustomerEncryptionResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketObjectCustomerEncryptionResponse)(nil)).Elem()
-}
-
-func (i *bucketObjectCustomerEncryptionResponsePtrType) ToBucketObjectCustomerEncryptionResponsePtrOutput() BucketObjectCustomerEncryptionResponsePtrOutput {
-	return i.ToBucketObjectCustomerEncryptionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *bucketObjectCustomerEncryptionResponsePtrType) ToBucketObjectCustomerEncryptionResponsePtrOutputWithContext(ctx context.Context) BucketObjectCustomerEncryptionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectCustomerEncryptionResponsePtrOutput)
-}
-
 // Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
 type BucketObjectCustomerEncryptionResponseOutput struct{ *pulumi.OutputState }
 
@@ -5247,16 +3600,6 @@ func (o BucketObjectCustomerEncryptionResponseOutput) ToBucketObjectCustomerEncr
 	return o
 }
 
-func (o BucketObjectCustomerEncryptionResponseOutput) ToBucketObjectCustomerEncryptionResponsePtrOutput() BucketObjectCustomerEncryptionResponsePtrOutput {
-	return o.ToBucketObjectCustomerEncryptionResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BucketObjectCustomerEncryptionResponseOutput) ToBucketObjectCustomerEncryptionResponsePtrOutputWithContext(ctx context.Context) BucketObjectCustomerEncryptionResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketObjectCustomerEncryptionResponse) *BucketObjectCustomerEncryptionResponse {
-		return &v
-	}).(BucketObjectCustomerEncryptionResponsePtrOutput)
-}
-
 // The encryption algorithm.
 func (o BucketObjectCustomerEncryptionResponseOutput) EncryptionAlgorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketObjectCustomerEncryptionResponse) string { return v.EncryptionAlgorithm }).(pulumi.StringOutput)
@@ -5265,50 +3608,6 @@ func (o BucketObjectCustomerEncryptionResponseOutput) EncryptionAlgorithm() pulu
 // SHA256 hash value of the encryption key.
 func (o BucketObjectCustomerEncryptionResponseOutput) KeySha256() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketObjectCustomerEncryptionResponse) string { return v.KeySha256 }).(pulumi.StringOutput)
-}
-
-type BucketObjectCustomerEncryptionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BucketObjectCustomerEncryptionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketObjectCustomerEncryptionResponse)(nil)).Elem()
-}
-
-func (o BucketObjectCustomerEncryptionResponsePtrOutput) ToBucketObjectCustomerEncryptionResponsePtrOutput() BucketObjectCustomerEncryptionResponsePtrOutput {
-	return o
-}
-
-func (o BucketObjectCustomerEncryptionResponsePtrOutput) ToBucketObjectCustomerEncryptionResponsePtrOutputWithContext(ctx context.Context) BucketObjectCustomerEncryptionResponsePtrOutput {
-	return o
-}
-
-func (o BucketObjectCustomerEncryptionResponsePtrOutput) Elem() BucketObjectCustomerEncryptionResponseOutput {
-	return o.ApplyT(func(v *BucketObjectCustomerEncryptionResponse) BucketObjectCustomerEncryptionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BucketObjectCustomerEncryptionResponse
-		return ret
-	}).(BucketObjectCustomerEncryptionResponseOutput)
-}
-
-// The encryption algorithm.
-func (o BucketObjectCustomerEncryptionResponsePtrOutput) EncryptionAlgorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketObjectCustomerEncryptionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EncryptionAlgorithm
-	}).(pulumi.StringPtrOutput)
-}
-
-// SHA256 hash value of the encryption key.
-func (o BucketObjectCustomerEncryptionResponsePtrOutput) KeySha256() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketObjectCustomerEncryptionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.KeySha256
-	}).(pulumi.StringPtrOutput)
 }
 
 // The owner of the object. This will always be the uploader of the object.
@@ -5478,78 +3777,6 @@ type BucketObjectOwnerResponse struct {
 	EntityId string `pulumi:"entityId"`
 }
 
-// BucketObjectOwnerResponseInput is an input type that accepts BucketObjectOwnerResponseArgs and BucketObjectOwnerResponseOutput values.
-// You can construct a concrete instance of `BucketObjectOwnerResponseInput` via:
-//
-//          BucketObjectOwnerResponseArgs{...}
-type BucketObjectOwnerResponseInput interface {
-	pulumi.Input
-
-	ToBucketObjectOwnerResponseOutput() BucketObjectOwnerResponseOutput
-	ToBucketObjectOwnerResponseOutputWithContext(context.Context) BucketObjectOwnerResponseOutput
-}
-
-// The owner of the object. This will always be the uploader of the object.
-type BucketObjectOwnerResponseArgs struct {
-	// The entity, in the form user-userId.
-	Entity pulumi.StringInput `pulumi:"entity"`
-	// The ID for the entity.
-	EntityId pulumi.StringInput `pulumi:"entityId"`
-}
-
-func (BucketObjectOwnerResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketObjectOwnerResponse)(nil)).Elem()
-}
-
-func (i BucketObjectOwnerResponseArgs) ToBucketObjectOwnerResponseOutput() BucketObjectOwnerResponseOutput {
-	return i.ToBucketObjectOwnerResponseOutputWithContext(context.Background())
-}
-
-func (i BucketObjectOwnerResponseArgs) ToBucketObjectOwnerResponseOutputWithContext(ctx context.Context) BucketObjectOwnerResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectOwnerResponseOutput)
-}
-
-func (i BucketObjectOwnerResponseArgs) ToBucketObjectOwnerResponsePtrOutput() BucketObjectOwnerResponsePtrOutput {
-	return i.ToBucketObjectOwnerResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BucketObjectOwnerResponseArgs) ToBucketObjectOwnerResponsePtrOutputWithContext(ctx context.Context) BucketObjectOwnerResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectOwnerResponseOutput).ToBucketObjectOwnerResponsePtrOutputWithContext(ctx)
-}
-
-// BucketObjectOwnerResponsePtrInput is an input type that accepts BucketObjectOwnerResponseArgs, BucketObjectOwnerResponsePtr and BucketObjectOwnerResponsePtrOutput values.
-// You can construct a concrete instance of `BucketObjectOwnerResponsePtrInput` via:
-//
-//          BucketObjectOwnerResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BucketObjectOwnerResponsePtrInput interface {
-	pulumi.Input
-
-	ToBucketObjectOwnerResponsePtrOutput() BucketObjectOwnerResponsePtrOutput
-	ToBucketObjectOwnerResponsePtrOutputWithContext(context.Context) BucketObjectOwnerResponsePtrOutput
-}
-
-type bucketObjectOwnerResponsePtrType BucketObjectOwnerResponseArgs
-
-func BucketObjectOwnerResponsePtr(v *BucketObjectOwnerResponseArgs) BucketObjectOwnerResponsePtrInput {
-	return (*bucketObjectOwnerResponsePtrType)(v)
-}
-
-func (*bucketObjectOwnerResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketObjectOwnerResponse)(nil)).Elem()
-}
-
-func (i *bucketObjectOwnerResponsePtrType) ToBucketObjectOwnerResponsePtrOutput() BucketObjectOwnerResponsePtrOutput {
-	return i.ToBucketObjectOwnerResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *bucketObjectOwnerResponsePtrType) ToBucketObjectOwnerResponsePtrOutputWithContext(ctx context.Context) BucketObjectOwnerResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectOwnerResponsePtrOutput)
-}
-
 // The owner of the object. This will always be the uploader of the object.
 type BucketObjectOwnerResponseOutput struct{ *pulumi.OutputState }
 
@@ -5565,16 +3792,6 @@ func (o BucketObjectOwnerResponseOutput) ToBucketObjectOwnerResponseOutputWithCo
 	return o
 }
 
-func (o BucketObjectOwnerResponseOutput) ToBucketObjectOwnerResponsePtrOutput() BucketObjectOwnerResponsePtrOutput {
-	return o.ToBucketObjectOwnerResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BucketObjectOwnerResponseOutput) ToBucketObjectOwnerResponsePtrOutputWithContext(ctx context.Context) BucketObjectOwnerResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketObjectOwnerResponse) *BucketObjectOwnerResponse {
-		return &v
-	}).(BucketObjectOwnerResponsePtrOutput)
-}
-
 // The entity, in the form user-userId.
 func (o BucketObjectOwnerResponseOutput) Entity() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketObjectOwnerResponse) string { return v.Entity }).(pulumi.StringOutput)
@@ -5583,50 +3800,6 @@ func (o BucketObjectOwnerResponseOutput) Entity() pulumi.StringOutput {
 // The ID for the entity.
 func (o BucketObjectOwnerResponseOutput) EntityId() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketObjectOwnerResponse) string { return v.EntityId }).(pulumi.StringOutput)
-}
-
-type BucketObjectOwnerResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BucketObjectOwnerResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketObjectOwnerResponse)(nil)).Elem()
-}
-
-func (o BucketObjectOwnerResponsePtrOutput) ToBucketObjectOwnerResponsePtrOutput() BucketObjectOwnerResponsePtrOutput {
-	return o
-}
-
-func (o BucketObjectOwnerResponsePtrOutput) ToBucketObjectOwnerResponsePtrOutputWithContext(ctx context.Context) BucketObjectOwnerResponsePtrOutput {
-	return o
-}
-
-func (o BucketObjectOwnerResponsePtrOutput) Elem() BucketObjectOwnerResponseOutput {
-	return o.ApplyT(func(v *BucketObjectOwnerResponse) BucketObjectOwnerResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BucketObjectOwnerResponse
-		return ret
-	}).(BucketObjectOwnerResponseOutput)
-}
-
-// The entity, in the form user-userId.
-func (o BucketObjectOwnerResponsePtrOutput) Entity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketObjectOwnerResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Entity
-	}).(pulumi.StringPtrOutput)
-}
-
-// The ID for the entity.
-func (o BucketObjectOwnerResponsePtrOutput) EntityId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketObjectOwnerResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EntityId
-	}).(pulumi.StringPtrOutput)
 }
 
 // The owner of the bucket. This is always the project team's owner group.
@@ -5796,78 +3969,6 @@ type BucketOwnerResponse struct {
 	EntityId string `pulumi:"entityId"`
 }
 
-// BucketOwnerResponseInput is an input type that accepts BucketOwnerResponseArgs and BucketOwnerResponseOutput values.
-// You can construct a concrete instance of `BucketOwnerResponseInput` via:
-//
-//          BucketOwnerResponseArgs{...}
-type BucketOwnerResponseInput interface {
-	pulumi.Input
-
-	ToBucketOwnerResponseOutput() BucketOwnerResponseOutput
-	ToBucketOwnerResponseOutputWithContext(context.Context) BucketOwnerResponseOutput
-}
-
-// The owner of the bucket. This is always the project team's owner group.
-type BucketOwnerResponseArgs struct {
-	// The entity, in the form project-owner-projectId.
-	Entity pulumi.StringInput `pulumi:"entity"`
-	// The ID for the entity.
-	EntityId pulumi.StringInput `pulumi:"entityId"`
-}
-
-func (BucketOwnerResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketOwnerResponse)(nil)).Elem()
-}
-
-func (i BucketOwnerResponseArgs) ToBucketOwnerResponseOutput() BucketOwnerResponseOutput {
-	return i.ToBucketOwnerResponseOutputWithContext(context.Background())
-}
-
-func (i BucketOwnerResponseArgs) ToBucketOwnerResponseOutputWithContext(ctx context.Context) BucketOwnerResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketOwnerResponseOutput)
-}
-
-func (i BucketOwnerResponseArgs) ToBucketOwnerResponsePtrOutput() BucketOwnerResponsePtrOutput {
-	return i.ToBucketOwnerResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BucketOwnerResponseArgs) ToBucketOwnerResponsePtrOutputWithContext(ctx context.Context) BucketOwnerResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketOwnerResponseOutput).ToBucketOwnerResponsePtrOutputWithContext(ctx)
-}
-
-// BucketOwnerResponsePtrInput is an input type that accepts BucketOwnerResponseArgs, BucketOwnerResponsePtr and BucketOwnerResponsePtrOutput values.
-// You can construct a concrete instance of `BucketOwnerResponsePtrInput` via:
-//
-//          BucketOwnerResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BucketOwnerResponsePtrInput interface {
-	pulumi.Input
-
-	ToBucketOwnerResponsePtrOutput() BucketOwnerResponsePtrOutput
-	ToBucketOwnerResponsePtrOutputWithContext(context.Context) BucketOwnerResponsePtrOutput
-}
-
-type bucketOwnerResponsePtrType BucketOwnerResponseArgs
-
-func BucketOwnerResponsePtr(v *BucketOwnerResponseArgs) BucketOwnerResponsePtrInput {
-	return (*bucketOwnerResponsePtrType)(v)
-}
-
-func (*bucketOwnerResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketOwnerResponse)(nil)).Elem()
-}
-
-func (i *bucketOwnerResponsePtrType) ToBucketOwnerResponsePtrOutput() BucketOwnerResponsePtrOutput {
-	return i.ToBucketOwnerResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *bucketOwnerResponsePtrType) ToBucketOwnerResponsePtrOutputWithContext(ctx context.Context) BucketOwnerResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketOwnerResponsePtrOutput)
-}
-
 // The owner of the bucket. This is always the project team's owner group.
 type BucketOwnerResponseOutput struct{ *pulumi.OutputState }
 
@@ -5883,16 +3984,6 @@ func (o BucketOwnerResponseOutput) ToBucketOwnerResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o BucketOwnerResponseOutput) ToBucketOwnerResponsePtrOutput() BucketOwnerResponsePtrOutput {
-	return o.ToBucketOwnerResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BucketOwnerResponseOutput) ToBucketOwnerResponsePtrOutputWithContext(ctx context.Context) BucketOwnerResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketOwnerResponse) *BucketOwnerResponse {
-		return &v
-	}).(BucketOwnerResponsePtrOutput)
-}
-
 // The entity, in the form project-owner-projectId.
 func (o BucketOwnerResponseOutput) Entity() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketOwnerResponse) string { return v.Entity }).(pulumi.StringOutput)
@@ -5901,50 +3992,6 @@ func (o BucketOwnerResponseOutput) Entity() pulumi.StringOutput {
 // The ID for the entity.
 func (o BucketOwnerResponseOutput) EntityId() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketOwnerResponse) string { return v.EntityId }).(pulumi.StringOutput)
-}
-
-type BucketOwnerResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BucketOwnerResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketOwnerResponse)(nil)).Elem()
-}
-
-func (o BucketOwnerResponsePtrOutput) ToBucketOwnerResponsePtrOutput() BucketOwnerResponsePtrOutput {
-	return o
-}
-
-func (o BucketOwnerResponsePtrOutput) ToBucketOwnerResponsePtrOutputWithContext(ctx context.Context) BucketOwnerResponsePtrOutput {
-	return o
-}
-
-func (o BucketOwnerResponsePtrOutput) Elem() BucketOwnerResponseOutput {
-	return o.ApplyT(func(v *BucketOwnerResponse) BucketOwnerResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BucketOwnerResponse
-		return ret
-	}).(BucketOwnerResponseOutput)
-}
-
-// The entity, in the form project-owner-projectId.
-func (o BucketOwnerResponsePtrOutput) Entity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketOwnerResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Entity
-	}).(pulumi.StringPtrOutput)
-}
-
-// The ID for the entity.
-func (o BucketOwnerResponsePtrOutput) EntityId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketOwnerResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EntityId
-	}).(pulumi.StringPtrOutput)
 }
 
 // The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
@@ -6135,80 +4182,6 @@ type BucketRetentionPolicyResponse struct {
 	RetentionPeriod string `pulumi:"retentionPeriod"`
 }
 
-// BucketRetentionPolicyResponseInput is an input type that accepts BucketRetentionPolicyResponseArgs and BucketRetentionPolicyResponseOutput values.
-// You can construct a concrete instance of `BucketRetentionPolicyResponseInput` via:
-//
-//          BucketRetentionPolicyResponseArgs{...}
-type BucketRetentionPolicyResponseInput interface {
-	pulumi.Input
-
-	ToBucketRetentionPolicyResponseOutput() BucketRetentionPolicyResponseOutput
-	ToBucketRetentionPolicyResponseOutputWithContext(context.Context) BucketRetentionPolicyResponseOutput
-}
-
-// The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
-type BucketRetentionPolicyResponseArgs struct {
-	// Server-determined value that indicates the time from which policy was enforced and effective. This value is in RFC 3339 format.
-	EffectiveTime pulumi.StringInput `pulumi:"effectiveTime"`
-	// Once locked, an object retention policy cannot be modified.
-	IsLocked pulumi.BoolInput `pulumi:"isLocked"`
-	// The duration in seconds that objects need to be retained. Retention duration must be greater than zero and less than 100 years. Note that enforcement of retention periods less than a day is not guaranteed. Such periods should only be used for testing purposes.
-	RetentionPeriod pulumi.StringInput `pulumi:"retentionPeriod"`
-}
-
-func (BucketRetentionPolicyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketRetentionPolicyResponse)(nil)).Elem()
-}
-
-func (i BucketRetentionPolicyResponseArgs) ToBucketRetentionPolicyResponseOutput() BucketRetentionPolicyResponseOutput {
-	return i.ToBucketRetentionPolicyResponseOutputWithContext(context.Background())
-}
-
-func (i BucketRetentionPolicyResponseArgs) ToBucketRetentionPolicyResponseOutputWithContext(ctx context.Context) BucketRetentionPolicyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketRetentionPolicyResponseOutput)
-}
-
-func (i BucketRetentionPolicyResponseArgs) ToBucketRetentionPolicyResponsePtrOutput() BucketRetentionPolicyResponsePtrOutput {
-	return i.ToBucketRetentionPolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BucketRetentionPolicyResponseArgs) ToBucketRetentionPolicyResponsePtrOutputWithContext(ctx context.Context) BucketRetentionPolicyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketRetentionPolicyResponseOutput).ToBucketRetentionPolicyResponsePtrOutputWithContext(ctx)
-}
-
-// BucketRetentionPolicyResponsePtrInput is an input type that accepts BucketRetentionPolicyResponseArgs, BucketRetentionPolicyResponsePtr and BucketRetentionPolicyResponsePtrOutput values.
-// You can construct a concrete instance of `BucketRetentionPolicyResponsePtrInput` via:
-//
-//          BucketRetentionPolicyResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BucketRetentionPolicyResponsePtrInput interface {
-	pulumi.Input
-
-	ToBucketRetentionPolicyResponsePtrOutput() BucketRetentionPolicyResponsePtrOutput
-	ToBucketRetentionPolicyResponsePtrOutputWithContext(context.Context) BucketRetentionPolicyResponsePtrOutput
-}
-
-type bucketRetentionPolicyResponsePtrType BucketRetentionPolicyResponseArgs
-
-func BucketRetentionPolicyResponsePtr(v *BucketRetentionPolicyResponseArgs) BucketRetentionPolicyResponsePtrInput {
-	return (*bucketRetentionPolicyResponsePtrType)(v)
-}
-
-func (*bucketRetentionPolicyResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketRetentionPolicyResponse)(nil)).Elem()
-}
-
-func (i *bucketRetentionPolicyResponsePtrType) ToBucketRetentionPolicyResponsePtrOutput() BucketRetentionPolicyResponsePtrOutput {
-	return i.ToBucketRetentionPolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *bucketRetentionPolicyResponsePtrType) ToBucketRetentionPolicyResponsePtrOutputWithContext(ctx context.Context) BucketRetentionPolicyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketRetentionPolicyResponsePtrOutput)
-}
-
 // The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
 type BucketRetentionPolicyResponseOutput struct{ *pulumi.OutputState }
 
@@ -6224,16 +4197,6 @@ func (o BucketRetentionPolicyResponseOutput) ToBucketRetentionPolicyResponseOutp
 	return o
 }
 
-func (o BucketRetentionPolicyResponseOutput) ToBucketRetentionPolicyResponsePtrOutput() BucketRetentionPolicyResponsePtrOutput {
-	return o.ToBucketRetentionPolicyResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BucketRetentionPolicyResponseOutput) ToBucketRetentionPolicyResponsePtrOutputWithContext(ctx context.Context) BucketRetentionPolicyResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketRetentionPolicyResponse) *BucketRetentionPolicyResponse {
-		return &v
-	}).(BucketRetentionPolicyResponsePtrOutput)
-}
-
 // Server-determined value that indicates the time from which policy was enforced and effective. This value is in RFC 3339 format.
 func (o BucketRetentionPolicyResponseOutput) EffectiveTime() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketRetentionPolicyResponse) string { return v.EffectiveTime }).(pulumi.StringOutput)
@@ -6247,60 +4210,6 @@ func (o BucketRetentionPolicyResponseOutput) IsLocked() pulumi.BoolOutput {
 // The duration in seconds that objects need to be retained. Retention duration must be greater than zero and less than 100 years. Note that enforcement of retention periods less than a day is not guaranteed. Such periods should only be used for testing purposes.
 func (o BucketRetentionPolicyResponseOutput) RetentionPeriod() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketRetentionPolicyResponse) string { return v.RetentionPeriod }).(pulumi.StringOutput)
-}
-
-type BucketRetentionPolicyResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BucketRetentionPolicyResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketRetentionPolicyResponse)(nil)).Elem()
-}
-
-func (o BucketRetentionPolicyResponsePtrOutput) ToBucketRetentionPolicyResponsePtrOutput() BucketRetentionPolicyResponsePtrOutput {
-	return o
-}
-
-func (o BucketRetentionPolicyResponsePtrOutput) ToBucketRetentionPolicyResponsePtrOutputWithContext(ctx context.Context) BucketRetentionPolicyResponsePtrOutput {
-	return o
-}
-
-func (o BucketRetentionPolicyResponsePtrOutput) Elem() BucketRetentionPolicyResponseOutput {
-	return o.ApplyT(func(v *BucketRetentionPolicyResponse) BucketRetentionPolicyResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BucketRetentionPolicyResponse
-		return ret
-	}).(BucketRetentionPolicyResponseOutput)
-}
-
-// Server-determined value that indicates the time from which policy was enforced and effective. This value is in RFC 3339 format.
-func (o BucketRetentionPolicyResponsePtrOutput) EffectiveTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketRetentionPolicyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EffectiveTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Once locked, an object retention policy cannot be modified.
-func (o BucketRetentionPolicyResponsePtrOutput) IsLocked() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *BucketRetentionPolicyResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.IsLocked
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The duration in seconds that objects need to be retained. Retention duration must be greater than zero and less than 100 years. Note that enforcement of retention periods less than a day is not guaranteed. Such periods should only be used for testing purposes.
-func (o BucketRetentionPolicyResponsePtrOutput) RetentionPeriod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketRetentionPolicyResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RetentionPeriod
-	}).(pulumi.StringPtrOutput)
 }
 
 // The bucket's versioning configuration.
@@ -6449,76 +4358,6 @@ type BucketVersioningResponse struct {
 	Enabled bool `pulumi:"enabled"`
 }
 
-// BucketVersioningResponseInput is an input type that accepts BucketVersioningResponseArgs and BucketVersioningResponseOutput values.
-// You can construct a concrete instance of `BucketVersioningResponseInput` via:
-//
-//          BucketVersioningResponseArgs{...}
-type BucketVersioningResponseInput interface {
-	pulumi.Input
-
-	ToBucketVersioningResponseOutput() BucketVersioningResponseOutput
-	ToBucketVersioningResponseOutputWithContext(context.Context) BucketVersioningResponseOutput
-}
-
-// The bucket's versioning configuration.
-type BucketVersioningResponseArgs struct {
-	// While set to true, versioning is fully enabled for this bucket.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-}
-
-func (BucketVersioningResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketVersioningResponse)(nil)).Elem()
-}
-
-func (i BucketVersioningResponseArgs) ToBucketVersioningResponseOutput() BucketVersioningResponseOutput {
-	return i.ToBucketVersioningResponseOutputWithContext(context.Background())
-}
-
-func (i BucketVersioningResponseArgs) ToBucketVersioningResponseOutputWithContext(ctx context.Context) BucketVersioningResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketVersioningResponseOutput)
-}
-
-func (i BucketVersioningResponseArgs) ToBucketVersioningResponsePtrOutput() BucketVersioningResponsePtrOutput {
-	return i.ToBucketVersioningResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BucketVersioningResponseArgs) ToBucketVersioningResponsePtrOutputWithContext(ctx context.Context) BucketVersioningResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketVersioningResponseOutput).ToBucketVersioningResponsePtrOutputWithContext(ctx)
-}
-
-// BucketVersioningResponsePtrInput is an input type that accepts BucketVersioningResponseArgs, BucketVersioningResponsePtr and BucketVersioningResponsePtrOutput values.
-// You can construct a concrete instance of `BucketVersioningResponsePtrInput` via:
-//
-//          BucketVersioningResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BucketVersioningResponsePtrInput interface {
-	pulumi.Input
-
-	ToBucketVersioningResponsePtrOutput() BucketVersioningResponsePtrOutput
-	ToBucketVersioningResponsePtrOutputWithContext(context.Context) BucketVersioningResponsePtrOutput
-}
-
-type bucketVersioningResponsePtrType BucketVersioningResponseArgs
-
-func BucketVersioningResponsePtr(v *BucketVersioningResponseArgs) BucketVersioningResponsePtrInput {
-	return (*bucketVersioningResponsePtrType)(v)
-}
-
-func (*bucketVersioningResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketVersioningResponse)(nil)).Elem()
-}
-
-func (i *bucketVersioningResponsePtrType) ToBucketVersioningResponsePtrOutput() BucketVersioningResponsePtrOutput {
-	return i.ToBucketVersioningResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *bucketVersioningResponsePtrType) ToBucketVersioningResponsePtrOutputWithContext(ctx context.Context) BucketVersioningResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketVersioningResponsePtrOutput)
-}
-
 // The bucket's versioning configuration.
 type BucketVersioningResponseOutput struct{ *pulumi.OutputState }
 
@@ -6534,53 +4373,9 @@ func (o BucketVersioningResponseOutput) ToBucketVersioningResponseOutputWithCont
 	return o
 }
 
-func (o BucketVersioningResponseOutput) ToBucketVersioningResponsePtrOutput() BucketVersioningResponsePtrOutput {
-	return o.ToBucketVersioningResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BucketVersioningResponseOutput) ToBucketVersioningResponsePtrOutputWithContext(ctx context.Context) BucketVersioningResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketVersioningResponse) *BucketVersioningResponse {
-		return &v
-	}).(BucketVersioningResponsePtrOutput)
-}
-
 // While set to true, versioning is fully enabled for this bucket.
 func (o BucketVersioningResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v BucketVersioningResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-type BucketVersioningResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BucketVersioningResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketVersioningResponse)(nil)).Elem()
-}
-
-func (o BucketVersioningResponsePtrOutput) ToBucketVersioningResponsePtrOutput() BucketVersioningResponsePtrOutput {
-	return o
-}
-
-func (o BucketVersioningResponsePtrOutput) ToBucketVersioningResponsePtrOutputWithContext(ctx context.Context) BucketVersioningResponsePtrOutput {
-	return o
-}
-
-func (o BucketVersioningResponsePtrOutput) Elem() BucketVersioningResponseOutput {
-	return o.ApplyT(func(v *BucketVersioningResponse) BucketVersioningResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BucketVersioningResponse
-		return ret
-	}).(BucketVersioningResponseOutput)
-}
-
-// While set to true, versioning is fully enabled for this bucket.
-func (o BucketVersioningResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *BucketVersioningResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Enabled
-	}).(pulumi.BoolPtrOutput)
 }
 
 // The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
@@ -6750,78 +4545,6 @@ type BucketWebsiteResponse struct {
 	NotFoundPage string `pulumi:"notFoundPage"`
 }
 
-// BucketWebsiteResponseInput is an input type that accepts BucketWebsiteResponseArgs and BucketWebsiteResponseOutput values.
-// You can construct a concrete instance of `BucketWebsiteResponseInput` via:
-//
-//          BucketWebsiteResponseArgs{...}
-type BucketWebsiteResponseInput interface {
-	pulumi.Input
-
-	ToBucketWebsiteResponseOutput() BucketWebsiteResponseOutput
-	ToBucketWebsiteResponseOutputWithContext(context.Context) BucketWebsiteResponseOutput
-}
-
-// The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
-type BucketWebsiteResponseArgs struct {
-	// If the requested object path is missing, the service will ensure the path has a trailing '/', append this suffix, and attempt to retrieve the resulting object. This allows the creation of index.html objects to represent directory pages.
-	MainPageSuffix pulumi.StringInput `pulumi:"mainPageSuffix"`
-	// If the requested object path is missing, and any mainPageSuffix object is missing, if applicable, the service will return the named object from this bucket as the content for a 404 Not Found result.
-	NotFoundPage pulumi.StringInput `pulumi:"notFoundPage"`
-}
-
-func (BucketWebsiteResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketWebsiteResponse)(nil)).Elem()
-}
-
-func (i BucketWebsiteResponseArgs) ToBucketWebsiteResponseOutput() BucketWebsiteResponseOutput {
-	return i.ToBucketWebsiteResponseOutputWithContext(context.Background())
-}
-
-func (i BucketWebsiteResponseArgs) ToBucketWebsiteResponseOutputWithContext(ctx context.Context) BucketWebsiteResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteResponseOutput)
-}
-
-func (i BucketWebsiteResponseArgs) ToBucketWebsiteResponsePtrOutput() BucketWebsiteResponsePtrOutput {
-	return i.ToBucketWebsiteResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BucketWebsiteResponseArgs) ToBucketWebsiteResponsePtrOutputWithContext(ctx context.Context) BucketWebsiteResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteResponseOutput).ToBucketWebsiteResponsePtrOutputWithContext(ctx)
-}
-
-// BucketWebsiteResponsePtrInput is an input type that accepts BucketWebsiteResponseArgs, BucketWebsiteResponsePtr and BucketWebsiteResponsePtrOutput values.
-// You can construct a concrete instance of `BucketWebsiteResponsePtrInput` via:
-//
-//          BucketWebsiteResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BucketWebsiteResponsePtrInput interface {
-	pulumi.Input
-
-	ToBucketWebsiteResponsePtrOutput() BucketWebsiteResponsePtrOutput
-	ToBucketWebsiteResponsePtrOutputWithContext(context.Context) BucketWebsiteResponsePtrOutput
-}
-
-type bucketWebsiteResponsePtrType BucketWebsiteResponseArgs
-
-func BucketWebsiteResponsePtr(v *BucketWebsiteResponseArgs) BucketWebsiteResponsePtrInput {
-	return (*bucketWebsiteResponsePtrType)(v)
-}
-
-func (*bucketWebsiteResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketWebsiteResponse)(nil)).Elem()
-}
-
-func (i *bucketWebsiteResponsePtrType) ToBucketWebsiteResponsePtrOutput() BucketWebsiteResponsePtrOutput {
-	return i.ToBucketWebsiteResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *bucketWebsiteResponsePtrType) ToBucketWebsiteResponsePtrOutputWithContext(ctx context.Context) BucketWebsiteResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteResponsePtrOutput)
-}
-
 // The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
 type BucketWebsiteResponseOutput struct{ *pulumi.OutputState }
 
@@ -6837,16 +4560,6 @@ func (o BucketWebsiteResponseOutput) ToBucketWebsiteResponseOutputWithContext(ct
 	return o
 }
 
-func (o BucketWebsiteResponseOutput) ToBucketWebsiteResponsePtrOutput() BucketWebsiteResponsePtrOutput {
-	return o.ToBucketWebsiteResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BucketWebsiteResponseOutput) ToBucketWebsiteResponsePtrOutputWithContext(ctx context.Context) BucketWebsiteResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketWebsiteResponse) *BucketWebsiteResponse {
-		return &v
-	}).(BucketWebsiteResponsePtrOutput)
-}
-
 // If the requested object path is missing, the service will ensure the path has a trailing '/', append this suffix, and attempt to retrieve the resulting object. This allows the creation of index.html objects to represent directory pages.
 func (o BucketWebsiteResponseOutput) MainPageSuffix() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketWebsiteResponse) string { return v.MainPageSuffix }).(pulumi.StringOutput)
@@ -6855,50 +4568,6 @@ func (o BucketWebsiteResponseOutput) MainPageSuffix() pulumi.StringOutput {
 // If the requested object path is missing, and any mainPageSuffix object is missing, if applicable, the service will return the named object from this bucket as the content for a 404 Not Found result.
 func (o BucketWebsiteResponseOutput) NotFoundPage() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketWebsiteResponse) string { return v.NotFoundPage }).(pulumi.StringOutput)
-}
-
-type BucketWebsiteResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BucketWebsiteResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketWebsiteResponse)(nil)).Elem()
-}
-
-func (o BucketWebsiteResponsePtrOutput) ToBucketWebsiteResponsePtrOutput() BucketWebsiteResponsePtrOutput {
-	return o
-}
-
-func (o BucketWebsiteResponsePtrOutput) ToBucketWebsiteResponsePtrOutputWithContext(ctx context.Context) BucketWebsiteResponsePtrOutput {
-	return o
-}
-
-func (o BucketWebsiteResponsePtrOutput) Elem() BucketWebsiteResponseOutput {
-	return o.ApplyT(func(v *BucketWebsiteResponse) BucketWebsiteResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BucketWebsiteResponse
-		return ret
-	}).(BucketWebsiteResponseOutput)
-}
-
-// If the requested object path is missing, the service will ensure the path has a trailing '/', append this suffix, and attempt to retrieve the resulting object. This allows the creation of index.html objects to represent directory pages.
-func (o BucketWebsiteResponsePtrOutput) MainPageSuffix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketWebsiteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MainPageSuffix
-	}).(pulumi.StringPtrOutput)
-}
-
-// If the requested object path is missing, and any mainPageSuffix object is missing, if applicable, the service will return the named object from this bucket as the content for a 404 Not Found result.
-func (o BucketWebsiteResponsePtrOutput) NotFoundPage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketWebsiteResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.NotFoundPage
-	}).(pulumi.StringPtrOutput)
 }
 
 // The project team associated with the entity, if any.
@@ -7068,78 +4737,6 @@ type DefaultObjectAccessControlProjectTeamResponse struct {
 	Team string `pulumi:"team"`
 }
 
-// DefaultObjectAccessControlProjectTeamResponseInput is an input type that accepts DefaultObjectAccessControlProjectTeamResponseArgs and DefaultObjectAccessControlProjectTeamResponseOutput values.
-// You can construct a concrete instance of `DefaultObjectAccessControlProjectTeamResponseInput` via:
-//
-//          DefaultObjectAccessControlProjectTeamResponseArgs{...}
-type DefaultObjectAccessControlProjectTeamResponseInput interface {
-	pulumi.Input
-
-	ToDefaultObjectAccessControlProjectTeamResponseOutput() DefaultObjectAccessControlProjectTeamResponseOutput
-	ToDefaultObjectAccessControlProjectTeamResponseOutputWithContext(context.Context) DefaultObjectAccessControlProjectTeamResponseOutput
-}
-
-// The project team associated with the entity, if any.
-type DefaultObjectAccessControlProjectTeamResponseArgs struct {
-	// The project number.
-	ProjectNumber pulumi.StringInput `pulumi:"projectNumber"`
-	// The team.
-	Team pulumi.StringInput `pulumi:"team"`
-}
-
-func (DefaultObjectAccessControlProjectTeamResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefaultObjectAccessControlProjectTeamResponse)(nil)).Elem()
-}
-
-func (i DefaultObjectAccessControlProjectTeamResponseArgs) ToDefaultObjectAccessControlProjectTeamResponseOutput() DefaultObjectAccessControlProjectTeamResponseOutput {
-	return i.ToDefaultObjectAccessControlProjectTeamResponseOutputWithContext(context.Background())
-}
-
-func (i DefaultObjectAccessControlProjectTeamResponseArgs) ToDefaultObjectAccessControlProjectTeamResponseOutputWithContext(ctx context.Context) DefaultObjectAccessControlProjectTeamResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefaultObjectAccessControlProjectTeamResponseOutput)
-}
-
-func (i DefaultObjectAccessControlProjectTeamResponseArgs) ToDefaultObjectAccessControlProjectTeamResponsePtrOutput() DefaultObjectAccessControlProjectTeamResponsePtrOutput {
-	return i.ToDefaultObjectAccessControlProjectTeamResponsePtrOutputWithContext(context.Background())
-}
-
-func (i DefaultObjectAccessControlProjectTeamResponseArgs) ToDefaultObjectAccessControlProjectTeamResponsePtrOutputWithContext(ctx context.Context) DefaultObjectAccessControlProjectTeamResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefaultObjectAccessControlProjectTeamResponseOutput).ToDefaultObjectAccessControlProjectTeamResponsePtrOutputWithContext(ctx)
-}
-
-// DefaultObjectAccessControlProjectTeamResponsePtrInput is an input type that accepts DefaultObjectAccessControlProjectTeamResponseArgs, DefaultObjectAccessControlProjectTeamResponsePtr and DefaultObjectAccessControlProjectTeamResponsePtrOutput values.
-// You can construct a concrete instance of `DefaultObjectAccessControlProjectTeamResponsePtrInput` via:
-//
-//          DefaultObjectAccessControlProjectTeamResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type DefaultObjectAccessControlProjectTeamResponsePtrInput interface {
-	pulumi.Input
-
-	ToDefaultObjectAccessControlProjectTeamResponsePtrOutput() DefaultObjectAccessControlProjectTeamResponsePtrOutput
-	ToDefaultObjectAccessControlProjectTeamResponsePtrOutputWithContext(context.Context) DefaultObjectAccessControlProjectTeamResponsePtrOutput
-}
-
-type defaultObjectAccessControlProjectTeamResponsePtrType DefaultObjectAccessControlProjectTeamResponseArgs
-
-func DefaultObjectAccessControlProjectTeamResponsePtr(v *DefaultObjectAccessControlProjectTeamResponseArgs) DefaultObjectAccessControlProjectTeamResponsePtrInput {
-	return (*defaultObjectAccessControlProjectTeamResponsePtrType)(v)
-}
-
-func (*defaultObjectAccessControlProjectTeamResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefaultObjectAccessControlProjectTeamResponse)(nil)).Elem()
-}
-
-func (i *defaultObjectAccessControlProjectTeamResponsePtrType) ToDefaultObjectAccessControlProjectTeamResponsePtrOutput() DefaultObjectAccessControlProjectTeamResponsePtrOutput {
-	return i.ToDefaultObjectAccessControlProjectTeamResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *defaultObjectAccessControlProjectTeamResponsePtrType) ToDefaultObjectAccessControlProjectTeamResponsePtrOutputWithContext(ctx context.Context) DefaultObjectAccessControlProjectTeamResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefaultObjectAccessControlProjectTeamResponsePtrOutput)
-}
-
 // The project team associated with the entity, if any.
 type DefaultObjectAccessControlProjectTeamResponseOutput struct{ *pulumi.OutputState }
 
@@ -7155,16 +4752,6 @@ func (o DefaultObjectAccessControlProjectTeamResponseOutput) ToDefaultObjectAcce
 	return o
 }
 
-func (o DefaultObjectAccessControlProjectTeamResponseOutput) ToDefaultObjectAccessControlProjectTeamResponsePtrOutput() DefaultObjectAccessControlProjectTeamResponsePtrOutput {
-	return o.ToDefaultObjectAccessControlProjectTeamResponsePtrOutputWithContext(context.Background())
-}
-
-func (o DefaultObjectAccessControlProjectTeamResponseOutput) ToDefaultObjectAccessControlProjectTeamResponsePtrOutputWithContext(ctx context.Context) DefaultObjectAccessControlProjectTeamResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultObjectAccessControlProjectTeamResponse) *DefaultObjectAccessControlProjectTeamResponse {
-		return &v
-	}).(DefaultObjectAccessControlProjectTeamResponsePtrOutput)
-}
-
 // The project number.
 func (o DefaultObjectAccessControlProjectTeamResponseOutput) ProjectNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v DefaultObjectAccessControlProjectTeamResponse) string { return v.ProjectNumber }).(pulumi.StringOutput)
@@ -7173,50 +4760,6 @@ func (o DefaultObjectAccessControlProjectTeamResponseOutput) ProjectNumber() pul
 // The team.
 func (o DefaultObjectAccessControlProjectTeamResponseOutput) Team() pulumi.StringOutput {
 	return o.ApplyT(func(v DefaultObjectAccessControlProjectTeamResponse) string { return v.Team }).(pulumi.StringOutput)
-}
-
-type DefaultObjectAccessControlProjectTeamResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DefaultObjectAccessControlProjectTeamResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefaultObjectAccessControlProjectTeamResponse)(nil)).Elem()
-}
-
-func (o DefaultObjectAccessControlProjectTeamResponsePtrOutput) ToDefaultObjectAccessControlProjectTeamResponsePtrOutput() DefaultObjectAccessControlProjectTeamResponsePtrOutput {
-	return o
-}
-
-func (o DefaultObjectAccessControlProjectTeamResponsePtrOutput) ToDefaultObjectAccessControlProjectTeamResponsePtrOutputWithContext(ctx context.Context) DefaultObjectAccessControlProjectTeamResponsePtrOutput {
-	return o
-}
-
-func (o DefaultObjectAccessControlProjectTeamResponsePtrOutput) Elem() DefaultObjectAccessControlProjectTeamResponseOutput {
-	return o.ApplyT(func(v *DefaultObjectAccessControlProjectTeamResponse) DefaultObjectAccessControlProjectTeamResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DefaultObjectAccessControlProjectTeamResponse
-		return ret
-	}).(DefaultObjectAccessControlProjectTeamResponseOutput)
-}
-
-// The project number.
-func (o DefaultObjectAccessControlProjectTeamResponsePtrOutput) ProjectNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefaultObjectAccessControlProjectTeamResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ProjectNumber
-	}).(pulumi.StringPtrOutput)
-}
-
-// The team.
-func (o DefaultObjectAccessControlProjectTeamResponsePtrOutput) Team() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DefaultObjectAccessControlProjectTeamResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Team
-	}).(pulumi.StringPtrOutput)
 }
 
 // Represents an expression text. Example: title: "User account presence" description: "Determines whether the request has a user account" expression: "size(request.user) > 0"
@@ -7426,41 +4969,6 @@ type ExprResponse struct {
 	Location string `pulumi:"location"`
 	// An optional title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
 	Title string `pulumi:"title"`
-}
-
-// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
-// You can construct a concrete instance of `ExprResponseInput` via:
-//
-//          ExprResponseArgs{...}
-type ExprResponseInput interface {
-	pulumi.Input
-
-	ToExprResponseOutput() ExprResponseOutput
-	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
-}
-
-// Represents an expression text. Example: title: "User account presence" description: "Determines whether the request has a user account" expression: "size(request.user) > 0"
-type ExprResponseArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// An optional string indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-	Location pulumi.StringInput `pulumi:"location"`
-	// An optional title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (ExprResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
-}
-
-func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
-	return i.ToExprResponseOutputWithContext(context.Background())
-}
-
-func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
 }
 
 // Represents an expression text. Example: title: "User account presence" description: "Determines whether the request has a user account" expression: "size(request.user) > 0"
@@ -7906,78 +5414,6 @@ type ObjectAccessControlProjectTeamResponse struct {
 	Team string `pulumi:"team"`
 }
 
-// ObjectAccessControlProjectTeamResponseInput is an input type that accepts ObjectAccessControlProjectTeamResponseArgs and ObjectAccessControlProjectTeamResponseOutput values.
-// You can construct a concrete instance of `ObjectAccessControlProjectTeamResponseInput` via:
-//
-//          ObjectAccessControlProjectTeamResponseArgs{...}
-type ObjectAccessControlProjectTeamResponseInput interface {
-	pulumi.Input
-
-	ToObjectAccessControlProjectTeamResponseOutput() ObjectAccessControlProjectTeamResponseOutput
-	ToObjectAccessControlProjectTeamResponseOutputWithContext(context.Context) ObjectAccessControlProjectTeamResponseOutput
-}
-
-// The project team associated with the entity, if any.
-type ObjectAccessControlProjectTeamResponseArgs struct {
-	// The project number.
-	ProjectNumber pulumi.StringInput `pulumi:"projectNumber"`
-	// The team.
-	Team pulumi.StringInput `pulumi:"team"`
-}
-
-func (ObjectAccessControlProjectTeamResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectAccessControlProjectTeamResponse)(nil)).Elem()
-}
-
-func (i ObjectAccessControlProjectTeamResponseArgs) ToObjectAccessControlProjectTeamResponseOutput() ObjectAccessControlProjectTeamResponseOutput {
-	return i.ToObjectAccessControlProjectTeamResponseOutputWithContext(context.Background())
-}
-
-func (i ObjectAccessControlProjectTeamResponseArgs) ToObjectAccessControlProjectTeamResponseOutputWithContext(ctx context.Context) ObjectAccessControlProjectTeamResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectAccessControlProjectTeamResponseOutput)
-}
-
-func (i ObjectAccessControlProjectTeamResponseArgs) ToObjectAccessControlProjectTeamResponsePtrOutput() ObjectAccessControlProjectTeamResponsePtrOutput {
-	return i.ToObjectAccessControlProjectTeamResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ObjectAccessControlProjectTeamResponseArgs) ToObjectAccessControlProjectTeamResponsePtrOutputWithContext(ctx context.Context) ObjectAccessControlProjectTeamResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectAccessControlProjectTeamResponseOutput).ToObjectAccessControlProjectTeamResponsePtrOutputWithContext(ctx)
-}
-
-// ObjectAccessControlProjectTeamResponsePtrInput is an input type that accepts ObjectAccessControlProjectTeamResponseArgs, ObjectAccessControlProjectTeamResponsePtr and ObjectAccessControlProjectTeamResponsePtrOutput values.
-// You can construct a concrete instance of `ObjectAccessControlProjectTeamResponsePtrInput` via:
-//
-//          ObjectAccessControlProjectTeamResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ObjectAccessControlProjectTeamResponsePtrInput interface {
-	pulumi.Input
-
-	ToObjectAccessControlProjectTeamResponsePtrOutput() ObjectAccessControlProjectTeamResponsePtrOutput
-	ToObjectAccessControlProjectTeamResponsePtrOutputWithContext(context.Context) ObjectAccessControlProjectTeamResponsePtrOutput
-}
-
-type objectAccessControlProjectTeamResponsePtrType ObjectAccessControlProjectTeamResponseArgs
-
-func ObjectAccessControlProjectTeamResponsePtr(v *ObjectAccessControlProjectTeamResponseArgs) ObjectAccessControlProjectTeamResponsePtrInput {
-	return (*objectAccessControlProjectTeamResponsePtrType)(v)
-}
-
-func (*objectAccessControlProjectTeamResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ObjectAccessControlProjectTeamResponse)(nil)).Elem()
-}
-
-func (i *objectAccessControlProjectTeamResponsePtrType) ToObjectAccessControlProjectTeamResponsePtrOutput() ObjectAccessControlProjectTeamResponsePtrOutput {
-	return i.ToObjectAccessControlProjectTeamResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *objectAccessControlProjectTeamResponsePtrType) ToObjectAccessControlProjectTeamResponsePtrOutputWithContext(ctx context.Context) ObjectAccessControlProjectTeamResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectAccessControlProjectTeamResponsePtrOutput)
-}
-
 // The project team associated with the entity, if any.
 type ObjectAccessControlProjectTeamResponseOutput struct{ *pulumi.OutputState }
 
@@ -7993,16 +5429,6 @@ func (o ObjectAccessControlProjectTeamResponseOutput) ToObjectAccessControlProje
 	return o
 }
 
-func (o ObjectAccessControlProjectTeamResponseOutput) ToObjectAccessControlProjectTeamResponsePtrOutput() ObjectAccessControlProjectTeamResponsePtrOutput {
-	return o.ToObjectAccessControlProjectTeamResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ObjectAccessControlProjectTeamResponseOutput) ToObjectAccessControlProjectTeamResponsePtrOutputWithContext(ctx context.Context) ObjectAccessControlProjectTeamResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ObjectAccessControlProjectTeamResponse) *ObjectAccessControlProjectTeamResponse {
-		return &v
-	}).(ObjectAccessControlProjectTeamResponsePtrOutput)
-}
-
 // The project number.
 func (o ObjectAccessControlProjectTeamResponseOutput) ProjectNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectAccessControlProjectTeamResponse) string { return v.ProjectNumber }).(pulumi.StringOutput)
@@ -8011,50 +5437,6 @@ func (o ObjectAccessControlProjectTeamResponseOutput) ProjectNumber() pulumi.Str
 // The team.
 func (o ObjectAccessControlProjectTeamResponseOutput) Team() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectAccessControlProjectTeamResponse) string { return v.Team }).(pulumi.StringOutput)
-}
-
-type ObjectAccessControlProjectTeamResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ObjectAccessControlProjectTeamResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ObjectAccessControlProjectTeamResponse)(nil)).Elem()
-}
-
-func (o ObjectAccessControlProjectTeamResponsePtrOutput) ToObjectAccessControlProjectTeamResponsePtrOutput() ObjectAccessControlProjectTeamResponsePtrOutput {
-	return o
-}
-
-func (o ObjectAccessControlProjectTeamResponsePtrOutput) ToObjectAccessControlProjectTeamResponsePtrOutputWithContext(ctx context.Context) ObjectAccessControlProjectTeamResponsePtrOutput {
-	return o
-}
-
-func (o ObjectAccessControlProjectTeamResponsePtrOutput) Elem() ObjectAccessControlProjectTeamResponseOutput {
-	return o.ApplyT(func(v *ObjectAccessControlProjectTeamResponse) ObjectAccessControlProjectTeamResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ObjectAccessControlProjectTeamResponse
-		return ret
-	}).(ObjectAccessControlProjectTeamResponseOutput)
-}
-
-// The project number.
-func (o ObjectAccessControlProjectTeamResponsePtrOutput) ProjectNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectAccessControlProjectTeamResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ProjectNumber
-	}).(pulumi.StringPtrOutput)
-}
-
-// The team.
-func (o ObjectAccessControlProjectTeamResponsePtrOutput) Team() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectAccessControlProjectTeamResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Team
-	}).(pulumi.StringPtrOutput)
 }
 
 // An access-control entry.
@@ -8094,93 +5476,6 @@ type ObjectAccessControlResponse struct {
 	Role string `pulumi:"role"`
 	// The link to this access-control entry.
 	SelfLink string `pulumi:"selfLink"`
-}
-
-// ObjectAccessControlResponseInput is an input type that accepts ObjectAccessControlResponseArgs and ObjectAccessControlResponseOutput values.
-// You can construct a concrete instance of `ObjectAccessControlResponseInput` via:
-//
-//          ObjectAccessControlResponseArgs{...}
-type ObjectAccessControlResponseInput interface {
-	pulumi.Input
-
-	ToObjectAccessControlResponseOutput() ObjectAccessControlResponseOutput
-	ToObjectAccessControlResponseOutputWithContext(context.Context) ObjectAccessControlResponseOutput
-}
-
-// An access-control entry.
-type ObjectAccessControlResponseArgs struct {
-	// The name of the bucket.
-	Bucket pulumi.StringInput `pulumi:"bucket"`
-	// The domain associated with the entity, if any.
-	Domain pulumi.StringInput `pulumi:"domain"`
-	// The email address associated with the entity, if any.
-	Email pulumi.StringInput `pulumi:"email"`
-	// The entity holding the permission, in one of the following forms:
-	// - user-userId
-	// - user-email
-	// - group-groupId
-	// - group-email
-	// - domain-domain
-	// - project-team-projectId
-	// - allUsers
-	// - allAuthenticatedUsers Examples:
-	// - The user liz@example.com would be user-liz@example.com.
-	// - The group example@googlegroups.com would be group-example@googlegroups.com.
-	// - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
-	Entity pulumi.StringInput `pulumi:"entity"`
-	// The ID for the entity, if any.
-	EntityId pulumi.StringInput `pulumi:"entityId"`
-	// HTTP 1.1 Entity tag for the access-control entry.
-	Etag pulumi.StringInput `pulumi:"etag"`
-	// The content generation of the object, if applied to an object.
-	Generation pulumi.StringInput `pulumi:"generation"`
-	// The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
-	Kind pulumi.StringInput `pulumi:"kind"`
-	// The name of the object, if applied to an object.
-	Object pulumi.StringInput `pulumi:"object"`
-	// The project team associated with the entity, if any.
-	ProjectTeam ObjectAccessControlProjectTeamResponseInput `pulumi:"projectTeam"`
-	// The access permission for the entity.
-	Role pulumi.StringInput `pulumi:"role"`
-	// The link to this access-control entry.
-	SelfLink pulumi.StringInput `pulumi:"selfLink"`
-}
-
-func (ObjectAccessControlResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectAccessControlResponse)(nil)).Elem()
-}
-
-func (i ObjectAccessControlResponseArgs) ToObjectAccessControlResponseOutput() ObjectAccessControlResponseOutput {
-	return i.ToObjectAccessControlResponseOutputWithContext(context.Background())
-}
-
-func (i ObjectAccessControlResponseArgs) ToObjectAccessControlResponseOutputWithContext(ctx context.Context) ObjectAccessControlResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectAccessControlResponseOutput)
-}
-
-// ObjectAccessControlResponseArrayInput is an input type that accepts ObjectAccessControlResponseArray and ObjectAccessControlResponseArrayOutput values.
-// You can construct a concrete instance of `ObjectAccessControlResponseArrayInput` via:
-//
-//          ObjectAccessControlResponseArray{ ObjectAccessControlResponseArgs{...} }
-type ObjectAccessControlResponseArrayInput interface {
-	pulumi.Input
-
-	ToObjectAccessControlResponseArrayOutput() ObjectAccessControlResponseArrayOutput
-	ToObjectAccessControlResponseArrayOutputWithContext(context.Context) ObjectAccessControlResponseArrayOutput
-}
-
-type ObjectAccessControlResponseArray []ObjectAccessControlResponseInput
-
-func (ObjectAccessControlResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ObjectAccessControlResponse)(nil)).Elem()
-}
-
-func (i ObjectAccessControlResponseArray) ToObjectAccessControlResponseArrayOutput() ObjectAccessControlResponseArrayOutput {
-	return i.ToObjectAccessControlResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ObjectAccessControlResponseArray) ToObjectAccessControlResponseArrayOutputWithContext(ctx context.Context) ObjectAccessControlResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectAccessControlResponseArrayOutput)
 }
 
 // An access-control entry.
@@ -8489,82 +5784,6 @@ type ObjectIamPolicyBindingsItemResponse struct {
 	Role string `pulumi:"role"`
 }
 
-// ObjectIamPolicyBindingsItemResponseInput is an input type that accepts ObjectIamPolicyBindingsItemResponseArgs and ObjectIamPolicyBindingsItemResponseOutput values.
-// You can construct a concrete instance of `ObjectIamPolicyBindingsItemResponseInput` via:
-//
-//          ObjectIamPolicyBindingsItemResponseArgs{...}
-type ObjectIamPolicyBindingsItemResponseInput interface {
-	pulumi.Input
-
-	ToObjectIamPolicyBindingsItemResponseOutput() ObjectIamPolicyBindingsItemResponseOutput
-	ToObjectIamPolicyBindingsItemResponseOutputWithContext(context.Context) ObjectIamPolicyBindingsItemResponseOutput
-}
-
-type ObjectIamPolicyBindingsItemResponseArgs struct {
-	// The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
-	Condition ExprResponseInput `pulumi:"condition"`
-	// A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:
-	// - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.
-	// - allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// - user:emailid — An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.
-	// - serviceAccount:emailid — An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .
-	// - group:emailid — An email address that represents a Google group. For example, group:admins@example.com.
-	// - domain:domain — A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.
-	// - projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project
-	// - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project
-	// - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
-	Members pulumi.StringArrayInput `pulumi:"members"`
-	// The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
-	// The new IAM roles are:
-	// - roles/storage.admin — Full control of Google Cloud Storage resources.
-	// - roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects.
-	// - roles/storage.objectCreator — Access to create objects in Google Cloud Storage.
-	// - roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are:
-	// - roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.
-	// - roles/storage.legacyObjectOwner — Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.
-	// - roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.
-	// - roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.
-	// - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
-	Role pulumi.StringInput `pulumi:"role"`
-}
-
-func (ObjectIamPolicyBindingsItemResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectIamPolicyBindingsItemResponse)(nil)).Elem()
-}
-
-func (i ObjectIamPolicyBindingsItemResponseArgs) ToObjectIamPolicyBindingsItemResponseOutput() ObjectIamPolicyBindingsItemResponseOutput {
-	return i.ToObjectIamPolicyBindingsItemResponseOutputWithContext(context.Background())
-}
-
-func (i ObjectIamPolicyBindingsItemResponseArgs) ToObjectIamPolicyBindingsItemResponseOutputWithContext(ctx context.Context) ObjectIamPolicyBindingsItemResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectIamPolicyBindingsItemResponseOutput)
-}
-
-// ObjectIamPolicyBindingsItemResponseArrayInput is an input type that accepts ObjectIamPolicyBindingsItemResponseArray and ObjectIamPolicyBindingsItemResponseArrayOutput values.
-// You can construct a concrete instance of `ObjectIamPolicyBindingsItemResponseArrayInput` via:
-//
-//          ObjectIamPolicyBindingsItemResponseArray{ ObjectIamPolicyBindingsItemResponseArgs{...} }
-type ObjectIamPolicyBindingsItemResponseArrayInput interface {
-	pulumi.Input
-
-	ToObjectIamPolicyBindingsItemResponseArrayOutput() ObjectIamPolicyBindingsItemResponseArrayOutput
-	ToObjectIamPolicyBindingsItemResponseArrayOutputWithContext(context.Context) ObjectIamPolicyBindingsItemResponseArrayOutput
-}
-
-type ObjectIamPolicyBindingsItemResponseArray []ObjectIamPolicyBindingsItemResponseInput
-
-func (ObjectIamPolicyBindingsItemResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ObjectIamPolicyBindingsItemResponse)(nil)).Elem()
-}
-
-func (i ObjectIamPolicyBindingsItemResponseArray) ToObjectIamPolicyBindingsItemResponseArrayOutput() ObjectIamPolicyBindingsItemResponseArrayOutput {
-	return i.ToObjectIamPolicyBindingsItemResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ObjectIamPolicyBindingsItemResponseArray) ToObjectIamPolicyBindingsItemResponseArrayOutputWithContext(ctx context.Context) ObjectIamPolicyBindingsItemResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectIamPolicyBindingsItemResponseArrayOutput)
-}
-
 type ObjectIamPolicyBindingsItemResponseOutput struct{ *pulumi.OutputState }
 
 func (ObjectIamPolicyBindingsItemResponseOutput) ElementType() reflect.Type {
@@ -8638,123 +5857,69 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketAccessControlTypeArrayInput)(nil)).Elem(), BucketAccessControlTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketAccessControlProjectTeamInput)(nil)).Elem(), BucketAccessControlProjectTeamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketAccessControlProjectTeamPtrInput)(nil)).Elem(), BucketAccessControlProjectTeamArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketAccessControlProjectTeamResponseInput)(nil)).Elem(), BucketAccessControlProjectTeamResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketAccessControlProjectTeamResponsePtrInput)(nil)).Elem(), BucketAccessControlProjectTeamResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketAccessControlResponseInput)(nil)).Elem(), BucketAccessControlResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketAccessControlResponseArrayInput)(nil)).Elem(), BucketAccessControlResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketAutoclassInput)(nil)).Elem(), BucketAutoclassArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketAutoclassPtrInput)(nil)).Elem(), BucketAutoclassArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketAutoclassResponseInput)(nil)).Elem(), BucketAutoclassResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketAutoclassResponsePtrInput)(nil)).Elem(), BucketAutoclassResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketBillingInput)(nil)).Elem(), BucketBillingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketBillingPtrInput)(nil)).Elem(), BucketBillingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketBillingResponseInput)(nil)).Elem(), BucketBillingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketBillingResponsePtrInput)(nil)).Elem(), BucketBillingResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCorsItemInput)(nil)).Elem(), BucketCorsItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCorsItemArrayInput)(nil)).Elem(), BucketCorsItemArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketCorsItemResponseInput)(nil)).Elem(), BucketCorsItemResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketCorsItemResponseArrayInput)(nil)).Elem(), BucketCorsItemResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCustomPlacementConfigInput)(nil)).Elem(), BucketCustomPlacementConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCustomPlacementConfigPtrInput)(nil)).Elem(), BucketCustomPlacementConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketCustomPlacementConfigResponseInput)(nil)).Elem(), BucketCustomPlacementConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketCustomPlacementConfigResponsePtrInput)(nil)).Elem(), BucketCustomPlacementConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketEncryptionInput)(nil)).Elem(), BucketEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketEncryptionPtrInput)(nil)).Elem(), BucketEncryptionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketEncryptionResponseInput)(nil)).Elem(), BucketEncryptionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketEncryptionResponsePtrInput)(nil)).Elem(), BucketEncryptionResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamConfigurationInput)(nil)).Elem(), BucketIamConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamConfigurationPtrInput)(nil)).Elem(), BucketIamConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamConfigurationBucketPolicyOnlyInput)(nil)).Elem(), BucketIamConfigurationBucketPolicyOnlyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamConfigurationBucketPolicyOnlyPtrInput)(nil)).Elem(), BucketIamConfigurationBucketPolicyOnlyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamConfigurationBucketPolicyOnlyResponseInput)(nil)).Elem(), BucketIamConfigurationBucketPolicyOnlyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamConfigurationBucketPolicyOnlyResponsePtrInput)(nil)).Elem(), BucketIamConfigurationBucketPolicyOnlyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamConfigurationResponseInput)(nil)).Elem(), BucketIamConfigurationResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamConfigurationResponsePtrInput)(nil)).Elem(), BucketIamConfigurationResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamConfigurationUniformBucketLevelAccessInput)(nil)).Elem(), BucketIamConfigurationUniformBucketLevelAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamConfigurationUniformBucketLevelAccessPtrInput)(nil)).Elem(), BucketIamConfigurationUniformBucketLevelAccessArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamConfigurationUniformBucketLevelAccessResponseInput)(nil)).Elem(), BucketIamConfigurationUniformBucketLevelAccessResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamConfigurationUniformBucketLevelAccessResponsePtrInput)(nil)).Elem(), BucketIamConfigurationUniformBucketLevelAccessResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamPolicyBindingsItemInput)(nil)).Elem(), BucketIamPolicyBindingsItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamPolicyBindingsItemArrayInput)(nil)).Elem(), BucketIamPolicyBindingsItemArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamPolicyBindingsItemResponseInput)(nil)).Elem(), BucketIamPolicyBindingsItemResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamPolicyBindingsItemResponseArrayInput)(nil)).Elem(), BucketIamPolicyBindingsItemResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleInput)(nil)).Elem(), BucketLifecycleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecyclePtrInput)(nil)).Elem(), BucketLifecycleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleResponseInput)(nil)).Elem(), BucketLifecycleResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleResponsePtrInput)(nil)).Elem(), BucketLifecycleResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleItemInput)(nil)).Elem(), BucketLifecycleRuleItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleItemArrayInput)(nil)).Elem(), BucketLifecycleRuleItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleItemActionInput)(nil)).Elem(), BucketLifecycleRuleItemActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleItemActionPtrInput)(nil)).Elem(), BucketLifecycleRuleItemActionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleItemActionResponseInput)(nil)).Elem(), BucketLifecycleRuleItemActionResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleItemConditionInput)(nil)).Elem(), BucketLifecycleRuleItemConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleItemConditionPtrInput)(nil)).Elem(), BucketLifecycleRuleItemConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleItemConditionResponseInput)(nil)).Elem(), BucketLifecycleRuleItemConditionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleItemResponseInput)(nil)).Elem(), BucketLifecycleRuleItemResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleItemResponseArrayInput)(nil)).Elem(), BucketLifecycleRuleItemResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLoggingInput)(nil)).Elem(), BucketLoggingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLoggingPtrInput)(nil)).Elem(), BucketLoggingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketLoggingResponseInput)(nil)).Elem(), BucketLoggingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketLoggingResponsePtrInput)(nil)).Elem(), BucketLoggingResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketObjectCustomerEncryptionInput)(nil)).Elem(), BucketObjectCustomerEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketObjectCustomerEncryptionPtrInput)(nil)).Elem(), BucketObjectCustomerEncryptionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketObjectCustomerEncryptionResponseInput)(nil)).Elem(), BucketObjectCustomerEncryptionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketObjectCustomerEncryptionResponsePtrInput)(nil)).Elem(), BucketObjectCustomerEncryptionResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketObjectOwnerInput)(nil)).Elem(), BucketObjectOwnerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketObjectOwnerPtrInput)(nil)).Elem(), BucketObjectOwnerArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketObjectOwnerResponseInput)(nil)).Elem(), BucketObjectOwnerResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketObjectOwnerResponsePtrInput)(nil)).Elem(), BucketObjectOwnerResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketOwnerInput)(nil)).Elem(), BucketOwnerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketOwnerPtrInput)(nil)).Elem(), BucketOwnerArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketOwnerResponseInput)(nil)).Elem(), BucketOwnerResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketOwnerResponsePtrInput)(nil)).Elem(), BucketOwnerResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketRetentionPolicyInput)(nil)).Elem(), BucketRetentionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketRetentionPolicyPtrInput)(nil)).Elem(), BucketRetentionPolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketRetentionPolicyResponseInput)(nil)).Elem(), BucketRetentionPolicyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketRetentionPolicyResponsePtrInput)(nil)).Elem(), BucketRetentionPolicyResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketVersioningInput)(nil)).Elem(), BucketVersioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketVersioningPtrInput)(nil)).Elem(), BucketVersioningArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketVersioningResponseInput)(nil)).Elem(), BucketVersioningResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketVersioningResponsePtrInput)(nil)).Elem(), BucketVersioningResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteInput)(nil)).Elem(), BucketWebsiteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsitePtrInput)(nil)).Elem(), BucketWebsiteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteResponseInput)(nil)).Elem(), BucketWebsiteResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteResponsePtrInput)(nil)).Elem(), BucketWebsiteResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectAccessControlProjectTeamInput)(nil)).Elem(), DefaultObjectAccessControlProjectTeamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectAccessControlProjectTeamPtrInput)(nil)).Elem(), DefaultObjectAccessControlProjectTeamArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectAccessControlProjectTeamResponseInput)(nil)).Elem(), DefaultObjectAccessControlProjectTeamResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectAccessControlProjectTeamResponsePtrInput)(nil)).Elem(), DefaultObjectAccessControlProjectTeamResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlTypeInput)(nil)).Elem(), ObjectAccessControlTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlTypeArrayInput)(nil)).Elem(), ObjectAccessControlTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlProjectTeamInput)(nil)).Elem(), ObjectAccessControlProjectTeamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlProjectTeamPtrInput)(nil)).Elem(), ObjectAccessControlProjectTeamArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlProjectTeamResponseInput)(nil)).Elem(), ObjectAccessControlProjectTeamResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlProjectTeamResponsePtrInput)(nil)).Elem(), ObjectAccessControlProjectTeamResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlResponseInput)(nil)).Elem(), ObjectAccessControlResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlResponseArrayInput)(nil)).Elem(), ObjectAccessControlResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectIamPolicyBindingsItemInput)(nil)).Elem(), ObjectIamPolicyBindingsItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectIamPolicyBindingsItemArrayInput)(nil)).Elem(), ObjectIamPolicyBindingsItemArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ObjectIamPolicyBindingsItemResponseInput)(nil)).Elem(), ObjectIamPolicyBindingsItemResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ObjectIamPolicyBindingsItemResponseArrayInput)(nil)).Elem(), ObjectIamPolicyBindingsItemResponseArray{})
 	pulumi.RegisterOutputType(BucketAccessControlTypeOutput{})
 	pulumi.RegisterOutputType(BucketAccessControlTypeArrayOutput{})
 	pulumi.RegisterOutputType(BucketAccessControlProjectTeamOutput{})
 	pulumi.RegisterOutputType(BucketAccessControlProjectTeamPtrOutput{})
 	pulumi.RegisterOutputType(BucketAccessControlProjectTeamResponseOutput{})
-	pulumi.RegisterOutputType(BucketAccessControlProjectTeamResponsePtrOutput{})
 	pulumi.RegisterOutputType(BucketAccessControlResponseOutput{})
 	pulumi.RegisterOutputType(BucketAccessControlResponseArrayOutput{})
 	pulumi.RegisterOutputType(BucketAutoclassOutput{})
 	pulumi.RegisterOutputType(BucketAutoclassPtrOutput{})
 	pulumi.RegisterOutputType(BucketAutoclassResponseOutput{})
-	pulumi.RegisterOutputType(BucketAutoclassResponsePtrOutput{})
 	pulumi.RegisterOutputType(BucketBillingOutput{})
 	pulumi.RegisterOutputType(BucketBillingPtrOutput{})
 	pulumi.RegisterOutputType(BucketBillingResponseOutput{})
-	pulumi.RegisterOutputType(BucketBillingResponsePtrOutput{})
 	pulumi.RegisterOutputType(BucketCorsItemOutput{})
 	pulumi.RegisterOutputType(BucketCorsItemArrayOutput{})
 	pulumi.RegisterOutputType(BucketCorsItemResponseOutput{})
@@ -8762,23 +5927,18 @@ func init() {
 	pulumi.RegisterOutputType(BucketCustomPlacementConfigOutput{})
 	pulumi.RegisterOutputType(BucketCustomPlacementConfigPtrOutput{})
 	pulumi.RegisterOutputType(BucketCustomPlacementConfigResponseOutput{})
-	pulumi.RegisterOutputType(BucketCustomPlacementConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(BucketEncryptionOutput{})
 	pulumi.RegisterOutputType(BucketEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(BucketEncryptionResponseOutput{})
-	pulumi.RegisterOutputType(BucketEncryptionResponsePtrOutput{})
 	pulumi.RegisterOutputType(BucketIamConfigurationOutput{})
 	pulumi.RegisterOutputType(BucketIamConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(BucketIamConfigurationBucketPolicyOnlyOutput{})
 	pulumi.RegisterOutputType(BucketIamConfigurationBucketPolicyOnlyPtrOutput{})
 	pulumi.RegisterOutputType(BucketIamConfigurationBucketPolicyOnlyResponseOutput{})
-	pulumi.RegisterOutputType(BucketIamConfigurationBucketPolicyOnlyResponsePtrOutput{})
 	pulumi.RegisterOutputType(BucketIamConfigurationResponseOutput{})
-	pulumi.RegisterOutputType(BucketIamConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(BucketIamConfigurationUniformBucketLevelAccessOutput{})
 	pulumi.RegisterOutputType(BucketIamConfigurationUniformBucketLevelAccessPtrOutput{})
 	pulumi.RegisterOutputType(BucketIamConfigurationUniformBucketLevelAccessResponseOutput{})
-	pulumi.RegisterOutputType(BucketIamConfigurationUniformBucketLevelAccessResponsePtrOutput{})
 	pulumi.RegisterOutputType(BucketIamPolicyBindingsItemOutput{})
 	pulumi.RegisterOutputType(BucketIamPolicyBindingsItemArrayOutput{})
 	pulumi.RegisterOutputType(BucketIamPolicyBindingsItemResponseOutput{})
@@ -8786,7 +5946,6 @@ func init() {
 	pulumi.RegisterOutputType(BucketLifecycleOutput{})
 	pulumi.RegisterOutputType(BucketLifecyclePtrOutput{})
 	pulumi.RegisterOutputType(BucketLifecycleResponseOutput{})
-	pulumi.RegisterOutputType(BucketLifecycleResponsePtrOutput{})
 	pulumi.RegisterOutputType(BucketLifecycleRuleItemOutput{})
 	pulumi.RegisterOutputType(BucketLifecycleRuleItemArrayOutput{})
 	pulumi.RegisterOutputType(BucketLifecycleRuleItemActionOutput{})
@@ -8800,35 +5959,27 @@ func init() {
 	pulumi.RegisterOutputType(BucketLoggingOutput{})
 	pulumi.RegisterOutputType(BucketLoggingPtrOutput{})
 	pulumi.RegisterOutputType(BucketLoggingResponseOutput{})
-	pulumi.RegisterOutputType(BucketLoggingResponsePtrOutput{})
 	pulumi.RegisterOutputType(BucketObjectCustomerEncryptionOutput{})
 	pulumi.RegisterOutputType(BucketObjectCustomerEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(BucketObjectCustomerEncryptionResponseOutput{})
-	pulumi.RegisterOutputType(BucketObjectCustomerEncryptionResponsePtrOutput{})
 	pulumi.RegisterOutputType(BucketObjectOwnerOutput{})
 	pulumi.RegisterOutputType(BucketObjectOwnerPtrOutput{})
 	pulumi.RegisterOutputType(BucketObjectOwnerResponseOutput{})
-	pulumi.RegisterOutputType(BucketObjectOwnerResponsePtrOutput{})
 	pulumi.RegisterOutputType(BucketOwnerOutput{})
 	pulumi.RegisterOutputType(BucketOwnerPtrOutput{})
 	pulumi.RegisterOutputType(BucketOwnerResponseOutput{})
-	pulumi.RegisterOutputType(BucketOwnerResponsePtrOutput{})
 	pulumi.RegisterOutputType(BucketRetentionPolicyOutput{})
 	pulumi.RegisterOutputType(BucketRetentionPolicyPtrOutput{})
 	pulumi.RegisterOutputType(BucketRetentionPolicyResponseOutput{})
-	pulumi.RegisterOutputType(BucketRetentionPolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(BucketVersioningOutput{})
 	pulumi.RegisterOutputType(BucketVersioningPtrOutput{})
 	pulumi.RegisterOutputType(BucketVersioningResponseOutput{})
-	pulumi.RegisterOutputType(BucketVersioningResponsePtrOutput{})
 	pulumi.RegisterOutputType(BucketWebsiteOutput{})
 	pulumi.RegisterOutputType(BucketWebsitePtrOutput{})
 	pulumi.RegisterOutputType(BucketWebsiteResponseOutput{})
-	pulumi.RegisterOutputType(BucketWebsiteResponsePtrOutput{})
 	pulumi.RegisterOutputType(DefaultObjectAccessControlProjectTeamOutput{})
 	pulumi.RegisterOutputType(DefaultObjectAccessControlProjectTeamPtrOutput{})
 	pulumi.RegisterOutputType(DefaultObjectAccessControlProjectTeamResponseOutput{})
-	pulumi.RegisterOutputType(DefaultObjectAccessControlProjectTeamResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
@@ -8837,7 +5988,6 @@ func init() {
 	pulumi.RegisterOutputType(ObjectAccessControlProjectTeamOutput{})
 	pulumi.RegisterOutputType(ObjectAccessControlProjectTeamPtrOutput{})
 	pulumi.RegisterOutputType(ObjectAccessControlProjectTeamResponseOutput{})
-	pulumi.RegisterOutputType(ObjectAccessControlProjectTeamResponsePtrOutput{})
 	pulumi.RegisterOutputType(ObjectAccessControlResponseOutput{})
 	pulumi.RegisterOutputType(ObjectAccessControlResponseArrayOutput{})
 	pulumi.RegisterOutputType(ObjectIamPolicyBindingsItemOutput{})

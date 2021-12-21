@@ -177,37 +177,6 @@ type AutoscalingSettingsResponse struct {
 	MaxNumWorkers int `pulumi:"maxNumWorkers"`
 }
 
-// AutoscalingSettingsResponseInput is an input type that accepts AutoscalingSettingsResponseArgs and AutoscalingSettingsResponseOutput values.
-// You can construct a concrete instance of `AutoscalingSettingsResponseInput` via:
-//
-//          AutoscalingSettingsResponseArgs{...}
-type AutoscalingSettingsResponseInput interface {
-	pulumi.Input
-
-	ToAutoscalingSettingsResponseOutput() AutoscalingSettingsResponseOutput
-	ToAutoscalingSettingsResponseOutputWithContext(context.Context) AutoscalingSettingsResponseOutput
-}
-
-// Settings for WorkerPool autoscaling.
-type AutoscalingSettingsResponseArgs struct {
-	// The algorithm to use for autoscaling.
-	Algorithm pulumi.StringInput `pulumi:"algorithm"`
-	// The maximum number of workers to cap scaling at.
-	MaxNumWorkers pulumi.IntInput `pulumi:"maxNumWorkers"`
-}
-
-func (AutoscalingSettingsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutoscalingSettingsResponse)(nil)).Elem()
-}
-
-func (i AutoscalingSettingsResponseArgs) ToAutoscalingSettingsResponseOutput() AutoscalingSettingsResponseOutput {
-	return i.ToAutoscalingSettingsResponseOutputWithContext(context.Background())
-}
-
-func (i AutoscalingSettingsResponseArgs) ToAutoscalingSettingsResponseOutputWithContext(ctx context.Context) AutoscalingSettingsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingSettingsResponseOutput)
-}
-
 // Settings for WorkerPool autoscaling.
 type AutoscalingSettingsResponseOutput struct{ *pulumi.OutputState }
 
@@ -370,66 +339,6 @@ type BigQueryIODetailsResponse struct {
 	Query string `pulumi:"query"`
 	// Table accessed in the connection.
 	Table string `pulumi:"table"`
-}
-
-// BigQueryIODetailsResponseInput is an input type that accepts BigQueryIODetailsResponseArgs and BigQueryIODetailsResponseOutput values.
-// You can construct a concrete instance of `BigQueryIODetailsResponseInput` via:
-//
-//          BigQueryIODetailsResponseArgs{...}
-type BigQueryIODetailsResponseInput interface {
-	pulumi.Input
-
-	ToBigQueryIODetailsResponseOutput() BigQueryIODetailsResponseOutput
-	ToBigQueryIODetailsResponseOutputWithContext(context.Context) BigQueryIODetailsResponseOutput
-}
-
-// Metadata for a BigQuery connector used by the job.
-type BigQueryIODetailsResponseArgs struct {
-	// Dataset accessed in the connection.
-	Dataset pulumi.StringInput `pulumi:"dataset"`
-	// Project accessed in the connection.
-	Project pulumi.StringInput `pulumi:"project"`
-	// Query used to access data in the connection.
-	Query pulumi.StringInput `pulumi:"query"`
-	// Table accessed in the connection.
-	Table pulumi.StringInput `pulumi:"table"`
-}
-
-func (BigQueryIODetailsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BigQueryIODetailsResponse)(nil)).Elem()
-}
-
-func (i BigQueryIODetailsResponseArgs) ToBigQueryIODetailsResponseOutput() BigQueryIODetailsResponseOutput {
-	return i.ToBigQueryIODetailsResponseOutputWithContext(context.Background())
-}
-
-func (i BigQueryIODetailsResponseArgs) ToBigQueryIODetailsResponseOutputWithContext(ctx context.Context) BigQueryIODetailsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BigQueryIODetailsResponseOutput)
-}
-
-// BigQueryIODetailsResponseArrayInput is an input type that accepts BigQueryIODetailsResponseArray and BigQueryIODetailsResponseArrayOutput values.
-// You can construct a concrete instance of `BigQueryIODetailsResponseArrayInput` via:
-//
-//          BigQueryIODetailsResponseArray{ BigQueryIODetailsResponseArgs{...} }
-type BigQueryIODetailsResponseArrayInput interface {
-	pulumi.Input
-
-	ToBigQueryIODetailsResponseArrayOutput() BigQueryIODetailsResponseArrayOutput
-	ToBigQueryIODetailsResponseArrayOutputWithContext(context.Context) BigQueryIODetailsResponseArrayOutput
-}
-
-type BigQueryIODetailsResponseArray []BigQueryIODetailsResponseInput
-
-func (BigQueryIODetailsResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BigQueryIODetailsResponse)(nil)).Elem()
-}
-
-func (i BigQueryIODetailsResponseArray) ToBigQueryIODetailsResponseArrayOutput() BigQueryIODetailsResponseArrayOutput {
-	return i.ToBigQueryIODetailsResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BigQueryIODetailsResponseArray) ToBigQueryIODetailsResponseArrayOutputWithContext(ctx context.Context) BigQueryIODetailsResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BigQueryIODetailsResponseArrayOutput)
 }
 
 // Metadata for a BigQuery connector used by the job.
@@ -615,64 +524,6 @@ type BigTableIODetailsResponse struct {
 	TableId string `pulumi:"tableId"`
 }
 
-// BigTableIODetailsResponseInput is an input type that accepts BigTableIODetailsResponseArgs and BigTableIODetailsResponseOutput values.
-// You can construct a concrete instance of `BigTableIODetailsResponseInput` via:
-//
-//          BigTableIODetailsResponseArgs{...}
-type BigTableIODetailsResponseInput interface {
-	pulumi.Input
-
-	ToBigTableIODetailsResponseOutput() BigTableIODetailsResponseOutput
-	ToBigTableIODetailsResponseOutputWithContext(context.Context) BigTableIODetailsResponseOutput
-}
-
-// Metadata for a Cloud Bigtable connector used by the job.
-type BigTableIODetailsResponseArgs struct {
-	// InstanceId accessed in the connection.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// ProjectId accessed in the connection.
-	Project pulumi.StringInput `pulumi:"project"`
-	// TableId accessed in the connection.
-	TableId pulumi.StringInput `pulumi:"tableId"`
-}
-
-func (BigTableIODetailsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BigTableIODetailsResponse)(nil)).Elem()
-}
-
-func (i BigTableIODetailsResponseArgs) ToBigTableIODetailsResponseOutput() BigTableIODetailsResponseOutput {
-	return i.ToBigTableIODetailsResponseOutputWithContext(context.Background())
-}
-
-func (i BigTableIODetailsResponseArgs) ToBigTableIODetailsResponseOutputWithContext(ctx context.Context) BigTableIODetailsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BigTableIODetailsResponseOutput)
-}
-
-// BigTableIODetailsResponseArrayInput is an input type that accepts BigTableIODetailsResponseArray and BigTableIODetailsResponseArrayOutput values.
-// You can construct a concrete instance of `BigTableIODetailsResponseArrayInput` via:
-//
-//          BigTableIODetailsResponseArray{ BigTableIODetailsResponseArgs{...} }
-type BigTableIODetailsResponseArrayInput interface {
-	pulumi.Input
-
-	ToBigTableIODetailsResponseArrayOutput() BigTableIODetailsResponseArrayOutput
-	ToBigTableIODetailsResponseArrayOutputWithContext(context.Context) BigTableIODetailsResponseArrayOutput
-}
-
-type BigTableIODetailsResponseArray []BigTableIODetailsResponseInput
-
-func (BigTableIODetailsResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BigTableIODetailsResponse)(nil)).Elem()
-}
-
-func (i BigTableIODetailsResponseArray) ToBigTableIODetailsResponseArrayOutput() BigTableIODetailsResponseArrayOutput {
-	return i.ToBigTableIODetailsResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BigTableIODetailsResponseArray) ToBigTableIODetailsResponseArrayOutputWithContext(ctx context.Context) BigTableIODetailsResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BigTableIODetailsResponseArrayOutput)
-}
-
 // Metadata for a Cloud Bigtable connector used by the job.
 type BigTableIODetailsResponseOutput struct{ *pulumi.OutputState }
 
@@ -849,64 +700,6 @@ type ComponentSourceResponse struct {
 	OriginalTransformOrCollection string `pulumi:"originalTransformOrCollection"`
 	// Human-readable name for this transform; may be user or system generated.
 	UserName string `pulumi:"userName"`
-}
-
-// ComponentSourceResponseInput is an input type that accepts ComponentSourceResponseArgs and ComponentSourceResponseOutput values.
-// You can construct a concrete instance of `ComponentSourceResponseInput` via:
-//
-//          ComponentSourceResponseArgs{...}
-type ComponentSourceResponseInput interface {
-	pulumi.Input
-
-	ToComponentSourceResponseOutput() ComponentSourceResponseOutput
-	ToComponentSourceResponseOutputWithContext(context.Context) ComponentSourceResponseOutput
-}
-
-// Description of an interstitial value between transforms in an execution stage.
-type ComponentSourceResponseArgs struct {
-	// Dataflow service generated name for this source.
-	Name pulumi.StringInput `pulumi:"name"`
-	// User name for the original user transform or collection with which this source is most closely associated.
-	OriginalTransformOrCollection pulumi.StringInput `pulumi:"originalTransformOrCollection"`
-	// Human-readable name for this transform; may be user or system generated.
-	UserName pulumi.StringInput `pulumi:"userName"`
-}
-
-func (ComponentSourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComponentSourceResponse)(nil)).Elem()
-}
-
-func (i ComponentSourceResponseArgs) ToComponentSourceResponseOutput() ComponentSourceResponseOutput {
-	return i.ToComponentSourceResponseOutputWithContext(context.Background())
-}
-
-func (i ComponentSourceResponseArgs) ToComponentSourceResponseOutputWithContext(ctx context.Context) ComponentSourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComponentSourceResponseOutput)
-}
-
-// ComponentSourceResponseArrayInput is an input type that accepts ComponentSourceResponseArray and ComponentSourceResponseArrayOutput values.
-// You can construct a concrete instance of `ComponentSourceResponseArrayInput` via:
-//
-//          ComponentSourceResponseArray{ ComponentSourceResponseArgs{...} }
-type ComponentSourceResponseArrayInput interface {
-	pulumi.Input
-
-	ToComponentSourceResponseArrayOutput() ComponentSourceResponseArrayOutput
-	ToComponentSourceResponseArrayOutputWithContext(context.Context) ComponentSourceResponseArrayOutput
-}
-
-type ComponentSourceResponseArray []ComponentSourceResponseInput
-
-func (ComponentSourceResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ComponentSourceResponse)(nil)).Elem()
-}
-
-func (i ComponentSourceResponseArray) ToComponentSourceResponseArrayOutput() ComponentSourceResponseArrayOutput {
-	return i.ToComponentSourceResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ComponentSourceResponseArray) ToComponentSourceResponseArrayOutputWithContext(ctx context.Context) ComponentSourceResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComponentSourceResponseArrayOutput)
 }
 
 // Description of an interstitial value between transforms in an execution stage.
@@ -1087,64 +880,6 @@ type ComponentTransformResponse struct {
 	UserName string `pulumi:"userName"`
 }
 
-// ComponentTransformResponseInput is an input type that accepts ComponentTransformResponseArgs and ComponentTransformResponseOutput values.
-// You can construct a concrete instance of `ComponentTransformResponseInput` via:
-//
-//          ComponentTransformResponseArgs{...}
-type ComponentTransformResponseInput interface {
-	pulumi.Input
-
-	ToComponentTransformResponseOutput() ComponentTransformResponseOutput
-	ToComponentTransformResponseOutputWithContext(context.Context) ComponentTransformResponseOutput
-}
-
-// Description of a transform executed as part of an execution stage.
-type ComponentTransformResponseArgs struct {
-	// Dataflow service generated name for this source.
-	Name pulumi.StringInput `pulumi:"name"`
-	// User name for the original user transform with which this transform is most closely associated.
-	OriginalTransform pulumi.StringInput `pulumi:"originalTransform"`
-	// Human-readable name for this transform; may be user or system generated.
-	UserName pulumi.StringInput `pulumi:"userName"`
-}
-
-func (ComponentTransformResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComponentTransformResponse)(nil)).Elem()
-}
-
-func (i ComponentTransformResponseArgs) ToComponentTransformResponseOutput() ComponentTransformResponseOutput {
-	return i.ToComponentTransformResponseOutputWithContext(context.Background())
-}
-
-func (i ComponentTransformResponseArgs) ToComponentTransformResponseOutputWithContext(ctx context.Context) ComponentTransformResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComponentTransformResponseOutput)
-}
-
-// ComponentTransformResponseArrayInput is an input type that accepts ComponentTransformResponseArray and ComponentTransformResponseArrayOutput values.
-// You can construct a concrete instance of `ComponentTransformResponseArrayInput` via:
-//
-//          ComponentTransformResponseArray{ ComponentTransformResponseArgs{...} }
-type ComponentTransformResponseArrayInput interface {
-	pulumi.Input
-
-	ToComponentTransformResponseArrayOutput() ComponentTransformResponseArrayOutput
-	ToComponentTransformResponseArrayOutputWithContext(context.Context) ComponentTransformResponseArrayOutput
-}
-
-type ComponentTransformResponseArray []ComponentTransformResponseInput
-
-func (ComponentTransformResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ComponentTransformResponse)(nil)).Elem()
-}
-
-func (i ComponentTransformResponseArray) ToComponentTransformResponseArrayOutput() ComponentTransformResponseArrayOutput {
-	return i.ToComponentTransformResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ComponentTransformResponseArray) ToComponentTransformResponseArrayOutputWithContext(ctx context.Context) ComponentTransformResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComponentTransformResponseArrayOutput)
-}
-
 // Description of a transform executed as part of an execution stage.
 type ComponentTransformResponseOutput struct{ *pulumi.OutputState }
 
@@ -1310,62 +1045,6 @@ type DatastoreIODetailsResponse struct {
 	Namespace string `pulumi:"namespace"`
 	// ProjectId accessed in the connection.
 	Project string `pulumi:"project"`
-}
-
-// DatastoreIODetailsResponseInput is an input type that accepts DatastoreIODetailsResponseArgs and DatastoreIODetailsResponseOutput values.
-// You can construct a concrete instance of `DatastoreIODetailsResponseInput` via:
-//
-//          DatastoreIODetailsResponseArgs{...}
-type DatastoreIODetailsResponseInput interface {
-	pulumi.Input
-
-	ToDatastoreIODetailsResponseOutput() DatastoreIODetailsResponseOutput
-	ToDatastoreIODetailsResponseOutputWithContext(context.Context) DatastoreIODetailsResponseOutput
-}
-
-// Metadata for a Datastore connector used by the job.
-type DatastoreIODetailsResponseArgs struct {
-	// Namespace used in the connection.
-	Namespace pulumi.StringInput `pulumi:"namespace"`
-	// ProjectId accessed in the connection.
-	Project pulumi.StringInput `pulumi:"project"`
-}
-
-func (DatastoreIODetailsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatastoreIODetailsResponse)(nil)).Elem()
-}
-
-func (i DatastoreIODetailsResponseArgs) ToDatastoreIODetailsResponseOutput() DatastoreIODetailsResponseOutput {
-	return i.ToDatastoreIODetailsResponseOutputWithContext(context.Background())
-}
-
-func (i DatastoreIODetailsResponseArgs) ToDatastoreIODetailsResponseOutputWithContext(ctx context.Context) DatastoreIODetailsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatastoreIODetailsResponseOutput)
-}
-
-// DatastoreIODetailsResponseArrayInput is an input type that accepts DatastoreIODetailsResponseArray and DatastoreIODetailsResponseArrayOutput values.
-// You can construct a concrete instance of `DatastoreIODetailsResponseArrayInput` via:
-//
-//          DatastoreIODetailsResponseArray{ DatastoreIODetailsResponseArgs{...} }
-type DatastoreIODetailsResponseArrayInput interface {
-	pulumi.Input
-
-	ToDatastoreIODetailsResponseArrayOutput() DatastoreIODetailsResponseArrayOutput
-	ToDatastoreIODetailsResponseArrayOutputWithContext(context.Context) DatastoreIODetailsResponseArrayOutput
-}
-
-type DatastoreIODetailsResponseArray []DatastoreIODetailsResponseInput
-
-func (DatastoreIODetailsResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DatastoreIODetailsResponse)(nil)).Elem()
-}
-
-func (i DatastoreIODetailsResponseArray) ToDatastoreIODetailsResponseArrayOutput() DatastoreIODetailsResponseArrayOutput {
-	return i.ToDatastoreIODetailsResponseArrayOutputWithContext(context.Background())
-}
-
-func (i DatastoreIODetailsResponseArray) ToDatastoreIODetailsResponseArrayOutputWithContext(ctx context.Context) DatastoreIODetailsResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatastoreIODetailsResponseArrayOutput)
 }
 
 // Metadata for a Datastore connector used by the job.
@@ -1559,76 +1238,6 @@ type DebugOptionsResponse struct {
 	EnableHotKeyLogging bool `pulumi:"enableHotKeyLogging"`
 }
 
-// DebugOptionsResponseInput is an input type that accepts DebugOptionsResponseArgs and DebugOptionsResponseOutput values.
-// You can construct a concrete instance of `DebugOptionsResponseInput` via:
-//
-//          DebugOptionsResponseArgs{...}
-type DebugOptionsResponseInput interface {
-	pulumi.Input
-
-	ToDebugOptionsResponseOutput() DebugOptionsResponseOutput
-	ToDebugOptionsResponseOutputWithContext(context.Context) DebugOptionsResponseOutput
-}
-
-// Describes any options that have an effect on the debugging of pipelines.
-type DebugOptionsResponseArgs struct {
-	// When true, enables the logging of the literal hot key to the user's Cloud Logging.
-	EnableHotKeyLogging pulumi.BoolInput `pulumi:"enableHotKeyLogging"`
-}
-
-func (DebugOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DebugOptionsResponse)(nil)).Elem()
-}
-
-func (i DebugOptionsResponseArgs) ToDebugOptionsResponseOutput() DebugOptionsResponseOutput {
-	return i.ToDebugOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i DebugOptionsResponseArgs) ToDebugOptionsResponseOutputWithContext(ctx context.Context) DebugOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DebugOptionsResponseOutput)
-}
-
-func (i DebugOptionsResponseArgs) ToDebugOptionsResponsePtrOutput() DebugOptionsResponsePtrOutput {
-	return i.ToDebugOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i DebugOptionsResponseArgs) ToDebugOptionsResponsePtrOutputWithContext(ctx context.Context) DebugOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DebugOptionsResponseOutput).ToDebugOptionsResponsePtrOutputWithContext(ctx)
-}
-
-// DebugOptionsResponsePtrInput is an input type that accepts DebugOptionsResponseArgs, DebugOptionsResponsePtr and DebugOptionsResponsePtrOutput values.
-// You can construct a concrete instance of `DebugOptionsResponsePtrInput` via:
-//
-//          DebugOptionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type DebugOptionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToDebugOptionsResponsePtrOutput() DebugOptionsResponsePtrOutput
-	ToDebugOptionsResponsePtrOutputWithContext(context.Context) DebugOptionsResponsePtrOutput
-}
-
-type debugOptionsResponsePtrType DebugOptionsResponseArgs
-
-func DebugOptionsResponsePtr(v *DebugOptionsResponseArgs) DebugOptionsResponsePtrInput {
-	return (*debugOptionsResponsePtrType)(v)
-}
-
-func (*debugOptionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DebugOptionsResponse)(nil)).Elem()
-}
-
-func (i *debugOptionsResponsePtrType) ToDebugOptionsResponsePtrOutput() DebugOptionsResponsePtrOutput {
-	return i.ToDebugOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *debugOptionsResponsePtrType) ToDebugOptionsResponsePtrOutputWithContext(ctx context.Context) DebugOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DebugOptionsResponsePtrOutput)
-}
-
 // Describes any options that have an effect on the debugging of pipelines.
 type DebugOptionsResponseOutput struct{ *pulumi.OutputState }
 
@@ -1644,53 +1253,9 @@ func (o DebugOptionsResponseOutput) ToDebugOptionsResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o DebugOptionsResponseOutput) ToDebugOptionsResponsePtrOutput() DebugOptionsResponsePtrOutput {
-	return o.ToDebugOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o DebugOptionsResponseOutput) ToDebugOptionsResponsePtrOutputWithContext(ctx context.Context) DebugOptionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DebugOptionsResponse) *DebugOptionsResponse {
-		return &v
-	}).(DebugOptionsResponsePtrOutput)
-}
-
 // When true, enables the logging of the literal hot key to the user's Cloud Logging.
 func (o DebugOptionsResponseOutput) EnableHotKeyLogging() pulumi.BoolOutput {
 	return o.ApplyT(func(v DebugOptionsResponse) bool { return v.EnableHotKeyLogging }).(pulumi.BoolOutput)
-}
-
-type DebugOptionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DebugOptionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DebugOptionsResponse)(nil)).Elem()
-}
-
-func (o DebugOptionsResponsePtrOutput) ToDebugOptionsResponsePtrOutput() DebugOptionsResponsePtrOutput {
-	return o
-}
-
-func (o DebugOptionsResponsePtrOutput) ToDebugOptionsResponsePtrOutputWithContext(ctx context.Context) DebugOptionsResponsePtrOutput {
-	return o
-}
-
-func (o DebugOptionsResponsePtrOutput) Elem() DebugOptionsResponseOutput {
-	return o.ApplyT(func(v *DebugOptionsResponse) DebugOptionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DebugOptionsResponse
-		return ret
-	}).(DebugOptionsResponseOutput)
-}
-
-// When true, enables the logging of the literal hot key to the user's Cloud Logging.
-func (o DebugOptionsResponsePtrOutput) EnableHotKeyLogging() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *DebugOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.EnableHotKeyLogging
-	}).(pulumi.BoolPtrOutput)
 }
 
 // Describes the data disk used by a workflow job.
@@ -1819,64 +1384,6 @@ type DiskResponse struct {
 	MountPoint string `pulumi:"mountPoint"`
 	// Size of disk in GB. If zero or unspecified, the service will attempt to choose a reasonable default.
 	SizeGb int `pulumi:"sizeGb"`
-}
-
-// DiskResponseInput is an input type that accepts DiskResponseArgs and DiskResponseOutput values.
-// You can construct a concrete instance of `DiskResponseInput` via:
-//
-//          DiskResponseArgs{...}
-type DiskResponseInput interface {
-	pulumi.Input
-
-	ToDiskResponseOutput() DiskResponseOutput
-	ToDiskResponseOutputWithContext(context.Context) DiskResponseOutput
-}
-
-// Describes the data disk used by a workflow job.
-type DiskResponseArgs struct {
-	// Disk storage type, as defined by Google Compute Engine. This must be a disk type appropriate to the project and zone in which the workers will run. If unknown or unspecified, the service will attempt to choose a reasonable default. For example, the standard persistent disk type is a resource name typically ending in "pd-standard". If SSD persistent disks are available, the resource name typically ends with "pd-ssd". The actual valid values are defined the Google Compute Engine API, not by the Cloud Dataflow API; consult the Google Compute Engine documentation for more information about determining the set of available disk types for a particular project and zone. Google Compute Engine Disk types are local to a particular project in a particular zone, and so the resource name will typically look something like this: compute.googleapis.com/projects/project-id/zones/zone/diskTypes/pd-standard
-	DiskType pulumi.StringInput `pulumi:"diskType"`
-	// Directory in a VM where disk is mounted.
-	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
-	// Size of disk in GB. If zero or unspecified, the service will attempt to choose a reasonable default.
-	SizeGb pulumi.IntInput `pulumi:"sizeGb"`
-}
-
-func (DiskResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DiskResponse)(nil)).Elem()
-}
-
-func (i DiskResponseArgs) ToDiskResponseOutput() DiskResponseOutput {
-	return i.ToDiskResponseOutputWithContext(context.Background())
-}
-
-func (i DiskResponseArgs) ToDiskResponseOutputWithContext(ctx context.Context) DiskResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DiskResponseOutput)
-}
-
-// DiskResponseArrayInput is an input type that accepts DiskResponseArray and DiskResponseArrayOutput values.
-// You can construct a concrete instance of `DiskResponseArrayInput` via:
-//
-//          DiskResponseArray{ DiskResponseArgs{...} }
-type DiskResponseArrayInput interface {
-	pulumi.Input
-
-	ToDiskResponseArrayOutput() DiskResponseArrayOutput
-	ToDiskResponseArrayOutputWithContext(context.Context) DiskResponseArrayOutput
-}
-
-type DiskResponseArray []DiskResponseInput
-
-func (DiskResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DiskResponse)(nil)).Elem()
-}
-
-func (i DiskResponseArray) ToDiskResponseArrayOutput() DiskResponseArrayOutput {
-	return i.ToDiskResponseArrayOutputWithContext(context.Background())
-}
-
-func (i DiskResponseArray) ToDiskResponseArrayOutputWithContext(ctx context.Context) DiskResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DiskResponseArrayOutput)
 }
 
 // Describes the data disk used by a workflow job.
@@ -2154,82 +1661,6 @@ type DisplayDataResponse struct {
 	TimestampValue string `pulumi:"timestampValue"`
 	// An optional full URL.
 	Url string `pulumi:"url"`
-}
-
-// DisplayDataResponseInput is an input type that accepts DisplayDataResponseArgs and DisplayDataResponseOutput values.
-// You can construct a concrete instance of `DisplayDataResponseInput` via:
-//
-//          DisplayDataResponseArgs{...}
-type DisplayDataResponseInput interface {
-	pulumi.Input
-
-	ToDisplayDataResponseOutput() DisplayDataResponseOutput
-	ToDisplayDataResponseOutputWithContext(context.Context) DisplayDataResponseOutput
-}
-
-// Data provided with a pipeline or transform to provide descriptive info.
-type DisplayDataResponseArgs struct {
-	// Contains value if the data is of a boolean type.
-	BoolValue pulumi.BoolInput `pulumi:"boolValue"`
-	// Contains value if the data is of duration type.
-	DurationValue pulumi.StringInput `pulumi:"durationValue"`
-	// Contains value if the data is of float type.
-	FloatValue pulumi.Float64Input `pulumi:"floatValue"`
-	// Contains value if the data is of int64 type.
-	Int64Value pulumi.StringInput `pulumi:"int64Value"`
-	// Contains value if the data is of java class type.
-	JavaClassValue pulumi.StringInput `pulumi:"javaClassValue"`
-	// The key identifying the display data. This is intended to be used as a label for the display data when viewed in a dax monitoring system.
-	Key pulumi.StringInput `pulumi:"key"`
-	// An optional label to display in a dax UI for the element.
-	Label pulumi.StringInput `pulumi:"label"`
-	// The namespace for the key. This is usually a class name or programming language namespace (i.e. python module) which defines the display data. This allows a dax monitoring system to specially handle the data and perform custom rendering.
-	Namespace pulumi.StringInput `pulumi:"namespace"`
-	// A possible additional shorter value to display. For example a java_class_name_value of com.mypackage.MyDoFn will be stored with MyDoFn as the short_str_value and com.mypackage.MyDoFn as the java_class_name value. short_str_value can be displayed and java_class_name_value will be displayed as a tooltip.
-	ShortStrValue pulumi.StringInput `pulumi:"shortStrValue"`
-	// Contains value if the data is of string type.
-	StrValue pulumi.StringInput `pulumi:"strValue"`
-	// Contains value if the data is of timestamp type.
-	TimestampValue pulumi.StringInput `pulumi:"timestampValue"`
-	// An optional full URL.
-	Url pulumi.StringInput `pulumi:"url"`
-}
-
-func (DisplayDataResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DisplayDataResponse)(nil)).Elem()
-}
-
-func (i DisplayDataResponseArgs) ToDisplayDataResponseOutput() DisplayDataResponseOutput {
-	return i.ToDisplayDataResponseOutputWithContext(context.Background())
-}
-
-func (i DisplayDataResponseArgs) ToDisplayDataResponseOutputWithContext(ctx context.Context) DisplayDataResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisplayDataResponseOutput)
-}
-
-// DisplayDataResponseArrayInput is an input type that accepts DisplayDataResponseArray and DisplayDataResponseArrayOutput values.
-// You can construct a concrete instance of `DisplayDataResponseArrayInput` via:
-//
-//          DisplayDataResponseArray{ DisplayDataResponseArgs{...} }
-type DisplayDataResponseArrayInput interface {
-	pulumi.Input
-
-	ToDisplayDataResponseArrayOutput() DisplayDataResponseArrayOutput
-	ToDisplayDataResponseArrayOutputWithContext(context.Context) DisplayDataResponseArrayOutput
-}
-
-type DisplayDataResponseArray []DisplayDataResponseInput
-
-func (DisplayDataResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DisplayDataResponse)(nil)).Elem()
-}
-
-func (i DisplayDataResponseArray) ToDisplayDataResponseArrayOutput() DisplayDataResponseArrayOutput {
-	return i.ToDisplayDataResponseArrayOutputWithContext(context.Background())
-}
-
-func (i DisplayDataResponseArray) ToDisplayDataResponseArrayOutputWithContext(ctx context.Context) DisplayDataResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DisplayDataResponseArrayOutput)
 }
 
 // Data provided with a pipeline or transform to provide descriptive info.
@@ -2790,108 +2221,6 @@ type EnvironmentResponse struct {
 	WorkerZone string `pulumi:"workerZone"`
 }
 
-// EnvironmentResponseInput is an input type that accepts EnvironmentResponseArgs and EnvironmentResponseOutput values.
-// You can construct a concrete instance of `EnvironmentResponseInput` via:
-//
-//          EnvironmentResponseArgs{...}
-type EnvironmentResponseInput interface {
-	pulumi.Input
-
-	ToEnvironmentResponseOutput() EnvironmentResponseOutput
-	ToEnvironmentResponseOutputWithContext(context.Context) EnvironmentResponseOutput
-}
-
-// Describes the environment in which a Dataflow Job runs.
-type EnvironmentResponseArgs struct {
-	// The type of cluster manager API to use. If unknown or unspecified, the service will attempt to choose a reasonable default. This should be in the form of the API service name, e.g. "compute.googleapis.com".
-	ClusterManagerApiService pulumi.StringInput `pulumi:"clusterManagerApiService"`
-	// The dataset for the current project where various workflow related tables are stored. The supported resource type is: Google BigQuery: bigquery.googleapis.com/{dataset}
-	Dataset pulumi.StringInput `pulumi:"dataset"`
-	// Any debugging options to be supplied to the job.
-	DebugOptions DebugOptionsResponseInput `pulumi:"debugOptions"`
-	// The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options.
-	Experiments pulumi.StringArrayInput `pulumi:"experiments"`
-	// Which Flexible Resource Scheduling mode to run in.
-	FlexResourceSchedulingGoal pulumi.StringInput `pulumi:"flexResourceSchedulingGoal"`
-	// Experimental settings.
-	InternalExperiments pulumi.StringMapInput `pulumi:"internalExperiments"`
-	// The Cloud Dataflow SDK pipeline options specified by the user. These options are passed through the service and are used to recreate the SDK pipeline options on the worker in a language agnostic and platform independent way.
-	SdkPipelineOptions pulumi.StringMapInput `pulumi:"sdkPipelineOptions"`
-	// Identity to run virtual machines as. Defaults to the default account.
-	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
-	// If set, contains the Cloud KMS key identifier used to encrypt data at rest, AKA a Customer Managed Encryption Key (CMEK). Format: projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
-	ServiceKmsKeyName pulumi.StringInput `pulumi:"serviceKmsKeyName"`
-	// The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on).
-	ServiceOptions pulumi.StringArrayInput `pulumi:"serviceOptions"`
-	// The shuffle mode used for the job.
-	ShuffleMode pulumi.StringInput `pulumi:"shuffleMode"`
-	// The prefix of the resources the system should use for temporary storage. The system will append the suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
-	TempStoragePrefix pulumi.StringInput `pulumi:"tempStoragePrefix"`
-	// A description of the process that generated the request.
-	UserAgent pulumi.StringMapInput `pulumi:"userAgent"`
-	// A structure describing which components and their versions of the service are required in order to run the job.
-	Version pulumi.StringMapInput `pulumi:"version"`
-	// The worker pools. At least one "harness" worker pool must be specified in order for the job to have workers.
-	WorkerPools WorkerPoolResponseArrayInput `pulumi:"workerPools"`
-	// The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region.
-	WorkerRegion pulumi.StringInput `pulumi:"workerRegion"`
-	// The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity.
-	WorkerZone pulumi.StringInput `pulumi:"workerZone"`
-}
-
-func (EnvironmentResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnvironmentResponse)(nil)).Elem()
-}
-
-func (i EnvironmentResponseArgs) ToEnvironmentResponseOutput() EnvironmentResponseOutput {
-	return i.ToEnvironmentResponseOutputWithContext(context.Background())
-}
-
-func (i EnvironmentResponseArgs) ToEnvironmentResponseOutputWithContext(ctx context.Context) EnvironmentResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentResponseOutput)
-}
-
-func (i EnvironmentResponseArgs) ToEnvironmentResponsePtrOutput() EnvironmentResponsePtrOutput {
-	return i.ToEnvironmentResponsePtrOutputWithContext(context.Background())
-}
-
-func (i EnvironmentResponseArgs) ToEnvironmentResponsePtrOutputWithContext(ctx context.Context) EnvironmentResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentResponseOutput).ToEnvironmentResponsePtrOutputWithContext(ctx)
-}
-
-// EnvironmentResponsePtrInput is an input type that accepts EnvironmentResponseArgs, EnvironmentResponsePtr and EnvironmentResponsePtrOutput values.
-// You can construct a concrete instance of `EnvironmentResponsePtrInput` via:
-//
-//          EnvironmentResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type EnvironmentResponsePtrInput interface {
-	pulumi.Input
-
-	ToEnvironmentResponsePtrOutput() EnvironmentResponsePtrOutput
-	ToEnvironmentResponsePtrOutputWithContext(context.Context) EnvironmentResponsePtrOutput
-}
-
-type environmentResponsePtrType EnvironmentResponseArgs
-
-func EnvironmentResponsePtr(v *EnvironmentResponseArgs) EnvironmentResponsePtrInput {
-	return (*environmentResponsePtrType)(v)
-}
-
-func (*environmentResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnvironmentResponse)(nil)).Elem()
-}
-
-func (i *environmentResponsePtrType) ToEnvironmentResponsePtrOutput() EnvironmentResponsePtrOutput {
-	return i.ToEnvironmentResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *environmentResponsePtrType) ToEnvironmentResponsePtrOutputWithContext(ctx context.Context) EnvironmentResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentResponsePtrOutput)
-}
-
 // Describes the environment in which a Dataflow Job runs.
 type EnvironmentResponseOutput struct{ *pulumi.OutputState }
 
@@ -2905,16 +2234,6 @@ func (o EnvironmentResponseOutput) ToEnvironmentResponseOutput() EnvironmentResp
 
 func (o EnvironmentResponseOutput) ToEnvironmentResponseOutputWithContext(ctx context.Context) EnvironmentResponseOutput {
 	return o
-}
-
-func (o EnvironmentResponseOutput) ToEnvironmentResponsePtrOutput() EnvironmentResponsePtrOutput {
-	return o.ToEnvironmentResponsePtrOutputWithContext(context.Background())
-}
-
-func (o EnvironmentResponseOutput) ToEnvironmentResponsePtrOutputWithContext(ctx context.Context) EnvironmentResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentResponse) *EnvironmentResponse {
-		return &v
-	}).(EnvironmentResponsePtrOutput)
 }
 
 // The type of cluster manager API to use. If unknown or unspecified, the service will attempt to choose a reasonable default. This should be in the form of the API service name, e.g. "compute.googleapis.com".
@@ -3000,200 +2319,6 @@ func (o EnvironmentResponseOutput) WorkerRegion() pulumi.StringOutput {
 // The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity.
 func (o EnvironmentResponseOutput) WorkerZone() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvironmentResponse) string { return v.WorkerZone }).(pulumi.StringOutput)
-}
-
-type EnvironmentResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (EnvironmentResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnvironmentResponse)(nil)).Elem()
-}
-
-func (o EnvironmentResponsePtrOutput) ToEnvironmentResponsePtrOutput() EnvironmentResponsePtrOutput {
-	return o
-}
-
-func (o EnvironmentResponsePtrOutput) ToEnvironmentResponsePtrOutputWithContext(ctx context.Context) EnvironmentResponsePtrOutput {
-	return o
-}
-
-func (o EnvironmentResponsePtrOutput) Elem() EnvironmentResponseOutput {
-	return o.ApplyT(func(v *EnvironmentResponse) EnvironmentResponse {
-		if v != nil {
-			return *v
-		}
-		var ret EnvironmentResponse
-		return ret
-	}).(EnvironmentResponseOutput)
-}
-
-// The type of cluster manager API to use. If unknown or unspecified, the service will attempt to choose a reasonable default. This should be in the form of the API service name, e.g. "compute.googleapis.com".
-func (o EnvironmentResponsePtrOutput) ClusterManagerApiService() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClusterManagerApiService
-	}).(pulumi.StringPtrOutput)
-}
-
-// The dataset for the current project where various workflow related tables are stored. The supported resource type is: Google BigQuery: bigquery.googleapis.com/{dataset}
-func (o EnvironmentResponsePtrOutput) Dataset() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Dataset
-	}).(pulumi.StringPtrOutput)
-}
-
-// Any debugging options to be supplied to the job.
-func (o EnvironmentResponsePtrOutput) DebugOptions() DebugOptionsResponsePtrOutput {
-	return o.ApplyT(func(v *EnvironmentResponse) *DebugOptionsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DebugOptions
-	}).(DebugOptionsResponsePtrOutput)
-}
-
-// The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options.
-func (o EnvironmentResponsePtrOutput) Experiments() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *EnvironmentResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Experiments
-	}).(pulumi.StringArrayOutput)
-}
-
-// Which Flexible Resource Scheduling mode to run in.
-func (o EnvironmentResponsePtrOutput) FlexResourceSchedulingGoal() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.FlexResourceSchedulingGoal
-	}).(pulumi.StringPtrOutput)
-}
-
-// Experimental settings.
-func (o EnvironmentResponsePtrOutput) InternalExperiments() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *EnvironmentResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.InternalExperiments
-	}).(pulumi.StringMapOutput)
-}
-
-// The Cloud Dataflow SDK pipeline options specified by the user. These options are passed through the service and are used to recreate the SDK pipeline options on the worker in a language agnostic and platform independent way.
-func (o EnvironmentResponsePtrOutput) SdkPipelineOptions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *EnvironmentResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.SdkPipelineOptions
-	}).(pulumi.StringMapOutput)
-}
-
-// Identity to run virtual machines as. Defaults to the default account.
-func (o EnvironmentResponsePtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ServiceAccountEmail
-	}).(pulumi.StringPtrOutput)
-}
-
-// If set, contains the Cloud KMS key identifier used to encrypt data at rest, AKA a Customer Managed Encryption Key (CMEK). Format: projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
-func (o EnvironmentResponsePtrOutput) ServiceKmsKeyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ServiceKmsKeyName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on).
-func (o EnvironmentResponsePtrOutput) ServiceOptions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *EnvironmentResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceOptions
-	}).(pulumi.StringArrayOutput)
-}
-
-// The shuffle mode used for the job.
-func (o EnvironmentResponsePtrOutput) ShuffleMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ShuffleMode
-	}).(pulumi.StringPtrOutput)
-}
-
-// The prefix of the resources the system should use for temporary storage. The system will append the suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
-func (o EnvironmentResponsePtrOutput) TempStoragePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TempStoragePrefix
-	}).(pulumi.StringPtrOutput)
-}
-
-// A description of the process that generated the request.
-func (o EnvironmentResponsePtrOutput) UserAgent() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *EnvironmentResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.UserAgent
-	}).(pulumi.StringMapOutput)
-}
-
-// A structure describing which components and their versions of the service are required in order to run the job.
-func (o EnvironmentResponsePtrOutput) Version() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *EnvironmentResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Version
-	}).(pulumi.StringMapOutput)
-}
-
-// The worker pools. At least one "harness" worker pool must be specified in order for the job to have workers.
-func (o EnvironmentResponsePtrOutput) WorkerPools() WorkerPoolResponseArrayOutput {
-	return o.ApplyT(func(v *EnvironmentResponse) []WorkerPoolResponse {
-		if v == nil {
-			return nil
-		}
-		return v.WorkerPools
-	}).(WorkerPoolResponseArrayOutput)
-}
-
-// The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region.
-func (o EnvironmentResponsePtrOutput) WorkerRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.WorkerRegion
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity.
-func (o EnvironmentResponsePtrOutput) WorkerZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EnvironmentResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.WorkerZone
-	}).(pulumi.StringPtrOutput)
 }
 
 // A message describing the state of a particular execution stage.
@@ -3322,64 +2447,6 @@ type ExecutionStageStateResponse struct {
 	ExecutionStageName string `pulumi:"executionStageName"`
 	// Executions stage states allow the same set of values as JobState.
 	ExecutionStageState string `pulumi:"executionStageState"`
-}
-
-// ExecutionStageStateResponseInput is an input type that accepts ExecutionStageStateResponseArgs and ExecutionStageStateResponseOutput values.
-// You can construct a concrete instance of `ExecutionStageStateResponseInput` via:
-//
-//          ExecutionStageStateResponseArgs{...}
-type ExecutionStageStateResponseInput interface {
-	pulumi.Input
-
-	ToExecutionStageStateResponseOutput() ExecutionStageStateResponseOutput
-	ToExecutionStageStateResponseOutputWithContext(context.Context) ExecutionStageStateResponseOutput
-}
-
-// A message describing the state of a particular execution stage.
-type ExecutionStageStateResponseArgs struct {
-	// The time at which the stage transitioned to this state.
-	CurrentStateTime pulumi.StringInput `pulumi:"currentStateTime"`
-	// The name of the execution stage.
-	ExecutionStageName pulumi.StringInput `pulumi:"executionStageName"`
-	// Executions stage states allow the same set of values as JobState.
-	ExecutionStageState pulumi.StringInput `pulumi:"executionStageState"`
-}
-
-func (ExecutionStageStateResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExecutionStageStateResponse)(nil)).Elem()
-}
-
-func (i ExecutionStageStateResponseArgs) ToExecutionStageStateResponseOutput() ExecutionStageStateResponseOutput {
-	return i.ToExecutionStageStateResponseOutputWithContext(context.Background())
-}
-
-func (i ExecutionStageStateResponseArgs) ToExecutionStageStateResponseOutputWithContext(ctx context.Context) ExecutionStageStateResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExecutionStageStateResponseOutput)
-}
-
-// ExecutionStageStateResponseArrayInput is an input type that accepts ExecutionStageStateResponseArray and ExecutionStageStateResponseArrayOutput values.
-// You can construct a concrete instance of `ExecutionStageStateResponseArrayInput` via:
-//
-//          ExecutionStageStateResponseArray{ ExecutionStageStateResponseArgs{...} }
-type ExecutionStageStateResponseArrayInput interface {
-	pulumi.Input
-
-	ToExecutionStageStateResponseArrayOutput() ExecutionStageStateResponseArrayOutput
-	ToExecutionStageStateResponseArrayOutputWithContext(context.Context) ExecutionStageStateResponseArrayOutput
-}
-
-type ExecutionStageStateResponseArray []ExecutionStageStateResponseInput
-
-func (ExecutionStageStateResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ExecutionStageStateResponse)(nil)).Elem()
-}
-
-func (i ExecutionStageStateResponseArray) ToExecutionStageStateResponseArrayOutput() ExecutionStageStateResponseArrayOutput {
-	return i.ToExecutionStageStateResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ExecutionStageStateResponseArray) ToExecutionStageStateResponseArrayOutputWithContext(ctx context.Context) ExecutionStageStateResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExecutionStageStateResponseArrayOutput)
 }
 
 // A message describing the state of a particular execution stage.
@@ -3613,72 +2680,6 @@ type ExecutionStageSummaryResponse struct {
 	PrerequisiteStage []string `pulumi:"prerequisiteStage"`
 }
 
-// ExecutionStageSummaryResponseInput is an input type that accepts ExecutionStageSummaryResponseArgs and ExecutionStageSummaryResponseOutput values.
-// You can construct a concrete instance of `ExecutionStageSummaryResponseInput` via:
-//
-//          ExecutionStageSummaryResponseArgs{...}
-type ExecutionStageSummaryResponseInput interface {
-	pulumi.Input
-
-	ToExecutionStageSummaryResponseOutput() ExecutionStageSummaryResponseOutput
-	ToExecutionStageSummaryResponseOutputWithContext(context.Context) ExecutionStageSummaryResponseOutput
-}
-
-// Description of the composing transforms, names/ids, and input/outputs of a stage of execution. Some composing transforms and sources may have been generated by the Dataflow service during execution planning.
-type ExecutionStageSummaryResponseArgs struct {
-	// Collections produced and consumed by component transforms of this stage.
-	ComponentSource ComponentSourceResponseArrayInput `pulumi:"componentSource"`
-	// Transforms that comprise this execution stage.
-	ComponentTransform ComponentTransformResponseArrayInput `pulumi:"componentTransform"`
-	// Input sources for this stage.
-	InputSource StageSourceResponseArrayInput `pulumi:"inputSource"`
-	// Type of transform this stage is executing.
-	Kind pulumi.StringInput `pulumi:"kind"`
-	// Dataflow service generated name for this stage.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Output sources for this stage.
-	OutputSource StageSourceResponseArrayInput `pulumi:"outputSource"`
-	// Other stages that must complete before this stage can run.
-	PrerequisiteStage pulumi.StringArrayInput `pulumi:"prerequisiteStage"`
-}
-
-func (ExecutionStageSummaryResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExecutionStageSummaryResponse)(nil)).Elem()
-}
-
-func (i ExecutionStageSummaryResponseArgs) ToExecutionStageSummaryResponseOutput() ExecutionStageSummaryResponseOutput {
-	return i.ToExecutionStageSummaryResponseOutputWithContext(context.Background())
-}
-
-func (i ExecutionStageSummaryResponseArgs) ToExecutionStageSummaryResponseOutputWithContext(ctx context.Context) ExecutionStageSummaryResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExecutionStageSummaryResponseOutput)
-}
-
-// ExecutionStageSummaryResponseArrayInput is an input type that accepts ExecutionStageSummaryResponseArray and ExecutionStageSummaryResponseArrayOutput values.
-// You can construct a concrete instance of `ExecutionStageSummaryResponseArrayInput` via:
-//
-//          ExecutionStageSummaryResponseArray{ ExecutionStageSummaryResponseArgs{...} }
-type ExecutionStageSummaryResponseArrayInput interface {
-	pulumi.Input
-
-	ToExecutionStageSummaryResponseArrayOutput() ExecutionStageSummaryResponseArrayOutput
-	ToExecutionStageSummaryResponseArrayOutputWithContext(context.Context) ExecutionStageSummaryResponseArrayOutput
-}
-
-type ExecutionStageSummaryResponseArray []ExecutionStageSummaryResponseInput
-
-func (ExecutionStageSummaryResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ExecutionStageSummaryResponse)(nil)).Elem()
-}
-
-func (i ExecutionStageSummaryResponseArray) ToExecutionStageSummaryResponseArrayOutput() ExecutionStageSummaryResponseArrayOutput {
-	return i.ToExecutionStageSummaryResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ExecutionStageSummaryResponseArray) ToExecutionStageSummaryResponseArrayOutputWithContext(ctx context.Context) ExecutionStageSummaryResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExecutionStageSummaryResponseArrayOutput)
-}
-
 // Description of the composing transforms, names/ids, and input/outputs of a stage of execution. Some composing transforms and sources may have been generated by the Dataflow service during execution planning.
 type ExecutionStageSummaryResponseOutput struct{ *pulumi.OutputState }
 
@@ -3853,60 +2854,6 @@ func (o FileIODetailsArrayOutput) Index(i pulumi.IntInput) FileIODetailsOutput {
 type FileIODetailsResponse struct {
 	// File Pattern used to access files by the connector.
 	FilePattern string `pulumi:"filePattern"`
-}
-
-// FileIODetailsResponseInput is an input type that accepts FileIODetailsResponseArgs and FileIODetailsResponseOutput values.
-// You can construct a concrete instance of `FileIODetailsResponseInput` via:
-//
-//          FileIODetailsResponseArgs{...}
-type FileIODetailsResponseInput interface {
-	pulumi.Input
-
-	ToFileIODetailsResponseOutput() FileIODetailsResponseOutput
-	ToFileIODetailsResponseOutputWithContext(context.Context) FileIODetailsResponseOutput
-}
-
-// Metadata for a File connector used by the job.
-type FileIODetailsResponseArgs struct {
-	// File Pattern used to access files by the connector.
-	FilePattern pulumi.StringInput `pulumi:"filePattern"`
-}
-
-func (FileIODetailsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FileIODetailsResponse)(nil)).Elem()
-}
-
-func (i FileIODetailsResponseArgs) ToFileIODetailsResponseOutput() FileIODetailsResponseOutput {
-	return i.ToFileIODetailsResponseOutputWithContext(context.Background())
-}
-
-func (i FileIODetailsResponseArgs) ToFileIODetailsResponseOutputWithContext(ctx context.Context) FileIODetailsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FileIODetailsResponseOutput)
-}
-
-// FileIODetailsResponseArrayInput is an input type that accepts FileIODetailsResponseArray and FileIODetailsResponseArrayOutput values.
-// You can construct a concrete instance of `FileIODetailsResponseArrayInput` via:
-//
-//          FileIODetailsResponseArray{ FileIODetailsResponseArgs{...} }
-type FileIODetailsResponseArrayInput interface {
-	pulumi.Input
-
-	ToFileIODetailsResponseArrayOutput() FileIODetailsResponseArrayOutput
-	ToFileIODetailsResponseArrayOutputWithContext(context.Context) FileIODetailsResponseArrayOutput
-}
-
-type FileIODetailsResponseArray []FileIODetailsResponseInput
-
-func (FileIODetailsResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FileIODetailsResponse)(nil)).Elem()
-}
-
-func (i FileIODetailsResponseArray) ToFileIODetailsResponseArrayOutput() FileIODetailsResponseArrayOutput {
-	return i.ToFileIODetailsResponseArrayOutputWithContext(context.Background())
-}
-
-func (i FileIODetailsResponseArray) ToFileIODetailsResponseArrayOutputWithContext(ctx context.Context) FileIODetailsResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FileIODetailsResponseArrayOutput)
 }
 
 // Metadata for a File connector used by the job.
@@ -4221,88 +3168,6 @@ type JobMetadataResponse struct {
 	SpannerDetails []SpannerIODetailsResponse `pulumi:"spannerDetails"`
 }
 
-// JobMetadataResponseInput is an input type that accepts JobMetadataResponseArgs and JobMetadataResponseOutput values.
-// You can construct a concrete instance of `JobMetadataResponseInput` via:
-//
-//          JobMetadataResponseArgs{...}
-type JobMetadataResponseInput interface {
-	pulumi.Input
-
-	ToJobMetadataResponseOutput() JobMetadataResponseOutput
-	ToJobMetadataResponseOutputWithContext(context.Context) JobMetadataResponseOutput
-}
-
-// Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
-type JobMetadataResponseArgs struct {
-	// Identification of a Cloud Bigtable source used in the Dataflow job.
-	BigTableDetails BigTableIODetailsResponseArrayInput `pulumi:"bigTableDetails"`
-	// Identification of a BigQuery source used in the Dataflow job.
-	BigqueryDetails BigQueryIODetailsResponseArrayInput `pulumi:"bigqueryDetails"`
-	// Identification of a Datastore source used in the Dataflow job.
-	DatastoreDetails DatastoreIODetailsResponseArrayInput `pulumi:"datastoreDetails"`
-	// Identification of a File source used in the Dataflow job.
-	FileDetails FileIODetailsResponseArrayInput `pulumi:"fileDetails"`
-	// Identification of a Pub/Sub source used in the Dataflow job.
-	PubsubDetails PubSubIODetailsResponseArrayInput `pulumi:"pubsubDetails"`
-	// The SDK version used to run the job.
-	SdkVersion SdkVersionResponseInput `pulumi:"sdkVersion"`
-	// Identification of a Spanner source used in the Dataflow job.
-	SpannerDetails SpannerIODetailsResponseArrayInput `pulumi:"spannerDetails"`
-}
-
-func (JobMetadataResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobMetadataResponse)(nil)).Elem()
-}
-
-func (i JobMetadataResponseArgs) ToJobMetadataResponseOutput() JobMetadataResponseOutput {
-	return i.ToJobMetadataResponseOutputWithContext(context.Background())
-}
-
-func (i JobMetadataResponseArgs) ToJobMetadataResponseOutputWithContext(ctx context.Context) JobMetadataResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobMetadataResponseOutput)
-}
-
-func (i JobMetadataResponseArgs) ToJobMetadataResponsePtrOutput() JobMetadataResponsePtrOutput {
-	return i.ToJobMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i JobMetadataResponseArgs) ToJobMetadataResponsePtrOutputWithContext(ctx context.Context) JobMetadataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobMetadataResponseOutput).ToJobMetadataResponsePtrOutputWithContext(ctx)
-}
-
-// JobMetadataResponsePtrInput is an input type that accepts JobMetadataResponseArgs, JobMetadataResponsePtr and JobMetadataResponsePtrOutput values.
-// You can construct a concrete instance of `JobMetadataResponsePtrInput` via:
-//
-//          JobMetadataResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type JobMetadataResponsePtrInput interface {
-	pulumi.Input
-
-	ToJobMetadataResponsePtrOutput() JobMetadataResponsePtrOutput
-	ToJobMetadataResponsePtrOutputWithContext(context.Context) JobMetadataResponsePtrOutput
-}
-
-type jobMetadataResponsePtrType JobMetadataResponseArgs
-
-func JobMetadataResponsePtr(v *JobMetadataResponseArgs) JobMetadataResponsePtrInput {
-	return (*jobMetadataResponsePtrType)(v)
-}
-
-func (*jobMetadataResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobMetadataResponse)(nil)).Elem()
-}
-
-func (i *jobMetadataResponsePtrType) ToJobMetadataResponsePtrOutput() JobMetadataResponsePtrOutput {
-	return i.ToJobMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *jobMetadataResponsePtrType) ToJobMetadataResponsePtrOutputWithContext(ctx context.Context) JobMetadataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobMetadataResponsePtrOutput)
-}
-
 // Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
 type JobMetadataResponseOutput struct{ *pulumi.OutputState }
 
@@ -4316,16 +3181,6 @@ func (o JobMetadataResponseOutput) ToJobMetadataResponseOutput() JobMetadataResp
 
 func (o JobMetadataResponseOutput) ToJobMetadataResponseOutputWithContext(ctx context.Context) JobMetadataResponseOutput {
 	return o
-}
-
-func (o JobMetadataResponseOutput) ToJobMetadataResponsePtrOutput() JobMetadataResponsePtrOutput {
-	return o.ToJobMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (o JobMetadataResponseOutput) ToJobMetadataResponsePtrOutputWithContext(ctx context.Context) JobMetadataResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobMetadataResponse) *JobMetadataResponse {
-		return &v
-	}).(JobMetadataResponsePtrOutput)
 }
 
 // Identification of a Cloud Bigtable source used in the Dataflow job.
@@ -4361,100 +3216,6 @@ func (o JobMetadataResponseOutput) SdkVersion() SdkVersionResponseOutput {
 // Identification of a Spanner source used in the Dataflow job.
 func (o JobMetadataResponseOutput) SpannerDetails() SpannerIODetailsResponseArrayOutput {
 	return o.ApplyT(func(v JobMetadataResponse) []SpannerIODetailsResponse { return v.SpannerDetails }).(SpannerIODetailsResponseArrayOutput)
-}
-
-type JobMetadataResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (JobMetadataResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobMetadataResponse)(nil)).Elem()
-}
-
-func (o JobMetadataResponsePtrOutput) ToJobMetadataResponsePtrOutput() JobMetadataResponsePtrOutput {
-	return o
-}
-
-func (o JobMetadataResponsePtrOutput) ToJobMetadataResponsePtrOutputWithContext(ctx context.Context) JobMetadataResponsePtrOutput {
-	return o
-}
-
-func (o JobMetadataResponsePtrOutput) Elem() JobMetadataResponseOutput {
-	return o.ApplyT(func(v *JobMetadataResponse) JobMetadataResponse {
-		if v != nil {
-			return *v
-		}
-		var ret JobMetadataResponse
-		return ret
-	}).(JobMetadataResponseOutput)
-}
-
-// Identification of a Cloud Bigtable source used in the Dataflow job.
-func (o JobMetadataResponsePtrOutput) BigTableDetails() BigTableIODetailsResponseArrayOutput {
-	return o.ApplyT(func(v *JobMetadataResponse) []BigTableIODetailsResponse {
-		if v == nil {
-			return nil
-		}
-		return v.BigTableDetails
-	}).(BigTableIODetailsResponseArrayOutput)
-}
-
-// Identification of a BigQuery source used in the Dataflow job.
-func (o JobMetadataResponsePtrOutput) BigqueryDetails() BigQueryIODetailsResponseArrayOutput {
-	return o.ApplyT(func(v *JobMetadataResponse) []BigQueryIODetailsResponse {
-		if v == nil {
-			return nil
-		}
-		return v.BigqueryDetails
-	}).(BigQueryIODetailsResponseArrayOutput)
-}
-
-// Identification of a Datastore source used in the Dataflow job.
-func (o JobMetadataResponsePtrOutput) DatastoreDetails() DatastoreIODetailsResponseArrayOutput {
-	return o.ApplyT(func(v *JobMetadataResponse) []DatastoreIODetailsResponse {
-		if v == nil {
-			return nil
-		}
-		return v.DatastoreDetails
-	}).(DatastoreIODetailsResponseArrayOutput)
-}
-
-// Identification of a File source used in the Dataflow job.
-func (o JobMetadataResponsePtrOutput) FileDetails() FileIODetailsResponseArrayOutput {
-	return o.ApplyT(func(v *JobMetadataResponse) []FileIODetailsResponse {
-		if v == nil {
-			return nil
-		}
-		return v.FileDetails
-	}).(FileIODetailsResponseArrayOutput)
-}
-
-// Identification of a Pub/Sub source used in the Dataflow job.
-func (o JobMetadataResponsePtrOutput) PubsubDetails() PubSubIODetailsResponseArrayOutput {
-	return o.ApplyT(func(v *JobMetadataResponse) []PubSubIODetailsResponse {
-		if v == nil {
-			return nil
-		}
-		return v.PubsubDetails
-	}).(PubSubIODetailsResponseArrayOutput)
-}
-
-// The SDK version used to run the job.
-func (o JobMetadataResponsePtrOutput) SdkVersion() SdkVersionResponsePtrOutput {
-	return o.ApplyT(func(v *JobMetadataResponse) *SdkVersionResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.SdkVersion
-	}).(SdkVersionResponsePtrOutput)
-}
-
-// Identification of a Spanner source used in the Dataflow job.
-func (o JobMetadataResponsePtrOutput) SpannerDetails() SpannerIODetailsResponseArrayOutput {
-	return o.ApplyT(func(v *JobMetadataResponse) []SpannerIODetailsResponse {
-		if v == nil {
-			return nil
-		}
-		return v.SpannerDetails
-	}).(SpannerIODetailsResponseArrayOutput)
 }
 
 // The packages that must be installed in order for a worker to run the steps of the Cloud Dataflow job that will be assigned to its worker pool. This is the mechanism by which the Cloud Dataflow SDK causes code to be loaded onto the workers. For example, the Cloud Dataflow Java SDK might use this to install jars containing the user's code and all of the various dependencies (libraries, data files, etc.) required in order for that code to run.
@@ -4574,62 +3335,6 @@ type PackageResponse struct {
 	Name string `pulumi:"name"`
 }
 
-// PackageResponseInput is an input type that accepts PackageResponseArgs and PackageResponseOutput values.
-// You can construct a concrete instance of `PackageResponseInput` via:
-//
-//          PackageResponseArgs{...}
-type PackageResponseInput interface {
-	pulumi.Input
-
-	ToPackageResponseOutput() PackageResponseOutput
-	ToPackageResponseOutputWithContext(context.Context) PackageResponseOutput
-}
-
-// The packages that must be installed in order for a worker to run the steps of the Cloud Dataflow job that will be assigned to its worker pool. This is the mechanism by which the Cloud Dataflow SDK causes code to be loaded onto the workers. For example, the Cloud Dataflow Java SDK might use this to install jars containing the user's code and all of the various dependencies (libraries, data files, etc.) required in order for that code to run.
-type PackageResponseArgs struct {
-	// The resource to read the package from. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket} bucket.storage.googleapis.com/
-	Location pulumi.StringInput `pulumi:"location"`
-	// The name of the package.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (PackageResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PackageResponse)(nil)).Elem()
-}
-
-func (i PackageResponseArgs) ToPackageResponseOutput() PackageResponseOutput {
-	return i.ToPackageResponseOutputWithContext(context.Background())
-}
-
-func (i PackageResponseArgs) ToPackageResponseOutputWithContext(ctx context.Context) PackageResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageResponseOutput)
-}
-
-// PackageResponseArrayInput is an input type that accepts PackageResponseArray and PackageResponseArrayOutput values.
-// You can construct a concrete instance of `PackageResponseArrayInput` via:
-//
-//          PackageResponseArray{ PackageResponseArgs{...} }
-type PackageResponseArrayInput interface {
-	pulumi.Input
-
-	ToPackageResponseArrayOutput() PackageResponseArrayOutput
-	ToPackageResponseArrayOutputWithContext(context.Context) PackageResponseArrayOutput
-}
-
-type PackageResponseArray []PackageResponseInput
-
-func (PackageResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PackageResponse)(nil)).Elem()
-}
-
-func (i PackageResponseArray) ToPackageResponseArrayOutput() PackageResponseArrayOutput {
-	return i.ToPackageResponseArrayOutputWithContext(context.Background())
-}
-
-func (i PackageResponseArray) ToPackageResponseArrayOutputWithContext(ctx context.Context) PackageResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PackageResponseArrayOutput)
-}
-
 // The packages that must be installed in order for a worker to run the steps of the Cloud Dataflow job that will be assigned to its worker pool. This is the mechanism by which the Cloud Dataflow SDK causes code to be loaded onto the workers. For example, the Cloud Dataflow Java SDK might use this to install jars containing the user's code and all of the various dependencies (libraries, data files, etc.) required in order for that code to run.
 type PackageResponseOutput struct{ *pulumi.OutputState }
 
@@ -4691,72 +3396,6 @@ type ParameterMetadataResponse struct {
 	ParamType string `pulumi:"paramType"`
 	// Optional. Regexes that the parameter must match.
 	Regexes []string `pulumi:"regexes"`
-}
-
-// ParameterMetadataResponseInput is an input type that accepts ParameterMetadataResponseArgs and ParameterMetadataResponseOutput values.
-// You can construct a concrete instance of `ParameterMetadataResponseInput` via:
-//
-//          ParameterMetadataResponseArgs{...}
-type ParameterMetadataResponseInput interface {
-	pulumi.Input
-
-	ToParameterMetadataResponseOutput() ParameterMetadataResponseOutput
-	ToParameterMetadataResponseOutputWithContext(context.Context) ParameterMetadataResponseOutput
-}
-
-// Metadata for a specific parameter.
-type ParameterMetadataResponseArgs struct {
-	// Optional. Additional metadata for describing this parameter.
-	CustomMetadata pulumi.StringMapInput `pulumi:"customMetadata"`
-	// The help text to display for the parameter.
-	HelpText pulumi.StringInput `pulumi:"helpText"`
-	// Optional. Whether the parameter is optional. Defaults to false.
-	IsOptional pulumi.BoolInput `pulumi:"isOptional"`
-	// The label to display for the parameter.
-	Label pulumi.StringInput `pulumi:"label"`
-	// The name of the parameter.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Optional. The type of the parameter. Used for selecting input picker.
-	ParamType pulumi.StringInput `pulumi:"paramType"`
-	// Optional. Regexes that the parameter must match.
-	Regexes pulumi.StringArrayInput `pulumi:"regexes"`
-}
-
-func (ParameterMetadataResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ParameterMetadataResponse)(nil)).Elem()
-}
-
-func (i ParameterMetadataResponseArgs) ToParameterMetadataResponseOutput() ParameterMetadataResponseOutput {
-	return i.ToParameterMetadataResponseOutputWithContext(context.Background())
-}
-
-func (i ParameterMetadataResponseArgs) ToParameterMetadataResponseOutputWithContext(ctx context.Context) ParameterMetadataResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ParameterMetadataResponseOutput)
-}
-
-// ParameterMetadataResponseArrayInput is an input type that accepts ParameterMetadataResponseArray and ParameterMetadataResponseArrayOutput values.
-// You can construct a concrete instance of `ParameterMetadataResponseArrayInput` via:
-//
-//          ParameterMetadataResponseArray{ ParameterMetadataResponseArgs{...} }
-type ParameterMetadataResponseArrayInput interface {
-	pulumi.Input
-
-	ToParameterMetadataResponseArrayOutput() ParameterMetadataResponseArrayOutput
-	ToParameterMetadataResponseArrayOutputWithContext(context.Context) ParameterMetadataResponseArrayOutput
-}
-
-type ParameterMetadataResponseArray []ParameterMetadataResponseInput
-
-func (ParameterMetadataResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ParameterMetadataResponse)(nil)).Elem()
-}
-
-func (i ParameterMetadataResponseArray) ToParameterMetadataResponseArrayOutput() ParameterMetadataResponseArrayOutput {
-	return i.ToParameterMetadataResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ParameterMetadataResponseArray) ToParameterMetadataResponseArrayOutputWithContext(ctx context.Context) ParameterMetadataResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ParameterMetadataResponseArrayOutput)
 }
 
 // Metadata for a specific parameter.
@@ -5017,80 +3656,6 @@ type PipelineDescriptionResponse struct {
 	OriginalPipelineTransform []TransformSummaryResponse `pulumi:"originalPipelineTransform"`
 }
 
-// PipelineDescriptionResponseInput is an input type that accepts PipelineDescriptionResponseArgs and PipelineDescriptionResponseOutput values.
-// You can construct a concrete instance of `PipelineDescriptionResponseInput` via:
-//
-//          PipelineDescriptionResponseArgs{...}
-type PipelineDescriptionResponseInput interface {
-	pulumi.Input
-
-	ToPipelineDescriptionResponseOutput() PipelineDescriptionResponseOutput
-	ToPipelineDescriptionResponseOutputWithContext(context.Context) PipelineDescriptionResponseOutput
-}
-
-// A descriptive representation of submitted pipeline as well as the executed form. This data is provided by the Dataflow service for ease of visualizing the pipeline and interpreting Dataflow provided metrics.
-type PipelineDescriptionResponseArgs struct {
-	// Pipeline level display data.
-	DisplayData DisplayDataResponseArrayInput `pulumi:"displayData"`
-	// Description of each stage of execution of the pipeline.
-	ExecutionPipelineStage ExecutionStageSummaryResponseArrayInput `pulumi:"executionPipelineStage"`
-	// Description of each transform in the pipeline and collections between them.
-	OriginalPipelineTransform TransformSummaryResponseArrayInput `pulumi:"originalPipelineTransform"`
-}
-
-func (PipelineDescriptionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PipelineDescriptionResponse)(nil)).Elem()
-}
-
-func (i PipelineDescriptionResponseArgs) ToPipelineDescriptionResponseOutput() PipelineDescriptionResponseOutput {
-	return i.ToPipelineDescriptionResponseOutputWithContext(context.Background())
-}
-
-func (i PipelineDescriptionResponseArgs) ToPipelineDescriptionResponseOutputWithContext(ctx context.Context) PipelineDescriptionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineDescriptionResponseOutput)
-}
-
-func (i PipelineDescriptionResponseArgs) ToPipelineDescriptionResponsePtrOutput() PipelineDescriptionResponsePtrOutput {
-	return i.ToPipelineDescriptionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PipelineDescriptionResponseArgs) ToPipelineDescriptionResponsePtrOutputWithContext(ctx context.Context) PipelineDescriptionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineDescriptionResponseOutput).ToPipelineDescriptionResponsePtrOutputWithContext(ctx)
-}
-
-// PipelineDescriptionResponsePtrInput is an input type that accepts PipelineDescriptionResponseArgs, PipelineDescriptionResponsePtr and PipelineDescriptionResponsePtrOutput values.
-// You can construct a concrete instance of `PipelineDescriptionResponsePtrInput` via:
-//
-//          PipelineDescriptionResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PipelineDescriptionResponsePtrInput interface {
-	pulumi.Input
-
-	ToPipelineDescriptionResponsePtrOutput() PipelineDescriptionResponsePtrOutput
-	ToPipelineDescriptionResponsePtrOutputWithContext(context.Context) PipelineDescriptionResponsePtrOutput
-}
-
-type pipelineDescriptionResponsePtrType PipelineDescriptionResponseArgs
-
-func PipelineDescriptionResponsePtr(v *PipelineDescriptionResponseArgs) PipelineDescriptionResponsePtrInput {
-	return (*pipelineDescriptionResponsePtrType)(v)
-}
-
-func (*pipelineDescriptionResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PipelineDescriptionResponse)(nil)).Elem()
-}
-
-func (i *pipelineDescriptionResponsePtrType) ToPipelineDescriptionResponsePtrOutput() PipelineDescriptionResponsePtrOutput {
-	return i.ToPipelineDescriptionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *pipelineDescriptionResponsePtrType) ToPipelineDescriptionResponsePtrOutputWithContext(ctx context.Context) PipelineDescriptionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineDescriptionResponsePtrOutput)
-}
-
 // A descriptive representation of submitted pipeline as well as the executed form. This data is provided by the Dataflow service for ease of visualizing the pipeline and interpreting Dataflow provided metrics.
 type PipelineDescriptionResponseOutput struct{ *pulumi.OutputState }
 
@@ -5106,16 +3671,6 @@ func (o PipelineDescriptionResponseOutput) ToPipelineDescriptionResponseOutputWi
 	return o
 }
 
-func (o PipelineDescriptionResponseOutput) ToPipelineDescriptionResponsePtrOutput() PipelineDescriptionResponsePtrOutput {
-	return o.ToPipelineDescriptionResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PipelineDescriptionResponseOutput) ToPipelineDescriptionResponsePtrOutputWithContext(ctx context.Context) PipelineDescriptionResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineDescriptionResponse) *PipelineDescriptionResponse {
-		return &v
-	}).(PipelineDescriptionResponsePtrOutput)
-}
-
 // Pipeline level display data.
 func (o PipelineDescriptionResponseOutput) DisplayData() DisplayDataResponseArrayOutput {
 	return o.ApplyT(func(v PipelineDescriptionResponse) []DisplayDataResponse { return v.DisplayData }).(DisplayDataResponseArrayOutput)
@@ -5129,60 +3684,6 @@ func (o PipelineDescriptionResponseOutput) ExecutionPipelineStage() ExecutionSta
 // Description of each transform in the pipeline and collections between them.
 func (o PipelineDescriptionResponseOutput) OriginalPipelineTransform() TransformSummaryResponseArrayOutput {
 	return o.ApplyT(func(v PipelineDescriptionResponse) []TransformSummaryResponse { return v.OriginalPipelineTransform }).(TransformSummaryResponseArrayOutput)
-}
-
-type PipelineDescriptionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PipelineDescriptionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PipelineDescriptionResponse)(nil)).Elem()
-}
-
-func (o PipelineDescriptionResponsePtrOutput) ToPipelineDescriptionResponsePtrOutput() PipelineDescriptionResponsePtrOutput {
-	return o
-}
-
-func (o PipelineDescriptionResponsePtrOutput) ToPipelineDescriptionResponsePtrOutputWithContext(ctx context.Context) PipelineDescriptionResponsePtrOutput {
-	return o
-}
-
-func (o PipelineDescriptionResponsePtrOutput) Elem() PipelineDescriptionResponseOutput {
-	return o.ApplyT(func(v *PipelineDescriptionResponse) PipelineDescriptionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PipelineDescriptionResponse
-		return ret
-	}).(PipelineDescriptionResponseOutput)
-}
-
-// Pipeline level display data.
-func (o PipelineDescriptionResponsePtrOutput) DisplayData() DisplayDataResponseArrayOutput {
-	return o.ApplyT(func(v *PipelineDescriptionResponse) []DisplayDataResponse {
-		if v == nil {
-			return nil
-		}
-		return v.DisplayData
-	}).(DisplayDataResponseArrayOutput)
-}
-
-// Description of each stage of execution of the pipeline.
-func (o PipelineDescriptionResponsePtrOutput) ExecutionPipelineStage() ExecutionStageSummaryResponseArrayOutput {
-	return o.ApplyT(func(v *PipelineDescriptionResponse) []ExecutionStageSummaryResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ExecutionPipelineStage
-	}).(ExecutionStageSummaryResponseArrayOutput)
-}
-
-// Description of each transform in the pipeline and collections between them.
-func (o PipelineDescriptionResponsePtrOutput) OriginalPipelineTransform() TransformSummaryResponseArrayOutput {
-	return o.ApplyT(func(v *PipelineDescriptionResponse) []TransformSummaryResponse {
-		if v == nil {
-			return nil
-		}
-		return v.OriginalPipelineTransform
-	}).(TransformSummaryResponseArrayOutput)
 }
 
 // Metadata for a Pub/Sub connector used by the job.
@@ -5300,62 +3801,6 @@ type PubSubIODetailsResponse struct {
 	Subscription string `pulumi:"subscription"`
 	// Topic accessed in the connection.
 	Topic string `pulumi:"topic"`
-}
-
-// PubSubIODetailsResponseInput is an input type that accepts PubSubIODetailsResponseArgs and PubSubIODetailsResponseOutput values.
-// You can construct a concrete instance of `PubSubIODetailsResponseInput` via:
-//
-//          PubSubIODetailsResponseArgs{...}
-type PubSubIODetailsResponseInput interface {
-	pulumi.Input
-
-	ToPubSubIODetailsResponseOutput() PubSubIODetailsResponseOutput
-	ToPubSubIODetailsResponseOutputWithContext(context.Context) PubSubIODetailsResponseOutput
-}
-
-// Metadata for a Pub/Sub connector used by the job.
-type PubSubIODetailsResponseArgs struct {
-	// Subscription used in the connection.
-	Subscription pulumi.StringInput `pulumi:"subscription"`
-	// Topic accessed in the connection.
-	Topic pulumi.StringInput `pulumi:"topic"`
-}
-
-func (PubSubIODetailsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PubSubIODetailsResponse)(nil)).Elem()
-}
-
-func (i PubSubIODetailsResponseArgs) ToPubSubIODetailsResponseOutput() PubSubIODetailsResponseOutput {
-	return i.ToPubSubIODetailsResponseOutputWithContext(context.Background())
-}
-
-func (i PubSubIODetailsResponseArgs) ToPubSubIODetailsResponseOutputWithContext(ctx context.Context) PubSubIODetailsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PubSubIODetailsResponseOutput)
-}
-
-// PubSubIODetailsResponseArrayInput is an input type that accepts PubSubIODetailsResponseArray and PubSubIODetailsResponseArrayOutput values.
-// You can construct a concrete instance of `PubSubIODetailsResponseArrayInput` via:
-//
-//          PubSubIODetailsResponseArray{ PubSubIODetailsResponseArgs{...} }
-type PubSubIODetailsResponseArrayInput interface {
-	pulumi.Input
-
-	ToPubSubIODetailsResponseArrayOutput() PubSubIODetailsResponseArrayOutput
-	ToPubSubIODetailsResponseArrayOutputWithContext(context.Context) PubSubIODetailsResponseArrayOutput
-}
-
-type PubSubIODetailsResponseArray []PubSubIODetailsResponseInput
-
-func (PubSubIODetailsResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PubSubIODetailsResponse)(nil)).Elem()
-}
-
-func (i PubSubIODetailsResponseArray) ToPubSubIODetailsResponseArrayOutput() PubSubIODetailsResponseArrayOutput {
-	return i.ToPubSubIODetailsResponseArrayOutputWithContext(context.Background())
-}
-
-func (i PubSubIODetailsResponseArray) ToPubSubIODetailsResponseArrayOutputWithContext(ctx context.Context) PubSubIODetailsResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PubSubIODetailsResponseArrayOutput)
 }
 
 // Metadata for a Pub/Sub connector used by the job.
@@ -5836,78 +4281,6 @@ type RuntimeMetadataResponse struct {
 	SdkInfo SDKInfoResponse `pulumi:"sdkInfo"`
 }
 
-// RuntimeMetadataResponseInput is an input type that accepts RuntimeMetadataResponseArgs and RuntimeMetadataResponseOutput values.
-// You can construct a concrete instance of `RuntimeMetadataResponseInput` via:
-//
-//          RuntimeMetadataResponseArgs{...}
-type RuntimeMetadataResponseInput interface {
-	pulumi.Input
-
-	ToRuntimeMetadataResponseOutput() RuntimeMetadataResponseOutput
-	ToRuntimeMetadataResponseOutputWithContext(context.Context) RuntimeMetadataResponseOutput
-}
-
-// RuntimeMetadata describing a runtime environment.
-type RuntimeMetadataResponseArgs struct {
-	// The parameters for the template.
-	Parameters ParameterMetadataResponseArrayInput `pulumi:"parameters"`
-	// SDK Info for the template.
-	SdkInfo SDKInfoResponseInput `pulumi:"sdkInfo"`
-}
-
-func (RuntimeMetadataResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RuntimeMetadataResponse)(nil)).Elem()
-}
-
-func (i RuntimeMetadataResponseArgs) ToRuntimeMetadataResponseOutput() RuntimeMetadataResponseOutput {
-	return i.ToRuntimeMetadataResponseOutputWithContext(context.Background())
-}
-
-func (i RuntimeMetadataResponseArgs) ToRuntimeMetadataResponseOutputWithContext(ctx context.Context) RuntimeMetadataResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuntimeMetadataResponseOutput)
-}
-
-func (i RuntimeMetadataResponseArgs) ToRuntimeMetadataResponsePtrOutput() RuntimeMetadataResponsePtrOutput {
-	return i.ToRuntimeMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i RuntimeMetadataResponseArgs) ToRuntimeMetadataResponsePtrOutputWithContext(ctx context.Context) RuntimeMetadataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuntimeMetadataResponseOutput).ToRuntimeMetadataResponsePtrOutputWithContext(ctx)
-}
-
-// RuntimeMetadataResponsePtrInput is an input type that accepts RuntimeMetadataResponseArgs, RuntimeMetadataResponsePtr and RuntimeMetadataResponsePtrOutput values.
-// You can construct a concrete instance of `RuntimeMetadataResponsePtrInput` via:
-//
-//          RuntimeMetadataResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type RuntimeMetadataResponsePtrInput interface {
-	pulumi.Input
-
-	ToRuntimeMetadataResponsePtrOutput() RuntimeMetadataResponsePtrOutput
-	ToRuntimeMetadataResponsePtrOutputWithContext(context.Context) RuntimeMetadataResponsePtrOutput
-}
-
-type runtimeMetadataResponsePtrType RuntimeMetadataResponseArgs
-
-func RuntimeMetadataResponsePtr(v *RuntimeMetadataResponseArgs) RuntimeMetadataResponsePtrInput {
-	return (*runtimeMetadataResponsePtrType)(v)
-}
-
-func (*runtimeMetadataResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RuntimeMetadataResponse)(nil)).Elem()
-}
-
-func (i *runtimeMetadataResponsePtrType) ToRuntimeMetadataResponsePtrOutput() RuntimeMetadataResponsePtrOutput {
-	return i.ToRuntimeMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *runtimeMetadataResponsePtrType) ToRuntimeMetadataResponsePtrOutputWithContext(ctx context.Context) RuntimeMetadataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuntimeMetadataResponsePtrOutput)
-}
-
 // RuntimeMetadata describing a runtime environment.
 type RuntimeMetadataResponseOutput struct{ *pulumi.OutputState }
 
@@ -5923,16 +4296,6 @@ func (o RuntimeMetadataResponseOutput) ToRuntimeMetadataResponseOutputWithContex
 	return o
 }
 
-func (o RuntimeMetadataResponseOutput) ToRuntimeMetadataResponsePtrOutput() RuntimeMetadataResponsePtrOutput {
-	return o.ToRuntimeMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (o RuntimeMetadataResponseOutput) ToRuntimeMetadataResponsePtrOutputWithContext(ctx context.Context) RuntimeMetadataResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeMetadataResponse) *RuntimeMetadataResponse {
-		return &v
-	}).(RuntimeMetadataResponsePtrOutput)
-}
-
 // The parameters for the template.
 func (o RuntimeMetadataResponseOutput) Parameters() ParameterMetadataResponseArrayOutput {
 	return o.ApplyT(func(v RuntimeMetadataResponse) []ParameterMetadataResponse { return v.Parameters }).(ParameterMetadataResponseArrayOutput)
@@ -5943,128 +4306,12 @@ func (o RuntimeMetadataResponseOutput) SdkInfo() SDKInfoResponseOutput {
 	return o.ApplyT(func(v RuntimeMetadataResponse) SDKInfoResponse { return v.SdkInfo }).(SDKInfoResponseOutput)
 }
 
-type RuntimeMetadataResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RuntimeMetadataResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RuntimeMetadataResponse)(nil)).Elem()
-}
-
-func (o RuntimeMetadataResponsePtrOutput) ToRuntimeMetadataResponsePtrOutput() RuntimeMetadataResponsePtrOutput {
-	return o
-}
-
-func (o RuntimeMetadataResponsePtrOutput) ToRuntimeMetadataResponsePtrOutputWithContext(ctx context.Context) RuntimeMetadataResponsePtrOutput {
-	return o
-}
-
-func (o RuntimeMetadataResponsePtrOutput) Elem() RuntimeMetadataResponseOutput {
-	return o.ApplyT(func(v *RuntimeMetadataResponse) RuntimeMetadataResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RuntimeMetadataResponse
-		return ret
-	}).(RuntimeMetadataResponseOutput)
-}
-
-// The parameters for the template.
-func (o RuntimeMetadataResponsePtrOutput) Parameters() ParameterMetadataResponseArrayOutput {
-	return o.ApplyT(func(v *RuntimeMetadataResponse) []ParameterMetadataResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Parameters
-	}).(ParameterMetadataResponseArrayOutput)
-}
-
-// SDK Info for the template.
-func (o RuntimeMetadataResponsePtrOutput) SdkInfo() SDKInfoResponsePtrOutput {
-	return o.ApplyT(func(v *RuntimeMetadataResponse) *SDKInfoResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.SdkInfo
-	}).(SDKInfoResponsePtrOutput)
-}
-
 // SDK Information.
 type SDKInfoResponse struct {
 	// The SDK Language.
 	Language string `pulumi:"language"`
 	// Optional. The SDK version.
 	Version string `pulumi:"version"`
-}
-
-// SDKInfoResponseInput is an input type that accepts SDKInfoResponseArgs and SDKInfoResponseOutput values.
-// You can construct a concrete instance of `SDKInfoResponseInput` via:
-//
-//          SDKInfoResponseArgs{...}
-type SDKInfoResponseInput interface {
-	pulumi.Input
-
-	ToSDKInfoResponseOutput() SDKInfoResponseOutput
-	ToSDKInfoResponseOutputWithContext(context.Context) SDKInfoResponseOutput
-}
-
-// SDK Information.
-type SDKInfoResponseArgs struct {
-	// The SDK Language.
-	Language pulumi.StringInput `pulumi:"language"`
-	// Optional. The SDK version.
-	Version pulumi.StringInput `pulumi:"version"`
-}
-
-func (SDKInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SDKInfoResponse)(nil)).Elem()
-}
-
-func (i SDKInfoResponseArgs) ToSDKInfoResponseOutput() SDKInfoResponseOutput {
-	return i.ToSDKInfoResponseOutputWithContext(context.Background())
-}
-
-func (i SDKInfoResponseArgs) ToSDKInfoResponseOutputWithContext(ctx context.Context) SDKInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SDKInfoResponseOutput)
-}
-
-func (i SDKInfoResponseArgs) ToSDKInfoResponsePtrOutput() SDKInfoResponsePtrOutput {
-	return i.ToSDKInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SDKInfoResponseArgs) ToSDKInfoResponsePtrOutputWithContext(ctx context.Context) SDKInfoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SDKInfoResponseOutput).ToSDKInfoResponsePtrOutputWithContext(ctx)
-}
-
-// SDKInfoResponsePtrInput is an input type that accepts SDKInfoResponseArgs, SDKInfoResponsePtr and SDKInfoResponsePtrOutput values.
-// You can construct a concrete instance of `SDKInfoResponsePtrInput` via:
-//
-//          SDKInfoResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SDKInfoResponsePtrInput interface {
-	pulumi.Input
-
-	ToSDKInfoResponsePtrOutput() SDKInfoResponsePtrOutput
-	ToSDKInfoResponsePtrOutputWithContext(context.Context) SDKInfoResponsePtrOutput
-}
-
-type sdkinfoResponsePtrType SDKInfoResponseArgs
-
-func SDKInfoResponsePtr(v *SDKInfoResponseArgs) SDKInfoResponsePtrInput {
-	return (*sdkinfoResponsePtrType)(v)
-}
-
-func (*sdkinfoResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SDKInfoResponse)(nil)).Elem()
-}
-
-func (i *sdkinfoResponsePtrType) ToSDKInfoResponsePtrOutput() SDKInfoResponsePtrOutput {
-	return i.ToSDKInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *sdkinfoResponsePtrType) ToSDKInfoResponsePtrOutputWithContext(ctx context.Context) SDKInfoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SDKInfoResponsePtrOutput)
 }
 
 // SDK Information.
@@ -6082,16 +4329,6 @@ func (o SDKInfoResponseOutput) ToSDKInfoResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o SDKInfoResponseOutput) ToSDKInfoResponsePtrOutput() SDKInfoResponsePtrOutput {
-	return o.ToSDKInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SDKInfoResponseOutput) ToSDKInfoResponsePtrOutputWithContext(ctx context.Context) SDKInfoResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SDKInfoResponse) *SDKInfoResponse {
-		return &v
-	}).(SDKInfoResponsePtrOutput)
-}
-
 // The SDK Language.
 func (o SDKInfoResponseOutput) Language() pulumi.StringOutput {
 	return o.ApplyT(func(v SDKInfoResponse) string { return v.Language }).(pulumi.StringOutput)
@@ -6100,50 +4337,6 @@ func (o SDKInfoResponseOutput) Language() pulumi.StringOutput {
 // Optional. The SDK version.
 func (o SDKInfoResponseOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v SDKInfoResponse) string { return v.Version }).(pulumi.StringOutput)
-}
-
-type SDKInfoResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SDKInfoResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SDKInfoResponse)(nil)).Elem()
-}
-
-func (o SDKInfoResponsePtrOutput) ToSDKInfoResponsePtrOutput() SDKInfoResponsePtrOutput {
-	return o
-}
-
-func (o SDKInfoResponsePtrOutput) ToSDKInfoResponsePtrOutputWithContext(ctx context.Context) SDKInfoResponsePtrOutput {
-	return o
-}
-
-func (o SDKInfoResponsePtrOutput) Elem() SDKInfoResponseOutput {
-	return o.ApplyT(func(v *SDKInfoResponse) SDKInfoResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SDKInfoResponse
-		return ret
-	}).(SDKInfoResponseOutput)
-}
-
-// The SDK Language.
-func (o SDKInfoResponsePtrOutput) Language() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SDKInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Language
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. The SDK version.
-func (o SDKInfoResponsePtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SDKInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Version
-	}).(pulumi.StringPtrOutput)
 }
 
 // Defines a SDK harness container for executing Dataflow pipelines.
@@ -6272,64 +4465,6 @@ type SdkHarnessContainerImageResponse struct {
 	EnvironmentId string `pulumi:"environmentId"`
 	// If true, recommends the Dataflow service to use only one core per SDK container instance with this image. If false (or unset) recommends using more than one core per SDK container instance with this image for efficiency. Note that Dataflow service may choose to override this property if needed.
 	UseSingleCorePerContainer bool `pulumi:"useSingleCorePerContainer"`
-}
-
-// SdkHarnessContainerImageResponseInput is an input type that accepts SdkHarnessContainerImageResponseArgs and SdkHarnessContainerImageResponseOutput values.
-// You can construct a concrete instance of `SdkHarnessContainerImageResponseInput` via:
-//
-//          SdkHarnessContainerImageResponseArgs{...}
-type SdkHarnessContainerImageResponseInput interface {
-	pulumi.Input
-
-	ToSdkHarnessContainerImageResponseOutput() SdkHarnessContainerImageResponseOutput
-	ToSdkHarnessContainerImageResponseOutputWithContext(context.Context) SdkHarnessContainerImageResponseOutput
-}
-
-// Defines a SDK harness container for executing Dataflow pipelines.
-type SdkHarnessContainerImageResponseArgs struct {
-	// A docker container image that resides in Google Container Registry.
-	ContainerImage pulumi.StringInput `pulumi:"containerImage"`
-	// Environment ID for the Beam runner API proto Environment that corresponds to the current SDK Harness.
-	EnvironmentId pulumi.StringInput `pulumi:"environmentId"`
-	// If true, recommends the Dataflow service to use only one core per SDK container instance with this image. If false (or unset) recommends using more than one core per SDK container instance with this image for efficiency. Note that Dataflow service may choose to override this property if needed.
-	UseSingleCorePerContainer pulumi.BoolInput `pulumi:"useSingleCorePerContainer"`
-}
-
-func (SdkHarnessContainerImageResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SdkHarnessContainerImageResponse)(nil)).Elem()
-}
-
-func (i SdkHarnessContainerImageResponseArgs) ToSdkHarnessContainerImageResponseOutput() SdkHarnessContainerImageResponseOutput {
-	return i.ToSdkHarnessContainerImageResponseOutputWithContext(context.Background())
-}
-
-func (i SdkHarnessContainerImageResponseArgs) ToSdkHarnessContainerImageResponseOutputWithContext(ctx context.Context) SdkHarnessContainerImageResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SdkHarnessContainerImageResponseOutput)
-}
-
-// SdkHarnessContainerImageResponseArrayInput is an input type that accepts SdkHarnessContainerImageResponseArray and SdkHarnessContainerImageResponseArrayOutput values.
-// You can construct a concrete instance of `SdkHarnessContainerImageResponseArrayInput` via:
-//
-//          SdkHarnessContainerImageResponseArray{ SdkHarnessContainerImageResponseArgs{...} }
-type SdkHarnessContainerImageResponseArrayInput interface {
-	pulumi.Input
-
-	ToSdkHarnessContainerImageResponseArrayOutput() SdkHarnessContainerImageResponseArrayOutput
-	ToSdkHarnessContainerImageResponseArrayOutputWithContext(context.Context) SdkHarnessContainerImageResponseArrayOutput
-}
-
-type SdkHarnessContainerImageResponseArray []SdkHarnessContainerImageResponseInput
-
-func (SdkHarnessContainerImageResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SdkHarnessContainerImageResponse)(nil)).Elem()
-}
-
-func (i SdkHarnessContainerImageResponseArray) ToSdkHarnessContainerImageResponseArrayOutput() SdkHarnessContainerImageResponseArrayOutput {
-	return i.ToSdkHarnessContainerImageResponseArrayOutputWithContext(context.Background())
-}
-
-func (i SdkHarnessContainerImageResponseArray) ToSdkHarnessContainerImageResponseArrayOutputWithContext(ctx context.Context) SdkHarnessContainerImageResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SdkHarnessContainerImageResponseArrayOutput)
 }
 
 // Defines a SDK harness container for executing Dataflow pipelines.
@@ -6570,80 +4705,6 @@ type SdkVersionResponse struct {
 	VersionDisplayName string `pulumi:"versionDisplayName"`
 }
 
-// SdkVersionResponseInput is an input type that accepts SdkVersionResponseArgs and SdkVersionResponseOutput values.
-// You can construct a concrete instance of `SdkVersionResponseInput` via:
-//
-//          SdkVersionResponseArgs{...}
-type SdkVersionResponseInput interface {
-	pulumi.Input
-
-	ToSdkVersionResponseOutput() SdkVersionResponseOutput
-	ToSdkVersionResponseOutputWithContext(context.Context) SdkVersionResponseOutput
-}
-
-// The version of the SDK used to run the job.
-type SdkVersionResponseArgs struct {
-	// The support status for this SDK version.
-	SdkSupportStatus pulumi.StringInput `pulumi:"sdkSupportStatus"`
-	// The version of the SDK used to run the job.
-	Version pulumi.StringInput `pulumi:"version"`
-	// A readable string describing the version of the SDK.
-	VersionDisplayName pulumi.StringInput `pulumi:"versionDisplayName"`
-}
-
-func (SdkVersionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SdkVersionResponse)(nil)).Elem()
-}
-
-func (i SdkVersionResponseArgs) ToSdkVersionResponseOutput() SdkVersionResponseOutput {
-	return i.ToSdkVersionResponseOutputWithContext(context.Background())
-}
-
-func (i SdkVersionResponseArgs) ToSdkVersionResponseOutputWithContext(ctx context.Context) SdkVersionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SdkVersionResponseOutput)
-}
-
-func (i SdkVersionResponseArgs) ToSdkVersionResponsePtrOutput() SdkVersionResponsePtrOutput {
-	return i.ToSdkVersionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SdkVersionResponseArgs) ToSdkVersionResponsePtrOutputWithContext(ctx context.Context) SdkVersionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SdkVersionResponseOutput).ToSdkVersionResponsePtrOutputWithContext(ctx)
-}
-
-// SdkVersionResponsePtrInput is an input type that accepts SdkVersionResponseArgs, SdkVersionResponsePtr and SdkVersionResponsePtrOutput values.
-// You can construct a concrete instance of `SdkVersionResponsePtrInput` via:
-//
-//          SdkVersionResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SdkVersionResponsePtrInput interface {
-	pulumi.Input
-
-	ToSdkVersionResponsePtrOutput() SdkVersionResponsePtrOutput
-	ToSdkVersionResponsePtrOutputWithContext(context.Context) SdkVersionResponsePtrOutput
-}
-
-type sdkVersionResponsePtrType SdkVersionResponseArgs
-
-func SdkVersionResponsePtr(v *SdkVersionResponseArgs) SdkVersionResponsePtrInput {
-	return (*sdkVersionResponsePtrType)(v)
-}
-
-func (*sdkVersionResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SdkVersionResponse)(nil)).Elem()
-}
-
-func (i *sdkVersionResponsePtrType) ToSdkVersionResponsePtrOutput() SdkVersionResponsePtrOutput {
-	return i.ToSdkVersionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *sdkVersionResponsePtrType) ToSdkVersionResponsePtrOutputWithContext(ctx context.Context) SdkVersionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SdkVersionResponsePtrOutput)
-}
-
 // The version of the SDK used to run the job.
 type SdkVersionResponseOutput struct{ *pulumi.OutputState }
 
@@ -6659,16 +4720,6 @@ func (o SdkVersionResponseOutput) ToSdkVersionResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o SdkVersionResponseOutput) ToSdkVersionResponsePtrOutput() SdkVersionResponsePtrOutput {
-	return o.ToSdkVersionResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SdkVersionResponseOutput) ToSdkVersionResponsePtrOutputWithContext(ctx context.Context) SdkVersionResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SdkVersionResponse) *SdkVersionResponse {
-		return &v
-	}).(SdkVersionResponsePtrOutput)
-}
-
 // The support status for this SDK version.
 func (o SdkVersionResponseOutput) SdkSupportStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v SdkVersionResponse) string { return v.SdkSupportStatus }).(pulumi.StringOutput)
@@ -6682,60 +4733,6 @@ func (o SdkVersionResponseOutput) Version() pulumi.StringOutput {
 // A readable string describing the version of the SDK.
 func (o SdkVersionResponseOutput) VersionDisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v SdkVersionResponse) string { return v.VersionDisplayName }).(pulumi.StringOutput)
-}
-
-type SdkVersionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SdkVersionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SdkVersionResponse)(nil)).Elem()
-}
-
-func (o SdkVersionResponsePtrOutput) ToSdkVersionResponsePtrOutput() SdkVersionResponsePtrOutput {
-	return o
-}
-
-func (o SdkVersionResponsePtrOutput) ToSdkVersionResponsePtrOutputWithContext(ctx context.Context) SdkVersionResponsePtrOutput {
-	return o
-}
-
-func (o SdkVersionResponsePtrOutput) Elem() SdkVersionResponseOutput {
-	return o.ApplyT(func(v *SdkVersionResponse) SdkVersionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SdkVersionResponse
-		return ret
-	}).(SdkVersionResponseOutput)
-}
-
-// The support status for this SDK version.
-func (o SdkVersionResponsePtrOutput) SdkSupportStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SdkVersionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SdkSupportStatus
-	}).(pulumi.StringPtrOutput)
-}
-
-// The version of the SDK used to run the job.
-func (o SdkVersionResponsePtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SdkVersionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Version
-	}).(pulumi.StringPtrOutput)
-}
-
-// A readable string describing the version of the SDK.
-func (o SdkVersionResponsePtrOutput) VersionDisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SdkVersionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.VersionDisplayName
-	}).(pulumi.StringPtrOutput)
 }
 
 // Metadata for a Spanner connector used by the job.
@@ -6864,64 +4861,6 @@ type SpannerIODetailsResponse struct {
 	InstanceId string `pulumi:"instanceId"`
 	// ProjectId accessed in the connection.
 	Project string `pulumi:"project"`
-}
-
-// SpannerIODetailsResponseInput is an input type that accepts SpannerIODetailsResponseArgs and SpannerIODetailsResponseOutput values.
-// You can construct a concrete instance of `SpannerIODetailsResponseInput` via:
-//
-//          SpannerIODetailsResponseArgs{...}
-type SpannerIODetailsResponseInput interface {
-	pulumi.Input
-
-	ToSpannerIODetailsResponseOutput() SpannerIODetailsResponseOutput
-	ToSpannerIODetailsResponseOutputWithContext(context.Context) SpannerIODetailsResponseOutput
-}
-
-// Metadata for a Spanner connector used by the job.
-type SpannerIODetailsResponseArgs struct {
-	// DatabaseId accessed in the connection.
-	DatabaseId pulumi.StringInput `pulumi:"databaseId"`
-	// InstanceId accessed in the connection.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// ProjectId accessed in the connection.
-	Project pulumi.StringInput `pulumi:"project"`
-}
-
-func (SpannerIODetailsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SpannerIODetailsResponse)(nil)).Elem()
-}
-
-func (i SpannerIODetailsResponseArgs) ToSpannerIODetailsResponseOutput() SpannerIODetailsResponseOutput {
-	return i.ToSpannerIODetailsResponseOutputWithContext(context.Background())
-}
-
-func (i SpannerIODetailsResponseArgs) ToSpannerIODetailsResponseOutputWithContext(ctx context.Context) SpannerIODetailsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpannerIODetailsResponseOutput)
-}
-
-// SpannerIODetailsResponseArrayInput is an input type that accepts SpannerIODetailsResponseArray and SpannerIODetailsResponseArrayOutput values.
-// You can construct a concrete instance of `SpannerIODetailsResponseArrayInput` via:
-//
-//          SpannerIODetailsResponseArray{ SpannerIODetailsResponseArgs{...} }
-type SpannerIODetailsResponseArrayInput interface {
-	pulumi.Input
-
-	ToSpannerIODetailsResponseArrayOutput() SpannerIODetailsResponseArrayOutput
-	ToSpannerIODetailsResponseArrayOutputWithContext(context.Context) SpannerIODetailsResponseArrayOutput
-}
-
-type SpannerIODetailsResponseArray []SpannerIODetailsResponseInput
-
-func (SpannerIODetailsResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SpannerIODetailsResponse)(nil)).Elem()
-}
-
-func (i SpannerIODetailsResponseArray) ToSpannerIODetailsResponseArrayOutput() SpannerIODetailsResponseArrayOutput {
-	return i.ToSpannerIODetailsResponseArrayOutputWithContext(context.Background())
-}
-
-func (i SpannerIODetailsResponseArray) ToSpannerIODetailsResponseArrayOutputWithContext(ctx context.Context) SpannerIODetailsResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpannerIODetailsResponseArrayOutput)
 }
 
 // Metadata for a Spanner connector used by the job.
@@ -7113,66 +5052,6 @@ type StageSourceResponse struct {
 	UserName string `pulumi:"userName"`
 }
 
-// StageSourceResponseInput is an input type that accepts StageSourceResponseArgs and StageSourceResponseOutput values.
-// You can construct a concrete instance of `StageSourceResponseInput` via:
-//
-//          StageSourceResponseArgs{...}
-type StageSourceResponseInput interface {
-	pulumi.Input
-
-	ToStageSourceResponseOutput() StageSourceResponseOutput
-	ToStageSourceResponseOutputWithContext(context.Context) StageSourceResponseOutput
-}
-
-// Description of an input or output of an execution stage.
-type StageSourceResponseArgs struct {
-	// Dataflow service generated name for this source.
-	Name pulumi.StringInput `pulumi:"name"`
-	// User name for the original user transform or collection with which this source is most closely associated.
-	OriginalTransformOrCollection pulumi.StringInput `pulumi:"originalTransformOrCollection"`
-	// Size of the source, if measurable.
-	SizeBytes pulumi.StringInput `pulumi:"sizeBytes"`
-	// Human-readable name for this source; may be user or system generated.
-	UserName pulumi.StringInput `pulumi:"userName"`
-}
-
-func (StageSourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StageSourceResponse)(nil)).Elem()
-}
-
-func (i StageSourceResponseArgs) ToStageSourceResponseOutput() StageSourceResponseOutput {
-	return i.ToStageSourceResponseOutputWithContext(context.Background())
-}
-
-func (i StageSourceResponseArgs) ToStageSourceResponseOutputWithContext(ctx context.Context) StageSourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StageSourceResponseOutput)
-}
-
-// StageSourceResponseArrayInput is an input type that accepts StageSourceResponseArray and StageSourceResponseArrayOutput values.
-// You can construct a concrete instance of `StageSourceResponseArrayInput` via:
-//
-//          StageSourceResponseArray{ StageSourceResponseArgs{...} }
-type StageSourceResponseArrayInput interface {
-	pulumi.Input
-
-	ToStageSourceResponseArrayOutput() StageSourceResponseArrayOutput
-	ToStageSourceResponseArrayOutputWithContext(context.Context) StageSourceResponseArrayOutput
-}
-
-type StageSourceResponseArray []StageSourceResponseInput
-
-func (StageSourceResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StageSourceResponse)(nil)).Elem()
-}
-
-func (i StageSourceResponseArray) ToStageSourceResponseArrayOutput() StageSourceResponseArrayOutput {
-	return i.ToStageSourceResponseArrayOutputWithContext(context.Background())
-}
-
-func (i StageSourceResponseArray) ToStageSourceResponseArrayOutputWithContext(ctx context.Context) StageSourceResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StageSourceResponseArrayOutput)
-}
-
 // Description of an input or output of an execution stage.
 type StageSourceResponseOutput struct{ *pulumi.OutputState }
 
@@ -7238,80 +5117,6 @@ type StatusResponse struct {
 	Message string `pulumi:"message"`
 }
 
-// StatusResponseInput is an input type that accepts StatusResponseArgs and StatusResponseOutput values.
-// You can construct a concrete instance of `StatusResponseInput` via:
-//
-//          StatusResponseArgs{...}
-type StatusResponseInput interface {
-	pulumi.Input
-
-	ToStatusResponseOutput() StatusResponseOutput
-	ToStatusResponseOutputWithContext(context.Context) StatusResponseOutput
-}
-
-// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type StatusResponseArgs struct {
-	// The status code, which should be an enum value of google.rpc.Code.
-	Code pulumi.IntInput `pulumi:"code"`
-	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details pulumi.StringMapArrayInput `pulumi:"details"`
-	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-	Message pulumi.StringInput `pulumi:"message"`
-}
-
-func (StatusResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
-}
-
-func (i StatusResponseArgs) ToStatusResponseOutput() StatusResponseOutput {
-	return i.ToStatusResponseOutputWithContext(context.Background())
-}
-
-func (i StatusResponseArgs) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput)
-}
-
-func (i StatusResponseArgs) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return i.ToStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i StatusResponseArgs) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput).ToStatusResponsePtrOutputWithContext(ctx)
-}
-
-// StatusResponsePtrInput is an input type that accepts StatusResponseArgs, StatusResponsePtr and StatusResponsePtrOutput values.
-// You can construct a concrete instance of `StatusResponsePtrInput` via:
-//
-//          StatusResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type StatusResponsePtrInput interface {
-	pulumi.Input
-
-	ToStatusResponsePtrOutput() StatusResponsePtrOutput
-	ToStatusResponsePtrOutputWithContext(context.Context) StatusResponsePtrOutput
-}
-
-type statusResponsePtrType StatusResponseArgs
-
-func StatusResponsePtr(v *StatusResponseArgs) StatusResponsePtrInput {
-	return (*statusResponsePtrType)(v)
-}
-
-func (*statusResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
-}
-
-func (i *statusResponsePtrType) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return i.ToStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *statusResponsePtrType) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusResponsePtrOutput)
-}
-
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
 type StatusResponseOutput struct{ *pulumi.OutputState }
 
@@ -7327,16 +5132,6 @@ func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return o.ToStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatusResponse) *StatusResponse {
-		return &v
-	}).(StatusResponsePtrOutput)
-}
-
 // The status code, which should be an enum value of google.rpc.Code.
 func (o StatusResponseOutput) Code() pulumi.IntOutput {
 	return o.ApplyT(func(v StatusResponse) int { return v.Code }).(pulumi.IntOutput)
@@ -7350,60 +5145,6 @@ func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 func (o StatusResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
-}
-
-type StatusResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (StatusResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
-}
-
-func (o StatusResponsePtrOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return o
-}
-
-func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o
-}
-
-func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
-	return o.ApplyT(func(v *StatusResponse) StatusResponse {
-		if v != nil {
-			return *v
-		}
-		var ret StatusResponse
-		return ret
-	}).(StatusResponseOutput)
-}
-
-// The status code, which should be an enum value of google.rpc.Code.
-func (o StatusResponsePtrOutput) Code() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *StatusResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Code
-	}).(pulumi.IntPtrOutput)
-}
-
-// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o StatusResponsePtrOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *StatusResponse) []map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Details
-	}).(pulumi.StringMapArrayOutput)
-}
-
-// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-func (o StatusResponsePtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StatusResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Message
-	}).(pulumi.StringPtrOutput)
 }
 
 // Defines a particular step within a Cloud Dataflow job. A job consists of multiple steps, each of which performs some specific operation as part of the overall job. Data is typically passed from one step to another as part of the job. Here's an example of a sequence of steps which together implement a Map-Reduce job: * Read a collection of data from some source, parsing the collection's elements. * Validate the elements. * Apply a user-defined function to map each element to some value and extract an element-specific key value. * Group elements with the same key into a single element with that key, transforming a multiply-keyed collection into a uniquely-keyed collection. * Write the elements out to some data sink. Note that the Cloud Dataflow service may be used to run many different types of jobs, not just Map-Reduce.
@@ -7532,64 +5273,6 @@ type StepResponse struct {
 	Name string `pulumi:"name"`
 	// Named properties associated with the step. Each kind of predefined step has its own required set of properties. Must be provided on Create. Only retrieved with JOB_VIEW_ALL.
 	Properties map[string]string `pulumi:"properties"`
-}
-
-// StepResponseInput is an input type that accepts StepResponseArgs and StepResponseOutput values.
-// You can construct a concrete instance of `StepResponseInput` via:
-//
-//          StepResponseArgs{...}
-type StepResponseInput interface {
-	pulumi.Input
-
-	ToStepResponseOutput() StepResponseOutput
-	ToStepResponseOutputWithContext(context.Context) StepResponseOutput
-}
-
-// Defines a particular step within a Cloud Dataflow job. A job consists of multiple steps, each of which performs some specific operation as part of the overall job. Data is typically passed from one step to another as part of the job. Here's an example of a sequence of steps which together implement a Map-Reduce job: * Read a collection of data from some source, parsing the collection's elements. * Validate the elements. * Apply a user-defined function to map each element to some value and extract an element-specific key value. * Group elements with the same key into a single element with that key, transforming a multiply-keyed collection into a uniquely-keyed collection. * Write the elements out to some data sink. Note that the Cloud Dataflow service may be used to run many different types of jobs, not just Map-Reduce.
-type StepResponseArgs struct {
-	// The kind of step in the Cloud Dataflow job.
-	Kind pulumi.StringInput `pulumi:"kind"`
-	// The name that identifies the step. This must be unique for each step with respect to all other steps in the Cloud Dataflow job.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Named properties associated with the step. Each kind of predefined step has its own required set of properties. Must be provided on Create. Only retrieved with JOB_VIEW_ALL.
-	Properties pulumi.StringMapInput `pulumi:"properties"`
-}
-
-func (StepResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StepResponse)(nil)).Elem()
-}
-
-func (i StepResponseArgs) ToStepResponseOutput() StepResponseOutput {
-	return i.ToStepResponseOutputWithContext(context.Background())
-}
-
-func (i StepResponseArgs) ToStepResponseOutputWithContext(ctx context.Context) StepResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StepResponseOutput)
-}
-
-// StepResponseArrayInput is an input type that accepts StepResponseArray and StepResponseArrayOutput values.
-// You can construct a concrete instance of `StepResponseArrayInput` via:
-//
-//          StepResponseArray{ StepResponseArgs{...} }
-type StepResponseArrayInput interface {
-	pulumi.Input
-
-	ToStepResponseArrayOutput() StepResponseArrayOutput
-	ToStepResponseArrayOutputWithContext(context.Context) StepResponseArrayOutput
-}
-
-type StepResponseArray []StepResponseInput
-
-func (StepResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StepResponse)(nil)).Elem()
-}
-
-func (i StepResponseArray) ToStepResponseArrayOutput() StepResponseArrayOutput {
-	return i.ToStepResponseArrayOutputWithContext(context.Background())
-}
-
-func (i StepResponseArray) ToStepResponseArrayOutputWithContext(ctx context.Context) StepResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StepResponseArrayOutput)
 }
 
 // Defines a particular step within a Cloud Dataflow job. A job consists of multiple steps, each of which performs some specific operation as part of the overall job. Data is typically passed from one step to another as part of the job. Here's an example of a sequence of steps which together implement a Map-Reduce job: * Read a collection of data from some source, parsing the collection's elements. * Validate the elements. * Apply a user-defined function to map each element to some value and extract an element-specific key value. * Group elements with the same key into a single element with that key, transforming a multiply-keyed collection into a uniquely-keyed collection. * Write the elements out to some data sink. Note that the Cloud Dataflow service may be used to run many different types of jobs, not just Map-Reduce.
@@ -8166,71 +5849,6 @@ type TaskRunnerSettingsResponse struct {
 	WorkflowFileName string `pulumi:"workflowFileName"`
 }
 
-// TaskRunnerSettingsResponseInput is an input type that accepts TaskRunnerSettingsResponseArgs and TaskRunnerSettingsResponseOutput values.
-// You can construct a concrete instance of `TaskRunnerSettingsResponseInput` via:
-//
-//          TaskRunnerSettingsResponseArgs{...}
-type TaskRunnerSettingsResponseInput interface {
-	pulumi.Input
-
-	ToTaskRunnerSettingsResponseOutput() TaskRunnerSettingsResponseOutput
-	ToTaskRunnerSettingsResponseOutputWithContext(context.Context) TaskRunnerSettingsResponseOutput
-}
-
-// Taskrunner configuration settings.
-type TaskRunnerSettingsResponseArgs struct {
-	// Whether to also send taskrunner log info to stderr.
-	Alsologtostderr pulumi.BoolInput `pulumi:"alsologtostderr"`
-	// The location on the worker for task-specific subdirectories.
-	BaseTaskDir pulumi.StringInput `pulumi:"baseTaskDir"`
-	// The base URL for the taskrunner to use when accessing Google Cloud APIs. When workers access Google Cloud APIs, they logically do so via relative URLs. If this field is specified, it supplies the base URL to use for resolving these relative URLs. The normative algorithm used is defined by RFC 1808, "Relative Uniform Resource Locators". If not specified, the default value is "http://www.googleapis.com/"
-	BaseUrl pulumi.StringInput `pulumi:"baseUrl"`
-	// The file to store preprocessing commands in.
-	CommandlinesFileName pulumi.StringInput `pulumi:"commandlinesFileName"`
-	// Whether to continue taskrunner if an exception is hit.
-	ContinueOnException pulumi.BoolInput `pulumi:"continueOnException"`
-	// The API version of endpoint, e.g. "v1b3"
-	DataflowApiVersion pulumi.StringInput `pulumi:"dataflowApiVersion"`
-	// The command to launch the worker harness.
-	HarnessCommand pulumi.StringInput `pulumi:"harnessCommand"`
-	// The suggested backend language.
-	LanguageHint pulumi.StringInput `pulumi:"languageHint"`
-	// The directory on the VM to store logs.
-	LogDir pulumi.StringInput `pulumi:"logDir"`
-	// Whether to send taskrunner log info to Google Compute Engine VM serial console.
-	LogToSerialconsole pulumi.BoolInput `pulumi:"logToSerialconsole"`
-	// Indicates where to put logs. If this is not specified, the logs will not be uploaded. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
-	LogUploadLocation pulumi.StringInput `pulumi:"logUploadLocation"`
-	// The OAuth2 scopes to be requested by the taskrunner in order to access the Cloud Dataflow API.
-	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
-	// The settings to pass to the parallel worker harness.
-	ParallelWorkerSettings WorkerSettingsResponseInput `pulumi:"parallelWorkerSettings"`
-	// The streaming worker main class name.
-	StreamingWorkerMainClass pulumi.StringInput `pulumi:"streamingWorkerMainClass"`
-	// The UNIX group ID on the worker VM to use for tasks launched by taskrunner; e.g. "wheel".
-	TaskGroup pulumi.StringInput `pulumi:"taskGroup"`
-	// The UNIX user ID on the worker VM to use for tasks launched by taskrunner; e.g. "root".
-	TaskUser pulumi.StringInput `pulumi:"taskUser"`
-	// The prefix of the resources the taskrunner should use for temporary storage. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
-	TempStoragePrefix pulumi.StringInput `pulumi:"tempStoragePrefix"`
-	// The ID string of the VM.
-	VmId pulumi.StringInput `pulumi:"vmId"`
-	// The file to store the workflow in.
-	WorkflowFileName pulumi.StringInput `pulumi:"workflowFileName"`
-}
-
-func (TaskRunnerSettingsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TaskRunnerSettingsResponse)(nil)).Elem()
-}
-
-func (i TaskRunnerSettingsResponseArgs) ToTaskRunnerSettingsResponseOutput() TaskRunnerSettingsResponseOutput {
-	return i.ToTaskRunnerSettingsResponseOutputWithContext(context.Background())
-}
-
-func (i TaskRunnerSettingsResponseArgs) ToTaskRunnerSettingsResponseOutputWithContext(ctx context.Context) TaskRunnerSettingsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TaskRunnerSettingsResponseOutput)
-}
-
 // Taskrunner configuration settings.
 type TaskRunnerSettingsResponseOutput struct{ *pulumi.OutputState }
 
@@ -8351,80 +5969,6 @@ type TemplateMetadataResponse struct {
 	Parameters []ParameterMetadataResponse `pulumi:"parameters"`
 }
 
-// TemplateMetadataResponseInput is an input type that accepts TemplateMetadataResponseArgs and TemplateMetadataResponseOutput values.
-// You can construct a concrete instance of `TemplateMetadataResponseInput` via:
-//
-//          TemplateMetadataResponseArgs{...}
-type TemplateMetadataResponseInput interface {
-	pulumi.Input
-
-	ToTemplateMetadataResponseOutput() TemplateMetadataResponseOutput
-	ToTemplateMetadataResponseOutputWithContext(context.Context) TemplateMetadataResponseOutput
-}
-
-// Metadata describing a template.
-type TemplateMetadataResponseArgs struct {
-	// Optional. A description of the template.
-	Description pulumi.StringInput `pulumi:"description"`
-	// The name of the template.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The parameters for the template.
-	Parameters ParameterMetadataResponseArrayInput `pulumi:"parameters"`
-}
-
-func (TemplateMetadataResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TemplateMetadataResponse)(nil)).Elem()
-}
-
-func (i TemplateMetadataResponseArgs) ToTemplateMetadataResponseOutput() TemplateMetadataResponseOutput {
-	return i.ToTemplateMetadataResponseOutputWithContext(context.Background())
-}
-
-func (i TemplateMetadataResponseArgs) ToTemplateMetadataResponseOutputWithContext(ctx context.Context) TemplateMetadataResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TemplateMetadataResponseOutput)
-}
-
-func (i TemplateMetadataResponseArgs) ToTemplateMetadataResponsePtrOutput() TemplateMetadataResponsePtrOutput {
-	return i.ToTemplateMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i TemplateMetadataResponseArgs) ToTemplateMetadataResponsePtrOutputWithContext(ctx context.Context) TemplateMetadataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TemplateMetadataResponseOutput).ToTemplateMetadataResponsePtrOutputWithContext(ctx)
-}
-
-// TemplateMetadataResponsePtrInput is an input type that accepts TemplateMetadataResponseArgs, TemplateMetadataResponsePtr and TemplateMetadataResponsePtrOutput values.
-// You can construct a concrete instance of `TemplateMetadataResponsePtrInput` via:
-//
-//          TemplateMetadataResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type TemplateMetadataResponsePtrInput interface {
-	pulumi.Input
-
-	ToTemplateMetadataResponsePtrOutput() TemplateMetadataResponsePtrOutput
-	ToTemplateMetadataResponsePtrOutputWithContext(context.Context) TemplateMetadataResponsePtrOutput
-}
-
-type templateMetadataResponsePtrType TemplateMetadataResponseArgs
-
-func TemplateMetadataResponsePtr(v *TemplateMetadataResponseArgs) TemplateMetadataResponsePtrInput {
-	return (*templateMetadataResponsePtrType)(v)
-}
-
-func (*templateMetadataResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TemplateMetadataResponse)(nil)).Elem()
-}
-
-func (i *templateMetadataResponsePtrType) ToTemplateMetadataResponsePtrOutput() TemplateMetadataResponsePtrOutput {
-	return i.ToTemplateMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *templateMetadataResponsePtrType) ToTemplateMetadataResponsePtrOutputWithContext(ctx context.Context) TemplateMetadataResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TemplateMetadataResponsePtrOutput)
-}
-
 // Metadata describing a template.
 type TemplateMetadataResponseOutput struct{ *pulumi.OutputState }
 
@@ -8440,16 +5984,6 @@ func (o TemplateMetadataResponseOutput) ToTemplateMetadataResponseOutputWithCont
 	return o
 }
 
-func (o TemplateMetadataResponseOutput) ToTemplateMetadataResponsePtrOutput() TemplateMetadataResponsePtrOutput {
-	return o.ToTemplateMetadataResponsePtrOutputWithContext(context.Background())
-}
-
-func (o TemplateMetadataResponseOutput) ToTemplateMetadataResponsePtrOutputWithContext(ctx context.Context) TemplateMetadataResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TemplateMetadataResponse) *TemplateMetadataResponse {
-		return &v
-	}).(TemplateMetadataResponsePtrOutput)
-}
-
 // Optional. A description of the template.
 func (o TemplateMetadataResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v TemplateMetadataResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -8463,60 +5997,6 @@ func (o TemplateMetadataResponseOutput) Name() pulumi.StringOutput {
 // The parameters for the template.
 func (o TemplateMetadataResponseOutput) Parameters() ParameterMetadataResponseArrayOutput {
 	return o.ApplyT(func(v TemplateMetadataResponse) []ParameterMetadataResponse { return v.Parameters }).(ParameterMetadataResponseArrayOutput)
-}
-
-type TemplateMetadataResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (TemplateMetadataResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TemplateMetadataResponse)(nil)).Elem()
-}
-
-func (o TemplateMetadataResponsePtrOutput) ToTemplateMetadataResponsePtrOutput() TemplateMetadataResponsePtrOutput {
-	return o
-}
-
-func (o TemplateMetadataResponsePtrOutput) ToTemplateMetadataResponsePtrOutputWithContext(ctx context.Context) TemplateMetadataResponsePtrOutput {
-	return o
-}
-
-func (o TemplateMetadataResponsePtrOutput) Elem() TemplateMetadataResponseOutput {
-	return o.ApplyT(func(v *TemplateMetadataResponse) TemplateMetadataResponse {
-		if v != nil {
-			return *v
-		}
-		var ret TemplateMetadataResponse
-		return ret
-	}).(TemplateMetadataResponseOutput)
-}
-
-// Optional. A description of the template.
-func (o TemplateMetadataResponsePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TemplateMetadataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the template.
-func (o TemplateMetadataResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TemplateMetadataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The parameters for the template.
-func (o TemplateMetadataResponsePtrOutput) Parameters() ParameterMetadataResponseArrayOutput {
-	return o.ApplyT(func(v *TemplateMetadataResponse) []ParameterMetadataResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Parameters
-	}).(ParameterMetadataResponseArrayOutput)
 }
 
 // Description of the type, names/ids, and input/outputs for a transform.
@@ -8676,68 +6156,6 @@ type TransformSummaryResponse struct {
 	Name string `pulumi:"name"`
 	// User names for all collection outputs to this transform.
 	OutputCollectionName []string `pulumi:"outputCollectionName"`
-}
-
-// TransformSummaryResponseInput is an input type that accepts TransformSummaryResponseArgs and TransformSummaryResponseOutput values.
-// You can construct a concrete instance of `TransformSummaryResponseInput` via:
-//
-//          TransformSummaryResponseArgs{...}
-type TransformSummaryResponseInput interface {
-	pulumi.Input
-
-	ToTransformSummaryResponseOutput() TransformSummaryResponseOutput
-	ToTransformSummaryResponseOutputWithContext(context.Context) TransformSummaryResponseOutput
-}
-
-// Description of the type, names/ids, and input/outputs for a transform.
-type TransformSummaryResponseArgs struct {
-	// Transform-specific display data.
-	DisplayData DisplayDataResponseArrayInput `pulumi:"displayData"`
-	// User names for all collection inputs to this transform.
-	InputCollectionName pulumi.StringArrayInput `pulumi:"inputCollectionName"`
-	// Type of transform.
-	Kind pulumi.StringInput `pulumi:"kind"`
-	// User provided name for this transform instance.
-	Name pulumi.StringInput `pulumi:"name"`
-	// User names for all collection outputs to this transform.
-	OutputCollectionName pulumi.StringArrayInput `pulumi:"outputCollectionName"`
-}
-
-func (TransformSummaryResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransformSummaryResponse)(nil)).Elem()
-}
-
-func (i TransformSummaryResponseArgs) ToTransformSummaryResponseOutput() TransformSummaryResponseOutput {
-	return i.ToTransformSummaryResponseOutputWithContext(context.Background())
-}
-
-func (i TransformSummaryResponseArgs) ToTransformSummaryResponseOutputWithContext(ctx context.Context) TransformSummaryResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransformSummaryResponseOutput)
-}
-
-// TransformSummaryResponseArrayInput is an input type that accepts TransformSummaryResponseArray and TransformSummaryResponseArrayOutput values.
-// You can construct a concrete instance of `TransformSummaryResponseArrayInput` via:
-//
-//          TransformSummaryResponseArray{ TransformSummaryResponseArgs{...} }
-type TransformSummaryResponseArrayInput interface {
-	pulumi.Input
-
-	ToTransformSummaryResponseArrayOutput() TransformSummaryResponseArrayOutput
-	ToTransformSummaryResponseArrayOutputWithContext(context.Context) TransformSummaryResponseArrayOutput
-}
-
-type TransformSummaryResponseArray []TransformSummaryResponseInput
-
-func (TransformSummaryResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TransformSummaryResponse)(nil)).Elem()
-}
-
-func (i TransformSummaryResponseArray) ToTransformSummaryResponseArrayOutput() TransformSummaryResponseArrayOutput {
-	return i.ToTransformSummaryResponseArrayOutputWithContext(context.Background())
-}
-
-func (i TransformSummaryResponseArray) ToTransformSummaryResponseArrayOutputWithContext(ctx context.Context) TransformSummaryResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransformSummaryResponseArrayOutput)
 }
 
 // Description of the type, names/ids, and input/outputs for a transform.
@@ -9124,100 +6542,6 @@ type WorkerPoolResponse struct {
 	TeardownPolicy string `pulumi:"teardownPolicy"`
 	// Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a reasonable default.
 	Zone string `pulumi:"zone"`
-}
-
-// WorkerPoolResponseInput is an input type that accepts WorkerPoolResponseArgs and WorkerPoolResponseOutput values.
-// You can construct a concrete instance of `WorkerPoolResponseInput` via:
-//
-//          WorkerPoolResponseArgs{...}
-type WorkerPoolResponseInput interface {
-	pulumi.Input
-
-	ToWorkerPoolResponseOutput() WorkerPoolResponseOutput
-	ToWorkerPoolResponseOutputWithContext(context.Context) WorkerPoolResponseOutput
-}
-
-// Describes one particular pool of Cloud Dataflow workers to be instantiated by the Cloud Dataflow service in order to perform the computations required by a job. Note that a workflow job may use multiple pools, in order to match the various computational requirements of the various stages of the job.
-type WorkerPoolResponseArgs struct {
-	// Settings for autoscaling of this WorkerPool.
-	AutoscalingSettings AutoscalingSettingsResponseInput `pulumi:"autoscalingSettings"`
-	// Data disks that are used by a VM in this workflow.
-	DataDisks DiskResponseArrayInput `pulumi:"dataDisks"`
-	// The default package set to install. This allows the service to select a default set of packages which are useful to worker harnesses written in a particular language.
-	DefaultPackageSet pulumi.StringInput `pulumi:"defaultPackageSet"`
-	// Size of root disk for VMs, in GB. If zero or unspecified, the service will attempt to choose a reasonable default.
-	DiskSizeGb pulumi.IntInput `pulumi:"diskSizeGb"`
-	// Fully qualified source image for disks.
-	DiskSourceImage pulumi.StringInput `pulumi:"diskSourceImage"`
-	// Type of root disk for VMs. If empty or unspecified, the service will attempt to choose a reasonable default.
-	DiskType pulumi.StringInput `pulumi:"diskType"`
-	// Configuration for VM IPs.
-	IpConfiguration pulumi.StringInput `pulumi:"ipConfiguration"`
-	// The kind of the worker pool; currently only `harness` and `shuffle` are supported.
-	Kind pulumi.StringInput `pulumi:"kind"`
-	// Machine type (e.g. "n1-standard-1"). If empty or unspecified, the service will attempt to choose a reasonable default.
-	MachineType pulumi.StringInput `pulumi:"machineType"`
-	// Metadata to set on the Google Compute Engine VMs.
-	Metadata pulumi.StringMapInput `pulumi:"metadata"`
-	// Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
-	Network pulumi.StringInput `pulumi:"network"`
-	// The number of threads per worker harness. If empty or unspecified, the service will choose a number of threads (according to the number of cores on the selected machine type for batch, or 1 by convention for streaming).
-	NumThreadsPerWorker pulumi.IntInput `pulumi:"numThreadsPerWorker"`
-	// Number of Google Compute Engine workers in this pool needed to execute the job. If zero or unspecified, the service will attempt to choose a reasonable default.
-	NumWorkers pulumi.IntInput `pulumi:"numWorkers"`
-	// The action to take on host maintenance, as defined by the Google Compute Engine API.
-	OnHostMaintenance pulumi.StringInput `pulumi:"onHostMaintenance"`
-	// Packages to be installed on workers.
-	Packages PackageResponseArrayInput `pulumi:"packages"`
-	// Extra arguments for this worker pool.
-	PoolArgs pulumi.StringMapInput `pulumi:"poolArgs"`
-	// Set of SDK harness containers needed to execute this pipeline. This will only be set in the Fn API path. For non-cross-language pipelines this should have only one entry. Cross-language pipelines will have two or more entries.
-	SdkHarnessContainerImages SdkHarnessContainerImageResponseArrayInput `pulumi:"sdkHarnessContainerImages"`
-	// Subnetwork to which VMs will be assigned, if desired. Expected to be of the form "regions/REGION/subnetworks/SUBNETWORK".
-	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
-	// Settings passed through to Google Compute Engine workers when using the standard Dataflow task runner. Users should ignore this field.
-	TaskrunnerSettings TaskRunnerSettingsResponseInput `pulumi:"taskrunnerSettings"`
-	// Sets the policy for determining when to turndown worker pool. Allowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always torn down regardless of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the workers are not torn down by the service, they will continue to run and use Google Compute Engine VM resources in the user's project until they are explicitly terminated by the user. Because of this, Google recommends using the `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs. If unknown or unspecified, the service will attempt to choose a reasonable default.
-	TeardownPolicy pulumi.StringInput `pulumi:"teardownPolicy"`
-	// Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a reasonable default.
-	Zone pulumi.StringInput `pulumi:"zone"`
-}
-
-func (WorkerPoolResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkerPoolResponse)(nil)).Elem()
-}
-
-func (i WorkerPoolResponseArgs) ToWorkerPoolResponseOutput() WorkerPoolResponseOutput {
-	return i.ToWorkerPoolResponseOutputWithContext(context.Background())
-}
-
-func (i WorkerPoolResponseArgs) ToWorkerPoolResponseOutputWithContext(ctx context.Context) WorkerPoolResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolResponseOutput)
-}
-
-// WorkerPoolResponseArrayInput is an input type that accepts WorkerPoolResponseArray and WorkerPoolResponseArrayOutput values.
-// You can construct a concrete instance of `WorkerPoolResponseArrayInput` via:
-//
-//          WorkerPoolResponseArray{ WorkerPoolResponseArgs{...} }
-type WorkerPoolResponseArrayInput interface {
-	pulumi.Input
-
-	ToWorkerPoolResponseArrayOutput() WorkerPoolResponseArrayOutput
-	ToWorkerPoolResponseArrayOutputWithContext(context.Context) WorkerPoolResponseArrayOutput
-}
-
-type WorkerPoolResponseArray []WorkerPoolResponseInput
-
-func (WorkerPoolResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]WorkerPoolResponse)(nil)).Elem()
-}
-
-func (i WorkerPoolResponseArray) ToWorkerPoolResponseArrayOutput() WorkerPoolResponseArrayOutput {
-	return i.ToWorkerPoolResponseArrayOutputWithContext(context.Background())
-}
-
-func (i WorkerPoolResponseArray) ToWorkerPoolResponseArrayOutputWithContext(ctx context.Context) WorkerPoolResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolResponseArrayOutput)
 }
 
 // Describes one particular pool of Cloud Dataflow workers to be instantiated by the Cloud Dataflow service in order to perform the computations required by a job. Note that a workflow job may use multiple pools, in order to match the various computational requirements of the various stages of the job.
@@ -9611,45 +6935,6 @@ type WorkerSettingsResponse struct {
 	WorkerId string `pulumi:"workerId"`
 }
 
-// WorkerSettingsResponseInput is an input type that accepts WorkerSettingsResponseArgs and WorkerSettingsResponseOutput values.
-// You can construct a concrete instance of `WorkerSettingsResponseInput` via:
-//
-//          WorkerSettingsResponseArgs{...}
-type WorkerSettingsResponseInput interface {
-	pulumi.Input
-
-	ToWorkerSettingsResponseOutput() WorkerSettingsResponseOutput
-	ToWorkerSettingsResponseOutputWithContext(context.Context) WorkerSettingsResponseOutput
-}
-
-// Provides data to pass through to the worker harness.
-type WorkerSettingsResponseArgs struct {
-	// The base URL for accessing Google Cloud APIs. When workers access Google Cloud APIs, they logically do so via relative URLs. If this field is specified, it supplies the base URL to use for resolving these relative URLs. The normative algorithm used is defined by RFC 1808, "Relative Uniform Resource Locators". If not specified, the default value is "http://www.googleapis.com/"
-	BaseUrl pulumi.StringInput `pulumi:"baseUrl"`
-	// Whether to send work progress updates to the service.
-	ReportingEnabled pulumi.BoolInput `pulumi:"reportingEnabled"`
-	// The Cloud Dataflow service path relative to the root URL, for example, "dataflow/v1b3/projects".
-	ServicePath pulumi.StringInput `pulumi:"servicePath"`
-	// The Shuffle service path relative to the root URL, for example, "shuffle/v1beta1".
-	ShuffleServicePath pulumi.StringInput `pulumi:"shuffleServicePath"`
-	// The prefix of the resources the system should use for temporary storage. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
-	TempStoragePrefix pulumi.StringInput `pulumi:"tempStoragePrefix"`
-	// The ID of the worker running this pipeline.
-	WorkerId pulumi.StringInput `pulumi:"workerId"`
-}
-
-func (WorkerSettingsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkerSettingsResponse)(nil)).Elem()
-}
-
-func (i WorkerSettingsResponseArgs) ToWorkerSettingsResponseOutput() WorkerSettingsResponseOutput {
-	return i.ToWorkerSettingsResponseOutputWithContext(context.Background())
-}
-
-func (i WorkerSettingsResponseArgs) ToWorkerSettingsResponseOutputWithContext(ctx context.Context) WorkerSettingsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerSettingsResponseOutput)
-}
-
 // Provides data to pass through to the worker harness.
 type WorkerSettingsResponseOutput struct{ *pulumi.OutputState }
 
@@ -9698,117 +6983,58 @@ func (o WorkerSettingsResponseOutput) WorkerId() pulumi.StringOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingSettingsInput)(nil)).Elem(), AutoscalingSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingSettingsPtrInput)(nil)).Elem(), AutoscalingSettingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingSettingsResponseInput)(nil)).Elem(), AutoscalingSettingsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryIODetailsInput)(nil)).Elem(), BigQueryIODetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryIODetailsArrayInput)(nil)).Elem(), BigQueryIODetailsArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryIODetailsResponseInput)(nil)).Elem(), BigQueryIODetailsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryIODetailsResponseArrayInput)(nil)).Elem(), BigQueryIODetailsResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BigTableIODetailsInput)(nil)).Elem(), BigTableIODetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BigTableIODetailsArrayInput)(nil)).Elem(), BigTableIODetailsArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BigTableIODetailsResponseInput)(nil)).Elem(), BigTableIODetailsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BigTableIODetailsResponseArrayInput)(nil)).Elem(), BigTableIODetailsResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentSourceInput)(nil)).Elem(), ComponentSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentSourceArrayInput)(nil)).Elem(), ComponentSourceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComponentSourceResponseInput)(nil)).Elem(), ComponentSourceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComponentSourceResponseArrayInput)(nil)).Elem(), ComponentSourceResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentTransformInput)(nil)).Elem(), ComponentTransformArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComponentTransformArrayInput)(nil)).Elem(), ComponentTransformArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComponentTransformResponseInput)(nil)).Elem(), ComponentTransformResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComponentTransformResponseArrayInput)(nil)).Elem(), ComponentTransformResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatastoreIODetailsInput)(nil)).Elem(), DatastoreIODetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatastoreIODetailsArrayInput)(nil)).Elem(), DatastoreIODetailsArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatastoreIODetailsResponseInput)(nil)).Elem(), DatastoreIODetailsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatastoreIODetailsResponseArrayInput)(nil)).Elem(), DatastoreIODetailsResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DebugOptionsInput)(nil)).Elem(), DebugOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DebugOptionsPtrInput)(nil)).Elem(), DebugOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DebugOptionsResponseInput)(nil)).Elem(), DebugOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DebugOptionsResponsePtrInput)(nil)).Elem(), DebugOptionsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskInput)(nil)).Elem(), DiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskArrayInput)(nil)).Elem(), DiskArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DiskResponseInput)(nil)).Elem(), DiskResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DiskResponseArrayInput)(nil)).Elem(), DiskResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DisplayDataInput)(nil)).Elem(), DisplayDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DisplayDataArrayInput)(nil)).Elem(), DisplayDataArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DisplayDataResponseInput)(nil)).Elem(), DisplayDataResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DisplayDataResponseArrayInput)(nil)).Elem(), DisplayDataResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentInput)(nil)).Elem(), EnvironmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentPtrInput)(nil)).Elem(), EnvironmentArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentResponseInput)(nil)).Elem(), EnvironmentResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentResponsePtrInput)(nil)).Elem(), EnvironmentResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionStageStateInput)(nil)).Elem(), ExecutionStageStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionStageStateArrayInput)(nil)).Elem(), ExecutionStageStateArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionStageStateResponseInput)(nil)).Elem(), ExecutionStageStateResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionStageStateResponseArrayInput)(nil)).Elem(), ExecutionStageStateResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionStageSummaryInput)(nil)).Elem(), ExecutionStageSummaryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionStageSummaryArrayInput)(nil)).Elem(), ExecutionStageSummaryArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionStageSummaryResponseInput)(nil)).Elem(), ExecutionStageSummaryResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionStageSummaryResponseArrayInput)(nil)).Elem(), ExecutionStageSummaryResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileIODetailsInput)(nil)).Elem(), FileIODetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileIODetailsArrayInput)(nil)).Elem(), FileIODetailsArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FileIODetailsResponseInput)(nil)).Elem(), FileIODetailsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FileIODetailsResponseArrayInput)(nil)).Elem(), FileIODetailsResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobMetadataInput)(nil)).Elem(), JobMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobMetadataPtrInput)(nil)).Elem(), JobMetadataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobMetadataResponseInput)(nil)).Elem(), JobMetadataResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobMetadataResponsePtrInput)(nil)).Elem(), JobMetadataResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageInput)(nil)).Elem(), PackageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageArrayInput)(nil)).Elem(), PackageArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PackageResponseInput)(nil)).Elem(), PackageResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PackageResponseArrayInput)(nil)).Elem(), PackageResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ParameterMetadataResponseInput)(nil)).Elem(), ParameterMetadataResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ParameterMetadataResponseArrayInput)(nil)).Elem(), ParameterMetadataResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDescriptionInput)(nil)).Elem(), PipelineDescriptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDescriptionPtrInput)(nil)).Elem(), PipelineDescriptionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDescriptionResponseInput)(nil)).Elem(), PipelineDescriptionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDescriptionResponsePtrInput)(nil)).Elem(), PipelineDescriptionResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PubSubIODetailsInput)(nil)).Elem(), PubSubIODetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PubSubIODetailsArrayInput)(nil)).Elem(), PubSubIODetailsArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PubSubIODetailsResponseInput)(nil)).Elem(), PubSubIODetailsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PubSubIODetailsResponseArrayInput)(nil)).Elem(), PubSubIODetailsResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeEnvironmentInput)(nil)).Elem(), RuntimeEnvironmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeEnvironmentPtrInput)(nil)).Elem(), RuntimeEnvironmentArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeMetadataResponseInput)(nil)).Elem(), RuntimeMetadataResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeMetadataResponsePtrInput)(nil)).Elem(), RuntimeMetadataResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SDKInfoResponseInput)(nil)).Elem(), SDKInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SDKInfoResponsePtrInput)(nil)).Elem(), SDKInfoResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SdkHarnessContainerImageInput)(nil)).Elem(), SdkHarnessContainerImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SdkHarnessContainerImageArrayInput)(nil)).Elem(), SdkHarnessContainerImageArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SdkHarnessContainerImageResponseInput)(nil)).Elem(), SdkHarnessContainerImageResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SdkHarnessContainerImageResponseArrayInput)(nil)).Elem(), SdkHarnessContainerImageResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SdkVersionInput)(nil)).Elem(), SdkVersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SdkVersionPtrInput)(nil)).Elem(), SdkVersionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SdkVersionResponseInput)(nil)).Elem(), SdkVersionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SdkVersionResponsePtrInput)(nil)).Elem(), SdkVersionResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpannerIODetailsInput)(nil)).Elem(), SpannerIODetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpannerIODetailsArrayInput)(nil)).Elem(), SpannerIODetailsArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SpannerIODetailsResponseInput)(nil)).Elem(), SpannerIODetailsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SpannerIODetailsResponseArrayInput)(nil)).Elem(), SpannerIODetailsResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StageSourceInput)(nil)).Elem(), StageSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StageSourceArrayInput)(nil)).Elem(), StageSourceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StageSourceResponseInput)(nil)).Elem(), StageSourceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StageSourceResponseArrayInput)(nil)).Elem(), StageSourceResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponseInput)(nil)).Elem(), StatusResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponsePtrInput)(nil)).Elem(), StatusResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StepInput)(nil)).Elem(), StepArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StepArrayInput)(nil)).Elem(), StepArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StepResponseInput)(nil)).Elem(), StepResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StepResponseArrayInput)(nil)).Elem(), StepResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TaskRunnerSettingsInput)(nil)).Elem(), TaskRunnerSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TaskRunnerSettingsPtrInput)(nil)).Elem(), TaskRunnerSettingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TaskRunnerSettingsResponseInput)(nil)).Elem(), TaskRunnerSettingsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TemplateMetadataResponseInput)(nil)).Elem(), TemplateMetadataResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TemplateMetadataResponsePtrInput)(nil)).Elem(), TemplateMetadataResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransformSummaryInput)(nil)).Elem(), TransformSummaryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransformSummaryArrayInput)(nil)).Elem(), TransformSummaryArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TransformSummaryResponseInput)(nil)).Elem(), TransformSummaryResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TransformSummaryResponseArrayInput)(nil)).Elem(), TransformSummaryResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolInput)(nil)).Elem(), WorkerPoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolArrayInput)(nil)).Elem(), WorkerPoolArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolResponseInput)(nil)).Elem(), WorkerPoolResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolResponseArrayInput)(nil)).Elem(), WorkerPoolResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerSettingsInput)(nil)).Elem(), WorkerSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerSettingsPtrInput)(nil)).Elem(), WorkerSettingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkerSettingsResponseInput)(nil)).Elem(), WorkerSettingsResponseArgs{})
 	pulumi.RegisterOutputType(AutoscalingSettingsOutput{})
 	pulumi.RegisterOutputType(AutoscalingSettingsPtrOutput{})
 	pulumi.RegisterOutputType(AutoscalingSettingsResponseOutput{})
@@ -9835,7 +7061,6 @@ func init() {
 	pulumi.RegisterOutputType(DebugOptionsOutput{})
 	pulumi.RegisterOutputType(DebugOptionsPtrOutput{})
 	pulumi.RegisterOutputType(DebugOptionsResponseOutput{})
-	pulumi.RegisterOutputType(DebugOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(DiskOutput{})
 	pulumi.RegisterOutputType(DiskArrayOutput{})
 	pulumi.RegisterOutputType(DiskResponseOutput{})
@@ -9847,7 +7072,6 @@ func init() {
 	pulumi.RegisterOutputType(EnvironmentOutput{})
 	pulumi.RegisterOutputType(EnvironmentPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentResponseOutput{})
-	pulumi.RegisterOutputType(EnvironmentResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExecutionStageStateOutput{})
 	pulumi.RegisterOutputType(ExecutionStageStateArrayOutput{})
 	pulumi.RegisterOutputType(ExecutionStageStateResponseOutput{})
@@ -9863,7 +7087,6 @@ func init() {
 	pulumi.RegisterOutputType(JobMetadataOutput{})
 	pulumi.RegisterOutputType(JobMetadataPtrOutput{})
 	pulumi.RegisterOutputType(JobMetadataResponseOutput{})
-	pulumi.RegisterOutputType(JobMetadataResponsePtrOutput{})
 	pulumi.RegisterOutputType(PackageOutput{})
 	pulumi.RegisterOutputType(PackageArrayOutput{})
 	pulumi.RegisterOutputType(PackageResponseOutput{})
@@ -9873,7 +7096,6 @@ func init() {
 	pulumi.RegisterOutputType(PipelineDescriptionOutput{})
 	pulumi.RegisterOutputType(PipelineDescriptionPtrOutput{})
 	pulumi.RegisterOutputType(PipelineDescriptionResponseOutput{})
-	pulumi.RegisterOutputType(PipelineDescriptionResponsePtrOutput{})
 	pulumi.RegisterOutputType(PubSubIODetailsOutput{})
 	pulumi.RegisterOutputType(PubSubIODetailsArrayOutput{})
 	pulumi.RegisterOutputType(PubSubIODetailsResponseOutput{})
@@ -9881,9 +7103,7 @@ func init() {
 	pulumi.RegisterOutputType(RuntimeEnvironmentOutput{})
 	pulumi.RegisterOutputType(RuntimeEnvironmentPtrOutput{})
 	pulumi.RegisterOutputType(RuntimeMetadataResponseOutput{})
-	pulumi.RegisterOutputType(RuntimeMetadataResponsePtrOutput{})
 	pulumi.RegisterOutputType(SDKInfoResponseOutput{})
-	pulumi.RegisterOutputType(SDKInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(SdkHarnessContainerImageOutput{})
 	pulumi.RegisterOutputType(SdkHarnessContainerImageArrayOutput{})
 	pulumi.RegisterOutputType(SdkHarnessContainerImageResponseOutput{})
@@ -9891,7 +7111,6 @@ func init() {
 	pulumi.RegisterOutputType(SdkVersionOutput{})
 	pulumi.RegisterOutputType(SdkVersionPtrOutput{})
 	pulumi.RegisterOutputType(SdkVersionResponseOutput{})
-	pulumi.RegisterOutputType(SdkVersionResponsePtrOutput{})
 	pulumi.RegisterOutputType(SpannerIODetailsOutput{})
 	pulumi.RegisterOutputType(SpannerIODetailsArrayOutput{})
 	pulumi.RegisterOutputType(SpannerIODetailsResponseOutput{})
@@ -9901,7 +7120,6 @@ func init() {
 	pulumi.RegisterOutputType(StageSourceResponseOutput{})
 	pulumi.RegisterOutputType(StageSourceResponseArrayOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
-	pulumi.RegisterOutputType(StatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(StepOutput{})
 	pulumi.RegisterOutputType(StepArrayOutput{})
 	pulumi.RegisterOutputType(StepResponseOutput{})
@@ -9910,7 +7128,6 @@ func init() {
 	pulumi.RegisterOutputType(TaskRunnerSettingsPtrOutput{})
 	pulumi.RegisterOutputType(TaskRunnerSettingsResponseOutput{})
 	pulumi.RegisterOutputType(TemplateMetadataResponseOutput{})
-	pulumi.RegisterOutputType(TemplateMetadataResponsePtrOutput{})
 	pulumi.RegisterOutputType(TransformSummaryOutput{})
 	pulumi.RegisterOutputType(TransformSummaryArrayOutput{})
 	pulumi.RegisterOutputType(TransformSummaryResponseOutput{})

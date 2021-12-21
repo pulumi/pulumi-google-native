@@ -179,70 +179,6 @@ type GooglePrivacyDlpV2ActionResponse struct {
 	SaveFindings GooglePrivacyDlpV2SaveFindingsResponse `pulumi:"saveFindings"`
 }
 
-// GooglePrivacyDlpV2ActionResponseInput is an input type that accepts GooglePrivacyDlpV2ActionResponseArgs and GooglePrivacyDlpV2ActionResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2ActionResponseInput` via:
-//
-//          GooglePrivacyDlpV2ActionResponseArgs{...}
-type GooglePrivacyDlpV2ActionResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2ActionResponseOutput() GooglePrivacyDlpV2ActionResponseOutput
-	ToGooglePrivacyDlpV2ActionResponseOutputWithContext(context.Context) GooglePrivacyDlpV2ActionResponseOutput
-}
-
-// A task to execute on the completion of a job. See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
-type GooglePrivacyDlpV2ActionResponseArgs struct {
-	// Enable email notification for project owners and editors on job's completion/failure.
-	JobNotificationEmails GooglePrivacyDlpV2JobNotificationEmailsResponseInput `pulumi:"jobNotificationEmails"`
-	// Publish a notification to a pubsub topic.
-	PubSub GooglePrivacyDlpV2PublishToPubSubResponseInput `pulumi:"pubSub"`
-	// Publish findings to Cloud Datahub.
-	PublishFindingsToCloudDataCatalog GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseInput `pulumi:"publishFindingsToCloudDataCatalog"`
-	// Publish summary to Cloud Security Command Center (Alpha).
-	PublishSummaryToCscc GooglePrivacyDlpV2PublishSummaryToCsccResponseInput `pulumi:"publishSummaryToCscc"`
-	// Enable Stackdriver metric dlp.googleapis.com/finding_count.
-	PublishToStackdriver GooglePrivacyDlpV2PublishToStackdriverResponseInput `pulumi:"publishToStackdriver"`
-	// Save resulting findings in a provided location.
-	SaveFindings GooglePrivacyDlpV2SaveFindingsResponseInput `pulumi:"saveFindings"`
-}
-
-func (GooglePrivacyDlpV2ActionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2ActionResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2ActionResponseArgs) ToGooglePrivacyDlpV2ActionResponseOutput() GooglePrivacyDlpV2ActionResponseOutput {
-	return i.ToGooglePrivacyDlpV2ActionResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2ActionResponseArgs) ToGooglePrivacyDlpV2ActionResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ActionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ActionResponseOutput)
-}
-
-// GooglePrivacyDlpV2ActionResponseArrayInput is an input type that accepts GooglePrivacyDlpV2ActionResponseArray and GooglePrivacyDlpV2ActionResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2ActionResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2ActionResponseArray{ GooglePrivacyDlpV2ActionResponseArgs{...} }
-type GooglePrivacyDlpV2ActionResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2ActionResponseArrayOutput() GooglePrivacyDlpV2ActionResponseArrayOutput
-	ToGooglePrivacyDlpV2ActionResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2ActionResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2ActionResponseArray []GooglePrivacyDlpV2ActionResponseInput
-
-func (GooglePrivacyDlpV2ActionResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2ActionResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2ActionResponseArray) ToGooglePrivacyDlpV2ActionResponseArrayOutput() GooglePrivacyDlpV2ActionResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2ActionResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2ActionResponseArray) ToGooglePrivacyDlpV2ActionResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ActionResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ActionResponseArrayOutput)
-}
-
 // A task to execute on the completion of a job. See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
 type GooglePrivacyDlpV2ActionResponseOutput struct{ *pulumi.OutputState }
 
@@ -338,92 +274,6 @@ type GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse struct {
 	RequestedSourceTable GooglePrivacyDlpV2BigQueryTableResponse `pulumi:"requestedSourceTable"`
 }
 
-// GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseInput is an input type that accepts GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseArgs and GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseInput` via:
-//
-//          GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseArgs{...}
-type GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutput() GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutput
-	ToGooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutputWithContext(context.Context) GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutput
-}
-
-// Result of a risk analysis operation request.
-type GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseArgs struct {
-	// Categorical stats result
-	CategoricalStatsResult GooglePrivacyDlpV2CategoricalStatsResultResponseInput `pulumi:"categoricalStatsResult"`
-	// Delta-presence result
-	DeltaPresenceEstimationResult GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseInput `pulumi:"deltaPresenceEstimationResult"`
-	// K-anonymity result
-	KAnonymityResult GooglePrivacyDlpV2KAnonymityResultResponseInput `pulumi:"kAnonymityResult"`
-	// K-map result
-	KMapEstimationResult GooglePrivacyDlpV2KMapEstimationResultResponseInput `pulumi:"kMapEstimationResult"`
-	// L-divesity result
-	LDiversityResult GooglePrivacyDlpV2LDiversityResultResponseInput `pulumi:"lDiversityResult"`
-	// Numerical stats result
-	NumericalStatsResult GooglePrivacyDlpV2NumericalStatsResultResponseInput `pulumi:"numericalStatsResult"`
-	// The configuration used for this job.
-	RequestedOptions GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseInput `pulumi:"requestedOptions"`
-	// Privacy metric to compute.
-	RequestedPrivacyMetric GooglePrivacyDlpV2PrivacyMetricResponseInput `pulumi:"requestedPrivacyMetric"`
-	// Input dataset to compute metrics over.
-	RequestedSourceTable GooglePrivacyDlpV2BigQueryTableResponseInput `pulumi:"requestedSourceTable"`
-}
-
-func (GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseArgs) ToGooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutput() GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutput {
-	return i.ToGooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseArgs) ToGooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseArgs) ToGooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput() GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseArgs) ToGooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutput).ToGooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrInput is an input type that accepts GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseArgs, GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtr and GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput() GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput
-	ToGooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput
-}
-
-type googlePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrType GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseArgs
-
-func GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtr(v *GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseArgs) GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrInput {
-	return (*googlePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrType) ToGooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput() GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrType) ToGooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput)
-}
-
 // Result of a risk analysis operation request.
 type GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutput struct{ *pulumi.OutputState }
 
@@ -437,16 +287,6 @@ func (o GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutput) ToGooglePr
 
 func (o GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutput) ToGooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutput) ToGooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput() GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutput) ToGooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse) *GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse {
-		return &v
-	}).(GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput)
 }
 
 // Categorical stats result
@@ -510,120 +350,6 @@ func (o GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutput) RequestedS
 	return o.ApplyT(func(v GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse) GooglePrivacyDlpV2BigQueryTableResponse {
 		return v.RequestedSourceTable
 	}).(GooglePrivacyDlpV2BigQueryTableResponseOutput)
-}
-
-type GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput) ToGooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput() GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput) ToGooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput) Elem() GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse) GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse
-		return ret
-	}).(GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutput)
-}
-
-// Categorical stats result
-func (o GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput) CategoricalStatsResult() GooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse) *GooglePrivacyDlpV2CategoricalStatsResultResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.CategoricalStatsResult
-	}).(GooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput)
-}
-
-// Delta-presence result
-func (o GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput) DeltaPresenceEstimationResult() GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse) *GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DeltaPresenceEstimationResult
-	}).(GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput)
-}
-
-// K-anonymity result
-func (o GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput) KAnonymityResult() GooglePrivacyDlpV2KAnonymityResultResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse) *GooglePrivacyDlpV2KAnonymityResultResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.KAnonymityResult
-	}).(GooglePrivacyDlpV2KAnonymityResultResponsePtrOutput)
-}
-
-// K-map result
-func (o GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput) KMapEstimationResult() GooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse) *GooglePrivacyDlpV2KMapEstimationResultResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.KMapEstimationResult
-	}).(GooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput)
-}
-
-// L-divesity result
-func (o GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput) LDiversityResult() GooglePrivacyDlpV2LDiversityResultResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse) *GooglePrivacyDlpV2LDiversityResultResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.LDiversityResult
-	}).(GooglePrivacyDlpV2LDiversityResultResponsePtrOutput)
-}
-
-// Numerical stats result
-func (o GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput) NumericalStatsResult() GooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse) *GooglePrivacyDlpV2NumericalStatsResultResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.NumericalStatsResult
-	}).(GooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput)
-}
-
-// The configuration used for this job.
-func (o GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput) RequestedOptions() GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse) *GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.RequestedOptions
-	}).(GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput)
-}
-
-// Privacy metric to compute.
-func (o GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput) RequestedPrivacyMetric() GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse) *GooglePrivacyDlpV2PrivacyMetricResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.RequestedPrivacyMetric
-	}).(GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput)
-}
-
-// Input dataset to compute metrics over.
-func (o GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput) RequestedSourceTable() GooglePrivacyDlpV2BigQueryTableResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse) *GooglePrivacyDlpV2BigQueryTableResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.RequestedSourceTable
-	}).(GooglePrivacyDlpV2BigQueryTableResponsePtrOutput)
 }
 
 // An auxiliary table contains statistical information on the relative frequency of different quasi-identifiers values. It has one or several quasi-identifiers columns, and one column that indicates the relative frequency of each quasi-identifier tuple. If a tuple is present in the data but not in the auxiliary table, the corresponding relative frequency is assumed to be zero (and thus, the tuple is highly reidentifiable).
@@ -752,64 +478,6 @@ type GooglePrivacyDlpV2AuxiliaryTableResponse struct {
 	RelativeFrequency GooglePrivacyDlpV2FieldIdResponse `pulumi:"relativeFrequency"`
 	// Auxiliary table location.
 	Table GooglePrivacyDlpV2BigQueryTableResponse `pulumi:"table"`
-}
-
-// GooglePrivacyDlpV2AuxiliaryTableResponseInput is an input type that accepts GooglePrivacyDlpV2AuxiliaryTableResponseArgs and GooglePrivacyDlpV2AuxiliaryTableResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2AuxiliaryTableResponseInput` via:
-//
-//          GooglePrivacyDlpV2AuxiliaryTableResponseArgs{...}
-type GooglePrivacyDlpV2AuxiliaryTableResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2AuxiliaryTableResponseOutput() GooglePrivacyDlpV2AuxiliaryTableResponseOutput
-	ToGooglePrivacyDlpV2AuxiliaryTableResponseOutputWithContext(context.Context) GooglePrivacyDlpV2AuxiliaryTableResponseOutput
-}
-
-// An auxiliary table contains statistical information on the relative frequency of different quasi-identifiers values. It has one or several quasi-identifiers columns, and one column that indicates the relative frequency of each quasi-identifier tuple. If a tuple is present in the data but not in the auxiliary table, the corresponding relative frequency is assumed to be zero (and thus, the tuple is highly reidentifiable).
-type GooglePrivacyDlpV2AuxiliaryTableResponseArgs struct {
-	// Quasi-identifier columns.
-	QuasiIds GooglePrivacyDlpV2QuasiIdFieldResponseArrayInput `pulumi:"quasiIds"`
-	// The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
-	RelativeFrequency GooglePrivacyDlpV2FieldIdResponseInput `pulumi:"relativeFrequency"`
-	// Auxiliary table location.
-	Table GooglePrivacyDlpV2BigQueryTableResponseInput `pulumi:"table"`
-}
-
-func (GooglePrivacyDlpV2AuxiliaryTableResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2AuxiliaryTableResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2AuxiliaryTableResponseArgs) ToGooglePrivacyDlpV2AuxiliaryTableResponseOutput() GooglePrivacyDlpV2AuxiliaryTableResponseOutput {
-	return i.ToGooglePrivacyDlpV2AuxiliaryTableResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2AuxiliaryTableResponseArgs) ToGooglePrivacyDlpV2AuxiliaryTableResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AuxiliaryTableResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2AuxiliaryTableResponseOutput)
-}
-
-// GooglePrivacyDlpV2AuxiliaryTableResponseArrayInput is an input type that accepts GooglePrivacyDlpV2AuxiliaryTableResponseArray and GooglePrivacyDlpV2AuxiliaryTableResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2AuxiliaryTableResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2AuxiliaryTableResponseArray{ GooglePrivacyDlpV2AuxiliaryTableResponseArgs{...} }
-type GooglePrivacyDlpV2AuxiliaryTableResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2AuxiliaryTableResponseArrayOutput() GooglePrivacyDlpV2AuxiliaryTableResponseArrayOutput
-	ToGooglePrivacyDlpV2AuxiliaryTableResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2AuxiliaryTableResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2AuxiliaryTableResponseArray []GooglePrivacyDlpV2AuxiliaryTableResponseInput
-
-func (GooglePrivacyDlpV2AuxiliaryTableResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2AuxiliaryTableResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2AuxiliaryTableResponseArray) ToGooglePrivacyDlpV2AuxiliaryTableResponseArrayOutput() GooglePrivacyDlpV2AuxiliaryTableResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2AuxiliaryTableResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2AuxiliaryTableResponseArray) ToGooglePrivacyDlpV2AuxiliaryTableResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AuxiliaryTableResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2AuxiliaryTableResponseArrayOutput)
 }
 
 // An auxiliary table contains statistical information on the relative frequency of different quasi-identifiers values. It has one or several quasi-identifiers columns, and one column that indicates the relative frequency of each quasi-identifier tuple. If a tuple is present in the data but not in the auxiliary table, the corresponding relative frequency is assumed to be zero (and thus, the tuple is highly reidentifiable).
@@ -1035,78 +703,6 @@ type GooglePrivacyDlpV2BigQueryFieldResponse struct {
 	Table GooglePrivacyDlpV2BigQueryTableResponse `pulumi:"table"`
 }
 
-// GooglePrivacyDlpV2BigQueryFieldResponseInput is an input type that accepts GooglePrivacyDlpV2BigQueryFieldResponseArgs and GooglePrivacyDlpV2BigQueryFieldResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2BigQueryFieldResponseInput` via:
-//
-//          GooglePrivacyDlpV2BigQueryFieldResponseArgs{...}
-type GooglePrivacyDlpV2BigQueryFieldResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2BigQueryFieldResponseOutput() GooglePrivacyDlpV2BigQueryFieldResponseOutput
-	ToGooglePrivacyDlpV2BigQueryFieldResponseOutputWithContext(context.Context) GooglePrivacyDlpV2BigQueryFieldResponseOutput
-}
-
-// Message defining a field of a BigQuery table.
-type GooglePrivacyDlpV2BigQueryFieldResponseArgs struct {
-	// Designated field in the BigQuery table.
-	Field GooglePrivacyDlpV2FieldIdResponseInput `pulumi:"field"`
-	// Source table of the field.
-	Table GooglePrivacyDlpV2BigQueryTableResponseInput `pulumi:"table"`
-}
-
-func (GooglePrivacyDlpV2BigQueryFieldResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2BigQueryFieldResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2BigQueryFieldResponseArgs) ToGooglePrivacyDlpV2BigQueryFieldResponseOutput() GooglePrivacyDlpV2BigQueryFieldResponseOutput {
-	return i.ToGooglePrivacyDlpV2BigQueryFieldResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2BigQueryFieldResponseArgs) ToGooglePrivacyDlpV2BigQueryFieldResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryFieldResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2BigQueryFieldResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2BigQueryFieldResponseArgs) ToGooglePrivacyDlpV2BigQueryFieldResponsePtrOutput() GooglePrivacyDlpV2BigQueryFieldResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2BigQueryFieldResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2BigQueryFieldResponseArgs) ToGooglePrivacyDlpV2BigQueryFieldResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryFieldResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2BigQueryFieldResponseOutput).ToGooglePrivacyDlpV2BigQueryFieldResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2BigQueryFieldResponsePtrInput is an input type that accepts GooglePrivacyDlpV2BigQueryFieldResponseArgs, GooglePrivacyDlpV2BigQueryFieldResponsePtr and GooglePrivacyDlpV2BigQueryFieldResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2BigQueryFieldResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2BigQueryFieldResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2BigQueryFieldResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2BigQueryFieldResponsePtrOutput() GooglePrivacyDlpV2BigQueryFieldResponsePtrOutput
-	ToGooglePrivacyDlpV2BigQueryFieldResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2BigQueryFieldResponsePtrOutput
-}
-
-type googlePrivacyDlpV2BigQueryFieldResponsePtrType GooglePrivacyDlpV2BigQueryFieldResponseArgs
-
-func GooglePrivacyDlpV2BigQueryFieldResponsePtr(v *GooglePrivacyDlpV2BigQueryFieldResponseArgs) GooglePrivacyDlpV2BigQueryFieldResponsePtrInput {
-	return (*googlePrivacyDlpV2BigQueryFieldResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2BigQueryFieldResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2BigQueryFieldResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2BigQueryFieldResponsePtrType) ToGooglePrivacyDlpV2BigQueryFieldResponsePtrOutput() GooglePrivacyDlpV2BigQueryFieldResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2BigQueryFieldResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2BigQueryFieldResponsePtrType) ToGooglePrivacyDlpV2BigQueryFieldResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryFieldResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2BigQueryFieldResponsePtrOutput)
-}
-
 // Message defining a field of a BigQuery table.
 type GooglePrivacyDlpV2BigQueryFieldResponseOutput struct{ *pulumi.OutputState }
 
@@ -1122,16 +718,6 @@ func (o GooglePrivacyDlpV2BigQueryFieldResponseOutput) ToGooglePrivacyDlpV2BigQu
 	return o
 }
 
-func (o GooglePrivacyDlpV2BigQueryFieldResponseOutput) ToGooglePrivacyDlpV2BigQueryFieldResponsePtrOutput() GooglePrivacyDlpV2BigQueryFieldResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2BigQueryFieldResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2BigQueryFieldResponseOutput) ToGooglePrivacyDlpV2BigQueryFieldResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryFieldResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2BigQueryFieldResponse) *GooglePrivacyDlpV2BigQueryFieldResponse {
-		return &v
-	}).(GooglePrivacyDlpV2BigQueryFieldResponsePtrOutput)
-}
-
 // Designated field in the BigQuery table.
 func (o GooglePrivacyDlpV2BigQueryFieldResponseOutput) Field() GooglePrivacyDlpV2FieldIdResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryFieldResponse) GooglePrivacyDlpV2FieldIdResponse { return v.Field }).(GooglePrivacyDlpV2FieldIdResponseOutput)
@@ -1142,50 +728,6 @@ func (o GooglePrivacyDlpV2BigQueryFieldResponseOutput) Table() GooglePrivacyDlpV
 	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryFieldResponse) GooglePrivacyDlpV2BigQueryTableResponse {
 		return v.Table
 	}).(GooglePrivacyDlpV2BigQueryTableResponseOutput)
-}
-
-type GooglePrivacyDlpV2BigQueryFieldResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2BigQueryFieldResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2BigQueryFieldResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2BigQueryFieldResponsePtrOutput) ToGooglePrivacyDlpV2BigQueryFieldResponsePtrOutput() GooglePrivacyDlpV2BigQueryFieldResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2BigQueryFieldResponsePtrOutput) ToGooglePrivacyDlpV2BigQueryFieldResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryFieldResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2BigQueryFieldResponsePtrOutput) Elem() GooglePrivacyDlpV2BigQueryFieldResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryFieldResponse) GooglePrivacyDlpV2BigQueryFieldResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2BigQueryFieldResponse
-		return ret
-	}).(GooglePrivacyDlpV2BigQueryFieldResponseOutput)
-}
-
-// Designated field in the BigQuery table.
-func (o GooglePrivacyDlpV2BigQueryFieldResponsePtrOutput) Field() GooglePrivacyDlpV2FieldIdResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryFieldResponse) *GooglePrivacyDlpV2FieldIdResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Field
-	}).(GooglePrivacyDlpV2FieldIdResponsePtrOutput)
-}
-
-// Source table of the field.
-func (o GooglePrivacyDlpV2BigQueryFieldResponsePtrOutput) Table() GooglePrivacyDlpV2BigQueryTableResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryFieldResponse) *GooglePrivacyDlpV2BigQueryTableResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Table
-	}).(GooglePrivacyDlpV2BigQueryTableResponsePtrOutput)
 }
 
 // Options defining BigQuery table and row identifiers.
@@ -1436,85 +978,6 @@ type GooglePrivacyDlpV2BigQueryOptionsResponse struct {
 	TableReference GooglePrivacyDlpV2BigQueryTableResponse `pulumi:"tableReference"`
 }
 
-// GooglePrivacyDlpV2BigQueryOptionsResponseInput is an input type that accepts GooglePrivacyDlpV2BigQueryOptionsResponseArgs and GooglePrivacyDlpV2BigQueryOptionsResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2BigQueryOptionsResponseInput` via:
-//
-//          GooglePrivacyDlpV2BigQueryOptionsResponseArgs{...}
-type GooglePrivacyDlpV2BigQueryOptionsResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2BigQueryOptionsResponseOutput() GooglePrivacyDlpV2BigQueryOptionsResponseOutput
-	ToGooglePrivacyDlpV2BigQueryOptionsResponseOutputWithContext(context.Context) GooglePrivacyDlpV2BigQueryOptionsResponseOutput
-}
-
-// Options defining BigQuery table and row identifiers.
-type GooglePrivacyDlpV2BigQueryOptionsResponseArgs struct {
-	// References to fields excluded from scanning. This allows you to skip inspection of entire columns which you know have no findings.
-	ExcludedFields GooglePrivacyDlpV2FieldIdResponseArrayInput `pulumi:"excludedFields"`
-	// Table fields that may uniquely identify a row within the table. When `actions.saveFindings.outputConfig.table` is specified, the values of columns specified here are available in the output table under `location.content_locations.record_location.record_key.id_values`. Nested fields such as `person.birthdate.year` are allowed.
-	IdentifyingFields GooglePrivacyDlpV2FieldIdResponseArrayInput `pulumi:"identifyingFields"`
-	// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted. If not set, or if set to 0, all rows will be scanned. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
-	RowsLimit pulumi.StringInput `pulumi:"rowsLimit"`
-	// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
-	RowsLimitPercent pulumi.IntInput    `pulumi:"rowsLimitPercent"`
-	SampleMethod     pulumi.StringInput `pulumi:"sampleMethod"`
-	// Complete BigQuery table reference.
-	TableReference GooglePrivacyDlpV2BigQueryTableResponseInput `pulumi:"tableReference"`
-}
-
-func (GooglePrivacyDlpV2BigQueryOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2BigQueryOptionsResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2BigQueryOptionsResponseArgs) ToGooglePrivacyDlpV2BigQueryOptionsResponseOutput() GooglePrivacyDlpV2BigQueryOptionsResponseOutput {
-	return i.ToGooglePrivacyDlpV2BigQueryOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2BigQueryOptionsResponseArgs) ToGooglePrivacyDlpV2BigQueryOptionsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2BigQueryOptionsResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2BigQueryOptionsResponseArgs) ToGooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput() GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2BigQueryOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2BigQueryOptionsResponseArgs) ToGooglePrivacyDlpV2BigQueryOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2BigQueryOptionsResponseOutput).ToGooglePrivacyDlpV2BigQueryOptionsResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2BigQueryOptionsResponsePtrInput is an input type that accepts GooglePrivacyDlpV2BigQueryOptionsResponseArgs, GooglePrivacyDlpV2BigQueryOptionsResponsePtr and GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2BigQueryOptionsResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2BigQueryOptionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2BigQueryOptionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput() GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput
-	ToGooglePrivacyDlpV2BigQueryOptionsResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput
-}
-
-type googlePrivacyDlpV2BigQueryOptionsResponsePtrType GooglePrivacyDlpV2BigQueryOptionsResponseArgs
-
-func GooglePrivacyDlpV2BigQueryOptionsResponsePtr(v *GooglePrivacyDlpV2BigQueryOptionsResponseArgs) GooglePrivacyDlpV2BigQueryOptionsResponsePtrInput {
-	return (*googlePrivacyDlpV2BigQueryOptionsResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2BigQueryOptionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2BigQueryOptionsResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2BigQueryOptionsResponsePtrType) ToGooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput() GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2BigQueryOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2BigQueryOptionsResponsePtrType) ToGooglePrivacyDlpV2BigQueryOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput)
-}
-
 // Options defining BigQuery table and row identifiers.
 type GooglePrivacyDlpV2BigQueryOptionsResponseOutput struct{ *pulumi.OutputState }
 
@@ -1528,16 +991,6 @@ func (o GooglePrivacyDlpV2BigQueryOptionsResponseOutput) ToGooglePrivacyDlpV2Big
 
 func (o GooglePrivacyDlpV2BigQueryOptionsResponseOutput) ToGooglePrivacyDlpV2BigQueryOptionsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryOptionsResponseOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2BigQueryOptionsResponseOutput) ToGooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput() GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2BigQueryOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2BigQueryOptionsResponseOutput) ToGooglePrivacyDlpV2BigQueryOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2BigQueryOptionsResponse) *GooglePrivacyDlpV2BigQueryOptionsResponse {
-		return &v
-	}).(GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput)
 }
 
 // References to fields excluded from scanning. This allows you to skip inspection of entire columns which you know have no findings.
@@ -1573,89 +1026,6 @@ func (o GooglePrivacyDlpV2BigQueryOptionsResponseOutput) TableReference() Google
 	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryOptionsResponse) GooglePrivacyDlpV2BigQueryTableResponse {
 		return v.TableReference
 	}).(GooglePrivacyDlpV2BigQueryTableResponseOutput)
-}
-
-type GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2BigQueryOptionsResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput) ToGooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput() GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput) ToGooglePrivacyDlpV2BigQueryOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput) Elem() GooglePrivacyDlpV2BigQueryOptionsResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryOptionsResponse) GooglePrivacyDlpV2BigQueryOptionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2BigQueryOptionsResponse
-		return ret
-	}).(GooglePrivacyDlpV2BigQueryOptionsResponseOutput)
-}
-
-// References to fields excluded from scanning. This allows you to skip inspection of entire columns which you know have no findings.
-func (o GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput) ExcludedFields() GooglePrivacyDlpV2FieldIdResponseArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryOptionsResponse) []GooglePrivacyDlpV2FieldIdResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ExcludedFields
-	}).(GooglePrivacyDlpV2FieldIdResponseArrayOutput)
-}
-
-// Table fields that may uniquely identify a row within the table. When `actions.saveFindings.outputConfig.table` is specified, the values of columns specified here are available in the output table under `location.content_locations.record_location.record_key.id_values`. Nested fields such as `person.birthdate.year` are allowed.
-func (o GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput) IdentifyingFields() GooglePrivacyDlpV2FieldIdResponseArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryOptionsResponse) []GooglePrivacyDlpV2FieldIdResponse {
-		if v == nil {
-			return nil
-		}
-		return v.IdentifyingFields
-	}).(GooglePrivacyDlpV2FieldIdResponseArrayOutput)
-}
-
-// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted. If not set, or if set to 0, all rows will be scanned. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
-func (o GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput) RowsLimit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryOptionsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RowsLimit
-	}).(pulumi.StringPtrOutput)
-}
-
-// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
-func (o GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput) RowsLimitPercent() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryOptionsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.RowsLimitPercent
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput) SampleMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryOptionsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SampleMethod
-	}).(pulumi.StringPtrOutput)
-}
-
-// Complete BigQuery table reference.
-func (o GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput) TableReference() GooglePrivacyDlpV2BigQueryTableResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryOptionsResponse) *GooglePrivacyDlpV2BigQueryTableResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.TableReference
-	}).(GooglePrivacyDlpV2BigQueryTableResponsePtrOutput)
 }
 
 // Message defining the location of a BigQuery table. A table is uniquely identified by its project_id, dataset_id, and table_name. Within a query a table is often referenced with a string in the format of: `:.` or `..`.
@@ -1846,80 +1216,6 @@ type GooglePrivacyDlpV2BigQueryTableResponse struct {
 	TableId string `pulumi:"tableId"`
 }
 
-// GooglePrivacyDlpV2BigQueryTableResponseInput is an input type that accepts GooglePrivacyDlpV2BigQueryTableResponseArgs and GooglePrivacyDlpV2BigQueryTableResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2BigQueryTableResponseInput` via:
-//
-//          GooglePrivacyDlpV2BigQueryTableResponseArgs{...}
-type GooglePrivacyDlpV2BigQueryTableResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2BigQueryTableResponseOutput() GooglePrivacyDlpV2BigQueryTableResponseOutput
-	ToGooglePrivacyDlpV2BigQueryTableResponseOutputWithContext(context.Context) GooglePrivacyDlpV2BigQueryTableResponseOutput
-}
-
-// Message defining the location of a BigQuery table. A table is uniquely identified by its project_id, dataset_id, and table_name. Within a query a table is often referenced with a string in the format of: `:.` or `..`.
-type GooglePrivacyDlpV2BigQueryTableResponseArgs struct {
-	// Dataset ID of the table.
-	DatasetId pulumi.StringInput `pulumi:"datasetId"`
-	// The Google Cloud Platform project ID of the project containing the table. If omitted, project ID is inferred from the API call.
-	Project pulumi.StringInput `pulumi:"project"`
-	// Name of the table.
-	TableId pulumi.StringInput `pulumi:"tableId"`
-}
-
-func (GooglePrivacyDlpV2BigQueryTableResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2BigQueryTableResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2BigQueryTableResponseArgs) ToGooglePrivacyDlpV2BigQueryTableResponseOutput() GooglePrivacyDlpV2BigQueryTableResponseOutput {
-	return i.ToGooglePrivacyDlpV2BigQueryTableResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2BigQueryTableResponseArgs) ToGooglePrivacyDlpV2BigQueryTableResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2BigQueryTableResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2BigQueryTableResponseArgs) ToGooglePrivacyDlpV2BigQueryTableResponsePtrOutput() GooglePrivacyDlpV2BigQueryTableResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2BigQueryTableResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2BigQueryTableResponseArgs) ToGooglePrivacyDlpV2BigQueryTableResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2BigQueryTableResponseOutput).ToGooglePrivacyDlpV2BigQueryTableResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2BigQueryTableResponsePtrInput is an input type that accepts GooglePrivacyDlpV2BigQueryTableResponseArgs, GooglePrivacyDlpV2BigQueryTableResponsePtr and GooglePrivacyDlpV2BigQueryTableResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2BigQueryTableResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2BigQueryTableResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2BigQueryTableResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2BigQueryTableResponsePtrOutput() GooglePrivacyDlpV2BigQueryTableResponsePtrOutput
-	ToGooglePrivacyDlpV2BigQueryTableResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2BigQueryTableResponsePtrOutput
-}
-
-type googlePrivacyDlpV2BigQueryTableResponsePtrType GooglePrivacyDlpV2BigQueryTableResponseArgs
-
-func GooglePrivacyDlpV2BigQueryTableResponsePtr(v *GooglePrivacyDlpV2BigQueryTableResponseArgs) GooglePrivacyDlpV2BigQueryTableResponsePtrInput {
-	return (*googlePrivacyDlpV2BigQueryTableResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2BigQueryTableResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2BigQueryTableResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2BigQueryTableResponsePtrType) ToGooglePrivacyDlpV2BigQueryTableResponsePtrOutput() GooglePrivacyDlpV2BigQueryTableResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2BigQueryTableResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2BigQueryTableResponsePtrType) ToGooglePrivacyDlpV2BigQueryTableResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2BigQueryTableResponsePtrOutput)
-}
-
 // Message defining the location of a BigQuery table. A table is uniquely identified by its project_id, dataset_id, and table_name. Within a query a table is often referenced with a string in the format of: `:.` or `..`.
 type GooglePrivacyDlpV2BigQueryTableResponseOutput struct{ *pulumi.OutputState }
 
@@ -1935,16 +1231,6 @@ func (o GooglePrivacyDlpV2BigQueryTableResponseOutput) ToGooglePrivacyDlpV2BigQu
 	return o
 }
 
-func (o GooglePrivacyDlpV2BigQueryTableResponseOutput) ToGooglePrivacyDlpV2BigQueryTableResponsePtrOutput() GooglePrivacyDlpV2BigQueryTableResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2BigQueryTableResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2BigQueryTableResponseOutput) ToGooglePrivacyDlpV2BigQueryTableResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2BigQueryTableResponse) *GooglePrivacyDlpV2BigQueryTableResponse {
-		return &v
-	}).(GooglePrivacyDlpV2BigQueryTableResponsePtrOutput)
-}
-
 // Dataset ID of the table.
 func (o GooglePrivacyDlpV2BigQueryTableResponseOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryTableResponse) string { return v.DatasetId }).(pulumi.StringOutput)
@@ -1958,60 +1244,6 @@ func (o GooglePrivacyDlpV2BigQueryTableResponseOutput) Project() pulumi.StringOu
 // Name of the table.
 func (o GooglePrivacyDlpV2BigQueryTableResponseOutput) TableId() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryTableResponse) string { return v.TableId }).(pulumi.StringOutput)
-}
-
-type GooglePrivacyDlpV2BigQueryTableResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2BigQueryTableResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2BigQueryTableResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2BigQueryTableResponsePtrOutput) ToGooglePrivacyDlpV2BigQueryTableResponsePtrOutput() GooglePrivacyDlpV2BigQueryTableResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2BigQueryTableResponsePtrOutput) ToGooglePrivacyDlpV2BigQueryTableResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BigQueryTableResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2BigQueryTableResponsePtrOutput) Elem() GooglePrivacyDlpV2BigQueryTableResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryTableResponse) GooglePrivacyDlpV2BigQueryTableResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2BigQueryTableResponse
-		return ret
-	}).(GooglePrivacyDlpV2BigQueryTableResponseOutput)
-}
-
-// Dataset ID of the table.
-func (o GooglePrivacyDlpV2BigQueryTableResponsePtrOutput) DatasetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryTableResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DatasetId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Google Cloud Platform project ID of the project containing the table. If omitted, project ID is inferred from the API call.
-func (o GooglePrivacyDlpV2BigQueryTableResponsePtrOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryTableResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Project
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of the table.
-func (o GooglePrivacyDlpV2BigQueryTableResponsePtrOutput) TableId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryTableResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TableId
-	}).(pulumi.StringPtrOutput)
 }
 
 // Bucket is represented as a range, along with replacement values.
@@ -2140,64 +1372,6 @@ type GooglePrivacyDlpV2BucketResponse struct {
 	Min GooglePrivacyDlpV2ValueResponse `pulumi:"min"`
 	// Replacement value for this bucket.
 	ReplacementValue GooglePrivacyDlpV2ValueResponse `pulumi:"replacementValue"`
-}
-
-// GooglePrivacyDlpV2BucketResponseInput is an input type that accepts GooglePrivacyDlpV2BucketResponseArgs and GooglePrivacyDlpV2BucketResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2BucketResponseInput` via:
-//
-//          GooglePrivacyDlpV2BucketResponseArgs{...}
-type GooglePrivacyDlpV2BucketResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2BucketResponseOutput() GooglePrivacyDlpV2BucketResponseOutput
-	ToGooglePrivacyDlpV2BucketResponseOutputWithContext(context.Context) GooglePrivacyDlpV2BucketResponseOutput
-}
-
-// Bucket is represented as a range, along with replacement values.
-type GooglePrivacyDlpV2BucketResponseArgs struct {
-	// Upper bound of the range, exclusive; type must match min.
-	Max GooglePrivacyDlpV2ValueResponseInput `pulumi:"max"`
-	// Lower bound of the range, inclusive. Type should be the same as max if used.
-	Min GooglePrivacyDlpV2ValueResponseInput `pulumi:"min"`
-	// Replacement value for this bucket.
-	ReplacementValue GooglePrivacyDlpV2ValueResponseInput `pulumi:"replacementValue"`
-}
-
-func (GooglePrivacyDlpV2BucketResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2BucketResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2BucketResponseArgs) ToGooglePrivacyDlpV2BucketResponseOutput() GooglePrivacyDlpV2BucketResponseOutput {
-	return i.ToGooglePrivacyDlpV2BucketResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2BucketResponseArgs) ToGooglePrivacyDlpV2BucketResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BucketResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2BucketResponseOutput)
-}
-
-// GooglePrivacyDlpV2BucketResponseArrayInput is an input type that accepts GooglePrivacyDlpV2BucketResponseArray and GooglePrivacyDlpV2BucketResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2BucketResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2BucketResponseArray{ GooglePrivacyDlpV2BucketResponseArgs{...} }
-type GooglePrivacyDlpV2BucketResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2BucketResponseArrayOutput() GooglePrivacyDlpV2BucketResponseArrayOutput
-	ToGooglePrivacyDlpV2BucketResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2BucketResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2BucketResponseArray []GooglePrivacyDlpV2BucketResponseInput
-
-func (GooglePrivacyDlpV2BucketResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2BucketResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2BucketResponseArray) ToGooglePrivacyDlpV2BucketResponseArrayOutput() GooglePrivacyDlpV2BucketResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2BucketResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2BucketResponseArray) ToGooglePrivacyDlpV2BucketResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BucketResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2BucketResponseArrayOutput)
 }
 
 // Bucket is represented as a range, along with replacement values.
@@ -2396,35 +1570,6 @@ type GooglePrivacyDlpV2BucketingConfigResponse struct {
 	Buckets []GooglePrivacyDlpV2BucketResponse `pulumi:"buckets"`
 }
 
-// GooglePrivacyDlpV2BucketingConfigResponseInput is an input type that accepts GooglePrivacyDlpV2BucketingConfigResponseArgs and GooglePrivacyDlpV2BucketingConfigResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2BucketingConfigResponseInput` via:
-//
-//          GooglePrivacyDlpV2BucketingConfigResponseArgs{...}
-type GooglePrivacyDlpV2BucketingConfigResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2BucketingConfigResponseOutput() GooglePrivacyDlpV2BucketingConfigResponseOutput
-	ToGooglePrivacyDlpV2BucketingConfigResponseOutputWithContext(context.Context) GooglePrivacyDlpV2BucketingConfigResponseOutput
-}
-
-// Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 -> LOW 31-65 -> MEDIUM 66-100 -> HIGH This can be used on data of type: number, long, string, timestamp. If the bound `Value` type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
-type GooglePrivacyDlpV2BucketingConfigResponseArgs struct {
-	// Set of buckets. Ranges must be non-overlapping.
-	Buckets GooglePrivacyDlpV2BucketResponseArrayInput `pulumi:"buckets"`
-}
-
-func (GooglePrivacyDlpV2BucketingConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2BucketingConfigResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2BucketingConfigResponseArgs) ToGooglePrivacyDlpV2BucketingConfigResponseOutput() GooglePrivacyDlpV2BucketingConfigResponseOutput {
-	return i.ToGooglePrivacyDlpV2BucketingConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2BucketingConfigResponseArgs) ToGooglePrivacyDlpV2BucketingConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2BucketingConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2BucketingConfigResponseOutput)
-}
-
 // Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 -> LOW 31-65 -> MEDIUM 66-100 -> HIGH This can be used on data of type: number, long, string, timestamp. If the bound `Value` type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
 type GooglePrivacyDlpV2BucketingConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -2591,76 +1736,6 @@ type GooglePrivacyDlpV2CategoricalStatsConfigResponse struct {
 	Field GooglePrivacyDlpV2FieldIdResponse `pulumi:"field"`
 }
 
-// GooglePrivacyDlpV2CategoricalStatsConfigResponseInput is an input type that accepts GooglePrivacyDlpV2CategoricalStatsConfigResponseArgs and GooglePrivacyDlpV2CategoricalStatsConfigResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2CategoricalStatsConfigResponseInput` via:
-//
-//          GooglePrivacyDlpV2CategoricalStatsConfigResponseArgs{...}
-type GooglePrivacyDlpV2CategoricalStatsConfigResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2CategoricalStatsConfigResponseOutput() GooglePrivacyDlpV2CategoricalStatsConfigResponseOutput
-	ToGooglePrivacyDlpV2CategoricalStatsConfigResponseOutputWithContext(context.Context) GooglePrivacyDlpV2CategoricalStatsConfigResponseOutput
-}
-
-// Compute numerical stats over an individual column, including number of distinct values and value count distribution.
-type GooglePrivacyDlpV2CategoricalStatsConfigResponseArgs struct {
-	// Field to compute categorical stats on. All column types are supported except for arrays and structs. However, it may be more informative to use NumericalStats when the field type is supported, depending on the data.
-	Field GooglePrivacyDlpV2FieldIdResponseInput `pulumi:"field"`
-}
-
-func (GooglePrivacyDlpV2CategoricalStatsConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2CategoricalStatsConfigResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2CategoricalStatsConfigResponseArgs) ToGooglePrivacyDlpV2CategoricalStatsConfigResponseOutput() GooglePrivacyDlpV2CategoricalStatsConfigResponseOutput {
-	return i.ToGooglePrivacyDlpV2CategoricalStatsConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2CategoricalStatsConfigResponseArgs) ToGooglePrivacyDlpV2CategoricalStatsConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CategoricalStatsConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CategoricalStatsConfigResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2CategoricalStatsConfigResponseArgs) ToGooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput() GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2CategoricalStatsConfigResponseArgs) ToGooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CategoricalStatsConfigResponseOutput).ToGooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrInput is an input type that accepts GooglePrivacyDlpV2CategoricalStatsConfigResponseArgs, GooglePrivacyDlpV2CategoricalStatsConfigResponsePtr and GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2CategoricalStatsConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput() GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput
-	ToGooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput
-}
-
-type googlePrivacyDlpV2CategoricalStatsConfigResponsePtrType GooglePrivacyDlpV2CategoricalStatsConfigResponseArgs
-
-func GooglePrivacyDlpV2CategoricalStatsConfigResponsePtr(v *GooglePrivacyDlpV2CategoricalStatsConfigResponseArgs) GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrInput {
-	return (*googlePrivacyDlpV2CategoricalStatsConfigResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2CategoricalStatsConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2CategoricalStatsConfigResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2CategoricalStatsConfigResponsePtrType) ToGooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput() GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2CategoricalStatsConfigResponsePtrType) ToGooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput)
-}
-
 // Compute numerical stats over an individual column, including number of distinct values and value count distribution.
 type GooglePrivacyDlpV2CategoricalStatsConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -2676,55 +1751,11 @@ func (o GooglePrivacyDlpV2CategoricalStatsConfigResponseOutput) ToGooglePrivacyD
 	return o
 }
 
-func (o GooglePrivacyDlpV2CategoricalStatsConfigResponseOutput) ToGooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput() GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2CategoricalStatsConfigResponseOutput) ToGooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2CategoricalStatsConfigResponse) *GooglePrivacyDlpV2CategoricalStatsConfigResponse {
-		return &v
-	}).(GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput)
-}
-
 // Field to compute categorical stats on. All column types are supported except for arrays and structs. However, it may be more informative to use NumericalStats when the field type is supported, depending on the data.
 func (o GooglePrivacyDlpV2CategoricalStatsConfigResponseOutput) Field() GooglePrivacyDlpV2FieldIdResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CategoricalStatsConfigResponse) GooglePrivacyDlpV2FieldIdResponse {
 		return v.Field
 	}).(GooglePrivacyDlpV2FieldIdResponseOutput)
-}
-
-type GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2CategoricalStatsConfigResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput) ToGooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput() GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput) ToGooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput) Elem() GooglePrivacyDlpV2CategoricalStatsConfigResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CategoricalStatsConfigResponse) GooglePrivacyDlpV2CategoricalStatsConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2CategoricalStatsConfigResponse
-		return ret
-	}).(GooglePrivacyDlpV2CategoricalStatsConfigResponseOutput)
-}
-
-// Field to compute categorical stats on. All column types are supported except for arrays and structs. However, it may be more informative to use NumericalStats when the field type is supported, depending on the data.
-func (o GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput) Field() GooglePrivacyDlpV2FieldIdResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CategoricalStatsConfigResponse) *GooglePrivacyDlpV2FieldIdResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Field
-	}).(GooglePrivacyDlpV2FieldIdResponsePtrOutput)
 }
 
 // Histogram of value frequencies in the column.
@@ -2739,68 +1770,6 @@ type GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse struct {
 	ValueFrequencyLowerBound string `pulumi:"valueFrequencyLowerBound"`
 	// Upper bound on the value frequency of the values in this bucket.
 	ValueFrequencyUpperBound string `pulumi:"valueFrequencyUpperBound"`
-}
-
-// GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseInput is an input type that accepts GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArgs and GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseInput` via:
-//
-//          GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArgs{...}
-type GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseOutput() GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseOutput
-	ToGooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseOutputWithContext(context.Context) GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseOutput
-}
-
-// Histogram of value frequencies in the column.
-type GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArgs struct {
-	// Total number of values in this bucket.
-	BucketSize pulumi.StringInput `pulumi:"bucketSize"`
-	// Total number of distinct values in this bucket.
-	BucketValueCount pulumi.StringInput `pulumi:"bucketValueCount"`
-	// Sample of value frequencies in this bucket. The total number of values returned per bucket is capped at 20.
-	BucketValues GooglePrivacyDlpV2ValueFrequencyResponseArrayInput `pulumi:"bucketValues"`
-	// Lower bound on the value frequency of the values in this bucket.
-	ValueFrequencyLowerBound pulumi.StringInput `pulumi:"valueFrequencyLowerBound"`
-	// Upper bound on the value frequency of the values in this bucket.
-	ValueFrequencyUpperBound pulumi.StringInput `pulumi:"valueFrequencyUpperBound"`
-}
-
-func (GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArgs) ToGooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseOutput() GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseOutput {
-	return i.ToGooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArgs) ToGooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseOutput)
-}
-
-// GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArrayInput is an input type that accepts GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArray and GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArray{ GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArgs{...} }
-type GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArrayOutput() GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArrayOutput
-	ToGooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArray []GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseInput
-
-func (GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArray) ToGooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArrayOutput() GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArray) ToGooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArrayOutput)
 }
 
 // Histogram of value frequencies in the column.
@@ -2875,76 +1844,6 @@ type GooglePrivacyDlpV2CategoricalStatsResultResponse struct {
 	ValueFrequencyHistogramBuckets []GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse `pulumi:"valueFrequencyHistogramBuckets"`
 }
 
-// GooglePrivacyDlpV2CategoricalStatsResultResponseInput is an input type that accepts GooglePrivacyDlpV2CategoricalStatsResultResponseArgs and GooglePrivacyDlpV2CategoricalStatsResultResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2CategoricalStatsResultResponseInput` via:
-//
-//          GooglePrivacyDlpV2CategoricalStatsResultResponseArgs{...}
-type GooglePrivacyDlpV2CategoricalStatsResultResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2CategoricalStatsResultResponseOutput() GooglePrivacyDlpV2CategoricalStatsResultResponseOutput
-	ToGooglePrivacyDlpV2CategoricalStatsResultResponseOutputWithContext(context.Context) GooglePrivacyDlpV2CategoricalStatsResultResponseOutput
-}
-
-// Result of the categorical stats computation.
-type GooglePrivacyDlpV2CategoricalStatsResultResponseArgs struct {
-	// Histogram of value frequencies in the column.
-	ValueFrequencyHistogramBuckets GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArrayInput `pulumi:"valueFrequencyHistogramBuckets"`
-}
-
-func (GooglePrivacyDlpV2CategoricalStatsResultResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2CategoricalStatsResultResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2CategoricalStatsResultResponseArgs) ToGooglePrivacyDlpV2CategoricalStatsResultResponseOutput() GooglePrivacyDlpV2CategoricalStatsResultResponseOutput {
-	return i.ToGooglePrivacyDlpV2CategoricalStatsResultResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2CategoricalStatsResultResponseArgs) ToGooglePrivacyDlpV2CategoricalStatsResultResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CategoricalStatsResultResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CategoricalStatsResultResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2CategoricalStatsResultResponseArgs) ToGooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput() GooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2CategoricalStatsResultResponseArgs) ToGooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CategoricalStatsResultResponseOutput).ToGooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2CategoricalStatsResultResponsePtrInput is an input type that accepts GooglePrivacyDlpV2CategoricalStatsResultResponseArgs, GooglePrivacyDlpV2CategoricalStatsResultResponsePtr and GooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2CategoricalStatsResultResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2CategoricalStatsResultResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2CategoricalStatsResultResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput() GooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput
-	ToGooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput
-}
-
-type googlePrivacyDlpV2CategoricalStatsResultResponsePtrType GooglePrivacyDlpV2CategoricalStatsResultResponseArgs
-
-func GooglePrivacyDlpV2CategoricalStatsResultResponsePtr(v *GooglePrivacyDlpV2CategoricalStatsResultResponseArgs) GooglePrivacyDlpV2CategoricalStatsResultResponsePtrInput {
-	return (*googlePrivacyDlpV2CategoricalStatsResultResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2CategoricalStatsResultResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2CategoricalStatsResultResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2CategoricalStatsResultResponsePtrType) ToGooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput() GooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2CategoricalStatsResultResponsePtrType) ToGooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput)
-}
-
 // Result of the categorical stats computation.
 type GooglePrivacyDlpV2CategoricalStatsResultResponseOutput struct{ *pulumi.OutputState }
 
@@ -2960,53 +1859,9 @@ func (o GooglePrivacyDlpV2CategoricalStatsResultResponseOutput) ToGooglePrivacyD
 	return o
 }
 
-func (o GooglePrivacyDlpV2CategoricalStatsResultResponseOutput) ToGooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput() GooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2CategoricalStatsResultResponseOutput) ToGooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2CategoricalStatsResultResponse) *GooglePrivacyDlpV2CategoricalStatsResultResponse {
-		return &v
-	}).(GooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput)
-}
-
 // Histogram of value frequencies in the column.
 func (o GooglePrivacyDlpV2CategoricalStatsResultResponseOutput) ValueFrequencyHistogramBuckets() GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CategoricalStatsResultResponse) []GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse {
-		return v.ValueFrequencyHistogramBuckets
-	}).(GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArrayOutput)
-}
-
-type GooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2CategoricalStatsResultResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput) ToGooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput() GooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput) ToGooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput) Elem() GooglePrivacyDlpV2CategoricalStatsResultResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CategoricalStatsResultResponse) GooglePrivacyDlpV2CategoricalStatsResultResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2CategoricalStatsResultResponse
-		return ret
-	}).(GooglePrivacyDlpV2CategoricalStatsResultResponseOutput)
-}
-
-// Histogram of value frequencies in the column.
-func (o GooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput) ValueFrequencyHistogramBuckets() GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CategoricalStatsResultResponse) []GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse {
-		if v == nil {
-			return nil
-		}
 		return v.ValueFrequencyHistogramBuckets
 	}).(GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArrayOutput)
 }
@@ -3222,41 +2077,6 @@ type GooglePrivacyDlpV2CharacterMaskConfigResponse struct {
 	ReverseOrder bool `pulumi:"reverseOrder"`
 }
 
-// GooglePrivacyDlpV2CharacterMaskConfigResponseInput is an input type that accepts GooglePrivacyDlpV2CharacterMaskConfigResponseArgs and GooglePrivacyDlpV2CharacterMaskConfigResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2CharacterMaskConfigResponseInput` via:
-//
-//          GooglePrivacyDlpV2CharacterMaskConfigResponseArgs{...}
-type GooglePrivacyDlpV2CharacterMaskConfigResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2CharacterMaskConfigResponseOutput() GooglePrivacyDlpV2CharacterMaskConfigResponseOutput
-	ToGooglePrivacyDlpV2CharacterMaskConfigResponseOutputWithContext(context.Context) GooglePrivacyDlpV2CharacterMaskConfigResponseOutput
-}
-
-// Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3.
-type GooglePrivacyDlpV2CharacterMaskConfigResponseArgs struct {
-	// When masking a string, items in this list will be skipped when replacing characters. For example, if the input string is `555-555-5555` and you instruct Cloud DLP to skip `-` and mask 5 characters with `*`, Cloud DLP returns `***-**5-5555`.
-	CharactersToIgnore GooglePrivacyDlpV2CharsToIgnoreResponseArrayInput `pulumi:"charactersToIgnore"`
-	// Character to use to mask the sensitive values—for example, `*` for an alphabetic string such as a name, or `0` for a numeric string such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to `*` for strings, and `0` for digits.
-	MaskingCharacter pulumi.StringInput `pulumi:"maskingCharacter"`
-	// Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
-	NumberToMask pulumi.IntInput `pulumi:"numberToMask"`
-	// Mask characters in reverse order. For example, if `masking_character` is `0`, `number_to_mask` is `14`, and `reverse_order` is `false`, then the input string `1234-5678-9012-3456` is masked as `00000000000000-3456`. If `masking_character` is `*`, `number_to_mask` is `3`, and `reverse_order` is `true`, then the string `12345` is masked as `12***`.
-	ReverseOrder pulumi.BoolInput `pulumi:"reverseOrder"`
-}
-
-func (GooglePrivacyDlpV2CharacterMaskConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2CharacterMaskConfigResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2CharacterMaskConfigResponseArgs) ToGooglePrivacyDlpV2CharacterMaskConfigResponseOutput() GooglePrivacyDlpV2CharacterMaskConfigResponseOutput {
-	return i.ToGooglePrivacyDlpV2CharacterMaskConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2CharacterMaskConfigResponseArgs) ToGooglePrivacyDlpV2CharacterMaskConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CharacterMaskConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CharacterMaskConfigResponseOutput)
-}
-
 // Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3.
 type GooglePrivacyDlpV2CharacterMaskConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -3411,62 +2231,6 @@ type GooglePrivacyDlpV2CharsToIgnoreResponse struct {
 	CharactersToSkip string `pulumi:"charactersToSkip"`
 	// Common characters to not transform when masking. Useful to avoid removing punctuation.
 	CommonCharactersToIgnore string `pulumi:"commonCharactersToIgnore"`
-}
-
-// GooglePrivacyDlpV2CharsToIgnoreResponseInput is an input type that accepts GooglePrivacyDlpV2CharsToIgnoreResponseArgs and GooglePrivacyDlpV2CharsToIgnoreResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2CharsToIgnoreResponseInput` via:
-//
-//          GooglePrivacyDlpV2CharsToIgnoreResponseArgs{...}
-type GooglePrivacyDlpV2CharsToIgnoreResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2CharsToIgnoreResponseOutput() GooglePrivacyDlpV2CharsToIgnoreResponseOutput
-	ToGooglePrivacyDlpV2CharsToIgnoreResponseOutputWithContext(context.Context) GooglePrivacyDlpV2CharsToIgnoreResponseOutput
-}
-
-// Characters to skip when doing deidentification of a value. These will be left alone and skipped.
-type GooglePrivacyDlpV2CharsToIgnoreResponseArgs struct {
-	// Characters to not transform when masking.
-	CharactersToSkip pulumi.StringInput `pulumi:"charactersToSkip"`
-	// Common characters to not transform when masking. Useful to avoid removing punctuation.
-	CommonCharactersToIgnore pulumi.StringInput `pulumi:"commonCharactersToIgnore"`
-}
-
-func (GooglePrivacyDlpV2CharsToIgnoreResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2CharsToIgnoreResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2CharsToIgnoreResponseArgs) ToGooglePrivacyDlpV2CharsToIgnoreResponseOutput() GooglePrivacyDlpV2CharsToIgnoreResponseOutput {
-	return i.ToGooglePrivacyDlpV2CharsToIgnoreResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2CharsToIgnoreResponseArgs) ToGooglePrivacyDlpV2CharsToIgnoreResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CharsToIgnoreResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CharsToIgnoreResponseOutput)
-}
-
-// GooglePrivacyDlpV2CharsToIgnoreResponseArrayInput is an input type that accepts GooglePrivacyDlpV2CharsToIgnoreResponseArray and GooglePrivacyDlpV2CharsToIgnoreResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2CharsToIgnoreResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2CharsToIgnoreResponseArray{ GooglePrivacyDlpV2CharsToIgnoreResponseArgs{...} }
-type GooglePrivacyDlpV2CharsToIgnoreResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2CharsToIgnoreResponseArrayOutput() GooglePrivacyDlpV2CharsToIgnoreResponseArrayOutput
-	ToGooglePrivacyDlpV2CharsToIgnoreResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2CharsToIgnoreResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2CharsToIgnoreResponseArray []GooglePrivacyDlpV2CharsToIgnoreResponseInput
-
-func (GooglePrivacyDlpV2CharsToIgnoreResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2CharsToIgnoreResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2CharsToIgnoreResponseArray) ToGooglePrivacyDlpV2CharsToIgnoreResponseArrayOutput() GooglePrivacyDlpV2CharsToIgnoreResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2CharsToIgnoreResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2CharsToIgnoreResponseArray) ToGooglePrivacyDlpV2CharsToIgnoreResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CharsToIgnoreResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CharsToIgnoreResponseArrayOutput)
 }
 
 // Characters to skip when doing deidentification of a value. These will be left alone and skipped.
@@ -3660,76 +2424,6 @@ type GooglePrivacyDlpV2CloudStorageFileSetResponse struct {
 	Url string `pulumi:"url"`
 }
 
-// GooglePrivacyDlpV2CloudStorageFileSetResponseInput is an input type that accepts GooglePrivacyDlpV2CloudStorageFileSetResponseArgs and GooglePrivacyDlpV2CloudStorageFileSetResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2CloudStorageFileSetResponseInput` via:
-//
-//          GooglePrivacyDlpV2CloudStorageFileSetResponseArgs{...}
-type GooglePrivacyDlpV2CloudStorageFileSetResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2CloudStorageFileSetResponseOutput() GooglePrivacyDlpV2CloudStorageFileSetResponseOutput
-	ToGooglePrivacyDlpV2CloudStorageFileSetResponseOutputWithContext(context.Context) GooglePrivacyDlpV2CloudStorageFileSetResponseOutput
-}
-
-// Message representing a set of files in Cloud Storage.
-type GooglePrivacyDlpV2CloudStorageFileSetResponseArgs struct {
-	// The url, in the format `gs:///`. Trailing wildcard in the path is allowed.
-	Url pulumi.StringInput `pulumi:"url"`
-}
-
-func (GooglePrivacyDlpV2CloudStorageFileSetResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2CloudStorageFileSetResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2CloudStorageFileSetResponseArgs) ToGooglePrivacyDlpV2CloudStorageFileSetResponseOutput() GooglePrivacyDlpV2CloudStorageFileSetResponseOutput {
-	return i.ToGooglePrivacyDlpV2CloudStorageFileSetResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2CloudStorageFileSetResponseArgs) ToGooglePrivacyDlpV2CloudStorageFileSetResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStorageFileSetResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CloudStorageFileSetResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2CloudStorageFileSetResponseArgs) ToGooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput() GooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2CloudStorageFileSetResponseArgs) ToGooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CloudStorageFileSetResponseOutput).ToGooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2CloudStorageFileSetResponsePtrInput is an input type that accepts GooglePrivacyDlpV2CloudStorageFileSetResponseArgs, GooglePrivacyDlpV2CloudStorageFileSetResponsePtr and GooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2CloudStorageFileSetResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2CloudStorageFileSetResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2CloudStorageFileSetResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput() GooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput
-	ToGooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput
-}
-
-type googlePrivacyDlpV2CloudStorageFileSetResponsePtrType GooglePrivacyDlpV2CloudStorageFileSetResponseArgs
-
-func GooglePrivacyDlpV2CloudStorageFileSetResponsePtr(v *GooglePrivacyDlpV2CloudStorageFileSetResponseArgs) GooglePrivacyDlpV2CloudStorageFileSetResponsePtrInput {
-	return (*googlePrivacyDlpV2CloudStorageFileSetResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2CloudStorageFileSetResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2CloudStorageFileSetResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2CloudStorageFileSetResponsePtrType) ToGooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput() GooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2CloudStorageFileSetResponsePtrType) ToGooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput)
-}
-
 // Message representing a set of files in Cloud Storage.
 type GooglePrivacyDlpV2CloudStorageFileSetResponseOutput struct{ *pulumi.OutputState }
 
@@ -3745,53 +2439,9 @@ func (o GooglePrivacyDlpV2CloudStorageFileSetResponseOutput) ToGooglePrivacyDlpV
 	return o
 }
 
-func (o GooglePrivacyDlpV2CloudStorageFileSetResponseOutput) ToGooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput() GooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2CloudStorageFileSetResponseOutput) ToGooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2CloudStorageFileSetResponse) *GooglePrivacyDlpV2CloudStorageFileSetResponse {
-		return &v
-	}).(GooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput)
-}
-
 // The url, in the format `gs:///`. Trailing wildcard in the path is allowed.
 func (o GooglePrivacyDlpV2CloudStorageFileSetResponseOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStorageFileSetResponse) string { return v.Url }).(pulumi.StringOutput)
-}
-
-type GooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2CloudStorageFileSetResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput) ToGooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput() GooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput) ToGooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput) Elem() GooglePrivacyDlpV2CloudStorageFileSetResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageFileSetResponse) GooglePrivacyDlpV2CloudStorageFileSetResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2CloudStorageFileSetResponse
-		return ret
-	}).(GooglePrivacyDlpV2CloudStorageFileSetResponseOutput)
-}
-
-// The url, in the format `gs:///`. Trailing wildcard in the path is allowed.
-func (o GooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageFileSetResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Url
-	}).(pulumi.StringPtrOutput)
 }
 
 // Options defining a file or a set of files within a Google Cloud Storage bucket.
@@ -4044,85 +2694,6 @@ type GooglePrivacyDlpV2CloudStorageOptionsResponse struct {
 	SampleMethod      string `pulumi:"sampleMethod"`
 }
 
-// GooglePrivacyDlpV2CloudStorageOptionsResponseInput is an input type that accepts GooglePrivacyDlpV2CloudStorageOptionsResponseArgs and GooglePrivacyDlpV2CloudStorageOptionsResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2CloudStorageOptionsResponseInput` via:
-//
-//          GooglePrivacyDlpV2CloudStorageOptionsResponseArgs{...}
-type GooglePrivacyDlpV2CloudStorageOptionsResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2CloudStorageOptionsResponseOutput() GooglePrivacyDlpV2CloudStorageOptionsResponseOutput
-	ToGooglePrivacyDlpV2CloudStorageOptionsResponseOutputWithContext(context.Context) GooglePrivacyDlpV2CloudStorageOptionsResponseOutput
-}
-
-// Options defining a file or a set of files within a Google Cloud Storage bucket.
-type GooglePrivacyDlpV2CloudStorageOptionsResponseArgs struct {
-	// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
-	BytesLimitPerFile pulumi.StringInput `pulumi:"bytesLimitPerFile"`
-	// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
-	BytesLimitPerFilePercent pulumi.IntInput `pulumi:"bytesLimitPerFilePercent"`
-	// The set of one or more files to scan.
-	FileSet GooglePrivacyDlpV2FileSetResponseInput `pulumi:"fileSet"`
-	// List of file type groups to include in the scan. If empty, all files are scanned and available data format processors are applied. In addition, the binary content of the selected files is always scanned as well. Images are scanned only as binary if the specified region does not support image inspection and no file_types were specified. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.
-	FileTypes pulumi.StringArrayInput `pulumi:"fileTypes"`
-	// Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0.
-	FilesLimitPercent pulumi.IntInput    `pulumi:"filesLimitPercent"`
-	SampleMethod      pulumi.StringInput `pulumi:"sampleMethod"`
-}
-
-func (GooglePrivacyDlpV2CloudStorageOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2CloudStorageOptionsResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2CloudStorageOptionsResponseArgs) ToGooglePrivacyDlpV2CloudStorageOptionsResponseOutput() GooglePrivacyDlpV2CloudStorageOptionsResponseOutput {
-	return i.ToGooglePrivacyDlpV2CloudStorageOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2CloudStorageOptionsResponseArgs) ToGooglePrivacyDlpV2CloudStorageOptionsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStorageOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CloudStorageOptionsResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2CloudStorageOptionsResponseArgs) ToGooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput() GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2CloudStorageOptionsResponseArgs) ToGooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CloudStorageOptionsResponseOutput).ToGooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2CloudStorageOptionsResponsePtrInput is an input type that accepts GooglePrivacyDlpV2CloudStorageOptionsResponseArgs, GooglePrivacyDlpV2CloudStorageOptionsResponsePtr and GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2CloudStorageOptionsResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2CloudStorageOptionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2CloudStorageOptionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput() GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput
-	ToGooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput
-}
-
-type googlePrivacyDlpV2CloudStorageOptionsResponsePtrType GooglePrivacyDlpV2CloudStorageOptionsResponseArgs
-
-func GooglePrivacyDlpV2CloudStorageOptionsResponsePtr(v *GooglePrivacyDlpV2CloudStorageOptionsResponseArgs) GooglePrivacyDlpV2CloudStorageOptionsResponsePtrInput {
-	return (*googlePrivacyDlpV2CloudStorageOptionsResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2CloudStorageOptionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2CloudStorageOptionsResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2CloudStorageOptionsResponsePtrType) ToGooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput() GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2CloudStorageOptionsResponsePtrType) ToGooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput)
-}
-
 // Options defining a file or a set of files within a Google Cloud Storage bucket.
 type GooglePrivacyDlpV2CloudStorageOptionsResponseOutput struct{ *pulumi.OutputState }
 
@@ -4136,16 +2707,6 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsResponseOutput) ToGooglePrivacyDlpV
 
 func (o GooglePrivacyDlpV2CloudStorageOptionsResponseOutput) ToGooglePrivacyDlpV2CloudStorageOptionsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStorageOptionsResponseOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2CloudStorageOptionsResponseOutput) ToGooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput() GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2CloudStorageOptionsResponseOutput) ToGooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2CloudStorageOptionsResponse) *GooglePrivacyDlpV2CloudStorageOptionsResponse {
-		return &v
-	}).(GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput)
 }
 
 // Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
@@ -4177,89 +2738,6 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsResponseOutput) FilesLimitPercent()
 
 func (o GooglePrivacyDlpV2CloudStorageOptionsResponseOutput) SampleMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStorageOptionsResponse) string { return v.SampleMethod }).(pulumi.StringOutput)
-}
-
-type GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2CloudStorageOptionsResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput) ToGooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput() GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput) ToGooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput) Elem() GooglePrivacyDlpV2CloudStorageOptionsResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageOptionsResponse) GooglePrivacyDlpV2CloudStorageOptionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2CloudStorageOptionsResponse
-		return ret
-	}).(GooglePrivacyDlpV2CloudStorageOptionsResponseOutput)
-}
-
-// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
-func (o GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput) BytesLimitPerFile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageOptionsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.BytesLimitPerFile
-	}).(pulumi.StringPtrOutput)
-}
-
-// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
-func (o GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput) BytesLimitPerFilePercent() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageOptionsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.BytesLimitPerFilePercent
-	}).(pulumi.IntPtrOutput)
-}
-
-// The set of one or more files to scan.
-func (o GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput) FileSet() GooglePrivacyDlpV2FileSetResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageOptionsResponse) *GooglePrivacyDlpV2FileSetResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.FileSet
-	}).(GooglePrivacyDlpV2FileSetResponsePtrOutput)
-}
-
-// List of file type groups to include in the scan. If empty, all files are scanned and available data format processors are applied. In addition, the binary content of the selected files is always scanned as well. Images are scanned only as binary if the specified region does not support image inspection and no file_types were specified. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.
-func (o GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput) FileTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageOptionsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.FileTypes
-	}).(pulumi.StringArrayOutput)
-}
-
-// Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0.
-func (o GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput) FilesLimitPercent() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageOptionsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.FilesLimitPercent
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput) SampleMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageOptionsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SampleMethod
-	}).(pulumi.StringPtrOutput)
 }
 
 // Message representing a single file or path in Cloud Storage.
@@ -4408,76 +2886,6 @@ type GooglePrivacyDlpV2CloudStoragePathResponse struct {
 	Path string `pulumi:"path"`
 }
 
-// GooglePrivacyDlpV2CloudStoragePathResponseInput is an input type that accepts GooglePrivacyDlpV2CloudStoragePathResponseArgs and GooglePrivacyDlpV2CloudStoragePathResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2CloudStoragePathResponseInput` via:
-//
-//          GooglePrivacyDlpV2CloudStoragePathResponseArgs{...}
-type GooglePrivacyDlpV2CloudStoragePathResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2CloudStoragePathResponseOutput() GooglePrivacyDlpV2CloudStoragePathResponseOutput
-	ToGooglePrivacyDlpV2CloudStoragePathResponseOutputWithContext(context.Context) GooglePrivacyDlpV2CloudStoragePathResponseOutput
-}
-
-// Message representing a single file or path in Cloud Storage.
-type GooglePrivacyDlpV2CloudStoragePathResponseArgs struct {
-	// A url representing a file or path (no wildcards) in Cloud Storage. Example: gs://[BUCKET_NAME]/dictionary.txt
-	Path pulumi.StringInput `pulumi:"path"`
-}
-
-func (GooglePrivacyDlpV2CloudStoragePathResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2CloudStoragePathResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2CloudStoragePathResponseArgs) ToGooglePrivacyDlpV2CloudStoragePathResponseOutput() GooglePrivacyDlpV2CloudStoragePathResponseOutput {
-	return i.ToGooglePrivacyDlpV2CloudStoragePathResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2CloudStoragePathResponseArgs) ToGooglePrivacyDlpV2CloudStoragePathResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStoragePathResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CloudStoragePathResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2CloudStoragePathResponseArgs) ToGooglePrivacyDlpV2CloudStoragePathResponsePtrOutput() GooglePrivacyDlpV2CloudStoragePathResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2CloudStoragePathResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2CloudStoragePathResponseArgs) ToGooglePrivacyDlpV2CloudStoragePathResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStoragePathResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CloudStoragePathResponseOutput).ToGooglePrivacyDlpV2CloudStoragePathResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2CloudStoragePathResponsePtrInput is an input type that accepts GooglePrivacyDlpV2CloudStoragePathResponseArgs, GooglePrivacyDlpV2CloudStoragePathResponsePtr and GooglePrivacyDlpV2CloudStoragePathResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2CloudStoragePathResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2CloudStoragePathResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2CloudStoragePathResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2CloudStoragePathResponsePtrOutput() GooglePrivacyDlpV2CloudStoragePathResponsePtrOutput
-	ToGooglePrivacyDlpV2CloudStoragePathResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2CloudStoragePathResponsePtrOutput
-}
-
-type googlePrivacyDlpV2CloudStoragePathResponsePtrType GooglePrivacyDlpV2CloudStoragePathResponseArgs
-
-func GooglePrivacyDlpV2CloudStoragePathResponsePtr(v *GooglePrivacyDlpV2CloudStoragePathResponseArgs) GooglePrivacyDlpV2CloudStoragePathResponsePtrInput {
-	return (*googlePrivacyDlpV2CloudStoragePathResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2CloudStoragePathResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2CloudStoragePathResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2CloudStoragePathResponsePtrType) ToGooglePrivacyDlpV2CloudStoragePathResponsePtrOutput() GooglePrivacyDlpV2CloudStoragePathResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2CloudStoragePathResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2CloudStoragePathResponsePtrType) ToGooglePrivacyDlpV2CloudStoragePathResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStoragePathResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CloudStoragePathResponsePtrOutput)
-}
-
 // Message representing a single file or path in Cloud Storage.
 type GooglePrivacyDlpV2CloudStoragePathResponseOutput struct{ *pulumi.OutputState }
 
@@ -4493,53 +2901,9 @@ func (o GooglePrivacyDlpV2CloudStoragePathResponseOutput) ToGooglePrivacyDlpV2Cl
 	return o
 }
 
-func (o GooglePrivacyDlpV2CloudStoragePathResponseOutput) ToGooglePrivacyDlpV2CloudStoragePathResponsePtrOutput() GooglePrivacyDlpV2CloudStoragePathResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2CloudStoragePathResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2CloudStoragePathResponseOutput) ToGooglePrivacyDlpV2CloudStoragePathResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStoragePathResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2CloudStoragePathResponse) *GooglePrivacyDlpV2CloudStoragePathResponse {
-		return &v
-	}).(GooglePrivacyDlpV2CloudStoragePathResponsePtrOutput)
-}
-
 // A url representing a file or path (no wildcards) in Cloud Storage. Example: gs://[BUCKET_NAME]/dictionary.txt
 func (o GooglePrivacyDlpV2CloudStoragePathResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStoragePathResponse) string { return v.Path }).(pulumi.StringOutput)
-}
-
-type GooglePrivacyDlpV2CloudStoragePathResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2CloudStoragePathResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2CloudStoragePathResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2CloudStoragePathResponsePtrOutput) ToGooglePrivacyDlpV2CloudStoragePathResponsePtrOutput() GooglePrivacyDlpV2CloudStoragePathResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2CloudStoragePathResponsePtrOutput) ToGooglePrivacyDlpV2CloudStoragePathResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStoragePathResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2CloudStoragePathResponsePtrOutput) Elem() GooglePrivacyDlpV2CloudStoragePathResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStoragePathResponse) GooglePrivacyDlpV2CloudStoragePathResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2CloudStoragePathResponse
-		return ret
-	}).(GooglePrivacyDlpV2CloudStoragePathResponseOutput)
-}
-
-// A url representing a file or path (no wildcards) in Cloud Storage. Example: gs://[BUCKET_NAME]/dictionary.txt
-func (o GooglePrivacyDlpV2CloudStoragePathResponsePtrOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStoragePathResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Path
-	}).(pulumi.StringPtrOutput)
 }
 
 // Message representing a set of files in a Cloud Storage bucket. Regular expressions are used to allow fine-grained control over which files in the bucket to include. Included files are those that match at least one item in `include_regex` and do not match any items in `exclude_regex`. Note that a file that matches items from both lists will _not_ be included. For a match to occur, the entire file path (i.e., everything in the url after the bucket name) must match the regular expression. For example, given the input `{bucket_name: "mybucket", include_regex: ["directory1/.*"], exclude_regex: ["directory1/excluded.*"]}`: * `gs://mybucket/directory1/myfile` will be included * `gs://mybucket/directory1/directory2/myfile` will be included (`.*` matches across `/`) * `gs://mybucket/directory0/directory1/myfile` will _not_ be included (the full path doesn't match any items in `include_regex`) * `gs://mybucket/directory1/excludedfile` will _not_ be included (the path matches an item in `exclude_regex`) If `include_regex` is left empty, it will match all files by default (this is equivalent to setting `include_regex: [".*"]`). Some other common use cases: * `{bucket_name: "mybucket", exclude_regex: [".*\.pdf"]}` will include all files in `mybucket` except for .pdf files * `{bucket_name: "mybucket", include_regex: ["directory/[^/]+"]}` will include all files directly under `gs://mybucket/directory/`, without matching across `/`
@@ -4730,80 +3094,6 @@ type GooglePrivacyDlpV2CloudStorageRegexFileSetResponse struct {
 	IncludeRegex []string `pulumi:"includeRegex"`
 }
 
-// GooglePrivacyDlpV2CloudStorageRegexFileSetResponseInput is an input type that accepts GooglePrivacyDlpV2CloudStorageRegexFileSetResponseArgs and GooglePrivacyDlpV2CloudStorageRegexFileSetResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2CloudStorageRegexFileSetResponseInput` via:
-//
-//          GooglePrivacyDlpV2CloudStorageRegexFileSetResponseArgs{...}
-type GooglePrivacyDlpV2CloudStorageRegexFileSetResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2CloudStorageRegexFileSetResponseOutput() GooglePrivacyDlpV2CloudStorageRegexFileSetResponseOutput
-	ToGooglePrivacyDlpV2CloudStorageRegexFileSetResponseOutputWithContext(context.Context) GooglePrivacyDlpV2CloudStorageRegexFileSetResponseOutput
-}
-
-// Message representing a set of files in a Cloud Storage bucket. Regular expressions are used to allow fine-grained control over which files in the bucket to include. Included files are those that match at least one item in `include_regex` and do not match any items in `exclude_regex`. Note that a file that matches items from both lists will _not_ be included. For a match to occur, the entire file path (i.e., everything in the url after the bucket name) must match the regular expression. For example, given the input `{bucket_name: "mybucket", include_regex: ["directory1/.*"], exclude_regex: ["directory1/excluded.*"]}`: * `gs://mybucket/directory1/myfile` will be included * `gs://mybucket/directory1/directory2/myfile` will be included (`.*` matches across `/`) * `gs://mybucket/directory0/directory1/myfile` will _not_ be included (the full path doesn't match any items in `include_regex`) * `gs://mybucket/directory1/excludedfile` will _not_ be included (the path matches an item in `exclude_regex`) If `include_regex` is left empty, it will match all files by default (this is equivalent to setting `include_regex: [".*"]`). Some other common use cases: * `{bucket_name: "mybucket", exclude_regex: [".*\.pdf"]}` will include all files in `mybucket` except for .pdf files * `{bucket_name: "mybucket", include_regex: ["directory/[^/]+"]}` will include all files directly under `gs://mybucket/directory/`, without matching across `/`
-type GooglePrivacyDlpV2CloudStorageRegexFileSetResponseArgs struct {
-	// The name of a Cloud Storage bucket. Required.
-	BucketName pulumi.StringInput `pulumi:"bucketName"`
-	// A list of regular expressions matching file paths to exclude. All files in the bucket that match at least one of these regular expressions will be excluded from the scan. Regular expressions use RE2 [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found under the google/re2 repository on GitHub.
-	ExcludeRegex pulumi.StringArrayInput `pulumi:"excludeRegex"`
-	// A list of regular expressions matching file paths to include. All files in the bucket that match at least one of these regular expressions will be included in the set of files, except for those that also match an item in `exclude_regex`. Leaving this field empty will match all files by default (this is equivalent to including `.*` in the list). Regular expressions use RE2 [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found under the google/re2 repository on GitHub.
-	IncludeRegex pulumi.StringArrayInput `pulumi:"includeRegex"`
-}
-
-func (GooglePrivacyDlpV2CloudStorageRegexFileSetResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2CloudStorageRegexFileSetResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2CloudStorageRegexFileSetResponseArgs) ToGooglePrivacyDlpV2CloudStorageRegexFileSetResponseOutput() GooglePrivacyDlpV2CloudStorageRegexFileSetResponseOutput {
-	return i.ToGooglePrivacyDlpV2CloudStorageRegexFileSetResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2CloudStorageRegexFileSetResponseArgs) ToGooglePrivacyDlpV2CloudStorageRegexFileSetResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStorageRegexFileSetResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CloudStorageRegexFileSetResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2CloudStorageRegexFileSetResponseArgs) ToGooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput() GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2CloudStorageRegexFileSetResponseArgs) ToGooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CloudStorageRegexFileSetResponseOutput).ToGooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrInput is an input type that accepts GooglePrivacyDlpV2CloudStorageRegexFileSetResponseArgs, GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtr and GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2CloudStorageRegexFileSetResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput() GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput
-	ToGooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput
-}
-
-type googlePrivacyDlpV2CloudStorageRegexFileSetResponsePtrType GooglePrivacyDlpV2CloudStorageRegexFileSetResponseArgs
-
-func GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtr(v *GooglePrivacyDlpV2CloudStorageRegexFileSetResponseArgs) GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrInput {
-	return (*googlePrivacyDlpV2CloudStorageRegexFileSetResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2CloudStorageRegexFileSetResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2CloudStorageRegexFileSetResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2CloudStorageRegexFileSetResponsePtrType) ToGooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput() GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2CloudStorageRegexFileSetResponsePtrType) ToGooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput)
-}
-
 // Message representing a set of files in a Cloud Storage bucket. Regular expressions are used to allow fine-grained control over which files in the bucket to include. Included files are those that match at least one item in `include_regex` and do not match any items in `exclude_regex`. Note that a file that matches items from both lists will _not_ be included. For a match to occur, the entire file path (i.e., everything in the url after the bucket name) must match the regular expression. For example, given the input `{bucket_name: "mybucket", include_regex: ["directory1/.*"], exclude_regex: ["directory1/excluded.*"]}`: * `gs://mybucket/directory1/myfile` will be included * `gs://mybucket/directory1/directory2/myfile` will be included (`.*` matches across `/`) * `gs://mybucket/directory0/directory1/myfile` will _not_ be included (the full path doesn't match any items in `include_regex`) * `gs://mybucket/directory1/excludedfile` will _not_ be included (the path matches an item in `exclude_regex`) If `include_regex` is left empty, it will match all files by default (this is equivalent to setting `include_regex: [".*"]`). Some other common use cases: * `{bucket_name: "mybucket", exclude_regex: [".*\.pdf"]}` will include all files in `mybucket` except for .pdf files * `{bucket_name: "mybucket", include_regex: ["directory/[^/]+"]}` will include all files directly under `gs://mybucket/directory/`, without matching across `/`
 type GooglePrivacyDlpV2CloudStorageRegexFileSetResponseOutput struct{ *pulumi.OutputState }
 
@@ -4819,16 +3109,6 @@ func (o GooglePrivacyDlpV2CloudStorageRegexFileSetResponseOutput) ToGooglePrivac
 	return o
 }
 
-func (o GooglePrivacyDlpV2CloudStorageRegexFileSetResponseOutput) ToGooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput() GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2CloudStorageRegexFileSetResponseOutput) ToGooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2CloudStorageRegexFileSetResponse) *GooglePrivacyDlpV2CloudStorageRegexFileSetResponse {
-		return &v
-	}).(GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput)
-}
-
 // The name of a Cloud Storage bucket. Required.
 func (o GooglePrivacyDlpV2CloudStorageRegexFileSetResponseOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStorageRegexFileSetResponse) string { return v.BucketName }).(pulumi.StringOutput)
@@ -4842,60 +3122,6 @@ func (o GooglePrivacyDlpV2CloudStorageRegexFileSetResponseOutput) ExcludeRegex()
 // A list of regular expressions matching file paths to include. All files in the bucket that match at least one of these regular expressions will be included in the set of files, except for those that also match an item in `exclude_regex`. Leaving this field empty will match all files by default (this is equivalent to including `.*` in the list). Regular expressions use RE2 [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found under the google/re2 repository on GitHub.
 func (o GooglePrivacyDlpV2CloudStorageRegexFileSetResponseOutput) IncludeRegex() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStorageRegexFileSetResponse) []string { return v.IncludeRegex }).(pulumi.StringArrayOutput)
-}
-
-type GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2CloudStorageRegexFileSetResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput) ToGooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput() GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput) ToGooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput) Elem() GooglePrivacyDlpV2CloudStorageRegexFileSetResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageRegexFileSetResponse) GooglePrivacyDlpV2CloudStorageRegexFileSetResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2CloudStorageRegexFileSetResponse
-		return ret
-	}).(GooglePrivacyDlpV2CloudStorageRegexFileSetResponseOutput)
-}
-
-// The name of a Cloud Storage bucket. Required.
-func (o GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput) BucketName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageRegexFileSetResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.BucketName
-	}).(pulumi.StringPtrOutput)
-}
-
-// A list of regular expressions matching file paths to exclude. All files in the bucket that match at least one of these regular expressions will be excluded from the scan. Regular expressions use RE2 [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found under the google/re2 repository on GitHub.
-func (o GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput) ExcludeRegex() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageRegexFileSetResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExcludeRegex
-	}).(pulumi.StringArrayOutput)
-}
-
-// A list of regular expressions matching file paths to include. All files in the bucket that match at least one of these regular expressions will be included in the set of files, except for those that also match an item in `exclude_regex`. Leaving this field empty will match all files by default (this is equivalent to including `.*` in the list). Regular expressions use RE2 [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found under the google/re2 repository on GitHub.
-func (o GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput) IncludeRegex() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageRegexFileSetResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.IncludeRegex
-	}).(pulumi.StringArrayOutput)
 }
 
 // The field type of `value` and `field` do not need to match to be considered equal, but not all comparisons are possible. EQUAL_TO and NOT_EQUAL_TO attempt to compare even with incompatible types, but all other comparisons are invalid with incompatible types. A `value` of type: - `string` can be compared against all other types - `boolean` can only be compared against other booleans - `integer` can be compared against doubles or a string if the string value can be parsed as an integer. - `double` can be compared against integers or a string if the string can be parsed as a double. - `Timestamp` can be compared against strings in RFC 3339 date string format. - `TimeOfDay` can be compared against timestamps and strings in the format of 'HH:mm:ss'. If we fail to compare do to type mismatch, a warning will be given and the condition will evaluate to false.
@@ -5024,64 +3250,6 @@ type GooglePrivacyDlpV2ConditionResponse struct {
 	Operator string `pulumi:"operator"`
 	// Value to compare against. [Mandatory, except for `EXISTS` tests.]
 	Value GooglePrivacyDlpV2ValueResponse `pulumi:"value"`
-}
-
-// GooglePrivacyDlpV2ConditionResponseInput is an input type that accepts GooglePrivacyDlpV2ConditionResponseArgs and GooglePrivacyDlpV2ConditionResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2ConditionResponseInput` via:
-//
-//          GooglePrivacyDlpV2ConditionResponseArgs{...}
-type GooglePrivacyDlpV2ConditionResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2ConditionResponseOutput() GooglePrivacyDlpV2ConditionResponseOutput
-	ToGooglePrivacyDlpV2ConditionResponseOutputWithContext(context.Context) GooglePrivacyDlpV2ConditionResponseOutput
-}
-
-// The field type of `value` and `field` do not need to match to be considered equal, but not all comparisons are possible. EQUAL_TO and NOT_EQUAL_TO attempt to compare even with incompatible types, but all other comparisons are invalid with incompatible types. A `value` of type: - `string` can be compared against all other types - `boolean` can only be compared against other booleans - `integer` can be compared against doubles or a string if the string value can be parsed as an integer. - `double` can be compared against integers or a string if the string can be parsed as a double. - `Timestamp` can be compared against strings in RFC 3339 date string format. - `TimeOfDay` can be compared against timestamps and strings in the format of 'HH:mm:ss'. If we fail to compare do to type mismatch, a warning will be given and the condition will evaluate to false.
-type GooglePrivacyDlpV2ConditionResponseArgs struct {
-	// Field within the record this condition is evaluated against.
-	Field GooglePrivacyDlpV2FieldIdResponseInput `pulumi:"field"`
-	// Operator used to compare the field or infoType to the value.
-	Operator pulumi.StringInput `pulumi:"operator"`
-	// Value to compare against. [Mandatory, except for `EXISTS` tests.]
-	Value GooglePrivacyDlpV2ValueResponseInput `pulumi:"value"`
-}
-
-func (GooglePrivacyDlpV2ConditionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2ConditionResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2ConditionResponseArgs) ToGooglePrivacyDlpV2ConditionResponseOutput() GooglePrivacyDlpV2ConditionResponseOutput {
-	return i.ToGooglePrivacyDlpV2ConditionResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2ConditionResponseArgs) ToGooglePrivacyDlpV2ConditionResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ConditionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ConditionResponseOutput)
-}
-
-// GooglePrivacyDlpV2ConditionResponseArrayInput is an input type that accepts GooglePrivacyDlpV2ConditionResponseArray and GooglePrivacyDlpV2ConditionResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2ConditionResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2ConditionResponseArray{ GooglePrivacyDlpV2ConditionResponseArgs{...} }
-type GooglePrivacyDlpV2ConditionResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2ConditionResponseArrayOutput() GooglePrivacyDlpV2ConditionResponseArrayOutput
-	ToGooglePrivacyDlpV2ConditionResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2ConditionResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2ConditionResponseArray []GooglePrivacyDlpV2ConditionResponseInput
-
-func (GooglePrivacyDlpV2ConditionResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2ConditionResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2ConditionResponseArray) ToGooglePrivacyDlpV2ConditionResponseArrayOutput() GooglePrivacyDlpV2ConditionResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2ConditionResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2ConditionResponseArray) ToGooglePrivacyDlpV2ConditionResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ConditionResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ConditionResponseArrayOutput)
 }
 
 // The field type of `value` and `field` do not need to match to be considered equal, but not all comparisons are possible. EQUAL_TO and NOT_EQUAL_TO attempt to compare even with incompatible types, but all other comparisons are invalid with incompatible types. A `value` of type: - `string` can be compared against all other types - `boolean` can only be compared against other booleans - `integer` can be compared against doubles or a string if the string value can be parsed as an integer. - `double` can be compared against integers or a string if the string can be parsed as a double. - `Timestamp` can be compared against strings in RFC 3339 date string format. - `TimeOfDay` can be compared against timestamps and strings in the format of 'HH:mm:ss'. If we fail to compare do to type mismatch, a warning will be given and the condition will evaluate to false.
@@ -5278,35 +3446,6 @@ func (o GooglePrivacyDlpV2ConditionsPtrOutput) Conditions() GooglePrivacyDlpV2Co
 type GooglePrivacyDlpV2ConditionsResponse struct {
 	// A collection of conditions.
 	Conditions []GooglePrivacyDlpV2ConditionResponse `pulumi:"conditions"`
-}
-
-// GooglePrivacyDlpV2ConditionsResponseInput is an input type that accepts GooglePrivacyDlpV2ConditionsResponseArgs and GooglePrivacyDlpV2ConditionsResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2ConditionsResponseInput` via:
-//
-//          GooglePrivacyDlpV2ConditionsResponseArgs{...}
-type GooglePrivacyDlpV2ConditionsResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2ConditionsResponseOutput() GooglePrivacyDlpV2ConditionsResponseOutput
-	ToGooglePrivacyDlpV2ConditionsResponseOutputWithContext(context.Context) GooglePrivacyDlpV2ConditionsResponseOutput
-}
-
-// A collection of conditions.
-type GooglePrivacyDlpV2ConditionsResponseArgs struct {
-	// A collection of conditions.
-	Conditions GooglePrivacyDlpV2ConditionResponseArrayInput `pulumi:"conditions"`
-}
-
-func (GooglePrivacyDlpV2ConditionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2ConditionsResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2ConditionsResponseArgs) ToGooglePrivacyDlpV2ConditionsResponseOutput() GooglePrivacyDlpV2ConditionsResponseOutput {
-	return i.ToGooglePrivacyDlpV2ConditionsResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2ConditionsResponseArgs) ToGooglePrivacyDlpV2ConditionsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ConditionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ConditionsResponseOutput)
 }
 
 // A collection of conditions.
@@ -5521,39 +3660,6 @@ type GooglePrivacyDlpV2CryptoDeterministicConfigResponse struct {
 	SurrogateInfoType GooglePrivacyDlpV2InfoTypeResponse `pulumi:"surrogateInfoType"`
 }
 
-// GooglePrivacyDlpV2CryptoDeterministicConfigResponseInput is an input type that accepts GooglePrivacyDlpV2CryptoDeterministicConfigResponseArgs and GooglePrivacyDlpV2CryptoDeterministicConfigResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2CryptoDeterministicConfigResponseInput` via:
-//
-//          GooglePrivacyDlpV2CryptoDeterministicConfigResponseArgs{...}
-type GooglePrivacyDlpV2CryptoDeterministicConfigResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2CryptoDeterministicConfigResponseOutput() GooglePrivacyDlpV2CryptoDeterministicConfigResponseOutput
-	ToGooglePrivacyDlpV2CryptoDeterministicConfigResponseOutputWithContext(context.Context) GooglePrivacyDlpV2CryptoDeterministicConfigResponseOutput
-}
-
-// Pseudonymization method that generates deterministic encryption for the given input. Outputs a base64 encoded representation of the encrypted output. Uses AES-SIV based on the RFC https://tools.ietf.org/html/rfc5297.
-type GooglePrivacyDlpV2CryptoDeterministicConfigResponseArgs struct {
-	// A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well. If the context is not set, plaintext would be used as is for encryption. If the context is set but: 1. there is no record present when transforming a given value or 2. the field is not present when transforming a given value, plaintext would be used as is for encryption. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s.
-	Context GooglePrivacyDlpV2FieldIdResponseInput `pulumi:"context"`
-	// The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
-	CryptoKey GooglePrivacyDlpV2CryptoKeyResponseInput `pulumi:"cryptoKey"`
-	// The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate} For example, if the name of custom info type is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text. Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text. In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either - reverse a surrogate that does not correspond to an actual identifier - be unable to parse the surrogate and result in an error Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE.
-	SurrogateInfoType GooglePrivacyDlpV2InfoTypeResponseInput `pulumi:"surrogateInfoType"`
-}
-
-func (GooglePrivacyDlpV2CryptoDeterministicConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2CryptoDeterministicConfigResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2CryptoDeterministicConfigResponseArgs) ToGooglePrivacyDlpV2CryptoDeterministicConfigResponseOutput() GooglePrivacyDlpV2CryptoDeterministicConfigResponseOutput {
-	return i.ToGooglePrivacyDlpV2CryptoDeterministicConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2CryptoDeterministicConfigResponseArgs) ToGooglePrivacyDlpV2CryptoDeterministicConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CryptoDeterministicConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CryptoDeterministicConfigResponseOutput)
-}
-
 // Pseudonymization method that generates deterministic encryption for the given input. Outputs a base64 encoded representation of the encrypted output. Uses AES-SIV based on the RFC https://tools.ietf.org/html/rfc5297.
 type GooglePrivacyDlpV2CryptoDeterministicConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -5734,35 +3840,6 @@ func (o GooglePrivacyDlpV2CryptoHashConfigPtrOutput) CryptoKey() GooglePrivacyDl
 type GooglePrivacyDlpV2CryptoHashConfigResponse struct {
 	// The key used by the hash function.
 	CryptoKey GooglePrivacyDlpV2CryptoKeyResponse `pulumi:"cryptoKey"`
-}
-
-// GooglePrivacyDlpV2CryptoHashConfigResponseInput is an input type that accepts GooglePrivacyDlpV2CryptoHashConfigResponseArgs and GooglePrivacyDlpV2CryptoHashConfigResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2CryptoHashConfigResponseInput` via:
-//
-//          GooglePrivacyDlpV2CryptoHashConfigResponseArgs{...}
-type GooglePrivacyDlpV2CryptoHashConfigResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2CryptoHashConfigResponseOutput() GooglePrivacyDlpV2CryptoHashConfigResponseOutput
-	ToGooglePrivacyDlpV2CryptoHashConfigResponseOutputWithContext(context.Context) GooglePrivacyDlpV2CryptoHashConfigResponseOutput
-}
-
-// Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes. Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=). Currently, only string and integer values can be hashed. See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
-type GooglePrivacyDlpV2CryptoHashConfigResponseArgs struct {
-	// The key used by the hash function.
-	CryptoKey GooglePrivacyDlpV2CryptoKeyResponseInput `pulumi:"cryptoKey"`
-}
-
-func (GooglePrivacyDlpV2CryptoHashConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2CryptoHashConfigResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2CryptoHashConfigResponseArgs) ToGooglePrivacyDlpV2CryptoHashConfigResponseOutput() GooglePrivacyDlpV2CryptoHashConfigResponseOutput {
-	return i.ToGooglePrivacyDlpV2CryptoHashConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2CryptoHashConfigResponseArgs) ToGooglePrivacyDlpV2CryptoHashConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CryptoHashConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CryptoHashConfigResponseOutput)
 }
 
 // Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes. Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=). Currently, only string and integer values can be hashed. See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
@@ -5973,39 +4050,6 @@ type GooglePrivacyDlpV2CryptoKeyResponse struct {
 	Transient GooglePrivacyDlpV2TransientCryptoKeyResponse `pulumi:"transient"`
 	// Unwrapped crypto key
 	Unwrapped GooglePrivacyDlpV2UnwrappedCryptoKeyResponse `pulumi:"unwrapped"`
-}
-
-// GooglePrivacyDlpV2CryptoKeyResponseInput is an input type that accepts GooglePrivacyDlpV2CryptoKeyResponseArgs and GooglePrivacyDlpV2CryptoKeyResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2CryptoKeyResponseInput` via:
-//
-//          GooglePrivacyDlpV2CryptoKeyResponseArgs{...}
-type GooglePrivacyDlpV2CryptoKeyResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2CryptoKeyResponseOutput() GooglePrivacyDlpV2CryptoKeyResponseOutput
-	ToGooglePrivacyDlpV2CryptoKeyResponseOutputWithContext(context.Context) GooglePrivacyDlpV2CryptoKeyResponseOutput
-}
-
-// This is a data encryption key (DEK) (as opposed to a key encryption key (KEK) stored by Cloud Key Management Service (Cloud KMS). When using Cloud KMS to wrap or unwrap a DEK, be sure to set an appropriate IAM policy on the KEK to ensure an attacker cannot unwrap the DEK.
-type GooglePrivacyDlpV2CryptoKeyResponseArgs struct {
-	// Key wrapped using Cloud KMS
-	KmsWrapped GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseInput `pulumi:"kmsWrapped"`
-	// Transient crypto key
-	Transient GooglePrivacyDlpV2TransientCryptoKeyResponseInput `pulumi:"transient"`
-	// Unwrapped crypto key
-	Unwrapped GooglePrivacyDlpV2UnwrappedCryptoKeyResponseInput `pulumi:"unwrapped"`
-}
-
-func (GooglePrivacyDlpV2CryptoKeyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2CryptoKeyResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2CryptoKeyResponseArgs) ToGooglePrivacyDlpV2CryptoKeyResponseOutput() GooglePrivacyDlpV2CryptoKeyResponseOutput {
-	return i.ToGooglePrivacyDlpV2CryptoKeyResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2CryptoKeyResponseArgs) ToGooglePrivacyDlpV2CryptoKeyResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CryptoKeyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CryptoKeyResponseOutput)
 }
 
 // This is a data encryption key (DEK) (as opposed to a key encryption key (KEK) stored by Cloud Key Management Service (Cloud KMS). When using Cloud KMS to wrap or unwrap a DEK, be sure to set an appropriate IAM policy on the KEK to ensure an attacker cannot unwrap the DEK.
@@ -6299,45 +4343,6 @@ type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponse struct {
 	SurrogateInfoType GooglePrivacyDlpV2InfoTypeResponse `pulumi:"surrogateInfoType"`
 }
 
-// GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseInput is an input type that accepts GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseArgs and GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseInput` via:
-//
-//          GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseArgs{...}
-type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseOutput() GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseOutput
-	ToGooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseOutputWithContext(context.Context) GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseOutput
-}
-
-// Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `ReidentifyContent` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See https://cloud.google.com/dlp/docs/pseudonymization to learn more. Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
-type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseArgs struct {
-	// Common alphabets.
-	CommonAlphabet pulumi.StringInput `pulumi:"commonAlphabet"`
-	// The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2
-	Context GooglePrivacyDlpV2FieldIdResponseInput `pulumi:"context"`
-	// The key used by the encryption algorithm.
-	CryptoKey GooglePrivacyDlpV2CryptoKeyResponseInput `pulumi:"cryptoKey"`
-	// This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range [2, 95]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is: 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|\:;"'<,>.?/
-	CustomAlphabet pulumi.StringInput `pulumi:"customAlphabet"`
-	// The native way to select the alphabet. Must be in the range [2, 95].
-	Radix pulumi.IntInput `pulumi:"radix"`
-	// The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info_type_name(surrogate_character_count):surrogate For example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text. In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE
-	SurrogateInfoType GooglePrivacyDlpV2InfoTypeResponseInput `pulumi:"surrogateInfoType"`
-}
-
-func (GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseArgs) ToGooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseOutput() GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseOutput {
-	return i.ToGooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseArgs) ToGooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseOutput)
-}
-
 // Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `ReidentifyContent` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See https://cloud.google.com/dlp/docs/pseudonymization to learn more. Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
 type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -6574,74 +4579,6 @@ type GooglePrivacyDlpV2CustomInfoTypeResponse struct {
 	StoredType GooglePrivacyDlpV2StoredTypeResponse `pulumi:"storedType"`
 	// Message for detecting output from deidentification transformations that support reversing.
 	SurrogateType GooglePrivacyDlpV2SurrogateTypeResponse `pulumi:"surrogateType"`
-}
-
-// GooglePrivacyDlpV2CustomInfoTypeResponseInput is an input type that accepts GooglePrivacyDlpV2CustomInfoTypeResponseArgs and GooglePrivacyDlpV2CustomInfoTypeResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2CustomInfoTypeResponseInput` via:
-//
-//          GooglePrivacyDlpV2CustomInfoTypeResponseArgs{...}
-type GooglePrivacyDlpV2CustomInfoTypeResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2CustomInfoTypeResponseOutput() GooglePrivacyDlpV2CustomInfoTypeResponseOutput
-	ToGooglePrivacyDlpV2CustomInfoTypeResponseOutputWithContext(context.Context) GooglePrivacyDlpV2CustomInfoTypeResponseOutput
-}
-
-// Custom information type provided by the user. Used to find domain-specific sensitive information configurable to the data in question.
-type GooglePrivacyDlpV2CustomInfoTypeResponseArgs struct {
-	// Set of detection rules to apply to all findings of this CustomInfoType. Rules are applied in order that they are specified. Not supported for the `surrogate_type` CustomInfoType.
-	DetectionRules GooglePrivacyDlpV2DetectionRuleResponseArrayInput `pulumi:"detectionRules"`
-	// A list of phrases to detect as a CustomInfoType.
-	Dictionary GooglePrivacyDlpV2DictionaryResponseInput `pulumi:"dictionary"`
-	// If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
-	ExclusionType pulumi.StringInput `pulumi:"exclusionType"`
-	// CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing infoTypes and that infoType is specified in `InspectContent.info_types` field. Specifying the latter adds findings to the one detected by the system. If built-in info type is not specified in `InspectContent.info_types` list then the name is treated as a custom info type.
-	InfoType GooglePrivacyDlpV2InfoTypeResponseInput `pulumi:"infoType"`
-	// Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria specified by the rule. Defaults to `VERY_LIKELY` if not specified.
-	Likelihood pulumi.StringInput `pulumi:"likelihood"`
-	// Regular expression based CustomInfoType.
-	Regex GooglePrivacyDlpV2RegexResponseInput `pulumi:"regex"`
-	// Load an existing `StoredInfoType` resource for use in `InspectDataSource`. Not currently supported in `InspectContent`.
-	StoredType GooglePrivacyDlpV2StoredTypeResponseInput `pulumi:"storedType"`
-	// Message for detecting output from deidentification transformations that support reversing.
-	SurrogateType GooglePrivacyDlpV2SurrogateTypeResponseInput `pulumi:"surrogateType"`
-}
-
-func (GooglePrivacyDlpV2CustomInfoTypeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2CustomInfoTypeResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2CustomInfoTypeResponseArgs) ToGooglePrivacyDlpV2CustomInfoTypeResponseOutput() GooglePrivacyDlpV2CustomInfoTypeResponseOutput {
-	return i.ToGooglePrivacyDlpV2CustomInfoTypeResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2CustomInfoTypeResponseArgs) ToGooglePrivacyDlpV2CustomInfoTypeResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CustomInfoTypeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CustomInfoTypeResponseOutput)
-}
-
-// GooglePrivacyDlpV2CustomInfoTypeResponseArrayInput is an input type that accepts GooglePrivacyDlpV2CustomInfoTypeResponseArray and GooglePrivacyDlpV2CustomInfoTypeResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2CustomInfoTypeResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2CustomInfoTypeResponseArray{ GooglePrivacyDlpV2CustomInfoTypeResponseArgs{...} }
-type GooglePrivacyDlpV2CustomInfoTypeResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2CustomInfoTypeResponseArrayOutput() GooglePrivacyDlpV2CustomInfoTypeResponseArrayOutput
-	ToGooglePrivacyDlpV2CustomInfoTypeResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2CustomInfoTypeResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2CustomInfoTypeResponseArray []GooglePrivacyDlpV2CustomInfoTypeResponseInput
-
-func (GooglePrivacyDlpV2CustomInfoTypeResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2CustomInfoTypeResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2CustomInfoTypeResponseArray) ToGooglePrivacyDlpV2CustomInfoTypeResponseArrayOutput() GooglePrivacyDlpV2CustomInfoTypeResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2CustomInfoTypeResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2CustomInfoTypeResponseArray) ToGooglePrivacyDlpV2CustomInfoTypeResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2CustomInfoTypeResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CustomInfoTypeResponseArrayOutput)
 }
 
 // Custom information type provided by the user. Used to find domain-specific sensitive information configurable to the data in question.
@@ -6894,78 +4831,6 @@ type GooglePrivacyDlpV2DatastoreOptionsResponse struct {
 	PartitionId GooglePrivacyDlpV2PartitionIdResponse `pulumi:"partitionId"`
 }
 
-// GooglePrivacyDlpV2DatastoreOptionsResponseInput is an input type that accepts GooglePrivacyDlpV2DatastoreOptionsResponseArgs and GooglePrivacyDlpV2DatastoreOptionsResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2DatastoreOptionsResponseInput` via:
-//
-//          GooglePrivacyDlpV2DatastoreOptionsResponseArgs{...}
-type GooglePrivacyDlpV2DatastoreOptionsResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2DatastoreOptionsResponseOutput() GooglePrivacyDlpV2DatastoreOptionsResponseOutput
-	ToGooglePrivacyDlpV2DatastoreOptionsResponseOutputWithContext(context.Context) GooglePrivacyDlpV2DatastoreOptionsResponseOutput
-}
-
-// Options defining a data set within Google Cloud Datastore.
-type GooglePrivacyDlpV2DatastoreOptionsResponseArgs struct {
-	// The kind to process.
-	Kind GooglePrivacyDlpV2KindExpressionResponseInput `pulumi:"kind"`
-	// A partition ID identifies a grouping of entities. The grouping is always by project and namespace, however the namespace ID may be empty.
-	PartitionId GooglePrivacyDlpV2PartitionIdResponseInput `pulumi:"partitionId"`
-}
-
-func (GooglePrivacyDlpV2DatastoreOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2DatastoreOptionsResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2DatastoreOptionsResponseArgs) ToGooglePrivacyDlpV2DatastoreOptionsResponseOutput() GooglePrivacyDlpV2DatastoreOptionsResponseOutput {
-	return i.ToGooglePrivacyDlpV2DatastoreOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2DatastoreOptionsResponseArgs) ToGooglePrivacyDlpV2DatastoreOptionsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DatastoreOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DatastoreOptionsResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2DatastoreOptionsResponseArgs) ToGooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput() GooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2DatastoreOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2DatastoreOptionsResponseArgs) ToGooglePrivacyDlpV2DatastoreOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DatastoreOptionsResponseOutput).ToGooglePrivacyDlpV2DatastoreOptionsResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2DatastoreOptionsResponsePtrInput is an input type that accepts GooglePrivacyDlpV2DatastoreOptionsResponseArgs, GooglePrivacyDlpV2DatastoreOptionsResponsePtr and GooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2DatastoreOptionsResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2DatastoreOptionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2DatastoreOptionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput() GooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput
-	ToGooglePrivacyDlpV2DatastoreOptionsResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput
-}
-
-type googlePrivacyDlpV2DatastoreOptionsResponsePtrType GooglePrivacyDlpV2DatastoreOptionsResponseArgs
-
-func GooglePrivacyDlpV2DatastoreOptionsResponsePtr(v *GooglePrivacyDlpV2DatastoreOptionsResponseArgs) GooglePrivacyDlpV2DatastoreOptionsResponsePtrInput {
-	return (*googlePrivacyDlpV2DatastoreOptionsResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2DatastoreOptionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2DatastoreOptionsResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2DatastoreOptionsResponsePtrType) ToGooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput() GooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2DatastoreOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2DatastoreOptionsResponsePtrType) ToGooglePrivacyDlpV2DatastoreOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput)
-}
-
 // Options defining a data set within Google Cloud Datastore.
 type GooglePrivacyDlpV2DatastoreOptionsResponseOutput struct{ *pulumi.OutputState }
 
@@ -6981,16 +4846,6 @@ func (o GooglePrivacyDlpV2DatastoreOptionsResponseOutput) ToGooglePrivacyDlpV2Da
 	return o
 }
 
-func (o GooglePrivacyDlpV2DatastoreOptionsResponseOutput) ToGooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput() GooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2DatastoreOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2DatastoreOptionsResponseOutput) ToGooglePrivacyDlpV2DatastoreOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2DatastoreOptionsResponse) *GooglePrivacyDlpV2DatastoreOptionsResponse {
-		return &v
-	}).(GooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput)
-}
-
 // The kind to process.
 func (o GooglePrivacyDlpV2DatastoreOptionsResponseOutput) Kind() GooglePrivacyDlpV2KindExpressionResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2DatastoreOptionsResponse) GooglePrivacyDlpV2KindExpressionResponse {
@@ -7003,50 +4858,6 @@ func (o GooglePrivacyDlpV2DatastoreOptionsResponseOutput) PartitionId() GooglePr
 	return o.ApplyT(func(v GooglePrivacyDlpV2DatastoreOptionsResponse) GooglePrivacyDlpV2PartitionIdResponse {
 		return v.PartitionId
 	}).(GooglePrivacyDlpV2PartitionIdResponseOutput)
-}
-
-type GooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2DatastoreOptionsResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput) ToGooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput() GooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput) ToGooglePrivacyDlpV2DatastoreOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput) Elem() GooglePrivacyDlpV2DatastoreOptionsResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2DatastoreOptionsResponse) GooglePrivacyDlpV2DatastoreOptionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2DatastoreOptionsResponse
-		return ret
-	}).(GooglePrivacyDlpV2DatastoreOptionsResponseOutput)
-}
-
-// The kind to process.
-func (o GooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput) Kind() GooglePrivacyDlpV2KindExpressionResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2DatastoreOptionsResponse) *GooglePrivacyDlpV2KindExpressionResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Kind
-	}).(GooglePrivacyDlpV2KindExpressionResponsePtrOutput)
-}
-
-// A partition ID identifies a grouping of entities. The grouping is always by project and namespace, however the namespace ID may be empty.
-func (o GooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput) PartitionId() GooglePrivacyDlpV2PartitionIdResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2DatastoreOptionsResponse) *GooglePrivacyDlpV2PartitionIdResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.PartitionId
-	}).(GooglePrivacyDlpV2PartitionIdResponsePtrOutput)
 }
 
 // Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
@@ -7256,41 +5067,6 @@ type GooglePrivacyDlpV2DateShiftConfigResponse struct {
 	LowerBoundDays int `pulumi:"lowerBoundDays"`
 	// Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
 	UpperBoundDays int `pulumi:"upperBoundDays"`
-}
-
-// GooglePrivacyDlpV2DateShiftConfigResponseInput is an input type that accepts GooglePrivacyDlpV2DateShiftConfigResponseArgs and GooglePrivacyDlpV2DateShiftConfigResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2DateShiftConfigResponseInput` via:
-//
-//          GooglePrivacyDlpV2DateShiftConfigResponseArgs{...}
-type GooglePrivacyDlpV2DateShiftConfigResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2DateShiftConfigResponseOutput() GooglePrivacyDlpV2DateShiftConfigResponseOutput
-	ToGooglePrivacyDlpV2DateShiftConfigResponseOutputWithContext(context.Context) GooglePrivacyDlpV2DateShiftConfigResponseOutput
-}
-
-// Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
-type GooglePrivacyDlpV2DateShiftConfigResponseArgs struct {
-	// Points to the field that contains the context, for example, an entity id. If set, must also set cryptoKey. If set, shift will be consistent for the given context.
-	Context GooglePrivacyDlpV2FieldIdResponseInput `pulumi:"context"`
-	// Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and crypto_key. If set, must also set context. Can only be applied to table items.
-	CryptoKey GooglePrivacyDlpV2CryptoKeyResponseInput `pulumi:"cryptoKey"`
-	// For example, -5 means shift date to at most 5 days back in the past.
-	LowerBoundDays pulumi.IntInput `pulumi:"lowerBoundDays"`
-	// Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
-	UpperBoundDays pulumi.IntInput `pulumi:"upperBoundDays"`
-}
-
-func (GooglePrivacyDlpV2DateShiftConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2DateShiftConfigResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2DateShiftConfigResponseArgs) ToGooglePrivacyDlpV2DateShiftConfigResponseOutput() GooglePrivacyDlpV2DateShiftConfigResponseOutput {
-	return i.ToGooglePrivacyDlpV2DateShiftConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2DateShiftConfigResponseArgs) ToGooglePrivacyDlpV2DateShiftConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DateShiftConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DateShiftConfigResponseOutput)
 }
 
 // Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
@@ -7524,80 +5300,6 @@ type GooglePrivacyDlpV2DeidentifyConfigResponse struct {
 	TransformationErrorHandling GooglePrivacyDlpV2TransformationErrorHandlingResponse `pulumi:"transformationErrorHandling"`
 }
 
-// GooglePrivacyDlpV2DeidentifyConfigResponseInput is an input type that accepts GooglePrivacyDlpV2DeidentifyConfigResponseArgs and GooglePrivacyDlpV2DeidentifyConfigResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2DeidentifyConfigResponseInput` via:
-//
-//          GooglePrivacyDlpV2DeidentifyConfigResponseArgs{...}
-type GooglePrivacyDlpV2DeidentifyConfigResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2DeidentifyConfigResponseOutput() GooglePrivacyDlpV2DeidentifyConfigResponseOutput
-	ToGooglePrivacyDlpV2DeidentifyConfigResponseOutputWithContext(context.Context) GooglePrivacyDlpV2DeidentifyConfigResponseOutput
-}
-
-// The configuration that controls how the data will change.
-type GooglePrivacyDlpV2DeidentifyConfigResponseArgs struct {
-	// Treat the dataset as free-form text and apply the same free text transformation everywhere.
-	InfoTypeTransformations GooglePrivacyDlpV2InfoTypeTransformationsResponseInput `pulumi:"infoTypeTransformations"`
-	// Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
-	RecordTransformations GooglePrivacyDlpV2RecordTransformationsResponseInput `pulumi:"recordTransformations"`
-	// Mode for handling transformation errors. If left unspecified, the default mode is `TransformationErrorHandling.ThrowError`.
-	TransformationErrorHandling GooglePrivacyDlpV2TransformationErrorHandlingResponseInput `pulumi:"transformationErrorHandling"`
-}
-
-func (GooglePrivacyDlpV2DeidentifyConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2DeidentifyConfigResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2DeidentifyConfigResponseArgs) ToGooglePrivacyDlpV2DeidentifyConfigResponseOutput() GooglePrivacyDlpV2DeidentifyConfigResponseOutput {
-	return i.ToGooglePrivacyDlpV2DeidentifyConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2DeidentifyConfigResponseArgs) ToGooglePrivacyDlpV2DeidentifyConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DeidentifyConfigResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2DeidentifyConfigResponseArgs) ToGooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput() GooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2DeidentifyConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2DeidentifyConfigResponseArgs) ToGooglePrivacyDlpV2DeidentifyConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DeidentifyConfigResponseOutput).ToGooglePrivacyDlpV2DeidentifyConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2DeidentifyConfigResponsePtrInput is an input type that accepts GooglePrivacyDlpV2DeidentifyConfigResponseArgs, GooglePrivacyDlpV2DeidentifyConfigResponsePtr and GooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2DeidentifyConfigResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2DeidentifyConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2DeidentifyConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput() GooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput
-	ToGooglePrivacyDlpV2DeidentifyConfigResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput
-}
-
-type googlePrivacyDlpV2DeidentifyConfigResponsePtrType GooglePrivacyDlpV2DeidentifyConfigResponseArgs
-
-func GooglePrivacyDlpV2DeidentifyConfigResponsePtr(v *GooglePrivacyDlpV2DeidentifyConfigResponseArgs) GooglePrivacyDlpV2DeidentifyConfigResponsePtrInput {
-	return (*googlePrivacyDlpV2DeidentifyConfigResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2DeidentifyConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2DeidentifyConfigResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2DeidentifyConfigResponsePtrType) ToGooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput() GooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2DeidentifyConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2DeidentifyConfigResponsePtrType) ToGooglePrivacyDlpV2DeidentifyConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput)
-}
-
 // The configuration that controls how the data will change.
 type GooglePrivacyDlpV2DeidentifyConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -7611,16 +5313,6 @@ func (o GooglePrivacyDlpV2DeidentifyConfigResponseOutput) ToGooglePrivacyDlpV2De
 
 func (o GooglePrivacyDlpV2DeidentifyConfigResponseOutput) ToGooglePrivacyDlpV2DeidentifyConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyConfigResponseOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2DeidentifyConfigResponseOutput) ToGooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput() GooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2DeidentifyConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2DeidentifyConfigResponseOutput) ToGooglePrivacyDlpV2DeidentifyConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2DeidentifyConfigResponse) *GooglePrivacyDlpV2DeidentifyConfigResponse {
-		return &v
-	}).(GooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput)
 }
 
 // Treat the dataset as free-form text and apply the same free text transformation everywhere.
@@ -7642,60 +5334,6 @@ func (o GooglePrivacyDlpV2DeidentifyConfigResponseOutput) TransformationErrorHan
 	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyConfigResponse) GooglePrivacyDlpV2TransformationErrorHandlingResponse {
 		return v.TransformationErrorHandling
 	}).(GooglePrivacyDlpV2TransformationErrorHandlingResponseOutput)
-}
-
-type GooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2DeidentifyConfigResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput) ToGooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput() GooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput) ToGooglePrivacyDlpV2DeidentifyConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput) Elem() GooglePrivacyDlpV2DeidentifyConfigResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2DeidentifyConfigResponse) GooglePrivacyDlpV2DeidentifyConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2DeidentifyConfigResponse
-		return ret
-	}).(GooglePrivacyDlpV2DeidentifyConfigResponseOutput)
-}
-
-// Treat the dataset as free-form text and apply the same free text transformation everywhere.
-func (o GooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput) InfoTypeTransformations() GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2DeidentifyConfigResponse) *GooglePrivacyDlpV2InfoTypeTransformationsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.InfoTypeTransformations
-	}).(GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput)
-}
-
-// Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
-func (o GooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput) RecordTransformations() GooglePrivacyDlpV2RecordTransformationsResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2DeidentifyConfigResponse) *GooglePrivacyDlpV2RecordTransformationsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.RecordTransformations
-	}).(GooglePrivacyDlpV2RecordTransformationsResponsePtrOutput)
-}
-
-// Mode for handling transformation errors. If left unspecified, the default mode is `TransformationErrorHandling.ThrowError`.
-func (o GooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput) TransformationErrorHandling() GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2DeidentifyConfigResponse) *GooglePrivacyDlpV2TransformationErrorHandlingResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.TransformationErrorHandling
-	}).(GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput)
 }
 
 // δ-presence metric, used to estimate how likely it is for an attacker to figure out that one given individual appears in a de-identified dataset. Similarly to the k-map metric, we cannot compute δ-presence exactly without knowing the attack dataset, so we use a statistical model instead.
@@ -7888,80 +5526,6 @@ type GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse struct {
 	RegionCode string `pulumi:"regionCode"`
 }
 
-// GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseInput is an input type that accepts GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseArgs and GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseInput` via:
-//
-//          GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseArgs{...}
-type GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutput() GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutput
-	ToGooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutputWithContext(context.Context) GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutput
-}
-
-// δ-presence metric, used to estimate how likely it is for an attacker to figure out that one given individual appears in a de-identified dataset. Similarly to the k-map metric, we cannot compute δ-presence exactly without knowing the attack dataset, so we use a statistical model instead.
-type GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseArgs struct {
-	// Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-identifiers field must appear in exactly one field of one auxiliary table.
-	AuxiliaryTables GooglePrivacyDlpV2StatisticalTableResponseArrayInput `pulumi:"auxiliaryTables"`
-	// Fields considered to be quasi-identifiers. No two fields can have the same tag.
-	QuasiIds GooglePrivacyDlpV2QuasiIdResponseArrayInput `pulumi:"quasiIds"`
-	// ISO 3166-1 alpha-2 region code to use in the statistical modeling. Set if no column is tagged with a region-specific InfoType (like US_ZIP_5) or a region code.
-	RegionCode pulumi.StringInput `pulumi:"regionCode"`
-}
-
-func (GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseArgs) ToGooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutput() GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutput {
-	return i.ToGooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseArgs) ToGooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseArgs) ToGooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput() GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseArgs) ToGooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutput).ToGooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrInput is an input type that accepts GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseArgs, GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtr and GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput() GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput
-	ToGooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput
-}
-
-type googlePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrType GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseArgs
-
-func GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtr(v *GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseArgs) GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrInput {
-	return (*googlePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrType) ToGooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput() GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrType) ToGooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput)
-}
-
 // δ-presence metric, used to estimate how likely it is for an attacker to figure out that one given individual appears in a de-identified dataset. Similarly to the k-map metric, we cannot compute δ-presence exactly without knowing the attack dataset, so we use a statistical model instead.
 type GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -7975,16 +5539,6 @@ func (o GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutput) ToGoogleP
 
 func (o GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutput) ToGooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutput) ToGooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput() GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutput) ToGooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse) *GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse {
-		return &v
-	}).(GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput)
 }
 
 // Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-identifiers field must appear in exactly one field of one auxiliary table.
@@ -8006,60 +5560,6 @@ func (o GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutput) RegionCod
 	return o.ApplyT(func(v GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse) string { return v.RegionCode }).(pulumi.StringOutput)
 }
 
-type GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput) ToGooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput() GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput) ToGooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput) Elem() GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse) GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse
-		return ret
-	}).(GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutput)
-}
-
-// Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-identifiers field must appear in exactly one field of one auxiliary table.
-func (o GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput) AuxiliaryTables() GooglePrivacyDlpV2StatisticalTableResponseArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse) []GooglePrivacyDlpV2StatisticalTableResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AuxiliaryTables
-	}).(GooglePrivacyDlpV2StatisticalTableResponseArrayOutput)
-}
-
-// Fields considered to be quasi-identifiers. No two fields can have the same tag.
-func (o GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput) QuasiIds() GooglePrivacyDlpV2QuasiIdResponseArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse) []GooglePrivacyDlpV2QuasiIdResponse {
-		if v == nil {
-			return nil
-		}
-		return v.QuasiIds
-	}).(GooglePrivacyDlpV2QuasiIdResponseArrayOutput)
-}
-
-// ISO 3166-1 alpha-2 region code to use in the statistical modeling. Set if no column is tagged with a region-specific InfoType (like US_ZIP_5) or a region code.
-func (o GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput) RegionCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RegionCode
-	}).(pulumi.StringPtrOutput)
-}
-
 // A DeltaPresenceEstimationHistogramBucket message with the following values: min_probability: 0.1 max_probability: 0.2 frequency: 42 means that there are 42 records for which δ is in [0.1, 0.2). An important particular case is when min_probability = max_probability = 1: then, every individual who shares this quasi-identifier combination is in the dataset.
 type GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse struct {
 	// Number of records within these probability bounds.
@@ -8072,68 +5572,6 @@ type GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse struct {
 	MaxProbability float64 `pulumi:"maxProbability"`
 	// Between 0 and 1.
 	MinProbability float64 `pulumi:"minProbability"`
-}
-
-// GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseInput is an input type that accepts GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArgs and GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseInput` via:
-//
-//          GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArgs{...}
-type GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseOutput() GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseOutput
-	ToGooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseOutputWithContext(context.Context) GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseOutput
-}
-
-// A DeltaPresenceEstimationHistogramBucket message with the following values: min_probability: 0.1 max_probability: 0.2 frequency: 42 means that there are 42 records for which δ is in [0.1, 0.2). An important particular case is when min_probability = max_probability = 1: then, every individual who shares this quasi-identifier combination is in the dataset.
-type GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArgs struct {
-	// Number of records within these probability bounds.
-	BucketSize pulumi.StringInput `pulumi:"bucketSize"`
-	// Total number of distinct quasi-identifier tuple values in this bucket.
-	BucketValueCount pulumi.StringInput `pulumi:"bucketValueCount"`
-	// Sample of quasi-identifier tuple values in this bucket. The total number of classes returned per bucket is capped at 20.
-	BucketValues GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArrayInput `pulumi:"bucketValues"`
-	// Always greater than or equal to min_probability.
-	MaxProbability pulumi.Float64Input `pulumi:"maxProbability"`
-	// Between 0 and 1.
-	MinProbability pulumi.Float64Input `pulumi:"minProbability"`
-}
-
-func (GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArgs) ToGooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseOutput() GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseOutput {
-	return i.ToGooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArgs) ToGooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseOutput)
-}
-
-// GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArrayInput is an input type that accepts GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArray and GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArray{ GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArgs{...} }
-type GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArrayOutput() GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArrayOutput
-	ToGooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArray []GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseInput
-
-func (GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArray) ToGooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArrayOutput() GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArray) ToGooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArrayOutput)
 }
 
 // A DeltaPresenceEstimationHistogramBucket message with the following values: min_probability: 0.1 max_probability: 0.2 frequency: 42 means that there are 42 records for which δ is in [0.1, 0.2). An important particular case is when min_probability = max_probability = 1: then, every individual who shares this quasi-identifier combination is in the dataset.
@@ -8212,62 +5650,6 @@ type GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse struct {
 	QuasiIdsValues []GooglePrivacyDlpV2ValueResponse `pulumi:"quasiIdsValues"`
 }
 
-// GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseInput is an input type that accepts GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArgs and GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseInput` via:
-//
-//          GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArgs{...}
-type GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseOutput() GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseOutput
-	ToGooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseOutputWithContext(context.Context) GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseOutput
-}
-
-// A tuple of values for the quasi-identifier columns.
-type GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArgs struct {
-	// The estimated probability that a given individual sharing these quasi-identifier values is in the dataset. This value, typically called δ, is the ratio between the number of records in the dataset with these quasi-identifier values, and the total number of individuals (inside *and* outside the dataset) with these quasi-identifier values. For example, if there are 15 individuals in the dataset who share the same quasi-identifier values, and an estimated 100 people in the entire population with these values, then δ is 0.15.
-	EstimatedProbability pulumi.Float64Input `pulumi:"estimatedProbability"`
-	// The quasi-identifier values.
-	QuasiIdsValues GooglePrivacyDlpV2ValueResponseArrayInput `pulumi:"quasiIdsValues"`
-}
-
-func (GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArgs) ToGooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseOutput() GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseOutput {
-	return i.ToGooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArgs) ToGooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseOutput)
-}
-
-// GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArrayInput is an input type that accepts GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArray and GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArray{ GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArgs{...} }
-type GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArrayOutput() GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArrayOutput
-	ToGooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArray []GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseInput
-
-func (GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArray) ToGooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArrayOutput() GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArray) ToGooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArrayOutput)
-}
-
 // A tuple of values for the quasi-identifier columns.
 type GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseOutput struct{ *pulumi.OutputState }
 
@@ -8323,76 +5705,6 @@ type GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse struct {
 	DeltaPresenceEstimationHistogram []GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse `pulumi:"deltaPresenceEstimationHistogram"`
 }
 
-// GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseInput is an input type that accepts GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseArgs and GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseInput` via:
-//
-//          GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseArgs{...}
-type GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2DeltaPresenceEstimationResultResponseOutput() GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseOutput
-	ToGooglePrivacyDlpV2DeltaPresenceEstimationResultResponseOutputWithContext(context.Context) GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseOutput
-}
-
-// Result of the δ-presence computation. Note that these results are an estimation, not exact values.
-type GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseArgs struct {
-	// The intervals [min_probability, max_probability) do not overlap. If a value doesn't correspond to any such interval, the associated frequency is zero. For example, the following records: {min_probability: 0, max_probability: 0.1, frequency: 17} {min_probability: 0.2, max_probability: 0.3, frequency: 42} {min_probability: 0.3, max_probability: 0.4, frequency: 99} mean that there are no record with an estimated probability in [0.1, 0.2) nor larger or equal to 0.4.
-	DeltaPresenceEstimationHistogram GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArrayInput `pulumi:"deltaPresenceEstimationHistogram"`
-}
-
-func (GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseArgs) ToGooglePrivacyDlpV2DeltaPresenceEstimationResultResponseOutput() GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseOutput {
-	return i.ToGooglePrivacyDlpV2DeltaPresenceEstimationResultResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseArgs) ToGooglePrivacyDlpV2DeltaPresenceEstimationResultResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseArgs) ToGooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput() GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseArgs) ToGooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseOutput).ToGooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrInput is an input type that accepts GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseArgs, GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtr and GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput() GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput
-	ToGooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput
-}
-
-type googlePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrType GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseArgs
-
-func GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtr(v *GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseArgs) GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrInput {
-	return (*googlePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrType) ToGooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput() GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrType) ToGooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput)
-}
-
 // Result of the δ-presence computation. Note that these results are an estimation, not exact values.
 type GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseOutput struct{ *pulumi.OutputState }
 
@@ -8408,53 +5720,9 @@ func (o GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseOutput) ToGoogleP
 	return o
 }
 
-func (o GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseOutput) ToGooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput() GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseOutput) ToGooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse) *GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse {
-		return &v
-	}).(GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput)
-}
-
 // The intervals [min_probability, max_probability) do not overlap. If a value doesn't correspond to any such interval, the associated frequency is zero. For example, the following records: {min_probability: 0, max_probability: 0.1, frequency: 17} {min_probability: 0.2, max_probability: 0.3, frequency: 42} {min_probability: 0.3, max_probability: 0.4, frequency: 99} mean that there are no record with an estimated probability in [0.1, 0.2) nor larger or equal to 0.4.
 func (o GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseOutput) DeltaPresenceEstimationHistogram() GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse) []GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse {
-		return v.DeltaPresenceEstimationHistogram
-	}).(GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArrayOutput)
-}
-
-type GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput) ToGooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput() GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput) ToGooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput) Elem() GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse) GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse
-		return ret
-	}).(GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseOutput)
-}
-
-// The intervals [min_probability, max_probability) do not overlap. If a value doesn't correspond to any such interval, the associated frequency is zero. For example, the following records: {min_probability: 0, max_probability: 0.1, frequency: 17} {min_probability: 0.2, max_probability: 0.3, frequency: 42} {min_probability: 0.3, max_probability: 0.4, frequency: 99} mean that there are no record with an estimated probability in [0.1, 0.2) nor larger or equal to 0.4.
-func (o GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput) DeltaPresenceEstimationHistogram() GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse) []GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse {
-		if v == nil {
-			return nil
-		}
 		return v.DeltaPresenceEstimationHistogram
 	}).(GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArrayOutput)
 }
@@ -8563,60 +5831,6 @@ func (o GooglePrivacyDlpV2DetectionRuleArrayOutput) Index(i pulumi.IntInput) Goo
 type GooglePrivacyDlpV2DetectionRuleResponse struct {
 	// Hotword-based detection rule.
 	HotwordRule GooglePrivacyDlpV2HotwordRuleResponse `pulumi:"hotwordRule"`
-}
-
-// GooglePrivacyDlpV2DetectionRuleResponseInput is an input type that accepts GooglePrivacyDlpV2DetectionRuleResponseArgs and GooglePrivacyDlpV2DetectionRuleResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2DetectionRuleResponseInput` via:
-//
-//          GooglePrivacyDlpV2DetectionRuleResponseArgs{...}
-type GooglePrivacyDlpV2DetectionRuleResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2DetectionRuleResponseOutput() GooglePrivacyDlpV2DetectionRuleResponseOutput
-	ToGooglePrivacyDlpV2DetectionRuleResponseOutputWithContext(context.Context) GooglePrivacyDlpV2DetectionRuleResponseOutput
-}
-
-// Deprecated; use `InspectionRuleSet` instead. Rule for modifying a `CustomInfoType` to alter behavior under certain circumstances, depending on the specific details of the rule. Not supported for the `surrogate_type` custom infoType.
-type GooglePrivacyDlpV2DetectionRuleResponseArgs struct {
-	// Hotword-based detection rule.
-	HotwordRule GooglePrivacyDlpV2HotwordRuleResponseInput `pulumi:"hotwordRule"`
-}
-
-func (GooglePrivacyDlpV2DetectionRuleResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2DetectionRuleResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2DetectionRuleResponseArgs) ToGooglePrivacyDlpV2DetectionRuleResponseOutput() GooglePrivacyDlpV2DetectionRuleResponseOutput {
-	return i.ToGooglePrivacyDlpV2DetectionRuleResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2DetectionRuleResponseArgs) ToGooglePrivacyDlpV2DetectionRuleResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DetectionRuleResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DetectionRuleResponseOutput)
-}
-
-// GooglePrivacyDlpV2DetectionRuleResponseArrayInput is an input type that accepts GooglePrivacyDlpV2DetectionRuleResponseArray and GooglePrivacyDlpV2DetectionRuleResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2DetectionRuleResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2DetectionRuleResponseArray{ GooglePrivacyDlpV2DetectionRuleResponseArgs{...} }
-type GooglePrivacyDlpV2DetectionRuleResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2DetectionRuleResponseArrayOutput() GooglePrivacyDlpV2DetectionRuleResponseArrayOutput
-	ToGooglePrivacyDlpV2DetectionRuleResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2DetectionRuleResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2DetectionRuleResponseArray []GooglePrivacyDlpV2DetectionRuleResponseInput
-
-func (GooglePrivacyDlpV2DetectionRuleResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2DetectionRuleResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2DetectionRuleResponseArray) ToGooglePrivacyDlpV2DetectionRuleResponseArrayOutput() GooglePrivacyDlpV2DetectionRuleResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2DetectionRuleResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2DetectionRuleResponseArray) ToGooglePrivacyDlpV2DetectionRuleResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DetectionRuleResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DetectionRuleResponseArrayOutput)
 }
 
 // Deprecated; use `InspectionRuleSet` instead. Rule for modifying a `CustomInfoType` to alter behavior under certain circumstances, depending on the specific details of the rule. Not supported for the `surrogate_type` custom infoType.
@@ -8828,78 +6042,6 @@ type GooglePrivacyDlpV2DictionaryResponse struct {
 	WordList GooglePrivacyDlpV2WordListResponse `pulumi:"wordList"`
 }
 
-// GooglePrivacyDlpV2DictionaryResponseInput is an input type that accepts GooglePrivacyDlpV2DictionaryResponseArgs and GooglePrivacyDlpV2DictionaryResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2DictionaryResponseInput` via:
-//
-//          GooglePrivacyDlpV2DictionaryResponseArgs{...}
-type GooglePrivacyDlpV2DictionaryResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2DictionaryResponseOutput() GooglePrivacyDlpV2DictionaryResponseOutput
-	ToGooglePrivacyDlpV2DictionaryResponseOutputWithContext(context.Context) GooglePrivacyDlpV2DictionaryResponseOutput
-}
-
-// Custom information type based on a dictionary of words or phrases. This can be used to match sensitive information specific to the data, such as a list of employee IDs or job titles. Dictionary words are case-insensitive and all characters other than letters and digits in the unicode [Basic Multilingual Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#Basic_Multilingual_Plane) will be replaced with whitespace when scanning for matches, so the dictionary phrase "Sam Johnson" will match all three phrases "sam johnson", "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters surrounding any match must be of a different type than the adjacent characters within the word, so letters must be next to non-letters and digits next to non-digits. For example, the dictionary word "jen" will match the first three letters of the text "jen123" but will return no matches for "jennifer". Dictionary words containing a large number of characters that are not letters or digits may result in unexpected findings because such characters are treated as whitespace. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries. For dictionaries that do not fit within these constraints, consider using `LargeCustomDictionaryConfig` in the `StoredInfoType` API.
-type GooglePrivacyDlpV2DictionaryResponseArgs struct {
-	// Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
-	CloudStoragePath GooglePrivacyDlpV2CloudStoragePathResponseInput `pulumi:"cloudStoragePath"`
-	// List of words or phrases to search for.
-	WordList GooglePrivacyDlpV2WordListResponseInput `pulumi:"wordList"`
-}
-
-func (GooglePrivacyDlpV2DictionaryResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2DictionaryResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2DictionaryResponseArgs) ToGooglePrivacyDlpV2DictionaryResponseOutput() GooglePrivacyDlpV2DictionaryResponseOutput {
-	return i.ToGooglePrivacyDlpV2DictionaryResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2DictionaryResponseArgs) ToGooglePrivacyDlpV2DictionaryResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DictionaryResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DictionaryResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2DictionaryResponseArgs) ToGooglePrivacyDlpV2DictionaryResponsePtrOutput() GooglePrivacyDlpV2DictionaryResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2DictionaryResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2DictionaryResponseArgs) ToGooglePrivacyDlpV2DictionaryResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DictionaryResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DictionaryResponseOutput).ToGooglePrivacyDlpV2DictionaryResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2DictionaryResponsePtrInput is an input type that accepts GooglePrivacyDlpV2DictionaryResponseArgs, GooglePrivacyDlpV2DictionaryResponsePtr and GooglePrivacyDlpV2DictionaryResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2DictionaryResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2DictionaryResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2DictionaryResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2DictionaryResponsePtrOutput() GooglePrivacyDlpV2DictionaryResponsePtrOutput
-	ToGooglePrivacyDlpV2DictionaryResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2DictionaryResponsePtrOutput
-}
-
-type googlePrivacyDlpV2DictionaryResponsePtrType GooglePrivacyDlpV2DictionaryResponseArgs
-
-func GooglePrivacyDlpV2DictionaryResponsePtr(v *GooglePrivacyDlpV2DictionaryResponseArgs) GooglePrivacyDlpV2DictionaryResponsePtrInput {
-	return (*googlePrivacyDlpV2DictionaryResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2DictionaryResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2DictionaryResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2DictionaryResponsePtrType) ToGooglePrivacyDlpV2DictionaryResponsePtrOutput() GooglePrivacyDlpV2DictionaryResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2DictionaryResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2DictionaryResponsePtrType) ToGooglePrivacyDlpV2DictionaryResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DictionaryResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DictionaryResponsePtrOutput)
-}
-
 // Custom information type based on a dictionary of words or phrases. This can be used to match sensitive information specific to the data, such as a list of employee IDs or job titles. Dictionary words are case-insensitive and all characters other than letters and digits in the unicode [Basic Multilingual Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#Basic_Multilingual_Plane) will be replaced with whitespace when scanning for matches, so the dictionary phrase "Sam Johnson" will match all three phrases "sam johnson", "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters surrounding any match must be of a different type than the adjacent characters within the word, so letters must be next to non-letters and digits next to non-digits. For example, the dictionary word "jen" will match the first three letters of the text "jen123" but will return no matches for "jennifer". Dictionary words containing a large number of characters that are not letters or digits may result in unexpected findings because such characters are treated as whitespace. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries. For dictionaries that do not fit within these constraints, consider using `LargeCustomDictionaryConfig` in the `StoredInfoType` API.
 type GooglePrivacyDlpV2DictionaryResponseOutput struct{ *pulumi.OutputState }
 
@@ -8915,16 +6057,6 @@ func (o GooglePrivacyDlpV2DictionaryResponseOutput) ToGooglePrivacyDlpV2Dictiona
 	return o
 }
 
-func (o GooglePrivacyDlpV2DictionaryResponseOutput) ToGooglePrivacyDlpV2DictionaryResponsePtrOutput() GooglePrivacyDlpV2DictionaryResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2DictionaryResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2DictionaryResponseOutput) ToGooglePrivacyDlpV2DictionaryResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DictionaryResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2DictionaryResponse) *GooglePrivacyDlpV2DictionaryResponse {
-		return &v
-	}).(GooglePrivacyDlpV2DictionaryResponsePtrOutput)
-}
-
 // Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
 func (o GooglePrivacyDlpV2DictionaryResponseOutput) CloudStoragePath() GooglePrivacyDlpV2CloudStoragePathResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2DictionaryResponse) GooglePrivacyDlpV2CloudStoragePathResponse {
@@ -8935,50 +6067,6 @@ func (o GooglePrivacyDlpV2DictionaryResponseOutput) CloudStoragePath() GooglePri
 // List of words or phrases to search for.
 func (o GooglePrivacyDlpV2DictionaryResponseOutput) WordList() GooglePrivacyDlpV2WordListResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2DictionaryResponse) GooglePrivacyDlpV2WordListResponse { return v.WordList }).(GooglePrivacyDlpV2WordListResponseOutput)
-}
-
-type GooglePrivacyDlpV2DictionaryResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2DictionaryResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2DictionaryResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2DictionaryResponsePtrOutput) ToGooglePrivacyDlpV2DictionaryResponsePtrOutput() GooglePrivacyDlpV2DictionaryResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2DictionaryResponsePtrOutput) ToGooglePrivacyDlpV2DictionaryResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DictionaryResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2DictionaryResponsePtrOutput) Elem() GooglePrivacyDlpV2DictionaryResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2DictionaryResponse) GooglePrivacyDlpV2DictionaryResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2DictionaryResponse
-		return ret
-	}).(GooglePrivacyDlpV2DictionaryResponseOutput)
-}
-
-// Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
-func (o GooglePrivacyDlpV2DictionaryResponsePtrOutput) CloudStoragePath() GooglePrivacyDlpV2CloudStoragePathResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2DictionaryResponse) *GooglePrivacyDlpV2CloudStoragePathResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.CloudStoragePath
-	}).(GooglePrivacyDlpV2CloudStoragePathResponsePtrOutput)
-}
-
-// List of words or phrases to search for.
-func (o GooglePrivacyDlpV2DictionaryResponsePtrOutput) WordList() GooglePrivacyDlpV2WordListResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2DictionaryResponse) *GooglePrivacyDlpV2WordListResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.WordList
-	}).(GooglePrivacyDlpV2WordListResponsePtrOutput)
 }
 
 // An entity in a dataset is a field or set of fields that correspond to a single person. For example, in medical records the `EntityId` might be a patient identifier, or for financial records it might be an account identifier. This message is used when generalizations or analysis must take into account that multiple rows correspond to the same entity.
@@ -9127,76 +6215,6 @@ type GooglePrivacyDlpV2EntityIdResponse struct {
 	Field GooglePrivacyDlpV2FieldIdResponse `pulumi:"field"`
 }
 
-// GooglePrivacyDlpV2EntityIdResponseInput is an input type that accepts GooglePrivacyDlpV2EntityIdResponseArgs and GooglePrivacyDlpV2EntityIdResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2EntityIdResponseInput` via:
-//
-//          GooglePrivacyDlpV2EntityIdResponseArgs{...}
-type GooglePrivacyDlpV2EntityIdResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2EntityIdResponseOutput() GooglePrivacyDlpV2EntityIdResponseOutput
-	ToGooglePrivacyDlpV2EntityIdResponseOutputWithContext(context.Context) GooglePrivacyDlpV2EntityIdResponseOutput
-}
-
-// An entity in a dataset is a field or set of fields that correspond to a single person. For example, in medical records the `EntityId` might be a patient identifier, or for financial records it might be an account identifier. This message is used when generalizations or analysis must take into account that multiple rows correspond to the same entity.
-type GooglePrivacyDlpV2EntityIdResponseArgs struct {
-	// Composite key indicating which field contains the entity identifier.
-	Field GooglePrivacyDlpV2FieldIdResponseInput `pulumi:"field"`
-}
-
-func (GooglePrivacyDlpV2EntityIdResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2EntityIdResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2EntityIdResponseArgs) ToGooglePrivacyDlpV2EntityIdResponseOutput() GooglePrivacyDlpV2EntityIdResponseOutput {
-	return i.ToGooglePrivacyDlpV2EntityIdResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2EntityIdResponseArgs) ToGooglePrivacyDlpV2EntityIdResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2EntityIdResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2EntityIdResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2EntityIdResponseArgs) ToGooglePrivacyDlpV2EntityIdResponsePtrOutput() GooglePrivacyDlpV2EntityIdResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2EntityIdResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2EntityIdResponseArgs) ToGooglePrivacyDlpV2EntityIdResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2EntityIdResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2EntityIdResponseOutput).ToGooglePrivacyDlpV2EntityIdResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2EntityIdResponsePtrInput is an input type that accepts GooglePrivacyDlpV2EntityIdResponseArgs, GooglePrivacyDlpV2EntityIdResponsePtr and GooglePrivacyDlpV2EntityIdResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2EntityIdResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2EntityIdResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2EntityIdResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2EntityIdResponsePtrOutput() GooglePrivacyDlpV2EntityIdResponsePtrOutput
-	ToGooglePrivacyDlpV2EntityIdResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2EntityIdResponsePtrOutput
-}
-
-type googlePrivacyDlpV2EntityIdResponsePtrType GooglePrivacyDlpV2EntityIdResponseArgs
-
-func GooglePrivacyDlpV2EntityIdResponsePtr(v *GooglePrivacyDlpV2EntityIdResponseArgs) GooglePrivacyDlpV2EntityIdResponsePtrInput {
-	return (*googlePrivacyDlpV2EntityIdResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2EntityIdResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2EntityIdResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2EntityIdResponsePtrType) ToGooglePrivacyDlpV2EntityIdResponsePtrOutput() GooglePrivacyDlpV2EntityIdResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2EntityIdResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2EntityIdResponsePtrType) ToGooglePrivacyDlpV2EntityIdResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2EntityIdResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2EntityIdResponsePtrOutput)
-}
-
 // An entity in a dataset is a field or set of fields that correspond to a single person. For example, in medical records the `EntityId` might be a patient identifier, or for financial records it might be an account identifier. This message is used when generalizations or analysis must take into account that multiple rows correspond to the same entity.
 type GooglePrivacyDlpV2EntityIdResponseOutput struct{ *pulumi.OutputState }
 
@@ -9212,53 +6230,9 @@ func (o GooglePrivacyDlpV2EntityIdResponseOutput) ToGooglePrivacyDlpV2EntityIdRe
 	return o
 }
 
-func (o GooglePrivacyDlpV2EntityIdResponseOutput) ToGooglePrivacyDlpV2EntityIdResponsePtrOutput() GooglePrivacyDlpV2EntityIdResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2EntityIdResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2EntityIdResponseOutput) ToGooglePrivacyDlpV2EntityIdResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2EntityIdResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2EntityIdResponse) *GooglePrivacyDlpV2EntityIdResponse {
-		return &v
-	}).(GooglePrivacyDlpV2EntityIdResponsePtrOutput)
-}
-
 // Composite key indicating which field contains the entity identifier.
 func (o GooglePrivacyDlpV2EntityIdResponseOutput) Field() GooglePrivacyDlpV2FieldIdResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2EntityIdResponse) GooglePrivacyDlpV2FieldIdResponse { return v.Field }).(GooglePrivacyDlpV2FieldIdResponseOutput)
-}
-
-type GooglePrivacyDlpV2EntityIdResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2EntityIdResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2EntityIdResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2EntityIdResponsePtrOutput) ToGooglePrivacyDlpV2EntityIdResponsePtrOutput() GooglePrivacyDlpV2EntityIdResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2EntityIdResponsePtrOutput) ToGooglePrivacyDlpV2EntityIdResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2EntityIdResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2EntityIdResponsePtrOutput) Elem() GooglePrivacyDlpV2EntityIdResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2EntityIdResponse) GooglePrivacyDlpV2EntityIdResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2EntityIdResponse
-		return ret
-	}).(GooglePrivacyDlpV2EntityIdResponseOutput)
-}
-
-// Composite key indicating which field contains the entity identifier.
-func (o GooglePrivacyDlpV2EntityIdResponsePtrOutput) Field() GooglePrivacyDlpV2FieldIdResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2EntityIdResponse) *GooglePrivacyDlpV2FieldIdResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Field
-	}).(GooglePrivacyDlpV2FieldIdResponsePtrOutput)
 }
 
 // Details information about an error encountered during job execution or the results of an unsuccessful activation of the JobTrigger.
@@ -9267,62 +6241,6 @@ type GooglePrivacyDlpV2ErrorResponse struct {
 	Details GoogleRpcStatusResponse `pulumi:"details"`
 	// The times the error occurred.
 	Timestamps []string `pulumi:"timestamps"`
-}
-
-// GooglePrivacyDlpV2ErrorResponseInput is an input type that accepts GooglePrivacyDlpV2ErrorResponseArgs and GooglePrivacyDlpV2ErrorResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2ErrorResponseInput` via:
-//
-//          GooglePrivacyDlpV2ErrorResponseArgs{...}
-type GooglePrivacyDlpV2ErrorResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2ErrorResponseOutput() GooglePrivacyDlpV2ErrorResponseOutput
-	ToGooglePrivacyDlpV2ErrorResponseOutputWithContext(context.Context) GooglePrivacyDlpV2ErrorResponseOutput
-}
-
-// Details information about an error encountered during job execution or the results of an unsuccessful activation of the JobTrigger.
-type GooglePrivacyDlpV2ErrorResponseArgs struct {
-	// Detailed error codes and messages.
-	Details GoogleRpcStatusResponseInput `pulumi:"details"`
-	// The times the error occurred.
-	Timestamps pulumi.StringArrayInput `pulumi:"timestamps"`
-}
-
-func (GooglePrivacyDlpV2ErrorResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2ErrorResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2ErrorResponseArgs) ToGooglePrivacyDlpV2ErrorResponseOutput() GooglePrivacyDlpV2ErrorResponseOutput {
-	return i.ToGooglePrivacyDlpV2ErrorResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2ErrorResponseArgs) ToGooglePrivacyDlpV2ErrorResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ErrorResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ErrorResponseOutput)
-}
-
-// GooglePrivacyDlpV2ErrorResponseArrayInput is an input type that accepts GooglePrivacyDlpV2ErrorResponseArray and GooglePrivacyDlpV2ErrorResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2ErrorResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2ErrorResponseArray{ GooglePrivacyDlpV2ErrorResponseArgs{...} }
-type GooglePrivacyDlpV2ErrorResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2ErrorResponseArrayOutput() GooglePrivacyDlpV2ErrorResponseArrayOutput
-	ToGooglePrivacyDlpV2ErrorResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2ErrorResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2ErrorResponseArray []GooglePrivacyDlpV2ErrorResponseInput
-
-func (GooglePrivacyDlpV2ErrorResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2ErrorResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2ErrorResponseArray) ToGooglePrivacyDlpV2ErrorResponseArrayOutput() GooglePrivacyDlpV2ErrorResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2ErrorResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2ErrorResponseArray) ToGooglePrivacyDlpV2ErrorResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ErrorResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ErrorResponseArrayOutput)
 }
 
 // Details information about an error encountered during job execution or the results of an unsuccessful activation of the JobTrigger.
@@ -9514,35 +6432,6 @@ func (o GooglePrivacyDlpV2ExcludeInfoTypesPtrOutput) InfoTypes() GooglePrivacyDl
 type GooglePrivacyDlpV2ExcludeInfoTypesResponse struct {
 	// InfoType list in ExclusionRule rule drops a finding when it overlaps or contained within with a finding of an infoType from this list. For example, for `InspectionRuleSet.info_types` containing "PHONE_NUMBER"`and`exclusion_rule`containing`exclude_info_types.info_types` with "EMAIL_ADDRESS" the phone number findings are dropped if they overlap with EMAIL_ADDRESS finding. That leads to "555-222-2222@example.org" to generate only a single finding, namely email address.
 	InfoTypes []GooglePrivacyDlpV2InfoTypeResponse `pulumi:"infoTypes"`
-}
-
-// GooglePrivacyDlpV2ExcludeInfoTypesResponseInput is an input type that accepts GooglePrivacyDlpV2ExcludeInfoTypesResponseArgs and GooglePrivacyDlpV2ExcludeInfoTypesResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2ExcludeInfoTypesResponseInput` via:
-//
-//          GooglePrivacyDlpV2ExcludeInfoTypesResponseArgs{...}
-type GooglePrivacyDlpV2ExcludeInfoTypesResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2ExcludeInfoTypesResponseOutput() GooglePrivacyDlpV2ExcludeInfoTypesResponseOutput
-	ToGooglePrivacyDlpV2ExcludeInfoTypesResponseOutputWithContext(context.Context) GooglePrivacyDlpV2ExcludeInfoTypesResponseOutput
-}
-
-// List of exclude infoTypes.
-type GooglePrivacyDlpV2ExcludeInfoTypesResponseArgs struct {
-	// InfoType list in ExclusionRule rule drops a finding when it overlaps or contained within with a finding of an infoType from this list. For example, for `InspectionRuleSet.info_types` containing "PHONE_NUMBER"`and`exclusion_rule`containing`exclude_info_types.info_types` with "EMAIL_ADDRESS" the phone number findings are dropped if they overlap with EMAIL_ADDRESS finding. That leads to "555-222-2222@example.org" to generate only a single finding, namely email address.
-	InfoTypes GooglePrivacyDlpV2InfoTypeResponseArrayInput `pulumi:"infoTypes"`
-}
-
-func (GooglePrivacyDlpV2ExcludeInfoTypesResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2ExcludeInfoTypesResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2ExcludeInfoTypesResponseArgs) ToGooglePrivacyDlpV2ExcludeInfoTypesResponseOutput() GooglePrivacyDlpV2ExcludeInfoTypesResponseOutput {
-	return i.ToGooglePrivacyDlpV2ExcludeInfoTypesResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2ExcludeInfoTypesResponseArgs) ToGooglePrivacyDlpV2ExcludeInfoTypesResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ExcludeInfoTypesResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ExcludeInfoTypesResponseOutput)
 }
 
 // List of exclude infoTypes.
@@ -9778,41 +6667,6 @@ type GooglePrivacyDlpV2ExclusionRuleResponse struct {
 	Regex GooglePrivacyDlpV2RegexResponse `pulumi:"regex"`
 }
 
-// GooglePrivacyDlpV2ExclusionRuleResponseInput is an input type that accepts GooglePrivacyDlpV2ExclusionRuleResponseArgs and GooglePrivacyDlpV2ExclusionRuleResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2ExclusionRuleResponseInput` via:
-//
-//          GooglePrivacyDlpV2ExclusionRuleResponseArgs{...}
-type GooglePrivacyDlpV2ExclusionRuleResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2ExclusionRuleResponseOutput() GooglePrivacyDlpV2ExclusionRuleResponseOutput
-	ToGooglePrivacyDlpV2ExclusionRuleResponseOutputWithContext(context.Context) GooglePrivacyDlpV2ExclusionRuleResponseOutput
-}
-
-// The rule that specifies conditions when findings of infoTypes specified in `InspectionRuleSet` are removed from results.
-type GooglePrivacyDlpV2ExclusionRuleResponseArgs struct {
-	// Dictionary which defines the rule.
-	Dictionary GooglePrivacyDlpV2DictionaryResponseInput `pulumi:"dictionary"`
-	// Set of infoTypes for which findings would affect this rule.
-	ExcludeInfoTypes GooglePrivacyDlpV2ExcludeInfoTypesResponseInput `pulumi:"excludeInfoTypes"`
-	// How the rule is applied, see MatchingType documentation for details.
-	MatchingType pulumi.StringInput `pulumi:"matchingType"`
-	// Regular expression which defines the rule.
-	Regex GooglePrivacyDlpV2RegexResponseInput `pulumi:"regex"`
-}
-
-func (GooglePrivacyDlpV2ExclusionRuleResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2ExclusionRuleResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2ExclusionRuleResponseArgs) ToGooglePrivacyDlpV2ExclusionRuleResponseOutput() GooglePrivacyDlpV2ExclusionRuleResponseOutput {
-	return i.ToGooglePrivacyDlpV2ExclusionRuleResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2ExclusionRuleResponseArgs) ToGooglePrivacyDlpV2ExclusionRuleResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ExclusionRuleResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ExclusionRuleResponseOutput)
-}
-
 // The rule that specifies conditions when findings of infoTypes specified in `InspectionRuleSet` are removed from results.
 type GooglePrivacyDlpV2ExclusionRuleResponseOutput struct{ *pulumi.OutputState }
 
@@ -10019,37 +6873,6 @@ type GooglePrivacyDlpV2ExpressionsResponse struct {
 	Conditions GooglePrivacyDlpV2ConditionsResponse `pulumi:"conditions"`
 	// The operator to apply to the result of conditions. Default and currently only supported value is `AND`.
 	LogicalOperator string `pulumi:"logicalOperator"`
-}
-
-// GooglePrivacyDlpV2ExpressionsResponseInput is an input type that accepts GooglePrivacyDlpV2ExpressionsResponseArgs and GooglePrivacyDlpV2ExpressionsResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2ExpressionsResponseInput` via:
-//
-//          GooglePrivacyDlpV2ExpressionsResponseArgs{...}
-type GooglePrivacyDlpV2ExpressionsResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2ExpressionsResponseOutput() GooglePrivacyDlpV2ExpressionsResponseOutput
-	ToGooglePrivacyDlpV2ExpressionsResponseOutputWithContext(context.Context) GooglePrivacyDlpV2ExpressionsResponseOutput
-}
-
-// An expression, consisting or an operator and conditions.
-type GooglePrivacyDlpV2ExpressionsResponseArgs struct {
-	// Conditions to apply to the expression.
-	Conditions GooglePrivacyDlpV2ConditionsResponseInput `pulumi:"conditions"`
-	// The operator to apply to the result of conditions. Default and currently only supported value is `AND`.
-	LogicalOperator pulumi.StringInput `pulumi:"logicalOperator"`
-}
-
-func (GooglePrivacyDlpV2ExpressionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2ExpressionsResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2ExpressionsResponseArgs) ToGooglePrivacyDlpV2ExpressionsResponseOutput() GooglePrivacyDlpV2ExpressionsResponseOutput {
-	return i.ToGooglePrivacyDlpV2ExpressionsResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2ExpressionsResponseArgs) ToGooglePrivacyDlpV2ExpressionsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ExpressionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ExpressionsResponseOutput)
 }
 
 // An expression, consisting or an operator and conditions.
@@ -10270,101 +7093,6 @@ type GooglePrivacyDlpV2FieldIdResponse struct {
 	Name string `pulumi:"name"`
 }
 
-// GooglePrivacyDlpV2FieldIdResponseInput is an input type that accepts GooglePrivacyDlpV2FieldIdResponseArgs and GooglePrivacyDlpV2FieldIdResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2FieldIdResponseInput` via:
-//
-//          GooglePrivacyDlpV2FieldIdResponseArgs{...}
-type GooglePrivacyDlpV2FieldIdResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2FieldIdResponseOutput() GooglePrivacyDlpV2FieldIdResponseOutput
-	ToGooglePrivacyDlpV2FieldIdResponseOutputWithContext(context.Context) GooglePrivacyDlpV2FieldIdResponseOutput
-}
-
-// General identifier of a data field in a storage service.
-type GooglePrivacyDlpV2FieldIdResponseArgs struct {
-	// Name describing the field.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GooglePrivacyDlpV2FieldIdResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2FieldIdResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2FieldIdResponseArgs) ToGooglePrivacyDlpV2FieldIdResponseOutput() GooglePrivacyDlpV2FieldIdResponseOutput {
-	return i.ToGooglePrivacyDlpV2FieldIdResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2FieldIdResponseArgs) ToGooglePrivacyDlpV2FieldIdResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2FieldIdResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2FieldIdResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2FieldIdResponseArgs) ToGooglePrivacyDlpV2FieldIdResponsePtrOutput() GooglePrivacyDlpV2FieldIdResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2FieldIdResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2FieldIdResponseArgs) ToGooglePrivacyDlpV2FieldIdResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2FieldIdResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2FieldIdResponseOutput).ToGooglePrivacyDlpV2FieldIdResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2FieldIdResponsePtrInput is an input type that accepts GooglePrivacyDlpV2FieldIdResponseArgs, GooglePrivacyDlpV2FieldIdResponsePtr and GooglePrivacyDlpV2FieldIdResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2FieldIdResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2FieldIdResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2FieldIdResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2FieldIdResponsePtrOutput() GooglePrivacyDlpV2FieldIdResponsePtrOutput
-	ToGooglePrivacyDlpV2FieldIdResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2FieldIdResponsePtrOutput
-}
-
-type googlePrivacyDlpV2FieldIdResponsePtrType GooglePrivacyDlpV2FieldIdResponseArgs
-
-func GooglePrivacyDlpV2FieldIdResponsePtr(v *GooglePrivacyDlpV2FieldIdResponseArgs) GooglePrivacyDlpV2FieldIdResponsePtrInput {
-	return (*googlePrivacyDlpV2FieldIdResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2FieldIdResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2FieldIdResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2FieldIdResponsePtrType) ToGooglePrivacyDlpV2FieldIdResponsePtrOutput() GooglePrivacyDlpV2FieldIdResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2FieldIdResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2FieldIdResponsePtrType) ToGooglePrivacyDlpV2FieldIdResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2FieldIdResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2FieldIdResponsePtrOutput)
-}
-
-// GooglePrivacyDlpV2FieldIdResponseArrayInput is an input type that accepts GooglePrivacyDlpV2FieldIdResponseArray and GooglePrivacyDlpV2FieldIdResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2FieldIdResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2FieldIdResponseArray{ GooglePrivacyDlpV2FieldIdResponseArgs{...} }
-type GooglePrivacyDlpV2FieldIdResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2FieldIdResponseArrayOutput() GooglePrivacyDlpV2FieldIdResponseArrayOutput
-	ToGooglePrivacyDlpV2FieldIdResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2FieldIdResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2FieldIdResponseArray []GooglePrivacyDlpV2FieldIdResponseInput
-
-func (GooglePrivacyDlpV2FieldIdResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2FieldIdResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2FieldIdResponseArray) ToGooglePrivacyDlpV2FieldIdResponseArrayOutput() GooglePrivacyDlpV2FieldIdResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2FieldIdResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2FieldIdResponseArray) ToGooglePrivacyDlpV2FieldIdResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2FieldIdResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2FieldIdResponseArrayOutput)
-}
-
 // General identifier of a data field in a storage service.
 type GooglePrivacyDlpV2FieldIdResponseOutput struct{ *pulumi.OutputState }
 
@@ -10380,53 +7108,9 @@ func (o GooglePrivacyDlpV2FieldIdResponseOutput) ToGooglePrivacyDlpV2FieldIdResp
 	return o
 }
 
-func (o GooglePrivacyDlpV2FieldIdResponseOutput) ToGooglePrivacyDlpV2FieldIdResponsePtrOutput() GooglePrivacyDlpV2FieldIdResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2FieldIdResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2FieldIdResponseOutput) ToGooglePrivacyDlpV2FieldIdResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2FieldIdResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2FieldIdResponse) *GooglePrivacyDlpV2FieldIdResponse {
-		return &v
-	}).(GooglePrivacyDlpV2FieldIdResponsePtrOutput)
-}
-
 // Name describing the field.
 func (o GooglePrivacyDlpV2FieldIdResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2FieldIdResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type GooglePrivacyDlpV2FieldIdResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2FieldIdResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2FieldIdResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2FieldIdResponsePtrOutput) ToGooglePrivacyDlpV2FieldIdResponsePtrOutput() GooglePrivacyDlpV2FieldIdResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2FieldIdResponsePtrOutput) ToGooglePrivacyDlpV2FieldIdResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2FieldIdResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2FieldIdResponsePtrOutput) Elem() GooglePrivacyDlpV2FieldIdResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2FieldIdResponse) GooglePrivacyDlpV2FieldIdResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2FieldIdResponse
-		return ret
-	}).(GooglePrivacyDlpV2FieldIdResponseOutput)
-}
-
-// Name describing the field.
-func (o GooglePrivacyDlpV2FieldIdResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2FieldIdResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
 }
 
 type GooglePrivacyDlpV2FieldIdResponseArrayOutput struct{ *pulumi.OutputState }
@@ -10590,66 +7274,6 @@ type GooglePrivacyDlpV2FieldTransformationResponse struct {
 	InfoTypeTransformations GooglePrivacyDlpV2InfoTypeTransformationsResponse `pulumi:"infoTypeTransformations"`
 	// Apply the transformation to the entire field.
 	PrimitiveTransformation GooglePrivacyDlpV2PrimitiveTransformationResponse `pulumi:"primitiveTransformation"`
-}
-
-// GooglePrivacyDlpV2FieldTransformationResponseInput is an input type that accepts GooglePrivacyDlpV2FieldTransformationResponseArgs and GooglePrivacyDlpV2FieldTransformationResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2FieldTransformationResponseInput` via:
-//
-//          GooglePrivacyDlpV2FieldTransformationResponseArgs{...}
-type GooglePrivacyDlpV2FieldTransformationResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2FieldTransformationResponseOutput() GooglePrivacyDlpV2FieldTransformationResponseOutput
-	ToGooglePrivacyDlpV2FieldTransformationResponseOutputWithContext(context.Context) GooglePrivacyDlpV2FieldTransformationResponseOutput
-}
-
-// The transformation to apply to the field.
-type GooglePrivacyDlpV2FieldTransformationResponseArgs struct {
-	// Only apply the transformation if the condition evaluates to true for the given `RecordCondition`. The conditions are allowed to reference fields that are not used in the actual transformation. Example Use Cases: - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range. - Redact a field if the date of birth field is greater than 85.
-	Condition GooglePrivacyDlpV2RecordConditionResponseInput `pulumi:"condition"`
-	// Input field(s) to apply the transformation to. When you have columns that reference their position within a list, omit the index from the FieldId. FieldId name matching ignores the index. For example, instead of "contact.nums[0].type", use "contact.nums.type".
-	Fields GooglePrivacyDlpV2FieldIdResponseArrayInput `pulumi:"fields"`
-	// Treat the contents of the field as free text, and selectively transform content that matches an `InfoType`.
-	InfoTypeTransformations GooglePrivacyDlpV2InfoTypeTransformationsResponseInput `pulumi:"infoTypeTransformations"`
-	// Apply the transformation to the entire field.
-	PrimitiveTransformation GooglePrivacyDlpV2PrimitiveTransformationResponseInput `pulumi:"primitiveTransformation"`
-}
-
-func (GooglePrivacyDlpV2FieldTransformationResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2FieldTransformationResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2FieldTransformationResponseArgs) ToGooglePrivacyDlpV2FieldTransformationResponseOutput() GooglePrivacyDlpV2FieldTransformationResponseOutput {
-	return i.ToGooglePrivacyDlpV2FieldTransformationResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2FieldTransformationResponseArgs) ToGooglePrivacyDlpV2FieldTransformationResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2FieldTransformationResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2FieldTransformationResponseOutput)
-}
-
-// GooglePrivacyDlpV2FieldTransformationResponseArrayInput is an input type that accepts GooglePrivacyDlpV2FieldTransformationResponseArray and GooglePrivacyDlpV2FieldTransformationResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2FieldTransformationResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2FieldTransformationResponseArray{ GooglePrivacyDlpV2FieldTransformationResponseArgs{...} }
-type GooglePrivacyDlpV2FieldTransformationResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2FieldTransformationResponseArrayOutput() GooglePrivacyDlpV2FieldTransformationResponseArrayOutput
-	ToGooglePrivacyDlpV2FieldTransformationResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2FieldTransformationResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2FieldTransformationResponseArray []GooglePrivacyDlpV2FieldTransformationResponseInput
-
-func (GooglePrivacyDlpV2FieldTransformationResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2FieldTransformationResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2FieldTransformationResponseArray) ToGooglePrivacyDlpV2FieldTransformationResponseArrayOutput() GooglePrivacyDlpV2FieldTransformationResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2FieldTransformationResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2FieldTransformationResponseArray) ToGooglePrivacyDlpV2FieldTransformationResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2FieldTransformationResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2FieldTransformationResponseArrayOutput)
 }
 
 // The transformation to apply to the field.
@@ -10882,78 +7506,6 @@ type GooglePrivacyDlpV2FileSetResponse struct {
 	Url string `pulumi:"url"`
 }
 
-// GooglePrivacyDlpV2FileSetResponseInput is an input type that accepts GooglePrivacyDlpV2FileSetResponseArgs and GooglePrivacyDlpV2FileSetResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2FileSetResponseInput` via:
-//
-//          GooglePrivacyDlpV2FileSetResponseArgs{...}
-type GooglePrivacyDlpV2FileSetResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2FileSetResponseOutput() GooglePrivacyDlpV2FileSetResponseOutput
-	ToGooglePrivacyDlpV2FileSetResponseOutputWithContext(context.Context) GooglePrivacyDlpV2FileSetResponseOutput
-}
-
-// Set of files to scan.
-type GooglePrivacyDlpV2FileSetResponseArgs struct {
-	// The regex-filtered set of files to scan. Exactly one of `url` or `regex_file_set` must be set.
-	RegexFileSet GooglePrivacyDlpV2CloudStorageRegexFileSetResponseInput `pulumi:"regexFileSet"`
-	// The Cloud Storage url of the file(s) to scan, in the format `gs:///`. Trailing wildcard in the path is allowed. If the url ends in a trailing slash, the bucket or directory represented by the url will be scanned non-recursively (content in sub-directories will not be scanned). This means that `gs://mybucket/` is equivalent to `gs://mybucket/*`, and `gs://mybucket/directory/` is equivalent to `gs://mybucket/directory/*`. Exactly one of `url` or `regex_file_set` must be set.
-	Url pulumi.StringInput `pulumi:"url"`
-}
-
-func (GooglePrivacyDlpV2FileSetResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2FileSetResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2FileSetResponseArgs) ToGooglePrivacyDlpV2FileSetResponseOutput() GooglePrivacyDlpV2FileSetResponseOutput {
-	return i.ToGooglePrivacyDlpV2FileSetResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2FileSetResponseArgs) ToGooglePrivacyDlpV2FileSetResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2FileSetResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2FileSetResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2FileSetResponseArgs) ToGooglePrivacyDlpV2FileSetResponsePtrOutput() GooglePrivacyDlpV2FileSetResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2FileSetResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2FileSetResponseArgs) ToGooglePrivacyDlpV2FileSetResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2FileSetResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2FileSetResponseOutput).ToGooglePrivacyDlpV2FileSetResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2FileSetResponsePtrInput is an input type that accepts GooglePrivacyDlpV2FileSetResponseArgs, GooglePrivacyDlpV2FileSetResponsePtr and GooglePrivacyDlpV2FileSetResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2FileSetResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2FileSetResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2FileSetResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2FileSetResponsePtrOutput() GooglePrivacyDlpV2FileSetResponsePtrOutput
-	ToGooglePrivacyDlpV2FileSetResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2FileSetResponsePtrOutput
-}
-
-type googlePrivacyDlpV2FileSetResponsePtrType GooglePrivacyDlpV2FileSetResponseArgs
-
-func GooglePrivacyDlpV2FileSetResponsePtr(v *GooglePrivacyDlpV2FileSetResponseArgs) GooglePrivacyDlpV2FileSetResponsePtrInput {
-	return (*googlePrivacyDlpV2FileSetResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2FileSetResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2FileSetResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2FileSetResponsePtrType) ToGooglePrivacyDlpV2FileSetResponsePtrOutput() GooglePrivacyDlpV2FileSetResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2FileSetResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2FileSetResponsePtrType) ToGooglePrivacyDlpV2FileSetResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2FileSetResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2FileSetResponsePtrOutput)
-}
-
 // Set of files to scan.
 type GooglePrivacyDlpV2FileSetResponseOutput struct{ *pulumi.OutputState }
 
@@ -10969,16 +7521,6 @@ func (o GooglePrivacyDlpV2FileSetResponseOutput) ToGooglePrivacyDlpV2FileSetResp
 	return o
 }
 
-func (o GooglePrivacyDlpV2FileSetResponseOutput) ToGooglePrivacyDlpV2FileSetResponsePtrOutput() GooglePrivacyDlpV2FileSetResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2FileSetResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2FileSetResponseOutput) ToGooglePrivacyDlpV2FileSetResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2FileSetResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2FileSetResponse) *GooglePrivacyDlpV2FileSetResponse {
-		return &v
-	}).(GooglePrivacyDlpV2FileSetResponsePtrOutput)
-}
-
 // The regex-filtered set of files to scan. Exactly one of `url` or `regex_file_set` must be set.
 func (o GooglePrivacyDlpV2FileSetResponseOutput) RegexFileSet() GooglePrivacyDlpV2CloudStorageRegexFileSetResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2FileSetResponse) GooglePrivacyDlpV2CloudStorageRegexFileSetResponse {
@@ -10989,50 +7531,6 @@ func (o GooglePrivacyDlpV2FileSetResponseOutput) RegexFileSet() GooglePrivacyDlp
 // The Cloud Storage url of the file(s) to scan, in the format `gs:///`. Trailing wildcard in the path is allowed. If the url ends in a trailing slash, the bucket or directory represented by the url will be scanned non-recursively (content in sub-directories will not be scanned). This means that `gs://mybucket/` is equivalent to `gs://mybucket/*`, and `gs://mybucket/directory/` is equivalent to `gs://mybucket/directory/*`. Exactly one of `url` or `regex_file_set` must be set.
 func (o GooglePrivacyDlpV2FileSetResponseOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2FileSetResponse) string { return v.Url }).(pulumi.StringOutput)
-}
-
-type GooglePrivacyDlpV2FileSetResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2FileSetResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2FileSetResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2FileSetResponsePtrOutput) ToGooglePrivacyDlpV2FileSetResponsePtrOutput() GooglePrivacyDlpV2FileSetResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2FileSetResponsePtrOutput) ToGooglePrivacyDlpV2FileSetResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2FileSetResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2FileSetResponsePtrOutput) Elem() GooglePrivacyDlpV2FileSetResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2FileSetResponse) GooglePrivacyDlpV2FileSetResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2FileSetResponse
-		return ret
-	}).(GooglePrivacyDlpV2FileSetResponseOutput)
-}
-
-// The regex-filtered set of files to scan. Exactly one of `url` or `regex_file_set` must be set.
-func (o GooglePrivacyDlpV2FileSetResponsePtrOutput) RegexFileSet() GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2FileSetResponse) *GooglePrivacyDlpV2CloudStorageRegexFileSetResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.RegexFileSet
-	}).(GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput)
-}
-
-// The Cloud Storage url of the file(s) to scan, in the format `gs:///`. Trailing wildcard in the path is allowed. If the url ends in a trailing slash, the bucket or directory represented by the url will be scanned non-recursively (content in sub-directories will not be scanned). This means that `gs://mybucket/` is equivalent to `gs://mybucket/*`, and `gs://mybucket/directory/` is equivalent to `gs://mybucket/directory/*`. Exactly one of `url` or `regex_file_set` must be set.
-func (o GooglePrivacyDlpV2FileSetResponsePtrOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2FileSetResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Url
-	}).(pulumi.StringPtrOutput)
 }
 
 // Configuration to control the number of findings returned. Cannot be set if de-identification is requested.
@@ -11225,80 +7723,6 @@ type GooglePrivacyDlpV2FindingLimitsResponse struct {
 	MaxFindingsPerRequest int `pulumi:"maxFindingsPerRequest"`
 }
 
-// GooglePrivacyDlpV2FindingLimitsResponseInput is an input type that accepts GooglePrivacyDlpV2FindingLimitsResponseArgs and GooglePrivacyDlpV2FindingLimitsResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2FindingLimitsResponseInput` via:
-//
-//          GooglePrivacyDlpV2FindingLimitsResponseArgs{...}
-type GooglePrivacyDlpV2FindingLimitsResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2FindingLimitsResponseOutput() GooglePrivacyDlpV2FindingLimitsResponseOutput
-	ToGooglePrivacyDlpV2FindingLimitsResponseOutputWithContext(context.Context) GooglePrivacyDlpV2FindingLimitsResponseOutput
-}
-
-// Configuration to control the number of findings returned. Cannot be set if de-identification is requested.
-type GooglePrivacyDlpV2FindingLimitsResponseArgs struct {
-	// Configuration of findings limit given for specified infoTypes.
-	MaxFindingsPerInfoType GooglePrivacyDlpV2InfoTypeLimitResponseArrayInput `pulumi:"maxFindingsPerInfoType"`
-	// Max number of findings that will be returned for each item scanned. When set within `InspectJobConfig`, the maximum returned is 2000 regardless if this is set higher. When set within `InspectContentRequest`, this field is ignored.
-	MaxFindingsPerItem pulumi.IntInput `pulumi:"maxFindingsPerItem"`
-	// Max number of findings that will be returned per request/job. When set within `InspectContentRequest`, the maximum returned is 2000 regardless if this is set higher.
-	MaxFindingsPerRequest pulumi.IntInput `pulumi:"maxFindingsPerRequest"`
-}
-
-func (GooglePrivacyDlpV2FindingLimitsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2FindingLimitsResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2FindingLimitsResponseArgs) ToGooglePrivacyDlpV2FindingLimitsResponseOutput() GooglePrivacyDlpV2FindingLimitsResponseOutput {
-	return i.ToGooglePrivacyDlpV2FindingLimitsResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2FindingLimitsResponseArgs) ToGooglePrivacyDlpV2FindingLimitsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2FindingLimitsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2FindingLimitsResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2FindingLimitsResponseArgs) ToGooglePrivacyDlpV2FindingLimitsResponsePtrOutput() GooglePrivacyDlpV2FindingLimitsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2FindingLimitsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2FindingLimitsResponseArgs) ToGooglePrivacyDlpV2FindingLimitsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2FindingLimitsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2FindingLimitsResponseOutput).ToGooglePrivacyDlpV2FindingLimitsResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2FindingLimitsResponsePtrInput is an input type that accepts GooglePrivacyDlpV2FindingLimitsResponseArgs, GooglePrivacyDlpV2FindingLimitsResponsePtr and GooglePrivacyDlpV2FindingLimitsResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2FindingLimitsResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2FindingLimitsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2FindingLimitsResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2FindingLimitsResponsePtrOutput() GooglePrivacyDlpV2FindingLimitsResponsePtrOutput
-	ToGooglePrivacyDlpV2FindingLimitsResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2FindingLimitsResponsePtrOutput
-}
-
-type googlePrivacyDlpV2FindingLimitsResponsePtrType GooglePrivacyDlpV2FindingLimitsResponseArgs
-
-func GooglePrivacyDlpV2FindingLimitsResponsePtr(v *GooglePrivacyDlpV2FindingLimitsResponseArgs) GooglePrivacyDlpV2FindingLimitsResponsePtrInput {
-	return (*googlePrivacyDlpV2FindingLimitsResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2FindingLimitsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2FindingLimitsResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2FindingLimitsResponsePtrType) ToGooglePrivacyDlpV2FindingLimitsResponsePtrOutput() GooglePrivacyDlpV2FindingLimitsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2FindingLimitsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2FindingLimitsResponsePtrType) ToGooglePrivacyDlpV2FindingLimitsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2FindingLimitsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2FindingLimitsResponsePtrOutput)
-}
-
 // Configuration to control the number of findings returned. Cannot be set if de-identification is requested.
 type GooglePrivacyDlpV2FindingLimitsResponseOutput struct{ *pulumi.OutputState }
 
@@ -11312,16 +7736,6 @@ func (o GooglePrivacyDlpV2FindingLimitsResponseOutput) ToGooglePrivacyDlpV2Findi
 
 func (o GooglePrivacyDlpV2FindingLimitsResponseOutput) ToGooglePrivacyDlpV2FindingLimitsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2FindingLimitsResponseOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2FindingLimitsResponseOutput) ToGooglePrivacyDlpV2FindingLimitsResponsePtrOutput() GooglePrivacyDlpV2FindingLimitsResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2FindingLimitsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2FindingLimitsResponseOutput) ToGooglePrivacyDlpV2FindingLimitsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2FindingLimitsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2FindingLimitsResponse) *GooglePrivacyDlpV2FindingLimitsResponse {
-		return &v
-	}).(GooglePrivacyDlpV2FindingLimitsResponsePtrOutput)
 }
 
 // Configuration of findings limit given for specified infoTypes.
@@ -11339,60 +7753,6 @@ func (o GooglePrivacyDlpV2FindingLimitsResponseOutput) MaxFindingsPerItem() pulu
 // Max number of findings that will be returned per request/job. When set within `InspectContentRequest`, the maximum returned is 2000 regardless if this is set higher.
 func (o GooglePrivacyDlpV2FindingLimitsResponseOutput) MaxFindingsPerRequest() pulumi.IntOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2FindingLimitsResponse) int { return v.MaxFindingsPerRequest }).(pulumi.IntOutput)
-}
-
-type GooglePrivacyDlpV2FindingLimitsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2FindingLimitsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2FindingLimitsResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2FindingLimitsResponsePtrOutput) ToGooglePrivacyDlpV2FindingLimitsResponsePtrOutput() GooglePrivacyDlpV2FindingLimitsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2FindingLimitsResponsePtrOutput) ToGooglePrivacyDlpV2FindingLimitsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2FindingLimitsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2FindingLimitsResponsePtrOutput) Elem() GooglePrivacyDlpV2FindingLimitsResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2FindingLimitsResponse) GooglePrivacyDlpV2FindingLimitsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2FindingLimitsResponse
-		return ret
-	}).(GooglePrivacyDlpV2FindingLimitsResponseOutput)
-}
-
-// Configuration of findings limit given for specified infoTypes.
-func (o GooglePrivacyDlpV2FindingLimitsResponsePtrOutput) MaxFindingsPerInfoType() GooglePrivacyDlpV2InfoTypeLimitResponseArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2FindingLimitsResponse) []GooglePrivacyDlpV2InfoTypeLimitResponse {
-		if v == nil {
-			return nil
-		}
-		return v.MaxFindingsPerInfoType
-	}).(GooglePrivacyDlpV2InfoTypeLimitResponseArrayOutput)
-}
-
-// Max number of findings that will be returned for each item scanned. When set within `InspectJobConfig`, the maximum returned is 2000 regardless if this is set higher. When set within `InspectContentRequest`, this field is ignored.
-func (o GooglePrivacyDlpV2FindingLimitsResponsePtrOutput) MaxFindingsPerItem() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2FindingLimitsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxFindingsPerItem
-	}).(pulumi.IntPtrOutput)
-}
-
-// Max number of findings that will be returned per request/job. When set within `InspectContentRequest`, the maximum returned is 2000 regardless if this is set higher.
-func (o GooglePrivacyDlpV2FindingLimitsResponsePtrOutput) MaxFindingsPerRequest() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2FindingLimitsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxFindingsPerRequest
-	}).(pulumi.IntPtrOutput)
 }
 
 // Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
@@ -11581,39 +7941,6 @@ type GooglePrivacyDlpV2FixedSizeBucketingConfigResponse struct {
 	LowerBound GooglePrivacyDlpV2ValueResponse `pulumi:"lowerBound"`
 	// Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
 	UpperBound GooglePrivacyDlpV2ValueResponse `pulumi:"upperBound"`
-}
-
-// GooglePrivacyDlpV2FixedSizeBucketingConfigResponseInput is an input type that accepts GooglePrivacyDlpV2FixedSizeBucketingConfigResponseArgs and GooglePrivacyDlpV2FixedSizeBucketingConfigResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2FixedSizeBucketingConfigResponseInput` via:
-//
-//          GooglePrivacyDlpV2FixedSizeBucketingConfigResponseArgs{...}
-type GooglePrivacyDlpV2FixedSizeBucketingConfigResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2FixedSizeBucketingConfigResponseOutput() GooglePrivacyDlpV2FixedSizeBucketingConfigResponseOutput
-	ToGooglePrivacyDlpV2FixedSizeBucketingConfigResponseOutputWithContext(context.Context) GooglePrivacyDlpV2FixedSizeBucketingConfigResponseOutput
-}
-
-// Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
-type GooglePrivacyDlpV2FixedSizeBucketingConfigResponseArgs struct {
-	// Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
-	BucketSize pulumi.Float64Input `pulumi:"bucketSize"`
-	// Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
-	LowerBound GooglePrivacyDlpV2ValueResponseInput `pulumi:"lowerBound"`
-	// Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
-	UpperBound GooglePrivacyDlpV2ValueResponseInput `pulumi:"upperBound"`
-}
-
-func (GooglePrivacyDlpV2FixedSizeBucketingConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2FixedSizeBucketingConfigResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2FixedSizeBucketingConfigResponseArgs) ToGooglePrivacyDlpV2FixedSizeBucketingConfigResponseOutput() GooglePrivacyDlpV2FixedSizeBucketingConfigResponseOutput {
-	return i.ToGooglePrivacyDlpV2FixedSizeBucketingConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2FixedSizeBucketingConfigResponseArgs) ToGooglePrivacyDlpV2FixedSizeBucketingConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2FixedSizeBucketingConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2FixedSizeBucketingConfigResponseOutput)
 }
 
 // Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
@@ -11840,39 +8167,6 @@ type GooglePrivacyDlpV2HotwordRuleResponse struct {
 	Proximity GooglePrivacyDlpV2ProximityResponse `pulumi:"proximity"`
 }
 
-// GooglePrivacyDlpV2HotwordRuleResponseInput is an input type that accepts GooglePrivacyDlpV2HotwordRuleResponseArgs and GooglePrivacyDlpV2HotwordRuleResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2HotwordRuleResponseInput` via:
-//
-//          GooglePrivacyDlpV2HotwordRuleResponseArgs{...}
-type GooglePrivacyDlpV2HotwordRuleResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2HotwordRuleResponseOutput() GooglePrivacyDlpV2HotwordRuleResponseOutput
-	ToGooglePrivacyDlpV2HotwordRuleResponseOutputWithContext(context.Context) GooglePrivacyDlpV2HotwordRuleResponseOutput
-}
-
-// The rule that adjusts the likelihood of findings within a certain proximity of hotwords.
-type GooglePrivacyDlpV2HotwordRuleResponseArgs struct {
-	// Regular expression pattern defining what qualifies as a hotword.
-	HotwordRegex GooglePrivacyDlpV2RegexResponseInput `pulumi:"hotwordRegex"`
-	// Likelihood adjustment to apply to all matching findings.
-	LikelihoodAdjustment GooglePrivacyDlpV2LikelihoodAdjustmentResponseInput `pulumi:"likelihoodAdjustment"`
-	// Proximity of the finding within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be used to match substrings of the finding itself. For example, the certainty of a phone number regex "\(\d{3}\) \d{3}-\d{4}" could be adjusted upwards if the area code is known to be the local area code of a company office using the hotword regex "\(xxx\)", where "xxx" is the area code in question.
-	Proximity GooglePrivacyDlpV2ProximityResponseInput `pulumi:"proximity"`
-}
-
-func (GooglePrivacyDlpV2HotwordRuleResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2HotwordRuleResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2HotwordRuleResponseArgs) ToGooglePrivacyDlpV2HotwordRuleResponseOutput() GooglePrivacyDlpV2HotwordRuleResponseOutput {
-	return i.ToGooglePrivacyDlpV2HotwordRuleResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2HotwordRuleResponseArgs) ToGooglePrivacyDlpV2HotwordRuleResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2HotwordRuleResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2HotwordRuleResponseOutput)
-}
-
 // The rule that adjusts the likelihood of findings within a certain proximity of hotwords.
 type GooglePrivacyDlpV2HotwordRuleResponseOutput struct{ *pulumi.OutputState }
 
@@ -11915,80 +8209,6 @@ type GooglePrivacyDlpV2HybridInspectStatisticsResponse struct {
 	ProcessedCount string `pulumi:"processedCount"`
 }
 
-// GooglePrivacyDlpV2HybridInspectStatisticsResponseInput is an input type that accepts GooglePrivacyDlpV2HybridInspectStatisticsResponseArgs and GooglePrivacyDlpV2HybridInspectStatisticsResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2HybridInspectStatisticsResponseInput` via:
-//
-//          GooglePrivacyDlpV2HybridInspectStatisticsResponseArgs{...}
-type GooglePrivacyDlpV2HybridInspectStatisticsResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2HybridInspectStatisticsResponseOutput() GooglePrivacyDlpV2HybridInspectStatisticsResponseOutput
-	ToGooglePrivacyDlpV2HybridInspectStatisticsResponseOutputWithContext(context.Context) GooglePrivacyDlpV2HybridInspectStatisticsResponseOutput
-}
-
-// Statistics related to processing hybrid inspect requests.
-type GooglePrivacyDlpV2HybridInspectStatisticsResponseArgs struct {
-	// The number of hybrid inspection requests aborted because the job ran out of quota or was ended before they could be processed.
-	AbortedCount pulumi.StringInput `pulumi:"abortedCount"`
-	// The number of hybrid requests currently being processed. Only populated when called via method `getDlpJob`. A burst of traffic may cause hybrid inspect requests to be enqueued. Processing will take place as quickly as possible, but resource limitations may impact how long a request is enqueued for.
-	PendingCount pulumi.StringInput `pulumi:"pendingCount"`
-	// The number of hybrid inspection requests processed within this job.
-	ProcessedCount pulumi.StringInput `pulumi:"processedCount"`
-}
-
-func (GooglePrivacyDlpV2HybridInspectStatisticsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2HybridInspectStatisticsResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2HybridInspectStatisticsResponseArgs) ToGooglePrivacyDlpV2HybridInspectStatisticsResponseOutput() GooglePrivacyDlpV2HybridInspectStatisticsResponseOutput {
-	return i.ToGooglePrivacyDlpV2HybridInspectStatisticsResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2HybridInspectStatisticsResponseArgs) ToGooglePrivacyDlpV2HybridInspectStatisticsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2HybridInspectStatisticsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2HybridInspectStatisticsResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2HybridInspectStatisticsResponseArgs) ToGooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput() GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2HybridInspectStatisticsResponseArgs) ToGooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2HybridInspectStatisticsResponseOutput).ToGooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrInput is an input type that accepts GooglePrivacyDlpV2HybridInspectStatisticsResponseArgs, GooglePrivacyDlpV2HybridInspectStatisticsResponsePtr and GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2HybridInspectStatisticsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput() GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput
-	ToGooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput
-}
-
-type googlePrivacyDlpV2HybridInspectStatisticsResponsePtrType GooglePrivacyDlpV2HybridInspectStatisticsResponseArgs
-
-func GooglePrivacyDlpV2HybridInspectStatisticsResponsePtr(v *GooglePrivacyDlpV2HybridInspectStatisticsResponseArgs) GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrInput {
-	return (*googlePrivacyDlpV2HybridInspectStatisticsResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2HybridInspectStatisticsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2HybridInspectStatisticsResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2HybridInspectStatisticsResponsePtrType) ToGooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput() GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2HybridInspectStatisticsResponsePtrType) ToGooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput)
-}
-
 // Statistics related to processing hybrid inspect requests.
 type GooglePrivacyDlpV2HybridInspectStatisticsResponseOutput struct{ *pulumi.OutputState }
 
@@ -12004,16 +8224,6 @@ func (o GooglePrivacyDlpV2HybridInspectStatisticsResponseOutput) ToGooglePrivacy
 	return o
 }
 
-func (o GooglePrivacyDlpV2HybridInspectStatisticsResponseOutput) ToGooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput() GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2HybridInspectStatisticsResponseOutput) ToGooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2HybridInspectStatisticsResponse) *GooglePrivacyDlpV2HybridInspectStatisticsResponse {
-		return &v
-	}).(GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput)
-}
-
 // The number of hybrid inspection requests aborted because the job ran out of quota or was ended before they could be processed.
 func (o GooglePrivacyDlpV2HybridInspectStatisticsResponseOutput) AbortedCount() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2HybridInspectStatisticsResponse) string { return v.AbortedCount }).(pulumi.StringOutput)
@@ -12027,60 +8237,6 @@ func (o GooglePrivacyDlpV2HybridInspectStatisticsResponseOutput) PendingCount() 
 // The number of hybrid inspection requests processed within this job.
 func (o GooglePrivacyDlpV2HybridInspectStatisticsResponseOutput) ProcessedCount() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2HybridInspectStatisticsResponse) string { return v.ProcessedCount }).(pulumi.StringOutput)
-}
-
-type GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2HybridInspectStatisticsResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput) ToGooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput() GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput) ToGooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput) Elem() GooglePrivacyDlpV2HybridInspectStatisticsResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2HybridInspectStatisticsResponse) GooglePrivacyDlpV2HybridInspectStatisticsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2HybridInspectStatisticsResponse
-		return ret
-	}).(GooglePrivacyDlpV2HybridInspectStatisticsResponseOutput)
-}
-
-// The number of hybrid inspection requests aborted because the job ran out of quota or was ended before they could be processed.
-func (o GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput) AbortedCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2HybridInspectStatisticsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AbortedCount
-	}).(pulumi.StringPtrOutput)
-}
-
-// The number of hybrid requests currently being processed. Only populated when called via method `getDlpJob`. A burst of traffic may cause hybrid inspect requests to be enqueued. Processing will take place as quickly as possible, but resource limitations may impact how long a request is enqueued for.
-func (o GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput) PendingCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2HybridInspectStatisticsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PendingCount
-	}).(pulumi.StringPtrOutput)
-}
-
-// The number of hybrid inspection requests processed within this job.
-func (o GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput) ProcessedCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2HybridInspectStatisticsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ProcessedCount
-	}).(pulumi.StringPtrOutput)
 }
 
 // Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
@@ -12292,82 +8448,6 @@ type GooglePrivacyDlpV2HybridOptionsResponse struct {
 	TableOptions GooglePrivacyDlpV2TableOptionsResponse `pulumi:"tableOptions"`
 }
 
-// GooglePrivacyDlpV2HybridOptionsResponseInput is an input type that accepts GooglePrivacyDlpV2HybridOptionsResponseArgs and GooglePrivacyDlpV2HybridOptionsResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2HybridOptionsResponseInput` via:
-//
-//          GooglePrivacyDlpV2HybridOptionsResponseArgs{...}
-type GooglePrivacyDlpV2HybridOptionsResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2HybridOptionsResponseOutput() GooglePrivacyDlpV2HybridOptionsResponseOutput
-	ToGooglePrivacyDlpV2HybridOptionsResponseOutputWithContext(context.Context) GooglePrivacyDlpV2HybridOptionsResponseOutput
-}
-
-// Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
-type GooglePrivacyDlpV2HybridOptionsResponseArgs struct {
-	// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
-	Description pulumi.StringInput `pulumi:"description"`
-	// To organize findings, these labels will be added to each finding. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. No more than 10 labels can be associated with a given finding. Examples: * `"environment" : "production"` * `"pipeline" : "etl"`
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// These are labels that each inspection request must include within their 'finding_labels' map. Request may contain others, but any missing one of these will be rejected. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. No more than 10 keys can be required.
-	RequiredFindingLabelKeys pulumi.StringArrayInput `pulumi:"requiredFindingLabelKeys"`
-	// If the container is a table, additional information to make findings meaningful such as the columns that are primary keys.
-	TableOptions GooglePrivacyDlpV2TableOptionsResponseInput `pulumi:"tableOptions"`
-}
-
-func (GooglePrivacyDlpV2HybridOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2HybridOptionsResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2HybridOptionsResponseArgs) ToGooglePrivacyDlpV2HybridOptionsResponseOutput() GooglePrivacyDlpV2HybridOptionsResponseOutput {
-	return i.ToGooglePrivacyDlpV2HybridOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2HybridOptionsResponseArgs) ToGooglePrivacyDlpV2HybridOptionsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2HybridOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2HybridOptionsResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2HybridOptionsResponseArgs) ToGooglePrivacyDlpV2HybridOptionsResponsePtrOutput() GooglePrivacyDlpV2HybridOptionsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2HybridOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2HybridOptionsResponseArgs) ToGooglePrivacyDlpV2HybridOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2HybridOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2HybridOptionsResponseOutput).ToGooglePrivacyDlpV2HybridOptionsResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2HybridOptionsResponsePtrInput is an input type that accepts GooglePrivacyDlpV2HybridOptionsResponseArgs, GooglePrivacyDlpV2HybridOptionsResponsePtr and GooglePrivacyDlpV2HybridOptionsResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2HybridOptionsResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2HybridOptionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2HybridOptionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2HybridOptionsResponsePtrOutput() GooglePrivacyDlpV2HybridOptionsResponsePtrOutput
-	ToGooglePrivacyDlpV2HybridOptionsResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2HybridOptionsResponsePtrOutput
-}
-
-type googlePrivacyDlpV2HybridOptionsResponsePtrType GooglePrivacyDlpV2HybridOptionsResponseArgs
-
-func GooglePrivacyDlpV2HybridOptionsResponsePtr(v *GooglePrivacyDlpV2HybridOptionsResponseArgs) GooglePrivacyDlpV2HybridOptionsResponsePtrInput {
-	return (*googlePrivacyDlpV2HybridOptionsResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2HybridOptionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2HybridOptionsResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2HybridOptionsResponsePtrType) ToGooglePrivacyDlpV2HybridOptionsResponsePtrOutput() GooglePrivacyDlpV2HybridOptionsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2HybridOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2HybridOptionsResponsePtrType) ToGooglePrivacyDlpV2HybridOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2HybridOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2HybridOptionsResponsePtrOutput)
-}
-
 // Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
 type GooglePrivacyDlpV2HybridOptionsResponseOutput struct{ *pulumi.OutputState }
 
@@ -12381,16 +8461,6 @@ func (o GooglePrivacyDlpV2HybridOptionsResponseOutput) ToGooglePrivacyDlpV2Hybri
 
 func (o GooglePrivacyDlpV2HybridOptionsResponseOutput) ToGooglePrivacyDlpV2HybridOptionsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2HybridOptionsResponseOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2HybridOptionsResponseOutput) ToGooglePrivacyDlpV2HybridOptionsResponsePtrOutput() GooglePrivacyDlpV2HybridOptionsResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2HybridOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2HybridOptionsResponseOutput) ToGooglePrivacyDlpV2HybridOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2HybridOptionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2HybridOptionsResponse) *GooglePrivacyDlpV2HybridOptionsResponse {
-		return &v
-	}).(GooglePrivacyDlpV2HybridOptionsResponsePtrOutput)
 }
 
 // A short description of where the data is coming from. Will be stored once in the job. 256 max length.
@@ -12413,70 +8483,6 @@ func (o GooglePrivacyDlpV2HybridOptionsResponseOutput) TableOptions() GooglePriv
 	return o.ApplyT(func(v GooglePrivacyDlpV2HybridOptionsResponse) GooglePrivacyDlpV2TableOptionsResponse {
 		return v.TableOptions
 	}).(GooglePrivacyDlpV2TableOptionsResponseOutput)
-}
-
-type GooglePrivacyDlpV2HybridOptionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2HybridOptionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2HybridOptionsResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2HybridOptionsResponsePtrOutput) ToGooglePrivacyDlpV2HybridOptionsResponsePtrOutput() GooglePrivacyDlpV2HybridOptionsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2HybridOptionsResponsePtrOutput) ToGooglePrivacyDlpV2HybridOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2HybridOptionsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2HybridOptionsResponsePtrOutput) Elem() GooglePrivacyDlpV2HybridOptionsResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2HybridOptionsResponse) GooglePrivacyDlpV2HybridOptionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2HybridOptionsResponse
-		return ret
-	}).(GooglePrivacyDlpV2HybridOptionsResponseOutput)
-}
-
-// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
-func (o GooglePrivacyDlpV2HybridOptionsResponsePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2HybridOptionsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// To organize findings, these labels will be added to each finding. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. No more than 10 labels can be associated with a given finding. Examples: * `"environment" : "production"` * `"pipeline" : "etl"`
-func (o GooglePrivacyDlpV2HybridOptionsResponsePtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2HybridOptionsResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Labels
-	}).(pulumi.StringMapOutput)
-}
-
-// These are labels that each inspection request must include within their 'finding_labels' map. Request may contain others, but any missing one of these will be rejected. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. No more than 10 keys can be required.
-func (o GooglePrivacyDlpV2HybridOptionsResponsePtrOutput) RequiredFindingLabelKeys() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2HybridOptionsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.RequiredFindingLabelKeys
-	}).(pulumi.StringArrayOutput)
-}
-
-// If the container is a table, additional information to make findings meaningful such as the columns that are primary keys.
-func (o GooglePrivacyDlpV2HybridOptionsResponsePtrOutput) TableOptions() GooglePrivacyDlpV2TableOptionsResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2HybridOptionsResponse) *GooglePrivacyDlpV2TableOptionsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.TableOptions
-	}).(GooglePrivacyDlpV2TableOptionsResponsePtrOutput)
 }
 
 // Type of information detected by the API.
@@ -12800,62 +8806,6 @@ type GooglePrivacyDlpV2InfoTypeLimitResponse struct {
 	MaxFindings int `pulumi:"maxFindings"`
 }
 
-// GooglePrivacyDlpV2InfoTypeLimitResponseInput is an input type that accepts GooglePrivacyDlpV2InfoTypeLimitResponseArgs and GooglePrivacyDlpV2InfoTypeLimitResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2InfoTypeLimitResponseInput` via:
-//
-//          GooglePrivacyDlpV2InfoTypeLimitResponseArgs{...}
-type GooglePrivacyDlpV2InfoTypeLimitResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2InfoTypeLimitResponseOutput() GooglePrivacyDlpV2InfoTypeLimitResponseOutput
-	ToGooglePrivacyDlpV2InfoTypeLimitResponseOutputWithContext(context.Context) GooglePrivacyDlpV2InfoTypeLimitResponseOutput
-}
-
-// Max findings configuration per infoType, per content item or long running DlpJob.
-type GooglePrivacyDlpV2InfoTypeLimitResponseArgs struct {
-	// Type of information the findings limit applies to. Only one limit per info_type should be provided. If InfoTypeLimit does not have an info_type, the DLP API applies the limit against all info_types that are found but not specified in another InfoTypeLimit.
-	InfoType GooglePrivacyDlpV2InfoTypeResponseInput `pulumi:"infoType"`
-	// Max findings limit for the given infoType.
-	MaxFindings pulumi.IntInput `pulumi:"maxFindings"`
-}
-
-func (GooglePrivacyDlpV2InfoTypeLimitResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeLimitResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2InfoTypeLimitResponseArgs) ToGooglePrivacyDlpV2InfoTypeLimitResponseOutput() GooglePrivacyDlpV2InfoTypeLimitResponseOutput {
-	return i.ToGooglePrivacyDlpV2InfoTypeLimitResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2InfoTypeLimitResponseArgs) ToGooglePrivacyDlpV2InfoTypeLimitResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InfoTypeLimitResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InfoTypeLimitResponseOutput)
-}
-
-// GooglePrivacyDlpV2InfoTypeLimitResponseArrayInput is an input type that accepts GooglePrivacyDlpV2InfoTypeLimitResponseArray and GooglePrivacyDlpV2InfoTypeLimitResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2InfoTypeLimitResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2InfoTypeLimitResponseArray{ GooglePrivacyDlpV2InfoTypeLimitResponseArgs{...} }
-type GooglePrivacyDlpV2InfoTypeLimitResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2InfoTypeLimitResponseArrayOutput() GooglePrivacyDlpV2InfoTypeLimitResponseArrayOutput
-	ToGooglePrivacyDlpV2InfoTypeLimitResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2InfoTypeLimitResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2InfoTypeLimitResponseArray []GooglePrivacyDlpV2InfoTypeLimitResponseInput
-
-func (GooglePrivacyDlpV2InfoTypeLimitResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2InfoTypeLimitResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2InfoTypeLimitResponseArray) ToGooglePrivacyDlpV2InfoTypeLimitResponseArrayOutput() GooglePrivacyDlpV2InfoTypeLimitResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2InfoTypeLimitResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2InfoTypeLimitResponseArray) ToGooglePrivacyDlpV2InfoTypeLimitResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InfoTypeLimitResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InfoTypeLimitResponseArrayOutput)
-}
-
 // Max findings configuration per infoType, per content item or long running DlpJob.
 type GooglePrivacyDlpV2InfoTypeLimitResponseOutput struct{ *pulumi.OutputState }
 
@@ -12909,62 +8859,6 @@ type GooglePrivacyDlpV2InfoTypeResponse struct {
 	Version string `pulumi:"version"`
 }
 
-// GooglePrivacyDlpV2InfoTypeResponseInput is an input type that accepts GooglePrivacyDlpV2InfoTypeResponseArgs and GooglePrivacyDlpV2InfoTypeResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2InfoTypeResponseInput` via:
-//
-//          GooglePrivacyDlpV2InfoTypeResponseArgs{...}
-type GooglePrivacyDlpV2InfoTypeResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2InfoTypeResponseOutput() GooglePrivacyDlpV2InfoTypeResponseOutput
-	ToGooglePrivacyDlpV2InfoTypeResponseOutputWithContext(context.Context) GooglePrivacyDlpV2InfoTypeResponseOutput
-}
-
-// Type of information detected by the API.
-type GooglePrivacyDlpV2InfoTypeResponseArgs struct {
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Optional version name for this InfoType.
-	Version pulumi.StringInput `pulumi:"version"`
-}
-
-func (GooglePrivacyDlpV2InfoTypeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2InfoTypeResponseArgs) ToGooglePrivacyDlpV2InfoTypeResponseOutput() GooglePrivacyDlpV2InfoTypeResponseOutput {
-	return i.ToGooglePrivacyDlpV2InfoTypeResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2InfoTypeResponseArgs) ToGooglePrivacyDlpV2InfoTypeResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InfoTypeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InfoTypeResponseOutput)
-}
-
-// GooglePrivacyDlpV2InfoTypeResponseArrayInput is an input type that accepts GooglePrivacyDlpV2InfoTypeResponseArray and GooglePrivacyDlpV2InfoTypeResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2InfoTypeResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2InfoTypeResponseArray{ GooglePrivacyDlpV2InfoTypeResponseArgs{...} }
-type GooglePrivacyDlpV2InfoTypeResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2InfoTypeResponseArrayOutput() GooglePrivacyDlpV2InfoTypeResponseArrayOutput
-	ToGooglePrivacyDlpV2InfoTypeResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2InfoTypeResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2InfoTypeResponseArray []GooglePrivacyDlpV2InfoTypeResponseInput
-
-func (GooglePrivacyDlpV2InfoTypeResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2InfoTypeResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2InfoTypeResponseArray) ToGooglePrivacyDlpV2InfoTypeResponseArrayOutput() GooglePrivacyDlpV2InfoTypeResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2InfoTypeResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2InfoTypeResponseArray) ToGooglePrivacyDlpV2InfoTypeResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InfoTypeResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InfoTypeResponseArrayOutput)
-}
-
 // Type of information detected by the API.
 type GooglePrivacyDlpV2InfoTypeResponseOutput struct{ *pulumi.OutputState }
 
@@ -13016,62 +8910,6 @@ type GooglePrivacyDlpV2InfoTypeStatsResponse struct {
 	Count string `pulumi:"count"`
 	// The type of finding this stat is for.
 	InfoType GooglePrivacyDlpV2InfoTypeResponse `pulumi:"infoType"`
-}
-
-// GooglePrivacyDlpV2InfoTypeStatsResponseInput is an input type that accepts GooglePrivacyDlpV2InfoTypeStatsResponseArgs and GooglePrivacyDlpV2InfoTypeStatsResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2InfoTypeStatsResponseInput` via:
-//
-//          GooglePrivacyDlpV2InfoTypeStatsResponseArgs{...}
-type GooglePrivacyDlpV2InfoTypeStatsResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2InfoTypeStatsResponseOutput() GooglePrivacyDlpV2InfoTypeStatsResponseOutput
-	ToGooglePrivacyDlpV2InfoTypeStatsResponseOutputWithContext(context.Context) GooglePrivacyDlpV2InfoTypeStatsResponseOutput
-}
-
-// Statistics regarding a specific InfoType.
-type GooglePrivacyDlpV2InfoTypeStatsResponseArgs struct {
-	// Number of findings for this infoType.
-	Count pulumi.StringInput `pulumi:"count"`
-	// The type of finding this stat is for.
-	InfoType GooglePrivacyDlpV2InfoTypeResponseInput `pulumi:"infoType"`
-}
-
-func (GooglePrivacyDlpV2InfoTypeStatsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeStatsResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2InfoTypeStatsResponseArgs) ToGooglePrivacyDlpV2InfoTypeStatsResponseOutput() GooglePrivacyDlpV2InfoTypeStatsResponseOutput {
-	return i.ToGooglePrivacyDlpV2InfoTypeStatsResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2InfoTypeStatsResponseArgs) ToGooglePrivacyDlpV2InfoTypeStatsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InfoTypeStatsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InfoTypeStatsResponseOutput)
-}
-
-// GooglePrivacyDlpV2InfoTypeStatsResponseArrayInput is an input type that accepts GooglePrivacyDlpV2InfoTypeStatsResponseArray and GooglePrivacyDlpV2InfoTypeStatsResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2InfoTypeStatsResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2InfoTypeStatsResponseArray{ GooglePrivacyDlpV2InfoTypeStatsResponseArgs{...} }
-type GooglePrivacyDlpV2InfoTypeStatsResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2InfoTypeStatsResponseArrayOutput() GooglePrivacyDlpV2InfoTypeStatsResponseArrayOutput
-	ToGooglePrivacyDlpV2InfoTypeStatsResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2InfoTypeStatsResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2InfoTypeStatsResponseArray []GooglePrivacyDlpV2InfoTypeStatsResponseInput
-
-func (GooglePrivacyDlpV2InfoTypeStatsResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2InfoTypeStatsResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2InfoTypeStatsResponseArray) ToGooglePrivacyDlpV2InfoTypeStatsResponseArrayOutput() GooglePrivacyDlpV2InfoTypeStatsResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2InfoTypeStatsResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2InfoTypeStatsResponseArray) ToGooglePrivacyDlpV2InfoTypeStatsResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InfoTypeStatsResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InfoTypeStatsResponseArrayOutput)
 }
 
 // Statistics regarding a specific InfoType.
@@ -13236,62 +9074,6 @@ type GooglePrivacyDlpV2InfoTypeTransformationResponse struct {
 	InfoTypes []GooglePrivacyDlpV2InfoTypeResponse `pulumi:"infoTypes"`
 	// Primitive transformation to apply to the infoType.
 	PrimitiveTransformation GooglePrivacyDlpV2PrimitiveTransformationResponse `pulumi:"primitiveTransformation"`
-}
-
-// GooglePrivacyDlpV2InfoTypeTransformationResponseInput is an input type that accepts GooglePrivacyDlpV2InfoTypeTransformationResponseArgs and GooglePrivacyDlpV2InfoTypeTransformationResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2InfoTypeTransformationResponseInput` via:
-//
-//          GooglePrivacyDlpV2InfoTypeTransformationResponseArgs{...}
-type GooglePrivacyDlpV2InfoTypeTransformationResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2InfoTypeTransformationResponseOutput() GooglePrivacyDlpV2InfoTypeTransformationResponseOutput
-	ToGooglePrivacyDlpV2InfoTypeTransformationResponseOutputWithContext(context.Context) GooglePrivacyDlpV2InfoTypeTransformationResponseOutput
-}
-
-// A transformation to apply to text that is identified as a specific info_type.
-type GooglePrivacyDlpV2InfoTypeTransformationResponseArgs struct {
-	// InfoTypes to apply the transformation to. An empty list will cause this transformation to apply to all findings that correspond to infoTypes that were requested in `InspectConfig`.
-	InfoTypes GooglePrivacyDlpV2InfoTypeResponseArrayInput `pulumi:"infoTypes"`
-	// Primitive transformation to apply to the infoType.
-	PrimitiveTransformation GooglePrivacyDlpV2PrimitiveTransformationResponseInput `pulumi:"primitiveTransformation"`
-}
-
-func (GooglePrivacyDlpV2InfoTypeTransformationResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeTransformationResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2InfoTypeTransformationResponseArgs) ToGooglePrivacyDlpV2InfoTypeTransformationResponseOutput() GooglePrivacyDlpV2InfoTypeTransformationResponseOutput {
-	return i.ToGooglePrivacyDlpV2InfoTypeTransformationResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2InfoTypeTransformationResponseArgs) ToGooglePrivacyDlpV2InfoTypeTransformationResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InfoTypeTransformationResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InfoTypeTransformationResponseOutput)
-}
-
-// GooglePrivacyDlpV2InfoTypeTransformationResponseArrayInput is an input type that accepts GooglePrivacyDlpV2InfoTypeTransformationResponseArray and GooglePrivacyDlpV2InfoTypeTransformationResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2InfoTypeTransformationResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2InfoTypeTransformationResponseArray{ GooglePrivacyDlpV2InfoTypeTransformationResponseArgs{...} }
-type GooglePrivacyDlpV2InfoTypeTransformationResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2InfoTypeTransformationResponseArrayOutput() GooglePrivacyDlpV2InfoTypeTransformationResponseArrayOutput
-	ToGooglePrivacyDlpV2InfoTypeTransformationResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2InfoTypeTransformationResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2InfoTypeTransformationResponseArray []GooglePrivacyDlpV2InfoTypeTransformationResponseInput
-
-func (GooglePrivacyDlpV2InfoTypeTransformationResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2InfoTypeTransformationResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2InfoTypeTransformationResponseArray) ToGooglePrivacyDlpV2InfoTypeTransformationResponseArrayOutput() GooglePrivacyDlpV2InfoTypeTransformationResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2InfoTypeTransformationResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2InfoTypeTransformationResponseArray) ToGooglePrivacyDlpV2InfoTypeTransformationResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InfoTypeTransformationResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InfoTypeTransformationResponseArrayOutput)
 }
 
 // A transformation to apply to text that is identified as a specific info_type.
@@ -13491,76 +9273,6 @@ type GooglePrivacyDlpV2InfoTypeTransformationsResponse struct {
 	Transformations []GooglePrivacyDlpV2InfoTypeTransformationResponse `pulumi:"transformations"`
 }
 
-// GooglePrivacyDlpV2InfoTypeTransformationsResponseInput is an input type that accepts GooglePrivacyDlpV2InfoTypeTransformationsResponseArgs and GooglePrivacyDlpV2InfoTypeTransformationsResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2InfoTypeTransformationsResponseInput` via:
-//
-//          GooglePrivacyDlpV2InfoTypeTransformationsResponseArgs{...}
-type GooglePrivacyDlpV2InfoTypeTransformationsResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2InfoTypeTransformationsResponseOutput() GooglePrivacyDlpV2InfoTypeTransformationsResponseOutput
-	ToGooglePrivacyDlpV2InfoTypeTransformationsResponseOutputWithContext(context.Context) GooglePrivacyDlpV2InfoTypeTransformationsResponseOutput
-}
-
-// A type of transformation that will scan unstructured text and apply various `PrimitiveTransformation`s to each finding, where the transformation is applied to only values that were identified as a specific info_type.
-type GooglePrivacyDlpV2InfoTypeTransformationsResponseArgs struct {
-	// Transformation for each infoType. Cannot specify more than one for a given infoType.
-	Transformations GooglePrivacyDlpV2InfoTypeTransformationResponseArrayInput `pulumi:"transformations"`
-}
-
-func (GooglePrivacyDlpV2InfoTypeTransformationsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeTransformationsResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2InfoTypeTransformationsResponseArgs) ToGooglePrivacyDlpV2InfoTypeTransformationsResponseOutput() GooglePrivacyDlpV2InfoTypeTransformationsResponseOutput {
-	return i.ToGooglePrivacyDlpV2InfoTypeTransformationsResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2InfoTypeTransformationsResponseArgs) ToGooglePrivacyDlpV2InfoTypeTransformationsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InfoTypeTransformationsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InfoTypeTransformationsResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2InfoTypeTransformationsResponseArgs) ToGooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput() GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2InfoTypeTransformationsResponseArgs) ToGooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InfoTypeTransformationsResponseOutput).ToGooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrInput is an input type that accepts GooglePrivacyDlpV2InfoTypeTransformationsResponseArgs, GooglePrivacyDlpV2InfoTypeTransformationsResponsePtr and GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2InfoTypeTransformationsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput() GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput
-	ToGooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput
-}
-
-type googlePrivacyDlpV2InfoTypeTransformationsResponsePtrType GooglePrivacyDlpV2InfoTypeTransformationsResponseArgs
-
-func GooglePrivacyDlpV2InfoTypeTransformationsResponsePtr(v *GooglePrivacyDlpV2InfoTypeTransformationsResponseArgs) GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrInput {
-	return (*googlePrivacyDlpV2InfoTypeTransformationsResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2InfoTypeTransformationsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2InfoTypeTransformationsResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2InfoTypeTransformationsResponsePtrType) ToGooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput() GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2InfoTypeTransformationsResponsePtrType) ToGooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput)
-}
-
 // A type of transformation that will scan unstructured text and apply various `PrimitiveTransformation`s to each finding, where the transformation is applied to only values that were identified as a specific info_type.
 type GooglePrivacyDlpV2InfoTypeTransformationsResponseOutput struct{ *pulumi.OutputState }
 
@@ -13576,53 +9288,9 @@ func (o GooglePrivacyDlpV2InfoTypeTransformationsResponseOutput) ToGooglePrivacy
 	return o
 }
 
-func (o GooglePrivacyDlpV2InfoTypeTransformationsResponseOutput) ToGooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput() GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2InfoTypeTransformationsResponseOutput) ToGooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2InfoTypeTransformationsResponse) *GooglePrivacyDlpV2InfoTypeTransformationsResponse {
-		return &v
-	}).(GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput)
-}
-
 // Transformation for each infoType. Cannot specify more than one for a given infoType.
 func (o GooglePrivacyDlpV2InfoTypeTransformationsResponseOutput) Transformations() GooglePrivacyDlpV2InfoTypeTransformationResponseArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InfoTypeTransformationsResponse) []GooglePrivacyDlpV2InfoTypeTransformationResponse {
-		return v.Transformations
-	}).(GooglePrivacyDlpV2InfoTypeTransformationResponseArrayOutput)
-}
-
-type GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2InfoTypeTransformationsResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput) ToGooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput() GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput) ToGooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput) Elem() GooglePrivacyDlpV2InfoTypeTransformationsResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InfoTypeTransformationsResponse) GooglePrivacyDlpV2InfoTypeTransformationsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2InfoTypeTransformationsResponse
-		return ret
-	}).(GooglePrivacyDlpV2InfoTypeTransformationsResponseOutput)
-}
-
-// Transformation for each infoType. Cannot specify more than one for a given infoType.
-func (o GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput) Transformations() GooglePrivacyDlpV2InfoTypeTransformationResponseArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InfoTypeTransformationsResponse) []GooglePrivacyDlpV2InfoTypeTransformationResponse {
-		if v == nil {
-			return nil
-		}
 		return v.Transformations
 	}).(GooglePrivacyDlpV2InfoTypeTransformationResponseArrayOutput)
 }
@@ -13924,90 +9592,6 @@ type GooglePrivacyDlpV2InspectConfigResponse struct {
 	RuleSet []GooglePrivacyDlpV2InspectionRuleSetResponse `pulumi:"ruleSet"`
 }
 
-// GooglePrivacyDlpV2InspectConfigResponseInput is an input type that accepts GooglePrivacyDlpV2InspectConfigResponseArgs and GooglePrivacyDlpV2InspectConfigResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2InspectConfigResponseInput` via:
-//
-//          GooglePrivacyDlpV2InspectConfigResponseArgs{...}
-type GooglePrivacyDlpV2InspectConfigResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2InspectConfigResponseOutput() GooglePrivacyDlpV2InspectConfigResponseOutput
-	ToGooglePrivacyDlpV2InspectConfigResponseOutputWithContext(context.Context) GooglePrivacyDlpV2InspectConfigResponseOutput
-}
-
-// Configuration description of the scanning process. When used with redactContent only info_types and min_likelihood are currently used.
-type GooglePrivacyDlpV2InspectConfigResponseArgs struct {
-	// List of options defining data content to scan. If empty, text, images, and other content will be included.
-	ContentOptions pulumi.StringArrayInput `pulumi:"contentOptions"`
-	// CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
-	CustomInfoTypes GooglePrivacyDlpV2CustomInfoTypeResponseArrayInput `pulumi:"customInfoTypes"`
-	// When true, excludes type information of the findings.
-	ExcludeInfoTypes pulumi.BoolInput `pulumi:"excludeInfoTypes"`
-	// When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote.
-	IncludeQuote pulumi.BoolInput `pulumi:"includeQuote"`
-	// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
-	InfoTypes GooglePrivacyDlpV2InfoTypeResponseArrayInput `pulumi:"infoTypes"`
-	// Configuration to control the number of findings returned.
-	Limits GooglePrivacyDlpV2FindingLimitsResponseInput `pulumi:"limits"`
-	// Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
-	MinLikelihood pulumi.StringInput `pulumi:"minLikelihood"`
-	// Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end, other rules are executed in the order they are specified for each info type.
-	RuleSet GooglePrivacyDlpV2InspectionRuleSetResponseArrayInput `pulumi:"ruleSet"`
-}
-
-func (GooglePrivacyDlpV2InspectConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2InspectConfigResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2InspectConfigResponseArgs) ToGooglePrivacyDlpV2InspectConfigResponseOutput() GooglePrivacyDlpV2InspectConfigResponseOutput {
-	return i.ToGooglePrivacyDlpV2InspectConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2InspectConfigResponseArgs) ToGooglePrivacyDlpV2InspectConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InspectConfigResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2InspectConfigResponseArgs) ToGooglePrivacyDlpV2InspectConfigResponsePtrOutput() GooglePrivacyDlpV2InspectConfigResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2InspectConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2InspectConfigResponseArgs) ToGooglePrivacyDlpV2InspectConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InspectConfigResponseOutput).ToGooglePrivacyDlpV2InspectConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2InspectConfigResponsePtrInput is an input type that accepts GooglePrivacyDlpV2InspectConfigResponseArgs, GooglePrivacyDlpV2InspectConfigResponsePtr and GooglePrivacyDlpV2InspectConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2InspectConfigResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2InspectConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2InspectConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2InspectConfigResponsePtrOutput() GooglePrivacyDlpV2InspectConfigResponsePtrOutput
-	ToGooglePrivacyDlpV2InspectConfigResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2InspectConfigResponsePtrOutput
-}
-
-type googlePrivacyDlpV2InspectConfigResponsePtrType GooglePrivacyDlpV2InspectConfigResponseArgs
-
-func GooglePrivacyDlpV2InspectConfigResponsePtr(v *GooglePrivacyDlpV2InspectConfigResponseArgs) GooglePrivacyDlpV2InspectConfigResponsePtrInput {
-	return (*googlePrivacyDlpV2InspectConfigResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2InspectConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2InspectConfigResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2InspectConfigResponsePtrType) ToGooglePrivacyDlpV2InspectConfigResponsePtrOutput() GooglePrivacyDlpV2InspectConfigResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2InspectConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2InspectConfigResponsePtrType) ToGooglePrivacyDlpV2InspectConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InspectConfigResponsePtrOutput)
-}
-
 // Configuration description of the scanning process. When used with redactContent only info_types and min_likelihood are currently used.
 type GooglePrivacyDlpV2InspectConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -14021,16 +9605,6 @@ func (o GooglePrivacyDlpV2InspectConfigResponseOutput) ToGooglePrivacyDlpV2Inspe
 
 func (o GooglePrivacyDlpV2InspectConfigResponseOutput) ToGooglePrivacyDlpV2InspectConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectConfigResponseOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2InspectConfigResponseOutput) ToGooglePrivacyDlpV2InspectConfigResponsePtrOutput() GooglePrivacyDlpV2InspectConfigResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2InspectConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2InspectConfigResponseOutput) ToGooglePrivacyDlpV2InspectConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2InspectConfigResponse) *GooglePrivacyDlpV2InspectConfigResponse {
-		return &v
-	}).(GooglePrivacyDlpV2InspectConfigResponsePtrOutput)
 }
 
 // List of options defining data content to scan. If empty, text, images, and other content will be included.
@@ -14081,188 +9655,12 @@ func (o GooglePrivacyDlpV2InspectConfigResponseOutput) RuleSet() GooglePrivacyDl
 	}).(GooglePrivacyDlpV2InspectionRuleSetResponseArrayOutput)
 }
 
-type GooglePrivacyDlpV2InspectConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2InspectConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2InspectConfigResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2InspectConfigResponsePtrOutput) ToGooglePrivacyDlpV2InspectConfigResponsePtrOutput() GooglePrivacyDlpV2InspectConfigResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2InspectConfigResponsePtrOutput) ToGooglePrivacyDlpV2InspectConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectConfigResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2InspectConfigResponsePtrOutput) Elem() GooglePrivacyDlpV2InspectConfigResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfigResponse) GooglePrivacyDlpV2InspectConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2InspectConfigResponse
-		return ret
-	}).(GooglePrivacyDlpV2InspectConfigResponseOutput)
-}
-
-// List of options defining data content to scan. If empty, text, images, and other content will be included.
-func (o GooglePrivacyDlpV2InspectConfigResponsePtrOutput) ContentOptions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfigResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ContentOptions
-	}).(pulumi.StringArrayOutput)
-}
-
-// CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
-func (o GooglePrivacyDlpV2InspectConfigResponsePtrOutput) CustomInfoTypes() GooglePrivacyDlpV2CustomInfoTypeResponseArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfigResponse) []GooglePrivacyDlpV2CustomInfoTypeResponse {
-		if v == nil {
-			return nil
-		}
-		return v.CustomInfoTypes
-	}).(GooglePrivacyDlpV2CustomInfoTypeResponseArrayOutput)
-}
-
-// When true, excludes type information of the findings.
-func (o GooglePrivacyDlpV2InspectConfigResponsePtrOutput) ExcludeInfoTypes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.ExcludeInfoTypes
-	}).(pulumi.BoolPtrOutput)
-}
-
-// When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote.
-func (o GooglePrivacyDlpV2InspectConfigResponsePtrOutput) IncludeQuote() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.IncludeQuote
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
-func (o GooglePrivacyDlpV2InspectConfigResponsePtrOutput) InfoTypes() GooglePrivacyDlpV2InfoTypeResponseArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfigResponse) []GooglePrivacyDlpV2InfoTypeResponse {
-		if v == nil {
-			return nil
-		}
-		return v.InfoTypes
-	}).(GooglePrivacyDlpV2InfoTypeResponseArrayOutput)
-}
-
-// Configuration to control the number of findings returned.
-func (o GooglePrivacyDlpV2InspectConfigResponsePtrOutput) Limits() GooglePrivacyDlpV2FindingLimitsResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfigResponse) *GooglePrivacyDlpV2FindingLimitsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Limits
-	}).(GooglePrivacyDlpV2FindingLimitsResponsePtrOutput)
-}
-
-// Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
-func (o GooglePrivacyDlpV2InspectConfigResponsePtrOutput) MinLikelihood() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MinLikelihood
-	}).(pulumi.StringPtrOutput)
-}
-
-// Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end, other rules are executed in the order they are specified for each info type.
-func (o GooglePrivacyDlpV2InspectConfigResponsePtrOutput) RuleSet() GooglePrivacyDlpV2InspectionRuleSetResponseArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfigResponse) []GooglePrivacyDlpV2InspectionRuleSetResponse {
-		if v == nil {
-			return nil
-		}
-		return v.RuleSet
-	}).(GooglePrivacyDlpV2InspectionRuleSetResponseArrayOutput)
-}
-
 // The results of an inspect DataSource job.
 type GooglePrivacyDlpV2InspectDataSourceDetailsResponse struct {
 	// The configuration used for this job.
 	RequestedOptions GooglePrivacyDlpV2RequestedOptionsResponse `pulumi:"requestedOptions"`
 	// A summary of the outcome of this inspection job.
 	Result GooglePrivacyDlpV2ResultResponse `pulumi:"result"`
-}
-
-// GooglePrivacyDlpV2InspectDataSourceDetailsResponseInput is an input type that accepts GooglePrivacyDlpV2InspectDataSourceDetailsResponseArgs and GooglePrivacyDlpV2InspectDataSourceDetailsResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2InspectDataSourceDetailsResponseInput` via:
-//
-//          GooglePrivacyDlpV2InspectDataSourceDetailsResponseArgs{...}
-type GooglePrivacyDlpV2InspectDataSourceDetailsResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2InspectDataSourceDetailsResponseOutput() GooglePrivacyDlpV2InspectDataSourceDetailsResponseOutput
-	ToGooglePrivacyDlpV2InspectDataSourceDetailsResponseOutputWithContext(context.Context) GooglePrivacyDlpV2InspectDataSourceDetailsResponseOutput
-}
-
-// The results of an inspect DataSource job.
-type GooglePrivacyDlpV2InspectDataSourceDetailsResponseArgs struct {
-	// The configuration used for this job.
-	RequestedOptions GooglePrivacyDlpV2RequestedOptionsResponseInput `pulumi:"requestedOptions"`
-	// A summary of the outcome of this inspection job.
-	Result GooglePrivacyDlpV2ResultResponseInput `pulumi:"result"`
-}
-
-func (GooglePrivacyDlpV2InspectDataSourceDetailsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2InspectDataSourceDetailsResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2InspectDataSourceDetailsResponseArgs) ToGooglePrivacyDlpV2InspectDataSourceDetailsResponseOutput() GooglePrivacyDlpV2InspectDataSourceDetailsResponseOutput {
-	return i.ToGooglePrivacyDlpV2InspectDataSourceDetailsResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2InspectDataSourceDetailsResponseArgs) ToGooglePrivacyDlpV2InspectDataSourceDetailsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectDataSourceDetailsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InspectDataSourceDetailsResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2InspectDataSourceDetailsResponseArgs) ToGooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput() GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2InspectDataSourceDetailsResponseArgs) ToGooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InspectDataSourceDetailsResponseOutput).ToGooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrInput is an input type that accepts GooglePrivacyDlpV2InspectDataSourceDetailsResponseArgs, GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtr and GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2InspectDataSourceDetailsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput() GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput
-	ToGooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput
-}
-
-type googlePrivacyDlpV2InspectDataSourceDetailsResponsePtrType GooglePrivacyDlpV2InspectDataSourceDetailsResponseArgs
-
-func GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtr(v *GooglePrivacyDlpV2InspectDataSourceDetailsResponseArgs) GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrInput {
-	return (*googlePrivacyDlpV2InspectDataSourceDetailsResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2InspectDataSourceDetailsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2InspectDataSourceDetailsResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2InspectDataSourceDetailsResponsePtrType) ToGooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput() GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2InspectDataSourceDetailsResponsePtrType) ToGooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput)
 }
 
 // The results of an inspect DataSource job.
@@ -14280,16 +9678,6 @@ func (o GooglePrivacyDlpV2InspectDataSourceDetailsResponseOutput) ToGooglePrivac
 	return o
 }
 
-func (o GooglePrivacyDlpV2InspectDataSourceDetailsResponseOutput) ToGooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput() GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2InspectDataSourceDetailsResponseOutput) ToGooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2InspectDataSourceDetailsResponse) *GooglePrivacyDlpV2InspectDataSourceDetailsResponse {
-		return &v
-	}).(GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput)
-}
-
 // The configuration used for this job.
 func (o GooglePrivacyDlpV2InspectDataSourceDetailsResponseOutput) RequestedOptions() GooglePrivacyDlpV2RequestedOptionsResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectDataSourceDetailsResponse) GooglePrivacyDlpV2RequestedOptionsResponse {
@@ -14302,50 +9690,6 @@ func (o GooglePrivacyDlpV2InspectDataSourceDetailsResponseOutput) Result() Googl
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectDataSourceDetailsResponse) GooglePrivacyDlpV2ResultResponse {
 		return v.Result
 	}).(GooglePrivacyDlpV2ResultResponseOutput)
-}
-
-type GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2InspectDataSourceDetailsResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput) ToGooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput() GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput) ToGooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput) Elem() GooglePrivacyDlpV2InspectDataSourceDetailsResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectDataSourceDetailsResponse) GooglePrivacyDlpV2InspectDataSourceDetailsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2InspectDataSourceDetailsResponse
-		return ret
-	}).(GooglePrivacyDlpV2InspectDataSourceDetailsResponseOutput)
-}
-
-// The configuration used for this job.
-func (o GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput) RequestedOptions() GooglePrivacyDlpV2RequestedOptionsResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectDataSourceDetailsResponse) *GooglePrivacyDlpV2RequestedOptionsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.RequestedOptions
-	}).(GooglePrivacyDlpV2RequestedOptionsResponsePtrOutput)
-}
-
-// A summary of the outcome of this inspection job.
-func (o GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput) Result() GooglePrivacyDlpV2ResultResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectDataSourceDetailsResponse) *GooglePrivacyDlpV2ResultResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Result
-	}).(GooglePrivacyDlpV2ResultResponsePtrOutput)
 }
 
 // Controls what and how to inspect for findings.
@@ -14557,82 +9901,6 @@ type GooglePrivacyDlpV2InspectJobConfigResponse struct {
 	StorageConfig GooglePrivacyDlpV2StorageConfigResponse `pulumi:"storageConfig"`
 }
 
-// GooglePrivacyDlpV2InspectJobConfigResponseInput is an input type that accepts GooglePrivacyDlpV2InspectJobConfigResponseArgs and GooglePrivacyDlpV2InspectJobConfigResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2InspectJobConfigResponseInput` via:
-//
-//          GooglePrivacyDlpV2InspectJobConfigResponseArgs{...}
-type GooglePrivacyDlpV2InspectJobConfigResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2InspectJobConfigResponseOutput() GooglePrivacyDlpV2InspectJobConfigResponseOutput
-	ToGooglePrivacyDlpV2InspectJobConfigResponseOutputWithContext(context.Context) GooglePrivacyDlpV2InspectJobConfigResponseOutput
-}
-
-// Controls what and how to inspect for findings.
-type GooglePrivacyDlpV2InspectJobConfigResponseArgs struct {
-	// Actions to execute at the completion of the job.
-	Actions GooglePrivacyDlpV2ActionResponseArrayInput `pulumi:"actions"`
-	// How and what to scan for.
-	InspectConfig GooglePrivacyDlpV2InspectConfigResponseInput `pulumi:"inspectConfig"`
-	// If provided, will be used as the default for all values in InspectConfig. `inspect_config` will be merged into the values persisted as part of the template.
-	InspectTemplateName pulumi.StringInput `pulumi:"inspectTemplateName"`
-	// The data to scan.
-	StorageConfig GooglePrivacyDlpV2StorageConfigResponseInput `pulumi:"storageConfig"`
-}
-
-func (GooglePrivacyDlpV2InspectJobConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2InspectJobConfigResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2InspectJobConfigResponseArgs) ToGooglePrivacyDlpV2InspectJobConfigResponseOutput() GooglePrivacyDlpV2InspectJobConfigResponseOutput {
-	return i.ToGooglePrivacyDlpV2InspectJobConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2InspectJobConfigResponseArgs) ToGooglePrivacyDlpV2InspectJobConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectJobConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InspectJobConfigResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2InspectJobConfigResponseArgs) ToGooglePrivacyDlpV2InspectJobConfigResponsePtrOutput() GooglePrivacyDlpV2InspectJobConfigResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2InspectJobConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2InspectJobConfigResponseArgs) ToGooglePrivacyDlpV2InspectJobConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectJobConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InspectJobConfigResponseOutput).ToGooglePrivacyDlpV2InspectJobConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2InspectJobConfigResponsePtrInput is an input type that accepts GooglePrivacyDlpV2InspectJobConfigResponseArgs, GooglePrivacyDlpV2InspectJobConfigResponsePtr and GooglePrivacyDlpV2InspectJobConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2InspectJobConfigResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2InspectJobConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2InspectJobConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2InspectJobConfigResponsePtrOutput() GooglePrivacyDlpV2InspectJobConfigResponsePtrOutput
-	ToGooglePrivacyDlpV2InspectJobConfigResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2InspectJobConfigResponsePtrOutput
-}
-
-type googlePrivacyDlpV2InspectJobConfigResponsePtrType GooglePrivacyDlpV2InspectJobConfigResponseArgs
-
-func GooglePrivacyDlpV2InspectJobConfigResponsePtr(v *GooglePrivacyDlpV2InspectJobConfigResponseArgs) GooglePrivacyDlpV2InspectJobConfigResponsePtrInput {
-	return (*googlePrivacyDlpV2InspectJobConfigResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2InspectJobConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2InspectJobConfigResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2InspectJobConfigResponsePtrType) ToGooglePrivacyDlpV2InspectJobConfigResponsePtrOutput() GooglePrivacyDlpV2InspectJobConfigResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2InspectJobConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2InspectJobConfigResponsePtrType) ToGooglePrivacyDlpV2InspectJobConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectJobConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InspectJobConfigResponsePtrOutput)
-}
-
 // Controls what and how to inspect for findings.
 type GooglePrivacyDlpV2InspectJobConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -14646,16 +9914,6 @@ func (o GooglePrivacyDlpV2InspectJobConfigResponseOutput) ToGooglePrivacyDlpV2In
 
 func (o GooglePrivacyDlpV2InspectJobConfigResponseOutput) ToGooglePrivacyDlpV2InspectJobConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectJobConfigResponseOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2InspectJobConfigResponseOutput) ToGooglePrivacyDlpV2InspectJobConfigResponsePtrOutput() GooglePrivacyDlpV2InspectJobConfigResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2InspectJobConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2InspectJobConfigResponseOutput) ToGooglePrivacyDlpV2InspectJobConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectJobConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2InspectJobConfigResponse) *GooglePrivacyDlpV2InspectJobConfigResponse {
-		return &v
-	}).(GooglePrivacyDlpV2InspectJobConfigResponsePtrOutput)
 }
 
 // Actions to execute at the completion of the job.
@@ -14684,70 +9942,6 @@ func (o GooglePrivacyDlpV2InspectJobConfigResponseOutput) StorageConfig() Google
 	}).(GooglePrivacyDlpV2StorageConfigResponseOutput)
 }
 
-type GooglePrivacyDlpV2InspectJobConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2InspectJobConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2InspectJobConfigResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2InspectJobConfigResponsePtrOutput) ToGooglePrivacyDlpV2InspectJobConfigResponsePtrOutput() GooglePrivacyDlpV2InspectJobConfigResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2InspectJobConfigResponsePtrOutput) ToGooglePrivacyDlpV2InspectJobConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectJobConfigResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2InspectJobConfigResponsePtrOutput) Elem() GooglePrivacyDlpV2InspectJobConfigResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectJobConfigResponse) GooglePrivacyDlpV2InspectJobConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2InspectJobConfigResponse
-		return ret
-	}).(GooglePrivacyDlpV2InspectJobConfigResponseOutput)
-}
-
-// Actions to execute at the completion of the job.
-func (o GooglePrivacyDlpV2InspectJobConfigResponsePtrOutput) Actions() GooglePrivacyDlpV2ActionResponseArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectJobConfigResponse) []GooglePrivacyDlpV2ActionResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Actions
-	}).(GooglePrivacyDlpV2ActionResponseArrayOutput)
-}
-
-// How and what to scan for.
-func (o GooglePrivacyDlpV2InspectJobConfigResponsePtrOutput) InspectConfig() GooglePrivacyDlpV2InspectConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectJobConfigResponse) *GooglePrivacyDlpV2InspectConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.InspectConfig
-	}).(GooglePrivacyDlpV2InspectConfigResponsePtrOutput)
-}
-
-// If provided, will be used as the default for all values in InspectConfig. `inspect_config` will be merged into the values persisted as part of the template.
-func (o GooglePrivacyDlpV2InspectJobConfigResponsePtrOutput) InspectTemplateName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectJobConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.InspectTemplateName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The data to scan.
-func (o GooglePrivacyDlpV2InspectJobConfigResponsePtrOutput) StorageConfig() GooglePrivacyDlpV2StorageConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectJobConfigResponse) *GooglePrivacyDlpV2StorageConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.StorageConfig
-	}).(GooglePrivacyDlpV2StorageConfigResponsePtrOutput)
-}
-
 // The inspectTemplate contains a configuration (set of types of sensitive data to be detected) to be used anywhere you otherwise would normally specify InspectConfig. See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
 type GooglePrivacyDlpV2InspectTemplateResponse struct {
 	// The creation timestamp of an inspectTemplate.
@@ -14764,86 +9958,6 @@ type GooglePrivacyDlpV2InspectTemplateResponse struct {
 	UpdateTime string `pulumi:"updateTime"`
 }
 
-// GooglePrivacyDlpV2InspectTemplateResponseInput is an input type that accepts GooglePrivacyDlpV2InspectTemplateResponseArgs and GooglePrivacyDlpV2InspectTemplateResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2InspectTemplateResponseInput` via:
-//
-//          GooglePrivacyDlpV2InspectTemplateResponseArgs{...}
-type GooglePrivacyDlpV2InspectTemplateResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2InspectTemplateResponseOutput() GooglePrivacyDlpV2InspectTemplateResponseOutput
-	ToGooglePrivacyDlpV2InspectTemplateResponseOutputWithContext(context.Context) GooglePrivacyDlpV2InspectTemplateResponseOutput
-}
-
-// The inspectTemplate contains a configuration (set of types of sensitive data to be detected) to be used anywhere you otherwise would normally specify InspectConfig. See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
-type GooglePrivacyDlpV2InspectTemplateResponseArgs struct {
-	// The creation timestamp of an inspectTemplate.
-	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// Short description (max 256 chars).
-	Description pulumi.StringInput `pulumi:"description"`
-	// Display name (max 256 chars).
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// The core content of the template. Configuration of the scanning process.
-	InspectConfig GooglePrivacyDlpV2InspectConfigResponseInput `pulumi:"inspectConfig"`
-	// The template name. The template will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
-	Name pulumi.StringInput `pulumi:"name"`
-	// The last update timestamp of an inspectTemplate.
-	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
-}
-
-func (GooglePrivacyDlpV2InspectTemplateResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2InspectTemplateResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2InspectTemplateResponseArgs) ToGooglePrivacyDlpV2InspectTemplateResponseOutput() GooglePrivacyDlpV2InspectTemplateResponseOutput {
-	return i.ToGooglePrivacyDlpV2InspectTemplateResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2InspectTemplateResponseArgs) ToGooglePrivacyDlpV2InspectTemplateResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectTemplateResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InspectTemplateResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2InspectTemplateResponseArgs) ToGooglePrivacyDlpV2InspectTemplateResponsePtrOutput() GooglePrivacyDlpV2InspectTemplateResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2InspectTemplateResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2InspectTemplateResponseArgs) ToGooglePrivacyDlpV2InspectTemplateResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectTemplateResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InspectTemplateResponseOutput).ToGooglePrivacyDlpV2InspectTemplateResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2InspectTemplateResponsePtrInput is an input type that accepts GooglePrivacyDlpV2InspectTemplateResponseArgs, GooglePrivacyDlpV2InspectTemplateResponsePtr and GooglePrivacyDlpV2InspectTemplateResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2InspectTemplateResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2InspectTemplateResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2InspectTemplateResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2InspectTemplateResponsePtrOutput() GooglePrivacyDlpV2InspectTemplateResponsePtrOutput
-	ToGooglePrivacyDlpV2InspectTemplateResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2InspectTemplateResponsePtrOutput
-}
-
-type googlePrivacyDlpV2InspectTemplateResponsePtrType GooglePrivacyDlpV2InspectTemplateResponseArgs
-
-func GooglePrivacyDlpV2InspectTemplateResponsePtr(v *GooglePrivacyDlpV2InspectTemplateResponseArgs) GooglePrivacyDlpV2InspectTemplateResponsePtrInput {
-	return (*googlePrivacyDlpV2InspectTemplateResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2InspectTemplateResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2InspectTemplateResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2InspectTemplateResponsePtrType) ToGooglePrivacyDlpV2InspectTemplateResponsePtrOutput() GooglePrivacyDlpV2InspectTemplateResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2InspectTemplateResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2InspectTemplateResponsePtrType) ToGooglePrivacyDlpV2InspectTemplateResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectTemplateResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InspectTemplateResponsePtrOutput)
-}
-
 // The inspectTemplate contains a configuration (set of types of sensitive data to be detected) to be used anywhere you otherwise would normally specify InspectConfig. See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
 type GooglePrivacyDlpV2InspectTemplateResponseOutput struct{ *pulumi.OutputState }
 
@@ -14857,16 +9971,6 @@ func (o GooglePrivacyDlpV2InspectTemplateResponseOutput) ToGooglePrivacyDlpV2Ins
 
 func (o GooglePrivacyDlpV2InspectTemplateResponseOutput) ToGooglePrivacyDlpV2InspectTemplateResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectTemplateResponseOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2InspectTemplateResponseOutput) ToGooglePrivacyDlpV2InspectTemplateResponsePtrOutput() GooglePrivacyDlpV2InspectTemplateResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2InspectTemplateResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2InspectTemplateResponseOutput) ToGooglePrivacyDlpV2InspectTemplateResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectTemplateResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2InspectTemplateResponse) *GooglePrivacyDlpV2InspectTemplateResponse {
-		return &v
-	}).(GooglePrivacyDlpV2InspectTemplateResponsePtrOutput)
 }
 
 // The creation timestamp of an inspectTemplate.
@@ -14899,90 +10003,6 @@ func (o GooglePrivacyDlpV2InspectTemplateResponseOutput) Name() pulumi.StringOut
 // The last update timestamp of an inspectTemplate.
 func (o GooglePrivacyDlpV2InspectTemplateResponseOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectTemplateResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
-}
-
-type GooglePrivacyDlpV2InspectTemplateResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2InspectTemplateResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2InspectTemplateResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2InspectTemplateResponsePtrOutput) ToGooglePrivacyDlpV2InspectTemplateResponsePtrOutput() GooglePrivacyDlpV2InspectTemplateResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2InspectTemplateResponsePtrOutput) ToGooglePrivacyDlpV2InspectTemplateResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectTemplateResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2InspectTemplateResponsePtrOutput) Elem() GooglePrivacyDlpV2InspectTemplateResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectTemplateResponse) GooglePrivacyDlpV2InspectTemplateResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2InspectTemplateResponse
-		return ret
-	}).(GooglePrivacyDlpV2InspectTemplateResponseOutput)
-}
-
-// The creation timestamp of an inspectTemplate.
-func (o GooglePrivacyDlpV2InspectTemplateResponsePtrOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectTemplateResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CreateTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Short description (max 256 chars).
-func (o GooglePrivacyDlpV2InspectTemplateResponsePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectTemplateResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// Display name (max 256 chars).
-func (o GooglePrivacyDlpV2InspectTemplateResponsePtrOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectTemplateResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DisplayName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The core content of the template. Configuration of the scanning process.
-func (o GooglePrivacyDlpV2InspectTemplateResponsePtrOutput) InspectConfig() GooglePrivacyDlpV2InspectConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectTemplateResponse) *GooglePrivacyDlpV2InspectConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.InspectConfig
-	}).(GooglePrivacyDlpV2InspectConfigResponsePtrOutput)
-}
-
-// The template name. The template will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
-func (o GooglePrivacyDlpV2InspectTemplateResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectTemplateResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The last update timestamp of an inspectTemplate.
-func (o GooglePrivacyDlpV2InspectTemplateResponsePtrOutput) UpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectTemplateResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UpdateTime
-	}).(pulumi.StringPtrOutput)
 }
 
 // A single inspection rule to be applied to infoTypes, specified in `InspectionRuleSet`.
@@ -15100,62 +10120,6 @@ type GooglePrivacyDlpV2InspectionRuleResponse struct {
 	ExclusionRule GooglePrivacyDlpV2ExclusionRuleResponse `pulumi:"exclusionRule"`
 	// Hotword-based detection rule.
 	HotwordRule GooglePrivacyDlpV2HotwordRuleResponse `pulumi:"hotwordRule"`
-}
-
-// GooglePrivacyDlpV2InspectionRuleResponseInput is an input type that accepts GooglePrivacyDlpV2InspectionRuleResponseArgs and GooglePrivacyDlpV2InspectionRuleResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2InspectionRuleResponseInput` via:
-//
-//          GooglePrivacyDlpV2InspectionRuleResponseArgs{...}
-type GooglePrivacyDlpV2InspectionRuleResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2InspectionRuleResponseOutput() GooglePrivacyDlpV2InspectionRuleResponseOutput
-	ToGooglePrivacyDlpV2InspectionRuleResponseOutputWithContext(context.Context) GooglePrivacyDlpV2InspectionRuleResponseOutput
-}
-
-// A single inspection rule to be applied to infoTypes, specified in `InspectionRuleSet`.
-type GooglePrivacyDlpV2InspectionRuleResponseArgs struct {
-	// Exclusion rule.
-	ExclusionRule GooglePrivacyDlpV2ExclusionRuleResponseInput `pulumi:"exclusionRule"`
-	// Hotword-based detection rule.
-	HotwordRule GooglePrivacyDlpV2HotwordRuleResponseInput `pulumi:"hotwordRule"`
-}
-
-func (GooglePrivacyDlpV2InspectionRuleResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2InspectionRuleResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2InspectionRuleResponseArgs) ToGooglePrivacyDlpV2InspectionRuleResponseOutput() GooglePrivacyDlpV2InspectionRuleResponseOutput {
-	return i.ToGooglePrivacyDlpV2InspectionRuleResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2InspectionRuleResponseArgs) ToGooglePrivacyDlpV2InspectionRuleResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectionRuleResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InspectionRuleResponseOutput)
-}
-
-// GooglePrivacyDlpV2InspectionRuleResponseArrayInput is an input type that accepts GooglePrivacyDlpV2InspectionRuleResponseArray and GooglePrivacyDlpV2InspectionRuleResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2InspectionRuleResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2InspectionRuleResponseArray{ GooglePrivacyDlpV2InspectionRuleResponseArgs{...} }
-type GooglePrivacyDlpV2InspectionRuleResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2InspectionRuleResponseArrayOutput() GooglePrivacyDlpV2InspectionRuleResponseArrayOutput
-	ToGooglePrivacyDlpV2InspectionRuleResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2InspectionRuleResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2InspectionRuleResponseArray []GooglePrivacyDlpV2InspectionRuleResponseInput
-
-func (GooglePrivacyDlpV2InspectionRuleResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2InspectionRuleResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2InspectionRuleResponseArray) ToGooglePrivacyDlpV2InspectionRuleResponseArrayOutput() GooglePrivacyDlpV2InspectionRuleResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2InspectionRuleResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2InspectionRuleResponseArray) ToGooglePrivacyDlpV2InspectionRuleResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectionRuleResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InspectionRuleResponseArrayOutput)
 }
 
 // A single inspection rule to be applied to infoTypes, specified in `InspectionRuleSet`.
@@ -15322,62 +10286,6 @@ type GooglePrivacyDlpV2InspectionRuleSetResponse struct {
 	InfoTypes []GooglePrivacyDlpV2InfoTypeResponse `pulumi:"infoTypes"`
 	// Set of rules to be applied to infoTypes. The rules are applied in order.
 	Rules []GooglePrivacyDlpV2InspectionRuleResponse `pulumi:"rules"`
-}
-
-// GooglePrivacyDlpV2InspectionRuleSetResponseInput is an input type that accepts GooglePrivacyDlpV2InspectionRuleSetResponseArgs and GooglePrivacyDlpV2InspectionRuleSetResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2InspectionRuleSetResponseInput` via:
-//
-//          GooglePrivacyDlpV2InspectionRuleSetResponseArgs{...}
-type GooglePrivacyDlpV2InspectionRuleSetResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2InspectionRuleSetResponseOutput() GooglePrivacyDlpV2InspectionRuleSetResponseOutput
-	ToGooglePrivacyDlpV2InspectionRuleSetResponseOutputWithContext(context.Context) GooglePrivacyDlpV2InspectionRuleSetResponseOutput
-}
-
-// Rule set for modifying a set of infoTypes to alter behavior under certain circumstances, depending on the specific details of the rules within the set.
-type GooglePrivacyDlpV2InspectionRuleSetResponseArgs struct {
-	// List of infoTypes this rule set is applied to.
-	InfoTypes GooglePrivacyDlpV2InfoTypeResponseArrayInput `pulumi:"infoTypes"`
-	// Set of rules to be applied to infoTypes. The rules are applied in order.
-	Rules GooglePrivacyDlpV2InspectionRuleResponseArrayInput `pulumi:"rules"`
-}
-
-func (GooglePrivacyDlpV2InspectionRuleSetResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2InspectionRuleSetResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2InspectionRuleSetResponseArgs) ToGooglePrivacyDlpV2InspectionRuleSetResponseOutput() GooglePrivacyDlpV2InspectionRuleSetResponseOutput {
-	return i.ToGooglePrivacyDlpV2InspectionRuleSetResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2InspectionRuleSetResponseArgs) ToGooglePrivacyDlpV2InspectionRuleSetResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectionRuleSetResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InspectionRuleSetResponseOutput)
-}
-
-// GooglePrivacyDlpV2InspectionRuleSetResponseArrayInput is an input type that accepts GooglePrivacyDlpV2InspectionRuleSetResponseArray and GooglePrivacyDlpV2InspectionRuleSetResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2InspectionRuleSetResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2InspectionRuleSetResponseArray{ GooglePrivacyDlpV2InspectionRuleSetResponseArgs{...} }
-type GooglePrivacyDlpV2InspectionRuleSetResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2InspectionRuleSetResponseArrayOutput() GooglePrivacyDlpV2InspectionRuleSetResponseArrayOutput
-	ToGooglePrivacyDlpV2InspectionRuleSetResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2InspectionRuleSetResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2InspectionRuleSetResponseArray []GooglePrivacyDlpV2InspectionRuleSetResponseInput
-
-func (GooglePrivacyDlpV2InspectionRuleSetResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2InspectionRuleSetResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2InspectionRuleSetResponseArray) ToGooglePrivacyDlpV2InspectionRuleSetResponseArrayOutput() GooglePrivacyDlpV2InspectionRuleSetResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2InspectionRuleSetResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2InspectionRuleSetResponseArray) ToGooglePrivacyDlpV2InspectionRuleSetResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectionRuleSetResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2InspectionRuleSetResponseArrayOutput)
 }
 
 // Rule set for modifying a set of infoTypes to alter behavior under certain circumstances, depending on the specific details of the rules within the set.
@@ -15552,33 +10460,6 @@ func (o GooglePrivacyDlpV2JobNotificationEmailsPtrOutput) Elem() GooglePrivacyDl
 
 // Enable email notification to project owners and editors on jobs's completion/failure.
 type GooglePrivacyDlpV2JobNotificationEmailsResponse struct {
-}
-
-// GooglePrivacyDlpV2JobNotificationEmailsResponseInput is an input type that accepts GooglePrivacyDlpV2JobNotificationEmailsResponseArgs and GooglePrivacyDlpV2JobNotificationEmailsResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2JobNotificationEmailsResponseInput` via:
-//
-//          GooglePrivacyDlpV2JobNotificationEmailsResponseArgs{...}
-type GooglePrivacyDlpV2JobNotificationEmailsResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2JobNotificationEmailsResponseOutput() GooglePrivacyDlpV2JobNotificationEmailsResponseOutput
-	ToGooglePrivacyDlpV2JobNotificationEmailsResponseOutputWithContext(context.Context) GooglePrivacyDlpV2JobNotificationEmailsResponseOutput
-}
-
-// Enable email notification to project owners and editors on jobs's completion/failure.
-type GooglePrivacyDlpV2JobNotificationEmailsResponseArgs struct {
-}
-
-func (GooglePrivacyDlpV2JobNotificationEmailsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2JobNotificationEmailsResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2JobNotificationEmailsResponseArgs) ToGooglePrivacyDlpV2JobNotificationEmailsResponseOutput() GooglePrivacyDlpV2JobNotificationEmailsResponseOutput {
-	return i.ToGooglePrivacyDlpV2JobNotificationEmailsResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2JobNotificationEmailsResponseArgs) ToGooglePrivacyDlpV2JobNotificationEmailsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2JobNotificationEmailsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2JobNotificationEmailsResponseOutput)
 }
 
 // Enable email notification to project owners and editors on jobs's completion/failure.
@@ -15763,78 +10644,6 @@ type GooglePrivacyDlpV2KAnonymityConfigResponse struct {
 	QuasiIds []GooglePrivacyDlpV2FieldIdResponse `pulumi:"quasiIds"`
 }
 
-// GooglePrivacyDlpV2KAnonymityConfigResponseInput is an input type that accepts GooglePrivacyDlpV2KAnonymityConfigResponseArgs and GooglePrivacyDlpV2KAnonymityConfigResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2KAnonymityConfigResponseInput` via:
-//
-//          GooglePrivacyDlpV2KAnonymityConfigResponseArgs{...}
-type GooglePrivacyDlpV2KAnonymityConfigResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2KAnonymityConfigResponseOutput() GooglePrivacyDlpV2KAnonymityConfigResponseOutput
-	ToGooglePrivacyDlpV2KAnonymityConfigResponseOutputWithContext(context.Context) GooglePrivacyDlpV2KAnonymityConfigResponseOutput
-}
-
-// k-anonymity metric, used for analysis of reidentification risk.
-type GooglePrivacyDlpV2KAnonymityConfigResponseArgs struct {
-	// Message indicating that multiple rows might be associated to a single individual. If the same entity_id is associated to multiple quasi-identifier tuples over distinct rows, we consider the entire collection of tuples as the composite quasi-identifier. This collection is a multiset: the order in which the different tuples appear in the dataset is ignored, but their frequency is taken into account. Important note: a maximum of 1000 rows can be associated to a single entity ID. If more rows are associated with the same entity ID, some might be ignored.
-	EntityId GooglePrivacyDlpV2EntityIdResponseInput `pulumi:"entityId"`
-	// Set of fields to compute k-anonymity over. When multiple fields are specified, they are considered a single composite key. Structs and repeated data types are not supported; however, nested fields are supported so long as they are not structs themselves or nested within a repeated field.
-	QuasiIds GooglePrivacyDlpV2FieldIdResponseArrayInput `pulumi:"quasiIds"`
-}
-
-func (GooglePrivacyDlpV2KAnonymityConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2KAnonymityConfigResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2KAnonymityConfigResponseArgs) ToGooglePrivacyDlpV2KAnonymityConfigResponseOutput() GooglePrivacyDlpV2KAnonymityConfigResponseOutput {
-	return i.ToGooglePrivacyDlpV2KAnonymityConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2KAnonymityConfigResponseArgs) ToGooglePrivacyDlpV2KAnonymityConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KAnonymityConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2KAnonymityConfigResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2KAnonymityConfigResponseArgs) ToGooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput() GooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2KAnonymityConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2KAnonymityConfigResponseArgs) ToGooglePrivacyDlpV2KAnonymityConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2KAnonymityConfigResponseOutput).ToGooglePrivacyDlpV2KAnonymityConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2KAnonymityConfigResponsePtrInput is an input type that accepts GooglePrivacyDlpV2KAnonymityConfigResponseArgs, GooglePrivacyDlpV2KAnonymityConfigResponsePtr and GooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2KAnonymityConfigResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2KAnonymityConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2KAnonymityConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput() GooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput
-	ToGooglePrivacyDlpV2KAnonymityConfigResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput
-}
-
-type googlePrivacyDlpV2KAnonymityConfigResponsePtrType GooglePrivacyDlpV2KAnonymityConfigResponseArgs
-
-func GooglePrivacyDlpV2KAnonymityConfigResponsePtr(v *GooglePrivacyDlpV2KAnonymityConfigResponseArgs) GooglePrivacyDlpV2KAnonymityConfigResponsePtrInput {
-	return (*googlePrivacyDlpV2KAnonymityConfigResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2KAnonymityConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2KAnonymityConfigResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2KAnonymityConfigResponsePtrType) ToGooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput() GooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2KAnonymityConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2KAnonymityConfigResponsePtrType) ToGooglePrivacyDlpV2KAnonymityConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput)
-}
-
 // k-anonymity metric, used for analysis of reidentification risk.
 type GooglePrivacyDlpV2KAnonymityConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -15848,16 +10657,6 @@ func (o GooglePrivacyDlpV2KAnonymityConfigResponseOutput) ToGooglePrivacyDlpV2KA
 
 func (o GooglePrivacyDlpV2KAnonymityConfigResponseOutput) ToGooglePrivacyDlpV2KAnonymityConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KAnonymityConfigResponseOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2KAnonymityConfigResponseOutput) ToGooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput() GooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2KAnonymityConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2KAnonymityConfigResponseOutput) ToGooglePrivacyDlpV2KAnonymityConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2KAnonymityConfigResponse) *GooglePrivacyDlpV2KAnonymityConfigResponse {
-		return &v
-	}).(GooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput)
 }
 
 // Message indicating that multiple rows might be associated to a single individual. If the same entity_id is associated to multiple quasi-identifier tuples over distinct rows, we consider the entire collection of tuples as the composite quasi-identifier. This collection is a multiset: the order in which the different tuples appear in the dataset is ignored, but their frequency is taken into account. Important note: a maximum of 1000 rows can be associated to a single entity ID. If more rows are associated with the same entity ID, some might be ignored.
@@ -15874,112 +10673,12 @@ func (o GooglePrivacyDlpV2KAnonymityConfigResponseOutput) QuasiIds() GooglePriva
 	}).(GooglePrivacyDlpV2FieldIdResponseArrayOutput)
 }
 
-type GooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2KAnonymityConfigResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput) ToGooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput() GooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput) ToGooglePrivacyDlpV2KAnonymityConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput) Elem() GooglePrivacyDlpV2KAnonymityConfigResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2KAnonymityConfigResponse) GooglePrivacyDlpV2KAnonymityConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2KAnonymityConfigResponse
-		return ret
-	}).(GooglePrivacyDlpV2KAnonymityConfigResponseOutput)
-}
-
-// Message indicating that multiple rows might be associated to a single individual. If the same entity_id is associated to multiple quasi-identifier tuples over distinct rows, we consider the entire collection of tuples as the composite quasi-identifier. This collection is a multiset: the order in which the different tuples appear in the dataset is ignored, but their frequency is taken into account. Important note: a maximum of 1000 rows can be associated to a single entity ID. If more rows are associated with the same entity ID, some might be ignored.
-func (o GooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput) EntityId() GooglePrivacyDlpV2EntityIdResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2KAnonymityConfigResponse) *GooglePrivacyDlpV2EntityIdResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.EntityId
-	}).(GooglePrivacyDlpV2EntityIdResponsePtrOutput)
-}
-
-// Set of fields to compute k-anonymity over. When multiple fields are specified, they are considered a single composite key. Structs and repeated data types are not supported; however, nested fields are supported so long as they are not structs themselves or nested within a repeated field.
-func (o GooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput) QuasiIds() GooglePrivacyDlpV2FieldIdResponseArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2KAnonymityConfigResponse) []GooglePrivacyDlpV2FieldIdResponse {
-		if v == nil {
-			return nil
-		}
-		return v.QuasiIds
-	}).(GooglePrivacyDlpV2FieldIdResponseArrayOutput)
-}
-
 // The set of columns' values that share the same ldiversity value
 type GooglePrivacyDlpV2KAnonymityEquivalenceClassResponse struct {
 	// Size of the equivalence class, for example number of rows with the above set of values.
 	EquivalenceClassSize string `pulumi:"equivalenceClassSize"`
 	// Set of values defining the equivalence class. One value per quasi-identifier column in the original KAnonymity metric message. The order is always the same as the original request.
 	QuasiIdsValues []GooglePrivacyDlpV2ValueResponse `pulumi:"quasiIdsValues"`
-}
-
-// GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseInput is an input type that accepts GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArgs and GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseInput` via:
-//
-//          GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArgs{...}
-type GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2KAnonymityEquivalenceClassResponseOutput() GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseOutput
-	ToGooglePrivacyDlpV2KAnonymityEquivalenceClassResponseOutputWithContext(context.Context) GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseOutput
-}
-
-// The set of columns' values that share the same ldiversity value
-type GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArgs struct {
-	// Size of the equivalence class, for example number of rows with the above set of values.
-	EquivalenceClassSize pulumi.StringInput `pulumi:"equivalenceClassSize"`
-	// Set of values defining the equivalence class. One value per quasi-identifier column in the original KAnonymity metric message. The order is always the same as the original request.
-	QuasiIdsValues GooglePrivacyDlpV2ValueResponseArrayInput `pulumi:"quasiIdsValues"`
-}
-
-func (GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2KAnonymityEquivalenceClassResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArgs) ToGooglePrivacyDlpV2KAnonymityEquivalenceClassResponseOutput() GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseOutput {
-	return i.ToGooglePrivacyDlpV2KAnonymityEquivalenceClassResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArgs) ToGooglePrivacyDlpV2KAnonymityEquivalenceClassResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseOutput)
-}
-
-// GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArrayInput is an input type that accepts GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArray and GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArray{ GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArgs{...} }
-type GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArrayOutput() GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArrayOutput
-	ToGooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArray []GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseInput
-
-func (GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2KAnonymityEquivalenceClassResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArray) ToGooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArrayOutput() GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArray) ToGooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArrayOutput)
 }
 
 // The set of columns' values that share the same ldiversity value
@@ -16041,68 +10740,6 @@ type GooglePrivacyDlpV2KAnonymityHistogramBucketResponse struct {
 	EquivalenceClassSizeLowerBound string `pulumi:"equivalenceClassSizeLowerBound"`
 	// Upper bound on the size of the equivalence classes in this bucket.
 	EquivalenceClassSizeUpperBound string `pulumi:"equivalenceClassSizeUpperBound"`
-}
-
-// GooglePrivacyDlpV2KAnonymityHistogramBucketResponseInput is an input type that accepts GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArgs and GooglePrivacyDlpV2KAnonymityHistogramBucketResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2KAnonymityHistogramBucketResponseInput` via:
-//
-//          GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArgs{...}
-type GooglePrivacyDlpV2KAnonymityHistogramBucketResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2KAnonymityHistogramBucketResponseOutput() GooglePrivacyDlpV2KAnonymityHistogramBucketResponseOutput
-	ToGooglePrivacyDlpV2KAnonymityHistogramBucketResponseOutputWithContext(context.Context) GooglePrivacyDlpV2KAnonymityHistogramBucketResponseOutput
-}
-
-// Histogram of k-anonymity equivalence classes.
-type GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArgs struct {
-	// Total number of equivalence classes in this bucket.
-	BucketSize pulumi.StringInput `pulumi:"bucketSize"`
-	// Total number of distinct equivalence classes in this bucket.
-	BucketValueCount pulumi.StringInput `pulumi:"bucketValueCount"`
-	// Sample of equivalence classes in this bucket. The total number of classes returned per bucket is capped at 20.
-	BucketValues GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArrayInput `pulumi:"bucketValues"`
-	// Lower bound on the size of the equivalence classes in this bucket.
-	EquivalenceClassSizeLowerBound pulumi.StringInput `pulumi:"equivalenceClassSizeLowerBound"`
-	// Upper bound on the size of the equivalence classes in this bucket.
-	EquivalenceClassSizeUpperBound pulumi.StringInput `pulumi:"equivalenceClassSizeUpperBound"`
-}
-
-func (GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2KAnonymityHistogramBucketResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArgs) ToGooglePrivacyDlpV2KAnonymityHistogramBucketResponseOutput() GooglePrivacyDlpV2KAnonymityHistogramBucketResponseOutput {
-	return i.ToGooglePrivacyDlpV2KAnonymityHistogramBucketResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArgs) ToGooglePrivacyDlpV2KAnonymityHistogramBucketResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KAnonymityHistogramBucketResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2KAnonymityHistogramBucketResponseOutput)
-}
-
-// GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArrayInput is an input type that accepts GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArray and GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArray{ GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArgs{...} }
-type GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2KAnonymityHistogramBucketResponseArrayOutput() GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArrayOutput
-	ToGooglePrivacyDlpV2KAnonymityHistogramBucketResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArray []GooglePrivacyDlpV2KAnonymityHistogramBucketResponseInput
-
-func (GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2KAnonymityHistogramBucketResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArray) ToGooglePrivacyDlpV2KAnonymityHistogramBucketResponseArrayOutput() GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2KAnonymityHistogramBucketResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArray) ToGooglePrivacyDlpV2KAnonymityHistogramBucketResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArrayOutput)
 }
 
 // Histogram of k-anonymity equivalence classes.
@@ -16177,76 +10814,6 @@ type GooglePrivacyDlpV2KAnonymityResultResponse struct {
 	EquivalenceClassHistogramBuckets []GooglePrivacyDlpV2KAnonymityHistogramBucketResponse `pulumi:"equivalenceClassHistogramBuckets"`
 }
 
-// GooglePrivacyDlpV2KAnonymityResultResponseInput is an input type that accepts GooglePrivacyDlpV2KAnonymityResultResponseArgs and GooglePrivacyDlpV2KAnonymityResultResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2KAnonymityResultResponseInput` via:
-//
-//          GooglePrivacyDlpV2KAnonymityResultResponseArgs{...}
-type GooglePrivacyDlpV2KAnonymityResultResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2KAnonymityResultResponseOutput() GooglePrivacyDlpV2KAnonymityResultResponseOutput
-	ToGooglePrivacyDlpV2KAnonymityResultResponseOutputWithContext(context.Context) GooglePrivacyDlpV2KAnonymityResultResponseOutput
-}
-
-// Result of the k-anonymity computation.
-type GooglePrivacyDlpV2KAnonymityResultResponseArgs struct {
-	// Histogram of k-anonymity equivalence classes.
-	EquivalenceClassHistogramBuckets GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArrayInput `pulumi:"equivalenceClassHistogramBuckets"`
-}
-
-func (GooglePrivacyDlpV2KAnonymityResultResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2KAnonymityResultResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2KAnonymityResultResponseArgs) ToGooglePrivacyDlpV2KAnonymityResultResponseOutput() GooglePrivacyDlpV2KAnonymityResultResponseOutput {
-	return i.ToGooglePrivacyDlpV2KAnonymityResultResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2KAnonymityResultResponseArgs) ToGooglePrivacyDlpV2KAnonymityResultResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KAnonymityResultResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2KAnonymityResultResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2KAnonymityResultResponseArgs) ToGooglePrivacyDlpV2KAnonymityResultResponsePtrOutput() GooglePrivacyDlpV2KAnonymityResultResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2KAnonymityResultResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2KAnonymityResultResponseArgs) ToGooglePrivacyDlpV2KAnonymityResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KAnonymityResultResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2KAnonymityResultResponseOutput).ToGooglePrivacyDlpV2KAnonymityResultResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2KAnonymityResultResponsePtrInput is an input type that accepts GooglePrivacyDlpV2KAnonymityResultResponseArgs, GooglePrivacyDlpV2KAnonymityResultResponsePtr and GooglePrivacyDlpV2KAnonymityResultResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2KAnonymityResultResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2KAnonymityResultResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2KAnonymityResultResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2KAnonymityResultResponsePtrOutput() GooglePrivacyDlpV2KAnonymityResultResponsePtrOutput
-	ToGooglePrivacyDlpV2KAnonymityResultResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2KAnonymityResultResponsePtrOutput
-}
-
-type googlePrivacyDlpV2KAnonymityResultResponsePtrType GooglePrivacyDlpV2KAnonymityResultResponseArgs
-
-func GooglePrivacyDlpV2KAnonymityResultResponsePtr(v *GooglePrivacyDlpV2KAnonymityResultResponseArgs) GooglePrivacyDlpV2KAnonymityResultResponsePtrInput {
-	return (*googlePrivacyDlpV2KAnonymityResultResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2KAnonymityResultResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2KAnonymityResultResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2KAnonymityResultResponsePtrType) ToGooglePrivacyDlpV2KAnonymityResultResponsePtrOutput() GooglePrivacyDlpV2KAnonymityResultResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2KAnonymityResultResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2KAnonymityResultResponsePtrType) ToGooglePrivacyDlpV2KAnonymityResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KAnonymityResultResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2KAnonymityResultResponsePtrOutput)
-}
-
 // Result of the k-anonymity computation.
 type GooglePrivacyDlpV2KAnonymityResultResponseOutput struct{ *pulumi.OutputState }
 
@@ -16262,53 +10829,9 @@ func (o GooglePrivacyDlpV2KAnonymityResultResponseOutput) ToGooglePrivacyDlpV2KA
 	return o
 }
 
-func (o GooglePrivacyDlpV2KAnonymityResultResponseOutput) ToGooglePrivacyDlpV2KAnonymityResultResponsePtrOutput() GooglePrivacyDlpV2KAnonymityResultResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2KAnonymityResultResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2KAnonymityResultResponseOutput) ToGooglePrivacyDlpV2KAnonymityResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KAnonymityResultResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2KAnonymityResultResponse) *GooglePrivacyDlpV2KAnonymityResultResponse {
-		return &v
-	}).(GooglePrivacyDlpV2KAnonymityResultResponsePtrOutput)
-}
-
 // Histogram of k-anonymity equivalence classes.
 func (o GooglePrivacyDlpV2KAnonymityResultResponseOutput) EquivalenceClassHistogramBuckets() GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2KAnonymityResultResponse) []GooglePrivacyDlpV2KAnonymityHistogramBucketResponse {
-		return v.EquivalenceClassHistogramBuckets
-	}).(GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArrayOutput)
-}
-
-type GooglePrivacyDlpV2KAnonymityResultResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2KAnonymityResultResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2KAnonymityResultResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2KAnonymityResultResponsePtrOutput) ToGooglePrivacyDlpV2KAnonymityResultResponsePtrOutput() GooglePrivacyDlpV2KAnonymityResultResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2KAnonymityResultResponsePtrOutput) ToGooglePrivacyDlpV2KAnonymityResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KAnonymityResultResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2KAnonymityResultResponsePtrOutput) Elem() GooglePrivacyDlpV2KAnonymityResultResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2KAnonymityResultResponse) GooglePrivacyDlpV2KAnonymityResultResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2KAnonymityResultResponse
-		return ret
-	}).(GooglePrivacyDlpV2KAnonymityResultResponseOutput)
-}
-
-// Histogram of k-anonymity equivalence classes.
-func (o GooglePrivacyDlpV2KAnonymityResultResponsePtrOutput) EquivalenceClassHistogramBuckets() GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2KAnonymityResultResponse) []GooglePrivacyDlpV2KAnonymityHistogramBucketResponse {
-		if v == nil {
-			return nil
-		}
 		return v.EquivalenceClassHistogramBuckets
 	}).(GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArrayOutput)
 }
@@ -16503,80 +11026,6 @@ type GooglePrivacyDlpV2KMapEstimationConfigResponse struct {
 	RegionCode string `pulumi:"regionCode"`
 }
 
-// GooglePrivacyDlpV2KMapEstimationConfigResponseInput is an input type that accepts GooglePrivacyDlpV2KMapEstimationConfigResponseArgs and GooglePrivacyDlpV2KMapEstimationConfigResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2KMapEstimationConfigResponseInput` via:
-//
-//          GooglePrivacyDlpV2KMapEstimationConfigResponseArgs{...}
-type GooglePrivacyDlpV2KMapEstimationConfigResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2KMapEstimationConfigResponseOutput() GooglePrivacyDlpV2KMapEstimationConfigResponseOutput
-	ToGooglePrivacyDlpV2KMapEstimationConfigResponseOutputWithContext(context.Context) GooglePrivacyDlpV2KMapEstimationConfigResponseOutput
-}
-
-// Reidentifiability metric. This corresponds to a risk model similar to what is called "journalist risk" in the literature, except the attack dataset is statistically modeled instead of being perfectly known. This can be done using publicly available data (like the US Census), or using a custom statistical model (indicated as one or several BigQuery tables), or by extrapolating from the distribution of values in the input dataset.
-type GooglePrivacyDlpV2KMapEstimationConfigResponseArgs struct {
-	// Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-identifiers column must appear in exactly one column of one auxiliary table.
-	AuxiliaryTables GooglePrivacyDlpV2AuxiliaryTableResponseArrayInput `pulumi:"auxiliaryTables"`
-	// Fields considered to be quasi-identifiers. No two columns can have the same tag.
-	QuasiIds GooglePrivacyDlpV2TaggedFieldResponseArrayInput `pulumi:"quasiIds"`
-	// ISO 3166-1 alpha-2 region code to use in the statistical modeling. Set if no column is tagged with a region-specific InfoType (like US_ZIP_5) or a region code.
-	RegionCode pulumi.StringInput `pulumi:"regionCode"`
-}
-
-func (GooglePrivacyDlpV2KMapEstimationConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2KMapEstimationConfigResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2KMapEstimationConfigResponseArgs) ToGooglePrivacyDlpV2KMapEstimationConfigResponseOutput() GooglePrivacyDlpV2KMapEstimationConfigResponseOutput {
-	return i.ToGooglePrivacyDlpV2KMapEstimationConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2KMapEstimationConfigResponseArgs) ToGooglePrivacyDlpV2KMapEstimationConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KMapEstimationConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2KMapEstimationConfigResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2KMapEstimationConfigResponseArgs) ToGooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput() GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2KMapEstimationConfigResponseArgs) ToGooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2KMapEstimationConfigResponseOutput).ToGooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2KMapEstimationConfigResponsePtrInput is an input type that accepts GooglePrivacyDlpV2KMapEstimationConfigResponseArgs, GooglePrivacyDlpV2KMapEstimationConfigResponsePtr and GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2KMapEstimationConfigResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2KMapEstimationConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2KMapEstimationConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput() GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput
-	ToGooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput
-}
-
-type googlePrivacyDlpV2KMapEstimationConfigResponsePtrType GooglePrivacyDlpV2KMapEstimationConfigResponseArgs
-
-func GooglePrivacyDlpV2KMapEstimationConfigResponsePtr(v *GooglePrivacyDlpV2KMapEstimationConfigResponseArgs) GooglePrivacyDlpV2KMapEstimationConfigResponsePtrInput {
-	return (*googlePrivacyDlpV2KMapEstimationConfigResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2KMapEstimationConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2KMapEstimationConfigResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2KMapEstimationConfigResponsePtrType) ToGooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput() GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2KMapEstimationConfigResponsePtrType) ToGooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput)
-}
-
 // Reidentifiability metric. This corresponds to a risk model similar to what is called "journalist risk" in the literature, except the attack dataset is statistically modeled instead of being perfectly known. This can be done using publicly available data (like the US Census), or using a custom statistical model (indicated as one or several BigQuery tables), or by extrapolating from the distribution of values in the input dataset.
 type GooglePrivacyDlpV2KMapEstimationConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -16590,16 +11039,6 @@ func (o GooglePrivacyDlpV2KMapEstimationConfigResponseOutput) ToGooglePrivacyDlp
 
 func (o GooglePrivacyDlpV2KMapEstimationConfigResponseOutput) ToGooglePrivacyDlpV2KMapEstimationConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KMapEstimationConfigResponseOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2KMapEstimationConfigResponseOutput) ToGooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput() GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2KMapEstimationConfigResponseOutput) ToGooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2KMapEstimationConfigResponse) *GooglePrivacyDlpV2KMapEstimationConfigResponse {
-		return &v
-	}).(GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput)
 }
 
 // Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-identifiers column must appear in exactly one column of one auxiliary table.
@@ -16621,60 +11060,6 @@ func (o GooglePrivacyDlpV2KMapEstimationConfigResponseOutput) RegionCode() pulum
 	return o.ApplyT(func(v GooglePrivacyDlpV2KMapEstimationConfigResponse) string { return v.RegionCode }).(pulumi.StringOutput)
 }
 
-type GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2KMapEstimationConfigResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput) ToGooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput() GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput) ToGooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput) Elem() GooglePrivacyDlpV2KMapEstimationConfigResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2KMapEstimationConfigResponse) GooglePrivacyDlpV2KMapEstimationConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2KMapEstimationConfigResponse
-		return ret
-	}).(GooglePrivacyDlpV2KMapEstimationConfigResponseOutput)
-}
-
-// Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-identifiers column must appear in exactly one column of one auxiliary table.
-func (o GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput) AuxiliaryTables() GooglePrivacyDlpV2AuxiliaryTableResponseArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2KMapEstimationConfigResponse) []GooglePrivacyDlpV2AuxiliaryTableResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AuxiliaryTables
-	}).(GooglePrivacyDlpV2AuxiliaryTableResponseArrayOutput)
-}
-
-// Fields considered to be quasi-identifiers. No two columns can have the same tag.
-func (o GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput) QuasiIds() GooglePrivacyDlpV2TaggedFieldResponseArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2KMapEstimationConfigResponse) []GooglePrivacyDlpV2TaggedFieldResponse {
-		if v == nil {
-			return nil
-		}
-		return v.QuasiIds
-	}).(GooglePrivacyDlpV2TaggedFieldResponseArrayOutput)
-}
-
-// ISO 3166-1 alpha-2 region code to use in the statistical modeling. Set if no column is tagged with a region-specific InfoType (like US_ZIP_5) or a region code.
-func (o GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput) RegionCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2KMapEstimationConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RegionCode
-	}).(pulumi.StringPtrOutput)
-}
-
 // A KMapEstimationHistogramBucket message with the following values: min_anonymity: 3 max_anonymity: 5 frequency: 42 means that there are 42 records whose quasi-identifier values correspond to 3, 4 or 5 people in the overlying population. An important particular case is when min_anonymity = max_anonymity = 1: the frequency field then corresponds to the number of uniquely identifiable records.
 type GooglePrivacyDlpV2KMapEstimationHistogramBucketResponse struct {
 	// Number of records within these anonymity bounds.
@@ -16687,68 +11072,6 @@ type GooglePrivacyDlpV2KMapEstimationHistogramBucketResponse struct {
 	MaxAnonymity string `pulumi:"maxAnonymity"`
 	// Always positive.
 	MinAnonymity string `pulumi:"minAnonymity"`
-}
-
-// GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseInput is an input type that accepts GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArgs and GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseInput` via:
-//
-//          GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArgs{...}
-type GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2KMapEstimationHistogramBucketResponseOutput() GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseOutput
-	ToGooglePrivacyDlpV2KMapEstimationHistogramBucketResponseOutputWithContext(context.Context) GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseOutput
-}
-
-// A KMapEstimationHistogramBucket message with the following values: min_anonymity: 3 max_anonymity: 5 frequency: 42 means that there are 42 records whose quasi-identifier values correspond to 3, 4 or 5 people in the overlying population. An important particular case is when min_anonymity = max_anonymity = 1: the frequency field then corresponds to the number of uniquely identifiable records.
-type GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArgs struct {
-	// Number of records within these anonymity bounds.
-	BucketSize pulumi.StringInput `pulumi:"bucketSize"`
-	// Total number of distinct quasi-identifier tuple values in this bucket.
-	BucketValueCount pulumi.StringInput `pulumi:"bucketValueCount"`
-	// Sample of quasi-identifier tuple values in this bucket. The total number of classes returned per bucket is capped at 20.
-	BucketValues GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArrayInput `pulumi:"bucketValues"`
-	// Always greater than or equal to min_anonymity.
-	MaxAnonymity pulumi.StringInput `pulumi:"maxAnonymity"`
-	// Always positive.
-	MinAnonymity pulumi.StringInput `pulumi:"minAnonymity"`
-}
-
-func (GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2KMapEstimationHistogramBucketResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArgs) ToGooglePrivacyDlpV2KMapEstimationHistogramBucketResponseOutput() GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseOutput {
-	return i.ToGooglePrivacyDlpV2KMapEstimationHistogramBucketResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArgs) ToGooglePrivacyDlpV2KMapEstimationHistogramBucketResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseOutput)
-}
-
-// GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArrayInput is an input type that accepts GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArray and GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArray{ GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArgs{...} }
-type GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArrayOutput() GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArrayOutput
-	ToGooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArray []GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseInput
-
-func (GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2KMapEstimationHistogramBucketResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArray) ToGooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArrayOutput() GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArray) ToGooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArrayOutput)
 }
 
 // A KMapEstimationHistogramBucket message with the following values: min_anonymity: 3 max_anonymity: 5 frequency: 42 means that there are 42 records whose quasi-identifier values correspond to 3, 4 or 5 people in the overlying population. An important particular case is when min_anonymity = max_anonymity = 1: the frequency field then corresponds to the number of uniquely identifiable records.
@@ -16821,62 +11144,6 @@ type GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponse struct {
 	QuasiIdsValues []GooglePrivacyDlpV2ValueResponse `pulumi:"quasiIdsValues"`
 }
 
-// GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseInput is an input type that accepts GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArgs and GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseInput` via:
-//
-//          GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArgs{...}
-type GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseOutput() GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseOutput
-	ToGooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseOutputWithContext(context.Context) GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseOutput
-}
-
-// A tuple of values for the quasi-identifier columns.
-type GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArgs struct {
-	// The estimated anonymity for these quasi-identifier values.
-	EstimatedAnonymity pulumi.StringInput `pulumi:"estimatedAnonymity"`
-	// The quasi-identifier values.
-	QuasiIdsValues GooglePrivacyDlpV2ValueResponseArrayInput `pulumi:"quasiIdsValues"`
-}
-
-func (GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArgs) ToGooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseOutput() GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseOutput {
-	return i.ToGooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArgs) ToGooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseOutput)
-}
-
-// GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArrayInput is an input type that accepts GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArray and GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArray{ GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArgs{...} }
-type GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArrayOutput() GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArrayOutput
-	ToGooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArray []GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseInput
-
-func (GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArray) ToGooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArrayOutput() GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArray) ToGooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArrayOutput)
-}
-
 // A tuple of values for the quasi-identifier columns.
 type GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseOutput struct{ *pulumi.OutputState }
 
@@ -16930,76 +11197,6 @@ type GooglePrivacyDlpV2KMapEstimationResultResponse struct {
 	KMapEstimationHistogram []GooglePrivacyDlpV2KMapEstimationHistogramBucketResponse `pulumi:"kMapEstimationHistogram"`
 }
 
-// GooglePrivacyDlpV2KMapEstimationResultResponseInput is an input type that accepts GooglePrivacyDlpV2KMapEstimationResultResponseArgs and GooglePrivacyDlpV2KMapEstimationResultResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2KMapEstimationResultResponseInput` via:
-//
-//          GooglePrivacyDlpV2KMapEstimationResultResponseArgs{...}
-type GooglePrivacyDlpV2KMapEstimationResultResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2KMapEstimationResultResponseOutput() GooglePrivacyDlpV2KMapEstimationResultResponseOutput
-	ToGooglePrivacyDlpV2KMapEstimationResultResponseOutputWithContext(context.Context) GooglePrivacyDlpV2KMapEstimationResultResponseOutput
-}
-
-// Result of the reidentifiability analysis. Note that these results are an estimation, not exact values.
-type GooglePrivacyDlpV2KMapEstimationResultResponseArgs struct {
-	// The intervals [min_anonymity, max_anonymity] do not overlap. If a value doesn't correspond to any such interval, the associated frequency is zero. For example, the following records: {min_anonymity: 1, max_anonymity: 1, frequency: 17} {min_anonymity: 2, max_anonymity: 3, frequency: 42} {min_anonymity: 5, max_anonymity: 10, frequency: 99} mean that there are no record with an estimated anonymity of 4, 5, or larger than 10.
-	KMapEstimationHistogram GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArrayInput `pulumi:"kMapEstimationHistogram"`
-}
-
-func (GooglePrivacyDlpV2KMapEstimationResultResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2KMapEstimationResultResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2KMapEstimationResultResponseArgs) ToGooglePrivacyDlpV2KMapEstimationResultResponseOutput() GooglePrivacyDlpV2KMapEstimationResultResponseOutput {
-	return i.ToGooglePrivacyDlpV2KMapEstimationResultResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2KMapEstimationResultResponseArgs) ToGooglePrivacyDlpV2KMapEstimationResultResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KMapEstimationResultResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2KMapEstimationResultResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2KMapEstimationResultResponseArgs) ToGooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput() GooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2KMapEstimationResultResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2KMapEstimationResultResponseArgs) ToGooglePrivacyDlpV2KMapEstimationResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2KMapEstimationResultResponseOutput).ToGooglePrivacyDlpV2KMapEstimationResultResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2KMapEstimationResultResponsePtrInput is an input type that accepts GooglePrivacyDlpV2KMapEstimationResultResponseArgs, GooglePrivacyDlpV2KMapEstimationResultResponsePtr and GooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2KMapEstimationResultResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2KMapEstimationResultResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2KMapEstimationResultResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput() GooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput
-	ToGooglePrivacyDlpV2KMapEstimationResultResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput
-}
-
-type googlePrivacyDlpV2KMapEstimationResultResponsePtrType GooglePrivacyDlpV2KMapEstimationResultResponseArgs
-
-func GooglePrivacyDlpV2KMapEstimationResultResponsePtr(v *GooglePrivacyDlpV2KMapEstimationResultResponseArgs) GooglePrivacyDlpV2KMapEstimationResultResponsePtrInput {
-	return (*googlePrivacyDlpV2KMapEstimationResultResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2KMapEstimationResultResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2KMapEstimationResultResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2KMapEstimationResultResponsePtrType) ToGooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput() GooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2KMapEstimationResultResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2KMapEstimationResultResponsePtrType) ToGooglePrivacyDlpV2KMapEstimationResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput)
-}
-
 // Result of the reidentifiability analysis. Note that these results are an estimation, not exact values.
 type GooglePrivacyDlpV2KMapEstimationResultResponseOutput struct{ *pulumi.OutputState }
 
@@ -17015,53 +11212,9 @@ func (o GooglePrivacyDlpV2KMapEstimationResultResponseOutput) ToGooglePrivacyDlp
 	return o
 }
 
-func (o GooglePrivacyDlpV2KMapEstimationResultResponseOutput) ToGooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput() GooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2KMapEstimationResultResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2KMapEstimationResultResponseOutput) ToGooglePrivacyDlpV2KMapEstimationResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2KMapEstimationResultResponse) *GooglePrivacyDlpV2KMapEstimationResultResponse {
-		return &v
-	}).(GooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput)
-}
-
 // The intervals [min_anonymity, max_anonymity] do not overlap. If a value doesn't correspond to any such interval, the associated frequency is zero. For example, the following records: {min_anonymity: 1, max_anonymity: 1, frequency: 17} {min_anonymity: 2, max_anonymity: 3, frequency: 42} {min_anonymity: 5, max_anonymity: 10, frequency: 99} mean that there are no record with an estimated anonymity of 4, 5, or larger than 10.
 func (o GooglePrivacyDlpV2KMapEstimationResultResponseOutput) KMapEstimationHistogram() GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2KMapEstimationResultResponse) []GooglePrivacyDlpV2KMapEstimationHistogramBucketResponse {
-		return v.KMapEstimationHistogram
-	}).(GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArrayOutput)
-}
-
-type GooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2KMapEstimationResultResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput) ToGooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput() GooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput) ToGooglePrivacyDlpV2KMapEstimationResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput) Elem() GooglePrivacyDlpV2KMapEstimationResultResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2KMapEstimationResultResponse) GooglePrivacyDlpV2KMapEstimationResultResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2KMapEstimationResultResponse
-		return ret
-	}).(GooglePrivacyDlpV2KMapEstimationResultResponseOutput)
-}
-
-// The intervals [min_anonymity, max_anonymity] do not overlap. If a value doesn't correspond to any such interval, the associated frequency is zero. For example, the following records: {min_anonymity: 1, max_anonymity: 1, frequency: 17} {min_anonymity: 2, max_anonymity: 3, frequency: 42} {min_anonymity: 5, max_anonymity: 10, frequency: 99} mean that there are no record with an estimated anonymity of 4, 5, or larger than 10.
-func (o GooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput) KMapEstimationHistogram() GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2KMapEstimationResultResponse) []GooglePrivacyDlpV2KMapEstimationHistogramBucketResponse {
-		if v == nil {
-			return nil
-		}
 		return v.KMapEstimationHistogram
 	}).(GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArrayOutput)
 }
@@ -17212,76 +11365,6 @@ type GooglePrivacyDlpV2KindExpressionResponse struct {
 	Name string `pulumi:"name"`
 }
 
-// GooglePrivacyDlpV2KindExpressionResponseInput is an input type that accepts GooglePrivacyDlpV2KindExpressionResponseArgs and GooglePrivacyDlpV2KindExpressionResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2KindExpressionResponseInput` via:
-//
-//          GooglePrivacyDlpV2KindExpressionResponseArgs{...}
-type GooglePrivacyDlpV2KindExpressionResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2KindExpressionResponseOutput() GooglePrivacyDlpV2KindExpressionResponseOutput
-	ToGooglePrivacyDlpV2KindExpressionResponseOutputWithContext(context.Context) GooglePrivacyDlpV2KindExpressionResponseOutput
-}
-
-// A representation of a Datastore kind.
-type GooglePrivacyDlpV2KindExpressionResponseArgs struct {
-	// The name of the kind.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GooglePrivacyDlpV2KindExpressionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2KindExpressionResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2KindExpressionResponseArgs) ToGooglePrivacyDlpV2KindExpressionResponseOutput() GooglePrivacyDlpV2KindExpressionResponseOutput {
-	return i.ToGooglePrivacyDlpV2KindExpressionResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2KindExpressionResponseArgs) ToGooglePrivacyDlpV2KindExpressionResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KindExpressionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2KindExpressionResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2KindExpressionResponseArgs) ToGooglePrivacyDlpV2KindExpressionResponsePtrOutput() GooglePrivacyDlpV2KindExpressionResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2KindExpressionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2KindExpressionResponseArgs) ToGooglePrivacyDlpV2KindExpressionResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KindExpressionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2KindExpressionResponseOutput).ToGooglePrivacyDlpV2KindExpressionResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2KindExpressionResponsePtrInput is an input type that accepts GooglePrivacyDlpV2KindExpressionResponseArgs, GooglePrivacyDlpV2KindExpressionResponsePtr and GooglePrivacyDlpV2KindExpressionResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2KindExpressionResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2KindExpressionResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2KindExpressionResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2KindExpressionResponsePtrOutput() GooglePrivacyDlpV2KindExpressionResponsePtrOutput
-	ToGooglePrivacyDlpV2KindExpressionResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2KindExpressionResponsePtrOutput
-}
-
-type googlePrivacyDlpV2KindExpressionResponsePtrType GooglePrivacyDlpV2KindExpressionResponseArgs
-
-func GooglePrivacyDlpV2KindExpressionResponsePtr(v *GooglePrivacyDlpV2KindExpressionResponseArgs) GooglePrivacyDlpV2KindExpressionResponsePtrInput {
-	return (*googlePrivacyDlpV2KindExpressionResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2KindExpressionResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2KindExpressionResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2KindExpressionResponsePtrType) ToGooglePrivacyDlpV2KindExpressionResponsePtrOutput() GooglePrivacyDlpV2KindExpressionResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2KindExpressionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2KindExpressionResponsePtrType) ToGooglePrivacyDlpV2KindExpressionResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KindExpressionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2KindExpressionResponsePtrOutput)
-}
-
 // A representation of a Datastore kind.
 type GooglePrivacyDlpV2KindExpressionResponseOutput struct{ *pulumi.OutputState }
 
@@ -17297,53 +11380,9 @@ func (o GooglePrivacyDlpV2KindExpressionResponseOutput) ToGooglePrivacyDlpV2Kind
 	return o
 }
 
-func (o GooglePrivacyDlpV2KindExpressionResponseOutput) ToGooglePrivacyDlpV2KindExpressionResponsePtrOutput() GooglePrivacyDlpV2KindExpressionResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2KindExpressionResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2KindExpressionResponseOutput) ToGooglePrivacyDlpV2KindExpressionResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KindExpressionResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2KindExpressionResponse) *GooglePrivacyDlpV2KindExpressionResponse {
-		return &v
-	}).(GooglePrivacyDlpV2KindExpressionResponsePtrOutput)
-}
-
 // The name of the kind.
 func (o GooglePrivacyDlpV2KindExpressionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2KindExpressionResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type GooglePrivacyDlpV2KindExpressionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2KindExpressionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2KindExpressionResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2KindExpressionResponsePtrOutput) ToGooglePrivacyDlpV2KindExpressionResponsePtrOutput() GooglePrivacyDlpV2KindExpressionResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2KindExpressionResponsePtrOutput) ToGooglePrivacyDlpV2KindExpressionResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KindExpressionResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2KindExpressionResponsePtrOutput) Elem() GooglePrivacyDlpV2KindExpressionResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2KindExpressionResponse) GooglePrivacyDlpV2KindExpressionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2KindExpressionResponse
-		return ret
-	}).(GooglePrivacyDlpV2KindExpressionResponseOutput)
-}
-
-// The name of the kind.
-func (o GooglePrivacyDlpV2KindExpressionResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2KindExpressionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
 }
 
 // Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key). Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
@@ -17511,37 +11550,6 @@ type GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse struct {
 	CryptoKeyName string `pulumi:"cryptoKeyName"`
 	// The wrapped data crypto key.
 	WrappedKey string `pulumi:"wrappedKey"`
-}
-
-// GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseInput is an input type that accepts GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseArgs and GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseInput` via:
-//
-//          GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseArgs{...}
-type GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2KmsWrappedCryptoKeyResponseOutput() GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseOutput
-	ToGooglePrivacyDlpV2KmsWrappedCryptoKeyResponseOutputWithContext(context.Context) GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseOutput
-}
-
-// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key). Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
-type GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseArgs struct {
-	// The resource name of the KMS CryptoKey to use for unwrapping.
-	CryptoKeyName pulumi.StringInput `pulumi:"cryptoKeyName"`
-	// The wrapped data crypto key.
-	WrappedKey pulumi.StringInput `pulumi:"wrappedKey"`
-}
-
-func (GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseArgs) ToGooglePrivacyDlpV2KmsWrappedCryptoKeyResponseOutput() GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseOutput {
-	return i.ToGooglePrivacyDlpV2KmsWrappedCryptoKeyResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseArgs) ToGooglePrivacyDlpV2KmsWrappedCryptoKeyResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseOutput)
 }
 
 // Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key). Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
@@ -17736,78 +11744,6 @@ type GooglePrivacyDlpV2LDiversityConfigResponse struct {
 	SensitiveAttribute GooglePrivacyDlpV2FieldIdResponse `pulumi:"sensitiveAttribute"`
 }
 
-// GooglePrivacyDlpV2LDiversityConfigResponseInput is an input type that accepts GooglePrivacyDlpV2LDiversityConfigResponseArgs and GooglePrivacyDlpV2LDiversityConfigResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2LDiversityConfigResponseInput` via:
-//
-//          GooglePrivacyDlpV2LDiversityConfigResponseArgs{...}
-type GooglePrivacyDlpV2LDiversityConfigResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2LDiversityConfigResponseOutput() GooglePrivacyDlpV2LDiversityConfigResponseOutput
-	ToGooglePrivacyDlpV2LDiversityConfigResponseOutputWithContext(context.Context) GooglePrivacyDlpV2LDiversityConfigResponseOutput
-}
-
-// l-diversity metric, used for analysis of reidentification risk.
-type GooglePrivacyDlpV2LDiversityConfigResponseArgs struct {
-	// Set of quasi-identifiers indicating how equivalence classes are defined for the l-diversity computation. When multiple fields are specified, they are considered a single composite key.
-	QuasiIds GooglePrivacyDlpV2FieldIdResponseArrayInput `pulumi:"quasiIds"`
-	// Sensitive field for computing the l-value.
-	SensitiveAttribute GooglePrivacyDlpV2FieldIdResponseInput `pulumi:"sensitiveAttribute"`
-}
-
-func (GooglePrivacyDlpV2LDiversityConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2LDiversityConfigResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2LDiversityConfigResponseArgs) ToGooglePrivacyDlpV2LDiversityConfigResponseOutput() GooglePrivacyDlpV2LDiversityConfigResponseOutput {
-	return i.ToGooglePrivacyDlpV2LDiversityConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2LDiversityConfigResponseArgs) ToGooglePrivacyDlpV2LDiversityConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LDiversityConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2LDiversityConfigResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2LDiversityConfigResponseArgs) ToGooglePrivacyDlpV2LDiversityConfigResponsePtrOutput() GooglePrivacyDlpV2LDiversityConfigResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2LDiversityConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2LDiversityConfigResponseArgs) ToGooglePrivacyDlpV2LDiversityConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LDiversityConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2LDiversityConfigResponseOutput).ToGooglePrivacyDlpV2LDiversityConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2LDiversityConfigResponsePtrInput is an input type that accepts GooglePrivacyDlpV2LDiversityConfigResponseArgs, GooglePrivacyDlpV2LDiversityConfigResponsePtr and GooglePrivacyDlpV2LDiversityConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2LDiversityConfigResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2LDiversityConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2LDiversityConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2LDiversityConfigResponsePtrOutput() GooglePrivacyDlpV2LDiversityConfigResponsePtrOutput
-	ToGooglePrivacyDlpV2LDiversityConfigResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2LDiversityConfigResponsePtrOutput
-}
-
-type googlePrivacyDlpV2LDiversityConfigResponsePtrType GooglePrivacyDlpV2LDiversityConfigResponseArgs
-
-func GooglePrivacyDlpV2LDiversityConfigResponsePtr(v *GooglePrivacyDlpV2LDiversityConfigResponseArgs) GooglePrivacyDlpV2LDiversityConfigResponsePtrInput {
-	return (*googlePrivacyDlpV2LDiversityConfigResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2LDiversityConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2LDiversityConfigResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2LDiversityConfigResponsePtrType) ToGooglePrivacyDlpV2LDiversityConfigResponsePtrOutput() GooglePrivacyDlpV2LDiversityConfigResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2LDiversityConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2LDiversityConfigResponsePtrType) ToGooglePrivacyDlpV2LDiversityConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LDiversityConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2LDiversityConfigResponsePtrOutput)
-}
-
 // l-diversity metric, used for analysis of reidentification risk.
 type GooglePrivacyDlpV2LDiversityConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -17821,16 +11757,6 @@ func (o GooglePrivacyDlpV2LDiversityConfigResponseOutput) ToGooglePrivacyDlpV2LD
 
 func (o GooglePrivacyDlpV2LDiversityConfigResponseOutput) ToGooglePrivacyDlpV2LDiversityConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LDiversityConfigResponseOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2LDiversityConfigResponseOutput) ToGooglePrivacyDlpV2LDiversityConfigResponsePtrOutput() GooglePrivacyDlpV2LDiversityConfigResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2LDiversityConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2LDiversityConfigResponseOutput) ToGooglePrivacyDlpV2LDiversityConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LDiversityConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2LDiversityConfigResponse) *GooglePrivacyDlpV2LDiversityConfigResponse {
-		return &v
-	}).(GooglePrivacyDlpV2LDiversityConfigResponsePtrOutput)
 }
 
 // Set of quasi-identifiers indicating how equivalence classes are defined for the l-diversity computation. When multiple fields are specified, they are considered a single composite key.
@@ -17847,50 +11773,6 @@ func (o GooglePrivacyDlpV2LDiversityConfigResponseOutput) SensitiveAttribute() G
 	}).(GooglePrivacyDlpV2FieldIdResponseOutput)
 }
 
-type GooglePrivacyDlpV2LDiversityConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2LDiversityConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2LDiversityConfigResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2LDiversityConfigResponsePtrOutput) ToGooglePrivacyDlpV2LDiversityConfigResponsePtrOutput() GooglePrivacyDlpV2LDiversityConfigResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2LDiversityConfigResponsePtrOutput) ToGooglePrivacyDlpV2LDiversityConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LDiversityConfigResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2LDiversityConfigResponsePtrOutput) Elem() GooglePrivacyDlpV2LDiversityConfigResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2LDiversityConfigResponse) GooglePrivacyDlpV2LDiversityConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2LDiversityConfigResponse
-		return ret
-	}).(GooglePrivacyDlpV2LDiversityConfigResponseOutput)
-}
-
-// Set of quasi-identifiers indicating how equivalence classes are defined for the l-diversity computation. When multiple fields are specified, they are considered a single composite key.
-func (o GooglePrivacyDlpV2LDiversityConfigResponsePtrOutput) QuasiIds() GooglePrivacyDlpV2FieldIdResponseArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2LDiversityConfigResponse) []GooglePrivacyDlpV2FieldIdResponse {
-		if v == nil {
-			return nil
-		}
-		return v.QuasiIds
-	}).(GooglePrivacyDlpV2FieldIdResponseArrayOutput)
-}
-
-// Sensitive field for computing the l-value.
-func (o GooglePrivacyDlpV2LDiversityConfigResponsePtrOutput) SensitiveAttribute() GooglePrivacyDlpV2FieldIdResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2LDiversityConfigResponse) *GooglePrivacyDlpV2FieldIdResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.SensitiveAttribute
-	}).(GooglePrivacyDlpV2FieldIdResponsePtrOutput)
-}
-
 // The set of columns' values that share the same ldiversity value.
 type GooglePrivacyDlpV2LDiversityEquivalenceClassResponse struct {
 	// Size of the k-anonymity equivalence class.
@@ -17901,66 +11783,6 @@ type GooglePrivacyDlpV2LDiversityEquivalenceClassResponse struct {
 	QuasiIdsValues []GooglePrivacyDlpV2ValueResponse `pulumi:"quasiIdsValues"`
 	// Estimated frequencies of top sensitive values.
 	TopSensitiveValues []GooglePrivacyDlpV2ValueFrequencyResponse `pulumi:"topSensitiveValues"`
-}
-
-// GooglePrivacyDlpV2LDiversityEquivalenceClassResponseInput is an input type that accepts GooglePrivacyDlpV2LDiversityEquivalenceClassResponseArgs and GooglePrivacyDlpV2LDiversityEquivalenceClassResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2LDiversityEquivalenceClassResponseInput` via:
-//
-//          GooglePrivacyDlpV2LDiversityEquivalenceClassResponseArgs{...}
-type GooglePrivacyDlpV2LDiversityEquivalenceClassResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2LDiversityEquivalenceClassResponseOutput() GooglePrivacyDlpV2LDiversityEquivalenceClassResponseOutput
-	ToGooglePrivacyDlpV2LDiversityEquivalenceClassResponseOutputWithContext(context.Context) GooglePrivacyDlpV2LDiversityEquivalenceClassResponseOutput
-}
-
-// The set of columns' values that share the same ldiversity value.
-type GooglePrivacyDlpV2LDiversityEquivalenceClassResponseArgs struct {
-	// Size of the k-anonymity equivalence class.
-	EquivalenceClassSize pulumi.StringInput `pulumi:"equivalenceClassSize"`
-	// Number of distinct sensitive values in this equivalence class.
-	NumDistinctSensitiveValues pulumi.StringInput `pulumi:"numDistinctSensitiveValues"`
-	// Quasi-identifier values defining the k-anonymity equivalence class. The order is always the same as the original request.
-	QuasiIdsValues GooglePrivacyDlpV2ValueResponseArrayInput `pulumi:"quasiIdsValues"`
-	// Estimated frequencies of top sensitive values.
-	TopSensitiveValues GooglePrivacyDlpV2ValueFrequencyResponseArrayInput `pulumi:"topSensitiveValues"`
-}
-
-func (GooglePrivacyDlpV2LDiversityEquivalenceClassResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2LDiversityEquivalenceClassResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2LDiversityEquivalenceClassResponseArgs) ToGooglePrivacyDlpV2LDiversityEquivalenceClassResponseOutput() GooglePrivacyDlpV2LDiversityEquivalenceClassResponseOutput {
-	return i.ToGooglePrivacyDlpV2LDiversityEquivalenceClassResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2LDiversityEquivalenceClassResponseArgs) ToGooglePrivacyDlpV2LDiversityEquivalenceClassResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LDiversityEquivalenceClassResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2LDiversityEquivalenceClassResponseOutput)
-}
-
-// GooglePrivacyDlpV2LDiversityEquivalenceClassResponseArrayInput is an input type that accepts GooglePrivacyDlpV2LDiversityEquivalenceClassResponseArray and GooglePrivacyDlpV2LDiversityEquivalenceClassResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2LDiversityEquivalenceClassResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2LDiversityEquivalenceClassResponseArray{ GooglePrivacyDlpV2LDiversityEquivalenceClassResponseArgs{...} }
-type GooglePrivacyDlpV2LDiversityEquivalenceClassResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2LDiversityEquivalenceClassResponseArrayOutput() GooglePrivacyDlpV2LDiversityEquivalenceClassResponseArrayOutput
-	ToGooglePrivacyDlpV2LDiversityEquivalenceClassResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2LDiversityEquivalenceClassResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2LDiversityEquivalenceClassResponseArray []GooglePrivacyDlpV2LDiversityEquivalenceClassResponseInput
-
-func (GooglePrivacyDlpV2LDiversityEquivalenceClassResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2LDiversityEquivalenceClassResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2LDiversityEquivalenceClassResponseArray) ToGooglePrivacyDlpV2LDiversityEquivalenceClassResponseArrayOutput() GooglePrivacyDlpV2LDiversityEquivalenceClassResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2LDiversityEquivalenceClassResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2LDiversityEquivalenceClassResponseArray) ToGooglePrivacyDlpV2LDiversityEquivalenceClassResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LDiversityEquivalenceClassResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2LDiversityEquivalenceClassResponseArrayOutput)
 }
 
 // The set of columns' values that share the same ldiversity value.
@@ -18038,68 +11860,6 @@ type GooglePrivacyDlpV2LDiversityHistogramBucketResponse struct {
 	SensitiveValueFrequencyUpperBound string `pulumi:"sensitiveValueFrequencyUpperBound"`
 }
 
-// GooglePrivacyDlpV2LDiversityHistogramBucketResponseInput is an input type that accepts GooglePrivacyDlpV2LDiversityHistogramBucketResponseArgs and GooglePrivacyDlpV2LDiversityHistogramBucketResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2LDiversityHistogramBucketResponseInput` via:
-//
-//          GooglePrivacyDlpV2LDiversityHistogramBucketResponseArgs{...}
-type GooglePrivacyDlpV2LDiversityHistogramBucketResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2LDiversityHistogramBucketResponseOutput() GooglePrivacyDlpV2LDiversityHistogramBucketResponseOutput
-	ToGooglePrivacyDlpV2LDiversityHistogramBucketResponseOutputWithContext(context.Context) GooglePrivacyDlpV2LDiversityHistogramBucketResponseOutput
-}
-
-// Histogram of l-diversity equivalence class sensitive value frequencies.
-type GooglePrivacyDlpV2LDiversityHistogramBucketResponseArgs struct {
-	// Total number of equivalence classes in this bucket.
-	BucketSize pulumi.StringInput `pulumi:"bucketSize"`
-	// Total number of distinct equivalence classes in this bucket.
-	BucketValueCount pulumi.StringInput `pulumi:"bucketValueCount"`
-	// Sample of equivalence classes in this bucket. The total number of classes returned per bucket is capped at 20.
-	BucketValues GooglePrivacyDlpV2LDiversityEquivalenceClassResponseArrayInput `pulumi:"bucketValues"`
-	// Lower bound on the sensitive value frequencies of the equivalence classes in this bucket.
-	SensitiveValueFrequencyLowerBound pulumi.StringInput `pulumi:"sensitiveValueFrequencyLowerBound"`
-	// Upper bound on the sensitive value frequencies of the equivalence classes in this bucket.
-	SensitiveValueFrequencyUpperBound pulumi.StringInput `pulumi:"sensitiveValueFrequencyUpperBound"`
-}
-
-func (GooglePrivacyDlpV2LDiversityHistogramBucketResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2LDiversityHistogramBucketResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2LDiversityHistogramBucketResponseArgs) ToGooglePrivacyDlpV2LDiversityHistogramBucketResponseOutput() GooglePrivacyDlpV2LDiversityHistogramBucketResponseOutput {
-	return i.ToGooglePrivacyDlpV2LDiversityHistogramBucketResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2LDiversityHistogramBucketResponseArgs) ToGooglePrivacyDlpV2LDiversityHistogramBucketResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LDiversityHistogramBucketResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2LDiversityHistogramBucketResponseOutput)
-}
-
-// GooglePrivacyDlpV2LDiversityHistogramBucketResponseArrayInput is an input type that accepts GooglePrivacyDlpV2LDiversityHistogramBucketResponseArray and GooglePrivacyDlpV2LDiversityHistogramBucketResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2LDiversityHistogramBucketResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2LDiversityHistogramBucketResponseArray{ GooglePrivacyDlpV2LDiversityHistogramBucketResponseArgs{...} }
-type GooglePrivacyDlpV2LDiversityHistogramBucketResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2LDiversityHistogramBucketResponseArrayOutput() GooglePrivacyDlpV2LDiversityHistogramBucketResponseArrayOutput
-	ToGooglePrivacyDlpV2LDiversityHistogramBucketResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2LDiversityHistogramBucketResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2LDiversityHistogramBucketResponseArray []GooglePrivacyDlpV2LDiversityHistogramBucketResponseInput
-
-func (GooglePrivacyDlpV2LDiversityHistogramBucketResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2LDiversityHistogramBucketResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2LDiversityHistogramBucketResponseArray) ToGooglePrivacyDlpV2LDiversityHistogramBucketResponseArrayOutput() GooglePrivacyDlpV2LDiversityHistogramBucketResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2LDiversityHistogramBucketResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2LDiversityHistogramBucketResponseArray) ToGooglePrivacyDlpV2LDiversityHistogramBucketResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LDiversityHistogramBucketResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2LDiversityHistogramBucketResponseArrayOutput)
-}
-
 // Histogram of l-diversity equivalence class sensitive value frequencies.
 type GooglePrivacyDlpV2LDiversityHistogramBucketResponseOutput struct{ *pulumi.OutputState }
 
@@ -18172,76 +11932,6 @@ type GooglePrivacyDlpV2LDiversityResultResponse struct {
 	SensitiveValueFrequencyHistogramBuckets []GooglePrivacyDlpV2LDiversityHistogramBucketResponse `pulumi:"sensitiveValueFrequencyHistogramBuckets"`
 }
 
-// GooglePrivacyDlpV2LDiversityResultResponseInput is an input type that accepts GooglePrivacyDlpV2LDiversityResultResponseArgs and GooglePrivacyDlpV2LDiversityResultResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2LDiversityResultResponseInput` via:
-//
-//          GooglePrivacyDlpV2LDiversityResultResponseArgs{...}
-type GooglePrivacyDlpV2LDiversityResultResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2LDiversityResultResponseOutput() GooglePrivacyDlpV2LDiversityResultResponseOutput
-	ToGooglePrivacyDlpV2LDiversityResultResponseOutputWithContext(context.Context) GooglePrivacyDlpV2LDiversityResultResponseOutput
-}
-
-// Result of the l-diversity computation.
-type GooglePrivacyDlpV2LDiversityResultResponseArgs struct {
-	// Histogram of l-diversity equivalence class sensitive value frequencies.
-	SensitiveValueFrequencyHistogramBuckets GooglePrivacyDlpV2LDiversityHistogramBucketResponseArrayInput `pulumi:"sensitiveValueFrequencyHistogramBuckets"`
-}
-
-func (GooglePrivacyDlpV2LDiversityResultResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2LDiversityResultResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2LDiversityResultResponseArgs) ToGooglePrivacyDlpV2LDiversityResultResponseOutput() GooglePrivacyDlpV2LDiversityResultResponseOutput {
-	return i.ToGooglePrivacyDlpV2LDiversityResultResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2LDiversityResultResponseArgs) ToGooglePrivacyDlpV2LDiversityResultResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LDiversityResultResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2LDiversityResultResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2LDiversityResultResponseArgs) ToGooglePrivacyDlpV2LDiversityResultResponsePtrOutput() GooglePrivacyDlpV2LDiversityResultResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2LDiversityResultResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2LDiversityResultResponseArgs) ToGooglePrivacyDlpV2LDiversityResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LDiversityResultResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2LDiversityResultResponseOutput).ToGooglePrivacyDlpV2LDiversityResultResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2LDiversityResultResponsePtrInput is an input type that accepts GooglePrivacyDlpV2LDiversityResultResponseArgs, GooglePrivacyDlpV2LDiversityResultResponsePtr and GooglePrivacyDlpV2LDiversityResultResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2LDiversityResultResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2LDiversityResultResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2LDiversityResultResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2LDiversityResultResponsePtrOutput() GooglePrivacyDlpV2LDiversityResultResponsePtrOutput
-	ToGooglePrivacyDlpV2LDiversityResultResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2LDiversityResultResponsePtrOutput
-}
-
-type googlePrivacyDlpV2LDiversityResultResponsePtrType GooglePrivacyDlpV2LDiversityResultResponseArgs
-
-func GooglePrivacyDlpV2LDiversityResultResponsePtr(v *GooglePrivacyDlpV2LDiversityResultResponseArgs) GooglePrivacyDlpV2LDiversityResultResponsePtrInput {
-	return (*googlePrivacyDlpV2LDiversityResultResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2LDiversityResultResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2LDiversityResultResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2LDiversityResultResponsePtrType) ToGooglePrivacyDlpV2LDiversityResultResponsePtrOutput() GooglePrivacyDlpV2LDiversityResultResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2LDiversityResultResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2LDiversityResultResponsePtrType) ToGooglePrivacyDlpV2LDiversityResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LDiversityResultResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2LDiversityResultResponsePtrOutput)
-}
-
 // Result of the l-diversity computation.
 type GooglePrivacyDlpV2LDiversityResultResponseOutput struct{ *pulumi.OutputState }
 
@@ -18257,53 +11947,9 @@ func (o GooglePrivacyDlpV2LDiversityResultResponseOutput) ToGooglePrivacyDlpV2LD
 	return o
 }
 
-func (o GooglePrivacyDlpV2LDiversityResultResponseOutput) ToGooglePrivacyDlpV2LDiversityResultResponsePtrOutput() GooglePrivacyDlpV2LDiversityResultResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2LDiversityResultResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2LDiversityResultResponseOutput) ToGooglePrivacyDlpV2LDiversityResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LDiversityResultResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2LDiversityResultResponse) *GooglePrivacyDlpV2LDiversityResultResponse {
-		return &v
-	}).(GooglePrivacyDlpV2LDiversityResultResponsePtrOutput)
-}
-
 // Histogram of l-diversity equivalence class sensitive value frequencies.
 func (o GooglePrivacyDlpV2LDiversityResultResponseOutput) SensitiveValueFrequencyHistogramBuckets() GooglePrivacyDlpV2LDiversityHistogramBucketResponseArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2LDiversityResultResponse) []GooglePrivacyDlpV2LDiversityHistogramBucketResponse {
-		return v.SensitiveValueFrequencyHistogramBuckets
-	}).(GooglePrivacyDlpV2LDiversityHistogramBucketResponseArrayOutput)
-}
-
-type GooglePrivacyDlpV2LDiversityResultResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2LDiversityResultResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2LDiversityResultResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2LDiversityResultResponsePtrOutput) ToGooglePrivacyDlpV2LDiversityResultResponsePtrOutput() GooglePrivacyDlpV2LDiversityResultResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2LDiversityResultResponsePtrOutput) ToGooglePrivacyDlpV2LDiversityResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LDiversityResultResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2LDiversityResultResponsePtrOutput) Elem() GooglePrivacyDlpV2LDiversityResultResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2LDiversityResultResponse) GooglePrivacyDlpV2LDiversityResultResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2LDiversityResultResponse
-		return ret
-	}).(GooglePrivacyDlpV2LDiversityResultResponseOutput)
-}
-
-// Histogram of l-diversity equivalence class sensitive value frequencies.
-func (o GooglePrivacyDlpV2LDiversityResultResponsePtrOutput) SensitiveValueFrequencyHistogramBuckets() GooglePrivacyDlpV2LDiversityHistogramBucketResponseArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2LDiversityResultResponse) []GooglePrivacyDlpV2LDiversityHistogramBucketResponse {
-		if v == nil {
-			return nil
-		}
 		return v.SensitiveValueFrequencyHistogramBuckets
 	}).(GooglePrivacyDlpV2LDiversityHistogramBucketResponseArrayOutput)
 }
@@ -18502,80 +12148,6 @@ type GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse struct {
 	OutputPath GooglePrivacyDlpV2CloudStoragePathResponse `pulumi:"outputPath"`
 }
 
-// GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseInput is an input type that accepts GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseArgs and GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseInput` via:
-//
-//          GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseArgs{...}
-type GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutput() GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutput
-	ToGooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutputWithContext(context.Context) GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutput
-}
-
-// Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/dlp/limits) page. The artifacts of dictionary creation are stored in the specified Google Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
-type GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseArgs struct {
-	// Field in a BigQuery table where each cell represents a dictionary phrase.
-	BigQueryField GooglePrivacyDlpV2BigQueryFieldResponseInput `pulumi:"bigQueryField"`
-	// Set of files containing newline-delimited lists of dictionary phrases.
-	CloudStorageFileSet GooglePrivacyDlpV2CloudStorageFileSetResponseInput `pulumi:"cloudStorageFileSet"`
-	// Location to store dictionary artifacts in Google Cloud Storage. These files will only be accessible by project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
-	OutputPath GooglePrivacyDlpV2CloudStoragePathResponseInput `pulumi:"outputPath"`
-}
-
-func (GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseArgs) ToGooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutput() GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutput {
-	return i.ToGooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseArgs) ToGooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseArgs) ToGooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput() GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseArgs) ToGooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutput).ToGooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrInput is an input type that accepts GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseArgs, GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtr and GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput() GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput
-	ToGooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput
-}
-
-type googlePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrType GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseArgs
-
-func GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtr(v *GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseArgs) GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrInput {
-	return (*googlePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrType) ToGooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput() GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrType) ToGooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput)
-}
-
 // Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/dlp/limits) page. The artifacts of dictionary creation are stored in the specified Google Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
 type GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -18589,16 +12161,6 @@ func (o GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutput) ToGooglePri
 
 func (o GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutput) ToGooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutput) ToGooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput() GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutput) ToGooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse) *GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse {
-		return &v
-	}).(GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput)
 }
 
 // Field in a BigQuery table where each cell represents a dictionary phrase.
@@ -18622,134 +12184,10 @@ func (o GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutput) OutputPath(
 	}).(GooglePrivacyDlpV2CloudStoragePathResponseOutput)
 }
 
-type GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput) ToGooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput() GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput) ToGooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput) Elem() GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse) GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse
-		return ret
-	}).(GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutput)
-}
-
-// Field in a BigQuery table where each cell represents a dictionary phrase.
-func (o GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput) BigQueryField() GooglePrivacyDlpV2BigQueryFieldResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse) *GooglePrivacyDlpV2BigQueryFieldResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.BigQueryField
-	}).(GooglePrivacyDlpV2BigQueryFieldResponsePtrOutput)
-}
-
-// Set of files containing newline-delimited lists of dictionary phrases.
-func (o GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput) CloudStorageFileSet() GooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse) *GooglePrivacyDlpV2CloudStorageFileSetResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.CloudStorageFileSet
-	}).(GooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput)
-}
-
-// Location to store dictionary artifacts in Google Cloud Storage. These files will only be accessible by project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
-func (o GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput) OutputPath() GooglePrivacyDlpV2CloudStoragePathResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse) *GooglePrivacyDlpV2CloudStoragePathResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.OutputPath
-	}).(GooglePrivacyDlpV2CloudStoragePathResponsePtrOutput)
-}
-
 // Summary statistics of a custom dictionary.
 type GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse struct {
 	// Approximate number of distinct phrases in the dictionary.
 	ApproxNumPhrases string `pulumi:"approxNumPhrases"`
-}
-
-// GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseInput is an input type that accepts GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseArgs and GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseInput` via:
-//
-//          GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseArgs{...}
-type GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2LargeCustomDictionaryStatsResponseOutput() GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseOutput
-	ToGooglePrivacyDlpV2LargeCustomDictionaryStatsResponseOutputWithContext(context.Context) GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseOutput
-}
-
-// Summary statistics of a custom dictionary.
-type GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseArgs struct {
-	// Approximate number of distinct phrases in the dictionary.
-	ApproxNumPhrases pulumi.StringInput `pulumi:"approxNumPhrases"`
-}
-
-func (GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseArgs) ToGooglePrivacyDlpV2LargeCustomDictionaryStatsResponseOutput() GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseOutput {
-	return i.ToGooglePrivacyDlpV2LargeCustomDictionaryStatsResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseArgs) ToGooglePrivacyDlpV2LargeCustomDictionaryStatsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseArgs) ToGooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput() GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseArgs) ToGooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseOutput).ToGooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrInput is an input type that accepts GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseArgs, GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtr and GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput() GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput
-	ToGooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput
-}
-
-type googlePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrType GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseArgs
-
-func GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtr(v *GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseArgs) GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrInput {
-	return (*googlePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrType) ToGooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput() GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrType) ToGooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput)
 }
 
 // Summary statistics of a custom dictionary.
@@ -18767,53 +12205,9 @@ func (o GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseOutput) ToGooglePriv
 	return o
 }
 
-func (o GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseOutput) ToGooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput() GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseOutput) ToGooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse) *GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse {
-		return &v
-	}).(GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput)
-}
-
 // Approximate number of distinct phrases in the dictionary.
 func (o GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseOutput) ApproxNumPhrases() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse) string { return v.ApproxNumPhrases }).(pulumi.StringOutput)
-}
-
-type GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput) ToGooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput() GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput) ToGooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput) Elem() GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse) GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse
-		return ret
-	}).(GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseOutput)
-}
-
-// Approximate number of distinct phrases in the dictionary.
-func (o GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput) ApproxNumPhrases() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ApproxNumPhrases
-	}).(pulumi.StringPtrOutput)
 }
 
 // Skips the data without modifying it if the requested transformation would cause an error. For example, if a `DateShift` transformation were applied an an IP address, this mode would leave the IP address unchanged in the response.
@@ -18941,74 +12335,6 @@ func (o GooglePrivacyDlpV2LeaveUntransformedPtrOutput) Elem() GooglePrivacyDlpV2
 type GooglePrivacyDlpV2LeaveUntransformedResponse struct {
 }
 
-// GooglePrivacyDlpV2LeaveUntransformedResponseInput is an input type that accepts GooglePrivacyDlpV2LeaveUntransformedResponseArgs and GooglePrivacyDlpV2LeaveUntransformedResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2LeaveUntransformedResponseInput` via:
-//
-//          GooglePrivacyDlpV2LeaveUntransformedResponseArgs{...}
-type GooglePrivacyDlpV2LeaveUntransformedResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2LeaveUntransformedResponseOutput() GooglePrivacyDlpV2LeaveUntransformedResponseOutput
-	ToGooglePrivacyDlpV2LeaveUntransformedResponseOutputWithContext(context.Context) GooglePrivacyDlpV2LeaveUntransformedResponseOutput
-}
-
-// Skips the data without modifying it if the requested transformation would cause an error. For example, if a `DateShift` transformation were applied an an IP address, this mode would leave the IP address unchanged in the response.
-type GooglePrivacyDlpV2LeaveUntransformedResponseArgs struct {
-}
-
-func (GooglePrivacyDlpV2LeaveUntransformedResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2LeaveUntransformedResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2LeaveUntransformedResponseArgs) ToGooglePrivacyDlpV2LeaveUntransformedResponseOutput() GooglePrivacyDlpV2LeaveUntransformedResponseOutput {
-	return i.ToGooglePrivacyDlpV2LeaveUntransformedResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2LeaveUntransformedResponseArgs) ToGooglePrivacyDlpV2LeaveUntransformedResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LeaveUntransformedResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2LeaveUntransformedResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2LeaveUntransformedResponseArgs) ToGooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput() GooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2LeaveUntransformedResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2LeaveUntransformedResponseArgs) ToGooglePrivacyDlpV2LeaveUntransformedResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2LeaveUntransformedResponseOutput).ToGooglePrivacyDlpV2LeaveUntransformedResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2LeaveUntransformedResponsePtrInput is an input type that accepts GooglePrivacyDlpV2LeaveUntransformedResponseArgs, GooglePrivacyDlpV2LeaveUntransformedResponsePtr and GooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2LeaveUntransformedResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2LeaveUntransformedResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2LeaveUntransformedResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput() GooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput
-	ToGooglePrivacyDlpV2LeaveUntransformedResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput
-}
-
-type googlePrivacyDlpV2LeaveUntransformedResponsePtrType GooglePrivacyDlpV2LeaveUntransformedResponseArgs
-
-func GooglePrivacyDlpV2LeaveUntransformedResponsePtr(v *GooglePrivacyDlpV2LeaveUntransformedResponseArgs) GooglePrivacyDlpV2LeaveUntransformedResponsePtrInput {
-	return (*googlePrivacyDlpV2LeaveUntransformedResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2LeaveUntransformedResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2LeaveUntransformedResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2LeaveUntransformedResponsePtrType) ToGooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput() GooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2LeaveUntransformedResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2LeaveUntransformedResponsePtrType) ToGooglePrivacyDlpV2LeaveUntransformedResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput)
-}
-
 // Skips the data without modifying it if the requested transformation would cause an error. For example, if a `DateShift` transformation were applied an an IP address, this mode would leave the IP address unchanged in the response.
 type GooglePrivacyDlpV2LeaveUntransformedResponseOutput struct{ *pulumi.OutputState }
 
@@ -19022,40 +12348,6 @@ func (o GooglePrivacyDlpV2LeaveUntransformedResponseOutput) ToGooglePrivacyDlpV2
 
 func (o GooglePrivacyDlpV2LeaveUntransformedResponseOutput) ToGooglePrivacyDlpV2LeaveUntransformedResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LeaveUntransformedResponseOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2LeaveUntransformedResponseOutput) ToGooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput() GooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2LeaveUntransformedResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2LeaveUntransformedResponseOutput) ToGooglePrivacyDlpV2LeaveUntransformedResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2LeaveUntransformedResponse) *GooglePrivacyDlpV2LeaveUntransformedResponse {
-		return &v
-	}).(GooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput)
-}
-
-type GooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2LeaveUntransformedResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput) ToGooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput() GooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput) ToGooglePrivacyDlpV2LeaveUntransformedResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput) Elem() GooglePrivacyDlpV2LeaveUntransformedResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2LeaveUntransformedResponse) GooglePrivacyDlpV2LeaveUntransformedResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2LeaveUntransformedResponse
-		return ret
-	}).(GooglePrivacyDlpV2LeaveUntransformedResponseOutput)
 }
 
 // Message for specifying an adjustment to the likelihood of a finding as part of a detection rule.
@@ -19227,37 +12519,6 @@ type GooglePrivacyDlpV2LikelihoodAdjustmentResponse struct {
 	RelativeLikelihood int `pulumi:"relativeLikelihood"`
 }
 
-// GooglePrivacyDlpV2LikelihoodAdjustmentResponseInput is an input type that accepts GooglePrivacyDlpV2LikelihoodAdjustmentResponseArgs and GooglePrivacyDlpV2LikelihoodAdjustmentResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2LikelihoodAdjustmentResponseInput` via:
-//
-//          GooglePrivacyDlpV2LikelihoodAdjustmentResponseArgs{...}
-type GooglePrivacyDlpV2LikelihoodAdjustmentResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2LikelihoodAdjustmentResponseOutput() GooglePrivacyDlpV2LikelihoodAdjustmentResponseOutput
-	ToGooglePrivacyDlpV2LikelihoodAdjustmentResponseOutputWithContext(context.Context) GooglePrivacyDlpV2LikelihoodAdjustmentResponseOutput
-}
-
-// Message for specifying an adjustment to the likelihood of a finding as part of a detection rule.
-type GooglePrivacyDlpV2LikelihoodAdjustmentResponseArgs struct {
-	// Set the likelihood of a finding to a fixed value.
-	FixedLikelihood pulumi.StringInput `pulumi:"fixedLikelihood"`
-	// Increase or decrease the likelihood by the specified number of levels. For example, if a finding would be `POSSIBLE` without the detection rule and `relative_likelihood` is 1, then it is upgraded to `LIKELY`, while a value of -1 would downgrade it to `UNLIKELY`. Likelihood may never drop below `VERY_UNLIKELY` or exceed `VERY_LIKELY`, so applying an adjustment of 1 followed by an adjustment of -1 when base likelihood is `VERY_LIKELY` will result in a final likelihood of `LIKELY`.
-	RelativeLikelihood pulumi.IntInput `pulumi:"relativeLikelihood"`
-}
-
-func (GooglePrivacyDlpV2LikelihoodAdjustmentResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2LikelihoodAdjustmentResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2LikelihoodAdjustmentResponseArgs) ToGooglePrivacyDlpV2LikelihoodAdjustmentResponseOutput() GooglePrivacyDlpV2LikelihoodAdjustmentResponseOutput {
-	return i.ToGooglePrivacyDlpV2LikelihoodAdjustmentResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2LikelihoodAdjustmentResponseArgs) ToGooglePrivacyDlpV2LikelihoodAdjustmentResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2LikelihoodAdjustmentResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2LikelihoodAdjustmentResponseOutput)
-}
-
 // Message for specifying an adjustment to the likelihood of a finding as part of a detection rule.
 type GooglePrivacyDlpV2LikelihoodAdjustmentResponseOutput struct{ *pulumi.OutputState }
 
@@ -19406,33 +12667,6 @@ func (o GooglePrivacyDlpV2ManualPtrOutput) Elem() GooglePrivacyDlpV2ManualOutput
 
 // Job trigger option for hybrid jobs. Jobs must be manually created and finished.
 type GooglePrivacyDlpV2ManualResponse struct {
-}
-
-// GooglePrivacyDlpV2ManualResponseInput is an input type that accepts GooglePrivacyDlpV2ManualResponseArgs and GooglePrivacyDlpV2ManualResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2ManualResponseInput` via:
-//
-//          GooglePrivacyDlpV2ManualResponseArgs{...}
-type GooglePrivacyDlpV2ManualResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2ManualResponseOutput() GooglePrivacyDlpV2ManualResponseOutput
-	ToGooglePrivacyDlpV2ManualResponseOutputWithContext(context.Context) GooglePrivacyDlpV2ManualResponseOutput
-}
-
-// Job trigger option for hybrid jobs. Jobs must be manually created and finished.
-type GooglePrivacyDlpV2ManualResponseArgs struct {
-}
-
-func (GooglePrivacyDlpV2ManualResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2ManualResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2ManualResponseArgs) ToGooglePrivacyDlpV2ManualResponseOutput() GooglePrivacyDlpV2ManualResponseOutput {
-	return i.ToGooglePrivacyDlpV2ManualResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2ManualResponseArgs) ToGooglePrivacyDlpV2ManualResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ManualResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ManualResponseOutput)
 }
 
 // Job trigger option for hybrid jobs. Jobs must be manually created and finished.
@@ -19596,76 +12830,6 @@ type GooglePrivacyDlpV2NumericalStatsConfigResponse struct {
 	Field GooglePrivacyDlpV2FieldIdResponse `pulumi:"field"`
 }
 
-// GooglePrivacyDlpV2NumericalStatsConfigResponseInput is an input type that accepts GooglePrivacyDlpV2NumericalStatsConfigResponseArgs and GooglePrivacyDlpV2NumericalStatsConfigResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2NumericalStatsConfigResponseInput` via:
-//
-//          GooglePrivacyDlpV2NumericalStatsConfigResponseArgs{...}
-type GooglePrivacyDlpV2NumericalStatsConfigResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2NumericalStatsConfigResponseOutput() GooglePrivacyDlpV2NumericalStatsConfigResponseOutput
-	ToGooglePrivacyDlpV2NumericalStatsConfigResponseOutputWithContext(context.Context) GooglePrivacyDlpV2NumericalStatsConfigResponseOutput
-}
-
-// Compute numerical stats over an individual column, including min, max, and quantiles.
-type GooglePrivacyDlpV2NumericalStatsConfigResponseArgs struct {
-	// Field to compute numerical stats on. Supported types are integer, float, date, datetime, timestamp, time.
-	Field GooglePrivacyDlpV2FieldIdResponseInput `pulumi:"field"`
-}
-
-func (GooglePrivacyDlpV2NumericalStatsConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2NumericalStatsConfigResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2NumericalStatsConfigResponseArgs) ToGooglePrivacyDlpV2NumericalStatsConfigResponseOutput() GooglePrivacyDlpV2NumericalStatsConfigResponseOutput {
-	return i.ToGooglePrivacyDlpV2NumericalStatsConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2NumericalStatsConfigResponseArgs) ToGooglePrivacyDlpV2NumericalStatsConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2NumericalStatsConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2NumericalStatsConfigResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2NumericalStatsConfigResponseArgs) ToGooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput() GooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2NumericalStatsConfigResponseArgs) ToGooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2NumericalStatsConfigResponseOutput).ToGooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2NumericalStatsConfigResponsePtrInput is an input type that accepts GooglePrivacyDlpV2NumericalStatsConfigResponseArgs, GooglePrivacyDlpV2NumericalStatsConfigResponsePtr and GooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2NumericalStatsConfigResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2NumericalStatsConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2NumericalStatsConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput() GooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput
-	ToGooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput
-}
-
-type googlePrivacyDlpV2NumericalStatsConfigResponsePtrType GooglePrivacyDlpV2NumericalStatsConfigResponseArgs
-
-func GooglePrivacyDlpV2NumericalStatsConfigResponsePtr(v *GooglePrivacyDlpV2NumericalStatsConfigResponseArgs) GooglePrivacyDlpV2NumericalStatsConfigResponsePtrInput {
-	return (*googlePrivacyDlpV2NumericalStatsConfigResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2NumericalStatsConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2NumericalStatsConfigResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2NumericalStatsConfigResponsePtrType) ToGooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput() GooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2NumericalStatsConfigResponsePtrType) ToGooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput)
-}
-
 // Compute numerical stats over an individual column, including min, max, and quantiles.
 type GooglePrivacyDlpV2NumericalStatsConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -19681,55 +12845,11 @@ func (o GooglePrivacyDlpV2NumericalStatsConfigResponseOutput) ToGooglePrivacyDlp
 	return o
 }
 
-func (o GooglePrivacyDlpV2NumericalStatsConfigResponseOutput) ToGooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput() GooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2NumericalStatsConfigResponseOutput) ToGooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2NumericalStatsConfigResponse) *GooglePrivacyDlpV2NumericalStatsConfigResponse {
-		return &v
-	}).(GooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput)
-}
-
 // Field to compute numerical stats on. Supported types are integer, float, date, datetime, timestamp, time.
 func (o GooglePrivacyDlpV2NumericalStatsConfigResponseOutput) Field() GooglePrivacyDlpV2FieldIdResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2NumericalStatsConfigResponse) GooglePrivacyDlpV2FieldIdResponse {
 		return v.Field
 	}).(GooglePrivacyDlpV2FieldIdResponseOutput)
-}
-
-type GooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2NumericalStatsConfigResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput) ToGooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput() GooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput) ToGooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput) Elem() GooglePrivacyDlpV2NumericalStatsConfigResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2NumericalStatsConfigResponse) GooglePrivacyDlpV2NumericalStatsConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2NumericalStatsConfigResponse
-		return ret
-	}).(GooglePrivacyDlpV2NumericalStatsConfigResponseOutput)
-}
-
-// Field to compute numerical stats on. Supported types are integer, float, date, datetime, timestamp, time.
-func (o GooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput) Field() GooglePrivacyDlpV2FieldIdResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2NumericalStatsConfigResponse) *GooglePrivacyDlpV2FieldIdResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Field
-	}).(GooglePrivacyDlpV2FieldIdResponsePtrOutput)
 }
 
 // Result of the numerical stats computation.
@@ -19740,80 +12860,6 @@ type GooglePrivacyDlpV2NumericalStatsResultResponse struct {
 	MinValue GooglePrivacyDlpV2ValueResponse `pulumi:"minValue"`
 	// List of 99 values that partition the set of field values into 100 equal sized buckets.
 	QuantileValues []GooglePrivacyDlpV2ValueResponse `pulumi:"quantileValues"`
-}
-
-// GooglePrivacyDlpV2NumericalStatsResultResponseInput is an input type that accepts GooglePrivacyDlpV2NumericalStatsResultResponseArgs and GooglePrivacyDlpV2NumericalStatsResultResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2NumericalStatsResultResponseInput` via:
-//
-//          GooglePrivacyDlpV2NumericalStatsResultResponseArgs{...}
-type GooglePrivacyDlpV2NumericalStatsResultResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2NumericalStatsResultResponseOutput() GooglePrivacyDlpV2NumericalStatsResultResponseOutput
-	ToGooglePrivacyDlpV2NumericalStatsResultResponseOutputWithContext(context.Context) GooglePrivacyDlpV2NumericalStatsResultResponseOutput
-}
-
-// Result of the numerical stats computation.
-type GooglePrivacyDlpV2NumericalStatsResultResponseArgs struct {
-	// Maximum value appearing in the column.
-	MaxValue GooglePrivacyDlpV2ValueResponseInput `pulumi:"maxValue"`
-	// Minimum value appearing in the column.
-	MinValue GooglePrivacyDlpV2ValueResponseInput `pulumi:"minValue"`
-	// List of 99 values that partition the set of field values into 100 equal sized buckets.
-	QuantileValues GooglePrivacyDlpV2ValueResponseArrayInput `pulumi:"quantileValues"`
-}
-
-func (GooglePrivacyDlpV2NumericalStatsResultResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2NumericalStatsResultResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2NumericalStatsResultResponseArgs) ToGooglePrivacyDlpV2NumericalStatsResultResponseOutput() GooglePrivacyDlpV2NumericalStatsResultResponseOutput {
-	return i.ToGooglePrivacyDlpV2NumericalStatsResultResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2NumericalStatsResultResponseArgs) ToGooglePrivacyDlpV2NumericalStatsResultResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2NumericalStatsResultResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2NumericalStatsResultResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2NumericalStatsResultResponseArgs) ToGooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput() GooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2NumericalStatsResultResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2NumericalStatsResultResponseArgs) ToGooglePrivacyDlpV2NumericalStatsResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2NumericalStatsResultResponseOutput).ToGooglePrivacyDlpV2NumericalStatsResultResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2NumericalStatsResultResponsePtrInput is an input type that accepts GooglePrivacyDlpV2NumericalStatsResultResponseArgs, GooglePrivacyDlpV2NumericalStatsResultResponsePtr and GooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2NumericalStatsResultResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2NumericalStatsResultResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2NumericalStatsResultResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput() GooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput
-	ToGooglePrivacyDlpV2NumericalStatsResultResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput
-}
-
-type googlePrivacyDlpV2NumericalStatsResultResponsePtrType GooglePrivacyDlpV2NumericalStatsResultResponseArgs
-
-func GooglePrivacyDlpV2NumericalStatsResultResponsePtr(v *GooglePrivacyDlpV2NumericalStatsResultResponseArgs) GooglePrivacyDlpV2NumericalStatsResultResponsePtrInput {
-	return (*googlePrivacyDlpV2NumericalStatsResultResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2NumericalStatsResultResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2NumericalStatsResultResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2NumericalStatsResultResponsePtrType) ToGooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput() GooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2NumericalStatsResultResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2NumericalStatsResultResponsePtrType) ToGooglePrivacyDlpV2NumericalStatsResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput)
 }
 
 // Result of the numerical stats computation.
@@ -19829,16 +12875,6 @@ func (o GooglePrivacyDlpV2NumericalStatsResultResponseOutput) ToGooglePrivacyDlp
 
 func (o GooglePrivacyDlpV2NumericalStatsResultResponseOutput) ToGooglePrivacyDlpV2NumericalStatsResultResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2NumericalStatsResultResponseOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2NumericalStatsResultResponseOutput) ToGooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput() GooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2NumericalStatsResultResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2NumericalStatsResultResponseOutput) ToGooglePrivacyDlpV2NumericalStatsResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2NumericalStatsResultResponse) *GooglePrivacyDlpV2NumericalStatsResultResponse {
-		return &v
-	}).(GooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput)
 }
 
 // Maximum value appearing in the column.
@@ -19858,60 +12894,6 @@ func (o GooglePrivacyDlpV2NumericalStatsResultResponseOutput) MinValue() GoogleP
 // List of 99 values that partition the set of field values into 100 equal sized buckets.
 func (o GooglePrivacyDlpV2NumericalStatsResultResponseOutput) QuantileValues() GooglePrivacyDlpV2ValueResponseArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2NumericalStatsResultResponse) []GooglePrivacyDlpV2ValueResponse {
-		return v.QuantileValues
-	}).(GooglePrivacyDlpV2ValueResponseArrayOutput)
-}
-
-type GooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2NumericalStatsResultResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput) ToGooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput() GooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput) ToGooglePrivacyDlpV2NumericalStatsResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput) Elem() GooglePrivacyDlpV2NumericalStatsResultResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2NumericalStatsResultResponse) GooglePrivacyDlpV2NumericalStatsResultResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2NumericalStatsResultResponse
-		return ret
-	}).(GooglePrivacyDlpV2NumericalStatsResultResponseOutput)
-}
-
-// Maximum value appearing in the column.
-func (o GooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput) MaxValue() GooglePrivacyDlpV2ValueResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2NumericalStatsResultResponse) *GooglePrivacyDlpV2ValueResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxValue
-	}).(GooglePrivacyDlpV2ValueResponsePtrOutput)
-}
-
-// Minimum value appearing in the column.
-func (o GooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput) MinValue() GooglePrivacyDlpV2ValueResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2NumericalStatsResultResponse) *GooglePrivacyDlpV2ValueResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.MinValue
-	}).(GooglePrivacyDlpV2ValueResponsePtrOutput)
-}
-
-// List of 99 values that partition the set of field values into 100 equal sized buckets.
-func (o GooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput) QuantileValues() GooglePrivacyDlpV2ValueResponseArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2NumericalStatsResultResponse) []GooglePrivacyDlpV2ValueResponse {
-		if v == nil {
-			return nil
-		}
 		return v.QuantileValues
 	}).(GooglePrivacyDlpV2ValueResponseArrayOutput)
 }
@@ -20083,37 +13065,6 @@ type GooglePrivacyDlpV2OutputStorageConfigResponse struct {
 	OutputSchema string `pulumi:"outputSchema"`
 	// Store findings in an existing table or a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific timezone will be used for generating the date details. For Inspect, each column in an existing output table must have the same name, type, and mode of a field in the `Finding` object. For Risk, an existing output table should be the output of a previous Risk analysis job run on the same source table, with the same privacy metric and quasi-identifiers. Risk jobs that analyze the same table but compute a different privacy metric, or use different sets of quasi-identifiers, cannot store their results in the same table.
 	Table GooglePrivacyDlpV2BigQueryTableResponse `pulumi:"table"`
-}
-
-// GooglePrivacyDlpV2OutputStorageConfigResponseInput is an input type that accepts GooglePrivacyDlpV2OutputStorageConfigResponseArgs and GooglePrivacyDlpV2OutputStorageConfigResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2OutputStorageConfigResponseInput` via:
-//
-//          GooglePrivacyDlpV2OutputStorageConfigResponseArgs{...}
-type GooglePrivacyDlpV2OutputStorageConfigResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2OutputStorageConfigResponseOutput() GooglePrivacyDlpV2OutputStorageConfigResponseOutput
-	ToGooglePrivacyDlpV2OutputStorageConfigResponseOutputWithContext(context.Context) GooglePrivacyDlpV2OutputStorageConfigResponseOutput
-}
-
-// Cloud repository for storing output.
-type GooglePrivacyDlpV2OutputStorageConfigResponseArgs struct {
-	// Schema used for writing the findings for Inspect jobs. This field is only used for Inspect and must be unspecified for Risk jobs. Columns are derived from the `Finding` object. If appending to an existing table, any columns from the predefined schema that are missing will be added. No columns in the existing table will be deleted. If unspecified, then all available columns will be used for a new table or an (existing) table with no schema, and no changes will be made to an existing table that has a schema. Only for use with external storage.
-	OutputSchema pulumi.StringInput `pulumi:"outputSchema"`
-	// Store findings in an existing table or a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific timezone will be used for generating the date details. For Inspect, each column in an existing output table must have the same name, type, and mode of a field in the `Finding` object. For Risk, an existing output table should be the output of a previous Risk analysis job run on the same source table, with the same privacy metric and quasi-identifiers. Risk jobs that analyze the same table but compute a different privacy metric, or use different sets of quasi-identifiers, cannot store their results in the same table.
-	Table GooglePrivacyDlpV2BigQueryTableResponseInput `pulumi:"table"`
-}
-
-func (GooglePrivacyDlpV2OutputStorageConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2OutputStorageConfigResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2OutputStorageConfigResponseArgs) ToGooglePrivacyDlpV2OutputStorageConfigResponseOutput() GooglePrivacyDlpV2OutputStorageConfigResponseOutput {
-	return i.ToGooglePrivacyDlpV2OutputStorageConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2OutputStorageConfigResponseArgs) ToGooglePrivacyDlpV2OutputStorageConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2OutputStorageConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2OutputStorageConfigResponseOutput)
 }
 
 // Cloud repository for storing output.
@@ -20310,78 +13261,6 @@ type GooglePrivacyDlpV2PartitionIdResponse struct {
 	Project string `pulumi:"project"`
 }
 
-// GooglePrivacyDlpV2PartitionIdResponseInput is an input type that accepts GooglePrivacyDlpV2PartitionIdResponseArgs and GooglePrivacyDlpV2PartitionIdResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2PartitionIdResponseInput` via:
-//
-//          GooglePrivacyDlpV2PartitionIdResponseArgs{...}
-type GooglePrivacyDlpV2PartitionIdResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2PartitionIdResponseOutput() GooglePrivacyDlpV2PartitionIdResponseOutput
-	ToGooglePrivacyDlpV2PartitionIdResponseOutputWithContext(context.Context) GooglePrivacyDlpV2PartitionIdResponseOutput
-}
-
-// Datastore partition ID. A partition ID identifies a grouping of entities. The grouping is always by project and namespace, however the namespace ID may be empty. A partition ID contains several dimensions: project ID and namespace ID.
-type GooglePrivacyDlpV2PartitionIdResponseArgs struct {
-	// If not empty, the ID of the namespace to which the entities belong.
-	NamespaceId pulumi.StringInput `pulumi:"namespaceId"`
-	// The ID of the project to which the entities belong.
-	Project pulumi.StringInput `pulumi:"project"`
-}
-
-func (GooglePrivacyDlpV2PartitionIdResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2PartitionIdResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2PartitionIdResponseArgs) ToGooglePrivacyDlpV2PartitionIdResponseOutput() GooglePrivacyDlpV2PartitionIdResponseOutput {
-	return i.ToGooglePrivacyDlpV2PartitionIdResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2PartitionIdResponseArgs) ToGooglePrivacyDlpV2PartitionIdResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PartitionIdResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2PartitionIdResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2PartitionIdResponseArgs) ToGooglePrivacyDlpV2PartitionIdResponsePtrOutput() GooglePrivacyDlpV2PartitionIdResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2PartitionIdResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2PartitionIdResponseArgs) ToGooglePrivacyDlpV2PartitionIdResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PartitionIdResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2PartitionIdResponseOutput).ToGooglePrivacyDlpV2PartitionIdResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2PartitionIdResponsePtrInput is an input type that accepts GooglePrivacyDlpV2PartitionIdResponseArgs, GooglePrivacyDlpV2PartitionIdResponsePtr and GooglePrivacyDlpV2PartitionIdResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2PartitionIdResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2PartitionIdResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2PartitionIdResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2PartitionIdResponsePtrOutput() GooglePrivacyDlpV2PartitionIdResponsePtrOutput
-	ToGooglePrivacyDlpV2PartitionIdResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2PartitionIdResponsePtrOutput
-}
-
-type googlePrivacyDlpV2PartitionIdResponsePtrType GooglePrivacyDlpV2PartitionIdResponseArgs
-
-func GooglePrivacyDlpV2PartitionIdResponsePtr(v *GooglePrivacyDlpV2PartitionIdResponseArgs) GooglePrivacyDlpV2PartitionIdResponsePtrInput {
-	return (*googlePrivacyDlpV2PartitionIdResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2PartitionIdResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2PartitionIdResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2PartitionIdResponsePtrType) ToGooglePrivacyDlpV2PartitionIdResponsePtrOutput() GooglePrivacyDlpV2PartitionIdResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2PartitionIdResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2PartitionIdResponsePtrType) ToGooglePrivacyDlpV2PartitionIdResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PartitionIdResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2PartitionIdResponsePtrOutput)
-}
-
 // Datastore partition ID. A partition ID identifies a grouping of entities. The grouping is always by project and namespace, however the namespace ID may be empty. A partition ID contains several dimensions: project ID and namespace ID.
 type GooglePrivacyDlpV2PartitionIdResponseOutput struct{ *pulumi.OutputState }
 
@@ -20397,16 +13276,6 @@ func (o GooglePrivacyDlpV2PartitionIdResponseOutput) ToGooglePrivacyDlpV2Partiti
 	return o
 }
 
-func (o GooglePrivacyDlpV2PartitionIdResponseOutput) ToGooglePrivacyDlpV2PartitionIdResponsePtrOutput() GooglePrivacyDlpV2PartitionIdResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2PartitionIdResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2PartitionIdResponseOutput) ToGooglePrivacyDlpV2PartitionIdResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PartitionIdResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2PartitionIdResponse) *GooglePrivacyDlpV2PartitionIdResponse {
-		return &v
-	}).(GooglePrivacyDlpV2PartitionIdResponsePtrOutput)
-}
-
 // If not empty, the ID of the namespace to which the entities belong.
 func (o GooglePrivacyDlpV2PartitionIdResponseOutput) NamespaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2PartitionIdResponse) string { return v.NamespaceId }).(pulumi.StringOutput)
@@ -20415,50 +13284,6 @@ func (o GooglePrivacyDlpV2PartitionIdResponseOutput) NamespaceId() pulumi.String
 // The ID of the project to which the entities belong.
 func (o GooglePrivacyDlpV2PartitionIdResponseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2PartitionIdResponse) string { return v.Project }).(pulumi.StringOutput)
-}
-
-type GooglePrivacyDlpV2PartitionIdResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2PartitionIdResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2PartitionIdResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2PartitionIdResponsePtrOutput) ToGooglePrivacyDlpV2PartitionIdResponsePtrOutput() GooglePrivacyDlpV2PartitionIdResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2PartitionIdResponsePtrOutput) ToGooglePrivacyDlpV2PartitionIdResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PartitionIdResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2PartitionIdResponsePtrOutput) Elem() GooglePrivacyDlpV2PartitionIdResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2PartitionIdResponse) GooglePrivacyDlpV2PartitionIdResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2PartitionIdResponse
-		return ret
-	}).(GooglePrivacyDlpV2PartitionIdResponseOutput)
-}
-
-// If not empty, the ID of the namespace to which the entities belong.
-func (o GooglePrivacyDlpV2PartitionIdResponsePtrOutput) NamespaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2PartitionIdResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.NamespaceId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The ID of the project to which the entities belong.
-func (o GooglePrivacyDlpV2PartitionIdResponsePtrOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2PartitionIdResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Project
-	}).(pulumi.StringPtrOutput)
 }
 
 // A rule for transforming a value.
@@ -20862,57 +13687,6 @@ type GooglePrivacyDlpV2PrimitiveTransformationResponse struct {
 	TimePartConfig GooglePrivacyDlpV2TimePartConfigResponse `pulumi:"timePartConfig"`
 }
 
-// GooglePrivacyDlpV2PrimitiveTransformationResponseInput is an input type that accepts GooglePrivacyDlpV2PrimitiveTransformationResponseArgs and GooglePrivacyDlpV2PrimitiveTransformationResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2PrimitiveTransformationResponseInput` via:
-//
-//          GooglePrivacyDlpV2PrimitiveTransformationResponseArgs{...}
-type GooglePrivacyDlpV2PrimitiveTransformationResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2PrimitiveTransformationResponseOutput() GooglePrivacyDlpV2PrimitiveTransformationResponseOutput
-	ToGooglePrivacyDlpV2PrimitiveTransformationResponseOutputWithContext(context.Context) GooglePrivacyDlpV2PrimitiveTransformationResponseOutput
-}
-
-// A rule for transforming a value.
-type GooglePrivacyDlpV2PrimitiveTransformationResponseArgs struct {
-	// Bucketing
-	BucketingConfig GooglePrivacyDlpV2BucketingConfigResponseInput `pulumi:"bucketingConfig"`
-	// Mask
-	CharacterMaskConfig GooglePrivacyDlpV2CharacterMaskConfigResponseInput `pulumi:"characterMaskConfig"`
-	// Deterministic Crypto
-	CryptoDeterministicConfig GooglePrivacyDlpV2CryptoDeterministicConfigResponseInput `pulumi:"cryptoDeterministicConfig"`
-	// Crypto
-	CryptoHashConfig GooglePrivacyDlpV2CryptoHashConfigResponseInput `pulumi:"cryptoHashConfig"`
-	// Ffx-Fpe
-	CryptoReplaceFfxFpeConfig GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseInput `pulumi:"cryptoReplaceFfxFpeConfig"`
-	// Date Shift
-	DateShiftConfig GooglePrivacyDlpV2DateShiftConfigResponseInput `pulumi:"dateShiftConfig"`
-	// Fixed size bucketing
-	FixedSizeBucketingConfig GooglePrivacyDlpV2FixedSizeBucketingConfigResponseInput `pulumi:"fixedSizeBucketingConfig"`
-	// Redact
-	RedactConfig GooglePrivacyDlpV2RedactConfigResponseInput `pulumi:"redactConfig"`
-	// Replace with a specified value.
-	ReplaceConfig GooglePrivacyDlpV2ReplaceValueConfigResponseInput `pulumi:"replaceConfig"`
-	// Replace with a value randomly drawn (with replacement) from a dictionary.
-	ReplaceDictionaryConfig GooglePrivacyDlpV2ReplaceDictionaryConfigResponseInput `pulumi:"replaceDictionaryConfig"`
-	// Replace with infotype
-	ReplaceWithInfoTypeConfig GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseInput `pulumi:"replaceWithInfoTypeConfig"`
-	// Time extraction
-	TimePartConfig GooglePrivacyDlpV2TimePartConfigResponseInput `pulumi:"timePartConfig"`
-}
-
-func (GooglePrivacyDlpV2PrimitiveTransformationResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2PrimitiveTransformationResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2PrimitiveTransformationResponseArgs) ToGooglePrivacyDlpV2PrimitiveTransformationResponseOutput() GooglePrivacyDlpV2PrimitiveTransformationResponseOutput {
-	return i.ToGooglePrivacyDlpV2PrimitiveTransformationResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2PrimitiveTransformationResponseArgs) ToGooglePrivacyDlpV2PrimitiveTransformationResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PrimitiveTransformationResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2PrimitiveTransformationResponseOutput)
-}
-
 // A rule for transforming a value.
 type GooglePrivacyDlpV2PrimitiveTransformationResponseOutput struct{ *pulumi.OutputState }
 
@@ -21271,86 +14045,6 @@ type GooglePrivacyDlpV2PrivacyMetricResponse struct {
 	NumericalStatsConfig GooglePrivacyDlpV2NumericalStatsConfigResponse `pulumi:"numericalStatsConfig"`
 }
 
-// GooglePrivacyDlpV2PrivacyMetricResponseInput is an input type that accepts GooglePrivacyDlpV2PrivacyMetricResponseArgs and GooglePrivacyDlpV2PrivacyMetricResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2PrivacyMetricResponseInput` via:
-//
-//          GooglePrivacyDlpV2PrivacyMetricResponseArgs{...}
-type GooglePrivacyDlpV2PrivacyMetricResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2PrivacyMetricResponseOutput() GooglePrivacyDlpV2PrivacyMetricResponseOutput
-	ToGooglePrivacyDlpV2PrivacyMetricResponseOutputWithContext(context.Context) GooglePrivacyDlpV2PrivacyMetricResponseOutput
-}
-
-// Privacy metric to compute for reidentification risk analysis.
-type GooglePrivacyDlpV2PrivacyMetricResponseArgs struct {
-	// Categorical stats
-	CategoricalStatsConfig GooglePrivacyDlpV2CategoricalStatsConfigResponseInput `pulumi:"categoricalStatsConfig"`
-	// delta-presence
-	DeltaPresenceEstimationConfig GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseInput `pulumi:"deltaPresenceEstimationConfig"`
-	// K-anonymity
-	KAnonymityConfig GooglePrivacyDlpV2KAnonymityConfigResponseInput `pulumi:"kAnonymityConfig"`
-	// k-map
-	KMapEstimationConfig GooglePrivacyDlpV2KMapEstimationConfigResponseInput `pulumi:"kMapEstimationConfig"`
-	// l-diversity
-	LDiversityConfig GooglePrivacyDlpV2LDiversityConfigResponseInput `pulumi:"lDiversityConfig"`
-	// Numerical stats
-	NumericalStatsConfig GooglePrivacyDlpV2NumericalStatsConfigResponseInput `pulumi:"numericalStatsConfig"`
-}
-
-func (GooglePrivacyDlpV2PrivacyMetricResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2PrivacyMetricResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2PrivacyMetricResponseArgs) ToGooglePrivacyDlpV2PrivacyMetricResponseOutput() GooglePrivacyDlpV2PrivacyMetricResponseOutput {
-	return i.ToGooglePrivacyDlpV2PrivacyMetricResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2PrivacyMetricResponseArgs) ToGooglePrivacyDlpV2PrivacyMetricResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PrivacyMetricResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2PrivacyMetricResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2PrivacyMetricResponseArgs) ToGooglePrivacyDlpV2PrivacyMetricResponsePtrOutput() GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2PrivacyMetricResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2PrivacyMetricResponseArgs) ToGooglePrivacyDlpV2PrivacyMetricResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2PrivacyMetricResponseOutput).ToGooglePrivacyDlpV2PrivacyMetricResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2PrivacyMetricResponsePtrInput is an input type that accepts GooglePrivacyDlpV2PrivacyMetricResponseArgs, GooglePrivacyDlpV2PrivacyMetricResponsePtr and GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2PrivacyMetricResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2PrivacyMetricResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2PrivacyMetricResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2PrivacyMetricResponsePtrOutput() GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput
-	ToGooglePrivacyDlpV2PrivacyMetricResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput
-}
-
-type googlePrivacyDlpV2PrivacyMetricResponsePtrType GooglePrivacyDlpV2PrivacyMetricResponseArgs
-
-func GooglePrivacyDlpV2PrivacyMetricResponsePtr(v *GooglePrivacyDlpV2PrivacyMetricResponseArgs) GooglePrivacyDlpV2PrivacyMetricResponsePtrInput {
-	return (*googlePrivacyDlpV2PrivacyMetricResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2PrivacyMetricResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2PrivacyMetricResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2PrivacyMetricResponsePtrType) ToGooglePrivacyDlpV2PrivacyMetricResponsePtrOutput() GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2PrivacyMetricResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2PrivacyMetricResponsePtrType) ToGooglePrivacyDlpV2PrivacyMetricResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput)
-}
-
 // Privacy metric to compute for reidentification risk analysis.
 type GooglePrivacyDlpV2PrivacyMetricResponseOutput struct{ *pulumi.OutputState }
 
@@ -21364,16 +14058,6 @@ func (o GooglePrivacyDlpV2PrivacyMetricResponseOutput) ToGooglePrivacyDlpV2Priva
 
 func (o GooglePrivacyDlpV2PrivacyMetricResponseOutput) ToGooglePrivacyDlpV2PrivacyMetricResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PrivacyMetricResponseOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2PrivacyMetricResponseOutput) ToGooglePrivacyDlpV2PrivacyMetricResponsePtrOutput() GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2PrivacyMetricResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2PrivacyMetricResponseOutput) ToGooglePrivacyDlpV2PrivacyMetricResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2PrivacyMetricResponse) *GooglePrivacyDlpV2PrivacyMetricResponse {
-		return &v
-	}).(GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput)
 }
 
 // Categorical stats
@@ -21416,90 +14100,6 @@ func (o GooglePrivacyDlpV2PrivacyMetricResponseOutput) NumericalStatsConfig() Go
 	return o.ApplyT(func(v GooglePrivacyDlpV2PrivacyMetricResponse) GooglePrivacyDlpV2NumericalStatsConfigResponse {
 		return v.NumericalStatsConfig
 	}).(GooglePrivacyDlpV2NumericalStatsConfigResponseOutput)
-}
-
-type GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2PrivacyMetricResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput) ToGooglePrivacyDlpV2PrivacyMetricResponsePtrOutput() GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput) ToGooglePrivacyDlpV2PrivacyMetricResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput) Elem() GooglePrivacyDlpV2PrivacyMetricResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2PrivacyMetricResponse) GooglePrivacyDlpV2PrivacyMetricResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2PrivacyMetricResponse
-		return ret
-	}).(GooglePrivacyDlpV2PrivacyMetricResponseOutput)
-}
-
-// Categorical stats
-func (o GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput) CategoricalStatsConfig() GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2PrivacyMetricResponse) *GooglePrivacyDlpV2CategoricalStatsConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.CategoricalStatsConfig
-	}).(GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput)
-}
-
-// delta-presence
-func (o GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput) DeltaPresenceEstimationConfig() GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2PrivacyMetricResponse) *GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DeltaPresenceEstimationConfig
-	}).(GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput)
-}
-
-// K-anonymity
-func (o GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput) KAnonymityConfig() GooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2PrivacyMetricResponse) *GooglePrivacyDlpV2KAnonymityConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.KAnonymityConfig
-	}).(GooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput)
-}
-
-// k-map
-func (o GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput) KMapEstimationConfig() GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2PrivacyMetricResponse) *GooglePrivacyDlpV2KMapEstimationConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.KMapEstimationConfig
-	}).(GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput)
-}
-
-// l-diversity
-func (o GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput) LDiversityConfig() GooglePrivacyDlpV2LDiversityConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2PrivacyMetricResponse) *GooglePrivacyDlpV2LDiversityConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.LDiversityConfig
-	}).(GooglePrivacyDlpV2LDiversityConfigResponsePtrOutput)
-}
-
-// Numerical stats
-func (o GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput) NumericalStatsConfig() GooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2PrivacyMetricResponse) *GooglePrivacyDlpV2NumericalStatsConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.NumericalStatsConfig
-	}).(GooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput)
 }
 
 // Message for specifying a window around a finding to apply a detection rule.
@@ -21669,37 +14269,6 @@ type GooglePrivacyDlpV2ProximityResponse struct {
 	WindowBefore int `pulumi:"windowBefore"`
 }
 
-// GooglePrivacyDlpV2ProximityResponseInput is an input type that accepts GooglePrivacyDlpV2ProximityResponseArgs and GooglePrivacyDlpV2ProximityResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2ProximityResponseInput` via:
-//
-//          GooglePrivacyDlpV2ProximityResponseArgs{...}
-type GooglePrivacyDlpV2ProximityResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2ProximityResponseOutput() GooglePrivacyDlpV2ProximityResponseOutput
-	ToGooglePrivacyDlpV2ProximityResponseOutputWithContext(context.Context) GooglePrivacyDlpV2ProximityResponseOutput
-}
-
-// Message for specifying a window around a finding to apply a detection rule.
-type GooglePrivacyDlpV2ProximityResponseArgs struct {
-	// Number of characters after the finding to consider.
-	WindowAfter pulumi.IntInput `pulumi:"windowAfter"`
-	// Number of characters before the finding to consider.
-	WindowBefore pulumi.IntInput `pulumi:"windowBefore"`
-}
-
-func (GooglePrivacyDlpV2ProximityResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2ProximityResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2ProximityResponseArgs) ToGooglePrivacyDlpV2ProximityResponseOutput() GooglePrivacyDlpV2ProximityResponseOutput {
-	return i.ToGooglePrivacyDlpV2ProximityResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2ProximityResponseArgs) ToGooglePrivacyDlpV2ProximityResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ProximityResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ProximityResponseOutput)
-}
-
 // Message for specifying a window around a finding to apply a detection rule.
 type GooglePrivacyDlpV2ProximityResponseOutput struct{ *pulumi.OutputState }
 
@@ -21850,33 +14419,6 @@ func (o GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogPtrOutput) Elem() Goo
 type GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponse struct {
 }
 
-// GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseInput is an input type that accepts GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseArgs and GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseInput` via:
-//
-//          GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseArgs{...}
-type GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseOutput() GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseOutput
-	ToGooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseOutputWithContext(context.Context) GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseOutput
-}
-
-// Publish findings of a DlpJob to Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
-type GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseArgs struct {
-}
-
-func (GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseArgs) ToGooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseOutput() GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseOutput {
-	return i.ToGooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseArgs) ToGooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseOutput)
-}
-
 // Publish findings of a DlpJob to Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
 type GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseOutput struct{ *pulumi.OutputState }
 
@@ -22015,33 +14557,6 @@ func (o GooglePrivacyDlpV2PublishSummaryToCsccPtrOutput) Elem() GooglePrivacyDlp
 
 // Publish the result summary of a DlpJob to the Cloud Security Command Center (CSCC Alpha). This action is only available for projects which are parts of an organization and whitelisted for the alpha Cloud Security Command Center. The action will publish count of finding instances and their info types. The summary of findings will be persisted in CSCC and are governed by CSCC service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified. Compatible with: Inspect
 type GooglePrivacyDlpV2PublishSummaryToCsccResponse struct {
-}
-
-// GooglePrivacyDlpV2PublishSummaryToCsccResponseInput is an input type that accepts GooglePrivacyDlpV2PublishSummaryToCsccResponseArgs and GooglePrivacyDlpV2PublishSummaryToCsccResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2PublishSummaryToCsccResponseInput` via:
-//
-//          GooglePrivacyDlpV2PublishSummaryToCsccResponseArgs{...}
-type GooglePrivacyDlpV2PublishSummaryToCsccResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2PublishSummaryToCsccResponseOutput() GooglePrivacyDlpV2PublishSummaryToCsccResponseOutput
-	ToGooglePrivacyDlpV2PublishSummaryToCsccResponseOutputWithContext(context.Context) GooglePrivacyDlpV2PublishSummaryToCsccResponseOutput
-}
-
-// Publish the result summary of a DlpJob to the Cloud Security Command Center (CSCC Alpha). This action is only available for projects which are parts of an organization and whitelisted for the alpha Cloud Security Command Center. The action will publish count of finding instances and their info types. The summary of findings will be persisted in CSCC and are governed by CSCC service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified. Compatible with: Inspect
-type GooglePrivacyDlpV2PublishSummaryToCsccResponseArgs struct {
-}
-
-func (GooglePrivacyDlpV2PublishSummaryToCsccResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2PublishSummaryToCsccResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2PublishSummaryToCsccResponseArgs) ToGooglePrivacyDlpV2PublishSummaryToCsccResponseOutput() GooglePrivacyDlpV2PublishSummaryToCsccResponseOutput {
-	return i.ToGooglePrivacyDlpV2PublishSummaryToCsccResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2PublishSummaryToCsccResponseArgs) ToGooglePrivacyDlpV2PublishSummaryToCsccResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PublishSummaryToCsccResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2PublishSummaryToCsccResponseOutput)
 }
 
 // Publish the result summary of a DlpJob to the Cloud Security Command Center (CSCC Alpha). This action is only available for projects which are parts of an organization and whitelisted for the alpha Cloud Security Command Center. The action will publish count of finding instances and their info types. The summary of findings will be persisted in CSCC and are governed by CSCC service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified. Compatible with: Inspect
@@ -22205,35 +14720,6 @@ type GooglePrivacyDlpV2PublishToPubSubResponse struct {
 	Topic string `pulumi:"topic"`
 }
 
-// GooglePrivacyDlpV2PublishToPubSubResponseInput is an input type that accepts GooglePrivacyDlpV2PublishToPubSubResponseArgs and GooglePrivacyDlpV2PublishToPubSubResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2PublishToPubSubResponseInput` via:
-//
-//          GooglePrivacyDlpV2PublishToPubSubResponseArgs{...}
-type GooglePrivacyDlpV2PublishToPubSubResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2PublishToPubSubResponseOutput() GooglePrivacyDlpV2PublishToPubSubResponseOutput
-	ToGooglePrivacyDlpV2PublishToPubSubResponseOutputWithContext(context.Context) GooglePrivacyDlpV2PublishToPubSubResponseOutput
-}
-
-// Publish a message into given Pub/Sub topic when DlpJob has completed. The message contains a single field, `DlpJobName`, which is equal to the finished job's [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
-type GooglePrivacyDlpV2PublishToPubSubResponseArgs struct {
-	// Cloud Pub/Sub topic to send notifications to. The topic must have given publishing access rights to the DLP API service account executing the long running DlpJob sending the notifications. Format is projects/{project}/topics/{topic}.
-	Topic pulumi.StringInput `pulumi:"topic"`
-}
-
-func (GooglePrivacyDlpV2PublishToPubSubResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2PublishToPubSubResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2PublishToPubSubResponseArgs) ToGooglePrivacyDlpV2PublishToPubSubResponseOutput() GooglePrivacyDlpV2PublishToPubSubResponseOutput {
-	return i.ToGooglePrivacyDlpV2PublishToPubSubResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2PublishToPubSubResponseArgs) ToGooglePrivacyDlpV2PublishToPubSubResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PublishToPubSubResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2PublishToPubSubResponseOutput)
-}
-
 // Publish a message into given Pub/Sub topic when DlpJob has completed. The message contains a single field, `DlpJobName`, which is equal to the finished job's [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
 type GooglePrivacyDlpV2PublishToPubSubResponseOutput struct{ *pulumi.OutputState }
 
@@ -22377,33 +14863,6 @@ func (o GooglePrivacyDlpV2PublishToStackdriverPtrOutput) Elem() GooglePrivacyDlp
 
 // Enable Stackdriver metric dlp.googleapis.com/finding_count. This will publish a metric to stack driver on each infotype requested and how many findings were found for it. CustomDetectors will be bucketed as 'Custom' under the Stackdriver label 'info_type'.
 type GooglePrivacyDlpV2PublishToStackdriverResponse struct {
-}
-
-// GooglePrivacyDlpV2PublishToStackdriverResponseInput is an input type that accepts GooglePrivacyDlpV2PublishToStackdriverResponseArgs and GooglePrivacyDlpV2PublishToStackdriverResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2PublishToStackdriverResponseInput` via:
-//
-//          GooglePrivacyDlpV2PublishToStackdriverResponseArgs{...}
-type GooglePrivacyDlpV2PublishToStackdriverResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2PublishToStackdriverResponseOutput() GooglePrivacyDlpV2PublishToStackdriverResponseOutput
-	ToGooglePrivacyDlpV2PublishToStackdriverResponseOutputWithContext(context.Context) GooglePrivacyDlpV2PublishToStackdriverResponseOutput
-}
-
-// Enable Stackdriver metric dlp.googleapis.com/finding_count. This will publish a metric to stack driver on each infotype requested and how many findings were found for it. CustomDetectors will be bucketed as 'Custom' under the Stackdriver label 'info_type'.
-type GooglePrivacyDlpV2PublishToStackdriverResponseArgs struct {
-}
-
-func (GooglePrivacyDlpV2PublishToStackdriverResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2PublishToStackdriverResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2PublishToStackdriverResponseArgs) ToGooglePrivacyDlpV2PublishToStackdriverResponseOutput() GooglePrivacyDlpV2PublishToStackdriverResponseOutput {
-	return i.ToGooglePrivacyDlpV2PublishToStackdriverResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2PublishToStackdriverResponseArgs) ToGooglePrivacyDlpV2PublishToStackdriverResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2PublishToStackdriverResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2PublishToStackdriverResponseOutput)
 }
 
 // Enable Stackdriver metric dlp.googleapis.com/finding_count. This will publish a metric to stack driver on each infotype requested and how many findings were found for it. CustomDetectors will be bucketed as 'Custom' under the Stackdriver label 'info_type'.
@@ -22665,62 +15124,6 @@ type GooglePrivacyDlpV2QuasiIdFieldResponse struct {
 	Field GooglePrivacyDlpV2FieldIdResponse `pulumi:"field"`
 }
 
-// GooglePrivacyDlpV2QuasiIdFieldResponseInput is an input type that accepts GooglePrivacyDlpV2QuasiIdFieldResponseArgs and GooglePrivacyDlpV2QuasiIdFieldResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2QuasiIdFieldResponseInput` via:
-//
-//          GooglePrivacyDlpV2QuasiIdFieldResponseArgs{...}
-type GooglePrivacyDlpV2QuasiIdFieldResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2QuasiIdFieldResponseOutput() GooglePrivacyDlpV2QuasiIdFieldResponseOutput
-	ToGooglePrivacyDlpV2QuasiIdFieldResponseOutputWithContext(context.Context) GooglePrivacyDlpV2QuasiIdFieldResponseOutput
-}
-
-// A quasi-identifier column has a custom_tag, used to know which column in the data corresponds to which column in the statistical model.
-type GooglePrivacyDlpV2QuasiIdFieldResponseArgs struct {
-	// A auxiliary field.
-	CustomTag pulumi.StringInput `pulumi:"customTag"`
-	// Identifies the column.
-	Field GooglePrivacyDlpV2FieldIdResponseInput `pulumi:"field"`
-}
-
-func (GooglePrivacyDlpV2QuasiIdFieldResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2QuasiIdFieldResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2QuasiIdFieldResponseArgs) ToGooglePrivacyDlpV2QuasiIdFieldResponseOutput() GooglePrivacyDlpV2QuasiIdFieldResponseOutput {
-	return i.ToGooglePrivacyDlpV2QuasiIdFieldResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2QuasiIdFieldResponseArgs) ToGooglePrivacyDlpV2QuasiIdFieldResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2QuasiIdFieldResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2QuasiIdFieldResponseOutput)
-}
-
-// GooglePrivacyDlpV2QuasiIdFieldResponseArrayInput is an input type that accepts GooglePrivacyDlpV2QuasiIdFieldResponseArray and GooglePrivacyDlpV2QuasiIdFieldResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2QuasiIdFieldResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2QuasiIdFieldResponseArray{ GooglePrivacyDlpV2QuasiIdFieldResponseArgs{...} }
-type GooglePrivacyDlpV2QuasiIdFieldResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2QuasiIdFieldResponseArrayOutput() GooglePrivacyDlpV2QuasiIdFieldResponseArrayOutput
-	ToGooglePrivacyDlpV2QuasiIdFieldResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2QuasiIdFieldResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2QuasiIdFieldResponseArray []GooglePrivacyDlpV2QuasiIdFieldResponseInput
-
-func (GooglePrivacyDlpV2QuasiIdFieldResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2QuasiIdFieldResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2QuasiIdFieldResponseArray) ToGooglePrivacyDlpV2QuasiIdFieldResponseArrayOutput() GooglePrivacyDlpV2QuasiIdFieldResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2QuasiIdFieldResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2QuasiIdFieldResponseArray) ToGooglePrivacyDlpV2QuasiIdFieldResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2QuasiIdFieldResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2QuasiIdFieldResponseArrayOutput)
-}
-
 // A quasi-identifier column has a custom_tag, used to know which column in the data corresponds to which column in the statistical model.
 type GooglePrivacyDlpV2QuasiIdFieldResponseOutput struct{ *pulumi.OutputState }
 
@@ -22776,66 +15179,6 @@ type GooglePrivacyDlpV2QuasiIdResponse struct {
 	Inferred GoogleProtobufEmptyResponse `pulumi:"inferred"`
 	// A column can be tagged with a InfoType to use the relevant public dataset as a statistical model of population, if available. We currently support US ZIP codes, region codes, ages and genders. To programmatically obtain the list of supported InfoTypes, use ListInfoTypes with the supported_by=RISK_ANALYSIS filter.
 	InfoType GooglePrivacyDlpV2InfoTypeResponse `pulumi:"infoType"`
-}
-
-// GooglePrivacyDlpV2QuasiIdResponseInput is an input type that accepts GooglePrivacyDlpV2QuasiIdResponseArgs and GooglePrivacyDlpV2QuasiIdResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2QuasiIdResponseInput` via:
-//
-//          GooglePrivacyDlpV2QuasiIdResponseArgs{...}
-type GooglePrivacyDlpV2QuasiIdResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2QuasiIdResponseOutput() GooglePrivacyDlpV2QuasiIdResponseOutput
-	ToGooglePrivacyDlpV2QuasiIdResponseOutputWithContext(context.Context) GooglePrivacyDlpV2QuasiIdResponseOutput
-}
-
-// A column with a semantic tag attached.
-type GooglePrivacyDlpV2QuasiIdResponseArgs struct {
-	// A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table that contains statistical information on the possible values of this column (below).
-	CustomTag pulumi.StringInput `pulumi:"customTag"`
-	// Identifies the column.
-	Field GooglePrivacyDlpV2FieldIdResponseInput `pulumi:"field"`
-	// If no semantic tag is indicated, we infer the statistical model from the distribution of values in the input data
-	Inferred GoogleProtobufEmptyResponseInput `pulumi:"inferred"`
-	// A column can be tagged with a InfoType to use the relevant public dataset as a statistical model of population, if available. We currently support US ZIP codes, region codes, ages and genders. To programmatically obtain the list of supported InfoTypes, use ListInfoTypes with the supported_by=RISK_ANALYSIS filter.
-	InfoType GooglePrivacyDlpV2InfoTypeResponseInput `pulumi:"infoType"`
-}
-
-func (GooglePrivacyDlpV2QuasiIdResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2QuasiIdResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2QuasiIdResponseArgs) ToGooglePrivacyDlpV2QuasiIdResponseOutput() GooglePrivacyDlpV2QuasiIdResponseOutput {
-	return i.ToGooglePrivacyDlpV2QuasiIdResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2QuasiIdResponseArgs) ToGooglePrivacyDlpV2QuasiIdResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2QuasiIdResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2QuasiIdResponseOutput)
-}
-
-// GooglePrivacyDlpV2QuasiIdResponseArrayInput is an input type that accepts GooglePrivacyDlpV2QuasiIdResponseArray and GooglePrivacyDlpV2QuasiIdResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2QuasiIdResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2QuasiIdResponseArray{ GooglePrivacyDlpV2QuasiIdResponseArgs{...} }
-type GooglePrivacyDlpV2QuasiIdResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2QuasiIdResponseArrayOutput() GooglePrivacyDlpV2QuasiIdResponseArrayOutput
-	ToGooglePrivacyDlpV2QuasiIdResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2QuasiIdResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2QuasiIdResponseArray []GooglePrivacyDlpV2QuasiIdResponseInput
-
-func (GooglePrivacyDlpV2QuasiIdResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2QuasiIdResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2QuasiIdResponseArray) ToGooglePrivacyDlpV2QuasiIdResponseArrayOutput() GooglePrivacyDlpV2QuasiIdResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2QuasiIdResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2QuasiIdResponseArray) ToGooglePrivacyDlpV2QuasiIdResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2QuasiIdResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2QuasiIdResponseArrayOutput)
 }
 
 // A column with a semantic tag attached.
@@ -23008,62 +15351,6 @@ type GooglePrivacyDlpV2QuasiIdentifierFieldResponse struct {
 	CustomTag string `pulumi:"customTag"`
 	// Identifies the column.
 	Field GooglePrivacyDlpV2FieldIdResponse `pulumi:"field"`
-}
-
-// GooglePrivacyDlpV2QuasiIdentifierFieldResponseInput is an input type that accepts GooglePrivacyDlpV2QuasiIdentifierFieldResponseArgs and GooglePrivacyDlpV2QuasiIdentifierFieldResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2QuasiIdentifierFieldResponseInput` via:
-//
-//          GooglePrivacyDlpV2QuasiIdentifierFieldResponseArgs{...}
-type GooglePrivacyDlpV2QuasiIdentifierFieldResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2QuasiIdentifierFieldResponseOutput() GooglePrivacyDlpV2QuasiIdentifierFieldResponseOutput
-	ToGooglePrivacyDlpV2QuasiIdentifierFieldResponseOutputWithContext(context.Context) GooglePrivacyDlpV2QuasiIdentifierFieldResponseOutput
-}
-
-// A quasi-identifier column has a custom_tag, used to know which column in the data corresponds to which column in the statistical model.
-type GooglePrivacyDlpV2QuasiIdentifierFieldResponseArgs struct {
-	// A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table that contains statistical information on the possible values of this column (below).
-	CustomTag pulumi.StringInput `pulumi:"customTag"`
-	// Identifies the column.
-	Field GooglePrivacyDlpV2FieldIdResponseInput `pulumi:"field"`
-}
-
-func (GooglePrivacyDlpV2QuasiIdentifierFieldResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2QuasiIdentifierFieldResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2QuasiIdentifierFieldResponseArgs) ToGooglePrivacyDlpV2QuasiIdentifierFieldResponseOutput() GooglePrivacyDlpV2QuasiIdentifierFieldResponseOutput {
-	return i.ToGooglePrivacyDlpV2QuasiIdentifierFieldResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2QuasiIdentifierFieldResponseArgs) ToGooglePrivacyDlpV2QuasiIdentifierFieldResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2QuasiIdentifierFieldResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2QuasiIdentifierFieldResponseOutput)
-}
-
-// GooglePrivacyDlpV2QuasiIdentifierFieldResponseArrayInput is an input type that accepts GooglePrivacyDlpV2QuasiIdentifierFieldResponseArray and GooglePrivacyDlpV2QuasiIdentifierFieldResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2QuasiIdentifierFieldResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2QuasiIdentifierFieldResponseArray{ GooglePrivacyDlpV2QuasiIdentifierFieldResponseArgs{...} }
-type GooglePrivacyDlpV2QuasiIdentifierFieldResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2QuasiIdentifierFieldResponseArrayOutput() GooglePrivacyDlpV2QuasiIdentifierFieldResponseArrayOutput
-	ToGooglePrivacyDlpV2QuasiIdentifierFieldResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2QuasiIdentifierFieldResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2QuasiIdentifierFieldResponseArray []GooglePrivacyDlpV2QuasiIdentifierFieldResponseInput
-
-func (GooglePrivacyDlpV2QuasiIdentifierFieldResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2QuasiIdentifierFieldResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2QuasiIdentifierFieldResponseArray) ToGooglePrivacyDlpV2QuasiIdentifierFieldResponseArrayOutput() GooglePrivacyDlpV2QuasiIdentifierFieldResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2QuasiIdentifierFieldResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2QuasiIdentifierFieldResponseArray) ToGooglePrivacyDlpV2QuasiIdentifierFieldResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2QuasiIdentifierFieldResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2QuasiIdentifierFieldResponseArrayOutput)
 }
 
 // A quasi-identifier column has a custom_tag, used to know which column in the data corresponds to which column in the statistical model.
@@ -23259,35 +15546,6 @@ type GooglePrivacyDlpV2RecordConditionResponse struct {
 	Expressions GooglePrivacyDlpV2ExpressionsResponse `pulumi:"expressions"`
 }
 
-// GooglePrivacyDlpV2RecordConditionResponseInput is an input type that accepts GooglePrivacyDlpV2RecordConditionResponseArgs and GooglePrivacyDlpV2RecordConditionResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2RecordConditionResponseInput` via:
-//
-//          GooglePrivacyDlpV2RecordConditionResponseArgs{...}
-type GooglePrivacyDlpV2RecordConditionResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2RecordConditionResponseOutput() GooglePrivacyDlpV2RecordConditionResponseOutput
-	ToGooglePrivacyDlpV2RecordConditionResponseOutputWithContext(context.Context) GooglePrivacyDlpV2RecordConditionResponseOutput
-}
-
-// A condition for determining whether a transformation should be applied to a field.
-type GooglePrivacyDlpV2RecordConditionResponseArgs struct {
-	// An expression.
-	Expressions GooglePrivacyDlpV2ExpressionsResponseInput `pulumi:"expressions"`
-}
-
-func (GooglePrivacyDlpV2RecordConditionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2RecordConditionResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2RecordConditionResponseArgs) ToGooglePrivacyDlpV2RecordConditionResponseOutput() GooglePrivacyDlpV2RecordConditionResponseOutput {
-	return i.ToGooglePrivacyDlpV2RecordConditionResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2RecordConditionResponseArgs) ToGooglePrivacyDlpV2RecordConditionResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RecordConditionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2RecordConditionResponseOutput)
-}
-
 // A condition for determining whether a transformation should be applied to a field.
 type GooglePrivacyDlpV2RecordConditionResponseOutput struct{ *pulumi.OutputState }
 
@@ -23414,60 +15672,6 @@ func (o GooglePrivacyDlpV2RecordSuppressionArrayOutput) Index(i pulumi.IntInput)
 type GooglePrivacyDlpV2RecordSuppressionResponse struct {
 	// A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
 	Condition GooglePrivacyDlpV2RecordConditionResponse `pulumi:"condition"`
-}
-
-// GooglePrivacyDlpV2RecordSuppressionResponseInput is an input type that accepts GooglePrivacyDlpV2RecordSuppressionResponseArgs and GooglePrivacyDlpV2RecordSuppressionResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2RecordSuppressionResponseInput` via:
-//
-//          GooglePrivacyDlpV2RecordSuppressionResponseArgs{...}
-type GooglePrivacyDlpV2RecordSuppressionResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2RecordSuppressionResponseOutput() GooglePrivacyDlpV2RecordSuppressionResponseOutput
-	ToGooglePrivacyDlpV2RecordSuppressionResponseOutputWithContext(context.Context) GooglePrivacyDlpV2RecordSuppressionResponseOutput
-}
-
-// Configuration to suppress records whose suppression conditions evaluate to true.
-type GooglePrivacyDlpV2RecordSuppressionResponseArgs struct {
-	// A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
-	Condition GooglePrivacyDlpV2RecordConditionResponseInput `pulumi:"condition"`
-}
-
-func (GooglePrivacyDlpV2RecordSuppressionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2RecordSuppressionResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2RecordSuppressionResponseArgs) ToGooglePrivacyDlpV2RecordSuppressionResponseOutput() GooglePrivacyDlpV2RecordSuppressionResponseOutput {
-	return i.ToGooglePrivacyDlpV2RecordSuppressionResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2RecordSuppressionResponseArgs) ToGooglePrivacyDlpV2RecordSuppressionResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RecordSuppressionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2RecordSuppressionResponseOutput)
-}
-
-// GooglePrivacyDlpV2RecordSuppressionResponseArrayInput is an input type that accepts GooglePrivacyDlpV2RecordSuppressionResponseArray and GooglePrivacyDlpV2RecordSuppressionResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2RecordSuppressionResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2RecordSuppressionResponseArray{ GooglePrivacyDlpV2RecordSuppressionResponseArgs{...} }
-type GooglePrivacyDlpV2RecordSuppressionResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2RecordSuppressionResponseArrayOutput() GooglePrivacyDlpV2RecordSuppressionResponseArrayOutput
-	ToGooglePrivacyDlpV2RecordSuppressionResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2RecordSuppressionResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2RecordSuppressionResponseArray []GooglePrivacyDlpV2RecordSuppressionResponseInput
-
-func (GooglePrivacyDlpV2RecordSuppressionResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2RecordSuppressionResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2RecordSuppressionResponseArray) ToGooglePrivacyDlpV2RecordSuppressionResponseArrayOutput() GooglePrivacyDlpV2RecordSuppressionResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2RecordSuppressionResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2RecordSuppressionResponseArray) ToGooglePrivacyDlpV2RecordSuppressionResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RecordSuppressionResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2RecordSuppressionResponseArrayOutput)
 }
 
 // Configuration to suppress records whose suppression conditions evaluate to true.
@@ -23683,78 +15887,6 @@ type GooglePrivacyDlpV2RecordTransformationsResponse struct {
 	RecordSuppressions []GooglePrivacyDlpV2RecordSuppressionResponse `pulumi:"recordSuppressions"`
 }
 
-// GooglePrivacyDlpV2RecordTransformationsResponseInput is an input type that accepts GooglePrivacyDlpV2RecordTransformationsResponseArgs and GooglePrivacyDlpV2RecordTransformationsResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2RecordTransformationsResponseInput` via:
-//
-//          GooglePrivacyDlpV2RecordTransformationsResponseArgs{...}
-type GooglePrivacyDlpV2RecordTransformationsResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2RecordTransformationsResponseOutput() GooglePrivacyDlpV2RecordTransformationsResponseOutput
-	ToGooglePrivacyDlpV2RecordTransformationsResponseOutputWithContext(context.Context) GooglePrivacyDlpV2RecordTransformationsResponseOutput
-}
-
-// A type of transformation that is applied over structured data such as a table.
-type GooglePrivacyDlpV2RecordTransformationsResponseArgs struct {
-	// Transform the record by applying various field transformations.
-	FieldTransformations GooglePrivacyDlpV2FieldTransformationResponseArrayInput `pulumi:"fieldTransformations"`
-	// Configuration defining which records get suppressed entirely. Records that match any suppression rule are omitted from the output.
-	RecordSuppressions GooglePrivacyDlpV2RecordSuppressionResponseArrayInput `pulumi:"recordSuppressions"`
-}
-
-func (GooglePrivacyDlpV2RecordTransformationsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2RecordTransformationsResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2RecordTransformationsResponseArgs) ToGooglePrivacyDlpV2RecordTransformationsResponseOutput() GooglePrivacyDlpV2RecordTransformationsResponseOutput {
-	return i.ToGooglePrivacyDlpV2RecordTransformationsResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2RecordTransformationsResponseArgs) ToGooglePrivacyDlpV2RecordTransformationsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RecordTransformationsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2RecordTransformationsResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2RecordTransformationsResponseArgs) ToGooglePrivacyDlpV2RecordTransformationsResponsePtrOutput() GooglePrivacyDlpV2RecordTransformationsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2RecordTransformationsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2RecordTransformationsResponseArgs) ToGooglePrivacyDlpV2RecordTransformationsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RecordTransformationsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2RecordTransformationsResponseOutput).ToGooglePrivacyDlpV2RecordTransformationsResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2RecordTransformationsResponsePtrInput is an input type that accepts GooglePrivacyDlpV2RecordTransformationsResponseArgs, GooglePrivacyDlpV2RecordTransformationsResponsePtr and GooglePrivacyDlpV2RecordTransformationsResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2RecordTransformationsResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2RecordTransformationsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2RecordTransformationsResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2RecordTransformationsResponsePtrOutput() GooglePrivacyDlpV2RecordTransformationsResponsePtrOutput
-	ToGooglePrivacyDlpV2RecordTransformationsResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2RecordTransformationsResponsePtrOutput
-}
-
-type googlePrivacyDlpV2RecordTransformationsResponsePtrType GooglePrivacyDlpV2RecordTransformationsResponseArgs
-
-func GooglePrivacyDlpV2RecordTransformationsResponsePtr(v *GooglePrivacyDlpV2RecordTransformationsResponseArgs) GooglePrivacyDlpV2RecordTransformationsResponsePtrInput {
-	return (*googlePrivacyDlpV2RecordTransformationsResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2RecordTransformationsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2RecordTransformationsResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2RecordTransformationsResponsePtrType) ToGooglePrivacyDlpV2RecordTransformationsResponsePtrOutput() GooglePrivacyDlpV2RecordTransformationsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2RecordTransformationsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2RecordTransformationsResponsePtrType) ToGooglePrivacyDlpV2RecordTransformationsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RecordTransformationsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2RecordTransformationsResponsePtrOutput)
-}
-
 // A type of transformation that is applied over structured data such as a table.
 type GooglePrivacyDlpV2RecordTransformationsResponseOutput struct{ *pulumi.OutputState }
 
@@ -23770,16 +15902,6 @@ func (o GooglePrivacyDlpV2RecordTransformationsResponseOutput) ToGooglePrivacyDl
 	return o
 }
 
-func (o GooglePrivacyDlpV2RecordTransformationsResponseOutput) ToGooglePrivacyDlpV2RecordTransformationsResponsePtrOutput() GooglePrivacyDlpV2RecordTransformationsResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2RecordTransformationsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2RecordTransformationsResponseOutput) ToGooglePrivacyDlpV2RecordTransformationsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RecordTransformationsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2RecordTransformationsResponse) *GooglePrivacyDlpV2RecordTransformationsResponse {
-		return &v
-	}).(GooglePrivacyDlpV2RecordTransformationsResponsePtrOutput)
-}
-
 // Transform the record by applying various field transformations.
 func (o GooglePrivacyDlpV2RecordTransformationsResponseOutput) FieldTransformations() GooglePrivacyDlpV2FieldTransformationResponseArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2RecordTransformationsResponse) []GooglePrivacyDlpV2FieldTransformationResponse {
@@ -23790,50 +15912,6 @@ func (o GooglePrivacyDlpV2RecordTransformationsResponseOutput) FieldTransformati
 // Configuration defining which records get suppressed entirely. Records that match any suppression rule are omitted from the output.
 func (o GooglePrivacyDlpV2RecordTransformationsResponseOutput) RecordSuppressions() GooglePrivacyDlpV2RecordSuppressionResponseArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2RecordTransformationsResponse) []GooglePrivacyDlpV2RecordSuppressionResponse {
-		return v.RecordSuppressions
-	}).(GooglePrivacyDlpV2RecordSuppressionResponseArrayOutput)
-}
-
-type GooglePrivacyDlpV2RecordTransformationsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2RecordTransformationsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2RecordTransformationsResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2RecordTransformationsResponsePtrOutput) ToGooglePrivacyDlpV2RecordTransformationsResponsePtrOutput() GooglePrivacyDlpV2RecordTransformationsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2RecordTransformationsResponsePtrOutput) ToGooglePrivacyDlpV2RecordTransformationsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RecordTransformationsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2RecordTransformationsResponsePtrOutput) Elem() GooglePrivacyDlpV2RecordTransformationsResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2RecordTransformationsResponse) GooglePrivacyDlpV2RecordTransformationsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2RecordTransformationsResponse
-		return ret
-	}).(GooglePrivacyDlpV2RecordTransformationsResponseOutput)
-}
-
-// Transform the record by applying various field transformations.
-func (o GooglePrivacyDlpV2RecordTransformationsResponsePtrOutput) FieldTransformations() GooglePrivacyDlpV2FieldTransformationResponseArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2RecordTransformationsResponse) []GooglePrivacyDlpV2FieldTransformationResponse {
-		if v == nil {
-			return nil
-		}
-		return v.FieldTransformations
-	}).(GooglePrivacyDlpV2FieldTransformationResponseArrayOutput)
-}
-
-// Configuration defining which records get suppressed entirely. Records that match any suppression rule are omitted from the output.
-func (o GooglePrivacyDlpV2RecordTransformationsResponsePtrOutput) RecordSuppressions() GooglePrivacyDlpV2RecordSuppressionResponseArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2RecordTransformationsResponse) []GooglePrivacyDlpV2RecordSuppressionResponse {
-		if v == nil {
-			return nil
-		}
 		return v.RecordSuppressions
 	}).(GooglePrivacyDlpV2RecordSuppressionResponseArrayOutput)
 }
@@ -23961,33 +16039,6 @@ func (o GooglePrivacyDlpV2RedactConfigPtrOutput) Elem() GooglePrivacyDlpV2Redact
 
 // Redact a given value. For example, if used with an `InfoTypeTransformation` transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
 type GooglePrivacyDlpV2RedactConfigResponse struct {
-}
-
-// GooglePrivacyDlpV2RedactConfigResponseInput is an input type that accepts GooglePrivacyDlpV2RedactConfigResponseArgs and GooglePrivacyDlpV2RedactConfigResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2RedactConfigResponseInput` via:
-//
-//          GooglePrivacyDlpV2RedactConfigResponseArgs{...}
-type GooglePrivacyDlpV2RedactConfigResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2RedactConfigResponseOutput() GooglePrivacyDlpV2RedactConfigResponseOutput
-	ToGooglePrivacyDlpV2RedactConfigResponseOutputWithContext(context.Context) GooglePrivacyDlpV2RedactConfigResponseOutput
-}
-
-// Redact a given value. For example, if used with an `InfoTypeTransformation` transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
-type GooglePrivacyDlpV2RedactConfigResponseArgs struct {
-}
-
-func (GooglePrivacyDlpV2RedactConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2RedactConfigResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2RedactConfigResponseArgs) ToGooglePrivacyDlpV2RedactConfigResponseOutput() GooglePrivacyDlpV2RedactConfigResponseOutput {
-	return i.ToGooglePrivacyDlpV2RedactConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2RedactConfigResponseArgs) ToGooglePrivacyDlpV2RedactConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RedactConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2RedactConfigResponseOutput)
 }
 
 // Redact a given value. For example, if used with an `InfoTypeTransformation` transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
@@ -24172,78 +16223,6 @@ type GooglePrivacyDlpV2RegexResponse struct {
 	Pattern string `pulumi:"pattern"`
 }
 
-// GooglePrivacyDlpV2RegexResponseInput is an input type that accepts GooglePrivacyDlpV2RegexResponseArgs and GooglePrivacyDlpV2RegexResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2RegexResponseInput` via:
-//
-//          GooglePrivacyDlpV2RegexResponseArgs{...}
-type GooglePrivacyDlpV2RegexResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2RegexResponseOutput() GooglePrivacyDlpV2RegexResponseOutput
-	ToGooglePrivacyDlpV2RegexResponseOutputWithContext(context.Context) GooglePrivacyDlpV2RegexResponseOutput
-}
-
-// Message defining a custom regular expression.
-type GooglePrivacyDlpV2RegexResponseArgs struct {
-	// The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
-	GroupIndexes pulumi.IntArrayInput `pulumi:"groupIndexes"`
-	// Pattern defining the regular expression. Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
-	Pattern pulumi.StringInput `pulumi:"pattern"`
-}
-
-func (GooglePrivacyDlpV2RegexResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2RegexResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2RegexResponseArgs) ToGooglePrivacyDlpV2RegexResponseOutput() GooglePrivacyDlpV2RegexResponseOutput {
-	return i.ToGooglePrivacyDlpV2RegexResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2RegexResponseArgs) ToGooglePrivacyDlpV2RegexResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RegexResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2RegexResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2RegexResponseArgs) ToGooglePrivacyDlpV2RegexResponsePtrOutput() GooglePrivacyDlpV2RegexResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2RegexResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2RegexResponseArgs) ToGooglePrivacyDlpV2RegexResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RegexResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2RegexResponseOutput).ToGooglePrivacyDlpV2RegexResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2RegexResponsePtrInput is an input type that accepts GooglePrivacyDlpV2RegexResponseArgs, GooglePrivacyDlpV2RegexResponsePtr and GooglePrivacyDlpV2RegexResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2RegexResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2RegexResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2RegexResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2RegexResponsePtrOutput() GooglePrivacyDlpV2RegexResponsePtrOutput
-	ToGooglePrivacyDlpV2RegexResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2RegexResponsePtrOutput
-}
-
-type googlePrivacyDlpV2RegexResponsePtrType GooglePrivacyDlpV2RegexResponseArgs
-
-func GooglePrivacyDlpV2RegexResponsePtr(v *GooglePrivacyDlpV2RegexResponseArgs) GooglePrivacyDlpV2RegexResponsePtrInput {
-	return (*googlePrivacyDlpV2RegexResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2RegexResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2RegexResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2RegexResponsePtrType) ToGooglePrivacyDlpV2RegexResponsePtrOutput() GooglePrivacyDlpV2RegexResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2RegexResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2RegexResponsePtrType) ToGooglePrivacyDlpV2RegexResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RegexResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2RegexResponsePtrOutput)
-}
-
 // Message defining a custom regular expression.
 type GooglePrivacyDlpV2RegexResponseOutput struct{ *pulumi.OutputState }
 
@@ -24259,16 +16238,6 @@ func (o GooglePrivacyDlpV2RegexResponseOutput) ToGooglePrivacyDlpV2RegexResponse
 	return o
 }
 
-func (o GooglePrivacyDlpV2RegexResponseOutput) ToGooglePrivacyDlpV2RegexResponsePtrOutput() GooglePrivacyDlpV2RegexResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2RegexResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2RegexResponseOutput) ToGooglePrivacyDlpV2RegexResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RegexResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2RegexResponse) *GooglePrivacyDlpV2RegexResponse {
-		return &v
-	}).(GooglePrivacyDlpV2RegexResponsePtrOutput)
-}
-
 // The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
 func (o GooglePrivacyDlpV2RegexResponseOutput) GroupIndexes() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2RegexResponse) []int { return v.GroupIndexes }).(pulumi.IntArrayOutput)
@@ -24277,50 +16246,6 @@ func (o GooglePrivacyDlpV2RegexResponseOutput) GroupIndexes() pulumi.IntArrayOut
 // Pattern defining the regular expression. Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
 func (o GooglePrivacyDlpV2RegexResponseOutput) Pattern() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2RegexResponse) string { return v.Pattern }).(pulumi.StringOutput)
-}
-
-type GooglePrivacyDlpV2RegexResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2RegexResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2RegexResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2RegexResponsePtrOutput) ToGooglePrivacyDlpV2RegexResponsePtrOutput() GooglePrivacyDlpV2RegexResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2RegexResponsePtrOutput) ToGooglePrivacyDlpV2RegexResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RegexResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2RegexResponsePtrOutput) Elem() GooglePrivacyDlpV2RegexResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2RegexResponse) GooglePrivacyDlpV2RegexResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2RegexResponse
-		return ret
-	}).(GooglePrivacyDlpV2RegexResponseOutput)
-}
-
-// The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
-func (o GooglePrivacyDlpV2RegexResponsePtrOutput) GroupIndexes() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2RegexResponse) []int {
-		if v == nil {
-			return nil
-		}
-		return v.GroupIndexes
-	}).(pulumi.IntArrayOutput)
-}
-
-// Pattern defining the regular expression. Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
-func (o GooglePrivacyDlpV2RegexResponsePtrOutput) Pattern() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2RegexResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Pattern
-	}).(pulumi.StringPtrOutput)
 }
 
 // Replace each input value with a value randomly selected from the dictionary.
@@ -24467,35 +16392,6 @@ func (o GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput) WordList() GooglePri
 type GooglePrivacyDlpV2ReplaceDictionaryConfigResponse struct {
 	// A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
 	WordList GooglePrivacyDlpV2WordListResponse `pulumi:"wordList"`
-}
-
-// GooglePrivacyDlpV2ReplaceDictionaryConfigResponseInput is an input type that accepts GooglePrivacyDlpV2ReplaceDictionaryConfigResponseArgs and GooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2ReplaceDictionaryConfigResponseInput` via:
-//
-//          GooglePrivacyDlpV2ReplaceDictionaryConfigResponseArgs{...}
-type GooglePrivacyDlpV2ReplaceDictionaryConfigResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput() GooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput
-	ToGooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutputWithContext(context.Context) GooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput
-}
-
-// Replace each input value with a value randomly selected from the dictionary.
-type GooglePrivacyDlpV2ReplaceDictionaryConfigResponseArgs struct {
-	// A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
-	WordList GooglePrivacyDlpV2WordListResponseInput `pulumi:"wordList"`
-}
-
-func (GooglePrivacyDlpV2ReplaceDictionaryConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2ReplaceDictionaryConfigResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2ReplaceDictionaryConfigResponseArgs) ToGooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput() GooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput {
-	return i.ToGooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2ReplaceDictionaryConfigResponseArgs) ToGooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput)
 }
 
 // Replace each input value with a value randomly selected from the dictionary.
@@ -24666,35 +16562,6 @@ type GooglePrivacyDlpV2ReplaceValueConfigResponse struct {
 	NewValue GooglePrivacyDlpV2ValueResponse `pulumi:"newValue"`
 }
 
-// GooglePrivacyDlpV2ReplaceValueConfigResponseInput is an input type that accepts GooglePrivacyDlpV2ReplaceValueConfigResponseArgs and GooglePrivacyDlpV2ReplaceValueConfigResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2ReplaceValueConfigResponseInput` via:
-//
-//          GooglePrivacyDlpV2ReplaceValueConfigResponseArgs{...}
-type GooglePrivacyDlpV2ReplaceValueConfigResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2ReplaceValueConfigResponseOutput() GooglePrivacyDlpV2ReplaceValueConfigResponseOutput
-	ToGooglePrivacyDlpV2ReplaceValueConfigResponseOutputWithContext(context.Context) GooglePrivacyDlpV2ReplaceValueConfigResponseOutput
-}
-
-// Replace each input value with a given `Value`.
-type GooglePrivacyDlpV2ReplaceValueConfigResponseArgs struct {
-	// Value to replace it with.
-	NewValue GooglePrivacyDlpV2ValueResponseInput `pulumi:"newValue"`
-}
-
-func (GooglePrivacyDlpV2ReplaceValueConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2ReplaceValueConfigResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2ReplaceValueConfigResponseArgs) ToGooglePrivacyDlpV2ReplaceValueConfigResponseOutput() GooglePrivacyDlpV2ReplaceValueConfigResponseOutput {
-	return i.ToGooglePrivacyDlpV2ReplaceValueConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2ReplaceValueConfigResponseArgs) ToGooglePrivacyDlpV2ReplaceValueConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ReplaceValueConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ReplaceValueConfigResponseOutput)
-}
-
 // Replace each input value with a given `Value`.
 type GooglePrivacyDlpV2ReplaceValueConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -24842,33 +16709,6 @@ func (o GooglePrivacyDlpV2ReplaceWithInfoTypeConfigPtrOutput) Elem() GooglePriva
 type GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponse struct {
 }
 
-// GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseInput is an input type that accepts GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseArgs and GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseInput` via:
-//
-//          GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseArgs{...}
-type GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseOutput() GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseOutput
-	ToGooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseOutputWithContext(context.Context) GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseOutput
-}
-
-// Replace each matching finding with the name of the info_type.
-type GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseArgs struct {
-}
-
-func (GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseArgs) ToGooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseOutput() GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseOutput {
-	return i.ToGooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseArgs) ToGooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseOutput)
-}
-
 // Replace each matching finding with the name of the info_type.
 type GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -24892,78 +16732,6 @@ type GooglePrivacyDlpV2RequestedOptionsResponse struct {
 	SnapshotInspectTemplate GooglePrivacyDlpV2InspectTemplateResponse `pulumi:"snapshotInspectTemplate"`
 }
 
-// GooglePrivacyDlpV2RequestedOptionsResponseInput is an input type that accepts GooglePrivacyDlpV2RequestedOptionsResponseArgs and GooglePrivacyDlpV2RequestedOptionsResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2RequestedOptionsResponseInput` via:
-//
-//          GooglePrivacyDlpV2RequestedOptionsResponseArgs{...}
-type GooglePrivacyDlpV2RequestedOptionsResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2RequestedOptionsResponseOutput() GooglePrivacyDlpV2RequestedOptionsResponseOutput
-	ToGooglePrivacyDlpV2RequestedOptionsResponseOutputWithContext(context.Context) GooglePrivacyDlpV2RequestedOptionsResponseOutput
-}
-
-// Snapshot of the inspection configuration.
-type GooglePrivacyDlpV2RequestedOptionsResponseArgs struct {
-	// Inspect config.
-	JobConfig GooglePrivacyDlpV2InspectJobConfigResponseInput `pulumi:"jobConfig"`
-	// If run with an InspectTemplate, a snapshot of its state at the time of this run.
-	SnapshotInspectTemplate GooglePrivacyDlpV2InspectTemplateResponseInput `pulumi:"snapshotInspectTemplate"`
-}
-
-func (GooglePrivacyDlpV2RequestedOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2RequestedOptionsResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2RequestedOptionsResponseArgs) ToGooglePrivacyDlpV2RequestedOptionsResponseOutput() GooglePrivacyDlpV2RequestedOptionsResponseOutput {
-	return i.ToGooglePrivacyDlpV2RequestedOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2RequestedOptionsResponseArgs) ToGooglePrivacyDlpV2RequestedOptionsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RequestedOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2RequestedOptionsResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2RequestedOptionsResponseArgs) ToGooglePrivacyDlpV2RequestedOptionsResponsePtrOutput() GooglePrivacyDlpV2RequestedOptionsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2RequestedOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2RequestedOptionsResponseArgs) ToGooglePrivacyDlpV2RequestedOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RequestedOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2RequestedOptionsResponseOutput).ToGooglePrivacyDlpV2RequestedOptionsResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2RequestedOptionsResponsePtrInput is an input type that accepts GooglePrivacyDlpV2RequestedOptionsResponseArgs, GooglePrivacyDlpV2RequestedOptionsResponsePtr and GooglePrivacyDlpV2RequestedOptionsResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2RequestedOptionsResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2RequestedOptionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2RequestedOptionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2RequestedOptionsResponsePtrOutput() GooglePrivacyDlpV2RequestedOptionsResponsePtrOutput
-	ToGooglePrivacyDlpV2RequestedOptionsResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2RequestedOptionsResponsePtrOutput
-}
-
-type googlePrivacyDlpV2RequestedOptionsResponsePtrType GooglePrivacyDlpV2RequestedOptionsResponseArgs
-
-func GooglePrivacyDlpV2RequestedOptionsResponsePtr(v *GooglePrivacyDlpV2RequestedOptionsResponseArgs) GooglePrivacyDlpV2RequestedOptionsResponsePtrInput {
-	return (*googlePrivacyDlpV2RequestedOptionsResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2RequestedOptionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2RequestedOptionsResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2RequestedOptionsResponsePtrType) ToGooglePrivacyDlpV2RequestedOptionsResponsePtrOutput() GooglePrivacyDlpV2RequestedOptionsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2RequestedOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2RequestedOptionsResponsePtrType) ToGooglePrivacyDlpV2RequestedOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RequestedOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2RequestedOptionsResponsePtrOutput)
-}
-
 // Snapshot of the inspection configuration.
 type GooglePrivacyDlpV2RequestedOptionsResponseOutput struct{ *pulumi.OutputState }
 
@@ -24977,16 +16745,6 @@ func (o GooglePrivacyDlpV2RequestedOptionsResponseOutput) ToGooglePrivacyDlpV2Re
 
 func (o GooglePrivacyDlpV2RequestedOptionsResponseOutput) ToGooglePrivacyDlpV2RequestedOptionsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RequestedOptionsResponseOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2RequestedOptionsResponseOutput) ToGooglePrivacyDlpV2RequestedOptionsResponsePtrOutput() GooglePrivacyDlpV2RequestedOptionsResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2RequestedOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2RequestedOptionsResponseOutput) ToGooglePrivacyDlpV2RequestedOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RequestedOptionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2RequestedOptionsResponse) *GooglePrivacyDlpV2RequestedOptionsResponse {
-		return &v
-	}).(GooglePrivacyDlpV2RequestedOptionsResponsePtrOutput)
 }
 
 // Inspect config.
@@ -25003,124 +16761,10 @@ func (o GooglePrivacyDlpV2RequestedOptionsResponseOutput) SnapshotInspectTemplat
 	}).(GooglePrivacyDlpV2InspectTemplateResponseOutput)
 }
 
-type GooglePrivacyDlpV2RequestedOptionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2RequestedOptionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2RequestedOptionsResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2RequestedOptionsResponsePtrOutput) ToGooglePrivacyDlpV2RequestedOptionsResponsePtrOutput() GooglePrivacyDlpV2RequestedOptionsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2RequestedOptionsResponsePtrOutput) ToGooglePrivacyDlpV2RequestedOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RequestedOptionsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2RequestedOptionsResponsePtrOutput) Elem() GooglePrivacyDlpV2RequestedOptionsResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2RequestedOptionsResponse) GooglePrivacyDlpV2RequestedOptionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2RequestedOptionsResponse
-		return ret
-	}).(GooglePrivacyDlpV2RequestedOptionsResponseOutput)
-}
-
-// Inspect config.
-func (o GooglePrivacyDlpV2RequestedOptionsResponsePtrOutput) JobConfig() GooglePrivacyDlpV2InspectJobConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2RequestedOptionsResponse) *GooglePrivacyDlpV2InspectJobConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.JobConfig
-	}).(GooglePrivacyDlpV2InspectJobConfigResponsePtrOutput)
-}
-
-// If run with an InspectTemplate, a snapshot of its state at the time of this run.
-func (o GooglePrivacyDlpV2RequestedOptionsResponsePtrOutput) SnapshotInspectTemplate() GooglePrivacyDlpV2InspectTemplateResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2RequestedOptionsResponse) *GooglePrivacyDlpV2InspectTemplateResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.SnapshotInspectTemplate
-	}).(GooglePrivacyDlpV2InspectTemplateResponsePtrOutput)
-}
-
 // Risk analysis options.
 type GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse struct {
 	// The job config for the risk job.
 	JobConfig GooglePrivacyDlpV2RiskAnalysisJobConfigResponse `pulumi:"jobConfig"`
-}
-
-// GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseInput is an input type that accepts GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseArgs and GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseInput` via:
-//
-//          GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseArgs{...}
-type GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseOutput() GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseOutput
-	ToGooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseOutputWithContext(context.Context) GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseOutput
-}
-
-// Risk analysis options.
-type GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseArgs struct {
-	// The job config for the risk job.
-	JobConfig GooglePrivacyDlpV2RiskAnalysisJobConfigResponseInput `pulumi:"jobConfig"`
-}
-
-func (GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseArgs) ToGooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseOutput() GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseOutput {
-	return i.ToGooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseArgs) ToGooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseArgs) ToGooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput() GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseArgs) ToGooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseOutput).ToGooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrInput is an input type that accepts GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseArgs, GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtr and GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput() GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput
-	ToGooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput
-}
-
-type googlePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrType GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseArgs
-
-func GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtr(v *GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseArgs) GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrInput {
-	return (*googlePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrType) ToGooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput() GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrType) ToGooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput)
 }
 
 // Risk analysis options.
@@ -25138,55 +16782,11 @@ func (o GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseOutput) ToGooglePr
 	return o
 }
 
-func (o GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseOutput) ToGooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput() GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseOutput) ToGooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse) *GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse {
-		return &v
-	}).(GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput)
-}
-
 // The job config for the risk job.
 func (o GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseOutput) JobConfig() GooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse) GooglePrivacyDlpV2RiskAnalysisJobConfigResponse {
 		return v.JobConfig
 	}).(GooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutput)
-}
-
-type GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput) ToGooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput() GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput) ToGooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput) Elem() GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse) GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse
-		return ret
-	}).(GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseOutput)
-}
-
-// The job config for the risk job.
-func (o GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput) JobConfig() GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse) *GooglePrivacyDlpV2RiskAnalysisJobConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.JobConfig
-	}).(GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput)
 }
 
 // All result fields mentioned below are updated while the job is processing.
@@ -25199,82 +16799,6 @@ type GooglePrivacyDlpV2ResultResponse struct {
 	ProcessedBytes string `pulumi:"processedBytes"`
 	// Estimate of the number of bytes to process.
 	TotalEstimatedBytes string `pulumi:"totalEstimatedBytes"`
-}
-
-// GooglePrivacyDlpV2ResultResponseInput is an input type that accepts GooglePrivacyDlpV2ResultResponseArgs and GooglePrivacyDlpV2ResultResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2ResultResponseInput` via:
-//
-//          GooglePrivacyDlpV2ResultResponseArgs{...}
-type GooglePrivacyDlpV2ResultResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2ResultResponseOutput() GooglePrivacyDlpV2ResultResponseOutput
-	ToGooglePrivacyDlpV2ResultResponseOutputWithContext(context.Context) GooglePrivacyDlpV2ResultResponseOutput
-}
-
-// All result fields mentioned below are updated while the job is processing.
-type GooglePrivacyDlpV2ResultResponseArgs struct {
-	// Statistics related to the processing of hybrid inspect.
-	HybridStats GooglePrivacyDlpV2HybridInspectStatisticsResponseInput `pulumi:"hybridStats"`
-	// Statistics of how many instances of each info type were found during inspect job.
-	InfoTypeStats GooglePrivacyDlpV2InfoTypeStatsResponseArrayInput `pulumi:"infoTypeStats"`
-	// Total size in bytes that were processed.
-	ProcessedBytes pulumi.StringInput `pulumi:"processedBytes"`
-	// Estimate of the number of bytes to process.
-	TotalEstimatedBytes pulumi.StringInput `pulumi:"totalEstimatedBytes"`
-}
-
-func (GooglePrivacyDlpV2ResultResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2ResultResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2ResultResponseArgs) ToGooglePrivacyDlpV2ResultResponseOutput() GooglePrivacyDlpV2ResultResponseOutput {
-	return i.ToGooglePrivacyDlpV2ResultResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2ResultResponseArgs) ToGooglePrivacyDlpV2ResultResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ResultResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ResultResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2ResultResponseArgs) ToGooglePrivacyDlpV2ResultResponsePtrOutput() GooglePrivacyDlpV2ResultResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2ResultResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2ResultResponseArgs) ToGooglePrivacyDlpV2ResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ResultResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ResultResponseOutput).ToGooglePrivacyDlpV2ResultResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2ResultResponsePtrInput is an input type that accepts GooglePrivacyDlpV2ResultResponseArgs, GooglePrivacyDlpV2ResultResponsePtr and GooglePrivacyDlpV2ResultResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2ResultResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2ResultResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2ResultResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2ResultResponsePtrOutput() GooglePrivacyDlpV2ResultResponsePtrOutput
-	ToGooglePrivacyDlpV2ResultResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2ResultResponsePtrOutput
-}
-
-type googlePrivacyDlpV2ResultResponsePtrType GooglePrivacyDlpV2ResultResponseArgs
-
-func GooglePrivacyDlpV2ResultResponsePtr(v *GooglePrivacyDlpV2ResultResponseArgs) GooglePrivacyDlpV2ResultResponsePtrInput {
-	return (*googlePrivacyDlpV2ResultResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2ResultResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2ResultResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2ResultResponsePtrType) ToGooglePrivacyDlpV2ResultResponsePtrOutput() GooglePrivacyDlpV2ResultResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2ResultResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2ResultResponsePtrType) ToGooglePrivacyDlpV2ResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ResultResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ResultResponsePtrOutput)
 }
 
 // All result fields mentioned below are updated while the job is processing.
@@ -25290,16 +16814,6 @@ func (o GooglePrivacyDlpV2ResultResponseOutput) ToGooglePrivacyDlpV2ResultRespon
 
 func (o GooglePrivacyDlpV2ResultResponseOutput) ToGooglePrivacyDlpV2ResultResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ResultResponseOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2ResultResponseOutput) ToGooglePrivacyDlpV2ResultResponsePtrOutput() GooglePrivacyDlpV2ResultResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2ResultResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2ResultResponseOutput) ToGooglePrivacyDlpV2ResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ResultResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2ResultResponse) *GooglePrivacyDlpV2ResultResponse {
-		return &v
-	}).(GooglePrivacyDlpV2ResultResponsePtrOutput)
 }
 
 // Statistics related to the processing of hybrid inspect.
@@ -25324,70 +16838,6 @@ func (o GooglePrivacyDlpV2ResultResponseOutput) ProcessedBytes() pulumi.StringOu
 // Estimate of the number of bytes to process.
 func (o GooglePrivacyDlpV2ResultResponseOutput) TotalEstimatedBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2ResultResponse) string { return v.TotalEstimatedBytes }).(pulumi.StringOutput)
-}
-
-type GooglePrivacyDlpV2ResultResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2ResultResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2ResultResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2ResultResponsePtrOutput) ToGooglePrivacyDlpV2ResultResponsePtrOutput() GooglePrivacyDlpV2ResultResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2ResultResponsePtrOutput) ToGooglePrivacyDlpV2ResultResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ResultResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2ResultResponsePtrOutput) Elem() GooglePrivacyDlpV2ResultResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2ResultResponse) GooglePrivacyDlpV2ResultResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2ResultResponse
-		return ret
-	}).(GooglePrivacyDlpV2ResultResponseOutput)
-}
-
-// Statistics related to the processing of hybrid inspect.
-func (o GooglePrivacyDlpV2ResultResponsePtrOutput) HybridStats() GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2ResultResponse) *GooglePrivacyDlpV2HybridInspectStatisticsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.HybridStats
-	}).(GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput)
-}
-
-// Statistics of how many instances of each info type were found during inspect job.
-func (o GooglePrivacyDlpV2ResultResponsePtrOutput) InfoTypeStats() GooglePrivacyDlpV2InfoTypeStatsResponseArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2ResultResponse) []GooglePrivacyDlpV2InfoTypeStatsResponse {
-		if v == nil {
-			return nil
-		}
-		return v.InfoTypeStats
-	}).(GooglePrivacyDlpV2InfoTypeStatsResponseArrayOutput)
-}
-
-// Total size in bytes that were processed.
-func (o GooglePrivacyDlpV2ResultResponsePtrOutput) ProcessedBytes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2ResultResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ProcessedBytes
-	}).(pulumi.StringPtrOutput)
-}
-
-// Estimate of the number of bytes to process.
-func (o GooglePrivacyDlpV2ResultResponsePtrOutput) TotalEstimatedBytes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2ResultResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TotalEstimatedBytes
-	}).(pulumi.StringPtrOutput)
 }
 
 // Configuration for a risk analysis job. See https://cloud.google.com/dlp/docs/concepts-risk-analysis to learn more.
@@ -25580,80 +17030,6 @@ type GooglePrivacyDlpV2RiskAnalysisJobConfigResponse struct {
 	SourceTable GooglePrivacyDlpV2BigQueryTableResponse `pulumi:"sourceTable"`
 }
 
-// GooglePrivacyDlpV2RiskAnalysisJobConfigResponseInput is an input type that accepts GooglePrivacyDlpV2RiskAnalysisJobConfigResponseArgs and GooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2RiskAnalysisJobConfigResponseInput` via:
-//
-//          GooglePrivacyDlpV2RiskAnalysisJobConfigResponseArgs{...}
-type GooglePrivacyDlpV2RiskAnalysisJobConfigResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutput() GooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutput
-	ToGooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutputWithContext(context.Context) GooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutput
-}
-
-// Configuration for a risk analysis job. See https://cloud.google.com/dlp/docs/concepts-risk-analysis to learn more.
-type GooglePrivacyDlpV2RiskAnalysisJobConfigResponseArgs struct {
-	// Actions to execute at the completion of the job. Are executed in the order provided.
-	Actions GooglePrivacyDlpV2ActionResponseArrayInput `pulumi:"actions"`
-	// Privacy metric to compute.
-	PrivacyMetric GooglePrivacyDlpV2PrivacyMetricResponseInput `pulumi:"privacyMetric"`
-	// Input dataset to compute metrics over.
-	SourceTable GooglePrivacyDlpV2BigQueryTableResponseInput `pulumi:"sourceTable"`
-}
-
-func (GooglePrivacyDlpV2RiskAnalysisJobConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2RiskAnalysisJobConfigResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2RiskAnalysisJobConfigResponseArgs) ToGooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutput() GooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutput {
-	return i.ToGooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2RiskAnalysisJobConfigResponseArgs) ToGooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2RiskAnalysisJobConfigResponseArgs) ToGooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput() GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2RiskAnalysisJobConfigResponseArgs) ToGooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutput).ToGooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrInput is an input type that accepts GooglePrivacyDlpV2RiskAnalysisJobConfigResponseArgs, GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtr and GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2RiskAnalysisJobConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput() GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput
-	ToGooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput
-}
-
-type googlePrivacyDlpV2RiskAnalysisJobConfigResponsePtrType GooglePrivacyDlpV2RiskAnalysisJobConfigResponseArgs
-
-func GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtr(v *GooglePrivacyDlpV2RiskAnalysisJobConfigResponseArgs) GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrInput {
-	return (*googlePrivacyDlpV2RiskAnalysisJobConfigResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2RiskAnalysisJobConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2RiskAnalysisJobConfigResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2RiskAnalysisJobConfigResponsePtrType) ToGooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput() GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2RiskAnalysisJobConfigResponsePtrType) ToGooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput)
-}
-
 // Configuration for a risk analysis job. See https://cloud.google.com/dlp/docs/concepts-risk-analysis to learn more.
 type GooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -25667,16 +17043,6 @@ func (o GooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutput) ToGooglePrivacyDl
 
 func (o GooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutput) ToGooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutput) ToGooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput() GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutput) ToGooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2RiskAnalysisJobConfigResponse) *GooglePrivacyDlpV2RiskAnalysisJobConfigResponse {
-		return &v
-	}).(GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput)
 }
 
 // Actions to execute at the completion of the job. Are executed in the order provided.
@@ -25698,60 +17064,6 @@ func (o GooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutput) SourceTable() Goo
 	return o.ApplyT(func(v GooglePrivacyDlpV2RiskAnalysisJobConfigResponse) GooglePrivacyDlpV2BigQueryTableResponse {
 		return v.SourceTable
 	}).(GooglePrivacyDlpV2BigQueryTableResponseOutput)
-}
-
-type GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2RiskAnalysisJobConfigResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput) ToGooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput() GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput) ToGooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput) Elem() GooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2RiskAnalysisJobConfigResponse) GooglePrivacyDlpV2RiskAnalysisJobConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2RiskAnalysisJobConfigResponse
-		return ret
-	}).(GooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutput)
-}
-
-// Actions to execute at the completion of the job. Are executed in the order provided.
-func (o GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput) Actions() GooglePrivacyDlpV2ActionResponseArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2RiskAnalysisJobConfigResponse) []GooglePrivacyDlpV2ActionResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Actions
-	}).(GooglePrivacyDlpV2ActionResponseArrayOutput)
-}
-
-// Privacy metric to compute.
-func (o GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput) PrivacyMetric() GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2RiskAnalysisJobConfigResponse) *GooglePrivacyDlpV2PrivacyMetricResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.PrivacyMetric
-	}).(GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput)
-}
-
-// Input dataset to compute metrics over.
-func (o GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput) SourceTable() GooglePrivacyDlpV2BigQueryTableResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2RiskAnalysisJobConfigResponse) *GooglePrivacyDlpV2BigQueryTableResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.SourceTable
-	}).(GooglePrivacyDlpV2BigQueryTableResponsePtrOutput)
 }
 
 // If set, the detailed findings will be persisted to the specified OutputStorageConfig. Only a single instance of this action can be specified. Compatible with: Inspect, Risk
@@ -25898,35 +17210,6 @@ func (o GooglePrivacyDlpV2SaveFindingsPtrOutput) OutputConfig() GooglePrivacyDlp
 type GooglePrivacyDlpV2SaveFindingsResponse struct {
 	// Location to store findings outside of DLP.
 	OutputConfig GooglePrivacyDlpV2OutputStorageConfigResponse `pulumi:"outputConfig"`
-}
-
-// GooglePrivacyDlpV2SaveFindingsResponseInput is an input type that accepts GooglePrivacyDlpV2SaveFindingsResponseArgs and GooglePrivacyDlpV2SaveFindingsResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2SaveFindingsResponseInput` via:
-//
-//          GooglePrivacyDlpV2SaveFindingsResponseArgs{...}
-type GooglePrivacyDlpV2SaveFindingsResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2SaveFindingsResponseOutput() GooglePrivacyDlpV2SaveFindingsResponseOutput
-	ToGooglePrivacyDlpV2SaveFindingsResponseOutputWithContext(context.Context) GooglePrivacyDlpV2SaveFindingsResponseOutput
-}
-
-// If set, the detailed findings will be persisted to the specified OutputStorageConfig. Only a single instance of this action can be specified. Compatible with: Inspect, Risk
-type GooglePrivacyDlpV2SaveFindingsResponseArgs struct {
-	// Location to store findings outside of DLP.
-	OutputConfig GooglePrivacyDlpV2OutputStorageConfigResponseInput `pulumi:"outputConfig"`
-}
-
-func (GooglePrivacyDlpV2SaveFindingsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2SaveFindingsResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2SaveFindingsResponseArgs) ToGooglePrivacyDlpV2SaveFindingsResponseOutput() GooglePrivacyDlpV2SaveFindingsResponseOutput {
-	return i.ToGooglePrivacyDlpV2SaveFindingsResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2SaveFindingsResponseArgs) ToGooglePrivacyDlpV2SaveFindingsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2SaveFindingsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2SaveFindingsResponseOutput)
 }
 
 // If set, the detailed findings will be persisted to the specified OutputStorageConfig. Only a single instance of this action can be specified. Compatible with: Inspect, Risk
@@ -26097,35 +17380,6 @@ type GooglePrivacyDlpV2ScheduleResponse struct {
 	RecurrencePeriodDuration string `pulumi:"recurrencePeriodDuration"`
 }
 
-// GooglePrivacyDlpV2ScheduleResponseInput is an input type that accepts GooglePrivacyDlpV2ScheduleResponseArgs and GooglePrivacyDlpV2ScheduleResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2ScheduleResponseInput` via:
-//
-//          GooglePrivacyDlpV2ScheduleResponseArgs{...}
-type GooglePrivacyDlpV2ScheduleResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2ScheduleResponseOutput() GooglePrivacyDlpV2ScheduleResponseOutput
-	ToGooglePrivacyDlpV2ScheduleResponseOutputWithContext(context.Context) GooglePrivacyDlpV2ScheduleResponseOutput
-}
-
-// Schedule for inspect job triggers.
-type GooglePrivacyDlpV2ScheduleResponseArgs struct {
-	// With this option a job is started a regular periodic basis. For example: every day (86400 seconds). A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs. This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
-	RecurrencePeriodDuration pulumi.StringInput `pulumi:"recurrencePeriodDuration"`
-}
-
-func (GooglePrivacyDlpV2ScheduleResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2ScheduleResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2ScheduleResponseArgs) ToGooglePrivacyDlpV2ScheduleResponseOutput() GooglePrivacyDlpV2ScheduleResponseOutput {
-	return i.ToGooglePrivacyDlpV2ScheduleResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2ScheduleResponseArgs) ToGooglePrivacyDlpV2ScheduleResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ScheduleResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ScheduleResponseOutput)
-}
-
 // Schedule for inspect job triggers.
 type GooglePrivacyDlpV2ScheduleResponseOutput struct{ *pulumi.OutputState }
 
@@ -26272,64 +17526,6 @@ type GooglePrivacyDlpV2StatisticalTableResponse struct {
 	RelativeFrequency GooglePrivacyDlpV2FieldIdResponse `pulumi:"relativeFrequency"`
 	// Auxiliary table location.
 	Table GooglePrivacyDlpV2BigQueryTableResponse `pulumi:"table"`
-}
-
-// GooglePrivacyDlpV2StatisticalTableResponseInput is an input type that accepts GooglePrivacyDlpV2StatisticalTableResponseArgs and GooglePrivacyDlpV2StatisticalTableResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2StatisticalTableResponseInput` via:
-//
-//          GooglePrivacyDlpV2StatisticalTableResponseArgs{...}
-type GooglePrivacyDlpV2StatisticalTableResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2StatisticalTableResponseOutput() GooglePrivacyDlpV2StatisticalTableResponseOutput
-	ToGooglePrivacyDlpV2StatisticalTableResponseOutputWithContext(context.Context) GooglePrivacyDlpV2StatisticalTableResponseOutput
-}
-
-// An auxiliary table containing statistical information on the relative frequency of different quasi-identifiers values. It has one or several quasi-identifiers columns, and one column that indicates the relative frequency of each quasi-identifier tuple. If a tuple is present in the data but not in the auxiliary table, the corresponding relative frequency is assumed to be zero (and thus, the tuple is highly reidentifiable).
-type GooglePrivacyDlpV2StatisticalTableResponseArgs struct {
-	// Quasi-identifier columns.
-	QuasiIds GooglePrivacyDlpV2QuasiIdentifierFieldResponseArrayInput `pulumi:"quasiIds"`
-	// The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
-	RelativeFrequency GooglePrivacyDlpV2FieldIdResponseInput `pulumi:"relativeFrequency"`
-	// Auxiliary table location.
-	Table GooglePrivacyDlpV2BigQueryTableResponseInput `pulumi:"table"`
-}
-
-func (GooglePrivacyDlpV2StatisticalTableResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2StatisticalTableResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2StatisticalTableResponseArgs) ToGooglePrivacyDlpV2StatisticalTableResponseOutput() GooglePrivacyDlpV2StatisticalTableResponseOutput {
-	return i.ToGooglePrivacyDlpV2StatisticalTableResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2StatisticalTableResponseArgs) ToGooglePrivacyDlpV2StatisticalTableResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StatisticalTableResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2StatisticalTableResponseOutput)
-}
-
-// GooglePrivacyDlpV2StatisticalTableResponseArrayInput is an input type that accepts GooglePrivacyDlpV2StatisticalTableResponseArray and GooglePrivacyDlpV2StatisticalTableResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2StatisticalTableResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2StatisticalTableResponseArray{ GooglePrivacyDlpV2StatisticalTableResponseArgs{...} }
-type GooglePrivacyDlpV2StatisticalTableResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2StatisticalTableResponseArrayOutput() GooglePrivacyDlpV2StatisticalTableResponseArrayOutput
-	ToGooglePrivacyDlpV2StatisticalTableResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2StatisticalTableResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2StatisticalTableResponseArray []GooglePrivacyDlpV2StatisticalTableResponseInput
-
-func (GooglePrivacyDlpV2StatisticalTableResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2StatisticalTableResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2StatisticalTableResponseArray) ToGooglePrivacyDlpV2StatisticalTableResponseArrayOutput() GooglePrivacyDlpV2StatisticalTableResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2StatisticalTableResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2StatisticalTableResponseArray) ToGooglePrivacyDlpV2StatisticalTableResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StatisticalTableResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2StatisticalTableResponseArrayOutput)
 }
 
 // An auxiliary table containing statistical information on the relative frequency of different quasi-identifiers values. It has one or several quasi-identifiers columns, and one column that indicates the relative frequency of each quasi-identifier tuple. If a tuple is present in the data but not in the auxiliary table, the corresponding relative frequency is assumed to be zero (and thus, the tuple is highly reidentifiable).
@@ -26615,83 +17811,6 @@ type GooglePrivacyDlpV2StorageConfigResponse struct {
 	TimespanConfig GooglePrivacyDlpV2TimespanConfigResponse `pulumi:"timespanConfig"`
 }
 
-// GooglePrivacyDlpV2StorageConfigResponseInput is an input type that accepts GooglePrivacyDlpV2StorageConfigResponseArgs and GooglePrivacyDlpV2StorageConfigResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2StorageConfigResponseInput` via:
-//
-//          GooglePrivacyDlpV2StorageConfigResponseArgs{...}
-type GooglePrivacyDlpV2StorageConfigResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2StorageConfigResponseOutput() GooglePrivacyDlpV2StorageConfigResponseOutput
-	ToGooglePrivacyDlpV2StorageConfigResponseOutputWithContext(context.Context) GooglePrivacyDlpV2StorageConfigResponseOutput
-}
-
-// Shared message indicating Cloud storage type.
-type GooglePrivacyDlpV2StorageConfigResponseArgs struct {
-	// BigQuery options.
-	BigQueryOptions GooglePrivacyDlpV2BigQueryOptionsResponseInput `pulumi:"bigQueryOptions"`
-	// Google Cloud Storage options.
-	CloudStorageOptions GooglePrivacyDlpV2CloudStorageOptionsResponseInput `pulumi:"cloudStorageOptions"`
-	// Google Cloud Datastore options.
-	DatastoreOptions GooglePrivacyDlpV2DatastoreOptionsResponseInput `pulumi:"datastoreOptions"`
-	// Hybrid inspection options.
-	HybridOptions  GooglePrivacyDlpV2HybridOptionsResponseInput  `pulumi:"hybridOptions"`
-	TimespanConfig GooglePrivacyDlpV2TimespanConfigResponseInput `pulumi:"timespanConfig"`
-}
-
-func (GooglePrivacyDlpV2StorageConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2StorageConfigResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2StorageConfigResponseArgs) ToGooglePrivacyDlpV2StorageConfigResponseOutput() GooglePrivacyDlpV2StorageConfigResponseOutput {
-	return i.ToGooglePrivacyDlpV2StorageConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2StorageConfigResponseArgs) ToGooglePrivacyDlpV2StorageConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StorageConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2StorageConfigResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2StorageConfigResponseArgs) ToGooglePrivacyDlpV2StorageConfigResponsePtrOutput() GooglePrivacyDlpV2StorageConfigResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2StorageConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2StorageConfigResponseArgs) ToGooglePrivacyDlpV2StorageConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StorageConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2StorageConfigResponseOutput).ToGooglePrivacyDlpV2StorageConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2StorageConfigResponsePtrInput is an input type that accepts GooglePrivacyDlpV2StorageConfigResponseArgs, GooglePrivacyDlpV2StorageConfigResponsePtr and GooglePrivacyDlpV2StorageConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2StorageConfigResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2StorageConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2StorageConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2StorageConfigResponsePtrOutput() GooglePrivacyDlpV2StorageConfigResponsePtrOutput
-	ToGooglePrivacyDlpV2StorageConfigResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2StorageConfigResponsePtrOutput
-}
-
-type googlePrivacyDlpV2StorageConfigResponsePtrType GooglePrivacyDlpV2StorageConfigResponseArgs
-
-func GooglePrivacyDlpV2StorageConfigResponsePtr(v *GooglePrivacyDlpV2StorageConfigResponseArgs) GooglePrivacyDlpV2StorageConfigResponsePtrInput {
-	return (*googlePrivacyDlpV2StorageConfigResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2StorageConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2StorageConfigResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2StorageConfigResponsePtrType) ToGooglePrivacyDlpV2StorageConfigResponsePtrOutput() GooglePrivacyDlpV2StorageConfigResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2StorageConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2StorageConfigResponsePtrType) ToGooglePrivacyDlpV2StorageConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StorageConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2StorageConfigResponsePtrOutput)
-}
-
 // Shared message indicating Cloud storage type.
 type GooglePrivacyDlpV2StorageConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -26705,16 +17824,6 @@ func (o GooglePrivacyDlpV2StorageConfigResponseOutput) ToGooglePrivacyDlpV2Stora
 
 func (o GooglePrivacyDlpV2StorageConfigResponseOutput) ToGooglePrivacyDlpV2StorageConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StorageConfigResponseOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2StorageConfigResponseOutput) ToGooglePrivacyDlpV2StorageConfigResponsePtrOutput() GooglePrivacyDlpV2StorageConfigResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2StorageConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2StorageConfigResponseOutput) ToGooglePrivacyDlpV2StorageConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StorageConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2StorageConfigResponse) *GooglePrivacyDlpV2StorageConfigResponse {
-		return &v
-	}).(GooglePrivacyDlpV2StorageConfigResponsePtrOutput)
 }
 
 // BigQuery options.
@@ -26749,79 +17858,6 @@ func (o GooglePrivacyDlpV2StorageConfigResponseOutput) TimespanConfig() GooglePr
 	return o.ApplyT(func(v GooglePrivacyDlpV2StorageConfigResponse) GooglePrivacyDlpV2TimespanConfigResponse {
 		return v.TimespanConfig
 	}).(GooglePrivacyDlpV2TimespanConfigResponseOutput)
-}
-
-type GooglePrivacyDlpV2StorageConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2StorageConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2StorageConfigResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2StorageConfigResponsePtrOutput) ToGooglePrivacyDlpV2StorageConfigResponsePtrOutput() GooglePrivacyDlpV2StorageConfigResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2StorageConfigResponsePtrOutput) ToGooglePrivacyDlpV2StorageConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StorageConfigResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2StorageConfigResponsePtrOutput) Elem() GooglePrivacyDlpV2StorageConfigResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StorageConfigResponse) GooglePrivacyDlpV2StorageConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2StorageConfigResponse
-		return ret
-	}).(GooglePrivacyDlpV2StorageConfigResponseOutput)
-}
-
-// BigQuery options.
-func (o GooglePrivacyDlpV2StorageConfigResponsePtrOutput) BigQueryOptions() GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StorageConfigResponse) *GooglePrivacyDlpV2BigQueryOptionsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.BigQueryOptions
-	}).(GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput)
-}
-
-// Google Cloud Storage options.
-func (o GooglePrivacyDlpV2StorageConfigResponsePtrOutput) CloudStorageOptions() GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StorageConfigResponse) *GooglePrivacyDlpV2CloudStorageOptionsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.CloudStorageOptions
-	}).(GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput)
-}
-
-// Google Cloud Datastore options.
-func (o GooglePrivacyDlpV2StorageConfigResponsePtrOutput) DatastoreOptions() GooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StorageConfigResponse) *GooglePrivacyDlpV2DatastoreOptionsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DatastoreOptions
-	}).(GooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput)
-}
-
-// Hybrid inspection options.
-func (o GooglePrivacyDlpV2StorageConfigResponsePtrOutput) HybridOptions() GooglePrivacyDlpV2HybridOptionsResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StorageConfigResponse) *GooglePrivacyDlpV2HybridOptionsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.HybridOptions
-	}).(GooglePrivacyDlpV2HybridOptionsResponsePtrOutput)
-}
-
-func (o GooglePrivacyDlpV2StorageConfigResponsePtrOutput) TimespanConfig() GooglePrivacyDlpV2TimespanConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StorageConfigResponse) *GooglePrivacyDlpV2TimespanConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.TimespanConfig
-	}).(GooglePrivacyDlpV2TimespanConfigResponsePtrOutput)
 }
 
 // Configuration for stored infoTypes. All fields and subfield are provided by the user. For more information, see https://cloud.google.com/dlp/docs/creating-custom-infotypes.
@@ -26875,47 +17911,6 @@ func (i GooglePrivacyDlpV2StoredInfoTypeConfigArgs) ToGooglePrivacyDlpV2StoredIn
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2StoredInfoTypeConfigOutput)
 }
 
-func (i GooglePrivacyDlpV2StoredInfoTypeConfigArgs) ToGooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput() GooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput {
-	return i.ToGooglePrivacyDlpV2StoredInfoTypeConfigPtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2StoredInfoTypeConfigArgs) ToGooglePrivacyDlpV2StoredInfoTypeConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2StoredInfoTypeConfigOutput).ToGooglePrivacyDlpV2StoredInfoTypeConfigPtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2StoredInfoTypeConfigPtrInput is an input type that accepts GooglePrivacyDlpV2StoredInfoTypeConfigArgs, GooglePrivacyDlpV2StoredInfoTypeConfigPtr and GooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2StoredInfoTypeConfigPtrInput` via:
-//
-//          GooglePrivacyDlpV2StoredInfoTypeConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2StoredInfoTypeConfigPtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput() GooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput
-	ToGooglePrivacyDlpV2StoredInfoTypeConfigPtrOutputWithContext(context.Context) GooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput
-}
-
-type googlePrivacyDlpV2StoredInfoTypeConfigPtrType GooglePrivacyDlpV2StoredInfoTypeConfigArgs
-
-func GooglePrivacyDlpV2StoredInfoTypeConfigPtr(v *GooglePrivacyDlpV2StoredInfoTypeConfigArgs) GooglePrivacyDlpV2StoredInfoTypeConfigPtrInput {
-	return (*googlePrivacyDlpV2StoredInfoTypeConfigPtrType)(v)
-}
-
-func (*googlePrivacyDlpV2StoredInfoTypeConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2StoredInfoTypeConfig)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2StoredInfoTypeConfigPtrType) ToGooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput() GooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput {
-	return i.ToGooglePrivacyDlpV2StoredInfoTypeConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2StoredInfoTypeConfigPtrType) ToGooglePrivacyDlpV2StoredInfoTypeConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput)
-}
-
 // Configuration for stored infoTypes. All fields and subfield are provided by the user. For more information, see https://cloud.google.com/dlp/docs/creating-custom-infotypes.
 type GooglePrivacyDlpV2StoredInfoTypeConfigOutput struct{ *pulumi.OutputState }
 
@@ -26929,16 +17924,6 @@ func (o GooglePrivacyDlpV2StoredInfoTypeConfigOutput) ToGooglePrivacyDlpV2Stored
 
 func (o GooglePrivacyDlpV2StoredInfoTypeConfigOutput) ToGooglePrivacyDlpV2StoredInfoTypeConfigOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StoredInfoTypeConfigOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2StoredInfoTypeConfigOutput) ToGooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput() GooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput {
-	return o.ToGooglePrivacyDlpV2StoredInfoTypeConfigPtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2StoredInfoTypeConfigOutput) ToGooglePrivacyDlpV2StoredInfoTypeConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2StoredInfoTypeConfig) *GooglePrivacyDlpV2StoredInfoTypeConfig {
-		return &v
-	}).(GooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput)
 }
 
 // Description of the StoredInfoType (max 256 characters).
@@ -26968,80 +17953,6 @@ func (o GooglePrivacyDlpV2StoredInfoTypeConfigOutput) Regex() GooglePrivacyDlpV2
 	return o.ApplyT(func(v GooglePrivacyDlpV2StoredInfoTypeConfig) *GooglePrivacyDlpV2Regex { return v.Regex }).(GooglePrivacyDlpV2RegexPtrOutput)
 }
 
-type GooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2StoredInfoTypeConfig)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput) ToGooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput() GooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput) ToGooglePrivacyDlpV2StoredInfoTypeConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput) Elem() GooglePrivacyDlpV2StoredInfoTypeConfigOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StoredInfoTypeConfig) GooglePrivacyDlpV2StoredInfoTypeConfig {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2StoredInfoTypeConfig
-		return ret
-	}).(GooglePrivacyDlpV2StoredInfoTypeConfigOutput)
-}
-
-// Description of the StoredInfoType (max 256 characters).
-func (o GooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StoredInfoTypeConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// Store dictionary-based CustomInfoType.
-func (o GooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput) Dictionary() GooglePrivacyDlpV2DictionaryPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StoredInfoTypeConfig) *GooglePrivacyDlpV2Dictionary {
-		if v == nil {
-			return nil
-		}
-		return v.Dictionary
-	}).(GooglePrivacyDlpV2DictionaryPtrOutput)
-}
-
-// Display name of the StoredInfoType (max 256 characters).
-func (o GooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StoredInfoTypeConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DisplayName
-	}).(pulumi.StringPtrOutput)
-}
-
-// StoredInfoType where findings are defined by a dictionary of phrases.
-func (o GooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput) LargeCustomDictionary() GooglePrivacyDlpV2LargeCustomDictionaryConfigPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StoredInfoTypeConfig) *GooglePrivacyDlpV2LargeCustomDictionaryConfig {
-		if v == nil {
-			return nil
-		}
-		return v.LargeCustomDictionary
-	}).(GooglePrivacyDlpV2LargeCustomDictionaryConfigPtrOutput)
-}
-
-// Store regular expression-based StoredInfoType.
-func (o GooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput) Regex() GooglePrivacyDlpV2RegexPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StoredInfoTypeConfig) *GooglePrivacyDlpV2Regex {
-		if v == nil {
-			return nil
-		}
-		return v.Regex
-	}).(GooglePrivacyDlpV2RegexPtrOutput)
-}
-
 // Configuration for stored infoTypes. All fields and subfield are provided by the user. For more information, see https://cloud.google.com/dlp/docs/creating-custom-infotypes.
 type GooglePrivacyDlpV2StoredInfoTypeConfigResponse struct {
 	// Description of the StoredInfoType (max 256 characters).
@@ -27054,84 +17965,6 @@ type GooglePrivacyDlpV2StoredInfoTypeConfigResponse struct {
 	LargeCustomDictionary GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse `pulumi:"largeCustomDictionary"`
 	// Store regular expression-based StoredInfoType.
 	Regex GooglePrivacyDlpV2RegexResponse `pulumi:"regex"`
-}
-
-// GooglePrivacyDlpV2StoredInfoTypeConfigResponseInput is an input type that accepts GooglePrivacyDlpV2StoredInfoTypeConfigResponseArgs and GooglePrivacyDlpV2StoredInfoTypeConfigResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2StoredInfoTypeConfigResponseInput` via:
-//
-//          GooglePrivacyDlpV2StoredInfoTypeConfigResponseArgs{...}
-type GooglePrivacyDlpV2StoredInfoTypeConfigResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2StoredInfoTypeConfigResponseOutput() GooglePrivacyDlpV2StoredInfoTypeConfigResponseOutput
-	ToGooglePrivacyDlpV2StoredInfoTypeConfigResponseOutputWithContext(context.Context) GooglePrivacyDlpV2StoredInfoTypeConfigResponseOutput
-}
-
-// Configuration for stored infoTypes. All fields and subfield are provided by the user. For more information, see https://cloud.google.com/dlp/docs/creating-custom-infotypes.
-type GooglePrivacyDlpV2StoredInfoTypeConfigResponseArgs struct {
-	// Description of the StoredInfoType (max 256 characters).
-	Description pulumi.StringInput `pulumi:"description"`
-	// Store dictionary-based CustomInfoType.
-	Dictionary GooglePrivacyDlpV2DictionaryResponseInput `pulumi:"dictionary"`
-	// Display name of the StoredInfoType (max 256 characters).
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// StoredInfoType where findings are defined by a dictionary of phrases.
-	LargeCustomDictionary GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseInput `pulumi:"largeCustomDictionary"`
-	// Store regular expression-based StoredInfoType.
-	Regex GooglePrivacyDlpV2RegexResponseInput `pulumi:"regex"`
-}
-
-func (GooglePrivacyDlpV2StoredInfoTypeConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2StoredInfoTypeConfigResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2StoredInfoTypeConfigResponseArgs) ToGooglePrivacyDlpV2StoredInfoTypeConfigResponseOutput() GooglePrivacyDlpV2StoredInfoTypeConfigResponseOutput {
-	return i.ToGooglePrivacyDlpV2StoredInfoTypeConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2StoredInfoTypeConfigResponseArgs) ToGooglePrivacyDlpV2StoredInfoTypeConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StoredInfoTypeConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2StoredInfoTypeConfigResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2StoredInfoTypeConfigResponseArgs) ToGooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput() GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2StoredInfoTypeConfigResponseArgs) ToGooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2StoredInfoTypeConfigResponseOutput).ToGooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrInput is an input type that accepts GooglePrivacyDlpV2StoredInfoTypeConfigResponseArgs, GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtr and GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2StoredInfoTypeConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput() GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput
-	ToGooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput
-}
-
-type googlePrivacyDlpV2StoredInfoTypeConfigResponsePtrType GooglePrivacyDlpV2StoredInfoTypeConfigResponseArgs
-
-func GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtr(v *GooglePrivacyDlpV2StoredInfoTypeConfigResponseArgs) GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrInput {
-	return (*googlePrivacyDlpV2StoredInfoTypeConfigResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2StoredInfoTypeConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2StoredInfoTypeConfigResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2StoredInfoTypeConfigResponsePtrType) ToGooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput() GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2StoredInfoTypeConfigResponsePtrType) ToGooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput)
 }
 
 // Configuration for stored infoTypes. All fields and subfield are provided by the user. For more information, see https://cloud.google.com/dlp/docs/creating-custom-infotypes.
@@ -27147,16 +17980,6 @@ func (o GooglePrivacyDlpV2StoredInfoTypeConfigResponseOutput) ToGooglePrivacyDlp
 
 func (o GooglePrivacyDlpV2StoredInfoTypeConfigResponseOutput) ToGooglePrivacyDlpV2StoredInfoTypeConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StoredInfoTypeConfigResponseOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2StoredInfoTypeConfigResponseOutput) ToGooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput() GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2StoredInfoTypeConfigResponseOutput) ToGooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2StoredInfoTypeConfigResponse) *GooglePrivacyDlpV2StoredInfoTypeConfigResponse {
-		return &v
-	}).(GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput)
 }
 
 // Description of the StoredInfoType (max 256 characters).
@@ -27188,154 +18011,10 @@ func (o GooglePrivacyDlpV2StoredInfoTypeConfigResponseOutput) Regex() GooglePriv
 	return o.ApplyT(func(v GooglePrivacyDlpV2StoredInfoTypeConfigResponse) GooglePrivacyDlpV2RegexResponse { return v.Regex }).(GooglePrivacyDlpV2RegexResponseOutput)
 }
 
-type GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2StoredInfoTypeConfigResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput) ToGooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput() GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput) ToGooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput) Elem() GooglePrivacyDlpV2StoredInfoTypeConfigResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StoredInfoTypeConfigResponse) GooglePrivacyDlpV2StoredInfoTypeConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2StoredInfoTypeConfigResponse
-		return ret
-	}).(GooglePrivacyDlpV2StoredInfoTypeConfigResponseOutput)
-}
-
-// Description of the StoredInfoType (max 256 characters).
-func (o GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StoredInfoTypeConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// Store dictionary-based CustomInfoType.
-func (o GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput) Dictionary() GooglePrivacyDlpV2DictionaryResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StoredInfoTypeConfigResponse) *GooglePrivacyDlpV2DictionaryResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Dictionary
-	}).(GooglePrivacyDlpV2DictionaryResponsePtrOutput)
-}
-
-// Display name of the StoredInfoType (max 256 characters).
-func (o GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StoredInfoTypeConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DisplayName
-	}).(pulumi.StringPtrOutput)
-}
-
-// StoredInfoType where findings are defined by a dictionary of phrases.
-func (o GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput) LargeCustomDictionary() GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StoredInfoTypeConfigResponse) *GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.LargeCustomDictionary
-	}).(GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput)
-}
-
-// Store regular expression-based StoredInfoType.
-func (o GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput) Regex() GooglePrivacyDlpV2RegexResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StoredInfoTypeConfigResponse) *GooglePrivacyDlpV2RegexResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Regex
-	}).(GooglePrivacyDlpV2RegexResponsePtrOutput)
-}
-
 // Statistics for a StoredInfoType.
 type GooglePrivacyDlpV2StoredInfoTypeStatsResponse struct {
 	// StoredInfoType where findings are defined by a dictionary of phrases.
 	LargeCustomDictionary GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse `pulumi:"largeCustomDictionary"`
-}
-
-// GooglePrivacyDlpV2StoredInfoTypeStatsResponseInput is an input type that accepts GooglePrivacyDlpV2StoredInfoTypeStatsResponseArgs and GooglePrivacyDlpV2StoredInfoTypeStatsResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2StoredInfoTypeStatsResponseInput` via:
-//
-//          GooglePrivacyDlpV2StoredInfoTypeStatsResponseArgs{...}
-type GooglePrivacyDlpV2StoredInfoTypeStatsResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2StoredInfoTypeStatsResponseOutput() GooglePrivacyDlpV2StoredInfoTypeStatsResponseOutput
-	ToGooglePrivacyDlpV2StoredInfoTypeStatsResponseOutputWithContext(context.Context) GooglePrivacyDlpV2StoredInfoTypeStatsResponseOutput
-}
-
-// Statistics for a StoredInfoType.
-type GooglePrivacyDlpV2StoredInfoTypeStatsResponseArgs struct {
-	// StoredInfoType where findings are defined by a dictionary of phrases.
-	LargeCustomDictionary GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseInput `pulumi:"largeCustomDictionary"`
-}
-
-func (GooglePrivacyDlpV2StoredInfoTypeStatsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2StoredInfoTypeStatsResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2StoredInfoTypeStatsResponseArgs) ToGooglePrivacyDlpV2StoredInfoTypeStatsResponseOutput() GooglePrivacyDlpV2StoredInfoTypeStatsResponseOutput {
-	return i.ToGooglePrivacyDlpV2StoredInfoTypeStatsResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2StoredInfoTypeStatsResponseArgs) ToGooglePrivacyDlpV2StoredInfoTypeStatsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StoredInfoTypeStatsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2StoredInfoTypeStatsResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2StoredInfoTypeStatsResponseArgs) ToGooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput() GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2StoredInfoTypeStatsResponseArgs) ToGooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2StoredInfoTypeStatsResponseOutput).ToGooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrInput is an input type that accepts GooglePrivacyDlpV2StoredInfoTypeStatsResponseArgs, GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtr and GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2StoredInfoTypeStatsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput() GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput
-	ToGooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput
-}
-
-type googlePrivacyDlpV2StoredInfoTypeStatsResponsePtrType GooglePrivacyDlpV2StoredInfoTypeStatsResponseArgs
-
-func GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtr(v *GooglePrivacyDlpV2StoredInfoTypeStatsResponseArgs) GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrInput {
-	return (*googlePrivacyDlpV2StoredInfoTypeStatsResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2StoredInfoTypeStatsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2StoredInfoTypeStatsResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2StoredInfoTypeStatsResponsePtrType) ToGooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput() GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2StoredInfoTypeStatsResponsePtrType) ToGooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput)
 }
 
 // Statistics for a StoredInfoType.
@@ -27353,55 +18032,11 @@ func (o GooglePrivacyDlpV2StoredInfoTypeStatsResponseOutput) ToGooglePrivacyDlpV
 	return o
 }
 
-func (o GooglePrivacyDlpV2StoredInfoTypeStatsResponseOutput) ToGooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput() GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2StoredInfoTypeStatsResponseOutput) ToGooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2StoredInfoTypeStatsResponse) *GooglePrivacyDlpV2StoredInfoTypeStatsResponse {
-		return &v
-	}).(GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput)
-}
-
 // StoredInfoType where findings are defined by a dictionary of phrases.
 func (o GooglePrivacyDlpV2StoredInfoTypeStatsResponseOutput) LargeCustomDictionary() GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2StoredInfoTypeStatsResponse) GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse {
 		return v.LargeCustomDictionary
 	}).(GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseOutput)
-}
-
-type GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2StoredInfoTypeStatsResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput) ToGooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput() GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput) ToGooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput) Elem() GooglePrivacyDlpV2StoredInfoTypeStatsResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StoredInfoTypeStatsResponse) GooglePrivacyDlpV2StoredInfoTypeStatsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2StoredInfoTypeStatsResponse
-		return ret
-	}).(GooglePrivacyDlpV2StoredInfoTypeStatsResponseOutput)
-}
-
-// StoredInfoType where findings are defined by a dictionary of phrases.
-func (o GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput) LargeCustomDictionary() GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StoredInfoTypeStatsResponse) *GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.LargeCustomDictionary
-	}).(GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput)
 }
 
 // Version of a StoredInfoType, including the configuration used to build it, create timestamp, and current state.
@@ -27418,109 +18053,6 @@ type GooglePrivacyDlpV2StoredInfoTypeVersionResponse struct {
 	Stats GooglePrivacyDlpV2StoredInfoTypeStatsResponse `pulumi:"stats"`
 }
 
-// GooglePrivacyDlpV2StoredInfoTypeVersionResponseInput is an input type that accepts GooglePrivacyDlpV2StoredInfoTypeVersionResponseArgs and GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2StoredInfoTypeVersionResponseInput` via:
-//
-//          GooglePrivacyDlpV2StoredInfoTypeVersionResponseArgs{...}
-type GooglePrivacyDlpV2StoredInfoTypeVersionResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput() GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput
-	ToGooglePrivacyDlpV2StoredInfoTypeVersionResponseOutputWithContext(context.Context) GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput
-}
-
-// Version of a StoredInfoType, including the configuration used to build it, create timestamp, and current state.
-type GooglePrivacyDlpV2StoredInfoTypeVersionResponseArgs struct {
-	// StoredInfoType configuration.
-	Config GooglePrivacyDlpV2StoredInfoTypeConfigResponseInput `pulumi:"config"`
-	// Create timestamp of the version. Read-only, determined by the system when the version is created.
-	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// Errors that occurred when creating this storedInfoType version, or anomalies detected in the storedInfoType data that render it unusable. Only the five most recent errors will be displayed, with the most recent error appearing first. For example, some of the data for stored custom dictionaries is put in the user's Google Cloud Storage bucket, and if this data is modified or deleted by the user or another system, the dictionary becomes invalid. If any errors occur, fix the problem indicated by the error message and use the UpdateStoredInfoType API method to create another version of the storedInfoType to continue using it, reusing the same `config` if it was not the source of the error.
-	Errors GooglePrivacyDlpV2ErrorResponseArrayInput `pulumi:"errors"`
-	// Stored info type version state. Read-only, updated by the system during dictionary creation.
-	State pulumi.StringInput `pulumi:"state"`
-	// Statistics about this storedInfoType version.
-	Stats GooglePrivacyDlpV2StoredInfoTypeStatsResponseInput `pulumi:"stats"`
-}
-
-func (GooglePrivacyDlpV2StoredInfoTypeVersionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2StoredInfoTypeVersionResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2StoredInfoTypeVersionResponseArgs) ToGooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput() GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput {
-	return i.ToGooglePrivacyDlpV2StoredInfoTypeVersionResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2StoredInfoTypeVersionResponseArgs) ToGooglePrivacyDlpV2StoredInfoTypeVersionResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2StoredInfoTypeVersionResponseArgs) ToGooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput() GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2StoredInfoTypeVersionResponseArgs) ToGooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput).ToGooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrInput is an input type that accepts GooglePrivacyDlpV2StoredInfoTypeVersionResponseArgs, GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtr and GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2StoredInfoTypeVersionResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput() GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput
-	ToGooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput
-}
-
-type googlePrivacyDlpV2StoredInfoTypeVersionResponsePtrType GooglePrivacyDlpV2StoredInfoTypeVersionResponseArgs
-
-func GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtr(v *GooglePrivacyDlpV2StoredInfoTypeVersionResponseArgs) GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrInput {
-	return (*googlePrivacyDlpV2StoredInfoTypeVersionResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2StoredInfoTypeVersionResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2StoredInfoTypeVersionResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2StoredInfoTypeVersionResponsePtrType) ToGooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput() GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2StoredInfoTypeVersionResponsePtrType) ToGooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput)
-}
-
-// GooglePrivacyDlpV2StoredInfoTypeVersionResponseArrayInput is an input type that accepts GooglePrivacyDlpV2StoredInfoTypeVersionResponseArray and GooglePrivacyDlpV2StoredInfoTypeVersionResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2StoredInfoTypeVersionResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2StoredInfoTypeVersionResponseArray{ GooglePrivacyDlpV2StoredInfoTypeVersionResponseArgs{...} }
-type GooglePrivacyDlpV2StoredInfoTypeVersionResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2StoredInfoTypeVersionResponseArrayOutput() GooglePrivacyDlpV2StoredInfoTypeVersionResponseArrayOutput
-	ToGooglePrivacyDlpV2StoredInfoTypeVersionResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2StoredInfoTypeVersionResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2StoredInfoTypeVersionResponseArray []GooglePrivacyDlpV2StoredInfoTypeVersionResponseInput
-
-func (GooglePrivacyDlpV2StoredInfoTypeVersionResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2StoredInfoTypeVersionResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2StoredInfoTypeVersionResponseArray) ToGooglePrivacyDlpV2StoredInfoTypeVersionResponseArrayOutput() GooglePrivacyDlpV2StoredInfoTypeVersionResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2StoredInfoTypeVersionResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2StoredInfoTypeVersionResponseArray) ToGooglePrivacyDlpV2StoredInfoTypeVersionResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StoredInfoTypeVersionResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2StoredInfoTypeVersionResponseArrayOutput)
-}
-
 // Version of a StoredInfoType, including the configuration used to build it, create timestamp, and current state.
 type GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput struct{ *pulumi.OutputState }
 
@@ -27534,16 +18066,6 @@ func (o GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput) ToGooglePrivacyDl
 
 func (o GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput) ToGooglePrivacyDlpV2StoredInfoTypeVersionResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput) ToGooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput() GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput) ToGooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2StoredInfoTypeVersionResponse) *GooglePrivacyDlpV2StoredInfoTypeVersionResponse {
-		return &v
-	}).(GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput)
 }
 
 // StoredInfoType configuration.
@@ -27575,80 +18097,6 @@ func (o GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput) Stats() GooglePri
 	return o.ApplyT(func(v GooglePrivacyDlpV2StoredInfoTypeVersionResponse) GooglePrivacyDlpV2StoredInfoTypeStatsResponse {
 		return v.Stats
 	}).(GooglePrivacyDlpV2StoredInfoTypeStatsResponseOutput)
-}
-
-type GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2StoredInfoTypeVersionResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput) ToGooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput() GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput) ToGooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput) Elem() GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StoredInfoTypeVersionResponse) GooglePrivacyDlpV2StoredInfoTypeVersionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2StoredInfoTypeVersionResponse
-		return ret
-	}).(GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput)
-}
-
-// StoredInfoType configuration.
-func (o GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput) Config() GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StoredInfoTypeVersionResponse) *GooglePrivacyDlpV2StoredInfoTypeConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Config
-	}).(GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput)
-}
-
-// Create timestamp of the version. Read-only, determined by the system when the version is created.
-func (o GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StoredInfoTypeVersionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CreateTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Errors that occurred when creating this storedInfoType version, or anomalies detected in the storedInfoType data that render it unusable. Only the five most recent errors will be displayed, with the most recent error appearing first. For example, some of the data for stored custom dictionaries is put in the user's Google Cloud Storage bucket, and if this data is modified or deleted by the user or another system, the dictionary becomes invalid. If any errors occur, fix the problem indicated by the error message and use the UpdateStoredInfoType API method to create another version of the storedInfoType to continue using it, reusing the same `config` if it was not the source of the error.
-func (o GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput) Errors() GooglePrivacyDlpV2ErrorResponseArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StoredInfoTypeVersionResponse) []GooglePrivacyDlpV2ErrorResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Errors
-	}).(GooglePrivacyDlpV2ErrorResponseArrayOutput)
-}
-
-// Stored info type version state. Read-only, updated by the system during dictionary creation.
-func (o GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StoredInfoTypeVersionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.State
-	}).(pulumi.StringPtrOutput)
-}
-
-// Statistics about this storedInfoType version.
-func (o GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput) Stats() GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2StoredInfoTypeVersionResponse) *GooglePrivacyDlpV2StoredInfoTypeStatsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Stats
-	}).(GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput)
 }
 
 type GooglePrivacyDlpV2StoredInfoTypeVersionResponseArrayOutput struct{ *pulumi.OutputState }
@@ -27838,37 +18286,6 @@ type GooglePrivacyDlpV2StoredTypeResponse struct {
 	Name string `pulumi:"name"`
 }
 
-// GooglePrivacyDlpV2StoredTypeResponseInput is an input type that accepts GooglePrivacyDlpV2StoredTypeResponseArgs and GooglePrivacyDlpV2StoredTypeResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2StoredTypeResponseInput` via:
-//
-//          GooglePrivacyDlpV2StoredTypeResponseArgs{...}
-type GooglePrivacyDlpV2StoredTypeResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2StoredTypeResponseOutput() GooglePrivacyDlpV2StoredTypeResponseOutput
-	ToGooglePrivacyDlpV2StoredTypeResponseOutputWithContext(context.Context) GooglePrivacyDlpV2StoredTypeResponseOutput
-}
-
-// A reference to a StoredInfoType to use with scanning.
-type GooglePrivacyDlpV2StoredTypeResponseArgs struct {
-	// Timestamp indicating when the version of the `StoredInfoType` used for inspection was created. Output-only field, populated by the system.
-	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// Resource name of the requested `StoredInfoType`, for example `organizations/433245324/storedInfoTypes/432452342` or `projects/project-id/storedInfoTypes/432452342`.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GooglePrivacyDlpV2StoredTypeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2StoredTypeResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2StoredTypeResponseArgs) ToGooglePrivacyDlpV2StoredTypeResponseOutput() GooglePrivacyDlpV2StoredTypeResponseOutput {
-	return i.ToGooglePrivacyDlpV2StoredTypeResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2StoredTypeResponseArgs) ToGooglePrivacyDlpV2StoredTypeResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2StoredTypeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2StoredTypeResponseOutput)
-}
-
 // A reference to a StoredInfoType to use with scanning.
 type GooglePrivacyDlpV2StoredTypeResponseOutput struct{ *pulumi.OutputState }
 
@@ -28017,33 +18434,6 @@ func (o GooglePrivacyDlpV2SurrogateTypePtrOutput) Elem() GooglePrivacyDlpV2Surro
 
 // Message for detecting output from deidentification transformations such as [`CryptoReplaceFfxFpeConfig`](https://cloud.google.com/dlp/docs/reference/rest/v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig). These types of transformations are those that perform pseudonymization, thereby producing a "surrogate" as output. This should be used in conjunction with a field on the transformation such as `surrogate_info_type`. This CustomInfoType does not support the use of `detection_rules`.
 type GooglePrivacyDlpV2SurrogateTypeResponse struct {
-}
-
-// GooglePrivacyDlpV2SurrogateTypeResponseInput is an input type that accepts GooglePrivacyDlpV2SurrogateTypeResponseArgs and GooglePrivacyDlpV2SurrogateTypeResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2SurrogateTypeResponseInput` via:
-//
-//          GooglePrivacyDlpV2SurrogateTypeResponseArgs{...}
-type GooglePrivacyDlpV2SurrogateTypeResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2SurrogateTypeResponseOutput() GooglePrivacyDlpV2SurrogateTypeResponseOutput
-	ToGooglePrivacyDlpV2SurrogateTypeResponseOutputWithContext(context.Context) GooglePrivacyDlpV2SurrogateTypeResponseOutput
-}
-
-// Message for detecting output from deidentification transformations such as [`CryptoReplaceFfxFpeConfig`](https://cloud.google.com/dlp/docs/reference/rest/v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig). These types of transformations are those that perform pseudonymization, thereby producing a "surrogate" as output. This should be used in conjunction with a field on the transformation such as `surrogate_info_type`. This CustomInfoType does not support the use of `detection_rules`.
-type GooglePrivacyDlpV2SurrogateTypeResponseArgs struct {
-}
-
-func (GooglePrivacyDlpV2SurrogateTypeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2SurrogateTypeResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2SurrogateTypeResponseArgs) ToGooglePrivacyDlpV2SurrogateTypeResponseOutput() GooglePrivacyDlpV2SurrogateTypeResponseOutput {
-	return i.ToGooglePrivacyDlpV2SurrogateTypeResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2SurrogateTypeResponseArgs) ToGooglePrivacyDlpV2SurrogateTypeResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2SurrogateTypeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2SurrogateTypeResponseOutput)
 }
 
 // Message for detecting output from deidentification transformations such as [`CryptoReplaceFfxFpeConfig`](https://cloud.google.com/dlp/docs/reference/rest/v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig). These types of transformations are those that perform pseudonymization, thereby producing a "surrogate" as output. This should be used in conjunction with a field on the transformation such as `surrogate_info_type`. This CustomInfoType does not support the use of `detection_rules`.
@@ -28207,76 +18597,6 @@ type GooglePrivacyDlpV2TableOptionsResponse struct {
 	IdentifyingFields []GooglePrivacyDlpV2FieldIdResponse `pulumi:"identifyingFields"`
 }
 
-// GooglePrivacyDlpV2TableOptionsResponseInput is an input type that accepts GooglePrivacyDlpV2TableOptionsResponseArgs and GooglePrivacyDlpV2TableOptionsResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2TableOptionsResponseInput` via:
-//
-//          GooglePrivacyDlpV2TableOptionsResponseArgs{...}
-type GooglePrivacyDlpV2TableOptionsResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2TableOptionsResponseOutput() GooglePrivacyDlpV2TableOptionsResponseOutput
-	ToGooglePrivacyDlpV2TableOptionsResponseOutputWithContext(context.Context) GooglePrivacyDlpV2TableOptionsResponseOutput
-}
-
-// Instructions regarding the table content being inspected.
-type GooglePrivacyDlpV2TableOptionsResponseArgs struct {
-	// The columns that are the primary keys for table objects included in ContentItem. A copy of this cell's value will stored alongside alongside each finding so that the finding can be traced to the specific row it came from. No more than 3 may be provided.
-	IdentifyingFields GooglePrivacyDlpV2FieldIdResponseArrayInput `pulumi:"identifyingFields"`
-}
-
-func (GooglePrivacyDlpV2TableOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2TableOptionsResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2TableOptionsResponseArgs) ToGooglePrivacyDlpV2TableOptionsResponseOutput() GooglePrivacyDlpV2TableOptionsResponseOutput {
-	return i.ToGooglePrivacyDlpV2TableOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2TableOptionsResponseArgs) ToGooglePrivacyDlpV2TableOptionsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TableOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2TableOptionsResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2TableOptionsResponseArgs) ToGooglePrivacyDlpV2TableOptionsResponsePtrOutput() GooglePrivacyDlpV2TableOptionsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2TableOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2TableOptionsResponseArgs) ToGooglePrivacyDlpV2TableOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TableOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2TableOptionsResponseOutput).ToGooglePrivacyDlpV2TableOptionsResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2TableOptionsResponsePtrInput is an input type that accepts GooglePrivacyDlpV2TableOptionsResponseArgs, GooglePrivacyDlpV2TableOptionsResponsePtr and GooglePrivacyDlpV2TableOptionsResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2TableOptionsResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2TableOptionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2TableOptionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2TableOptionsResponsePtrOutput() GooglePrivacyDlpV2TableOptionsResponsePtrOutput
-	ToGooglePrivacyDlpV2TableOptionsResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2TableOptionsResponsePtrOutput
-}
-
-type googlePrivacyDlpV2TableOptionsResponsePtrType GooglePrivacyDlpV2TableOptionsResponseArgs
-
-func GooglePrivacyDlpV2TableOptionsResponsePtr(v *GooglePrivacyDlpV2TableOptionsResponseArgs) GooglePrivacyDlpV2TableOptionsResponsePtrInput {
-	return (*googlePrivacyDlpV2TableOptionsResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2TableOptionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2TableOptionsResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2TableOptionsResponsePtrType) ToGooglePrivacyDlpV2TableOptionsResponsePtrOutput() GooglePrivacyDlpV2TableOptionsResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2TableOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2TableOptionsResponsePtrType) ToGooglePrivacyDlpV2TableOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TableOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2TableOptionsResponsePtrOutput)
-}
-
 // Instructions regarding the table content being inspected.
 type GooglePrivacyDlpV2TableOptionsResponseOutput struct{ *pulumi.OutputState }
 
@@ -28292,53 +18612,9 @@ func (o GooglePrivacyDlpV2TableOptionsResponseOutput) ToGooglePrivacyDlpV2TableO
 	return o
 }
 
-func (o GooglePrivacyDlpV2TableOptionsResponseOutput) ToGooglePrivacyDlpV2TableOptionsResponsePtrOutput() GooglePrivacyDlpV2TableOptionsResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2TableOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2TableOptionsResponseOutput) ToGooglePrivacyDlpV2TableOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TableOptionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2TableOptionsResponse) *GooglePrivacyDlpV2TableOptionsResponse {
-		return &v
-	}).(GooglePrivacyDlpV2TableOptionsResponsePtrOutput)
-}
-
 // The columns that are the primary keys for table objects included in ContentItem. A copy of this cell's value will stored alongside alongside each finding so that the finding can be traced to the specific row it came from. No more than 3 may be provided.
 func (o GooglePrivacyDlpV2TableOptionsResponseOutput) IdentifyingFields() GooglePrivacyDlpV2FieldIdResponseArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2TableOptionsResponse) []GooglePrivacyDlpV2FieldIdResponse {
-		return v.IdentifyingFields
-	}).(GooglePrivacyDlpV2FieldIdResponseArrayOutput)
-}
-
-type GooglePrivacyDlpV2TableOptionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2TableOptionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2TableOptionsResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2TableOptionsResponsePtrOutput) ToGooglePrivacyDlpV2TableOptionsResponsePtrOutput() GooglePrivacyDlpV2TableOptionsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2TableOptionsResponsePtrOutput) ToGooglePrivacyDlpV2TableOptionsResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TableOptionsResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2TableOptionsResponsePtrOutput) Elem() GooglePrivacyDlpV2TableOptionsResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2TableOptionsResponse) GooglePrivacyDlpV2TableOptionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2TableOptionsResponse
-		return ret
-	}).(GooglePrivacyDlpV2TableOptionsResponseOutput)
-}
-
-// The columns that are the primary keys for table objects included in ContentItem. A copy of this cell's value will stored alongside alongside each finding so that the finding can be traced to the specific row it came from. No more than 3 may be provided.
-func (o GooglePrivacyDlpV2TableOptionsResponsePtrOutput) IdentifyingFields() GooglePrivacyDlpV2FieldIdResponseArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2TableOptionsResponse) []GooglePrivacyDlpV2FieldIdResponse {
-		if v == nil {
-			return nil
-		}
 		return v.IdentifyingFields
 	}).(GooglePrivacyDlpV2FieldIdResponseArrayOutput)
 }
@@ -28480,66 +18756,6 @@ type GooglePrivacyDlpV2TaggedFieldResponse struct {
 	Inferred GoogleProtobufEmptyResponse `pulumi:"inferred"`
 	// A column can be tagged with a InfoType to use the relevant public dataset as a statistical model of population, if available. We currently support US ZIP codes, region codes, ages and genders. To programmatically obtain the list of supported InfoTypes, use ListInfoTypes with the supported_by=RISK_ANALYSIS filter.
 	InfoType GooglePrivacyDlpV2InfoTypeResponse `pulumi:"infoType"`
-}
-
-// GooglePrivacyDlpV2TaggedFieldResponseInput is an input type that accepts GooglePrivacyDlpV2TaggedFieldResponseArgs and GooglePrivacyDlpV2TaggedFieldResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2TaggedFieldResponseInput` via:
-//
-//          GooglePrivacyDlpV2TaggedFieldResponseArgs{...}
-type GooglePrivacyDlpV2TaggedFieldResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2TaggedFieldResponseOutput() GooglePrivacyDlpV2TaggedFieldResponseOutput
-	ToGooglePrivacyDlpV2TaggedFieldResponseOutputWithContext(context.Context) GooglePrivacyDlpV2TaggedFieldResponseOutput
-}
-
-// A column with a semantic tag attached.
-type GooglePrivacyDlpV2TaggedFieldResponseArgs struct {
-	// A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table that contains statistical information on the possible values of this column (below).
-	CustomTag pulumi.StringInput `pulumi:"customTag"`
-	// Identifies the column.
-	Field GooglePrivacyDlpV2FieldIdResponseInput `pulumi:"field"`
-	// If no semantic tag is indicated, we infer the statistical model from the distribution of values in the input data
-	Inferred GoogleProtobufEmptyResponseInput `pulumi:"inferred"`
-	// A column can be tagged with a InfoType to use the relevant public dataset as a statistical model of population, if available. We currently support US ZIP codes, region codes, ages and genders. To programmatically obtain the list of supported InfoTypes, use ListInfoTypes with the supported_by=RISK_ANALYSIS filter.
-	InfoType GooglePrivacyDlpV2InfoTypeResponseInput `pulumi:"infoType"`
-}
-
-func (GooglePrivacyDlpV2TaggedFieldResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2TaggedFieldResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2TaggedFieldResponseArgs) ToGooglePrivacyDlpV2TaggedFieldResponseOutput() GooglePrivacyDlpV2TaggedFieldResponseOutput {
-	return i.ToGooglePrivacyDlpV2TaggedFieldResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2TaggedFieldResponseArgs) ToGooglePrivacyDlpV2TaggedFieldResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TaggedFieldResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2TaggedFieldResponseOutput)
-}
-
-// GooglePrivacyDlpV2TaggedFieldResponseArrayInput is an input type that accepts GooglePrivacyDlpV2TaggedFieldResponseArray and GooglePrivacyDlpV2TaggedFieldResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2TaggedFieldResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2TaggedFieldResponseArray{ GooglePrivacyDlpV2TaggedFieldResponseArgs{...} }
-type GooglePrivacyDlpV2TaggedFieldResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2TaggedFieldResponseArrayOutput() GooglePrivacyDlpV2TaggedFieldResponseArrayOutput
-	ToGooglePrivacyDlpV2TaggedFieldResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2TaggedFieldResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2TaggedFieldResponseArray []GooglePrivacyDlpV2TaggedFieldResponseInput
-
-func (GooglePrivacyDlpV2TaggedFieldResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2TaggedFieldResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2TaggedFieldResponseArray) ToGooglePrivacyDlpV2TaggedFieldResponseArrayOutput() GooglePrivacyDlpV2TaggedFieldResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2TaggedFieldResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2TaggedFieldResponseArray) ToGooglePrivacyDlpV2TaggedFieldResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TaggedFieldResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2TaggedFieldResponseArrayOutput)
 }
 
 // A column with a semantic tag attached.
@@ -28722,74 +18938,6 @@ func (o GooglePrivacyDlpV2ThrowErrorPtrOutput) Elem() GooglePrivacyDlpV2ThrowErr
 type GooglePrivacyDlpV2ThrowErrorResponse struct {
 }
 
-// GooglePrivacyDlpV2ThrowErrorResponseInput is an input type that accepts GooglePrivacyDlpV2ThrowErrorResponseArgs and GooglePrivacyDlpV2ThrowErrorResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2ThrowErrorResponseInput` via:
-//
-//          GooglePrivacyDlpV2ThrowErrorResponseArgs{...}
-type GooglePrivacyDlpV2ThrowErrorResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2ThrowErrorResponseOutput() GooglePrivacyDlpV2ThrowErrorResponseOutput
-	ToGooglePrivacyDlpV2ThrowErrorResponseOutputWithContext(context.Context) GooglePrivacyDlpV2ThrowErrorResponseOutput
-}
-
-// Throw an error and fail the request when a transformation error occurs.
-type GooglePrivacyDlpV2ThrowErrorResponseArgs struct {
-}
-
-func (GooglePrivacyDlpV2ThrowErrorResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2ThrowErrorResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2ThrowErrorResponseArgs) ToGooglePrivacyDlpV2ThrowErrorResponseOutput() GooglePrivacyDlpV2ThrowErrorResponseOutput {
-	return i.ToGooglePrivacyDlpV2ThrowErrorResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2ThrowErrorResponseArgs) ToGooglePrivacyDlpV2ThrowErrorResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ThrowErrorResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ThrowErrorResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2ThrowErrorResponseArgs) ToGooglePrivacyDlpV2ThrowErrorResponsePtrOutput() GooglePrivacyDlpV2ThrowErrorResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2ThrowErrorResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2ThrowErrorResponseArgs) ToGooglePrivacyDlpV2ThrowErrorResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ThrowErrorResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ThrowErrorResponseOutput).ToGooglePrivacyDlpV2ThrowErrorResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2ThrowErrorResponsePtrInput is an input type that accepts GooglePrivacyDlpV2ThrowErrorResponseArgs, GooglePrivacyDlpV2ThrowErrorResponsePtr and GooglePrivacyDlpV2ThrowErrorResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2ThrowErrorResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2ThrowErrorResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2ThrowErrorResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2ThrowErrorResponsePtrOutput() GooglePrivacyDlpV2ThrowErrorResponsePtrOutput
-	ToGooglePrivacyDlpV2ThrowErrorResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2ThrowErrorResponsePtrOutput
-}
-
-type googlePrivacyDlpV2ThrowErrorResponsePtrType GooglePrivacyDlpV2ThrowErrorResponseArgs
-
-func GooglePrivacyDlpV2ThrowErrorResponsePtr(v *GooglePrivacyDlpV2ThrowErrorResponseArgs) GooglePrivacyDlpV2ThrowErrorResponsePtrInput {
-	return (*googlePrivacyDlpV2ThrowErrorResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2ThrowErrorResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2ThrowErrorResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2ThrowErrorResponsePtrType) ToGooglePrivacyDlpV2ThrowErrorResponsePtrOutput() GooglePrivacyDlpV2ThrowErrorResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2ThrowErrorResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2ThrowErrorResponsePtrType) ToGooglePrivacyDlpV2ThrowErrorResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ThrowErrorResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ThrowErrorResponsePtrOutput)
-}
-
 // Throw an error and fail the request when a transformation error occurs.
 type GooglePrivacyDlpV2ThrowErrorResponseOutput struct{ *pulumi.OutputState }
 
@@ -28803,40 +18951,6 @@ func (o GooglePrivacyDlpV2ThrowErrorResponseOutput) ToGooglePrivacyDlpV2ThrowErr
 
 func (o GooglePrivacyDlpV2ThrowErrorResponseOutput) ToGooglePrivacyDlpV2ThrowErrorResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ThrowErrorResponseOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2ThrowErrorResponseOutput) ToGooglePrivacyDlpV2ThrowErrorResponsePtrOutput() GooglePrivacyDlpV2ThrowErrorResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2ThrowErrorResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2ThrowErrorResponseOutput) ToGooglePrivacyDlpV2ThrowErrorResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ThrowErrorResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2ThrowErrorResponse) *GooglePrivacyDlpV2ThrowErrorResponse {
-		return &v
-	}).(GooglePrivacyDlpV2ThrowErrorResponsePtrOutput)
-}
-
-type GooglePrivacyDlpV2ThrowErrorResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2ThrowErrorResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2ThrowErrorResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2ThrowErrorResponsePtrOutput) ToGooglePrivacyDlpV2ThrowErrorResponsePtrOutput() GooglePrivacyDlpV2ThrowErrorResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2ThrowErrorResponsePtrOutput) ToGooglePrivacyDlpV2ThrowErrorResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ThrowErrorResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2ThrowErrorResponsePtrOutput) Elem() GooglePrivacyDlpV2ThrowErrorResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2ThrowErrorResponse) GooglePrivacyDlpV2ThrowErrorResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2ThrowErrorResponse
-		return ret
-	}).(GooglePrivacyDlpV2ThrowErrorResponseOutput)
 }
 
 // For use with `Date`, `Timestamp`, and `TimeOfDay`, extract or preserve a portion of the value.
@@ -28985,35 +19099,6 @@ func (o GooglePrivacyDlpV2TimePartConfigPtrOutput) PartToExtract() GooglePrivacy
 type GooglePrivacyDlpV2TimePartConfigResponse struct {
 	// The part of the time to keep.
 	PartToExtract string `pulumi:"partToExtract"`
-}
-
-// GooglePrivacyDlpV2TimePartConfigResponseInput is an input type that accepts GooglePrivacyDlpV2TimePartConfigResponseArgs and GooglePrivacyDlpV2TimePartConfigResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2TimePartConfigResponseInput` via:
-//
-//          GooglePrivacyDlpV2TimePartConfigResponseArgs{...}
-type GooglePrivacyDlpV2TimePartConfigResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2TimePartConfigResponseOutput() GooglePrivacyDlpV2TimePartConfigResponseOutput
-	ToGooglePrivacyDlpV2TimePartConfigResponseOutputWithContext(context.Context) GooglePrivacyDlpV2TimePartConfigResponseOutput
-}
-
-// For use with `Date`, `Timestamp`, and `TimeOfDay`, extract or preserve a portion of the value.
-type GooglePrivacyDlpV2TimePartConfigResponseArgs struct {
-	// The part of the time to keep.
-	PartToExtract pulumi.StringInput `pulumi:"partToExtract"`
-}
-
-func (GooglePrivacyDlpV2TimePartConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2TimePartConfigResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2TimePartConfigResponseArgs) ToGooglePrivacyDlpV2TimePartConfigResponseOutput() GooglePrivacyDlpV2TimePartConfigResponseOutput {
-	return i.ToGooglePrivacyDlpV2TimePartConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2TimePartConfigResponseArgs) ToGooglePrivacyDlpV2TimePartConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TimePartConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2TimePartConfigResponseOutput)
 }
 
 // For use with `Date`, `Timestamp`, and `TimeOfDay`, extract or preserve a portion of the value.
@@ -29245,82 +19330,6 @@ type GooglePrivacyDlpV2TimespanConfigResponse struct {
 	TimestampField GooglePrivacyDlpV2FieldIdResponse `pulumi:"timestampField"`
 }
 
-// GooglePrivacyDlpV2TimespanConfigResponseInput is an input type that accepts GooglePrivacyDlpV2TimespanConfigResponseArgs and GooglePrivacyDlpV2TimespanConfigResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2TimespanConfigResponseInput` via:
-//
-//          GooglePrivacyDlpV2TimespanConfigResponseArgs{...}
-type GooglePrivacyDlpV2TimespanConfigResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2TimespanConfigResponseOutput() GooglePrivacyDlpV2TimespanConfigResponseOutput
-	ToGooglePrivacyDlpV2TimespanConfigResponseOutputWithContext(context.Context) GooglePrivacyDlpV2TimespanConfigResponseOutput
-}
-
-// Configuration of the timespan of the items to include in scanning. Currently only supported when inspecting Google Cloud Storage and BigQuery.
-type GooglePrivacyDlpV2TimespanConfigResponseArgs struct {
-	// When the job is started by a JobTrigger we will automatically figure out a valid start_time to avoid scanning files that have not been modified since the last time the JobTrigger executed. This will be based on the time of the execution of the last run of the JobTrigger.
-	EnableAutoPopulationOfTimespanConfig pulumi.BoolInput `pulumi:"enableAutoPopulationOfTimespanConfig"`
-	// Exclude files, tables, or rows newer than this value. If not set, no upper time limit is applied.
-	EndTime pulumi.StringInput `pulumi:"endTime"`
-	// Exclude files, tables, or rows older than this value. If not set, no lower time limit is applied.
-	StartTime pulumi.StringInput `pulumi:"startTime"`
-	// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. For BigQuery: If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. For Datastore: If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`.
-	TimestampField GooglePrivacyDlpV2FieldIdResponseInput `pulumi:"timestampField"`
-}
-
-func (GooglePrivacyDlpV2TimespanConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2TimespanConfigResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2TimespanConfigResponseArgs) ToGooglePrivacyDlpV2TimespanConfigResponseOutput() GooglePrivacyDlpV2TimespanConfigResponseOutput {
-	return i.ToGooglePrivacyDlpV2TimespanConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2TimespanConfigResponseArgs) ToGooglePrivacyDlpV2TimespanConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TimespanConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2TimespanConfigResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2TimespanConfigResponseArgs) ToGooglePrivacyDlpV2TimespanConfigResponsePtrOutput() GooglePrivacyDlpV2TimespanConfigResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2TimespanConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2TimespanConfigResponseArgs) ToGooglePrivacyDlpV2TimespanConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TimespanConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2TimespanConfigResponseOutput).ToGooglePrivacyDlpV2TimespanConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2TimespanConfigResponsePtrInput is an input type that accepts GooglePrivacyDlpV2TimespanConfigResponseArgs, GooglePrivacyDlpV2TimespanConfigResponsePtr and GooglePrivacyDlpV2TimespanConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2TimespanConfigResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2TimespanConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2TimespanConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2TimespanConfigResponsePtrOutput() GooglePrivacyDlpV2TimespanConfigResponsePtrOutput
-	ToGooglePrivacyDlpV2TimespanConfigResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2TimespanConfigResponsePtrOutput
-}
-
-type googlePrivacyDlpV2TimespanConfigResponsePtrType GooglePrivacyDlpV2TimespanConfigResponseArgs
-
-func GooglePrivacyDlpV2TimespanConfigResponsePtr(v *GooglePrivacyDlpV2TimespanConfigResponseArgs) GooglePrivacyDlpV2TimespanConfigResponsePtrInput {
-	return (*googlePrivacyDlpV2TimespanConfigResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2TimespanConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2TimespanConfigResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2TimespanConfigResponsePtrType) ToGooglePrivacyDlpV2TimespanConfigResponsePtrOutput() GooglePrivacyDlpV2TimespanConfigResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2TimespanConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2TimespanConfigResponsePtrType) ToGooglePrivacyDlpV2TimespanConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TimespanConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2TimespanConfigResponsePtrOutput)
-}
-
 // Configuration of the timespan of the items to include in scanning. Currently only supported when inspecting Google Cloud Storage and BigQuery.
 type GooglePrivacyDlpV2TimespanConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -29334,16 +19343,6 @@ func (o GooglePrivacyDlpV2TimespanConfigResponseOutput) ToGooglePrivacyDlpV2Time
 
 func (o GooglePrivacyDlpV2TimespanConfigResponseOutput) ToGooglePrivacyDlpV2TimespanConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TimespanConfigResponseOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2TimespanConfigResponseOutput) ToGooglePrivacyDlpV2TimespanConfigResponsePtrOutput() GooglePrivacyDlpV2TimespanConfigResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2TimespanConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2TimespanConfigResponseOutput) ToGooglePrivacyDlpV2TimespanConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TimespanConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2TimespanConfigResponse) *GooglePrivacyDlpV2TimespanConfigResponse {
-		return &v
-	}).(GooglePrivacyDlpV2TimespanConfigResponsePtrOutput)
 }
 
 // When the job is started by a JobTrigger we will automatically figure out a valid start_time to avoid scanning files that have not been modified since the last time the JobTrigger executed. This will be based on the time of the execution of the last run of the JobTrigger.
@@ -29366,70 +19365,6 @@ func (o GooglePrivacyDlpV2TimespanConfigResponseOutput) TimestampField() GoogleP
 	return o.ApplyT(func(v GooglePrivacyDlpV2TimespanConfigResponse) GooglePrivacyDlpV2FieldIdResponse {
 		return v.TimestampField
 	}).(GooglePrivacyDlpV2FieldIdResponseOutput)
-}
-
-type GooglePrivacyDlpV2TimespanConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2TimespanConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2TimespanConfigResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2TimespanConfigResponsePtrOutput) ToGooglePrivacyDlpV2TimespanConfigResponsePtrOutput() GooglePrivacyDlpV2TimespanConfigResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2TimespanConfigResponsePtrOutput) ToGooglePrivacyDlpV2TimespanConfigResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TimespanConfigResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2TimespanConfigResponsePtrOutput) Elem() GooglePrivacyDlpV2TimespanConfigResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2TimespanConfigResponse) GooglePrivacyDlpV2TimespanConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2TimespanConfigResponse
-		return ret
-	}).(GooglePrivacyDlpV2TimespanConfigResponseOutput)
-}
-
-// When the job is started by a JobTrigger we will automatically figure out a valid start_time to avoid scanning files that have not been modified since the last time the JobTrigger executed. This will be based on the time of the execution of the last run of the JobTrigger.
-func (o GooglePrivacyDlpV2TimespanConfigResponsePtrOutput) EnableAutoPopulationOfTimespanConfig() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2TimespanConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.EnableAutoPopulationOfTimespanConfig
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Exclude files, tables, or rows newer than this value. If not set, no upper time limit is applied.
-func (o GooglePrivacyDlpV2TimespanConfigResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2TimespanConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EndTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Exclude files, tables, or rows older than this value. If not set, no lower time limit is applied.
-func (o GooglePrivacyDlpV2TimespanConfigResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2TimespanConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StartTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. For BigQuery: If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. For Datastore: If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`.
-func (o GooglePrivacyDlpV2TimespanConfigResponsePtrOutput) TimestampField() GooglePrivacyDlpV2FieldIdResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2TimespanConfigResponse) *GooglePrivacyDlpV2FieldIdResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.TimestampField
-	}).(GooglePrivacyDlpV2FieldIdResponsePtrOutput)
 }
 
 // How to handle transformation errors during de-identification. A transformation error occurs when the requested transformation is incompatible with the data. For example, trying to de-identify an IP address using a `DateShift` transformation would result in a transformation error, since date info cannot be extracted from an IP address. Information about any incompatible transformations, and how they were handled, is returned in the response as part of the `TransformationOverviews`.
@@ -29603,78 +19538,6 @@ type GooglePrivacyDlpV2TransformationErrorHandlingResponse struct {
 	ThrowError GooglePrivacyDlpV2ThrowErrorResponse `pulumi:"throwError"`
 }
 
-// GooglePrivacyDlpV2TransformationErrorHandlingResponseInput is an input type that accepts GooglePrivacyDlpV2TransformationErrorHandlingResponseArgs and GooglePrivacyDlpV2TransformationErrorHandlingResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2TransformationErrorHandlingResponseInput` via:
-//
-//          GooglePrivacyDlpV2TransformationErrorHandlingResponseArgs{...}
-type GooglePrivacyDlpV2TransformationErrorHandlingResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2TransformationErrorHandlingResponseOutput() GooglePrivacyDlpV2TransformationErrorHandlingResponseOutput
-	ToGooglePrivacyDlpV2TransformationErrorHandlingResponseOutputWithContext(context.Context) GooglePrivacyDlpV2TransformationErrorHandlingResponseOutput
-}
-
-// How to handle transformation errors during de-identification. A transformation error occurs when the requested transformation is incompatible with the data. For example, trying to de-identify an IP address using a `DateShift` transformation would result in a transformation error, since date info cannot be extracted from an IP address. Information about any incompatible transformations, and how they were handled, is returned in the response as part of the `TransformationOverviews`.
-type GooglePrivacyDlpV2TransformationErrorHandlingResponseArgs struct {
-	// Ignore errors
-	LeaveUntransformed GooglePrivacyDlpV2LeaveUntransformedResponseInput `pulumi:"leaveUntransformed"`
-	// Throw an error
-	ThrowError GooglePrivacyDlpV2ThrowErrorResponseInput `pulumi:"throwError"`
-}
-
-func (GooglePrivacyDlpV2TransformationErrorHandlingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2TransformationErrorHandlingResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2TransformationErrorHandlingResponseArgs) ToGooglePrivacyDlpV2TransformationErrorHandlingResponseOutput() GooglePrivacyDlpV2TransformationErrorHandlingResponseOutput {
-	return i.ToGooglePrivacyDlpV2TransformationErrorHandlingResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2TransformationErrorHandlingResponseArgs) ToGooglePrivacyDlpV2TransformationErrorHandlingResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TransformationErrorHandlingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2TransformationErrorHandlingResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2TransformationErrorHandlingResponseArgs) ToGooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput() GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2TransformationErrorHandlingResponseArgs) ToGooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2TransformationErrorHandlingResponseOutput).ToGooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrInput is an input type that accepts GooglePrivacyDlpV2TransformationErrorHandlingResponseArgs, GooglePrivacyDlpV2TransformationErrorHandlingResponsePtr and GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2TransformationErrorHandlingResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput() GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput
-	ToGooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput
-}
-
-type googlePrivacyDlpV2TransformationErrorHandlingResponsePtrType GooglePrivacyDlpV2TransformationErrorHandlingResponseArgs
-
-func GooglePrivacyDlpV2TransformationErrorHandlingResponsePtr(v *GooglePrivacyDlpV2TransformationErrorHandlingResponseArgs) GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrInput {
-	return (*googlePrivacyDlpV2TransformationErrorHandlingResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2TransformationErrorHandlingResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2TransformationErrorHandlingResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2TransformationErrorHandlingResponsePtrType) ToGooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput() GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2TransformationErrorHandlingResponsePtrType) ToGooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput)
-}
-
 // How to handle transformation errors during de-identification. A transformation error occurs when the requested transformation is incompatible with the data. For example, trying to de-identify an IP address using a `DateShift` transformation would result in a transformation error, since date info cannot be extracted from an IP address. Information about any incompatible transformations, and how they were handled, is returned in the response as part of the `TransformationOverviews`.
 type GooglePrivacyDlpV2TransformationErrorHandlingResponseOutput struct{ *pulumi.OutputState }
 
@@ -29690,16 +19553,6 @@ func (o GooglePrivacyDlpV2TransformationErrorHandlingResponseOutput) ToGooglePri
 	return o
 }
 
-func (o GooglePrivacyDlpV2TransformationErrorHandlingResponseOutput) ToGooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput() GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2TransformationErrorHandlingResponseOutput) ToGooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2TransformationErrorHandlingResponse) *GooglePrivacyDlpV2TransformationErrorHandlingResponse {
-		return &v
-	}).(GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput)
-}
-
 // Ignore errors
 func (o GooglePrivacyDlpV2TransformationErrorHandlingResponseOutput) LeaveUntransformed() GooglePrivacyDlpV2LeaveUntransformedResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2TransformationErrorHandlingResponse) GooglePrivacyDlpV2LeaveUntransformedResponse {
@@ -29712,50 +19565,6 @@ func (o GooglePrivacyDlpV2TransformationErrorHandlingResponseOutput) ThrowError(
 	return o.ApplyT(func(v GooglePrivacyDlpV2TransformationErrorHandlingResponse) GooglePrivacyDlpV2ThrowErrorResponse {
 		return v.ThrowError
 	}).(GooglePrivacyDlpV2ThrowErrorResponseOutput)
-}
-
-type GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2TransformationErrorHandlingResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput) ToGooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput() GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput) ToGooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput) Elem() GooglePrivacyDlpV2TransformationErrorHandlingResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2TransformationErrorHandlingResponse) GooglePrivacyDlpV2TransformationErrorHandlingResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2TransformationErrorHandlingResponse
-		return ret
-	}).(GooglePrivacyDlpV2TransformationErrorHandlingResponseOutput)
-}
-
-// Ignore errors
-func (o GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput) LeaveUntransformed() GooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2TransformationErrorHandlingResponse) *GooglePrivacyDlpV2LeaveUntransformedResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.LeaveUntransformed
-	}).(GooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput)
-}
-
-// Throw an error
-func (o GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput) ThrowError() GooglePrivacyDlpV2ThrowErrorResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2TransformationErrorHandlingResponse) *GooglePrivacyDlpV2ThrowErrorResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ThrowError
-	}).(GooglePrivacyDlpV2ThrowErrorResponsePtrOutput)
 }
 
 // Use this to have a random data crypto key generated. It will be discarded after the request finishes.
@@ -29904,35 +19713,6 @@ type GooglePrivacyDlpV2TransientCryptoKeyResponse struct {
 	Name string `pulumi:"name"`
 }
 
-// GooglePrivacyDlpV2TransientCryptoKeyResponseInput is an input type that accepts GooglePrivacyDlpV2TransientCryptoKeyResponseArgs and GooglePrivacyDlpV2TransientCryptoKeyResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2TransientCryptoKeyResponseInput` via:
-//
-//          GooglePrivacyDlpV2TransientCryptoKeyResponseArgs{...}
-type GooglePrivacyDlpV2TransientCryptoKeyResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2TransientCryptoKeyResponseOutput() GooglePrivacyDlpV2TransientCryptoKeyResponseOutput
-	ToGooglePrivacyDlpV2TransientCryptoKeyResponseOutputWithContext(context.Context) GooglePrivacyDlpV2TransientCryptoKeyResponseOutput
-}
-
-// Use this to have a random data crypto key generated. It will be discarded after the request finishes.
-type GooglePrivacyDlpV2TransientCryptoKeyResponseArgs struct {
-	// Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GooglePrivacyDlpV2TransientCryptoKeyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2TransientCryptoKeyResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2TransientCryptoKeyResponseArgs) ToGooglePrivacyDlpV2TransientCryptoKeyResponseOutput() GooglePrivacyDlpV2TransientCryptoKeyResponseOutput {
-	return i.ToGooglePrivacyDlpV2TransientCryptoKeyResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2TransientCryptoKeyResponseArgs) ToGooglePrivacyDlpV2TransientCryptoKeyResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TransientCryptoKeyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2TransientCryptoKeyResponseOutput)
-}
-
 // Use this to have a random data crypto key generated. It will be discarded after the request finishes.
 type GooglePrivacyDlpV2TransientCryptoKeyResponseOutput struct{ *pulumi.OutputState }
 
@@ -30068,62 +19848,6 @@ type GooglePrivacyDlpV2TriggerResponse struct {
 	Manual GooglePrivacyDlpV2ManualResponse `pulumi:"manual"`
 	// Create a job on a repeating basis based on the elapse of time.
 	Schedule GooglePrivacyDlpV2ScheduleResponse `pulumi:"schedule"`
-}
-
-// GooglePrivacyDlpV2TriggerResponseInput is an input type that accepts GooglePrivacyDlpV2TriggerResponseArgs and GooglePrivacyDlpV2TriggerResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2TriggerResponseInput` via:
-//
-//          GooglePrivacyDlpV2TriggerResponseArgs{...}
-type GooglePrivacyDlpV2TriggerResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2TriggerResponseOutput() GooglePrivacyDlpV2TriggerResponseOutput
-	ToGooglePrivacyDlpV2TriggerResponseOutputWithContext(context.Context) GooglePrivacyDlpV2TriggerResponseOutput
-}
-
-// What event needs to occur for a new job to be started.
-type GooglePrivacyDlpV2TriggerResponseArgs struct {
-	// For use with hybrid jobs. Jobs must be manually created and finished.
-	Manual GooglePrivacyDlpV2ManualResponseInput `pulumi:"manual"`
-	// Create a job on a repeating basis based on the elapse of time.
-	Schedule GooglePrivacyDlpV2ScheduleResponseInput `pulumi:"schedule"`
-}
-
-func (GooglePrivacyDlpV2TriggerResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2TriggerResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2TriggerResponseArgs) ToGooglePrivacyDlpV2TriggerResponseOutput() GooglePrivacyDlpV2TriggerResponseOutput {
-	return i.ToGooglePrivacyDlpV2TriggerResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2TriggerResponseArgs) ToGooglePrivacyDlpV2TriggerResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TriggerResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2TriggerResponseOutput)
-}
-
-// GooglePrivacyDlpV2TriggerResponseArrayInput is an input type that accepts GooglePrivacyDlpV2TriggerResponseArray and GooglePrivacyDlpV2TriggerResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2TriggerResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2TriggerResponseArray{ GooglePrivacyDlpV2TriggerResponseArgs{...} }
-type GooglePrivacyDlpV2TriggerResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2TriggerResponseArrayOutput() GooglePrivacyDlpV2TriggerResponseArrayOutput
-	ToGooglePrivacyDlpV2TriggerResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2TriggerResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2TriggerResponseArray []GooglePrivacyDlpV2TriggerResponseInput
-
-func (GooglePrivacyDlpV2TriggerResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2TriggerResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2TriggerResponseArray) ToGooglePrivacyDlpV2TriggerResponseArrayOutput() GooglePrivacyDlpV2TriggerResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2TriggerResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2TriggerResponseArray) ToGooglePrivacyDlpV2TriggerResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TriggerResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2TriggerResponseArrayOutput)
 }
 
 // What event needs to occur for a new job to be started.
@@ -30315,35 +20039,6 @@ func (o GooglePrivacyDlpV2UnwrappedCryptoKeyPtrOutput) Key() pulumi.StringPtrOut
 type GooglePrivacyDlpV2UnwrappedCryptoKeyResponse struct {
 	// A 128/192/256 bit key.
 	Key string `pulumi:"key"`
-}
-
-// GooglePrivacyDlpV2UnwrappedCryptoKeyResponseInput is an input type that accepts GooglePrivacyDlpV2UnwrappedCryptoKeyResponseArgs and GooglePrivacyDlpV2UnwrappedCryptoKeyResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2UnwrappedCryptoKeyResponseInput` via:
-//
-//          GooglePrivacyDlpV2UnwrappedCryptoKeyResponseArgs{...}
-type GooglePrivacyDlpV2UnwrappedCryptoKeyResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2UnwrappedCryptoKeyResponseOutput() GooglePrivacyDlpV2UnwrappedCryptoKeyResponseOutput
-	ToGooglePrivacyDlpV2UnwrappedCryptoKeyResponseOutputWithContext(context.Context) GooglePrivacyDlpV2UnwrappedCryptoKeyResponseOutput
-}
-
-// Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible.
-type GooglePrivacyDlpV2UnwrappedCryptoKeyResponseArgs struct {
-	// A 128/192/256 bit key.
-	Key pulumi.StringInput `pulumi:"key"`
-}
-
-func (GooglePrivacyDlpV2UnwrappedCryptoKeyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2UnwrappedCryptoKeyResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2UnwrappedCryptoKeyResponseArgs) ToGooglePrivacyDlpV2UnwrappedCryptoKeyResponseOutput() GooglePrivacyDlpV2UnwrappedCryptoKeyResponseOutput {
-	return i.ToGooglePrivacyDlpV2UnwrappedCryptoKeyResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2UnwrappedCryptoKeyResponseArgs) ToGooglePrivacyDlpV2UnwrappedCryptoKeyResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2UnwrappedCryptoKeyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2UnwrappedCryptoKeyResponseOutput)
 }
 
 // Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible.
@@ -30647,62 +20342,6 @@ type GooglePrivacyDlpV2ValueFrequencyResponse struct {
 	Value GooglePrivacyDlpV2ValueResponse `pulumi:"value"`
 }
 
-// GooglePrivacyDlpV2ValueFrequencyResponseInput is an input type that accepts GooglePrivacyDlpV2ValueFrequencyResponseArgs and GooglePrivacyDlpV2ValueFrequencyResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2ValueFrequencyResponseInput` via:
-//
-//          GooglePrivacyDlpV2ValueFrequencyResponseArgs{...}
-type GooglePrivacyDlpV2ValueFrequencyResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2ValueFrequencyResponseOutput() GooglePrivacyDlpV2ValueFrequencyResponseOutput
-	ToGooglePrivacyDlpV2ValueFrequencyResponseOutputWithContext(context.Context) GooglePrivacyDlpV2ValueFrequencyResponseOutput
-}
-
-// A value of a field, including its frequency.
-type GooglePrivacyDlpV2ValueFrequencyResponseArgs struct {
-	// How many times the value is contained in the field.
-	Count pulumi.StringInput `pulumi:"count"`
-	// A value contained in the field in question.
-	Value GooglePrivacyDlpV2ValueResponseInput `pulumi:"value"`
-}
-
-func (GooglePrivacyDlpV2ValueFrequencyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2ValueFrequencyResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2ValueFrequencyResponseArgs) ToGooglePrivacyDlpV2ValueFrequencyResponseOutput() GooglePrivacyDlpV2ValueFrequencyResponseOutput {
-	return i.ToGooglePrivacyDlpV2ValueFrequencyResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2ValueFrequencyResponseArgs) ToGooglePrivacyDlpV2ValueFrequencyResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ValueFrequencyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ValueFrequencyResponseOutput)
-}
-
-// GooglePrivacyDlpV2ValueFrequencyResponseArrayInput is an input type that accepts GooglePrivacyDlpV2ValueFrequencyResponseArray and GooglePrivacyDlpV2ValueFrequencyResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2ValueFrequencyResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2ValueFrequencyResponseArray{ GooglePrivacyDlpV2ValueFrequencyResponseArgs{...} }
-type GooglePrivacyDlpV2ValueFrequencyResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2ValueFrequencyResponseArrayOutput() GooglePrivacyDlpV2ValueFrequencyResponseArrayOutput
-	ToGooglePrivacyDlpV2ValueFrequencyResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2ValueFrequencyResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2ValueFrequencyResponseArray []GooglePrivacyDlpV2ValueFrequencyResponseInput
-
-func (GooglePrivacyDlpV2ValueFrequencyResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2ValueFrequencyResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2ValueFrequencyResponseArray) ToGooglePrivacyDlpV2ValueFrequencyResponseArrayOutput() GooglePrivacyDlpV2ValueFrequencyResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2ValueFrequencyResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2ValueFrequencyResponseArray) ToGooglePrivacyDlpV2ValueFrequencyResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ValueFrequencyResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ValueFrequencyResponseArrayOutput)
-}
-
 // A value of a field, including its frequency.
 type GooglePrivacyDlpV2ValueFrequencyResponseOutput struct{ *pulumi.OutputState }
 
@@ -30768,115 +20407,6 @@ type GooglePrivacyDlpV2ValueResponse struct {
 	TimestampValue string `pulumi:"timestampValue"`
 }
 
-// GooglePrivacyDlpV2ValueResponseInput is an input type that accepts GooglePrivacyDlpV2ValueResponseArgs and GooglePrivacyDlpV2ValueResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2ValueResponseInput` via:
-//
-//          GooglePrivacyDlpV2ValueResponseArgs{...}
-type GooglePrivacyDlpV2ValueResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2ValueResponseOutput() GooglePrivacyDlpV2ValueResponseOutput
-	ToGooglePrivacyDlpV2ValueResponseOutputWithContext(context.Context) GooglePrivacyDlpV2ValueResponseOutput
-}
-
-// Set of primitive values supported by the system. Note that for the purposes of inspection or transformation, the number of bytes considered to comprise a 'Value' is based on its representation as a UTF-8 encoded string. For example, if 'integer_value' is set to 123456789, the number of bytes would be counted as 9, even though an int64 only holds up to 8 bytes of data.
-type GooglePrivacyDlpV2ValueResponseArgs struct {
-	// boolean
-	BooleanValue pulumi.BoolInput `pulumi:"booleanValue"`
-	// date
-	DateValue GoogleTypeDateResponseInput `pulumi:"dateValue"`
-	// day of week
-	DayOfWeekValue pulumi.StringInput `pulumi:"dayOfWeekValue"`
-	// float
-	FloatValue pulumi.Float64Input `pulumi:"floatValue"`
-	// integer
-	IntegerValue pulumi.StringInput `pulumi:"integerValue"`
-	// string
-	StringValue pulumi.StringInput `pulumi:"stringValue"`
-	// time of day
-	TimeValue GoogleTypeTimeOfDayResponseInput `pulumi:"timeValue"`
-	// timestamp
-	TimestampValue pulumi.StringInput `pulumi:"timestampValue"`
-}
-
-func (GooglePrivacyDlpV2ValueResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2ValueResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2ValueResponseArgs) ToGooglePrivacyDlpV2ValueResponseOutput() GooglePrivacyDlpV2ValueResponseOutput {
-	return i.ToGooglePrivacyDlpV2ValueResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2ValueResponseArgs) ToGooglePrivacyDlpV2ValueResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ValueResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ValueResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2ValueResponseArgs) ToGooglePrivacyDlpV2ValueResponsePtrOutput() GooglePrivacyDlpV2ValueResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2ValueResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2ValueResponseArgs) ToGooglePrivacyDlpV2ValueResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ValueResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ValueResponseOutput).ToGooglePrivacyDlpV2ValueResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2ValueResponsePtrInput is an input type that accepts GooglePrivacyDlpV2ValueResponseArgs, GooglePrivacyDlpV2ValueResponsePtr and GooglePrivacyDlpV2ValueResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2ValueResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2ValueResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2ValueResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2ValueResponsePtrOutput() GooglePrivacyDlpV2ValueResponsePtrOutput
-	ToGooglePrivacyDlpV2ValueResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2ValueResponsePtrOutput
-}
-
-type googlePrivacyDlpV2ValueResponsePtrType GooglePrivacyDlpV2ValueResponseArgs
-
-func GooglePrivacyDlpV2ValueResponsePtr(v *GooglePrivacyDlpV2ValueResponseArgs) GooglePrivacyDlpV2ValueResponsePtrInput {
-	return (*googlePrivacyDlpV2ValueResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2ValueResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2ValueResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2ValueResponsePtrType) ToGooglePrivacyDlpV2ValueResponsePtrOutput() GooglePrivacyDlpV2ValueResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2ValueResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2ValueResponsePtrType) ToGooglePrivacyDlpV2ValueResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ValueResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ValueResponsePtrOutput)
-}
-
-// GooglePrivacyDlpV2ValueResponseArrayInput is an input type that accepts GooglePrivacyDlpV2ValueResponseArray and GooglePrivacyDlpV2ValueResponseArrayOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2ValueResponseArrayInput` via:
-//
-//          GooglePrivacyDlpV2ValueResponseArray{ GooglePrivacyDlpV2ValueResponseArgs{...} }
-type GooglePrivacyDlpV2ValueResponseArrayInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2ValueResponseArrayOutput() GooglePrivacyDlpV2ValueResponseArrayOutput
-	ToGooglePrivacyDlpV2ValueResponseArrayOutputWithContext(context.Context) GooglePrivacyDlpV2ValueResponseArrayOutput
-}
-
-type GooglePrivacyDlpV2ValueResponseArray []GooglePrivacyDlpV2ValueResponseInput
-
-func (GooglePrivacyDlpV2ValueResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GooglePrivacyDlpV2ValueResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2ValueResponseArray) ToGooglePrivacyDlpV2ValueResponseArrayOutput() GooglePrivacyDlpV2ValueResponseArrayOutput {
-	return i.ToGooglePrivacyDlpV2ValueResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2ValueResponseArray) ToGooglePrivacyDlpV2ValueResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ValueResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ValueResponseArrayOutput)
-}
-
 // Set of primitive values supported by the system. Note that for the purposes of inspection or transformation, the number of bytes considered to comprise a 'Value' is based on its representation as a UTF-8 encoded string. For example, if 'integer_value' is set to 123456789, the number of bytes would be counted as 9, even though an int64 only holds up to 8 bytes of data.
 type GooglePrivacyDlpV2ValueResponseOutput struct{ *pulumi.OutputState }
 
@@ -30890,16 +20420,6 @@ func (o GooglePrivacyDlpV2ValueResponseOutput) ToGooglePrivacyDlpV2ValueResponse
 
 func (o GooglePrivacyDlpV2ValueResponseOutput) ToGooglePrivacyDlpV2ValueResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ValueResponseOutput {
 	return o
-}
-
-func (o GooglePrivacyDlpV2ValueResponseOutput) ToGooglePrivacyDlpV2ValueResponsePtrOutput() GooglePrivacyDlpV2ValueResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2ValueResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2ValueResponseOutput) ToGooglePrivacyDlpV2ValueResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ValueResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2ValueResponse) *GooglePrivacyDlpV2ValueResponse {
-		return &v
-	}).(GooglePrivacyDlpV2ValueResponsePtrOutput)
 }
 
 // boolean
@@ -30940,110 +20460,6 @@ func (o GooglePrivacyDlpV2ValueResponseOutput) TimeValue() GoogleTypeTimeOfDayRe
 // timestamp
 func (o GooglePrivacyDlpV2ValueResponseOutput) TimestampValue() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2ValueResponse) string { return v.TimestampValue }).(pulumi.StringOutput)
-}
-
-type GooglePrivacyDlpV2ValueResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2ValueResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2ValueResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2ValueResponsePtrOutput) ToGooglePrivacyDlpV2ValueResponsePtrOutput() GooglePrivacyDlpV2ValueResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2ValueResponsePtrOutput) ToGooglePrivacyDlpV2ValueResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ValueResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2ValueResponsePtrOutput) Elem() GooglePrivacyDlpV2ValueResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2ValueResponse) GooglePrivacyDlpV2ValueResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2ValueResponse
-		return ret
-	}).(GooglePrivacyDlpV2ValueResponseOutput)
-}
-
-// boolean
-func (o GooglePrivacyDlpV2ValueResponsePtrOutput) BooleanValue() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2ValueResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.BooleanValue
-	}).(pulumi.BoolPtrOutput)
-}
-
-// date
-func (o GooglePrivacyDlpV2ValueResponsePtrOutput) DateValue() GoogleTypeDateResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2ValueResponse) *GoogleTypeDateResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.DateValue
-	}).(GoogleTypeDateResponsePtrOutput)
-}
-
-// day of week
-func (o GooglePrivacyDlpV2ValueResponsePtrOutput) DayOfWeekValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2ValueResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DayOfWeekValue
-	}).(pulumi.StringPtrOutput)
-}
-
-// float
-func (o GooglePrivacyDlpV2ValueResponsePtrOutput) FloatValue() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2ValueResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.FloatValue
-	}).(pulumi.Float64PtrOutput)
-}
-
-// integer
-func (o GooglePrivacyDlpV2ValueResponsePtrOutput) IntegerValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2ValueResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.IntegerValue
-	}).(pulumi.StringPtrOutput)
-}
-
-// string
-func (o GooglePrivacyDlpV2ValueResponsePtrOutput) StringValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2ValueResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StringValue
-	}).(pulumi.StringPtrOutput)
-}
-
-// time of day
-func (o GooglePrivacyDlpV2ValueResponsePtrOutput) TimeValue() GoogleTypeTimeOfDayResponsePtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2ValueResponse) *GoogleTypeTimeOfDayResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.TimeValue
-	}).(GoogleTypeTimeOfDayResponsePtrOutput)
-}
-
-// timestamp
-func (o GooglePrivacyDlpV2ValueResponsePtrOutput) TimestampValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2ValueResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TimestampValue
-	}).(pulumi.StringPtrOutput)
 }
 
 type GooglePrivacyDlpV2ValueResponseArrayOutput struct{ *pulumi.OutputState }
@@ -31212,76 +20628,6 @@ type GooglePrivacyDlpV2WordListResponse struct {
 	Words []string `pulumi:"words"`
 }
 
-// GooglePrivacyDlpV2WordListResponseInput is an input type that accepts GooglePrivacyDlpV2WordListResponseArgs and GooglePrivacyDlpV2WordListResponseOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2WordListResponseInput` via:
-//
-//          GooglePrivacyDlpV2WordListResponseArgs{...}
-type GooglePrivacyDlpV2WordListResponseInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2WordListResponseOutput() GooglePrivacyDlpV2WordListResponseOutput
-	ToGooglePrivacyDlpV2WordListResponseOutputWithContext(context.Context) GooglePrivacyDlpV2WordListResponseOutput
-}
-
-// Message defining a list of words or phrases to search for in the data.
-type GooglePrivacyDlpV2WordListResponseArgs struct {
-	// Words or phrases defining the dictionary. The dictionary must contain at least one phrase and every phrase must contain at least 2 characters that are letters or digits. [required]
-	Words pulumi.StringArrayInput `pulumi:"words"`
-}
-
-func (GooglePrivacyDlpV2WordListResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GooglePrivacyDlpV2WordListResponse)(nil)).Elem()
-}
-
-func (i GooglePrivacyDlpV2WordListResponseArgs) ToGooglePrivacyDlpV2WordListResponseOutput() GooglePrivacyDlpV2WordListResponseOutput {
-	return i.ToGooglePrivacyDlpV2WordListResponseOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2WordListResponseArgs) ToGooglePrivacyDlpV2WordListResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2WordListResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2WordListResponseOutput)
-}
-
-func (i GooglePrivacyDlpV2WordListResponseArgs) ToGooglePrivacyDlpV2WordListResponsePtrOutput() GooglePrivacyDlpV2WordListResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2WordListResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GooglePrivacyDlpV2WordListResponseArgs) ToGooglePrivacyDlpV2WordListResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2WordListResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2WordListResponseOutput).ToGooglePrivacyDlpV2WordListResponsePtrOutputWithContext(ctx)
-}
-
-// GooglePrivacyDlpV2WordListResponsePtrInput is an input type that accepts GooglePrivacyDlpV2WordListResponseArgs, GooglePrivacyDlpV2WordListResponsePtr and GooglePrivacyDlpV2WordListResponsePtrOutput values.
-// You can construct a concrete instance of `GooglePrivacyDlpV2WordListResponsePtrInput` via:
-//
-//          GooglePrivacyDlpV2WordListResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GooglePrivacyDlpV2WordListResponsePtrInput interface {
-	pulumi.Input
-
-	ToGooglePrivacyDlpV2WordListResponsePtrOutput() GooglePrivacyDlpV2WordListResponsePtrOutput
-	ToGooglePrivacyDlpV2WordListResponsePtrOutputWithContext(context.Context) GooglePrivacyDlpV2WordListResponsePtrOutput
-}
-
-type googlePrivacyDlpV2WordListResponsePtrType GooglePrivacyDlpV2WordListResponseArgs
-
-func GooglePrivacyDlpV2WordListResponsePtr(v *GooglePrivacyDlpV2WordListResponseArgs) GooglePrivacyDlpV2WordListResponsePtrInput {
-	return (*googlePrivacyDlpV2WordListResponsePtrType)(v)
-}
-
-func (*googlePrivacyDlpV2WordListResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2WordListResponse)(nil)).Elem()
-}
-
-func (i *googlePrivacyDlpV2WordListResponsePtrType) ToGooglePrivacyDlpV2WordListResponsePtrOutput() GooglePrivacyDlpV2WordListResponsePtrOutput {
-	return i.ToGooglePrivacyDlpV2WordListResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googlePrivacyDlpV2WordListResponsePtrType) ToGooglePrivacyDlpV2WordListResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2WordListResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2WordListResponsePtrOutput)
-}
-
 // Message defining a list of words or phrases to search for in the data.
 type GooglePrivacyDlpV2WordListResponseOutput struct{ *pulumi.OutputState }
 
@@ -31297,53 +20643,9 @@ func (o GooglePrivacyDlpV2WordListResponseOutput) ToGooglePrivacyDlpV2WordListRe
 	return o
 }
 
-func (o GooglePrivacyDlpV2WordListResponseOutput) ToGooglePrivacyDlpV2WordListResponsePtrOutput() GooglePrivacyDlpV2WordListResponsePtrOutput {
-	return o.ToGooglePrivacyDlpV2WordListResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GooglePrivacyDlpV2WordListResponseOutput) ToGooglePrivacyDlpV2WordListResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2WordListResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2WordListResponse) *GooglePrivacyDlpV2WordListResponse {
-		return &v
-	}).(GooglePrivacyDlpV2WordListResponsePtrOutput)
-}
-
 // Words or phrases defining the dictionary. The dictionary must contain at least one phrase and every phrase must contain at least 2 characters that are letters or digits. [required]
 func (o GooglePrivacyDlpV2WordListResponseOutput) Words() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2WordListResponse) []string { return v.Words }).(pulumi.StringArrayOutput)
-}
-
-type GooglePrivacyDlpV2WordListResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GooglePrivacyDlpV2WordListResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GooglePrivacyDlpV2WordListResponse)(nil)).Elem()
-}
-
-func (o GooglePrivacyDlpV2WordListResponsePtrOutput) ToGooglePrivacyDlpV2WordListResponsePtrOutput() GooglePrivacyDlpV2WordListResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2WordListResponsePtrOutput) ToGooglePrivacyDlpV2WordListResponsePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2WordListResponsePtrOutput {
-	return o
-}
-
-func (o GooglePrivacyDlpV2WordListResponsePtrOutput) Elem() GooglePrivacyDlpV2WordListResponseOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2WordListResponse) GooglePrivacyDlpV2WordListResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GooglePrivacyDlpV2WordListResponse
-		return ret
-	}).(GooglePrivacyDlpV2WordListResponseOutput)
-}
-
-// Words or phrases defining the dictionary. The dictionary must contain at least one phrase and every phrase must contain at least 2 characters that are letters or digits. [required]
-func (o GooglePrivacyDlpV2WordListResponsePtrOutput) Words() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GooglePrivacyDlpV2WordListResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Words
-	}).(pulumi.StringArrayOutput)
 }
 
 // A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.
@@ -31471,33 +20773,6 @@ func (o GoogleProtobufEmptyPtrOutput) Elem() GoogleProtobufEmptyOutput {
 type GoogleProtobufEmptyResponse struct {
 }
 
-// GoogleProtobufEmptyResponseInput is an input type that accepts GoogleProtobufEmptyResponseArgs and GoogleProtobufEmptyResponseOutput values.
-// You can construct a concrete instance of `GoogleProtobufEmptyResponseInput` via:
-//
-//          GoogleProtobufEmptyResponseArgs{...}
-type GoogleProtobufEmptyResponseInput interface {
-	pulumi.Input
-
-	ToGoogleProtobufEmptyResponseOutput() GoogleProtobufEmptyResponseOutput
-	ToGoogleProtobufEmptyResponseOutputWithContext(context.Context) GoogleProtobufEmptyResponseOutput
-}
-
-// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.
-type GoogleProtobufEmptyResponseArgs struct {
-}
-
-func (GoogleProtobufEmptyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleProtobufEmptyResponse)(nil)).Elem()
-}
-
-func (i GoogleProtobufEmptyResponseArgs) ToGoogleProtobufEmptyResponseOutput() GoogleProtobufEmptyResponseOutput {
-	return i.ToGoogleProtobufEmptyResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleProtobufEmptyResponseArgs) ToGoogleProtobufEmptyResponseOutputWithContext(ctx context.Context) GoogleProtobufEmptyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleProtobufEmptyResponseOutput)
-}
-
 // A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.
 type GoogleProtobufEmptyResponseOutput struct{ *pulumi.OutputState }
 
@@ -31521,39 +20796,6 @@ type GoogleRpcStatusResponse struct {
 	Details []map[string]string `pulumi:"details"`
 	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 	Message string `pulumi:"message"`
-}
-
-// GoogleRpcStatusResponseInput is an input type that accepts GoogleRpcStatusResponseArgs and GoogleRpcStatusResponseOutput values.
-// You can construct a concrete instance of `GoogleRpcStatusResponseInput` via:
-//
-//          GoogleRpcStatusResponseArgs{...}
-type GoogleRpcStatusResponseInput interface {
-	pulumi.Input
-
-	ToGoogleRpcStatusResponseOutput() GoogleRpcStatusResponseOutput
-	ToGoogleRpcStatusResponseOutputWithContext(context.Context) GoogleRpcStatusResponseOutput
-}
-
-// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type GoogleRpcStatusResponseArgs struct {
-	// The status code, which should be an enum value of google.rpc.Code.
-	Code pulumi.IntInput `pulumi:"code"`
-	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details pulumi.StringMapArrayInput `pulumi:"details"`
-	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-	Message pulumi.StringInput `pulumi:"message"`
-}
-
-func (GoogleRpcStatusResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleRpcStatusResponse)(nil)).Elem()
-}
-
-func (i GoogleRpcStatusResponseArgs) ToGoogleRpcStatusResponseOutput() GoogleRpcStatusResponseOutput {
-	return i.ToGoogleRpcStatusResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleRpcStatusResponseArgs) ToGoogleRpcStatusResponseOutputWithContext(ctx context.Context) GoogleRpcStatusResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleRpcStatusResponseOutput)
 }
 
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
@@ -31774,80 +21016,6 @@ type GoogleTypeDateResponse struct {
 	Year int `pulumi:"year"`
 }
 
-// GoogleTypeDateResponseInput is an input type that accepts GoogleTypeDateResponseArgs and GoogleTypeDateResponseOutput values.
-// You can construct a concrete instance of `GoogleTypeDateResponseInput` via:
-//
-//          GoogleTypeDateResponseArgs{...}
-type GoogleTypeDateResponseInput interface {
-	pulumi.Input
-
-	ToGoogleTypeDateResponseOutput() GoogleTypeDateResponseOutput
-	ToGoogleTypeDateResponseOutputWithContext(context.Context) GoogleTypeDateResponseOutput
-}
-
-// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
-type GoogleTypeDateResponseArgs struct {
-	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-	Day pulumi.IntInput `pulumi:"day"`
-	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-	Month pulumi.IntInput `pulumi:"month"`
-	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-	Year pulumi.IntInput `pulumi:"year"`
-}
-
-func (GoogleTypeDateResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleTypeDateResponse)(nil)).Elem()
-}
-
-func (i GoogleTypeDateResponseArgs) ToGoogleTypeDateResponseOutput() GoogleTypeDateResponseOutput {
-	return i.ToGoogleTypeDateResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleTypeDateResponseArgs) ToGoogleTypeDateResponseOutputWithContext(ctx context.Context) GoogleTypeDateResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeDateResponseOutput)
-}
-
-func (i GoogleTypeDateResponseArgs) ToGoogleTypeDateResponsePtrOutput() GoogleTypeDateResponsePtrOutput {
-	return i.ToGoogleTypeDateResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleTypeDateResponseArgs) ToGoogleTypeDateResponsePtrOutputWithContext(ctx context.Context) GoogleTypeDateResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeDateResponseOutput).ToGoogleTypeDateResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleTypeDateResponsePtrInput is an input type that accepts GoogleTypeDateResponseArgs, GoogleTypeDateResponsePtr and GoogleTypeDateResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleTypeDateResponsePtrInput` via:
-//
-//          GoogleTypeDateResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleTypeDateResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleTypeDateResponsePtrOutput() GoogleTypeDateResponsePtrOutput
-	ToGoogleTypeDateResponsePtrOutputWithContext(context.Context) GoogleTypeDateResponsePtrOutput
-}
-
-type googleTypeDateResponsePtrType GoogleTypeDateResponseArgs
-
-func GoogleTypeDateResponsePtr(v *GoogleTypeDateResponseArgs) GoogleTypeDateResponsePtrInput {
-	return (*googleTypeDateResponsePtrType)(v)
-}
-
-func (*googleTypeDateResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleTypeDateResponse)(nil)).Elem()
-}
-
-func (i *googleTypeDateResponsePtrType) ToGoogleTypeDateResponsePtrOutput() GoogleTypeDateResponsePtrOutput {
-	return i.ToGoogleTypeDateResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleTypeDateResponsePtrType) ToGoogleTypeDateResponsePtrOutputWithContext(ctx context.Context) GoogleTypeDateResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeDateResponsePtrOutput)
-}
-
 // Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
 type GoogleTypeDateResponseOutput struct{ *pulumi.OutputState }
 
@@ -31863,16 +21031,6 @@ func (o GoogleTypeDateResponseOutput) ToGoogleTypeDateResponseOutputWithContext(
 	return o
 }
 
-func (o GoogleTypeDateResponseOutput) ToGoogleTypeDateResponsePtrOutput() GoogleTypeDateResponsePtrOutput {
-	return o.ToGoogleTypeDateResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleTypeDateResponseOutput) ToGoogleTypeDateResponsePtrOutputWithContext(ctx context.Context) GoogleTypeDateResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeDateResponse) *GoogleTypeDateResponse {
-		return &v
-	}).(GoogleTypeDateResponsePtrOutput)
-}
-
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
 func (o GoogleTypeDateResponseOutput) Day() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleTypeDateResponse) int { return v.Day }).(pulumi.IntOutput)
@@ -31886,60 +21044,6 @@ func (o GoogleTypeDateResponseOutput) Month() pulumi.IntOutput {
 // Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
 func (o GoogleTypeDateResponseOutput) Year() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleTypeDateResponse) int { return v.Year }).(pulumi.IntOutput)
-}
-
-type GoogleTypeDateResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleTypeDateResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleTypeDateResponse)(nil)).Elem()
-}
-
-func (o GoogleTypeDateResponsePtrOutput) ToGoogleTypeDateResponsePtrOutput() GoogleTypeDateResponsePtrOutput {
-	return o
-}
-
-func (o GoogleTypeDateResponsePtrOutput) ToGoogleTypeDateResponsePtrOutputWithContext(ctx context.Context) GoogleTypeDateResponsePtrOutput {
-	return o
-}
-
-func (o GoogleTypeDateResponsePtrOutput) Elem() GoogleTypeDateResponseOutput {
-	return o.ApplyT(func(v *GoogleTypeDateResponse) GoogleTypeDateResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleTypeDateResponse
-		return ret
-	}).(GoogleTypeDateResponseOutput)
-}
-
-// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-func (o GoogleTypeDateResponsePtrOutput) Day() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleTypeDateResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Day
-	}).(pulumi.IntPtrOutput)
-}
-
-// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-func (o GoogleTypeDateResponsePtrOutput) Month() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleTypeDateResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Month
-	}).(pulumi.IntPtrOutput)
-}
-
-// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-func (o GoogleTypeDateResponsePtrOutput) Year() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleTypeDateResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Year
-	}).(pulumi.IntPtrOutput)
 }
 
 // Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
@@ -32151,82 +21255,6 @@ type GoogleTypeTimeOfDayResponse struct {
 	Seconds int `pulumi:"seconds"`
 }
 
-// GoogleTypeTimeOfDayResponseInput is an input type that accepts GoogleTypeTimeOfDayResponseArgs and GoogleTypeTimeOfDayResponseOutput values.
-// You can construct a concrete instance of `GoogleTypeTimeOfDayResponseInput` via:
-//
-//          GoogleTypeTimeOfDayResponseArgs{...}
-type GoogleTypeTimeOfDayResponseInput interface {
-	pulumi.Input
-
-	ToGoogleTypeTimeOfDayResponseOutput() GoogleTypeTimeOfDayResponseOutput
-	ToGoogleTypeTimeOfDayResponseOutputWithContext(context.Context) GoogleTypeTimeOfDayResponseOutput
-}
-
-// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
-type GoogleTypeTimeOfDayResponseArgs struct {
-	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-	Hours pulumi.IntInput `pulumi:"hours"`
-	// Minutes of hour of day. Must be from 0 to 59.
-	Minutes pulumi.IntInput `pulumi:"minutes"`
-	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-	Nanos pulumi.IntInput `pulumi:"nanos"`
-	// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
-	Seconds pulumi.IntInput `pulumi:"seconds"`
-}
-
-func (GoogleTypeTimeOfDayResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleTypeTimeOfDayResponse)(nil)).Elem()
-}
-
-func (i GoogleTypeTimeOfDayResponseArgs) ToGoogleTypeTimeOfDayResponseOutput() GoogleTypeTimeOfDayResponseOutput {
-	return i.ToGoogleTypeTimeOfDayResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleTypeTimeOfDayResponseArgs) ToGoogleTypeTimeOfDayResponseOutputWithContext(ctx context.Context) GoogleTypeTimeOfDayResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeTimeOfDayResponseOutput)
-}
-
-func (i GoogleTypeTimeOfDayResponseArgs) ToGoogleTypeTimeOfDayResponsePtrOutput() GoogleTypeTimeOfDayResponsePtrOutput {
-	return i.ToGoogleTypeTimeOfDayResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleTypeTimeOfDayResponseArgs) ToGoogleTypeTimeOfDayResponsePtrOutputWithContext(ctx context.Context) GoogleTypeTimeOfDayResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeTimeOfDayResponseOutput).ToGoogleTypeTimeOfDayResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleTypeTimeOfDayResponsePtrInput is an input type that accepts GoogleTypeTimeOfDayResponseArgs, GoogleTypeTimeOfDayResponsePtr and GoogleTypeTimeOfDayResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleTypeTimeOfDayResponsePtrInput` via:
-//
-//          GoogleTypeTimeOfDayResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleTypeTimeOfDayResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleTypeTimeOfDayResponsePtrOutput() GoogleTypeTimeOfDayResponsePtrOutput
-	ToGoogleTypeTimeOfDayResponsePtrOutputWithContext(context.Context) GoogleTypeTimeOfDayResponsePtrOutput
-}
-
-type googleTypeTimeOfDayResponsePtrType GoogleTypeTimeOfDayResponseArgs
-
-func GoogleTypeTimeOfDayResponsePtr(v *GoogleTypeTimeOfDayResponseArgs) GoogleTypeTimeOfDayResponsePtrInput {
-	return (*googleTypeTimeOfDayResponsePtrType)(v)
-}
-
-func (*googleTypeTimeOfDayResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleTypeTimeOfDayResponse)(nil)).Elem()
-}
-
-func (i *googleTypeTimeOfDayResponsePtrType) ToGoogleTypeTimeOfDayResponsePtrOutput() GoogleTypeTimeOfDayResponsePtrOutput {
-	return i.ToGoogleTypeTimeOfDayResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleTypeTimeOfDayResponsePtrType) ToGoogleTypeTimeOfDayResponsePtrOutputWithContext(ctx context.Context) GoogleTypeTimeOfDayResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeTimeOfDayResponsePtrOutput)
-}
-
 // Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
 type GoogleTypeTimeOfDayResponseOutput struct{ *pulumi.OutputState }
 
@@ -32240,16 +21268,6 @@ func (o GoogleTypeTimeOfDayResponseOutput) ToGoogleTypeTimeOfDayResponseOutput()
 
 func (o GoogleTypeTimeOfDayResponseOutput) ToGoogleTypeTimeOfDayResponseOutputWithContext(ctx context.Context) GoogleTypeTimeOfDayResponseOutput {
 	return o
-}
-
-func (o GoogleTypeTimeOfDayResponseOutput) ToGoogleTypeTimeOfDayResponsePtrOutput() GoogleTypeTimeOfDayResponsePtrOutput {
-	return o.ToGoogleTypeTimeOfDayResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleTypeTimeOfDayResponseOutput) ToGoogleTypeTimeOfDayResponsePtrOutputWithContext(ctx context.Context) GoogleTypeTimeOfDayResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeTimeOfDayResponse) *GoogleTypeTimeOfDayResponse {
-		return &v
-	}).(GoogleTypeTimeOfDayResponsePtrOutput)
 }
 
 // Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -32272,498 +21290,211 @@ func (o GoogleTypeTimeOfDayResponseOutput) Seconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleTypeTimeOfDayResponse) int { return v.Seconds }).(pulumi.IntOutput)
 }
 
-type GoogleTypeTimeOfDayResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleTypeTimeOfDayResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleTypeTimeOfDayResponse)(nil)).Elem()
-}
-
-func (o GoogleTypeTimeOfDayResponsePtrOutput) ToGoogleTypeTimeOfDayResponsePtrOutput() GoogleTypeTimeOfDayResponsePtrOutput {
-	return o
-}
-
-func (o GoogleTypeTimeOfDayResponsePtrOutput) ToGoogleTypeTimeOfDayResponsePtrOutputWithContext(ctx context.Context) GoogleTypeTimeOfDayResponsePtrOutput {
-	return o
-}
-
-func (o GoogleTypeTimeOfDayResponsePtrOutput) Elem() GoogleTypeTimeOfDayResponseOutput {
-	return o.ApplyT(func(v *GoogleTypeTimeOfDayResponse) GoogleTypeTimeOfDayResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleTypeTimeOfDayResponse
-		return ret
-	}).(GoogleTypeTimeOfDayResponseOutput)
-}
-
-// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-func (o GoogleTypeTimeOfDayResponsePtrOutput) Hours() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleTypeTimeOfDayResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Hours
-	}).(pulumi.IntPtrOutput)
-}
-
-// Minutes of hour of day. Must be from 0 to 59.
-func (o GoogleTypeTimeOfDayResponsePtrOutput) Minutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleTypeTimeOfDayResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Minutes
-	}).(pulumi.IntPtrOutput)
-}
-
-// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-func (o GoogleTypeTimeOfDayResponsePtrOutput) Nanos() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleTypeTimeOfDayResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Nanos
-	}).(pulumi.IntPtrOutput)
-}
-
-// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
-func (o GoogleTypeTimeOfDayResponsePtrOutput) Seconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleTypeTimeOfDayResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Seconds
-	}).(pulumi.IntPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ActionInput)(nil)).Elem(), GooglePrivacyDlpV2ActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ActionArrayInput)(nil)).Elem(), GooglePrivacyDlpV2ActionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ActionResponseInput)(nil)).Elem(), GooglePrivacyDlpV2ActionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ActionResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2ActionResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseInput)(nil)).Elem(), GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2AuxiliaryTableInput)(nil)).Elem(), GooglePrivacyDlpV2AuxiliaryTableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2AuxiliaryTableArrayInput)(nil)).Elem(), GooglePrivacyDlpV2AuxiliaryTableArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2AuxiliaryTableResponseInput)(nil)).Elem(), GooglePrivacyDlpV2AuxiliaryTableResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2AuxiliaryTableResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2AuxiliaryTableResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryFieldInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryFieldPtrInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryFieldArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryFieldResponseInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryFieldResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryFieldResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryFieldResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryOptionsInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryOptionsPtrInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryOptionsResponseInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryOptionsResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryOptionsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryTableInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryTableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryTablePtrInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryTableArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryTableResponseInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryTableResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryTableResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryTableResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BucketInput)(nil)).Elem(), GooglePrivacyDlpV2BucketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BucketArrayInput)(nil)).Elem(), GooglePrivacyDlpV2BucketArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BucketResponseInput)(nil)).Elem(), GooglePrivacyDlpV2BucketResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BucketResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2BucketResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BucketingConfigInput)(nil)).Elem(), GooglePrivacyDlpV2BucketingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BucketingConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2BucketingConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BucketingConfigResponseInput)(nil)).Elem(), GooglePrivacyDlpV2BucketingConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CategoricalStatsConfigInput)(nil)).Elem(), GooglePrivacyDlpV2CategoricalStatsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CategoricalStatsConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2CategoricalStatsConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CategoricalStatsConfigResponseInput)(nil)).Elem(), GooglePrivacyDlpV2CategoricalStatsConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2CategoricalStatsConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseInput)(nil)).Elem(), GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CategoricalStatsResultResponseInput)(nil)).Elem(), GooglePrivacyDlpV2CategoricalStatsResultResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CategoricalStatsResultResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2CategoricalStatsResultResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CharacterMaskConfigInput)(nil)).Elem(), GooglePrivacyDlpV2CharacterMaskConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CharacterMaskConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2CharacterMaskConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CharacterMaskConfigResponseInput)(nil)).Elem(), GooglePrivacyDlpV2CharacterMaskConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CharsToIgnoreInput)(nil)).Elem(), GooglePrivacyDlpV2CharsToIgnoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CharsToIgnoreArrayInput)(nil)).Elem(), GooglePrivacyDlpV2CharsToIgnoreArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CharsToIgnoreResponseInput)(nil)).Elem(), GooglePrivacyDlpV2CharsToIgnoreResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CharsToIgnoreResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2CharsToIgnoreResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CloudStorageFileSetInput)(nil)).Elem(), GooglePrivacyDlpV2CloudStorageFileSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CloudStorageFileSetPtrInput)(nil)).Elem(), GooglePrivacyDlpV2CloudStorageFileSetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CloudStorageFileSetResponseInput)(nil)).Elem(), GooglePrivacyDlpV2CloudStorageFileSetResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CloudStorageFileSetResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2CloudStorageFileSetResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CloudStorageOptionsInput)(nil)).Elem(), GooglePrivacyDlpV2CloudStorageOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CloudStorageOptionsPtrInput)(nil)).Elem(), GooglePrivacyDlpV2CloudStorageOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CloudStorageOptionsResponseInput)(nil)).Elem(), GooglePrivacyDlpV2CloudStorageOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CloudStorageOptionsResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2CloudStorageOptionsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CloudStoragePathInput)(nil)).Elem(), GooglePrivacyDlpV2CloudStoragePathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CloudStoragePathPtrInput)(nil)).Elem(), GooglePrivacyDlpV2CloudStoragePathArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CloudStoragePathResponseInput)(nil)).Elem(), GooglePrivacyDlpV2CloudStoragePathResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CloudStoragePathResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2CloudStoragePathResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CloudStorageRegexFileSetInput)(nil)).Elem(), GooglePrivacyDlpV2CloudStorageRegexFileSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CloudStorageRegexFileSetPtrInput)(nil)).Elem(), GooglePrivacyDlpV2CloudStorageRegexFileSetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CloudStorageRegexFileSetResponseInput)(nil)).Elem(), GooglePrivacyDlpV2CloudStorageRegexFileSetResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2CloudStorageRegexFileSetResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ConditionInput)(nil)).Elem(), GooglePrivacyDlpV2ConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ConditionArrayInput)(nil)).Elem(), GooglePrivacyDlpV2ConditionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ConditionResponseInput)(nil)).Elem(), GooglePrivacyDlpV2ConditionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ConditionResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2ConditionResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ConditionsInput)(nil)).Elem(), GooglePrivacyDlpV2ConditionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ConditionsPtrInput)(nil)).Elem(), GooglePrivacyDlpV2ConditionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ConditionsResponseInput)(nil)).Elem(), GooglePrivacyDlpV2ConditionsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CryptoDeterministicConfigInput)(nil)).Elem(), GooglePrivacyDlpV2CryptoDeterministicConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CryptoDeterministicConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2CryptoDeterministicConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CryptoDeterministicConfigResponseInput)(nil)).Elem(), GooglePrivacyDlpV2CryptoDeterministicConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CryptoHashConfigInput)(nil)).Elem(), GooglePrivacyDlpV2CryptoHashConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CryptoHashConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2CryptoHashConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CryptoHashConfigResponseInput)(nil)).Elem(), GooglePrivacyDlpV2CryptoHashConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CryptoKeyInput)(nil)).Elem(), GooglePrivacyDlpV2CryptoKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CryptoKeyPtrInput)(nil)).Elem(), GooglePrivacyDlpV2CryptoKeyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CryptoKeyResponseInput)(nil)).Elem(), GooglePrivacyDlpV2CryptoKeyResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigInput)(nil)).Elem(), GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseInput)(nil)).Elem(), GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CustomInfoTypeInput)(nil)).Elem(), GooglePrivacyDlpV2CustomInfoTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CustomInfoTypeArrayInput)(nil)).Elem(), GooglePrivacyDlpV2CustomInfoTypeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CustomInfoTypeResponseInput)(nil)).Elem(), GooglePrivacyDlpV2CustomInfoTypeResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CustomInfoTypeResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2CustomInfoTypeResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DatastoreOptionsInput)(nil)).Elem(), GooglePrivacyDlpV2DatastoreOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DatastoreOptionsPtrInput)(nil)).Elem(), GooglePrivacyDlpV2DatastoreOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DatastoreOptionsResponseInput)(nil)).Elem(), GooglePrivacyDlpV2DatastoreOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DatastoreOptionsResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2DatastoreOptionsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DateShiftConfigInput)(nil)).Elem(), GooglePrivacyDlpV2DateShiftConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DateShiftConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2DateShiftConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DateShiftConfigResponseInput)(nil)).Elem(), GooglePrivacyDlpV2DateShiftConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DeidentifyConfigInput)(nil)).Elem(), GooglePrivacyDlpV2DeidentifyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DeidentifyConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2DeidentifyConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DeidentifyConfigResponseInput)(nil)).Elem(), GooglePrivacyDlpV2DeidentifyConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DeidentifyConfigResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2DeidentifyConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DeltaPresenceEstimationConfigInput)(nil)).Elem(), GooglePrivacyDlpV2DeltaPresenceEstimationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DeltaPresenceEstimationConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2DeltaPresenceEstimationConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseInput)(nil)).Elem(), GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseInput)(nil)).Elem(), GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseInput)(nil)).Elem(), GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseInput)(nil)).Elem(), GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DetectionRuleInput)(nil)).Elem(), GooglePrivacyDlpV2DetectionRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DetectionRuleArrayInput)(nil)).Elem(), GooglePrivacyDlpV2DetectionRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DetectionRuleResponseInput)(nil)).Elem(), GooglePrivacyDlpV2DetectionRuleResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DetectionRuleResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2DetectionRuleResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DictionaryInput)(nil)).Elem(), GooglePrivacyDlpV2DictionaryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DictionaryPtrInput)(nil)).Elem(), GooglePrivacyDlpV2DictionaryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DictionaryResponseInput)(nil)).Elem(), GooglePrivacyDlpV2DictionaryResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DictionaryResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2DictionaryResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2EntityIdInput)(nil)).Elem(), GooglePrivacyDlpV2EntityIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2EntityIdPtrInput)(nil)).Elem(), GooglePrivacyDlpV2EntityIdArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2EntityIdResponseInput)(nil)).Elem(), GooglePrivacyDlpV2EntityIdResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2EntityIdResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2EntityIdResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ErrorResponseInput)(nil)).Elem(), GooglePrivacyDlpV2ErrorResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ErrorResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2ErrorResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ExcludeInfoTypesInput)(nil)).Elem(), GooglePrivacyDlpV2ExcludeInfoTypesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ExcludeInfoTypesPtrInput)(nil)).Elem(), GooglePrivacyDlpV2ExcludeInfoTypesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ExcludeInfoTypesResponseInput)(nil)).Elem(), GooglePrivacyDlpV2ExcludeInfoTypesResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ExclusionRuleInput)(nil)).Elem(), GooglePrivacyDlpV2ExclusionRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ExclusionRulePtrInput)(nil)).Elem(), GooglePrivacyDlpV2ExclusionRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ExclusionRuleResponseInput)(nil)).Elem(), GooglePrivacyDlpV2ExclusionRuleResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ExpressionsInput)(nil)).Elem(), GooglePrivacyDlpV2ExpressionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ExpressionsPtrInput)(nil)).Elem(), GooglePrivacyDlpV2ExpressionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ExpressionsResponseInput)(nil)).Elem(), GooglePrivacyDlpV2ExpressionsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2FieldIdInput)(nil)).Elem(), GooglePrivacyDlpV2FieldIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2FieldIdPtrInput)(nil)).Elem(), GooglePrivacyDlpV2FieldIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2FieldIdArrayInput)(nil)).Elem(), GooglePrivacyDlpV2FieldIdArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2FieldIdResponseInput)(nil)).Elem(), GooglePrivacyDlpV2FieldIdResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2FieldIdResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2FieldIdResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2FieldIdResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2FieldIdResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2FieldTransformationInput)(nil)).Elem(), GooglePrivacyDlpV2FieldTransformationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2FieldTransformationArrayInput)(nil)).Elem(), GooglePrivacyDlpV2FieldTransformationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2FieldTransformationResponseInput)(nil)).Elem(), GooglePrivacyDlpV2FieldTransformationResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2FieldTransformationResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2FieldTransformationResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2FileSetInput)(nil)).Elem(), GooglePrivacyDlpV2FileSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2FileSetPtrInput)(nil)).Elem(), GooglePrivacyDlpV2FileSetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2FileSetResponseInput)(nil)).Elem(), GooglePrivacyDlpV2FileSetResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2FileSetResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2FileSetResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2FindingLimitsInput)(nil)).Elem(), GooglePrivacyDlpV2FindingLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2FindingLimitsPtrInput)(nil)).Elem(), GooglePrivacyDlpV2FindingLimitsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2FindingLimitsResponseInput)(nil)).Elem(), GooglePrivacyDlpV2FindingLimitsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2FindingLimitsResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2FindingLimitsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2FixedSizeBucketingConfigInput)(nil)).Elem(), GooglePrivacyDlpV2FixedSizeBucketingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2FixedSizeBucketingConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2FixedSizeBucketingConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2FixedSizeBucketingConfigResponseInput)(nil)).Elem(), GooglePrivacyDlpV2FixedSizeBucketingConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2HotwordRuleInput)(nil)).Elem(), GooglePrivacyDlpV2HotwordRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2HotwordRulePtrInput)(nil)).Elem(), GooglePrivacyDlpV2HotwordRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2HotwordRuleResponseInput)(nil)).Elem(), GooglePrivacyDlpV2HotwordRuleResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2HybridInspectStatisticsResponseInput)(nil)).Elem(), GooglePrivacyDlpV2HybridInspectStatisticsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2HybridInspectStatisticsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2HybridOptionsInput)(nil)).Elem(), GooglePrivacyDlpV2HybridOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2HybridOptionsPtrInput)(nil)).Elem(), GooglePrivacyDlpV2HybridOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2HybridOptionsResponseInput)(nil)).Elem(), GooglePrivacyDlpV2HybridOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2HybridOptionsResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2HybridOptionsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypePtrInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeArrayInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeLimitInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeLimitArrayInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeLimitArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeLimitResponseInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeLimitResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeLimitResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeLimitResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeResponseInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeStatsResponseInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeStatsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeStatsResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeStatsResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeTransformationInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeTransformationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeTransformationArrayInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeTransformationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeTransformationResponseInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeTransformationResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeTransformationResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeTransformationResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeTransformationsInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeTransformationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeTransformationsPtrInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeTransformationsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeTransformationsResponseInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeTransformationsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeTransformationsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InspectConfigInput)(nil)).Elem(), GooglePrivacyDlpV2InspectConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InspectConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2InspectConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InspectConfigResponseInput)(nil)).Elem(), GooglePrivacyDlpV2InspectConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InspectConfigResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2InspectConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InspectDataSourceDetailsResponseInput)(nil)).Elem(), GooglePrivacyDlpV2InspectDataSourceDetailsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2InspectDataSourceDetailsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InspectJobConfigInput)(nil)).Elem(), GooglePrivacyDlpV2InspectJobConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InspectJobConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2InspectJobConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InspectJobConfigResponseInput)(nil)).Elem(), GooglePrivacyDlpV2InspectJobConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InspectJobConfigResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2InspectJobConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InspectTemplateResponseInput)(nil)).Elem(), GooglePrivacyDlpV2InspectTemplateResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InspectTemplateResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2InspectTemplateResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InspectionRuleInput)(nil)).Elem(), GooglePrivacyDlpV2InspectionRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InspectionRuleArrayInput)(nil)).Elem(), GooglePrivacyDlpV2InspectionRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InspectionRuleResponseInput)(nil)).Elem(), GooglePrivacyDlpV2InspectionRuleResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InspectionRuleResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2InspectionRuleResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InspectionRuleSetInput)(nil)).Elem(), GooglePrivacyDlpV2InspectionRuleSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InspectionRuleSetArrayInput)(nil)).Elem(), GooglePrivacyDlpV2InspectionRuleSetArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InspectionRuleSetResponseInput)(nil)).Elem(), GooglePrivacyDlpV2InspectionRuleSetResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InspectionRuleSetResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2InspectionRuleSetResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2JobNotificationEmailsInput)(nil)).Elem(), GooglePrivacyDlpV2JobNotificationEmailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2JobNotificationEmailsPtrInput)(nil)).Elem(), GooglePrivacyDlpV2JobNotificationEmailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2JobNotificationEmailsResponseInput)(nil)).Elem(), GooglePrivacyDlpV2JobNotificationEmailsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2KAnonymityConfigInput)(nil)).Elem(), GooglePrivacyDlpV2KAnonymityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2KAnonymityConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2KAnonymityConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2KAnonymityConfigResponseInput)(nil)).Elem(), GooglePrivacyDlpV2KAnonymityConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2KAnonymityConfigResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2KAnonymityConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseInput)(nil)).Elem(), GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2KAnonymityHistogramBucketResponseInput)(nil)).Elem(), GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2KAnonymityResultResponseInput)(nil)).Elem(), GooglePrivacyDlpV2KAnonymityResultResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2KAnonymityResultResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2KAnonymityResultResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2KMapEstimationConfigInput)(nil)).Elem(), GooglePrivacyDlpV2KMapEstimationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2KMapEstimationConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2KMapEstimationConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2KMapEstimationConfigResponseInput)(nil)).Elem(), GooglePrivacyDlpV2KMapEstimationConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2KMapEstimationConfigResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2KMapEstimationConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseInput)(nil)).Elem(), GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseInput)(nil)).Elem(), GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2KMapEstimationResultResponseInput)(nil)).Elem(), GooglePrivacyDlpV2KMapEstimationResultResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2KMapEstimationResultResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2KMapEstimationResultResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2KindExpressionInput)(nil)).Elem(), GooglePrivacyDlpV2KindExpressionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2KindExpressionPtrInput)(nil)).Elem(), GooglePrivacyDlpV2KindExpressionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2KindExpressionResponseInput)(nil)).Elem(), GooglePrivacyDlpV2KindExpressionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2KindExpressionResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2KindExpressionResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2KmsWrappedCryptoKeyInput)(nil)).Elem(), GooglePrivacyDlpV2KmsWrappedCryptoKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2KmsWrappedCryptoKeyPtrInput)(nil)).Elem(), GooglePrivacyDlpV2KmsWrappedCryptoKeyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseInput)(nil)).Elem(), GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2LDiversityConfigInput)(nil)).Elem(), GooglePrivacyDlpV2LDiversityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2LDiversityConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2LDiversityConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2LDiversityConfigResponseInput)(nil)).Elem(), GooglePrivacyDlpV2LDiversityConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2LDiversityConfigResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2LDiversityConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2LDiversityEquivalenceClassResponseInput)(nil)).Elem(), GooglePrivacyDlpV2LDiversityEquivalenceClassResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2LDiversityEquivalenceClassResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2LDiversityEquivalenceClassResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2LDiversityHistogramBucketResponseInput)(nil)).Elem(), GooglePrivacyDlpV2LDiversityHistogramBucketResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2LDiversityHistogramBucketResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2LDiversityHistogramBucketResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2LDiversityResultResponseInput)(nil)).Elem(), GooglePrivacyDlpV2LDiversityResultResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2LDiversityResultResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2LDiversityResultResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2LargeCustomDictionaryConfigInput)(nil)).Elem(), GooglePrivacyDlpV2LargeCustomDictionaryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2LargeCustomDictionaryConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2LargeCustomDictionaryConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseInput)(nil)).Elem(), GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseInput)(nil)).Elem(), GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2LeaveUntransformedInput)(nil)).Elem(), GooglePrivacyDlpV2LeaveUntransformedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2LeaveUntransformedPtrInput)(nil)).Elem(), GooglePrivacyDlpV2LeaveUntransformedArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2LeaveUntransformedResponseInput)(nil)).Elem(), GooglePrivacyDlpV2LeaveUntransformedResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2LeaveUntransformedResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2LeaveUntransformedResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2LikelihoodAdjustmentInput)(nil)).Elem(), GooglePrivacyDlpV2LikelihoodAdjustmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2LikelihoodAdjustmentPtrInput)(nil)).Elem(), GooglePrivacyDlpV2LikelihoodAdjustmentArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2LikelihoodAdjustmentResponseInput)(nil)).Elem(), GooglePrivacyDlpV2LikelihoodAdjustmentResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ManualInput)(nil)).Elem(), GooglePrivacyDlpV2ManualArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ManualPtrInput)(nil)).Elem(), GooglePrivacyDlpV2ManualArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ManualResponseInput)(nil)).Elem(), GooglePrivacyDlpV2ManualResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2NumericalStatsConfigInput)(nil)).Elem(), GooglePrivacyDlpV2NumericalStatsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2NumericalStatsConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2NumericalStatsConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2NumericalStatsConfigResponseInput)(nil)).Elem(), GooglePrivacyDlpV2NumericalStatsConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2NumericalStatsConfigResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2NumericalStatsConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2NumericalStatsResultResponseInput)(nil)).Elem(), GooglePrivacyDlpV2NumericalStatsResultResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2NumericalStatsResultResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2NumericalStatsResultResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2OutputStorageConfigInput)(nil)).Elem(), GooglePrivacyDlpV2OutputStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2OutputStorageConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2OutputStorageConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2OutputStorageConfigResponseInput)(nil)).Elem(), GooglePrivacyDlpV2OutputStorageConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PartitionIdInput)(nil)).Elem(), GooglePrivacyDlpV2PartitionIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PartitionIdPtrInput)(nil)).Elem(), GooglePrivacyDlpV2PartitionIdArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PartitionIdResponseInput)(nil)).Elem(), GooglePrivacyDlpV2PartitionIdResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PartitionIdResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2PartitionIdResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PrimitiveTransformationInput)(nil)).Elem(), GooglePrivacyDlpV2PrimitiveTransformationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PrimitiveTransformationPtrInput)(nil)).Elem(), GooglePrivacyDlpV2PrimitiveTransformationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PrimitiveTransformationResponseInput)(nil)).Elem(), GooglePrivacyDlpV2PrimitiveTransformationResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PrivacyMetricInput)(nil)).Elem(), GooglePrivacyDlpV2PrivacyMetricArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PrivacyMetricPtrInput)(nil)).Elem(), GooglePrivacyDlpV2PrivacyMetricArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PrivacyMetricResponseInput)(nil)).Elem(), GooglePrivacyDlpV2PrivacyMetricResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PrivacyMetricResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2PrivacyMetricResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ProximityInput)(nil)).Elem(), GooglePrivacyDlpV2ProximityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ProximityPtrInput)(nil)).Elem(), GooglePrivacyDlpV2ProximityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ProximityResponseInput)(nil)).Elem(), GooglePrivacyDlpV2ProximityResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogInput)(nil)).Elem(), GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogPtrInput)(nil)).Elem(), GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseInput)(nil)).Elem(), GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PublishSummaryToCsccInput)(nil)).Elem(), GooglePrivacyDlpV2PublishSummaryToCsccArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PublishSummaryToCsccPtrInput)(nil)).Elem(), GooglePrivacyDlpV2PublishSummaryToCsccArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PublishSummaryToCsccResponseInput)(nil)).Elem(), GooglePrivacyDlpV2PublishSummaryToCsccResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PublishToPubSubInput)(nil)).Elem(), GooglePrivacyDlpV2PublishToPubSubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PublishToPubSubPtrInput)(nil)).Elem(), GooglePrivacyDlpV2PublishToPubSubArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PublishToPubSubResponseInput)(nil)).Elem(), GooglePrivacyDlpV2PublishToPubSubResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PublishToStackdriverInput)(nil)).Elem(), GooglePrivacyDlpV2PublishToStackdriverArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PublishToStackdriverPtrInput)(nil)).Elem(), GooglePrivacyDlpV2PublishToStackdriverArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2PublishToStackdriverResponseInput)(nil)).Elem(), GooglePrivacyDlpV2PublishToStackdriverResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2QuasiIdInput)(nil)).Elem(), GooglePrivacyDlpV2QuasiIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2QuasiIdArrayInput)(nil)).Elem(), GooglePrivacyDlpV2QuasiIdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2QuasiIdFieldInput)(nil)).Elem(), GooglePrivacyDlpV2QuasiIdFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2QuasiIdFieldArrayInput)(nil)).Elem(), GooglePrivacyDlpV2QuasiIdFieldArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2QuasiIdFieldResponseInput)(nil)).Elem(), GooglePrivacyDlpV2QuasiIdFieldResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2QuasiIdFieldResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2QuasiIdFieldResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2QuasiIdResponseInput)(nil)).Elem(), GooglePrivacyDlpV2QuasiIdResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2QuasiIdResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2QuasiIdResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2QuasiIdentifierFieldInput)(nil)).Elem(), GooglePrivacyDlpV2QuasiIdentifierFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2QuasiIdentifierFieldArrayInput)(nil)).Elem(), GooglePrivacyDlpV2QuasiIdentifierFieldArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2QuasiIdentifierFieldResponseInput)(nil)).Elem(), GooglePrivacyDlpV2QuasiIdentifierFieldResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2QuasiIdentifierFieldResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2QuasiIdentifierFieldResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2RecordConditionInput)(nil)).Elem(), GooglePrivacyDlpV2RecordConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2RecordConditionPtrInput)(nil)).Elem(), GooglePrivacyDlpV2RecordConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2RecordConditionResponseInput)(nil)).Elem(), GooglePrivacyDlpV2RecordConditionResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2RecordSuppressionInput)(nil)).Elem(), GooglePrivacyDlpV2RecordSuppressionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2RecordSuppressionArrayInput)(nil)).Elem(), GooglePrivacyDlpV2RecordSuppressionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2RecordSuppressionResponseInput)(nil)).Elem(), GooglePrivacyDlpV2RecordSuppressionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2RecordSuppressionResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2RecordSuppressionResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2RecordTransformationsInput)(nil)).Elem(), GooglePrivacyDlpV2RecordTransformationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2RecordTransformationsPtrInput)(nil)).Elem(), GooglePrivacyDlpV2RecordTransformationsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2RecordTransformationsResponseInput)(nil)).Elem(), GooglePrivacyDlpV2RecordTransformationsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2RecordTransformationsResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2RecordTransformationsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2RedactConfigInput)(nil)).Elem(), GooglePrivacyDlpV2RedactConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2RedactConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2RedactConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2RedactConfigResponseInput)(nil)).Elem(), GooglePrivacyDlpV2RedactConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2RegexInput)(nil)).Elem(), GooglePrivacyDlpV2RegexArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2RegexPtrInput)(nil)).Elem(), GooglePrivacyDlpV2RegexArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2RegexResponseInput)(nil)).Elem(), GooglePrivacyDlpV2RegexResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2RegexResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2RegexResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ReplaceDictionaryConfigInput)(nil)).Elem(), GooglePrivacyDlpV2ReplaceDictionaryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ReplaceDictionaryConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2ReplaceDictionaryConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ReplaceDictionaryConfigResponseInput)(nil)).Elem(), GooglePrivacyDlpV2ReplaceDictionaryConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ReplaceValueConfigInput)(nil)).Elem(), GooglePrivacyDlpV2ReplaceValueConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ReplaceValueConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2ReplaceValueConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ReplaceValueConfigResponseInput)(nil)).Elem(), GooglePrivacyDlpV2ReplaceValueConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ReplaceWithInfoTypeConfigInput)(nil)).Elem(), GooglePrivacyDlpV2ReplaceWithInfoTypeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ReplaceWithInfoTypeConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2ReplaceWithInfoTypeConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseInput)(nil)).Elem(), GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2RequestedOptionsResponseInput)(nil)).Elem(), GooglePrivacyDlpV2RequestedOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2RequestedOptionsResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2RequestedOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseInput)(nil)).Elem(), GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ResultResponseInput)(nil)).Elem(), GooglePrivacyDlpV2ResultResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ResultResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2ResultResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2RiskAnalysisJobConfigInput)(nil)).Elem(), GooglePrivacyDlpV2RiskAnalysisJobConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2RiskAnalysisJobConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2RiskAnalysisJobConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2RiskAnalysisJobConfigResponseInput)(nil)).Elem(), GooglePrivacyDlpV2RiskAnalysisJobConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2RiskAnalysisJobConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2SaveFindingsInput)(nil)).Elem(), GooglePrivacyDlpV2SaveFindingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2SaveFindingsPtrInput)(nil)).Elem(), GooglePrivacyDlpV2SaveFindingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2SaveFindingsResponseInput)(nil)).Elem(), GooglePrivacyDlpV2SaveFindingsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ScheduleInput)(nil)).Elem(), GooglePrivacyDlpV2ScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2SchedulePtrInput)(nil)).Elem(), GooglePrivacyDlpV2ScheduleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ScheduleResponseInput)(nil)).Elem(), GooglePrivacyDlpV2ScheduleResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2StatisticalTableInput)(nil)).Elem(), GooglePrivacyDlpV2StatisticalTableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2StatisticalTableArrayInput)(nil)).Elem(), GooglePrivacyDlpV2StatisticalTableArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2StatisticalTableResponseInput)(nil)).Elem(), GooglePrivacyDlpV2StatisticalTableResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2StatisticalTableResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2StatisticalTableResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2StorageConfigInput)(nil)).Elem(), GooglePrivacyDlpV2StorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2StorageConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2StorageConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2StorageConfigResponseInput)(nil)).Elem(), GooglePrivacyDlpV2StorageConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2StorageConfigResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2StorageConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2StoredInfoTypeConfigInput)(nil)).Elem(), GooglePrivacyDlpV2StoredInfoTypeConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2StoredInfoTypeConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2StoredInfoTypeConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2StoredInfoTypeConfigResponseInput)(nil)).Elem(), GooglePrivacyDlpV2StoredInfoTypeConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2StoredInfoTypeConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2StoredInfoTypeStatsResponseInput)(nil)).Elem(), GooglePrivacyDlpV2StoredInfoTypeStatsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2StoredInfoTypeStatsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2StoredInfoTypeVersionResponseInput)(nil)).Elem(), GooglePrivacyDlpV2StoredInfoTypeVersionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2StoredInfoTypeVersionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2StoredInfoTypeVersionResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2StoredInfoTypeVersionResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2StoredTypeInput)(nil)).Elem(), GooglePrivacyDlpV2StoredTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2StoredTypePtrInput)(nil)).Elem(), GooglePrivacyDlpV2StoredTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2StoredTypeResponseInput)(nil)).Elem(), GooglePrivacyDlpV2StoredTypeResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2SurrogateTypeInput)(nil)).Elem(), GooglePrivacyDlpV2SurrogateTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2SurrogateTypePtrInput)(nil)).Elem(), GooglePrivacyDlpV2SurrogateTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2SurrogateTypeResponseInput)(nil)).Elem(), GooglePrivacyDlpV2SurrogateTypeResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TableOptionsInput)(nil)).Elem(), GooglePrivacyDlpV2TableOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TableOptionsPtrInput)(nil)).Elem(), GooglePrivacyDlpV2TableOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TableOptionsResponseInput)(nil)).Elem(), GooglePrivacyDlpV2TableOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TableOptionsResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2TableOptionsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TaggedFieldInput)(nil)).Elem(), GooglePrivacyDlpV2TaggedFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TaggedFieldArrayInput)(nil)).Elem(), GooglePrivacyDlpV2TaggedFieldArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TaggedFieldResponseInput)(nil)).Elem(), GooglePrivacyDlpV2TaggedFieldResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TaggedFieldResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2TaggedFieldResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ThrowErrorInput)(nil)).Elem(), GooglePrivacyDlpV2ThrowErrorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ThrowErrorPtrInput)(nil)).Elem(), GooglePrivacyDlpV2ThrowErrorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ThrowErrorResponseInput)(nil)).Elem(), GooglePrivacyDlpV2ThrowErrorResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ThrowErrorResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2ThrowErrorResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TimePartConfigInput)(nil)).Elem(), GooglePrivacyDlpV2TimePartConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TimePartConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2TimePartConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TimePartConfigResponseInput)(nil)).Elem(), GooglePrivacyDlpV2TimePartConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TimespanConfigInput)(nil)).Elem(), GooglePrivacyDlpV2TimespanConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TimespanConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2TimespanConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TimespanConfigResponseInput)(nil)).Elem(), GooglePrivacyDlpV2TimespanConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TimespanConfigResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2TimespanConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TransformationErrorHandlingInput)(nil)).Elem(), GooglePrivacyDlpV2TransformationErrorHandlingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TransformationErrorHandlingPtrInput)(nil)).Elem(), GooglePrivacyDlpV2TransformationErrorHandlingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TransformationErrorHandlingResponseInput)(nil)).Elem(), GooglePrivacyDlpV2TransformationErrorHandlingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2TransformationErrorHandlingResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TransientCryptoKeyInput)(nil)).Elem(), GooglePrivacyDlpV2TransientCryptoKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TransientCryptoKeyPtrInput)(nil)).Elem(), GooglePrivacyDlpV2TransientCryptoKeyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TransientCryptoKeyResponseInput)(nil)).Elem(), GooglePrivacyDlpV2TransientCryptoKeyResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TriggerInput)(nil)).Elem(), GooglePrivacyDlpV2TriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TriggerArrayInput)(nil)).Elem(), GooglePrivacyDlpV2TriggerArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TriggerResponseInput)(nil)).Elem(), GooglePrivacyDlpV2TriggerResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TriggerResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2TriggerResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2UnwrappedCryptoKeyInput)(nil)).Elem(), GooglePrivacyDlpV2UnwrappedCryptoKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2UnwrappedCryptoKeyPtrInput)(nil)).Elem(), GooglePrivacyDlpV2UnwrappedCryptoKeyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2UnwrappedCryptoKeyResponseInput)(nil)).Elem(), GooglePrivacyDlpV2UnwrappedCryptoKeyResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ValueInput)(nil)).Elem(), GooglePrivacyDlpV2ValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ValuePtrInput)(nil)).Elem(), GooglePrivacyDlpV2ValueArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ValueFrequencyResponseInput)(nil)).Elem(), GooglePrivacyDlpV2ValueFrequencyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ValueFrequencyResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2ValueFrequencyResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ValueResponseInput)(nil)).Elem(), GooglePrivacyDlpV2ValueResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ValueResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2ValueResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ValueResponseArrayInput)(nil)).Elem(), GooglePrivacyDlpV2ValueResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2WordListInput)(nil)).Elem(), GooglePrivacyDlpV2WordListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2WordListPtrInput)(nil)).Elem(), GooglePrivacyDlpV2WordListArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2WordListResponseInput)(nil)).Elem(), GooglePrivacyDlpV2WordListResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2WordListResponsePtrInput)(nil)).Elem(), GooglePrivacyDlpV2WordListResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleProtobufEmptyInput)(nil)).Elem(), GoogleProtobufEmptyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleProtobufEmptyPtrInput)(nil)).Elem(), GoogleProtobufEmptyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleProtobufEmptyResponseInput)(nil)).Elem(), GoogleProtobufEmptyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleRpcStatusResponseInput)(nil)).Elem(), GoogleRpcStatusResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeDateInput)(nil)).Elem(), GoogleTypeDateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeDatePtrInput)(nil)).Elem(), GoogleTypeDateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeDateResponseInput)(nil)).Elem(), GoogleTypeDateResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeDateResponsePtrInput)(nil)).Elem(), GoogleTypeDateResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeTimeOfDayInput)(nil)).Elem(), GoogleTypeTimeOfDayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeTimeOfDayPtrInput)(nil)).Elem(), GoogleTypeTimeOfDayArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeTimeOfDayResponseInput)(nil)).Elem(), GoogleTypeTimeOfDayResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeTimeOfDayResponsePtrInput)(nil)).Elem(), GoogleTypeTimeOfDayResponseArgs{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ActionOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ActionArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ActionResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ActionResponseArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2AuxiliaryTableOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2AuxiliaryTableArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2AuxiliaryTableResponseOutput{})
@@ -32771,15 +21502,12 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryFieldOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryFieldPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryFieldResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryFieldResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryOptionsOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryOptionsPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryOptionsResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryTableOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryTablePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryTableResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2BigQueryTableResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2BucketOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2BucketArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2BucketResponseOutput{})
@@ -32790,11 +21518,9 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CategoricalStatsConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CategoricalStatsConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CategoricalStatsConfigResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2CategoricalStatsConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponseArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CategoricalStatsResultResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2CategoricalStatsResultResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CharacterMaskConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CharacterMaskConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CharacterMaskConfigResponseOutput{})
@@ -32805,19 +21531,15 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CloudStorageFileSetOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CloudStorageFileSetPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CloudStorageFileSetResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2CloudStorageFileSetResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CloudStorageOptionsOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CloudStorageOptionsPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CloudStorageOptionsResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2CloudStorageOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CloudStoragePathOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CloudStoragePathPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CloudStoragePathResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2CloudStoragePathResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CloudStorageRegexFileSetOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CloudStorageRegexFileSetPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CloudStorageRegexFileSetResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ConditionOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ConditionArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ConditionResponseOutput{})
@@ -32844,24 +21566,20 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DatastoreOptionsOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DatastoreOptionsPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DatastoreOptionsResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2DatastoreOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DateShiftConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DateShiftConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DateShiftConfigResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeidentifyConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeidentifyConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeidentifyConfigResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeltaPresenceEstimationConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeltaPresenceEstimationConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponseArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponseArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeltaPresenceEstimationResultResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeltaPresenceEstimationResultResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DetectionRuleOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DetectionRuleArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DetectionRuleResponseOutput{})
@@ -32869,11 +21587,9 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DictionaryOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DictionaryPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DictionaryResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2DictionaryResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2EntityIdOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2EntityIdPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2EntityIdResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2EntityIdResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ErrorResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ErrorResponseArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ExcludeInfoTypesOutput{})
@@ -32889,7 +21605,6 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2FieldIdPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2FieldIdArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2FieldIdResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2FieldIdResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2FieldIdResponseArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2FieldTransformationOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2FieldTransformationArrayOutput{})
@@ -32898,11 +21613,9 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2FileSetOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2FileSetPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2FileSetResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2FileSetResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2FindingLimitsOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2FindingLimitsPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2FindingLimitsResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2FindingLimitsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2FixedSizeBucketingConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2FixedSizeBucketingConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2FixedSizeBucketingConfigResponseOutput{})
@@ -32910,11 +21623,9 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2HotwordRulePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2HotwordRuleResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2HybridInspectStatisticsResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2HybridInspectStatisticsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2HybridOptionsOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2HybridOptionsPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2HybridOptionsResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2HybridOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InfoTypeOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InfoTypePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InfoTypeArrayOutput{})
@@ -32933,19 +21644,14 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InfoTypeTransformationsOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InfoTypeTransformationsPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InfoTypeTransformationsResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InspectConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InspectConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InspectConfigResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2InspectConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InspectDataSourceDetailsResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InspectJobConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InspectJobConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InspectJobConfigResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2InspectJobConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InspectTemplateResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2InspectTemplateResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InspectionRuleOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InspectionRuleArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InspectionRuleResponseOutput{})
@@ -32960,50 +21666,40 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2KAnonymityConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2KAnonymityConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2KAnonymityConfigResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2KAnonymityConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2KAnonymityEquivalenceClassResponseArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2KAnonymityHistogramBucketResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2KAnonymityHistogramBucketResponseArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2KAnonymityResultResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2KAnonymityResultResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2KMapEstimationConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2KMapEstimationConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2KMapEstimationConfigResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2KMapEstimationHistogramBucketResponseArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponseArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2KMapEstimationResultResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2KMapEstimationResultResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2KindExpressionOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2KindExpressionPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2KindExpressionResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2KindExpressionResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2KmsWrappedCryptoKeyOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2KmsWrappedCryptoKeyPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2LDiversityConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2LDiversityConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2LDiversityConfigResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2LDiversityConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2LDiversityEquivalenceClassResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2LDiversityEquivalenceClassResponseArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2LDiversityHistogramBucketResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2LDiversityHistogramBucketResponseArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2LDiversityResultResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2LDiversityResultResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2LargeCustomDictionaryConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2LargeCustomDictionaryConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2LargeCustomDictionaryConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2LargeCustomDictionaryStatsResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2LargeCustomDictionaryStatsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2LeaveUntransformedOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2LeaveUntransformedPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2LeaveUntransformedResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2LeaveUntransformedResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2LikelihoodAdjustmentOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2LikelihoodAdjustmentPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2LikelihoodAdjustmentResponseOutput{})
@@ -33013,23 +21709,19 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2NumericalStatsConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2NumericalStatsConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2NumericalStatsConfigResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2NumericalStatsConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2NumericalStatsResultResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2NumericalStatsResultResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2OutputStorageConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2OutputStorageConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2OutputStorageConfigResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2PartitionIdOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2PartitionIdPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2PartitionIdResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2PartitionIdResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2PrimitiveTransformationOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2PrimitiveTransformationPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2PrimitiveTransformationResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2PrivacyMetricOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2PrivacyMetricPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2PrivacyMetricResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2PrivacyMetricResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ProximityOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ProximityPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ProximityResponseOutput{})
@@ -33067,14 +21759,12 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2RecordTransformationsOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2RecordTransformationsPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2RecordTransformationsResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2RecordTransformationsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2RedactConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2RedactConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2RedactConfigResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2RegexOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2RegexPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2RegexResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2RegexResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ReplaceDictionaryConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput{})
@@ -33085,15 +21775,11 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ReplaceWithInfoTypeConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2RequestedOptionsResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2RequestedOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ResultResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2ResultResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2RiskAnalysisJobConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2RiskAnalysisJobConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2RiskAnalysisJobConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2SaveFindingsOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2SaveFindingsPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2SaveFindingsResponseOutput{})
@@ -33107,15 +21793,10 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2StorageConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2StorageConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2StorageConfigResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2StorageConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2StoredInfoTypeConfigOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2StoredInfoTypeConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2StoredInfoTypeConfigResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2StoredInfoTypeConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2StoredInfoTypeStatsResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2StoredInfoTypeStatsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2StoredInfoTypeVersionResponseArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2StoredTypeOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2StoredTypePtrOutput{})
@@ -33126,7 +21807,6 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2TableOptionsOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2TableOptionsPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2TableOptionsResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2TableOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2TaggedFieldOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2TaggedFieldArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2TaggedFieldResponseOutput{})
@@ -33134,18 +21814,15 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ThrowErrorOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ThrowErrorPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ThrowErrorResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2ThrowErrorResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2TimePartConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2TimePartConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2TimePartConfigResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2TimespanConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2TimespanConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2TimespanConfigResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2TimespanConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2TransformationErrorHandlingOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2TransformationErrorHandlingPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2TransformationErrorHandlingResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2TransientCryptoKeyOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2TransientCryptoKeyPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2TransientCryptoKeyResponseOutput{})
@@ -33161,12 +21838,10 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ValueFrequencyResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ValueFrequencyResponseArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ValueResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2ValueResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ValueResponseArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2WordListOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2WordListPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2WordListResponseOutput{})
-	pulumi.RegisterOutputType(GooglePrivacyDlpV2WordListResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleProtobufEmptyOutput{})
 	pulumi.RegisterOutputType(GoogleProtobufEmptyPtrOutput{})
 	pulumi.RegisterOutputType(GoogleProtobufEmptyResponseOutput{})
@@ -33174,9 +21849,7 @@ func init() {
 	pulumi.RegisterOutputType(GoogleTypeDateOutput{})
 	pulumi.RegisterOutputType(GoogleTypeDatePtrOutput{})
 	pulumi.RegisterOutputType(GoogleTypeDateResponseOutput{})
-	pulumi.RegisterOutputType(GoogleTypeDateResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleTypeTimeOfDayOutput{})
 	pulumi.RegisterOutputType(GoogleTypeTimeOfDayPtrOutput{})
 	pulumi.RegisterOutputType(GoogleTypeTimeOfDayResponseOutput{})
-	pulumi.RegisterOutputType(GoogleTypeTimeOfDayResponsePtrOutput{})
 }

@@ -156,76 +156,6 @@ type ApprovalConfigResponse struct {
 	ApprovalRequired bool `pulumi:"approvalRequired"`
 }
 
-// ApprovalConfigResponseInput is an input type that accepts ApprovalConfigResponseArgs and ApprovalConfigResponseOutput values.
-// You can construct a concrete instance of `ApprovalConfigResponseInput` via:
-//
-//          ApprovalConfigResponseArgs{...}
-type ApprovalConfigResponseInput interface {
-	pulumi.Input
-
-	ToApprovalConfigResponseOutput() ApprovalConfigResponseOutput
-	ToApprovalConfigResponseOutputWithContext(context.Context) ApprovalConfigResponseOutput
-}
-
-// ApprovalConfig describes configuration for manual approval of a build.
-type ApprovalConfigResponseArgs struct {
-	// Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start.
-	ApprovalRequired pulumi.BoolInput `pulumi:"approvalRequired"`
-}
-
-func (ApprovalConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApprovalConfigResponse)(nil)).Elem()
-}
-
-func (i ApprovalConfigResponseArgs) ToApprovalConfigResponseOutput() ApprovalConfigResponseOutput {
-	return i.ToApprovalConfigResponseOutputWithContext(context.Background())
-}
-
-func (i ApprovalConfigResponseArgs) ToApprovalConfigResponseOutputWithContext(ctx context.Context) ApprovalConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApprovalConfigResponseOutput)
-}
-
-func (i ApprovalConfigResponseArgs) ToApprovalConfigResponsePtrOutput() ApprovalConfigResponsePtrOutput {
-	return i.ToApprovalConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ApprovalConfigResponseArgs) ToApprovalConfigResponsePtrOutputWithContext(ctx context.Context) ApprovalConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApprovalConfigResponseOutput).ToApprovalConfigResponsePtrOutputWithContext(ctx)
-}
-
-// ApprovalConfigResponsePtrInput is an input type that accepts ApprovalConfigResponseArgs, ApprovalConfigResponsePtr and ApprovalConfigResponsePtrOutput values.
-// You can construct a concrete instance of `ApprovalConfigResponsePtrInput` via:
-//
-//          ApprovalConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ApprovalConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToApprovalConfigResponsePtrOutput() ApprovalConfigResponsePtrOutput
-	ToApprovalConfigResponsePtrOutputWithContext(context.Context) ApprovalConfigResponsePtrOutput
-}
-
-type approvalConfigResponsePtrType ApprovalConfigResponseArgs
-
-func ApprovalConfigResponsePtr(v *ApprovalConfigResponseArgs) ApprovalConfigResponsePtrInput {
-	return (*approvalConfigResponsePtrType)(v)
-}
-
-func (*approvalConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApprovalConfigResponse)(nil)).Elem()
-}
-
-func (i *approvalConfigResponsePtrType) ToApprovalConfigResponsePtrOutput() ApprovalConfigResponsePtrOutput {
-	return i.ToApprovalConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *approvalConfigResponsePtrType) ToApprovalConfigResponsePtrOutputWithContext(ctx context.Context) ApprovalConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApprovalConfigResponsePtrOutput)
-}
-
 // ApprovalConfig describes configuration for manual approval of a build.
 type ApprovalConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -241,53 +171,9 @@ func (o ApprovalConfigResponseOutput) ToApprovalConfigResponseOutputWithContext(
 	return o
 }
 
-func (o ApprovalConfigResponseOutput) ToApprovalConfigResponsePtrOutput() ApprovalConfigResponsePtrOutput {
-	return o.ToApprovalConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ApprovalConfigResponseOutput) ToApprovalConfigResponsePtrOutputWithContext(ctx context.Context) ApprovalConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApprovalConfigResponse) *ApprovalConfigResponse {
-		return &v
-	}).(ApprovalConfigResponsePtrOutput)
-}
-
 // Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start.
 func (o ApprovalConfigResponseOutput) ApprovalRequired() pulumi.BoolOutput {
 	return o.ApplyT(func(v ApprovalConfigResponse) bool { return v.ApprovalRequired }).(pulumi.BoolOutput)
-}
-
-type ApprovalConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ApprovalConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApprovalConfigResponse)(nil)).Elem()
-}
-
-func (o ApprovalConfigResponsePtrOutput) ToApprovalConfigResponsePtrOutput() ApprovalConfigResponsePtrOutput {
-	return o
-}
-
-func (o ApprovalConfigResponsePtrOutput) ToApprovalConfigResponsePtrOutputWithContext(ctx context.Context) ApprovalConfigResponsePtrOutput {
-	return o
-}
-
-func (o ApprovalConfigResponsePtrOutput) Elem() ApprovalConfigResponseOutput {
-	return o.ApplyT(func(v *ApprovalConfigResponse) ApprovalConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ApprovalConfigResponse
-		return ret
-	}).(ApprovalConfigResponseOutput)
-}
-
-// Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start.
-func (o ApprovalConfigResponsePtrOutput) ApprovalRequired() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ApprovalConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.ApprovalRequired
-	}).(pulumi.BoolPtrOutput)
 }
 
 // ApprovalResult describes the decision and associated metadata of a manual approval of a build.
@@ -304,84 +190,6 @@ type ApprovalResultResponse struct {
 	Url string `pulumi:"url"`
 }
 
-// ApprovalResultResponseInput is an input type that accepts ApprovalResultResponseArgs and ApprovalResultResponseOutput values.
-// You can construct a concrete instance of `ApprovalResultResponseInput` via:
-//
-//          ApprovalResultResponseArgs{...}
-type ApprovalResultResponseInput interface {
-	pulumi.Input
-
-	ToApprovalResultResponseOutput() ApprovalResultResponseOutput
-	ToApprovalResultResponseOutputWithContext(context.Context) ApprovalResultResponseOutput
-}
-
-// ApprovalResult describes the decision and associated metadata of a manual approval of a build.
-type ApprovalResultResponseArgs struct {
-	// The time when the approval decision was made.
-	ApprovalTime pulumi.StringInput `pulumi:"approvalTime"`
-	// Email of the user that called the ApproveBuild API to approve or reject a build at the time that the API was called.
-	ApproverAccount pulumi.StringInput `pulumi:"approverAccount"`
-	// Optional. An optional comment for this manual approval result.
-	Comment pulumi.StringInput `pulumi:"comment"`
-	// The decision of this manual approval.
-	Decision pulumi.StringInput `pulumi:"decision"`
-	// Optional. An optional URL tied to this manual approval result. This field is essentially the same as comment, except that it will be rendered by the UI differently. An example use case is a link to an external job that approved this Build.
-	Url pulumi.StringInput `pulumi:"url"`
-}
-
-func (ApprovalResultResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApprovalResultResponse)(nil)).Elem()
-}
-
-func (i ApprovalResultResponseArgs) ToApprovalResultResponseOutput() ApprovalResultResponseOutput {
-	return i.ToApprovalResultResponseOutputWithContext(context.Background())
-}
-
-func (i ApprovalResultResponseArgs) ToApprovalResultResponseOutputWithContext(ctx context.Context) ApprovalResultResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApprovalResultResponseOutput)
-}
-
-func (i ApprovalResultResponseArgs) ToApprovalResultResponsePtrOutput() ApprovalResultResponsePtrOutput {
-	return i.ToApprovalResultResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ApprovalResultResponseArgs) ToApprovalResultResponsePtrOutputWithContext(ctx context.Context) ApprovalResultResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApprovalResultResponseOutput).ToApprovalResultResponsePtrOutputWithContext(ctx)
-}
-
-// ApprovalResultResponsePtrInput is an input type that accepts ApprovalResultResponseArgs, ApprovalResultResponsePtr and ApprovalResultResponsePtrOutput values.
-// You can construct a concrete instance of `ApprovalResultResponsePtrInput` via:
-//
-//          ApprovalResultResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ApprovalResultResponsePtrInput interface {
-	pulumi.Input
-
-	ToApprovalResultResponsePtrOutput() ApprovalResultResponsePtrOutput
-	ToApprovalResultResponsePtrOutputWithContext(context.Context) ApprovalResultResponsePtrOutput
-}
-
-type approvalResultResponsePtrType ApprovalResultResponseArgs
-
-func ApprovalResultResponsePtr(v *ApprovalResultResponseArgs) ApprovalResultResponsePtrInput {
-	return (*approvalResultResponsePtrType)(v)
-}
-
-func (*approvalResultResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApprovalResultResponse)(nil)).Elem()
-}
-
-func (i *approvalResultResponsePtrType) ToApprovalResultResponsePtrOutput() ApprovalResultResponsePtrOutput {
-	return i.ToApprovalResultResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *approvalResultResponsePtrType) ToApprovalResultResponsePtrOutputWithContext(ctx context.Context) ApprovalResultResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApprovalResultResponsePtrOutput)
-}
-
 // ApprovalResult describes the decision and associated metadata of a manual approval of a build.
 type ApprovalResultResponseOutput struct{ *pulumi.OutputState }
 
@@ -395,16 +203,6 @@ func (o ApprovalResultResponseOutput) ToApprovalResultResponseOutput() ApprovalR
 
 func (o ApprovalResultResponseOutput) ToApprovalResultResponseOutputWithContext(ctx context.Context) ApprovalResultResponseOutput {
 	return o
-}
-
-func (o ApprovalResultResponseOutput) ToApprovalResultResponsePtrOutput() ApprovalResultResponsePtrOutput {
-	return o.ToApprovalResultResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ApprovalResultResponseOutput) ToApprovalResultResponsePtrOutputWithContext(ctx context.Context) ApprovalResultResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApprovalResultResponse) *ApprovalResultResponse {
-		return &v
-	}).(ApprovalResultResponsePtrOutput)
 }
 
 // The time when the approval decision was made.
@@ -430,80 +228,6 @@ func (o ApprovalResultResponseOutput) Decision() pulumi.StringOutput {
 // Optional. An optional URL tied to this manual approval result. This field is essentially the same as comment, except that it will be rendered by the UI differently. An example use case is a link to an external job that approved this Build.
 func (o ApprovalResultResponseOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v ApprovalResultResponse) string { return v.Url }).(pulumi.StringOutput)
-}
-
-type ApprovalResultResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ApprovalResultResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApprovalResultResponse)(nil)).Elem()
-}
-
-func (o ApprovalResultResponsePtrOutput) ToApprovalResultResponsePtrOutput() ApprovalResultResponsePtrOutput {
-	return o
-}
-
-func (o ApprovalResultResponsePtrOutput) ToApprovalResultResponsePtrOutputWithContext(ctx context.Context) ApprovalResultResponsePtrOutput {
-	return o
-}
-
-func (o ApprovalResultResponsePtrOutput) Elem() ApprovalResultResponseOutput {
-	return o.ApplyT(func(v *ApprovalResultResponse) ApprovalResultResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ApprovalResultResponse
-		return ret
-	}).(ApprovalResultResponseOutput)
-}
-
-// The time when the approval decision was made.
-func (o ApprovalResultResponsePtrOutput) ApprovalTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ApprovalResultResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ApprovalTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Email of the user that called the ApproveBuild API to approve or reject a build at the time that the API was called.
-func (o ApprovalResultResponsePtrOutput) ApproverAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ApprovalResultResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ApproverAccount
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. An optional comment for this manual approval result.
-func (o ApprovalResultResponsePtrOutput) Comment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ApprovalResultResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Comment
-	}).(pulumi.StringPtrOutput)
-}
-
-// The decision of this manual approval.
-func (o ApprovalResultResponsePtrOutput) Decision() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ApprovalResultResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Decision
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. An optional URL tied to this manual approval result. This field is essentially the same as comment, except that it will be rendered by the UI differently. An example use case is a link to an external job that approved this Build.
-func (o ApprovalResultResponsePtrOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ApprovalResultResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Url
-	}).(pulumi.StringPtrOutput)
 }
 
 // Files in the workspace to upload to Cloud Storage upon successful completion of all build steps.
@@ -675,80 +399,6 @@ type ArtifactObjectsResponse struct {
 	Timing TimeSpanResponse `pulumi:"timing"`
 }
 
-// ArtifactObjectsResponseInput is an input type that accepts ArtifactObjectsResponseArgs and ArtifactObjectsResponseOutput values.
-// You can construct a concrete instance of `ArtifactObjectsResponseInput` via:
-//
-//          ArtifactObjectsResponseArgs{...}
-type ArtifactObjectsResponseInput interface {
-	pulumi.Input
-
-	ToArtifactObjectsResponseOutput() ArtifactObjectsResponseOutput
-	ToArtifactObjectsResponseOutputWithContext(context.Context) ArtifactObjectsResponseOutput
-}
-
-// Files in the workspace to upload to Cloud Storage upon successful completion of all build steps.
-type ArtifactObjectsResponseArgs struct {
-	// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix.
-	Location pulumi.StringInput `pulumi:"location"`
-	// Path globs used to match files in the build's workspace.
-	Paths pulumi.StringArrayInput `pulumi:"paths"`
-	// Stores timing information for pushing all artifact objects.
-	Timing TimeSpanResponseInput `pulumi:"timing"`
-}
-
-func (ArtifactObjectsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ArtifactObjectsResponse)(nil)).Elem()
-}
-
-func (i ArtifactObjectsResponseArgs) ToArtifactObjectsResponseOutput() ArtifactObjectsResponseOutput {
-	return i.ToArtifactObjectsResponseOutputWithContext(context.Background())
-}
-
-func (i ArtifactObjectsResponseArgs) ToArtifactObjectsResponseOutputWithContext(ctx context.Context) ArtifactObjectsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ArtifactObjectsResponseOutput)
-}
-
-func (i ArtifactObjectsResponseArgs) ToArtifactObjectsResponsePtrOutput() ArtifactObjectsResponsePtrOutput {
-	return i.ToArtifactObjectsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ArtifactObjectsResponseArgs) ToArtifactObjectsResponsePtrOutputWithContext(ctx context.Context) ArtifactObjectsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ArtifactObjectsResponseOutput).ToArtifactObjectsResponsePtrOutputWithContext(ctx)
-}
-
-// ArtifactObjectsResponsePtrInput is an input type that accepts ArtifactObjectsResponseArgs, ArtifactObjectsResponsePtr and ArtifactObjectsResponsePtrOutput values.
-// You can construct a concrete instance of `ArtifactObjectsResponsePtrInput` via:
-//
-//          ArtifactObjectsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ArtifactObjectsResponsePtrInput interface {
-	pulumi.Input
-
-	ToArtifactObjectsResponsePtrOutput() ArtifactObjectsResponsePtrOutput
-	ToArtifactObjectsResponsePtrOutputWithContext(context.Context) ArtifactObjectsResponsePtrOutput
-}
-
-type artifactObjectsResponsePtrType ArtifactObjectsResponseArgs
-
-func ArtifactObjectsResponsePtr(v *ArtifactObjectsResponseArgs) ArtifactObjectsResponsePtrInput {
-	return (*artifactObjectsResponsePtrType)(v)
-}
-
-func (*artifactObjectsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ArtifactObjectsResponse)(nil)).Elem()
-}
-
-func (i *artifactObjectsResponsePtrType) ToArtifactObjectsResponsePtrOutput() ArtifactObjectsResponsePtrOutput {
-	return i.ToArtifactObjectsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *artifactObjectsResponsePtrType) ToArtifactObjectsResponsePtrOutputWithContext(ctx context.Context) ArtifactObjectsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ArtifactObjectsResponsePtrOutput)
-}
-
 // Files in the workspace to upload to Cloud Storage upon successful completion of all build steps.
 type ArtifactObjectsResponseOutput struct{ *pulumi.OutputState }
 
@@ -764,16 +414,6 @@ func (o ArtifactObjectsResponseOutput) ToArtifactObjectsResponseOutputWithContex
 	return o
 }
 
-func (o ArtifactObjectsResponseOutput) ToArtifactObjectsResponsePtrOutput() ArtifactObjectsResponsePtrOutput {
-	return o.ToArtifactObjectsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ArtifactObjectsResponseOutput) ToArtifactObjectsResponsePtrOutputWithContext(ctx context.Context) ArtifactObjectsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ArtifactObjectsResponse) *ArtifactObjectsResponse {
-		return &v
-	}).(ArtifactObjectsResponsePtrOutput)
-}
-
 // Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix.
 func (o ArtifactObjectsResponseOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v ArtifactObjectsResponse) string { return v.Location }).(pulumi.StringOutput)
@@ -787,60 +427,6 @@ func (o ArtifactObjectsResponseOutput) Paths() pulumi.StringArrayOutput {
 // Stores timing information for pushing all artifact objects.
 func (o ArtifactObjectsResponseOutput) Timing() TimeSpanResponseOutput {
 	return o.ApplyT(func(v ArtifactObjectsResponse) TimeSpanResponse { return v.Timing }).(TimeSpanResponseOutput)
-}
-
-type ArtifactObjectsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ArtifactObjectsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ArtifactObjectsResponse)(nil)).Elem()
-}
-
-func (o ArtifactObjectsResponsePtrOutput) ToArtifactObjectsResponsePtrOutput() ArtifactObjectsResponsePtrOutput {
-	return o
-}
-
-func (o ArtifactObjectsResponsePtrOutput) ToArtifactObjectsResponsePtrOutputWithContext(ctx context.Context) ArtifactObjectsResponsePtrOutput {
-	return o
-}
-
-func (o ArtifactObjectsResponsePtrOutput) Elem() ArtifactObjectsResponseOutput {
-	return o.ApplyT(func(v *ArtifactObjectsResponse) ArtifactObjectsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ArtifactObjectsResponse
-		return ret
-	}).(ArtifactObjectsResponseOutput)
-}
-
-// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix.
-func (o ArtifactObjectsResponsePtrOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ArtifactObjectsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Location
-	}).(pulumi.StringPtrOutput)
-}
-
-// Path globs used to match files in the build's workspace.
-func (o ArtifactObjectsResponsePtrOutput) Paths() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ArtifactObjectsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Paths
-	}).(pulumi.StringArrayOutput)
-}
-
-// Stores timing information for pushing all artifact objects.
-func (o ArtifactObjectsResponsePtrOutput) Timing() TimeSpanResponsePtrOutput {
-	return o.ApplyT(func(v *ArtifactObjectsResponse) *TimeSpanResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Timing
-	}).(TimeSpanResponsePtrOutput)
 }
 
 // Artifacts produced by a build that should be uploaded upon successful completion of all build steps.
@@ -1010,78 +596,6 @@ type ArtifactsResponse struct {
 	Objects ArtifactObjectsResponse `pulumi:"objects"`
 }
 
-// ArtifactsResponseInput is an input type that accepts ArtifactsResponseArgs and ArtifactsResponseOutput values.
-// You can construct a concrete instance of `ArtifactsResponseInput` via:
-//
-//          ArtifactsResponseArgs{...}
-type ArtifactsResponseInput interface {
-	pulumi.Input
-
-	ToArtifactsResponseOutput() ArtifactsResponseOutput
-	ToArtifactsResponseOutputWithContext(context.Context) ArtifactsResponseOutput
-}
-
-// Artifacts produced by a build that should be uploaded upon successful completion of all build steps.
-type ArtifactsResponseArgs struct {
-	// A list of images to be pushed upon the successful completion of all build steps. The images will be pushed using the builder service account's credentials. The digests of the pushed images will be stored in the Build resource's results field. If any of the images fail to be pushed, the build is marked FAILURE.
-	Images pulumi.StringArrayInput `pulumi:"images"`
-	// A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
-	Objects ArtifactObjectsResponseInput `pulumi:"objects"`
-}
-
-func (ArtifactsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ArtifactsResponse)(nil)).Elem()
-}
-
-func (i ArtifactsResponseArgs) ToArtifactsResponseOutput() ArtifactsResponseOutput {
-	return i.ToArtifactsResponseOutputWithContext(context.Background())
-}
-
-func (i ArtifactsResponseArgs) ToArtifactsResponseOutputWithContext(ctx context.Context) ArtifactsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ArtifactsResponseOutput)
-}
-
-func (i ArtifactsResponseArgs) ToArtifactsResponsePtrOutput() ArtifactsResponsePtrOutput {
-	return i.ToArtifactsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ArtifactsResponseArgs) ToArtifactsResponsePtrOutputWithContext(ctx context.Context) ArtifactsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ArtifactsResponseOutput).ToArtifactsResponsePtrOutputWithContext(ctx)
-}
-
-// ArtifactsResponsePtrInput is an input type that accepts ArtifactsResponseArgs, ArtifactsResponsePtr and ArtifactsResponsePtrOutput values.
-// You can construct a concrete instance of `ArtifactsResponsePtrInput` via:
-//
-//          ArtifactsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ArtifactsResponsePtrInput interface {
-	pulumi.Input
-
-	ToArtifactsResponsePtrOutput() ArtifactsResponsePtrOutput
-	ToArtifactsResponsePtrOutputWithContext(context.Context) ArtifactsResponsePtrOutput
-}
-
-type artifactsResponsePtrType ArtifactsResponseArgs
-
-func ArtifactsResponsePtr(v *ArtifactsResponseArgs) ArtifactsResponsePtrInput {
-	return (*artifactsResponsePtrType)(v)
-}
-
-func (*artifactsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ArtifactsResponse)(nil)).Elem()
-}
-
-func (i *artifactsResponsePtrType) ToArtifactsResponsePtrOutput() ArtifactsResponsePtrOutput {
-	return i.ToArtifactsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *artifactsResponsePtrType) ToArtifactsResponsePtrOutputWithContext(ctx context.Context) ArtifactsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ArtifactsResponsePtrOutput)
-}
-
 // Artifacts produced by a build that should be uploaded upon successful completion of all build steps.
 type ArtifactsResponseOutput struct{ *pulumi.OutputState }
 
@@ -1097,16 +611,6 @@ func (o ArtifactsResponseOutput) ToArtifactsResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o ArtifactsResponseOutput) ToArtifactsResponsePtrOutput() ArtifactsResponsePtrOutput {
-	return o.ToArtifactsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ArtifactsResponseOutput) ToArtifactsResponsePtrOutputWithContext(ctx context.Context) ArtifactsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ArtifactsResponse) *ArtifactsResponse {
-		return &v
-	}).(ArtifactsResponsePtrOutput)
-}
-
 // A list of images to be pushed upon the successful completion of all build steps. The images will be pushed using the builder service account's credentials. The digests of the pushed images will be stored in the Build resource's results field. If any of the images fail to be pushed, the build is marked FAILURE.
 func (o ArtifactsResponseOutput) Images() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ArtifactsResponse) []string { return v.Images }).(pulumi.StringArrayOutput)
@@ -1115,50 +619,6 @@ func (o ArtifactsResponseOutput) Images() pulumi.StringArrayOutput {
 // A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
 func (o ArtifactsResponseOutput) Objects() ArtifactObjectsResponseOutput {
 	return o.ApplyT(func(v ArtifactsResponse) ArtifactObjectsResponse { return v.Objects }).(ArtifactObjectsResponseOutput)
-}
-
-type ArtifactsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ArtifactsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ArtifactsResponse)(nil)).Elem()
-}
-
-func (o ArtifactsResponsePtrOutput) ToArtifactsResponsePtrOutput() ArtifactsResponsePtrOutput {
-	return o
-}
-
-func (o ArtifactsResponsePtrOutput) ToArtifactsResponsePtrOutputWithContext(ctx context.Context) ArtifactsResponsePtrOutput {
-	return o
-}
-
-func (o ArtifactsResponsePtrOutput) Elem() ArtifactsResponseOutput {
-	return o.ApplyT(func(v *ArtifactsResponse) ArtifactsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ArtifactsResponse
-		return ret
-	}).(ArtifactsResponseOutput)
-}
-
-// A list of images to be pushed upon the successful completion of all build steps. The images will be pushed using the builder service account's credentials. The digests of the pushed images will be stored in the Build resource's results field. If any of the images fail to be pushed, the build is marked FAILURE.
-func (o ArtifactsResponsePtrOutput) Images() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ArtifactsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Images
-	}).(pulumi.StringArrayOutput)
-}
-
-// A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
-func (o ArtifactsResponsePtrOutput) Objects() ArtifactObjectsResponsePtrOutput {
-	return o.ApplyT(func(v *ArtifactsResponse) *ArtifactObjectsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Objects
-	}).(ArtifactObjectsResponsePtrOutput)
 }
 
 // A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $LOCATION: the location/region of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
@@ -1539,80 +999,6 @@ type BuildApprovalResponse struct {
 	State string `pulumi:"state"`
 }
 
-// BuildApprovalResponseInput is an input type that accepts BuildApprovalResponseArgs and BuildApprovalResponseOutput values.
-// You can construct a concrete instance of `BuildApprovalResponseInput` via:
-//
-//          BuildApprovalResponseArgs{...}
-type BuildApprovalResponseInput interface {
-	pulumi.Input
-
-	ToBuildApprovalResponseOutput() BuildApprovalResponseOutput
-	ToBuildApprovalResponseOutputWithContext(context.Context) BuildApprovalResponseOutput
-}
-
-// BuildApproval describes a build's approval configuration, state, and result.
-type BuildApprovalResponseArgs struct {
-	// Configuration for manual approval of this build.
-	Config ApprovalConfigResponseInput `pulumi:"config"`
-	// Result of manual approval for this Build.
-	Result ApprovalResultResponseInput `pulumi:"result"`
-	// The state of this build's approval.
-	State pulumi.StringInput `pulumi:"state"`
-}
-
-func (BuildApprovalResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BuildApprovalResponse)(nil)).Elem()
-}
-
-func (i BuildApprovalResponseArgs) ToBuildApprovalResponseOutput() BuildApprovalResponseOutput {
-	return i.ToBuildApprovalResponseOutputWithContext(context.Background())
-}
-
-func (i BuildApprovalResponseArgs) ToBuildApprovalResponseOutputWithContext(ctx context.Context) BuildApprovalResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuildApprovalResponseOutput)
-}
-
-func (i BuildApprovalResponseArgs) ToBuildApprovalResponsePtrOutput() BuildApprovalResponsePtrOutput {
-	return i.ToBuildApprovalResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BuildApprovalResponseArgs) ToBuildApprovalResponsePtrOutputWithContext(ctx context.Context) BuildApprovalResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuildApprovalResponseOutput).ToBuildApprovalResponsePtrOutputWithContext(ctx)
-}
-
-// BuildApprovalResponsePtrInput is an input type that accepts BuildApprovalResponseArgs, BuildApprovalResponsePtr and BuildApprovalResponsePtrOutput values.
-// You can construct a concrete instance of `BuildApprovalResponsePtrInput` via:
-//
-//          BuildApprovalResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BuildApprovalResponsePtrInput interface {
-	pulumi.Input
-
-	ToBuildApprovalResponsePtrOutput() BuildApprovalResponsePtrOutput
-	ToBuildApprovalResponsePtrOutputWithContext(context.Context) BuildApprovalResponsePtrOutput
-}
-
-type buildApprovalResponsePtrType BuildApprovalResponseArgs
-
-func BuildApprovalResponsePtr(v *BuildApprovalResponseArgs) BuildApprovalResponsePtrInput {
-	return (*buildApprovalResponsePtrType)(v)
-}
-
-func (*buildApprovalResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BuildApprovalResponse)(nil)).Elem()
-}
-
-func (i *buildApprovalResponsePtrType) ToBuildApprovalResponsePtrOutput() BuildApprovalResponsePtrOutput {
-	return i.ToBuildApprovalResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *buildApprovalResponsePtrType) ToBuildApprovalResponsePtrOutputWithContext(ctx context.Context) BuildApprovalResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuildApprovalResponsePtrOutput)
-}
-
 // BuildApproval describes a build's approval configuration, state, and result.
 type BuildApprovalResponseOutput struct{ *pulumi.OutputState }
 
@@ -1628,16 +1014,6 @@ func (o BuildApprovalResponseOutput) ToBuildApprovalResponseOutputWithContext(ct
 	return o
 }
 
-func (o BuildApprovalResponseOutput) ToBuildApprovalResponsePtrOutput() BuildApprovalResponsePtrOutput {
-	return o.ToBuildApprovalResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BuildApprovalResponseOutput) ToBuildApprovalResponsePtrOutputWithContext(ctx context.Context) BuildApprovalResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildApprovalResponse) *BuildApprovalResponse {
-		return &v
-	}).(BuildApprovalResponsePtrOutput)
-}
-
 // Configuration for manual approval of this build.
 func (o BuildApprovalResponseOutput) Config() ApprovalConfigResponseOutput {
 	return o.ApplyT(func(v BuildApprovalResponse) ApprovalConfigResponse { return v.Config }).(ApprovalConfigResponseOutput)
@@ -1651,60 +1027,6 @@ func (o BuildApprovalResponseOutput) Result() ApprovalResultResponseOutput {
 // The state of this build's approval.
 func (o BuildApprovalResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildApprovalResponse) string { return v.State }).(pulumi.StringOutput)
-}
-
-type BuildApprovalResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BuildApprovalResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BuildApprovalResponse)(nil)).Elem()
-}
-
-func (o BuildApprovalResponsePtrOutput) ToBuildApprovalResponsePtrOutput() BuildApprovalResponsePtrOutput {
-	return o
-}
-
-func (o BuildApprovalResponsePtrOutput) ToBuildApprovalResponsePtrOutputWithContext(ctx context.Context) BuildApprovalResponsePtrOutput {
-	return o
-}
-
-func (o BuildApprovalResponsePtrOutput) Elem() BuildApprovalResponseOutput {
-	return o.ApplyT(func(v *BuildApprovalResponse) BuildApprovalResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BuildApprovalResponse
-		return ret
-	}).(BuildApprovalResponseOutput)
-}
-
-// Configuration for manual approval of this build.
-func (o BuildApprovalResponsePtrOutput) Config() ApprovalConfigResponsePtrOutput {
-	return o.ApplyT(func(v *BuildApprovalResponse) *ApprovalConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Config
-	}).(ApprovalConfigResponsePtrOutput)
-}
-
-// Result of manual approval for this Build.
-func (o BuildApprovalResponsePtrOutput) Result() ApprovalResultResponsePtrOutput {
-	return o.ApplyT(func(v *BuildApprovalResponse) *ApprovalResultResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Result
-	}).(ApprovalResultResponsePtrOutput)
-}
-
-// The state of this build's approval.
-func (o BuildApprovalResponsePtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildApprovalResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.State
-	}).(pulumi.StringPtrOutput)
 }
 
 // Optional arguments to enable specific features of builds.
@@ -2105,100 +1427,6 @@ type BuildOptionsResponse struct {
 	WorkerPool string `pulumi:"workerPool"`
 }
 
-// BuildOptionsResponseInput is an input type that accepts BuildOptionsResponseArgs and BuildOptionsResponseOutput values.
-// You can construct a concrete instance of `BuildOptionsResponseInput` via:
-//
-//          BuildOptionsResponseArgs{...}
-type BuildOptionsResponseInput interface {
-	pulumi.Input
-
-	ToBuildOptionsResponseOutput() BuildOptionsResponseOutput
-	ToBuildOptionsResponseOutputWithContext(context.Context) BuildOptionsResponseOutput
-}
-
-// Optional arguments to enable specific features of builds.
-type BuildOptionsResponseArgs struct {
-	// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 1000GB; builds that request more than the maximum are rejected with an error.
-	DiskSizeGb pulumi.StringInput `pulumi:"diskSizeGb"`
-	// Option to specify whether or not to apply bash style string operations to the substitutions. NOTE: this is always enabled for triggered builds and cannot be overridden in the build configuration file.
-	DynamicSubstitutions pulumi.BoolInput `pulumi:"dynamicSubstitutions"`
-	// A list of global environment variable definitions that will exist for all build steps in this build. If a variable is defined in both globally and in a build step, the variable will use the build step value. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
-	Env pulumi.StringArrayInput `pulumi:"env"`
-	// Option to define build log streaming behavior to Google Cloud Storage.
-	LogStreamingOption pulumi.StringInput `pulumi:"logStreamingOption"`
-	// Option to specify the logging mode, which determines if and where build logs are stored.
-	Logging pulumi.StringInput `pulumi:"logging"`
-	// Compute Engine machine type on which to run the build.
-	MachineType pulumi.StringInput `pulumi:"machineType"`
-	// Optional. Specification for execution on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
-	Pool PoolOptionResponseInput `pulumi:"pool"`
-	// Requested verifiability options.
-	RequestedVerifyOption pulumi.StringInput `pulumi:"requestedVerifyOption"`
-	// A list of global environment variables, which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`. These variables will be available to all build steps in this build.
-	SecretEnv pulumi.StringArrayInput `pulumi:"secretEnv"`
-	// Requested hash for SourceProvenance.
-	SourceProvenanceHash pulumi.StringArrayInput `pulumi:"sourceProvenanceHash"`
-	// Option to specify behavior when there is an error in the substitution checks. NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file.
-	SubstitutionOption pulumi.StringInput `pulumi:"substitutionOption"`
-	// Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior to starting the build process. Upon completion of the build, volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes defined a build step. Using a global volume in a build with only one step is not valid as it is indicative of a build request with an incorrect configuration.
-	Volumes VolumeResponseArrayInput `pulumi:"volumes"`
-	// This field deprecated; please use `pool.name` instead.
-	WorkerPool pulumi.StringInput `pulumi:"workerPool"`
-}
-
-func (BuildOptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BuildOptionsResponse)(nil)).Elem()
-}
-
-func (i BuildOptionsResponseArgs) ToBuildOptionsResponseOutput() BuildOptionsResponseOutput {
-	return i.ToBuildOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i BuildOptionsResponseArgs) ToBuildOptionsResponseOutputWithContext(ctx context.Context) BuildOptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuildOptionsResponseOutput)
-}
-
-func (i BuildOptionsResponseArgs) ToBuildOptionsResponsePtrOutput() BuildOptionsResponsePtrOutput {
-	return i.ToBuildOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BuildOptionsResponseArgs) ToBuildOptionsResponsePtrOutputWithContext(ctx context.Context) BuildOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuildOptionsResponseOutput).ToBuildOptionsResponsePtrOutputWithContext(ctx)
-}
-
-// BuildOptionsResponsePtrInput is an input type that accepts BuildOptionsResponseArgs, BuildOptionsResponsePtr and BuildOptionsResponsePtrOutput values.
-// You can construct a concrete instance of `BuildOptionsResponsePtrInput` via:
-//
-//          BuildOptionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BuildOptionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToBuildOptionsResponsePtrOutput() BuildOptionsResponsePtrOutput
-	ToBuildOptionsResponsePtrOutputWithContext(context.Context) BuildOptionsResponsePtrOutput
-}
-
-type buildOptionsResponsePtrType BuildOptionsResponseArgs
-
-func BuildOptionsResponsePtr(v *BuildOptionsResponseArgs) BuildOptionsResponsePtrInput {
-	return (*buildOptionsResponsePtrType)(v)
-}
-
-func (*buildOptionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BuildOptionsResponse)(nil)).Elem()
-}
-
-func (i *buildOptionsResponsePtrType) ToBuildOptionsResponsePtrOutput() BuildOptionsResponsePtrOutput {
-	return i.ToBuildOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *buildOptionsResponsePtrType) ToBuildOptionsResponsePtrOutputWithContext(ctx context.Context) BuildOptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuildOptionsResponsePtrOutput)
-}
-
 // Optional arguments to enable specific features of builds.
 type BuildOptionsResponseOutput struct{ *pulumi.OutputState }
 
@@ -2212,16 +1440,6 @@ func (o BuildOptionsResponseOutput) ToBuildOptionsResponseOutput() BuildOptionsR
 
 func (o BuildOptionsResponseOutput) ToBuildOptionsResponseOutputWithContext(ctx context.Context) BuildOptionsResponseOutput {
 	return o
-}
-
-func (o BuildOptionsResponseOutput) ToBuildOptionsResponsePtrOutput() BuildOptionsResponsePtrOutput {
-	return o.ToBuildOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BuildOptionsResponseOutput) ToBuildOptionsResponsePtrOutputWithContext(ctx context.Context) BuildOptionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildOptionsResponse) *BuildOptionsResponse {
-		return &v
-	}).(BuildOptionsResponsePtrOutput)
 }
 
 // Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 1000GB; builds that request more than the maximum are rejected with an error.
@@ -2289,160 +1507,6 @@ func (o BuildOptionsResponseOutput) WorkerPool() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildOptionsResponse) string { return v.WorkerPool }).(pulumi.StringOutput)
 }
 
-type BuildOptionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BuildOptionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BuildOptionsResponse)(nil)).Elem()
-}
-
-func (o BuildOptionsResponsePtrOutput) ToBuildOptionsResponsePtrOutput() BuildOptionsResponsePtrOutput {
-	return o
-}
-
-func (o BuildOptionsResponsePtrOutput) ToBuildOptionsResponsePtrOutputWithContext(ctx context.Context) BuildOptionsResponsePtrOutput {
-	return o
-}
-
-func (o BuildOptionsResponsePtrOutput) Elem() BuildOptionsResponseOutput {
-	return o.ApplyT(func(v *BuildOptionsResponse) BuildOptionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BuildOptionsResponse
-		return ret
-	}).(BuildOptionsResponseOutput)
-}
-
-// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 1000GB; builds that request more than the maximum are rejected with an error.
-func (o BuildOptionsResponsePtrOutput) DiskSizeGb() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildOptionsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DiskSizeGb
-	}).(pulumi.StringPtrOutput)
-}
-
-// Option to specify whether or not to apply bash style string operations to the substitutions. NOTE: this is always enabled for triggered builds and cannot be overridden in the build configuration file.
-func (o BuildOptionsResponsePtrOutput) DynamicSubstitutions() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *BuildOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.DynamicSubstitutions
-	}).(pulumi.BoolPtrOutput)
-}
-
-// A list of global environment variable definitions that will exist for all build steps in this build. If a variable is defined in both globally and in a build step, the variable will use the build step value. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
-func (o BuildOptionsResponsePtrOutput) Env() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *BuildOptionsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Env
-	}).(pulumi.StringArrayOutput)
-}
-
-// Option to define build log streaming behavior to Google Cloud Storage.
-func (o BuildOptionsResponsePtrOutput) LogStreamingOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildOptionsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LogStreamingOption
-	}).(pulumi.StringPtrOutput)
-}
-
-// Option to specify the logging mode, which determines if and where build logs are stored.
-func (o BuildOptionsResponsePtrOutput) Logging() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildOptionsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Logging
-	}).(pulumi.StringPtrOutput)
-}
-
-// Compute Engine machine type on which to run the build.
-func (o BuildOptionsResponsePtrOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildOptionsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MachineType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Specification for execution on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
-func (o BuildOptionsResponsePtrOutput) Pool() PoolOptionResponsePtrOutput {
-	return o.ApplyT(func(v *BuildOptionsResponse) *PoolOptionResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Pool
-	}).(PoolOptionResponsePtrOutput)
-}
-
-// Requested verifiability options.
-func (o BuildOptionsResponsePtrOutput) RequestedVerifyOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildOptionsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RequestedVerifyOption
-	}).(pulumi.StringPtrOutput)
-}
-
-// A list of global environment variables, which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`. These variables will be available to all build steps in this build.
-func (o BuildOptionsResponsePtrOutput) SecretEnv() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *BuildOptionsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretEnv
-	}).(pulumi.StringArrayOutput)
-}
-
-// Requested hash for SourceProvenance.
-func (o BuildOptionsResponsePtrOutput) SourceProvenanceHash() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *BuildOptionsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.SourceProvenanceHash
-	}).(pulumi.StringArrayOutput)
-}
-
-// Option to specify behavior when there is an error in the substitution checks. NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file.
-func (o BuildOptionsResponsePtrOutput) SubstitutionOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildOptionsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SubstitutionOption
-	}).(pulumi.StringPtrOutput)
-}
-
-// Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior to starting the build process. Upon completion of the build, volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes defined a build step. Using a global volume in a build with only one step is not valid as it is indicative of a build request with an incorrect configuration.
-func (o BuildOptionsResponsePtrOutput) Volumes() VolumeResponseArrayOutput {
-	return o.ApplyT(func(v *BuildOptionsResponse) []VolumeResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Volumes
-	}).(VolumeResponseArrayOutput)
-}
-
-// This field deprecated; please use `pool.name` instead.
-func (o BuildOptionsResponsePtrOutput) WorkerPool() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildOptionsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.WorkerPool
-	}).(pulumi.StringPtrOutput)
-}
-
 // A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $LOCATION: the location/region of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
 type BuildResponse struct {
 	// Describes this build's approval configuration, status, and result.
@@ -2503,130 +1567,6 @@ type BuildResponse struct {
 	Warnings []WarningResponse `pulumi:"warnings"`
 }
 
-// BuildResponseInput is an input type that accepts BuildResponseArgs and BuildResponseOutput values.
-// You can construct a concrete instance of `BuildResponseInput` via:
-//
-//          BuildResponseArgs{...}
-type BuildResponseInput interface {
-	pulumi.Input
-
-	ToBuildResponseOutput() BuildResponseOutput
-	ToBuildResponseOutputWithContext(context.Context) BuildResponseOutput
-}
-
-// A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $LOCATION: the location/region of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
-type BuildResponseArgs struct {
-	// Describes this build's approval configuration, status, and result.
-	Approval BuildApprovalResponseInput `pulumi:"approval"`
-	// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
-	Artifacts ArtifactsResponseInput `pulumi:"artifacts"`
-	// Secrets and secret environment variables.
-	AvailableSecrets SecretsResponseInput `pulumi:"availableSecrets"`
-	// The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
-	BuildTriggerId pulumi.StringInput `pulumi:"buildTriggerId"`
-	// Time at which the request to create the build was received.
-	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// Contains information about the build when status=FAILURE.
-	FailureInfo FailureInfoResponseInput `pulumi:"failureInfo"`
-	// Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
-	FinishTime pulumi.StringInput `pulumi:"finishTime"`
-	// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
-	Images pulumi.StringArrayInput `pulumi:"images"`
-	// URL to logs for this build in Google Cloud Console.
-	LogUrl pulumi.StringInput `pulumi:"logUrl"`
-	// Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
-	LogsBucket pulumi.StringInput `pulumi:"logsBucket"`
-	// The 'Build' name with format: `projects/{project}/locations/{location}/builds/{build}`, where {build} is a unique identifier generated by the service.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Special options for this build.
-	Options BuildOptionsResponseInput `pulumi:"options"`
-	// ID of the project.
-	Project pulumi.StringInput `pulumi:"project"`
-	// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
-	QueueTtl pulumi.StringInput `pulumi:"queueTtl"`
-	// Results of the build.
-	Results ResultsResponseInput `pulumi:"results"`
-	// Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
-	Secrets SecretResponseArrayInput `pulumi:"secrets"`
-	// IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account.
-	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
-	// The location of the source files to build.
-	Source SourceResponseInput `pulumi:"source"`
-	// A permanent fixed identifier for source.
-	SourceProvenance SourceProvenanceResponseInput `pulumi:"sourceProvenance"`
-	// Time at which execution of the build was started.
-	StartTime pulumi.StringInput `pulumi:"startTime"`
-	// Status of the build.
-	Status pulumi.StringInput `pulumi:"status"`
-	// Customer-readable message about the current status.
-	StatusDetail pulumi.StringInput `pulumi:"statusDetail"`
-	// The operations to be performed on the workspace.
-	Steps BuildStepResponseArrayInput `pulumi:"steps"`
-	// Substitutions data for `Build` resource.
-	Substitutions pulumi.StringMapInput `pulumi:"substitutions"`
-	// Tags for annotation of a `Build`. These are not docker tags.
-	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
-	Timeout pulumi.StringInput `pulumi:"timeout"`
-	// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
-	Timing pulumi.StringMapInput `pulumi:"timing"`
-	// Non-fatal problems encountered during the execution of the build.
-	Warnings WarningResponseArrayInput `pulumi:"warnings"`
-}
-
-func (BuildResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BuildResponse)(nil)).Elem()
-}
-
-func (i BuildResponseArgs) ToBuildResponseOutput() BuildResponseOutput {
-	return i.ToBuildResponseOutputWithContext(context.Background())
-}
-
-func (i BuildResponseArgs) ToBuildResponseOutputWithContext(ctx context.Context) BuildResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuildResponseOutput)
-}
-
-func (i BuildResponseArgs) ToBuildResponsePtrOutput() BuildResponsePtrOutput {
-	return i.ToBuildResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BuildResponseArgs) ToBuildResponsePtrOutputWithContext(ctx context.Context) BuildResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuildResponseOutput).ToBuildResponsePtrOutputWithContext(ctx)
-}
-
-// BuildResponsePtrInput is an input type that accepts BuildResponseArgs, BuildResponsePtr and BuildResponsePtrOutput values.
-// You can construct a concrete instance of `BuildResponsePtrInput` via:
-//
-//          BuildResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BuildResponsePtrInput interface {
-	pulumi.Input
-
-	ToBuildResponsePtrOutput() BuildResponsePtrOutput
-	ToBuildResponsePtrOutputWithContext(context.Context) BuildResponsePtrOutput
-}
-
-type buildResponsePtrType BuildResponseArgs
-
-func BuildResponsePtr(v *BuildResponseArgs) BuildResponsePtrInput {
-	return (*buildResponsePtrType)(v)
-}
-
-func (*buildResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BuildResponse)(nil)).Elem()
-}
-
-func (i *buildResponsePtrType) ToBuildResponsePtrOutput() BuildResponsePtrOutput {
-	return i.ToBuildResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *buildResponsePtrType) ToBuildResponsePtrOutputWithContext(ctx context.Context) BuildResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuildResponsePtrOutput)
-}
-
 // A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $LOCATION: the location/region of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
 type BuildResponseOutput struct{ *pulumi.OutputState }
 
@@ -2640,16 +1580,6 @@ func (o BuildResponseOutput) ToBuildResponseOutput() BuildResponseOutput {
 
 func (o BuildResponseOutput) ToBuildResponseOutputWithContext(ctx context.Context) BuildResponseOutput {
 	return o
-}
-
-func (o BuildResponseOutput) ToBuildResponsePtrOutput() BuildResponsePtrOutput {
-	return o.ToBuildResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BuildResponseOutput) ToBuildResponsePtrOutputWithContext(ctx context.Context) BuildResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildResponse) *BuildResponse {
-		return &v
-	}).(BuildResponsePtrOutput)
 }
 
 // Describes this build's approval configuration, status, and result.
@@ -2790,310 +1720,6 @@ func (o BuildResponseOutput) Timing() pulumi.StringMapOutput {
 // Non-fatal problems encountered during the execution of the build.
 func (o BuildResponseOutput) Warnings() WarningResponseArrayOutput {
 	return o.ApplyT(func(v BuildResponse) []WarningResponse { return v.Warnings }).(WarningResponseArrayOutput)
-}
-
-type BuildResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BuildResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BuildResponse)(nil)).Elem()
-}
-
-func (o BuildResponsePtrOutput) ToBuildResponsePtrOutput() BuildResponsePtrOutput {
-	return o
-}
-
-func (o BuildResponsePtrOutput) ToBuildResponsePtrOutputWithContext(ctx context.Context) BuildResponsePtrOutput {
-	return o
-}
-
-func (o BuildResponsePtrOutput) Elem() BuildResponseOutput {
-	return o.ApplyT(func(v *BuildResponse) BuildResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BuildResponse
-		return ret
-	}).(BuildResponseOutput)
-}
-
-// Describes this build's approval configuration, status, and result.
-func (o BuildResponsePtrOutput) Approval() BuildApprovalResponsePtrOutput {
-	return o.ApplyT(func(v *BuildResponse) *BuildApprovalResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Approval
-	}).(BuildApprovalResponsePtrOutput)
-}
-
-// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
-func (o BuildResponsePtrOutput) Artifacts() ArtifactsResponsePtrOutput {
-	return o.ApplyT(func(v *BuildResponse) *ArtifactsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Artifacts
-	}).(ArtifactsResponsePtrOutput)
-}
-
-// Secrets and secret environment variables.
-func (o BuildResponsePtrOutput) AvailableSecrets() SecretsResponsePtrOutput {
-	return o.ApplyT(func(v *BuildResponse) *SecretsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.AvailableSecrets
-	}).(SecretsResponsePtrOutput)
-}
-
-// The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
-func (o BuildResponsePtrOutput) BuildTriggerId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.BuildTriggerId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Time at which the request to create the build was received.
-func (o BuildResponsePtrOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CreateTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Contains information about the build when status=FAILURE.
-func (o BuildResponsePtrOutput) FailureInfo() FailureInfoResponsePtrOutput {
-	return o.ApplyT(func(v *BuildResponse) *FailureInfoResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.FailureInfo
-	}).(FailureInfoResponsePtrOutput)
-}
-
-// Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
-func (o BuildResponsePtrOutput) FinishTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.FinishTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
-func (o BuildResponsePtrOutput) Images() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *BuildResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Images
-	}).(pulumi.StringArrayOutput)
-}
-
-// URL to logs for this build in Google Cloud Console.
-func (o BuildResponsePtrOutput) LogUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LogUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
-func (o BuildResponsePtrOutput) LogsBucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LogsBucket
-	}).(pulumi.StringPtrOutput)
-}
-
-// The 'Build' name with format: `projects/{project}/locations/{location}/builds/{build}`, where {build} is a unique identifier generated by the service.
-func (o BuildResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Special options for this build.
-func (o BuildResponsePtrOutput) Options() BuildOptionsResponsePtrOutput {
-	return o.ApplyT(func(v *BuildResponse) *BuildOptionsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Options
-	}).(BuildOptionsResponsePtrOutput)
-}
-
-// ID of the project.
-func (o BuildResponsePtrOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Project
-	}).(pulumi.StringPtrOutput)
-}
-
-// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
-func (o BuildResponsePtrOutput) QueueTtl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.QueueTtl
-	}).(pulumi.StringPtrOutput)
-}
-
-// Results of the build.
-func (o BuildResponsePtrOutput) Results() ResultsResponsePtrOutput {
-	return o.ApplyT(func(v *BuildResponse) *ResultsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Results
-	}).(ResultsResponsePtrOutput)
-}
-
-// Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
-func (o BuildResponsePtrOutput) Secrets() SecretResponseArrayOutput {
-	return o.ApplyT(func(v *BuildResponse) []SecretResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Secrets
-	}).(SecretResponseArrayOutput)
-}
-
-// IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account.
-func (o BuildResponsePtrOutput) ServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ServiceAccount
-	}).(pulumi.StringPtrOutput)
-}
-
-// The location of the source files to build.
-func (o BuildResponsePtrOutput) Source() SourceResponsePtrOutput {
-	return o.ApplyT(func(v *BuildResponse) *SourceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Source
-	}).(SourceResponsePtrOutput)
-}
-
-// A permanent fixed identifier for source.
-func (o BuildResponsePtrOutput) SourceProvenance() SourceProvenanceResponsePtrOutput {
-	return o.ApplyT(func(v *BuildResponse) *SourceProvenanceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.SourceProvenance
-	}).(SourceProvenanceResponsePtrOutput)
-}
-
-// Time at which execution of the build was started.
-func (o BuildResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StartTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Status of the build.
-func (o BuildResponsePtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Status
-	}).(pulumi.StringPtrOutput)
-}
-
-// Customer-readable message about the current status.
-func (o BuildResponsePtrOutput) StatusDetail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StatusDetail
-	}).(pulumi.StringPtrOutput)
-}
-
-// The operations to be performed on the workspace.
-func (o BuildResponsePtrOutput) Steps() BuildStepResponseArrayOutput {
-	return o.ApplyT(func(v *BuildResponse) []BuildStepResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Steps
-	}).(BuildStepResponseArrayOutput)
-}
-
-// Substitutions data for `Build` resource.
-func (o BuildResponsePtrOutput) Substitutions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *BuildResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Substitutions
-	}).(pulumi.StringMapOutput)
-}
-
-// Tags for annotation of a `Build`. These are not docker tags.
-func (o BuildResponsePtrOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *BuildResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Tags
-	}).(pulumi.StringArrayOutput)
-}
-
-// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
-func (o BuildResponsePtrOutput) Timeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Timeout
-	}).(pulumi.StringPtrOutput)
-}
-
-// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
-func (o BuildResponsePtrOutput) Timing() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *BuildResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Timing
-	}).(pulumi.StringMapOutput)
-}
-
-// Non-fatal problems encountered during the execution of the build.
-func (o BuildResponsePtrOutput) Warnings() WarningResponseArrayOutput {
-	return o.ApplyT(func(v *BuildResponse) []WarningResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Warnings
-	}).(WarningResponseArrayOutput)
 }
 
 // A step in the build pipeline.
@@ -3316,84 +1942,6 @@ type BuildStepResponse struct {
 	WaitFor []string `pulumi:"waitFor"`
 }
 
-// BuildStepResponseInput is an input type that accepts BuildStepResponseArgs and BuildStepResponseOutput values.
-// You can construct a concrete instance of `BuildStepResponseInput` via:
-//
-//          BuildStepResponseArgs{...}
-type BuildStepResponseInput interface {
-	pulumi.Input
-
-	ToBuildStepResponseOutput() BuildStepResponseOutput
-	ToBuildStepResponseOutputWithContext(context.Context) BuildStepResponseOutput
-}
-
-// A step in the build pipeline.
-type BuildStepResponseArgs struct {
-	// A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments.
-	Args pulumi.StringArrayInput `pulumi:"args"`
-	// Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
-	Dir pulumi.StringInput `pulumi:"dir"`
-	// Entrypoint to be used instead of the build step image's default entrypoint. If unset, the image's default entrypoint is used.
-	Entrypoint pulumi.StringInput `pulumi:"entrypoint"`
-	// A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
-	Env pulumi.StringArrayInput `pulumi:"env"`
-	// The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Stores timing information for pulling this build step's builder image only.
-	PullTiming TimeSpanResponseInput `pulumi:"pullTiming"`
-	// A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args.
-	Script pulumi.StringInput `pulumi:"script"`
-	// A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`.
-	SecretEnv pulumi.StringArrayInput `pulumi:"secretEnv"`
-	// Status of the build step. At this time, build step status is only updated on build completion; step status is not updated in real-time as the build progresses.
-	Status pulumi.StringInput `pulumi:"status"`
-	// Time limit for executing this build step. If not defined, the step has no time limit and will be allowed to continue to run until either it completes or the build itself times out.
-	Timeout pulumi.StringInput `pulumi:"timeout"`
-	// Stores timing information for executing this build step.
-	Timing TimeSpanResponseInput `pulumi:"timing"`
-	// List of volumes to mount into the build step. Each volume is created as an empty volume prior to execution of the build step. Upon completion of the build, volumes and their contents are discarded. Using a named volume in only one step is not valid as it is indicative of a build request with an incorrect configuration.
-	Volumes VolumeResponseArrayInput `pulumi:"volumes"`
-	// The ID(s) of the step(s) that this build step depends on. This build step will not start until all the build steps in `wait_for` have completed successfully. If `wait_for` is empty, this build step will start when all previous build steps in the `Build.Steps` list have completed successfully.
-	WaitFor pulumi.StringArrayInput `pulumi:"waitFor"`
-}
-
-func (BuildStepResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BuildStepResponse)(nil)).Elem()
-}
-
-func (i BuildStepResponseArgs) ToBuildStepResponseOutput() BuildStepResponseOutput {
-	return i.ToBuildStepResponseOutputWithContext(context.Background())
-}
-
-func (i BuildStepResponseArgs) ToBuildStepResponseOutputWithContext(ctx context.Context) BuildStepResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuildStepResponseOutput)
-}
-
-// BuildStepResponseArrayInput is an input type that accepts BuildStepResponseArray and BuildStepResponseArrayOutput values.
-// You can construct a concrete instance of `BuildStepResponseArrayInput` via:
-//
-//          BuildStepResponseArray{ BuildStepResponseArgs{...} }
-type BuildStepResponseArrayInput interface {
-	pulumi.Input
-
-	ToBuildStepResponseArrayOutput() BuildStepResponseArrayOutput
-	ToBuildStepResponseArrayOutputWithContext(context.Context) BuildStepResponseArrayOutput
-}
-
-type BuildStepResponseArray []BuildStepResponseInput
-
-func (BuildStepResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BuildStepResponse)(nil)).Elem()
-}
-
-func (i BuildStepResponseArray) ToBuildStepResponseArrayOutput() BuildStepResponseArrayOutput {
-	return i.ToBuildStepResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BuildStepResponseArray) ToBuildStepResponseArrayOutputWithContext(ctx context.Context) BuildStepResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuildStepResponseArrayOutput)
-}
-
 // A step in the build pipeline.
 type BuildStepResponseOutput struct{ *pulumi.OutputState }
 
@@ -3504,64 +2052,6 @@ type BuiltImageResponse struct {
 	PushTiming TimeSpanResponse `pulumi:"pushTiming"`
 }
 
-// BuiltImageResponseInput is an input type that accepts BuiltImageResponseArgs and BuiltImageResponseOutput values.
-// You can construct a concrete instance of `BuiltImageResponseInput` via:
-//
-//          BuiltImageResponseArgs{...}
-type BuiltImageResponseInput interface {
-	pulumi.Input
-
-	ToBuiltImageResponseOutput() BuiltImageResponseOutput
-	ToBuiltImageResponseOutputWithContext(context.Context) BuiltImageResponseOutput
-}
-
-// An image built by the pipeline.
-type BuiltImageResponseArgs struct {
-	// Docker Registry 2.0 digest.
-	Digest pulumi.StringInput `pulumi:"digest"`
-	// Name used to push the container image to Google Container Registry, as presented to `docker push`.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Stores timing information for pushing the specified image.
-	PushTiming TimeSpanResponseInput `pulumi:"pushTiming"`
-}
-
-func (BuiltImageResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BuiltImageResponse)(nil)).Elem()
-}
-
-func (i BuiltImageResponseArgs) ToBuiltImageResponseOutput() BuiltImageResponseOutput {
-	return i.ToBuiltImageResponseOutputWithContext(context.Background())
-}
-
-func (i BuiltImageResponseArgs) ToBuiltImageResponseOutputWithContext(ctx context.Context) BuiltImageResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuiltImageResponseOutput)
-}
-
-// BuiltImageResponseArrayInput is an input type that accepts BuiltImageResponseArray and BuiltImageResponseArrayOutput values.
-// You can construct a concrete instance of `BuiltImageResponseArrayInput` via:
-//
-//          BuiltImageResponseArray{ BuiltImageResponseArgs{...} }
-type BuiltImageResponseArrayInput interface {
-	pulumi.Input
-
-	ToBuiltImageResponseArrayOutput() BuiltImageResponseArrayOutput
-	ToBuiltImageResponseArrayOutputWithContext(context.Context) BuiltImageResponseArrayOutput
-}
-
-type BuiltImageResponseArray []BuiltImageResponseInput
-
-func (BuiltImageResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BuiltImageResponse)(nil)).Elem()
-}
-
-func (i BuiltImageResponseArray) ToBuiltImageResponseArrayOutput() BuiltImageResponseArrayOutput {
-	return i.ToBuiltImageResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BuiltImageResponseArray) ToBuiltImageResponseArrayOutputWithContext(ctx context.Context) BuiltImageResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuiltImageResponseArrayOutput)
-}
-
 // An image built by the pipeline.
 type BuiltImageResponseOutput struct{ *pulumi.OutputState }
 
@@ -3620,78 +2110,6 @@ type FailureInfoResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// FailureInfoResponseInput is an input type that accepts FailureInfoResponseArgs and FailureInfoResponseOutput values.
-// You can construct a concrete instance of `FailureInfoResponseInput` via:
-//
-//          FailureInfoResponseArgs{...}
-type FailureInfoResponseInput interface {
-	pulumi.Input
-
-	ToFailureInfoResponseOutput() FailureInfoResponseOutput
-	ToFailureInfoResponseOutputWithContext(context.Context) FailureInfoResponseOutput
-}
-
-// A fatal problem encountered during the execution of the build.
-type FailureInfoResponseArgs struct {
-	// Explains the failure issue in more detail using hard-coded text.
-	Detail pulumi.StringInput `pulumi:"detail"`
-	// The name of the failure.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (FailureInfoResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FailureInfoResponse)(nil)).Elem()
-}
-
-func (i FailureInfoResponseArgs) ToFailureInfoResponseOutput() FailureInfoResponseOutput {
-	return i.ToFailureInfoResponseOutputWithContext(context.Background())
-}
-
-func (i FailureInfoResponseArgs) ToFailureInfoResponseOutputWithContext(ctx context.Context) FailureInfoResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FailureInfoResponseOutput)
-}
-
-func (i FailureInfoResponseArgs) ToFailureInfoResponsePtrOutput() FailureInfoResponsePtrOutput {
-	return i.ToFailureInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i FailureInfoResponseArgs) ToFailureInfoResponsePtrOutputWithContext(ctx context.Context) FailureInfoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FailureInfoResponseOutput).ToFailureInfoResponsePtrOutputWithContext(ctx)
-}
-
-// FailureInfoResponsePtrInput is an input type that accepts FailureInfoResponseArgs, FailureInfoResponsePtr and FailureInfoResponsePtrOutput values.
-// You can construct a concrete instance of `FailureInfoResponsePtrInput` via:
-//
-//          FailureInfoResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type FailureInfoResponsePtrInput interface {
-	pulumi.Input
-
-	ToFailureInfoResponsePtrOutput() FailureInfoResponsePtrOutput
-	ToFailureInfoResponsePtrOutputWithContext(context.Context) FailureInfoResponsePtrOutput
-}
-
-type failureInfoResponsePtrType FailureInfoResponseArgs
-
-func FailureInfoResponsePtr(v *FailureInfoResponseArgs) FailureInfoResponsePtrInput {
-	return (*failureInfoResponsePtrType)(v)
-}
-
-func (*failureInfoResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FailureInfoResponse)(nil)).Elem()
-}
-
-func (i *failureInfoResponsePtrType) ToFailureInfoResponsePtrOutput() FailureInfoResponsePtrOutput {
-	return i.ToFailureInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *failureInfoResponsePtrType) ToFailureInfoResponsePtrOutputWithContext(ctx context.Context) FailureInfoResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FailureInfoResponsePtrOutput)
-}
-
 // A fatal problem encountered during the execution of the build.
 type FailureInfoResponseOutput struct{ *pulumi.OutputState }
 
@@ -3707,16 +2125,6 @@ func (o FailureInfoResponseOutput) ToFailureInfoResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o FailureInfoResponseOutput) ToFailureInfoResponsePtrOutput() FailureInfoResponsePtrOutput {
-	return o.ToFailureInfoResponsePtrOutputWithContext(context.Background())
-}
-
-func (o FailureInfoResponseOutput) ToFailureInfoResponsePtrOutputWithContext(ctx context.Context) FailureInfoResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FailureInfoResponse) *FailureInfoResponse {
-		return &v
-	}).(FailureInfoResponsePtrOutput)
-}
-
 // Explains the failure issue in more detail using hard-coded text.
 func (o FailureInfoResponseOutput) Detail() pulumi.StringOutput {
 	return o.ApplyT(func(v FailureInfoResponse) string { return v.Detail }).(pulumi.StringOutput)
@@ -3725,50 +2133,6 @@ func (o FailureInfoResponseOutput) Detail() pulumi.StringOutput {
 // The name of the failure.
 func (o FailureInfoResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v FailureInfoResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type FailureInfoResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (FailureInfoResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FailureInfoResponse)(nil)).Elem()
-}
-
-func (o FailureInfoResponsePtrOutput) ToFailureInfoResponsePtrOutput() FailureInfoResponsePtrOutput {
-	return o
-}
-
-func (o FailureInfoResponsePtrOutput) ToFailureInfoResponsePtrOutputWithContext(ctx context.Context) FailureInfoResponsePtrOutput {
-	return o
-}
-
-func (o FailureInfoResponsePtrOutput) Elem() FailureInfoResponseOutput {
-	return o.ApplyT(func(v *FailureInfoResponse) FailureInfoResponse {
-		if v != nil {
-			return *v
-		}
-		var ret FailureInfoResponse
-		return ret
-	}).(FailureInfoResponseOutput)
-}
-
-// Explains the failure issue in more detail using hard-coded text.
-func (o FailureInfoResponsePtrOutput) Detail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FailureInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Detail
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the failure.
-func (o FailureInfoResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FailureInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
 }
 
 // GitFileSource describes a file within a (possibly remote) code repository.
@@ -3980,82 +2344,6 @@ type GitFileSourceResponse struct {
 	Uri string `pulumi:"uri"`
 }
 
-// GitFileSourceResponseInput is an input type that accepts GitFileSourceResponseArgs and GitFileSourceResponseOutput values.
-// You can construct a concrete instance of `GitFileSourceResponseInput` via:
-//
-//          GitFileSourceResponseArgs{...}
-type GitFileSourceResponseInput interface {
-	pulumi.Input
-
-	ToGitFileSourceResponseOutput() GitFileSourceResponseOutput
-	ToGitFileSourceResponseOutputWithContext(context.Context) GitFileSourceResponseOutput
-}
-
-// GitFileSource describes a file within a (possibly remote) code repository.
-type GitFileSourceResponseArgs struct {
-	// The path of the file, with the repo root as the root of the path.
-	Path pulumi.StringInput `pulumi:"path"`
-	// See RepoType above.
-	RepoType pulumi.StringInput `pulumi:"repoType"`
-	// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
-	Revision pulumi.StringInput `pulumi:"revision"`
-	// The URI of the repo (optional). If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
-	Uri pulumi.StringInput `pulumi:"uri"`
-}
-
-func (GitFileSourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitFileSourceResponse)(nil)).Elem()
-}
-
-func (i GitFileSourceResponseArgs) ToGitFileSourceResponseOutput() GitFileSourceResponseOutput {
-	return i.ToGitFileSourceResponseOutputWithContext(context.Background())
-}
-
-func (i GitFileSourceResponseArgs) ToGitFileSourceResponseOutputWithContext(ctx context.Context) GitFileSourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitFileSourceResponseOutput)
-}
-
-func (i GitFileSourceResponseArgs) ToGitFileSourceResponsePtrOutput() GitFileSourceResponsePtrOutput {
-	return i.ToGitFileSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GitFileSourceResponseArgs) ToGitFileSourceResponsePtrOutputWithContext(ctx context.Context) GitFileSourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitFileSourceResponseOutput).ToGitFileSourceResponsePtrOutputWithContext(ctx)
-}
-
-// GitFileSourceResponsePtrInput is an input type that accepts GitFileSourceResponseArgs, GitFileSourceResponsePtr and GitFileSourceResponsePtrOutput values.
-// You can construct a concrete instance of `GitFileSourceResponsePtrInput` via:
-//
-//          GitFileSourceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GitFileSourceResponsePtrInput interface {
-	pulumi.Input
-
-	ToGitFileSourceResponsePtrOutput() GitFileSourceResponsePtrOutput
-	ToGitFileSourceResponsePtrOutputWithContext(context.Context) GitFileSourceResponsePtrOutput
-}
-
-type gitFileSourceResponsePtrType GitFileSourceResponseArgs
-
-func GitFileSourceResponsePtr(v *GitFileSourceResponseArgs) GitFileSourceResponsePtrInput {
-	return (*gitFileSourceResponsePtrType)(v)
-}
-
-func (*gitFileSourceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitFileSourceResponse)(nil)).Elem()
-}
-
-func (i *gitFileSourceResponsePtrType) ToGitFileSourceResponsePtrOutput() GitFileSourceResponsePtrOutput {
-	return i.ToGitFileSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *gitFileSourceResponsePtrType) ToGitFileSourceResponsePtrOutputWithContext(ctx context.Context) GitFileSourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitFileSourceResponsePtrOutput)
-}
-
 // GitFileSource describes a file within a (possibly remote) code repository.
 type GitFileSourceResponseOutput struct{ *pulumi.OutputState }
 
@@ -4069,16 +2357,6 @@ func (o GitFileSourceResponseOutput) ToGitFileSourceResponseOutput() GitFileSour
 
 func (o GitFileSourceResponseOutput) ToGitFileSourceResponseOutputWithContext(ctx context.Context) GitFileSourceResponseOutput {
 	return o
-}
-
-func (o GitFileSourceResponseOutput) ToGitFileSourceResponsePtrOutput() GitFileSourceResponsePtrOutput {
-	return o.ToGitFileSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GitFileSourceResponseOutput) ToGitFileSourceResponsePtrOutputWithContext(ctx context.Context) GitFileSourceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitFileSourceResponse) *GitFileSourceResponse {
-		return &v
-	}).(GitFileSourceResponsePtrOutput)
 }
 
 // The path of the file, with the repo root as the root of the path.
@@ -4099,70 +2377,6 @@ func (o GitFileSourceResponseOutput) Revision() pulumi.StringOutput {
 // The URI of the repo (optional). If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
 func (o GitFileSourceResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v GitFileSourceResponse) string { return v.Uri }).(pulumi.StringOutput)
-}
-
-type GitFileSourceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GitFileSourceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitFileSourceResponse)(nil)).Elem()
-}
-
-func (o GitFileSourceResponsePtrOutput) ToGitFileSourceResponsePtrOutput() GitFileSourceResponsePtrOutput {
-	return o
-}
-
-func (o GitFileSourceResponsePtrOutput) ToGitFileSourceResponsePtrOutputWithContext(ctx context.Context) GitFileSourceResponsePtrOutput {
-	return o
-}
-
-func (o GitFileSourceResponsePtrOutput) Elem() GitFileSourceResponseOutput {
-	return o.ApplyT(func(v *GitFileSourceResponse) GitFileSourceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GitFileSourceResponse
-		return ret
-	}).(GitFileSourceResponseOutput)
-}
-
-// The path of the file, with the repo root as the root of the path.
-func (o GitFileSourceResponsePtrOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitFileSourceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Path
-	}).(pulumi.StringPtrOutput)
-}
-
-// See RepoType above.
-func (o GitFileSourceResponsePtrOutput) RepoType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitFileSourceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RepoType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
-func (o GitFileSourceResponsePtrOutput) Revision() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitFileSourceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Revision
-	}).(pulumi.StringPtrOutput)
-}
-
-// The URI of the repo (optional). If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
-func (o GitFileSourceResponsePtrOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitFileSourceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Uri
-	}).(pulumi.StringPtrOutput)
 }
 
 // GitHubEnterpriseSecrets represents the names of all necessary secrets in Secret Manager for a GitHub Enterprise server. Format is: projects//secrets/.
@@ -4458,90 +2672,6 @@ type GitHubEnterpriseSecretsResponse struct {
 	WebhookSecretVersionName string `pulumi:"webhookSecretVersionName"`
 }
 
-// GitHubEnterpriseSecretsResponseInput is an input type that accepts GitHubEnterpriseSecretsResponseArgs and GitHubEnterpriseSecretsResponseOutput values.
-// You can construct a concrete instance of `GitHubEnterpriseSecretsResponseInput` via:
-//
-//          GitHubEnterpriseSecretsResponseArgs{...}
-type GitHubEnterpriseSecretsResponseInput interface {
-	pulumi.Input
-
-	ToGitHubEnterpriseSecretsResponseOutput() GitHubEnterpriseSecretsResponseOutput
-	ToGitHubEnterpriseSecretsResponseOutputWithContext(context.Context) GitHubEnterpriseSecretsResponseOutput
-}
-
-// GitHubEnterpriseSecrets represents the names of all necessary secrets in Secret Manager for a GitHub Enterprise server. Format is: projects//secrets/.
-type GitHubEnterpriseSecretsResponseArgs struct {
-	// The resource name for the OAuth client ID secret in Secret Manager.
-	OauthClientIdName pulumi.StringInput `pulumi:"oauthClientIdName"`
-	// The resource name for the OAuth client ID secret version in Secret Manager.
-	OauthClientIdVersionName pulumi.StringInput `pulumi:"oauthClientIdVersionName"`
-	// The resource name for the OAuth secret in Secret Manager.
-	OauthSecretName pulumi.StringInput `pulumi:"oauthSecretName"`
-	// The resource name for the OAuth secret secret version in Secret Manager.
-	OauthSecretVersionName pulumi.StringInput `pulumi:"oauthSecretVersionName"`
-	// The resource name for the private key secret.
-	PrivateKeyName pulumi.StringInput `pulumi:"privateKeyName"`
-	// The resource name for the private key secret version.
-	PrivateKeyVersionName pulumi.StringInput `pulumi:"privateKeyVersionName"`
-	// The resource name for the webhook secret in Secret Manager.
-	WebhookSecretName pulumi.StringInput `pulumi:"webhookSecretName"`
-	// The resource name for the webhook secret secret version in Secret Manager.
-	WebhookSecretVersionName pulumi.StringInput `pulumi:"webhookSecretVersionName"`
-}
-
-func (GitHubEnterpriseSecretsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitHubEnterpriseSecretsResponse)(nil)).Elem()
-}
-
-func (i GitHubEnterpriseSecretsResponseArgs) ToGitHubEnterpriseSecretsResponseOutput() GitHubEnterpriseSecretsResponseOutput {
-	return i.ToGitHubEnterpriseSecretsResponseOutputWithContext(context.Background())
-}
-
-func (i GitHubEnterpriseSecretsResponseArgs) ToGitHubEnterpriseSecretsResponseOutputWithContext(ctx context.Context) GitHubEnterpriseSecretsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitHubEnterpriseSecretsResponseOutput)
-}
-
-func (i GitHubEnterpriseSecretsResponseArgs) ToGitHubEnterpriseSecretsResponsePtrOutput() GitHubEnterpriseSecretsResponsePtrOutput {
-	return i.ToGitHubEnterpriseSecretsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GitHubEnterpriseSecretsResponseArgs) ToGitHubEnterpriseSecretsResponsePtrOutputWithContext(ctx context.Context) GitHubEnterpriseSecretsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitHubEnterpriseSecretsResponseOutput).ToGitHubEnterpriseSecretsResponsePtrOutputWithContext(ctx)
-}
-
-// GitHubEnterpriseSecretsResponsePtrInput is an input type that accepts GitHubEnterpriseSecretsResponseArgs, GitHubEnterpriseSecretsResponsePtr and GitHubEnterpriseSecretsResponsePtrOutput values.
-// You can construct a concrete instance of `GitHubEnterpriseSecretsResponsePtrInput` via:
-//
-//          GitHubEnterpriseSecretsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GitHubEnterpriseSecretsResponsePtrInput interface {
-	pulumi.Input
-
-	ToGitHubEnterpriseSecretsResponsePtrOutput() GitHubEnterpriseSecretsResponsePtrOutput
-	ToGitHubEnterpriseSecretsResponsePtrOutputWithContext(context.Context) GitHubEnterpriseSecretsResponsePtrOutput
-}
-
-type gitHubEnterpriseSecretsResponsePtrType GitHubEnterpriseSecretsResponseArgs
-
-func GitHubEnterpriseSecretsResponsePtr(v *GitHubEnterpriseSecretsResponseArgs) GitHubEnterpriseSecretsResponsePtrInput {
-	return (*gitHubEnterpriseSecretsResponsePtrType)(v)
-}
-
-func (*gitHubEnterpriseSecretsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitHubEnterpriseSecretsResponse)(nil)).Elem()
-}
-
-func (i *gitHubEnterpriseSecretsResponsePtrType) ToGitHubEnterpriseSecretsResponsePtrOutput() GitHubEnterpriseSecretsResponsePtrOutput {
-	return i.ToGitHubEnterpriseSecretsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *gitHubEnterpriseSecretsResponsePtrType) ToGitHubEnterpriseSecretsResponsePtrOutputWithContext(ctx context.Context) GitHubEnterpriseSecretsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitHubEnterpriseSecretsResponsePtrOutput)
-}
-
 // GitHubEnterpriseSecrets represents the names of all necessary secrets in Secret Manager for a GitHub Enterprise server. Format is: projects//secrets/.
 type GitHubEnterpriseSecretsResponseOutput struct{ *pulumi.OutputState }
 
@@ -4555,16 +2685,6 @@ func (o GitHubEnterpriseSecretsResponseOutput) ToGitHubEnterpriseSecretsResponse
 
 func (o GitHubEnterpriseSecretsResponseOutput) ToGitHubEnterpriseSecretsResponseOutputWithContext(ctx context.Context) GitHubEnterpriseSecretsResponseOutput {
 	return o
-}
-
-func (o GitHubEnterpriseSecretsResponseOutput) ToGitHubEnterpriseSecretsResponsePtrOutput() GitHubEnterpriseSecretsResponsePtrOutput {
-	return o.ToGitHubEnterpriseSecretsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GitHubEnterpriseSecretsResponseOutput) ToGitHubEnterpriseSecretsResponsePtrOutputWithContext(ctx context.Context) GitHubEnterpriseSecretsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitHubEnterpriseSecretsResponse) *GitHubEnterpriseSecretsResponse {
-		return &v
-	}).(GitHubEnterpriseSecretsResponsePtrOutput)
 }
 
 // The resource name for the OAuth client ID secret in Secret Manager.
@@ -4605,110 +2725,6 @@ func (o GitHubEnterpriseSecretsResponseOutput) WebhookSecretName() pulumi.String
 // The resource name for the webhook secret secret version in Secret Manager.
 func (o GitHubEnterpriseSecretsResponseOutput) WebhookSecretVersionName() pulumi.StringOutput {
 	return o.ApplyT(func(v GitHubEnterpriseSecretsResponse) string { return v.WebhookSecretVersionName }).(pulumi.StringOutput)
-}
-
-type GitHubEnterpriseSecretsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GitHubEnterpriseSecretsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitHubEnterpriseSecretsResponse)(nil)).Elem()
-}
-
-func (o GitHubEnterpriseSecretsResponsePtrOutput) ToGitHubEnterpriseSecretsResponsePtrOutput() GitHubEnterpriseSecretsResponsePtrOutput {
-	return o
-}
-
-func (o GitHubEnterpriseSecretsResponsePtrOutput) ToGitHubEnterpriseSecretsResponsePtrOutputWithContext(ctx context.Context) GitHubEnterpriseSecretsResponsePtrOutput {
-	return o
-}
-
-func (o GitHubEnterpriseSecretsResponsePtrOutput) Elem() GitHubEnterpriseSecretsResponseOutput {
-	return o.ApplyT(func(v *GitHubEnterpriseSecretsResponse) GitHubEnterpriseSecretsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GitHubEnterpriseSecretsResponse
-		return ret
-	}).(GitHubEnterpriseSecretsResponseOutput)
-}
-
-// The resource name for the OAuth client ID secret in Secret Manager.
-func (o GitHubEnterpriseSecretsResponsePtrOutput) OauthClientIdName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitHubEnterpriseSecretsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OauthClientIdName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The resource name for the OAuth client ID secret version in Secret Manager.
-func (o GitHubEnterpriseSecretsResponsePtrOutput) OauthClientIdVersionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitHubEnterpriseSecretsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OauthClientIdVersionName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The resource name for the OAuth secret in Secret Manager.
-func (o GitHubEnterpriseSecretsResponsePtrOutput) OauthSecretName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitHubEnterpriseSecretsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OauthSecretName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The resource name for the OAuth secret secret version in Secret Manager.
-func (o GitHubEnterpriseSecretsResponsePtrOutput) OauthSecretVersionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitHubEnterpriseSecretsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OauthSecretVersionName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The resource name for the private key secret.
-func (o GitHubEnterpriseSecretsResponsePtrOutput) PrivateKeyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitHubEnterpriseSecretsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrivateKeyName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The resource name for the private key secret version.
-func (o GitHubEnterpriseSecretsResponsePtrOutput) PrivateKeyVersionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitHubEnterpriseSecretsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrivateKeyVersionName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The resource name for the webhook secret in Secret Manager.
-func (o GitHubEnterpriseSecretsResponsePtrOutput) WebhookSecretName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitHubEnterpriseSecretsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.WebhookSecretName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The resource name for the webhook secret secret version in Secret Manager.
-func (o GitHubEnterpriseSecretsResponsePtrOutput) WebhookSecretVersionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitHubEnterpriseSecretsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.WebhookSecretVersionName
-	}).(pulumi.StringPtrOutput)
 }
 
 // GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received.
@@ -4962,86 +2978,6 @@ type GitHubEventsConfigResponse struct {
 	Push PushFilterResponse `pulumi:"push"`
 }
 
-// GitHubEventsConfigResponseInput is an input type that accepts GitHubEventsConfigResponseArgs and GitHubEventsConfigResponseOutput values.
-// You can construct a concrete instance of `GitHubEventsConfigResponseInput` via:
-//
-//          GitHubEventsConfigResponseArgs{...}
-type GitHubEventsConfigResponseInput interface {
-	pulumi.Input
-
-	ToGitHubEventsConfigResponseOutput() GitHubEventsConfigResponseOutput
-	ToGitHubEventsConfigResponseOutputWithContext(context.Context) GitHubEventsConfigResponseOutput
-}
-
-// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-type GitHubEventsConfigResponseArgs struct {
-	// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
-	EnterpriseConfigResourceName pulumi.StringInput `pulumi:"enterpriseConfigResourceName"`
-	// The installationID that emits the GitHub event.
-	InstallationId pulumi.StringInput `pulumi:"installationId"`
-	// Name of the repository. For example: The name for https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
-	Name pulumi.StringInput `pulumi:"name"`
-	// Owner of the repository. For example: The owner for https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
-	Owner pulumi.StringInput `pulumi:"owner"`
-	// filter to match changes in pull requests.
-	PullRequest PullRequestFilterResponseInput `pulumi:"pullRequest"`
-	// filter to match changes in refs like branches, tags.
-	Push PushFilterResponseInput `pulumi:"push"`
-}
-
-func (GitHubEventsConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitHubEventsConfigResponse)(nil)).Elem()
-}
-
-func (i GitHubEventsConfigResponseArgs) ToGitHubEventsConfigResponseOutput() GitHubEventsConfigResponseOutput {
-	return i.ToGitHubEventsConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GitHubEventsConfigResponseArgs) ToGitHubEventsConfigResponseOutputWithContext(ctx context.Context) GitHubEventsConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitHubEventsConfigResponseOutput)
-}
-
-func (i GitHubEventsConfigResponseArgs) ToGitHubEventsConfigResponsePtrOutput() GitHubEventsConfigResponsePtrOutput {
-	return i.ToGitHubEventsConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GitHubEventsConfigResponseArgs) ToGitHubEventsConfigResponsePtrOutputWithContext(ctx context.Context) GitHubEventsConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitHubEventsConfigResponseOutput).ToGitHubEventsConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GitHubEventsConfigResponsePtrInput is an input type that accepts GitHubEventsConfigResponseArgs, GitHubEventsConfigResponsePtr and GitHubEventsConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GitHubEventsConfigResponsePtrInput` via:
-//
-//          GitHubEventsConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GitHubEventsConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGitHubEventsConfigResponsePtrOutput() GitHubEventsConfigResponsePtrOutput
-	ToGitHubEventsConfigResponsePtrOutputWithContext(context.Context) GitHubEventsConfigResponsePtrOutput
-}
-
-type gitHubEventsConfigResponsePtrType GitHubEventsConfigResponseArgs
-
-func GitHubEventsConfigResponsePtr(v *GitHubEventsConfigResponseArgs) GitHubEventsConfigResponsePtrInput {
-	return (*gitHubEventsConfigResponsePtrType)(v)
-}
-
-func (*gitHubEventsConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitHubEventsConfigResponse)(nil)).Elem()
-}
-
-func (i *gitHubEventsConfigResponsePtrType) ToGitHubEventsConfigResponsePtrOutput() GitHubEventsConfigResponsePtrOutput {
-	return i.ToGitHubEventsConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *gitHubEventsConfigResponsePtrType) ToGitHubEventsConfigResponsePtrOutputWithContext(ctx context.Context) GitHubEventsConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitHubEventsConfigResponsePtrOutput)
-}
-
 // GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received.
 type GitHubEventsConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -5055,16 +2991,6 @@ func (o GitHubEventsConfigResponseOutput) ToGitHubEventsConfigResponseOutput() G
 
 func (o GitHubEventsConfigResponseOutput) ToGitHubEventsConfigResponseOutputWithContext(ctx context.Context) GitHubEventsConfigResponseOutput {
 	return o
-}
-
-func (o GitHubEventsConfigResponseOutput) ToGitHubEventsConfigResponsePtrOutput() GitHubEventsConfigResponsePtrOutput {
-	return o.ToGitHubEventsConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GitHubEventsConfigResponseOutput) ToGitHubEventsConfigResponsePtrOutputWithContext(ctx context.Context) GitHubEventsConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitHubEventsConfigResponse) *GitHubEventsConfigResponse {
-		return &v
-	}).(GitHubEventsConfigResponsePtrOutput)
 }
 
 // Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
@@ -5095,90 +3021,6 @@ func (o GitHubEventsConfigResponseOutput) PullRequest() PullRequestFilterRespons
 // filter to match changes in refs like branches, tags.
 func (o GitHubEventsConfigResponseOutput) Push() PushFilterResponseOutput {
 	return o.ApplyT(func(v GitHubEventsConfigResponse) PushFilterResponse { return v.Push }).(PushFilterResponseOutput)
-}
-
-type GitHubEventsConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GitHubEventsConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitHubEventsConfigResponse)(nil)).Elem()
-}
-
-func (o GitHubEventsConfigResponsePtrOutput) ToGitHubEventsConfigResponsePtrOutput() GitHubEventsConfigResponsePtrOutput {
-	return o
-}
-
-func (o GitHubEventsConfigResponsePtrOutput) ToGitHubEventsConfigResponsePtrOutputWithContext(ctx context.Context) GitHubEventsConfigResponsePtrOutput {
-	return o
-}
-
-func (o GitHubEventsConfigResponsePtrOutput) Elem() GitHubEventsConfigResponseOutput {
-	return o.ApplyT(func(v *GitHubEventsConfigResponse) GitHubEventsConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GitHubEventsConfigResponse
-		return ret
-	}).(GitHubEventsConfigResponseOutput)
-}
-
-// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
-func (o GitHubEventsConfigResponsePtrOutput) EnterpriseConfigResourceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitHubEventsConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EnterpriseConfigResourceName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The installationID that emits the GitHub event.
-func (o GitHubEventsConfigResponsePtrOutput) InstallationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitHubEventsConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.InstallationId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of the repository. For example: The name for https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
-func (o GitHubEventsConfigResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitHubEventsConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Owner of the repository. For example: The owner for https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
-func (o GitHubEventsConfigResponsePtrOutput) Owner() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitHubEventsConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Owner
-	}).(pulumi.StringPtrOutput)
-}
-
-// filter to match changes in pull requests.
-func (o GitHubEventsConfigResponsePtrOutput) PullRequest() PullRequestFilterResponsePtrOutput {
-	return o.ApplyT(func(v *GitHubEventsConfigResponse) *PullRequestFilterResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.PullRequest
-	}).(PullRequestFilterResponsePtrOutput)
-}
-
-// filter to match changes in refs like branches, tags.
-func (o GitHubEventsConfigResponsePtrOutput) Push() PushFilterResponsePtrOutput {
-	return o.ApplyT(func(v *GitHubEventsConfigResponse) *PushFilterResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Push
-	}).(PushFilterResponsePtrOutput)
 }
 
 // GitRepoSource describes a repo and ref of a code repository.
@@ -5369,80 +3211,6 @@ type GitRepoSourceResponse struct {
 	Uri string `pulumi:"uri"`
 }
 
-// GitRepoSourceResponseInput is an input type that accepts GitRepoSourceResponseArgs and GitRepoSourceResponseOutput values.
-// You can construct a concrete instance of `GitRepoSourceResponseInput` via:
-//
-//          GitRepoSourceResponseArgs{...}
-type GitRepoSourceResponseInput interface {
-	pulumi.Input
-
-	ToGitRepoSourceResponseOutput() GitRepoSourceResponseOutput
-	ToGitRepoSourceResponseOutputWithContext(context.Context) GitRepoSourceResponseOutput
-}
-
-// GitRepoSource describes a repo and ref of a code repository.
-type GitRepoSourceResponseArgs struct {
-	// The branch or tag to use. Must start with "refs/" (required).
-	Ref pulumi.StringInput `pulumi:"ref"`
-	// See RepoType below.
-	RepoType pulumi.StringInput `pulumi:"repoType"`
-	// The URI of the repo (required).
-	Uri pulumi.StringInput `pulumi:"uri"`
-}
-
-func (GitRepoSourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitRepoSourceResponse)(nil)).Elem()
-}
-
-func (i GitRepoSourceResponseArgs) ToGitRepoSourceResponseOutput() GitRepoSourceResponseOutput {
-	return i.ToGitRepoSourceResponseOutputWithContext(context.Background())
-}
-
-func (i GitRepoSourceResponseArgs) ToGitRepoSourceResponseOutputWithContext(ctx context.Context) GitRepoSourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitRepoSourceResponseOutput)
-}
-
-func (i GitRepoSourceResponseArgs) ToGitRepoSourceResponsePtrOutput() GitRepoSourceResponsePtrOutput {
-	return i.ToGitRepoSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GitRepoSourceResponseArgs) ToGitRepoSourceResponsePtrOutputWithContext(ctx context.Context) GitRepoSourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitRepoSourceResponseOutput).ToGitRepoSourceResponsePtrOutputWithContext(ctx)
-}
-
-// GitRepoSourceResponsePtrInput is an input type that accepts GitRepoSourceResponseArgs, GitRepoSourceResponsePtr and GitRepoSourceResponsePtrOutput values.
-// You can construct a concrete instance of `GitRepoSourceResponsePtrInput` via:
-//
-//          GitRepoSourceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GitRepoSourceResponsePtrInput interface {
-	pulumi.Input
-
-	ToGitRepoSourceResponsePtrOutput() GitRepoSourceResponsePtrOutput
-	ToGitRepoSourceResponsePtrOutputWithContext(context.Context) GitRepoSourceResponsePtrOutput
-}
-
-type gitRepoSourceResponsePtrType GitRepoSourceResponseArgs
-
-func GitRepoSourceResponsePtr(v *GitRepoSourceResponseArgs) GitRepoSourceResponsePtrInput {
-	return (*gitRepoSourceResponsePtrType)(v)
-}
-
-func (*gitRepoSourceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitRepoSourceResponse)(nil)).Elem()
-}
-
-func (i *gitRepoSourceResponsePtrType) ToGitRepoSourceResponsePtrOutput() GitRepoSourceResponsePtrOutput {
-	return i.ToGitRepoSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *gitRepoSourceResponsePtrType) ToGitRepoSourceResponsePtrOutputWithContext(ctx context.Context) GitRepoSourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitRepoSourceResponsePtrOutput)
-}
-
 // GitRepoSource describes a repo and ref of a code repository.
 type GitRepoSourceResponseOutput struct{ *pulumi.OutputState }
 
@@ -5458,16 +3226,6 @@ func (o GitRepoSourceResponseOutput) ToGitRepoSourceResponseOutputWithContext(ct
 	return o
 }
 
-func (o GitRepoSourceResponseOutput) ToGitRepoSourceResponsePtrOutput() GitRepoSourceResponsePtrOutput {
-	return o.ToGitRepoSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GitRepoSourceResponseOutput) ToGitRepoSourceResponsePtrOutputWithContext(ctx context.Context) GitRepoSourceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitRepoSourceResponse) *GitRepoSourceResponse {
-		return &v
-	}).(GitRepoSourceResponsePtrOutput)
-}
-
 // The branch or tag to use. Must start with "refs/" (required).
 func (o GitRepoSourceResponseOutput) Ref() pulumi.StringOutput {
 	return o.ApplyT(func(v GitRepoSourceResponse) string { return v.Ref }).(pulumi.StringOutput)
@@ -5481,60 +3239,6 @@ func (o GitRepoSourceResponseOutput) RepoType() pulumi.StringOutput {
 // The URI of the repo (required).
 func (o GitRepoSourceResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v GitRepoSourceResponse) string { return v.Uri }).(pulumi.StringOutput)
-}
-
-type GitRepoSourceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GitRepoSourceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitRepoSourceResponse)(nil)).Elem()
-}
-
-func (o GitRepoSourceResponsePtrOutput) ToGitRepoSourceResponsePtrOutput() GitRepoSourceResponsePtrOutput {
-	return o
-}
-
-func (o GitRepoSourceResponsePtrOutput) ToGitRepoSourceResponsePtrOutputWithContext(ctx context.Context) GitRepoSourceResponsePtrOutput {
-	return o
-}
-
-func (o GitRepoSourceResponsePtrOutput) Elem() GitRepoSourceResponseOutput {
-	return o.ApplyT(func(v *GitRepoSourceResponse) GitRepoSourceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GitRepoSourceResponse
-		return ret
-	}).(GitRepoSourceResponseOutput)
-}
-
-// The branch or tag to use. Must start with "refs/" (required).
-func (o GitRepoSourceResponsePtrOutput) Ref() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitRepoSourceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Ref
-	}).(pulumi.StringPtrOutput)
-}
-
-// See RepoType below.
-func (o GitRepoSourceResponsePtrOutput) RepoType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitRepoSourceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RepoType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The URI of the repo (required).
-func (o GitRepoSourceResponsePtrOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitRepoSourceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Uri
-	}).(pulumi.StringPtrOutput)
 }
 
 // Pairs a set of secret environment variables mapped to encrypted values with the Cloud KMS key to use to decrypt the value.
@@ -5652,62 +3356,6 @@ type InlineSecretResponse struct {
 	EnvMap map[string]string `pulumi:"envMap"`
 	// Resource name of Cloud KMS crypto key to decrypt the encrypted value. In format: projects/*/locations/*/keyRings/*/cryptoKeys/*
 	KmsKeyName string `pulumi:"kmsKeyName"`
-}
-
-// InlineSecretResponseInput is an input type that accepts InlineSecretResponseArgs and InlineSecretResponseOutput values.
-// You can construct a concrete instance of `InlineSecretResponseInput` via:
-//
-//          InlineSecretResponseArgs{...}
-type InlineSecretResponseInput interface {
-	pulumi.Input
-
-	ToInlineSecretResponseOutput() InlineSecretResponseOutput
-	ToInlineSecretResponseOutputWithContext(context.Context) InlineSecretResponseOutput
-}
-
-// Pairs a set of secret environment variables mapped to encrypted values with the Cloud KMS key to use to decrypt the value.
-type InlineSecretResponseArgs struct {
-	// Map of environment variable name to its encrypted value. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step. Values can be at most 64 KB in size. There can be at most 100 secret values across all of a build's secrets.
-	EnvMap pulumi.StringMapInput `pulumi:"envMap"`
-	// Resource name of Cloud KMS crypto key to decrypt the encrypted value. In format: projects/*/locations/*/keyRings/*/cryptoKeys/*
-	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
-}
-
-func (InlineSecretResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InlineSecretResponse)(nil)).Elem()
-}
-
-func (i InlineSecretResponseArgs) ToInlineSecretResponseOutput() InlineSecretResponseOutput {
-	return i.ToInlineSecretResponseOutputWithContext(context.Background())
-}
-
-func (i InlineSecretResponseArgs) ToInlineSecretResponseOutputWithContext(ctx context.Context) InlineSecretResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InlineSecretResponseOutput)
-}
-
-// InlineSecretResponseArrayInput is an input type that accepts InlineSecretResponseArray and InlineSecretResponseArrayOutput values.
-// You can construct a concrete instance of `InlineSecretResponseArrayInput` via:
-//
-//          InlineSecretResponseArray{ InlineSecretResponseArgs{...} }
-type InlineSecretResponseArrayInput interface {
-	pulumi.Input
-
-	ToInlineSecretResponseArrayOutput() InlineSecretResponseArrayOutput
-	ToInlineSecretResponseArrayOutputWithContext(context.Context) InlineSecretResponseArrayOutput
-}
-
-type InlineSecretResponseArray []InlineSecretResponseInput
-
-func (InlineSecretResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InlineSecretResponse)(nil)).Elem()
-}
-
-func (i InlineSecretResponseArray) ToInlineSecretResponseArrayOutput() InlineSecretResponseArrayOutput {
-	return i.ToInlineSecretResponseArrayOutputWithContext(context.Background())
-}
-
-func (i InlineSecretResponseArray) ToInlineSecretResponseArrayOutputWithContext(ctx context.Context) InlineSecretResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InlineSecretResponseArrayOutput)
 }
 
 // Pairs a set of secret environment variables mapped to encrypted values with the Cloud KMS key to use to decrypt the value.
@@ -5922,78 +3570,6 @@ type NetworkConfigResponse struct {
 	PeeredNetwork string `pulumi:"peeredNetwork"`
 }
 
-// NetworkConfigResponseInput is an input type that accepts NetworkConfigResponseArgs and NetworkConfigResponseOutput values.
-// You can construct a concrete instance of `NetworkConfigResponseInput` via:
-//
-//          NetworkConfigResponseArgs{...}
-type NetworkConfigResponseInput interface {
-	pulumi.Input
-
-	ToNetworkConfigResponseOutput() NetworkConfigResponseOutput
-	ToNetworkConfigResponseOutputWithContext(context.Context) NetworkConfigResponseOutput
-}
-
-// Defines the network configuration for the pool.
-type NetworkConfigResponseArgs struct {
-	// Option to configure network egress for the workers.
-	EgressOption pulumi.StringInput `pulumi:"egressOption"`
-	// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/build/docs/private-pools/set-up-private-pool-environment)
-	PeeredNetwork pulumi.StringInput `pulumi:"peeredNetwork"`
-}
-
-func (NetworkConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkConfigResponse)(nil)).Elem()
-}
-
-func (i NetworkConfigResponseArgs) ToNetworkConfigResponseOutput() NetworkConfigResponseOutput {
-	return i.ToNetworkConfigResponseOutputWithContext(context.Background())
-}
-
-func (i NetworkConfigResponseArgs) ToNetworkConfigResponseOutputWithContext(ctx context.Context) NetworkConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigResponseOutput)
-}
-
-func (i NetworkConfigResponseArgs) ToNetworkConfigResponsePtrOutput() NetworkConfigResponsePtrOutput {
-	return i.ToNetworkConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i NetworkConfigResponseArgs) ToNetworkConfigResponsePtrOutputWithContext(ctx context.Context) NetworkConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigResponseOutput).ToNetworkConfigResponsePtrOutputWithContext(ctx)
-}
-
-// NetworkConfigResponsePtrInput is an input type that accepts NetworkConfigResponseArgs, NetworkConfigResponsePtr and NetworkConfigResponsePtrOutput values.
-// You can construct a concrete instance of `NetworkConfigResponsePtrInput` via:
-//
-//          NetworkConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type NetworkConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToNetworkConfigResponsePtrOutput() NetworkConfigResponsePtrOutput
-	ToNetworkConfigResponsePtrOutputWithContext(context.Context) NetworkConfigResponsePtrOutput
-}
-
-type networkConfigResponsePtrType NetworkConfigResponseArgs
-
-func NetworkConfigResponsePtr(v *NetworkConfigResponseArgs) NetworkConfigResponsePtrInput {
-	return (*networkConfigResponsePtrType)(v)
-}
-
-func (*networkConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkConfigResponse)(nil)).Elem()
-}
-
-func (i *networkConfigResponsePtrType) ToNetworkConfigResponsePtrOutput() NetworkConfigResponsePtrOutput {
-	return i.ToNetworkConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *networkConfigResponsePtrType) ToNetworkConfigResponsePtrOutputWithContext(ctx context.Context) NetworkConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigResponsePtrOutput)
-}
-
 // Defines the network configuration for the pool.
 type NetworkConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -6009,16 +3585,6 @@ func (o NetworkConfigResponseOutput) ToNetworkConfigResponseOutputWithContext(ct
 	return o
 }
 
-func (o NetworkConfigResponseOutput) ToNetworkConfigResponsePtrOutput() NetworkConfigResponsePtrOutput {
-	return o.ToNetworkConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o NetworkConfigResponseOutput) ToNetworkConfigResponsePtrOutputWithContext(ctx context.Context) NetworkConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkConfigResponse) *NetworkConfigResponse {
-		return &v
-	}).(NetworkConfigResponsePtrOutput)
-}
-
 // Option to configure network egress for the workers.
 func (o NetworkConfigResponseOutput) EgressOption() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.EgressOption }).(pulumi.StringOutput)
@@ -6027,50 +3593,6 @@ func (o NetworkConfigResponseOutput) EgressOption() pulumi.StringOutput {
 // Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/build/docs/private-pools/set-up-private-pool-environment)
 func (o NetworkConfigResponseOutput) PeeredNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.PeeredNetwork }).(pulumi.StringOutput)
-}
-
-type NetworkConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (NetworkConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkConfigResponse)(nil)).Elem()
-}
-
-func (o NetworkConfigResponsePtrOutput) ToNetworkConfigResponsePtrOutput() NetworkConfigResponsePtrOutput {
-	return o
-}
-
-func (o NetworkConfigResponsePtrOutput) ToNetworkConfigResponsePtrOutputWithContext(ctx context.Context) NetworkConfigResponsePtrOutput {
-	return o
-}
-
-func (o NetworkConfigResponsePtrOutput) Elem() NetworkConfigResponseOutput {
-	return o.ApplyT(func(v *NetworkConfigResponse) NetworkConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret NetworkConfigResponse
-		return ret
-	}).(NetworkConfigResponseOutput)
-}
-
-// Option to configure network egress for the workers.
-func (o NetworkConfigResponsePtrOutput) EgressOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EgressOption
-	}).(pulumi.StringPtrOutput)
-}
-
-// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/build/docs/private-pools/set-up-private-pool-environment)
-func (o NetworkConfigResponsePtrOutput) PeeredNetwork() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PeeredNetwork
-	}).(pulumi.StringPtrOutput)
 }
 
 // Details about how a build should be executed on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
@@ -6219,76 +3741,6 @@ type PoolOptionResponse struct {
 	Name string `pulumi:"name"`
 }
 
-// PoolOptionResponseInput is an input type that accepts PoolOptionResponseArgs and PoolOptionResponseOutput values.
-// You can construct a concrete instance of `PoolOptionResponseInput` via:
-//
-//          PoolOptionResponseArgs{...}
-type PoolOptionResponseInput interface {
-	pulumi.Input
-
-	ToPoolOptionResponseOutput() PoolOptionResponseOutput
-	ToPoolOptionResponseOutputWithContext(context.Context) PoolOptionResponseOutput
-}
-
-// Details about how a build should be executed on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
-type PoolOptionResponseArgs struct {
-	// The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId}
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (PoolOptionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PoolOptionResponse)(nil)).Elem()
-}
-
-func (i PoolOptionResponseArgs) ToPoolOptionResponseOutput() PoolOptionResponseOutput {
-	return i.ToPoolOptionResponseOutputWithContext(context.Background())
-}
-
-func (i PoolOptionResponseArgs) ToPoolOptionResponseOutputWithContext(ctx context.Context) PoolOptionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PoolOptionResponseOutput)
-}
-
-func (i PoolOptionResponseArgs) ToPoolOptionResponsePtrOutput() PoolOptionResponsePtrOutput {
-	return i.ToPoolOptionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PoolOptionResponseArgs) ToPoolOptionResponsePtrOutputWithContext(ctx context.Context) PoolOptionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PoolOptionResponseOutput).ToPoolOptionResponsePtrOutputWithContext(ctx)
-}
-
-// PoolOptionResponsePtrInput is an input type that accepts PoolOptionResponseArgs, PoolOptionResponsePtr and PoolOptionResponsePtrOutput values.
-// You can construct a concrete instance of `PoolOptionResponsePtrInput` via:
-//
-//          PoolOptionResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PoolOptionResponsePtrInput interface {
-	pulumi.Input
-
-	ToPoolOptionResponsePtrOutput() PoolOptionResponsePtrOutput
-	ToPoolOptionResponsePtrOutputWithContext(context.Context) PoolOptionResponsePtrOutput
-}
-
-type poolOptionResponsePtrType PoolOptionResponseArgs
-
-func PoolOptionResponsePtr(v *PoolOptionResponseArgs) PoolOptionResponsePtrInput {
-	return (*poolOptionResponsePtrType)(v)
-}
-
-func (*poolOptionResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PoolOptionResponse)(nil)).Elem()
-}
-
-func (i *poolOptionResponsePtrType) ToPoolOptionResponsePtrOutput() PoolOptionResponsePtrOutput {
-	return i.ToPoolOptionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *poolOptionResponsePtrType) ToPoolOptionResponsePtrOutputWithContext(ctx context.Context) PoolOptionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PoolOptionResponsePtrOutput)
-}
-
 // Details about how a build should be executed on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
 type PoolOptionResponseOutput struct{ *pulumi.OutputState }
 
@@ -6304,53 +3756,9 @@ func (o PoolOptionResponseOutput) ToPoolOptionResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o PoolOptionResponseOutput) ToPoolOptionResponsePtrOutput() PoolOptionResponsePtrOutput {
-	return o.ToPoolOptionResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PoolOptionResponseOutput) ToPoolOptionResponsePtrOutputWithContext(ctx context.Context) PoolOptionResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PoolOptionResponse) *PoolOptionResponse {
-		return &v
-	}).(PoolOptionResponsePtrOutput)
-}
-
 // The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId}
 func (o PoolOptionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PoolOptionResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type PoolOptionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PoolOptionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PoolOptionResponse)(nil)).Elem()
-}
-
-func (o PoolOptionResponsePtrOutput) ToPoolOptionResponsePtrOutput() PoolOptionResponsePtrOutput {
-	return o
-}
-
-func (o PoolOptionResponsePtrOutput) ToPoolOptionResponsePtrOutputWithContext(ctx context.Context) PoolOptionResponsePtrOutput {
-	return o
-}
-
-func (o PoolOptionResponsePtrOutput) Elem() PoolOptionResponseOutput {
-	return o.ApplyT(func(v *PoolOptionResponse) PoolOptionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PoolOptionResponse
-		return ret
-	}).(PoolOptionResponseOutput)
-}
-
-// The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId}
-func (o PoolOptionResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PoolOptionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
 }
 
 // Configuration for a V1 `PrivatePool`.
@@ -6520,78 +3928,6 @@ type PrivatePoolV1ConfigResponse struct {
 	WorkerConfig WorkerConfigResponse `pulumi:"workerConfig"`
 }
 
-// PrivatePoolV1ConfigResponseInput is an input type that accepts PrivatePoolV1ConfigResponseArgs and PrivatePoolV1ConfigResponseOutput values.
-// You can construct a concrete instance of `PrivatePoolV1ConfigResponseInput` via:
-//
-//          PrivatePoolV1ConfigResponseArgs{...}
-type PrivatePoolV1ConfigResponseInput interface {
-	pulumi.Input
-
-	ToPrivatePoolV1ConfigResponseOutput() PrivatePoolV1ConfigResponseOutput
-	ToPrivatePoolV1ConfigResponseOutputWithContext(context.Context) PrivatePoolV1ConfigResponseOutput
-}
-
-// Configuration for a V1 `PrivatePool`.
-type PrivatePoolV1ConfigResponseArgs struct {
-	// Network configuration for the pool.
-	NetworkConfig NetworkConfigResponseInput `pulumi:"networkConfig"`
-	// Machine configuration for the workers in the pool.
-	WorkerConfig WorkerConfigResponseInput `pulumi:"workerConfig"`
-}
-
-func (PrivatePoolV1ConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivatePoolV1ConfigResponse)(nil)).Elem()
-}
-
-func (i PrivatePoolV1ConfigResponseArgs) ToPrivatePoolV1ConfigResponseOutput() PrivatePoolV1ConfigResponseOutput {
-	return i.ToPrivatePoolV1ConfigResponseOutputWithContext(context.Background())
-}
-
-func (i PrivatePoolV1ConfigResponseArgs) ToPrivatePoolV1ConfigResponseOutputWithContext(ctx context.Context) PrivatePoolV1ConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivatePoolV1ConfigResponseOutput)
-}
-
-func (i PrivatePoolV1ConfigResponseArgs) ToPrivatePoolV1ConfigResponsePtrOutput() PrivatePoolV1ConfigResponsePtrOutput {
-	return i.ToPrivatePoolV1ConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PrivatePoolV1ConfigResponseArgs) ToPrivatePoolV1ConfigResponsePtrOutputWithContext(ctx context.Context) PrivatePoolV1ConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivatePoolV1ConfigResponseOutput).ToPrivatePoolV1ConfigResponsePtrOutputWithContext(ctx)
-}
-
-// PrivatePoolV1ConfigResponsePtrInput is an input type that accepts PrivatePoolV1ConfigResponseArgs, PrivatePoolV1ConfigResponsePtr and PrivatePoolV1ConfigResponsePtrOutput values.
-// You can construct a concrete instance of `PrivatePoolV1ConfigResponsePtrInput` via:
-//
-//          PrivatePoolV1ConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PrivatePoolV1ConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToPrivatePoolV1ConfigResponsePtrOutput() PrivatePoolV1ConfigResponsePtrOutput
-	ToPrivatePoolV1ConfigResponsePtrOutputWithContext(context.Context) PrivatePoolV1ConfigResponsePtrOutput
-}
-
-type privatePoolV1ConfigResponsePtrType PrivatePoolV1ConfigResponseArgs
-
-func PrivatePoolV1ConfigResponsePtr(v *PrivatePoolV1ConfigResponseArgs) PrivatePoolV1ConfigResponsePtrInput {
-	return (*privatePoolV1ConfigResponsePtrType)(v)
-}
-
-func (*privatePoolV1ConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivatePoolV1ConfigResponse)(nil)).Elem()
-}
-
-func (i *privatePoolV1ConfigResponsePtrType) ToPrivatePoolV1ConfigResponsePtrOutput() PrivatePoolV1ConfigResponsePtrOutput {
-	return i.ToPrivatePoolV1ConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *privatePoolV1ConfigResponsePtrType) ToPrivatePoolV1ConfigResponsePtrOutputWithContext(ctx context.Context) PrivatePoolV1ConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivatePoolV1ConfigResponsePtrOutput)
-}
-
 // Configuration for a V1 `PrivatePool`.
 type PrivatePoolV1ConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -6607,16 +3943,6 @@ func (o PrivatePoolV1ConfigResponseOutput) ToPrivatePoolV1ConfigResponseOutputWi
 	return o
 }
 
-func (o PrivatePoolV1ConfigResponseOutput) ToPrivatePoolV1ConfigResponsePtrOutput() PrivatePoolV1ConfigResponsePtrOutput {
-	return o.ToPrivatePoolV1ConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PrivatePoolV1ConfigResponseOutput) ToPrivatePoolV1ConfigResponsePtrOutputWithContext(ctx context.Context) PrivatePoolV1ConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivatePoolV1ConfigResponse) *PrivatePoolV1ConfigResponse {
-		return &v
-	}).(PrivatePoolV1ConfigResponsePtrOutput)
-}
-
 // Network configuration for the pool.
 func (o PrivatePoolV1ConfigResponseOutput) NetworkConfig() NetworkConfigResponseOutput {
 	return o.ApplyT(func(v PrivatePoolV1ConfigResponse) NetworkConfigResponse { return v.NetworkConfig }).(NetworkConfigResponseOutput)
@@ -6625,50 +3951,6 @@ func (o PrivatePoolV1ConfigResponseOutput) NetworkConfig() NetworkConfigResponse
 // Machine configuration for the workers in the pool.
 func (o PrivatePoolV1ConfigResponseOutput) WorkerConfig() WorkerConfigResponseOutput {
 	return o.ApplyT(func(v PrivatePoolV1ConfigResponse) WorkerConfigResponse { return v.WorkerConfig }).(WorkerConfigResponseOutput)
-}
-
-type PrivatePoolV1ConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PrivatePoolV1ConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivatePoolV1ConfigResponse)(nil)).Elem()
-}
-
-func (o PrivatePoolV1ConfigResponsePtrOutput) ToPrivatePoolV1ConfigResponsePtrOutput() PrivatePoolV1ConfigResponsePtrOutput {
-	return o
-}
-
-func (o PrivatePoolV1ConfigResponsePtrOutput) ToPrivatePoolV1ConfigResponsePtrOutputWithContext(ctx context.Context) PrivatePoolV1ConfigResponsePtrOutput {
-	return o
-}
-
-func (o PrivatePoolV1ConfigResponsePtrOutput) Elem() PrivatePoolV1ConfigResponseOutput {
-	return o.ApplyT(func(v *PrivatePoolV1ConfigResponse) PrivatePoolV1ConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PrivatePoolV1ConfigResponse
-		return ret
-	}).(PrivatePoolV1ConfigResponseOutput)
-}
-
-// Network configuration for the pool.
-func (o PrivatePoolV1ConfigResponsePtrOutput) NetworkConfig() NetworkConfigResponsePtrOutput {
-	return o.ApplyT(func(v *PrivatePoolV1ConfigResponse) *NetworkConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.NetworkConfig
-	}).(NetworkConfigResponsePtrOutput)
-}
-
-// Machine configuration for the workers in the pool.
-func (o PrivatePoolV1ConfigResponsePtrOutput) WorkerConfig() WorkerConfigResponsePtrOutput {
-	return o.ApplyT(func(v *PrivatePoolV1ConfigResponse) *WorkerConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.WorkerConfig
-	}).(WorkerConfigResponsePtrOutput)
 }
 
 // PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
@@ -6861,82 +4143,6 @@ type PubsubConfigResponse struct {
 	Topic string `pulumi:"topic"`
 }
 
-// PubsubConfigResponseInput is an input type that accepts PubsubConfigResponseArgs and PubsubConfigResponseOutput values.
-// You can construct a concrete instance of `PubsubConfigResponseInput` via:
-//
-//          PubsubConfigResponseArgs{...}
-type PubsubConfigResponseInput interface {
-	pulumi.Input
-
-	ToPubsubConfigResponseOutput() PubsubConfigResponseOutput
-	ToPubsubConfigResponseOutputWithContext(context.Context) PubsubConfigResponseOutput
-}
-
-// PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
-type PubsubConfigResponseArgs struct {
-	// Service account that will make the push request.
-	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
-	// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
-	State pulumi.StringInput `pulumi:"state"`
-	// Name of the subscription. Format is `projects/{project}/subscriptions/{subscription}`.
-	Subscription pulumi.StringInput `pulumi:"subscription"`
-	// The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`.
-	Topic pulumi.StringInput `pulumi:"topic"`
-}
-
-func (PubsubConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PubsubConfigResponse)(nil)).Elem()
-}
-
-func (i PubsubConfigResponseArgs) ToPubsubConfigResponseOutput() PubsubConfigResponseOutput {
-	return i.ToPubsubConfigResponseOutputWithContext(context.Background())
-}
-
-func (i PubsubConfigResponseArgs) ToPubsubConfigResponseOutputWithContext(ctx context.Context) PubsubConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PubsubConfigResponseOutput)
-}
-
-func (i PubsubConfigResponseArgs) ToPubsubConfigResponsePtrOutput() PubsubConfigResponsePtrOutput {
-	return i.ToPubsubConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PubsubConfigResponseArgs) ToPubsubConfigResponsePtrOutputWithContext(ctx context.Context) PubsubConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PubsubConfigResponseOutput).ToPubsubConfigResponsePtrOutputWithContext(ctx)
-}
-
-// PubsubConfigResponsePtrInput is an input type that accepts PubsubConfigResponseArgs, PubsubConfigResponsePtr and PubsubConfigResponsePtrOutput values.
-// You can construct a concrete instance of `PubsubConfigResponsePtrInput` via:
-//
-//          PubsubConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PubsubConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToPubsubConfigResponsePtrOutput() PubsubConfigResponsePtrOutput
-	ToPubsubConfigResponsePtrOutputWithContext(context.Context) PubsubConfigResponsePtrOutput
-}
-
-type pubsubConfigResponsePtrType PubsubConfigResponseArgs
-
-func PubsubConfigResponsePtr(v *PubsubConfigResponseArgs) PubsubConfigResponsePtrInput {
-	return (*pubsubConfigResponsePtrType)(v)
-}
-
-func (*pubsubConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PubsubConfigResponse)(nil)).Elem()
-}
-
-func (i *pubsubConfigResponsePtrType) ToPubsubConfigResponsePtrOutput() PubsubConfigResponsePtrOutput {
-	return i.ToPubsubConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *pubsubConfigResponsePtrType) ToPubsubConfigResponsePtrOutputWithContext(ctx context.Context) PubsubConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PubsubConfigResponsePtrOutput)
-}
-
 // PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
 type PubsubConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -6950,16 +4156,6 @@ func (o PubsubConfigResponseOutput) ToPubsubConfigResponseOutput() PubsubConfigR
 
 func (o PubsubConfigResponseOutput) ToPubsubConfigResponseOutputWithContext(ctx context.Context) PubsubConfigResponseOutput {
 	return o
-}
-
-func (o PubsubConfigResponseOutput) ToPubsubConfigResponsePtrOutput() PubsubConfigResponsePtrOutput {
-	return o.ToPubsubConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PubsubConfigResponseOutput) ToPubsubConfigResponsePtrOutputWithContext(ctx context.Context) PubsubConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PubsubConfigResponse) *PubsubConfigResponse {
-		return &v
-	}).(PubsubConfigResponsePtrOutput)
 }
 
 // Service account that will make the push request.
@@ -6980,70 +4176,6 @@ func (o PubsubConfigResponseOutput) Subscription() pulumi.StringOutput {
 // The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`.
 func (o PubsubConfigResponseOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v PubsubConfigResponse) string { return v.Topic }).(pulumi.StringOutput)
-}
-
-type PubsubConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PubsubConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PubsubConfigResponse)(nil)).Elem()
-}
-
-func (o PubsubConfigResponsePtrOutput) ToPubsubConfigResponsePtrOutput() PubsubConfigResponsePtrOutput {
-	return o
-}
-
-func (o PubsubConfigResponsePtrOutput) ToPubsubConfigResponsePtrOutputWithContext(ctx context.Context) PubsubConfigResponsePtrOutput {
-	return o
-}
-
-func (o PubsubConfigResponsePtrOutput) Elem() PubsubConfigResponseOutput {
-	return o.ApplyT(func(v *PubsubConfigResponse) PubsubConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PubsubConfigResponse
-		return ret
-	}).(PubsubConfigResponseOutput)
-}
-
-// Service account that will make the push request.
-func (o PubsubConfigResponsePtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PubsubConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ServiceAccountEmail
-	}).(pulumi.StringPtrOutput)
-}
-
-// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
-func (o PubsubConfigResponsePtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PubsubConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.State
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of the subscription. Format is `projects/{project}/subscriptions/{subscription}`.
-func (o PubsubConfigResponsePtrOutput) Subscription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PubsubConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Subscription
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`.
-func (o PubsubConfigResponsePtrOutput) Topic() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PubsubConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Topic
-	}).(pulumi.StringPtrOutput)
 }
 
 // PullRequestFilter contains filter properties for matching GitHub Pull Requests.
@@ -7234,80 +4366,6 @@ type PullRequestFilterResponse struct {
 	InvertRegex bool `pulumi:"invertRegex"`
 }
 
-// PullRequestFilterResponseInput is an input type that accepts PullRequestFilterResponseArgs and PullRequestFilterResponseOutput values.
-// You can construct a concrete instance of `PullRequestFilterResponseInput` via:
-//
-//          PullRequestFilterResponseArgs{...}
-type PullRequestFilterResponseInput interface {
-	pulumi.Input
-
-	ToPullRequestFilterResponseOutput() PullRequestFilterResponseOutput
-	ToPullRequestFilterResponseOutputWithContext(context.Context) PullRequestFilterResponseOutput
-}
-
-// PullRequestFilter contains filter properties for matching GitHub Pull Requests.
-type PullRequestFilterResponseArgs struct {
-	// Regex of branches to match. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
-	Branch pulumi.StringInput `pulumi:"branch"`
-	// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
-	CommentControl pulumi.StringInput `pulumi:"commentControl"`
-	// If true, branches that do NOT match the git_ref will trigger a build.
-	InvertRegex pulumi.BoolInput `pulumi:"invertRegex"`
-}
-
-func (PullRequestFilterResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PullRequestFilterResponse)(nil)).Elem()
-}
-
-func (i PullRequestFilterResponseArgs) ToPullRequestFilterResponseOutput() PullRequestFilterResponseOutput {
-	return i.ToPullRequestFilterResponseOutputWithContext(context.Background())
-}
-
-func (i PullRequestFilterResponseArgs) ToPullRequestFilterResponseOutputWithContext(ctx context.Context) PullRequestFilterResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PullRequestFilterResponseOutput)
-}
-
-func (i PullRequestFilterResponseArgs) ToPullRequestFilterResponsePtrOutput() PullRequestFilterResponsePtrOutput {
-	return i.ToPullRequestFilterResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PullRequestFilterResponseArgs) ToPullRequestFilterResponsePtrOutputWithContext(ctx context.Context) PullRequestFilterResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PullRequestFilterResponseOutput).ToPullRequestFilterResponsePtrOutputWithContext(ctx)
-}
-
-// PullRequestFilterResponsePtrInput is an input type that accepts PullRequestFilterResponseArgs, PullRequestFilterResponsePtr and PullRequestFilterResponsePtrOutput values.
-// You can construct a concrete instance of `PullRequestFilterResponsePtrInput` via:
-//
-//          PullRequestFilterResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PullRequestFilterResponsePtrInput interface {
-	pulumi.Input
-
-	ToPullRequestFilterResponsePtrOutput() PullRequestFilterResponsePtrOutput
-	ToPullRequestFilterResponsePtrOutputWithContext(context.Context) PullRequestFilterResponsePtrOutput
-}
-
-type pullRequestFilterResponsePtrType PullRequestFilterResponseArgs
-
-func PullRequestFilterResponsePtr(v *PullRequestFilterResponseArgs) PullRequestFilterResponsePtrInput {
-	return (*pullRequestFilterResponsePtrType)(v)
-}
-
-func (*pullRequestFilterResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PullRequestFilterResponse)(nil)).Elem()
-}
-
-func (i *pullRequestFilterResponsePtrType) ToPullRequestFilterResponsePtrOutput() PullRequestFilterResponsePtrOutput {
-	return i.ToPullRequestFilterResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *pullRequestFilterResponsePtrType) ToPullRequestFilterResponsePtrOutputWithContext(ctx context.Context) PullRequestFilterResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PullRequestFilterResponsePtrOutput)
-}
-
 // PullRequestFilter contains filter properties for matching GitHub Pull Requests.
 type PullRequestFilterResponseOutput struct{ *pulumi.OutputState }
 
@@ -7323,16 +4381,6 @@ func (o PullRequestFilterResponseOutput) ToPullRequestFilterResponseOutputWithCo
 	return o
 }
 
-func (o PullRequestFilterResponseOutput) ToPullRequestFilterResponsePtrOutput() PullRequestFilterResponsePtrOutput {
-	return o.ToPullRequestFilterResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PullRequestFilterResponseOutput) ToPullRequestFilterResponsePtrOutputWithContext(ctx context.Context) PullRequestFilterResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PullRequestFilterResponse) *PullRequestFilterResponse {
-		return &v
-	}).(PullRequestFilterResponsePtrOutput)
-}
-
 // Regex of branches to match. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 func (o PullRequestFilterResponseOutput) Branch() pulumi.StringOutput {
 	return o.ApplyT(func(v PullRequestFilterResponse) string { return v.Branch }).(pulumi.StringOutput)
@@ -7346,60 +4394,6 @@ func (o PullRequestFilterResponseOutput) CommentControl() pulumi.StringOutput {
 // If true, branches that do NOT match the git_ref will trigger a build.
 func (o PullRequestFilterResponseOutput) InvertRegex() pulumi.BoolOutput {
 	return o.ApplyT(func(v PullRequestFilterResponse) bool { return v.InvertRegex }).(pulumi.BoolOutput)
-}
-
-type PullRequestFilterResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PullRequestFilterResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PullRequestFilterResponse)(nil)).Elem()
-}
-
-func (o PullRequestFilterResponsePtrOutput) ToPullRequestFilterResponsePtrOutput() PullRequestFilterResponsePtrOutput {
-	return o
-}
-
-func (o PullRequestFilterResponsePtrOutput) ToPullRequestFilterResponsePtrOutputWithContext(ctx context.Context) PullRequestFilterResponsePtrOutput {
-	return o
-}
-
-func (o PullRequestFilterResponsePtrOutput) Elem() PullRequestFilterResponseOutput {
-	return o.ApplyT(func(v *PullRequestFilterResponse) PullRequestFilterResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PullRequestFilterResponse
-		return ret
-	}).(PullRequestFilterResponseOutput)
-}
-
-// Regex of branches to match. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
-func (o PullRequestFilterResponsePtrOutput) Branch() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PullRequestFilterResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Branch
-	}).(pulumi.StringPtrOutput)
-}
-
-// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
-func (o PullRequestFilterResponsePtrOutput) CommentControl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PullRequestFilterResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CommentControl
-	}).(pulumi.StringPtrOutput)
-}
-
-// If true, branches that do NOT match the git_ref will trigger a build.
-func (o PullRequestFilterResponsePtrOutput) InvertRegex() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PullRequestFilterResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.InvertRegex
-	}).(pulumi.BoolPtrOutput)
 }
 
 // Push contains filter properties for matching GitHub git pushes.
@@ -7590,80 +4584,6 @@ type PushFilterResponse struct {
 	Tag string `pulumi:"tag"`
 }
 
-// PushFilterResponseInput is an input type that accepts PushFilterResponseArgs and PushFilterResponseOutput values.
-// You can construct a concrete instance of `PushFilterResponseInput` via:
-//
-//          PushFilterResponseArgs{...}
-type PushFilterResponseInput interface {
-	pulumi.Input
-
-	ToPushFilterResponseOutput() PushFilterResponseOutput
-	ToPushFilterResponseOutputWithContext(context.Context) PushFilterResponseOutput
-}
-
-// Push contains filter properties for matching GitHub git pushes.
-type PushFilterResponseArgs struct {
-	// Regexes matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
-	Branch pulumi.StringInput `pulumi:"branch"`
-	// When true, only trigger a build if the revision regex does NOT match the git_ref regex.
-	InvertRegex pulumi.BoolInput `pulumi:"invertRegex"`
-	// Regexes matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
-	Tag pulumi.StringInput `pulumi:"tag"`
-}
-
-func (PushFilterResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PushFilterResponse)(nil)).Elem()
-}
-
-func (i PushFilterResponseArgs) ToPushFilterResponseOutput() PushFilterResponseOutput {
-	return i.ToPushFilterResponseOutputWithContext(context.Background())
-}
-
-func (i PushFilterResponseArgs) ToPushFilterResponseOutputWithContext(ctx context.Context) PushFilterResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PushFilterResponseOutput)
-}
-
-func (i PushFilterResponseArgs) ToPushFilterResponsePtrOutput() PushFilterResponsePtrOutput {
-	return i.ToPushFilterResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PushFilterResponseArgs) ToPushFilterResponsePtrOutputWithContext(ctx context.Context) PushFilterResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PushFilterResponseOutput).ToPushFilterResponsePtrOutputWithContext(ctx)
-}
-
-// PushFilterResponsePtrInput is an input type that accepts PushFilterResponseArgs, PushFilterResponsePtr and PushFilterResponsePtrOutput values.
-// You can construct a concrete instance of `PushFilterResponsePtrInput` via:
-//
-//          PushFilterResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PushFilterResponsePtrInput interface {
-	pulumi.Input
-
-	ToPushFilterResponsePtrOutput() PushFilterResponsePtrOutput
-	ToPushFilterResponsePtrOutputWithContext(context.Context) PushFilterResponsePtrOutput
-}
-
-type pushFilterResponsePtrType PushFilterResponseArgs
-
-func PushFilterResponsePtr(v *PushFilterResponseArgs) PushFilterResponsePtrInput {
-	return (*pushFilterResponsePtrType)(v)
-}
-
-func (*pushFilterResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PushFilterResponse)(nil)).Elem()
-}
-
-func (i *pushFilterResponsePtrType) ToPushFilterResponsePtrOutput() PushFilterResponsePtrOutput {
-	return i.ToPushFilterResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *pushFilterResponsePtrType) ToPushFilterResponsePtrOutputWithContext(ctx context.Context) PushFilterResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PushFilterResponsePtrOutput)
-}
-
 // Push contains filter properties for matching GitHub git pushes.
 type PushFilterResponseOutput struct{ *pulumi.OutputState }
 
@@ -7679,16 +4599,6 @@ func (o PushFilterResponseOutput) ToPushFilterResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o PushFilterResponseOutput) ToPushFilterResponsePtrOutput() PushFilterResponsePtrOutput {
-	return o.ToPushFilterResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PushFilterResponseOutput) ToPushFilterResponsePtrOutputWithContext(ctx context.Context) PushFilterResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PushFilterResponse) *PushFilterResponse {
-		return &v
-	}).(PushFilterResponsePtrOutput)
-}
-
 // Regexes matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 func (o PushFilterResponseOutput) Branch() pulumi.StringOutput {
 	return o.ApplyT(func(v PushFilterResponse) string { return v.Branch }).(pulumi.StringOutput)
@@ -7702,60 +4612,6 @@ func (o PushFilterResponseOutput) InvertRegex() pulumi.BoolOutput {
 // Regexes matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 func (o PushFilterResponseOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v PushFilterResponse) string { return v.Tag }).(pulumi.StringOutput)
-}
-
-type PushFilterResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PushFilterResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PushFilterResponse)(nil)).Elem()
-}
-
-func (o PushFilterResponsePtrOutput) ToPushFilterResponsePtrOutput() PushFilterResponsePtrOutput {
-	return o
-}
-
-func (o PushFilterResponsePtrOutput) ToPushFilterResponsePtrOutputWithContext(ctx context.Context) PushFilterResponsePtrOutput {
-	return o
-}
-
-func (o PushFilterResponsePtrOutput) Elem() PushFilterResponseOutput {
-	return o.ApplyT(func(v *PushFilterResponse) PushFilterResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PushFilterResponse
-		return ret
-	}).(PushFilterResponseOutput)
-}
-
-// Regexes matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
-func (o PushFilterResponsePtrOutput) Branch() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PushFilterResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Branch
-	}).(pulumi.StringPtrOutput)
-}
-
-// When true, only trigger a build if the revision regex does NOT match the git_ref regex.
-func (o PushFilterResponsePtrOutput) InvertRegex() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PushFilterResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.InvertRegex
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Regexes matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
-func (o PushFilterResponsePtrOutput) Tag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PushFilterResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Tag
-	}).(pulumi.StringPtrOutput)
 }
 
 // Location of the source in a Google Cloud Source Repository.
@@ -8051,90 +4907,6 @@ type RepoSourceResponse struct {
 	TagName string `pulumi:"tagName"`
 }
 
-// RepoSourceResponseInput is an input type that accepts RepoSourceResponseArgs and RepoSourceResponseOutput values.
-// You can construct a concrete instance of `RepoSourceResponseInput` via:
-//
-//          RepoSourceResponseArgs{...}
-type RepoSourceResponseInput interface {
-	pulumi.Input
-
-	ToRepoSourceResponseOutput() RepoSourceResponseOutput
-	ToRepoSourceResponseOutputWithContext(context.Context) RepoSourceResponseOutput
-}
-
-// Location of the source in a Google Cloud Source Repository.
-type RepoSourceResponseArgs struct {
-	// Regex matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
-	BranchName pulumi.StringInput `pulumi:"branchName"`
-	// Explicit commit SHA to build.
-	CommitSha pulumi.StringInput `pulumi:"commitSha"`
-	// Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution.
-	Dir pulumi.StringInput `pulumi:"dir"`
-	// Only trigger a build if the revision regex does NOT match the revision regex.
-	InvertRegex pulumi.BoolInput `pulumi:"invertRegex"`
-	// ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
-	Project pulumi.StringInput `pulumi:"project"`
-	// Name of the Cloud Source Repository.
-	RepoName pulumi.StringInput `pulumi:"repoName"`
-	// Substitutions to use in a triggered build. Should only be used with RunBuildTrigger
-	Substitutions pulumi.StringMapInput `pulumi:"substitutions"`
-	// Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
-	TagName pulumi.StringInput `pulumi:"tagName"`
-}
-
-func (RepoSourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RepoSourceResponse)(nil)).Elem()
-}
-
-func (i RepoSourceResponseArgs) ToRepoSourceResponseOutput() RepoSourceResponseOutput {
-	return i.ToRepoSourceResponseOutputWithContext(context.Background())
-}
-
-func (i RepoSourceResponseArgs) ToRepoSourceResponseOutputWithContext(ctx context.Context) RepoSourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RepoSourceResponseOutput)
-}
-
-func (i RepoSourceResponseArgs) ToRepoSourceResponsePtrOutput() RepoSourceResponsePtrOutput {
-	return i.ToRepoSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i RepoSourceResponseArgs) ToRepoSourceResponsePtrOutputWithContext(ctx context.Context) RepoSourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RepoSourceResponseOutput).ToRepoSourceResponsePtrOutputWithContext(ctx)
-}
-
-// RepoSourceResponsePtrInput is an input type that accepts RepoSourceResponseArgs, RepoSourceResponsePtr and RepoSourceResponsePtrOutput values.
-// You can construct a concrete instance of `RepoSourceResponsePtrInput` via:
-//
-//          RepoSourceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type RepoSourceResponsePtrInput interface {
-	pulumi.Input
-
-	ToRepoSourceResponsePtrOutput() RepoSourceResponsePtrOutput
-	ToRepoSourceResponsePtrOutputWithContext(context.Context) RepoSourceResponsePtrOutput
-}
-
-type repoSourceResponsePtrType RepoSourceResponseArgs
-
-func RepoSourceResponsePtr(v *RepoSourceResponseArgs) RepoSourceResponsePtrInput {
-	return (*repoSourceResponsePtrType)(v)
-}
-
-func (*repoSourceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RepoSourceResponse)(nil)).Elem()
-}
-
-func (i *repoSourceResponsePtrType) ToRepoSourceResponsePtrOutput() RepoSourceResponsePtrOutput {
-	return i.ToRepoSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *repoSourceResponsePtrType) ToRepoSourceResponsePtrOutputWithContext(ctx context.Context) RepoSourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RepoSourceResponsePtrOutput)
-}
-
 // Location of the source in a Google Cloud Source Repository.
 type RepoSourceResponseOutput struct{ *pulumi.OutputState }
 
@@ -8148,16 +4920,6 @@ func (o RepoSourceResponseOutput) ToRepoSourceResponseOutput() RepoSourceRespons
 
 func (o RepoSourceResponseOutput) ToRepoSourceResponseOutputWithContext(ctx context.Context) RepoSourceResponseOutput {
 	return o
-}
-
-func (o RepoSourceResponseOutput) ToRepoSourceResponsePtrOutput() RepoSourceResponsePtrOutput {
-	return o.ToRepoSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o RepoSourceResponseOutput) ToRepoSourceResponsePtrOutputWithContext(ctx context.Context) RepoSourceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepoSourceResponse) *RepoSourceResponse {
-		return &v
-	}).(RepoSourceResponsePtrOutput)
 }
 
 // Regex matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
@@ -8200,110 +4962,6 @@ func (o RepoSourceResponseOutput) TagName() pulumi.StringOutput {
 	return o.ApplyT(func(v RepoSourceResponse) string { return v.TagName }).(pulumi.StringOutput)
 }
 
-type RepoSourceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RepoSourceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RepoSourceResponse)(nil)).Elem()
-}
-
-func (o RepoSourceResponsePtrOutput) ToRepoSourceResponsePtrOutput() RepoSourceResponsePtrOutput {
-	return o
-}
-
-func (o RepoSourceResponsePtrOutput) ToRepoSourceResponsePtrOutputWithContext(ctx context.Context) RepoSourceResponsePtrOutput {
-	return o
-}
-
-func (o RepoSourceResponsePtrOutput) Elem() RepoSourceResponseOutput {
-	return o.ApplyT(func(v *RepoSourceResponse) RepoSourceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RepoSourceResponse
-		return ret
-	}).(RepoSourceResponseOutput)
-}
-
-// Regex matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
-func (o RepoSourceResponsePtrOutput) BranchName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RepoSourceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.BranchName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Explicit commit SHA to build.
-func (o RepoSourceResponsePtrOutput) CommitSha() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RepoSourceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CommitSha
-	}).(pulumi.StringPtrOutput)
-}
-
-// Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution.
-func (o RepoSourceResponsePtrOutput) Dir() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RepoSourceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Dir
-	}).(pulumi.StringPtrOutput)
-}
-
-// Only trigger a build if the revision regex does NOT match the revision regex.
-func (o RepoSourceResponsePtrOutput) InvertRegex() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RepoSourceResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.InvertRegex
-	}).(pulumi.BoolPtrOutput)
-}
-
-// ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
-func (o RepoSourceResponsePtrOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RepoSourceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Project
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of the Cloud Source Repository.
-func (o RepoSourceResponsePtrOutput) RepoName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RepoSourceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RepoName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Substitutions to use in a triggered build. Should only be used with RunBuildTrigger
-func (o RepoSourceResponsePtrOutput) Substitutions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *RepoSourceResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Substitutions
-	}).(pulumi.StringMapOutput)
-}
-
-// Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
-func (o RepoSourceResponsePtrOutput) TagName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RepoSourceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TagName
-	}).(pulumi.StringPtrOutput)
-}
-
 // Artifacts created by the build pipeline.
 type ResultsResponse struct {
 	// Path to the artifact manifest. Only populated when artifacts are uploaded.
@@ -8320,86 +4978,6 @@ type ResultsResponse struct {
 	NumArtifacts string `pulumi:"numArtifacts"`
 }
 
-// ResultsResponseInput is an input type that accepts ResultsResponseArgs and ResultsResponseOutput values.
-// You can construct a concrete instance of `ResultsResponseInput` via:
-//
-//          ResultsResponseArgs{...}
-type ResultsResponseInput interface {
-	pulumi.Input
-
-	ToResultsResponseOutput() ResultsResponseOutput
-	ToResultsResponseOutputWithContext(context.Context) ResultsResponseOutput
-}
-
-// Artifacts created by the build pipeline.
-type ResultsResponseArgs struct {
-	// Path to the artifact manifest. Only populated when artifacts are uploaded.
-	ArtifactManifest pulumi.StringInput `pulumi:"artifactManifest"`
-	// Time to push all non-container artifacts.
-	ArtifactTiming TimeSpanResponseInput `pulumi:"artifactTiming"`
-	// List of build step digests, in the order corresponding to build step indices.
-	BuildStepImages pulumi.StringArrayInput `pulumi:"buildStepImages"`
-	// List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 4KB of data is stored.
-	BuildStepOutputs pulumi.StringArrayInput `pulumi:"buildStepOutputs"`
-	// Container images that were built as a part of the build.
-	Images BuiltImageResponseArrayInput `pulumi:"images"`
-	// Number of artifacts uploaded. Only populated when artifacts are uploaded.
-	NumArtifacts pulumi.StringInput `pulumi:"numArtifacts"`
-}
-
-func (ResultsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResultsResponse)(nil)).Elem()
-}
-
-func (i ResultsResponseArgs) ToResultsResponseOutput() ResultsResponseOutput {
-	return i.ToResultsResponseOutputWithContext(context.Background())
-}
-
-func (i ResultsResponseArgs) ToResultsResponseOutputWithContext(ctx context.Context) ResultsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResultsResponseOutput)
-}
-
-func (i ResultsResponseArgs) ToResultsResponsePtrOutput() ResultsResponsePtrOutput {
-	return i.ToResultsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ResultsResponseArgs) ToResultsResponsePtrOutputWithContext(ctx context.Context) ResultsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResultsResponseOutput).ToResultsResponsePtrOutputWithContext(ctx)
-}
-
-// ResultsResponsePtrInput is an input type that accepts ResultsResponseArgs, ResultsResponsePtr and ResultsResponsePtrOutput values.
-// You can construct a concrete instance of `ResultsResponsePtrInput` via:
-//
-//          ResultsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ResultsResponsePtrInput interface {
-	pulumi.Input
-
-	ToResultsResponsePtrOutput() ResultsResponsePtrOutput
-	ToResultsResponsePtrOutputWithContext(context.Context) ResultsResponsePtrOutput
-}
-
-type resultsResponsePtrType ResultsResponseArgs
-
-func ResultsResponsePtr(v *ResultsResponseArgs) ResultsResponsePtrInput {
-	return (*resultsResponsePtrType)(v)
-}
-
-func (*resultsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResultsResponse)(nil)).Elem()
-}
-
-func (i *resultsResponsePtrType) ToResultsResponsePtrOutput() ResultsResponsePtrOutput {
-	return i.ToResultsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *resultsResponsePtrType) ToResultsResponsePtrOutputWithContext(ctx context.Context) ResultsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResultsResponsePtrOutput)
-}
-
 // Artifacts created by the build pipeline.
 type ResultsResponseOutput struct{ *pulumi.OutputState }
 
@@ -8413,16 +4991,6 @@ func (o ResultsResponseOutput) ToResultsResponseOutput() ResultsResponseOutput {
 
 func (o ResultsResponseOutput) ToResultsResponseOutputWithContext(ctx context.Context) ResultsResponseOutput {
 	return o
-}
-
-func (o ResultsResponseOutput) ToResultsResponsePtrOutput() ResultsResponsePtrOutput {
-	return o.ToResultsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ResultsResponseOutput) ToResultsResponsePtrOutputWithContext(ctx context.Context) ResultsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResultsResponse) *ResultsResponse {
-		return &v
-	}).(ResultsResponsePtrOutput)
 }
 
 // Path to the artifact manifest. Only populated when artifacts are uploaded.
@@ -8453,90 +5021,6 @@ func (o ResultsResponseOutput) Images() BuiltImageResponseArrayOutput {
 // Number of artifacts uploaded. Only populated when artifacts are uploaded.
 func (o ResultsResponseOutput) NumArtifacts() pulumi.StringOutput {
 	return o.ApplyT(func(v ResultsResponse) string { return v.NumArtifacts }).(pulumi.StringOutput)
-}
-
-type ResultsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ResultsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResultsResponse)(nil)).Elem()
-}
-
-func (o ResultsResponsePtrOutput) ToResultsResponsePtrOutput() ResultsResponsePtrOutput {
-	return o
-}
-
-func (o ResultsResponsePtrOutput) ToResultsResponsePtrOutputWithContext(ctx context.Context) ResultsResponsePtrOutput {
-	return o
-}
-
-func (o ResultsResponsePtrOutput) Elem() ResultsResponseOutput {
-	return o.ApplyT(func(v *ResultsResponse) ResultsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ResultsResponse
-		return ret
-	}).(ResultsResponseOutput)
-}
-
-// Path to the artifact manifest. Only populated when artifacts are uploaded.
-func (o ResultsResponsePtrOutput) ArtifactManifest() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResultsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ArtifactManifest
-	}).(pulumi.StringPtrOutput)
-}
-
-// Time to push all non-container artifacts.
-func (o ResultsResponsePtrOutput) ArtifactTiming() TimeSpanResponsePtrOutput {
-	return o.ApplyT(func(v *ResultsResponse) *TimeSpanResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ArtifactTiming
-	}).(TimeSpanResponsePtrOutput)
-}
-
-// List of build step digests, in the order corresponding to build step indices.
-func (o ResultsResponsePtrOutput) BuildStepImages() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ResultsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.BuildStepImages
-	}).(pulumi.StringArrayOutput)
-}
-
-// List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 4KB of data is stored.
-func (o ResultsResponsePtrOutput) BuildStepOutputs() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ResultsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.BuildStepOutputs
-	}).(pulumi.StringArrayOutput)
-}
-
-// Container images that were built as a part of the build.
-func (o ResultsResponsePtrOutput) Images() BuiltImageResponseArrayOutput {
-	return o.ApplyT(func(v *ResultsResponse) []BuiltImageResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Images
-	}).(BuiltImageResponseArrayOutput)
-}
-
-// Number of artifacts uploaded. Only populated when artifacts are uploaded.
-func (o ResultsResponsePtrOutput) NumArtifacts() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResultsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.NumArtifacts
-	}).(pulumi.StringPtrOutput)
 }
 
 // Pairs a set of secret environment variables containing encrypted values with the Cloud KMS key to use to decrypt the value. Note: Use `kmsKeyName` with `available_secrets` instead of using `kmsKeyName` with `secret`. For instructions see: https://cloud.google.com/cloud-build/docs/securing-builds/use-encrypted-credentials.
@@ -8765,62 +5249,6 @@ type SecretManagerSecretResponse struct {
 	VersionName string `pulumi:"versionName"`
 }
 
-// SecretManagerSecretResponseInput is an input type that accepts SecretManagerSecretResponseArgs and SecretManagerSecretResponseOutput values.
-// You can construct a concrete instance of `SecretManagerSecretResponseInput` via:
-//
-//          SecretManagerSecretResponseArgs{...}
-type SecretManagerSecretResponseInput interface {
-	pulumi.Input
-
-	ToSecretManagerSecretResponseOutput() SecretManagerSecretResponseOutput
-	ToSecretManagerSecretResponseOutputWithContext(context.Context) SecretManagerSecretResponseOutput
-}
-
-// Pairs a secret environment variable with a SecretVersion in Secret Manager.
-type SecretManagerSecretResponseArgs struct {
-	// Environment variable name to associate with the secret. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step.
-	Env pulumi.StringInput `pulumi:"env"`
-	// Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*
-	VersionName pulumi.StringInput `pulumi:"versionName"`
-}
-
-func (SecretManagerSecretResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecretManagerSecretResponse)(nil)).Elem()
-}
-
-func (i SecretManagerSecretResponseArgs) ToSecretManagerSecretResponseOutput() SecretManagerSecretResponseOutput {
-	return i.ToSecretManagerSecretResponseOutputWithContext(context.Background())
-}
-
-func (i SecretManagerSecretResponseArgs) ToSecretManagerSecretResponseOutputWithContext(ctx context.Context) SecretManagerSecretResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretManagerSecretResponseOutput)
-}
-
-// SecretManagerSecretResponseArrayInput is an input type that accepts SecretManagerSecretResponseArray and SecretManagerSecretResponseArrayOutput values.
-// You can construct a concrete instance of `SecretManagerSecretResponseArrayInput` via:
-//
-//          SecretManagerSecretResponseArray{ SecretManagerSecretResponseArgs{...} }
-type SecretManagerSecretResponseArrayInput interface {
-	pulumi.Input
-
-	ToSecretManagerSecretResponseArrayOutput() SecretManagerSecretResponseArrayOutput
-	ToSecretManagerSecretResponseArrayOutputWithContext(context.Context) SecretManagerSecretResponseArrayOutput
-}
-
-type SecretManagerSecretResponseArray []SecretManagerSecretResponseInput
-
-func (SecretManagerSecretResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecretManagerSecretResponse)(nil)).Elem()
-}
-
-func (i SecretManagerSecretResponseArray) ToSecretManagerSecretResponseArrayOutput() SecretManagerSecretResponseArrayOutput {
-	return i.ToSecretManagerSecretResponseArrayOutputWithContext(context.Background())
-}
-
-func (i SecretManagerSecretResponseArray) ToSecretManagerSecretResponseArrayOutputWithContext(ctx context.Context) SecretManagerSecretResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretManagerSecretResponseArrayOutput)
-}
-
 // Pairs a secret environment variable with a SecretVersion in Secret Manager.
 type SecretManagerSecretResponseOutput struct{ *pulumi.OutputState }
 
@@ -8872,62 +5300,6 @@ type SecretResponse struct {
 	KmsKeyName string `pulumi:"kmsKeyName"`
 	// Map of environment variable name to its encrypted value. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step. Values can be at most 64 KB in size. There can be at most 100 secret values across all of a build's secrets.
 	SecretEnv map[string]string `pulumi:"secretEnv"`
-}
-
-// SecretResponseInput is an input type that accepts SecretResponseArgs and SecretResponseOutput values.
-// You can construct a concrete instance of `SecretResponseInput` via:
-//
-//          SecretResponseArgs{...}
-type SecretResponseInput interface {
-	pulumi.Input
-
-	ToSecretResponseOutput() SecretResponseOutput
-	ToSecretResponseOutputWithContext(context.Context) SecretResponseOutput
-}
-
-// Pairs a set of secret environment variables containing encrypted values with the Cloud KMS key to use to decrypt the value. Note: Use `kmsKeyName` with `available_secrets` instead of using `kmsKeyName` with `secret`. For instructions see: https://cloud.google.com/cloud-build/docs/securing-builds/use-encrypted-credentials.
-type SecretResponseArgs struct {
-	// Cloud KMS key name to use to decrypt these envs.
-	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
-	// Map of environment variable name to its encrypted value. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step. Values can be at most 64 KB in size. There can be at most 100 secret values across all of a build's secrets.
-	SecretEnv pulumi.StringMapInput `pulumi:"secretEnv"`
-}
-
-func (SecretResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecretResponse)(nil)).Elem()
-}
-
-func (i SecretResponseArgs) ToSecretResponseOutput() SecretResponseOutput {
-	return i.ToSecretResponseOutputWithContext(context.Background())
-}
-
-func (i SecretResponseArgs) ToSecretResponseOutputWithContext(ctx context.Context) SecretResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretResponseOutput)
-}
-
-// SecretResponseArrayInput is an input type that accepts SecretResponseArray and SecretResponseArrayOutput values.
-// You can construct a concrete instance of `SecretResponseArrayInput` via:
-//
-//          SecretResponseArray{ SecretResponseArgs{...} }
-type SecretResponseArrayInput interface {
-	pulumi.Input
-
-	ToSecretResponseArrayOutput() SecretResponseArrayOutput
-	ToSecretResponseArrayOutputWithContext(context.Context) SecretResponseArrayOutput
-}
-
-type SecretResponseArray []SecretResponseInput
-
-func (SecretResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecretResponse)(nil)).Elem()
-}
-
-func (i SecretResponseArray) ToSecretResponseArrayOutput() SecretResponseArrayOutput {
-	return i.ToSecretResponseArrayOutputWithContext(context.Background())
-}
-
-func (i SecretResponseArray) ToSecretResponseArrayOutputWithContext(ctx context.Context) SecretResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretResponseArrayOutput)
 }
 
 // Pairs a set of secret environment variables containing encrypted values with the Cloud KMS key to use to decrypt the value. Note: Use `kmsKeyName` with `available_secrets` instead of using `kmsKeyName` with `secret`. For instructions see: https://cloud.google.com/cloud-build/docs/securing-builds/use-encrypted-credentials.
@@ -9142,78 +5514,6 @@ type SecretsResponse struct {
 	SecretManager []SecretManagerSecretResponse `pulumi:"secretManager"`
 }
 
-// SecretsResponseInput is an input type that accepts SecretsResponseArgs and SecretsResponseOutput values.
-// You can construct a concrete instance of `SecretsResponseInput` via:
-//
-//          SecretsResponseArgs{...}
-type SecretsResponseInput interface {
-	pulumi.Input
-
-	ToSecretsResponseOutput() SecretsResponseOutput
-	ToSecretsResponseOutputWithContext(context.Context) SecretsResponseOutput
-}
-
-// Secrets and secret environment variables.
-type SecretsResponseArgs struct {
-	// Secrets encrypted with KMS key and the associated secret environment variable.
-	Inline InlineSecretResponseArrayInput `pulumi:"inline"`
-	// Secrets in Secret Manager and associated secret environment variable.
-	SecretManager SecretManagerSecretResponseArrayInput `pulumi:"secretManager"`
-}
-
-func (SecretsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecretsResponse)(nil)).Elem()
-}
-
-func (i SecretsResponseArgs) ToSecretsResponseOutput() SecretsResponseOutput {
-	return i.ToSecretsResponseOutputWithContext(context.Background())
-}
-
-func (i SecretsResponseArgs) ToSecretsResponseOutputWithContext(ctx context.Context) SecretsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretsResponseOutput)
-}
-
-func (i SecretsResponseArgs) ToSecretsResponsePtrOutput() SecretsResponsePtrOutput {
-	return i.ToSecretsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SecretsResponseArgs) ToSecretsResponsePtrOutputWithContext(ctx context.Context) SecretsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretsResponseOutput).ToSecretsResponsePtrOutputWithContext(ctx)
-}
-
-// SecretsResponsePtrInput is an input type that accepts SecretsResponseArgs, SecretsResponsePtr and SecretsResponsePtrOutput values.
-// You can construct a concrete instance of `SecretsResponsePtrInput` via:
-//
-//          SecretsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SecretsResponsePtrInput interface {
-	pulumi.Input
-
-	ToSecretsResponsePtrOutput() SecretsResponsePtrOutput
-	ToSecretsResponsePtrOutputWithContext(context.Context) SecretsResponsePtrOutput
-}
-
-type secretsResponsePtrType SecretsResponseArgs
-
-func SecretsResponsePtr(v *SecretsResponseArgs) SecretsResponsePtrInput {
-	return (*secretsResponsePtrType)(v)
-}
-
-func (*secretsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecretsResponse)(nil)).Elem()
-}
-
-func (i *secretsResponsePtrType) ToSecretsResponsePtrOutput() SecretsResponsePtrOutput {
-	return i.ToSecretsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *secretsResponsePtrType) ToSecretsResponsePtrOutputWithContext(ctx context.Context) SecretsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretsResponsePtrOutput)
-}
-
 // Secrets and secret environment variables.
 type SecretsResponseOutput struct{ *pulumi.OutputState }
 
@@ -9229,16 +5529,6 @@ func (o SecretsResponseOutput) ToSecretsResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o SecretsResponseOutput) ToSecretsResponsePtrOutput() SecretsResponsePtrOutput {
-	return o.ToSecretsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SecretsResponseOutput) ToSecretsResponsePtrOutputWithContext(ctx context.Context) SecretsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretsResponse) *SecretsResponse {
-		return &v
-	}).(SecretsResponsePtrOutput)
-}
-
 // Secrets encrypted with KMS key and the associated secret environment variable.
 func (o SecretsResponseOutput) Inline() InlineSecretResponseArrayOutput {
 	return o.ApplyT(func(v SecretsResponse) []InlineSecretResponse { return v.Inline }).(InlineSecretResponseArrayOutput)
@@ -9247,50 +5537,6 @@ func (o SecretsResponseOutput) Inline() InlineSecretResponseArrayOutput {
 // Secrets in Secret Manager and associated secret environment variable.
 func (o SecretsResponseOutput) SecretManager() SecretManagerSecretResponseArrayOutput {
 	return o.ApplyT(func(v SecretsResponse) []SecretManagerSecretResponse { return v.SecretManager }).(SecretManagerSecretResponseArrayOutput)
-}
-
-type SecretsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SecretsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecretsResponse)(nil)).Elem()
-}
-
-func (o SecretsResponsePtrOutput) ToSecretsResponsePtrOutput() SecretsResponsePtrOutput {
-	return o
-}
-
-func (o SecretsResponsePtrOutput) ToSecretsResponsePtrOutputWithContext(ctx context.Context) SecretsResponsePtrOutput {
-	return o
-}
-
-func (o SecretsResponsePtrOutput) Elem() SecretsResponseOutput {
-	return o.ApplyT(func(v *SecretsResponse) SecretsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SecretsResponse
-		return ret
-	}).(SecretsResponseOutput)
-}
-
-// Secrets encrypted with KMS key and the associated secret environment variable.
-func (o SecretsResponsePtrOutput) Inline() InlineSecretResponseArrayOutput {
-	return o.ApplyT(func(v *SecretsResponse) []InlineSecretResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Inline
-	}).(InlineSecretResponseArrayOutput)
-}
-
-// Secrets in Secret Manager and associated secret environment variable.
-func (o SecretsResponsePtrOutput) SecretManager() SecretManagerSecretResponseArrayOutput {
-	return o.ApplyT(func(v *SecretsResponse) []SecretManagerSecretResponse {
-		if v == nil {
-			return nil
-		}
-		return v.SecretManager
-	}).(SecretManagerSecretResponseArrayOutput)
 }
 
 // Location of the source in a supported storage service.
@@ -9483,82 +5729,6 @@ type SourceProvenanceResponse struct {
 	ResolvedStorageSourceManifest StorageSourceManifestResponse `pulumi:"resolvedStorageSourceManifest"`
 }
 
-// SourceProvenanceResponseInput is an input type that accepts SourceProvenanceResponseArgs and SourceProvenanceResponseOutput values.
-// You can construct a concrete instance of `SourceProvenanceResponseInput` via:
-//
-//          SourceProvenanceResponseArgs{...}
-type SourceProvenanceResponseInput interface {
-	pulumi.Input
-
-	ToSourceProvenanceResponseOutput() SourceProvenanceResponseOutput
-	ToSourceProvenanceResponseOutputWithContext(context.Context) SourceProvenanceResponseOutput
-}
-
-// Provenance of the source. Ways to find the original source, or verify that some source was used for this build.
-type SourceProvenanceResponseArgs struct {
-	// Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.
-	FileHashes pulumi.StringMapInput `pulumi:"fileHashes"`
-	// A copy of the build's `source.repo_source`, if exists, with any revisions resolved.
-	ResolvedRepoSource RepoSourceResponseInput `pulumi:"resolvedRepoSource"`
-	// A copy of the build's `source.storage_source`, if exists, with any generations resolved.
-	ResolvedStorageSource StorageSourceResponseInput `pulumi:"resolvedStorageSource"`
-	// A copy of the build's `source.storage_source_manifest`, if exists, with any revisions resolved. This feature is in Preview.
-	ResolvedStorageSourceManifest StorageSourceManifestResponseInput `pulumi:"resolvedStorageSourceManifest"`
-}
-
-func (SourceProvenanceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceProvenanceResponse)(nil)).Elem()
-}
-
-func (i SourceProvenanceResponseArgs) ToSourceProvenanceResponseOutput() SourceProvenanceResponseOutput {
-	return i.ToSourceProvenanceResponseOutputWithContext(context.Background())
-}
-
-func (i SourceProvenanceResponseArgs) ToSourceProvenanceResponseOutputWithContext(ctx context.Context) SourceProvenanceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceProvenanceResponseOutput)
-}
-
-func (i SourceProvenanceResponseArgs) ToSourceProvenanceResponsePtrOutput() SourceProvenanceResponsePtrOutput {
-	return i.ToSourceProvenanceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SourceProvenanceResponseArgs) ToSourceProvenanceResponsePtrOutputWithContext(ctx context.Context) SourceProvenanceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceProvenanceResponseOutput).ToSourceProvenanceResponsePtrOutputWithContext(ctx)
-}
-
-// SourceProvenanceResponsePtrInput is an input type that accepts SourceProvenanceResponseArgs, SourceProvenanceResponsePtr and SourceProvenanceResponsePtrOutput values.
-// You can construct a concrete instance of `SourceProvenanceResponsePtrInput` via:
-//
-//          SourceProvenanceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SourceProvenanceResponsePtrInput interface {
-	pulumi.Input
-
-	ToSourceProvenanceResponsePtrOutput() SourceProvenanceResponsePtrOutput
-	ToSourceProvenanceResponsePtrOutputWithContext(context.Context) SourceProvenanceResponsePtrOutput
-}
-
-type sourceProvenanceResponsePtrType SourceProvenanceResponseArgs
-
-func SourceProvenanceResponsePtr(v *SourceProvenanceResponseArgs) SourceProvenanceResponsePtrInput {
-	return (*sourceProvenanceResponsePtrType)(v)
-}
-
-func (*sourceProvenanceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SourceProvenanceResponse)(nil)).Elem()
-}
-
-func (i *sourceProvenanceResponsePtrType) ToSourceProvenanceResponsePtrOutput() SourceProvenanceResponsePtrOutput {
-	return i.ToSourceProvenanceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *sourceProvenanceResponsePtrType) ToSourceProvenanceResponsePtrOutputWithContext(ctx context.Context) SourceProvenanceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceProvenanceResponsePtrOutput)
-}
-
 // Provenance of the source. Ways to find the original source, or verify that some source was used for this build.
 type SourceProvenanceResponseOutput struct{ *pulumi.OutputState }
 
@@ -9572,16 +5742,6 @@ func (o SourceProvenanceResponseOutput) ToSourceProvenanceResponseOutput() Sourc
 
 func (o SourceProvenanceResponseOutput) ToSourceProvenanceResponseOutputWithContext(ctx context.Context) SourceProvenanceResponseOutput {
 	return o
-}
-
-func (o SourceProvenanceResponseOutput) ToSourceProvenanceResponsePtrOutput() SourceProvenanceResponsePtrOutput {
-	return o.ToSourceProvenanceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SourceProvenanceResponseOutput) ToSourceProvenanceResponsePtrOutputWithContext(ctx context.Context) SourceProvenanceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceProvenanceResponse) *SourceProvenanceResponse {
-		return &v
-	}).(SourceProvenanceResponsePtrOutput)
 }
 
 // Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.
@@ -9604,70 +5764,6 @@ func (o SourceProvenanceResponseOutput) ResolvedStorageSourceManifest() StorageS
 	return o.ApplyT(func(v SourceProvenanceResponse) StorageSourceManifestResponse { return v.ResolvedStorageSourceManifest }).(StorageSourceManifestResponseOutput)
 }
 
-type SourceProvenanceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SourceProvenanceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SourceProvenanceResponse)(nil)).Elem()
-}
-
-func (o SourceProvenanceResponsePtrOutput) ToSourceProvenanceResponsePtrOutput() SourceProvenanceResponsePtrOutput {
-	return o
-}
-
-func (o SourceProvenanceResponsePtrOutput) ToSourceProvenanceResponsePtrOutputWithContext(ctx context.Context) SourceProvenanceResponsePtrOutput {
-	return o
-}
-
-func (o SourceProvenanceResponsePtrOutput) Elem() SourceProvenanceResponseOutput {
-	return o.ApplyT(func(v *SourceProvenanceResponse) SourceProvenanceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SourceProvenanceResponse
-		return ret
-	}).(SourceProvenanceResponseOutput)
-}
-
-// Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.
-func (o SourceProvenanceResponsePtrOutput) FileHashes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *SourceProvenanceResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.FileHashes
-	}).(pulumi.StringMapOutput)
-}
-
-// A copy of the build's `source.repo_source`, if exists, with any revisions resolved.
-func (o SourceProvenanceResponsePtrOutput) ResolvedRepoSource() RepoSourceResponsePtrOutput {
-	return o.ApplyT(func(v *SourceProvenanceResponse) *RepoSourceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ResolvedRepoSource
-	}).(RepoSourceResponsePtrOutput)
-}
-
-// A copy of the build's `source.storage_source`, if exists, with any generations resolved.
-func (o SourceProvenanceResponsePtrOutput) ResolvedStorageSource() StorageSourceResponsePtrOutput {
-	return o.ApplyT(func(v *SourceProvenanceResponse) *StorageSourceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ResolvedStorageSource
-	}).(StorageSourceResponsePtrOutput)
-}
-
-// A copy of the build's `source.storage_source_manifest`, if exists, with any revisions resolved. This feature is in Preview.
-func (o SourceProvenanceResponsePtrOutput) ResolvedStorageSourceManifest() StorageSourceManifestResponsePtrOutput {
-	return o.ApplyT(func(v *SourceProvenanceResponse) *StorageSourceManifestResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ResolvedStorageSourceManifest
-	}).(StorageSourceManifestResponsePtrOutput)
-}
-
 // Location of the source in a supported storage service.
 type SourceResponse struct {
 	// If provided, get the source from this location in a Cloud Source Repository.
@@ -9676,80 +5772,6 @@ type SourceResponse struct {
 	StorageSource StorageSourceResponse `pulumi:"storageSource"`
 	// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
 	StorageSourceManifest StorageSourceManifestResponse `pulumi:"storageSourceManifest"`
-}
-
-// SourceResponseInput is an input type that accepts SourceResponseArgs and SourceResponseOutput values.
-// You can construct a concrete instance of `SourceResponseInput` via:
-//
-//          SourceResponseArgs{...}
-type SourceResponseInput interface {
-	pulumi.Input
-
-	ToSourceResponseOutput() SourceResponseOutput
-	ToSourceResponseOutputWithContext(context.Context) SourceResponseOutput
-}
-
-// Location of the source in a supported storage service.
-type SourceResponseArgs struct {
-	// If provided, get the source from this location in a Cloud Source Repository.
-	RepoSource RepoSourceResponseInput `pulumi:"repoSource"`
-	// If provided, get the source from this location in Google Cloud Storage.
-	StorageSource StorageSourceResponseInput `pulumi:"storageSource"`
-	// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
-	StorageSourceManifest StorageSourceManifestResponseInput `pulumi:"storageSourceManifest"`
-}
-
-func (SourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceResponse)(nil)).Elem()
-}
-
-func (i SourceResponseArgs) ToSourceResponseOutput() SourceResponseOutput {
-	return i.ToSourceResponseOutputWithContext(context.Background())
-}
-
-func (i SourceResponseArgs) ToSourceResponseOutputWithContext(ctx context.Context) SourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceResponseOutput)
-}
-
-func (i SourceResponseArgs) ToSourceResponsePtrOutput() SourceResponsePtrOutput {
-	return i.ToSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SourceResponseArgs) ToSourceResponsePtrOutputWithContext(ctx context.Context) SourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceResponseOutput).ToSourceResponsePtrOutputWithContext(ctx)
-}
-
-// SourceResponsePtrInput is an input type that accepts SourceResponseArgs, SourceResponsePtr and SourceResponsePtrOutput values.
-// You can construct a concrete instance of `SourceResponsePtrInput` via:
-//
-//          SourceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SourceResponsePtrInput interface {
-	pulumi.Input
-
-	ToSourceResponsePtrOutput() SourceResponsePtrOutput
-	ToSourceResponsePtrOutputWithContext(context.Context) SourceResponsePtrOutput
-}
-
-type sourceResponsePtrType SourceResponseArgs
-
-func SourceResponsePtr(v *SourceResponseArgs) SourceResponsePtrInput {
-	return (*sourceResponsePtrType)(v)
-}
-
-func (*sourceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SourceResponse)(nil)).Elem()
-}
-
-func (i *sourceResponsePtrType) ToSourceResponsePtrOutput() SourceResponsePtrOutput {
-	return i.ToSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *sourceResponsePtrType) ToSourceResponsePtrOutputWithContext(ctx context.Context) SourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceResponsePtrOutput)
 }
 
 // Location of the source in a supported storage service.
@@ -9767,16 +5789,6 @@ func (o SourceResponseOutput) ToSourceResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o SourceResponseOutput) ToSourceResponsePtrOutput() SourceResponsePtrOutput {
-	return o.ToSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SourceResponseOutput) ToSourceResponsePtrOutputWithContext(ctx context.Context) SourceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceResponse) *SourceResponse {
-		return &v
-	}).(SourceResponsePtrOutput)
-}
-
 // If provided, get the source from this location in a Cloud Source Repository.
 func (o SourceResponseOutput) RepoSource() RepoSourceResponseOutput {
 	return o.ApplyT(func(v SourceResponse) RepoSourceResponse { return v.RepoSource }).(RepoSourceResponseOutput)
@@ -9790,60 +5802,6 @@ func (o SourceResponseOutput) StorageSource() StorageSourceResponseOutput {
 // If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
 func (o SourceResponseOutput) StorageSourceManifest() StorageSourceManifestResponseOutput {
 	return o.ApplyT(func(v SourceResponse) StorageSourceManifestResponse { return v.StorageSourceManifest }).(StorageSourceManifestResponseOutput)
-}
-
-type SourceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SourceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SourceResponse)(nil)).Elem()
-}
-
-func (o SourceResponsePtrOutput) ToSourceResponsePtrOutput() SourceResponsePtrOutput {
-	return o
-}
-
-func (o SourceResponsePtrOutput) ToSourceResponsePtrOutputWithContext(ctx context.Context) SourceResponsePtrOutput {
-	return o
-}
-
-func (o SourceResponsePtrOutput) Elem() SourceResponseOutput {
-	return o.ApplyT(func(v *SourceResponse) SourceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SourceResponse
-		return ret
-	}).(SourceResponseOutput)
-}
-
-// If provided, get the source from this location in a Cloud Source Repository.
-func (o SourceResponsePtrOutput) RepoSource() RepoSourceResponsePtrOutput {
-	return o.ApplyT(func(v *SourceResponse) *RepoSourceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.RepoSource
-	}).(RepoSourceResponsePtrOutput)
-}
-
-// If provided, get the source from this location in Google Cloud Storage.
-func (o SourceResponsePtrOutput) StorageSource() StorageSourceResponsePtrOutput {
-	return o.ApplyT(func(v *SourceResponse) *StorageSourceResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.StorageSource
-	}).(StorageSourceResponsePtrOutput)
-}
-
-// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
-func (o SourceResponsePtrOutput) StorageSourceManifest() StorageSourceManifestResponsePtrOutput {
-	return o.ApplyT(func(v *SourceResponse) *StorageSourceManifestResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.StorageSourceManifest
-	}).(StorageSourceManifestResponsePtrOutput)
 }
 
 // Location of the source in an archive file in Google Cloud Storage.
@@ -10212,80 +6170,6 @@ type StorageSourceManifestResponse struct {
 	Object string `pulumi:"object"`
 }
 
-// StorageSourceManifestResponseInput is an input type that accepts StorageSourceManifestResponseArgs and StorageSourceManifestResponseOutput values.
-// You can construct a concrete instance of `StorageSourceManifestResponseInput` via:
-//
-//          StorageSourceManifestResponseArgs{...}
-type StorageSourceManifestResponseInput interface {
-	pulumi.Input
-
-	ToStorageSourceManifestResponseOutput() StorageSourceManifestResponseOutput
-	ToStorageSourceManifestResponseOutputWithContext(context.Context) StorageSourceManifestResponseOutput
-}
-
-// Location of the source manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
-type StorageSourceManifestResponseArgs struct {
-	// Google Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
-	Bucket pulumi.StringInput `pulumi:"bucket"`
-	// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
-	Generation pulumi.StringInput `pulumi:"generation"`
-	// Google Cloud Storage object containing the source manifest. This object must be a JSON file.
-	Object pulumi.StringInput `pulumi:"object"`
-}
-
-func (StorageSourceManifestResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageSourceManifestResponse)(nil)).Elem()
-}
-
-func (i StorageSourceManifestResponseArgs) ToStorageSourceManifestResponseOutput() StorageSourceManifestResponseOutput {
-	return i.ToStorageSourceManifestResponseOutputWithContext(context.Background())
-}
-
-func (i StorageSourceManifestResponseArgs) ToStorageSourceManifestResponseOutputWithContext(ctx context.Context) StorageSourceManifestResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageSourceManifestResponseOutput)
-}
-
-func (i StorageSourceManifestResponseArgs) ToStorageSourceManifestResponsePtrOutput() StorageSourceManifestResponsePtrOutput {
-	return i.ToStorageSourceManifestResponsePtrOutputWithContext(context.Background())
-}
-
-func (i StorageSourceManifestResponseArgs) ToStorageSourceManifestResponsePtrOutputWithContext(ctx context.Context) StorageSourceManifestResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageSourceManifestResponseOutput).ToStorageSourceManifestResponsePtrOutputWithContext(ctx)
-}
-
-// StorageSourceManifestResponsePtrInput is an input type that accepts StorageSourceManifestResponseArgs, StorageSourceManifestResponsePtr and StorageSourceManifestResponsePtrOutput values.
-// You can construct a concrete instance of `StorageSourceManifestResponsePtrInput` via:
-//
-//          StorageSourceManifestResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type StorageSourceManifestResponsePtrInput interface {
-	pulumi.Input
-
-	ToStorageSourceManifestResponsePtrOutput() StorageSourceManifestResponsePtrOutput
-	ToStorageSourceManifestResponsePtrOutputWithContext(context.Context) StorageSourceManifestResponsePtrOutput
-}
-
-type storageSourceManifestResponsePtrType StorageSourceManifestResponseArgs
-
-func StorageSourceManifestResponsePtr(v *StorageSourceManifestResponseArgs) StorageSourceManifestResponsePtrInput {
-	return (*storageSourceManifestResponsePtrType)(v)
-}
-
-func (*storageSourceManifestResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageSourceManifestResponse)(nil)).Elem()
-}
-
-func (i *storageSourceManifestResponsePtrType) ToStorageSourceManifestResponsePtrOutput() StorageSourceManifestResponsePtrOutput {
-	return i.ToStorageSourceManifestResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *storageSourceManifestResponsePtrType) ToStorageSourceManifestResponsePtrOutputWithContext(ctx context.Context) StorageSourceManifestResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageSourceManifestResponsePtrOutput)
-}
-
 // Location of the source manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
 type StorageSourceManifestResponseOutput struct{ *pulumi.OutputState }
 
@@ -10299,16 +6183,6 @@ func (o StorageSourceManifestResponseOutput) ToStorageSourceManifestResponseOutp
 
 func (o StorageSourceManifestResponseOutput) ToStorageSourceManifestResponseOutputWithContext(ctx context.Context) StorageSourceManifestResponseOutput {
 	return o
-}
-
-func (o StorageSourceManifestResponseOutput) ToStorageSourceManifestResponsePtrOutput() StorageSourceManifestResponsePtrOutput {
-	return o.ToStorageSourceManifestResponsePtrOutputWithContext(context.Background())
-}
-
-func (o StorageSourceManifestResponseOutput) ToStorageSourceManifestResponsePtrOutputWithContext(ctx context.Context) StorageSourceManifestResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageSourceManifestResponse) *StorageSourceManifestResponse {
-		return &v
-	}).(StorageSourceManifestResponsePtrOutput)
 }
 
 // Google Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
@@ -10326,60 +6200,6 @@ func (o StorageSourceManifestResponseOutput) Object() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageSourceManifestResponse) string { return v.Object }).(pulumi.StringOutput)
 }
 
-type StorageSourceManifestResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (StorageSourceManifestResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageSourceManifestResponse)(nil)).Elem()
-}
-
-func (o StorageSourceManifestResponsePtrOutput) ToStorageSourceManifestResponsePtrOutput() StorageSourceManifestResponsePtrOutput {
-	return o
-}
-
-func (o StorageSourceManifestResponsePtrOutput) ToStorageSourceManifestResponsePtrOutputWithContext(ctx context.Context) StorageSourceManifestResponsePtrOutput {
-	return o
-}
-
-func (o StorageSourceManifestResponsePtrOutput) Elem() StorageSourceManifestResponseOutput {
-	return o.ApplyT(func(v *StorageSourceManifestResponse) StorageSourceManifestResponse {
-		if v != nil {
-			return *v
-		}
-		var ret StorageSourceManifestResponse
-		return ret
-	}).(StorageSourceManifestResponseOutput)
-}
-
-// Google Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
-func (o StorageSourceManifestResponsePtrOutput) Bucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageSourceManifestResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Bucket
-	}).(pulumi.StringPtrOutput)
-}
-
-// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
-func (o StorageSourceManifestResponsePtrOutput) Generation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageSourceManifestResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Generation
-	}).(pulumi.StringPtrOutput)
-}
-
-// Google Cloud Storage object containing the source manifest. This object must be a JSON file.
-func (o StorageSourceManifestResponsePtrOutput) Object() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageSourceManifestResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Object
-	}).(pulumi.StringPtrOutput)
-}
-
 // Location of the source in an archive file in Google Cloud Storage.
 type StorageSourceResponse struct {
 	// Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
@@ -10388,80 +6208,6 @@ type StorageSourceResponse struct {
 	Generation string `pulumi:"generation"`
 	// Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
 	Object string `pulumi:"object"`
-}
-
-// StorageSourceResponseInput is an input type that accepts StorageSourceResponseArgs and StorageSourceResponseOutput values.
-// You can construct a concrete instance of `StorageSourceResponseInput` via:
-//
-//          StorageSourceResponseArgs{...}
-type StorageSourceResponseInput interface {
-	pulumi.Input
-
-	ToStorageSourceResponseOutput() StorageSourceResponseOutput
-	ToStorageSourceResponseOutputWithContext(context.Context) StorageSourceResponseOutput
-}
-
-// Location of the source in an archive file in Google Cloud Storage.
-type StorageSourceResponseArgs struct {
-	// Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
-	Bucket pulumi.StringInput `pulumi:"bucket"`
-	// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
-	Generation pulumi.StringInput `pulumi:"generation"`
-	// Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
-	Object pulumi.StringInput `pulumi:"object"`
-}
-
-func (StorageSourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageSourceResponse)(nil)).Elem()
-}
-
-func (i StorageSourceResponseArgs) ToStorageSourceResponseOutput() StorageSourceResponseOutput {
-	return i.ToStorageSourceResponseOutputWithContext(context.Background())
-}
-
-func (i StorageSourceResponseArgs) ToStorageSourceResponseOutputWithContext(ctx context.Context) StorageSourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageSourceResponseOutput)
-}
-
-func (i StorageSourceResponseArgs) ToStorageSourceResponsePtrOutput() StorageSourceResponsePtrOutput {
-	return i.ToStorageSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i StorageSourceResponseArgs) ToStorageSourceResponsePtrOutputWithContext(ctx context.Context) StorageSourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageSourceResponseOutput).ToStorageSourceResponsePtrOutputWithContext(ctx)
-}
-
-// StorageSourceResponsePtrInput is an input type that accepts StorageSourceResponseArgs, StorageSourceResponsePtr and StorageSourceResponsePtrOutput values.
-// You can construct a concrete instance of `StorageSourceResponsePtrInput` via:
-//
-//          StorageSourceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type StorageSourceResponsePtrInput interface {
-	pulumi.Input
-
-	ToStorageSourceResponsePtrOutput() StorageSourceResponsePtrOutput
-	ToStorageSourceResponsePtrOutputWithContext(context.Context) StorageSourceResponsePtrOutput
-}
-
-type storageSourceResponsePtrType StorageSourceResponseArgs
-
-func StorageSourceResponsePtr(v *StorageSourceResponseArgs) StorageSourceResponsePtrInput {
-	return (*storageSourceResponsePtrType)(v)
-}
-
-func (*storageSourceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageSourceResponse)(nil)).Elem()
-}
-
-func (i *storageSourceResponsePtrType) ToStorageSourceResponsePtrOutput() StorageSourceResponsePtrOutput {
-	return i.ToStorageSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *storageSourceResponsePtrType) ToStorageSourceResponsePtrOutputWithContext(ctx context.Context) StorageSourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageSourceResponsePtrOutput)
 }
 
 // Location of the source in an archive file in Google Cloud Storage.
@@ -10479,16 +6225,6 @@ func (o StorageSourceResponseOutput) ToStorageSourceResponseOutputWithContext(ct
 	return o
 }
 
-func (o StorageSourceResponseOutput) ToStorageSourceResponsePtrOutput() StorageSourceResponsePtrOutput {
-	return o.ToStorageSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o StorageSourceResponseOutput) ToStorageSourceResponsePtrOutputWithContext(ctx context.Context) StorageSourceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageSourceResponse) *StorageSourceResponse {
-		return &v
-	}).(StorageSourceResponsePtrOutput)
-}
-
 // Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
 func (o StorageSourceResponseOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageSourceResponse) string { return v.Bucket }).(pulumi.StringOutput)
@@ -10504,138 +6240,12 @@ func (o StorageSourceResponseOutput) Object() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageSourceResponse) string { return v.Object }).(pulumi.StringOutput)
 }
 
-type StorageSourceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (StorageSourceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageSourceResponse)(nil)).Elem()
-}
-
-func (o StorageSourceResponsePtrOutput) ToStorageSourceResponsePtrOutput() StorageSourceResponsePtrOutput {
-	return o
-}
-
-func (o StorageSourceResponsePtrOutput) ToStorageSourceResponsePtrOutputWithContext(ctx context.Context) StorageSourceResponsePtrOutput {
-	return o
-}
-
-func (o StorageSourceResponsePtrOutput) Elem() StorageSourceResponseOutput {
-	return o.ApplyT(func(v *StorageSourceResponse) StorageSourceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret StorageSourceResponse
-		return ret
-	}).(StorageSourceResponseOutput)
-}
-
-// Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
-func (o StorageSourceResponsePtrOutput) Bucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageSourceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Bucket
-	}).(pulumi.StringPtrOutput)
-}
-
-// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
-func (o StorageSourceResponsePtrOutput) Generation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageSourceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Generation
-	}).(pulumi.StringPtrOutput)
-}
-
-// Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
-func (o StorageSourceResponsePtrOutput) Object() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageSourceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Object
-	}).(pulumi.StringPtrOutput)
-}
-
 // Start and end times for a build execution phase.
 type TimeSpanResponse struct {
 	// End of time span.
 	EndTime string `pulumi:"endTime"`
 	// Start of time span.
 	StartTime string `pulumi:"startTime"`
-}
-
-// TimeSpanResponseInput is an input type that accepts TimeSpanResponseArgs and TimeSpanResponseOutput values.
-// You can construct a concrete instance of `TimeSpanResponseInput` via:
-//
-//          TimeSpanResponseArgs{...}
-type TimeSpanResponseInput interface {
-	pulumi.Input
-
-	ToTimeSpanResponseOutput() TimeSpanResponseOutput
-	ToTimeSpanResponseOutputWithContext(context.Context) TimeSpanResponseOutput
-}
-
-// Start and end times for a build execution phase.
-type TimeSpanResponseArgs struct {
-	// End of time span.
-	EndTime pulumi.StringInput `pulumi:"endTime"`
-	// Start of time span.
-	StartTime pulumi.StringInput `pulumi:"startTime"`
-}
-
-func (TimeSpanResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TimeSpanResponse)(nil)).Elem()
-}
-
-func (i TimeSpanResponseArgs) ToTimeSpanResponseOutput() TimeSpanResponseOutput {
-	return i.ToTimeSpanResponseOutputWithContext(context.Background())
-}
-
-func (i TimeSpanResponseArgs) ToTimeSpanResponseOutputWithContext(ctx context.Context) TimeSpanResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TimeSpanResponseOutput)
-}
-
-func (i TimeSpanResponseArgs) ToTimeSpanResponsePtrOutput() TimeSpanResponsePtrOutput {
-	return i.ToTimeSpanResponsePtrOutputWithContext(context.Background())
-}
-
-func (i TimeSpanResponseArgs) ToTimeSpanResponsePtrOutputWithContext(ctx context.Context) TimeSpanResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TimeSpanResponseOutput).ToTimeSpanResponsePtrOutputWithContext(ctx)
-}
-
-// TimeSpanResponsePtrInput is an input type that accepts TimeSpanResponseArgs, TimeSpanResponsePtr and TimeSpanResponsePtrOutput values.
-// You can construct a concrete instance of `TimeSpanResponsePtrInput` via:
-//
-//          TimeSpanResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type TimeSpanResponsePtrInput interface {
-	pulumi.Input
-
-	ToTimeSpanResponsePtrOutput() TimeSpanResponsePtrOutput
-	ToTimeSpanResponsePtrOutputWithContext(context.Context) TimeSpanResponsePtrOutput
-}
-
-type timeSpanResponsePtrType TimeSpanResponseArgs
-
-func TimeSpanResponsePtr(v *TimeSpanResponseArgs) TimeSpanResponsePtrInput {
-	return (*timeSpanResponsePtrType)(v)
-}
-
-func (*timeSpanResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TimeSpanResponse)(nil)).Elem()
-}
-
-func (i *timeSpanResponsePtrType) ToTimeSpanResponsePtrOutput() TimeSpanResponsePtrOutput {
-	return i.ToTimeSpanResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *timeSpanResponsePtrType) ToTimeSpanResponsePtrOutputWithContext(ctx context.Context) TimeSpanResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TimeSpanResponsePtrOutput)
 }
 
 // Start and end times for a build execution phase.
@@ -10653,16 +6263,6 @@ func (o TimeSpanResponseOutput) ToTimeSpanResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o TimeSpanResponseOutput) ToTimeSpanResponsePtrOutput() TimeSpanResponsePtrOutput {
-	return o.ToTimeSpanResponsePtrOutputWithContext(context.Background())
-}
-
-func (o TimeSpanResponseOutput) ToTimeSpanResponsePtrOutputWithContext(ctx context.Context) TimeSpanResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeSpanResponse) *TimeSpanResponse {
-		return &v
-	}).(TimeSpanResponsePtrOutput)
-}
-
 // End of time span.
 func (o TimeSpanResponseOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v TimeSpanResponse) string { return v.EndTime }).(pulumi.StringOutput)
@@ -10671,50 +6271,6 @@ func (o TimeSpanResponseOutput) EndTime() pulumi.StringOutput {
 // Start of time span.
 func (o TimeSpanResponseOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v TimeSpanResponse) string { return v.StartTime }).(pulumi.StringOutput)
-}
-
-type TimeSpanResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (TimeSpanResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TimeSpanResponse)(nil)).Elem()
-}
-
-func (o TimeSpanResponsePtrOutput) ToTimeSpanResponsePtrOutput() TimeSpanResponsePtrOutput {
-	return o
-}
-
-func (o TimeSpanResponsePtrOutput) ToTimeSpanResponsePtrOutputWithContext(ctx context.Context) TimeSpanResponsePtrOutput {
-	return o
-}
-
-func (o TimeSpanResponsePtrOutput) Elem() TimeSpanResponseOutput {
-	return o.ApplyT(func(v *TimeSpanResponse) TimeSpanResponse {
-		if v != nil {
-			return *v
-		}
-		var ret TimeSpanResponse
-		return ret
-	}).(TimeSpanResponseOutput)
-}
-
-// End of time span.
-func (o TimeSpanResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TimeSpanResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EndTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Start of time span.
-func (o TimeSpanResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TimeSpanResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StartTime
-	}).(pulumi.StringPtrOutput)
 }
 
 // Volume describes a Docker container volume which is mounted into build steps in order to persist files across build step execution.
@@ -10834,62 +6390,6 @@ type VolumeResponse struct {
 	Path string `pulumi:"path"`
 }
 
-// VolumeResponseInput is an input type that accepts VolumeResponseArgs and VolumeResponseOutput values.
-// You can construct a concrete instance of `VolumeResponseInput` via:
-//
-//          VolumeResponseArgs{...}
-type VolumeResponseInput interface {
-	pulumi.Input
-
-	ToVolumeResponseOutput() VolumeResponseOutput
-	ToVolumeResponseOutputWithContext(context.Context) VolumeResponseOutput
-}
-
-// Volume describes a Docker container volume which is mounted into build steps in order to persist files across build step execution.
-type VolumeResponseArgs struct {
-	// Name of the volume to mount. Volume names must be unique per build step and must be valid names for Docker volumes. Each named volume must be used by at least two build steps.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Path at which to mount the volume. Paths must be absolute and cannot conflict with other volume paths on the same build step or with certain reserved volume paths.
-	Path pulumi.StringInput `pulumi:"path"`
-}
-
-func (VolumeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VolumeResponse)(nil)).Elem()
-}
-
-func (i VolumeResponseArgs) ToVolumeResponseOutput() VolumeResponseOutput {
-	return i.ToVolumeResponseOutputWithContext(context.Background())
-}
-
-func (i VolumeResponseArgs) ToVolumeResponseOutputWithContext(ctx context.Context) VolumeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VolumeResponseOutput)
-}
-
-// VolumeResponseArrayInput is an input type that accepts VolumeResponseArray and VolumeResponseArrayOutput values.
-// You can construct a concrete instance of `VolumeResponseArrayInput` via:
-//
-//          VolumeResponseArray{ VolumeResponseArgs{...} }
-type VolumeResponseArrayInput interface {
-	pulumi.Input
-
-	ToVolumeResponseArrayOutput() VolumeResponseArrayOutput
-	ToVolumeResponseArrayOutputWithContext(context.Context) VolumeResponseArrayOutput
-}
-
-type VolumeResponseArray []VolumeResponseInput
-
-func (VolumeResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VolumeResponse)(nil)).Elem()
-}
-
-func (i VolumeResponseArray) ToVolumeResponseArrayOutput() VolumeResponseArrayOutput {
-	return i.ToVolumeResponseArrayOutputWithContext(context.Background())
-}
-
-func (i VolumeResponseArray) ToVolumeResponseArrayOutputWithContext(ctx context.Context) VolumeResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VolumeResponseArrayOutput)
-}
-
 // Volume describes a Docker container volume which is mounted into build steps in order to persist files across build step execution.
 type VolumeResponseOutput struct{ *pulumi.OutputState }
 
@@ -10941,62 +6441,6 @@ type WarningResponse struct {
 	Priority string `pulumi:"priority"`
 	// Explanation of the warning generated.
 	Text string `pulumi:"text"`
-}
-
-// WarningResponseInput is an input type that accepts WarningResponseArgs and WarningResponseOutput values.
-// You can construct a concrete instance of `WarningResponseInput` via:
-//
-//          WarningResponseArgs{...}
-type WarningResponseInput interface {
-	pulumi.Input
-
-	ToWarningResponseOutput() WarningResponseOutput
-	ToWarningResponseOutputWithContext(context.Context) WarningResponseOutput
-}
-
-// A non-fatal problem encountered during the execution of the build.
-type WarningResponseArgs struct {
-	// The priority for this warning.
-	Priority pulumi.StringInput `pulumi:"priority"`
-	// Explanation of the warning generated.
-	Text pulumi.StringInput `pulumi:"text"`
-}
-
-func (WarningResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WarningResponse)(nil)).Elem()
-}
-
-func (i WarningResponseArgs) ToWarningResponseOutput() WarningResponseOutput {
-	return i.ToWarningResponseOutputWithContext(context.Background())
-}
-
-func (i WarningResponseArgs) ToWarningResponseOutputWithContext(ctx context.Context) WarningResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WarningResponseOutput)
-}
-
-// WarningResponseArrayInput is an input type that accepts WarningResponseArray and WarningResponseArrayOutput values.
-// You can construct a concrete instance of `WarningResponseArrayInput` via:
-//
-//          WarningResponseArray{ WarningResponseArgs{...} }
-type WarningResponseArrayInput interface {
-	pulumi.Input
-
-	ToWarningResponseArrayOutput() WarningResponseArrayOutput
-	ToWarningResponseArrayOutputWithContext(context.Context) WarningResponseArrayOutput
-}
-
-type WarningResponseArray []WarningResponseInput
-
-func (WarningResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]WarningResponse)(nil)).Elem()
-}
-
-func (i WarningResponseArray) ToWarningResponseArrayOutput() WarningResponseArrayOutput {
-	return i.ToWarningResponseArrayOutputWithContext(context.Background())
-}
-
-func (i WarningResponseArray) ToWarningResponseArrayOutputWithContext(ctx context.Context) WarningResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WarningResponseArrayOutput)
 }
 
 // A non-fatal problem encountered during the execution of the build.
@@ -11211,78 +6655,6 @@ type WebhookConfigResponse struct {
 	State string `pulumi:"state"`
 }
 
-// WebhookConfigResponseInput is an input type that accepts WebhookConfigResponseArgs and WebhookConfigResponseOutput values.
-// You can construct a concrete instance of `WebhookConfigResponseInput` via:
-//
-//          WebhookConfigResponseArgs{...}
-type WebhookConfigResponseInput interface {
-	pulumi.Input
-
-	ToWebhookConfigResponseOutput() WebhookConfigResponseOutput
-	ToWebhookConfigResponseOutputWithContext(context.Context) WebhookConfigResponseOutput
-}
-
-// WebhookConfig describes the configuration of a trigger that creates a build whenever a webhook is sent to a trigger's webhook URL.
-type WebhookConfigResponseArgs struct {
-	// Resource name for the secret required as a URL parameter.
-	Secret pulumi.StringInput `pulumi:"secret"`
-	// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
-	State pulumi.StringInput `pulumi:"state"`
-}
-
-func (WebhookConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebhookConfigResponse)(nil)).Elem()
-}
-
-func (i WebhookConfigResponseArgs) ToWebhookConfigResponseOutput() WebhookConfigResponseOutput {
-	return i.ToWebhookConfigResponseOutputWithContext(context.Background())
-}
-
-func (i WebhookConfigResponseArgs) ToWebhookConfigResponseOutputWithContext(ctx context.Context) WebhookConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebhookConfigResponseOutput)
-}
-
-func (i WebhookConfigResponseArgs) ToWebhookConfigResponsePtrOutput() WebhookConfigResponsePtrOutput {
-	return i.ToWebhookConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i WebhookConfigResponseArgs) ToWebhookConfigResponsePtrOutputWithContext(ctx context.Context) WebhookConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebhookConfigResponseOutput).ToWebhookConfigResponsePtrOutputWithContext(ctx)
-}
-
-// WebhookConfigResponsePtrInput is an input type that accepts WebhookConfigResponseArgs, WebhookConfigResponsePtr and WebhookConfigResponsePtrOutput values.
-// You can construct a concrete instance of `WebhookConfigResponsePtrInput` via:
-//
-//          WebhookConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type WebhookConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToWebhookConfigResponsePtrOutput() WebhookConfigResponsePtrOutput
-	ToWebhookConfigResponsePtrOutputWithContext(context.Context) WebhookConfigResponsePtrOutput
-}
-
-type webhookConfigResponsePtrType WebhookConfigResponseArgs
-
-func WebhookConfigResponsePtr(v *WebhookConfigResponseArgs) WebhookConfigResponsePtrInput {
-	return (*webhookConfigResponsePtrType)(v)
-}
-
-func (*webhookConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WebhookConfigResponse)(nil)).Elem()
-}
-
-func (i *webhookConfigResponsePtrType) ToWebhookConfigResponsePtrOutput() WebhookConfigResponsePtrOutput {
-	return i.ToWebhookConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *webhookConfigResponsePtrType) ToWebhookConfigResponsePtrOutputWithContext(ctx context.Context) WebhookConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebhookConfigResponsePtrOutput)
-}
-
 // WebhookConfig describes the configuration of a trigger that creates a build whenever a webhook is sent to a trigger's webhook URL.
 type WebhookConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -11298,16 +6670,6 @@ func (o WebhookConfigResponseOutput) ToWebhookConfigResponseOutputWithContext(ct
 	return o
 }
 
-func (o WebhookConfigResponseOutput) ToWebhookConfigResponsePtrOutput() WebhookConfigResponsePtrOutput {
-	return o.ToWebhookConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o WebhookConfigResponseOutput) ToWebhookConfigResponsePtrOutputWithContext(ctx context.Context) WebhookConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebhookConfigResponse) *WebhookConfigResponse {
-		return &v
-	}).(WebhookConfigResponsePtrOutput)
-}
-
 // Resource name for the secret required as a URL parameter.
 func (o WebhookConfigResponseOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v WebhookConfigResponse) string { return v.Secret }).(pulumi.StringOutput)
@@ -11316,50 +6678,6 @@ func (o WebhookConfigResponseOutput) Secret() pulumi.StringOutput {
 // Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
 func (o WebhookConfigResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v WebhookConfigResponse) string { return v.State }).(pulumi.StringOutput)
-}
-
-type WebhookConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (WebhookConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WebhookConfigResponse)(nil)).Elem()
-}
-
-func (o WebhookConfigResponsePtrOutput) ToWebhookConfigResponsePtrOutput() WebhookConfigResponsePtrOutput {
-	return o
-}
-
-func (o WebhookConfigResponsePtrOutput) ToWebhookConfigResponsePtrOutputWithContext(ctx context.Context) WebhookConfigResponsePtrOutput {
-	return o
-}
-
-func (o WebhookConfigResponsePtrOutput) Elem() WebhookConfigResponseOutput {
-	return o.ApplyT(func(v *WebhookConfigResponse) WebhookConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret WebhookConfigResponse
-		return ret
-	}).(WebhookConfigResponseOutput)
-}
-
-// Resource name for the secret required as a URL parameter.
-func (o WebhookConfigResponsePtrOutput) Secret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WebhookConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Secret
-	}).(pulumi.StringPtrOutput)
-}
-
-// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
-func (o WebhookConfigResponsePtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WebhookConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.State
-	}).(pulumi.StringPtrOutput)
 }
 
 // Defines the configuration to be used for creating workers in the pool.
@@ -11529,78 +6847,6 @@ type WorkerConfigResponse struct {
 	MachineType string `pulumi:"machineType"`
 }
 
-// WorkerConfigResponseInput is an input type that accepts WorkerConfigResponseArgs and WorkerConfigResponseOutput values.
-// You can construct a concrete instance of `WorkerConfigResponseInput` via:
-//
-//          WorkerConfigResponseArgs{...}
-type WorkerConfigResponseInput interface {
-	pulumi.Input
-
-	ToWorkerConfigResponseOutput() WorkerConfigResponseOutput
-	ToWorkerConfigResponseOutputWithContext(context.Context) WorkerConfigResponseOutput
-}
-
-// Defines the configuration to be used for creating workers in the pool.
-type WorkerConfigResponseArgs struct {
-	// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
-	DiskSizeGb pulumi.StringInput `pulumi:"diskSizeGb"`
-	// Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will use a sensible default.
-	MachineType pulumi.StringInput `pulumi:"machineType"`
-}
-
-func (WorkerConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkerConfigResponse)(nil)).Elem()
-}
-
-func (i WorkerConfigResponseArgs) ToWorkerConfigResponseOutput() WorkerConfigResponseOutput {
-	return i.ToWorkerConfigResponseOutputWithContext(context.Background())
-}
-
-func (i WorkerConfigResponseArgs) ToWorkerConfigResponseOutputWithContext(ctx context.Context) WorkerConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerConfigResponseOutput)
-}
-
-func (i WorkerConfigResponseArgs) ToWorkerConfigResponsePtrOutput() WorkerConfigResponsePtrOutput {
-	return i.ToWorkerConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i WorkerConfigResponseArgs) ToWorkerConfigResponsePtrOutputWithContext(ctx context.Context) WorkerConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerConfigResponseOutput).ToWorkerConfigResponsePtrOutputWithContext(ctx)
-}
-
-// WorkerConfigResponsePtrInput is an input type that accepts WorkerConfigResponseArgs, WorkerConfigResponsePtr and WorkerConfigResponsePtrOutput values.
-// You can construct a concrete instance of `WorkerConfigResponsePtrInput` via:
-//
-//          WorkerConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type WorkerConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToWorkerConfigResponsePtrOutput() WorkerConfigResponsePtrOutput
-	ToWorkerConfigResponsePtrOutputWithContext(context.Context) WorkerConfigResponsePtrOutput
-}
-
-type workerConfigResponsePtrType WorkerConfigResponseArgs
-
-func WorkerConfigResponsePtr(v *WorkerConfigResponseArgs) WorkerConfigResponsePtrInput {
-	return (*workerConfigResponsePtrType)(v)
-}
-
-func (*workerConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkerConfigResponse)(nil)).Elem()
-}
-
-func (i *workerConfigResponsePtrType) ToWorkerConfigResponsePtrOutput() WorkerConfigResponsePtrOutput {
-	return i.ToWorkerConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *workerConfigResponsePtrType) ToWorkerConfigResponsePtrOutputWithContext(ctx context.Context) WorkerConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerConfigResponsePtrOutput)
-}
-
 // Defines the configuration to be used for creating workers in the pool.
 type WorkerConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -11616,16 +6862,6 @@ func (o WorkerConfigResponseOutput) ToWorkerConfigResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o WorkerConfigResponseOutput) ToWorkerConfigResponsePtrOutput() WorkerConfigResponsePtrOutput {
-	return o.ToWorkerConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o WorkerConfigResponseOutput) ToWorkerConfigResponsePtrOutputWithContext(ctx context.Context) WorkerConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerConfigResponse) *WorkerConfigResponse {
-		return &v
-	}).(WorkerConfigResponsePtrOutput)
-}
-
 // Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
 func (o WorkerConfigResponseOutput) DiskSizeGb() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkerConfigResponse) string { return v.DiskSizeGb }).(pulumi.StringOutput)
@@ -11636,199 +6872,78 @@ func (o WorkerConfigResponseOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkerConfigResponse) string { return v.MachineType }).(pulumi.StringOutput)
 }
 
-type WorkerConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (WorkerConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkerConfigResponse)(nil)).Elem()
-}
-
-func (o WorkerConfigResponsePtrOutput) ToWorkerConfigResponsePtrOutput() WorkerConfigResponsePtrOutput {
-	return o
-}
-
-func (o WorkerConfigResponsePtrOutput) ToWorkerConfigResponsePtrOutputWithContext(ctx context.Context) WorkerConfigResponsePtrOutput {
-	return o
-}
-
-func (o WorkerConfigResponsePtrOutput) Elem() WorkerConfigResponseOutput {
-	return o.ApplyT(func(v *WorkerConfigResponse) WorkerConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret WorkerConfigResponse
-		return ret
-	}).(WorkerConfigResponseOutput)
-}
-
-// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
-func (o WorkerConfigResponsePtrOutput) DiskSizeGb() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkerConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DiskSizeGb
-	}).(pulumi.StringPtrOutput)
-}
-
-// Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will use a sensible default.
-func (o WorkerConfigResponsePtrOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkerConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MachineType
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApprovalConfigInput)(nil)).Elem(), ApprovalConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApprovalConfigPtrInput)(nil)).Elem(), ApprovalConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ApprovalConfigResponseInput)(nil)).Elem(), ApprovalConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ApprovalConfigResponsePtrInput)(nil)).Elem(), ApprovalConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ApprovalResultResponseInput)(nil)).Elem(), ApprovalResultResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ApprovalResultResponsePtrInput)(nil)).Elem(), ApprovalResultResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ArtifactObjectsInput)(nil)).Elem(), ArtifactObjectsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ArtifactObjectsPtrInput)(nil)).Elem(), ArtifactObjectsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ArtifactObjectsResponseInput)(nil)).Elem(), ArtifactObjectsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ArtifactObjectsResponsePtrInput)(nil)).Elem(), ArtifactObjectsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ArtifactsInput)(nil)).Elem(), ArtifactsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ArtifactsPtrInput)(nil)).Elem(), ArtifactsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ArtifactsResponseInput)(nil)).Elem(), ArtifactsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ArtifactsResponsePtrInput)(nil)).Elem(), ArtifactsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildTypeInput)(nil)).Elem(), BuildTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildTypePtrInput)(nil)).Elem(), BuildTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BuildApprovalResponseInput)(nil)).Elem(), BuildApprovalResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BuildApprovalResponsePtrInput)(nil)).Elem(), BuildApprovalResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildOptionsInput)(nil)).Elem(), BuildOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildOptionsPtrInput)(nil)).Elem(), BuildOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BuildOptionsResponseInput)(nil)).Elem(), BuildOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BuildOptionsResponsePtrInput)(nil)).Elem(), BuildOptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BuildResponseInput)(nil)).Elem(), BuildResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BuildResponsePtrInput)(nil)).Elem(), BuildResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildStepInput)(nil)).Elem(), BuildStepArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildStepArrayInput)(nil)).Elem(), BuildStepArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BuildStepResponseInput)(nil)).Elem(), BuildStepResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BuildStepResponseArrayInput)(nil)).Elem(), BuildStepResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BuiltImageResponseInput)(nil)).Elem(), BuiltImageResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BuiltImageResponseArrayInput)(nil)).Elem(), BuiltImageResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FailureInfoResponseInput)(nil)).Elem(), FailureInfoResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FailureInfoResponsePtrInput)(nil)).Elem(), FailureInfoResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitFileSourceInput)(nil)).Elem(), GitFileSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitFileSourcePtrInput)(nil)).Elem(), GitFileSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitFileSourceResponseInput)(nil)).Elem(), GitFileSourceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitFileSourceResponsePtrInput)(nil)).Elem(), GitFileSourceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitHubEnterpriseSecretsInput)(nil)).Elem(), GitHubEnterpriseSecretsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitHubEnterpriseSecretsPtrInput)(nil)).Elem(), GitHubEnterpriseSecretsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitHubEnterpriseSecretsResponseInput)(nil)).Elem(), GitHubEnterpriseSecretsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitHubEnterpriseSecretsResponsePtrInput)(nil)).Elem(), GitHubEnterpriseSecretsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitHubEventsConfigInput)(nil)).Elem(), GitHubEventsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitHubEventsConfigPtrInput)(nil)).Elem(), GitHubEventsConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitHubEventsConfigResponseInput)(nil)).Elem(), GitHubEventsConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitHubEventsConfigResponsePtrInput)(nil)).Elem(), GitHubEventsConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitRepoSourceInput)(nil)).Elem(), GitRepoSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitRepoSourcePtrInput)(nil)).Elem(), GitRepoSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitRepoSourceResponseInput)(nil)).Elem(), GitRepoSourceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitRepoSourceResponsePtrInput)(nil)).Elem(), GitRepoSourceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InlineSecretInput)(nil)).Elem(), InlineSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InlineSecretArrayInput)(nil)).Elem(), InlineSecretArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InlineSecretResponseInput)(nil)).Elem(), InlineSecretResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InlineSecretResponseArrayInput)(nil)).Elem(), InlineSecretResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigInput)(nil)).Elem(), NetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigPtrInput)(nil)).Elem(), NetworkConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigResponseInput)(nil)).Elem(), NetworkConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigResponsePtrInput)(nil)).Elem(), NetworkConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PoolOptionInput)(nil)).Elem(), PoolOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PoolOptionPtrInput)(nil)).Elem(), PoolOptionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PoolOptionResponseInput)(nil)).Elem(), PoolOptionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PoolOptionResponsePtrInput)(nil)).Elem(), PoolOptionResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivatePoolV1ConfigInput)(nil)).Elem(), PrivatePoolV1ConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivatePoolV1ConfigPtrInput)(nil)).Elem(), PrivatePoolV1ConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PrivatePoolV1ConfigResponseInput)(nil)).Elem(), PrivatePoolV1ConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PrivatePoolV1ConfigResponsePtrInput)(nil)).Elem(), PrivatePoolV1ConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PubsubConfigInput)(nil)).Elem(), PubsubConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PubsubConfigPtrInput)(nil)).Elem(), PubsubConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PubsubConfigResponseInput)(nil)).Elem(), PubsubConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PubsubConfigResponsePtrInput)(nil)).Elem(), PubsubConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PullRequestFilterInput)(nil)).Elem(), PullRequestFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PullRequestFilterPtrInput)(nil)).Elem(), PullRequestFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PullRequestFilterResponseInput)(nil)).Elem(), PullRequestFilterResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PullRequestFilterResponsePtrInput)(nil)).Elem(), PullRequestFilterResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PushFilterInput)(nil)).Elem(), PushFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PushFilterPtrInput)(nil)).Elem(), PushFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PushFilterResponseInput)(nil)).Elem(), PushFilterResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PushFilterResponsePtrInput)(nil)).Elem(), PushFilterResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoSourceInput)(nil)).Elem(), RepoSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoSourcePtrInput)(nil)).Elem(), RepoSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RepoSourceResponseInput)(nil)).Elem(), RepoSourceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RepoSourceResponsePtrInput)(nil)).Elem(), RepoSourceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ResultsResponseInput)(nil)).Elem(), ResultsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ResultsResponsePtrInput)(nil)).Elem(), ResultsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretInput)(nil)).Elem(), SecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretArrayInput)(nil)).Elem(), SecretArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretManagerSecretInput)(nil)).Elem(), SecretManagerSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretManagerSecretArrayInput)(nil)).Elem(), SecretManagerSecretArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecretManagerSecretResponseInput)(nil)).Elem(), SecretManagerSecretResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecretManagerSecretResponseArrayInput)(nil)).Elem(), SecretManagerSecretResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecretResponseInput)(nil)).Elem(), SecretResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecretResponseArrayInput)(nil)).Elem(), SecretResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretsInput)(nil)).Elem(), SecretsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretsPtrInput)(nil)).Elem(), SecretsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecretsResponseInput)(nil)).Elem(), SecretsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecretsResponsePtrInput)(nil)).Elem(), SecretsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceInput)(nil)).Elem(), SourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourcePtrInput)(nil)).Elem(), SourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SourceProvenanceResponseInput)(nil)).Elem(), SourceProvenanceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SourceProvenanceResponsePtrInput)(nil)).Elem(), SourceProvenanceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SourceResponseInput)(nil)).Elem(), SourceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SourceResponsePtrInput)(nil)).Elem(), SourceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageSourceInput)(nil)).Elem(), StorageSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageSourcePtrInput)(nil)).Elem(), StorageSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageSourceManifestInput)(nil)).Elem(), StorageSourceManifestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageSourceManifestPtrInput)(nil)).Elem(), StorageSourceManifestArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StorageSourceManifestResponseInput)(nil)).Elem(), StorageSourceManifestResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StorageSourceManifestResponsePtrInput)(nil)).Elem(), StorageSourceManifestResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StorageSourceResponseInput)(nil)).Elem(), StorageSourceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StorageSourceResponsePtrInput)(nil)).Elem(), StorageSourceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TimeSpanResponseInput)(nil)).Elem(), TimeSpanResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TimeSpanResponsePtrInput)(nil)).Elem(), TimeSpanResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeInput)(nil)).Elem(), VolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeArrayInput)(nil)).Elem(), VolumeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VolumeResponseInput)(nil)).Elem(), VolumeResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VolumeResponseArrayInput)(nil)).Elem(), VolumeResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WarningResponseInput)(nil)).Elem(), WarningResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WarningResponseArrayInput)(nil)).Elem(), WarningResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookConfigInput)(nil)).Elem(), WebhookConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookConfigPtrInput)(nil)).Elem(), WebhookConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WebhookConfigResponseInput)(nil)).Elem(), WebhookConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WebhookConfigResponsePtrInput)(nil)).Elem(), WebhookConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerConfigInput)(nil)).Elem(), WorkerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerConfigPtrInput)(nil)).Elem(), WorkerConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkerConfigResponseInput)(nil)).Elem(), WorkerConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkerConfigResponsePtrInput)(nil)).Elem(), WorkerConfigResponseArgs{})
 	pulumi.RegisterOutputType(ApprovalConfigOutput{})
 	pulumi.RegisterOutputType(ApprovalConfigPtrOutput{})
 	pulumi.RegisterOutputType(ApprovalConfigResponseOutput{})
-	pulumi.RegisterOutputType(ApprovalConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(ApprovalResultResponseOutput{})
-	pulumi.RegisterOutputType(ApprovalResultResponsePtrOutput{})
 	pulumi.RegisterOutputType(ArtifactObjectsOutput{})
 	pulumi.RegisterOutputType(ArtifactObjectsPtrOutput{})
 	pulumi.RegisterOutputType(ArtifactObjectsResponseOutput{})
-	pulumi.RegisterOutputType(ArtifactObjectsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ArtifactsOutput{})
 	pulumi.RegisterOutputType(ArtifactsPtrOutput{})
 	pulumi.RegisterOutputType(ArtifactsResponseOutput{})
-	pulumi.RegisterOutputType(ArtifactsResponsePtrOutput{})
 	pulumi.RegisterOutputType(BuildTypeOutput{})
 	pulumi.RegisterOutputType(BuildTypePtrOutput{})
 	pulumi.RegisterOutputType(BuildApprovalResponseOutput{})
-	pulumi.RegisterOutputType(BuildApprovalResponsePtrOutput{})
 	pulumi.RegisterOutputType(BuildOptionsOutput{})
 	pulumi.RegisterOutputType(BuildOptionsPtrOutput{})
 	pulumi.RegisterOutputType(BuildOptionsResponseOutput{})
-	pulumi.RegisterOutputType(BuildOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(BuildResponseOutput{})
-	pulumi.RegisterOutputType(BuildResponsePtrOutput{})
 	pulumi.RegisterOutputType(BuildStepOutput{})
 	pulumi.RegisterOutputType(BuildStepArrayOutput{})
 	pulumi.RegisterOutputType(BuildStepResponseOutput{})
@@ -11836,23 +6951,18 @@ func init() {
 	pulumi.RegisterOutputType(BuiltImageResponseOutput{})
 	pulumi.RegisterOutputType(BuiltImageResponseArrayOutput{})
 	pulumi.RegisterOutputType(FailureInfoResponseOutput{})
-	pulumi.RegisterOutputType(FailureInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(GitFileSourceOutput{})
 	pulumi.RegisterOutputType(GitFileSourcePtrOutput{})
 	pulumi.RegisterOutputType(GitFileSourceResponseOutput{})
-	pulumi.RegisterOutputType(GitFileSourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(GitHubEnterpriseSecretsOutput{})
 	pulumi.RegisterOutputType(GitHubEnterpriseSecretsPtrOutput{})
 	pulumi.RegisterOutputType(GitHubEnterpriseSecretsResponseOutput{})
-	pulumi.RegisterOutputType(GitHubEnterpriseSecretsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GitHubEventsConfigOutput{})
 	pulumi.RegisterOutputType(GitHubEventsConfigPtrOutput{})
 	pulumi.RegisterOutputType(GitHubEventsConfigResponseOutput{})
-	pulumi.RegisterOutputType(GitHubEventsConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GitRepoSourceOutput{})
 	pulumi.RegisterOutputType(GitRepoSourcePtrOutput{})
 	pulumi.RegisterOutputType(GitRepoSourceResponseOutput{})
-	pulumi.RegisterOutputType(GitRepoSourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(InlineSecretOutput{})
 	pulumi.RegisterOutputType(InlineSecretArrayOutput{})
 	pulumi.RegisterOutputType(InlineSecretResponseOutput{})
@@ -11860,33 +6970,25 @@ func init() {
 	pulumi.RegisterOutputType(NetworkConfigOutput{})
 	pulumi.RegisterOutputType(NetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(NetworkConfigResponseOutput{})
-	pulumi.RegisterOutputType(NetworkConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(PoolOptionOutput{})
 	pulumi.RegisterOutputType(PoolOptionPtrOutput{})
 	pulumi.RegisterOutputType(PoolOptionResponseOutput{})
-	pulumi.RegisterOutputType(PoolOptionResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivatePoolV1ConfigOutput{})
 	pulumi.RegisterOutputType(PrivatePoolV1ConfigPtrOutput{})
 	pulumi.RegisterOutputType(PrivatePoolV1ConfigResponseOutput{})
-	pulumi.RegisterOutputType(PrivatePoolV1ConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(PubsubConfigOutput{})
 	pulumi.RegisterOutputType(PubsubConfigPtrOutput{})
 	pulumi.RegisterOutputType(PubsubConfigResponseOutput{})
-	pulumi.RegisterOutputType(PubsubConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(PullRequestFilterOutput{})
 	pulumi.RegisterOutputType(PullRequestFilterPtrOutput{})
 	pulumi.RegisterOutputType(PullRequestFilterResponseOutput{})
-	pulumi.RegisterOutputType(PullRequestFilterResponsePtrOutput{})
 	pulumi.RegisterOutputType(PushFilterOutput{})
 	pulumi.RegisterOutputType(PushFilterPtrOutput{})
 	pulumi.RegisterOutputType(PushFilterResponseOutput{})
-	pulumi.RegisterOutputType(PushFilterResponsePtrOutput{})
 	pulumi.RegisterOutputType(RepoSourceOutput{})
 	pulumi.RegisterOutputType(RepoSourcePtrOutput{})
 	pulumi.RegisterOutputType(RepoSourceResponseOutput{})
-	pulumi.RegisterOutputType(RepoSourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResultsResponseOutput{})
-	pulumi.RegisterOutputType(ResultsResponsePtrOutput{})
 	pulumi.RegisterOutputType(SecretOutput{})
 	pulumi.RegisterOutputType(SecretArrayOutput{})
 	pulumi.RegisterOutputType(SecretManagerSecretOutput{})
@@ -11898,23 +7000,17 @@ func init() {
 	pulumi.RegisterOutputType(SecretsOutput{})
 	pulumi.RegisterOutputType(SecretsPtrOutput{})
 	pulumi.RegisterOutputType(SecretsResponseOutput{})
-	pulumi.RegisterOutputType(SecretsResponsePtrOutput{})
 	pulumi.RegisterOutputType(SourceOutput{})
 	pulumi.RegisterOutputType(SourcePtrOutput{})
 	pulumi.RegisterOutputType(SourceProvenanceResponseOutput{})
-	pulumi.RegisterOutputType(SourceProvenanceResponsePtrOutput{})
 	pulumi.RegisterOutputType(SourceResponseOutput{})
-	pulumi.RegisterOutputType(SourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(StorageSourceOutput{})
 	pulumi.RegisterOutputType(StorageSourcePtrOutput{})
 	pulumi.RegisterOutputType(StorageSourceManifestOutput{})
 	pulumi.RegisterOutputType(StorageSourceManifestPtrOutput{})
 	pulumi.RegisterOutputType(StorageSourceManifestResponseOutput{})
-	pulumi.RegisterOutputType(StorageSourceManifestResponsePtrOutput{})
 	pulumi.RegisterOutputType(StorageSourceResponseOutput{})
-	pulumi.RegisterOutputType(StorageSourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(TimeSpanResponseOutput{})
-	pulumi.RegisterOutputType(TimeSpanResponsePtrOutput{})
 	pulumi.RegisterOutputType(VolumeOutput{})
 	pulumi.RegisterOutputType(VolumeArrayOutput{})
 	pulumi.RegisterOutputType(VolumeResponseOutput{})
@@ -11924,9 +7020,7 @@ func init() {
 	pulumi.RegisterOutputType(WebhookConfigOutput{})
 	pulumi.RegisterOutputType(WebhookConfigPtrOutput{})
 	pulumi.RegisterOutputType(WebhookConfigResponseOutput{})
-	pulumi.RegisterOutputType(WebhookConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(WorkerConfigOutput{})
 	pulumi.RegisterOutputType(WorkerConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkerConfigResponseOutput{})
-	pulumi.RegisterOutputType(WorkerConfigResponsePtrOutput{})
 }

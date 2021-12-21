@@ -136,7 +136,7 @@ type IntentInput interface {
 }
 
 func (*Intent) ElementType() reflect.Type {
-	return reflect.TypeOf((*Intent)(nil))
+	return reflect.TypeOf((**Intent)(nil)).Elem()
 }
 
 func (i *Intent) ToIntentOutput() IntentOutput {
@@ -150,7 +150,7 @@ func (i *Intent) ToIntentOutputWithContext(ctx context.Context) IntentOutput {
 type IntentOutput struct{ *pulumi.OutputState }
 
 func (IntentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Intent)(nil))
+	return reflect.TypeOf((**Intent)(nil)).Elem()
 }
 
 func (o IntentOutput) ToIntentOutput() IntentOutput {

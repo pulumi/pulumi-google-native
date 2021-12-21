@@ -138,64 +138,6 @@ type BindingResponse struct {
 	Role string `pulumi:"role"`
 }
 
-// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
-// You can construct a concrete instance of `BindingResponseInput` via:
-//
-//          BindingResponseArgs{...}
-type BindingResponseInput interface {
-	pulumi.Input
-
-	ToBindingResponseOutput() BindingResponseOutput
-	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
-}
-
-// Associates `members`, or principals, with a `role`.
-type BindingResponseArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
-	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-	Role pulumi.StringInput `pulumi:"role"`
-}
-
-func (BindingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
-	return i.ToBindingResponseOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
-}
-
-// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
-// You can construct a concrete instance of `BindingResponseArrayInput` via:
-//
-//          BindingResponseArray{ BindingResponseArgs{...} }
-type BindingResponseArrayInput interface {
-	pulumi.Input
-
-	ToBindingResponseArrayOutput() BindingResponseArrayOutput
-	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
-}
-
-type BindingResponseArray []BindingResponseInput
-
-func (BindingResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
-	return i.ToBindingResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
-}
-
 // Associates `members`, or principals, with a `role`.
 type BindingResponseOutput struct{ *pulumi.OutputState }
 
@@ -455,41 +397,6 @@ type ExprResponse struct {
 	Title string `pulumi:"title"`
 }
 
-// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
-// You can construct a concrete instance of `ExprResponseInput` via:
-//
-//          ExprResponseArgs{...}
-type ExprResponseInput interface {
-	pulumi.Input
-
-	ToExprResponseOutput() ExprResponseOutput
-	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type ExprResponseArgs struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-	Location pulumi.StringInput `pulumi:"location"`
-	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (ExprResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
-}
-
-func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
-	return i.ToExprResponseOutputWithContext(context.Background())
-}
-
-func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprResponseOutput struct{ *pulumi.OutputState }
 
@@ -717,80 +624,6 @@ type GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse struct {
 	HasCredential bool `pulumi:"hasCredential"`
 }
 
-// GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseInput is an input type that accepts GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseArgs and GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseInput` via:
-//
-//          GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseArgs{...}
-type GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutput() GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutput
-	ToGoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutputWithContext(context.Context) GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutput
-}
-
-// Specification for the BigQuery connection.
-type GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseArgs struct {
-	// Specification for the BigQuery connection to a Cloud SQL instance.
-	CloudSql GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseInput `pulumi:"cloudSql"`
-	// The type of the BigQuery connection.
-	ConnectionType pulumi.StringInput `pulumi:"connectionType"`
-	// True if there are credentials attached to the BigQuery connection; false otherwise.
-	HasCredential pulumi.BoolInput `pulumi:"hasCredential"`
-}
-
-func (GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseArgs) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutput() GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutput {
-	return i.ToGoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseArgs) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutput)
-}
-
-func (i GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseArgs) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutput() GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseArgs) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutput).ToGoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrInput is an input type that accepts GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseArgs, GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtr and GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrInput` via:
-//
-//          GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutput() GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutput
-	ToGoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutput
-}
-
-type googleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrType GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseArgs
-
-func GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtr(v *GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseArgs) GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrInput {
-	return (*googleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrType)(v)
-}
-
-func (*googleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrType) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutput() GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrType) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutput)
-}
-
 // Specification for the BigQuery connection.
 type GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutput struct{ *pulumi.OutputState }
 
@@ -804,16 +637,6 @@ func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutput) ToGoogleCl
 
 func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutput) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutput) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutput() GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutput {
-	return o.ToGoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutput) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse) *GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse {
-		return &v
-	}).(GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutput)
 }
 
 // Specification for the BigQuery connection to a Cloud SQL instance.
@@ -831,60 +654,6 @@ func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutput) Connection
 // True if there are credentials attached to the BigQuery connection; false otherwise.
 func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutput) HasCredential() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse) bool { return v.HasCredential }).(pulumi.BoolOutput)
-}
-
-type GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutput) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutput() GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutput) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutput) Elem() GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse) GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse
-		return ret
-	}).(GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutput)
-}
-
-// Specification for the BigQuery connection to a Cloud SQL instance.
-func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutput) CloudSql() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse) *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.CloudSql
-	}).(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutput)
-}
-
-// The type of the BigQuery connection.
-func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutput) ConnectionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ConnectionType
-	}).(pulumi.StringPtrOutput)
-}
-
-// True if there are credentials attached to the BigQuery connection; false otherwise.
-func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutput) HasCredential() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.HasCredential
-	}).(pulumi.BoolPtrOutput)
 }
 
 // Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see [Introduction to partitioned tables] (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
@@ -1020,82 +789,6 @@ type GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse struct {
 	TablePrefix string `pulumi:"tablePrefix"`
 }
 
-// GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseInput is an input type that accepts GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseArgs and GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseInput` via:
-//
-//          GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseArgs{...}
-type GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput() GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput
-	ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutputWithContext(context.Context) GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput
-}
-
-// Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see [Introduction to partitioned tables] (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
-type GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseArgs struct {
-	// The Data Catalog resource name of the dataset entry the current table belongs to. For example: `projects/{PROJECT_ID}/locations/{LOCATION}/entrygroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}`.
-	Dataset pulumi.StringInput `pulumi:"dataset"`
-	// BigQuery resource name of the latest shard.
-	LatestShardResource pulumi.StringInput `pulumi:"latestShardResource"`
-	// Total number of shards.
-	ShardCount pulumi.StringInput `pulumi:"shardCount"`
-	// The table name prefix of the shards. The name of any given shard is `[table_prefix]YYYYMMDD`. For example, for the `MyTable20180101` shard, the `table_prefix` is `MyTable`.
-	TablePrefix pulumi.StringInput `pulumi:"tablePrefix"`
-}
-
-func (GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseArgs) ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput() GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput {
-	return i.ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseArgs) ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput)
-}
-
-func (i GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseArgs) ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutput() GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseArgs) ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput).ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrInput is an input type that accepts GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseArgs, GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtr and GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrInput` via:
-//
-//          GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutput() GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutput
-	ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutput
-}
-
-type googleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrType GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseArgs
-
-func GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtr(v *GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseArgs) GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrInput {
-	return (*googleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrType)(v)
-}
-
-func (*googleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrType) ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutput() GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrType) ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutput)
-}
-
 // Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see [Introduction to partitioned tables] (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
 type GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput struct{ *pulumi.OutputState }
 
@@ -1109,16 +802,6 @@ func (o GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput) ToGoogleC
 
 func (o GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput) ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput) ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutput() GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutput {
-	return o.ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput) ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse) *GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse {
-		return &v
-	}).(GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutput)
 }
 
 // The Data Catalog resource name of the dataset entry the current table belongs to. For example: `projects/{PROJECT_ID}/locations/{LOCATION}/entrygroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}`.
@@ -1139,70 +822,6 @@ func (o GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput) ShardCoun
 // The table name prefix of the shards. The name of any given shard is `[table_prefix]YYYYMMDD`. For example, for the `MyTable20180101` shard, the `table_prefix` is `MyTable`.
 func (o GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput) TablePrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse) string { return v.TablePrefix }).(pulumi.StringOutput)
-}
-
-type GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutput) ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutput() GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutput) ToGoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutput) Elem() GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse) GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse
-		return ret
-	}).(GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput)
-}
-
-// The Data Catalog resource name of the dataset entry the current table belongs to. For example: `projects/{PROJECT_ID}/locations/{LOCATION}/entrygroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}`.
-func (o GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutput) Dataset() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Dataset
-	}).(pulumi.StringPtrOutput)
-}
-
-// BigQuery resource name of the latest shard.
-func (o GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutput) LatestShardResource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LatestShardResource
-	}).(pulumi.StringPtrOutput)
-}
-
-// Total number of shards.
-func (o GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutput) ShardCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ShardCount
-	}).(pulumi.StringPtrOutput)
-}
-
-// The table name prefix of the shards. The name of any given shard is `[table_prefix]YYYYMMDD`. For example, for the `MyTable20180101` shard, the `table_prefix` is `MyTable`.
-func (o GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutput) TablePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TablePrefix
-	}).(pulumi.StringPtrOutput)
 }
 
 // Fields specific for BigQuery routines.
@@ -1351,76 +970,6 @@ type GoogleCloudDatacatalogV1BigQueryRoutineSpecResponse struct {
 	ImportedLibraries []string `pulumi:"importedLibraries"`
 }
 
-// GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseInput is an input type that accepts GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseArgs and GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseInput` via:
-//
-//          GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseArgs{...}
-type GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1BigQueryRoutineSpecResponseOutput() GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseOutput
-	ToGoogleCloudDatacatalogV1BigQueryRoutineSpecResponseOutputWithContext(context.Context) GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseOutput
-}
-
-// Fields specific for BigQuery routines.
-type GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseArgs struct {
-	// Paths of the imported libraries.
-	ImportedLibraries pulumi.StringArrayInput `pulumi:"importedLibraries"`
-}
-
-func (GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryRoutineSpecResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseArgs) ToGoogleCloudDatacatalogV1BigQueryRoutineSpecResponseOutput() GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseOutput {
-	return i.ToGoogleCloudDatacatalogV1BigQueryRoutineSpecResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseArgs) ToGoogleCloudDatacatalogV1BigQueryRoutineSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseOutput)
-}
-
-func (i GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseArgs) ToGoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutput() GoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseArgs) ToGoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseOutput).ToGoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrInput is an input type that accepts GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseArgs, GoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtr and GoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrInput` via:
-//
-//          GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutput() GoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutput
-	ToGoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutput
-}
-
-type googleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrType GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseArgs
-
-func GoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtr(v *GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseArgs) GoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrInput {
-	return (*googleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrType)(v)
-}
-
-func (*googleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1BigQueryRoutineSpecResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrType) ToGoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutput() GoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrType) ToGoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutput)
-}
-
 // Fields specific for BigQuery routines.
 type GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseOutput struct{ *pulumi.OutputState }
 
@@ -1436,53 +985,9 @@ func (o GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseOutput) ToGoogleCloud
 	return o
 }
 
-func (o GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseOutput) ToGoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutput() GoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutput {
-	return o.ToGoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseOutput) ToGoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1BigQueryRoutineSpecResponse) *GoogleCloudDatacatalogV1BigQueryRoutineSpecResponse {
-		return &v
-	}).(GoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutput)
-}
-
 // Paths of the imported libraries.
 func (o GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseOutput) ImportedLibraries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1BigQueryRoutineSpecResponse) []string { return v.ImportedLibraries }).(pulumi.StringArrayOutput)
-}
-
-type GoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1BigQueryRoutineSpecResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutput) ToGoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutput() GoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutput) ToGoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutput) Elem() GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BigQueryRoutineSpecResponse) GoogleCloudDatacatalogV1BigQueryRoutineSpecResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatacatalogV1BigQueryRoutineSpecResponse
-		return ret
-	}).(GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseOutput)
-}
-
-// Paths of the imported libraries.
-func (o GoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutput) ImportedLibraries() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BigQueryRoutineSpecResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ImportedLibraries
-	}).(pulumi.StringArrayOutput)
 }
 
 // Describes a BigQuery table.
@@ -1656,80 +1161,6 @@ type GoogleCloudDatacatalogV1BigQueryTableSpecResponse struct {
 	ViewSpec GoogleCloudDatacatalogV1ViewSpecResponse `pulumi:"viewSpec"`
 }
 
-// GoogleCloudDatacatalogV1BigQueryTableSpecResponseInput is an input type that accepts GoogleCloudDatacatalogV1BigQueryTableSpecResponseArgs and GoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1BigQueryTableSpecResponseInput` via:
-//
-//          GoogleCloudDatacatalogV1BigQueryTableSpecResponseArgs{...}
-type GoogleCloudDatacatalogV1BigQueryTableSpecResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput() GoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput
-	ToGoogleCloudDatacatalogV1BigQueryTableSpecResponseOutputWithContext(context.Context) GoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput
-}
-
-// Describes a BigQuery table.
-type GoogleCloudDatacatalogV1BigQueryTableSpecResponseArgs struct {
-	// The table source type.
-	TableSourceType pulumi.StringInput `pulumi:"tableSourceType"`
-	// Specification of a BigQuery table. Populated only if the `table_source_type` is `BIGQUERY_TABLE`.
-	TableSpec GoogleCloudDatacatalogV1TableSpecResponseInput `pulumi:"tableSpec"`
-	// Table view specification. Populated only if the `table_source_type` is `BIGQUERY_VIEW`.
-	ViewSpec GoogleCloudDatacatalogV1ViewSpecResponseInput `pulumi:"viewSpec"`
-}
-
-func (GoogleCloudDatacatalogV1BigQueryTableSpecResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryTableSpecResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1BigQueryTableSpecResponseArgs) ToGoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput() GoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput {
-	return i.ToGoogleCloudDatacatalogV1BigQueryTableSpecResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1BigQueryTableSpecResponseArgs) ToGoogleCloudDatacatalogV1BigQueryTableSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput)
-}
-
-func (i GoogleCloudDatacatalogV1BigQueryTableSpecResponseArgs) ToGoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutput() GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1BigQueryTableSpecResponseArgs) ToGoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput).ToGoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrInput is an input type that accepts GoogleCloudDatacatalogV1BigQueryTableSpecResponseArgs, GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtr and GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrInput` via:
-//
-//          GoogleCloudDatacatalogV1BigQueryTableSpecResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutput() GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutput
-	ToGoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutput
-}
-
-type googleCloudDatacatalogV1BigQueryTableSpecResponsePtrType GoogleCloudDatacatalogV1BigQueryTableSpecResponseArgs
-
-func GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtr(v *GoogleCloudDatacatalogV1BigQueryTableSpecResponseArgs) GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrInput {
-	return (*googleCloudDatacatalogV1BigQueryTableSpecResponsePtrType)(v)
-}
-
-func (*googleCloudDatacatalogV1BigQueryTableSpecResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1BigQueryTableSpecResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatacatalogV1BigQueryTableSpecResponsePtrType) ToGoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutput() GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatacatalogV1BigQueryTableSpecResponsePtrType) ToGoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutput)
-}
-
 // Describes a BigQuery table.
 type GoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput struct{ *pulumi.OutputState }
 
@@ -1743,16 +1174,6 @@ func (o GoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput) ToGoogleCloudDa
 
 func (o GoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput) ToGoogleCloudDatacatalogV1BigQueryTableSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput) ToGoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutput() GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutput {
-	return o.ToGoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput) ToGoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1BigQueryTableSpecResponse) *GoogleCloudDatacatalogV1BigQueryTableSpecResponse {
-		return &v
-	}).(GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutput)
 }
 
 // The table source type.
@@ -1772,60 +1193,6 @@ func (o GoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput) ViewSpec() Goog
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1BigQueryTableSpecResponse) GoogleCloudDatacatalogV1ViewSpecResponse {
 		return v.ViewSpec
 	}).(GoogleCloudDatacatalogV1ViewSpecResponseOutput)
-}
-
-type GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1BigQueryTableSpecResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutput) ToGoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutput() GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutput) ToGoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutput) Elem() GoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BigQueryTableSpecResponse) GoogleCloudDatacatalogV1BigQueryTableSpecResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatacatalogV1BigQueryTableSpecResponse
-		return ret
-	}).(GoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput)
-}
-
-// The table source type.
-func (o GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutput) TableSourceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BigQueryTableSpecResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TableSourceType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specification of a BigQuery table. Populated only if the `table_source_type` is `BIGQUERY_TABLE`.
-func (o GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutput) TableSpec() GoogleCloudDatacatalogV1TableSpecResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BigQueryTableSpecResponse) *GoogleCloudDatacatalogV1TableSpecResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.TableSpec
-	}).(GoogleCloudDatacatalogV1TableSpecResponsePtrOutput)
-}
-
-// Table view specification. Populated only if the `table_source_type` is `BIGQUERY_VIEW`.
-func (o GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutput) ViewSpec() GoogleCloudDatacatalogV1ViewSpecResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BigQueryTableSpecResponse) *GoogleCloudDatacatalogV1ViewSpecResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ViewSpec
-	}).(GoogleCloudDatacatalogV1ViewSpecResponsePtrOutput)
 }
 
 // Specification for the BigQuery connection to a Cloud SQL instance.
@@ -2018,80 +1385,6 @@ type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseInput is an input type that accepts GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseArgs and GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseInput` via:
-//
-//          GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseArgs{...}
-type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutput() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutput
-	ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutputWithContext(context.Context) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutput
-}
-
-// Specification for the BigQuery connection to a Cloud SQL instance.
-type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseArgs struct {
-	// Database name.
-	Database pulumi.StringInput `pulumi:"database"`
-	// Cloud SQL instance ID in the format of `project:location:instance`.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// Type of the Cloud SQL database.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseArgs) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutput() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutput {
-	return i.ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseArgs) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutput)
-}
-
-func (i GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseArgs) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutput() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseArgs) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutput).ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrInput is an input type that accepts GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseArgs, GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtr and GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrInput` via:
-//
-//          GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutput() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutput
-	ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutput
-}
-
-type googleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrType GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseArgs
-
-func GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtr(v *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseArgs) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrInput {
-	return (*googleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrType)(v)
-}
-
-func (*googleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrType) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutput() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrType) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutput)
-}
-
 // Specification for the BigQuery connection to a Cloud SQL instance.
 type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutput struct{ *pulumi.OutputState }
 
@@ -2107,16 +1400,6 @@ func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutput) To
 	return o
 }
 
-func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutput) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutput() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutput {
-	return o.ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutput) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse) *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse {
-		return &v
-	}).(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutput)
-}
-
 // Database name.
 func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse) string { return v.Database }).(pulumi.StringOutput)
@@ -2130,60 +1413,6 @@ func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutput) In
 // Type of the Cloud SQL database.
 func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutput) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutput() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutput) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutput) Elem() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse
-		return ret
-	}).(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutput)
-}
-
-// Database name.
-func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutput) Database() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Database
-	}).(pulumi.StringPtrOutput)
-}
-
-// Cloud SQL instance ID in the format of `project:location:instance`.
-func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutput) InstanceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.InstanceId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type of the Cloud SQL database.
-func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
 }
 
 // A column within a schema. Columns can be nested inside other columns.
@@ -2336,68 +1565,6 @@ type GoogleCloudDatacatalogV1ColumnSchemaResponse struct {
 	Subcolumns []GoogleCloudDatacatalogV1ColumnSchemaResponse `pulumi:"subcolumns"`
 	// Type of the column. Must be a UTF-8 string with the maximum size of 128 bytes.
 	Type string `pulumi:"type"`
-}
-
-// GoogleCloudDatacatalogV1ColumnSchemaResponseInput is an input type that accepts GoogleCloudDatacatalogV1ColumnSchemaResponseArgs and GoogleCloudDatacatalogV1ColumnSchemaResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1ColumnSchemaResponseInput` via:
-//
-//          GoogleCloudDatacatalogV1ColumnSchemaResponseArgs{...}
-type GoogleCloudDatacatalogV1ColumnSchemaResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1ColumnSchemaResponseOutput() GoogleCloudDatacatalogV1ColumnSchemaResponseOutput
-	ToGoogleCloudDatacatalogV1ColumnSchemaResponseOutputWithContext(context.Context) GoogleCloudDatacatalogV1ColumnSchemaResponseOutput
-}
-
-// A column within a schema. Columns can be nested inside other columns.
-type GoogleCloudDatacatalogV1ColumnSchemaResponseArgs struct {
-	// Name of the column. Must be a UTF-8 string without dots (.). The maximum size is 64 bytes.
-	Column pulumi.StringInput `pulumi:"column"`
-	// Optional. Description of the column. Default value is an empty string. The description must be a UTF-8 string with the maximum size of 2000 bytes.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Optional. A column's mode indicates whether values in this column are required, nullable, or repeated. Only `NULLABLE`, `REQUIRED`, and `REPEATED` values are supported. Default mode is `NULLABLE`.
-	Mode pulumi.StringInput `pulumi:"mode"`
-	// Optional. Schema of sub-columns. A column can have zero or more sub-columns.
-	Subcolumns GoogleCloudDatacatalogV1ColumnSchemaResponseArrayInput `pulumi:"subcolumns"`
-	// Type of the column. Must be a UTF-8 string with the maximum size of 128 bytes.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GoogleCloudDatacatalogV1ColumnSchemaResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1ColumnSchemaResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1ColumnSchemaResponseArgs) ToGoogleCloudDatacatalogV1ColumnSchemaResponseOutput() GoogleCloudDatacatalogV1ColumnSchemaResponseOutput {
-	return i.ToGoogleCloudDatacatalogV1ColumnSchemaResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1ColumnSchemaResponseArgs) ToGoogleCloudDatacatalogV1ColumnSchemaResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ColumnSchemaResponseOutput)
-}
-
-// GoogleCloudDatacatalogV1ColumnSchemaResponseArrayInput is an input type that accepts GoogleCloudDatacatalogV1ColumnSchemaResponseArray and GoogleCloudDatacatalogV1ColumnSchemaResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1ColumnSchemaResponseArrayInput` via:
-//
-//          GoogleCloudDatacatalogV1ColumnSchemaResponseArray{ GoogleCloudDatacatalogV1ColumnSchemaResponseArgs{...} }
-type GoogleCloudDatacatalogV1ColumnSchemaResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1ColumnSchemaResponseArrayOutput() GoogleCloudDatacatalogV1ColumnSchemaResponseArrayOutput
-	ToGoogleCloudDatacatalogV1ColumnSchemaResponseArrayOutputWithContext(context.Context) GoogleCloudDatacatalogV1ColumnSchemaResponseArrayOutput
-}
-
-type GoogleCloudDatacatalogV1ColumnSchemaResponseArray []GoogleCloudDatacatalogV1ColumnSchemaResponseInput
-
-func (GoogleCloudDatacatalogV1ColumnSchemaResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDatacatalogV1ColumnSchemaResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1ColumnSchemaResponseArray) ToGoogleCloudDatacatalogV1ColumnSchemaResponseArrayOutput() GoogleCloudDatacatalogV1ColumnSchemaResponseArrayOutput {
-	return i.ToGoogleCloudDatacatalogV1ColumnSchemaResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1ColumnSchemaResponseArray) ToGoogleCloudDatacatalogV1ColumnSchemaResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ColumnSchemaResponseArrayOutput)
 }
 
 // A column within a schema. Columns can be nested inside other columns.
@@ -2610,76 +1777,6 @@ type GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse struct {
 	BigqueryConnectionSpec GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse `pulumi:"bigqueryConnectionSpec"`
 }
 
-// GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseInput is an input type that accepts GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseArgs and GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseInput` via:
-//
-//          GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseArgs{...}
-type GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutput() GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutput
-	ToGoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutputWithContext(context.Context) GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutput
-}
-
-// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
-type GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseArgs struct {
-	// Fields specific to BigQuery connections.
-	BigqueryConnectionSpec GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseInput `pulumi:"bigqueryConnectionSpec"`
-}
-
-func (GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseArgs) ToGoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutput() GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutput {
-	return i.ToGoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseArgs) ToGoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutput)
-}
-
-func (i GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseArgs) ToGoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutput() GoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseArgs) ToGoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutput).ToGoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrInput is an input type that accepts GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseArgs, GoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtr and GoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrInput` via:
-//
-//          GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutput() GoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutput
-	ToGoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutput
-}
-
-type googleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrType GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseArgs
-
-func GoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtr(v *GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseArgs) GoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrInput {
-	return (*googleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrType)(v)
-}
-
-func (*googleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrType) ToGoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutput() GoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrType) ToGoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutput)
-}
-
 // Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
 type GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutput struct{ *pulumi.OutputState }
 
@@ -2695,55 +1792,11 @@ func (o GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutput) ToGoogle
 	return o
 }
 
-func (o GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutput) ToGoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutput() GoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutput {
-	return o.ToGoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutput) ToGoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse) *GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse {
-		return &v
-	}).(GoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutput)
-}
-
 // Fields specific to BigQuery connections.
 func (o GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutput) BigqueryConnectionSpec() GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse) GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse {
 		return v.BigqueryConnectionSpec
 	}).(GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutput)
-}
-
-type GoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutput) ToGoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutput() GoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutput) ToGoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutput) Elem() GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse) GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse
-		return ret
-	}).(GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutput)
-}
-
-// Fields specific to BigQuery connections.
-func (o GoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutput) BigqueryConnectionSpec() GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse) *GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.BigqueryConnectionSpec
-	}).(GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutput)
 }
 
 // Physical location of an entry.
@@ -2752,78 +1805,6 @@ type GoogleCloudDatacatalogV1DataSourceResponse struct {
 	Resource string `pulumi:"resource"`
 	// Service that physically stores the data.
 	Service string `pulumi:"service"`
-}
-
-// GoogleCloudDatacatalogV1DataSourceResponseInput is an input type that accepts GoogleCloudDatacatalogV1DataSourceResponseArgs and GoogleCloudDatacatalogV1DataSourceResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1DataSourceResponseInput` via:
-//
-//          GoogleCloudDatacatalogV1DataSourceResponseArgs{...}
-type GoogleCloudDatacatalogV1DataSourceResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1DataSourceResponseOutput() GoogleCloudDatacatalogV1DataSourceResponseOutput
-	ToGoogleCloudDatacatalogV1DataSourceResponseOutputWithContext(context.Context) GoogleCloudDatacatalogV1DataSourceResponseOutput
-}
-
-// Physical location of an entry.
-type GoogleCloudDatacatalogV1DataSourceResponseArgs struct {
-	// Full name of a resource as defined by the service. For example: `//bigquery.googleapis.com/projects/{PROJECT_ID}/locations/{LOCATION}/datasets/{DATASET_ID}/tables/{TABLE_ID}`
-	Resource pulumi.StringInput `pulumi:"resource"`
-	// Service that physically stores the data.
-	Service pulumi.StringInput `pulumi:"service"`
-}
-
-func (GoogleCloudDatacatalogV1DataSourceResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1DataSourceResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1DataSourceResponseArgs) ToGoogleCloudDatacatalogV1DataSourceResponseOutput() GoogleCloudDatacatalogV1DataSourceResponseOutput {
-	return i.ToGoogleCloudDatacatalogV1DataSourceResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1DataSourceResponseArgs) ToGoogleCloudDatacatalogV1DataSourceResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataSourceResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DataSourceResponseOutput)
-}
-
-func (i GoogleCloudDatacatalogV1DataSourceResponseArgs) ToGoogleCloudDatacatalogV1DataSourceResponsePtrOutput() GoogleCloudDatacatalogV1DataSourceResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1DataSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1DataSourceResponseArgs) ToGoogleCloudDatacatalogV1DataSourceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataSourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DataSourceResponseOutput).ToGoogleCloudDatacatalogV1DataSourceResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatacatalogV1DataSourceResponsePtrInput is an input type that accepts GoogleCloudDatacatalogV1DataSourceResponseArgs, GoogleCloudDatacatalogV1DataSourceResponsePtr and GoogleCloudDatacatalogV1DataSourceResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1DataSourceResponsePtrInput` via:
-//
-//          GoogleCloudDatacatalogV1DataSourceResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatacatalogV1DataSourceResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1DataSourceResponsePtrOutput() GoogleCloudDatacatalogV1DataSourceResponsePtrOutput
-	ToGoogleCloudDatacatalogV1DataSourceResponsePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1DataSourceResponsePtrOutput
-}
-
-type googleCloudDatacatalogV1DataSourceResponsePtrType GoogleCloudDatacatalogV1DataSourceResponseArgs
-
-func GoogleCloudDatacatalogV1DataSourceResponsePtr(v *GoogleCloudDatacatalogV1DataSourceResponseArgs) GoogleCloudDatacatalogV1DataSourceResponsePtrInput {
-	return (*googleCloudDatacatalogV1DataSourceResponsePtrType)(v)
-}
-
-func (*googleCloudDatacatalogV1DataSourceResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1DataSourceResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatacatalogV1DataSourceResponsePtrType) ToGoogleCloudDatacatalogV1DataSourceResponsePtrOutput() GoogleCloudDatacatalogV1DataSourceResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1DataSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatacatalogV1DataSourceResponsePtrType) ToGoogleCloudDatacatalogV1DataSourceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataSourceResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DataSourceResponsePtrOutput)
 }
 
 // Physical location of an entry.
@@ -2841,16 +1822,6 @@ func (o GoogleCloudDatacatalogV1DataSourceResponseOutput) ToGoogleCloudDatacatal
 	return o
 }
 
-func (o GoogleCloudDatacatalogV1DataSourceResponseOutput) ToGoogleCloudDatacatalogV1DataSourceResponsePtrOutput() GoogleCloudDatacatalogV1DataSourceResponsePtrOutput {
-	return o.ToGoogleCloudDatacatalogV1DataSourceResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatacatalogV1DataSourceResponseOutput) ToGoogleCloudDatacatalogV1DataSourceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataSourceResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1DataSourceResponse) *GoogleCloudDatacatalogV1DataSourceResponse {
-		return &v
-	}).(GoogleCloudDatacatalogV1DataSourceResponsePtrOutput)
-}
-
 // Full name of a resource as defined by the service. For example: `//bigquery.googleapis.com/projects/{PROJECT_ID}/locations/{LOCATION}/datasets/{DATASET_ID}/tables/{TABLE_ID}`
 func (o GoogleCloudDatacatalogV1DataSourceResponseOutput) Resource() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataSourceResponse) string { return v.Resource }).(pulumi.StringOutput)
@@ -2859,50 +1830,6 @@ func (o GoogleCloudDatacatalogV1DataSourceResponseOutput) Resource() pulumi.Stri
 // Service that physically stores the data.
 func (o GoogleCloudDatacatalogV1DataSourceResponseOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataSourceResponse) string { return v.Service }).(pulumi.StringOutput)
-}
-
-type GoogleCloudDatacatalogV1DataSourceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1DataSourceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1DataSourceResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1DataSourceResponsePtrOutput) ToGoogleCloudDatacatalogV1DataSourceResponsePtrOutput() GoogleCloudDatacatalogV1DataSourceResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1DataSourceResponsePtrOutput) ToGoogleCloudDatacatalogV1DataSourceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DataSourceResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1DataSourceResponsePtrOutput) Elem() GoogleCloudDatacatalogV1DataSourceResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DataSourceResponse) GoogleCloudDatacatalogV1DataSourceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatacatalogV1DataSourceResponse
-		return ret
-	}).(GoogleCloudDatacatalogV1DataSourceResponseOutput)
-}
-
-// Full name of a resource as defined by the service. For example: `//bigquery.googleapis.com/projects/{PROJECT_ID}/locations/{LOCATION}/datasets/{DATASET_ID}/tables/{TABLE_ID}`
-func (o GoogleCloudDatacatalogV1DataSourceResponsePtrOutput) Resource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DataSourceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Resource
-	}).(pulumi.StringPtrOutput)
-}
-
-// Service that physically stores the data.
-func (o GoogleCloudDatacatalogV1DataSourceResponsePtrOutput) Service() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DataSourceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Service
-	}).(pulumi.StringPtrOutput)
 }
 
 // Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
@@ -3053,76 +1980,6 @@ type GoogleCloudDatacatalogV1DatabaseTableSpecResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// GoogleCloudDatacatalogV1DatabaseTableSpecResponseInput is an input type that accepts GoogleCloudDatacatalogV1DatabaseTableSpecResponseArgs and GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1DatabaseTableSpecResponseInput` via:
-//
-//          GoogleCloudDatacatalogV1DatabaseTableSpecResponseArgs{...}
-type GoogleCloudDatacatalogV1DatabaseTableSpecResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput() GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput
-	ToGoogleCloudDatacatalogV1DatabaseTableSpecResponseOutputWithContext(context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput
-}
-
-// Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
-type GoogleCloudDatacatalogV1DatabaseTableSpecResponseArgs struct {
-	// Type of this table.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GoogleCloudDatacatalogV1DatabaseTableSpecResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1DatabaseTableSpecResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1DatabaseTableSpecResponseArgs) ToGoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput() GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput {
-	return i.ToGoogleCloudDatacatalogV1DatabaseTableSpecResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1DatabaseTableSpecResponseArgs) ToGoogleCloudDatacatalogV1DatabaseTableSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput)
-}
-
-func (i GoogleCloudDatacatalogV1DatabaseTableSpecResponseArgs) ToGoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutput() GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1DatabaseTableSpecResponseArgs) ToGoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput).ToGoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrInput is an input type that accepts GoogleCloudDatacatalogV1DatabaseTableSpecResponseArgs, GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtr and GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrInput` via:
-//
-//          GoogleCloudDatacatalogV1DatabaseTableSpecResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutput() GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutput
-	ToGoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutput
-}
-
-type googleCloudDatacatalogV1DatabaseTableSpecResponsePtrType GoogleCloudDatacatalogV1DatabaseTableSpecResponseArgs
-
-func GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtr(v *GoogleCloudDatacatalogV1DatabaseTableSpecResponseArgs) GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrInput {
-	return (*googleCloudDatacatalogV1DatabaseTableSpecResponsePtrType)(v)
-}
-
-func (*googleCloudDatacatalogV1DatabaseTableSpecResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1DatabaseTableSpecResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatacatalogV1DatabaseTableSpecResponsePtrType) ToGoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutput() GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatacatalogV1DatabaseTableSpecResponsePtrType) ToGoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutput)
-}
-
 // Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
 type GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput struct{ *pulumi.OutputState }
 
@@ -3138,53 +1995,9 @@ func (o GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput) ToGoogleCloudDa
 	return o
 }
 
-func (o GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput) ToGoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutput() GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutput {
-	return o.ToGoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput) ToGoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1DatabaseTableSpecResponse) *GoogleCloudDatacatalogV1DatabaseTableSpecResponse {
-		return &v
-	}).(GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutput)
-}
-
 // Type of this table.
 func (o GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1DatabaseTableSpecResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1DatabaseTableSpecResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutput) ToGoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutput() GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutput) ToGoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutput) Elem() GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DatabaseTableSpecResponse) GoogleCloudDatacatalogV1DatabaseTableSpecResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatacatalogV1DatabaseTableSpecResponse
-		return ret
-	}).(GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput)
-}
-
-// Type of this table.
-func (o GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DatabaseTableSpecResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
 }
 
 // Specification of a single file in Cloud Storage.
@@ -3195,64 +2008,6 @@ type GoogleCloudDatacatalogV1GcsFileSpecResponse struct {
 	GcsTimestamps GoogleCloudDatacatalogV1SystemTimestampsResponse `pulumi:"gcsTimestamps"`
 	// File size in bytes.
 	SizeBytes string `pulumi:"sizeBytes"`
-}
-
-// GoogleCloudDatacatalogV1GcsFileSpecResponseInput is an input type that accepts GoogleCloudDatacatalogV1GcsFileSpecResponseArgs and GoogleCloudDatacatalogV1GcsFileSpecResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1GcsFileSpecResponseInput` via:
-//
-//          GoogleCloudDatacatalogV1GcsFileSpecResponseArgs{...}
-type GoogleCloudDatacatalogV1GcsFileSpecResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1GcsFileSpecResponseOutput() GoogleCloudDatacatalogV1GcsFileSpecResponseOutput
-	ToGoogleCloudDatacatalogV1GcsFileSpecResponseOutputWithContext(context.Context) GoogleCloudDatacatalogV1GcsFileSpecResponseOutput
-}
-
-// Specification of a single file in Cloud Storage.
-type GoogleCloudDatacatalogV1GcsFileSpecResponseArgs struct {
-	// Full file path. Example: `gs://bucket_name/a/b.txt`.
-	FilePath pulumi.StringInput `pulumi:"filePath"`
-	// Creation, modification, and expiration timestamps of a Cloud Storage file.
-	GcsTimestamps GoogleCloudDatacatalogV1SystemTimestampsResponseInput `pulumi:"gcsTimestamps"`
-	// File size in bytes.
-	SizeBytes pulumi.StringInput `pulumi:"sizeBytes"`
-}
-
-func (GoogleCloudDatacatalogV1GcsFileSpecResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1GcsFileSpecResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1GcsFileSpecResponseArgs) ToGoogleCloudDatacatalogV1GcsFileSpecResponseOutput() GoogleCloudDatacatalogV1GcsFileSpecResponseOutput {
-	return i.ToGoogleCloudDatacatalogV1GcsFileSpecResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1GcsFileSpecResponseArgs) ToGoogleCloudDatacatalogV1GcsFileSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1GcsFileSpecResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1GcsFileSpecResponseOutput)
-}
-
-// GoogleCloudDatacatalogV1GcsFileSpecResponseArrayInput is an input type that accepts GoogleCloudDatacatalogV1GcsFileSpecResponseArray and GoogleCloudDatacatalogV1GcsFileSpecResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1GcsFileSpecResponseArrayInput` via:
-//
-//          GoogleCloudDatacatalogV1GcsFileSpecResponseArray{ GoogleCloudDatacatalogV1GcsFileSpecResponseArgs{...} }
-type GoogleCloudDatacatalogV1GcsFileSpecResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1GcsFileSpecResponseArrayOutput() GoogleCloudDatacatalogV1GcsFileSpecResponseArrayOutput
-	ToGoogleCloudDatacatalogV1GcsFileSpecResponseArrayOutputWithContext(context.Context) GoogleCloudDatacatalogV1GcsFileSpecResponseArrayOutput
-}
-
-type GoogleCloudDatacatalogV1GcsFileSpecResponseArray []GoogleCloudDatacatalogV1GcsFileSpecResponseInput
-
-func (GoogleCloudDatacatalogV1GcsFileSpecResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDatacatalogV1GcsFileSpecResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1GcsFileSpecResponseArray) ToGoogleCloudDatacatalogV1GcsFileSpecResponseArrayOutput() GoogleCloudDatacatalogV1GcsFileSpecResponseArrayOutput {
-	return i.ToGoogleCloudDatacatalogV1GcsFileSpecResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1GcsFileSpecResponseArray) ToGoogleCloudDatacatalogV1GcsFileSpecResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1GcsFileSpecResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1GcsFileSpecResponseArrayOutput)
 }
 
 // Specification of a single file in Cloud Storage.
@@ -3455,78 +2210,6 @@ type GoogleCloudDatacatalogV1GcsFilesetSpecResponse struct {
 	SampleGcsFileSpecs []GoogleCloudDatacatalogV1GcsFileSpecResponse `pulumi:"sampleGcsFileSpecs"`
 }
 
-// GoogleCloudDatacatalogV1GcsFilesetSpecResponseInput is an input type that accepts GoogleCloudDatacatalogV1GcsFilesetSpecResponseArgs and GoogleCloudDatacatalogV1GcsFilesetSpecResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1GcsFilesetSpecResponseInput` via:
-//
-//          GoogleCloudDatacatalogV1GcsFilesetSpecResponseArgs{...}
-type GoogleCloudDatacatalogV1GcsFilesetSpecResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1GcsFilesetSpecResponseOutput() GoogleCloudDatacatalogV1GcsFilesetSpecResponseOutput
-	ToGoogleCloudDatacatalogV1GcsFilesetSpecResponseOutputWithContext(context.Context) GoogleCloudDatacatalogV1GcsFilesetSpecResponseOutput
-}
-
-// Describes a Cloud Storage fileset entry.
-type GoogleCloudDatacatalogV1GcsFilesetSpecResponseArgs struct {
-	// Patterns to identify a set of files in Google Cloud Storage. For more information, see [Wildcard Names] (https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames). Note: Currently, bucket wildcards are not supported. Examples of valid `file_patterns`: * `gs://bucket_name/dir/*`: matches all files in `bucket_name/dir` directory * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` and all subdirectories * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match the `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to match complex sets of files, for example: `gs://bucket_name/[a-m]??.j*g`
-	FilePatterns pulumi.StringArrayInput `pulumi:"filePatterns"`
-	// Sample files contained in this fileset, not all files contained in this fileset are represented here.
-	SampleGcsFileSpecs GoogleCloudDatacatalogV1GcsFileSpecResponseArrayInput `pulumi:"sampleGcsFileSpecs"`
-}
-
-func (GoogleCloudDatacatalogV1GcsFilesetSpecResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1GcsFilesetSpecResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1GcsFilesetSpecResponseArgs) ToGoogleCloudDatacatalogV1GcsFilesetSpecResponseOutput() GoogleCloudDatacatalogV1GcsFilesetSpecResponseOutput {
-	return i.ToGoogleCloudDatacatalogV1GcsFilesetSpecResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1GcsFilesetSpecResponseArgs) ToGoogleCloudDatacatalogV1GcsFilesetSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1GcsFilesetSpecResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1GcsFilesetSpecResponseOutput)
-}
-
-func (i GoogleCloudDatacatalogV1GcsFilesetSpecResponseArgs) ToGoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutput() GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1GcsFilesetSpecResponseArgs) ToGoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1GcsFilesetSpecResponseOutput).ToGoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrInput is an input type that accepts GoogleCloudDatacatalogV1GcsFilesetSpecResponseArgs, GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtr and GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrInput` via:
-//
-//          GoogleCloudDatacatalogV1GcsFilesetSpecResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutput() GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutput
-	ToGoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutput
-}
-
-type googleCloudDatacatalogV1GcsFilesetSpecResponsePtrType GoogleCloudDatacatalogV1GcsFilesetSpecResponseArgs
-
-func GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtr(v *GoogleCloudDatacatalogV1GcsFilesetSpecResponseArgs) GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrInput {
-	return (*googleCloudDatacatalogV1GcsFilesetSpecResponsePtrType)(v)
-}
-
-func (*googleCloudDatacatalogV1GcsFilesetSpecResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1GcsFilesetSpecResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatacatalogV1GcsFilesetSpecResponsePtrType) ToGoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutput() GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatacatalogV1GcsFilesetSpecResponsePtrType) ToGoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutput)
-}
-
 // Describes a Cloud Storage fileset entry.
 type GoogleCloudDatacatalogV1GcsFilesetSpecResponseOutput struct{ *pulumi.OutputState }
 
@@ -3542,16 +2225,6 @@ func (o GoogleCloudDatacatalogV1GcsFilesetSpecResponseOutput) ToGoogleCloudDatac
 	return o
 }
 
-func (o GoogleCloudDatacatalogV1GcsFilesetSpecResponseOutput) ToGoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutput() GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutput {
-	return o.ToGoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatacatalogV1GcsFilesetSpecResponseOutput) ToGoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1GcsFilesetSpecResponse) *GoogleCloudDatacatalogV1GcsFilesetSpecResponse {
-		return &v
-	}).(GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutput)
-}
-
 // Patterns to identify a set of files in Google Cloud Storage. For more information, see [Wildcard Names] (https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames). Note: Currently, bucket wildcards are not supported. Examples of valid `file_patterns`: * `gs://bucket_name/dir/*`: matches all files in `bucket_name/dir` directory * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` and all subdirectories * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match the `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to match complex sets of files, for example: `gs://bucket_name/[a-m]??.j*g`
 func (o GoogleCloudDatacatalogV1GcsFilesetSpecResponseOutput) FilePatterns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1GcsFilesetSpecResponse) []string { return v.FilePatterns }).(pulumi.StringArrayOutput)
@@ -3560,50 +2233,6 @@ func (o GoogleCloudDatacatalogV1GcsFilesetSpecResponseOutput) FilePatterns() pul
 // Sample files contained in this fileset, not all files contained in this fileset are represented here.
 func (o GoogleCloudDatacatalogV1GcsFilesetSpecResponseOutput) SampleGcsFileSpecs() GoogleCloudDatacatalogV1GcsFileSpecResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1GcsFilesetSpecResponse) []GoogleCloudDatacatalogV1GcsFileSpecResponse {
-		return v.SampleGcsFileSpecs
-	}).(GoogleCloudDatacatalogV1GcsFileSpecResponseArrayOutput)
-}
-
-type GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1GcsFilesetSpecResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutput) ToGoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutput() GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutput) ToGoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutput) Elem() GoogleCloudDatacatalogV1GcsFilesetSpecResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1GcsFilesetSpecResponse) GoogleCloudDatacatalogV1GcsFilesetSpecResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatacatalogV1GcsFilesetSpecResponse
-		return ret
-	}).(GoogleCloudDatacatalogV1GcsFilesetSpecResponseOutput)
-}
-
-// Patterns to identify a set of files in Google Cloud Storage. For more information, see [Wildcard Names] (https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames). Note: Currently, bucket wildcards are not supported. Examples of valid `file_patterns`: * `gs://bucket_name/dir/*`: matches all files in `bucket_name/dir` directory * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` and all subdirectories * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match the `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to match complex sets of files, for example: `gs://bucket_name/[a-m]??.j*g`
-func (o GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutput) FilePatterns() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1GcsFilesetSpecResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.FilePatterns
-	}).(pulumi.StringArrayOutput)
-}
-
-// Sample files contained in this fileset, not all files contained in this fileset are represented here.
-func (o GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutput) SampleGcsFileSpecs() GoogleCloudDatacatalogV1GcsFileSpecResponseArrayOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1GcsFilesetSpecResponse) []GoogleCloudDatacatalogV1GcsFileSpecResponse {
-		if v == nil {
-			return nil
-		}
 		return v.SampleGcsFileSpecs
 	}).(GoogleCloudDatacatalogV1GcsFileSpecResponseArrayOutput)
 }
@@ -3979,64 +2608,6 @@ type GoogleCloudDatacatalogV1RoutineSpecArgumentResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// GoogleCloudDatacatalogV1RoutineSpecArgumentResponseInput is an input type that accepts GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArgs and GoogleCloudDatacatalogV1RoutineSpecArgumentResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1RoutineSpecArgumentResponseInput` via:
-//
-//          GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArgs{...}
-type GoogleCloudDatacatalogV1RoutineSpecArgumentResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1RoutineSpecArgumentResponseOutput() GoogleCloudDatacatalogV1RoutineSpecArgumentResponseOutput
-	ToGoogleCloudDatacatalogV1RoutineSpecArgumentResponseOutputWithContext(context.Context) GoogleCloudDatacatalogV1RoutineSpecArgumentResponseOutput
-}
-
-// Input or output argument of a function or stored procedure.
-type GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArgs struct {
-	// Specifies whether the argument is input or output.
-	Mode pulumi.StringInput `pulumi:"mode"`
-	// The name of the argument. A return argument of a function might not have a name.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Type of the argument. The exact value depends on the source system and the language.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecArgumentResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArgs) ToGoogleCloudDatacatalogV1RoutineSpecArgumentResponseOutput() GoogleCloudDatacatalogV1RoutineSpecArgumentResponseOutput {
-	return i.ToGoogleCloudDatacatalogV1RoutineSpecArgumentResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArgs) ToGoogleCloudDatacatalogV1RoutineSpecArgumentResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecArgumentResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1RoutineSpecArgumentResponseOutput)
-}
-
-// GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArrayInput is an input type that accepts GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArray and GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArrayInput` via:
-//
-//          GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArray{ GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArgs{...} }
-type GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1RoutineSpecArgumentResponseArrayOutput() GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArrayOutput
-	ToGoogleCloudDatacatalogV1RoutineSpecArgumentResponseArrayOutputWithContext(context.Context) GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArrayOutput
-}
-
-type GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArray []GoogleCloudDatacatalogV1RoutineSpecArgumentResponseInput
-
-func (GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudDatacatalogV1RoutineSpecArgumentResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArray) ToGoogleCloudDatacatalogV1RoutineSpecArgumentResponseArrayOutput() GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArrayOutput {
-	return i.ToGoogleCloudDatacatalogV1RoutineSpecArgumentResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArray) ToGoogleCloudDatacatalogV1RoutineSpecArgumentResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArrayOutput)
-}
-
 // Input or output argument of a function or stored procedure.
 type GoogleCloudDatacatalogV1RoutineSpecArgumentResponseOutput struct{ *pulumi.OutputState }
 
@@ -4103,86 +2674,6 @@ type GoogleCloudDatacatalogV1RoutineSpecResponse struct {
 	RoutineType string `pulumi:"routineType"`
 }
 
-// GoogleCloudDatacatalogV1RoutineSpecResponseInput is an input type that accepts GoogleCloudDatacatalogV1RoutineSpecResponseArgs and GoogleCloudDatacatalogV1RoutineSpecResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1RoutineSpecResponseInput` via:
-//
-//          GoogleCloudDatacatalogV1RoutineSpecResponseArgs{...}
-type GoogleCloudDatacatalogV1RoutineSpecResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1RoutineSpecResponseOutput() GoogleCloudDatacatalogV1RoutineSpecResponseOutput
-	ToGoogleCloudDatacatalogV1RoutineSpecResponseOutputWithContext(context.Context) GoogleCloudDatacatalogV1RoutineSpecResponseOutput
-}
-
-// Specification that applies to a routine. Valid only for entries with the `ROUTINE` type.
-type GoogleCloudDatacatalogV1RoutineSpecResponseArgs struct {
-	// Fields specific for BigQuery routines.
-	BigqueryRoutineSpec GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseInput `pulumi:"bigqueryRoutineSpec"`
-	// The body of the routine.
-	DefinitionBody pulumi.StringInput `pulumi:"definitionBody"`
-	// The language the routine is written in. The exact value depends on the source system. For BigQuery routines, possible values are: * `SQL` * `JAVASCRIPT`
-	Language pulumi.StringInput `pulumi:"language"`
-	// Return type of the argument. The exact value depends on the source system and the language.
-	ReturnType pulumi.StringInput `pulumi:"returnType"`
-	// Arguments of the routine.
-	RoutineArguments GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArrayInput `pulumi:"routineArguments"`
-	// The type of the routine.
-	RoutineType pulumi.StringInput `pulumi:"routineType"`
-}
-
-func (GoogleCloudDatacatalogV1RoutineSpecResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1RoutineSpecResponseArgs) ToGoogleCloudDatacatalogV1RoutineSpecResponseOutput() GoogleCloudDatacatalogV1RoutineSpecResponseOutput {
-	return i.ToGoogleCloudDatacatalogV1RoutineSpecResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1RoutineSpecResponseArgs) ToGoogleCloudDatacatalogV1RoutineSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1RoutineSpecResponseOutput)
-}
-
-func (i GoogleCloudDatacatalogV1RoutineSpecResponseArgs) ToGoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput() GoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1RoutineSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1RoutineSpecResponseArgs) ToGoogleCloudDatacatalogV1RoutineSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1RoutineSpecResponseOutput).ToGoogleCloudDatacatalogV1RoutineSpecResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatacatalogV1RoutineSpecResponsePtrInput is an input type that accepts GoogleCloudDatacatalogV1RoutineSpecResponseArgs, GoogleCloudDatacatalogV1RoutineSpecResponsePtr and GoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1RoutineSpecResponsePtrInput` via:
-//
-//          GoogleCloudDatacatalogV1RoutineSpecResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatacatalogV1RoutineSpecResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput() GoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput
-	ToGoogleCloudDatacatalogV1RoutineSpecResponsePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput
-}
-
-type googleCloudDatacatalogV1RoutineSpecResponsePtrType GoogleCloudDatacatalogV1RoutineSpecResponseArgs
-
-func GoogleCloudDatacatalogV1RoutineSpecResponsePtr(v *GoogleCloudDatacatalogV1RoutineSpecResponseArgs) GoogleCloudDatacatalogV1RoutineSpecResponsePtrInput {
-	return (*googleCloudDatacatalogV1RoutineSpecResponsePtrType)(v)
-}
-
-func (*googleCloudDatacatalogV1RoutineSpecResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1RoutineSpecResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatacatalogV1RoutineSpecResponsePtrType) ToGoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput() GoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1RoutineSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatacatalogV1RoutineSpecResponsePtrType) ToGoogleCloudDatacatalogV1RoutineSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput)
-}
-
 // Specification that applies to a routine. Valid only for entries with the `ROUTINE` type.
 type GoogleCloudDatacatalogV1RoutineSpecResponseOutput struct{ *pulumi.OutputState }
 
@@ -4196,16 +2687,6 @@ func (o GoogleCloudDatacatalogV1RoutineSpecResponseOutput) ToGoogleCloudDatacata
 
 func (o GoogleCloudDatacatalogV1RoutineSpecResponseOutput) ToGoogleCloudDatacatalogV1RoutineSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecResponseOutput {
 	return o
-}
-
-func (o GoogleCloudDatacatalogV1RoutineSpecResponseOutput) ToGoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput() GoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput {
-	return o.ToGoogleCloudDatacatalogV1RoutineSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatacatalogV1RoutineSpecResponseOutput) ToGoogleCloudDatacatalogV1RoutineSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1RoutineSpecResponse) *GoogleCloudDatacatalogV1RoutineSpecResponse {
-		return &v
-	}).(GoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput)
 }
 
 // Fields specific for BigQuery routines.
@@ -4240,90 +2721,6 @@ func (o GoogleCloudDatacatalogV1RoutineSpecResponseOutput) RoutineArguments() Go
 // The type of the routine.
 func (o GoogleCloudDatacatalogV1RoutineSpecResponseOutput) RoutineType() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1RoutineSpecResponse) string { return v.RoutineType }).(pulumi.StringOutput)
-}
-
-type GoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1RoutineSpecResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput) ToGoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput() GoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput) ToGoogleCloudDatacatalogV1RoutineSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput) Elem() GoogleCloudDatacatalogV1RoutineSpecResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1RoutineSpecResponse) GoogleCloudDatacatalogV1RoutineSpecResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatacatalogV1RoutineSpecResponse
-		return ret
-	}).(GoogleCloudDatacatalogV1RoutineSpecResponseOutput)
-}
-
-// Fields specific for BigQuery routines.
-func (o GoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput) BigqueryRoutineSpec() GoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1RoutineSpecResponse) *GoogleCloudDatacatalogV1BigQueryRoutineSpecResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.BigqueryRoutineSpec
-	}).(GoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutput)
-}
-
-// The body of the routine.
-func (o GoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput) DefinitionBody() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1RoutineSpecResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DefinitionBody
-	}).(pulumi.StringPtrOutput)
-}
-
-// The language the routine is written in. The exact value depends on the source system. For BigQuery routines, possible values are: * `SQL` * `JAVASCRIPT`
-func (o GoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput) Language() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1RoutineSpecResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Language
-	}).(pulumi.StringPtrOutput)
-}
-
-// Return type of the argument. The exact value depends on the source system and the language.
-func (o GoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput) ReturnType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1RoutineSpecResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ReturnType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Arguments of the routine.
-func (o GoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput) RoutineArguments() GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArrayOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1RoutineSpecResponse) []GoogleCloudDatacatalogV1RoutineSpecArgumentResponse {
-		if v == nil {
-			return nil
-		}
-		return v.RoutineArguments
-	}).(GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArrayOutput)
-}
-
-// The type of the routine.
-func (o GoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput) RoutineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1RoutineSpecResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RoutineType
-	}).(pulumi.StringPtrOutput)
 }
 
 // Represents a schema, for example, a BigQuery, GoogleSQL, or Avro schema.
@@ -4472,76 +2869,6 @@ type GoogleCloudDatacatalogV1SchemaResponse struct {
 	Columns []GoogleCloudDatacatalogV1ColumnSchemaResponse `pulumi:"columns"`
 }
 
-// GoogleCloudDatacatalogV1SchemaResponseInput is an input type that accepts GoogleCloudDatacatalogV1SchemaResponseArgs and GoogleCloudDatacatalogV1SchemaResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1SchemaResponseInput` via:
-//
-//          GoogleCloudDatacatalogV1SchemaResponseArgs{...}
-type GoogleCloudDatacatalogV1SchemaResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1SchemaResponseOutput() GoogleCloudDatacatalogV1SchemaResponseOutput
-	ToGoogleCloudDatacatalogV1SchemaResponseOutputWithContext(context.Context) GoogleCloudDatacatalogV1SchemaResponseOutput
-}
-
-// Represents a schema, for example, a BigQuery, GoogleSQL, or Avro schema.
-type GoogleCloudDatacatalogV1SchemaResponseArgs struct {
-	// The unified GoogleSQL-like schema of columns. The overall maximum number of columns and nested columns is 10,000. The maximum nested depth is 15 levels.
-	Columns GoogleCloudDatacatalogV1ColumnSchemaResponseArrayInput `pulumi:"columns"`
-}
-
-func (GoogleCloudDatacatalogV1SchemaResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1SchemaResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1SchemaResponseArgs) ToGoogleCloudDatacatalogV1SchemaResponseOutput() GoogleCloudDatacatalogV1SchemaResponseOutput {
-	return i.ToGoogleCloudDatacatalogV1SchemaResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1SchemaResponseArgs) ToGoogleCloudDatacatalogV1SchemaResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1SchemaResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1SchemaResponseOutput)
-}
-
-func (i GoogleCloudDatacatalogV1SchemaResponseArgs) ToGoogleCloudDatacatalogV1SchemaResponsePtrOutput() GoogleCloudDatacatalogV1SchemaResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1SchemaResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1SchemaResponseArgs) ToGoogleCloudDatacatalogV1SchemaResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1SchemaResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1SchemaResponseOutput).ToGoogleCloudDatacatalogV1SchemaResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatacatalogV1SchemaResponsePtrInput is an input type that accepts GoogleCloudDatacatalogV1SchemaResponseArgs, GoogleCloudDatacatalogV1SchemaResponsePtr and GoogleCloudDatacatalogV1SchemaResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1SchemaResponsePtrInput` via:
-//
-//          GoogleCloudDatacatalogV1SchemaResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatacatalogV1SchemaResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1SchemaResponsePtrOutput() GoogleCloudDatacatalogV1SchemaResponsePtrOutput
-	ToGoogleCloudDatacatalogV1SchemaResponsePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1SchemaResponsePtrOutput
-}
-
-type googleCloudDatacatalogV1SchemaResponsePtrType GoogleCloudDatacatalogV1SchemaResponseArgs
-
-func GoogleCloudDatacatalogV1SchemaResponsePtr(v *GoogleCloudDatacatalogV1SchemaResponseArgs) GoogleCloudDatacatalogV1SchemaResponsePtrInput {
-	return (*googleCloudDatacatalogV1SchemaResponsePtrType)(v)
-}
-
-func (*googleCloudDatacatalogV1SchemaResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1SchemaResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatacatalogV1SchemaResponsePtrType) ToGoogleCloudDatacatalogV1SchemaResponsePtrOutput() GoogleCloudDatacatalogV1SchemaResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1SchemaResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatacatalogV1SchemaResponsePtrType) ToGoogleCloudDatacatalogV1SchemaResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1SchemaResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1SchemaResponsePtrOutput)
-}
-
 // Represents a schema, for example, a BigQuery, GoogleSQL, or Avro schema.
 type GoogleCloudDatacatalogV1SchemaResponseOutput struct{ *pulumi.OutputState }
 
@@ -4557,53 +2884,9 @@ func (o GoogleCloudDatacatalogV1SchemaResponseOutput) ToGoogleCloudDatacatalogV1
 	return o
 }
 
-func (o GoogleCloudDatacatalogV1SchemaResponseOutput) ToGoogleCloudDatacatalogV1SchemaResponsePtrOutput() GoogleCloudDatacatalogV1SchemaResponsePtrOutput {
-	return o.ToGoogleCloudDatacatalogV1SchemaResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatacatalogV1SchemaResponseOutput) ToGoogleCloudDatacatalogV1SchemaResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1SchemaResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1SchemaResponse) *GoogleCloudDatacatalogV1SchemaResponse {
-		return &v
-	}).(GoogleCloudDatacatalogV1SchemaResponsePtrOutput)
-}
-
 // The unified GoogleSQL-like schema of columns. The overall maximum number of columns and nested columns is 10,000. The maximum nested depth is 15 levels.
 func (o GoogleCloudDatacatalogV1SchemaResponseOutput) Columns() GoogleCloudDatacatalogV1ColumnSchemaResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1SchemaResponse) []GoogleCloudDatacatalogV1ColumnSchemaResponse {
-		return v.Columns
-	}).(GoogleCloudDatacatalogV1ColumnSchemaResponseArrayOutput)
-}
-
-type GoogleCloudDatacatalogV1SchemaResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1SchemaResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1SchemaResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1SchemaResponsePtrOutput) ToGoogleCloudDatacatalogV1SchemaResponsePtrOutput() GoogleCloudDatacatalogV1SchemaResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1SchemaResponsePtrOutput) ToGoogleCloudDatacatalogV1SchemaResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1SchemaResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1SchemaResponsePtrOutput) Elem() GoogleCloudDatacatalogV1SchemaResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1SchemaResponse) GoogleCloudDatacatalogV1SchemaResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatacatalogV1SchemaResponse
-		return ret
-	}).(GoogleCloudDatacatalogV1SchemaResponseOutput)
-}
-
-// The unified GoogleSQL-like schema of columns. The overall maximum number of columns and nested columns is 10,000. The maximum nested depth is 15 levels.
-func (o GoogleCloudDatacatalogV1SchemaResponsePtrOutput) Columns() GoogleCloudDatacatalogV1ColumnSchemaResponseArrayOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1SchemaResponse) []GoogleCloudDatacatalogV1ColumnSchemaResponse {
-		if v == nil {
-			return nil
-		}
 		return v.Columns
 	}).(GoogleCloudDatacatalogV1ColumnSchemaResponseArrayOutput)
 }
@@ -4777,80 +3060,6 @@ type GoogleCloudDatacatalogV1SystemTimestampsResponse struct {
 	UpdateTime string `pulumi:"updateTime"`
 }
 
-// GoogleCloudDatacatalogV1SystemTimestampsResponseInput is an input type that accepts GoogleCloudDatacatalogV1SystemTimestampsResponseArgs and GoogleCloudDatacatalogV1SystemTimestampsResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1SystemTimestampsResponseInput` via:
-//
-//          GoogleCloudDatacatalogV1SystemTimestampsResponseArgs{...}
-type GoogleCloudDatacatalogV1SystemTimestampsResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1SystemTimestampsResponseOutput() GoogleCloudDatacatalogV1SystemTimestampsResponseOutput
-	ToGoogleCloudDatacatalogV1SystemTimestampsResponseOutputWithContext(context.Context) GoogleCloudDatacatalogV1SystemTimestampsResponseOutput
-}
-
-// Timestamps associated with this resource in a particular system.
-type GoogleCloudDatacatalogV1SystemTimestampsResponseArgs struct {
-	// Creation timestamp of the resource within the given system.
-	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// Expiration timestamp of the resource within the given system. Currently only applicable to BigQuery resources.
-	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
-	// Timestamp of the last modification of the resource or its metadata within a given system. Note: Depending on the source system, not every modification updates this timestamp. For example, BigQuery timestamps every metadata modification but not data or permission changes.
-	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
-}
-
-func (GoogleCloudDatacatalogV1SystemTimestampsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1SystemTimestampsResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1SystemTimestampsResponseArgs) ToGoogleCloudDatacatalogV1SystemTimestampsResponseOutput() GoogleCloudDatacatalogV1SystemTimestampsResponseOutput {
-	return i.ToGoogleCloudDatacatalogV1SystemTimestampsResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1SystemTimestampsResponseArgs) ToGoogleCloudDatacatalogV1SystemTimestampsResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1SystemTimestampsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1SystemTimestampsResponseOutput)
-}
-
-func (i GoogleCloudDatacatalogV1SystemTimestampsResponseArgs) ToGoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutput() GoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1SystemTimestampsResponseArgs) ToGoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1SystemTimestampsResponseOutput).ToGoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatacatalogV1SystemTimestampsResponsePtrInput is an input type that accepts GoogleCloudDatacatalogV1SystemTimestampsResponseArgs, GoogleCloudDatacatalogV1SystemTimestampsResponsePtr and GoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1SystemTimestampsResponsePtrInput` via:
-//
-//          GoogleCloudDatacatalogV1SystemTimestampsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatacatalogV1SystemTimestampsResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutput() GoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutput
-	ToGoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutput
-}
-
-type googleCloudDatacatalogV1SystemTimestampsResponsePtrType GoogleCloudDatacatalogV1SystemTimestampsResponseArgs
-
-func GoogleCloudDatacatalogV1SystemTimestampsResponsePtr(v *GoogleCloudDatacatalogV1SystemTimestampsResponseArgs) GoogleCloudDatacatalogV1SystemTimestampsResponsePtrInput {
-	return (*googleCloudDatacatalogV1SystemTimestampsResponsePtrType)(v)
-}
-
-func (*googleCloudDatacatalogV1SystemTimestampsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1SystemTimestampsResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatacatalogV1SystemTimestampsResponsePtrType) ToGoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutput() GoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatacatalogV1SystemTimestampsResponsePtrType) ToGoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutput)
-}
-
 // Timestamps associated with this resource in a particular system.
 type GoogleCloudDatacatalogV1SystemTimestampsResponseOutput struct{ *pulumi.OutputState }
 
@@ -4866,16 +3075,6 @@ func (o GoogleCloudDatacatalogV1SystemTimestampsResponseOutput) ToGoogleCloudDat
 	return o
 }
 
-func (o GoogleCloudDatacatalogV1SystemTimestampsResponseOutput) ToGoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutput() GoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutput {
-	return o.ToGoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatacatalogV1SystemTimestampsResponseOutput) ToGoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1SystemTimestampsResponse) *GoogleCloudDatacatalogV1SystemTimestampsResponse {
-		return &v
-	}).(GoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutput)
-}
-
 // Creation timestamp of the resource within the given system.
 func (o GoogleCloudDatacatalogV1SystemTimestampsResponseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1SystemTimestampsResponse) string { return v.CreateTime }).(pulumi.StringOutput)
@@ -4889,60 +3088,6 @@ func (o GoogleCloudDatacatalogV1SystemTimestampsResponseOutput) ExpireTime() pul
 // Timestamp of the last modification of the resource or its metadata within a given system. Note: Depending on the source system, not every modification updates this timestamp. For example, BigQuery timestamps every metadata modification but not data or permission changes.
 func (o GoogleCloudDatacatalogV1SystemTimestampsResponseOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1SystemTimestampsResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
-}
-
-type GoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1SystemTimestampsResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutput) ToGoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutput() GoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutput) ToGoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutput) Elem() GoogleCloudDatacatalogV1SystemTimestampsResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1SystemTimestampsResponse) GoogleCloudDatacatalogV1SystemTimestampsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatacatalogV1SystemTimestampsResponse
-		return ret
-	}).(GoogleCloudDatacatalogV1SystemTimestampsResponseOutput)
-}
-
-// Creation timestamp of the resource within the given system.
-func (o GoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1SystemTimestampsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CreateTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Expiration timestamp of the resource within the given system. Currently only applicable to BigQuery resources.
-func (o GoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutput) ExpireTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1SystemTimestampsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ExpireTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Timestamp of the last modification of the resource or its metadata within a given system. Note: Depending on the source system, not every modification updates this timestamp. For example, BigQuery timestamps every metadata modification but not data or permission changes.
-func (o GoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutput) UpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1SystemTimestampsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UpdateTime
-	}).(pulumi.StringPtrOutput)
 }
 
 // Normal BigQuery table specification.
@@ -5072,76 +3217,6 @@ type GoogleCloudDatacatalogV1TableSpecResponse struct {
 	GroupedEntry string `pulumi:"groupedEntry"`
 }
 
-// GoogleCloudDatacatalogV1TableSpecResponseInput is an input type that accepts GoogleCloudDatacatalogV1TableSpecResponseArgs and GoogleCloudDatacatalogV1TableSpecResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1TableSpecResponseInput` via:
-//
-//          GoogleCloudDatacatalogV1TableSpecResponseArgs{...}
-type GoogleCloudDatacatalogV1TableSpecResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1TableSpecResponseOutput() GoogleCloudDatacatalogV1TableSpecResponseOutput
-	ToGoogleCloudDatacatalogV1TableSpecResponseOutputWithContext(context.Context) GoogleCloudDatacatalogV1TableSpecResponseOutput
-}
-
-// Normal BigQuery table specification.
-type GoogleCloudDatacatalogV1TableSpecResponseArgs struct {
-	// If the table is date-sharded, that is, it matches the `[prefix]YYYYMMDD` name pattern, this field is the Data Catalog resource name of the date-sharded grouped entry. For example: `projects/{PROJECT_ID}/locations/{LOCATION}/entrygroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}`. Otherwise, `grouped_entry` is empty.
-	GroupedEntry pulumi.StringInput `pulumi:"groupedEntry"`
-}
-
-func (GoogleCloudDatacatalogV1TableSpecResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1TableSpecResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1TableSpecResponseArgs) ToGoogleCloudDatacatalogV1TableSpecResponseOutput() GoogleCloudDatacatalogV1TableSpecResponseOutput {
-	return i.ToGoogleCloudDatacatalogV1TableSpecResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1TableSpecResponseArgs) ToGoogleCloudDatacatalogV1TableSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1TableSpecResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1TableSpecResponseOutput)
-}
-
-func (i GoogleCloudDatacatalogV1TableSpecResponseArgs) ToGoogleCloudDatacatalogV1TableSpecResponsePtrOutput() GoogleCloudDatacatalogV1TableSpecResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1TableSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1TableSpecResponseArgs) ToGoogleCloudDatacatalogV1TableSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1TableSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1TableSpecResponseOutput).ToGoogleCloudDatacatalogV1TableSpecResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatacatalogV1TableSpecResponsePtrInput is an input type that accepts GoogleCloudDatacatalogV1TableSpecResponseArgs, GoogleCloudDatacatalogV1TableSpecResponsePtr and GoogleCloudDatacatalogV1TableSpecResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1TableSpecResponsePtrInput` via:
-//
-//          GoogleCloudDatacatalogV1TableSpecResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatacatalogV1TableSpecResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1TableSpecResponsePtrOutput() GoogleCloudDatacatalogV1TableSpecResponsePtrOutput
-	ToGoogleCloudDatacatalogV1TableSpecResponsePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1TableSpecResponsePtrOutput
-}
-
-type googleCloudDatacatalogV1TableSpecResponsePtrType GoogleCloudDatacatalogV1TableSpecResponseArgs
-
-func GoogleCloudDatacatalogV1TableSpecResponsePtr(v *GoogleCloudDatacatalogV1TableSpecResponseArgs) GoogleCloudDatacatalogV1TableSpecResponsePtrInput {
-	return (*googleCloudDatacatalogV1TableSpecResponsePtrType)(v)
-}
-
-func (*googleCloudDatacatalogV1TableSpecResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1TableSpecResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatacatalogV1TableSpecResponsePtrType) ToGoogleCloudDatacatalogV1TableSpecResponsePtrOutput() GoogleCloudDatacatalogV1TableSpecResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1TableSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatacatalogV1TableSpecResponsePtrType) ToGoogleCloudDatacatalogV1TableSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1TableSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1TableSpecResponsePtrOutput)
-}
-
 // Normal BigQuery table specification.
 type GoogleCloudDatacatalogV1TableSpecResponseOutput struct{ *pulumi.OutputState }
 
@@ -5157,53 +3232,9 @@ func (o GoogleCloudDatacatalogV1TableSpecResponseOutput) ToGoogleCloudDatacatalo
 	return o
 }
 
-func (o GoogleCloudDatacatalogV1TableSpecResponseOutput) ToGoogleCloudDatacatalogV1TableSpecResponsePtrOutput() GoogleCloudDatacatalogV1TableSpecResponsePtrOutput {
-	return o.ToGoogleCloudDatacatalogV1TableSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatacatalogV1TableSpecResponseOutput) ToGoogleCloudDatacatalogV1TableSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1TableSpecResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1TableSpecResponse) *GoogleCloudDatacatalogV1TableSpecResponse {
-		return &v
-	}).(GoogleCloudDatacatalogV1TableSpecResponsePtrOutput)
-}
-
 // If the table is date-sharded, that is, it matches the `[prefix]YYYYMMDD` name pattern, this field is the Data Catalog resource name of the date-sharded grouped entry. For example: `projects/{PROJECT_ID}/locations/{LOCATION}/entrygroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}`. Otherwise, `grouped_entry` is empty.
 func (o GoogleCloudDatacatalogV1TableSpecResponseOutput) GroupedEntry() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1TableSpecResponse) string { return v.GroupedEntry }).(pulumi.StringOutput)
-}
-
-type GoogleCloudDatacatalogV1TableSpecResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1TableSpecResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1TableSpecResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1TableSpecResponsePtrOutput) ToGoogleCloudDatacatalogV1TableSpecResponsePtrOutput() GoogleCloudDatacatalogV1TableSpecResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1TableSpecResponsePtrOutput) ToGoogleCloudDatacatalogV1TableSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1TableSpecResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1TableSpecResponsePtrOutput) Elem() GoogleCloudDatacatalogV1TableSpecResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1TableSpecResponse) GoogleCloudDatacatalogV1TableSpecResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatacatalogV1TableSpecResponse
-		return ret
-	}).(GoogleCloudDatacatalogV1TableSpecResponseOutput)
-}
-
-// If the table is date-sharded, that is, it matches the `[prefix]YYYYMMDD` name pattern, this field is the Data Catalog resource name of the date-sharded grouped entry. For example: `projects/{PROJECT_ID}/locations/{LOCATION}/entrygroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}`. Otherwise, `grouped_entry` is empty.
-func (o GoogleCloudDatacatalogV1TableSpecResponsePtrOutput) GroupedEntry() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1TableSpecResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.GroupedEntry
-	}).(pulumi.StringPtrOutput)
 }
 
 // The set of all usage signals that Data Catalog stores. Note: Usually, these signals are updated daily. In rare cases, an update may fail but will be performed again on the next day.
@@ -5212,78 +3243,6 @@ type GoogleCloudDatacatalogV1UsageSignalResponse struct {
 	UpdateTime string `pulumi:"updateTime"`
 	// Usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D"}`.
 	UsageWithinTimeRange map[string]string `pulumi:"usageWithinTimeRange"`
-}
-
-// GoogleCloudDatacatalogV1UsageSignalResponseInput is an input type that accepts GoogleCloudDatacatalogV1UsageSignalResponseArgs and GoogleCloudDatacatalogV1UsageSignalResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1UsageSignalResponseInput` via:
-//
-//          GoogleCloudDatacatalogV1UsageSignalResponseArgs{...}
-type GoogleCloudDatacatalogV1UsageSignalResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1UsageSignalResponseOutput() GoogleCloudDatacatalogV1UsageSignalResponseOutput
-	ToGoogleCloudDatacatalogV1UsageSignalResponseOutputWithContext(context.Context) GoogleCloudDatacatalogV1UsageSignalResponseOutput
-}
-
-// The set of all usage signals that Data Catalog stores. Note: Usually, these signals are updated daily. In rare cases, an update may fail but will be performed again on the next day.
-type GoogleCloudDatacatalogV1UsageSignalResponseArgs struct {
-	// The end timestamp of the duration of usage statistics.
-	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
-	// Usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D"}`.
-	UsageWithinTimeRange pulumi.StringMapInput `pulumi:"usageWithinTimeRange"`
-}
-
-func (GoogleCloudDatacatalogV1UsageSignalResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1UsageSignalResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1UsageSignalResponseArgs) ToGoogleCloudDatacatalogV1UsageSignalResponseOutput() GoogleCloudDatacatalogV1UsageSignalResponseOutput {
-	return i.ToGoogleCloudDatacatalogV1UsageSignalResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1UsageSignalResponseArgs) ToGoogleCloudDatacatalogV1UsageSignalResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1UsageSignalResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1UsageSignalResponseOutput)
-}
-
-func (i GoogleCloudDatacatalogV1UsageSignalResponseArgs) ToGoogleCloudDatacatalogV1UsageSignalResponsePtrOutput() GoogleCloudDatacatalogV1UsageSignalResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1UsageSignalResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1UsageSignalResponseArgs) ToGoogleCloudDatacatalogV1UsageSignalResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1UsageSignalResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1UsageSignalResponseOutput).ToGoogleCloudDatacatalogV1UsageSignalResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatacatalogV1UsageSignalResponsePtrInput is an input type that accepts GoogleCloudDatacatalogV1UsageSignalResponseArgs, GoogleCloudDatacatalogV1UsageSignalResponsePtr and GoogleCloudDatacatalogV1UsageSignalResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1UsageSignalResponsePtrInput` via:
-//
-//          GoogleCloudDatacatalogV1UsageSignalResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatacatalogV1UsageSignalResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1UsageSignalResponsePtrOutput() GoogleCloudDatacatalogV1UsageSignalResponsePtrOutput
-	ToGoogleCloudDatacatalogV1UsageSignalResponsePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1UsageSignalResponsePtrOutput
-}
-
-type googleCloudDatacatalogV1UsageSignalResponsePtrType GoogleCloudDatacatalogV1UsageSignalResponseArgs
-
-func GoogleCloudDatacatalogV1UsageSignalResponsePtr(v *GoogleCloudDatacatalogV1UsageSignalResponseArgs) GoogleCloudDatacatalogV1UsageSignalResponsePtrInput {
-	return (*googleCloudDatacatalogV1UsageSignalResponsePtrType)(v)
-}
-
-func (*googleCloudDatacatalogV1UsageSignalResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1UsageSignalResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatacatalogV1UsageSignalResponsePtrType) ToGoogleCloudDatacatalogV1UsageSignalResponsePtrOutput() GoogleCloudDatacatalogV1UsageSignalResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1UsageSignalResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatacatalogV1UsageSignalResponsePtrType) ToGoogleCloudDatacatalogV1UsageSignalResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1UsageSignalResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1UsageSignalResponsePtrOutput)
 }
 
 // The set of all usage signals that Data Catalog stores. Note: Usually, these signals are updated daily. In rare cases, an update may fail but will be performed again on the next day.
@@ -5301,16 +3260,6 @@ func (o GoogleCloudDatacatalogV1UsageSignalResponseOutput) ToGoogleCloudDatacata
 	return o
 }
 
-func (o GoogleCloudDatacatalogV1UsageSignalResponseOutput) ToGoogleCloudDatacatalogV1UsageSignalResponsePtrOutput() GoogleCloudDatacatalogV1UsageSignalResponsePtrOutput {
-	return o.ToGoogleCloudDatacatalogV1UsageSignalResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatacatalogV1UsageSignalResponseOutput) ToGoogleCloudDatacatalogV1UsageSignalResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1UsageSignalResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1UsageSignalResponse) *GoogleCloudDatacatalogV1UsageSignalResponse {
-		return &v
-	}).(GoogleCloudDatacatalogV1UsageSignalResponsePtrOutput)
-}
-
 // The end timestamp of the duration of usage statistics.
 func (o GoogleCloudDatacatalogV1UsageSignalResponseOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1UsageSignalResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
@@ -5319,50 +3268,6 @@ func (o GoogleCloudDatacatalogV1UsageSignalResponseOutput) UpdateTime() pulumi.S
 // Usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D"}`.
 func (o GoogleCloudDatacatalogV1UsageSignalResponseOutput) UsageWithinTimeRange() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1UsageSignalResponse) map[string]string { return v.UsageWithinTimeRange }).(pulumi.StringMapOutput)
-}
-
-type GoogleCloudDatacatalogV1UsageSignalResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1UsageSignalResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1UsageSignalResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1UsageSignalResponsePtrOutput) ToGoogleCloudDatacatalogV1UsageSignalResponsePtrOutput() GoogleCloudDatacatalogV1UsageSignalResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1UsageSignalResponsePtrOutput) ToGoogleCloudDatacatalogV1UsageSignalResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1UsageSignalResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1UsageSignalResponsePtrOutput) Elem() GoogleCloudDatacatalogV1UsageSignalResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1UsageSignalResponse) GoogleCloudDatacatalogV1UsageSignalResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatacatalogV1UsageSignalResponse
-		return ret
-	}).(GoogleCloudDatacatalogV1UsageSignalResponseOutput)
-}
-
-// The end timestamp of the duration of usage statistics.
-func (o GoogleCloudDatacatalogV1UsageSignalResponsePtrOutput) UpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1UsageSignalResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UpdateTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D"}`.
-func (o GoogleCloudDatacatalogV1UsageSignalResponsePtrOutput) UsageWithinTimeRange() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1UsageSignalResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.UsageWithinTimeRange
-	}).(pulumi.StringMapOutput)
 }
 
 // Table view specification.
@@ -5492,76 +3397,6 @@ type GoogleCloudDatacatalogV1ViewSpecResponse struct {
 	ViewQuery string `pulumi:"viewQuery"`
 }
 
-// GoogleCloudDatacatalogV1ViewSpecResponseInput is an input type that accepts GoogleCloudDatacatalogV1ViewSpecResponseArgs and GoogleCloudDatacatalogV1ViewSpecResponseOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1ViewSpecResponseInput` via:
-//
-//          GoogleCloudDatacatalogV1ViewSpecResponseArgs{...}
-type GoogleCloudDatacatalogV1ViewSpecResponseInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1ViewSpecResponseOutput() GoogleCloudDatacatalogV1ViewSpecResponseOutput
-	ToGoogleCloudDatacatalogV1ViewSpecResponseOutputWithContext(context.Context) GoogleCloudDatacatalogV1ViewSpecResponseOutput
-}
-
-// Table view specification.
-type GoogleCloudDatacatalogV1ViewSpecResponseArgs struct {
-	// The query that defines the table view.
-	ViewQuery pulumi.StringInput `pulumi:"viewQuery"`
-}
-
-func (GoogleCloudDatacatalogV1ViewSpecResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1ViewSpecResponse)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1ViewSpecResponseArgs) ToGoogleCloudDatacatalogV1ViewSpecResponseOutput() GoogleCloudDatacatalogV1ViewSpecResponseOutput {
-	return i.ToGoogleCloudDatacatalogV1ViewSpecResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1ViewSpecResponseArgs) ToGoogleCloudDatacatalogV1ViewSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ViewSpecResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ViewSpecResponseOutput)
-}
-
-func (i GoogleCloudDatacatalogV1ViewSpecResponseArgs) ToGoogleCloudDatacatalogV1ViewSpecResponsePtrOutput() GoogleCloudDatacatalogV1ViewSpecResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1ViewSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1ViewSpecResponseArgs) ToGoogleCloudDatacatalogV1ViewSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ViewSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ViewSpecResponseOutput).ToGoogleCloudDatacatalogV1ViewSpecResponsePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatacatalogV1ViewSpecResponsePtrInput is an input type that accepts GoogleCloudDatacatalogV1ViewSpecResponseArgs, GoogleCloudDatacatalogV1ViewSpecResponsePtr and GoogleCloudDatacatalogV1ViewSpecResponsePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1ViewSpecResponsePtrInput` via:
-//
-//          GoogleCloudDatacatalogV1ViewSpecResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDatacatalogV1ViewSpecResponsePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1ViewSpecResponsePtrOutput() GoogleCloudDatacatalogV1ViewSpecResponsePtrOutput
-	ToGoogleCloudDatacatalogV1ViewSpecResponsePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1ViewSpecResponsePtrOutput
-}
-
-type googleCloudDatacatalogV1ViewSpecResponsePtrType GoogleCloudDatacatalogV1ViewSpecResponseArgs
-
-func GoogleCloudDatacatalogV1ViewSpecResponsePtr(v *GoogleCloudDatacatalogV1ViewSpecResponseArgs) GoogleCloudDatacatalogV1ViewSpecResponsePtrInput {
-	return (*googleCloudDatacatalogV1ViewSpecResponsePtrType)(v)
-}
-
-func (*googleCloudDatacatalogV1ViewSpecResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1ViewSpecResponse)(nil)).Elem()
-}
-
-func (i *googleCloudDatacatalogV1ViewSpecResponsePtrType) ToGoogleCloudDatacatalogV1ViewSpecResponsePtrOutput() GoogleCloudDatacatalogV1ViewSpecResponsePtrOutput {
-	return i.ToGoogleCloudDatacatalogV1ViewSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatacatalogV1ViewSpecResponsePtrType) ToGoogleCloudDatacatalogV1ViewSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ViewSpecResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ViewSpecResponsePtrOutput)
-}
-
 // Table view specification.
 type GoogleCloudDatacatalogV1ViewSpecResponseOutput struct{ *pulumi.OutputState }
 
@@ -5577,129 +3412,46 @@ func (o GoogleCloudDatacatalogV1ViewSpecResponseOutput) ToGoogleCloudDatacatalog
 	return o
 }
 
-func (o GoogleCloudDatacatalogV1ViewSpecResponseOutput) ToGoogleCloudDatacatalogV1ViewSpecResponsePtrOutput() GoogleCloudDatacatalogV1ViewSpecResponsePtrOutput {
-	return o.ToGoogleCloudDatacatalogV1ViewSpecResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatacatalogV1ViewSpecResponseOutput) ToGoogleCloudDatacatalogV1ViewSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ViewSpecResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1ViewSpecResponse) *GoogleCloudDatacatalogV1ViewSpecResponse {
-		return &v
-	}).(GoogleCloudDatacatalogV1ViewSpecResponsePtrOutput)
-}
-
 // The query that defines the table view.
 func (o GoogleCloudDatacatalogV1ViewSpecResponseOutput) ViewQuery() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1ViewSpecResponse) string { return v.ViewQuery }).(pulumi.StringOutput)
 }
 
-type GoogleCloudDatacatalogV1ViewSpecResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1ViewSpecResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1ViewSpecResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1ViewSpecResponsePtrOutput) ToGoogleCloudDatacatalogV1ViewSpecResponsePtrOutput() GoogleCloudDatacatalogV1ViewSpecResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1ViewSpecResponsePtrOutput) ToGoogleCloudDatacatalogV1ViewSpecResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ViewSpecResponsePtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1ViewSpecResponsePtrOutput) Elem() GoogleCloudDatacatalogV1ViewSpecResponseOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1ViewSpecResponse) GoogleCloudDatacatalogV1ViewSpecResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatacatalogV1ViewSpecResponse
-		return ret
-	}).(GoogleCloudDatacatalogV1ViewSpecResponseOutput)
-}
-
-// The query that defines the table view.
-func (o GoogleCloudDatacatalogV1ViewSpecResponsePtrOutput) ViewQuery() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1ViewSpecResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ViewQuery
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryConnectionSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryDateShardedSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryRoutineSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryRoutineSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryTableSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryTableSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryTableSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryTableSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryTableSpecResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryTableSpecResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryTableSpecResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ColumnSchemaInput)(nil)).Elem(), GoogleCloudDatacatalogV1ColumnSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ColumnSchemaArrayInput)(nil)).Elem(), GoogleCloudDatacatalogV1ColumnSchemaArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ColumnSchemaResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1ColumnSchemaResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ColumnSchemaResponseArrayInput)(nil)).Elem(), GoogleCloudDatacatalogV1ColumnSchemaResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DataSourceConnectionSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DataSourceConnectionSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DataSourceResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1DataSourceResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DataSourceResponsePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1DataSourceResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DatabaseTableSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1DatabaseTableSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DatabaseTableSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1DatabaseTableSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DatabaseTableSpecResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1DatabaseTableSpecResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1DatabaseTableSpecResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1GcsFileSpecResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1GcsFileSpecResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1GcsFileSpecResponseArrayInput)(nil)).Elem(), GoogleCloudDatacatalogV1GcsFileSpecResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1GcsFilesetSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1GcsFilesetSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1GcsFilesetSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1GcsFilesetSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1GcsFilesetSpecResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1GcsFilesetSpecResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1GcsFilesetSpecResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1RoutineSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1RoutineSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecArgumentInput)(nil)).Elem(), GoogleCloudDatacatalogV1RoutineSpecArgumentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecArgumentArrayInput)(nil)).Elem(), GoogleCloudDatacatalogV1RoutineSpecArgumentArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecArgumentResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArrayInput)(nil)).Elem(), GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1RoutineSpecResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecResponsePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1RoutineSpecResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1SchemaInput)(nil)).Elem(), GoogleCloudDatacatalogV1SchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1SchemaPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1SchemaArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1SchemaResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1SchemaResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1SchemaResponsePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1SchemaResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1SystemTimestampsInput)(nil)).Elem(), GoogleCloudDatacatalogV1SystemTimestampsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1SystemTimestampsPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1SystemTimestampsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1SystemTimestampsResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1SystemTimestampsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1SystemTimestampsResponsePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1SystemTimestampsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1TableSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1TableSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1TableSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1TableSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1TableSpecResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1TableSpecResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1TableSpecResponsePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1TableSpecResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1UsageSignalResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1UsageSignalResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1UsageSignalResponsePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1UsageSignalResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ViewSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1ViewSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ViewSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1ViewSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ViewSpecResponseInput)(nil)).Elem(), GoogleCloudDatacatalogV1ViewSpecResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ViewSpecResponsePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1ViewSpecResponseArgs{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
@@ -5710,23 +3462,18 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryConnectionSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryConnectionSpecResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryDateShardedSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryDateShardedSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryRoutineSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryRoutineSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryRoutineSpecResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryRoutineSpecResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryTableSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryTableSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryTableSpecResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ColumnSchemaOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ColumnSchemaArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ColumnSchemaResponseOutput{})
@@ -5734,19 +3481,15 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataSourceConnectionSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataSourceConnectionSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataSourceConnectionSpecResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataSourceResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DataSourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DatabaseTableSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DatabaseTableSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DatabaseTableSpecResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1GcsFileSpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1GcsFileSpecResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1GcsFilesetSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1GcsFilesetSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1GcsFilesetSpecResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1GcsFilesetSpecResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1RoutineSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1RoutineSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1RoutineSpecArgumentOutput{})
@@ -5754,23 +3497,17 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1RoutineSpecArgumentResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1RoutineSpecArgumentResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1RoutineSpecResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1RoutineSpecResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1SchemaOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1SchemaPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1SchemaResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1SchemaResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1SystemTimestampsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1SystemTimestampsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1SystemTimestampsResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1SystemTimestampsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1TableSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1TableSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1TableSpecResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1TableSpecResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1UsageSignalResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1UsageSignalResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ViewSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ViewSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ViewSpecResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ViewSpecResponsePtrOutput{})
 }

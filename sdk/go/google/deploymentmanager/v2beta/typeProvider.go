@@ -129,7 +129,7 @@ type TypeProviderInput interface {
 }
 
 func (*TypeProvider) ElementType() reflect.Type {
-	return reflect.TypeOf((*TypeProvider)(nil))
+	return reflect.TypeOf((**TypeProvider)(nil)).Elem()
 }
 
 func (i *TypeProvider) ToTypeProviderOutput() TypeProviderOutput {
@@ -143,7 +143,7 @@ func (i *TypeProvider) ToTypeProviderOutputWithContext(ctx context.Context) Type
 type TypeProviderOutput struct{ *pulumi.OutputState }
 
 func (TypeProviderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TypeProvider)(nil))
+	return reflect.TypeOf((**TypeProvider)(nil)).Elem()
 }
 
 func (o TypeProviderOutput) ToTypeProviderOutput() TypeProviderOutput {

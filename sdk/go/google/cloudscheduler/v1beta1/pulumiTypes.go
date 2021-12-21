@@ -240,84 +240,6 @@ type AppEngineHttpTargetResponse struct {
 	RelativeUri string `pulumi:"relativeUri"`
 }
 
-// AppEngineHttpTargetResponseInput is an input type that accepts AppEngineHttpTargetResponseArgs and AppEngineHttpTargetResponseOutput values.
-// You can construct a concrete instance of `AppEngineHttpTargetResponseInput` via:
-//
-//          AppEngineHttpTargetResponseArgs{...}
-type AppEngineHttpTargetResponseInput interface {
-	pulumi.Input
-
-	ToAppEngineHttpTargetResponseOutput() AppEngineHttpTargetResponseOutput
-	ToAppEngineHttpTargetResponseOutputWithContext(context.Context) AppEngineHttpTargetResponseOutput
-}
-
-// App Engine target. The job will be pushed to a job handler by means of an HTTP request via an http_method such as HTTP POST, HTTP GET, etc. The job is acknowledged by means of an HTTP response code in the range [200 - 299]. Error 503 is considered an App Engine system error instead of an application error. Requests returning error 503 will be retried regardless of retry configuration and not counted against retry counts. Any other response code, or a failure to receive a response before the deadline, constitutes a failed attempt.
-type AppEngineHttpTargetResponseArgs struct {
-	// App Engine Routing setting for the job.
-	AppEngineRouting AppEngineRoutingResponseInput `pulumi:"appEngineRouting"`
-	// Body. HTTP request body. A request body is allowed only if the HTTP method is POST or PUT. It will result in invalid argument error to set a body on a job with an incompatible HttpMethod.
-	Body pulumi.StringInput `pulumi:"body"`
-	// HTTP request headers. This map contains the header field names and values. Headers can be set when the job is created. Cloud Scheduler sets some headers to default values: * `User-Agent`: By default, this header is `"AppEngine-Google; (+http://code.google.com/appengine)"`. This header can be modified, but Cloud Scheduler will append `"AppEngine-Google; (+http://code.google.com/appengine)"` to the modified `User-Agent`. * `X-CloudScheduler`: This header will be set to true. If the job has an body, Cloud Scheduler sets the following headers: * `Content-Type`: By default, the `Content-Type` header is set to `"application/octet-stream"`. The default can be overridden by explictly setting `Content-Type` to a particular media type when the job is created. For example, `Content-Type` can be set to `"application/json"`. * `Content-Length`: This is computed by Cloud Scheduler. This value is output only. It cannot be changed. The headers below are output only. They cannot be set or overridden: * `X-Google-*`: For Google internal use only. * `X-AppEngine-*`: For Google internal use only. In addition, some App Engine headers, which contain job-specific information, are also be sent to the job handler.
-	Headers pulumi.StringMapInput `pulumi:"headers"`
-	// The HTTP method to use for the request. PATCH and OPTIONS are not permitted.
-	HttpMethod pulumi.StringInput `pulumi:"httpMethod"`
-	// The relative URI. The relative URL must begin with "/" and must be a valid HTTP relative URL. It can contain a path, query string arguments, and `#` fragments. If the relative URL is empty, then the root path "/" will be used. No spaces are allowed, and the maximum length allowed is 2083 characters.
-	RelativeUri pulumi.StringInput `pulumi:"relativeUri"`
-}
-
-func (AppEngineHttpTargetResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppEngineHttpTargetResponse)(nil)).Elem()
-}
-
-func (i AppEngineHttpTargetResponseArgs) ToAppEngineHttpTargetResponseOutput() AppEngineHttpTargetResponseOutput {
-	return i.ToAppEngineHttpTargetResponseOutputWithContext(context.Background())
-}
-
-func (i AppEngineHttpTargetResponseArgs) ToAppEngineHttpTargetResponseOutputWithContext(ctx context.Context) AppEngineHttpTargetResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEngineHttpTargetResponseOutput)
-}
-
-func (i AppEngineHttpTargetResponseArgs) ToAppEngineHttpTargetResponsePtrOutput() AppEngineHttpTargetResponsePtrOutput {
-	return i.ToAppEngineHttpTargetResponsePtrOutputWithContext(context.Background())
-}
-
-func (i AppEngineHttpTargetResponseArgs) ToAppEngineHttpTargetResponsePtrOutputWithContext(ctx context.Context) AppEngineHttpTargetResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEngineHttpTargetResponseOutput).ToAppEngineHttpTargetResponsePtrOutputWithContext(ctx)
-}
-
-// AppEngineHttpTargetResponsePtrInput is an input type that accepts AppEngineHttpTargetResponseArgs, AppEngineHttpTargetResponsePtr and AppEngineHttpTargetResponsePtrOutput values.
-// You can construct a concrete instance of `AppEngineHttpTargetResponsePtrInput` via:
-//
-//          AppEngineHttpTargetResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type AppEngineHttpTargetResponsePtrInput interface {
-	pulumi.Input
-
-	ToAppEngineHttpTargetResponsePtrOutput() AppEngineHttpTargetResponsePtrOutput
-	ToAppEngineHttpTargetResponsePtrOutputWithContext(context.Context) AppEngineHttpTargetResponsePtrOutput
-}
-
-type appEngineHttpTargetResponsePtrType AppEngineHttpTargetResponseArgs
-
-func AppEngineHttpTargetResponsePtr(v *AppEngineHttpTargetResponseArgs) AppEngineHttpTargetResponsePtrInput {
-	return (*appEngineHttpTargetResponsePtrType)(v)
-}
-
-func (*appEngineHttpTargetResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppEngineHttpTargetResponse)(nil)).Elem()
-}
-
-func (i *appEngineHttpTargetResponsePtrType) ToAppEngineHttpTargetResponsePtrOutput() AppEngineHttpTargetResponsePtrOutput {
-	return i.ToAppEngineHttpTargetResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *appEngineHttpTargetResponsePtrType) ToAppEngineHttpTargetResponsePtrOutputWithContext(ctx context.Context) AppEngineHttpTargetResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEngineHttpTargetResponsePtrOutput)
-}
-
 // App Engine target. The job will be pushed to a job handler by means of an HTTP request via an http_method such as HTTP POST, HTTP GET, etc. The job is acknowledged by means of an HTTP response code in the range [200 - 299]. Error 503 is considered an App Engine system error instead of an application error. Requests returning error 503 will be retried regardless of retry configuration and not counted against retry counts. Any other response code, or a failure to receive a response before the deadline, constitutes a failed attempt.
 type AppEngineHttpTargetResponseOutput struct{ *pulumi.OutputState }
 
@@ -331,16 +253,6 @@ func (o AppEngineHttpTargetResponseOutput) ToAppEngineHttpTargetResponseOutput()
 
 func (o AppEngineHttpTargetResponseOutput) ToAppEngineHttpTargetResponseOutputWithContext(ctx context.Context) AppEngineHttpTargetResponseOutput {
 	return o
-}
-
-func (o AppEngineHttpTargetResponseOutput) ToAppEngineHttpTargetResponsePtrOutput() AppEngineHttpTargetResponsePtrOutput {
-	return o.ToAppEngineHttpTargetResponsePtrOutputWithContext(context.Background())
-}
-
-func (o AppEngineHttpTargetResponseOutput) ToAppEngineHttpTargetResponsePtrOutputWithContext(ctx context.Context) AppEngineHttpTargetResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineHttpTargetResponse) *AppEngineHttpTargetResponse {
-		return &v
-	}).(AppEngineHttpTargetResponsePtrOutput)
 }
 
 // App Engine Routing setting for the job.
@@ -366,80 +278,6 @@ func (o AppEngineHttpTargetResponseOutput) HttpMethod() pulumi.StringOutput {
 // The relative URI. The relative URL must begin with "/" and must be a valid HTTP relative URL. It can contain a path, query string arguments, and `#` fragments. If the relative URL is empty, then the root path "/" will be used. No spaces are allowed, and the maximum length allowed is 2083 characters.
 func (o AppEngineHttpTargetResponseOutput) RelativeUri() pulumi.StringOutput {
 	return o.ApplyT(func(v AppEngineHttpTargetResponse) string { return v.RelativeUri }).(pulumi.StringOutput)
-}
-
-type AppEngineHttpTargetResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AppEngineHttpTargetResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppEngineHttpTargetResponse)(nil)).Elem()
-}
-
-func (o AppEngineHttpTargetResponsePtrOutput) ToAppEngineHttpTargetResponsePtrOutput() AppEngineHttpTargetResponsePtrOutput {
-	return o
-}
-
-func (o AppEngineHttpTargetResponsePtrOutput) ToAppEngineHttpTargetResponsePtrOutputWithContext(ctx context.Context) AppEngineHttpTargetResponsePtrOutput {
-	return o
-}
-
-func (o AppEngineHttpTargetResponsePtrOutput) Elem() AppEngineHttpTargetResponseOutput {
-	return o.ApplyT(func(v *AppEngineHttpTargetResponse) AppEngineHttpTargetResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AppEngineHttpTargetResponse
-		return ret
-	}).(AppEngineHttpTargetResponseOutput)
-}
-
-// App Engine Routing setting for the job.
-func (o AppEngineHttpTargetResponsePtrOutput) AppEngineRouting() AppEngineRoutingResponsePtrOutput {
-	return o.ApplyT(func(v *AppEngineHttpTargetResponse) *AppEngineRoutingResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.AppEngineRouting
-	}).(AppEngineRoutingResponsePtrOutput)
-}
-
-// Body. HTTP request body. A request body is allowed only if the HTTP method is POST or PUT. It will result in invalid argument error to set a body on a job with an incompatible HttpMethod.
-func (o AppEngineHttpTargetResponsePtrOutput) Body() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppEngineHttpTargetResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Body
-	}).(pulumi.StringPtrOutput)
-}
-
-// HTTP request headers. This map contains the header field names and values. Headers can be set when the job is created. Cloud Scheduler sets some headers to default values: * `User-Agent`: By default, this header is `"AppEngine-Google; (+http://code.google.com/appengine)"`. This header can be modified, but Cloud Scheduler will append `"AppEngine-Google; (+http://code.google.com/appengine)"` to the modified `User-Agent`. * `X-CloudScheduler`: This header will be set to true. If the job has an body, Cloud Scheduler sets the following headers: * `Content-Type`: By default, the `Content-Type` header is set to `"application/octet-stream"`. The default can be overridden by explictly setting `Content-Type` to a particular media type when the job is created. For example, `Content-Type` can be set to `"application/json"`. * `Content-Length`: This is computed by Cloud Scheduler. This value is output only. It cannot be changed. The headers below are output only. They cannot be set or overridden: * `X-Google-*`: For Google internal use only. * `X-AppEngine-*`: For Google internal use only. In addition, some App Engine headers, which contain job-specific information, are also be sent to the job handler.
-func (o AppEngineHttpTargetResponsePtrOutput) Headers() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *AppEngineHttpTargetResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Headers
-	}).(pulumi.StringMapOutput)
-}
-
-// The HTTP method to use for the request. PATCH and OPTIONS are not permitted.
-func (o AppEngineHttpTargetResponsePtrOutput) HttpMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppEngineHttpTargetResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.HttpMethod
-	}).(pulumi.StringPtrOutput)
-}
-
-// The relative URI. The relative URL must begin with "/" and must be a valid HTTP relative URL. It can contain a path, query string arguments, and `#` fragments. If the relative URL is empty, then the root path "/" will be used. No spaces are allowed, and the maximum length allowed is 2083 characters.
-func (o AppEngineHttpTargetResponsePtrOutput) RelativeUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppEngineHttpTargetResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RelativeUri
-	}).(pulumi.StringPtrOutput)
 }
 
 // App Engine Routing. For more information about services, versions, and instances see [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine), [Microservices Architecture on Google App Engine](https://cloud.google.com/appengine/docs/python/microservices-on-app-engine), [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed), and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
@@ -632,82 +470,6 @@ type AppEngineRoutingResponse struct {
 	Version string `pulumi:"version"`
 }
 
-// AppEngineRoutingResponseInput is an input type that accepts AppEngineRoutingResponseArgs and AppEngineRoutingResponseOutput values.
-// You can construct a concrete instance of `AppEngineRoutingResponseInput` via:
-//
-//          AppEngineRoutingResponseArgs{...}
-type AppEngineRoutingResponseInput interface {
-	pulumi.Input
-
-	ToAppEngineRoutingResponseOutput() AppEngineRoutingResponseOutput
-	ToAppEngineRoutingResponseOutputWithContext(context.Context) AppEngineRoutingResponseOutput
-}
-
-// App Engine Routing. For more information about services, versions, and instances see [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine), [Microservices Architecture on Google App Engine](https://cloud.google.com/appengine/docs/python/microservices-on-app-engine), [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed), and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
-type AppEngineRoutingResponseArgs struct {
-	// The host that the job is sent to. For more information about how App Engine requests are routed, see [here](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed). The host is constructed as: * `host = [application_domain_name]` `| [service] + '.' + [application_domain_name]` `| [version] + '.' + [application_domain_name]` `| [version_dot_service]+ '.' + [application_domain_name]` `| [instance] + '.' + [application_domain_name]` `| [instance_dot_service] + '.' + [application_domain_name]` `| [instance_dot_version] + '.' + [application_domain_name]` `| [instance_dot_version_dot_service] + '.' + [application_domain_name]` * `application_domain_name` = The domain name of the app, for example .appspot.com, which is associated with the job's project ID. * `service =` service * `version =` version * `version_dot_service =` version `+ '.' +` service * `instance =` instance * `instance_dot_service =` instance `+ '.' +` service * `instance_dot_version =` instance `+ '.' +` version * `instance_dot_version_dot_service =` instance `+ '.' +` version `+ '.' +` service If service is empty, then the job will be sent to the service which is the default service when the job is attempted. If version is empty, then the job will be sent to the version which is the default version when the job is attempted. If instance is empty, then the job will be sent to an instance which is available when the job is attempted. If service, version, or instance is invalid, then the job will be sent to the default version of the default service when the job is attempted.
-	Host pulumi.StringInput `pulumi:"host"`
-	// App instance. By default, the job is sent to an instance which is available when the job is attempted. Requests can only be sent to a specific instance if [manual scaling is used in App Engine Standard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine?hl=en_US#scaling_types_and_instance_classes). App Engine Flex does not support instances. For more information, see [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed) and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
-	Instance pulumi.StringInput `pulumi:"instance"`
-	// App service. By default, the job is sent to the service which is the default service when the job is attempted.
-	Service pulumi.StringInput `pulumi:"service"`
-	// App version. By default, the job is sent to the version which is the default version when the job is attempted.
-	Version pulumi.StringInput `pulumi:"version"`
-}
-
-func (AppEngineRoutingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppEngineRoutingResponse)(nil)).Elem()
-}
-
-func (i AppEngineRoutingResponseArgs) ToAppEngineRoutingResponseOutput() AppEngineRoutingResponseOutput {
-	return i.ToAppEngineRoutingResponseOutputWithContext(context.Background())
-}
-
-func (i AppEngineRoutingResponseArgs) ToAppEngineRoutingResponseOutputWithContext(ctx context.Context) AppEngineRoutingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEngineRoutingResponseOutput)
-}
-
-func (i AppEngineRoutingResponseArgs) ToAppEngineRoutingResponsePtrOutput() AppEngineRoutingResponsePtrOutput {
-	return i.ToAppEngineRoutingResponsePtrOutputWithContext(context.Background())
-}
-
-func (i AppEngineRoutingResponseArgs) ToAppEngineRoutingResponsePtrOutputWithContext(ctx context.Context) AppEngineRoutingResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEngineRoutingResponseOutput).ToAppEngineRoutingResponsePtrOutputWithContext(ctx)
-}
-
-// AppEngineRoutingResponsePtrInput is an input type that accepts AppEngineRoutingResponseArgs, AppEngineRoutingResponsePtr and AppEngineRoutingResponsePtrOutput values.
-// You can construct a concrete instance of `AppEngineRoutingResponsePtrInput` via:
-//
-//          AppEngineRoutingResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type AppEngineRoutingResponsePtrInput interface {
-	pulumi.Input
-
-	ToAppEngineRoutingResponsePtrOutput() AppEngineRoutingResponsePtrOutput
-	ToAppEngineRoutingResponsePtrOutputWithContext(context.Context) AppEngineRoutingResponsePtrOutput
-}
-
-type appEngineRoutingResponsePtrType AppEngineRoutingResponseArgs
-
-func AppEngineRoutingResponsePtr(v *AppEngineRoutingResponseArgs) AppEngineRoutingResponsePtrInput {
-	return (*appEngineRoutingResponsePtrType)(v)
-}
-
-func (*appEngineRoutingResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppEngineRoutingResponse)(nil)).Elem()
-}
-
-func (i *appEngineRoutingResponsePtrType) ToAppEngineRoutingResponsePtrOutput() AppEngineRoutingResponsePtrOutput {
-	return i.ToAppEngineRoutingResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *appEngineRoutingResponsePtrType) ToAppEngineRoutingResponsePtrOutputWithContext(ctx context.Context) AppEngineRoutingResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppEngineRoutingResponsePtrOutput)
-}
-
 // App Engine Routing. For more information about services, versions, and instances see [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine), [Microservices Architecture on Google App Engine](https://cloud.google.com/appengine/docs/python/microservices-on-app-engine), [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed), and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
 type AppEngineRoutingResponseOutput struct{ *pulumi.OutputState }
 
@@ -721,16 +483,6 @@ func (o AppEngineRoutingResponseOutput) ToAppEngineRoutingResponseOutput() AppEn
 
 func (o AppEngineRoutingResponseOutput) ToAppEngineRoutingResponseOutputWithContext(ctx context.Context) AppEngineRoutingResponseOutput {
 	return o
-}
-
-func (o AppEngineRoutingResponseOutput) ToAppEngineRoutingResponsePtrOutput() AppEngineRoutingResponsePtrOutput {
-	return o.ToAppEngineRoutingResponsePtrOutputWithContext(context.Background())
-}
-
-func (o AppEngineRoutingResponseOutput) ToAppEngineRoutingResponsePtrOutputWithContext(ctx context.Context) AppEngineRoutingResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineRoutingResponse) *AppEngineRoutingResponse {
-		return &v
-	}).(AppEngineRoutingResponsePtrOutput)
 }
 
 // The host that the job is sent to. For more information about how App Engine requests are routed, see [here](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed). The host is constructed as: * `host = [application_domain_name]` `| [service] + '.' + [application_domain_name]` `| [version] + '.' + [application_domain_name]` `| [version_dot_service]+ '.' + [application_domain_name]` `| [instance] + '.' + [application_domain_name]` `| [instance_dot_service] + '.' + [application_domain_name]` `| [instance_dot_version] + '.' + [application_domain_name]` `| [instance_dot_version_dot_service] + '.' + [application_domain_name]` * `application_domain_name` = The domain name of the app, for example .appspot.com, which is associated with the job's project ID. * `service =` service * `version =` version * `version_dot_service =` version `+ '.' +` service * `instance =` instance * `instance_dot_service =` instance `+ '.' +` service * `instance_dot_version =` instance `+ '.' +` version * `instance_dot_version_dot_service =` instance `+ '.' +` version `+ '.' +` service If service is empty, then the job will be sent to the service which is the default service when the job is attempted. If version is empty, then the job will be sent to the version which is the default version when the job is attempted. If instance is empty, then the job will be sent to an instance which is available when the job is attempted. If service, version, or instance is invalid, then the job will be sent to the default version of the default service when the job is attempted.
@@ -751,70 +503,6 @@ func (o AppEngineRoutingResponseOutput) Service() pulumi.StringOutput {
 // App version. By default, the job is sent to the version which is the default version when the job is attempted.
 func (o AppEngineRoutingResponseOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v AppEngineRoutingResponse) string { return v.Version }).(pulumi.StringOutput)
-}
-
-type AppEngineRoutingResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AppEngineRoutingResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppEngineRoutingResponse)(nil)).Elem()
-}
-
-func (o AppEngineRoutingResponsePtrOutput) ToAppEngineRoutingResponsePtrOutput() AppEngineRoutingResponsePtrOutput {
-	return o
-}
-
-func (o AppEngineRoutingResponsePtrOutput) ToAppEngineRoutingResponsePtrOutputWithContext(ctx context.Context) AppEngineRoutingResponsePtrOutput {
-	return o
-}
-
-func (o AppEngineRoutingResponsePtrOutput) Elem() AppEngineRoutingResponseOutput {
-	return o.ApplyT(func(v *AppEngineRoutingResponse) AppEngineRoutingResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AppEngineRoutingResponse
-		return ret
-	}).(AppEngineRoutingResponseOutput)
-}
-
-// The host that the job is sent to. For more information about how App Engine requests are routed, see [here](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed). The host is constructed as: * `host = [application_domain_name]` `| [service] + '.' + [application_domain_name]` `| [version] + '.' + [application_domain_name]` `| [version_dot_service]+ '.' + [application_domain_name]` `| [instance] + '.' + [application_domain_name]` `| [instance_dot_service] + '.' + [application_domain_name]` `| [instance_dot_version] + '.' + [application_domain_name]` `| [instance_dot_version_dot_service] + '.' + [application_domain_name]` * `application_domain_name` = The domain name of the app, for example .appspot.com, which is associated with the job's project ID. * `service =` service * `version =` version * `version_dot_service =` version `+ '.' +` service * `instance =` instance * `instance_dot_service =` instance `+ '.' +` service * `instance_dot_version =` instance `+ '.' +` version * `instance_dot_version_dot_service =` instance `+ '.' +` version `+ '.' +` service If service is empty, then the job will be sent to the service which is the default service when the job is attempted. If version is empty, then the job will be sent to the version which is the default version when the job is attempted. If instance is empty, then the job will be sent to an instance which is available when the job is attempted. If service, version, or instance is invalid, then the job will be sent to the default version of the default service when the job is attempted.
-func (o AppEngineRoutingResponsePtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppEngineRoutingResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Host
-	}).(pulumi.StringPtrOutput)
-}
-
-// App instance. By default, the job is sent to an instance which is available when the job is attempted. Requests can only be sent to a specific instance if [manual scaling is used in App Engine Standard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine?hl=en_US#scaling_types_and_instance_classes). App Engine Flex does not support instances. For more information, see [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed) and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
-func (o AppEngineRoutingResponsePtrOutput) Instance() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppEngineRoutingResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Instance
-	}).(pulumi.StringPtrOutput)
-}
-
-// App service. By default, the job is sent to the service which is the default service when the job is attempted.
-func (o AppEngineRoutingResponsePtrOutput) Service() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppEngineRoutingResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Service
-	}).(pulumi.StringPtrOutput)
-}
-
-// App version. By default, the job is sent to the version which is the default version when the job is attempted.
-func (o AppEngineRoutingResponsePtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppEngineRoutingResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Version
-	}).(pulumi.StringPtrOutput)
 }
 
 // Http target. The job will be pushed to the job handler by means of an HTTP request via an http_method such as HTTP POST, HTTP GET, etc. The job is acknowledged by means of an HTTP response code in the range [200 - 299]. A failure to receive a response constitutes a failed execution. For a redirected request, the response returned by the redirected request is considered.
@@ -1068,86 +756,6 @@ type HttpTargetResponse struct {
 	Uri string `pulumi:"uri"`
 }
 
-// HttpTargetResponseInput is an input type that accepts HttpTargetResponseArgs and HttpTargetResponseOutput values.
-// You can construct a concrete instance of `HttpTargetResponseInput` via:
-//
-//          HttpTargetResponseArgs{...}
-type HttpTargetResponseInput interface {
-	pulumi.Input
-
-	ToHttpTargetResponseOutput() HttpTargetResponseOutput
-	ToHttpTargetResponseOutputWithContext(context.Context) HttpTargetResponseOutput
-}
-
-// Http target. The job will be pushed to the job handler by means of an HTTP request via an http_method such as HTTP POST, HTTP GET, etc. The job is acknowledged by means of an HTTP response code in the range [200 - 299]. A failure to receive a response constitutes a failed execution. For a redirected request, the response returned by the redirected request is considered.
-type HttpTargetResponseArgs struct {
-	// HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a job with an incompatible HttpMethod.
-	Body pulumi.StringInput `pulumi:"body"`
-	// The user can specify HTTP request headers to send with the job's HTTP request. This map contains the header field names and values. Repeated headers are not supported, but a header value can contain commas. These headers represent a subset of the headers that will accompany the job's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is below: - Host: This will be computed by Cloud Scheduler and derived from uri. * `Content-Length`: This will be computed by Cloud Scheduler. * `User-Agent`: This will be set to `"Google-Cloud-Scheduler"`. * `X-Google-*`: Google internal use only. * `X-AppEngine-*`: Google internal use only. The total size of headers must be less than 80KB.
-	Headers pulumi.StringMapInput `pulumi:"headers"`
-	// Which HTTP method to use for the request.
-	HttpMethod pulumi.StringInput `pulumi:"httpMethod"`
-	// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
-	OauthToken OAuthTokenResponseInput `pulumi:"oauthToken"`
-	// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
-	OidcToken OidcTokenResponseInput `pulumi:"oidcToken"`
-	// The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
-	Uri pulumi.StringInput `pulumi:"uri"`
-}
-
-func (HttpTargetResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*HttpTargetResponse)(nil)).Elem()
-}
-
-func (i HttpTargetResponseArgs) ToHttpTargetResponseOutput() HttpTargetResponseOutput {
-	return i.ToHttpTargetResponseOutputWithContext(context.Background())
-}
-
-func (i HttpTargetResponseArgs) ToHttpTargetResponseOutputWithContext(ctx context.Context) HttpTargetResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HttpTargetResponseOutput)
-}
-
-func (i HttpTargetResponseArgs) ToHttpTargetResponsePtrOutput() HttpTargetResponsePtrOutput {
-	return i.ToHttpTargetResponsePtrOutputWithContext(context.Background())
-}
-
-func (i HttpTargetResponseArgs) ToHttpTargetResponsePtrOutputWithContext(ctx context.Context) HttpTargetResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HttpTargetResponseOutput).ToHttpTargetResponsePtrOutputWithContext(ctx)
-}
-
-// HttpTargetResponsePtrInput is an input type that accepts HttpTargetResponseArgs, HttpTargetResponsePtr and HttpTargetResponsePtrOutput values.
-// You can construct a concrete instance of `HttpTargetResponsePtrInput` via:
-//
-//          HttpTargetResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type HttpTargetResponsePtrInput interface {
-	pulumi.Input
-
-	ToHttpTargetResponsePtrOutput() HttpTargetResponsePtrOutput
-	ToHttpTargetResponsePtrOutputWithContext(context.Context) HttpTargetResponsePtrOutput
-}
-
-type httpTargetResponsePtrType HttpTargetResponseArgs
-
-func HttpTargetResponsePtr(v *HttpTargetResponseArgs) HttpTargetResponsePtrInput {
-	return (*httpTargetResponsePtrType)(v)
-}
-
-func (*httpTargetResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**HttpTargetResponse)(nil)).Elem()
-}
-
-func (i *httpTargetResponsePtrType) ToHttpTargetResponsePtrOutput() HttpTargetResponsePtrOutput {
-	return i.ToHttpTargetResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *httpTargetResponsePtrType) ToHttpTargetResponsePtrOutputWithContext(ctx context.Context) HttpTargetResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HttpTargetResponsePtrOutput)
-}
-
 // Http target. The job will be pushed to the job handler by means of an HTTP request via an http_method such as HTTP POST, HTTP GET, etc. The job is acknowledged by means of an HTTP response code in the range [200 - 299]. A failure to receive a response constitutes a failed execution. For a redirected request, the response returned by the redirected request is considered.
 type HttpTargetResponseOutput struct{ *pulumi.OutputState }
 
@@ -1161,16 +769,6 @@ func (o HttpTargetResponseOutput) ToHttpTargetResponseOutput() HttpTargetRespons
 
 func (o HttpTargetResponseOutput) ToHttpTargetResponseOutputWithContext(ctx context.Context) HttpTargetResponseOutput {
 	return o
-}
-
-func (o HttpTargetResponseOutput) ToHttpTargetResponsePtrOutput() HttpTargetResponsePtrOutput {
-	return o.ToHttpTargetResponsePtrOutputWithContext(context.Background())
-}
-
-func (o HttpTargetResponseOutput) ToHttpTargetResponsePtrOutputWithContext(ctx context.Context) HttpTargetResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpTargetResponse) *HttpTargetResponse {
-		return &v
-	}).(HttpTargetResponsePtrOutput)
 }
 
 // HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a job with an incompatible HttpMethod.
@@ -1201,90 +799,6 @@ func (o HttpTargetResponseOutput) OidcToken() OidcTokenResponseOutput {
 // The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
 func (o HttpTargetResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpTargetResponse) string { return v.Uri }).(pulumi.StringOutput)
-}
-
-type HttpTargetResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (HttpTargetResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**HttpTargetResponse)(nil)).Elem()
-}
-
-func (o HttpTargetResponsePtrOutput) ToHttpTargetResponsePtrOutput() HttpTargetResponsePtrOutput {
-	return o
-}
-
-func (o HttpTargetResponsePtrOutput) ToHttpTargetResponsePtrOutputWithContext(ctx context.Context) HttpTargetResponsePtrOutput {
-	return o
-}
-
-func (o HttpTargetResponsePtrOutput) Elem() HttpTargetResponseOutput {
-	return o.ApplyT(func(v *HttpTargetResponse) HttpTargetResponse {
-		if v != nil {
-			return *v
-		}
-		var ret HttpTargetResponse
-		return ret
-	}).(HttpTargetResponseOutput)
-}
-
-// HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a job with an incompatible HttpMethod.
-func (o HttpTargetResponsePtrOutput) Body() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HttpTargetResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Body
-	}).(pulumi.StringPtrOutput)
-}
-
-// The user can specify HTTP request headers to send with the job's HTTP request. This map contains the header field names and values. Repeated headers are not supported, but a header value can contain commas. These headers represent a subset of the headers that will accompany the job's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is below: - Host: This will be computed by Cloud Scheduler and derived from uri. * `Content-Length`: This will be computed by Cloud Scheduler. * `User-Agent`: This will be set to `"Google-Cloud-Scheduler"`. * `X-Google-*`: Google internal use only. * `X-AppEngine-*`: Google internal use only. The total size of headers must be less than 80KB.
-func (o HttpTargetResponsePtrOutput) Headers() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *HttpTargetResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Headers
-	}).(pulumi.StringMapOutput)
-}
-
-// Which HTTP method to use for the request.
-func (o HttpTargetResponsePtrOutput) HttpMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HttpTargetResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.HttpMethod
-	}).(pulumi.StringPtrOutput)
-}
-
-// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
-func (o HttpTargetResponsePtrOutput) OauthToken() OAuthTokenResponsePtrOutput {
-	return o.ApplyT(func(v *HttpTargetResponse) *OAuthTokenResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.OauthToken
-	}).(OAuthTokenResponsePtrOutput)
-}
-
-// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
-func (o HttpTargetResponsePtrOutput) OidcToken() OidcTokenResponsePtrOutput {
-	return o.ApplyT(func(v *HttpTargetResponse) *OidcTokenResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.OidcToken
-	}).(OidcTokenResponsePtrOutput)
-}
-
-// The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
-func (o HttpTargetResponsePtrOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HttpTargetResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Uri
-	}).(pulumi.StringPtrOutput)
 }
 
 // Contains information needed for generating an [OAuth token](https://developers.google.com/identity/protocols/OAuth2). This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
@@ -1454,78 +968,6 @@ type OAuthTokenResponse struct {
 	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
 }
 
-// OAuthTokenResponseInput is an input type that accepts OAuthTokenResponseArgs and OAuthTokenResponseOutput values.
-// You can construct a concrete instance of `OAuthTokenResponseInput` via:
-//
-//          OAuthTokenResponseArgs{...}
-type OAuthTokenResponseInput interface {
-	pulumi.Input
-
-	ToOAuthTokenResponseOutput() OAuthTokenResponseOutput
-	ToOAuthTokenResponseOutputWithContext(context.Context) OAuthTokenResponseOutput
-}
-
-// Contains information needed for generating an [OAuth token](https://developers.google.com/identity/protocols/OAuth2). This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
-type OAuthTokenResponseArgs struct {
-	// OAuth scope to be used for generating OAuth access token. If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
-	Scope pulumi.StringInput `pulumi:"scope"`
-	// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OAuth token. The service account must be within the same project as the job. The caller must have iam.serviceAccounts.actAs permission for the service account.
-	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
-}
-
-func (OAuthTokenResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OAuthTokenResponse)(nil)).Elem()
-}
-
-func (i OAuthTokenResponseArgs) ToOAuthTokenResponseOutput() OAuthTokenResponseOutput {
-	return i.ToOAuthTokenResponseOutputWithContext(context.Background())
-}
-
-func (i OAuthTokenResponseArgs) ToOAuthTokenResponseOutputWithContext(ctx context.Context) OAuthTokenResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OAuthTokenResponseOutput)
-}
-
-func (i OAuthTokenResponseArgs) ToOAuthTokenResponsePtrOutput() OAuthTokenResponsePtrOutput {
-	return i.ToOAuthTokenResponsePtrOutputWithContext(context.Background())
-}
-
-func (i OAuthTokenResponseArgs) ToOAuthTokenResponsePtrOutputWithContext(ctx context.Context) OAuthTokenResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OAuthTokenResponseOutput).ToOAuthTokenResponsePtrOutputWithContext(ctx)
-}
-
-// OAuthTokenResponsePtrInput is an input type that accepts OAuthTokenResponseArgs, OAuthTokenResponsePtr and OAuthTokenResponsePtrOutput values.
-// You can construct a concrete instance of `OAuthTokenResponsePtrInput` via:
-//
-//          OAuthTokenResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type OAuthTokenResponsePtrInput interface {
-	pulumi.Input
-
-	ToOAuthTokenResponsePtrOutput() OAuthTokenResponsePtrOutput
-	ToOAuthTokenResponsePtrOutputWithContext(context.Context) OAuthTokenResponsePtrOutput
-}
-
-type oauthTokenResponsePtrType OAuthTokenResponseArgs
-
-func OAuthTokenResponsePtr(v *OAuthTokenResponseArgs) OAuthTokenResponsePtrInput {
-	return (*oauthTokenResponsePtrType)(v)
-}
-
-func (*oauthTokenResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OAuthTokenResponse)(nil)).Elem()
-}
-
-func (i *oauthTokenResponsePtrType) ToOAuthTokenResponsePtrOutput() OAuthTokenResponsePtrOutput {
-	return i.ToOAuthTokenResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *oauthTokenResponsePtrType) ToOAuthTokenResponsePtrOutputWithContext(ctx context.Context) OAuthTokenResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OAuthTokenResponsePtrOutput)
-}
-
 // Contains information needed for generating an [OAuth token](https://developers.google.com/identity/protocols/OAuth2). This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
 type OAuthTokenResponseOutput struct{ *pulumi.OutputState }
 
@@ -1541,16 +983,6 @@ func (o OAuthTokenResponseOutput) ToOAuthTokenResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o OAuthTokenResponseOutput) ToOAuthTokenResponsePtrOutput() OAuthTokenResponsePtrOutput {
-	return o.ToOAuthTokenResponsePtrOutputWithContext(context.Background())
-}
-
-func (o OAuthTokenResponseOutput) ToOAuthTokenResponsePtrOutputWithContext(ctx context.Context) OAuthTokenResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OAuthTokenResponse) *OAuthTokenResponse {
-		return &v
-	}).(OAuthTokenResponsePtrOutput)
-}
-
 // OAuth scope to be used for generating OAuth access token. If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
 func (o OAuthTokenResponseOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v OAuthTokenResponse) string { return v.Scope }).(pulumi.StringOutput)
@@ -1559,50 +991,6 @@ func (o OAuthTokenResponseOutput) Scope() pulumi.StringOutput {
 // [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OAuth token. The service account must be within the same project as the job. The caller must have iam.serviceAccounts.actAs permission for the service account.
 func (o OAuthTokenResponseOutput) ServiceAccountEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v OAuthTokenResponse) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
-}
-
-type OAuthTokenResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (OAuthTokenResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OAuthTokenResponse)(nil)).Elem()
-}
-
-func (o OAuthTokenResponsePtrOutput) ToOAuthTokenResponsePtrOutput() OAuthTokenResponsePtrOutput {
-	return o
-}
-
-func (o OAuthTokenResponsePtrOutput) ToOAuthTokenResponsePtrOutputWithContext(ctx context.Context) OAuthTokenResponsePtrOutput {
-	return o
-}
-
-func (o OAuthTokenResponsePtrOutput) Elem() OAuthTokenResponseOutput {
-	return o.ApplyT(func(v *OAuthTokenResponse) OAuthTokenResponse {
-		if v != nil {
-			return *v
-		}
-		var ret OAuthTokenResponse
-		return ret
-	}).(OAuthTokenResponseOutput)
-}
-
-// OAuth scope to be used for generating OAuth access token. If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
-func (o OAuthTokenResponsePtrOutput) Scope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OAuthTokenResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Scope
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OAuth token. The service account must be within the same project as the job. The caller must have iam.serviceAccounts.actAs permission for the service account.
-func (o OAuthTokenResponsePtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OAuthTokenResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ServiceAccountEmail
-	}).(pulumi.StringPtrOutput)
 }
 
 // Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
@@ -1772,78 +1160,6 @@ type OidcTokenResponse struct {
 	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
 }
 
-// OidcTokenResponseInput is an input type that accepts OidcTokenResponseArgs and OidcTokenResponseOutput values.
-// You can construct a concrete instance of `OidcTokenResponseInput` via:
-//
-//          OidcTokenResponseArgs{...}
-type OidcTokenResponseInput interface {
-	pulumi.Input
-
-	ToOidcTokenResponseOutput() OidcTokenResponseOutput
-	ToOidcTokenResponseOutputWithContext(context.Context) OidcTokenResponseOutput
-}
-
-// Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
-type OidcTokenResponseArgs struct {
-	// Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
-	Audience pulumi.StringInput `pulumi:"audience"`
-	// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OIDC token. The service account must be within the same project as the job. The caller must have iam.serviceAccounts.actAs permission for the service account.
-	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
-}
-
-func (OidcTokenResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OidcTokenResponse)(nil)).Elem()
-}
-
-func (i OidcTokenResponseArgs) ToOidcTokenResponseOutput() OidcTokenResponseOutput {
-	return i.ToOidcTokenResponseOutputWithContext(context.Background())
-}
-
-func (i OidcTokenResponseArgs) ToOidcTokenResponseOutputWithContext(ctx context.Context) OidcTokenResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OidcTokenResponseOutput)
-}
-
-func (i OidcTokenResponseArgs) ToOidcTokenResponsePtrOutput() OidcTokenResponsePtrOutput {
-	return i.ToOidcTokenResponsePtrOutputWithContext(context.Background())
-}
-
-func (i OidcTokenResponseArgs) ToOidcTokenResponsePtrOutputWithContext(ctx context.Context) OidcTokenResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OidcTokenResponseOutput).ToOidcTokenResponsePtrOutputWithContext(ctx)
-}
-
-// OidcTokenResponsePtrInput is an input type that accepts OidcTokenResponseArgs, OidcTokenResponsePtr and OidcTokenResponsePtrOutput values.
-// You can construct a concrete instance of `OidcTokenResponsePtrInput` via:
-//
-//          OidcTokenResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type OidcTokenResponsePtrInput interface {
-	pulumi.Input
-
-	ToOidcTokenResponsePtrOutput() OidcTokenResponsePtrOutput
-	ToOidcTokenResponsePtrOutputWithContext(context.Context) OidcTokenResponsePtrOutput
-}
-
-type oidcTokenResponsePtrType OidcTokenResponseArgs
-
-func OidcTokenResponsePtr(v *OidcTokenResponseArgs) OidcTokenResponsePtrInput {
-	return (*oidcTokenResponsePtrType)(v)
-}
-
-func (*oidcTokenResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OidcTokenResponse)(nil)).Elem()
-}
-
-func (i *oidcTokenResponsePtrType) ToOidcTokenResponsePtrOutput() OidcTokenResponsePtrOutput {
-	return i.ToOidcTokenResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *oidcTokenResponsePtrType) ToOidcTokenResponsePtrOutputWithContext(ctx context.Context) OidcTokenResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OidcTokenResponsePtrOutput)
-}
-
 // Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
 type OidcTokenResponseOutput struct{ *pulumi.OutputState }
 
@@ -1859,16 +1175,6 @@ func (o OidcTokenResponseOutput) ToOidcTokenResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o OidcTokenResponseOutput) ToOidcTokenResponsePtrOutput() OidcTokenResponsePtrOutput {
-	return o.ToOidcTokenResponsePtrOutputWithContext(context.Background())
-}
-
-func (o OidcTokenResponseOutput) ToOidcTokenResponsePtrOutputWithContext(ctx context.Context) OidcTokenResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OidcTokenResponse) *OidcTokenResponse {
-		return &v
-	}).(OidcTokenResponsePtrOutput)
-}
-
 // Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
 func (o OidcTokenResponseOutput) Audience() pulumi.StringOutput {
 	return o.ApplyT(func(v OidcTokenResponse) string { return v.Audience }).(pulumi.StringOutput)
@@ -1877,50 +1183,6 @@ func (o OidcTokenResponseOutput) Audience() pulumi.StringOutput {
 // [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OIDC token. The service account must be within the same project as the job. The caller must have iam.serviceAccounts.actAs permission for the service account.
 func (o OidcTokenResponseOutput) ServiceAccountEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v OidcTokenResponse) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
-}
-
-type OidcTokenResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (OidcTokenResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OidcTokenResponse)(nil)).Elem()
-}
-
-func (o OidcTokenResponsePtrOutput) ToOidcTokenResponsePtrOutput() OidcTokenResponsePtrOutput {
-	return o
-}
-
-func (o OidcTokenResponsePtrOutput) ToOidcTokenResponsePtrOutputWithContext(ctx context.Context) OidcTokenResponsePtrOutput {
-	return o
-}
-
-func (o OidcTokenResponsePtrOutput) Elem() OidcTokenResponseOutput {
-	return o.ApplyT(func(v *OidcTokenResponse) OidcTokenResponse {
-		if v != nil {
-			return *v
-		}
-		var ret OidcTokenResponse
-		return ret
-	}).(OidcTokenResponseOutput)
-}
-
-// Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
-func (o OidcTokenResponsePtrOutput) Audience() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OidcTokenResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Audience
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OIDC token. The service account must be within the same project as the job. The caller must have iam.serviceAccounts.actAs permission for the service account.
-func (o OidcTokenResponsePtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OidcTokenResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ServiceAccountEmail
-	}).(pulumi.StringPtrOutput)
 }
 
 // Pub/Sub target. The job will be delivered by publishing a message to the given Pub/Sub topic.
@@ -2111,80 +1373,6 @@ type PubsubTargetResponse struct {
 	TopicName string `pulumi:"topicName"`
 }
 
-// PubsubTargetResponseInput is an input type that accepts PubsubTargetResponseArgs and PubsubTargetResponseOutput values.
-// You can construct a concrete instance of `PubsubTargetResponseInput` via:
-//
-//          PubsubTargetResponseArgs{...}
-type PubsubTargetResponseInput interface {
-	pulumi.Input
-
-	ToPubsubTargetResponseOutput() PubsubTargetResponseOutput
-	ToPubsubTargetResponseOutputWithContext(context.Context) PubsubTargetResponseOutput
-}
-
-// Pub/Sub target. The job will be delivered by publishing a message to the given Pub/Sub topic.
-type PubsubTargetResponseArgs struct {
-	// Attributes for PubsubMessage. Pubsub message must contain either non-empty data, or at least one attribute.
-	Attributes pulumi.StringMapInput `pulumi:"attributes"`
-	// The message payload for PubsubMessage. Pubsub message must contain either non-empty data, or at least one attribute.
-	Data pulumi.StringInput `pulumi:"data"`
-	// The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
-	TopicName pulumi.StringInput `pulumi:"topicName"`
-}
-
-func (PubsubTargetResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PubsubTargetResponse)(nil)).Elem()
-}
-
-func (i PubsubTargetResponseArgs) ToPubsubTargetResponseOutput() PubsubTargetResponseOutput {
-	return i.ToPubsubTargetResponseOutputWithContext(context.Background())
-}
-
-func (i PubsubTargetResponseArgs) ToPubsubTargetResponseOutputWithContext(ctx context.Context) PubsubTargetResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PubsubTargetResponseOutput)
-}
-
-func (i PubsubTargetResponseArgs) ToPubsubTargetResponsePtrOutput() PubsubTargetResponsePtrOutput {
-	return i.ToPubsubTargetResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PubsubTargetResponseArgs) ToPubsubTargetResponsePtrOutputWithContext(ctx context.Context) PubsubTargetResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PubsubTargetResponseOutput).ToPubsubTargetResponsePtrOutputWithContext(ctx)
-}
-
-// PubsubTargetResponsePtrInput is an input type that accepts PubsubTargetResponseArgs, PubsubTargetResponsePtr and PubsubTargetResponsePtrOutput values.
-// You can construct a concrete instance of `PubsubTargetResponsePtrInput` via:
-//
-//          PubsubTargetResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PubsubTargetResponsePtrInput interface {
-	pulumi.Input
-
-	ToPubsubTargetResponsePtrOutput() PubsubTargetResponsePtrOutput
-	ToPubsubTargetResponsePtrOutputWithContext(context.Context) PubsubTargetResponsePtrOutput
-}
-
-type pubsubTargetResponsePtrType PubsubTargetResponseArgs
-
-func PubsubTargetResponsePtr(v *PubsubTargetResponseArgs) PubsubTargetResponsePtrInput {
-	return (*pubsubTargetResponsePtrType)(v)
-}
-
-func (*pubsubTargetResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PubsubTargetResponse)(nil)).Elem()
-}
-
-func (i *pubsubTargetResponsePtrType) ToPubsubTargetResponsePtrOutput() PubsubTargetResponsePtrOutput {
-	return i.ToPubsubTargetResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *pubsubTargetResponsePtrType) ToPubsubTargetResponsePtrOutputWithContext(ctx context.Context) PubsubTargetResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PubsubTargetResponsePtrOutput)
-}
-
 // Pub/Sub target. The job will be delivered by publishing a message to the given Pub/Sub topic.
 type PubsubTargetResponseOutput struct{ *pulumi.OutputState }
 
@@ -2200,16 +1388,6 @@ func (o PubsubTargetResponseOutput) ToPubsubTargetResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o PubsubTargetResponseOutput) ToPubsubTargetResponsePtrOutput() PubsubTargetResponsePtrOutput {
-	return o.ToPubsubTargetResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PubsubTargetResponseOutput) ToPubsubTargetResponsePtrOutputWithContext(ctx context.Context) PubsubTargetResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PubsubTargetResponse) *PubsubTargetResponse {
-		return &v
-	}).(PubsubTargetResponsePtrOutput)
-}
-
 // Attributes for PubsubMessage. Pubsub message must contain either non-empty data, or at least one attribute.
 func (o PubsubTargetResponseOutput) Attributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v PubsubTargetResponse) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
@@ -2223,60 +1401,6 @@ func (o PubsubTargetResponseOutput) Data() pulumi.StringOutput {
 // The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
 func (o PubsubTargetResponseOutput) TopicName() pulumi.StringOutput {
 	return o.ApplyT(func(v PubsubTargetResponse) string { return v.TopicName }).(pulumi.StringOutput)
-}
-
-type PubsubTargetResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PubsubTargetResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PubsubTargetResponse)(nil)).Elem()
-}
-
-func (o PubsubTargetResponsePtrOutput) ToPubsubTargetResponsePtrOutput() PubsubTargetResponsePtrOutput {
-	return o
-}
-
-func (o PubsubTargetResponsePtrOutput) ToPubsubTargetResponsePtrOutputWithContext(ctx context.Context) PubsubTargetResponsePtrOutput {
-	return o
-}
-
-func (o PubsubTargetResponsePtrOutput) Elem() PubsubTargetResponseOutput {
-	return o.ApplyT(func(v *PubsubTargetResponse) PubsubTargetResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PubsubTargetResponse
-		return ret
-	}).(PubsubTargetResponseOutput)
-}
-
-// Attributes for PubsubMessage. Pubsub message must contain either non-empty data, or at least one attribute.
-func (o PubsubTargetResponsePtrOutput) Attributes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *PubsubTargetResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Attributes
-	}).(pulumi.StringMapOutput)
-}
-
-// The message payload for PubsubMessage. Pubsub message must contain either non-empty data, or at least one attribute.
-func (o PubsubTargetResponsePtrOutput) Data() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PubsubTargetResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Data
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
-func (o PubsubTargetResponsePtrOutput) TopicName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PubsubTargetResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TopicName
-	}).(pulumi.StringPtrOutput)
 }
 
 // Settings that determine the retry behavior. By default, if a job does not complete successfully (meaning that an acknowledgement is not received from the handler, then it will be retried with exponential backoff according to the settings in RetryConfig.
@@ -2509,84 +1633,6 @@ type RetryConfigResponse struct {
 	RetryCount int `pulumi:"retryCount"`
 }
 
-// RetryConfigResponseInput is an input type that accepts RetryConfigResponseArgs and RetryConfigResponseOutput values.
-// You can construct a concrete instance of `RetryConfigResponseInput` via:
-//
-//          RetryConfigResponseArgs{...}
-type RetryConfigResponseInput interface {
-	pulumi.Input
-
-	ToRetryConfigResponseOutput() RetryConfigResponseOutput
-	ToRetryConfigResponseOutputWithContext(context.Context) RetryConfigResponseOutput
-}
-
-// Settings that determine the retry behavior. By default, if a job does not complete successfully (meaning that an acknowledgement is not received from the handler, then it will be retried with exponential backoff according to the settings in RetryConfig.
-type RetryConfigResponseArgs struct {
-	// The maximum amount of time to wait before retrying a job after it fails. The default value of this field is 1 hour.
-	MaxBackoffDuration pulumi.StringInput `pulumi:"maxBackoffDuration"`
-	// The time between retries will double `max_doublings` times. A job's retry interval starts at min_backoff_duration, then doubles `max_doublings` times, then increases linearly, and finally retries at intervals of max_backoff_duration up to retry_count times. For example, if min_backoff_duration is 10s, max_backoff_duration is 300s, and `max_doublings` is 3, then the a job will first be retried in 10s. The retry interval will double three times, and then increase linearly by 2^3 * 10s. Finally, the job will retry at intervals of max_backoff_duration until the job has been attempted retry_count times. Thus, the requests will retry at 10s, 20s, 40s, 80s, 160s, 240s, 300s, 300s, .... The default value of this field is 5.
-	MaxDoublings pulumi.IntInput `pulumi:"maxDoublings"`
-	// The time limit for retrying a failed job, measured from time when an execution was first attempted. If specified with retry_count, the job will be retried until both limits are reached. The default value for max_retry_duration is zero, which means retry duration is unlimited.
-	MaxRetryDuration pulumi.StringInput `pulumi:"maxRetryDuration"`
-	// The minimum amount of time to wait before retrying a job after it fails. The default value of this field is 5 seconds.
-	MinBackoffDuration pulumi.StringInput `pulumi:"minBackoffDuration"`
-	// The number of attempts that the system will make to run a job using the exponential backoff procedure described by max_doublings. The default value of retry_count is zero. If retry_count is zero, a job attempt will *not* be retried if it fails. Instead the Cloud Scheduler system will wait for the next scheduled execution time. If retry_count is set to a non-zero number then Cloud Scheduler will retry failed attempts, using exponential backoff, retry_count times, or until the next scheduled execution time, whichever comes first. Values greater than 5 and negative values are not allowed.
-	RetryCount pulumi.IntInput `pulumi:"retryCount"`
-}
-
-func (RetryConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RetryConfigResponse)(nil)).Elem()
-}
-
-func (i RetryConfigResponseArgs) ToRetryConfigResponseOutput() RetryConfigResponseOutput {
-	return i.ToRetryConfigResponseOutputWithContext(context.Background())
-}
-
-func (i RetryConfigResponseArgs) ToRetryConfigResponseOutputWithContext(ctx context.Context) RetryConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RetryConfigResponseOutput)
-}
-
-func (i RetryConfigResponseArgs) ToRetryConfigResponsePtrOutput() RetryConfigResponsePtrOutput {
-	return i.ToRetryConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i RetryConfigResponseArgs) ToRetryConfigResponsePtrOutputWithContext(ctx context.Context) RetryConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RetryConfigResponseOutput).ToRetryConfigResponsePtrOutputWithContext(ctx)
-}
-
-// RetryConfigResponsePtrInput is an input type that accepts RetryConfigResponseArgs, RetryConfigResponsePtr and RetryConfigResponsePtrOutput values.
-// You can construct a concrete instance of `RetryConfigResponsePtrInput` via:
-//
-//          RetryConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type RetryConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToRetryConfigResponsePtrOutput() RetryConfigResponsePtrOutput
-	ToRetryConfigResponsePtrOutputWithContext(context.Context) RetryConfigResponsePtrOutput
-}
-
-type retryConfigResponsePtrType RetryConfigResponseArgs
-
-func RetryConfigResponsePtr(v *RetryConfigResponseArgs) RetryConfigResponsePtrInput {
-	return (*retryConfigResponsePtrType)(v)
-}
-
-func (*retryConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RetryConfigResponse)(nil)).Elem()
-}
-
-func (i *retryConfigResponsePtrType) ToRetryConfigResponsePtrOutput() RetryConfigResponsePtrOutput {
-	return i.ToRetryConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *retryConfigResponsePtrType) ToRetryConfigResponsePtrOutputWithContext(ctx context.Context) RetryConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RetryConfigResponsePtrOutput)
-}
-
 // Settings that determine the retry behavior. By default, if a job does not complete successfully (meaning that an acknowledgement is not received from the handler, then it will be retried with exponential backoff according to the settings in RetryConfig.
 type RetryConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -2600,16 +1646,6 @@ func (o RetryConfigResponseOutput) ToRetryConfigResponseOutput() RetryConfigResp
 
 func (o RetryConfigResponseOutput) ToRetryConfigResponseOutputWithContext(ctx context.Context) RetryConfigResponseOutput {
 	return o
-}
-
-func (o RetryConfigResponseOutput) ToRetryConfigResponsePtrOutput() RetryConfigResponsePtrOutput {
-	return o.ToRetryConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o RetryConfigResponseOutput) ToRetryConfigResponsePtrOutputWithContext(ctx context.Context) RetryConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RetryConfigResponse) *RetryConfigResponse {
-		return &v
-	}).(RetryConfigResponsePtrOutput)
 }
 
 // The maximum amount of time to wait before retrying a job after it fails. The default value of this field is 1 hour.
@@ -2637,80 +1673,6 @@ func (o RetryConfigResponseOutput) RetryCount() pulumi.IntOutput {
 	return o.ApplyT(func(v RetryConfigResponse) int { return v.RetryCount }).(pulumi.IntOutput)
 }
 
-type RetryConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RetryConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RetryConfigResponse)(nil)).Elem()
-}
-
-func (o RetryConfigResponsePtrOutput) ToRetryConfigResponsePtrOutput() RetryConfigResponsePtrOutput {
-	return o
-}
-
-func (o RetryConfigResponsePtrOutput) ToRetryConfigResponsePtrOutputWithContext(ctx context.Context) RetryConfigResponsePtrOutput {
-	return o
-}
-
-func (o RetryConfigResponsePtrOutput) Elem() RetryConfigResponseOutput {
-	return o.ApplyT(func(v *RetryConfigResponse) RetryConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RetryConfigResponse
-		return ret
-	}).(RetryConfigResponseOutput)
-}
-
-// The maximum amount of time to wait before retrying a job after it fails. The default value of this field is 1 hour.
-func (o RetryConfigResponsePtrOutput) MaxBackoffDuration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RetryConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxBackoffDuration
-	}).(pulumi.StringPtrOutput)
-}
-
-// The time between retries will double `max_doublings` times. A job's retry interval starts at min_backoff_duration, then doubles `max_doublings` times, then increases linearly, and finally retries at intervals of max_backoff_duration up to retry_count times. For example, if min_backoff_duration is 10s, max_backoff_duration is 300s, and `max_doublings` is 3, then the a job will first be retried in 10s. The retry interval will double three times, and then increase linearly by 2^3 * 10s. Finally, the job will retry at intervals of max_backoff_duration until the job has been attempted retry_count times. Thus, the requests will retry at 10s, 20s, 40s, 80s, 160s, 240s, 300s, 300s, .... The default value of this field is 5.
-func (o RetryConfigResponsePtrOutput) MaxDoublings() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RetryConfigResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxDoublings
-	}).(pulumi.IntPtrOutput)
-}
-
-// The time limit for retrying a failed job, measured from time when an execution was first attempted. If specified with retry_count, the job will be retried until both limits are reached. The default value for max_retry_duration is zero, which means retry duration is unlimited.
-func (o RetryConfigResponsePtrOutput) MaxRetryDuration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RetryConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxRetryDuration
-	}).(pulumi.StringPtrOutput)
-}
-
-// The minimum amount of time to wait before retrying a job after it fails. The default value of this field is 5 seconds.
-func (o RetryConfigResponsePtrOutput) MinBackoffDuration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RetryConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MinBackoffDuration
-	}).(pulumi.StringPtrOutput)
-}
-
-// The number of attempts that the system will make to run a job using the exponential backoff procedure described by max_doublings. The default value of retry_count is zero. If retry_count is zero, a job attempt will *not* be retried if it fails. Instead the Cloud Scheduler system will wait for the next scheduled execution time. If retry_count is set to a non-zero number then Cloud Scheduler will retry failed attempts, using exponential backoff, retry_count times, or until the next scheduled execution time, whichever comes first. Values greater than 5 and negative values are not allowed.
-func (o RetryConfigResponsePtrOutput) RetryCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RetryConfigResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.RetryCount
-	}).(pulumi.IntPtrOutput)
-}
-
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
 type StatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
@@ -2719,80 +1681,6 @@ type StatusResponse struct {
 	Details []map[string]string `pulumi:"details"`
 	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 	Message string `pulumi:"message"`
-}
-
-// StatusResponseInput is an input type that accepts StatusResponseArgs and StatusResponseOutput values.
-// You can construct a concrete instance of `StatusResponseInput` via:
-//
-//          StatusResponseArgs{...}
-type StatusResponseInput interface {
-	pulumi.Input
-
-	ToStatusResponseOutput() StatusResponseOutput
-	ToStatusResponseOutputWithContext(context.Context) StatusResponseOutput
-}
-
-// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type StatusResponseArgs struct {
-	// The status code, which should be an enum value of google.rpc.Code.
-	Code pulumi.IntInput `pulumi:"code"`
-	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details pulumi.StringMapArrayInput `pulumi:"details"`
-	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-	Message pulumi.StringInput `pulumi:"message"`
-}
-
-func (StatusResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
-}
-
-func (i StatusResponseArgs) ToStatusResponseOutput() StatusResponseOutput {
-	return i.ToStatusResponseOutputWithContext(context.Background())
-}
-
-func (i StatusResponseArgs) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput)
-}
-
-func (i StatusResponseArgs) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return i.ToStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i StatusResponseArgs) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput).ToStatusResponsePtrOutputWithContext(ctx)
-}
-
-// StatusResponsePtrInput is an input type that accepts StatusResponseArgs, StatusResponsePtr and StatusResponsePtrOutput values.
-// You can construct a concrete instance of `StatusResponsePtrInput` via:
-//
-//          StatusResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type StatusResponsePtrInput interface {
-	pulumi.Input
-
-	ToStatusResponsePtrOutput() StatusResponsePtrOutput
-	ToStatusResponsePtrOutputWithContext(context.Context) StatusResponsePtrOutput
-}
-
-type statusResponsePtrType StatusResponseArgs
-
-func StatusResponsePtr(v *StatusResponseArgs) StatusResponsePtrInput {
-	return (*statusResponsePtrType)(v)
-}
-
-func (*statusResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
-}
-
-func (i *statusResponsePtrType) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return i.ToStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *statusResponsePtrType) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusResponsePtrOutput)
 }
 
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
@@ -2810,16 +1698,6 @@ func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return o.ToStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatusResponse) *StatusResponse {
-		return &v
-	}).(StatusResponsePtrOutput)
-}
-
 // The status code, which should be an enum value of google.rpc.Code.
 func (o StatusResponseOutput) Code() pulumi.IntOutput {
 	return o.ApplyT(func(v StatusResponse) int { return v.Code }).(pulumi.IntOutput)
@@ -2835,119 +1713,41 @@ func (o StatusResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
 }
 
-type StatusResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (StatusResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
-}
-
-func (o StatusResponsePtrOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return o
-}
-
-func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o
-}
-
-func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
-	return o.ApplyT(func(v *StatusResponse) StatusResponse {
-		if v != nil {
-			return *v
-		}
-		var ret StatusResponse
-		return ret
-	}).(StatusResponseOutput)
-}
-
-// The status code, which should be an enum value of google.rpc.Code.
-func (o StatusResponsePtrOutput) Code() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *StatusResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Code
-	}).(pulumi.IntPtrOutput)
-}
-
-// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o StatusResponsePtrOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *StatusResponse) []map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Details
-	}).(pulumi.StringMapArrayOutput)
-}
-
-// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-func (o StatusResponsePtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StatusResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Message
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineHttpTargetInput)(nil)).Elem(), AppEngineHttpTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineHttpTargetPtrInput)(nil)).Elem(), AppEngineHttpTargetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineHttpTargetResponseInput)(nil)).Elem(), AppEngineHttpTargetResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineHttpTargetResponsePtrInput)(nil)).Elem(), AppEngineHttpTargetResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineRoutingInput)(nil)).Elem(), AppEngineRoutingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineRoutingPtrInput)(nil)).Elem(), AppEngineRoutingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineRoutingResponseInput)(nil)).Elem(), AppEngineRoutingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineRoutingResponsePtrInput)(nil)).Elem(), AppEngineRoutingResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpTargetInput)(nil)).Elem(), HttpTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpTargetPtrInput)(nil)).Elem(), HttpTargetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HttpTargetResponseInput)(nil)).Elem(), HttpTargetResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HttpTargetResponsePtrInput)(nil)).Elem(), HttpTargetResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OAuthTokenInput)(nil)).Elem(), OAuthTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OAuthTokenPtrInput)(nil)).Elem(), OAuthTokenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OAuthTokenResponseInput)(nil)).Elem(), OAuthTokenResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OAuthTokenResponsePtrInput)(nil)).Elem(), OAuthTokenResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OidcTokenInput)(nil)).Elem(), OidcTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OidcTokenPtrInput)(nil)).Elem(), OidcTokenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OidcTokenResponseInput)(nil)).Elem(), OidcTokenResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OidcTokenResponsePtrInput)(nil)).Elem(), OidcTokenResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PubsubTargetInput)(nil)).Elem(), PubsubTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PubsubTargetPtrInput)(nil)).Elem(), PubsubTargetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PubsubTargetResponseInput)(nil)).Elem(), PubsubTargetResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PubsubTargetResponsePtrInput)(nil)).Elem(), PubsubTargetResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RetryConfigInput)(nil)).Elem(), RetryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RetryConfigPtrInput)(nil)).Elem(), RetryConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RetryConfigResponseInput)(nil)).Elem(), RetryConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RetryConfigResponsePtrInput)(nil)).Elem(), RetryConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponseInput)(nil)).Elem(), StatusResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponsePtrInput)(nil)).Elem(), StatusResponseArgs{})
 	pulumi.RegisterOutputType(AppEngineHttpTargetOutput{})
 	pulumi.RegisterOutputType(AppEngineHttpTargetPtrOutput{})
 	pulumi.RegisterOutputType(AppEngineHttpTargetResponseOutput{})
-	pulumi.RegisterOutputType(AppEngineHttpTargetResponsePtrOutput{})
 	pulumi.RegisterOutputType(AppEngineRoutingOutput{})
 	pulumi.RegisterOutputType(AppEngineRoutingPtrOutput{})
 	pulumi.RegisterOutputType(AppEngineRoutingResponseOutput{})
-	pulumi.RegisterOutputType(AppEngineRoutingResponsePtrOutput{})
 	pulumi.RegisterOutputType(HttpTargetOutput{})
 	pulumi.RegisterOutputType(HttpTargetPtrOutput{})
 	pulumi.RegisterOutputType(HttpTargetResponseOutput{})
-	pulumi.RegisterOutputType(HttpTargetResponsePtrOutput{})
 	pulumi.RegisterOutputType(OAuthTokenOutput{})
 	pulumi.RegisterOutputType(OAuthTokenPtrOutput{})
 	pulumi.RegisterOutputType(OAuthTokenResponseOutput{})
-	pulumi.RegisterOutputType(OAuthTokenResponsePtrOutput{})
 	pulumi.RegisterOutputType(OidcTokenOutput{})
 	pulumi.RegisterOutputType(OidcTokenPtrOutput{})
 	pulumi.RegisterOutputType(OidcTokenResponseOutput{})
-	pulumi.RegisterOutputType(OidcTokenResponsePtrOutput{})
 	pulumi.RegisterOutputType(PubsubTargetOutput{})
 	pulumi.RegisterOutputType(PubsubTargetPtrOutput{})
 	pulumi.RegisterOutputType(PubsubTargetResponseOutput{})
-	pulumi.RegisterOutputType(PubsubTargetResponsePtrOutput{})
 	pulumi.RegisterOutputType(RetryConfigOutput{})
 	pulumi.RegisterOutputType(RetryConfigPtrOutput{})
 	pulumi.RegisterOutputType(RetryConfigResponseOutput{})
-	pulumi.RegisterOutputType(RetryConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
-	pulumi.RegisterOutputType(StatusResponsePtrOutput{})
 }

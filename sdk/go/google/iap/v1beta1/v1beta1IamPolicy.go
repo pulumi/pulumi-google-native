@@ -99,7 +99,7 @@ type V1beta1IamPolicyInput interface {
 }
 
 func (*V1beta1IamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*V1beta1IamPolicy)(nil))
+	return reflect.TypeOf((**V1beta1IamPolicy)(nil)).Elem()
 }
 
 func (i *V1beta1IamPolicy) ToV1beta1IamPolicyOutput() V1beta1IamPolicyOutput {
@@ -113,7 +113,7 @@ func (i *V1beta1IamPolicy) ToV1beta1IamPolicyOutputWithContext(ctx context.Conte
 type V1beta1IamPolicyOutput struct{ *pulumi.OutputState }
 
 func (V1beta1IamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*V1beta1IamPolicy)(nil))
+	return reflect.TypeOf((**V1beta1IamPolicy)(nil)).Elem()
 }
 
 func (o V1beta1IamPolicyOutput) ToV1beta1IamPolicyOutput() V1beta1IamPolicyOutput {

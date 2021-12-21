@@ -179,7 +179,7 @@ type InterconnectInput interface {
 }
 
 func (*Interconnect) ElementType() reflect.Type {
-	return reflect.TypeOf((*Interconnect)(nil))
+	return reflect.TypeOf((**Interconnect)(nil)).Elem()
 }
 
 func (i *Interconnect) ToInterconnectOutput() InterconnectOutput {
@@ -193,7 +193,7 @@ func (i *Interconnect) ToInterconnectOutputWithContext(ctx context.Context) Inte
 type InterconnectOutput struct{ *pulumi.OutputState }
 
 func (InterconnectOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Interconnect)(nil))
+	return reflect.TypeOf((**Interconnect)(nil)).Elem()
 }
 
 func (o InterconnectOutput) ToInterconnectOutput() InterconnectOutput {

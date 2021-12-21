@@ -156,76 +156,6 @@ type NetworkConfigResponse struct {
 	PeeredNetwork string `pulumi:"peeredNetwork"`
 }
 
-// NetworkConfigResponseInput is an input type that accepts NetworkConfigResponseArgs and NetworkConfigResponseOutput values.
-// You can construct a concrete instance of `NetworkConfigResponseInput` via:
-//
-//          NetworkConfigResponseArgs{...}
-type NetworkConfigResponseInput interface {
-	pulumi.Input
-
-	ToNetworkConfigResponseOutput() NetworkConfigResponseOutput
-	ToNetworkConfigResponseOutputWithContext(context.Context) NetworkConfigResponseOutput
-}
-
-// Network describes the network configuration for a `WorkerPool`.
-type NetworkConfigResponseArgs struct {
-	// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to WorkerPool.project_id on the default network. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number, such as `12345`, and {network} is the name of a VPC network in the project.
-	PeeredNetwork pulumi.StringInput `pulumi:"peeredNetwork"`
-}
-
-func (NetworkConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkConfigResponse)(nil)).Elem()
-}
-
-func (i NetworkConfigResponseArgs) ToNetworkConfigResponseOutput() NetworkConfigResponseOutput {
-	return i.ToNetworkConfigResponseOutputWithContext(context.Background())
-}
-
-func (i NetworkConfigResponseArgs) ToNetworkConfigResponseOutputWithContext(ctx context.Context) NetworkConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigResponseOutput)
-}
-
-func (i NetworkConfigResponseArgs) ToNetworkConfigResponsePtrOutput() NetworkConfigResponsePtrOutput {
-	return i.ToNetworkConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i NetworkConfigResponseArgs) ToNetworkConfigResponsePtrOutputWithContext(ctx context.Context) NetworkConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigResponseOutput).ToNetworkConfigResponsePtrOutputWithContext(ctx)
-}
-
-// NetworkConfigResponsePtrInput is an input type that accepts NetworkConfigResponseArgs, NetworkConfigResponsePtr and NetworkConfigResponsePtrOutput values.
-// You can construct a concrete instance of `NetworkConfigResponsePtrInput` via:
-//
-//          NetworkConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type NetworkConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToNetworkConfigResponsePtrOutput() NetworkConfigResponsePtrOutput
-	ToNetworkConfigResponsePtrOutputWithContext(context.Context) NetworkConfigResponsePtrOutput
-}
-
-type networkConfigResponsePtrType NetworkConfigResponseArgs
-
-func NetworkConfigResponsePtr(v *NetworkConfigResponseArgs) NetworkConfigResponsePtrInput {
-	return (*networkConfigResponsePtrType)(v)
-}
-
-func (*networkConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkConfigResponse)(nil)).Elem()
-}
-
-func (i *networkConfigResponsePtrType) ToNetworkConfigResponsePtrOutput() NetworkConfigResponsePtrOutput {
-	return i.ToNetworkConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *networkConfigResponsePtrType) ToNetworkConfigResponsePtrOutputWithContext(ctx context.Context) NetworkConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigResponsePtrOutput)
-}
-
 // Network describes the network configuration for a `WorkerPool`.
 type NetworkConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -241,53 +171,9 @@ func (o NetworkConfigResponseOutput) ToNetworkConfigResponseOutputWithContext(ct
 	return o
 }
 
-func (o NetworkConfigResponseOutput) ToNetworkConfigResponsePtrOutput() NetworkConfigResponsePtrOutput {
-	return o.ToNetworkConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o NetworkConfigResponseOutput) ToNetworkConfigResponsePtrOutputWithContext(ctx context.Context) NetworkConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkConfigResponse) *NetworkConfigResponse {
-		return &v
-	}).(NetworkConfigResponsePtrOutput)
-}
-
 // Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to WorkerPool.project_id on the default network. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number, such as `12345`, and {network} is the name of a VPC network in the project.
 func (o NetworkConfigResponseOutput) PeeredNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.PeeredNetwork }).(pulumi.StringOutput)
-}
-
-type NetworkConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (NetworkConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkConfigResponse)(nil)).Elem()
-}
-
-func (o NetworkConfigResponsePtrOutput) ToNetworkConfigResponsePtrOutput() NetworkConfigResponsePtrOutput {
-	return o
-}
-
-func (o NetworkConfigResponsePtrOutput) ToNetworkConfigResponsePtrOutputWithContext(ctx context.Context) NetworkConfigResponsePtrOutput {
-	return o
-}
-
-func (o NetworkConfigResponsePtrOutput) Elem() NetworkConfigResponseOutput {
-	return o.ApplyT(func(v *NetworkConfigResponse) NetworkConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret NetworkConfigResponse
-		return ret
-	}).(NetworkConfigResponseOutput)
-}
-
-// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to WorkerPool.project_id on the default network. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number, such as `12345`, and {network} is the name of a VPC network in the project.
-func (o NetworkConfigResponsePtrOutput) PeeredNetwork() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PeeredNetwork
-	}).(pulumi.StringPtrOutput)
 }
 
 // WorkerConfig defines the configuration to be used for a creating workers in the pool.
@@ -457,78 +343,6 @@ type WorkerConfigResponse struct {
 	MachineType string `pulumi:"machineType"`
 }
 
-// WorkerConfigResponseInput is an input type that accepts WorkerConfigResponseArgs and WorkerConfigResponseOutput values.
-// You can construct a concrete instance of `WorkerConfigResponseInput` via:
-//
-//          WorkerConfigResponseArgs{...}
-type WorkerConfigResponseInput interface {
-	pulumi.Input
-
-	ToWorkerConfigResponseOutput() WorkerConfigResponseOutput
-	ToWorkerConfigResponseOutputWithContext(context.Context) WorkerConfigResponseOutput
-}
-
-// WorkerConfig defines the configuration to be used for a creating workers in the pool.
-type WorkerConfigResponseArgs struct {
-	// Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/ If `0` is specified, Cloud Build will use a standard disk size.
-	DiskSizeGb pulumi.StringInput `pulumi:"diskSizeGb"`
-	// Machine Type of the worker, such as n1-standard-1. See https://cloud.google.com/compute/docs/machine-types. If left blank, Cloud Build will use a standard unspecified machine to create the worker pool.
-	MachineType pulumi.StringInput `pulumi:"machineType"`
-}
-
-func (WorkerConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkerConfigResponse)(nil)).Elem()
-}
-
-func (i WorkerConfigResponseArgs) ToWorkerConfigResponseOutput() WorkerConfigResponseOutput {
-	return i.ToWorkerConfigResponseOutputWithContext(context.Background())
-}
-
-func (i WorkerConfigResponseArgs) ToWorkerConfigResponseOutputWithContext(ctx context.Context) WorkerConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerConfigResponseOutput)
-}
-
-func (i WorkerConfigResponseArgs) ToWorkerConfigResponsePtrOutput() WorkerConfigResponsePtrOutput {
-	return i.ToWorkerConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i WorkerConfigResponseArgs) ToWorkerConfigResponsePtrOutputWithContext(ctx context.Context) WorkerConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerConfigResponseOutput).ToWorkerConfigResponsePtrOutputWithContext(ctx)
-}
-
-// WorkerConfigResponsePtrInput is an input type that accepts WorkerConfigResponseArgs, WorkerConfigResponsePtr and WorkerConfigResponsePtrOutput values.
-// You can construct a concrete instance of `WorkerConfigResponsePtrInput` via:
-//
-//          WorkerConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type WorkerConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToWorkerConfigResponsePtrOutput() WorkerConfigResponsePtrOutput
-	ToWorkerConfigResponsePtrOutputWithContext(context.Context) WorkerConfigResponsePtrOutput
-}
-
-type workerConfigResponsePtrType WorkerConfigResponseArgs
-
-func WorkerConfigResponsePtr(v *WorkerConfigResponseArgs) WorkerConfigResponsePtrInput {
-	return (*workerConfigResponsePtrType)(v)
-}
-
-func (*workerConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkerConfigResponse)(nil)).Elem()
-}
-
-func (i *workerConfigResponsePtrType) ToWorkerConfigResponsePtrOutput() WorkerConfigResponsePtrOutput {
-	return i.ToWorkerConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *workerConfigResponsePtrType) ToWorkerConfigResponsePtrOutputWithContext(ctx context.Context) WorkerConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerConfigResponsePtrOutput)
-}
-
 // WorkerConfig defines the configuration to be used for a creating workers in the pool.
 type WorkerConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -544,16 +358,6 @@ func (o WorkerConfigResponseOutput) ToWorkerConfigResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o WorkerConfigResponseOutput) ToWorkerConfigResponsePtrOutput() WorkerConfigResponsePtrOutput {
-	return o.ToWorkerConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o WorkerConfigResponseOutput) ToWorkerConfigResponsePtrOutputWithContext(ctx context.Context) WorkerConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerConfigResponse) *WorkerConfigResponse {
-		return &v
-	}).(WorkerConfigResponsePtrOutput)
-}
-
 // Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/ If `0` is specified, Cloud Build will use a standard disk size.
 func (o WorkerConfigResponseOutput) DiskSizeGb() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkerConfigResponse) string { return v.DiskSizeGb }).(pulumi.StringOutput)
@@ -564,65 +368,15 @@ func (o WorkerConfigResponseOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkerConfigResponse) string { return v.MachineType }).(pulumi.StringOutput)
 }
 
-type WorkerConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (WorkerConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkerConfigResponse)(nil)).Elem()
-}
-
-func (o WorkerConfigResponsePtrOutput) ToWorkerConfigResponsePtrOutput() WorkerConfigResponsePtrOutput {
-	return o
-}
-
-func (o WorkerConfigResponsePtrOutput) ToWorkerConfigResponsePtrOutputWithContext(ctx context.Context) WorkerConfigResponsePtrOutput {
-	return o
-}
-
-func (o WorkerConfigResponsePtrOutput) Elem() WorkerConfigResponseOutput {
-	return o.ApplyT(func(v *WorkerConfigResponse) WorkerConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret WorkerConfigResponse
-		return ret
-	}).(WorkerConfigResponseOutput)
-}
-
-// Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/ If `0` is specified, Cloud Build will use a standard disk size.
-func (o WorkerConfigResponsePtrOutput) DiskSizeGb() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkerConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DiskSizeGb
-	}).(pulumi.StringPtrOutput)
-}
-
-// Machine Type of the worker, such as n1-standard-1. See https://cloud.google.com/compute/docs/machine-types. If left blank, Cloud Build will use a standard unspecified machine to create the worker pool.
-func (o WorkerConfigResponsePtrOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkerConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MachineType
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigInput)(nil)).Elem(), NetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigPtrInput)(nil)).Elem(), NetworkConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigResponseInput)(nil)).Elem(), NetworkConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigResponsePtrInput)(nil)).Elem(), NetworkConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerConfigInput)(nil)).Elem(), WorkerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerConfigPtrInput)(nil)).Elem(), WorkerConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkerConfigResponseInput)(nil)).Elem(), WorkerConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkerConfigResponsePtrInput)(nil)).Elem(), WorkerConfigResponseArgs{})
 	pulumi.RegisterOutputType(NetworkConfigOutput{})
 	pulumi.RegisterOutputType(NetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(NetworkConfigResponseOutput{})
-	pulumi.RegisterOutputType(NetworkConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(WorkerConfigOutput{})
 	pulumi.RegisterOutputType(WorkerConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkerConfigResponseOutput{})
-	pulumi.RegisterOutputType(WorkerConfigResponsePtrOutput{})
 }

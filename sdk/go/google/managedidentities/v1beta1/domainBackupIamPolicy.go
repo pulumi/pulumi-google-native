@@ -106,7 +106,7 @@ type DomainBackupIamPolicyInput interface {
 }
 
 func (*DomainBackupIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainBackupIamPolicy)(nil))
+	return reflect.TypeOf((**DomainBackupIamPolicy)(nil)).Elem()
 }
 
 func (i *DomainBackupIamPolicy) ToDomainBackupIamPolicyOutput() DomainBackupIamPolicyOutput {
@@ -120,7 +120,7 @@ func (i *DomainBackupIamPolicy) ToDomainBackupIamPolicyOutputWithContext(ctx con
 type DomainBackupIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (DomainBackupIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainBackupIamPolicy)(nil))
+	return reflect.TypeOf((**DomainBackupIamPolicy)(nil)).Elem()
 }
 
 func (o DomainBackupIamPolicyOutput) ToDomainBackupIamPolicyOutput() DomainBackupIamPolicyOutput {

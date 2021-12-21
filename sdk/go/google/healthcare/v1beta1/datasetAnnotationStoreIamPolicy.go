@@ -118,7 +118,7 @@ type DatasetAnnotationStoreIamPolicyInput interface {
 }
 
 func (*DatasetAnnotationStoreIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetAnnotationStoreIamPolicy)(nil))
+	return reflect.TypeOf((**DatasetAnnotationStoreIamPolicy)(nil)).Elem()
 }
 
 func (i *DatasetAnnotationStoreIamPolicy) ToDatasetAnnotationStoreIamPolicyOutput() DatasetAnnotationStoreIamPolicyOutput {
@@ -132,7 +132,7 @@ func (i *DatasetAnnotationStoreIamPolicy) ToDatasetAnnotationStoreIamPolicyOutpu
 type DatasetAnnotationStoreIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (DatasetAnnotationStoreIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetAnnotationStoreIamPolicy)(nil))
+	return reflect.TypeOf((**DatasetAnnotationStoreIamPolicy)(nil)).Elem()
 }
 
 func (o DatasetAnnotationStoreIamPolicyOutput) ToDatasetAnnotationStoreIamPolicyOutput() DatasetAnnotationStoreIamPolicyOutput {

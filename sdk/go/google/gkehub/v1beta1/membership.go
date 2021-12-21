@@ -136,7 +136,7 @@ type MembershipInput interface {
 }
 
 func (*Membership) ElementType() reflect.Type {
-	return reflect.TypeOf((*Membership)(nil))
+	return reflect.TypeOf((**Membership)(nil)).Elem()
 }
 
 func (i *Membership) ToMembershipOutput() MembershipOutput {
@@ -150,7 +150,7 @@ func (i *Membership) ToMembershipOutputWithContext(ctx context.Context) Membersh
 type MembershipOutput struct{ *pulumi.OutputState }
 
 func (MembershipOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Membership)(nil))
+	return reflect.TypeOf((**Membership)(nil)).Elem()
 }
 
 func (o MembershipOutput) ToMembershipOutput() MembershipOutput {

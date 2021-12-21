@@ -101,7 +101,7 @@ type NoteIamPolicyInput interface {
 }
 
 func (*NoteIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*NoteIamPolicy)(nil))
+	return reflect.TypeOf((**NoteIamPolicy)(nil)).Elem()
 }
 
 func (i *NoteIamPolicy) ToNoteIamPolicyOutput() NoteIamPolicyOutput {
@@ -115,7 +115,7 @@ func (i *NoteIamPolicy) ToNoteIamPolicyOutputWithContext(ctx context.Context) No
 type NoteIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (NoteIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NoteIamPolicy)(nil))
+	return reflect.TypeOf((**NoteIamPolicy)(nil)).Elem()
 }
 
 func (o NoteIamPolicyOutput) ToNoteIamPolicyOutput() NoteIamPolicyOutput {

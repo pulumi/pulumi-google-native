@@ -127,62 +127,6 @@ type AuditConfigResponse struct {
 	Service string `pulumi:"service"`
 }
 
-// AuditConfigResponseInput is an input type that accepts AuditConfigResponseArgs and AuditConfigResponseOutput values.
-// You can construct a concrete instance of `AuditConfigResponseInput` via:
-//
-//          AuditConfigResponseArgs{...}
-type AuditConfigResponseInput interface {
-	pulumi.Input
-
-	ToAuditConfigResponseOutput() AuditConfigResponseOutput
-	ToAuditConfigResponseOutputWithContext(context.Context) AuditConfigResponseOutput
-}
-
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
-type AuditConfigResponseArgs struct {
-	// The configuration for logging of each type of permission.
-	AuditLogConfigs AuditLogConfigResponseArrayInput `pulumi:"auditLogConfigs"`
-	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-	Service pulumi.StringInput `pulumi:"service"`
-}
-
-func (AuditConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
-}
-
-func (i AuditConfigResponseArgs) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
-	return i.ToAuditConfigResponseOutputWithContext(context.Background())
-}
-
-func (i AuditConfigResponseArgs) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseOutput)
-}
-
-// AuditConfigResponseArrayInput is an input type that accepts AuditConfigResponseArray and AuditConfigResponseArrayOutput values.
-// You can construct a concrete instance of `AuditConfigResponseArrayInput` via:
-//
-//          AuditConfigResponseArray{ AuditConfigResponseArgs{...} }
-type AuditConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput
-	ToAuditConfigResponseArrayOutputWithContext(context.Context) AuditConfigResponseArrayOutput
-}
-
-type AuditConfigResponseArray []AuditConfigResponseInput
-
-func (AuditConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
-}
-
-func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
-	return i.ToAuditConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseArrayOutput)
-}
-
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
 type AuditConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -343,62 +287,6 @@ type AuditLogConfigResponse struct {
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
 	LogType string `pulumi:"logType"`
-}
-
-// AuditLogConfigResponseInput is an input type that accepts AuditLogConfigResponseArgs and AuditLogConfigResponseOutput values.
-// You can construct a concrete instance of `AuditLogConfigResponseInput` via:
-//
-//          AuditLogConfigResponseArgs{...}
-type AuditLogConfigResponseInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput
-	ToAuditLogConfigResponseOutputWithContext(context.Context) AuditLogConfigResponseOutput
-}
-
-// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
-type AuditLogConfigResponseArgs struct {
-	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
-	// The log type that this config enables.
-	LogType pulumi.StringInput `pulumi:"logType"`
-}
-
-func (AuditLogConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
-	return i.ToAuditLogConfigResponseOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseOutput)
-}
-
-// AuditLogConfigResponseArrayInput is an input type that accepts AuditLogConfigResponseArray and AuditLogConfigResponseArrayOutput values.
-// You can construct a concrete instance of `AuditLogConfigResponseArrayInput` via:
-//
-//          AuditLogConfigResponseArray{ AuditLogConfigResponseArgs{...} }
-type AuditLogConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput
-	ToAuditLogConfigResponseArrayOutputWithContext(context.Context) AuditLogConfigResponseArrayOutput
-}
-
-type AuditLogConfigResponseArray []AuditLogConfigResponseInput
-
-func (AuditLogConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
-	return i.ToAuditLogConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseArrayOutput)
 }
 
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
@@ -574,64 +462,6 @@ type BindingResponse struct {
 	Role string `pulumi:"role"`
 }
 
-// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
-// You can construct a concrete instance of `BindingResponseInput` via:
-//
-//          BindingResponseArgs{...}
-type BindingResponseInput interface {
-	pulumi.Input
-
-	ToBindingResponseOutput() BindingResponseOutput
-	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
-}
-
-// Associates `members`, or principals, with a `role`.
-type BindingResponseArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
-	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-	Role pulumi.StringInput `pulumi:"role"`
-}
-
-func (BindingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
-	return i.ToBindingResponseOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
-}
-
-// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
-// You can construct a concrete instance of `BindingResponseArrayInput` via:
-//
-//          BindingResponseArray{ BindingResponseArgs{...} }
-type BindingResponseArrayInput interface {
-	pulumi.Input
-
-	ToBindingResponseArrayOutput() BindingResponseArrayOutput
-	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
-}
-
-type BindingResponseArray []BindingResponseInput
-
-func (BindingResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
-	return i.ToBindingResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
-}
-
 // Associates `members`, or principals, with a `role`.
 type BindingResponseOutput struct{ *pulumi.OutputState }
 
@@ -717,47 +547,6 @@ func (i EndpointMatcherArgs) ToEndpointMatcherOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointMatcherOutput)
 }
 
-func (i EndpointMatcherArgs) ToEndpointMatcherPtrOutput() EndpointMatcherPtrOutput {
-	return i.ToEndpointMatcherPtrOutputWithContext(context.Background())
-}
-
-func (i EndpointMatcherArgs) ToEndpointMatcherPtrOutputWithContext(ctx context.Context) EndpointMatcherPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointMatcherOutput).ToEndpointMatcherPtrOutputWithContext(ctx)
-}
-
-// EndpointMatcherPtrInput is an input type that accepts EndpointMatcherArgs, EndpointMatcherPtr and EndpointMatcherPtrOutput values.
-// You can construct a concrete instance of `EndpointMatcherPtrInput` via:
-//
-//          EndpointMatcherArgs{...}
-//
-//  or:
-//
-//          nil
-type EndpointMatcherPtrInput interface {
-	pulumi.Input
-
-	ToEndpointMatcherPtrOutput() EndpointMatcherPtrOutput
-	ToEndpointMatcherPtrOutputWithContext(context.Context) EndpointMatcherPtrOutput
-}
-
-type endpointMatcherPtrType EndpointMatcherArgs
-
-func EndpointMatcherPtr(v *EndpointMatcherArgs) EndpointMatcherPtrInput {
-	return (*endpointMatcherPtrType)(v)
-}
-
-func (*endpointMatcherPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EndpointMatcher)(nil)).Elem()
-}
-
-func (i *endpointMatcherPtrType) ToEndpointMatcherPtrOutput() EndpointMatcherPtrOutput {
-	return i.ToEndpointMatcherPtrOutputWithContext(context.Background())
-}
-
-func (i *endpointMatcherPtrType) ToEndpointMatcherPtrOutputWithContext(ctx context.Context) EndpointMatcherPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointMatcherPtrOutput)
-}
-
 // A definition of a matcher that selects endpoints to which the policies should be applied.
 type EndpointMatcherOutput struct{ *pulumi.OutputState }
 
@@ -773,129 +562,15 @@ func (o EndpointMatcherOutput) ToEndpointMatcherOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o EndpointMatcherOutput) ToEndpointMatcherPtrOutput() EndpointMatcherPtrOutput {
-	return o.ToEndpointMatcherPtrOutputWithContext(context.Background())
-}
-
-func (o EndpointMatcherOutput) ToEndpointMatcherPtrOutputWithContext(ctx context.Context) EndpointMatcherPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointMatcher) *EndpointMatcher {
-		return &v
-	}).(EndpointMatcherPtrOutput)
-}
-
 // The matcher is based on node metadata presented by xDS clients.
 func (o EndpointMatcherOutput) MetadataLabelMatcher() MetadataLabelMatcherPtrOutput {
 	return o.ApplyT(func(v EndpointMatcher) *MetadataLabelMatcher { return v.MetadataLabelMatcher }).(MetadataLabelMatcherPtrOutput)
-}
-
-type EndpointMatcherPtrOutput struct{ *pulumi.OutputState }
-
-func (EndpointMatcherPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EndpointMatcher)(nil)).Elem()
-}
-
-func (o EndpointMatcherPtrOutput) ToEndpointMatcherPtrOutput() EndpointMatcherPtrOutput {
-	return o
-}
-
-func (o EndpointMatcherPtrOutput) ToEndpointMatcherPtrOutputWithContext(ctx context.Context) EndpointMatcherPtrOutput {
-	return o
-}
-
-func (o EndpointMatcherPtrOutput) Elem() EndpointMatcherOutput {
-	return o.ApplyT(func(v *EndpointMatcher) EndpointMatcher {
-		if v != nil {
-			return *v
-		}
-		var ret EndpointMatcher
-		return ret
-	}).(EndpointMatcherOutput)
-}
-
-// The matcher is based on node metadata presented by xDS clients.
-func (o EndpointMatcherPtrOutput) MetadataLabelMatcher() MetadataLabelMatcherPtrOutput {
-	return o.ApplyT(func(v *EndpointMatcher) *MetadataLabelMatcher {
-		if v == nil {
-			return nil
-		}
-		return v.MetadataLabelMatcher
-	}).(MetadataLabelMatcherPtrOutput)
 }
 
 // A definition of a matcher that selects endpoints to which the policies should be applied.
 type EndpointMatcherResponse struct {
 	// The matcher is based on node metadata presented by xDS clients.
 	MetadataLabelMatcher MetadataLabelMatcherResponse `pulumi:"metadataLabelMatcher"`
-}
-
-// EndpointMatcherResponseInput is an input type that accepts EndpointMatcherResponseArgs and EndpointMatcherResponseOutput values.
-// You can construct a concrete instance of `EndpointMatcherResponseInput` via:
-//
-//          EndpointMatcherResponseArgs{...}
-type EndpointMatcherResponseInput interface {
-	pulumi.Input
-
-	ToEndpointMatcherResponseOutput() EndpointMatcherResponseOutput
-	ToEndpointMatcherResponseOutputWithContext(context.Context) EndpointMatcherResponseOutput
-}
-
-// A definition of a matcher that selects endpoints to which the policies should be applied.
-type EndpointMatcherResponseArgs struct {
-	// The matcher is based on node metadata presented by xDS clients.
-	MetadataLabelMatcher MetadataLabelMatcherResponseInput `pulumi:"metadataLabelMatcher"`
-}
-
-func (EndpointMatcherResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EndpointMatcherResponse)(nil)).Elem()
-}
-
-func (i EndpointMatcherResponseArgs) ToEndpointMatcherResponseOutput() EndpointMatcherResponseOutput {
-	return i.ToEndpointMatcherResponseOutputWithContext(context.Background())
-}
-
-func (i EndpointMatcherResponseArgs) ToEndpointMatcherResponseOutputWithContext(ctx context.Context) EndpointMatcherResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointMatcherResponseOutput)
-}
-
-func (i EndpointMatcherResponseArgs) ToEndpointMatcherResponsePtrOutput() EndpointMatcherResponsePtrOutput {
-	return i.ToEndpointMatcherResponsePtrOutputWithContext(context.Background())
-}
-
-func (i EndpointMatcherResponseArgs) ToEndpointMatcherResponsePtrOutputWithContext(ctx context.Context) EndpointMatcherResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointMatcherResponseOutput).ToEndpointMatcherResponsePtrOutputWithContext(ctx)
-}
-
-// EndpointMatcherResponsePtrInput is an input type that accepts EndpointMatcherResponseArgs, EndpointMatcherResponsePtr and EndpointMatcherResponsePtrOutput values.
-// You can construct a concrete instance of `EndpointMatcherResponsePtrInput` via:
-//
-//          EndpointMatcherResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type EndpointMatcherResponsePtrInput interface {
-	pulumi.Input
-
-	ToEndpointMatcherResponsePtrOutput() EndpointMatcherResponsePtrOutput
-	ToEndpointMatcherResponsePtrOutputWithContext(context.Context) EndpointMatcherResponsePtrOutput
-}
-
-type endpointMatcherResponsePtrType EndpointMatcherResponseArgs
-
-func EndpointMatcherResponsePtr(v *EndpointMatcherResponseArgs) EndpointMatcherResponsePtrInput {
-	return (*endpointMatcherResponsePtrType)(v)
-}
-
-func (*endpointMatcherResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EndpointMatcherResponse)(nil)).Elem()
-}
-
-func (i *endpointMatcherResponsePtrType) ToEndpointMatcherResponsePtrOutput() EndpointMatcherResponsePtrOutput {
-	return i.ToEndpointMatcherResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *endpointMatcherResponsePtrType) ToEndpointMatcherResponsePtrOutputWithContext(ctx context.Context) EndpointMatcherResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointMatcherResponsePtrOutput)
 }
 
 // A definition of a matcher that selects endpoints to which the policies should be applied.
@@ -913,53 +588,9 @@ func (o EndpointMatcherResponseOutput) ToEndpointMatcherResponseOutputWithContex
 	return o
 }
 
-func (o EndpointMatcherResponseOutput) ToEndpointMatcherResponsePtrOutput() EndpointMatcherResponsePtrOutput {
-	return o.ToEndpointMatcherResponsePtrOutputWithContext(context.Background())
-}
-
-func (o EndpointMatcherResponseOutput) ToEndpointMatcherResponsePtrOutputWithContext(ctx context.Context) EndpointMatcherResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointMatcherResponse) *EndpointMatcherResponse {
-		return &v
-	}).(EndpointMatcherResponsePtrOutput)
-}
-
 // The matcher is based on node metadata presented by xDS clients.
 func (o EndpointMatcherResponseOutput) MetadataLabelMatcher() MetadataLabelMatcherResponseOutput {
 	return o.ApplyT(func(v EndpointMatcherResponse) MetadataLabelMatcherResponse { return v.MetadataLabelMatcher }).(MetadataLabelMatcherResponseOutput)
-}
-
-type EndpointMatcherResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (EndpointMatcherResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EndpointMatcherResponse)(nil)).Elem()
-}
-
-func (o EndpointMatcherResponsePtrOutput) ToEndpointMatcherResponsePtrOutput() EndpointMatcherResponsePtrOutput {
-	return o
-}
-
-func (o EndpointMatcherResponsePtrOutput) ToEndpointMatcherResponsePtrOutputWithContext(ctx context.Context) EndpointMatcherResponsePtrOutput {
-	return o
-}
-
-func (o EndpointMatcherResponsePtrOutput) Elem() EndpointMatcherResponseOutput {
-	return o.ApplyT(func(v *EndpointMatcherResponse) EndpointMatcherResponse {
-		if v != nil {
-			return *v
-		}
-		var ret EndpointMatcherResponse
-		return ret
-	}).(EndpointMatcherResponseOutput)
-}
-
-// The matcher is based on node metadata presented by xDS clients.
-func (o EndpointMatcherResponsePtrOutput) MetadataLabelMatcher() MetadataLabelMatcherResponsePtrOutput {
-	return o.ApplyT(func(v *EndpointMatcherResponse) *MetadataLabelMatcherResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.MetadataLabelMatcher
-	}).(MetadataLabelMatcherResponsePtrOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -1171,41 +802,6 @@ type ExprResponse struct {
 	Title string `pulumi:"title"`
 }
 
-// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
-// You can construct a concrete instance of `ExprResponseInput` via:
-//
-//          ExprResponseArgs{...}
-type ExprResponseInput interface {
-	pulumi.Input
-
-	ToExprResponseOutput() ExprResponseOutput
-	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type ExprResponseArgs struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-	Location pulumi.StringInput `pulumi:"location"`
-	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (ExprResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
-}
-
-func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
-	return i.ToExprResponseOutputWithContext(context.Background())
-}
-
-func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprResponseOutput struct{ *pulumi.OutputState }
 
@@ -1410,78 +1006,6 @@ type MetadataLabelMatcherResponse struct {
 	MetadataLabels []MetadataLabelsResponse `pulumi:"metadataLabels"`
 }
 
-// MetadataLabelMatcherResponseInput is an input type that accepts MetadataLabelMatcherResponseArgs and MetadataLabelMatcherResponseOutput values.
-// You can construct a concrete instance of `MetadataLabelMatcherResponseInput` via:
-//
-//          MetadataLabelMatcherResponseArgs{...}
-type MetadataLabelMatcherResponseInput interface {
-	pulumi.Input
-
-	ToMetadataLabelMatcherResponseOutput() MetadataLabelMatcherResponseOutput
-	ToMetadataLabelMatcherResponseOutputWithContext(context.Context) MetadataLabelMatcherResponseOutput
-}
-
-// The matcher that is based on node metadata presented by xDS clients.
-type MetadataLabelMatcherResponseArgs struct {
-	// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
-	MetadataLabelMatchCriteria pulumi.StringInput `pulumi:"metadataLabelMatchCriteria"`
-	// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list can have at most 64 entries. The list can be empty if the match criteria is MATCH_ANY, to specify a wildcard match (i.e this matches any client).
-	MetadataLabels MetadataLabelsResponseArrayInput `pulumi:"metadataLabels"`
-}
-
-func (MetadataLabelMatcherResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MetadataLabelMatcherResponse)(nil)).Elem()
-}
-
-func (i MetadataLabelMatcherResponseArgs) ToMetadataLabelMatcherResponseOutput() MetadataLabelMatcherResponseOutput {
-	return i.ToMetadataLabelMatcherResponseOutputWithContext(context.Background())
-}
-
-func (i MetadataLabelMatcherResponseArgs) ToMetadataLabelMatcherResponseOutputWithContext(ctx context.Context) MetadataLabelMatcherResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetadataLabelMatcherResponseOutput)
-}
-
-func (i MetadataLabelMatcherResponseArgs) ToMetadataLabelMatcherResponsePtrOutput() MetadataLabelMatcherResponsePtrOutput {
-	return i.ToMetadataLabelMatcherResponsePtrOutputWithContext(context.Background())
-}
-
-func (i MetadataLabelMatcherResponseArgs) ToMetadataLabelMatcherResponsePtrOutputWithContext(ctx context.Context) MetadataLabelMatcherResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetadataLabelMatcherResponseOutput).ToMetadataLabelMatcherResponsePtrOutputWithContext(ctx)
-}
-
-// MetadataLabelMatcherResponsePtrInput is an input type that accepts MetadataLabelMatcherResponseArgs, MetadataLabelMatcherResponsePtr and MetadataLabelMatcherResponsePtrOutput values.
-// You can construct a concrete instance of `MetadataLabelMatcherResponsePtrInput` via:
-//
-//          MetadataLabelMatcherResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type MetadataLabelMatcherResponsePtrInput interface {
-	pulumi.Input
-
-	ToMetadataLabelMatcherResponsePtrOutput() MetadataLabelMatcherResponsePtrOutput
-	ToMetadataLabelMatcherResponsePtrOutputWithContext(context.Context) MetadataLabelMatcherResponsePtrOutput
-}
-
-type metadataLabelMatcherResponsePtrType MetadataLabelMatcherResponseArgs
-
-func MetadataLabelMatcherResponsePtr(v *MetadataLabelMatcherResponseArgs) MetadataLabelMatcherResponsePtrInput {
-	return (*metadataLabelMatcherResponsePtrType)(v)
-}
-
-func (*metadataLabelMatcherResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MetadataLabelMatcherResponse)(nil)).Elem()
-}
-
-func (i *metadataLabelMatcherResponsePtrType) ToMetadataLabelMatcherResponsePtrOutput() MetadataLabelMatcherResponsePtrOutput {
-	return i.ToMetadataLabelMatcherResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *metadataLabelMatcherResponsePtrType) ToMetadataLabelMatcherResponsePtrOutputWithContext(ctx context.Context) MetadataLabelMatcherResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetadataLabelMatcherResponsePtrOutput)
-}
-
 // The matcher that is based on node metadata presented by xDS clients.
 type MetadataLabelMatcherResponseOutput struct{ *pulumi.OutputState }
 
@@ -1497,16 +1021,6 @@ func (o MetadataLabelMatcherResponseOutput) ToMetadataLabelMatcherResponseOutput
 	return o
 }
 
-func (o MetadataLabelMatcherResponseOutput) ToMetadataLabelMatcherResponsePtrOutput() MetadataLabelMatcherResponsePtrOutput {
-	return o.ToMetadataLabelMatcherResponsePtrOutputWithContext(context.Background())
-}
-
-func (o MetadataLabelMatcherResponseOutput) ToMetadataLabelMatcherResponsePtrOutputWithContext(ctx context.Context) MetadataLabelMatcherResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetadataLabelMatcherResponse) *MetadataLabelMatcherResponse {
-		return &v
-	}).(MetadataLabelMatcherResponsePtrOutput)
-}
-
 // Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
 func (o MetadataLabelMatcherResponseOutput) MetadataLabelMatchCriteria() pulumi.StringOutput {
 	return o.ApplyT(func(v MetadataLabelMatcherResponse) string { return v.MetadataLabelMatchCriteria }).(pulumi.StringOutput)
@@ -1515,50 +1029,6 @@ func (o MetadataLabelMatcherResponseOutput) MetadataLabelMatchCriteria() pulumi.
 // The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list can have at most 64 entries. The list can be empty if the match criteria is MATCH_ANY, to specify a wildcard match (i.e this matches any client).
 func (o MetadataLabelMatcherResponseOutput) MetadataLabels() MetadataLabelsResponseArrayOutput {
 	return o.ApplyT(func(v MetadataLabelMatcherResponse) []MetadataLabelsResponse { return v.MetadataLabels }).(MetadataLabelsResponseArrayOutput)
-}
-
-type MetadataLabelMatcherResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (MetadataLabelMatcherResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MetadataLabelMatcherResponse)(nil)).Elem()
-}
-
-func (o MetadataLabelMatcherResponsePtrOutput) ToMetadataLabelMatcherResponsePtrOutput() MetadataLabelMatcherResponsePtrOutput {
-	return o
-}
-
-func (o MetadataLabelMatcherResponsePtrOutput) ToMetadataLabelMatcherResponsePtrOutputWithContext(ctx context.Context) MetadataLabelMatcherResponsePtrOutput {
-	return o
-}
-
-func (o MetadataLabelMatcherResponsePtrOutput) Elem() MetadataLabelMatcherResponseOutput {
-	return o.ApplyT(func(v *MetadataLabelMatcherResponse) MetadataLabelMatcherResponse {
-		if v != nil {
-			return *v
-		}
-		var ret MetadataLabelMatcherResponse
-		return ret
-	}).(MetadataLabelMatcherResponseOutput)
-}
-
-// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
-func (o MetadataLabelMatcherResponsePtrOutput) MetadataLabelMatchCriteria() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MetadataLabelMatcherResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.MetadataLabelMatchCriteria
-	}).(pulumi.StringPtrOutput)
-}
-
-// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list can have at most 64 entries. The list can be empty if the match criteria is MATCH_ANY, to specify a wildcard match (i.e this matches any client).
-func (o MetadataLabelMatcherResponsePtrOutput) MetadataLabels() MetadataLabelsResponseArrayOutput {
-	return o.ApplyT(func(v *MetadataLabelMatcherResponse) []MetadataLabelsResponse {
-		if v == nil {
-			return nil
-		}
-		return v.MetadataLabels
-	}).(MetadataLabelsResponseArrayOutput)
 }
 
 // Defines a name-pair value for a single label.
@@ -1676,62 +1146,6 @@ type MetadataLabelsResponse struct {
 	LabelName string `pulumi:"labelName"`
 	// Label value presented as value corresponding to the above key, in xDS Node Metadata.
 	LabelValue string `pulumi:"labelValue"`
-}
-
-// MetadataLabelsResponseInput is an input type that accepts MetadataLabelsResponseArgs and MetadataLabelsResponseOutput values.
-// You can construct a concrete instance of `MetadataLabelsResponseInput` via:
-//
-//          MetadataLabelsResponseArgs{...}
-type MetadataLabelsResponseInput interface {
-	pulumi.Input
-
-	ToMetadataLabelsResponseOutput() MetadataLabelsResponseOutput
-	ToMetadataLabelsResponseOutputWithContext(context.Context) MetadataLabelsResponseOutput
-}
-
-// Defines a name-pair value for a single label.
-type MetadataLabelsResponseArgs struct {
-	// Label name presented as key in xDS Node Metadata.
-	LabelName pulumi.StringInput `pulumi:"labelName"`
-	// Label value presented as value corresponding to the above key, in xDS Node Metadata.
-	LabelValue pulumi.StringInput `pulumi:"labelValue"`
-}
-
-func (MetadataLabelsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MetadataLabelsResponse)(nil)).Elem()
-}
-
-func (i MetadataLabelsResponseArgs) ToMetadataLabelsResponseOutput() MetadataLabelsResponseOutput {
-	return i.ToMetadataLabelsResponseOutputWithContext(context.Background())
-}
-
-func (i MetadataLabelsResponseArgs) ToMetadataLabelsResponseOutputWithContext(ctx context.Context) MetadataLabelsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetadataLabelsResponseOutput)
-}
-
-// MetadataLabelsResponseArrayInput is an input type that accepts MetadataLabelsResponseArray and MetadataLabelsResponseArrayOutput values.
-// You can construct a concrete instance of `MetadataLabelsResponseArrayInput` via:
-//
-//          MetadataLabelsResponseArray{ MetadataLabelsResponseArgs{...} }
-type MetadataLabelsResponseArrayInput interface {
-	pulumi.Input
-
-	ToMetadataLabelsResponseArrayOutput() MetadataLabelsResponseArrayOutput
-	ToMetadataLabelsResponseArrayOutputWithContext(context.Context) MetadataLabelsResponseArrayOutput
-}
-
-type MetadataLabelsResponseArray []MetadataLabelsResponseInput
-
-func (MetadataLabelsResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MetadataLabelsResponse)(nil)).Elem()
-}
-
-func (i MetadataLabelsResponseArray) ToMetadataLabelsResponseArrayOutput() MetadataLabelsResponseArrayOutput {
-	return i.ToMetadataLabelsResponseArrayOutputWithContext(context.Background())
-}
-
-func (i MetadataLabelsResponseArray) ToMetadataLabelsResponseArrayOutputWithContext(ctx context.Context) MetadataLabelsResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetadataLabelsResponseArrayOutput)
 }
 
 // Defines a name-pair value for a single label.
@@ -1925,76 +1339,6 @@ type TrafficPortSelectorResponse struct {
 	Ports []string `pulumi:"ports"`
 }
 
-// TrafficPortSelectorResponseInput is an input type that accepts TrafficPortSelectorResponseArgs and TrafficPortSelectorResponseOutput values.
-// You can construct a concrete instance of `TrafficPortSelectorResponseInput` via:
-//
-//          TrafficPortSelectorResponseArgs{...}
-type TrafficPortSelectorResponseInput interface {
-	pulumi.Input
-
-	ToTrafficPortSelectorResponseOutput() TrafficPortSelectorResponseOutput
-	ToTrafficPortSelectorResponseOutputWithContext(context.Context) TrafficPortSelectorResponseOutput
-}
-
-// Specification of a port-based selector.
-type TrafficPortSelectorResponseArgs struct {
-	// Optional. A list of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.
-	Ports pulumi.StringArrayInput `pulumi:"ports"`
-}
-
-func (TrafficPortSelectorResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TrafficPortSelectorResponse)(nil)).Elem()
-}
-
-func (i TrafficPortSelectorResponseArgs) ToTrafficPortSelectorResponseOutput() TrafficPortSelectorResponseOutput {
-	return i.ToTrafficPortSelectorResponseOutputWithContext(context.Background())
-}
-
-func (i TrafficPortSelectorResponseArgs) ToTrafficPortSelectorResponseOutputWithContext(ctx context.Context) TrafficPortSelectorResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TrafficPortSelectorResponseOutput)
-}
-
-func (i TrafficPortSelectorResponseArgs) ToTrafficPortSelectorResponsePtrOutput() TrafficPortSelectorResponsePtrOutput {
-	return i.ToTrafficPortSelectorResponsePtrOutputWithContext(context.Background())
-}
-
-func (i TrafficPortSelectorResponseArgs) ToTrafficPortSelectorResponsePtrOutputWithContext(ctx context.Context) TrafficPortSelectorResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TrafficPortSelectorResponseOutput).ToTrafficPortSelectorResponsePtrOutputWithContext(ctx)
-}
-
-// TrafficPortSelectorResponsePtrInput is an input type that accepts TrafficPortSelectorResponseArgs, TrafficPortSelectorResponsePtr and TrafficPortSelectorResponsePtrOutput values.
-// You can construct a concrete instance of `TrafficPortSelectorResponsePtrInput` via:
-//
-//          TrafficPortSelectorResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type TrafficPortSelectorResponsePtrInput interface {
-	pulumi.Input
-
-	ToTrafficPortSelectorResponsePtrOutput() TrafficPortSelectorResponsePtrOutput
-	ToTrafficPortSelectorResponsePtrOutputWithContext(context.Context) TrafficPortSelectorResponsePtrOutput
-}
-
-type trafficPortSelectorResponsePtrType TrafficPortSelectorResponseArgs
-
-func TrafficPortSelectorResponsePtr(v *TrafficPortSelectorResponseArgs) TrafficPortSelectorResponsePtrInput {
-	return (*trafficPortSelectorResponsePtrType)(v)
-}
-
-func (*trafficPortSelectorResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TrafficPortSelectorResponse)(nil)).Elem()
-}
-
-func (i *trafficPortSelectorResponsePtrType) ToTrafficPortSelectorResponsePtrOutput() TrafficPortSelectorResponsePtrOutput {
-	return i.ToTrafficPortSelectorResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *trafficPortSelectorResponsePtrType) ToTrafficPortSelectorResponsePtrOutputWithContext(ctx context.Context) TrafficPortSelectorResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TrafficPortSelectorResponsePtrOutput)
-}
-
 // Specification of a port-based selector.
 type TrafficPortSelectorResponseOutput struct{ *pulumi.OutputState }
 
@@ -2010,87 +1354,27 @@ func (o TrafficPortSelectorResponseOutput) ToTrafficPortSelectorResponseOutputWi
 	return o
 }
 
-func (o TrafficPortSelectorResponseOutput) ToTrafficPortSelectorResponsePtrOutput() TrafficPortSelectorResponsePtrOutput {
-	return o.ToTrafficPortSelectorResponsePtrOutputWithContext(context.Background())
-}
-
-func (o TrafficPortSelectorResponseOutput) ToTrafficPortSelectorResponsePtrOutputWithContext(ctx context.Context) TrafficPortSelectorResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TrafficPortSelectorResponse) *TrafficPortSelectorResponse {
-		return &v
-	}).(TrafficPortSelectorResponsePtrOutput)
-}
-
 // Optional. A list of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.
 func (o TrafficPortSelectorResponseOutput) Ports() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TrafficPortSelectorResponse) []string { return v.Ports }).(pulumi.StringArrayOutput)
 }
 
-type TrafficPortSelectorResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (TrafficPortSelectorResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TrafficPortSelectorResponse)(nil)).Elem()
-}
-
-func (o TrafficPortSelectorResponsePtrOutput) ToTrafficPortSelectorResponsePtrOutput() TrafficPortSelectorResponsePtrOutput {
-	return o
-}
-
-func (o TrafficPortSelectorResponsePtrOutput) ToTrafficPortSelectorResponsePtrOutputWithContext(ctx context.Context) TrafficPortSelectorResponsePtrOutput {
-	return o
-}
-
-func (o TrafficPortSelectorResponsePtrOutput) Elem() TrafficPortSelectorResponseOutput {
-	return o.ApplyT(func(v *TrafficPortSelectorResponse) TrafficPortSelectorResponse {
-		if v != nil {
-			return *v
-		}
-		var ret TrafficPortSelectorResponse
-		return ret
-	}).(TrafficPortSelectorResponseOutput)
-}
-
-// Optional. A list of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.
-func (o TrafficPortSelectorResponsePtrOutput) Ports() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TrafficPortSelectorResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Ports
-	}).(pulumi.StringArrayOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseInput)(nil)).Elem(), AuditConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseArrayInput)(nil)).Elem(), AuditConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseInput)(nil)).Elem(), AuditLogConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseArrayInput)(nil)).Elem(), AuditLogConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointMatcherInput)(nil)).Elem(), EndpointMatcherArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EndpointMatcherPtrInput)(nil)).Elem(), EndpointMatcherArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EndpointMatcherResponseInput)(nil)).Elem(), EndpointMatcherResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EndpointMatcherResponsePtrInput)(nil)).Elem(), EndpointMatcherResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataLabelMatcherInput)(nil)).Elem(), MetadataLabelMatcherArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataLabelMatcherPtrInput)(nil)).Elem(), MetadataLabelMatcherArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MetadataLabelMatcherResponseInput)(nil)).Elem(), MetadataLabelMatcherResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MetadataLabelMatcherResponsePtrInput)(nil)).Elem(), MetadataLabelMatcherResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataLabelsInput)(nil)).Elem(), MetadataLabelsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataLabelsArrayInput)(nil)).Elem(), MetadataLabelsArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MetadataLabelsResponseInput)(nil)).Elem(), MetadataLabelsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MetadataLabelsResponseArrayInput)(nil)).Elem(), MetadataLabelsResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TrafficPortSelectorInput)(nil)).Elem(), TrafficPortSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TrafficPortSelectorPtrInput)(nil)).Elem(), TrafficPortSelectorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TrafficPortSelectorResponseInput)(nil)).Elem(), TrafficPortSelectorResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TrafficPortSelectorResponsePtrInput)(nil)).Elem(), TrafficPortSelectorResponseArgs{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -2104,16 +1388,13 @@ func init() {
 	pulumi.RegisterOutputType(BindingResponseOutput{})
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
 	pulumi.RegisterOutputType(EndpointMatcherOutput{})
-	pulumi.RegisterOutputType(EndpointMatcherPtrOutput{})
 	pulumi.RegisterOutputType(EndpointMatcherResponseOutput{})
-	pulumi.RegisterOutputType(EndpointMatcherResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
 	pulumi.RegisterOutputType(MetadataLabelMatcherOutput{})
 	pulumi.RegisterOutputType(MetadataLabelMatcherPtrOutput{})
 	pulumi.RegisterOutputType(MetadataLabelMatcherResponseOutput{})
-	pulumi.RegisterOutputType(MetadataLabelMatcherResponsePtrOutput{})
 	pulumi.RegisterOutputType(MetadataLabelsOutput{})
 	pulumi.RegisterOutputType(MetadataLabelsArrayOutput{})
 	pulumi.RegisterOutputType(MetadataLabelsResponseOutput{})
@@ -2121,5 +1402,4 @@ func init() {
 	pulumi.RegisterOutputType(TrafficPortSelectorOutput{})
 	pulumi.RegisterOutputType(TrafficPortSelectorPtrOutput{})
 	pulumi.RegisterOutputType(TrafficPortSelectorResponseOutput{})
-	pulumi.RegisterOutputType(TrafficPortSelectorResponsePtrOutput{})
 }

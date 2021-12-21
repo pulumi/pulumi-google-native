@@ -127,62 +127,6 @@ type AuditConfigResponse struct {
 	Service string `pulumi:"service"`
 }
 
-// AuditConfigResponseInput is an input type that accepts AuditConfigResponseArgs and AuditConfigResponseOutput values.
-// You can construct a concrete instance of `AuditConfigResponseInput` via:
-//
-//          AuditConfigResponseArgs{...}
-type AuditConfigResponseInput interface {
-	pulumi.Input
-
-	ToAuditConfigResponseOutput() AuditConfigResponseOutput
-	ToAuditConfigResponseOutputWithContext(context.Context) AuditConfigResponseOutput
-}
-
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
-type AuditConfigResponseArgs struct {
-	// The configuration for logging of each type of permission.
-	AuditLogConfigs AuditLogConfigResponseArrayInput `pulumi:"auditLogConfigs"`
-	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-	Service pulumi.StringInput `pulumi:"service"`
-}
-
-func (AuditConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
-}
-
-func (i AuditConfigResponseArgs) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
-	return i.ToAuditConfigResponseOutputWithContext(context.Background())
-}
-
-func (i AuditConfigResponseArgs) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseOutput)
-}
-
-// AuditConfigResponseArrayInput is an input type that accepts AuditConfigResponseArray and AuditConfigResponseArrayOutput values.
-// You can construct a concrete instance of `AuditConfigResponseArrayInput` via:
-//
-//          AuditConfigResponseArray{ AuditConfigResponseArgs{...} }
-type AuditConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput
-	ToAuditConfigResponseArrayOutputWithContext(context.Context) AuditConfigResponseArrayOutput
-}
-
-type AuditConfigResponseArray []AuditConfigResponseInput
-
-func (AuditConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
-}
-
-func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
-	return i.ToAuditConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseArrayOutput)
-}
-
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
 type AuditConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -343,62 +287,6 @@ type AuditLogConfigResponse struct {
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
 	LogType string `pulumi:"logType"`
-}
-
-// AuditLogConfigResponseInput is an input type that accepts AuditLogConfigResponseArgs and AuditLogConfigResponseOutput values.
-// You can construct a concrete instance of `AuditLogConfigResponseInput` via:
-//
-//          AuditLogConfigResponseArgs{...}
-type AuditLogConfigResponseInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput
-	ToAuditLogConfigResponseOutputWithContext(context.Context) AuditLogConfigResponseOutput
-}
-
-// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
-type AuditLogConfigResponseArgs struct {
-	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
-	// The log type that this config enables.
-	LogType pulumi.StringInput `pulumi:"logType"`
-}
-
-func (AuditLogConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
-	return i.ToAuditLogConfigResponseOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseOutput)
-}
-
-// AuditLogConfigResponseArrayInput is an input type that accepts AuditLogConfigResponseArray and AuditLogConfigResponseArrayOutput values.
-// You can construct a concrete instance of `AuditLogConfigResponseArrayInput` via:
-//
-//          AuditLogConfigResponseArray{ AuditLogConfigResponseArgs{...} }
-type AuditLogConfigResponseArrayInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput
-	ToAuditLogConfigResponseArrayOutputWithContext(context.Context) AuditLogConfigResponseArrayOutput
-}
-
-type AuditLogConfigResponseArray []AuditLogConfigResponseInput
-
-func (AuditLogConfigResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
-	return i.ToAuditLogConfigResponseArrayOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseArrayOutput)
 }
 
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
@@ -572,64 +460,6 @@ type BindingResponse struct {
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
-}
-
-// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
-// You can construct a concrete instance of `BindingResponseInput` via:
-//
-//          BindingResponseArgs{...}
-type BindingResponseInput interface {
-	pulumi.Input
-
-	ToBindingResponseOutput() BindingResponseOutput
-	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
-}
-
-// Associates `members`, or principals, with a `role`.
-type BindingResponseArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-	Condition ExprResponseInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
-	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-	Role pulumi.StringInput `pulumi:"role"`
-}
-
-func (BindingResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
-	return i.ToBindingResponseOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
-}
-
-// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
-// You can construct a concrete instance of `BindingResponseArrayInput` via:
-//
-//          BindingResponseArray{ BindingResponseArgs{...} }
-type BindingResponseArrayInput interface {
-	pulumi.Input
-
-	ToBindingResponseArrayOutput() BindingResponseArrayOutput
-	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
-}
-
-type BindingResponseArray []BindingResponseInput
-
-func (BindingResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
-	return i.ToBindingResponseArrayOutputWithContext(context.Background())
-}
-
-func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
 }
 
 // Associates `members`, or principals, with a `role`.
@@ -834,82 +664,6 @@ type CloudSqlConnectionProfileResponse struct {
 	Settings CloudSqlSettingsResponse `pulumi:"settings"`
 }
 
-// CloudSqlConnectionProfileResponseInput is an input type that accepts CloudSqlConnectionProfileResponseArgs and CloudSqlConnectionProfileResponseOutput values.
-// You can construct a concrete instance of `CloudSqlConnectionProfileResponseInput` via:
-//
-//          CloudSqlConnectionProfileResponseArgs{...}
-type CloudSqlConnectionProfileResponseInput interface {
-	pulumi.Input
-
-	ToCloudSqlConnectionProfileResponseOutput() CloudSqlConnectionProfileResponseOutput
-	ToCloudSqlConnectionProfileResponseOutputWithContext(context.Context) CloudSqlConnectionProfileResponseOutput
-}
-
-// Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
-type CloudSqlConnectionProfileResponseArgs struct {
-	// The Cloud SQL instance ID that this connection profile is associated with.
-	CloudSqlId pulumi.StringInput `pulumi:"cloudSqlId"`
-	// The Cloud SQL database instance's private IP.
-	PrivateIp pulumi.StringInput `pulumi:"privateIp"`
-	// The Cloud SQL database instance's public IP.
-	PublicIp pulumi.StringInput `pulumi:"publicIp"`
-	// Immutable. Metadata used to create the destination Cloud SQL database.
-	Settings CloudSqlSettingsResponseInput `pulumi:"settings"`
-}
-
-func (CloudSqlConnectionProfileResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudSqlConnectionProfileResponse)(nil)).Elem()
-}
-
-func (i CloudSqlConnectionProfileResponseArgs) ToCloudSqlConnectionProfileResponseOutput() CloudSqlConnectionProfileResponseOutput {
-	return i.ToCloudSqlConnectionProfileResponseOutputWithContext(context.Background())
-}
-
-func (i CloudSqlConnectionProfileResponseArgs) ToCloudSqlConnectionProfileResponseOutputWithContext(ctx context.Context) CloudSqlConnectionProfileResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudSqlConnectionProfileResponseOutput)
-}
-
-func (i CloudSqlConnectionProfileResponseArgs) ToCloudSqlConnectionProfileResponsePtrOutput() CloudSqlConnectionProfileResponsePtrOutput {
-	return i.ToCloudSqlConnectionProfileResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CloudSqlConnectionProfileResponseArgs) ToCloudSqlConnectionProfileResponsePtrOutputWithContext(ctx context.Context) CloudSqlConnectionProfileResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudSqlConnectionProfileResponseOutput).ToCloudSqlConnectionProfileResponsePtrOutputWithContext(ctx)
-}
-
-// CloudSqlConnectionProfileResponsePtrInput is an input type that accepts CloudSqlConnectionProfileResponseArgs, CloudSqlConnectionProfileResponsePtr and CloudSqlConnectionProfileResponsePtrOutput values.
-// You can construct a concrete instance of `CloudSqlConnectionProfileResponsePtrInput` via:
-//
-//          CloudSqlConnectionProfileResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CloudSqlConnectionProfileResponsePtrInput interface {
-	pulumi.Input
-
-	ToCloudSqlConnectionProfileResponsePtrOutput() CloudSqlConnectionProfileResponsePtrOutput
-	ToCloudSqlConnectionProfileResponsePtrOutputWithContext(context.Context) CloudSqlConnectionProfileResponsePtrOutput
-}
-
-type cloudSqlConnectionProfileResponsePtrType CloudSqlConnectionProfileResponseArgs
-
-func CloudSqlConnectionProfileResponsePtr(v *CloudSqlConnectionProfileResponseArgs) CloudSqlConnectionProfileResponsePtrInput {
-	return (*cloudSqlConnectionProfileResponsePtrType)(v)
-}
-
-func (*cloudSqlConnectionProfileResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudSqlConnectionProfileResponse)(nil)).Elem()
-}
-
-func (i *cloudSqlConnectionProfileResponsePtrType) ToCloudSqlConnectionProfileResponsePtrOutput() CloudSqlConnectionProfileResponsePtrOutput {
-	return i.ToCloudSqlConnectionProfileResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *cloudSqlConnectionProfileResponsePtrType) ToCloudSqlConnectionProfileResponsePtrOutputWithContext(ctx context.Context) CloudSqlConnectionProfileResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudSqlConnectionProfileResponsePtrOutput)
-}
-
 // Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
 type CloudSqlConnectionProfileResponseOutput struct{ *pulumi.OutputState }
 
@@ -923,16 +677,6 @@ func (o CloudSqlConnectionProfileResponseOutput) ToCloudSqlConnectionProfileResp
 
 func (o CloudSqlConnectionProfileResponseOutput) ToCloudSqlConnectionProfileResponseOutputWithContext(ctx context.Context) CloudSqlConnectionProfileResponseOutput {
 	return o
-}
-
-func (o CloudSqlConnectionProfileResponseOutput) ToCloudSqlConnectionProfileResponsePtrOutput() CloudSqlConnectionProfileResponsePtrOutput {
-	return o.ToCloudSqlConnectionProfileResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CloudSqlConnectionProfileResponseOutput) ToCloudSqlConnectionProfileResponsePtrOutputWithContext(ctx context.Context) CloudSqlConnectionProfileResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudSqlConnectionProfileResponse) *CloudSqlConnectionProfileResponse {
-		return &v
-	}).(CloudSqlConnectionProfileResponsePtrOutput)
 }
 
 // The Cloud SQL instance ID that this connection profile is associated with.
@@ -953,70 +697,6 @@ func (o CloudSqlConnectionProfileResponseOutput) PublicIp() pulumi.StringOutput 
 // Immutable. Metadata used to create the destination Cloud SQL database.
 func (o CloudSqlConnectionProfileResponseOutput) Settings() CloudSqlSettingsResponseOutput {
 	return o.ApplyT(func(v CloudSqlConnectionProfileResponse) CloudSqlSettingsResponse { return v.Settings }).(CloudSqlSettingsResponseOutput)
-}
-
-type CloudSqlConnectionProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CloudSqlConnectionProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudSqlConnectionProfileResponse)(nil)).Elem()
-}
-
-func (o CloudSqlConnectionProfileResponsePtrOutput) ToCloudSqlConnectionProfileResponsePtrOutput() CloudSqlConnectionProfileResponsePtrOutput {
-	return o
-}
-
-func (o CloudSqlConnectionProfileResponsePtrOutput) ToCloudSqlConnectionProfileResponsePtrOutputWithContext(ctx context.Context) CloudSqlConnectionProfileResponsePtrOutput {
-	return o
-}
-
-func (o CloudSqlConnectionProfileResponsePtrOutput) Elem() CloudSqlConnectionProfileResponseOutput {
-	return o.ApplyT(func(v *CloudSqlConnectionProfileResponse) CloudSqlConnectionProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CloudSqlConnectionProfileResponse
-		return ret
-	}).(CloudSqlConnectionProfileResponseOutput)
-}
-
-// The Cloud SQL instance ID that this connection profile is associated with.
-func (o CloudSqlConnectionProfileResponsePtrOutput) CloudSqlId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudSqlConnectionProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CloudSqlId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Cloud SQL database instance's private IP.
-func (o CloudSqlConnectionProfileResponsePtrOutput) PrivateIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudSqlConnectionProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrivateIp
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Cloud SQL database instance's public IP.
-func (o CloudSqlConnectionProfileResponsePtrOutput) PublicIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudSqlConnectionProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PublicIp
-	}).(pulumi.StringPtrOutput)
-}
-
-// Immutable. Metadata used to create the destination Cloud SQL database.
-func (o CloudSqlConnectionProfileResponsePtrOutput) Settings() CloudSqlSettingsResponsePtrOutput {
-	return o.ApplyT(func(v *CloudSqlConnectionProfileResponse) *CloudSqlSettingsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Settings
-	}).(CloudSqlSettingsResponsePtrOutput)
 }
 
 // Settings for creating a Cloud SQL database instance.
@@ -1440,104 +1120,6 @@ type CloudSqlSettingsResponse struct {
 	Zone string `pulumi:"zone"`
 }
 
-// CloudSqlSettingsResponseInput is an input type that accepts CloudSqlSettingsResponseArgs and CloudSqlSettingsResponseOutput values.
-// You can construct a concrete instance of `CloudSqlSettingsResponseInput` via:
-//
-//          CloudSqlSettingsResponseArgs{...}
-type CloudSqlSettingsResponseInput interface {
-	pulumi.Input
-
-	ToCloudSqlSettingsResponseOutput() CloudSqlSettingsResponseOutput
-	ToCloudSqlSettingsResponseOutputWithContext(context.Context) CloudSqlSettingsResponseOutput
-}
-
-// Settings for creating a Cloud SQL database instance.
-type CloudSqlSettingsResponseArgs struct {
-	// The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
-	ActivationPolicy pulumi.StringInput `pulumi:"activationPolicy"`
-	// [default: ON] If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB.
-	AutoStorageIncrease pulumi.BoolInput `pulumi:"autoStorageIncrease"`
-	// The Cloud SQL default instance level collation.
-	Collation pulumi.StringInput `pulumi:"collation"`
-	// The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
-	DataDiskSizeGb pulumi.StringInput `pulumi:"dataDiskSizeGb"`
-	// The type of storage: `PD_SSD` (default) or `PD_HDD`.
-	DataDiskType pulumi.StringInput `pulumi:"dataDiskType"`
-	// The database flags passed to the Cloud SQL instance at startup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-	DatabaseFlags pulumi.StringMapInput `pulumi:"databaseFlags"`
-	// The database engine type and version.
-	DatabaseVersion pulumi.StringInput `pulumi:"databaseVersion"`
-	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
-	IpConfig SqlIpConfigResponseInput `pulumi:"ipConfig"`
-	// Input only. Initial root password.
-	RootPassword pulumi.StringInput `pulumi:"rootPassword"`
-	// Indicates If this connection profile root password is stored.
-	RootPasswordSet pulumi.BoolInput `pulumi:"rootPasswordSet"`
-	// The Database Migration Service source connection profile ID, in the format: `projects/my_project_name/locations/us-central1/connectionProfiles/connection_profile_ID`
-	SourceId pulumi.StringInput `pulumi:"sourceId"`
-	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
-	StorageAutoResizeLimit pulumi.StringInput `pulumi:"storageAutoResizeLimit"`
-	// The tier (or machine type) for this instance, for example: `db-n1-standard-1` (MySQL instances) or `db-custom-1-3840` (PostgreSQL instances). For more information, see [Cloud SQL Instance Settings](https://cloud.google.com/sql/docs/mysql/instance-settings).
-	Tier pulumi.StringInput `pulumi:"tier"`
-	// The resource labels for a Cloud SQL instance to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "18kg", "count": "3" }`.
-	UserLabels pulumi.StringMapInput `pulumi:"userLabels"`
-	// The Google Cloud Platform zone where your Cloud SQL datdabse instance is located.
-	Zone pulumi.StringInput `pulumi:"zone"`
-}
-
-func (CloudSqlSettingsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudSqlSettingsResponse)(nil)).Elem()
-}
-
-func (i CloudSqlSettingsResponseArgs) ToCloudSqlSettingsResponseOutput() CloudSqlSettingsResponseOutput {
-	return i.ToCloudSqlSettingsResponseOutputWithContext(context.Background())
-}
-
-func (i CloudSqlSettingsResponseArgs) ToCloudSqlSettingsResponseOutputWithContext(ctx context.Context) CloudSqlSettingsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudSqlSettingsResponseOutput)
-}
-
-func (i CloudSqlSettingsResponseArgs) ToCloudSqlSettingsResponsePtrOutput() CloudSqlSettingsResponsePtrOutput {
-	return i.ToCloudSqlSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i CloudSqlSettingsResponseArgs) ToCloudSqlSettingsResponsePtrOutputWithContext(ctx context.Context) CloudSqlSettingsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudSqlSettingsResponseOutput).ToCloudSqlSettingsResponsePtrOutputWithContext(ctx)
-}
-
-// CloudSqlSettingsResponsePtrInput is an input type that accepts CloudSqlSettingsResponseArgs, CloudSqlSettingsResponsePtr and CloudSqlSettingsResponsePtrOutput values.
-// You can construct a concrete instance of `CloudSqlSettingsResponsePtrInput` via:
-//
-//          CloudSqlSettingsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type CloudSqlSettingsResponsePtrInput interface {
-	pulumi.Input
-
-	ToCloudSqlSettingsResponsePtrOutput() CloudSqlSettingsResponsePtrOutput
-	ToCloudSqlSettingsResponsePtrOutputWithContext(context.Context) CloudSqlSettingsResponsePtrOutput
-}
-
-type cloudSqlSettingsResponsePtrType CloudSqlSettingsResponseArgs
-
-func CloudSqlSettingsResponsePtr(v *CloudSqlSettingsResponseArgs) CloudSqlSettingsResponsePtrInput {
-	return (*cloudSqlSettingsResponsePtrType)(v)
-}
-
-func (*cloudSqlSettingsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudSqlSettingsResponse)(nil)).Elem()
-}
-
-func (i *cloudSqlSettingsResponsePtrType) ToCloudSqlSettingsResponsePtrOutput() CloudSqlSettingsResponsePtrOutput {
-	return i.ToCloudSqlSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *cloudSqlSettingsResponsePtrType) ToCloudSqlSettingsResponsePtrOutputWithContext(ctx context.Context) CloudSqlSettingsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudSqlSettingsResponsePtrOutput)
-}
-
 // Settings for creating a Cloud SQL database instance.
 type CloudSqlSettingsResponseOutput struct{ *pulumi.OutputState }
 
@@ -1551,16 +1133,6 @@ func (o CloudSqlSettingsResponseOutput) ToCloudSqlSettingsResponseOutput() Cloud
 
 func (o CloudSqlSettingsResponseOutput) ToCloudSqlSettingsResponseOutputWithContext(ctx context.Context) CloudSqlSettingsResponseOutput {
 	return o
-}
-
-func (o CloudSqlSettingsResponseOutput) ToCloudSqlSettingsResponsePtrOutput() CloudSqlSettingsResponsePtrOutput {
-	return o.ToCloudSqlSettingsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o CloudSqlSettingsResponseOutput) ToCloudSqlSettingsResponsePtrOutputWithContext(ctx context.Context) CloudSqlSettingsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudSqlSettingsResponse) *CloudSqlSettingsResponse {
-		return &v
-	}).(CloudSqlSettingsResponsePtrOutput)
 }
 
 // The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
@@ -1636,180 +1208,6 @@ func (o CloudSqlSettingsResponseOutput) UserLabels() pulumi.StringMapOutput {
 // The Google Cloud Platform zone where your Cloud SQL datdabse instance is located.
 func (o CloudSqlSettingsResponseOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudSqlSettingsResponse) string { return v.Zone }).(pulumi.StringOutput)
-}
-
-type CloudSqlSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CloudSqlSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudSqlSettingsResponse)(nil)).Elem()
-}
-
-func (o CloudSqlSettingsResponsePtrOutput) ToCloudSqlSettingsResponsePtrOutput() CloudSqlSettingsResponsePtrOutput {
-	return o
-}
-
-func (o CloudSqlSettingsResponsePtrOutput) ToCloudSqlSettingsResponsePtrOutputWithContext(ctx context.Context) CloudSqlSettingsResponsePtrOutput {
-	return o
-}
-
-func (o CloudSqlSettingsResponsePtrOutput) Elem() CloudSqlSettingsResponseOutput {
-	return o.ApplyT(func(v *CloudSqlSettingsResponse) CloudSqlSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CloudSqlSettingsResponse
-		return ret
-	}).(CloudSqlSettingsResponseOutput)
-}
-
-// The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
-func (o CloudSqlSettingsResponsePtrOutput) ActivationPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudSqlSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ActivationPolicy
-	}).(pulumi.StringPtrOutput)
-}
-
-// [default: ON] If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB.
-func (o CloudSqlSettingsResponsePtrOutput) AutoStorageIncrease() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CloudSqlSettingsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.AutoStorageIncrease
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The Cloud SQL default instance level collation.
-func (o CloudSqlSettingsResponsePtrOutput) Collation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudSqlSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Collation
-	}).(pulumi.StringPtrOutput)
-}
-
-// The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
-func (o CloudSqlSettingsResponsePtrOutput) DataDiskSizeGb() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudSqlSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DataDiskSizeGb
-	}).(pulumi.StringPtrOutput)
-}
-
-// The type of storage: `PD_SSD` (default) or `PD_HDD`.
-func (o CloudSqlSettingsResponsePtrOutput) DataDiskType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudSqlSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DataDiskType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The database flags passed to the Cloud SQL instance at startup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-func (o CloudSqlSettingsResponsePtrOutput) DatabaseFlags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *CloudSqlSettingsResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.DatabaseFlags
-	}).(pulumi.StringMapOutput)
-}
-
-// The database engine type and version.
-func (o CloudSqlSettingsResponsePtrOutput) DatabaseVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudSqlSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DatabaseVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
-func (o CloudSqlSettingsResponsePtrOutput) IpConfig() SqlIpConfigResponsePtrOutput {
-	return o.ApplyT(func(v *CloudSqlSettingsResponse) *SqlIpConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.IpConfig
-	}).(SqlIpConfigResponsePtrOutput)
-}
-
-// Input only. Initial root password.
-func (o CloudSqlSettingsResponsePtrOutput) RootPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudSqlSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RootPassword
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicates If this connection profile root password is stored.
-func (o CloudSqlSettingsResponsePtrOutput) RootPasswordSet() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CloudSqlSettingsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.RootPasswordSet
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The Database Migration Service source connection profile ID, in the format: `projects/my_project_name/locations/us-central1/connectionProfiles/connection_profile_ID`
-func (o CloudSqlSettingsResponsePtrOutput) SourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudSqlSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SourceId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
-func (o CloudSqlSettingsResponsePtrOutput) StorageAutoResizeLimit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudSqlSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.StorageAutoResizeLimit
-	}).(pulumi.StringPtrOutput)
-}
-
-// The tier (or machine type) for this instance, for example: `db-n1-standard-1` (MySQL instances) or `db-custom-1-3840` (PostgreSQL instances). For more information, see [Cloud SQL Instance Settings](https://cloud.google.com/sql/docs/mysql/instance-settings).
-func (o CloudSqlSettingsResponsePtrOutput) Tier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudSqlSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Tier
-	}).(pulumi.StringPtrOutput)
-}
-
-// The resource labels for a Cloud SQL instance to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "18kg", "count": "3" }`.
-func (o CloudSqlSettingsResponsePtrOutput) UserLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *CloudSqlSettingsResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.UserLabels
-	}).(pulumi.StringMapOutput)
-}
-
-// The Google Cloud Platform zone where your Cloud SQL datdabse instance is located.
-func (o CloudSqlSettingsResponsePtrOutput) Zone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudSqlSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Zone
-	}).(pulumi.StringPtrOutput)
 }
 
 // A message defining the database engine and provider.
@@ -1979,78 +1377,6 @@ type DatabaseTypeResponse struct {
 	Provider string `pulumi:"provider"`
 }
 
-// DatabaseTypeResponseInput is an input type that accepts DatabaseTypeResponseArgs and DatabaseTypeResponseOutput values.
-// You can construct a concrete instance of `DatabaseTypeResponseInput` via:
-//
-//          DatabaseTypeResponseArgs{...}
-type DatabaseTypeResponseInput interface {
-	pulumi.Input
-
-	ToDatabaseTypeResponseOutput() DatabaseTypeResponseOutput
-	ToDatabaseTypeResponseOutputWithContext(context.Context) DatabaseTypeResponseOutput
-}
-
-// A message defining the database engine and provider.
-type DatabaseTypeResponseArgs struct {
-	// The database engine.
-	Engine pulumi.StringInput `pulumi:"engine"`
-	// The database provider.
-	Provider pulumi.StringInput `pulumi:"provider"`
-}
-
-func (DatabaseTypeResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseTypeResponse)(nil)).Elem()
-}
-
-func (i DatabaseTypeResponseArgs) ToDatabaseTypeResponseOutput() DatabaseTypeResponseOutput {
-	return i.ToDatabaseTypeResponseOutputWithContext(context.Background())
-}
-
-func (i DatabaseTypeResponseArgs) ToDatabaseTypeResponseOutputWithContext(ctx context.Context) DatabaseTypeResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseTypeResponseOutput)
-}
-
-func (i DatabaseTypeResponseArgs) ToDatabaseTypeResponsePtrOutput() DatabaseTypeResponsePtrOutput {
-	return i.ToDatabaseTypeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i DatabaseTypeResponseArgs) ToDatabaseTypeResponsePtrOutputWithContext(ctx context.Context) DatabaseTypeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseTypeResponseOutput).ToDatabaseTypeResponsePtrOutputWithContext(ctx)
-}
-
-// DatabaseTypeResponsePtrInput is an input type that accepts DatabaseTypeResponseArgs, DatabaseTypeResponsePtr and DatabaseTypeResponsePtrOutput values.
-// You can construct a concrete instance of `DatabaseTypeResponsePtrInput` via:
-//
-//          DatabaseTypeResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type DatabaseTypeResponsePtrInput interface {
-	pulumi.Input
-
-	ToDatabaseTypeResponsePtrOutput() DatabaseTypeResponsePtrOutput
-	ToDatabaseTypeResponsePtrOutputWithContext(context.Context) DatabaseTypeResponsePtrOutput
-}
-
-type databaseTypeResponsePtrType DatabaseTypeResponseArgs
-
-func DatabaseTypeResponsePtr(v *DatabaseTypeResponseArgs) DatabaseTypeResponsePtrInput {
-	return (*databaseTypeResponsePtrType)(v)
-}
-
-func (*databaseTypeResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseTypeResponse)(nil)).Elem()
-}
-
-func (i *databaseTypeResponsePtrType) ToDatabaseTypeResponsePtrOutput() DatabaseTypeResponsePtrOutput {
-	return i.ToDatabaseTypeResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *databaseTypeResponsePtrType) ToDatabaseTypeResponsePtrOutputWithContext(ctx context.Context) DatabaseTypeResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseTypeResponsePtrOutput)
-}
-
 // A message defining the database engine and provider.
 type DatabaseTypeResponseOutput struct{ *pulumi.OutputState }
 
@@ -2066,16 +1392,6 @@ func (o DatabaseTypeResponseOutput) ToDatabaseTypeResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o DatabaseTypeResponseOutput) ToDatabaseTypeResponsePtrOutput() DatabaseTypeResponsePtrOutput {
-	return o.ToDatabaseTypeResponsePtrOutputWithContext(context.Background())
-}
-
-func (o DatabaseTypeResponseOutput) ToDatabaseTypeResponsePtrOutputWithContext(ctx context.Context) DatabaseTypeResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseTypeResponse) *DatabaseTypeResponse {
-		return &v
-	}).(DatabaseTypeResponsePtrOutput)
-}
-
 // The database engine.
 func (o DatabaseTypeResponseOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseTypeResponse) string { return v.Engine }).(pulumi.StringOutput)
@@ -2084,50 +1400,6 @@ func (o DatabaseTypeResponseOutput) Engine() pulumi.StringOutput {
 // The database provider.
 func (o DatabaseTypeResponseOutput) Provider() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseTypeResponse) string { return v.Provider }).(pulumi.StringOutput)
-}
-
-type DatabaseTypeResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DatabaseTypeResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseTypeResponse)(nil)).Elem()
-}
-
-func (o DatabaseTypeResponsePtrOutput) ToDatabaseTypeResponsePtrOutput() DatabaseTypeResponsePtrOutput {
-	return o
-}
-
-func (o DatabaseTypeResponsePtrOutput) ToDatabaseTypeResponsePtrOutputWithContext(ctx context.Context) DatabaseTypeResponsePtrOutput {
-	return o
-}
-
-func (o DatabaseTypeResponsePtrOutput) Elem() DatabaseTypeResponseOutput {
-	return o.ApplyT(func(v *DatabaseTypeResponse) DatabaseTypeResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DatabaseTypeResponse
-		return ret
-	}).(DatabaseTypeResponseOutput)
-}
-
-// The database engine.
-func (o DatabaseTypeResponsePtrOutput) Engine() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatabaseTypeResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Engine
-	}).(pulumi.StringPtrOutput)
-}
-
-// The database provider.
-func (o DatabaseTypeResponsePtrOutput) Provider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatabaseTypeResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Provider
-	}).(pulumi.StringPtrOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -2337,41 +1609,6 @@ type ExprResponse struct {
 	Location string `pulumi:"location"`
 	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
 	Title string `pulumi:"title"`
-}
-
-// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
-// You can construct a concrete instance of `ExprResponseInput` via:
-//
-//          ExprResponseArgs{...}
-type ExprResponseInput interface {
-	pulumi.Input
-
-	ToExprResponseOutput() ExprResponseOutput
-	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type ExprResponseArgs struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-	Location pulumi.StringInput `pulumi:"location"`
-	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (ExprResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
-}
-
-func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
-	return i.ToExprResponseOutputWithContext(context.Background())
-}
-
-func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -2662,88 +1899,6 @@ type MySqlConnectionProfileResponse struct {
 	Username string `pulumi:"username"`
 }
 
-// MySqlConnectionProfileResponseInput is an input type that accepts MySqlConnectionProfileResponseArgs and MySqlConnectionProfileResponseOutput values.
-// You can construct a concrete instance of `MySqlConnectionProfileResponseInput` via:
-//
-//          MySqlConnectionProfileResponseArgs{...}
-type MySqlConnectionProfileResponseInput interface {
-	pulumi.Input
-
-	ToMySqlConnectionProfileResponseOutput() MySqlConnectionProfileResponseOutput
-	ToMySqlConnectionProfileResponseOutputWithContext(context.Context) MySqlConnectionProfileResponseOutput
-}
-
-// Specifies connection parameters required specifically for MySQL databases.
-type MySqlConnectionProfileResponseArgs struct {
-	// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
-	CloudSqlId pulumi.StringInput `pulumi:"cloudSqlId"`
-	// The IP or hostname of the source MySQL database.
-	Host pulumi.StringInput `pulumi:"host"`
-	// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
-	Password pulumi.StringInput `pulumi:"password"`
-	// Indicates If this connection profile password is stored.
-	PasswordSet pulumi.BoolInput `pulumi:"passwordSet"`
-	// The network port of the source MySQL database.
-	Port pulumi.IntInput `pulumi:"port"`
-	// SSL configuration for the destination to connect to the source database.
-	Ssl SslConfigResponseInput `pulumi:"ssl"`
-	// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
-	Username pulumi.StringInput `pulumi:"username"`
-}
-
-func (MySqlConnectionProfileResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MySqlConnectionProfileResponse)(nil)).Elem()
-}
-
-func (i MySqlConnectionProfileResponseArgs) ToMySqlConnectionProfileResponseOutput() MySqlConnectionProfileResponseOutput {
-	return i.ToMySqlConnectionProfileResponseOutputWithContext(context.Background())
-}
-
-func (i MySqlConnectionProfileResponseArgs) ToMySqlConnectionProfileResponseOutputWithContext(ctx context.Context) MySqlConnectionProfileResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MySqlConnectionProfileResponseOutput)
-}
-
-func (i MySqlConnectionProfileResponseArgs) ToMySqlConnectionProfileResponsePtrOutput() MySqlConnectionProfileResponsePtrOutput {
-	return i.ToMySqlConnectionProfileResponsePtrOutputWithContext(context.Background())
-}
-
-func (i MySqlConnectionProfileResponseArgs) ToMySqlConnectionProfileResponsePtrOutputWithContext(ctx context.Context) MySqlConnectionProfileResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MySqlConnectionProfileResponseOutput).ToMySqlConnectionProfileResponsePtrOutputWithContext(ctx)
-}
-
-// MySqlConnectionProfileResponsePtrInput is an input type that accepts MySqlConnectionProfileResponseArgs, MySqlConnectionProfileResponsePtr and MySqlConnectionProfileResponsePtrOutput values.
-// You can construct a concrete instance of `MySqlConnectionProfileResponsePtrInput` via:
-//
-//          MySqlConnectionProfileResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type MySqlConnectionProfileResponsePtrInput interface {
-	pulumi.Input
-
-	ToMySqlConnectionProfileResponsePtrOutput() MySqlConnectionProfileResponsePtrOutput
-	ToMySqlConnectionProfileResponsePtrOutputWithContext(context.Context) MySqlConnectionProfileResponsePtrOutput
-}
-
-type mySqlConnectionProfileResponsePtrType MySqlConnectionProfileResponseArgs
-
-func MySqlConnectionProfileResponsePtr(v *MySqlConnectionProfileResponseArgs) MySqlConnectionProfileResponsePtrInput {
-	return (*mySqlConnectionProfileResponsePtrType)(v)
-}
-
-func (*mySqlConnectionProfileResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MySqlConnectionProfileResponse)(nil)).Elem()
-}
-
-func (i *mySqlConnectionProfileResponsePtrType) ToMySqlConnectionProfileResponsePtrOutput() MySqlConnectionProfileResponsePtrOutput {
-	return i.ToMySqlConnectionProfileResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *mySqlConnectionProfileResponsePtrType) ToMySqlConnectionProfileResponsePtrOutputWithContext(ctx context.Context) MySqlConnectionProfileResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MySqlConnectionProfileResponsePtrOutput)
-}
-
 // Specifies connection parameters required specifically for MySQL databases.
 type MySqlConnectionProfileResponseOutput struct{ *pulumi.OutputState }
 
@@ -2757,16 +1912,6 @@ func (o MySqlConnectionProfileResponseOutput) ToMySqlConnectionProfileResponseOu
 
 func (o MySqlConnectionProfileResponseOutput) ToMySqlConnectionProfileResponseOutputWithContext(ctx context.Context) MySqlConnectionProfileResponseOutput {
 	return o
-}
-
-func (o MySqlConnectionProfileResponseOutput) ToMySqlConnectionProfileResponsePtrOutput() MySqlConnectionProfileResponsePtrOutput {
-	return o.ToMySqlConnectionProfileResponsePtrOutputWithContext(context.Background())
-}
-
-func (o MySqlConnectionProfileResponseOutput) ToMySqlConnectionProfileResponsePtrOutputWithContext(ctx context.Context) MySqlConnectionProfileResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MySqlConnectionProfileResponse) *MySqlConnectionProfileResponse {
-		return &v
-	}).(MySqlConnectionProfileResponsePtrOutput)
 }
 
 // If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
@@ -2802,100 +1947,6 @@ func (o MySqlConnectionProfileResponseOutput) Ssl() SslConfigResponseOutput {
 // The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
 func (o MySqlConnectionProfileResponseOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v MySqlConnectionProfileResponse) string { return v.Username }).(pulumi.StringOutput)
-}
-
-type MySqlConnectionProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (MySqlConnectionProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MySqlConnectionProfileResponse)(nil)).Elem()
-}
-
-func (o MySqlConnectionProfileResponsePtrOutput) ToMySqlConnectionProfileResponsePtrOutput() MySqlConnectionProfileResponsePtrOutput {
-	return o
-}
-
-func (o MySqlConnectionProfileResponsePtrOutput) ToMySqlConnectionProfileResponsePtrOutputWithContext(ctx context.Context) MySqlConnectionProfileResponsePtrOutput {
-	return o
-}
-
-func (o MySqlConnectionProfileResponsePtrOutput) Elem() MySqlConnectionProfileResponseOutput {
-	return o.ApplyT(func(v *MySqlConnectionProfileResponse) MySqlConnectionProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret MySqlConnectionProfileResponse
-		return ret
-	}).(MySqlConnectionProfileResponseOutput)
-}
-
-// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
-func (o MySqlConnectionProfileResponsePtrOutput) CloudSqlId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MySqlConnectionProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CloudSqlId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The IP or hostname of the source MySQL database.
-func (o MySqlConnectionProfileResponsePtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MySqlConnectionProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Host
-	}).(pulumi.StringPtrOutput)
-}
-
-// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
-func (o MySqlConnectionProfileResponsePtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MySqlConnectionProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Password
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicates If this connection profile password is stored.
-func (o MySqlConnectionProfileResponsePtrOutput) PasswordSet() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MySqlConnectionProfileResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.PasswordSet
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The network port of the source MySQL database.
-func (o MySqlConnectionProfileResponsePtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MySqlConnectionProfileResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Port
-	}).(pulumi.IntPtrOutput)
-}
-
-// SSL configuration for the destination to connect to the source database.
-func (o MySqlConnectionProfileResponsePtrOutput) Ssl() SslConfigResponsePtrOutput {
-	return o.ApplyT(func(v *MySqlConnectionProfileResponse) *SslConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Ssl
-	}).(SslConfigResponsePtrOutput)
-}
-
-// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
-func (o MySqlConnectionProfileResponsePtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MySqlConnectionProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Username
-	}).(pulumi.StringPtrOutput)
 }
 
 // Specifies connection parameters required specifically for PostgreSQL databases.
@@ -3151,88 +2202,6 @@ type PostgreSqlConnectionProfileResponse struct {
 	Username string `pulumi:"username"`
 }
 
-// PostgreSqlConnectionProfileResponseInput is an input type that accepts PostgreSqlConnectionProfileResponseArgs and PostgreSqlConnectionProfileResponseOutput values.
-// You can construct a concrete instance of `PostgreSqlConnectionProfileResponseInput` via:
-//
-//          PostgreSqlConnectionProfileResponseArgs{...}
-type PostgreSqlConnectionProfileResponseInput interface {
-	pulumi.Input
-
-	ToPostgreSqlConnectionProfileResponseOutput() PostgreSqlConnectionProfileResponseOutput
-	ToPostgreSqlConnectionProfileResponseOutputWithContext(context.Context) PostgreSqlConnectionProfileResponseOutput
-}
-
-// Specifies connection parameters required specifically for PostgreSQL databases.
-type PostgreSqlConnectionProfileResponseArgs struct {
-	// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
-	CloudSqlId pulumi.StringInput `pulumi:"cloudSqlId"`
-	// The IP or hostname of the source PostgreSQL database.
-	Host pulumi.StringInput `pulumi:"host"`
-	// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
-	Password pulumi.StringInput `pulumi:"password"`
-	// Indicates If this connection profile password is stored.
-	PasswordSet pulumi.BoolInput `pulumi:"passwordSet"`
-	// The network port of the source PostgreSQL database.
-	Port pulumi.IntInput `pulumi:"port"`
-	// SSL configuration for the destination to connect to the source database.
-	Ssl SslConfigResponseInput `pulumi:"ssl"`
-	// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
-	Username pulumi.StringInput `pulumi:"username"`
-}
-
-func (PostgreSqlConnectionProfileResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PostgreSqlConnectionProfileResponse)(nil)).Elem()
-}
-
-func (i PostgreSqlConnectionProfileResponseArgs) ToPostgreSqlConnectionProfileResponseOutput() PostgreSqlConnectionProfileResponseOutput {
-	return i.ToPostgreSqlConnectionProfileResponseOutputWithContext(context.Background())
-}
-
-func (i PostgreSqlConnectionProfileResponseArgs) ToPostgreSqlConnectionProfileResponseOutputWithContext(ctx context.Context) PostgreSqlConnectionProfileResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PostgreSqlConnectionProfileResponseOutput)
-}
-
-func (i PostgreSqlConnectionProfileResponseArgs) ToPostgreSqlConnectionProfileResponsePtrOutput() PostgreSqlConnectionProfileResponsePtrOutput {
-	return i.ToPostgreSqlConnectionProfileResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PostgreSqlConnectionProfileResponseArgs) ToPostgreSqlConnectionProfileResponsePtrOutputWithContext(ctx context.Context) PostgreSqlConnectionProfileResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PostgreSqlConnectionProfileResponseOutput).ToPostgreSqlConnectionProfileResponsePtrOutputWithContext(ctx)
-}
-
-// PostgreSqlConnectionProfileResponsePtrInput is an input type that accepts PostgreSqlConnectionProfileResponseArgs, PostgreSqlConnectionProfileResponsePtr and PostgreSqlConnectionProfileResponsePtrOutput values.
-// You can construct a concrete instance of `PostgreSqlConnectionProfileResponsePtrInput` via:
-//
-//          PostgreSqlConnectionProfileResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PostgreSqlConnectionProfileResponsePtrInput interface {
-	pulumi.Input
-
-	ToPostgreSqlConnectionProfileResponsePtrOutput() PostgreSqlConnectionProfileResponsePtrOutput
-	ToPostgreSqlConnectionProfileResponsePtrOutputWithContext(context.Context) PostgreSqlConnectionProfileResponsePtrOutput
-}
-
-type postgreSqlConnectionProfileResponsePtrType PostgreSqlConnectionProfileResponseArgs
-
-func PostgreSqlConnectionProfileResponsePtr(v *PostgreSqlConnectionProfileResponseArgs) PostgreSqlConnectionProfileResponsePtrInput {
-	return (*postgreSqlConnectionProfileResponsePtrType)(v)
-}
-
-func (*postgreSqlConnectionProfileResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PostgreSqlConnectionProfileResponse)(nil)).Elem()
-}
-
-func (i *postgreSqlConnectionProfileResponsePtrType) ToPostgreSqlConnectionProfileResponsePtrOutput() PostgreSqlConnectionProfileResponsePtrOutput {
-	return i.ToPostgreSqlConnectionProfileResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *postgreSqlConnectionProfileResponsePtrType) ToPostgreSqlConnectionProfileResponsePtrOutputWithContext(ctx context.Context) PostgreSqlConnectionProfileResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PostgreSqlConnectionProfileResponsePtrOutput)
-}
-
 // Specifies connection parameters required specifically for PostgreSQL databases.
 type PostgreSqlConnectionProfileResponseOutput struct{ *pulumi.OutputState }
 
@@ -3246,16 +2215,6 @@ func (o PostgreSqlConnectionProfileResponseOutput) ToPostgreSqlConnectionProfile
 
 func (o PostgreSqlConnectionProfileResponseOutput) ToPostgreSqlConnectionProfileResponseOutputWithContext(ctx context.Context) PostgreSqlConnectionProfileResponseOutput {
 	return o
-}
-
-func (o PostgreSqlConnectionProfileResponseOutput) ToPostgreSqlConnectionProfileResponsePtrOutput() PostgreSqlConnectionProfileResponsePtrOutput {
-	return o.ToPostgreSqlConnectionProfileResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PostgreSqlConnectionProfileResponseOutput) ToPostgreSqlConnectionProfileResponsePtrOutputWithContext(ctx context.Context) PostgreSqlConnectionProfileResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PostgreSqlConnectionProfileResponse) *PostgreSqlConnectionProfileResponse {
-		return &v
-	}).(PostgreSqlConnectionProfileResponsePtrOutput)
 }
 
 // If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
@@ -3291,100 +2250,6 @@ func (o PostgreSqlConnectionProfileResponseOutput) Ssl() SslConfigResponseOutput
 // The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
 func (o PostgreSqlConnectionProfileResponseOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v PostgreSqlConnectionProfileResponse) string { return v.Username }).(pulumi.StringOutput)
-}
-
-type PostgreSqlConnectionProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PostgreSqlConnectionProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PostgreSqlConnectionProfileResponse)(nil)).Elem()
-}
-
-func (o PostgreSqlConnectionProfileResponsePtrOutput) ToPostgreSqlConnectionProfileResponsePtrOutput() PostgreSqlConnectionProfileResponsePtrOutput {
-	return o
-}
-
-func (o PostgreSqlConnectionProfileResponsePtrOutput) ToPostgreSqlConnectionProfileResponsePtrOutputWithContext(ctx context.Context) PostgreSqlConnectionProfileResponsePtrOutput {
-	return o
-}
-
-func (o PostgreSqlConnectionProfileResponsePtrOutput) Elem() PostgreSqlConnectionProfileResponseOutput {
-	return o.ApplyT(func(v *PostgreSqlConnectionProfileResponse) PostgreSqlConnectionProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PostgreSqlConnectionProfileResponse
-		return ret
-	}).(PostgreSqlConnectionProfileResponseOutput)
-}
-
-// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
-func (o PostgreSqlConnectionProfileResponsePtrOutput) CloudSqlId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PostgreSqlConnectionProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CloudSqlId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The IP or hostname of the source PostgreSQL database.
-func (o PostgreSqlConnectionProfileResponsePtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PostgreSqlConnectionProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Host
-	}).(pulumi.StringPtrOutput)
-}
-
-// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
-func (o PostgreSqlConnectionProfileResponsePtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PostgreSqlConnectionProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Password
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicates If this connection profile password is stored.
-func (o PostgreSqlConnectionProfileResponsePtrOutput) PasswordSet() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PostgreSqlConnectionProfileResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.PasswordSet
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The network port of the source PostgreSQL database.
-func (o PostgreSqlConnectionProfileResponsePtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PostgreSqlConnectionProfileResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Port
-	}).(pulumi.IntPtrOutput)
-}
-
-// SSL configuration for the destination to connect to the source database.
-func (o PostgreSqlConnectionProfileResponsePtrOutput) Ssl() SslConfigResponsePtrOutput {
-	return o.ApplyT(func(v *PostgreSqlConnectionProfileResponse) *SslConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Ssl
-	}).(SslConfigResponsePtrOutput)
-}
-
-// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
-func (o PostgreSqlConnectionProfileResponsePtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PostgreSqlConnectionProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Username
-	}).(pulumi.StringPtrOutput)
 }
 
 // The details needed to configure a reverse SSH tunnel between the source and destination databases. These details will be used when calling the generateSshScript method (see https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.migrationJobs/generateSshScript) to produce the script that will help set up the reverse SSH tunnel, and to set up the VPC peering between the Cloud SQL private network and the VPC.
@@ -3596,82 +2461,6 @@ type ReverseSshConnectivityResponse struct {
 	Vpc string `pulumi:"vpc"`
 }
 
-// ReverseSshConnectivityResponseInput is an input type that accepts ReverseSshConnectivityResponseArgs and ReverseSshConnectivityResponseOutput values.
-// You can construct a concrete instance of `ReverseSshConnectivityResponseInput` via:
-//
-//          ReverseSshConnectivityResponseArgs{...}
-type ReverseSshConnectivityResponseInput interface {
-	pulumi.Input
-
-	ToReverseSshConnectivityResponseOutput() ReverseSshConnectivityResponseOutput
-	ToReverseSshConnectivityResponseOutputWithContext(context.Context) ReverseSshConnectivityResponseOutput
-}
-
-// The details needed to configure a reverse SSH tunnel between the source and destination databases. These details will be used when calling the generateSshScript method (see https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.migrationJobs/generateSshScript) to produce the script that will help set up the reverse SSH tunnel, and to set up the VPC peering between the Cloud SQL private network and the VPC.
-type ReverseSshConnectivityResponseArgs struct {
-	// The name of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
-	Vm pulumi.StringInput `pulumi:"vm"`
-	// The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
-	VmIp pulumi.StringInput `pulumi:"vmIp"`
-	// The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
-	VmPort pulumi.IntInput `pulumi:"vmPort"`
-	// The name of the VPC to peer with the Cloud SQL private network.
-	Vpc pulumi.StringInput `pulumi:"vpc"`
-}
-
-func (ReverseSshConnectivityResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReverseSshConnectivityResponse)(nil)).Elem()
-}
-
-func (i ReverseSshConnectivityResponseArgs) ToReverseSshConnectivityResponseOutput() ReverseSshConnectivityResponseOutput {
-	return i.ToReverseSshConnectivityResponseOutputWithContext(context.Background())
-}
-
-func (i ReverseSshConnectivityResponseArgs) ToReverseSshConnectivityResponseOutputWithContext(ctx context.Context) ReverseSshConnectivityResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReverseSshConnectivityResponseOutput)
-}
-
-func (i ReverseSshConnectivityResponseArgs) ToReverseSshConnectivityResponsePtrOutput() ReverseSshConnectivityResponsePtrOutput {
-	return i.ToReverseSshConnectivityResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ReverseSshConnectivityResponseArgs) ToReverseSshConnectivityResponsePtrOutputWithContext(ctx context.Context) ReverseSshConnectivityResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReverseSshConnectivityResponseOutput).ToReverseSshConnectivityResponsePtrOutputWithContext(ctx)
-}
-
-// ReverseSshConnectivityResponsePtrInput is an input type that accepts ReverseSshConnectivityResponseArgs, ReverseSshConnectivityResponsePtr and ReverseSshConnectivityResponsePtrOutput values.
-// You can construct a concrete instance of `ReverseSshConnectivityResponsePtrInput` via:
-//
-//          ReverseSshConnectivityResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ReverseSshConnectivityResponsePtrInput interface {
-	pulumi.Input
-
-	ToReverseSshConnectivityResponsePtrOutput() ReverseSshConnectivityResponsePtrOutput
-	ToReverseSshConnectivityResponsePtrOutputWithContext(context.Context) ReverseSshConnectivityResponsePtrOutput
-}
-
-type reverseSshConnectivityResponsePtrType ReverseSshConnectivityResponseArgs
-
-func ReverseSshConnectivityResponsePtr(v *ReverseSshConnectivityResponseArgs) ReverseSshConnectivityResponsePtrInput {
-	return (*reverseSshConnectivityResponsePtrType)(v)
-}
-
-func (*reverseSshConnectivityResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ReverseSshConnectivityResponse)(nil)).Elem()
-}
-
-func (i *reverseSshConnectivityResponsePtrType) ToReverseSshConnectivityResponsePtrOutput() ReverseSshConnectivityResponsePtrOutput {
-	return i.ToReverseSshConnectivityResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *reverseSshConnectivityResponsePtrType) ToReverseSshConnectivityResponsePtrOutputWithContext(ctx context.Context) ReverseSshConnectivityResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReverseSshConnectivityResponsePtrOutput)
-}
-
 // The details needed to configure a reverse SSH tunnel between the source and destination databases. These details will be used when calling the generateSshScript method (see https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.migrationJobs/generateSshScript) to produce the script that will help set up the reverse SSH tunnel, and to set up the VPC peering between the Cloud SQL private network and the VPC.
 type ReverseSshConnectivityResponseOutput struct{ *pulumi.OutputState }
 
@@ -3685,16 +2474,6 @@ func (o ReverseSshConnectivityResponseOutput) ToReverseSshConnectivityResponseOu
 
 func (o ReverseSshConnectivityResponseOutput) ToReverseSshConnectivityResponseOutputWithContext(ctx context.Context) ReverseSshConnectivityResponseOutput {
 	return o
-}
-
-func (o ReverseSshConnectivityResponseOutput) ToReverseSshConnectivityResponsePtrOutput() ReverseSshConnectivityResponsePtrOutput {
-	return o.ToReverseSshConnectivityResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ReverseSshConnectivityResponseOutput) ToReverseSshConnectivityResponsePtrOutputWithContext(ctx context.Context) ReverseSshConnectivityResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReverseSshConnectivityResponse) *ReverseSshConnectivityResponse {
-		return &v
-	}).(ReverseSshConnectivityResponsePtrOutput)
 }
 
 // The name of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
@@ -3715,70 +2494,6 @@ func (o ReverseSshConnectivityResponseOutput) VmPort() pulumi.IntOutput {
 // The name of the VPC to peer with the Cloud SQL private network.
 func (o ReverseSshConnectivityResponseOutput) Vpc() pulumi.StringOutput {
 	return o.ApplyT(func(v ReverseSshConnectivityResponse) string { return v.Vpc }).(pulumi.StringOutput)
-}
-
-type ReverseSshConnectivityResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ReverseSshConnectivityResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ReverseSshConnectivityResponse)(nil)).Elem()
-}
-
-func (o ReverseSshConnectivityResponsePtrOutput) ToReverseSshConnectivityResponsePtrOutput() ReverseSshConnectivityResponsePtrOutput {
-	return o
-}
-
-func (o ReverseSshConnectivityResponsePtrOutput) ToReverseSshConnectivityResponsePtrOutputWithContext(ctx context.Context) ReverseSshConnectivityResponsePtrOutput {
-	return o
-}
-
-func (o ReverseSshConnectivityResponsePtrOutput) Elem() ReverseSshConnectivityResponseOutput {
-	return o.ApplyT(func(v *ReverseSshConnectivityResponse) ReverseSshConnectivityResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ReverseSshConnectivityResponse
-		return ret
-	}).(ReverseSshConnectivityResponseOutput)
-}
-
-// The name of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
-func (o ReverseSshConnectivityResponsePtrOutput) Vm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ReverseSshConnectivityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Vm
-	}).(pulumi.StringPtrOutput)
-}
-
-// The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
-func (o ReverseSshConnectivityResponsePtrOutput) VmIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ReverseSshConnectivityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.VmIp
-	}).(pulumi.StringPtrOutput)
-}
-
-// The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
-func (o ReverseSshConnectivityResponsePtrOutput) VmPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ReverseSshConnectivityResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.VmPort
-	}).(pulumi.IntPtrOutput)
-}
-
-// The name of the VPC to peer with the Cloud SQL private network.
-func (o ReverseSshConnectivityResponsePtrOutput) Vpc() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ReverseSshConnectivityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Vpc
-	}).(pulumi.StringPtrOutput)
 }
 
 // An entry for an Access Control list.
@@ -3918,66 +2633,6 @@ type SqlAclEntryResponse struct {
 	Ttl string `pulumi:"ttl"`
 	// The allowlisted value for the access control list.
 	Value string `pulumi:"value"`
-}
-
-// SqlAclEntryResponseInput is an input type that accepts SqlAclEntryResponseArgs and SqlAclEntryResponseOutput values.
-// You can construct a concrete instance of `SqlAclEntryResponseInput` via:
-//
-//          SqlAclEntryResponseArgs{...}
-type SqlAclEntryResponseInput interface {
-	pulumi.Input
-
-	ToSqlAclEntryResponseOutput() SqlAclEntryResponseOutput
-	ToSqlAclEntryResponseOutputWithContext(context.Context) SqlAclEntryResponseOutput
-}
-
-// An entry for an Access Control list.
-type SqlAclEntryResponseArgs struct {
-	// The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example: `2012-11-15T16:19:00.094Z`.
-	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
-	// A label to identify this entry.
-	Label pulumi.StringInput `pulumi:"label"`
-	// Input only. The time-to-leave of this access control entry.
-	Ttl pulumi.StringInput `pulumi:"ttl"`
-	// The allowlisted value for the access control list.
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (SqlAclEntryResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlAclEntryResponse)(nil)).Elem()
-}
-
-func (i SqlAclEntryResponseArgs) ToSqlAclEntryResponseOutput() SqlAclEntryResponseOutput {
-	return i.ToSqlAclEntryResponseOutputWithContext(context.Background())
-}
-
-func (i SqlAclEntryResponseArgs) ToSqlAclEntryResponseOutputWithContext(ctx context.Context) SqlAclEntryResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlAclEntryResponseOutput)
-}
-
-// SqlAclEntryResponseArrayInput is an input type that accepts SqlAclEntryResponseArray and SqlAclEntryResponseArrayOutput values.
-// You can construct a concrete instance of `SqlAclEntryResponseArrayInput` via:
-//
-//          SqlAclEntryResponseArray{ SqlAclEntryResponseArgs{...} }
-type SqlAclEntryResponseArrayInput interface {
-	pulumi.Input
-
-	ToSqlAclEntryResponseArrayOutput() SqlAclEntryResponseArrayOutput
-	ToSqlAclEntryResponseArrayOutputWithContext(context.Context) SqlAclEntryResponseArrayOutput
-}
-
-type SqlAclEntryResponseArray []SqlAclEntryResponseInput
-
-func (SqlAclEntryResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SqlAclEntryResponse)(nil)).Elem()
-}
-
-func (i SqlAclEntryResponseArray) ToSqlAclEntryResponseArrayOutput() SqlAclEntryResponseArrayOutput {
-	return i.ToSqlAclEntryResponseArrayOutputWithContext(context.Background())
-}
-
-func (i SqlAclEntryResponseArray) ToSqlAclEntryResponseArrayOutputWithContext(ctx context.Context) SqlAclEntryResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlAclEntryResponseArrayOutput)
 }
 
 // An entry for an Access Control list.
@@ -4244,82 +2899,6 @@ type SqlIpConfigResponse struct {
 	RequireSsl bool `pulumi:"requireSsl"`
 }
 
-// SqlIpConfigResponseInput is an input type that accepts SqlIpConfigResponseArgs and SqlIpConfigResponseOutput values.
-// You can construct a concrete instance of `SqlIpConfigResponseInput` via:
-//
-//          SqlIpConfigResponseArgs{...}
-type SqlIpConfigResponseInput interface {
-	pulumi.Input
-
-	ToSqlIpConfigResponseOutput() SqlIpConfigResponseOutput
-	ToSqlIpConfigResponseOutputWithContext(context.Context) SqlIpConfigResponseOutput
-}
-
-// IP Management configuration.
-type SqlIpConfigResponseArgs struct {
-	// The list of external networks that are allowed to connect to the instance using the IP. See https://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation, also known as 'slash' notation (e.g. `192.168.100.0/24`).
-	AuthorizedNetworks SqlAclEntryResponseArrayInput `pulumi:"authorizedNetworks"`
-	// Whether the instance should be assigned an IPv4 address or not.
-	EnableIpv4 pulumi.BoolInput `pulumi:"enableIpv4"`
-	// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
-	PrivateNetwork pulumi.StringInput `pulumi:"privateNetwork"`
-	// Whether SSL connections over IP should be enforced or not.
-	RequireSsl pulumi.BoolInput `pulumi:"requireSsl"`
-}
-
-func (SqlIpConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlIpConfigResponse)(nil)).Elem()
-}
-
-func (i SqlIpConfigResponseArgs) ToSqlIpConfigResponseOutput() SqlIpConfigResponseOutput {
-	return i.ToSqlIpConfigResponseOutputWithContext(context.Background())
-}
-
-func (i SqlIpConfigResponseArgs) ToSqlIpConfigResponseOutputWithContext(ctx context.Context) SqlIpConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlIpConfigResponseOutput)
-}
-
-func (i SqlIpConfigResponseArgs) ToSqlIpConfigResponsePtrOutput() SqlIpConfigResponsePtrOutput {
-	return i.ToSqlIpConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SqlIpConfigResponseArgs) ToSqlIpConfigResponsePtrOutputWithContext(ctx context.Context) SqlIpConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlIpConfigResponseOutput).ToSqlIpConfigResponsePtrOutputWithContext(ctx)
-}
-
-// SqlIpConfigResponsePtrInput is an input type that accepts SqlIpConfigResponseArgs, SqlIpConfigResponsePtr and SqlIpConfigResponsePtrOutput values.
-// You can construct a concrete instance of `SqlIpConfigResponsePtrInput` via:
-//
-//          SqlIpConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SqlIpConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToSqlIpConfigResponsePtrOutput() SqlIpConfigResponsePtrOutput
-	ToSqlIpConfigResponsePtrOutputWithContext(context.Context) SqlIpConfigResponsePtrOutput
-}
-
-type sqlIpConfigResponsePtrType SqlIpConfigResponseArgs
-
-func SqlIpConfigResponsePtr(v *SqlIpConfigResponseArgs) SqlIpConfigResponsePtrInput {
-	return (*sqlIpConfigResponsePtrType)(v)
-}
-
-func (*sqlIpConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlIpConfigResponse)(nil)).Elem()
-}
-
-func (i *sqlIpConfigResponsePtrType) ToSqlIpConfigResponsePtrOutput() SqlIpConfigResponsePtrOutput {
-	return i.ToSqlIpConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *sqlIpConfigResponsePtrType) ToSqlIpConfigResponsePtrOutputWithContext(ctx context.Context) SqlIpConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlIpConfigResponsePtrOutput)
-}
-
 // IP Management configuration.
 type SqlIpConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -4333,16 +2912,6 @@ func (o SqlIpConfigResponseOutput) ToSqlIpConfigResponseOutput() SqlIpConfigResp
 
 func (o SqlIpConfigResponseOutput) ToSqlIpConfigResponseOutputWithContext(ctx context.Context) SqlIpConfigResponseOutput {
 	return o
-}
-
-func (o SqlIpConfigResponseOutput) ToSqlIpConfigResponsePtrOutput() SqlIpConfigResponsePtrOutput {
-	return o.ToSqlIpConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SqlIpConfigResponseOutput) ToSqlIpConfigResponsePtrOutputWithContext(ctx context.Context) SqlIpConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlIpConfigResponse) *SqlIpConfigResponse {
-		return &v
-	}).(SqlIpConfigResponsePtrOutput)
 }
 
 // The list of external networks that are allowed to connect to the instance using the IP. See https://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation, also known as 'slash' notation (e.g. `192.168.100.0/24`).
@@ -4363,70 +2932,6 @@ func (o SqlIpConfigResponseOutput) PrivateNetwork() pulumi.StringOutput {
 // Whether SSL connections over IP should be enforced or not.
 func (o SqlIpConfigResponseOutput) RequireSsl() pulumi.BoolOutput {
 	return o.ApplyT(func(v SqlIpConfigResponse) bool { return v.RequireSsl }).(pulumi.BoolOutput)
-}
-
-type SqlIpConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SqlIpConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlIpConfigResponse)(nil)).Elem()
-}
-
-func (o SqlIpConfigResponsePtrOutput) ToSqlIpConfigResponsePtrOutput() SqlIpConfigResponsePtrOutput {
-	return o
-}
-
-func (o SqlIpConfigResponsePtrOutput) ToSqlIpConfigResponsePtrOutputWithContext(ctx context.Context) SqlIpConfigResponsePtrOutput {
-	return o
-}
-
-func (o SqlIpConfigResponsePtrOutput) Elem() SqlIpConfigResponseOutput {
-	return o.ApplyT(func(v *SqlIpConfigResponse) SqlIpConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SqlIpConfigResponse
-		return ret
-	}).(SqlIpConfigResponseOutput)
-}
-
-// The list of external networks that are allowed to connect to the instance using the IP. See https://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation, also known as 'slash' notation (e.g. `192.168.100.0/24`).
-func (o SqlIpConfigResponsePtrOutput) AuthorizedNetworks() SqlAclEntryResponseArrayOutput {
-	return o.ApplyT(func(v *SqlIpConfigResponse) []SqlAclEntryResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AuthorizedNetworks
-	}).(SqlAclEntryResponseArrayOutput)
-}
-
-// Whether the instance should be assigned an IPv4 address or not.
-func (o SqlIpConfigResponsePtrOutput) EnableIpv4() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SqlIpConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.EnableIpv4
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
-func (o SqlIpConfigResponsePtrOutput) PrivateNetwork() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlIpConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrivateNetwork
-	}).(pulumi.StringPtrOutput)
-}
-
-// Whether SSL connections over IP should be enforced or not.
-func (o SqlIpConfigResponsePtrOutput) RequireSsl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SqlIpConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.RequireSsl
-	}).(pulumi.BoolPtrOutput)
 }
 
 // SSL configuration information.
@@ -4619,82 +3124,6 @@ type SslConfigResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// SslConfigResponseInput is an input type that accepts SslConfigResponseArgs and SslConfigResponseOutput values.
-// You can construct a concrete instance of `SslConfigResponseInput` via:
-//
-//          SslConfigResponseArgs{...}
-type SslConfigResponseInput interface {
-	pulumi.Input
-
-	ToSslConfigResponseOutput() SslConfigResponseOutput
-	ToSslConfigResponseOutputWithContext(context.Context) SslConfigResponseOutput
-}
-
-// SSL configuration information.
-type SslConfigResponseArgs struct {
-	// Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
-	CaCertificate pulumi.StringInput `pulumi:"caCertificate"`
-	// Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.If this field is used then the 'client_key' field is mandatory.
-	ClientCertificate pulumi.StringInput `pulumi:"clientCertificate"`
-	// Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate. If this field is used then the 'client_certificate' field is mandatory.
-	ClientKey pulumi.StringInput `pulumi:"clientKey"`
-	// The ssl config type according to 'client_key', 'client_certificate' and 'ca_certificate'.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (SslConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SslConfigResponse)(nil)).Elem()
-}
-
-func (i SslConfigResponseArgs) ToSslConfigResponseOutput() SslConfigResponseOutput {
-	return i.ToSslConfigResponseOutputWithContext(context.Background())
-}
-
-func (i SslConfigResponseArgs) ToSslConfigResponseOutputWithContext(ctx context.Context) SslConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SslConfigResponseOutput)
-}
-
-func (i SslConfigResponseArgs) ToSslConfigResponsePtrOutput() SslConfigResponsePtrOutput {
-	return i.ToSslConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SslConfigResponseArgs) ToSslConfigResponsePtrOutputWithContext(ctx context.Context) SslConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SslConfigResponseOutput).ToSslConfigResponsePtrOutputWithContext(ctx)
-}
-
-// SslConfigResponsePtrInput is an input type that accepts SslConfigResponseArgs, SslConfigResponsePtr and SslConfigResponsePtrOutput values.
-// You can construct a concrete instance of `SslConfigResponsePtrInput` via:
-//
-//          SslConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SslConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToSslConfigResponsePtrOutput() SslConfigResponsePtrOutput
-	ToSslConfigResponsePtrOutputWithContext(context.Context) SslConfigResponsePtrOutput
-}
-
-type sslConfigResponsePtrType SslConfigResponseArgs
-
-func SslConfigResponsePtr(v *SslConfigResponseArgs) SslConfigResponsePtrInput {
-	return (*sslConfigResponsePtrType)(v)
-}
-
-func (*sslConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SslConfigResponse)(nil)).Elem()
-}
-
-func (i *sslConfigResponsePtrType) ToSslConfigResponsePtrOutput() SslConfigResponsePtrOutput {
-	return i.ToSslConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *sslConfigResponsePtrType) ToSslConfigResponsePtrOutputWithContext(ctx context.Context) SslConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SslConfigResponsePtrOutput)
-}
-
 // SSL configuration information.
 type SslConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -4708,16 +3137,6 @@ func (o SslConfigResponseOutput) ToSslConfigResponseOutput() SslConfigResponseOu
 
 func (o SslConfigResponseOutput) ToSslConfigResponseOutputWithContext(ctx context.Context) SslConfigResponseOutput {
 	return o
-}
-
-func (o SslConfigResponseOutput) ToSslConfigResponsePtrOutput() SslConfigResponsePtrOutput {
-	return o.ToSslConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SslConfigResponseOutput) ToSslConfigResponsePtrOutputWithContext(ctx context.Context) SslConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SslConfigResponse) *SslConfigResponse {
-		return &v
-	}).(SslConfigResponsePtrOutput)
 }
 
 // Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
@@ -4738,70 +3157,6 @@ func (o SslConfigResponseOutput) ClientKey() pulumi.StringOutput {
 // The ssl config type according to 'client_key', 'client_certificate' and 'ca_certificate'.
 func (o SslConfigResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v SslConfigResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type SslConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SslConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SslConfigResponse)(nil)).Elem()
-}
-
-func (o SslConfigResponsePtrOutput) ToSslConfigResponsePtrOutput() SslConfigResponsePtrOutput {
-	return o
-}
-
-func (o SslConfigResponsePtrOutput) ToSslConfigResponsePtrOutputWithContext(ctx context.Context) SslConfigResponsePtrOutput {
-	return o
-}
-
-func (o SslConfigResponsePtrOutput) Elem() SslConfigResponseOutput {
-	return o.ApplyT(func(v *SslConfigResponse) SslConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SslConfigResponse
-		return ret
-	}).(SslConfigResponseOutput)
-}
-
-// Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
-func (o SslConfigResponsePtrOutput) CaCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SslConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CaCertificate
-	}).(pulumi.StringPtrOutput)
-}
-
-// Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.If this field is used then the 'client_key' field is mandatory.
-func (o SslConfigResponsePtrOutput) ClientCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SslConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClientCertificate
-	}).(pulumi.StringPtrOutput)
-}
-
-// Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate. If this field is used then the 'client_certificate' field is mandatory.
-func (o SslConfigResponsePtrOutput) ClientKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SslConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClientKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// The ssl config type according to 'client_key', 'client_certificate' and 'ca_certificate'.
-func (o SslConfigResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SslConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
 }
 
 // The source database will allow incoming connections from the destination database's public IP. You can retrieve the Cloud SQL instance's public IP from the Cloud SQL console or using Cloud SQL APIs. No additional configuration is required.
@@ -4929,74 +3284,6 @@ func (o StaticIpConnectivityPtrOutput) Elem() StaticIpConnectivityOutput {
 type StaticIpConnectivityResponse struct {
 }
 
-// StaticIpConnectivityResponseInput is an input type that accepts StaticIpConnectivityResponseArgs and StaticIpConnectivityResponseOutput values.
-// You can construct a concrete instance of `StaticIpConnectivityResponseInput` via:
-//
-//          StaticIpConnectivityResponseArgs{...}
-type StaticIpConnectivityResponseInput interface {
-	pulumi.Input
-
-	ToStaticIpConnectivityResponseOutput() StaticIpConnectivityResponseOutput
-	ToStaticIpConnectivityResponseOutputWithContext(context.Context) StaticIpConnectivityResponseOutput
-}
-
-// The source database will allow incoming connections from the destination database's public IP. You can retrieve the Cloud SQL instance's public IP from the Cloud SQL console or using Cloud SQL APIs. No additional configuration is required.
-type StaticIpConnectivityResponseArgs struct {
-}
-
-func (StaticIpConnectivityResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StaticIpConnectivityResponse)(nil)).Elem()
-}
-
-func (i StaticIpConnectivityResponseArgs) ToStaticIpConnectivityResponseOutput() StaticIpConnectivityResponseOutput {
-	return i.ToStaticIpConnectivityResponseOutputWithContext(context.Background())
-}
-
-func (i StaticIpConnectivityResponseArgs) ToStaticIpConnectivityResponseOutputWithContext(ctx context.Context) StaticIpConnectivityResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StaticIpConnectivityResponseOutput)
-}
-
-func (i StaticIpConnectivityResponseArgs) ToStaticIpConnectivityResponsePtrOutput() StaticIpConnectivityResponsePtrOutput {
-	return i.ToStaticIpConnectivityResponsePtrOutputWithContext(context.Background())
-}
-
-func (i StaticIpConnectivityResponseArgs) ToStaticIpConnectivityResponsePtrOutputWithContext(ctx context.Context) StaticIpConnectivityResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StaticIpConnectivityResponseOutput).ToStaticIpConnectivityResponsePtrOutputWithContext(ctx)
-}
-
-// StaticIpConnectivityResponsePtrInput is an input type that accepts StaticIpConnectivityResponseArgs, StaticIpConnectivityResponsePtr and StaticIpConnectivityResponsePtrOutput values.
-// You can construct a concrete instance of `StaticIpConnectivityResponsePtrInput` via:
-//
-//          StaticIpConnectivityResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type StaticIpConnectivityResponsePtrInput interface {
-	pulumi.Input
-
-	ToStaticIpConnectivityResponsePtrOutput() StaticIpConnectivityResponsePtrOutput
-	ToStaticIpConnectivityResponsePtrOutputWithContext(context.Context) StaticIpConnectivityResponsePtrOutput
-}
-
-type staticIpConnectivityResponsePtrType StaticIpConnectivityResponseArgs
-
-func StaticIpConnectivityResponsePtr(v *StaticIpConnectivityResponseArgs) StaticIpConnectivityResponsePtrInput {
-	return (*staticIpConnectivityResponsePtrType)(v)
-}
-
-func (*staticIpConnectivityResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StaticIpConnectivityResponse)(nil)).Elem()
-}
-
-func (i *staticIpConnectivityResponsePtrType) ToStaticIpConnectivityResponsePtrOutput() StaticIpConnectivityResponsePtrOutput {
-	return i.ToStaticIpConnectivityResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *staticIpConnectivityResponsePtrType) ToStaticIpConnectivityResponsePtrOutputWithContext(ctx context.Context) StaticIpConnectivityResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StaticIpConnectivityResponsePtrOutput)
-}
-
 // The source database will allow incoming connections from the destination database's public IP. You can retrieve the Cloud SQL instance's public IP from the Cloud SQL console or using Cloud SQL APIs. No additional configuration is required.
 type StaticIpConnectivityResponseOutput struct{ *pulumi.OutputState }
 
@@ -5012,40 +3299,6 @@ func (o StaticIpConnectivityResponseOutput) ToStaticIpConnectivityResponseOutput
 	return o
 }
 
-func (o StaticIpConnectivityResponseOutput) ToStaticIpConnectivityResponsePtrOutput() StaticIpConnectivityResponsePtrOutput {
-	return o.ToStaticIpConnectivityResponsePtrOutputWithContext(context.Background())
-}
-
-func (o StaticIpConnectivityResponseOutput) ToStaticIpConnectivityResponsePtrOutputWithContext(ctx context.Context) StaticIpConnectivityResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StaticIpConnectivityResponse) *StaticIpConnectivityResponse {
-		return &v
-	}).(StaticIpConnectivityResponsePtrOutput)
-}
-
-type StaticIpConnectivityResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (StaticIpConnectivityResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StaticIpConnectivityResponse)(nil)).Elem()
-}
-
-func (o StaticIpConnectivityResponsePtrOutput) ToStaticIpConnectivityResponsePtrOutput() StaticIpConnectivityResponsePtrOutput {
-	return o
-}
-
-func (o StaticIpConnectivityResponsePtrOutput) ToStaticIpConnectivityResponsePtrOutputWithContext(ctx context.Context) StaticIpConnectivityResponsePtrOutput {
-	return o
-}
-
-func (o StaticIpConnectivityResponsePtrOutput) Elem() StaticIpConnectivityResponseOutput {
-	return o.ApplyT(func(v *StaticIpConnectivityResponse) StaticIpConnectivityResponse {
-		if v != nil {
-			return *v
-		}
-		var ret StaticIpConnectivityResponse
-		return ret
-	}).(StaticIpConnectivityResponseOutput)
-}
-
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
 type StatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
@@ -5054,80 +3307,6 @@ type StatusResponse struct {
 	Details []map[string]string `pulumi:"details"`
 	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 	Message string `pulumi:"message"`
-}
-
-// StatusResponseInput is an input type that accepts StatusResponseArgs and StatusResponseOutput values.
-// You can construct a concrete instance of `StatusResponseInput` via:
-//
-//          StatusResponseArgs{...}
-type StatusResponseInput interface {
-	pulumi.Input
-
-	ToStatusResponseOutput() StatusResponseOutput
-	ToStatusResponseOutputWithContext(context.Context) StatusResponseOutput
-}
-
-// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type StatusResponseArgs struct {
-	// The status code, which should be an enum value of google.rpc.Code.
-	Code pulumi.IntInput `pulumi:"code"`
-	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details pulumi.StringMapArrayInput `pulumi:"details"`
-	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-	Message pulumi.StringInput `pulumi:"message"`
-}
-
-func (StatusResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
-}
-
-func (i StatusResponseArgs) ToStatusResponseOutput() StatusResponseOutput {
-	return i.ToStatusResponseOutputWithContext(context.Background())
-}
-
-func (i StatusResponseArgs) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput)
-}
-
-func (i StatusResponseArgs) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return i.ToStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i StatusResponseArgs) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput).ToStatusResponsePtrOutputWithContext(ctx)
-}
-
-// StatusResponsePtrInput is an input type that accepts StatusResponseArgs, StatusResponsePtr and StatusResponsePtrOutput values.
-// You can construct a concrete instance of `StatusResponsePtrInput` via:
-//
-//          StatusResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type StatusResponsePtrInput interface {
-	pulumi.Input
-
-	ToStatusResponsePtrOutput() StatusResponsePtrOutput
-	ToStatusResponsePtrOutputWithContext(context.Context) StatusResponsePtrOutput
-}
-
-type statusResponsePtrType StatusResponseArgs
-
-func StatusResponsePtr(v *StatusResponseArgs) StatusResponsePtrInput {
-	return (*statusResponsePtrType)(v)
-}
-
-func (*statusResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
-}
-
-func (i *statusResponsePtrType) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return i.ToStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *statusResponsePtrType) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusResponsePtrOutput)
 }
 
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
@@ -5145,16 +3324,6 @@ func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return o.ToStatusResponsePtrOutputWithContext(context.Background())
-}
-
-func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatusResponse) *StatusResponse {
-		return &v
-	}).(StatusResponsePtrOutput)
-}
-
 // The status code, which should be an enum value of google.rpc.Code.
 func (o StatusResponseOutput) Code() pulumi.IntOutput {
 	return o.ApplyT(func(v StatusResponse) int { return v.Code }).(pulumi.IntOutput)
@@ -5168,60 +3337,6 @@ func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 func (o StatusResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
-}
-
-type StatusResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (StatusResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
-}
-
-func (o StatusResponsePtrOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
-	return o
-}
-
-func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
-	return o
-}
-
-func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
-	return o.ApplyT(func(v *StatusResponse) StatusResponse {
-		if v != nil {
-			return *v
-		}
-		var ret StatusResponse
-		return ret
-	}).(StatusResponseOutput)
-}
-
-// The status code, which should be an enum value of google.rpc.Code.
-func (o StatusResponsePtrOutput) Code() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *StatusResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Code
-	}).(pulumi.IntPtrOutput)
-}
-
-// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o StatusResponsePtrOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *StatusResponse) []map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Details
-	}).(pulumi.StringMapArrayOutput)
-}
-
-// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-func (o StatusResponsePtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StatusResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Message
-	}).(pulumi.StringPtrOutput)
 }
 
 // The details of the VPC where the source database is located in Google Cloud. We will use this information to set up the VPC peering connection between Cloud SQL and this VPC.
@@ -5370,76 +3485,6 @@ type VpcPeeringConnectivityResponse struct {
 	Vpc string `pulumi:"vpc"`
 }
 
-// VpcPeeringConnectivityResponseInput is an input type that accepts VpcPeeringConnectivityResponseArgs and VpcPeeringConnectivityResponseOutput values.
-// You can construct a concrete instance of `VpcPeeringConnectivityResponseInput` via:
-//
-//          VpcPeeringConnectivityResponseArgs{...}
-type VpcPeeringConnectivityResponseInput interface {
-	pulumi.Input
-
-	ToVpcPeeringConnectivityResponseOutput() VpcPeeringConnectivityResponseOutput
-	ToVpcPeeringConnectivityResponseOutputWithContext(context.Context) VpcPeeringConnectivityResponseOutput
-}
-
-// The details of the VPC where the source database is located in Google Cloud. We will use this information to set up the VPC peering connection between Cloud SQL and this VPC.
-type VpcPeeringConnectivityResponseArgs struct {
-	// The name of the VPC network to peer with the Cloud SQL private network.
-	Vpc pulumi.StringInput `pulumi:"vpc"`
-}
-
-func (VpcPeeringConnectivityResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcPeeringConnectivityResponse)(nil)).Elem()
-}
-
-func (i VpcPeeringConnectivityResponseArgs) ToVpcPeeringConnectivityResponseOutput() VpcPeeringConnectivityResponseOutput {
-	return i.ToVpcPeeringConnectivityResponseOutputWithContext(context.Background())
-}
-
-func (i VpcPeeringConnectivityResponseArgs) ToVpcPeeringConnectivityResponseOutputWithContext(ctx context.Context) VpcPeeringConnectivityResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConnectivityResponseOutput)
-}
-
-func (i VpcPeeringConnectivityResponseArgs) ToVpcPeeringConnectivityResponsePtrOutput() VpcPeeringConnectivityResponsePtrOutput {
-	return i.ToVpcPeeringConnectivityResponsePtrOutputWithContext(context.Background())
-}
-
-func (i VpcPeeringConnectivityResponseArgs) ToVpcPeeringConnectivityResponsePtrOutputWithContext(ctx context.Context) VpcPeeringConnectivityResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConnectivityResponseOutput).ToVpcPeeringConnectivityResponsePtrOutputWithContext(ctx)
-}
-
-// VpcPeeringConnectivityResponsePtrInput is an input type that accepts VpcPeeringConnectivityResponseArgs, VpcPeeringConnectivityResponsePtr and VpcPeeringConnectivityResponsePtrOutput values.
-// You can construct a concrete instance of `VpcPeeringConnectivityResponsePtrInput` via:
-//
-//          VpcPeeringConnectivityResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type VpcPeeringConnectivityResponsePtrInput interface {
-	pulumi.Input
-
-	ToVpcPeeringConnectivityResponsePtrOutput() VpcPeeringConnectivityResponsePtrOutput
-	ToVpcPeeringConnectivityResponsePtrOutputWithContext(context.Context) VpcPeeringConnectivityResponsePtrOutput
-}
-
-type vpcPeeringConnectivityResponsePtrType VpcPeeringConnectivityResponseArgs
-
-func VpcPeeringConnectivityResponsePtr(v *VpcPeeringConnectivityResponseArgs) VpcPeeringConnectivityResponsePtrInput {
-	return (*vpcPeeringConnectivityResponsePtrType)(v)
-}
-
-func (*vpcPeeringConnectivityResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VpcPeeringConnectivityResponse)(nil)).Elem()
-}
-
-func (i *vpcPeeringConnectivityResponsePtrType) ToVpcPeeringConnectivityResponsePtrOutput() VpcPeeringConnectivityResponsePtrOutput {
-	return i.ToVpcPeeringConnectivityResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *vpcPeeringConnectivityResponsePtrType) ToVpcPeeringConnectivityResponsePtrOutputWithContext(ctx context.Context) VpcPeeringConnectivityResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConnectivityResponsePtrOutput)
-}
-
 // The details of the VPC where the source database is located in Google Cloud. We will use this information to set up the VPC peering connection between Cloud SQL and this VPC.
 type VpcPeeringConnectivityResponseOutput struct{ *pulumi.OutputState }
 
@@ -5455,117 +3500,42 @@ func (o VpcPeeringConnectivityResponseOutput) ToVpcPeeringConnectivityResponseOu
 	return o
 }
 
-func (o VpcPeeringConnectivityResponseOutput) ToVpcPeeringConnectivityResponsePtrOutput() VpcPeeringConnectivityResponsePtrOutput {
-	return o.ToVpcPeeringConnectivityResponsePtrOutputWithContext(context.Background())
-}
-
-func (o VpcPeeringConnectivityResponseOutput) ToVpcPeeringConnectivityResponsePtrOutputWithContext(ctx context.Context) VpcPeeringConnectivityResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcPeeringConnectivityResponse) *VpcPeeringConnectivityResponse {
-		return &v
-	}).(VpcPeeringConnectivityResponsePtrOutput)
-}
-
 // The name of the VPC network to peer with the Cloud SQL private network.
 func (o VpcPeeringConnectivityResponseOutput) Vpc() pulumi.StringOutput {
 	return o.ApplyT(func(v VpcPeeringConnectivityResponse) string { return v.Vpc }).(pulumi.StringOutput)
 }
 
-type VpcPeeringConnectivityResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (VpcPeeringConnectivityResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VpcPeeringConnectivityResponse)(nil)).Elem()
-}
-
-func (o VpcPeeringConnectivityResponsePtrOutput) ToVpcPeeringConnectivityResponsePtrOutput() VpcPeeringConnectivityResponsePtrOutput {
-	return o
-}
-
-func (o VpcPeeringConnectivityResponsePtrOutput) ToVpcPeeringConnectivityResponsePtrOutputWithContext(ctx context.Context) VpcPeeringConnectivityResponsePtrOutput {
-	return o
-}
-
-func (o VpcPeeringConnectivityResponsePtrOutput) Elem() VpcPeeringConnectivityResponseOutput {
-	return o.ApplyT(func(v *VpcPeeringConnectivityResponse) VpcPeeringConnectivityResponse {
-		if v != nil {
-			return *v
-		}
-		var ret VpcPeeringConnectivityResponse
-		return ret
-	}).(VpcPeeringConnectivityResponseOutput)
-}
-
-// The name of the VPC network to peer with the Cloud SQL private network.
-func (o VpcPeeringConnectivityResponsePtrOutput) Vpc() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VpcPeeringConnectivityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Vpc
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseInput)(nil)).Elem(), AuditConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigResponseArrayInput)(nil)).Elem(), AuditConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseInput)(nil)).Elem(), AuditLogConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigResponseArrayInput)(nil)).Elem(), AuditLogConfigResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseInput)(nil)).Elem(), BindingResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingResponseArrayInput)(nil)).Elem(), BindingResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlConnectionProfileInput)(nil)).Elem(), CloudSqlConnectionProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlConnectionProfilePtrInput)(nil)).Elem(), CloudSqlConnectionProfileArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlConnectionProfileResponseInput)(nil)).Elem(), CloudSqlConnectionProfileResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlConnectionProfileResponsePtrInput)(nil)).Elem(), CloudSqlConnectionProfileResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlSettingsInput)(nil)).Elem(), CloudSqlSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlSettingsPtrInput)(nil)).Elem(), CloudSqlSettingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlSettingsResponseInput)(nil)).Elem(), CloudSqlSettingsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlSettingsResponsePtrInput)(nil)).Elem(), CloudSqlSettingsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTypeInput)(nil)).Elem(), DatabaseTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTypePtrInput)(nil)).Elem(), DatabaseTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTypeResponseInput)(nil)).Elem(), DatabaseTypeResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTypeResponsePtrInput)(nil)).Elem(), DatabaseTypeResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MySqlConnectionProfileInput)(nil)).Elem(), MySqlConnectionProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MySqlConnectionProfilePtrInput)(nil)).Elem(), MySqlConnectionProfileArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MySqlConnectionProfileResponseInput)(nil)).Elem(), MySqlConnectionProfileResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MySqlConnectionProfileResponsePtrInput)(nil)).Elem(), MySqlConnectionProfileResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PostgreSqlConnectionProfileInput)(nil)).Elem(), PostgreSqlConnectionProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PostgreSqlConnectionProfilePtrInput)(nil)).Elem(), PostgreSqlConnectionProfileArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PostgreSqlConnectionProfileResponseInput)(nil)).Elem(), PostgreSqlConnectionProfileResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PostgreSqlConnectionProfileResponsePtrInput)(nil)).Elem(), PostgreSqlConnectionProfileResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReverseSshConnectivityInput)(nil)).Elem(), ReverseSshConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReverseSshConnectivityPtrInput)(nil)).Elem(), ReverseSshConnectivityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ReverseSshConnectivityResponseInput)(nil)).Elem(), ReverseSshConnectivityResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ReverseSshConnectivityResponsePtrInput)(nil)).Elem(), ReverseSshConnectivityResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlAclEntryInput)(nil)).Elem(), SqlAclEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlAclEntryArrayInput)(nil)).Elem(), SqlAclEntryArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlAclEntryResponseInput)(nil)).Elem(), SqlAclEntryResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlAclEntryResponseArrayInput)(nil)).Elem(), SqlAclEntryResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlIpConfigInput)(nil)).Elem(), SqlIpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlIpConfigPtrInput)(nil)).Elem(), SqlIpConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlIpConfigResponseInput)(nil)).Elem(), SqlIpConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlIpConfigResponsePtrInput)(nil)).Elem(), SqlIpConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SslConfigInput)(nil)).Elem(), SslConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SslConfigPtrInput)(nil)).Elem(), SslConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SslConfigResponseInput)(nil)).Elem(), SslConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SslConfigResponsePtrInput)(nil)).Elem(), SslConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StaticIpConnectivityInput)(nil)).Elem(), StaticIpConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StaticIpConnectivityPtrInput)(nil)).Elem(), StaticIpConnectivityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StaticIpConnectivityResponseInput)(nil)).Elem(), StaticIpConnectivityResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StaticIpConnectivityResponsePtrInput)(nil)).Elem(), StaticIpConnectivityResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponseInput)(nil)).Elem(), StatusResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StatusResponsePtrInput)(nil)).Elem(), StatusResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcPeeringConnectivityInput)(nil)).Elem(), VpcPeeringConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcPeeringConnectivityPtrInput)(nil)).Elem(), VpcPeeringConnectivityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VpcPeeringConnectivityResponseInput)(nil)).Elem(), VpcPeeringConnectivityResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VpcPeeringConnectivityResponsePtrInput)(nil)).Elem(), VpcPeeringConnectivityResponseArgs{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -5581,30 +3551,24 @@ func init() {
 	pulumi.RegisterOutputType(CloudSqlConnectionProfileOutput{})
 	pulumi.RegisterOutputType(CloudSqlConnectionProfilePtrOutput{})
 	pulumi.RegisterOutputType(CloudSqlConnectionProfileResponseOutput{})
-	pulumi.RegisterOutputType(CloudSqlConnectionProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(CloudSqlSettingsOutput{})
 	pulumi.RegisterOutputType(CloudSqlSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CloudSqlSettingsResponseOutput{})
-	pulumi.RegisterOutputType(CloudSqlSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseTypeOutput{})
 	pulumi.RegisterOutputType(DatabaseTypePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseTypeResponseOutput{})
-	pulumi.RegisterOutputType(DatabaseTypeResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
 	pulumi.RegisterOutputType(MySqlConnectionProfileOutput{})
 	pulumi.RegisterOutputType(MySqlConnectionProfilePtrOutput{})
 	pulumi.RegisterOutputType(MySqlConnectionProfileResponseOutput{})
-	pulumi.RegisterOutputType(MySqlConnectionProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(PostgreSqlConnectionProfileOutput{})
 	pulumi.RegisterOutputType(PostgreSqlConnectionProfilePtrOutput{})
 	pulumi.RegisterOutputType(PostgreSqlConnectionProfileResponseOutput{})
-	pulumi.RegisterOutputType(PostgreSqlConnectionProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(ReverseSshConnectivityOutput{})
 	pulumi.RegisterOutputType(ReverseSshConnectivityPtrOutput{})
 	pulumi.RegisterOutputType(ReverseSshConnectivityResponseOutput{})
-	pulumi.RegisterOutputType(ReverseSshConnectivityResponsePtrOutput{})
 	pulumi.RegisterOutputType(SqlAclEntryOutput{})
 	pulumi.RegisterOutputType(SqlAclEntryArrayOutput{})
 	pulumi.RegisterOutputType(SqlAclEntryResponseOutput{})
@@ -5612,19 +3576,14 @@ func init() {
 	pulumi.RegisterOutputType(SqlIpConfigOutput{})
 	pulumi.RegisterOutputType(SqlIpConfigPtrOutput{})
 	pulumi.RegisterOutputType(SqlIpConfigResponseOutput{})
-	pulumi.RegisterOutputType(SqlIpConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(SslConfigOutput{})
 	pulumi.RegisterOutputType(SslConfigPtrOutput{})
 	pulumi.RegisterOutputType(SslConfigResponseOutput{})
-	pulumi.RegisterOutputType(SslConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(StaticIpConnectivityOutput{})
 	pulumi.RegisterOutputType(StaticIpConnectivityPtrOutput{})
 	pulumi.RegisterOutputType(StaticIpConnectivityResponseOutput{})
-	pulumi.RegisterOutputType(StaticIpConnectivityResponsePtrOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
-	pulumi.RegisterOutputType(StatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(VpcPeeringConnectivityOutput{})
 	pulumi.RegisterOutputType(VpcPeeringConnectivityPtrOutput{})
 	pulumi.RegisterOutputType(VpcPeeringConnectivityResponseOutput{})
-	pulumi.RegisterOutputType(VpcPeeringConnectivityResponsePtrOutput{})
 }

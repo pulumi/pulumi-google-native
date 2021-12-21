@@ -181,7 +181,7 @@ type RatePlanInput interface {
 }
 
 func (*RatePlan) ElementType() reflect.Type {
-	return reflect.TypeOf((*RatePlan)(nil))
+	return reflect.TypeOf((**RatePlan)(nil)).Elem()
 }
 
 func (i *RatePlan) ToRatePlanOutput() RatePlanOutput {
@@ -195,7 +195,7 @@ func (i *RatePlan) ToRatePlanOutputWithContext(ctx context.Context) RatePlanOutp
 type RatePlanOutput struct{ *pulumi.OutputState }
 
 func (RatePlanOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RatePlan)(nil))
+	return reflect.TypeOf((**RatePlan)(nil)).Elem()
 }
 
 func (o RatePlanOutput) ToRatePlanOutput() RatePlanOutput {

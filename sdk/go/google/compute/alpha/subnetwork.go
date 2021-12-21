@@ -225,7 +225,7 @@ type SubnetworkInput interface {
 }
 
 func (*Subnetwork) ElementType() reflect.Type {
-	return reflect.TypeOf((*Subnetwork)(nil))
+	return reflect.TypeOf((**Subnetwork)(nil)).Elem()
 }
 
 func (i *Subnetwork) ToSubnetworkOutput() SubnetworkOutput {
@@ -239,7 +239,7 @@ func (i *Subnetwork) ToSubnetworkOutputWithContext(ctx context.Context) Subnetwo
 type SubnetworkOutput struct{ *pulumi.OutputState }
 
 func (SubnetworkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Subnetwork)(nil))
+	return reflect.TypeOf((**Subnetwork)(nil)).Elem()
 }
 
 func (o SubnetworkOutput) ToSubnetworkOutput() SubnetworkOutput {

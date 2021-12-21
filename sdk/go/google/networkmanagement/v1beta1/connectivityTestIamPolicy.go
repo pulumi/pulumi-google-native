@@ -111,7 +111,7 @@ type ConnectivityTestIamPolicyInput interface {
 }
 
 func (*ConnectivityTestIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectivityTestIamPolicy)(nil))
+	return reflect.TypeOf((**ConnectivityTestIamPolicy)(nil)).Elem()
 }
 
 func (i *ConnectivityTestIamPolicy) ToConnectivityTestIamPolicyOutput() ConnectivityTestIamPolicyOutput {
@@ -125,7 +125,7 @@ func (i *ConnectivityTestIamPolicy) ToConnectivityTestIamPolicyOutputWithContext
 type ConnectivityTestIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (ConnectivityTestIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectivityTestIamPolicy)(nil))
+	return reflect.TypeOf((**ConnectivityTestIamPolicy)(nil)).Elem()
 }
 
 func (o ConnectivityTestIamPolicyOutput) ToConnectivityTestIamPolicyOutput() ConnectivityTestIamPolicyOutput {

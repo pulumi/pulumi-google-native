@@ -146,7 +146,7 @@ type CustomerInput interface {
 }
 
 func (*Customer) ElementType() reflect.Type {
-	return reflect.TypeOf((*Customer)(nil))
+	return reflect.TypeOf((**Customer)(nil)).Elem()
 }
 
 func (i *Customer) ToCustomerOutput() CustomerOutput {
@@ -160,7 +160,7 @@ func (i *Customer) ToCustomerOutputWithContext(ctx context.Context) CustomerOutp
 type CustomerOutput struct{ *pulumi.OutputState }
 
 func (CustomerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Customer)(nil))
+	return reflect.TypeOf((**Customer)(nil)).Elem()
 }
 
 func (o CustomerOutput) ToCustomerOutput() CustomerOutput {

@@ -152,7 +152,7 @@ type OrganizationSecurityPolicyInput interface {
 }
 
 func (*OrganizationSecurityPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationSecurityPolicy)(nil))
+	return reflect.TypeOf((**OrganizationSecurityPolicy)(nil)).Elem()
 }
 
 func (i *OrganizationSecurityPolicy) ToOrganizationSecurityPolicyOutput() OrganizationSecurityPolicyOutput {
@@ -166,7 +166,7 @@ func (i *OrganizationSecurityPolicy) ToOrganizationSecurityPolicyOutputWithConte
 type OrganizationSecurityPolicyOutput struct{ *pulumi.OutputState }
 
 func (OrganizationSecurityPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationSecurityPolicy)(nil))
+	return reflect.TypeOf((**OrganizationSecurityPolicy)(nil)).Elem()
 }
 
 func (o OrganizationSecurityPolicyOutput) ToOrganizationSecurityPolicyOutput() OrganizationSecurityPolicyOutput {

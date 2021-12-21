@@ -131,7 +131,7 @@ type RegionHealthCheckServiceInput interface {
 }
 
 func (*RegionHealthCheckService) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionHealthCheckService)(nil))
+	return reflect.TypeOf((**RegionHealthCheckService)(nil)).Elem()
 }
 
 func (i *RegionHealthCheckService) ToRegionHealthCheckServiceOutput() RegionHealthCheckServiceOutput {
@@ -145,7 +145,7 @@ func (i *RegionHealthCheckService) ToRegionHealthCheckServiceOutputWithContext(c
 type RegionHealthCheckServiceOutput struct{ *pulumi.OutputState }
 
 func (RegionHealthCheckServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionHealthCheckService)(nil))
+	return reflect.TypeOf((**RegionHealthCheckService)(nil)).Elem()
 }
 
 func (o RegionHealthCheckServiceOutput) ToRegionHealthCheckServiceOutput() RegionHealthCheckServiceOutput {

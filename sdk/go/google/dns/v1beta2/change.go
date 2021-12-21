@@ -123,7 +123,7 @@ type ChangeInput interface {
 }
 
 func (*Change) ElementType() reflect.Type {
-	return reflect.TypeOf((*Change)(nil))
+	return reflect.TypeOf((**Change)(nil)).Elem()
 }
 
 func (i *Change) ToChangeOutput() ChangeOutput {
@@ -137,7 +137,7 @@ func (i *Change) ToChangeOutputWithContext(ctx context.Context) ChangeOutput {
 type ChangeOutput struct{ *pulumi.OutputState }
 
 func (ChangeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Change)(nil))
+	return reflect.TypeOf((**Change)(nil)).Elem()
 }
 
 func (o ChangeOutput) ToChangeOutput() ChangeOutput {

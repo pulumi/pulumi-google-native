@@ -125,7 +125,7 @@ type OrganizationRoleInput interface {
 }
 
 func (*OrganizationRole) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationRole)(nil))
+	return reflect.TypeOf((**OrganizationRole)(nil)).Elem()
 }
 
 func (i *OrganizationRole) ToOrganizationRoleOutput() OrganizationRoleOutput {
@@ -139,7 +139,7 @@ func (i *OrganizationRole) ToOrganizationRoleOutputWithContext(ctx context.Conte
 type OrganizationRoleOutput struct{ *pulumi.OutputState }
 
 func (OrganizationRoleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationRole)(nil))
+	return reflect.TypeOf((**OrganizationRole)(nil)).Elem()
 }
 
 func (o OrganizationRoleOutput) ToOrganizationRoleOutput() OrganizationRoleOutput {

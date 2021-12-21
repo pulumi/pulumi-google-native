@@ -103,7 +103,7 @@ type GcpUserAccessBindingInput interface {
 }
 
 func (*GcpUserAccessBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*GcpUserAccessBinding)(nil))
+	return reflect.TypeOf((**GcpUserAccessBinding)(nil)).Elem()
 }
 
 func (i *GcpUserAccessBinding) ToGcpUserAccessBindingOutput() GcpUserAccessBindingOutput {
@@ -117,7 +117,7 @@ func (i *GcpUserAccessBinding) ToGcpUserAccessBindingOutputWithContext(ctx conte
 type GcpUserAccessBindingOutput struct{ *pulumi.OutputState }
 
 func (GcpUserAccessBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GcpUserAccessBinding)(nil))
+	return reflect.TypeOf((**GcpUserAccessBinding)(nil)).Elem()
 }
 
 func (o GcpUserAccessBindingOutput) ToGcpUserAccessBindingOutput() GcpUserAccessBindingOutput {

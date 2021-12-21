@@ -111,7 +111,7 @@ type TargetGrpcProxyInput interface {
 }
 
 func (*TargetGrpcProxy) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetGrpcProxy)(nil))
+	return reflect.TypeOf((**TargetGrpcProxy)(nil)).Elem()
 }
 
 func (i *TargetGrpcProxy) ToTargetGrpcProxyOutput() TargetGrpcProxyOutput {
@@ -125,7 +125,7 @@ func (i *TargetGrpcProxy) ToTargetGrpcProxyOutputWithContext(ctx context.Context
 type TargetGrpcProxyOutput struct{ *pulumi.OutputState }
 
 func (TargetGrpcProxyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetGrpcProxy)(nil))
+	return reflect.TypeOf((**TargetGrpcProxy)(nil)).Elem()
 }
 
 func (o TargetGrpcProxyOutput) ToTargetGrpcProxyOutput() TargetGrpcProxyOutput {

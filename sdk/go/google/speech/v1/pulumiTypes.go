@@ -116,60 +116,6 @@ type ClassItemResponse struct {
 	Value string `pulumi:"value"`
 }
 
-// ClassItemResponseInput is an input type that accepts ClassItemResponseArgs and ClassItemResponseOutput values.
-// You can construct a concrete instance of `ClassItemResponseInput` via:
-//
-//          ClassItemResponseArgs{...}
-type ClassItemResponseInput interface {
-	pulumi.Input
-
-	ToClassItemResponseOutput() ClassItemResponseOutput
-	ToClassItemResponseOutputWithContext(context.Context) ClassItemResponseOutput
-}
-
-// An item of the class.
-type ClassItemResponseArgs struct {
-	// The class item's value.
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (ClassItemResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClassItemResponse)(nil)).Elem()
-}
-
-func (i ClassItemResponseArgs) ToClassItemResponseOutput() ClassItemResponseOutput {
-	return i.ToClassItemResponseOutputWithContext(context.Background())
-}
-
-func (i ClassItemResponseArgs) ToClassItemResponseOutputWithContext(ctx context.Context) ClassItemResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClassItemResponseOutput)
-}
-
-// ClassItemResponseArrayInput is an input type that accepts ClassItemResponseArray and ClassItemResponseArrayOutput values.
-// You can construct a concrete instance of `ClassItemResponseArrayInput` via:
-//
-//          ClassItemResponseArray{ ClassItemResponseArgs{...} }
-type ClassItemResponseArrayInput interface {
-	pulumi.Input
-
-	ToClassItemResponseArrayOutput() ClassItemResponseArrayOutput
-	ToClassItemResponseArrayOutputWithContext(context.Context) ClassItemResponseArrayOutput
-}
-
-type ClassItemResponseArray []ClassItemResponseInput
-
-func (ClassItemResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ClassItemResponse)(nil)).Elem()
-}
-
-func (i ClassItemResponseArray) ToClassItemResponseArrayOutput() ClassItemResponseArrayOutput {
-	return i.ToClassItemResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ClassItemResponseArray) ToClassItemResponseArrayOutputWithContext(ctx context.Context) ClassItemResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClassItemResponseArrayOutput)
-}
-
 // An item of the class.
 type ClassItemResponseOutput struct{ *pulumi.OutputState }
 
@@ -327,62 +273,6 @@ type PhraseResponse struct {
 	Value string `pulumi:"value"`
 }
 
-// PhraseResponseInput is an input type that accepts PhraseResponseArgs and PhraseResponseOutput values.
-// You can construct a concrete instance of `PhraseResponseInput` via:
-//
-//          PhraseResponseArgs{...}
-type PhraseResponseInput interface {
-	pulumi.Input
-
-	ToPhraseResponseOutput() PhraseResponseOutput
-	ToPhraseResponseOutputWithContext(context.Context) PhraseResponseOutput
-}
-
-// A phrases containing words and phrase "hints" so that the speech recognition is more likely to recognize them. This can be used to improve the accuracy for specific words and phrases, for example, if specific commands are typically spoken by the user. This can also be used to add additional words to the vocabulary of the recognizer. See [usage limits](https://cloud.google.com/speech-to-text/quotas#content). List items can also include pre-built or custom classes containing groups of words that represent common concepts that occur in natural language. For example, rather than providing a phrase hint for every month of the year (e.g. "i was born in january", "i was born in febuary", ...), use the pre-built `$MONTH` class improves the likelihood of correctly transcribing audio that includes months (e.g. "i was born in $month"). To refer to pre-built classes, use the class' symbol prepended with `$` e.g. `$MONTH`. To refer to custom classes that were defined inline in the request, set the class's `custom_class_id` to a string unique to all class resources and inline classes. Then use the class' id wrapped in $`{...}` e.g. "${my-months}". To refer to custom classes resources, use the class' id wrapped in `${}` (e.g. `${my-months}`).
-type PhraseResponseArgs struct {
-	// Hint Boost. Overrides the boost set at the phrase set level. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 and 20. We recommend using a binary search approach to finding the optimal value for your use case. Speech recognition will skip PhraseSets with a boost value of 0.
-	Boost pulumi.Float64Input `pulumi:"boost"`
-	// The phrase itself.
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (PhraseResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PhraseResponse)(nil)).Elem()
-}
-
-func (i PhraseResponseArgs) ToPhraseResponseOutput() PhraseResponseOutput {
-	return i.ToPhraseResponseOutputWithContext(context.Background())
-}
-
-func (i PhraseResponseArgs) ToPhraseResponseOutputWithContext(ctx context.Context) PhraseResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PhraseResponseOutput)
-}
-
-// PhraseResponseArrayInput is an input type that accepts PhraseResponseArray and PhraseResponseArrayOutput values.
-// You can construct a concrete instance of `PhraseResponseArrayInput` via:
-//
-//          PhraseResponseArray{ PhraseResponseArgs{...} }
-type PhraseResponseArrayInput interface {
-	pulumi.Input
-
-	ToPhraseResponseArrayOutput() PhraseResponseArrayOutput
-	ToPhraseResponseArrayOutputWithContext(context.Context) PhraseResponseArrayOutput
-}
-
-type PhraseResponseArray []PhraseResponseInput
-
-func (PhraseResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PhraseResponse)(nil)).Elem()
-}
-
-func (i PhraseResponseArray) ToPhraseResponseArrayOutput() PhraseResponseArrayOutput {
-	return i.ToPhraseResponseArrayOutputWithContext(context.Background())
-}
-
-func (i PhraseResponseArray) ToPhraseResponseArrayOutputWithContext(ctx context.Context) PhraseResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PhraseResponseArrayOutput)
-}
-
 // A phrases containing words and phrase "hints" so that the speech recognition is more likely to recognize them. This can be used to improve the accuracy for specific words and phrases, for example, if specific commands are typically spoken by the user. This can also be used to add additional words to the vocabulary of the recognizer. See [usage limits](https://cloud.google.com/speech-to-text/quotas#content). List items can also include pre-built or custom classes containing groups of words that represent common concepts that occur in natural language. For example, rather than providing a phrase hint for every month of the year (e.g. "i was born in january", "i was born in febuary", ...), use the pre-built `$MONTH` class improves the likelihood of correctly transcribing audio that includes months (e.g. "i was born in $month"). To refer to pre-built classes, use the class' symbol prepended with `$` e.g. `$MONTH`. To refer to custom classes that were defined inline in the request, set the class's `custom_class_id` to a string unique to all class resources and inline classes. Then use the class' id wrapped in $`{...}` e.g. "${my-months}". To refer to custom classes resources, use the class' id wrapped in `${}` (e.g. `${my-months}`).
 type PhraseResponseOutput struct{ *pulumi.OutputState }
 
@@ -431,12 +321,8 @@ func (o PhraseResponseArrayOutput) Index(i pulumi.IntInput) PhraseResponseOutput
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClassItemInput)(nil)).Elem(), ClassItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClassItemArrayInput)(nil)).Elem(), ClassItemArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClassItemResponseInput)(nil)).Elem(), ClassItemResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClassItemResponseArrayInput)(nil)).Elem(), ClassItemResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PhraseInput)(nil)).Elem(), PhraseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PhraseArrayInput)(nil)).Elem(), PhraseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PhraseResponseInput)(nil)).Elem(), PhraseResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PhraseResponseArrayInput)(nil)).Elem(), PhraseResponseArray{})
 	pulumi.RegisterOutputType(ClassItemOutput{})
 	pulumi.RegisterOutputType(ClassItemArrayOutput{})
 	pulumi.RegisterOutputType(ClassItemResponseOutput{})

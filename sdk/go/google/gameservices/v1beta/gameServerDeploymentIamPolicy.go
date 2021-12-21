@@ -119,7 +119,7 @@ type GameServerDeploymentIamPolicyInput interface {
 }
 
 func (*GameServerDeploymentIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*GameServerDeploymentIamPolicy)(nil))
+	return reflect.TypeOf((**GameServerDeploymentIamPolicy)(nil)).Elem()
 }
 
 func (i *GameServerDeploymentIamPolicy) ToGameServerDeploymentIamPolicyOutput() GameServerDeploymentIamPolicyOutput {
@@ -133,7 +133,7 @@ func (i *GameServerDeploymentIamPolicy) ToGameServerDeploymentIamPolicyOutputWit
 type GameServerDeploymentIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (GameServerDeploymentIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GameServerDeploymentIamPolicy)(nil))
+	return reflect.TypeOf((**GameServerDeploymentIamPolicy)(nil)).Elem()
 }
 
 func (o GameServerDeploymentIamPolicyOutput) ToGameServerDeploymentIamPolicyOutput() GameServerDeploymentIamPolicyOutput {

@@ -114,7 +114,7 @@ type OrganizationEnvironmentIamPolicyInput interface {
 }
 
 func (*OrganizationEnvironmentIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationEnvironmentIamPolicy)(nil))
+	return reflect.TypeOf((**OrganizationEnvironmentIamPolicy)(nil)).Elem()
 }
 
 func (i *OrganizationEnvironmentIamPolicy) ToOrganizationEnvironmentIamPolicyOutput() OrganizationEnvironmentIamPolicyOutput {
@@ -128,7 +128,7 @@ func (i *OrganizationEnvironmentIamPolicy) ToOrganizationEnvironmentIamPolicyOut
 type OrganizationEnvironmentIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (OrganizationEnvironmentIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationEnvironmentIamPolicy)(nil))
+	return reflect.TypeOf((**OrganizationEnvironmentIamPolicy)(nil)).Elem()
 }
 
 func (o OrganizationEnvironmentIamPolicyOutput) ToOrganizationEnvironmentIamPolicyOutput() OrganizationEnvironmentIamPolicyOutput {

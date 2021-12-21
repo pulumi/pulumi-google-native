@@ -120,7 +120,7 @@ type RealmInput interface {
 }
 
 func (*Realm) ElementType() reflect.Type {
-	return reflect.TypeOf((*Realm)(nil))
+	return reflect.TypeOf((**Realm)(nil)).Elem()
 }
 
 func (i *Realm) ToRealmOutput() RealmOutput {
@@ -134,7 +134,7 @@ func (i *Realm) ToRealmOutputWithContext(ctx context.Context) RealmOutput {
 type RealmOutput struct{ *pulumi.OutputState }
 
 func (RealmOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Realm)(nil))
+	return reflect.TypeOf((**Realm)(nil)).Elem()
 }
 
 func (o RealmOutput) ToRealmOutput() RealmOutput {

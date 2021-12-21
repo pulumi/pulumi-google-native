@@ -110,7 +110,7 @@ type NotificationConfigInput interface {
 }
 
 func (*NotificationConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*NotificationConfig)(nil))
+	return reflect.TypeOf((**NotificationConfig)(nil)).Elem()
 }
 
 func (i *NotificationConfig) ToNotificationConfigOutput() NotificationConfigOutput {
@@ -124,7 +124,7 @@ func (i *NotificationConfig) ToNotificationConfigOutputWithContext(ctx context.C
 type NotificationConfigOutput struct{ *pulumi.OutputState }
 
 func (NotificationConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NotificationConfig)(nil))
+	return reflect.TypeOf((**NotificationConfig)(nil)).Elem()
 }
 
 func (o NotificationConfigOutput) ToNotificationConfigOutput() NotificationConfigOutput {

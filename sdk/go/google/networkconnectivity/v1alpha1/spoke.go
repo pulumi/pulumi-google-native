@@ -139,7 +139,7 @@ type SpokeInput interface {
 }
 
 func (*Spoke) ElementType() reflect.Type {
-	return reflect.TypeOf((*Spoke)(nil))
+	return reflect.TypeOf((**Spoke)(nil)).Elem()
 }
 
 func (i *Spoke) ToSpokeOutput() SpokeOutput {
@@ -153,7 +153,7 @@ func (i *Spoke) ToSpokeOutputWithContext(ctx context.Context) SpokeOutput {
 type SpokeOutput struct{ *pulumi.OutputState }
 
 func (SpokeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Spoke)(nil))
+	return reflect.TypeOf((**Spoke)(nil)).Elem()
 }
 
 func (o SpokeOutput) ToSpokeOutput() SpokeOutput {

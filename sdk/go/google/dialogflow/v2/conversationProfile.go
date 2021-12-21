@@ -157,7 +157,7 @@ type ConversationProfileInput interface {
 }
 
 func (*ConversationProfile) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConversationProfile)(nil))
+	return reflect.TypeOf((**ConversationProfile)(nil)).Elem()
 }
 
 func (i *ConversationProfile) ToConversationProfileOutput() ConversationProfileOutput {
@@ -171,7 +171,7 @@ func (i *ConversationProfile) ToConversationProfileOutputWithContext(ctx context
 type ConversationProfileOutput struct{ *pulumi.OutputState }
 
 func (ConversationProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConversationProfile)(nil))
+	return reflect.TypeOf((**ConversationProfile)(nil)).Elem()
 }
 
 func (o ConversationProfileOutput) ToConversationProfileOutput() ConversationProfileOutput {

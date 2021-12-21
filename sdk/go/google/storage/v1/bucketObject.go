@@ -285,7 +285,7 @@ type BucketObjectInput interface {
 }
 
 func (*BucketObject) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketObject)(nil))
+	return reflect.TypeOf((**BucketObject)(nil)).Elem()
 }
 
 func (i *BucketObject) ToBucketObjectOutput() BucketObjectOutput {
@@ -299,7 +299,7 @@ func (i *BucketObject) ToBucketObjectOutputWithContext(ctx context.Context) Buck
 type BucketObjectOutput struct{ *pulumi.OutputState }
 
 func (BucketObjectOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketObject)(nil))
+	return reflect.TypeOf((**BucketObject)(nil)).Elem()
 }
 
 func (o BucketObjectOutput) ToBucketObjectOutput() BucketObjectOutput {

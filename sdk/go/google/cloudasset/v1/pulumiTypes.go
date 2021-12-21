@@ -177,78 +177,6 @@ type AccessSelectorResponse struct {
 	Roles []string `pulumi:"roles"`
 }
 
-// AccessSelectorResponseInput is an input type that accepts AccessSelectorResponseArgs and AccessSelectorResponseOutput values.
-// You can construct a concrete instance of `AccessSelectorResponseInput` via:
-//
-//          AccessSelectorResponseArgs{...}
-type AccessSelectorResponseInput interface {
-	pulumi.Input
-
-	ToAccessSelectorResponseOutput() AccessSelectorResponseOutput
-	ToAccessSelectorResponseOutputWithContext(context.Context) AccessSelectorResponseOutput
-}
-
-// Specifies roles and/or permissions to analyze, to determine both the identities possessing them and the resources they control. If multiple values are specified, results will include roles or permissions matching any of them. The total number of roles and permissions should be equal or less than 10.
-type AccessSelectorResponseArgs struct {
-	// Optional. The permissions to appear in result.
-	Permissions pulumi.StringArrayInput `pulumi:"permissions"`
-	// Optional. The roles to appear in result.
-	Roles pulumi.StringArrayInput `pulumi:"roles"`
-}
-
-func (AccessSelectorResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessSelectorResponse)(nil)).Elem()
-}
-
-func (i AccessSelectorResponseArgs) ToAccessSelectorResponseOutput() AccessSelectorResponseOutput {
-	return i.ToAccessSelectorResponseOutputWithContext(context.Background())
-}
-
-func (i AccessSelectorResponseArgs) ToAccessSelectorResponseOutputWithContext(ctx context.Context) AccessSelectorResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessSelectorResponseOutput)
-}
-
-func (i AccessSelectorResponseArgs) ToAccessSelectorResponsePtrOutput() AccessSelectorResponsePtrOutput {
-	return i.ToAccessSelectorResponsePtrOutputWithContext(context.Background())
-}
-
-func (i AccessSelectorResponseArgs) ToAccessSelectorResponsePtrOutputWithContext(ctx context.Context) AccessSelectorResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessSelectorResponseOutput).ToAccessSelectorResponsePtrOutputWithContext(ctx)
-}
-
-// AccessSelectorResponsePtrInput is an input type that accepts AccessSelectorResponseArgs, AccessSelectorResponsePtr and AccessSelectorResponsePtrOutput values.
-// You can construct a concrete instance of `AccessSelectorResponsePtrInput` via:
-//
-//          AccessSelectorResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type AccessSelectorResponsePtrInput interface {
-	pulumi.Input
-
-	ToAccessSelectorResponsePtrOutput() AccessSelectorResponsePtrOutput
-	ToAccessSelectorResponsePtrOutputWithContext(context.Context) AccessSelectorResponsePtrOutput
-}
-
-type accessSelectorResponsePtrType AccessSelectorResponseArgs
-
-func AccessSelectorResponsePtr(v *AccessSelectorResponseArgs) AccessSelectorResponsePtrInput {
-	return (*accessSelectorResponsePtrType)(v)
-}
-
-func (*accessSelectorResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AccessSelectorResponse)(nil)).Elem()
-}
-
-func (i *accessSelectorResponsePtrType) ToAccessSelectorResponsePtrOutput() AccessSelectorResponsePtrOutput {
-	return i.ToAccessSelectorResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *accessSelectorResponsePtrType) ToAccessSelectorResponsePtrOutputWithContext(ctx context.Context) AccessSelectorResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessSelectorResponsePtrOutput)
-}
-
 // Specifies roles and/or permissions to analyze, to determine both the identities possessing them and the resources they control. If multiple values are specified, results will include roles or permissions matching any of them. The total number of roles and permissions should be equal or less than 10.
 type AccessSelectorResponseOutput struct{ *pulumi.OutputState }
 
@@ -264,16 +192,6 @@ func (o AccessSelectorResponseOutput) ToAccessSelectorResponseOutputWithContext(
 	return o
 }
 
-func (o AccessSelectorResponseOutput) ToAccessSelectorResponsePtrOutput() AccessSelectorResponsePtrOutput {
-	return o.ToAccessSelectorResponsePtrOutputWithContext(context.Background())
-}
-
-func (o AccessSelectorResponseOutput) ToAccessSelectorResponsePtrOutputWithContext(ctx context.Context) AccessSelectorResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessSelectorResponse) *AccessSelectorResponse {
-		return &v
-	}).(AccessSelectorResponsePtrOutput)
-}
-
 // Optional. The permissions to appear in result.
 func (o AccessSelectorResponseOutput) Permissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessSelectorResponse) []string { return v.Permissions }).(pulumi.StringArrayOutput)
@@ -282,50 +200,6 @@ func (o AccessSelectorResponseOutput) Permissions() pulumi.StringArrayOutput {
 // Optional. The roles to appear in result.
 func (o AccessSelectorResponseOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessSelectorResponse) []string { return v.Roles }).(pulumi.StringArrayOutput)
-}
-
-type AccessSelectorResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AccessSelectorResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AccessSelectorResponse)(nil)).Elem()
-}
-
-func (o AccessSelectorResponsePtrOutput) ToAccessSelectorResponsePtrOutput() AccessSelectorResponsePtrOutput {
-	return o
-}
-
-func (o AccessSelectorResponsePtrOutput) ToAccessSelectorResponsePtrOutputWithContext(ctx context.Context) AccessSelectorResponsePtrOutput {
-	return o
-}
-
-func (o AccessSelectorResponsePtrOutput) Elem() AccessSelectorResponseOutput {
-	return o.ApplyT(func(v *AccessSelectorResponse) AccessSelectorResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AccessSelectorResponse
-		return ret
-	}).(AccessSelectorResponseOutput)
-}
-
-// Optional. The permissions to appear in result.
-func (o AccessSelectorResponsePtrOutput) Permissions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *AccessSelectorResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Permissions
-	}).(pulumi.StringArrayOutput)
-}
-
-// Optional. The roles to appear in result.
-func (o AccessSelectorResponsePtrOutput) Roles() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *AccessSelectorResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Roles
-	}).(pulumi.StringArrayOutput)
 }
 
 // The IAM conditions context.
@@ -474,76 +348,6 @@ type ConditionContextResponse struct {
 	AccessTime string `pulumi:"accessTime"`
 }
 
-// ConditionContextResponseInput is an input type that accepts ConditionContextResponseArgs and ConditionContextResponseOutput values.
-// You can construct a concrete instance of `ConditionContextResponseInput` via:
-//
-//          ConditionContextResponseArgs{...}
-type ConditionContextResponseInput interface {
-	pulumi.Input
-
-	ToConditionContextResponseOutput() ConditionContextResponseOutput
-	ToConditionContextResponseOutputWithContext(context.Context) ConditionContextResponseOutput
-}
-
-// The IAM conditions context.
-type ConditionContextResponseArgs struct {
-	// The hypothetical access timestamp to evaluate IAM conditions. Note that this value must not be earlier than the current time; otherwise, an INVALID_ARGUMENT error will be returned.
-	AccessTime pulumi.StringInput `pulumi:"accessTime"`
-}
-
-func (ConditionContextResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConditionContextResponse)(nil)).Elem()
-}
-
-func (i ConditionContextResponseArgs) ToConditionContextResponseOutput() ConditionContextResponseOutput {
-	return i.ToConditionContextResponseOutputWithContext(context.Background())
-}
-
-func (i ConditionContextResponseArgs) ToConditionContextResponseOutputWithContext(ctx context.Context) ConditionContextResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConditionContextResponseOutput)
-}
-
-func (i ConditionContextResponseArgs) ToConditionContextResponsePtrOutput() ConditionContextResponsePtrOutput {
-	return i.ToConditionContextResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ConditionContextResponseArgs) ToConditionContextResponsePtrOutputWithContext(ctx context.Context) ConditionContextResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConditionContextResponseOutput).ToConditionContextResponsePtrOutputWithContext(ctx)
-}
-
-// ConditionContextResponsePtrInput is an input type that accepts ConditionContextResponseArgs, ConditionContextResponsePtr and ConditionContextResponsePtrOutput values.
-// You can construct a concrete instance of `ConditionContextResponsePtrInput` via:
-//
-//          ConditionContextResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ConditionContextResponsePtrInput interface {
-	pulumi.Input
-
-	ToConditionContextResponsePtrOutput() ConditionContextResponsePtrOutput
-	ToConditionContextResponsePtrOutputWithContext(context.Context) ConditionContextResponsePtrOutput
-}
-
-type conditionContextResponsePtrType ConditionContextResponseArgs
-
-func ConditionContextResponsePtr(v *ConditionContextResponseArgs) ConditionContextResponsePtrInput {
-	return (*conditionContextResponsePtrType)(v)
-}
-
-func (*conditionContextResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConditionContextResponse)(nil)).Elem()
-}
-
-func (i *conditionContextResponsePtrType) ToConditionContextResponsePtrOutput() ConditionContextResponsePtrOutput {
-	return i.ToConditionContextResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *conditionContextResponsePtrType) ToConditionContextResponsePtrOutputWithContext(ctx context.Context) ConditionContextResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConditionContextResponsePtrOutput)
-}
-
 // The IAM conditions context.
 type ConditionContextResponseOutput struct{ *pulumi.OutputState }
 
@@ -559,53 +363,9 @@ func (o ConditionContextResponseOutput) ToConditionContextResponseOutputWithCont
 	return o
 }
 
-func (o ConditionContextResponseOutput) ToConditionContextResponsePtrOutput() ConditionContextResponsePtrOutput {
-	return o.ToConditionContextResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ConditionContextResponseOutput) ToConditionContextResponsePtrOutputWithContext(ctx context.Context) ConditionContextResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConditionContextResponse) *ConditionContextResponse {
-		return &v
-	}).(ConditionContextResponsePtrOutput)
-}
-
 // The hypothetical access timestamp to evaluate IAM conditions. Note that this value must not be earlier than the current time; otherwise, an INVALID_ARGUMENT error will be returned.
 func (o ConditionContextResponseOutput) AccessTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ConditionContextResponse) string { return v.AccessTime }).(pulumi.StringOutput)
-}
-
-type ConditionContextResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ConditionContextResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConditionContextResponse)(nil)).Elem()
-}
-
-func (o ConditionContextResponsePtrOutput) ToConditionContextResponsePtrOutput() ConditionContextResponsePtrOutput {
-	return o
-}
-
-func (o ConditionContextResponsePtrOutput) ToConditionContextResponsePtrOutputWithContext(ctx context.Context) ConditionContextResponsePtrOutput {
-	return o
-}
-
-func (o ConditionContextResponsePtrOutput) Elem() ConditionContextResponseOutput {
-	return o.ApplyT(func(v *ConditionContextResponse) ConditionContextResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ConditionContextResponse
-		return ret
-	}).(ConditionContextResponseOutput)
-}
-
-// The hypothetical access timestamp to evaluate IAM conditions. Note that this value must not be earlier than the current time; otherwise, an INVALID_ARGUMENT error will be returned.
-func (o ConditionContextResponsePtrOutput) AccessTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConditionContextResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AccessTime
-	}).(pulumi.StringPtrOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -817,82 +577,6 @@ type ExprResponse struct {
 	Title string `pulumi:"title"`
 }
 
-// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
-// You can construct a concrete instance of `ExprResponseInput` via:
-//
-//          ExprResponseArgs{...}
-type ExprResponseInput interface {
-	pulumi.Input
-
-	ToExprResponseOutput() ExprResponseOutput
-	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type ExprResponseArgs struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-	Location pulumi.StringInput `pulumi:"location"`
-	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (ExprResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
-}
-
-func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
-	return i.ToExprResponseOutputWithContext(context.Background())
-}
-
-func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
-}
-
-func (i ExprResponseArgs) ToExprResponsePtrOutput() ExprResponsePtrOutput {
-	return i.ToExprResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ExprResponseArgs) ToExprResponsePtrOutputWithContext(ctx context.Context) ExprResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput).ToExprResponsePtrOutputWithContext(ctx)
-}
-
-// ExprResponsePtrInput is an input type that accepts ExprResponseArgs, ExprResponsePtr and ExprResponsePtrOutput values.
-// You can construct a concrete instance of `ExprResponsePtrInput` via:
-//
-//          ExprResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ExprResponsePtrInput interface {
-	pulumi.Input
-
-	ToExprResponsePtrOutput() ExprResponsePtrOutput
-	ToExprResponsePtrOutputWithContext(context.Context) ExprResponsePtrOutput
-}
-
-type exprResponsePtrType ExprResponseArgs
-
-func ExprResponsePtr(v *ExprResponseArgs) ExprResponsePtrInput {
-	return (*exprResponsePtrType)(v)
-}
-
-func (*exprResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExprResponse)(nil)).Elem()
-}
-
-func (i *exprResponsePtrType) ToExprResponsePtrOutput() ExprResponsePtrOutput {
-	return i.ToExprResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *exprResponsePtrType) ToExprResponsePtrOutputWithContext(ctx context.Context) ExprResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprResponsePtrOutput)
-}
-
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type ExprResponseOutput struct{ *pulumi.OutputState }
 
@@ -906,16 +590,6 @@ func (o ExprResponseOutput) ToExprResponseOutput() ExprResponseOutput {
 
 func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
 	return o
-}
-
-func (o ExprResponseOutput) ToExprResponsePtrOutput() ExprResponsePtrOutput {
-	return o.ToExprResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ExprResponseOutput) ToExprResponsePtrOutputWithContext(ctx context.Context) ExprResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExprResponse) *ExprResponse {
-		return &v
-	}).(ExprResponsePtrOutput)
 }
 
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -936,70 +610,6 @@ func (o ExprResponseOutput) Location() pulumi.StringOutput {
 // Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
 func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
-}
-
-type ExprResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ExprResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExprResponse)(nil)).Elem()
-}
-
-func (o ExprResponsePtrOutput) ToExprResponsePtrOutput() ExprResponsePtrOutput {
-	return o
-}
-
-func (o ExprResponsePtrOutput) ToExprResponsePtrOutputWithContext(ctx context.Context) ExprResponsePtrOutput {
-	return o
-}
-
-func (o ExprResponsePtrOutput) Elem() ExprResponseOutput {
-	return o.ApplyT(func(v *ExprResponse) ExprResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ExprResponse
-		return ret
-	}).(ExprResponseOutput)
-}
-
-// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-func (o ExprResponsePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExprResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// Textual representation of an expression in Common Expression Language syntax.
-func (o ExprResponsePtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExprResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Expression
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-func (o ExprResponsePtrOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExprResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Location
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-func (o ExprResponsePtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExprResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Title
-	}).(pulumi.StringPtrOutput)
 }
 
 // Output configuration for asset feed destination.
@@ -1037,47 +647,6 @@ func (i FeedOutputConfigArgs) ToFeedOutputConfigOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(FeedOutputConfigOutput)
 }
 
-func (i FeedOutputConfigArgs) ToFeedOutputConfigPtrOutput() FeedOutputConfigPtrOutput {
-	return i.ToFeedOutputConfigPtrOutputWithContext(context.Background())
-}
-
-func (i FeedOutputConfigArgs) ToFeedOutputConfigPtrOutputWithContext(ctx context.Context) FeedOutputConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeedOutputConfigOutput).ToFeedOutputConfigPtrOutputWithContext(ctx)
-}
-
-// FeedOutputConfigPtrInput is an input type that accepts FeedOutputConfigArgs, FeedOutputConfigPtr and FeedOutputConfigPtrOutput values.
-// You can construct a concrete instance of `FeedOutputConfigPtrInput` via:
-//
-//          FeedOutputConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type FeedOutputConfigPtrInput interface {
-	pulumi.Input
-
-	ToFeedOutputConfigPtrOutput() FeedOutputConfigPtrOutput
-	ToFeedOutputConfigPtrOutputWithContext(context.Context) FeedOutputConfigPtrOutput
-}
-
-type feedOutputConfigPtrType FeedOutputConfigArgs
-
-func FeedOutputConfigPtr(v *FeedOutputConfigArgs) FeedOutputConfigPtrInput {
-	return (*feedOutputConfigPtrType)(v)
-}
-
-func (*feedOutputConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FeedOutputConfig)(nil)).Elem()
-}
-
-func (i *feedOutputConfigPtrType) ToFeedOutputConfigPtrOutput() FeedOutputConfigPtrOutput {
-	return i.ToFeedOutputConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *feedOutputConfigPtrType) ToFeedOutputConfigPtrOutputWithContext(ctx context.Context) FeedOutputConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeedOutputConfigPtrOutput)
-}
-
 // Output configuration for asset feed destination.
 type FeedOutputConfigOutput struct{ *pulumi.OutputState }
 
@@ -1093,129 +662,15 @@ func (o FeedOutputConfigOutput) ToFeedOutputConfigOutputWithContext(ctx context.
 	return o
 }
 
-func (o FeedOutputConfigOutput) ToFeedOutputConfigPtrOutput() FeedOutputConfigPtrOutput {
-	return o.ToFeedOutputConfigPtrOutputWithContext(context.Background())
-}
-
-func (o FeedOutputConfigOutput) ToFeedOutputConfigPtrOutputWithContext(ctx context.Context) FeedOutputConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeedOutputConfig) *FeedOutputConfig {
-		return &v
-	}).(FeedOutputConfigPtrOutput)
-}
-
 // Destination on Pub/Sub.
 func (o FeedOutputConfigOutput) PubsubDestination() PubsubDestinationPtrOutput {
 	return o.ApplyT(func(v FeedOutputConfig) *PubsubDestination { return v.PubsubDestination }).(PubsubDestinationPtrOutput)
-}
-
-type FeedOutputConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (FeedOutputConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FeedOutputConfig)(nil)).Elem()
-}
-
-func (o FeedOutputConfigPtrOutput) ToFeedOutputConfigPtrOutput() FeedOutputConfigPtrOutput {
-	return o
-}
-
-func (o FeedOutputConfigPtrOutput) ToFeedOutputConfigPtrOutputWithContext(ctx context.Context) FeedOutputConfigPtrOutput {
-	return o
-}
-
-func (o FeedOutputConfigPtrOutput) Elem() FeedOutputConfigOutput {
-	return o.ApplyT(func(v *FeedOutputConfig) FeedOutputConfig {
-		if v != nil {
-			return *v
-		}
-		var ret FeedOutputConfig
-		return ret
-	}).(FeedOutputConfigOutput)
-}
-
-// Destination on Pub/Sub.
-func (o FeedOutputConfigPtrOutput) PubsubDestination() PubsubDestinationPtrOutput {
-	return o.ApplyT(func(v *FeedOutputConfig) *PubsubDestination {
-		if v == nil {
-			return nil
-		}
-		return v.PubsubDestination
-	}).(PubsubDestinationPtrOutput)
 }
 
 // Output configuration for asset feed destination.
 type FeedOutputConfigResponse struct {
 	// Destination on Pub/Sub.
 	PubsubDestination PubsubDestinationResponse `pulumi:"pubsubDestination"`
-}
-
-// FeedOutputConfigResponseInput is an input type that accepts FeedOutputConfigResponseArgs and FeedOutputConfigResponseOutput values.
-// You can construct a concrete instance of `FeedOutputConfigResponseInput` via:
-//
-//          FeedOutputConfigResponseArgs{...}
-type FeedOutputConfigResponseInput interface {
-	pulumi.Input
-
-	ToFeedOutputConfigResponseOutput() FeedOutputConfigResponseOutput
-	ToFeedOutputConfigResponseOutputWithContext(context.Context) FeedOutputConfigResponseOutput
-}
-
-// Output configuration for asset feed destination.
-type FeedOutputConfigResponseArgs struct {
-	// Destination on Pub/Sub.
-	PubsubDestination PubsubDestinationResponseInput `pulumi:"pubsubDestination"`
-}
-
-func (FeedOutputConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FeedOutputConfigResponse)(nil)).Elem()
-}
-
-func (i FeedOutputConfigResponseArgs) ToFeedOutputConfigResponseOutput() FeedOutputConfigResponseOutput {
-	return i.ToFeedOutputConfigResponseOutputWithContext(context.Background())
-}
-
-func (i FeedOutputConfigResponseArgs) ToFeedOutputConfigResponseOutputWithContext(ctx context.Context) FeedOutputConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeedOutputConfigResponseOutput)
-}
-
-func (i FeedOutputConfigResponseArgs) ToFeedOutputConfigResponsePtrOutput() FeedOutputConfigResponsePtrOutput {
-	return i.ToFeedOutputConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i FeedOutputConfigResponseArgs) ToFeedOutputConfigResponsePtrOutputWithContext(ctx context.Context) FeedOutputConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeedOutputConfigResponseOutput).ToFeedOutputConfigResponsePtrOutputWithContext(ctx)
-}
-
-// FeedOutputConfigResponsePtrInput is an input type that accepts FeedOutputConfigResponseArgs, FeedOutputConfigResponsePtr and FeedOutputConfigResponsePtrOutput values.
-// You can construct a concrete instance of `FeedOutputConfigResponsePtrInput` via:
-//
-//          FeedOutputConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type FeedOutputConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToFeedOutputConfigResponsePtrOutput() FeedOutputConfigResponsePtrOutput
-	ToFeedOutputConfigResponsePtrOutputWithContext(context.Context) FeedOutputConfigResponsePtrOutput
-}
-
-type feedOutputConfigResponsePtrType FeedOutputConfigResponseArgs
-
-func FeedOutputConfigResponsePtr(v *FeedOutputConfigResponseArgs) FeedOutputConfigResponsePtrInput {
-	return (*feedOutputConfigResponsePtrType)(v)
-}
-
-func (*feedOutputConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FeedOutputConfigResponse)(nil)).Elem()
-}
-
-func (i *feedOutputConfigResponsePtrType) ToFeedOutputConfigResponsePtrOutput() FeedOutputConfigResponsePtrOutput {
-	return i.ToFeedOutputConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *feedOutputConfigResponsePtrType) ToFeedOutputConfigResponsePtrOutputWithContext(ctx context.Context) FeedOutputConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeedOutputConfigResponsePtrOutput)
 }
 
 // Output configuration for asset feed destination.
@@ -1233,53 +688,9 @@ func (o FeedOutputConfigResponseOutput) ToFeedOutputConfigResponseOutputWithCont
 	return o
 }
 
-func (o FeedOutputConfigResponseOutput) ToFeedOutputConfigResponsePtrOutput() FeedOutputConfigResponsePtrOutput {
-	return o.ToFeedOutputConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o FeedOutputConfigResponseOutput) ToFeedOutputConfigResponsePtrOutputWithContext(ctx context.Context) FeedOutputConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeedOutputConfigResponse) *FeedOutputConfigResponse {
-		return &v
-	}).(FeedOutputConfigResponsePtrOutput)
-}
-
 // Destination on Pub/Sub.
 func (o FeedOutputConfigResponseOutput) PubsubDestination() PubsubDestinationResponseOutput {
 	return o.ApplyT(func(v FeedOutputConfigResponse) PubsubDestinationResponse { return v.PubsubDestination }).(PubsubDestinationResponseOutput)
-}
-
-type FeedOutputConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (FeedOutputConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FeedOutputConfigResponse)(nil)).Elem()
-}
-
-func (o FeedOutputConfigResponsePtrOutput) ToFeedOutputConfigResponsePtrOutput() FeedOutputConfigResponsePtrOutput {
-	return o
-}
-
-func (o FeedOutputConfigResponsePtrOutput) ToFeedOutputConfigResponsePtrOutputWithContext(ctx context.Context) FeedOutputConfigResponsePtrOutput {
-	return o
-}
-
-func (o FeedOutputConfigResponsePtrOutput) Elem() FeedOutputConfigResponseOutput {
-	return o.ApplyT(func(v *FeedOutputConfigResponse) FeedOutputConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret FeedOutputConfigResponse
-		return ret
-	}).(FeedOutputConfigResponseOutput)
-}
-
-// Destination on Pub/Sub.
-func (o FeedOutputConfigResponsePtrOutput) PubsubDestination() PubsubDestinationResponsePtrOutput {
-	return o.ApplyT(func(v *FeedOutputConfigResponse) *PubsubDestinationResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.PubsubDestination
-	}).(PubsubDestinationResponsePtrOutput)
 }
 
 // IAM policy analysis query message.
@@ -1533,86 +944,6 @@ type IamPolicyAnalysisQueryResponse struct {
 	Scope string `pulumi:"scope"`
 }
 
-// IamPolicyAnalysisQueryResponseInput is an input type that accepts IamPolicyAnalysisQueryResponseArgs and IamPolicyAnalysisQueryResponseOutput values.
-// You can construct a concrete instance of `IamPolicyAnalysisQueryResponseInput` via:
-//
-//          IamPolicyAnalysisQueryResponseArgs{...}
-type IamPolicyAnalysisQueryResponseInput interface {
-	pulumi.Input
-
-	ToIamPolicyAnalysisQueryResponseOutput() IamPolicyAnalysisQueryResponseOutput
-	ToIamPolicyAnalysisQueryResponseOutputWithContext(context.Context) IamPolicyAnalysisQueryResponseOutput
-}
-
-// IAM policy analysis query message.
-type IamPolicyAnalysisQueryResponseArgs struct {
-	// Optional. Specifies roles or permissions for analysis. This is optional.
-	AccessSelector AccessSelectorResponseInput `pulumi:"accessSelector"`
-	// Optional. The hypothetical context for IAM conditions evaluation.
-	ConditionContext ConditionContextResponseInput `pulumi:"conditionContext"`
-	// Optional. Specifies an identity for analysis.
-	IdentitySelector IdentitySelectorResponseInput `pulumi:"identitySelector"`
-	// Optional. The query options.
-	Options OptionsResponseInput `pulumi:"options"`
-	// Optional. Specifies a resource for analysis.
-	ResourceSelector ResourceSelectorResponseInput `pulumi:"resourceSelector"`
-	// The relative name of the root asset. Only resources and IAM policies within the scope will be analyzed. This can only be an organization number (such as "organizations/123"), a folder number (such as "folders/123"), a project ID (such as "projects/my-project-id"), or a project number (such as "projects/12345"). To know how to get organization id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id). To know how to get folder or project id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects).
-	Scope pulumi.StringInput `pulumi:"scope"`
-}
-
-func (IamPolicyAnalysisQueryResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IamPolicyAnalysisQueryResponse)(nil)).Elem()
-}
-
-func (i IamPolicyAnalysisQueryResponseArgs) ToIamPolicyAnalysisQueryResponseOutput() IamPolicyAnalysisQueryResponseOutput {
-	return i.ToIamPolicyAnalysisQueryResponseOutputWithContext(context.Background())
-}
-
-func (i IamPolicyAnalysisQueryResponseArgs) ToIamPolicyAnalysisQueryResponseOutputWithContext(ctx context.Context) IamPolicyAnalysisQueryResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IamPolicyAnalysisQueryResponseOutput)
-}
-
-func (i IamPolicyAnalysisQueryResponseArgs) ToIamPolicyAnalysisQueryResponsePtrOutput() IamPolicyAnalysisQueryResponsePtrOutput {
-	return i.ToIamPolicyAnalysisQueryResponsePtrOutputWithContext(context.Background())
-}
-
-func (i IamPolicyAnalysisQueryResponseArgs) ToIamPolicyAnalysisQueryResponsePtrOutputWithContext(ctx context.Context) IamPolicyAnalysisQueryResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IamPolicyAnalysisQueryResponseOutput).ToIamPolicyAnalysisQueryResponsePtrOutputWithContext(ctx)
-}
-
-// IamPolicyAnalysisQueryResponsePtrInput is an input type that accepts IamPolicyAnalysisQueryResponseArgs, IamPolicyAnalysisQueryResponsePtr and IamPolicyAnalysisQueryResponsePtrOutput values.
-// You can construct a concrete instance of `IamPolicyAnalysisQueryResponsePtrInput` via:
-//
-//          IamPolicyAnalysisQueryResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type IamPolicyAnalysisQueryResponsePtrInput interface {
-	pulumi.Input
-
-	ToIamPolicyAnalysisQueryResponsePtrOutput() IamPolicyAnalysisQueryResponsePtrOutput
-	ToIamPolicyAnalysisQueryResponsePtrOutputWithContext(context.Context) IamPolicyAnalysisQueryResponsePtrOutput
-}
-
-type iamPolicyAnalysisQueryResponsePtrType IamPolicyAnalysisQueryResponseArgs
-
-func IamPolicyAnalysisQueryResponsePtr(v *IamPolicyAnalysisQueryResponseArgs) IamPolicyAnalysisQueryResponsePtrInput {
-	return (*iamPolicyAnalysisQueryResponsePtrType)(v)
-}
-
-func (*iamPolicyAnalysisQueryResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IamPolicyAnalysisQueryResponse)(nil)).Elem()
-}
-
-func (i *iamPolicyAnalysisQueryResponsePtrType) ToIamPolicyAnalysisQueryResponsePtrOutput() IamPolicyAnalysisQueryResponsePtrOutput {
-	return i.ToIamPolicyAnalysisQueryResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *iamPolicyAnalysisQueryResponsePtrType) ToIamPolicyAnalysisQueryResponsePtrOutputWithContext(ctx context.Context) IamPolicyAnalysisQueryResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IamPolicyAnalysisQueryResponsePtrOutput)
-}
-
 // IAM policy analysis query message.
 type IamPolicyAnalysisQueryResponseOutput struct{ *pulumi.OutputState }
 
@@ -1626,16 +957,6 @@ func (o IamPolicyAnalysisQueryResponseOutput) ToIamPolicyAnalysisQueryResponseOu
 
 func (o IamPolicyAnalysisQueryResponseOutput) ToIamPolicyAnalysisQueryResponseOutputWithContext(ctx context.Context) IamPolicyAnalysisQueryResponseOutput {
 	return o
-}
-
-func (o IamPolicyAnalysisQueryResponseOutput) ToIamPolicyAnalysisQueryResponsePtrOutput() IamPolicyAnalysisQueryResponsePtrOutput {
-	return o.ToIamPolicyAnalysisQueryResponsePtrOutputWithContext(context.Background())
-}
-
-func (o IamPolicyAnalysisQueryResponseOutput) ToIamPolicyAnalysisQueryResponsePtrOutputWithContext(ctx context.Context) IamPolicyAnalysisQueryResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IamPolicyAnalysisQueryResponse) *IamPolicyAnalysisQueryResponse {
-		return &v
-	}).(IamPolicyAnalysisQueryResponsePtrOutput)
 }
 
 // Optional. Specifies roles or permissions for analysis. This is optional.
@@ -1666,90 +987,6 @@ func (o IamPolicyAnalysisQueryResponseOutput) ResourceSelector() ResourceSelecto
 // The relative name of the root asset. Only resources and IAM policies within the scope will be analyzed. This can only be an organization number (such as "organizations/123"), a folder number (such as "folders/123"), a project ID (such as "projects/my-project-id"), or a project number (such as "projects/12345"). To know how to get organization id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id). To know how to get folder or project id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects).
 func (o IamPolicyAnalysisQueryResponseOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v IamPolicyAnalysisQueryResponse) string { return v.Scope }).(pulumi.StringOutput)
-}
-
-type IamPolicyAnalysisQueryResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (IamPolicyAnalysisQueryResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IamPolicyAnalysisQueryResponse)(nil)).Elem()
-}
-
-func (o IamPolicyAnalysisQueryResponsePtrOutput) ToIamPolicyAnalysisQueryResponsePtrOutput() IamPolicyAnalysisQueryResponsePtrOutput {
-	return o
-}
-
-func (o IamPolicyAnalysisQueryResponsePtrOutput) ToIamPolicyAnalysisQueryResponsePtrOutputWithContext(ctx context.Context) IamPolicyAnalysisQueryResponsePtrOutput {
-	return o
-}
-
-func (o IamPolicyAnalysisQueryResponsePtrOutput) Elem() IamPolicyAnalysisQueryResponseOutput {
-	return o.ApplyT(func(v *IamPolicyAnalysisQueryResponse) IamPolicyAnalysisQueryResponse {
-		if v != nil {
-			return *v
-		}
-		var ret IamPolicyAnalysisQueryResponse
-		return ret
-	}).(IamPolicyAnalysisQueryResponseOutput)
-}
-
-// Optional. Specifies roles or permissions for analysis. This is optional.
-func (o IamPolicyAnalysisQueryResponsePtrOutput) AccessSelector() AccessSelectorResponsePtrOutput {
-	return o.ApplyT(func(v *IamPolicyAnalysisQueryResponse) *AccessSelectorResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.AccessSelector
-	}).(AccessSelectorResponsePtrOutput)
-}
-
-// Optional. The hypothetical context for IAM conditions evaluation.
-func (o IamPolicyAnalysisQueryResponsePtrOutput) ConditionContext() ConditionContextResponsePtrOutput {
-	return o.ApplyT(func(v *IamPolicyAnalysisQueryResponse) *ConditionContextResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ConditionContext
-	}).(ConditionContextResponsePtrOutput)
-}
-
-// Optional. Specifies an identity for analysis.
-func (o IamPolicyAnalysisQueryResponsePtrOutput) IdentitySelector() IdentitySelectorResponsePtrOutput {
-	return o.ApplyT(func(v *IamPolicyAnalysisQueryResponse) *IdentitySelectorResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.IdentitySelector
-	}).(IdentitySelectorResponsePtrOutput)
-}
-
-// Optional. The query options.
-func (o IamPolicyAnalysisQueryResponsePtrOutput) Options() OptionsResponsePtrOutput {
-	return o.ApplyT(func(v *IamPolicyAnalysisQueryResponse) *OptionsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Options
-	}).(OptionsResponsePtrOutput)
-}
-
-// Optional. Specifies a resource for analysis.
-func (o IamPolicyAnalysisQueryResponsePtrOutput) ResourceSelector() ResourceSelectorResponsePtrOutput {
-	return o.ApplyT(func(v *IamPolicyAnalysisQueryResponse) *ResourceSelectorResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ResourceSelector
-	}).(ResourceSelectorResponsePtrOutput)
-}
-
-// The relative name of the root asset. Only resources and IAM policies within the scope will be analyzed. This can only be an organization number (such as "organizations/123"), a folder number (such as "folders/123"), a project ID (such as "projects/my-project-id"), or a project number (such as "projects/12345"). To know how to get organization id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id). To know how to get folder or project id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects).
-func (o IamPolicyAnalysisQueryResponsePtrOutput) Scope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IamPolicyAnalysisQueryResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Scope
-	}).(pulumi.StringPtrOutput)
 }
 
 // Specifies an identity for which to determine resource access, based on roles assigned either directly to them or to the groups they belong to, directly or indirectly.
@@ -1898,76 +1135,6 @@ type IdentitySelectorResponse struct {
 	Identity string `pulumi:"identity"`
 }
 
-// IdentitySelectorResponseInput is an input type that accepts IdentitySelectorResponseArgs and IdentitySelectorResponseOutput values.
-// You can construct a concrete instance of `IdentitySelectorResponseInput` via:
-//
-//          IdentitySelectorResponseArgs{...}
-type IdentitySelectorResponseInput interface {
-	pulumi.Input
-
-	ToIdentitySelectorResponseOutput() IdentitySelectorResponseOutput
-	ToIdentitySelectorResponseOutputWithContext(context.Context) IdentitySelectorResponseOutput
-}
-
-// Specifies an identity for which to determine resource access, based on roles assigned either directly to them or to the groups they belong to, directly or indirectly.
-type IdentitySelectorResponseArgs struct {
-	// The identity appear in the form of principals in [IAM policy binding](https://cloud.google.com/iam/reference/rest/v1/Binding). The examples of supported forms are: "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com". Notice that wildcard characters (such as * and ?) are not supported. You must give a specific identity.
-	Identity pulumi.StringInput `pulumi:"identity"`
-}
-
-func (IdentitySelectorResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IdentitySelectorResponse)(nil)).Elem()
-}
-
-func (i IdentitySelectorResponseArgs) ToIdentitySelectorResponseOutput() IdentitySelectorResponseOutput {
-	return i.ToIdentitySelectorResponseOutputWithContext(context.Background())
-}
-
-func (i IdentitySelectorResponseArgs) ToIdentitySelectorResponseOutputWithContext(ctx context.Context) IdentitySelectorResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IdentitySelectorResponseOutput)
-}
-
-func (i IdentitySelectorResponseArgs) ToIdentitySelectorResponsePtrOutput() IdentitySelectorResponsePtrOutput {
-	return i.ToIdentitySelectorResponsePtrOutputWithContext(context.Background())
-}
-
-func (i IdentitySelectorResponseArgs) ToIdentitySelectorResponsePtrOutputWithContext(ctx context.Context) IdentitySelectorResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IdentitySelectorResponseOutput).ToIdentitySelectorResponsePtrOutputWithContext(ctx)
-}
-
-// IdentitySelectorResponsePtrInput is an input type that accepts IdentitySelectorResponseArgs, IdentitySelectorResponsePtr and IdentitySelectorResponsePtrOutput values.
-// You can construct a concrete instance of `IdentitySelectorResponsePtrInput` via:
-//
-//          IdentitySelectorResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type IdentitySelectorResponsePtrInput interface {
-	pulumi.Input
-
-	ToIdentitySelectorResponsePtrOutput() IdentitySelectorResponsePtrOutput
-	ToIdentitySelectorResponsePtrOutputWithContext(context.Context) IdentitySelectorResponsePtrOutput
-}
-
-type identitySelectorResponsePtrType IdentitySelectorResponseArgs
-
-func IdentitySelectorResponsePtr(v *IdentitySelectorResponseArgs) IdentitySelectorResponsePtrInput {
-	return (*identitySelectorResponsePtrType)(v)
-}
-
-func (*identitySelectorResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IdentitySelectorResponse)(nil)).Elem()
-}
-
-func (i *identitySelectorResponsePtrType) ToIdentitySelectorResponsePtrOutput() IdentitySelectorResponsePtrOutput {
-	return i.ToIdentitySelectorResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *identitySelectorResponsePtrType) ToIdentitySelectorResponsePtrOutputWithContext(ctx context.Context) IdentitySelectorResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IdentitySelectorResponsePtrOutput)
-}
-
 // Specifies an identity for which to determine resource access, based on roles assigned either directly to them or to the groups they belong to, directly or indirectly.
 type IdentitySelectorResponseOutput struct{ *pulumi.OutputState }
 
@@ -1983,53 +1150,9 @@ func (o IdentitySelectorResponseOutput) ToIdentitySelectorResponseOutputWithCont
 	return o
 }
 
-func (o IdentitySelectorResponseOutput) ToIdentitySelectorResponsePtrOutput() IdentitySelectorResponsePtrOutput {
-	return o.ToIdentitySelectorResponsePtrOutputWithContext(context.Background())
-}
-
-func (o IdentitySelectorResponseOutput) ToIdentitySelectorResponsePtrOutputWithContext(ctx context.Context) IdentitySelectorResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentitySelectorResponse) *IdentitySelectorResponse {
-		return &v
-	}).(IdentitySelectorResponsePtrOutput)
-}
-
 // The identity appear in the form of principals in [IAM policy binding](https://cloud.google.com/iam/reference/rest/v1/Binding). The examples of supported forms are: "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com". Notice that wildcard characters (such as * and ?) are not supported. You must give a specific identity.
 func (o IdentitySelectorResponseOutput) Identity() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentitySelectorResponse) string { return v.Identity }).(pulumi.StringOutput)
-}
-
-type IdentitySelectorResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (IdentitySelectorResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IdentitySelectorResponse)(nil)).Elem()
-}
-
-func (o IdentitySelectorResponsePtrOutput) ToIdentitySelectorResponsePtrOutput() IdentitySelectorResponsePtrOutput {
-	return o
-}
-
-func (o IdentitySelectorResponsePtrOutput) ToIdentitySelectorResponsePtrOutputWithContext(ctx context.Context) IdentitySelectorResponsePtrOutput {
-	return o
-}
-
-func (o IdentitySelectorResponsePtrOutput) Elem() IdentitySelectorResponseOutput {
-	return o.ApplyT(func(v *IdentitySelectorResponse) IdentitySelectorResponse {
-		if v != nil {
-			return *v
-		}
-		var ret IdentitySelectorResponse
-		return ret
-	}).(IdentitySelectorResponseOutput)
-}
-
-// The identity appear in the form of principals in [IAM policy binding](https://cloud.google.com/iam/reference/rest/v1/Binding). The examples of supported forms are: "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com". Notice that wildcard characters (such as * and ?) are not supported. You must give a specific identity.
-func (o IdentitySelectorResponsePtrOutput) Identity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IdentitySelectorResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Identity
-	}).(pulumi.StringPtrOutput)
 }
 
 // Contains query options.
@@ -2283,86 +1406,6 @@ type OptionsResponse struct {
 	OutputResourceEdges bool `pulumi:"outputResourceEdges"`
 }
 
-// OptionsResponseInput is an input type that accepts OptionsResponseArgs and OptionsResponseOutput values.
-// You can construct a concrete instance of `OptionsResponseInput` via:
-//
-//          OptionsResponseArgs{...}
-type OptionsResponseInput interface {
-	pulumi.Input
-
-	ToOptionsResponseOutput() OptionsResponseOutput
-	ToOptionsResponseOutputWithContext(context.Context) OptionsResponseOutput
-}
-
-// Contains query options.
-type OptionsResponseArgs struct {
-	// Optional. If true, the response will include access analysis from identities to resources via service account impersonation. This is a very expensive operation, because many derived queries will be executed. We highly recommend you use AssetService.AnalyzeIamPolicyLongrunning rpc instead. For example, if the request analyzes for which resources user A has permission P, and there's an IAM policy states user A has iam.serviceAccounts.getAccessToken permission to a service account SA, and there's another IAM policy states service account SA has permission P to a GCP folder F, then user A potentially has access to the GCP folder F. And those advanced analysis results will be included in AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Another example, if the request analyzes for who has permission P to a GCP folder F, and there's an IAM policy states user A has iam.serviceAccounts.actAs permission to a service account SA, and there's another IAM policy states service account SA has permission P to the GCP folder F, then user A potentially has access to the GCP folder F. And those advanced analysis results will be included in AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Default is false.
-	AnalyzeServiceAccountImpersonation pulumi.BoolInput `pulumi:"analyzeServiceAccountImpersonation"`
-	// Optional. If true, the identities section of the result will expand any Google groups appearing in an IAM policy binding. If IamPolicyAnalysisQuery.identity_selector is specified, the identity in the result will be determined by the selector, and this flag is not allowed to set. Default is false.
-	ExpandGroups pulumi.BoolInput `pulumi:"expandGroups"`
-	// Optional. If true and IamPolicyAnalysisQuery.resource_selector is not specified, the resource section of the result will expand any resource attached to an IAM policy to include resources lower in the resource hierarchy. For example, if the request analyzes for which resources user A has permission P, and the results include an IAM policy with P on a GCP folder, the results will also include resources in that folder with permission P. If true and IamPolicyAnalysisQuery.resource_selector is specified, the resource section of the result will expand the specified resource to include resources lower in the resource hierarchy. Only project or lower resources are supported. Folder and organization resource cannot be used together with this option. For example, if the request analyzes for which users have permission P on a GCP project with this option enabled, the results will include all users who have permission P on that project or any lower resource. Default is false.
-	ExpandResources pulumi.BoolInput `pulumi:"expandResources"`
-	// Optional. If true, the access section of result will expand any roles appearing in IAM policy bindings to include their permissions. If IamPolicyAnalysisQuery.access_selector is specified, the access section of the result will be determined by the selector, and this flag is not allowed to set. Default is false.
-	ExpandRoles pulumi.BoolInput `pulumi:"expandRoles"`
-	// Optional. If true, the result will output the relevant membership relationships between groups and other groups, and between groups and principals. Default is false.
-	OutputGroupEdges pulumi.BoolInput `pulumi:"outputGroupEdges"`
-	// Optional. If true, the result will output the relevant parent/child relationships between resources. Default is false.
-	OutputResourceEdges pulumi.BoolInput `pulumi:"outputResourceEdges"`
-}
-
-func (OptionsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OptionsResponse)(nil)).Elem()
-}
-
-func (i OptionsResponseArgs) ToOptionsResponseOutput() OptionsResponseOutput {
-	return i.ToOptionsResponseOutputWithContext(context.Background())
-}
-
-func (i OptionsResponseArgs) ToOptionsResponseOutputWithContext(ctx context.Context) OptionsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OptionsResponseOutput)
-}
-
-func (i OptionsResponseArgs) ToOptionsResponsePtrOutput() OptionsResponsePtrOutput {
-	return i.ToOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i OptionsResponseArgs) ToOptionsResponsePtrOutputWithContext(ctx context.Context) OptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OptionsResponseOutput).ToOptionsResponsePtrOutputWithContext(ctx)
-}
-
-// OptionsResponsePtrInput is an input type that accepts OptionsResponseArgs, OptionsResponsePtr and OptionsResponsePtrOutput values.
-// You can construct a concrete instance of `OptionsResponsePtrInput` via:
-//
-//          OptionsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type OptionsResponsePtrInput interface {
-	pulumi.Input
-
-	ToOptionsResponsePtrOutput() OptionsResponsePtrOutput
-	ToOptionsResponsePtrOutputWithContext(context.Context) OptionsResponsePtrOutput
-}
-
-type optionsResponsePtrType OptionsResponseArgs
-
-func OptionsResponsePtr(v *OptionsResponseArgs) OptionsResponsePtrInput {
-	return (*optionsResponsePtrType)(v)
-}
-
-func (*optionsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OptionsResponse)(nil)).Elem()
-}
-
-func (i *optionsResponsePtrType) ToOptionsResponsePtrOutput() OptionsResponsePtrOutput {
-	return i.ToOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *optionsResponsePtrType) ToOptionsResponsePtrOutputWithContext(ctx context.Context) OptionsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OptionsResponsePtrOutput)
-}
-
 // Contains query options.
 type OptionsResponseOutput struct{ *pulumi.OutputState }
 
@@ -2376,16 +1419,6 @@ func (o OptionsResponseOutput) ToOptionsResponseOutput() OptionsResponseOutput {
 
 func (o OptionsResponseOutput) ToOptionsResponseOutputWithContext(ctx context.Context) OptionsResponseOutput {
 	return o
-}
-
-func (o OptionsResponseOutput) ToOptionsResponsePtrOutput() OptionsResponsePtrOutput {
-	return o.ToOptionsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o OptionsResponseOutput) ToOptionsResponsePtrOutputWithContext(ctx context.Context) OptionsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OptionsResponse) *OptionsResponse {
-		return &v
-	}).(OptionsResponsePtrOutput)
 }
 
 // Optional. If true, the response will include access analysis from identities to resources via service account impersonation. This is a very expensive operation, because many derived queries will be executed. We highly recommend you use AssetService.AnalyzeIamPolicyLongrunning rpc instead. For example, if the request analyzes for which resources user A has permission P, and there's an IAM policy states user A has iam.serviceAccounts.getAccessToken permission to a service account SA, and there's another IAM policy states service account SA has permission P to a GCP folder F, then user A potentially has access to the GCP folder F. And those advanced analysis results will be included in AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Another example, if the request analyzes for who has permission P to a GCP folder F, and there's an IAM policy states user A has iam.serviceAccounts.actAs permission to a service account SA, and there's another IAM policy states service account SA has permission P to the GCP folder F, then user A potentially has access to the GCP folder F. And those advanced analysis results will be included in AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Default is false.
@@ -2416,90 +1449,6 @@ func (o OptionsResponseOutput) OutputGroupEdges() pulumi.BoolOutput {
 // Optional. If true, the result will output the relevant parent/child relationships between resources. Default is false.
 func (o OptionsResponseOutput) OutputResourceEdges() pulumi.BoolOutput {
 	return o.ApplyT(func(v OptionsResponse) bool { return v.OutputResourceEdges }).(pulumi.BoolOutput)
-}
-
-type OptionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (OptionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OptionsResponse)(nil)).Elem()
-}
-
-func (o OptionsResponsePtrOutput) ToOptionsResponsePtrOutput() OptionsResponsePtrOutput {
-	return o
-}
-
-func (o OptionsResponsePtrOutput) ToOptionsResponsePtrOutputWithContext(ctx context.Context) OptionsResponsePtrOutput {
-	return o
-}
-
-func (o OptionsResponsePtrOutput) Elem() OptionsResponseOutput {
-	return o.ApplyT(func(v *OptionsResponse) OptionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret OptionsResponse
-		return ret
-	}).(OptionsResponseOutput)
-}
-
-// Optional. If true, the response will include access analysis from identities to resources via service account impersonation. This is a very expensive operation, because many derived queries will be executed. We highly recommend you use AssetService.AnalyzeIamPolicyLongrunning rpc instead. For example, if the request analyzes for which resources user A has permission P, and there's an IAM policy states user A has iam.serviceAccounts.getAccessToken permission to a service account SA, and there's another IAM policy states service account SA has permission P to a GCP folder F, then user A potentially has access to the GCP folder F. And those advanced analysis results will be included in AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Another example, if the request analyzes for who has permission P to a GCP folder F, and there's an IAM policy states user A has iam.serviceAccounts.actAs permission to a service account SA, and there's another IAM policy states service account SA has permission P to the GCP folder F, then user A potentially has access to the GCP folder F. And those advanced analysis results will be included in AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Default is false.
-func (o OptionsResponsePtrOutput) AnalyzeServiceAccountImpersonation() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *OptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.AnalyzeServiceAccountImpersonation
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Optional. If true, the identities section of the result will expand any Google groups appearing in an IAM policy binding. If IamPolicyAnalysisQuery.identity_selector is specified, the identity in the result will be determined by the selector, and this flag is not allowed to set. Default is false.
-func (o OptionsResponsePtrOutput) ExpandGroups() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *OptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.ExpandGroups
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Optional. If true and IamPolicyAnalysisQuery.resource_selector is not specified, the resource section of the result will expand any resource attached to an IAM policy to include resources lower in the resource hierarchy. For example, if the request analyzes for which resources user A has permission P, and the results include an IAM policy with P on a GCP folder, the results will also include resources in that folder with permission P. If true and IamPolicyAnalysisQuery.resource_selector is specified, the resource section of the result will expand the specified resource to include resources lower in the resource hierarchy. Only project or lower resources are supported. Folder and organization resource cannot be used together with this option. For example, if the request analyzes for which users have permission P on a GCP project with this option enabled, the results will include all users who have permission P on that project or any lower resource. Default is false.
-func (o OptionsResponsePtrOutput) ExpandResources() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *OptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.ExpandResources
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Optional. If true, the access section of result will expand any roles appearing in IAM policy bindings to include their permissions. If IamPolicyAnalysisQuery.access_selector is specified, the access section of the result will be determined by the selector, and this flag is not allowed to set. Default is false.
-func (o OptionsResponsePtrOutput) ExpandRoles() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *OptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.ExpandRoles
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Optional. If true, the result will output the relevant membership relationships between groups and other groups, and between groups and principals. Default is false.
-func (o OptionsResponsePtrOutput) OutputGroupEdges() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *OptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.OutputGroupEdges
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Optional. If true, the result will output the relevant parent/child relationships between resources. Default is false.
-func (o OptionsResponsePtrOutput) OutputResourceEdges() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *OptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.OutputResourceEdges
-	}).(pulumi.BoolPtrOutput)
 }
 
 // A Pub/Sub destination.
@@ -2648,76 +1597,6 @@ type PubsubDestinationResponse struct {
 	Topic string `pulumi:"topic"`
 }
 
-// PubsubDestinationResponseInput is an input type that accepts PubsubDestinationResponseArgs and PubsubDestinationResponseOutput values.
-// You can construct a concrete instance of `PubsubDestinationResponseInput` via:
-//
-//          PubsubDestinationResponseArgs{...}
-type PubsubDestinationResponseInput interface {
-	pulumi.Input
-
-	ToPubsubDestinationResponseOutput() PubsubDestinationResponseOutput
-	ToPubsubDestinationResponseOutputWithContext(context.Context) PubsubDestinationResponseOutput
-}
-
-// A Pub/Sub destination.
-type PubsubDestinationResponseArgs struct {
-	// The name of the Pub/Sub topic to publish to. Example: `projects/PROJECT_ID/topics/TOPIC_ID`.
-	Topic pulumi.StringInput `pulumi:"topic"`
-}
-
-func (PubsubDestinationResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PubsubDestinationResponse)(nil)).Elem()
-}
-
-func (i PubsubDestinationResponseArgs) ToPubsubDestinationResponseOutput() PubsubDestinationResponseOutput {
-	return i.ToPubsubDestinationResponseOutputWithContext(context.Background())
-}
-
-func (i PubsubDestinationResponseArgs) ToPubsubDestinationResponseOutputWithContext(ctx context.Context) PubsubDestinationResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PubsubDestinationResponseOutput)
-}
-
-func (i PubsubDestinationResponseArgs) ToPubsubDestinationResponsePtrOutput() PubsubDestinationResponsePtrOutput {
-	return i.ToPubsubDestinationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PubsubDestinationResponseArgs) ToPubsubDestinationResponsePtrOutputWithContext(ctx context.Context) PubsubDestinationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PubsubDestinationResponseOutput).ToPubsubDestinationResponsePtrOutputWithContext(ctx)
-}
-
-// PubsubDestinationResponsePtrInput is an input type that accepts PubsubDestinationResponseArgs, PubsubDestinationResponsePtr and PubsubDestinationResponsePtrOutput values.
-// You can construct a concrete instance of `PubsubDestinationResponsePtrInput` via:
-//
-//          PubsubDestinationResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PubsubDestinationResponsePtrInput interface {
-	pulumi.Input
-
-	ToPubsubDestinationResponsePtrOutput() PubsubDestinationResponsePtrOutput
-	ToPubsubDestinationResponsePtrOutputWithContext(context.Context) PubsubDestinationResponsePtrOutput
-}
-
-type pubsubDestinationResponsePtrType PubsubDestinationResponseArgs
-
-func PubsubDestinationResponsePtr(v *PubsubDestinationResponseArgs) PubsubDestinationResponsePtrInput {
-	return (*pubsubDestinationResponsePtrType)(v)
-}
-
-func (*pubsubDestinationResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PubsubDestinationResponse)(nil)).Elem()
-}
-
-func (i *pubsubDestinationResponsePtrType) ToPubsubDestinationResponsePtrOutput() PubsubDestinationResponsePtrOutput {
-	return i.ToPubsubDestinationResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *pubsubDestinationResponsePtrType) ToPubsubDestinationResponsePtrOutputWithContext(ctx context.Context) PubsubDestinationResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PubsubDestinationResponsePtrOutput)
-}
-
 // A Pub/Sub destination.
 type PubsubDestinationResponseOutput struct{ *pulumi.OutputState }
 
@@ -2733,53 +1612,9 @@ func (o PubsubDestinationResponseOutput) ToPubsubDestinationResponseOutputWithCo
 	return o
 }
 
-func (o PubsubDestinationResponseOutput) ToPubsubDestinationResponsePtrOutput() PubsubDestinationResponsePtrOutput {
-	return o.ToPubsubDestinationResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PubsubDestinationResponseOutput) ToPubsubDestinationResponsePtrOutputWithContext(ctx context.Context) PubsubDestinationResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PubsubDestinationResponse) *PubsubDestinationResponse {
-		return &v
-	}).(PubsubDestinationResponsePtrOutput)
-}
-
 // The name of the Pub/Sub topic to publish to. Example: `projects/PROJECT_ID/topics/TOPIC_ID`.
 func (o PubsubDestinationResponseOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v PubsubDestinationResponse) string { return v.Topic }).(pulumi.StringOutput)
-}
-
-type PubsubDestinationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PubsubDestinationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PubsubDestinationResponse)(nil)).Elem()
-}
-
-func (o PubsubDestinationResponsePtrOutput) ToPubsubDestinationResponsePtrOutput() PubsubDestinationResponsePtrOutput {
-	return o
-}
-
-func (o PubsubDestinationResponsePtrOutput) ToPubsubDestinationResponsePtrOutputWithContext(ctx context.Context) PubsubDestinationResponsePtrOutput {
-	return o
-}
-
-func (o PubsubDestinationResponsePtrOutput) Elem() PubsubDestinationResponseOutput {
-	return o.ApplyT(func(v *PubsubDestinationResponse) PubsubDestinationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PubsubDestinationResponse
-		return ret
-	}).(PubsubDestinationResponseOutput)
-}
-
-// The name of the Pub/Sub topic to publish to. Example: `projects/PROJECT_ID/topics/TOPIC_ID`.
-func (o PubsubDestinationResponsePtrOutput) Topic() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PubsubDestinationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Topic
-	}).(pulumi.StringPtrOutput)
 }
 
 // The query content.
@@ -2928,76 +1763,6 @@ type QueryContentResponse struct {
 	IamPolicyAnalysisQuery IamPolicyAnalysisQueryResponse `pulumi:"iamPolicyAnalysisQuery"`
 }
 
-// QueryContentResponseInput is an input type that accepts QueryContentResponseArgs and QueryContentResponseOutput values.
-// You can construct a concrete instance of `QueryContentResponseInput` via:
-//
-//          QueryContentResponseArgs{...}
-type QueryContentResponseInput interface {
-	pulumi.Input
-
-	ToQueryContentResponseOutput() QueryContentResponseOutput
-	ToQueryContentResponseOutputWithContext(context.Context) QueryContentResponseOutput
-}
-
-// The query content.
-type QueryContentResponseArgs struct {
-	// An IAM Policy Analysis query, which could be used in the AssetService.AnalyzeIamPolicy rpc or the AssetService.AnalyzeIamPolicyLongrunning rpc.
-	IamPolicyAnalysisQuery IamPolicyAnalysisQueryResponseInput `pulumi:"iamPolicyAnalysisQuery"`
-}
-
-func (QueryContentResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*QueryContentResponse)(nil)).Elem()
-}
-
-func (i QueryContentResponseArgs) ToQueryContentResponseOutput() QueryContentResponseOutput {
-	return i.ToQueryContentResponseOutputWithContext(context.Background())
-}
-
-func (i QueryContentResponseArgs) ToQueryContentResponseOutputWithContext(ctx context.Context) QueryContentResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QueryContentResponseOutput)
-}
-
-func (i QueryContentResponseArgs) ToQueryContentResponsePtrOutput() QueryContentResponsePtrOutput {
-	return i.ToQueryContentResponsePtrOutputWithContext(context.Background())
-}
-
-func (i QueryContentResponseArgs) ToQueryContentResponsePtrOutputWithContext(ctx context.Context) QueryContentResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QueryContentResponseOutput).ToQueryContentResponsePtrOutputWithContext(ctx)
-}
-
-// QueryContentResponsePtrInput is an input type that accepts QueryContentResponseArgs, QueryContentResponsePtr and QueryContentResponsePtrOutput values.
-// You can construct a concrete instance of `QueryContentResponsePtrInput` via:
-//
-//          QueryContentResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type QueryContentResponsePtrInput interface {
-	pulumi.Input
-
-	ToQueryContentResponsePtrOutput() QueryContentResponsePtrOutput
-	ToQueryContentResponsePtrOutputWithContext(context.Context) QueryContentResponsePtrOutput
-}
-
-type queryContentResponsePtrType QueryContentResponseArgs
-
-func QueryContentResponsePtr(v *QueryContentResponseArgs) QueryContentResponsePtrInput {
-	return (*queryContentResponsePtrType)(v)
-}
-
-func (*queryContentResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**QueryContentResponse)(nil)).Elem()
-}
-
-func (i *queryContentResponsePtrType) ToQueryContentResponsePtrOutput() QueryContentResponsePtrOutput {
-	return i.ToQueryContentResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *queryContentResponsePtrType) ToQueryContentResponsePtrOutputWithContext(ctx context.Context) QueryContentResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QueryContentResponsePtrOutput)
-}
-
 // The query content.
 type QueryContentResponseOutput struct{ *pulumi.OutputState }
 
@@ -3013,53 +1778,9 @@ func (o QueryContentResponseOutput) ToQueryContentResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o QueryContentResponseOutput) ToQueryContentResponsePtrOutput() QueryContentResponsePtrOutput {
-	return o.ToQueryContentResponsePtrOutputWithContext(context.Background())
-}
-
-func (o QueryContentResponseOutput) ToQueryContentResponsePtrOutputWithContext(ctx context.Context) QueryContentResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueryContentResponse) *QueryContentResponse {
-		return &v
-	}).(QueryContentResponsePtrOutput)
-}
-
 // An IAM Policy Analysis query, which could be used in the AssetService.AnalyzeIamPolicy rpc or the AssetService.AnalyzeIamPolicyLongrunning rpc.
 func (o QueryContentResponseOutput) IamPolicyAnalysisQuery() IamPolicyAnalysisQueryResponseOutput {
 	return o.ApplyT(func(v QueryContentResponse) IamPolicyAnalysisQueryResponse { return v.IamPolicyAnalysisQuery }).(IamPolicyAnalysisQueryResponseOutput)
-}
-
-type QueryContentResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (QueryContentResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**QueryContentResponse)(nil)).Elem()
-}
-
-func (o QueryContentResponsePtrOutput) ToQueryContentResponsePtrOutput() QueryContentResponsePtrOutput {
-	return o
-}
-
-func (o QueryContentResponsePtrOutput) ToQueryContentResponsePtrOutputWithContext(ctx context.Context) QueryContentResponsePtrOutput {
-	return o
-}
-
-func (o QueryContentResponsePtrOutput) Elem() QueryContentResponseOutput {
-	return o.ApplyT(func(v *QueryContentResponse) QueryContentResponse {
-		if v != nil {
-			return *v
-		}
-		var ret QueryContentResponse
-		return ret
-	}).(QueryContentResponseOutput)
-}
-
-// An IAM Policy Analysis query, which could be used in the AssetService.AnalyzeIamPolicy rpc or the AssetService.AnalyzeIamPolicyLongrunning rpc.
-func (o QueryContentResponsePtrOutput) IamPolicyAnalysisQuery() IamPolicyAnalysisQueryResponsePtrOutput {
-	return o.ApplyT(func(v *QueryContentResponse) *IamPolicyAnalysisQueryResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.IamPolicyAnalysisQuery
-	}).(IamPolicyAnalysisQueryResponsePtrOutput)
 }
 
 // Specifies the resource to analyze for access policies, which may be set directly on the resource, or on ancestors such as organizations, folders or projects.
@@ -3208,76 +1929,6 @@ type ResourceSelectorResponse struct {
 	FullResourceName string `pulumi:"fullResourceName"`
 }
 
-// ResourceSelectorResponseInput is an input type that accepts ResourceSelectorResponseArgs and ResourceSelectorResponseOutput values.
-// You can construct a concrete instance of `ResourceSelectorResponseInput` via:
-//
-//          ResourceSelectorResponseArgs{...}
-type ResourceSelectorResponseInput interface {
-	pulumi.Input
-
-	ToResourceSelectorResponseOutput() ResourceSelectorResponseOutput
-	ToResourceSelectorResponseOutputWithContext(context.Context) ResourceSelectorResponseOutput
-}
-
-// Specifies the resource to analyze for access policies, which may be set directly on the resource, or on ancestors such as organizations, folders or projects.
-type ResourceSelectorResponseArgs struct {
-	// The [full resource name] (https://cloud.google.com/asset-inventory/docs/resource-name-format) of a resource of [supported resource types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#analyzable_asset_types).
-	FullResourceName pulumi.StringInput `pulumi:"fullResourceName"`
-}
-
-func (ResourceSelectorResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceSelectorResponse)(nil)).Elem()
-}
-
-func (i ResourceSelectorResponseArgs) ToResourceSelectorResponseOutput() ResourceSelectorResponseOutput {
-	return i.ToResourceSelectorResponseOutputWithContext(context.Background())
-}
-
-func (i ResourceSelectorResponseArgs) ToResourceSelectorResponseOutputWithContext(ctx context.Context) ResourceSelectorResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceSelectorResponseOutput)
-}
-
-func (i ResourceSelectorResponseArgs) ToResourceSelectorResponsePtrOutput() ResourceSelectorResponsePtrOutput {
-	return i.ToResourceSelectorResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ResourceSelectorResponseArgs) ToResourceSelectorResponsePtrOutputWithContext(ctx context.Context) ResourceSelectorResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceSelectorResponseOutput).ToResourceSelectorResponsePtrOutputWithContext(ctx)
-}
-
-// ResourceSelectorResponsePtrInput is an input type that accepts ResourceSelectorResponseArgs, ResourceSelectorResponsePtr and ResourceSelectorResponsePtrOutput values.
-// You can construct a concrete instance of `ResourceSelectorResponsePtrInput` via:
-//
-//          ResourceSelectorResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ResourceSelectorResponsePtrInput interface {
-	pulumi.Input
-
-	ToResourceSelectorResponsePtrOutput() ResourceSelectorResponsePtrOutput
-	ToResourceSelectorResponsePtrOutputWithContext(context.Context) ResourceSelectorResponsePtrOutput
-}
-
-type resourceSelectorResponsePtrType ResourceSelectorResponseArgs
-
-func ResourceSelectorResponsePtr(v *ResourceSelectorResponseArgs) ResourceSelectorResponsePtrInput {
-	return (*resourceSelectorResponsePtrType)(v)
-}
-
-func (*resourceSelectorResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourceSelectorResponse)(nil)).Elem()
-}
-
-func (i *resourceSelectorResponsePtrType) ToResourceSelectorResponsePtrOutput() ResourceSelectorResponsePtrOutput {
-	return i.ToResourceSelectorResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *resourceSelectorResponsePtrType) ToResourceSelectorResponsePtrOutputWithContext(ctx context.Context) ResourceSelectorResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceSelectorResponsePtrOutput)
-}
-
 // Specifies the resource to analyze for access policies, which may be set directly on the resource, or on ancestors such as organizations, folders or projects.
 type ResourceSelectorResponseOutput struct{ *pulumi.OutputState }
 
@@ -3293,134 +1944,58 @@ func (o ResourceSelectorResponseOutput) ToResourceSelectorResponseOutputWithCont
 	return o
 }
 
-func (o ResourceSelectorResponseOutput) ToResourceSelectorResponsePtrOutput() ResourceSelectorResponsePtrOutput {
-	return o.ToResourceSelectorResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ResourceSelectorResponseOutput) ToResourceSelectorResponsePtrOutputWithContext(ctx context.Context) ResourceSelectorResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceSelectorResponse) *ResourceSelectorResponse {
-		return &v
-	}).(ResourceSelectorResponsePtrOutput)
-}
-
 // The [full resource name] (https://cloud.google.com/asset-inventory/docs/resource-name-format) of a resource of [supported resource types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#analyzable_asset_types).
 func (o ResourceSelectorResponseOutput) FullResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceSelectorResponse) string { return v.FullResourceName }).(pulumi.StringOutput)
 }
 
-type ResourceSelectorResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ResourceSelectorResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourceSelectorResponse)(nil)).Elem()
-}
-
-func (o ResourceSelectorResponsePtrOutput) ToResourceSelectorResponsePtrOutput() ResourceSelectorResponsePtrOutput {
-	return o
-}
-
-func (o ResourceSelectorResponsePtrOutput) ToResourceSelectorResponsePtrOutputWithContext(ctx context.Context) ResourceSelectorResponsePtrOutput {
-	return o
-}
-
-func (o ResourceSelectorResponsePtrOutput) Elem() ResourceSelectorResponseOutput {
-	return o.ApplyT(func(v *ResourceSelectorResponse) ResourceSelectorResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ResourceSelectorResponse
-		return ret
-	}).(ResourceSelectorResponseOutput)
-}
-
-// The [full resource name] (https://cloud.google.com/asset-inventory/docs/resource-name-format) of a resource of [supported resource types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#analyzable_asset_types).
-func (o ResourceSelectorResponsePtrOutput) FullResourceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSelectorResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.FullResourceName
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessSelectorInput)(nil)).Elem(), AccessSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessSelectorPtrInput)(nil)).Elem(), AccessSelectorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AccessSelectorResponseInput)(nil)).Elem(), AccessSelectorResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AccessSelectorResponsePtrInput)(nil)).Elem(), AccessSelectorResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionContextInput)(nil)).Elem(), ConditionContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionContextPtrInput)(nil)).Elem(), ConditionContextArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConditionContextResponseInput)(nil)).Elem(), ConditionContextResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConditionContextResponsePtrInput)(nil)).Elem(), ConditionContextResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponseInput)(nil)).Elem(), ExprResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprResponsePtrInput)(nil)).Elem(), ExprResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeedOutputConfigInput)(nil)).Elem(), FeedOutputConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FeedOutputConfigPtrInput)(nil)).Elem(), FeedOutputConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FeedOutputConfigResponseInput)(nil)).Elem(), FeedOutputConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FeedOutputConfigResponsePtrInput)(nil)).Elem(), FeedOutputConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IamPolicyAnalysisQueryInput)(nil)).Elem(), IamPolicyAnalysisQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IamPolicyAnalysisQueryPtrInput)(nil)).Elem(), IamPolicyAnalysisQueryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IamPolicyAnalysisQueryResponseInput)(nil)).Elem(), IamPolicyAnalysisQueryResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IamPolicyAnalysisQueryResponsePtrInput)(nil)).Elem(), IamPolicyAnalysisQueryResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdentitySelectorInput)(nil)).Elem(), IdentitySelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdentitySelectorPtrInput)(nil)).Elem(), IdentitySelectorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IdentitySelectorResponseInput)(nil)).Elem(), IdentitySelectorResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IdentitySelectorResponsePtrInput)(nil)).Elem(), IdentitySelectorResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OptionsInput)(nil)).Elem(), OptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OptionsPtrInput)(nil)).Elem(), OptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OptionsResponseInput)(nil)).Elem(), OptionsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OptionsResponsePtrInput)(nil)).Elem(), OptionsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PubsubDestinationInput)(nil)).Elem(), PubsubDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PubsubDestinationPtrInput)(nil)).Elem(), PubsubDestinationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PubsubDestinationResponseInput)(nil)).Elem(), PubsubDestinationResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PubsubDestinationResponsePtrInput)(nil)).Elem(), PubsubDestinationResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueryContentInput)(nil)).Elem(), QueryContentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueryContentPtrInput)(nil)).Elem(), QueryContentArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*QueryContentResponseInput)(nil)).Elem(), QueryContentResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*QueryContentResponsePtrInput)(nil)).Elem(), QueryContentResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSelectorInput)(nil)).Elem(), ResourceSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSelectorPtrInput)(nil)).Elem(), ResourceSelectorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSelectorResponseInput)(nil)).Elem(), ResourceSelectorResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSelectorResponsePtrInput)(nil)).Elem(), ResourceSelectorResponseArgs{})
 	pulumi.RegisterOutputType(AccessSelectorOutput{})
 	pulumi.RegisterOutputType(AccessSelectorPtrOutput{})
 	pulumi.RegisterOutputType(AccessSelectorResponseOutput{})
-	pulumi.RegisterOutputType(AccessSelectorResponsePtrOutput{})
 	pulumi.RegisterOutputType(ConditionContextOutput{})
 	pulumi.RegisterOutputType(ConditionContextPtrOutput{})
 	pulumi.RegisterOutputType(ConditionContextResponseOutput{})
-	pulumi.RegisterOutputType(ConditionContextResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
-	pulumi.RegisterOutputType(ExprResponsePtrOutput{})
 	pulumi.RegisterOutputType(FeedOutputConfigOutput{})
-	pulumi.RegisterOutputType(FeedOutputConfigPtrOutput{})
 	pulumi.RegisterOutputType(FeedOutputConfigResponseOutput{})
-	pulumi.RegisterOutputType(FeedOutputConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(IamPolicyAnalysisQueryOutput{})
 	pulumi.RegisterOutputType(IamPolicyAnalysisQueryPtrOutput{})
 	pulumi.RegisterOutputType(IamPolicyAnalysisQueryResponseOutput{})
-	pulumi.RegisterOutputType(IamPolicyAnalysisQueryResponsePtrOutput{})
 	pulumi.RegisterOutputType(IdentitySelectorOutput{})
 	pulumi.RegisterOutputType(IdentitySelectorPtrOutput{})
 	pulumi.RegisterOutputType(IdentitySelectorResponseOutput{})
-	pulumi.RegisterOutputType(IdentitySelectorResponsePtrOutput{})
 	pulumi.RegisterOutputType(OptionsOutput{})
 	pulumi.RegisterOutputType(OptionsPtrOutput{})
 	pulumi.RegisterOutputType(OptionsResponseOutput{})
-	pulumi.RegisterOutputType(OptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(PubsubDestinationOutput{})
 	pulumi.RegisterOutputType(PubsubDestinationPtrOutput{})
 	pulumi.RegisterOutputType(PubsubDestinationResponseOutput{})
-	pulumi.RegisterOutputType(PubsubDestinationResponsePtrOutput{})
 	pulumi.RegisterOutputType(QueryContentOutput{})
 	pulumi.RegisterOutputType(QueryContentPtrOutput{})
 	pulumi.RegisterOutputType(QueryContentResponseOutput{})
-	pulumi.RegisterOutputType(QueryContentResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResourceSelectorOutput{})
 	pulumi.RegisterOutputType(ResourceSelectorPtrOutput{})
 	pulumi.RegisterOutputType(ResourceSelectorResponseOutput{})
-	pulumi.RegisterOutputType(ResourceSelectorResponsePtrOutput{})
 }

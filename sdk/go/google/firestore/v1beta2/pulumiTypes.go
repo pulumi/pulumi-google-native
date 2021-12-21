@@ -142,64 +142,6 @@ type GoogleFirestoreAdminV1beta2IndexFieldResponse struct {
 	Order string `pulumi:"order"`
 }
 
-// GoogleFirestoreAdminV1beta2IndexFieldResponseInput is an input type that accepts GoogleFirestoreAdminV1beta2IndexFieldResponseArgs and GoogleFirestoreAdminV1beta2IndexFieldResponseOutput values.
-// You can construct a concrete instance of `GoogleFirestoreAdminV1beta2IndexFieldResponseInput` via:
-//
-//          GoogleFirestoreAdminV1beta2IndexFieldResponseArgs{...}
-type GoogleFirestoreAdminV1beta2IndexFieldResponseInput interface {
-	pulumi.Input
-
-	ToGoogleFirestoreAdminV1beta2IndexFieldResponseOutput() GoogleFirestoreAdminV1beta2IndexFieldResponseOutput
-	ToGoogleFirestoreAdminV1beta2IndexFieldResponseOutputWithContext(context.Context) GoogleFirestoreAdminV1beta2IndexFieldResponseOutput
-}
-
-// A field in an index. The field_path describes which field is indexed, the value_mode describes how the field value is indexed.
-type GoogleFirestoreAdminV1beta2IndexFieldResponseArgs struct {
-	// Indicates that this field supports operations on `array_value`s.
-	ArrayConfig pulumi.StringInput `pulumi:"arrayConfig"`
-	// Can be __name__. For single field indexes, this must match the name of the field or may be omitted.
-	FieldPath pulumi.StringInput `pulumi:"fieldPath"`
-	// Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
-	Order pulumi.StringInput `pulumi:"order"`
-}
-
-func (GoogleFirestoreAdminV1beta2IndexFieldResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleFirestoreAdminV1beta2IndexFieldResponse)(nil)).Elem()
-}
-
-func (i GoogleFirestoreAdminV1beta2IndexFieldResponseArgs) ToGoogleFirestoreAdminV1beta2IndexFieldResponseOutput() GoogleFirestoreAdminV1beta2IndexFieldResponseOutput {
-	return i.ToGoogleFirestoreAdminV1beta2IndexFieldResponseOutputWithContext(context.Background())
-}
-
-func (i GoogleFirestoreAdminV1beta2IndexFieldResponseArgs) ToGoogleFirestoreAdminV1beta2IndexFieldResponseOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1beta2IndexFieldResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleFirestoreAdminV1beta2IndexFieldResponseOutput)
-}
-
-// GoogleFirestoreAdminV1beta2IndexFieldResponseArrayInput is an input type that accepts GoogleFirestoreAdminV1beta2IndexFieldResponseArray and GoogleFirestoreAdminV1beta2IndexFieldResponseArrayOutput values.
-// You can construct a concrete instance of `GoogleFirestoreAdminV1beta2IndexFieldResponseArrayInput` via:
-//
-//          GoogleFirestoreAdminV1beta2IndexFieldResponseArray{ GoogleFirestoreAdminV1beta2IndexFieldResponseArgs{...} }
-type GoogleFirestoreAdminV1beta2IndexFieldResponseArrayInput interface {
-	pulumi.Input
-
-	ToGoogleFirestoreAdminV1beta2IndexFieldResponseArrayOutput() GoogleFirestoreAdminV1beta2IndexFieldResponseArrayOutput
-	ToGoogleFirestoreAdminV1beta2IndexFieldResponseArrayOutputWithContext(context.Context) GoogleFirestoreAdminV1beta2IndexFieldResponseArrayOutput
-}
-
-type GoogleFirestoreAdminV1beta2IndexFieldResponseArray []GoogleFirestoreAdminV1beta2IndexFieldResponseInput
-
-func (GoogleFirestoreAdminV1beta2IndexFieldResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleFirestoreAdminV1beta2IndexFieldResponse)(nil)).Elem()
-}
-
-func (i GoogleFirestoreAdminV1beta2IndexFieldResponseArray) ToGoogleFirestoreAdminV1beta2IndexFieldResponseArrayOutput() GoogleFirestoreAdminV1beta2IndexFieldResponseArrayOutput {
-	return i.ToGoogleFirestoreAdminV1beta2IndexFieldResponseArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleFirestoreAdminV1beta2IndexFieldResponseArray) ToGoogleFirestoreAdminV1beta2IndexFieldResponseArrayOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1beta2IndexFieldResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleFirestoreAdminV1beta2IndexFieldResponseArrayOutput)
-}
-
 // A field in an index. The field_path describes which field is indexed, the value_mode describes how the field value is indexed.
 type GoogleFirestoreAdminV1beta2IndexFieldResponseOutput struct{ *pulumi.OutputState }
 
@@ -253,8 +195,6 @@ func (o GoogleFirestoreAdminV1beta2IndexFieldResponseArrayOutput) Index(i pulumi
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1beta2IndexFieldInput)(nil)).Elem(), GoogleFirestoreAdminV1beta2IndexFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1beta2IndexFieldArrayInput)(nil)).Elem(), GoogleFirestoreAdminV1beta2IndexFieldArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1beta2IndexFieldResponseInput)(nil)).Elem(), GoogleFirestoreAdminV1beta2IndexFieldResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1beta2IndexFieldResponseArrayInput)(nil)).Elem(), GoogleFirestoreAdminV1beta2IndexFieldResponseArray{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1beta2IndexFieldOutput{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1beta2IndexFieldArrayOutput{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1beta2IndexFieldResponseOutput{})

@@ -135,74 +135,6 @@ func (o AvroFileFormatPtrOutput) Elem() AvroFileFormatOutput {
 type AvroFileFormatResponse struct {
 }
 
-// AvroFileFormatResponseInput is an input type that accepts AvroFileFormatResponseArgs and AvroFileFormatResponseOutput values.
-// You can construct a concrete instance of `AvroFileFormatResponseInput` via:
-//
-//          AvroFileFormatResponseArgs{...}
-type AvroFileFormatResponseInput interface {
-	pulumi.Input
-
-	ToAvroFileFormatResponseOutput() AvroFileFormatResponseOutput
-	ToAvroFileFormatResponseOutputWithContext(context.Context) AvroFileFormatResponseOutput
-}
-
-// AVRO file format configuration.
-type AvroFileFormatResponseArgs struct {
-}
-
-func (AvroFileFormatResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AvroFileFormatResponse)(nil)).Elem()
-}
-
-func (i AvroFileFormatResponseArgs) ToAvroFileFormatResponseOutput() AvroFileFormatResponseOutput {
-	return i.ToAvroFileFormatResponseOutputWithContext(context.Background())
-}
-
-func (i AvroFileFormatResponseArgs) ToAvroFileFormatResponseOutputWithContext(ctx context.Context) AvroFileFormatResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AvroFileFormatResponseOutput)
-}
-
-func (i AvroFileFormatResponseArgs) ToAvroFileFormatResponsePtrOutput() AvroFileFormatResponsePtrOutput {
-	return i.ToAvroFileFormatResponsePtrOutputWithContext(context.Background())
-}
-
-func (i AvroFileFormatResponseArgs) ToAvroFileFormatResponsePtrOutputWithContext(ctx context.Context) AvroFileFormatResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AvroFileFormatResponseOutput).ToAvroFileFormatResponsePtrOutputWithContext(ctx)
-}
-
-// AvroFileFormatResponsePtrInput is an input type that accepts AvroFileFormatResponseArgs, AvroFileFormatResponsePtr and AvroFileFormatResponsePtrOutput values.
-// You can construct a concrete instance of `AvroFileFormatResponsePtrInput` via:
-//
-//          AvroFileFormatResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type AvroFileFormatResponsePtrInput interface {
-	pulumi.Input
-
-	ToAvroFileFormatResponsePtrOutput() AvroFileFormatResponsePtrOutput
-	ToAvroFileFormatResponsePtrOutputWithContext(context.Context) AvroFileFormatResponsePtrOutput
-}
-
-type avroFileFormatResponsePtrType AvroFileFormatResponseArgs
-
-func AvroFileFormatResponsePtr(v *AvroFileFormatResponseArgs) AvroFileFormatResponsePtrInput {
-	return (*avroFileFormatResponsePtrType)(v)
-}
-
-func (*avroFileFormatResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AvroFileFormatResponse)(nil)).Elem()
-}
-
-func (i *avroFileFormatResponsePtrType) ToAvroFileFormatResponsePtrOutput() AvroFileFormatResponsePtrOutput {
-	return i.ToAvroFileFormatResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *avroFileFormatResponsePtrType) ToAvroFileFormatResponsePtrOutputWithContext(ctx context.Context) AvroFileFormatResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AvroFileFormatResponsePtrOutput)
-}
-
 // AVRO file format configuration.
 type AvroFileFormatResponseOutput struct{ *pulumi.OutputState }
 
@@ -216,40 +148,6 @@ func (o AvroFileFormatResponseOutput) ToAvroFileFormatResponseOutput() AvroFileF
 
 func (o AvroFileFormatResponseOutput) ToAvroFileFormatResponseOutputWithContext(ctx context.Context) AvroFileFormatResponseOutput {
 	return o
-}
-
-func (o AvroFileFormatResponseOutput) ToAvroFileFormatResponsePtrOutput() AvroFileFormatResponsePtrOutput {
-	return o.ToAvroFileFormatResponsePtrOutputWithContext(context.Background())
-}
-
-func (o AvroFileFormatResponseOutput) ToAvroFileFormatResponsePtrOutputWithContext(ctx context.Context) AvroFileFormatResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AvroFileFormatResponse) *AvroFileFormatResponse {
-		return &v
-	}).(AvroFileFormatResponsePtrOutput)
-}
-
-type AvroFileFormatResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AvroFileFormatResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AvroFileFormatResponse)(nil)).Elem()
-}
-
-func (o AvroFileFormatResponsePtrOutput) ToAvroFileFormatResponsePtrOutput() AvroFileFormatResponsePtrOutput {
-	return o
-}
-
-func (o AvroFileFormatResponsePtrOutput) ToAvroFileFormatResponsePtrOutputWithContext(ctx context.Context) AvroFileFormatResponsePtrOutput {
-	return o
-}
-
-func (o AvroFileFormatResponsePtrOutput) Elem() AvroFileFormatResponseOutput {
-	return o.ApplyT(func(v *AvroFileFormatResponse) AvroFileFormatResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AvroFileFormatResponse
-		return ret
-	}).(AvroFileFormatResponseOutput)
 }
 
 // Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
@@ -419,78 +317,6 @@ type BackfillAllStrategyResponse struct {
 	OracleExcludedObjects OracleRdbmsResponse `pulumi:"oracleExcludedObjects"`
 }
 
-// BackfillAllStrategyResponseInput is an input type that accepts BackfillAllStrategyResponseArgs and BackfillAllStrategyResponseOutput values.
-// You can construct a concrete instance of `BackfillAllStrategyResponseInput` via:
-//
-//          BackfillAllStrategyResponseArgs{...}
-type BackfillAllStrategyResponseInput interface {
-	pulumi.Input
-
-	ToBackfillAllStrategyResponseOutput() BackfillAllStrategyResponseOutput
-	ToBackfillAllStrategyResponseOutputWithContext(context.Context) BackfillAllStrategyResponseOutput
-}
-
-// Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
-type BackfillAllStrategyResponseArgs struct {
-	// MySQL data source objects to avoid backfilling.
-	MysqlExcludedObjects MysqlRdbmsResponseInput `pulumi:"mysqlExcludedObjects"`
-	// Oracle data source objects to avoid backfilling.
-	OracleExcludedObjects OracleRdbmsResponseInput `pulumi:"oracleExcludedObjects"`
-}
-
-func (BackfillAllStrategyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackfillAllStrategyResponse)(nil)).Elem()
-}
-
-func (i BackfillAllStrategyResponseArgs) ToBackfillAllStrategyResponseOutput() BackfillAllStrategyResponseOutput {
-	return i.ToBackfillAllStrategyResponseOutputWithContext(context.Background())
-}
-
-func (i BackfillAllStrategyResponseArgs) ToBackfillAllStrategyResponseOutputWithContext(ctx context.Context) BackfillAllStrategyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackfillAllStrategyResponseOutput)
-}
-
-func (i BackfillAllStrategyResponseArgs) ToBackfillAllStrategyResponsePtrOutput() BackfillAllStrategyResponsePtrOutput {
-	return i.ToBackfillAllStrategyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BackfillAllStrategyResponseArgs) ToBackfillAllStrategyResponsePtrOutputWithContext(ctx context.Context) BackfillAllStrategyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackfillAllStrategyResponseOutput).ToBackfillAllStrategyResponsePtrOutputWithContext(ctx)
-}
-
-// BackfillAllStrategyResponsePtrInput is an input type that accepts BackfillAllStrategyResponseArgs, BackfillAllStrategyResponsePtr and BackfillAllStrategyResponsePtrOutput values.
-// You can construct a concrete instance of `BackfillAllStrategyResponsePtrInput` via:
-//
-//          BackfillAllStrategyResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BackfillAllStrategyResponsePtrInput interface {
-	pulumi.Input
-
-	ToBackfillAllStrategyResponsePtrOutput() BackfillAllStrategyResponsePtrOutput
-	ToBackfillAllStrategyResponsePtrOutputWithContext(context.Context) BackfillAllStrategyResponsePtrOutput
-}
-
-type backfillAllStrategyResponsePtrType BackfillAllStrategyResponseArgs
-
-func BackfillAllStrategyResponsePtr(v *BackfillAllStrategyResponseArgs) BackfillAllStrategyResponsePtrInput {
-	return (*backfillAllStrategyResponsePtrType)(v)
-}
-
-func (*backfillAllStrategyResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BackfillAllStrategyResponse)(nil)).Elem()
-}
-
-func (i *backfillAllStrategyResponsePtrType) ToBackfillAllStrategyResponsePtrOutput() BackfillAllStrategyResponsePtrOutput {
-	return i.ToBackfillAllStrategyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *backfillAllStrategyResponsePtrType) ToBackfillAllStrategyResponsePtrOutputWithContext(ctx context.Context) BackfillAllStrategyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackfillAllStrategyResponsePtrOutput)
-}
-
 // Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
 type BackfillAllStrategyResponseOutput struct{ *pulumi.OutputState }
 
@@ -506,16 +332,6 @@ func (o BackfillAllStrategyResponseOutput) ToBackfillAllStrategyResponseOutputWi
 	return o
 }
 
-func (o BackfillAllStrategyResponseOutput) ToBackfillAllStrategyResponsePtrOutput() BackfillAllStrategyResponsePtrOutput {
-	return o.ToBackfillAllStrategyResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BackfillAllStrategyResponseOutput) ToBackfillAllStrategyResponsePtrOutputWithContext(ctx context.Context) BackfillAllStrategyResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackfillAllStrategyResponse) *BackfillAllStrategyResponse {
-		return &v
-	}).(BackfillAllStrategyResponsePtrOutput)
-}
-
 // MySQL data source objects to avoid backfilling.
 func (o BackfillAllStrategyResponseOutput) MysqlExcludedObjects() MysqlRdbmsResponseOutput {
 	return o.ApplyT(func(v BackfillAllStrategyResponse) MysqlRdbmsResponse { return v.MysqlExcludedObjects }).(MysqlRdbmsResponseOutput)
@@ -524,50 +340,6 @@ func (o BackfillAllStrategyResponseOutput) MysqlExcludedObjects() MysqlRdbmsResp
 // Oracle data source objects to avoid backfilling.
 func (o BackfillAllStrategyResponseOutput) OracleExcludedObjects() OracleRdbmsResponseOutput {
 	return o.ApplyT(func(v BackfillAllStrategyResponse) OracleRdbmsResponse { return v.OracleExcludedObjects }).(OracleRdbmsResponseOutput)
-}
-
-type BackfillAllStrategyResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BackfillAllStrategyResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BackfillAllStrategyResponse)(nil)).Elem()
-}
-
-func (o BackfillAllStrategyResponsePtrOutput) ToBackfillAllStrategyResponsePtrOutput() BackfillAllStrategyResponsePtrOutput {
-	return o
-}
-
-func (o BackfillAllStrategyResponsePtrOutput) ToBackfillAllStrategyResponsePtrOutputWithContext(ctx context.Context) BackfillAllStrategyResponsePtrOutput {
-	return o
-}
-
-func (o BackfillAllStrategyResponsePtrOutput) Elem() BackfillAllStrategyResponseOutput {
-	return o.ApplyT(func(v *BackfillAllStrategyResponse) BackfillAllStrategyResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BackfillAllStrategyResponse
-		return ret
-	}).(BackfillAllStrategyResponseOutput)
-}
-
-// MySQL data source objects to avoid backfilling.
-func (o BackfillAllStrategyResponsePtrOutput) MysqlExcludedObjects() MysqlRdbmsResponsePtrOutput {
-	return o.ApplyT(func(v *BackfillAllStrategyResponse) *MysqlRdbmsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.MysqlExcludedObjects
-	}).(MysqlRdbmsResponsePtrOutput)
-}
-
-// Oracle data source objects to avoid backfilling.
-func (o BackfillAllStrategyResponsePtrOutput) OracleExcludedObjects() OracleRdbmsResponsePtrOutput {
-	return o.ApplyT(func(v *BackfillAllStrategyResponse) *OracleRdbmsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.OracleExcludedObjects
-	}).(OracleRdbmsResponsePtrOutput)
 }
 
 // Backfill strategy to disable automatic backfill for the Stream's objects.
@@ -695,74 +467,6 @@ func (o BackfillNoneStrategyPtrOutput) Elem() BackfillNoneStrategyOutput {
 type BackfillNoneStrategyResponse struct {
 }
 
-// BackfillNoneStrategyResponseInput is an input type that accepts BackfillNoneStrategyResponseArgs and BackfillNoneStrategyResponseOutput values.
-// You can construct a concrete instance of `BackfillNoneStrategyResponseInput` via:
-//
-//          BackfillNoneStrategyResponseArgs{...}
-type BackfillNoneStrategyResponseInput interface {
-	pulumi.Input
-
-	ToBackfillNoneStrategyResponseOutput() BackfillNoneStrategyResponseOutput
-	ToBackfillNoneStrategyResponseOutputWithContext(context.Context) BackfillNoneStrategyResponseOutput
-}
-
-// Backfill strategy to disable automatic backfill for the Stream's objects.
-type BackfillNoneStrategyResponseArgs struct {
-}
-
-func (BackfillNoneStrategyResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackfillNoneStrategyResponse)(nil)).Elem()
-}
-
-func (i BackfillNoneStrategyResponseArgs) ToBackfillNoneStrategyResponseOutput() BackfillNoneStrategyResponseOutput {
-	return i.ToBackfillNoneStrategyResponseOutputWithContext(context.Background())
-}
-
-func (i BackfillNoneStrategyResponseArgs) ToBackfillNoneStrategyResponseOutputWithContext(ctx context.Context) BackfillNoneStrategyResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackfillNoneStrategyResponseOutput)
-}
-
-func (i BackfillNoneStrategyResponseArgs) ToBackfillNoneStrategyResponsePtrOutput() BackfillNoneStrategyResponsePtrOutput {
-	return i.ToBackfillNoneStrategyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i BackfillNoneStrategyResponseArgs) ToBackfillNoneStrategyResponsePtrOutputWithContext(ctx context.Context) BackfillNoneStrategyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackfillNoneStrategyResponseOutput).ToBackfillNoneStrategyResponsePtrOutputWithContext(ctx)
-}
-
-// BackfillNoneStrategyResponsePtrInput is an input type that accepts BackfillNoneStrategyResponseArgs, BackfillNoneStrategyResponsePtr and BackfillNoneStrategyResponsePtrOutput values.
-// You can construct a concrete instance of `BackfillNoneStrategyResponsePtrInput` via:
-//
-//          BackfillNoneStrategyResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type BackfillNoneStrategyResponsePtrInput interface {
-	pulumi.Input
-
-	ToBackfillNoneStrategyResponsePtrOutput() BackfillNoneStrategyResponsePtrOutput
-	ToBackfillNoneStrategyResponsePtrOutputWithContext(context.Context) BackfillNoneStrategyResponsePtrOutput
-}
-
-type backfillNoneStrategyResponsePtrType BackfillNoneStrategyResponseArgs
-
-func BackfillNoneStrategyResponsePtr(v *BackfillNoneStrategyResponseArgs) BackfillNoneStrategyResponsePtrInput {
-	return (*backfillNoneStrategyResponsePtrType)(v)
-}
-
-func (*backfillNoneStrategyResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BackfillNoneStrategyResponse)(nil)).Elem()
-}
-
-func (i *backfillNoneStrategyResponsePtrType) ToBackfillNoneStrategyResponsePtrOutput() BackfillNoneStrategyResponsePtrOutput {
-	return i.ToBackfillNoneStrategyResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *backfillNoneStrategyResponsePtrType) ToBackfillNoneStrategyResponsePtrOutputWithContext(ctx context.Context) BackfillNoneStrategyResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackfillNoneStrategyResponsePtrOutput)
-}
-
 // Backfill strategy to disable automatic backfill for the Stream's objects.
 type BackfillNoneStrategyResponseOutput struct{ *pulumi.OutputState }
 
@@ -776,40 +480,6 @@ func (o BackfillNoneStrategyResponseOutput) ToBackfillNoneStrategyResponseOutput
 
 func (o BackfillNoneStrategyResponseOutput) ToBackfillNoneStrategyResponseOutputWithContext(ctx context.Context) BackfillNoneStrategyResponseOutput {
 	return o
-}
-
-func (o BackfillNoneStrategyResponseOutput) ToBackfillNoneStrategyResponsePtrOutput() BackfillNoneStrategyResponsePtrOutput {
-	return o.ToBackfillNoneStrategyResponsePtrOutputWithContext(context.Background())
-}
-
-func (o BackfillNoneStrategyResponseOutput) ToBackfillNoneStrategyResponsePtrOutputWithContext(ctx context.Context) BackfillNoneStrategyResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackfillNoneStrategyResponse) *BackfillNoneStrategyResponse {
-		return &v
-	}).(BackfillNoneStrategyResponsePtrOutput)
-}
-
-type BackfillNoneStrategyResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BackfillNoneStrategyResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BackfillNoneStrategyResponse)(nil)).Elem()
-}
-
-func (o BackfillNoneStrategyResponsePtrOutput) ToBackfillNoneStrategyResponsePtrOutput() BackfillNoneStrategyResponsePtrOutput {
-	return o
-}
-
-func (o BackfillNoneStrategyResponsePtrOutput) ToBackfillNoneStrategyResponsePtrOutputWithContext(ctx context.Context) BackfillNoneStrategyResponsePtrOutput {
-	return o
-}
-
-func (o BackfillNoneStrategyResponsePtrOutput) Elem() BackfillNoneStrategyResponseOutput {
-	return o.ApplyT(func(v *BackfillNoneStrategyResponse) BackfillNoneStrategyResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BackfillNoneStrategyResponse
-		return ret
-	}).(BackfillNoneStrategyResponseOutput)
 }
 
 // The configuration of the stream destination.
@@ -851,47 +521,6 @@ func (i DestinationConfigArgs) ToDestinationConfigOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(DestinationConfigOutput)
 }
 
-func (i DestinationConfigArgs) ToDestinationConfigPtrOutput() DestinationConfigPtrOutput {
-	return i.ToDestinationConfigPtrOutputWithContext(context.Background())
-}
-
-func (i DestinationConfigArgs) ToDestinationConfigPtrOutputWithContext(ctx context.Context) DestinationConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DestinationConfigOutput).ToDestinationConfigPtrOutputWithContext(ctx)
-}
-
-// DestinationConfigPtrInput is an input type that accepts DestinationConfigArgs, DestinationConfigPtr and DestinationConfigPtrOutput values.
-// You can construct a concrete instance of `DestinationConfigPtrInput` via:
-//
-//          DestinationConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type DestinationConfigPtrInput interface {
-	pulumi.Input
-
-	ToDestinationConfigPtrOutput() DestinationConfigPtrOutput
-	ToDestinationConfigPtrOutputWithContext(context.Context) DestinationConfigPtrOutput
-}
-
-type destinationConfigPtrType DestinationConfigArgs
-
-func DestinationConfigPtr(v *DestinationConfigArgs) DestinationConfigPtrInput {
-	return (*destinationConfigPtrType)(v)
-}
-
-func (*destinationConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DestinationConfig)(nil)).Elem()
-}
-
-func (i *destinationConfigPtrType) ToDestinationConfigPtrOutput() DestinationConfigPtrOutput {
-	return i.ToDestinationConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *destinationConfigPtrType) ToDestinationConfigPtrOutputWithContext(ctx context.Context) DestinationConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DestinationConfigPtrOutput)
-}
-
 // The configuration of the stream destination.
 type DestinationConfigOutput struct{ *pulumi.OutputState }
 
@@ -907,16 +536,6 @@ func (o DestinationConfigOutput) ToDestinationConfigOutputWithContext(ctx contex
 	return o
 }
 
-func (o DestinationConfigOutput) ToDestinationConfigPtrOutput() DestinationConfigPtrOutput {
-	return o.ToDestinationConfigPtrOutputWithContext(context.Background())
-}
-
-func (o DestinationConfigOutput) ToDestinationConfigPtrOutputWithContext(ctx context.Context) DestinationConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DestinationConfig) *DestinationConfig {
-		return &v
-	}).(DestinationConfigPtrOutput)
-}
-
 // Destination connection profile resource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
 func (o DestinationConfigOutput) DestinationConnectionProfile() pulumi.StringOutput {
 	return o.ApplyT(func(v DestinationConfig) string { return v.DestinationConnectionProfile }).(pulumi.StringOutput)
@@ -927,128 +546,12 @@ func (o DestinationConfigOutput) GcsDestinationConfig() GcsDestinationConfigPtrO
 	return o.ApplyT(func(v DestinationConfig) *GcsDestinationConfig { return v.GcsDestinationConfig }).(GcsDestinationConfigPtrOutput)
 }
 
-type DestinationConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (DestinationConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DestinationConfig)(nil)).Elem()
-}
-
-func (o DestinationConfigPtrOutput) ToDestinationConfigPtrOutput() DestinationConfigPtrOutput {
-	return o
-}
-
-func (o DestinationConfigPtrOutput) ToDestinationConfigPtrOutputWithContext(ctx context.Context) DestinationConfigPtrOutput {
-	return o
-}
-
-func (o DestinationConfigPtrOutput) Elem() DestinationConfigOutput {
-	return o.ApplyT(func(v *DestinationConfig) DestinationConfig {
-		if v != nil {
-			return *v
-		}
-		var ret DestinationConfig
-		return ret
-	}).(DestinationConfigOutput)
-}
-
-// Destination connection profile resource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
-func (o DestinationConfigPtrOutput) DestinationConnectionProfile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DestinationConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DestinationConnectionProfile
-	}).(pulumi.StringPtrOutput)
-}
-
-// A configuration for how data should be loaded to Cloud Storage.
-func (o DestinationConfigPtrOutput) GcsDestinationConfig() GcsDestinationConfigPtrOutput {
-	return o.ApplyT(func(v *DestinationConfig) *GcsDestinationConfig {
-		if v == nil {
-			return nil
-		}
-		return v.GcsDestinationConfig
-	}).(GcsDestinationConfigPtrOutput)
-}
-
 // The configuration of the stream destination.
 type DestinationConfigResponse struct {
 	// Destination connection profile resource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
 	DestinationConnectionProfile string `pulumi:"destinationConnectionProfile"`
 	// A configuration for how data should be loaded to Cloud Storage.
 	GcsDestinationConfig GcsDestinationConfigResponse `pulumi:"gcsDestinationConfig"`
-}
-
-// DestinationConfigResponseInput is an input type that accepts DestinationConfigResponseArgs and DestinationConfigResponseOutput values.
-// You can construct a concrete instance of `DestinationConfigResponseInput` via:
-//
-//          DestinationConfigResponseArgs{...}
-type DestinationConfigResponseInput interface {
-	pulumi.Input
-
-	ToDestinationConfigResponseOutput() DestinationConfigResponseOutput
-	ToDestinationConfigResponseOutputWithContext(context.Context) DestinationConfigResponseOutput
-}
-
-// The configuration of the stream destination.
-type DestinationConfigResponseArgs struct {
-	// Destination connection profile resource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
-	DestinationConnectionProfile pulumi.StringInput `pulumi:"destinationConnectionProfile"`
-	// A configuration for how data should be loaded to Cloud Storage.
-	GcsDestinationConfig GcsDestinationConfigResponseInput `pulumi:"gcsDestinationConfig"`
-}
-
-func (DestinationConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DestinationConfigResponse)(nil)).Elem()
-}
-
-func (i DestinationConfigResponseArgs) ToDestinationConfigResponseOutput() DestinationConfigResponseOutput {
-	return i.ToDestinationConfigResponseOutputWithContext(context.Background())
-}
-
-func (i DestinationConfigResponseArgs) ToDestinationConfigResponseOutputWithContext(ctx context.Context) DestinationConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DestinationConfigResponseOutput)
-}
-
-func (i DestinationConfigResponseArgs) ToDestinationConfigResponsePtrOutput() DestinationConfigResponsePtrOutput {
-	return i.ToDestinationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i DestinationConfigResponseArgs) ToDestinationConfigResponsePtrOutputWithContext(ctx context.Context) DestinationConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DestinationConfigResponseOutput).ToDestinationConfigResponsePtrOutputWithContext(ctx)
-}
-
-// DestinationConfigResponsePtrInput is an input type that accepts DestinationConfigResponseArgs, DestinationConfigResponsePtr and DestinationConfigResponsePtrOutput values.
-// You can construct a concrete instance of `DestinationConfigResponsePtrInput` via:
-//
-//          DestinationConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type DestinationConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToDestinationConfigResponsePtrOutput() DestinationConfigResponsePtrOutput
-	ToDestinationConfigResponsePtrOutputWithContext(context.Context) DestinationConfigResponsePtrOutput
-}
-
-type destinationConfigResponsePtrType DestinationConfigResponseArgs
-
-func DestinationConfigResponsePtr(v *DestinationConfigResponseArgs) DestinationConfigResponsePtrInput {
-	return (*destinationConfigResponsePtrType)(v)
-}
-
-func (*destinationConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DestinationConfigResponse)(nil)).Elem()
-}
-
-func (i *destinationConfigResponsePtrType) ToDestinationConfigResponsePtrOutput() DestinationConfigResponsePtrOutput {
-	return i.ToDestinationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *destinationConfigResponsePtrType) ToDestinationConfigResponsePtrOutputWithContext(ctx context.Context) DestinationConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DestinationConfigResponsePtrOutput)
 }
 
 // The configuration of the stream destination.
@@ -1066,16 +569,6 @@ func (o DestinationConfigResponseOutput) ToDestinationConfigResponseOutputWithCo
 	return o
 }
 
-func (o DestinationConfigResponseOutput) ToDestinationConfigResponsePtrOutput() DestinationConfigResponsePtrOutput {
-	return o.ToDestinationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o DestinationConfigResponseOutput) ToDestinationConfigResponsePtrOutputWithContext(ctx context.Context) DestinationConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DestinationConfigResponse) *DestinationConfigResponse {
-		return &v
-	}).(DestinationConfigResponsePtrOutput)
-}
-
 // Destination connection profile resource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
 func (o DestinationConfigResponseOutput) DestinationConnectionProfile() pulumi.StringOutput {
 	return o.ApplyT(func(v DestinationConfigResponse) string { return v.DestinationConnectionProfile }).(pulumi.StringOutput)
@@ -1084,50 +577,6 @@ func (o DestinationConfigResponseOutput) DestinationConnectionProfile() pulumi.S
 // A configuration for how data should be loaded to Cloud Storage.
 func (o DestinationConfigResponseOutput) GcsDestinationConfig() GcsDestinationConfigResponseOutput {
 	return o.ApplyT(func(v DestinationConfigResponse) GcsDestinationConfigResponse { return v.GcsDestinationConfig }).(GcsDestinationConfigResponseOutput)
-}
-
-type DestinationConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DestinationConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DestinationConfigResponse)(nil)).Elem()
-}
-
-func (o DestinationConfigResponsePtrOutput) ToDestinationConfigResponsePtrOutput() DestinationConfigResponsePtrOutput {
-	return o
-}
-
-func (o DestinationConfigResponsePtrOutput) ToDestinationConfigResponsePtrOutputWithContext(ctx context.Context) DestinationConfigResponsePtrOutput {
-	return o
-}
-
-func (o DestinationConfigResponsePtrOutput) Elem() DestinationConfigResponseOutput {
-	return o.ApplyT(func(v *DestinationConfigResponse) DestinationConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DestinationConfigResponse
-		return ret
-	}).(DestinationConfigResponseOutput)
-}
-
-// Destination connection profile resource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
-func (o DestinationConfigResponsePtrOutput) DestinationConnectionProfile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DestinationConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DestinationConnectionProfile
-	}).(pulumi.StringPtrOutput)
-}
-
-// A configuration for how data should be loaded to Cloud Storage.
-func (o DestinationConfigResponsePtrOutput) GcsDestinationConfig() GcsDestinationConfigResponsePtrOutput {
-	return o.ApplyT(func(v *DestinationConfigResponse) *GcsDestinationConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.GcsDestinationConfig
-	}).(GcsDestinationConfigResponsePtrOutput)
 }
 
 // Represent a user-facing Error.
@@ -1144,109 +593,6 @@ type ErrorResponse struct {
 	Reason string `pulumi:"reason"`
 }
 
-// ErrorResponseInput is an input type that accepts ErrorResponseArgs and ErrorResponseOutput values.
-// You can construct a concrete instance of `ErrorResponseInput` via:
-//
-//          ErrorResponseArgs{...}
-type ErrorResponseInput interface {
-	pulumi.Input
-
-	ToErrorResponseOutput() ErrorResponseOutput
-	ToErrorResponseOutputWithContext(context.Context) ErrorResponseOutput
-}
-
-// Represent a user-facing Error.
-type ErrorResponseArgs struct {
-	// Additional information about the error.
-	Details pulumi.StringMapInput `pulumi:"details"`
-	// The time when the error occurred.
-	ErrorTime pulumi.StringInput `pulumi:"errorTime"`
-	// A unique identifier for this specific error, allowing it to be traced throughout the system in logs and API responses.
-	ErrorUuid pulumi.StringInput `pulumi:"errorUuid"`
-	// A message containing more information about the error that occurred.
-	Message pulumi.StringInput `pulumi:"message"`
-	// A title that explains the reason for the error.
-	Reason pulumi.StringInput `pulumi:"reason"`
-}
-
-func (ErrorResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ErrorResponse)(nil)).Elem()
-}
-
-func (i ErrorResponseArgs) ToErrorResponseOutput() ErrorResponseOutput {
-	return i.ToErrorResponseOutputWithContext(context.Background())
-}
-
-func (i ErrorResponseArgs) ToErrorResponseOutputWithContext(ctx context.Context) ErrorResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ErrorResponseOutput)
-}
-
-func (i ErrorResponseArgs) ToErrorResponsePtrOutput() ErrorResponsePtrOutput {
-	return i.ToErrorResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ErrorResponseArgs) ToErrorResponsePtrOutputWithContext(ctx context.Context) ErrorResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ErrorResponseOutput).ToErrorResponsePtrOutputWithContext(ctx)
-}
-
-// ErrorResponsePtrInput is an input type that accepts ErrorResponseArgs, ErrorResponsePtr and ErrorResponsePtrOutput values.
-// You can construct a concrete instance of `ErrorResponsePtrInput` via:
-//
-//          ErrorResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ErrorResponsePtrInput interface {
-	pulumi.Input
-
-	ToErrorResponsePtrOutput() ErrorResponsePtrOutput
-	ToErrorResponsePtrOutputWithContext(context.Context) ErrorResponsePtrOutput
-}
-
-type errorResponsePtrType ErrorResponseArgs
-
-func ErrorResponsePtr(v *ErrorResponseArgs) ErrorResponsePtrInput {
-	return (*errorResponsePtrType)(v)
-}
-
-func (*errorResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ErrorResponse)(nil)).Elem()
-}
-
-func (i *errorResponsePtrType) ToErrorResponsePtrOutput() ErrorResponsePtrOutput {
-	return i.ToErrorResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *errorResponsePtrType) ToErrorResponsePtrOutputWithContext(ctx context.Context) ErrorResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ErrorResponsePtrOutput)
-}
-
-// ErrorResponseArrayInput is an input type that accepts ErrorResponseArray and ErrorResponseArrayOutput values.
-// You can construct a concrete instance of `ErrorResponseArrayInput` via:
-//
-//          ErrorResponseArray{ ErrorResponseArgs{...} }
-type ErrorResponseArrayInput interface {
-	pulumi.Input
-
-	ToErrorResponseArrayOutput() ErrorResponseArrayOutput
-	ToErrorResponseArrayOutputWithContext(context.Context) ErrorResponseArrayOutput
-}
-
-type ErrorResponseArray []ErrorResponseInput
-
-func (ErrorResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ErrorResponse)(nil)).Elem()
-}
-
-func (i ErrorResponseArray) ToErrorResponseArrayOutput() ErrorResponseArrayOutput {
-	return i.ToErrorResponseArrayOutputWithContext(context.Background())
-}
-
-func (i ErrorResponseArray) ToErrorResponseArrayOutputWithContext(ctx context.Context) ErrorResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ErrorResponseArrayOutput)
-}
-
 // Represent a user-facing Error.
 type ErrorResponseOutput struct{ *pulumi.OutputState }
 
@@ -1260,16 +606,6 @@ func (o ErrorResponseOutput) ToErrorResponseOutput() ErrorResponseOutput {
 
 func (o ErrorResponseOutput) ToErrorResponseOutputWithContext(ctx context.Context) ErrorResponseOutput {
 	return o
-}
-
-func (o ErrorResponseOutput) ToErrorResponsePtrOutput() ErrorResponsePtrOutput {
-	return o.ToErrorResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ErrorResponseOutput) ToErrorResponsePtrOutputWithContext(ctx context.Context) ErrorResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErrorResponse) *ErrorResponse {
-		return &v
-	}).(ErrorResponsePtrOutput)
 }
 
 // Additional information about the error.
@@ -1295,80 +631,6 @@ func (o ErrorResponseOutput) Message() pulumi.StringOutput {
 // A title that explains the reason for the error.
 func (o ErrorResponseOutput) Reason() pulumi.StringOutput {
 	return o.ApplyT(func(v ErrorResponse) string { return v.Reason }).(pulumi.StringOutput)
-}
-
-type ErrorResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ErrorResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ErrorResponse)(nil)).Elem()
-}
-
-func (o ErrorResponsePtrOutput) ToErrorResponsePtrOutput() ErrorResponsePtrOutput {
-	return o
-}
-
-func (o ErrorResponsePtrOutput) ToErrorResponsePtrOutputWithContext(ctx context.Context) ErrorResponsePtrOutput {
-	return o
-}
-
-func (o ErrorResponsePtrOutput) Elem() ErrorResponseOutput {
-	return o.ApplyT(func(v *ErrorResponse) ErrorResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ErrorResponse
-		return ret
-	}).(ErrorResponseOutput)
-}
-
-// Additional information about the error.
-func (o ErrorResponsePtrOutput) Details() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ErrorResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Details
-	}).(pulumi.StringMapOutput)
-}
-
-// The time when the error occurred.
-func (o ErrorResponsePtrOutput) ErrorTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ErrorTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// A unique identifier for this specific error, allowing it to be traced throughout the system in logs and API responses.
-func (o ErrorResponsePtrOutput) ErrorUuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ErrorUuid
-	}).(pulumi.StringPtrOutput)
-}
-
-// A message containing more information about the error that occurred.
-func (o ErrorResponsePtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Message
-	}).(pulumi.StringPtrOutput)
-}
-
-// A title that explains the reason for the error.
-func (o ErrorResponsePtrOutput) Reason() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Reason
-	}).(pulumi.StringPtrOutput)
 }
 
 type ErrorResponseArrayOutput struct{ *pulumi.OutputState }
@@ -1621,84 +883,6 @@ type ForwardSshTunnelConnectivityResponse struct {
 	Username string `pulumi:"username"`
 }
 
-// ForwardSshTunnelConnectivityResponseInput is an input type that accepts ForwardSshTunnelConnectivityResponseArgs and ForwardSshTunnelConnectivityResponseOutput values.
-// You can construct a concrete instance of `ForwardSshTunnelConnectivityResponseInput` via:
-//
-//          ForwardSshTunnelConnectivityResponseArgs{...}
-type ForwardSshTunnelConnectivityResponseInput interface {
-	pulumi.Input
-
-	ToForwardSshTunnelConnectivityResponseOutput() ForwardSshTunnelConnectivityResponseOutput
-	ToForwardSshTunnelConnectivityResponseOutputWithContext(context.Context) ForwardSshTunnelConnectivityResponseOutput
-}
-
-// Forward SSH Tunnel connectivity.
-type ForwardSshTunnelConnectivityResponseArgs struct {
-	// Hostname for the SSH tunnel.
-	Hostname pulumi.StringInput `pulumi:"hostname"`
-	// Input only. SSH password.
-	Password pulumi.StringInput `pulumi:"password"`
-	// Port for the SSH tunnel, default value is 22.
-	Port pulumi.IntInput `pulumi:"port"`
-	// Input only. SSH private key.
-	PrivateKey pulumi.StringInput `pulumi:"privateKey"`
-	// Username for the SSH tunnel.
-	Username pulumi.StringInput `pulumi:"username"`
-}
-
-func (ForwardSshTunnelConnectivityResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ForwardSshTunnelConnectivityResponse)(nil)).Elem()
-}
-
-func (i ForwardSshTunnelConnectivityResponseArgs) ToForwardSshTunnelConnectivityResponseOutput() ForwardSshTunnelConnectivityResponseOutput {
-	return i.ToForwardSshTunnelConnectivityResponseOutputWithContext(context.Background())
-}
-
-func (i ForwardSshTunnelConnectivityResponseArgs) ToForwardSshTunnelConnectivityResponseOutputWithContext(ctx context.Context) ForwardSshTunnelConnectivityResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ForwardSshTunnelConnectivityResponseOutput)
-}
-
-func (i ForwardSshTunnelConnectivityResponseArgs) ToForwardSshTunnelConnectivityResponsePtrOutput() ForwardSshTunnelConnectivityResponsePtrOutput {
-	return i.ToForwardSshTunnelConnectivityResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ForwardSshTunnelConnectivityResponseArgs) ToForwardSshTunnelConnectivityResponsePtrOutputWithContext(ctx context.Context) ForwardSshTunnelConnectivityResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ForwardSshTunnelConnectivityResponseOutput).ToForwardSshTunnelConnectivityResponsePtrOutputWithContext(ctx)
-}
-
-// ForwardSshTunnelConnectivityResponsePtrInput is an input type that accepts ForwardSshTunnelConnectivityResponseArgs, ForwardSshTunnelConnectivityResponsePtr and ForwardSshTunnelConnectivityResponsePtrOutput values.
-// You can construct a concrete instance of `ForwardSshTunnelConnectivityResponsePtrInput` via:
-//
-//          ForwardSshTunnelConnectivityResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ForwardSshTunnelConnectivityResponsePtrInput interface {
-	pulumi.Input
-
-	ToForwardSshTunnelConnectivityResponsePtrOutput() ForwardSshTunnelConnectivityResponsePtrOutput
-	ToForwardSshTunnelConnectivityResponsePtrOutputWithContext(context.Context) ForwardSshTunnelConnectivityResponsePtrOutput
-}
-
-type forwardSshTunnelConnectivityResponsePtrType ForwardSshTunnelConnectivityResponseArgs
-
-func ForwardSshTunnelConnectivityResponsePtr(v *ForwardSshTunnelConnectivityResponseArgs) ForwardSshTunnelConnectivityResponsePtrInput {
-	return (*forwardSshTunnelConnectivityResponsePtrType)(v)
-}
-
-func (*forwardSshTunnelConnectivityResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ForwardSshTunnelConnectivityResponse)(nil)).Elem()
-}
-
-func (i *forwardSshTunnelConnectivityResponsePtrType) ToForwardSshTunnelConnectivityResponsePtrOutput() ForwardSshTunnelConnectivityResponsePtrOutput {
-	return i.ToForwardSshTunnelConnectivityResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *forwardSshTunnelConnectivityResponsePtrType) ToForwardSshTunnelConnectivityResponsePtrOutputWithContext(ctx context.Context) ForwardSshTunnelConnectivityResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ForwardSshTunnelConnectivityResponsePtrOutput)
-}
-
 // Forward SSH Tunnel connectivity.
 type ForwardSshTunnelConnectivityResponseOutput struct{ *pulumi.OutputState }
 
@@ -1712,16 +896,6 @@ func (o ForwardSshTunnelConnectivityResponseOutput) ToForwardSshTunnelConnectivi
 
 func (o ForwardSshTunnelConnectivityResponseOutput) ToForwardSshTunnelConnectivityResponseOutputWithContext(ctx context.Context) ForwardSshTunnelConnectivityResponseOutput {
 	return o
-}
-
-func (o ForwardSshTunnelConnectivityResponseOutput) ToForwardSshTunnelConnectivityResponsePtrOutput() ForwardSshTunnelConnectivityResponsePtrOutput {
-	return o.ToForwardSshTunnelConnectivityResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ForwardSshTunnelConnectivityResponseOutput) ToForwardSshTunnelConnectivityResponsePtrOutputWithContext(ctx context.Context) ForwardSshTunnelConnectivityResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ForwardSshTunnelConnectivityResponse) *ForwardSshTunnelConnectivityResponse {
-		return &v
-	}).(ForwardSshTunnelConnectivityResponsePtrOutput)
 }
 
 // Hostname for the SSH tunnel.
@@ -1747,80 +921,6 @@ func (o ForwardSshTunnelConnectivityResponseOutput) PrivateKey() pulumi.StringOu
 // Username for the SSH tunnel.
 func (o ForwardSshTunnelConnectivityResponseOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v ForwardSshTunnelConnectivityResponse) string { return v.Username }).(pulumi.StringOutput)
-}
-
-type ForwardSshTunnelConnectivityResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ForwardSshTunnelConnectivityResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ForwardSshTunnelConnectivityResponse)(nil)).Elem()
-}
-
-func (o ForwardSshTunnelConnectivityResponsePtrOutput) ToForwardSshTunnelConnectivityResponsePtrOutput() ForwardSshTunnelConnectivityResponsePtrOutput {
-	return o
-}
-
-func (o ForwardSshTunnelConnectivityResponsePtrOutput) ToForwardSshTunnelConnectivityResponsePtrOutputWithContext(ctx context.Context) ForwardSshTunnelConnectivityResponsePtrOutput {
-	return o
-}
-
-func (o ForwardSshTunnelConnectivityResponsePtrOutput) Elem() ForwardSshTunnelConnectivityResponseOutput {
-	return o.ApplyT(func(v *ForwardSshTunnelConnectivityResponse) ForwardSshTunnelConnectivityResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ForwardSshTunnelConnectivityResponse
-		return ret
-	}).(ForwardSshTunnelConnectivityResponseOutput)
-}
-
-// Hostname for the SSH tunnel.
-func (o ForwardSshTunnelConnectivityResponsePtrOutput) Hostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ForwardSshTunnelConnectivityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Hostname
-	}).(pulumi.StringPtrOutput)
-}
-
-// Input only. SSH password.
-func (o ForwardSshTunnelConnectivityResponsePtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ForwardSshTunnelConnectivityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Password
-	}).(pulumi.StringPtrOutput)
-}
-
-// Port for the SSH tunnel, default value is 22.
-func (o ForwardSshTunnelConnectivityResponsePtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ForwardSshTunnelConnectivityResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Port
-	}).(pulumi.IntPtrOutput)
-}
-
-// Input only. SSH private key.
-func (o ForwardSshTunnelConnectivityResponsePtrOutput) PrivateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ForwardSshTunnelConnectivityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrivateKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// Username for the SSH tunnel.
-func (o ForwardSshTunnelConnectivityResponsePtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ForwardSshTunnelConnectivityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Username
-	}).(pulumi.StringPtrOutput)
 }
 
 // Google Cloud Storage destination configuration
@@ -2053,84 +1153,6 @@ type GcsDestinationConfigResponse struct {
 	Path string `pulumi:"path"`
 }
 
-// GcsDestinationConfigResponseInput is an input type that accepts GcsDestinationConfigResponseArgs and GcsDestinationConfigResponseOutput values.
-// You can construct a concrete instance of `GcsDestinationConfigResponseInput` via:
-//
-//          GcsDestinationConfigResponseArgs{...}
-type GcsDestinationConfigResponseInput interface {
-	pulumi.Input
-
-	ToGcsDestinationConfigResponseOutput() GcsDestinationConfigResponseOutput
-	ToGcsDestinationConfigResponseOutputWithContext(context.Context) GcsDestinationConfigResponseOutput
-}
-
-// Google Cloud Storage destination configuration
-type GcsDestinationConfigResponseArgs struct {
-	// AVRO file format configuration.
-	AvroFileFormat AvroFileFormatResponseInput `pulumi:"avroFileFormat"`
-	// The maximum duration for which new events are added before a file is closed and a new file is created.
-	FileRotationInterval pulumi.StringInput `pulumi:"fileRotationInterval"`
-	// The maximum file size to be saved in the bucket.
-	FileRotationMb pulumi.IntInput `pulumi:"fileRotationMb"`
-	// JSON file format configuration.
-	JsonFileFormat JsonFileFormatResponseInput `pulumi:"jsonFileFormat"`
-	// Path inside the Cloud Storage bucket to write data to.
-	Path pulumi.StringInput `pulumi:"path"`
-}
-
-func (GcsDestinationConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GcsDestinationConfigResponse)(nil)).Elem()
-}
-
-func (i GcsDestinationConfigResponseArgs) ToGcsDestinationConfigResponseOutput() GcsDestinationConfigResponseOutput {
-	return i.ToGcsDestinationConfigResponseOutputWithContext(context.Background())
-}
-
-func (i GcsDestinationConfigResponseArgs) ToGcsDestinationConfigResponseOutputWithContext(ctx context.Context) GcsDestinationConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GcsDestinationConfigResponseOutput)
-}
-
-func (i GcsDestinationConfigResponseArgs) ToGcsDestinationConfigResponsePtrOutput() GcsDestinationConfigResponsePtrOutput {
-	return i.ToGcsDestinationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GcsDestinationConfigResponseArgs) ToGcsDestinationConfigResponsePtrOutputWithContext(ctx context.Context) GcsDestinationConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GcsDestinationConfigResponseOutput).ToGcsDestinationConfigResponsePtrOutputWithContext(ctx)
-}
-
-// GcsDestinationConfigResponsePtrInput is an input type that accepts GcsDestinationConfigResponseArgs, GcsDestinationConfigResponsePtr and GcsDestinationConfigResponsePtrOutput values.
-// You can construct a concrete instance of `GcsDestinationConfigResponsePtrInput` via:
-//
-//          GcsDestinationConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GcsDestinationConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToGcsDestinationConfigResponsePtrOutput() GcsDestinationConfigResponsePtrOutput
-	ToGcsDestinationConfigResponsePtrOutputWithContext(context.Context) GcsDestinationConfigResponsePtrOutput
-}
-
-type gcsDestinationConfigResponsePtrType GcsDestinationConfigResponseArgs
-
-func GcsDestinationConfigResponsePtr(v *GcsDestinationConfigResponseArgs) GcsDestinationConfigResponsePtrInput {
-	return (*gcsDestinationConfigResponsePtrType)(v)
-}
-
-func (*gcsDestinationConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GcsDestinationConfigResponse)(nil)).Elem()
-}
-
-func (i *gcsDestinationConfigResponsePtrType) ToGcsDestinationConfigResponsePtrOutput() GcsDestinationConfigResponsePtrOutput {
-	return i.ToGcsDestinationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *gcsDestinationConfigResponsePtrType) ToGcsDestinationConfigResponsePtrOutputWithContext(ctx context.Context) GcsDestinationConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GcsDestinationConfigResponsePtrOutput)
-}
-
 // Google Cloud Storage destination configuration
 type GcsDestinationConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -2144,16 +1166,6 @@ func (o GcsDestinationConfigResponseOutput) ToGcsDestinationConfigResponseOutput
 
 func (o GcsDestinationConfigResponseOutput) ToGcsDestinationConfigResponseOutputWithContext(ctx context.Context) GcsDestinationConfigResponseOutput {
 	return o
-}
-
-func (o GcsDestinationConfigResponseOutput) ToGcsDestinationConfigResponsePtrOutput() GcsDestinationConfigResponsePtrOutput {
-	return o.ToGcsDestinationConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GcsDestinationConfigResponseOutput) ToGcsDestinationConfigResponsePtrOutputWithContext(ctx context.Context) GcsDestinationConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcsDestinationConfigResponse) *GcsDestinationConfigResponse {
-		return &v
-	}).(GcsDestinationConfigResponsePtrOutput)
 }
 
 // AVRO file format configuration.
@@ -2179,80 +1191,6 @@ func (o GcsDestinationConfigResponseOutput) JsonFileFormat() JsonFileFormatRespo
 // Path inside the Cloud Storage bucket to write data to.
 func (o GcsDestinationConfigResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GcsDestinationConfigResponse) string { return v.Path }).(pulumi.StringOutput)
-}
-
-type GcsDestinationConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GcsDestinationConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GcsDestinationConfigResponse)(nil)).Elem()
-}
-
-func (o GcsDestinationConfigResponsePtrOutput) ToGcsDestinationConfigResponsePtrOutput() GcsDestinationConfigResponsePtrOutput {
-	return o
-}
-
-func (o GcsDestinationConfigResponsePtrOutput) ToGcsDestinationConfigResponsePtrOutputWithContext(ctx context.Context) GcsDestinationConfigResponsePtrOutput {
-	return o
-}
-
-func (o GcsDestinationConfigResponsePtrOutput) Elem() GcsDestinationConfigResponseOutput {
-	return o.ApplyT(func(v *GcsDestinationConfigResponse) GcsDestinationConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GcsDestinationConfigResponse
-		return ret
-	}).(GcsDestinationConfigResponseOutput)
-}
-
-// AVRO file format configuration.
-func (o GcsDestinationConfigResponsePtrOutput) AvroFileFormat() AvroFileFormatResponsePtrOutput {
-	return o.ApplyT(func(v *GcsDestinationConfigResponse) *AvroFileFormatResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.AvroFileFormat
-	}).(AvroFileFormatResponsePtrOutput)
-}
-
-// The maximum duration for which new events are added before a file is closed and a new file is created.
-func (o GcsDestinationConfigResponsePtrOutput) FileRotationInterval() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GcsDestinationConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.FileRotationInterval
-	}).(pulumi.StringPtrOutput)
-}
-
-// The maximum file size to be saved in the bucket.
-func (o GcsDestinationConfigResponsePtrOutput) FileRotationMb() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GcsDestinationConfigResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.FileRotationMb
-	}).(pulumi.IntPtrOutput)
-}
-
-// JSON file format configuration.
-func (o GcsDestinationConfigResponsePtrOutput) JsonFileFormat() JsonFileFormatResponsePtrOutput {
-	return o.ApplyT(func(v *GcsDestinationConfigResponse) *JsonFileFormatResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.JsonFileFormat
-	}).(JsonFileFormatResponsePtrOutput)
-}
-
-// Path inside the Cloud Storage bucket to write data to.
-func (o GcsDestinationConfigResponsePtrOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GcsDestinationConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Path
-	}).(pulumi.StringPtrOutput)
 }
 
 // Cloud Storage bucket profile.
@@ -2422,78 +1360,6 @@ type GcsProfileResponse struct {
 	RootPath string `pulumi:"rootPath"`
 }
 
-// GcsProfileResponseInput is an input type that accepts GcsProfileResponseArgs and GcsProfileResponseOutput values.
-// You can construct a concrete instance of `GcsProfileResponseInput` via:
-//
-//          GcsProfileResponseArgs{...}
-type GcsProfileResponseInput interface {
-	pulumi.Input
-
-	ToGcsProfileResponseOutput() GcsProfileResponseOutput
-	ToGcsProfileResponseOutputWithContext(context.Context) GcsProfileResponseOutput
-}
-
-// Cloud Storage bucket profile.
-type GcsProfileResponseArgs struct {
-	// The Cloud Storage bucket name.
-	Bucket pulumi.StringInput `pulumi:"bucket"`
-	// The root path inside the Cloud Storage bucket.
-	RootPath pulumi.StringInput `pulumi:"rootPath"`
-}
-
-func (GcsProfileResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GcsProfileResponse)(nil)).Elem()
-}
-
-func (i GcsProfileResponseArgs) ToGcsProfileResponseOutput() GcsProfileResponseOutput {
-	return i.ToGcsProfileResponseOutputWithContext(context.Background())
-}
-
-func (i GcsProfileResponseArgs) ToGcsProfileResponseOutputWithContext(ctx context.Context) GcsProfileResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GcsProfileResponseOutput)
-}
-
-func (i GcsProfileResponseArgs) ToGcsProfileResponsePtrOutput() GcsProfileResponsePtrOutput {
-	return i.ToGcsProfileResponsePtrOutputWithContext(context.Background())
-}
-
-func (i GcsProfileResponseArgs) ToGcsProfileResponsePtrOutputWithContext(ctx context.Context) GcsProfileResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GcsProfileResponseOutput).ToGcsProfileResponsePtrOutputWithContext(ctx)
-}
-
-// GcsProfileResponsePtrInput is an input type that accepts GcsProfileResponseArgs, GcsProfileResponsePtr and GcsProfileResponsePtrOutput values.
-// You can construct a concrete instance of `GcsProfileResponsePtrInput` via:
-//
-//          GcsProfileResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type GcsProfileResponsePtrInput interface {
-	pulumi.Input
-
-	ToGcsProfileResponsePtrOutput() GcsProfileResponsePtrOutput
-	ToGcsProfileResponsePtrOutputWithContext(context.Context) GcsProfileResponsePtrOutput
-}
-
-type gcsProfileResponsePtrType GcsProfileResponseArgs
-
-func GcsProfileResponsePtr(v *GcsProfileResponseArgs) GcsProfileResponsePtrInput {
-	return (*gcsProfileResponsePtrType)(v)
-}
-
-func (*gcsProfileResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GcsProfileResponse)(nil)).Elem()
-}
-
-func (i *gcsProfileResponsePtrType) ToGcsProfileResponsePtrOutput() GcsProfileResponsePtrOutput {
-	return i.ToGcsProfileResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *gcsProfileResponsePtrType) ToGcsProfileResponsePtrOutputWithContext(ctx context.Context) GcsProfileResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GcsProfileResponsePtrOutput)
-}
-
 // Cloud Storage bucket profile.
 type GcsProfileResponseOutput struct{ *pulumi.OutputState }
 
@@ -2509,16 +1375,6 @@ func (o GcsProfileResponseOutput) ToGcsProfileResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o GcsProfileResponseOutput) ToGcsProfileResponsePtrOutput() GcsProfileResponsePtrOutput {
-	return o.ToGcsProfileResponsePtrOutputWithContext(context.Background())
-}
-
-func (o GcsProfileResponseOutput) ToGcsProfileResponsePtrOutputWithContext(ctx context.Context) GcsProfileResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcsProfileResponse) *GcsProfileResponse {
-		return &v
-	}).(GcsProfileResponsePtrOutput)
-}
-
 // The Cloud Storage bucket name.
 func (o GcsProfileResponseOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v GcsProfileResponse) string { return v.Bucket }).(pulumi.StringOutput)
@@ -2527,50 +1383,6 @@ func (o GcsProfileResponseOutput) Bucket() pulumi.StringOutput {
 // The root path inside the Cloud Storage bucket.
 func (o GcsProfileResponseOutput) RootPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GcsProfileResponse) string { return v.RootPath }).(pulumi.StringOutput)
-}
-
-type GcsProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GcsProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GcsProfileResponse)(nil)).Elem()
-}
-
-func (o GcsProfileResponsePtrOutput) ToGcsProfileResponsePtrOutput() GcsProfileResponsePtrOutput {
-	return o
-}
-
-func (o GcsProfileResponsePtrOutput) ToGcsProfileResponsePtrOutputWithContext(ctx context.Context) GcsProfileResponsePtrOutput {
-	return o
-}
-
-func (o GcsProfileResponsePtrOutput) Elem() GcsProfileResponseOutput {
-	return o.ApplyT(func(v *GcsProfileResponse) GcsProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GcsProfileResponse
-		return ret
-	}).(GcsProfileResponseOutput)
-}
-
-// The Cloud Storage bucket name.
-func (o GcsProfileResponsePtrOutput) Bucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GcsProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Bucket
-	}).(pulumi.StringPtrOutput)
-}
-
-// The root path inside the Cloud Storage bucket.
-func (o GcsProfileResponsePtrOutput) RootPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GcsProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RootPath
-	}).(pulumi.StringPtrOutput)
 }
 
 // JSON file format configuration.
@@ -2740,78 +1552,6 @@ type JsonFileFormatResponse struct {
 	SchemaFileFormat string `pulumi:"schemaFileFormat"`
 }
 
-// JsonFileFormatResponseInput is an input type that accepts JsonFileFormatResponseArgs and JsonFileFormatResponseOutput values.
-// You can construct a concrete instance of `JsonFileFormatResponseInput` via:
-//
-//          JsonFileFormatResponseArgs{...}
-type JsonFileFormatResponseInput interface {
-	pulumi.Input
-
-	ToJsonFileFormatResponseOutput() JsonFileFormatResponseOutput
-	ToJsonFileFormatResponseOutputWithContext(context.Context) JsonFileFormatResponseOutput
-}
-
-// JSON file format configuration.
-type JsonFileFormatResponseArgs struct {
-	// Compression of the loaded JSON file.
-	Compression pulumi.StringInput `pulumi:"compression"`
-	// The schema file format along JSON data files.
-	SchemaFileFormat pulumi.StringInput `pulumi:"schemaFileFormat"`
-}
-
-func (JsonFileFormatResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JsonFileFormatResponse)(nil)).Elem()
-}
-
-func (i JsonFileFormatResponseArgs) ToJsonFileFormatResponseOutput() JsonFileFormatResponseOutput {
-	return i.ToJsonFileFormatResponseOutputWithContext(context.Background())
-}
-
-func (i JsonFileFormatResponseArgs) ToJsonFileFormatResponseOutputWithContext(ctx context.Context) JsonFileFormatResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JsonFileFormatResponseOutput)
-}
-
-func (i JsonFileFormatResponseArgs) ToJsonFileFormatResponsePtrOutput() JsonFileFormatResponsePtrOutput {
-	return i.ToJsonFileFormatResponsePtrOutputWithContext(context.Background())
-}
-
-func (i JsonFileFormatResponseArgs) ToJsonFileFormatResponsePtrOutputWithContext(ctx context.Context) JsonFileFormatResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JsonFileFormatResponseOutput).ToJsonFileFormatResponsePtrOutputWithContext(ctx)
-}
-
-// JsonFileFormatResponsePtrInput is an input type that accepts JsonFileFormatResponseArgs, JsonFileFormatResponsePtr and JsonFileFormatResponsePtrOutput values.
-// You can construct a concrete instance of `JsonFileFormatResponsePtrInput` via:
-//
-//          JsonFileFormatResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type JsonFileFormatResponsePtrInput interface {
-	pulumi.Input
-
-	ToJsonFileFormatResponsePtrOutput() JsonFileFormatResponsePtrOutput
-	ToJsonFileFormatResponsePtrOutputWithContext(context.Context) JsonFileFormatResponsePtrOutput
-}
-
-type jsonFileFormatResponsePtrType JsonFileFormatResponseArgs
-
-func JsonFileFormatResponsePtr(v *JsonFileFormatResponseArgs) JsonFileFormatResponsePtrInput {
-	return (*jsonFileFormatResponsePtrType)(v)
-}
-
-func (*jsonFileFormatResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JsonFileFormatResponse)(nil)).Elem()
-}
-
-func (i *jsonFileFormatResponsePtrType) ToJsonFileFormatResponsePtrOutput() JsonFileFormatResponsePtrOutput {
-	return i.ToJsonFileFormatResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *jsonFileFormatResponsePtrType) ToJsonFileFormatResponsePtrOutputWithContext(ctx context.Context) JsonFileFormatResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JsonFileFormatResponsePtrOutput)
-}
-
 // JSON file format configuration.
 type JsonFileFormatResponseOutput struct{ *pulumi.OutputState }
 
@@ -2827,16 +1567,6 @@ func (o JsonFileFormatResponseOutput) ToJsonFileFormatResponseOutputWithContext(
 	return o
 }
 
-func (o JsonFileFormatResponseOutput) ToJsonFileFormatResponsePtrOutput() JsonFileFormatResponsePtrOutput {
-	return o.ToJsonFileFormatResponsePtrOutputWithContext(context.Background())
-}
-
-func (o JsonFileFormatResponseOutput) ToJsonFileFormatResponsePtrOutputWithContext(ctx context.Context) JsonFileFormatResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v JsonFileFormatResponse) *JsonFileFormatResponse {
-		return &v
-	}).(JsonFileFormatResponsePtrOutput)
-}
-
 // Compression of the loaded JSON file.
 func (o JsonFileFormatResponseOutput) Compression() pulumi.StringOutput {
 	return o.ApplyT(func(v JsonFileFormatResponse) string { return v.Compression }).(pulumi.StringOutput)
@@ -2845,50 +1575,6 @@ func (o JsonFileFormatResponseOutput) Compression() pulumi.StringOutput {
 // The schema file format along JSON data files.
 func (o JsonFileFormatResponseOutput) SchemaFileFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v JsonFileFormatResponse) string { return v.SchemaFileFormat }).(pulumi.StringOutput)
-}
-
-type JsonFileFormatResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (JsonFileFormatResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JsonFileFormatResponse)(nil)).Elem()
-}
-
-func (o JsonFileFormatResponsePtrOutput) ToJsonFileFormatResponsePtrOutput() JsonFileFormatResponsePtrOutput {
-	return o
-}
-
-func (o JsonFileFormatResponsePtrOutput) ToJsonFileFormatResponsePtrOutputWithContext(ctx context.Context) JsonFileFormatResponsePtrOutput {
-	return o
-}
-
-func (o JsonFileFormatResponsePtrOutput) Elem() JsonFileFormatResponseOutput {
-	return o.ApplyT(func(v *JsonFileFormatResponse) JsonFileFormatResponse {
-		if v != nil {
-			return *v
-		}
-		var ret JsonFileFormatResponse
-		return ret
-	}).(JsonFileFormatResponseOutput)
-}
-
-// Compression of the loaded JSON file.
-func (o JsonFileFormatResponsePtrOutput) Compression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JsonFileFormatResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Compression
-	}).(pulumi.StringPtrOutput)
-}
-
-// The schema file format along JSON data files.
-func (o JsonFileFormatResponsePtrOutput) SchemaFileFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JsonFileFormatResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SchemaFileFormat
-	}).(pulumi.StringPtrOutput)
 }
 
 // MySQL Column.
@@ -3061,72 +1747,6 @@ type MysqlColumnResponse struct {
 	OrdinalPosition int `pulumi:"ordinalPosition"`
 	// Whether or not the column represents a primary key.
 	PrimaryKey bool `pulumi:"primaryKey"`
-}
-
-// MysqlColumnResponseInput is an input type that accepts MysqlColumnResponseArgs and MysqlColumnResponseOutput values.
-// You can construct a concrete instance of `MysqlColumnResponseInput` via:
-//
-//          MysqlColumnResponseArgs{...}
-type MysqlColumnResponseInput interface {
-	pulumi.Input
-
-	ToMysqlColumnResponseOutput() MysqlColumnResponseOutput
-	ToMysqlColumnResponseOutputWithContext(context.Context) MysqlColumnResponseOutput
-}
-
-// MySQL Column.
-type MysqlColumnResponseArgs struct {
-	// Column collation.
-	Collation pulumi.StringInput `pulumi:"collation"`
-	// Column name.
-	Column pulumi.StringInput `pulumi:"column"`
-	// The MySQL data type. Full data types list can be found here: https://dev.mysql.com/doc/refman/8.0/en/data-types.html
-	DataType pulumi.StringInput `pulumi:"dataType"`
-	// Column length.
-	Length pulumi.IntInput `pulumi:"length"`
-	// Whether or not the column can accept a null value.
-	Nullable pulumi.BoolInput `pulumi:"nullable"`
-	// The ordinal position of the column in the table.
-	OrdinalPosition pulumi.IntInput `pulumi:"ordinalPosition"`
-	// Whether or not the column represents a primary key.
-	PrimaryKey pulumi.BoolInput `pulumi:"primaryKey"`
-}
-
-func (MysqlColumnResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MysqlColumnResponse)(nil)).Elem()
-}
-
-func (i MysqlColumnResponseArgs) ToMysqlColumnResponseOutput() MysqlColumnResponseOutput {
-	return i.ToMysqlColumnResponseOutputWithContext(context.Background())
-}
-
-func (i MysqlColumnResponseArgs) ToMysqlColumnResponseOutputWithContext(ctx context.Context) MysqlColumnResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MysqlColumnResponseOutput)
-}
-
-// MysqlColumnResponseArrayInput is an input type that accepts MysqlColumnResponseArray and MysqlColumnResponseArrayOutput values.
-// You can construct a concrete instance of `MysqlColumnResponseArrayInput` via:
-//
-//          MysqlColumnResponseArray{ MysqlColumnResponseArgs{...} }
-type MysqlColumnResponseArrayInput interface {
-	pulumi.Input
-
-	ToMysqlColumnResponseArrayOutput() MysqlColumnResponseArrayOutput
-	ToMysqlColumnResponseArrayOutputWithContext(context.Context) MysqlColumnResponseArrayOutput
-}
-
-type MysqlColumnResponseArray []MysqlColumnResponseInput
-
-func (MysqlColumnResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MysqlColumnResponse)(nil)).Elem()
-}
-
-func (i MysqlColumnResponseArray) ToMysqlColumnResponseArrayOutput() MysqlColumnResponseArrayOutput {
-	return i.ToMysqlColumnResponseArrayOutputWithContext(context.Background())
-}
-
-func (i MysqlColumnResponseArray) ToMysqlColumnResponseArrayOutputWithContext(ctx context.Context) MysqlColumnResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MysqlColumnResponseArrayOutput)
 }
 
 // MySQL Column.
@@ -3314,62 +1934,6 @@ type MysqlDatabaseResponse struct {
 	Database string `pulumi:"database"`
 	// Tables in the database.
 	MysqlTables []MysqlTableResponse `pulumi:"mysqlTables"`
-}
-
-// MysqlDatabaseResponseInput is an input type that accepts MysqlDatabaseResponseArgs and MysqlDatabaseResponseOutput values.
-// You can construct a concrete instance of `MysqlDatabaseResponseInput` via:
-//
-//          MysqlDatabaseResponseArgs{...}
-type MysqlDatabaseResponseInput interface {
-	pulumi.Input
-
-	ToMysqlDatabaseResponseOutput() MysqlDatabaseResponseOutput
-	ToMysqlDatabaseResponseOutputWithContext(context.Context) MysqlDatabaseResponseOutput
-}
-
-// MySQL database.
-type MysqlDatabaseResponseArgs struct {
-	// Database name.
-	Database pulumi.StringInput `pulumi:"database"`
-	// Tables in the database.
-	MysqlTables MysqlTableResponseArrayInput `pulumi:"mysqlTables"`
-}
-
-func (MysqlDatabaseResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MysqlDatabaseResponse)(nil)).Elem()
-}
-
-func (i MysqlDatabaseResponseArgs) ToMysqlDatabaseResponseOutput() MysqlDatabaseResponseOutput {
-	return i.ToMysqlDatabaseResponseOutputWithContext(context.Background())
-}
-
-func (i MysqlDatabaseResponseArgs) ToMysqlDatabaseResponseOutputWithContext(ctx context.Context) MysqlDatabaseResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MysqlDatabaseResponseOutput)
-}
-
-// MysqlDatabaseResponseArrayInput is an input type that accepts MysqlDatabaseResponseArray and MysqlDatabaseResponseArrayOutput values.
-// You can construct a concrete instance of `MysqlDatabaseResponseArrayInput` via:
-//
-//          MysqlDatabaseResponseArray{ MysqlDatabaseResponseArgs{...} }
-type MysqlDatabaseResponseArrayInput interface {
-	pulumi.Input
-
-	ToMysqlDatabaseResponseArrayOutput() MysqlDatabaseResponseArrayOutput
-	ToMysqlDatabaseResponseArrayOutputWithContext(context.Context) MysqlDatabaseResponseArrayOutput
-}
-
-type MysqlDatabaseResponseArray []MysqlDatabaseResponseInput
-
-func (MysqlDatabaseResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MysqlDatabaseResponse)(nil)).Elem()
-}
-
-func (i MysqlDatabaseResponseArray) ToMysqlDatabaseResponseArrayOutput() MysqlDatabaseResponseArrayOutput {
-	return i.ToMysqlDatabaseResponseArrayOutputWithContext(context.Background())
-}
-
-func (i MysqlDatabaseResponseArray) ToMysqlDatabaseResponseArrayOutputWithContext(ctx context.Context) MysqlDatabaseResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MysqlDatabaseResponseArrayOutput)
 }
 
 // MySQL database.
@@ -3647,84 +2211,6 @@ type MysqlProfileResponse struct {
 	Username string `pulumi:"username"`
 }
 
-// MysqlProfileResponseInput is an input type that accepts MysqlProfileResponseArgs and MysqlProfileResponseOutput values.
-// You can construct a concrete instance of `MysqlProfileResponseInput` via:
-//
-//          MysqlProfileResponseArgs{...}
-type MysqlProfileResponseInput interface {
-	pulumi.Input
-
-	ToMysqlProfileResponseOutput() MysqlProfileResponseOutput
-	ToMysqlProfileResponseOutputWithContext(context.Context) MysqlProfileResponseOutput
-}
-
-// MySQL database profile.
-type MysqlProfileResponseArgs struct {
-	// Hostname for the MySQL connection.
-	Hostname pulumi.StringInput `pulumi:"hostname"`
-	// Input only. Password for the MySQL connection.
-	Password pulumi.StringInput `pulumi:"password"`
-	// Port for the MySQL connection, default value is 3306.
-	Port pulumi.IntInput `pulumi:"port"`
-	// SSL configuration for the MySQL connection.
-	SslConfig MysqlSslConfigResponseInput `pulumi:"sslConfig"`
-	// Username for the MySQL connection.
-	Username pulumi.StringInput `pulumi:"username"`
-}
-
-func (MysqlProfileResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MysqlProfileResponse)(nil)).Elem()
-}
-
-func (i MysqlProfileResponseArgs) ToMysqlProfileResponseOutput() MysqlProfileResponseOutput {
-	return i.ToMysqlProfileResponseOutputWithContext(context.Background())
-}
-
-func (i MysqlProfileResponseArgs) ToMysqlProfileResponseOutputWithContext(ctx context.Context) MysqlProfileResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MysqlProfileResponseOutput)
-}
-
-func (i MysqlProfileResponseArgs) ToMysqlProfileResponsePtrOutput() MysqlProfileResponsePtrOutput {
-	return i.ToMysqlProfileResponsePtrOutputWithContext(context.Background())
-}
-
-func (i MysqlProfileResponseArgs) ToMysqlProfileResponsePtrOutputWithContext(ctx context.Context) MysqlProfileResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MysqlProfileResponseOutput).ToMysqlProfileResponsePtrOutputWithContext(ctx)
-}
-
-// MysqlProfileResponsePtrInput is an input type that accepts MysqlProfileResponseArgs, MysqlProfileResponsePtr and MysqlProfileResponsePtrOutput values.
-// You can construct a concrete instance of `MysqlProfileResponsePtrInput` via:
-//
-//          MysqlProfileResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type MysqlProfileResponsePtrInput interface {
-	pulumi.Input
-
-	ToMysqlProfileResponsePtrOutput() MysqlProfileResponsePtrOutput
-	ToMysqlProfileResponsePtrOutputWithContext(context.Context) MysqlProfileResponsePtrOutput
-}
-
-type mysqlProfileResponsePtrType MysqlProfileResponseArgs
-
-func MysqlProfileResponsePtr(v *MysqlProfileResponseArgs) MysqlProfileResponsePtrInput {
-	return (*mysqlProfileResponsePtrType)(v)
-}
-
-func (*mysqlProfileResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MysqlProfileResponse)(nil)).Elem()
-}
-
-func (i *mysqlProfileResponsePtrType) ToMysqlProfileResponsePtrOutput() MysqlProfileResponsePtrOutput {
-	return i.ToMysqlProfileResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *mysqlProfileResponsePtrType) ToMysqlProfileResponsePtrOutputWithContext(ctx context.Context) MysqlProfileResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MysqlProfileResponsePtrOutput)
-}
-
 // MySQL database profile.
 type MysqlProfileResponseOutput struct{ *pulumi.OutputState }
 
@@ -3738,16 +2224,6 @@ func (o MysqlProfileResponseOutput) ToMysqlProfileResponseOutput() MysqlProfileR
 
 func (o MysqlProfileResponseOutput) ToMysqlProfileResponseOutputWithContext(ctx context.Context) MysqlProfileResponseOutput {
 	return o
-}
-
-func (o MysqlProfileResponseOutput) ToMysqlProfileResponsePtrOutput() MysqlProfileResponsePtrOutput {
-	return o.ToMysqlProfileResponsePtrOutputWithContext(context.Background())
-}
-
-func (o MysqlProfileResponseOutput) ToMysqlProfileResponsePtrOutputWithContext(ctx context.Context) MysqlProfileResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MysqlProfileResponse) *MysqlProfileResponse {
-		return &v
-	}).(MysqlProfileResponsePtrOutput)
 }
 
 // Hostname for the MySQL connection.
@@ -3773,80 +2249,6 @@ func (o MysqlProfileResponseOutput) SslConfig() MysqlSslConfigResponseOutput {
 // Username for the MySQL connection.
 func (o MysqlProfileResponseOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v MysqlProfileResponse) string { return v.Username }).(pulumi.StringOutput)
-}
-
-type MysqlProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (MysqlProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MysqlProfileResponse)(nil)).Elem()
-}
-
-func (o MysqlProfileResponsePtrOutput) ToMysqlProfileResponsePtrOutput() MysqlProfileResponsePtrOutput {
-	return o
-}
-
-func (o MysqlProfileResponsePtrOutput) ToMysqlProfileResponsePtrOutputWithContext(ctx context.Context) MysqlProfileResponsePtrOutput {
-	return o
-}
-
-func (o MysqlProfileResponsePtrOutput) Elem() MysqlProfileResponseOutput {
-	return o.ApplyT(func(v *MysqlProfileResponse) MysqlProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret MysqlProfileResponse
-		return ret
-	}).(MysqlProfileResponseOutput)
-}
-
-// Hostname for the MySQL connection.
-func (o MysqlProfileResponsePtrOutput) Hostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MysqlProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Hostname
-	}).(pulumi.StringPtrOutput)
-}
-
-// Input only. Password for the MySQL connection.
-func (o MysqlProfileResponsePtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MysqlProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Password
-	}).(pulumi.StringPtrOutput)
-}
-
-// Port for the MySQL connection, default value is 3306.
-func (o MysqlProfileResponsePtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MysqlProfileResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Port
-	}).(pulumi.IntPtrOutput)
-}
-
-// SSL configuration for the MySQL connection.
-func (o MysqlProfileResponsePtrOutput) SslConfig() MysqlSslConfigResponsePtrOutput {
-	return o.ApplyT(func(v *MysqlProfileResponse) *MysqlSslConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.SslConfig
-	}).(MysqlSslConfigResponsePtrOutput)
-}
-
-// Username for the MySQL connection.
-func (o MysqlProfileResponsePtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MysqlProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Username
-	}).(pulumi.StringPtrOutput)
 }
 
 // MySQL database structure
@@ -3995,76 +2397,6 @@ type MysqlRdbmsResponse struct {
 	MysqlDatabases []MysqlDatabaseResponse `pulumi:"mysqlDatabases"`
 }
 
-// MysqlRdbmsResponseInput is an input type that accepts MysqlRdbmsResponseArgs and MysqlRdbmsResponseOutput values.
-// You can construct a concrete instance of `MysqlRdbmsResponseInput` via:
-//
-//          MysqlRdbmsResponseArgs{...}
-type MysqlRdbmsResponseInput interface {
-	pulumi.Input
-
-	ToMysqlRdbmsResponseOutput() MysqlRdbmsResponseOutput
-	ToMysqlRdbmsResponseOutputWithContext(context.Context) MysqlRdbmsResponseOutput
-}
-
-// MySQL database structure
-type MysqlRdbmsResponseArgs struct {
-	// Mysql databases on the server
-	MysqlDatabases MysqlDatabaseResponseArrayInput `pulumi:"mysqlDatabases"`
-}
-
-func (MysqlRdbmsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MysqlRdbmsResponse)(nil)).Elem()
-}
-
-func (i MysqlRdbmsResponseArgs) ToMysqlRdbmsResponseOutput() MysqlRdbmsResponseOutput {
-	return i.ToMysqlRdbmsResponseOutputWithContext(context.Background())
-}
-
-func (i MysqlRdbmsResponseArgs) ToMysqlRdbmsResponseOutputWithContext(ctx context.Context) MysqlRdbmsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MysqlRdbmsResponseOutput)
-}
-
-func (i MysqlRdbmsResponseArgs) ToMysqlRdbmsResponsePtrOutput() MysqlRdbmsResponsePtrOutput {
-	return i.ToMysqlRdbmsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i MysqlRdbmsResponseArgs) ToMysqlRdbmsResponsePtrOutputWithContext(ctx context.Context) MysqlRdbmsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MysqlRdbmsResponseOutput).ToMysqlRdbmsResponsePtrOutputWithContext(ctx)
-}
-
-// MysqlRdbmsResponsePtrInput is an input type that accepts MysqlRdbmsResponseArgs, MysqlRdbmsResponsePtr and MysqlRdbmsResponsePtrOutput values.
-// You can construct a concrete instance of `MysqlRdbmsResponsePtrInput` via:
-//
-//          MysqlRdbmsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type MysqlRdbmsResponsePtrInput interface {
-	pulumi.Input
-
-	ToMysqlRdbmsResponsePtrOutput() MysqlRdbmsResponsePtrOutput
-	ToMysqlRdbmsResponsePtrOutputWithContext(context.Context) MysqlRdbmsResponsePtrOutput
-}
-
-type mysqlRdbmsResponsePtrType MysqlRdbmsResponseArgs
-
-func MysqlRdbmsResponsePtr(v *MysqlRdbmsResponseArgs) MysqlRdbmsResponsePtrInput {
-	return (*mysqlRdbmsResponsePtrType)(v)
-}
-
-func (*mysqlRdbmsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MysqlRdbmsResponse)(nil)).Elem()
-}
-
-func (i *mysqlRdbmsResponsePtrType) ToMysqlRdbmsResponsePtrOutput() MysqlRdbmsResponsePtrOutput {
-	return i.ToMysqlRdbmsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *mysqlRdbmsResponsePtrType) ToMysqlRdbmsResponsePtrOutputWithContext(ctx context.Context) MysqlRdbmsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MysqlRdbmsResponsePtrOutput)
-}
-
 // MySQL database structure
 type MysqlRdbmsResponseOutput struct{ *pulumi.OutputState }
 
@@ -4080,53 +2412,9 @@ func (o MysqlRdbmsResponseOutput) ToMysqlRdbmsResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o MysqlRdbmsResponseOutput) ToMysqlRdbmsResponsePtrOutput() MysqlRdbmsResponsePtrOutput {
-	return o.ToMysqlRdbmsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o MysqlRdbmsResponseOutput) ToMysqlRdbmsResponsePtrOutputWithContext(ctx context.Context) MysqlRdbmsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MysqlRdbmsResponse) *MysqlRdbmsResponse {
-		return &v
-	}).(MysqlRdbmsResponsePtrOutput)
-}
-
 // Mysql databases on the server
 func (o MysqlRdbmsResponseOutput) MysqlDatabases() MysqlDatabaseResponseArrayOutput {
 	return o.ApplyT(func(v MysqlRdbmsResponse) []MysqlDatabaseResponse { return v.MysqlDatabases }).(MysqlDatabaseResponseArrayOutput)
-}
-
-type MysqlRdbmsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (MysqlRdbmsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MysqlRdbmsResponse)(nil)).Elem()
-}
-
-func (o MysqlRdbmsResponsePtrOutput) ToMysqlRdbmsResponsePtrOutput() MysqlRdbmsResponsePtrOutput {
-	return o
-}
-
-func (o MysqlRdbmsResponsePtrOutput) ToMysqlRdbmsResponsePtrOutputWithContext(ctx context.Context) MysqlRdbmsResponsePtrOutput {
-	return o
-}
-
-func (o MysqlRdbmsResponsePtrOutput) Elem() MysqlRdbmsResponseOutput {
-	return o.ApplyT(func(v *MysqlRdbmsResponse) MysqlRdbmsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret MysqlRdbmsResponse
-		return ret
-	}).(MysqlRdbmsResponseOutput)
-}
-
-// Mysql databases on the server
-func (o MysqlRdbmsResponsePtrOutput) MysqlDatabases() MysqlDatabaseResponseArrayOutput {
-	return o.ApplyT(func(v *MysqlRdbmsResponse) []MysqlDatabaseResponse {
-		if v == nil {
-			return nil
-		}
-		return v.MysqlDatabases
-	}).(MysqlDatabaseResponseArrayOutput)
 }
 
 // MySQL source configuration
@@ -4296,78 +2584,6 @@ type MysqlSourceConfigResponse struct {
 	IncludeObjects MysqlRdbmsResponse `pulumi:"includeObjects"`
 }
 
-// MysqlSourceConfigResponseInput is an input type that accepts MysqlSourceConfigResponseArgs and MysqlSourceConfigResponseOutput values.
-// You can construct a concrete instance of `MysqlSourceConfigResponseInput` via:
-//
-//          MysqlSourceConfigResponseArgs{...}
-type MysqlSourceConfigResponseInput interface {
-	pulumi.Input
-
-	ToMysqlSourceConfigResponseOutput() MysqlSourceConfigResponseOutput
-	ToMysqlSourceConfigResponseOutputWithContext(context.Context) MysqlSourceConfigResponseOutput
-}
-
-// MySQL source configuration
-type MysqlSourceConfigResponseArgs struct {
-	// MySQL objects to exclude from the stream.
-	ExcludeObjects MysqlRdbmsResponseInput `pulumi:"excludeObjects"`
-	// MySQL objects to retrieve from the source.
-	IncludeObjects MysqlRdbmsResponseInput `pulumi:"includeObjects"`
-}
-
-func (MysqlSourceConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MysqlSourceConfigResponse)(nil)).Elem()
-}
-
-func (i MysqlSourceConfigResponseArgs) ToMysqlSourceConfigResponseOutput() MysqlSourceConfigResponseOutput {
-	return i.ToMysqlSourceConfigResponseOutputWithContext(context.Background())
-}
-
-func (i MysqlSourceConfigResponseArgs) ToMysqlSourceConfigResponseOutputWithContext(ctx context.Context) MysqlSourceConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MysqlSourceConfigResponseOutput)
-}
-
-func (i MysqlSourceConfigResponseArgs) ToMysqlSourceConfigResponsePtrOutput() MysqlSourceConfigResponsePtrOutput {
-	return i.ToMysqlSourceConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i MysqlSourceConfigResponseArgs) ToMysqlSourceConfigResponsePtrOutputWithContext(ctx context.Context) MysqlSourceConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MysqlSourceConfigResponseOutput).ToMysqlSourceConfigResponsePtrOutputWithContext(ctx)
-}
-
-// MysqlSourceConfigResponsePtrInput is an input type that accepts MysqlSourceConfigResponseArgs, MysqlSourceConfigResponsePtr and MysqlSourceConfigResponsePtrOutput values.
-// You can construct a concrete instance of `MysqlSourceConfigResponsePtrInput` via:
-//
-//          MysqlSourceConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type MysqlSourceConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToMysqlSourceConfigResponsePtrOutput() MysqlSourceConfigResponsePtrOutput
-	ToMysqlSourceConfigResponsePtrOutputWithContext(context.Context) MysqlSourceConfigResponsePtrOutput
-}
-
-type mysqlSourceConfigResponsePtrType MysqlSourceConfigResponseArgs
-
-func MysqlSourceConfigResponsePtr(v *MysqlSourceConfigResponseArgs) MysqlSourceConfigResponsePtrInput {
-	return (*mysqlSourceConfigResponsePtrType)(v)
-}
-
-func (*mysqlSourceConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MysqlSourceConfigResponse)(nil)).Elem()
-}
-
-func (i *mysqlSourceConfigResponsePtrType) ToMysqlSourceConfigResponsePtrOutput() MysqlSourceConfigResponsePtrOutput {
-	return i.ToMysqlSourceConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *mysqlSourceConfigResponsePtrType) ToMysqlSourceConfigResponsePtrOutputWithContext(ctx context.Context) MysqlSourceConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MysqlSourceConfigResponsePtrOutput)
-}
-
 // MySQL source configuration
 type MysqlSourceConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -4383,16 +2599,6 @@ func (o MysqlSourceConfigResponseOutput) ToMysqlSourceConfigResponseOutputWithCo
 	return o
 }
 
-func (o MysqlSourceConfigResponseOutput) ToMysqlSourceConfigResponsePtrOutput() MysqlSourceConfigResponsePtrOutput {
-	return o.ToMysqlSourceConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o MysqlSourceConfigResponseOutput) ToMysqlSourceConfigResponsePtrOutputWithContext(ctx context.Context) MysqlSourceConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MysqlSourceConfigResponse) *MysqlSourceConfigResponse {
-		return &v
-	}).(MysqlSourceConfigResponsePtrOutput)
-}
-
 // MySQL objects to exclude from the stream.
 func (o MysqlSourceConfigResponseOutput) ExcludeObjects() MysqlRdbmsResponseOutput {
 	return o.ApplyT(func(v MysqlSourceConfigResponse) MysqlRdbmsResponse { return v.ExcludeObjects }).(MysqlRdbmsResponseOutput)
@@ -4401,50 +2607,6 @@ func (o MysqlSourceConfigResponseOutput) ExcludeObjects() MysqlRdbmsResponseOutp
 // MySQL objects to retrieve from the source.
 func (o MysqlSourceConfigResponseOutput) IncludeObjects() MysqlRdbmsResponseOutput {
 	return o.ApplyT(func(v MysqlSourceConfigResponse) MysqlRdbmsResponse { return v.IncludeObjects }).(MysqlRdbmsResponseOutput)
-}
-
-type MysqlSourceConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (MysqlSourceConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MysqlSourceConfigResponse)(nil)).Elem()
-}
-
-func (o MysqlSourceConfigResponsePtrOutput) ToMysqlSourceConfigResponsePtrOutput() MysqlSourceConfigResponsePtrOutput {
-	return o
-}
-
-func (o MysqlSourceConfigResponsePtrOutput) ToMysqlSourceConfigResponsePtrOutputWithContext(ctx context.Context) MysqlSourceConfigResponsePtrOutput {
-	return o
-}
-
-func (o MysqlSourceConfigResponsePtrOutput) Elem() MysqlSourceConfigResponseOutput {
-	return o.ApplyT(func(v *MysqlSourceConfigResponse) MysqlSourceConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret MysqlSourceConfigResponse
-		return ret
-	}).(MysqlSourceConfigResponseOutput)
-}
-
-// MySQL objects to exclude from the stream.
-func (o MysqlSourceConfigResponsePtrOutput) ExcludeObjects() MysqlRdbmsResponsePtrOutput {
-	return o.ApplyT(func(v *MysqlSourceConfigResponse) *MysqlRdbmsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ExcludeObjects
-	}).(MysqlRdbmsResponsePtrOutput)
-}
-
-// MySQL objects to retrieve from the source.
-func (o MysqlSourceConfigResponsePtrOutput) IncludeObjects() MysqlRdbmsResponsePtrOutput {
-	return o.ApplyT(func(v *MysqlSourceConfigResponse) *MysqlRdbmsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.IncludeObjects
-	}).(MysqlRdbmsResponsePtrOutput)
 }
 
 // MySQL SSL configuration information.
@@ -4641,86 +2803,6 @@ type MysqlSslConfigResponse struct {
 	ClientKeySet bool `pulumi:"clientKeySet"`
 }
 
-// MysqlSslConfigResponseInput is an input type that accepts MysqlSslConfigResponseArgs and MysqlSslConfigResponseOutput values.
-// You can construct a concrete instance of `MysqlSslConfigResponseInput` via:
-//
-//          MysqlSslConfigResponseArgs{...}
-type MysqlSslConfigResponseInput interface {
-	pulumi.Input
-
-	ToMysqlSslConfigResponseOutput() MysqlSslConfigResponseOutput
-	ToMysqlSslConfigResponseOutputWithContext(context.Context) MysqlSslConfigResponseOutput
-}
-
-// MySQL SSL configuration information.
-type MysqlSslConfigResponseArgs struct {
-	// Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
-	CaCertificate pulumi.StringInput `pulumi:"caCertificate"`
-	// Indicates whether the ca_certificate field is set.
-	CaCertificateSet pulumi.BoolInput `pulumi:"caCertificateSet"`
-	// Input only. PEM-encoded certificate that will be used by the replica to authenticate against the source database server. If this field is used then the 'client_key' and the 'ca_certificate' fields are mandatory.
-	ClientCertificate pulumi.StringInput `pulumi:"clientCertificate"`
-	// Indicates whether the client_certificate field is set.
-	ClientCertificateSet pulumi.BoolInput `pulumi:"clientCertificateSet"`
-	// Input only. PEM-encoded private key associated with the Client Certificate. If this field is used then the 'client_certificate' and the 'ca_certificate' fields are mandatory.
-	ClientKey pulumi.StringInput `pulumi:"clientKey"`
-	// Indicates whether the client_key field is set.
-	ClientKeySet pulumi.BoolInput `pulumi:"clientKeySet"`
-}
-
-func (MysqlSslConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MysqlSslConfigResponse)(nil)).Elem()
-}
-
-func (i MysqlSslConfigResponseArgs) ToMysqlSslConfigResponseOutput() MysqlSslConfigResponseOutput {
-	return i.ToMysqlSslConfigResponseOutputWithContext(context.Background())
-}
-
-func (i MysqlSslConfigResponseArgs) ToMysqlSslConfigResponseOutputWithContext(ctx context.Context) MysqlSslConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MysqlSslConfigResponseOutput)
-}
-
-func (i MysqlSslConfigResponseArgs) ToMysqlSslConfigResponsePtrOutput() MysqlSslConfigResponsePtrOutput {
-	return i.ToMysqlSslConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i MysqlSslConfigResponseArgs) ToMysqlSslConfigResponsePtrOutputWithContext(ctx context.Context) MysqlSslConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MysqlSslConfigResponseOutput).ToMysqlSslConfigResponsePtrOutputWithContext(ctx)
-}
-
-// MysqlSslConfigResponsePtrInput is an input type that accepts MysqlSslConfigResponseArgs, MysqlSslConfigResponsePtr and MysqlSslConfigResponsePtrOutput values.
-// You can construct a concrete instance of `MysqlSslConfigResponsePtrInput` via:
-//
-//          MysqlSslConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type MysqlSslConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToMysqlSslConfigResponsePtrOutput() MysqlSslConfigResponsePtrOutput
-	ToMysqlSslConfigResponsePtrOutputWithContext(context.Context) MysqlSslConfigResponsePtrOutput
-}
-
-type mysqlSslConfigResponsePtrType MysqlSslConfigResponseArgs
-
-func MysqlSslConfigResponsePtr(v *MysqlSslConfigResponseArgs) MysqlSslConfigResponsePtrInput {
-	return (*mysqlSslConfigResponsePtrType)(v)
-}
-
-func (*mysqlSslConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MysqlSslConfigResponse)(nil)).Elem()
-}
-
-func (i *mysqlSslConfigResponsePtrType) ToMysqlSslConfigResponsePtrOutput() MysqlSslConfigResponsePtrOutput {
-	return i.ToMysqlSslConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *mysqlSslConfigResponsePtrType) ToMysqlSslConfigResponsePtrOutputWithContext(ctx context.Context) MysqlSslConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MysqlSslConfigResponsePtrOutput)
-}
-
 // MySQL SSL configuration information.
 type MysqlSslConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -4734,16 +2816,6 @@ func (o MysqlSslConfigResponseOutput) ToMysqlSslConfigResponseOutput() MysqlSslC
 
 func (o MysqlSslConfigResponseOutput) ToMysqlSslConfigResponseOutputWithContext(ctx context.Context) MysqlSslConfigResponseOutput {
 	return o
-}
-
-func (o MysqlSslConfigResponseOutput) ToMysqlSslConfigResponsePtrOutput() MysqlSslConfigResponsePtrOutput {
-	return o.ToMysqlSslConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o MysqlSslConfigResponseOutput) ToMysqlSslConfigResponsePtrOutputWithContext(ctx context.Context) MysqlSslConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MysqlSslConfigResponse) *MysqlSslConfigResponse {
-		return &v
-	}).(MysqlSslConfigResponsePtrOutput)
 }
 
 // Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
@@ -4774,90 +2846,6 @@ func (o MysqlSslConfigResponseOutput) ClientKey() pulumi.StringOutput {
 // Indicates whether the client_key field is set.
 func (o MysqlSslConfigResponseOutput) ClientKeySet() pulumi.BoolOutput {
 	return o.ApplyT(func(v MysqlSslConfigResponse) bool { return v.ClientKeySet }).(pulumi.BoolOutput)
-}
-
-type MysqlSslConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (MysqlSslConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MysqlSslConfigResponse)(nil)).Elem()
-}
-
-func (o MysqlSslConfigResponsePtrOutput) ToMysqlSslConfigResponsePtrOutput() MysqlSslConfigResponsePtrOutput {
-	return o
-}
-
-func (o MysqlSslConfigResponsePtrOutput) ToMysqlSslConfigResponsePtrOutputWithContext(ctx context.Context) MysqlSslConfigResponsePtrOutput {
-	return o
-}
-
-func (o MysqlSslConfigResponsePtrOutput) Elem() MysqlSslConfigResponseOutput {
-	return o.ApplyT(func(v *MysqlSslConfigResponse) MysqlSslConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret MysqlSslConfigResponse
-		return ret
-	}).(MysqlSslConfigResponseOutput)
-}
-
-// Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
-func (o MysqlSslConfigResponsePtrOutput) CaCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MysqlSslConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CaCertificate
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether the ca_certificate field is set.
-func (o MysqlSslConfigResponsePtrOutput) CaCertificateSet() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MysqlSslConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.CaCertificateSet
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Input only. PEM-encoded certificate that will be used by the replica to authenticate against the source database server. If this field is used then the 'client_key' and the 'ca_certificate' fields are mandatory.
-func (o MysqlSslConfigResponsePtrOutput) ClientCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MysqlSslConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClientCertificate
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether the client_certificate field is set.
-func (o MysqlSslConfigResponsePtrOutput) ClientCertificateSet() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MysqlSslConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.ClientCertificateSet
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Input only. PEM-encoded private key associated with the Client Certificate. If this field is used then the 'client_certificate' and the 'ca_certificate' fields are mandatory.
-func (o MysqlSslConfigResponsePtrOutput) ClientKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MysqlSslConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClientKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether the client_key field is set.
-func (o MysqlSslConfigResponsePtrOutput) ClientKeySet() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MysqlSslConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.ClientKeySet
-	}).(pulumi.BoolPtrOutput)
 }
 
 // MySQL table.
@@ -4975,62 +2963,6 @@ type MysqlTableResponse struct {
 	MysqlColumns []MysqlColumnResponse `pulumi:"mysqlColumns"`
 	// Table name.
 	Table string `pulumi:"table"`
-}
-
-// MysqlTableResponseInput is an input type that accepts MysqlTableResponseArgs and MysqlTableResponseOutput values.
-// You can construct a concrete instance of `MysqlTableResponseInput` via:
-//
-//          MysqlTableResponseArgs{...}
-type MysqlTableResponseInput interface {
-	pulumi.Input
-
-	ToMysqlTableResponseOutput() MysqlTableResponseOutput
-	ToMysqlTableResponseOutputWithContext(context.Context) MysqlTableResponseOutput
-}
-
-// MySQL table.
-type MysqlTableResponseArgs struct {
-	// MySQL columns in the database. When unspecified as part of include/exclude lists, includes/excludes everything.
-	MysqlColumns MysqlColumnResponseArrayInput `pulumi:"mysqlColumns"`
-	// Table name.
-	Table pulumi.StringInput `pulumi:"table"`
-}
-
-func (MysqlTableResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MysqlTableResponse)(nil)).Elem()
-}
-
-func (i MysqlTableResponseArgs) ToMysqlTableResponseOutput() MysqlTableResponseOutput {
-	return i.ToMysqlTableResponseOutputWithContext(context.Background())
-}
-
-func (i MysqlTableResponseArgs) ToMysqlTableResponseOutputWithContext(ctx context.Context) MysqlTableResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MysqlTableResponseOutput)
-}
-
-// MysqlTableResponseArrayInput is an input type that accepts MysqlTableResponseArray and MysqlTableResponseArrayOutput values.
-// You can construct a concrete instance of `MysqlTableResponseArrayInput` via:
-//
-//          MysqlTableResponseArray{ MysqlTableResponseArgs{...} }
-type MysqlTableResponseArrayInput interface {
-	pulumi.Input
-
-	ToMysqlTableResponseArrayOutput() MysqlTableResponseArrayOutput
-	ToMysqlTableResponseArrayOutputWithContext(context.Context) MysqlTableResponseArrayOutput
-}
-
-type MysqlTableResponseArray []MysqlTableResponseInput
-
-func (MysqlTableResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MysqlTableResponse)(nil)).Elem()
-}
-
-func (i MysqlTableResponseArray) ToMysqlTableResponseArrayOutput() MysqlTableResponseArrayOutput {
-	return i.ToMysqlTableResponseArrayOutputWithContext(context.Background())
-}
-
-func (i MysqlTableResponseArray) ToMysqlTableResponseArrayOutputWithContext(ctx context.Context) MysqlTableResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MysqlTableResponseArrayOutput)
 }
 
 // MySQL table.
@@ -5270,76 +3202,6 @@ type OracleColumnResponse struct {
 	PrimaryKey bool `pulumi:"primaryKey"`
 	// Column scale.
 	Scale int `pulumi:"scale"`
-}
-
-// OracleColumnResponseInput is an input type that accepts OracleColumnResponseArgs and OracleColumnResponseOutput values.
-// You can construct a concrete instance of `OracleColumnResponseInput` via:
-//
-//          OracleColumnResponseArgs{...}
-type OracleColumnResponseInput interface {
-	pulumi.Input
-
-	ToOracleColumnResponseOutput() OracleColumnResponseOutput
-	ToOracleColumnResponseOutputWithContext(context.Context) OracleColumnResponseOutput
-}
-
-// Oracle Column.
-type OracleColumnResponseArgs struct {
-	// Column name.
-	Column pulumi.StringInput `pulumi:"column"`
-	// The Oracle data type.
-	DataType pulumi.StringInput `pulumi:"dataType"`
-	// Column encoding.
-	Encoding pulumi.StringInput `pulumi:"encoding"`
-	// Column length.
-	Length pulumi.IntInput `pulumi:"length"`
-	// Whether or not the column can accept a null value.
-	Nullable pulumi.BoolInput `pulumi:"nullable"`
-	// The ordinal position of the column in the table.
-	OrdinalPosition pulumi.IntInput `pulumi:"ordinalPosition"`
-	// Column precision.
-	Precision pulumi.IntInput `pulumi:"precision"`
-	// Whether or not the column represents a primary key.
-	PrimaryKey pulumi.BoolInput `pulumi:"primaryKey"`
-	// Column scale.
-	Scale pulumi.IntInput `pulumi:"scale"`
-}
-
-func (OracleColumnResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OracleColumnResponse)(nil)).Elem()
-}
-
-func (i OracleColumnResponseArgs) ToOracleColumnResponseOutput() OracleColumnResponseOutput {
-	return i.ToOracleColumnResponseOutputWithContext(context.Background())
-}
-
-func (i OracleColumnResponseArgs) ToOracleColumnResponseOutputWithContext(ctx context.Context) OracleColumnResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OracleColumnResponseOutput)
-}
-
-// OracleColumnResponseArrayInput is an input type that accepts OracleColumnResponseArray and OracleColumnResponseArrayOutput values.
-// You can construct a concrete instance of `OracleColumnResponseArrayInput` via:
-//
-//          OracleColumnResponseArray{ OracleColumnResponseArgs{...} }
-type OracleColumnResponseArrayInput interface {
-	pulumi.Input
-
-	ToOracleColumnResponseArrayOutput() OracleColumnResponseArrayOutput
-	ToOracleColumnResponseArrayOutputWithContext(context.Context) OracleColumnResponseArrayOutput
-}
-
-type OracleColumnResponseArray []OracleColumnResponseInput
-
-func (OracleColumnResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OracleColumnResponse)(nil)).Elem()
-}
-
-func (i OracleColumnResponseArray) ToOracleColumnResponseArrayOutput() OracleColumnResponseArrayOutput {
-	return i.ToOracleColumnResponseArrayOutputWithContext(context.Background())
-}
-
-func (i OracleColumnResponseArray) ToOracleColumnResponseArrayOutputWithContext(ctx context.Context) OracleColumnResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OracleColumnResponseArrayOutput)
 }
 
 // Oracle Column.
@@ -5673,86 +3535,6 @@ type OracleProfileResponse struct {
 	Username string `pulumi:"username"`
 }
 
-// OracleProfileResponseInput is an input type that accepts OracleProfileResponseArgs and OracleProfileResponseOutput values.
-// You can construct a concrete instance of `OracleProfileResponseInput` via:
-//
-//          OracleProfileResponseArgs{...}
-type OracleProfileResponseInput interface {
-	pulumi.Input
-
-	ToOracleProfileResponseOutput() OracleProfileResponseOutput
-	ToOracleProfileResponseOutputWithContext(context.Context) OracleProfileResponseOutput
-}
-
-// Oracle database profile.
-type OracleProfileResponseArgs struct {
-	// Connection string attributes
-	ConnectionAttributes pulumi.StringMapInput `pulumi:"connectionAttributes"`
-	// Database for the Oracle connection.
-	DatabaseService pulumi.StringInput `pulumi:"databaseService"`
-	// Hostname for the Oracle connection.
-	Hostname pulumi.StringInput `pulumi:"hostname"`
-	// Password for the Oracle connection.
-	Password pulumi.StringInput `pulumi:"password"`
-	// Port for the Oracle connection, default value is 1521.
-	Port pulumi.IntInput `pulumi:"port"`
-	// Username for the Oracle connection.
-	Username pulumi.StringInput `pulumi:"username"`
-}
-
-func (OracleProfileResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OracleProfileResponse)(nil)).Elem()
-}
-
-func (i OracleProfileResponseArgs) ToOracleProfileResponseOutput() OracleProfileResponseOutput {
-	return i.ToOracleProfileResponseOutputWithContext(context.Background())
-}
-
-func (i OracleProfileResponseArgs) ToOracleProfileResponseOutputWithContext(ctx context.Context) OracleProfileResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OracleProfileResponseOutput)
-}
-
-func (i OracleProfileResponseArgs) ToOracleProfileResponsePtrOutput() OracleProfileResponsePtrOutput {
-	return i.ToOracleProfileResponsePtrOutputWithContext(context.Background())
-}
-
-func (i OracleProfileResponseArgs) ToOracleProfileResponsePtrOutputWithContext(ctx context.Context) OracleProfileResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OracleProfileResponseOutput).ToOracleProfileResponsePtrOutputWithContext(ctx)
-}
-
-// OracleProfileResponsePtrInput is an input type that accepts OracleProfileResponseArgs, OracleProfileResponsePtr and OracleProfileResponsePtrOutput values.
-// You can construct a concrete instance of `OracleProfileResponsePtrInput` via:
-//
-//          OracleProfileResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type OracleProfileResponsePtrInput interface {
-	pulumi.Input
-
-	ToOracleProfileResponsePtrOutput() OracleProfileResponsePtrOutput
-	ToOracleProfileResponsePtrOutputWithContext(context.Context) OracleProfileResponsePtrOutput
-}
-
-type oracleProfileResponsePtrType OracleProfileResponseArgs
-
-func OracleProfileResponsePtr(v *OracleProfileResponseArgs) OracleProfileResponsePtrInput {
-	return (*oracleProfileResponsePtrType)(v)
-}
-
-func (*oracleProfileResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OracleProfileResponse)(nil)).Elem()
-}
-
-func (i *oracleProfileResponsePtrType) ToOracleProfileResponsePtrOutput() OracleProfileResponsePtrOutput {
-	return i.ToOracleProfileResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *oracleProfileResponsePtrType) ToOracleProfileResponsePtrOutputWithContext(ctx context.Context) OracleProfileResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OracleProfileResponsePtrOutput)
-}
-
 // Oracle database profile.
 type OracleProfileResponseOutput struct{ *pulumi.OutputState }
 
@@ -5766,16 +3548,6 @@ func (o OracleProfileResponseOutput) ToOracleProfileResponseOutput() OracleProfi
 
 func (o OracleProfileResponseOutput) ToOracleProfileResponseOutputWithContext(ctx context.Context) OracleProfileResponseOutput {
 	return o
-}
-
-func (o OracleProfileResponseOutput) ToOracleProfileResponsePtrOutput() OracleProfileResponsePtrOutput {
-	return o.ToOracleProfileResponsePtrOutputWithContext(context.Background())
-}
-
-func (o OracleProfileResponseOutput) ToOracleProfileResponsePtrOutputWithContext(ctx context.Context) OracleProfileResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OracleProfileResponse) *OracleProfileResponse {
-		return &v
-	}).(OracleProfileResponsePtrOutput)
 }
 
 // Connection string attributes
@@ -5806,90 +3578,6 @@ func (o OracleProfileResponseOutput) Port() pulumi.IntOutput {
 // Username for the Oracle connection.
 func (o OracleProfileResponseOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v OracleProfileResponse) string { return v.Username }).(pulumi.StringOutput)
-}
-
-type OracleProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (OracleProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OracleProfileResponse)(nil)).Elem()
-}
-
-func (o OracleProfileResponsePtrOutput) ToOracleProfileResponsePtrOutput() OracleProfileResponsePtrOutput {
-	return o
-}
-
-func (o OracleProfileResponsePtrOutput) ToOracleProfileResponsePtrOutputWithContext(ctx context.Context) OracleProfileResponsePtrOutput {
-	return o
-}
-
-func (o OracleProfileResponsePtrOutput) Elem() OracleProfileResponseOutput {
-	return o.ApplyT(func(v *OracleProfileResponse) OracleProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret OracleProfileResponse
-		return ret
-	}).(OracleProfileResponseOutput)
-}
-
-// Connection string attributes
-func (o OracleProfileResponsePtrOutput) ConnectionAttributes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *OracleProfileResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.ConnectionAttributes
-	}).(pulumi.StringMapOutput)
-}
-
-// Database for the Oracle connection.
-func (o OracleProfileResponsePtrOutput) DatabaseService() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OracleProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DatabaseService
-	}).(pulumi.StringPtrOutput)
-}
-
-// Hostname for the Oracle connection.
-func (o OracleProfileResponsePtrOutput) Hostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OracleProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Hostname
-	}).(pulumi.StringPtrOutput)
-}
-
-// Password for the Oracle connection.
-func (o OracleProfileResponsePtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OracleProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Password
-	}).(pulumi.StringPtrOutput)
-}
-
-// Port for the Oracle connection, default value is 1521.
-func (o OracleProfileResponsePtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *OracleProfileResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Port
-	}).(pulumi.IntPtrOutput)
-}
-
-// Username for the Oracle connection.
-func (o OracleProfileResponsePtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OracleProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Username
-	}).(pulumi.StringPtrOutput)
 }
 
 // Oracle database structure.
@@ -6038,76 +3726,6 @@ type OracleRdbmsResponse struct {
 	OracleSchemas []OracleSchemaResponse `pulumi:"oracleSchemas"`
 }
 
-// OracleRdbmsResponseInput is an input type that accepts OracleRdbmsResponseArgs and OracleRdbmsResponseOutput values.
-// You can construct a concrete instance of `OracleRdbmsResponseInput` via:
-//
-//          OracleRdbmsResponseArgs{...}
-type OracleRdbmsResponseInput interface {
-	pulumi.Input
-
-	ToOracleRdbmsResponseOutput() OracleRdbmsResponseOutput
-	ToOracleRdbmsResponseOutputWithContext(context.Context) OracleRdbmsResponseOutput
-}
-
-// Oracle database structure.
-type OracleRdbmsResponseArgs struct {
-	// Oracle schemas/databases in the database server.
-	OracleSchemas OracleSchemaResponseArrayInput `pulumi:"oracleSchemas"`
-}
-
-func (OracleRdbmsResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OracleRdbmsResponse)(nil)).Elem()
-}
-
-func (i OracleRdbmsResponseArgs) ToOracleRdbmsResponseOutput() OracleRdbmsResponseOutput {
-	return i.ToOracleRdbmsResponseOutputWithContext(context.Background())
-}
-
-func (i OracleRdbmsResponseArgs) ToOracleRdbmsResponseOutputWithContext(ctx context.Context) OracleRdbmsResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OracleRdbmsResponseOutput)
-}
-
-func (i OracleRdbmsResponseArgs) ToOracleRdbmsResponsePtrOutput() OracleRdbmsResponsePtrOutput {
-	return i.ToOracleRdbmsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i OracleRdbmsResponseArgs) ToOracleRdbmsResponsePtrOutputWithContext(ctx context.Context) OracleRdbmsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OracleRdbmsResponseOutput).ToOracleRdbmsResponsePtrOutputWithContext(ctx)
-}
-
-// OracleRdbmsResponsePtrInput is an input type that accepts OracleRdbmsResponseArgs, OracleRdbmsResponsePtr and OracleRdbmsResponsePtrOutput values.
-// You can construct a concrete instance of `OracleRdbmsResponsePtrInput` via:
-//
-//          OracleRdbmsResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type OracleRdbmsResponsePtrInput interface {
-	pulumi.Input
-
-	ToOracleRdbmsResponsePtrOutput() OracleRdbmsResponsePtrOutput
-	ToOracleRdbmsResponsePtrOutputWithContext(context.Context) OracleRdbmsResponsePtrOutput
-}
-
-type oracleRdbmsResponsePtrType OracleRdbmsResponseArgs
-
-func OracleRdbmsResponsePtr(v *OracleRdbmsResponseArgs) OracleRdbmsResponsePtrInput {
-	return (*oracleRdbmsResponsePtrType)(v)
-}
-
-func (*oracleRdbmsResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OracleRdbmsResponse)(nil)).Elem()
-}
-
-func (i *oracleRdbmsResponsePtrType) ToOracleRdbmsResponsePtrOutput() OracleRdbmsResponsePtrOutput {
-	return i.ToOracleRdbmsResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *oracleRdbmsResponsePtrType) ToOracleRdbmsResponsePtrOutputWithContext(ctx context.Context) OracleRdbmsResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OracleRdbmsResponsePtrOutput)
-}
-
 // Oracle database structure.
 type OracleRdbmsResponseOutput struct{ *pulumi.OutputState }
 
@@ -6123,53 +3741,9 @@ func (o OracleRdbmsResponseOutput) ToOracleRdbmsResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o OracleRdbmsResponseOutput) ToOracleRdbmsResponsePtrOutput() OracleRdbmsResponsePtrOutput {
-	return o.ToOracleRdbmsResponsePtrOutputWithContext(context.Background())
-}
-
-func (o OracleRdbmsResponseOutput) ToOracleRdbmsResponsePtrOutputWithContext(ctx context.Context) OracleRdbmsResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OracleRdbmsResponse) *OracleRdbmsResponse {
-		return &v
-	}).(OracleRdbmsResponsePtrOutput)
-}
-
 // Oracle schemas/databases in the database server.
 func (o OracleRdbmsResponseOutput) OracleSchemas() OracleSchemaResponseArrayOutput {
 	return o.ApplyT(func(v OracleRdbmsResponse) []OracleSchemaResponse { return v.OracleSchemas }).(OracleSchemaResponseArrayOutput)
-}
-
-type OracleRdbmsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (OracleRdbmsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OracleRdbmsResponse)(nil)).Elem()
-}
-
-func (o OracleRdbmsResponsePtrOutput) ToOracleRdbmsResponsePtrOutput() OracleRdbmsResponsePtrOutput {
-	return o
-}
-
-func (o OracleRdbmsResponsePtrOutput) ToOracleRdbmsResponsePtrOutputWithContext(ctx context.Context) OracleRdbmsResponsePtrOutput {
-	return o
-}
-
-func (o OracleRdbmsResponsePtrOutput) Elem() OracleRdbmsResponseOutput {
-	return o.ApplyT(func(v *OracleRdbmsResponse) OracleRdbmsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret OracleRdbmsResponse
-		return ret
-	}).(OracleRdbmsResponseOutput)
-}
-
-// Oracle schemas/databases in the database server.
-func (o OracleRdbmsResponsePtrOutput) OracleSchemas() OracleSchemaResponseArrayOutput {
-	return o.ApplyT(func(v *OracleRdbmsResponse) []OracleSchemaResponse {
-		if v == nil {
-			return nil
-		}
-		return v.OracleSchemas
-	}).(OracleSchemaResponseArrayOutput)
 }
 
 // Oracle schema.
@@ -6287,62 +3861,6 @@ type OracleSchemaResponse struct {
 	OracleTables []OracleTableResponse `pulumi:"oracleTables"`
 	// Schema name.
 	Schema string `pulumi:"schema"`
-}
-
-// OracleSchemaResponseInput is an input type that accepts OracleSchemaResponseArgs and OracleSchemaResponseOutput values.
-// You can construct a concrete instance of `OracleSchemaResponseInput` via:
-//
-//          OracleSchemaResponseArgs{...}
-type OracleSchemaResponseInput interface {
-	pulumi.Input
-
-	ToOracleSchemaResponseOutput() OracleSchemaResponseOutput
-	ToOracleSchemaResponseOutputWithContext(context.Context) OracleSchemaResponseOutput
-}
-
-// Oracle schema.
-type OracleSchemaResponseArgs struct {
-	// Tables in the schema.
-	OracleTables OracleTableResponseArrayInput `pulumi:"oracleTables"`
-	// Schema name.
-	Schema pulumi.StringInput `pulumi:"schema"`
-}
-
-func (OracleSchemaResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OracleSchemaResponse)(nil)).Elem()
-}
-
-func (i OracleSchemaResponseArgs) ToOracleSchemaResponseOutput() OracleSchemaResponseOutput {
-	return i.ToOracleSchemaResponseOutputWithContext(context.Background())
-}
-
-func (i OracleSchemaResponseArgs) ToOracleSchemaResponseOutputWithContext(ctx context.Context) OracleSchemaResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OracleSchemaResponseOutput)
-}
-
-// OracleSchemaResponseArrayInput is an input type that accepts OracleSchemaResponseArray and OracleSchemaResponseArrayOutput values.
-// You can construct a concrete instance of `OracleSchemaResponseArrayInput` via:
-//
-//          OracleSchemaResponseArray{ OracleSchemaResponseArgs{...} }
-type OracleSchemaResponseArrayInput interface {
-	pulumi.Input
-
-	ToOracleSchemaResponseArrayOutput() OracleSchemaResponseArrayOutput
-	ToOracleSchemaResponseArrayOutputWithContext(context.Context) OracleSchemaResponseArrayOutput
-}
-
-type OracleSchemaResponseArray []OracleSchemaResponseInput
-
-func (OracleSchemaResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OracleSchemaResponse)(nil)).Elem()
-}
-
-func (i OracleSchemaResponseArray) ToOracleSchemaResponseArrayOutput() OracleSchemaResponseArrayOutput {
-	return i.ToOracleSchemaResponseArrayOutputWithContext(context.Background())
-}
-
-func (i OracleSchemaResponseArray) ToOracleSchemaResponseArrayOutputWithContext(ctx context.Context) OracleSchemaResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OracleSchemaResponseArrayOutput)
 }
 
 // Oracle schema.
@@ -6557,78 +4075,6 @@ type OracleSourceConfigResponse struct {
 	IncludeObjects OracleRdbmsResponse `pulumi:"includeObjects"`
 }
 
-// OracleSourceConfigResponseInput is an input type that accepts OracleSourceConfigResponseArgs and OracleSourceConfigResponseOutput values.
-// You can construct a concrete instance of `OracleSourceConfigResponseInput` via:
-//
-//          OracleSourceConfigResponseArgs{...}
-type OracleSourceConfigResponseInput interface {
-	pulumi.Input
-
-	ToOracleSourceConfigResponseOutput() OracleSourceConfigResponseOutput
-	ToOracleSourceConfigResponseOutputWithContext(context.Context) OracleSourceConfigResponseOutput
-}
-
-// Oracle data source configuration
-type OracleSourceConfigResponseArgs struct {
-	// Oracle objects to exclude from the stream.
-	ExcludeObjects OracleRdbmsResponseInput `pulumi:"excludeObjects"`
-	// Oracle objects to include in the stream.
-	IncludeObjects OracleRdbmsResponseInput `pulumi:"includeObjects"`
-}
-
-func (OracleSourceConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OracleSourceConfigResponse)(nil)).Elem()
-}
-
-func (i OracleSourceConfigResponseArgs) ToOracleSourceConfigResponseOutput() OracleSourceConfigResponseOutput {
-	return i.ToOracleSourceConfigResponseOutputWithContext(context.Background())
-}
-
-func (i OracleSourceConfigResponseArgs) ToOracleSourceConfigResponseOutputWithContext(ctx context.Context) OracleSourceConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OracleSourceConfigResponseOutput)
-}
-
-func (i OracleSourceConfigResponseArgs) ToOracleSourceConfigResponsePtrOutput() OracleSourceConfigResponsePtrOutput {
-	return i.ToOracleSourceConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i OracleSourceConfigResponseArgs) ToOracleSourceConfigResponsePtrOutputWithContext(ctx context.Context) OracleSourceConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OracleSourceConfigResponseOutput).ToOracleSourceConfigResponsePtrOutputWithContext(ctx)
-}
-
-// OracleSourceConfigResponsePtrInput is an input type that accepts OracleSourceConfigResponseArgs, OracleSourceConfigResponsePtr and OracleSourceConfigResponsePtrOutput values.
-// You can construct a concrete instance of `OracleSourceConfigResponsePtrInput` via:
-//
-//          OracleSourceConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type OracleSourceConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToOracleSourceConfigResponsePtrOutput() OracleSourceConfigResponsePtrOutput
-	ToOracleSourceConfigResponsePtrOutputWithContext(context.Context) OracleSourceConfigResponsePtrOutput
-}
-
-type oracleSourceConfigResponsePtrType OracleSourceConfigResponseArgs
-
-func OracleSourceConfigResponsePtr(v *OracleSourceConfigResponseArgs) OracleSourceConfigResponsePtrInput {
-	return (*oracleSourceConfigResponsePtrType)(v)
-}
-
-func (*oracleSourceConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OracleSourceConfigResponse)(nil)).Elem()
-}
-
-func (i *oracleSourceConfigResponsePtrType) ToOracleSourceConfigResponsePtrOutput() OracleSourceConfigResponsePtrOutput {
-	return i.ToOracleSourceConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *oracleSourceConfigResponsePtrType) ToOracleSourceConfigResponsePtrOutputWithContext(ctx context.Context) OracleSourceConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OracleSourceConfigResponsePtrOutput)
-}
-
 // Oracle data source configuration
 type OracleSourceConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -6644,16 +4090,6 @@ func (o OracleSourceConfigResponseOutput) ToOracleSourceConfigResponseOutputWith
 	return o
 }
 
-func (o OracleSourceConfigResponseOutput) ToOracleSourceConfigResponsePtrOutput() OracleSourceConfigResponsePtrOutput {
-	return o.ToOracleSourceConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o OracleSourceConfigResponseOutput) ToOracleSourceConfigResponsePtrOutputWithContext(ctx context.Context) OracleSourceConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OracleSourceConfigResponse) *OracleSourceConfigResponse {
-		return &v
-	}).(OracleSourceConfigResponsePtrOutput)
-}
-
 // Oracle objects to exclude from the stream.
 func (o OracleSourceConfigResponseOutput) ExcludeObjects() OracleRdbmsResponseOutput {
 	return o.ApplyT(func(v OracleSourceConfigResponse) OracleRdbmsResponse { return v.ExcludeObjects }).(OracleRdbmsResponseOutput)
@@ -6662,50 +4098,6 @@ func (o OracleSourceConfigResponseOutput) ExcludeObjects() OracleRdbmsResponseOu
 // Oracle objects to include in the stream.
 func (o OracleSourceConfigResponseOutput) IncludeObjects() OracleRdbmsResponseOutput {
 	return o.ApplyT(func(v OracleSourceConfigResponse) OracleRdbmsResponse { return v.IncludeObjects }).(OracleRdbmsResponseOutput)
-}
-
-type OracleSourceConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (OracleSourceConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OracleSourceConfigResponse)(nil)).Elem()
-}
-
-func (o OracleSourceConfigResponsePtrOutput) ToOracleSourceConfigResponsePtrOutput() OracleSourceConfigResponsePtrOutput {
-	return o
-}
-
-func (o OracleSourceConfigResponsePtrOutput) ToOracleSourceConfigResponsePtrOutputWithContext(ctx context.Context) OracleSourceConfigResponsePtrOutput {
-	return o
-}
-
-func (o OracleSourceConfigResponsePtrOutput) Elem() OracleSourceConfigResponseOutput {
-	return o.ApplyT(func(v *OracleSourceConfigResponse) OracleSourceConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret OracleSourceConfigResponse
-		return ret
-	}).(OracleSourceConfigResponseOutput)
-}
-
-// Oracle objects to exclude from the stream.
-func (o OracleSourceConfigResponsePtrOutput) ExcludeObjects() OracleRdbmsResponsePtrOutput {
-	return o.ApplyT(func(v *OracleSourceConfigResponse) *OracleRdbmsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.ExcludeObjects
-	}).(OracleRdbmsResponsePtrOutput)
-}
-
-// Oracle objects to include in the stream.
-func (o OracleSourceConfigResponsePtrOutput) IncludeObjects() OracleRdbmsResponsePtrOutput {
-	return o.ApplyT(func(v *OracleSourceConfigResponse) *OracleRdbmsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.IncludeObjects
-	}).(OracleRdbmsResponsePtrOutput)
 }
 
 // Oracle table.
@@ -6823,62 +4215,6 @@ type OracleTableResponse struct {
 	OracleColumns []OracleColumnResponse `pulumi:"oracleColumns"`
 	// Table name.
 	Table string `pulumi:"table"`
-}
-
-// OracleTableResponseInput is an input type that accepts OracleTableResponseArgs and OracleTableResponseOutput values.
-// You can construct a concrete instance of `OracleTableResponseInput` via:
-//
-//          OracleTableResponseArgs{...}
-type OracleTableResponseInput interface {
-	pulumi.Input
-
-	ToOracleTableResponseOutput() OracleTableResponseOutput
-	ToOracleTableResponseOutputWithContext(context.Context) OracleTableResponseOutput
-}
-
-// Oracle table.
-type OracleTableResponseArgs struct {
-	// Oracle columns in the schema. When unspecified as part of inclue/exclude lists, includes/excludes everything.
-	OracleColumns OracleColumnResponseArrayInput `pulumi:"oracleColumns"`
-	// Table name.
-	Table pulumi.StringInput `pulumi:"table"`
-}
-
-func (OracleTableResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OracleTableResponse)(nil)).Elem()
-}
-
-func (i OracleTableResponseArgs) ToOracleTableResponseOutput() OracleTableResponseOutput {
-	return i.ToOracleTableResponseOutputWithContext(context.Background())
-}
-
-func (i OracleTableResponseArgs) ToOracleTableResponseOutputWithContext(ctx context.Context) OracleTableResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OracleTableResponseOutput)
-}
-
-// OracleTableResponseArrayInput is an input type that accepts OracleTableResponseArray and OracleTableResponseArrayOutput values.
-// You can construct a concrete instance of `OracleTableResponseArrayInput` via:
-//
-//          OracleTableResponseArray{ OracleTableResponseArgs{...} }
-type OracleTableResponseArrayInput interface {
-	pulumi.Input
-
-	ToOracleTableResponseArrayOutput() OracleTableResponseArrayOutput
-	ToOracleTableResponseArrayOutputWithContext(context.Context) OracleTableResponseArrayOutput
-}
-
-type OracleTableResponseArray []OracleTableResponseInput
-
-func (OracleTableResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OracleTableResponse)(nil)).Elem()
-}
-
-func (i OracleTableResponseArray) ToOracleTableResponseArrayOutput() OracleTableResponseArrayOutput {
-	return i.ToOracleTableResponseArrayOutputWithContext(context.Background())
-}
-
-func (i OracleTableResponseArray) ToOracleTableResponseArrayOutputWithContext(ctx context.Context) OracleTableResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OracleTableResponseArrayOutput)
 }
 
 // Oracle table.
@@ -7072,76 +4408,6 @@ type PrivateConnectivityResponse struct {
 	PrivateConnection string `pulumi:"privateConnection"`
 }
 
-// PrivateConnectivityResponseInput is an input type that accepts PrivateConnectivityResponseArgs and PrivateConnectivityResponseOutput values.
-// You can construct a concrete instance of `PrivateConnectivityResponseInput` via:
-//
-//          PrivateConnectivityResponseArgs{...}
-type PrivateConnectivityResponseInput interface {
-	pulumi.Input
-
-	ToPrivateConnectivityResponseOutput() PrivateConnectivityResponseOutput
-	ToPrivateConnectivityResponseOutputWithContext(context.Context) PrivateConnectivityResponseOutput
-}
-
-// Private Connectivity
-type PrivateConnectivityResponseArgs struct {
-	// A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
-	PrivateConnection pulumi.StringInput `pulumi:"privateConnection"`
-}
-
-func (PrivateConnectivityResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateConnectivityResponse)(nil)).Elem()
-}
-
-func (i PrivateConnectivityResponseArgs) ToPrivateConnectivityResponseOutput() PrivateConnectivityResponseOutput {
-	return i.ToPrivateConnectivityResponseOutputWithContext(context.Background())
-}
-
-func (i PrivateConnectivityResponseArgs) ToPrivateConnectivityResponseOutputWithContext(ctx context.Context) PrivateConnectivityResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectivityResponseOutput)
-}
-
-func (i PrivateConnectivityResponseArgs) ToPrivateConnectivityResponsePtrOutput() PrivateConnectivityResponsePtrOutput {
-	return i.ToPrivateConnectivityResponsePtrOutputWithContext(context.Background())
-}
-
-func (i PrivateConnectivityResponseArgs) ToPrivateConnectivityResponsePtrOutputWithContext(ctx context.Context) PrivateConnectivityResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectivityResponseOutput).ToPrivateConnectivityResponsePtrOutputWithContext(ctx)
-}
-
-// PrivateConnectivityResponsePtrInput is an input type that accepts PrivateConnectivityResponseArgs, PrivateConnectivityResponsePtr and PrivateConnectivityResponsePtrOutput values.
-// You can construct a concrete instance of `PrivateConnectivityResponsePtrInput` via:
-//
-//          PrivateConnectivityResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type PrivateConnectivityResponsePtrInput interface {
-	pulumi.Input
-
-	ToPrivateConnectivityResponsePtrOutput() PrivateConnectivityResponsePtrOutput
-	ToPrivateConnectivityResponsePtrOutputWithContext(context.Context) PrivateConnectivityResponsePtrOutput
-}
-
-type privateConnectivityResponsePtrType PrivateConnectivityResponseArgs
-
-func PrivateConnectivityResponsePtr(v *PrivateConnectivityResponseArgs) PrivateConnectivityResponsePtrInput {
-	return (*privateConnectivityResponsePtrType)(v)
-}
-
-func (*privateConnectivityResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateConnectivityResponse)(nil)).Elem()
-}
-
-func (i *privateConnectivityResponsePtrType) ToPrivateConnectivityResponsePtrOutput() PrivateConnectivityResponsePtrOutput {
-	return i.ToPrivateConnectivityResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *privateConnectivityResponsePtrType) ToPrivateConnectivityResponsePtrOutputWithContext(ctx context.Context) PrivateConnectivityResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectivityResponsePtrOutput)
-}
-
 // Private Connectivity
 type PrivateConnectivityResponseOutput struct{ *pulumi.OutputState }
 
@@ -7157,53 +4423,9 @@ func (o PrivateConnectivityResponseOutput) ToPrivateConnectivityResponseOutputWi
 	return o
 }
 
-func (o PrivateConnectivityResponseOutput) ToPrivateConnectivityResponsePtrOutput() PrivateConnectivityResponsePtrOutput {
-	return o.ToPrivateConnectivityResponsePtrOutputWithContext(context.Background())
-}
-
-func (o PrivateConnectivityResponseOutput) ToPrivateConnectivityResponsePtrOutputWithContext(ctx context.Context) PrivateConnectivityResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateConnectivityResponse) *PrivateConnectivityResponse {
-		return &v
-	}).(PrivateConnectivityResponsePtrOutput)
-}
-
 // A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
 func (o PrivateConnectivityResponseOutput) PrivateConnection() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateConnectivityResponse) string { return v.PrivateConnection }).(pulumi.StringOutput)
-}
-
-type PrivateConnectivityResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateConnectivityResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateConnectivityResponse)(nil)).Elem()
-}
-
-func (o PrivateConnectivityResponsePtrOutput) ToPrivateConnectivityResponsePtrOutput() PrivateConnectivityResponsePtrOutput {
-	return o
-}
-
-func (o PrivateConnectivityResponsePtrOutput) ToPrivateConnectivityResponsePtrOutputWithContext(ctx context.Context) PrivateConnectivityResponsePtrOutput {
-	return o
-}
-
-func (o PrivateConnectivityResponsePtrOutput) Elem() PrivateConnectivityResponseOutput {
-	return o.ApplyT(func(v *PrivateConnectivityResponse) PrivateConnectivityResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PrivateConnectivityResponse
-		return ret
-	}).(PrivateConnectivityResponseOutput)
-}
-
-// A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
-func (o PrivateConnectivityResponsePtrOutput) PrivateConnection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateConnectivityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrivateConnection
-	}).(pulumi.StringPtrOutput)
 }
 
 // The configuration of the stream source.
@@ -7249,47 +4471,6 @@ func (i SourceConfigArgs) ToSourceConfigOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(SourceConfigOutput)
 }
 
-func (i SourceConfigArgs) ToSourceConfigPtrOutput() SourceConfigPtrOutput {
-	return i.ToSourceConfigPtrOutputWithContext(context.Background())
-}
-
-func (i SourceConfigArgs) ToSourceConfigPtrOutputWithContext(ctx context.Context) SourceConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceConfigOutput).ToSourceConfigPtrOutputWithContext(ctx)
-}
-
-// SourceConfigPtrInput is an input type that accepts SourceConfigArgs, SourceConfigPtr and SourceConfigPtrOutput values.
-// You can construct a concrete instance of `SourceConfigPtrInput` via:
-//
-//          SourceConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type SourceConfigPtrInput interface {
-	pulumi.Input
-
-	ToSourceConfigPtrOutput() SourceConfigPtrOutput
-	ToSourceConfigPtrOutputWithContext(context.Context) SourceConfigPtrOutput
-}
-
-type sourceConfigPtrType SourceConfigArgs
-
-func SourceConfigPtr(v *SourceConfigArgs) SourceConfigPtrInput {
-	return (*sourceConfigPtrType)(v)
-}
-
-func (*sourceConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SourceConfig)(nil)).Elem()
-}
-
-func (i *sourceConfigPtrType) ToSourceConfigPtrOutput() SourceConfigPtrOutput {
-	return i.ToSourceConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *sourceConfigPtrType) ToSourceConfigPtrOutputWithContext(ctx context.Context) SourceConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceConfigPtrOutput)
-}
-
 // The configuration of the stream source.
 type SourceConfigOutput struct{ *pulumi.OutputState }
 
@@ -7303,16 +4484,6 @@ func (o SourceConfigOutput) ToSourceConfigOutput() SourceConfigOutput {
 
 func (o SourceConfigOutput) ToSourceConfigOutputWithContext(ctx context.Context) SourceConfigOutput {
 	return o
-}
-
-func (o SourceConfigOutput) ToSourceConfigPtrOutput() SourceConfigPtrOutput {
-	return o.ToSourceConfigPtrOutputWithContext(context.Background())
-}
-
-func (o SourceConfigOutput) ToSourceConfigPtrOutputWithContext(ctx context.Context) SourceConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceConfig) *SourceConfig {
-		return &v
-	}).(SourceConfigPtrOutput)
 }
 
 // MySQL data source configuration
@@ -7330,60 +4501,6 @@ func (o SourceConfigOutput) SourceConnectionProfile() pulumi.StringOutput {
 	return o.ApplyT(func(v SourceConfig) string { return v.SourceConnectionProfile }).(pulumi.StringOutput)
 }
 
-type SourceConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (SourceConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SourceConfig)(nil)).Elem()
-}
-
-func (o SourceConfigPtrOutput) ToSourceConfigPtrOutput() SourceConfigPtrOutput {
-	return o
-}
-
-func (o SourceConfigPtrOutput) ToSourceConfigPtrOutputWithContext(ctx context.Context) SourceConfigPtrOutput {
-	return o
-}
-
-func (o SourceConfigPtrOutput) Elem() SourceConfigOutput {
-	return o.ApplyT(func(v *SourceConfig) SourceConfig {
-		if v != nil {
-			return *v
-		}
-		var ret SourceConfig
-		return ret
-	}).(SourceConfigOutput)
-}
-
-// MySQL data source configuration
-func (o SourceConfigPtrOutput) MysqlSourceConfig() MysqlSourceConfigPtrOutput {
-	return o.ApplyT(func(v *SourceConfig) *MysqlSourceConfig {
-		if v == nil {
-			return nil
-		}
-		return v.MysqlSourceConfig
-	}).(MysqlSourceConfigPtrOutput)
-}
-
-// Oracle data source configuration
-func (o SourceConfigPtrOutput) OracleSourceConfig() OracleSourceConfigPtrOutput {
-	return o.ApplyT(func(v *SourceConfig) *OracleSourceConfig {
-		if v == nil {
-			return nil
-		}
-		return v.OracleSourceConfig
-	}).(OracleSourceConfigPtrOutput)
-}
-
-// Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
-func (o SourceConfigPtrOutput) SourceConnectionProfile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SourceConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SourceConnectionProfile
-	}).(pulumi.StringPtrOutput)
-}
-
 // The configuration of the stream source.
 type SourceConfigResponse struct {
 	// MySQL data source configuration
@@ -7392,80 +4509,6 @@ type SourceConfigResponse struct {
 	OracleSourceConfig OracleSourceConfigResponse `pulumi:"oracleSourceConfig"`
 	// Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
 	SourceConnectionProfile string `pulumi:"sourceConnectionProfile"`
-}
-
-// SourceConfigResponseInput is an input type that accepts SourceConfigResponseArgs and SourceConfigResponseOutput values.
-// You can construct a concrete instance of `SourceConfigResponseInput` via:
-//
-//          SourceConfigResponseArgs{...}
-type SourceConfigResponseInput interface {
-	pulumi.Input
-
-	ToSourceConfigResponseOutput() SourceConfigResponseOutput
-	ToSourceConfigResponseOutputWithContext(context.Context) SourceConfigResponseOutput
-}
-
-// The configuration of the stream source.
-type SourceConfigResponseArgs struct {
-	// MySQL data source configuration
-	MysqlSourceConfig MysqlSourceConfigResponseInput `pulumi:"mysqlSourceConfig"`
-	// Oracle data source configuration
-	OracleSourceConfig OracleSourceConfigResponseInput `pulumi:"oracleSourceConfig"`
-	// Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
-	SourceConnectionProfile pulumi.StringInput `pulumi:"sourceConnectionProfile"`
-}
-
-func (SourceConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceConfigResponse)(nil)).Elem()
-}
-
-func (i SourceConfigResponseArgs) ToSourceConfigResponseOutput() SourceConfigResponseOutput {
-	return i.ToSourceConfigResponseOutputWithContext(context.Background())
-}
-
-func (i SourceConfigResponseArgs) ToSourceConfigResponseOutputWithContext(ctx context.Context) SourceConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceConfigResponseOutput)
-}
-
-func (i SourceConfigResponseArgs) ToSourceConfigResponsePtrOutput() SourceConfigResponsePtrOutput {
-	return i.ToSourceConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i SourceConfigResponseArgs) ToSourceConfigResponsePtrOutputWithContext(ctx context.Context) SourceConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceConfigResponseOutput).ToSourceConfigResponsePtrOutputWithContext(ctx)
-}
-
-// SourceConfigResponsePtrInput is an input type that accepts SourceConfigResponseArgs, SourceConfigResponsePtr and SourceConfigResponsePtrOutput values.
-// You can construct a concrete instance of `SourceConfigResponsePtrInput` via:
-//
-//          SourceConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type SourceConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToSourceConfigResponsePtrOutput() SourceConfigResponsePtrOutput
-	ToSourceConfigResponsePtrOutputWithContext(context.Context) SourceConfigResponsePtrOutput
-}
-
-type sourceConfigResponsePtrType SourceConfigResponseArgs
-
-func SourceConfigResponsePtr(v *SourceConfigResponseArgs) SourceConfigResponsePtrInput {
-	return (*sourceConfigResponsePtrType)(v)
-}
-
-func (*sourceConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SourceConfigResponse)(nil)).Elem()
-}
-
-func (i *sourceConfigResponsePtrType) ToSourceConfigResponsePtrOutput() SourceConfigResponsePtrOutput {
-	return i.ToSourceConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *sourceConfigResponsePtrType) ToSourceConfigResponsePtrOutputWithContext(ctx context.Context) SourceConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceConfigResponsePtrOutput)
 }
 
 // The configuration of the stream source.
@@ -7483,16 +4526,6 @@ func (o SourceConfigResponseOutput) ToSourceConfigResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o SourceConfigResponseOutput) ToSourceConfigResponsePtrOutput() SourceConfigResponsePtrOutput {
-	return o.ToSourceConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o SourceConfigResponseOutput) ToSourceConfigResponsePtrOutputWithContext(ctx context.Context) SourceConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceConfigResponse) *SourceConfigResponse {
-		return &v
-	}).(SourceConfigResponsePtrOutput)
-}
-
 // MySQL data source configuration
 func (o SourceConfigResponseOutput) MysqlSourceConfig() MysqlSourceConfigResponseOutput {
 	return o.ApplyT(func(v SourceConfigResponse) MysqlSourceConfigResponse { return v.MysqlSourceConfig }).(MysqlSourceConfigResponseOutput)
@@ -7506,60 +4539,6 @@ func (o SourceConfigResponseOutput) OracleSourceConfig() OracleSourceConfigRespo
 // Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
 func (o SourceConfigResponseOutput) SourceConnectionProfile() pulumi.StringOutput {
 	return o.ApplyT(func(v SourceConfigResponse) string { return v.SourceConnectionProfile }).(pulumi.StringOutput)
-}
-
-type SourceConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SourceConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SourceConfigResponse)(nil)).Elem()
-}
-
-func (o SourceConfigResponsePtrOutput) ToSourceConfigResponsePtrOutput() SourceConfigResponsePtrOutput {
-	return o
-}
-
-func (o SourceConfigResponsePtrOutput) ToSourceConfigResponsePtrOutputWithContext(ctx context.Context) SourceConfigResponsePtrOutput {
-	return o
-}
-
-func (o SourceConfigResponsePtrOutput) Elem() SourceConfigResponseOutput {
-	return o.ApplyT(func(v *SourceConfigResponse) SourceConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SourceConfigResponse
-		return ret
-	}).(SourceConfigResponseOutput)
-}
-
-// MySQL data source configuration
-func (o SourceConfigResponsePtrOutput) MysqlSourceConfig() MysqlSourceConfigResponsePtrOutput {
-	return o.ApplyT(func(v *SourceConfigResponse) *MysqlSourceConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.MysqlSourceConfig
-	}).(MysqlSourceConfigResponsePtrOutput)
-}
-
-// Oracle data source configuration
-func (o SourceConfigResponsePtrOutput) OracleSourceConfig() OracleSourceConfigResponsePtrOutput {
-	return o.ApplyT(func(v *SourceConfigResponse) *OracleSourceConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.OracleSourceConfig
-	}).(OracleSourceConfigResponsePtrOutput)
-}
-
-// Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
-func (o SourceConfigResponsePtrOutput) SourceConnectionProfile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SourceConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SourceConnectionProfile
-	}).(pulumi.StringPtrOutput)
 }
 
 // Static IP address connectivity.
@@ -7687,74 +4666,6 @@ func (o StaticServiceIpConnectivityPtrOutput) Elem() StaticServiceIpConnectivity
 type StaticServiceIpConnectivityResponse struct {
 }
 
-// StaticServiceIpConnectivityResponseInput is an input type that accepts StaticServiceIpConnectivityResponseArgs and StaticServiceIpConnectivityResponseOutput values.
-// You can construct a concrete instance of `StaticServiceIpConnectivityResponseInput` via:
-//
-//          StaticServiceIpConnectivityResponseArgs{...}
-type StaticServiceIpConnectivityResponseInput interface {
-	pulumi.Input
-
-	ToStaticServiceIpConnectivityResponseOutput() StaticServiceIpConnectivityResponseOutput
-	ToStaticServiceIpConnectivityResponseOutputWithContext(context.Context) StaticServiceIpConnectivityResponseOutput
-}
-
-// Static IP address connectivity.
-type StaticServiceIpConnectivityResponseArgs struct {
-}
-
-func (StaticServiceIpConnectivityResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StaticServiceIpConnectivityResponse)(nil)).Elem()
-}
-
-func (i StaticServiceIpConnectivityResponseArgs) ToStaticServiceIpConnectivityResponseOutput() StaticServiceIpConnectivityResponseOutput {
-	return i.ToStaticServiceIpConnectivityResponseOutputWithContext(context.Background())
-}
-
-func (i StaticServiceIpConnectivityResponseArgs) ToStaticServiceIpConnectivityResponseOutputWithContext(ctx context.Context) StaticServiceIpConnectivityResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StaticServiceIpConnectivityResponseOutput)
-}
-
-func (i StaticServiceIpConnectivityResponseArgs) ToStaticServiceIpConnectivityResponsePtrOutput() StaticServiceIpConnectivityResponsePtrOutput {
-	return i.ToStaticServiceIpConnectivityResponsePtrOutputWithContext(context.Background())
-}
-
-func (i StaticServiceIpConnectivityResponseArgs) ToStaticServiceIpConnectivityResponsePtrOutputWithContext(ctx context.Context) StaticServiceIpConnectivityResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StaticServiceIpConnectivityResponseOutput).ToStaticServiceIpConnectivityResponsePtrOutputWithContext(ctx)
-}
-
-// StaticServiceIpConnectivityResponsePtrInput is an input type that accepts StaticServiceIpConnectivityResponseArgs, StaticServiceIpConnectivityResponsePtr and StaticServiceIpConnectivityResponsePtrOutput values.
-// You can construct a concrete instance of `StaticServiceIpConnectivityResponsePtrInput` via:
-//
-//          StaticServiceIpConnectivityResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type StaticServiceIpConnectivityResponsePtrInput interface {
-	pulumi.Input
-
-	ToStaticServiceIpConnectivityResponsePtrOutput() StaticServiceIpConnectivityResponsePtrOutput
-	ToStaticServiceIpConnectivityResponsePtrOutputWithContext(context.Context) StaticServiceIpConnectivityResponsePtrOutput
-}
-
-type staticServiceIpConnectivityResponsePtrType StaticServiceIpConnectivityResponseArgs
-
-func StaticServiceIpConnectivityResponsePtr(v *StaticServiceIpConnectivityResponseArgs) StaticServiceIpConnectivityResponsePtrInput {
-	return (*staticServiceIpConnectivityResponsePtrType)(v)
-}
-
-func (*staticServiceIpConnectivityResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StaticServiceIpConnectivityResponse)(nil)).Elem()
-}
-
-func (i *staticServiceIpConnectivityResponsePtrType) ToStaticServiceIpConnectivityResponsePtrOutput() StaticServiceIpConnectivityResponsePtrOutput {
-	return i.ToStaticServiceIpConnectivityResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *staticServiceIpConnectivityResponsePtrType) ToStaticServiceIpConnectivityResponsePtrOutputWithContext(ctx context.Context) StaticServiceIpConnectivityResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StaticServiceIpConnectivityResponsePtrOutput)
-}
-
 // Static IP address connectivity.
 type StaticServiceIpConnectivityResponseOutput struct{ *pulumi.OutputState }
 
@@ -7768,40 +4679,6 @@ func (o StaticServiceIpConnectivityResponseOutput) ToStaticServiceIpConnectivity
 
 func (o StaticServiceIpConnectivityResponseOutput) ToStaticServiceIpConnectivityResponseOutputWithContext(ctx context.Context) StaticServiceIpConnectivityResponseOutput {
 	return o
-}
-
-func (o StaticServiceIpConnectivityResponseOutput) ToStaticServiceIpConnectivityResponsePtrOutput() StaticServiceIpConnectivityResponsePtrOutput {
-	return o.ToStaticServiceIpConnectivityResponsePtrOutputWithContext(context.Background())
-}
-
-func (o StaticServiceIpConnectivityResponseOutput) ToStaticServiceIpConnectivityResponsePtrOutputWithContext(ctx context.Context) StaticServiceIpConnectivityResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StaticServiceIpConnectivityResponse) *StaticServiceIpConnectivityResponse {
-		return &v
-	}).(StaticServiceIpConnectivityResponsePtrOutput)
-}
-
-type StaticServiceIpConnectivityResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (StaticServiceIpConnectivityResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StaticServiceIpConnectivityResponse)(nil)).Elem()
-}
-
-func (o StaticServiceIpConnectivityResponsePtrOutput) ToStaticServiceIpConnectivityResponsePtrOutput() StaticServiceIpConnectivityResponsePtrOutput {
-	return o
-}
-
-func (o StaticServiceIpConnectivityResponsePtrOutput) ToStaticServiceIpConnectivityResponsePtrOutputWithContext(ctx context.Context) StaticServiceIpConnectivityResponsePtrOutput {
-	return o
-}
-
-func (o StaticServiceIpConnectivityResponsePtrOutput) Elem() StaticServiceIpConnectivityResponseOutput {
-	return o.ApplyT(func(v *StaticServiceIpConnectivityResponse) StaticServiceIpConnectivityResponse {
-		if v != nil {
-			return *v
-		}
-		var ret StaticServiceIpConnectivityResponse
-		return ret
-	}).(StaticServiceIpConnectivityResponseOutput)
 }
 
 // The VPC Peering configuration is used to create VPC peering between Datastream and the consumer's VPC.
@@ -7971,78 +4848,6 @@ type VpcPeeringConfigResponse struct {
 	Vpc string `pulumi:"vpc"`
 }
 
-// VpcPeeringConfigResponseInput is an input type that accepts VpcPeeringConfigResponseArgs and VpcPeeringConfigResponseOutput values.
-// You can construct a concrete instance of `VpcPeeringConfigResponseInput` via:
-//
-//          VpcPeeringConfigResponseArgs{...}
-type VpcPeeringConfigResponseInput interface {
-	pulumi.Input
-
-	ToVpcPeeringConfigResponseOutput() VpcPeeringConfigResponseOutput
-	ToVpcPeeringConfigResponseOutputWithContext(context.Context) VpcPeeringConfigResponseOutput
-}
-
-// The VPC Peering configuration is used to create VPC peering between Datastream and the consumer's VPC.
-type VpcPeeringConfigResponseArgs struct {
-	// A free subnet for peering. (CIDR of /29) TODO(b/172995841) add validators.
-	Subnet pulumi.StringInput `pulumi:"subnet"`
-	// Fully qualified name of the VPC that Datastream will peer to. Format: `projects/{project}/global/{networks}/{name}`
-	Vpc pulumi.StringInput `pulumi:"vpc"`
-}
-
-func (VpcPeeringConfigResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcPeeringConfigResponse)(nil)).Elem()
-}
-
-func (i VpcPeeringConfigResponseArgs) ToVpcPeeringConfigResponseOutput() VpcPeeringConfigResponseOutput {
-	return i.ToVpcPeeringConfigResponseOutputWithContext(context.Background())
-}
-
-func (i VpcPeeringConfigResponseArgs) ToVpcPeeringConfigResponseOutputWithContext(ctx context.Context) VpcPeeringConfigResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConfigResponseOutput)
-}
-
-func (i VpcPeeringConfigResponseArgs) ToVpcPeeringConfigResponsePtrOutput() VpcPeeringConfigResponsePtrOutput {
-	return i.ToVpcPeeringConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i VpcPeeringConfigResponseArgs) ToVpcPeeringConfigResponsePtrOutputWithContext(ctx context.Context) VpcPeeringConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConfigResponseOutput).ToVpcPeeringConfigResponsePtrOutputWithContext(ctx)
-}
-
-// VpcPeeringConfigResponsePtrInput is an input type that accepts VpcPeeringConfigResponseArgs, VpcPeeringConfigResponsePtr and VpcPeeringConfigResponsePtrOutput values.
-// You can construct a concrete instance of `VpcPeeringConfigResponsePtrInput` via:
-//
-//          VpcPeeringConfigResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type VpcPeeringConfigResponsePtrInput interface {
-	pulumi.Input
-
-	ToVpcPeeringConfigResponsePtrOutput() VpcPeeringConfigResponsePtrOutput
-	ToVpcPeeringConfigResponsePtrOutputWithContext(context.Context) VpcPeeringConfigResponsePtrOutput
-}
-
-type vpcPeeringConfigResponsePtrType VpcPeeringConfigResponseArgs
-
-func VpcPeeringConfigResponsePtr(v *VpcPeeringConfigResponseArgs) VpcPeeringConfigResponsePtrInput {
-	return (*vpcPeeringConfigResponsePtrType)(v)
-}
-
-func (*vpcPeeringConfigResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VpcPeeringConfigResponse)(nil)).Elem()
-}
-
-func (i *vpcPeeringConfigResponsePtrType) ToVpcPeeringConfigResponsePtrOutput() VpcPeeringConfigResponsePtrOutput {
-	return i.ToVpcPeeringConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *vpcPeeringConfigResponsePtrType) ToVpcPeeringConfigResponsePtrOutputWithContext(ctx context.Context) VpcPeeringConfigResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConfigResponsePtrOutput)
-}
-
 // The VPC Peering configuration is used to create VPC peering between Datastream and the consumer's VPC.
 type VpcPeeringConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -8058,16 +4863,6 @@ func (o VpcPeeringConfigResponseOutput) ToVpcPeeringConfigResponseOutputWithCont
 	return o
 }
 
-func (o VpcPeeringConfigResponseOutput) ToVpcPeeringConfigResponsePtrOutput() VpcPeeringConfigResponsePtrOutput {
-	return o.ToVpcPeeringConfigResponsePtrOutputWithContext(context.Background())
-}
-
-func (o VpcPeeringConfigResponseOutput) ToVpcPeeringConfigResponsePtrOutputWithContext(ctx context.Context) VpcPeeringConfigResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcPeeringConfigResponse) *VpcPeeringConfigResponse {
-		return &v
-	}).(VpcPeeringConfigResponsePtrOutput)
-}
-
 // A free subnet for peering. (CIDR of /29) TODO(b/172995841) add validators.
 func (o VpcPeeringConfigResponseOutput) Subnet() pulumi.StringOutput {
 	return o.ApplyT(func(v VpcPeeringConfigResponse) string { return v.Subnet }).(pulumi.StringOutput)
@@ -8078,189 +4873,80 @@ func (o VpcPeeringConfigResponseOutput) Vpc() pulumi.StringOutput {
 	return o.ApplyT(func(v VpcPeeringConfigResponse) string { return v.Vpc }).(pulumi.StringOutput)
 }
 
-type VpcPeeringConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (VpcPeeringConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VpcPeeringConfigResponse)(nil)).Elem()
-}
-
-func (o VpcPeeringConfigResponsePtrOutput) ToVpcPeeringConfigResponsePtrOutput() VpcPeeringConfigResponsePtrOutput {
-	return o
-}
-
-func (o VpcPeeringConfigResponsePtrOutput) ToVpcPeeringConfigResponsePtrOutputWithContext(ctx context.Context) VpcPeeringConfigResponsePtrOutput {
-	return o
-}
-
-func (o VpcPeeringConfigResponsePtrOutput) Elem() VpcPeeringConfigResponseOutput {
-	return o.ApplyT(func(v *VpcPeeringConfigResponse) VpcPeeringConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret VpcPeeringConfigResponse
-		return ret
-	}).(VpcPeeringConfigResponseOutput)
-}
-
-// A free subnet for peering. (CIDR of /29) TODO(b/172995841) add validators.
-func (o VpcPeeringConfigResponsePtrOutput) Subnet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VpcPeeringConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Subnet
-	}).(pulumi.StringPtrOutput)
-}
-
-// Fully qualified name of the VPC that Datastream will peer to. Format: `projects/{project}/global/{networks}/{name}`
-func (o VpcPeeringConfigResponsePtrOutput) Vpc() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VpcPeeringConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Vpc
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AvroFileFormatInput)(nil)).Elem(), AvroFileFormatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AvroFileFormatPtrInput)(nil)).Elem(), AvroFileFormatArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AvroFileFormatResponseInput)(nil)).Elem(), AvroFileFormatResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AvroFileFormatResponsePtrInput)(nil)).Elem(), AvroFileFormatResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackfillAllStrategyInput)(nil)).Elem(), BackfillAllStrategyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackfillAllStrategyPtrInput)(nil)).Elem(), BackfillAllStrategyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BackfillAllStrategyResponseInput)(nil)).Elem(), BackfillAllStrategyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BackfillAllStrategyResponsePtrInput)(nil)).Elem(), BackfillAllStrategyResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackfillNoneStrategyInput)(nil)).Elem(), BackfillNoneStrategyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackfillNoneStrategyPtrInput)(nil)).Elem(), BackfillNoneStrategyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BackfillNoneStrategyResponseInput)(nil)).Elem(), BackfillNoneStrategyResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BackfillNoneStrategyResponsePtrInput)(nil)).Elem(), BackfillNoneStrategyResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DestinationConfigInput)(nil)).Elem(), DestinationConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DestinationConfigPtrInput)(nil)).Elem(), DestinationConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DestinationConfigResponseInput)(nil)).Elem(), DestinationConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DestinationConfigResponsePtrInput)(nil)).Elem(), DestinationConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ErrorResponseInput)(nil)).Elem(), ErrorResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ErrorResponsePtrInput)(nil)).Elem(), ErrorResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ErrorResponseArrayInput)(nil)).Elem(), ErrorResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ForwardSshTunnelConnectivityInput)(nil)).Elem(), ForwardSshTunnelConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ForwardSshTunnelConnectivityPtrInput)(nil)).Elem(), ForwardSshTunnelConnectivityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ForwardSshTunnelConnectivityResponseInput)(nil)).Elem(), ForwardSshTunnelConnectivityResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ForwardSshTunnelConnectivityResponsePtrInput)(nil)).Elem(), ForwardSshTunnelConnectivityResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcsDestinationConfigInput)(nil)).Elem(), GcsDestinationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcsDestinationConfigPtrInput)(nil)).Elem(), GcsDestinationConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GcsDestinationConfigResponseInput)(nil)).Elem(), GcsDestinationConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GcsDestinationConfigResponsePtrInput)(nil)).Elem(), GcsDestinationConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcsProfileInput)(nil)).Elem(), GcsProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcsProfilePtrInput)(nil)).Elem(), GcsProfileArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GcsProfileResponseInput)(nil)).Elem(), GcsProfileResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GcsProfileResponsePtrInput)(nil)).Elem(), GcsProfileResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JsonFileFormatInput)(nil)).Elem(), JsonFileFormatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JsonFileFormatPtrInput)(nil)).Elem(), JsonFileFormatArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JsonFileFormatResponseInput)(nil)).Elem(), JsonFileFormatResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JsonFileFormatResponsePtrInput)(nil)).Elem(), JsonFileFormatResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MysqlColumnInput)(nil)).Elem(), MysqlColumnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MysqlColumnArrayInput)(nil)).Elem(), MysqlColumnArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MysqlColumnResponseInput)(nil)).Elem(), MysqlColumnResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MysqlColumnResponseArrayInput)(nil)).Elem(), MysqlColumnResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MysqlDatabaseInput)(nil)).Elem(), MysqlDatabaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MysqlDatabaseArrayInput)(nil)).Elem(), MysqlDatabaseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MysqlDatabaseResponseInput)(nil)).Elem(), MysqlDatabaseResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MysqlDatabaseResponseArrayInput)(nil)).Elem(), MysqlDatabaseResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MysqlProfileInput)(nil)).Elem(), MysqlProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MysqlProfilePtrInput)(nil)).Elem(), MysqlProfileArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MysqlProfileResponseInput)(nil)).Elem(), MysqlProfileResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MysqlProfileResponsePtrInput)(nil)).Elem(), MysqlProfileResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MysqlRdbmsInput)(nil)).Elem(), MysqlRdbmsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MysqlRdbmsPtrInput)(nil)).Elem(), MysqlRdbmsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MysqlRdbmsResponseInput)(nil)).Elem(), MysqlRdbmsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MysqlRdbmsResponsePtrInput)(nil)).Elem(), MysqlRdbmsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MysqlSourceConfigInput)(nil)).Elem(), MysqlSourceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MysqlSourceConfigPtrInput)(nil)).Elem(), MysqlSourceConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MysqlSourceConfigResponseInput)(nil)).Elem(), MysqlSourceConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MysqlSourceConfigResponsePtrInput)(nil)).Elem(), MysqlSourceConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MysqlSslConfigInput)(nil)).Elem(), MysqlSslConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MysqlSslConfigPtrInput)(nil)).Elem(), MysqlSslConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MysqlSslConfigResponseInput)(nil)).Elem(), MysqlSslConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MysqlSslConfigResponsePtrInput)(nil)).Elem(), MysqlSslConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MysqlTableInput)(nil)).Elem(), MysqlTableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MysqlTableArrayInput)(nil)).Elem(), MysqlTableArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MysqlTableResponseInput)(nil)).Elem(), MysqlTableResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MysqlTableResponseArrayInput)(nil)).Elem(), MysqlTableResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleColumnInput)(nil)).Elem(), OracleColumnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleColumnArrayInput)(nil)).Elem(), OracleColumnArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OracleColumnResponseInput)(nil)).Elem(), OracleColumnResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OracleColumnResponseArrayInput)(nil)).Elem(), OracleColumnResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleProfileInput)(nil)).Elem(), OracleProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleProfilePtrInput)(nil)).Elem(), OracleProfileArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OracleProfileResponseInput)(nil)).Elem(), OracleProfileResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OracleProfileResponsePtrInput)(nil)).Elem(), OracleProfileResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleRdbmsInput)(nil)).Elem(), OracleRdbmsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleRdbmsPtrInput)(nil)).Elem(), OracleRdbmsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OracleRdbmsResponseInput)(nil)).Elem(), OracleRdbmsResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OracleRdbmsResponsePtrInput)(nil)).Elem(), OracleRdbmsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleSchemaInput)(nil)).Elem(), OracleSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleSchemaArrayInput)(nil)).Elem(), OracleSchemaArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OracleSchemaResponseInput)(nil)).Elem(), OracleSchemaResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OracleSchemaResponseArrayInput)(nil)).Elem(), OracleSchemaResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleSourceConfigInput)(nil)).Elem(), OracleSourceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleSourceConfigPtrInput)(nil)).Elem(), OracleSourceConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OracleSourceConfigResponseInput)(nil)).Elem(), OracleSourceConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OracleSourceConfigResponsePtrInput)(nil)).Elem(), OracleSourceConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleTableInput)(nil)).Elem(), OracleTableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleTableArrayInput)(nil)).Elem(), OracleTableArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OracleTableResponseInput)(nil)).Elem(), OracleTableResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OracleTableResponseArrayInput)(nil)).Elem(), OracleTableResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectivityInput)(nil)).Elem(), PrivateConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectivityPtrInput)(nil)).Elem(), PrivateConnectivityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectivityResponseInput)(nil)).Elem(), PrivateConnectivityResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectivityResponsePtrInput)(nil)).Elem(), PrivateConnectivityResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceConfigInput)(nil)).Elem(), SourceConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SourceConfigPtrInput)(nil)).Elem(), SourceConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SourceConfigResponseInput)(nil)).Elem(), SourceConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SourceConfigResponsePtrInput)(nil)).Elem(), SourceConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StaticServiceIpConnectivityInput)(nil)).Elem(), StaticServiceIpConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StaticServiceIpConnectivityPtrInput)(nil)).Elem(), StaticServiceIpConnectivityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StaticServiceIpConnectivityResponseInput)(nil)).Elem(), StaticServiceIpConnectivityResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StaticServiceIpConnectivityResponsePtrInput)(nil)).Elem(), StaticServiceIpConnectivityResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcPeeringConfigInput)(nil)).Elem(), VpcPeeringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcPeeringConfigPtrInput)(nil)).Elem(), VpcPeeringConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VpcPeeringConfigResponseInput)(nil)).Elem(), VpcPeeringConfigResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VpcPeeringConfigResponsePtrInput)(nil)).Elem(), VpcPeeringConfigResponseArgs{})
 	pulumi.RegisterOutputType(AvroFileFormatOutput{})
 	pulumi.RegisterOutputType(AvroFileFormatPtrOutput{})
 	pulumi.RegisterOutputType(AvroFileFormatResponseOutput{})
-	pulumi.RegisterOutputType(AvroFileFormatResponsePtrOutput{})
 	pulumi.RegisterOutputType(BackfillAllStrategyOutput{})
 	pulumi.RegisterOutputType(BackfillAllStrategyPtrOutput{})
 	pulumi.RegisterOutputType(BackfillAllStrategyResponseOutput{})
-	pulumi.RegisterOutputType(BackfillAllStrategyResponsePtrOutput{})
 	pulumi.RegisterOutputType(BackfillNoneStrategyOutput{})
 	pulumi.RegisterOutputType(BackfillNoneStrategyPtrOutput{})
 	pulumi.RegisterOutputType(BackfillNoneStrategyResponseOutput{})
-	pulumi.RegisterOutputType(BackfillNoneStrategyResponsePtrOutput{})
 	pulumi.RegisterOutputType(DestinationConfigOutput{})
-	pulumi.RegisterOutputType(DestinationConfigPtrOutput{})
 	pulumi.RegisterOutputType(DestinationConfigResponseOutput{})
-	pulumi.RegisterOutputType(DestinationConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(ErrorResponseOutput{})
-	pulumi.RegisterOutputType(ErrorResponsePtrOutput{})
 	pulumi.RegisterOutputType(ErrorResponseArrayOutput{})
 	pulumi.RegisterOutputType(ForwardSshTunnelConnectivityOutput{})
 	pulumi.RegisterOutputType(ForwardSshTunnelConnectivityPtrOutput{})
 	pulumi.RegisterOutputType(ForwardSshTunnelConnectivityResponseOutput{})
-	pulumi.RegisterOutputType(ForwardSshTunnelConnectivityResponsePtrOutput{})
 	pulumi.RegisterOutputType(GcsDestinationConfigOutput{})
 	pulumi.RegisterOutputType(GcsDestinationConfigPtrOutput{})
 	pulumi.RegisterOutputType(GcsDestinationConfigResponseOutput{})
-	pulumi.RegisterOutputType(GcsDestinationConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GcsProfileOutput{})
 	pulumi.RegisterOutputType(GcsProfilePtrOutput{})
 	pulumi.RegisterOutputType(GcsProfileResponseOutput{})
-	pulumi.RegisterOutputType(GcsProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(JsonFileFormatOutput{})
 	pulumi.RegisterOutputType(JsonFileFormatPtrOutput{})
 	pulumi.RegisterOutputType(JsonFileFormatResponseOutput{})
-	pulumi.RegisterOutputType(JsonFileFormatResponsePtrOutput{})
 	pulumi.RegisterOutputType(MysqlColumnOutput{})
 	pulumi.RegisterOutputType(MysqlColumnArrayOutput{})
 	pulumi.RegisterOutputType(MysqlColumnResponseOutput{})
@@ -8272,19 +4958,15 @@ func init() {
 	pulumi.RegisterOutputType(MysqlProfileOutput{})
 	pulumi.RegisterOutputType(MysqlProfilePtrOutput{})
 	pulumi.RegisterOutputType(MysqlProfileResponseOutput{})
-	pulumi.RegisterOutputType(MysqlProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(MysqlRdbmsOutput{})
 	pulumi.RegisterOutputType(MysqlRdbmsPtrOutput{})
 	pulumi.RegisterOutputType(MysqlRdbmsResponseOutput{})
-	pulumi.RegisterOutputType(MysqlRdbmsResponsePtrOutput{})
 	pulumi.RegisterOutputType(MysqlSourceConfigOutput{})
 	pulumi.RegisterOutputType(MysqlSourceConfigPtrOutput{})
 	pulumi.RegisterOutputType(MysqlSourceConfigResponseOutput{})
-	pulumi.RegisterOutputType(MysqlSourceConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(MysqlSslConfigOutput{})
 	pulumi.RegisterOutputType(MysqlSslConfigPtrOutput{})
 	pulumi.RegisterOutputType(MysqlSslConfigResponseOutput{})
-	pulumi.RegisterOutputType(MysqlSslConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(MysqlTableOutput{})
 	pulumi.RegisterOutputType(MysqlTableArrayOutput{})
 	pulumi.RegisterOutputType(MysqlTableResponseOutput{})
@@ -8296,11 +4978,9 @@ func init() {
 	pulumi.RegisterOutputType(OracleProfileOutput{})
 	pulumi.RegisterOutputType(OracleProfilePtrOutput{})
 	pulumi.RegisterOutputType(OracleProfileResponseOutput{})
-	pulumi.RegisterOutputType(OracleProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(OracleRdbmsOutput{})
 	pulumi.RegisterOutputType(OracleRdbmsPtrOutput{})
 	pulumi.RegisterOutputType(OracleRdbmsResponseOutput{})
-	pulumi.RegisterOutputType(OracleRdbmsResponsePtrOutput{})
 	pulumi.RegisterOutputType(OracleSchemaOutput{})
 	pulumi.RegisterOutputType(OracleSchemaArrayOutput{})
 	pulumi.RegisterOutputType(OracleSchemaResponseOutput{})
@@ -8308,7 +4988,6 @@ func init() {
 	pulumi.RegisterOutputType(OracleSourceConfigOutput{})
 	pulumi.RegisterOutputType(OracleSourceConfigPtrOutput{})
 	pulumi.RegisterOutputType(OracleSourceConfigResponseOutput{})
-	pulumi.RegisterOutputType(OracleSourceConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(OracleTableOutput{})
 	pulumi.RegisterOutputType(OracleTableArrayOutput{})
 	pulumi.RegisterOutputType(OracleTableResponseOutput{})
@@ -8316,17 +4995,12 @@ func init() {
 	pulumi.RegisterOutputType(PrivateConnectivityOutput{})
 	pulumi.RegisterOutputType(PrivateConnectivityPtrOutput{})
 	pulumi.RegisterOutputType(PrivateConnectivityResponseOutput{})
-	pulumi.RegisterOutputType(PrivateConnectivityResponsePtrOutput{})
 	pulumi.RegisterOutputType(SourceConfigOutput{})
-	pulumi.RegisterOutputType(SourceConfigPtrOutput{})
 	pulumi.RegisterOutputType(SourceConfigResponseOutput{})
-	pulumi.RegisterOutputType(SourceConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(StaticServiceIpConnectivityOutput{})
 	pulumi.RegisterOutputType(StaticServiceIpConnectivityPtrOutput{})
 	pulumi.RegisterOutputType(StaticServiceIpConnectivityResponseOutput{})
-	pulumi.RegisterOutputType(StaticServiceIpConnectivityResponsePtrOutput{})
 	pulumi.RegisterOutputType(VpcPeeringConfigOutput{})
 	pulumi.RegisterOutputType(VpcPeeringConfigPtrOutput{})
 	pulumi.RegisterOutputType(VpcPeeringConfigResponseOutput{})
-	pulumi.RegisterOutputType(VpcPeeringConfigResponsePtrOutput{})
 }

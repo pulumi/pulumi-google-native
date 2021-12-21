@@ -118,7 +118,7 @@ type RegionDiskIamPolicyInput interface {
 }
 
 func (*RegionDiskIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionDiskIamPolicy)(nil))
+	return reflect.TypeOf((**RegionDiskIamPolicy)(nil)).Elem()
 }
 
 func (i *RegionDiskIamPolicy) ToRegionDiskIamPolicyOutput() RegionDiskIamPolicyOutput {
@@ -132,7 +132,7 @@ func (i *RegionDiskIamPolicy) ToRegionDiskIamPolicyOutputWithContext(ctx context
 type RegionDiskIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (RegionDiskIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionDiskIamPolicy)(nil))
+	return reflect.TypeOf((**RegionDiskIamPolicy)(nil)).Elem()
 }
 
 func (o RegionDiskIamPolicyOutput) ToRegionDiskIamPolicyOutput() RegionDiskIamPolicyOutput {

@@ -110,7 +110,7 @@ type CompositeTypeInput interface {
 }
 
 func (*CompositeType) ElementType() reflect.Type {
-	return reflect.TypeOf((*CompositeType)(nil))
+	return reflect.TypeOf((**CompositeType)(nil)).Elem()
 }
 
 func (i *CompositeType) ToCompositeTypeOutput() CompositeTypeOutput {
@@ -124,7 +124,7 @@ func (i *CompositeType) ToCompositeTypeOutputWithContext(ctx context.Context) Co
 type CompositeTypeOutput struct{ *pulumi.OutputState }
 
 func (CompositeTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CompositeType)(nil))
+	return reflect.TypeOf((**CompositeType)(nil)).Elem()
 }
 
 func (o CompositeTypeOutput) ToCompositeTypeOutput() CompositeTypeOutput {

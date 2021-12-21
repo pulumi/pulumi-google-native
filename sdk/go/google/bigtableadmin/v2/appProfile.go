@@ -118,7 +118,7 @@ type AppProfileInput interface {
 }
 
 func (*AppProfile) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppProfile)(nil))
+	return reflect.TypeOf((**AppProfile)(nil)).Elem()
 }
 
 func (i *AppProfile) ToAppProfileOutput() AppProfileOutput {
@@ -132,7 +132,7 @@ func (i *AppProfile) ToAppProfileOutputWithContext(ctx context.Context) AppProfi
 type AppProfileOutput struct{ *pulumi.OutputState }
 
 func (AppProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppProfile)(nil))
+	return reflect.TypeOf((**AppProfile)(nil)).Elem()
 }
 
 func (o AppProfileOutput) ToAppProfileOutput() AppProfileOutput {

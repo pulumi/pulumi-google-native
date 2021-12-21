@@ -125,7 +125,7 @@ type UtilizationReportInput interface {
 }
 
 func (*UtilizationReport) ElementType() reflect.Type {
-	return reflect.TypeOf((*UtilizationReport)(nil))
+	return reflect.TypeOf((**UtilizationReport)(nil)).Elem()
 }
 
 func (i *UtilizationReport) ToUtilizationReportOutput() UtilizationReportOutput {
@@ -139,7 +139,7 @@ func (i *UtilizationReport) ToUtilizationReportOutputWithContext(ctx context.Con
 type UtilizationReportOutput struct{ *pulumi.OutputState }
 
 func (UtilizationReportOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UtilizationReport)(nil))
+	return reflect.TypeOf((**UtilizationReport)(nil)).Elem()
 }
 
 func (o UtilizationReportOutput) ToUtilizationReportOutput() UtilizationReportOutput {

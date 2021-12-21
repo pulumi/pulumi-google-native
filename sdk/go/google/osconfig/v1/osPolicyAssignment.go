@@ -142,7 +142,7 @@ type OsPolicyAssignmentInput interface {
 }
 
 func (*OsPolicyAssignment) ElementType() reflect.Type {
-	return reflect.TypeOf((*OsPolicyAssignment)(nil))
+	return reflect.TypeOf((**OsPolicyAssignment)(nil)).Elem()
 }
 
 func (i *OsPolicyAssignment) ToOsPolicyAssignmentOutput() OsPolicyAssignmentOutput {
@@ -156,7 +156,7 @@ func (i *OsPolicyAssignment) ToOsPolicyAssignmentOutputWithContext(ctx context.C
 type OsPolicyAssignmentOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OsPolicyAssignment)(nil))
+	return reflect.TypeOf((**OsPolicyAssignment)(nil)).Elem()
 }
 
 func (o OsPolicyAssignmentOutput) ToOsPolicyAssignmentOutput() OsPolicyAssignmentOutput {

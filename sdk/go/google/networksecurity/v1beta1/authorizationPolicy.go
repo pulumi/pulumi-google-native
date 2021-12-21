@@ -120,7 +120,7 @@ type AuthorizationPolicyInput interface {
 }
 
 func (*AuthorizationPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthorizationPolicy)(nil))
+	return reflect.TypeOf((**AuthorizationPolicy)(nil)).Elem()
 }
 
 func (i *AuthorizationPolicy) ToAuthorizationPolicyOutput() AuthorizationPolicyOutput {
@@ -134,7 +134,7 @@ func (i *AuthorizationPolicy) ToAuthorizationPolicyOutputWithContext(ctx context
 type AuthorizationPolicyOutput struct{ *pulumi.OutputState }
 
 func (AuthorizationPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthorizationPolicy)(nil))
+	return reflect.TypeOf((**AuthorizationPolicy)(nil)).Elem()
 }
 
 func (o AuthorizationPolicyOutput) ToAuthorizationPolicyOutput() AuthorizationPolicyOutput {
