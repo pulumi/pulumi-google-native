@@ -265,6 +265,7 @@ class PatchDeployment(pulumi.CustomResource):
             __props__.__dict__["rollout"] = rollout
             __props__.__dict__["create_time"] = None
             __props__.__dict__["last_execute_time"] = None
+            __props__.__dict__["state"] = None
             __props__.__dict__["update_time"] = None
         super(PatchDeployment, __self__).__init__(
             'google-native:osconfig/v1:PatchDeployment',
@@ -298,6 +299,7 @@ class PatchDeployment(pulumi.CustomResource):
         __props__.__dict__["patch_config"] = None
         __props__.__dict__["recurring_schedule"] = None
         __props__.__dict__["rollout"] = None
+        __props__.__dict__["state"] = None
         __props__.__dict__["update_time"] = None
         return PatchDeployment(resource_name, opts=opts, __props__=__props__)
 
@@ -380,6 +382,14 @@ class PatchDeployment(pulumi.CustomResource):
         Optional. Rollout strategy of the patch job.
         """
         return pulumi.get(self, "rollout")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        Current state of the patch deployment.
+        """
+        return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="updateTime")

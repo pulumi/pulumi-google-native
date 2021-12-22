@@ -496,6 +496,8 @@ class GooglePrivacyDlpV2BigQueryOptionsResponse(dict):
             suggest = "excluded_fields"
         elif key == "identifyingFields":
             suggest = "identifying_fields"
+        elif key == "includedFields":
+            suggest = "included_fields"
         elif key == "rowsLimit":
             suggest = "rows_limit"
         elif key == "rowsLimitPercent":
@@ -519,6 +521,7 @@ class GooglePrivacyDlpV2BigQueryOptionsResponse(dict):
     def __init__(__self__, *,
                  excluded_fields: Sequence['outputs.GooglePrivacyDlpV2FieldIdResponse'],
                  identifying_fields: Sequence['outputs.GooglePrivacyDlpV2FieldIdResponse'],
+                 included_fields: Sequence['outputs.GooglePrivacyDlpV2FieldIdResponse'],
                  rows_limit: str,
                  rows_limit_percent: int,
                  sample_method: str,
@@ -527,12 +530,14 @@ class GooglePrivacyDlpV2BigQueryOptionsResponse(dict):
         Options defining BigQuery table and row identifiers.
         :param Sequence['GooglePrivacyDlpV2FieldIdResponse'] excluded_fields: References to fields excluded from scanning. This allows you to skip inspection of entire columns which you know have no findings.
         :param Sequence['GooglePrivacyDlpV2FieldIdResponse'] identifying_fields: Table fields that may uniquely identify a row within the table. When `actions.saveFindings.outputConfig.table` is specified, the values of columns specified here are available in the output table under `location.content_locations.record_location.record_key.id_values`. Nested fields such as `person.birthdate.year` are allowed.
+        :param Sequence['GooglePrivacyDlpV2FieldIdResponse'] included_fields: Limit scanning only to these fields.
         :param str rows_limit: Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted. If not set, or if set to 0, all rows will be scanned. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
         :param int rows_limit_percent: Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
         :param 'GooglePrivacyDlpV2BigQueryTableResponse' table_reference: Complete BigQuery table reference.
         """
         pulumi.set(__self__, "excluded_fields", excluded_fields)
         pulumi.set(__self__, "identifying_fields", identifying_fields)
+        pulumi.set(__self__, "included_fields", included_fields)
         pulumi.set(__self__, "rows_limit", rows_limit)
         pulumi.set(__self__, "rows_limit_percent", rows_limit_percent)
         pulumi.set(__self__, "sample_method", sample_method)
@@ -553,6 +558,14 @@ class GooglePrivacyDlpV2BigQueryOptionsResponse(dict):
         Table fields that may uniquely identify a row within the table. When `actions.saveFindings.outputConfig.table` is specified, the values of columns specified here are available in the output table under `location.content_locations.record_location.record_key.id_values`. Nested fields such as `person.birthdate.year` are allowed.
         """
         return pulumi.get(self, "identifying_fields")
+
+    @property
+    @pulumi.getter(name="includedFields")
+    def included_fields(self) -> Sequence['outputs.GooglePrivacyDlpV2FieldIdResponse']:
+        """
+        Limit scanning only to these fields.
+        """
+        return pulumi.get(self, "included_fields")
 
     @property
     @pulumi.getter(name="rowsLimit")

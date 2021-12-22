@@ -1118,7 +1118,7 @@ func (o AzureBlobStorageDataResponsePtrOutput) StorageAccount() pulumi.StringPtr
 
 // Azure credentials For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
 type AzureCredentials struct {
-	// Azure shared access signature (SAS). *Note:*Copying data from Azure Data Lake Storage (ADLS) Gen 2 is in [Preview](/products/#product-launch-stages). During Preview, if you are copying data from ADLS Gen 2, you must use an account SAS. For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+	// Azure shared access signature (SAS). For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
 	SasToken string `pulumi:"sasToken"`
 }
 
@@ -1135,7 +1135,7 @@ type AzureCredentialsInput interface {
 
 // Azure credentials For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
 type AzureCredentialsArgs struct {
-	// Azure shared access signature (SAS). *Note:*Copying data from Azure Data Lake Storage (ADLS) Gen 2 is in [Preview](/products/#product-launch-stages). During Preview, if you are copying data from ADLS Gen 2, you must use an account SAS. For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+	// Azure shared access signature (SAS). For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
 	SasToken pulumi.StringInput `pulumi:"sasToken"`
 }
 
@@ -1217,7 +1217,7 @@ func (o AzureCredentialsOutput) ToAzureCredentialsPtrOutputWithContext(ctx conte
 	}).(AzureCredentialsPtrOutput)
 }
 
-// Azure shared access signature (SAS). *Note:*Copying data from Azure Data Lake Storage (ADLS) Gen 2 is in [Preview](/products/#product-launch-stages). During Preview, if you are copying data from ADLS Gen 2, you must use an account SAS. For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+// Azure shared access signature (SAS). For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
 func (o AzureCredentialsOutput) SasToken() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureCredentials) string { return v.SasToken }).(pulumi.StringOutput)
 }
@@ -1246,7 +1246,7 @@ func (o AzureCredentialsPtrOutput) Elem() AzureCredentialsOutput {
 	}).(AzureCredentialsOutput)
 }
 
-// Azure shared access signature (SAS). *Note:*Copying data from Azure Data Lake Storage (ADLS) Gen 2 is in [Preview](/products/#product-launch-stages). During Preview, if you are copying data from ADLS Gen 2, you must use an account SAS. For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+// Azure shared access signature (SAS). For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
 func (o AzureCredentialsPtrOutput) SasToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureCredentials) *string {
 		if v == nil {
@@ -1258,7 +1258,7 @@ func (o AzureCredentialsPtrOutput) SasToken() pulumi.StringPtrOutput {
 
 // Azure credentials For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
 type AzureCredentialsResponse struct {
-	// Azure shared access signature (SAS). *Note:*Copying data from Azure Data Lake Storage (ADLS) Gen 2 is in [Preview](/products/#product-launch-stages). During Preview, if you are copying data from ADLS Gen 2, you must use an account SAS. For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+	// Azure shared access signature (SAS). For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
 	SasToken string `pulumi:"sasToken"`
 }
 
@@ -1275,7 +1275,7 @@ type AzureCredentialsResponseInput interface {
 
 // Azure credentials For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
 type AzureCredentialsResponseArgs struct {
-	// Azure shared access signature (SAS). *Note:*Copying data from Azure Data Lake Storage (ADLS) Gen 2 is in [Preview](/products/#product-launch-stages). During Preview, if you are copying data from ADLS Gen 2, you must use an account SAS. For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+	// Azure shared access signature (SAS). For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
 	SasToken pulumi.StringInput `pulumi:"sasToken"`
 }
 
@@ -1357,7 +1357,7 @@ func (o AzureCredentialsResponseOutput) ToAzureCredentialsResponsePtrOutputWithC
 	}).(AzureCredentialsResponsePtrOutput)
 }
 
-// Azure shared access signature (SAS). *Note:*Copying data from Azure Data Lake Storage (ADLS) Gen 2 is in [Preview](/products/#product-launch-stages). During Preview, if you are copying data from ADLS Gen 2, you must use an account SAS. For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+// Azure shared access signature (SAS). For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
 func (o AzureCredentialsResponseOutput) SasToken() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureCredentialsResponse) string { return v.SasToken }).(pulumi.StringOutput)
 }
@@ -1386,7 +1386,7 @@ func (o AzureCredentialsResponsePtrOutput) Elem() AzureCredentialsResponseOutput
 	}).(AzureCredentialsResponseOutput)
 }
 
-// Azure shared access signature (SAS). *Note:*Copying data from Azure Data Lake Storage (ADLS) Gen 2 is in [Preview](/products/#product-launch-stages). During Preview, if you are copying data from ADLS Gen 2, you must use an account SAS. For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+// Azure shared access signature (SAS). For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
 func (o AzureCredentialsResponsePtrOutput) SasToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureCredentialsResponse) *string {
 		if v == nil {
@@ -2630,13 +2630,13 @@ func (o HttpDataResponsePtrOutput) ListUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Logging configuration.
+// Specifies the logging behavior for transfer operations. For cloud-to-cloud transfers, logs are sent to Cloud Logging. See [Read transfer logs](https://cloud.google.com/storage-transfer/docs/read-transfer-logs) for details. For transfers to or from a POSIX file system, logs are stored in the Cloud Storage bucket that is the source or sink of the transfer. See [Managing Transfer for on-premises jobs] (https://cloud.google.com/storage-transfer/docs/managing-on-prem-jobs#viewing-logs) for details.
 type LoggingConfig struct {
-	// Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
+	// For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
 	EnableOnpremGcsTransferLogs *bool `pulumi:"enableOnpremGcsTransferLogs"`
-	// States in which `log_actions` are logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+	// States in which `log_actions` are logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
 	LogActionStates []LoggingConfigLogActionStatesItem `pulumi:"logActionStates"`
-	// Actions to be logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+	// Specifies the actions to be logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
 	LogActions []LoggingConfigLogActionsItem `pulumi:"logActions"`
 }
 
@@ -2651,13 +2651,13 @@ type LoggingConfigInput interface {
 	ToLoggingConfigOutputWithContext(context.Context) LoggingConfigOutput
 }
 
-// Logging configuration.
+// Specifies the logging behavior for transfer operations. For cloud-to-cloud transfers, logs are sent to Cloud Logging. See [Read transfer logs](https://cloud.google.com/storage-transfer/docs/read-transfer-logs) for details. For transfers to or from a POSIX file system, logs are stored in the Cloud Storage bucket that is the source or sink of the transfer. See [Managing Transfer for on-premises jobs] (https://cloud.google.com/storage-transfer/docs/managing-on-prem-jobs#viewing-logs) for details.
 type LoggingConfigArgs struct {
-	// Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
+	// For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
 	EnableOnpremGcsTransferLogs pulumi.BoolPtrInput `pulumi:"enableOnpremGcsTransferLogs"`
-	// States in which `log_actions` are logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+	// States in which `log_actions` are logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
 	LogActionStates LoggingConfigLogActionStatesItemArrayInput `pulumi:"logActionStates"`
-	// Actions to be logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+	// Specifies the actions to be logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
 	LogActions LoggingConfigLogActionsItemArrayInput `pulumi:"logActions"`
 }
 
@@ -2714,7 +2714,7 @@ func (i *loggingConfigPtrType) ToLoggingConfigPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigPtrOutput)
 }
 
-// Logging configuration.
+// Specifies the logging behavior for transfer operations. For cloud-to-cloud transfers, logs are sent to Cloud Logging. See [Read transfer logs](https://cloud.google.com/storage-transfer/docs/read-transfer-logs) for details. For transfers to or from a POSIX file system, logs are stored in the Cloud Storage bucket that is the source or sink of the transfer. See [Managing Transfer for on-premises jobs] (https://cloud.google.com/storage-transfer/docs/managing-on-prem-jobs#viewing-logs) for details.
 type LoggingConfigOutput struct{ *pulumi.OutputState }
 
 func (LoggingConfigOutput) ElementType() reflect.Type {
@@ -2739,17 +2739,17 @@ func (o LoggingConfigOutput) ToLoggingConfigPtrOutputWithContext(ctx context.Con
 	}).(LoggingConfigPtrOutput)
 }
 
-// Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
+// For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
 func (o LoggingConfigOutput) EnableOnpremGcsTransferLogs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LoggingConfig) *bool { return v.EnableOnpremGcsTransferLogs }).(pulumi.BoolPtrOutput)
 }
 
-// States in which `log_actions` are logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+// States in which `log_actions` are logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
 func (o LoggingConfigOutput) LogActionStates() LoggingConfigLogActionStatesItemArrayOutput {
 	return o.ApplyT(func(v LoggingConfig) []LoggingConfigLogActionStatesItem { return v.LogActionStates }).(LoggingConfigLogActionStatesItemArrayOutput)
 }
 
-// Actions to be logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+// Specifies the actions to be logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
 func (o LoggingConfigOutput) LogActions() LoggingConfigLogActionsItemArrayOutput {
 	return o.ApplyT(func(v LoggingConfig) []LoggingConfigLogActionsItem { return v.LogActions }).(LoggingConfigLogActionsItemArrayOutput)
 }
@@ -2778,7 +2778,7 @@ func (o LoggingConfigPtrOutput) Elem() LoggingConfigOutput {
 	}).(LoggingConfigOutput)
 }
 
-// Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
+// For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
 func (o LoggingConfigPtrOutput) EnableOnpremGcsTransferLogs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LoggingConfig) *bool {
 		if v == nil {
@@ -2788,7 +2788,7 @@ func (o LoggingConfigPtrOutput) EnableOnpremGcsTransferLogs() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
-// States in which `log_actions` are logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+// States in which `log_actions` are logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
 func (o LoggingConfigPtrOutput) LogActionStates() LoggingConfigLogActionStatesItemArrayOutput {
 	return o.ApplyT(func(v *LoggingConfig) []LoggingConfigLogActionStatesItem {
 		if v == nil {
@@ -2798,7 +2798,7 @@ func (o LoggingConfigPtrOutput) LogActionStates() LoggingConfigLogActionStatesIt
 	}).(LoggingConfigLogActionStatesItemArrayOutput)
 }
 
-// Actions to be logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+// Specifies the actions to be logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
 func (o LoggingConfigPtrOutput) LogActions() LoggingConfigLogActionsItemArrayOutput {
 	return o.ApplyT(func(v *LoggingConfig) []LoggingConfigLogActionsItem {
 		if v == nil {
@@ -2808,13 +2808,13 @@ func (o LoggingConfigPtrOutput) LogActions() LoggingConfigLogActionsItemArrayOut
 	}).(LoggingConfigLogActionsItemArrayOutput)
 }
 
-// Logging configuration.
+// Specifies the logging behavior for transfer operations. For cloud-to-cloud transfers, logs are sent to Cloud Logging. See [Read transfer logs](https://cloud.google.com/storage-transfer/docs/read-transfer-logs) for details. For transfers to or from a POSIX file system, logs are stored in the Cloud Storage bucket that is the source or sink of the transfer. See [Managing Transfer for on-premises jobs] (https://cloud.google.com/storage-transfer/docs/managing-on-prem-jobs#viewing-logs) for details.
 type LoggingConfigResponse struct {
-	// Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
+	// For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
 	EnableOnpremGcsTransferLogs bool `pulumi:"enableOnpremGcsTransferLogs"`
-	// States in which `log_actions` are logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+	// States in which `log_actions` are logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
 	LogActionStates []string `pulumi:"logActionStates"`
-	// Actions to be logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+	// Specifies the actions to be logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
 	LogActions []string `pulumi:"logActions"`
 }
 
@@ -2829,13 +2829,13 @@ type LoggingConfigResponseInput interface {
 	ToLoggingConfigResponseOutputWithContext(context.Context) LoggingConfigResponseOutput
 }
 
-// Logging configuration.
+// Specifies the logging behavior for transfer operations. For cloud-to-cloud transfers, logs are sent to Cloud Logging. See [Read transfer logs](https://cloud.google.com/storage-transfer/docs/read-transfer-logs) for details. For transfers to or from a POSIX file system, logs are stored in the Cloud Storage bucket that is the source or sink of the transfer. See [Managing Transfer for on-premises jobs] (https://cloud.google.com/storage-transfer/docs/managing-on-prem-jobs#viewing-logs) for details.
 type LoggingConfigResponseArgs struct {
-	// Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
+	// For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
 	EnableOnpremGcsTransferLogs pulumi.BoolInput `pulumi:"enableOnpremGcsTransferLogs"`
-	// States in which `log_actions` are logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+	// States in which `log_actions` are logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
 	LogActionStates pulumi.StringArrayInput `pulumi:"logActionStates"`
-	// Actions to be logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+	// Specifies the actions to be logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
 	LogActions pulumi.StringArrayInput `pulumi:"logActions"`
 }
 
@@ -2892,7 +2892,7 @@ func (i *loggingConfigResponsePtrType) ToLoggingConfigResponsePtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigResponsePtrOutput)
 }
 
-// Logging configuration.
+// Specifies the logging behavior for transfer operations. For cloud-to-cloud transfers, logs are sent to Cloud Logging. See [Read transfer logs](https://cloud.google.com/storage-transfer/docs/read-transfer-logs) for details. For transfers to or from a POSIX file system, logs are stored in the Cloud Storage bucket that is the source or sink of the transfer. See [Managing Transfer for on-premises jobs] (https://cloud.google.com/storage-transfer/docs/managing-on-prem-jobs#viewing-logs) for details.
 type LoggingConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (LoggingConfigResponseOutput) ElementType() reflect.Type {
@@ -2917,17 +2917,17 @@ func (o LoggingConfigResponseOutput) ToLoggingConfigResponsePtrOutputWithContext
 	}).(LoggingConfigResponsePtrOutput)
 }
 
-// Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
+// For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
 func (o LoggingConfigResponseOutput) EnableOnpremGcsTransferLogs() pulumi.BoolOutput {
 	return o.ApplyT(func(v LoggingConfigResponse) bool { return v.EnableOnpremGcsTransferLogs }).(pulumi.BoolOutput)
 }
 
-// States in which `log_actions` are logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+// States in which `log_actions` are logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
 func (o LoggingConfigResponseOutput) LogActionStates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LoggingConfigResponse) []string { return v.LogActionStates }).(pulumi.StringArrayOutput)
 }
 
-// Actions to be logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+// Specifies the actions to be logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
 func (o LoggingConfigResponseOutput) LogActions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LoggingConfigResponse) []string { return v.LogActions }).(pulumi.StringArrayOutput)
 }
@@ -2956,7 +2956,7 @@ func (o LoggingConfigResponsePtrOutput) Elem() LoggingConfigResponseOutput {
 	}).(LoggingConfigResponseOutput)
 }
 
-// Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
+// For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
 func (o LoggingConfigResponsePtrOutput) EnableOnpremGcsTransferLogs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LoggingConfigResponse) *bool {
 		if v == nil {
@@ -2966,7 +2966,7 @@ func (o LoggingConfigResponsePtrOutput) EnableOnpremGcsTransferLogs() pulumi.Boo
 	}).(pulumi.BoolPtrOutput)
 }
 
-// States in which `log_actions` are logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+// States in which `log_actions` are logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
 func (o LoggingConfigResponsePtrOutput) LogActionStates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LoggingConfigResponse) []string {
 		if v == nil {
@@ -2976,7 +2976,7 @@ func (o LoggingConfigResponsePtrOutput) LogActionStates() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
-// Actions to be logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+// Specifies the actions to be logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
 func (o LoggingConfigResponsePtrOutput) LogActions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LoggingConfigResponse) []string {
 		if v == nil {
@@ -2984,6 +2984,400 @@ func (o LoggingConfigResponsePtrOutput) LogActions() pulumi.StringArrayOutput {
 		}
 		return v.LogActions
 	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies the metadata options for running a transfer.
+type MetadataOptions struct {
+	// Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
+	Gid *MetadataOptionsGid `pulumi:"gid"`
+	// Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
+	Mode *MetadataOptionsMode `pulumi:"mode"`
+	// Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
+	Symlink *MetadataOptionsSymlink `pulumi:"symlink"`
+	// Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
+	Uid *MetadataOptionsUid `pulumi:"uid"`
+}
+
+// MetadataOptionsInput is an input type that accepts MetadataOptionsArgs and MetadataOptionsOutput values.
+// You can construct a concrete instance of `MetadataOptionsInput` via:
+//
+//          MetadataOptionsArgs{...}
+type MetadataOptionsInput interface {
+	pulumi.Input
+
+	ToMetadataOptionsOutput() MetadataOptionsOutput
+	ToMetadataOptionsOutputWithContext(context.Context) MetadataOptionsOutput
+}
+
+// Specifies the metadata options for running a transfer.
+type MetadataOptionsArgs struct {
+	// Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
+	Gid MetadataOptionsGidPtrInput `pulumi:"gid"`
+	// Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
+	Mode MetadataOptionsModePtrInput `pulumi:"mode"`
+	// Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
+	Symlink MetadataOptionsSymlinkPtrInput `pulumi:"symlink"`
+	// Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
+	Uid MetadataOptionsUidPtrInput `pulumi:"uid"`
+}
+
+func (MetadataOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetadataOptions)(nil)).Elem()
+}
+
+func (i MetadataOptionsArgs) ToMetadataOptionsOutput() MetadataOptionsOutput {
+	return i.ToMetadataOptionsOutputWithContext(context.Background())
+}
+
+func (i MetadataOptionsArgs) ToMetadataOptionsOutputWithContext(ctx context.Context) MetadataOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetadataOptionsOutput)
+}
+
+func (i MetadataOptionsArgs) ToMetadataOptionsPtrOutput() MetadataOptionsPtrOutput {
+	return i.ToMetadataOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i MetadataOptionsArgs) ToMetadataOptionsPtrOutputWithContext(ctx context.Context) MetadataOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetadataOptionsOutput).ToMetadataOptionsPtrOutputWithContext(ctx)
+}
+
+// MetadataOptionsPtrInput is an input type that accepts MetadataOptionsArgs, MetadataOptionsPtr and MetadataOptionsPtrOutput values.
+// You can construct a concrete instance of `MetadataOptionsPtrInput` via:
+//
+//          MetadataOptionsArgs{...}
+//
+//  or:
+//
+//          nil
+type MetadataOptionsPtrInput interface {
+	pulumi.Input
+
+	ToMetadataOptionsPtrOutput() MetadataOptionsPtrOutput
+	ToMetadataOptionsPtrOutputWithContext(context.Context) MetadataOptionsPtrOutput
+}
+
+type metadataOptionsPtrType MetadataOptionsArgs
+
+func MetadataOptionsPtr(v *MetadataOptionsArgs) MetadataOptionsPtrInput {
+	return (*metadataOptionsPtrType)(v)
+}
+
+func (*metadataOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetadataOptions)(nil)).Elem()
+}
+
+func (i *metadataOptionsPtrType) ToMetadataOptionsPtrOutput() MetadataOptionsPtrOutput {
+	return i.ToMetadataOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *metadataOptionsPtrType) ToMetadataOptionsPtrOutputWithContext(ctx context.Context) MetadataOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetadataOptionsPtrOutput)
+}
+
+// Specifies the metadata options for running a transfer.
+type MetadataOptionsOutput struct{ *pulumi.OutputState }
+
+func (MetadataOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetadataOptions)(nil)).Elem()
+}
+
+func (o MetadataOptionsOutput) ToMetadataOptionsOutput() MetadataOptionsOutput {
+	return o
+}
+
+func (o MetadataOptionsOutput) ToMetadataOptionsOutputWithContext(ctx context.Context) MetadataOptionsOutput {
+	return o
+}
+
+func (o MetadataOptionsOutput) ToMetadataOptionsPtrOutput() MetadataOptionsPtrOutput {
+	return o.ToMetadataOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o MetadataOptionsOutput) ToMetadataOptionsPtrOutputWithContext(ctx context.Context) MetadataOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetadataOptions) *MetadataOptions {
+		return &v
+	}).(MetadataOptionsPtrOutput)
+}
+
+// Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
+func (o MetadataOptionsOutput) Gid() MetadataOptionsGidPtrOutput {
+	return o.ApplyT(func(v MetadataOptions) *MetadataOptionsGid { return v.Gid }).(MetadataOptionsGidPtrOutput)
+}
+
+// Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
+func (o MetadataOptionsOutput) Mode() MetadataOptionsModePtrOutput {
+	return o.ApplyT(func(v MetadataOptions) *MetadataOptionsMode { return v.Mode }).(MetadataOptionsModePtrOutput)
+}
+
+// Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
+func (o MetadataOptionsOutput) Symlink() MetadataOptionsSymlinkPtrOutput {
+	return o.ApplyT(func(v MetadataOptions) *MetadataOptionsSymlink { return v.Symlink }).(MetadataOptionsSymlinkPtrOutput)
+}
+
+// Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
+func (o MetadataOptionsOutput) Uid() MetadataOptionsUidPtrOutput {
+	return o.ApplyT(func(v MetadataOptions) *MetadataOptionsUid { return v.Uid }).(MetadataOptionsUidPtrOutput)
+}
+
+type MetadataOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (MetadataOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetadataOptions)(nil)).Elem()
+}
+
+func (o MetadataOptionsPtrOutput) ToMetadataOptionsPtrOutput() MetadataOptionsPtrOutput {
+	return o
+}
+
+func (o MetadataOptionsPtrOutput) ToMetadataOptionsPtrOutputWithContext(ctx context.Context) MetadataOptionsPtrOutput {
+	return o
+}
+
+func (o MetadataOptionsPtrOutput) Elem() MetadataOptionsOutput {
+	return o.ApplyT(func(v *MetadataOptions) MetadataOptions {
+		if v != nil {
+			return *v
+		}
+		var ret MetadataOptions
+		return ret
+	}).(MetadataOptionsOutput)
+}
+
+// Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
+func (o MetadataOptionsPtrOutput) Gid() MetadataOptionsGidPtrOutput {
+	return o.ApplyT(func(v *MetadataOptions) *MetadataOptionsGid {
+		if v == nil {
+			return nil
+		}
+		return v.Gid
+	}).(MetadataOptionsGidPtrOutput)
+}
+
+// Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
+func (o MetadataOptionsPtrOutput) Mode() MetadataOptionsModePtrOutput {
+	return o.ApplyT(func(v *MetadataOptions) *MetadataOptionsMode {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(MetadataOptionsModePtrOutput)
+}
+
+// Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
+func (o MetadataOptionsPtrOutput) Symlink() MetadataOptionsSymlinkPtrOutput {
+	return o.ApplyT(func(v *MetadataOptions) *MetadataOptionsSymlink {
+		if v == nil {
+			return nil
+		}
+		return v.Symlink
+	}).(MetadataOptionsSymlinkPtrOutput)
+}
+
+// Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
+func (o MetadataOptionsPtrOutput) Uid() MetadataOptionsUidPtrOutput {
+	return o.ApplyT(func(v *MetadataOptions) *MetadataOptionsUid {
+		if v == nil {
+			return nil
+		}
+		return v.Uid
+	}).(MetadataOptionsUidPtrOutput)
+}
+
+// Specifies the metadata options for running a transfer.
+type MetadataOptionsResponse struct {
+	// Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
+	Gid string `pulumi:"gid"`
+	// Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
+	Mode string `pulumi:"mode"`
+	// Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
+	Symlink string `pulumi:"symlink"`
+	// Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
+	Uid string `pulumi:"uid"`
+}
+
+// MetadataOptionsResponseInput is an input type that accepts MetadataOptionsResponseArgs and MetadataOptionsResponseOutput values.
+// You can construct a concrete instance of `MetadataOptionsResponseInput` via:
+//
+//          MetadataOptionsResponseArgs{...}
+type MetadataOptionsResponseInput interface {
+	pulumi.Input
+
+	ToMetadataOptionsResponseOutput() MetadataOptionsResponseOutput
+	ToMetadataOptionsResponseOutputWithContext(context.Context) MetadataOptionsResponseOutput
+}
+
+// Specifies the metadata options for running a transfer.
+type MetadataOptionsResponseArgs struct {
+	// Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
+	Gid pulumi.StringInput `pulumi:"gid"`
+	// Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
+	Symlink pulumi.StringInput `pulumi:"symlink"`
+	// Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
+	Uid pulumi.StringInput `pulumi:"uid"`
+}
+
+func (MetadataOptionsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetadataOptionsResponse)(nil)).Elem()
+}
+
+func (i MetadataOptionsResponseArgs) ToMetadataOptionsResponseOutput() MetadataOptionsResponseOutput {
+	return i.ToMetadataOptionsResponseOutputWithContext(context.Background())
+}
+
+func (i MetadataOptionsResponseArgs) ToMetadataOptionsResponseOutputWithContext(ctx context.Context) MetadataOptionsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetadataOptionsResponseOutput)
+}
+
+func (i MetadataOptionsResponseArgs) ToMetadataOptionsResponsePtrOutput() MetadataOptionsResponsePtrOutput {
+	return i.ToMetadataOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MetadataOptionsResponseArgs) ToMetadataOptionsResponsePtrOutputWithContext(ctx context.Context) MetadataOptionsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetadataOptionsResponseOutput).ToMetadataOptionsResponsePtrOutputWithContext(ctx)
+}
+
+// MetadataOptionsResponsePtrInput is an input type that accepts MetadataOptionsResponseArgs, MetadataOptionsResponsePtr and MetadataOptionsResponsePtrOutput values.
+// You can construct a concrete instance of `MetadataOptionsResponsePtrInput` via:
+//
+//          MetadataOptionsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MetadataOptionsResponsePtrInput interface {
+	pulumi.Input
+
+	ToMetadataOptionsResponsePtrOutput() MetadataOptionsResponsePtrOutput
+	ToMetadataOptionsResponsePtrOutputWithContext(context.Context) MetadataOptionsResponsePtrOutput
+}
+
+type metadataOptionsResponsePtrType MetadataOptionsResponseArgs
+
+func MetadataOptionsResponsePtr(v *MetadataOptionsResponseArgs) MetadataOptionsResponsePtrInput {
+	return (*metadataOptionsResponsePtrType)(v)
+}
+
+func (*metadataOptionsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetadataOptionsResponse)(nil)).Elem()
+}
+
+func (i *metadataOptionsResponsePtrType) ToMetadataOptionsResponsePtrOutput() MetadataOptionsResponsePtrOutput {
+	return i.ToMetadataOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *metadataOptionsResponsePtrType) ToMetadataOptionsResponsePtrOutputWithContext(ctx context.Context) MetadataOptionsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetadataOptionsResponsePtrOutput)
+}
+
+// Specifies the metadata options for running a transfer.
+type MetadataOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (MetadataOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetadataOptionsResponse)(nil)).Elem()
+}
+
+func (o MetadataOptionsResponseOutput) ToMetadataOptionsResponseOutput() MetadataOptionsResponseOutput {
+	return o
+}
+
+func (o MetadataOptionsResponseOutput) ToMetadataOptionsResponseOutputWithContext(ctx context.Context) MetadataOptionsResponseOutput {
+	return o
+}
+
+func (o MetadataOptionsResponseOutput) ToMetadataOptionsResponsePtrOutput() MetadataOptionsResponsePtrOutput {
+	return o.ToMetadataOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MetadataOptionsResponseOutput) ToMetadataOptionsResponsePtrOutputWithContext(ctx context.Context) MetadataOptionsResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetadataOptionsResponse) *MetadataOptionsResponse {
+		return &v
+	}).(MetadataOptionsResponsePtrOutput)
+}
+
+// Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
+func (o MetadataOptionsResponseOutput) Gid() pulumi.StringOutput {
+	return o.ApplyT(func(v MetadataOptionsResponse) string { return v.Gid }).(pulumi.StringOutput)
+}
+
+// Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
+func (o MetadataOptionsResponseOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v MetadataOptionsResponse) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
+func (o MetadataOptionsResponseOutput) Symlink() pulumi.StringOutput {
+	return o.ApplyT(func(v MetadataOptionsResponse) string { return v.Symlink }).(pulumi.StringOutput)
+}
+
+// Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
+func (o MetadataOptionsResponseOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v MetadataOptionsResponse) string { return v.Uid }).(pulumi.StringOutput)
+}
+
+type MetadataOptionsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MetadataOptionsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetadataOptionsResponse)(nil)).Elem()
+}
+
+func (o MetadataOptionsResponsePtrOutput) ToMetadataOptionsResponsePtrOutput() MetadataOptionsResponsePtrOutput {
+	return o
+}
+
+func (o MetadataOptionsResponsePtrOutput) ToMetadataOptionsResponsePtrOutputWithContext(ctx context.Context) MetadataOptionsResponsePtrOutput {
+	return o
+}
+
+func (o MetadataOptionsResponsePtrOutput) Elem() MetadataOptionsResponseOutput {
+	return o.ApplyT(func(v *MetadataOptionsResponse) MetadataOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MetadataOptionsResponse
+		return ret
+	}).(MetadataOptionsResponseOutput)
+}
+
+// Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
+func (o MetadataOptionsResponsePtrOutput) Gid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetadataOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Gid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
+func (o MetadataOptionsResponsePtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetadataOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
+func (o MetadataOptionsResponsePtrOutput) Symlink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetadataOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Symlink
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
+func (o MetadataOptionsResponsePtrOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetadataOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uid
+	}).(pulumi.StringPtrOutput)
 }
 
 // Specification to configure notifications published to Pub/Sub. Notifications are published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` contains a TransferOperation resource formatted according to the specified `PayloadFormat`.
@@ -3352,9 +3746,9 @@ type ObjectConditions struct {
 	LastModifiedBefore *string `pulumi:"lastModifiedBefore"`
 	// If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. The `last_modified_since` and `last_modified_before` fields can be used together for chunked data processing. For example, consider a script that processes each day's worth of data at a time. For that you'd set each of the fields as follows: * `last_modified_since` to the start of the day * `last_modified_before` to the end of the day
 	LastModifiedSince *string `pulumi:"lastModifiedSince"`
-	// If specified, only objects with a "last modification time" on or after `NOW` - `max_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
+	// Ensures that objects are not transferred if a specific maximum time has elapsed since the "last modification time". When a TransferOperation begins, objects with a "last modification time" are transferred only if the elapsed time between the start_time of the `TransferOperation`and the "last modification time" of the object is less than the value of max_time_elapsed_since_last_modification`. Objects that do not have a "last modification time" are also transferred.
 	MaxTimeElapsedSinceLastModification *string `pulumi:"maxTimeElapsedSinceLastModification"`
-	// If specified, only objects with a "last modification time" before `NOW` - `min_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
+	// Ensures that objects are not transferred until a specific minimum time has elapsed after the "last modification time". When a TransferOperation begins, objects with a "last modification time" are transferred only if the elapsed time between the start_time of the `TransferOperation` and the "last modification time" of the object is equal to or greater than the value of min_time_elapsed_since_last_modification`. Objects that do not have a "last modification time" are also transferred.
 	MinTimeElapsedSinceLastModification *string `pulumi:"minTimeElapsedSinceLastModification"`
 }
 
@@ -3379,9 +3773,9 @@ type ObjectConditionsArgs struct {
 	LastModifiedBefore pulumi.StringPtrInput `pulumi:"lastModifiedBefore"`
 	// If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. The `last_modified_since` and `last_modified_before` fields can be used together for chunked data processing. For example, consider a script that processes each day's worth of data at a time. For that you'd set each of the fields as follows: * `last_modified_since` to the start of the day * `last_modified_before` to the end of the day
 	LastModifiedSince pulumi.StringPtrInput `pulumi:"lastModifiedSince"`
-	// If specified, only objects with a "last modification time" on or after `NOW` - `max_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
+	// Ensures that objects are not transferred if a specific maximum time has elapsed since the "last modification time". When a TransferOperation begins, objects with a "last modification time" are transferred only if the elapsed time between the start_time of the `TransferOperation`and the "last modification time" of the object is less than the value of max_time_elapsed_since_last_modification`. Objects that do not have a "last modification time" are also transferred.
 	MaxTimeElapsedSinceLastModification pulumi.StringPtrInput `pulumi:"maxTimeElapsedSinceLastModification"`
-	// If specified, only objects with a "last modification time" before `NOW` - `min_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
+	// Ensures that objects are not transferred until a specific minimum time has elapsed after the "last modification time". When a TransferOperation begins, objects with a "last modification time" are transferred only if the elapsed time between the start_time of the `TransferOperation` and the "last modification time" of the object is equal to or greater than the value of min_time_elapsed_since_last_modification`. Objects that do not have a "last modification time" are also transferred.
 	MinTimeElapsedSinceLastModification pulumi.StringPtrInput `pulumi:"minTimeElapsedSinceLastModification"`
 }
 
@@ -3483,12 +3877,12 @@ func (o ObjectConditionsOutput) LastModifiedSince() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectConditions) *string { return v.LastModifiedSince }).(pulumi.StringPtrOutput)
 }
 
-// If specified, only objects with a "last modification time" on or after `NOW` - `max_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
+// Ensures that objects are not transferred if a specific maximum time has elapsed since the "last modification time". When a TransferOperation begins, objects with a "last modification time" are transferred only if the elapsed time between the start_time of the `TransferOperation`and the "last modification time" of the object is less than the value of max_time_elapsed_since_last_modification`. Objects that do not have a "last modification time" are also transferred.
 func (o ObjectConditionsOutput) MaxTimeElapsedSinceLastModification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectConditions) *string { return v.MaxTimeElapsedSinceLastModification }).(pulumi.StringPtrOutput)
 }
 
-// If specified, only objects with a "last modification time" before `NOW` - `min_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
+// Ensures that objects are not transferred until a specific minimum time has elapsed after the "last modification time". When a TransferOperation begins, objects with a "last modification time" are transferred only if the elapsed time between the start_time of the `TransferOperation` and the "last modification time" of the object is equal to or greater than the value of min_time_elapsed_since_last_modification`. Objects that do not have a "last modification time" are also transferred.
 func (o ObjectConditionsOutput) MinTimeElapsedSinceLastModification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectConditions) *string { return v.MinTimeElapsedSinceLastModification }).(pulumi.StringPtrOutput)
 }
@@ -3557,7 +3951,7 @@ func (o ObjectConditionsPtrOutput) LastModifiedSince() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// If specified, only objects with a "last modification time" on or after `NOW` - `max_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
+// Ensures that objects are not transferred if a specific maximum time has elapsed since the "last modification time". When a TransferOperation begins, objects with a "last modification time" are transferred only if the elapsed time between the start_time of the `TransferOperation`and the "last modification time" of the object is less than the value of max_time_elapsed_since_last_modification`. Objects that do not have a "last modification time" are also transferred.
 func (o ObjectConditionsPtrOutput) MaxTimeElapsedSinceLastModification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectConditions) *string {
 		if v == nil {
@@ -3567,7 +3961,7 @@ func (o ObjectConditionsPtrOutput) MaxTimeElapsedSinceLastModification() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// If specified, only objects with a "last modification time" before `NOW` - `min_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
+// Ensures that objects are not transferred until a specific minimum time has elapsed after the "last modification time". When a TransferOperation begins, objects with a "last modification time" are transferred only if the elapsed time between the start_time of the `TransferOperation` and the "last modification time" of the object is equal to or greater than the value of min_time_elapsed_since_last_modification`. Objects that do not have a "last modification time" are also transferred.
 func (o ObjectConditionsPtrOutput) MinTimeElapsedSinceLastModification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectConditions) *string {
 		if v == nil {
@@ -3587,9 +3981,9 @@ type ObjectConditionsResponse struct {
 	LastModifiedBefore string `pulumi:"lastModifiedBefore"`
 	// If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. The `last_modified_since` and `last_modified_before` fields can be used together for chunked data processing. For example, consider a script that processes each day's worth of data at a time. For that you'd set each of the fields as follows: * `last_modified_since` to the start of the day * `last_modified_before` to the end of the day
 	LastModifiedSince string `pulumi:"lastModifiedSince"`
-	// If specified, only objects with a "last modification time" on or after `NOW` - `max_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
+	// Ensures that objects are not transferred if a specific maximum time has elapsed since the "last modification time". When a TransferOperation begins, objects with a "last modification time" are transferred only if the elapsed time between the start_time of the `TransferOperation`and the "last modification time" of the object is less than the value of max_time_elapsed_since_last_modification`. Objects that do not have a "last modification time" are also transferred.
 	MaxTimeElapsedSinceLastModification string `pulumi:"maxTimeElapsedSinceLastModification"`
-	// If specified, only objects with a "last modification time" before `NOW` - `min_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
+	// Ensures that objects are not transferred until a specific minimum time has elapsed after the "last modification time". When a TransferOperation begins, objects with a "last modification time" are transferred only if the elapsed time between the start_time of the `TransferOperation` and the "last modification time" of the object is equal to or greater than the value of min_time_elapsed_since_last_modification`. Objects that do not have a "last modification time" are also transferred.
 	MinTimeElapsedSinceLastModification string `pulumi:"minTimeElapsedSinceLastModification"`
 }
 
@@ -3614,9 +4008,9 @@ type ObjectConditionsResponseArgs struct {
 	LastModifiedBefore pulumi.StringInput `pulumi:"lastModifiedBefore"`
 	// If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. The `last_modified_since` and `last_modified_before` fields can be used together for chunked data processing. For example, consider a script that processes each day's worth of data at a time. For that you'd set each of the fields as follows: * `last_modified_since` to the start of the day * `last_modified_before` to the end of the day
 	LastModifiedSince pulumi.StringInput `pulumi:"lastModifiedSince"`
-	// If specified, only objects with a "last modification time" on or after `NOW` - `max_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
+	// Ensures that objects are not transferred if a specific maximum time has elapsed since the "last modification time". When a TransferOperation begins, objects with a "last modification time" are transferred only if the elapsed time between the start_time of the `TransferOperation`and the "last modification time" of the object is less than the value of max_time_elapsed_since_last_modification`. Objects that do not have a "last modification time" are also transferred.
 	MaxTimeElapsedSinceLastModification pulumi.StringInput `pulumi:"maxTimeElapsedSinceLastModification"`
-	// If specified, only objects with a "last modification time" before `NOW` - `min_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
+	// Ensures that objects are not transferred until a specific minimum time has elapsed after the "last modification time". When a TransferOperation begins, objects with a "last modification time" are transferred only if the elapsed time between the start_time of the `TransferOperation` and the "last modification time" of the object is equal to or greater than the value of min_time_elapsed_since_last_modification`. Objects that do not have a "last modification time" are also transferred.
 	MinTimeElapsedSinceLastModification pulumi.StringInput `pulumi:"minTimeElapsedSinceLastModification"`
 }
 
@@ -3718,12 +4112,12 @@ func (o ObjectConditionsResponseOutput) LastModifiedSince() pulumi.StringOutput 
 	return o.ApplyT(func(v ObjectConditionsResponse) string { return v.LastModifiedSince }).(pulumi.StringOutput)
 }
 
-// If specified, only objects with a "last modification time" on or after `NOW` - `max_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
+// Ensures that objects are not transferred if a specific maximum time has elapsed since the "last modification time". When a TransferOperation begins, objects with a "last modification time" are transferred only if the elapsed time between the start_time of the `TransferOperation`and the "last modification time" of the object is less than the value of max_time_elapsed_since_last_modification`. Objects that do not have a "last modification time" are also transferred.
 func (o ObjectConditionsResponseOutput) MaxTimeElapsedSinceLastModification() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectConditionsResponse) string { return v.MaxTimeElapsedSinceLastModification }).(pulumi.StringOutput)
 }
 
-// If specified, only objects with a "last modification time" before `NOW` - `min_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
+// Ensures that objects are not transferred until a specific minimum time has elapsed after the "last modification time". When a TransferOperation begins, objects with a "last modification time" are transferred only if the elapsed time between the start_time of the `TransferOperation` and the "last modification time" of the object is equal to or greater than the value of min_time_elapsed_since_last_modification`. Objects that do not have a "last modification time" are also transferred.
 func (o ObjectConditionsResponseOutput) MinTimeElapsedSinceLastModification() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectConditionsResponse) string { return v.MinTimeElapsedSinceLastModification }).(pulumi.StringOutput)
 }
@@ -3792,7 +4186,7 @@ func (o ObjectConditionsResponsePtrOutput) LastModifiedSince() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// If specified, only objects with a "last modification time" on or after `NOW` - `max_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
+// Ensures that objects are not transferred if a specific maximum time has elapsed since the "last modification time". When a TransferOperation begins, objects with a "last modification time" are transferred only if the elapsed time between the start_time of the `TransferOperation`and the "last modification time" of the object is less than the value of max_time_elapsed_since_last_modification`. Objects that do not have a "last modification time" are also transferred.
 func (o ObjectConditionsResponsePtrOutput) MaxTimeElapsedSinceLastModification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectConditionsResponse) *string {
 		if v == nil {
@@ -3802,7 +4196,7 @@ func (o ObjectConditionsResponsePtrOutput) MaxTimeElapsedSinceLastModification()
 	}).(pulumi.StringPtrOutput)
 }
 
-// If specified, only objects with a "last modification time" before `NOW` - `min_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
+// Ensures that objects are not transferred until a specific minimum time has elapsed after the "last modification time". When a TransferOperation begins, objects with a "last modification time" are transferred only if the elapsed time between the start_time of the `TransferOperation` and the "last modification time" of the object is equal to or greater than the value of min_time_elapsed_since_last_modification`. Objects that do not have a "last modification time" are also transferred.
 func (o ObjectConditionsResponsePtrOutput) MinTimeElapsedSinceLastModification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectConditionsResponse) *string {
 		if v == nil {
@@ -5204,6 +5598,8 @@ type TransferOptions struct {
 	DeleteObjectsFromSourceAfterTransfer *bool `pulumi:"deleteObjectsFromSourceAfterTransfer"`
 	// Whether objects that exist only in the sink should be deleted. **Note:** This option and delete_objects_from_source_after_transfer are mutually exclusive.
 	DeleteObjectsUniqueInSink *bool `pulumi:"deleteObjectsUniqueInSink"`
+	// Represents the selected metadata options for a transfer job.
+	MetadataOptions *MetadataOptions `pulumi:"metadataOptions"`
 	// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
 	OverwriteObjectsAlreadyExistingInSink *bool `pulumi:"overwriteObjectsAlreadyExistingInSink"`
 }
@@ -5225,6 +5621,8 @@ type TransferOptionsArgs struct {
 	DeleteObjectsFromSourceAfterTransfer pulumi.BoolPtrInput `pulumi:"deleteObjectsFromSourceAfterTransfer"`
 	// Whether objects that exist only in the sink should be deleted. **Note:** This option and delete_objects_from_source_after_transfer are mutually exclusive.
 	DeleteObjectsUniqueInSink pulumi.BoolPtrInput `pulumi:"deleteObjectsUniqueInSink"`
+	// Represents the selected metadata options for a transfer job.
+	MetadataOptions MetadataOptionsPtrInput `pulumi:"metadataOptions"`
 	// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
 	OverwriteObjectsAlreadyExistingInSink pulumi.BoolPtrInput `pulumi:"overwriteObjectsAlreadyExistingInSink"`
 }
@@ -5317,6 +5715,11 @@ func (o TransferOptionsOutput) DeleteObjectsUniqueInSink() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v TransferOptions) *bool { return v.DeleteObjectsUniqueInSink }).(pulumi.BoolPtrOutput)
 }
 
+// Represents the selected metadata options for a transfer job.
+func (o TransferOptionsOutput) MetadataOptions() MetadataOptionsPtrOutput {
+	return o.ApplyT(func(v TransferOptions) *MetadataOptions { return v.MetadataOptions }).(MetadataOptionsPtrOutput)
+}
+
 // When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
 func (o TransferOptionsOutput) OverwriteObjectsAlreadyExistingInSink() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TransferOptions) *bool { return v.OverwriteObjectsAlreadyExistingInSink }).(pulumi.BoolPtrOutput)
@@ -5366,6 +5769,16 @@ func (o TransferOptionsPtrOutput) DeleteObjectsUniqueInSink() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Represents the selected metadata options for a transfer job.
+func (o TransferOptionsPtrOutput) MetadataOptions() MetadataOptionsPtrOutput {
+	return o.ApplyT(func(v *TransferOptions) *MetadataOptions {
+		if v == nil {
+			return nil
+		}
+		return v.MetadataOptions
+	}).(MetadataOptionsPtrOutput)
+}
+
 // When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
 func (o TransferOptionsPtrOutput) OverwriteObjectsAlreadyExistingInSink() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TransferOptions) *bool {
@@ -5382,6 +5795,8 @@ type TransferOptionsResponse struct {
 	DeleteObjectsFromSourceAfterTransfer bool `pulumi:"deleteObjectsFromSourceAfterTransfer"`
 	// Whether objects that exist only in the sink should be deleted. **Note:** This option and delete_objects_from_source_after_transfer are mutually exclusive.
 	DeleteObjectsUniqueInSink bool `pulumi:"deleteObjectsUniqueInSink"`
+	// Represents the selected metadata options for a transfer job.
+	MetadataOptions MetadataOptionsResponse `pulumi:"metadataOptions"`
 	// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
 	OverwriteObjectsAlreadyExistingInSink bool `pulumi:"overwriteObjectsAlreadyExistingInSink"`
 }
@@ -5403,6 +5818,8 @@ type TransferOptionsResponseArgs struct {
 	DeleteObjectsFromSourceAfterTransfer pulumi.BoolInput `pulumi:"deleteObjectsFromSourceAfterTransfer"`
 	// Whether objects that exist only in the sink should be deleted. **Note:** This option and delete_objects_from_source_after_transfer are mutually exclusive.
 	DeleteObjectsUniqueInSink pulumi.BoolInput `pulumi:"deleteObjectsUniqueInSink"`
+	// Represents the selected metadata options for a transfer job.
+	MetadataOptions MetadataOptionsResponseInput `pulumi:"metadataOptions"`
 	// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
 	OverwriteObjectsAlreadyExistingInSink pulumi.BoolInput `pulumi:"overwriteObjectsAlreadyExistingInSink"`
 }
@@ -5495,6 +5912,11 @@ func (o TransferOptionsResponseOutput) DeleteObjectsUniqueInSink() pulumi.BoolOu
 	return o.ApplyT(func(v TransferOptionsResponse) bool { return v.DeleteObjectsUniqueInSink }).(pulumi.BoolOutput)
 }
 
+// Represents the selected metadata options for a transfer job.
+func (o TransferOptionsResponseOutput) MetadataOptions() MetadataOptionsResponseOutput {
+	return o.ApplyT(func(v TransferOptionsResponse) MetadataOptionsResponse { return v.MetadataOptions }).(MetadataOptionsResponseOutput)
+}
+
 // When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
 func (o TransferOptionsResponseOutput) OverwriteObjectsAlreadyExistingInSink() pulumi.BoolOutput {
 	return o.ApplyT(func(v TransferOptionsResponse) bool { return v.OverwriteObjectsAlreadyExistingInSink }).(pulumi.BoolOutput)
@@ -5544,6 +5966,16 @@ func (o TransferOptionsResponsePtrOutput) DeleteObjectsUniqueInSink() pulumi.Boo
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Represents the selected metadata options for a transfer job.
+func (o TransferOptionsResponsePtrOutput) MetadataOptions() MetadataOptionsResponsePtrOutput {
+	return o.ApplyT(func(v *TransferOptionsResponse) *MetadataOptionsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.MetadataOptions
+	}).(MetadataOptionsResponsePtrOutput)
+}
+
 // When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
 func (o TransferOptionsResponsePtrOutput) OverwriteObjectsAlreadyExistingInSink() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TransferOptionsResponse) *bool {
@@ -5564,6 +5996,8 @@ type TransferSpec struct {
 	GcsDataSink *GcsData `pulumi:"gcsDataSink"`
 	// A Cloud Storage data source.
 	GcsDataSource *GcsData `pulumi:"gcsDataSource"`
+	// Cloud Storage intermediate data location.
+	GcsIntermediateDataLocation *GcsData `pulumi:"gcsIntermediateDataLocation"`
 	// An HTTP URL data source.
 	HttpDataSource *HttpData `pulumi:"httpDataSource"`
 	// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
@@ -5603,6 +6037,8 @@ type TransferSpecArgs struct {
 	GcsDataSink GcsDataPtrInput `pulumi:"gcsDataSink"`
 	// A Cloud Storage data source.
 	GcsDataSource GcsDataPtrInput `pulumi:"gcsDataSource"`
+	// Cloud Storage intermediate data location.
+	GcsIntermediateDataLocation GcsDataPtrInput `pulumi:"gcsIntermediateDataLocation"`
 	// An HTTP URL data source.
 	HttpDataSource HttpDataPtrInput `pulumi:"httpDataSource"`
 	// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
@@ -5719,6 +6155,11 @@ func (o TransferSpecOutput) GcsDataSource() GcsDataPtrOutput {
 	return o.ApplyT(func(v TransferSpec) *GcsData { return v.GcsDataSource }).(GcsDataPtrOutput)
 }
 
+// Cloud Storage intermediate data location.
+func (o TransferSpecOutput) GcsIntermediateDataLocation() GcsDataPtrOutput {
+	return o.ApplyT(func(v TransferSpec) *GcsData { return v.GcsIntermediateDataLocation }).(GcsDataPtrOutput)
+}
+
 // An HTTP URL data source.
 func (o TransferSpecOutput) HttpDataSource() HttpDataPtrOutput {
 	return o.ApplyT(func(v TransferSpec) *HttpData { return v.HttpDataSource }).(HttpDataPtrOutput)
@@ -5823,6 +6264,16 @@ func (o TransferSpecPtrOutput) GcsDataSource() GcsDataPtrOutput {
 	}).(GcsDataPtrOutput)
 }
 
+// Cloud Storage intermediate data location.
+func (o TransferSpecPtrOutput) GcsIntermediateDataLocation() GcsDataPtrOutput {
+	return o.ApplyT(func(v *TransferSpec) *GcsData {
+		if v == nil {
+			return nil
+		}
+		return v.GcsIntermediateDataLocation
+	}).(GcsDataPtrOutput)
+}
+
 // An HTTP URL data source.
 func (o TransferSpecPtrOutput) HttpDataSource() HttpDataPtrOutput {
 	return o.ApplyT(func(v *TransferSpec) *HttpData {
@@ -5913,6 +6364,8 @@ type TransferSpecResponse struct {
 	GcsDataSink GcsDataResponse `pulumi:"gcsDataSink"`
 	// A Cloud Storage data source.
 	GcsDataSource GcsDataResponse `pulumi:"gcsDataSource"`
+	// Cloud Storage intermediate data location.
+	GcsIntermediateDataLocation GcsDataResponse `pulumi:"gcsIntermediateDataLocation"`
 	// An HTTP URL data source.
 	HttpDataSource HttpDataResponse `pulumi:"httpDataSource"`
 	// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
@@ -5952,6 +6405,8 @@ type TransferSpecResponseArgs struct {
 	GcsDataSink GcsDataResponseInput `pulumi:"gcsDataSink"`
 	// A Cloud Storage data source.
 	GcsDataSource GcsDataResponseInput `pulumi:"gcsDataSource"`
+	// Cloud Storage intermediate data location.
+	GcsIntermediateDataLocation GcsDataResponseInput `pulumi:"gcsIntermediateDataLocation"`
 	// An HTTP URL data source.
 	HttpDataSource HttpDataResponseInput `pulumi:"httpDataSource"`
 	// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
@@ -6068,6 +6523,11 @@ func (o TransferSpecResponseOutput) GcsDataSource() GcsDataResponseOutput {
 	return o.ApplyT(func(v TransferSpecResponse) GcsDataResponse { return v.GcsDataSource }).(GcsDataResponseOutput)
 }
 
+// Cloud Storage intermediate data location.
+func (o TransferSpecResponseOutput) GcsIntermediateDataLocation() GcsDataResponseOutput {
+	return o.ApplyT(func(v TransferSpecResponse) GcsDataResponse { return v.GcsIntermediateDataLocation }).(GcsDataResponseOutput)
+}
+
 // An HTTP URL data source.
 func (o TransferSpecResponseOutput) HttpDataSource() HttpDataResponseOutput {
 	return o.ApplyT(func(v TransferSpecResponse) HttpDataResponse { return v.HttpDataSource }).(HttpDataResponseOutput)
@@ -6169,6 +6629,16 @@ func (o TransferSpecResponsePtrOutput) GcsDataSource() GcsDataResponsePtrOutput 
 			return nil
 		}
 		return &v.GcsDataSource
+	}).(GcsDataResponsePtrOutput)
+}
+
+// Cloud Storage intermediate data location.
+func (o TransferSpecResponsePtrOutput) GcsIntermediateDataLocation() GcsDataResponsePtrOutput {
+	return o.ApplyT(func(v *TransferSpecResponse) *GcsDataResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.GcsIntermediateDataLocation
 	}).(GcsDataResponsePtrOutput)
 }
 
@@ -6289,6 +6759,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigPtrInput)(nil)).Elem(), LoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigResponseInput)(nil)).Elem(), LoggingConfigResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigResponsePtrInput)(nil)).Elem(), LoggingConfigResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataOptionsInput)(nil)).Elem(), MetadataOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataOptionsPtrInput)(nil)).Elem(), MetadataOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataOptionsResponseInput)(nil)).Elem(), MetadataOptionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataOptionsResponsePtrInput)(nil)).Elem(), MetadataOptionsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigInput)(nil)).Elem(), NotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigPtrInput)(nil)).Elem(), NotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigResponseInput)(nil)).Elem(), NotificationConfigResponseArgs{})
@@ -6357,6 +6831,10 @@ func init() {
 	pulumi.RegisterOutputType(LoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(LoggingConfigResponseOutput{})
 	pulumi.RegisterOutputType(LoggingConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(MetadataOptionsOutput{})
+	pulumi.RegisterOutputType(MetadataOptionsPtrOutput{})
+	pulumi.RegisterOutputType(MetadataOptionsResponseOutput{})
+	pulumi.RegisterOutputType(MetadataOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(NotificationConfigOutput{})
 	pulumi.RegisterOutputType(NotificationConfigPtrOutput{})
 	pulumi.RegisterOutputType(NotificationConfigResponseOutput{})

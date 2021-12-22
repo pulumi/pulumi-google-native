@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha
 {
     /// <summary>
-    /// Creates a snapshot in the specified project using the data included in the request.
+    /// Creates a snapshot in the specified project using the data included in the request. For regular snapshot creation, consider using this method instead of disks.createSnapshot, as this method supports more features, such as creating snapshots in a project different from the source disk project.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:Snapshot")]
     public partial class Snapshot : Pulumi.CustomResource
@@ -134,6 +134,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Output("snapshotEncryptionKey")]
         public Output<Outputs.CustomerEncryptionKeyResponse> SnapshotEncryptionKey { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates the type of the snapshot.
+        /// </summary>
+        [Output("snapshotType")]
+        public Output<string> SnapshotType { get; private set; } = null!;
 
         /// <summary>
         /// The source disk used to create this snapshot.
@@ -293,6 +299,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("snapshotEncryptionKey")]
         public Input<Inputs.CustomerEncryptionKeyArgs>? SnapshotEncryptionKey { get; set; }
+
+        /// <summary>
+        /// Indicates the type of the snapshot.
+        /// </summary>
+        [Input("snapshotType")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.SnapshotSnapshotType>? SnapshotType { get; set; }
 
         /// <summary>
         /// The source disk used to create this snapshot.

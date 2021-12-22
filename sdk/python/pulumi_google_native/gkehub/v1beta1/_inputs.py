@@ -475,14 +475,18 @@ class OnPremClusterArgs:
 class ResourceOptionsArgs:
     def __init__(__self__, *,
                  connect_version: Optional[pulumi.Input[str]] = None,
+                 k8s_version: Optional[pulumi.Input[str]] = None,
                  v1beta1_crd: Optional[pulumi.Input[bool]] = None):
         """
         ResourceOptions represent options for Kubernetes resource generation.
         :param pulumi.Input[str] connect_version: Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.
+        :param pulumi.Input[str] k8s_version: Optional. Major version of the Kubernetes cluster. This is only used to determine which version to use for the CustomResourceDefinition resources, `apiextensions/v1beta1` or`apiextensions/v1`.
         :param pulumi.Input[bool] v1beta1_crd: Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
         """
         if connect_version is not None:
             pulumi.set(__self__, "connect_version", connect_version)
+        if k8s_version is not None:
+            pulumi.set(__self__, "k8s_version", k8s_version)
         if v1beta1_crd is not None:
             pulumi.set(__self__, "v1beta1_crd", v1beta1_crd)
 
@@ -497,6 +501,18 @@ class ResourceOptionsArgs:
     @connect_version.setter
     def connect_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "connect_version", value)
+
+    @property
+    @pulumi.getter(name="k8sVersion")
+    def k8s_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Major version of the Kubernetes cluster. This is only used to determine which version to use for the CustomResourceDefinition resources, `apiextensions/v1beta1` or`apiextensions/v1`.
+        """
+        return pulumi.get(self, "k8s_version")
+
+    @k8s_version.setter
+    def k8s_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "k8s_version", value)
 
     @property
     @pulumi.getter(name="v1beta1Crd")

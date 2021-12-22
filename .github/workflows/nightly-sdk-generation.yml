@@ -1,0 +1,85 @@
+name: nightly-sdk-generation
+"on":
+  pull_request:
+    branches:
+      - master
+#  schedule:
+#    - cron: 35 4 * * 1-5
+  workflow_dispatch: {}
+
+env:
+  GITHUB_TOKEN: ${{ secrets.PULUMI_BOT_TOKEN }}
+  PROVIDER: google-native
+
+jobs:
+  generate-sdk:
+    name: prerequisites
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        goversion: [1.16.x]
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+      - name: Unshallow clone for tags
+        run: git fetch --prune --unshallow --tags
+      - name: Install Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: ${{ matrix.goversion }}
+      - name: Install pulumictl
+        uses: jaxxstorm/action-install-gh-release@v1.1.0
+        with:
+          repo: pulumi/pulumictl
+      - name: Install Pulumi CLI
+        uses: pulumi/setup-pulumi@v2
+      - name: Cleanup SDK folder
+        run: make clean
+      - name: Preparing Git Branch
+        run: |
+          git config --local user.email "bot@pulumi.com"
+          git config --local user.name "pulumi-bot"
+          git checkout -b generate-sdk/${{ github.run_id }}-${{ github.run_number }}
+      - name: commit changes
+        run: |
+          git add .
+          git commit -m "Preparing the SDK folder for regeneration"
+          git push origin generate-sdk/${{ github.run_id }}-${{ github.run_number }}
+      - name: Discovery
+        id: discovery
+        run: |
+          make discovery
+          git update-index -q --refresh
+          if ! git diff-files --quiet; then
+            echo ::set-output name=changes::1
+          fi
+      - name: Build codegen binaries
+        if: steps.discovery.outputs.changes != 0
+        run: make codegen
+      - name: Build Schema + SDKs
+        if: steps.discovery.outputs.changes != 0
+        run: make local_generate
+      - name: Commit changes
+        if: steps.discovery.outputs.changes != 0
+        run: |
+          git add sdk/nodejs
+          git commit -m "Regenerating Node.js SDK based on updated modules"
+          git add sdk/python
+          git commit -m "Regenerating Python SDK based on updated modules"
+          git add sdk/dotnet
+          git commit -m "Regenerating .NET SDK based on updated modules"
+          git add sdk/go
+          git commit -m "Regenerating Go SDK based on updated modules"
+          git add .
+          git commit -m "Updated discovery"
+          git push origin generate-sdk/${{ github.run_id }}-${{ github.run_number }}
+      - name: Open pull request
+        if: steps.discovery.outputs.changes != 0
+        uses: repo-sync/pull-request@v2
+        with:
+          source_branch: "generate-sdk/${{ github.run_id }}-${{ github.run_number }}"
+          destination_branch: "master"
+          pr_title: "Automated SDK generation"
+          github_token: ${{ secrets.PULUMI_BOT_TOKEN }}   

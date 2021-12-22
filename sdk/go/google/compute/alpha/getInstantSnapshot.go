@@ -47,6 +47,8 @@ type LookupInstantSnapshotResult struct {
 	Name string `pulumi:"name"`
 	// URL of the region where the instant snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region string `pulumi:"region"`
+	// Status information for the instant snapshot resource.
+	ResourceStatus InstantSnapshotResourceStatusResponse `pulumi:"resourceStatus"`
 	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Server-defined URL for the resource.
@@ -144,6 +146,11 @@ func (o LookupInstantSnapshotResultOutput) Name() pulumi.StringOutput {
 // URL of the region where the instant snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 func (o LookupInstantSnapshotResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstantSnapshotResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Status information for the instant snapshot resource.
+func (o LookupInstantSnapshotResultOutput) ResourceStatus() InstantSnapshotResourceStatusResponseOutput {
+	return o.ApplyT(func(v LookupInstantSnapshotResult) InstantSnapshotResourceStatusResponse { return v.ResourceStatus }).(InstantSnapshotResourceStatusResponseOutput)
 }
 
 // Reserved for future use.

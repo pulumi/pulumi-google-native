@@ -21,6 +21,34 @@ export namespace accesscontextmanager {
         }
 
         /**
+         * Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+         */
+        export interface AuditConfigArgs {
+            /**
+             * The configuration for logging of each type of permission.
+             */
+            auditLogConfigs?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.v1.AuditLogConfigArgs>[]>;
+            /**
+             * Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+             */
+            service?: pulumi.Input<string>;
+        }
+
+        /**
+         * Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+         */
+        export interface AuditLogConfigArgs {
+            /**
+             * Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+             */
+            exemptedMembers?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The log type that this config enables.
+             */
+            logType?: pulumi.Input<enums.accesscontextmanager.v1.AuditLogConfigLogType>;
+        }
+
+        /**
          * `BasicLevel` is an `AccessLevel` using a set of recommended features.
          */
         export interface BasicLevelArgs {
@@ -32,6 +60,24 @@ export namespace accesscontextmanager {
              * A list of requirements for the `AccessLevel` to be granted.
              */
             conditions: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.v1.ConditionArgs>[]>;
+        }
+
+        /**
+         * Associates `members`, or principals, with a `role`.
+         */
+        export interface BindingArgs {
+            /**
+             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+             */
+            condition?: pulumi.Input<inputs.accesscontextmanager.v1.ExprArgs>;
+            /**
+             * Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+             */
+            members?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+             */
+            role?: pulumi.Input<string>;
         }
 
         /**
@@ -4280,7 +4326,7 @@ export namespace bigtableadmin {
          */
         export interface ClusterConfigArgs {
             /**
-             * Autoscaling configuration for this cluster. Note that when creating or updating a cluster, exactly one of serve_nodes or cluster_autoscaling_config must be set. If serve_nodes is set, then serve_nodes is fixed and autoscaling is turned off. If cluster_autoscaling_config is set, then serve_nodes will be autoscaled.
+             * Autoscaling configuration for this cluster.
              */
             clusterAutoscalingConfig?: pulumi.Input<inputs.bigtableadmin.v2.ClusterAutoscalingConfigArgs>;
         }
@@ -6371,6 +6417,26 @@ export namespace cloudidentity {
              * The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
              */
             name?: pulumi.Input<string>;
+            /**
+             * Evaluations of restrictions applied to parent group on this membership.
+             */
+            restrictionEvaluations?: pulumi.Input<inputs.cloudidentity.v1.RestrictionEvaluationsArgs>;
+        }
+
+        /**
+         * The evaluated state of this restriction.
+         */
+        export interface MembershipRoleRestrictionEvaluationArgs {
+        }
+
+        /**
+         * Evaluations of restrictions applied to parent group on this membership.
+         */
+        export interface RestrictionEvaluationsArgs {
+            /**
+             * Evaluation of the member restriction applied to this membership. Empty if the user lacks permission to view the restriction evaluation.
+             */
+            memberRestrictionEvaluation?: pulumi.Input<inputs.cloudidentity.v1.MembershipRoleRestrictionEvaluationArgs>;
         }
 
     }
@@ -7776,7 +7842,7 @@ export namespace cloudtasks {
              */
             body?: pulumi.Input<string>;
             /**
-             * HTTP request headers. This map contains the header field names and values. Headers can be set when the task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * X-Google-*: Google use only. * X-AppEngine-*: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB.
+             * HTTP request headers. This map contains the header field names and values. Headers can be set when the task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * `X-Google-*`: Google use only. * `X-AppEngine-*`: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB.
              */
             headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
@@ -8146,7 +8212,7 @@ export namespace cloudtasks {
              */
             body?: pulumi.Input<string>;
             /**
-             * HTTP request headers. This map contains the header field names and values. Headers can be set when the task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * X-Google-*: Google use only. * X-AppEngine-*: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB.
+             * HTTP request headers. This map contains the header field names and values. Headers can be set when the task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * `X-Google-*`: Google use only. * `X-AppEngine-*`: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB.
              */
             headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
@@ -9046,6 +9112,14 @@ export namespace compute {
          */
         export interface AccessConfigArgs {
             /**
+             * The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+             */
+            externalIpv6?: pulumi.Input<string>;
+            /**
+             * The prefix length of the external IPv6 range.
+             */
+            externalIpv6PrefixLength?: pulumi.Input<number>;
+            /**
              * The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
              */
             name?: pulumi.Input<string>;
@@ -9300,6 +9374,10 @@ export namespace compute {
              * The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
              */
             sourceImageEncryptionKey?: pulumi.Input<inputs.compute.alpha.CustomerEncryptionKeyArgs>;
+            /**
+             * The source instant-snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot or initializeParams.sourceInstantSnapshot initializeParams.sourceImage or disks.source is required except for local SSD. To create a disk with a snapshot that you created, specify the snapshot name in the following format: us-central1-a/instantSnapshots/my-backup If the source instant-snapshot is deleted later, this field will not be set.
+             */
+            sourceInstantSnapshot?: pulumi.Input<string>;
             /**
              * The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot or initializeParams.sourceImage or disks.source is required except for local SSD. To create a disk with a snapshot that you created, specify the snapshot name in the following format: global/snapshots/my-backup If the source snapshot is deleted later, this field will not be set.
              */
@@ -10285,6 +10363,10 @@ export namespace compute {
              */
             destIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
             /**
+             * Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
+             */
+            destRegionCodes?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
              * Pairs of IP protocols and ports that the rule should match.
              */
             layer4Configs?: pulumi.Input<pulumi.Input<inputs.compute.alpha.FirewallPolicyRuleMatcherLayer4ConfigArgs>[]>;
@@ -10300,6 +10382,10 @@ export namespace compute {
              * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
              */
             srcIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
+             */
+            srcRegionCodes?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
              */
@@ -11013,6 +11099,16 @@ export namespace compute {
             targetSize?: pulumi.Input<inputs.compute.alpha.FixedOrPercentArgs>;
         }
 
+        /**
+         * Additional instance params.
+         */
+        export interface InstanceParamsArgs {
+            /**
+             * Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+             */
+            resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        }
+
         export interface InstancePropertiesArgs {
             /**
              * Controls for advanced machine-related behavior features. Note that for MachineImage, this is not supported yet.
@@ -11083,7 +11179,11 @@ export namespace compute {
              */
             reservationAffinity?: pulumi.Input<inputs.compute.alpha.ReservationAffinityArgs>;
             /**
-             * Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+             * Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+             */
+            resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
              */
             resourcePolicies?: pulumi.Input<pulumi.Input<string>[]>;
             /**
@@ -11469,9 +11569,17 @@ export namespace compute {
              */
             aliasIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.alpha.AliasIpRangeArgs>[]>;
             /**
+             * The prefix length of the primary internal IPv6 range.
+             */
+            internalIpv6PrefixLength?: pulumi.Input<number>;
+            /**
              * An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
              */
             ipv6AccessConfigs?: pulumi.Input<pulumi.Input<inputs.compute.alpha.AccessConfigArgs>[]>;
+            /**
+             * An IPv6 internal network address for this network interface.
+             */
+            ipv6Address?: pulumi.Input<string>;
             /**
              * URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default 
              */
@@ -13313,6 +13421,14 @@ export namespace compute {
          */
         export interface AccessConfigArgs {
             /**
+             * The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+             */
+            externalIpv6?: pulumi.Input<string>;
+            /**
+             * The prefix length of the external IPv6 range.
+             */
+            externalIpv6PrefixLength?: pulumi.Input<number>;
+            /**
              * The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
              */
             name?: pulumi.Input<string>;
@@ -13503,6 +13619,10 @@ export namespace compute {
              * Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
              */
             labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * A list of publicly visible licenses. Reserved for Google's use.
+             */
+            licenses?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Indicates whether or not the disk can be read/write attached to more than one instance.
              */
@@ -15071,6 +15191,16 @@ export namespace compute {
             targetSize?: pulumi.Input<inputs.compute.beta.FixedOrPercentArgs>;
         }
 
+        /**
+         * Additional instance params.
+         */
+        export interface InstanceParamsArgs {
+            /**
+             * Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+             */
+            resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        }
+
         export interface InstancePropertiesArgs {
             /**
              * Controls for advanced machine-related behavior features. Note that for MachineImage, this is not supported yet.
@@ -15137,7 +15267,11 @@ export namespace compute {
              */
             reservationAffinity?: pulumi.Input<inputs.compute.beta.ReservationAffinityArgs>;
             /**
-             * Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+             * Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+             */
+            resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
              */
             resourcePolicies?: pulumi.Input<pulumi.Input<string>[]>;
             /**
@@ -15466,6 +15600,10 @@ export namespace compute {
              * An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
              */
             ipv6AccessConfigs?: pulumi.Input<pulumi.Input<inputs.compute.beta.AccessConfigArgs>[]>;
+            /**
+             * An IPv6 internal network address for this network interface.
+             */
+            ipv6Address?: pulumi.Input<string>;
             /**
              * URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default 
              */
@@ -17047,6 +17185,14 @@ export namespace compute {
          */
         export interface AccessConfigArgs {
             /**
+             * The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+             */
+            externalIpv6?: pulumi.Input<string>;
+            /**
+             * The prefix length of the external IPv6 range.
+             */
+            externalIpv6PrefixLength?: pulumi.Input<number>;
+            /**
              * The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
              */
             name?: pulumi.Input<string>;
@@ -17225,6 +17371,10 @@ export namespace compute {
              * Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
              */
             labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * A list of publicly visible licenses. Reserved for Google's use.
+             */
+            licenses?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Specifies which action to take on instance update with this disk. Default is to use the existing disk.
              */
@@ -18790,7 +18940,7 @@ export namespace compute {
              */
             reservationAffinity?: pulumi.Input<inputs.compute.v1.ReservationAffinityArgs>;
             /**
-             * Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+             * Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
              */
             resourcePolicies?: pulumi.Input<pulumi.Input<string>[]>;
             /**
@@ -19093,6 +19243,10 @@ export namespace compute {
              * An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
              */
             ipv6AccessConfigs?: pulumi.Input<pulumi.Input<inputs.compute.v1.AccessConfigArgs>[]>;
+            /**
+             * An IPv6 internal network address for this network interface.
+             */
+            ipv6Address?: pulumi.Input<string>;
             /**
              * URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default 
              */
@@ -21192,6 +21346,16 @@ export namespace container {
         }
 
         /**
+         * Allows filtering to one or more specific event types. If event types are present, those and only those event types will be transmitted to the cluster. Other types will be skipped. If no filter is specified, or no event types are present, all event types will be sent
+         */
+        export interface FilterArgs {
+            /**
+             * Event types to allowlist.
+             */
+            eventType?: pulumi.Input<pulumi.Input<enums.container.v1.FilterEventTypeItem>[]>;
+        }
+
+        /**
          * Configuration for the Compute Engine PD CSI driver.
          */
         export interface GcePersistentDiskCsiDriverConfigArgs {
@@ -21338,6 +21502,16 @@ export namespace container {
         }
 
         /**
+         * Represents the Maintenance exclusion option.
+         */
+        export interface MaintenanceExclusionOptionsArgs {
+            /**
+             * Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
+             */
+            scope?: pulumi.Input<enums.container.v1.MaintenanceExclusionOptionsScope>;
+        }
+
+        /**
          * MaintenancePolicy defines the maintenance policy to be used for the cluster.
          */
         export interface MaintenancePolicyArgs {
@@ -21469,6 +21643,10 @@ export namespace container {
              * The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
              */
             privateIpv6GoogleAccess?: pulumi.Input<enums.container.v1.NetworkConfigPrivateIpv6GoogleAccess>;
+            /**
+             * ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
+             */
+            serviceExternalIpsConfig?: pulumi.Input<inputs.container.v1.ServiceExternalIPsConfigArgs>;
         }
 
         /**
@@ -21624,7 +21802,7 @@ export namespace container {
              */
             cpuCfsQuotaPeriod?: pulumi.Input<string>;
             /**
-             * Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. - "none": the default, which represents the existing scheduling behavior. - "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
+             * Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
              */
             cpuManagerPolicy?: pulumi.Input<string>;
         }
@@ -21816,6 +21994,10 @@ export namespace container {
              */
             enabled?: pulumi.Input<boolean>;
             /**
+             * Allows filtering to one or more specific event types. If no filter is specified, or if a filter is specified with no event types, all event types will be sent
+             */
+            filter?: pulumi.Input<inputs.container.v1.FilterArgs>;
+            /**
              * The desired Pub/Sub topic to which notifications will be sent by GKE. Format is `projects/{project}/topics/{topic}`.
              */
             topic?: pulumi.Input<string>;
@@ -21910,6 +22092,16 @@ export namespace container {
         }
 
         /**
+         * Config to block services with externalIPs field.
+         */
+        export interface ServiceExternalIPsConfigArgs {
+            /**
+             * Whether Services with ExternalIPs field are allowed or not.
+             */
+            enabled?: pulumi.Input<boolean>;
+        }
+
+        /**
          * A set of Shielded Instance options.
          */
         export interface ShieldedInstanceConfigArgs {
@@ -21955,6 +22147,10 @@ export namespace container {
              * The time that the window ends. The end time should take place after the start time.
              */
             endTime?: pulumi.Input<string>;
+            /**
+             * MaintenanceExclusionOptions provides maintenance exclusion related options.
+             */
+            maintenanceExclusionOptions?: pulumi.Input<inputs.container.v1.MaintenanceExclusionOptionsArgs>;
             /**
              * The time that the window first starts.
              */
@@ -22369,6 +22565,16 @@ export namespace container {
         }
 
         /**
+         * Allows filtering to one or more specific event types. If event types are present, those and only those event types will be transmitted to the cluster. Other types will be skipped. If no filter is specified, or no event types are present, all event types will be sent
+         */
+        export interface FilterArgs {
+            /**
+             * Event types to allowlist.
+             */
+            eventType?: pulumi.Input<pulumi.Input<enums.container.v1beta1.FilterEventTypeItem>[]>;
+        }
+
+        /**
          * Configuration for the Compute Engine PD CSI driver.
          */
         export interface GcePersistentDiskCsiDriverConfigArgs {
@@ -22546,6 +22752,16 @@ export namespace container {
              * Logging components configuration
              */
             componentConfig?: pulumi.Input<inputs.container.v1beta1.LoggingComponentConfigArgs>;
+        }
+
+        /**
+         * Represents the Maintenance exclusion option.
+         */
+        export interface MaintenanceExclusionOptionsArgs {
+            /**
+             * Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
+             */
+            scope?: pulumi.Input<enums.container.v1beta1.MaintenanceExclusionOptionsScope>;
         }
 
         /**
@@ -22868,7 +23084,7 @@ export namespace container {
              */
             cpuCfsQuotaPeriod?: pulumi.Input<string>;
             /**
-             * Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. - "none": the default, which represents the existing scheduling behavior. - "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
+             * Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
              */
             cpuManagerPolicy?: pulumi.Input<string>;
         }
@@ -23070,6 +23286,10 @@ export namespace container {
              */
             enabled?: pulumi.Input<boolean>;
             /**
+             * Allows filtering to one or more specific event types. If no filter is specified, or if a filter is specified with no event types, all event types will be sent
+             */
+            filter?: pulumi.Input<inputs.container.v1beta1.FilterArgs>;
+            /**
              * The desired Pub/Sub topic to which notifications will be sent by GKE. Format is `projects/{project}/topics/{topic}`.
              */
             topic?: pulumi.Input<string>;
@@ -23223,6 +23443,10 @@ export namespace container {
              * The time that the window ends. The end time should take place after the start time.
              */
             endTime?: pulumi.Input<string>;
+            /**
+             * MaintenanceExclusionOptions provides maintenance exclusion related options.
+             */
+            maintenanceExclusionOptions?: pulumi.Input<inputs.container.v1beta1.MaintenanceExclusionOptionsArgs>;
             /**
              * The time that the window first starts.
              */
@@ -23491,6 +23715,30 @@ export namespace containeranalysis {
 
         export interface BuilderConfigArgs {
             id?: pulumi.Input<string>;
+        }
+
+        /**
+         * Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing multiple versions of CVSS. The intention is that as new versions of CVSS scores get added, we will be able to modify this message rather than adding new protos for each new version of the score.
+         */
+        export interface CVSSArgs {
+            attackComplexity?: pulumi.Input<enums.containeranalysis.v1.CVSSAttackComplexity>;
+            /**
+             * Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
+             */
+            attackVector?: pulumi.Input<enums.containeranalysis.v1.CVSSAttackVector>;
+            authentication?: pulumi.Input<enums.containeranalysis.v1.CVSSAuthentication>;
+            availabilityImpact?: pulumi.Input<enums.containeranalysis.v1.CVSSAvailabilityImpact>;
+            /**
+             * The base score is a function of the base metric scores.
+             */
+            baseScore?: pulumi.Input<number>;
+            confidentialityImpact?: pulumi.Input<enums.containeranalysis.v1.CVSSConfidentialityImpact>;
+            exploitabilityScore?: pulumi.Input<number>;
+            impactScore?: pulumi.Input<number>;
+            integrityImpact?: pulumi.Input<enums.containeranalysis.v1.CVSSIntegrityImpact>;
+            privilegesRequired?: pulumi.Input<enums.containeranalysis.v1.CVSSPrivilegesRequired>;
+            scope?: pulumi.Input<enums.containeranalysis.v1.CVSSScope>;
+            userInteraction?: pulumi.Input<enums.containeranalysis.v1.CVSSUserInteraction>;
         }
 
         /**
@@ -24550,6 +24798,10 @@ export namespace containeranalysis {
          * An occurrence of a severity vulnerability on a resource.
          */
         export interface VulnerabilityOccurrenceArgs {
+            /**
+             * The cvss v3 score for the vulnerability.
+             */
+            cvssv3?: pulumi.Input<inputs.containeranalysis.v1.CVSSArgs>;
             /**
              * The distro assigned severity for this vulnerability when it is available, otherwise this is the note provider assigned severity. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
              */
@@ -29334,6 +29586,10 @@ export namespace datamigration {
              * [default: ON] If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB.
              */
             autoStorageIncrease?: pulumi.Input<boolean>;
+            /**
+             * The KMS key name used for the csql instance.
+             */
+            cmekKeyName?: pulumi.Input<string>;
             /**
              * The Cloud SQL default instance level collation.
              */
@@ -34835,7 +35091,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2SpeechToTextConfigArgs {
             /**
-             * Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
+             * The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
              */
             speechModelVariant?: pulumi.Input<enums.dialogflow.v2.GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant>;
         }
@@ -36034,7 +36290,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs {
             /**
-             * Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
+             * The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
              */
             speechModelVariant?: pulumi.Input<enums.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariant>;
         }
@@ -36749,6 +37005,10 @@ export namespace dialogflow {
              */
             playAudio?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3ResponseMessagePlayAudioArgs>;
             /**
+             * A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
+             */
+            telephonyTransferCall?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallArgs>;
+            /**
              * Returns a text response.
              */
             text?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3ResponseMessageTextArgs>;
@@ -36796,6 +37056,16 @@ export namespace dialogflow {
              * URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
              */
             audioUri: pulumi.Input<string>;
+        }
+
+        /**
+         * Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+         */
+        export interface GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallArgs {
+            /**
+             * Transfer the call to a phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164).
+             */
+            phoneNumber?: pulumi.Input<string>;
         }
 
         /**
@@ -37736,6 +38006,10 @@ export namespace dialogflow {
              */
             playAudio?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioArgs>;
             /**
+             * A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
+             */
+            telephonyTransferCall?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCallArgs>;
+            /**
              * Returns a text response.
              */
             text?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1ResponseMessageTextArgs>;
@@ -37783,6 +38057,16 @@ export namespace dialogflow {
              * URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
              */
             audioUri: pulumi.Input<string>;
+        }
+
+        /**
+         * Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+         */
+        export interface GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCallArgs {
+            /**
+             * Transfer the call to a phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164).
+             */
+            phoneNumber?: pulumi.Input<string>;
         }
 
         /**
@@ -38124,6 +38408,10 @@ export namespace dlp {
              * Table fields that may uniquely identify a row within the table. When `actions.saveFindings.outputConfig.table` is specified, the values of columns specified here are available in the output table under `location.content_locations.record_location.record_key.id_values`. Nested fields such as `person.birthdate.year` are allowed.
              */
             identifyingFields?: pulumi.Input<pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2FieldIdArgs>[]>;
+            /**
+             * Limit scanning only to these fields.
+             */
+            includedFields?: pulumi.Input<pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2FieldIdArgs>[]>;
             /**
              * Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted. If not set, or if set to 0, all rows will be scanned. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
              */
@@ -40977,7 +41265,7 @@ export namespace eventarc {
          */
         export interface DestinationArgs {
             /**
-             * Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+             * Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
              */
             cloudRun?: pulumi.Input<inputs.eventarc.v1.CloudRunArgs>;
             /**
@@ -42410,6 +42698,10 @@ export namespace gkehub {
              */
             connectVersion?: pulumi.Input<string>;
             /**
+             * Optional. Major version of the Kubernetes cluster. This is only used to determine which version to use for the CustomResourceDefinition resources, `apiextensions/v1beta1` or`apiextensions/v1`.
+             */
+            k8sVersion?: pulumi.Input<string>;
+            /**
              * Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
              */
             v1beta1Crd?: pulumi.Input<boolean>;
@@ -42623,6 +42915,10 @@ export namespace gkehub {
              */
             connectVersion?: pulumi.Input<string>;
             /**
+             * Optional. Major version of the Kubernetes cluster. This is only used to determine which version to use for the CustomResourceDefinition resources, `apiextensions/v1beta1` or`apiextensions/v1`.
+             */
+            k8sVersion?: pulumi.Input<string>;
+            /**
              * Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
              */
             v1beta1Crd?: pulumi.Input<boolean>;
@@ -42791,6 +43087,10 @@ export namespace gkehub {
              * Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.
              */
             connectVersion?: pulumi.Input<string>;
+            /**
+             * Optional. Major version of the Kubernetes cluster. This is only used to determine which version to use for the CustomResourceDefinition resources, `apiextensions/v1beta1` or`apiextensions/v1`.
+             */
+            k8sVersion?: pulumi.Input<string>;
             /**
              * Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
              */
@@ -43061,6 +43361,10 @@ export namespace gkehub {
              * Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.
              */
             connectVersion?: pulumi.Input<string>;
+            /**
+             * Optional. Major version of the Kubernetes cluster. This is only used to determine which version to use for the CustomResourceDefinition resources, `apiextensions/v1beta1` or`apiextensions/v1`.
+             */
+            k8sVersion?: pulumi.Input<string>;
             /**
              * Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
              */
@@ -46728,7 +47032,7 @@ export namespace monitoring {
              */
             authInfo?: pulumi.Input<inputs.monitoring.v3.BasicAuthenticationArgs>;
             /**
-             * The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note: As with all bytes fields, JSON representations are base64 encoded. e.g.: "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
+             * The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte.Note: If client libraries aren't used (which performs the conversion automatically) base64 encode your body data since the field is of bytes type.
              */
             body?: pulumi.Input<string>;
             /**
@@ -52362,6 +52666,20 @@ export namespace recaptchaenterprise {
         }
 
         /**
+         * Settings specific to keys that can be used for WAF (Web Application Firewall).
+         */
+        export interface GoogleCloudRecaptchaenterpriseV1WafSettingsArgs {
+            /**
+             * The WAF feature for which this key is enabled.
+             */
+            wafFeature: pulumi.Input<enums.recaptchaenterprise.v1.GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature>;
+            /**
+             * The WAF service that uses this key.
+             */
+            wafService: pulumi.Input<enums.recaptchaenterprise.v1.GoogleCloudRecaptchaenterpriseV1WafSettingsWafService>;
+        }
+
+        /**
          * Settings specific to keys that can be used by websites.
          */
         export interface GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs {
@@ -52865,7 +53183,7 @@ export namespace retail {
              */
             originalPrice?: pulumi.Input<number>;
             /**
-             * Price of the product. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371). Schema.org property [Offer.priceSpecification](https://schema.org/priceSpecification).
+             * Price of the product. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371). Schema.org property [Offer.price](https://schema.org/price).
              */
             price?: pulumi.Input<number>;
             /**
@@ -52986,7 +53304,7 @@ export namespace retail {
              */
             originalPrice?: pulumi.Input<number>;
             /**
-             * Price of the product. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371). Schema.org property [Offer.priceSpecification](https://schema.org/priceSpecification).
+             * Price of the product. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371). Schema.org property [Offer.price](https://schema.org/price).
              */
             price?: pulumi.Input<number>;
             /**
@@ -53107,7 +53425,7 @@ export namespace retail {
              */
             originalPrice?: pulumi.Input<number>;
             /**
-             * Price of the product. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371). Schema.org property [Offer.priceSpecification](https://schema.org/priceSpecification).
+             * Price of the product. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371). Schema.org property [Offer.price](https://schema.org/price).
              */
             price?: pulumi.Input<number>;
             /**
@@ -56537,7 +56855,7 @@ export namespace speech {
         }
 
         /**
-         * A phrases containing words and phrase "hints" so that the speech recognition is more likely to recognize them. This can be used to improve the accuracy for specific words and phrases, for example, if specific commands are typically spoken by the user. This can also be used to add additional words to the vocabulary of the recognizer. See [usage limits](https://cloud.google.com/speech-to-text/quotas#content). List items can also include pre-built or custom classes containing groups of words that represent common concepts that occur in natural language. For example, rather than providing a phrase hint for every month of the year (e.g. "i was born in january", "i was born in febuary", ...), use the pre-built `$MONTH` class improves the likelihood of correctly transcribing audio that includes months (e.g. "i was born in $month"). To refer to pre-built classes, use the class' symbol prepended with `$` e.g. `$MONTH`. To refer to custom classes that were defined inline in the request, set the class's `custom_class_id` to a string unique to all class resources and inline classes. Then use the class' id wrapped in $`{...}` e.g. "${my-months}". To refer to custom classes resources, use the class' id wrapped in `${}` (e.g. `${my-months}`).
+         * A phrases containing words and phrase "hints" so that the speech recognition is more likely to recognize them. This can be used to improve the accuracy for specific words and phrases, for example, if specific commands are typically spoken by the user. This can also be used to add additional words to the vocabulary of the recognizer. See [usage limits](https://cloud.google.com/speech-to-text/quotas#content). List items can also include pre-built or custom classes containing groups of words that represent common concepts that occur in natural language. For example, rather than providing a phrase hint for every month of the year (e.g. "i was born in january", "i was born in febuary", ...), use the pre-built `$MONTH` class improves the likelihood of correctly transcribing audio that includes months (e.g. "i was born in $month"). To refer to pre-built classes, use the class' symbol prepended with `$` e.g. `$MONTH`. To refer to custom classes that were defined inline in the request, set the class's `custom_class_id` to a string unique to all class resources and inline classes. Then use the class' id wrapped in $`{...}` e.g. "${my-months}". To refer to custom classes resources, use the class' id wrapped in `${}` (e.g. `${my-months}`). Speech-to-Text supports three locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a [regional endpoint](/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.
          */
         export interface PhraseArgs {
             /**
@@ -56760,7 +57078,7 @@ export namespace sqladmin {
              */
             allocatedIpRange?: pulumi.Input<string>;
             /**
-             * The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **192.168.100.0/24**).
+             * The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **157.197.200.0/24**).
              */
             authorizedNetworks?: pulumi.Input<pulumi.Input<inputs.sqladmin.v1.AclEntryArgs>[]>;
             /**
@@ -56800,7 +57118,7 @@ export namespace sqladmin {
          */
         export interface LocationPreferenceArgs {
             /**
-             * The App Engine application to follow, it must be in the same region as the Cloud SQL instance.
+             * The App Engine application to follow, it must be in the same region as the Cloud SQL instance. WARNING: Changing this might restart the instance.
              */
             followGaeApplication?: pulumi.Input<string>;
             /**
@@ -56812,7 +57130,7 @@ export namespace sqladmin {
              */
             secondaryZone?: pulumi.Input<string>;
             /**
-             * The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.).
+             * The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.). WARNING: Changing this might restart the instance.
              */
             zone?: pulumi.Input<string>;
         }
@@ -57034,7 +57352,7 @@ export namespace sqladmin {
              */
             databaseFlags?: pulumi.Input<pulumi.Input<inputs.sqladmin.v1.DatabaseFlagsArgs>[]>;
             /**
-             * Configuration specific to read replica instances. Indicates whether replication is enabled or not.
+             * Configuration specific to read replica instances. Indicates whether replication is enabled or not. WARNING: Changing this restarts the instance.
              */
             databaseReplicationEnabled?: pulumi.Input<boolean>;
             /**
@@ -57086,7 +57404,7 @@ export namespace sqladmin {
              */
             storageAutoResizeLimit?: pulumi.Input<string>;
             /**
-             * The tier (or machine type) for this instance, for example **db-custom-1-3840**.
+             * The tier (or machine type) for this instance, for example **db-custom-1-3840**. WARNING: Changing this restarts the instance.
              */
             tier?: pulumi.Input<string>;
             /**
@@ -57420,7 +57738,7 @@ export namespace sqladmin {
              */
             allocatedIpRange?: pulumi.Input<string>;
             /**
-             * The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **192.168.100.0/24**).
+             * The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **157.197.200.0/24**).
              */
             authorizedNetworks?: pulumi.Input<pulumi.Input<inputs.sqladmin.v1beta4.AclEntryArgs>[]>;
             /**
@@ -57460,7 +57778,7 @@ export namespace sqladmin {
          */
         export interface LocationPreferenceArgs {
             /**
-             * The App Engine application to follow, it must be in the same region as the Cloud SQL instance.
+             * The App Engine application to follow, it must be in the same region as the Cloud SQL instance. WARNING: Changing this might restart the instance.
              */
             followGaeApplication?: pulumi.Input<string>;
             /**
@@ -57472,7 +57790,7 @@ export namespace sqladmin {
              */
             secondaryZone?: pulumi.Input<string>;
             /**
-             * The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.).
+             * The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.). WARNING: Changing this might restart the instance.
              */
             zone?: pulumi.Input<string>;
         }
@@ -57694,7 +58012,7 @@ export namespace sqladmin {
              */
             databaseFlags?: pulumi.Input<pulumi.Input<inputs.sqladmin.v1beta4.DatabaseFlagsArgs>[]>;
             /**
-             * Configuration specific to read replica instances. Indicates whether replication is enabled or not.
+             * Configuration specific to read replica instances. Indicates whether replication is enabled or not. WARNING: Changing this restarts the instance.
              */
             databaseReplicationEnabled?: pulumi.Input<boolean>;
             /**
@@ -57746,7 +58064,7 @@ export namespace sqladmin {
              */
             storageAutoResizeLimit?: pulumi.Input<string>;
             /**
-             * The tier (or machine type) for this instance, for example **db-custom-1-3840**.
+             * The tier (or machine type) for this instance, for example **db-custom-1-3840**. WARNING: Changing this restarts the instance.
              */
             tier?: pulumi.Input<string>;
             /**
@@ -58495,7 +58813,7 @@ export namespace storagetransfer {
          */
         export interface AzureCredentialsArgs {
             /**
-             * Azure shared access signature (SAS). *Note:*Copying data from Azure Data Lake Storage (ADLS) Gen 2 is in [Preview](/products/#product-launch-stages). During Preview, if you are copying data from ADLS Gen 2, you must use an account SAS. For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+             * Azure shared access signature (SAS). For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
              */
             sasToken: pulumi.Input<string>;
         }
@@ -58553,21 +58871,43 @@ export namespace storagetransfer {
         }
 
         /**
-         * Logging configuration.
+         * Specifies the logging behavior for transfer operations. For cloud-to-cloud transfers, logs are sent to Cloud Logging. See [Read transfer logs](https://cloud.google.com/storage-transfer/docs/read-transfer-logs) for details. For transfers to or from a POSIX file system, logs are stored in the Cloud Storage bucket that is the source or sink of the transfer. See [Managing Transfer for on-premises jobs] (https://cloud.google.com/storage-transfer/docs/managing-on-prem-jobs#viewing-logs) for details.
          */
         export interface LoggingConfigArgs {
             /**
-             * Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
+             * For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
              */
             enableOnpremGcsTransferLogs?: pulumi.Input<boolean>;
             /**
-             * States in which `log_actions` are logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+             * States in which `log_actions` are logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
              */
             logActionStates?: pulumi.Input<pulumi.Input<enums.storagetransfer.v1.LoggingConfigLogActionStatesItem>[]>;
             /**
-             * Actions to be logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+             * Specifies the actions to be logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
              */
             logActions?: pulumi.Input<pulumi.Input<enums.storagetransfer.v1.LoggingConfigLogActionsItem>[]>;
+        }
+
+        /**
+         * Specifies the metadata options for running a transfer.
+         */
+        export interface MetadataOptionsArgs {
+            /**
+             * Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.
+             */
+            gid?: pulumi.Input<enums.storagetransfer.v1.MetadataOptionsGid>;
+            /**
+             * Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.
+             */
+            mode?: pulumi.Input<enums.storagetransfer.v1.MetadataOptionsMode>;
+            /**
+             * Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.
+             */
+            symlink?: pulumi.Input<enums.storagetransfer.v1.MetadataOptionsSymlink>;
+            /**
+             * Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.
+             */
+            uid?: pulumi.Input<enums.storagetransfer.v1.MetadataOptionsUid>;
         }
 
         /**
@@ -58609,11 +58949,11 @@ export namespace storagetransfer {
              */
             lastModifiedSince?: pulumi.Input<string>;
             /**
-             * If specified, only objects with a "last modification time" on or after `NOW` - `max_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
+             * Ensures that objects are not transferred if a specific maximum time has elapsed since the "last modification time". When a TransferOperation begins, objects with a "last modification time" are transferred only if the elapsed time between the start_time of the `TransferOperation`and the "last modification time" of the object is less than the value of max_time_elapsed_since_last_modification`. Objects that do not have a "last modification time" are also transferred.
              */
             maxTimeElapsedSinceLastModification?: pulumi.Input<string>;
             /**
-             * If specified, only objects with a "last modification time" before `NOW` - `min_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
+             * Ensures that objects are not transferred until a specific minimum time has elapsed after the "last modification time". When a TransferOperation begins, objects with a "last modification time" are transferred only if the elapsed time between the start_time of the `TransferOperation` and the "last modification time" of the object is equal to or greater than the value of min_time_elapsed_since_last_modification`. Objects that do not have a "last modification time" are also transferred.
              */
             minTimeElapsedSinceLastModification?: pulumi.Input<string>;
         }
@@ -58699,6 +59039,10 @@ export namespace storagetransfer {
              */
             deleteObjectsUniqueInSink?: pulumi.Input<boolean>;
             /**
+             * Represents the selected metadata options for a transfer job.
+             */
+            metadataOptions?: pulumi.Input<inputs.storagetransfer.v1.MetadataOptionsArgs>;
+            /**
              * When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
              */
             overwriteObjectsAlreadyExistingInSink?: pulumi.Input<boolean>;
@@ -58724,6 +59068,10 @@ export namespace storagetransfer {
              * A Cloud Storage data source.
              */
             gcsDataSource?: pulumi.Input<inputs.storagetransfer.v1.GcsDataArgs>;
+            /**
+             * Cloud Storage intermediate data location.
+             */
+            gcsIntermediateDataLocation?: pulumi.Input<inputs.storagetransfer.v1.GcsDataArgs>;
             /**
              * An HTTP URL data source.
              */
@@ -60112,6 +60460,827 @@ export namespace tpu {
 }
 
 export namespace transcoder {
+    export namespace v1 {
+        /**
+         * Ad break.
+         */
+        export interface AdBreakArgs {
+            /**
+             * Start time in seconds for the ad break, relative to the output file timeline. The default is `0s`.
+             */
+            startTimeOffset?: pulumi.Input<string>;
+        }
+
+        /**
+         * Animation types.
+         */
+        export interface AnimationArgs {
+            /**
+             * End previous animation.
+             */
+            animationEnd?: pulumi.Input<inputs.transcoder.v1.AnimationEndArgs>;
+            /**
+             * Display overlay object with fade animation.
+             */
+            animationFade?: pulumi.Input<inputs.transcoder.v1.AnimationFadeArgs>;
+            /**
+             * Display static overlay object.
+             */
+            animationStatic?: pulumi.Input<inputs.transcoder.v1.AnimationStaticArgs>;
+        }
+
+        /**
+         * End previous overlay animation from the video. Without AnimationEnd, the overlay object will keep the state of previous animation until the end of the video.
+         */
+        export interface AnimationEndArgs {
+            /**
+             * The time to end overlay object, in seconds. Default: 0
+             */
+            startTimeOffset?: pulumi.Input<string>;
+        }
+
+        /**
+         * Display overlay object with fade animation.
+         */
+        export interface AnimationFadeArgs {
+            /**
+             * The time to end the fade animation, in seconds. Default: `start_time_offset` + 1s
+             */
+            endTimeOffset?: pulumi.Input<string>;
+            /**
+             * Type of fade animation: `FADE_IN` or `FADE_OUT`.
+             */
+            fadeType: pulumi.Input<enums.transcoder.v1.AnimationFadeFadeType>;
+            /**
+             * The time to start the fade animation, in seconds. Default: 0
+             */
+            startTimeOffset?: pulumi.Input<string>;
+            /**
+             * Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
+             */
+            xy?: pulumi.Input<inputs.transcoder.v1.NormalizedCoordinateArgs>;
+        }
+
+        /**
+         * Display static overlay object.
+         */
+        export interface AnimationStaticArgs {
+            /**
+             * The time to start displaying the overlay object, in seconds. Default: 0
+             */
+            startTimeOffset?: pulumi.Input<string>;
+            /**
+             * Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
+             */
+            xy?: pulumi.Input<inputs.transcoder.v1.NormalizedCoordinateArgs>;
+        }
+
+        /**
+         * Audio preprocessing configuration.
+         */
+        export interface AudioArgs {
+            /**
+             * Enable boosting high frequency components. The default is `false`.
+             */
+            highBoost?: pulumi.Input<boolean>;
+            /**
+             * Enable boosting low frequency components. The default is `false`.
+             */
+            lowBoost?: pulumi.Input<boolean>;
+            /**
+             * Specify audio loudness normalization in loudness units relative to full scale (LUFS). Enter a value between -24 and 0 (the default), where: * -24 is the Advanced Television Systems Committee (ATSC A/85) standard * -23 is the EU R128 broadcast standard * -19 is the prior standard for online mono audio * -18 is the ReplayGain standard * -16 is the prior standard for stereo audio * -14 is the new online audio standard recommended by Spotify, as well as Amazon Echo * 0 disables normalization
+             */
+            lufs?: pulumi.Input<number>;
+        }
+
+        /**
+         * The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
+         */
+        export interface AudioMappingArgs {
+            /**
+             * The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
+             */
+            atomKey: pulumi.Input<string>;
+            /**
+             * Audio volume control in dB. Negative values decrease volume, positive values increase. The default is 0.
+             */
+            gainDb?: pulumi.Input<number>;
+            /**
+             * The zero-based index of the channel in the input audio stream.
+             */
+            inputChannel: pulumi.Input<number>;
+            /**
+             * The `Input.key` that identifies the input file.
+             */
+            inputKey: pulumi.Input<string>;
+            /**
+             * The zero-based index of the track in the input file.
+             */
+            inputTrack: pulumi.Input<number>;
+            /**
+             * The zero-based index of the channel in the output audio stream.
+             */
+            outputChannel: pulumi.Input<number>;
+        }
+
+        /**
+         * Audio stream resource.
+         */
+        export interface AudioStreamArgs {
+            /**
+             * Audio bitrate in bits per second. Must be between 1 and 10,000,000.
+             */
+            bitrateBps: pulumi.Input<number>;
+            /**
+             * Number of audio channels. Must be between 1 and 6. The default is 2.
+             */
+            channelCount?: pulumi.Input<number>;
+            /**
+             * A list of channel names specifying layout of the audio channels. This only affects the metadata embedded in the container headers, if supported by the specified format. The default is `["fl", "fr"]`. Supported channel names: - `fl` - Front left channel - `fr` - Front right channel - `sl` - Side left channel - `sr` - Side right channel - `fc` - Front center channel - `lfe` - Low frequency
+             */
+            channelLayout?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The codec for this audio stream. The default is `aac`. Supported audio codecs: - `aac` - `aac-he` - `aac-he-v2` - `mp3` - `ac3` - `eac3`
+             */
+            codec?: pulumi.Input<string>;
+            /**
+             * The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
+             */
+            mapping?: pulumi.Input<pulumi.Input<inputs.transcoder.v1.AudioMappingArgs>[]>;
+            /**
+             * The audio sample rate in Hertz. The default is 48000 Hertz.
+             */
+            sampleRateHertz?: pulumi.Input<number>;
+        }
+
+        /**
+         * Color preprocessing configuration.
+         */
+        export interface ColorArgs {
+            /**
+             * Control brightness of the video. Enter a value between -1 and 1, where -1 is minimum brightness and 1 is maximum brightness. 0 is no change. The default is 0.
+             */
+            brightness?: pulumi.Input<number>;
+            /**
+             * Control black and white contrast of the video. Enter a value between -1 and 1, where -1 is minimum contrast and 1 is maximum contrast. 0 is no change. The default is 0.
+             */
+            contrast?: pulumi.Input<number>;
+            /**
+             * Control color saturation of the video. Enter a value between -1 and 1, where -1 is fully desaturated and 1 is maximum saturation. 0 is no change. The default is 0.
+             */
+            saturation?: pulumi.Input<number>;
+        }
+
+        /**
+         * Video cropping configuration for the input video. The cropped input video is scaled to match the output resolution.
+         */
+        export interface CropArgs {
+            /**
+             * The number of pixels to crop from the bottom. The default is 0.
+             */
+            bottomPixels?: pulumi.Input<number>;
+            /**
+             * The number of pixels to crop from the left. The default is 0.
+             */
+            leftPixels?: pulumi.Input<number>;
+            /**
+             * The number of pixels to crop from the right. The default is 0.
+             */
+            rightPixels?: pulumi.Input<number>;
+            /**
+             * The number of pixels to crop from the top. The default is 0.
+             */
+            topPixels?: pulumi.Input<number>;
+        }
+
+        /**
+         * Deblock preprocessing configuration.
+         */
+        export interface DeblockArgs {
+            /**
+             * Enable deblocker. The default is `false`.
+             */
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * Set strength of the deblocker. Enter a value between 0 and 1. The higher the value, the stronger the block removal. 0 is no deblocking. The default is 0.
+             */
+            strength?: pulumi.Input<number>;
+        }
+
+        /**
+         * Denoise preprocessing configuration.
+         */
+        export interface DenoiseArgs {
+            /**
+             * Set strength of the denoise. Enter a value between 0 and 1. The higher the value, the smoother the image. 0 is no denoising. The default is 0.
+             */
+            strength?: pulumi.Input<number>;
+            /**
+             * Set the denoiser mode. The default is `standard`. Supported denoiser modes: - `standard` - `grain`
+             */
+            tune?: pulumi.Input<string>;
+        }
+
+        /**
+         * Edit atom.
+         */
+        export interface EditAtomArgs {
+            /**
+             * End time in seconds for the atom, relative to the input file timeline. When `end_time_offset` is not specified, the `inputs` are used until the end of the atom.
+             */
+            endTimeOffset?: pulumi.Input<string>;
+            /**
+             * List of `Input.key`s identifying files that should be used in this atom. The listed `inputs` must have the same timeline.
+             */
+            inputs?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * A unique key for this atom. Must be specified when using advanced mapping.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * Start time in seconds for the atom, relative to the input file timeline. The default is `0s`.
+             */
+            startTimeOffset?: pulumi.Input<string>;
+        }
+
+        /**
+         * Encoding of an input file such as an audio, video, or text track. Elementary streams must be packaged before mapping and sharing between different output formats.
+         */
+        export interface ElementaryStreamArgs {
+            /**
+             * Encoding of an audio stream.
+             */
+            audioStream?: pulumi.Input<inputs.transcoder.v1.AudioStreamArgs>;
+            /**
+             * A unique key for this elementary stream.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * Encoding of a text stream. For example, closed captions or subtitles.
+             */
+            textStream?: pulumi.Input<inputs.transcoder.v1.TextStreamArgs>;
+            /**
+             * Encoding of a video stream.
+             */
+            videoStream?: pulumi.Input<inputs.transcoder.v1.VideoStreamArgs>;
+        }
+
+        /**
+         * H264 codec settings.
+         */
+        export interface H264CodecSettingsArgs {
+            /**
+             * Specifies whether an open Group of Pictures (GOP) structure should be allowed or not. The default is `false`.
+             */
+            allowOpenGop?: pulumi.Input<boolean>;
+            /**
+             * Specify the intensity of the adaptive quantizer (AQ). Must be between 0 and 1, where 0 disables the quantizer and 1 maximizes the quantizer. A higher value equals a lower bitrate but smoother image. The default is 0.
+             */
+            aqStrength?: pulumi.Input<number>;
+            /**
+             * The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than `VideoStream.gop_frame_count` if set. The default is 0.
+             */
+            bFrameCount?: pulumi.Input<number>;
+            /**
+             * Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.
+             */
+            bPyramid?: pulumi.Input<boolean>;
+            /**
+             * The video bitrate in bits per second. The minimum value is 1,000. The maximum value is 800,000,000.
+             */
+            bitrateBps: pulumi.Input<number>;
+            /**
+             * Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
+             */
+            crfLevel?: pulumi.Input<number>;
+            /**
+             * Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `vbr`. The default is `false`.
+             */
+            enableTwoPass?: pulumi.Input<boolean>;
+            /**
+             * The entropy coder to use. The default is `cabac`. Supported entropy coders: - `cavlc` - `cabac`
+             */
+            entropyCoder?: pulumi.Input<string>;
+            /**
+             * The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+             */
+            frameRate: pulumi.Input<number>;
+            /**
+             * Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
+             */
+            gopDuration?: pulumi.Input<string>;
+            /**
+             * Select the GOP size based on the specified frame count. Must be greater than zero.
+             */
+            gopFrameCount?: pulumi.Input<number>;
+            /**
+             * The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used.
+             */
+            heightPixels?: pulumi.Input<number>;
+            /**
+             * Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
+             */
+            pixelFormat?: pulumi.Input<string>;
+            /**
+             * Enforces the specified codec preset. The default is `veryfast`. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Preset). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.
+             */
+            preset?: pulumi.Input<string>;
+            /**
+             * Enforces the specified codec profile. The following profiles are supported: * `baseline` * `main` * `high` (default) The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Tune). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.
+             */
+            profile?: pulumi.Input<string>;
+            /**
+             * Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+             */
+            rateControlMode?: pulumi.Input<string>;
+            /**
+             * Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Tune). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.
+             */
+            tune?: pulumi.Input<string>;
+            /**
+             * Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of `VideoStream.vbv_size_bits`.
+             */
+            vbvFullnessBits?: pulumi.Input<number>;
+            /**
+             * Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`.
+             */
+            vbvSizeBits?: pulumi.Input<number>;
+            /**
+             * The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
+             */
+            widthPixels?: pulumi.Input<number>;
+        }
+
+        /**
+         * H265 codec settings.
+         */
+        export interface H265CodecSettingsArgs {
+            /**
+             * Specifies whether an open Group of Pictures (GOP) structure should be allowed or not. The default is `false`.
+             */
+            allowOpenGop?: pulumi.Input<boolean>;
+            /**
+             * Specify the intensity of the adaptive quantizer (AQ). Must be between 0 and 1, where 0 disables the quantizer and 1 maximizes the quantizer. A higher value equals a lower bitrate but smoother image. The default is 0.
+             */
+            aqStrength?: pulumi.Input<number>;
+            /**
+             * The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than `VideoStream.gop_frame_count` if set. The default is 0.
+             */
+            bFrameCount?: pulumi.Input<number>;
+            /**
+             * Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.
+             */
+            bPyramid?: pulumi.Input<boolean>;
+            /**
+             * The video bitrate in bits per second. The minimum value is 1,000. The maximum value is 800,000,000.
+             */
+            bitrateBps: pulumi.Input<number>;
+            /**
+             * Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
+             */
+            crfLevel?: pulumi.Input<number>;
+            /**
+             * Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `vbr`. The default is `false`.
+             */
+            enableTwoPass?: pulumi.Input<boolean>;
+            /**
+             * The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+             */
+            frameRate: pulumi.Input<number>;
+            /**
+             * Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
+             */
+            gopDuration?: pulumi.Input<string>;
+            /**
+             * Select the GOP size based on the specified frame count. Must be greater than zero.
+             */
+            gopFrameCount?: pulumi.Input<number>;
+            /**
+             * The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used.
+             */
+            heightPixels?: pulumi.Input<number>;
+            /**
+             * Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
+             */
+            pixelFormat?: pulumi.Input<string>;
+            /**
+             * Enforces the specified codec preset. The default is `veryfast`. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.
+             */
+            preset?: pulumi.Input<string>;
+            /**
+             * Enforces the specified codec profile. The following profiles are supported: * 8-bit profiles * `main` (default) * `main-intra` * `mainstillpicture` * 10-bit profiles * `main10` (default) * `main10-intra` * `main422-10` * `main422-10-intra` * `main444-10` * `main444-10-intra` * 12-bit profiles * `main12` (default) * `main12-intra` * `main422-12` * `main422-12-intra` * `main444-12` * `main444-12-intra` The available options are [FFmpeg-compatible](https://x265.readthedocs.io/). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.
+             */
+            profile?: pulumi.Input<string>;
+            /**
+             * Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+             */
+            rateControlMode?: pulumi.Input<string>;
+            /**
+             * Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.
+             */
+            tune?: pulumi.Input<string>;
+            /**
+             * Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of `VideoStream.vbv_size_bits`.
+             */
+            vbvFullnessBits?: pulumi.Input<number>;
+            /**
+             * Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`.
+             */
+            vbvSizeBits?: pulumi.Input<number>;
+            /**
+             * The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
+             */
+            widthPixels?: pulumi.Input<number>;
+        }
+
+        /**
+         * Overlaid jpeg image.
+         */
+        export interface ImageArgs {
+            /**
+             * Target image opacity. Valid values are from `1.0` (solid, default) to `0.0` (transparent), exclusive. Set this to a value greater than `0.0`.
+             */
+            alpha?: pulumi.Input<number>;
+            /**
+             * Normalized image resolution, based on output video resolution. Valid values: `0.0`–`1.0`. To respect the original image aspect ratio, set either `x` or `y` to `0.0`. To use the original image resolution, set both `x` and `y` to `0.0`.
+             */
+            resolution?: pulumi.Input<inputs.transcoder.v1.NormalizedCoordinateArgs>;
+            /**
+             * URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
+             */
+            uri: pulumi.Input<string>;
+        }
+
+        /**
+         * Input asset.
+         */
+        export interface InputArgs {
+            /**
+             * A unique key for this input. Must be specified when using advanced mapping and edit lists.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * Preprocessing configurations.
+             */
+            preprocessingConfig?: pulumi.Input<inputs.transcoder.v1.PreprocessingConfigArgs>;
+            /**
+             * URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value will be populated from `Job.input_uri`.
+             */
+            uri?: pulumi.Input<string>;
+        }
+
+        /**
+         * Job configuration
+         */
+        export interface JobConfigArgs {
+            /**
+             * List of ad breaks. Specifies where to insert ad break tags in the output manifests.
+             */
+            adBreaks?: pulumi.Input<pulumi.Input<inputs.transcoder.v1.AdBreakArgs>[]>;
+            /**
+             * List of `Edit atom`s. Defines the ultimate timeline of the resulting file or manifest.
+             */
+            editList?: pulumi.Input<pulumi.Input<inputs.transcoder.v1.EditAtomArgs>[]>;
+            /**
+             * List of elementary streams.
+             */
+            elementaryStreams?: pulumi.Input<pulumi.Input<inputs.transcoder.v1.ElementaryStreamArgs>[]>;
+            /**
+             * List of input assets stored in Cloud Storage.
+             */
+            inputs?: pulumi.Input<pulumi.Input<inputs.transcoder.v1.InputArgs>[]>;
+            /**
+             * List of output manifests.
+             */
+            manifests?: pulumi.Input<pulumi.Input<inputs.transcoder.v1.ManifestArgs>[]>;
+            /**
+             * List of multiplexing settings for output streams.
+             */
+            muxStreams?: pulumi.Input<pulumi.Input<inputs.transcoder.v1.MuxStreamArgs>[]>;
+            /**
+             * Output configuration.
+             */
+            output?: pulumi.Input<inputs.transcoder.v1.OutputArgs>;
+            /**
+             * List of overlays on the output video, in descending Z-order.
+             */
+            overlays?: pulumi.Input<pulumi.Input<inputs.transcoder.v1.OverlayArgs>[]>;
+            /**
+             * Destination on Pub/Sub.
+             */
+            pubsubDestination?: pulumi.Input<inputs.transcoder.v1.PubsubDestinationArgs>;
+            /**
+             * List of output sprite sheets.
+             */
+            spriteSheets?: pulumi.Input<pulumi.Input<inputs.transcoder.v1.SpriteSheetArgs>[]>;
+        }
+
+        /**
+         * Manifest configuration.
+         */
+        export interface ManifestArgs {
+            /**
+             * The name of the generated file. The default is `manifest` with the extension suffix corresponding to the `Manifest.type`.
+             */
+            fileName?: pulumi.Input<string>;
+            /**
+             * List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
+             */
+            muxStreams: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * Type of the manifest, can be `HLS` or `DASH`.
+             */
+            type: pulumi.Input<enums.transcoder.v1.ManifestType>;
+        }
+
+        /**
+         * Multiplexing settings for output stream.
+         */
+        export interface MuxStreamArgs {
+            /**
+             * The container format. The default is `mp4` Supported container formats: - `ts` - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt`
+             */
+            container?: pulumi.Input<string>;
+            /**
+             * List of `ElementaryStream.key`s multiplexed in this stream.
+             */
+            elementaryStreams?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The name of the generated file. The default is `MuxStream.key` with the extension suffix corresponding to the `MuxStream.container`. Individual segments also have an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `mux_stream0000000123.ts`.
+             */
+            fileName?: pulumi.Input<string>;
+            /**
+             * A unique key for this multiplexed stream. HLS media manifests will be named `MuxStream.key` with the `.m3u8` extension suffix.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * Segment settings for `ts`, `fmp4` and `vtt`.
+             */
+            segmentSettings?: pulumi.Input<inputs.transcoder.v1.SegmentSettingsArgs>;
+        }
+
+        /**
+         * 2D normalized coordinates. Default: `{0.0, 0.0}`
+         */
+        export interface NormalizedCoordinateArgs {
+            /**
+             * Normalized x coordinate.
+             */
+            x?: pulumi.Input<number>;
+            /**
+             * Normalized y coordinate.
+             */
+            y?: pulumi.Input<number>;
+        }
+
+        /**
+         * Location of output file(s) in a Cloud Storage bucket.
+         */
+        export interface OutputArgs {
+            /**
+             * URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty the value is populated from `Job.output_uri`.
+             */
+            uri?: pulumi.Input<string>;
+        }
+
+        /**
+         * Overlay configuration.
+         */
+        export interface OverlayArgs {
+            /**
+             * List of Animations. The list should be chronological, without any time overlap.
+             */
+            animations?: pulumi.Input<pulumi.Input<inputs.transcoder.v1.AnimationArgs>[]>;
+            /**
+             * Image overlay.
+             */
+            image?: pulumi.Input<inputs.transcoder.v1.ImageArgs>;
+        }
+
+        /**
+         * Pad filter configuration for the input video. The padded input video is scaled after padding with black to match the output resolution.
+         */
+        export interface PadArgs {
+            /**
+             * The number of pixels to add to the bottom. The default is 0.
+             */
+            bottomPixels?: pulumi.Input<number>;
+            /**
+             * The number of pixels to add to the left. The default is 0.
+             */
+            leftPixels?: pulumi.Input<number>;
+            /**
+             * The number of pixels to add to the right. The default is 0.
+             */
+            rightPixels?: pulumi.Input<number>;
+            /**
+             * The number of pixels to add to the top. The default is 0.
+             */
+            topPixels?: pulumi.Input<number>;
+        }
+
+        /**
+         * Preprocessing configurations.
+         */
+        export interface PreprocessingConfigArgs {
+            /**
+             * Audio preprocessing configuration.
+             */
+            audio?: pulumi.Input<inputs.transcoder.v1.AudioArgs>;
+            /**
+             * Color preprocessing configuration.
+             */
+            color?: pulumi.Input<inputs.transcoder.v1.ColorArgs>;
+            /**
+             * Specify the video cropping configuration.
+             */
+            crop?: pulumi.Input<inputs.transcoder.v1.CropArgs>;
+            /**
+             * Deblock preprocessing configuration.
+             */
+            deblock?: pulumi.Input<inputs.transcoder.v1.DeblockArgs>;
+            /**
+             * Denoise preprocessing configuration.
+             */
+            denoise?: pulumi.Input<inputs.transcoder.v1.DenoiseArgs>;
+            /**
+             * Specify the video pad filter configuration.
+             */
+            pad?: pulumi.Input<inputs.transcoder.v1.PadArgs>;
+        }
+
+        /**
+         * A Pub/Sub destination.
+         */
+        export interface PubsubDestinationArgs {
+            /**
+             * The name of the Pub/Sub topic to publish job completion notification to. For example: `projects/{project}/topics/{topic}`.
+             */
+            topic?: pulumi.Input<string>;
+        }
+
+        /**
+         * Segment settings for `ts`, `fmp4` and `vtt`.
+         */
+        export interface SegmentSettingsArgs {
+            /**
+             * Create an individual segment file. The default is `false`.
+             */
+            individualSegments: pulumi.Input<boolean>;
+            /**
+             * Duration of the segments in seconds. The default is `6.0s`. Note that `segmentDuration` must be greater than or equal to [`gopDuration`](#videostream), and `segmentDuration` must be divisible by [`gopDuration`](#videostream).
+             */
+            segmentDuration?: pulumi.Input<string>;
+        }
+
+        /**
+         * Sprite sheet configuration.
+         */
+        export interface SpriteSheetArgs {
+            /**
+             * The maximum number of sprites per row in a sprite sheet. The default is 0, which indicates no maximum limit.
+             */
+            columnCount?: pulumi.Input<number>;
+            /**
+             * End time in seconds, relative to the output file timeline. When `end_time_offset` is not specified, the sprites are generated until the end of the output file.
+             */
+            endTimeOffset?: pulumi.Input<string>;
+            /**
+             * File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `sprite_sheet0000000123.jpeg`.
+             */
+            filePrefix: pulumi.Input<string>;
+            /**
+             * Format type. The default is `jpeg`. Supported formats: - `jpeg`
+             */
+            format?: pulumi.Input<string>;
+            /**
+             * Starting from `0s`, create sprites at regular intervals. Specify the interval value in seconds.
+             */
+            interval?: pulumi.Input<string>;
+            /**
+             * The quality of the generated sprite sheet. Enter a value between 1 and 100, where 1 is the lowest quality and 100 is the highest quality. The default is 100. A high quality value corresponds to a low image data compression ratio.
+             */
+            quality?: pulumi.Input<number>;
+            /**
+             * The maximum number of rows per sprite sheet. When the sprite sheet is full, a new sprite sheet is created. The default is 0, which indicates no maximum limit.
+             */
+            rowCount?: pulumi.Input<number>;
+            /**
+             * The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
+             */
+            spriteHeightPixels: pulumi.Input<number>;
+            /**
+             * The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
+             */
+            spriteWidthPixels: pulumi.Input<number>;
+            /**
+             * Start time in seconds, relative to the output file timeline. Determines the first sprite to pick. The default is `0s`.
+             */
+            startTimeOffset?: pulumi.Input<string>;
+            /**
+             * Total number of sprites. Create the specified number of sprites distributed evenly across the timeline of the output media. The default is 100.
+             */
+            totalCount?: pulumi.Input<number>;
+        }
+
+        /**
+         * The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
+         */
+        export interface TextMappingArgs {
+            /**
+             * The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
+             */
+            atomKey: pulumi.Input<string>;
+            /**
+             * The `Input.key` that identifies the input file.
+             */
+            inputKey: pulumi.Input<string>;
+            /**
+             * The zero-based index of the track in the input file.
+             */
+            inputTrack: pulumi.Input<number>;
+        }
+
+        /**
+         * Encoding of a text stream. For example, closed captions or subtitles.
+         */
+        export interface TextStreamArgs {
+            /**
+             * The codec for this text stream. The default is `webvtt`. Supported text codecs: - `srt` - `ttml` - `cea608` - `cea708` - `webvtt`
+             */
+            codec?: pulumi.Input<string>;
+            /**
+             * The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
+             */
+            mapping?: pulumi.Input<pulumi.Input<inputs.transcoder.v1.TextMappingArgs>[]>;
+        }
+
+        /**
+         * Video stream resource.
+         */
+        export interface VideoStreamArgs {
+            /**
+             * H264 codec settings.
+             */
+            h264?: pulumi.Input<inputs.transcoder.v1.H264CodecSettingsArgs>;
+            /**
+             * H265 codec settings.
+             */
+            h265?: pulumi.Input<inputs.transcoder.v1.H265CodecSettingsArgs>;
+            /**
+             * VP9 codec settings.
+             */
+            vp9?: pulumi.Input<inputs.transcoder.v1.Vp9CodecSettingsArgs>;
+        }
+
+        /**
+         * VP9 codec settings.
+         */
+        export interface Vp9CodecSettingsArgs {
+            /**
+             * The video bitrate in bits per second. The minimum value is 1,000. The maximum value is 480,000,000.
+             */
+            bitrateBps: pulumi.Input<number>;
+            /**
+             * Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
+             */
+            crfLevel?: pulumi.Input<number>;
+            /**
+             * The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+             */
+            frameRate: pulumi.Input<number>;
+            /**
+             * Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
+             */
+            gopDuration?: pulumi.Input<string>;
+            /**
+             * Select the GOP size based on the specified frame count. Must be greater than zero.
+             */
+            gopFrameCount?: pulumi.Input<number>;
+            /**
+             * The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used.
+             */
+            heightPixels?: pulumi.Input<number>;
+            /**
+             * Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
+             */
+            pixelFormat?: pulumi.Input<string>;
+            /**
+             * Enforces the specified codec profile. The following profiles are supported: * `profile0` (default) * `profile1` * `profile2` * `profile3` The available options are [WebM-compatible](https://www.webmproject.org/vp9/profiles/). Note that certain values for this field may cause the transcoder to override other fields you set in the `Vp9CodecSettings` message.
+             */
+            profile?: pulumi.Input<string>;
+            /**
+             * Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+             */
+            rateControlMode?: pulumi.Input<string>;
+            /**
+             * The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
+             */
+            widthPixels?: pulumi.Input<number>;
+        }
+
+    }
+
     export namespace v1beta1 {
         /**
          * Ad break.
@@ -61050,6 +62219,10 @@ export namespace vmmigration {
          */
         export interface ComputeEngineTargetDefaultsArgs {
             /**
+             * Additional licenses to assign to the VM.
+             */
+            additionalLicenses?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
              * Compute instance scheduling information (if empty default is used).
              */
             computeScheduling?: pulumi.Input<inputs.vmmigration.v1.ComputeSchedulingArgs>;
@@ -61318,6 +62491,10 @@ export namespace vmmigration {
          * ComputeEngineTargetDefaults is a collection of details for creating a VM in a target Compute Engine project.
          */
         export interface ComputeEngineTargetDefaultsArgs {
+            /**
+             * Additional licenses to assign to the VM.
+             */
+            additionalLicenses?: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Compute instance scheduling information (if empty default is used).
              */

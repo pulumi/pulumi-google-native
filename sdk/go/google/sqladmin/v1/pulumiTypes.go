@@ -3366,7 +3366,7 @@ func (o InstanceReferenceResponsePtrOutput) Region() pulumi.StringPtrOutput {
 type IpConfiguration struct {
 	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
 	AllocatedIpRange *string `pulumi:"allocatedIpRange"`
-	// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **192.168.100.0/24**).
+	// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **157.197.200.0/24**).
 	AuthorizedNetworks []AclEntry `pulumi:"authorizedNetworks"`
 	// Whether the instance is assigned a public IP address or not.
 	Ipv4Enabled *bool `pulumi:"ipv4Enabled"`
@@ -3391,7 +3391,7 @@ type IpConfigurationInput interface {
 type IpConfigurationArgs struct {
 	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
 	AllocatedIpRange pulumi.StringPtrInput `pulumi:"allocatedIpRange"`
-	// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **192.168.100.0/24**).
+	// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **157.197.200.0/24**).
 	AuthorizedNetworks AclEntryArrayInput `pulumi:"authorizedNetworks"`
 	// Whether the instance is assigned a public IP address or not.
 	Ipv4Enabled pulumi.BoolPtrInput `pulumi:"ipv4Enabled"`
@@ -3484,7 +3484,7 @@ func (o IpConfigurationOutput) AllocatedIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IpConfiguration) *string { return v.AllocatedIpRange }).(pulumi.StringPtrOutput)
 }
 
-// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **192.168.100.0/24**).
+// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **157.197.200.0/24**).
 func (o IpConfigurationOutput) AuthorizedNetworks() AclEntryArrayOutput {
 	return o.ApplyT(func(v IpConfiguration) []AclEntry { return v.AuthorizedNetworks }).(AclEntryArrayOutput)
 }
@@ -3538,7 +3538,7 @@ func (o IpConfigurationPtrOutput) AllocatedIpRange() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **192.168.100.0/24**).
+// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **157.197.200.0/24**).
 func (o IpConfigurationPtrOutput) AuthorizedNetworks() AclEntryArrayOutput {
 	return o.ApplyT(func(v *IpConfiguration) []AclEntry {
 		if v == nil {
@@ -3582,7 +3582,7 @@ func (o IpConfigurationPtrOutput) RequireSsl() pulumi.BoolPtrOutput {
 type IpConfigurationResponse struct {
 	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
 	AllocatedIpRange string `pulumi:"allocatedIpRange"`
-	// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **192.168.100.0/24**).
+	// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **157.197.200.0/24**).
 	AuthorizedNetworks []AclEntryResponse `pulumi:"authorizedNetworks"`
 	// Whether the instance is assigned a public IP address or not.
 	Ipv4Enabled bool `pulumi:"ipv4Enabled"`
@@ -3607,7 +3607,7 @@ type IpConfigurationResponseInput interface {
 type IpConfigurationResponseArgs struct {
 	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
 	AllocatedIpRange pulumi.StringInput `pulumi:"allocatedIpRange"`
-	// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **192.168.100.0/24**).
+	// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **157.197.200.0/24**).
 	AuthorizedNetworks AclEntryResponseArrayInput `pulumi:"authorizedNetworks"`
 	// Whether the instance is assigned a public IP address or not.
 	Ipv4Enabled pulumi.BoolInput `pulumi:"ipv4Enabled"`
@@ -3700,7 +3700,7 @@ func (o IpConfigurationResponseOutput) AllocatedIpRange() pulumi.StringOutput {
 	return o.ApplyT(func(v IpConfigurationResponse) string { return v.AllocatedIpRange }).(pulumi.StringOutput)
 }
 
-// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **192.168.100.0/24**).
+// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **157.197.200.0/24**).
 func (o IpConfigurationResponseOutput) AuthorizedNetworks() AclEntryResponseArrayOutput {
 	return o.ApplyT(func(v IpConfigurationResponse) []AclEntryResponse { return v.AuthorizedNetworks }).(AclEntryResponseArrayOutput)
 }
@@ -3754,7 +3754,7 @@ func (o IpConfigurationResponsePtrOutput) AllocatedIpRange() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **192.168.100.0/24**).
+// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **157.197.200.0/24**).
 func (o IpConfigurationResponsePtrOutput) AuthorizedNetworks() AclEntryResponseArrayOutput {
 	return o.ApplyT(func(v *IpConfigurationResponse) []AclEntryResponse {
 		if v == nil {
@@ -4032,13 +4032,13 @@ func (o IpMappingResponseArrayOutput) Index(i pulumi.IntInput) IpMappingResponse
 
 // Preferred location. This specifies where a Cloud SQL instance is located. Note that if the preferred location is not available, the instance will be located as close as possible within the region. Only one location may be specified.
 type LocationPreference struct {
-	// The App Engine application to follow, it must be in the same region as the Cloud SQL instance.
+	// The App Engine application to follow, it must be in the same region as the Cloud SQL instance. WARNING: Changing this might restart the instance.
 	FollowGaeApplication *string `pulumi:"followGaeApplication"`
 	// This is always **sql#locationPreference**.
 	Kind *string `pulumi:"kind"`
 	// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
 	SecondaryZone *string `pulumi:"secondaryZone"`
-	// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.).
+	// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.). WARNING: Changing this might restart the instance.
 	Zone *string `pulumi:"zone"`
 }
 
@@ -4055,13 +4055,13 @@ type LocationPreferenceInput interface {
 
 // Preferred location. This specifies where a Cloud SQL instance is located. Note that if the preferred location is not available, the instance will be located as close as possible within the region. Only one location may be specified.
 type LocationPreferenceArgs struct {
-	// The App Engine application to follow, it must be in the same region as the Cloud SQL instance.
+	// The App Engine application to follow, it must be in the same region as the Cloud SQL instance. WARNING: Changing this might restart the instance.
 	FollowGaeApplication pulumi.StringPtrInput `pulumi:"followGaeApplication"`
 	// This is always **sql#locationPreference**.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
 	SecondaryZone pulumi.StringPtrInput `pulumi:"secondaryZone"`
-	// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.).
+	// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.). WARNING: Changing this might restart the instance.
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
 
@@ -4143,7 +4143,7 @@ func (o LocationPreferenceOutput) ToLocationPreferencePtrOutputWithContext(ctx c
 	}).(LocationPreferencePtrOutput)
 }
 
-// The App Engine application to follow, it must be in the same region as the Cloud SQL instance.
+// The App Engine application to follow, it must be in the same region as the Cloud SQL instance. WARNING: Changing this might restart the instance.
 func (o LocationPreferenceOutput) FollowGaeApplication() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LocationPreference) *string { return v.FollowGaeApplication }).(pulumi.StringPtrOutput)
 }
@@ -4158,7 +4158,7 @@ func (o LocationPreferenceOutput) SecondaryZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LocationPreference) *string { return v.SecondaryZone }).(pulumi.StringPtrOutput)
 }
 
-// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.).
+// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.). WARNING: Changing this might restart the instance.
 func (o LocationPreferenceOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LocationPreference) *string { return v.Zone }).(pulumi.StringPtrOutput)
 }
@@ -4187,7 +4187,7 @@ func (o LocationPreferencePtrOutput) Elem() LocationPreferenceOutput {
 	}).(LocationPreferenceOutput)
 }
 
-// The App Engine application to follow, it must be in the same region as the Cloud SQL instance.
+// The App Engine application to follow, it must be in the same region as the Cloud SQL instance. WARNING: Changing this might restart the instance.
 func (o LocationPreferencePtrOutput) FollowGaeApplication() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LocationPreference) *string {
 		if v == nil {
@@ -4217,7 +4217,7 @@ func (o LocationPreferencePtrOutput) SecondaryZone() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.).
+// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.). WARNING: Changing this might restart the instance.
 func (o LocationPreferencePtrOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LocationPreference) *string {
 		if v == nil {
@@ -4229,13 +4229,13 @@ func (o LocationPreferencePtrOutput) Zone() pulumi.StringPtrOutput {
 
 // Preferred location. This specifies where a Cloud SQL instance is located. Note that if the preferred location is not available, the instance will be located as close as possible within the region. Only one location may be specified.
 type LocationPreferenceResponse struct {
-	// The App Engine application to follow, it must be in the same region as the Cloud SQL instance.
+	// The App Engine application to follow, it must be in the same region as the Cloud SQL instance. WARNING: Changing this might restart the instance.
 	FollowGaeApplication string `pulumi:"followGaeApplication"`
 	// This is always **sql#locationPreference**.
 	Kind string `pulumi:"kind"`
 	// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
 	SecondaryZone string `pulumi:"secondaryZone"`
-	// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.).
+	// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.). WARNING: Changing this might restart the instance.
 	Zone string `pulumi:"zone"`
 }
 
@@ -4252,13 +4252,13 @@ type LocationPreferenceResponseInput interface {
 
 // Preferred location. This specifies where a Cloud SQL instance is located. Note that if the preferred location is not available, the instance will be located as close as possible within the region. Only one location may be specified.
 type LocationPreferenceResponseArgs struct {
-	// The App Engine application to follow, it must be in the same region as the Cloud SQL instance.
+	// The App Engine application to follow, it must be in the same region as the Cloud SQL instance. WARNING: Changing this might restart the instance.
 	FollowGaeApplication pulumi.StringInput `pulumi:"followGaeApplication"`
 	// This is always **sql#locationPreference**.
 	Kind pulumi.StringInput `pulumi:"kind"`
 	// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
 	SecondaryZone pulumi.StringInput `pulumi:"secondaryZone"`
-	// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.).
+	// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.). WARNING: Changing this might restart the instance.
 	Zone pulumi.StringInput `pulumi:"zone"`
 }
 
@@ -4340,7 +4340,7 @@ func (o LocationPreferenceResponseOutput) ToLocationPreferenceResponsePtrOutputW
 	}).(LocationPreferenceResponsePtrOutput)
 }
 
-// The App Engine application to follow, it must be in the same region as the Cloud SQL instance.
+// The App Engine application to follow, it must be in the same region as the Cloud SQL instance. WARNING: Changing this might restart the instance.
 func (o LocationPreferenceResponseOutput) FollowGaeApplication() pulumi.StringOutput {
 	return o.ApplyT(func(v LocationPreferenceResponse) string { return v.FollowGaeApplication }).(pulumi.StringOutput)
 }
@@ -4355,7 +4355,7 @@ func (o LocationPreferenceResponseOutput) SecondaryZone() pulumi.StringOutput {
 	return o.ApplyT(func(v LocationPreferenceResponse) string { return v.SecondaryZone }).(pulumi.StringOutput)
 }
 
-// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.).
+// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.). WARNING: Changing this might restart the instance.
 func (o LocationPreferenceResponseOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v LocationPreferenceResponse) string { return v.Zone }).(pulumi.StringOutput)
 }
@@ -4384,7 +4384,7 @@ func (o LocationPreferenceResponsePtrOutput) Elem() LocationPreferenceResponseOu
 	}).(LocationPreferenceResponseOutput)
 }
 
-// The App Engine application to follow, it must be in the same region as the Cloud SQL instance.
+// The App Engine application to follow, it must be in the same region as the Cloud SQL instance. WARNING: Changing this might restart the instance.
 func (o LocationPreferenceResponsePtrOutput) FollowGaeApplication() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LocationPreferenceResponse) *string {
 		if v == nil {
@@ -4414,7 +4414,7 @@ func (o LocationPreferenceResponsePtrOutput) SecondaryZone() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.).
+// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.). WARNING: Changing this might restart the instance.
 func (o LocationPreferenceResponsePtrOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LocationPreferenceResponse) *string {
 		if v == nil {
@@ -7228,7 +7228,7 @@ type Settings struct {
 	DataDiskType *SettingsDataDiskType `pulumi:"dataDiskType"`
 	// The database flags passed to the instance at startup.
 	DatabaseFlags []DatabaseFlags `pulumi:"databaseFlags"`
-	// Configuration specific to read replica instances. Indicates whether replication is enabled or not.
+	// Configuration specific to read replica instances. Indicates whether replication is enabled or not. WARNING: Changing this restarts the instance.
 	DatabaseReplicationEnabled *bool `pulumi:"databaseReplicationEnabled"`
 	// Deny maintenance periods
 	DenyMaintenancePeriods []DenyMaintenancePeriod `pulumi:"denyMaintenancePeriods"`
@@ -7254,7 +7254,7 @@ type Settings struct {
 	StorageAutoResize *bool `pulumi:"storageAutoResize"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	StorageAutoResizeLimit *string `pulumi:"storageAutoResizeLimit"`
-	// The tier (or machine type) for this instance, for example **db-custom-1-3840**.
+	// The tier (or machine type) for this instance, for example **db-custom-1-3840**. WARNING: Changing this restarts the instance.
 	Tier *string `pulumi:"tier"`
 	// User-provided labels, represented as a dictionary where each label is a single key value pair.
 	UserLabels map[string]string `pulumi:"userLabels"`
@@ -7291,7 +7291,7 @@ type SettingsArgs struct {
 	DataDiskType SettingsDataDiskTypePtrInput `pulumi:"dataDiskType"`
 	// The database flags passed to the instance at startup.
 	DatabaseFlags DatabaseFlagsArrayInput `pulumi:"databaseFlags"`
-	// Configuration specific to read replica instances. Indicates whether replication is enabled or not.
+	// Configuration specific to read replica instances. Indicates whether replication is enabled or not. WARNING: Changing this restarts the instance.
 	DatabaseReplicationEnabled pulumi.BoolPtrInput `pulumi:"databaseReplicationEnabled"`
 	// Deny maintenance periods
 	DenyMaintenancePeriods DenyMaintenancePeriodArrayInput `pulumi:"denyMaintenancePeriods"`
@@ -7317,7 +7317,7 @@ type SettingsArgs struct {
 	StorageAutoResize pulumi.BoolPtrInput `pulumi:"storageAutoResize"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	StorageAutoResizeLimit pulumi.StringPtrInput `pulumi:"storageAutoResizeLimit"`
-	// The tier (or machine type) for this instance, for example **db-custom-1-3840**.
+	// The tier (or machine type) for this instance, for example **db-custom-1-3840**. WARNING: Changing this restarts the instance.
 	Tier pulumi.StringPtrInput `pulumi:"tier"`
 	// User-provided labels, represented as a dictionary where each label is a single key value pair.
 	UserLabels pulumi.StringMapInput `pulumi:"userLabels"`
@@ -7446,7 +7446,7 @@ func (o SettingsOutput) DatabaseFlags() DatabaseFlagsArrayOutput {
 	return o.ApplyT(func(v Settings) []DatabaseFlags { return v.DatabaseFlags }).(DatabaseFlagsArrayOutput)
 }
 
-// Configuration specific to read replica instances. Indicates whether replication is enabled or not.
+// Configuration specific to read replica instances. Indicates whether replication is enabled or not. WARNING: Changing this restarts the instance.
 func (o SettingsOutput) DatabaseReplicationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Settings) *bool { return v.DatabaseReplicationEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -7511,7 +7511,7 @@ func (o SettingsOutput) StorageAutoResizeLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Settings) *string { return v.StorageAutoResizeLimit }).(pulumi.StringPtrOutput)
 }
 
-// The tier (or machine type) for this instance, for example **db-custom-1-3840**.
+// The tier (or machine type) for this instance, for example **db-custom-1-3840**. WARNING: Changing this restarts the instance.
 func (o SettingsOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Settings) *string { return v.Tier }).(pulumi.StringPtrOutput)
 }
@@ -7635,7 +7635,7 @@ func (o SettingsPtrOutput) DatabaseFlags() DatabaseFlagsArrayOutput {
 	}).(DatabaseFlagsArrayOutput)
 }
 
-// Configuration specific to read replica instances. Indicates whether replication is enabled or not.
+// Configuration specific to read replica instances. Indicates whether replication is enabled or not. WARNING: Changing this restarts the instance.
 func (o SettingsPtrOutput) DatabaseReplicationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Settings) *bool {
 		if v == nil {
@@ -7765,7 +7765,7 @@ func (o SettingsPtrOutput) StorageAutoResizeLimit() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The tier (or machine type) for this instance, for example **db-custom-1-3840**.
+// The tier (or machine type) for this instance, for example **db-custom-1-3840**. WARNING: Changing this restarts the instance.
 func (o SettingsPtrOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Settings) *string {
 		if v == nil {
@@ -7805,7 +7805,7 @@ type SettingsResponse struct {
 	DataDiskType string `pulumi:"dataDiskType"`
 	// The database flags passed to the instance at startup.
 	DatabaseFlags []DatabaseFlagsResponse `pulumi:"databaseFlags"`
-	// Configuration specific to read replica instances. Indicates whether replication is enabled or not.
+	// Configuration specific to read replica instances. Indicates whether replication is enabled or not. WARNING: Changing this restarts the instance.
 	DatabaseReplicationEnabled bool `pulumi:"databaseReplicationEnabled"`
 	// Deny maintenance periods
 	DenyMaintenancePeriods []DenyMaintenancePeriodResponse `pulumi:"denyMaintenancePeriods"`
@@ -7831,7 +7831,7 @@ type SettingsResponse struct {
 	StorageAutoResize bool `pulumi:"storageAutoResize"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	StorageAutoResizeLimit string `pulumi:"storageAutoResizeLimit"`
-	// The tier (or machine type) for this instance, for example **db-custom-1-3840**.
+	// The tier (or machine type) for this instance, for example **db-custom-1-3840**. WARNING: Changing this restarts the instance.
 	Tier string `pulumi:"tier"`
 	// User-provided labels, represented as a dictionary where each label is a single key value pair.
 	UserLabels map[string]string `pulumi:"userLabels"`
@@ -7868,7 +7868,7 @@ type SettingsResponseArgs struct {
 	DataDiskType pulumi.StringInput `pulumi:"dataDiskType"`
 	// The database flags passed to the instance at startup.
 	DatabaseFlags DatabaseFlagsResponseArrayInput `pulumi:"databaseFlags"`
-	// Configuration specific to read replica instances. Indicates whether replication is enabled or not.
+	// Configuration specific to read replica instances. Indicates whether replication is enabled or not. WARNING: Changing this restarts the instance.
 	DatabaseReplicationEnabled pulumi.BoolInput `pulumi:"databaseReplicationEnabled"`
 	// Deny maintenance periods
 	DenyMaintenancePeriods DenyMaintenancePeriodResponseArrayInput `pulumi:"denyMaintenancePeriods"`
@@ -7894,7 +7894,7 @@ type SettingsResponseArgs struct {
 	StorageAutoResize pulumi.BoolInput `pulumi:"storageAutoResize"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	StorageAutoResizeLimit pulumi.StringInput `pulumi:"storageAutoResizeLimit"`
-	// The tier (or machine type) for this instance, for example **db-custom-1-3840**.
+	// The tier (or machine type) for this instance, for example **db-custom-1-3840**. WARNING: Changing this restarts the instance.
 	Tier pulumi.StringInput `pulumi:"tier"`
 	// User-provided labels, represented as a dictionary where each label is a single key value pair.
 	UserLabels pulumi.StringMapInput `pulumi:"userLabels"`
@@ -8023,7 +8023,7 @@ func (o SettingsResponseOutput) DatabaseFlags() DatabaseFlagsResponseArrayOutput
 	return o.ApplyT(func(v SettingsResponse) []DatabaseFlagsResponse { return v.DatabaseFlags }).(DatabaseFlagsResponseArrayOutput)
 }
 
-// Configuration specific to read replica instances. Indicates whether replication is enabled or not.
+// Configuration specific to read replica instances. Indicates whether replication is enabled or not. WARNING: Changing this restarts the instance.
 func (o SettingsResponseOutput) DatabaseReplicationEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v SettingsResponse) bool { return v.DatabaseReplicationEnabled }).(pulumi.BoolOutput)
 }
@@ -8088,7 +8088,7 @@ func (o SettingsResponseOutput) StorageAutoResizeLimit() pulumi.StringOutput {
 	return o.ApplyT(func(v SettingsResponse) string { return v.StorageAutoResizeLimit }).(pulumi.StringOutput)
 }
 
-// The tier (or machine type) for this instance, for example **db-custom-1-3840**.
+// The tier (or machine type) for this instance, for example **db-custom-1-3840**. WARNING: Changing this restarts the instance.
 func (o SettingsResponseOutput) Tier() pulumi.StringOutput {
 	return o.ApplyT(func(v SettingsResponse) string { return v.Tier }).(pulumi.StringOutput)
 }
@@ -8212,7 +8212,7 @@ func (o SettingsResponsePtrOutput) DatabaseFlags() DatabaseFlagsResponseArrayOut
 	}).(DatabaseFlagsResponseArrayOutput)
 }
 
-// Configuration specific to read replica instances. Indicates whether replication is enabled or not.
+// Configuration specific to read replica instances. Indicates whether replication is enabled or not. WARNING: Changing this restarts the instance.
 func (o SettingsResponsePtrOutput) DatabaseReplicationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingsResponse) *bool {
 		if v == nil {
@@ -8342,7 +8342,7 @@ func (o SettingsResponsePtrOutput) StorageAutoResizeLimit() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// The tier (or machine type) for this instance, for example **db-custom-1-3840**.
+// The tier (or machine type) for this instance, for example **db-custom-1-3840**. WARNING: Changing this restarts the instance.
 func (o SettingsResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingsResponse) *string {
 		if v == nil {

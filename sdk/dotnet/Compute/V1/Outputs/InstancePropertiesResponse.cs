@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly Outputs.ReservationAffinityResponse ReservationAffinity;
         /// <summary>
-        /// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+        /// Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
         /// </summary>
         public readonly ImmutableArray<string> ResourcePolicies;
         /// <summary>

@@ -40,6 +40,8 @@ type LookupKeyResult struct {
 	Name string `pulumi:"name"`
 	// Options for user acceptance testing.
 	TestingOptions GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse `pulumi:"testingOptions"`
+	// Settings for WAF
+	WafSettings GoogleCloudRecaptchaenterpriseV1WafSettingsResponse `pulumi:"wafSettings"`
 	// Settings for keys that can be used by websites.
 	WebSettings GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse `pulumi:"webSettings"`
 }
@@ -113,6 +115,11 @@ func (o LookupKeyResultOutput) TestingOptions() GoogleCloudRecaptchaenterpriseV1
 	return o.ApplyT(func(v LookupKeyResult) GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse {
 		return v.TestingOptions
 	}).(GoogleCloudRecaptchaenterpriseV1TestingOptionsResponseOutput)
+}
+
+// Settings for WAF
+func (o LookupKeyResultOutput) WafSettings() GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput {
+	return o.ApplyT(func(v LookupKeyResult) GoogleCloudRecaptchaenterpriseV1WafSettingsResponse { return v.WafSettings }).(GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput)
 }
 
 // Settings for keys that can be used by websites.

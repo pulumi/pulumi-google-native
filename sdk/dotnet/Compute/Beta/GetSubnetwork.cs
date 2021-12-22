@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Ipv6AccessType;
         /// <summary>
-        /// The range of internal IPv6 addresses that are owned by this subnetwork.
+        /// The range of internal IPv6 addresses that are owned by this subnetwork. Note this will be for private google access only eventually.
         /// </summary>
         public readonly string Ipv6CidrRange;
         /// <summary>

@@ -25,9 +25,13 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         /// </summary>
         public static GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType ResourceTypeUnspecified { get; } = new GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType("RESOURCE_TYPE_UNSPECIFIED");
         /// <summary>
-        /// Consumer project.
+        /// Consumer project. AssuredWorkloads Projects are no longer supported. This field will be ignored only in CreateWorkload requests. ListWorkloads and GetWorkload will continue to provide projects information. Use CONSUMER_FOLDER instead.
         /// </summary>
         public static GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType ConsumerProject { get; } = new GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType("CONSUMER_PROJECT");
+        /// <summary>
+        /// Consumer Folder.
+        /// </summary>
+        public static GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType ConsumerFolder { get; } = new GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType("CONSUMER_FOLDER");
         /// <summary>
         /// Consumer project containing encryption keys.
         /// </summary>

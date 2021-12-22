@@ -16,8 +16,10 @@ type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType string
 const (
 	// Unknown resource type.
 	GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeResourceTypeUnspecified = GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType("RESOURCE_TYPE_UNSPECIFIED")
-	// Consumer project.
+	// Consumer project. AssuredWorkloads Projects are no longer supported. This field will be ignored only in CreateWorkload requests. ListWorkloads and GetWorkload will continue to provide projects information. Use CONSUMER_FOLDER instead.
 	GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeConsumerProject = GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType("CONSUMER_PROJECT")
+	// Consumer Folder.
+	GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeConsumerFolder = GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType("CONSUMER_FOLDER")
 	// Consumer project containing encryption keys.
 	GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeEncryptionKeysProject = GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType("ENCRYPTION_KEYS_PROJECT")
 	// Keyring resource that hosts encryption keys.

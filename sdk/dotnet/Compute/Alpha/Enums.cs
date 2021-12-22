@@ -7077,6 +7077,37 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
+    /// Indicates the type of the snapshot.
+    /// </summary>
+    [EnumType]
+    public readonly struct SnapshotSnapshotType : IEquatable<SnapshotSnapshotType>
+    {
+        private readonly string _value;
+
+        private SnapshotSnapshotType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static SnapshotSnapshotType Archive { get; } = new SnapshotSnapshotType("ARCHIVE");
+        public static SnapshotSnapshotType Standard { get; } = new SnapshotSnapshotType("STANDARD");
+
+        public static bool operator ==(SnapshotSnapshotType left, SnapshotSnapshotType right) => left.Equals(right);
+        public static bool operator !=(SnapshotSnapshotType left, SnapshotSnapshotType right) => !left.Equals(right);
+
+        public static explicit operator string(SnapshotSnapshotType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SnapshotSnapshotType other && Equals(other);
+        public bool Equals(SnapshotSnapshotType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
     /// </summary>
     [EnumType]

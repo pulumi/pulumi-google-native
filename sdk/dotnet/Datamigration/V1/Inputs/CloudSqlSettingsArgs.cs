@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Inputs
         public Input<bool>? AutoStorageIncrease { get; set; }
 
         /// <summary>
+        /// The KMS key name used for the csql instance.
+        /// </summary>
+        [Input("cmekKeyName")]
+        public Input<string>? CmekKeyName { get; set; }
+
+        /// <summary>
         /// The Cloud SQL default instance level collation.
         /// </summary>
         [Input("collation")]

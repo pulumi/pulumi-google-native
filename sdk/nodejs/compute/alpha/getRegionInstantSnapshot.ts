@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -69,6 +70,10 @@ export interface GetRegionInstantSnapshotResult {
      * URL of the region where the instant snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly region: string;
+    /**
+     * Status information for the instant snapshot resource.
+     */
+    readonly resourceStatus: outputs.compute.alpha.InstantSnapshotResourceStatusResponse;
     /**
      * Reserved for future use.
      */

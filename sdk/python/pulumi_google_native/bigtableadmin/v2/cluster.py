@@ -18,25 +18,24 @@ class ClusterArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
-                 serve_nodes: pulumi.Input[int],
                  cluster_config: Optional[pulumi.Input['ClusterConfigArgs']] = None,
                  default_storage_type: Optional[pulumi.Input['ClusterDefaultStorageType']] = None,
                  encryption_config: Optional[pulumi.Input['EncryptionConfigArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 serve_nodes: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Cluster resource.
-        :param pulumi.Input[int] serve_nodes: The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
         :param pulumi.Input['ClusterConfigArgs'] cluster_config: Configuration for this cluster.
         :param pulumi.Input['ClusterDefaultStorageType'] default_storage_type: Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
         :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Immutable. The encryption configuration for CMEK-protected clusters.
         :param pulumi.Input[str] location: Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
         :param pulumi.Input[str] name: The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
+        :param pulumi.Input[int] serve_nodes: The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "serve_nodes", serve_nodes)
         if cluster_config is not None:
             pulumi.set(__self__, "cluster_config", cluster_config)
         if default_storage_type is not None:
@@ -49,6 +48,8 @@ class ClusterArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if serve_nodes is not None:
+            pulumi.set(__self__, "serve_nodes", serve_nodes)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -67,18 +68,6 @@ class ClusterArgs:
     @instance_id.setter
     def instance_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "instance_id", value)
-
-    @property
-    @pulumi.getter(name="serveNodes")
-    def serve_nodes(self) -> pulumi.Input[int]:
-        """
-        The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
-        """
-        return pulumi.get(self, "serve_nodes")
-
-    @serve_nodes.setter
-    def serve_nodes(self, value: pulumi.Input[int]):
-        pulumi.set(self, "serve_nodes", value)
 
     @property
     @pulumi.getter(name="clusterConfig")
@@ -149,6 +138,18 @@ class ClusterArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="serveNodes")
+    def serve_nodes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+        """
+        return pulumi.get(self, "serve_nodes")
+
+    @serve_nodes.setter
+    def serve_nodes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "serve_nodes", value)
+
 
 class Cluster(pulumi.CustomResource):
     @overload
@@ -166,7 +167,7 @@ class Cluster(pulumi.CustomResource):
                  serve_nodes: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Creates a cluster within an instance.
+        Creates a cluster within an instance. Note that exactly one of Cluster.serve_nodes and Cluster.cluster_config.cluster_autoscaling_config can be set. If serve_nodes is set to non-zero, then the cluster is manually scaled. If cluster_config.cluster_autoscaling_config is non-empty, then autoscaling is enabled.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -184,7 +185,7 @@ class Cluster(pulumi.CustomResource):
                  args: ClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a cluster within an instance.
+        Creates a cluster within an instance. Note that exactly one of Cluster.serve_nodes and Cluster.cluster_config.cluster_autoscaling_config can be set. If serve_nodes is set to non-zero, then the cluster is manually scaled. If cluster_config.cluster_autoscaling_config is non-empty, then autoscaling is enabled.
 
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.
@@ -234,8 +235,6 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            if serve_nodes is None and not opts.urn:
-                raise TypeError("Missing required property 'serve_nodes'")
             __props__.__dict__["serve_nodes"] = serve_nodes
             __props__.__dict__["state"] = None
         super(Cluster, __self__).__init__(

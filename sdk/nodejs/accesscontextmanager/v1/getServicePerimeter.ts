@@ -6,7 +6,7 @@ import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Get a Service Perimeter by resource name.
+ * Gets a service perimeter based on the resource name.
  */
 export function getServicePerimeter(args: GetServicePerimeterArgs, opts?: pulumi.InvokeOptions): Promise<GetServicePerimeterResult> {
     if (!opts) {

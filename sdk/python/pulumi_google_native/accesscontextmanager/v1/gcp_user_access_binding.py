@@ -86,7 +86,7 @@ class GcpUserAccessBinding(pulumi.CustomResource):
                  organization_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates a GcpUserAccessBinding. If the client specifies a name, the server will ignore it. Fails if a resource already exists with the same group_key. Completion of this long-running operation does not necessarily signify that the new binding is deployed onto all affected users, which may take more time.
+        Creates a GcpUserAccessBinding. If the client specifies a name, the server ignores it. Fails if a resource already exists with the same group_key. Completion of this long-running operation does not necessarily signify that the new binding is deployed onto all affected users, which may take more time.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -101,7 +101,7 @@ class GcpUserAccessBinding(pulumi.CustomResource):
                  args: GcpUserAccessBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a GcpUserAccessBinding. If the client specifies a name, the server will ignore it. Fails if a resource already exists with the same group_key. Completion of this long-running operation does not necessarily signify that the new binding is deployed onto all affected users, which may take more time.
+        Creates a GcpUserAccessBinding. If the client specifies a name, the server ignores it. Fails if a resource already exists with the same group_key. Completion of this long-running operation does not necessarily signify that the new binding is deployed onto all affected users, which may take more time.
 
         :param str resource_name: The name of the resource.
         :param GcpUserAccessBindingArgs args: The arguments to use to populate this resource's properties.

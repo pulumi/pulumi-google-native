@@ -80,6 +80,10 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
      */
     public readonly networkEndpointType!: pulumi.Output<string>;
     /**
+     * The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+     */
+    public readonly pscTargetService!: pulumi.Output<string>;
+    /**
      * The URL of the region where the network endpoint group is located.
      */
     public /*out*/ readonly region!: pulumi.Output<string>;
@@ -121,6 +125,7 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["networkEndpointType"] = args ? args.networkEndpointType : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["pscTargetService"] = args ? args.pscTargetService : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
@@ -141,6 +146,7 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["network"] = undefined /*out*/;
             resourceInputs["networkEndpointType"] = undefined /*out*/;
+            resourceInputs["pscTargetService"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["size"] = undefined /*out*/;
@@ -195,6 +201,10 @@ export interface NetworkEndpointGroupArgs {
      */
     networkEndpointType?: pulumi.Input<enums.compute.v1.NetworkEndpointGroupNetworkEndpointType>;
     project?: pulumi.Input<string>;
+    /**
+     * The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+     */
+    pscTargetService?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**
      * Optional URL of the subnetwork to which all network endpoints in the NEG belong.

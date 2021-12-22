@@ -3291,6 +3291,16 @@ export const ShareSettingsShareType = {
  */
 export type ShareSettingsShareType = (typeof ShareSettingsShareType)[keyof typeof ShareSettingsShareType];
 
+export const SnapshotSnapshotType = {
+    Archive: "ARCHIVE",
+    Standard: "STANDARD",
+} as const;
+
+/**
+ * Indicates the type of the snapshot.
+ */
+export type SnapshotSnapshotType = (typeof SnapshotSnapshotType)[keyof typeof SnapshotSnapshotType];
+
 export const SslCertificateType = {
     /**
      * Google-managed SSLCertificate.

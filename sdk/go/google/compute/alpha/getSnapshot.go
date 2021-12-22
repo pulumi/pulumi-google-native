@@ -66,6 +66,8 @@ type LookupSnapshotResult struct {
 	SelfLinkWithId string `pulumi:"selfLinkWithId"`
 	// Encrypts the snapshot using a customer-supplied encryption key. After you encrypt a snapshot using a customer-supplied key, you must provide the same key if you use the snapshot later. For example, you must provide the encryption key when you create a disk from the encrypted snapshot in a future request. Customer-supplied encryption keys do not protect access to metadata of the snapshot. If you do not provide an encryption key when creating the snapshot, then the snapshot will be encrypted using an automatically generated key and you do not need to provide a key to use the snapshot later.
 	SnapshotEncryptionKey CustomerEncryptionKeyResponse `pulumi:"snapshotEncryptionKey"`
+	// Indicates the type of the snapshot.
+	SnapshotType string `pulumi:"snapshotType"`
 	// The source disk used to create this snapshot.
 	SourceDisk string `pulumi:"sourceDisk"`
 	// The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
@@ -218,6 +220,11 @@ func (o LookupSnapshotResultOutput) SelfLinkWithId() pulumi.StringOutput {
 // Encrypts the snapshot using a customer-supplied encryption key. After you encrypt a snapshot using a customer-supplied key, you must provide the same key if you use the snapshot later. For example, you must provide the encryption key when you create a disk from the encrypted snapshot in a future request. Customer-supplied encryption keys do not protect access to metadata of the snapshot. If you do not provide an encryption key when creating the snapshot, then the snapshot will be encrypted using an automatically generated key and you do not need to provide a key to use the snapshot later.
 func (o LookupSnapshotResultOutput) SnapshotEncryptionKey() CustomerEncryptionKeyResponseOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) CustomerEncryptionKeyResponse { return v.SnapshotEncryptionKey }).(CustomerEncryptionKeyResponseOutput)
+}
+
+// Indicates the type of the snapshot.
+func (o LookupSnapshotResultOutput) SnapshotType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.SnapshotType }).(pulumi.StringOutput)
 }
 
 // The source disk used to create this snapshot.

@@ -26,6 +26,88 @@ export const AliasContextKind = {
  */
 export type AliasContextKind = (typeof AliasContextKind)[keyof typeof AliasContextKind];
 
+export const CVSSAttackComplexity = {
+    AttackComplexityUnspecified: "ATTACK_COMPLEXITY_UNSPECIFIED",
+    AttackComplexityLow: "ATTACK_COMPLEXITY_LOW",
+    AttackComplexityHigh: "ATTACK_COMPLEXITY_HIGH",
+} as const;
+
+export type CVSSAttackComplexity = (typeof CVSSAttackComplexity)[keyof typeof CVSSAttackComplexity];
+
+export const CVSSAttackVector = {
+    AttackVectorUnspecified: "ATTACK_VECTOR_UNSPECIFIED",
+    AttackVectorNetwork: "ATTACK_VECTOR_NETWORK",
+    AttackVectorAdjacent: "ATTACK_VECTOR_ADJACENT",
+    AttackVectorLocal: "ATTACK_VECTOR_LOCAL",
+    AttackVectorPhysical: "ATTACK_VECTOR_PHYSICAL",
+} as const;
+
+/**
+ * Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
+ */
+export type CVSSAttackVector = (typeof CVSSAttackVector)[keyof typeof CVSSAttackVector];
+
+export const CVSSAuthentication = {
+    AuthenticationUnspecified: "AUTHENTICATION_UNSPECIFIED",
+    AuthenticationMultiple: "AUTHENTICATION_MULTIPLE",
+    AuthenticationSingle: "AUTHENTICATION_SINGLE",
+    AuthenticationNone: "AUTHENTICATION_NONE",
+} as const;
+
+export type CVSSAuthentication = (typeof CVSSAuthentication)[keyof typeof CVSSAuthentication];
+
+export const CVSSAvailabilityImpact = {
+    ImpactUnspecified: "IMPACT_UNSPECIFIED",
+    ImpactHigh: "IMPACT_HIGH",
+    ImpactLow: "IMPACT_LOW",
+    ImpactNone: "IMPACT_NONE",
+} as const;
+
+export type CVSSAvailabilityImpact = (typeof CVSSAvailabilityImpact)[keyof typeof CVSSAvailabilityImpact];
+
+export const CVSSConfidentialityImpact = {
+    ImpactUnspecified: "IMPACT_UNSPECIFIED",
+    ImpactHigh: "IMPACT_HIGH",
+    ImpactLow: "IMPACT_LOW",
+    ImpactNone: "IMPACT_NONE",
+} as const;
+
+export type CVSSConfidentialityImpact = (typeof CVSSConfidentialityImpact)[keyof typeof CVSSConfidentialityImpact];
+
+export const CVSSIntegrityImpact = {
+    ImpactUnspecified: "IMPACT_UNSPECIFIED",
+    ImpactHigh: "IMPACT_HIGH",
+    ImpactLow: "IMPACT_LOW",
+    ImpactNone: "IMPACT_NONE",
+} as const;
+
+export type CVSSIntegrityImpact = (typeof CVSSIntegrityImpact)[keyof typeof CVSSIntegrityImpact];
+
+export const CVSSPrivilegesRequired = {
+    PrivilegesRequiredUnspecified: "PRIVILEGES_REQUIRED_UNSPECIFIED",
+    PrivilegesRequiredNone: "PRIVILEGES_REQUIRED_NONE",
+    PrivilegesRequiredLow: "PRIVILEGES_REQUIRED_LOW",
+    PrivilegesRequiredHigh: "PRIVILEGES_REQUIRED_HIGH",
+} as const;
+
+export type CVSSPrivilegesRequired = (typeof CVSSPrivilegesRequired)[keyof typeof CVSSPrivilegesRequired];
+
+export const CVSSScope = {
+    ScopeUnspecified: "SCOPE_UNSPECIFIED",
+    ScopeUnchanged: "SCOPE_UNCHANGED",
+    ScopeChanged: "SCOPE_CHANGED",
+} as const;
+
+export type CVSSScope = (typeof CVSSScope)[keyof typeof CVSSScope];
+
+export const CVSSUserInteraction = {
+    UserInteractionUnspecified: "USER_INTERACTION_UNSPECIFIED",
+    UserInteractionNone: "USER_INTERACTION_NONE",
+    UserInteractionRequired: "USER_INTERACTION_REQUIRED",
+} as const;
+
+export type CVSSUserInteraction = (typeof CVSSUserInteraction)[keyof typeof CVSSUserInteraction];
+
 export const CVSSv3AttackComplexity = {
     AttackComplexityUnspecified: "ATTACK_COMPLEXITY_UNSPECIFIED",
     AttackComplexityLow: "ATTACK_COMPLEXITY_LOW",

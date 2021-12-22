@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Bandwidth { get; private set; } = null!;
 
         /// <summary>
+        /// Up to 16 candidate prefixes that control the allocation of cloudRouterIpv6Address and customerRouterIpv6Address for this attachment. Each prefix must be in the Global Unique Address (GUA) space. It is highly recommended that it be in a range owned by the requestor. A GUA in a range owned by Google will cause the request to fail. Google will select an available prefix from the supplied candidates or fail the request. If not supplied, a /125 from a Google-owned GUA block will be selected.
+        /// </summary>
+        [Output("candidateIpv6Subnets")]
+        public Output<ImmutableArray<string>> CandidateIpv6Subnets { get; private set; } = null!;
+
+        /// <summary>
         /// Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and customerRouterIpAddress for this attachment. All prefixes must be within link-local address space (169.254.0.0/16) and must be /29 or shorter (/28, /27, etc). Google will attempt to select an unused /29 from the supplied candidate prefix(es). The request will fail if all possible /29s are in use on Google's edge. If not supplied, Google will randomly select an unused /29 from all of link-local space.
         /// </summary>
         [Output("candidateSubnets")]
@@ -40,6 +46,18 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> CloudRouterIpAddress { get; private set; } = null!;
 
         /// <summary>
+        /// IPv6 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
+        /// </summary>
+        [Output("cloudRouterIpv6Address")]
+        public Output<string> CloudRouterIpv6Address { get; private set; } = null!;
+
+        /// <summary>
+        /// If supplied, the interface id (index within the subnet) to be used for the cloud router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+        /// </summary>
+        [Output("cloudRouterIpv6InterfaceId")]
+        public Output<string> CloudRouterIpv6InterfaceId { get; private set; } = null!;
+
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
@@ -50,6 +68,18 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Output("customerRouterIpAddress")]
         public Output<string> CustomerRouterIpAddress { get; private set; } = null!;
+
+        /// <summary>
+        /// IPv6 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
+        /// </summary>
+        [Output("customerRouterIpv6Address")]
+        public Output<string> CustomerRouterIpv6Address { get; private set; } = null!;
+
+        /// <summary>
+        /// If supplied, the interface id (index within the subnet) to be used for the customer router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+        /// </summary>
+        [Output("customerRouterIpv6InterfaceId")]
+        public Output<string> CustomerRouterIpv6InterfaceId { get; private set; } = null!;
 
         /// <summary>
         /// [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
@@ -160,6 +190,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
+        /// The stack type for this interconnect attachment to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at interconnect attachments creation and update interconnect attachment operations.
+        /// </summary>
+        [Output("stackType")]
+        public Output<string> StackType { get; private set; } = null!;
+
+        /// <summary>
         /// The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values: - ACTIVE: The attachment has been turned up and is ready to use. - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete. - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side. - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of provisioning after a PARTNER_PROVIDER attachment was created that references it. - PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to activate it. - DEFUNCT: The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was removed, or because the other side of a Partner attachment was deleted. 
         /// </summary>
         [Output("state")]
@@ -234,6 +270,18 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("bandwidth")]
         public Input<Pulumi.GoogleNative.Compute.V1.InterconnectAttachmentBandwidth>? Bandwidth { get; set; }
 
+        [Input("candidateIpv6Subnets")]
+        private InputList<string>? _candidateIpv6Subnets;
+
+        /// <summary>
+        /// Up to 16 candidate prefixes that control the allocation of cloudRouterIpv6Address and customerRouterIpv6Address for this attachment. Each prefix must be in the Global Unique Address (GUA) space. It is highly recommended that it be in a range owned by the requestor. A GUA in a range owned by Google will cause the request to fail. Google will select an available prefix from the supplied candidates or fail the request. If not supplied, a /125 from a Google-owned GUA block will be selected.
+        /// </summary>
+        public InputList<string> CandidateIpv6Subnets
+        {
+            get => _candidateIpv6Subnets ?? (_candidateIpv6Subnets = new InputList<string>());
+            set => _candidateIpv6Subnets = value;
+        }
+
         [Input("candidateSubnets")]
         private InputList<string>? _candidateSubnets;
 
@@ -245,6 +293,18 @@ namespace Pulumi.GoogleNative.Compute.V1
             get => _candidateSubnets ?? (_candidateSubnets = new InputList<string>());
             set => _candidateSubnets = value;
         }
+
+        /// <summary>
+        /// If supplied, the interface id (index within the subnet) to be used for the cloud router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+        /// </summary>
+        [Input("cloudRouterIpv6InterfaceId")]
+        public Input<string>? CloudRouterIpv6InterfaceId { get; set; }
+
+        /// <summary>
+        /// If supplied, the interface id (index within the subnet) to be used for the customer router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+        /// </summary>
+        [Input("customerRouterIpv6InterfaceId")]
+        public Input<string>? CustomerRouterIpv6InterfaceId { get; set; }
 
         /// <summary>
         /// [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
@@ -332,6 +392,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Input("router")]
         public Input<string>? Router { get; set; }
+
+        /// <summary>
+        /// The stack type for this interconnect attachment to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at interconnect attachments creation and update interconnect attachment operations.
+        /// </summary>
+        [Input("stackType")]
+        public Input<Pulumi.GoogleNative.Compute.V1.InterconnectAttachmentStackType>? StackType { get; set; }
 
         /// <summary>
         /// The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 

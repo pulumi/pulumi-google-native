@@ -12,7 +12,9 @@ __all__ = [
     'DNSConfigClusterDns',
     'DNSConfigClusterDnsScope',
     'DatabaseEncryptionState',
+    'FilterEventTypeItem',
     'LoggingComponentConfigEnableComponentsItem',
+    'MaintenanceExclusionOptionsScope',
     'MonitoringComponentConfigEnableComponentsItem',
     'NetworkConfigDatapathProvider',
     'NetworkConfigPrivateIpv6GoogleAccess',
@@ -152,6 +154,25 @@ class DatabaseEncryptionState(str, Enum):
     """
 
 
+class FilterEventTypeItem(str, Enum):
+    EVENT_TYPE_UNSPECIFIED = "EVENT_TYPE_UNSPECIFIED"
+    """
+    Not set, will be ignored.
+    """
+    UPGRADE_AVAILABLE_EVENT = "UPGRADE_AVAILABLE_EVENT"
+    """
+    Corresponds with UpgradeAvailableEvent.
+    """
+    UPGRADE_EVENT = "UPGRADE_EVENT"
+    """
+    Corresponds with UpgradeEvent.
+    """
+    SECURITY_BULLETIN_EVENT = "SECURITY_BULLETIN_EVENT"
+    """
+    Corresponds with SecurityBulletinEvent.
+    """
+
+
 class LoggingComponentConfigEnableComponentsItem(str, Enum):
     COMPONENT_UNSPECIFIED = "COMPONENT_UNSPECIFIED"
     """
@@ -164,6 +185,24 @@ class LoggingComponentConfigEnableComponentsItem(str, Enum):
     WORKLOADS = "WORKLOADS"
     """
     workloads
+    """
+
+
+class MaintenanceExclusionOptionsScope(str, Enum):
+    """
+    Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
+    """
+    NO_UPGRADES = "NO_UPGRADES"
+    """
+    NO_UPGRADES excludes all upgrades, including patch upgrades and minor upgrades across control planes and nodes. This is the default exclusion behavior.
+    """
+    NO_MINOR_UPGRADES = "NO_MINOR_UPGRADES"
+    """
+    NO_MINOR_UPGRADES excludes all minor upgrades for the cluster, only patches are allowed.
+    """
+    NO_MINOR_OR_NODE_UPGRADES = "NO_MINOR_OR_NODE_UPGRADES"
+    """
+    NO_MINOR_OR_NODE_UPGRADES excludes all minor upgrades for the cluster, and also exclude all node pool upgrades. Only control plane patches are allowed.
     """
 
 

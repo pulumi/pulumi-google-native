@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
+        /// Allows filtering to one or more specific event types. If no filter is specified, or if a filter is specified with no event types, all event types will be sent
+        /// </summary>
+        [Input("filter")]
+        public Input<Inputs.FilterArgs>? Filter { get; set; }
+
+        /// <summary>
         /// The desired Pub/Sub topic to which notifications will be sent by GKE. Format is `projects/{project}/topics/{topic}`.
         /// </summary>
         [Input("topic")]

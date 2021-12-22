@@ -22,6 +22,46 @@ export const GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge = {
  */
 export type GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge = (typeof GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge)[keyof typeof GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge];
 
+export const GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature = {
+    /**
+     * Undefined feature.
+     */
+    WafFeatureUnspecified: "WAF_FEATURE_UNSPECIFIED",
+    /**
+     * Redirects suspicious traffic to reCAPTCHA.
+     */
+    ChallengePage: "CHALLENGE_PAGE",
+    /**
+     * Use reCAPTCHA session-tokens to protect the whole user session on the site's domain.
+     */
+    SessionToken: "SESSION_TOKEN",
+    /**
+     * Use reCAPTCHA action-tokens to protect user actions.
+     */
+    ActionToken: "ACTION_TOKEN",
+} as const;
+
+/**
+ * Required. The WAF feature for which this key is enabled.
+ */
+export type GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature = (typeof GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature)[keyof typeof GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature];
+
+export const GoogleCloudRecaptchaenterpriseV1WafSettingsWafService = {
+    /**
+     * Undefined WAF
+     */
+    WafServiceUnspecified: "WAF_SERVICE_UNSPECIFIED",
+    /**
+     * Cloud Armor
+     */
+    Ca: "CA",
+} as const;
+
+/**
+ * Required. The WAF service that uses this key.
+ */
+export type GoogleCloudRecaptchaenterpriseV1WafSettingsWafService = (typeof GoogleCloudRecaptchaenterpriseV1WafSettingsWafService)[keyof typeof GoogleCloudRecaptchaenterpriseV1WafSettingsWafService];
+
 export const GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference = {
     /**
      * Default type that indicates this enum hasn't been specified.

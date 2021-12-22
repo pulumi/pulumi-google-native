@@ -4238,7 +4238,7 @@ func (o GoogleMonitoringV3RangeResponsePtrOutput) Min() pulumi.Float64PtrOutput 
 type HttpCheck struct {
 	// The authentication information. Optional when creating an HTTP check; defaults to empty.
 	AuthInfo *BasicAuthentication `pulumi:"authInfo"`
-	// The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note: As with all bytes fields, JSON representations are base64 encoded. e.g.: "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
+	// The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte.Note: If client libraries aren't used (which performs the conversion automatically) base64 encode your body data since the field is of bytes type.
 	Body *string `pulumi:"body"`
 	// The content type header to use for the check. The following configurations result in errors: 1. Content type is specified in both the headers field and the content_type field. 2. Request method is GET and content_type is not TYPE_UNSPECIFIED 3. Request method is POST and content_type is TYPE_UNSPECIFIED. 4. Request method is POST and a "Content-Type" header is provided via headers field. The content_type field should be used instead.
 	ContentType *HttpCheckContentType `pulumi:"contentType"`
@@ -4273,7 +4273,7 @@ type HttpCheckInput interface {
 type HttpCheckArgs struct {
 	// The authentication information. Optional when creating an HTTP check; defaults to empty.
 	AuthInfo BasicAuthenticationPtrInput `pulumi:"authInfo"`
-	// The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note: As with all bytes fields, JSON representations are base64 encoded. e.g.: "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
+	// The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte.Note: If client libraries aren't used (which performs the conversion automatically) base64 encode your body data since the field is of bytes type.
 	Body pulumi.StringPtrInput `pulumi:"body"`
 	// The content type header to use for the check. The following configurations result in errors: 1. Content type is specified in both the headers field and the content_type field. 2. Request method is GET and content_type is not TYPE_UNSPECIFIED 3. Request method is POST and content_type is TYPE_UNSPECIFIED. 4. Request method is POST and a "Content-Type" header is provided via headers field. The content_type field should be used instead.
 	ContentType HttpCheckContentTypePtrInput `pulumi:"contentType"`
@@ -4376,7 +4376,7 @@ func (o HttpCheckOutput) AuthInfo() BasicAuthenticationPtrOutput {
 	return o.ApplyT(func(v HttpCheck) *BasicAuthentication { return v.AuthInfo }).(BasicAuthenticationPtrOutput)
 }
 
-// The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note: As with all bytes fields, JSON representations are base64 encoded. e.g.: "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
+// The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte.Note: If client libraries aren't used (which performs the conversion automatically) base64 encode your body data since the field is of bytes type.
 func (o HttpCheckOutput) Body() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpCheck) *string { return v.Body }).(pulumi.StringPtrOutput)
 }
@@ -4455,7 +4455,7 @@ func (o HttpCheckPtrOutput) AuthInfo() BasicAuthenticationPtrOutput {
 	}).(BasicAuthenticationPtrOutput)
 }
 
-// The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note: As with all bytes fields, JSON representations are base64 encoded. e.g.: "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
+// The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte.Note: If client libraries aren't used (which performs the conversion automatically) base64 encode your body data since the field is of bytes type.
 func (o HttpCheckPtrOutput) Body() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpCheck) *string {
 		if v == nil {
@@ -4549,7 +4549,7 @@ func (o HttpCheckPtrOutput) ValidateSsl() pulumi.BoolPtrOutput {
 type HttpCheckResponse struct {
 	// The authentication information. Optional when creating an HTTP check; defaults to empty.
 	AuthInfo BasicAuthenticationResponse `pulumi:"authInfo"`
-	// The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note: As with all bytes fields, JSON representations are base64 encoded. e.g.: "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
+	// The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte.Note: If client libraries aren't used (which performs the conversion automatically) base64 encode your body data since the field is of bytes type.
 	Body string `pulumi:"body"`
 	// The content type header to use for the check. The following configurations result in errors: 1. Content type is specified in both the headers field and the content_type field. 2. Request method is GET and content_type is not TYPE_UNSPECIFIED 3. Request method is POST and content_type is TYPE_UNSPECIFIED. 4. Request method is POST and a "Content-Type" header is provided via headers field. The content_type field should be used instead.
 	ContentType string `pulumi:"contentType"`
@@ -4584,7 +4584,7 @@ type HttpCheckResponseInput interface {
 type HttpCheckResponseArgs struct {
 	// The authentication information. Optional when creating an HTTP check; defaults to empty.
 	AuthInfo BasicAuthenticationResponseInput `pulumi:"authInfo"`
-	// The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note: As with all bytes fields, JSON representations are base64 encoded. e.g.: "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
+	// The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte.Note: If client libraries aren't used (which performs the conversion automatically) base64 encode your body data since the field is of bytes type.
 	Body pulumi.StringInput `pulumi:"body"`
 	// The content type header to use for the check. The following configurations result in errors: 1. Content type is specified in both the headers field and the content_type field. 2. Request method is GET and content_type is not TYPE_UNSPECIFIED 3. Request method is POST and content_type is TYPE_UNSPECIFIED. 4. Request method is POST and a "Content-Type" header is provided via headers field. The content_type field should be used instead.
 	ContentType pulumi.StringInput `pulumi:"contentType"`
@@ -4687,7 +4687,7 @@ func (o HttpCheckResponseOutput) AuthInfo() BasicAuthenticationResponseOutput {
 	return o.ApplyT(func(v HttpCheckResponse) BasicAuthenticationResponse { return v.AuthInfo }).(BasicAuthenticationResponseOutput)
 }
 
-// The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note: As with all bytes fields, JSON representations are base64 encoded. e.g.: "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
+// The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte.Note: If client libraries aren't used (which performs the conversion automatically) base64 encode your body data since the field is of bytes type.
 func (o HttpCheckResponseOutput) Body() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpCheckResponse) string { return v.Body }).(pulumi.StringOutput)
 }
@@ -4766,7 +4766,7 @@ func (o HttpCheckResponsePtrOutput) AuthInfo() BasicAuthenticationResponsePtrOut
 	}).(BasicAuthenticationResponsePtrOutput)
 }
 
-// The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note: As with all bytes fields, JSON representations are base64 encoded. e.g.: "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
+// The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte.Note: If client libraries aren't used (which performs the conversion automatically) base64 encode your body data since the field is of bytes type.
 func (o HttpCheckResponsePtrOutput) Body() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpCheckResponse) *string {
 		if v == nil {

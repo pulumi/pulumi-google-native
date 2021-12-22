@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.AccessContextManager.V1
 {
     /// <summary>
-    /// Create an `AccessPolicy`. Fails if this organization already has a `AccessPolicy`. The longrunning Operation will have a successful status once the `AccessPolicy` has propagated to long-lasting storage. Syntactic and basic semantic errors will be returned in `metadata` as a BadRequest proto.
+    /// Creates an access policy. This method fails if the organization already has an access policy. The long-running operation has a successful status after the access policy propagates to long-lasting storage. Syntactic and basic semantic errors are returned in `metadata` as a BadRequest proto.
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:accesscontextmanager/v1:AccessPolicy")]
@@ -33,6 +33,12 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
+
+        /// <summary>
+        /// The scopes of a policy define which resources an ACM policy can restrict, and where ACM resources can be referenced. For example, a policy with scopes=["folders/123"] has the following behavior: - vpcsc perimeters can only restrict projects within folders/123 - access levels can only be referenced by resources within folders/123. If empty, there are no limitations on which resources can be restricted by an ACM policy, and there are no limitations on where ACM resources can be referenced. Only one policy can include a given scope (attempting to create a second policy which includes "folders/123" will result in an error). Currently, scopes cannot be modified after a policy is created. Currently, policies can only have a single scope. Format: list of `folders/{folder_number}` or `projects/{project_number}`
+        /// </summary>
+        [Output("scopes")]
+        public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
 
         /// <summary>
         /// Human readable title. Does not affect behavior.
@@ -90,6 +96,18 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
+
+        [Input("scopes")]
+        private InputList<string>? _scopes;
+
+        /// <summary>
+        /// The scopes of a policy define which resources an ACM policy can restrict, and where ACM resources can be referenced. For example, a policy with scopes=["folders/123"] has the following behavior: - vpcsc perimeters can only restrict projects within folders/123 - access levels can only be referenced by resources within folders/123. If empty, there are no limitations on which resources can be restricted by an ACM policy, and there are no limitations on where ACM resources can be referenced. Only one policy can include a given scope (attempting to create a second policy which includes "folders/123" will result in an error). Currently, scopes cannot be modified after a policy is created. Currently, policies can only have a single scope. Format: list of `folders/{folder_number}` or `projects/{project_number}`
+        /// </summary>
+        public InputList<string> Scopes
+        {
+            get => _scopes ?? (_scopes = new InputList<string>());
+            set => _scopes = value;
+        }
 
         /// <summary>
         /// Human readable title. Does not affect behavior.

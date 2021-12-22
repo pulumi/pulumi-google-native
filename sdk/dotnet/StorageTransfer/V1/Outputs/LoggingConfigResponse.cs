@@ -11,21 +11,21 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
 {
 
     /// <summary>
-    /// Logging configuration.
+    /// Specifies the logging behavior for transfer operations. For cloud-to-cloud transfers, logs are sent to Cloud Logging. See [Read transfer logs](https://cloud.google.com/storage-transfer/docs/read-transfer-logs) for details. For transfers to or from a POSIX file system, logs are stored in the Cloud Storage bucket that is the source or sink of the transfer. See [Managing Transfer for on-premises jobs] (https://cloud.google.com/storage-transfer/docs/managing-on-prem-jobs#viewing-logs) for details.
     /// </summary>
     [OutputType]
     public sealed class LoggingConfigResponse
     {
         /// <summary>
-        /// Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with PosixFilesystem sources. The default is that logs are not generated for this transfer.
+        /// For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
         /// </summary>
         public readonly bool EnableOnpremGcsTransferLogs;
         /// <summary>
-        /// States in which `log_actions` are logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+        /// States in which `log_actions` are logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
         /// </summary>
         public readonly ImmutableArray<string> LogActionStates;
         /// <summary>
-        /// Actions to be logged. If empty, no logs are generated. This is not yet supported for transfers with PosixFilesystem data sources.
+        /// Specifies the actions to be logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
         /// </summary>
         public readonly ImmutableArray<string> LogActions;
 

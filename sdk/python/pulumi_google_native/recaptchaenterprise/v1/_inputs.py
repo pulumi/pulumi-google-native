@@ -13,6 +13,7 @@ __all__ = [
     'GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs',
     'GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs',
     'GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs',
+    'GoogleCloudRecaptchaenterpriseV1WafSettingsArgs',
     'GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs',
 ]
 
@@ -134,6 +135,44 @@ class GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs:
     @testing_score.setter
     def testing_score(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "testing_score", value)
+
+
+@pulumi.input_type
+class GoogleCloudRecaptchaenterpriseV1WafSettingsArgs:
+    def __init__(__self__, *,
+                 waf_feature: pulumi.Input['GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature'],
+                 waf_service: pulumi.Input['GoogleCloudRecaptchaenterpriseV1WafSettingsWafService']):
+        """
+        Settings specific to keys that can be used for WAF (Web Application Firewall).
+        :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature'] waf_feature: The WAF feature for which this key is enabled.
+        :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1WafSettingsWafService'] waf_service: The WAF service that uses this key.
+        """
+        pulumi.set(__self__, "waf_feature", waf_feature)
+        pulumi.set(__self__, "waf_service", waf_service)
+
+    @property
+    @pulumi.getter(name="wafFeature")
+    def waf_feature(self) -> pulumi.Input['GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature']:
+        """
+        The WAF feature for which this key is enabled.
+        """
+        return pulumi.get(self, "waf_feature")
+
+    @waf_feature.setter
+    def waf_feature(self, value: pulumi.Input['GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature']):
+        pulumi.set(self, "waf_feature", value)
+
+    @property
+    @pulumi.getter(name="wafService")
+    def waf_service(self) -> pulumi.Input['GoogleCloudRecaptchaenterpriseV1WafSettingsWafService']:
+        """
+        The WAF service that uses this key.
+        """
+        return pulumi.get(self, "waf_service")
+
+    @waf_service.setter
+    def waf_service(self, value: pulumi.Input['GoogleCloudRecaptchaenterpriseV1WafSettingsWafService']):
+        pulumi.set(self, "waf_service", value)
 
 
 @pulumi.input_type

@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.DatabaseFlagsResponse> DatabaseFlags;
         /// <summary>
-        /// Configuration specific to read replica instances. Indicates whether replication is enabled or not.
+        /// Configuration specific to read replica instances. Indicates whether replication is enabled or not. WARNING: Changing this restarts the instance.
         /// </summary>
         public readonly bool DatabaseReplicationEnabled;
         /// <summary>
@@ -105,7 +105,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
         /// </summary>
         public readonly string StorageAutoResizeLimit;
         /// <summary>
-        /// The tier (or machine type) for this instance, for example **db-custom-1-3840**.
+        /// The tier (or machine type) for this instance, for example **db-custom-1-3840**. WARNING: Changing this restarts the instance.
         /// </summary>
         public readonly string Tier;
         /// <summary>

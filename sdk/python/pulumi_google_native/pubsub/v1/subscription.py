@@ -42,7 +42,7 @@ class SubscriptionArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See Creating and managing labels.
         :param pulumi.Input[str] message_retention_duration: How long to retain unacknowledged messages in the subscription's backlog, from the moment a message is published. If `retain_acked_messages` is true, then this also configures the retention of acknowledged messages, and thus configures how far back in time a `Seek` can be done. Defaults to 7 days. Cannot be more than 7 days or less than 10 minutes.
         :param pulumi.Input[str] name: The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
-        :param pulumi.Input['PushConfigArgs'] push_config: If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods.
+        :param pulumi.Input['PushConfigArgs'] push_config: If push delivery is used with this subscription, this field is used to configure it. At most one of `pushConfig` and `bigQueryConfig` can be set. If both are empty, then the subscriber will pull and ack messages using API methods.
         :param pulumi.Input[bool] retain_acked_messages: Indicates whether to retain acknowledged messages. If true, then messages are not expunged from the subscription's backlog, even if they are acknowledged, until they fall out of the `message_retention_duration` window. This must be true if you would like to [`Seek` to a timestamp] (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) in the past to replay previously-acknowledged messages.
         :param pulumi.Input['RetryPolicyArgs'] retry_policy: A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message.
         """
@@ -217,7 +217,7 @@ class SubscriptionArgs:
     @pulumi.getter(name="pushConfig")
     def push_config(self) -> Optional[pulumi.Input['PushConfigArgs']]:
         """
-        If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods.
+        If push delivery is used with this subscription, this field is used to configure it. At most one of `pushConfig` and `bigQueryConfig` can be set. If both are empty, then the subscriber will pull and ack messages using API methods.
         """
         return pulumi.get(self, "push_config")
 
@@ -285,7 +285,7 @@ class Subscription(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See Creating and managing labels.
         :param pulumi.Input[str] message_retention_duration: How long to retain unacknowledged messages in the subscription's backlog, from the moment a message is published. If `retain_acked_messages` is true, then this also configures the retention of acknowledged messages, and thus configures how far back in time a `Seek` can be done. Defaults to 7 days. Cannot be more than 7 days or less than 10 minutes.
         :param pulumi.Input[str] name: The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
-        :param pulumi.Input[pulumi.InputType['PushConfigArgs']] push_config: If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods.
+        :param pulumi.Input[pulumi.InputType['PushConfigArgs']] push_config: If push delivery is used with this subscription, this field is used to configure it. At most one of `pushConfig` and `bigQueryConfig` can be set. If both are empty, then the subscriber will pull and ack messages using API methods.
         :param pulumi.Input[bool] retain_acked_messages: Indicates whether to retain acknowledged messages. If true, then messages are not expunged from the subscription's backlog, even if they are acknowledged, until they fall out of the `message_retention_duration` window. This must be true if you would like to [`Seek` to a timestamp] (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) in the past to replay previously-acknowledged messages.
         :param pulumi.Input[pulumi.InputType['RetryPolicyArgs']] retry_policy: A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message.
         :param pulumi.Input[str] topic: The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been deleted.
@@ -360,6 +360,7 @@ class Subscription(pulumi.CustomResource):
             if topic is None and not opts.urn:
                 raise TypeError("Missing required property 'topic'")
             __props__.__dict__["topic"] = topic
+            __props__.__dict__["state"] = None
             __props__.__dict__["topic_message_retention_duration"] = None
         super(Subscription, __self__).__init__(
             'google-native:pubsub/v1:Subscription',
@@ -395,6 +396,7 @@ class Subscription(pulumi.CustomResource):
         __props__.__dict__["push_config"] = None
         __props__.__dict__["retain_acked_messages"] = None
         __props__.__dict__["retry_policy"] = None
+        __props__.__dict__["state"] = None
         __props__.__dict__["topic"] = None
         __props__.__dict__["topic_message_retention_duration"] = None
         return Subscription(resource_name, opts=opts, __props__=__props__)
@@ -475,7 +477,7 @@ class Subscription(pulumi.CustomResource):
     @pulumi.getter(name="pushConfig")
     def push_config(self) -> pulumi.Output['outputs.PushConfigResponse']:
         """
-        If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods.
+        If push delivery is used with this subscription, this field is used to configure it. At most one of `pushConfig` and `bigQueryConfig` can be set. If both are empty, then the subscriber will pull and ack messages using API methods.
         """
         return pulumi.get(self, "push_config")
 
@@ -494,6 +496,14 @@ class Subscription(pulumi.CustomResource):
         A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message.
         """
         return pulumi.get(self, "retry_policy")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        An output-only field indicating whether or not the subscription can receive messages.
+        """
+        return pulumi.get(self, "state")
 
     @property
     @pulumi.getter

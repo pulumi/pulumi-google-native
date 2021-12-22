@@ -240,7 +240,7 @@ class DestinationResponse(dict):
                  gke: 'outputs.GKEResponse'):
         """
         Represents a target of an invocation over HTTP.
-        :param 'CloudRunResponse' cloud_run: Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+        :param 'CloudRunResponse' cloud_run: Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
         :param 'GKEResponse' gke: A GKE service capable of receiving events. The service should be running in the same project of the trigger.
         """
         pulumi.set(__self__, "cloud_run", cloud_run)
@@ -250,7 +250,7 @@ class DestinationResponse(dict):
     @pulumi.getter(name="cloudRun")
     def cloud_run(self) -> 'outputs.CloudRunResponse':
         """
-        Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+        Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
         """
         return pulumi.get(self, "cloud_run")
 

@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetEntryResult:
-    def __init__(__self__, bigquery_date_sharded_spec=None, bigquery_table_spec=None, data_source=None, data_source_connection_spec=None, database_table_spec=None, description=None, display_name=None, fully_qualified_name=None, gcs_fileset_spec=None, integrated_system=None, labels=None, linked_resource=None, name=None, routine_spec=None, schema=None, source_system_timestamps=None, type=None, usage_signal=None, user_specified_system=None, user_specified_type=None):
+    def __init__(__self__, bigquery_date_sharded_spec=None, bigquery_table_spec=None, data_source=None, data_source_connection_spec=None, database_table_spec=None, description=None, display_name=None, fully_qualified_name=None, gcs_fileset_spec=None, integrated_system=None, labels=None, linked_resource=None, name=None, personal_details=None, routine_spec=None, schema=None, source_system_timestamps=None, type=None, usage_signal=None, user_specified_system=None, user_specified_type=None):
         if bigquery_date_sharded_spec and not isinstance(bigquery_date_sharded_spec, dict):
             raise TypeError("Expected argument 'bigquery_date_sharded_spec' to be a dict")
         pulumi.set(__self__, "bigquery_date_sharded_spec", bigquery_date_sharded_spec)
@@ -58,6 +58,9 @@ class GetEntryResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if personal_details and not isinstance(personal_details, dict):
+            raise TypeError("Expected argument 'personal_details' to be a dict")
+        pulumi.set(__self__, "personal_details", personal_details)
         if routine_spec and not isinstance(routine_spec, dict):
             raise TypeError("Expected argument 'routine_spec' to be a dict")
         pulumi.set(__self__, "routine_spec", routine_spec)
@@ -185,6 +188,14 @@ class GetEntryResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="personalDetails")
+    def personal_details(self) -> 'outputs.GoogleCloudDatacatalogV1PersonalDetailsResponse':
+        """
+        Additional information related to the entry. Private to the current user.
+        """
+        return pulumi.get(self, "personal_details")
+
+    @property
     @pulumi.getter(name="routineSpec")
     def routine_spec(self) -> 'outputs.GoogleCloudDatacatalogV1RoutineSpecResponse':
         """
@@ -260,6 +271,7 @@ class AwaitableGetEntryResult(GetEntryResult):
             labels=self.labels,
             linked_resource=self.linked_resource,
             name=self.name,
+            personal_details=self.personal_details,
             routine_spec=self.routine_spec,
             schema=self.schema,
             source_system_timestamps=self.source_system_timestamps,
@@ -302,6 +314,7 @@ def get_entry(entry_group_id: Optional[str] = None,
         labels=__ret__.labels,
         linked_resource=__ret__.linked_resource,
         name=__ret__.name,
+        personal_details=__ret__.personal_details,
         routine_spec=__ret__.routine_spec,
         schema=__ret__.schema,
         source_system_timestamps=__ret__.source_system_timestamps,

@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GooglePrivacyDlpV2FieldIdResponse> IdentifyingFields;
         /// <summary>
+        /// Limit scanning only to these fields.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GooglePrivacyDlpV2FieldIdResponse> IncludedFields;
+        /// <summary>
         /// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted. If not set, or if set to 0, all rows will be scanned. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
         /// </summary>
         public readonly string RowsLimit;
@@ -44,6 +48,8 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
 
             ImmutableArray<Outputs.GooglePrivacyDlpV2FieldIdResponse> identifyingFields,
 
+            ImmutableArray<Outputs.GooglePrivacyDlpV2FieldIdResponse> includedFields,
+
             string rowsLimit,
 
             int rowsLimitPercent,
@@ -54,6 +60,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
         {
             ExcludedFields = excludedFields;
             IdentifyingFields = identifyingFields;
+            IncludedFields = includedFields;
             RowsLimit = rowsLimit;
             RowsLimitPercent = rowsLimitPercent;
             SampleMethod = sampleMethod;

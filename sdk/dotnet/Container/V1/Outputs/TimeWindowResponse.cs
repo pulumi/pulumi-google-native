@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// </summary>
         public readonly string EndTime;
         /// <summary>
+        /// MaintenanceExclusionOptions provides maintenance exclusion related options.
+        /// </summary>
+        public readonly Outputs.MaintenanceExclusionOptionsResponse MaintenanceExclusionOptions;
+        /// <summary>
         /// The time that the window first starts.
         /// </summary>
         public readonly string StartTime;
@@ -29,9 +33,12 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         private TimeWindowResponse(
             string endTime,
 
+            Outputs.MaintenanceExclusionOptionsResponse maintenanceExclusionOptions,
+
             string startTime)
         {
             EndTime = endTime;
+            MaintenanceExclusionOptions = maintenanceExclusionOptions;
             StartTime = startTime;
         }
     }

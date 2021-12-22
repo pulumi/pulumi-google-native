@@ -40,10 +40,22 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
+        /// </summary>
+        [Output("enableSovereignControls")]
+        public Output<bool> EnableSovereignControls { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update &amp; Delete operations.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// Represents the KAJ enrollment state of the given workload.
+        /// </summary>
+        [Output("kajEnrollmentState")]
+        public Output<string> KajEnrollmentState { get; private set; } = null!;
 
         /// <summary>
         /// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
@@ -80,6 +92,12 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         /// </summary>
         [Output("resources")]
         public Output<ImmutableArray<Outputs.GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse>> Resources { get; private set; } = null!;
+
+        /// <summary>
+        /// Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during GetWorkload call. In failure cases, user friendly error message is shown in SAA details page.
+        /// </summary>
+        [Output("saaEnrollmentResponse")]
+        public Output<Outputs.GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse> SaaEnrollmentResponse { get; private set; } = null!;
 
 
         /// <summary>
@@ -143,6 +161,12 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
+
+        /// <summary>
+        /// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
+        /// </summary>
+        [Input("enableSovereignControls")]
+        public Input<bool>? EnableSovereignControls { get; set; }
 
         /// <summary>
         /// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update &amp; Delete operations.

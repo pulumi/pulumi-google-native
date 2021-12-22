@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.DocumentAI.V1Beta3
         public Output<string> KmsKeyName { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The resource name of the processor. Format: projects/{project}/locations/{location}/processors/{processor}
+        /// Immutable. The resource name of the processor. Format: `projects/{project}/locations/{location}/processors/{processor}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;

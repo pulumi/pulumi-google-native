@@ -52,7 +52,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly currentDiskSize!: pulumi.Output<string>;
     /**
-     * The databaseInstalledVersion stores the current fully resolved database version running on the instance including minor version such as MYSQL_5_6_50
+     * Stores the current database version running on the instance including minor version such as **MYSQL_8_0_18**.
      */
     public /*out*/ readonly databaseInstalledVersion!: pulumi.Output<string>;
     /**
@@ -72,7 +72,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly failoverReplica!: pulumi.Output<outputs.sqladmin.v1.InstanceFailoverReplicaResponse>;
     /**
-     * The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
+     * The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone. WARNING: Changing this might restart the instance.
      */
     public readonly gceZone!: pulumi.Output<string>;
     /**
@@ -281,7 +281,7 @@ export interface InstanceArgs {
      */
     failoverReplica?: pulumi.Input<inputs.sqladmin.v1.InstanceFailoverReplicaArgs>;
     /**
-     * The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
+     * The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone. WARNING: Changing this might restart the instance.
      */
     gceZone?: pulumi.Input<string>;
     /**

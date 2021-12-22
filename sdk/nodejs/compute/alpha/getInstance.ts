@@ -133,6 +133,10 @@ export interface GetInstanceResult {
     readonly networkInterfaces: outputs.compute.alpha.NetworkInterfaceResponse[];
     readonly networkPerformanceConfig: outputs.compute.alpha.NetworkPerformanceConfigResponse;
     /**
+     * Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+     */
+    readonly params: outputs.compute.alpha.InstanceParamsResponse;
+    /**
      * PostKeyRevocationActionType of the instance.
      */
     readonly postKeyRevocationActionType: string;

@@ -84,6 +84,10 @@ export class Conversation extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Obfuscated user ID which the customer sent to us.
+     */
+    public readonly obfuscatedUserId!: pulumi.Output<string>;
+    /**
      * The annotations that were generated during the customer and agent interaction.
      */
     public /*out*/ readonly runtimeAnnotations!: pulumi.Output<outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse[]>;
@@ -129,6 +133,7 @@ export class Conversation extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["medium"] = args ? args.medium : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["obfuscatedUserId"] = args ? args.obfuscatedUserId : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["startTime"] = args ? args.startTime : undefined;
             resourceInputs["ttl"] = args ? args.ttl : undefined;
@@ -153,6 +158,7 @@ export class Conversation extends pulumi.CustomResource {
             resourceInputs["latestAnalysis"] = undefined /*out*/;
             resourceInputs["medium"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["obfuscatedUserId"] = undefined /*out*/;
             resourceInputs["runtimeAnnotations"] = undefined /*out*/;
             resourceInputs["startTime"] = undefined /*out*/;
             resourceInputs["transcript"] = undefined /*out*/;
@@ -205,6 +211,10 @@ export interface ConversationArgs {
      * Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation}
      */
     name?: pulumi.Input<string>;
+    /**
+     * Obfuscated user ID which the customer sent to us.
+     */
+    obfuscatedUserId?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
      * The time at which the conversation started.

@@ -52,6 +52,12 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         }
 
         /// <summary>
+        /// An IPv6 internal network address for this network interface.
+        /// </summary>
+        [Input("ipv6Address")]
+        public Input<string>? Ipv6Address { get; set; }
+
+        /// <summary>
         /// URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default 
         /// </summary>
         [Input("network")]

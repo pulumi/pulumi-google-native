@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Inputs
     public sealed class DestinationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+        /// Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
         /// </summary>
         [Input("cloudRun")]
         public Input<Inputs.CloudRunArgs>? CloudRun { get; set; }

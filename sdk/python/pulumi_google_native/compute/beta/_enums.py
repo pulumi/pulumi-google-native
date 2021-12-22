@@ -84,6 +84,7 @@ __all__ = [
     'InterconnectAttachmentBandwidth',
     'InterconnectAttachmentEdgeAvailabilityDomain',
     'InterconnectAttachmentEncryption',
+    'InterconnectAttachmentStackType',
     'InterconnectAttachmentType',
     'InterconnectInterconnectType',
     'InterconnectLinkType',
@@ -1564,6 +1565,20 @@ class InterconnectAttachmentEncryption(str, Enum):
     NONE = "NONE"
     """
     This is the default value, which means the Interconnect Attachment will carry unencrypted traffic. VMs will be able to send traffic to or receive traffic from such interconnect attachment.
+    """
+
+
+class InterconnectAttachmentStackType(str, Enum):
+    """
+    The stack type for this interconnect attachment to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at interconnect attachments creation and update interconnect attachment operations.
+    """
+    IPV4_IPV6 = "IPV4_IPV6"
+    """
+    The interconnect attachment can have both IPv4 and IPv6 addresses.
+    """
+    IPV4_ONLY = "IPV4_ONLY"
+    """
+    The interconnect attachment will only be assigned IPv4 addresses.
     """
 
 

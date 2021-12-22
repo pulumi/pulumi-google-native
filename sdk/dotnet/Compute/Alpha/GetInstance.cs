@@ -165,6 +165,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public readonly ImmutableArray<Outputs.NetworkInterfaceResponse> NetworkInterfaces;
         public readonly Outputs.NetworkPerformanceConfigResponse NetworkPerformanceConfig;
         /// <summary>
+        /// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+        /// </summary>
+        public readonly Outputs.InstanceParamsResponse Params;
+        /// <summary>
         /// PostKeyRevocationActionType of the instance.
         /// </summary>
         public readonly string PostKeyRevocationActionType;
@@ -311,6 +315,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             Outputs.NetworkPerformanceConfigResponse networkPerformanceConfig,
 
+            Outputs.InstanceParamsResponse @params,
+
             string postKeyRevocationActionType,
 
             string preservedStateSizeGb,
@@ -386,6 +392,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Name = name;
             NetworkInterfaces = networkInterfaces;
             NetworkPerformanceConfig = networkPerformanceConfig;
+            Params = @params;
             PostKeyRevocationActionType = postKeyRevocationActionType;
             PreservedStateSizeGb = preservedStateSizeGb;
             PrivateIpv6GoogleAccess = privateIpv6GoogleAccess;

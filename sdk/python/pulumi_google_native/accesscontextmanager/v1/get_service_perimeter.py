@@ -117,7 +117,7 @@ def get_service_perimeter(access_policy_id: Optional[str] = None,
                           service_perimeter_id: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicePerimeterResult:
     """
-    Get a Service Perimeter by resource name.
+    Gets a service perimeter based on the resource name.
     """
     __args__ = dict()
     __args__['accessPolicyId'] = access_policy_id
@@ -143,6 +143,6 @@ def get_service_perimeter_output(access_policy_id: Optional[pulumi.Input[str]] =
                                  service_perimeter_id: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServicePerimeterResult]:
     """
-    Get a Service Perimeter by resource name.
+    Gets a service perimeter based on the resource name.
     """
     ...

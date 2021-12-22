@@ -28,6 +28,8 @@ type Key struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Options for user acceptance testing.
 	TestingOptions GoogleCloudRecaptchaenterpriseV1TestingOptionsResponseOutput `pulumi:"testingOptions"`
+	// Settings for WAF
+	WafSettings GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput `pulumi:"wafSettings"`
 	// Settings for keys that can be used by websites.
 	WebSettings GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponseOutput `pulumi:"webSettings"`
 }
@@ -86,6 +88,8 @@ type keyArgs struct {
 	Project *string `pulumi:"project"`
 	// Options for user acceptance testing.
 	TestingOptions *GoogleCloudRecaptchaenterpriseV1TestingOptions `pulumi:"testingOptions"`
+	// Settings for WAF
+	WafSettings *GoogleCloudRecaptchaenterpriseV1WafSettings `pulumi:"wafSettings"`
 	// Settings for keys that can be used by websites.
 	WebSettings *GoogleCloudRecaptchaenterpriseV1WebKeySettings `pulumi:"webSettings"`
 }
@@ -107,6 +111,8 @@ type KeyArgs struct {
 	Project pulumi.StringPtrInput
 	// Options for user acceptance testing.
 	TestingOptions GoogleCloudRecaptchaenterpriseV1TestingOptionsPtrInput
+	// Settings for WAF
+	WafSettings GoogleCloudRecaptchaenterpriseV1WafSettingsPtrInput
 	// Settings for keys that can be used by websites.
 	WebSettings GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrInput
 }

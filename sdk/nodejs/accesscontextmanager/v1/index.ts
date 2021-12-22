@@ -7,9 +7,11 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./accessLevel";
 export * from "./accessPolicy";
+export * from "./accessPolicyIamPolicy";
 export * from "./gcpUserAccessBinding";
 export * from "./getAccessLevel";
 export * from "./getAccessPolicy";
+export * from "./getAccessPolicyIamPolicy";
 export * from "./getGcpUserAccessBinding";
 export * from "./getServicePerimeter";
 export * from "./servicePerimeter";
@@ -20,6 +22,7 @@ export * from "../../types/enums/accesscontextmanager/v1";
 // Import resources to register:
 import { AccessLevel } from "./accessLevel";
 import { AccessPolicy } from "./accessPolicy";
+import { AccessPolicyIamPolicy } from "./accessPolicyIamPolicy";
 import { GcpUserAccessBinding } from "./gcpUserAccessBinding";
 import { ServicePerimeter } from "./servicePerimeter";
 
@@ -31,6 +34,8 @@ const _module = {
                 return new AccessLevel(name, <any>undefined, { urn })
             case "google-native:accesscontextmanager/v1:AccessPolicy":
                 return new AccessPolicy(name, <any>undefined, { urn })
+            case "google-native:accesscontextmanager/v1:AccessPolicyIamPolicy":
+                return new AccessPolicyIamPolicy(name, <any>undefined, { urn })
             case "google-native:accesscontextmanager/v1:GcpUserAccessBinding":
                 return new GcpUserAccessBinding(name, <any>undefined, { urn })
             case "google-native:accesscontextmanager/v1:ServicePerimeter":

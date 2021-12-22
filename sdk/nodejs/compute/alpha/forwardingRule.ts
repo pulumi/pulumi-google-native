@@ -44,6 +44,10 @@ export class ForwardingRule extends pulumi.CustomResource {
      */
     public readonly allowGlobalAccess!: pulumi.Output<boolean>;
     /**
+     * This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+     */
+    public readonly allowPscGlobalAccess!: pulumi.Output<boolean>;
+    /**
      * Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
      */
     public readonly backendService!: pulumi.Output<string>;
@@ -170,6 +174,7 @@ export class ForwardingRule extends pulumi.CustomResource {
             }
             resourceInputs["allPorts"] = args ? args.allPorts : undefined;
             resourceInputs["allowGlobalAccess"] = args ? args.allowGlobalAccess : undefined;
+            resourceInputs["allowPscGlobalAccess"] = args ? args.allowPscGlobalAccess : undefined;
             resourceInputs["backendService"] = args ? args.backendService : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
@@ -204,6 +209,7 @@ export class ForwardingRule extends pulumi.CustomResource {
         } else {
             resourceInputs["allPorts"] = undefined /*out*/;
             resourceInputs["allowGlobalAccess"] = undefined /*out*/;
+            resourceInputs["allowPscGlobalAccess"] = undefined /*out*/;
             resourceInputs["backendService"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -253,6 +259,10 @@ export interface ForwardingRuleArgs {
      * This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. If the field is set to TRUE, clients can access ILB from all regions. Otherwise only allows access from clients in the same region as the internal load balancer.
      */
     allowGlobalAccess?: pulumi.Input<boolean>;
+    /**
+     * This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+     */
+    allowPscGlobalAccess?: pulumi.Input<boolean>;
     /**
      * Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
      */

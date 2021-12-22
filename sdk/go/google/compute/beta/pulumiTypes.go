@@ -230,6 +230,10 @@ func (o AcceleratorConfigResponseArrayOutput) Index(i pulumi.IntInput) Accelerat
 
 // An access configuration attached to an instance's network interface. Only one access config per instance is supported.
 type AccessConfig struct {
+	// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+	ExternalIpv6 *string `pulumi:"externalIpv6"`
+	// The prefix length of the external IPv6 range.
+	ExternalIpv6PrefixLength *int `pulumi:"externalIpv6PrefixLength"`
 	// The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
 	Name *string `pulumi:"name"`
 	// An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
@@ -257,6 +261,10 @@ type AccessConfigInput interface {
 
 // An access configuration attached to an instance's network interface. Only one access config per instance is supported.
 type AccessConfigArgs struct {
+	// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+	ExternalIpv6 pulumi.StringPtrInput `pulumi:"externalIpv6"`
+	// The prefix length of the external IPv6 range.
+	ExternalIpv6PrefixLength pulumi.IntPtrInput `pulumi:"externalIpv6PrefixLength"`
 	// The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
@@ -321,6 +329,16 @@ func (o AccessConfigOutput) ToAccessConfigOutput() AccessConfigOutput {
 
 func (o AccessConfigOutput) ToAccessConfigOutputWithContext(ctx context.Context) AccessConfigOutput {
 	return o
+}
+
+// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+func (o AccessConfigOutput) ExternalIpv6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessConfig) *string { return v.ExternalIpv6 }).(pulumi.StringPtrOutput)
+}
+
+// The prefix length of the external IPv6 range.
+func (o AccessConfigOutput) ExternalIpv6PrefixLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AccessConfig) *int { return v.ExternalIpv6PrefixLength }).(pulumi.IntPtrOutput)
 }
 
 // The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
@@ -2374,6 +2392,8 @@ type AttachedDiskInitializeParams struct {
 	GuestOsFeatures []GuestOsFeature `pulumi:"guestOsFeatures"`
 	// Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
 	Labels map[string]string `pulumi:"labels"`
+	// A list of publicly visible licenses. Reserved for Google's use.
+	Licenses []string `pulumi:"licenses"`
 	// Indicates whether or not the disk can be read/write attached to more than one instance.
 	MultiWriter *bool `pulumi:"multiWriter"`
 	// Specifies which action to take on instance update with this disk. Default is to use the existing disk.
@@ -2417,6 +2437,8 @@ type AttachedDiskInitializeParamsArgs struct {
 	GuestOsFeatures GuestOsFeatureArrayInput `pulumi:"guestOsFeatures"`
 	// Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// A list of publicly visible licenses. Reserved for Google's use.
+	Licenses pulumi.StringArrayInput `pulumi:"licenses"`
 	// Indicates whether or not the disk can be read/write attached to more than one instance.
 	MultiWriter pulumi.BoolPtrInput `pulumi:"multiWriter"`
 	// Specifies which action to take on instance update with this disk. Default is to use the existing disk.
@@ -2541,6 +2563,11 @@ func (o AttachedDiskInitializeParamsOutput) GuestOsFeatures() GuestOsFeatureArra
 // Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
 func (o AttachedDiskInitializeParamsOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParams) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// A list of publicly visible licenses. Reserved for Google's use.
+func (o AttachedDiskInitializeParamsOutput) Licenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AttachedDiskInitializeParams) []string { return v.Licenses }).(pulumi.StringArrayOutput)
 }
 
 // Indicates whether or not the disk can be read/write attached to more than one instance.
@@ -2669,6 +2696,16 @@ func (o AttachedDiskInitializeParamsPtrOutput) Labels() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// A list of publicly visible licenses. Reserved for Google's use.
+func (o AttachedDiskInitializeParamsPtrOutput) Licenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AttachedDiskInitializeParams) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Licenses
+	}).(pulumi.StringArrayOutput)
+}
+
 // Indicates whether or not the disk can be read/write attached to more than one instance.
 func (o AttachedDiskInitializeParamsPtrOutput) MultiWriter() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AttachedDiskInitializeParams) *bool {
@@ -2763,6 +2800,8 @@ type AttachedDiskInitializeParamsResponse struct {
 	GuestOsFeatures []GuestOsFeatureResponse `pulumi:"guestOsFeatures"`
 	// Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
 	Labels map[string]string `pulumi:"labels"`
+	// A list of publicly visible licenses. Reserved for Google's use.
+	Licenses []string `pulumi:"licenses"`
 	// Indicates whether or not the disk can be read/write attached to more than one instance.
 	MultiWriter bool `pulumi:"multiWriter"`
 	// Specifies which action to take on instance update with this disk. Default is to use the existing disk.
@@ -2806,6 +2845,8 @@ type AttachedDiskInitializeParamsResponseArgs struct {
 	GuestOsFeatures GuestOsFeatureResponseArrayInput `pulumi:"guestOsFeatures"`
 	// Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// A list of publicly visible licenses. Reserved for Google's use.
+	Licenses pulumi.StringArrayInput `pulumi:"licenses"`
 	// Indicates whether or not the disk can be read/write attached to more than one instance.
 	MultiWriter pulumi.BoolInput `pulumi:"multiWriter"`
 	// Specifies which action to take on instance update with this disk. Default is to use the existing disk.
@@ -2879,6 +2920,11 @@ func (o AttachedDiskInitializeParamsResponseOutput) GuestOsFeatures() GuestOsFea
 // Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
 func (o AttachedDiskInitializeParamsResponseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// A list of publicly visible licenses. Reserved for Google's use.
+func (o AttachedDiskInitializeParamsResponseOutput) Licenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) []string { return v.Licenses }).(pulumi.StringArrayOutput)
 }
 
 // Indicates whether or not the disk can be read/write attached to more than one instance.
@@ -28928,6 +28974,286 @@ func (o InstanceGroupManagerVersionResponseArrayOutput) Index(i pulumi.IntInput)
 	}).(InstanceGroupManagerVersionResponseOutput)
 }
 
+// Additional instance params.
+type InstanceParams struct {
+	// Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
+}
+
+// InstanceParamsInput is an input type that accepts InstanceParamsArgs and InstanceParamsOutput values.
+// You can construct a concrete instance of `InstanceParamsInput` via:
+//
+//          InstanceParamsArgs{...}
+type InstanceParamsInput interface {
+	pulumi.Input
+
+	ToInstanceParamsOutput() InstanceParamsOutput
+	ToInstanceParamsOutputWithContext(context.Context) InstanceParamsOutput
+}
+
+// Additional instance params.
+type InstanceParamsArgs struct {
+	// Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
+}
+
+func (InstanceParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceParams)(nil)).Elem()
+}
+
+func (i InstanceParamsArgs) ToInstanceParamsOutput() InstanceParamsOutput {
+	return i.ToInstanceParamsOutputWithContext(context.Background())
+}
+
+func (i InstanceParamsArgs) ToInstanceParamsOutputWithContext(ctx context.Context) InstanceParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceParamsOutput)
+}
+
+func (i InstanceParamsArgs) ToInstanceParamsPtrOutput() InstanceParamsPtrOutput {
+	return i.ToInstanceParamsPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceParamsArgs) ToInstanceParamsPtrOutputWithContext(ctx context.Context) InstanceParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceParamsOutput).ToInstanceParamsPtrOutputWithContext(ctx)
+}
+
+// InstanceParamsPtrInput is an input type that accepts InstanceParamsArgs, InstanceParamsPtr and InstanceParamsPtrOutput values.
+// You can construct a concrete instance of `InstanceParamsPtrInput` via:
+//
+//          InstanceParamsArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceParamsPtrInput interface {
+	pulumi.Input
+
+	ToInstanceParamsPtrOutput() InstanceParamsPtrOutput
+	ToInstanceParamsPtrOutputWithContext(context.Context) InstanceParamsPtrOutput
+}
+
+type instanceParamsPtrType InstanceParamsArgs
+
+func InstanceParamsPtr(v *InstanceParamsArgs) InstanceParamsPtrInput {
+	return (*instanceParamsPtrType)(v)
+}
+
+func (*instanceParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceParams)(nil)).Elem()
+}
+
+func (i *instanceParamsPtrType) ToInstanceParamsPtrOutput() InstanceParamsPtrOutput {
+	return i.ToInstanceParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceParamsPtrType) ToInstanceParamsPtrOutputWithContext(ctx context.Context) InstanceParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceParamsPtrOutput)
+}
+
+// Additional instance params.
+type InstanceParamsOutput struct{ *pulumi.OutputState }
+
+func (InstanceParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceParams)(nil)).Elem()
+}
+
+func (o InstanceParamsOutput) ToInstanceParamsOutput() InstanceParamsOutput {
+	return o
+}
+
+func (o InstanceParamsOutput) ToInstanceParamsOutputWithContext(ctx context.Context) InstanceParamsOutput {
+	return o
+}
+
+func (o InstanceParamsOutput) ToInstanceParamsPtrOutput() InstanceParamsPtrOutput {
+	return o.ToInstanceParamsPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceParamsOutput) ToInstanceParamsPtrOutputWithContext(ctx context.Context) InstanceParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceParams) *InstanceParams {
+		return &v
+	}).(InstanceParamsPtrOutput)
+}
+
+// Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+func (o InstanceParamsOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InstanceParams) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
+}
+
+type InstanceParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceParams)(nil)).Elem()
+}
+
+func (o InstanceParamsPtrOutput) ToInstanceParamsPtrOutput() InstanceParamsPtrOutput {
+	return o
+}
+
+func (o InstanceParamsPtrOutput) ToInstanceParamsPtrOutputWithContext(ctx context.Context) InstanceParamsPtrOutput {
+	return o
+}
+
+func (o InstanceParamsPtrOutput) Elem() InstanceParamsOutput {
+	return o.ApplyT(func(v *InstanceParams) InstanceParams {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceParams
+		return ret
+	}).(InstanceParamsOutput)
+}
+
+// Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+func (o InstanceParamsPtrOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InstanceParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceManagerTags
+	}).(pulumi.StringMapOutput)
+}
+
+// Additional instance params.
+type InstanceParamsResponse struct {
+	// Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
+}
+
+// InstanceParamsResponseInput is an input type that accepts InstanceParamsResponseArgs and InstanceParamsResponseOutput values.
+// You can construct a concrete instance of `InstanceParamsResponseInput` via:
+//
+//          InstanceParamsResponseArgs{...}
+type InstanceParamsResponseInput interface {
+	pulumi.Input
+
+	ToInstanceParamsResponseOutput() InstanceParamsResponseOutput
+	ToInstanceParamsResponseOutputWithContext(context.Context) InstanceParamsResponseOutput
+}
+
+// Additional instance params.
+type InstanceParamsResponseArgs struct {
+	// Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
+}
+
+func (InstanceParamsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceParamsResponse)(nil)).Elem()
+}
+
+func (i InstanceParamsResponseArgs) ToInstanceParamsResponseOutput() InstanceParamsResponseOutput {
+	return i.ToInstanceParamsResponseOutputWithContext(context.Background())
+}
+
+func (i InstanceParamsResponseArgs) ToInstanceParamsResponseOutputWithContext(ctx context.Context) InstanceParamsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceParamsResponseOutput)
+}
+
+func (i InstanceParamsResponseArgs) ToInstanceParamsResponsePtrOutput() InstanceParamsResponsePtrOutput {
+	return i.ToInstanceParamsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceParamsResponseArgs) ToInstanceParamsResponsePtrOutputWithContext(ctx context.Context) InstanceParamsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceParamsResponseOutput).ToInstanceParamsResponsePtrOutputWithContext(ctx)
+}
+
+// InstanceParamsResponsePtrInput is an input type that accepts InstanceParamsResponseArgs, InstanceParamsResponsePtr and InstanceParamsResponsePtrOutput values.
+// You can construct a concrete instance of `InstanceParamsResponsePtrInput` via:
+//
+//          InstanceParamsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceParamsResponsePtrInput interface {
+	pulumi.Input
+
+	ToInstanceParamsResponsePtrOutput() InstanceParamsResponsePtrOutput
+	ToInstanceParamsResponsePtrOutputWithContext(context.Context) InstanceParamsResponsePtrOutput
+}
+
+type instanceParamsResponsePtrType InstanceParamsResponseArgs
+
+func InstanceParamsResponsePtr(v *InstanceParamsResponseArgs) InstanceParamsResponsePtrInput {
+	return (*instanceParamsResponsePtrType)(v)
+}
+
+func (*instanceParamsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceParamsResponse)(nil)).Elem()
+}
+
+func (i *instanceParamsResponsePtrType) ToInstanceParamsResponsePtrOutput() InstanceParamsResponsePtrOutput {
+	return i.ToInstanceParamsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceParamsResponsePtrType) ToInstanceParamsResponsePtrOutputWithContext(ctx context.Context) InstanceParamsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceParamsResponsePtrOutput)
+}
+
+// Additional instance params.
+type InstanceParamsResponseOutput struct{ *pulumi.OutputState }
+
+func (InstanceParamsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceParamsResponse)(nil)).Elem()
+}
+
+func (o InstanceParamsResponseOutput) ToInstanceParamsResponseOutput() InstanceParamsResponseOutput {
+	return o
+}
+
+func (o InstanceParamsResponseOutput) ToInstanceParamsResponseOutputWithContext(ctx context.Context) InstanceParamsResponseOutput {
+	return o
+}
+
+func (o InstanceParamsResponseOutput) ToInstanceParamsResponsePtrOutput() InstanceParamsResponsePtrOutput {
+	return o.ToInstanceParamsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceParamsResponseOutput) ToInstanceParamsResponsePtrOutputWithContext(ctx context.Context) InstanceParamsResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceParamsResponse) *InstanceParamsResponse {
+		return &v
+	}).(InstanceParamsResponsePtrOutput)
+}
+
+// Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+func (o InstanceParamsResponseOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InstanceParamsResponse) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
+}
+
+type InstanceParamsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceParamsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceParamsResponse)(nil)).Elem()
+}
+
+func (o InstanceParamsResponsePtrOutput) ToInstanceParamsResponsePtrOutput() InstanceParamsResponsePtrOutput {
+	return o
+}
+
+func (o InstanceParamsResponsePtrOutput) ToInstanceParamsResponsePtrOutputWithContext(ctx context.Context) InstanceParamsResponsePtrOutput {
+	return o
+}
+
+func (o InstanceParamsResponsePtrOutput) Elem() InstanceParamsResponseOutput {
+	return o.ApplyT(func(v *InstanceParamsResponse) InstanceParamsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceParamsResponse
+		return ret
+	}).(InstanceParamsResponseOutput)
+}
+
+// Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+func (o InstanceParamsResponsePtrOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InstanceParamsResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceManagerTags
+	}).(pulumi.StringMapOutput)
+}
+
 type InstanceProperties struct {
 	// Controls for advanced machine-related behavior features. Note that for MachineImage, this is not supported yet.
 	AdvancedMachineFeatures *AdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
@@ -28961,7 +29287,9 @@ type InstanceProperties struct {
 	PrivateIpv6GoogleAccess *InstancePropertiesPrivateIpv6GoogleAccess `pulumi:"privateIpv6GoogleAccess"`
 	// Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
 	ReservationAffinity *ReservationAffinity `pulumi:"reservationAffinity"`
-	// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+	// Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
+	// Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// Specifies the scheduling options for the instances that are created from these properties.
 	Scheduling *Scheduling `pulumi:"scheduling"`
@@ -29019,7 +29347,9 @@ type InstancePropertiesArgs struct {
 	PrivateIpv6GoogleAccess InstancePropertiesPrivateIpv6GoogleAccessPtrInput `pulumi:"privateIpv6GoogleAccess"`
 	// Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
 	ReservationAffinity ReservationAffinityPtrInput `pulumi:"reservationAffinity"`
-	// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+	// Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
+	// Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
 	ResourcePolicies pulumi.StringArrayInput `pulumi:"resourcePolicies"`
 	// Specifies the scheduling options for the instances that are created from these properties.
 	Scheduling SchedulingPtrInput `pulumi:"scheduling"`
@@ -29194,7 +29524,12 @@ func (o InstancePropertiesOutput) ReservationAffinity() ReservationAffinityPtrOu
 	return o.ApplyT(func(v InstanceProperties) *ReservationAffinity { return v.ReservationAffinity }).(ReservationAffinityPtrOutput)
 }
 
-// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+// Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+func (o InstancePropertiesOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InstanceProperties) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
+}
+
+// Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesOutput) ResourcePolicies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InstanceProperties) []string { return v.ResourcePolicies }).(pulumi.StringArrayOutput)
 }
@@ -29408,7 +29743,17 @@ func (o InstancePropertiesPtrOutput) ReservationAffinity() ReservationAffinityPt
 	}).(ReservationAffinityPtrOutput)
 }
 
-// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+// Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+func (o InstancePropertiesPtrOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InstanceProperties) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceManagerTags
+	}).(pulumi.StringMapOutput)
+}
+
+// Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesPtrOutput) ResourcePolicies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InstanceProperties) []string {
 		if v == nil {
@@ -29501,7 +29846,9 @@ type InstancePropertiesResponse struct {
 	PrivateIpv6GoogleAccess string `pulumi:"privateIpv6GoogleAccess"`
 	// Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
 	ReservationAffinity ReservationAffinityResponse `pulumi:"reservationAffinity"`
-	// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+	// Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
+	// Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// Specifies the scheduling options for the instances that are created from these properties.
 	Scheduling SchedulingResponse `pulumi:"scheduling"`
@@ -29559,7 +29906,9 @@ type InstancePropertiesResponseArgs struct {
 	PrivateIpv6GoogleAccess pulumi.StringInput `pulumi:"privateIpv6GoogleAccess"`
 	// Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
 	ReservationAffinity ReservationAffinityResponseInput `pulumi:"reservationAffinity"`
-	// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+	// Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
+	// Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
 	ResourcePolicies pulumi.StringArrayInput `pulumi:"resourcePolicies"`
 	// Specifies the scheduling options for the instances that are created from these properties.
 	Scheduling SchedulingResponseInput `pulumi:"scheduling"`
@@ -29732,7 +30081,12 @@ func (o InstancePropertiesResponseOutput) ReservationAffinity() ReservationAffin
 	return o.ApplyT(func(v InstancePropertiesResponse) ReservationAffinityResponse { return v.ReservationAffinity }).(ReservationAffinityResponseOutput)
 }
 
-// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+// Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+func (o InstancePropertiesResponseOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InstancePropertiesResponse) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
+}
+
+// Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesResponseOutput) ResourcePolicies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InstancePropertiesResponse) []string { return v.ResourcePolicies }).(pulumi.StringArrayOutput)
 }
@@ -29946,7 +30300,17 @@ func (o InstancePropertiesResponsePtrOutput) ReservationAffinity() ReservationAf
 	}).(ReservationAffinityResponsePtrOutput)
 }
 
-// Resource policies (names, not ULRs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
+// Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+func (o InstancePropertiesResponsePtrOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InstancePropertiesResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceManagerTags
+	}).(pulumi.StringMapOutput)
+}
+
+// Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesResponsePtrOutput) ResourcePolicies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InstancePropertiesResponse) []string {
 		if v == nil {
@@ -35653,6 +36017,8 @@ type NetworkInterface struct {
 	AliasIpRanges []AliasIpRange `pulumi:"aliasIpRanges"`
 	// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
 	Ipv6AccessConfigs []AccessConfig `pulumi:"ipv6AccessConfigs"`
+	// An IPv6 internal network address for this network interface.
+	Ipv6Address *string `pulumi:"ipv6Address"`
 	// URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default
 	Network *string `pulumi:"network"`
 	// An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
@@ -35686,6 +36052,8 @@ type NetworkInterfaceArgs struct {
 	AliasIpRanges AliasIpRangeArrayInput `pulumi:"aliasIpRanges"`
 	// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
 	Ipv6AccessConfigs AccessConfigArrayInput `pulumi:"ipv6AccessConfigs"`
+	// An IPv6 internal network address for this network interface.
+	Ipv6Address pulumi.StringPtrInput `pulumi:"ipv6Address"`
 	// URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
@@ -35765,6 +36133,11 @@ func (o NetworkInterfaceOutput) AliasIpRanges() AliasIpRangeArrayOutput {
 // An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
 func (o NetworkInterfaceOutput) Ipv6AccessConfigs() AccessConfigArrayOutput {
 	return o.ApplyT(func(v NetworkInterface) []AccessConfig { return v.Ipv6AccessConfigs }).(AccessConfigArrayOutput)
+}
+
+// An IPv6 internal network address for this network interface.
+func (o NetworkInterfaceOutput) Ipv6Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkInterface) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
 }
 
 // URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default
@@ -65073,6 +65446,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerVersionArrayInput)(nil)).Elem(), InstanceGroupManagerVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerVersionResponseInput)(nil)).Elem(), InstanceGroupManagerVersionResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerVersionResponseArrayInput)(nil)).Elem(), InstanceGroupManagerVersionResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceParamsInput)(nil)).Elem(), InstanceParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceParamsPtrInput)(nil)).Elem(), InstanceParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceParamsResponseInput)(nil)).Elem(), InstanceParamsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceParamsResponsePtrInput)(nil)).Elem(), InstanceParamsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePropertiesInput)(nil)).Elem(), InstancePropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePropertiesPtrInput)(nil)).Elem(), InstancePropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePropertiesResponseInput)(nil)).Elem(), InstancePropertiesResponseArgs{})
@@ -65862,6 +66239,10 @@ func init() {
 	pulumi.RegisterOutputType(InstanceGroupManagerVersionArrayOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerVersionResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerVersionResponseArrayOutput{})
+	pulumi.RegisterOutputType(InstanceParamsOutput{})
+	pulumi.RegisterOutputType(InstanceParamsPtrOutput{})
+	pulumi.RegisterOutputType(InstanceParamsResponseOutput{})
+	pulumi.RegisterOutputType(InstanceParamsResponsePtrOutput{})
 	pulumi.RegisterOutputType(InstancePropertiesOutput{})
 	pulumi.RegisterOutputType(InstancePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(InstancePropertiesResponseOutput{})

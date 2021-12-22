@@ -30538,6 +30538,171 @@ func (in *shareSettingsShareTypePtr) ToShareSettingsShareTypePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(ShareSettingsShareTypePtrOutput)
 }
 
+// Indicates the type of the snapshot.
+type SnapshotSnapshotType string
+
+const (
+	SnapshotSnapshotTypeArchive  = SnapshotSnapshotType("ARCHIVE")
+	SnapshotSnapshotTypeStandard = SnapshotSnapshotType("STANDARD")
+)
+
+func (SnapshotSnapshotType) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotSnapshotType)(nil)).Elem()
+}
+
+func (e SnapshotSnapshotType) ToSnapshotSnapshotTypeOutput() SnapshotSnapshotTypeOutput {
+	return pulumi.ToOutput(e).(SnapshotSnapshotTypeOutput)
+}
+
+func (e SnapshotSnapshotType) ToSnapshotSnapshotTypeOutputWithContext(ctx context.Context) SnapshotSnapshotTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SnapshotSnapshotTypeOutput)
+}
+
+func (e SnapshotSnapshotType) ToSnapshotSnapshotTypePtrOutput() SnapshotSnapshotTypePtrOutput {
+	return e.ToSnapshotSnapshotTypePtrOutputWithContext(context.Background())
+}
+
+func (e SnapshotSnapshotType) ToSnapshotSnapshotTypePtrOutputWithContext(ctx context.Context) SnapshotSnapshotTypePtrOutput {
+	return SnapshotSnapshotType(e).ToSnapshotSnapshotTypeOutputWithContext(ctx).ToSnapshotSnapshotTypePtrOutputWithContext(ctx)
+}
+
+func (e SnapshotSnapshotType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SnapshotSnapshotType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SnapshotSnapshotType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SnapshotSnapshotType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SnapshotSnapshotTypeOutput struct{ *pulumi.OutputState }
+
+func (SnapshotSnapshotTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotSnapshotType)(nil)).Elem()
+}
+
+func (o SnapshotSnapshotTypeOutput) ToSnapshotSnapshotTypeOutput() SnapshotSnapshotTypeOutput {
+	return o
+}
+
+func (o SnapshotSnapshotTypeOutput) ToSnapshotSnapshotTypeOutputWithContext(ctx context.Context) SnapshotSnapshotTypeOutput {
+	return o
+}
+
+func (o SnapshotSnapshotTypeOutput) ToSnapshotSnapshotTypePtrOutput() SnapshotSnapshotTypePtrOutput {
+	return o.ToSnapshotSnapshotTypePtrOutputWithContext(context.Background())
+}
+
+func (o SnapshotSnapshotTypeOutput) ToSnapshotSnapshotTypePtrOutputWithContext(ctx context.Context) SnapshotSnapshotTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SnapshotSnapshotType) *SnapshotSnapshotType {
+		return &v
+	}).(SnapshotSnapshotTypePtrOutput)
+}
+
+func (o SnapshotSnapshotTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SnapshotSnapshotTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SnapshotSnapshotType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SnapshotSnapshotTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SnapshotSnapshotTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SnapshotSnapshotType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SnapshotSnapshotTypePtrOutput struct{ *pulumi.OutputState }
+
+func (SnapshotSnapshotTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnapshotSnapshotType)(nil)).Elem()
+}
+
+func (o SnapshotSnapshotTypePtrOutput) ToSnapshotSnapshotTypePtrOutput() SnapshotSnapshotTypePtrOutput {
+	return o
+}
+
+func (o SnapshotSnapshotTypePtrOutput) ToSnapshotSnapshotTypePtrOutputWithContext(ctx context.Context) SnapshotSnapshotTypePtrOutput {
+	return o
+}
+
+func (o SnapshotSnapshotTypePtrOutput) Elem() SnapshotSnapshotTypeOutput {
+	return o.ApplyT(func(v *SnapshotSnapshotType) SnapshotSnapshotType {
+		if v != nil {
+			return *v
+		}
+		var ret SnapshotSnapshotType
+		return ret
+	}).(SnapshotSnapshotTypeOutput)
+}
+
+func (o SnapshotSnapshotTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SnapshotSnapshotTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SnapshotSnapshotType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SnapshotSnapshotTypeInput is an input type that accepts SnapshotSnapshotTypeArgs and SnapshotSnapshotTypeOutput values.
+// You can construct a concrete instance of `SnapshotSnapshotTypeInput` via:
+//
+//          SnapshotSnapshotTypeArgs{...}
+type SnapshotSnapshotTypeInput interface {
+	pulumi.Input
+
+	ToSnapshotSnapshotTypeOutput() SnapshotSnapshotTypeOutput
+	ToSnapshotSnapshotTypeOutputWithContext(context.Context) SnapshotSnapshotTypeOutput
+}
+
+var snapshotSnapshotTypePtrType = reflect.TypeOf((**SnapshotSnapshotType)(nil)).Elem()
+
+type SnapshotSnapshotTypePtrInput interface {
+	pulumi.Input
+
+	ToSnapshotSnapshotTypePtrOutput() SnapshotSnapshotTypePtrOutput
+	ToSnapshotSnapshotTypePtrOutputWithContext(context.Context) SnapshotSnapshotTypePtrOutput
+}
+
+type snapshotSnapshotTypePtr string
+
+func SnapshotSnapshotTypePtr(v string) SnapshotSnapshotTypePtrInput {
+	return (*snapshotSnapshotTypePtr)(&v)
+}
+
+func (*snapshotSnapshotTypePtr) ElementType() reflect.Type {
+	return snapshotSnapshotTypePtrType
+}
+
+func (in *snapshotSnapshotTypePtr) ToSnapshotSnapshotTypePtrOutput() SnapshotSnapshotTypePtrOutput {
+	return pulumi.ToOutput(in).(SnapshotSnapshotTypePtrOutput)
+}
+
+func (in *snapshotSnapshotTypePtr) ToSnapshotSnapshotTypePtrOutputWithContext(ctx context.Context) SnapshotSnapshotTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SnapshotSnapshotTypePtrOutput)
+}
+
 // (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
 type SslCertificateType string
 
@@ -34781,6 +34946,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentConnectionPreferencePtrInput)(nil)).Elem(), ServiceAttachmentConnectionPreference("ACCEPT_AUTOMATIC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ShareSettingsShareTypeInput)(nil)).Elem(), ShareSettingsShareType("DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ShareSettingsShareTypePtrInput)(nil)).Elem(), ShareSettingsShareType("DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotSnapshotTypeInput)(nil)).Elem(), SnapshotSnapshotType("ARCHIVE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotSnapshotTypePtrInput)(nil)).Elem(), SnapshotSnapshotType("ARCHIVE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SslCertificateTypeInput)(nil)).Elem(), SslCertificateType("MANAGED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SslCertificateTypePtrInput)(nil)).Elem(), SslCertificateType("MANAGED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SslPolicyMinTlsVersionInput)(nil)).Elem(), SslPolicyMinTlsVersion("TLS_1_0"))
@@ -35190,6 +35357,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceAttachmentConnectionPreferencePtrOutput{})
 	pulumi.RegisterOutputType(ShareSettingsShareTypeOutput{})
 	pulumi.RegisterOutputType(ShareSettingsShareTypePtrOutput{})
+	pulumi.RegisterOutputType(SnapshotSnapshotTypeOutput{})
+	pulumi.RegisterOutputType(SnapshotSnapshotTypePtrOutput{})
 	pulumi.RegisterOutputType(SslCertificateTypeOutput{})
 	pulumi.RegisterOutputType(SslCertificateTypePtrOutput{})
 	pulumi.RegisterOutputType(SslPolicyMinTlsVersionOutput{})

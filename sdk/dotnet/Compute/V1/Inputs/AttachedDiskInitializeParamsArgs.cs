@@ -51,6 +51,18 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
             set => _labels = value;
         }
 
+        [Input("licenses")]
+        private InputList<string>? _licenses;
+
+        /// <summary>
+        /// A list of publicly visible licenses. Reserved for Google's use.
+        /// </summary>
+        public InputList<string> Licenses
+        {
+            get => _licenses ?? (_licenses = new InputList<string>());
+            set => _licenses = value;
+        }
+
         /// <summary>
         /// Specifies which action to take on instance update with this disk. Default is to use the existing disk.
         /// </summary>

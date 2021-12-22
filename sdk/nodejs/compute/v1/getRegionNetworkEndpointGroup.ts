@@ -75,6 +75,10 @@ export interface GetRegionNetworkEndpointGroupResult {
      */
     readonly networkEndpointType: string;
     /**
+     * The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+     */
+    readonly pscTargetService: string;
+    /**
      * The URL of the region where the network endpoint group is located.
      */
     readonly region: string;

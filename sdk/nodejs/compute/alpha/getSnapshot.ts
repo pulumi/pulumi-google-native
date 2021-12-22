@@ -109,6 +109,10 @@ export interface GetSnapshotResult {
      */
     readonly snapshotEncryptionKey: outputs.compute.alpha.CustomerEncryptionKeyResponse;
     /**
+     * Indicates the type of the snapshot.
+     */
+    readonly snapshotType: string;
+    /**
      * The source disk used to create this snapshot.
      */
     readonly sourceDisk: string;

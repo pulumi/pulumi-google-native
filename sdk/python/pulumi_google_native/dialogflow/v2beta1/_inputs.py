@@ -3580,7 +3580,7 @@ class GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs:
                  speech_model_variant: Optional[pulumi.Input['GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariant']] = None):
         """
         Configures speech transcription for ConversationProfile.
-        :param pulumi.Input['GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariant'] speech_model_variant: Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
+        :param pulumi.Input['GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariant'] speech_model_variant: The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
         """
         if speech_model_variant is not None:
             pulumi.set(__self__, "speech_model_variant", speech_model_variant)
@@ -3589,7 +3589,7 @@ class GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs:
     @pulumi.getter(name="speechModelVariant")
     def speech_model_variant(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariant']]:
         """
-        Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
+        The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
         """
         return pulumi.get(self, "speech_model_variant")
 

@@ -17,13 +17,21 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1.Outputs
     public sealed class RoutingVPCResponse
     {
         /// <summary>
+        /// If true, indicates that this VPC network is currently associated with spokes that use the data transfer feature (spokes where the site_to_site_data_transfer field is set to true). If you create new spokes that use data transfer, they must be associated with this VPC network.
+        /// </summary>
+        public readonly bool RequiredForNewSiteToSiteDataTransferSpokes;
+        /// <summary>
         /// The URI of the VPC network.
         /// </summary>
         public readonly string Uri;
 
         [OutputConstructor]
-        private RoutingVPCResponse(string uri)
+        private RoutingVPCResponse(
+            bool requiredForNewSiteToSiteDataTransferSpokes,
+
+            string uri)
         {
+            RequiredForNewSiteToSiteDataTransferSpokes = requiredForNewSiteToSiteDataTransferSpokes;
             Uri = uri;
         }
     }

@@ -55,7 +55,7 @@ class InstanceArgs:
         :param pulumi.Input['DiskEncryptionConfigurationArgs'] disk_encryption_configuration: Disk encryption configuration specific to an instance.
         :param pulumi.Input['DiskEncryptionStatusArgs'] disk_encryption_status: Disk encryption status specific to an instance.
         :param pulumi.Input['InstanceFailoverReplicaArgs'] failover_replica: The name and status of the failover replica.
-        :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
+        :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone. WARNING: Changing this might restart the instance.
         :param pulumi.Input['InstanceInstanceType'] instance_type: The instance type.
         :param pulumi.Input[Sequence[pulumi.Input['IpMappingArgs']]] ip_addresses: The assigned IP addresses for the instance.
         :param pulumi.Input[str] kind: This is always **sql#instance**.
@@ -228,7 +228,7 @@ class InstanceArgs:
     @pulumi.getter(name="gceZone")
     def gce_zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
+        The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone. WARNING: Changing this might restart the instance.
         """
         return pulumi.get(self, "gce_zone")
 
@@ -549,7 +549,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DiskEncryptionConfigurationArgs']] disk_encryption_configuration: Disk encryption configuration specific to an instance.
         :param pulumi.Input[pulumi.InputType['DiskEncryptionStatusArgs']] disk_encryption_status: Disk encryption status specific to an instance.
         :param pulumi.Input[pulumi.InputType['InstanceFailoverReplicaArgs']] failover_replica: The name and status of the failover replica.
-        :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
+        :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone. WARNING: Changing this might restart the instance.
         :param pulumi.Input['InstanceInstanceType'] instance_type: The instance type.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpMappingArgs']]]] ip_addresses: The assigned IP addresses for the instance.
         :param pulumi.Input[str] kind: This is always **sql#instance**.
@@ -763,7 +763,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="databaseInstalledVersion")
     def database_installed_version(self) -> pulumi.Output[str]:
         """
-        The databaseInstalledVersion stores the current fully resolved database version running on the instance including minor version such as MYSQL_5_6_50
+        Stores the current database version running on the instance including minor version such as **MYSQL_8_0_18**.
         """
         return pulumi.get(self, "database_installed_version")
 
@@ -803,7 +803,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="gceZone")
     def gce_zone(self) -> pulumi.Output[str]:
         """
-        The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
+        The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone. WARNING: Changing this might restart the instance.
         """
         return pulumi.get(self, "gce_zone")
 

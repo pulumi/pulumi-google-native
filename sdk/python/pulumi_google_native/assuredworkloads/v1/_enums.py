@@ -20,7 +20,11 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType(str, Enu
     """
     CONSUMER_PROJECT = "CONSUMER_PROJECT"
     """
-    Consumer project.
+    Consumer project. AssuredWorkloads Projects are no longer supported. This field will be ignored only in CreateWorkload requests. ListWorkloads and GetWorkload will continue to provide projects information. Use CONSUMER_FOLDER instead.
+    """
+    CONSUMER_FOLDER = "CONSUMER_FOLDER"
+    """
+    Consumer Folder.
     """
     ENCRYPTION_KEYS_PROJECT = "ENCRYPTION_KEYS_PROJECT"
     """

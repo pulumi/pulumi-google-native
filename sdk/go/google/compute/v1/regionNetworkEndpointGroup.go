@@ -37,6 +37,8 @@ type RegionNetworkEndpointGroup struct {
 	Network pulumi.StringOutput `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 	NetworkEndpointType pulumi.StringOutput `pulumi:"networkEndpointType"`
+	// The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+	PscTargetService pulumi.StringOutput `pulumi:"pscTargetService"`
 	// The URL of the region where the network endpoint group is located.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Server-defined URL for the resource.
@@ -110,8 +112,10 @@ type regionNetworkEndpointGroupArgs struct {
 	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 	NetworkEndpointType *RegionNetworkEndpointGroupNetworkEndpointType `pulumi:"networkEndpointType"`
 	Project             *string                                        `pulumi:"project"`
-	Region              string                                         `pulumi:"region"`
-	RequestId           *string                                        `pulumi:"requestId"`
+	// The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+	PscTargetService *string `pulumi:"pscTargetService"`
+	Region           string  `pulumi:"region"`
+	RequestId        *string `pulumi:"requestId"`
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
 	Subnetwork *string `pulumi:"subnetwork"`
 }
@@ -137,8 +141,10 @@ type RegionNetworkEndpointGroupArgs struct {
 	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 	NetworkEndpointType RegionNetworkEndpointGroupNetworkEndpointTypePtrInput
 	Project             pulumi.StringPtrInput
-	Region              pulumi.StringInput
-	RequestId           pulumi.StringPtrInput
+	// The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+	PscTargetService pulumi.StringPtrInput
+	Region           pulumi.StringInput
+	RequestId        pulumi.StringPtrInput
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
 	Subnetwork pulumi.StringPtrInput
 }

@@ -85,6 +85,10 @@ export interface GetEntryResult {
      */
     readonly name: string;
     /**
+     * Additional information related to the entry. Private to the current user.
+     */
+    readonly personalDetails: outputs.datacatalog.v1.GoogleCloudDatacatalogV1PersonalDetailsResponse;
+    /**
      * Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type.
      */
     readonly routineSpec: outputs.datacatalog.v1.GoogleCloudDatacatalogV1RoutineSpecResponse;

@@ -8684,6 +8684,8 @@ const (
 	GlobalNetworkEndpointGroupNetworkEndpointTypeInternetIpPort = GlobalNetworkEndpointGroupNetworkEndpointType("INTERNET_IP_PORT")
 	// The network endpoint is represented by an IP address and port. The endpoint belongs to a VM or pod running in a customer's on-premises.
 	GlobalNetworkEndpointGroupNetworkEndpointTypeNonGcpPrivateIpPort = GlobalNetworkEndpointGroupNetworkEndpointType("NON_GCP_PRIVATE_IP_PORT")
+	// The network endpoint is either public Google APIs or services exposed by other GCP Project with a Service Attachment. The connection is set up by private service connect
+	GlobalNetworkEndpointGroupNetworkEndpointTypePrivateServiceConnect = GlobalNetworkEndpointGroupNetworkEndpointType("PRIVATE_SERVICE_CONNECT")
 	// The network endpoint is handled by specified serverless infrastructure.
 	GlobalNetworkEndpointGroupNetworkEndpointTypeServerless = GlobalNetworkEndpointGroupNetworkEndpointType("SERVERLESS")
 )
@@ -12390,6 +12392,173 @@ func (in *interconnectAttachmentEncryptionPtr) ToInterconnectAttachmentEncryptio
 	return pulumi.ToOutputWithContext(ctx, in).(InterconnectAttachmentEncryptionPtrOutput)
 }
 
+// The stack type for this interconnect attachment to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at interconnect attachments creation and update interconnect attachment operations.
+type InterconnectAttachmentStackType string
+
+const (
+	// The interconnect attachment can have both IPv4 and IPv6 addresses.
+	InterconnectAttachmentStackTypeIpv4Ipv6 = InterconnectAttachmentStackType("IPV4_IPV6")
+	// The interconnect attachment will only be assigned IPv4 addresses.
+	InterconnectAttachmentStackTypeIpv4Only = InterconnectAttachmentStackType("IPV4_ONLY")
+)
+
+func (InterconnectAttachmentStackType) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterconnectAttachmentStackType)(nil)).Elem()
+}
+
+func (e InterconnectAttachmentStackType) ToInterconnectAttachmentStackTypeOutput() InterconnectAttachmentStackTypeOutput {
+	return pulumi.ToOutput(e).(InterconnectAttachmentStackTypeOutput)
+}
+
+func (e InterconnectAttachmentStackType) ToInterconnectAttachmentStackTypeOutputWithContext(ctx context.Context) InterconnectAttachmentStackTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(InterconnectAttachmentStackTypeOutput)
+}
+
+func (e InterconnectAttachmentStackType) ToInterconnectAttachmentStackTypePtrOutput() InterconnectAttachmentStackTypePtrOutput {
+	return e.ToInterconnectAttachmentStackTypePtrOutputWithContext(context.Background())
+}
+
+func (e InterconnectAttachmentStackType) ToInterconnectAttachmentStackTypePtrOutputWithContext(ctx context.Context) InterconnectAttachmentStackTypePtrOutput {
+	return InterconnectAttachmentStackType(e).ToInterconnectAttachmentStackTypeOutputWithContext(ctx).ToInterconnectAttachmentStackTypePtrOutputWithContext(ctx)
+}
+
+func (e InterconnectAttachmentStackType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InterconnectAttachmentStackType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InterconnectAttachmentStackType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e InterconnectAttachmentStackType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type InterconnectAttachmentStackTypeOutput struct{ *pulumi.OutputState }
+
+func (InterconnectAttachmentStackTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterconnectAttachmentStackType)(nil)).Elem()
+}
+
+func (o InterconnectAttachmentStackTypeOutput) ToInterconnectAttachmentStackTypeOutput() InterconnectAttachmentStackTypeOutput {
+	return o
+}
+
+func (o InterconnectAttachmentStackTypeOutput) ToInterconnectAttachmentStackTypeOutputWithContext(ctx context.Context) InterconnectAttachmentStackTypeOutput {
+	return o
+}
+
+func (o InterconnectAttachmentStackTypeOutput) ToInterconnectAttachmentStackTypePtrOutput() InterconnectAttachmentStackTypePtrOutput {
+	return o.ToInterconnectAttachmentStackTypePtrOutputWithContext(context.Background())
+}
+
+func (o InterconnectAttachmentStackTypeOutput) ToInterconnectAttachmentStackTypePtrOutputWithContext(ctx context.Context) InterconnectAttachmentStackTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InterconnectAttachmentStackType) *InterconnectAttachmentStackType {
+		return &v
+	}).(InterconnectAttachmentStackTypePtrOutput)
+}
+
+func (o InterconnectAttachmentStackTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o InterconnectAttachmentStackTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InterconnectAttachmentStackType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o InterconnectAttachmentStackTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InterconnectAttachmentStackTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InterconnectAttachmentStackType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type InterconnectAttachmentStackTypePtrOutput struct{ *pulumi.OutputState }
+
+func (InterconnectAttachmentStackTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InterconnectAttachmentStackType)(nil)).Elem()
+}
+
+func (o InterconnectAttachmentStackTypePtrOutput) ToInterconnectAttachmentStackTypePtrOutput() InterconnectAttachmentStackTypePtrOutput {
+	return o
+}
+
+func (o InterconnectAttachmentStackTypePtrOutput) ToInterconnectAttachmentStackTypePtrOutputWithContext(ctx context.Context) InterconnectAttachmentStackTypePtrOutput {
+	return o
+}
+
+func (o InterconnectAttachmentStackTypePtrOutput) Elem() InterconnectAttachmentStackTypeOutput {
+	return o.ApplyT(func(v *InterconnectAttachmentStackType) InterconnectAttachmentStackType {
+		if v != nil {
+			return *v
+		}
+		var ret InterconnectAttachmentStackType
+		return ret
+	}).(InterconnectAttachmentStackTypeOutput)
+}
+
+func (o InterconnectAttachmentStackTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InterconnectAttachmentStackTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InterconnectAttachmentStackType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// InterconnectAttachmentStackTypeInput is an input type that accepts InterconnectAttachmentStackTypeArgs and InterconnectAttachmentStackTypeOutput values.
+// You can construct a concrete instance of `InterconnectAttachmentStackTypeInput` via:
+//
+//          InterconnectAttachmentStackTypeArgs{...}
+type InterconnectAttachmentStackTypeInput interface {
+	pulumi.Input
+
+	ToInterconnectAttachmentStackTypeOutput() InterconnectAttachmentStackTypeOutput
+	ToInterconnectAttachmentStackTypeOutputWithContext(context.Context) InterconnectAttachmentStackTypeOutput
+}
+
+var interconnectAttachmentStackTypePtrType = reflect.TypeOf((**InterconnectAttachmentStackType)(nil)).Elem()
+
+type InterconnectAttachmentStackTypePtrInput interface {
+	pulumi.Input
+
+	ToInterconnectAttachmentStackTypePtrOutput() InterconnectAttachmentStackTypePtrOutput
+	ToInterconnectAttachmentStackTypePtrOutputWithContext(context.Context) InterconnectAttachmentStackTypePtrOutput
+}
+
+type interconnectAttachmentStackTypePtr string
+
+func InterconnectAttachmentStackTypePtr(v string) InterconnectAttachmentStackTypePtrInput {
+	return (*interconnectAttachmentStackTypePtr)(&v)
+}
+
+func (*interconnectAttachmentStackTypePtr) ElementType() reflect.Type {
+	return interconnectAttachmentStackTypePtrType
+}
+
+func (in *interconnectAttachmentStackTypePtr) ToInterconnectAttachmentStackTypePtrOutput() InterconnectAttachmentStackTypePtrOutput {
+	return pulumi.ToOutput(in).(InterconnectAttachmentStackTypePtrOutput)
+}
+
+func (in *interconnectAttachmentStackTypePtr) ToInterconnectAttachmentStackTypePtrOutputWithContext(ctx context.Context) InterconnectAttachmentStackTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(InterconnectAttachmentStackTypePtrOutput)
+}
+
 // The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
 type InterconnectAttachmentType string
 
@@ -13414,6 +13583,8 @@ const (
 	NetworkEndpointGroupNetworkEndpointTypeInternetIpPort = NetworkEndpointGroupNetworkEndpointType("INTERNET_IP_PORT")
 	// The network endpoint is represented by an IP address and port. The endpoint belongs to a VM or pod running in a customer's on-premises.
 	NetworkEndpointGroupNetworkEndpointTypeNonGcpPrivateIpPort = NetworkEndpointGroupNetworkEndpointType("NON_GCP_PRIVATE_IP_PORT")
+	// The network endpoint is either public Google APIs or services exposed by other GCP Project with a Service Attachment. The connection is set up by private service connect
+	NetworkEndpointGroupNetworkEndpointTypePrivateServiceConnect = NetworkEndpointGroupNetworkEndpointType("PRIVATE_SERVICE_CONNECT")
 	// The network endpoint is handled by specified serverless infrastructure.
 	NetworkEndpointGroupNetworkEndpointTypeServerless = NetworkEndpointGroupNetworkEndpointType("SERVERLESS")
 )
@@ -16984,6 +17155,8 @@ const (
 	RegionNetworkEndpointGroupNetworkEndpointTypeInternetIpPort = RegionNetworkEndpointGroupNetworkEndpointType("INTERNET_IP_PORT")
 	// The network endpoint is represented by an IP address and port. The endpoint belongs to a VM or pod running in a customer's on-premises.
 	RegionNetworkEndpointGroupNetworkEndpointTypeNonGcpPrivateIpPort = RegionNetworkEndpointGroupNetworkEndpointType("NON_GCP_PRIVATE_IP_PORT")
+	// The network endpoint is either public Google APIs or services exposed by other GCP Project with a Service Attachment. The connection is set up by private service connect
+	RegionNetworkEndpointGroupNetworkEndpointTypePrivateServiceConnect = RegionNetworkEndpointGroupNetworkEndpointType("PRIVATE_SERVICE_CONNECT")
 	// The network endpoint is handled by specified serverless infrastructure.
 	RegionNetworkEndpointGroupNetworkEndpointTypeServerless = RegionNetworkEndpointGroupNetworkEndpointType("SERVERLESS")
 )
@@ -26301,6 +26474,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectAttachmentEdgeAvailabilityDomainPtrInput)(nil)).Elem(), InterconnectAttachmentEdgeAvailabilityDomain("AVAILABILITY_DOMAIN_1"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectAttachmentEncryptionInput)(nil)).Elem(), InterconnectAttachmentEncryption("IPSEC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectAttachmentEncryptionPtrInput)(nil)).Elem(), InterconnectAttachmentEncryption("IPSEC"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectAttachmentStackTypeInput)(nil)).Elem(), InterconnectAttachmentStackType("IPV4_IPV6"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectAttachmentStackTypePtrInput)(nil)).Elem(), InterconnectAttachmentStackType("IPV4_IPV6"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectAttachmentTypeInput)(nil)).Elem(), InterconnectAttachmentType("DEDICATED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectAttachmentTypePtrInput)(nil)).Elem(), InterconnectAttachmentType("DEDICATED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectInterconnectTypeInput)(nil)).Elem(), InterconnectInterconnectType("DEDICATED"))
@@ -26612,6 +26787,8 @@ func init() {
 	pulumi.RegisterOutputType(InterconnectAttachmentEdgeAvailabilityDomainPtrOutput{})
 	pulumi.RegisterOutputType(InterconnectAttachmentEncryptionOutput{})
 	pulumi.RegisterOutputType(InterconnectAttachmentEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(InterconnectAttachmentStackTypeOutput{})
+	pulumi.RegisterOutputType(InterconnectAttachmentStackTypePtrOutput{})
 	pulumi.RegisterOutputType(InterconnectAttachmentTypeOutput{})
 	pulumi.RegisterOutputType(InterconnectAttachmentTypePtrOutput{})
 	pulumi.RegisterOutputType(InterconnectInterconnectTypeOutput{})

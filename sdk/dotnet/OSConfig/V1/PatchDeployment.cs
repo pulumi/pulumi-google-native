@@ -76,6 +76,12 @@ namespace Pulumi.GoogleNative.OSConfig.V1
         public Output<Outputs.PatchRolloutResponse> Rollout { get; private set; } = null!;
 
         /// <summary>
+        /// Current state of the patch deployment.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
         /// Time the patch deployment was last updated. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         /// </summary>
         [Output("updateTime")]

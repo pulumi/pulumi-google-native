@@ -88,6 +88,12 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Obfuscated user ID which the customer sent to us.
+        /// </summary>
+        [Output("obfuscatedUserId")]
+        public Output<string> ObfuscatedUserId { get; private set; } = null!;
+
+        /// <summary>
         /// The annotations that were generated during the customer and agent interaction.
         /// </summary>
         [Output("runtimeAnnotations")]
@@ -227,6 +233,12 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Obfuscated user ID which the customer sent to us.
+        /// </summary>
+        [Input("obfuscatedUserId")]
+        public Input<string>? ObfuscatedUserId { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

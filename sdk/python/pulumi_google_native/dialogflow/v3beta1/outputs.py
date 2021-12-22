@@ -54,6 +54,7 @@ __all__ = [
     'GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioTextResponse',
     'GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioResponse',
     'GoogleCloudDialogflowCxV3beta1ResponseMessageResponse',
+    'GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCallResponse',
     'GoogleCloudDialogflowCxV3beta1ResponseMessageTextResponse',
     'GoogleCloudDialogflowCxV3beta1RolloutConfigResponse',
     'GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStepResponse',
@@ -2467,6 +2468,8 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageResponse(dict):
             suggest = "output_audio_text"
         elif key == "playAudio":
             suggest = "play_audio"
+        elif key == "telephonyTransferCall":
+            suggest = "telephony_transfer_call"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1ResponseMessageResponse. Access the value via the '{suggest}' property getter instead.")
@@ -2487,6 +2490,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageResponse(dict):
                  output_audio_text: 'outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioTextResponse',
                  payload: Mapping[str, str],
                  play_audio: 'outputs.GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioResponse',
+                 telephony_transfer_call: 'outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCallResponse',
                  text: 'outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageTextResponse'):
         """
         Represents a response message that can be returned by a conversational agent. Response messages are also used for output audio synthesis. The approach is as follows: * If at least one OutputAudioText response is present, then all OutputAudioText responses are linearly concatenated, and the result is used for output audio synthesis. * If the OutputAudioText responses are a mixture of text and SSML, then the concatenated result is treated as SSML; otherwise, the result is treated as either text or SSML as appropriate. The agent designer should ideally use either text or SSML consistently throughout the bot design. * Otherwise, all Text responses are linearly concatenated, and the result is used for output audio synthesis. This approach allows for more sophisticated user experience scenarios, where the text displayed to the user may differ from what is heard.
@@ -2497,6 +2501,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageResponse(dict):
         :param 'GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioTextResponse' output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
         :param Mapping[str, str] payload: Returns a response containing a custom, platform-specific payload.
         :param 'GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioResponse' play_audio: Signal that the client should play an audio clip hosted at a client-specific URI. Dialogflow uses this to construct mixed_audio. However, Dialogflow itself does not try to read or process the URI in any way.
+        :param 'GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCallResponse' telephony_transfer_call: A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
         :param 'GoogleCloudDialogflowCxV3beta1ResponseMessageTextResponse' text: Returns a text response.
         """
         pulumi.set(__self__, "conversation_success", conversation_success)
@@ -2506,6 +2511,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageResponse(dict):
         pulumi.set(__self__, "output_audio_text", output_audio_text)
         pulumi.set(__self__, "payload", payload)
         pulumi.set(__self__, "play_audio", play_audio)
+        pulumi.set(__self__, "telephony_transfer_call", telephony_transfer_call)
         pulumi.set(__self__, "text", text)
 
     @property
@@ -2565,12 +2571,59 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageResponse(dict):
         return pulumi.get(self, "play_audio")
 
     @property
+    @pulumi.getter(name="telephonyTransferCall")
+    def telephony_transfer_call(self) -> 'outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCallResponse':
+        """
+        A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
+        """
+        return pulumi.get(self, "telephony_transfer_call")
+
+    @property
     @pulumi.getter
     def text(self) -> 'outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageTextResponse':
         """
         Returns a text response.
         """
         return pulumi.get(self, "text")
+
+
+@pulumi.output_type
+class GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCallResponse(dict):
+    """
+    Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "phoneNumber":
+            suggest = "phone_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCallResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCallResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCallResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 phone_number: str):
+        """
+        Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        :param str phone_number: Transfer the call to a phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164).
+        """
+        pulumi.set(__self__, "phone_number", phone_number)
+
+    @property
+    @pulumi.getter(name="phoneNumber")
+    def phone_number(self) -> str:
+        """
+        Transfer the call to a phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164).
+        """
+        return pulumi.get(self, "phone_number")
 
 
 @pulumi.output_type

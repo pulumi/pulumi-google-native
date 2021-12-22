@@ -54,6 +54,10 @@ export interface GetRolloutResult {
      */
     readonly deployEndTime: string;
     /**
+     * The reason this deploy failed. This will always be unspecified while the deploy in progress.
+     */
+    readonly deployFailureCause: string;
+    /**
      * Time at which the `Rollout` started deploying.
      */
     readonly deployStartTime: string;

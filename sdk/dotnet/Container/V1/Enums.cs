@@ -295,6 +295,48 @@ namespace Pulumi.GoogleNative.Container.V1
     }
 
     [EnumType]
+    public readonly struct FilterEventTypeItem : IEquatable<FilterEventTypeItem>
+    {
+        private readonly string _value;
+
+        private FilterEventTypeItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Not set, will be ignored.
+        /// </summary>
+        public static FilterEventTypeItem EventTypeUnspecified { get; } = new FilterEventTypeItem("EVENT_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Corresponds with UpgradeAvailableEvent.
+        /// </summary>
+        public static FilterEventTypeItem UpgradeAvailableEvent { get; } = new FilterEventTypeItem("UPGRADE_AVAILABLE_EVENT");
+        /// <summary>
+        /// Corresponds with UpgradeEvent.
+        /// </summary>
+        public static FilterEventTypeItem UpgradeEvent { get; } = new FilterEventTypeItem("UPGRADE_EVENT");
+        /// <summary>
+        /// Corresponds with SecurityBulletinEvent.
+        /// </summary>
+        public static FilterEventTypeItem SecurityBulletinEvent { get; } = new FilterEventTypeItem("SECURITY_BULLETIN_EVENT");
+
+        public static bool operator ==(FilterEventTypeItem left, FilterEventTypeItem right) => left.Equals(right);
+        public static bool operator !=(FilterEventTypeItem left, FilterEventTypeItem right) => !left.Equals(right);
+
+        public static explicit operator string(FilterEventTypeItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is FilterEventTypeItem other && Equals(other);
+        public bool Equals(FilterEventTypeItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
     public readonly struct LoggingComponentConfigEnableComponentsItem : IEquatable<LoggingComponentConfigEnableComponentsItem>
     {
         private readonly string _value;
@@ -325,6 +367,47 @@ namespace Pulumi.GoogleNative.Container.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is LoggingComponentConfigEnableComponentsItem other && Equals(other);
         public bool Equals(LoggingComponentConfigEnableComponentsItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
+    /// </summary>
+    [EnumType]
+    public readonly struct MaintenanceExclusionOptionsScope : IEquatable<MaintenanceExclusionOptionsScope>
+    {
+        private readonly string _value;
+
+        private MaintenanceExclusionOptionsScope(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// NO_UPGRADES excludes all upgrades, including patch upgrades and minor upgrades across control planes and nodes. This is the default exclusion behavior.
+        /// </summary>
+        public static MaintenanceExclusionOptionsScope NoUpgrades { get; } = new MaintenanceExclusionOptionsScope("NO_UPGRADES");
+        /// <summary>
+        /// NO_MINOR_UPGRADES excludes all minor upgrades for the cluster, only patches are allowed.
+        /// </summary>
+        public static MaintenanceExclusionOptionsScope NoMinorUpgrades { get; } = new MaintenanceExclusionOptionsScope("NO_MINOR_UPGRADES");
+        /// <summary>
+        /// NO_MINOR_OR_NODE_UPGRADES excludes all minor upgrades for the cluster, and also exclude all node pool upgrades. Only control plane patches are allowed.
+        /// </summary>
+        public static MaintenanceExclusionOptionsScope NoMinorOrNodeUpgrades { get; } = new MaintenanceExclusionOptionsScope("NO_MINOR_OR_NODE_UPGRADES");
+
+        public static bool operator ==(MaintenanceExclusionOptionsScope left, MaintenanceExclusionOptionsScope right) => left.Equals(right);
+        public static bool operator !=(MaintenanceExclusionOptionsScope left, MaintenanceExclusionOptionsScope right) => !left.Equals(right);
+
+        public static explicit operator string(MaintenanceExclusionOptionsScope value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is MaintenanceExclusionOptionsScope other && Equals(other);
+        public bool Equals(MaintenanceExclusionOptionsScope other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

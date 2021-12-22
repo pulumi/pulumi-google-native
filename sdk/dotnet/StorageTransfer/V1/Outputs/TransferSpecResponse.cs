@@ -33,6 +33,10 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
         /// </summary>
         public readonly Outputs.GcsDataResponse GcsDataSource;
         /// <summary>
+        /// Cloud Storage intermediate data location.
+        /// </summary>
+        public readonly Outputs.GcsDataResponse GcsIntermediateDataLocation;
+        /// <summary>
         /// An HTTP URL data source.
         /// </summary>
         public readonly Outputs.HttpDataResponse HttpDataSource;
@@ -75,6 +79,8 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
 
             Outputs.GcsDataResponse gcsDataSource,
 
+            Outputs.GcsDataResponse gcsIntermediateDataLocation,
+
             Outputs.HttpDataResponse httpDataSource,
 
             Outputs.ObjectConditionsResponse objectConditions,
@@ -95,6 +101,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
             AzureBlobStorageDataSource = azureBlobStorageDataSource;
             GcsDataSink = gcsDataSink;
             GcsDataSource = gcsDataSource;
+            GcsIntermediateDataLocation = gcsIntermediateDataLocation;
             HttpDataSource = httpDataSource;
             ObjectConditions = objectConditions;
             PosixDataSink = posixDataSink;

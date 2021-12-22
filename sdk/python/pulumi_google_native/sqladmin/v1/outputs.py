@@ -703,7 +703,7 @@ class IpConfigurationResponse(dict):
         """
         IP Management configuration.
         :param str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
-        :param Sequence['AclEntryResponse'] authorized_networks: The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **192.168.100.0/24**).
+        :param Sequence['AclEntryResponse'] authorized_networks: The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **157.197.200.0/24**).
         :param bool ipv4_enabled: Whether the instance is assigned a public IP address or not.
         :param str private_network: The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, **/projects/myProject/global/networks/default**. This setting can be updated, but it cannot be removed after it is set.
         :param bool require_ssl: Whether SSL connections over IP are enforced or not.
@@ -726,7 +726,7 @@ class IpConfigurationResponse(dict):
     @pulumi.getter(name="authorizedNetworks")
     def authorized_networks(self) -> Sequence['outputs.AclEntryResponse']:
         """
-        The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **192.168.100.0/24**).
+        The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: **157.197.200.0/24**).
         """
         return pulumi.get(self, "authorized_networks")
 
@@ -849,10 +849,10 @@ class LocationPreferenceResponse(dict):
                  zone: str):
         """
         Preferred location. This specifies where a Cloud SQL instance is located. Note that if the preferred location is not available, the instance will be located as close as possible within the region. Only one location may be specified.
-        :param str follow_gae_application: The App Engine application to follow, it must be in the same region as the Cloud SQL instance.
+        :param str follow_gae_application: The App Engine application to follow, it must be in the same region as the Cloud SQL instance. WARNING: Changing this might restart the instance.
         :param str kind: This is always **sql#locationPreference**.
         :param str secondary_zone: The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
-        :param str zone: The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.).
+        :param str zone: The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.). WARNING: Changing this might restart the instance.
         """
         pulumi.set(__self__, "follow_gae_application", follow_gae_application)
         pulumi.set(__self__, "kind", kind)
@@ -863,7 +863,7 @@ class LocationPreferenceResponse(dict):
     @pulumi.getter(name="followGaeApplication")
     def follow_gae_application(self) -> str:
         """
-        The App Engine application to follow, it must be in the same region as the Cloud SQL instance.
+        The App Engine application to follow, it must be in the same region as the Cloud SQL instance. WARNING: Changing this might restart the instance.
         """
         return pulumi.get(self, "follow_gae_application")
 
@@ -887,7 +887,7 @@ class LocationPreferenceResponse(dict):
     @pulumi.getter
     def zone(self) -> str:
         """
-        The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.).
+        The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.). WARNING: Changing this might restart the instance.
         """
         return pulumi.get(self, "zone")
 
@@ -1558,7 +1558,7 @@ class SettingsResponse(dict):
         :param str data_disk_size_gb: The size of data disk, in GB. The data disk size minimum is 10GB.
         :param str data_disk_type: The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First Generation instances.
         :param Sequence['DatabaseFlagsResponse'] database_flags: The database flags passed to the instance at startup.
-        :param bool database_replication_enabled: Configuration specific to read replica instances. Indicates whether replication is enabled or not.
+        :param bool database_replication_enabled: Configuration specific to read replica instances. Indicates whether replication is enabled or not. WARNING: Changing this restarts the instance.
         :param Sequence['DenyMaintenancePeriodResponse'] deny_maintenance_periods: Deny maintenance periods
         :param 'InsightsConfigResponse' insights_config: Insights configuration, for now relevant only for Postgres.
         :param 'IpConfigurationResponse' ip_configuration: The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
@@ -1571,7 +1571,7 @@ class SettingsResponse(dict):
         :param 'SqlServerAuditConfigResponse' sql_server_audit_config: SQL Server specific audit configuration.
         :param bool storage_auto_resize: Configuration to increase storage size automatically. The default value is true.
         :param str storage_auto_resize_limit: The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
-        :param str tier: The tier (or machine type) for this instance, for example **db-custom-1-3840**.
+        :param str tier: The tier (or machine type) for this instance, for example **db-custom-1-3840**. WARNING: Changing this restarts the instance.
         :param Mapping[str, str] user_labels: User-provided labels, represented as a dictionary where each label is a single key value pair.
         """
         pulumi.set(__self__, "activation_policy", activation_policy)
@@ -1675,7 +1675,7 @@ class SettingsResponse(dict):
     @pulumi.getter(name="databaseReplicationEnabled")
     def database_replication_enabled(self) -> bool:
         """
-        Configuration specific to read replica instances. Indicates whether replication is enabled or not.
+        Configuration specific to read replica instances. Indicates whether replication is enabled or not. WARNING: Changing this restarts the instance.
         """
         return pulumi.get(self, "database_replication_enabled")
 
@@ -1779,7 +1779,7 @@ class SettingsResponse(dict):
     @pulumi.getter
     def tier(self) -> str:
         """
-        The tier (or machine type) for this instance, for example **db-custom-1-3840**.
+        The tier (or machine type) for this instance, for example **db-custom-1-3840**. WARNING: Changing this restarts the instance.
         """
         return pulumi.get(self, "tier")
 

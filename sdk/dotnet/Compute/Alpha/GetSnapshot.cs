@@ -137,6 +137,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse SnapshotEncryptionKey;
         /// <summary>
+        /// Indicates the type of the snapshot.
+        /// </summary>
+        public readonly string SnapshotType;
+        /// <summary>
         /// The source disk used to create this snapshot.
         /// </summary>
         public readonly string SourceDisk;
@@ -219,6 +223,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             Outputs.CustomerEncryptionKeyResponse snapshotEncryptionKey,
 
+            string snapshotType,
+
             string sourceDisk,
 
             Outputs.CustomerEncryptionKeyResponse sourceDiskEncryptionKey,
@@ -259,6 +265,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             SelfLink = selfLink;
             SelfLinkWithId = selfLinkWithId;
             SnapshotEncryptionKey = snapshotEncryptionKey;
+            SnapshotType = snapshotType;
             SourceDisk = sourceDisk;
             SourceDiskEncryptionKey = sourceDiskEncryptionKey;
             SourceDiskId = sourceDiskId;

@@ -13,6 +13,7 @@ __all__ = [
     'GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse',
     'GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse',
     'GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse',
+    'GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse',
 ]
 
 @pulumi.output_type
@@ -182,5 +183,57 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse(dict):
         Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
         """
         return pulumi.get(self, "resource_type")
+
+
+@pulumi.output_type
+class GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse(dict):
+    """
+    Signed Access Approvals (SAA) enrollment response.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "setupErrors":
+            suggest = "setup_errors"
+        elif key == "setupStatus":
+            suggest = "setup_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 setup_errors: Sequence[str],
+                 setup_status: str):
+        """
+        Signed Access Approvals (SAA) enrollment response.
+        :param Sequence[str] setup_errors: Indicates SAA enrollment setup error if any.
+        :param str setup_status: Indicates SAA enrollment status of a given workload.
+        """
+        pulumi.set(__self__, "setup_errors", setup_errors)
+        pulumi.set(__self__, "setup_status", setup_status)
+
+    @property
+    @pulumi.getter(name="setupErrors")
+    def setup_errors(self) -> Sequence[str]:
+        """
+        Indicates SAA enrollment setup error if any.
+        """
+        return pulumi.get(self, "setup_errors")
+
+    @property
+    @pulumi.getter(name="setupStatus")
+    def setup_status(self) -> str:
+        """
+        Indicates SAA enrollment status of a given workload.
+        """
+        return pulumi.get(self, "setup_status")
 
 

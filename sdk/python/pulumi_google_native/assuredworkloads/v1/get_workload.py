@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetWorkloadResult:
-    def __init__(__self__, billing_account=None, compliance_regime=None, create_time=None, display_name=None, etag=None, kms_settings=None, labels=None, name=None, provisioned_resources_parent=None, resource_settings=None, resources=None):
+    def __init__(__self__, billing_account=None, compliance_regime=None, create_time=None, display_name=None, enable_sovereign_controls=None, etag=None, kaj_enrollment_state=None, kms_settings=None, labels=None, name=None, provisioned_resources_parent=None, resource_settings=None, resources=None, saa_enrollment_response=None):
         if billing_account and not isinstance(billing_account, str):
             raise TypeError("Expected argument 'billing_account' to be a str")
         pulumi.set(__self__, "billing_account", billing_account)
@@ -31,9 +31,15 @@ class GetWorkloadResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if enable_sovereign_controls and not isinstance(enable_sovereign_controls, bool):
+            raise TypeError("Expected argument 'enable_sovereign_controls' to be a bool")
+        pulumi.set(__self__, "enable_sovereign_controls", enable_sovereign_controls)
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
+        if kaj_enrollment_state and not isinstance(kaj_enrollment_state, str):
+            raise TypeError("Expected argument 'kaj_enrollment_state' to be a str")
+        pulumi.set(__self__, "kaj_enrollment_state", kaj_enrollment_state)
         if kms_settings and not isinstance(kms_settings, dict):
             raise TypeError("Expected argument 'kms_settings' to be a dict")
         pulumi.set(__self__, "kms_settings", kms_settings)
@@ -52,6 +58,9 @@ class GetWorkloadResult:
         if resources and not isinstance(resources, list):
             raise TypeError("Expected argument 'resources' to be a list")
         pulumi.set(__self__, "resources", resources)
+        if saa_enrollment_response and not isinstance(saa_enrollment_response, dict):
+            raise TypeError("Expected argument 'saa_enrollment_response' to be a dict")
+        pulumi.set(__self__, "saa_enrollment_response", saa_enrollment_response)
 
     @property
     @pulumi.getter(name="billingAccount")
@@ -86,12 +95,28 @@ class GetWorkloadResult:
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="enableSovereignControls")
+    def enable_sovereign_controls(self) -> bool:
+        """
+        Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
+        """
+        return pulumi.get(self, "enable_sovereign_controls")
+
+    @property
     @pulumi.getter
     def etag(self) -> str:
         """
         Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
         """
         return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="kajEnrollmentState")
+    def kaj_enrollment_state(self) -> str:
+        """
+        Represents the KAJ enrollment state of the given workload.
+        """
+        return pulumi.get(self, "kaj_enrollment_state")
 
     @property
     @pulumi.getter(name="kmsSettings")
@@ -141,6 +166,14 @@ class GetWorkloadResult:
         """
         return pulumi.get(self, "resources")
 
+    @property
+    @pulumi.getter(name="saaEnrollmentResponse")
+    def saa_enrollment_response(self) -> 'outputs.GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse':
+        """
+        Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during GetWorkload call. In failure cases, user friendly error message is shown in SAA details page.
+        """
+        return pulumi.get(self, "saa_enrollment_response")
+
 
 class AwaitableGetWorkloadResult(GetWorkloadResult):
     # pylint: disable=using-constant-test
@@ -152,13 +185,16 @@ class AwaitableGetWorkloadResult(GetWorkloadResult):
             compliance_regime=self.compliance_regime,
             create_time=self.create_time,
             display_name=self.display_name,
+            enable_sovereign_controls=self.enable_sovereign_controls,
             etag=self.etag,
+            kaj_enrollment_state=self.kaj_enrollment_state,
             kms_settings=self.kms_settings,
             labels=self.labels,
             name=self.name,
             provisioned_resources_parent=self.provisioned_resources_parent,
             resource_settings=self.resource_settings,
-            resources=self.resources)
+            resources=self.resources,
+            saa_enrollment_response=self.saa_enrollment_response)
 
 
 def get_workload(location: Optional[str] = None,
@@ -183,13 +219,16 @@ def get_workload(location: Optional[str] = None,
         compliance_regime=__ret__.compliance_regime,
         create_time=__ret__.create_time,
         display_name=__ret__.display_name,
+        enable_sovereign_controls=__ret__.enable_sovereign_controls,
         etag=__ret__.etag,
+        kaj_enrollment_state=__ret__.kaj_enrollment_state,
         kms_settings=__ret__.kms_settings,
         labels=__ret__.labels,
         name=__ret__.name,
         provisioned_resources_parent=__ret__.provisioned_resources_parent,
         resource_settings=__ret__.resource_settings,
-        resources=__ret__.resources)
+        resources=__ret__.resources,
+        saa_enrollment_response=__ret__.saa_enrollment_response)
 
 
 @_utilities.lift_output_func(get_workload)

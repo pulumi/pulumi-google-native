@@ -185,7 +185,9 @@ class ComputeEngineTargetDefaultsResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "appliedLicense":
+        if key == "additionalLicenses":
+            suggest = "additional_licenses"
+        elif key == "appliedLicense":
             suggest = "applied_license"
         elif key == "bootOption":
             suggest = "boot_option"
@@ -224,6 +226,7 @@ class ComputeEngineTargetDefaultsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 additional_licenses: Sequence[str],
                  applied_license: 'outputs.AppliedLicenseResponse',
                  boot_option: str,
                  compute_scheduling: 'outputs.ComputeSchedulingResponse',
@@ -242,6 +245,7 @@ class ComputeEngineTargetDefaultsResponse(dict):
                  zone: str):
         """
         ComputeEngineTargetDefaults is a collection of details for creating a VM in a target Compute Engine project.
+        :param Sequence[str] additional_licenses: Additional licenses to assign to the VM.
         :param 'AppliedLicenseResponse' applied_license: The OS license returned from the adaptation module report.
         :param str boot_option: The VM Boot Option, as set in the source vm.
         :param 'ComputeSchedulingResponse' compute_scheduling: Compute instance scheduling information (if empty default is used).
@@ -259,6 +263,7 @@ class ComputeEngineTargetDefaultsResponse(dict):
         :param str vm_name: The name of the VM to create.
         :param str zone: The zone in which to create the VM.
         """
+        pulumi.set(__self__, "additional_licenses", additional_licenses)
         pulumi.set(__self__, "applied_license", applied_license)
         pulumi.set(__self__, "boot_option", boot_option)
         pulumi.set(__self__, "compute_scheduling", compute_scheduling)
@@ -275,6 +280,14 @@ class ComputeEngineTargetDefaultsResponse(dict):
         pulumi.set(__self__, "target_project", target_project)
         pulumi.set(__self__, "vm_name", vm_name)
         pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="additionalLicenses")
+    def additional_licenses(self) -> Sequence[str]:
+        """
+        Additional licenses to assign to the VM.
+        """
+        return pulumi.get(self, "additional_licenses")
 
     @property
     @pulumi.getter(name="appliedLicense")
@@ -413,7 +426,9 @@ class ComputeEngineTargetDetailsResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "appliedLicense":
+        if key == "additionalLicenses":
+            suggest = "additional_licenses"
+        elif key == "appliedLicense":
             suggest = "applied_license"
         elif key == "bootOption":
             suggest = "boot_option"
@@ -450,6 +465,7 @@ class ComputeEngineTargetDetailsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 additional_licenses: Sequence[str],
                  applied_license: 'outputs.AppliedLicenseResponse',
                  boot_option: str,
                  compute_scheduling: 'outputs.ComputeSchedulingResponse',
@@ -468,6 +484,7 @@ class ComputeEngineTargetDetailsResponse(dict):
                  zone: str):
         """
         ComputeEngineTargetDetails is a collection of details for creating a VM in a target Compute Engine project.
+        :param Sequence[str] additional_licenses: Additional licenses to assign to the VM.
         :param 'AppliedLicenseResponse' applied_license: The OS license returned from the adaptation module report.
         :param str boot_option: The VM Boot Option, as set in the source vm.
         :param 'ComputeSchedulingResponse' compute_scheduling: Compute instance scheduling information (if empty default is used).
@@ -485,6 +502,7 @@ class ComputeEngineTargetDetailsResponse(dict):
         :param str vm_name: The name of the VM to create.
         :param str zone: The zone in which to create the VM.
         """
+        pulumi.set(__self__, "additional_licenses", additional_licenses)
         pulumi.set(__self__, "applied_license", applied_license)
         pulumi.set(__self__, "boot_option", boot_option)
         pulumi.set(__self__, "compute_scheduling", compute_scheduling)
@@ -501,6 +519,14 @@ class ComputeEngineTargetDetailsResponse(dict):
         pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "vm_name", vm_name)
         pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="additionalLicenses")
+    def additional_licenses(self) -> Sequence[str]:
+        """
+        Additional licenses to assign to the VM.
+        """
+        return pulumi.get(self, "additional_licenses")
 
     @property
     @pulumi.getter(name="appliedLicense")

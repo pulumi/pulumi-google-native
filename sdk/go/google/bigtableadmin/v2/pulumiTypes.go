@@ -1797,7 +1797,7 @@ func (o ClusterAutoscalingConfigResponsePtrOutput) AutoscalingTargets() Autoscal
 
 // Configuration for a cluster.
 type ClusterConfig struct {
-	// Autoscaling configuration for this cluster. Note that when creating or updating a cluster, exactly one of serve_nodes or cluster_autoscaling_config must be set. If serve_nodes is set, then serve_nodes is fixed and autoscaling is turned off. If cluster_autoscaling_config is set, then serve_nodes will be autoscaled.
+	// Autoscaling configuration for this cluster.
 	ClusterAutoscalingConfig *ClusterAutoscalingConfig `pulumi:"clusterAutoscalingConfig"`
 }
 
@@ -1814,7 +1814,7 @@ type ClusterConfigInput interface {
 
 // Configuration for a cluster.
 type ClusterConfigArgs struct {
-	// Autoscaling configuration for this cluster. Note that when creating or updating a cluster, exactly one of serve_nodes or cluster_autoscaling_config must be set. If serve_nodes is set, then serve_nodes is fixed and autoscaling is turned off. If cluster_autoscaling_config is set, then serve_nodes will be autoscaled.
+	// Autoscaling configuration for this cluster.
 	ClusterAutoscalingConfig ClusterAutoscalingConfigPtrInput `pulumi:"clusterAutoscalingConfig"`
 }
 
@@ -1896,7 +1896,7 @@ func (o ClusterConfigOutput) ToClusterConfigPtrOutputWithContext(ctx context.Con
 	}).(ClusterConfigPtrOutput)
 }
 
-// Autoscaling configuration for this cluster. Note that when creating or updating a cluster, exactly one of serve_nodes or cluster_autoscaling_config must be set. If serve_nodes is set, then serve_nodes is fixed and autoscaling is turned off. If cluster_autoscaling_config is set, then serve_nodes will be autoscaled.
+// Autoscaling configuration for this cluster.
 func (o ClusterConfigOutput) ClusterAutoscalingConfig() ClusterAutoscalingConfigPtrOutput {
 	return o.ApplyT(func(v ClusterConfig) *ClusterAutoscalingConfig { return v.ClusterAutoscalingConfig }).(ClusterAutoscalingConfigPtrOutput)
 }
@@ -1925,7 +1925,7 @@ func (o ClusterConfigPtrOutput) Elem() ClusterConfigOutput {
 	}).(ClusterConfigOutput)
 }
 
-// Autoscaling configuration for this cluster. Note that when creating or updating a cluster, exactly one of serve_nodes or cluster_autoscaling_config must be set. If serve_nodes is set, then serve_nodes is fixed and autoscaling is turned off. If cluster_autoscaling_config is set, then serve_nodes will be autoscaled.
+// Autoscaling configuration for this cluster.
 func (o ClusterConfigPtrOutput) ClusterAutoscalingConfig() ClusterAutoscalingConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterConfig) *ClusterAutoscalingConfig {
 		if v == nil {
@@ -1937,7 +1937,7 @@ func (o ClusterConfigPtrOutput) ClusterAutoscalingConfig() ClusterAutoscalingCon
 
 // Configuration for a cluster.
 type ClusterConfigResponse struct {
-	// Autoscaling configuration for this cluster. Note that when creating or updating a cluster, exactly one of serve_nodes or cluster_autoscaling_config must be set. If serve_nodes is set, then serve_nodes is fixed and autoscaling is turned off. If cluster_autoscaling_config is set, then serve_nodes will be autoscaled.
+	// Autoscaling configuration for this cluster.
 	ClusterAutoscalingConfig ClusterAutoscalingConfigResponse `pulumi:"clusterAutoscalingConfig"`
 }
 
@@ -1954,7 +1954,7 @@ type ClusterConfigResponseInput interface {
 
 // Configuration for a cluster.
 type ClusterConfigResponseArgs struct {
-	// Autoscaling configuration for this cluster. Note that when creating or updating a cluster, exactly one of serve_nodes or cluster_autoscaling_config must be set. If serve_nodes is set, then serve_nodes is fixed and autoscaling is turned off. If cluster_autoscaling_config is set, then serve_nodes will be autoscaled.
+	// Autoscaling configuration for this cluster.
 	ClusterAutoscalingConfig ClusterAutoscalingConfigResponseInput `pulumi:"clusterAutoscalingConfig"`
 }
 
@@ -2036,7 +2036,7 @@ func (o ClusterConfigResponseOutput) ToClusterConfigResponsePtrOutputWithContext
 	}).(ClusterConfigResponsePtrOutput)
 }
 
-// Autoscaling configuration for this cluster. Note that when creating or updating a cluster, exactly one of serve_nodes or cluster_autoscaling_config must be set. If serve_nodes is set, then serve_nodes is fixed and autoscaling is turned off. If cluster_autoscaling_config is set, then serve_nodes will be autoscaled.
+// Autoscaling configuration for this cluster.
 func (o ClusterConfigResponseOutput) ClusterAutoscalingConfig() ClusterAutoscalingConfigResponseOutput {
 	return o.ApplyT(func(v ClusterConfigResponse) ClusterAutoscalingConfigResponse { return v.ClusterAutoscalingConfig }).(ClusterAutoscalingConfigResponseOutput)
 }
@@ -2065,7 +2065,7 @@ func (o ClusterConfigResponsePtrOutput) Elem() ClusterConfigResponseOutput {
 	}).(ClusterConfigResponseOutput)
 }
 
-// Autoscaling configuration for this cluster. Note that when creating or updating a cluster, exactly one of serve_nodes or cluster_autoscaling_config must be set. If serve_nodes is set, then serve_nodes is fixed and autoscaling is turned off. If cluster_autoscaling_config is set, then serve_nodes will be autoscaled.
+// Autoscaling configuration for this cluster.
 func (o ClusterConfigResponsePtrOutput) ClusterAutoscalingConfig() ClusterAutoscalingConfigResponsePtrOutput {
 	return o.ApplyT(func(v *ClusterConfigResponse) *ClusterAutoscalingConfigResponse {
 		if v == nil {
