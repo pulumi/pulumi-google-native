@@ -164,7 +164,7 @@ func emitSchema(pkgSpec schema.PackageSpec, version, outDir string, goPackageNam
 
 	compressedSchema, err := gen.CompressSchema(pkgSpec)
 	if err != nil {
-		return errors.Wrapf(err, "failed to compress schema")
+		return errors.Wrap(err, "failed to compress schema")
 	}
 	err = emitFile(outDir, "schema.go", []byte(fmt.Sprintf(`package %s
 var pulumiSchema = %#v

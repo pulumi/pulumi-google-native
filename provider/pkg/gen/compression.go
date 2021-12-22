@@ -35,7 +35,7 @@ func DecompressSchema(compressedSchema []byte) ([]byte, error) {
 		return nil, err
 	}
 	if err = uncompressed.Close(); err != nil {
-		return nil, errors.Wrap(err, "closing uncompress stream for metadata")
+		return nil, errors.Wrap(err, "closing uncompress stream for schema")
 	}
 	return uncompressedBuf.Bytes(), err
 }

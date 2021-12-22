@@ -15,12 +15,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/pulumi/pulumi-google-native/provider/pkg/gen"
-
 	"github.com/golang/protobuf/ptypes/empty"
 	structpb "github.com/golang/protobuf/ptypes/struct"
 	"github.com/jpillora/backoff"
 	"github.com/pkg/errors"
+	"github.com/pulumi/pulumi-google-native/provider/pkg/gen"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/googleclient"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/version"
@@ -301,7 +300,7 @@ func (p *googleCloudProvider) GetSchema(_ context.Context, req *rpc.GetSchemaReq
 
 	decompressed, err := gen.DecompressSchema(p.schemaBytes)
 	if err != nil {
-		return nil, fmt.Errorf("failure loading schema")
+		return nil, errors.New("failure loading schema")
 	}
 	return &rpc.GetSchemaResponse{Schema: string(decompressed)}, nil
 }
